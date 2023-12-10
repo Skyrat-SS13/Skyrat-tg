@@ -13,7 +13,7 @@
 	desc = "A glass bowl that is capable of carrying things."
 	icon_state = "glass_globe"
 	material_flags = MATERIAL_COLOR
-	custom_materials = list(/datum/material/glass = 1000)
+	custom_materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT)
 
 /datum/export/glassblowing
 	cost = CARGO_CRATE_VALUE * 5
@@ -392,7 +392,7 @@
 	to_chat(user, span_notice("You begin to [step_id] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
-		REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+		REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)
 		return FALSE
 
 	if(glass.steps_remaining)
@@ -402,7 +402,7 @@
 			if(check_finished(glass))
 				glass.is_finished = TRUE
 
-	REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+	REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)
 	in_use = FALSE
 
 	to_chat(user, span_notice("You finish trying to [step_id] [src]."))
@@ -447,7 +447,7 @@
 			balloon_alert(user, "already glassblowing!")
 			return FALSE
 
-		ADD_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+		ADD_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)
 		return user
 
 	var/obj/item/glassblowing/used_tool
@@ -467,7 +467,7 @@
 		balloon_alert(user, "already in use!")
 		return FALSE
 
-	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)
 	return used_tool
 
 /**

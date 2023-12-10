@@ -40,7 +40,10 @@
 	. = ..()
 	force = force_unwielded
 	//decent in a pinch, but pretty bad.
-	AddComponent(/datum/component/jousting)
+	AddComponent(/datum/component/jousting, \
+		max_tile_charge = 9, \
+		min_tile_charge = 6, \
+		)
 
 	AddComponent(/datum/component/butchering, \
 		speed = 10 SECONDS, \
@@ -51,7 +54,17 @@
 		force_wielded = force_wielded, \
 		icon_wielded = "[icon_prefix]1", \
 	)
+	add_headpike_component()
 	update_appearance()
+
+// I dunno man
+/obj/item/spear/proc/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpike)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
 
 /obj/item/spear/update_icon_state()
 	icon_state = "[icon_prefix]0"
@@ -139,7 +152,7 @@
 	user.say("[war_cry]", forced="spear warcry")
 	explosive.forceMove(user)
 	explosive.detonate()
-	user.gib()
+	user.gib(DROP_ALL_REMAINS)
 	qdel(src)
 	return BRUTELOSS
 
@@ -217,12 +230,20 @@
 	throwforce = 22
 	armour_penetration = 15 //Enhanced armor piercing
 	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
-	force_unwielded = 12
-	force_wielded = 20
+	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
+	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
 
 	//SKYRAT EDIT ADDITION BEGIN - increases bone spear range to 2
 	reach = 2
 	//SKYRAT EDIT ADDITION END
+
+/obj/item/spear/bonespear/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebone)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
 
 /*
  * Bamboo Spear
@@ -238,3 +259,12 @@
 	custom_materials = list(/datum/material/bamboo = SHEET_MATERIAL_AMOUNT * 20)
 	force_unwielded = 10
 	force_wielded = 18
+
+
+/obj/item/spear/bamboospear/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebamboo)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)

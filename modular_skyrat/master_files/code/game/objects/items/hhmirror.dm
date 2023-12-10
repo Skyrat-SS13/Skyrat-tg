@@ -1,6 +1,6 @@
 /obj/item/hhmirror
 	name = "handheld mirror"
-	desc = "A handheld mirror that allows you to change your looks."
+	desc = "A handheld mirror."
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirror"
 
@@ -8,7 +8,6 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("Damn, that hairstyle be looking skewed, maybe head to the barber for a change?"))
 
 /obj/item/hhmirror/fullmagic
 	name = "full handheld magic mirror"
@@ -62,14 +61,14 @@
 				return
 			human_user.set_species(newrace, icon_update = 0)
 
-			if(human_user.dna.species.use_skintones)
+			if(HAS_TRAIT(human_user, TRAIT_USES_SKINTONES))
 				var/new_s_tone = input(user, "Choose your skin tone:", "Race change")  as null|anything in GLOB.skin_tones
 
 				if(new_s_tone)
 					human_user.skin_tone = new_s_tone
 					human_user.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 
-			if(MUTCOLORS in human_user.dna.species.species_traits)
+			if(HAS_TRAIT(human_user, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(human_user, TRAIT_FIXED_MUTANT_COLORS))
 				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change", human_user.dna.features["mcolor"]) as color|null
 				if(new_mutantcolor)
 					var/temp_hsv = RGBtoHSV(new_mutantcolor)

@@ -1,6 +1,6 @@
 /datum/status_effect/ropebunny
 	id = "ropebunny"
-	tick_interval = 10
+	tick_interval = 1 SECONDS
 	duration = INFINITE
 	alert_type = null
 

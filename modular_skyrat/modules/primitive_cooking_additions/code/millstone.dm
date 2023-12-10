@@ -11,6 +11,7 @@
 	max_integrity = 200
 	pass_flags = PASSTABLE
 	custom_materials = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 6)
+	drag_slowdown = 2
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
 
@@ -32,10 +33,20 @@
 
 		. += span_notice("And it can fit <b>[maximum_contained_items - length(contents)]</b> more items in it.")
 	else
-		. += span_notice("It can hold [maximum_contained_items], and there is nothing in it presently.")
+		. += span_notice("It can hold [maximum_contained_items] items, and there is nothing in it presently.")
+
+	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click</b>.")
+	. += span_notice("With a <b>prying tool</b> of some sort, you could take [src] apart.")
 
 /obj/structure/millstone/Destroy()
 	drop_everything_contained()
+	return ..()
+
+/obj/structure/millstone/deconstruct(disassembled)
+	var/obj/item/stack/sheet/mineral/stone = new (drop_location())
+	stone.amount = 6
+	stone.update_appearance(UPDATE_ICON)
+	transfer_fingerprints_to(stone)
 	return ..()
 
 /obj/structure/millstone/AltClick(mob/user)
@@ -45,6 +56,10 @@
 
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
+
+/obj/structure/millstone/CtrlShiftClick(mob/user)
+	set_anchored(!anchored)
+	balloon_alert(user, "[anchored ? "secured" : "unsecured"]")
 
 /// Drops all contents at the mortar
 /obj/structure/millstone/proc/drop_everything_contained()
@@ -65,7 +80,36 @@
 	mill_it_up(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+/obj/structure/millstone/crowbar_act(mob/living/user, obj/item/tool)
+	. = ..()
+	balloon_alert_to_viewers("disassembling...")
+	if(!do_after(user, 2 SECONDS, src))
+		return
+	deconstruct(TRUE)
+
 /obj/structure/millstone/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/storage/bag))
+		if(length(contents) >= maximum_contained_items)
+			balloon_alert(user, "already full")
+			return TRUE
+
+		if(!length(attacking_item.contents))
+			balloon_alert(user, "nothing to transfer!")
+			return TRUE
+
+		for(var/obj/item/food/grown/target_item in attacking_item.contents)
+			if(length(contents) >= maximum_contained_items)
+				break
+
+			target_item.forceMove(src)
+
+		if (length(contents) >= maximum_contained_items)
+			balloon_alert(user, "filled!")
+		else
+			balloon_alert(user, "transferred")
+
+		return TRUE
+
 	if(!((istype(attacking_item, /obj/item/food/grown/)) || (istype(attacking_item, /obj/item/grown))))
 		balloon_alert(user, "can only mill plants")
 		return ..()
@@ -75,6 +119,7 @@
 		return
 
 	attacking_item.forceMove(src)
+	return ..()
 
 /// Takes the content's seeds and spits them out on the turf, as well as grinding whatever the contents may be
 /obj/structure/millstone/proc/mill_it_up(mob/living/carbon/human/user)

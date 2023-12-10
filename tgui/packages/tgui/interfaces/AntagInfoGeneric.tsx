@@ -1,57 +1,39 @@
 import { useBackend } from '../backend';
 import { Section, Stack } from '../components';
-import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
-
-type Objective = {
-  count: number;
-  name: string;
-  explanation: string;
-  complete: BooleanLike;
-  was_uncompleted: BooleanLike;
-  reward: number;
-};
+import { ObjectivePrintout, Objective } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 type Info = {
   antag_name: string;
   objectives: Objective[];
 };
 
-export const AntagInfoGeneric = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const { antag_name } = data;
+// SKYRAT EDIT increase height from 250 to 500
+export const AntagInfoGeneric = (props) => {
+  const { data } = useBackend<Info>();
+  const { antag_name, objectives } = data;
   return (
-    <Window width={620} height={250}>
+    <Window width={620} height={500}>
       <Window.Content>
         <Section scrollable fill>
           <Stack vertical>
             <Stack.Item textColor="red" fontSize="20px">
               You are the {antag_name}!
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
-              <ObjectivePrintout />
+              <Rules />
+            </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
+            <Stack.Item>
+              <ObjectivePrintout objectives={objectives} />
             </Stack.Item>
           </Stack>
         </Section>
       </Window.Content>
     </Window>
-  );
-};
-
-const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const { objectives } = data;
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Your objectives:</Stack.Item>
-      <Stack.Item>
-        {(!objectives && 'None!') ||
-          objectives.map((objective) => (
-            <Stack.Item key={objective.count}>
-              #{objective.count}: {objective.explanation}
-            </Stack.Item>
-          ))}
-      </Stack.Item>
-    </Stack>
   );
 };

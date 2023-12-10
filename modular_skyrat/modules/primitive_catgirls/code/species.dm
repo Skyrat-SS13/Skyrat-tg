@@ -4,11 +4,11 @@
 /datum/language_holder/primitive_felinid
 	understood_languages = list(
 		/datum/language/primitive_catgirl = list(LANGUAGE_ATOM),
-		/datum/language/uncommon = list(LANGUAGE_ATOM),
+		/datum/language/siiktajr = list(LANGUAGE_ATOM),
 	)
 	spoken_languages = list(
 		/datum/language/primitive_catgirl = list(LANGUAGE_ATOM),
-		/datum/language/uncommon = list(LANGUAGE_ATOM),
+		/datum/language/siiktajr = list(LANGUAGE_ATOM),
 	)
 	selected_language = /datum/language/primitive_catgirl
 
@@ -18,21 +18,42 @@
 
 	mutantlungs = /obj/item/organ/internal/lungs/icebox_adapted
 	mutanteyes = /obj/item/organ/internal/eyes/low_light_adapted
+	mutanttongue = /obj/item/organ/internal/tongue/cat/primitive
 
 	species_language_holder = /datum/language_holder/primitive_felinid
+	language_prefs_whitelist = list(/datum/language/primitive_catgirl)
 
 	bodytemp_normal = 270 // If a normal human gets hugged by one its gonna feel cold
 	bodytemp_heat_damage_limit = 283 // To them normal station atmos would be sweltering
 	bodytemp_cold_damage_limit = 213 // Man up bro its not even that cold out here
 
-	liked_food = SEAFOOD | MEAT | GORE // Yum
-
 	inherent_traits = list(
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_RESISTCOLD,
+		TRAIT_USES_SKINTONES,
 	)
 
 	always_customizable = TRUE
+
+/datum/species/human/felinid/primitive/on_species_gain(mob/living/carbon/new_primitive, datum/species/old_species, pref_load)
+	. = ..()
+	var/mob/living/carbon/human/hearthkin = new_primitive
+	if(!istype(hearthkin))
+		return
+	hearthkin.dna.add_mutation(/datum/mutation/human/olfaction, MUT_NORMAL)
+	hearthkin.dna.activate_mutation(/datum/mutation/human/olfaction)
+
+    	// >mfw I take mutadone and my nose clogs
+	var/datum/mutation/human/olfaction/mutation = locate() in hearthkin.dna.mutations
+	mutation.mutadone_proof = TRUE
+	mutation.instability = 0
+
+/datum/species/human/felinid/primitive/on_species_loss(mob/living/carbon/former_primitive, datum/species/new_species, pref_load)
+	. = ..()
+	var/mob/living/carbon/human/hearthkin = former_primitive
+	if(!istype(hearthkin))
+		return
+	hearthkin.dna.remove_mutation(/datum/mutation/human/olfaction)
 
 /datum/species/human/felinid/primitive/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	human_for_preview.hairstyle = "Blunt Bangs Alt"

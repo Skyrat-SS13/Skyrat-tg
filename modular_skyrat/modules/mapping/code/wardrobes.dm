@@ -37,11 +37,16 @@
 		/obj/item/clothing/under/syndicate/skyrat/maid = 5,
 		/obj/item/clothing/gloves/combat/maid = 5,
 		/obj/item/clothing/head/costume/maidheadband/syndicate = 5,
-		/obj/item/storage/box/nif_ghost_box = 10,
+		/obj/item/storage/box/nif_ghost_box/ghost_role = 10,
 	)
 
 	refill_canister = /obj/item/vending_refill/wardrobe/syndie_wardrobe
 	light_color = COLOR_MOSTLY_PURE_RED
+
+/obj/machinery/vending/wardrobe/syndie_wardrobe/ghost_cafe
+	excluded_products = list(
+		/obj/item/storage/box/nif_ghost_box/ghost_role,
+	)
 
 /obj/item/vending_refill/wardrobe/syndie_wardrobe
 	machine_name = "SynDrobe"

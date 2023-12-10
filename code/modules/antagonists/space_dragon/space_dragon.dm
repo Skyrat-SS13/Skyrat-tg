@@ -90,7 +90,7 @@
 		speech_action_icon = 'icons/mob/actions/actions_space_dragon.dmi', \
 		speech_action_icon_state = "wavespeak", \
 	)
-	RegisterSignal(wavespeak, COMSIG_PARENT_QDELETING, PROC_REF(clear_wavespeak))
+	RegisterSignal(wavespeak, COMSIG_QDELETING, PROC_REF(clear_wavespeak))
 
 /datum/antagonist/space_dragon/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/antag = mob_override || owner.current
@@ -157,6 +157,7 @@
 	if(objective_complete)
 		return
 	rifts_charged = 0
+	ADD_TRAIT(owner.current, TRAIT_RIFT_FAILURE, REF(src))
 	owner.current.add_movespeed_modifier(/datum/movespeed_modifier/dragon_depression)
 	riftTimer = -1
 	SEND_SOUND(owner.current, sound('sound/vehicles/rocketlaunch.ogg'))
@@ -180,7 +181,7 @@
 	var/datum/objective/summon_carp/main_objective = locate() in objectives
 	main_objective?.completed = TRUE
 	priority_announce("A large amount of lifeforms have been detected approaching [station_name()] at extreme speeds. \
-		Remaining crew are advised to evacuate as soon as possible.", "Central Command Wildlife Observations", has_important_message = TRUE)
+		Remaining crew are advised to evacuate as soon as possible.", "[command_name()] Wildlife Observations", has_important_message = TRUE)
 	sound_to_playing_players('sound/creatures/space_dragon_roar.ogg', volume = 75)
 	for(var/obj/structure/carp_rift/rift as anything in rift_list)
 		rift.carp_stored = 999999

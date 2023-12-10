@@ -2,8 +2,8 @@
 #define TAPE_REQUIRED_TO_FIX 2
 #define INFLATABLE_DOOR_OPENED FALSE
 #define INFLATABLE_DOOR_CLOSED TRUE
-#define BOX_DOOR_AMOUNT 8
-#define BOX_WALL_AMOUNT 16
+#define BOX_DOOR_AMOUNT 7
+#define BOX_WALL_AMOUNT 14
 
 /obj/structure/inflatable
 	name = "inflatable wall"
@@ -66,15 +66,15 @@
 /obj/structure/inflatable/proc/deflate(violent)
 	if(has_been_deflated) // We do not ever want to deflate more than once.
 		return
-		
+
 	has_been_deflated = TRUE
-	
+
 	playsound(src, 'sound/machines/hiss.ogg', 75, 1)
 	if(!violent)
 		balloon_alert_to_viewers("slowly deflates!")
 		addtimer(CALLBACK(src, PROC_REF(slow_deflate_finish)), manual_deflation_time)
 		return
-		
+
 	var/turf/inflatable_loc = get_turf(src)
 	inflatable_loc.balloon_alert_to_viewers("[src] rapidly deflates!") // just so we don't balloon alert from the qdeleted inflatable object
 	if(torn_type)
@@ -214,18 +214,26 @@
 /obj/item/inflatable/door/torn
 	torn = TRUE
 
-// The box full of inflatables
 
+/// The storage for the inflatables box.
+/datum/storage/inflatables_box
+	max_slots = (BOX_DOOR_AMOUNT + BOX_WALL_AMOUNT)
+	max_specific_storage = WEIGHT_CLASS_SMALL
+	max_total_storage = (BOX_DOOR_AMOUNT + BOX_WALL_AMOUNT) * WEIGHT_CLASS_SMALL
+
+
+/// The box full of inflatables
 /obj/item/storage/inflatable
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
 	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
+	storage_type = /datum/storage/inflatables_box
 
 /obj/item/storage/inflatable/Initialize(mapload)
 	. = ..()
-	atom_storage.max_total_storage = 21
+	atom_storage.set_holdable(typesof(/obj/item/inflatable))
 
 /obj/item/storage/inflatable/PopulateContents()
 	for(var/i = 0, i < BOX_DOOR_AMOUNT, i++)

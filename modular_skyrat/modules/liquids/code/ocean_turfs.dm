@@ -9,7 +9,7 @@
 
 	for(var/obj/structure/flora/plant in contents)
 		qdel(plant)
-	var/turf/T = below()
+	var/turf/T = GET_TURF_BELOW(src)
 	if(T)
 		if(T.turf_flags & NO_RUINS)
 			ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
@@ -219,6 +219,9 @@
 	icon_state = "submarine_perf"
 	liquid_height = -30
 	turf_height = -30
+
+/turf/open/floor/iron/submarine_perf/airless
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return

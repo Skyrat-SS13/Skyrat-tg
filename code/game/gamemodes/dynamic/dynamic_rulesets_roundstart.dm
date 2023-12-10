@@ -1,3 +1,4 @@
+GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 
 //////////////////////////////////////////////
 //                                          //
@@ -111,41 +112,35 @@
 		JOB_AI,
 		JOB_CYBORG,
 	)
-	required_candidates = 2
-	weight = 2
-	cost = 12
+	weight = 5
+	cost = 8
 	scaling_cost = 15
 	requirements = list(40,30,30,20,20,15,15,15,10,10)
-	antag_cap = 2 // Can pick 3 per team, but rare enough it doesn't matter.
-	var/list/datum/team/brother_team/pre_brother_teams = list()
-	var/const/min_team_size = 2
+	antag_cap = 1
 
 /datum/dynamic_ruleset/roundstart/traitorbro/pre_execute(population)
 	. = ..()
-	var/num_teams = (get_antag_cap(population)/min_team_size) * (scaled_times + 1) // 1 team per scaling
-	for(var/j = 1 to num_teams)
-		if(candidates.len < min_team_size || candidates.len < required_candidates)
+
+	for (var/_ in 1 to get_antag_cap(population) * (scaled_times + 1))
+		var/mob/candidate = pick_n_take(candidates)
+		if (isnull(candidate))
 			break
-		var/datum/team/brother_team/team = new
-		var/team_size = prob(10) ? min(3, candidates.len) : 2
-		for(var/k = 1 to team_size)
-			var/mob/bro = pick_n_take(candidates)
-			assigned += bro.mind
-			team.add_member(bro.mind)
-			bro.mind.special_role = "brother"
-			bro.mind.restricted_roles = restricted_roles
-			GLOB.pre_setup_antags += bro.mind
-		pre_brother_teams += team
+
+		assigned += candidate.mind
+		candidate.mind.restricted_roles = restricted_roles
+		candidate.mind.special_role = ROLE_BROTHER
+		GLOB.pre_setup_antags += candidate.mind
+
 	return TRUE
 
 /datum/dynamic_ruleset/roundstart/traitorbro/execute()
-	for(var/datum/team/brother_team/team in pre_brother_teams)
-		team.pick_meeting_area()
+	for (var/datum/mind/mind in assigned)
+		var/datum/team/brother_team/team = new
+		team.add_member(mind)
 		team.forge_brother_objectives()
-		for(var/datum/mind/M in team.members)
-			M.add_antag_datum(/datum/antagonist/brother, team)
-			GLOB.pre_setup_antags -= M
-		team.update_name()
+		mind.add_antag_datum(/datum/antagonist/brother, team)
+		GLOB.pre_setup_antags -= mind
+
 	return TRUE
 
 //////////////////////////////////////////////
@@ -225,6 +220,7 @@
 	scaling_cost = 9
 	requirements = list(101,101,60,30,30,25,20,15,10,10)
 	antag_cap = list("denominator" = 24)
+	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_HERETIC_SACRIFICE)
 
 
 /datum/dynamic_ruleset/roundstart/heretics/pre_execute(population)
@@ -554,7 +550,7 @@
 			log_dynamic("[ruletype] [name] discarded [M.name] from head revolutionary due to ineligibility.")
 	if(revolution.members.len)
 		revolution.update_objectives()
-		revolution.update_heads()
+		revolution.update_rev_heads()
 		SSshuttle.registerHostileEnvironment(revolution)
 		return TRUE
 	log_dynamic("[ruletype] [name] failed to get any eligible headrevs. Refunding [cost] threat.")
@@ -570,6 +566,10 @@
 		return
 
 	finished = winner
+
+	if(winner == REVOLUTION_VICTORY)
+		GLOB.revolutionary_win = TRUE
+
 	return RULESET_STOP_PROCESSING
 
 /// Checks for revhead loss conditions and other antag datums.
@@ -627,16 +627,17 @@
 
 /datum/dynamic_ruleset/roundstart/nuclear/clown_ops/pre_execute()
 	. = ..()
-	if(.)
-		var/obj/machinery/nuclearbomb/syndicate/syndicate_nuke = locate() in GLOB.nuke_list
-		if(syndicate_nuke)
-			var/turf/nuke_turf = get_turf(syndicate_nuke)
-			if(nuke_turf)
-				new /obj/machinery/nuclearbomb/syndicate/bananium(nuke_turf)
-				qdel(syndicate_nuke)
-		for(var/datum/mind/clowns in assigned)
-			clowns.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))
-			clowns.special_role = ROLE_CLOWN_OPERATIVE
+	if(!.)
+		return
+
+	var/list/nukes = SSmachines.get_machines_by_type(/obj/machinery/nuclearbomb/syndicate)
+	for(var/obj/machinery/nuclearbomb/syndicate/nuke as anything in nukes)
+		new /obj/machinery/nuclearbomb/syndicate/bananium(nuke.loc)
+		qdel(nuke)
+
+	for(var/datum/mind/clowns in assigned)
+		clowns.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))
+		clowns.special_role = ROLE_CLOWN_OPERATIVE
 
 //////////////////////////////////////////////
 //                                          //

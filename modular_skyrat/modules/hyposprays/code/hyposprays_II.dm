@@ -166,7 +166,7 @@
 	. = ..()
 	if(obj_flags & EMAGGED)
 		to_chat(user, "[src] happens to be already overcharged.")
-		return
+		return FALSE
 	//all these are 0
 	inject_wait = COMBAT_WAIT_INJECT
 	spray_wait = COMBAT_WAIT_SPRAY
@@ -218,7 +218,14 @@
 	if(injectee != user)
 		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!"), \
 						span_userdanger("[user] is trying to [fp_verb] you with [src]!"))
-	if(!do_after(user, inject_wait, injectee, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, user.zone_selected, penetrates)))
+	
+	var/selected_wait_time
+	if(target == user)
+		selected_wait_time = (mode == HYPO_INJECT) ? inject_self : spray_self
+	else
+		selected_wait_time = (mode == HYPO_INJECT) ? inject_wait : spray_wait
+			
+	if(!do_after(user, selected_wait_time, injectee, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, user.zone_selected, penetrates)))
 		return
 	if(!vial.reagents.total_volume)
 		return

@@ -1,11 +1,16 @@
 #define TESHARI_PUNCH_LOW 2 // Lower bound punch damage
 #define TESHARI_PUNCH_HIGH 6
+#define TESHARI_BURN_MODIFIER 1.25 // They take more damage from practically everything
+#define TESHARI_BRUTE_MODIFIER 1.2
 
 // teshari!
 /obj/item/bodypart/head/mutant/teshari
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_TESHARI
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
+	head_flags = HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
 /obj/item/bodypart/head/mutant/teshari/Initialize(mapload)
 	worn_ears_offset = new(
@@ -31,6 +36,8 @@
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_TESHARI
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 /obj/item/bodypart/chest/mutant/teshari/Initialize(mapload)
 	worn_back_offset = new(
@@ -52,6 +59,8 @@
 	limb_id = SPECIES_TESHARI
 	unarmed_damage_low = TESHARI_PUNCH_LOW
 	unarmed_damage_high = TESHARI_PUNCH_HIGH
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 
 /obj/item/bodypart/arm/right/mutant/teshari
@@ -60,6 +69,8 @@
 	limb_id = SPECIES_TESHARI
 	unarmed_damage_low = TESHARI_PUNCH_LOW
 	unarmed_damage_high = TESHARI_PUNCH_HIGH
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 
 /obj/item/bodypart/leg/left/mutant/teshari
@@ -67,22 +78,32 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_TESHARI
 	digitigrade_type = /obj/item/bodypart/leg/left/digitigrade/teshari
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 /obj/item/bodypart/leg/right/mutant/teshari
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_TESHARI
 	digitigrade_type = /obj/item/bodypart/leg/right/digitigrade/teshari
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 /obj/item/bodypart/leg/left/digitigrade/teshari
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	base_limb_id = SPECIES_TESHARI
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 /obj/item/bodypart/leg/right/digitigrade/teshari
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	base_limb_id = SPECIES_TESHARI
+	brute_modifier = TESHARI_BRUTE_MODIFIER
+	burn_modifier = TESHARI_BURN_MODIFIER
 
 #undef TESHARI_PUNCH_LOW
 #undef TESHARI_PUNCH_HIGH
+#undef TESHARI_BURN_MODIFIER
+#undef TESHARI_BRUTE_MODIFIER

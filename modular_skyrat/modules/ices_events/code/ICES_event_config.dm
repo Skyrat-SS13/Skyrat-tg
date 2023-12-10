@@ -69,7 +69,7 @@
 
 /datum/round_event_control/anomaly/anomaly_bluespace
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_dimensional
 	max_occurrences = 1
@@ -77,7 +77,7 @@
 
 /datum/round_event_control/anomaly/anomaly_ectoplasm
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_flux
 	max_occurrences = 1
@@ -153,7 +153,7 @@
  */
 /datum/round_event_control/camera_failure
 	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 /**
  * Carp Migration
@@ -167,7 +167,7 @@
  */
 /datum/round_event_control/cortical_borer
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Changeling
@@ -212,11 +212,11 @@
  */
 /datum/round_event_control/communications_blackout
 	max_occurrences = 2
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/processor_overload
 	max_occurrences = 2
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /**
  * Obsessed
@@ -255,6 +255,16 @@
 	intensity_restriction = TRUE
 
 /**
+ * Earthquakes
+ *
+ * Disabled: Yeah lol as if we'd run an event with the sole purpose of griefing the station
+ * with no way to prevent it. Nice try.
+ */
+/datum/round_event_control/earthquake
+	max_occurrences = 0
+
+
+/**
  * Electricity Events
  *
  * Combined weight: 32
@@ -286,7 +296,7 @@
  */
 /datum/round_event_control/gravity_generator_blackout
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /**
  * Grey Tide
@@ -326,7 +336,7 @@
  */
 /datum/round_event_control/mass_hallucination
 	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 /**
  * Meteors / Space Dust
@@ -366,7 +376,7 @@
 
 /datum/round_event_control/space_dust/major_dust
 	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /datum/round_event_control/sandstorm
@@ -402,7 +412,7 @@
  */
 /datum/round_event_control/nightmare
 	max_occurrences = 1
-	weight = MED_EVENT_FREQ
+	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Lone op
@@ -445,7 +455,7 @@
  */
 /datum/round_event_control/revenant
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Scrubber Clogs
@@ -533,11 +543,12 @@
 /**
  * Spess Vines
  *
- * Disabled: Needs rebalancing
+ *
  */
 /datum/round_event_control/spacevine
-	max_occurrences = 0
-	intensity_restriction = TRUE
+	max_occurrences = 2
+	weight = MED_EVENT_FREQ
+
 /**
  * Spiders
  *
@@ -565,7 +576,7 @@
  * Supermatter Surge
  */
 /datum/round_event_control/supermatter_surge
-	max_occurrences = 2
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
@@ -576,12 +587,6 @@
 /datum/round_event_control/tram_malfunction
 	max_occurrences = 2
 	weight = VERY_HIGH_EVENT_FREQ
-
-/**
- * Wall Fungus
- */
-/datum/round_event_control/wall_fungus
-	weight = MED_EVENT_FREQ
 
 /**
  * Wisdom Cow

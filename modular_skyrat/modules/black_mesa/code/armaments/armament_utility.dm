@@ -10,12 +10,12 @@
 	cost = 3
 
 /datum/armament_entry/hecu/utility/pouch
-	item_type = /obj/item/storage/bag/ammo
+	item_type = /obj/item/storage/pouch/ammo
 	max_purchase = 8
 	cost = 1
 
 /datum/armament_entry/hecu/utility/pouch_knives
-	item_type = /obj/item/storage/bag/ammo/marksman
+	item_type = /obj/item/storage/pouch/ammo/marksman
 	max_purchase = 4
 	cost = 3
 
@@ -57,7 +57,7 @@
 	cost = 1
 
 /datum/armament_entry/hecu/utility/suppressor
-	item_type = /obj/item/suppressor
+	item_type = /obj/item/suppressor/standard
 	max_purchase = 4
 	cost = 2
 
@@ -67,7 +67,7 @@
 	cost = 4
 
 /datum/armament_entry/hecu/utility/breaching_hammer //Mesa more like R6S amirite
-	item_type = /obj/item/melee/hammer
+	item_type = /obj/item/melee/breaching_hammer
 	max_purchase = 1
 	cost = 4
 

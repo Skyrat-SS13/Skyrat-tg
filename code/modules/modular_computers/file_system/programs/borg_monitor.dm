@@ -6,7 +6,7 @@
 	program_icon_state = "generic"
 	extended_desc = "This program allows for remote monitoring of station cyborgs."
 	requires_ntnet = TRUE
-	transfer_access = list(ACCESS_ROBOTICS)
+	download_access = list(ACCESS_ROBOTICS)
 	size = 5
 	tgui_id = "NtosCyborgRemoteMonitor"
 	program_icon = "project-diagram"
@@ -19,7 +19,7 @@
 	DL_source = null
 	return ..()
 
-/datum/computer_file/program/borg_monitor/kill_program()
+/datum/computer_file/program/borg_monitor/kill_program(mob/user)
 	loglist = null //Not everything is saved if you close an app
 	DL_source = null
 	DL_progress = 0
@@ -62,7 +62,6 @@
 			loglist.Insert(1,"System log of unit [DL_source.name]")
 		DL_progress = -1
 		DL_source = null
-		update_static_data_for_all_viewers()
 		return
 
 	DL_progress += 25
@@ -100,11 +99,9 @@
 		)
 		data["cyborgs"] += list(cyborg_data)
 		data["DL_progress"] = DL_progress
-	return data
 
-/datum/computer_file/program/borg_monitor/ui_static_data(mob/user)
-	var/list/data = list()
 	data["borglog"] = loglist
+
 	return data
 
 /datum/computer_file/program/borg_monitor/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
@@ -158,7 +155,7 @@
 	requires_ntnet = FALSE
 	available_on_ntnet = FALSE
 	available_on_syndinet = TRUE
-	transfer_access = list()
+	download_access = list()
 
 /datum/computer_file/program/borg_monitor/syndicate/evaluate_borg(mob/living/silicon/robot/R)
 	if(!is_valid_z_level(get_turf(computer), get_turf(R)))

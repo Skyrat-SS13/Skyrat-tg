@@ -40,7 +40,7 @@
 	femalescreamsounds = null
 
 /datum/species/plasmaman
-	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
+	screamsounds = list('sound/voice/plasmaman/plasmeme_scream_1.ogg', 'sound/voice/plasmaman/plasmeme_scream_2.ogg', 'sound/voice/plasmaman/plasmeme_scream_3.ogg')
 	femalescreamsounds = null
 
 /datum/species/vox
@@ -57,10 +57,6 @@
 
 /datum/species/zombie
 	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/zombie_scream.ogg')
-	femalescreamsounds = null
-
-/datum/species/tajaran
-	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/cat_scream.ogg')
 	femalescreamsounds = null
 
 /datum/species/lizard

@@ -33,6 +33,11 @@
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	can_be_held = TRUE
+	held_w_class = WEIGHT_CLASS_TINY
+	held_lh = 'icons/mob/inhands/animal_item_lefthand.dmi'
+	held_rh = 'icons/mob/inhands/animal_item_righthand.dmi'
+	worn_slot_flags = ITEM_SLOT_HEAD
+	head_icon = 'icons/mob/clothing/head/pets_head.dmi'
 	ai_controller = /datum/ai_controller/basic_controller/lizard
 
 	/// Typecache of things that we seek out to eat. Yummy.
@@ -45,12 +50,12 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	AddElement(/datum/element/pet_bonus, "sticks its tongue out contentedly!")
-	AddElement(/datum/element/basic_eating, 5, 0, null, edibles)
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, edibles)
+	AddElement(/datum/element/basic_eating, heal_amt = 5, food_types = edibles)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, typecacheof(edibles))
 
 /datum/ai_controller/basic_controller/lizard
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items(),
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/allow_items,
 	)
 
 	ai_traits = STOP_MOVING_WHEN_PULLED

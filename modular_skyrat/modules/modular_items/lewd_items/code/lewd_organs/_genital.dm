@@ -19,12 +19,13 @@
 /obj/item/organ/external/genital/proc/adjust_internal_fluid(amount)
 	internal_fluid_count = clamp(internal_fluid_count + amount, 0, internal_fluid_maximum)
 
-/// Tries to add the specified amount to the target reagent container. Keeps in mind internal_fluid_count.
-/obj/item/organ/external/genital/proc/transfer_internal_fluid(datum/reagents/reagent_container, attempt_amount)
-	if(!internal_fluid_datum || !internal_fluid_count || !internal_fluid_maximum || !reagent_container)
+/// Tries to add the specified amount to the target reagent container, or removes it if none are available. Keeps in mind internal_fluid_count.
+/obj/item/organ/external/genital/proc/transfer_internal_fluid(datum/reagents/reagent_container = null, attempt_amount)
+	if(!internal_fluid_datum || !internal_fluid_count || !internal_fluid_maximum)
 		return FALSE
 
 	attempt_amount = clamp(attempt_amount, 0, internal_fluid_count)
-	reagent_container.add_reagent(internal_fluid_datum, attempt_amount)
+	if(reagent_container)
+		reagent_container.add_reagent(internal_fluid_datum, attempt_amount)
 	internal_fluid_count -= attempt_amount
 

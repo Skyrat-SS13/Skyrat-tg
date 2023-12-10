@@ -11,11 +11,8 @@
 	desc = "It's a card with a magnetic strip attached to some circuitry."
 	name = "cryptographic sequencer" //SKYRAT COMMENT: Everyone knows what an emag is, both IC and OOC, they even make toy lookalikes.
 	icon_state = "emag"
-	inhand_icon_state = "card-id"
-	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
 	special_desc = "An specially modified ID card used to break machinery and disable safeties. Notoriously used by Syndicate agents." // Skyrat edit
 	slot_flags = ITEM_SLOT_ID
 	worn_icon_state = "emag"
@@ -39,46 +36,43 @@
 	icon_state = "hack_o_lantern"
 
 /obj/item/card/emagfake
-	desc = "It's a card with a magnetic strip attached to some circuitry." //SKYRAT EDIT
+	desc = "It's a card with a magnetic strip attached to some circuitry." //SKYRAT EDIT CHANGE
 	name = "cryptographic sequencer"
 	icon_state = "emag"
-	inhand_icon_state = "card-id"
 	slot_flags = ITEM_SLOT_ID
 	worn_icon_state = "emag"
-	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit. It's a toy, we're not hiding it.
-	special_desc = "Closer inspection shows that this card is a poorly made replica, with a \"DonkCo\" logo stamped on the back." // Skyrat edit
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // SKYRAT EDIT ADDITION - It's a toy, we're not hiding it.
+	special_desc = "Closer inspection shows that this card is a poorly made replica, with a \"DonkCo\" logo stamped on the back." // SKYRAT EDIT ADDITION
 
 /obj/item/card/emagfake/attack_self(mob/user) //for assistants with balls of plasteel
 	if(Adjacent(user))
 		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [name]."), span_notice("You show [src]."))
 	add_fingerprint(user)
 
-/obj/item/card/emagfake/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if (!proximity_flag)
-		return
-	. |= AFTERATTACK_PROCESSED_ITEM
+/obj/item/card/emagfake/interact_with_atom(atom/interacting_with, mob/living/user)
 	playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE)
+	return ITEM_INTERACT_SKIP_TO_ATTACK // So it does the attack animation.
 
 /obj/item/card/emag/Initialize(mapload)
 	. = ..()
-	type_blacklist = list(typesof(/obj/machinery/door/airlock) + typesof(/obj/machinery/door/window/) +  typesof(/obj/machinery/door/firedoor) - typesof(/obj/machinery/door/window/tram/)) //list of all typepaths that require a specialized emag to hack.
+	type_blacklist = list(typesof(/obj/machinery/door/airlock) + typesof(/obj/machinery/door/window/) +  typesof(/obj/machinery/door/firedoor) - typesof(/obj/machinery/door/airlock/tram)) //list of all typepaths that require a specialized emag to hack.
 
-/obj/item/card/emag/attack()
-	return
+/obj/item/card/emag/interact_with_atom(atom/interacting_with, mob/living/user)
+	if(!can_emag(interacting_with, user))
+		return ITEM_INTERACT_BLOCKING
+	log_combat(user, interacting_with, "attempted to emag")
+	interacting_with.emag_act(user, src)
+	return ITEM_INTERACT_SUCCESS
 
-/obj/item/card/emag/afterattack(atom/target, mob/user, proximity)
+/obj/item/card/emag/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	var/atom/A = target
-	if(!proximity && prox_check)
+	// Proximity based emagging is handled by above
+	// This is only for ranged emagging
+	if(proximity_flag || prox_check)
 		return
+
 	. |= AFTERATTACK_PROCESSED_ITEM
-	if(!can_emag(target, user))
-		return
-	log_combat(user, A, "attempted to emag")
-	A.emag_act(user, src)
+	interact_with_atom(target, user)
 
 /obj/item/card/emag/proc/can_emag(atom/target, mob/user)
 	for (var/subtypelist in type_blacklist)
@@ -91,11 +85,11 @@
  * DOORMAG
  */
 /obj/item/card/emag/doorjack
-	desc = "This dated-looking ID card has been obviously and illegally modified with extra circuitry. Resembles the infamous \"emag\"."
+	desc = "This dated-looking ID card has been obviously and illegally modified with extra circuitry. Resembles the infamous \"emag\"." //SKYRAT EDIT CHANGE
 	name = "modified ID card"
 	icon_state = "doorjack"
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell. Used often by Syndicate agents."// Skyrat edit
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
+	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell. Used often by Syndicate agents." // SKYRAT EDIT ADDITION
 	worn_icon_state = "doorjack"
 	var/type_whitelist //List of types
 	var/charges = 3

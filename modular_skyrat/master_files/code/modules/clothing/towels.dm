@@ -136,7 +136,7 @@
 
 	var/cleaning_themselves = target_mob == user
 
-	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
+	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you"] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
 
 	if(!cleaning_themselves)
 		to_chat(user, span_notice("You start drying [target_mob] up with [src]."))
@@ -449,7 +449,7 @@
 	if(!amount)
 		return
 
-	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transfered_by = user)
+	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transferred_by = user)
 
 	if(loss_factor && reagents.total_volume)
 		reagents.remove_any(amount * loss_factor)
@@ -483,7 +483,7 @@
 	if(!amount)
 		return
 
-	source.trans_to(reagents, amount, no_react = TRUE, transfered_by = user)
+	source.trans_to(reagents, amount, no_react = TRUE, transferred_by = user)
 
 	if(!wet)
 		set_wet(TRUE, !make_used || shape == TOWEL_USED)

@@ -154,3 +154,114 @@
 #undef PRESS_KEYS
 #undef EXTEND_ANTENNA
 #undef SLAP_SIDE
+
+// Donation reward for SQNZTB
+/obj/vehicle/ridden/wheelchair/hardlight
+	name = "hardlight wheelchair"
+	desc = "A wheelchair made out of hardlight, propulsed by miniaturized bluespace technology."
+	alpha = 150 // Just to help differentiate it from a real wheelchair, and to show that it's a bit squishier.
+	max_integrity = 10 //standard wheelchairs have 100, motorized 150
+	/// The projector associated with this wheelchair.
+	/// Only used so that we can remove this wheelchair from it when it gets destroyed.
+	var/obj/item/holosign_creator/projector = null
+	foldabletype = null
+
+
+/obj/vehicle/ridden/wheelchair/hardlight/Initialize(mapload, source_projector)
+	. = ..()
+	if(source_projector)
+		projector = source_projector
+		LAZYADD(projector.signs, src)
+
+
+/obj/vehicle/ridden/wheelchair/hardlight/Destroy()
+	if(projector)
+		LAZYREMOVE(projector.signs, src)
+		projector = null
+
+	return ..()
+
+
+/obj/vehicle/ridden/wheelchair/hardlight/post_unbuckle_mob()
+	. = ..()
+
+	visible_message(span_notice("[src] flickers and disappears as the hardlight emitters disengage."))
+	qdel(src)
+
+
+/obj/vehicle/ridden/wheelchair/hardlight/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/wheelchair/hardlight)
+
+
+// Custom riding component for this wheelchair, so that it behaves properly.
+/datum/component/riding/vehicle/wheelchair/hardlight/driver_move(obj/vehicle/vehicle_parent, mob/living/user, direction)
+	var/delay_multiplier = 6.7 // magic number from wheelchair code
+	//setting speed divisor to 3. original formula from the motorized chair code is:
+	//vehicle_move_delay = round(CONFIG_GET(number/movedelay/run_delay) * delay_multiplier) / speed
+	//this makes it slightly slower than a motorized wheelchair with t1 parts.
+	vehicle_move_delay = round(CONFIG_GET(number/movedelay/run_delay) * delay_multiplier) / 3
+	return ..()
+
+
+// The actual item they will be using.
+/obj/item/holosign_creator/hardlight_wheelchair
+	name = "hardlight wheelchair emitter"
+	desc = "An emitter which projects a ridable but fragile wheelchair made out of hardlight."
+	icon_state = "signmaker_med"
+	holosign_type = /obj/vehicle/ridden/wheelchair/hardlight
+	max_signs = 1
+
+
+/obj/item/holosign_creator/hardlight_wheelchair/examine(mob/user)
+	. = ..()
+	. += span_tinynoticeital("\n<i>There's something etched on the underside of the handle, you can look again to take a closer look...</i>")
+
+
+/obj/item/holosign_creator/hardlight_wheelchair/examine_more(mob/user)
+	. = ..()
+	. += span_notice("<i>Etched underneath the handle is the following message:</i>\n")
+	. += span_smallnoticeital("\"I told you I would find a way to make it all easier.\" - A.H.")
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone
+	name = "Cat-Ear Headphones"
+	desc = "Merch of their Electric Guitarist Demi Galgan from the Singularity Shredders. It's heavily customizable and even comes with a holographic tail!"
+	icon_state = "catear_headphone"
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi'
+	lefthand_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone_inhand.dmi'
+	righthand_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone_inhand.dmi'
+	inhand_icon_state = "catear_headphone"
+	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_HEAD | ITEM_SLOT_NECK
+	var/catTailToggled = FALSE
+	instrument_range = 1
+	greyscale_colors = "#FFFFFF#FFFFFF"
+	greyscale_config = /datum/greyscale_config/catear_headphone
+	greyscale_config_worn = /datum/greyscale_config/catear_headphone/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/catear_headphone_inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/catear_headphone_inhand_right
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/gags_recolorable)
+	update_icon(UPDATE_OVERLAYS)
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance('modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi', "catearphones_[song?.playing ? "on" : "off"]_emissive", src, alpha = src.alpha)
+		if(catTailToggled)
+			. += emissive_appearance('modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi', "catearphones_tail_on_emissive", src, alpha = src.alpha)
+			icon_state = "catear_headphone_tail[song?.playing ? "_on" : null]"
+		else
+			icon_state = "catear_headphone[song?.playing ? "_on" : null]"
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/AltClick(mob/user)
+	. = ..()
+	catTailToggled = !catTailToggled
+	user.update_worn_head()
+	update_icon(UPDATE_OVERLAYS)
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/update_overlays()
+	. = ..()
+	. += emissive_appearance('modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi', "catearphones_obj_lights_emissive", src, alpha = src.alpha)

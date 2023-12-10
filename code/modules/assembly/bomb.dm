@@ -1,6 +1,6 @@
 /obj/item/onetankbomb
 	name = "bomb"
-	icon = 'icons/obj/atmospherics/tank.dmi'
+	icon = 'icons/obj/canisters.dmi'
 	inhand_icon_state = "assembly"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
@@ -8,7 +8,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 2
 	throw_range = 4
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	var/status = FALSE   //0 - not readied //1 - bomb finished with welder
 	var/obj/item/assembly_holder/bombassembly = null   //The first part of the bomb is an assembly holder, holding an igniter+some device
 	var/obj/item/tank/bombtank = null //the second part of the bomb is a plasma tank
@@ -59,7 +59,7 @@
 	if(status)
 		to_chat(user, span_warning("[bombtank] already has a pressure hole!"))
 		return
-	if(!I.tool_start_check(user, amount=0))
+	if(!I.tool_start_check(user, amount=1))
 		return
 	if(I.use_tool(src, user, 0, volume=40))
 		status = TRUE
@@ -122,7 +122,7 @@
 	if(LAZYLEN(assembly.assemblies) == igniter_count)
 		return
 
-	if((src in user.get_equipped_items(TRUE)) && !user.canUnEquip(src))
+	if((src in user.get_equipped_items(include_pockets = TRUE, include_accessories = TRUE)) && !user.canUnEquip(src))
 		to_chat(user, span_warning("[src] is stuck to you!"))
 		return
 

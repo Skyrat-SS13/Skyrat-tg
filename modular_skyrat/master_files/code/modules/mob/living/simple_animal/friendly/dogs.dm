@@ -14,9 +14,21 @@
 	gender = MALE
 	can_be_held = FALSE
 	gold_core_spawnable = FRIENDLY_SPAWN
+	///can this mob breed?
+	var/can_breed = TRUE
 
 	/// List of possible dialogue options. This is both used by the AI and as an override when a sentient Markus speaks.
 	var/static/list/markus_speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burg?")
+
+/mob/living/basic/pet/dog/markus/Initialize(mapload)
+	. = ..()
+	if(!can_breed)
+		return
+	AddComponent(\
+		/datum/component/breed,\
+		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
+		baby_path = /mob/living/basic/pet/dog/corgi/puppy,\
+	) // no mixed breed puppies sadly
 
 /mob/living/basic/pet/dog/markus/treat_message(message)
 	if(client)
@@ -67,10 +79,11 @@
 	)
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	gold_core_spawnable = NO_SPAWN
-	nofur = TRUE
+	can_be_shaved = FALSE
 	ai_controller = /datum/ai_controller/basic_controller/dog/borgi
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 0
+	can_breed = FALSE
 
 	// These lights enable when E-N is emagged
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
@@ -99,7 +112,7 @@
 
 	// Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(src, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hitby))
 	// For traitor objectives
 	RegisterSignal(src, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
@@ -127,7 +140,7 @@
 
 	borgi.set_movement_target(target)
 	borgi.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
-	borgi.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETTING_DATUM)
+	borgi.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETING_STRATEGY)
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
 	SIGNAL_HANDLER
@@ -157,18 +170,21 @@
 
 	harass_target(thrown_by)
 
-/mob/living/basic/pet/dog/corgi/borgi/bullet_act(obj/projectile/proj)
+/mob/living/basic/pet/dog/corgi/borgi/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	. = ..()
 
-	if(!istype(proj, /obj/projectile/beam) && !istype(proj, /obj/projectile/bullet))
+	if(. != BULLET_ACT_HIT)
 		return
 
-	var/mob/living/carbon/human/target = proj.firer
-	if(proj.damage >= 10)
-		if(proj.damage_type != BRUTE && proj.damage_type != BURN)
+	if(!istype(hitting_projectile, /obj/projectile/beam) && !istype(hitting_projectile, /obj/projectile/bullet))
+		return
+
+	var/mob/living/carbon/human/target = hitting_projectile.firer
+	if(hitting_projectile.damage >= 10)
+		if(hitting_projectile.damage_type != BRUTE && hitting_projectile.damage_type != BURN)
 			return
 
-		adjustBruteLoss(proj.damage)
+		adjustBruteLoss(hitting_projectile.damage)
 		if(!isliving(target) || health <= 0)
 			return
 
@@ -185,13 +201,13 @@
 	var/obj/projectile/fired_projectile
 	var/fire_sound
 	if(harmless)
-		fired_projectile = new /obj/projectile/bullet/reusable/foam_dart(loc)
+		fired_projectile = new /obj/item/ammo_casing/foam_dart(loc)
 		fired_projectile.icon = 'icons/obj/weapons/guns/toy.dmi'
 		fired_projectile.icon_state = "foamdart_proj"
 		fire_sound = 'sound/items/syringeproj.ogg'
 	else
 		fired_projectile = new /obj/projectile/beam(loc)
-		fired_projectile.icon = 'icons/effects/genetics.dmi'
+		fired_projectile.icon = 'icons/mob/effects/genetics.dmi'
 		fired_projectile.icon_state = "eyelasers"
 		fire_sound = 'sound/weapons/taser.ogg'
 
@@ -215,7 +231,7 @@
 		return FALSE
 
 	UnregisterSignal(src, COMSIG_ATOM_ATTACK_HAND)
-	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(src, COMSIG_ATOM_ATTACKBY)
 	UnregisterSignal(src, COMSIG_ATOM_HITBY)
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 
@@ -227,7 +243,7 @@
 	SIGNAL_HANDLER
 
 	if(emagged)
-		return
+		return FALSE
 
 	emagged = TRUE
 
@@ -239,8 +255,14 @@
 	investigate_log("has been gibbed due to being emagged by [user].", INVESTIGATE_DEATHS)
 	visible_message(span_boldwarning("[user] swipes a card through [target]!"), span_notice("You overload [target]s internal reactor..."))
 
-	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
+	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!",
+		source = target,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Borgi Emagged",
+	)
 	addtimer(CALLBACK(src, PROC_REF(explode_imminent)), 50 SECONDS)
+
+	return TRUE
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/explode_imminent()
 	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
@@ -258,7 +280,7 @@
 		BB_DOG_HARASS_HARM = TRUE,
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
 		BB_DOG_IS_SLOW = TRUE,
-		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_PET_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	planning_subtrees = list(
@@ -288,7 +310,7 @@
 		if(!SPT_PROB(chance, seconds_per_tick))
 			return
 
-		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETING_STRATEGY, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 		return
 
 	// Attack.

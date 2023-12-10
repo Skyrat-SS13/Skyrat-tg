@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 /datum/round_event_control/spacevine
 	name = "Space Vines"
 	typepath = /datum/round_event/spacevine
@@ -112,4 +111,3 @@
 
 /datum/event_admin_setup/input_number/spacevine_production/apply_to_event(datum/round_event/spacevine/event)
 	event.production = chosen_value
-*/

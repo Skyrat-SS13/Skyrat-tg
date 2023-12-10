@@ -2,7 +2,7 @@
 GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	"datum_flags",
 	"_datum_components",
-	"_comp_lookup",
+	"_listen_lookup",
 	"tgui_shared_states",
 	"gc_destroyed",
 	"_active_timers",

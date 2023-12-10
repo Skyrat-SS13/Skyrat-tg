@@ -47,37 +47,63 @@
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "backpack_security_black"
+	inhand_icon_state = "backpack_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "backpack_security_black",
-			RESKIN_WORN_ICON_STATE = "backpack_security_black"
+			RESKIN_WORN_ICON_STATE = "backpack_security_black",
+			RESKIN_INHAND_STATE = "backpack_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "backpack_security_white",
-			RESKIN_WORN_ICON_STATE = "backpack_security_white"
+			RESKIN_WORN_ICON_STATE = "backpack_security_white",
+			RESKIN_INHAND_STATE = "backpack_security_white"
 		),
 	)
 
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "satchel_security"
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
+	icon_state = "satchel_security_black"
+	inhand_icon_state = "satchel_security_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "satchel_security_black",
+			RESKIN_WORN_ICON_STATE = "satchel_security_black",
+			RESKIN_INHAND_STATE = "satchel_security_black"
+		),
+		"White Variant" = list(
+			RESKIN_ICON_STATE = "satchel_security_white",
+			RESKIN_WORN_ICON_STATE = "satchel_security_white",
+			RESKIN_INHAND_STATE = "satchel_security_white"
+		),
+	)
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_security_black"
+	inhand_icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "duffel_security_black",
-			RESKIN_WORN_ICON_STATE = "duffel_security_black"
+			RESKIN_WORN_ICON_STATE = "duffel_security_black",
+			RESKIN_INHAND_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "duffel_security_white",
-			RESKIN_WORN_ICON_STATE = "duffel_security_white"
+			RESKIN_WORN_ICON_STATE = "duffel_security_white",
+			RESKIN_INHAND_STATE = "duffel_security_white"
 		),
 	)
 
@@ -228,6 +254,7 @@
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
 
+
 //Beret replacement
 /obj/item/clothing/head/security_garrison
 	name = "security garrison cap"
@@ -236,7 +263,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "garrison_black"
 	uses_advanced_reskins = TRUE
-	armor_type = /datum/armor/head_security_garrison
+	armor_type = /datum/armor/head_helmet
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
@@ -250,17 +277,6 @@
 		),
 	)
 
-//Normal Cap
-
-/datum/armor/head_security_garrison
-	melee = 30
-	bullet = 25
-	laser = 25
-	energy = 35
-	bomb = 25
-	fire = 20
-	acid = 50
-
 /obj/item/clothing/head/security_cap
 	name = "security cap"
 	desc = "A robust cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -268,7 +284,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
 	uses_advanced_reskins = TRUE
-	armor_type = /datum/armor/head_security_cap
+	armor_type = /datum/armor/head_helmet
 	strip_delay = 60
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -286,15 +302,6 @@
 			RESKIN_WORN_ICON_STATE = "security_cap_white"
 		),
 	)
-
-/datum/armor/head_security_cap
-	melee = 30
-	bullet = 25
-	laser = 25
-	energy = 35
-	bomb = 25
-	fire = 20
-	acid = 50
 
 /obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -454,10 +461,6 @@
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
-		"Peacekeeper Variant" = list(
-			RESKIN_ICON_STATE = "peacekeeper_white",
-			RESKIN_WORN_ICON_STATE = "peacekeeper_white"
-		)
 	)
 
 /obj/item/clothing/suit/armor/hos
@@ -490,10 +493,6 @@
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
 	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "vest_bulletproof"
-	body_parts_covered = CHEST|GROIN|ARMS //Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Riot Armor
@@ -543,9 +542,11 @@
 */
 //Officer
 /obj/item/clothing/under/rank/security/officer
+	desc = "A tactical security uniform for officers, complete with a Lopland belt buckle."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "security_black"
+	alt_covers_chest = TRUE
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -561,6 +562,18 @@
 			RESKIN_WORN_ICON_STATE = "security_white"
 		),
 	)
+
+/obj/item/clothing/under/rank/security/officer/formal
+	unique_reskin = null // prevents you from losing the unique sprite
+
+/obj/item/clothing/under/rank/security/officer/skirt
+	name = "security battle dress"
+	desc = "An asymmetrical, unisex uniform with the legs replaced by a utility skirt."
+	worn_icon_state = "security_skirt"
+	icon_state = "security_skirt"
+	uses_advanced_reskins = FALSE
+	unique_reskin = null
+	alt_covers_chest = FALSE
 
 //Warden
 /obj/item/clothing/under/rank/security/warden
@@ -620,21 +633,16 @@
 //
 // This code overrides security's jumpskirt preference, as we're not going to be giving them jumpskirts
 //
-/datum/outfit/job/security/pre_equip(mob/living/carbon/human/affected_mob)
-	if(affected_mob.jumpsuit_style == PREF_SKIRT)
-		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
-		affected_mob.jumpsuit_style = PREF_SUIT
-	. = ..()
 
 /datum/outfit/job/hos/pre_equip(mob/living/carbon/human/affected_mob)
 	if(affected_mob.jumpsuit_style == PREF_SKIRT)
-		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		to_chat(affected_mob, span_alertwarning("Lopland Head of Security uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
 		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
 
 /datum/outfit/job/warden/pre_equip(mob/living/carbon/human/affected_mob)
 	if(affected_mob.jumpsuit_style == PREF_SKIRT)
-		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		to_chat(affected_mob, span_alertwarning("Lopland Warden uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
 		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
 
@@ -738,7 +746,7 @@
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/ammo_box/c38, // Revolver speedloaders.
 		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a762,
+		/obj/item/ammo_box/strilka310,
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/ballistic/revolver,
@@ -746,6 +754,8 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
 		))
 
 /obj/item/storage/belt/holster/detective
@@ -761,7 +771,7 @@
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/ammo_box/c38, // Revolver speedloaders.
 		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a762,
+		/obj/item/ammo_box/strilka310,
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/ballistic/revolver,
@@ -769,8 +779,27 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
 		))
 
+/obj/item/storage/belt/holster/energy/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 2
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.set_holdable(list(
+		/obj/item/gun/energy/e_gun/mini,
+		/obj/item/gun/energy/disabler,
+		/obj/item/gun/energy/dueling,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/laser/thermal,
+		/obj/item/gun/energy/recharge/ebow,
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_thrower,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery,
+	))
 /*
 *	HEAD
 */

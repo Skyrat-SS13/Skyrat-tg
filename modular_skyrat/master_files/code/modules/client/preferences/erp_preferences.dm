@@ -61,6 +61,10 @@
 		target.pain = 0
 		target.pleasure = 0
 
+/// Sounds from interaction menu and stimuli
+/datum/preference/toggle/erp/sounds
+	savefile_key = "erp_sounds_pref"
+
 /datum/preference/toggle/erp/sex_toy
 	savefile_key = "sextoy_pref"
 
@@ -81,6 +85,9 @@
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
+
+/datum/preference/toggle/erp/sex_toy_sounds
+	savefile_key = "sextoy_sounds_pref"
 
 /datum/preference/toggle/erp/bimbofication
 	savefile_key = "bimbofication_pref"

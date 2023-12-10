@@ -1,21 +1,13 @@
 /datum/species/skrell
 	name = "Skrell"
 	id = SPECIES_SKRELL
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		NO_SLIP_WHEN_WALKING
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	brutemod = 1.70
-	burnmod = 0.60
 	exotic_blood = /datum/reagent/copper
 	bodytemp_normal = (BODYTEMP_NORMAL + 70)
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD
@@ -23,11 +15,7 @@
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	toxic_food = DAIRY | MEAT
-	disliked_food = RAW | CLOTH
-	liked_food = TOXIC | FRUIT | VEGETABLES
-	payday_modifier = 0.75
-	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	eyes_icon = 'modular_skyrat/modules/organs/icons/skrell_eyes.dmi'
 	mutantbrain = /obj/item/organ/internal/brain/skrell
@@ -45,13 +33,19 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/skrell,
 	)
 
+/datum/species/skrell/get_default_mutant_bodyparts()
+	return list(
+		"skrell_hair" = list("Male", TRUE),
+	)
+
 /datum/species/skrell/get_species_description()
 	return placeholder_description
 
 /datum/species/skrell/get_species_lore()
 	return list(placeholder_lore)
 
-/datum/species/skrell/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/skrell/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/random = rand(1,6)
 	//Choose from a range of green-blue colors
@@ -68,9 +62,10 @@
 			main_color = "#22BBFF"
 		if(6)
 			main_color = "#2266FF"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = main_color
-	human_mob.dna.features["mcolor3"] = main_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = main_color
+	features["mcolor3"] = main_color
+	return features
 
 /datum/species/skrell/prepare_human_for_preview(mob/living/carbon/human/skrell)
 	var/skrell_color = "#22BBFF"
@@ -108,6 +103,9 @@
 		/datum/language/nekomimetic,
 		/datum/language/skrell,
 	))
+	liked_foodtypes = TOXIC | FRUIT | VEGETABLES
+	disliked_foodtypes = RAW | CLOTH
+	toxic_foodtypes = DAIRY | MEAT
 
 /obj/item/organ/internal/tongue/skrell/get_possible_languages()
 	return languages_possible_skrell

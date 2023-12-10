@@ -10,6 +10,10 @@
 	///Distance we can teleport someone passively
 	var/teleport_distance = 4
 
+/obj/effect/anomaly/bluespace/Initialize(mapload, new_lifespan, drops_core)
+	. = ..()
+	apply_wibbly_filters(src)
+
 /obj/effect/anomaly/bluespace/anomalyEffect()
 	..()
 	for(var/mob/living/M in range(teleport_range,src))
@@ -41,7 +45,7 @@
 	var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
 
 	playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES) //SKYRAT EDIT CHANGE - ANNOUNCER
+	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_TRANSLOCATION) //SKYRAT EDIT CHANGE - ANNOUNCER
 
 	var/list/flashers = list()
 	for(var/mob/living/carbon/C in viewers(TO, null))
@@ -98,4 +102,3 @@
 
 	var/mob/living/living = bumpee
 	living.apply_status_effect(/datum/status_effect/teleport_madness)
-

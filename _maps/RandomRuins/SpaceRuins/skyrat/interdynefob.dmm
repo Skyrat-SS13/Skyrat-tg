@@ -14,20 +14,6 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/interdynefob/mod_locker,
-/obj/item/mod/module/stealth,
-/obj/item/mod/module/projectile_dampener{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/mod/module/pepper_shoulders,
-/obj/item/mod/module/criminalcapture{
-	pixel_x = -3;
-	pixel_y = -5
-	},
-/obj/item/mod/module/visor/night,
-/obj/item/screwdriver/nuke{
-	pixel_y = -2
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "ae" = (
@@ -156,7 +142,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "aB" = (
-/obj/machinery/vending/imported/tizirian,
+/obj/machinery/vending/imported/tiziran,
 /obj/effect/turf_decal/tile/bar/opposingcorners{
 	dir = 8
 	},
@@ -349,31 +335,14 @@
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "bq" = (
-/obj/item/storage/belt/security/full,
-/obj/item/radio/headset/interdyne,
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
-/obj/item/storage/belt/security/webbing/ds,
-/obj/item/clothing/head/beret/sec/syndicate,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
-	},
-/obj/item/clothing/accessory/armband{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "brig officer armband"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/interdynefob/brig_officer_locker,
-/obj/item/clothing/mask/gas/syndicate/ds,
-/obj/item/clothing/suit/toggle/jacket/sec/old{
-	name = "brig officer jacket"
-	},
-/obj/item/clothing/mask/gas/sechailer/syndicate,
-/obj/item/gun/energy/disabler,
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec,
-/obj/item/clothing/glasses/hud/security/sunglasses/redsec,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "bs" = (
@@ -773,20 +742,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "cW" = (
-/obj/item/gun/energy/recharge/kinetic_accelerator,
-/obj/item/storage/bag/ore,
-/obj/item/mining_scanner,
 /obj/structure/closet/secure_closet/interdynefob/mining_locker,
-/obj/item/storage/belt/mining/alt,
-/obj/item/clothing/under/syndicate/skyrat/overalls{
-	pixel_y = -2
-	},
-/obj/item/storage/backpack/satchel/explorer,
-/obj/item/storage/backpack/explorer,
-/obj/item/clothing/accessory/armband/cargo{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "mining officer armband"
-	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "cY" = (
@@ -873,7 +829,8 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "dy" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "interdynefobn2";
 	dir = 4
 	},
 /turf/open/floor/engine/n2,
@@ -1054,9 +1011,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/personal{
-	icon_state = "cabinet"
-	},
+/obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/under/misc/syndicate_souvenir{
 	has_sensor = 0;
 	pixel_y = -4
@@ -1175,8 +1130,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/structure/table,
-/obj/item/stack/sheet/mineral/plastitanium,
-/obj/item/stack/sheet/plastitaniumglass,
+/obj/item/stack/sheet/plasteel/twenty{
+	pixel_x = -2
+	},
+/obj/item/stack/sheet/mineral/titanium/fifty{
+	amount = 20;
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eO" = (
@@ -1291,7 +1252,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "fd" = (
-/mob/living/simple_animal/bot/medbot/stationary{
+/mob/living/basic/bot/medbot/stationary{
 	faction = list("Syndicate");
 	maints_access_required = list("syndicate");
 	name = "Insurgent Care";
@@ -1930,6 +1891,8 @@
 /obj/effect/turf_decal/trimline/dark_blue/filled/line,
 /obj/effect/turf_decal/siding/dark,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/table/glass,
+/obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced/unzipped,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "hZ" = (
@@ -2037,7 +2000,7 @@
 	pixel_x = 10;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/condiment/quality_oil{
+/obj/item/reagent_containers/condiment/olive_oil{
 	pixel_x = 3;
 	pixel_y = -2
 	},
@@ -2321,7 +2284,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "jD" = (
-/obj/item/storage/secure/briefcase/white{
+/obj/item/storage/briefcase/secure/white{
 	pixel_y = 13
 	},
 /turf/open/floor/wood/large,
@@ -2401,21 +2364,10 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "jW" = (
 /obj/structure/closet/secure_closet/interdynefob/robotics,
-/obj/item/clothing/suit/hooded/techpriest,
-/obj/item/clothing/suit/toggle/labcoat/roboticist{
-	pixel_y = 3
-	},
-/obj/item/clothing/under/syndicate/skyrat/overalls/skirt,
-/obj/item/clothing/under/syndicate/skyrat/overalls{
-	pixel_y = -2
-	},
-/obj/item/clothing/glasses/hud/ar/aviator/diagnostic,
-/obj/item/clothing/glasses/hud/diagnostic,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/dark,
-/obj/item/clothing/suit/hooded/wintercoat/science/robotics,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -2654,32 +2606,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "lg" = (
-/obj/item/card/id/advanced/chameleon/black,
-/obj/item/card/id/advanced/chameleon/black,
-/obj/item/card/id/advanced/chameleon/black,
 /obj/structure/closet/secure_closet/interdynefob/cl_locker,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
-/obj/item/language_manual/codespeak_manual/unlimited,
-/obj/item/clothing/under/syndicate/skyrat/baseball,
-/obj/item/clothing/under/rank/captain/skyrat/utility/syndicate,
-/obj/item/clothing/under/suit/skyrat/helltaker{
-	has_sensor = 0;
-	random_sensor = 0
-	},
-/obj/item/clothing/neck/chaplain/black{
-	desc = "An unique cloak that shimmers with the Corporate Liaison's emblem.";
-	name = "corporate liaison's cloak"
-	},
-/obj/item/binoculars,
-/obj/item/radio/headset/interdyne/command,
-/obj/item/clothing/head/hats/hos/beret/syndicate,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/encryptionkey/headset_syndicate/interdyne,
-/obj/item/encryptionkey/headset_syndicate/interdyne,
-/obj/item/encryptionkey/headset_syndicate/interdyne,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "li" = (
@@ -3461,7 +3392,7 @@
 	faction = list("Syndicate","neutral")
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
+/area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "oK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -3781,15 +3712,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"qa" = (
-/obj/machinery/griddle,
-/obj/effect/turf_decal/siding/dark{
-	dir = 1
-	},
-/turf/open/floor/iron/kitchen{
-	dir = 4
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "qc" = (
 /obj/structure/bed/double{
 	dir = 1
@@ -3854,9 +3776,7 @@
 	has_sensor = 0;
 	random_sensor = 0
 	},
-/obj/structure/closet/secure_closet/personal{
-	icon_state = "cabinet"
-	},
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "qt" = (
@@ -4095,9 +4015,7 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "rj" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
@@ -4453,10 +4371,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "sZ" = (
-/obj/machinery/oven,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
+/obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4649,14 +4567,15 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/light/cold/directional/west,
 /obj/item/seeds/tobacco,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/obj/item/seeds/korta_nut,
 /obj/item/reagent_containers/cup/watering_can,
 /obj/item/cultivator,
 /obj/item/plant_analyzer,
 /obj/item/secateurs,
 /obj/item/shovel/spade,
-/obj/effect/turf_decal/siding/dark/corner{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "tT" = (
@@ -4955,22 +4874,10 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "vx" = (
 /obj/structure/closet/secure_closet/interdynefob/sa_locker,
-/obj/item/clothing/head/hats/hos/cap/syndicate,
-/obj/item/clothing/head/hats/hos/beret/syndicate,
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate,
-/obj/item/clothing/under/rank/captain/skyrat/utility/syndicate,
-/obj/item/radio/headset/interdyne/command,
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/ammo_box/magazine/m9mm_aps,
-/obj/item/clothing/accessory/medal/gold{
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of an Admiral to the Sothran Syndicate, and their undisputable authority over their crew.";
-	name = "medal of admiralty"
-	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "vA" = (
@@ -5258,8 +5165,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "xk" = (
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
-	dir = 8;
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/table/wood,
 /turf/open/floor/wood/tile,
@@ -5377,7 +5283,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "yb" = (
 /obj/effect/turf_decal/stripes/red/corner,
-/mob/living/simple_animal/pet/cat/kitten{
+/mob/living/basic/pet/cat/kitten{
 	desc = "What appears to be a single-celled organism with a pronounced low-level intelligence.";
 	name = "Murder-Mittens"
 	},
@@ -5912,9 +5818,7 @@
 	dir = 4
 	},
 /obj/item/clothing/under/syndicate/skyrat/baseball,
-/obj/structure/closet/secure_closet/personal{
-	icon_state = "cabinet"
-	},
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "AC" = (
@@ -5929,43 +5833,7 @@
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "AG" = (
-/obj/item/ammo_box/c9mm{
-	pixel_x = -2
-	},
-/obj/item/ammo_box/c9mm{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/ammo_box/magazine/m9mm,
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/ammo_box/advanced/s12gauge{
-	pixel_x = 9;
-	pixel_y = -10
-	},
-/obj/item/ammo_box/advanced/s12gauge{
-	pixel_x = 9;
-	pixel_y = -5
-	},
-/obj/item/ammo_box/advanced/s12gauge/rubber{
-	pixel_x = -9;
-	pixel_y = -10
-	},
-/obj/item/ammo_box/advanced/s12gauge/rubber{
-	pixel_x = -9;
-	pixel_y = -5
-	},
-/obj/structure/closet/secure_closet/interdynefob/armory_gear_locker,
+/obj/structure/closet/secure_closet/interdynefob/munitions_locker,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
@@ -6013,9 +5881,7 @@
 	name = "Interrogation Room shutters control";
 	req_access = list("syndicate")
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
+/obj/item/kirbyplants/organic/plant21,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "AX" = (
@@ -6055,7 +5921,7 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/red/directional/north,
-/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/folded_navigation_gigabeacon,
 /obj/structure/frame/machine{
 	anchored = 1;
 	icon_state = "box_1";
@@ -6358,6 +6224,10 @@
 "CH" = (
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
+"CJ" = (
+/obj/machinery/oven/range,
+/turf/open/floor/iron/white/textured_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "CS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -6733,7 +6603,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "EC" = (
-/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/item/grenade/barrier{
 	pixel_y = 10
 	},
@@ -6972,9 +6841,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "FD" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
+/obj/item/kirbyplants/organic/plant21,
 /obj/machinery/button/door/directional/north{
 	desc = "Keep out the paperwork.";
 	id = "scorpliaison";
@@ -7015,19 +6882,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "FO" = (
 /obj/structure/closet/secure_closet/interdynefob/medical,
-/obj/item/clothing/gloves/latex/nitrile/ntrauma,
-/obj/item/clothing/suit/toggle/labcoat/interdyne,
-/obj/item/clothing/suit/toggle/labcoat/interdyne,
-/obj/item/storage/belt/medbandolier{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/storage/belt/medbandolier{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/clothing/glasses/hud/ar/aviator/health,
-/obj/item/clothing/glasses/hud/ar/aviator/health,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "FP" = (
@@ -7332,13 +7186,14 @@
 	},
 /obj/machinery/light/cold/directional/west,
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/shotgun/riot/syndicate,
-/obj/item/gun/ballistic/shotgun/riot/syndicate{
-	pixel_x = -10
+/obj/item/gun/ballistic/automatic/sol_smg/evil{
+	pixel_x = -8
 	},
-/obj/item/gun/ballistic/shotgun/riot/syndicate{
-	pixel_x = -5;
-	pixel_y = -3
+/obj/item/gun/ballistic/shotgun/riot/sol/evil{
+	pixel_x = 0
+	},
+/obj/item/gun/ballistic/automatic/sol_rifle/evil{
+	pixel_x = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -7612,9 +7467,7 @@
 /obj/structure/chair/sofa/bench/corner{
 	dir = 1
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-18"
-	},
+/obj/item/kirbyplants/organic/plant18,
 /obj/machinery/light/cold/directional/south,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/mapping_helpers/apc/syndicate_access,
@@ -7685,7 +7538,7 @@
 	icon_state = "box_1";
 	state = 2
 	},
-/obj/item/disk/ammo_workbench/lethal,
+/obj/item/disk/ammo_workbench/advanced,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
@@ -7808,25 +7661,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "JD" = (
 /obj/structure/closet/secure_closet/interdynefob/maa_locker,
-/obj/item/storage/belt/security/full,
-/obj/item/radio/headset/interdyne,
-/obj/item/clothing/suit/armor/vest/warden/syndicate,
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
-/obj/item/clothing/head/beret/sec/navywarden/syndicate,
-/obj/item/clothing/under/suit/skyrat/helltaker{
-	has_sensor = 0;
-	random_sensor = 0
-	},
-/obj/item/clothing/suit/armor/hos/trenchcoat{
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. It has little Syndicate logos sewn onto the shoulder badges with the letters 'MAA' just under it.";
-	name = "Master at arms' armored trenchcoat"
-	},
-/obj/item/clothing/suit/armor/hos{
-	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a likely chance to get bullied for being outside of the brig";
-	name = "Master at arms' armored greatcoat"
-	},
-/obj/item/gun/energy/disabler,
-/obj/item/clothing/head/hats/hos/beret/syndicate,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 6
@@ -7835,12 +7669,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/item/clothing/mask/gas/sechailer/syndicate,
-/obj/item/watertank/pepperspray,
-/obj/item/clothing/accessory/medal/silver{
-	desc = "The Sothran Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition.";
-	name = "military excellence medal"
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "JE" = (
@@ -8180,90 +8008,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
-"Lr" = (
-/obj/machinery/oven,
-/turf/open/floor/iron/white/textured_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"Ls" = (
-/obj/effect/turf_decal/siding/yellow{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/line{
-	dir = 8
-	},
-/obj/structure/closet/secure_closet/interdynefob/electrical_supplies,
-/obj/item/weldingtool/largetank{
-	pixel_y = 4
-	},
-/obj/item/weldingtool/largetank{
-	pixel_y = -3
-	},
-/obj/item/clothing/glasses/welding{
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/welding{
-	pixel_y = -3
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 4
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Lv" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
-	},
-/obj/item/storage/belt/holster/nukie{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/storage/belt/holster/nukie{
-	pixel_y = 6
-	},
-/obj/item/storage/belt/holster/nukie{
-	pixel_x = 9
-	},
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = 7;
-	pixel_y = -1
-	},
-/obj/item/storage/belt/military{
-	pixel_x = -8
-	},
-/obj/item/storage/belt/military{
-	pixel_x = 1;
-	pixel_y = -3
-	},
-/obj/item/storage/belt/military{
-	pixel_x = 8;
-	pixel_y = -6
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = -6;
-	pixel_y = -4
-	},
-/obj/item/clothing/head/helmet{
-	pixel_y = -7
-	},
-/obj/item/clothing/head/helmet{
-	pixel_x = 6;
-	pixel_y = -11
 	},
 /obj/structure/closet/secure_closet/interdynefob/armory_gear_locker,
 /turf/open/floor/mineral/plastitanium/red,
@@ -8791,28 +8541,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "NP" = (
-/obj/item/storage/belt/security/full,
-/obj/item/radio/headset/interdyne,
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
-/obj/item/storage/belt/security/webbing/ds,
-/obj/item/clothing/head/beret/sec/syndicate,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/item/clothing/accessory/armband{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "brig officer armband"
-	},
 /obj/structure/closet/secure_closet/interdynefob/brig_officer_locker,
-/obj/item/clothing/mask/gas/syndicate/ds,
-/obj/item/clothing/suit/toggle/jacket/sec/old{
-	name = "brig officer jacket"
-	},
-/obj/item/clothing/mask/gas/sechailer/syndicate,
-/obj/item/gun/energy/disabler,
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec,
-/obj/item/clothing/glasses/hud/security/sunglasses/redsec,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "NQ" = (
@@ -8989,11 +8722,6 @@
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "OC" = (
-/obj/item/storage/belt/security/full,
-/obj/item/radio/headset/interdyne,
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
-/obj/item/storage/belt/security/webbing/ds,
-/obj/item/clothing/head/beret/sec/syndicate,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /obj/structure/window/reinforced/survival_pod{
@@ -9002,22 +8730,10 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 10
 	},
-/obj/item/clothing/accessory/armband{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "brig officer armband"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/interdynefob/brig_officer_locker,
-/obj/item/clothing/mask/gas/syndicate/ds,
-/obj/item/clothing/suit/toggle/jacket/sec/old{
-	name = "brig officer jacket"
-	},
-/obj/item/clothing/mask/gas/sechailer/syndicate,
-/obj/item/gun/energy/disabler,
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec,
-/obj/item/clothing/glasses/hud/security/sunglasses/redsec,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "OD" = (
@@ -9213,25 +8929,19 @@
 	},
 /obj/machinery/light/cold/directional/north,
 /obj/structure/closet/secure_closet/interdynefob/science_gear,
-/obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate,
-/obj/item/clothing/suit/hooded/wintercoat/science,
-/obj/item/clothing/suit/toggle/labcoat/science,
-/obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate{
-	pixel_y = -3
-	},
-/obj/item/clothing/glasses/sunglasses/chemical,
-/obj/item/clothing/accessory/armband/science{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "researcher armband"
-	},
-/obj/item/clothing/accessory/armband/science{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "researcher armband"
-	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
+"PB" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/griddle,
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "PM" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/purple/corner{
@@ -9401,7 +9111,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 6
 	},
-/mob/living/simple_animal/pet/fox{
+/mob/living/basic/pet/fox{
 	name = "Rhials"
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -9535,9 +9245,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "QM" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-10"
-	},
+/obj/item/kirbyplants/organic/plant10,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 1
 	},
@@ -9596,7 +9304,7 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/west,
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Ra" = (
@@ -9915,14 +9623,13 @@
 	},
 /obj/machinery/firealarm/directional/west,
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = -4;
-	pixel_y = 4
+/obj/item/gun/ballistic/automatic/pistol/sol/evil{
+	pixel_x = -5
 	},
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = -8
+/obj/item/gun/ballistic/automatic/pistol/sol/evil,
+/obj/item/gun/ballistic/automatic/pistol/sol/evil{
+	pixel_x = 5
 	},
-/obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Sq" = (
@@ -9946,7 +9653,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
-/obj/machinery/modular_computer/console/preset/curator,
+/obj/machinery/modular_computer/preset/curator,
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "Sx" = (
@@ -10220,23 +9927,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "TL" = (
-/obj/item/clothing/suit/hooded/wintercoat/engineering,
-/obj/item/clothing/head/soft/sec/syndicate,
-/obj/item/clothing/under/syndicate/skyrat/overalls,
-/obj/item/clothing/under/syndicate/skyrat/overalls/skirt,
-/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate,
-/obj/item/clothing/suit/jacket/gorlex_harness,
-/obj/item/clothing/suit/hazardvest,
 /obj/structure/closet/secure_closet/interdynefob/engie_locker,
-/obj/item/clothing/accessory/armband/engine{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "engine technician armband"
-	},
-/obj/item/clothing/accessory/armband/engine{
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
-	name = "engine technician armband"
-	},
-/obj/item/clothing/glasses/hud/ar/aviator/meson,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
 	},
@@ -10248,9 +9939,6 @@
 	},
 /obj/effect/turf_decal/siding/yellow{
 	dir = 4
-	},
-/obj/item/holosign_creator/atmos{
-	pixel_y = -8
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
@@ -10596,7 +10284,8 @@
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Vf" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "interdynefobo2";
 	dir = 4
 	},
 /turf/open/floor/engine/o2,
@@ -10665,7 +10354,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/violet/hidden{
 	dir = 9
 	},
-/obj/structure/canister_frame/machine/unfinished_canister_frame,
+/obj/structure/fluff/broken_canister_frame,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Vw" = (
@@ -10866,7 +10555,8 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "Wk" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "interdynefobplasma";
 	dir = 4
 	},
 /turf/open/floor/engine/plasma,
@@ -10909,7 +10599,9 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Wt" = (
-/obj/structure/bed,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /obj/item/bedsheet/medical,
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
@@ -11092,48 +10784,6 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/interdynefob/electrical_supplies,
-/obj/item/electronics/airlock{
-	pixel_x = 5;
-	pixel_y = -7
-	},
-/obj/item/electronics/airlock{
-	pixel_x = -5;
-	pixel_y = -7
-	},
-/obj/item/storage/toolbox/electrical{
-	pixel_y = -7
-	},
-/obj/item/electronics/apc{
-	pixel_x = 4;
-	pixel_y = 5
-	},
-/obj/item/electronics/firelock{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/electronics/airalarm{
-	pixel_x = 2
-	},
-/obj/item/stock_parts/cell/high{
-	pixel_x = -8;
-	pixel_y = -8
-	},
-/obj/item/stock_parts/cell/high{
-	pixel_x = -4;
-	pixel_y = -8
-	},
-/obj/item/stock_parts/cell/high{
-	pixel_y = -8
-	},
-/obj/item/stock_parts/cell/high{
-	pixel_x = 4;
-	pixel_y = -8
-	},
-/obj/item/stock_parts/cell/high{
-	pixel_x = 8;
-	pixel_y = -8
-	},
-/obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -11253,8 +10903,8 @@
 "Xx" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
-	pixel_y = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /obj/structure/sign/poster/contraband/moffuchis_pizza/directional/east,
 /obj/effect/turf_decal/siding/dark{
@@ -11378,8 +11028,8 @@
 /obj/structure/cable,
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/storage/box/beakers{
 	pixel_x = 8;
@@ -11525,6 +11175,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
+"YU" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/armory_kiboko_but_evil,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Zd" = (
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/siding/thinplating/end{
@@ -11577,7 +11235,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Zs" = (
 /obj/item/bedsheet/medical,
-/obj/structure/bed,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Zt" = (
@@ -11694,9 +11354,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -12156,7 +11814,7 @@ BN
 PP
 lJ
 kF
-Lr
+CJ
 dI
 ct
 lb
@@ -12217,10 +11875,10 @@ PX
 PX
 PX
 PX
+PX
 Vk
 Oi
 VP
-wg
 wg
 wg
 wg
@@ -12270,12 +11928,12 @@ Lv
 bS
 Hc
 Sp
+YU
 EC
 PX
 Vk
 Oi
 ZY
-wg
 wg
 wg
 wg
@@ -12325,9 +11983,9 @@ mA
 uo
 uo
 uo
+uo
 LY
 oG
-PX
 PX
 NB
 NB
@@ -12920,7 +12578,7 @@ Rt
 So
 tq
 Jz
-Ls
+WZ
 TL
 WZ
 Tt
@@ -14222,7 +13880,7 @@ xk
 Od
 Ui
 pO
-sZ
+PB
 Cf
 tT
 SG
@@ -14277,7 +13935,7 @@ bw
 bw
 bw
 bw
-qa
+sZ
 Cf
 Cf
 aC

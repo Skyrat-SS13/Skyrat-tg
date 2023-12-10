@@ -4,8 +4,8 @@
 	density = FALSE
 	anchored = TRUE
 	icon = 'icons/obj/weapons/grenade.dmi'
-	icon_state = "uglymine"
-	base_icon_state = "uglymine"
+	icon_state = "landmine"
+	base_icon_state = "landmine"
 	/// We manually check to see if we've been triggered in case multiple atoms cross us in the time between the mine being triggered and it actually deleting, to avoid a race condition with multiple detonations
 	var/triggered = FALSE
 	/// Can be set to FALSE if we want a short 'coming online' delay, then set to TRUE. Can still be set off by damage
@@ -71,7 +71,7 @@
 			return FALSE
 		living_mob = on_who
 
-	if(living_mob?.incorporeal_move || on_who.movement_type & FLYING)
+	if(living_mob?.incorporeal_move || (on_who.movement_type & MOVETYPES_NOT_TOUCHING_GROUND))
 		return foot_on_mine ? IS_WEAKREF_OF(on_who, foot_on_mine) : FALSE //Only go boom if their foot was on the mine PRIOR to flying/phasing. You fucked up, you live with the consequences.
 
 	return TRUE
@@ -173,7 +173,6 @@
 		to_chat(victim, span_userdanger("You have been kicked FOR NO REISIN!"))
 		qdel(victim.client)
 
-
 /obj/effect/mine/gas
 	name = "oxygen mine"
 	var/gas_amount = 360
@@ -182,16 +181,13 @@
 /obj/effect/mine/gas/mineEffect(mob/victim)
 	atmos_spawn_air("[gas_type]=[gas_amount]")
 
-
 /obj/effect/mine/gas/plasma
 	name = "plasma mine"
 	gas_type = GAS_PLASMA
 
-
 /obj/effect/mine/gas/n2o
 	name = "\improper N2O mine"
 	gas_type = GAS_N2O
-
 
 /obj/effect/mine/gas/water_vapor
 	name = "chilled vapor mine"
@@ -204,7 +200,6 @@
 
 /obj/effect/mine/sound/mineEffect(mob/victim)
 	playsound(loc, sound, 100, TRUE)
-
 
 /obj/effect/mine/sound/bwoink
 	name = "bwoink mine"
@@ -249,7 +244,7 @@
 /obj/item/minespawner
 	name = "landmine deployment device"
 	desc = "When activated, will deploy an Asset Protection landmine after 3 seconds passes, perfect for high ranking NT officers looking to cover their assets from afar."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "beacon"
 
 	var/mine_type = /obj/effect/mine/shrapnel/capspawn
@@ -259,7 +254,6 @@
 	. = ..()
 	if(active)
 		return
-
 
 	playsound(src, 'sound/weapons/armbomb.ogg', 70, TRUE)
 	to_chat(user, span_warning("You arm \the [src], causing it to shake! It will deploy in 3 seconds."))

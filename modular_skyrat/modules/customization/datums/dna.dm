@@ -57,16 +57,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	///Current body size, used for proper re-sizing and keeping track of that
 	var/current_body_size = BODY_SIZE_NORMAL
 
-/datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
-	if(newblood_type)
-		blood_type = newblood_type
-	unique_enzymes = generate_unique_enzymes()
-	unique_identity = generate_unique_identity()
-	if(!skip_index) //I hate this
-		generate_dna_blocks()
-	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
-	unique_features = generate_unique_features()
-
 /datum/dna/proc/generate_unique_features()
 	var/list/data = list()
 
@@ -186,58 +176,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	holder.maptext_height = 32 * features["body_size"] // Adjust runechat height
 	current_body_size = features["body_size"]
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
-	if(QDELETED(src))
-		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(mrace && has_dna())
-		var/datum/species/new_race
-		if(ispath(mrace))
-			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
-		else
-			return
-		death_sound = new_race.death_sound
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
-
-		if (old_species.properly_gained)
-			old_species.on_species_loss(src, new_race, pref_load)
-
-		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
-
-		if(override_mutantparts && override_mutantparts.len)
-			for(var/feature in dna.mutant_bodyparts)
-				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
-			dna.mutant_bodyparts = override_mutantparts
-
-		if(override_markings && override_markings.len)
-			for(var/feature in dna.body_markings)
-				override_markings[feature] = dna.body_markings[feature]
-			dna.body_markings = override_markings
-
-		if(override_features && override_features.len)
-			for(var/feature in dna.features)
-				override_features[feature] = dna.features[feature]
-			dna.features = override_features
-		//END OF BODYPARTS AND FEATURES
-
-		apply_customizable_dna_features_to_species()
-		dna.unique_features = dna.generate_unique_features()
-
-		dna.update_body_size()
-
-		dna.species.on_species_gain(src, old_species, pref_load)
-
-
-		if(ishuman(src))
-			qdel(language_holder)
-			var/species_holder = initial(mrace.species_language_holder)
-			language_holder = new species_holder(src)
-		update_atom_languages()
-		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
-
-
 /mob/living/carbon/proc/apply_customizable_dna_features_to_species()
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
@@ -251,17 +189,16 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
-/mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0, eyeorgancolor_update=0)
+/mob/living/carbon/human/updateappearance(icon_update = TRUE, mutcolor_update = FALSE, mutations_overlay_update = FALSE, eyeorgancolor_update = FALSE)
 	..()
 	var/structure = dna.unique_identity
-
-	hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK))
-	facial_hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_FACIAL_HAIR_COLOR_BLOCK))
 
 	skin_tone = GLOB.skin_tones[deconstruct_block(get_uni_identity_block(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
 
 	eye_color_left = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_LEFT_BLOCK))
 	eye_color_right = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_RIGHT_BLOCK))
+	set_haircolor(sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK)), update = FALSE)
+	set_facial_haircolor(sanitize_hexcolor(get_uni_identity_block(structure, DNA_FACIAL_HAIR_COLOR_BLOCK)), update = FALSE)
 
 	if(eyeorgancolor_update)
 		var/obj/item/organ/internal/eyes/eye_organ = get_organ_slot(ORGAN_SLOT_EYES)
@@ -271,31 +208,33 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		eye_organ.old_eye_color_right = eye_color_right
 
 	if(HAS_TRAIT(src, TRAIT_SHAVED))
-		hairstyle = "Shaved"
+		set_facial_hairstyle("Shaved", update = FALSE)
 	else
-		facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+		var/style = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+		set_facial_hairstyle(style, update = FALSE)
 
 	if(HAS_TRAIT(src, TRAIT_BALD))
-		hairstyle = "Bald"
+		set_hairstyle("Bald", update = FALSE)
 	else
-		hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+		var/style = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+		set_hairstyle(style, update = FALSE)
 
 	var/features = dna.unique_features
 	if(dna.features["mcolor"])
-		dna.features["mcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_BLOCK))
+		dna.features["mcolor"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MUTANT_COLOR_BLOCK))
 	if(dna.features["mcolor2"])
-		dna.features["mcolor2"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_2_BLOCK))
+		dna.features["mcolor2"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MUTANT_COLOR_2_BLOCK))
 	if(dna.features["mcolor3"])
-		dna.features["mcolor3"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_3_BLOCK))
+		dna.features["mcolor3"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MUTANT_COLOR_3_BLOCK))
 	if(dna.features["ethcolor"])
-		dna.features["ethcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_ETHEREAL_COLOR_BLOCK))
+		dna.features["ethcolor"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_ETHEREAL_COLOR_BLOCK))
 	if(dna.features["skin_color"])
-		dna.features["skin_color"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_SKIN_COLOR_BLOCK))
+		dna.features["skin_color"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_SKIN_COLOR_BLOCK))
 
 	if(icon_update)
-		dna.species.handle_body(src) // We want 'update_body_parts(update_limb_data = TRUE)' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.
-		update_body_parts() //We can call this because it doesnt refresh limb data, and it handles hair and such.
 		if(mutcolor_update)
-			update_body_parts(update_limb_data = TRUE)
+			update_body(is_creating = TRUE)
+		else
+			update_body()
 		if(mutations_overlay_update)
 			update_mutations_overlay()

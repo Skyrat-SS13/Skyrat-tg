@@ -34,7 +34,7 @@
 /obj/item/storage/bag/trash
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
-	icon = 'icons/obj/janitor.dmi'
+	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "trashbag"
 	inhand_icon_state = "trashbag"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
@@ -115,7 +115,7 @@
 //        Mining Satchel
 // -----------------------------
 
-/obj/item/storage/bag/ore//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/bag/ore
 	name = "mining satchel"
 	desc = "This little bugger can be used to store and transport ores."
 	icon = 'icons/obj/mining.dmi'
@@ -222,7 +222,7 @@
 
 /obj/item/storage/bag/plants
 	name = "plant bag"
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "plantbag"
 	worn_icon_state = "plantbag"
 	resistance_flags = FLAMMABLE
@@ -315,7 +315,7 @@
 /obj/item/storage/bag/books
 	name = "book bag"
 	desc = "A bag for books."
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookbag"
 	worn_icon_state = "bookbag"
 	resistance_flags = FLAMMABLE
@@ -325,7 +325,11 @@
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 21
 	atom_storage.max_slots = 7
-	atom_storage.set_holdable(list(/obj/item/book, /obj/item/spellbook))
+	atom_storage.set_holdable(list(
+		/obj/item/book,
+		/obj/item/spellbook,
+		/obj/item/poster,
+	))
 
 /*
  * Trays - Agouri
@@ -340,7 +344,7 @@
 	throwforce = 10
 	throw_speed = 3
 	throw_range = 5
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*1.5)
 	custom_price = PAYCHECK_CREW * 0.6
@@ -541,7 +545,7 @@
 /obj/item/storage/bag/harpoon_quiver
 	name = "harpoon quiver"
 	desc = "A quiver for holding harpoons."
-	icon = 'icons/obj/weapons/guns/bows/quivers.dmi'
+	icon = 'icons/obj/weapons/bows/quivers.dmi'
 	icon_state = "quiver"
 	inhand_icon_state = null
 	worn_icon_state = "harpoon_quiver"
@@ -552,11 +556,11 @@
 	atom_storage.max_slots = 40
 	atom_storage.max_total_storage = 100
 	atom_storage.set_holdable(list(
-		/obj/item/ammo_casing/caseless/harpoon
+		/obj/item/ammo_casing/harpoon
 		))
 
 /obj/item/storage/bag/harpoon_quiver/PopulateContents()
 	for(var/i in 1 to 40)
-		new /obj/item/ammo_casing/caseless/harpoon(src)
+		new /obj/item/ammo_casing/harpoon(src)
 
 #undef ORE_BAG_BALOON_COOLDOWN

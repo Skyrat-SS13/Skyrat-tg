@@ -4,6 +4,14 @@ import { GenericUplink, Item } from './Uplink/GenericUplink';
 import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
+import {
+  ObjectivePrintout,
+  Objective,
+  ReplaceObjectivesButton,
+} from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',
@@ -20,12 +28,6 @@ const goalstyle = {
   fontWeight: 'bold',
 };
 
-type Objective = {
-  count: number;
-  name: string;
-  explanation: string;
-};
-
 type Info = {
   has_codewords: BooleanLike;
   phrases: string;
@@ -37,43 +39,38 @@ type Info = {
   processingTime: string;
   objectives: Objective[];
   categories: any[];
+  can_change_objective: BooleanLike;
 };
 
-const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const { objectives } = data;
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Your prime objectives:</Stack.Item>
-      <Stack.Item>
-        {(!objectives && 'None!') ||
-          objectives.map((objective) => (
-            <Stack.Item key={objective.count}>
-              &#8805-{objective.count}: {objective.explanation}
-            </Stack.Item>
-          ))}
-      </Stack.Item>
-    </Stack>
-  );
-};
-
-const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
-  const { intro } = data;
+const IntroductionSection = (props) => {
+  const { act, data } = useBackend<Info>();
+  const { intro, objectives, can_change_objective } = data;
   return (
     <Section fill title="Intro" scrollable>
       <Stack vertical fill>
         <Stack.Item fontSize="25px">{intro}</Stack.Item>
         <Stack.Item grow>
-          <ObjectivePrintout />
+          <ObjectivePrintout
+            objectives={objectives}
+            titleMessage="Your prime objectives:"
+            objectivePrefix="&#8805-"
+            objectiveFollowup={
+              <ReplaceObjectivesButton
+                can_change_objective={can_change_objective}
+                button_title={'Overwrite Objectives Data'}
+                button_colour={'green'}
+              />
+            }
+          />
+          <Rules /* SKYRAT EDIT ADDITION */ />
         </Stack.Item>
       </Stack>
     </Section>
   );
 };
 
-const FlavorSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const FlavorSection = (props) => {
+  const { data } = useBackend<Info>();
   const { allies, goal } = data;
   return (
     <Section
@@ -84,18 +81,23 @@ const FlavorSection = (props, context) => {
           mr={-0.8}
           mt={-0.5}
           icon="hammer"
+          /* SKYRAT EDIT: ORIGINAL TOOLTIP
           tooltip={multiline`
             This is a gameplay suggestion for bored ais.
             You don't have to follow it, unless you want some
             ideas for how to spend the round.`}
-          tooltipPosition="bottom-start">
-          Policy
-        </Button>
-      }>
+          */
+          tooltip={multiline`
+            Please refer to the 'Antagonist Policy' section of the wiki
+            if you have any questions.`}
+          tooltipPosition="bottom-start"
+        />
+      }
+    >
       <Stack vertical fill>
         <Stack.Item grow>
           <Stack fill vertical>
-            <Stack.Item style={{ 'background-color': 'black' }}>
+            <Stack.Item style={{ backgroundColor: 'black' }}>
               <span style={goalstyle}>
                 System Integrity Report:
                 <br />
@@ -103,7 +105,7 @@ const FlavorSection = (props, context) => {
               &gt;{goal}
             </Stack.Item>
             <Stack.Divider />
-            <Stack.Item grow style={{ 'background-color': 'black' }}>
+            <Stack.Item grow style={{ backgroundColor: 'black' }}>
               <span style={allystyle}>
                 Morality Core Report:
                 <br />
@@ -111,7 +113,7 @@ const FlavorSection = (props, context) => {
               &gt;{allies}
             </Stack.Item>
             <Stack.Divider />
-            <Stack.Item style={{ 'background-color': 'black' }}>
+            <Stack.Item style={{ backgroundColor: 'black' }}>
               <span style={badstyle}>
                 Overall Sentience Coherence Grade: FAILING.
                 <br />
@@ -127,8 +129,8 @@ const FlavorSection = (props, context) => {
   );
 };
 
-const CodewordsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const CodewordsSection = (props) => {
+  const { data } = useBackend<Info>();
   const { has_codewords, phrases, responses } = data;
   return (
     <Section title="Codewords" mb={!has_codewords && -1}>
@@ -173,14 +175,10 @@ const CodewordsSection = (props, context) => {
   );
 };
 
-export const AntagInfoMalf = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+export const AntagInfoMalf = (props) => {
+  const { act, data } = useBackend<Info>();
   const { processingTime, categories } = data;
-  const [antagInfoTab, setAntagInfoTab] = useLocalState(
-    context,
-    'antagInfoTab',
-    0
-  );
+  const [antagInfoTab, setAntagInfoTab] = useLocalState('antagInfoTab', 0);
   const categoriesList: string[] = [];
   const items: Item[] = [];
   for (let i = 0; i < categories.length; i++) {
@@ -202,21 +200,24 @@ export const AntagInfoMalf = (props, context) => {
     <Window
       width={660}
       height={530}
-      theme={(antagInfoTab === 0 && 'hackerman') || 'malfunction'}>
-      <Window.Content style={{ 'font-family': 'Consolas, monospace' }}>
+      theme={(antagInfoTab === 0 && 'hackerman') || 'malfunction'}
+    >
+      <Window.Content style={{ fontFamily: 'Consolas, monospace' }}>
         <Stack vertical fill>
           <Stack.Item>
             <Tabs fluid>
               <Tabs.Tab
                 icon="info"
                 selected={antagInfoTab === 0}
-                onClick={() => setAntagInfoTab(0)}>
+                onClick={() => setAntagInfoTab(0)}
+              >
                 Information
               </Tabs.Tab>
               <Tabs.Tab
                 icon="code"
                 selected={antagInfoTab === 1}
-                onClick={() => setAntagInfoTab(1)}>
+                onClick={() => setAntagInfoTab(1)}
+              >
                 Malfunction Modules
               </Tabs.Tab>
             </Tabs>

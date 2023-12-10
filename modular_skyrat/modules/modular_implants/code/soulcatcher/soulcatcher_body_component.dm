@@ -10,8 +10,8 @@
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_SOULCATCHER_CHECK_SOUL, .proc/signal_destroy)
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SCAN_BODY, .proc/scan_body)
+	RegisterSignal(parent, COMSIG_SOULCATCHER_CHECK_SOUL, PROC_REF(signal_destroy))
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SCAN_BODY, PROC_REF(scan_body))
 
 /// Destroys the source component through a signal. `mind_restored` controls whether or not the mind will be grabbed upon deletion.
 /datum/component/previous_body/proc/signal_destroy(mob/source_mob, mind_restored = TRUE)

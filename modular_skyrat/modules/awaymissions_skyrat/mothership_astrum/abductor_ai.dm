@@ -3,7 +3,8 @@
  */
 /datum/ai_controller/basic_controller/abductor
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/abductor()
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -13,15 +14,11 @@
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/abductor
 	)
 
-/datum/targetting_datum/basic/abductor
-	stat_attack = HARD_CRIT
-
 /datum/ai_planning_subtree/basic_melee_attack_subtree/abductor
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/abductor
 
 /datum/ai_behavior/basic_melee_attack/abductor
 	action_cooldown = 1 SECONDS
-
 
 /**
  * Ranged

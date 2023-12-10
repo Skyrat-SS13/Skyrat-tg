@@ -111,28 +111,29 @@
 	return language
 
 /datum/preferences/proc/validate_species_parts()
-	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
+	var/list/default_bodyparts = GLOB.default_mutant_bodyparts[pref_species.name]
+	var/list/target_bodyparts = default_bodyparts.Copy()
 
 	// Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
 		if(!GLOB.sprite_accessories[key]) // That accessory no longer exists, remove it
 			mutant_bodyparts -= key
 			continue
-		if(!pref_species.default_mutant_bodyparts[key])
+		if(!GLOB.default_mutant_bodyparts[pref_species.name][key])
 			mutant_bodyparts -= key
 			continue
 		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
-			mutant_bodyparts[key][MUTANT_INDEX_NAME] = pref_species.default_mutant_bodyparts[key]
+			mutant_bodyparts[key][MUTANT_INDEX_NAME] = GLOB.default_mutant_bodyparts[pref_species.name[key][MUTANTPART_NAME]]
 		validate_color_keys_for_part(key) // Validate the color count of each accessory that wasnt removed
 
 	// Add any missing accessories
 	for(var/key in target_bodyparts)
 		if(!mutant_bodyparts[key])
 			var/datum/sprite_accessory/SA
-			if(target_bodyparts[key] == ACC_RANDOM)
+			if(target_bodyparts[key][MUTANTPART_CAN_RANDOMIZE])
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][target_bodyparts[key]]
+				SA = GLOB.sprite_accessories[key][target_bodyparts[key][MUTANTPART_NAME]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -162,54 +163,15 @@
 	else
 		return FALSE
 
-/// This proc saves the damage currently on `character` and reapplies it after `safe_transfer_prefs()` is applied to the `character`.
+/// This proc saves the damage currently on `character` (human) and reapplies it after `safe_transfer_prefs()` is applied to the `character`.
 /datum/preferences/proc/safe_transfer_prefs_to_with_damage(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)
 	if(!istype(character))
 		return FALSE
 
-	//Organ damage saving code.
-	var/heart_damage = character.check_organ_damage(/obj/item/organ/internal/heart)
-	var/liver_damage = character.check_organ_damage(/obj/item/organ/internal/liver)
-	var/lung_damage = character.check_organ_damage(/obj/item/organ/internal/lungs)
-	var/stomach_damage = character.check_organ_damage(/obj/item/organ/internal/stomach)
-	var/brain_damage = character.check_organ_damage(/obj/item/organ/internal/brain)
-	var/eye_damage = character.check_organ_damage(/obj/item/organ/internal/eyes)
-	var/ear_damage = character.check_organ_damage(/obj/item/organ/internal/ears)
-
-	var/list/trauma_list = list()
-	if(character.get_traumas())
-		for(var/datum/brain_trauma/trauma as anything in character.get_traumas())
-			trauma_list += trauma
-
-	var/brute_damage = character.getBruteLoss()
-	var/burn_damage = character.getFireLoss()
+	var/datum/component/damage_tracker/human/added_tracker = character.AddComponent(/datum/component/damage_tracker/human)
+	if(!added_tracker)
+		return FALSE
 
 	safe_transfer_prefs_to(character, icon_updates, is_antag)
+	qdel(added_tracker)
 
-	// Apply organ damage
-	character.setOrganLoss(ORGAN_SLOT_HEART, heart_damage)
-	character.setOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
-	character.setOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
-	character.setOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
-	character.setOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-	character.setOrganLoss(ORGAN_SLOT_EARS, ear_damage)
-	character.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
-
-	//Re-Applies Trauma
-	var/obj/item/organ/internal/brain/character_brain = character.get_organ_by_type(/obj/item/organ/internal/brain)
-
-	if(length(trauma_list))
-		for(var/datum/brain_trauma/trauma as anything in trauma_list)
-			character_brain.gain_trauma(trauma)
-
-	//Re-Applies Damage
-	character.setBruteLoss(brute_damage)
-	character.setFireLoss(burn_damage)
-
-/// Returns the damage of the `organ_to_check`, if the organ isn't there, the proc returns `100`.
-/mob/living/carbon/human/proc/check_organ_damage(obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = get_organ_by_type(organ_to_check)
-	if(!organ_to_track)
-		return 100 //If the organ is missing, return max damage.
-
-	return organ_to_track.damage

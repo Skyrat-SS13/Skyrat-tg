@@ -17,6 +17,9 @@
 /// Useful for doing "we're done" effects without duped code
 #define BREATH_LOST 1
 
+//The proportion of oxygen needed for metabolism compared to pluoxium. (Pluoxium is this many times efficient as oxygen)
+#define PLUOXIUM_PROPORTION 8
+
 //Defines for N2O and Healium euphoria moodlets
 #define EUPHORIA_INACTIVE 0
 #define EUPHORIA_ACTIVE 1
@@ -93,6 +96,9 @@
 /// The temperature the blue icon is displayed.
 #define BODYTEMP_COLD_WARNING_3 (BODYTEMP_COLD_DAMAGE_LIMIT - 150) //120k
 
+/// Beyond this temperature, being on fire will increase body temperature by less and less
+#define BODYTEMP_FIRE_TEMP_SOFTCAP 1200
+
 /// The amount of pressure damage someone takes is equal to (pressure / HAZARD_HIGH_PRESSURE)*PRESSURE_DAMAGE_COEFFICIENT, with the maximum of MAX_PRESSURE_DAMAGE
 #define PRESSURE_DAMAGE_COEFFICIENT 2
 #define MAX_HIGH_PRESSURE_DAMAGE 2
@@ -144,3 +150,6 @@
 #define SHOES_MIN_TEMP_PROTECT 2.0
 /// For gloves
 #define SHOES_MAX_TEMP_PROTECT 1500
+
+///Minimum temperature for items on fire
+#define BURNING_ITEM_MINIMUM_TEMPERATURE (150+T0C)

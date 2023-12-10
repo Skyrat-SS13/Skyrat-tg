@@ -2,18 +2,32 @@ Any time you make a change to the schema files, remember to increment the databa
 
 Make sure to also update `DB_MAJOR_VERSION` and `DB_MINOR_VERSION`, which can be found in `code/__DEFINES/subsystem.dm`.
 
-The latest database version is 5.26 (5.24 for /tg/); The query to update the schema revision table is:
+The latest database version is 5.28 (5.26 for /tg/); The query to update the schema revision table is:
 
 ```sql
-INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 26);
+INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 28);
 ```
 or
 
 ```sql
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 26);
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 28);
 ```
 
 In any query remember to add a prefix to the table names if you use one.
+
+-----------------------------------------------------
+Version 5.28, 03 December 2023, by distributivgesetz
+Set the default value of cloneloss to 0, as it's obsolete and it won't be set by blackbox anymore.
+```sql
+ALTER TABLE `death` MODIFY COLUMN `cloneloss` SMALLINT(5) UNSIGNED DEFAULT '0';
+```
+
+-----------------------------------------------------
+Version 5.27, 27 September 2023, by Jimmyl
+Removes the text_adventures table because it is no longer used
+```sql
+ DROP TABLE IF EXISTS `text_adventures`;
+```
 
 -----------------------------------------------------
 Version 5.26, 17 May 2023, by LemonInTheDark

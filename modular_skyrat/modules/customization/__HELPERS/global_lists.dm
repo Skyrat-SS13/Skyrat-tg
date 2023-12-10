@@ -1,14 +1,12 @@
 /proc/make_skyrat_datum_references()
 	make_sprite_accessory_references()
+	make_default_mutant_bodypart_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_body_marking_dna_block_references()
 	populate_total_ui_len_by_block()
 	populate_total_uf_len_by_block()
 	make_augment_references()
-	//We're loading donators here because it's the least intrusive way modularly
-	load_donators()
-	load_veteran_players()
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories
@@ -32,6 +30,18 @@
 			//TODO: Replace "generic" definitions with something better
 			if(P.generic && !GLOB.generic_accessories[P.key])
 				GLOB.generic_accessories[P.key] = P.generic
+
+/proc/make_default_mutant_bodypart_references()
+	// Build the global list for default species' mutant_bodyparts
+	for(var/path in subtypesof(/datum/species))
+		var/datum/species/species_type = path
+		var/datum/species/species_instance = new species_type
+		if(!isnull(species_instance.name))
+			GLOB.default_mutant_bodyparts[species_instance.name] = species_instance.get_default_mutant_bodyparts()
+			if(species_instance.can_have_genitals)
+				for(var/genital in GLOB.possible_genitals)
+					GLOB.default_mutant_bodyparts[species_instance.name] += list((genital) = list("None", FALSE))
+		qdel(species_instance)
 
 /proc/make_body_marking_references()
 	// Here we build the global list for all body markings
@@ -155,3 +165,26 @@
 		if(!sprite_datum?.erp_accessory)
 			continue
 		GLOB.undershirt_m -= sprite_name
+
+
+	// Bras
+	for(var/sprite_name in GLOB.bra_list)
+		var/datum/sprite_accessory/sprite_datum = GLOB.bra_list[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+
+		GLOB.bra_list -= sprite_name
+
+	for(var/sprite_name in GLOB.bra_f)
+		var/datum/sprite_accessory/sprite_datum = GLOB.bra_f[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+
+		GLOB.bra_f -= sprite_name
+
+	for(var/sprite_name in GLOB.bra_m)
+		var/datum/sprite_accessory/sprite_datum = GLOB.bra_m[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+
+		GLOB.bra_m -= sprite_name

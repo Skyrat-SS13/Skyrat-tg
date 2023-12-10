@@ -1,6 +1,6 @@
 // Pets
 /datum/area_spawn/markus
-	target_areas = list(/area/station/cargo/sorting,  /area/station/cargo/storage, /area/station/cargo/office, /area/station/command/heads_quarters/qm)
+	target_areas = list(/area/station/cargo/sorting, /area/station/cargo/storage, /area/station/cargo/office, /area/station/command/heads_quarters/qm)
 	desired_atom = /mob/living/basic/pet/dog/markus
 
 /datum/area_spawn/bumbles
@@ -39,6 +39,11 @@
 /datum/area_spawn/lustwish_prison
 	target_areas = list(/area/station/security/prison, /area/station/security/prison/shower)
 	desired_atom = /obj/machinery/vending/dorms
+	mode = AREA_SPAWN_MODE_HUG_WALL
+
+/datum/area_spawn/gbp_machine
+	target_areas = list(/area/station/cargo/lobby, /area/station/cargo/boutique, /area/station/construction/storage_wing) // lmao imagine map standardization
+	desired_atom = /obj/machinery/gbp_redemption
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 // Wall mounts. Use sparingly as walls are prime real estate

@@ -25,6 +25,7 @@
 		/obj/item/clothing/neck/ranger_poncho/primitive_catgirl_leather = 5,
 		/obj/item/clothing/glasses/eyepatch/wrap = 5,
 		/obj/item/clothing/head/pelt/snow_tiger = 5,
+		/obj/item/clothing/head/pelt = 5,
 		/obj/item/clothing/head/pelt/black = 5,
 		/obj/item/clothing/head/pelt/white = 5,
 		/obj/item/clothing/head/pelt/wolf = 5,
@@ -33,4 +34,8 @@
 
 /obj/machinery/vending/primitive_catgirl_clothing_vendor/Initialize(mapload)
 	. = ..()
+
 	onstation = FALSE
+
+/obj/machinery/vending/primitive_catgirl_clothing_vendor/speak(message)
+	return

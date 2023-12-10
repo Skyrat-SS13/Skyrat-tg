@@ -130,6 +130,10 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Joy Mask"
 	item_path = /obj/item/clothing/mask/joy
 
+/datum/loadout_item/mask/paper
+	name = "Paper Mask"
+	item_path = /obj/item/clothing/mask/paper
+
 /datum/loadout_item/mask/lollipop
 	name = "Lollipop"
 	item_path = /obj/item/food/lollipop
@@ -137,3 +141,16 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 /datum/loadout_item/mask/balaclava
 	name = "Balaclava"
 	item_path = /obj/item/clothing/mask/balaclava
+
+
+/*
+*	DONATOR
+*/
+
+/datum/loadout_item/mask/donator
+	donator_only = TRUE
+
+
+/datum/loadout_item/mask/donator/nightlight_mask/alldono
+	name = "Commercial FIR-36 Rebreather"
+	item_path = /obj/item/clothing/mask/gas/nightlight/alldono

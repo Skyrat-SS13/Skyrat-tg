@@ -26,6 +26,11 @@
 /obj/item/organ/internal/cyberimp/brain/nif/ui_state(mob/user)
 	return GLOB.conscious_state
 
+/obj/item/organ/internal/cyberimp/brain/nif/ui_status(mob/user)
+	if(user == linked_mob)
+		return UI_INTERACTIVE
+	return UI_CLOSE
+
 /obj/item/organ/internal/cyberimp/brain/nif/ui_static_data(mob/user)
 	var/list/data = list()
 
@@ -40,6 +45,8 @@
 			"active_cost" = nifsoft.active_cost,
 			"reference" = REF(nifsoft),
 			"ui_icon" = nifsoft.ui_icon,
+			"able_to_keep" = nifsoft.able_to_keep,
+			"keep_installed" = nifsoft.keep_installed,
 		)
 		data["loaded_nifsofts"] += list(nifsoft_data)
 
@@ -114,6 +121,8 @@
 				return FALSE
 
 			current_theme = target_theme
+			for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
+				installed_nifsoft.update_theme()
 
 		if("activate_nifsoft")
 			var/datum/nifsoft/activated_nifsoft = locate(params["activated_nifsoft"]) in loaded_nifsofts
@@ -121,3 +130,11 @@
 				return FALSE
 
 			activated_nifsoft.activate()
+
+		if("toggle_keeping_nifsoft")
+			var/datum/nifsoft/nifsoft_to_keep = locate(params["nifsoft_to_keep"]) in loaded_nifsofts
+			if(!nifsoft_to_keep || !nifsoft_to_keep.able_to_keep)
+				return FALSE
+
+			nifsoft_to_keep.keep_installed = !nifsoft_to_keep.keep_installed
+			update_static_data_for_all_viewers()

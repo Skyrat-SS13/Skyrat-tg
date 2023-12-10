@@ -1,6 +1,6 @@
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator
 	name = "Lone Infiltrator"
-	antag_datum = /datum/antagonist/traitor/infiltrator
+	antag_datum = /datum/antagonist/traitor/lone_infiltrator
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
 	antag_flag = ROLE_LONE_INFILTRATOR
 	restricted_roles = list(JOB_CYBORG,
@@ -46,7 +46,7 @@
 	player_mind.special_role = "Lone Infiltrator"
 	player_mind.active = TRUE
 	player_mind.transfer_to(operative)
-	player_mind.add_antag_datum(/datum/antagonist/traitor/infiltrator)
+	player_mind.add_antag_datum(/datum/antagonist/traitor/lone_infiltrator)
 
 	message_admins("[ADMIN_LOOKUPFLW(operative)] has been made into lone infiltrator by midround ruleset.")
 	log_game("[key_name(operative)] was spawned as a lone infiltrator by midround ruleset.")

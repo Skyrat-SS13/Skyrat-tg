@@ -1,46 +1,46 @@
 /datum/species/aquatic
-	name = "Aquatic"
+	name = "Akula (Generic)"
 	id = SPECIES_AQUATIC
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"horns" = "None",
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs",
-		"wings" = "None"
-	)
-	payday_modifier = 0.75
-	liked_food = SEAFOOD | MEAT | FRUIT | GORE
-	disliked_food = CLOTH | GROSS
-	toxic_food = TOXIC
+	mutanttongue = /obj/item/organ/internal/tongue/aquatic
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_AKULA
 	bodypart_overrides = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/akula,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/akula,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/akula,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/aquatic,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/aquatic,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/aquatic,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/aquatic,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/aquatic,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/aquatic,
 	)
 
+/datum/species/aquatic/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Shark", TRUE),
+		"snout" = list("Shark", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Hammerhead", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+		"wings" = list("None", FALSE),
+	)
+
+/obj/item/organ/internal/tongue/aquatic
+	liked_foodtypes = SEAFOOD | MEAT | FRUIT | GORE
+	disliked_foodtypes = CLOTH | GROSS
+	toxic_foodtypes = TOXIC
+
+
 /datum/species/aquatic/randomize_features(mob/living/carbon/human/human_mob)
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -61,9 +61,10 @@
 		if(5)
 			main_color = "#444444"
 			second_color = "#DDDDEE"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
 
 /datum/species/aquatic/get_random_body_markings(list/passed_features)
 	var/name = "Shark"

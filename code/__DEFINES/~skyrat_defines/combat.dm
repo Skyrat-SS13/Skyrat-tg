@@ -1,4 +1,3 @@
-#define PUNCH_STAMINA_MULTIPLIER 2.6
 
 //Stamina threshold from which resisting a grab becomes hard
 #define STAMINA_THRESHOLD_HARD_RESIST 80
@@ -18,6 +17,9 @@
 
 //Grab breakout odds
 #define OVERSIZED_GRAB_RESIST_BONUS 10 /// For those with the oversized trait, they get this.
+
+//Grab breakout bonus for akulas when at 10+ wet_stacks
+#define AKULA_GRAB_RESIST_BONUS 10
 
 // Damage modifiers
 #define OVERSIZED_HARM_DAMAGE_BONUS 5 /// Those with the oversized trait do 5 more damage.
@@ -170,6 +172,16 @@
 
 /// Attempts to perform a limb dislocation, with the user violently twisting one of target's limbs (as passed in). Only useful for extremities, because only extremities can eat dislocations.
 /datum/species/proc/try_dislocate(mob/living/carbon/human/user, mob/living/carbon/human/target, obj/item/bodypart/affecting)
+	var/datum/wound_pregen_data/pregen_data = GLOB.all_wound_pregen_data[/datum/wound/blunt/bone/moderate]
+	if (!pregen_data)
+		stack_trace("/datum/wound/blunt/bone/moderate has no pregen data!")
+		return FALSE // shouldnt happen but sanity
+
+	if (!pregen_data.can_be_applied_to(affecting, random_roll = FALSE))
+		if (!(affecting.biological_state & BIO_JOINTED))
+			to_chat(user, span_warning("[target]'s [affecting.plaintext_zone] has no joint to dislocate!"))
+		return FALSE
+
 	user.changeNext_move(4 SECONDS)
 	target.visible_message(span_danger("[user.name] twists [target.name]'s [affecting.name] violently!"), \
 			span_userdanger("[user.name] twists your [affecting.name] violently!"), ignored_mobs=user)
@@ -179,7 +191,7 @@
 	target.visible_message(span_danger("[user.name] dislocates [target.name]'s [affecting.name]!"), \
 		span_userdanger("[user.name] dislocates your [affecting.name]!"), ignored_mobs=user)
 	to_chat(user, span_danger("You dislocate [target.name]'s [affecting.name]!"))
-	affecting.force_wound_upwards(/datum/wound/blunt/moderate)
+	affecting.force_wound_upwards(/datum/wound/blunt/bone/moderate)
 	log_combat(user, target, "dislocates", "the [affecting.name]")
 	return TRUE
 

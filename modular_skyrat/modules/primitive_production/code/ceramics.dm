@@ -1,5 +1,29 @@
 #define DEFAULT_SPIN (4 SECONDS)
 
+/*
+ * Clay Bricks
+ */
+
+/obj/item/stack/sheet/mineral/clay
+	name = "clay brick"
+	desc = "A heavy clay brick."
+	singular_name = "clay brick"
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	icon_state = "sheet-clay"
+	inhand_icon_state = null
+	throw_speed = 3
+	throw_range = 5
+	merge_type = /obj/item/stack/sheet/mineral/clay
+
+GLOBAL_LIST_INIT(clay_recipes, list ( \
+	new/datum/stack_recipe("clay range", /obj/machinery/primitive_stove, 10, time = 5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_MISC), \
+	new/datum/stack_recipe("clay oven", /obj/machinery/oven/stone, 10, time = 5 SECONDS, one_per_turf = FALSE, on_solid_ground = TRUE, category = CAT_MISC) \
+	))
+
+/obj/item/stack/sheet/mineral/clay/get_main_recipes()
+	. = ..()
+	. += GLOB.clay_recipes
+
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/glass_item = O
@@ -59,9 +83,12 @@
 /datum/export/ceramics
 	cost = CARGO_CRATE_VALUE * 2
 	unit_name = "ceramic product"
-	export_types = list(/obj/item/plate/ceramic,
-						/obj/item/reagent_containers/cup/bowl/ceramic,
-						/obj/item/reagent_containers/cup/beaker/large/ceramic)
+	export_types = list(
+		/obj/item/plate/ceramic,
+		/obj/item/plate/oven_tray/material/ceramic,
+		/obj/item/reagent_containers/cup/bowl/ceramic,
+		/obj/item/reagent_containers/cup/beaker/large/ceramic,
+	)
 
 /datum/export/ceramics/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
 	. = ..()
@@ -71,6 +98,7 @@
 	unit_name = "unfinished ceramic product"
 	export_types = list(/obj/item/ceramic/plate,
 						/obj/item/ceramic/bowl,
+						/obj/item/ceramic/tray,
 						/obj/item/ceramic/cup)
 
 /datum/export/ceramics_unfinished/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
@@ -86,6 +114,17 @@
 	name = "ceramic plate"
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay_plate"
+
+/obj/item/ceramic/tray
+	name = "ceramic tray"
+	desc = "A piece of clay that is flat, in the shape of a tray."
+	icon_state = "clay_tray"
+	forge_item = /obj/item/plate/oven_tray/material/ceramic
+
+/obj/item/plate/oven_tray/material/ceramic
+	name = "ceramic oven tray"
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	icon_state = "clay_tray"
 
 /obj/item/ceramic/bowl
 	name =  "ceramic bowl"
@@ -111,6 +150,13 @@
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay_cup"
 	custom_materials = null
+
+/obj/item/ceramic/brick
+	name = "ceramic brick"
+	desc = "A dense block of clay, ready to be fired into a brick!"
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	icon_state = "sheet-clay"
+	forge_item = /obj/item/stack/sheet/mineral/clay
 
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
@@ -171,7 +217,7 @@
 	if(in_use)
 		return
 	use(user)
-	in_use = FALSE 
+	in_use = FALSE
 
 /**
  * Prompts user for how they wish to use the throwing wheel
@@ -192,7 +238,7 @@
 		return
 	switch(user_input)
 		if("Create")
-			var/creation_choice = tgui_alert(user, "What you like to create?", "Creation Choice", list("Cup", "Plate", "Bowl"))
+			var/creation_choice = tgui_input_list(user, "What you like to create?", "Creation Choice", list("Cup", "Plate", "Bowl", "Tray", "Brick"))
 			if(!creation_choice)
 				return
 			switch(creation_choice)
@@ -202,6 +248,10 @@
 					use_clay(/obj/item/ceramic/plate, user)
 				if("Bowl")
 					use_clay(/obj/item/ceramic/bowl, user)
+				if("Tray")
+					use_clay(/obj/item/ceramic/tray, user)
+				if("Brick")
+					use_clay(/obj/item/ceramic/brick, user)
 		if("Remove")
 			if(!do_after(user, spinning_speed, target = src))
 				return

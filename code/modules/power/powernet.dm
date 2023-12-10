@@ -95,13 +95,7 @@
 	newavail = 0
 
 /datum/powernet/proc/get_electrocute_damage()
-	//SKYRAT EDIT BEGIN: Declamps burn damage w/ new effects. Original code: return clamp(20 + round(avail/25000), 20, 195) + rand(-5,5)
-	if(avail >= 1000 && avail <= 15000)
-		return round(avail/45000) + rand(-30,2) //Slight buff. Weaker electrical currents are somewhat mitigated.
-	if(avail >= 15000)
-		return round(avail/15000) + rand(-5,10) //You're dead.
-	if(avail >= 20000)
-		return round(avail/10000) + rand(0,20) //You're VERY dead.
-	//SKYRAT EDIT END
+	if(avail >= 1000)
+		return clamp(20 + round(avail/25000), 20, 195) + rand(-5,5)
 	else
 		return 0

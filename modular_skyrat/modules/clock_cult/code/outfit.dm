@@ -38,8 +38,8 @@
 
 	glasses = /obj/item/clothing/glasses/clockwork/wraith_spectacles
 	suit = /obj/item/clothing/suit/clockwork
-	l_pocket = /obj/item/storage/bag/ammo/clock
-	r_pocket = /obj/item/storage/bag/ammo/clock
+	l_pocket = /obj/item/storage/pouch/ammo/clock
+	r_pocket = /obj/item/storage/pouch/ammo/clock
 	l_hand = /obj/item/gun/ballistic/rifle/lionhunter/clockwork
 
 /datum/outfit/clock/support

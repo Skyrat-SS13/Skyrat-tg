@@ -23,7 +23,8 @@
  * Returns TRUE if the seed can take the gene, and FALSE otherwise.
  */
 /datum/plant_gene/proc/can_add(obj/item/seeds/our_seed)
-	return !istype(our_seed, /obj/item/seeds/sample) // Samples can't accept new genes.
+	SHOULD_CALL_PARENT(TRUE)
+	return TRUE
 
 /// Copies over vars and information about our current gene to a new gene and returns the new instance of gene.
 /datum/plant_gene/proc/Copy()
@@ -151,9 +152,8 @@
 	if(!.)
 		return FALSE
 
-	for(var/obj/item/seeds/found_seed as anything in seed_blacklist)
-		if(istype(source_seed, found_seed))
-			return FALSE
+	if(is_type_in_list(source_seed, seed_blacklist))
+		return FALSE
 
 	for(var/datum/plant_gene/trait/trait in source_seed.genes)
 		if(trait_ids & trait.trait_ids)
@@ -178,7 +178,7 @@
 
 	// Add on any bonus lines on examine
 	if(description)
-		RegisterSignal(our_plant, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
+		RegisterSignal(our_plant, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
 	return TRUE
 
 /// Add on any unique examine text to the plant's examine text.
@@ -540,7 +540,7 @@
 
 	our_plant.flags_1 |= HAS_CONTEXTUAL_SCREENTIPS_1
 	RegisterSignal(our_plant, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
-	RegisterSignal(our_plant, COMSIG_PARENT_ATTACKBY, PROC_REF(make_battery))
+	RegisterSignal(our_plant, COMSIG_ATOM_ATTACKBY, PROC_REF(make_battery))
 
 /*
  * Signal proc for [COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM] to add context to plant batteries.
@@ -838,7 +838,7 @@
 	if(!.)
 		return
 
-	googly = mutable_appearance('icons/obj/hydroponics/harvest.dmi', "eyes")
+	googly = mutable_appearance('icons/obj/service/hydroponics/harvest.dmi', "eyes")
 	googly.appearance_flags = RESET_COLOR
 	our_plant.add_overlay(googly)
 

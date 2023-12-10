@@ -71,14 +71,82 @@
 
 	SSliquids.add_active_turf(src)
 
-/turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, reagent_multiplier = 1)
+/**
+ * Adds liquid to a turf from a given reagents list.
+ *
+ * Tries to add liquid to an atom's turf location. The atom could also be the turf itself.
+ * Calls add_liquid_list() on this turf if it exists.
+ *
+ * Arguments:
+ * * datum/reagents/giver - the reagents to add to the liquid_turf
+ * * no_react - whether or not we want to react immediately upon adding the reagents
+ * * reagent_multiplier - multiplies the individual reagents' volumes by this value
+ * * atom/thrown_from - the atom that the liquid is being thrown from (like a beaker). Null by default.
+ * * atom/thrown_target - the atom that the liquid is being thrown at. Null by default.
+ *
+ */
+/atom/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, reagent_multiplier = 1, atom/thrown_from = null, atom/thrown_to = null)
+	// if we are throwing something, see if we should bounce the liquid off the target atom
+	if(thrown_from)
+		var/turf/bounced_to = throw_back_liquid(thrown_from)
+		if(bounced_to)
+			giver.expose(thrown_to, TOUCH) // make sure we expose the hit target, since we aren't directly adding liquid there
+			bounced_to.add_liquid_from_reagents(giver, no_react, reagent_multiplier)
+			return
+
+	// otherwise business as usual
 	var/list/compiled_list = list()
 	for(var/r in giver.reagent_list)
 		var/datum/reagent/R = r
 		compiled_list[R.type] = R.volume * reagent_multiplier
 	if(!compiled_list.len) //No reagents to add, don't bother going further
 		return
-	add_liquid_list(compiled_list, no_react, giver.chem_temp)
+
+	// is this a turf?
+	var/turf/add_location = src
+	if(!isturf(add_location))
+		add_location = loc
+
+	// still can't find a turf? get out of here
+	if(!isturf(add_location))
+		return
+
+	add_location.add_liquid_list(compiled_list, no_react, giver.chem_temp)
+
+/**
+ * Bounces a thrown liquid off of a some object that has density.
+ *
+ * Finds an adjacent turf to bounce the liquid to.
+ *
+ * Arguments:
+ * * thrown_by - the mob throwing the atom that is doing the liquid spilling. Required.
+ *
+ * Returns: the found turf if there was one, null otherwise.
+ */
+/atom/proc/throw_back_liquid(atom/thrown_from)
+	if(!thrown_from || !density)
+		return
+
+	// first check the direction the throw came from
+	var/found_adjacent_turf = get_open_turf_in_dir(src, get_dir(src, thrown_from.loc))
+
+	if(found_adjacent_turf)
+		return found_adjacent_turf
+
+	// there might not be an open turf in that direction (someone stuck in a wall perhaps?) so try to get any adjacent open turf nearby
+	var/alternate_adjacent_turfs = get_adjacent_open_turfs(src)
+	if(!length(alternate_adjacent_turfs))
+		return
+
+	return pick(alternate_adjacent_turfs)
+
+/**
+ * Can liquid spills on this atom?
+ *
+ * Returns: TRUE or FALSE
+ */
+/atom/proc/can_liquid_spill_on_hit()
+	return isturf(src) || (flags_ricochet & RICOCHET_HARD) || !density
 
 //More efficient than add_liquid for multiples
 /turf/proc/add_liquid_list(reagent_list, no_react = FALSE, chem_temp = 300)
@@ -248,7 +316,7 @@
 //Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
 //Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
 /turf/open/CanPass(atom/movable/mover, turf/location)
-	if(isliving(mover))
+	if(isliving(mover) && !(mover.movement_type & (FLYING | FLOATING)))
 		var/turf/current_turf = get_turf(mover)
 		if(current_turf && current_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
 			return FALSE

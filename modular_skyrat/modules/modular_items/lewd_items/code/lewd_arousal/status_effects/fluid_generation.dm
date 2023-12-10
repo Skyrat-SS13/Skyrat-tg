@@ -18,7 +18,7 @@
 /datum/status_effect/body_fluid_regen/vagina
 	id = "vagina fluid regen"
 
-/datum/status_effect/body_fluid_regen/vagina/tick()
+/datum/status_effect/body_fluid_regen/vagina/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/affected_human = owner
 	if(owner.stat >= DEAD || !owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy) || !istype(affected_human))
 		return FALSE
@@ -36,7 +36,7 @@
 /datum/status_effect/body_fluid_regen/testes
 	id = "testes fluid regen"
 
-/datum/status_effect/body_fluid_regen/testes/tick()
+/datum/status_effect/body_fluid_regen/testes/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/affected_human = owner
 	if(owner.stat >= DEAD || !owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy) || !istype(affected_human))
 		return FALSE
@@ -51,7 +51,7 @@
 /datum/status_effect/body_fluid_regen/breasts
 	id = " breast milk regen"
 
-/datum/status_effect/body_fluid_regen/breasts/tick()
+/datum/status_effect/body_fluid_regen/breasts/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/affected_human = owner
 	if(owner.stat >= DEAD || !owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy) || !istype(affected_human))
 		return FALSE

@@ -16,10 +16,21 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/name = "soulcatcher"
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
+	/// What soulcatcher room are verbs sending messages to?
+	var/datum/soulcatcher_room/targeted_soulcatcher_room
+	/// What theme are we using for our soulcatcher UI?
+	var/ui_theme = "default"
+
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
 	var/require_approval = TRUE
+	/// What is the max number of people we can keep in this soulcatcher? If this is set to `FALSE` we don't have a limit
+	var/max_souls = FALSE
+	/// Are are the souls inside able to emote/speak as the parent?
+	var/communicate_as_parent = FALSE
+	/// Is the soulcatcher removable from the parent object?
+	var/removable = FALSE
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -27,13 +38,35 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return COMPONENT_INCOMPATIBLE
 
 	create_room()
+	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
+
+	var/obj/item/soulcatcher_holder/soul_holder = parent
+	if(istype(soul_holder) && ismob(soul_holder.loc))
+		var/mob/living/soulcatcher_owner = soul_holder.loc
+		add_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
+
+	targeted_soulcatcher_room = null
 	for(var/datum/soulcatcher_room as anything in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
+
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		remove_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 	return ..()
 
@@ -44,7 +77,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_name - The name that we want to assign to the created room.
  * * target_desc - The description that we want to assign to the created room.
  */
-/datum/component/soulcatcher/proc/create_room(target_name = "default room", target_desc = "it's a room")
+/datum/component/soulcatcher/proc/create_room(target_name = "Default Room", target_desc = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment.")
 	var/datum/soulcatcher_room/created_room = new(src)
 	created_room.name = target_name
 	created_room.room_description = target_desc
@@ -55,13 +88,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /// Tries to find out who is currently using the soulcatcher, returns the holder. If no holder can be found, returns FALSE
 /datum/component/soulcatcher/proc/get_current_holder()
 	var/mob/living/holder
-	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
-		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
-		holder = target_nif.linked_mob
 
-	else if(istype(parent, /obj/item))
-		var/obj/item/parent_item = parent
-		holder = parent_item.loc
+	if(!istype(parent, /obj/item))
+		return FALSE
+
+	var/obj/item/parent_item = parent
+	holder = parent_item.loc
 
 	if(!istype(holder))
 		return FALSE
@@ -112,6 +144,31 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
+/// Returns a list containing all of the souls currently present within a soulcatcher.
+/datum/component/soulcatcher/proc/get_current_souls()
+	var/list/current_souls = list()
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		for(var/mob/living/soulcatcher_soul as anything in room.current_souls)
+			current_souls += soulcatcher_soul
+
+	return current_souls
+
+/// Checks the total number of souls present and compares it with `max_souls` returns `TRUE` if there is room (or no limit), otherwise returns `FALSE`
+/datum/component/soulcatcher/proc/check_for_vacancy()
+	if(!max_souls)
+		return TRUE
+
+	if(length(get_current_souls()) >= max_souls)
+		return FALSE
+
+	return TRUE
+
+/// Attempts to remove the soulcatcher from the attached object
+/datum/component/soulcatcher/proc/remove_self()
+	if(!removable)
+		return FALSE
+
+	qdel(src)
 
 /**
  * Soulcatcher Room
@@ -207,7 +264,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	current_souls -= soul_to_remove
 	soul_to_remove.current_room = null
+
+	soul_to_remove.return_to_body()
 	qdel(soul_to_remove)
+
 	return TRUE
 
 /// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
@@ -223,7 +283,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	current_souls -= target_soul
 	target_room.current_souls += target_soul
 
-	to_chat(target_soul, span_cyan("you've been transfered to [target_room]!"))
+	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
 	to_chat(target_soul, span_notice(target_room.room_description))
 
 	return TRUE
@@ -240,16 +300,39 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
-	var/sender_name = ""
-	if(message_sender)
-		sender_name = "[message_sender] "
-
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/tag = sheet.icon_tag("nif-soulcatcher")
 	var/soulcatcher_icon = ""
 
 	if(tag)
 		soulcatcher_icon = tag
+
+	var/mob/living/soulcatcher_soul/soul_sender = message_sender
+	if(istype(soul_sender) && soul_sender.communicating_externally)
+		var/master_resolved = master_soulcatcher.resolve()
+		if(!master_resolved)
+			return FALSE
+		var/datum/component/soulcatcher/parent_soulcatcher = master_resolved
+		var/obj/item/parent_object = parent_soulcatcher.parent
+		if(!istype(parent_object))
+			return FALSE
+
+		var/temp_name = parent_object.name
+		parent_object.name = "[parent_object.name] [soulcatcher_icon]"
+
+		if(emote)
+			parent_object.manual_emote(html_decode(message_to_send))
+			log_emote("[soul_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
+		else
+			parent_object.say(html_decode(message_to_send))
+			log_say("[soul_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
+
+		parent_object.name = temp_name
+		return TRUE
+
+	var/sender_name = ""
+	if(message_sender)
+		sender_name = "[message_sender] "
 
 	var/first_room_name_word = splittext(name, " ")
 	var/message = ""
@@ -287,14 +370,33 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return ..()
 
+/datum/action/innate/join_soulcatcher
+	name = "Enter Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher_enter"
+
+/datum/action/innate/join_soulcatcher/Activate()
+	. = ..()
+	var/mob/dead/observer/joining_soul = owner
+	if(!joining_soul)
+		return FALSE
+
+	joining_soul.join_soulcatcher()
+
 /mob/dead/observer/verb/join_soulcatcher()
 	set name = "Enter Soulcatcher"
 	set category = "Ghost"
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable)
+		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent) || !soulcatcher.check_for_vacancy())
 			continue
+
+		var/obj/item/soulcatcher_parent = soulcatcher.parent
+		if(soulcatcher.name != soulcatcher_parent.name)
+			soulcatcher.name = soulcatcher_parent.name
 
 		joinable_soulcatchers += soulcatcher
 
@@ -315,6 +417,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/datum/soulcatcher_room/room_to_join
 	if(length(rooms_to_join) < 1)
+		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE
 
 	if(length(rooms_to_join) == 1)
@@ -348,3 +451,20 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return TRUE
 
 	return ..()
+
+/mob/dead/observer/Login()
+	. = ..()
+	var/datum/preferences/preferences = client?.prefs
+	var/soulcatcher_action_given
+
+	if(preferences)
+		soulcatcher_action_given = preferences.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+
+	if(!soulcatcher_action_given)
+		return
+
+	if(locate(/datum/action/innate/join_soulcatcher) in actions)
+		return
+
+	var/datum/action/innate/join_soulcatcher/new_join_action = new(src)
+	new_join_action.Grant(src)

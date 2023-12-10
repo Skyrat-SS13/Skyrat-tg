@@ -25,7 +25,7 @@
 	return ..()
 
 /datum/surgery_step/repair_nif
-	name = "repair installed NIF (Hemostat)"
+	name = "repair installed NIF (multitool)"
 	repeatable = FALSE
 	implements = list(
 		TOOL_MULTITOOL = 100,

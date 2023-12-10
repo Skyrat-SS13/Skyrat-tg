@@ -6,7 +6,7 @@
 * Check some of the wings that make use of them for examples on how to make it look decent.
 */
 /datum/sprite_accessory/wings
-	icon = 'icons/mob/species/wings.dmi'
+	icon = 'icons/mob/human/species/wings.dmi'
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
@@ -19,7 +19,7 @@
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 	// Can hide if wearing uniform
-	if(key in wearer.try_hide_mutant_parts)
+	if(initial(key) in wearer.try_hide_mutant_parts) // initial because some of the wing types have different keys (wings_functional, wings_open, etc)
 		return TRUE
 	if(wearer.wear_suit)
 	// Exception for MODs
@@ -34,15 +34,15 @@
 
 	return FALSE
 
-/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer, ignore_suit = FALSE)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 
 	// Can hide if wearing uniform
-	if("wings" in wearer.try_hide_mutant_parts)
+	if(feature_key in wearer.try_hide_mutant_parts)
 		return FALSE
 
-	if(wearer.wear_suit)
+	if(!ignore_suit && wearer.wear_suit)
 		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return TRUE
@@ -193,6 +193,10 @@
 	name = "Harpy (Alt)"
 	icon_state = "harpyalt"
 
+/datum/sprite_accessory/wings/mammal/harpy/alt/fluffless
+	name = "Harpy (Alt - Fluffless)"
+	icon_state = "harpyalt_fluffless"
+
 /datum/sprite_accessory/wings/mammal/harpy/bat
 	name = "Harpy (Bat)"
 	icon_state = "harpybat"
@@ -201,9 +205,18 @@
 	name = "Harpy (Top - Alt)"
 	icon_state = "harpyalt_top"
 
+/datum/sprite_accessory/wings/mammal/top/harpy/alt/fluffless
+	name = "Harpy (Top - Alt - Fluffless)"
+	icon_state = "harpyalt_fluffless_top"
+
 /datum/sprite_accessory/wings/mammal/top/harpy/bat
 	name = "Harpy (Top - Bat)"
 	icon_state = "harpybat_top"
+
+/datum/sprite_accessory/wings/mammal/pterodactyl
+	name = "Pterodactyl"
+	icon_state = "pterodactyl"
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/wings/mammal/insect
 	name = "Insectoid"
@@ -300,7 +313,7 @@
 	icon_state = "brown"
 
 /datum/sprite_accessory/wings/moth/burnt
-	name = "Moth (Burnt)"
+	name = "Burnt Off"
 	icon_state = "burnt_off"
 	locked = TRUE
 
@@ -387,3 +400,8 @@
 /datum/sprite_accessory/wings/moth/moffra
 	name = "Moth (Moffra)"
 	icon_state = "moffra"
+
+/datum/sprite_accessory/wings/mammal/top/arfel_harpy
+	name = "Arfel Harpy"
+	icon_state = "arfelharpy_top"
+	color_src = USE_ONE_COLOR

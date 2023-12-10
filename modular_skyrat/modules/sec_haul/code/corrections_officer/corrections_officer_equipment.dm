@@ -4,14 +4,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "corrections_officer"
-	armor_type = /datum/armor/security_corrections_officer
+	armor_type = /datum/armor/clothing_under/security_corrections_officer
 	can_adjust = FALSE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/datum/armor/security_corrections_officer
+/datum/armor/clothing_under/security_corrections_officer
 	melee = 10
-	melee = 5
 
 /obj/item/clothing/under/rank/security/corrections_officer/skirt
 	desc = "A white satin shirt with some bronze rank pins at the neck."
@@ -31,14 +30,6 @@
 	name = "\proper corrections officer's headset"
 	icon_state = "sec_headset"
 	keyslot = new /obj/item/encryptionkey/headset_sec
-
-/obj/item/clothing/head/corrections_officer
-	name = "corrections officer's cap"
-	desc = "A black visor cap with a round Nanotrasen logo made out of silver in the center, the most it'll do is protect you from some light rain...Or a prisoner slopping out."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "corrections_officer"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/jacket/corrections_officer
 	name = "corrections officer's suit jacket"
@@ -60,7 +51,7 @@
 	name = "corrections officer riot gear"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "riot"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	door_anim_time = 0 //Somebody resprite or remove this 'riot' locker. It's evil.
 
 /obj/structure/closet/secure_closet/corrections_officer/PopulateContents()
 	..()

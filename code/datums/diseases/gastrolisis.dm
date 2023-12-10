@@ -9,6 +9,7 @@
 	stage_prob = 0.5
 	disease_flags = CURABLE
 	cures = list(/datum/reagent/consumable/salt,  /datum/reagent/medicine/mutadone)
+	bypasses_immunity = TRUE
 
 
 /datum/disease/gastrolosis/stage_act(seconds_per_tick, times_fired)
@@ -65,7 +66,7 @@
 
 			if(shell && eyes && tongue && SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.set_species(/datum/species/snail)
-				affected_mob.client?.give_award(/datum/award/achievement/misc/snail, affected_mob)
+				affected_mob.client?.give_award(/datum/award/achievement/jobs/snail, affected_mob)
 				affected_mob.visible_message(span_warning("[affected_mob] turns into a snail!"), \
 				span_boldnotice("You turned into a snail person! You feel an urge to cccrrraaawwwlll..."))
 				cure()
@@ -79,7 +80,7 @@
 					OT.MakeSlippery(TURF_WET_LUBE, 100)
 
 
-/datum/disease/gastrolosis/cure()
+/datum/disease/gastrolosis/cure(add_resistance = TRUE)
 	. = ..()
 	if(affected_mob && !is_species(affected_mob, /datum/species/snail)) //undo all the snail fuckening
 		var/mob/living/carbon/human/H = affected_mob

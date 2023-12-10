@@ -60,7 +60,7 @@
 
 	return compiled_stories
 
-/obj/machinery/modular_computer/console/preset/curator
+/obj/machinery/modular_computer/preset/curator
 	starting_programs = list(
 		/datum/computer_file/program/portrait_printer,
 		/datum/computer_file/program/news_archive,

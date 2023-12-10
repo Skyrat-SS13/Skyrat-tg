@@ -177,6 +177,18 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	MISC
 */
 
+/datum/loadout_item/head/hair_tie
+	name = "Hair Tie"
+	item_path = /obj/item/clothing/head/hair_tie
+
+/datum/loadout_item/head/hair_tie_scrunchie
+	name = "Scrunchie"
+	item_path = /obj/item/clothing/head/hair_tie/scrunchie
+
+/datum/loadout_item/head/hair_tie_plastic_beads
+	name = "Colorful Hair tie"
+	item_path = /obj/item/clothing/head/hair_tie/plastic_beads
+
 /datum/loadout_item/head/standalone_hood
 	name = "Recolorable Standalone Hood"
 	item_path = /obj/item/clothing/head/standalone_hood
@@ -241,6 +253,26 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Pink Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/pink_tiger
 
+/datum/loadout_item/head/large_bow
+	name = "Colourable Large Bow"
+	item_path = /obj/item/clothing/head/large_bow
+
+/datum/loadout_item/head/back_bow
+	name = "Colourable Back Bow"
+	item_path = /obj/item/clothing/head/back_bow
+
+/datum/loadout_item/head/small_bow
+	name = "Colourable Small Bow"
+	item_path = /obj/item/clothing/head/small_bow
+
+/datum/loadout_item/head/sweet_bow
+	name = "Colourable Sweet bow"
+	item_path = /obj/item/clothing/head/sweet_bow
+
+/datum/loadout_item/head/maid_headband
+	name = "Colourable Maid Headband"
+	item_path = /obj/item/clothing/head/maid_headband
+
 /*
 *	CHRISTMAS
 */
@@ -248,17 +280,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/santa
 	name = "Santa Hat"
 	item_path = /obj/item/clothing/head/costume/santa
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas
 	name = "Red Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas/green
 	name = "Green Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas/green
-	required_season = CHRISTMAS
 
 /*
 *	HALLOWEEN
@@ -291,6 +320,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/witch
 	name = "Witch Hat"
 	item_path = /obj/item/clothing/head/wizard/marisa/fake
+
+/datum/loadout_item/head/akula_helmet
+	name = "Shoredress Helmet"
+	item_path = /obj/item/clothing/head/helmet/space/akula_wetsuit
 
 /*
 *	MISC
@@ -492,16 +525,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
-/datum/loadout_item/head/solofficercap
-	name = "Security Officer's Sol Cap"
-	item_path = /obj/item/clothing/head/hats/sec/peacekeeper/sol
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
-
-/datum/loadout_item/head/soltrafficoff
-	name = "Traffic Officer Cap"
-	item_path = /obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
-
 /datum/loadout_item/head/navybluewardenberet
 	name = "Warden's Navy Blue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navywarden
@@ -536,6 +559,18 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "White Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/white
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+
+/datum/loadout_item/head/azulea_oldblood
+	name = "Oldblood's Royal cap"
+	item_path = /obj/item/clothing/head/hats/caphat/azulean/old_blood
+	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list(SPECIES_AKULA)
+
+/datum/loadout_item/head/azulea_upstart
+	name = "Upstart's Noble cap"
+	item_path = /obj/item/clothing/head/hats/caphat/azulean/upstart
+	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list(SPECIES_AKULA)
 
 /*
 *	JOB BERETS

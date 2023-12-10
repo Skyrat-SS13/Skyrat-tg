@@ -6,7 +6,7 @@
  * Becomes malfunctioning when EMP'd.
  * If a hostile mob is revived with a malfunctioning injector, it will be hostile to everyone except whoever revived it and gets robust searching enabled.
  */
-/obj/item/lazarus_injector //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/lazarus_injector
 	name = "lazarus injector"
 	desc = "An injector with a cocktail of nanomachines and chemicals, this device can seemingly raise animals from the dead, making them become friendly to the user. Unfortunately, the process is useless on higher forms of life and incredibly costly, so these were hidden in storage until an executive thought they'd be great motivation for some of their employees."
 	icon = 'icons/obj/medical/syringe.dmi'
@@ -27,7 +27,13 @@
 
 /obj/item/lazarus_injector/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
-	if(!loaded || !(isliving(target) && proximity_flag) )
+	if(!loaded || !proximity_flag)
+		return
+
+	if(SEND_SIGNAL(target, COMSIG_ATOM_ON_LAZARUS_INJECTOR, src, user) & LAZARUS_INJECTOR_USED)
+		return
+
+	if(!isliving(target))
 		return
 
 	var/mob/living/target_animal = target
@@ -39,9 +45,12 @@
 		return
 
 	target_animal.lazarus_revive(user, malfunctioning)
+	expend(target_animal, user)
+
+/obj/item/lazarus_injector/proc/expend(atom/revived_target, mob/user)
+	user.visible_message(span_notice("[user] injects [revived_target] with [src], reviving it."))
+	SSblackbox.record_feedback("tally", "lazarus_injector", 1, revived_target.type)
 	loaded = FALSE
-	user.visible_message(span_notice("[user] injects [target_animal] with [src], reviving it."))
-	SSblackbox.record_feedback("tally", "lazarus_injector", 1, target_animal.type)
 	playsound(src,'sound/effects/refill.ogg',50,TRUE)
 	icon_state = "lazarus_empty"
 

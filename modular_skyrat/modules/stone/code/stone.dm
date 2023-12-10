@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "sheet-stone"
 	inhand_icon_state = "sheet-metal"
-	mats_per_unit = list(/datum/material/stone=SHEET_MATERIAL_AMOUNT )
+	mats_per_unit = list(/datum/material/stone=SHEET_MATERIAL_AMOUNT)
 	throwforce = 10
 	resistance_flags = FIRE_PROOF
 	merge_type = /obj/item/stack/sheet/mineral/stone
@@ -20,6 +20,10 @@
 GLOBAL_LIST_INIT(stone_recipes, list ( \
 	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_solid_ground = 1, applies_mats = TRUE, category = CAT_STRUCTURE), \
 	new/datum/stack_recipe("stone brick tile", /obj/item/stack/tile/mineral/stone, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
+	new/datum/stack_recipe("millstone", /obj/structure/millstone, 6, one_per_turf = 1, on_solid_ground = 1, category = CAT_STRUCTURE),
+	new/datum/stack_recipe("stone stove", /obj/machinery/primitive_stove, 5, one_per_turf = 1, on_solid_ground = 1, category = CAT_STRUCTURE),
+	new/datum/stack_recipe("stone oven", /obj/machinery/oven/stone, 5, one_per_turf = 1, on_solid_ground = 1, category = CAT_STRUCTURE),
+	new/datum/stack_recipe("stone griddle", /obj/machinery/griddle/stone, 5, one_per_turf = 1, on_solid_ground = 1, category = CAT_STRUCTURE),
 	))
 
 /obj/item/stack/sheet/mineral/stone/get_main_recipes()
@@ -46,7 +50,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "stone_ore"
 	singular_name = "rough stone boulder"
-	mats_per_unit = list(/datum/material/stone=SHEET_MATERIAL_AMOUNT )
+	mats_per_unit = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/stone
 
 /obj/item/stack/stone/examine()
@@ -54,7 +58,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
 
 /obj/item/stack/stone/attackby(obj/item/attacking_item, mob/user, params)
-	if((attacking_item.tool_behaviour != TOOL_MINING) || !(istype(attacking_item, /obj/item/chisel)))
+	if((attacking_item.tool_behaviour != TOOL_MINING) && !(istype(attacking_item, /obj/item/chisel)))
 		return ..()
 	playsound(src, 'sound/effects/picaxe1.ogg', 50, TRUE)
 	balloon_alert_to_viewers("cutting...")
@@ -72,7 +76,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	inhand_icon_state = "tile"
 	turf_type = /turf/open/floor/stone
 	mineralType = "stone"
-	mats_per_unit = list(/datum/material/stone=SHEET_MATERIAL_AMOUNT *0.25)
+	mats_per_unit = list(/datum/material/stone= SMALL_MATERIAL_AMOUNT * 5)
 	merge_type = /obj/item/stack/tile/mineral/stone
 
 /turf/open/floor/stone
@@ -120,10 +124,17 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	name = "stone wall"
 	desc = "A wall made of solid stone bricks."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
-	icon_state = "wall-0"
+	icon_state = "wall-open"
 	base_icon_state = "wall"
+	fake_icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	mineral = /obj/item/stack/sheet/mineral/stone
 	walltype = /turf/closed/wall/mineral/stone
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_STONE_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_STONE_WALLS
+
+/turf/closed/mineral/gets_drilled(mob/user, give_exp = FALSE)
+	if(prob(5))
+		new /obj/item/stack/stone(src)
+
+	return ..()

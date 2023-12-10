@@ -14,6 +14,8 @@
 	var/key = ""
 	/// This will also call the emote.
 	var/key_third_person = ""
+	/// Needed for more user-friendly emote names, so emotes with keys like "aflap" will show as "flap angry". Defaulted to key.
+	var/name = ""
 	/// Message displayed when emote is used.
 	var/message = ""
 	/// Message displayed if the user is a mime.
@@ -77,6 +79,9 @@
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
 	mob_type_ignore_stat_typecache = typecacheof(mob_type_ignore_stat_typecache)
 
+	if(!name)
+		name = key
+
 /**
  * Handles the modifications and execution of emotes.
  *
@@ -92,6 +97,8 @@
 	. = TRUE
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
+	if(SEND_SIGNAL(user, COMSIG_MOB_PRE_EMOTED, key, params, type_override, intentional) & COMPONENT_CANT_EMOTE)
+		return // We don't return FALSE because the error output would be incorrect, provide your own if necessary.
 	var/msg = select_message_type(user, message, intentional)
 	if(params && message_param)
 		msg = select_param(user, params)
@@ -108,7 +115,7 @@
 	// SKYRAT EDIT END
 
 	var/tmp_sound = get_sound(user)
-	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
+	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
@@ -120,12 +127,12 @@
 		for(var/mob/ghost as anything in GLOB.dead_mob_list)
 			if(!ghost.client || isnewplayer(ghost))
 				continue
-			if(ghost.client.prefs.chat_toggles & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
+			if(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
-		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
+		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b>[space][msg]</span>", audible_message_flags = EMOTE_MESSAGE, separation = space) // SKYRAT EDIT - Better emotes - ORIGINAL: user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
-		user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
+		user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE, separation = space) // SKYRAT EDIT - Better emotes - ORIGINAL: user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(viewer.is_blind() && !viewer.can_hear())
@@ -143,7 +150,6 @@
 				if(viewer.is_blind() && !viewer.can_hear())
 					to_chat(viewer, msg)
 	// SKYRAT EDIT -- END
-	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
@@ -215,22 +221,28 @@
 /datum/emote/proc/select_message_type(mob/user, msg, intentional)
 	// Basically, we don't care that the others can use datum variables, because they're never going to change.
 	. = msg
+	if(!isliving(user))
+		return .
+	var/mob/living/living_user = user
+
 	if(!muzzle_ignore && user.is_muzzled() && emote_type & EMOTE_AUDIBLE)
 		return "makes a [pick("strong ", "weak ", "")]noise."
-	if(HAS_TRAIT(user, TRAIT_MIMING) && message_mime)
+	if(HAS_MIND_TRAIT(user, TRAIT_MIMING) && message_mime)
 		. = message_mime
 	if(isalienadult(user) && message_alien)
 		. = message_alien
 	else if(islarva(user) && message_larva)
 		. = message_larva
-	else if(iscyborg(user) && message_robot)
-		. = message_robot
 	else if(isAI(user) && message_AI)
 		. = message_AI
 	else if(ismonkey(user) && message_monkey)
 		. = message_monkey
+	else if((iscyborg(user) || (living_user.mob_biotypes & MOB_ROBOTIC)) && message_robot)
+		. = message_robot
 	else if(isanimal_or_basicmob(user) && message_animal_or_basic)
 		. = message_animal_or_basic
+
+	return .
 
 /**
  * Replaces the %t in the message in message_param by params.
@@ -311,7 +323,7 @@
 			return FALSE
 		if(ishuman(user))
 			var/mob/living/carbon/human/loud_mouth = user
-			if(HAS_TRAIT(loud_mouth, TRAIT_MIMING)) // vow of silence prevents outloud noises
+			if(HAS_MIND_TRAIT(loud_mouth, TRAIT_MIMING)) // vow of silence prevents outloud noises
 				return FALSE
 			if(!loud_mouth.get_organ_slot(ORGAN_SLOT_TONGUE))
 				return FALSE
@@ -329,24 +341,27 @@
 *
 * Returns TRUE if it was able to run the emote, FALSE otherwise.
 */
-/mob/proc/manual_emote(text) //Just override the song and dance
-	. = TRUE
-	if(stat != CONSCIOUS)
-		return
-
+/atom/proc/manual_emote(text)
 	if(!text)
 		CRASH("Someone passed nothing to manual_emote(), fix it")
 
 	log_message(text, LOG_EMOTE)
-
-	var/ghost_text = "<b>[src]</b> [text]"
-
-	var/origin_turf = get_turf(src)
-	if(client)
-		for(var/mob/ghost as anything in GLOB.dead_mob_list)
-			if(!ghost.client || isnewplayer(ghost))
-				continue
-			if(ghost.client.prefs.chat_toggles & CHAT_GHOSTSIGHT && !(ghost in viewers(origin_turf, null)))
-				ghost.show_message("[FOLLOW_LINK(ghost, src)] [ghost_text]")
-
 	visible_message(text, visible_message_flags = EMOTE_MESSAGE)
+	return TRUE
+
+/mob/manual_emote(text)
+	if (stat != CONSCIOUS)
+		return FALSE
+	. = ..()
+	if (!.)
+		return FALSE
+	if (!client)
+		return TRUE
+	var/ghost_text = "<b>[src]</b> [text]"
+	var/origin_turf = get_turf(src)
+	for(var/mob/ghost as anything in GLOB.dead_mob_list)
+		if(!ghost.client || isnewplayer(ghost))
+			continue
+		if(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT && !(ghost in viewers(origin_turf, null)))
+			ghost.show_message("[FOLLOW_LINK(ghost, src)] [ghost_text]")
+	return TRUE

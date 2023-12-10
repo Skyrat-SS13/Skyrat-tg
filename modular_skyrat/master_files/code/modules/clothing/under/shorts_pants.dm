@@ -68,6 +68,16 @@
 	greyscale_colors = "#787878#723E0E#202020"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/under/shorts/skyrat/shortershorts
+	name = "shorter shorts"
+	desc = "Show those legs off with these even shorter shorts!"
+	icon_state = "shortershorts"
+	greyscale_config = /datum/greyscale_config/shortershorts
+	greyscale_config_worn = /datum/greyscale_config/shortershorts/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/shortershorts/worn/digi
+	greyscale_colors = "#787878#723E0E#202020"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
 /*
 *	MISC (Technically belongs in this file as a shorts/pants/shirt combo)
 *	Here's hoping TG gives these their own typepath, but for now this is gonna be under/pants/skyrat. No, it's not all pants, but it's better than a whole new type

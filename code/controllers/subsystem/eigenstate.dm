@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(eigenstates)
 		eigen_targets["[id_counter]"] += target
 		eigen_id[target] = "[id_counter]"
 		RegisterSignal(target, COMSIG_CLOSET_INSERT, PROC_REF(use_eigenlinked_atom))
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_eigen_entry))
+		RegisterSignal(target, COMSIG_QDELETING, PROC_REF(remove_eigen_entry))
 		RegisterSignal(target, COMSIG_ATOM_TOOL_ACT(TOOL_WELDER), PROC_REF(tool_interact))
 		target.RegisterSignal(target, COMSIG_EIGENSTATE_ACTIVATE, TYPE_PROC_REF(/obj/structure/closet,bust_open))
 		ADD_TRAIT(target, TRAIT_BANNED_FROM_CARGO_SHUTTLE, REF(src))
@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(eigenstates)
 	entry.color = COLOR_WHITE
 	entry.alpha = 255
 	UnregisterSignal(entry, list(
-		COMSIG_PARENT_QDELETING,
+		COMSIG_QDELETING,
 		COMSIG_CLOSET_INSERT,
 		COMSIG_ATOM_TOOL_ACT(TOOL_WELDER),
 	))
@@ -119,4 +119,4 @@ SUBSYSTEM_DEF(eigenstates)
 /datum/controller/subsystem/eigenstates/proc/tool_interact(atom/source, mob/user, obj/item/item)
 	SIGNAL_HANDLER
 	to_chat(user, span_notice("The unstable nature of [source] makes it impossible to use [item] on [source.p_them()]!"))
-	return COMPONENT_BLOCK_TOOL_ATTACK
+	return ITEM_INTERACT_BLOCKING

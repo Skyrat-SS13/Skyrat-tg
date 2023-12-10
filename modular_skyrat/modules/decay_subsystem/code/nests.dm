@@ -12,12 +12,12 @@
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_LAVA
+	faction = list(NEST_FACTION)
 	var/spawn_delay = 0
 	/// What mob to spawn
 	var/list/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
 	var/max_mobs = 3
-	var/list/faction = list(NEST_FACTION)
 	var/spawned_mobs = 0
 	/// How long it takes for a new mob to emerge after being triggered.
 	var/spawn_cooldown = 30 SECONDS
@@ -140,7 +140,7 @@
 	desc = "A mush of sticky cobwebs and nasty looking eggs..."
 	icon_state = "nest_spider"
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
-	monster_types = list(/mob/living/basic/giant_spider/hunter, /mob/living/basic/giant_spider)
+	monster_types = list(/mob/living/basic/spider/giant/hunter, /mob/living/basic/spider/giant/)
 	loot = list(/obj/item/spider_egg = 4)
 
 /obj/item/spider_egg
@@ -155,7 +155,7 @@
 	if(do_after(user, 3 SECONDS, src))
 		to_chat(user, span_userdanger("You crack [src] open, something monsterous crawls out!"))
 		playsound(src, 'sound/effects/blobattack.ogg', 100)
-		new /mob/living/basic/giant_spider (user.loc)
+		new /mob/living/basic/spider/giant/ (user.loc)
 		qdel(src)
 
 /obj/structure/mob_spawner/bush
@@ -172,7 +172,7 @@
 	desc = "Filled with little beings that exist only to make your life a living hell."
 	icon_state = "nest_bee"
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/bee)
+	monster_types = list(/mob/living/basic/bee)
 	max_mobs = 15
 	spawn_cooldown = 5 SECONDS
 	loot = list(/obj/item/food/honeycomb = 5, /obj/item/queen_bee)
@@ -184,14 +184,14 @@
 		playsound(src, 'sound/creatures/bee.ogg', 100)
 		visible_message(span_userdanger("[src] buzzes violently as bees pour out!"))
 		for(var/i=1, i<max_mobs, ++i)
-			new /mob/living/simple_animal/hostile/bee (loc)
+			new /mob/living/basic/bee (loc)
 		swarmed = TRUE
 
 /obj/structure/mob_spawner/beehive/toxic
 	name = "oozing beehive"
 	desc = "A beehive... it looks off however, it's oozing some kind of green glowing goop."
 	icon_state = "nest_bee_toxic"
-	monster_types = list(/mob/living/simple_animal/hostile/bee/toxin)
+	monster_types = list(/mob/living/basic/bee/toxin)
 	max_mobs = 6
 	color = LIGHT_COLOR_ELECTRIC_GREEN
 
@@ -200,7 +200,7 @@
 	desc = "These pulsating eggs are oozing out a puss like substance..."
 	icon_state = "nest_eggs"
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/retaliate/snake)
+	monster_types = list(/mob/living/basic/snake)
 	max_mobs = 8
 	spawn_cooldown = 5 SECONDS
 

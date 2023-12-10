@@ -1,5 +1,5 @@
 /// How many seconds between each fuel depletion tick ("use" proc)
-#define WELDER_FUEL_BURN_INTERVAL 26
+#define WELDER_FUEL_BURN_INTERVAL 5
 /obj/item/weldingtool
 	name = "welding tool"
 	desc = "A standard edition welder provided by Nanotrasen."
@@ -9,7 +9,7 @@
 	worn_icon_state = "welder"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
 	force = 3
 	throwforce = 5
@@ -112,7 +112,7 @@
 
 /obj/item/weldingtool/screwdriver_act(mob/living/user, obj/item/tool)
 	flamethrower_screwdriver(tool, user)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/weldingtool/attackby(obj/item/tool, mob/user, params)
 	if(istype(tool, /obj/item/stack/rods))
@@ -134,28 +134,32 @@
 	LAZYREMOVE(update_overlays_on_z, sparks)
 	target.cut_overlay(sparks)
 
-/obj/item/weldingtool/attack(mob/living/carbon/human/attacked_humanoid, mob/living/user)
-	if(!istype(attacked_humanoid))
-		return ..()
+/obj/item/weldingtool/interact_with_atom(atom/interacting_with, mob/living/user)
+	if(!ishuman(interacting_with))
+		return NONE
+	if(user.combat_mode)
+		return NONE
 
+	var/mob/living/carbon/human/attacked_humanoid = interacting_with
 	var/obj/item/bodypart/affecting = attacked_humanoid.get_bodypart(check_zone(user.zone_selected))
+	if(isnull(affecting) || !IS_ROBOTIC_LIMB(affecting))
+		return ITEM_INTERACT_BLOCKING
 
-	if(affecting && !IS_ORGANIC_LIMB(affecting) && !user.combat_mode)
-		if(src.use_tool(attacked_humanoid, user, 0, volume=50, amount=1))
-			if(user == attacked_humanoid)
-				user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
-					span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-				/* SKYRAT EDIT START - ORIGINAL:
-				if(!do_after(user, 5 SECONDS, attacked_humanoid))
-					return
-				*/
-			// SKYRAT EDIT CHANGE START
-			if(!do_after(user, (user == attacked_humanoid ? self_delay : other_delay)))
-				return
-			// SKYRAT EDIT CHANGE END
-			item_heal_robotic(attacked_humanoid, user, 15, 0)
-	else
-		return ..()
+	if(!use_tool(attacked_humanoid, user, 0, volume=50, amount=1))
+		return ITEM_INTERACT_BLOCKING
+
+	if(user == attacked_humanoid)
+		user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
+			span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
+		if(!do_after(user, self_delay, attacked_humanoid)) // SKYRAT EDIT CHANGE - ORIGINAL: if(!do_after(user, 5 SECONDS, attacked_humanoid))
+			return ITEM_INTERACT_BLOCKING
+	// SKYRAT EDIT ADDITION START
+	if(!do_after(user, other_delay, attacked_humanoid))
+		return ITEM_INTERACT_BLOCKING
+	// SKYRAT EDIT ADDITION END
+
+	item_heal_robotic(attacked_humanoid, user, 15, 0)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/weldingtool/afterattack(atom/attacked_atom, mob/user, proximity)
 	. = ..()
@@ -173,7 +177,7 @@
 
 	if(!status && attacked_atom.is_refillable())
 		. |= AFTERATTACK_PROCESSED_ITEM
-		reagents.trans_to(attacked_atom, reagents.total_volume, transfered_by = user)
+		reagents.trans_to(attacked_atom, reagents.total_volume, transferred_by = user)
 		to_chat(user, span_notice("You empty [src]'s fuel tank into [attacked_atom]."))
 		update_appearance()
 
@@ -331,7 +335,7 @@
 			to_chat(user, span_warning("You need one rod to start building a flamethrower!"))
 
 /obj/item/weldingtool/ignition_effect(atom/ignitable_atom, mob/user)
-	if(use_tool(ignitable_atom, user, 0, amount=1))
+	if(use_tool(ignitable_atom, user, 0))
 		return span_notice("[user] casually lights [ignitable_atom] with [src], what a badass.")
 	else
 		return ""
@@ -383,7 +387,7 @@
 /obj/item/weldingtool/abductor
 	name = "alien welding tool"
 	desc = "An alien welding tool. Whatever fuel it uses, it never runs out."
-	icon = 'icons/obj/abductor.dmi'
+	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "welder"
 	toolspeed = 0.1
 	custom_materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/silver = SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plasma =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/titanium =SHEET_MATERIAL_AMOUNT, /datum/material/diamond =SHEET_MATERIAL_AMOUNT)

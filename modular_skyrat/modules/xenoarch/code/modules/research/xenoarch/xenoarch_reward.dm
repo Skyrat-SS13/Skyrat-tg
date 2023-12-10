@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(tech_reward, list(
 GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/spear/bonespear = 6,
 	/obj/item/gun/ballistic/bow/tribalbow/ashen = 2,
-	/obj/item/ammo_casing/caseless/arrow/ash = 1,
+	/obj/item/ammo_casing/arrow/ash = 1,
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,

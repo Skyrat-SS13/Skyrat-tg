@@ -4,7 +4,7 @@
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
 	extended_desc = "Program for programming employee ID cards to access parts of the station."
-	transfer_access = list(ACCESS_COMMAND)
+	download_access = list(ACCESS_COMMAND)
 	requires_ntnet = 0
 	size = 8
 	tgui_id = "NtosCard"
@@ -79,7 +79,7 @@
 		return FALSE
 	computer.crew_manifest_update = TRUE
 
-/datum/computer_file/program/card_mod/kill_program()
+/datum/computer_file/program/card_mod/kill_program(mob/user)
 	computer.crew_manifest_update = FALSE
 	var/obj/item/card/id/inserted_auth_card = computer.computer_id_slot
 	if(inserted_auth_card)
@@ -206,7 +206,7 @@
 		if("PRG_assign")
 			if(!computer || !authenticated_card || !inserted_auth_card)
 				return TRUE
-			var/new_asignment = sanitize(params["assignment"])
+			var/new_asignment = trim(sanitize(params["assignment"]), MAX_NAME_LEN)
 			inserted_auth_card.assignment = new_asignment
 			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			inserted_auth_card.update_label()

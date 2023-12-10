@@ -5,10 +5,6 @@
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	rotate_on_lying = FALSE
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
-	/// Holds the ability for making an alien's sprite smaller to only themselves
-	var/datum/action/small_sprite/skyrat_xeno/small_sprite
-	/// Holds the ability for quick resting without using the ic panel, and without editing xeno huds
-	var/datum/action/cooldown/alien/skyrat/sleepytime/rest_button
 	mob_size = MOB_SIZE_LARGE
 	layer = LARGE_MOB_LAYER //above most mobs, but below speechbubbles
 	plane = GAME_PLANE_UPPER_FOV_HIDDEN
@@ -19,8 +15,6 @@
 	var/alt_inhands_file = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	/// Setting this will give a xeno generic_evolve set to evolve them into this type
 	var/next_evolution
-	/// Holds the ability for evolving into whatever type next_evolution is set to
-	var/datum/action/cooldown/alien/skyrat/generic_evolve/evolve_ability
 	/// Keeps track of if a xeno has evolved recently, if so then we prevent them from evolving until that time is up
 	var/has_evolved_recently = FALSE
 	/// How long xenos should be unable to evolve after recently evolving
@@ -35,27 +29,16 @@
 
 /mob/living/carbon/alien/adult/skyrat/Initialize(mapload)
 	. = ..()
-	small_sprite = new /datum/action/small_sprite/skyrat_xeno()
-	small_sprite.Grant(src)
+	AddComponent(/datum/component/seethrough_mob)
 
-	rest_button = new /datum/action/cooldown/alien/skyrat/sleepytime()
-	rest_button.Grant(src)
-
+	GRANT_ACTION(/datum/action/cooldown/alien/skyrat/sleepytime)
 	if(next_evolution)
-		evolve_ability = new /datum/action/cooldown/alien/skyrat/generic_evolve()
-		evolve_ability.Grant(src)
+		GRANT_ACTION(/datum/action/cooldown/alien/skyrat/generic_evolve)
 
 	pixel_x = -16
 
 	ADD_TRAIT(src, TRAIT_XENO_HEAL_AURA, TRAIT_XENO_INNATE)
 	real_name = "alien [caste]"
-
-/mob/living/carbon/alien/adult/skyrat/Destroy()
-	QDEL_NULL(small_sprite)
-	QDEL_NULL(rest_button)
-	if(evolve_ability)
-		QDEL_NULL(evolve_ability)
-	return ..()
 
 /// Called when a larva or xeno evolves, adds a configurable timer on evolving again to the xeno
 /mob/living/carbon/alien/adult/skyrat/proc/has_just_evolved()
@@ -86,10 +69,6 @@
 	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
 	if(!istype(owner_alien) || owner_alien.unable_to_use_abilities)
 		return FALSE
-
-/datum/action/small_sprite/skyrat_xeno
-	small_icon = 'icons/obj/toys/plushes.dmi'
-	small_icon_state = "rouny"
 
 /datum/action/cooldown/alien/skyrat/sleepytime //I don't think this has a mechanical advantage but they have cool resting sprites so...
 	name = "Rest"

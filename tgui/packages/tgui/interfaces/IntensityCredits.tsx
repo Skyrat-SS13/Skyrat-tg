@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { Section, NoticeBox, Flex } from '../components';
 import { Window } from '../layouts';
@@ -18,8 +19,8 @@ type Props = {
   context: any;
 };
 
-export const IntensityCredits = (props, context) => {
-  const { act, data } = useBackend<ICESData>(context);
+export const IntensityCredits = (props) => {
+  const { act, data } = useBackend<ICESData>();
 
   const {
     current_credits,

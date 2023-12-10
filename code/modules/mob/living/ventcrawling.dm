@@ -56,10 +56,15 @@
 
 	//Handle the exit here
 	if(HAS_TRAIT(src, TRAIT_MOVE_VENTCRAWLING) && istype(loc, /obj/machinery/atmospherics) && movement_type & VENTCRAWLING)
-		visible_message(span_notice("[src] begins climbing out from the ventilation system..."), span_notice("You begin climbing out from the ventilation system..."))
+		to_chat(src, span_notice("You begin climbing out from the ventilation system..."))
 		if(has_client && isnull(client))
 			return
-		visible_message(span_notice("[src] scrambles out from the ventilation ducts!"),span_notice("You scramble out from the ventilation ducts."))
+		if(!do_after(src, 1 SECONDS, target = ventcrawl_target))
+			return
+		if(ventcrawl_target.welded) // in case it got welded during our sleep
+			to_chat(src, span_warning("You can't crawl around a welded vent!"))
+			return
+		visible_message(span_notice("[src] scrambles out from the ventilation ducts!"), span_notice("You scramble out from the ventilation ducts."))
 		forceMove(ventcrawl_target.loc)
 		REMOVE_TRAIT(src, TRAIT_MOVE_VENTCRAWLING, VENTCRAWLING_TRAIT)
 		update_pipe_vision()
@@ -74,8 +79,11 @@
 				return
 			if(has_client && isnull(client))
 				return
+			if(ventcrawl_target.welded) // in case it got welded during our sleep
+				to_chat(src, span_warning("You can't crawl around a welded vent!"))
+				return
 			ventcrawl_target.flick_overlay_static(image('icons/effects/vent_indicator.dmi', "insert", ABOVE_MOB_LAYER), 1 SECONDS)
-			visible_message(span_notice("[src] scrambles into the ventilation ducts!"),span_notice("You climb into the ventilation ducts."))
+			visible_message(span_notice("[src] scrambles into the ventilation ducts!"), span_notice("You climb into the ventilation ducts."))
 			move_into_vent(ventcrawl_target)
 		else
 			to_chat(src, span_warning("This ventilation duct is not connected to anything!"))

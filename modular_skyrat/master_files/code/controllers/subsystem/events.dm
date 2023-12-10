@@ -1,9 +1,9 @@
 /// Check if we have an upcoming transfer vote, or we're already evacuating.
 /datum/controller/subsystem/events/checkEvent()
 	if(scheduled <= world.time)
-		if(SSautotransfer.can_fire == TRUE && ((SSautotransfer.targettime - world.realtime) <= 15 MINUTES + CONFIG_GET(number/vote_period)))
+		if(SSautotransfer.can_fire == TRUE && ((SSautotransfer.targettime - REALTIMEOFDAY) <= 15 MINUTES + CONFIG_GET(number/vote_period)))
 			log_game("ICES: Event cancelled due to precondition check. Reason: Pending autotransfer vote.")
-			log_game("ICES: Info: AT [(SSautotransfer.targettime - world.realtime)] | VP [(15 MINUTES + CONFIG_GET(number/vote_period))]")
+			log_game("ICES: Info: AT [(SSautotransfer.targettime - REALTIMEOFDAY)] | VP [(15 MINUTES + CONFIG_GET(number/vote_period))]")
 			message_admins("ICES: Event cancelled due to precondition check. Reason: Pending autotransfer vote.")
 			reschedule()
 			return

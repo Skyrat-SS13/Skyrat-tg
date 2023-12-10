@@ -1,5 +1,6 @@
 /obj/item/bodypart/head/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
+	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
 /obj/item/bodypart/chest/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC

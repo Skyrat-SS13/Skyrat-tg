@@ -94,6 +94,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 *	NECKTIES
 */
 
+/datum/loadout_item/neck/bowtie_black
+	name = "Black Bowtie"
+	item_path = /obj/item/clothing/neck/bowtie
+
 /datum/loadout_item/neck/necktie_black
 	name = "Black Necktie"
 	item_path = /obj/item/clothing/neck/tie/black
@@ -126,6 +130,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/choker
 	name = "Choker"
 	item_path = /obj/item/clothing/neck/human_petcollar/choker
+
+/datum/loadout_item/neck/thinchoker
+	name = "Thin Choker"
+	item_path = /obj/item/clothing/neck/human_petcollar/thinchoker
 
 /datum/loadout_item/neck/collar
 	name = "Collar"
@@ -196,6 +204,26 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Colourable Mantle"
 	item_path = /obj/item/clothing/neck/mantle/recolorable
 
+/datum/loadout_item/neck/long_cape
+	name = "Long Colourable Cape"
+	item_path = /obj/item/clothing/neck/long_cape
+
+/datum/loadout_item/neck/wide_cape
+	name = "Wide Colourable Cape"
+	item_path = /obj/item/clothing/neck/wide_cape
+
+/datum/loadout_item/neck/robe_cape
+	name = "Robed Colourable Cape"
+	item_path = /obj/item/clothing/neck/robe_cape
+
+/datum/loadout_item/neck/maid_neck_cover
+	name = "Colourable Maid Neck Cover"
+	item_path = /obj/item/clothing/neck/maid_neck_cover
+
+/datum/loadout_item/neck/face_scarf
+	name = "Colourable Face Scarf"
+	item_path = /obj/item/clothing/neck/face_scarf
+
 /*
 *	MANTLES
 */
@@ -256,6 +284,20 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/maid
 	name = "Maid Neck Cover"
 	item_path = /obj/item/clothing/neck/maid
+
+/datum/loadout_item/neck/link_scryer
+	name = "MODlink Scryer"
+	item_path = /obj/item/clothing/neck/link_scryer
+
+/datum/loadout_item/neck/holobadge
+	name = "Holobadge"
+	item_path = /obj/item/clothing/accessory/badge/holo
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/neck/holobadge_cord
+	name = "Holobadge with Lanyard"
+	item_path = /obj/item/clothing/accessory/badge/holo/cord
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
 /*
 *	DONATOR

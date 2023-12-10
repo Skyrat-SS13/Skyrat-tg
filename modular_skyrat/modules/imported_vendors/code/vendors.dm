@@ -3,7 +3,7 @@
 		/obj/machinery/vending/imported,
 		/obj/machinery/vending/imported/yangyu,
 		/obj/machinery/vending/imported/mothic,
-		/obj/machinery/vending/imported/tizirian,
+		/obj/machinery/vending/imported/tiziran,
 	)
 
 /obj/effect/spawner/random/vending/colavend //These can serve both snacks AND drinks so its kinda both of them?
@@ -11,7 +11,7 @@
 		/obj/machinery/vending/imported,
 		/obj/machinery/vending/imported/yangyu,
 		/obj/machinery/vending/imported/mothic,
-		/obj/machinery/vending/imported/tizirian,
+		/obj/machinery/vending/imported/tiziran,
 	)
 
 /datum/supply_pack/vending/imported/fill(obj/structure/closet/crate/target_crate)
@@ -173,11 +173,11 @@
 /obj/item/vending_refill/snack/imported/mothic
 	machine_name = "Nomad Fleet Ration Chit Exchange"
 
-/obj/machinery/vending/imported/tizirian
-	name = "Tizirian Imported Delicacies"
-	desc = "A vendor serving a fine collection of what is very likely knock-offs of popular Tizirian brands."
-	icon_state = "tiziria_food"
-	light_mask = "tiziria_food-light-mask"
+/obj/machinery/vending/imported/tiziran
+	name = "Tiziran Imported Delicacies"
+	desc = "A vendor serving a fine collection of what is very likely knock-offs of popular Tiziran brands."
+	icon_state = "tizira_food"
+	light_mask = "tizira_food-light-mask"
 	light_color = LIGHT_COLOR_FIRE
 	product_slogans = "Real imports from the capital itself, we promise!;Rare selections of salt water catch!;Moonfish glaze included with all meat options!"
 	product_categories = list(
@@ -199,9 +199,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/tiziria = 6,
-				/obj/item/storage/box/foodpack/tiziria/roll = 6,
-				/obj/item/storage/box/foodpack/tiziria/stir_fry = 6,
+				/obj/item/storage/box/foodpack/tizira = 6,
+				/obj/item/storage/box/foodpack/tizira/roll = 6,
+				/obj/item/storage/box/foodpack/tizira/stir_fry = 6,
 				/obj/item/food/vendor_tray_meal/side/root_crackers = 6,
 				/obj/item/food/vendor_tray_meal/side/korta_brittle = 6,
 				/obj/item/food/vendor_tray_meal/side/crispy_headcheese = 6,
@@ -209,7 +209,7 @@
 		),
 	)
 
-	refill_canister = /obj/item/vending_refill/snack/imported/tizirian
+	refill_canister = /obj/item/vending_refill/snack/imported/tiziran
 	initial_language_holder = /datum/language_holder/draconic_vendor
 
 /datum/language_holder/draconic_vendor
@@ -220,5 +220,5 @@
 		/datum/language/draconic = list(LANGUAGE_ATOM),
 		)
 
-/obj/item/vending_refill/snack/imported/tizirian
-	machine_name = "Tizirian Imported Delicacies"
+/obj/item/vending_refill/snack/imported/tiziran
+	machine_name = "Tiziran Imported Delicacies"

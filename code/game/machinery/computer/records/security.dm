@@ -354,10 +354,12 @@
 			printable = wanted_poster
 
 		if("rapsheet")
-			var/list/crimes = target.crimes
-			if(!length(crimes))
-				balloon_alert(user, "no crimes")
-				return FALSE
+		/// SKYRAT EDIT REMOVE - REMOVE CRIMES REQUIREMENT FOR PRINTING RECORDS
+			//var/list/crimes = target.crimes
+			//if(!length(crimes))
+				//balloon_alert(user, "no crimes")
+				//return FALSE
+		/// SKYRAT EDIT REMOVE END
 
 			var/obj/item/paper/rapsheet = target.get_rapsheet(input_alias, input_header, input_description)
 			printable = rapsheet

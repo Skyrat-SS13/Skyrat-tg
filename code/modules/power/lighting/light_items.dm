@@ -20,8 +20,22 @@
 
 /obj/item/light/Initialize(mapload)
 	. = ..()
+	create_reagents(LIGHT_REAGENT_CAPACITY, INJECTABLE | DRAINABLE | SEALED_CONTAINER | TRANSPARENT)
+	AddComponent(/datum/component/caltrop, min_damage = force)
+	update_icon_state()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(/datum/component/golem_food, golem_food_key = /obj/item/light, extra_validation = CALLBACK(src, PROC_REF(is_intact)))
+
+/obj/item/light/attackby(obj/item/attacking_item, mob/user, params)
+	. = ..()
+
+	if(istype(attacking_item, /obj/item/lightreplacer))
+		var/obj/item/lightreplacer/lightreplacer = attacking_item
+		lightreplacer.attackby(src, user)
 
 /// Returns true if bulb is intact
 /obj/item/light/proc/is_intact()
@@ -97,22 +111,12 @@
 		if(LIGHT_BROKEN)
 			desc = "A broken [name]."
 
-/obj/item/light/Initialize(mapload)
-	. = ..()
-	create_reagents(LIGHT_REAGENT_CAPACITY, INJECTABLE | DRAINABLE | SEALED_CONTAINER | TRANSPARENT)
-	AddComponent(/datum/component/caltrop, min_damage = force)
-	update_icon_state()
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
 /obj/item/light/proc/on_entered(datum/source, atom/movable/moving_atom)
 	SIGNAL_HANDLER
 	if(!isliving(moving_atom))
 		return
 	var/mob/living/moving_mob = moving_atom
-	if(!(moving_mob.movement_type & (FLYING|FLOATING)) || moving_mob.buckled)
+	if(!(moving_mob.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) || moving_mob.buckled)
 		playsound(src, 'sound/effects/footstep/glass_step.ogg', HAS_TRAIT(moving_mob, TRAIT_LIGHT_STEP) ? 30 : 50, TRUE)
 		if(status == LIGHT_BURNED || status == LIGHT_OK)
 			shatter(moving_mob)

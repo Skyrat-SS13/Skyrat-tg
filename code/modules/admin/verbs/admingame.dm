@@ -32,6 +32,20 @@
 
 	if(M.client)
 		body += "<br>\[<b>First Seen:</b> [M.client.player_join_date]\]\[<b>Byond account registered on:</b> [M.client.account_join_date]\]"
+		// SKYRAT EDIT ADDITION START - Player Ranks
+		var/list/player_ranks = list()
+
+		if(SSplayer_ranks.is_donator(M.client, admin_bypass = FALSE))
+			player_ranks += "Donator"
+
+		if(SSplayer_ranks.is_mentor(M.client, admin_bypass = FALSE))
+			player_ranks += "Mentor"
+
+		if(SSplayer_ranks.is_veteran(M.client, admin_bypass = FALSE))
+			player_ranks += "Veteran"
+
+		body += "<br><br><b>Player Ranks: </b>[length(player_ranks) ? player_ranks.Join(", ") : "None"]"
+		// SKYRAT EDIT END
 		body += "<br><br><b>CentCom Galactic Ban DB: </b> "
 		if(CONFIG_GET(string/centcom_ban_db))
 			body += "<a href='?_src_=holder;[HrefToken()];centcomlookup=[M.client.ckey]'>Search</a>"
@@ -67,6 +81,15 @@
 	body += "<a href='?_src_=holder;[HrefToken()];individuallog=[REF(M)];log_src=[source]'>LOGS</a>\] <br>"
 
 	body += "<b>Mob type</b> = [M.type]<br><br>"
+
+	if(M.client)
+		body += "<b>Old names:</b> "
+		var/datum/player_details/deets = GLOB.player_details[M.ckey]
+		if(deets)
+			body += deets.get_played_names()
+		else
+			body += "<i>None?!</i>"
+		body += "<br><br>"
 
 	body += "<A href='?_src_=holder;[HrefToken()];boot2=[REF(M)]'>Kick</A> | "
 	if(M.client)
@@ -149,7 +172,7 @@
 	body += "</body></html>"
 
 	usr << browse(body, "window=adminplayeropts-[REF(M)];size=550x515")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Player Panel")
 
 /client/proc/cmd_admin_godmode(mob/M in GLOB.mob_list)
 	set category = "Admin.Game"
@@ -219,7 +242,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new_character.real_name = record_found.name
 		new_character.gender = lowertext(record_found.gender)
 		new_character.age = record_found.age
-		var/datum/dna/found_dna = record_found.dna_ref
+		var/datum/dna/found_dna = record_found.locked_dna
 		new_character.hardset_dna(found_dna.unique_identity, found_dna.mutation_index, null, record_found.name, record_found.blood_type, new record_found.species_type, found_dna.features)
 	else
 		new_character.randomize_human_appearance()
@@ -295,7 +318,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	to_chat(new_character, "You have been fully respawned. Enjoy the game.", confidential = TRUE)
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Respawn Character") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Respawn Character")
 	return new_character
 
 /client/proc/cmd_admin_list_open_jobs()
@@ -305,7 +328,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 	holder.manage_free_slots()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Manage Job Slots") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Manage Job Slots")
 
 /datum/admins/proc/manage_free_slots()
 	if(!check_rights())
@@ -424,7 +447,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
 		return
 	target_mind.traitor_panel()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Traitor Panel") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Traitor Panel")
 
 /datum/admins/proc/show_skill_panel(target)
 	set category = "Admin.Game"

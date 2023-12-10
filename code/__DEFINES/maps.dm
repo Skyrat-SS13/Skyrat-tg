@@ -104,7 +104,7 @@ Always compile, always use that verb, and always make sure that it works for wha
 // number - default gravity if there's no gravity generators or area overrides present
 #define ZTRAIT_GRAVITY "Gravity"
 
-// numeric offsets - e.g. {"Down": -1} means that chasms will fall to z - 1 rather than oblivion
+// Whether this z level is linked up/down. Bool.
 #define ZTRAIT_UP "Up"
 #define ZTRAIT_DOWN "Down"
 
@@ -150,9 +150,6 @@ Always compile, always use that verb, and always make sure that it works for wha
 // must correspond to _basemap.dm for things to work correctly
 #define DEFAULT_MAP_TRAITS list(\
 	DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
-	/* SKYRAT EDIT ADDITION BEGIN - MODULAR_MAPS */\
-	DECLARE_LEVEL("Offstation_skyrat", ZTRAITS_CENTCOM),\
-	/* SKYRAT EDIT ADDITION END - MODULAR_MAPS */\
 )
 
 // Camera lock flags

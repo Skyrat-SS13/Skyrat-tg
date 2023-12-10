@@ -143,7 +143,7 @@
 	message = "squeaks!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'sound/effects/mousesqueek.ogg'
+	sound = 'sound/creatures/mousesqueek.ogg'
 
 /datum/emote/living/merp
 	key = "merp"
@@ -456,12 +456,12 @@
 	var/image/gloveimg = image('icons/effects/effects.dmi', slapped, "slapglove", slapped.layer + 0.1)
 	gloveimg.pixel_y = -5
 	gloveimg.pixel_x = 0
-	flick_overlay(gloveimg, GLOB.clients, 10)
+	slapped.flick_overlay_view(gloveimg, 1 SECONDS)
 
 	// And animate the attack!
-	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 3)
-	animate(time = 1)
-	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 0.3 SECONDS)
+	animate(time = 0.1 SECONDS)
+	animate(alpha = 0, time = 0.3 SECONDS, easing = CIRCULAR_EASING|EASE_OUT)
 
 //Froggie Revolution
 /datum/emote/living/warble
