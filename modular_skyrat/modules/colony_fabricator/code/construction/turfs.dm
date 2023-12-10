@@ -34,7 +34,7 @@
 // Grated floor tile, for seeing wires under
 
 /turf/open/floor/catwalk_floor/colony_fabricator
-	icon = 'icons/turf/floors/catwalk_plating.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
 	icon_state = "prefab_above"
 	catwalk_type = "prefab"
 	baseturfs = /turf/open/floor/plating
@@ -54,6 +54,7 @@
 // "Normal" floor tiles
 
 /turf/open/floor/iron/colony
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
 	icon_state = "colony_grey"
 	base_icon_state = "colony_grey"
 	floor_tile = /obj/item/stack/tile/iron/colony

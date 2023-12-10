@@ -26,7 +26,9 @@
 		deployed_object = new thing_to_be_deployed(deploy_location)
 		deployed_object.setDir(new_direction)
 	else
-		deploy_location.place_on_top(thing_to_be_deployed)
+		var/turf/new_turf = deploy_location.place_on_top(thing_to_be_deployed, CHANGETURF_INHERIT_AIR|CHANGETURF_RECALC_ADJACENT)
+		QUEUE_SMOOTH_NEIGHBORS(new_turf)
+		QUEUE_SMOOTH(new_turf)
 
 	// Sets the direction of the resulting object if the variable says to
 	if(direction_setting)
