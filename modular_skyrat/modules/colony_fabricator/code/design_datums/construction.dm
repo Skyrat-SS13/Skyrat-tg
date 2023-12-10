@@ -13,6 +13,7 @@
 		"prefab_shutters_kit",
 		"prefab_floor_tile",
 		"prefab_cat_floor_tile",
+		"colony_fab_plastic_wall_panel",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
