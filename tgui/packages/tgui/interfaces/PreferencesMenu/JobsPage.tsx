@@ -315,7 +315,7 @@ const Department = (props: { department: string } & PropsWithChildren) => {
 
         const jobsForDepartment = sortJobs(
           Object.entries(jobs).filter(([_, job]) => job.department === name),
-          department.head
+          department.head,
         );
 
         return (
