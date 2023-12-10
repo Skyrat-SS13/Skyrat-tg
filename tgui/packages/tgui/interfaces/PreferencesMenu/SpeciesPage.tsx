@@ -242,7 +242,7 @@ const SpeciesPageInner = (props: {
   let species: [string, Species][] = Object.entries(props.species).map(
     ([species, data]) => {
       return [species, data];
-    }
+    },
   );
 
   // Humans are always the top of the list

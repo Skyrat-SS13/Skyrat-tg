@@ -59,7 +59,8 @@ export const CargoContent = (props) => {
           <Tabs.Tab
             icon="clipboard-list"
             selected={tab === 'company_import_window'}
-            onClick={() => act('company_import_window')}>
+            onClick={() => act('company_import_window')}
+          >
             Company Imports
           </Tabs.Tab>
           {!requestonly && (

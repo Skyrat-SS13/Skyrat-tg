@@ -205,7 +205,7 @@ const GenderButton = (props: {
 }) => {
   const [genderMenuOpen, setGenderMenuOpen] = useLocalState(
     'genderMenuOpen',
-    false
+    false,
   );
 
   return (
@@ -233,7 +233,7 @@ const GenderButton = (props: {
                     />
                   </Stack.Item>
                 );
-              }
+              },
             )}
           </Stack>
         ) : (
@@ -437,7 +437,7 @@ export const PreferenceList = (props: {
                 </Stack>
               </LabeledList.Item>
             );
-          }
+          },
         )}
       </LabeledList>
     </Stack.Item>
@@ -447,7 +447,7 @@ export const PreferenceList = (props: {
 export const getRandomization = (
   preferences: Record<string, unknown>,
   serverData: ServerData | undefined,
-  randomBodyEnabled: boolean
+  randomBodyEnabled: boolean,
 ): Record<string, RandomSetting> => {
   if (!serverData) {
     return {};
@@ -470,7 +470,7 @@ export const getRandomization = (
         data.character_preferences.randomization[preferenceKey] ||
           RandomSetting.Disabled,
       ];
-    })
+    }),
   );
 };
 
@@ -481,7 +481,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
   >('currentClothingMenu', null);
   const [multiNameInputOpen, setMultiNameInputOpen] = useLocalState(
     'multiNameInputOpen',
-    false
+    false,
   );
   const [randomToggleEnabled] = useRandomToggleState();
 
@@ -506,7 +506,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
               return (
                 currentSpeciesData.enabled_features.indexOf(featureName) !== -1
               );
-            }
+            },
           ),
         ];
 
@@ -517,7 +517,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
         const randomizationOfMainFeatures = getRandomization(
           Object.fromEntries(mainFeatures),
           serverData,
-          randomBodyEnabled
+          randomBodyEnabled,
         );
 
         const nonContextualPreferences = {
@@ -601,7 +601,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       name={data.character_preferences.names[data.name_to_use]}
                       handleUpdateName={createSetPreference(
                         act,
-                        data.name_to_use
+                        data.name_to_use,
                       )}
                       openMultiNameInput={() => {
                         setMultiNameInputOpen(true);
@@ -639,7 +639,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                             }
                             setRandomization={createSetRandomization(
                               act,
-                              clothingKey
+                              clothingKey,
                             )}
                           />
                         </Stack.Item>
@@ -656,7 +656,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                     randomizations={getRandomization(
                       contextualPreferences,
                       serverData,
-                      randomBodyEnabled
+                      randomBodyEnabled,
                     )}
                     preferences={contextualPreferences}
                     maxHeight="auto"
@@ -667,7 +667,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                     randomizations={getRandomization(
                       nonContextualPreferences,
                       serverData,
-                      randomBodyEnabled
+                      randomBodyEnabled,
                     )}
                     preferences={nonContextualPreferences}
                     maxHeight="auto"

@@ -21,7 +21,7 @@ export const RecordPrint = (props) => {
 
   const [printType, setPrintType] = useLocalState<PRINTOUT>(
     'printType',
-    PRINTOUT.Missing
+    PRINTOUT.Missing,
   );
   const [header, setHeader] = useLocalState<string>('printHeader', '');
   const [description, setDescription] = useLocalState<string>('printDesc', '');

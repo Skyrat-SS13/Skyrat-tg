@@ -222,7 +222,7 @@ const MemoriesSection = (props) => {
   const { memories } = data;
   const [selectedMemory, setSelectedMemory] = useSharedState(
     'memory',
-    (!!memories && memories[0]) || null
+    (!!memories && memories[0]) || null,
   );
   const memoryMap = {};
   for (const index in memories) {

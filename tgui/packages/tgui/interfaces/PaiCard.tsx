@@ -202,7 +202,8 @@ const PaiOptions = (props) => {
               icon={leash_enabled ? 'toggle-off' : 'toggle-on'}
               onClick={() => act('toggle_leash')}
               selected={leash_enabled}
-              tooltip="Whether or not the holoform is able to roam freely outside of its range.">
+              tooltip="Whether or not the holoform is able to roam freely outside of its range."
+            >
               Toggle
             </Button>
           </LabeledList.Item>

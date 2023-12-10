@@ -33,7 +33,10 @@ const CharacterProfiles = (props: {
   const { profiles, activeSlot, onClick } = props; // SKYRAT EDIT CHANGE
 
   return (
-    <Flex align="center" justify="center" /* SKYRAT EDIT CHANGE START - Skyrat uses a dropdown instead of buttons */ >
+    <Flex
+      align="center"
+      justify="center" /* SKYRAT EDIT CHANGE START - Skyrat uses a dropdown instead of buttons */
+    >
       <Flex.Item width="25%">
         <Dropdown
           width="100%"
@@ -48,7 +51,7 @@ const CharacterProfiles = (props: {
           }}
         />
       </Flex.Item>
-    </Flex > /* SKYRAT EDIT CHANGE END */
+    </Flex> /* SKYRAT EDIT CHANGE END */
   );
 };
 
@@ -150,7 +153,8 @@ export const CharacterPreferenceWindow = (props) => {
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Limbs}
-                  setPage={setCurrentPage}>
+                  setPage={setCurrentPage}
+                >
                   Augments+
                 </PageButton>
               </Stack.Item>
@@ -159,7 +163,8 @@ export const CharacterPreferenceWindow = (props) => {
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Languages}
-                  setPage={setCurrentPage}>
+                  setPage={setCurrentPage}
+                >
                   Languages
                 </PageButton>
               </Stack.Item>
