@@ -20,7 +20,6 @@
 		"soup_pot", // This one too
 		"water_synth",
 		"hydro_synth",
-		"organic_printer",
 		"global_positioning_beacon",
 		"frontier_sustenance_dispenser",
 	)
