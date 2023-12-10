@@ -11,10 +11,8 @@
 	design_ids = list(
 		"prefab_airlock_kit",
 		"prefab_shutters_kit",
-		"prefab_catwalk_kit",
 		"prefab_floor_tile",
 		"prefab_cat_floor_tile",
-		"prefab_wall_kit",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -54,38 +52,6 @@
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 30 SECONDS
-
-// Catwalk kit
-
-/datum/design/prefab_catwalk_kit
-	name = "Prefab Catwalk"
-	id = "prefab_catwalk_kit"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/flatpacked_machine/catwalk_kit
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
-	)
-	construction_time = 15 SECONDS
-
-// Catwalk kit
-
-/datum/design/prefab_wall_kit
-	name = "Prefab Wall Kit"
-	id = "prefab_wall_kit"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/flatpacked_machine/wall_kit
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
-	)
-	construction_time = 15 SECONDS
 
 // Fancy floor tiles
 

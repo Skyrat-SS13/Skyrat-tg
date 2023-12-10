@@ -18,19 +18,6 @@
 /turf/closed/wall/prefab_plastic/devastate_wall()
 	return
 
-/obj/item/flatpacked_machine/wall_kit
-	name = "prefab wall kit"
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
-	icon_state = "wall_item"
-	deploy_time = 3 SECONDS
-	type_to_deploy = /turf/closed/wall/prefab_plastic
-	custom_materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
-	)
-
-/obj/item/flatpacked_machine/wall_kit/give_deployable_component()
-	AddComponent(/datum/component/deployable/for_turfs, deploy_time, type_to_deploy)
-
 // Grated floor tile, for seeing wires under
 
 /turf/open/floor/catwalk_floor/colony_fabricator
@@ -139,13 +126,3 @@
 	smoothing_flags = NONE
 	smoothing_groups = null
 	canSmoothWith = null
-
-/obj/item/flatpacked_machine/catwalk_kit
-	name = "prefab catwalk kit"
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
-	icon_state = "catwalk_item"
-	deploy_time = 2 SECONDS
-	type_to_deploy = /obj/structure/lattice/catwalk/colony_lathe
-	custom_materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
-	)

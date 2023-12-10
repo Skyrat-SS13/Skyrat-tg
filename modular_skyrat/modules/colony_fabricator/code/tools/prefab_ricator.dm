@@ -51,9 +51,13 @@
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 /obj/item/rsf/colony_lathe/afterattack(atom/attacking_atom, mob/user, proximity)
+	afterattack_real(attacking_atom, user, proximity)
+	. = ..()
+
+/// Called during the normal afterattack, required because they have a bad habit of returning
+/obj/item/rsf/colony_lathe/proc/afterattack_real(atom/attacking_atom, mob/user, proximity)
 	if(cooldown > world.time)
 		return
-	. = ..()
 	if(!proximity)
 		return .
 	. |= AFTERATTACK_PROCESSED_ITEM
@@ -75,7 +79,8 @@
 		cooldown = world.time + cooldowndelay
 	return .
 
-/obj/item/rsf/colony_lathe/is_allowed(atom/to_check, mob/user, dir_we_use)
+/// Much like is_allowed on the rsf parent, except we don't suck
+/obj/item/rsf/colony_lathe/proc/is_allowed_real(atom/to_check, mob/user, dir_we_use)
 	if(is_type_in_list(to_dispense, list(/turf/open/floor/plating, /obj/structure/lattice,)))
 		if(!is_type_in_list(get_turf(to_check), turfs_we_can_plate))
 			user.balloon_alert(user, "must be viable terrain to plate")
@@ -102,4 +107,5 @@
 			user.balloon_alert(user, "must be placed on solid ground")
 			return FALSE
 		return TRUE
+	message_admins("RPF FAILED FOR UHH IDK LOL??")
 	return FALSE
