@@ -18,11 +18,30 @@
 		"survival_knife", // I just don't want to make a whole new node for this one sorry
 		"soup_pot", // This one too
 		"water_synth",
+		"co2_cracker",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
 	show_on_wiki = FALSE
 	starting_node = TRUE
+
+// CO2 cracker, portable machines that takes CO2 and turns it into oxygen
+
+/datum/design/co2_cracker
+	name = "Portable Carbon Dioxide Cracker"
+	id = "co2_cracker"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, // We're gonna pretend plasma is the catalyst for co2 cracking
+	)
+	build_path = /obj/machinery/electrolyzer/co2_cracker
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_ATMOS,
+	)
+	construction_time = 30 SECONDS
 
 // Wall mountable multi cell charger
 
