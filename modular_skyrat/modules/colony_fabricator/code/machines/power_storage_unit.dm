@@ -9,7 +9,7 @@
 	input_level_max = 4e5
 	output_level_max = 4e5
 	circuit = null
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/station_battery
 
