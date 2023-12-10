@@ -15,7 +15,7 @@ import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 const sortJobs = (entries: [string, Job][], head?: string) =>
   sortBy<[string, Job]>(
     ([key, _]) => (key === head ? -1 : 1),
-    ([key, _]) => key
+    ([key, _]) => key,
   )(entries);
 
 const PRIORITY_BUTTON_SIZE = '18px';
@@ -53,7 +53,7 @@ type CreateSetPriority = (priority: JobPriority | null) => () => void;
 const createSetPriorityCache: Record<string, CreateSetPriority> = {};
 
 const createCreateSetPriorityFromName = (
-  jobName: string
+  jobName: string,
 ): CreateSetPriority => {
   if (createSetPriorityCache[jobName] !== undefined) {
     return createSetPriorityCache[jobName];
@@ -111,7 +111,7 @@ const PriorityButtons = (props: {
   const { createSetPriority, isOverflow, priority } = props;
 
   return (
-    <Box
+    <Box // SKYRAT EDIT - Originally a stack
       style={{
         alignItems: 'center',
         height: '100%',
@@ -170,7 +170,7 @@ const PriorityButtons = (props: {
           />
         </>
       )}
-    </Box> // SKYRAT EDIT
+    </Box> // SKYRAT EDIT - Originally a stack
   );
 };
 
@@ -252,6 +252,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       />
     );
   }
+
   return (
     <Stack.Item className={className} height="100%" mt={0}>
       <Stack fill align="center">
