@@ -33,7 +33,7 @@
 	build_path = /obj/item/flatpacked_machine/airlock_kit
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 30 SECONDS
 
@@ -50,7 +50,7 @@
 	build_path = /obj/item/flatpacked_machine/shutter_kit
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 30 SECONDS
 
@@ -66,7 +66,7 @@
 	build_path = /obj/item/flatpacked_machine/catwalk_kit
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 15 SECONDS
 
@@ -82,7 +82,7 @@
 	build_path = /obj/item/flatpacked_machine/wall_kit
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 15 SECONDS
 
@@ -98,7 +98,7 @@
 	build_path = /obj/item/stack/tile/iron/colony/lathe_spawn
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 15 SECONDS
 
@@ -114,7 +114,7 @@
 	build_path = /obj/item/stack/tile/catwalk_tile/colony_lathe/lathe_spawn
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
 	construction_time = 15 SECONDS
 

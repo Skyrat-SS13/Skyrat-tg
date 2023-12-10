@@ -81,7 +81,7 @@
 			user.balloon_alert(user, "must be viable terrain to plate")
 			return FALSE
 		return TRUE
-	if(is_type_in_list(to_dispense, list(/turf/closed/wall, /obj/machinery/door, /obj/structure/sh)))
+	if(is_type_in_list(to_dispense, list(/turf/closed/wall, /obj/machinery/door)))
 		var/turf/target_turf = get_turf(to_check)
 		if(istype(target_turf, /turf/open/floor))
 			user.balloon_alert(user, "must be placed on constructed floor")
