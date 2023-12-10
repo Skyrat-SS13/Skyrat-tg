@@ -31,6 +31,15 @@
 	cost = CARGO_CRATE_VALUE * 6
 	restricted = TRUE
 
+/datum/armament_entry/company_import/akh_frontier/deployables_fab/medstation
+	item_type = /obj/item/wallframe/frontier_medstation
+	cost = CARGO_CRATE_VALUE * 3
+	restricted = TRUE
+
+/datum/armament_entry/company_import/akh_frontier/deployables_fab/foodricator
+	item_type = /obj/item/flatpacked_machine/organics_printer
+	cost = CARGO_CRATE_VALUE * 2
+
 // Various smaller appliances than the deployable machines below
 
 /datum/armament_entry/company_import/akh_frontier/appliances
