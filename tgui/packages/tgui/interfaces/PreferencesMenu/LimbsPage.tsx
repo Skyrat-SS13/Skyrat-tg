@@ -1,5 +1,12 @@
 // THIS IS A SKYRAT UI FILE
-import { Box, Stack, Section, Dropdown, Button, ColorBox } from '../../components';
+import {
+  Box,
+  Stack,
+  Section,
+  Dropdown,
+  Button,
+  ColorBox,
+} from '../../components';
 import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
@@ -56,7 +63,8 @@ export const Markings = (props) => {
                     limb_slot: props.limb.slot,
                     marking_id: marking.marking_id,
                   })
-                }>
+                }
+              >
                 <ColorBox color={marking.color} />
               </Button>
             </Stack.Item>
@@ -71,7 +79,8 @@ export const Markings = (props) => {
                     marking_id: marking.marking_id,
                     emissive: marking.emissive,
                   })
-                }>
+                }
+              >
                 E
               </Button>
             </Stack.Item>
@@ -84,7 +93,8 @@ export const Markings = (props) => {
                     limb_slot: props.limb.slot,
                     marking_id: marking.marking_id,
                   })
-                }>
+                }
+              >
                 -
               </Button>
             </Stack.Item>
@@ -95,7 +105,8 @@ export const Markings = (props) => {
         <Button
           fill
           color="good"
-          onClick={() => act('add_marking', { limb_slot: props.limb.slot })}>
+          onClick={() => act('add_marking', { limb_slot: props.limb.slot })}
+        >
           +
         </Button>
       </Stack.Item>
@@ -244,7 +255,8 @@ export const LimbsPage = (props) => {
           <Box
             style={{
               marginTop: '3em',
-            }}>
+            }}
+          >
             <Section title="Quirk Points Balance" />
           </Box>
 
@@ -257,7 +269,8 @@ export const LimbsPage = (props) => {
             style={{
               width: '20%',
               alignItems: 'center',
-            }}>
+            }}
+          >
             {balance}
           </Box>
         </Section>
