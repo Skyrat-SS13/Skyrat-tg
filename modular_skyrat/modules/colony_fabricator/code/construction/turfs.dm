@@ -10,13 +10,28 @@
 	can_engrave = FALSE
 	hardness = 70
 	slicing_duration = 5 SECONDS
-	girder_type = null
 
 /turf/closed/wall/prefab_plastic/break_wall()
 	return
 
 /turf/closed/wall/prefab_plastic/devastate_wall()
 	return
+
+/obj/item/stack/sheet/plastic_wall_panel
+	name = "plastic wall panels"
+	singular_name = "plastic wall panel"
+	desc = "What better material to make the walls of your soon to be home out of than sheets of flimsy plastic? \
+		Metal? What are you talking about, metal walls, in this economy?"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
+	icon_state = "sheet-plastic"
+	inhand_icon_state = "sheet-plastic"
+	mats_per_unit = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
+	material_type = /datum/material/plastic
+	merge_type = /obj/item/stack/sheet/plastic_wall_panel
+	walltype = /turf/closed/wall/prefab_plastic
+
+/obj/item/stack/sheet/plastic_wall_panel/ten
+	amount = 10
 
 // Grated floor tile, for seeing wires under
 
@@ -113,16 +128,3 @@
 /obj/item/stack/tile/iron/colony/white/bolts
 	icon_state = "colony_white_bolts"
 	turf_type = /turf/open/floor/iron/colony/white/bolts
-
-// This one isn't a turf its just a catwalk, but bite me for it I don't care
-
-/obj/structure/lattice/catwalk/colony_lathe
-	name = "prefab catwalk"
-	desc = "A catwalk for easier EVA maneuvering and cable placement. \
-		This particular design is common around new colonies and prefab buildings, \
-		where its simpler construction makes for an easier (albiet more hazardous) construction."
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
-	icon_state = "prefab_above"
-	smoothing_flags = NONE
-	smoothing_groups = null
-	canSmoothWith = null

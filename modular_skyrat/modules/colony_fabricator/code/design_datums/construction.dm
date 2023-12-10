@@ -85,3 +85,18 @@
 	)
 	construction_time = 15 SECONDS
 
+// Plastic wall panels, twice the wall for the same price in plastic, efficient!
+
+/datum/design/colony_fab_plastic_wall_panel
+	name = "Plastic Wall Paneling"
+	id = "colony_fab_plastic_wall_panel"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5,
+	)
+	build_path = /obj/item/stack/sheet/plastic_wall_panel/ten
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
+	)
+	construction_time = 15 SECONDS
