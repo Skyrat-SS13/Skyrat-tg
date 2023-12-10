@@ -69,6 +69,20 @@ GLOBAL_LIST_INIT(cracker_reactions, cracker_reactions_list())
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/atmos_machines.dmi'
 	circuit = null
 	working_power = 1
+	/// Soundloop for while the thermomachine is turned on
+	var/datum/looping_sound/conditioner_running/soundloop
+
+/obj/machinery/electrolyzer/co2_cracker/Initialize(mapload)
+	. = ..()
+	soundloop = new(src, FALSE)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
+
+/obj/machinery/electrolyzer/co2_cracker/process_atmos()
+	if(on && !soundloop.loop_started)
+		soundloop.start()
+	else if(soundloop.loop_started)
+		soundloop.stop()
+	. = ..()
 
 /obj/machinery/electrolyzer/co2_cracker/call_reactions(datum/gas_mixture/env)
 	for(var/reaction in GLOB.cracker_reactions)
