@@ -29,4 +29,4 @@
 		return
 	new /obj/item/stack/sheet/mineral/stone(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS

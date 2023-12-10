@@ -205,7 +205,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/human_user = user
-	if(human_user.dna.species.id == SPECIES_HUMAN && !HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
+	if(!HAS_MIND_TRAIT(human_user, TRAIT_MIMING)) // SKYRAT EDIT CHANGE - Let other species gasp - ORIGINAL: if(human_user.dna.species.id == SPECIES_HUMAN && !HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
 		if(human_user.physique == FEMALE)
 			return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
 		else
