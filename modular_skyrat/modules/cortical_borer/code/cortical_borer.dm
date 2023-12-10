@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	borer = null
 	return ..()
 
-/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
+/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, movement_flags)
 	. = ..()
 	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
 		body_focus.on_add()
