@@ -63,6 +63,23 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
 	)
 
+// RCD-Like device that can't deconstruct, and can only make a limited selection of prefab themed structures
+
+/datum/design/colony_prefab_ricator
+	name = "Rapid-Prefab-Fabricator"
+	id = "colony_prefab_ricator"
+	build_type = COLONY_FABRICATOR
+	build_path = /obj/item/rsf/colony_lathe
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
+	)
+
 // Slightly slower drill that fits in backpacks
 
 /datum/design/colony_compact_drill
