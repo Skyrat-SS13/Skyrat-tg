@@ -14,6 +14,7 @@
 		"prefab_catwalk_kit",
 		"prefab_floor_tile",
 		"prefab_cat_floor_tile",
+		"prefab_wall_kit",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
