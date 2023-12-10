@@ -112,24 +112,6 @@
 	)
 	construction_time = 10 SECONDS
 
-// Similar to a biogenerator, but with a unique selection of items
-
-/datum/design/organic_printer
-	name = "Organic Materials Printer"
-	id = "organic_printer"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5.5,
-		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/machinery/biogenerator/organic_printer
-	category = list(
-		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
-	)
-	construction_time = 45 SECONDS
-
 // Large beacon to act as a GPS unit that's less portable
 
 /datum/design/global_positioning_beacon

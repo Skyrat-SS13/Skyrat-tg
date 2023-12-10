@@ -53,6 +53,10 @@
 	cost = CARGO_CRATE_VALUE * 6
 	restricted = TRUE
 
+/datum/armament_entry/company_import/akh_frontier/deployables_fab/organics_printer
+	item_type = /obj/item/flatpacked_machine/organics_printer
+	cost = CARGO_CRATE_VALUE * 3
+
 // Various smaller appliances than the deployable machines below
 
 /datum/armament_entry/company_import/akh_frontier/appliances
@@ -75,10 +79,6 @@
 
 /datum/armament_entry/company_import/akh_frontier/appliances/sustenance_dispenser
 	item_type = /obj/item/flatpacked_machine/sustenance_machine
-
-/datum/armament_entry/company_import/akh_frontier/appliances/organics_printer
-	item_type = /obj/item/flatpacked_machine/organics_printer
-	cost = PAYCHECK_COMMAND * 4.5
 
 // Flatpacked, ready to deploy machines
 
