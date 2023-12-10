@@ -111,7 +111,8 @@ const ResearchSection = (props) => {
       {data.research_tiers.map((inside_array: Array<Research>) => (
         <Stack vertical fill key={inside_array[0].name}>
           <Section
-            title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}>
+            title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}
+          >
             {inside_array.map((single_research: Research) => (
               <Stack.Item key={single_research.name}>
                 <Section fill>
@@ -156,7 +157,7 @@ const ResearchNode = (research: Research, act: any) => {
                     tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
                   />
                 </div>
-              )
+              ),
             )}
             {research.research_scriptures.map(
               (scripture_data: DesignInfo, i: number) => (
@@ -167,7 +168,7 @@ const ResearchNode = (research: Research, act: any) => {
                     tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
                   />
                 </div>
-              )
+              ),
             )}
           </Flex>
         </Box>

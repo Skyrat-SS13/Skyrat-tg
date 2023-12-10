@@ -15,7 +15,8 @@ export const MilkingMachine = (props) => {
     <Window resizable width={570} height={375}>
       <Window.Content
         fontSize="14px"
-        backgroundColor={palette.WindowBackgroundColor}>
+        backgroundColor={palette.WindowBackgroundColor}
+      >
         <MilkingMachineContent />
       </Window.Content>
     </Window>
@@ -93,7 +94,8 @@ const MilkingMachineContent = (props) => {
                 <Section
                   bold
                   backgroundColor={palette.SectionBackgroundColor}
-                  textAlign="center">
+                  textAlign="center"
+                >
                   Machine control
                 </Section>
               </Stack.Item>
@@ -111,7 +113,8 @@ const MilkingMachineContent = (props) => {
                       <Stack.Item>
                         <Section
                           backgroundColor={palette.SectionBackgroundColor}
-                          textAlign="center">
+                          textAlign="center"
+                        >
                           State: {mode}
                         </Section>
                       </Stack.Item>
@@ -134,7 +137,8 @@ const MilkingMachineContent = (props) => {
                 <Section
                   bold
                   backgroundColor={palette.SectionBackgroundColor}
-                  textAlign="center">
+                  textAlign="center"
+                >
                   Organ control
                 </Section>
               </Stack.Item>
@@ -174,14 +178,16 @@ const MilkingMachineContent = (props) => {
                           {current_selected_organ === null && (
                             <Section
                               backgroundColor={palette.SectionBackgroundColor}
-                              textAlign="center">
+                              textAlign="center"
+                            >
                               Organ: none
                             </Section>
                           )}
                           {current_selected_organ !== null && (
                             <Section
                               backgroundColor={palette.SectionBackgroundColor}
-                              textAlign="center">
+                              textAlign="center"
+                            >
                               Organ: {current_selected_organ}
                             </Section>
                           )}
@@ -325,7 +331,8 @@ const MilkingMachineContent = (props) => {
                   <Section
                     bold
                     backgroundColor={palette.SectionBackgroundColor}
-                    textAlign="center">
+                    textAlign="center"
+                  >
                     Beaker: {BeakerName}
                   </Section>
                 )}
@@ -333,7 +340,8 @@ const MilkingMachineContent = (props) => {
                   <Section
                     bold
                     backgroundColor={palette.SectionBackgroundColor}
-                    textAlign="center">
+                    textAlign="center"
+                  >
                     Beaker: none
                   </Section>
                 )}
@@ -344,7 +352,8 @@ const MilkingMachineContent = (props) => {
                     {beaker !== null && (
                       <Section
                         backgroundColor={palette.SectionBackgroundColor}
-                        textAlign="center">
+                        textAlign="center"
+                      >
                         Volume: {Math.round(beakerCurrentVolume)} /{' '}
                         {Math.round(beakerMaxVolume)}
                       </Section>
@@ -352,7 +361,8 @@ const MilkingMachineContent = (props) => {
                     {beaker === null && (
                       <Section
                         backgroundColor={palette.SectionBackgroundColor}
-                        textAlign="center">
+                        textAlign="center"
+                      >
                         Volume: n/a
                       </Section>
                     )}
@@ -383,7 +393,8 @@ const MilkingMachineContent = (props) => {
                 <Section
                   bold
                   backgroundColor={palette.SectionBackgroundColor}
-                  textAlign="center">
+                  textAlign="center"
+                >
                   Tanks status
                 </Section>
               </Stack.Item>
@@ -421,7 +432,8 @@ const MilkingMachineContent = (props) => {
                       <Stack.Item grow basis="1rem">
                         <Section
                           backgroundColor={palette.SectionBackgroundColor}
-                          textAlign="center">
+                          textAlign="center"
+                        >
                           {Math.round(milkTankCurrentVolume)} /{' '}
                           {Math.round(milkTankMaxVolume)}
                         </Section>
@@ -469,7 +481,8 @@ const MilkingMachineContent = (props) => {
                       <Stack.Item grow basis="1rem">
                         <Section
                           backgroundColor={palette.SectionBackgroundColor}
-                          textAlign="center">
+                          textAlign="center"
+                        >
                           {Math.round(girlcumTankCurrentVolume)} /{' '}
                           {Math.round(girlcumTankMaxVolume)}
                         </Section>
@@ -517,7 +530,8 @@ const MilkingMachineContent = (props) => {
                       <Stack.Item grow basis="1rem">
                         <Section
                           backgroundColor={palette.SectionBackgroundColor}
-                          textAlign="center">
+                          textAlign="center"
+                        >
                           {Math.round(semenTankCurrentVolume)} /{' '}
                           {Math.round(semenTankMaxVolume)}
                         </Section>

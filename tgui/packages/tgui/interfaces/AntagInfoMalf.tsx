@@ -4,7 +4,11 @@ import { GenericUplink, Item } from './Uplink/GenericUplink';
 import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
-import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+import {
+  ObjectivePrintout,
+  Objective,
+  ReplaceObjectivesButton,
+} from './common/Objectives';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
@@ -86,10 +90,10 @@ const FlavorSection = (props) => {
           tooltip={multiline`
             Please refer to the 'Antagonist Policy' section of the wiki
             if you have any questions.`}
-          tooltipPosition="bottom-start">
-          Policy
-        </Button>
-      }>
+          tooltipPosition="bottom-start"
+        />
+      }
+    >
       <Stack vertical fill>
         <Stack.Item grow>
           <Stack fill vertical>
@@ -196,7 +200,8 @@ export const AntagInfoMalf = (props) => {
     <Window
       width={660}
       height={530}
-      theme={(antagInfoTab === 0 && 'hackerman') || 'malfunction'}>
+      theme={(antagInfoTab === 0 && 'hackerman') || 'malfunction'}
+    >
       <Window.Content style={{ fontFamily: 'Consolas, monospace' }}>
         <Stack vertical fill>
           <Stack.Item>
@@ -204,13 +209,15 @@ export const AntagInfoMalf = (props) => {
               <Tabs.Tab
                 icon="info"
                 selected={antagInfoTab === 0}
-                onClick={() => setAntagInfoTab(0)}>
+                onClick={() => setAntagInfoTab(0)}
+              >
                 Information
               </Tabs.Tab>
               <Tabs.Tab
                 icon="code"
                 selected={antagInfoTab === 1}
-                onClick={() => setAntagInfoTab(1)}>
+                onClick={() => setAntagInfoTab(1)}
+              >
                 Malfunction Modules
               </Tabs.Tab>
             </Tabs>
