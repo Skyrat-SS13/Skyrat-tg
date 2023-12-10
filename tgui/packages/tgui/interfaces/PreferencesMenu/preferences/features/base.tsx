@@ -3,9 +3,16 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createElement, ReactNode } from 'react';
 
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
-// SKYRAT EDIT - adds TextArea to imports
-import { Box, Button, Dropdown, Input, NumberInput, Slider, Stack, TextArea } from '../../../../components';
-// SKYRAT EDIT END
+import {
+  Box,
+  Button,
+  Dropdown,
+  Input,
+  NumberInput,
+  Slider,
+  Stack,
+  TextArea, // SKYRAT EDIT ADDITION
+} from '../../../../components';
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
@@ -14,7 +21,7 @@ export const sortChoices = sortBy<[string, ReactNode]>(([name]) => name);
 export type Feature<
   TReceiving,
   TSending = TReceiving,
-  TServerData = undefined
+  TServerData = undefined,
 > = {
   name: string;
   component: FeatureValue<TReceiving, TSending, TServerData>;
@@ -31,13 +38,13 @@ export type Feature<
 type FeatureValue<
   TReceiving,
   TSending = TReceiving,
-  TServerData = undefined
+  TServerData = undefined,
 > = ComponentType<FeatureValueProps<TReceiving, TSending, TServerData>>;
 
 export type FeatureValueProps<
   TReceiving,
   TSending = TReceiving,
-  TServerData = undefined
+  TServerData = undefined,
 > = Readonly<{
   act: typeof sendAct;
   featureId: string;
@@ -54,7 +61,8 @@ export const FeatureColorInput = (props: FeatureValueProps<string>) => {
         props.act('set_color_preference', {
           preference: props.featureId,
         });
-      }}>
+      }}
+    >
       <Stack align="center" fill>
         <Stack.Item>
           <Box
@@ -68,8 +76,8 @@ export const FeatureColorInput = (props: FeatureValueProps<string>) => {
               width: '11px',
               ...(props.shrink
                 ? {
-                  margin: '1px',
-                }
+                    margin: '1px',
+                  }
                 : {}),
             }}
           />
@@ -84,7 +92,7 @@ export const FeatureColorInput = (props: FeatureValueProps<string>) => {
 export type FeatureToggle = Feature<BooleanLike, boolean>;
 
 export const CheckboxInput = (
-  props: FeatureValueProps<BooleanLike, boolean>
+  props: FeatureValueProps<BooleanLike, boolean>,
 ) => {
   return (
     <Button.Checkbox
@@ -97,7 +105,7 @@ export const CheckboxInput = (
 };
 
 export const CheckboxInputInverse = (
-  props: FeatureValueProps<BooleanLike, boolean>
+  props: FeatureValueProps<BooleanLike, boolean>,
 ) => {
   return (
     <Button.Checkbox
@@ -112,7 +120,7 @@ export const CheckboxInputInverse = (
 export const createDropdownInput = <T extends string | number = string>(
   // Map of value to display texts
   choices: Record<T, ReactNode>,
-  dropdownProps?: Record<T, unknown>
+  dropdownProps?: Record<T, unknown>,
 ): FeatureValue<T> => {
   return (props: FeatureValueProps<T>) => {
     return (
@@ -127,7 +135,7 @@ export const createDropdownInput = <T extends string | number = string>(
               displayText: label,
               value: dataValue,
             };
-          }
+          },
         )}
         {...dropdownProps}
       />
@@ -144,10 +152,7 @@ export type FeatureChoicedServerData = {
 export type FeatureChoiced = Feature<string, string, FeatureChoicedServerData>;
 
 const capitalizeFirstLetter = (text: string) =>
-  text
-    .toString()
-    .charAt(0)
-    .toUpperCase() + text.toString().slice(1);
+  text.toString().charAt(0).toUpperCase() + text.toString().slice(1);
 
 export const StandardizedDropdown = (props: {
   choices: string[];
@@ -181,7 +186,7 @@ export const FeatureDropdownInput = (
   props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
     disabled?: boolean;
     buttons?: boolean;
-  }
+  },
 ) => {
   const serverData = props.serverData;
   if (!serverData) {
@@ -194,7 +199,7 @@ export const FeatureDropdownInput = (
       serverData.choices.map((choice) => [
         choice,
         capitalizeFirstLetter(choice),
-      ])
+      ]),
     );
 
   return (
@@ -222,7 +227,7 @@ export const FeatureIconnedDropdownInput = (
     },
     string,
     FeatureChoicedServerData
-  >
+  >,
 ) => {
   const serverData = props.serverData;
   if (!serverData) {
@@ -237,7 +242,7 @@ export const FeatureIconnedDropdownInput = (
       serverData.choices.map((choice) => [
         choice,
         capitalizeFirstLetter(choice),
-      ])
+      ]),
     );
 
   const displayNames = Object.fromEntries(
@@ -263,7 +268,7 @@ export const FeatureIconnedDropdownInput = (
       }
 
       return [choice, element];
-    })
+    }),
   );
 
   return (
@@ -285,7 +290,7 @@ export type FeatureNumericData = {
 export type FeatureNumeric = Feature<number, number, FeatureNumericData>;
 
 export const FeatureNumberInput = (
-  props: FeatureValueProps<number, number, FeatureNumericData>
+  props: FeatureValueProps<number, number, FeatureNumericData>,
 ) => {
   if (!props.serverData) {
     return <Box>Loading...</Box>;
@@ -305,7 +310,7 @@ export const FeatureNumberInput = (
 };
 
 export const FeatureSliderInput = (
-  props: FeatureValueProps<number, number, FeatureNumericData>
+  props: FeatureValueProps<number, number, FeatureNumericData>,
 ) => {
   if (!props.serverData) {
     return <Box>Loading...</Box>;
@@ -339,7 +344,7 @@ export const FeatureValueInput = (props: {
 
   const [predictedValue, setPredictedValue] = useLocalState(
     `${props.featureId}_predictedValue_${data.active_slot}`,
-    props.value
+    props.value,
   );
 
   const changeValue = (newValue: unknown) => {
@@ -369,7 +374,7 @@ export type FeatureShortTextData = {
 };
 
 export const FeatureShortTextInput = (
-  props: FeatureValueProps<string, string, FeatureShortTextData>
+  props: FeatureValueProps<string, string, FeatureShortTextData>,
 ) => {
   if (!props.serverData) {
     return <Box>Loading...</Box>;
@@ -388,7 +393,7 @@ export const FeatureShortTextInput = (
 // SKYRAT FEATURES DOWN HERE
 
 export const FeatureTextInput = (
-  props: FeatureValueProps<string, string, FeatureShortTextData>
+  props: FeatureValueProps<string, string, FeatureShortTextData>,
 ) => {
   if (!props.serverData) {
     return <Box>Loading...</Box>;
@@ -414,7 +419,8 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
               preference: props.featureId,
               value: index + 1,
             });
-          }}>
+          }}
+        >
           <Stack align="center" fill>
             <Stack.Item>
               <Box
@@ -428,8 +434,8 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                   width: '11px',
                   ...(props.shrink
                     ? {
-                      'margin': '1px',
-                    }
+                        margin: '1px',
+                      }
                     : {}),
                 }}
               />

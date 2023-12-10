@@ -3,14 +3,19 @@ import { classes } from 'common/react';
 import { PropsWithChildren, ReactNode } from 'react';
 import { useBackend } from '../../backend';
 import { Box, Button, Dropdown, Stack, Tooltip } from '../../components';
-import { logger } from '../../logging';
-import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from './data';
+import {
+  createSetPreference,
+  Job,
+  JoblessRole,
+  JobPriority,
+  PreferencesMenuData,
+} from './data';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
 const sortJobs = (entries: [string, Job][], head?: string) =>
   sortBy<[string, Job]>(
     ([key, _]) => (key === head ? -1 : 1),
-    ([key, _]) => key
+    ([key, _]) => key,
   )(entries);
 
 const PRIORITY_BUTTON_SIZE = '18px';
@@ -48,7 +53,7 @@ type CreateSetPriority = (priority: JobPriority | null) => () => void;
 const createSetPriorityCache: Record<string, CreateSetPriority> = {};
 
 const createCreateSetPriorityFromName = (
-  jobName: string
+  jobName: string,
 ): CreateSetPriority => {
   if (createSetPriorityCache[jobName] !== undefined) {
     return createSetPriorityCache[jobName];
@@ -106,7 +111,7 @@ const PriorityButtons = (props: {
   const { createSetPriority, isOverflow, priority } = props;
 
   return (
-    <Box
+    <Box // SKYRAT EDIT - Originally a stack
       style={{
         alignItems: 'center',
         height: '100%',
@@ -114,7 +119,8 @@ const PriorityButtons = (props: {
         paddingLeft: '0.3em',
         paddingTop: '0.12em', // SKYRAT EDIT ADDITION - Add some vertical padding
         paddingBottom: '0.12em', // SKYRAT EDIT ADDITION - To make this look nicer
-      }}>
+      }}
+    >
       {isOverflow ? (
         <>
           <PriorityButton
@@ -164,7 +170,7 @@ const PriorityButtons = (props: {
           />
         </>
       )}
-    </Box> // SKYRAT EDIT
+    </Box> // SKYRAT EDIT - Originally a stack
   );
 };
 
@@ -246,6 +252,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       />
     );
   }
+
   return (
     <Stack.Item className={className} height="100%" mt={0}>
       <Stack fill align="center">
@@ -255,10 +262,10 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
             width="50%"
             style={{
               paddingLeft: '0.3em',
-            }}>
-            {' '}
+            }}
+          >
             {
-              // SKYRAT EDIT
+              // SKYRAT EDIT CHANGE START - ORIGINAL: {name}
               !job.alt_titles ? (
                 name
               ) : (
@@ -271,7 +278,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
                   }
                 />
               )
-              // SKYRAT EDIT END
+              // SKYRAT EDIT CHANGE END
             }
           </Stack.Item>
         </Tooltip>
@@ -287,7 +294,6 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
 const Department = (props: { department: string } & PropsWithChildren) => {
   const { children, department: name } = props;
   const className = `PreferencesMenu__Jobs__departments--${name}`;
-  logger.log(name + ': ' + className);
 
   return (
     <ServerPreferencesFetcher
@@ -309,15 +315,13 @@ const Department = (props: { department: string } & PropsWithChildren) => {
 
         const jobsForDepartment = sortJobs(
           Object.entries(jobs).filter(([_, job]) => job.department === name),
-          department.head
+          department.head,
         );
 
-        logger.log(className);
         return (
           <Box>
             {
               jobsForDepartment.map(([name, job]) => {
-                logger.log(name);
                 return (
                   <JobRow /* SKYRAT EDIT START - Fixing alt titles */
                     className={classes([

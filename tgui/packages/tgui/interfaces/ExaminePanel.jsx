@@ -15,12 +15,13 @@ const formatURLs = (text) => {
     parts.push(
       <a
         style={{
-          'color': '#0591e3',
+          color: '#0591e3',
           'text-decoration': 'none',
         }}
-        href={url}>
+        href={url}
+      >
         {url}
-      </a>
+      </a>,
     );
     lastIndex = index + url.length;
     return url;
@@ -90,7 +91,8 @@ export const ExaminePanel = (props) => {
                   scrollable
                   fill
                   title={character_name + "'s Flavor Text:"}
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {formatURLs(flavor_text)}
                 </Section>
               </Stack.Item>
@@ -101,7 +103,8 @@ export const ExaminePanel = (props) => {
                       scrollable
                       fill
                       title="OOC Notes"
-                      preserveWhitespace>
+                      preserveWhitespace
+                    >
                       {formatURLs(ooc_notes)}
                     </Section>
                   </Stack.Item>
@@ -114,7 +117,8 @@ export const ExaminePanel = (props) => {
                           ? 'Species: ' + custom_species
                           : 'No Custom Species!'
                       }
-                      preserveWhitespace>
+                      preserveWhitespace
+                    >
                       {custom_species
                         ? formatURLs(custom_species_lore)
                         : 'Just a normal space dweller.'}
