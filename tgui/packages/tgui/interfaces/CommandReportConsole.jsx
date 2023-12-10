@@ -1,6 +1,13 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
-import { Button, NoticeBox, Input, Section, Stack, TextArea } from '../components';
+import {
+  Button,
+  NoticeBox,
+  Input,
+  Section,
+  Stack,
+  TextArea,
+} from '../components';
 import { Window } from '../layouts';
 
 export const CommandReportConsole = (props) => {
@@ -49,7 +56,8 @@ export const CommandReportConsole = (props) => {
                   <Button.Checkbox
                     fluid
                     checked={announce_contents}
-                    onClick={() => act('toggle_announce')}>
+                    onClick={() => act('toggle_announce')}
+                  >
                     Announce Contents
                   </Button.Checkbox>
                 </Stack.Item>
