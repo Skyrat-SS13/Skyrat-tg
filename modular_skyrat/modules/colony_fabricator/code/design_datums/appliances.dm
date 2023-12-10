@@ -46,42 +46,6 @@
 	)
 	construction_time = 30 SECONDS
 
-// Similar to a biogenerator, but makes only food related items and can go on tables
-
-/datum/design/organic_ration_printer
-	name = "Organic Rations Printer"
-	id = "organic_ration_printer"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2.5,
-		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/machinery/biogenerator/foodricator
-	category = list(
-		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
-	)
-	construction_time = 45 SECONDS
-
-// Similar to a biogenerator, but makes only medical supplies and is mounted on walls
-
-/datum/design/frontier_medstation
-	name = "Wall Med-Station"
-	id = "frontier_medstation"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/silver = SHEET_MATERIAL_AMOUNT * 3,
-		/datum/material/gold = SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/wallframe/frontier_medstation
-	category = list(
-		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
-	)
-	construction_time = 45 SECONDS
-
 // Wall mountable multi cell charger
 
 /datum/design/wall_mounted_multi_charger
