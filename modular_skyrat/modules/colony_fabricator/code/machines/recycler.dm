@@ -39,7 +39,7 @@
 		/datum/component/material_container, \
 		allowed_materials, \
 		INFINITY, \
-		MATCONTAINER_EXAMINE|MATCONTAINER_NO_INSERT|BREAKDOWN_FLAGS_RECYCLER, \
+		MATCONTAINER_EXAMINE|BREAKDOWN_FLAGS_RECYCLER, \
 		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/colony_recycler, has_eaten_materials)) \
 	)
 
