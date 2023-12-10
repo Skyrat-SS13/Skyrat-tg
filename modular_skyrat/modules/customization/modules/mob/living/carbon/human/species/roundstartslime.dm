@@ -389,7 +389,7 @@
 			if(robot_organs)
 				replacement_organ.organ_flags |= ORGAN_ROBOTIC
 			replacement_organ.build_from_dna(alterer.dna, chosen_key)
-			replacement_organ.Insert(alterer, special = TRUE, drop_if_replaced = FALSE)
+			replacement_organ.Insert(alterer, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 		else
 			var/list/new_acc_list = list()
 			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name

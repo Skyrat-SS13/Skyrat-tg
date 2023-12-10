@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	return FALSE
 
 //so if a person is debrained, the borer is removed
-/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
+/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, movement_flags = NO_ID_TRANSFER)
 	. = ..()
 	var/mob/living/basic/cortical_borer/cb_inside = target.has_borer()
 	if(cb_inside)

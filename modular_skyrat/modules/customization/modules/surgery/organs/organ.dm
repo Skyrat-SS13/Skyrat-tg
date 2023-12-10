@@ -14,7 +14,7 @@
 	if(mutantpart_key)
 		color = mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
 
-/obj/item/organ/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/Insert(mob/living/carbon/M, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	var/mob/living/carbon/human/H = M
 	if(mutantpart_key && istype(H))
 		H.dna.species.mutant_bodyparts[mutantpart_key] = mutantpart_info.Copy()
