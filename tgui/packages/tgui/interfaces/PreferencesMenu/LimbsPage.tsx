@@ -124,7 +124,7 @@ export const AugmentationPage = (props) => {
   let balance = -data.quirks_balance;
   if (props.limb.can_augment) {
     return (
-      <div style={{ 'margin-bottom': '1.5em' }}>
+      <div style={{ marginBottom: '1.5em' }}>
         <Section fill title={props.limb.name}>
           <Stack fill vertical>
             <Stack.Item>
@@ -243,7 +243,7 @@ export const LimbsPage = (props) => {
           <RotateCharacterButtons />
           <Box
             style={{
-              'margin-top': '3em',
+              marginTop: '3em',
             }}>
             <Section title="Quirk Points Balance" />
           </Box>
@@ -255,8 +255,8 @@ export const LimbsPage = (props) => {
             fontSize="1.2em"
             py={0.5}
             style={{
-              'width': '20%',
-              'align-items': 'center',
+              width: '20%',
+              alignItems: 'center',
             }}>
             {balance}
           </Box>

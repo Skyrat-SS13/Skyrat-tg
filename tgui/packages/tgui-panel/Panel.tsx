@@ -14,24 +14,13 @@ import { PingIndicator } from './ping';
 import { ReconnectButton } from './reconnect';
 import { SettingsPanel, useSettings } from './settings';
 
-<<<<<<< HEAD:tgui/packages/tgui-panel/Panel.jsx
-export const Panel = (props, context) => {
-  // IE8-10: Needs special treatment due to missing Flex support
-  if (Byond.IS_LTE_IE10) {
-    return <HoboPanel />;
-  }
-  const audio = useAudio(context);
-  const settings = useSettings(context);
-  const game = useGame(context);
-=======
 export const Panel = (props) => {
   const audio = useAudio();
   const settings = useSettings();
   const game = useGame();
->>>>>>> 6b30843774f (Converts some of tgui-panel to typescript (#80057)):tgui/packages/tgui-panel/Panel.tsx
   if (process.env.NODE_ENV !== 'production') {
     const { useDebug, KitchenSink } = require('tgui/debug');
-    const debug = useDebug(context);
+    const debug = useDebug();
     if (debug.kitchenSink) {
       return <KitchenSink panel />;
     }
@@ -110,30 +99,3 @@ export const Panel = (props) => {
     </Pane>
   );
 };
-<<<<<<< HEAD:tgui/packages/tgui-panel/Panel.jsx
-
-const HoboPanel = (props, context) => {
-  const settings = useSettings(context);
-  return (
-    <Pane theme={settings.theme}>
-      <Pane.Content scrollable>
-        <Button
-          style={{
-            position: 'fixed',
-            top: '1em',
-            right: '2em',
-            'z-index': 1000,
-          }}
-          selected={settings.visible}
-          onClick={() => settings.toggle()}>
-          Settings
-        </Button>
-        {(settings.visible && <SettingsPanel />) || (
-          <ChatPanel lineHeight={settings.lineHeight} />
-        )}
-      </Pane.Content>
-    </Pane>
-  );
-};
-=======
->>>>>>> 6b30843774f (Converts some of tgui-panel to typescript (#80057)):tgui/packages/tgui-panel/Panel.tsx
