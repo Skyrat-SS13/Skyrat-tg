@@ -31,7 +31,7 @@
 
 // Deployable item for cargo for the rations printer
 
-/obj/item/flatpacked_machine/organics_printer
+/obj/item/flatpacked_machine/organics_ration_printer
 	name = "organic rations printer parts kit"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/foodricator.dmi'
 	icon_state = "biogenerator_parts"

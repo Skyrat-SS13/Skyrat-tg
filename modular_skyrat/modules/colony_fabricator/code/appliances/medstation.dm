@@ -7,6 +7,7 @@
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/medstation.dmi'
 	circuit = null
 	anchored = TRUE
+	density = FALSE
 	efficiency = 1
 	productivity = 2
 	show_categories = list(
@@ -48,8 +49,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/biogenerator/medstation, 29)
 /obj/item/wallframe/frontier_medstation
 	name = "unmounted wall med-station"
 	desc = "The innovative technology of a biogenerator to print medical supplies, but able to be mounted neatly on a wall out of the way!"
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/packed_machines.dmi'
-	icon_state = "cell_charger_packed"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/medstation.dmi'
+	icon_state = "biogenerator_parts"
 	w_class = WEIGHT_CLASS_NORMAL
 	result_path = /obj/machinery/biogenerator/medstation
 	pixel_shift = 29

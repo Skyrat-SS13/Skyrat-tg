@@ -37,7 +37,7 @@
 	restricted = TRUE
 
 /datum/armament_entry/company_import/akh_frontier/deployables_fab/foodricator
-	item_type = /obj/item/flatpacked_machine/organics_printer
+	item_type = /obj/item/flatpacked_machine/organics_ration_printer
 	cost = CARGO_CRATE_VALUE * 2
 
 // Various smaller appliances than the deployable machines below
