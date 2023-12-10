@@ -293,7 +293,6 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
 const Department = (props: { department: string } & PropsWithChildren) => {
   const { children, department: name } = props;
   const className = `PreferencesMenu__Jobs__departments--${name}`;
-  logger.log(name + ': ' + className);
 
   return (
     <ServerPreferencesFetcher
@@ -318,12 +317,10 @@ const Department = (props: { department: string } & PropsWithChildren) => {
           department.head
         );
 
-        logger.log(className);
         return (
           <Box>
             {
               jobsForDepartment.map(([name, job]) => {
-                logger.log(name);
                 return (
                   <JobRow /* SKYRAT EDIT START - Fixing alt titles */
                     className={classes([
