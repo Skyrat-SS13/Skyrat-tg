@@ -20,8 +20,6 @@
 		"soup_pot", // This one too
 		"water_synth",
 		"co2_cracker",
-		"organic_ration_printer",
-		"frontier_medstation",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
