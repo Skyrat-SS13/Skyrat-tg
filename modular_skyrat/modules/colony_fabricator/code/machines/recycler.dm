@@ -28,6 +28,8 @@
 		/datum/material/titanium,
 		/datum/material/bluespace
 	)
+	/// The item we turn into when repacked
+	var/repacked_type = /obj/item/flatpacked_machine/recycler
 
 /obj/machinery/colony_recycler/Initialize(mapload)
 	. = ..()

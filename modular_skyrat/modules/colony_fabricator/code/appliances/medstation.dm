@@ -27,8 +27,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/biogenerator/medstation, 29)
 	efficiency = 1
 	productivity = 2
 
-/obj/machinery/biogenerator/medstation/default_unfasten_wrench(mob/user, obj/item/wrench, time)
-	. = ..()
+/obj/machinery/biogenerator/medstation/default_unfasten_wrench(mob/user, obj/item/wrench/tool, time)
 	user.balloon_alert(user, "deconstructing...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 1 SECONDS))

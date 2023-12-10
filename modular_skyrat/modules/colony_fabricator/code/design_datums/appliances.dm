@@ -4,6 +4,7 @@
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
 #define FABRICATOR_SUBCATEGORY_ATMOS "/Atmospherics"
 #define FABRICATOR_SUBCATEGORY_FLUIDS "/Liquids"
+#define FABRICATOR_SUBCATEGORY_HYDRO "/Hydroponics"
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
@@ -20,6 +21,7 @@
 		"water_synth",
 		"co2_cracker",
 		"organic_ration_printer",
+		"frontier_medstation",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -56,6 +58,24 @@
 		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/machinery/biogenerator/foodricator
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
+	)
+	construction_time = 45 SECONDS
+
+// Similar to a biogenerator, but makes only medical supplies and is mounted on walls
+
+/datum/design/frontier_medstation
+	name = "Wall Med-Station"
+	id = "frontier_medstation"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/wallframe/frontier_medstation
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
