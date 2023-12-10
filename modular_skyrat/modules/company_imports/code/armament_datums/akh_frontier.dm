@@ -56,6 +56,12 @@
 /datum/armament_entry/company_import/akh_frontier/deployables_misc/thermomachine
 	item_type = /obj/item/flatpacked_machine/thermomachine
 
+/datum/armament_entry/company_import/akh_frontier/deployables_misc/co2_cracker
+	item_type = /obj/item/flatpacked_machine/co2_cracker
+
+/datum/armament_entry/company_import/akh_frontier/deployables_misc/recycler
+	item_type = /obj/item/flatpacked_machine/recycler
+
 // Flatpacked, ready to deploy machines for power related activities
 
 /datum/armament_entry/company_import/akh_frontier/deployables

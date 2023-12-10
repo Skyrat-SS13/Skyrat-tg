@@ -36,7 +36,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 29)
 	. = ..()
 	charge_rate = 750 // Nuh uh!
 
-// Item for creating the arc furnace or carrying it around
+// Item for creating the cell chargers on walls
 
 /obj/item/wallframe/cell_charger_multi
 	name = "unmounted wall multi-cell charging rack"

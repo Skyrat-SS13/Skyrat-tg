@@ -19,6 +19,7 @@
 		"soup_pot", // This one too
 		"water_synth",
 		"co2_cracker",
+		"organic_ration_printer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -42,6 +43,24 @@
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_ATMOS,
 	)
 	construction_time = 30 SECONDS
+
+// Similar to a biogenerator, but makes only food related items and can go on tables
+
+/datum/design/organic_ration_printer
+	name = "Organic Rations Printer"
+	id = "organic_ration_printer"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/machinery/biogenerator/foodricator
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
+	)
+	construction_time = 45 SECONDS
 
 // Wall mountable multi cell charger
 

@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(cracker_reactions, cracker_reactions_list())
 	desc = "A portable device that is the savior of many a colony on the frontier. Performing similarly to an electrolyzer, \
 		it takes in nearby gasses and breaks them into different gasses. The big draw of this one? It can crack carbon dioxide \
 		into breathable oxygen. Handy for places where CO2 is all too common, and oxygen is all too hard to find."
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/atmos_machines.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/portable_machines.dmi'
 	circuit = null
 	working_power = 1
 	/// Soundloop for while the thermomachine is turned on
@@ -105,8 +105,9 @@ GLOBAL_LIST_INIT(cracker_reactions, cracker_reactions_list())
 
 // "parts kit" for buying these from cargo
 
-/obj/item/flatpacked_machine/solar
+/obj/item/flatpacked_machine/co2_cracker
 	name = "CO2 cracker parts kit"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/parts_kits.dmi'
 	icon_state = "co2_cracker"
 	type_to_deploy = /obj/machinery/electrolyzer/co2_cracker
 	deploy_time = 2 SECONDS
