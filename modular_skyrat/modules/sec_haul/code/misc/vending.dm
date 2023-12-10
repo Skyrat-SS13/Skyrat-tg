@@ -12,21 +12,26 @@
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 6,
 		/obj/item/restraints/legcuffs/bola/energy = 10,
+		/obj/item/clothing/gloves/tackler/security = 5,
+	)
+	contraband = list(
+		/obj/item/clothing/glasses/sunglasses = 2,
+		/obj/item/storage/fancy/donut_box = 2,
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing = 4,
-		/obj/item/storage/belt/security/webbing/peacekeeper = 4,
+		/obj/item/storage/belt/security/webbing = 5,
+		/obj/item/storage/belt/security/webbing/peacekeeper = 5,
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 3,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 3,
-		/obj/item/clothing/gloves/tackler/security = 5,
 		/obj/item/grenade/stingbang = 5,
-		/obj/item/watertank/pepperspray = 2
+		/obj/item/watertank/pepperspray = 2,
+		/obj/item/storage/belt/holster/energy = 4,
+		/obj/item/storage/box/holobadge = 1,
 	)
-	refill_canister = /obj/item/vending_refill/security_peacekeeper
 
-/obj/item/vending_refill/security_peacekeeper
-	icon_state = "refill_sec"
+/obj/item/vending_refill/security
+	machine_name = "Armadyne Peacekeeper Equipment Vendor"
 
 /obj/machinery/vending/wardrobe/sec_wardrobe
 	name = "\improper Peacekeeper Outfitting Station"
@@ -61,12 +66,11 @@
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/jacket/officer/blue = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
-	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MODERATE_BLUE
 
-/obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
-	machine_name = "Peacekeeper outfitting station"
+/obj/item/vending_refill/wardrobe/sec_wardrobe
+	machine_name = "Peacekeeper Outfitting Station"
 
 //List for the old one, for when its mapped in; curates it nicely, adds /redsec to the items, and also prevents some conflicts with the above vendor
 /obj/machinery/vending/wardrobe/sec_wardrobe/red

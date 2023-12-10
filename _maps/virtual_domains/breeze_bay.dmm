@@ -13,12 +13,12 @@
 "e" = (
 /turf/open/floor/carpet/red,
 /area/virtual_domain/fullbright)
-"f" = (
-/obj/machinery/light/small/directional/west,
-/turf/open/misc/beach/sand,
-/area/virtual_domain/fullbright)
 "g" = (
 /obj/item/toy/beach_ball/branded,
+/turf/open/misc/beach/sand,
+/area/virtual_domain/fullbright)
+"h" = (
+/obj/machinery/light/small/directional/south,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "i" = (
@@ -29,9 +29,12 @@
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "l" = (
-/obj/machinery/light/small/directional/south,
-/turf/open/misc/beach/sand,
-/area/virtual_domain/fullbright)
+/obj/effect/baseturf_helper/virtual_domain,
+/obj/modular_map_root/safehouse{
+	key = "wood"
+	},
+/turf/template_noop,
+/area/virtual_domain/safehouse)
 "m" = (
 /obj/item/fishing_rod{
 	pixel_x = 5;
@@ -60,20 +63,12 @@
 /obj/structure/fluff/beach_umbrella/syndi,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
-"v" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/obj/effect/landmark/bitrunning/safehouse_spawn,
-/turf/template_noop,
-/area/virtual_domain/safehouse)
 "y" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "z" = (
 /mob/living/basic/crab,
-/turf/open/misc/beach/sand,
-/area/virtual_domain/fullbright)
-"A" = (
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "B" = (
@@ -103,7 +98,6 @@
 /turf/template_noop,
 /area/virtual_domain/safehouse)
 "J" = (
-/obj/machinery/light/small/directional/north,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "K" = (
@@ -122,7 +116,7 @@
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "N" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small/directional/north,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "O" = (
@@ -165,12 +159,20 @@
 /obj/structure/flora/tree/jungle/style_3,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
+"T" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/misc/beach/sand,
+/area/virtual_domain/fullbright)
 "U" = (
 /obj/structure/flora/tree/palm/style_random,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "X" = (
 /turf/open/floor/wood/large,
+/area/virtual_domain/fullbright)
+"Y" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "Z" = (
 /obj/effect/baseturf_helper/virtual_domain,
@@ -209,13 +211,13 @@ a
 K
 G
 y
-A
-N
-A
-A
-A
-A
-N
+J
+T
+J
+J
+J
+J
+T
 z
 P
 i
@@ -233,17 +235,17 @@ a
 "}
 (3,1,1) = {"
 a
-A
-O
-A
-l
-I
-I
-I
-I
-I
-v
 J
+O
+J
+h
+I
+I
+I
+I
+I
+l
+N
 P
 Q
 i
@@ -260,17 +262,17 @@ a
 "}
 (4,1,1) = {"
 a
-A
+J
 C
-A
-A
+J
+J
 I
 I
 I
 I
 I
 I
-A
+J
 P
 i
 i
@@ -287,17 +289,17 @@ a
 "}
 (5,1,1) = {"
 a
-A
+J
 y
-A
-A
+J
+J
 I
 I
 I
 I
 I
 I
-A
+J
 P
 i
 i
@@ -315,9 +317,9 @@ a
 (6,1,1) = {"
 a
 S
-A
-A
-A
+J
+J
+J
 I
 I
 I
@@ -343,62 +345,8 @@ a
 a
 G
 G
-A
-A
-I
-I
-I
-I
-I
-I
-A
-P
-i
-i
-i
-i
-i
-i
-i
-i
-i
-i
-i
-a
-"}
-(8,1,1) = {"
-a
-A
-H
-g
-A
-I
-I
-I
-I
-I
-I
-A
-P
-i
-i
-i
-i
-i
-i
-i
-i
-i
-i
-i
-a
-"}
-(9,1,1) = {"
-a
-G
-y
-A
-l
+J
+J
 I
 I
 I
@@ -420,19 +368,73 @@ i
 i
 a
 "}
+(8,1,1) = {"
+a
+J
+H
+g
+J
+I
+I
+I
+I
+I
+I
+J
+P
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+a
+"}
+(9,1,1) = {"
+a
+G
+y
+J
+h
+I
+I
+I
+I
+I
+I
+N
+P
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+a
+"}
 (10,1,1) = {"
 a
 o
-A
-A
-A
-f
-A
-A
-A
-A
-f
-A
+J
+J
+J
+Y
+J
+J
+J
+J
+Y
+J
 P
 i
 i
@@ -449,17 +451,17 @@ a
 "}
 (11,1,1) = {"
 a
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
+J
+J
+J
+J
+J
+J
 P
 i
 i
@@ -476,17 +478,17 @@ a
 "}
 (12,1,1) = {"
 a
-A
+J
 B
 y
-A
-A
-A
+J
+J
+J
 U
 c
-A
-A
-A
+J
+J
+J
 P
 i
 i
@@ -503,17 +505,17 @@ a
 "}
 (13,1,1) = {"
 a
-A
-A
-A
-A
+J
+J
+J
+J
 s
-A
-A
-A
-A
+J
+J
+J
+J
 k
-A
+J
 P
 i
 i
@@ -532,15 +534,15 @@ a
 a
 K
 y
-A
-A
+J
+J
 p
 p
-A
-A
-A
+J
+J
+J
 m
-A
+J
 P
 i
 i
@@ -557,17 +559,17 @@ a
 "}
 (15,1,1) = {"
 a
-A
-A
-A
-A
+J
+J
+J
+J
 t
-A
-A
-A
-A
+J
+J
+J
+J
 L
-A
+J
 P
 i
 i
@@ -584,17 +586,17 @@ a
 "}
 (16,1,1) = {"
 a
-A
+J
 C
-A
-A
+J
+J
 e
 e
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
 P
 i
 i
@@ -612,16 +614,16 @@ a
 (17,1,1) = {"
 a
 G
-A
-A
-A
+J
+J
+J
 F
-A
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
+J
 P
 i
 i
@@ -640,15 +642,15 @@ a
 a
 S
 G
-A
-A
+J
+J
 D
 D
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
 X
 X
 X
@@ -665,17 +667,17 @@ a
 "}
 (19,1,1) = {"
 a
-A
-A
-A
-A
+J
+J
+J
+J
 R
-A
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
+J
 X
 X
 X
@@ -692,17 +694,17 @@ a
 "}
 (20,1,1) = {"
 a
-A
+J
 H
-A
-A
-A
-A
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
+J
+J
+J
+J
 P
 i
 i
@@ -719,17 +721,17 @@ a
 "}
 (21,1,1) = {"
 a
-A
+J
 O
-A
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
+J
 c
-A
-A
+J
+J
 P
 i
 i
@@ -747,16 +749,16 @@ a
 (22,1,1) = {"
 a
 o
-A
+J
 y
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
 U
-A
-A
+J
+J
 P
 i
 i
@@ -773,17 +775,17 @@ a
 "}
 (23,1,1) = {"
 a
-A
+J
 G
-A
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
+J
 y
-A
-A
+J
+J
 P
 i
 i
@@ -800,17 +802,17 @@ a
 "}
 (24,1,1) = {"
 a
-A
+J
 B
-A
+J
 z
-A
+J
 y
-A
-A
-A
-A
-A
+J
+J
+J
+J
+J
 P
 i
 Q
