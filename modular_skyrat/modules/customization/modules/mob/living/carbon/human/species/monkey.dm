@@ -3,6 +3,11 @@
 		"tail" = list("Monkey", FALSE),
 	)
 
+/datum/species/monkey/randomize_features()
+	var/list/features = ..()
+	features["tail"] = pick(GLOB.tails_list_monkey - list("None")) // No tail-less monkeys.
+	return features
+
 /datum/species/monkey/prepare_human_for_preview(mob/living/carbon/human/monke)
 	regenerate_organs(monke, src, visual_only = TRUE)
 	monke.update_body(is_creating = TRUE)
