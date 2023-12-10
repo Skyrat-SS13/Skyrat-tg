@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(create_mutation_blocks) //I hate this
 		generate_dna_blocks()
 	if(randomize_features)
-		/* SKYRAT EDIT REMOVAL - We don't really want this. We get the same effect from get_mutant_bodyparts() on our end, but without mixing up weird species features.
+		/* SKYRAT EDIT REMOVAL - We don't really want this. We instead let get_mutant_bodyparts() handle the bodypart randomization on our end, to prevent getting any crazy cross-species features.
 		var/static/list/all_species_protoypes
 		if(isnull(all_species_protoypes))
 			all_species_protoypes = list()
