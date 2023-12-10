@@ -19,6 +19,16 @@
 	var/stage_prob = 2
 	/// How long this infection incubates (non-visible) before revealing itself
 	var/incubation_time
+	/// Has the virus hit its limit?
+	var/stage_peaked = FALSE
+	/// How many cycles has the virus been at its peak?
+	var/peaked_cycles = 0
+	/// How many cycles do we need to have been active after hitting our max stage to start rolling back?
+	var/cycles_to_beat = 0
+	/// Number of cycles we've prevented symptoms from appearing
+	var/symptom_offsets = 0
+	/// Number of cycles we've benefited from chemical or other non-resting symptom protection
+	var/chemical_offsets = 0
 
 	//Other
 	var/list/viable_mobtypes = list() //typepaths of viable mobs
@@ -67,10 +77,11 @@
 ///Proc to process the disease and decide on whether to advance, cure or make the symptoms appear. Returns a boolean on whether to continue acting on the symptoms or not.
 /datum/disease/proc/stage_act(seconds_per_tick, times_fired)
 	var/slowdown = HAS_TRAIT(affected_mob, TRAIT_VIRUS_RESISTANCE) ? 0.5 : 1 // spaceacillin slows stage speed by 50%
+	var/recovery_prob = 0
 
 	if(required_organ)
 		if(!has_required_infectious_organ(affected_mob, required_organ))
-			cure()
+			cure(add_resistance = FALSE)
 			return FALSE
 
 	if(has_cure())
@@ -83,11 +94,13 @@
 		if(disease_flags & CURABLE && SPT_PROB(cure_chance, seconds_per_tick))
 			cure()
 			return FALSE
-	else if(SPT_PROB(stage_prob*slowdown, seconds_per_tick))
+
+	if(stage == max_stages && stage_peaked != TRUE) //mostly a sanity check in case we manually set a virus to max stages
+		stage_peaked = TRUE
+
+	if(SPT_PROB(stage_prob*slowdown, seconds_per_tick))
 		update_stage(min(stage + 1, max_stages))
 
-<<<<<<< HEAD
-=======
 	if(!(disease_flags & CHRONIC) && disease_flags & CURABLE && bypasses_immunity != TRUE)
 		switch(severity)
 			if(DISEASE_SEVERITY_POSITIVE) //good viruses don't go anywhere after hitting max stage - you can try to get rid of them by sleeping earlier
@@ -184,12 +197,12 @@
 				symptom_offsets = min(symptom_offsets + 1, DISEASE_SYMPTOM_OFFSET_DURATION)
 				return FALSE
 
->>>>>>> e7493ab2523 ([NO GBP] Healing Virus Selfcure Hotfix (#80172))
 	return !carrier
-
 
 /datum/disease/proc/update_stage(new_stage)
 	stage = new_stage
+	if(new_stage == max_stages && !(stage_peaked)) //once a virus has hit its peak, set it to have done so
+		stage_peaked = TRUE
 
 /datum/disease/proc/has_cure()
 	if(!(disease_flags & (CURABLE | CHRONIC)))
@@ -210,7 +223,19 @@
 	if(!(spread_flags & DISEASE_SPREAD_AIRBORNE) && !force_spread)
 		return
 
-	if(HAS_TRAIT(affected_mob, TRAIT_VIRUS_RESISTANCE) || (affected_mob.satiety > 0 && prob(affected_mob.satiety/10)))
+	if(affected_mob.internal) //if you keep your internals on, no airborne spread at least
+		return
+
+	if(HAS_TRAIT(affected_mob, TRAIT_NOBREATH)) //also if you don't breathe
+		return
+
+	if(!has_required_infectious_organ(affected_mob, ORGAN_SLOT_LUNGS)) //also if you lack lungs
+		return
+
+	if(!affected_mob.CanSpreadAirborneDisease()) //should probably check this huh
+		return
+
+	if(HAS_TRAIT(affected_mob, TRAIT_VIRUS_RESISTANCE) || (affected_mob.satiety > 0 && prob(affected_mob.satiety/2))) //being full or on spaceacillin makes you less likely to spread a virus
 		return
 
 	var/spread_range = 2
@@ -243,6 +268,9 @@
 	if(affected_mob)
 		if(add_resistance && (disease_flags & CAN_RESIST))
 			LAZYOR(affected_mob.disease_resistances, GetDiseaseID())
+		if(affected_mob.ckey)
+			var/cure_turf = get_turf(affected_mob)
+			log_virus("[key_name(affected_mob)] was cured of virus: [src.admin_details()] at [loc_name(cure_turf)]")
 	qdel(src)
 
 /datum/disease/proc/IsSame(datum/disease/D)
