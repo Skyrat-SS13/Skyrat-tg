@@ -1,9 +1,24 @@
 import { NoteKeeper } from './NoteKeeper';
-import { Stack, Section, NoticeBox, Box, LabeledList, Button, RestrictedInput } from 'tgui/components';
+import {
+  Stack,
+  Section,
+  NoticeBox,
+  Box,
+  LabeledList,
+  Button,
+  RestrictedInput,
+} from 'tgui/components';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { getMedicalRecord, getQuirkStrings } from './helpers';
 import { useBackend } from '../../backend';
-import { PHYSICALSTATUS2COLOR, PHYSICALSTATUS2DESC, PHYSICALSTATUS2ICON, MENTALSTATUS2COLOR, MENTALSTATUS2DESC, MENTALSTATUS2ICON } from './constants';
+import {
+  PHYSICALSTATUS2COLOR,
+  PHYSICALSTATUS2DESC,
+  PHYSICALSTATUS2ICON,
+  MENTALSTATUS2COLOR,
+  MENTALSTATUS2DESC,
+  MENTALSTATUS2ICON,
+} from './constants';
 import { MedicalRecordData } from './types';
 import { EditableText } from '../common/EditableText';
 
@@ -67,7 +82,8 @@ export const MedicalRecordView = (props) => {
           fill
           scrollable
           title={name}
-          wrap>
+          wrap
+        >
           <LabeledList>
             <LabeledList.Item label="Name">
               <EditableText field="name" target_ref={crew_ref} text={name} />
@@ -136,12 +152,14 @@ export const MedicalRecordView = (props) => {
                     textAlign="center"
                     tooltip={PHYSICALSTATUS2DESC[button] || ''}
                     tooltipPosition="bottom-start"
-                    width={!isSelected ? '3.0rem' : 3.0}>
+                    width={!isSelected ? '3.0rem' : 3.0}
+                  >
                     {button[0]}
                   </Button>
                 );
               })}
-              label="Physical Status">
+              label="Physical Status"
+            >
               <Box color={PHYSICALSTATUS2COLOR[physical_status]}>
                 {physical_status}
               </Box>
@@ -164,12 +182,14 @@ export const MedicalRecordView = (props) => {
                     textAlign="center"
                     tooltip={MENTALSTATUS2DESC[button] || ''}
                     tooltipPosition="bottom-start"
-                    width={!isSelected ? '3.0rem' : 3.0}>
+                    width={!isSelected ? '3.0rem' : 3.0}
+                  >
                     {button[0]}
                   </Button>
                 );
               })}
-              label="Mental Status">
+              label="Mental Status"
+            >
               <Box color={MENTALSTATUS2COLOR[mental_status]}>
                 {mental_status}
               </Box>

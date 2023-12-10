@@ -5,7 +5,7 @@
 	icon_state = "shelf_wood"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/structure/rack/wooden/MouseDrop_T(obj/object, mob/user, params)
 	. = ..()
@@ -22,7 +22,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/rack/wooden/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
@@ -37,7 +37,7 @@
 	base_icon_state = "barrel"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/structure/closet/crate/wooden/storage_barrel/crowbar_act(mob/living/user, obj/item/tool)
 	user.balloon_alert_to_viewers("disassembling...")
@@ -45,7 +45,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
@@ -80,7 +80,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/seedshelf
 	name = "Seedshelf"
@@ -110,7 +110,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/rationshelf
 	name = "Ration shelf"
@@ -140,7 +140,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/producedisplay
 	name = "Produce display"
@@ -170,4 +170,4 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
