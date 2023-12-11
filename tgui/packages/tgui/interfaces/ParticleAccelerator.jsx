@@ -1,9 +1,10 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
-export const ParticleAccelerator = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ParticleAccelerator = (props) => {
+  const { act, data } = useBackend();
   const { assembled, power, strength } = data;
   return (
     <Window width={350} height={185}>
@@ -18,7 +19,8 @@ export const ParticleAccelerator = (props, context) => {
                   content={'Run Scan'}
                   onClick={() => act('scan')}
                 />
-              }>
+              }
+            >
               <Box color={assembled ? 'good' : 'bad'}>
                 {assembled
                   ? 'Ready - All parts in place'

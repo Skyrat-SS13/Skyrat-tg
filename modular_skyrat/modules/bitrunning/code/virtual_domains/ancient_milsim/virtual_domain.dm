@@ -1,3 +1,4 @@
+/// Modular Map Loader doesnt like subfolders
 /datum/lazy_template/virtual_domain/ancient_milsim
 	name = "Ancient Military Simulator"
 	cost = BITRUNNER_COST_HIGH
@@ -8,11 +9,6 @@
 	help_text = "The last part of this domain has a chance to be very PvP-centric. It's best if you don't come alone, and smuggle some ability and gear disks."
 	forced_outfit = /datum/outfit/solfed_bitrun
 	key = "ancient_milsim"
-	map_dir = "_maps/skyrat/virtual_domains"
-	map_name = "ancient_milsim"
+	map_name = "skyrat_ancientmilsim"
 	mob_modules = list(/datum/modular_mob_segment/cin_mobs)
 	reward_points = BITRUNNER_REWARD_HIGH
-	safehouse_path = /datum/map_template/safehouse_skyrat/ancient_milsim
-
-/datum/map_template/safehouse_skyrat/ancient_milsim
-	filename = "ancient_milsim.dmm"

@@ -35,6 +35,26 @@
 
 	always_customizable = TRUE
 
+/datum/species/human/felinid/primitive/on_species_gain(mob/living/carbon/new_primitive, datum/species/old_species, pref_load)
+	. = ..()
+	var/mob/living/carbon/human/hearthkin = new_primitive
+	if(!istype(hearthkin))
+		return
+	hearthkin.dna.add_mutation(/datum/mutation/human/olfaction, MUT_NORMAL)
+	hearthkin.dna.activate_mutation(/datum/mutation/human/olfaction)
+
+    	// >mfw I take mutadone and my nose clogs
+	var/datum/mutation/human/olfaction/mutation = locate() in hearthkin.dna.mutations
+	mutation.mutadone_proof = TRUE
+	mutation.instability = 0
+
+/datum/species/human/felinid/primitive/on_species_loss(mob/living/carbon/former_primitive, datum/species/new_species, pref_load)
+	. = ..()
+	var/mob/living/carbon/human/hearthkin = former_primitive
+	if(!istype(hearthkin))
+		return
+	hearthkin.dna.remove_mutation(/datum/mutation/human/olfaction)
+
 /datum/species/human/felinid/primitive/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	human_for_preview.hairstyle = "Blunt Bangs Alt"
 	human_for_preview.hair_color = "#323442"
