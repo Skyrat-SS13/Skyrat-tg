@@ -332,3 +332,73 @@
   - bugfix: Pyrosium oxygen reaction now heats the holder and causes reactions inside
       it. Also correctly sets the holder temperature to 20 kelvin & causes reactions
       when first made
+2023-12-11:
+  Hatterhat:
+  - balance: Energy shoulder holsters can now fit the CIN plasma pistols and their
+      associated batteries.
+  Rhials, MrMelbert:
+  - rscadd: The Tracker implant has had its teleport beacon functionality migrated
+      to the new (cargo accessible) Beacon implant.
+  - rscadd: Teleport Blocker security implant, that prevents the implantee from teleporting
+      by any means. Purchasable from cargo.
+  - rscadd: Security implants may now be harmlessly self-destructed at the Prisoner
+      Management Console.
+  - balance: The Tracker implant tracking radius has increased from 20 to 35 tiles.
+      The Prisoner Management Console will track and display the area the implantee
+      is in as well.
+  - balance: The exile implant now prevents implantees from operating shuttle controls.
+  - code_imp: Various code improvements and removal of unused vars in the Prisoner
+      Management Console
+  - code_imp: The HUD slots for chem/tracking implants have been converted to display
+      any implant with the IMPLANT_TYPE_SECURITY flag and an associated sprite.
+  - spellcheck: Modifies various implant pad readouts, removing false information
+      and rewriting some sections.
+  SkyratBot:
+  - bugfix: Healing viruses now no longer self-cure for reasons they're not supposed
+      to and do for those that they are.
+  - rscadd: Slimepeople can now get wings from flight potions.
+  - refactor: 'TGUI V5: The UI has had its entire engine replaced with React v18.2.
+      This might cause obvious or laughably broken UIs in places you wouldn''t expect.
+      Please report any issues you find to the repo!'
+  - balance: most diseases can now be slowed, mitigated, and eventually cured through
+      being well-fed, resting, and using spaceacillin. Curing diseases through this
+      way will give you immunity if you experience them at their peak/maximum and
+      aren't starving/malnourished when they cure.
+  - balance: disease symptoms can be forestalled for up to 100 cycles with a declining
+      chance of avoiding them over time using rest or spaceacillin.
+  - balance: This does not apply to things like fungal TB; it does apply to healing
+      viruses if you don't take care of yourself by staying fed and avoiding spaceacillin.
+  - balance: disease can be cured through direct injection or ingestion of cured blood.
+      However, curing disease in this way does not provide lasting immunity. You need
+      to naturally beat the virus or get a vaccine for that.
+  - balance: Wearing internals or using protective equipment while infected can limit
+      the spread of respiratory illnesses from yourself to others. Contact transmission
+      is still possible however.
+  - balance: Medical Doctors now have roundstart virology access. Paramedics and coroners
+      now get virology access on skeleton shift access. Virologists now have roundstart
+      pharmacy access.
+  - balance: Sentient Diseases now resist being overridden by other advanced diseases
+      and can always override other advanced diseases; they also have an extra bonus
+      on their stealth stat to help make up for early outing without a bit more testing.
+  - balance: biohazard lockers now also contain a syringe of spaceacillin (in line
+      with the orderable kit from cargo.)
+  - balance: Virus severity is now also a function of the number of symptoms out of
+      max your virus has. Experiment with different combinations using less than six
+      symptoms to make viruses that are deceptively less-obvious and less quick to
+      self-cure at the tradeoff of stats.
+  - admin: Object Possession has been reworked, please report any potential bugs.
+  - qol: Object Possession should now throw a screen alert for you to unpossess the
+      object instead of you having to search the stat-panel for the "release obj"
+      verb. You can still use the verb but it's a lot nicer now. Aghosting will also
+      work now.
+  - bugfix: fixed big rice pans getting worse with cooking.
+  - qol: Add RMB hotkey and screentip UI to tracking beacons to toggle them on/off.
+  - bugfix: 'The air_alarm_circuit to gets the environment from the proper turf.
+
+      :cl:'
+  honkpocket:
+  - bugfix: Changes the main chemical of the Narcolepsy medicine from synaphydramine
+      to modafinil
+  vinylspiders:
+  - bugfix: randomized spawned mobs will now have their species' random mutant colors
+      and features applied properly
