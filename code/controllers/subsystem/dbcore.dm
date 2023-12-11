@@ -188,7 +188,7 @@ SUBSYSTEM_DEF(dbcore)
 
 		// SKYRAT EDIT START - SQL-based logging
 		for(var/table in queued_log_entries_by_table)
-			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 		// SKYRAT EDIT END
 
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
