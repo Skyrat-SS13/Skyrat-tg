@@ -10,7 +10,7 @@
 	var/mob/living/carbon/human/human_user = user
 	if(HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
 		return
-	if(human_user.physique == FEMALE)
+	if(human_user.gender == FEMALE)
 		return play_lewd_sound(get_turf(human_user), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_f1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
