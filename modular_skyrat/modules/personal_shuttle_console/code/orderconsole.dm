@@ -30,7 +30,7 @@
 	/// The currently selected shuttle map template
 	var/datum/map_template/shuttle/personal_buyable/selected
 
-/obj/item/circuitboard/computer/personal_shuttle_order/Initialize(mapload)
+/obj/machinery/computer/personal_shuttle_order/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/payment, 0, SSeconomy.get_dep_account(ACCOUNT_CMD), PAYMENT_CLINICAL)
 	try_and_find_a_dock()
@@ -38,7 +38,7 @@
 		if(var/datum/template in valid_shuttle_templates)
 			valid_shuttle_templates_subtypes += subtypesof(template)
 
-/obj/item/circuitboard/computer/personal_shuttle_order/try_and_find_a_dock()
+/obj/machinery/computer/personal_shuttle_order/try_and_find_a_dock()
 	if(our_docking_port)
 		return
 	var/obj/docking_port/stationary/potential_port = SSshuttle.getDock(docking_port_id)
@@ -47,7 +47,7 @@
 		return
 	our_docking_port = potential_port
 
-/obj/item/circuitboard/computer/personal_shuttle_order/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/personal_shuttle_order/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!our_docking_port)
 		balloon_alert_to_viewers("no linked docking port")
@@ -57,7 +57,7 @@
 		ui = new(user, src, "PersonalShuttlePurchase", name)
 		ui.open()
 
-/obj/item/circuitboard/computer/personal_shuttle_order/ui_data(mob/user)
+/obj/machinery/computer/personal_shuttle_order/ui_data(mob/user)
 	var/list/data = list()
 	data["tabs"] = list("Catalouge", "Information")
 
@@ -94,7 +94,7 @@
 
 	return data
 
-/obj/item/circuitboard/computer/personal_shuttle_order/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/personal_shuttle_order/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -128,6 +128,6 @@
 			// If successful, returns the mobile docking port
 			var/obj/docking_port/mobile/loaded_port = action_load(selected_template, our_docking_port, FALSE)
 			if(loaded_port)
-				message_admins("[user] loaded [mdp] with the shuttle manipulator.")
+				message_admins("[user] loaded [loaded_port] with a shuttle order console.")
 			spawning_shuttle = FALSE
 			break
