@@ -362,7 +362,7 @@
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
-		formatted_item["is_reneamable"] = item.can_be_named
+		formatted_item["is_renameable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
 		formatted_item["is_job_blacklisted"] = !isnull(item.blacklisted_roles)
 		formatted_item["is_species_restricted"] = !isnull(item.restricted_species)
