@@ -35,7 +35,7 @@
 	AddComponent(/datum/component/payment, 0, SSeconomy.get_dep_account(ACCOUNT_CMD), PAYMENT_CLINICAL)
 	try_and_find_a_dock()
 	if(length(valid_shuttle_templates && !length(valid_shuttle_templates_subtypes)))
-		if(var/datum/template in valid_shuttle_templates)
+		for(var/datum/template in valid_shuttle_templates)
 			valid_shuttle_templates_subtypes += subtypesof(template)
 
 /obj/machinery/computer/personal_shuttle_order/try_and_find_a_dock()
@@ -108,7 +108,7 @@
 	switch(action)
 		if("select_template")
 			if(selected_template)
-				existing_shuttle = getShuttle(selected_template.port_id)
+				existing_shuttle = SSshuttle.getShuttle(selected_template.port_id)
 				selected = selected_template
 				. = TRUE
 		if("purchase_shuttle")
@@ -126,7 +126,7 @@
 			. = TRUE
 			spawning_shuttle = TRUE
 			// If successful, returns the mobile docking port
-			var/obj/docking_port/mobile/loaded_port = action_load(selected_template, our_docking_port, FALSE)
+			var/obj/docking_port/mobile/loaded_port = SSshuttle.action_load(selected_template, our_docking_port, FALSE)
 			if(loaded_port)
 				message_admins("[user] loaded [loaded_port] with a shuttle order console.")
 			spawning_shuttle = FALSE
