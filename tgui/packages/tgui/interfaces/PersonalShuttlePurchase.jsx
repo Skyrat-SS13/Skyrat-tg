@@ -70,16 +70,17 @@ export const PersonalShuttlePurchaseList = (props) => {
                   />
                 }
               >
-                {(!!actualTemplate.description || !!actualTemplate.cost) && (
+                {(!!actualTemplate.description ||
+                  !!actualTemplate.credit_cost) && (
                   <LabeledList>
                     {!!actualTemplate.description && (
                       <LabeledList.Item label="Description">
                         {actualTemplate.description}
                       </LabeledList.Item>
                     )}
-                    {!!actualTemplate.cost && (
+                    {!!actualTemplate.credit_cost && (
                       <LabeledList.Item label="Cost">
-                        {actualTemplate.cost}
+                        {actualTemplate.credit_cost}
                       </LabeledList.Item>
                     )}
                   </LabeledList>
@@ -101,16 +102,16 @@ export const PersonalShuttlePurchaseCheckout = (props) => {
       {selected ? (
         <>
           <Section level={2} title={selected.name}>
-            {(!!selected.description || !!selected.selected.cost) && (
+            {(!!selected.description || !!selected.selected.credit_cost) && (
               <LabeledList>
                 {!!selected.description && (
                   <LabeledList.Item label="Description">
                     {selected.description}
                   </LabeledList.Item>
                 )}
-                {!!selected.cost && (
+                {!!selected.credit_cost && (
                   <LabeledList.Item label="Cost">
-                    {selected.cost}
+                    {selected.credit_cost}
                   </LabeledList.Item>
                 )}
               </LabeledList>

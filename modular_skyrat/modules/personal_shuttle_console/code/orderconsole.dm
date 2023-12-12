@@ -84,7 +84,7 @@
 		L["shuttle_id"] = shuttle_template.shuttle_id
 		L["port_id"] = shuttle_template.port_id
 		L["description"] = shuttle_template.description
-		L["cost"] = shuttle_template.credit_cost
+		L["credit_cost"] = shuttle_template.credit_cost
 
 		if(selected == shuttle_template)
 			data["selected"] = L
