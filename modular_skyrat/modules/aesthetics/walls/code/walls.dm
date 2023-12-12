@@ -14,6 +14,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/reinforced_wall.dmi'
 	icon_state = "reinforced_wall-0"
 	base_icon_state = "reinforced_wall"
+	base_decon_state = "r_wall"
 
 /turf/closed/wall/material
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
