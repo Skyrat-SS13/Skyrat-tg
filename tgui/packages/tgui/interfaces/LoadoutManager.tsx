@@ -67,11 +67,7 @@ export const LoadoutManager = (props) => {
               <Dropdown
                 width="100%"
                 selected={selectedTabName}
-                displayText={selectedTabName}
-                options={loadout_tabs.map((curTab) => ({
-                  value: curTab.name,
-                  displayText: curTab.name,
-                }))}
+                options={loadout_tabs.map((curTab) => curTab.name)}
                 onSelected={(curTab) => setSelectedTab(curTab)}
               />
             </Section>
