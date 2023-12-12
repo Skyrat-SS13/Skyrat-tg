@@ -80,6 +80,7 @@
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
 #define JOB_CARGO_TECHNICIAN "Cargo Technician"
+#define JOB_CARGO_GORILLA "Cargo Gorilla"
 #define JOB_SHAFT_MINER "Shaft Miner"
 #define JOB_BITRUNNER "Bitrunner"
 #define JOB_CUSTOMS_AGENT "Customs Agent" // SKYRAT EDIT ADDITION
@@ -164,6 +165,7 @@
 #define JOB_DISPLAY_ORDER_CARGO_TECHNICIAN 20
 #define JOB_DISPLAY_ORDER_SHAFT_MINER 21
 #define JOB_DISPLAY_ORDER_BITRUNNER 22
+<<<<<<< HEAD
 #define JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER 23
 #define JOB_DISPLAY_ORDER_MEDICAL_DOCTOR 24
 #define JOB_DISPLAY_ORDER_PARAMEDIC 25
@@ -189,6 +191,24 @@
 #define JOB_DISPLAY_ORDER_ENGINEER_GUARD 45 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 46 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_EXP_CORPS 47 //SKYRAT EDIT ADDITON
+=======
+#define JOB_DISPLAY_ORDER_CARGO_GORILLA 23
+#define JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER 24
+#define JOB_DISPLAY_ORDER_MEDICAL_DOCTOR 25
+#define JOB_DISPLAY_ORDER_PARAMEDIC 26
+#define JOB_DISPLAY_ORDER_CHEMIST 27
+#define JOB_DISPLAY_ORDER_VIROLOGIST 28
+#define JOB_DISPLAY_ORDER_CORONER 29
+#define JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR 30
+#define JOB_DISPLAY_ORDER_SCIENTIST 31
+#define JOB_DISPLAY_ORDER_ROBOTICIST 32
+#define JOB_DISPLAY_ORDER_GENETICIST 33
+#define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 34
+#define JOB_DISPLAY_ORDER_WARDEN 35
+#define JOB_DISPLAY_ORDER_DETECTIVE 36
+#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 37
+#define JOB_DISPLAY_ORDER_PRISONER 38
+>>>>>>> 90b974071de (Sign up for Cargorilla from the lobby (#79776))
 
 #define DEPARTMENT_UNASSIGNED "No Department"
 
@@ -236,6 +256,10 @@
 #define JOB_CAN_BE_INTERN (1<<8)
 /// This job cannot have more slots opened by the Head of Personnel (but admins or other random events can still do this).
 #define JOB_CANNOT_OPEN_SLOTS (1<<9)
+/// This job will not display on the job menu when there are no slots available, instead of appearing greyed out
+#define JOB_HIDE_WHEN_EMPTY (1<<10)
+/// This job cannot be signed up for at round start or recorded in your preferences
+#define JOB_LATEJOIN_ONLY (1<<11)
 
 /// Combination flag for jobs which are considered regular crew members of the station.
 #define STATION_JOB_FLAGS (JOB_ANNOUNCE_ARRIVAL|JOB_CREW_MANIFEST|JOB_EQUIP_RANK|JOB_CREW_MEMBER|JOB_NEW_PLAYER_JOINABLE|JOB_REOPEN_ON_ROUNDSTART_LOSS|JOB_ASSIGN_QUIRKS|JOB_CAN_BE_INTERN)

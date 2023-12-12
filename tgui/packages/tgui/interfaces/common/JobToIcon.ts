@@ -12,6 +12,7 @@ const BASEICONS = {
   Bitrunner: 'gamepad',
   Botanist: 'seedling',
   Captain: 'crown',
+  'Cargo Gorilla': 'paw',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',
   'CentCom Head Intern': 'pen-fancy',
