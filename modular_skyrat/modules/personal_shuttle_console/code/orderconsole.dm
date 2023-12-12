@@ -108,7 +108,6 @@
 	switch(action)
 		if("select_template")
 			if(selected_template)
-				existing_shuttle = SSshuttle.getShuttle(selected_template.port_id)
 				selected = selected_template
 				. = TRUE
 		if("purchase_shuttle")
