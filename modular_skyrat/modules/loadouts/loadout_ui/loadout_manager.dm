@@ -290,7 +290,7 @@
 	data["user_is_donator"] = !!(GLOB.donator_list[owner.ckey] || is_admin(owner))
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
-	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
 	data["preview_selection"] = owner?.prefs.preview_pref
 
 	return data

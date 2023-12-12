@@ -1,14 +1,39 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend, useSharedState } from '../backend';
 import { Box, Button, Section, Stack, Dropdown } from '../components';
+import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 
+type LoadoutTabData = {
+  loadout_tabs: LoadoutTab[];
+  selected_loadout: string[];
+  user_is_donator: BooleanLike;
+};
+
+type LoadoutTab = {
+  name: string;
+  title: string;
+  contents: LoadoutTabItem[];
+};
+
+type LoadoutTabItem = {
+  name: string;
+  path: string;
+  is_greyscale: BooleanLike;
+  is_renameable: BooleanLike;
+  is_job_restricted: BooleanLike;
+  is_job_blacklisted: BooleanLike;
+  is_species_restricted: BooleanLike;
+  is_donator_only: BooleanLike;
+  is_ckey_whitelisted: BooleanLike;
+};
+
 export const LoadoutManager = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<LoadoutTabData>();
   const { selected_loadout, loadout_tabs, user_is_donator } = data;
 
   const [selectedTabName, setSelectedTab] = useSharedState(
-    'tabs',
+    'selectedTab',
     loadout_tabs[0]?.name,
   );
   const selectedTab = loadout_tabs.find((curTab) => {
@@ -44,10 +69,10 @@ export const LoadoutManager = (props) => {
                 selected={selectedTabName}
                 displayText={selectedTabName}
                 options={loadout_tabs.map((curTab) => ({
-                  value: curTab,
+                  value: curTab.name,
                   displayText: curTab.name,
                 }))}
-                onSelected={(curTab) => setSelectedTab(curTab.name)}
+                onSelected={(curTab) => setSelectedTab(curTab)}
               />
             </Section>
           </Stack.Item>
@@ -90,7 +115,7 @@ export const LoadoutManager = (props) => {
                                 />
                               </Stack.Item>
                             )}
-                            {!!item.is_renamable && (
+                            {!!item.is_renameable && (
                               <Stack.Item>
                                 <Button
                                   icon="pen"
