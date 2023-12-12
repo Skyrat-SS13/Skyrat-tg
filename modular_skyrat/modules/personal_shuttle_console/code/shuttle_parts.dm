@@ -17,6 +17,11 @@
 		"THROW" = 0,
 	)
 
+/obj/item/circuitboard/computer/personally_bought
+	name = "Personal Ship Console"
+	greyscale_colors = CIRCUIT_COLOR_GENERIC
+	build_path = /obj/machinery/computer/shuttle/personally_bought
+
 /obj/machinery/computer/shuttle/personally_bought
 	name = "Personal Ship Console"
 	desc = "Used to control the ship its currently in, ideally."

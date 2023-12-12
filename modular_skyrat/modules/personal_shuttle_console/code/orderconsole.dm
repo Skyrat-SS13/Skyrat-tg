@@ -38,7 +38,8 @@
 		for(var/datum/template in valid_shuttle_templates)
 			valid_shuttle_templates_subtypes += subtypesof(template)
 
-/obj/machinery/computer/personal_shuttle_order/try_and_find_a_dock()
+/// Asks SSshuttle if our set docking port id is around and in range
+/obj/machinery/computer/personal_shuttle_order/proc/try_and_find_a_dock()
 	if(our_docking_port)
 		return
 	var/obj/docking_port/stationary/potential_port = SSshuttle.getDock(docking_port_id)
@@ -113,15 +114,15 @@
 		if("purchase_shuttle")
 			if(!our_docking_port)
 				balloon_alert_to_viewers("no linked docking port")
-				break
+				return
 			if(our_docking_port.get_docked())
 				balloon_alert_to_viewers("docking port blocked")
-				break
+				return
 			if(spawning_shuttle)
 				balloon_alert_to_viewers("shuttle en route")
-				break
+				return
 			if(attempt_charge(src, user, selected_template.credit_cost) & COMPONENT_OBJ_CANCEL_CHARGE)
-				break
+				return
 			. = TRUE
 			spawning_shuttle = TRUE
 			// If successful, returns the mobile docking port
@@ -129,4 +130,4 @@
 			if(loaded_port)
 				message_admins("[user] loaded [loaded_port] with a shuttle order console.")
 			spawning_shuttle = FALSE
-			break
+			return
