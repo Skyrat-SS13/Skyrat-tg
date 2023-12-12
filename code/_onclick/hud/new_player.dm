@@ -585,9 +585,5 @@
 
 #undef SHUTTER_MOVEMENT_DURATION
 #undef SHUTTER_WAIT_DURATION
-<<<<<<< HEAD
-
-*/ // SKYRAT EDIT END
-=======
 #undef MAX_STATION_TRAIT_BUTTONS_VERTICAL
->>>>>>> 90b974071de (Sign up for Cargorilla from the lobby (#79776))
+*/ // SKYRAT EDIT END

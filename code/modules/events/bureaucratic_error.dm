@@ -13,31 +13,17 @@
 	priority_announce("A recent bureaucratic error in the Organic Resources Department may result in personnel shortages in some departments and redundant staffing in others.", "Paperwork Mishap Alert")
 
 /datum/round_event/bureaucratic_error/start()
-<<<<<<< HEAD
-	var/list/jobs = SSjob.joinable_occupations.Copy()
-	/*
-	if(prob(33)) // Only allows latejoining as a single role. Add latejoin AI bluespace pods for fun later.
-=======
 	var/list/jobs = SSjob.get_valid_overflow_jobs()
+	/* SKYRAT EDIT REMOVAL START
 	if(prob(33)) // Only allows latejoining as a single role.
->>>>>>> 90b974071de (Sign up for Cargorilla from the lobby (#79776))
 		var/datum/job/overflow = pick_n_take(jobs)
 		overflow.spawn_positions = -1
 		overflow.total_positions = -1 // Ensures infinite slots as this role. Assistant will still be open for those that cant play it.
 		for(var/job in jobs)
 			var/datum/job/current = job
 			current.total_positions = 0
-<<<<<<< HEAD
-	else // Adds/removes a random amount of job slots from all jobs.
-	*/ // SKYRAT EDIT REMOVAL - no more locking off jobs
-	for(var/datum/job/current as anything in jobs)
-		if(!current.allow_bureaucratic_error)
-			continue
-		var/ran = rand(1,4) // SKYRAT EDIT - no more locking off jobs
-		current.total_positions = max(current.total_positions + ran, 0)
-=======
 		return
+	*/ // SKYRAT EDIT REMOVAL - no more locking off jobs
 	// Adds/removes a random amount of job slots from all jobs.
 	for(var/datum/job/current as anything in jobs)
-		current.total_positions = max(current.total_positions + rand(-2,4), 0)
->>>>>>> 90b974071de (Sign up for Cargorilla from the lobby (#79776))
+		current.total_positions = max(current.total_positions + rand(-2,4), 1) // SKYRAT EDIT CHANGE - No more locking off jobs - ORIGINAL: current.total_positions = max(current.total_positions + rand(-2,4), 0)
