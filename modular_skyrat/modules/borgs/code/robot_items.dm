@@ -509,7 +509,7 @@
 /// Shapeshifter
 /obj/item/borg_shapeshifter
 	name = "cyborg chameleon projector"
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "shield0"
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
