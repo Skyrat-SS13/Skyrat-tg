@@ -26,6 +26,7 @@ type LoadoutTabItem = {
   is_species_restricted: BooleanLike;
   is_donator_only: BooleanLike;
   is_ckey_whitelisted: BooleanLike;
+  tooltip_text: string;
 };
 
 export const LoadoutManager = (props) => {
