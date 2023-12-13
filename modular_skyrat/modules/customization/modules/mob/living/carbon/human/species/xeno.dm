@@ -114,22 +114,19 @@
 
 /datum/action/cooldown/alien/make_structure/resin
 	var/build_duration = 0 SECONDS
-	 //Non-modularly checked in `code\modules\mob\living\carbon\alien\adult\alien_powers.dm`
 
 /datum/action/cooldown/alien/make_structure/resin/roundstart
 	build_duration = BUILD_DURATION
+	 //Non-modularly checked in `code\modules\mob\living\carbon\alien\adult\alien_powers.dm`
 
 //Organ resprites
 /obj/item/organ/internal/brain/xeno_hybrid
-	name = "alien brain"
 	icon_state = "brain-x"
 
 /obj/item/organ/internal/stomach/xeno_hybrid
-	name = "alien stomach"
 	icon_state = "stomach-x"
 
 /obj/item/organ/internal/liver/xeno_hybrid
-	name = "alien liver"
 	icon_state = "liver-x"
 
 //Liver modification (xenohybrids can process plasma!)
