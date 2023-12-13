@@ -124,8 +124,9 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	name = "stone wall"
 	desc = "A wall made of solid stone bricks."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
-	icon_state = "wall-0"
+	icon_state = "wall-open"
 	base_icon_state = "wall"
+	fake_icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	mineral = /obj/item/stack/sheet/mineral/stone
 	walltype = /turf/closed/wall/mineral/stone
 	smoothing_flags = SMOOTH_BITMASK
