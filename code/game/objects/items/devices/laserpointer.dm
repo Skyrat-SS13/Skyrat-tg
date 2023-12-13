@@ -28,28 +28,6 @@
 	var/recharge_locked = FALSE
 	///Whether the pointer is currently recharging or not
 	var/recharging = FALSE
-	//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
-	///Whether the laser pointer is capable of receiving upgrades
-	var/upgradable = TRUE
-	//SKYRAT EDIT ADDITION END
-
-//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
-/obj/item/laser_pointer/limited/red
-	pointer_icon_state = "red_laser"
-	upgradable = FALSE
-
-/obj/item/laser_pointer/limited/green
-	pointer_icon_state = "green_laser"
-	upgradable = FALSE
-
-/obj/item/laser_pointer/limited/blue
-	pointer_icon_state = "blue_laser"
-	upgradable = FALSE
-
-/obj/item/laser_pointer/limited/purple
-	pointer_icon_state = "purple_laser"
-	upgradable = FALSE
-//SKYRAT EDIT ADDITION END
 
 /obj/item/laser_pointer/red
 	pointer_icon_state = "red_laser"
@@ -86,11 +64,6 @@
 	diode = new /obj/item/stock_parts/micro_laser/ultra
 
 /obj/item/laser_pointer/screwdriver_act(mob/living/user, obj/item/tool)
-	//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
-	if(!upgradable)
-		balloon_alert(user, "can't remove integrated diode!")
-		return
-	//SKYRAT EDIT ADDITION END
 	if(diode)
 		tool.play_tool_sound(src)
 		balloon_alert(user, "removed diode")
@@ -114,11 +87,6 @@
 
 /obj/item/laser_pointer/attackby(obj/item/attack_item, mob/user, params)
 	if(istype(attack_item, /obj/item/stock_parts/micro_laser))
-		//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
-		if(!upgradable)
-			balloon_alert(user, "can't upgrade!")
-			return
-		//SKYRAT EDIT ADDITION END
 		if(diode)
 			balloon_alert(user, "already has a diode!")
 			return
@@ -148,11 +116,6 @@
 		return TRUE
 
 	if(istype(attack_item, /obj/item/stack/ore/bluespace_crystal))
-		//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
-		if(!upgradable)
-			balloon_alert(user, "can't upgrade!")
-			return
-		//SKYRAT EDIT ADDITION END
 		if(crystal_lens)
 			balloon_alert(user, "already has a lens!")
 			return
@@ -190,11 +153,6 @@
 /obj/item/laser_pointer/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
-		if(!upgradable)
-			. += span_notice("The diode and the lens are both cheap, integrated components. This pointer cannot be upgraded.")
-			return
-		//SKYRAT EDIT ADDITION END
 		if(isnull(diode))
 			. += span_notice("The diode is missing.")
 		else
