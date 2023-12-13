@@ -90,6 +90,14 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/criminalcapture,
 	)
+	default_pins = list(
+		/obj/item/mod/module/holster,
+		/obj/item/mod/module/criminalcapture,
+		/obj/item/mod/module/tether,
+		/obj/item/mod/module/visor/night,
+		/obj/item/mod/module/stealth,
+		/obj/item/mod/module/chameleon/contractor,
+	)
 
 /obj/machinery/suit_storage_unit/industrial/assault_operative
 	mod_type = /obj/item/mod/control/pre_equipped/stealth_operative
