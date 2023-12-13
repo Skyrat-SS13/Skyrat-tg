@@ -6,7 +6,10 @@
 	max_integrity = 300
 	armor_type = /datum/armor/obj_vehicle
 	layer = VEHICLE_LAYER
+<<<<<<< HEAD
 	plane = GAME_PLANE // SKYRAT EDIT - ORIGINAL: plane = GAME_PLANE_FOV_HIDDEN
+=======
+>>>>>>> f03084c1ca6 (FOV is Dead (Long Live FOV) (#80062))
 	density = TRUE
 	anchored = FALSE
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
