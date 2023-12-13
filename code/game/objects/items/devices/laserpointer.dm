@@ -28,6 +28,28 @@
 	var/recharge_locked = FALSE
 	///Whether the pointer is currently recharging or not
 	var/recharging = FALSE
+	//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
+	///Whether the laser pointer is capable of receiving upgrades
+	var/upgradable = TRUE
+	//SKYRAT EDIT ADDITION END
+
+//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
+/obj/item/laser_pointer/limited/red
+	pointer_icon_state = "red_laser"
+	upgradable = FALSE
+
+/obj/item/laser_pointer/limited/green
+	pointer_icon_state = "green_laser"
+	upgradable = FALSE
+
+/obj/item/laser_pointer/limited/blue
+	pointer_icon_state = "blue_laser"
+	upgradable = FALSE
+
+/obj/item/laser_pointer/limited/purple
+	pointer_icon_state = "purple_laser"
+	upgradable = FALSE
+//SKYRAT EDIT ADDITION END
 
 /obj/item/laser_pointer/red
 	pointer_icon_state = "red_laser"
@@ -64,6 +86,11 @@
 	diode = new /obj/item/stock_parts/micro_laser/ultra
 
 /obj/item/laser_pointer/screwdriver_act(mob/living/user, obj/item/tool)
+	//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
+	if(!upgradable)
+		balloon_alert(user, "can't remove integrated diode!")
+		return
+	//SKYRAT EDIT ADDITION END
 	if(diode)
 		tool.play_tool_sound(src)
 		balloon_alert(user, "removed diode")
@@ -87,6 +114,11 @@
 
 /obj/item/laser_pointer/attackby(obj/item/attack_item, mob/user, params)
 	if(istype(attack_item, /obj/item/stock_parts/micro_laser))
+		//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
+		if(!upgradable)
+			balloon_alert(user, "can't upgrade!")
+			return
+		//SKYRAT EDIT ADDITION END
 		if(diode)
 			balloon_alert(user, "already has a diode!")
 			return
@@ -116,6 +148,11 @@
 		return TRUE
 
 	if(istype(attack_item, /obj/item/stack/ore/bluespace_crystal))
+		//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
+		if(!upgradable)
+			balloon_alert(user, "can't upgrade!")
+			return
+		//SKYRAT EDIT ADDITION END
 		if(crystal_lens)
 			balloon_alert(user, "already has a lens!")
 			return
@@ -153,6 +190,11 @@
 /obj/item/laser_pointer/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
+		//SKYRAT EDIT ADDITION BEGIN - limited laser pointers
+		if(!upgradable)
+			. += span_notice("The diode and the lens are both cheap, integrated components. This pointer cannot be upgraded.")
+			return
+		//SKYRAT EDIT ADDITION END
 		if(isnull(diode))
 			. += span_notice("The diode is missing.")
 		else
@@ -266,12 +308,13 @@
 			continue
 		if(target_felinid.body_position == STANDING_UP)
 			target_felinid.setDir(get_dir(target_felinid, targloc)) // kitty always looks at the light
-			if(prob(effectchance * diode.rating))
+			//SKYRAT EDIT REMOVAL BEGIN (removes forced felinid movement from laserpointers, also fixes the longstanding windoor negation glitch)
+			/* if(prob(effectchance * diode.rating))
 				target_felinid.visible_message(span_warning("[target_felinid] makes a grab for the light!"), span_userdanger("LIGHT!"))
 				target_felinid.Move(targloc)
 				log_combat(user, target_felinid, "moved with a laser pointer", src)
-			else
-				target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("You're briefly tempted by the shiny light..."))
+			else */
+			target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("You're briefly tempted by the shiny light...")) //SKYRAT EDIT: indent this block if re-enabling above
 		else
 			target_felinid.visible_message(span_notice("[target_felinid] stares at the light."), span_warning("You stare at the light..."))
 	//The pointer is shining, change its sprite to show
@@ -290,9 +333,9 @@
 		laser.pixel_y = target.pixel_y + rand(-5,5)
 
 	if(outmsg)
-		to_chat(user, outmsg)
+		user.visible_message(span_danger("[user] points [src] at [target]!"), outmsg) //SKYRAT EDIT
 	else
-		to_chat(user, span_info("You point [src] at [target]."))
+		user.visible_message(span_notice("[user] points [src] at [target]."), span_notice("You point [src] at [target].")) //SKYRAT EDIT
 
 	//we have successfully shone our pointer, reduce our battery depending on whether we have an extra lens or not
 	energy -= crystal_lens ? 2 : 1
