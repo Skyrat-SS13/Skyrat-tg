@@ -153,7 +153,7 @@ multiple modular subtrees with behaviors
 	if(isnull(pawn))
 		return // instantiated without an applicable pawn, fine
 
-	UnregisterSignal(pawn, list(COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT, COMSIG_MOB_STATCHANGE))
+	UnregisterSignal(pawn, list(COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT, COMSIG_MOB_STATCHANGE, COMSIG_QDELETING))
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
 	pawn.ai_controller = null
@@ -338,7 +338,7 @@ multiple modular subtrees with behaviors
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, PROC_REF(on_sentience_gained))
 
 // Turn the controller off if the pawn has been qdeleted
-/datum/ai_controller/proc/on_pawn_qdeleted(mob/living/source, new_stat)
+/datum/ai_controller/proc/on_pawn_qdeleted()
 	SIGNAL_HANDLER
 	set_ai_status(AI_STATUS_OFF)
 
