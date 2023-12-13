@@ -1,6 +1,6 @@
 // THIS IS A SKYRAT UI FILE
 import { toTitleCase } from 'common/string';
-import { useBackend, useSharedState, useLocalState } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
@@ -16,6 +16,7 @@ import {
   Tooltip,
 } from '../components';
 import { Window } from '../layouts';
+import { useState } from 'react';
 
 export const AmmoWorkbench = (props) => {
   const [tab, setTab] = useSharedState('tab', 1);
@@ -245,7 +246,7 @@ export const DatadiskTab = (props) => {
 const MaterialRow = (props) => {
   const { material, onRelease } = props;
 
-  const [amount, setAmount] = useLocalState('amount' + material.name, 1);
+  const [amount, setAmount] = useState(1);
 
   const amountAvailable = Math.floor(material.amount);
   return (
