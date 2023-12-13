@@ -29,6 +29,7 @@
 		"Trader",
 		"Off-Duty Crew",
 		"Off-Duty Staff",
+		"Musician",
 	)
 
 /datum/job/atmospheric_technician
