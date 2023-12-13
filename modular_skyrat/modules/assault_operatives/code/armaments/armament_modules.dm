@@ -18,16 +18,16 @@
 	item_type = /obj/item/mod/module/dispenser/mirage
 	cost = 2
 
-/datum/armament_entry/assault_operatives/modules/criminalcapture
-	item_type = /obj/item/mod/module/criminalcapture
-	cost = 1
-
 /datum/armament_entry/assault_operatives/modules/adrenal_boost
 	item_type = /obj/item/mod/module/adrenaline_boost
 	cost = 3
 
 /datum/armament_entry/assault_operatives/modules/sonar
 	item_type = /obj/item/mod/module/active_sonar
+	cost = 3
+
+/datum/armament_entry/assault_operatives/modules/booster
+	item_type = /obj/item/mod/module/jump_jet
 	cost = 3
 
 /datum/armament_entry/assault_operatives/modules/jetpack

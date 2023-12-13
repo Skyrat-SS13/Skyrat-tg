@@ -88,6 +88,7 @@
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/holster,
 		/obj/item/mod/module/status_readout/operational,
+		/obj/item/mod/module/criminalcapture,
 	)
 
 /obj/machinery/suit_storage_unit/industrial/assault_operative
