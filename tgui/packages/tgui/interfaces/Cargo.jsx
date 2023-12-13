@@ -36,6 +36,7 @@ export const CargoContent = (props) => {
   const [tab, setTab] = useSharedState('tab', 'catalog');
   const { cart = [], requests = [], requestonly } = data;
   const cart_length = cart.reduce((total, entry) => total + entry.amount, 0);
+
   return (
     <Box>
       <CargoStatus />
@@ -108,6 +109,7 @@ const CargoStatus = (props) => {
     requestonly,
     can_send,
   } = data;
+
   return (
     <Section
       title={department}
