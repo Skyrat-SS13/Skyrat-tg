@@ -9,13 +9,10 @@ import {
   Objective,
   ReplaceObjectivesButton,
 } from './common/Objectives';
-<<<<<<< HEAD
+import { useState } from 'react';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
-=======
-import { useState } from 'react';
->>>>>>> d197ab7faa5 (Deprecates inferno state hook (#80195))
 
 const allystyle = {
   fontWeight: 'bold',
