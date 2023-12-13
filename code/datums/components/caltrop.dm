@@ -97,15 +97,11 @@
 		return
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION BEGIN - Hardened Soles Quirk
 		if(HAS_TRAIT(H, TRAIT_HARD_SOLES))
 			return
 		// SKYRAT EDIT ADDITION END
-		if ((H.wear_suit?.body_parts_covered | H.w_uniform?.body_parts_covered | H.shoes?.body_parts_covered) & FEET)
-=======
 		if ((digitigrade_fan.wear_suit?.body_parts_covered | digitigrade_fan.w_uniform?.body_parts_covered | digitigrade_fan.shoes?.body_parts_covered) & FEET)
->>>>>>> 941183ac585 (Light Footed now makes stepping on glass Knockdown instead of Paralyze (#80270))
 			return
 
 	var/damage = rand(min_damage, max_damage)
