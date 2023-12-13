@@ -74,6 +74,6 @@
 	cost = 4
 
 /datum/armament_entry/hecu/medical/injector/bag
-	item_type = /obj/item/storage/pouch/medpens
+	item_type = /obj/item/storage/medkit/civil_defense/stocked
 	max_purchase = 2
 	cost = 5
