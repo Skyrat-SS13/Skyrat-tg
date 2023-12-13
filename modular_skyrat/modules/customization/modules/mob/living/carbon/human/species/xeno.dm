@@ -1,3 +1,5 @@
+#define BUILD_DURATION 0.5 SECONDS
+
 /datum/species/xeno
 	// A cloning mistake, crossing human and xenomorph DNA
 	name = "Xenomorph Hybrid"
@@ -10,9 +12,16 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mutantbrain = /obj/item/organ/internal/brain/xeno_hybrid
 	mutanttongue = /obj/item/organ/internal/tongue/xeno_hybrid
-	mutant_organs = list(/obj/item/organ/internal/alien/plasmavessel/roundstart, /obj/item/organ/internal/alien/resinspinner, /obj/item/organ/internal/alien/hivenode)
-	coldmod = 0.8
+	mutantliver = /obj/item/organ/internal/liver/xeno_hybrid
+	mutantstomach = /obj/item/organ/internal/stomach/xeno_hybrid
+	mutant_organs = list(
+		/obj/item/organ/internal/alien/plasmavessel/roundstart,
+		/obj/item/organ/internal/alien/resinspinner/roundstart,
+		/obj/item/organ/internal/alien/hivenode,
+		)
+	exotic_blood = /datum/reagent/toxin/acid
 	heatmod = 2.5
 	mutant_bodyparts = list()
 	external_organs = list()
@@ -75,7 +84,61 @@
 	regenerate_organs(xeno, src, visual_only = TRUE)
 	xeno.update_body(TRUE)
 
+///Xenomorph organs modified to suit roundstart styling
+//Plasma vessel
 /obj/item/organ/internal/alien/plasmavessel/roundstart
 	stored_plasma = 55
 	max_plasma = 55
 	plasma_rate = 2
+	heal_rate = 0
+	actions_types = list(
+		/datum/action/cooldown/alien/make_structure/plant_weeds/roundstart,
+		/datum/action/cooldown/alien/transfer,
+	)
+
+/datum/action/cooldown/alien/make_structure/plant_weeds
+	var/build_duration = 0 SECONDS
+
+/datum/action/cooldown/alien/make_structure/plant_weeds/roundstart
+	build_duration = BUILD_DURATION
+
+/datum/action/cooldown/alien/make_structure/plant_weeds/Activate(atom/target)
+	if(build_duration && !do_after(owner, build_duration))
+		owner.balloon_alert(owner, "interrupted!")
+		return
+	return ..()
+
+//Resin spinner
+/obj/item/organ/internal/alien/resinspinner/roundstart
+	actions_types = list(/datum/action/cooldown/alien/make_structure/resin/roundstart)
+
+/datum/action/cooldown/alien/make_structure/resin
+	var/build_duration = 0 SECONDS
+	 //Non-modularly checked in `code\modules\mob\living\carbon\alien\adult\alien_powers.dm`
+
+/datum/action/cooldown/alien/make_structure/resin/roundstart
+	build_duration = BUILD_DURATION
+
+//Organ resprites
+/obj/item/organ/internal/brain/xeno_hybrid
+	name = "alien brain"
+	icon_state = "brain-x"
+
+/obj/item/organ/internal/stomach/xeno_hybrid
+	name = "alien stomach"
+	icon_state = "stomach-x"
+
+/obj/item/organ/internal/liver/xeno_hybrid
+	name = "alien liver"
+	icon_state = "liver-x"
+
+//Liver modification (xenohybrids can process plasma!)
+/obj/item/organ/internal/liver/xeno_hybrid/handle_chemical(mob/living/carbon/owner, datum/reagent/toxin/chem, seconds_per_tick, times_fired)
+	. = ..()
+	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
+		return
+	if(chem.type == /datum/reagent/toxin/plasma)
+		chem.toxpwr = 0
+		return
+
+#undef BUILD_DURATION
