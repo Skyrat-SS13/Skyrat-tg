@@ -1953,7 +1953,7 @@
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 3,
 	)
 	construction_time = 5 SECONDS
-	build_path = /obj/item/clothing/neck/link_scryer
+	build_path = /obj/item/clothing/neck/link_scryer/loaded //SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MODSUITS + RND_SUBCATEGORY_MODSUITS_MISC
 	)
