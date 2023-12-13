@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Section, Stack, Box, Tabs, Button, BlockQuote } from '../components';
 import { Window } from '../layouts';
 import { BooleanLike } from 'common/react';
@@ -7,9 +7,13 @@ import {
   Objective,
   ReplaceObjectivesButton,
 } from './common/Objectives';
+<<<<<<< HEAD
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
+=======
+import { useState } from 'react';
+>>>>>>> d197ab7faa5 (Deprecates inferno state hook (#80195))
 
 const hereticRed = {
   color: '#e03c3c',
@@ -317,7 +321,7 @@ export const AntagInfoHeretic = (props) => {
   const { data } = useBackend<Info>();
   const { ascended } = data;
 
-  const [currentTab, setTab] = useLocalState('currentTab', 0);
+  const [currentTab, setTab] = useState(0);
 
   return (
     <Window width={675} height={635}>
