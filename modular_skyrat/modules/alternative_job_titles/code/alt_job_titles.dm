@@ -64,7 +64,6 @@
 		"Bitdomain Technician",
 		"Data Retrieval Specialist",
 		"Netdiver",
-		"Netrunner",
 		"Pod Jockey",
 		"Union Bitrunner",
 		"Junior Runner",
