@@ -25,10 +25,6 @@
 	pull_force = MOVE_FORCE_OVERPOWERING
 	mob_size = MOB_SIZE_HUGE
 	layer = LARGE_MOB_LAYER //Looks weird with them slipping under mineral walls and cameras and shit otherwise
-<<<<<<< HEAD
-	plane = GAME_PLANE_UPPER // SKYRAT EDIT - ORIGINAL: plane = GAME_PLANE_UPPER_FOV_HIDDEN
-=======
->>>>>>> f03084c1ca6 (FOV is Dead (Long Live FOV) (#80062))
 	mouse_opacity = MOUSE_OPACITY_OPAQUE // Easier to click on in melee, they're giant targets anyway
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	/// Crusher loot dropped when the megafauna is killed with a crusher
