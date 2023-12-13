@@ -204,11 +204,7 @@ Medical HUD! Basic mode needs suit sensors on.
 	if(HAS_TRAIT(src, TRAIT_XENO_HOST))
 		holder.icon_state = "hudxeno"
 	else if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
-<<<<<<< HEAD
-		if((key || get_ghost(FALSE, FALSE)) && (can_defib() & DEFIB_REVIVABLE_STATES)) // SKYRAT EDIT : OG : if((key || get_ghost(FALSE, TRUE)) && (can_defib() & DEFIB_REVIVABLE_STATES))
-=======
 		if(can_defib_client())
->>>>>>> b386d332c15 (Reworks morgue trays. Freezers and morgue trays now have their own internal air. Organs no longer take damage when below freezing temperatures. (#80219))
 			holder.icon_state = "huddefib"
 		else
 			holder.icon_state = "huddead"
