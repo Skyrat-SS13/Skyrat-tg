@@ -127,17 +127,13 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(LOG_WHISPER)
 			log_whisper(log_text, data)
 		if(LOG_EMOTE)
-<<<<<<< HEAD
-			log_emote(log_text)
+			log_emote(log_text, data)
 		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLE)
-			log_subtle(log_text)
+			log_subtle(log_text, data)
 		if(LOG_SUBTLER)
-			log_subtler(log_text)
+			log_subtler(log_text, data)
 		//SKYRAT EDIT ADDITION END
-=======
-			log_emote(log_text, data)
->>>>>>> 7c9f1273405 (Records Blackbox Feedback on Items used to Suicide (#80258))
 		if(LOG_RADIO_EMOTE)
 			log_radio_emote(log_text, data)
 		if(LOG_DSAY)
