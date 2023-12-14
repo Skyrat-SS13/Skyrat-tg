@@ -471,3 +471,21 @@
   whataboutism-alos:
   - code_imp: Skyrat sprite override updated to reflect upstream lizard tail
   - rscadd: Adds two-tone version of short lizard tail
+2023-12-14:
+  SkyratBot:
+  - bugfix: Cult chat, PDAs, succumbing, etc shouldn't blue screen anymore.
+  - bugfix: Crabs will properly only target Tiny creatures
+  - qol: For admins, in the "Spawn Atom" window where you pick atoms to spawn-by-type,
+      anything that is a subtype of `/mob/living/basic` should now be replaced with
+      the `BASIC` tag instead (like with carbons, reagent containers, turfs, etc.).
+      So, instead of having to scroll through and try and figure out what that weird
+      subtype of Poly is, it should now be easier to read in that smaller screen.
+  - server: The TGS -> Discord Relay Warning that detects if a cliented mob has a
+      null loc should now be plaintext instead of being fully screwed up with useless
+      codestuffs.
+  - balance: Organs can now be preserved by putting them in freezing temperatures.
+  - balance: Morgue trays and freezers will now cool down the contents placed inside
+      of them.
+  - balance: Morgue trays will now properly display if someone stored within them
+      is revivable and make periodic beeps every minute.
+  - qol: The asteroid on Tramstation can now have areas expanded into or created within.
