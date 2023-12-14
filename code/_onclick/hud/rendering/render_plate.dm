@@ -98,15 +98,15 @@
 
 /atom/movable/screen/plane_master/rendering_plate/game_plate/proc/fov_enabled(mob/source)
 	SIGNAL_HANDLER
-	add_relay_to(RENDER_PLANE_GAME_UNMASKED)
-	add_relay_to(RENDER_PLANE_GAME_MASKED)
-	remove_relay_from(RENDER_PLANE_MASTER)
+	add_relay_to(GET_NEW_PLANE(RENDER_PLANE_GAME_UNMASKED, offset))
+	add_relay_to(GET_NEW_PLANE(RENDER_PLANE_GAME_MASKED, offset))
+	remove_relay_from(GET_NEW_PLANE(RENDER_PLANE_MASTER, offset))
 
 /atom/movable/screen/plane_master/rendering_plate/game_plate/proc/fov_disabled(mob/source)
 	SIGNAL_HANDLER
-	remove_relay_from(RENDER_PLANE_GAME_UNMASKED)
-	remove_relay_from(RENDER_PLANE_GAME_MASKED)
-	add_relay_to(RENDER_PLANE_MASTER)
+	remove_relay_from(GET_NEW_PLANE(RENDER_PLANE_GAME_UNMASKED, offset))
+	remove_relay_from(GET_NEW_PLANE(RENDER_PLANE_GAME_MASKED, offset))
+	add_relay_to(GET_NEW_PLANE(RENDER_PLANE_MASTER, offset))
 
 ///renders the parts of the plate unmasked by fov
 /atom/movable/screen/plane_master/rendering_plate/unmasked_game_plate
@@ -384,7 +384,6 @@
 	documentation = "Renders anything that's out of character. Mostly useful as a converse to the game rendering plate."
 	plane = RENDER_PLANE_NON_GAME
 	render_relay_planes = list(RENDER_PLANE_MASTER)
-
 
 /**
  * Plane master proc called in Initialize() that creates relay objects, and sets them uo as needed
