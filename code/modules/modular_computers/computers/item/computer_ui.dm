@@ -135,23 +135,15 @@
 
 	switch(action)
 		if("PC_exit")
-<<<<<<< HEAD
-			active_program.kill_program(usr)
-=======
 			//you can't close apps in emergency mode.
 			if(isnull(internal_cell) || internal_cell.charge)
 				active_program.kill_program(usr)
->>>>>>> f5cd0c9b0eb (Fixes TGUI internal actions on modular computers (#80325))
 			return TRUE
 		if("PC_shutdown")
 			shutdown_computer()
 			return TRUE
 		if("PC_minimize")
-<<<<<<< HEAD
-			if(!active_program)
-=======
 			if(!active_program || (!isnull(internal_cell) && !internal_cell.charge))
->>>>>>> f5cd0c9b0eb (Fixes TGUI internal actions on modular computers (#80325))
 				return
 			active_program.background_program()
 			return TRUE
