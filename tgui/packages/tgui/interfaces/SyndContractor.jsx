@@ -12,6 +12,7 @@ import {
   Section,
 } from '../components';
 import { NtosWindow } from '../layouts';
+import { useState } from 'react';
 
 const CONTRACT_STATUS_INACTIVE = 1;
 const CONTRACT_STATUS_ACTIVE = 2;
@@ -211,7 +212,7 @@ export const StatusPane = (props) => {
 };
 
 export const SyndPane = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   return (
     <>
       <StatusPane state={props.state} />
