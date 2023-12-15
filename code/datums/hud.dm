@@ -18,12 +18,9 @@ GLOBAL_LIST_INIT(huds, list(
 	DATA_HUD_SENTIENT_DISEASE = new/datum/atom_hud/sentient_disease(),
 	DATA_HUD_AI_DETECT = new/datum/atom_hud/ai_detector(),
 	DATA_HUD_FAN = new/datum/atom_hud/data/human/fan_hud(),
-<<<<<<< HEAD
+	DATA_HUD_MALF_APC = new/datum/atom_hud/data/malf_apc(),
 	DATA_HUD_PERMIT = new/datum/atom_hud/data/human/permit(), // SKYRAT EDIT ADDITION
 	DATA_HUD_DNR = new/datum/atom_hud/data/human/dnr(), // SKYRAT EDIT ADDITION
-=======
-	DATA_HUD_MALF_APC = new/datum/atom_hud/data/malf_apc(),
->>>>>>> b36986d993f (Compromised APCs now flicker their darkblue screen, and it cannot be seen from cameras. (#79929))
 ))
 
 /datum/atom_hud
