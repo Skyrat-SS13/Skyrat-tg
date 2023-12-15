@@ -74,12 +74,9 @@
 #define DATA_HUD_SENTIENT_DISEASE 8
 #define DATA_HUD_AI_DETECT 9
 #define DATA_HUD_FAN 10
-<<<<<<< HEAD
-#define DATA_HUD_PERMIT 11 //SKYRAT EDIT
-#define DATA_HUD_DNR 12 // SKYRAT EDIT
-=======
 #define DATA_HUD_MALF_APC 11
->>>>>>> b36986d993f (Compromised APCs now flicker their darkblue screen, and it cannot be seen from cameras. (#79929))
+#define DATA_HUD_PERMIT 12 //SKYRAT EDIT
+#define DATA_HUD_DNR 13 // SKYRAT EDIT
 
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
