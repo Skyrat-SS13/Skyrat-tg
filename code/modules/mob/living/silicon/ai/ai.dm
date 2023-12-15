@@ -607,7 +607,7 @@
 	var/summon_success
 	if(isbasicbot(bot))
 		var/mob/living/basic/bot/basic_bot = bot
-		summon_success = basic_bot.summon_bot(src, grant_all_access = TRUE)
+		summon_success = basic_bot.summon_bot(src, waypoint, grant_all_access = TRUE)
 	else
 		var/mob/living/simple_animal/bot/simple_bot = bot
 		call_bot_cooldown = world.time + CALL_BOT_COOLDOWN
@@ -1044,10 +1044,10 @@
 	apc.malfhack = TRUE
 	apc.locked = TRUE
 	apc.coverlocked = TRUE
-
+	apc.flicker_hacked_icon()
+	apc.set_hacked_hud()
 	playsound(get_turf(src), 'sound/machines/ding.ogg', 50, TRUE, ignore_walls = FALSE)
 	to_chat(src, "Hack complete. [apc] is now under your exclusive control.")
-	apc.update_appearance()
 
 /mob/living/silicon/ai/verb/deploy_to_shell(mob/living/silicon/robot/target)
 	set category = "AI Commands"

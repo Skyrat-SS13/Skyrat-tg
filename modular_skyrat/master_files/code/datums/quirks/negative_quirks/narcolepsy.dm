@@ -32,8 +32,8 @@
 /datum/brain_trauma/severe/narcolepsy/permanent/on_life(seconds_per_tick, times_fired)
 	if(owner.IsSleeping())
 		return
-	if(owner.reagents.has_reagent(/datum/reagent/medicine/synaphydramine))
-		return //mild stimulant made by mind restoration virus
+	if(owner.reagents.has_reagent(/datum/reagent/medicine/modafinil))
+		return //stimulant which already blocks sleeping
 	if(owner.reagents.has_reagent(/datum/reagent/medicine/synaptizine))
 		return //mild stimulant easily made in chemistry
 
@@ -63,6 +63,6 @@
 
 /obj/item/reagent_containers/pill/prescription_stimulant
 	name = "prescription stimulant pill"
-	desc = "Used to treat symptoms of drowsiness and sudden loss of consciousness."
-	list_reagents = list(/datum/reagent/consumable/sugar = 3, /datum/reagent/medicine/synaptizine = 5, /datum/reagent/medicine/synaphydramine = 10)
+	desc = "Used to treat symptoms of drowsiness and sudden loss of consciousness. A warning label reads: <b>Take in moderation</b>."
+	list_reagents = list(/datum/reagent/consumable/sugar = 5, /datum/reagent/medicine/synaptizine = 5, /datum/reagent/medicine/modafinil = 3)
 	icon_state = "pill15"

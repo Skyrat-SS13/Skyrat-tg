@@ -1,11 +1,12 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Box, Divider, Button, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const ArmamentStation = (props, context) => {
-  const [category, setCategory] = useLocalState(context, 'category', '');
-  const [weapon, setArmament] = useLocalState(context, 'weapon');
-  const { act, data } = useBackend(context);
+export const ArmamentStation = (props) => {
+  const [category, setCategory] = useLocalState('category', '');
+  const [weapon, setArmament] = useLocalState('weapon');
+  const { act, data } = useBackend();
   const { armaments_list = [], card_inserted, card_points, card_name } = data;
   return (
     <Window theme="armament" title="Armament Station" width={1000} height={600}>
@@ -65,7 +66,8 @@ export const ArmamentStation = (props, context) => {
                     armament_category.subcategories.map((subcat) => (
                       <Section
                         key={subcat.subcategory}
-                        title={subcat.subcategory}>
+                        title={subcat.subcategory}
+                      >
                         <Stack vertical>
                           {subcat.items.map((item) => (
                             <Stack.Item key={item.ref}>
@@ -80,7 +82,8 @@ export const ArmamentStation = (props, context) => {
                                 }
                                 width="100%"
                                 key={item.ref}
-                                onClick={() => setArmament(item.ref)}>
+                                onClick={() => setArmament(item.ref)}
+                              >
                                 <img
                                   src={`data:image/jpeg;base64,${item.icon}`}
                                   style={{
@@ -94,7 +97,7 @@ export const ArmamentStation = (props, context) => {
                           ))}
                         </Stack>
                       </Section>
-                    ))
+                    )),
                 )}
               </Section>
             </Stack.Item>
@@ -128,7 +131,8 @@ export const ArmamentStation = (props, context) => {
                                 item.quantity - item.purchased <= 0
                                   ? 'red'
                                   : 'green'
-                              }>
+                              }
+                            >
                               {'Quantity Remaining: ' +
                                 (item.quantity - item.purchased)}
                             </Stack.Item>
@@ -137,7 +141,8 @@ export const ArmamentStation = (props, context) => {
                                 item.cost > card_points || !card_inserted
                                   ? 'red'
                                   : 'green'
-                              }>
+                              }
+                            >
                               {'Cost: ' + item.cost}
                             </Stack.Item>
                             {!!item.buyable_ammo && (
@@ -147,7 +152,8 @@ export const ArmamentStation = (props, context) => {
                                   !card_inserted
                                     ? 'red'
                                     : 'green'
-                                }>
+                                }
+                              >
                                 {'Ammo Cost: ' + item.magazine_cost}
                               </Stack.Item>
                             )}
@@ -183,9 +189,9 @@ export const ArmamentStation = (props, context) => {
                               </Stack.Item>
                             )}
                           </Stack>
-                        )
-                    )
-                  )
+                        ),
+                    ),
+                  ),
                 )}
               </Section>
             </Stack.Item>
