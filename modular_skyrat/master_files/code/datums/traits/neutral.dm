@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 /datum/quirk/quickreflexes
 	name = "Quick Reflexes"
 	desc = "You don't like it when people pat your head or give you hugs and will swat their hands away."
-	gain_text = span_notice("You don't feel like a huge right now...")
+	gain_text = span_notice("You don't feel like a hug right now...")
 	lose_text = span_notice("Maybe a hug wouldn't hurt.")
 	medical_record_text = "Patient seems to dislike being touched."
 	value = 0
