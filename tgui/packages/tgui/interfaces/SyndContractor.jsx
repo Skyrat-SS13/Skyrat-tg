@@ -10,6 +10,8 @@ import {
   Modal,
   NoticeBox,
   Section,
+  Tabs,
+  Table,
 } from '../components';
 import { NtosWindow } from '../layouts';
 import { useState } from 'react';
