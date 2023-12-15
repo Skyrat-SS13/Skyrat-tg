@@ -9,7 +9,7 @@
 	production_animation = null
 	circuit = null
 	production_animation = "colony_lathe_n"
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_power = 5
 	charges_tax = FALSE

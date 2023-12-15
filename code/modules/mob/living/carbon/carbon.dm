@@ -28,19 +28,16 @@
 	QDEL_NULL(dna)
 	GLOB.carbon_list -= src
 
-/mob/living/carbon/attackby(obj/item/item, mob/living/user, params)
-	if(!all_wounds || !(!user.combat_mode || user == src))
-		return ..()
+/mob/living/carbon/item_tending(mob/living/user, obj/item/tool, list/modifiers)
+	. = ..()
+	if(. & ITEM_INTERACT_ANY_BLOCKER)
+		return .
 
-	if(can_perform_surgery(user, params))
-		return TRUE
+	for(var/datum/wound/wound as anything in shuffle(all_wounds))
+		if(wound.try_treating(tool, user))
+			return ITEM_INTERACT_SUCCESS
 
-	for(var/i in shuffle(all_wounds))
-		var/datum/wound/wound = i
-		if(wound.try_treating(item, user))
-			return TRUE
-
-	return ..()
+	return .
 
 /mob/living/carbon/CtrlShiftClick(mob/user)
 	..()
@@ -973,6 +970,9 @@
 		return DEFIB_NOGRAB_AGHOST
 
 	return DEFIB_POSSIBLE
+
+/mob/living/carbon/proc/can_defib_client()
+	return (key || get_ghost(FALSE, FALSE)) && (can_defib() & DEFIB_REVIVABLE_STATES) // SKYRAT EDIT : OG : (key || get_ghost(FALSE, TRUE)) && (can_defib() & DEFIB_REVIVABLE_STATES)
 
 /mob/living/carbon/harvest(mob/living/user)
 	if(QDELETED(src))

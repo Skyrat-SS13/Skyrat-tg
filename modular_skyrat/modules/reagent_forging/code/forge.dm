@@ -743,7 +743,7 @@
 /obj/structure/reagent_forge/billow_act(mob/living/user, obj/item/tool)
 	if(in_use) // Preventing billow use if the forge is in use to prevent spam
 		fail_message(user, "forge busy")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 	var/obj/item/forging/forge_item = tool
@@ -752,25 +752,25 @@
 
 	if(!forge_fuel_strong && !forge_fuel_weak)
 		fail_message(user, "no fuel in [src]")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(forge_temperature >= MAX_FORGE_TEMP)
 		fail_message(user, "[src] cannot heat further")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	balloon_alert_to_viewers("billowing...")
 
 	while(forge_temperature < 91)
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			balloon_alert_to_viewers("stopped billowing")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		forge_temperature += 10
 		user.mind.adjust_experience(/datum/skill/smithing, 5) // Billowing, like fueling, gives you some experience in forging
 
 	in_use = FALSE
 	balloon_alert(user, "successfully heated [src]")
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_forge/tong_act(mob/living/user, obj/item/tool)
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
@@ -778,7 +778,7 @@
 
 	if(in_use || forge_item.in_use)
 		fail_message(user, "forge busy")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	in_use = TRUE
 	forge_item.in_use = TRUE
@@ -786,7 +786,7 @@
 	if(forge_temperature < MIN_FORGE_TEMP)
 		fail_message(user, "forge too cool")
 		forge_item.in_use = FALSE
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	// Here we check the item used on us (tongs) for an incomplete forge item of some kind to heat
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in forge_item.contents
@@ -796,14 +796,14 @@
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			balloon_alert_to_viewers("stopped heating [search_incomplete]")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		COOLDOWN_START(search_incomplete, heating_remainder, FORGE_HEATING_DURATION)
 		in_use = FALSE
 		forge_item.in_use = FALSE
 		user.mind.adjust_experience(/datum/skill/smithing, 5) // Heating up forge items grants some experience
 		balloon_alert(user, "successfully heated [search_incomplete]")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	// Here we check the item used on us (tongs) for a stack of some kind to create an object from
 	var/obj/item/stack/search_stack = locate(/obj/item/stack) in forge_item.contents
@@ -812,7 +812,7 @@
 		if(!user_choice)
 			fail_message(user, "nothing chosen")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		// Sets up a list of the materials to give to the item later
 		var/list/material_list = list()
@@ -827,14 +827,14 @@
 		if(!search_stack.use(1))
 			fail_message(user, "not enough of [search_stack]")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		balloon_alert_to_viewers("heating [search_stack]")
 
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			balloon_alert_to_viewers("stopped heating [search_stack]")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		var/spawn_item = choice_list[user_choice]
 		var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
@@ -850,11 +850,11 @@
 
 		if(!search_stack)
 			forge_item.icon_state = "tong_empty"
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	in_use = FALSE
 	forge_item.in_use = FALSE
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_forge/blowrod_act(mob/living/user, obj/item/tool)
 	var/obj/item/glassblowing/blowing_rod/blowing_item = tool
@@ -863,27 +863,27 @@
 
 	if(in_use)
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 	in_use = TRUE
 
 	if(forge_temperature < MIN_FORGE_TEMP)
 		fail_message(user, "The temperature is not hot enough to start heating [blowing_item].")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
 	if(!find_glass)
 		fail_message(user, "[blowing_item] does not have any glass to heat up.")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(!COOLDOWN_FINISHED(find_glass, remaining_heat))
 		fail_message(user, "[find_glass] is still has remaining heat.")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	to_chat(user, span_notice("You begin heating up [blowing_item]."))
 
 	if(!do_after(user, glassblowing_speed, target = src))
 		fail_message(user, "[blowing_item] is interrupted in its heating process.")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
 	find_glass.total_time = glassblowing_amount
@@ -891,7 +891,7 @@
 	user.mind.adjust_experience(/datum/skill/smithing, 5)
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	in_use = FALSE
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_forge/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
