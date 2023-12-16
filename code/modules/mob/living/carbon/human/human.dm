@@ -966,10 +966,12 @@
 		to_chat(target, span_warning("You can't piggyback ride [src] right now!"))
 		return
 
+	//SKYRAT EDIT START
 	visible_message(span_notice("[target] starts to climb onto [src]..."))
-	if(!do_after(target, 1.5 SECONDS, target = src) || !can_piggyback(target))
+	if(!do_after(target, 4.0 SECONDS, target = src) || !can_piggyback(target))
 		visible_message(span_warning("[target] fails to climb onto [src]!"))
 		return
+	//SKYRAT EDIT END
 
 	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
