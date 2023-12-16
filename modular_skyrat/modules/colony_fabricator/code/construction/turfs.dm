@@ -8,30 +8,74 @@
 	icon_state = "prefab-0"
 	base_icon_state = "prefab"
 	can_engrave = FALSE
+	girder_type = null
 	hardness = 70
 	slicing_duration = 5 SECONDS
+	sheet_type = /obj/item/stack/sheet/plastic_wall_panel
+	sheet_amount = 1
 
-/turf/closed/wall/prefab_plastic/break_wall()
-	return
-
-/turf/closed/wall/prefab_plastic/devastate_wall()
-	return
+GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
+	new/datum/stack_recipe("prefabricated wall", /turf/closed/wall/prefab_plastic, time = 3 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("prefabricated window", /obj/structure/window/reinforced/colony_fabricator, time = 0.5 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, is_fulltile = TRUE, category = CAT_WINDOWS), \
+	))
 
 /obj/item/stack/sheet/plastic_wall_panel
-	name = "plastic wall panels"
-	singular_name = "plastic wall panel"
+	name = "plastic panels"
+	singular_name = "plastic panel"
 	desc = "What better material to make the walls of your soon to be home out of than sheets of flimsy plastic? \
-		Metal? What are you talking about, metal walls, in this economy?"
+		Metal? What are you talking about, metal walls, in this economy? May also be used to make structures other \
+		than walls."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
 	icon_state = "sheet-plastic"
 	inhand_icon_state = "sheet-plastic"
-	mats_per_unit = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
+	mats_per_unit = list(
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	has_unique_girder = TRUE
 	material_type = /datum/material/plastic
 	merge_type = /obj/item/stack/sheet/plastic_wall_panel
 	walltype = /turf/closed/wall/prefab_plastic
 
+/obj/item/stack/sheet/plastic_wall_panel/examine(mob/user)
+	. = ..()
+	. += span_notice("You can build a prefabricated wall by right clicking on an empty floor.")
+
+/obj/item/stack/sheet/plastic_wall_panel/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!isopenturf(target))
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
+	var/turf/open/build_on = target
+	if(!user.Adjacent(build_on))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(isgroundlessturf(build_on))
+		user.balloon_alert(user, "can't place it here!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(build_on.is_blocked_turf())
+		user.balloon_alert(user, "something is blocking the tile!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(get_amount() < 1)
+		user.balloon_alert(user, "not enough material!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(!do_after(user, 3 SECONDS, build_on))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(build_on.is_blocked_turf())
+		user.balloon_alert(user, "something is blocking the tile!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(!use(1))
+		user.balloon_alert(user, "not enough material!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	new walltype(build_on)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/stack/sheet/plastic_wall_panel/get_main_recipes()
+	. = ..()
+	. += GLOB.plastic_wall_panel_recipes
+
 /obj/item/stack/sheet/plastic_wall_panel/ten
 	amount = 10
+
+/obj/item/stack/sheet/plastic_wall_panel/fifty
+	amount = 50
 
 // Grated floor tile, for seeing wires under
 
