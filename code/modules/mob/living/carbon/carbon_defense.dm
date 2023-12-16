@@ -499,7 +499,7 @@
 			visible_message(span_warning("[helper] tries to pat [src] on the head, but can't reach!"))
 			return
 		else if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && (!src.handcuffed))
-			visible_message(span_warning("[helper] tries to pat [src] on the head, but their hand is swatted away!"))
+			to_chat(span_notice("You try to pat [p_them()] on the head, but they move their head out of the way."))
 			return
 		//SKYRAT EDIT ADDITION END
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
@@ -545,7 +545,7 @@
 			to_chat(src, span_notice("[helper] squeezes you super tightly in a firm bear hug!"))
 		else // START OF SKYRAT EDIT
 			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && (!src.handcuffed))
-				visible_message(span_warning("[helper] tries to hug [src], hands are swatted away!"))
+				to_chat(span_warning("you trie to hug [src], but [p_them()] shuffle out of the way!"))
 				return
 			else // END OF SKYRAT EDIT
 				helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
