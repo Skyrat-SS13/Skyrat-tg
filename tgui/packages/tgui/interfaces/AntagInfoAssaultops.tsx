@@ -1,5 +1,5 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   LabeledList,
   Stack,
@@ -13,6 +13,7 @@ import {
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { Rules } from './AntagInfoRules';
+import { useState } from 'react';
 
 type Objectives = {
   count: number;
@@ -51,7 +52,7 @@ type Info = {
 };
 
 export const AntagInfoAssaultops = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   const { data } = useBackend<Info>();
   const { required_keys, uploaded_keys, objectives } = data;
   return (

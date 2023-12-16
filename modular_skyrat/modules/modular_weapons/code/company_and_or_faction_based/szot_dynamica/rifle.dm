@@ -29,7 +29,9 @@
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/battle_rifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_heavy.ogg'
-	can_suppress = FALSE
+	can_suppress = TRUE
+	suppressor_x_offset = 0
+	suppressor_y_offset = 0
 
 	can_bayonet = FALSE
 
