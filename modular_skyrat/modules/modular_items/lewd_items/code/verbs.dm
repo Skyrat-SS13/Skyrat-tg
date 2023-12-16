@@ -12,6 +12,7 @@
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
 
+// START OF SKYRAT EDIT
 /mob/living/verb/reflexes_verb()
     set name = "Toggle Reflexes"
     set category = "IC"
@@ -33,6 +34,7 @@
 
 /mob/living/silicon/get_reflexes_lose_text()
 	return "Our systems will allow platonic contact."
+// END OF SKYRAT EDIT
 
 /mob/living/carbon/human/Initialize(mapload)
 	. = ..()
