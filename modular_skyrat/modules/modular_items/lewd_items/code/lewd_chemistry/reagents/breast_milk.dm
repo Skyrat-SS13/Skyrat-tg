@@ -9,7 +9,7 @@
 	name = "moth milk"
 	description = "This looks familiar... Wait, what the fuck?!"
 	taste_description = "warm and silky"
-	color = "#ffffffdd"
+	color = "#ffffddff"
 
 /datum/glass_style/drinking_glass/breast_milk
 	required_drink_type = /datum/reagent/consumable/breast_milk
