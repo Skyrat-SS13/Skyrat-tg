@@ -193,17 +193,17 @@ export const StatusPane = (props) => {
                 />
               }
             >
-              {String(redeemable_tc)}
+              {String(data.redeemable_tc)}
             </LabeledList.Item>
             <LabeledList.Item label="TC Earned">
-              {String(earned_tc)}
+              {String(data.earned_tc)}
             </LabeledList.Item>
           </LabeledList>
         </Grid.Column>
         <Grid.Column>
           <LabeledList>
             <LabeledList.Item label="Contracts Completed">
-              {String(contracts_completed)}
+              {String(data.contracts_completed)}
             </LabeledList.Item>
             <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>
@@ -301,9 +301,9 @@ const ContractsTab = (props) => {
       <Section
         title="Dropoff Locator"
         textAlign="center"
-        opacity={ongoing_contract ? 100 : 0}
+        opacity={data.ongoing_contract ? 100 : 0}
       >
-        <Box bold>{dropoff_direction}</Box>
+        <Box bold>{data.dropoff_direction}</Box>
       </Section>
     </>
   );
