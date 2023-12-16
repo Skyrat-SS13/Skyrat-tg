@@ -71,7 +71,6 @@
 							span_warning("[user] punches you, but doesn't leave a dent!"), null, COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("You punch [src], but don't leave a dent!"))
 		else
-                        //SKYRAT EDIT BEGIN - DISALLOWED HEADPATS
 			if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS))
 				visible_message(span_warning("[user] tries to pet [src], but it moves out of the way."))
 				return
@@ -80,7 +79,6 @@
 								span_notice("[user] pets you."), null, null, user)
 				to_chat(user, span_notice("You pet [src]."))
 				user.add_mood_event("pet_borg", /datum/mood_event/pet_borg)
-			//SKYRAT EDIT END - DISALLOWED HEADPATS
 
 /mob/living/silicon/check_block(atom/hitby, damage, attack_text, attack_type, armour_penetration, damage_type, attack_flag)
 	. = ..()
