@@ -8,7 +8,7 @@
 	if(DNA.features["breasts_size"] > 0)
 		size = DNA.features["breasts_size"]
 
-	if(istype(DNA.species), /datum/species/moth)
+	if(istype((DNA.species), /datum/species/moth))
 		internal_fluid_datum = /datum/reagent/consumable/moth_milk
 
 	switch(genital_type)
