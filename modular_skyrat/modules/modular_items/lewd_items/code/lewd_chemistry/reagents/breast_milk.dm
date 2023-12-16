@@ -9,7 +9,7 @@
 	name = "moth milk"
 	description = "This looks familiar... Wait, what the fuck?!"
 	taste_description = "warm and mothy"
-	color = "#ffffffbb"
+	color = "#ffffffdd"
 	reagent_state = LIQUID
 
 /datum/glass_style/drinking_glass/breast_milk
