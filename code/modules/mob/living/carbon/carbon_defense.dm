@@ -543,11 +543,13 @@
 						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 			to_chat(helper, span_notice("You wrap [src] into a tight bear hug!"))
 			to_chat(src, span_notice("[helper] squeezes you super tightly in a firm bear hug!"))
-		else // START OF SKYRAT EDIT
+		else
+			// START OF SKYRAT ADDITION
 			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && (!src.handcuffed))
 				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] moves out of the way."))
 				return
-			else // END OF SKYRAT EDIT
+			else
+			// END OF SKYRAT ADDITION
 				helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
 							null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 				to_chat(helper, span_notice("You hug [src] to make [p_them()] feel better!"))
