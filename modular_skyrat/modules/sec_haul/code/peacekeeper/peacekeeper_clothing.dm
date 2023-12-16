@@ -50,6 +50,12 @@
 	icon_state = "policeofficerpatrolcap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	armor_type = /datum/armor/head_helmet
+	unique_reskin = list(
+		"Blue" = "policeofficercap",
+		"Sillitoe" = "policetrafficcap",
+		"Black" = "policeofficerpatrolcap",
+		"Cadet" = "policecadetcap",
+	)
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	name = "peacekeeper hud glasses"

@@ -41,8 +41,6 @@
 	/// Particles this obj uses when burning, if any
 	var/burning_particles
 
-	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
-
 	var/drag_slowdown // Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
 
 	/// Map tag for something.  Tired of it being used on snowflake items.  Moved here for some semblance of a standard.
@@ -193,6 +191,8 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 	return
 
 /mob/proc/set_machine(obj/O)
+	if(QDELETED(src) || QDELETED(O))
+		return
 	if(machine)
 		unset_machine()
 	machine = O
@@ -380,7 +380,7 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 
 /// Try to unwrench an object in a WONDERFUL DYNAMIC WAY
 /obj/proc/default_unfasten_wrench(mob/user, obj/item/wrench, time = 20)
-	if((flags_1 & NODECONSTRUCT_1) || wrench.tool_behaviour != TOOL_WRENCH)
+	if((obj_flags & NO_DECONSTRUCTION) || wrench.tool_behaviour != TOOL_WRENCH)
 		return CANT_UNFASTEN
 
 	var/turf/ground = get_turf(src)

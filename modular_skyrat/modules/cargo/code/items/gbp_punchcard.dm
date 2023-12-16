@@ -55,7 +55,7 @@
 /obj/machinery/gbp_redemption/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/gbp_redemption/attackby(obj/item/attacking_item, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "gbp_machine_open", "gbp_machine", attacking_item))
@@ -96,8 +96,13 @@
 			if(tgui_alert(user, "You haven't finished the punchcard! Are you sure you want to redeem, starting the 15 minute timer?", "A real goof effort right here", list("No", "Yes")) != "Yes")
 				return
 
+		if(!punchcard.punches) // check to see if someone left the dialog open to redeem a card twice
+			return
+
+		var/validated_punches = punchcard.punches
+		punchcard.punches = 0
 		playsound(src, 'sound/machines/printer.ogg', 100)
-		card_used.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
+		card_used.registered_account.adjust_money(amount_to_reward, "GAP: [validated_punches] punches")
 		log_econ("[amount_to_reward] credits were rewarded to [card_used.registered_account.account_holder]'s account for redeeming a GAP card.")
 		say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
 		COOLDOWN_START(card_used, gbp_redeem_cooldown, 12 MINUTES)
