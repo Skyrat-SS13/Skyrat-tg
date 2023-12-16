@@ -40,16 +40,6 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	mob_trait = TRAIT_PERSONALSPACE
 	icon = FA_ICON_HAND_PAPER
 
-/datum/quirk/quickreflexes
-	name = "Quick Reflexes"
-	desc = "You don't like it when people pat your head or give you hugs and will swat their hands away."
-	gain_text = span_notice("You don't feel like a hug right now...")
-	lose_text = span_notice("Maybe a hug wouldn't hurt.")
-	medical_record_text = "Patient seems to dislike being touched."
-	value = 0
-	mob_trait = TRAIT_QUICKREFLEXES
-	icon = FA_ICON_THUMBS_DOWN
-
 /datum/quirk/dnr
 	name = "Do Not Revive"
 	desc = "For whatever reason, you cannot be revived in any way."
