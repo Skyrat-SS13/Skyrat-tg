@@ -5,6 +5,13 @@
 	color = "#ffffffff"
 	reagent_state = LIQUID
 
+/datum/reagent/consumable/moth_milk
+	name = "moth milk"
+	description = "This looks familiar... Wait, what the fuck?!"
+	taste_description = "warm and mothy"
+	color = "#ffffffbb"
+	reagent_state = LIQUID
+
 /datum/glass_style/drinking_glass/breast_milk
 	required_drink_type = /datum/reagent/consumable/breast_milk
 	icon_state = "glass_white"
