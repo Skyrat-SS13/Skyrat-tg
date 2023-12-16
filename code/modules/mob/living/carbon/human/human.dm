@@ -968,10 +968,9 @@
 
 	//SKYRAT EDIT START
 	visible_message(span_notice("[target] starts to climb onto [src]..."))
-	if(!do_after(target, 4.0 SECONDS, target = src) || !can_piggyback(target))
+	if(!do_after(target, 4.0 SECONDS, target = src) || !can_piggyback(target)) //SKYRRAT EDIT - ORIGINAL: 1.5 SECONDS
 		visible_message(span_warning("[target] fails to climb onto [src]!"))
 		return
-	//SKYRAT EDIT END
 
 	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
