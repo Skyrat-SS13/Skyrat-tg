@@ -72,7 +72,7 @@
 			to_chat(user, span_danger("You punch [src], but don't leave a dent!"))
 		else
 			if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS))
-				visible_message(span_warning("[helper] tries to pet [src], but it moves out of the way."))
+				visible_message(span_warning("[user] tries to pet [src], but it moves out of the way."))
 				return
 			else
 				visible_message(span_notice("[user] pets [src]."), \
