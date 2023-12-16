@@ -471,3 +471,80 @@
   whataboutism-alos:
   - code_imp: Skyrat sprite override updated to reflect upstream lizard tail
   - rscadd: Adds two-tone version of short lizard tail
+2023-12-14:
+  SkyratBot:
+  - bugfix: Cult chat, PDAs, succumbing, etc shouldn't blue screen anymore.
+  - bugfix: Crabs will properly only target Tiny creatures
+  - qol: For admins, in the "Spawn Atom" window where you pick atoms to spawn-by-type,
+      anything that is a subtype of `/mob/living/basic` should now be replaced with
+      the `BASIC` tag instead (like with carbons, reagent containers, turfs, etc.).
+      So, instead of having to scroll through and try and figure out what that weird
+      subtype of Poly is, it should now be easier to read in that smaller screen.
+  - server: The TGS -> Discord Relay Warning that detects if a cliented mob has a
+      null loc should now be plaintext instead of being fully screwed up with useless
+      codestuffs.
+  - balance: Organs can now be preserved by putting them in freezing temperatures.
+  - balance: Morgue trays and freezers will now cool down the contents placed inside
+      of them.
+  - balance: Morgue trays will now properly display if someone stored within them
+      is revivable and make periodic beeps every minute.
+  - qol: The asteroid on Tramstation can now have areas expanded into or created within.
+2023-12-15:
+  ATHATH:
+  - rscadd: If your bitrunning avatar somehow acquires and consumes a red pill, they
+      will be disconnected from the Matrix.
+  Jonnatonne:
+  - rscadd: Adds new palmated antler horn type.
+  SkyratBot:
+  - bugfix: Tram controls should work again.
+  - balance: Light Footed now makes stepping on glass Knockdown instead of Paralyze
+  - code_imp: Fixes some single letter variable usage in caltrop.dm
+  - bugfix: The clown car once again obtains the accesses of kidnapped crew within
+      the car. Supermatter crystals beware!
+  - bugfix: Advanced Plastic Surgery is now unavailable shiftstart
+  - rscadd: Adds a new discount experiment for unlocking the combat exosuit nodes
+      - complete it by scanning two exosuits with equipment in the left and right
+      hand slots. This replaces the prior discount experiment about destroying exosuits.
+  - bugfix: Chemicals are now no longer less effective at curing advanced viruses
+      than they used to be.
+  - bugfix: items that are rejected by the mat container will display the chat message
+      saying that.
+  - bugfix: Away lathes can now print robot navigational beacons
+  - bugfix: ORM will generate points regardless of how the ore enters it.
+  - bugfix: Machines like autolathe, techfab etc can now be hit with iron sheets (or
+      any other material item type those machines accept) when in combat mode rather
+      than inserting them because it makes sense.
+  - bugfix: Mat container won't display chats fully if the `MATCONTAINER_SILENT` flag
+      is passed.
+  - refactor: Machines like autolathe, techfab etc now display summed up material
+      inserts to chats rather than each item individually. Also, will skip items &
+      its contents if it cannot be processed thus saving time
+  - bugfix: mobs that have the `TRAIT_PERMANENTLY_ONFIRE` trait cannot be extinguished
+      by anything.
+  - bugfix: stuff thrown into lava should not runtime. it currently does not but if
+      there is a slight chance it does not happen
+  - bugfix: Fix double-clicking in various UIs
+  - bugfix: fixes zombie tumor not reviving
+2023-12-16:
+  LT3:
+  - bugfix: Internal action buttons on computer consoles should work again
+  SkyratBot:
+  - qol: Anesthetics tank description now mentions a rare quirk of anesthetic.
+  - bugfix: fixes a bug which was causing certain mutations to only get partially
+      removed
+  - bugfix: Keybindings in prefs are able to be set again.
+  - bugfix: Fixed the weird spacing on buttons.
+  - bugfix: Confirmation buttons should be usable again. Bitrunning domains, command
+      reports, etc.
+  - balance: Emagged and Hacked APCs now occasionally flicker a blue effect, and the
+      effect is not visible with cameras.
+  - bugfix: Admin interview panel should feel snappier.
+  - balance: '"Scarves" and "Wallets!" are now neutral traits.'
+  - balance: Delamination variants no longer change once the explosion point has been
+      reached.
+  - spellcheck: Fixed a minor grammar mistake in the RD's job description and the
+      encrypted cache crate.
+  - bugfix: Newscaster shouldn't bluescreen anymore.
+  thegrb93:
+  - bugfix: Fix vox tails being unable to wag
+  - bugfix: fixed lizard spine sprites disappearing when wagging
