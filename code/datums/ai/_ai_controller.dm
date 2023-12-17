@@ -302,7 +302,7 @@ multiple modular subtrees with behaviors
 	if(length(arguments))
 		behavior_args[behavior_type] = arguments
 	else
-		behavior_args[behavior_type] = null
+		behavior_args -= behavior_type
 
 /datum/ai_controller/proc/ProcessBehavior(seconds_per_tick, datum/ai_behavior/behavior)
 	var/list/arguments = list(seconds_per_tick, src)
