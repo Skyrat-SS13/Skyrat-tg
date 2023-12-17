@@ -1,6 +1,7 @@
 // THIS IS A SKYRAT UI FILE
 import { round } from 'common/math';
 import { useBackend } from '../backend';
+import { useState } from 'react';
 import {
   Section,
   Stack,
@@ -236,7 +237,7 @@ export const OpposingForceObjectives = (props) => {
   const { objectives = [], can_edit } = data;
 
   const [selectedObjectiveID, setSelectedObjective] = useState(
-    objectives[0]?.id,
+    objectives[0]?.id
   );
 
   const selectedObjective = objectives.find((objective) => {
@@ -254,15 +255,15 @@ export const OpposingForceObjectives = (props) => {
                   objective.status_text === 'Not Reviewed'
                     ? 'yellow'
                     : objective.approved
-                      ? 'good'
-                      : 'bad'
+                    ? 'good'
+                    : 'bad'
                 }
                 textColor={
                   objective.status_text === 'Not Reviewed'
                     ? 'yellow'
                     : objective.approved
-                      ? 'good'
-                      : 'bad'
+                    ? 'good'
+                    : 'bad'
                 }
                 width="25%"
                 key={objective.id}
@@ -463,11 +464,11 @@ export const OpposingForceObjectives = (props) => {
                   {selectedObjective.status_text === 'Not Reviewed'
                     ? 'Objective Not Reviewed'
                     : selectedObjective.approved
-                      ? 'Objective Approved'
-                      : selectedObjective.denied_text
-                        ? 'Objective Denied - Reason: ' +
-                          selectedObjective.denied_text
-                        : 'Objective Denied'}
+                    ? 'Objective Approved'
+                    : selectedObjective.denied_text
+                    ? 'Objective Denied - Reason: ' +
+                      selectedObjective.denied_text
+                    : 'Objective Denied'}
                 </NoticeBox>
               </Stack.Item>
             </Stack.Item>
@@ -818,11 +819,10 @@ export const AdminTab = (props) => {
                     {objective.status_text === 'Not Reviewed'
                       ? 'Objective Not Reviewed'
                       : objective.approved
-                        ? 'Objective Approved'
-                        : objective.denied_text
-                          ? 'Objective Denied - Reason: ' +
-                            objective.denied_text
-                          : 'Objective Denied'}
+                      ? 'Objective Approved'
+                      : objective.denied_text
+                      ? 'Objective Denied - Reason: ' + objective.denied_text
+                      : 'Objective Denied'}
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
