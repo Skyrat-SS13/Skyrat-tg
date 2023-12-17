@@ -29,34 +29,33 @@
 
 /// Determines if this job should be sacrificable by heretics.
 /datum/job/proc/initialize_heretic_target_status()
-	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY))
+	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_COMMAND))
 		return TRUE
-	if (departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND))
-		return TRUE
+
 	return FALSE
 
 /// Determines if this job should be targetable by contractors.
 /datum/job/proc/initialize_contractable_status()
-	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY))
+	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_COMMAND))
 		return TRUE
-	if (departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND))
-		return TRUE
+
 	return FALSE
 
 /// Generates and sets a suffix appended to our description detailing our opt-in variables.
 /datum/job/proc/update_opt_in_desc_suffix()
-	var/suffix = ""
+	var/list/suffixes = list()
 
 	if (minimum_opt_in_level)
-		suffix += " Forces a minimum of [GLOB.antag_opt_in_strings["[minimum_opt_in_level]"]] antag opt-in."
+		suffixes += " Forces a minimum of [GLOB.antag_opt_in_strings["[minimum_opt_in_level]"]] antag opt-in."
 	if (contractable)
-		suffix += " Targettable by contractors."
+		suffixes += " Targettable by contractors."
 	if (heretic_sac_target)
-		suffix += " Targettable by heretics."
-	if (suffix)
+		suffixes += " Targettable by heretics."
+	if (length(suffixes))
+		var/suffix = jointext(suffixes, "")
 		set_opt_in_desc_suffix(suffix)
 
-/// Setter for [new_suffix]. Resets desc then appenx the new suffix.
+/// Setter for [new_suffix]. Resets desc then appends the new suffix.
 /datum/job/proc/set_opt_in_desc_suffix(new_suffix)
 	description = initial(description)
 

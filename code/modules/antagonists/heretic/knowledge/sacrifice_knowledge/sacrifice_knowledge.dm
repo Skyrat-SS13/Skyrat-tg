@@ -146,14 +146,14 @@
 			valid_targets -= sec_mind
 			break
 
-	/*
-	// Third target, someone in their department. // SKYRAT EDIT REMOVAL -- Antag optin (Only sec and command may be targetted)
+	/* SKYRAT EDIT REMOVAL -- Antag Opt In (Only sec and command may be targetted)
+	// Third target, someone in their department.
 	for(var/datum/mind/department_mind as anything in shuffle(valid_targets))
 		if(department_mind.assigned_role?.departments_bitflags & user.mind.assigned_role?.departments_bitflags)
 			final_targets += department_mind
 			valid_targets -= department_mind
 			break
-	*/
+	*/ // SKYRAT EDIT REMOVAL END
 
 	// Now grab completely random targets until we'll full
 	var/target_sanity = 0
