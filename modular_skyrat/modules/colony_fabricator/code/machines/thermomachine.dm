@@ -48,6 +48,10 @@
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 	)
 
+// This prevents some weird visual bugs with the inlet
+/obj/item/flatpacked_machine/thermomachine/give_deployable_component()
+	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, direction_setting = FALSE)
+
 // Greyscale config for the light on this machine
 
 /datum/greyscale_config/thermomachine/deployable
