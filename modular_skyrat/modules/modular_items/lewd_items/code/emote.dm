@@ -6,11 +6,11 @@
 
 /datum/emote/living/lewdmoan/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/human_user = user
-	if(HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
-		return FALSE
 	if(human_user.gender == FEMALE)
 		play_lewd_sound(get_turf(human_user), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_f1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f2.ogg',
