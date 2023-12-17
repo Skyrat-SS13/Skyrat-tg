@@ -26,6 +26,31 @@
 		if(istype(lobbyscreen, /atom/movable/screen/lobby/button))
 			var/atom/movable/screen/lobby/button/lobby_button = lobbyscreen
 			lobby_button.owner = REF(owner)
+<<<<<<< HEAD
+=======
+	add_station_trait_buttons()
+
+/// Display buttons for relevant station traits
+/datum/hud/new_player/proc/add_station_trait_buttons()
+	if (!mymob?.client || mymob.client.interviewee || !length(GLOB.lobby_station_traits))
+		return
+	var/buttons_created = 0
+	var/y_offset = 397
+	var/y_button_offset = 27
+	for (var/datum/station_trait/trait as anything in GLOB.lobby_station_traits)
+		if (!trait.can_display_lobby_button(mymob.client))
+			continue
+		var/atom/movable/screen/lobby/button/sign_up/sign_up_button = new(our_hud = src)
+		sign_up_button.SlowInit()
+		sign_up_button.owner = REF(mymob)
+		sign_up_button.screen_loc = offset_to_screen_loc(233, y_offset, mymob.client.view)
+		y_offset += y_button_offset
+		static_inventory += sign_up_button
+		trait.setup_lobby_button(sign_up_button)
+		buttons_created++
+		if (buttons_created >= MAX_STATION_TRAIT_BUTTONS_VERTICAL)
+			return
+>>>>>>> a3fa541e2e5 (Bridge Assistant Station Trait (#80279))
 
 /atom/movable/screen/lobby
 	plane = SPLASHSCREEN_PLANE

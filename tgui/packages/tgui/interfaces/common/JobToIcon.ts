@@ -11,6 +11,7 @@ const BASEICONS = {
   'Bit Avatar': 'code',
   Bitrunner: 'gamepad',
   Botanist: 'seedling',
+  'Bridge Assistant': 'building-shield',
   Captain: 'crown',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',

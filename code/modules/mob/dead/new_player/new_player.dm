@@ -338,11 +338,15 @@
 		return
 	client.crew_manifest_delay = world.time + (1 SECONDS)
 
+<<<<<<< HEAD
 	if(!GLOB.crew_manifest_tgui)
 		GLOB.crew_manifest_tgui = new /datum/crew_manifest(src)
 
 
 	GLOB.crew_manifest_tgui.ui_interact(src)
+=======
+	GLOB.manifest.ui_interact(src)
+>>>>>>> a3fa541e2e5 (Bridge Assistant Station Trait (#80279))
 
 /mob/dead/new_player/Move()
 	return 0

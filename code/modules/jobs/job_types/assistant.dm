@@ -48,13 +48,15 @@ Assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()
+	give_hat()
+	give_jumpsuit(target)
+
+/datum/outfit/job/assistant/proc/give_hat()
 	for(var/holidayname in GLOB.holidays)
 		var/datum/holiday/holiday_today = GLOB.holidays[holidayname]
 		var/obj/item/special_hat = holiday_today.holiday_hat
 		if(prob(HOLIDAY_HAT_CHANCE) && !isnull(special_hat) && isnull(head))
 			head = special_hat
-
-	give_jumpsuit(target)
 
 /datum/outfit/job/assistant/proc/give_jumpsuit(mob/living/carbon/human/target)
 	var/static/jumpsuit_number = 0
@@ -81,6 +83,11 @@ Assistant
 /datum/outfit/job/assistant/consistent
 	name = "Assistant - Consistent"
 
+<<<<<<< HEAD
+=======
+/datum/outfit/job/assistant/consistent/give_hat()
+	return
+>>>>>>> a3fa541e2e5 (Bridge Assistant Station Trait (#80279))
 
 /datum/outfit/job/assistant/consistent/give_jumpsuit(mob/living/carbon/human/target)
 	uniform = /obj/item/clothing/under/color/grey
