@@ -418,3 +418,166 @@
   - image: New cleanbot sprites
   - image: New bucket sprites
   - rscdel: All buckets and cleanbots are back to being blue
+2023-12-13:
+  LT3, Majkl-J:
+  - image: SM now has holiday lights
+  - image: You can now put a santa hat on the SM
+  LovliestPlant:
+  - qol: '[Void Raptor] [Blueshift] Adds door timers to permabrig isolation cells,
+      and directions for using the genpop system near prisoner lockers.'
+  - qol: '[Void Raptor] [Blueshift] Adds translator glove MOD modules to the stack
+      of "accessibility" modules found in some storage rooms.'
+  - qol: '[Blueshift] Adds stacks of "accessibility" MOD modules to Engineering, Security,
+      and Medbay.'
+  - bugfix: '[Blueshift] The forgotten exosuit fabricator will no longer attempt to
+      output directly into the wall.'
+  Rhials:
+  - qol: Blackout drunkard personalities will now recieve a "you are about to sober
+      up" warning at the 60/40/20 second mark, instead of repeatedly at the 50 second
+      mark.
+  Ryll/Shaps:
+  - bugfix: You can no longer stack more than one applications of a burn wound at
+      once
+  SkyratBot:
+  - admin: Updates the admin smite "Ocky icky phobia" with some new words
+  - bugfix: Painting should be working again.
+  - rscadd: Added subversive pins to the black market uplink which make security hate
+      you
+  - rscadd: The detective's spy cam can now be conveniently pinned onto people in
+      the same manner as medals
+  - bugfix: You should be able to edit your character using the feature buttons again.
+  - bugfix: fixed outdated item description
+  - bugfix: You should be able to move stamps on paper again.
+  - bugfix: climbing or being shoved into a glass table won't cause elevation issues.
+  - bugfix: AIs can summon bots again
+  - bugfix: cleanbots can clean floors directly underneath them and prioritize floors
+      nearest to them
+  - bugfix: medbots drop empty medkits now
+  - bugfix: Bird Phobia now triggers on geese
+  - bugfix: Dropdowns should show what you've selected again.
+  - bugfix: no runtime when unwrenching Atmos components
+  - spellcheck: fixed typo in attack chain define comment
+  - image: The Head of Security's "Sturdy Shako" hat now uses the same gold color
+      as his other hat
+  dis-integrates-the-integration-tests:
+  - qol: Laser pointers are now more accessible, being now available in the loadout
+      and in the Good Clean Fun vendor.
+  theselfish:
+  - image: The Snouted Clown mask is now the same colour scheme as the rest of the
+      species clown masks. A shared symbol of unity in Clown Brotherhood.
+  vinylspiders:
+  - bugfix: Loadout menu will no longer crash when switching tabs
+  - bugfix: fixes reinforced walls getting reverted back to the tg icon
+  whataboutism-alos:
+  - code_imp: Skyrat sprite override updated to reflect upstream lizard tail
+  - rscadd: Adds two-tone version of short lizard tail
+2023-12-14:
+  SkyratBot:
+  - bugfix: Cult chat, PDAs, succumbing, etc shouldn't blue screen anymore.
+  - bugfix: Crabs will properly only target Tiny creatures
+  - qol: For admins, in the "Spawn Atom" window where you pick atoms to spawn-by-type,
+      anything that is a subtype of `/mob/living/basic` should now be replaced with
+      the `BASIC` tag instead (like with carbons, reagent containers, turfs, etc.).
+      So, instead of having to scroll through and try and figure out what that weird
+      subtype of Poly is, it should now be easier to read in that smaller screen.
+  - server: The TGS -> Discord Relay Warning that detects if a cliented mob has a
+      null loc should now be plaintext instead of being fully screwed up with useless
+      codestuffs.
+  - balance: Organs can now be preserved by putting them in freezing temperatures.
+  - balance: Morgue trays and freezers will now cool down the contents placed inside
+      of them.
+  - balance: Morgue trays will now properly display if someone stored within them
+      is revivable and make periodic beeps every minute.
+  - qol: The asteroid on Tramstation can now have areas expanded into or created within.
+2023-12-15:
+  ATHATH:
+  - rscadd: If your bitrunning avatar somehow acquires and consumes a red pill, they
+      will be disconnected from the Matrix.
+  Jonnatonne:
+  - rscadd: Adds new palmated antler horn type.
+  SkyratBot:
+  - bugfix: Tram controls should work again.
+  - balance: Light Footed now makes stepping on glass Knockdown instead of Paralyze
+  - code_imp: Fixes some single letter variable usage in caltrop.dm
+  - bugfix: The clown car once again obtains the accesses of kidnapped crew within
+      the car. Supermatter crystals beware!
+  - bugfix: Advanced Plastic Surgery is now unavailable shiftstart
+  - rscadd: Adds a new discount experiment for unlocking the combat exosuit nodes
+      - complete it by scanning two exosuits with equipment in the left and right
+      hand slots. This replaces the prior discount experiment about destroying exosuits.
+  - bugfix: Chemicals are now no longer less effective at curing advanced viruses
+      than they used to be.
+  - bugfix: items that are rejected by the mat container will display the chat message
+      saying that.
+  - bugfix: Away lathes can now print robot navigational beacons
+  - bugfix: ORM will generate points regardless of how the ore enters it.
+  - bugfix: Machines like autolathe, techfab etc can now be hit with iron sheets (or
+      any other material item type those machines accept) when in combat mode rather
+      than inserting them because it makes sense.
+  - bugfix: Mat container won't display chats fully if the `MATCONTAINER_SILENT` flag
+      is passed.
+  - refactor: Machines like autolathe, techfab etc now display summed up material
+      inserts to chats rather than each item individually. Also, will skip items &
+      its contents if it cannot be processed thus saving time
+  - bugfix: mobs that have the `TRAIT_PERMANENTLY_ONFIRE` trait cannot be extinguished
+      by anything.
+  - bugfix: stuff thrown into lava should not runtime. it currently does not but if
+      there is a slight chance it does not happen
+  - bugfix: Fix double-clicking in various UIs
+  - bugfix: fixes zombie tumor not reviving
+2023-12-16:
+  LT3:
+  - bugfix: Internal action buttons on computer consoles should work again
+  SkyratBot:
+  - qol: Anesthetics tank description now mentions a rare quirk of anesthetic.
+  - bugfix: fixes a bug which was causing certain mutations to only get partially
+      removed
+  - bugfix: Keybindings in prefs are able to be set again.
+  - bugfix: Fixed the weird spacing on buttons.
+  - bugfix: Confirmation buttons should be usable again. Bitrunning domains, command
+      reports, etc.
+  - balance: Emagged and Hacked APCs now occasionally flicker a blue effect, and the
+      effect is not visible with cameras.
+  - bugfix: Admin interview panel should feel snappier.
+  - balance: '"Scarves" and "Wallets!" are now neutral traits.'
+  - balance: Delamination variants no longer change once the explosion point has been
+      reached.
+  - spellcheck: Fixed a minor grammar mistake in the RD's job description and the
+      encrypted cache crate.
+  - bugfix: Newscaster shouldn't bluescreen anymore.
+  thegrb93:
+  - bugfix: Fix vox tails being unable to wag
+  - bugfix: fixed lizard spine sprites disappearing when wagging
+2023-12-17:
+  Paxilmaniac:
+  - rscdel: Every gun from the gunsgalore module has been deleted, long live the king
+  - qol: The lanca and miecz can be suppressed.
+  - qol: Suppressors no longer increase the weight class of a gun they're attached
+      to.
+  - image: New sprites for lanca and miecz suppressors done by me.
+  SkyratBot:
+  - bugfix: 'Bitrunners can now access the Northstar ORM
+
+      :cl:'
+  - qol: Added a confirmation prompt to breaking your vow of silence.
+  - balance: Mimes can no longer repair the vow of silence once broken.
+  - balance: The negative moodlet from breaking your vow of silence is now lighter,
+      and no longer permanent.
+  - balance: Mimes are back to being able to write while under a vow of silence.
+  - bugfix: character setup screen no longer runtimes with all_nighter quirk
+  - bugfix: Motorized wheelchairs will no longer spawn in a bugged state where they
+      have no parts and can't be upgraded.
+  - bugfix: Motorized wheelchairs will drop their power cell when destroyed or deconstructed.
+  - qol: Power cells are now inserted into motorized wheelchairs as part of the crafting
+      recipe, instead of as an extra step afterwards.
+  - bugfix: Fixed a rare false positive with morgue tray alarms.
+  - bugfix: fixed the oversight with martian food complexity.
+  - balance: Exosuit Materials 1 now only requires one mech.
+  - qol: "Exosuit Materials 1 is much more lenient on the percentage it requires.\n\
+      /\U0001F191"
+  Thlumyn:
+  - bugfix: Contractor PDAs do not bluescreen any more.
+  yooriss:
+  - bugfix: Loadout MODlink scryers now come with the NT frequency by default, allowing
+      them to actually be used without requiring complicated setup. Try them out again
+      and holocall all your friends!

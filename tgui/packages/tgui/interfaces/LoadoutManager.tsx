@@ -1,5 +1,6 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend, useSharedState } from '../backend';
+import { useState } from 'react';
+import { useBackend } from '../backend';
 import { Box, Button, Section, Stack, Dropdown } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
@@ -33,10 +34,7 @@ export const LoadoutManager = (props) => {
   const { act, data } = useBackend<LoadoutTabData>();
   const { selected_loadout, loadout_tabs, user_is_donator } = data;
 
-  const [selectedTabName, setSelectedTab] = useSharedState(
-    'selectedTab',
-    loadout_tabs[0]?.name,
-  );
+  const [selectedTabName, setSelectedTab] = useState(loadout_tabs[0]?.name);
   const selectedTab = loadout_tabs.find((curTab) => {
     return curTab.name === selectedTabName;
   });

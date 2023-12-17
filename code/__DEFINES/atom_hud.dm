@@ -45,6 +45,8 @@
 #define FAN_HUD "21"
 /// Mech camera HUD
 #define DIAG_CAMERA_HUD "22"
+/// Steady Hacked APC effect, visible only to Malf AIs
+#define MALF_APC_HUD "23"
 
 // SKYRAT EDIT ADDITION BEGIN - gun permits and DNR
 /// ammo of guns
@@ -72,8 +74,9 @@
 #define DATA_HUD_SENTIENT_DISEASE 8
 #define DATA_HUD_AI_DETECT 9
 #define DATA_HUD_FAN 10
-#define DATA_HUD_PERMIT 11 //SKYRAT EDIT
-#define DATA_HUD_DNR 12 // SKYRAT EDIT
+#define DATA_HUD_MALF_APC 11
+#define DATA_HUD_PERMIT 12 //SKYRAT EDIT
+#define DATA_HUD_DNR 13 // SKYRAT EDIT
 
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
