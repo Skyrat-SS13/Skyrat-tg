@@ -74,11 +74,11 @@
 			if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 				visible_message(span_warning("[user] tries to pet [src], but it moves out of the way."))
 				return
-			else // SKYRAT EDIT ADDITION END
-				visible_message(span_notice("[user] pets [src]."), \
-								span_notice("[user] pets you."), null, null, user)
-				to_chat(user, span_notice("You pet [src]."))
-				user.add_mood_event("pet_borg", /datum/mood_event/pet_borg)
+			// SKYRAT EDIT ADDITION END
+			visible_message(span_notice("[user] pets [src]."), \
+							span_notice("[user] pets you."), null, null, user)
+			to_chat(user, span_notice("You pet [src]."))
+			user.add_mood_event("pet_borg", /datum/mood_event/pet_borg)
 
 /mob/living/silicon/check_block(atom/hitby, damage, attack_text, attack_type, armour_penetration, damage_type, attack_flag)
 	. = ..()
