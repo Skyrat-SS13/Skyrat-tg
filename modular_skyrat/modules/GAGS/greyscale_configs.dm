@@ -239,8 +239,8 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/clown_mask/clown_mask_worn.json'
 
 // VAPE
-/datum/greyscale_config/vape/worn/digi
-	name = "Vape (Worn, Digi) "
+/datum/greyscale_config/vape/worn/muzzled
+	name = "Vape (Worn, Muzzled)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
 // RESPIRATOR
@@ -487,12 +487,16 @@
 //FACE SCARF
 /datum/greyscale_config/face_scarf
 	name = "Face Scarf"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/face_scarf.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/face_scarf/face_scarf.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/neck/face_scarf.json'
 
 /datum/greyscale_config/face_scarf/worn
 	name = "Face Scarf (Worn)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/face_scarf_worn.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/face_scarf/face_scarf_worn.dmi'
+
+/datum/greyscale_config/face_scarf/worn/muzzled
+	name = "Face Scarf (Worn, Muzzled)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/face_scarf/face_scarf_worn_muzzled.dmi'
 
 /*
 *	SUITS

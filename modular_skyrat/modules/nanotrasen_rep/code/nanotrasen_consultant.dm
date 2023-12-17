@@ -54,7 +54,7 @@
 	head = /obj/item/clothing/head/nanotrasen_consultant
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild = 1,
+		/obj/item/choice_beacon/ntc = 1,
 		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -112,7 +112,7 @@
 	greyscale_colors = "#017941#0060b8"
 
 /obj/item/storage/bag/garment/nanotrasen_consultant
-	name = "Nanotrasen consultant's garment bag"
+	name = "nanotrasen consultant's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the Nanotrasen consultant."
 
 /obj/item/storage/bag/garment/nanotrasen_consultant/PopulateContents()
@@ -133,14 +133,13 @@
 	new /obj/item/clothing/under/rank/centcom/intern(src)
 	new /obj/item/clothing/head/hats/intern(src)
 
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station
-	name = "\proper nanotrasen consultant's locker"
+/obj/structure/closet/secure_closet/nanotrasen_consultant
+	name = "nanotrasen consultant's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cc"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station/PopulateContents()
+/obj/structure/closet/secure_closet/nanotrasen_consultant/PopulateContents()
 	..()
 	new /obj/item/storage/backpack/satchel/leather(src)
 	new /obj/item/clothing/neck/petcollar(src)
@@ -152,3 +151,20 @@
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/storage/bag/garment/nanotrasen_consultant(src)
+
+//Choice Beacon, I hope in the future they're going to be given proper unique gun but this will do.
+
+
+/obj/item/choice_beacon/ntc
+	name = "gunset beacon"
+	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
+	company_source = "Trappiste Fabriek Company"
+	company_message = span_bold("Supply Pod incoming please stand by")
+
+/obj/item/choice_beacon/ntc/generate_display_names()
+	var/static/list/selectable_gun_types = list(
+		"Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok,
+		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
+	)
+
+	return selectable_gun_types

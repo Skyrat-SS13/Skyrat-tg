@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/inhand/briefcase_secure
 	name = "Secure Briefcase"
-	item_path = /obj/item/storage/secure/briefcase
+	item_path = /obj/item/storage/briefcase/secure
 
 /datum/loadout_item/inhand/skub
 	name = "Skub"

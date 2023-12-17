@@ -59,7 +59,6 @@
 		transform = our_matrix
 	notify_ghosts("An ICARUS sunbeam has been launched! [target_atom ? "Towards: [target_atom.name]" : ""]",
 		source = src,
-		action = NOTIFY_ORBIT,
 		header = "Somethings burning!",
 	)
 	soundloop = new(src, TRUE)

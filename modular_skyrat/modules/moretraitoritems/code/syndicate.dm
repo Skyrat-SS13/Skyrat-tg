@@ -17,9 +17,13 @@
 	desc = "A sleek, sturdy box used to hold all parts to build a weapons recharger."
 	icon_state = "syndiebox"
 
-/obj/item/storage/box/syndie_kit/charger/PopulateContents()
+/obj/item/storage/box/syndie_kit/recharger/PopulateContents()
 	new /obj/item/circuitboard/machine/recharger(src)
 	new /obj/item/stock_parts/capacitor/quadratic(src)
+	new /obj/item/stack/sheet/iron/five(src)
+	new /obj/item/stack/cable_coil/five(src)
+	new /obj/item/screwdriver/nuke(src)
+	new /obj/item/wrench(src)
 
 //Back-up space suit
 /obj/item/storage/box/syndie_kit/space_suit
@@ -140,8 +144,8 @@
 	wound = 5
 
 //More items
-/obj/item/guardiancreator/tech/choose/traitor/opfor
-	allowling = TRUE
+/obj/item/guardian_creator/tech/choose/traitor/opfor
+	allow_changeling = TRUE
 
 /obj/item/codeword_granter
 	name = "codeword manual"

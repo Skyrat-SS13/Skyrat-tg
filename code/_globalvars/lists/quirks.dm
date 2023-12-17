@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(nearsighted_glasses, list(
 	"Thin" = /obj/item/clothing/glasses/regular/thin,
 	"Jamjar" = /obj/item/clothing/glasses/regular/jamjar,
 	"Binoclard" = /obj/item/clothing/glasses/regular/kim,
-	"Modern" = /obj/item/clothing/glasses/betterunshit, // SKYRAT ADD
+	"Modern" = /obj/item/clothing/glasses/regular/betterunshit, // SKYRAT EDIT ADDITION
 
 ))
 

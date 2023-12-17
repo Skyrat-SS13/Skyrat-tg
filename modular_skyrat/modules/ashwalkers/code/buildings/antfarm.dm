@@ -28,8 +28,8 @@
 /obj/structure/antfarm/Initialize(mapload)
 	. = ..()
 	var/turf/src_turf = get_turf(src)
-	if(!istype(get_turf(src), /turf/open/misc/asteroid/basalt))
-		src_turf.balloon_alert_to_viewers("must be on basalt")
+	if(!src_turf.GetComponent(/datum/component/simple_farm))
+		src_turf.balloon_alert_to_viewers("must be on farmable surface")
 		return INITIALIZE_HINT_QDEL
 
 	for(var/obj/structure/antfarm/found_farm in range(2, get_turf(src)))

@@ -125,6 +125,27 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 /datum/objective/proc/get_target()
 	return target
 
+/datum/objective/proc/is_valid_target(datum/mind/possible_target)
+	if(!ishuman(possible_target.current))
+		return FALSE
+
+	if(possible_target.current.stat == DEAD)
+		return FALSE
+
+	var/target_area = get_area(possible_target.current)
+	if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
+		return FALSE
+
+	// SKYRAT EDIT ADDITION
+	if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
+		return FALSE
+	if(!count_space_areas)
+		if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
+			return FALSE
+	// SKYRAT EDIT END
+
+	return TRUE
+
 //dupe_search_range is a list of antag datums / minds / teams
 /datum/objective/proc/find_target(dupe_search_range, list/blacklist)
 	var/list/datum/mind/owners = get_owners()
@@ -140,25 +161,15 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
 
 	for(var/datum/mind/possible_target in get_crewmember_minds())
-		var/target_area = get_area(possible_target.current)
 		if(possible_target in owners)
-			continue
-		if(!ishuman(possible_target.current))
-			continue
-		if(possible_target.current.stat == DEAD)
 			continue
 		if(!is_unique_objective(possible_target,dupe_search_range))
 			continue
-		if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
-			continue
 		if(possible_target in blacklist)
 			continue
-		// SKYRAT EDIT ADDITION
-		if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
+		if(!is_valid_target(possible_target))
 			continue
-		if(!count_space_areas)
-			if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
-				continue
+		// SKYRAT EDIT START - Antag Opt In
 		if (!opt_in_disabled && !opt_in_valid(possible_target))
 			continue
 		// SKYRAT EDIT END
@@ -175,7 +186,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		target = pick(possible_targets)
 	update_explanation_text()
 	return target
-
 
 /datum/objective/proc/update_explanation_text()
 	if(team_explanation_text && LAZYLEN(get_owners()) > 1)
@@ -197,7 +207,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 /datum/action/special_equipment_fallback
 	name = "Request Objective-specific Equipment"
 	desc = "Call down a supply pod containing the equipment required for specific objectives."
-	button_icon = 'icons/obj/device.dmi'
+	button_icon = 'icons/obj/devices/tracker.dmi'
 	button_icon_state = "beacon"
 
 /datum/action/special_equipment_fallback/Trigger(trigger_flags)
@@ -222,7 +232,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	return TRUE
 
 /datum/objective/assassinate
-	name = "assasinate"
+	name = "assassinate"
 	martyr_compatible = TRUE
 	admin_grantable = TRUE
 	var/target_role_type = FALSE
@@ -521,6 +531,11 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	target = ..()
 	update_explanation_text()
 
+/datum/objective/escape/escape_with_identity/is_valid_target(datum/mind/possible_target)
+	if(HAS_TRAIT(possible_target.current, TRAIT_NO_DNA_COPY))
+		return FALSE
+	return ..()
+
 /datum/objective/escape/escape_with_identity/update_explanation_text()
 	if(target?.current)
 		target_real_name = target.current.real_name
@@ -535,12 +550,12 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		explanation_text += "." //Proper punctuation is important!
 
 	else
-		explanation_text = "Free objective."
+		explanation_text = "Escape on the shuttle or an escape pod alive and without being in custody."
 
 /datum/objective/escape/escape_with_identity/check_completion()
-	if(!target || !target_real_name)
-		return TRUE
 	var/list/datum/mind/owners = get_owners()
+	if(!target || !target_real_name)
+		return ..()
 	for(var/datum/mind/M in owners)
 		if(!ishuman(M.current) || !considered_escaped(M))
 			continue

@@ -1,6 +1,6 @@
 /obj/item/seeds/vale
 	name = "pack of vale seeds"
-	desc = "These seeds grow into vale plants."
+	desc = "These seeds grow into vale plants. Once sold as a luxury for their unique aesthetics, after the trees suddenly combusted they were taken off of the market."
 	icon = 'modular_skyrat/modules/xenoarch/icons/seeds.dmi'
 	icon_state = "vale"
 	species = "vale"
@@ -12,17 +12,17 @@
 	growing_icon = 'modular_skyrat/modules/xenoarch/icons/growing.dmi'
 	icon_grow = "vale-stage"
 	growthstages = 4
-	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/medicine/neurine = 0.1)
+	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/pink)
+	reagents_add = list(/datum/reagent/stable_plasma = 0.1, /datum/reagent/toxin/plasma = 0.1, /datum/reagent/napalm = 0.1)
 
 /obj/item/food/grown/vale
 	seed = /obj/item/seeds/vale
 	name = "vale"
-	desc = "It's a little piece of vale."
+	desc = "A cluster of vale leaves, keep away from open flames."
 	icon = 'modular_skyrat/modules/xenoarch/icons/harvest.dmi'
 	icon_state = "vale"
 	filling_color = "#FF4500"
 	bite_consumption_mod = 0.5
 	foodtypes = FRUIT
-	juice_typepath = /datum/reagent/medicine/neurine
-	tastes = list("medicine" = 1)
+	juice_typepath = /datum/reagent/toxin/plasma
+	tastes = list("plasma" = 1)

@@ -18,6 +18,10 @@
 	name = "Blank"
 	icon_state = "blank"
 
+/datum/sprite_accessory/screen/blank_white
+	name = "Blank White"
+	icon_state = "blankwhite"
+
 /datum/sprite_accessory/screen/pink
 	name = "Pink"
 	icon_state = "pink"

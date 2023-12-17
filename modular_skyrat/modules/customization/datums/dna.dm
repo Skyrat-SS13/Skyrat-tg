@@ -57,16 +57,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	///Current body size, used for proper re-sizing and keeping track of that
 	var/current_body_size = BODY_SIZE_NORMAL
 
-/datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
-	if(newblood_type)
-		blood_type = newblood_type
-	unique_enzymes = generate_unique_enzymes()
-	unique_identity = generate_unique_identity()
-	if(!skip_index) //I hate this
-		generate_dna_blocks()
-	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
-	unique_features = generate_unique_features()
-
 /datum/dna/proc/generate_unique_features()
 	var/list/data = list()
 
@@ -185,59 +175,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	holder.transform = holder.transform.Translate(translate_x, translate_y)
 	holder.maptext_height = 32 * features["body_size"] // Adjust runechat height
 	current_body_size = features["body_size"]
-
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
-	if(QDELETED(src))
-		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(isnull(mrace))
-		CRASH("set_species called without a species to set to")
-	if(!has_dna())
-		return
-
-	var/datum/species/new_race
-	if(ispath(mrace))
-		new_race = new mrace
-	else if(istype(mrace))
-		if(QDELING(mrace))
-			CRASH("someone is calling set_species() and is passing it a qdeling species datum, this is VERY bad, stop it")
-		new_race = mrace
-	else
-		CRASH("set_species called with an invalid mrace [mrace]")
-
-	death_sound = new_race.death_sound
-
-	var/datum/species/old_species = dna.species
-	dna.species = new_race
-
-	if (old_species.properly_gained)
-		old_species.on_species_loss(src, new_race, pref_load)
-
-	//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
-
-	if(override_mutantparts && override_mutantparts.len)
-		for(var/feature in dna.mutant_bodyparts)
-			override_mutantparts[feature] = dna.mutant_bodyparts[feature]
-		dna.mutant_bodyparts = override_mutantparts
-
-	if(override_markings && override_markings.len)
-		for(var/feature in dna.body_markings)
-			override_markings[feature] = dna.body_markings[feature]
-		dna.body_markings = override_markings
-
-	if(override_features && override_features.len)
-		for(var/feature in dna.features)
-			override_features[feature] = dna.features[feature]
-		dna.features = override_features
-	//END OF BODYPARTS AND FEATURES
-
-	apply_customizable_dna_features_to_species()
-	dna.unique_features = dna.generate_unique_features()
-
-	dna.update_body_size()
-
-	dna.species.on_species_gain(src, old_species, pref_load)
-	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
-
 
 /mob/living/carbon/proc/apply_customizable_dna_features_to_species()
 	if(!has_dna())

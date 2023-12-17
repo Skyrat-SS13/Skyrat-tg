@@ -123,7 +123,7 @@
 	var/list/data = list()
 
 	var/client/owner_client = GLOB.directory[ckey]
-	data["admin_mode"] = check_rights_for(user.client, R_DEFAULT) && user.client != owner_client
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) && user.client != owner_client
 
 	data["creator_ckey"] = ckey
 

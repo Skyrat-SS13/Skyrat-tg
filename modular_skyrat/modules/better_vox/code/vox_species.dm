@@ -17,9 +17,6 @@
 	breathid = "n2"
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/vox
-	default_mutant_bodyparts = list(
-		"tail" = "Vox Primalis Tail",
-	)
 	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
@@ -50,6 +47,10 @@
 		LOADOUT_ITEM_EARS = VOX_PRIMALIS_EARS_ICON,
 	)
 
+/datum/species/vox_primalis/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Vox Primalis Tail", FALSE),
+	)
 
 /datum/species/vox_primalis/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()

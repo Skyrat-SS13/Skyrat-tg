@@ -55,7 +55,6 @@
 		stored_cyborgs++
 		notify_ghosts("A new cyborg shell has been created at the [src]",
 			source = src,
-			action = NOTIFY_ORBIT,
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
 			header = "New malfunctioning cyborg created!",
 		)

@@ -210,6 +210,11 @@
 /datum/loadout_manager/proc/set_item_name(datum/loadout_item/item)
 	var/current_name = ""
 	var/current_desc = ""
+
+	if(!(item.item_path in owner.prefs.loadout_list))
+		to_chat(owner, span_warning("Select the item before attempting to name it!"))
+		return
+
 	if(INFO_NAMED in owner.prefs.loadout_list[item.item_path])
 		current_name = owner.prefs.loadout_list[item.item_path][INFO_NAMED]
 	if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
@@ -218,10 +223,6 @@
 	var/input_name = tgui_input_text(owner, "What name do you want to give [item.name]? Leave blank to clear.", "[item.name] name", current_name, MAX_NAME_LEN)
 	var/input_desc = tgui_input_text(owner, "What description do you want to give [item.name]? 256 character max, leave blank to clear.", "[item.name] description", current_desc, 256, multiline = TRUE)
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(owner.prefs))
-		return
-
-	if(!(item.item_path in owner.prefs.loadout_list))
-		to_chat(owner, span_warning("Select the item before attempting to name to it!"))
 		return
 
 	if(input_name)
@@ -289,7 +290,7 @@
 	data["user_is_donator"] = !!(GLOB.donator_list[owner.ckey] || is_admin(owner))
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
-	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
 	data["preview_selection"] = owner?.prefs.preview_pref
 
 	return data
@@ -361,7 +362,7 @@
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
-		formatted_item["is_renamable"] = item.can_be_named
+		formatted_item["is_renameable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
 		formatted_item["is_job_blacklisted"] = !isnull(item.blacklisted_roles)
 		formatted_item["is_species_restricted"] = !isnull(item.restricted_species)

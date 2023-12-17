@@ -45,7 +45,6 @@
 	send_clock_message(null, "A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.", "<span class='bigbrass'>", msg_ghosts = FALSE)
 	notify_ghosts("A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.",
 		source = atom_area,
-		action = NOTIFY_JUMP,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		header = "Portal to Reebe",
 	)

@@ -4,12 +4,12 @@
 	description = "more than enough space for a quick bout of naval warfare"
 	mappath = "_maps/skyrat/holodeck_wargame.dmm"
 
-/obj/item/storage/secure/briefcase/white/wargame_kit
+/obj/item/storage/briefcase/secure/white/wargame_kit
 	name = "DIY Wargaming Kit"
 	desc = "Contains everything an aspiring naval officer (or just massive nerd) would need for a proper modern naval wargame."
 	custom_premium_price = PAYCHECK_CREW * 2
 
-/obj/item/storage/secure/briefcase/white/wargame_kit/PopulateContents()
+/obj/item/storage/briefcase/secure/white/wargame_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/wargame_projector/ships = 1,
 		/obj/item/wargame_projector/ships/red = 1,

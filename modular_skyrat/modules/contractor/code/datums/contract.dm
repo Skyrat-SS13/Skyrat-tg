@@ -173,7 +173,7 @@
 		[owner_id.registered_account.account_balance] credits.", TRUE)
 	else
 		to_chat(contract.owner.current, span_notice("A briefcase appears at your feet!"))
-		var/obj/item/storage/secure/briefcase/case = new(get_turf(contract.owner.current))
+		var/obj/item/storage/briefcase/secure/case = new(get_turf(contract.owner.current))
 		for(var/i in 1 to (round((ransom * CONTRACTOR_RANSOM_CUT) / 1000))) // Gets slightly less/more but whatever
 			new /obj/item/stack/spacecash/c1000(case)
 

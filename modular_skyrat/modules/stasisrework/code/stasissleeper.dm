@@ -75,7 +75,7 @@
 	visible_message(span_notice("[occupant] emerges from [src]!"),
 		span_notice("You climb out of [src]!"))
 	open_machine()
-	if(IS_IN_STASIS(user))
+	if(HAS_TRAIT(user, TRAIT_STASIS))
 		thaw_them(user)
 
 /obj/machinery/stasissleeper/proc/stasis_running()
@@ -112,9 +112,9 @@
 		return
 	var/mob/living/L_occupant = occupant
 	if(stasis_running())
-		if(!IS_IN_STASIS(L_occupant))
+		if(!HAS_TRAIT(L_occupant, TRAIT_STASIS))
 			chill_out(L_occupant)
-	else if(IS_IN_STASIS(L_occupant))
+	else if(HAS_TRAIT(L_occupant, TRAIT_STASIS))
 		thaw_them(L_occupant)
 
 /obj/machinery/stasissleeper/screwdriver_act(mob/living/user, obj/item/used_item)
@@ -142,7 +142,7 @@
 /obj/machinery/stasissleeper/default_pry_open(obj/item/used_item)
 	if(occupant)
 		thaw_them(occupant)
-	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && used_item.tool_behaviour == TOOL_CROWBAR
+	. = !(state_open || panel_open || (obj_flags & NO_DECONSTRUCTION)) && used_item.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		used_item.play_tool_sound(src, 50)
 		visible_message(span_notice("[usr] pries open [src]."), span_notice("You pry open [src]."))
