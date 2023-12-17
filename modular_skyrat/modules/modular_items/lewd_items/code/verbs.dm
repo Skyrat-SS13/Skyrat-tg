@@ -18,7 +18,7 @@
     if(!HAS_TRAIT_FROM(src, TRAIT_QUICKREFLEXES, REF(src)))
         ADD_TRAIT(src, TRAIT_QUICKREFLEXES, REF(src))
         to_chat(src, span_notice("[get_reflexes_gain_text()]"))
-    else if(HAS_TRAIT_FROM(src, TRAIT_QUICKREFLEXES, REF(src)))
+    else
         REMOVE_TRAIT(src, TRAIT_QUICKREFLEXES, REF(src))
         to_chat(src, span_notice("[get_reflexes_lose_text()]"))
 

@@ -494,12 +494,12 @@
 		helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
 	//SKYRAT EDIT ADDITION END
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
-		//SKYRAT EDIT ADDITION BEGIN - DISALLOWED HEADPATS
+		//SKYRAT EDIT ADDITION BEGIN - OVERSIZED & DISALLOWED HEADPATS
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(helper, TRAIT_OVERSIZED))
 			visible_message(span_warning("[helper] tries to pat [src] on the head, but can't reach!"))
 			return
 		else if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && (!src.handcuffed))
-			visible_message(span_warning("[helper] tries to pat [src] on the head, but [p_they()] moves out of the way."))
+			visible_message(span_warning("[helper] tries to pat [src] on the head, but [p_they()] move[p_s()] out of the way."))
 			return
 		//SKYRAT EDIT ADDITION END
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
@@ -544,12 +544,12 @@
 			to_chat(helper, span_notice("You wrap [src] into a tight bear hug!"))
 			to_chat(src, span_notice("[helper] squeezes you super tightly in a firm bear hug!"))
 		else
-			// START OF SKYRAT ADDITION
-			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && (!src.handcuffed))
-				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] moves out of the way."))
+			// SKYRAT EDIT EDDITION START
+			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && src.incapacitated(IGNORE_RESTRAINTS))
+				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] move[p_s()] out of the way."))
 				return
 			else
-			// END OF SKYRAT ADDITION
+			// SKYRAT EDIT ADDITION END
 				helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
 							null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 				to_chat(helper, span_notice("You hug [src] to make [p_them()] feel better!"))
