@@ -552,12 +552,11 @@
 			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] move[p_s()] out of the way."))
 				return
-			else
 			// SKYRAT EDIT ADDITION END
-				helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
-							null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-				to_chat(helper, span_notice("You hug [src] to make [p_them()] feel better!"))
-				to_chat(src, span_notice("[helper] hugs you to make you feel better!"))
+			helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
+						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+			to_chat(helper, span_notice("You hug [src] to make [p_them()] feel better!"))
+			to_chat(src, span_notice("[helper] hugs you to make you feel better!"))
 
 		// Warm them up with hugs
 		share_bodytemperature(helper)
