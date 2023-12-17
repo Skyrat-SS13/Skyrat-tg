@@ -3,6 +3,7 @@
 	key_third_person = "lewdmoans"
 	message = "moans lewdly!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
 
 /datum/emote/living/lewdmoan/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
