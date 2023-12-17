@@ -266,12 +266,14 @@
 			continue
 		if(target_felinid.body_position == STANDING_UP)
 			target_felinid.setDir(get_dir(target_felinid, targloc)) // kitty always looks at the light
-			if(prob(effectchance * diode.rating))
+			//SKYRAT EDIT REMOVAL BEGIN (removes forced felinid movement from laserpointers, also fixes the longstanding windoor negation glitch)
+			/* if(prob(effectchance * diode.rating))
 				target_felinid.visible_message(span_warning("[target_felinid] makes a grab for the light!"), span_userdanger("LIGHT!"))
 				target_felinid.Move(targloc)
 				log_combat(user, target_felinid, "moved with a laser pointer", src)
-			else
-				target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("You're briefly tempted by the shiny light..."))
+			else 
+			SKYRAT EDIT REMOVAL END */
+			target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("You're briefly tempted by the shiny light...")) //SKYRAT EDIT CHANGE : indent this block if re-enabling above
 		else
 			target_felinid.visible_message(span_notice("[target_felinid] stares at the light."), span_warning("You stare at the light..."))
 	//The pointer is shining, change its sprite to show
@@ -290,9 +292,9 @@
 		laser.pixel_y = target.pixel_y + rand(-5,5)
 
 	if(outmsg)
-		to_chat(user, outmsg)
+		user.visible_message(span_danger("[user] points [src] at [target]!"), outmsg) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(user, outmsg)
 	else
-		to_chat(user, span_info("You point [src] at [target]."))
+		user.visible_message(span_notice("[user] points [src] at [target]."), span_notice("You point [src] at [target].")) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(user, span_info("You point [src] at [target]."))
 
 	//we have successfully shone our pointer, reduce our battery depending on whether we have an extra lens or not
 	energy -= crystal_lens ? 2 : 1
