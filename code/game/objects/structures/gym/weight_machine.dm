@@ -1,11 +1,6 @@
 #define WORKOUT_XP 5
-<<<<<<< HEAD
-#define EXERCISE_STATUS_DURATION 20 SECONDS
-#define SAFE_DRUNK_LEVEL 39 
-=======
 #define EXERCISE_STATUS_DURATION 15 SECONDS
 #define SAFE_DRUNK_LEVEL 39
->>>>>>> 536381d308c (Fitness rebalance and improvements - mood, fireman carry, and longer workouts (#79584))
 
 /obj/structure/weightmachine
 	name = "chest press machine"

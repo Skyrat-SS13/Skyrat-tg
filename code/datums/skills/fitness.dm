@@ -11,28 +11,15 @@
 /* SKYRAT EDIT REMOVAL START - NO SIZE INCREASE
 /datum/skill/fitness/level_gained(datum/mind/mind, new_level, old_level, silent)
 	. = ..()
-<<<<<<< HEAD
+	var/old_gym_size = RESIZE_DEFAULT_SIZE + size_boost[old_level]
+	var/new_gym_size = RESIZE_DEFAULT_SIZE + size_boost[new_level]
 
-	var/size_boost = (new_level == SKILL_LEVEL_LEGENDARY) ? 0.25 : 0.05
-	var/gym_size = RESIZE_DEFAULT_SIZE + size_boost
-	mind.current.update_transform(gym_size)
+	mind.current.update_transform(new_gym_size / old_gym_size)
 
 /datum/skill/fitness/level_lost(datum/mind/mind, new_level, old_level, silent)
 	. = ..()
-	var/size_boost = (new_level == SKILL_LEVEL_LEGENDARY) ? 0.25 : 0.05
-	var/gym_size = RESIZE_DEFAULT_SIZE + size_boost
-	mind.current.update_transform(RESIZE_DEFAULT_SIZE / gym_size)
+	var/old_gym_size = RESIZE_DEFAULT_SIZE + size_boost[old_level]
+	var/new_gym_size = RESIZE_DEFAULT_SIZE + size_boost[new_level]
+
+	mind.current.update_transform(new_gym_size / old_gym_size)
 SKYRAT EDIT REMOVAL END */
-=======
-	var/old_gym_size = RESIZE_DEFAULT_SIZE + size_boost[old_level]
-	var/new_gym_size = RESIZE_DEFAULT_SIZE + size_boost[new_level]
-
-	mind.current.update_transform(new_gym_size / old_gym_size)
-
-/datum/skill/fitness/level_lost(datum/mind/mind, new_level, old_level, silent)
-	. = ..()
-	var/old_gym_size = RESIZE_DEFAULT_SIZE + size_boost[old_level]
-	var/new_gym_size = RESIZE_DEFAULT_SIZE + size_boost[new_level]
-
-	mind.current.update_transform(new_gym_size / old_gym_size)
->>>>>>> 536381d308c (Fitness rebalance and improvements - mood, fireman carry, and longer workouts (#79584))
