@@ -548,7 +548,7 @@
 			to_chat(helper, span_notice("You wrap [src] into a tight bear hug!"))
 			to_chat(src, span_notice("[helper] squeezes you super tightly in a firm bear hug!"))
 		else
-			// SKYRAT EDIT EDDITION START
+			// SKYRAT EDIT ADDITION START
 			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] move[p_s()] out of the way."))
 				return
