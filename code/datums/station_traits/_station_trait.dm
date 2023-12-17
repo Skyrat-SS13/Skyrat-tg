@@ -75,8 +75,6 @@
 ///Return a color for the decals, if any
 /datum/station_trait/proc/get_decal_color(thing_to_color, pattern)
 	return
-<<<<<<< HEAD
-=======
 
 /// Return TRUE if we want to show a lobby button, by default we assume we don't want it after the round begins
 /datum/station_trait/proc/can_display_lobby_button(client/player)
@@ -121,4 +119,3 @@
 		var/datum/hud/using_hud = hud_owner.hud_used
 		using_hud?.show_hud(using_hud?.hud_version)
 	lobby_buttons = list()
->>>>>>> a3fa541e2e5 (Bridge Assistant Station Trait (#80279))

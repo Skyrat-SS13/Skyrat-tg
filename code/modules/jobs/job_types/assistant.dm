@@ -83,11 +83,8 @@ Assistant
 /datum/outfit/job/assistant/consistent
 	name = "Assistant - Consistent"
 
-<<<<<<< HEAD
-=======
 /datum/outfit/job/assistant/consistent/give_hat()
 	return
->>>>>>> a3fa541e2e5 (Bridge Assistant Station Trait (#80279))
 
 /datum/outfit/job/assistant/consistent/give_jumpsuit(mob/living/carbon/human/target)
 	uniform = /obj/item/clothing/under/color/grey

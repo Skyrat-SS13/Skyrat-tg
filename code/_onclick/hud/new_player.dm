@@ -26,8 +26,6 @@
 		if(istype(lobbyscreen, /atom/movable/screen/lobby/button))
 			var/atom/movable/screen/lobby/button/lobby_button = lobbyscreen
 			lobby_button.owner = REF(owner)
-<<<<<<< HEAD
-=======
 	add_station_trait_buttons()
 
 /// Display buttons for relevant station traits
@@ -50,7 +48,6 @@
 		buttons_created++
 		if (buttons_created >= MAX_STATION_TRAIT_BUTTONS_VERTICAL)
 			return
->>>>>>> a3fa541e2e5 (Bridge Assistant Station Trait (#80279))
 
 /atom/movable/screen/lobby
 	plane = SPLASHSCREEN_PLANE
