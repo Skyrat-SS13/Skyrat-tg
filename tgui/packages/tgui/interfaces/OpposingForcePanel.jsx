@@ -1,6 +1,6 @@
 // THIS IS A SKYRAT UI FILE
 import { round } from 'common/math';
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import {
   Section,
   Stack,
@@ -18,7 +18,7 @@ import {
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   const { act, data } = useBackend();
   const { admin_mode, creator_ckey, owner_antag } = data;
   return (
@@ -235,8 +235,7 @@ export const OpposingForceObjectives = (props) => {
   const { act, data } = useBackend();
   const { objectives = [], can_edit } = data;
 
-  const [selectedObjectiveID, setSelectedObjective] = useLocalState(
-    'objectives',
+  const [selectedObjectiveID, setSelectedObjective] = useState(
     objectives[0]?.id,
   );
 
