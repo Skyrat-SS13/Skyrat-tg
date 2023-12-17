@@ -337,7 +337,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		/obj/item/beamout_tool = 1
+		/obj/item/beamout_tool = 1,
 	)
 
 	id_trim = /datum/id_trim/solfed
@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/sacrificial_face_shield = 1,
 		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 4
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 4,
 	)
 
 	id_trim = /datum/id_trim/solfed
