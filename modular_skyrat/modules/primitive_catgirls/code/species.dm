@@ -34,6 +34,7 @@
 	)
 
 	always_customizable = TRUE
+	digitigrade_customization = DIGITIGRADE_OPTIONAL
 
 /datum/species/human/felinid/primitive/on_species_gain(mob/living/carbon/new_primitive, datum/species/old_species, pref_load)
 	. = ..()
