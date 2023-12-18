@@ -1,10 +1,14 @@
 import { useBackend } from '../backend';
 import { Section, Stack } from '../components';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { ObjectivePrintout, Objective } from './common/Objectives';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
+=======
+import { Objective, ObjectivePrintout } from './common/Objectives';
+>>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
 
 type Info = {
   antag_name: string;

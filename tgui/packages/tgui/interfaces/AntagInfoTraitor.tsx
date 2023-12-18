@@ -1,12 +1,17 @@
-import { useBackend } from '../backend';
-import { multiline } from 'common/string';
-import { BlockQuote, Button, Dimmer, Section, Stack } from '../components';
 import { BooleanLike } from 'common/react';
+import { multiline } from 'common/string';
+
+import { useBackend } from '../backend';
+import { BlockQuote, Button, Dimmer, Section, Stack } from '../components';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { ObjectivePrintout, Objective } from './common/Objectives';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
+=======
+import { Objective, ObjectivePrintout } from './common/Objectives';
+>>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
 
 const allystyle = {
   fontWeight: 'bold',

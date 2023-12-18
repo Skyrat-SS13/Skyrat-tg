@@ -1,18 +1,23 @@
-import { useBackend } from '../backend';
-import { multiline } from 'common/string';
-import { GenericUplink, Item } from './Uplink/GenericUplink';
-import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { BooleanLike } from 'common/react';
+import { multiline } from 'common/string';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 import {
-  ObjectivePrintout,
   Objective,
+  ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
+<<<<<<< HEAD
 import { useState } from 'react';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
+=======
+import { GenericUplink, Item } from './Uplink/GenericUplink';
+>>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
 
 const allystyle = {
   fontWeight: 'bold',

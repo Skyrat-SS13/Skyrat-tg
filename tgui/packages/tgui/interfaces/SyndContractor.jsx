@@ -1,4 +1,9 @@
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
 import { FakeTerminal } from '../components/FakeTerminal';
+=======
+import { BooleanLike } from 'common/react';
+
+>>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
 import { useBackend } from '../backend';
 import {
   Box,
@@ -13,6 +18,7 @@ import {
   Tabs,
   Table,
 } from '../components';
+import { FakeTerminal } from '../components/FakeTerminal';
 import { NtosWindow } from '../layouts';
 import { useState } from 'react';
 
