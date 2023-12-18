@@ -105,6 +105,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(!message || message == "")
 		return
 
+	//ensure EOL punctuation exists and that word-bounded 'i' are capitalized before we do anything else
+	message = autopunct_bare(message)
+
 	var/list/message_mods = list()
 	var/original_message = message
 	message = get_message_mods(message, message_mods)
