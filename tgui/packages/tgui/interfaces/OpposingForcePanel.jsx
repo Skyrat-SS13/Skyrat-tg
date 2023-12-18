@@ -16,6 +16,7 @@ import {
   NumberInput,
 } from '../components';
 import { Window } from '../layouts';
+import { useState } from 'react';
 
 export const OpposingForcePanel = (props) => {
   const [tab, setTab] = useState(1);
