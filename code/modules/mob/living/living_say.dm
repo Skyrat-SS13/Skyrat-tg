@@ -105,8 +105,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(!message || message == "")
 		return
 
+	//SKYRAT EDIT ADDITION START: autopunctuation
 	//ensure EOL punctuation exists and that word-bounded 'i' are capitalized before we do anything else
 	message = autopunct_bare(message)
+	//SKYRAT EDIT ADDITION END
 
 	var/list/message_mods = list()
 	var/original_message = message
