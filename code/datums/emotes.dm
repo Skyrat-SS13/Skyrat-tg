@@ -121,8 +121,8 @@
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
 		if(istype(src, /datum/emote/living/lewd))
 			var/datum/emote/living/lewd/lewd_emote = src
-        	play_lewd_sound(user, tmp_sound, sound_volume, vary, pref_to_check = lewd_emote.pref_to_check)
-    	else
+			play_lewd_sound(user, tmp_sound, sound_volume, vary, pref_to_check = lewd_emote.pref_to_check)
+		else
 			playsound(user, tmp_sound, sound_volume, vary)
 		//SKYRAT EDIT CHANGE END
 
