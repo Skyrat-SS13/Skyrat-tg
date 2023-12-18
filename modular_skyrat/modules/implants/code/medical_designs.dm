@@ -21,6 +21,8 @@
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	construction_time = 30 SECONDS
 	build_path = /obj/item/organ/internal/cyberimp/arm/razorwire
