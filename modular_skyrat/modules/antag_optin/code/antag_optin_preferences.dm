@@ -11,7 +11,7 @@
 	if (!..(preferences))
 		return FALSE
 
-	return (!(CONFIG_GET(flag/disable_antag_opt_in_preferences)))
+	return !(CONFIG_GET(flag/disable_antag_opt_in_preferences))
 
 /datum/preference/toggle/antag_opt_in/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
@@ -35,10 +35,7 @@
 	if (!..(preferences))
 		return FALSE
 
-	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return FALSE
-
-	return (!(CONFIG_GET(flag/disable_antag_opt_in_preferences)))
+	return !(CONFIG_GET(flag/disable_antag_opt_in_preferences))
 
 /datum/preference/choiced/antag_opt_in_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
