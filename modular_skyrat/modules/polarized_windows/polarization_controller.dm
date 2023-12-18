@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(polarization_controllers)
 
 	remove_polarization_controller(source, user, tool)
 
-	return TOOL_ACT_SIGNAL_BLOCKING
+	return ITEM_INTERACT_BLOCKING
 
 
 /**

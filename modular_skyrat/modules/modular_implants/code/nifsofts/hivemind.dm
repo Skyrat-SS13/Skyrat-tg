@@ -256,7 +256,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /obj/item/hivemind_keyboard
 	name = "Hivemind Interface Device"
 	desc = "A holographic gesture controller, hooked to hand and finger signals of the user's own choice. This is paired with the Hivemind program itself, used as a means of filtering out unwanted thoughts from being added to the network, ensuring that only intentional thoughts of communication can go through."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "gangtool-purple"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'

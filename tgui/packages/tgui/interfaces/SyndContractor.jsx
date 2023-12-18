@@ -1,7 +1,20 @@
-import { Component, Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Grid, Icon, LabeledList, Modal, NoticeBox, Section, Table, Tabs } from '../components';
+import { FakeTerminal } from '../components/FakeTerminal';
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Icon,
+  LabeledList,
+  Modal,
+  NoticeBox,
+  Section,
+  Tabs,
+  Table,
+} from '../components';
 import { NtosWindow } from '../layouts';
+import { useState } from 'react';
 
 const CONTRACT_STATUS_INACTIVE = 1;
 const CONTRACT_STATUS_ACTIVE = 2;
@@ -9,55 +22,6 @@ const CONTRACT_STATUS_BOUNTY_CONSOLE_ACTIVE = 3;
 const CONTRACT_STATUS_EXTRACTING = 4;
 const CONTRACT_STATUS_COMPLETE = 5;
 const CONTRACT_STATUS_ABORTED = 6;
-
-export class FakeTerminal extends Component {
-  constructor(props) {
-    super(props);
-    this.timer = null;
-    this.state = {
-      currentIndex: 0,
-      currentDisplay: [],
-    };
-  }
-
-  tick() {
-    const { props, state } = this;
-    if (state.currentIndex <= props.allMessages.length) {
-      this.setState((prevState) => {
-        return {
-          currentIndex: prevState.currentIndex + 1,
-        };
-      });
-      const { currentDisplay } = state;
-      currentDisplay.push(props.allMessages[state.currentIndex]);
-    } else {
-      clearTimeout(this.timer);
-      setTimeout(props.onFinished, props.finishedTimeout);
-    }
-  }
-
-  componentDidMount() {
-    const { linesPerSecond = 2.5 } = this.props;
-    this.timer = setInterval(() => this.tick(), 1000 / linesPerSecond);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
-
-  render() {
-    return (
-      <Box m={1}>
-        {this.state.currentDisplay.map((value) => (
-          <Fragment key={value}>
-            {value}
-            <br />
-          </Fragment>
-        ))}
-      </Box>
-    );
-  }
-}
 
 export const SyndContractor = (props) => {
   return (
@@ -214,7 +178,8 @@ export const StatusPane = (props) => {
         <Box bold mr={1}>
           {data.contract_rep} Rep
         </Box>
-      }>
+      }
+    >
       <Grid>
         <Grid.Column size={0.85}>
           <LabeledList>
@@ -226,18 +191,19 @@ export const StatusPane = (props) => {
                   disabled={data.redeemable_tc <= 0}
                   onClick={() => act('PRG_redeem_TC')}
                 />
-              }>
-              {data.redeemable_tc}
+              }
+            >
+              {String(data.redeemable_tc)}
             </LabeledList.Item>
             <LabeledList.Item label="TC Earned">
-              {data.earned_tc}
+              {String(data.earned_tc)}
             </LabeledList.Item>
           </LabeledList>
         </Grid.Column>
         <Grid.Column>
           <LabeledList>
             <LabeledList.Item label="Contracts Completed">
-              {data.contracts_completed}
+              {String(data.contracts_completed)}
             </LabeledList.Item>
             <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>
@@ -248,7 +214,7 @@ export const StatusPane = (props) => {
 };
 
 export const SyndPane = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   return (
     <>
       <StatusPane state={props.state} />
@@ -279,7 +245,8 @@ const ContractsTab = (props) => {
             disabled={!data.ongoing_contract || data.extraction_enroute}
             onClick={() => act('PRG_call_extraction')}
           />
-        }>
+        }
+      >
         {contracts.map((contract) => {
           if (
             data.ongoing_contract &&
@@ -303,7 +270,7 @@ const ContractsTab = (props) => {
               buttons={
                 <>
                   <Box inline bold mr={1}>
-                    {contract.payout} (+{contract.payout_bonus}) TC
+                    {`${contract.payout} (+${contract.payout_bonus}) TC`}
                   </Box>
                   <Button
                     content={active ? 'Abort' : 'Accept'}
@@ -316,7 +283,8 @@ const ContractsTab = (props) => {
                     }
                   />
                 </>
-              }>
+              }
+            >
               <Grid>
                 <Grid.Column>{contract.message}</Grid.Column>
                 <Grid.Column size={0.5}>
@@ -333,7 +301,8 @@ const ContractsTab = (props) => {
       <Section
         title="Dropoff Locator"
         textAlign="center"
-        opacity={data.ongoing_contract ? 100 : 0}>
+        opacity={data.ongoing_contract ? 100 : 0}
+      >
         <Box bold>{data.dropoff_direction}</Box>
       </Section>
     </>
@@ -374,7 +343,8 @@ const HubTab = (props) => {
                   }
                 />
               </>
-            }>
+            }
+          >
             <Table>
               <Table.Row>
                 <Table.Cell>

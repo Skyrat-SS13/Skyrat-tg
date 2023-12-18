@@ -2,7 +2,16 @@ import { filter, map, sortBy, uniq } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Icon, Input, Section, Stack, Tabs } from '../components';
+import {
+  Box,
+  Button,
+  Icon,
+  Input,
+  Section,
+  Stack,
+  Tabs,
+  Image,
+} from '../components';
 import { Window } from '../layouts';
 
 // here's an important mental define:
@@ -35,7 +44,7 @@ export const SelectEquipment = (props) => {
   const [searchText, setSearchText] = useLocalState('searchText', '');
   const searchFilter = createSearch(
     searchText,
-    (entry) => entry.name + entry.path
+    (entry) => entry.name + entry.path,
   );
 
   const visibleOutfits = flow([
@@ -44,7 +53,7 @@ export const SelectEquipment = (props) => {
     sortBy(
       (entry) => !entry.favorite,
       (entry) => !entry.priority,
-      (entry) => entry.name
+      (entry) => entry.name,
     ),
   ])(outfits);
 
@@ -65,7 +74,7 @@ export const SelectEquipment = (props) => {
                   autoFocus
                   placeholder="Search"
                   value={searchText}
-                  onInput={(e, value) => setSearchText(value)}
+                  onChange={(e, value) => setSearchText(value)}
                 />
               </Stack.Item>
               <Stack.Item>
@@ -85,14 +94,10 @@ export const SelectEquipment = (props) => {
               </Stack.Item>
               <Stack.Item grow={1}>
                 <Section fill title={name} textAlign="center">
-                  <Box
-                    as="img"
+                  <Image
                     m={0}
                     src={`data:image/jpeg;base64,${icon64}`}
                     height="100%"
-                    style={{
-                      '-ms-interpolation-mode': 'nearest-neighbor',
-                    }}
                   />
                 </Section>
               </Stack.Item>
@@ -113,7 +118,8 @@ const DisplayTabs = (props) => {
         <Tabs.Tab
           key={category}
           selected={tab === category}
-          onClick={() => setTab(category)}>
+          onClick={() => setTab(category)}
+        >
           {category}
         </Tabs.Tab>
       ))}
@@ -142,7 +148,7 @@ const OutfitDisplay = (props) => {
               path: getOutfitKey(entry),
             })
           }
-          onDblClick={() =>
+          onDoubleClick={() =>
             act('applyoutfit', {
               path: getOutfitKey(entry),
             })
@@ -154,7 +160,8 @@ const OutfitDisplay = (props) => {
           color="transparent"
           icon="plus"
           fluid
-          onClick={() => act('customoutfit')}>
+          onClick={() => act('customoutfit')}
+        >
           Create a custom outfit...
         </Button>
       )}
@@ -188,10 +195,11 @@ const CurrentlySelectedDisplay = (props) => {
         <Box
           title={entry?.path}
           style={{
-            'overflow': 'hidden',
-            'white-space': 'nowrap',
-            'text-overflow': 'ellipsis',
-          }}>
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+          }}
+        >
           {entry?.name}
         </Box>
       </Stack.Item>
@@ -204,7 +212,8 @@ const CurrentlySelectedDisplay = (props) => {
             act('applyoutfit', {
               path: current_outfit,
             })
-          }>
+          }
+        >
           Confirm
         </Button>
       </Stack.Item>
