@@ -14,7 +14,7 @@
 /datum/design/cyberimp_razorwire
 	name = "Razorwire Spool Implant"
 	desc = "A long length of cutting wire so impossibly thin that it causes grevious wounds in anything you slash with it. \
-		Its long enough that you'd probably be able to hit someone with it from a little further away than normal."
+		It's long enough that you'd probably be able to hit someone with it from a little further away than normal."
 	id = "combat_implant_razorwire"
 	build_type = MECHFAB
 	materials = list(
