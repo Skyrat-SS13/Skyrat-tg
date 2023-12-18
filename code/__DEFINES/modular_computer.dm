@@ -16,6 +16,14 @@
 #define PROGRAM_CATEGORY_SCI "Science"
 #define PROGRAM_CATEGORY_MISC "Other"
 
+<<<<<<< HEAD
+=======
+///The default amount a program should take in cell use.
+#define PROGRAM_BASIC_CELL_USE 15
+
+///This app grants a minor protection against being PDA bombed if installed.
+///(can sometimes prevent it from being sent, while wasting a PDA bomb from the sender).
+>>>>>>> 971bc2611be (The Spectre-Meter App, also a bootleg data disk item for the black market. (#80188))
 #define DETOMATIX_RESIST_MINOR 1
 #define DETOMATIX_RESIST_MAJOR 2
 
