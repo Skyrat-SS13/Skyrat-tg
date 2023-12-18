@@ -11,6 +11,8 @@
 	return (get_opt_in_level(target_mind) <= target_mind.get_effective_opt_in_level())
 
 // ROUND REMOVE
+/datum/objective/assassinate/paradox_clone
+    default_opt_in_level = OPT_IN_YES_ROUND_REMOVE
 
 /datum/objective/capture
 	default_opt_in_level = OPT_IN_YES_ROUND_REMOVE
