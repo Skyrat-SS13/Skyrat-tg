@@ -160,7 +160,7 @@
 	speaker.forceMove(run_loc_floor_bottom_left)
 	listener.forceMove(locate((run_loc_floor_bottom_left.x + distance), run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
 
-	var/pangram_quote = "The quick brown fox jumps over the lazy dog"
+	var/pangram_quote = "The quick brown fox jumps over the lazy dog." //SKYRAT EDIT: account for autopunct in living_say.dm
 
 	// speaking
 	speaker.say(pangram_quote)
@@ -201,7 +201,7 @@
 	listener_radio.set_frequency(FREQ_CENTCOM)
 	listener_radio.independent = TRUE
 
-	var/pangram_quote = "The quick brown fox jumps over the lazy dog"
+	var/pangram_quote = "The quick brown fox jumps over the lazy dog." //SKYRAT EDIT: account for autopunct in living_say.dm
 
 	speaker.say(pangram_quote)
 	TEST_ASSERT(handle_speech_result, "Handle speech signal was not fired (radio test)")
