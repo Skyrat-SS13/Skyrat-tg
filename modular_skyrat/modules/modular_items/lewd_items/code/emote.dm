@@ -4,16 +4,9 @@
 	message = "moans lewdly!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	vary = TRUE
+	sound_volume = 35
 
-/datum/emote/living/lewdmoan/run_emote(mob/living/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/human_user = user
-
-/datum/emote/living/lewdmoan/get_sound(mob/living/carbon/user)
+/datum/emote/living/lewd/lewdmoan/get_sound(mob/living/carbon/user)
 	if(!istype(user))
 		return
 
