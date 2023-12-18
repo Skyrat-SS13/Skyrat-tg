@@ -119,7 +119,11 @@
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
-		playsound(user, tmp_sound, sound_volume, vary)
+		if(istype(src, /datum/emote/living/lewd))
+			var/datum/emote/living/lewd/lewd_emote = src
+        	play_lewd_sound(user, tmp_sound, sound_volume, vary, pref_to_check = lewd_emote.pref_to_check)
+    	else
+			playsound(user, tmp_sound, sound_volume, vary)
 		//SKYRAT EDIT CHANGE END
 
 	var/user_turf = get_turf(user)
