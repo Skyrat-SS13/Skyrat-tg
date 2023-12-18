@@ -43,8 +43,8 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "helmet_plain"
-	greyscale_config = /datum/greyscale_config/cin_surplus_helmet/object
-	greyscale_config_worn = /datum/greyscale_config/cin_surplus_helmet
+	greyscale_config = /datum/greyscale_config/cin_surplus_helmet
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_helmet/worn
 	greyscale_colors = CIN_WINTER_COLORS
 	armor_type = /datum/armor/cin_surplus_armor
 	max_integrity = 150
@@ -124,8 +124,8 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "undersuit_greyscale"
-	greyscale_config = /datum/greyscale_config/cin_surplus_undersuit/object
-	greyscale_config_worn = /datum/greyscale_config/cin_surplus_undersuit
+	greyscale_config = /datum/greyscale_config/cin_surplus_undersuit
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_undersuit/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/cin_surplus_undersuit/digi
 	greyscale_colors = "#bbbbc9#bbbbc9#34343a"
 
@@ -165,8 +165,8 @@
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "vest_basic"
-	greyscale_config = /datum/greyscale_config/cin_surplus_vest/object
-	greyscale_config_worn = /datum/greyscale_config/cin_surplus_vest
+	greyscale_config = /datum/greyscale_config/cin_surplus_vest
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_vest/worn
 	greyscale_colors = CIN_WINTER_COLORS
 	resistance_flags = FIRE_PROOF
 	max_integrity = 300
@@ -226,8 +226,8 @@
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "chestrig"
 	worn_icon_state = "chestrig"
-	greyscale_config = /datum/greyscale_config/cin_surplus_chestrig/object
-	greyscale_config_worn = /datum/greyscale_config/cin_surplus_chestrig
+	greyscale_config = /datum/greyscale_config/cin_surplus_chestrig
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_chestrig/worn
 	greyscale_colors = CIN_WINTER_COLORS_COMPLIMENT
 
 /obj/item/storage/belt/military/cin_surplus/desert
@@ -261,8 +261,8 @@
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "bigrig"
 	worn_icon_state = "bigrig"
-	greyscale_config = /datum/greyscale_config/cin_surplus_bigrig/object
-	greyscale_config_worn = /datum/greyscale_config/cin_surplus_bigrig
+	greyscale_config = /datum/greyscale_config/cin_surplus_bigrig
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_bigrig/worn
 	greyscale_colors = CIN_WINTER_COLORS_COMPLIMENT
 
 /obj/item/storage/belt/military/big_cin_surplus/Initialize(mapload)
@@ -302,8 +302,8 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "backpack"
-	greyscale_config = /datum/greyscale_config/cin_surplus_backpack/object
-	greyscale_config_worn = /datum/greyscale_config/cin_surplus_backpack
+	greyscale_config = /datum/greyscale_config/cin_surplus_backpack
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_backpack/worn
 	greyscale_colors = CIN_WINTER_COLORS_COMPLIMENT
 
 /obj/item/storage/backpack/industrial/cin_surplus/desert
