@@ -1,5 +1,7 @@
 #define HACKERMAN_DECK_TEMPERATURE_INCREASE 450
 
+#define HACKING_FORENSICS_SUCCESS_MESSAGE "Damages reported by the internal diagnostics system suggest a digital attack by a wireless hacking implant."
+
 // An implant that injects you with twitch on demand, acting like a bootleg sandevistan
 
 /obj/item/organ/internal/cyberimp/sensory_enhancer
@@ -97,11 +99,31 @@
 
 	var/mob/living/carbon/human/human_owner = owner
 
+	owner.log_message("triggered their qani-laaca implant in [(injection_amount > 10) ? "overdose" : "normal"] mode", LOG_ATTACK)
+
 	human_owner.reagents.add_reagent(/datum/reagent/drug/twitch, injection_amount)
 
 	owner.visible_message(span_danger("[owner.name] jolts suddenly as two small glass vials are fired from ports in the implant on their spine, shattering as they land."), \
 			span_userdanger("You jolt suddenly as your Qani-Laaca system ejects two empty glass vials rearward, shattering as they land."))
 	playsound(human_owner, 'sound/items/hypospray.ogg', 50, TRUE)
+
+	var/obj/item/telegraph_vial = new /obj/item/qani_laaca_telegraph(get_turf(owner))
+	var/turf/turf_we_throw_at = get_step(owner, REVERSE_DIR(owner.dir))
+	telegraph_vial.throw_at(turf_we_throw_at, 1, 3, gentle = FALSE, quickstart = TRUE)
+
+/obj/item/qani_laaca_telegraph
+	name = "spent qani-laaca cartridge"
+	desc = "A small glass vial, usually kept in a large stack inside a qani-laaca implant, that is broken open and ejected \
+		each time the implant is used. If you're looking at one long enough to think about it this long, you either have fast eyes \
+		or were lucky enough to catch one before it broke."
+	icon = 'icons/obj/medical/drugs.dmi'
+	icon_state = "blastoff_ampoule_empty"
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/qani_laaca_telegraph/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/shatters_when_thrown, /obj/effect/decal/cleanable/glass, 1, SFX_SHATTER)
+	transform = transform.Scale(0.75, 0.75)
 
 // Hackerman deck, lets you emag or doorjack things (NO CYBORGS) within a short range of yourself
 
@@ -141,6 +163,7 @@
 		/obj/machinery/computer/arcade,
 		/obj/machinery/computer/holodeck,
 		/obj/machinery/computer/emergency_shuttle,
+		/obj/machinery/recycler,
 	)
 	/// How far away we can hack things
 	var/hack_range = 2
@@ -179,10 +202,18 @@
 		StartCooldown(1 SECONDS) // Resets the spell to working after a second, just so its not spammed
 		return
 
+	owner.log_message("hacked [key_name(cast_on)] from [get_dist(owner, cast_on)] tiles away using a wireless hacking implant", LOG_ATTACK)
+	cast_on.forensics.add_hacking_implant_trace()
+	cast_on.add_hiddenprint(owner)
+
 	playsound(cast_on, 'sound/machines/terminal_processing.ogg', 15, TRUE)
 
 	var/mob/living/carbon/human/human_owner = owner
 
 	human_owner.adjust_bodytemperature(HACKERMAN_DECK_TEMPERATURE_INCREASE)
+
+/// Adds an item to the list of fibers for this forensics datum that tells on the fact someone used a hacking implant here
+/datum/forensics/proc/add_hacking_implant_trace()
+	LAZYSET(fibers, HACKING_FORENSICS_SUCCESS_MESSAGE, HACKING_FORENSICS_SUCCESS_MESSAGE)
 
 #undef HACKERMAN_DECK_TEMPERATURE_INCREASE
