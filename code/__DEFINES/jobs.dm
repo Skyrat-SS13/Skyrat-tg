@@ -236,9 +236,25 @@
 #define JOB_CAN_BE_INTERN (1<<8)
 /// This job cannot have more slots opened by the Head of Personnel (but admins or other random events can still do this).
 #define JOB_CANNOT_OPEN_SLOTS (1<<9)
+<<<<<<< HEAD
 
 /// Combination flag for jobs which are considered regular crew members of the station.
 #define STATION_JOB_FLAGS (JOB_ANNOUNCE_ARRIVAL|JOB_CREW_MANIFEST|JOB_EQUIP_RANK|JOB_CREW_MEMBER|JOB_NEW_PLAYER_JOINABLE|JOB_REOPEN_ON_ROUNDSTART_LOSS|JOB_ASSIGN_QUIRKS|JOB_CAN_BE_INTERN)
+=======
+/// This job will not display on the job menu when there are no slots available, instead of appearing greyed out
+#define JOB_HIDE_WHEN_EMPTY (1<<10)
+/// This job cannot be signed up for at round start or recorded in your preferences
+#define JOB_LATEJOIN_ONLY (1<<11)
+/// This job is a head of staff.
+#define JOB_HEAD_OF_STAFF (1<<12)
+
+/// Combination flag for jobs which are considered regular crew members of the station.
+#define STATION_JOB_FLAGS (JOB_ANNOUNCE_ARRIVAL|JOB_CREW_MANIFEST|JOB_EQUIP_RANK|JOB_CREW_MEMBER|JOB_NEW_PLAYER_JOINABLE|JOB_REOPEN_ON_ROUNDSTART_LOSS|JOB_ASSIGN_QUIRKS|JOB_CAN_BE_INTERN)
+/// Combination flag for jobs which are considered heads of staff.
+#define HEAD_OF_STAFF_JOB_FLAGS (JOB_BOLD_SELECT_TEXT|JOB_CANNOT_OPEN_SLOTS|JOB_HEAD_OF_STAFF)
+/// Combination flag for jobs which are enabled by station traits.
+#define STATION_TRAIT_JOB_FLAGS (JOB_CANNOT_OPEN_SLOTS|JOB_HIDE_WHEN_EMPTY|JOB_LATEJOIN_ONLY&~JOB_REOPEN_ON_ROUNDSTART_LOSS)
+>>>>>>> 2125aae0c48 (adds head of staff job flag (#80415))
 
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"
@@ -251,3 +267,6 @@
 #define SUPERVISOR_HOS "the Head of Security"
 #define SUPERVISOR_QM "the Quartermaster"
 #define SUPERVISOR_RD "the Research Director"
+
+/// Mind traits that should be shared by every head of staff. has to be this way cause byond lists lol
+#define HEAD_OF_STAFF_MIND_TRAITS TRAIT_FAST_TYING, TRAIT_HIGH_VALUE_RANSOM
