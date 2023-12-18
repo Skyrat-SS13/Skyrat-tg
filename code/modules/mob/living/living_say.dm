@@ -105,11 +105,6 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(!message || message == "")
 		return
 
-	//SKYRAT EDIT ADDITION START: autopunctuation
-	//ensure EOL punctuation exists and that word-bounded 'i' are capitalized before we do anything else
-	message = autopunct_bare(message)
-	//SKYRAT EDIT ADDITION END
-
 	var/list/message_mods = list()
 	var/original_message = message
 	message = get_message_mods(message, message_mods)
@@ -221,6 +216,11 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(succumbed)
 			succumb()
 		return
+
+	//SKYRAT EDIT ADDITION START: autopunctuation
+	//ensure EOL punctuation exists and that word-bounded 'i' are capitalized before we do anything else
+	message = autopunct_bare(message)
+	//SKYRAT EDIT ADDITION END
 
 	//This is before anything that sends say a radio message, and after all important message type modifications, so you can scumb in alien chat or something
 	if(saymode && !saymode.handle_message(src, message, language))
