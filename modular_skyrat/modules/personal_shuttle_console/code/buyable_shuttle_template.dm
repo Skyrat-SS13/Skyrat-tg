@@ -5,3 +5,7 @@
 	prefix = "_maps/shuttles/skyrat/buyable/"
 	credit_cost = CARGO_CRATE_VALUE * 10
 	who_can_purchase = null
+	/// What "type" of ship is this, used in the shopping list
+	var/personal_shuttle_type = PERSONAL_SHIP_TYPE_DEBUG
+	/// How large, generally, is the ship
+	var/personal_shuttle_size = PERSONAL_SHIP_SMALL
