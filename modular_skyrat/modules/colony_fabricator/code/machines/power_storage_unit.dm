@@ -39,8 +39,11 @@
 	return
 
 // We also don't need to bother with fuddling with charging power cells, there are none to remove
-/obj/machinery/power/smes/on_deconstruction()
+/obj/machinery/power/smes/battery_pack/on_deconstruction()
 	return
+
+/obj/machinery/power/smes/battery_pack/precharged
+	charge = 75e4
 
 // Item for creating the small battery and carrying it around
 
@@ -62,6 +65,9 @@
 	input_level_max = 5e4
 	output_level_max = 5e4
 	repacked_type = /obj/item/flatpacked_machine/large_station_battery
+
+/obj/machinery/power/smes/battery_pack/large/precharged
+	charge = 1e7
 
 /obj/item/flatpacked_machine/large_station_battery
 	name = "flat-packed large stationary battery"

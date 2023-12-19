@@ -4,7 +4,7 @@
 	area_limited_icon_smoothing = /area/shuttle/personally_bought
 	// Ambience brought to you by the nri shuttle, thanks guys
 	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/amb_ship_01.ogg'
-	ambient_buzz_vol = 30
+	ambient_buzz_vol = 50
 	ambientsounds = list(
 		'modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
 		'modular_skyrat/modules/encounters/sounds/gear_loop.ogg',
@@ -12,6 +12,8 @@
 		'modular_skyrat/modules/encounters/sounds/gear_stop.ogg',
 		'modular_skyrat/modules/encounters/sounds/intercom_loop.ogg',
 	)
+	min_ambience_cooldown = 10 SECONDS
+	max_ambience_cooldown = 30 SECONDS
 
 /obj/docking_port/mobile/personally_bought
 	name = "personal shuttle"
