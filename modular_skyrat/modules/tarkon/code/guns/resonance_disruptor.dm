@@ -14,8 +14,8 @@
 	gun_flags = NOT_A_REAL_GUN
 	/// the mode of the resonator; has three modes: auto (1), manual (2), and matrix (3)
 	var/mode = RESONATOR_MODE_AUTO
-	/// How efficient it is in manual mode. Yes, this is all copied from the resonator item
-	var/quick_burst_mod = 0.8
+	/// How devestating it is in manual mode. Yes, this is all copied from the resonator item
+	var/quick_burst_mod = 1.3
 	/// the number of fields the resonator is allowed to have at once
 	var/fieldlimit = 5
 	/// the list of currently active fields from this resonator
@@ -98,7 +98,7 @@
 	var/damage_name = "resonant_force"
 	var/mode = null
 	var/quick_burst_mod = null
-	var/resonance_damage = 20
+	var/resonance_damage = 15
 	var/damage_multiplier = 1
 	var/mob/creator
 	var/autodet = FALSE
@@ -110,7 +110,10 @@
 
 /datum/status_effect/resonant_link/on_apply()
 	if(owner.mob_size >= MOB_SIZE_SMALL) // needs a minimal mass to resonate with.
-		marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield1")
+		if(autodet)
+			marked_underlay = mutable_appearance('icons/effects/effects.dmi', "at_shield2")
+		else
+			marked_underlay = mutable_appearance('icons/effects/effects.dmi', "at_shield1")
 		marked_underlay.pixel_x = -owner.pixel_x
 		marked_underlay.pixel_y = -owner.pixel_y
 		owner.underlays += marked_underlay
@@ -124,7 +127,7 @@
 
 /datum/status_effect/resonant_link/proc/check_pressure(turf/proj_turf)
 	if(!proj_turf)
-		proj_turf = get_turf(src)
+		proj_turf = get_turf(owner.loc)
 	resonance_damage = initial(resonance_damage)
 	if(lavaland_equipment_pressure_check(proj_turf))
 		damage_name = "strong [initial(damage_name)]"
