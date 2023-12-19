@@ -9,13 +9,9 @@ import {
   ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
-<<<<<<< HEAD
-import { useState } from 'react';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
-=======
->>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
 
 const hereticRed = {
   color: '#e03c3c',

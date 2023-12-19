@@ -7,16 +7,11 @@ import {
   Section,
   Stack,
 } from '../components';
-<<<<<<< HEAD
+import { Window } from '../layouts';
 import { Objective } from './common/Objectives';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
-
-=======
->>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
-import { Window } from '../layouts';
-import { Objective } from './common/Objectives';
 
 type Data = {
   color: string;

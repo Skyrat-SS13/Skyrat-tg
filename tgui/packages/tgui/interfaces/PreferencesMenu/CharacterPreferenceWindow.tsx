@@ -9,15 +9,12 @@ import { JobsPage } from './JobsPage';
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
 import { QuirksPage } from './QuirksPage';
-<<<<<<< HEAD
+import { SpeciesPage } from './SpeciesPage';
 // SKYRAT EDIT
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
-=======
-import { SpeciesPage } from './SpeciesPage';
 
->>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
 enum Page {
   Antags,
   Main,

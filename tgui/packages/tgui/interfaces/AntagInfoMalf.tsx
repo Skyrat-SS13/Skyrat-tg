@@ -10,14 +10,10 @@ import {
   ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
-<<<<<<< HEAD
-import { useState } from 'react';
+import { GenericUplink, Item } from './Uplink/GenericUplink';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
-=======
-import { GenericUplink, Item } from './Uplink/GenericUplink';
->>>>>>> 6ccb751678c (Updates eslint + sorts imports (#80430))
 
 const allystyle = {
   fontWeight: 'bold',
