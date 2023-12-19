@@ -29,7 +29,7 @@
 	return list(OPT_IN_YES_TEMP, OPT_IN_YES_KILL, OPT_IN_YES_ROUND_REMOVE, OPT_IN_NOT_TARGET)
 
 /datum/preference/choiced/antag_opt_in_status/create_default_value()
-	return OPT_IN_YES_KILL
+	return OPT_IN_NOT_TARGET
 
 /datum/preference/choiced/antag_opt_in_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
