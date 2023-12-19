@@ -14,6 +14,7 @@
 	suffix = "hafila"
 	width = 15
 	height = 11
+	personal_shuttle_size = PERSONAL_SHIP_MEDIUM
 
 /area/shuttle/personally_bought/people_mover
 	name = "SF Hafila"
@@ -31,6 +32,7 @@
 	suffix = "manzil"
 	width = 15
 	height = 11
+	personal_shuttle_size = PERSONAL_SHIP_MEDIUM
 
 /area/shuttle/personally_bought/house_boat
 	name = "SF Manzil"

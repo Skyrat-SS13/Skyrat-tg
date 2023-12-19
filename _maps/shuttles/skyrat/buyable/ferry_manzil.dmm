@@ -43,11 +43,16 @@
 /obj/machinery/airalarm/directional/west,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/stack/sheet/iron/fifty,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "iv" = (
 /obj/effect/turf_decal/bot,
 /turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/personally_bought/house_boat)
+"jv" = (
+/obj/structure/railing/eva_handhold/directional/south,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/personally_bought/house_boat)
 "ms" = (
 /obj/structure/cable,
@@ -98,7 +103,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/structure/sign/calendar/directional/east,
+/obj/machinery/button/door/personal_shuttle_windows/directional/east,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "tC" = (
@@ -111,18 +116,11 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "tG" = (
-/obj/structure/closet/firecloset/wall/empty{
-	pixel_x = -32
-	},
-/obj/item/clothing/mask/gas/alt,
-/obj/item/clothing/mask/gas/alt,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/extinguisher/advanced,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/structure/closet/firecloset/wall/personal_shuttle/directional/west,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "uM" = (
@@ -148,6 +146,7 @@
 /obj/machinery/modular_computer/preset/civilian,
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/digital_clock/directional/north,
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "yi" = (
@@ -176,6 +175,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/personally_bought/house_boat)
+"zd" = (
+/obj/structure/railing/eva_handhold/directional/north,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/personally_bought/house_boat)
 "zu" = (
 /obj/structure/fluff/metalpole/end{
 	dir = 8;
@@ -199,6 +202,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/meter/layer4,
+/obj/machinery/button/door/personal_shuttle_windows/directional/east,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "CC" = (
@@ -223,6 +227,7 @@
 /obj/effect/turf_decal/bot_red,
 /obj/machinery/holopad,
 /obj/structure/cable,
+/obj/machinery/button/door/personal_shuttle_windows/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "Du" = (
@@ -289,6 +294,9 @@
 	},
 /obj/effect/turf_decal/bot_white,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "HR" = (
@@ -375,6 +383,10 @@
 /obj/machinery/light/cold/directional/south,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/personally_bought/house_boat)
+"LH" = (
+/obj/structure/railing/eva_handhold/directional/south,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/personally_bought/house_boat)
 "LJ" = (
 /obj/structure/marker_beacon/burgundy,
 /turf/closed/wall/mineral/plastitanium,
@@ -382,15 +394,10 @@
 "LV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/item/storage/inflatable,
-/obj/item/door_seal,
-/obj/item/door_seal,
-/obj/structure/closet/secure_closet/wall{
-	pixel_x = 32;
-	name = "damage control locker"
-	},
 /obj/machinery/meter/layer4,
-/turf/open/floor/iron/smooth_large,
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/wall/personal_shuttle/directional/east,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "Md" = (
 /turf/closed/wall/mineral/titanium,
@@ -433,6 +440,10 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
 /turf/open/floor/plating/airless,
 /area/shuttle/personally_bought/house_boat)
+"QT" = (
+/obj/structure/railing/eva_handhold/directional/north,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/personally_bought/house_boat)
 "RM" = (
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 8
@@ -458,7 +469,6 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/personally_bought/house_boat)
 "TJ" = (
-/obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/light/warm/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -476,25 +486,19 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "Ur" = (
-/obj/structure/closet/emcloset/wall/empty{
-	pixel_x = -32
-	},
-/obj/item/storage/medkit/frontier/stocked,
-/obj/item/storage/medkit/civil_defense/stocked,
-/obj/item/storage/medkit/civil_defense/stocked,
-/obj/item/storage/toolbox/emergency,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /obj/machinery/light/warm/directional/west,
+/obj/structure/closet/emcloset/wall/personal_shuttle/directional/west,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "UW" = (
 /obj/structure/bed/pod,
-/obj/item/bedsheet/dorms,
 /obj/structure/curtain/bounty,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/sign/calendar/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/house_boat)
 "Wb" = (
@@ -541,6 +545,7 @@
 "YR" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen/personal_shuttle_windows,
 /turf/open/floor/plating,
 /area/shuttle/personally_bought/house_boat)
 
@@ -585,7 +590,7 @@ YC
 "}
 (4,1,1) = {"
 YC
-CU
+zd
 Xs
 MS
 CU
@@ -593,7 +598,7 @@ Qm
 gb
 Im
 PY
-CU
+jv
 YC
 "}
 (5,1,1) = {"
@@ -636,7 +641,7 @@ Pp
 Ti
 "}
 (8,1,1) = {"
-Pp
+QT
 tE
 TO
 Ef
@@ -646,7 +651,7 @@ yi
 Ur
 Pp
 fI
-Pp
+LH
 "}
 (9,1,1) = {"
 Pp
@@ -662,7 +667,7 @@ IM
 HR
 "}
 (10,1,1) = {"
-Pp
+QT
 Pp
 uM
 Pp
@@ -672,7 +677,7 @@ bv
 Pp
 Pp
 Gm
-Pp
+LH
 "}
 (11,1,1) = {"
 Pp
@@ -706,8 +711,8 @@ Fs
 oO
 Pp
 Pp
-Pp
 Ev
+YR
 Pp
 Pp
 Pp

@@ -46,6 +46,10 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/personally_bought/people_mover)
+"hR" = (
+/obj/structure/railing/eva_handhold/directional/south,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/personally_bought/people_mover)
 "ie" = (
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 8
@@ -84,15 +88,8 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/personally_bought/people_mover)
 "mr" = (
-/obj/item/clothing/mask/gas/alt,
-/obj/item/clothing/mask/gas/alt,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/extinguisher/advanced,
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/firecloset/wall/empty{
-	pixel_x = -32
-	},
+/obj/structure/closet/firecloset/wall/personal_shuttle/directional/west,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/people_mover)
 "np" = (
@@ -257,6 +254,7 @@
 "xN" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen/personal_shuttle_windows,
 /turf/open/floor/plating,
 /area/shuttle/personally_bought/people_mover)
 "zg" = (
@@ -271,7 +269,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/meter/layer4,
+/obj/machinery/button/door/personal_shuttle_windows/directional/east,
 /turf/open/floor/iron/smooth_large,
+/area/shuttle/personally_bought/people_mover)
+"BK" = (
+/obj/structure/railing/eva_handhold/directional/north,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/personally_bought/people_mover)
 "Db" = (
 /obj/machinery/computer/shuttle/personally_bought,
@@ -344,6 +347,7 @@
 /obj/effect/turf_decal/bot_red,
 /obj/machinery/holopad,
 /obj/structure/cable,
+/obj/machinery/button/door/personal_shuttle_windows/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/people_mover)
 "HL" = (
@@ -353,6 +357,9 @@
 	},
 /obj/effect/turf_decal/bot_white,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/people_mover)
 "HN" = (
@@ -379,15 +386,13 @@
 /area/shuttle/personally_bought/people_mover)
 "Lj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/closet/secure_closet/wall{
-	pixel_x = 32;
-	name = "damage control locker"
-	},
-/obj/item/storage/inflatable,
-/obj/item/door_seal,
-/obj/item/door_seal,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/wall/personal_shuttle/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/personally_bought/people_mover)
+"Lt" = (
+/obj/structure/railing/eva_handhold/directional/north,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/personally_bought/people_mover)
 "LJ" = (
 /obj/structure/fluff/metalpole/end{
@@ -438,15 +443,13 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/personally_bought/people_mover)
 "Qw" = (
-/obj/structure/closet/emcloset/wall/empty{
-	pixel_x = -32
-	},
-/obj/item/storage/medkit/frontier/stocked,
-/obj/item/storage/medkit/civil_defense/stocked,
-/obj/item/storage/medkit/civil_defense/stocked,
-/obj/item/storage/toolbox/emergency,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/emcloset/wall/personal_shuttle/directional/west,
 /turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/personally_bought/people_mover)
+"QF" = (
+/obj/structure/railing/eva_handhold/directional/south,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/personally_bought/people_mover)
 "RY" = (
 /obj/structure/cable,
@@ -473,6 +476,7 @@
 /obj/machinery/airalarm/directional/west,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/stack/sheet/iron/fifty,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/personally_bought/people_mover)
 "Wc" = (
@@ -552,7 +556,7 @@ Tw
 "}
 (4,1,1) = {"
 Tw
-FC
+BK
 iX
 Ix
 FC
@@ -560,7 +564,7 @@ GK
 TM
 Gc
 NL
-FC
+hR
 Tw
 "}
 (5,1,1) = {"
@@ -603,7 +607,7 @@ Fw
 jx
 "}
 (8,1,1) = {"
-Fw
+Lt
 zg
 MT
 zg
@@ -613,7 +617,7 @@ qy
 Qw
 Fw
 ZI
-Fw
+QF
 "}
 (9,1,1) = {"
 Fw
@@ -629,7 +633,7 @@ dh
 pf
 "}
 (10,1,1) = {"
-Fw
+Lt
 Fw
 HN
 Fw
@@ -639,7 +643,7 @@ xj
 ai
 Fw
 HL
-Fw
+QF
 "}
 (11,1,1) = {"
 Fw
