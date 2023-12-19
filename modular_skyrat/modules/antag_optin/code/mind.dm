@@ -1,6 +1,6 @@
 /datum/mind
 	/// The optin level set by preferences.
-	var/ideal_opt_in_level
+	var/ideal_opt_in_level = OPT_IN_DEFAULT_LEVEL
 
 /datum/mind/transfer_to(mob/new_character, force_key_move)
 	. = ..()

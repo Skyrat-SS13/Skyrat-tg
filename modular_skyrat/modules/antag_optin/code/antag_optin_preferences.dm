@@ -1,35 +1,16 @@
 /datum/config_entry/flag/disable_antag_opt_in_preferences
 	default = FALSE
 
-/datum/preference/toggle/antag_opt_in
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_PLAYER
-	savefile_key = "antag_opt_in_pref"
-	default_value = TRUE
-
-/datum/preference/toggle/antag_opt_in/is_accessible(datum/preferences/preferences)
-	if (!..(preferences))
-		return FALSE
-
-	return !(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-
-/datum/preference/toggle/antag_opt_in/deserialize(input, datum/preferences/preferences)
-	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return FALSE
-
-	return ..()
-
 /datum/preference/choiced/antag_opt_in_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "antag_opt_in_status_pref"
 
-
 /datum/preference/choiced/antag_opt_in_status/init_possible_values()
 	return list(OPT_IN_YES_TEMP, OPT_IN_YES_KILL, OPT_IN_YES_ROUND_REMOVE, OPT_IN_NOT_TARGET)
 
 /datum/preference/choiced/antag_opt_in_status/create_default_value()
-	return OPT_IN_YES_KILL
+	return OPT_IN_DEFAULT_LEVEL
 
 /datum/preference/choiced/antag_opt_in_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
@@ -39,7 +20,7 @@
 
 /datum/preference/choiced/antag_opt_in_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return OPT_IN_YES_KILL
+		return OPT_IN_DEFAULT_LEVEL
 
 	return ..()
 
