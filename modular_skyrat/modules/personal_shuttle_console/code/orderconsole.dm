@@ -63,7 +63,7 @@
 		message_admins("For some reason, [src] already had a filled valid_shuttle_templates_subtypes, this may or may not be a bug.")
 		return
 	for(var/datum/template as anything in valid_shuttle_templates)
-		messsage_admins("[template]")
+		message_admins("[template]")
 		for(var/datum/sub_template as anything in subtypesof(valid_shuttle_templates[template]))
 			message_admins("[sub_template]")
 			var/datum/map_template/shuttle/new_shuttle_template = new sub_template()
