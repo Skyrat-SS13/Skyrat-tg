@@ -4,14 +4,12 @@ import { useState } from 'react';
 import { useBackend } from '../backend';
 import { BlockQuote, Box, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 import {
   Objective,
   ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
 
 const hereticRed = {
   color: '#e03c3c',

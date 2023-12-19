@@ -4,10 +4,8 @@ import { multiline } from 'common/string';
 import { useBackend } from '../backend';
 import { BlockQuote, Button, Dimmer, Section, Stack } from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 import { Objective, ObjectivePrintout } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',

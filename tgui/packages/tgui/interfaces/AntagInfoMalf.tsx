@@ -5,15 +5,13 @@ import { useState } from 'react';
 import { useBackend } from '../backend';
 import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 import {
   Objective,
   ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
 import { GenericUplink, Item } from './Uplink/GenericUplink';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',

@@ -1,5 +1,6 @@
 // THIS IS A SKYRAT UI FILE
 import { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
 import {
   Box,
@@ -9,8 +10,8 @@ import {
   Section,
   Slider,
 } from '../components';
-import { Window } from '../layouts';
 import { formatPower } from '../format';
+import { Window } from '../layouts';
 
 type Data = {
   connected: BooleanLike;

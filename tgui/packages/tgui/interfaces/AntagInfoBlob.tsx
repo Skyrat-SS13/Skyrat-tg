@@ -8,10 +8,8 @@ import {
   Stack,
 } from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 import { Objective } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
 
 type Data = {
   color: string;

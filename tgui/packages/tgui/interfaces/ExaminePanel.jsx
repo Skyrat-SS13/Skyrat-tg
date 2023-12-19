@@ -1,8 +1,8 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend } from '../backend';
-import { Stack, Section, ByondUi } from '../components';
-import { Window } from '../layouts';
 import { resolveAsset } from '../assets';
+import { useBackend } from '../backend';
+import { ByondUi, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
 const formatURLs = (text) => {
   if (!text) return;

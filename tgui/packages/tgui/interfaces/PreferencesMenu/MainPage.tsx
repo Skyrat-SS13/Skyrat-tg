@@ -6,12 +6,12 @@ import {
   Autofocus,
   Box,
   Button,
+  Dropdown, // SKYRAT EDIT ADDITION
   Flex,
   LabeledList,
   Popper,
   Stack,
   TrackOutsideClicks,
-  Dropdown, // SKYRAT EDIT ADDITION
 } from '../../components';
 import { CharacterPreview } from '../common/CharacterPreview';
 import {

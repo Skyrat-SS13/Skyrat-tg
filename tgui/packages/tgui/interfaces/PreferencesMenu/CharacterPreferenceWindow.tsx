@@ -1,19 +1,19 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 
 import { useBackend, useLocalState } from '../../backend';
-import { Stack, Dropdown, Flex } from '../../components';
+import { Dropdown, Flex, Stack } from '../../components'; // SKYRAT EDIT CHANGE - ORIGINAL: import { Button, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
-import { MainPage } from './MainPage';
-import { PageButton } from './PageButton';
-import { QuirksPage } from './QuirksPage';
-import { SpeciesPage } from './SpeciesPage';
 // SKYRAT EDIT
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
+import { MainPage } from './MainPage';
+import { PageButton } from './PageButton';
+import { QuirksPage } from './QuirksPage';
+import { SpeciesPage } from './SpeciesPage';
 
 enum Page {
   Antags,
