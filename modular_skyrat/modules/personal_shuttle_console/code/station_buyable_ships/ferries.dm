@@ -1,5 +1,6 @@
 /datum/map_template/shuttle/personal_buyable/ferries
 	personal_shuttle_type = PERSONAL_SHIP_TYPE_FERRY
+	port_id = "ferry"
 
 // Little people mover
 
@@ -10,7 +11,7 @@
 		Powered by two large power cells, with an onboard SOFIE generator \
 		as backup in case those cells run dry."
 	credit_cost = CARGO_CRATE_VALUE * 8
-	suffix = "ferry_hafila"
+	suffix = "hafila"
 	width = 15
 	height = 11
 
@@ -27,7 +28,7 @@
 		six seats for ferrying crew, there is a small suite and kitchen for life \
 		in the void."
 	credit_cost = CARGO_CRATE_VALUE * 10
-	suffix = "ferry_manzil"
+	suffix = "manzil"
 	width = 15
 	height = 11
 
