@@ -129,6 +129,35 @@
 	r_pocket = null
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
 
+/obj/effect/mob_spawn/ghost_role/human/tarkon/director
+	name = "Port Tarkon Site Director"
+	prompt_name = "a port site director"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	you_are_text = "You are a newly assigned Site Director for Port Tarkon. Your superiors are none except the will of yourself and Tarkon Industries."
+	flavour_text = "On the recently reclaimed Port Tarkon, You are tasked with overlooking your crew and keeping the port up and running. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
+	important_text = "You are not to abandon Port Tarkon. Check other sleepers for alternative jobs."
+	outfit = /datum/outfit/tarkon/director
+	spawner_job_path = /datum/job/tarkon
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
+	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/port_tarkon
+
+/datum/outfit/tarkon/director //Look at me, I'm the director now.
+	name = "Port Tarkon Ensigns Outfit"
+	uniform = /obj/item/clothing/under/tarkon/com
+	ears = /obj/item/radio/headset/tarkon/command
+	id = /obj/item/card/id/advanced/tarkon/ensign
+	id_trim = /datum/id_trim/away/tarkon/ensign
+	neck = /obj/item/clothing/neck/security_cape/armplate
+	gloves = /obj/item/clothing/gloves/combat
+	l_pocket = null
+	r_pocket = null
+	skillchips = list(/obj/item/skillchip/chameleon/reload)
+
+////////////////////// Corpse/Mob Spawners Below
+
 /datum/outfit/tarkon/loot
 	name = "Dead Tarkon Ensigns Outfit"
 	uniform = /obj/item/clothing/under/tarkon/com
