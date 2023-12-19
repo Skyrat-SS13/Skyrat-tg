@@ -23,14 +23,18 @@
 
 	if(snail.resting && !snail.buckled && lubricate(snail))
 		snail.add_movespeed_modifier(/datum/movespeed_modifier/snail_crawl)
-		ADD_TRAIT(snail, TRAIT_NEGATES_GRAVITY, TRAIT_GENERIC) //SKYRAT EDIT BEGIN - This is to prevent snails from achieving FTL speeds without gravity, think of it like snails affixing to walls irl.
+		//SKYRAT EDIT BEGIN - This is to prevent snails from achieving FTL speeds without gravity, think of it like snails affixing to walls irl.
+		ADD_TRAIT(snail, TRAIT_NEGATES_GRAVITY, TRAIT_GENERIC)
 		snail.AddElement(/datum/element/forced_gravity, 0)
 		if(HAS_TRAIT(snail, TRAIT_SETTLER)) //This is to keep settlers from reaching FTL speeds too.
-			snail.remove_movespeed_modifier(/datum/movespeed_modifier/snail_crawl) //SKYRAT EDIT END
+			snail.remove_movespeed_modifier(/datum/movespeed_modifier/snail_crawl)
+		//SKYRAT EDIT END
 	else
 		snail.remove_movespeed_modifier(/datum/movespeed_modifier/snail_crawl)
-		REMOVE_TRAIT(snail, TRAIT_NEGATES_GRAVITY, TRAIT_GENERIC) //SKYRAT EDIT BEGIN - This clears the forced gravity so they're affected by it while standing.
-		snail.RemoveElement(/datum/element/forced_gravity, 0) //SKYRAT EDIT END
+		//SKYRAT EDIT BEGIN - This clears the forced gravity so they're affected by it while standing.
+		REMOVE_TRAIT(snail, TRAIT_NEGATES_GRAVITY, TRAIT_GENERIC)
+		snail.RemoveElement(/datum/element/forced_gravity, 0)
+		//SKYRAT EDIT END
 
 /datum/element/snailcrawl/proc/lubricate(atom/movable/snail)
 	SIGNAL_HANDLER

@@ -51,9 +51,10 @@
 		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
-	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails - This is to help with shell reskins.
-	//if(ishuman(new_snailperson)) //SKYRAT EDIT: Snails don't have exotic blood here!
-	//	update_mail_goodies(new_snailperson) //SKYRAT EDIT END - Roundstart Snails - They don't need special mail goodies because of the above.
+	new_snailperson.update_icons() //SKYRAT EDIT ADDITION: Roundstart Snails - This is to help with shell reskins.
+	/* SKYRAT EDIT REMOVAL START - Roundstart Snails - They don't need special mail goodies because of the below edit, no exotic blood.
+	if(ishuman(new_snailperson))
+		update_mail_goodies(new_snailperson) */ //SKYRAT EDIT END
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -64,7 +65,8 @@
 		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
 
-/*/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list()) //SKYRAT EDIT - Roundstart Snails - They don't have exotic blood here!
+/* SKYRAT EDIT REMOVAL START - Roundstart Snails - They don't have exotic blood here!
+/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
 	if(istype(quirk, /datum/quirk/blooddeficiency))
 		mail_goodies += list(
 			/obj/item/reagent_containers/blood/snail
@@ -81,8 +83,6 @@
 	armor_type = /datum/armor/backpack_snail
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	//SKYRAT EDIT BEGIN - Roundstart Snails
-	slowdown = 6 // The snail's shell is what's making them slow.
 	obj_flags = IMMUTABLE_SLOW //As above, this should hopefully solve other issues.
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
