@@ -139,7 +139,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door/personal_shuttle_bay_four
 /obj/structure/closet/emcloset/wall/personal_shuttle/PopulateContents()
 	new /obj/item/storage/toolbox/emergency(src)
 	new /obj/item/storage/medkit/civil_defense/stocked(src)
-	new /obj/item/storage/medkit/civil_defense/stocked(src)
 	new /obj/item/radio(src)
 	new /obj/item/radio(src)
 	new /obj/item/folded_navigation_gigabeacon(src)
