@@ -932,11 +932,16 @@
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/proc/find_original()
 	var/list/possible_targets = list()
 
+	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(!player.client || !player.mind || player.stat)
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
+		if (!opt_in_disabled && !opt_in_valid(player))
+			continue
+		// SKYRAT EDIT END
 		possible_targets += player
 
 	if(possible_targets.len)
