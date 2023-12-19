@@ -62,8 +62,8 @@
 	if(length(valid_shuttle_templates_subtypes))
 		message_admins("For some reason, [src] already had a filled valid_shuttle_templates_subtypes, this may or may not be a bug.")
 		return
-	for(var/datum/template in valid_shuttle_templates)
-		for(var/datum/sub_template in subtypesof(template))
+	for(var/datum/template as anything in valid_shuttle_templates)
+		for(var/datum/sub_template as anything in subtypesof(valid_shuttle_templates[template]))
 			var/datum/map_template/shuttle/new_shuttle_template = new sub_template()
 			valid_shuttle_templates_subtypes += new_shuttle_template
 	// If there's no ships, going through the rest of this stuff is pointless
@@ -73,7 +73,7 @@
 	// If we already have a shopping list, we don't need to worry about it
 	if(length(shopping_list))
 		return
-	for(var/datum/map_template/shuttle/personal_buyable/shuttle_template in valid_shuttle_templates_subtypes)
+	for(var/datum/map_template/shuttle/personal_buyable/shuttle_template as anything in valid_shuttle_templates_subtypes)
 		if(!shuttle_template.personal_shuttle_type || !shuttle_template.name || !shuttle_template.personal_shuttle_size || !shuttle_template.credit_cost)
 			message_admins("HEY!!! [src] just tried to add a personal shuttle template to its shopping list that was missing information! Template in question: [shuttle_template.type]")
 			continue
