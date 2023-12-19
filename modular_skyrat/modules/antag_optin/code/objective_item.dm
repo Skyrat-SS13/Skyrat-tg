@@ -13,7 +13,7 @@
 	return TRUE
 
 /datum/objective_item/valid_objective_for(list/potential_thieves, require_owner)
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
+	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences)
 	if (!opt_in_disabled && require_owner && !owner_opted_in())
 		return FALSE
 
