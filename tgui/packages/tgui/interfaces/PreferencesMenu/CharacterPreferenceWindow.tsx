@@ -35,9 +35,9 @@ const CharacterProfiles = (props: {
   const { profiles, activeSlot, onClick } = props; // SKYRAT EDIT CHANGE
 
   return (
-    <Flex
+    <Flex /* SKYRAT EDIT CHANGE START - Skyrat uses a dropdown instead of buttons */
       align="center"
-      justify="center" /* SKYRAT EDIT CHANGE START - Skyrat uses a dropdown instead of buttons */
+      justify="center"
     >
       <Flex.Item width="25%">
         <Dropdown
