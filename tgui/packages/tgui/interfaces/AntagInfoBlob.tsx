@@ -7,12 +7,9 @@ import {
   Section,
   Stack,
 } from '../components';
-import { Objective } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
-
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+import { Objective } from './common/Objectives';
 
 type Data = {
   color: string;

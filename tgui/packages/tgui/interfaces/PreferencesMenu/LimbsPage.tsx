@@ -1,15 +1,15 @@
 // THIS IS A SKYRAT UI FILE
+import { useBackend } from '../../backend';
 import {
   Box,
-  Stack,
-  Section,
-  Dropdown,
   Button,
   ColorBox,
+  Dropdown,
+  Section,
+  Stack,
 } from '../../components';
-import { useBackend } from '../../backend';
-import { PreferencesMenuData } from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
+import { PreferencesMenuData } from './data';
 
 export const RotateCharacterButtons = (props) => {
   const { act } = useBackend<PreferencesMenuData>();
