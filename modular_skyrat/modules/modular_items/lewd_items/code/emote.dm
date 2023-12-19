@@ -1,3 +1,9 @@
+/datum/emote/living/lewd
+	var/pref_to_check = /datum/preference/toggle/erp/sounds
+
+/datum/emote/living/lewd/can_run_emote(mob/living/carbon/user, status_check = TRUE, intentional)
+	return ..() && user.client?.prefs?.read_preference(/datum/preference/toggle/erp)
+
 /datum/emote/living/lewd/lewdmoan
 	key = "lewdmoan"
 	key_third_person = "lewdmoans"
