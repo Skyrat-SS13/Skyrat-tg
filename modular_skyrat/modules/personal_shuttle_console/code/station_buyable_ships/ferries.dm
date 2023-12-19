@@ -11,6 +11,8 @@
 		as backup in case those cells run dry."
 	credit_cost = CARGO_CRATE_VALUE * 8
 	suffix = "ferry_hafila.dmm"
+	width = 15
+	height = 11
 
 /area/shuttle/personally_bought/people_mover
 	name = "SF Hafila"
@@ -26,6 +28,8 @@
 		in the void."
 	credit_cost = CARGO_CRATE_VALUE * 10
 	suffix = "ferry_manzil.dmm"
+	width = 15
+	height = 11
 
 /area/shuttle/personally_bought/house_boat
 	name = "SF Manzil"

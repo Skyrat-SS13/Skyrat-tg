@@ -100,7 +100,7 @@
 		balloon_alert(user, "no ships available")
 		return
 
-	var/menu_option = tgui_alert(user, "Select Menu", "Personal Shuttle Order Console", list(PERSONAL_SHUTTLE_CONSOLE_SHOPPING_LIST, PERSONAL_SHUTTLE_CONSOLE_SELECTION_DETAILS))
+	var/menu_option = tgui_alert(user, "", "Personal Shuttle Order Console", list(PERSONAL_SHUTTLE_CONSOLE_SHOPPING_LIST, PERSONAL_SHUTTLE_CONSOLE_SELECTION_DETAILS))
 	if(!menu_option)
 		balloon_alert(user, "no selection made")
 		return
