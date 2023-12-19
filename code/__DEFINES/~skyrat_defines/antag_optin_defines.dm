@@ -24,3 +24,6 @@ GLOBAL_LIST_INIT(antag_opt_in_strings, list(
 #define SECURITY_OPT_IN_LEVEL OPT_IN_YES_KILL
 /// The minimum opt-in level for people playing command.
 #define COMMAND_OPT_IN_LEVEL OPT_IN_YES_KILL
+
+/// The default opt in level for preferences and mindless mobs.
+#define OPT_IN_DEFAULT_LEVEL OPT_IN_NOT_TARGET
