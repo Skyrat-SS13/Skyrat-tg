@@ -56,10 +56,16 @@
 
 /// Fills the shopping list with names and templates
 /obj/machinery/computer/personal_shuttle_order/proc/try_and_fill_shopping_list()
-	if(length(valid_shuttle_templates) && !length(valid_shuttle_templates_subtypes))
-		for(var/datum/template in valid_shuttle_templates)
-			for(var/datum/sub_template in subtypesof(template))
-				valid_shuttle_templates_subtypes += new sub_template()
+	if(!length(valid_shuttle_templates))
+		message_admins("HEY!!! [src] had nothing in its valid shuttle templates list, this is wrong or you just spawned the basetype!!")
+		return
+	if(length(valid_shuttle_templates_subtypes))
+		message_admins("For some reason, [src] already had a filled valid_shuttle_templates_subtypes, this may or may not be a bug.")
+		return
+	for(var/datum/template in valid_shuttle_templates)
+		for(var/datum/sub_template in subtypesof(template))
+			var/datum/map_template/shuttle/new_shuttle_template = new sub_template()
+			valid_shuttle_templates_subtypes += new_shuttle_template
 	// If there's no ships, going through the rest of this stuff is pointless
 	if(!length(valid_shuttle_templates_subtypes))
 		message_admins("HEY!!! [src] has nothing in its valid_shuttle_templates_subtypes list, this is either wrong or you just spawned the basetype of the console!!")
