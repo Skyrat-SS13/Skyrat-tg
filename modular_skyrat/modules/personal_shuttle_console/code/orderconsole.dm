@@ -38,6 +38,12 @@
 	try_and_find_a_dock()
 	try_and_fill_shopping_list()
 
+/obj/machinery/computer/personal_shuttle_order/examine(mob/user)
+	. = ..()
+	if(our_docking_port)
+		return
+	. += span_danger("This shuttle wasn't constructed close enough to a suitable shuttle dock, and will not work.")
+
 /// Asks SSshuttle if our set docking port id is around and in range
 /obj/machinery/computer/personal_shuttle_order/proc/try_and_find_a_dock()
 	if(our_docking_port)
@@ -52,9 +58,11 @@
 /obj/machinery/computer/personal_shuttle_order/proc/try_and_fill_shopping_list()
 	if(length(valid_shuttle_templates && !length(valid_shuttle_templates_subtypes)))
 		for(var/datum/template in valid_shuttle_templates)
-			valid_shuttle_templates_subtypes += subtypesof(template)
+			for(var/datum/sub_template in subtypesof(template))
+				valid_shuttle_templates_subtypes += new sub_template()
 	// If there's no ships, going through the rest of this stuff is pointless
 	if(!length(valid_shuttle_templates_subtypes))
+		message_admins("HEY!!! [src] has nothing in its valid_shuttle_templates_subtypes list, this is either wrong or you just spawned the basetype of the console!!")
 		return
 	// If we already have a shopping list, we don't need to worry about it
 	if(length(shopping_list))
@@ -125,6 +133,12 @@
 				if(PERSONAL_SHUTTLE_CONSOLE_CLEAR_SELECTION)
 					balloon_alert(user, "selection cleared")
 					selected_template = null
+
+#undef PERSONAL_SHUTTLE_CONSOLE_SHOPPING_LIST
+#undef PERSONAL_SHUTTLE_CONSOLE_SELECTION_DETAILS
+
+#undef PERSONAL_SHUTTLE_CONSOLE_PURCHASE_SHUTTLE
+#undef PERSONAL_SHUTTLE_CONSOLE_CLEAR_SELECTION
 
 /// Tries to buy the given shuttle template using the given user's money, if so, spawns the shuttle and sends it to our linked dock
 /obj/machinery/computer/personal_shuttle_order/proc/try_and_buy_that_shuttle(mob/living/carbon/user, datum/map_template/shuttle/personal_buyable/selected_ship_template)
