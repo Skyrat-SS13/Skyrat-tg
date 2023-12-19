@@ -56,7 +56,7 @@
 
 /// Fills the shopping list with names and templates
 /obj/machinery/computer/personal_shuttle_order/proc/try_and_fill_shopping_list()
-	if(length(valid_shuttle_templates && !length(valid_shuttle_templates_subtypes)))
+	if(length(valid_shuttle_templates) && !length(valid_shuttle_templates_subtypes))
 		for(var/datum/template in valid_shuttle_templates)
 			for(var/datum/sub_template in subtypesof(template))
 				valid_shuttle_templates_subtypes += new sub_template()
