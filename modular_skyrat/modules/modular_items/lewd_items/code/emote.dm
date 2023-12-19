@@ -1,4 +1,4 @@
-/datum/emote/living/lewdmoan
+/datum/emote/living/lewd/lewdmoan
 	key = "lewdmoan"
 	key_third_person = "lewdmoans"
 	message = "moans lewdly!"
