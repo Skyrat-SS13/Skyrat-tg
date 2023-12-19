@@ -878,7 +878,15 @@ GLOBAL_LIST_EMPTY(possible_items)
 /datum/objective/destroy/find_target(dupe_search_range, list/blacklist)
 	var/list/possible_targets = active_ais(TRUE)
 	possible_targets -= blacklist
-	var/mob/living/silicon/ai/target_ai = pick(possible_targets)
+	//var/mob/living/silicon/ai/target_ai = pick(possible_targets) // SKYRAT EDIT REMOVAL - Uses the below loop
+	// SKYRAT EDIT ADDITION BEGIN - ANTAG OPTIN
+	var/mob/living/silicon/ai/target_ai
+	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
+	for (var/mob/living/silicon/ai/possible_target as anything in shuffle(possible_targets))
+		if (!opt_in_disabled && !opt_in_valid(possible_target))
+			continue
+		target_ai = possible_target
+	// SKYRAT EDIT ADDITION END
 	target = target_ai.mind
 	update_explanation_text()
 	return target
