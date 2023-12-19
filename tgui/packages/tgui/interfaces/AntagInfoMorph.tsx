@@ -1,8 +1,6 @@
 import { BlockQuote, Stack } from '../components';
 import { Window } from '../layouts';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 
 const goodstyle = {
   color: 'lightgreen',
