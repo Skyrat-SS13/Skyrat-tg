@@ -1,5 +1,5 @@
 /obj/item/circuitboard/computer/personal_shuttle_order
-	name = "Supply Console"
+	name = "Personal Shuttle Order Console"
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/computer/personal_shuttle_order
 
@@ -63,12 +63,9 @@
 		message_admins("For some reason, [src] already had a filled valid_shuttle_templates_subtypes, this may or may not be a bug.")
 		return
 	for(var/datum/template as anything in valid_shuttle_templates)
-		message_admins("[template]")
 		var/list/subtypes_of_template = subtypesof(template)
 		for(var/datum/sub_template as anything in subtypes_of_template)
-			message_admins("[sub_template]")
 			var/datum/map_template/shuttle/new_shuttle_template = new sub_template()
-			message_admins("[new_shuttle_template]")
 			valid_shuttle_templates_subtypes.Add(new_shuttle_template)
 	// If there's no ships, going through the rest of this stuff is pointless
 	if(!length(valid_shuttle_templates_subtypes))
@@ -162,6 +159,7 @@
 		balloon_alert(user, "shuttle en route")
 		return
 	if(attempt_charge(src, user, selected_ship_template.credit_cost) & COMPONENT_OBJ_CANCEL_CHARGE)
+		balloon_alert(user, "payment failed")
 		return
 	playsound(src, 'sound/effects/cashregister.ogg', 40, TRUE)
 	spawning_shuttle = TRUE
@@ -173,5 +171,19 @@
 	else
 		message_admins("[user] tried to load a ship template ([selected_ship_template]) but it failed for some reason, they should have been refunded the cost")
 		say("Shuttle purchase failed, cost of ship refunded.")
-		new /obj/item/stack/spacecash(drop_location(src), selected_ship_template.credit_cost)
+		new /obj/item/holochip(drop_location(src), selected_ship_template.credit_cost)
 	spawning_shuttle = FALSE
+
+// Subtypes of the consoles below
+
+// For the station
+
+/obj/machinery/computer/personal_shuttle_order/station
+	circuit = /obj/item/circuitboard/computer/personal_shuttle_order/station
+	valid_shuttle_templates = list(
+		/datum/map_template/shuttle/personal_buyable/ferries,
+	)
+
+/obj/item/circuitboard/computer/personal_shuttle_order/station
+	name = "Station-Linked Personal Shuttle Order Console"
+	build_path = /obj/machinery/computer/personal_shuttle_order/station
