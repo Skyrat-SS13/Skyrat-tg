@@ -32,14 +32,13 @@ export const Image = (props: Props) => {
     ...rest
   } = props;
 
-  const computedProps = computeBoxProps(rest);
-  computedProps['style'] = {
-    ...computedProps.style,
+  const computedStyle = {
+    ...computeBoxProps(rest).style,
     '-ms-interpolation-mode': fixBlur ? 'nearest-neighbor' : 'auto',
     objectFit,
   };
 
-  let content = <img className={className} src={src} {...computedProps} />;
+  let content = <img className={className} src={src} style={computedStyle} />;
 
   if (tooltip) {
     content = <Tooltip content={tooltip}>{content}</Tooltip>;
