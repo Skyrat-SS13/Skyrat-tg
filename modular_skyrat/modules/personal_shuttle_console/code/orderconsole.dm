@@ -35,8 +35,8 @@
 /obj/machinery/computer/personal_shuttle_order/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/payment, 0, SSeconomy.get_dep_account(ACCOUNT_CMD), PAYMENT_CLINICAL)
-	try_and_find_a_dock()
 	try_and_fill_shopping_list()
+	INVOKE_ASYNC(src, PROC_REF(try_and_find_a_dock))
 
 /obj/machinery/computer/personal_shuttle_order/examine(mob/user)
 	. = ..()
