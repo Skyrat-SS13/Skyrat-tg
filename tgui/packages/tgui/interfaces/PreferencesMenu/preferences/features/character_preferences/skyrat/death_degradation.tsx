@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { Feature, CheckboxInput, FeatureNumberInput } from '../../base';
 
 export const dc_starting_degradation: Feature<number> = {

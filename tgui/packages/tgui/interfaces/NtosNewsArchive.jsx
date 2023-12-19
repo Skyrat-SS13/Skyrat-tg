@@ -1,9 +1,10 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { Collapsible, Section } from '../components';
 import { NtosWindow } from '../layouts';
 
-export const NtosNewsArchive = (props, context) => {
-  const { data } = useBackend(context);
+export const NtosNewsArchive = (props) => {
+  const { data } = useBackend();
   const { stories } = data;
 
   return (
@@ -24,7 +25,8 @@ export const NtosNewsArchive = (props, context) => {
               story.day +
               '/' +
               story.year
-            }>
+            }
+          >
             <Section>{story.text}</Section>
           </Collapsible>
         ))}

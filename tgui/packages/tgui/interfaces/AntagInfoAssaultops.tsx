@@ -1,10 +1,19 @@
-import { useBackend, useLocalState } from '../backend';
-import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } from '../components';
+// THIS IS A SKYRAT UI FILE
+import { useBackend } from '../backend';
+import {
+  LabeledList,
+  Stack,
+  Button,
+  Section,
+  ProgressBar,
+  Box,
+  Tabs,
+  Divider,
+} from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
-// SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
+import { useState } from 'react';
 
 type Objectives = {
   count: number;
@@ -33,9 +42,9 @@ type GoldeneyeKeys = {
 };
 
 type Info = {
-  equipped: Number;
-  required_keys: Number;
-  uploaded_keys: Number;
+  equipped: number;
+  required_keys: number;
+  uploaded_keys: number;
   objectives: Objectives[];
   available_targets: AvailableTargets[];
   extracted_targets: ExtractedTargets[];
@@ -43,7 +52,7 @@ type Info = {
 };
 
 export const AntagInfoAssaultops = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   const { data } = useBackend<Info>();
   const { required_keys, uploaded_keys, objectives } = data;
   return (
@@ -91,7 +100,8 @@ export const AntagInfoAssaultops = (props) => {
                   <LabeledList.Item
                     key={objective.count}
                     label={objective.name}
-                    color={objective.complete ? 'good' : 'bad'}>
+                    color={objective.complete ? 'good' : 'bad'}
+                  >
                     {objective.explanation}
                   </LabeledList.Item>
                 ))}
@@ -105,13 +115,15 @@ export const AntagInfoAssaultops = (props) => {
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 1}
-                    onClick={() => setTab(1)}>
+                    onClick={() => setTab(1)}
+                  >
                     Targets
                   </Tabs.Tab>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 2}
-                    onClick={() => setTab(2)}>
+                    onClick={() => setTab(2)}
+                  >
                     GoldenEye Keycards
                   </Tabs.Tab>
                 </Tabs>
@@ -120,11 +132,9 @@ export const AntagInfoAssaultops = (props) => {
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
           </Stack.Item>
-          {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
-          {/* SKYRAT EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>
@@ -151,7 +161,8 @@ const TargetPrintout = (props) => {
                 <LabeledList.Item
                   key={target.name}
                   label={target.name}
-                  color="red">
+                  color="red"
+                >
                   {target.job}
                 </LabeledList.Item>
               ))}
@@ -170,7 +181,8 @@ const TargetPrintout = (props) => {
                 <LabeledList.Item
                   key={target.name}
                   label={target.name}
-                  color="good">
+                  color="good"
+                >
                   {target.job}
                 </LabeledList.Item>
               ))}
@@ -212,22 +224,22 @@ const KeyPrintout = (props) => {
                     content={
                       key.selected
                         ? key.name +
-                        ' (' +
-                        key.coord_x +
-                        ', ' +
-                        key.coord_y +
-                        ', ' +
-                        key.coord_z +
-                        ')' +
-                        ' (Tracking)'
+                          ' (' +
+                          key.coord_x +
+                          ', ' +
+                          key.coord_y +
+                          ', ' +
+                          key.coord_z +
+                          ')' +
+                          ' (Tracking)'
                         : key.name +
-                        ' (' +
-                        key.coord_x +
-                        ', ' +
-                        key.coord_y +
-                        ', ' +
-                        key.coord_z +
-                        ')'
+                          ' (' +
+                          key.coord_x +
+                          ', ' +
+                          key.coord_y +
+                          ', ' +
+                          key.coord_z +
+                          ')'
                     }
                     onClick={() =>
                       act('track_key', {
