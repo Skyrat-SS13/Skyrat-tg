@@ -64,7 +64,8 @@
 		return
 	for(var/datum/template as anything in valid_shuttle_templates)
 		message_admins("[template]")
-		for(var/datum/sub_template as anything in subtypesof(valid_shuttle_templates[template]))
+		var/list/subtypes_of_template = subtypesof(template)
+		for(var/datum/sub_template as anything in subtypes_of_template)
 			message_admins("[sub_template]")
 			var/datum/map_template/shuttle/new_shuttle_template = new sub_template()
 			message_admins("[new_shuttle_template]")
