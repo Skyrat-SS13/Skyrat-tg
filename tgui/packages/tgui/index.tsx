@@ -27,8 +27,8 @@ import './styles/themes/wizard.scss';
 import './styles/themes/admin.scss';
 // SKYRAT ADDITION START
 import './styles/themes/clockwork.scss';
-// SKYRAT ADDITION END
 
+// SKYRAT ADDITION END
 import { perf } from 'common/perf';
 import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 
