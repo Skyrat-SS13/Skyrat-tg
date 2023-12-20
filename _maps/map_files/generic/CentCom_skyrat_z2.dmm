@@ -4988,7 +4988,6 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "caJ" = (
-/obj/structure/curtain/bounty,
 /turf/open/floor/iron/stairs/old,
 /area/centcom/holding/cafe)
 "caY" = (
@@ -5730,7 +5729,7 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 1
 	},
-/obj/structure/showcase/fake_cafe_console,
+/obj/machinery/computer/operating,
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "dtL" = (
@@ -9385,8 +9384,13 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafepark)
 "kdo" = (
-/obj/structure/curtain/bounty,
 /obj/structure/hedge/opaque,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	icon_state = "bounty-open";
+	icon_type = "bounty";
+	id = "CCSalon";
+	name = "curtain"
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "kdw" = (
@@ -9977,7 +9981,12 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/curtain/bounty,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	icon_state = "bounty-open";
+	icon_type = "bounty";
+	id = "CCSalon";
+	name = "curtain"
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "laX" = (
@@ -12478,6 +12487,19 @@
 	},
 /turf/open/floor/carpet/cyan,
 /area/centcom/holding/cafe)
+"pgm" = (
+/obj/structure/hedge/opaque,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/curtain/cloth/fancy/mechanical{
+	icon_state = "bounty-open";
+	icon_type = "bounty";
+	id = "CCSalon";
+	name = "curtain"
+	},
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding/cafe)
 "pgL" = (
 /obj/structure/chair/sofa/bench/right,
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
@@ -13349,8 +13371,13 @@
 /area/centcom/interlink)
 "qtz" = (
 /obj/structure/hedge/opaque,
-/obj/structure/curtain/bounty,
 /obj/structure/fans/tiny/invisible,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	icon_state = "bounty-open";
+	icon_type = "bounty";
+	id = "CCSalon";
+	name = "curtain"
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "qub" = (
@@ -13885,12 +13912,27 @@
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "rnK" = (
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
+	},
+/obj/structure/table,
+/obj/item/storage/medkit/brute{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/medkit/o2{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/medkit/fire{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/medkit/toxin{
+	pixel_x = -3
 	},
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
@@ -13911,10 +13953,10 @@
 /area/cruiser_dock)
 "rpX" = (
 /obj/machinery/light/directional/south,
-/obj/structure/chair/sofa/bench{
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/structure/chair/sofa/bench/right{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "rrA" = (
@@ -14356,6 +14398,14 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/centcom/interlink)
+"sck" = (
+/obj/machinery/button/curtain{
+	id = "CCSalon";
+	pixel_x = 1;
+	pixel_y = 28
+	},
+/turf/open/floor/carpet/black,
+/area/centcom/holding/cafe)
 "sen" = (
 /obj/structure/railing{
 	invisibility = 100
@@ -14845,10 +14895,8 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "sPA" = (
-/obj/structure/chair/sofa/bench/right{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "sPH" = (
@@ -14980,11 +15028,11 @@
 /turf/open/floor/iron/freezer,
 /area/centcom/interlink)
 "sYY" = (
-/obj/structure/closet/firecloset,
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/vending/drugs,
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "sZl" = (
@@ -17449,9 +17497,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "xDR" = (
-/obj/structure/closet/emcloset/anchored,
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted,
 /obj/effect/turf_decal/bot,
+/obj/machinery/vending/medical,
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "xEn" = (
@@ -70914,7 +70962,7 @@ vTT
 oLI
 sOj
 qPk
-kdo
+pgm
 xkO
 sNh
 mBM
@@ -71168,7 +71216,7 @@ pCd
 aGb
 aPf
 vTT
-qWE
+sck
 qWE
 qWE
 caJ
