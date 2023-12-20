@@ -101,10 +101,6 @@
 /obj/item/flatpacked_machine/proc/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
-/// Adds the deployable component, in case we want to change this stuff later
-/obj/item/flatpacked_machine/proc/give_deployable_component()
-	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)
-
 /obj/item/borg/apparatus/sheet_manipulator/Initialize(mapload)
 	. = ..()
 	storable += /obj/item/flatpacked_machine
