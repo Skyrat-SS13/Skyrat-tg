@@ -72,7 +72,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/incendiary
 	name = "Incendiary Slug ammo box"
-	desc = "A box of 15 incendiary slug shells, projectiles that ignite targets and leave a trail of fire behind them."
+	desc = "A box of 15 incendiary slug shells. These will ignite targets and leave a trail of fire behind them."
 	icon_state = "incendiary"
 	ammo_type = /obj/item/ammo_casing/shotgun/incendiary
 	max_ammo = 15
