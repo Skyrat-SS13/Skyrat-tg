@@ -3,7 +3,7 @@
 	var/pref_to_check
 
 /datum/emote/living/lewd
-	pref_to_check = /datum/preference/toggle/master_erp_preferences
+	pref_to_check = /datum/preference/toggle/erp
 
 // Can we play this emote to viewers?
 /datum/emote/proc/pref_check_emote(mob/user)
