@@ -299,7 +299,7 @@
 		if(!M.client)
 			continue
 		// SKYRAT EDIT ADDITION - Emote pref checks
-		if(pref_to_check && !user.client?.prefs.read_preference(pref_to_check))
+		if(pref_to_check && !M.client?.prefs.read_preference(pref_to_check))
 			continue
 		// SKYRAT EDIT END
 
@@ -327,7 +327,7 @@
 
 
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ")  // SKYRAT EDIT ADDITION - Better emotes
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ", pref_to_check)  // SKYRAT EDIT ADDITION - Better emotes, pref checks
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -363,7 +363,7 @@
 		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" //SKYRAT EDIT CHANGE
 	for(var/mob/M in hearers)
 	// SKYRAT EDIT ADDITION - Emote pref checks
-		if(pref_to_check && !user.client?.prefs.read_preference(pref_to_check))
+		if(pref_to_check && !M.client?.prefs.read_preference(pref_to_check))
 			continue
 	// SKYRAT EDIT END
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
@@ -381,7 +381,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - Better emotes, pref checks
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
