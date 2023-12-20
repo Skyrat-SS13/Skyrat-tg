@@ -1,11 +1,11 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
 import {
+  Button,
   Collapsible,
+  LabeledList,
   Section,
   TextArea,
-  LabeledList,
-  Button,
 } from '../components';
 import { Window } from '../layouts';
 

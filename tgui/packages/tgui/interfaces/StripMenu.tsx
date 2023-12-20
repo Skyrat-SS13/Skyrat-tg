@@ -1,8 +1,9 @@
 import { range } from 'common/collections';
 import { BooleanLike } from 'common/react';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { Box, Button, Icon, Stack } from '../components';
+import { Box, Button, Icon, Image, Stack } from '../components';
 import { Window } from '../layouts';
 
 const ROWS = 6; // SKYRAT EDIT CHANGE
@@ -319,8 +320,7 @@ export const StripMenu = (props) => {
                     }
 
                     content = (
-                      <Box
-                        as="img"
+                      <Image
                         src={`data:image/jpeg;base64,${item.icon}`}
                         height="100%"
                         width="100%"
@@ -387,8 +387,7 @@ export const StripMenu = (props) => {
                           }}
                         >
                           {slot.image && (
-                            <Box
-                              as="img"
+                            <Image
                               className="centered-image"
                               src={resolveAsset(slot.image)}
                               opacity={0.7}

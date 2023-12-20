@@ -1,19 +1,20 @@
 // THIS IS A SKYRAT UI FILE
+import { BooleanLike } from 'common/react';
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
-  LabeledList,
-  Stack,
-  Button,
-  Section,
-  ProgressBar,
   Box,
-  Tabs,
+  Button,
   Divider,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
 } from '../components';
-import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { Rules } from './AntagInfoRules';
-import { useState } from 'react';
 
 type Objectives = {
   count: number;
