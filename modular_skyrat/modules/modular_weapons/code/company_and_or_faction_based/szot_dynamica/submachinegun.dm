@@ -25,7 +25,9 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/miecz
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/smg_light.ogg'
-	can_suppress = FALSE
+	can_suppress = TRUE
+	suppressor_x_offset = 0
+	suppressor_y_offset = 0
 
 	can_bayonet = FALSE
 

@@ -267,7 +267,7 @@
  * * vision_distance (optional) define how many tiles away the message can be seen.
  * * ignored_mob (optional) doesn't show any message to a given mob if TRUE.
  */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - SEPERATION
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - separation, pref checks
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -298,6 +298,10 @@
 	for(var/mob/M in hearers)
 		if(!M.client)
 			continue
+		// SKYRAT EDIT ADDITION - Emote pref checks
+		if(pref_to_check && !M.client?.prefs.read_preference(pref_to_check))
+			continue
+		// SKYRAT EDIT END
 
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
@@ -323,7 +327,7 @@
 
 
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ")  // SKYRAT EDIT ADDITION - Better emotes
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ", pref_to_check)  // SKYRAT EDIT ADDITION - Better emotes, pref checks
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -338,7 +342,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - Better emotes, pref checks
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
@@ -358,6 +362,10 @@
 	if(audible_message_flags & EMOTE_MESSAGE)
 		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" //SKYRAT EDIT CHANGE
 	for(var/mob/M in hearers)
+	// SKYRAT EDIT ADDITION - Emote pref checks
+		if(pref_to_check && !M.client?.prefs.read_preference(pref_to_check))
+			continue
+	// SKYRAT EDIT END
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
 			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
 		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
@@ -373,7 +381,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - Better emotes, pref checks
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
@@ -1042,11 +1050,11 @@
 	if(mind)
 		return mind.grab_ghost(force = force)
 
-///Notify a ghost that it's body is being cloned
-/mob/proc/notify_ghost_cloning(message = "Someone is trying to revive you. Re-enter your corpse if you want to be revived!", sound = 'sound/effects/genetics.ogg', atom/source = null, flashwindow)
+///Notify a ghost that its body is being revived
+/mob/proc/notify_revival(message = "Someone is trying to revive you. Re-enter your corpse if you want to be revived!", sound = 'sound/effects/genetics.ogg', atom/source = null, flashwindow = TRUE)
 	var/mob/dead/observer/ghost = get_ghost()
 	if(ghost)
-		ghost.notify_cloning(message, sound, source, flashwindow)
+		ghost.send_revival_notification(message, sound, source, flashwindow)
 		return ghost
 
 /**
@@ -1385,10 +1393,6 @@
 			to_chat(src, span_warning("You can't write with the [writing_instrument]!"))
 		return FALSE
 
-	if(HAS_MIND_TRAIT(src, TRAIT_MIMING) && !istype(writing_instrument, /obj/item/toy/crayon/mime))
-		to_chat(src, span_warning("Your vow of silence is preventing you from talking with text."))
-		return FALSE
-
 	if(!is_literate())
 		to_chat(src, span_warning("You try to write, but don't know how to spell anything!"))
 		return FALSE
@@ -1604,10 +1608,6 @@
 
 /mob/vv_edit_var(var_name, var_value)
 	switch(var_name)
-		if(NAMEOF(src, control_object))
-			var/obj/O = var_value
-			if(!istype(O) || (O.obj_flags & DANGEROUS_POSSESSION))
-				return FALSE
 		if(NAMEOF(src, machine))
 			set_machine(var_value)
 			. = TRUE

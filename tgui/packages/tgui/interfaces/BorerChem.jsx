@@ -1,10 +1,12 @@
+// THIS IS A SKYRAT UI FILE
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
-export const BorerChem = (props, context) => {
-  const { act, data } = useBackend(context);
+export const BorerChem = (props) => {
+  const { act, data } = useBackend();
   const borerTransferAmounts = data.borerTransferAmounts || [];
   return (
     <Window width={565} height={400} title="Injector" theme="wizard">
@@ -32,7 +34,8 @@ export const BorerChem = (props, context) => {
                 })
               }
             />
-          ))}>
+          ))}
+        >
           <Box mr={-1}>
             {data.chemicals.map((chemical) => (
               <Button

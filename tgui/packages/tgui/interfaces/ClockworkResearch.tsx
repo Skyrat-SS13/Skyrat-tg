@@ -1,7 +1,8 @@
-import { useBackend } from '../backend';
-import { Box, Button, Section, Stack, Divider, Flex } from '../components';
-import { Window } from '../layouts';
+// THIS IS A SKYRAT UI FILE
 import { BooleanLike, classes } from '../../common/react';
+import { useBackend } from '../backend';
+import { Box, Button, Divider, Flex, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
 type Data = {
   research_tiers: Array<Array<Research>>;
@@ -51,7 +52,7 @@ const SelectedSection = (props) => {
   const { act, data } = useBackend<Data>();
   return (
     <Box>
-      <div style={{ 'text-align': 'center' }}>
+      <div style={{ textAlign: 'center' }}>
         <Box color="good" bold fontSize="16px">
           {'Selected Research'}
         </Box>
@@ -60,7 +61,7 @@ const SelectedSection = (props) => {
           {data.focused_research.name}
         </Box>
         <Box>{data.focused_research.desc}</Box>
-        <div style={{ 'padding-top': '5px' }}>
+        <div style={{ paddingTop: '5px' }}>
           <Box>
             <i>{data.focused_research.lore}</i>
           </Box>
@@ -102,7 +103,7 @@ const ResearchSection = (props) => {
     <Stack vertical>
       <Stack.Item fill>
         <Section fill title="Basic Research">
-          <div style={{ 'text-align': 'center' }}>
+          <div style={{ textAlign: 'center' }}>
             {ResearchNode(data.starting_research, act)}
           </div>
         </Section>
@@ -110,11 +111,12 @@ const ResearchSection = (props) => {
       {data.research_tiers.map((inside_array: Array<Research>) => (
         <Stack vertical fill key={inside_array[0].name}>
           <Section
-            title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}>
+            title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}
+          >
             {inside_array.map((single_research: Research) => (
               <Stack.Item key={single_research.name}>
                 <Section fill>
-                  <div style={{ 'text-align': 'center' }}>
+                  <div style={{ textAlign: 'center' }}>
                     {ResearchNode(single_research, act)}
                   </div>
                 </Section>
@@ -140,7 +142,7 @@ const ResearchNode = (research: Research, act: any) => {
         />
       </Stack.Item>
       <Stack.Item>
-        <div style={{ 'padding-top': '6px' }}>{research.desc}</div>
+        <div style={{ paddingTop: '6px' }}>{research.desc}</div>
       </Stack.Item>
       <br />
       <Stack.Item>
@@ -155,7 +157,7 @@ const ResearchNode = (research: Research, act: any) => {
                     tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
                   />
                 </div>
-              )
+              ),
             )}
             {research.research_scriptures.map(
               (scripture_data: DesignInfo, i: number) => (
@@ -166,7 +168,7 @@ const ResearchNode = (research: Research, act: any) => {
                     tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
                   />
                 </div>
-              )
+              ),
             )}
           </Flex>
         </Box>
