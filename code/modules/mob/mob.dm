@@ -299,7 +299,7 @@
 		if(!M.client)
 			continue
 		// SKYRAT EDIT ADDITION - Emote pref checks
-		if(prefs_to_check && !user.client?.prefs.read_preference(prefs_to_check))
+		if(pref_to_check && !user.client?.prefs.read_preference(pref_to_check))
 			continue
 		// SKYRAT EDIT END
 
@@ -363,7 +363,7 @@
 		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" //SKYRAT EDIT CHANGE
 	for(var/mob/M in hearers)
 	// SKYRAT EDIT ADDITION - Emote pref checks
-		if(prefs_to_check && !user.client?.prefs.read_preference(prefs_to_check))
+		if(pref_to_check && !user.client?.prefs.read_preference(pref_to_check))
 			continue
 	// SKYRAT EDIT END
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
