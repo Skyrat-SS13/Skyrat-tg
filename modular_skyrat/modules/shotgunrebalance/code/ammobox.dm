@@ -16,7 +16,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/rubber
 	name = "Rubbershot ammo box"
-	desc = "A box of 15 rubbershot shells, a modest spread of weaker less-lethal projectiles."
+	desc = "A box of 15 rubbershot shells. These have a modest spread of weaker, less-lethal projectiles."
 	icon_state = "rubber"
 	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	max_ammo = 15
