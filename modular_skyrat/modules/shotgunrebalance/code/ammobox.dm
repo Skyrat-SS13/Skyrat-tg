@@ -30,7 +30,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/magnum
 	name = "Magnum blockshot ammo box"
-	desc = "A box of 15 magnum blockshot shells, larger, but less total, pellets."
+	desc = "A box of 15 magnum blockshot shells. The size of the pellet is larger in diameter than the typical shot, but there are less of them inside each shell."
 	icon_state = "magnum"
 	ammo_type = /obj/item/ammo_casing/shotgun/magnum
 	max_ammo = 15
