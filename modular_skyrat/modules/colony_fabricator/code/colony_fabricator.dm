@@ -93,7 +93,7 @@
 	give_deployable_component()
 	give_manufacturer_examine()
 
-/// Adds the deployable component, so that it can be overriden in case that's wanted
+/// Adds the deployable component, so that it can be overridden in case that's wanted
 /obj/item/flatpacked_machine/proc/give_deployable_component()
 	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)
 
