@@ -148,13 +148,14 @@
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
 		if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE))
-			hologram.audible_message(msg, deaf_message = span_emote("You see how <b>[user]</b> [msg]"), audible_message_flags = EMOTE_MESSAGE)
+			hologram.audible_message(msg, deaf_message = span_emote("You see how <b>[user]</b> [msg]"), audible_message_flags = EMOTE_MESSAGE, pref_to_check = pref_to_check) // SKYRAT EDIT CHANGE - added pref_to_check
 		else if(emote_type & EMOTE_VISIBLE)
-			hologram.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
+			hologram.visible_message(msg, visible_message_flags = EMOTE_MESSAGE, pref_to_check = pref_to_check) // SKYRAT EDIT CHANGE - added pref_to_check
 		if(emote_type & EMOTE_IMPORTANT)
 			for(var/mob/living/viewer in viewers(world.view, hologram))
 				if(viewer.is_blind() && !viewer.can_hear())
-					to_chat(viewer, msg)
+					if(pref_check_emote(viewer)) // SKYRAT EDIT ADDITION - Pref checked emotes
+						to_chat(viewer, msg)
 	// SKYRAT EDIT -- END
 
 /**
