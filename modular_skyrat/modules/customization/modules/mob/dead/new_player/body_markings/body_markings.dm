@@ -145,6 +145,12 @@
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
 
+/datum/body_marking/secondary/dorsal_frill
+	name = "Dorsal Frill"
+	icon_state = "dorsal_frill"
+	recommended_species = list(SPECIES_LIZARD)
+	affected_bodyparts = HEAD
+
 /datum/body_marking/secondary/teshari
 	name = "Teshari"
 	icon_state = "teshari"
