@@ -1,17 +1,18 @@
 // THIS IS A SKYRAT UI FILE
+import { toFixed } from 'common/math';
+import { BooleanLike } from 'common/react';
+
+import { useBackend } from '../backend';
 import {
+  AnimatedNumber,
   Box,
   Button,
   Flex,
-  Stack,
-  Section,
   ProgressBar,
-  AnimatedNumber,
+  Section,
+  Stack,
   Table,
 } from '../components';
-import { toFixed } from 'common/math';
-import { BooleanLike } from 'common/react';
-import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type GlassData = {

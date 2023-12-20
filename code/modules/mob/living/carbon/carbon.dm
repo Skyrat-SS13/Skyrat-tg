@@ -801,7 +801,6 @@
 	if(hud_used?.spacesuit)
 		hud_used.spacesuit.icon_state = "spacesuit_[cell_state]"
 
-
 /mob/living/carbon/set_health(new_value)
 	. = ..()
 	if(. > hardcrit_threshold)
@@ -972,7 +971,7 @@
 	return DEFIB_POSSIBLE
 
 /mob/living/carbon/proc/can_defib_client()
-	return (key || get_ghost(FALSE, FALSE)) && (can_defib() & DEFIB_REVIVABLE_STATES) // SKYRAT EDIT : OG : (key || get_ghost(FALSE, TRUE)) && (can_defib() & DEFIB_REVIVABLE_STATES)
+	return (client || get_ghost(FALSE, FALSE)) && (can_defib() & DEFIB_REVIVABLE_STATES) // SKYRAT EDIT - ORIGINAL: return (client || get_ghost(FALSE, TRUE)) && (can_defib() & DEFIB_REVIVABLE_STATES)
 
 /mob/living/carbon/harvest(mob/living/user)
 	if(QDELETED(src))

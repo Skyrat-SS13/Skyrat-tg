@@ -406,16 +406,16 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 
 /datum/loadout_item/toys/red_laser
 	name = "Red Laser Pointer"
-	item_path = /obj/item/laser_pointer/red
+	item_path = /obj/item/laser_pointer/limited/red
 
 /datum/loadout_item/toys/green_laser
 	name = "Green Laser Pointer"
-	item_path = /obj/item/laser_pointer/green
+	item_path = /obj/item/laser_pointer/limited/green
 
 /datum/loadout_item/toys/blue_laser
 	name = "Blue Laser Pointer"
-	item_path = /obj/item/laser_pointer/blue
+	item_path = /obj/item/laser_pointer/limited/blue
 
 /datum/loadout_item/toys/purple_laser
 	name = "Purple Laser Pointer"
-	item_path = /obj/item/laser_pointer/purple
+	item_path = /obj/item/laser_pointer/limited/purple
