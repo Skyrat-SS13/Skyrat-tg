@@ -9,7 +9,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/buckshot
 	name = "Buckshot ammo box"
-	desc = "A box of 15 buckshot shells, a modest spread of weaker projectiles."
+	desc = "A box of 15 buckshot shells. These have a modest spread of weaker projectiles."
 	icon_state = "buckshot"
 	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
 	max_ammo = 15
