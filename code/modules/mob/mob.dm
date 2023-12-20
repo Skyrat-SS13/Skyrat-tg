@@ -342,7 +342,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check =) // SKYRAT EDIT ADDITION - Better emotes, SKYRAT EDIT ADDITION - Added pref checks
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - Better emotes, pref checks
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
