@@ -1,6 +1,6 @@
 /datum/emote
-/// If we should check a preference for this emote
-var/pref_to_check
+	/// If we should check a preference for this emote
+	var/pref_to_check
 
 /datum/emote/living/lewd
 	pref_to_check = /datum/preference/toggle/erp/sounds
