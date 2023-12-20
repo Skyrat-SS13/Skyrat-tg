@@ -39,5 +39,17 @@
 
 // Basically, a private jet
 
+/datum/map_template/shuttle/personal_buyable/ferries/private_liner
+	name = "SF Khasun"
+	description = "The SolFed VIP transport standard. \
+		Room enough for one man of the hour and his two insanely bored bodyguards. \
+		Has half of the power storage capacity of other ships, but you wouldn't go exploring \
+		in a VIP transport shuttle, would you?"
+	credit_cost = CARGO_CRATE_VALUE * 12
+	suffix = "manzil"
+	width = 15
+	height = 11
+	personal_shuttle_size = PERSONAL_SHIP_MEDIUM
+
 /area/shuttle/personally_bought/private_liner
 	name = "SF Khasun"
