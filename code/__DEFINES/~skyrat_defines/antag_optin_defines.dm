@@ -27,3 +27,6 @@ GLOBAL_LIST_INIT(antag_opt_in_strings, list(
 
 /// The default opt in level for preferences and mindless mobs.
 #define OPT_IN_DEFAULT_LEVEL OPT_IN_NOT_TARGET
+
+/// If the player has any non-ghost role antags enabled, they are forced to use a minimum of this.
+#define OPT_IN_ANTAG_ENABLED_LEVEL OPT_IN_YES_TEMP

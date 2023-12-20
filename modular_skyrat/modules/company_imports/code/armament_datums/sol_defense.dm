@@ -2,6 +2,18 @@
 	category = SOL_DEFENSE_DEFENSE_NAME
 	company_bitflag = CARGO_COMPANY_SOL_DEFENSE
 
+// Beautiful SolFed clothing
+
+/datum/armament_entry/company_import/sol_defense/clothing
+	subcategory = "Surplus Clothing"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/sol_defense/clothing/peacekeeper
+	item_type = /obj/item/clothing/under/sol_peacekeeper
+
+/datum/armament_entry/company_import/sol_defense/clothing/emt
+	item_type = /obj/item/clothing/under/sol_emt
+
 // Armor vests for protecting against bullets
 
 /datum/armament_entry/company_import/sol_defense/armor
@@ -20,12 +32,11 @@
 /datum/armament_entry/company_import/sol_defense/armor/sf_soft_vest
 	item_type = /obj/item/clothing/suit/armor/sf_peacekeeper
 
-/datum/armament_entry/company_import/sol_defense/armor/normal_vest
-	name = "type I vest - normal"
-	item_type = /obj/item/clothing/suit/armor/vest/alt
+/datum/armament_entry/company_import/sol_defense/armor/flak_jacket
+	item_type = /obj/item/clothing/suit/armor/vest/det_suit/sol
 
 /datum/armament_entry/company_import/sol_defense/armor/slim_vest
-	name = "type I vest - slim"
+	name = "type I vest"
 	item_type = /obj/item/clothing/suit/armor/vest
 
 /datum/armament_entry/company_import/sol_defense/armor_hardened
@@ -34,7 +45,6 @@
 
 /datum/armament_entry/company_import/sol_defense/armor_hardened/enclosed_helmet
 	item_type = /obj/item/clothing/head/helmet/toggleable/sf_hardened
-
 
 /datum/armament_entry/company_import/sol_defense/armor_hardened/emt_enclosed_helmet
 	item_type = /obj/item/clothing/head/helmet/toggleable/sf_hardened/emt

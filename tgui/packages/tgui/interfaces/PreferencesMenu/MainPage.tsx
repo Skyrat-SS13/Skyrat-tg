@@ -1,33 +1,34 @@
+import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
+
 import { sendAct, useBackend, useLocalState } from '../../backend';
 import {
   Autofocus,
   Box,
   Button,
+  Dropdown, // SKYRAT EDIT ADDITION
   Flex,
   LabeledList,
   Popper,
   Stack,
   TrackOutsideClicks,
-  Dropdown, // SKYRAT EDIT ADDITION
 } from '../../components';
+import { CharacterPreview } from '../common/CharacterPreview';
 import {
   createSetPreference,
   PreferencesMenuData,
   RandomSetting,
   ServerData,
 } from './data';
-import { CharacterPreview } from '../common/CharacterPreview';
-import { RandomizationButton } from './RandomizationButton';
-import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { MultiNameInput, NameInput } from './names';
-import { Gender, GENDERS } from './preferences/gender';
 import features from './preferences/features';
 import {
   FeatureChoicedServerData,
   FeatureValueInput,
 } from './preferences/features/base';
-import { filterMap, sortBy } from 'common/collections';
+import { Gender, GENDERS } from './preferences/gender';
+import { RandomizationButton } from './RandomizationButton';
+import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { useRandomToggleState } from './useRandomToggleState';
 
 const CLOTHING_CELL_SIZE = 48;

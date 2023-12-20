@@ -1,24 +1,23 @@
 import { BooleanLike } from 'common/react';
 import { multiline } from 'common/string';
 import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
   Button,
   Dimmer,
   Dropdown,
+  NoticeBox,
   Section,
   Stack,
-  NoticeBox,
 } from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 import {
-  ObjectivePrintout,
   Objective,
+  ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
 
 const hivestyle = {
   fontWeight: 'bold',

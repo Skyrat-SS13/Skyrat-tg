@@ -1,10 +1,8 @@
 import { useBackend } from '../backend';
 import { Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { ObjectivePrintout, Objective } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+import { Objective, ObjectivePrintout } from './common/Objectives';
 
 type Info = {
   antag_name: string;
