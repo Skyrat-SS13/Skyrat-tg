@@ -28,6 +28,12 @@
 
 	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier(get_turf(quirk_holder))
 	var/mob/living/simple_animal/pet/pet = new pet_type(carrier)
+	var/new_name = client_source?.prefs.read_preference(/datum/preference/text/pet_name)
+	if (new_name)
+		pet.name = new_name
+	var/new_desc = client_source?.prefs.read_preference(/datum/preference/text/pet_desc)
+	if (new_desc)
+		pet.desc = new_desc
 	carrier.add_occupant(pet)
 	give_item_to_holder(
 		carrier,
@@ -92,4 +98,34 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	return "Pet Owner" in preferences.all_quirks
 
 /datum/preference/choiced/pet_owner/apply_to_human(mob/living/carbon/human/target, value)
+	return
+
+/datum/preference/text/pet_name
+	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
+	savefile_key = "pet_name"
+	savefile_identifier = PREFERENCE_CHARACTER
+	can_randomize = FALSE
+
+/datum/preference/text/pet_name/is_accessible(datum/preferences/preferences)
+	if (!..())
+		return FALSE
+
+	return "Pet Owner" in preferences.all_quirks
+
+/datum/preference/text/pet_name/apply_to_human(mob/living/carbon/human/target, value)
+	return
+
+/datum/preference/text/pet_desc
+	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
+	savefile_key = "pet_desc"
+	savefile_identifier = PREFERENCE_CHARACTER
+	can_randomize = FALSE
+
+/datum/preference/text/pet_desc/is_accessible(datum/preferences/preferences)
+	if (!..())
+		return FALSE
+
+	return "Pet Owner" in preferences.all_quirks
+
+/datum/preference/text/pet_desc/apply_to_human(mob/living/carbon/human/target, value)
 	return
