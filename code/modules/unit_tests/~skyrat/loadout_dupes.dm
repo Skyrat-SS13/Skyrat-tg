@@ -2,7 +2,7 @@
 /datum/unit_test/loadout_dupes
 
 /datum/unit_test/loadout_dupes/Run()
-	var/list/loadout_item_paths = list()
+	var/list/item_paths = list()
 	for(var/datum/loadout_item/item in subtypesof(/datum/loadout_item))
 		var/item_path = initial(item.item_path)
 		if(item_paths[item_path])
