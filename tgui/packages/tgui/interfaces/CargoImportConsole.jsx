@@ -110,10 +110,13 @@ export const CargoImportConsole = (props) => {
                             <Stack.Item>
                               <Image
                                 src={`data:image/jpeg;base64,${item.icon}`}
-                                height={'100%'} width={'100%'} style={{
+                                height={'100%'}
+                                width={'100%'}
+                                style={{
                                   'vertical-align': 'middle',
                                   'horizontal-align': 'middle',
-                                }} />
+                                }}
+                              />
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
                             {!!cant_buy_restricted && !!item.restricted && (
