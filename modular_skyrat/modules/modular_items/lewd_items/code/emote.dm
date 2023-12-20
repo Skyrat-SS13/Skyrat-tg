@@ -1,5 +1,9 @@
+/datum/emote
+/// If we should check a preference for this emote
+var/pref_to_check
+
 /datum/emote/living/lewd
-	var/pref_to_check = /datum/preference/toggle/erp/sounds
+	pref_to_check = /datum/preference/toggle/erp/sounds
 
 // Can we play this emote to viewers?
 /datum/emote/proc/pref_check_emote(mob/user)
