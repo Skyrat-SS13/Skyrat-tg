@@ -3,7 +3,9 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
 	name = "\improper Szot 'Słońce' plasma projector"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
+	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
+		Uses plasma power packs. \
+		Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "slonce"
 
@@ -49,7 +51,9 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
 	name = "\improper Szot 'Gwiazda' plasma sharpshooter"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Fires relatively accurate globs of searing plasma."
+	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
+		Uses plasma power packs. \
+		Fires relatively accurate globs of searing plasma."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "gwiazda"
 

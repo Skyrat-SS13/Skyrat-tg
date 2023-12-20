@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/miecz
 	name = "\improper Szot 'Miecz' Submachinegun"
-	desc = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber cartridges. \
+	desc = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire .27-54 pistol caliber cartridges. \
 		Due to the intended purpose of the weapon, and less than optimal ranged performance of the projectile, it has \
 		nothing more than basic glow-sights as opposed to the ranged scope Lanca users might be used to."
 

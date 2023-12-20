@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_smg
 	name = "\improper Carwo 'Sindano' Submachinegun"
-	desc = "A small submachinegun commonly seen in the hands of PMCs and other unsavory corpos. Accepts any standard Sol pistol magazine."
+	desc = "A small submachinegun firing .35 Sol. Commonly seen in the hands of PMCs and other unsavory corpos. Accepts any standard Sol pistol magazine."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns32x.dmi'
 	icon_state = "sindano"
@@ -56,7 +56,7 @@
 // Sindano (evil)
 
 /obj/item/gun/ballistic/automatic/sol_smg/evil
-	desc = "A small submachinegun, this one is painted in tacticool black. Accepts any standard Sol pistol magazine."
+	desc = "A small submachinegun firing .35 Sol. This one is painted in tacticool black. Accepts any standard Sol pistol magazine."
 
 	icon_state = "sindano_evil"
 	inhand_icon_state = "sindano_evil"

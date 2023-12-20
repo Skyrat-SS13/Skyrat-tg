@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/sol
 	name = "\improper Trappiste 'Wespe' Pistol"
-	desc = "The standard issue service pistol of SolFed's various military branches. Comes with attached light."
+	desc = "The standard issue service pistol of SolFed's various military branches. Fires .35 Sol. Comes with attached light."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "wespe"
