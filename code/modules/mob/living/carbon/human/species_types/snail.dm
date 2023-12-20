@@ -12,6 +12,7 @@
 	siemens_coeff = 2 //snails are mostly water
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
+
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
 	exotic_blood = /datum/reagent/lube
@@ -65,6 +66,7 @@
 			/obj/item/reagent_containers/blood/snail
 		)
 	return ..()
+
 /obj/item/storage/backpack/snail
 	name = "snail shell"
 	desc = "Worn by snails as armor and storage compartment."
