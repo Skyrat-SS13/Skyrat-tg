@@ -79,7 +79,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/honk
 	name = "Confetti ammo box"
-	desc = "A box of 35 confetti shells, firing a spread of harmless confetti everywhere, yippie!"
+	desc = "A box of 35 shotgun shells. These ones contain harmless confetti, yippie!"
 	icon_state = "honk"
 	ammo_type = /obj/item/ammo_casing/shotgun/honk
 	max_ammo = 35
