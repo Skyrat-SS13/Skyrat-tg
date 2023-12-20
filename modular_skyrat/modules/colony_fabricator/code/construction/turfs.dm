@@ -77,14 +77,7 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 /obj/item/stack/sheet/plastic_wall_panel/fifty
 	amount = 50
 
-// Grated floor tile, for seeing wires under
-
-/turf/open/floor/catwalk_floor/colony_fabricator
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
-	icon_state = "prefab_above"
-	catwalk_type = "prefab"
-	baseturfs = /turf/open/floor/plating
-	floor_tile = /obj/item/stack/tile/catwalk_tile/colony_lathe
+// Stacks of floor tiles
 
 /obj/item/stack/tile/catwalk_tile/colony_lathe
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
@@ -96,15 +89,6 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 
 /obj/item/stack/tile/catwalk_tile/colony_lathe/lathe_spawn
 	amount = 4
-
-// "Normal" floor tiles
-
-/turf/open/floor/iron/colony
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
-	icon_state = "colony_grey"
-	base_icon_state = "colony_grey"
-	floor_tile = /obj/item/stack/tile/iron/colony
-	tiled_dirt = FALSE
 
 /obj/item/stack/tile/iron/colony
 	name = "prefab floor tiles"
@@ -125,6 +109,24 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 
 /obj/item/stack/tile/iron/colony/lathe_spawn
 	amount = 4
+
+// Grated floor tile, for seeing wires under
+
+/turf/open/floor/catwalk_floor/colony_fabricator
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
+	icon_state = "prefab_above"
+	catwalk_type = "prefab"
+	baseturfs = /turf/open/floor/plating
+	floor_tile = /obj/item/stack/tile/catwalk_tile/colony_lathe
+
+// "Normal" floor tiles
+
+/turf/open/floor/iron/colony
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles.dmi'
+	icon_state = "colony_grey"
+	base_icon_state = "colony_grey"
+	floor_tile = /obj/item/stack/tile/iron/colony
+	tiled_dirt = FALSE
 
 /turf/open/floor/iron/colony/texture
 	icon_state = "colony_grey_texture"
