@@ -37,7 +37,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/express
 	name = "Express pelletshot ammo box"
-	desc = "A box of 15 express pelletshot shells, smaller, but more in total, pellets."
+	desc = "A box of 15 express pelletshot shells. The size of the pellet is smaller in diameter than the typical shot, but there are more of them inside each shell."
 	icon_state = "express"
 	ammo_type = /obj/item/ammo_casing/shotgun/express
 	max_ammo = 15
