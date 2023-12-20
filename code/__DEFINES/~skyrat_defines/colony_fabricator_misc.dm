@@ -17,6 +17,8 @@
 #define RND_CATEGORY_AKHTER_FOODRICATOR_BAGS "Containers"
 /// Category for snacks in the ration printer
 #define RND_CATEGORY_AKHTER_FOODRICATOR_SNACKS "Luxuries"
+/// Category for utensils and whatnot in the ration printer
+#define RND_CATEGORY_AKHTER_FOODRICATOR_UTENSILS "Utensils"
 
 /// The items the frontier clothing can hold
 GLOBAL_LIST_INIT(colonist_suit_allowed, list(
