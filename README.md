@@ -40,15 +40,13 @@ You are responsible for the testing of your content and providing proof of such 
 
 [Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
-## :exclamation: How to compile :exclamation:
-
-On **2021-01-04** we have changed the way to compile the codebase.
+## Compilation
 
 Find `BUILD.bat` here in the root folder of tgstation, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile.
 
 **The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/guides/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
 
-**Building tgstation in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
+**Building tgstation in DreamMaker directly is deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 

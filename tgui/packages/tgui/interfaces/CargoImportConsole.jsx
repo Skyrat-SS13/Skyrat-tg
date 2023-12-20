@@ -1,11 +1,13 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Divider, Image, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const CargoImportConsole = (props) => {
-  const [category, setCategory] = useLocalState('category', '');
-  const [weapon, setArmament] = useLocalState('weapon');
+  const [category, setCategory] = useState('');
+  const [weapon, setArmament] = useState('weapon');
   const { act, data } = useBackend();
   const {
     armaments_list = [],
@@ -104,21 +106,17 @@ export const CargoImportConsole = (props) => {
                     subcat.items.map(
                       (item) =>
                         item.ref === weapon && (
-                          <Stack vertical>
+                          <Stack vertical key={item.ref}>
                             <Stack.Item>
-                              <Box key={item.ref}>
-                                <img
-                                  height="100%"
-                                  width="100%"
-                                  src={`data:image/jpeg;base64,${item.icon}`}
-                                  style={{
-                                    'vertical-align': 'middle',
-                                    'horizontal-align': 'middle',
-                                    '-ms-interpolation-mode':
-                                      'nearest-neighbor',
-                                  }}
-                                />
-                              </Box>
+                              <Image>
+                                src=
+                                {`data:image/jpeg;base64,${item.icon}`}
+                                height={'100%'} width={'100%'} style=
+                                {{
+                                  'vertical-align': 'middle',
+                                  'horizontal-align': 'middle',
+                                }}
+                              </Image>
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
                             {!!cant_buy_restricted && !!item.restricted && (

@@ -494,10 +494,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	ears = /obj/item/radio/headset/headset_sec/alt
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
-	r_hand = /obj/item/gun/ballistic/automatic/m16
+	r_hand = /obj/item/gun/ballistic/automatic/sol_rifle
 	backpack_contents = list(/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/ammo_box/magazine/m16 = 4
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 4
 	)
 
 	id_trim = /datum/id_trim/solfed

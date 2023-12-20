@@ -1,21 +1,23 @@
-import { BooleanLike } from 'common/react';
+import { filter, sortBy } from 'common/collections';
+import { flow } from 'common/fp';
 import { scale, toFixed } from 'common/math';
-import { useBackend, useLocalState } from '../backend';
+import { BooleanLike } from 'common/react';
 import { createSearch } from 'common/string';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
-  Stack,
   Icon,
   Input,
   LabeledList,
   NoticeBox,
   ProgressBar,
   Section,
+  Stack,
   Tabs,
 } from '../components';
-import { flow } from 'common/fp';
-import { filter, sortBy } from 'common/collections';
 import { NtosWindow } from '../layouts';
 
 type Data = {
@@ -62,11 +64,8 @@ export const NtosNetDownloader = (props) => {
   const downloadpercentage = toFixed(
     scale(downloadcompletion, 0, downloadsize) * 100,
   );
-  const [selectedCategory, setSelectedCategory] = useLocalState(
-    'category',
-    categories[0],
-  );
-  const [searchItem, setSearchItem] = useLocalState('searchItem', '');
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [searchItem, setSearchItem] = useState('');
   const search = createSearch<ProgramData>(
     searchItem,
     (program) => program.filedesc,
@@ -88,6 +87,7 @@ export const NtosNetDownloader = (props) => {
   const disk_free_space = downloading
     ? disk_size - Number(toFixed(disk_used + downloadcompletion))
     : disk_size - disk_used;
+
   return (
     <NtosWindow width={600} height={600}>
       <NtosWindow.Content scrollable>
@@ -143,7 +143,7 @@ export const NtosNetDownloader = (props) => {
             placeholder="Search program name..."
             fluid
             value={searchItem}
-            onInput={(e, value) => {
+            onChange={(e, value) => {
               setSearchItem(value);
             }}
           />
