@@ -179,10 +179,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/cargo/tech
 	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_CUSTOMS_AGENT)
 
-/datum/loadout_item/under/jumpsuit/cargo/shorts
-	name = "Cargo Technician's Shorts"
-	item_path = /obj/item/clothing/under/rank/cargo/tech/alt
-
 /datum/loadout_item/under/jumpsuit/cargo/skirt
 	name = "Cargo Technician's Skirt"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skirt
@@ -746,10 +742,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/navy_suit
 	name = "Navy Suit"
 	item_path = /obj/item/clothing/under/suit/navy
-
-/datum/loadout_item/under/formal/maid_outfit
-	name = "Maid Outfit"
-	item_path = /obj/item/clothing/under/costume/maid
 
 /datum/loadout_item/under/formal/maid_uniform
 	name = "Maid Uniform"
