@@ -58,7 +58,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/beehive
 	name = "Hornet's nest ammo box"
-	desc = "A box of 15 hornet's nest shells, less-lethal shells that will bounce off walls and direct themselves toward nearby targets."
+	desc = "A box of 15 hornet's nest shells. These are less-lethal shells that will bounce off walls and direct themselves toward nearby targets."
 	icon_state = "beehive"
 	ammo_type = /obj/item/ammo_casing/shotgun/beehive
 	max_ammo = 15
