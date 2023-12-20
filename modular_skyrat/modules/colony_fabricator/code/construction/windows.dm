@@ -1,5 +1,5 @@
 /obj/structure/window/reinforced/colony_fabricator
-	name = "prefrabricated window"
+	name = "prefabricated window"
 	desc = "A conservatively built metal frame with a thick sheet of space-grade glass slotted into it."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/prefab_window.dmi'
 	icon_state = "prefab-0"
