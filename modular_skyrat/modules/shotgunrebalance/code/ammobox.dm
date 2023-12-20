@@ -44,7 +44,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/hunter
 	name = "Hunter slug ammo box"
-	desc = "A box of 15 hunter slug shells, shotgun slugs that excell at damaging the local fauna."
+	desc = "A box of 15 hunter slug shells. These shotgun slugs excel at damaging the local fauna."
 	icon_state = "hunter"
 	ammo_type = /obj/item/ammo_casing/shotgun/hunter
 	max_ammo = 15
