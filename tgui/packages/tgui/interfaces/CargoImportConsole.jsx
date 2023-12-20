@@ -81,7 +81,7 @@ export const CargoImportConsole = (props) => {
                                 key={item.ref}
                                 onClick={() => setArmament(item.ref)}
                               >
-                                <img
+                                <Image
                                   src={`data:image/jpeg;base64,${item.icon}`}
                                   style={{
                                     'vertical-align': 'middle',
@@ -108,15 +108,15 @@ export const CargoImportConsole = (props) => {
                         item.ref === weapon && (
                           <Stack vertical key={item.ref}>
                             <Stack.Item>
-                              <Image>
-                                src=
-                                {`data:image/jpeg;base64,${item.icon}`}
-                                height={'100%'} width={'100%'} style=
-                                {{
+                              <Image
+                                src={`data:image/jpeg;base64,${item.icon}`}
+                                height={'100%'}
+                                width={'100%'}
+                                style={{
                                   'vertical-align': 'middle',
                                   'horizontal-align': 'middle',
                                 }}
-                              </Image>
+                              />
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
                             {!!cant_buy_restricted && !!item.restricted && (
