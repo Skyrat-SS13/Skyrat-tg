@@ -12,11 +12,6 @@ var/pref_to_check
 	if(!user.client?.prefs.read_preference(pref_to_check))
 		return FALSE
 
-/datum/emote/living/lewd/pref_check_emote(mob/user)
-	. = ..()
-	if(!user.client?.prefs.read_preference(/datum/preference/toggle/erp))
-		return FALSE
-
 /datum/emote/living/lewd/can_run_emote(mob/living/carbon/user, status_check = TRUE, intentional)
 	return ..() && user.client?.prefs?.read_preference(pref_to_check)
 
