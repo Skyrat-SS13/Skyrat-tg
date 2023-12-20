@@ -309,7 +309,7 @@
 
 
 /obj/item/organ/external/genital/vagina
-	name = "vagina"
+	name = "vulva"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
 	icon_state = "vagina"
 	mutantpart_key = ORGAN_SLOT_VAGINA
