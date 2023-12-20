@@ -135,8 +135,7 @@
 				if(pref_check_emote(ghost)) // SKYRAT EDIT ADDITION - Pref checked emotes
 					ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>") // SKYRAT EDIT CHANGE - Indented
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
-		if(pref_check_emote(user)) // SKYRAT EDIT ADDITION - Pref checked emotes
-			user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b>[space][msg]</span>", audible_message_flags = EMOTE_MESSAGE, separation = space) // SKYRAT EDIT - Better emotes - ORIGINAL: user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
+		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b>[space][msg]</span>", audible_message_flags = EMOTE_MESSAGE, separation = space, pref_to_check = pref_to_check) // SKYRAT EDIT - Better emotes - ORIGINAL: user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
 		if(pref_check_emote(user)) // SKYRAT EDIT ADDITION - Pref checked emotes
 			user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE, separation = space) // SKYRAT EDIT - Better emotes - ORIGINAL: user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
