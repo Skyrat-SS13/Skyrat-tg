@@ -3,22 +3,18 @@
 	id = SPECIES_SNAIL
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
-		// TRAIT_NO_UNDERWEAR, //SKYRAT EDIT - Roundstart Snails - Snails deserve to wear underwear
+		// TRAIT_NO_UNDERWEAR, //SKYRAT EDIT REMOVAL - Roundstart Snails - Snails deserve to wear underwear
 		TRAIT_NO_SLIP_ALL,
-		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails - Sea snails exist, and land snails can weather being underwater for almost a day.
+		TRAIT_WATER_BREATHING, //SKYRAT EDIT ADDITION - Roundstart Snails - Sea snails exist, and land snails can weather being underwater for almost a day.
 	)
 
 	coldmod = 0.5 //snails only come out when its cold and wet
 	siemens_coeff = 2 //snails are mostly water
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
-
-	eyes_icon = 'modular_skyrat/modules/organs/icons/snail_eyes.dmi' // SKYRAT EDIT - Roundstart Snails - This is to consolidate our icons and prevent future calamity.
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
-	mutantliver = /obj/item/organ/internal/liver/snail //SKYRAT EDIT - Roundstart Snails - This is just a better liver to deal with toxins, it's a thematic thing.
-	mutantheart = /obj/item/organ/internal/heart/snail //SKYRAT EDIT - Roundstart Snails - This gives them the shell buff where they take less damage from behind, and their heart's more durable.
-	// exotic_blood = /datum/reagent/lube // SKYRAT EDIT REMOVAL: Roundstart Snails - They'll have regular blood, not literal cherry-flavored lubricant.
+	exotic_blood = /datum/reagent/lube
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
@@ -51,10 +47,8 @@
 		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
-	new_snailperson.update_icons() //SKYRAT EDIT ADDITION: Roundstart Snails - This is to help with shell reskins.
-	/* SKYRAT EDIT REMOVAL START - Roundstart Snails - They don't need special mail goodies because of the below edit, no exotic blood.
 	if(ishuman(new_snailperson))
-		update_mail_goodies(new_snailperson) */ //SKYRAT EDIT END
+		update_mail_goodies(new_snailperson)
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -65,14 +59,12 @@
 		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
 
-/* SKYRAT EDIT REMOVAL START - Roundstart Snails - They don't have exotic blood here!
 /datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
 	if(istype(quirk, /datum/quirk/blooddeficiency))
 		mail_goodies += list(
 			/obj/item/reagent_containers/blood/snail
 		)
-	return ..()*/ //SKYRAT EDIT END
-
+	return ..()
 /obj/item/storage/backpack/snail
 	name = "snail shell"
 	desc = "Worn by snails as armor and storage compartment."
@@ -83,78 +75,6 @@
 	armor_type = /datum/armor/backpack_snail
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	obj_flags = IMMUTABLE_SLOW //As above, this should hopefully solve other issues.
-	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Conical Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "coneshell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "coneshell"
-		),
-		"Round Shell" = list(
-			RESKIN_ICON = 'icons/obj/storage/backpack.dmi',
-			RESKIN_ICON_STATE = "snailshell",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back/backpack.dmi',
-			RESKIN_WORN_ICON_STATE = "snailshell"
-		),
-		"Cinnamon Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "cinnamonshell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "cinnamonshell"
-		),
-		"Caramel Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "caramelshell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "caramelshell"
-		),
-		"Metal Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "mechashell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "mechashell"
-		),
-		"Pyramid Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "pyramidshell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "pyramidshell"
-		),
-		"Ivory Pyramid Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "pyramidshellwhite",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "pyramidshellwhite"
-		),
-		"Spiral Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "spiralshell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "spiralshell"
-		),
-		"Ivory Spiral Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "spiralshellwhite",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "spiralshellwhite"
-		),
-		"Rocky Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "rockshell",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "rockshell"
-		),
-		"Ivory Rocky Shell" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
-			RESKIN_ICON_STATE = "rockshellwhite",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "rockshellwhite"
-		),
-	)
-	//SKYRAT EDIT END - Roundstart Snails
 
 /datum/armor/backpack_snail //SKYRAT COMMENT CLARIFICATION - Roundstart Snails - These armor values don't actually do any protection of the wearer, this is for checking direct damage to the backpack. Damage resistance stuff is in their heart file.
 	melee = 40
