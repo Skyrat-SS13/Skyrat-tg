@@ -128,7 +128,7 @@
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
 
 /datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT CHANGE - ORIGINAL: return GLOB.tails_list_monkey
+	return GLOB.tails_list_monkey
 
 /obj/item/organ/external/tail/lizard
 	name = "lizard tail"

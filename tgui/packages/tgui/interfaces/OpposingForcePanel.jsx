@@ -1,18 +1,35 @@
+// THIS IS A SKYRAT UI FILE
 import { round } from 'common/math';
-import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box, Collapsible, NumberInput } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Input,
+  LabeledList,
+  NoticeBox,
+  NumberInput,
+  Section,
+  Slider,
+  Stack,
+  Tabs,
+  TextArea,
+} from '../components';
 import { Window } from '../layouts';
 
-export const OpposingForcePanel = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
-  const { act, data } = useBackend(context);
+export const OpposingForcePanel = (props) => {
+  const [tab, setTab] = useState(1);
+  const { act, data } = useBackend();
   const { admin_mode, creator_ckey, owner_antag } = data;
   return (
     <Window
       title={'Opposing Force: ' + creator_ckey}
       width={585}
       height={840}
-      theme={owner_antag ? 'syndicate' : 'admin'}>
+      theme={owner_antag ? 'syndicate' : 'admin'}
+    >
       <Window.Content scrollable>
         <Stack vertical grow mb={1}>
           <Stack.Item>
@@ -22,13 +39,15 @@ export const OpposingForcePanel = (props, context) => {
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 1}
-                    onClick={() => setTab(1)}>
+                    onClick={() => setTab(1)}
+                  >
                     Admin Control
                   </Tabs.Tab>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 2}
-                    onClick={() => setTab(2)}>
+                    onClick={() => setTab(2)}
+                  >
                     Admin Chat
                   </Tabs.Tab>
                 </>
@@ -37,19 +56,22 @@ export const OpposingForcePanel = (props, context) => {
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 1}
-                    onClick={() => setTab(1)}>
+                    onClick={() => setTab(1)}
+                  >
                     Summary
                   </Tabs.Tab>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 2}
-                    onClick={() => setTab(2)}>
+                    onClick={() => setTab(2)}
+                  >
                     Equipment
                   </Tabs.Tab>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 3}
-                    onClick={() => setTab(3)}>
+                    onClick={() => setTab(3)}
+                  >
                     Admin Chat
                   </Tabs.Tab>
                 </>
@@ -74,8 +96,8 @@ export const OpposingForcePanel = (props, context) => {
   );
 };
 
-export const OpposingForceTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OpposingForceTab = (props) => {
+  const { act, data } = useBackend();
   const {
     creator_ckey,
     objectives = [],
@@ -98,7 +120,8 @@ export const OpposingForceTab = (props, context) => {
             handling_admin
               ? 'Control - Handling Admin: ' + handling_admin
               : 'Control'
-          }>
+          }
+        >
           <Stack>
             <Stack.Item>
               <Button
@@ -171,7 +194,8 @@ export const OpposingForceTab = (props, context) => {
           </Stack>
           <NoticeBox
             color={approved ? 'good' : denied ? 'bad' : 'orange'}
-            mt={2}>
+            mt={2}
+          >
             {status}
           </NoticeBox>
         </Section>
@@ -200,7 +224,8 @@ export const OpposingForceTab = (props, context) => {
               content="Add Objective"
               onClick={() => act('add_objective')}
             />
-          }>
+          }
+        >
           {!!objectives.length && <OpposingForceObjectives />}
         </Section>
       </Stack.Item>
@@ -208,14 +233,12 @@ export const OpposingForceTab = (props, context) => {
   );
 };
 
-export const OpposingForceObjectives = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OpposingForceObjectives = (props) => {
+  const { act, data } = useBackend();
   const { objectives = [], can_edit } = data;
 
-  const [selectedObjectiveID, setSelectedObjective] = useLocalState(
-    context,
-    'objectives',
-    objectives[0]?.id
+  const [selectedObjectiveID, setSelectedObjective] = useState(
+    objectives[0]?.id,
   );
 
   const selectedObjective = objectives.find((objective) => {
@@ -246,7 +269,8 @@ export const OpposingForceObjectives = (props, context) => {
                 width="25%"
                 key={objective.id}
                 selected={objective.id === selectedObjectiveID}
-                onClick={() => setSelectedObjective(objective.id)}>
+                onClick={() => setSelectedObjective(objective.id)}
+              >
                 <Stack align="center">
                   <Stack.Item width="80%">
                     {objective.title ? objective.title : 'Blank Objective'}
@@ -444,7 +468,7 @@ export const OpposingForceObjectives = (props, context) => {
                       ? 'Objective Approved'
                       : selectedObjective.denied_text
                         ? 'Objective Denied - Reason: ' +
-                        selectedObjective.denied_text
+                          selectedObjective.denied_text
                         : 'Objective Denied'}
                 </NoticeBox>
               </Stack.Item>
@@ -458,8 +482,8 @@ export const OpposingForceObjectives = (props, context) => {
   );
 };
 
-export const EquipmentTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const EquipmentTab = (props) => {
+  const { act, data } = useBackend();
   const { equipment_list = [], selected_equipment = [], can_edit } = data;
   return (
     <Stack vertical grow>
@@ -503,8 +527,8 @@ export const EquipmentTab = (props, context) => {
                   <LabeledList.Item label="Status">
                     {equipment.denied_reason
                       ? equipment.status +
-                      ' - Reason: ' +
-                      equipment.denied_reason
+                        ' - Reason: ' +
+                        equipment.denied_reason
                       : equipment.status}
                   </LabeledList.Item>
                 </LabeledList>
@@ -532,7 +556,8 @@ export const EquipmentTab = (props, context) => {
               <Stack.Item key={equipment_category.category}>
                 <Collapsible
                   title={equipment_category.category}
-                  key={equipment_category.category}>
+                  key={equipment_category.category}
+                >
                   <Section>
                     {equipment_category.items.map((item) => (
                       <Section
@@ -550,7 +575,8 @@ export const EquipmentTab = (props, context) => {
                               })
                             }
                           />
-                        }>
+                        }
+                      >
                         <LabeledList>
                           <LabeledList.Item label="Description">
                             {item.description}
@@ -569,8 +595,8 @@ export const EquipmentTab = (props, context) => {
   );
 };
 
-export const AdminChatTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const AdminChatTab = (props) => {
+  const { act, data } = useBackend();
   const { messages = [] } = data;
   return (
     <Stack vertical fill>
@@ -599,8 +625,8 @@ export const AdminChatTab = (props, context) => {
   );
 };
 
-export const AdminTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const AdminTab = (props) => {
+  const { act, data } = useBackend();
   const {
     request_updates_muted,
     approved,
@@ -775,7 +801,8 @@ export const AdminTab = (props, context) => {
                       }
                     />
                   </>
-                }>
+                }
+              >
                 <LabeledList key={objective.id}>
                   <LabeledList.Item label="Description">
                     {objective.description}
@@ -796,7 +823,7 @@ export const AdminTab = (props, context) => {
                         ? 'Objective Approved'
                         : objective.denied_text
                           ? 'Objective Denied - Reason: ' +
-                          objective.denied_text
+                            objective.denied_text
                           : 'Objective Denied'}
                   </LabeledList.Item>
                 </LabeledList>
@@ -845,7 +872,8 @@ export const AdminTab = (props, context) => {
                       }
                     />
                   </>
-                }>
+                }
+              >
                 <LabeledList key={equipment.ref}>
                   <LabeledList.Item label="Description">
                     {equipment.description}
@@ -856,8 +884,8 @@ export const AdminTab = (props, context) => {
                   <LabeledList.Item label="Status">
                     {equipment.denied_reason
                       ? equipment.status +
-                      ' - Reason: ' +
-                      equipment.denied_reason
+                        ' - Reason: ' +
+                        equipment.denied_reason
                       : equipment.status}
                   </LabeledList.Item>
                   <LabeledList.Item label="Amount">

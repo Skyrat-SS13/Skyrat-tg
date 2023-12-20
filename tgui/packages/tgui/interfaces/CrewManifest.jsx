@@ -1,4 +1,5 @@
 import { classes } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Icon, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
@@ -15,10 +16,10 @@ const commandJobs = [
 
 // SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
 // Any instance of crewMember.trim was originally crewMember.rank
-export const CrewManifest = (props, context) => {
+export const CrewManifest = (props) => {
   const {
     data: { manifest, positions },
-  } = useBackend(context);
+  } = useBackend();
 
   return (
     <Window title="Crew Manifest" width={350} height={500}>
@@ -32,7 +33,8 @@ export const CrewManifest = (props, context) => {
               (dept !== 'Misc'
                 ? ` (${positions[dept].open} positions open)`
                 : '')
-            }>
+            }
+          >
             <Table>
               {Object.entries(crew).map(([crewIndex, crewMember]) => (
                 <Table.Row key={crewIndex}>
@@ -40,7 +42,8 @@ export const CrewManifest = (props, context) => {
                     className={'CrewManifest__Cell'}
                     maxWidth="135px"
                     overflow="hidden"
-                    width="50%">
+                    width="50%"
+                  >
                     {crewMember.name}
                   </Table.Cell>
                   <Table.Cell
@@ -50,7 +53,8 @@ export const CrewManifest = (props, context) => {
                     ])}
                     collapsing
                     minWidth="40px"
-                    width="40px">
+                    width="40px"
+                  >
                     {positions[dept].exceptions.includes(crewMember.rank) && (
                       <Tooltip content="No position limit" position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
@@ -88,7 +92,8 @@ export const CrewManifest = (props, context) => {
                     collapsing
                     maxWidth="135px"
                     overflow="hidden"
-                    width="50%">
+                    width="50%"
+                  >
                     {crewMember.rank}
                   </Table.Cell>
                 </Table.Row>

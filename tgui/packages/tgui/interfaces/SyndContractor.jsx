@@ -1,6 +1,20 @@
-import { Component, Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Grid, Icon, LabeledList, Modal, NoticeBox, Section, Table, Tabs } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Icon,
+  LabeledList,
+  Modal,
+  NoticeBox,
+  Section,
+  Table,
+  Tabs,
+} from '../components';
+import { FakeTerminal } from '../components/FakeTerminal';
 import { NtosWindow } from '../layouts';
 
 const CONTRACT_STATUS_INACTIVE = 1;
@@ -10,56 +24,7 @@ const CONTRACT_STATUS_EXTRACTING = 4;
 const CONTRACT_STATUS_COMPLETE = 5;
 const CONTRACT_STATUS_ABORTED = 6;
 
-export class FakeTerminal extends Component {
-  constructor(props) {
-    super(props);
-    this.timer = null;
-    this.state = {
-      currentIndex: 0,
-      currentDisplay: [],
-    };
-  }
-
-  tick() {
-    const { props, state } = this;
-    if (state.currentIndex <= props.allMessages.length) {
-      this.setState((prevState) => {
-        return {
-          currentIndex: prevState.currentIndex + 1,
-        };
-      });
-      const { currentDisplay } = state;
-      currentDisplay.push(props.allMessages[state.currentIndex]);
-    } else {
-      clearTimeout(this.timer);
-      setTimeout(props.onFinished, props.finishedTimeout);
-    }
-  }
-
-  componentDidMount() {
-    const { linesPerSecond = 2.5 } = this.props;
-    this.timer = setInterval(() => this.tick(), 1000 / linesPerSecond);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
-
-  render() {
-    return (
-      <Box m={1}>
-        {this.state.currentDisplay.map((value) => (
-          <Fragment key={value}>
-            {value}
-            <br />
-          </Fragment>
-        ))}
-      </Box>
-    );
-  }
-}
-
-export const SyndContractor = (props, context) => {
+export const SyndContractor = (props) => {
   return (
     <NtosWindow width={500} height={600} theme="syndicate">
       <NtosWindow.Content scrollable>
@@ -69,8 +34,8 @@ export const SyndContractor = (props, context) => {
   );
 };
 
-export const SyndContractorContent = (props, context) => {
-  const { data, act } = useBackend(context);
+export const SyndContractorContent = (props) => {
+  const { data, act } = useBackend();
 
   const terminalMessages = [
     'Recording biometric data...',
@@ -109,7 +74,7 @@ export const SyndContractorContent = (props, context) => {
     'a specialised extraction unit to put the body into.',
     '',
     'We want targets alive - but we will sometimes pay slight',
-    "amounts if they're not, you just won't recieve the shown",
+    "amounts if they're not, you just won't receive the shown",
     'bonus. You can redeem your payment through this uplink in',
     'the form of raw telecrystals, which can be put into your',
     'regular Syndicate uplink to purchase whatever you may need.',
@@ -193,8 +158,8 @@ export const SyndContractorContent = (props, context) => {
   );
 };
 
-export const StatusPane = (props, context) => {
-  const { act, data } = useBackend(context);
+export const StatusPane = (props) => {
+  const { act, data } = useBackend();
 
   return (
     <Section
@@ -214,7 +179,8 @@ export const StatusPane = (props, context) => {
         <Box bold mr={1}>
           {data.contract_rep} Rep
         </Box>
-      }>
+      }
+    >
       <Grid>
         <Grid.Column size={0.85}>
           <LabeledList>
@@ -226,18 +192,19 @@ export const StatusPane = (props, context) => {
                   disabled={data.redeemable_tc <= 0}
                   onClick={() => act('PRG_redeem_TC')}
                 />
-              }>
-              {data.redeemable_tc}
+              }
+            >
+              {String(data.redeemable_tc)}
             </LabeledList.Item>
             <LabeledList.Item label="TC Earned">
-              {data.earned_tc}
+              {String(data.earned_tc)}
             </LabeledList.Item>
           </LabeledList>
         </Grid.Column>
         <Grid.Column>
           <LabeledList>
             <LabeledList.Item label="Contracts Completed">
-              {data.contracts_completed}
+              {String(data.contracts_completed)}
             </LabeledList.Item>
             <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>
@@ -247,8 +214,8 @@ export const StatusPane = (props, context) => {
   );
 };
 
-export const SyndPane = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
+export const SyndPane = (props) => {
+  const [tab, setTab] = useState(1);
   return (
     <>
       <StatusPane state={props.state} />
@@ -266,8 +233,8 @@ export const SyndPane = (props, context) => {
   );
 };
 
-const ContractsTab = (props, context) => {
-  const { act, data } = useBackend(context);
+const ContractsTab = (props) => {
+  const { act, data } = useBackend();
   const contracts = data.contracts || [];
   return (
     <>
@@ -279,7 +246,8 @@ const ContractsTab = (props, context) => {
             disabled={!data.ongoing_contract || data.extraction_enroute}
             onClick={() => act('PRG_call_extraction')}
           />
-        }>
+        }
+      >
         {contracts.map((contract) => {
           if (
             data.ongoing_contract &&
@@ -303,7 +271,7 @@ const ContractsTab = (props, context) => {
               buttons={
                 <>
                   <Box inline bold mr={1}>
-                    {contract.payout} (+{contract.payout_bonus}) TC
+                    {`${contract.payout} (+${contract.payout_bonus}) TC`}
                   </Box>
                   <Button
                     content={active ? 'Abort' : 'Accept'}
@@ -316,7 +284,8 @@ const ContractsTab = (props, context) => {
                     }
                   />
                 </>
-              }>
+              }
+            >
               <Grid>
                 <Grid.Column>{contract.message}</Grid.Column>
                 <Grid.Column size={0.5}>
@@ -333,15 +302,16 @@ const ContractsTab = (props, context) => {
       <Section
         title="Dropoff Locator"
         textAlign="center"
-        opacity={data.ongoing_contract ? 100 : 0}>
+        opacity={data.ongoing_contract ? 100 : 0}
+      >
         <Box bold>{data.dropoff_direction}</Box>
       </Section>
     </>
   );
 };
 
-const HubTab = (props, context) => {
-  const { act, data } = useBackend(context);
+const HubTab = (props) => {
+  const { act, data } = useBackend();
   const contractor_hub_items = data.contractor_hub_items || [];
   return (
     <Section>
@@ -374,7 +344,8 @@ const HubTab = (props, context) => {
                   }
                 />
               </>
-            }>
+            }
+          >
             <Table>
               <Table.Row>
                 <Table.Cell>

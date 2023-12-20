@@ -8372,7 +8372,6 @@
 /area/station/medical/surgery)
 "cAR" = (
 /obj/item/mod/module/plasma_stabilizer,
-/obj/item/mod/module/thermal_regulator,
 /obj/structure/table,
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/machinery/door/window/right/directional/west{
@@ -8390,6 +8389,8 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/mid_joiner{
 	dir = 1
 	},
+/obj/item/mod/module/signlang_radio,
+/obj/item/mod/module/thermal_regulator,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/storage)
 "cBb" = (
@@ -11758,7 +11759,7 @@
 /area/station/ai_monitored/turret_protected/ai_upload)
 "dzp" = (
 /obj/structure/window/spawner/directional/south,
-/mob/living/simple_animal/pet/cat/cak,
+/mob/living/basic/pet/cat/cak,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/greater)
 "dzq" = (
@@ -12452,7 +12453,7 @@
 	anchored = 1;
 	name = "Jerry's bed"
 	},
-/mob/living/simple_animal/pet/cat/jerry,
+/mob/living/basic/pet/cat/jerry,
 /turf/open/floor/wood,
 /area/station/security/prison/garden)
 "dIf" = (
@@ -15711,6 +15712,7 @@
 /obj/item/restraints/handcuffs,
 /obj/effect/turf_decal/tile/dark_red/diagonal_centre,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/item/paper/fluff/genpop_instructions,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/execution/transfer)
 "eBa" = (
@@ -16409,7 +16411,7 @@
 "eJc" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
-/mob/living/simple_animal/bot/medbot,
+/mob/living/basic/bot/medbot,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -39511,7 +39513,8 @@
 /area/station/maintenance/department/medical/central)
 "lgZ" = (
 /obj/machinery/door/airlock/security{
-	name = "Isolation Cell"
+	name = "Isolation Cell";
+	id_tag = "IsolationCell"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -46614,7 +46617,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "nfC" = (
-/mob/living/simple_animal/bot/cleanbot,
+/mob/living/basic/bot/cleanbot,
 /obj/structure/railing,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -51429,7 +51432,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/security/checkpoint/supply)
 "ovo" = (
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station,
+/obj/structure/closet/secure_closet/nanotrasen_consultant,
 /obj/item/clothing/accessory/medal/gold/ordom,
 /obj/item/storage/briefcase/secure/white,
 /obj/item/clothing/gloves/combat/naval,
@@ -58469,7 +58472,7 @@
 /area/station/ai_monitored/turret_protected/ai)
 "qmI" = (
 /obj/machinery/flasher/directional/south{
-	id = "Cell 6"
+	id = "IsolationCell"
 	},
 /obj/machinery/light/small/broken/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -64965,7 +64968,7 @@
 /area/station/service/library)
 "sgk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/structure/crate_empty,
+/obj/effect/spawner/random/structure/closet_empty/crate,
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
@@ -68536,9 +68539,9 @@
 "tbw" = (
 /obj/structure/table,
 /obj/effect/turf_decal/bot,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/flashlight,
-/obj/item/clothing/glasses/meson/engine,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/signlang_radio,
+/obj/item/mod/module/thermal_regulator,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/main)
 "tbD" = (
@@ -70851,6 +70854,15 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/research)
+"tFq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/status_display/door_timer{
+	id = "IsolationCell";
+	name = "Isolation Cell";
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/security/execution/transfer)
 "tFt" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/department/engine/atmos)
@@ -71263,7 +71275,7 @@
 /area/station/engineering/atmos)
 "tLD" = (
 /obj/structure/bed/dogbed/runtime,
-/mob/living/simple_animal/pet/cat/runtime{
+/mob/living/basic/pet/cat/runtime{
 	icon_dead = "original_dead";
 	icon_living = "original";
 	icon_state = "original"
@@ -73569,7 +73581,7 @@
 /area/station/commons/fitness/recreation/entertainment)
 "utq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/structure/crate_empty,
+/obj/effect/spawner/random/structure/closet_empty/crate,
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
@@ -86226,6 +86238,9 @@
 	pixel_y = 16
 	},
 /obj/item/inspector,
+/obj/item/mod/module/signlang_radio{
+	pixel_y = 12
+	},
 /obj/item/mod/module/thermal_regulator{
 	pixel_y = 16
 	},
@@ -131324,7 +131339,7 @@ pbe
 okn
 okn
 cDj
-lFM
+tFq
 rPq
 gPQ
 bsr

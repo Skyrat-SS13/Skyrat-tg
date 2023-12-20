@@ -738,7 +738,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/white/warning,
-/mob/living/simple_animal/bot/medbot/autopatrol{
+/mob/living/basic/bot/medbot/autopatrol{
 	desc = "A Trauma Response Activation Medibot. It seems overwhelmed.";
 	name = "T.R.A.M Unit"
 	},
@@ -3813,13 +3813,6 @@
 /obj/effect/turf_decal/trimline/neutral/warning,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
-"axG" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate_empty,
-/obj/effect/spawner/random/maintenance/three,
-/obj/effect/spawner/random/engineering/flashlight,
-/turf/open/floor/iron,
-/area/station/cargo/storage)
 "axH" = (
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron,
@@ -3849,13 +3842,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
-"ayd" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate_empty,
-/obj/effect/spawner/random/maintenance/three,
-/turf/open/floor/iron,
-/area/station/cargo/warehouse)
 "aye" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -15564,7 +15550,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/mob/living/simple_animal/bot/cleanbot,
+/mob/living/basic/bot/cleanbot,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "esA" = (
@@ -23563,6 +23549,16 @@
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
+"hsU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/structure/closet_empty/crate,
+/obj/effect/spawner/random/maintenance/five,
+/turf/open/floor/iron,
+/area/station/cargo/warehouse)
 "htb" = (
 /obj/structure/closet/secure_closet/courtroom,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -30351,6 +30347,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/science/lab)
+"jRK" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/structure/closet_empty/crate,
+/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/engineering/flashlight,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
 "jRS" = (
 /obj/structure/closet/secure_closet/chemical,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
@@ -32242,7 +32245,7 @@
 	desc = "A comfy-looking cat bed. You can even strap your pet in, in case the gravity turns off.";
 	name = "cat bed"
 	},
-/mob/living/simple_animal/pet/cat/jerry,
+/mob/living/basic/pet/cat/jerry,
 /turf/open/floor/iron,
 /area/station/maintenance/tram/mid)
 "kxF" = (
@@ -48961,6 +48964,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+"qva" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/structure/closet_empty/crate,
+/obj/effect/spawner/random/maintenance/two,
+/obj/item/stock_parts/cell/high/empty,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
 "qvc" = (
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -51713,7 +51723,7 @@
 /obj/structure/bed/dogbed/runtime,
 /obj/structure/sign/clock/directional/north,
 /obj/machinery/light/cold/directional/north,
-/mob/living/simple_animal/pet/cat/runtime,
+/mob/living/basic/pet/cat/runtime,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "rsz" = (
@@ -60437,16 +60447,6 @@
 /obj/structure/cable,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/tcommsat/server)
-"utY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate_empty,
-/obj/effect/spawner/random/maintenance/five,
-/turf/open/floor/iron,
-/area/station/cargo/warehouse)
 "uue" = (
 /obj/machinery/power/turbine/turbine_outlet{
 	dir = 4
@@ -65925,6 +65925,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
+"wmc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/structure/closet_empty/crate,
+/obj/effect/spawner/random/maintenance/three,
+/turf/open/floor/iron,
+/area/station/cargo/warehouse)
 "wml" = (
 /obj/structure/chair/stool/directional/south,
 /turf/open/floor/carpet,
@@ -70294,7 +70301,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/simple_animal/bot/cleanbot,
+/mob/living/basic/bot/cleanbot,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat/maint)
 "xZi" = (
@@ -70891,13 +70898,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit)
-"yiX" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate_empty,
-/obj/effect/spawner/random/maintenance/two,
-/obj/item/stock_parts/cell/high/empty,
-/turf/open/floor/iron,
-/area/station/cargo/storage)
 "yjf" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/window/reinforced/spawner/directional/north,
@@ -181956,9 +181956,9 @@ cdy
 iWz
 hFV
 gDr
-yiX
+qva
 uax
-axG
+jRK
 bTx
 eOk
 eOk
@@ -183759,7 +183759,7 @@ udQ
 udQ
 kBM
 pxD
-ayd
+wmc
 ayt
 ayG
 aET
@@ -184789,7 +184789,7 @@ aWL
 tft
 hMU
 qyg
-utY
+hsU
 fHV
 qar
 pRM

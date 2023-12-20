@@ -5,7 +5,7 @@
 	icon_state = "shelf_wood"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/structure/rack/wooden/MouseDrop_T(obj/object, mob/user, params)
 	. = ..()
@@ -22,7 +22,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/rack/wooden/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
@@ -37,7 +37,7 @@
 	base_icon_state = "barrel"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/structure/closet/crate/wooden/storage_barrel/crowbar_act(mob/living/user, obj/item/tool)
 	user.balloon_alert_to_viewers("disassembling...")
@@ -45,7 +45,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
@@ -80,7 +80,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/seedshelf
 	name = "Seedshelf"
@@ -110,4 +110,64 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/smartfridge/rationshelf
+	name = "Ration shelf"
+	desc = "A wooden shelf, used to store food... preferably preserved."
+	icon_state = "rationshelf"
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	base_build_path = /obj/machinery/smartfridge/rationshelf
+	contents_icon_state = "ration"
+	use_power = NO_POWER_USE
+	light_power = 0
+	idle_power_usage = 0
+	circuit = null
+	has_emissive = FALSE
+	can_atmos_pass = ATMOS_PASS_YES
+	visible_contents = TRUE
+
+/obj/machinery/smartfridge/rationshelf/accept_check(obj/item/weapon)
+	return (IS_EDIBLE(weapon) || (istype(weapon,/obj/item/reagent_containers/cup/bowl) && length(weapon.reagents?.reagent_list)))
+
+/obj/machinery/smartfridge/rationshelf/structure_examine()
+	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+
+/obj/machinery/smartfridge/rationshelf/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
+		return
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	deconstruct(TRUE)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/smartfridge/producedisplay
+	name = "Produce display"
+	desc = "A wooden table with awning, used to display produce items."
+	icon_state = "producedisplay"
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	base_build_path = /obj/machinery/smartfridge/producedisplay
+	contents_icon_state = "nonfood"
+	use_power = NO_POWER_USE
+	light_power = 0
+	idle_power_usage = 0
+	circuit = null
+	has_emissive = FALSE
+	can_atmos_pass = ATMOS_PASS_YES
+	visible_contents = TRUE
+
+/obj/machinery/smartfridge/producedisplay/accept_check(obj/item/weapon)
+	return (istype(weapon, /obj/item/grown) || istype(weapon, /obj/item/bouquet) || istype(weapon, /obj/item/clothing/head/costume/garland))
+
+/obj/machinery/smartfridge/producedisplay/structure_examine()
+	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+
+/obj/machinery/smartfridge/producedisplay/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
+		return
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	deconstruct(TRUE)
+	return ITEM_INTERACT_SUCCESS
