@@ -74,8 +74,8 @@
 			var/effective_opt_in_level = holder.mind?.get_effective_opt_in_level()
 			if(isnull(antag_prefs))
 				antag_prefs = preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
-			ooc_notes += "Antag Target (Forced): [GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]]\n"
-			ooc_notes += "Antag Target (Ideal): [GLOB.antag_opt_in_strings[num2text(antag_prefs)]]\n"
+			ooc_notes += "<b>Current Opt-In Status</b>: [GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]]\n"
+			ooc_notes += "Opt-In Status: [GLOB.antag_opt_in_strings[num2text(antag_prefs)]]\n"
 			ooc_notes += "\n"
 
 	// Now we handle silicon and/or human, order doesn't really matter
