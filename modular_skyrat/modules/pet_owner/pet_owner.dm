@@ -105,6 +105,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	savefile_key = "pet_name"
 	savefile_identifier = PREFERENCE_CHARACTER
 	can_randomize = FALSE
+	maximum_value_length = 32
 
 /datum/preference/text/pet_name/is_accessible(datum/preferences/preferences)
 	if (!..())
