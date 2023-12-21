@@ -1,9 +1,10 @@
 // THIS IS A SKYRAT UI FILE
 import { BooleanLike } from 'common/react';
+import { createSearch } from 'common/string';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, Section, Stack } from '../components';
+import { Box, Button, Dropdown, Input, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type LoadoutTabData = {
@@ -34,11 +35,19 @@ type LoadoutTabItem = {
 export const LoadoutManager = (props) => {
   const { act, data } = useBackend<LoadoutTabData>();
   const { selected_loadout, loadout_tabs, user_is_donator } = data;
-
   const [selectedTabName, setSelectedTab] = useState(loadout_tabs[0]?.name);
   const selectedTab = loadout_tabs.find((curTab) => {
     return curTab.name === selectedTabName;
   });
+  const [searchItem, setSearchItem] = useState('');
+  const search = createSearch(
+    searchItem,
+    (loadoutTabItem: LoadoutTabItem) => loadoutTabItem.name,
+  );
+  const loadout_items_filtered =
+    searchItem.length > 0
+      ? selectedTab?.contents.filter((loadoutTabItem) => search(loadoutTabItem))
+      : selectedTab?.contents;
 
   return (
     <Window title="Loadout Manager" width={500} height={650}>
@@ -57,13 +66,6 @@ export const LoadoutManager = (props) => {
                 />
               }
             >
-              <Button
-                icon="check-double"
-                color="good"
-                content="Confirm"
-                tooltip="Confirm loadout and exit UI."
-                onClick={() => act('close_ui', { revert: 0 })}
-              />
               <Dropdown
                 width="100%"
                 selected={selectedTabName}
@@ -71,9 +73,39 @@ export const LoadoutManager = (props) => {
                 onSelected={(curTab) => setSelectedTab(curTab)}
               />
             </Section>
+            <Section>
+              <Stack>
+                <Stack.Item>
+                  <Input
+                    autofocus
+                    mt={0.5}
+                    bottom="5%"
+                    height="20px"
+                    width="150px"
+                    placeholder="Search..."
+                    value={searchItem}
+                    onChange={(e, value) => {
+                      setSearchItem(value);
+                    }}
+                    fluid
+                  />
+                </Stack.Item>
+                <Stack.Divider hidden grow width="50%" />
+                <Stack.Item>
+                  <Button
+                    icon="check-double"
+                    color="good"
+                    align="center"
+                    content="Confirm"
+                    tooltip="Confirm loadout and exit UI."
+                    onClick={() => act('close_ui', { revert: 0 })}
+                  />
+                </Stack.Item>
+              </Stack>
+            </Section>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack fill>
+            <Stack fill zebra>
               <Stack.Item grow>
                 {selectedTab && selectedTab.contents ? (
                   <Section
@@ -92,8 +124,8 @@ export const LoadoutManager = (props) => {
                       />
                     }
                   >
-                    <Stack grow vertical>
-                      {selectedTab.contents.map((item) => (
+                    <Stack grow vertical zebra>
+                      {loadout_items_filtered?.map((item) => (
                         <Stack.Item key={item.path}>
                           <Stack fontSize="15px">
                             <Stack.Item grow align="left">
