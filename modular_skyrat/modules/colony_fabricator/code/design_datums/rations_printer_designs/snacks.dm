@@ -20,28 +20,6 @@
 		RND_CATEGORY_AKHTER_FOODRICATOR_SNACKS,
 	)
 
-/datum/design/frontier_ration_chocolate
-	name = "Chocolate"
-	id = "frontier_ration_chocolate"
-	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 50)
-	build_path = /obj/item/food/chocolatebar
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_AKHTER_FOODRICATOR_SNACKS,
-	)
-
-/datum/design/frontier_ration_shortbread
-	name = "Shortbread Cookie"
-	id = "frontier_ration_shortbread"
-	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 50)
-	build_path = /obj/item/food/cookie/shortbread
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_AKHTER_FOODRICATOR_SNACKS,
-	)
-
 /datum/design/frontier_ration_energy_bar
 	name = "High Power Energy Bar"
 	id = "frontier_ration_energy_bar"
@@ -53,12 +31,12 @@
 		RND_CATEGORY_AKHTER_FOODRICATOR_SNACKS,
 	)
 
-/datum/design/frontier_ration_random_sticko
-	name = "Sticko"
-	id = "frontier_ration_random_sticko"
+/datum/design/frontier_ration_ciggies
+	name = "Cigarettes"
+	id = "frontier_ration_ciggies"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 50)
-	build_path = /obj/item/food/sticko/random
+	build_path = /obj/item/storage/fancy/cigarettes/cigpack_uplift
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_AKHTER_FOODRICATOR_SNACKS,

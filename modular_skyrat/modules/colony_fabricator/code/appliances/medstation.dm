@@ -13,9 +13,10 @@
 	show_categories = list(
 		RND_CATEGORY_AKHTER_MEDICAL,
 		RND_CATEGORY_AKHTER_MEDICAL_INJECTORS,
+		RND_CATEGORY_AKHTER_MEDICAL_CHEMICALS,
 	)
 	/// The item we turn into when repacked
-	var/repacked_type = /obj/item/wallframe/cell_charger_multi
+	var/repacked_type = /obj/item/wallframe/frontier_medstation
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/biogenerator/medstation, 29)
 

@@ -10,6 +10,7 @@
 	pass_flags = PASSTABLE
 	efficiency = 1
 	productivity = 2
+	anchored_tabletop_offset = 8
 	show_categories = list(
 		RND_CATEGORY_AKHTER_FOODRICATOR_INGREDIENTS,
 		RND_CATEGORY_AKHTER_FOODRICATOR_BAGS,
@@ -26,6 +27,11 @@
 	. = ..()
 	efficiency = 1
 	productivity = 3
+
+/obj/machinery/biogenerator/foodricator/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/biogenerator/foodricator/default_deconstruction_crowbar()
 	return

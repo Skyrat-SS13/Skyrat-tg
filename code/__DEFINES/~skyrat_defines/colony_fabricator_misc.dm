@@ -6,6 +6,8 @@
 #define RND_CATEGORY_AKHTER_MEDICAL "Emergency Medical"
 /// Category for autoinjectors in the medstation
 #define RND_CATEGORY_AKHTER_MEDICAL_INJECTORS "Emergency Injectors"
+/// Category for chems in the medstation
+#define RND_CATEGORY_AKHTER_MEDICAL_CHEMICALS "Chemicals"
 /// Category for resources made by the organics printer
 #define RND_CATEGORY_AKHTER_RESOURCES "Resources"
 /// Category for the seeds the organics printer can make

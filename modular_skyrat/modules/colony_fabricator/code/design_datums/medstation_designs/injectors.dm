@@ -42,28 +42,6 @@
 		RND_CATEGORY_AKHTER_MEDICAL_INJECTORS,
 	)
 
-/datum/design/organic_printer_pen_lipital
-	name = "Lipital Regenerative Stimulant Injector"
-	id = "oganic_pen_lipital"
-	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 100)
-	build_path = /obj/item/reagent_containers/hypospray/medipen/deforest/lipital
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_AKHTER_MEDICAL_INJECTORS,
-	)
-
-/datum/design/organic_printer_pen_lepoturi
-	name = "Lepoturi Burn Treatment Injector"
-	id = "oganic_pen_lepoturi"
-	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 100)
-	build_path = /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_AKHTER_MEDICAL_INJECTORS,
-	)
-
 /datum/design/organic_printer_pen_meridine
 	name = "Meridine Antidote Injector"
 	id = "oganic_pen_meridine"
