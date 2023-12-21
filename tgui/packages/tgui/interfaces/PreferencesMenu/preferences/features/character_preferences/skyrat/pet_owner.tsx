@@ -1,5 +1,11 @@
 // THIS IS A SKYRAT UI FILE
-import { Feature, FeatureChoiced, FeatureDropdownInput, FeatureShortTextInput } from '../../base';
+import {
+  Feature,
+  FeatureChoiced,
+  FeatureDropdownInput,
+  FeatureShortTextInput,
+  FeatureTextInput,
+} from '../../base';
 
 export const pet_owner: FeatureChoiced = {
   name: 'Pet Owner',
@@ -16,5 +22,5 @@ export const pet_name: Feature<string> = {
 export const pet_desc: Feature<string> = {
   name: 'Pet Description',
   description: "If blank, will use the mob's default description.",
-  component: FeatureShortTextInput,
+  component: FeatureTextInput,
 };

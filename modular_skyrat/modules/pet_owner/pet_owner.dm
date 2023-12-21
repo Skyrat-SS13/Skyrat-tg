@@ -15,7 +15,7 @@
 
 /datum/quirk_constant_data/pet_owner
 	associated_typepath = /datum/quirk/item_quirk/pet_owner
-	customization_options = list(/datum/preference/choiced/pet_owner)
+	customization_options = list(/datum/preference/choiced/pet_owner, /datum/preference/text/pet_name, /datum/preference/text/pet_desc)
 
 /datum/quirk/item_quirk/pet_owner/add_unique(client/client_source)
 	var/desired_pet = client_source?.prefs.read_preference(/datum/preference/choiced/pet_owner) || "Random"
