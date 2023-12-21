@@ -463,27 +463,17 @@
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
-<<<<<<< HEAD
-/obj/machinery/chem_dispenser/attackby(obj/item/I, mob/living/user, params)
-	if(is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container())
-		var/obj/item/reagent_containers/B = I
-		//SKYRAT EDIT BEGIN - CHEMISTRY QOL
-		if(customTransferAmount)
-			transferAmounts -= customTransferAmount
-		transferAmounts = B.possible_transfer_amounts
-		//SKYRAT EDIT END
-		. = TRUE //no afterattack
-		if(!user.transferItemToLoc(B, src))
-			return
-		replace_beaker(user, B)
-		to_chat(user, span_notice("You add [B] to [src]."))
-=======
 /obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	if(is_reagent_container(tool) && !(tool.item_flags & ABSTRACT) && tool.is_open_container())
+		//SKYRAT EDIT ADDITION START - CHEMISTRY QOL
+		var/obj/item/reagent_containers/container = tool
+		if(customTransferAmount)
+			transferAmounts -= customTransferAmount
+		transferAmounts = container.possible_transfer_amounts
+		//SKYRAT EDIT ADDITION END
 		if(!user.transferItemToLoc(tool, src))
 			return ..()
 		replace_beaker(user, tool)
->>>>>>> ab4eade6f20 (You don't hit the chem master with your beaker (#80469))
 		ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
 
