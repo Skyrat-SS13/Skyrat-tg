@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { Feature, FeatureChoiced, FeatureDropdownInput, FeatureShortTextInput } from '../../base';
 
 export const pet_owner: FeatureChoiced = {

@@ -1,5 +1,6 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
-import { Section, NoticeBox, Flex } from '../components';
+import { Flex, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 type ICESData = {
