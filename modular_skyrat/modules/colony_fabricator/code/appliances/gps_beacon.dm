@@ -1,5 +1,5 @@
 /obj/item/gps/computer/beacon
-	name = "GPS beacon"
+	name = "\improper GPS beacon"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "gps_beacon"
 	pixel_y = 0
