@@ -1,4 +1,5 @@
 import { map } from 'common/collections';
+
 import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
@@ -9,7 +10,7 @@ import { NtosWindow } from '../layouts';
 //
 // {entry.rank === entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>}
 //  - Original: entry.rank
-export const NtosCrewManifest = (props, context) => {
+export const NtosCrewManifest = (props) => {
   const { act, data } = useBackend();
   const { manifest = {} } = data;
   return (
@@ -23,7 +24,8 @@ export const NtosCrewManifest = (props, context) => {
               content="Print"
               onClick={() => act('PRG_print')}
             />
-          }>
+          }
+        >
           {map((entries, department) => (
             <Section key={department} level={2} title={department}>
               <Table>

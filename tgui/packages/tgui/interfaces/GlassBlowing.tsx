@@ -1,7 +1,18 @@
-import { Box, Button, Flex, Stack, Section, ProgressBar, AnimatedNumber, Table } from '../components';
+// THIS IS A SKYRAT UI FILE
 import { toFixed } from 'common/math';
 import { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
+import {
+  AnimatedNumber,
+  Box,
+  Button,
+  Flex,
+  ProgressBar,
+  Section,
+  Stack,
+  Table,
+} from '../components';
 import { Window } from '../layouts';
 
 type GlassData = {
@@ -228,9 +239,9 @@ export const GlassBlowing = (props) => {
                 black: [-Infinity, 0.05],
               }}
               style={{
-                'background-image':
-                  'linear-gradient(to right, blue, yellow, red)',
-              }}>
+                backgroundImage: 'linear-gradient(to right, blue, yellow, red)',
+              }}
+            >
               <AnimatedNumber
                 value={glass.timeLeft}
                 format={(value) => toFixed(value, 1)}
@@ -245,8 +256,9 @@ export const GlassBlowing = (props) => {
               value={0 / 0}
               ranges={{}}
               style={{
-                'background-image': 'grey',
-              }}>
+                backgroundImage: 'grey',
+              }}
+            >
               <AnimatedNumber value={0} />
             </ProgressBar>
           </Section>

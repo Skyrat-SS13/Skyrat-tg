@@ -14,7 +14,7 @@
 	icon_state = "dab"
 	volume = 40
 	has_variable_transfer_amount = FALSE
-	list_reagents = list(/datum/reagent/drug/thc = 40) //horrendously powerful
+	list_reagents = list(/datum/reagent/drug/thc/concentrated = 40) //horrendously powerful
 
 /obj/item/reagent_containers/hashbrick
 	name = "hash brick"

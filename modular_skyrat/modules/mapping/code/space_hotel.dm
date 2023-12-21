@@ -2,7 +2,7 @@
 /obj/item/permanent_portal_creator
 	name = "two-way bluespace entanglement device"
 	desc = "A device with a very complex name, that is only used to confirm the second location that's tied to a stationary entanglement anchor."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "hand_tele"
 	inhand_icon_state = "electronic"
 	worn_icon_state = "electronic"
@@ -75,7 +75,7 @@
 /obj/item/permanent_portal_anchor
 	name = "two-way bluespace entanglement anchor"
 	desc = "A device with a very complex name, that serves as the stationary target of a linked two-way bluespace entanglement device."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "beacon"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'

@@ -110,13 +110,13 @@
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
 	if(!constant_flickering)
 		balloon_alert(user, "ballast is already working!")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	balloon_alert(user, "repairing the ballast...")
 	if(do_after(user, 2 SECONDS, src))
 		stop_flickering()
 		balloon_alert(user, "ballast repaired!")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 	return ..()
 
 #undef NIGHTSHIFT_LIGHT_MODIFIER

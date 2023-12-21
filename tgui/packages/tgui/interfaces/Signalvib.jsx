@@ -1,10 +1,12 @@
+// THIS IS A SKYRAT UI FILE
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
 import { Button, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
-export const Signalvib = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Signalvib = (props) => {
+  const { act, data } = useBackend();
   const { toystate, code, frequency, minFrequency, maxFrequency } = data;
   return (
     <Window width={260} height={137}>
@@ -31,7 +33,8 @@ export const Signalvib = (props, context) => {
                     })
                   }
                 />
-              }>
+              }
+            >
               <NumberInput
                 animate
                 unit="kHz"
@@ -61,7 +64,8 @@ export const Signalvib = (props, context) => {
                     })
                   }
                 />
-              }>
+              }
+            >
               <NumberInput
                 animate
                 step={1}

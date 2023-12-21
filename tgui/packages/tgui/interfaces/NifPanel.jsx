@@ -1,10 +1,24 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
-import { Window } from '../layouts';
-import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input, BlockQuote, Flex, Collapsible, Table, Icon } from '../components';
+import {
+  BlockQuote,
+  Box,
+  Button,
+  Collapsible,
+  Dropdown,
+  Flex,
+  Icon,
+  Input,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Table,
+} from '../components';
 import { TableCell, TableRow } from '../components/Table';
+import { Window } from '../layouts';
 
-export const NifPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NifPanel = (props) => {
+  const { act, data } = useBackend();
   const {
     linked_mob_name,
     loaded_nifsofts,
@@ -12,11 +26,7 @@ export const NifPanel = (props, context) => {
     max_power,
     current_theme,
   } = data;
-  const [settingsOpen, setSettingsOpen] = useLocalState(
-    context,
-    'settingsOpen',
-    false
-  );
+  const [settingsOpen, setSettingsOpen] = useLocalState('settingsOpen', false);
 
   return (
     <Window
@@ -24,7 +34,8 @@ export const NifPanel = (props, context) => {
       width={500}
       height={400}
       resizable
-      theme={current_theme}>
+      theme={current_theme}
+    >
       <Window.Content>
         <Section
           title={`Welcome to your NIF, ${linked_mob_name}`}
@@ -36,14 +47,16 @@ export const NifPanel = (props, context) => {
               selected={settingsOpen}
               onClick={() => setSettingsOpen(!settingsOpen)}
             />
-          }>
+          }
+        >
           {(settingsOpen && <NifSettings />) || <NifStats />}
           {(!settingsOpen && (
             <Section
               title={`NIFSoft Programs (${
                 max_nifsofts - loaded_nifsofts.length
               } Slots Remaining)`}
-              right>
+              right
+            >
               {(loaded_nifsofts.length && (
                 <Flex direction="column">
                   {loaded_nifsofts.map((nifsoft) => (
@@ -65,7 +78,8 @@ export const NifPanel = (props, context) => {
                               })
                             }
                           />
-                        }>
+                        }
+                      >
                         <Table>
                           <TableRow>
                             <TableCell>
@@ -77,8 +91,8 @@ export const NifPanel = (props, context) => {
                               {nifsoft.activation_cost === 0
                                 ? ' No activation cost'
                                 : ' ' +
-                                (nifsoft.activation_cost / max_power) * 100 +
-                                '% per activation'}
+                                  (nifsoft.activation_cost / max_power) * 100 +
+                                  '% per activation'}
                             </TableCell>
                             <TableCell>
                               <Button
@@ -90,8 +104,8 @@ export const NifPanel = (props, context) => {
                               {nifsoft.active_cost === 0
                                 ? ' No active drain'
                                 : ' ' +
-                                (nifsoft.active_cost / max_power) * 100 +
-                                '% consumed while active'}
+                                  (nifsoft.active_cost / max_power) * 100 +
+                                  '% consumed while active'}
                             </TableCell>
                             <TableCell>
                               <Button
@@ -174,8 +188,8 @@ export const NifPanel = (props, context) => {
   );
 };
 
-const NifSettings = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifSettings = (props) => {
+  const { act, data } = useBackend();
   const {
     nutrition_drain,
     ui_themes,
@@ -235,21 +249,22 @@ const NifSettings = (props, context) => {
             icon="info"
             tooltip="Rewards points are an alternative currency gained by purchasing NIFSofts, rewards points carry between shifts."
           />
-        }>
+        }
+      >
         {stored_points}
       </LabeledList.Item>
     </LabeledList>
   );
 };
 
-const NifProductNotes = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifProductNotes = (props) => {
+  const { act, data } = useBackend(t);
   const { product_notes } = data;
   return <BlockQuote>{product_notes}</BlockQuote>;
 };
 
-const NifStats = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifStats = (props) => {
+  const { act, data } = useBackend();
   const {
     max_power,
     power_level,
@@ -269,9 +284,9 @@ const NifStats = (props, context) => {
             minValue={0}
             maxValue={max_durability}
             ranges={{
-              'good': [max_durability * 0.66, max_durability],
-              'average': [max_durability * 0.33, max_durability * 0.66],
-              'bad': [0, max_durability * 0.33],
+              good: [max_durability * 0.66, max_durability],
+              average: [max_durability * 0.33, max_durability * 0.66],
+              bad: [0, max_durability * 0.33],
             }}
             alertAfter={max_durability * 0.25}
           />
@@ -282,11 +297,12 @@ const NifStats = (props, context) => {
             minValue={0}
             maxValue={max_power}
             ranges={{
-              'good': [max_power * 0.66, max_power],
-              'average': [max_power * 0.33, max_power * 0.66],
-              'bad': [0, max_power * 0.33],
+              good: [max_power * 0.66, max_power],
+              average: [max_power * 0.33, max_power * 0.66],
+              bad: [0, max_power * 0.33],
             }}
-            alertAfter={max_power * 0.1}>
+            alertAfter={max_power * 0.1}
+          >
             {(power_level / max_power) * 100 +
               '%' +
               ' (' +
@@ -309,8 +325,8 @@ const NifStats = (props, context) => {
   );
 };
 
-const NifNutritionBar = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifNutritionBar = (props) => {
+  const { act, data } = useBackend();
   const { nutrition_level } = data;
   return (
     <ProgressBar
@@ -318,16 +334,16 @@ const NifNutritionBar = (props, context) => {
       minValue={0}
       maxValue={550}
       ranges={{
-        'good': [250, Infinity],
-        'average': [150, 250],
-        'bad': [0, 150],
+        good: [250, Infinity],
+        average: [150, 250],
+        bad: [0, 150],
       }}
     />
   );
 };
 
-const NifBloodBar = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifBloodBar = (props) => {
+  const { act, data } = useBackend();
   const { blood_level, minimum_blood_level, max_blood_level } = data;
   return (
     <ProgressBar
@@ -335,9 +351,9 @@ const NifBloodBar = (props, context) => {
       minValue={0}
       maxValue={max_blood_level}
       ranges={{
-        'good': [minimum_blood_level, Infinity],
-        'average': [336, minimum_blood_level],
-        'bad': [0, 336],
+        good: [minimum_blood_level, Infinity],
+        average: [336, minimum_blood_level],
+        bad: [0, 336],
       }}
     />
   );

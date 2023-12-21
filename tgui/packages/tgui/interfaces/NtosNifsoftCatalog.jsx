@@ -1,14 +1,24 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useSharedState } from '../backend';
+import {
+  BlockQuote,
+  Box,
+  Button,
+  Collapsible,
+  Flex,
+  Icon,
+  LabeledList,
+  Section,
+  Tabs,
+} from '../components';
 import { NtosWindow } from '../layouts';
-import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, LabeledList, Box, Icon } from '../components';
 
-export const NtosNifsoftCatalog = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NtosNifsoftCatalog = (props) => {
+  const { act, data } = useBackend();
   const { product_list = [], rewards_points, current_balance } = data;
   const [tab, setTab] = useSharedState(
-    context,
     'product_category',
-    product_list[0].name
+    product_list[0].name,
   );
 
   const products =
@@ -34,7 +44,8 @@ export const NtosNifsoftCatalog = (props, context) => {
               key={product_category.key}
               textAlign="center"
               onClick={() => setTab(product_category.name)}
-              selected={tab === product_category.name}>
+              selected={tab === product_category.name}
+            >
               <b>{product_category.name}</b>
             </Tabs.Tab>
           ))}
@@ -45,8 +56,8 @@ export const NtosNifsoftCatalog = (props, context) => {
   );
 };
 
-const ProductCategory = (props, context) => {
-  const { act, data } = useBackend(context);
+const ProductCategory = (props) => {
+  const { act, data } = useBackend();
   const { target_nif, paying_account, rewards_points, current_balance } = data;
   const { products } = props;
 
@@ -62,7 +73,8 @@ const ProductCategory = (props, context) => {
                   {' ' + product.name}
                 </span>
               }
-              fill={false}>
+              fill={false}
+            >
               <Collapsible title="Product Notes">
                 <BlockQuote>{product.desc}</BlockQuote>
               </Collapsible>
@@ -77,7 +89,8 @@ const ProductCategory = (props, context) => {
                     rewards_purchase: false,
                   })
                 }
-                fluid>
+                fluid
+              >
                 Purchase for {product.price}cr
               </Button>
               <Button
@@ -93,7 +106,8 @@ const ProductCategory = (props, context) => {
                     rewards_purchase: true,
                   })
                 }
-                fluid>
+                fluid
+              >
                 Purchase for {product.price} rewards points
               </Button>
               <Box opacity={0.85} textAlign="center">

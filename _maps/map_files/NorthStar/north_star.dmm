@@ -2560,6 +2560,11 @@
 /obj/item/stack/medical/bone_gel,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/treatment_center)
+"aHM" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/structure/closet_empty/crate,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor1/port)
 "aHP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -2976,7 +2981,7 @@
 /area/station/commons/fitness)
 "aOw" = (
 /obj/machinery/light/small/directional/north,
-/mob/living/simple_animal/bot/cleanbot,
+/mob/living/basic/bot/cleanbot,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "aOx" = (
@@ -20966,6 +20971,20 @@
 	dir = 1
 	},
 /area/station/command/bridge)
+"fBE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mail Sorting"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/turf/open/floor/iron/smooth,
+/area/station/cargo/storage)
 "fBM" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
@@ -26249,12 +26268,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/science/server)
-"gVe" = (
-/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
-/obj/effect/spawner/random/maintenance/three,
-/obj/effect/spawner/random/engineering/tool,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor1/port/fore)
 "gVm" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -30838,6 +30851,14 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/commons/locker)
+"ifx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/effect/spawner/random/maintenance/two,
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor1/port/fore)
 "ifA" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
@@ -36255,6 +36276,12 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/hallway/secondary/entry)
+"jAO" = (
+/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor1/port/fore)
 "jAR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -63393,11 +63420,6 @@
 	},
 /turf/open/floor/iron/dark/small,
 /area/station/science/xenobiology)
-"qAc" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/closet_empty/crate,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor1/port)
 "qAd" = (
 /obj/structure/railing{
 	dir = 4
@@ -71702,14 +71724,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
-"sMM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
-/obj/effect/spawner/random/maintenance/two,
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/engineering/tool,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor1/port/fore)
 "sMS" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -86644,21 +86658,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
-"wEN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mail Sorting"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/supply/shipping,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
-/turf/open/floor/iron/smooth,
-/area/station/cargo/storage)
 "wEQ" = (
 /obj/structure/stairs/east,
 /turf/open/floor/pod/dark,
@@ -114023,7 +114022,7 @@ hJy
 rXp
 oZW
 xMd
-sMM
+ifx
 hJy
 htg
 hJy
@@ -114036,7 +114035,7 @@ hJy
 xtY
 fDq
 foK
-gVe
+jAO
 hJy
 hJy
 owI
@@ -119140,7 +119139,7 @@ cMA
 mnR
 acv
 hNz
-wEN
+fBE
 nlu
 aAZ
 iRK
@@ -127124,7 +127123,7 @@ wVn
 xgH
 fkE
 oHy
-qAc
+aHM
 kzE
 qWe
 jom
