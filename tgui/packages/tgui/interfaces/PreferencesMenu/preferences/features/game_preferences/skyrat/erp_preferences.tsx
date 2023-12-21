@@ -1,8 +1,8 @@
 // THIS IS A SKYRAT UI FILE
 import {
   CheckboxInput,
-  FeatureDropdownInput,
   FeatureChoiced,
+  FeatureDropdownInput,
   FeatureToggle,
 } from '../../base';
 
