@@ -4,7 +4,6 @@ import {
   FeatureChoiced,
   FeatureDropdownInput,
   FeatureShortTextInput,
-  FeatureTextInput,
 } from '../../base';
 
 export const pet_owner: FeatureChoiced = {
@@ -22,5 +21,5 @@ export const pet_name: Feature<string> = {
 export const pet_desc: Feature<string> = {
   name: 'Pet Description',
   description: "If blank, will use the mob's default description.",
-  component: FeatureTextInput,
+  component: FeatureShortTextInput,
 };
