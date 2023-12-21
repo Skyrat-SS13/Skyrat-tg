@@ -54,18 +54,7 @@ export const LoadoutManager = (props) => {
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
-            <Section
-              title="Loadout Categories"
-              align="center"
-              buttons={
-                <Button
-                  icon="info"
-                  align="center"
-                  content="Tutorial"
-                  onClick={() => act('toggle_tutorial')}
-                />
-              }
-            >
+            <Section title="Loadout Categories" align="center">
               <Dropdown
                 width="100%"
                 selected={selectedTabName}
