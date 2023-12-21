@@ -13,7 +13,7 @@
 | Guide to Modularization   | [./modular_skyrat/readme.md](./modular_skyrat/readme.md)            |
 | Website                   | [https://www.tgstation13.org](https://www.tgstation13.org)          |
 | Code                      | [https://github.com/Skyrat-SS13/Skyrat-tg](https://github.com/Skyrat-SS13/Skyrat-tg)    |
-| Wiki                      | [https://wiki.skyrat13.space/index.php/Main_Page](https://wiki.skyrat13.space/index.php/Main_Page)   |
+| Wiki                      | [https://wiki.skyrat13.com/index.php/Main_Page](https://wiki.skyrat13.com/index.php/Main_Page)   |
 | Codedocs                  | [https://skyrat-ss13.github.io/Skyrat-tg/](https://skyrat-ss13.github.io/Skyrat-tg/)       |
 | Skyrat 13 Discord         | [https://discord.com/invite/hGpZ4Z3](https://discord.com/invite/hGpZ4Z3) |
 | Coderbus Discord          | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)               |
