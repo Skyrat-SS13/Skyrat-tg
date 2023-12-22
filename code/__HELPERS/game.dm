@@ -174,6 +174,7 @@
 		active_players++
 	return active_players
 
+<<<<<<< HEAD
 ///Show the poll window to the candidate mobs
 /proc/show_candidate_poll_window(mob/candidate_mob, poll_time, question, list/candidates, ignore_category, time_passed, flashwindow = TRUE)
 	set waitfor = 0
@@ -313,6 +314,8 @@
 
 	return candidate_list
 
+=======
+>>>>>>> 908d6f1a2bb (Better Ghost Selection (#80283))
 ///Uses stripped down and bastardized code from respawn character
 /proc/make_body(mob/dead/observer/ghost_player)
 	if(!ghost_player || !ghost_player.key)
