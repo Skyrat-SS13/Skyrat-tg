@@ -251,7 +251,7 @@
 		QDEL_NULL(soulcatcher_action)
 
 	if(leave_action)
-		qdel(leave_action)
+		QDEL_NULL(leave_action)
 
 	return ..()
 	
