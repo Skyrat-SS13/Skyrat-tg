@@ -1,7 +1,8 @@
-import { useBackend } from '../backend';
-import { Stack, Section, ByondUi } from '../components';
-import { Window } from '../layouts';
+// THIS IS A SKYRAT UI FILE
 import { resolveAsset } from '../assets';
+import { useBackend } from '../backend';
+import { ByondUi, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
 const formatURLs = (text) => {
   if (!text) return;
@@ -14,12 +15,13 @@ const formatURLs = (text) => {
     parts.push(
       <a
         style={{
-          'color': '#0591e3',
+          color: '#0591e3',
           'text-decoration': 'none',
         }}
-        href={url}>
+        href={url}
+      >
         {url}
-      </a>
+      </a>,
     );
     lastIndex = index + url.length;
     return url;
@@ -30,8 +32,8 @@ const formatURLs = (text) => {
   return <div>{parts}</div>;
 };
 
-export const ExaminePanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ExaminePanel = (props) => {
+  const { act, data } = useBackend();
   const {
     character_name,
     obscured,
@@ -89,7 +91,8 @@ export const ExaminePanel = (props, context) => {
                   scrollable
                   fill
                   title={character_name + "'s Flavor Text:"}
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {formatURLs(flavor_text)}
                 </Section>
               </Stack.Item>
@@ -100,7 +103,8 @@ export const ExaminePanel = (props, context) => {
                       scrollable
                       fill
                       title="OOC Notes"
-                      preserveWhitespace>
+                      preserveWhitespace
+                    >
                       {formatURLs(ooc_notes)}
                     </Section>
                   </Stack.Item>
@@ -113,7 +117,8 @@ export const ExaminePanel = (props, context) => {
                           ? 'Species: ' + custom_species
                           : 'No Custom Species!'
                       }
-                      preserveWhitespace>
+                      preserveWhitespace
+                    >
                       {custom_species
                         ? formatURLs(custom_species_lore)
                         : 'Just a normal space dweller.'}

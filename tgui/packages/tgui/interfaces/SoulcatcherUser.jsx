@@ -1,9 +1,19 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
+import {
+  BlockQuote,
+  Box,
+  Button,
+  Collapsible,
+  Divider,
+  Flex,
+  LabeledList,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
-import { BlockQuote, Button, Divider, Box, Flex, Collapsible, LabeledList, Section } from '../components';
 
-export const SoulcatcherUser = (props, context) => {
-  const { act, data } = useBackend(context);
+export const SoulcatcherUser = (props) => {
+  const { act, data } = useBackend();
   const { current_room, user_data, communicate_as_parent, souls = [] } = data;
 
   return (
@@ -15,7 +25,8 @@ export const SoulcatcherUser = (props, context) => {
             <span style={{ color: current_room.color }}>
               {current_room.name}
             </span>
-          }>
+          }
+        >
           <BlockQuote preserveWhitespace>
             {' '}
             {current_room.description}

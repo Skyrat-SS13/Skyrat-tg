@@ -132,8 +132,8 @@ GLOBAL_VAR(first_officer)
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(
 		/obj/item/storage/box/nri_survival_pack/raider = 1,
-		/obj/item/ammo_box/magazine/m9mm_aps = 3,
-		/obj/item/gun/ballistic/automatic/pistol/nri = 1,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery = 3,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman = 1,
 		/obj/item/crucifix = 1,
 		/obj/item/clothing/mask/gas/nri_police = 1,
 		/obj/item/modular_computer/pda/nri_police = 1,
@@ -172,6 +172,7 @@ GLOBAL_VAR(first_officer)
 	subdepartment_color = COLOR_NRI_POLICE_SILVER
 	sechud_icon_state = "hud_nri_police"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
+	threat_modifier = 2 // Not as treatening as syndicate, but still potentially harmful to the station
 
 /obj/item/gun/energy/e_gun/advtaser/normal
 	w_class = WEIGHT_CLASS_NORMAL

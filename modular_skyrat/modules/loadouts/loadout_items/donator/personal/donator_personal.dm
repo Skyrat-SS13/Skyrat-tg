@@ -13,12 +13,6 @@
 	item_path = /obj/item/canvas/drawingtablet
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/shoes/heeled_jackboots
-	name = "High-heel Jackboots"
-	item_path = /obj/item/clothing/shoes/jackboots/heel
-//	ckeywhitelist = list("thedragmeme")
-//As they requested, it's properly public now.
-
 /datum/loadout_item/suit/furcoat
 	name = "Leather coat with fur"
 	item_path = /obj/item/clothing/suit/furcoat
@@ -739,3 +733,8 @@
 	name = "Cat-Ear Headphones"
 	item_path = /obj/item/instrument/piano_synth/headphones/catear_headphone
 	ckeywhitelist = list("dtfe")
+
+/datum/loadout_item/neck/trenchcoat
+	name = "Graceful Trenchcoat"
+	item_path = /obj/item/clothing/neck/trenchcoat
+	ckeywhitelist = list("Smol42", "Awers855")

@@ -1,10 +1,12 @@
-import { useBackend } from '../backend';
-import { Section, Button, NoticeBox, LabeledList, Stack } from '../components';
+// THIS IS A SKYRAT UI FILE
 import { toFixed } from 'common/math';
+
+import { useBackend } from '../backend';
+import { Button, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const EventPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const EventPanel = (props) => {
+  const { act, data } = useBackend();
   const {
     event_list = [],
     end_time,
@@ -98,7 +100,8 @@ export const EventPanel = (props, context) => {
                 vote_in_progress
                   ? 'Available Events (' + toFixed(end_time) + ' seconds) '
                   : 'Available Events'
-              }>
+              }
+            >
               {vote_in_progress ? (
                 <LabeledList>
                   {event_list.map((event) => (
@@ -116,7 +119,8 @@ export const EventPanel = (props, context) => {
                             })
                           }
                         />
-                      }>
+                      }
+                    >
                       {!!show_votes || (!!admin_mode && event.votes)}
                     </LabeledList.Item>
                   ))}
@@ -133,7 +137,8 @@ export const EventPanel = (props, context) => {
                 grow
                 fill
                 height="150px"
-                title="Previous Events">
+                title="Previous Events"
+              >
                 {previous_events.length > 0 ? (
                   <LabeledList>
                     {previous_events.map((event) => (

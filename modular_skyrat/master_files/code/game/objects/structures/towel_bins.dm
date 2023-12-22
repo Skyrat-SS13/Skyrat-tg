@@ -48,24 +48,24 @@
 
 
 /obj/structure/towel_bin/screwdriver_act(mob/living/user, obj/item/tool)
-	if(flags_1 & NODECONSTRUCT_1)
+	if(obj_flags & NO_DECONSTRUCTION)
 		return FALSE
 
 	if(amount)
 		to_chat(user, span_warning("[src] must be empty first!"))
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(tool.use_tool(src, user, 0.5 SECONDS, volume = 50))
 		to_chat(user, span_notice("You disassemble [src]."))
 		new /obj/item/stack/rods(loc, 2)
 		qdel(src)
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 
 /obj/structure/towel_bin/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool, time = 0.5 SECONDS)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 
 /obj/structure/towel_bin/attackby(obj/item/attacking_item, mob/user, params)
