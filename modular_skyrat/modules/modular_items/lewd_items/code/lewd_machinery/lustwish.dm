@@ -14,6 +14,33 @@
 	//STUFF SOLD HERE//
 	product_categories = list(
 		list(
+			"name" = "Toy",
+			"icon" = FA_ICON_MICROPHONE,
+			"products" = list(
+				//Sex Toys
+				/obj/item/clothing/sextoy/eggvib/signalvib = 8,
+				/obj/item/assembly/signaler = 8,
+				/obj/item/clothing/sextoy/eggvib = 8,
+				/obj/item/clothing/sextoy/buttplug = 6,
+				/obj/item/clothing/sextoy/nipple_clamps = 4,
+				/obj/item/clothing/sextoy/dildo/double_dildo = 3,
+				/obj/item/clothing/sextoy/vibroring = 6,
+				/obj/item/clothing/sextoy/dildo = 8,
+				/obj/item/clothing/sextoy/dildo/custom_dildo = 8,
+				/obj/item/tickle_feather = 8,
+				/obj/item/clothing/sextoy/fleshlight = 8,
+				/obj/item/kinky_shocker = 4,
+				/obj/item/clothing/mask/leatherwhip = 4,
+				/obj/item/clothing/sextoy/magic_wand = 4,
+				/obj/item/bdsm_candle = 4,
+				/obj/item/spanking_pad = 4,
+				/obj/item/clothing/sextoy/vibrator = 4,
+
+				//belt
+				/obj/item/clothing/strapon = 6,
+			),
+		),
+		list(
 			"name" = "Outfit",
 			"icon" = FA_ICON_SHIRT,
 			"products" = list(
@@ -89,33 +116,6 @@
 
 				//hands
 				/obj/item/clothing/gloves/ball_mittens = 8,
-			),
-		),
-		list(
-			"name" = "Toy",
-			"icon" = FA_ICON_MICROPHONE,
-			"products" = list(
-				//Sex Toys
-				/obj/item/clothing/sextoy/eggvib/signalvib = 8,
-				/obj/item/assembly/signaler = 8,
-				/obj/item/clothing/sextoy/eggvib = 8,
-				/obj/item/clothing/sextoy/buttplug = 6,
-				/obj/item/clothing/sextoy/nipple_clamps = 4,
-				/obj/item/clothing/sextoy/dildo/double_dildo = 3,
-				/obj/item/clothing/sextoy/vibroring = 6,
-				/obj/item/clothing/sextoy/dildo = 8,
-				/obj/item/clothing/sextoy/dildo/custom_dildo = 8,
-				/obj/item/tickle_feather = 8,
-				/obj/item/clothing/sextoy/fleshlight = 8,
-				/obj/item/kinky_shocker = 4,
-				/obj/item/clothing/mask/leatherwhip = 4,
-				/obj/item/clothing/sextoy/magic_wand = 4,
-				/obj/item/bdsm_candle = 4,
-				/obj/item/spanking_pad = 4,
-				/obj/item/clothing/sextoy/vibrator = 4,
-
-				//belt
-				/obj/item/clothing/strapon = 6,
 			),
 		),
 			list(
