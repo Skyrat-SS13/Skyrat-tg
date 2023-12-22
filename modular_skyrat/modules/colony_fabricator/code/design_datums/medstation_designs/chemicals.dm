@@ -64,12 +64,12 @@
 		RND_CATEGORY_AKHTER_MEDICAL_CHEMICALS,
 	)
 
-/datum/design/organic_med_syriniver
-	name = "Syriniver"
-	id = "organic_med_syriniver"
+/datum/design/organic_med_ammoniated_mercury
+	name = "Ammoniated Mercury"
+	id = "organic_med_ammoniated_mercury"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 10)
-	build_path = /datum/reagent/medicine/c2/syriniver
+	build_path = /datum/reagent/medicine/ammoniated_mercury
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_AKHTER_MEDICAL_CHEMICALS,
