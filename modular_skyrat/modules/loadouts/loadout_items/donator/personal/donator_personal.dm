@@ -588,6 +588,12 @@
 	ckeywhitelist = list("october23")
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
+/datum/loadout_item/head/elofy
+	name = "Solar Admiral Hat"
+	item_path = /obj/item/clothing/head/hats/hos/elofy
+	ckeywhitelist = list("october23")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+
 /datum/loadout_item/gloves/elofy
 	name = "Solar Admiral Gloves"
 	item_path = /obj/item/clothing/gloves/elofy
@@ -738,3 +744,13 @@
 	name = "Graceful Trenchcoat"
 	item_path = /obj/item/clothing/neck/trenchcoat
 	ckeywhitelist = list("Smol42", "Awers855")
+
+/datum/loadout_item/under/jumpsuit/old_qm_jumpskirt
+	name = "Old Quartermaster's Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/cargo/qm/skirt/old
+	ckeywhitelist = list("jasohavents")
+
+/datum/loadout_item/pocket_items/toaster_implant
+	name = "Toaster Implant"
+	item_path = /obj/item/implanter/toaster
+	ckeywhitelist = list("jasohavents")
