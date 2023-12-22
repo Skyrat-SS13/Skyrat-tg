@@ -7,9 +7,6 @@
 	if(mod.skin == "security")
 		overlay_state_inactive = "[initial(overlay_state_inactive)]-[mod.skin]"
 		overlay_state_use = "[initial(overlay_state_use)]-[mod.skin]"
-	else if (mod.skin == "redsec") // here is some yandev chess tier solutions but for some reason using || on the main if(mod.skin) statement breaks everything
-		overlay_state_inactive = "[initial(overlay_state_inactive)]-[mod.skin]" // todo: make it work better
-		overlay_state_use = "[initial(overlay_state_use)]-[mod.skin]"
 	else
 		overlay_state_inactive = "[initial(overlay_state_inactive)]"
 		overlay_state_use = "[initial(overlay_state_use)]"
@@ -21,8 +18,6 @@
 
 /obj/item/mod/module/dispenser/mirage/generate_worn_overlay(mutable_appearance/standing)
 	if(mod.skin == "security")
-		overlay_state_inactive = "[initial(overlay_state_inactive)]-[mod.skin]"
-	else if (mod.skin == "redsec")
 		overlay_state_inactive = "[initial(overlay_state_inactive)]-[mod.skin]"
 	else
 		overlay_state_inactive = "[initial(overlay_state_inactive)]"
