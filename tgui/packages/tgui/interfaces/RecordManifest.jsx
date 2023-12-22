@@ -1,7 +1,8 @@
 // THIS IS A SKYRAT UI FILE
 import { classes } from 'common/react';
+
 import { useBackend } from '../backend';
-import { Icon, Section, Table, Tooltip, Button } from '../components';
+import { Button, Icon, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const commandJobs = [

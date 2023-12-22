@@ -1,5 +1,5 @@
 // THIS IS A SKYRAT UI FILE
-import { FeatureToggle, CheckboxInput } from '../../base';
+import { CheckboxInput, FeatureToggle } from '../../base';
 
 export const auto_dementor_pref: FeatureToggle = {
   name: 'Auto dementor',

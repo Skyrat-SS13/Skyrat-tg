@@ -1,20 +1,21 @@
 // THIS IS A SKYRAT UI FILE
 import { Fragment } from 'react';
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
-  Icon,
   Box,
   Button,
-  Section,
-  Table,
+  Collapsible,
   Divider,
   Grid,
+  Icon,
   ProgressBar,
-  Collapsible,
+  Section,
+  Table,
 } from '../components';
-import { Window } from '../layouts';
 import { TableRow } from '../components/Table';
-import { useState } from 'react';
+import { Window } from '../layouts';
 
 const brassColor = '#DFC69C';
 const tinkerCache = '#B5FD9D';

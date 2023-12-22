@@ -1,8 +1,9 @@
 // THIS IS A SKYRAT UI FILE
-import { useState } from 'react';
-import { useBackend } from '../backend';
-import { Box, Button, Section, Stack, Dropdown } from '../components';
 import { BooleanLike } from 'common/react';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Dropdown, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type LoadoutTabData = {
@@ -93,7 +94,7 @@ export const LoadoutManager = (props) => {
                   >
                     <Stack grow vertical>
                       {selectedTab.contents.map((item) => (
-                        <Stack.Item key={item.name}>
+                        <Stack.Item key={item.path}>
                           <Stack fontSize="15px">
                             <Stack.Item grow align="left">
                               {item.name}

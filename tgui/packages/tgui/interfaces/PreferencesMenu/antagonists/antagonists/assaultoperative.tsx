@@ -1,5 +1,7 @@
-import { Antagonist, Category } from '../base';
+// THIS IS A SKYRAT UI FILE
 import { multiline } from 'common/string';
+
+import { Antagonist, Category } from '../base';
 
 export const OPERATIVE_MECHANICAL_DESCRIPTION = multiline`
   Attain all possible GoldenEye authentication keys and use them to activate

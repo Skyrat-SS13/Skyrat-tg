@@ -1,7 +1,7 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
+import { Box, Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
-import { Box, LabeledList, Section, Button } from '../components';
 
 export const TimeClock = (props) => {
   const { act, data } = useBackend();

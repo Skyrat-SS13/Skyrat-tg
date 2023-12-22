@@ -1,18 +1,18 @@
 // THIS IS A SKYRAT UI FILE
 import {
-  FeatureChoiced,
-  FeatureDropdownInput,
-  Feature,
-  FeatureColorInput,
-  FeatureTextInput,
-  FeatureShortTextInput,
   CheckboxInput,
-  FeatureTriColorInput,
-  FeatureTriBoolInput,
-  FeatureToggle,
-  FeatureNumberInput,
-  FeatureValueProps,
+  Feature,
+  FeatureChoiced,
   FeatureChoicedServerData,
+  FeatureColorInput,
+  FeatureDropdownInput,
+  FeatureNumberInput,
+  FeatureShortTextInput,
+  FeatureTextInput,
+  FeatureToggle,
+  FeatureTriBoolInput,
+  FeatureTriColorInput,
+  FeatureValueProps,
 } from '../../base';
 
 export const feature_leg_type: FeatureChoiced = {
