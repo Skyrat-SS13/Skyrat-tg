@@ -15,7 +15,7 @@
 	product_categories = list(
 		list(
 			"name" = "Outfit",
-			"icon" = "apple-whole",
+			"icon" = FA_ICON_SHIRT,
 			"products" = list(
 				//clothing facial/head
 				/obj/item/clothing/head/domina_cap = 5,
@@ -54,7 +54,7 @@
 		),
 		list(
 			"name" = "Restraint",
-			"icon" = "carrot",
+			"icon" = FA_ICON_HANDCUFFS,
 			"products" = list(
 				//Sex toys
 				/obj/item/restraints/handcuffs/lewd = 8,
@@ -93,7 +93,7 @@
 		),
 		list(
 			"name" = "Toy",
-			"icon" = "carrot",
+			"icon" = FA_ICON_MICROPHONE,
 			"products" = list(
 				//Sex Toys
 				/obj/item/clothing/sextoy/eggvib/signalvib = 8,
@@ -120,7 +120,7 @@
 		),
 			list(
 			"name" = "Consumable",
-			"icon" = "carrot",
+			"icon" = FA_ICON_PRESCRIPTION_BOTTLE,
 			"products" = list(
 				//Sex toys
 				/obj/item/condom_pack = 20,
@@ -138,7 +138,7 @@
 		),
 		list(
 			"name" = "Structure",
-			"icon" = "carrot",
+			"icon" = FA_ICON_HAMMER,
 			"products" = list(
 				//fur niture //haha you got it
 				/obj/item/storage/box/bdsmbed_kit = 4,
