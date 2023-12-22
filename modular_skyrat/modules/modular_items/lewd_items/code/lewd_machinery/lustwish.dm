@@ -15,7 +15,7 @@
 	product_categories = list(
 		list(
 			"name" = "Toy",
-			"icon" = FA_ICON_MICROPHONE,
+			"icon" = FA_ICON_MAGIC_WAND_SPARKLES,
 			"products" = list(
 				//Sex Toys
 				/obj/item/clothing/sextoy/eggvib/signalvib = 8,
@@ -120,7 +120,7 @@
 		),
 			list(
 			"name" = "Consumable",
-			"icon" = FA_ICON_PRESCRIPTION_BOTTLE,
+			"icon" = FA_ICON_VIAL,
 			"products" = list(
 				//Sex toys
 				/obj/item/condom_pack = 20,
