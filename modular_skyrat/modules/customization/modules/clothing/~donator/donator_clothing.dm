@@ -1826,18 +1826,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 		imp_in.show_message(span_notice("You're not quite ready to toast another toast yet."))
 		return
 
-	var/list/adjacent_turfs = list()
-	for (var/turf/T in range(1, get_turf(imp_in)))
-		adjacent_turfs += T
-
-
 	var/obj/item/food/griddle_toast/toaster_implant/toast = new(get_turf(imp_in))
 	var/adjective = pick("crispy", "delicious", "fresh")
 	imp_in.visible_message(span_notice("[imp_in] ejects a [adjective] toast!"), span_notice("With the familiar \"ding\", the toaster ejects a [adjective] toast."))
 
 	playsound(imp_in, 'sound/machines/ding.ogg', vol = 75, vary = FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 	toast.throw_at(get_turf(imp_in), 2, 3)
-	toast.forceMove(pick(adjacent_turfs))
 	COOLDOWN_START(src, toast_cooldown, TOASTER_IMPLANT_COOLDOWN)
 
 /obj/item/implanter/toaster
