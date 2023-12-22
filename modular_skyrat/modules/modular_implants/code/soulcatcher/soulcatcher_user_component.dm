@@ -248,7 +248,7 @@
 		toggle_sense("external_sight")
 
 	if(soulcatcher_action)
-		qdel(soulcatcher_action)
+		QDEL_NULL(soulcatcher_action)
 
 	if(leave_action)
 		qdel(leave_action)
