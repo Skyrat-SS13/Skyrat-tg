@@ -65,13 +65,14 @@
 		however, protect you from yourself."
 	id = "frontier_hazard_suit"
 	build_type = COLONY_FABRICATOR
-	// This materials list is a slightly cheaper compilation of this modsuit's constituent parts
+	// This materials list is all of the parts it takes to make this suit minus the cost of the (pretty poor) cell
 	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 18,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 4,
+		/datum/material/iron = ((SHEET_MATERIAL_AMOUNT * 23) + (SMALL_MATERIAL_AMOUNT * 15)),
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 3.5,
 		/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 3,
-		/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5,
-		/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/gold = ((SHEET_MATERIAL_AMOUNT) + (SMALL_MATERIAL_AMOUNT * 7.5)),
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 3,
 	)
 	build_path = /obj/item/mod/control/pre_equipped/frontier_colonist
 	category = list(

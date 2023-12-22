@@ -10,7 +10,6 @@
 	worn_icon_digi = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_digi.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "jumpsuit"
-	inhand_icon_state = null
 	has_sensor = SENSOR_COORDS
 	random_sensor = FALSE
 
@@ -26,7 +25,6 @@
 	worn_icon_digi = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_digi.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "boots"
-	inhand_icon_state = null
 	armor_type = /datum/armor/colonist_clothing
 	resistance_flags = NONE
 
@@ -44,7 +42,6 @@
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "jacket"
 	slot_flags = ITEM_SLOT_OCLOTHING|ITEM_SLOT_NECK
-	inhand_icon_state = null
 	armor_type = /datum/armor/colonist_clothing
 	resistance_flags = NONE
 	allowed = null
@@ -84,7 +81,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "flak"
-	inhand_icon_state = null
 	body_parts_covered = CHEST
 	cold_protection = CHEST|GROIN
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
@@ -112,7 +108,6 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "cap"
-	inhand_icon_state = null
 
 /obj/item/clothing/head/soft/frontier_colonist/medic
 	name = "frontier medical cap"
@@ -132,7 +127,6 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "tanker"
-	inhand_icon_state = null
 	armor_type = /datum/armor/colonist_armor
 	resistance_flags = NONE
 	flags_inv = 0
@@ -150,7 +144,6 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "radio"
-	inhand_icon_state = null
 	alternate_worn_layer = FACEMASK_LAYER + 0.5
 	subspace_transmission = FALSE
 	radiosound = 'modular_skyrat/modules/colony_fabricator/sound/morse_signal.wav'
@@ -193,6 +186,5 @@
 	worn_icon_digi = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_digi.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "mask"
-	inhand_icon_state = null
 	flags_inv = HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	armor_type = /datum/armor/colonist_hazard

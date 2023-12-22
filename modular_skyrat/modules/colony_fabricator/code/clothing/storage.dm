@@ -9,23 +9,19 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "backpack"
-	inhand_icon_state = null
-	// These have the storage of a duffelbag, however do not have the benefits that zipping/unzipping give a duffelbag (like bulky item storage)
-	storage_type = /datum/storage/duffel
+	inhand_icon_state = "backpack"
 
 /obj/item/storage/backpack/industrial/frontier_colonist/satchel
 	name = "frontier satchel"
 	desc = "A rugged satchel often used by settlers and explorers. Holds less of your equipment than a backpack will."
 	icon_state = "satchel"
 	worn_icon_state = "satchel"
-	storage_type = /datum/storage/backpack
 
 /obj/item/storage/backpack/industrial/frontier_colonist/messenger
 	name = "frontier messenger bag"
 	desc = "A rugged messenger bag often used by settlers and explorers. Holds less of your equipment than a backpack will."
 	icon_state = "messenger"
 	worn_icon_state = "messenger"
-	storage_type = /datum/storage/backpack
 
 // Belts
 
@@ -45,7 +41,7 @@
 /obj/item/storage/belt/utility/frontier_colonist/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
-	atom_storage.max_slots = 7
+	atom_storage.max_slots = 6
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	// Can hold whatever a toolbelt can + some mining equipment for convenience
 	atom_storage.set_holdable(list(
