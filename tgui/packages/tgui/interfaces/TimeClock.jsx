@@ -1,7 +1,7 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
+import { Box, Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
-import { Box, LabeledList, Section, Button } from '../components';
 
 export const TimeClock = (props) => {
   const { act, data } = useBackend();
@@ -42,7 +42,8 @@ export const TimeClock = (props) => {
               <Button
                 width="95%"
                 disabled={insert_id_cooldown}
-                onClick={() => act('clock_in_or_out')}>
+                onClick={() => act('clock_in_or_out')}
+              >
                 <center>{clock_status ? 'Clock In' : 'Clock Out'} </center>
               </Button>
               <Button icon="eject" onClick={() => act('eject_id')} />

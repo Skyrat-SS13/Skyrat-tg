@@ -1,6 +1,6 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
-import { NoticeBox, Section, Button, LabeledList } from '../components';
+import { Button, LabeledList, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const MicrofusionGunControl = (props) => {
@@ -26,7 +26,8 @@ export const MicrofusionGunControl = (props) => {
                     })
                   }
                 />
-              }>
+              }
+            >
               <LabeledList>
                 <LabeledList.Item label="Players">
                   {server.players}/{server.max_players}

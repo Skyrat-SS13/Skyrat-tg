@@ -1,5 +1,5 @@
-// THIS IS A SKYRAT UI FILE
 import { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
@@ -29,7 +29,8 @@ export const BluespaceArtillery = (props) => {
                   disabled={!unlocked}
                   onClick={() => act('recalibrate')}
                 />
-              }>
+              }
+            >
               <Box color={target ? 'average' : 'bad'} fontSize="25px">
                 {target || 'No Target Set'}
               </Box>

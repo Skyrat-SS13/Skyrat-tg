@@ -1,11 +1,15 @@
 import { useBackend } from '../backend';
-import { Box, Collapsible, Divider, LabeledList, Section, Stack } from '../components';
-import { Objective } from './common/Objectives';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
-
+import {
+  Box,
+  Collapsible,
+  Divider,
+  LabeledList,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+import { Objective } from './common/Objectives';
 
 type Data = {
   color: string;
@@ -63,7 +67,8 @@ const Overview = (props) => {
         <span
           style={{
             color,
-          }}>
+          }}
+        >
           {name}
         </span>
       </Stack.Item>
@@ -72,7 +77,8 @@ const Overview = (props) => {
         <span
           style={{
             color,
-          }}>
+          }}
+        >
           {name}
         </span>{' '}
         reagent {description}
@@ -83,7 +89,8 @@ const Overview = (props) => {
           <span
             style={{
               color,
-            }}>
+            }}
+          >
             {name}
           </span>{' '}
           reagent {effects}
@@ -188,7 +195,8 @@ const ObjectiveDisplay = (props) => {
           <LabeledList.Item
             color={color ?? 'white'}
             key={index}
-            label={(index + 1).toString()}>
+            label={(index + 1).toString()}
+          >
             {explanation}
           </LabeledList.Item>
         ))}

@@ -1,6 +1,14 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button, NoticeBox } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  Image,
+  NoticeBox,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 export const ArmamentStation = (props) => {
@@ -66,7 +74,8 @@ export const ArmamentStation = (props) => {
                     armament_category.subcategories.map((subcat) => (
                       <Section
                         key={subcat.subcategory}
-                        title={subcat.subcategory}>
+                        title={subcat.subcategory}
+                      >
                         <Stack vertical>
                           {subcat.items.map((item) => (
                             <Stack.Item key={item.ref}>
@@ -81,7 +90,8 @@ export const ArmamentStation = (props) => {
                                 }
                                 width="100%"
                                 key={item.ref}
-                                onClick={() => setArmament(item.ref)}>
+                                onClick={() => setArmament(item.ref)}
+                              >
                                 <img
                                   src={`data:image/jpeg;base64,${item.icon}`}
                                   style={{
@@ -95,7 +105,7 @@ export const ArmamentStation = (props) => {
                           ))}
                         </Stack>
                       </Section>
-                    ))
+                    )),
                 )}
               </Section>
             </Stack.Item>
@@ -107,21 +117,17 @@ export const ArmamentStation = (props) => {
                     subcat.items.map(
                       (item) =>
                         item.ref === weapon && (
-                          <Stack vertical>
+                          <Stack vertical key={item.ref}>
                             <Stack.Item>
-                              <Box key={item.ref}>
-                                <img
-                                  height="100%"
-                                  width="100%"
-                                  src={`data:image/jpeg;base64,${item.icon}`}
-                                  style={{
-                                    'vertical-align': 'middle',
-                                    'horizontal-align': 'middle',
-                                    '-ms-interpolation-mode':
-                                      'nearest-neighbor',
-                                  }}
-                                />
-                              </Box>
+                              <Image>
+                                src=
+                                {`data:image/jpeg;base64,${item.icon}`}
+                                height={'100%'} width={'100%'} style=
+                                {{
+                                  'vertical-align': 'middle',
+                                  'horizontal-align': 'middle',
+                                }}
+                              </Image>
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
                             <Stack.Item
@@ -129,7 +135,8 @@ export const ArmamentStation = (props) => {
                                 item.quantity - item.purchased <= 0
                                   ? 'red'
                                   : 'green'
-                              }>
+                              }
+                            >
                               {'Quantity Remaining: ' +
                                 (item.quantity - item.purchased)}
                             </Stack.Item>
@@ -138,7 +145,8 @@ export const ArmamentStation = (props) => {
                                 item.cost > card_points || !card_inserted
                                   ? 'red'
                                   : 'green'
-                              }>
+                              }
+                            >
                               {'Cost: ' + item.cost}
                             </Stack.Item>
                             {!!item.buyable_ammo && (
@@ -148,7 +156,8 @@ export const ArmamentStation = (props) => {
                                   !card_inserted
                                     ? 'red'
                                     : 'green'
-                                }>
+                                }
+                              >
                                 {'Ammo Cost: ' + item.magazine_cost}
                               </Stack.Item>
                             )}
@@ -184,9 +193,9 @@ export const ArmamentStation = (props) => {
                               </Stack.Item>
                             )}
                           </Stack>
-                        )
-                    )
-                  )
+                        ),
+                    ),
+                  ),
                 )}
               </Section>
             </Stack.Item>

@@ -1,5 +1,5 @@
 // THIS IS A SKYRAT UI FILE
-import { Section, BlockQuote, Box, NoticeBox } from '../components';
+import { BlockQuote, Box, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const DelamProcedure = () => {
@@ -8,7 +8,8 @@ export const DelamProcedure = () => {
       title="Safety Moth - Delamination Emergency Procedure"
       width={666}
       height={865}
-      theme="dark">
+      theme="dark"
+    >
       <Window.Content>
         <Section title="NT-approved delam emergency procedure">
           <NoticeBox danger m={2}>
