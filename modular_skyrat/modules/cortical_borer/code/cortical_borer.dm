@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/epinephrine,
 										/datum/reagent/medicine/haloperidol,
 										/datum/reagent/toxin/formaldehyde,
-										/datum/reagent/impurity/libitoil,
+										/datum/reagent/inverse/libitoil,
 										/datum/reagent/impurity/mannitol,
 										/datum/reagent/medicine/c2/libital,
 										/datum/reagent/medicine/c2/lenturi,

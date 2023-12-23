@@ -1,16 +1,18 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend, useLocalState } from '../backend';
-import {
-  LabeledList,
-  Stack,
-  Button,
-  Section,
-  ProgressBar,
-  Box,
-  Tabs,
-  Divider,
-} from '../components';
 import { BooleanLike } from 'common/react';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Divider,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 import { Rules } from './AntagInfoRules';
 
@@ -51,7 +53,7 @@ type Info = {
 };
 
 export const AntagInfoAssaultops = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   const { data } = useBackend<Info>();
   const { required_keys, uploaded_keys, objectives } = data;
   return (

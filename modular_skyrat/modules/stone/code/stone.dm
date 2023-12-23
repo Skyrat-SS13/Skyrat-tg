@@ -6,7 +6,8 @@
 	icon_state = "sheet-stone"
 	inhand_icon_state = "sheet-metal"
 	mats_per_unit = list(/datum/material/stone=SHEET_MATERIAL_AMOUNT)
-	throwforce = 10
+	force = 10
+	throwforce = 15
 	resistance_flags = FIRE_PROOF
 	merge_type = /obj/item/stack/sheet/mineral/stone
 	grind_results = null
@@ -52,6 +53,8 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	singular_name = "rough stone boulder"
 	mats_per_unit = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/stone
+	force = 10
+	throwforce = 15
 
 /obj/item/stack/stone/examine()
 	. = ..()
