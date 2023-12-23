@@ -5,7 +5,6 @@
 	id = SPECIES_LIZARD
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_TAILED_DEFENDER,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
@@ -28,7 +27,6 @@
 	exotic_bloodtype = "L"
 	inert_mutation = /datum/mutation/human/firebreath
 	death_sound = 'sound/voice/lizard/deathsound.ogg'
-	wing_types = list(/obj/item/organ/external/wings/functional/dragon)
 	species_language_holder = /datum/language_holder/lizard
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
 
@@ -77,8 +75,9 @@
 //SKYRAT EDIT REMOVAL BEGIN
 /*
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["body_markings"] = pick(GLOB.body_markings_list)
-	randomize_external_organs(human_mob)
+	var/list/features = ..()
+	features["body_markings"] = pick(GLOB.body_markings_list)
+	return features
 */
 //SKYRAT EDIT REMOVAL END
 

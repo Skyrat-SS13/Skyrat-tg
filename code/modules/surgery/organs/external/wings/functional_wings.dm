@@ -26,10 +26,8 @@
 	///Are our wings open or closed?
 	var/wings_open = FALSE
 
-// SKYRAT EDIT START - No free fall softening for everyone
-/obj/item/organ/external/wings/functional/can_soften_fall()
-	return TRUE
-// SKYRAT EDIT END
+	// grind_results = list(/datum/reagent/flightpotion = 5)
+	food_reagents = list(/datum/reagent/flightpotion = 5)
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
@@ -212,3 +210,9 @@
 	name = "fly wings"
 	desc = "Fly as a fly."
 	sprite_accessory_override = /datum/sprite_accessory/wings/fly
+
+///slime wings, which relate to slimes.
+/obj/item/organ/external/wings/functional/slime
+	name = "slime wings"
+	desc = "How does something so squishy even fly?"
+	sprite_accessory_override = /datum/sprite_accessory/wings/slime

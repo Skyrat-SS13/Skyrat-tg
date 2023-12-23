@@ -6,6 +6,6 @@
 	lava_damage = 0
 	lava_firestacks = 0
 	temperature_damage = 0
-	immunity_trait = GHOSTROLE_TRAIT
+	immunity_trait = TRAIT_GHOSTROLE
 	immunity_resistance_flags = LAVA_PROOF
 

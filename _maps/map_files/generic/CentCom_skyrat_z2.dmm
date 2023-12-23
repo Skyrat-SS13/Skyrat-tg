@@ -1274,7 +1274,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/holding/cafe)
 "atf" = (
-/mob/living/simple_animal/bot/cleanbot,
+/mob/living/basic/bot/cleanbot,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "ati" = (
@@ -1909,9 +1909,9 @@
 "aAE" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
-	on = 0;
 	pixel_x = -3;
-	pixel_y = 8
+	pixel_y = 8;
+	start_on = 0
 	},
 /obj/item/camera_film,
 /obj/item/canvas/twentythree_twentythree,
@@ -5210,9 +5210,9 @@
 /area/centcom/holding/cafepark)
 "dai" = (
 /obj/item/flashlight/flare/torch{
-	on = 1;
 	pixel_x = -4;
-	pixel_y = -10
+	pixel_y = -10;
+	start_on = 1
 	},
 /turf/open/misc/dirt/planet,
 /area/centcom/holding/cafepark)
@@ -7934,7 +7934,7 @@
 /area/centcom/holding/cafe)
 "kpg" = (
 /obj/structure/closet/cardboard,
-/mob/living/simple_animal/bot/medbot{
+/mob/living/basic/bot/medbot{
 	faction = list("Syndicate");
 	maints_access_required = list(150);
 	name = "Kahn";

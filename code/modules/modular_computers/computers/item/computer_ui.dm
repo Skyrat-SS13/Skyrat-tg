@@ -96,6 +96,7 @@
 	)
 
 	data["proposed_login"] = list(
+		IDInserted = computer_id_slot ? TRUE : FALSE,
 		IDName = computer_id_slot?.registered_name,
 		IDJob = computer_id_slot?.assignment,
 	)
@@ -134,13 +135,15 @@
 
 	switch(action)
 		if("PC_exit")
-			active_program.kill_program(usr)
+			//you can't close apps in emergency mode.
+			if(isnull(internal_cell) || internal_cell.charge)
+				active_program.kill_program(usr)
 			return TRUE
 		if("PC_shutdown")
 			shutdown_computer()
 			return TRUE
 		if("PC_minimize")
-			if(!active_program)
+			if(!active_program || (!isnull(internal_cell) && !internal_cell.charge))
 				return
 			active_program.background_program()
 			return TRUE

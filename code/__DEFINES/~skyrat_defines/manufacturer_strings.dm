@@ -14,11 +14,13 @@
 #define COMPANY_ALLSTAR "It has <b>[span_red("Allstar Lasers Inc.")]</b> stamped onto it."
 #define COMPANY_MICRON "It has <b>[span_cyan("Micron Control Sys.")]</b> cut into it."
 
-#define COMPANY_IZHEVSK "It has <b>[span_brown("Izhevsk Coalition")]</b> cut into it."
+#define COMPANY_SZOT "It has a small <b>[span_engradio("three point crown")]</b> alongside <b>[span_engradio("Szot Dynamica")]</b> cut into it."
 #define COMPANY_TKACH "It has <b>[span_robot("Tkach Design Bureau")]</b> stamped onto it."
 #define COMPANY_SAKHNO "It has <b>[span_green("Sakhno Concern")]</b> stamped onto it."
 #define COMPANY_XHIHAO "It has <b>[span_purple("Xhihao Light Arms")]</b> etched into it."
 
 #define COMPANY_ABDUCTOR "It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into it."
+
+#define COMPANY_FRONTIER "It has a small label with <b>[span_engradio("Akhter Company Frontier Equipment")]</b> printed on it, alongside various xerxian proof-marks."
 
 #define COMPANY_REMOVED "It has had <b>[span_grey("all identifying marks scrubbed off")].</b>"

@@ -5,6 +5,9 @@
 /// Admins can still manually request a re-render
 #define LOG_UPDATE_TIMEOUT 5 SECONDS
 
+// The maximum number of entries allowed in the signaler investigate log, keep this relatively small to prevent performance issues when an admin tries to query it
+#define INVESTIGATE_SIGNALER_LOG_MAX_LENGTH 500
+
 //Investigate logging defines
 #define INVESTIGATE_ACCESSCHANGES "id_card_changes"
 #define INVESTIGATE_ATMOS "atmos"
@@ -85,8 +88,9 @@
 #define LOG_ENTRY_KEY_ID "id"
 #define LOG_ENTRY_KEY_SCHEMA_VERSION "s-ver"
 
-// Category for invalid/missing categories
-#define LOG_CATEGORY_NOT_FOUND "invalid-category"
+// Internal categories
+#define LOG_CATEGORY_INTERNAL_CATEGORY_NOT_FOUND "internal-category-not-found"
+#define LOG_CATEGORY_INTERNAL_ERROR "internal-error"
 
 // Misc categories
 #define LOG_CATEGORY_ATTACK "attack"

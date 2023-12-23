@@ -1,5 +1,12 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
-import { Collapsible, Section, TextArea, LabeledList, Button } from '../components';
+import {
+  Button,
+  Collapsible,
+  LabeledList,
+  Section,
+  TextArea,
+} from '../components';
 import { Window } from '../layouts';
 
 type StoryManagerData = {
@@ -17,13 +24,13 @@ type Story = {
   day: string;
 };
 
-export const StoryManager = (props, context) => {
-  const { data, act } = useBackend<StoryManagerData>(context);
+export const StoryManager = (props) => {
+  const { data, act } = useBackend<StoryManagerData>();
   const { current_stories, archived_stories, current_date } = data;
 
-  const [title, setTitle] = useLocalState(context, 'title', '');
-  const [text, setText] = useLocalState(context, 'text', '');
-  const [id, setID] = useLocalState(context, 'id', '');
+  const [title, setTitle] = useLocalState('title', '');
+  const [text, setText] = useLocalState('text', '');
+  const [id, setID] = useLocalState('id', '');
 
   return (
     <Window width={600} height={800} title="Lorecaster Manager">
@@ -33,7 +40,7 @@ export const StoryManager = (props, context) => {
           <br />
           <i>Anything published here will not appear until the next round!</i>
           <br />
-          <span style={{ 'color': 'red' }}>
+          <span style={{ color: 'red' }}>
             Do not mess with this unless you know what you&apos;re doing.
           </span>
         </Section>
@@ -70,11 +77,12 @@ export const StoryManager = (props, context) => {
             color="blue"
             onClick={() => {
               act('publish_article', {
-                'title': title,
-                'text': text,
-                'id': id,
+                title: title,
+                text: text,
+                id: id,
               });
-            }}>
+            }}
+          >
             Publish
           </Button>
         </Section>
@@ -91,7 +99,8 @@ export const StoryManager = (props, context) => {
                 story.day +
                 '/' +
                 story.year
-              }>
+              }
+            >
               <Section>
                 {story.text}
                 <br />
@@ -101,9 +110,10 @@ export const StoryManager = (props, context) => {
                   color="red"
                   onClick={() => {
                     act('archive_article', {
-                      'id': story.id,
+                      id: story.id,
                     });
-                  }}>
+                  }}
+                >
                   Archive
                 </Button>
               </Section>
@@ -123,7 +133,8 @@ export const StoryManager = (props, context) => {
                 story.day +
                 '/' +
                 story.year
-              }>
+              }
+            >
               <Section>
                 {story.text}
                 <br />
@@ -133,9 +144,10 @@ export const StoryManager = (props, context) => {
                   color="green"
                   onClick={() => {
                     act('circulate_article', {
-                      'id': story.id,
+                      id: story.id,
                     });
-                  }}>
+                  }}
+                >
                   Circulate
                 </Button>
               </Section>

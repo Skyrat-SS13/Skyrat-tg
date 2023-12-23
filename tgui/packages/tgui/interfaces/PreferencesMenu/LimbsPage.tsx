@@ -1,10 +1,18 @@
-import { Box, Stack, Section, Dropdown, Button, ColorBox } from '../../components';
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../../backend';
-import { PreferencesMenuData } from './data';
+import {
+  Box,
+  Button,
+  ColorBox,
+  Dropdown,
+  Section,
+  Stack,
+} from '../../components';
 import { CharacterPreview } from '../common/CharacterPreview';
+import { PreferencesMenuData } from './data';
 
-export const RotateCharacterButtons = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const RotateCharacterButtons = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <Box mt={1}>
       <Button
@@ -25,8 +33,8 @@ export const RotateCharacterButtons = (props, context) => {
   );
 };
 
-export const Markings = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const Markings = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <Stack fill vertical>
       <Stack.Item>Markings:</Stack.Item>
@@ -55,7 +63,8 @@ export const Markings = (props, context) => {
                     limb_slot: props.limb.slot,
                     marking_id: marking.marking_id,
                   })
-                }>
+                }
+              >
                 <ColorBox color={marking.color} />
               </Button>
             </Stack.Item>
@@ -70,7 +79,8 @@ export const Markings = (props, context) => {
                     marking_id: marking.marking_id,
                     emissive: marking.emissive,
                   })
-                }>
+                }
+              >
                 E
               </Button>
             </Stack.Item>
@@ -83,7 +93,8 @@ export const Markings = (props, context) => {
                     limb_slot: props.limb.slot,
                     marking_id: marking.marking_id,
                   })
-                }>
+                }
+              >
                 -
               </Button>
             </Stack.Item>
@@ -94,7 +105,8 @@ export const Markings = (props, context) => {
         <Button
           fill
           color="good"
-          onClick={() => act('add_marking', { limb_slot: props.limb.slot })}>
+          onClick={() => act('add_marking', { limb_slot: props.limb.slot })}
+        >
           +
         </Button>
       </Stack.Item>
@@ -102,8 +114,8 @@ export const Markings = (props, context) => {
   );
 };
 
-export const LimbPage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const LimbPage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <div>
       <Section fill title={props.limb.name}>
@@ -117,13 +129,13 @@ export const LimbPage = (props, context) => {
   );
 };
 
-export const AugmentationPage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
-  const { data } = useBackend<PreferencesMenuData>(context);
+export const AugmentationPage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
+  const { data } = useBackend<PreferencesMenuData>();
   let balance = -data.quirks_balance;
   if (props.limb.can_augment) {
     return (
-      <div style={{ 'margin-bottom': '1.5em' }}>
+      <div style={{ marginBottom: '1.5em' }}>
         <Section fill title={props.limb.name}>
           <Stack fill vertical>
             <Stack.Item>
@@ -177,9 +189,9 @@ export const AugmentationPage = (props, context) => {
   return null;
 };
 
-export const OrganPage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
-  const { data } = useBackend<PreferencesMenuData>(context);
+export const OrganPage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
+  const { data } = useBackend<PreferencesMenuData>();
   let balance = -data.quirks_balance;
   return (
     <Stack.Item>
@@ -207,15 +219,15 @@ export const OrganPage = (props, context) => {
   );
 };
 
-export const LimbsPage = (props, context) => {
-  const { data } = useBackend<PreferencesMenuData>(context);
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const LimbsPage = (props) => {
+  const { data } = useBackend<PreferencesMenuData>();
+  const { act } = useBackend<PreferencesMenuData>();
   const markings = data.marking_presets ? data.marking_presets : [];
   let balance = -data.quirks_balance;
   return (
     <Stack minHeight="100%">
       <Stack.Item minWidth="33%" minHeight="100%">
-        <Section fill scrollable title="Markings" height="237%">
+        <Section fill scrollable title="Markings" height="197%">
           <div>
             <Dropdown
               grow
@@ -233,7 +245,7 @@ export const LimbsPage = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Character Preview" fill align="center" height="237%">
+        <Section title="Character Preview" fill align="center" height="197%">
           <CharacterPreview
             id={data.character_preview_view}
             height="25%"
@@ -242,8 +254,9 @@ export const LimbsPage = (props, context) => {
           <RotateCharacterButtons />
           <Box
             style={{
-              'margin-top': '3em',
-            }}>
+              marginTop: '3em',
+            }}
+          >
             <Section title="Quirk Points Balance" />
           </Box>
 
@@ -254,9 +267,10 @@ export const LimbsPage = (props, context) => {
             fontSize="1.2em"
             py={0.5}
             style={{
-              'width': '20%',
-              'align-items': 'center',
-            }}>
+              width: '20%',
+              alignItems: 'center',
+            }}
+          >
             {balance}
           </Box>
         </Section>
@@ -269,7 +283,7 @@ export const LimbsPage = (props, context) => {
             ))}
           </Stack>
         </Section>
-        <Section fill scrollable title="Augmentations" height="148%">
+        <Section fill scrollable title="Augmentations" height="107%">
           {data.limbs_data.map((val) => (
             <AugmentationPage key={val.slot} limb={val} data={data} />
           ))}

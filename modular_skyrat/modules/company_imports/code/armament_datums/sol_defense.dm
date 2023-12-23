@@ -2,20 +2,72 @@
 	category = SOL_DEFENSE_DEFENSE_NAME
 	company_bitflag = CARGO_COMPANY_SOL_DEFENSE
 
-// Basic armor vests
+// Beautiful SolFed clothing
+
+/datum/armament_entry/company_import/sol_defense/clothing
+	subcategory = "Surplus Clothing"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/sol_defense/clothing/peacekeeper
+	item_type = /obj/item/clothing/under/sol_peacekeeper
+
+/datum/armament_entry/company_import/sol_defense/clothing/emt
+	item_type = /obj/item/clothing/under/sol_emt
+
+// Armor vests for protecting against bullets
 
 /datum/armament_entry/company_import/sol_defense/armor
-	subcategory = "Light Body Armor"
+	subcategory = "Ballistic Armor"
+	cost = PAYCHECK_CREW * 3
+
+/datum/armament_entry/company_import/sol_defense/armor/ballistic_helmet
+	item_type = /obj/item/clothing/head/helmet/sf_peacekeeper/debranded
+
+/datum/armament_entry/company_import/sol_defense/armor/sf_ballistic_helmet
+	item_type = /obj/item/clothing/head/helmet/sf_peacekeeper
+
+/datum/armament_entry/company_import/sol_defense/armor/soft_vest
+	item_type = /obj/item/clothing/suit/armor/sf_peacekeeper/debranded
+
+/datum/armament_entry/company_import/sol_defense/armor/sf_soft_vest
+	item_type = /obj/item/clothing/suit/armor/sf_peacekeeper
+
+/datum/armament_entry/company_import/sol_defense/armor/flak_jacket
+	item_type = /obj/item/clothing/suit/armor/vest/det_suit/sol
 
 /datum/armament_entry/company_import/sol_defense/armor/slim_vest
-	name = "type I vest - slim"
+	name = "type I vest"
 	item_type = /obj/item/clothing/suit/armor/vest
+
+/datum/armament_entry/company_import/sol_defense/armor_hardened
+	subcategory = "Hardened Armor"
 	cost = PAYCHECK_CREW * 3
 
-/datum/armament_entry/company_import/sol_defense/armor/normal_vest
-	name = "type I vest - normal"
-	item_type = /obj/item/clothing/suit/armor/vest/alt
+/datum/armament_entry/company_import/sol_defense/armor_hardened/enclosed_helmet
+	item_type = /obj/item/clothing/head/helmet/toggleable/sf_hardened
+
+/datum/armament_entry/company_import/sol_defense/armor_hardened/emt_enclosed_helmet
+	item_type = /obj/item/clothing/head/helmet/toggleable/sf_hardened/emt
+
+/datum/armament_entry/company_import/sol_defense/armor_hardened/hardened_vest
+	item_type = /obj/item/clothing/suit/armor/sf_hardened
+
+/datum/armament_entry/company_import/sol_defense/armor_hardened/emt_hardened_vest
+	item_type = /obj/item/clothing/suit/armor/sf_hardened/emt
+
+/datum/armament_entry/company_import/sol_defense/armor_sacrifice
+	subcategory = "Sacrifical Armor"
 	cost = PAYCHECK_CREW * 3
+
+/datum/armament_entry/company_import/sol_defense/armor_sacrifice/sacrificial_helmet
+	item_type = /obj/item/clothing/head/helmet/sf_sacrificial
+
+/datum/armament_entry/company_import/sol_defense/armor_sacrifice/face_shield
+	item_type = /obj/item/sacrificial_face_shield
+	cost = PAYCHECK_LOWER
+
+/datum/armament_entry/company_import/sol_defense/armor_sacrifice/sacrificial_vest
+	item_type = /obj/item/clothing/suit/armor/sf_sacrificial
 
 /datum/armament_entry/company_import/sol_defense/case
 	subcategory = "Weapon Cases"
@@ -64,6 +116,11 @@
 /datum/armament_entry/company_import/sol_defense/longarm/elite
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
 	cost = PAYCHECK_COMMAND * 12
+
+/datum/armament_entry/company_import/sol_defense/longarm/bogseo
+	item_type = /obj/item/gun/ballistic/automatic/xhihao_smg
+	cost = PAYCHECK_COMMAND * 10
+	contraband = TRUE
 
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle

@@ -40,13 +40,9 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Initialize(mapload)
 	. = ..()
-	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
+	charge = new(src)
 	charge.Grant(src)
 	charge.cooldown_time = 0
-
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Destroy()
-	QDEL_NULL(charge)
-	return ..()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Shoot(atom/targeted_atom)
 	throw_at(targeted_atom, throw_at_range, throw_at_speed)

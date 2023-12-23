@@ -169,6 +169,9 @@
 /mob/living/proc/resolve_right_click_attack(atom/target, list/modifiers)
 	return target.attack_animal_secondary(src, modifiers)
 
+/**
+ * Called when a simple animal is unarmed attacking / clicking on this atom.
+ */
 /atom/proc/attack_animal(mob/user, list/modifiers)
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
 
@@ -263,14 +266,14 @@
 	Drones
 */
 
-/mob/living/simple_animal/drone/resolve_unarmed_attack(atom/attack_target, proximity_flag, list/modifiers)
+/mob/living/basic/drone/resolve_unarmed_attack(atom/attack_target, proximity_flag, list/modifiers)
 	attack_target.attack_drone(src, modifiers)
 
-/mob/living/simple_animal/drone/resolve_right_click_attack(atom/target, list/modifiers)
+/mob/living/basic/drone/resolve_right_click_attack(atom/target, list/modifiers)
 	return target.attack_drone_secondary(src, modifiers)
 
 /// Defaults to attack_hand. Override it when you don't want drones to do same stuff as humans.
-/atom/proc/attack_drone(mob/living/simple_animal/drone/user, list/modifiers)
+/atom/proc/attack_drone(mob/living/basic/drone/user, list/modifiers)
 	attack_hand(user, modifiers)
 
 /**
@@ -278,7 +281,7 @@
  * Defaults to attack_hand_secondary.
  * When overriding it, remember that it ought to return a SECONDARY_ATTACK_* value.
  */
-/atom/proc/attack_drone_secondary(mob/living/simple_animal/drone/user, list/modifiers)
+/atom/proc/attack_drone_secondary(mob/living/basic/drone/user, list/modifiers)
 	return attack_hand_secondary(user, modifiers)
 
 /*

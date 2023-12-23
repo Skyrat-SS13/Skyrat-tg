@@ -124,6 +124,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
+/datum/loadout_item/under/jumpsuit/imperial_police_uniform
+	name = "Imperial Police Uniform"
+	item_path = /obj/item/clothing/under/colonial/nri_police
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE)
+
 /datum/loadout_item/under/jumpsuit/disco
 	name = "Superstar Cop Uniform"
 	item_path = /obj/item/clothing/under/rank/security/detective/disco
@@ -140,7 +145,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_PARAMEDIC)
 
 /datum/loadout_item/under/jumpsuit/paramed_light_skirt
-	name = "Light Paramedic Uniform"
+	name = "Light Paramedic Skirt"
 	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
 	restricted_roles = list(JOB_PARAMEDIC)
 
@@ -173,10 +178,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Cargo Technician's Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/cargo/tech
 	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_CUSTOMS_AGENT)
-
-/datum/loadout_item/under/jumpsuit/cargo/shorts
-	name = "Cargo Technician's Shorts"
-	item_path = /obj/item/clothing/under/rank/cargo/tech/alt
 
 /datum/loadout_item/under/jumpsuit/cargo/skirt
 	name = "Cargo Technician's Skirt"
@@ -234,7 +235,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/christmas
 	name = "Christmas Suit"
 	item_path = /obj/item/clothing/under/costume/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/under/miscellaneous/christmas/green
 	name = "Green Christmas Suit"
@@ -383,7 +383,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/red_skirt
 
 /datum/loadout_item/under/miscellaneous/black_skirt
-	name = "Black Skirt"
+	name = "Black Skirt (Skyrat)"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/black_skirt
 
 /datum/loadout_item/under/miscellaneous/swept_skirt
@@ -393,6 +393,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/lone_skirt
 	name = "Recolorable Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
+
+/datum/loadout_item/under/miscellaneous/medium_skirt
+	name = "Medium Colourable Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/medium
+
+/datum/loadout_item/under/miscellaneous/long_skirt
+	name = "Long Colourable Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/long
 
 /datum/loadout_item/under/miscellaneous/denim_skirt
 	name = "Jean Skirt"
@@ -465,6 +473,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/maidcostume
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
+
+/datum/loadout_item/under/miscellaneous/maid_costume
+	name = "Colourable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
 
 /datum/loadout_item/under/miscellaneous/yukata
 	name = "Recolorable Yukata"
@@ -636,6 +648,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Ethereal Tunic"
 	item_path = /obj/item/clothing/under/ethereal_tunic
 
+/datum/loadout_item/under/miscellaneous/mech_suit
+	name = "Mech Suit"
+	item_path = /obj/item/clothing/under/costume/mech_suit
+	restricted_roles = list(JOB_ROBOTICIST)
 
 /*
 *	FORMAL UNDERSUITS
@@ -726,10 +742,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/navy_suit
 	name = "Navy Suit"
 	item_path = /obj/item/clothing/under/suit/navy
-
-/datum/loadout_item/under/formal/maid_outfit
-	name = "Maid Outfit"
-	item_path = /obj/item/clothing/under/costume/maid
 
 /datum/loadout_item/under/formal/maid_uniform
 	name = "Maid Uniform"

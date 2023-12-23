@@ -4,7 +4,7 @@
 	///The list of allowed mobs to slide under
 	var/static/list/allowed_mobs = list(
 		/mob/living/basic/cortical_borer,
-		/mob/living/simple_animal/drone,
+		/mob/living/basic/drone,
 	)
 
 /datum/component/sliding_under/Initialize(allowed_mobs_override = null)

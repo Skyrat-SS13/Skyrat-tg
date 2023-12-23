@@ -3,10 +3,6 @@
 	req_access = list("syndicate")
 
 // Generic lockers/subtypes
-/obj/structure/closet/secure_closet/personal
-	icon_door = "cabinet"
-	icon_state = "cabinet"
-
 /obj/structure/closet/secure_closet/interdynefob/mod_locker
 	icon_door = "syndicate"
 	icon_state = "syndicate"

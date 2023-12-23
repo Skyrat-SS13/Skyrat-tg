@@ -31,7 +31,6 @@
 			possible_cultist.adjustBruteLoss(-2.5 * seconds_per_tick)
 			possible_cultist.adjustFireLoss(-2.5 * seconds_per_tick)
 			possible_cultist.adjustOxyLoss(-2.5 * seconds_per_tick)
-			possible_cultist.adjustCloneLoss(-1 * seconds_per_tick)
 
 			new /obj/effect/temp_visual/heal(get_turf(possible_cultist), "#45dd8a")
 

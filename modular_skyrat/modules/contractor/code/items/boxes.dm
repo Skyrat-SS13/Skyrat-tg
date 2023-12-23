@@ -58,7 +58,7 @@
 	new /obj/item/storage/fancy/cigarettes/cigpack_syndicate(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/lighter(src)
-	new /obj/item/uplink/opfor(src)
+	new /obj/item/uplink/old_radio(src)
 	new /obj/item/jammer(src)
 
 /obj/item/storage/box/contractor/fulton_extraction
