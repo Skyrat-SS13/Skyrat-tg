@@ -29,30 +29,31 @@ Space Station 13 is a paranoia-laden round-based roleplaying game set against th
 You are responsible for the testing of your content and providing proof of such in your pull request. You should not mark a pull request ready for review until you have actually tested it. If you require a separate client for testing, you can use a guest account by logging out of BYOND and connecting to your test server. Test merges are not for bug finding, they are for stress tests where local testing simply doesn't allow for this.
 
 ## DEVELOPMENT FLOWCHART
+
 ![image](https://i.imgur.com/aJnE4WT.png)
 
 [Modularisation Guide](./modular_skyrat/readme.md)
 
 ## DOWNLOADING
+
 [Downloading](.github/guides/DOWNLOADING.md)
 
 [Running on the server](.github/guides/RUNNING_A_SERVER.md)
 
 [Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
-## :exclamation: How to compile :exclamation:
-
-On **2021-01-04** we have changed the way to compile the codebase.
+## Compilation
 
 Find `BUILD.bat` here in the root folder of tgstation, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile.
 
 **The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/guides/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
 
-**Building tgstation in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
+**Building tgstation in DreamMaker directly is deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
 ## Contributors
+
 [Guides for Contributors](.github/CONTRIBUTING.md)
 
 [/tg/station HACKMD account](https://hackmd.io/@tgstation) - Design documentation here

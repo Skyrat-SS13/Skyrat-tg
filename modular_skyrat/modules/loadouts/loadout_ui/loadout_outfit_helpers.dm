@@ -89,6 +89,8 @@
 		equipOutfit(equipped_outfit, visuals_only)
 
 	for(var/datum/loadout_item/item as anything in loadout_datums)
+		if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
+			continue
 		item.on_equip_item(preference_source, src, visuals_only)
 
 	if(preference_source?.read_preference(/datum/preference/toggle/green_pin))

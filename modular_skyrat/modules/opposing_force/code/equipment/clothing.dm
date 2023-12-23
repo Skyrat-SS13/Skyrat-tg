@@ -149,7 +149,7 @@
 	new /obj/item/clothing/suit/toggle/jacket/hoodie/pizza(src)
 	new /obj/item/clothing/head/pizza(src)
 	new /obj/item/clothing/head/soft/red(src)
-	new /obj/item/clothing/glasses/betterunshit(src)
+	new /obj/item/clothing/glasses/regular/betterunshit(src)
 	new /obj/item/clothing/mask/fakemoustache/italian(src)
 	new /obj/item/clothing/shoes/sneakers/red(src)
 	new /obj/item/radio/headset/headset_cent/impostorsr(src)

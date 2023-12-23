@@ -131,8 +131,13 @@
 
 	// say goodbye to that shuttle of yours
 	if(SSshuttle.emergency.mode != SHUTTLE_ESCAPE)
-		priority_announce("Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
-			"Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
+		priority_announce(
+			text = "Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
+			title = "Shuttle Failure",
+			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
+			sender_override = "Emergency Shuttle Uplink Alert",
+			color_override = "grey",
+		)
 	else
 	// except if you are on it already, then you are safe c:
 		minor_announce("ERROR: Corruption detected in navigation protocols. Connection with Transponder #XCC-P5831-ES13 lost. \

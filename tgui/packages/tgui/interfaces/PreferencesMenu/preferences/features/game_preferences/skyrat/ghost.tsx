@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { CheckboxInput, FeatureToggle } from '../../base';
 
 export const soulcatcher_join_action: FeatureToggle = {

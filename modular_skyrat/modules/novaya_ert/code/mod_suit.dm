@@ -290,7 +290,7 @@
 		balloon_alert(mod.wearer, "already full!")
 		return FALSE
 /// And if the reagent's wrong.
-	if(!attacking_item.reagents.trans_id_to(src, reagent_required, reagent_required_amount))
+	if(!attacking_item.reagents.trans_to(src, reagent_required_amount, target_id = reagent_required))
 		return FALSE
 /// And if you got to that point without screwing up then it awards you with being refilled.
 	balloon_alert(mod.wearer, "charge reloaded")

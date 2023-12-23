@@ -26,7 +26,7 @@
 	melee_attack_cooldown = CLICK_CD_MELEE
 	melee_damage_lower = 15
 	melee_damage_upper = 18
-	damage_coeff = list(BRUTE = 1, BURN = 1.5, TOX = 1.5, CLONE = 0, STAMINA = 0, OXY = 1.5)
+	damage_coeff = list(BRUTE = 1, BURN = 1.5, TOX = 1.5, STAMINA = 0, OXY = 1.5)
 	obj_damage = 20
 	attack_verb_continuous = "pummels"
 	attack_verb_simple = "pummel"
@@ -65,7 +65,7 @@
 	)
 	AddComponent(/datum/component/personal_crafting)
 	AddComponent(/datum/component/basic_inhands, y_offset = -1)
-	ai_controller?.set_blackboard_key(BB_BASIC_FOODS, gorilla_food)
+	ai_controller?.set_blackboard_key(BB_BASIC_FOODS, typecacheof(gorilla_food))
 
 /mob/living/basic/gorilla/update_overlays()
 	. = ..()
@@ -157,6 +157,12 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_PACIFISM, INNATE_TRAIT)
 	AddComponent(/datum/component/crate_carrier)
+
+/mob/living/basic/gorilla/cargorilla/death(gibbed)
+	var/datum/component/potential_component = GetComponent(/datum/component/ghost_direct_control)
+	if(!QDELETED(potential_component))
+		qdel(potential_component)
+	return ..()
 
 /**
  * Poll ghosts for control of the gorilla. Not added in init because we only want to poll when the round starts.
