@@ -10,7 +10,7 @@
 	//  ^ If that case has changed and you need that check, add it.
 	var/rel_x = observed_atom.x - my_turf.x
 	var/rel_y = observed_atom.y - my_turf.y
-	if(fov_view && observed_atom.plane == GAME_PLANE_FOV_HIDDEN) //SKYRAT EDIT CHANGE
+	if(fov_view)
 		if(rel_x >= -1 && rel_x <= 1 && rel_y >= -1 && rel_y <= 1) //Cheap way to check inside that 3x3 box around you
 			return TRUE //Also checks if both are 0 to stop division by zero
 
@@ -132,11 +132,4 @@
 	icon_state = "90"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = FIELD_OF_VISION_BLOCKER_PLANE
-	screen_loc = "BOTTOM,LEFT"
-
-/atom/movable/screen/fov_shadow
-	icon = 'icons/effects/fov/field_of_view.dmi'
-	icon_state = "90_v"
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane = ABOVE_LIGHTING_PLANE
 	screen_loc = "BOTTOM,LEFT"
