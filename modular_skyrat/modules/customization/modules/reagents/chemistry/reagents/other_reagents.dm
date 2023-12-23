@@ -1,7 +1,7 @@
 /datum/reagent/fuel
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
-/datum/reagent/oil
+/datum/reagent/fuel/oil
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/stable_plasma
@@ -45,7 +45,7 @@
 		C.nutrition = min(C.nutrition + 5, NUTRITION_LEVEL_FULL-1)
 	..()
 
-/datum/reagent/oil/on_mob_life(mob/living/carbon/C)
+/datum/reagent/fuel/oil/on_mob_life(mob/living/carbon/C)
 	if(C.mob_biotypes & MOB_ROBOTIC && C.blood_volume < BLOOD_VOLUME_NORMAL)
 		C.blood_volume += 0.5
 	..()
