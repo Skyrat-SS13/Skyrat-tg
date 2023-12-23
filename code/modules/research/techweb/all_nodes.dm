@@ -1115,6 +1115,7 @@
 		"holosignrestaurant",
 		"holosignbar",
 		"inducer",
+		"inducerengi",
 		"tray_goggles",
 		"holopad",
 		"vendatray",
