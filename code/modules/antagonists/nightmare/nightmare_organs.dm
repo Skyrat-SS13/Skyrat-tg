@@ -17,10 +17,6 @@
 
 /obj/item/organ/internal/brain/shadow/nightmare/on_insert(mob/living/carbon/brain_owner)
 	. = ..()
-<<<<<<< HEAD
-=======
-
->>>>>>> da2de35a533 (Nightmares can (sometimes) dodge lasers (#80300))
 	if(brain_owner.dna.species.id != SPECIES_NIGHTMARE)
 		brain_owner.set_species(/datum/species/shadow/nightmare)
 		visible_message(span_warning("[brain_owner] thrashes as [src] takes root in [brain_owner.p_their()] body!"))
