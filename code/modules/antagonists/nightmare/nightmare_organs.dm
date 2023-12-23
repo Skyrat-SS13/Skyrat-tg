@@ -17,6 +17,7 @@
 
 /obj/item/organ/internal/brain/shadow/nightmare/on_insert(mob/living/carbon/brain_owner)
 	. = ..()
+
 	if(brain_owner.dna.species.id != SPECIES_NIGHTMARE)
 		brain_owner.set_species(/datum/species/shadow/nightmare)
 		visible_message(span_warning("[brain_owner] thrashes as [src] takes root in [brain_owner.p_their()] body!"))
@@ -27,8 +28,6 @@
 	if(brain_owner.mind?.has_antag_datum(/datum/antagonist/nightmare)) //Only a TRUE NIGHTMARE is worthy of using this ability
 		terrorize_spell = new(src)
 		terrorize_spell.Grant(brain_owner)
-
-	RegisterSignal(brain_owner, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(dodge_bullets))
 
 /obj/item/organ/internal/brain/shadow/nightmare/on_remove(mob/living/carbon/brain_owner)
 	. = ..()
