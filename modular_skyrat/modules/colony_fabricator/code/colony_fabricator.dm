@@ -90,8 +90,12 @@
 /obj/item/flatpacked_machine/Initialize(mapload)
 	. = ..()
 	desc = initial(type_to_deploy.desc)
-	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)
+	give_deployable_component()
 	give_manufacturer_examine()
+
+/// Adds the deployable component, so that it can be overridden in case that's wanted
+/obj/item/flatpacked_machine/proc/give_deployable_component()
+	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)
 
 /// Adds the manufacturer examine element to the flatpack machine, but can be overridden in the future
 /obj/item/flatpacked_machine/proc/give_manufacturer_examine()
