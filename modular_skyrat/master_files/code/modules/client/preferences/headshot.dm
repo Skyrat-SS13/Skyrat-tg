@@ -47,8 +47,3 @@
 	stored_link[usr?.ckey] = value
 	usr?.client?.prefs.headshot = value
 	return TRUE
-
-/datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
-	if(isnull(usr)) // Joining at roundstart
-		return ..()
-	return ..()
