@@ -496,7 +496,6 @@
 			return FALSE
 		//SKYRAT EDIT ADDITION END
 		move_intent = MOVE_INTENT_RUN
-	SET_PLANE_IMPLICIT(src, (move_intent == MOVE_INTENT_WALK && !HAS_TRAIT(src, TRAIT_OVERSIZED)) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE) //SKYRAT EDIT ADDITION - Oversized Overhaul
 	if(hud_used?.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_appearance()
