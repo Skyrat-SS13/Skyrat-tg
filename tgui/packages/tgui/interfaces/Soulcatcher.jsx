@@ -1,17 +1,17 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
 import {
   BlockQuote,
-  Button,
-  Divider,
-  Section,
   Box,
-  Flex,
+  Button,
   Collapsible,
+  Divider,
+  Flex,
   LabeledList,
   ProgressBar,
+  Section,
 } from '../components';
+import { Window } from '../layouts';
 
 export const Soulcatcher = (props) => {
   const { act, data } = useBackend();

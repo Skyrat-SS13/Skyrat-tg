@@ -16,6 +16,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_OXYIMMUNE	"oxyimmune" // Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_AFFECTION_AVERSION "affection_aversion" // No more dogborg licking. "Dogborg bad" is no longer a personality
 #define TRAIT_PERSONALSPACE "personalspace" // Block/counter-attack ass-slaps
+#define TRAIT_QUICKREFLEXES "quickreflexes" // Counters hugs and headpats
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
 #define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass

@@ -1,4 +1,5 @@
-import { FakeTerminal } from '../components/FakeTerminal';
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
   Box,
@@ -10,7 +11,10 @@ import {
   Modal,
   NoticeBox,
   Section,
+  Table,
+  Tabs,
 } from '../components';
+import { FakeTerminal } from '../components/FakeTerminal';
 import { NtosWindow } from '../layouts';
 
 const CONTRACT_STATUS_INACTIVE = 1;
@@ -190,17 +194,17 @@ export const StatusPane = (props) => {
                 />
               }
             >
-              {String(redeemable_tc)}
+              {String(data.redeemable_tc)}
             </LabeledList.Item>
             <LabeledList.Item label="TC Earned">
-              {String(earned_tc)}
+              {String(data.earned_tc)}
             </LabeledList.Item>
           </LabeledList>
         </Grid.Column>
         <Grid.Column>
           <LabeledList>
             <LabeledList.Item label="Contracts Completed">
-              {String(contracts_completed)}
+              {String(data.contracts_completed)}
             </LabeledList.Item>
             <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>
@@ -211,7 +215,7 @@ export const StatusPane = (props) => {
 };
 
 export const SyndPane = (props) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+  const [tab, setTab] = useState(1);
   return (
     <>
       <StatusPane state={props.state} />
@@ -298,9 +302,9 @@ const ContractsTab = (props) => {
       <Section
         title="Dropoff Locator"
         textAlign="center"
-        opacity={ongoing_contract ? 100 : 0}
+        opacity={data.ongoing_contract ? 100 : 0}
       >
-        <Box bold>{dropoff_direction}</Box>
+        <Box bold>{data.dropoff_direction}</Box>
       </Section>
     </>
   );
