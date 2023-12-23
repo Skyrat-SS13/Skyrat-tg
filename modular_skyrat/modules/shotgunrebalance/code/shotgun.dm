@@ -1,25 +1,18 @@
 #define AMMO_MATS_SHOTGUN list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4) // not quite as thick as a half-sheet
 
-#define AMMO_MATS_SHOTGUN_PT20 list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3,\
-									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5,\
-									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5) // plastitanium slug
-
-#define AMMO_MATS_SHOTGUN_RIP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3,\
-									/datum/material/bronze = SMALL_MATERIAL_AMOUNT * 1) // the bronze is because real RIP shells are made with copper, apparently
-
 #define AMMO_MATS_SHOTGUN_FLECH list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2)
+									/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
 
 #define AMMO_MATS_SHOTGUN_HIVE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
 									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
 									/datum/material/silver = SMALL_MATERIAL_AMOUNT * 1)
 
 #define AMMO_MATS_SHOTGUN_TIDE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/gold = SMALL_MATERIAL_AMOUNT * 1,\
-									/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 1) // i mean. i - i guess?
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
+									/datum/material/gold = SMALL_MATERIAL_AMOUNT * 1)
 
-#define AMMO_MATS_SHOTGUN_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2) // covers both iceblox and incendiary
+#define AMMO_MATS_SHOTGUN_PLASMA list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2)
 
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
@@ -43,7 +36,7 @@
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 	advanced_print_req = TRUE
-	custom_materials = AMMO_MATS_SHOTGUN_TEMP
+	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 
 /obj/item/ammo_casing/shotgun/techshell
 	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
@@ -91,105 +84,74 @@
 	sacrificing individual pellet strength for sheer stopping power in what's best described as \"spitting distance\".\
 	<br><br>\
 	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
-	// ...you know what if you're confident you can get up in there, you might as well get to use it if you're able to print Weird Shells.
-
-/obj/item/ammo_casing/shotgun/hp
-	name = "hollow point slug"
-	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
-	icon_state = "stunshell"
-	projectile_type = /obj/projectile/bullet/shotgun_slug/hp
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/shotgun_slug/hp
-	name = "12g hollow point shotgun slug"
-	damage = 60
-	wound_bonus = 0
-	bare_wound_bonus = 40
-	weak_against_armour = TRUE
-
-/obj/item/ammo_casing/shotgun/pt20
-	name = "PT-20 armor piercing slug"
-	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
-	icon_state = "apshell"
-	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
-	custom_materials = AMMO_MATS_SHOTGUN_PT20
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/shotgun_slug/pt20
-	name = "armor piercing shotgun slug"
-	damage = 40
-	armour_penetration = 50
-
-/obj/item/ammo_casing/shotgun/rip
-	name = "RIP shotgun slug"
-	desc = "A Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
-	icon_state = "ripshell"
-	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
-	custom_materials = AMMO_MATS_SHOTGUN_RIP
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/shotgun_slug/rip
-	name = "RIP shotgun slug"
-	damage = 50
-	weak_against_armour = TRUE
-	embedding = list(embed_chance=80, pain_chance=40, fall_chance=5, jostle_chance=5, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.5, pain_mult=5, rip_time=30)
+	can_be_printed = FALSE
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
 	desc = "A 12 gauge buckshot shell."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot
-	pellets = 8 //Original: 6 || 8 x 8 = 64 Damage Potential, 34 Damage at 4 tile range
+	pellets = 8 // 8 * 6 for 48 damage if every pellet hits, we want to keep lethal shells ~50 damage
 	variance = 25
 
 /obj/projectile/bullet/pellet/shotgun_buckshot
 	name = "buckshot pellet"
-	damage = 8//7.5
-	wound_bonus = 5
-	bare_wound_bonus = 5
-	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
-	weak_against_armour = TRUE // Did you knew shotguns are actually shit against armor?
+	damage = 6
+	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/shotgun/rubbershot
 	name = "rubber shot"
 	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
 	icon_state = "rshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
-	pellets = 7
+	pellets = 6 // 6 * 10 for 60 stamina damage, + some small amount of brute, we want to keep less lethal shells ~60
 	variance = 20
 	harmful = FALSE
 
+/obj/projectile/bullet/pellet/shotgun_rubbershot
+	weak_against_armour = TRUE
+	stamina = 10
+
 /obj/item/ammo_casing/shotgun/magnum
-	name = "magnum buckshot shell"
-	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread. It is able to contend against armored targets."
+	name = "magnum blockshot shell"
+	desc = "A 12 gauge shell that fires fewer, larger pellets than buckshot. A favorite of SolFed anti-piracy enforcers, \
+		especially against the likes of vox."
 	icon_state = "magshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
-	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
-	variance = 30
+	pellets = 4 // Half as many pellets for twice the damage each pellet, same overall damage as buckshot
+	variance = 20
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
-	name = "magnum buckshot pellet"
-	damage = 10
-	wound_bonus = 8
-	weak_against_armour = FALSE
+	name = "magnum blockshot pellet"
+	damage = 12
+	wound_bonus = 10
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/magnum/Initialize(mapload)
+	. = ..()
+	transform = transform.Scale(1.25, 1.25)
 
 /obj/item/ammo_casing/shotgun/express
-	name = "express buckshot shell"
-	desc = "A 12 gauge buckshot shell that has tighter spread and smaller projectiles."
+	name = "express pelletshot shell"
+	desc = "A 12 gauge shell that fires more and smaller projectiles than buckshot. Considered taboo to speak about \
+		openly near teshari, for reasons you would be personally blessed to not know at least some of."
 	icon_state = "expshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/express
-	pellets = 9 //6 x 9 = 51 Damage Potential, 33 Damage at 4 tile range
-	variance = 20 //tighter spread
+	pellets = 12 // 1.3x The pellets for 0.6x the damage, same overall damage as buckshot
+	variance = 30 // Slightly wider spread than buckshot
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	name = "express buckshot pellet"
-	damage = 6
-	speed = 0.6
+	damage = 4
+	wound_bonus = 0
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/express/Initialize(mapload)
+	. = ..()
+	transform = transform.Scale(0.75, 0.75)
 
 /obj/item/ammo_casing/shotgun/flechette
 	name = "flechette shell"
-	desc = "A 12 gauge flechette shell that specializes in ripping through armor."
+	desc = "A 12 gauge flechette shell that specializes in ripping unarmored targets apart."
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
@@ -199,35 +161,41 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	name = "flechette"
+	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
+	icon_state = "flechette"
 	damage = 6
-	weak_against_armour = FALSE //Were here to rip armor
-	armour_penetration = 40
-	wound_bonus = 9
-	bare_wound_bonus = 0
+	wound_bonus = 10
+	bare_wound_bonus = 20
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
 
+/obj/projectile/bullet/pellet/shotgun_buckshot/flechette/Initialize(mapload)
+	. = ..()
+	SpinAnimation()
+
 /obj/item/ammo_casing/shotgun/beehive
-	name = "B3-HVE 'Beehive' shell"
-	desc = "A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
+	name = "hornet shell"
+	desc = "A less-lethal 12 gauge shell that fires four pellets capable of bouncing off nearly any surface \
+		and re-aiming themselves toward the nearest target. They will, however, go for <b>any target</b> nearby."
 	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
-	pellets = 6
-	variance = 20
+	pellets = 4
+	variance = 15
 	fire_sound = 'sound/weapons/taser.ogg'
 	harmful = FALSE
 	custom_materials = AMMO_MATS_SHOTGUN_HIVE
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
-	name = "beehive pellet"
+	name = "hornet flechette"
+	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
+	icon_state = "hornet"
 	damage = 4
-	stamina = 10
+	stamina = 15
 	damage_falloff_tile = 0.1
 	stamina_falloff_tile = 0.1
 	wound_bonus = -5
 	bare_wound_bonus = 5
 	wound_falloff_tile = 0
-	weak_against_armour = TRUE
 	sharpness = NONE
 	ricochets_max = 5
 	ricochet_chance = 200
@@ -238,11 +206,11 @@
 	ricochet_incidence_leeway = 0 //nanomachines son
 
 /obj/item/ammo_casing/shotgun/antitide
-	name = "4NT1-TD3 'Suppressor' shell"
+	name = "stardust shell"
 	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
-	pellets = 5
+	pellets = 8 // 8 * 7 for 56 stamina damage, plus whatever the embedded shells do
 	variance = 30
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
@@ -251,8 +219,10 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
 	name = "electrode"
-	damage = 4
-	stamina = 6
+	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
+	icon_state = "stardust"
+	damage = 2
+	stamina = 8
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
 	wound_bonus = 0
@@ -260,66 +230,27 @@
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
-	weak_against_armour = TRUE
 	sharpness = NONE
 	range = 8
-	icon_state = "spark"
 	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
-
-/obj/projectile/bullet/pellet/shotgun_buckshot/antitide/Initialize(mapload)
-	. = ..()
-	SpinAnimation()
-	transform *= 0.25
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/on_range()
 	do_sparks(1, TRUE, src)
 	..()
 
-/obj/item/ammo_casing/shotgun/iceblox
-	name = "Iceshot shell"
-	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
-	icon_state = "tshell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
-	custom_materials = AMMO_MATS_SHOTGUN_TEMP
-	pellets = 5
-	variance = 20
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/pellet/shotgun_buckshot/iceblox //see /obj/projectile/temp for the original code
-	name = "iceblox pellet"
-	damage_falloff_tile = 0.35
-	damage = 5
-	weak_against_armour = TRUE
-	var/temperature = 30
-
-/obj/projectile/bullet/pellet/shotgun_buckshot/iceblox/on_hit(atom/target, blocked = 0, pierce_hit)
-	. = ..()
-	if(isliving(target))
-		var/mob/living/UnluckyBastard = target
-		UnluckyBastard.adjust_bodytemperature(((100-blocked)/100)*(temperature - UnluckyBastard.bodytemperature))
-
 /obj/item/ammo_casing/shotgun/hunter
-	name = "hunter buckshot shell"
-	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler beings."
+	name = "hunter slug shell"
+	desc = "A 12 gauge slug shell that fires specially designed slugs that deal extra damage to the local planetary fauna"
 	icon_state = "huntershell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
-	pellets = 6 // 6 x 30 = 180 damage vs simples
-	variance = 30
+	projectile_type = /obj/projectile/bullet/shotgun_slug/hunter
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/hunter
-	name = "hunter buckshot pellet"
-	damage = 5
-	wound_bonus = 0
-	weak_against_armour = FALSE
-		/// Bonus force dealt against certain factions
-	var/faction_bonus_force = 25
-		/// Any mob with a faction that exists in this list will take bonus damage/effects
-	var/list/nemesis_path = /mob/living/simple_animal
+/obj/projectile/bullet/shotgun_slug/hunter
+	name = "12g hunter slug"
+	damage = 20
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
-	if(istype(target, nemesis_path))
-		damage += faction_bonus_force
-	.=..()
+/obj/projectile/bullet/shotgun_slug/hunter/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 5)
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0

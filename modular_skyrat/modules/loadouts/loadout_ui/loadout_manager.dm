@@ -1,8 +1,8 @@
 /// -- The loadout manager and UI --
 /// Tracking when a client has an open loadout manager, to prevent funky stuff.
 /client
-	/// A ref to loadout_manager datum.
-	var/datum/loadout_manager/open_loadout_ui = null
+	/// A weakref to loadout_manager datum.
+	var/datum/weakref/open_loadout_ui
 
 /// Datum holder for the loadout manager UI.
 /datum/loadout_manager
@@ -10,28 +10,22 @@
 	var/client/owner
 	/// The current selected loadout list.
 	var/list/loadout_on_open
-	/// The key of the dummy we use to generate sprites
-	var/dummy_key
-	/// The dir the dummy is facing.
-	var/list/dummy_dir = list(SOUTH)
-	/// A ref to the dummy outfit we're using
-	var/datum/outfit/player_loadout/custom_loadout
-	/// Whether we see our favorite job's clothes on the dummy
-	var/view_job_clothes = TRUE
 	/// Our currently open greyscaling menu.
 	var/datum/greyscale_modify_menu/menu
 
 /datum/loadout_manager/Destroy(force, ...)
+	if(menu)
+		SStgui.close_uis(menu)
+		menu = null
+	owner?.open_loadout_ui = null
 	owner = null
 	QDEL_NULL(menu)
-	QDEL_NULL(custom_loadout)
 	return ..()
 
 /datum/loadout_manager/New(user)
 	owner = CLIENT_FROM_VAR(user)
-	owner.open_loadout_ui = src
 	loadout_on_open = LAZYLISTDUPLICATE(owner.prefs.loadout_list)
-	custom_loadout = new()
+	owner.open_loadout_ui = WEAKREF(src)
 
 /datum/loadout_manager/ui_close(mob/user)
 	owner?.prefs.save_character()
@@ -39,7 +33,6 @@
 		SStgui.close_uis(menu)
 		menu = null
 	owner?.open_loadout_ui = null
-	qdel(custom_loadout)
 	qdel(src)
 
 /datum/loadout_manager/ui_state(mob/user)
@@ -50,6 +43,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "LoadoutManager")
+		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/loadout_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -102,18 +96,6 @@
 		// Clears the loadout list entirely.
 		if("clear_all_items")
 			LAZYNULL(owner.prefs.loadout_list)
-			owner?.prefs?.character_preview_view.update_body()
-
-		// Rotates the dummy left or right depending on params["dir"]
-		if("rotate_dummy")
-			rotate_model_dir(params["dir"])
-
-		// Toggles between showing all dirs of the dummy at once.
-		if("show_all_dirs")
-			toggle_model_dirs()
-
-		if("update_preview")
-			owner?.prefs.preview_pref = params["updated_preview"]
 			owner?.prefs?.character_preview_view.update_body()
 
 		if("donator_explain")
@@ -266,20 +248,6 @@
 
 	to_chat(owner, examine_block(composed_message))
 
-/// Rotate the dummy [DIR] direction, or reset it to SOUTH dir if we're showing all dirs at once.
-/datum/loadout_manager/proc/rotate_model_dir(dir)
-	if(dir == "left")
-		owner?.prefs?.character_preview_view.dir = turn(owner?.prefs?.character_preview_view.dir, 90)
-	else
-		owner?.prefs?.character_preview_view.dir = turn(owner?.prefs?.character_preview_view.dir, -90)
-
-/// Toggle between showing all the dirs and just the front dir of the dummy.
-/datum/loadout_manager/proc/toggle_model_dirs()
-	if(dummy_dir.len > 1)
-		dummy_dir = list(SOUTH)
-	else
-		dummy_dir = GLOB.cardinals
-
 /datum/loadout_manager/ui_data(mob/user)
 	var/list/data = list()
 
@@ -288,10 +256,6 @@
 		all_selected_paths += path
 	data["selected_loadout"] = all_selected_paths
 	data["user_is_donator"] = !!(GLOB.donator_list[owner.ckey] || is_admin(owner))
-	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
-	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
-	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
-	data["preview_selection"] = owner?.prefs.preview_pref
 
 	return data
 
@@ -362,7 +326,7 @@
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
-		formatted_item["is_renamable"] = item.can_be_named
+		formatted_item["is_renameable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
 		formatted_item["is_job_blacklisted"] = !isnull(item.blacklisted_roles)
 		formatted_item["is_species_restricted"] = !isnull(item.restricted_species)

@@ -1,8 +1,6 @@
 import { BlockQuote, Stack } from '../components';
 import { Window } from '../layouts';
-// SKYRAT EDIT BEGIN
-import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
+import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 
 const goodstyle = {
   color: 'lightgreen',
@@ -16,7 +14,7 @@ const noticestyle = {
   color: 'lightblue',
 };
 
-export const AntagInfoMorph = (props, context) => {
+export const AntagInfoMorph = (props) => {
   return (
     <Window width={620} height={170} theme="abductor">
       <Window.Content>

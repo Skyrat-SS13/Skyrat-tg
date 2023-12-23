@@ -1,11 +1,14 @@
-import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button } from '../components';
+// THIS IS A SKYRAT UI FILE
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Divider, Image, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const CargoImportConsole = (props, context) => {
-  const [category, setCategory] = useLocalState(context, 'category', '');
-  const [weapon, setArmament] = useLocalState(context, 'weapon');
-  const { act, data } = useBackend(context);
+export const CargoImportConsole = (props) => {
+  const [category, setCategory] = useState('');
+  const [weapon, setArmament] = useState('weapon');
+  const { act, data } = useBackend();
   const {
     armaments_list = [],
     budget_points,
@@ -18,7 +21,8 @@ export const CargoImportConsole = (props, context) => {
       theme="armament"
       title="Company Import Requisition Console"
       width={1000}
-      height={600}>
+      height={600}
+    >
       <Window.Content>
         <Section grow height="100%" title="Company Import Requisition Console">
           <Stack>
@@ -63,7 +67,8 @@ export const CargoImportConsole = (props, context) => {
                     armament_category.subcategories.map((subcat) => (
                       <Section
                         key={subcat.subcategory}
-                        title={subcat.subcategory}>
+                        title={subcat.subcategory}
+                      >
                         <Stack vertical>
                           {subcat.items.map((item) => (
                             <Stack.Item key={item.ref}>
@@ -74,8 +79,9 @@ export const CargoImportConsole = (props, context) => {
                                 color={item.cant_purchase ? 'bad' : 'default'}
                                 width="100%"
                                 key={item.ref}
-                                onClick={() => setArmament(item.ref)}>
-                                <img
+                                onClick={() => setArmament(item.ref)}
+                              >
+                                <Image
                                   src={`data:image/jpeg;base64,${item.icon}`}
                                   style={{
                                     'vertical-align': 'middle',
@@ -88,7 +94,7 @@ export const CargoImportConsole = (props, context) => {
                           ))}
                         </Stack>
                       </Section>
-                    ))
+                    )),
                 )}
               </Section>
             </Stack.Item>
@@ -100,21 +106,17 @@ export const CargoImportConsole = (props, context) => {
                     subcat.items.map(
                       (item) =>
                         item.ref === weapon && (
-                          <Stack vertical>
+                          <Stack vertical key={item.ref}>
                             <Stack.Item>
-                              <Box key={item.ref}>
-                                <img
-                                  height="100%"
-                                  width="100%"
-                                  src={`data:image/jpeg;base64,${item.icon}`}
-                                  style={{
-                                    'vertical-align': 'middle',
-                                    'horizontal-align': 'middle',
-                                    '-ms-interpolation-mode':
-                                      'nearest-neighbor',
-                                  }}
-                                />
-                              </Box>
+                              <Image
+                                src={`data:image/jpeg;base64,${item.icon}`}
+                                height={'100%'}
+                                width={'100%'}
+                                style={{
+                                  'vertical-align': 'middle',
+                                  'horizontal-align': 'middle',
+                                }}
+                              />
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
                             {!!cant_buy_restricted && !!item.restricted && (
@@ -127,7 +129,8 @@ export const CargoImportConsole = (props, context) => {
                             <Stack.Item
                               textColor={
                                 item.cost > budget_points ? 'red' : 'green'
-                              }>
+                              }
+                            >
                               {'Cost: ' + item.cost}
                             </Stack.Item>
                             <Stack.Item>
@@ -147,9 +150,9 @@ export const CargoImportConsole = (props, context) => {
                               />
                             </Stack.Item>
                           </Stack>
-                        )
-                    )
-                  )
+                        ),
+                    ),
+                  ),
                 )}
               </Section>
             </Stack.Item>

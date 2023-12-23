@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/koreacoat
 
 /datum/loadout_item/suit/czech
-	name = "Modern Winter Coat"
+	name = "Czech Winter Coat"
 	item_path = /obj/item/clothing/suit/modernwintercoatthing
 
 /datum/loadout_item/suit/mantella
@@ -273,7 +273,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/winter_coat/christmas
 	name = "Christmas Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/suit/winter_coat/christmas/green
 	name = "Green Christmas Coat"

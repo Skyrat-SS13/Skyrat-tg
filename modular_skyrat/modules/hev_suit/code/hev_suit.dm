@@ -99,7 +99,6 @@
 	var/user_old_bruteloss
 	var/user_old_fireloss
 	var/user_old_toxloss
-	var/user_old_cloneloss
 	var/user_old_oxyloss
 
 	///Lots of sound vars.
@@ -417,7 +416,6 @@
 	user_old_bruteloss = current_user.getBruteLoss()
 	user_old_fireloss = current_user.getFireLoss()
 	user_old_toxloss = current_user.getToxLoss()
-	user_old_cloneloss = current_user.getCloneLoss()
 	user_old_oxyloss = current_user.getOxyLoss()
 	RegisterSignal(current_user, COMSIG_MOB_RUN_ARMOR, PROC_REF(process_hit))
 	playsound(src, armor_sound, 50)
@@ -430,7 +428,6 @@
 	var/new_bruteloss = current_user.getBruteLoss()
 	var/new_fireloss = current_user.getFireLoss()
 	var/new_toxloss = current_user.getToxLoss()
-	var/new_cloneloss = current_user.getCloneLoss()
 	var/new_oxyloss = current_user.getOxyLoss()
 	var/use_power_this_hit = FALSE
 	if(current_user.getBruteLoss() > (new_bruteloss + HEV_DAMAGE_POWER_USE_THRESHOLD))
@@ -439,12 +436,9 @@
 		use_power_this_hit = TRUE
 	if(current_user.getToxLoss() > (new_toxloss + HEV_DAMAGE_POWER_USE_THRESHOLD))
 		use_power_this_hit = TRUE
-	if(current_user.getCloneLoss() > (new_cloneloss + HEV_DAMAGE_POWER_USE_THRESHOLD))
-		use_power_this_hit = TRUE
 	user_old_bruteloss = new_bruteloss
 	user_old_fireloss = new_fireloss
 	user_old_toxloss = new_toxloss
-	user_old_cloneloss = new_cloneloss
 	user_old_oxyloss = new_oxyloss
 	state_health()
 	if(use_power_this_hit)
@@ -562,7 +556,6 @@
 	var/new_bruteloss = current_user.getBruteLoss()
 	var/new_fireloss = current_user.getFireLoss()
 	var/new_toxloss = current_user.getToxLoss()
-	var/new_cloneloss = current_user.getCloneLoss()
 	var/new_oxyloss = current_user.getOxyLoss()
 	var/new_stamloss = current_user.getStaminaLoss()
 
@@ -601,14 +594,6 @@
 			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("TOXIN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antitoxin_sound)
-		return
-
-	if(new_cloneloss)
-		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustCloneLoss(-heal_amount)
-			healing_current_cooldown = world.time + health_static_cooldown
-			send_message("MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
-			send_hev_sound(antidote_sound)
 		return
 
 /obj/item/clothing/suit/space/hev_suit/proc/process_wound(carbon, wound, bodypart)

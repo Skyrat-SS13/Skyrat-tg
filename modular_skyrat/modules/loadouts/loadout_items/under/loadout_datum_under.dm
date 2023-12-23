@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_PARAMEDIC)
 
 /datum/loadout_item/under/jumpsuit/paramed_light_skirt
-	name = "Light Paramedic Uniform"
+	name = "Light Paramedic Skirt"
 	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
 	restricted_roles = list(JOB_PARAMEDIC)
 
@@ -178,10 +178,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Cargo Technician's Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/cargo/tech
 	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_CUSTOMS_AGENT)
-
-/datum/loadout_item/under/jumpsuit/cargo/shorts
-	name = "Cargo Technician's Shorts"
-	item_path = /obj/item/clothing/under/rank/cargo/tech/alt
 
 /datum/loadout_item/under/jumpsuit/cargo/skirt
 	name = "Cargo Technician's Skirt"
@@ -239,7 +235,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/christmas
 	name = "Christmas Suit"
 	item_path = /obj/item/clothing/under/costume/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/under/miscellaneous/christmas/green
 	name = "Green Christmas Suit"
@@ -388,7 +383,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/red_skirt
 
 /datum/loadout_item/under/miscellaneous/black_skirt
-	name = "Black Skirt"
+	name = "Black Skirt (Skyrat)"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/black_skirt
 
 /datum/loadout_item/under/miscellaneous/swept_skirt
@@ -747,10 +742,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/navy_suit
 	name = "Navy Suit"
 	item_path = /obj/item/clothing/under/suit/navy
-
-/datum/loadout_item/under/formal/maid_outfit
-	name = "Maid Outfit"
-	item_path = /obj/item/clothing/under/costume/maid
 
 /datum/loadout_item/under/formal/maid_uniform
 	name = "Maid Uniform"

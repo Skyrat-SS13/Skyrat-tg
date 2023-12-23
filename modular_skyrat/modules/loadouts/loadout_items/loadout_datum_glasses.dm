@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 
 /datum/loadout_item/glasses/prescription_glasses/better
 	name = "Modern Glasses"
-	item_path = /obj/item/clothing/glasses/betterunshit
+	item_path = /obj/item/clothing/glasses/regular/betterunshit
 
 /*
 *	COSMETIC GLASSES
@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 */
 
 /datum/loadout_item/glasses/medicpatch
-	name = "Medical Eyepatch"
+	name = "Medical Eyepatch (Skyrat)"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/med
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PARAMEDIC, JOB_ORDERLY, JOB_CORONER)
 

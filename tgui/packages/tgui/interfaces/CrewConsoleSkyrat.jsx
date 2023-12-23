@@ -1,6 +1,8 @@
+// THIS IS A SKYRAT UI FILE
 import { sortBy } from 'common/collections';
+
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Icon } from '../components';
+import { Box, Button, Icon, Section, Table } from '../components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
@@ -84,8 +86,8 @@ export const CrewConsoleSkyrat = () => {
   );
 };
 
-const CrewTable = (props, context) => {
-  const { act, data } = useBackend(context);
+const CrewTable = (props) => {
+  const { act, data } = useBackend();
   const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
   return (
     <Table cellpadding="3">
@@ -110,8 +112,8 @@ const CrewTable = (props, context) => {
   );
 };
 
-const CrewTableEntry = (props, context) => {
-  const { act, data } = useBackend(context);
+const CrewTableEntry = (props) => {
+  const { act, data } = useBackend();
   const { link_allowed } = data;
   const { sensor_data } = props;
   const {
@@ -146,7 +148,7 @@ const CrewTableEntry = (props, context) => {
               toxdam,
               burndam,
               brutedam,
-              HEALTH_COLOR_BY_LEVEL
+              HEALTH_COLOR_BY_LEVEL,
             )}
             size={1}
           />
