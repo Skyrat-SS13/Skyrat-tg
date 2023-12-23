@@ -16,9 +16,6 @@
 /datum/reagent/hellwater
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
-/datum/reagent/syndicateadrenals
-	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
-
 /datum/reagent/carbondioxide
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
