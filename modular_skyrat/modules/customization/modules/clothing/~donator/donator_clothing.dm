@@ -1680,7 +1680,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	inhand_icon_state = "archerboots"
 
 // Donation reward for nikotheguydude
-/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+/obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "vickyred"
@@ -1699,7 +1699,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	body_parts_covered = CHEST|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/Initialize(mapload)
+/obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator/Initialize(mapload)
 	. = ..()
 
 	qdel(GetComponent(/datum/component/toggle_icon)) // we dont have a toggle icon
@@ -1707,7 +1707,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 #define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
 
 // this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
-/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
+/obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
 
 	var/total_credits = 0
 	var/list/obj/item/money_to_delete = list()
