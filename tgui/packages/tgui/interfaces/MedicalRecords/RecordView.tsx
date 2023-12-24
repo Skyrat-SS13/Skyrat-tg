@@ -83,7 +83,6 @@ export const MedicalRecordView = (props) => {
           fill
           scrollable
           title={name}
-          wrap
         >
           <LabeledList>
             <LabeledList.Item label="Name">
