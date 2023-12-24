@@ -1467,7 +1467,12 @@
 	else
 		for(var/obj/item/item in src)
 			if(!dropItemToGround(item))
+<<<<<<< HEAD
 				qdel(item)
+=======
+				if(!(item.item_flags & ABSTRACT))
+					qdel(item)
+>>>>>>> ab5b606a3d2 ([NO GBP] Fixes polymorphing into drones gibbing you (#80527))
 				continue
 			item_contents += item
 
