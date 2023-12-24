@@ -289,6 +289,7 @@
 	desc = "You love being tied up."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_ROPEBUNNY
+	medical_record_text = "Subject has a fondness for restraints."
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
 	icon = FA_ICON_HANDCUFFS
@@ -310,6 +311,7 @@
 	desc = "You find the weaving of rope knots on the body wonderful."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_RIGGER
+	medical_record_text = "Subject has a increased dexterity when tying knots."
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
 	icon = FA_ICON_CHAIN_BROKEN

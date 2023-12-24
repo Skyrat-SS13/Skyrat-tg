@@ -5,26 +5,26 @@
  */
 
 import { decodeHtmlEntities } from 'common/string';
+
 import { useBackend, useLocalState } from '../backend';
 import { Button, Input, Section, Table } from '../components';
 import { Popper } from '../components/Popper';
 import { Window } from '../layouts';
 
-export const RequestManager = (props, context) => {
-  const { act, data } = useBackend(context);
+export const RequestManager = (props) => {
+  const { act, data } = useBackend();
   const { requests } = data;
   const [filteredTypes, _] = useLocalState(
-    context,
     'filteredTypes',
     Object.fromEntries(
-      Object.entries(displayTypeMap).map(([type, _]) => [type, true])
-    )
+      Object.entries(displayTypeMap).map(([type, _]) => [type, true]),
+    ),
   );
-  const [searchText, setSearchText] = useLocalState(context, 'searchText');
+  const [searchText, setSearchText] = useLocalState('searchText');
 
   // Handle filtering
   let displayedRequests = requests.filter(
-    (request) => filteredTypes[request.req_type]
+    (request) => filteredTypes[request.req_type],
   );
   if (searchText) {
     const filterText = searchText.toLowerCase();
@@ -33,7 +33,7 @@ export const RequestManager = (props, context) => {
         decodeHtmlEntities(request.message)
           .toLowerCase()
           .includes(filterText) ||
-        request.owner_name.toLowerCase().includes(filterText)
+        request.owner_name.toLowerCase().includes(filterText),
     );
   }
 
@@ -46,13 +46,14 @@ export const RequestManager = (props, context) => {
             <>
               <Input
                 value={searchText}
-                onInput={(_, value) => setSearchText(value)}
+                onChange={(_, value) => setSearchText(value)}
                 placeholder={'Search...'}
                 mr={1}
               />
               <FilterPanel />
             </>
-          }>
+          }
+        >
           {displayedRequests.map((request) => (
             <div className="RequestManager__row" key={request.id}>
               <div className="RequestManager__rowContents">
@@ -80,12 +81,12 @@ export const RequestManager = (props, context) => {
 };
 
 const displayTypeMap = {
-  'request_prayer': 'PRAYER',
-  'request_centcom': 'CENTCOM',
-  'request_syndicate': 'SYNDICATE',
-  'request_nuke': 'NUKE CODE',
-  'request_fax': 'FAX',
-  'request_internet_sound': 'INTERNET SOUND',
+  request_prayer: 'PRAYER',
+  request_centcom: 'CENTCOM',
+  request_syndicate: 'SYNDICATE',
+  request_nuke: 'NUKE CODE',
+  request_fax: 'FAX',
+  request_internet_sound: 'INTERNET SOUND',
 };
 
 const RequestType = (props) => {
@@ -98,8 +99,8 @@ const RequestType = (props) => {
   );
 };
 
-const RequestControls = (props, context) => {
-  const { act, _ } = useBackend(context);
+const RequestControls = (props) => {
+  const { act, _ } = useBackend();
   const { request } = props;
 
   return (
@@ -129,18 +130,16 @@ const RequestControls = (props, context) => {
   );
 };
 
-const FilterPanel = (props, context) => {
+const FilterPanel = (props) => {
   const [filterVisible, setFilterVisible] = useLocalState(
-    context,
     'filterVisible',
-    false
+    false,
   );
   const [filteredTypes, setFilteredTypes] = useLocalState(
-    context,
     'filteredTypes',
     Object.fromEntries(
-      Object.entries(displayTypeMap).map(([type, _]) => [type, true])
-    )
+      Object.entries(displayTypeMap).map(([type, _]) => [type, true]),
+    ),
   );
 
   return (
@@ -153,7 +152,8 @@ const FilterPanel = (props, context) => {
           className="RequestManager__filterPanel"
           style={{
             display: filterVisible ? 'block' : 'none',
-          }}>
+          }}
+        >
           <Table width="0">
             {Object.keys(displayTypeMap).map((type) => {
               return (
@@ -176,7 +176,8 @@ const FilterPanel = (props, context) => {
             })}
           </Table>
         </div>
-      }>
+      }
+    >
       <Button icon="cog" onClick={() => setFilterVisible(!filterVisible)}>
         Type Filter
       </Button>

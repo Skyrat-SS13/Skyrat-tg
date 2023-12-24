@@ -1552,7 +1552,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	flags_inv = HIDEHAIR
 
 /obj/item/clothing/suit/toggle/digicoat
-	toggle_noun = "holo-dislpay"
+	toggle_noun = "holo-display"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -1589,6 +1589,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	supports_variations_flags = NONE
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
+		"Black-Blue" = list(
+			RESKIN_ICON_STATE = "coat_blackblue",
+			RESKIN_WORN_ICON_STATE = "coat_blackblue"
+		),
 		"Black-Red" = list(
 			RESKIN_ICON_STATE = "coat_blackred",
 			RESKIN_WORN_ICON_STATE = "coat_blackred"
@@ -1607,6 +1611,25 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	. = ..()
 	. += "It seems particularly soft and has subtle ballistic fibers intwined with the soft fabric that is perfectedly tailored to the body that wears it. Each golden engraving seems to reflect against your eyes with a slightly blinding flare. This is part of a full set of Luna Wolves Legion battle garb."
 
+
+/obj/item/clothing/head/hats/hos/elofy
+	name = "solar admiral hat"
+	icon ='modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "hat_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"White" = list(
+			RESKIN_ICON_STATE = "hat_white",
+			RESKIN_WORN_ICON_STATE = "hat_white"
+		),
+		"Black" = list(
+			RESKIN_ICON_STATE = "hat_black",
+			RESKIN_WORN_ICON_STATE = "hat_black"
+		)
+	)
+
+
 /obj/item/clothing/gloves/elofy
 	name = "solar admiral gloves"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
@@ -1617,6 +1640,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 		"White" = list(
 			RESKIN_ICON_STATE = "gloves_white",
 			RESKIN_WORN_ICON_STATE = "gloves_white"
+		),
+		"Black" = list(
+			RESKIN_ICON_STATE = "gloves_black",
+			RESKIN_WORN_ICON_STATE = "gloves_black"
 		)
 	)
 
@@ -1653,7 +1680,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	inhand_icon_state = "archerboots"
 
 // Donation reward for nikotheguydude
-/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+/obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "vickyred"
@@ -1672,7 +1699,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	body_parts_covered = CHEST|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/Initialize(mapload)
+/obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator/Initialize(mapload)
 	. = ..()
 
 	qdel(GetComponent(/datum/component/toggle_icon)) // we dont have a toggle icon
@@ -1680,7 +1707,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 #define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
 
 // this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
-/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
+/obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
 
 	var/total_credits = 0
 	var/list/obj/item/money_to_delete = list()
@@ -1763,3 +1790,55 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 			RESKIN_WORN_ICON_STATE = "trenchcoat_blue"
 		)
 	)
+
+//Donation reward for Jasohavents
+/obj/item/clothing/under/rank/cargo/qm/skirt/old
+	name = "quartermaster's jumpskirt"
+	desc = "It seems somebody has kept a couple outdated quartermaster uniforms. They smell of Rum and Smoke."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+
+//Donation reward for Jasohavents
+/obj/item/food/griddle_toast/toaster_implant
+	name = "toast"
+	desc = "Thick cut bread, toasted to perfection."
+	food_reagents = list(/datum/reagent/consumable/nutriment = 1)
+//it's meant to be practically non-functional in terms of giving any ingame advantage, but it seems food needs to have *something* in it to be edible
+//it *can* be a whole thing with a "gridle" that only accepts bread from the user's hand but I can't be assed to implement it for a one-off gimmick donator item
+
+#define TOASTER_IMPLANT_COOLDOWN (3 MINUTES)
+/obj/item/implant/toaster
+	name = "toaster implant"
+	icon = 'icons/obj/food/burgerbread.dmi'
+	icon_state = "griddle_toast"
+	COOLDOWN_DECLARE(toast_cooldown)
+
+/obj/item/implant/toaster/get_data()
+	var/dat = {"<b>Implant Specifications:</b><BR>
+				<b>Name:</b> Toaster-O brand toaster module<BR>
+				<b>Implant Details:</b> <BR>
+				<b>Function:</b> Serves you a delicious toasted slice of bread."}
+	return dat
+
+/obj/item/implant/toaster/activate()
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, toast_cooldown))
+		imp_in.show_message(span_notice("You're not quite ready to toast another toast yet."))
+		return
+
+	var/obj/item/food/griddle_toast/toaster_implant/toast = new(get_turf(imp_in))
+	var/adjective = pick("crispy", "delicious", "fresh")
+	imp_in.visible_message(span_notice("[imp_in] ejects a [adjective] toast!"), span_notice("With the familiar \"ding\", the toaster ejects a [adjective] toast."))
+
+	playsound(imp_in, 'sound/machines/ding.ogg', vol = 75, vary = FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	toast.throw_at(get_turf(imp_in), 2, 3)
+	COOLDOWN_START(src, toast_cooldown, TOASTER_IMPLANT_COOLDOWN)
+
+/obj/item/implanter/toaster
+	name = "implanter (toaster)"
+	imp_type = /obj/item/implant/toaster
+
+/obj/item/implantcase/toaster
+	name = "implant case - 'Toaster'"
+	desc = "A glass case containing a toaster implant. Sweet."
+	imp_type = /obj/item/implant/toaster

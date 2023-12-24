@@ -31,8 +31,6 @@
 			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
 			new_limb.set_icon_static(chosen_style)
 			new_limb.current_style = prefs.augment_limb_styles[slot]
-		for (var/obj/item/organ/external/external_organ as anything in old_limb.external_organs)
-			external_organ.transfer_to_limb(new_limb)
 		new_limb.replace_limb(augmented)
 		qdel(old_limb)
 

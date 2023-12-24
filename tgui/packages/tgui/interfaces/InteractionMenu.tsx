@@ -1,5 +1,14 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
-import { Button, Collapsible, Icon, NoticeBox, Section, Stack, Box } from '../components';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Icon,
+  NoticeBox,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 class Interaction {
@@ -19,8 +28,8 @@ class LewdSlot {
   name;
 }
 
-export const InteractionMenu = (props, context) => {
-  const { act, data } = useBackend<Interaction>(context);
+export const InteractionMenu = (props) => {
+  const { act, data } = useBackend<Interaction>();
   const {
     categories = [],
     interactions,
@@ -86,20 +95,21 @@ export const InteractionMenu = (props, context) => {
                           userref: ref_user,
                         })
                       }
-                      tooltip={element.name}>
+                      tooltip={element.name}
+                    >
                       <Box
                         style={{
-                          'width': '32px',
-                          'height': '32px',
-                          'margin': '0.5em 0',
-                        }}>
+                          width: '32px',
+                          height: '32px',
+                          margin: '0.5em 0',
+                        }}
+                      >
                         {element.img ? (
                           <img
                             src={'data:image/png;base64,' + element.img}
                             style={{
-                              '-ms-interpolation-mode': 'nearest-neighbor',
-                              'width': '100%',
-                              'height': '100%',
+                              width: '100%',
+                              height: '100%',
                             }}
                           />
                         ) : (
@@ -109,7 +119,7 @@ export const InteractionMenu = (props, context) => {
                             ml={0}
                             mt={0.75}
                             style={{
-                              'text-align': 'center',
+                              textAlign: 'center',
                             }}
                           />
                         )}

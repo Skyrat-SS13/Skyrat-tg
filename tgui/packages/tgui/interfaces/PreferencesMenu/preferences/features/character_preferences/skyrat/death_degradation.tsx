@@ -1,4 +1,5 @@
-import { Feature, CheckboxInput, FeatureNumberInput } from '../../base';
+// THIS IS A SKYRAT UI FILE
+import { CheckboxInput, Feature, FeatureNumberInput } from '../../base';
 
 export const dc_starting_degradation: Feature<number> = {
   name: 'A_Starting Degradation',
