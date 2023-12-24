@@ -10049,13 +10049,19 @@
 "daB" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/structure/table/reinforced/rglass,
-/obj/item/clothing/gloves/latex,
-/obj/item/clothing/gloves/latex,
-/obj/item/clothing/glasses/science{
+/obj/item/assembly/timer{
+	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/clothing/glasses/science,
-/obj/machinery/light/cold/directional/east,
+/obj/item/assembly/igniter,
+/obj/item/stack/package_wrap{
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/item/hand_labeler{
+	pixel_y = -3;
+	pixel_x = 4
+	},
 /turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
 "daF" = (
@@ -14507,20 +14513,7 @@
 /area/station/service/chapel)
 "eil" = (
 /obj/effect/turf_decal/trimline/yellow/filled/corner,
-/obj/structure/table/reinforced/rglass,
-/obj/item/assembly/igniter,
-/obj/item/assembly/timer{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/package_wrap{
-	pixel_y = -1;
-	pixel_x = 1
-	},
-/obj/item/hand_labeler{
-	pixel_y = -3;
-	pixel_x = 4
-	},
+/obj/machinery/chem_mass_spec,
 /turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
 "ein" = (
@@ -15078,7 +15071,7 @@
 	},
 /obj/item/reagent_containers/spray/cleaner{
 	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 9
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
@@ -35570,8 +35563,16 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 6
 	},
-/obj/effect/turf_decal/bot,
-/turf/closed/wall,
+/obj/structure/table/reinforced/rglass,
+/obj/machinery/light/cold/directional/east,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science{
+	pixel_y = 3
+	},
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
 "kgl" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/plasma_output{
@@ -39046,9 +39047,9 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
 	},
-/obj/machinery/status_display/evac/directional/east,
 /obj/structure/table/reinforced/rglass,
 /obj/item/stack/sheet/iron/fifty,
+/obj/machinery/status_display/evac/directional/east,
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/construction/plumbing{
 	pixel_y = 6
@@ -43178,6 +43179,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
 	},
+/obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/hallway/primary/central/aft)
 "mgt" = (
@@ -56250,12 +56252,10 @@
 /area/station/service/hydroponics)
 "pKg" = (
 /obj/effect/turf_decal/bot,
-/obj/item/storage/box/syringes,
-/obj/structure/closet/secure_closet/chemical,
-/obj/item/storage/box/beakers,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
+/obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
 "pKl" = (
@@ -67407,15 +67407,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/freezer,
 /area/station/medical/chemistry)
-"sMm" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/medical1,
-/obj/item/radio/intercom/directional/south,
-/turf/open/floor/iron/freezer,
-/area/station/medical/pharmacy)
 "sMs" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -69405,12 +69396,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/aft/lesser)
 "tnx" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 9
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/white/smooth_edge,
+/turf/closed/wall,
 /area/station/hallway/primary/central/aft)
 "tnD" = (
 /obj/machinery/power/solar_control{
@@ -81108,10 +81094,12 @@
 /area/station/cargo/sorting)
 "wwr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/chem_mass_spec,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
+/obj/structure/closet/secure_closet/chemical,
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/beakers,
 /turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
 "wwA" = (
@@ -85394,7 +85382,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/moth_epi/directional/west,
 /obj/machinery/light/warm/directional/west,
 /turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
@@ -120134,7 +120121,7 @@ rUf
 ylT
 wEK
 pKg
-sMm
+nXW
 kgk
 fDn
 njQ
