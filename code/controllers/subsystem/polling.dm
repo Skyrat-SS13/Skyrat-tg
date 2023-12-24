@@ -176,6 +176,12 @@ SUBSYSTEM_DEF(polling)
 		if(is_banned_from(potential_candidate.ckey, list(check_jobban, ROLE_SYNDICATE)))
 			return FALSE
 
+	//SKYRAT EDIT ADDITION BEGIN
+	if(is_banned_from(potential_candidate.ckey, BAN_GHOST_TAKEOVER) || is_banned_from(potential_candidate.ckey, BAN_ANTAGONIST))
+		to_chat(potential_candidate, "There was a ghost prompt for: [question], unfortunately you are banned from ghost takeovers.")
+		continue
+	//SKYRAT EDIT END
+
 	return TRUE
 
 /datum/controller/subsystem/polling/proc/polling_finished(datum/candidate_poll/finishing_poll)

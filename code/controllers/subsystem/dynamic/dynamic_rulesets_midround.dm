@@ -116,7 +116,7 @@
 			if (M.mind && (M.mind.assigned_role.title in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role.title in restricted_roles)))
 				job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
-	var/threat = round(mode.threat_level/10)
+	var/threat = round(SSdynamic.threat_level/10)
 	var/ruleset_forced = (GLOB.dynamic_forced_rulesets[type] || RULESET_NOT_FORCED) == RULESET_FORCE_ENABLED
 	if (!ruleset_forced && job_check < required_enemies[threat])
 		log_dynamic("FAIL: [src] is not ready, because there are not enough enemies: [required_enemies[threat]] needed, [job_check] found")
@@ -138,24 +138,25 @@
 /datum/dynamic_ruleset/midround/from_ghosts/proc/send_applications(list/possible_volunteers = list())
 	if (possible_volunteers.len <= 0) // This shouldn't happen, as ready() should return FALSE if there is not a single valid candidate
 		message_admins("Possible volunteers was 0. This shouldn't appear, because of ready(), unless you forced it!")
-	mode.log_dynamic_and_announce("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
+		return
 
-	candidates = poll_ghost_candidates("The mode is looking for volunteers to become [antag_flag] for [name]", antag_flag_override, antag_flag || antag_flag_override, poll_time = 300)
+	SSdynamic.log_dynamic_and_announce("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
+	candidates = SSpolling.poll_ghost_candidates("Looking for volunteers to become [antag_flag] for [name]", check_jobban = antag_flag_override, role = antag_flag || antag_flag_override, poll_time = 30 SECONDS, pic_source = /obj/structure/sign/poster/contraband/syndicate_recruitment, role_name_text = antag_flag)
 
 	if(!candidates || candidates.len <= 0)
-		mode.log_dynamic_and_announce("The ruleset [name] received no applications.")
-		mode.executed_rules -= src
+		SSdynamic.log_dynamic_and_announce("The ruleset [name] received no applications.")
+		SSdynamic.executed_rules -= src
 		attempt_replacement()
 		return
 
-	mode.log_dynamic_and_announce("[candidates.len] players volunteered for [name].")
+	SSdynamic.log_dynamic_and_announce("[candidates.len] players volunteered for [name].")
 	review_applications()
 
 /// Here is where you can check if your ghost applicants are valid for the ruleset.
 /// Called by send_applications().
 /datum/dynamic_ruleset/midround/from_ghosts/proc/review_applications()
 	if(candidates.len < required_applicants)
-		mode.executed_rules -= src
+		SSdynamic.executed_rules -= src
 		return
 	for (var/i = 1, i <= required_candidates, i++)
 		if(candidates.len <= 0)
@@ -207,13 +208,12 @@
 /datum/dynamic_ruleset/midround/from_ghosts/proc/attempt_replacement()
 	var/datum/dynamic_ruleset/midround/from_living/autotraitor/sleeper_agent = new
 
-	mode.configure_ruleset(sleeper_agent)
+	SSdynamic.configure_ruleset(sleeper_agent)
 
-	if (!mode.picking_specific_rule(sleeper_agent))
+	if (!SSdynamic.picking_specific_rule(sleeper_agent))
 		return
 
-	mode.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator)
-	return
+	SSdynamic.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator)
 
 ///subtype to handle checking players
 /datum/dynamic_ruleset/midround/from_living
@@ -274,13 +274,7 @@
 	log_dynamic("[key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	return TRUE
 
-
-//////////////////////////////////////////////
-//                                          //
-//         Malfunctioning AI                //
-//                                          //
-//////////////////////////////////////////////
-
+/// Midround Malf AI Ruleset (From Living)
 /datum/dynamic_ruleset/midround/malf
 	name = "Malfunctioning AI"
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
@@ -392,7 +386,7 @@
 	var/list/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
 
 /datum/dynamic_ruleset/midround/from_ghosts/nuclear/acceptable(population=0, threat_level=0)
-	if (locate(/datum/dynamic_ruleset/roundstart/nuclear) in mode.executed_rules)
+	if (locate(/datum/dynamic_ruleset/roundstart/nuclear) in SSdynamic.executed_rules)
 		return FALSE // Unavailable if nuke ops were already sent at roundstart
 	indice_pop = min(operative_cap.len, round(living_players.len/5)+1)
 	required_candidates = operative_cap[indice_pop]
