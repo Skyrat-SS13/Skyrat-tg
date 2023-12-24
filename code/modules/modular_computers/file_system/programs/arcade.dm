@@ -1,9 +1,9 @@
 /datum/computer_file/program/arcade
 	filename = "dsarcade"
 	filedesc = "Donksoft Micro Arcade"
-	program_icon_state = "arcade"
+	program_open_overlay = "arcade"
 	extended_desc = "This port of the classic game 'Outbomb Cuban Pete', redesigned to run on tablets, with thrilling graphics and chilling storytelling."
-	requires_ntnet = FALSE
+	downloader_category = PROGRAM_CATEGORY_GAMES
 	size = 6
 	tgui_id = "NtosArcade"
 	program_icon = "gamepad"
@@ -44,7 +44,7 @@
 		heads_up = "You have crushed [boss_name]! Rejoice!"
 		playsound(computer.loc, 'sound/arcade/win.ogg', 50)
 		game_active = FALSE
-		program_icon_state = "arcade_off"
+		program_open_overlay = "arcade_off"
 		if(istype(computer))
 			computer.update_appearance()
 		ticket_count += 1
@@ -55,7 +55,7 @@
 		heads_up = "You have been defeated... how will the station survive?"
 		playsound(computer.loc, 'sound/arcade/lose.ogg', 50)
 		game_active = FALSE
-		program_icon_state = "arcade_off"
+		program_open_overlay = "arcade_off"
 		if(istype(computer))
 			computer.update_appearance()
 		user?.mind?.adjust_experience(/datum/skill/gaming, 10)
@@ -177,7 +177,7 @@
 			player_hp = initial(player_hp)
 			player_mp = initial(player_mp)
 			heads_up = "You stand before [boss_name]! Prepare for battle!"
-			program_icon_state = "arcade"
+			program_open_overlay = "arcade"
 			boss_id = rand(1,6)
 			pause_state = FALSE
 			if(istype(computer))

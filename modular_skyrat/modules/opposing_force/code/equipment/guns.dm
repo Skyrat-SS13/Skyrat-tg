@@ -12,7 +12,7 @@
 	new /obj/item/ammo_box/advanced/s12gauge/buckshot(src)
 
 /datum/opposing_force_equipment/ranged/infanteria
-	name = "'d'Infanteria' Rifle"
+	name = "Carwo-Cawil Battle Rifle"
 	description = "A heavy battle rifle, this one seems to be painted tacticool black. Accepts any standard SolFed rifle magazine."
 	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/infanteria
 

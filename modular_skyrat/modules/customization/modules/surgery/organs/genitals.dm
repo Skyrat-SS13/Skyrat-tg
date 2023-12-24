@@ -50,7 +50,7 @@
 		return INITIALIZE_HINT_QDEL
 
 //Removes ERP organs depending on config
-/obj/item/organ/external/genital/Insert(mob/living/carbon/M, special, drop_if_replaced)
+/obj/item/organ/external/genital/Insert(mob/living/carbon/M, special, movement_flags)
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		return
 	. = ..()

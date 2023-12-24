@@ -1,8 +1,9 @@
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
+
 import { useBackend } from '../backend';
-import { Button, Input, Section, Image } from '../components';
+import { Button, Image, Input, Section } from '../components';
 import { NtosWindow } from '../layouts';
 
 type Data = {
@@ -33,7 +34,7 @@ export const NtosEmojipedia = (props) => {
                 type="text"
                 placeholder="Search by name"
                 value={filter}
-                onChange={(_, value) => setFilter(value)}
+                onInput={(_, value) => setFilter(value)}
               />
               <Button
                 tooltip={'Click on an emoji to copy its tag!'}

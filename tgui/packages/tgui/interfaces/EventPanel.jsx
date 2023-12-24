@@ -1,7 +1,8 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend } from '../backend';
-import { Section, Button, NoticeBox, LabeledList, Stack } from '../components';
 import { toFixed } from 'common/math';
+
+import { useBackend } from '../backend';
+import { Button, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const EventPanel = (props) => {

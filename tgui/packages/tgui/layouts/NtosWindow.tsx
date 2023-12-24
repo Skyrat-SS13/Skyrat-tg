@@ -5,6 +5,7 @@
  */
 
 import { BooleanLike } from 'common/react';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Box, Button } from '../components';
@@ -62,6 +63,7 @@ export const NtosWindow = (props) => {
     PC_stationtime,
     PC_programheaders = [],
     PC_showexitprogram,
+    PC_lowpower_mode,
   } = data;
 
   return (
@@ -83,6 +85,7 @@ export const NtosWindow = (props) => {
             </Box>
             <Box inline italic mr={2} opacity={0.33}>
               {(PC_device_theme === 'syndicate' && 'Syndix') || 'NtOS'}
+              {!!PC_lowpower_mode && ' - RUNNING ON LOW POWER MODE'}
             </Box>
           </div>
           <div className="NtosHeader__right">
@@ -108,7 +111,7 @@ export const NtosWindow = (props) => {
                   className="NtosHeader__icon"
                   src={resolveAsset(PC_batteryicon)}
                 />
-                {PC_batterypercent && PC_batterypercent}
+                {PC_batterypercent}
               </Box>
             )}
             {!!PC_showexitprogram && (
