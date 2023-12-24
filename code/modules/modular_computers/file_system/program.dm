@@ -1,6 +1,3 @@
-///The default amount a program should take in cell use.
-#define PROGRAM_BASIC_CELL_USE 15
-
 // /program/ files are executable programs that do things.
 /datum/computer_file/program
 	filetype = "PRG"
