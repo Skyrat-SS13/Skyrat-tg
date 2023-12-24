@@ -8,7 +8,6 @@
  */
 /datum/station_trait/job
 	sign_up_button = TRUE
-	abstract_type = STATION_TRAIT_ABSTRACT
 	/// What tooltip to show on the button
 	var/button_desc = "Sign up to gain some kind of unusual job, not available in most rounds."
 	/// Can this job roll antag?
@@ -123,11 +122,11 @@
 /datum/station_trait/job/bridge_assistant/New()
 	. = ..()
 	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(add_coffeemaker))
-
+/* SKYRAT EDIT REMOVAL
 /datum/station_trait/job/bridge_assistant/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
 	. = ..()
 	overlays += "bridge_assistant"
-
+*/
 /// Creates a coffeemaker in the bridge, if we don't have one yet.
 /datum/station_trait/job/bridge_assistant/proc/add_coffeemaker(datum/source)
 	SIGNAL_HANDLER
