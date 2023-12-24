@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 				replacement.build_from_dna(target.dna, key)
 				// organ.Insert will qdel any current organs in that slot, so we don't need to.
-				replacement.Insert(target, special = TRUE, drop_if_replaced = FALSE)
+				replacement.Insert(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
 			// var/obj/item/organ/path = new SA.organ_type
 			// var/obj/item/organ/oldorgan = C.get_organ_slot(path.slot)
