@@ -4,8 +4,8 @@
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
 	program_open_overlay = "generic"
 	extended_desc = "This program lets you view out-of-circulation articles from the Nanotrasen News Network."
-	usage_flags = PROGRAM_ALL
-	requires_ntnet = TRUE
+	can_run_on_flags = PROGRAM_ALL
+	program_flags = PROGRAM_REQUIRES_NTNET
 	size = 6
 	tgui_id = "NtosNewsArchive"
 	program_icon = "newspaper"
