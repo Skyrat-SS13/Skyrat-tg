@@ -790,15 +790,15 @@
 		/obj/item/clothing/glasses/thermal/syndi,
 		/obj/item/slimepotion/slime/sentience/nuclear,
 		/obj/item/storage/box/syndie_kit/imp_radio,
-		///obj/item/storage/box/syndie_kit/imp_uplink, // SKYRAT EDIT REMOVAL
-		///obj/item/clothing/gloves/krav_maga/combatglovesplus, // SKYRAT EDIT REMOVAL
+		/obj/item/storage/box/syndie_kit/imp_uplink,
+		/obj/item/clothing/gloves/krav_maga/combatglovesplus,
 		/obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot,
 		/obj/item/reagent_containers/hypospray/medipen/stimulants,
 		/obj/item/storage/box/syndie_kit/imp_freedom,
 		/obj/item/toy/eightball/haunted,
 	)
 	for(var/i in 1 to 3)
-		var/selected_item = pick_n_take(list(item_list + modular_item_list)) // SKYRAT EDIT CHANGE - ORIGINAL : var/selected_item = pick_n_take(item_list)
+		var/selected_item = pick_n_take(item_list)
 		new selected_item(src)
 
 	// Paper guide is always last.
