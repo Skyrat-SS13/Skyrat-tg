@@ -275,6 +275,7 @@
 #include "worn_icons.dm"
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
+#include "~skyrat\loadout_dupes.dm"
 #include "~skyrat\opposing_force.dm"
 // SKYRAT EDIT END
 // END_INCLUDE

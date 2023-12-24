@@ -15,7 +15,6 @@
 	buckle_lying = 0
 	SET_BASE_PIXEL(-8, -8)
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
 	/// The extra range that this turret gives regarding viewrange.
 	var/view_range = 2.5
 	/// Sound to play when overheated
@@ -164,7 +163,6 @@
 	register_user(user_to_buckle)
 
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
 	setDir(SOUTH)
 	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
 	set_anchored(TRUE)
@@ -423,7 +421,6 @@
 			user.pixel_y = -8
 		if(EAST)
 			layer = ABOVE_MOB_LAYER
-			plane = GAME_PLANE_UPPER
 			user.pixel_x = -22
 			user.pixel_y = 0
 		if(SOUTHEAST)
@@ -433,7 +430,6 @@
 			user.pixel_y = 14
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-			plane = GAME_PLANE_UPPER
 			user.pixel_x = 0
 			user.pixel_y = 22
 		if(SOUTHWEST)
@@ -443,7 +439,6 @@
 			user.pixel_y = 14
 		if(WEST)
 			layer = ABOVE_MOB_LAYER
-			plane = GAME_PLANE_UPPER
 			user.pixel_x = 22
 			user.pixel_y = 0
 		if(NORTHWEST)

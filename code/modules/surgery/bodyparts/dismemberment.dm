@@ -68,6 +68,10 @@
 		chest_owner.add_splatter_floor(chest_owner.loc)
 	playsound(get_turf(chest_owner), 'sound/misc/splort.ogg', 80, TRUE)
 	for(var/obj/item/organ/organ as anything in chest_owner.organs)
+		// SKYRAT EDIT START - Non-spillable organs
+		if(!organ.drop_when_organ_spilling)
+			continue
+		// SKYRAT EDIT END
 		var/org_zone = check_zone(organ.zone)
 		if(org_zone != BODY_ZONE_CHEST)
 			continue
