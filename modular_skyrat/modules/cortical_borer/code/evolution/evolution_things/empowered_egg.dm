@@ -19,7 +19,7 @@
 	if(iscarbon(loc))
 		Insert(loc)
 
-/obj/item/organ/internal/empowered_borer_egg/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/empowered_borer_egg/Insert(mob/living/carbon/M, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	..()
 	addtimer(CALLBACK(src, PROC_REF(try_burst)), burst_time)
 
