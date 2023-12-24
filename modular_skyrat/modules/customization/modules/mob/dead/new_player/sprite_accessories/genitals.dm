@@ -22,7 +22,7 @@
 			if((target_mob.w_uniform && target_mob.w_uniform.body_parts_covered & genital_location) || (target_mob.wear_suit && target_mob.wear_suit.body_parts_covered & genital_location))
 				return TRUE
 			//Do they have a Hospital Gown covering them? (The gown has no body_parts_covered so needs its own check)
-			if(istype(target_mob.wear_suit, /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown))
+			if(istype(target_mob.wear_suit, /obj/item/clothing/suit/toggle/labcoat/hospitalgown))
 				return TRUE
 
 			//Are they wearing an Undershirt?

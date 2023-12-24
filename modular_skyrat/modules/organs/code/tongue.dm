@@ -12,7 +12,7 @@
 	icon_state = "tongue"
 	modifies_speech = TRUE
 
-/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 	signer.verb_ask = "arfs"
 	signer.verb_exclaim = "wans"
@@ -34,7 +34,7 @@
 	icon_state = "tongue"
 	modifies_speech = TRUE
 
-/obj/item/organ/internal/tongue/avian/Insert(mob/living/carbon/signer, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/tongue/avian/Insert(mob/living/carbon/signer, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 	signer.verb_ask = "peeps"
 	signer.verb_exclaim = "squawks"

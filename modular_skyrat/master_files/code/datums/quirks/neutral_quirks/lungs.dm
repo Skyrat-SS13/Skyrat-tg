@@ -30,7 +30,7 @@
 	if (lungs != lungs_added && lungs != lungs_holding)
 		qdel(lungs_holding)
 		return
-	lungs_holding.Insert(carbon_holder, special = TRUE, drop_if_replaced = FALSE)
+	lungs_holding.Insert(carbon_holder, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 	lungs_holding.organ_flags &= ~ORGAN_FROZEN
 
 /datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, success)
