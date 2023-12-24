@@ -78,7 +78,7 @@
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
 	attach_trailer()
-	railoverlay = mutable_appearance(icon, "railoverlay", ABOVE_MOB_LAYER, src, GAME_PLANE_UPPER)
+	railoverlay = mutable_appearance(icon, "railoverlay", ABOVE_MOB_LAYER, src)
 	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
 
 	create_storage(max_total_storage = 21, max_slots = 21)

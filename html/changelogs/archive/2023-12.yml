@@ -783,3 +783,46 @@
   sqnztb:
   - bugfix: blueshift - corrects some request console names, virology's outlet now
       sends to space, and R&D now has a proper R&D console instead of a civilian one.
+2023-12-24:
+  BurgerBB:
+  - balance: Miasma is now filtered through gas mask filters, at medium strength.
+  ChakatStormCloud:
+  - bugfix: Synths now properly regenerate blood volume with oil
+  GreytideSkye:
+  - refactor: LustWish interns, fed up with 5e Grappling Rules, explicitly clarified
+      what is a restraint and what is a structure.
+  Jolly:
+  - image: Colored labcoats have been GAGSed! Please report any weird oddities on
+      Github.
+  - bugfix: The coroners lab coat is no longer offset by one pixel.
+  LemonInTheDark, Donglesplonge:
+  - image: Redoes fov "mask" sprites. They're clean, have a very pleasant dithering
+      effect, and look real fuckin good!
+  - rscdel: Changed FOV, it no longer hides mobs, instead it blurs the hidden area,
+      and makes it a bit darker/oversaturated
+  SkyratBot:
+  - bugfix: the boozeomat ui will stop duplicating space beer bottles
+  - refactor: refactored vending machine backend to have unique keys for their data
+      structures. should fix bugs related to items that happen to have the same name.
+  - balance: Ai's using the mech domination ability can now eject from the mech
+  - qol: Head of Security beret added to their garmet bag
+  - qol: Head of Security bowman added to their locker
+  - rscadd: Nightmares retain their ability to dodge projectiles for a brief period
+      after leaving a dark area, meaning it is now possible to dodge lasers.
+  - qol: Nightmares and Shadow People now receive a screen alert when they are in
+      a sufficiently dark location that their abilities are active.
+  - bugfix: Reactions whose temps/ph values fall way below their optimal values no
+      longer restart & prevents infinite loops. Made reaction code slightly faster
+  - rscadd: Added new GaGs santahats.
+  - bugfix: Injecting yourself twice with a luxury medipen in pressure doesn't runtime
+      and mechs with a cell with no max charge won't runtime.
+  - refactor: Gives hyposprays a var to check if they're fully used up rather than
+      setting total_volume to 0.
+  StrangeWeirdKitten:
+  - config: The headshot is no longer vetted or donor locked
+  vinylspiders:
+  - qol: loadout menu has a search function and is zebra-styled for readability.
+  - code_imp: improved performance of the loadout menu
+  - bugfix: removed nonfunctional tutorial button
+  xXPawnStarrXx:
+  - image: Made Skyrat Christmas clothes GAGS compatable.
