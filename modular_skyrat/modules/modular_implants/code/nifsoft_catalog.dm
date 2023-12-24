@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	filename = "nifsoftcatalog"
 	filedesc = "NIFSoft Catalog"
 	extended_desc = "A virtual storefront that allows the user to install NIFSofts and purchase various NIF related products"
-	category = PROGRAM_CATEGORY_MISC
+	downloader_category = PROGRAM_CATEGORY_DEVICE
 	size = 3
 	tgui_id = "NtosNifsoftCatalog"
 	program_icon = "bag-shopping"
