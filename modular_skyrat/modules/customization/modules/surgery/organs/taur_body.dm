@@ -31,7 +31,7 @@
 	return GLOB.sprite_accessories["taur"]
 
 
-/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodytypes |= BODYTYPE_HIDE_SHOES
 
