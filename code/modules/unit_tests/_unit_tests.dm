@@ -109,6 +109,7 @@
 #include "card_mismatch.dm"
 #include "cardboard_cutouts.dm"
 #include "chain_pull_through_space.dm"
+#include "changeling.dm"
 #include "chat_filter.dm"
 #include "circuit_component_category.dm"
 #include "client_colours.dm"
@@ -194,6 +195,7 @@
 #include "objectives.dm"
 #include "operating_table.dm"
 #include "orderable_items.dm"
+#include "organ_bodypart_shuffle.dm"
 #include "organ_set_bonus.dm"
 #include "organs.dm"
 #include "outfit_sanity.dm"
@@ -274,6 +276,7 @@
 #include "worn_icons.dm"
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
+#include "~skyrat\loadout_dupes.dm"
 #include "~skyrat\opposing_force.dm"
 // SKYRAT EDIT END
 // END_INCLUDE

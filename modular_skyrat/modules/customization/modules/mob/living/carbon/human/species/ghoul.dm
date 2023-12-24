@@ -4,11 +4,6 @@
 	examine_limb_id = SPECIES_GHOUL
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs"
-	)
 	mutanttongue = /obj/item/organ/internal/tongue/ghoul
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -36,6 +31,13 @@
 	//i dont have to worry about sprites due to limbs_icon, thank god
 	//also the head needs to be normal for hair to work
 
+/datum/species/ghoul/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
 /proc/proof_ghoul_features(list/inFeatures)
 	// Missing Defaults in DNA? Randomize!
 	if(inFeatures["ghoulcolor"] == null || inFeatures["ghoulcolor"] == "")
@@ -47,43 +49,6 @@
 /datum/species/ghoul/set_ghoul_color(mob/living/carbon/human/human_ghoul)
 	// Called on Assign, or on Color Change (or any time proof_ghoul_features() is used)
 	fixed_mut_color = human_ghoul.dna.features["ghoulcolor"]
-
-/mob/living/carbon/proc/ReassignForeignBodyparts()
-	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-	if (head?.type != part_default_head)
-		qdel(head)
-		var/obj/item/bodypart/limb = new part_default_head
-		limb.replace_limb(src, TRUE)
-
-	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
-	if (chest?.type != part_default_chest)
-		qdel(chest)
-		var/obj/item/bodypart/limb = new part_default_chest
-		limb.replace_limb(src, TRUE)
-
-	var/obj/item/bodypart/arm/left/left_arm = get_bodypart(BODY_ZONE_L_ARM)
-	if (left_arm?.type != part_default_l_arm)
-		qdel(left_arm)
-		var/obj/item/bodypart/limb = new part_default_l_arm
-		limb.replace_limb(src, TRUE)
-
-	var/obj/item/bodypart/arm/right/right_arm = get_bodypart(BODY_ZONE_R_ARM)
-	if (right_arm?.type != part_default_r_arm)
-		qdel(right_arm)
-		var/obj/item/bodypart/limb = new part_default_r_arm
-		limb.replace_limb(src, TRUE)
-
-	var/obj/item/bodypart/leg/left/left_leg = get_bodypart(BODY_ZONE_L_LEG)
-	if (left_leg?.type != part_default_l_leg)
-		qdel(left_leg)
-		var/obj/item/bodypart/limb = new part_default_l_leg
-		limb.replace_limb(src, TRUE)
-
-	var/obj/item/bodypart/leg/right/right_leg = get_bodypart(BODY_ZONE_R_LEG)
-	if (right_leg?.type != part_default_r_leg)
-		qdel(right_leg)
-		var/obj/item/bodypart/limb = new part_default_r_leg
-		limb.replace_limb(src, TRUE)
 
 /datum/species/ghoul/on_species_gain(mob/living/carbon/new_ghoul, datum/species/old_species, pref_load)
 	// Missing Defaults in DNA? Randomize!
@@ -104,7 +69,6 @@
 		human_ghoul.part_default_r_arm = /obj/item/bodypart/arm/right/mutant/ghoul
 		human_ghoul.part_default_l_leg = /obj/item/bodypart/leg/left/mutant/ghoul
 		human_ghoul.part_default_r_leg = /obj/item/bodypart/leg/right/mutant/ghoul
-		human_ghoul.ReassignForeignBodyparts()
 
 /datum/species/ghoul/on_species_loss(mob/living/carbon/human/former_ghoul, datum/species/new_species, pref_load)
 	. = ..()
@@ -117,7 +81,6 @@
 	former_ghoul.part_default_r_arm = /obj/item/bodypart/arm/right
 	former_ghoul.part_default_l_leg = /obj/item/bodypart/leg/left
 	former_ghoul.part_default_r_leg = /obj/item/bodypart/leg/right
-	former_ghoul.ReassignForeignBodyparts()
 
 /*
 *	ATTACK PROCS

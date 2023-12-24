@@ -1,19 +1,21 @@
 /datum/species/jelly
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"snout" = "None",
-		"ears" = "None",
-		"taur" = "None",
-		"wings" = "None",
-		"legs" = "Normal Legs",
-		"horns" = "None",
-		"spines" = "None",
-		"frills" = "None",
-	)
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
 	facial_hair_alpha = 160
+
+/datum/species/jelly/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"snout" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"taur" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"horns" = list("None", FALSE),
+		"spines" = list("None", FALSE),
+		"frills" = list("None", FALSE),
+	)
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
@@ -387,7 +389,7 @@
 			if(robot_organs)
 				replacement_organ.organ_flags |= ORGAN_ROBOTIC
 			replacement_organ.build_from_dna(alterer.dna, chosen_key)
-			replacement_organ.Insert(alterer, special = TRUE, drop_if_replaced = FALSE)
+			replacement_organ.Insert(alterer, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 		else
 			var/list/new_acc_list = list()
 			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name

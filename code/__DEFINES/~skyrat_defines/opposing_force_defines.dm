@@ -61,17 +61,19 @@
 // Melee
 #define OPFOR_EQUIPMENT_CATEGORY_MELEE "13. Melee Weapons"
 #define OPFOR_EQUIPMENT_CATEGORY_MELEE_STEALTH "14. Stealthy Melee Weapons"
+// Medical items
+#define OPFOR_EQUIPMENT_CATEGORY_MEDICAL "15. Medical Items"
 // Gadgets
-#define OPFOR_EQUIPMENT_CATEGORY_GADGET "15. Gadgets"
-#define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "16. Stealthy Gadgets"
+#define OPFOR_EQUIPMENT_CATEGORY_GADGET "16. Gadgets"
+#define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "17. Stealthy Gadgets"
 // Bombs
-#define OPFOR_EQUIPMENT_CATEGORY_BOMB_CHEM "17. Chemical Grenades"
-#define OPFOR_EQUIPMENT_CATEGORY_BOMB_PAYLOAD "18. Dirty Bombs"
+#define OPFOR_EQUIPMENT_CATEGORY_BOMB_CHEM "18. Chemical Grenades"
+#define OPFOR_EQUIPMENT_CATEGORY_BOMB_PAYLOAD "19. Dirty Bombs"
 // Spells and scrolls (martial arts)
-#define OPFOR_EQUIPMENT_CATEGORY_SPELLS "19. Spells"
-#define OPFOR_EQUIPMENT_CATEGORY_SCROLLS "20. Martial Art Scrolls"
+#define OPFOR_EQUIPMENT_CATEGORY_SPELLS "20. Spells"
+#define OPFOR_EQUIPMENT_CATEGORY_SCROLLS "21. Martial Art Scrolls"
 // Language and biology
-#define OPFOR_EQUIPMENT_CATEGORY_LANGUAGE "21. Language"
-#define OPFOR_EQUIPMENT_CATEGORY_ORGANS "22. Organs"
+#define OPFOR_EQUIPMENT_CATEGORY_LANGUAGE "22. Language"
+#define OPFOR_EQUIPMENT_CATEGORY_ORGANS "23. Organs"
 // Category for uncategorized items
 #define OPFOR_EQUIPMENT_CATEGORY_OTHER "Other"

@@ -7,7 +7,7 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -124,7 +124,7 @@
 		return FALSE
 
 /obj/structure/chair/shibari_stand/deconstruct(disassembled)
-	if(flags_1 & NODECONSTRUCT_1)
+	if(obj_flags & NO_DECONSTRUCTION)
 		return
 
 	qdel(src)

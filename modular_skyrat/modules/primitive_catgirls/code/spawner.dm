@@ -101,6 +101,7 @@
 		/datum/crafting_recipe/boneaxe,
 		/datum/crafting_recipe/bonespear,
 		/datum/crafting_recipe/bonedagger,
+		/datum/crafting_recipe/anointing_oil,
 	)
 
 /datum/antagonist/primitive_catgirl/Destroy()

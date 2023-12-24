@@ -126,7 +126,7 @@
 	if (outgoing_bodytemp_coeff <= 0)
 		return
 	var/statis_mult = 1
-	if (IS_IN_STASIS(victim)) // stasis heavily reduces the ingoing and outgoing transfer of heat
+	if (HAS_TRAIT(victim, TRAIT_STASIS)) // stasis heavily reduces the ingoing and outgoing transfer of heat
 		statis_mult *= OVERHEAT_ON_STASIS_HEAT_MULT
 
 	var/difference_from_average = max((BODYTEMP_NORMAL - victim.bodytemperature), 0)
