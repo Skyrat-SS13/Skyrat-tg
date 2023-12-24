@@ -8,6 +8,7 @@
  */
 /datum/station_trait/job
 	sign_up_button = TRUE
+	abstract_type = /datum/station_trait/job
 	/// What tooltip to show on the button
 	var/button_desc = "Sign up to gain some kind of unusual job, not available in most rounds."
 	/// Can this job roll antag?
