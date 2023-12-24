@@ -1,4 +1,5 @@
-import { FakeTerminal } from '../components/FakeTerminal';
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
   Box,
@@ -10,11 +11,11 @@ import {
   Modal,
   NoticeBox,
   Section,
-  Tabs,
   Table,
+  Tabs,
 } from '../components';
+import { FakeTerminal } from '../components/FakeTerminal';
 import { NtosWindow } from '../layouts';
-import { useState } from 'react';
 
 const CONTRACT_STATUS_INACTIVE = 1;
 const CONTRACT_STATUS_ACTIVE = 2;

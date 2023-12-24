@@ -21,7 +21,7 @@
 	worn_head_offset = new(
 		attached_part = src,
 		feature_key = OFFSET_HEAD,
-		offset_x = list("north" = 1, "south" = 1, "east" = 1, "west" = -1, "northwest" = -1, "southwest" = -1),
+		offset_x = list("north" = 1, "south" = 1, "east" = 1, "west" = -1, "northwest" = -1, "southwest" = -1, "northeast" = 1, "southeast" = 1),
 		offset_y = list("north" = -4, "south" = -4, "east" = -4, "west" = -4),
 	)
 	worn_mask_offset = new(
@@ -52,6 +52,23 @@
 	)
 	return ..()
 
+/obj/item/bodypart/arm/left/mutant/teshari/Initialize(mapload)
+	held_hand_offset =  new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("north" = 0, "south" = 0, "east" = 0, "west" = -6, "northwest" = -6, "southwest" = -6, "northeast" = 0, "southeast" = 0),
+		offset_y = list("north" = -3, "south" = -3, "east" = -3, "west" = -3),
+	)
+	return ..()
+
+/obj/item/bodypart/arm/right/mutant/teshari/Initialize(mapload)
+	held_hand_offset =  new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("north" = 0, "south" = 0, "east" = 6, "west" = 0, "northwest" = 0, "southwest" = 0, "northeast" = 6, "southeast" = 6),
+		offset_y = list("north" = -3, "south" = -3, "east" = -3, "west" = -3),
+	)
+	return ..()
 
 /obj/item/bodypart/arm/left/mutant/teshari
 	icon_greyscale = BODYPART_ICON_TESHARI

@@ -29,6 +29,7 @@
 		"Trader",
 		"Off-Duty Crew",
 		"Off-Duty Staff",
+		"Musician",
 	)
 
 /datum/job/atmospheric_technician
@@ -85,6 +86,10 @@
 		"Hydroponicist",
 		"Mycologist",
 		"Junior Botanist",
+		"Apiarist",
+		"Apiculturist",
+		"Beekeeper",
+		"Farmer",
 	)
 
 /datum/job/bouncer
@@ -106,10 +111,12 @@
 		"Commanding Officer",
 		"Site Manager",
 		"Station Commander",
+		"Facility Director",
 	)
 
 /datum/job/cargo_technician
 	alt_titles = list(
+		"Cargo Technician",
 		"Warehouse Technician",
 		"Commodities Trader",
 		"Deck Worker",
@@ -173,6 +180,9 @@
 		"Chef",
 		"Culinary Artist",
 		"Sous-Chef",
+		"Baker",
+		"Confectionist",
+		"Pastry Chef",
 	)
 
 /datum/job/coroner
@@ -376,6 +386,7 @@
 
 /datum/job/shaft_miner
 	alt_titles = list(
+		"Shaft Miner",
 		"Union Miner",
 		"Excavator",
 		"Drill Technician",

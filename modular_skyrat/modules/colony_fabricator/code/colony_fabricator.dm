@@ -93,13 +93,13 @@
 	give_deployable_component()
 	give_manufacturer_examine()
 
+/// Adds the deployable component, so that it can be overridden in case that's wanted
+/obj/item/flatpacked_machine/proc/give_deployable_component()
+	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)
+
 /// Adds the manufacturer examine element to the flatpack machine, but can be overridden in the future
 /obj/item/flatpacked_machine/proc/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
-
-/// Adds the deployable component, in case we want to change this stuff later
-/obj/item/flatpacked_machine/proc/give_deployable_component()
-	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)
 
 /obj/item/borg/apparatus/sheet_manipulator/Initialize(mapload)
 	. = ..()

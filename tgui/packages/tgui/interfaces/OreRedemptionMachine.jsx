@@ -1,21 +1,22 @@
 import { createSearch, toTitleCase } from 'common/string';
+import { useState } from 'react';
+
 import { useBackend, useSharedState } from '../backend';
 import {
   BlockQuote,
   Box,
   Button,
+  Icon,
+  Image,
+  Input,
+  LabeledList,
+  Section,
+  Stack,
   Table,
   Tabs,
-  Input,
-  Stack,
-  Image,
-  Icon,
-  Section,
-  LabeledList,
 } from '../components';
-import { Window } from '../layouts';
 import { formatSiUnit } from '../format';
-import { useState } from 'react';
+import { Window } from '../layouts';
 
 export const OreRedemptionMachine = (props) => {
   const { act, data } = useBackend();
@@ -131,7 +132,7 @@ export const OreRedemptionMachine = (props) => {
               width="150px"
               placeholder="Search Material..."
               value={searchItem}
-              onChange={(e, value) => {
+              onInput={(e, value) => {
                 setSearchItem(value);
 
                 if (value.length > 0) {

@@ -7,7 +7,6 @@
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
 	mob_size = MOB_SIZE_LARGE
 	layer = LARGE_MOB_LAYER //above most mobs, but below speechbubbles
-	plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	maptext_height = 64
 	maptext_width = 64
 	pressure_resistance = 200

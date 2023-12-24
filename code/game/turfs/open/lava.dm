@@ -68,7 +68,7 @@
 	// But that's rare, and I'm ok with that, quartering our light source count is useful
 	var/mutable_appearance/light_mask = mutable_appearance(mask_icon, mask_state, LIGHTING_MASK_LAYER, src, LIGHTING_PLANE)
 	light_mask.blend_mode = BLEND_MULTIPLY
-	light_mask.color = list(-1,0,0,0, 0,-1,0,0, 0,0,-1,0, 0,0,0,1, 1,1,1,0)
+	light_mask.color = COLOR_MATRIX_INVERT
 	. += light_mask
 
 /// Refreshes this lava turf's lighting
@@ -420,7 +420,7 @@
 			if(BODY_ZONE_HEAD)
 				plasmalimb = new /obj/item/bodypart/head/plasmaman
 
-		burn_human.del_and_replace_bodypart(plasmalimb)
+		burn_human.del_and_replace_bodypart(plasmalimb, special = TRUE)
 		burn_human.update_body_parts()
 		burn_human.emote("scream")
 		burn_human.visible_message(span_warning("[burn_human]'s [burn_limb.plaintext_zone] melts down to the bone!"), \
