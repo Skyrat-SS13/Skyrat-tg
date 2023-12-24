@@ -24,18 +24,6 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
-/datum/design/condenser/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/health_sensor/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/igniter/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/infrared_emitter/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -49,10 +37,6 @@
 	build_type |= COLONY_FABRICATOR
 
 /datum/design/timer/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/voice_analyzer/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 

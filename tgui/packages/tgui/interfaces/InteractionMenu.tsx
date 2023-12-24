@@ -1,13 +1,13 @@
 // THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import {
+  Box,
   Button,
   Collapsible,
   Icon,
   NoticeBox,
   Section,
   Stack,
-  Box,
 } from '../components';
 import { Window } from '../layouts';
 

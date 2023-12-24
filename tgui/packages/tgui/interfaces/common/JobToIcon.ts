@@ -13,6 +13,7 @@ const BASEICONS = {
   Botanist: 'seedling',
   'Bridge Assistant': 'building-shield',
   Captain: 'crown',
+  'Cargo Gorilla': 'paw',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',
   'CentCom Head Intern': 'pen-fancy',

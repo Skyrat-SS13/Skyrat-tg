@@ -1,3 +1,6 @@
+/// Station traits displayed in the lobby
+GLOBAL_LIST_EMPTY(lobby_station_traits)
+
 ///Base class of station traits. These are used to influence rounds in one way or the other by influencing the levers of the station.
 /datum/station_trait
 	///Name of the trait
@@ -22,6 +25,10 @@
 	var/trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	/// Whether or not this trait can be reverted by an admin
 	var/can_revert = TRUE
+	/// If set to true we'll show a button on the lobby to notify people about this trait
+	var/sign_up_button = FALSE
+	/// Lobby buttons controlled by this trait
+	var/list/lobby_buttons = list()
 	/// The ID that we look for in dynamic.json. Not synced with 'name' because I can already see this go wrong
 	var/dynamic_threat_id
 	/// If ran during dynamic, do we reduce the total threat? Will be overriden by config if set
@@ -34,7 +41,8 @@
 
 	if(threat_reduction)
 		GLOB.dynamic_station_traits[src] = threat_reduction
-
+	if(sign_up_button)
+		GLOB.lobby_station_traits += src
 	if(trait_processes)
 		START_PROCESSING(SSstation, src)
 	if(trait_to_give)
@@ -43,14 +51,10 @@
 /datum/station_trait/Destroy()
 	SSstation.station_traits -= src
 	GLOB.dynamic_station_traits.Remove(src)
+	destroy_lobby_buttons()
 	return ..()
 
-/// Proc ran when round starts. Use this for roundstart effects.
-/datum/station_trait/proc/on_round_start()
-	SIGNAL_HANDLER
-	return
-
-///type of info the centcom report has on this trait, if any.
+/// Returns the type of info the centcom report has on this trait, if any.
 /datum/station_trait/proc/get_report()
 	return "<i>[name]</i> - [report_message]"
 
@@ -64,7 +68,7 @@
 
 	qdel(src)
 
-///Called by decals if they can be colored, to see if we got some cool colors for them. Only takes the first station trait
+/// Called by decals if they can be colored, to see if we got some cool colors for them. Only takes the first station trait
 /proc/request_station_colors(atom/thing_to_color, pattern)
 	for(var/datum/station_trait/trait in SSstation.station_traits)
 		var/decal_color = trait.get_decal_color(thing_to_color, pattern || PATTERN_DEFAULT)
@@ -72,7 +76,7 @@
 			return decal_color
 	return null
 
-///Return a color for the decals, if any
+/// Return a color for the decals, if any
 /datum/station_trait/proc/get_decal_color(thing_to_color, pattern)
 	return
 
