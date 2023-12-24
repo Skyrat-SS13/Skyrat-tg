@@ -3,7 +3,7 @@
 /obj/item/storage/box/syndicate/contract_kit
 	desc = "It's just an ordinary box."
 	special_desc = "Supplied to Syndicate contractors."
-	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	/// Extra items to insert modularly into the list of random small item candidates
 	var/static/list/modular_item_list = list(
 		/obj/item/crowbar/power/syndicate,
@@ -16,7 +16,7 @@
 
 /obj/item/storage/box/syndicate/contractor_loadout
 	desc = "It's just an ordinary box."
-	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc = "Supplied to Syndicate contractors, providing their specialised MODSuit and chameleon uniform."
 
 /obj/item/storage/box/syndicate/contractor_loadout/PopulateContents()
