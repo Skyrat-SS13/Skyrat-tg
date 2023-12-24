@@ -1466,13 +1466,9 @@
 		Robot.notify_ai(AI_NOTIFICATION_NEW_BORG)
 	else
 		for(var/obj/item/item in src)
-			if(!dropItemToGround(item) && !(item.item_flags & ABSTRACT))
-				qdel(item)
-=======
+			if(!dropItemToGround(item))
 				if(!(item.item_flags & ABSTRACT))
 					qdel(item)
->>>>>>> ab5b606a3d2 ([NO GBP] Fixes polymorphing into drones gibbing you (#80527))
-				continue
 			item_contents += item
 
 	var/mob/living/new_mob
