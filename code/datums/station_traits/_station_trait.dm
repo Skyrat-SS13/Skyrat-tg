@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(lobby_station_traits)
 	return
 
 /// Return TRUE if we want to show a lobby button, by default we assume we don't want it after the round begins
-/datum/station_trait/proc/can_display_lobby_button()
+/datum/station_trait/proc/can_display_lobby_button(client/player)
 	return sign_up_button && !SSticker.HasRoundStarted()
 
 /* SKYRAT EDIT REMOVAL
@@ -127,4 +127,3 @@ GLOBAL_LIST_EMPTY(lobby_station_traits)
 		var/datum/hud/using_hud = hud_owner.hud_used
 		using_hud?.show_hud(using_hud?.hud_version)
 	lobby_buttons = list()
-
