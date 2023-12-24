@@ -84,6 +84,7 @@ GLOBAL_LIST_EMPTY(lobby_station_traits)
 /datum/station_trait/proc/can_display_lobby_button()
 	return sign_up_button && !SSticker.HasRoundStarted()
 
+/* SKYRAT EDIT REMOVAL
 /// Apply any additional handling we need to our lobby button
 /datum/station_trait/proc/setup_lobby_button(atom/movable/screen/lobby/button/sign_up/lobby_button)
 	SHOULD_CALL_PARENT(TRUE)
@@ -107,6 +108,7 @@ GLOBAL_LIST_EMPTY(lobby_station_traits)
 /datum/station_trait/proc/on_lobby_button_destroyed(atom/movable/screen/lobby/button/sign_up/lobby_button)
 	SIGNAL_HANDLER
 	lobby_buttons -= lobby_button
+*/
 
 /// Proc ran when round starts. Use this for roundstart effects. By default we clean up our buttons here.
 /datum/station_trait/proc/on_round_start()
@@ -123,3 +125,4 @@ GLOBAL_LIST_EMPTY(lobby_station_traits)
 		var/datum/hud/using_hud = hud_owner.hud_used
 		using_hud?.show_hud(using_hud?.hud_version)
 	lobby_buttons = list()
+
