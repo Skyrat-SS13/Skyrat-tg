@@ -298,7 +298,7 @@
 
 		asked_voters += poll_human
 
-	var/list/yes_voters = poll_candidates("Do you wish to banish [find_banished]?", poll_time = 10 SECONDS, group = asked_voters)
+	var/list/yes_voters = SSpolling.poll_candidates("Do you wish to banish [find_banished]?", poll_time = 10 SECONDS, group = asked_voters)
 
 	if(length(yes_voters) < length(asked_voters))
 		find_banished.balloon_alert_to_viewers("banishment failed!")
