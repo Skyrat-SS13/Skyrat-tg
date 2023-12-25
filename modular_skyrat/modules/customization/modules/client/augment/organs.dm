@@ -99,9 +99,17 @@
 	name = "Robotic voicebox"
 	path = /obj/item/organ/internal/tongue/robot
 
+/datum/augment_item/organ/tongue/robo/forked
+	name = "Robotic lizard voicebox"
+	path = /obj/item/organ/internal/tongue/lizard/robot
+
 /datum/augment_item/organ/tongue/cybernetic
 	name = "Cybernetic tongue"
 	path = /obj/item/organ/internal/tongue/cybernetic
+
+/datum/augment_item/organ/tongue/cybernetic/forked
+	name = "Forked cybernetic tongue"
+	path = /obj/item/organ/internal/tongue/lizard/cybernetic
 
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"
