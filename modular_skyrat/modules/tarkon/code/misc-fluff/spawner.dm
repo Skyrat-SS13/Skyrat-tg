@@ -18,6 +18,7 @@
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
 	uniform = /obj/item/clothing/under/tarkon
+	head = /obj/item/clothing/head/utility/welding/hat
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/combat
