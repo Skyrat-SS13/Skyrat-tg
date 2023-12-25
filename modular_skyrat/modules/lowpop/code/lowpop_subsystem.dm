@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(lowpop)
 	var/lowpop_active = FALSE
 
 /datum/controller/subsystem/lowpop/Initialize()
-	if(!CONFIG_GET(flag/lowpop_measures))
+	if(!CONFIG_GET(flag/lowpop_measures_enabled))
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 	wait = CONFIG_GET(number/lowpop_subsystem_fire)
