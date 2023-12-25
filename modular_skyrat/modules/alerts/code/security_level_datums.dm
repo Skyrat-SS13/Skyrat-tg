@@ -70,7 +70,7 @@
  */
 /datum/security_level/epsilon
 	name = "epsilon"
-	announcement_color = "black"
+	announcement_color = "grey"
 	number_level = SEC_LEVEL_EPSILON
 	lowering_to_configuration_key = /datum/config_entry/string/alert_epsilon_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_epsilon_upto
