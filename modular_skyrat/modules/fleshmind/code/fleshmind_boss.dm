@@ -112,7 +112,7 @@
 	var/laser_cooldown_time_lower = 2 SECONDS
 	COOLDOWN_DECLARE(laser_cooldown)
 	/// Our laser projectile type
-	var/laser_projectile_type = /obj/projectile/beam/emitter/hitscan
+	var/laser_projectile_type = /obj/projectile/beam/emitter
 	/// A list of sounds we can play when firing the laser
 	var/static/list/laser_projectile_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_1.ogg',
