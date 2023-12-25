@@ -136,7 +136,8 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	response_received = "Thank you for your generosity. Your money will not be wasted."
 	response_too_late = "We hope you like skin cancer!"
 	response_not_enough = "This is not nearly enough for our operations. I'm afraid we'll have to borrow some."
-	announcement_color = "purple" */
+	announcement_color = "purple" 
+	SKYRAT EDIT REMOVAL END */
 
 ///Previous Nanotrasen Assitant workers fired for many reasons now looking for revenge and your bank account.
 /datum/pirate_gang/grey
