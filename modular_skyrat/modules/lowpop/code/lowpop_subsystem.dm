@@ -10,6 +10,11 @@ SUBSYSTEM_DEF(lowpop)
 	runlevels = RUNLEVEL_GAME
 	/// Since the last fire, were the measures on or off?
 	var/lowpop_active = FALSE
+	/// List of atmos machinery we set no power to
+	var/static/list/atmos_machinery_no_power = list(
+		/obj/machinery/atmospherics/components/trinary,
+		/obj/machinery/atmospherics/components/binary,
+	)
 
 /datum/controller/subsystem/lowpop/Initialize()
 	if(!CONFIG_GET(flag/lowpop_measures_enabled))
@@ -28,9 +33,9 @@ SUBSYSTEM_DEF(lowpop)
  */
 /datum/controller/subsystem/lowpop/proc/roundstart_check()
 	if(get_active_player_count(TRUE, FALSE, FALSE) > CONFIG_GET(number/lowpop_threshold))
-		lowpop_active = FALSE
+		disable_lowpop_measures()
 		return // If we go above it don't do it!
-	lowpop_active = TRUE
+	enable_lowpop_measures()
 	addtimer(CALLBACK(src, PROC_REF(send_announcement), LOWPOP_ON_MESSAGE), rand(10 SECONDS, 30 SECONDS))
 
 /datum/controller/subsystem/lowpop/proc/send_announcement(message)
@@ -40,18 +45,39 @@ SUBSYSTEM_DEF(lowpop)
 /datum/controller/subsystem/lowpop/fire(resumed)
 	var/fire_population_count = get_active_player_count(TRUE, FALSE, FALSE)
 	if(fire_population_count <= CONFIG_GET(number/lowpop_threshold)) // Oh no, we went below the threshold.
-		lowpop_active = TRUE
+		enable_lowpop_measures()
 	if(!lowpop_active)
 		return
 	// First, check if we need to turn these measures off.
 	if(fire_population_count > CONFIG_GET(number/lowpop_threshold))
 		// Okay, we're high enough again, lets turn it off, and let everyone know!
-		lowpop_active = FALSE
+		disable_lowpop_measures()
 		addtimer(CALLBACK(src, PROC_REF(send_announcement), LOWPOP_OFF_MESSAGE), rand(10 SECONDS, 30 SECONDS))
 		return
 
 	power_restore()
 
+/datum/controller/subsystem/lowpop/proc/enable_lowpop_measures()
+	lowpop_active = TRUE
+	update_power_changes()
+
+
+/datum/controller/subsystem/lowpop/proc/disable_lowpop_measures()
+	lowpop_active = FALSE
+	update_power_changes()
+
+/**
+ * Changes the power requirements of some things.
+ */
+/datum/controller/subsystem/lowpop/proc/update_power_changes()
+	if(lowpop_active)
+		for(var/obj/machinery/atmospherics/atmos_device as anything in GLOB.atmos_components)
+			if(is_type_in_list(atmos_device, atmos_machinery_no_power))
+				atmos_device.update_use_power(NO_POWER_USE)
+	else
+		for(var/obj/machinery/atmospherics/atmos_device as anything in GLOB.atmos_components)
+			if(is_type_in_list(atmos_device, atmos_machinery_no_power))
+				atmos_device.update_use_power(initial(atmos_device.use_power))
 /**
  * Here we check a few things, namely, if the SMES on station are more than percent critically low, we recharge!
  */
