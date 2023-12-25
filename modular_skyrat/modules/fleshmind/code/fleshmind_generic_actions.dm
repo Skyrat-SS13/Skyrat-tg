@@ -1,8 +1,8 @@
 /datum/action/cooldown/fleshmind_create_structure
 	name = "Create Tech Structure"
 	desc = "Creates a tech structure of your choice at your location(must be on wireweed)."
-	button_icon = 'icons/mob/actions/backgrounds.dmi'
 	background_icon_state = "bg_fugu"
+	button_icon = 'icons/obj/scrolls.dmi'
 	button_icon_state = "blueprints"
 	cooldown_time = 2 MINUTES
 	var/list/possible_structures = list(
@@ -42,6 +42,7 @@
 	name = "Create Basic Structure"
 	desc = "Creates a basic structure of your choice at your location(must be on wireweed)."
 	button_icon_state = "mjollnir1"
+	button_icon = 'icons/obj/weapons/hammer.dmi'
 	possible_structures = list(
 		/obj/structure/fleshmind/structure/wireweed_door,
 		/obj/structure/fleshmind/structure/wireweed_wall,
@@ -51,9 +52,9 @@
 /datum/action/cooldown/fleshmind_flesh_call
 	name = "Call Flesh Reinforcements"
 	desc = "Gets all fleshmind mobs to come to your location in a radius."
-	button_icon = 'icons/mob/actions/backgrounds.dmi'
 	background_icon_state = "bg_fugu"
-	button_icon_state = "latexballon_blow"
+	button_icon = 'icons/obj/signs.dmi'
+	button_icon_state = "bio"
 	cooldown_time = 2 MINUTES
 
 /datum/action/cooldown/fleshmind_flesh_call/Activate(atom/target)
@@ -68,8 +69,8 @@
 /datum/action/innate/fleshmind_flesh_chat
 	name = "Flesh Chat"
 	desc = "Sends a message to all other sentient fleshmind beings."
-	button_icon = 'icons/mob/actions/actions_changeling.dmi'
 	background_icon_state = "bg_fugu"
+	button_icon = 'icons/mob/actions/actions_changeling.dmi'
 	button_icon_state = "hivemind_link"
 
 /datum/action/innate/fleshmind_flesh_chat/Activate(atom/target)
