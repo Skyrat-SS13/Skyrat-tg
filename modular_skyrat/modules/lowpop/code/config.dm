@@ -1,5 +1,5 @@
 // When enabled, turns the lowpop system on
-/datum/config_entry/flag/lowpop_measures
+/datum/config_entry/flag/lowpop_measures_enabled
 	default = FALSE
 
 // The threshold for lowpop systems to be enabled.
