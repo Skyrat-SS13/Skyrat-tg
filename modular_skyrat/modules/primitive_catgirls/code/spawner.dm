@@ -83,7 +83,7 @@
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/primitive_catgirl, team)
 
-	team.players_spawned += (spawned_human.key)
+	team.players_spawned += (spawned_human.ckey)
 
 /datum/job/primitive_catgirl
 	title = "Icemoon Dweller"
