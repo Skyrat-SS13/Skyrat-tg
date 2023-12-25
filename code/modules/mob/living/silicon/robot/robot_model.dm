@@ -709,6 +709,7 @@
 		/obj/item/storage/bag/ore/cyborg,
 		/obj/item/pickaxe/drill/cyborg,
 		/obj/item/shovel,
+		/obj/item/kinetic_crusher, //SKYRAT EDIT
 		/obj/item/crowbar/cyborg,
 		/obj/item/weldingtool/mini,
 		/obj/item/extinguisher/mini,
