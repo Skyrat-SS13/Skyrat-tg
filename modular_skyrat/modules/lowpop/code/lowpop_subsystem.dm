@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(lowpop)
 			LAZYADD(critically_low_smes, smes)
 
 	// check if enough of them are out of power
-	if((LAZYLEN(critically_low_smes) / LAZYLEN(valid_smes)) < RECHARGE_THRESHOLD)
+	if((LAZYLEN(critically_low_smes) / LAZYLEN(valid_smes) * 100) < RECHARGE_THRESHOLD)
 		return
 
 	// recharge all those smes if we're out of power!
