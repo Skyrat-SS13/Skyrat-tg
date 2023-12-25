@@ -215,6 +215,10 @@
 	name = "Half-shaved 2"
 	icon_state = "hair_halfshave"
 
+/datum/sprite_accessory/hair/skyrat/halfshavealt
+	name = "Half-shaved 2 Alt"
+	icon_state = "hair_halfshave_alt"
+
 /datum/sprite_accessory/hair/skyrat/halfshave_snout
 	name = "Half-shaved 2 (clipped)"
 	icon_state = "hair_halfshave_snout"
@@ -382,6 +386,26 @@
 	name = "Half-shave glamorous"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_glamorous"
+
+/datum/sprite_accessory/hair/skyrat/halfshavedlong
+	name = "Half-shaved long alt"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
+	icon_state = "halfshave_long_alt"
+
+/datum/sprite_accessory/hair/skyrat/halfshavedmessy
+	name = "Half-shaved messy alt"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
+	icon_state = "halfshave_messy_alt"
+
+/datum/sprite_accessory/hair/skyrat/halfshavedmessylong
+	name = "Half-shave long messy alt"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
+	icon_state = "halfshave_messylong_alt"
+
+/datum/sprite_accessory/hair/skyrat/halfshavedglamorous
+	name = "Half-shave glamorous alt"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
+	icon_state = "halfshave_glamorous_alt"
 
 /datum/sprite_accessory/hair/skyrat/emoshort
 	name = "Emo Short"
