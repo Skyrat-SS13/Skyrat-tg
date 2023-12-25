@@ -83,8 +83,8 @@
 		return
 
 	if(incoming_controller)
-		RegisterSignal(incoming_controller, COMSIG_PARENT_QDELETING, .proc/controller_death)
-		incoming_controller.RegisterSignal(src, COMSIG_PARENT_QDELETING, /datum/fleshmind_controller/proc/component_death)
+		RegisterSignal(incoming_controller, COMSIG_QDELETING, .proc/controller_death)
+		incoming_controller.RegisterSignal(src, COMSIG_QDELETING, /datum/fleshmind_controller/proc/component_death)
 
 	set_overlay = pick(possible_overlays)
 
@@ -108,7 +108,7 @@
 		return
 
 	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
-	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_EXAMINE, .proc/on_examine)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_ATTACK_HAND, .proc/handle_attack_hand)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
@@ -136,7 +136,7 @@
 	parent_machinery.name = initial(parent_machinery.name)
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_TAKE_DAMAGE,
-		COMSIG_PARENT_EXAMINE,
+		COMSIG_ATOM_EXAMINE,
 		COMSIG_ATOM_UPDATE_OVERLAYS,
 		COMSIG_ATOM_UI_INTERACT,
 		COMSIG_ATOM_DESTRUCTION,

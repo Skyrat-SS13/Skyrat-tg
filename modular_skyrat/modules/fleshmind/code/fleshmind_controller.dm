@@ -110,7 +110,7 @@
 	if(new_core)
 		cores += new_core
 		new_core.our_controller = src
-		RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
+		RegisterSignal(new_core, COMSIG_QDELETING, .proc/core_death)
 		new_core.name = "[controller_fullname] Processor Unit"
 		register_new_asset(new_core)
 	if(!SScorruption.can_fire)
@@ -121,7 +121,7 @@
 	SSshuttle.registerHostileEnvironment(src)
 
 /datum/fleshmind_controller/proc/register_new_asset(obj/structure/fleshmind/new_asset)
-	new_asset.RegisterSignal(src, COMSIG_PARENT_QDELETING, /obj/structure/fleshmind/proc/controller_destroyed)
+	new_asset.RegisterSignal(src, COMSIG_QDELETING, /obj/structure/fleshmind/proc/controller_destroyed)
 
 /datum/fleshmind_controller/process(delta_time)
 	if(!LAZYLEN(cores)) // We have no more processor cores, it's time to die.
@@ -323,7 +323,7 @@
 /datum/fleshmind_controller/proc/spawn_new_core()
 	var/obj/structure/fleshmind/wireweed/selected_wireweed = pick(controlled_wireweed)
 	var/obj/structure/fleshmind/structure/core/new_core = new(get_turf(selected_wireweed), FALSE)
-	RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
+	RegisterSignal(new_core, COMSIG_QDELETING, .proc/core_death)
 	register_new_asset(new_core, FALSE)
 	new_core.our_controller = src
 	cores += new_core
@@ -370,7 +370,7 @@
 		new_wireweed = new wireweed_type(location, 0, src)
 		var/obj/effect/temp_visual/wireweed_spread/effect = new(location)
 		effect.setDir(get_dir(origin_turf, location))
-		new_wireweed.RegisterSignal(effect, COMSIG_PARENT_QDELETING, /obj/structure/fleshmind/wireweed/proc/visual_finished)
+		new_wireweed.RegisterSignal(effect, COMSIG_QDELETING, /obj/structure/fleshmind/wireweed/proc/visual_finished)
 	else
 		new_wireweed = new wireweed_type(location, 255, src)
 	new_wireweed.our_controller = src
@@ -382,7 +382,7 @@
 	controlled_wireweed += new_wireweed
 
 	register_new_asset(new_wireweed)
-	RegisterSignal(new_wireweed, COMSIG_PARENT_QDELETING, .proc/wireweed_death)
+	RegisterSignal(new_wireweed, COMSIG_QDELETING, .proc/wireweed_death)
 
 	return new_wireweed
 
@@ -393,7 +393,7 @@
 	controlled_walls += new_wall
 
 	register_new_asset(new_wall)
-	RegisterSignal(new_wall, COMSIG_PARENT_QDELETING, .proc/wall_death)
+	RegisterSignal(new_wall, COMSIG_QDELETING, .proc/wall_death)
 
 	return new_wall
 
@@ -404,11 +404,11 @@
 	controlled_mobs += new_mob
 
 	for(var/obj/structure/fleshmind/structure/core/iterating_core as anything in cores)
-		new_mob.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
+		new_mob.RegisterSignal(iterating_core, COMSIG_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
 
-	RegisterSignal(new_mob, COMSIG_PARENT_QDELETING, .proc/mob_death)
+	RegisterSignal(new_mob, COMSIG_QDELETING, .proc/mob_death)
 
-	new_mob.RegisterSignal(src, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/controller_destroyed)
+	new_mob.RegisterSignal(src, COMSIG_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/controller_destroyed)
 
 	return new_mob
 
@@ -421,7 +421,7 @@
 	new_structure.name = "[controller_firstname] [new_structure.name]"
 
 	register_new_asset(new_structure)
-	RegisterSignal(new_structure, COMSIG_PARENT_QDELETING, .proc/structure_death)
+	RegisterSignal(new_structure, COMSIG_QDELETING, .proc/structure_death)
 
 /// Spawns an amount of structured across all wireweed, guaranteed to spawn atleast 1 of each type
 /datum/fleshmind_controller/proc/spawn_structures(amount)

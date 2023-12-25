@@ -33,7 +33,7 @@
 	if(!LAZYLEN(spawnpoints))
 		CRASH("make_ert had no ERT spawnpoints to choose from!")
 
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for [created_ert_datum.polldesc]?", "deathsquad")
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [created_ert_datum.polldesc]?", ROLE_DEATHSQUAD)
 
 	if(!LAZYLEN(candidates))
 		return FALSE
@@ -113,7 +113,7 @@
 			priority_announce("Central command has responded to your request for a CODE [uppertext(created_ert_datum.code)] Emergency Response Team and have confirmed one to be enroute.", "ERT Request", ANNOUNCER_ERTYES)
 	//Open the Armory doors
 	if(created_ert_datum.opendoors)
-		for(var/obj/machinery/door/poddoor/ert/door in GLOB.airlocks)
+		for(var/obj/machinery/door/poddoor/ert/door as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/door/poddoor/ert))
 			door.open()
 			CHECK_TICK
 	return TRUE

@@ -766,7 +766,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/fleshmind/himan/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof)
+/mob/living/simple_animal/hostile/fleshmind/himan/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = FALSE, message_range = 7, datum/saymode/saymode = null)
 	if(faking_death)
 		return
 	return ..()
@@ -833,7 +833,7 @@
 /datum/action/cooldown/himan_fake_death
 	name = "Fake Death"
 	desc = "Fakes our own death."
-	button_icon = 'icons/obj/objects.dmi'
+	button_icon = 'icons/obj/bed.dmi'
 	button_icon_state = "bed"
 	cooldown_time = 20 SECONDS
 
@@ -1147,7 +1147,7 @@
 /datum/action/cooldown/phaser_phase_ability
 	name = "Create Clones"
 	desc = "Creates phase copies of ourselves to move towards a set target."
-	button_icon = 'icons/obj/objects.dmi'
+	button_icon = 'icons/obj/anomaly.dmi'
 	button_icon_state = "bhole2"
 	cooldown_time = 40 SECONDS
 

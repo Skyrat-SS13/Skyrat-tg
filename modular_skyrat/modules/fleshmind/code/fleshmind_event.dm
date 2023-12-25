@@ -20,7 +20,7 @@
 
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
-	var/obj/structure/biohazard_blob/resin/resintest = new()
+	var/obj/structure/mold/resin/test/test_resin = new()
 
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
 
@@ -30,13 +30,13 @@
 		if(!is_type_in_typecache(iterating_area, possible_spawn_areas))
 			continue
 		for(var/turf/open/floor in iterating_area)
-			if(!floor.Enter(resintest))
+			if(!floor.Enter(test_resin))
 				continue
 			if(locate(/turf/closed) in range(2, floor))
 				continue
 			turfs += floor
 
-	qdel(resintest)
+	qdel(test_resin)
 
 	shuffle(turfs)
 

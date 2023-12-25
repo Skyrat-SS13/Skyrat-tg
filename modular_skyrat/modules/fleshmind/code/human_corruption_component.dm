@@ -45,20 +45,20 @@
 	to_chat(infected_human, span_userdanger("IMPORTANT INFO, MUST READ: [CONTROLLED_MOB_POLICY]"))
 
 	RegisterSignal(infected_human, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/update_parent_overlays)
-	RegisterSignal(infected_human, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(infected_human, COMSIG_ATOM_EXAMINE, .proc/on_examine)
 	RegisterSignal(infected_human, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
 	RegisterSignal(infected_human, COMSIG_LIVING_DEATH, .proc/host_death)
 
 	if(our_controller)
 		for(var/obj/structure/fleshmind/structure/core/iterating_core in our_controller.cores)
-			RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, .proc/core_death)
+			RegisterSignal(iterating_core, COMSIG_QDELETING, .proc/core_death)
 
 	// Action generation and granting
 	for(var/iterating_action as anything in actions_to_give)
 		var/datum/action/new_action = new iterating_action
 		new_action.Grant(infected_human)
 		granted_actions += new_action
-		RegisterSignal(new_action, COMSIG_PARENT_QDELETING, .proc/action_destroyed)
+		RegisterSignal(new_action, COMSIG_QDELETING, .proc/action_destroyed)
 
 	infected_human.faction |= FACTION_FLESHMIND
 
@@ -75,7 +75,7 @@
 	parent_mob.faction -= FACTION_FLESHMIND
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_UPDATE_OVERLAYS,
-		COMSIG_PARENT_EXAMINE,
+		COMSIG_ATOM_EXAMINE,
 		COMSIG_ATOM_EMP_ACT,
 		COMSIG_LIVING_DEATH,
 	))

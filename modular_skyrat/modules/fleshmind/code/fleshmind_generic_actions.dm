@@ -1,7 +1,7 @@
 /datum/action/cooldown/fleshmind_create_structure
 	name = "Create Tech Structure"
 	desc = "Creates a tech structure of your choice at your location(must be on wireweed)."
-	button_icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	button_icon = 'icons/mob/actions/backgrounds.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "blueprints"
 	cooldown_time = 2 MINUTES
@@ -51,7 +51,7 @@
 /datum/action/cooldown/fleshmind_flesh_call
 	name = "Call Flesh Reinforcements"
 	desc = "Gets all fleshmind mobs to come to your location in a radius."
-	button_icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	button_icon = 'icons/mob/actions/backgrounds.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "latexballon_blow"
 	cooldown_time = 2 MINUTES

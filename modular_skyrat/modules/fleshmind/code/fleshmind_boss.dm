@@ -168,13 +168,13 @@
 	if(!target_atom || QDELETED(target_atom))
 		return
 	if(barrage > 1)
-		var/datum/callback/callback = CALLBACK(src, .proc/fire_projectile, target_atom, rocket_projectile_type, rocket_projectile_sound)
+		var/datum/callback/callback = CALLBACK(src, .proc/fire_custom_projectile, target_atom, rocket_projectile_type, rocket_projectile_sound)
 		for(var/i in 1 to barrage)
 			addtimer(callback, (i - 1) * barrage_interval)
 	else
-		fire_projectile(target_atom, rocket_projectile_type, rocket_projectile_sound)
+		fire_custom_projectile(target_atom, rocket_projectile_type, rocket_projectile_sound)
 
-/mob/living/simple_animal/hostile/fleshmind/tyrant/proc/fire_projectile(atom/target_atom, projectile_type, sound/projectile_sound)
+/mob/living/simple_animal/hostile/fleshmind/tyrant/proc/fire_custom_projectile(atom/target_atom, projectile_type, sound/projectile_sound)
 	if(!target_atom || QDELETED(target_atom))
 		return
 	playsound(loc, projectile_sound, 100, TRUE)
