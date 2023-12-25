@@ -112,7 +112,7 @@
 	var/laser_cooldown_time_lower = 2 SECONDS
 	COOLDOWN_DECLARE(laser_cooldown)
 	/// Our laser projectile type
-	var/laser_projectile_type = /obj/projectile/beam/emitter
+	var/laser_projectile_type = /obj/projectile/beam/emitter/hitscan
 	/// A list of sounds we can play when firing the laser
 	var/static/list/laser_projectile_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_1.ogg',
@@ -130,7 +130,7 @@
 		do_sparks(3, FALSE, src)
 
 	if(COOLDOWN_FINISHED(src, laser_cooldown) && target)
-		fire_projectile(target, laser_projectile_type, pick(laser_projectile_sounds))
+		fire_custom_projectile(target, laser_projectile_type, pick(laser_projectile_sounds))
 		COOLDOWN_START(src, laser_cooldown, rand(laser_cooldown_time_lower, laser_cooldown_time_upper))
 
 	if(COOLDOWN_FINISHED(src, rocket_pod_cooldown) && target)
