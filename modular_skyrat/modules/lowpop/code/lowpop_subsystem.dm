@@ -2,6 +2,7 @@
 #define LOWPOP_OFF_MESSAGE "As the staffing issues have been resolved, we have resumed normal staffing protocol. Automatic SMES recharging will no longer occur."
 #define SMES_CRITICALLY_LOW_PERCENTAGE 5
 #define RECHARGE_THRESHOLD 80
+
 // A subsystem for handling lowpop affairs.
 SUBSYSTEM_DEF(lowpop)
 	name = "Lowpop Control Measures"
@@ -56,20 +57,26 @@ SUBSYSTEM_DEF(lowpop)
 	var/list/all_smes = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/smes)
 	var/list/critically_low_smes = list()
 	var/list/valid_smes = list()
+
 	for(var/obj/machinery/power/smes/smes as anything in all_smes)
+		// check if its the right z level
 		if(!is_station_level(smes.z))
 			continue
 		LAZYADD(valid_smes, smes)
+		// check if it's actually low on power
 		if((smes.charge / smes.capacity * 100) < SMES_CRITICALLY_LOW_PERCENTAGE)
 			LAZYADD(critically_low_smes, smes)
 
+	// check if enough of them are out of power
 	if(LAZYLEN(critically_low_smes) / LAZYLEN(valid_smes) < RECHARGE_THRESHOLD)
 		return
 
-	smes.charge = smes.capacity
-	smes.output_level = smes.output_level_max
-	smes.output_attempt = TRUE
-	smes.update_appearance()
-	smes.power_change()
+	// recharge all those smes if we're out of power!
+	for(var/obj/machinery/power/smes/smes as anything in valid_smes)
+		smes.charge = smes.capacity
+		smes.output_level = smes.output_level_max
+		smes.output_attempt = TRUE
+		smes.update_appearance()
+		smes.power_change()
 
 	minor_announce("All SMESs on [station_name()] have been recharged via electron beam.", "Power Systems Recharged")
