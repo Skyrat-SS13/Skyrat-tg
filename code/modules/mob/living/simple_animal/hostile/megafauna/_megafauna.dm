@@ -15,7 +15,7 @@
 	ranged_ignores_vision = TRUE
 	stat_attack = DEAD
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 1, STAMINA = 0, OXY = 1)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	vision_range = 5
@@ -25,7 +25,6 @@
 	pull_force = MOVE_FORCE_OVERPOWERING
 	mob_size = MOB_SIZE_HUGE
 	layer = LARGE_MOB_LAYER //Looks weird with them slipping under mineral walls and cameras and shit otherwise
-	plane = GAME_PLANE_UPPER // SKYRAT EDIT - ORIGINAL: plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	mouse_opacity = MOUSE_OPACITY_OPAQUE // Easier to click on in melee, they're giant targets anyway
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	/// Crusher loot dropped when the megafauna is killed with a crusher
@@ -59,9 +58,7 @@
 		AddComponent(/datum/component/gps, gps_name)
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
 	add_traits(list(TRAIT_NO_TELEPORT, TRAIT_MARTIAL_ARTS_IMMUNE), MEGAFAUNA_TRAIT)
-	for(var/action_type in attack_action_types)
-		var/datum/action/innate/megafauna_attack/attack_action = new action_type()
-		attack_action.Grant(src)
+	grant_actions_by_list(attack_action_types)
 
 /mob/living/simple_animal/hostile/megafauna/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	//Safety check

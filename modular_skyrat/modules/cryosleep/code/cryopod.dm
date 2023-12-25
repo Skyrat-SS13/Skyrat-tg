@@ -279,11 +279,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				if(!(affected_contract.contract == objective))
 					continue
 				var/contract_id = affected_contract.id
-				affected_contractor_hub.create_single_contract(objective.owner, affected_contract.payout_type)
 				affected_contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
 				if (affected_contractor_hub.current_contract == objective)
 					affected_contractor_hub.current_contract = null
-				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
+				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract aborted.")]")
 				break
 		else if(istype(objective.target) && objective.target == mob_occupant.mind)
 			var/old_target = objective.target

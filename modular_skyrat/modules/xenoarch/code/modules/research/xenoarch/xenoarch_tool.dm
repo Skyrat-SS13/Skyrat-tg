@@ -7,6 +7,7 @@
 /obj/item/xenoarch/hammer
 	name = "parent dev item"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
+	tool_behaviour = TOOL_HAMMER
 	var/dig_amount = 1
 	var/dig_speed = 1 SECONDS
 	var/advanced = FALSE

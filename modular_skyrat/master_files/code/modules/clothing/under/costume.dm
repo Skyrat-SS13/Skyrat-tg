@@ -107,21 +107,32 @@
 /obj/item/clothing/under/costume/skyrat/christmas
 	name = "christmas costume"
 	desc = "Can you believe it guys? Christmas. Just a lightyear away!" //Lightyear is a measure of distance I hate it being used for this joke :(
-	icon_state = "christmas"
+	icon_state = "christmas_male"
+	greyscale_colors = "#cc0f0f#c4c2c2"
+	greyscale_config = /datum/greyscale_config/chrimbo
+	greyscale_config_worn = /datum/greyscale_config/chrimbo/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/chrimbo/worn/digi
+	body_parts_covered = CHEST|GROIN|ARMS
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/costume/skyrat/christmas/green
 	name = "green christmas costume"
 	desc = "4:00, wallow in self-pity. 4:30, stare into the abyss. 5:00, solve world hunger, tell no one. 5:30, jazzercize; 6:30, dinner with me. I can't cancel that again. 7:00, wrestle with my self-loathing. I'm booked. Of course, if I bump the loathing to 9, I could still be done in time to lay in bed, stare at the ceiling and slip slowly into madness."
-	icon_state = "christmas_green"
+	greyscale_colors = "#1a991a#c4c2c2"
 
 /obj/item/clothing/under/costume/skyrat/christmas/croptop
 	name = "sexy christmas costume"
 	desc = "About 550 years since the release of Mariah Carey's \"All I Want For Christmas is You\", society has yet to properly recover from its repercussions. Some still keep a gun as their christmas mantlepiece, just in case she's heard singing on their rooftop late in the night..."
-	icon_state = "christmas_crop"
+	icon_state = "christmas_female"
+	greyscale_colors = "#cc0f0f#c4c2c2"
+	greyscale_config = /datum/greyscale_config/chrimbo
+	greyscale_config_worn = /datum/greyscale_config/chrimbo/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/chrimbo/worn/digi
 	body_parts_covered = CHEST|GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/costume/skyrat/christmas/croptop/green
 	name = "sexy green christmas costume"
 	desc = "Stupid. Ugly. Out of date. If I can't find something nice to wear I'm not going."
-	icon_state = "christmas_crop_green"
+	greyscale_colors = "#1a991a#c4c2c2"

@@ -49,9 +49,6 @@
 		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
 		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 
-/datum/opposing_force_equipment/melee/cultblade
-	item_type = /obj/item/melee/cultblade
-
 /datum/opposing_force_equipment/melee/meathook
 	name = "Butcher's Meat Hook"
 	item_type = /obj/item/gun/magic/hook
@@ -91,12 +88,6 @@
 
 /datum/opposing_force_equipment/melee_stealth/telescopicshield
 	item_type = /obj/item/shield/riot/tele
-
-/datum/opposing_force_equipment/melee_stealth/cultdagger
-	item_type = /obj/item/melee/cultblade/dagger
-
-/datum/opposing_force_equipment/melee_stealth/sicklyblade
-	item_type = /obj/item/melee/sickly_blade
 
 /datum/opposing_force_equipment/melee_stealth/northstar
 	item_type = /obj/item/clothing/gloves/rapid

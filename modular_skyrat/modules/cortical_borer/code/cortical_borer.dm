@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	return FALSE
 
 //so if a person is debrained, the borer is removed
-/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
+/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, movement_flags = NO_ID_TRANSFER)
 	. = ..()
 	var/mob/living/basic/cortical_borer/cb_inside = target.has_borer()
 	if(cb_inside)
@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	borer = null
 	return ..()
 
-/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
+/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, movement_flags)
 	. = ..()
 	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
 		body_focus.on_add()
@@ -81,6 +81,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	health = 25
 	//they need to be able to pass tables and mobs
 	pass_flags = PASSTABLE | PASSMOB
+	density = FALSE
 	//they are below mobs, or below tables
 	layer = BELOW_MOB_LAYER
 	//corticals are tiny
@@ -97,7 +98,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/epinephrine,
 										/datum/reagent/medicine/haloperidol,
 										/datum/reagent/toxin/formaldehyde,
-										/datum/reagent/impurity/libitoil,
+										/datum/reagent/inverse/libitoil,
 										/datum/reagent/impurity/mannitol,
 										/datum/reagent/medicine/c2/libital,
 										/datum/reagent/medicine/c2/lenturi,
@@ -205,7 +206,17 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 /mob/living/basic/cortical_borer/Initialize(mapload)
 	. = ..()
+	AddComponent( \
+		/datum/component/squashable, \
+		squash_chance = 25, \
+		squash_damage = 25, \
+		squash_flags = SQUASHED_DONT_SQUASH_IN_CONTENTS, \
+	)
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
+
+	var/matrix/borer_matrix = matrix(transform)
+	borer_matrix.Scale(0.5, 0.5)
+	transform = borer_matrix
 
 	name = "[initial(name)] ([generation]-[rand(100,999)])" //so their gen and a random. ex 1-288 is first gen named 288, 4-483 if fourth gen named 483
 
@@ -221,7 +232,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	reagent_holder = new /obj/item/reagent_containers/borer(src)
 
 	for(var/action_type in known_abilities)
-		var/datum/action/attack_action = new action_type()
+		var/datum/action/attack_action = new action_type(src)
 		attack_action.Grant(src)
 
 	if(mind)
@@ -265,7 +276,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	. += "OBJECTIVES:"
 	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_egg_number]/[GLOB.objective_egg_borer_number]"
 	. += "2) [GLOB.objective_willing_hosts] willing hosts: [length(GLOB.willing_hosts)]/[GLOB.objective_willing_hosts]"
-	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
+	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] chemicals from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
 
 /mob/living/basic/cortical_borer/Life(seconds_per_tick, times_fired)
 	. = ..()

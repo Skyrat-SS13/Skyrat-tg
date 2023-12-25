@@ -12,7 +12,7 @@
 	icon_state = "tongue"
 	modifies_speech = TRUE
 
-/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 	signer.verb_ask = "arfs"
 	signer.verb_exclaim = "wans"
@@ -21,6 +21,28 @@
 
 /obj/item/organ/internal/tongue/dog/Remove(mob/living/carbon/speaker, special = FALSE)
 	..()
+	speaker.verb_ask = initial(verb_ask)
+	speaker.verb_exclaim = initial(verb_exclaim)
+	speaker.verb_whisper = initial(verb_whisper)
+	speaker.verb_sing = initial(verb_sing)
+	speaker.verb_yell = initial(verb_yell)
+
+/obj/item/organ/internal/tongue/avian
+	name = "avian tongue"
+	desc = "A short and stubby tongue that craves seeds."
+	say_mod = "chirps"
+	icon_state = "tongue"
+	modifies_speech = TRUE
+
+/obj/item/organ/internal/tongue/avian/Insert(mob/living/carbon/signer, special = FALSE, movement_flags = DELETE_IF_REPLACED)
+	. = ..()
+	signer.verb_ask = "peeps"
+	signer.verb_exclaim = "squawks"
+	signer.verb_whisper = "murmurs"
+	signer.verb_yell = "shrieks"
+
+/obj/item/organ/internal/tongue/avian/Remove(mob/living/carbon/speaker, special = FALSE)
+	. = ..()
 	speaker.verb_ask = initial(verb_ask)
 	speaker.verb_exclaim = initial(verb_exclaim)
 	speaker.verb_whisper = initial(verb_whisper)

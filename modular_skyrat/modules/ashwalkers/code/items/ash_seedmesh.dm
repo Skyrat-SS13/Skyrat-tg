@@ -9,17 +9,26 @@
 
 /obj/item/seed_mesh/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stack/ore/glass))
-		var/obj/item/stack/stack_item = attacking_item
-		if(!do_after(user, 10 SECONDS, src))
-			user.balloon_alert(user, "have to stand still!")
+		var/obj/item/stack/ore/ore_item = attacking_item
+		if(ore_item.points == 0)
+			user.balloon_alert(user, "[ore_item] is worthless!")
 			return
-		if(!stack_item.use(5))
-			user.balloon_alert(user, "unable to use five of [stack_item]!")
-			return
-		if(prob(85))
-			user.balloon_alert(user, "[stack_item] reveals nothing!")
-			return
-		var/spawn_seed = pick(subtypesof(/obj/item/seeds) - seeds_blacklist)
-		new spawn_seed(get_turf(src))
-		user.balloon_alert(user, "[stack_item] revealed something!")
+
+		while(ore_item.amount >= 5)
+			if(!do_after(user, 5 SECONDS, src))
+				user.balloon_alert(user, "have to stand still!")
+				return
+
+			if(!ore_item.use(5))
+				user.balloon_alert(user, "unable to use five of [ore_item]!")
+				return
+
+			if(prob(70))
+				user.balloon_alert(user, "[ore_item] reveals nothing!")
+				continue
+
+			var/spawn_seed = pick(subtypesof(/obj/item/seeds) - seeds_blacklist)
+			new spawn_seed(get_turf(src))
+			user.balloon_alert(user, "[ore_item] revealed something!")
+
 	return ..()

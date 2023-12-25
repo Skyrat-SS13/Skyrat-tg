@@ -1,9 +1,10 @@
-import { Section, Stack, Button } from '../components';
-import { Window } from '../layouts';
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
+import { Button, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
-export const AntagInfoOpfor = (props, context) => {
-  const { act } = useBackend(context);
+export const AntagInfoOpfor = (props) => {
+  const { act } = useBackend();
   return (
     <Window width={620} height={250}>
       <Window.Content>

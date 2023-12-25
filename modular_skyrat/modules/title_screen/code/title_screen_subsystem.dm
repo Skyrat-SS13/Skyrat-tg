@@ -23,6 +23,8 @@ SUBSYSTEM_DEF(title)
 	var/list/progress_json = list()
 	/// The reference realtime that we're treating as 0 for this run
 	var/progress_reference_time = 0
+	/// A list of station traits that have lobby buttons
+	var/list/available_lobby_station_traits = list()
 
 /datum/controller/subsystem/title/Initialize()
 	var/dat

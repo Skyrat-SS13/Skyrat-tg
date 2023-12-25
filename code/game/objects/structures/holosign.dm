@@ -24,7 +24,7 @@
 	var/turf/our_turf = get_turf(src)
 	if(use_vis_overlay)
 		alpha = 0
-		SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, MUTATE_PLANE(GAME_PLANE_UPPER, our_turf), dir, add_appearance_flags = RESET_ALPHA) //you see mobs under it, but you hit them like they are above it
+		SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, MUTATE_PLANE(GAME_PLANE, our_turf), dir, add_appearance_flags = RESET_ALPHA) //you see mobs under it, but you hit them like they are above it
 	if(source_projector)
 		projector = source_projector
 		LAZYADD(projector.signs, src)
@@ -153,17 +153,10 @@
 	icon_state = "holo_medical"
 	alpha = 125 //lazy :)
 	max_integrity = 1
-	var/force_allaccess = FALSE
 	var/buzzcd = 0
-
-/obj/structure/holosign/barrier/medical/examine(mob/user)
-	. = ..()
-	. += span_notice("The biometric scanners are <b>[force_allaccess ? "off" : "on"]</b>.")
 
 /obj/structure/holosign/barrier/medical/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
-	if(force_allaccess)
-		return TRUE
 	if(istype(mover, /obj/vehicle/ridden))
 		for(var/M in mover.buckled_mobs)
 			if(ishuman(M))
@@ -187,13 +180,6 @@
 	if(get_disease_severity_value(threat) > get_disease_severity_value(DISEASE_SEVERITY_MINOR))
 		return FALSE
 	return TRUE
-
-/obj/structure/holosign/barrier/medical/attack_hand(mob/living/user, list/modifiers)
-	if(!user.combat_mode && CanPass(user, get_dir(src, user)))
-		force_allaccess = !force_allaccess
-		to_chat(user, span_warning("You [force_allaccess ? "deactivate" : "activate"] the biometric scanners.")) //warning spans because you can make the station sick!
-	else
-		return ..()
 
 /obj/structure/holosign/barrier/cyborg/hacked
 	name = "Charged Energy Field"

@@ -332,6 +332,12 @@ There are several things that need to be remembered:
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
+		//On the off-chance we have a neck item that has to move around or cover the muzzle, it ALSO gets worn_icon_muzzled compatiability
+		if((bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && worn_item.worn_icon_muzzled)
+			var/snout_icon_file = worn_item.worn_icon_muzzled
+			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
+				icon_file = snout_icon_file
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE

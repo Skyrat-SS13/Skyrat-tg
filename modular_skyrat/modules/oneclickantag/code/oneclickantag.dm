@@ -146,7 +146,6 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	var/datum/team/brother_team/team
 	if(antagtype == ROLE_BROTHER)
 		team = new
-		team.pick_meeting_area()
 		team.forge_brother_objectives()
 	var/list/restricted_jobs = antag_get_protected_roles(antagtype)
 	var/list/mob/living/carbon/human/candidates = list()
@@ -197,7 +196,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	return FALSE
 
 /datum/admins/proc/make_wizard()
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", ROLE_WIZARD, null)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", role = ROLE_WIZARD)
 	var/mob/living/carbon/human/target
 	do
 		var/mob/dead/observer/selected = pick_n_take(candidates)
@@ -212,7 +211,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	return TRUE
 
 /datum/admins/proc/make_nukies(maxCount = 5)
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for a nuke team being sent in?", ROLE_OPERATIVE, null)
+	var/list/mob/dead/observer/candidates =  SSpolling.poll_ghost_candidates("Do you wish to be considered for a nuke team being sent in?", role = ROLE_OPERATIVE)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 	if(candidates.len)

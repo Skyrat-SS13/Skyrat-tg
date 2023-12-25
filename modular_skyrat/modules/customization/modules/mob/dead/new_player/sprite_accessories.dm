@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
-	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/lizard_spines.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
@@ -181,9 +181,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 		return TRUE
 
 /datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
-	var/obj/item/organ/external/tail/tail = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(tail && tail.wag_flags & WAG_WAGGING)
-		return "[icon_state]_wagging"
 	return icon_state
 
 /datum/sprite_accessory/caps

@@ -153,7 +153,6 @@
 			"[src] has been activated!",
 			source = src,
 			header = "Divine Intervention",
-			action = NOTIFY_ORBIT,
 			ghost_sound = 'sound/machines/warning-buzzer.ogg',
 			notify_volume = 75,
 		)
@@ -171,7 +170,6 @@
 			"[src] has been activated!",
 			source = src,
 			header = "Mistakes Were Made",
-			action = NOTIFY_ORBIT,
 			ghost_sound = 'sound/machines/warning-buzzer.ogg',
 			notify_volume = 75,
 		)
