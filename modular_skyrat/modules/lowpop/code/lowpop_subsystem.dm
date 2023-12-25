@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(lowpop)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 	wait = CONFIG_GET(number/lowpop_subsystem_fire)
-	if(LAZYLEN(GLOB.player_list) > CONFIG_GET(number/lowpop_threshold)) // Don't announce it if we're not within the threshold.
+	if(LAZYLEN(GLOB.player_list) > CONFIG_GET(number/lowpop_threshold)) // Don't announce it if we're not within the threshold. We use player list as people haven't spawned in yet.
 		return SS_INIT_SUCCESS
 	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, PROC_REF(roundstart_check))
 	return SS_INIT_SUCCESS
@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(lowpop)
  * We check at roundstart if we should activate the measures.
  */
 /datum/controller/subsystem/lowpop/proc/roundstart_check()
-	if(LAZYLEN(GLOB.player_list) > CONFIG_GET(number/lowpop_threshold))
+	if(get_active_player_count(TRUE, FALSE, FALSE) > CONFIG_GET(number/lowpop_threshold))
 		lowpop_active = FALSE
 		return // If we go above it don't do it!
 	lowpop_active = TRUE
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(lowpop)
 
 
 /datum/controller/subsystem/lowpop/fire(resumed)
-	var/fire_population_count = LAZYLEN(GLOB.player_list)
+	var/fire_population_count = get_active_player_count(TRUE, FALSE, FALSE)
 	if(fire_population_count <= CONFIG_GET(number/lowpop_threshold)) // Oh no, we went below the threshold.
 		lowpop_active = TRUE
 	if(!lowpop_active)
