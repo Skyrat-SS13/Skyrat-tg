@@ -45,6 +45,8 @@ SUBSYSTEM_DEF(lowpop)
 		return
 	// First, check if we need to turn these measures off.
 	if(fire_population_count > CONFIG_GET(number/lowpop_threshold))
+		// Okay, we're high enough again, lets turn it off, and let everyone know!
+		lowpop_active = FALSE
 		addtimer(CALLBACK(src, PROC_REF(send_announcement), LOWPOP_OFF_MESSAGE), rand(10 SECONDS, 30 SECONDS))
 		return
 
