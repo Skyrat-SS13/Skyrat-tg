@@ -66,7 +66,7 @@ export const LoadoutManager = (props) => {
               <Stack>
                 <Stack.Item>
                   <Input
-                    autofocus
+                    autoFocus
                     mt={0.5}
                     bottom="5%"
                     height="20px"
@@ -113,7 +113,7 @@ export const LoadoutManager = (props) => {
                       />
                     }
                   >
-                    <Stack grow vertical zebra>
+                    <Stack vertical zebra>
                       {loadout_items_filtered?.map((item) => (
                         <Stack.Item key={item.path}>
                           <Stack fontSize="15px">
