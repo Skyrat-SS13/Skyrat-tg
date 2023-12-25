@@ -28,8 +28,6 @@
 	wander = TRUE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway, /obj/item/uber_teleporter)
 	movement_type = FLYING
-	///Resonance cascade's chance of spawning. Can be decreased by using Xen crystals on Nihilanth
-	var/cascade_chance = 60
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50

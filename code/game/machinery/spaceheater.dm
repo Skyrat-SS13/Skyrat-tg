@@ -7,7 +7,7 @@
 	anchored = FALSE
 	density = TRUE
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN
-	icon = 'icons/obj/atmospherics/atmos.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/pipes_n_cables/atmos.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "sheater-off"
 	base_icon_state = "sheater"
 	name = "space heater"
@@ -72,7 +72,12 @@
 
 /obj/machinery/space_heater/Destroy()
 	SSair.stop_processing_machine(src)
+	QDEL_NULL(cell)
 	return..()
+
+/obj/machinery/space_heater/on_construction()
+	set_panel_open(TRUE)
+	QDEL_NULL(cell)
 
 /obj/machinery/space_heater/on_deconstruction()
 	if(cell)
@@ -103,7 +108,7 @@
 /obj/machinery/space_heater/on_set_panel_open()
 	update_appearance()
 	return ..()
-	
+
 /obj/machinery/space_heater/process_atmos()
 	if(!on || !is_operational)
 		if (on) // If it's broken, turn it off too
@@ -182,7 +187,7 @@
 /obj/machinery/space_heater/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)
@@ -274,16 +279,9 @@
 					settable_temperature_median + settable_temperature_range)
 		if("eject")
 			if(panel_open && cell)
-				cell.forceMove(drop_location())
+				usr.put_in_hands(cell)
 				cell = null
 				. = TRUE
-
-/obj/machinery/space_heater/constructed
-	cell = null
-
-/obj/machinery/space_heater/constructed/Initialize(mapload)
-	. = ..()
-	set_panel_open(TRUE)
 
 /obj/machinery/space_heater/proc/toggle_power(user)
 	on = !on
@@ -313,7 +311,7 @@
 	. = ..()
 	QDEL_NULL(beaker)
 
-/obj/machinery/space_heater/improvised_chem_heater/process(delta_time)
+/obj/machinery/space_heater/improvised_chem_heater/process(seconds_per_tick)
 	if(!on)
 		update_appearance()
 		return PROCESS_KILL
@@ -332,17 +330,17 @@
 		switch(set_mode)
 			if(HEATER_MODE_AUTO)
 				power_mod *= 0.5
-				beaker.reagents.adjust_thermal_energy((target_temperature - beaker.reagents.chem_temp) * power_mod * delta_time * SPECIFIC_HEAT_DEFAULT * beaker.reagents.total_volume)
+				beaker.reagents.adjust_thermal_energy((target_temperature - beaker.reagents.chem_temp) * power_mod * seconds_per_tick * SPECIFIC_HEAT_DEFAULT * beaker.reagents.total_volume)
 				beaker.reagents.handle_reactions()
 			if(HEATER_MODE_HEAT)
 				if(target_temperature < beaker.reagents.chem_temp)
 					return
-				beaker.reagents.adjust_thermal_energy((target_temperature - beaker.reagents.chem_temp) * power_mod * delta_time * SPECIFIC_HEAT_DEFAULT * beaker.reagents.total_volume)
+				beaker.reagents.adjust_thermal_energy((target_temperature - beaker.reagents.chem_temp) * power_mod * seconds_per_tick * SPECIFIC_HEAT_DEFAULT * beaker.reagents.total_volume)
 			if(HEATER_MODE_COOL)
 				if(target_temperature > beaker.reagents.chem_temp)
 					return
-				beaker.reagents.adjust_thermal_energy((target_temperature - beaker.reagents.chem_temp) * power_mod * delta_time * SPECIFIC_HEAT_DEFAULT * beaker.reagents.total_volume)
-		var/required_energy = heating_power * delta_time * (power_mod * 4)
+				beaker.reagents.adjust_thermal_energy((target_temperature - beaker.reagents.chem_temp) * power_mod * seconds_per_tick * SPECIFIC_HEAT_DEFAULT * beaker.reagents.total_volume)
+		var/required_energy = heating_power * seconds_per_tick * (power_mod * 4)
 		cell.use(required_energy / efficiency)
 		beaker.reagents.handle_reactions()
 	update_appearance()

@@ -43,12 +43,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hats/caphat/naval/beret
-	name = "naval beret"
-	desc = "A beret worn by those in the Nanotrasen Navy."
-	icon_state = "naval_beret"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/hats/caphat/naval/fleet_admiral
 	name = "fleet admiral's cap"
 	desc = "A cap worn by the Nanotrasen Fleet Admiral."
@@ -91,8 +85,8 @@
 /obj/item/clothing/suit/armor/vest/capcarapace/naval
 	name = "naval carapace"
 	desc = "A carapace worn by Naval Command members."
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "naval_carapace"
 
 // GLASSES

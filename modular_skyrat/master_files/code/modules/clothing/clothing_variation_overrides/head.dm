@@ -12,9 +12,6 @@
 /obj/item/clothing/head/utility/chefhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hats/hos/beret
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/soft/paramedic
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -138,9 +135,6 @@
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/chaplain/nun_hood
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/helmet/knight/greyscale
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -160,6 +154,9 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/changeling
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/chaplain
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /**
@@ -199,3 +196,23 @@
 
 /obj/item/clothing/head/hooded/techpriest
 	supports_variations_flags = NONE
+
+/**
+ * NEW ICON
+ * Clothing that has a muzzled version, but its parent was set to something else earlier in this file or elsewhere entirely.
+ */
+
+//Chaplain
+//TG's got some unsorted items under this category... just in case they change it lets make sure they stay together for updating
+/obj/item/clothing/head/helmet/chaplain
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
+
+/obj/item/clothing/head/helmet/chaplain/witchunter_hat
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/helmet/chaplain/adept
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/helmet/chaplain/cage
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+//End Chaplain

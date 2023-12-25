@@ -129,7 +129,7 @@ SUBSYSTEM_DEF(lag_switch)
 			if (state)
 				to_chat(world, span_boldannounce("The character creator and preferences menu has been disabled for performance metrics."))
 			else
-				to_chat(world, span_boldannounce("The character creatior has been re-enabled."))
+				to_chat(world, span_boldannounce("The character creator has been re-enabled."))
 		// SKYRAT EDIT END
 
 	return TRUE

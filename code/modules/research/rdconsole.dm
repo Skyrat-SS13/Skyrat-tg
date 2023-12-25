@@ -45,10 +45,10 @@ Nothing else in the console has ID requirements.
 		return reagent.name
 	return ID
 
-/obj/machinery/computer/rdconsole/Initialize(mapload)
+/obj/machinery/computer/rdconsole/LateInitialize()
 	. = ..()
 	if(!CONFIG_GET(flag/no_default_techweb_link) && !stored_research)
-		stored_research = SSresearch.science_tech
+		CONNECT_TO_RND_SERVER_ROUNDSTART(stored_research, src)
 	if(stored_research)
 		stored_research.consoles_accessing += src
 
@@ -107,29 +107,32 @@ Nothing else in the console has ID requirements.
 	var/list/price = TN.get_price(stored_research)
 	if(stored_research.can_afford(price))
 		user.investigate_log("researched [id]([json_encode(price)]) on techweb id [stored_research.id].", INVESTIGATE_RESEARCH)
-		if(stored_research == SSresearch.science_tech)
+		if(istype(stored_research, /datum/techweb/science))
 			SSblackbox.record_feedback("associative", "science_techweb_unlock", 1, list("id" = "[id]", "name" = TN.display_name, "price" = "[json_encode(price)]", "time" = SQLtime()))
 		if(stored_research.research_node_id(id))
 			say("Successfully researched [TN.display_name].")
 			var/logname = "Unknown"
 			if(isAI(user))
-				logname = "AI: [user.name]"
+				logname = "AI [user.name]"
 			if(iscyborg(user))
-				logname = "Cyborg: [user.name]"
+				logname = "CYBORG [user.name]"
 			if(iscarbon(user))
 				var/obj/item/card/id/idcard = user.get_active_held_item()
 				if(istype(idcard))
-					logname = "User: [idcard.registered_name]"
+					logname = "[idcard.registered_name]"
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				var/obj/item/I = H.wear_id
 				if(istype(I))
 					var/obj/item/card/id/ID = I.GetID()
 					if(istype(ID))
-						logname = "User: [ID.registered_name]"
-			var/i = stored_research.research_logs.len
-			stored_research.research_logs += null
-			stored_research.research_logs[++i] = list(TN.display_name, price["General Research"], logname, "[get_area(src)] ([src.x],[src.y],[src.z])")
+						logname = "[ID.registered_name]"
+			stored_research.research_logs += list(list(
+				"node_name" = TN.display_name,
+				"node_cost" = price["General Research"],
+				"node_researcher" = logname,
+				"node_research_location" = "[get_area(src)] ([src.x],[src.y],[src.z])",
+			))
 			return TRUE
 		else
 			say("Failed to research node: Internal database error!")
@@ -137,13 +140,15 @@ Nothing else in the console has ID requirements.
 	say("Not enough research points...")
 	return FALSE
 
-/obj/machinery/computer/rdconsole/emag_act(mob/user)
-	if(!(obj_flags & EMAGGED))
-		to_chat(user, span_notice("You disable the security protocols[locked? " and unlock the console":""]."))
-		playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		obj_flags |= EMAGGED
-		locked = FALSE
-	return ..()
+/obj/machinery/computer/rdconsole/emag_act(mob/user, obj/item/card/emag/emag_card)
+	. = ..()
+	if (obj_flags & EMAGGED)
+		return
+	balloon_alert(user, "security protocols disabled")
+	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	obj_flags |= EMAGGED
+	locked = FALSE
+	return TRUE
 
 /obj/machinery/computer/rdconsole/ui_interact(mob/user, datum/tgui/ui = null)
 	. = ..()

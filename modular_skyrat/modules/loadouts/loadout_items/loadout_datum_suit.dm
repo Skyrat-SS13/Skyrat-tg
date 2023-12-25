@@ -33,47 +33,55 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/custom
 
 /datum/loadout_item/suit/aformal
-	name = "Assistant's formal winter coat"
+	name = "Assistant's Formal Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat
 
 /datum/loadout_item/suit/runed
-	name = "Runed winter coat"
+	name = "Runed Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/narsie
 
 /datum/loadout_item/suit/brass
-	name = "Brass winter coat"
+	name = "Brass Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
 
 /datum/loadout_item/suit/korea
-	name = "Eastern winter coat"
+	name = "Eastern Winter Coat"
 	item_path = /obj/item/clothing/suit/koreacoat
 
 /datum/loadout_item/suit/czech
-	name = "Modern winter coat"
+	name = "Czech Winter Coat"
 	item_path = /obj/item/clothing/suit/modernwintercoatthing
+
+/datum/loadout_item/suit/mantella
+	name = "Mothic Mantella"
+	item_path = /obj/item/clothing/suit/mothcoat/winter
 
 /*
 *	SUITS / SUIT JACKETS
 */
 
+/datum/loadout_item/suit/recolorable
+	name = "Recolorable Formal Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/greyscale
+
 /datum/loadout_item/suit/black_suit_jacket
-	name = "Black Suit Jacket"
+	name = "Black Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black
 
 /datum/loadout_item/suit/blue_suit_jacket
-	name = "Blue Suit Jacket"
+	name = "Blue Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer
 
 /datum/loadout_item/suit/purple_suit_jacket
-	name = "Purple Suit Jacket"
+	name = "Purple Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/purple
 
 /datum/loadout_item/suit/white_suit_jacket
-	name = "White Suit Jacket"
+	name = "White Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/white
 
 /datum/loadout_item/suit/suitblackbetter
-	name = "Light Black Suit Jacket"
+	name = "Light Black Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
 
 /datum/loadout_item/suit/suitwhite
@@ -186,6 +194,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
 
+/datum/loadout_item/suit/mothcoat
+	name = "Mothic Flightsuit"
+	item_path = /obj/item/clothing/suit/mothcoat
+
 /*
 *	VARSITY JACKET
 */
@@ -261,7 +273,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/winter_coat/christmas
 	name = "Christmas Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/suit/winter_coat/christmas/green
 	name = "Green Christmas Coat"
@@ -271,29 +282,53 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	MISC
 */
 
-/datum/loadout_item/suit/purple_apron
-	name = "Purple Apron"
-	item_path = /obj/item/clothing/suit/apron/purple_bartender
-
 /datum/loadout_item/suit/recolorable_apron
 	name = "Recolorable Apron"
 	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
 
 /datum/loadout_item/suit/recolorable_overalls
 	name = "Recolorable Overalls"
-	item_path = /obj/item/clothing/suit/apron/overalls/greyscale
-
-/datum/loadout_item/suit/denim_overalls
-	name = "Denim Overalls"
 	item_path = /obj/item/clothing/suit/apron/overalls
 
 /datum/loadout_item/suit/redhood
 	name = "Red cloak"
 	item_path = /obj/item/clothing/suit/hooded/cloak/david
 
+/datum/loadout_item/suit/wellwornshirt
+	name = "Well-worn Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt
+
+/datum/loadout_item/suit/wellworn_graphicshirt
+	name = "Well-worn Graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/graphic
+
 /datum/loadout_item/suit/ianshirt
-	name = "Ian Shirt"
-	item_path = /obj/item/clothing/suit/costume/ianshirt
+	name = "Well-worn Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/graphic/ian
+
+/datum/loadout_item/suit/wornoutshirt
+	name = "Worn-out Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout
+
+/datum/loadout_item/suit/wornout_graphicshirt
+	name = "Worn-out graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout/graphic
+
+/datum/loadout_item/suit/wornout_ianshirt
+	name = "Worn-out Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout/graphic/ian
+
+/datum/loadout_item/suit/messyshirt
+	name = "Messy Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy
+
+/datum/loadout_item/suit/messy_graphicshirt
+	name = "Messy Graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic
+
+/datum/loadout_item/suit/messy_ianshirt
+	name = "Messy Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/ian
 
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"
@@ -319,6 +354,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	FLANNELS
 */
 
+/datum/loadout_item/suit/flannel_gags
+	name = "Flannel Shirt"
+	item_path = /obj/item/clothing/suit/toggle/jacket/flannel/gags
+
 /datum/loadout_item/suit/flannel_black
 	name = "Black Flannel"
 	item_path = /obj/item/clothing/suit/toggle/jacket/flannel
@@ -343,11 +382,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/hawaiian_shirt
 	name = "Hawaiian Shirt"
 	item_path = /obj/item/clothing/suit/costume/hawaiian
-
-/datum/loadout_item/suit/hawaiian_gags
-	name = "Colourable Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_shirt
-
 
 /*
 *	MISC
@@ -552,29 +586,29 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 // JACKETS
 /datum/loadout_item/suit/navybluejacketofficer
-	name = "Security Officer's Navy Blue Jacket"
-	item_path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC ,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
+	name = "Security Officer's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/officer/blue
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/navybluejacketwarden
-	name = "Warden's Navy Blue Jacket"
-	item_path = /obj/item/clothing/suit/armor/vest/warden/navyblue
+	name = "Warden's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/warden/blue
 	restricted_roles = list(JOB_WARDEN)
+
+/datum/loadout_item/suit/navybluejackethos
+	name = "Head of Security's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/hos/blue
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/suit/security_jacket
 	name = "Security Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC) //Not giving this one to COs because it's actually better than the one they spawn with
-
-/datum/loadout_item/suit/cossak/sec
-	name = "Ukrainian Security Jacket"
-	item_path = /obj/item/clothing/suit/armor/cossack/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE) //Not giving this one to COs because it's actually better than the one they spawn with
 
 /datum/loadout_item/suit/brit
 	name = "High Vis Armored Vest"
 	item_path = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/british_jacket
 	name = "Peacekeeper Officer Coat"
@@ -605,16 +639,21 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
-/datum/loadout_item/suit/supply_gorka_jacket
-	name = "Supply Gorka Jacket"
-	item_path = /obj/item/clothing/suit/gorka/supply
+/datum/loadout_item/suit/cargo_gorka_jacket
+	name = "Cargo Gorka Jacket"
+	item_path = /obj/item/clothing/suit/toggle/cargo_tech
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
+
+/datum/loadout_item/suit/qm_jacket
+	name = "Quartermaster's Overcoat"
+	item_path = /obj/item/clothing/suit/jacket/quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER)
 
 // LABCOATS
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CHEMIST, JOB_ORDERLY) // And now chemist and orderly get it too.
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_CHEMIST, JOB_ORDERLY) // And now chemist and orderly get it too.
 
 /*
 *	FAMILIES
@@ -674,3 +713,19 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/donator/digicoat/interdyne
 	name = "Interdyne Digicoat"
 	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne
+
+/datum/loadout_item/suit/digicoat_glitched //Public donator reward for Razurath.
+	name = "Glitched Digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched
+
+/datum/loadout_item/suit/warm_coat
+	name = "Colourable Warm Coat"
+	item_path = /obj/item/clothing/suit/warm_coat
+
+/datum/loadout_item/suit/warm_sweater
+	name = "Colourable Warm Sweater"
+	item_path = /obj/item/clothing/suit/warm_sweater
+
+/datum/loadout_item/suit/heart_sweater
+	name = "Colourable Heart Sweater"
+	item_path = /obj/item/clothing/suit/heart_sweater

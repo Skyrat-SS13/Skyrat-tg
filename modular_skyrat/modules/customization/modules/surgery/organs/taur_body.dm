@@ -15,8 +15,7 @@
 	var/obj/item/bodypart/leg/right/old_left_leg = null
 
 /obj/item/organ/external/taur_body/synth
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_ROBOTIC
 
 /datum/bodypart_overlay/mutant/taur_body
 	feature_key = "taur"
@@ -32,7 +31,7 @@
 	return GLOB.sprite_accessories["taur"]
 
 
-/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodytypes |= BODYTYPE_HIDE_SHOES
 
@@ -41,11 +40,11 @@
 	var/obj/item/bodypart/leg/left/taur/new_left_leg
 	var/obj/item/bodypart/leg/right/taur/new_right_leg
 
-	if(status & ORGAN_ORGANIC)
+	if(organ_flags & ORGAN_ORGANIC)
 		new_left_leg = new /obj/item/bodypart/leg/left/taur()
 		new_right_leg = new /obj/item/bodypart/leg/right/taur()
 
-	if(status & ORGAN_ROBOTIC)
+	if(organ_flags & ORGAN_ROBOTIC)
 		new_left_leg = new /obj/item/bodypart/leg/left/robot/synth/taur()
 		new_right_leg = new /obj/item/bodypart/leg/right/robot/synth/taur()
 

@@ -6,7 +6,7 @@
 		/obj/item/organ/internal/lungs = 1,
 		/obj/item/organ/internal/stomach = 1,
 		/obj/item/food/grown/onion = 1,
-		/obj/item/food/soup/oatmeal = 1,
+		/obj/item/food/grown/oat = 1,
 		/datum/reagent/consumable/salt = 1,
 	)
 	result = /obj/item/food/snacks/store/bread/haggis

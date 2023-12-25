@@ -16,6 +16,10 @@
 	var/purchase_price = 300
 	///What catagory is the NIFSoft under?
 	var/buying_category = NIFSOFT_CATEGORY_GENERAL
+	///What font awesome icon is shown next to the name of the nifsoft?
+	var/ui_icon = "floppy-disk"
+	///What UI theme do we want to display to users if this NIFSoft has TGUI?
+	var/ui_theme = "default"
 
 	///Can the program be installed with other instances of itself?
 	var/single_install = TRUE
@@ -39,11 +43,24 @@
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
+	/// How much of the NIFSoft's purchase price is paid out as reward points, if any?
+	var/rewards_points_rate = 0.5
+	/// Can this item be purchased with reward points?
+	var/rewards_points_eligible = TRUE
 	///Does the NIFSoft have anything that is saved cross-round?
 	var/persistence = FALSE
+	/// Is the NIFSoft something that we want to allow the user to keep?
+	var/able_to_keep = FALSE
+	/// Are we keeping the NIFSoft installed between rounds? This is decided by the user
+	var/keep_installed = FALSE
+	///Is it a lewd item?
+	var/lewd_nifsoft = FALSE
 
-/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
+/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
 	. = ..()
+
+	if(no_rewards_points) //This is mostly so that credits can't be farmed through printed or stolen NIFSoft disks
+		rewards_points_rate = 0
 
 	compatible_nifs += /obj/item/organ/internal/cyberimp/brain/nif/debug
 	program_name = name
@@ -52,23 +69,27 @@
 		qdel(src)
 
 	load_persistence_data()
+	update_theme()
 
 /datum/nifsoft/Destroy()
 	if(active)
 		activate()
 
-	if(!parent_nif)
-		return ..()
+	linked_mob = null
 
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
-	installed_nif.loaded_nifsofts.Remove(src)
-	parent_nif = null
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif?.resolve()
+	if(installed_nif)
+		installed_nif.loaded_nifsofts.Remove(src)
 
 	return ..()
 
 /// Activates the parent NIFSoft
 /datum/nifsoft/proc/activate()
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif?.resolve()
+
+	if(!installed_nif)
+		stack_trace("NIFSoft [src] activated on a null parent!") // NIFSoft is -really- broken
+		return FALSE
 
 	if(installed_nif.broken)
 		installed_nif.balloon_alert(installed_nif.linked_mob, "your NIF is broken")
@@ -93,14 +114,16 @@
 		active = TRUE
 
 	if(cooldown)
-		addtimer(CALLBACK(src, .proc/remove_cooldown), cooldown_duration)
+		addtimer(CALLBACK(src, PROC_REF(remove_cooldown)), cooldown_duration)
 		on_cooldown = TRUE
 
 	return TRUE
 
 ///Refunds the activation cost of a NIFSoft.
 /datum/nifsoft/proc/refund_activation_cost()
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif?.resolve()
+	if(!installed_nif)
+		return
 	installed_nif.change_power_level(-activation_cost)
 
 ///Removes the cooldown from a NIFSoft
@@ -123,10 +146,19 @@
 		scrambled_name += pick(random_characters)
 
 	program_name = scrambled_name
-	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(restore_name)), 60 SECONDS)
 
 /datum/nifsoft/ui_state(mob/user)
 	return GLOB.conscious_state
+
+/// Updates the theme of the NIFSoft to match the parent NIF
+/datum/nifsoft/proc/update_theme()
+	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent_nif.resolve()
+	if(!target_nif)
+		return FALSE
+
+	ui_theme = target_nif.current_theme
+	return TRUE
 
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
@@ -139,8 +171,11 @@
 	///Is the datadisk reusable?
 	var/reusable = FALSE
 
-/obj/item/disk/nifsoft_uploader/Initialize()
+/obj/item/disk/nifsoft_uploader/Initialize(mapload)
 	. = ..()
+
+	if(CONFIG_GET(flag/disable_lewd_items) && initial(loaded_nifsoft.lewd_nifsoft))
+		return INITIALIZE_HINT_QDEL
 
 	name = "[initial(loaded_nifsoft.name)] datadisk"
 
@@ -160,7 +195,7 @@
 	if(!ishuman(target) || !installed_nif)
 		return FALSE
 
-	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif)
+	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, TRUE)
 
 	if(!installed_nifsoft.parent_nif)
 		balloon_alert(target, "installation failed")

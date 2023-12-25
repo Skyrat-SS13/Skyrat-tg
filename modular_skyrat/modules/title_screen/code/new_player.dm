@@ -17,6 +17,11 @@
 		make_me_an_observer()
 		return
 
+	if(href_list["job_traits"])
+		play_lobby_button_sound()
+		show_job_traits()
+		return
+
 	if(href_list["server_swap"])
 		play_lobby_button_sound()
 		server_swap()
@@ -52,9 +57,10 @@
 
 	if(href_list["toggle_ready"])
 		play_lobby_button_sound()
-		if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
-			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
-			return
+		if(CONFIG_GET(flag/min_flavor_text))
+			if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
+				to_chat(src, span_notice("You need at least [CONFIG_GET(number/flavor_text_character_requirement)] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
+				return
 
 		ready = !ready
 		client << output(ready, "title_browser:toggle_ready")
@@ -134,6 +140,32 @@
 	if(confirm == "Connect me!")
 		to_chat_immediate(src, "So long, spaceman.")
 		src.client << link(server_ip)
+
+/**
+ * Shows currently available job traits
+ */
+/mob/dead/new_player/proc/show_job_traits()
+	if (!client || client.interviewee)
+		return
+	if(!length(GLOB.lobby_station_traits))
+		to_chat(src, span_warning("There are currently no job traits available!"))
+		return
+	var/list/available_lobby_station_traits = list()
+	for (var/datum/station_trait/trait as anything in GLOB.lobby_station_traits)
+		if (!trait.can_display_lobby_button(client))
+			continue
+		available_lobby_station_traits += trait
+
+	if(!LAZYLEN(available_lobby_station_traits))
+		to_chat(src, span_warning("There are currently no job traits available!"))
+		return
+
+	var/datum/station_trait/clicked_trait = tgui_input_list(src, "Select a job trait to sign up for:", "Job Traits", available_lobby_station_traits)
+
+	if(!clicked_trait)
+		return
+
+	clicked_trait.on_lobby_button_click(src)
 
 /**
  * Shows the player a list of current polls, if any.

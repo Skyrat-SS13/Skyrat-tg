@@ -192,6 +192,8 @@
 			investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
 			target.wanted_status = wanted_status
 
+			update_matching_security_huds(target.name)
+
 			return TRUE
 
 	return FALSE
@@ -219,6 +221,9 @@
 		target.crimes += new_crime
 		investigate_log("New Crime: <strong>[input_name]</strong> | Added to [target.name] by [key_name(user)]. Their previous status was [target.wanted_status]", INVESTIGATE_RECORDS)
 		target.wanted_status = WANTED_ARREST
+
+		update_matching_security_huds(target.name)
+
 		return TRUE
 
 	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = usr, fine = params["fine"])
@@ -295,6 +300,7 @@
 		target.wanted_status = WANTED_DISCHARGED
 		investigate_log("[key_name(user)] has invalidated [target.name]'s last valid crime. Their status is now [WANTED_DISCHARGED].", INVESTIGATE_RECORDS)
 
+		update_matching_security_huds(target.name)
 	return TRUE
 
 /// Finishes printing, resets the printer.
@@ -348,10 +354,12 @@
 			printable = wanted_poster
 
 		if("rapsheet")
-			var/list/crimes = target.crimes
-			if(!length(crimes))
-				balloon_alert(user, "no crimes")
-				return FALSE
+		/// SKYRAT EDIT REMOVE - REMOVE CRIMES REQUIREMENT FOR PRINTING RECORDS
+			//var/list/crimes = target.crimes
+			//if(!length(crimes))
+				//balloon_alert(user, "no crimes")
+				//return FALSE
+		/// SKYRAT EDIT REMOVE END
 
 			var/obj/item/paper/rapsheet = target.get_rapsheet(input_alias, input_header, input_description)
 			printable = rapsheet
@@ -496,8 +504,7 @@
 		investigate_log("[names_of_entries.Join(", ")] have been set to [status_to_set] by [parent.get_creator()].", INVESTIGATE_RECORDS)
 		if(successful_set > COMP_SECURITY_ARREST_AMOUNT_TO_FLAG)
 			message_admins("[successful_set] security entries have been set to [status_to_set] by [parent.get_creator_admin()]. [ADMIN_COORDJMP(src)]")
-		for(var/mob/living/carbon/human/human as anything in GLOB.human_list)
-			human.sec_hud_set_security_status()
+		update_all_security_huds()
 
 #undef COMP_SECURITY_ARREST_AMOUNT_TO_FLAG
 #undef PRINTOUT_MISSING

@@ -19,6 +19,7 @@
 	desc = "A simple, inconspicuous harness replacement for a jumpsuit."
 	icon_state = "gear_harness"
 	body_parts_covered = NONE
+	attachment_slot_override = CHEST
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -54,10 +55,10 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/skyrat/utility/syndicate
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under/utility_syndicate
 	has_sensor = NO_SENSORS
 
-/datum/armor/utility_syndicate
+/datum/armor/clothing_under/utility_syndicate
 	melee = 10
 	fire = 50
 	acid = 40

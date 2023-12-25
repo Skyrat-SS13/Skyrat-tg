@@ -17,7 +17,6 @@
 	var/color_changed = FALSE
 	var/time_to_sound = 20
 	var/time_to_sound_left
-	var/time = 2
 	var/tt
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
@@ -26,9 +25,6 @@
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
-	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/leg/left/legr
-	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
@@ -136,7 +132,7 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
-	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	if(bag_fold == TRUE)
 		w_class = WEIGHT_CLASS_SMALL
 		slot_flags = NONE
@@ -183,15 +179,15 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(delta_time)
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(seconds_per_tick)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
 			tt = rand(15, 35) //to do random funny sounds when character inside that thing.
 		else
-			tt -= delta_time
+			tt -= seconds_per_tick
 	else
-		time_to_sound_left -= delta_time
+		time_to_sound_left -= seconds_per_tick
 
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)

@@ -18,7 +18,6 @@
 	harm_intent_damage = 0 //Punching elites gets you nowhere
 	stat_attack = HARD_CRIT
 	layer = LARGE_MOB_LAYER
-	plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	sentience_type = SENTIENCE_BOSS
 	var/chosen_attack = 1
 	var/list/attack_action_types = list()
@@ -28,15 +27,14 @@
 //Gives player-controlled variants the ability to swap attacks
 /mob/living/simple_animal/hostile/asteroid/elite/Initialize(mapload)
 	. = ..()
-	for(var/action_type in attack_action_types)
-		var/datum/action/innate/elite_attack/attack_action = new action_type()
-		attack_action.Grant(src)
+	AddComponent(/datum/component/seethrough_mob)
+	grant_actions_by_list(attack_action_types)
 
 //Prevents elites from attacking members of their faction (can't hurt themselves either) and lets them mine rock with an attack despite not being able to smash walls.
-/mob/living/simple_animal/hostile/asteroid/elite/AttackingTarget()
+/mob/living/simple_animal/hostile/asteroid/elite/AttackingTarget(atom/attacked_target)
 	if(ishostile(target))
 		var/mob/living/simple_animal/hostile/M = target
-		if(faction_check_mob(M))
+		if(faction_check_atom(M))
 			return FALSE
 	if(istype(target, /obj/structure/elite_tumor))
 		var/obj/structure/elite_tumor/T = target
@@ -125,7 +123,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	desc = "An odd, pulsing tumor sticking out of the ground.  You feel compelled to reach out and touch it..."
 	armor_type = /datum/armor/structure_elite_tumor
 	resistance_flags = INDESTRUCTIBLE
-	icon = 'icons/obj/lavaland/tumor.dmi'
+	icon = 'icons/obj/mining_zones/tumor.dmi'
 	icon_state = "tumor"
 	pixel_x = -16
 	base_pixel_x = -16
@@ -189,7 +187,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 				addtimer(CALLBACK(src, PROC_REF(spawn_elite)), 30)
 				return
 			visible_message(span_boldwarning("Something within [src] stirs..."))
-			var/list/candidates = poll_candidates_for_mob("Do you want to play as a lavaland elite?", ROLE_SENTIENCE, ROLE_SENTIENCE, 5 SECONDS, src, POLL_IGNORE_LAVALAND_ELITE)
+			var/list/candidates = SSpolling.poll_ghost_candidates_for_mob("Do you want to play as a lavaland elite?", check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, poll_time = 5 SECONDS, target_mob = src, ignore_category = POLL_IGNORE_LAVALAND_ELITE, pic_source = src, role_name_text = "lavaland elite")
 			if(candidates.len)
 				audible_message(span_boldwarning("The stirring sounds increase in volume!"))
 				elitemind = pick(candidates)
@@ -213,10 +211,15 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	if(boosted)
 		mychild.key = elitemind.key
 		mychild.sentience_act()
-		notify_ghosts("\A [mychild] has been awakened in \the [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Lavaland Elite awakened")
+		notify_ghosts(
+			"\A [mychild] has been awakened in \the [get_area(src)]!",
+			source = mychild,
+			header = "Lavaland Elite awakened",
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		)
 	mychild.log_message("has been awakened by [key_name(activator)]!", LOG_GAME, color="#960000")
 	icon_state = "tumor_popped"
-	RegisterSignal(mychild, COMSIG_PARENT_QDELETING, PROC_REF(onEliteLoss))
+	RegisterSignal(mychild, COMSIG_QDELETING, PROC_REF(onEliteLoss))
 	INVOKE_ASYNC(src, PROC_REF(arena_checks))
 
 /obj/structure/elite_tumor/proc/return_elite()
@@ -227,7 +230,12 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	if(boosted)
 		mychild.maxHealth = mychild.maxHealth * 2
 		mychild.health = mychild.maxHealth
-		notify_ghosts("\A [mychild] has been challenged in \the [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Lavaland Elite challenged")
+		notify_ghosts(
+			"\A [mychild] has been challenged in \the [get_area(src)]!",
+			source = mychild,
+			header = "Lavaland Elite challenged",
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		)
 	mychild.log_message("has been challenged by [key_name(activator)]!", LOG_GAME, color="#960000")
 
 /obj/structure/elite_tumor/Initialize(mapload)
@@ -246,7 +254,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		return
 	activator = user
 	ADD_TRAIT(user, TRAIT_ELITE_CHALLENGER, REF(src))
-	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(clear_activator))
+	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(clear_activator))
 	user.log_message("has activated an elite tumor!", LOG_GAME, color="#960000")
 
 /obj/structure/elite_tumor/proc/clear_activator(mob/source)
@@ -255,15 +263,15 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		return
 	activator = null
 	REMOVE_TRAIT(source, TRAIT_ELITE_CHALLENGER, REF(src))
-	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(source, COMSIG_QDELETING)
 
-/obj/structure/elite_tumor/process(delta_time)
+/obj/structure/elite_tumor/process(seconds_per_tick)
 	if(!isturf(loc))
 		return
 
 	for(var/mob/living/simple_animal/hostile/asteroid/elite/elitehere in loc)
 		if(elitehere == mychild && activity == TUMOR_PASSIVE)
-			mychild.adjustHealth(-mychild.maxHealth * 0.025*delta_time)
+			mychild.adjustHealth(-mychild.maxHealth * 0.025*seconds_per_tick)
 			var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal(get_turf(mychild))
 			H.color = "#FF0000"
 
@@ -353,7 +361,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 /obj/item/tumor_shard
 	name = "tumor shard"
 	desc = "A strange, sharp, crystal shard from an odd tumor on Lavaland.  Stabbing the corpse of a lavaland elite with this will revive them, assuming their soul still lingers.  Revived lavaland elites only have half their max health, but are completely loyal to their reviver."
-	icon = 'icons/obj/lavaland/artefacts.dmi'
+	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "crevice_shard"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'

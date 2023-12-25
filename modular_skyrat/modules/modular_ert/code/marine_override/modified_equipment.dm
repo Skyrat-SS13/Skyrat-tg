@@ -43,7 +43,7 @@
 	r_hand = null
 
 /datum/outfit/centcom/ert/marine/engineer //engineer
-	suit_store = /obj/item/melee/hammer //doesn't need a rifle
+	suit_store = /obj/item/melee/breaching_hammer //doesn't need a rifle
 	back = /obj/item/mod/control/pre_equipped/marine/engineer
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/marine = 1,

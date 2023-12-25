@@ -1,14 +1,13 @@
 /mob/living/carbon/examine_more(mob/user)
 	. = ..()
-	var/msg = list(span_notice("<i>You examine [src] closer, and note the following...</i>"))
-	var/t_His = p_their(TRUE)
-	var/t_He = p_they(TRUE)
+	var/t_His = p_Their()
+	var/t_He = p_They()
 	var/t_Has = p_have()
 
 	var/any_bodypart_damage = FALSE
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/LB = X
-		if(LB.is_pseudopart)
+		if(LB.bodypart_flags & BODYPART_PSEUDOPART)
 			continue
 		var/limb_max_damage = LB.max_damage
 		var/status = ""
@@ -34,29 +33,25 @@
 
 		if(status)
 			any_bodypart_damage = TRUE
-			msg += "\t<span class='warning'>[t_His] [LB.name] is [status].</span>"
+			. += "\t<span class='warning'>[t_His] [LB.name] is [status].</span>"
 
 		for(var/thing in LB.wounds)
 			any_bodypart_damage = TRUE
 			var/datum/wound/W = thing
 			switch(W.severity)
 				if(WOUND_SEVERITY_TRIVIAL)
-					msg += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)].</span>"
+					. += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)].</span>"
 				if(WOUND_SEVERITY_MODERATE)
-					msg += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!</span>"
+					. += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!</span>"
 				if(WOUND_SEVERITY_SEVERE)
-					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!</b></span>"
+					. += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!</b></span>"
 				if(WOUND_SEVERITY_CRITICAL)
-					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!!</b></span>"
+					. += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!!</b></span>"
 		if(LB.current_gauze)
-			var/datum/bodypart_aid/current_gauze = LB.current_gauze
-			msg += "\t<span class='notice'><i>[t_His] [LB.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</i></span>"
-		if(LB.current_splint)
-			var/datum/bodypart_aid/current_splint = LB.current_splint
-			msg += "\t<span class='notice'><i>[t_His] [LB.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.</i></span>"
+			. += "\t<span class='notice'><i>[t_His] [LB.name] is [LB.current_gauze.get_gauze_usage_prefix()] with <a href='?src=[REF(LB.current_gauze)];remove=1'>[LB.current_gauze.get_gauze_description()]</a>.</i></span>"
 
 	if(!any_bodypart_damage)
-		msg += "\t<span class='smallnotice'><i>[t_He] [t_Has] no significantly damaged bodyparts.</i></span>"
+		. += "\t<span class='smallnotice'><i>[t_He] [t_Has] no significantly damaged bodyparts.</i></span>"
 
 	var/list/visible_scars
 	if(all_scars)
@@ -66,23 +61,6 @@
 				LAZYADD(visible_scars, S)
 
 	if(!visible_scars)
-		msg |= "\t<span class='smallnotice'><i>[t_He] [t_Has] no visible scars.</i></span>"
-	else
-		for(var/i in visible_scars)
-			var/datum/scar/S = i
-			var/scar_text = S.get_examine_description(user)
-			if(scar_text)
-				msg += "[scar_text]"
+		. += "\t<span class='smallnotice'><i>[t_He] [t_Has] no visible scars.</i></span>"
 
-
-	if(dna) //not all carbons have it. eg - xenos
-		//On closer inspection, this man isnt a man at all!
-		var/list/covered_zones = get_covered_body_zones()
-		for(var/obj/item/bodypart/part as anything in bodyparts)
-			if(part.body_zone in covered_zones)
-				continue
-			if(part.limb_id != (dna.species.examine_limb_id ? dna.species.examine_limb_id : dna.species.id))
-				. += "[span_info("[p_they(TRUE)] [p_have()] \an [part.name].")]"
-
-
-	return msg
+	return .

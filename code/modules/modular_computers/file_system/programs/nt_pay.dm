@@ -1,13 +1,13 @@
 /datum/computer_file/program/nt_pay
 	filename = "ntpay"
 	filedesc = "Nanotrasen Pay System"
-	category = PROGRAM_CATEGORY_MISC
-	program_icon_state = "generic"
+	downloader_category = PROGRAM_CATEGORY_DEVICE
+	program_open_overlay = "generic"
 	extended_desc = "An application that locally (in your sector) helps to transfer money or track your expenses and profits."
 	size = 2
 	tgui_id = "NtosPay"
 	program_icon = "money-bill-wave"
-	usage_flags = PROGRAM_ALL
+	can_run_on_flags = PROGRAM_ALL
 	///Reference to the currently logged in user.
 	var/datum/bank_account/current_user
 	///Pay token, by which we can send credits
@@ -18,11 +18,11 @@
 	var/wanted_token
 
 /datum/computer_file/program/nt_pay/ui_act(action, list/params, datum/tgui/ui)
-	. = ..()
-	if(.)
-		return
 	switch(action)
 		if("Transaction")
+			if(IS_DEPARTMENTAL_ACCOUNT(current_user))
+				return to_chat(usr, span_notice("The app is unable to withdraw from that card."))
+
 			token = params["token"]
 			money_to_send = params["amount"]
 			var/datum/bank_account/recipient

@@ -3,7 +3,7 @@
 	desc = "A long, sharp, mantis-like blade installed within the forearm, acting as a deadly self defense weapon."
 	id = "ci-mantis"
 	build_type = MECHFAB
-	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
+	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	construction_time = 200
 	build_path = /obj/item/organ/internal/cyberimp/arm/armblade
 	category = list(
@@ -11,12 +11,29 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/cyberimp_claws
+	name = "Razor Claws Implant"
+	desc = "Long, sharp, double-edged razors installed within the fingers, functional for cutting. All kinds of cutting."
+	id = "ci-razor"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list (
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT
+	)
+	construction_time = 20 SECONDS
+	build_path = /obj/item/organ/internal/cyberimp/arm/razor_claws
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_TOOLS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SECURITY
+
 /datum/design/cyberimp_hacker
 	name = "Hacking Hand Implant"
 	desc = "An advanced hacking and machine modification toolkit fitted into an arm implant, designed to be installed on a subject's arm."
 	id = "ci-hacker"
 	build_type = MECHFAB
-	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
+	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	construction_time = 200
 	build_path = /obj/item/organ/internal/cyberimp/arm/hacker
 	category = list(
@@ -28,21 +45,21 @@
 	name = "Photon Projector Implant"
 	desc = "An integrated projector mounted onto a user's arm that is able to be used as a powerful flash."
 	id = "ci-flash"
-	build_type = MECHFAB
-	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	construction_time = 200
 	build_path = /obj/item/organ/internal/cyberimp/arm/flash
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
 	)
-	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_botany
 	name = "Botany Arm Implant"
 	desc = "Everything a botanist needs in an arm implant, designed to be installed on a subject's arm."
 	id = "ci-botany"
 	build_type = MECHFAB | PROTOLATHE
-	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500, /datum/material/plastic = 2000)
+	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/plastic = SHEET_MATERIAL_AMOUNT)
 	construction_time = 200
 	build_path = /obj/item/organ/internal/cyberimp/arm/botany
 	category = list(
@@ -54,12 +71,12 @@
 	name = "Night Vision Eyes"
 	desc = "These cybernetic eyes will give you Night Vision. Big, mean, and green."
 	id = "ci-nv"
-	build_type = MECHFAB | PROTOLATHE
+	build_type = PROTOLATHE | MECHFAB
 	construction_time = 60
-	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 600, /datum/material/gold = 600, /datum/material/uranium = 1000,)
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 6, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 6, /datum/material/gold = SMALL_MATERIAL_AMOUNT * 6, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,)
 	build_path = /obj/item/organ/internal/eyes/night_vision/cyber
 	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_UTILITY
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
@@ -67,9 +84,9 @@
 	name = "CNS Jumpstarter Implant"
 	desc = "This implant will automatically attempt to jolt you awake from unconsciousness, with a short cooldown between jolts. Conflicts with the CNS Rebooter."
 	id = "ci-antisleep"
-	build_type = MECHFAB | PROTOLATHE
+	build_type = PROTOLATHE | MECHFAB
 	construction_time = 60
-	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 1000, /datum/material/gold = 500)
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 6, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/gold = SMALL_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/organ/internal/cyberimp/brain/anti_sleep
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
@@ -82,7 +99,7 @@
 	id = "ci-scanner"
 	build_type = MECHFAB | PROTOLATHE
 	construction_time = 40
-	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/silver = 2000, /datum/material/gold = 1500)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/organ/internal/cyberimp/chest/scanner
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_HEALTH
@@ -94,7 +111,7 @@
 	desc = "A set of janitor tools fitted into an arm implant, designed to be installed on subject's arm."
 	id = "ci-janitor"
 	build_type = PROTOLATHE | MECHFAB
-	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
+	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	construction_time = 200
 	build_path = /obj/item/organ/internal/cyberimp/arm/janitor
 	category = list(
@@ -107,10 +124,24 @@
 	desc = "A lighter, installed into the subject's arm. Incredibly useless."
 	id = "ci-lighter"
 	build_type = PROTOLATHE | MECHFAB
-	materials = list (/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500)
+	materials = list (/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 5)
 	construction_time = 100
 	build_path = /obj/item/organ/internal/cyberimp/arm/lighter
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_MISC
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
+
+/datum/design/cyberimp_thermals
+	name = "Thermal Eyes"
+	id = "ci-thermals"
+	build_type = AWAY_LATHE | MECHFAB
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/cyberimp_reviver
+	name = "Reviver Implant"
+	id = "ci-reviver"
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL

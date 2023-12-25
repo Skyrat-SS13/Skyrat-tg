@@ -50,8 +50,8 @@
 /datum/design/polarizer
 	name = "Window Polarization Remote Controller"
 	id = "polarizer"
-	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE
-	materials = list(/datum/material/iron = 100, /datum/material/glass = 50)
+	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE | COLONY_FABRICATOR
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
 	build_path = /obj/item/assembly/control/polarizer
 	category = list(
 		RND_CATEGORY_INITIAL,

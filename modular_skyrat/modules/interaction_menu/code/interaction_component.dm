@@ -68,12 +68,16 @@
 		ui.open()
 
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
+	if(!ishuman(user))
+		return UI_CLOSE
+
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
 
 /datum/component/interactable/ui_data(mob/user)
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
+	var/list/display_categories = list()
 	var/list/colors = list()
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
@@ -82,13 +86,15 @@
 			categories[interaction.category] = list(interaction.name)
 		else
 			categories[interaction.category] += interaction.name
+			var/list/sorted_category = sort_list(categories[interaction.category])
+			categories[interaction.category] = sorted_category
 		descriptions[interaction.name] = interaction.description
 		colors[interaction.name] = interaction.color
-	data["categories"] = list()
 	data["descriptions"] = descriptions
 	data["colors"] = colors
 	for(var/category in categories)
-		data["categories"] += category
+		display_categories += category
+	data["categories"] = sort_list(display_categories)
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
@@ -131,6 +137,10 @@
 	. = ..()
 	if(.)
 		return
+
+	if(!ishuman(usr))
+		return
+
 	if(params["interaction"])
 		var/interaction_id = params["interaction"]
 		if(GLOB.interaction_instances[interaction_id])
@@ -149,14 +159,14 @@
 		var/item_index = params["item_slot"]
 		var/mob/living/carbon/human/source = locate(params["userref"])
 		var/mob/living/carbon/human/target = locate(params["selfref"])
-		var/obj/item/new_item = source.get_active_held_item()
-		var/obj/item/existing_item = target.vars[item_index]
+		var/obj/item/clothing/sextoy/new_item = source.get_active_held_item()
+		var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
 
 		if(!existing_item && !new_item)
 			source.show_message(span_warning("No item to insert or remove!"))
 			return
 
-		if(!existing_item && !istype(new_item, /obj/item/clothing/sextoy))
+		if(!existing_item && !istype(new_item))
 			source.show_message(span_warning("The item you're holding is not a toy!"))
 			return
 
@@ -175,7 +185,7 @@
 				source,
 				5 SECONDS,
 				target,
-				interaction_key = "interation_[item_index]"
+				interaction_key = "interaction_[item_index]"
 				) && can_lewd_strip(source, target, item_index))
 
 				if(existing_item)
@@ -186,7 +196,8 @@
 					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
 					target.vars[item_index] = new_item
 					new_item.forceMove(target)
-					target.update_inv_lewd()
+					new_item.lewd_equipped(target, item_index)
+				target.update_inv_lewd()
 
 		else
 			source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
@@ -205,9 +216,21 @@
 		return FALSE
 	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
 		return TRUE
-	if(slot_index == ORGAN_SLOT_NIPPLES && !target.is_topless())
-		return FALSE
-	return target.is_bottomless()
+
+	switch(slot_index)
+		if(ORGAN_SLOT_NIPPLES)
+			var/chest_exposed = target.has_breasts(required_state = REQUIRE_GENITAL_EXPOSED)
+			if(!chest_exposed)
+				chest_exposed = target.is_topless() // for when we don't have breasts
+
+			return chest_exposed
+
+		if(ORGAN_SLOT_PENIS)
+			return target.has_penis(required_state = REQUIRE_GENITAL_EXPOSED)
+		if(ORGAN_SLOT_VAGINA)
+			return target.has_vagina(required_state = REQUIRE_GENITAL_EXPOSED)
+		if(ORGAN_SLOT_ANUS)
+			return target.has_anus(required_state = REQUIRE_GENITAL_EXPOSED)
 
 /// Decides if a player should be able to insert or remove an item from a provided lewd slot_index.
 /datum/component/interactable/proc/is_toy_compatible(obj/item/clothing/sextoy/item, slot_index)

@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 /datum/controller/subsystem/goldeneye/proc/fire_icarus()
 	var/datum/round_event_control/icarus_sunbeam/event_to_start = new()
-	event_to_start.runEvent()
+	event_to_start.run_event()
 
 /// Checks if a mind(target_mind) is a head and if they aren't in the goldeneye_extracted_minds list.
 /datum/controller/subsystem/goldeneye/proc/check_goldeneye_target(datum/mind/target_mind)
@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(goldeneye)
 /atom/movable/screen/alert/status_effect/goldeneye_pinpointer
 	name = "Target Integrated Pinpointer"
 	desc = "Even stealthier than a normal implant, it points to a selected GoldenEye keycard."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "pinon"
 
 /datum/status_effect/goldeneye_pinpointer
@@ -210,7 +210,7 @@ SUBSYSTEM_DEF(goldeneye)
 		linked_antagonist = null
 	return ..()
 
-/datum/status_effect/goldeneye_pinpointer/tick()
+/datum/status_effect/goldeneye_pinpointer/tick(seconds_between_ticks)
 	if(!owner)
 		qdel(src)
 		return

@@ -14,18 +14,12 @@
 	role_name = "Space Ninja"
 
 /datum/round_event/ghost_role/space_ninja/spawn_role()
-	var/list/spawn_locs = list()
-	for(var/obj/effect/landmark/carpspawn/carp_spawn in GLOB.landmarks_list)
-		if(!isturf(carp_spawn.loc))
-			stack_trace("Carp spawn found not on a turf: [carp_spawn.type] on [isnull(carp_spawn.loc) ? "null" : carp_spawn.loc.type]")
-			continue
-		spawn_locs += carp_spawn.loc
-	if(!spawn_locs.len)
-		message_admins("No valid spawn locations found, aborting...")
+	var/spawn_location = find_space_spawn()
+	if(isnull(spawn_location))
 		return MAP_ERROR
 
 	//selecting a candidate player
-	var/list/candidates = get_candidates(ROLE_NINJA, ROLE_NINJA)
+	var/list/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_NINJA, role = ROLE_NINJA, pic_source = /obj/item/energy_katana)
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 
@@ -33,7 +27,7 @@
 	var/key = selected_candidate.key
 
 	//spawn the ninja and assign the candidate
-	var/mob/living/carbon/human/ninja = create_space_ninja(pick(spawn_locs))
+	var/mob/living/carbon/human/ninja = create_space_ninja(spawn_location)
 	ninja.key = key
 	ninja.mind.add_antag_datum(/datum/antagonist/ninja)
 	spawned_mobs += ninja

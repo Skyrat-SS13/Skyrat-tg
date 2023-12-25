@@ -2,19 +2,21 @@
 /mob/living/carbon/human
 	name = "Unknown"
 	real_name = "Unknown"
-	icon = 'icons/mob/species/human/human.dmi'
+	icon = 'icons/mob/human/human.dmi'
 	icon_state = "human_basic"
 	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD,PERMIT_HUD) //SKYRAT EDIT: ADD PERMIT_HUD
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD,PERMIT_HUD, DNR_HUD) //SKYRAT EDIT ADDITION - PERMIT_HUD, DNR_HUD
 	hud_type = /datum/hud/human
 	pressure_resistance = 25
 	can_buckle = TRUE
 	buckle_lying = 0
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	can_be_shoved_into = TRUE
+	initial_language_holder = /datum/language_holder/empty // We get stuff from our species
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 
-	maxHealth = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
-	health = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
+	maxHealth = HUMAN_MAXHEALTH //SKYRAT EDIT ADDITION
+	health = HUMAN_MAXHEALTH //SKYRAT EDIT ADDITION
 
 	//Hair colour and style
 	var/hair_color = "#000000"
@@ -38,9 +40,12 @@
 	var/skin_tone = "caucasian1" //Skin tone
 
 	var/lip_style = null //no lipstick by default- arguably misleading, as it could be used for general makeup
-	var/lip_color = "white"
+	var/lip_color = COLOR_WHITE
 
 	var/age = 30 //Player's age
+
+	/// Which body type to use
+	var/physique = MALE
 
 	//consider updating /mob/living/carbon/human/copy_clothing_prefs() if adding more of these
 	var/underwear = "Nude" //Which underwear the player wants
@@ -64,20 +69,20 @@
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
-	var/name_override //For temporary visible name changes
-
 	var/datum/physiology/physiology
 
-	var/list/datum/bioware = list()
+	var/list/datum/bioware/biowares
 
 	/// What types of mobs are allowed to ride/buckle to this mob
-	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot))
+	var/static/list/can_ride_typecache = typecacheof(list(
+		/mob/living/basic/parrot,
+		/mob/living/carbon/human,
+		/mob/living/simple_animal/slime,
+	))
 	var/lastpuke = 0
 	var/account_id
 
 	var/hardcore_survival_score = 0
-	/// Which body type to use
-	var/physique = MALE
 
 	/// How many "units of blood" we have on our hands
 	var/blood_in_hands = 0

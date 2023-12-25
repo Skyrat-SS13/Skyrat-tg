@@ -2,15 +2,19 @@ SUBSYSTEM_DEF(events)
 	name = "Events"
 	init_order = INIT_ORDER_EVENTS
 	runlevels = RUNLEVEL_GAME
-
-	var/list/control = list() //list of all datum/round_event_control. Used for selecting events based on weight and occurrences.
-	var/list/running = list() //list of all existing /datum/round_event
+	///list of all datum/round_event_control. Used for selecting events based on weight and occurrences.
+	var/list/control = list()
+	///list of all existing /datum/round_event currently being run.
+	var/list/running = list()
+	///cache of currently running events, for lag checking.
 	var/list/currentrun = list()
-
-	var/scheduled = 0 //The next world.time that a naturally occuring random event can be selected.
-	var/frequency_lower = 1800 //3 minutes lower bound.
-	var/frequency_upper = 6000 //10 minutes upper bound. Basically an event will happen every 3 to 10 minutes.
-
+	///The next world.time that a naturally occuring random event can be selected.
+	var/scheduled = 0
+	///The lower bound for how soon another random event can be scheduled.
+	var/frequency_lower = 2.5 MINUTES
+	///The upper bound for how soon another random event can be scheduled.
+	var/frequency_upper = 7 MINUTES
+	///Will wizard events be included in the event pool?
 	var/wizardmode = FALSE
 
 	var/list/previously_run = list() //SKYRAT EDIT ADDITION
@@ -25,12 +29,6 @@ SUBSYSTEM_DEF(events)
 	// Instantiate our holidays list if it hasn't been already
 	if(isnull(GLOB.holidays))
 		fill_holidays()
-	// SKYRAT EDIT ADDITION
-	if(CONFIG_GET(flag/low_chaos_event_system))
-		reschedule_low_chaos()
-	frequency_lower = CONFIG_GET(number/event_frequency_lower)
-	frequency_upper = CONFIG_GET(number/event_frequency_upper)
-	// SKYRAT EDIT END
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)
@@ -53,34 +51,13 @@ SUBSYSTEM_DEF(events)
 
 //checks if we should select a random event yet, and reschedules if necessary
 /datum/controller/subsystem/events/proc/checkEvent()
-	// SKYRAT EDIT ADDITION
-	if(scheduled_low_chaos <= world.time && CONFIG_GET(flag/low_chaos_event_system))
-		trigger_low_chaos_event()
-	// SKYRAT EDIT END
 	if(scheduled <= world.time)
-		//spawnEvent() //SKYRAT EDIT CHANGE
-		if(CONFIG_GET(flag/events_use_random))
-			spawnEvent()
-		else
-			if(CONFIG_GET(flag/events_public_voting))
-				start_player_vote_chaos(FALSE)
-			else
-				if(CONFIG_GET(flag/admin_event_uses_chaos))
-					start_vote_admin_chaos()
-				else
-					start_vote_admin()
-		// SKYRAT EDIT END
+		spawnEvent()
 		reschedule()
 
 //decides which world.time we should select another random event at.
 /datum/controller/subsystem/events/proc/reschedule()
-	// SKYRAT EDIT CHANGE
-	var/next_event_time = rand(frequency_lower, max(frequency_lower, frequency_upper))
-	if(CONFIG_GET(flag/low_chaos_event_system))
-		reschedule_low_chaos(next_event_time / 2)
-	scheduled = world.time + next_event_time
-	// SKYRAT EDIT END
-
+	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
 /datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) //SKYRAT EDIT CHANGE
@@ -88,49 +65,45 @@ SUBSYSTEM_DEF(events)
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
 
-	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 	// Only alive, non-AFK human players count towards this.
-	var/sum_of_weights = 0
-	for(var/datum/round_event_control/E in control)
-		if(!E.can_spawn_event(players_amt))
+
+	var/list/event_roster = list()
+
+	for(var/datum/round_event_control/event_to_check in control)
+		if(!event_to_check.can_spawn_event(players_amt))
 			continue
 		//SKYRAT EDIT ADDITION
-		if(threat_override && !E.alert_observers)
+		if(threat_override && !event_to_check.alert_observers)
 			continue
 		//SKYRAT EDIT END
-		if(E.weight < 0) //for round-start events etc.
-			var/res = TriggerEvent(E)
+		if(event_to_check.weight < 0) //for round-start events etc.
+			var/res = TriggerEvent(event_to_check)
 			if(res == EVENT_INTERRUPTED)
 				continue //like it never happened
 			if(res == EVENT_CANT_RUN)
 				return
-		sum_of_weights += E.weight
+		else
+			event_roster[event_to_check] = event_to_check.weight
 
-	sum_of_weights = rand(0,sum_of_weights) //reusing this variable. It now represents the 'weight' we want to select
+	var/datum/round_event_control/event_to_run = pick_weight(event_roster)
+	TriggerEvent(event_to_run)
 
-	for(var/datum/round_event_control/E in control)
-		if(!E.can_spawn_event(players_amt))
-			continue
-		sum_of_weights -= E.weight
-
-		if(sum_of_weights <= 0) //we've hit our goal
-			if(TriggerEvent(E))
-				return
-
-/datum/controller/subsystem/events/proc/TriggerEvent(datum/round_event_control/E)
-	. = E.preRunEvent()
+///Does the last pre-flight checks for the passed event, and runs it if the event is ready.
+/datum/controller/subsystem/events/proc/TriggerEvent(datum/round_event_control/event_to_trigger)
+	. = event_to_trigger.preRunEvent()
 	if(. == EVENT_CANT_RUN)//we couldn't run this event for some reason, set its max_occurrences to 0
-		E.max_occurrences = 0
+		event_to_trigger.max_occurrences = 0
 	else if(. == EVENT_READY)
-		E.runEvent(random = TRUE)
+		event_to_trigger.run_event(random = TRUE)
 
-
+///Toggles whether or not wizard events will be in the event pool, and sends a notification to the admins.
 /datum/controller/subsystem/events/proc/toggleWizardmode()
 	wizardmode = !wizardmode
 	message_admins("Summon Events has been [wizardmode ? "enabled, events will occur every [SSevents.frequency_lower / 600] to [SSevents.frequency_upper / 600] minutes" : "disabled"]!")
 	log_game("Summon Events was [wizardmode ? "enabled" : "disabled"]!")
 
-
+///Sets the event frequency bounds back to their initial value.
 /datum/controller/subsystem/events/proc/resetFrequency()
 	frequency_lower = initial(frequency_lower)
 	frequency_upper = initial(frequency_upper)

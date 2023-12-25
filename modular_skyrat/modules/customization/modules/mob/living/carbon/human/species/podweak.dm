@@ -1,36 +1,35 @@
 /datum/species/pod
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_PLANT_SAFE,
 		TRAIT_LITERATE,
 	)
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"pod_hair" = ACC_RANDOM,
-		"legs" = "Normal Legs"
+	payday_modifier = 1.0
+
+/datum/species/pod/get_default_mutant_bodyparts()
+	return list(
+		"pod_hair" = list("Ivy", TRUE),
+		"legs" = list("Normal Legs", FALSE),
 	)
-	payday_modifier = 0.75
 
 /datum/species/pod/podweak
 	name = "Podperson"
 	id = SPECIES_PODPERSON_WEAK
 	examine_limb_id = SPECIES_PODPERSON
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		HAIR, // Leaving this here so they can still use it if they want, even if it's kinda ugly compared to their special hair.
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 
 	always_customizable = FALSE
 
-/datum/species/pod/podweak/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
+/datum/species/pod/podweak/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.stat != CONSCIOUS)
 		return
 
@@ -38,17 +37,17 @@
 	if(isturf(H.loc)) //else, there's considered to be no light
 		var/turf/T = H.loc
 		light_amount = min(1, T.get_lumcount()) - 0.5
-		H.adjust_nutrition(5 * light_amount * delta_time)
+		H.adjust_nutrition(5 * light_amount * seconds_per_tick)
 		if(H.nutrition > NUTRITION_LEVEL_ALMOST_FULL)
 			H.set_nutrition(NUTRITION_LEVEL_ALMOST_FULL)
 		if(light_amount > 0.2) //if there's enough light, heal
-			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0)
-			H.adjustStaminaLoss(-0.2 * delta_time)
-			H.adjustToxLoss(-0.2 * delta_time)
-			H.adjustOxyLoss(-0.2 * delta_time)
+			H.heal_overall_damage(0.2 * seconds_per_tick, 0.2 * seconds_per_tick, 0)
+			H.adjustStaminaLoss(-0.2 * seconds_per_tick)
+			H.adjustToxLoss(-0.2 * seconds_per_tick)
+			H.adjustOxyLoss(-0.2 * seconds_per_tick)
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
-		H.take_overall_damage(1 * delta_time, 0)
+		H.take_overall_damage(1 * seconds_per_tick, 0)
 
 
 /datum/species/pod/prepare_human_for_preview(mob/living/carbon/human/human)

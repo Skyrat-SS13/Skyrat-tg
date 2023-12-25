@@ -1,7 +1,20 @@
-import { useBackend, useLocalState } from '../backend';
-import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } from '../components';
+// THIS IS A SKYRAT UI FILE
 import { BooleanLike } from 'common/react';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Divider,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
+import { Rules } from './AntagInfoRules';
 
 type Objectives = {
   count: number;
@@ -30,18 +43,18 @@ type GoldeneyeKeys = {
 };
 
 type Info = {
-  equipped: Number;
-  required_keys: Number;
-  uploaded_keys: Number;
+  equipped: number;
+  required_keys: number;
+  uploaded_keys: number;
   objectives: Objectives[];
   available_targets: AvailableTargets[];
   extracted_targets: ExtractedTargets[];
   goldeneye_keys: GoldeneyeKeys[];
 };
 
-export const AntagInfoAssaultops = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
-  const { data } = useBackend<Info>(context);
+export const AntagInfoAssaultops = (props) => {
+  const [tab, setTab] = useState(1);
+  const { data } = useBackend<Info>();
   const { required_keys, uploaded_keys, objectives } = data;
   return (
     <Window theme="hackerman" width={650} height={650}>
@@ -88,7 +101,8 @@ export const AntagInfoAssaultops = (props, context) => {
                   <LabeledList.Item
                     key={objective.count}
                     label={objective.name}
-                    color={objective.complete ? 'good' : 'bad'}>
+                    color={objective.complete ? 'good' : 'bad'}
+                  >
                     {objective.explanation}
                   </LabeledList.Item>
                 ))}
@@ -96,19 +110,21 @@ export const AntagInfoAssaultops = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Stack vertical grow mb={1}>
+            <Stack vertical mb={1}>
               <Stack.Item>
                 <Tabs fill>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 1}
-                    onClick={() => setTab(1)}>
+                    onClick={() => setTab(1)}
+                  >
                     Targets
                   </Tabs.Tab>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 2}
-                    onClick={() => setTab(2)}>
+                    onClick={() => setTab(2)}
+                  >
                     GoldenEye Keycards
                   </Tabs.Tab>
                 </Tabs>
@@ -117,17 +133,20 @@ export const AntagInfoAssaultops = (props, context) => {
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
           </Stack.Item>
+          <Stack.Item>
+            <Rules />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-const TargetPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const TargetPrintout = (props) => {
+  const { act, data } = useBackend<Info>();
   const { available_targets, extracted_targets } = data;
   return (
-    <Section grow>
+    <Section>
       <Box textColor="red" fontSize="20px" mb={1}>
         Target List
       </Box>
@@ -143,7 +162,8 @@ const TargetPrintout = (props, context) => {
                 <LabeledList.Item
                   key={target.name}
                   label={target.name}
-                  color="red">
+                  color="red"
+                >
                   {target.job}
                 </LabeledList.Item>
               ))}
@@ -162,7 +182,8 @@ const TargetPrintout = (props, context) => {
                 <LabeledList.Item
                   key={target.name}
                   label={target.name}
-                  color="good">
+                  color="good"
+                >
                   {target.job}
                 </LabeledList.Item>
               ))}
@@ -176,11 +197,11 @@ const TargetPrintout = (props, context) => {
 // Utils have goldeneye key list, current heads of staff, extracted heads
 // Common target button, track key button
 
-const KeyPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const KeyPrintout = (props) => {
+  const { act, data } = useBackend<Info>();
   const { goldeneye_keys } = data;
   return (
-    <Section grow>
+    <Section>
       <Box textColor="red" fontSize="20px">
         GoldenEye Keycards
       </Box>
@@ -204,22 +225,22 @@ const KeyPrintout = (props, context) => {
                     content={
                       key.selected
                         ? key.name +
-                        ' (' +
-                        key.coord_x +
-                        ', ' +
-                        key.coord_y +
-                        ', ' +
-                        key.coord_z +
-                        ')' +
-                        ' (Tracking)'
+                          ' (' +
+                          key.coord_x +
+                          ', ' +
+                          key.coord_y +
+                          ', ' +
+                          key.coord_z +
+                          ')' +
+                          ' (Tracking)'
                         : key.name +
-                        ' (' +
-                        key.coord_x +
-                        ', ' +
-                        key.coord_y +
-                        ', ' +
-                        key.coord_z +
-                        ')'
+                          ' (' +
+                          key.coord_x +
+                          ', ' +
+                          key.coord_y +
+                          ', ' +
+                          key.coord_z +
+                          ')'
                     }
                     onClick={() =>
                       act('track_key', {

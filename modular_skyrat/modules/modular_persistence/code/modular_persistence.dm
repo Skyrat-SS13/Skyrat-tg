@@ -1,13 +1,13 @@
 /// A list of vars that shouldn't be tracked by persistence.
 GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	"datum_flags",
-	"datum_components",
-	"comp_lookup",
+	"_datum_components",
+	"_listen_lookup",
 	"tgui_shared_states",
 	"gc_destroyed",
-	"active_timers",
-	"status_traits",
-	"signal_procs",
+	"_active_timers",
+	"_status_traits",
+	"_signal_procs",
 	"cached_ref",
 	"weak_reference",
 	"cooldowns",

@@ -8,8 +8,8 @@
 	icon_off = "glass_pipeoff"
 	chem_volume = 20
 
-/obj/item/clothing/mask/cigarette/pipe/crackpipe/process(delta_time)
-	smoketime -= delta_time
+/obj/item/clothing/mask/cigarette/pipe/crackpipe/process(seconds_per_tick)
+	smoketime -= seconds_per_tick
 	if(smoketime <= 0)
 		if(ismob(loc))
 			var/mob/living/smoking_mob = loc
@@ -33,7 +33,7 @@
 		smoketime = 2 * 60
 		name = "[used_item.name]-packed [initial(name)]"
 		if(used_item.reagents)
-			used_item.reagents.trans_to(src, used_item.reagents.total_volume, transfered_by = user)
+			used_item.reagents.trans_to(src, used_item.reagents.total_volume, transferred_by = user)
 		qdel(used_item)
 	else
 		var/lighting_text = used_item.ignition_effect(src,user)

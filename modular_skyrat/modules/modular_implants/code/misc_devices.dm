@@ -2,7 +2,9 @@
 /obj/item/nifsoft_remover
 	name = "Lopland 'Wrangler' NIF-Cutter"
 	desc = "A small device that lets the user remove NIFSofts from a NIF user"
-	special_desc = "Given the relatively recent and sudden proliferation of NIFs, their use in crime both petty and organized has skyrocketed in recent years. The existence of nanomachine-based real-time burst communication that cannot be effectively monitored or hacked into has given most PMCs cause enough for concern to invent their own devices. This one is a 'Wrangler' model NIF-Cutter, used for crudely wiping programs directly off a user's Framework.."
+	special_desc = "Given the relatively recent and sudden proliferation of NIFs, their use in crime both petty and organized has skyrocketed in recent years. \
+	The existence of nanomachine-based real-time burst communication that cannot be effectively monitored or hacked into has given most PMCs cause enough for concern \
+	to invent their own devices. This one is a 'Wrangler' model NIF-Cutter, used for crudely wiping programs directly off a user's Framework."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "nifsoft_remover"
 
@@ -14,7 +16,7 @@
 	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!target_nif || !length(target_nif.loaded_nifsofts))
-		balloon_alert(user, "[target_mob] has no NIFSofts")
+		balloon_alert(user, "[target_mob] has no NIFSofts!")
 		return
 
 	var/list/installed_nifsofts = target_nif.loaded_nifsofts
@@ -25,14 +27,14 @@
 
 	user.visible_message(span_warning("[user] starts to use [src] on [target_mob]"), span_notice("You start to use [src] on [target_mob]"))
 	if(!do_after(user, 5 SECONDS, target_mob))
-		balloon_alert(user, "removal cancelled")
+		balloon_alert(user, "removal cancelled!")
 		return FALSE
 
 	if(!target_nif.remove_nifsoft(nifsoft_to_remove))
-		balloon_alert(user, "removal failed")
+		balloon_alert(user, "removal failed!")
 		return FALSE
 
-	to_chat(user, span_notice("You successfully remove [nifsoft_to_remove]"))
+	to_chat(user, span_notice("You successfully remove [nifsoft_to_remove]."))
 	user.log_message("removed [nifsoft_to_remove] from [target_mob]" ,LOG_GAME)
 
 	if(create_disk)
@@ -63,7 +65,10 @@
 /obj/item/nif_repair_kit
 	name = "Cerulean NIF Regenerator"
 	desc = "A repair kit that allows for NIFs to be repaired without the use of surgery"
-	special_desc = "The effects of capitalism and industry run deep, and they run within the Nanite Implant Framework industry as well. Frameworks, complicated devices as they are, are normally locked at the firmware level to requiring specific 'approved' brands of repair paste or repair-docks. This hacked-kit has been developed by the Altspace Coven as a freeware alternative, spread far and wide throughout extra-Solarian space for quality of life for users located on the peripheries of society."
+	special_desc = "The effects of capitalism and industry run deep, and they run within the Nanite Implant Framework industry as well. \
+	Frameworks, complicated devices as they are, are normally locked at the firmware level to requiring specific 'approved' brands of repair paste or repair-docks. \
+	This hacked-kit has been developed by the Altspace Coven as a freeware alternative, spread far and wide throughout extra-Solarian space for quality of life \
+	for users located on the peripheries of society."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "repair_paste"
 	w_class = WEIGHT_CLASS_SMALL
@@ -92,5 +97,71 @@
 
 	uses -= 1
 	if(!uses)
+		qdel(src)
+
+/obj/item/nif_hud_adapter
+	name = "Scrying Lens Adapter"
+	desc = "A kit that modifies select glasses to display HUDs for NIFs"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
+	icon_state = "partskit"
+
+	/// Can this item be used multiple times? If not, it will delete itself after being used.
+	var/multiple_uses = FALSE
+	/// List containing all of the glasses that we want to work with this.
+	var/static/list/glasses_whitelist = list(
+		/obj/item/clothing/glasses/trickblindfold,
+		/obj/item/clothing/glasses/monocle,
+		/obj/item/clothing/glasses/fake_sunglasses,
+		/obj/item/clothing/glasses/regular,
+		/obj/item/clothing/glasses/eyepatch,
+		/obj/item/clothing/glasses/osi,
+		/obj/item/clothing/glasses/phantom,
+		/obj/item/clothing/glasses/salesman, // Now's your chance.
+		/obj/item/clothing/glasses/nice_goggles,
+		/obj/item/clothing/glasses/thin,
+		/obj/item/clothing/glasses/biker,
+		/obj/item/clothing/glasses/sunglasses/gar,
+		/obj/item/clothing/glasses/hypno,
+		/obj/item/clothing/glasses/heat,
+		/obj/item/clothing/glasses/cold,
+		/obj/item/clothing/glasses/orange,
+		/obj/item/clothing/glasses/red,
+		/obj/item/clothing/glasses/psych,
+	)
+
+/obj/item/nif_hud_adapter/examine(mob/user)
+	. = ..()
+	var/list/compatible_glasses_names = list()
+	for(var/obj/item/glasses_type as anything in glasses_whitelist)
+		var/glasses_name = initial(glasses_type.name)
+		if(!glasses_name)
+			continue
+
+		compatible_glasses_names += glasses_name
+
+	if(length(compatible_glasses_names))
+		. += span_cyan("\n This item will work on the following glasses: [english_list(compatible_glasses_names)].")
+
+	return .
+
+/obj/item/nif_hud_adapter/afterattack(obj/item/clothing/glasses/target_glasses, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!proximity_flag || !istype(target_glasses))
+		return FALSE
+
+	if(!is_type_in_list(target_glasses, glasses_whitelist))
+		balloon_alert("incompatible!")
+		return FALSE
+
+	if(HAS_TRAIT(target_glasses, TRAIT_NIFSOFT_HUD_GRANTER))
+		balloon_alert("already upgraded!")
+		return FALSE
+
+	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]."), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))
+	target_glasses.name = "\improper HUD-upgraded " + target_glasses.name
+	target_glasses.AddElement(/datum/element/nifsoft_hud)
+	playsound(target_glasses.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
+
+	if(!multiple_uses)
 		qdel(src)
 

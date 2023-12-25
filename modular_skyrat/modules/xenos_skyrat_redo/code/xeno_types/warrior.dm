@@ -9,33 +9,19 @@
 	icon_state = "alienwarrior"
 	melee_damage_lower = 30
 	melee_damage_upper = 35
-	/// Holds the charge ability that will be given to the warrior later
-	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
-	/// Holds the tail sweep ability that will be given to the warrior later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/tail_sweep
-	/// Holds the agility ability that will be given to the warrior later
-	var/datum/action/cooldown/alien/skyrat/warrior_agility/agility
 
 /mob/living/carbon/alien/adult/skyrat/warrior/Initialize(mapload)
 	. = ..()
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep()
-	tail_sweep.Grant(src)
-
-	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender()
-	charge.Grant(src)
-
-	agility = new /datum/action/cooldown/alien/skyrat/warrior_agility()
-	agility.Grant(src)
+	var/static/list/innate_actions = list(
+		/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep,
+		/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender,
+		/datum/action/cooldown/alien/skyrat/warrior_agility,
+	)
+	grant_actions_by_list(innate_actions)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
-
-/mob/living/carbon/alien/adult/skyrat/warrior/Destroy()
-	QDEL_NULL(charge)
-	QDEL_NULL(tail_sweep)
-	QDEL_NULL(agility)
-	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/warrior/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel

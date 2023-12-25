@@ -63,7 +63,7 @@
 		return
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
 	if(moan_sounds)
-		playsound(loc, pick(moan_sounds), chokes_wearer ? moan_volume_choking : moan_volume, 1, -1, ignore_walls = FALSE)
+		play_lewd_sound(loc, pick(moan_sounds), chokes_wearer ? moan_volume_choking : moan_volume, 1, -1)
 
 // Change the size of the gag
 /obj/item/clothing/mask/ballgag/attack_self(mob/user)
@@ -111,7 +111,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/mask/ballgag/choking/process(delta_time)
+/obj/item/clothing/mask/ballgag/choking/process(seconds_per_tick)
 	var/mob/living/carbon/human/wearer = loc
 	if(!istype(wearer))
 		return
@@ -119,7 +119,7 @@
 		return
 	if(!chokes_wearer)
 		return
-	choke_timer += delta_time
+	choke_timer += seconds_per_tick
 	if(choke_timer < choke_interval)
 		return
 	switch(gag_size)

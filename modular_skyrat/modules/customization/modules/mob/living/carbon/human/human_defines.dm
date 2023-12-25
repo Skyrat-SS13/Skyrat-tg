@@ -21,4 +21,7 @@
 	var/oversized_piggyknock = 3 SECONDS
 	/// Alpha of the hair. Takes precedent over species hair_alpha if non-null.
 	var/hair_alpha
-
+	/// The selected bra.
+	var/bra = "Nude"
+	/// Color of the bra.
+	var/bra_color = "#FFFFFF"

@@ -1,15 +1,15 @@
 /datum/computer_file/program/science
 	filename = "experi_track"
 	filedesc = "Nanotrasen Science Hub"
-	category = PROGRAM_CATEGORY_SCI
-	program_icon_state = "research"
+	downloader_category = PROGRAM_CATEGORY_SCIENCE
+	program_open_overlay = "research"
 	extended_desc = "Connect to the internal science server in order to assist in station research efforts."
-	requires_ntnet = TRUE
+	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 10
 	tgui_id = "NtosTechweb"
 	program_icon = "atom"
-	required_access = list(ACCESS_COMMAND, ACCESS_RESEARCH)
-	transfer_access = list(ACCESS_RESEARCH)
+	run_access = list(ACCESS_COMMAND, ACCESS_RESEARCH)
+	download_access = list(ACCESS_RESEARCH)
 	/// Reference to global science techweb
 	var/datum/techweb/stored_research
 	/// Access needed to lock/unlock the console
@@ -21,10 +21,10 @@
 	/// Sequence var for the id cache
 	var/id_cache_seq = 1
 
-/datum/computer_file/program/science/on_start(mob/living/user)
+/datum/computer_file/program/science/on_install(datum/computer_file/source, obj/item/modular_computer/computer_installing)
 	. = ..()
 	if(!CONFIG_GET(flag/no_default_techweb_link) && !stored_research)
-		stored_research = SSresearch.science_tech
+		CONNECT_TO_RND_SERVER_ROUNDSTART(stored_research, computer)
 
 /datum/computer_file/program/science/application_attackby(obj/item/attacking_item, mob/living/user)
 	if(!istype(attacking_item, /obj/item/multitool))
@@ -89,9 +89,6 @@
 	return data
 
 /datum/computer_file/program/science/ui_act(action, list/params)
-	. = ..()
-	if (.)
-		return
 	// Check if the console is locked to block any actions occuring
 	if (locked && action != "toggleLock")
 		computer.say("Console is locked, cannot perform further actions.")
@@ -197,27 +194,32 @@
 	var/list/price = tech_node.get_price(stored_research)
 	if(stored_research.can_afford(price))
 		user.investigate_log("researched [id]([json_encode(price)]) on techweb id [stored_research.id] via [computer].", INVESTIGATE_RESEARCH)
-		if(stored_research == SSresearch.science_tech)
+		if(istype(stored_research, /datum/techweb/science))
 			SSblackbox.record_feedback("associative", "science_techweb_unlock", 1, list("id" = "[id]", "name" = tech_node.display_name, "price" = "[json_encode(price)]", "time" = SQLtime()))
 		if(stored_research.research_node_id(id))
 			computer.say("Successfully researched [tech_node.display_name].")
 			var/logname = "Unknown"
 			if(isAI(user))
-				logname = "AI: [user.name]"
+				logname = "AI [user.name]"
 			if(iscyborg(user))
-				logname = "Cyborg: [user.name]"
+				logname = "CYBORG [user.name]"
 			if(iscarbon(user))
 				var/obj/item/card/id/idcard = user.get_active_held_item()
 				if(istype(idcard))
-					logname = "User: [idcard.registered_name]"
+					logname = "[idcard.registered_name]"
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
 				var/obj/item/worn = human_user.wear_id
 				if(istype(worn))
 					var/obj/item/card/id/id_card_of_human_user = worn.GetID()
 					if(istype(id_card_of_human_user))
-						logname = "User: [id_card_of_human_user.registered_name]"
-			stored_research.research_logs += list(list(tech_node.display_name, price["General Research"], logname, "[get_area(computer)] ([user.x],[user.y],[user.z])"))
+						logname = "[id_card_of_human_user.registered_name]"
+			stored_research.research_logs += list(list(
+				"node_name" = tech_node.display_name,
+				"node_cost" = price["General Research"],
+				"node_researcher" = logname,
+				"node_research_location" = "[get_area(computer)] ([user.x],[user.y],[user.z])",
+			))
 			return TRUE
 		else
 			computer.say("Failed to research node: Internal database error!")

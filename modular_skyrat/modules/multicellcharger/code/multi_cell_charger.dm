@@ -3,6 +3,7 @@
 	desc = "A cell charging rack for multiple batteries."
 	icon = 'modular_skyrat/modules/aesthetics/cells/cell.dmi'
 	icon_state = "cchargermulti"
+	base_icon_state = "cchargermulti"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 60
@@ -24,8 +25,8 @@
 	for(var/i = charging_batteries.len, i >= 1, i--)
 		var/obj/item/stock_parts/cell/charging = charging_batteries[i]
 		var/newlevel = round(charging.percent() * 4 / 100)
-		var/mutable_appearance/charge_overlay = mutable_appearance(icon, "cchargermulti-o[newlevel]")
-		var/mutable_appearance/cell_overlay = mutable_appearance(icon, "cchargermulti-cell")
+		var/mutable_appearance/charge_overlay = mutable_appearance(icon, "[base_icon_state]-o[newlevel]")
+		var/mutable_appearance/cell_overlay = mutable_appearance(icon, "[base_icon_state]-cell")
 		charge_overlay.pixel_x = 5 * (i - 1)
 		cell_overlay.pixel_x = 5 * (i - 1)
 		. += new /mutable_appearance(charge_overlay)
@@ -63,7 +64,7 @@
 		if(inserting_cell.chargerate <= 0)
 			to_chat(user, span_warning("[inserting_cell] cannot be recharged!"))
 			return
-		if(charging_batteries.len >= 4)
+		if(length(charging_batteries) >= max_batteries)
 			to_chat(user, span_warning("[src] is full, and cannot hold anymore cells!"))
 			return
 		else
@@ -88,14 +89,14 @@
 			return
 		return ..()
 
-/obj/machinery/cell_charger_multi/process(delta_time)
+/obj/machinery/cell_charger_multi/process(seconds_per_tick)
 	if(!charging_batteries.len || !anchored || (machine_stat & (BROKEN|NOPOWER)))
 		return
 
 	for(var/obj/item/stock_parts/cell/charging in charging_batteries)
 		if(charging.percent() >= 100)
 			continue
-		var/main_draw = use_power_from_net(charge_rate * delta_time, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
+		var/main_draw = use_power_from_net(charge_rate * seconds_per_tick, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
 		if(!main_draw)
 			return
 		charging.give(main_draw)

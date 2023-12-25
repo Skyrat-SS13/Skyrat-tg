@@ -7,6 +7,7 @@
 /obj/item/xenoarch/hammer
 	name = "parent dev item"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
+	tool_behaviour = TOOL_HAMMER
 	var/dig_amount = 1
 	var/dig_speed = 1 SECONDS
 	var/advanced = FALSE
@@ -293,3 +294,14 @@
 /obj/structure/closet/xenoarch/ashwalker_version/PopulateContents()
 	. = ..()
 	new /obj/item/xenoarch/handheld_recoverer(src)
+
+/obj/item/skillchip/xenoarch_magnifier
+	name = "R3T3N-T1VE skillchip"
+	desc = "This biochip integrates with user's brain to enable the mastery of a specific skill. Consult certified Nanotrasen neurosurgeon before use. \
+	There's a little face etched into the back of the skillchip, with buck teeth and goofy-looking glasses."
+	auto_traits = list(TRAIT_XENOARCH_QUALIFIED)
+	skill_name = "Xenoarchaeological Analysis"
+	skill_description = "Allows for the more thorough magnification and notice of details on freshly-excavated xenoarchaeological garbage."
+	skill_icon = "magnifying-glass"
+	activate_message = span_notice("You feel the gleaned knowledge of a xenoarchaeological digsite internship reveal itself to your mind.")
+	deactivate_message = span_notice("The knowledge from a digsite internship fades away into jumbled coffee orders from ungrateful supervisors.")

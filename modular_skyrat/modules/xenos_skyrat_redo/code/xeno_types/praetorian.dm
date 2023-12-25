@@ -7,29 +7,21 @@
 	maxHealth = 400
 	health = 400
 	icon_state = "alienpraetorian"
-	/// Holds the improved healing aura ability to be granted to the praetorian later
-	var/datum/action/cooldown/alien/skyrat/heal_aura/juiced/heal_aura_ability
-	/// Holds the less lethal tail sweep ability to be granted to the praetorian later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing/tail_sweep
 	melee_damage_lower = 25
 	melee_damage_upper = 30
 	next_evolution = /mob/living/carbon/alien/adult/skyrat/queen
 
 /mob/living/carbon/alien/adult/skyrat/praetorian/Initialize(mapload)
 	. = ..()
-	heal_aura_ability = new /datum/action/cooldown/alien/skyrat/heal_aura/juiced()
-	heal_aura_ability.Grant(src)
-
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing()
-	tail_sweep.Grant(src)
+	var/static/list/innate_actions = list(
+		/datum/action/cooldown/alien/skyrat/heal_aura/juiced,
+		/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing,
+	)
+	grant_actions_by_list(innate_actions)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
-
-/mob/living/carbon/alien/adult/skyrat/praetorian/Destroy()
-	QDEL_NULL(heal_aura_ability)
-	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/praetorian/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel/large
@@ -71,17 +63,21 @@
 	desc = "Spits a spread neurotoxin at someone, exhausting them."
 	plasma_cost = 50
 	acid_projectile = null
-	acid_casing = /obj/item/ammo_casing/caseless/xenospit
+	acid_casing = /obj/item/ammo_casing/xenospit
 	spit_sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_spitacid2.ogg'
 	cooldown_time = 10 SECONDS
 
-/obj/item/ammo_casing/caseless/xenospit //This is probably really bad, however I couldn't find any other nice way to do this
+/obj/item/ammo_casing/xenospit //This is probably really bad, however I couldn't find any other nice way to do this
 	name = "big glob of neurotoxin"
 	projectile_type = /obj/projectile/neurotoxin/skyrat/spitter_spread
 	pellets = 3
 	variance = 20
 
-/obj/item/ammo_casing/caseless/xenospit/tk_firing(mob/living/user, atom/fired_from)
+/obj/item/ammo_casing/xenospit/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
+
+/obj/item/ammo_casing/xenospit/tk_firing(mob/living/user, atom/fired_from)
 	return FALSE
 
 /obj/projectile/neurotoxin/skyrat/spitter_spread //Slightly nerfed because its a shotgun spread of these
@@ -93,12 +89,12 @@
 	name = "Spit Acid Spread"
 	desc = "Spits a spread of acid at someone, burning them."
 	acid_projectile = null
-	acid_casing = /obj/item/ammo_casing/caseless/xenospit/spread/lethal
+	acid_casing = /obj/item/ammo_casing/xenospit/spread/lethal
 	button_icon_state = "acidspit_0"
 	projectile_name = "acid"
 	button_base_icon = "acidspit"
 
-/obj/item/ammo_casing/caseless/xenospit/spread/lethal
+/obj/item/ammo_casing/xenospit/spread/lethal
 	name = "big glob of acid"
 	projectile_type = /obj/projectile/neurotoxin/skyrat/acid/spitter_spread
 	pellets = 4

@@ -87,20 +87,20 @@
 /mob/living/carbon/human/proc/remove_mutant_immunity()
 	REMOVE_TRAIT(src, TRAIT_MUTANT_IMMUNE, "mutant_virus")
 
-/datum/component/mutant_infection/process(delta_time)
+/datum/component/mutant_infection/process(seconds_per_tick)
 	if(!ismutant(host) && host.stat != DEAD)
 		var/toxloss = host.getToxLoss()
 		if(toxloss < 50)
-			host.adjustToxLoss(tox_loss_mod * delta_time)
-			if(DT_PROB(5, delta_time))
+			host.adjustToxLoss(tox_loss_mod * seconds_per_tick)
+			if(SPT_PROB(5, seconds_per_tick))
 				to_chat(host, span_userdanger("You feel your motor controls seize up for a moment!"))
 				host.Paralyze(10)
 		else
-			host.adjustToxLoss((tox_loss_mod * 2) * delta_time)
-			if(DT_PROB(10, delta_time))
+			host.adjustToxLoss((tox_loss_mod * 2) * seconds_per_tick)
+			if(SPT_PROB(10, seconds_per_tick))
 				var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
 				if(wound_area)
-					var/datum/wound/slash/moderate/rotting_wound = new
+					var/datum/wound/slash/flesh/moderate/rotting_wound = new
 					rotting_wound.apply_wound(wound_area)
 				host.emote(pick(list("cough", "sneeze", "scream")))
 	if(timer_id)
@@ -156,7 +156,7 @@
 
 /datum/component/mutant_infection/proc/regenerate()
 	if(!host.mind)
-		var/list/candidates = poll_candidates_for_mob("Do you want to play as a mutant([host.name])?", target_mob = host)
+		var/list/candidates = SSpolling.poll_ghost_candidates_for_mob("Do you want to play as a mutant([host.name])?", target_mob = host)
 		if(!candidates.len)
 			return
 		var/client/C = pick_n_take(candidates)

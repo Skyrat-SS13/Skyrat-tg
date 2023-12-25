@@ -1,136 +1,130 @@
-#define PRICE_FIRST_AID_BASIC_LOWER 0.1
-#define PRICE_FIRST_AID_BASIC_HIGHER 0.2
-#define PRICE_FIRST_AID_MEDIUM_LOWER 0.3
-#define PRICE_FIRST_AID_MEDIUM_HIGHER 0.4
-#define PRICE_FIRST_AID_PREMIUM_LOWER 0.6
-#define PRICE_FIRST_AID_PREMIUM_HIGHER 0.7
-
-#define PRICE_CHEM_CHEAP_LOWER 5.7
-#define PRICE_CHEM_CHEAP_HIGHER 4.8
-#define PRICE_CHEM_MEDIUM_LOWER 4.4
-#define PRICE_CHEM_MEDIUM_HIGHER 4 
-#define PRICE_CHEM_PREMIUM_LOWER 3.5
-#define PRICE_CHEM_PREMIUM_HIGHER 3
-
 /datum/armament_entry/company_import/deforest
 	category = DEFOREST_MEDICAL_NAME
 	company_bitflag = CARGO_COMPANY_DEFOREST
 
+// Precompiled first aid kits, ready to go if you don't want to bother getting individual items
+
+/datum/armament_entry/company_import/deforest/first_aid_kit
+	subcategory = "First-Aid Kits"
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/civil_defense
+	item_type = /obj/item/storage/medkit/civil_defense/stocked
+	cost = PAYCHECK_COMMAND * 4
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/frontier
+	item_type = /obj/item/storage/medkit/frontier/stocked
+	cost = PAYCHECK_COMMAND * 5
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/combat_surgeon
+	item_type = /obj/item/storage/medkit/combat_surgeon/stocked
+	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/first_responder
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
+	cost = PAYCHECK_COMMAND * 10
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/orange_satchel
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
+	cost = PAYCHECK_COMMAND * 15
+
 // Basic first aid supplies like gauze, sutures, mesh, so on
 
 /datum/armament_entry/company_import/deforest/first_aid
-	subcategory = "First-Aid Supplies"
+	subcategory = "First-Aid Consumables"
 
-/datum/armament_entry/company_import/deforest/first_aid/gauze
-	item_type = /obj/item/stack/medical/gauze/twelve
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_HIGHER
-	stock_mult = 3
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
+/datum/armament_entry/company_import/deforest/first_aid/coagulant
+	item_type = /obj/item/stack/medical/suture/coagulant
+	cost = PAYCHECK_LOWER
 
-/datum/armament_entry/company_import/deforest/first_aid/splint
-	item_type = /obj/item/stack/medical/splint/twelve
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_HIGHER
-	stock_mult = 3
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
+/datum/armament_entry/company_import/deforest/first_aid/red_sun
+	item_type = /obj/item/stack/medical/ointment/red_sun
+	cost = PAYCHECK_LOWER
 
-/datum/armament_entry/company_import/deforest/first_aid/bruise_pack
-	item_type = /obj/item/stack/medical/bruise_pack
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_HIGHER
-	stock_mult = 3
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
+/datum/armament_entry/company_import/deforest/first_aid/sterile_gauze
+	item_type = /obj/item/stack/medical/gauze/sterilized
+	cost = PAYCHECK_LOWER
 
-/datum/armament_entry/company_import/deforest/first_aid/ointment
-	item_type = /obj/item/stack/medical/ointment
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_HIGHER
-	stock_mult = 3
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
+/datum/armament_entry/company_import/deforest/first_aid/amollin
+	item_type = /obj/item/storage/pill_bottle/painkiller
+	cost = PAYCHECK_CREW
 
-/datum/armament_entry/company_import/deforest/first_aid/suture
-	item_type = /obj/item/stack/medical/suture
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_HIGHER
-	stock_mult = 3
+/datum/armament_entry/company_import/deforest/first_aid/subdermal_splint
+	item_type = /obj/item/stack/medical/wound_recovery
+	cost = PAYCHECK_COMMAND * 2
 
-/datum/armament_entry/company_import/deforest/first_aid/mesh
-	item_type = /obj/item/stack/medical/mesh
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_BASIC_HIGHER
-	stock_mult = 3
+/datum/armament_entry/company_import/deforest/first_aid/rapid_coagulant
+	item_type = /obj/item/stack/medical/wound_recovery/rapid_coagulant
+	cost = PAYCHECK_COMMAND * 2
 
-/datum/armament_entry/company_import/deforest/first_aid/bone_gel
-	item_type = /obj/item/stack/medical/bone_gel/four
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_HIGHER
-	stock_mult = 2
-	interest_required = COMPANY_SOME_INTEREST
+// Autoinjectors for healing
 
-/datum/armament_entry/company_import/deforest/first_aid/medicated_sutures
-	item_type = /obj/item/stack/medical/suture/medicated
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_PREMIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_PREMIUM_HIGHER
-	stock_mult = 2
-	interest_required = COMPANY_SOME_INTEREST
+/datum/armament_entry/company_import/deforest/medpens
+	subcategory = "Medical Autoinjectors"
+	cost = PAYCHECK_COMMAND * 1.5
 
-/datum/armament_entry/company_import/deforest/first_aid/advanced_mesh
-	item_type = /obj/item/stack/medical/mesh/advanced
-	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_PREMIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_PREMIUM_HIGHER
-	stock_mult = 2
-	interest_required = COMPANY_SOME_INTEREST
+/datum/armament_entry/company_import/deforest/medpens/occuisate
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate
 
-// Various chemicals, with a box of syringes to come with
+/datum/armament_entry/company_import/deforest/medpens/morpital
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/morpital
 
-/datum/armament_entry/company_import/deforest/medical_chems
-	subcategory = "Chemical Supplies"
+/datum/armament_entry/company_import/deforest/medpens/lipital
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/lipital
 
-/datum/armament_entry/company_import/deforest/medical_chems/syringes
-	item_type = /obj/item/storage/box/syringes
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/meridine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/meridine
 
-/datum/armament_entry/company_import/deforest/medical_chems/epinephrine
-	item_type = /obj/item/reagent_containers/cup/bottle/epinephrine
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_MEDIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_MEDIUM_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/calopine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/calopine
 
-/datum/armament_entry/company_import/deforest/medical_chems/mannitol
-	item_type = /obj/item/reagent_containers/cup/bottle/mannitol
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/coagulants
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/coagulants
 
-/datum/armament_entry/company_import/deforest/medical_chems/morphine
-	item_type = /obj/item/reagent_containers/cup/bottle/morphine
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_MEDIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_MEDIUM_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/lepoturi
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi
 
-/datum/armament_entry/company_import/deforest/medical_chems/multiver
-	item_type = /obj/item/reagent_containers/cup/bottle/multiver
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/psifinil
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/psifinil
 
-/datum/armament_entry/company_import/deforest/medical_chems/formadehyde
-	item_type = /obj/item/reagent_containers/cup/bottle/formaldehyde
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/halobinin
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/halobinin
 
-/datum/armament_entry/company_import/deforest/medical_chems/potassium_iodide
-	item_type = /obj/item/reagent_containers/cup/bottle/potass_iodide
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_CHEAP_HIGHER
+/datum/armament_entry/company_import/deforest/medpens/pentibinin
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
+	contraband = TRUE
 
-/datum/armament_entry/company_import/deforest/medical_chems/atropine
-	item_type = /obj/item/reagent_containers/cup/bottle/atropine
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_PREMIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_PREMIUM_HIGHER
+// Autoinjectors for fighting
 
-/datum/armament_entry/company_import/deforest/medical_chems/syriniver
-	item_type = /obj/item/reagent_containers/cup/bottle/syriniver
-	lower_cost = CARGO_CRATE_VALUE * PRICE_CHEM_MEDIUM_LOWER
-	upper_cost = CARGO_CRATE_VALUE * PRICE_CHEM_MEDIUM_HIGHER
+/datum/armament_entry/company_import/deforest/medpens_stim
+	subcategory = "Stimulant Autoinjectors"
+	cost = PAYCHECK_COMMAND * 2
+
+/datum/armament_entry/company_import/deforest/medpens_stim/adrenaline
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/adrenaline
+
+/datum/armament_entry/company_import/deforest/medpens_stim/synephrine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/synephrine
+
+/datum/armament_entry/company_import/deforest/medpens_stim/krotozine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/krotozine
+
+/datum/armament_entry/company_import/deforest/medpens_stim/aranepaine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/aranepaine
+	contraband = TRUE
+
+/datum/armament_entry/company_import/deforest/medpens_stim/synalvipitol
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/synalvipitol
+	contraband = TRUE
+
+/datum/armament_entry/company_import/deforest/medpens_stim/twitch
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/twitch
+	cost = PAYCHECK_COMMAND * 3
+	contraband = TRUE
+
+/datum/armament_entry/company_import/deforest/medpens_stim/demoneye
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/demoneye
+	cost = PAYCHECK_COMMAND * 3
+	contraband = TRUE
 
 // Equipment, from defibs to scanners to surgical tools
 
@@ -139,135 +133,66 @@
 
 /datum/armament_entry/company_import/deforest/equipment/health_analyzer
 	item_type = /obj/item/healthanalyzer
-	lower_cost = CARGO_CRATE_VALUE * 1
-	upper_cost = CARGO_CRATE_VALUE * 1.4
-	stock_mult = 2
+	cost = PAYCHECK_LOWER
 
 /datum/armament_entry/company_import/deforest/equipment/loaded_defib
 	item_type = /obj/item/defibrillator/loaded
-	lower_cost = CARGO_CRATE_VALUE * 1
-	upper_cost = CARGO_CRATE_VALUE * 1.5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/deforest/equipment/surgical_tools
-	item_type = /obj/item/storage/backpack/duffelbag/med/surgery
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 2.5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	item_type = /obj/item/surgery_tray/full
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_health_analyer
 	item_type = /obj/item/healthanalyzer/advanced
-	lower_cost = CARGO_CRATE_VALUE * 2.5
-	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/penlite_defib_mount
 	item_type = /obj/item/wallframe/defib_mount/charging
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+	cost = PAYCHECK_CREW * 3
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_scalpel
 	item_type = /obj/item/scalpel/advanced
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_HIGH_INTEREST
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_retractor
 	item_type = /obj/item/retractor/advanced
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_HIGH_INTEREST
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_cautery
 	item_type = /obj/item/cautery/advanced
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_HIGH_INTEREST
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/medigun_upgrade
 	item_type = /obj/item/device/custom_kit/medigun_fastcharge
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+	cost = PAYCHECK_COMMAND * 2
 
 /datum/armament_entry/company_import/deforest/equipment/afad
 	item_type = /obj/item/gun/medbeam/afad
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 7
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
-	interest_required = COMPANY_HIGH_INTEREST
+	cost = PAYCHECK_COMMAND * 5
 
-// Various advanced cybernetic organs, organ replacements for the rich
+// Modsuit Modules from the medical category, here instead of in Nakamura because nobody buys from this company
 
-/datum/armament_entry/company_import/deforest/cyber_organs
-	subcategory = "Premium Cybernetic Organs"
+/datum/armament_entry/company_import/deforest/medical_modules
+	subcategory = "MOD Medical Modules"
+	cost = PAYCHECK_COMMAND * 2
 
-/datum/armament_entry/company_import/deforest/cyber_organs/eyes
-	name = "shielded cybernetic eyes"
-	item_type = /obj/item/storage/organbox/advanced_cyber_eyes
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+/datum/armament_entry/company_import/deforest/medical_modules/injector
+	name = "MOD injector module"
+	item_type = /obj/item/mod/module/injector
 
-/datum/armament_entry/company_import/deforest/cyber_organs/ears
-	name = "upgraded cybernetic ears"
-	item_type = /obj/item/storage/organbox/advanced_cyber_ears
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+/datum/armament_entry/company_import/deforest/medical_modules/organ_thrower
+	name = "MOD organ thrower module"
+	item_type = /obj/item/mod/module/organ_thrower
 
-/datum/armament_entry/company_import/deforest/cyber_organs/heart
-	name = "upgraded cybernetic heart"
-	item_type = /obj/item/storage/organbox/advanced_cyber_heart
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+/datum/armament_entry/company_import/deforest/medical_modules/patient_transport
+	name = "MOD patient transport module"
+	item_type = /obj/item/mod/module/criminalcapture/patienttransport
 
-/datum/armament_entry/company_import/deforest/cyber_organs/liver
-	name = "upgraded cybernetic liver"
-	item_type = /obj/item/storage/organbox/advanced_cyber_liver
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
+/datum/armament_entry/company_import/deforest/medical_modules/thread_ripper
+	name = "MOD thread ripper module"
+	item_type = /obj/item/mod/module/thread_ripper
 
-/datum/armament_entry/company_import/deforest/cyber_organs/lungs
-	name = "upgraded cybernetic lungs"
-	item_type = /obj/item/storage/organbox/advanced_cyber_lungs
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
-
-/datum/armament_entry/company_import/deforest/cyber_organs/stomach
-	name = "upgraded cybernetic stomach"
-	item_type = /obj/item/storage/organbox/advanced_cyber_stomach
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
-
-
-#undef PRICE_FIRST_AID_BASIC_LOWER
-#undef PRICE_FIRST_AID_BASIC_HIGHER
-#undef PRICE_FIRST_AID_MEDIUM_LOWER
-#undef PRICE_FIRST_AID_MEDIUM_HIGHER
-#undef PRICE_FIRST_AID_PREMIUM_LOWER
-#undef PRICE_FIRST_AID_PREMIUM_HIGHER
-
-#undef PRICE_CHEM_CHEAP_LOWER
-#undef PRICE_CHEM_CHEAP_HIGHER
-#undef PRICE_CHEM_MEDIUM_LOWER
-#undef PRICE_CHEM_MEDIUM_HIGHER
-#undef PRICE_CHEM_PREMIUM_LOWER
-#undef PRICE_CHEM_PREMIUM_HIGHER
+/datum/armament_entry/company_import/deforest/medical_modules/surgical_processor
+	name = "MOD surgical processor module"
+	item_type = /obj/item/mod/module/surgical_processor

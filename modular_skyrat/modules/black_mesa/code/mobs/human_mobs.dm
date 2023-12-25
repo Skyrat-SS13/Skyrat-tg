@@ -162,7 +162,7 @@
 	icon_living = "security_guard_ranged"
 	casingtype = /obj/item/ammo_casing/c9mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
+	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/sol)
 	rapid_melee = 1
 
 /mob/living/simple_animal/hostile/blackmesa/blackops
@@ -219,8 +219,8 @@
 	minimum_distance = 5
 	icon_state = "blackops_ranged"
 	icon_living = "blackops_ranged"
-	casingtype = /obj/item/ammo_casing/a556/weak
-	projectilesound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
+	casingtype = /obj/item/ammo_casing/c40sol
+	projectilesound = 'modular_skyrat/modules/modular_weapons/sounds/rifle_heavy.ogg'
 	attack_sound = 'sound/weapons/punch1.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/m16)
+	loot = list(/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/c40sol_rifle/standard)
 	rapid_melee = 1

@@ -37,9 +37,10 @@
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"
 	desc = "A robust and spaceworthy helmet with a small cross on it along with 'IP' written across the earpad."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "swat_ds"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 /obj/item/clothing/head/beret/sec/syndicate
 	name = "brig officer's beret"
@@ -55,7 +56,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
-	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS | HIDEFACIALHAIR
+	flags_inv = HIDEFACE | HIDEEARS | HIDEFACIALHAIR
+	alternate_worn_layer = LOW_FACEMASK_LAYER //This lets it layer below glasses and headsets; yes, that's below hair, but it already has HIDEHAIR
 
 /obj/item/clothing/mask/gas/sechailer/syndicate
 	name = "neck gaiter"
@@ -65,6 +67,9 @@
 	icon_state = "half_mask"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	unique_death = 'modular_skyrat/master_files/sound/effects/hacked.ogg'
+	voice_filter = null
+	use_radio_beeps_tts = FALSE
 
 /obj/item/clothing/shoes/combat //TO-DO: Move these overrides out of a syndicate file!
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
@@ -105,9 +110,11 @@
 	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/suit/armor/bulletproof/old
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "bulletproof"
+	body_parts_covered = CHEST //TG's version has no groin/arm padding
 
 /obj/item/clothing/under/syndicate/skyrat/overalls
 	name = "utility overalls turtleneck"
@@ -132,12 +139,12 @@
 	soft_type = "ds"
 
 //Maid Outfit
-/obj/item/clothing/head/maidheadband/syndicate
+/obj/item/clothing/head/costume/maidheadband/syndicate
 	name = "tactical maid headband"
 	desc = "Tacticute."
 	icon_state = "syndimaid_headband"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/costume.dmi'
 
 /obj/item/clothing/gloves/combat/maid
 	name = "combat maid sleeves"
@@ -148,6 +155,7 @@
 	name = "tactical maid outfit"
 	desc = "A 'tactical' skirtleneck fashioned to the likeness of a maid outfit. Why the Syndicate has these, you'll never know."
 	icon_state = "syndimaid"
+	armor_type = /datum/armor/clothing_under/none
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

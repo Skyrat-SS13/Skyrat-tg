@@ -158,9 +158,13 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Blue Leg Wraps"
 	item_path = /obj/item/clothing/shoes/wraps/blue
 
+/datum/loadout_item/shoes/cuffs/colourable
+	name = "Colourable Leg Wraps"
+	item_path = /obj/item/clothing/shoes/wraps/colourable
+
 /datum/loadout_item/shoes/clothwrap
 	name = "Colourable Cloth Wraps"
-	item_path = /obj/item/clothing/shoes/wraps/colourable
+	item_path = /obj/item/clothing/shoes/wraps/cloth
 
 /*
 *	MISC
@@ -207,6 +211,10 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Sport Shoes"
 	item_path = /obj/item/clothing/shoes/sports
 
+/datum/loadout_item/shoes/rollerskates
+	name = "Roller Skates"
+	item_path = /obj/item/clothing/shoes/wheelys/rollerskates
+
 /*
 *	SEASONAL
 */
@@ -214,7 +222,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/christmas
 	name = "Red Christmas Boots"
 	item_path = /obj/item/clothing/shoes/winterboots/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/shoes/christmas/green
 	name = "Green Christmas Boots"

@@ -1,46 +1,6 @@
-#define TRAIT_ALREADYSTAMINAFLOORED    	"alreadystaminafloored" //Trait to keep track whether someone was floored recently by stamina damage.
-#define STAMINA_KNOCKDOWN_COOLDOWN 10 SECONDS
-
-#define MAX_HUMAN_LIFE 135
-
-//APPLICATION OF STAM DAMAGE
-//Should maybe wounds do it too?
-//This one is applied on non-glancing melee attacks aswell as normal projectiles.
-#define SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.7 //Fights with simple mobs are usually more sustained, so apply a bit less
-#define BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8 //Brute that isnt sharp, knocks the wind outta you real good
-#define OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.5 //Burns, sharp implements
-#define PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1
-
-//Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
-#define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
-#define BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 4.2 //This is also multiplied by the glancing damage multiplier, so usually less
-#define OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.6
-
-#define PUNCH_STAMINA_MULTIPLIER 2.6
-
-//STAMINA REGEN
-#define STAMINA_STATIC_REGEN_MULTIPLIER 0.4
-//Flat amount regenerated per 2 seconds, multiplied by a lot of variables
-#define STAMINA_STATIC_REGEN_FLAT 1.8
-//Extra flat of regeneration while we're in crit
-#define STAMINA_EXTRA_FLAT_IN_CRIT 0.5
-//This increases the multiplier in relation to current stamina (staminaloss/THIS)
-#define STAMINALOSS_REGEN_COEFF 50
-
-//Thresholds for detrimental effects from stamina
-#define STAMINA_THRESHOLD_WEAK 60
-
-#define STAMINA_THRESHOLD_KNOCKDOWN 120
-
-#define STAMINA_THRESHOLD_SOFTCRIT 150
-
-#define STAMINA_THRESHOLD_HARDCRIT 150
 
 //Stamina threshold from which resisting a grab becomes hard
 #define STAMINA_THRESHOLD_HARD_RESIST 80
-
-//A coefficient for doing the change of random CC's on a person (staminaloss/THIS)
-#define STAMINA_CROWD_CONTROL_COEFF 200
 
 //Resting thresholds
 #define STAMINA_THRESHOLD_MEDIUM_GET_UP 50
@@ -53,28 +13,18 @@
 
 //Stamina threshold for attacking slower with items
 #define STAMINA_THRESHOLD_TIRED_CLICK_CD 120
-#define CLICK_CD_MELEE_TIRED 11 //#define CLICK_CD_MELEE 8, so 38% slower
 #define CLICK_CD_RANGE_TIRED 5 //#define CLICK_CD_RANGE 4, so 25% slower
-
-#define STAMINA_THRESHOLD_MESSAGE_ACHE 40
-#define STAMINA_THRESHOLD_MESSAGE_MILD 60
-#define STAMINA_THRESHOLD_MESSAGE_MEDIUM 80
-#define STAMINA_THRESHOLD_MESSAGE_HIGH 100
-#define STAMINA_THRESHOLD_MESSAGE_SEVERE 120
-#define STAMINA_THRESHOLD_MESSAGE_OHGOD 190
-
-#define STAMINA_MESSAGE_COOLDOWN 20 SECONDS
 
 //Grab breakout odds
 #define OVERSIZED_GRAB_RESIST_BONUS 10 /// For those with the oversized trait, they get this.
+
+//Grab breakout bonus for akulas when at 10+ wet_stacks
+#define AKULA_GRAB_RESIST_BONUS 10
 
 // Damage modifiers
 #define OVERSIZED_HARM_DAMAGE_BONUS 5 /// Those with the oversized trait do 5 more damage.
 
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
-
-/mob/living/carbon
-	var/next_stamina_message = 0
 
 //Force mob to rest, does NOT do stamina damage.
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
@@ -222,6 +172,16 @@
 
 /// Attempts to perform a limb dislocation, with the user violently twisting one of target's limbs (as passed in). Only useful for extremities, because only extremities can eat dislocations.
 /datum/species/proc/try_dislocate(mob/living/carbon/human/user, mob/living/carbon/human/target, obj/item/bodypart/affecting)
+	var/datum/wound_pregen_data/pregen_data = GLOB.all_wound_pregen_data[/datum/wound/blunt/bone/moderate]
+	if (!pregen_data)
+		stack_trace("/datum/wound/blunt/bone/moderate has no pregen data!")
+		return FALSE // shouldnt happen but sanity
+
+	if (!pregen_data.can_be_applied_to(affecting, random_roll = FALSE))
+		if (!(affecting.biological_state & BIO_JOINTED))
+			to_chat(user, span_warning("[target]'s [affecting.plaintext_zone] has no joint to dislocate!"))
+		return FALSE
+
 	user.changeNext_move(4 SECONDS)
 	target.visible_message(span_danger("[user.name] twists [target.name]'s [affecting.name] violently!"), \
 			span_userdanger("[user.name] twists your [affecting.name] violently!"), ignored_mobs=user)
@@ -231,7 +191,7 @@
 	target.visible_message(span_danger("[user.name] dislocates [target.name]'s [affecting.name]!"), \
 		span_userdanger("[user.name] dislocates your [affecting.name]!"), ignored_mobs=user)
 	to_chat(user, span_danger("You dislocate [target.name]'s [affecting.name]!"))
-	affecting.force_wound_upwards(/datum/wound/blunt/moderate)
+	affecting.force_wound_upwards(/datum/wound/blunt/bone/moderate)
 	log_combat(user, target, "dislocates", "the [affecting.name]")
 	return TRUE
 

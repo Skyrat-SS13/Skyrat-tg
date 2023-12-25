@@ -8,7 +8,7 @@
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area's electrical systems."
-
+	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "apc0"
 	use_power = NO_POWER_USE
 	req_access = null
@@ -71,6 +71,8 @@
 	var/malfhack = FALSE //New var for my changes to AI malf. --NeoFite
 	///Reference to our ai hacker
 	var/mob/living/silicon/ai/malfai = null //See above --NeoFite
+	///Counter for displaying the hacked overlay to mobs within view
+	var/hacked_flicker_counter = 0
 	///State of the electronics inside (missing, installed, secured)
 	var/has_electronics = APC_ELECTRONICS_MISSING
 	///used for the Blackout malf module
@@ -109,6 +111,22 @@
 	var/datum/alarm_handler/alarm_manager
 	/// Offsets the object by APC_PIXEL_OFFSET (defined in apc_defines.dm) pixels in the direction we want it placed in. This allows the APC to be embedded in a wall, yet still inside an area (like mapping).
 	var/offset_old
+	/// Used for apc helper called cut_AI_wire to make apc's wore responsible for ai connectione mended.
+	var/cut_AI_wire = FALSE
+	/// Used for apc helper called unlocked to make apc unlocked.
+	var/unlocked = FALSE
+	/// Used for apc helper called syndicate_access to make apc's required access syndicate_access.
+	var/syndicate_access = FALSE
+	/// Used for apc helper called away_general_access to make apc's required access away_general_access.
+	var/away_general_access = FALSE
+	/// Used for apc helper called cell_5k to install 5k cell into apc.
+	var/cell_5k = FALSE
+	/// Used for apc helper called cell_10k to install 10k cell into apc.
+	var/cell_10k = FALSE
+	/// Used for apc helper called no_charge to make apc's charge at 0% meter.
+	var/no_charge = FALSE
+	/// Used for apc helper called full_charge to make apc's charge at 100% meter.
+	var/full_charge = FALSE
 	armor_type = /datum/armor/power_apc
 
 /datum/armor/power_apc
@@ -122,12 +140,6 @@
 
 /obj/machinery/power/apc/Initialize(mapload, ndir)
 	. = ..()
-	//Initialize name & access of the apc
-	if(!req_access)
-		req_access = list(ACCESS_ENGINE_EQUIP)
-	if(auto_name)
-		name = "\improper [get_area_name(area, TRUE)] APC"
-
 	//Pixel offset its appearance based on its direction
 	dir = ndir
 	switch(dir)
@@ -144,6 +156,10 @@
 			offset_old = pixel_x
 			pixel_x = -APC_PIXEL_OFFSET
 
+	hud_list = list(
+		MALF_APC_HUD = image(icon = 'icons/mob/huds/hud.dmi', icon_state = "apc_hacked", pixel_x = src.pixel_x, pixel_y = src.pixel_y)
+	)
+
 	//Assign it to its area. If mappers already assigned an area string fast load the area from it else get the current area
 	var/area/our_area = get_area(loc)
 	if(areastring)
@@ -158,8 +174,14 @@
 			log_mapping("Duplicate APC created at [AREACOORD(src)] [area.type]. Original at [AREACOORD(area.apc)] [area.type].")
 		area.apc = src
 
+	//Initialize name & access of the apc. Name requires area to be assigned first
+	if(!req_access)
+		req_access = list(ACCESS_ENGINE_EQUIP)
+	if(auto_name)
+		name = "\improper [get_area_name(area, TRUE)] APC"
+
 	//Initialize its electronics
-	wires = new /datum/wires/apc(src)
+	set_wires(new /datum/wires/apc(src))
 	alarm_manager = new(src)
 	AddElement(/datum/element/atmos_sensitive, mapload)
 	// for apcs created during map load make them fully functional
@@ -185,13 +207,22 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_GREY_TIDE, PROC_REF(grey_tide))
 	update_appearance()
 
-	GLOB.apcs_list += src
+	var/static/list/hovering_mob_typechecks = list(
+		/mob/living/silicon = list(
+			SCREENTIP_CONTEXT_CTRL_LMB = "Toggle power",
+			SCREENTIP_CONTEXT_ALT_LMB = "Toggle equipment power",
+			SCREENTIP_CONTEXT_SHIFT_LMB = "Toggle lighting power",
+			SCREENTIP_CONTEXT_CTRL_SHIFT_LMB = "Toggle environment power",
+		)
+	)
+
+	AddElement(/datum/element/contextual_screentip_bare_hands, rmb_text = "Toggle interface lock")
+	AddElement(/datum/element/contextual_screentip_mob_typechecks, hovering_mob_typechecks)
+	find_and_hang_on_wall()
 
 /obj/machinery/power/apc/Destroy()
-	GLOB.apcs_list -= src
-
 	if(malfai && operating)
-		malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10,0,1000)
+		malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10, 0, 1000)
 	disconnect_from_area()
 	QDEL_NULL(alarm_manager)
 	if(occupier)
@@ -235,18 +266,24 @@
 	area.apc = null
 	area = null
 
-/obj/machinery/power/apc/handle_atom_del(atom/deleting_atom)
-	if(deleting_atom == cell)
+/obj/machinery/power/apc/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == cell)
+		cell.update_appearance()
 		cell = null
 		charging = APC_NOT_CHARGING
 		update_appearance()
 		if(!QDELING(src))
 			SStgui.update_uis(src)
-	return ..()
 
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()
 	if(machine_stat & BROKEN)
+		if(opened != APC_COVER_REMOVED)
+			. += "The cover is broken and can probably be <i>pried</i> off with enough force."
+			return
+		if(terminal && has_electronics)
+			. += "The cover is missing but can be replaced using a new frame."
 		return
 	if(opened)
 		if(has_electronics && terminal)
@@ -262,13 +299,8 @@
 		else
 			. += "The cover is closed."
 
-	. += span_notice("Right-click the APC to [ locked ? "unlock" : "lock"] the interface.")
-
-	if(issilicon(user))
-		. += span_notice("Ctrl-Click the APC to switch the breaker [ operating ? "off" : "on"].")
-
 /obj/machinery/power/apc/deconstruct(disassembled = TRUE)
-	if(flags_1 & NODECONSTRUCT_1)
+	if(obj_flags & NO_DECONSTRUCTION)
 		return
 	if(!(machine_stat & BROKEN))
 		set_broken()
@@ -455,6 +487,11 @@
 		force_update = TRUE
 		return
 
+	if(obj_flags & EMAGGED || malfai)
+		hacked_flicker_counter = hacked_flicker_counter - 1
+		if(hacked_flicker_counter <= 0)
+			flicker_hacked_icon()
+
 	//dont use any power from that channel if we shut that power channel off
 	lastused_light = APC_CHANNEL_IS_ON(lighting) ? area.power_usage[AREA_USAGE_LIGHT] + area.power_usage[AREA_USAGE_STATIC_LIGHT] : 0
 	lastused_equip = APC_CHANNEL_IS_ON(equipment) ? area.power_usage[AREA_USAGE_EQUIP] + area.power_usage[AREA_USAGE_STATIC_EQUIP] : 0
@@ -524,7 +561,7 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 15 && long_term_power < 0) // <15%, turn off lighting & equipment
+		else if(cell.percent() < 7 && long_term_power < 0) // SKYRAT EDIT CHANGE - orig: 15
 			equipment = autoset(equipment, AUTOSET_OFF)
 			lighting = autoset(lighting, AUTOSET_OFF)
 			environ = autoset(environ, AUTOSET_ON)
@@ -532,9 +569,9 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 30 && long_term_power < 0) // <30%, turn off equipment
-			equipment = autoset(equipment, AUTOSET_OFF)
-			lighting = autoset(lighting, AUTOSET_ON)
+		else if(cell.percent() < 17 && long_term_power < 0) // SKYRAT EDIT CHANGE - orig: 30
+			equipment = autoset(equipment, AUTOSET_ON) // SKYRAT EDIT CHANGE - orig: AUTOSET_OFF
+			lighting = autoset(lighting, AUTOSET_OFF) // SKYRAT EDIT CHANGE - orig: AUTOSET_ON
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
@@ -584,6 +621,18 @@
 		else // chargemode off
 			charging = APC_NOT_CHARGING
 			chargecount = 0
+
+		// SKYRAT ADDITION START - CLOCK CULT
+		if(integration_cog)
+			var/power_delta = clamp(cell.charge - 50, 0, 50)
+			GLOB.clock_power = min(round(GLOB.clock_power + (power_delta / 2.5)) , GLOB.max_clock_power) // Will continue to siphon even if full just so the APCs aren't completely silent about having an issue (since power will regularly be full)
+			cell.charge -= power_delta * (integration_cog.set_up ? 1 : 2)
+			add_load(power_delta * (integration_cog.set_up ? 1 : 2)) // Twice the drained power if not set up yet
+			charging = APC_NOT_CHARGING
+			chargecount = 0
+			if(cell.charge <= 50)
+				cell.charge = 0
+		// SKYRAT ADDITION END
 
 	else // no cell, switch everything off
 
@@ -654,6 +703,36 @@
 		lighting = APC_CHANNEL_OFF //Escape (or sneak in) under the cover of darkness
 		update_appearance(UPDATE_ICON)
 		update()
+
+///Used for cell_5k apc helper, which installs 5k cell into apc.
+/obj/machinery/power/apc/proc/install_cell_5k()
+	cell_type = /obj/item/stock_parts/cell/upgraded/plus
+	cell = new cell_type(src)
+
+/// Used for cell_10k apc helper, which installs 10k cell into apc.
+/obj/machinery/power/apc/proc/install_cell_10k()
+	cell_type = /obj/item/stock_parts/cell/high
+	cell = new cell_type(src)
+
+/// Used for unlocked apc helper, which unlocks the apc.
+/obj/machinery/power/apc/proc/unlock()
+	locked = FALSE
+
+/// Used for syndicate_access apc helper, which sets apc's required access to syndicate_access.
+/obj/machinery/power/apc/proc/give_syndicate_access()
+	req_access = list(ACCESS_SYNDICATE)
+
+///Used for away_general_access apc helper, which set apc's required access to away_general_access.
+/obj/machinery/power/apc/proc/give_away_general_access()
+	req_access = list(ACCESS_AWAY_GENERAL)
+
+/// Used for no_charge apc helper, which sets apc charge to 0%.
+/obj/machinery/power/apc/proc/set_no_charge()
+	cell.charge = 0
+
+/// Used for full_charge apc helper, which sets apc charge to 100%.
+/obj/machinery/power/apc/proc/set_full_charge()
+	cell.charge = cell.maxcharge
 
 /*Power module, used for APC construction*/
 /obj/item/electronics/apc

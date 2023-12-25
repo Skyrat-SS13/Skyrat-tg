@@ -38,7 +38,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under/utility_syndicate
 	has_sensor = NO_SENSORS
 
 /*
@@ -69,6 +69,10 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/under/rank/medical/chemist/skirt
+	gets_cropped_on_taurs = FALSE
 
 /*
 *	PARAMEDIC

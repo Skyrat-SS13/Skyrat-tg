@@ -65,10 +65,9 @@
 /obj/item/clothing/accessory/badge/holo
 	name = "holobadge"
 	desc = "This glowing blue badge marks the holder as THE LAW."
-	icon_state = "holobadge"
+	icon_state = "holobadge_lopland"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
-	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/cord
 	icon_state = "holobadge-cord"
@@ -82,13 +81,14 @@
 	return ..()
 
 /obj/item/clothing/accessory/badge/holo/emag_act(remaining_charges, mob/user)
-	if (emagged)
-		to_chat(user, span_danger("\The [src] is already cracked."))
-		return
-	else
-		emagged = TRUE
-		to_chat(user, span_danger("You crack the holobadge security checks."))
-		return TRUE
+	if(obj_flags & EMAGGED)
+		balloon_alert(user, "already cracked")
+		return FALSE
+
+	obj_flags |= EMAGGED
+	balloon_alert(user, "security checks cracked!")
+	to_chat(user, span_danger("You crack the holobadge security checks."))
+	return TRUE
 
 /obj/item/clothing/accessory/badge/holo/attackby(obj/item/object as obj, mob/user as mob)
 	if(istype(object, /obj/item/card/id))
@@ -98,7 +98,7 @@
 		if(istype(object, /obj/item/card/id))
 			id_card = object
 
-		if(ACCESS_BRIG in id_card.access || emagged)
+		if(ACCESS_SECURITY in id_card.access || (obj_flags & EMAGGED))
 			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
 			badge_string = id_card.assignment
@@ -174,3 +174,23 @@
 	var/green_time_remaining = sanitize_integer((PLAYTIME_GREEN - user.client?.get_exp_living(pure_numeric = TRUE) / 60), 0, (PLAYTIME_GREEN / 60))
 	if(green_time_remaining > 0)
 		. += span_nicegreen("It reads '[green_time_remaining] hour[green_time_remaining >= 2 ? "s" : ""].'")
+
+// Pride Pin Over-ride
+/obj/item/clothing/accessory/pride
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+
+GLOBAL_LIST_INIT(pride_pin_reskins, list(
+	"Rainbow Pride" = "pride",
+	"Bisexual Pride" = "pride_bi",
+	"Pansexual Pride" = "pride_pan",
+	"Asexual Pride" = "pride_ace",
+	"Non-binary Pride" = "pride_enby",
+	"Transgender Pride" = "pride_trans",
+	"Intersex Pride" = "pride_intersex",
+	"Lesbian Pride" = "pride_lesbian",
+	"Man-Loving-Man / Gay Pride" = "pride_mlm",
+	"Genderfluid Pride" = "pride_genderfluid",
+	"Genderqueer Pride" = "pride_genderqueer",
+	"Aromantic Pride" = "pride_aromantic",
+))

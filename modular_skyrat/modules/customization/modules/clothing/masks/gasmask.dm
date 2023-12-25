@@ -55,7 +55,6 @@
 	clothing_flags = MASKINTERNALS
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	species_exception = list(/datum/species/golem/bananium)
 	has_fov = FALSE
 	greyscale_config = /datum/greyscale_config/clown_mask
 	greyscale_config_worn = /datum/greyscale_config/clown_mask/worn
@@ -72,7 +71,6 @@
 	inhand_icon_state = null
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	species_exception = list(/datum/species/golem/bananium)
 
 /obj/item/clothing/mask/gas/respirator
 	name = "half mask respirator"
@@ -95,6 +93,19 @@
 	greyscale_config_worn_better_vox = /datum/greyscale_config/respirator/worn/better_vox
 	greyscale_config_worn_vox = /datum/greyscale_config/respirator/worn/vox
 	greyscale_config_worn_teshari = /datum/greyscale_config/respirator/worn/teshari
+
+/obj/item/clothing/mask/gas/respirator/examine(mob/user)
+	. = ..()
+	. += span_notice("You can toggle its ability to muffle your TTS voice with <b>control click</b>.")
+
+/obj/item/clothing/mask/gas/respirator/CtrlClick(mob/living/user)
+	if(!isliving(user))
+		return
+	if(user.get_active_held_item() != src)
+		to_chat(user, span_warning("You must hold the [src] in your hand to do this!"))
+		return
+	voice_filter = voice_filter ? null : initial(voice_filter)
+	to_chat(user, span_notice("Mask voice muffling [voice_filter ? "enabled" : "disabled"]."))
 
 /obj/item/clothing/mask/gas/clown_hat/vox
 	desc = "A true prankster's facial attire. A clown is incomplete without his wig and mask. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."

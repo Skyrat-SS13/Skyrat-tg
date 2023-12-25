@@ -4,10 +4,6 @@
 # In the event that multiple org members are to be informed of changes
 # to the same file or dir, add them to the end under Multiple Owners
 
-# GoldenAlpharex
-/modular_skyrat/ @GoldenAlpharex
-/tools/ @GoldenAlpharex
-
 # Jake Park
 /modular_skyrat/modules/apocolypse_of_scythes/ @jjpark-kb
 /modular_skyrat/modules/ash_chemical_centrifuge/ @jjpark-kb
@@ -29,17 +25,21 @@
 /modular_skyrat/modules/mapping @Jolly-66
 /tools/UpdatePaths @Jolly-66
 
-# Zonepace
-/modular_skyrat/master_files/code/modules/client/preferences/headshot.dm @Zonespace27
-/modular_skyrat/modules/contractor/ @Zonespace27
-/modular_skyrat/modules/lorecaster/ @Zonespace27
-
-# Tastyfish
-/code/modules/mob/living/carbon/human/human_update_icons.dm @Tastyfish
-/modular_skyrat/modules/customization/modules/mob/living/carbon/human/custom_bodytype.dm @Tastyfish
+# LT3
+/code/modules/transport/ @lessthnthree
+/modular_skyrat/master_files/code/controllers/subsystem/ @lessthnthree
+/modular_skyrat/modules/advanced_engineering/ @lessthnthree
+/modular_skyrat/modules/airlock_override/ @lessthnthree
+/modular_skyrat/modules/alerts/ @lessthnthree
+/modular_skyrat/modules/cme/ @lessthnthree
+/modular_skyrat/modules/events/ @lessthnthree
+/modular_skyrat/modules/ices_events/ @lessthnthree
 
 # Multiple Owners
 
 # Maptainers
-/_maps/ @Jolly-66 @KathrinBailey @Paxilmaniac
+/_maps/ @Jolly-66 @KathrinBailey
 
+# Expensive files that touching basically always cause performance problems
+## Init times
+**/*_EXPENSIVE.dm @Useroth

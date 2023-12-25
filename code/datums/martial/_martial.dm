@@ -5,7 +5,6 @@
 	var/max_streak_length = 6
 	var/current_target
 	var/datum/martial_art/base // The permanent style. This will be null unless the martial art is temporary
-	var/block_chance = 0 //Chance to block melee attacks using items while on throw mode.
 	var/help_verb
 	var/allow_temp_override = TRUE //if this martial art can be overridden by temporary martial arts
 	var/smashes_tables = FALSE //If the martial art smashes tables when performing table slams and head smashes
@@ -16,24 +15,34 @@
 	/// If set to true this style allows you to punch people despite being a pacifist (for instance Boxing, which does no damage)
 	var/pacifist_style = FALSE
 
-/datum/martial_art/proc/help_act(mob/living/A, mob/living/D)
+/datum/martial_art/serialize_list(list/options, list/semvers)
+	. = ..()
+
+	.["name"] = name
+	.["id"] = id
+	.["pacifist_style"] = pacifist_style
+
+	SET_SERIALIZATION_SEMVER(semvers, "1.0.0")
+	return .
+
+/datum/martial_art/proc/help_act(mob/living/attacker, mob/living/defender)
 	return MARTIAL_ATTACK_INVALID
 
-/datum/martial_art/proc/disarm_act(mob/living/A, mob/living/D)
+/datum/martial_art/proc/disarm_act(mob/living/attacker, mob/living/defender)
 	return MARTIAL_ATTACK_INVALID
 
-/datum/martial_art/proc/harm_act(mob/living/A, mob/living/D)
+/datum/martial_art/proc/harm_act(mob/living/attacker, mob/living/defender)
 	return MARTIAL_ATTACK_INVALID
 
-/datum/martial_art/proc/grab_act(mob/living/A, mob/living/D)
+/datum/martial_art/proc/grab_act(mob/living/attacker, mob/living/defender)
 	return MARTIAL_ATTACK_INVALID
 
 /datum/martial_art/proc/can_use(mob/living/L)
 	return TRUE
 
-/datum/martial_art/proc/add_to_streak(element, mob/living/D)
-	if(D != current_target)
-		reset_streak(D)
+/datum/martial_art/proc/add_to_streak(element, mob/living/defender)
+	if(defender != current_target)
+		reset_streak(defender)
 	streak = streak+element
 	if(length(streak) > max_streak_length)
 		streak = copytext(streak, 1 + length(streak[1]))
@@ -91,7 +100,3 @@
 	if(help_verb)
 		remove_verb(holder_living, help_verb)
 	return
-
-///Gets called when a projectile hits the owner. Returning anything other than BULLET_ACT_HIT will stop the projectile from hitting the mob.
-/datum/martial_art/proc/on_projectile_hit(mob/living/A, obj/projectile/P, def_zone)
-	return BULLET_ACT_HIT

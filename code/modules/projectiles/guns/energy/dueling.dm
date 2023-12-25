@@ -154,6 +154,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	ammo_type = list(/obj/item/ammo_casing/energy/duel)
 	automatic_charge_overlays = FALSE
+	gun_flags = TURRET_INCOMPATIBLE
 	var/unlocked = FALSE
 	var/setting = DUEL_SETTING_A
 	var/datum/duel/duel
@@ -291,7 +292,7 @@
 //Casing
 
 /obj/item/ammo_casing/energy/duel
-	e_cost = 0
+	e_cost = 0 // Can't use the macro
 	projectile_type = /obj/projectile/energy/duel
 	var/setting
 
@@ -326,7 +327,7 @@
 		if(DUEL_SETTING_C)
 			color = "blue"
 
-/obj/projectile/energy/duel/on_hit(atom/target, blocked)
+/obj/projectile/energy/duel/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/turf/T = get_turf(target)
 	var/obj/effect/temp_visual/dueling_chaff/C = locate() in T

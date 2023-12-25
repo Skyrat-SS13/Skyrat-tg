@@ -1,6 +1,3 @@
-/obj/item/paper/contractor_guide
-	name = "Contractor Guide"
-
 /obj/item/paper/contractor_guide/Initialize(mapload)
 	default_raw_text = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
 			this kit will provide you contracts to take on for TC payments.</p>
@@ -57,7 +54,6 @@
 	name = "black fulton extraction pack"
 	icon = 'modular_skyrat/modules/contractor/icons/fulton.dmi'
 	can_use_indoors = TRUE
-	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	special_desc = "A modified fulton pack that can be used indoors thanks to Bluespace technology. Favored by Syndicate Contractors."
 
 
@@ -72,8 +68,8 @@
 			to any form you need for the moment. The cigarettes are a special blend - it'll heal your injuries slowly overtime.</p>
 
 			<p>Your standard issue contractor baton can be found in the baton holster MODSuit module, it hits harder than the ones you might be used to,
-			and will likely be your go to weapon for kidnapping your targets. We took the liberty of fully upgrading it beforehand, so don't worry about that.
-			The three additional items have been randomly selected from what we had available. We hope they're useful to you for your mission.</p>
+			and will likely be your go to weapon for kidnapping your targets.The three additional items have been randomly selected from what we had available.
+			We hope they're useful to you for your mission.</p>
 
 			<p>The contractor hub, available at the top right of the uplink, will provide you unique items and abilities. These are bought using Contractor Rep,
 			with two Rep being provided each time you complete a contract.</p>

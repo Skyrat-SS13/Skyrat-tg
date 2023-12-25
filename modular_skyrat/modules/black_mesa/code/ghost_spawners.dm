@@ -12,7 +12,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/uncommon, source = LANGUAGE_SPAWNER)
 
 /datum/outfit/science_team
 	name = "Scientist"
@@ -44,7 +44,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/uncommon, source = LANGUAGE_SPAWNER)
 
 /datum/outfit/security_guard
 	name = "Security Guard"
@@ -56,9 +56,9 @@
 	belt = /obj/item/storage/belt/security/full
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/radio,
-							/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
-							/obj/item/ammo_box/magazine/multi_sprite/ladon,
-							/obj/item/ammo_box/magazine/multi_sprite/ladon,
+							/obj/item/gun/ballistic/automatic/pistol/sol,
+							/obj/item/ammo_box/magazine/c35sol_pistol,
+							/obj/item/ammo_box/magazine/c35sol_pistol,
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
@@ -86,7 +86,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/uncommon, source = LANGUAGE_SPAWNER)
 
 /obj/item/clothing/under/rank/security/officer/hecu //Subtype of security for armor (and because I dont want to repath it)
 	name = "urban camouflage BDU"
@@ -181,9 +181,9 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
-	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_SPAWNER)
-	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/uncommon, source = LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/panslavic, source = LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/yangyu, source = LANGUAGE_SPAWNER)
 
 /datum/outfit/hecu/leader
 	name = "HECU Captain"

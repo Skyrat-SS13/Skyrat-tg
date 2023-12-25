@@ -81,7 +81,7 @@
 		set_light_on(TRUE)
 	regenerate_icons()
 
-/mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/pet/poppy/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(client || stat)
 		return
 
@@ -92,7 +92,7 @@
 		near_engine = FALSE
 		panic()
 
-	if(!DT_PROB(0.5, delta_time))
+	if(!SPT_PROB(0.5, seconds_per_tick))
 		return
 	if(!resting)
 		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))
@@ -119,7 +119,11 @@
 	do_jitter_animation(60)
 	manual_emote("'s fur stands up, [src.p_their()] body trembling...")
 
-	notify_ghosts("[src] was startled by the supermatter!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Safety Inspection!")
+	notify_ghosts("[src] was startled by the supermatter!",
+		source = src,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Safety Inspection!",
+	)
 	addtimer(CALLBACK(src, PROC_REF(calm_down)), 60 SECONDS)
 
 /mob/living/simple_animal/pet/poppy/proc/calm_down()

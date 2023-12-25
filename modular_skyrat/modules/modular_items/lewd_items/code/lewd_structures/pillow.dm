@@ -172,7 +172,7 @@
 	var/color_changed = FALSE
 	var/form_changed = FALSE
 
-	buildstacktype = /obj/item/stack/sheet/cloth
+	build_stack_type = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/pillow_tiny/Initialize(mapload)
 	.=..()
@@ -398,7 +398,7 @@
 	var/pillow2_form_changed = FALSE
 	var/pillow3_form_changed = FALSE
 
-	buildstacktype = /obj/item/stack/sheet/cloth
+	build_stack_type = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/pillow_large/Initialize(mapload)
 	update_icon()

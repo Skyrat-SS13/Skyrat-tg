@@ -160,7 +160,7 @@
 
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 
-	if(reagent_forging)
+	if(reagent_forging && (is_species(user, /datum/species/lizard/ashwalker) || is_species(user, /datum/species/human/felinid/primitive)))
 		. += span_warning("[src] has a fine gold trim, it is ready to imbue chemicals into reagent objects.")
 
 	return .
@@ -266,7 +266,7 @@
 	var/obj/item/stack/sheet/mineral/coal/spawn_coal = new(get_turf(src))
 	spawn_coal.name = "charcoal"
 
-/obj/structure/reagent_forge/process(delta_time)
+/obj/structure/reagent_forge/process(seconds_per_tick)
 	if(!COOLDOWN_FINISHED(src, forging_cooldown))
 		return
 
@@ -285,10 +285,10 @@
 		set_smoke_state(SMOKE_STATE_NONE)
 		return
 
-	handle_baking_things(delta_time)
+	handle_baking_things(seconds_per_tick)
 
 /// Sends signals to bake and items on the used tray, setting the smoke state of the forge according to the most cooked item in it
-/obj/structure/reagent_forge/proc/handle_baking_things(delta_time)
+/obj/structure/reagent_forge/proc/handle_baking_things(seconds_per_tick)
 	if(forge_temperature < MIN_FORGE_TEMP) // If we are below minimum forge temp, don't continue on to cooking
 		return
 
@@ -296,7 +296,7 @@
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item as anything in used_tray.contents)
 
-		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PROCESS, src, delta_time)
+		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PROCESS, src, seconds_per_tick)
 
 		if(signal_result & COMPONENT_HANDLED_BAKING)
 			if(signal_result & COMPONENT_BAKING_GOOD_RESULT && worst_cooked_food_state < SMOKE_STATE_GOOD)
@@ -308,7 +308,7 @@
 		worst_cooked_food_state = SMOKE_STATE_BAD
 		baked_item.fire_act(1000) // Overcooked food really does burn, hot hot hot!
 
-		if(DT_PROB(10, delta_time))
+		if(SPT_PROB(10, seconds_per_tick))
 			visible_message(span_danger("You smell a burnt smell coming from [src]!")) // Give indication that something is burning in the oven
 	set_smoke_state(worst_cooked_food_state)
 
@@ -388,27 +388,30 @@
 			if(!forced)
 				to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
 			minimum_target_temperature = 25 // Will allow quicker reheating from having no fuel
-			temperature_loss_reduction = 2
+			temperature_loss_reduction = 3
 			forge_level = FORGE_LEVEL_JOURNEYMAN
 
 		if(SKILL_LEVEL_EXPERT)
 			if(!forced)
-				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
-			create_reagent_forge()
-			temperature_loss_reduction = 3
+				to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
+			temperature_loss_reduction = 4
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_EXPERT
 
 		if(SKILL_LEVEL_MASTER)
 			if(!forced)
-				to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
-			temperature_loss_reduction = 4
+				to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
+			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_MASTER
 
 		if(SKILL_LEVEL_LEGENDARY)
 			if(!forced)
-				to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
+				if(is_species(user, /datum/species/lizard/ashwalker) || is_species(user, /datum/species/human/felinid/primitive))
+					to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
+					create_reagent_forge()
+				if(forge_level == FORGE_LEVEL_MASTER)
+					to_chat(user, span_warning("It is impossible to further improve the forge!"))
 			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			minimum_target_temperature = 25 // This won't matter except in a few cases here, but we still need to cover those few cases
 			forge_level = FORGE_LEVEL_LEGENDARY
@@ -468,7 +471,7 @@
 
 	if(!user.transferItemToLoc(tray, src, silent = FALSE))
 		return
-		
+
 	// need to send the right signal for each item in the tray
 	for(var/obj/item/baked_item in tray.contents)
 		SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PLACED_IN, src, user)
@@ -557,6 +560,16 @@
 
 /// Handles weapon reagent imbuing
 /obj/structure/reagent_forge/proc/handle_weapon_imbue(obj/attacking_item, mob/living/user)
+	//This code will refuse all non-ashwalkers & non-icecats from imbuing
+	if(!ishuman(user))
+		to_chat(user, span_danger("It is impossible for you to imbue!")) //maybe remove (ashwalkers & icecats only) after some time
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	if(!is_species(human_user, /datum/species/lizard/ashwalker) && !is_species(human_user, /datum/species/human/felinid/primitive))
+		to_chat(user, span_danger("It is impossible for you to imbue!")) //maybe remove (ashwalkers & icecats only) after some time
+		return
+
 	in_use = TRUE
 	balloon_alert_to_viewers("imbuing...")
 
@@ -577,12 +590,12 @@
 
 	for(var/datum/reagent/weapon_reagent as anything in attacking_weapon.reagents.reagent_list)
 		if(weapon_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
-			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
+			attacking_weapon.reagents.remove_reagent(weapon_reagent.type)
 			continue
 
 		if(is_type_in_typecache(weapon_reagent, disallowed_reagents))
 			balloon_alert(user, "cannot imbue with [weapon_reagent.name]")
-			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
+			attacking_weapon.reagents.remove_reagent(weapon_reagent.type, include_subtypes = TRUE)
 			continue
 
 		weapon_component.imbued_reagent += weapon_reagent.type
@@ -597,6 +610,16 @@
 
 /// Handles clothing imbuing, extremely similar to weapon imbuing but not in the same proc because of how uhh... goofy the way this has to be done is
 /obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
+	//This code will refuse all non-ashwalkers & non-icecats from imbuing
+	if(!ishuman(user))
+		to_chat(user, span_danger("It is impossible for you to imbue!")) //maybe remove (ashwalkers & icecats only) after some time
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	if(!is_species(human_user, /datum/species/lizard/ashwalker) && !is_species(human_user, /datum/species/human/felinid/primitive))
+		to_chat(user, span_danger("It is impossible for you to imbue!")) //maybe remove (ashwalkers & icecats only) after some time
+		return
+
 	in_use = TRUE
 	balloon_alert_to_viewers("imbuing...")
 
@@ -617,12 +640,12 @@
 
 	for(var/datum/reagent/clothing_reagent as anything in attacking_clothing.reagents.reagent_list)
 		if(clothing_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
-			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
+			attacking_clothing.reagents.remove_reagent(clothing_reagent.type, include_subtypes = TRUE)
 			continue
 
 		if(is_type_in_typecache(clothing_reagent, disallowed_reagents))
 			balloon_alert(user, "cannot imbue with [clothing_reagent.name]")
-			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
+			attacking_clothing.reagents.remove_reagent(clothing_reagent.type, include_subtypes = TRUE)
 			continue
 
 		clothing_component.imbued_reagent += clothing_reagent.type
@@ -685,6 +708,7 @@
 	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
+	spawned_glass.total_time = glassblowing_amount
 
 /// Handles creating molten glass from a metal cup filled with sand
 /obj/structure/reagent_forge/proc/handle_metal_cup_melting(obj/attacking_item, mob/living/user)
@@ -714,11 +738,12 @@
 	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
+	spawned_glass.total_time = glassblowing_amount
 
 /obj/structure/reagent_forge/billow_act(mob/living/user, obj/item/tool)
 	if(in_use) // Preventing billow use if the forge is in use to prevent spam
 		fail_message(user, "forge busy")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 	var/obj/item/forging/forge_item = tool
@@ -727,25 +752,25 @@
 
 	if(!forge_fuel_strong && !forge_fuel_weak)
 		fail_message(user, "no fuel in [src]")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(forge_temperature >= MAX_FORGE_TEMP)
 		fail_message(user, "[src] cannot heat further")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	balloon_alert_to_viewers("billowing...")
 
 	while(forge_temperature < 91)
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			balloon_alert_to_viewers("stopped billowing")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		forge_temperature += 10
 		user.mind.adjust_experience(/datum/skill/smithing, 5) // Billowing, like fueling, gives you some experience in forging
 
 	in_use = FALSE
 	balloon_alert(user, "successfully heated [src]")
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_forge/tong_act(mob/living/user, obj/item/tool)
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
@@ -753,7 +778,7 @@
 
 	if(in_use || forge_item.in_use)
 		fail_message(user, "forge busy")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	in_use = TRUE
 	forge_item.in_use = TRUE
@@ -761,7 +786,7 @@
 	if(forge_temperature < MIN_FORGE_TEMP)
 		fail_message(user, "forge too cool")
 		forge_item.in_use = FALSE
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	// Here we check the item used on us (tongs) for an incomplete forge item of some kind to heat
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in forge_item.contents
@@ -771,14 +796,14 @@
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			balloon_alert_to_viewers("stopped heating [search_incomplete]")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		COOLDOWN_START(search_incomplete, heating_remainder, FORGE_HEATING_DURATION)
 		in_use = FALSE
 		forge_item.in_use = FALSE
 		user.mind.adjust_experience(/datum/skill/smithing, 5) // Heating up forge items grants some experience
 		balloon_alert(user, "successfully heated [search_incomplete]")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	// Here we check the item used on us (tongs) for a stack of some kind to create an object from
 	var/obj/item/stack/search_stack = locate(/obj/item/stack) in forge_item.contents
@@ -787,29 +812,29 @@
 		if(!user_choice)
 			fail_message(user, "nothing chosen")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		// Sets up a list of the materials to give to the item later
 		var/list/material_list = list()
 
 		if(search_stack.material_type)
-			material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
+			material_list[GET_MATERIAL_REF(search_stack.material_type)] = SHEET_MATERIAL_AMOUNT
 
 		else
 			for(var/material as anything in search_stack.custom_materials)
-				material_list[material] = MINERAL_MATERIAL_AMOUNT
+				material_list[material] = SHEET_MATERIAL_AMOUNT
 
 		if(!search_stack.use(1))
 			fail_message(user, "not enough of [search_stack]")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		balloon_alert_to_viewers("heating [search_stack]")
 
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			balloon_alert_to_viewers("stopped heating [search_stack]")
 			forge_item.in_use = FALSE
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		var/spawn_item = choice_list[user_choice]
 		var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
@@ -825,11 +850,11 @@
 
 		if(!search_stack)
 			forge_item.icon_state = "tong_empty"
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	in_use = FALSE
 	forge_item.in_use = FALSE
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_forge/blowrod_act(mob/living/user, obj/item/tool)
 	var/obj/item/glassblowing/blowing_rod/blowing_item = tool
@@ -838,34 +863,35 @@
 
 	if(in_use)
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 	in_use = TRUE
 
 	if(forge_temperature < MIN_FORGE_TEMP)
 		fail_message(user, "The temperature is not hot enough to start heating [blowing_item].")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
 	if(!find_glass)
 		fail_message(user, "[blowing_item] does not have any glass to heat up.")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(!COOLDOWN_FINISHED(find_glass, remaining_heat))
 		fail_message(user, "[find_glass] is still has remaining heat.")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	to_chat(user, span_notice("You begin heating up [blowing_item]."))
 
 	if(!do_after(user, glassblowing_speed, target = src))
 		fail_message(user, "[blowing_item] is interrupted in its heating process.")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
+	find_glass.total_time = glassblowing_amount
 	to_chat(user, span_notice("You finish heating up [blowing_item]."))
 	user.mind.adjust_experience(/datum/skill/smithing, 5)
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	in_use = FALSE
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_forge/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
@@ -876,8 +902,27 @@
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 
-/obj/structure/reagent_forge/ready
+/obj/structure/reagent_forge/tier2
+	forge_level = FORGE_LEVEL_NOVICE
+
+/obj/structure/reagent_forge/tier3
+	forge_level = FORGE_LEVEL_APPRENTICE
+
+/obj/structure/reagent_forge/tier4
+	forge_level = FORGE_LEVEL_JOURNEYMAN
+
+/obj/structure/reagent_forge/tier5
+	forge_level = FORGE_LEVEL_EXPERT
+
+/obj/structure/reagent_forge/tier6
+	forge_level = FORGE_LEVEL_MASTER
+
+/obj/structure/reagent_forge/tier7
 	forge_level = FORGE_LEVEL_LEGENDARY
+
+/obj/structure/reagent_forge/tier7/imbuing/Initialize(mapload)
+	. = ..()
+	create_reagent_forge()
 
 /particles/smoke/mild
 	spawning = 1

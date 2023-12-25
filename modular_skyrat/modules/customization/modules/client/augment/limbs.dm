@@ -10,15 +10,16 @@
 		var/obj/item/bodypart/new_limb = path
 		var/body_zone = initial(new_limb.body_zone)
 		var/obj/item/bodypart/old_limb = augmented.get_bodypart(body_zone)
+
+		old_limb.limb_id = initial(new_limb.limb_id)
+		old_limb.base_limb_id = initial(new_limb.limb_id)
+		old_limb.is_dimorphic = initial(new_limb.is_dimorphic)
+
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
 			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
-			old_limb.limb_id = initial(new_limb.limb_id)
-			old_limb.base_limb_id = initial(new_limb.limb_id)
 			old_limb.set_icon_static(chosen_style)
 			old_limb.current_style = prefs.augment_limb_styles[slot]
 		else
-			old_limb.limb_id = initial(new_limb.limb_id)
-			old_limb.base_limb_id = initial(new_limb.limb_id)
 			old_limb.set_icon_static(initial(new_limb.icon))
 		old_limb.should_draw_greyscale = FALSE
 
@@ -67,6 +68,12 @@
 	path = /obj/item/bodypart/arm/left/plasmaman
 	uses_robotic_styles = FALSE
 
+/datum/augment_item/limb/l_arm/self_destruct
+	name = "No Left Arm"
+	path = /obj/item/bodypart/arm/left/self_destruct
+	cost = -3
+	uses_robotic_styles = FALSE
+
 //RIGHT ARMS
 /datum/augment_item/limb/r_arm
 	slot = AUGMENT_SLOT_R_ARM
@@ -83,6 +90,12 @@
 /datum/augment_item/limb/r_arm/plasmaman
 	name = "Plasmaman right arm"
 	path = /obj/item/bodypart/arm/right/plasmaman
+	uses_robotic_styles = FALSE
+
+/datum/augment_item/limb/r_arm/self_destruct
+	name = "No Right Arm"
+	path = /obj/item/bodypart/arm/right/self_destruct
+	cost = -3
 	uses_robotic_styles = FALSE
 
 //LEFT LEGS
@@ -103,6 +116,12 @@
 	path = /obj/item/bodypart/leg/left/plasmaman
 	uses_robotic_styles = FALSE
 
+/datum/augment_item/limb/l_leg/self_destruct
+	name = "No Left Leg"
+	path = /obj/item/bodypart/leg/left/self_destruct
+	cost = -3
+	uses_robotic_styles = FALSE
+
 //RIGHT LEGS
 /datum/augment_item/limb/r_leg
 	slot = AUGMENT_SLOT_R_LEG
@@ -119,4 +138,10 @@
 /datum/augment_item/limb/r_leg/plasmaman
 	name = "Plasmaman right leg"
 	path = /obj/item/bodypart/leg/right/plasmaman
+	uses_robotic_styles = FALSE
+
+/datum/augment_item/limb/r_leg/self_destruct
+	name = "No Right Leg"
+	path = /obj/item/bodypart/leg/right/self_destruct
+	cost = -3
 	uses_robotic_styles = FALSE

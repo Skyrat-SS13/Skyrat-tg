@@ -7,7 +7,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
@@ -239,7 +239,7 @@
 	add_fingerprint(user)
 	update_icon_state()
 	update_icon()
-	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+	play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
 //Place the mob in the desired position after buckling
 /obj/structure/chair/x_stand/post_buckle_mob(mob/living/affected_mob)

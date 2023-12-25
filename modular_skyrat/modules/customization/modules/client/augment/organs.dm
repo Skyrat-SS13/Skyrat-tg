@@ -1,11 +1,14 @@
 /datum/augment_item/organ
 	category = AUGMENT_CATEGORY_ORGANS
 
-/datum/augment_item/organ/apply(mob/living/carbon/human/H, character_setup = FALSE, datum/preferences/prefs)
+/datum/augment_item/organ/apply(mob/living/carbon/human/human_holder, character_setup = FALSE, datum/preferences/prefs)
 	if(character_setup)
 		return
+
+	var/obj/item/organ/organ_path = path // cast this to an organ so we can get the slot from it using initial()
 	var/obj/item/organ/new_organ = new path()
-	new_organ.Insert(H,FALSE,FALSE)
+	new_organ.copy_traits_from(human_holder.get_organ_slot(initial(organ_path.slot)))
+	new_organ.Insert(human_holder, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
 //HEARTS
 /datum/augment_item/organ/heart
@@ -68,9 +71,19 @@
 	name = "Cybernetic eyes"
 	path = /obj/item/organ/internal/eyes/robotic
 
+/datum/augment_item/organ/eyes/cybernetic/moth
+	name = "Cybernetic moth eyes"
+	path = /obj/item/organ/internal/eyes/robotic/moth
+
 /datum/augment_item/organ/eyes/highlumi
 	name = "High-luminosity eyes"
 	path = /obj/item/organ/internal/eyes/robotic/glow
+	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
+	cost = 1
+
+/datum/augment_item/organ/eyes/highlumi/moth
+	name = "High Luminosity Moth Eyes"
+	path = /obj/item/organ/internal/eyes/robotic/glow/moth
 	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 	cost = 1
 
@@ -86,9 +99,17 @@
 	name = "Robotic voicebox"
 	path = /obj/item/organ/internal/tongue/robot
 
+/datum/augment_item/organ/tongue/robo/forked
+	name = "Robotic lizard voicebox"
+	path = /obj/item/organ/internal/tongue/lizard/robot
+
 /datum/augment_item/organ/tongue/cybernetic
 	name = "Cybernetic tongue"
 	path = /obj/item/organ/internal/tongue/cybernetic
+
+/datum/augment_item/organ/tongue/cybernetic/forked
+	name = "Forked cybernetic tongue"
+	path = /obj/item/organ/internal/tongue/lizard/cybernetic
 
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"

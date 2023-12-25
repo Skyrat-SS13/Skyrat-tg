@@ -143,8 +143,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	state_open = TRUE
 
 	var/open_icon_state = "cryopod-open"
-	var/on_store_message = "has entered long-term storage."
-	var/on_store_name = "Cryogenic Oversight"
 	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
 	var/allow_timer_override = FALSE
 	/// Minimum time for someone to be SSD before another player can cryo them.
@@ -224,7 +222,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
 
 		var/mob/living/carbon/human/human_occupant = occupant
-		if(human_occupant && human_occupant.mind)
+		if(istype(human_occupant) && human_occupant.mind)
 			human_occupant.save_individual_persistence(stored_ckey)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
@@ -281,11 +279,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				if(!(affected_contract.contract == objective))
 					continue
 				var/contract_id = affected_contract.id
-				affected_contractor_hub.create_single_contract(objective.owner, affected_contract.payout_type)
 				affected_contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
 				if (affected_contractor_hub.current_contract == objective)
 					affected_contractor_hub.current_contract = null
-				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
+				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract aborted.")]")
 				break
 		else if(istype(objective.target) && objective.target == mob_occupant.mind)
 			var/old_target = objective.target
@@ -316,12 +313,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					to_chat(objective.owner.current, "<BR>[span_userdanger("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
 					update_objective.owner.announce_objectives()
 			qdel(objective)
-
-/obj/machinery/cryopod/proc/should_preserve_item(obj/item/item)
-	for(var/datum/objective_item/steal/possible_item in GLOB.possible_items)
-		if(istype(item, possible_item.targetitem))
-			return TRUE
-	return FALSE
 
 /// This function can not be undone; do not call this unless you are sure.
 /// Handles despawning the player.
@@ -401,81 +392,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	open_machine()
 	name = initial(name)
 
-/// It's time to kill GLOB
-/**
- * Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
- * Also handles the selection of a holy successor from existing crew if multiple chaplains are on station.
- */
-/obj/machinery/cryopod/proc/reset_religion()
-
-	// remember what the previous sect and favor values were so they can be restored if the same one gets chosen
-	GLOB.prev_favor = GLOB.religious_sect.favor
-	GLOB.prev_sect_type = GLOB.religious_sect.type
-
- // set the altar references to the old religious_sect to null
-	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)
-		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
-		altar.sect_to_altar = null
-
-	QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
-
-	// set the rest of the global vars to null for the new chaplain
-	GLOB.religion = null
-	GLOB.deity = null
-	GLOB.bible_name = null
-	GLOB.bible_icon_state = null
-	GLOB.bible_inhand_icon_state = null
-	GLOB.holy_armor_type = null
-	GLOB.holy_weapon_type = null
-
-	// now try to pick the successor from existing crew, or leave it empty if no valid candidates found
-	var/mob/living/carbon/human/chosen_successor = pick_holy_successor()
-	GLOB.current_highpriest = chosen_successor ? WEAKREF(chosen_successor) : null // if a successor is already on the station then pick the first in line
-
-/**
- * Chooses a valid holy successor from GLOB.holy_successor weakref list and sets things up for them to be the new high priest
- *
- * Returns the chosen holy successor, or null if no valid successor
- */
-/obj/machinery/cryopod/proc/pick_holy_successor()
-	for(var/datum/weakref/successor as anything in GLOB.holy_successors)
-		var/mob/living/carbon/human/actual_successor = successor.resolve()
-		if(!actual_successor)
-			GLOB.holy_successors -= successor
-			continue
-		if(!actual_successor.key || !actual_successor.mind)
-			continue
-
-		// we have a match! set the religious globals up properly and make the candidate high priest
-		GLOB.holy_successors -= successor
-		GLOB.religion = actual_successor.client?.prefs?.read_preference(/datum/preference/name/religion) || DEFAULT_RELIGION
-		GLOB.bible_name = actual_successor.client?.prefs?.read_preference(/datum/preference/name/deity) || DEFAULT_DEITY
-		GLOB.deity = actual_successor.client?.prefs?.read_preference(/datum/preference/name/bible) || DEFAULT_BIBLE
-
-		actual_successor.mind.holy_role = HOLY_ROLE_HIGHPRIEST
-
-		to_chat(actual_successor, span_warning("You have been chosen as the successor to the previous high priest. Visit a holy altar to declare the station's religion!"))
-
-		return actual_successor
-
-	return null
-
-/**
- * Create a list of the holy successors mobs from GLOB.holy_successors weakref list
- *
- * Returns the list of valid holy successors
- */
-/obj/machinery/cryopod/proc/list_holy_successors()
-	var/list/holy_successors = list()
-	for(var/datum/weakref/successor as anything in GLOB.holy_successors)
-		var/mob/living/carbon/human/actual_successor = successor.resolve()
-		if(!actual_successor)
-			GLOB.holy_successors -= successor
-			continue
-		holy_successors += actual_successor
-
-	return holy_successors
-
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
 		return
@@ -491,7 +407,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 // Allows admins to enable players to override SSD Time check.
 	if(allow_timer_override)
 		if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
-			to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+			to_chat(user, span_danger("You put [target] into [src]. [target.p_Theyre()] in the cryopod."))
 			log_admin("[key_name(user)] has put [key_name(target)] into a overridden stasis pod.")
 			message_admins("[key_name(user)] has put [key_name(target)] into a overridden stasis pod. [ADMIN_JMP(src)]")
 
@@ -512,7 +428,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
 					if(target.mind.assigned_role.req_admin_notify)
 						tgui_alert(user, "They are an important role! [AHELP_FIRST_MESSAGE]")
-					to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+					to_chat(user, span_danger("You put [target] into [src]. [target.p_Theyre()] in the cryopod."))
 					log_admin("[key_name(user)] has put [key_name(target)] into a stasis pod.")
 					message_admins("[key_name(user)] has put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 
@@ -522,9 +438,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					name = "[name] ([target.name])"
 
 		else if(iscyborg(target))
-			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] online."))
+			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_Theyre()] online."))
 		else
-			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
+			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_Theyre()] conscious."))
 		return
 
 	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
@@ -614,10 +530,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/mob/living/spawned_mob = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
-	// DS2 ranks can vary from spawner to spawner in spite of the spawner name being the same and should use outfit.name instead.
-	if(istype(src, /obj/effect/mob_spawn/ghost_role/human/ds2))
-		name = initial(outfit.name)
-	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = name)))
+
+	var/alt_name = get_spawner_outfit_name()
+	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = alt_name ? alt_name : name)))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
 
@@ -633,6 +548,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 			return console
 
 	return
+
+/**
+ * Returns the the alt name for this spawner, which is 'outfit.name'.
+ *
+ * For when you might want to use that for things instead of the name var.
+ * example: the DS2 spawners, which have a number of different types of spawner with the same name.
+ */
+/obj/effect/mob_spawn/ghost_role/proc/get_spawner_outfit_name()
+	if(use_outfit_name)
+		return initial(outfit.name)
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
 	computer_area = /area/ruin/syndicate_lava_base/dormitories

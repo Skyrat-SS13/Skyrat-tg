@@ -9,16 +9,8 @@ MODULE ID: EVENT
 Changes to the existing TG events, aswell our own events
 
 ### TG Proc Changes:
-- OVERRIDE: modular_skyrat/modules/events/code/modules/events/meteor_wave.dm > /datum/round_event/meteor_wave/setup()
-- code/modules/events/meteor_wave.dm > /datum/round_event/meteor_wave/announce()
 
 ### Defines:
-
-- code/modules/events/brain_trauma.dm > /datum/round_event_control/brain_trauma > max_occurences = 0
-- code/modules/events/wisdomcow.dm  > /datum/round_event_control/wisdomcow > max_occurences = 0
-- code/modules/events/pirates.dm > /datum/round_event_control/pirates > weight = 2
-- code/modules/events/meteor_wave.dm > /datum/round_event/meteor_wave/threatening > weight = 2
-- code/modules/events/meteor_wave.dm > /datum/round_event/meteor_wave/catastrophic > weight = 2
 
 ### Master file additions
 

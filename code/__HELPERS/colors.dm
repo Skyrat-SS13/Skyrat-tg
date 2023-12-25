@@ -17,6 +17,18 @@
 
 	return final_color
 
+/// Given a color in the format of "#RRGGBB" or "#RRGGBBAA", gives back a 4 entry list with the number values of each
+/proc/split_color(color)
+	var/list/output = list()
+	output += hex2num(copytext(color, 2, 4))
+	output += hex2num(copytext(color, 4, 6))
+	output += hex2num(copytext(color, 6, 8))
+	if(length(color) == 9)
+		output += hex2num(copytext(color, 8, 10))
+	else
+		output += 255
+	return output
+
 ///Returns a random color picked from a list, has 2 modes (0 and 1), mode 1 doesn't pick white, black or gray
 /proc/random_colour(mode = 0)
 	switch(mode)
@@ -84,6 +96,10 @@
 /// But paired down and modified to work for our color range
 /// Accepts the color cutoffs as two 3 length list(0-100,...) arguments
 /proc/blend_cutoff_colors(list/first_color, list/second_color)
+	// These runtimes usually mean that either the eye or the glasses have an incorrect color_cutoffs
+	ASSERT(first_color?.len == 3, "First color must be a 3 length list, received [json_encode(first_color)]")
+	ASSERT(second_color?.len == 3, "Second color must be a 3 length list, received [json_encode(second_color)]")
+
 	var/list/output = new /list(3)
 
 	// Invert the colors, multiply to "darken" (actually lights), then uninvert to get back to what we want

@@ -52,8 +52,8 @@
 */
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //(Above) sci guard will get just the original blueshirt vest when that happens
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	unique_reskin = null
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -86,11 +86,12 @@
 */
 /obj/item/clothing/head/helmet/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //Sci guard will get the plain TG version of this item too
+	//The base one is used for science guards, and the sprite is unchanged
 	unique_reskin = null
 
 /obj/item/clothing/head/helmet/blueshirt/skyrat/guard //Version of the blueshirt helmet without a blue line. Used by all dept guards right now.
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "mallcop_helm"
 	worn_icon_state = "mallcop_helm"
 
@@ -144,7 +145,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/effect/landmark/start/bouncer
-	name = "Bouncer"
+	name = "Service Guard"
 	icon_state = "Bouncer"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
@@ -199,12 +200,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/pink
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/science = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
 	duffelbag = /obj/item/storage/backpack/duffelbag/science
+	messenger = /obj/item/storage/backpack/messenger/science
 
 	id_trim = /datum/id_trim/job/science_guard
 
@@ -302,12 +304,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/blue
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/medical = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	messenger = /obj/item/storage/backpack/messenger/med
 	box = /obj/item/storage/box/survival/medical
 
 	id_trim = /datum/id_trim/job/orderly
@@ -399,12 +402,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/yellow
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/engineering = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	messenger = /obj/item/storage/backpack/messenger/eng
 	box = /obj/item/storage/box/survival/engineer
 
 	id_trim = /datum/id_trim/job/engineering_guard
@@ -503,12 +507,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/orange
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/cargo = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
 	duffelbag = /obj/item/storage/backpack/duffelbag
+	messenger = /obj/item/storage/backpack/messenger
 
 	id_trim = /datum/id_trim/job/customs_agent
 
@@ -599,13 +604,14 @@
 	r_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/service = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 		)
 	glasses = /obj/item/clothing/glasses/sunglasses
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
 	duffelbag = /obj/item/storage/backpack/duffelbag
+	messenger = /obj/item/storage/backpack/messenger
 
 	id_trim = /datum/id_trim/job/bouncer
 
@@ -693,7 +699,10 @@
 							span_hear("You hear a faint electrical spark."))
 		balloon_alert(user, "emagged")
 		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		obj_flags |= EMAGGED
 		emagged = TRUE
+		return TRUE
+	return FALSE
 
 /obj/item/melee/baton/security/loaded/departmental/medical
 	name = "medical stun baton"

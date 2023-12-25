@@ -28,7 +28,7 @@
 /obj/item/clothing/suit/jacket
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/costume/ianshirt
+/obj/item/clothing/suit/costume/wellworn_shirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/poncho
@@ -50,10 +50,11 @@
 /obj/item/clothing/suit/costume/pirate/captain
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/hooded/chaplain_hoodie
+/obj/item/clothing/suit/jacket/curator
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/jacket/curator
+//Chaplain Suits
+/obj/item/clothing/suit/hooded/chaplain_hoodie
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/chaplainsuit
@@ -61,9 +62,8 @@
 
 /obj/item/clothing/suit/chaplainsuit
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+//End Chaplain Suits
 
-/obj/item/clothing/suit/armor/riot/knight/greyscale
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/cultrobes/void
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -71,7 +71,7 @@
 /obj/item/clothing/suit/hooded/cultrobes/eldritch
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/hos/trenchcoat/winter
+/obj/item/clothing/suit/armor/hos/trenchcoat
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest
@@ -118,22 +118,23 @@
 
 /obj/item/clothing/suit/hooded/wintercoat
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/suit/toggle/cargo_tech
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/jacket/quartermaster
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /**
  * NONE(Squash)
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
+/obj/item/clothing/suit/armor/changeling
+	supports_variations_flags = NONE
+
 /obj/item/clothing/suit/armor/vest/ctf
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/marine/security
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/marine/engineer
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/leather //This item blows
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/space/hunter
@@ -169,3 +170,39 @@
 
 /obj/item/clothing/suit/apron/overalls
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/warden
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/leather
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/marine/security
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/marine/engineer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/riot
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+//Chaplain Suits
+//TG neglected to sort between legged and robed, so we'll have to just manually set each one
+/obj/item/clothing/suit/chaplainsuit/armor/studentuni
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //Prevents a few glaring missing pixels
+
+/obj/item/clothing/suit/chaplainsuit/armor/clock
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/chaplainsuit/armor/templar
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/chaplainsuit/armor/ancient
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/chaplainsuit/shrinehand
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //Prevents a few glaring missing pixels
+//End Chaplain Suits

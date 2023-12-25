@@ -159,24 +159,24 @@
 	desc = "Summons a random, wild monster from another region in space."
 	required_components = list(
 		"north" = /obj/item/organ/internal/monster_core/regenerative_core,
-		"south" = /mob/living/simple_animal/hostile/asteroid/ice_whelp,
+		"south" = /mob/living/basic/mining/ice_whelp,
 		"east" = /obj/item/stack/ore/bluespace_crystal,
 		"west" = /obj/item/stack/ore/bluespace_crystal,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/monster_core/regenerative_core,
-		/mob/living/simple_animal/hostile/asteroid/ice_whelp,
+		/mob/living/basic/mining/ice_whelp,
 		/obj/item/stack/ore/bluespace_crystal,
 	)
 
 /datum/ash_ritual/summon_lavaland_creature/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
 	var/mob_type = pick(
-		/mob/living/simple_animal/hostile/asteroid/goliath/beast,
-		/mob/living/simple_animal/hostile/asteroid/hivelord/legion,
-		/mob/living/simple_animal/hostile/asteroid/brimdemon,
-		/mob/living/simple_animal/hostile/asteroid/basilisk/watcher,
-		/mob/living/simple_animal/hostile/asteroid/lobstrosity/lava,
+		/mob/living/basic/mining/goliath,
+		/mob/living/basic/mining/legion,
+		/mob/living/basic/mining/brimdemon,
+		/mob/living/basic/mining/watcher,
+		/mob/living/basic/mining/lobstrosity/lava,
 	)
 	new mob_type(success_rune.loc)
 
@@ -198,11 +198,11 @@
 /datum/ash_ritual/summon_icemoon_creature/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
 	var/mob_type = pick(
-		/mob/living/simple_animal/hostile/asteroid/ice_demon,
-		/mob/living/simple_animal/hostile/asteroid/ice_whelp,
-		/mob/living/simple_animal/hostile/asteroid/lobstrosity,
+		/mob/living/basic/mining/ice_demon,
+		/mob/living/basic/mining/ice_whelp,
+		/mob/living/basic/mining/lobstrosity,
 		/mob/living/simple_animal/hostile/asteroid/polarbear,
-		/mob/living/simple_animal/hostile/asteroid/wolf,
+		/mob/living/basic/mining/wolf,
 	)
 	new mob_type(success_rune.loc)
 
@@ -298,7 +298,7 @@
 
 		asked_voters += poll_human
 
-	var/list/yes_voters = poll_candidates("Do you wish to banish [find_banished]?", poll_time = 10 SECONDS, group = asked_voters)
+	var/list/yes_voters = SSpolling.poll_candidates("Do you wish to banish [find_banished]?", poll_time = 10 SECONDS, group = asked_voters)
 
 	if(length(yes_voters) < length(asked_voters))
 		find_banished.balloon_alert_to_viewers("banishment failed!")
@@ -331,23 +331,47 @@
 
 /datum/ash_ritual/revive_animal/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
+	if(!revive_simple(success_rune))
+		revive_basic(success_rune)
+
+/datum/ash_ritual/revive_animal/proc/revive_simple(obj/effect/ash_rune/success_rune)
 	var/turf/src_turf = get_turf(success_rune)
 
 	var/mob/living/simple_animal/find_animal = locate() in src_turf
 
 	if(!find_animal)
-		return
+		return FALSE
 
 	if(find_animal.stat != DEAD)
-		return
+		return FALSE
 
 	if(find_animal.sentience_type != SENTIENCE_ORGANIC)
-		return
+		return FALSE
 
-	find_animal.faction = list(FACTION_NEUTRAL)
+	find_animal.faction = list(FACTION_ASHWALKER)
 
 	if(ishostile(find_animal))
 		var/mob/living/simple_animal/hostile/hostile_animal = find_animal
 		hostile_animal.attack_same = FALSE
 
 	find_animal.revive(HEAL_ALL)
+	return TRUE
+
+/datum/ash_ritual/revive_animal/proc/revive_basic(obj/effect/ash_rune/success_rune)
+	var/turf/src_turf = get_turf(success_rune)
+
+	var/mob/living/basic/find_animal = locate() in src_turf
+
+	if(!find_animal)
+		return FALSE
+
+	if(find_animal.health > 0)
+		return FALSE
+
+	if(find_animal.sentience_type != SENTIENCE_ORGANIC)
+		return FALSE
+
+	find_animal.faction = list(FACTION_ASHWALKER)
+
+	find_animal.revive(HEAL_ALL)
+	return TRUE

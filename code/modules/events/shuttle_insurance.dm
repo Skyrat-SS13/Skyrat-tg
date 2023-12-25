@@ -16,6 +16,8 @@
 		return FALSE //They can't pay?
 	if(SSshuttle.shuttle_purchased == SHUTTLEPURCHASE_FORCED)
 		return FALSE //don't do it if there's nothing to insure
+	if(istype(SSshuttle.emergency, /obj/docking_port/mobile/emergency/shuttle_build))
+		return FALSE //this shuttle prevents the catastrophe event from happening making this event effectively useless
 	if(EMERGENCY_AT_LEAST_DOCKED)
 		return FALSE //catastrophes won't trigger so no point
 	return TRUE
@@ -45,12 +47,12 @@
 
 /datum/round_event/shuttle_insurance/proc/answered()
 	if(EMERGENCY_AT_LEAST_DOCKED)
-		priority_announce("You are definitely too late to purchase insurance, my friends. Our agents don't work on site.",sender_override = ship_name)
+		priority_announce("You are definitely too late to purchase insurance, my friends. Our agents don't work on site.",sender_override = ship_name, color_override = "red")
 		return
 	if(insurance_message && insurance_message.answered == 1)
 		var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(!station_balance?.adjust_money(-insurance_evaluation))
-			priority_announce("You didn't send us enough money for shuttle insurance. This, in the space layman's terms, is considered scamming. We're keeping your money, scammers!",sender_override = ship_name)
+			priority_announce("You didn't send us enough money for shuttle insurance. This, in the space layman's terms, is considered scamming. We're keeping your money, scammers!", sender_override = ship_name, color_override = "red")
 			return
-		priority_announce("Thank you for purchasing shuttle insurance!",sender_override = ship_name)
+		priority_announce("Thank you for purchasing shuttle insurance!", sender_override = ship_name, color_override = "red")
 		SSshuttle.shuttle_insurance = TRUE

@@ -2,7 +2,7 @@
 	name = "\improper Automatic Robotic Factory 5000"
 	desc = "A large metallic machine with an entrance and an exit. A sign on \
 		the side reads, 'Mass robot production facility'"
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = ABOVE_ALL_MOB_LAYER // Overhead
 	density = TRUE
@@ -53,7 +53,11 @@
 		if(stored_cyborgs > max_stored_cyborgs)
 			return
 		stored_cyborgs++
-		notify_ghosts("A new cyborg shell has been created at the [src]", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "New malfunctioning cyborg created!")
+		notify_ghosts("A new cyborg shell has been created at the [src]",
+			source = src,
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+			header = "New malfunctioning cyborg created!",
+		)
 
 /obj/machinery/transformer_rp/proc/create_a_cyborg(mob/dead/observer/target_ghost)
 	if(machine_stat & (BROKEN|NOPOWER))

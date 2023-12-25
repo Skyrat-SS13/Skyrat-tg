@@ -25,14 +25,10 @@
 	var/base_cell_type = /obj/item/stock_parts/cell/microfusion
 	/// If the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
 	var/modifystate = FALSE
-	/// Can it be charged in a recharger?
-	var/can_charge = TRUE
 	/// How many charge sections do we have?
 	var/charge_sections = 4
 	/// if this gun uses a stateful charge bar for more detail
 	var/shaded_charge = FALSE
-	/// If this gun has a "this is loaded with X" overlay alongside chargebars and such
-	var/single_shot_type_overlay = TRUE
 	/// Should we give an overlay to empty guns?
 	var/display_empty = TRUE
 	/// whether the gun's cell drains the cyborg user's cell to recharge
@@ -42,10 +38,6 @@
 
 	/// The microfusion lens used for generating the beams.
 	var/obj/item/ammo_casing/energy/laser/microfusion/microfusion_lens
-	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
-	var/reload_time = 4 SECONDS
-	/// The time it takes for someone to normally reload this gun. In deciseconds.
-	var/reload_time_slow = 2 SECONDS
 	/// The sound played when you insert a cell.
 	var/sound_cell_insert = 'modular_skyrat/modules/microfusion/sound/mag_insert.ogg'
 	/// Should the insertion sound played vary?
@@ -71,11 +63,15 @@
 	/// The heat dissipation bonus granted by the weapon.
 	var/heat_dissipation_bonus = 0
 	/// What slots does this gun have?
-	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE)
+	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE, GUN_SLOT_CAMO)
 	/// Our base firedelay.
 	var/base_fire_delay = 0
 	/// Do we use more power because of attachments?
 	var/extra_power_usage = 0
+	/// Spread from attachments.
+	var/attachment_spread = 0
+	/// Recoil from attachments.
+	var/attachment_recoil = 0
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -110,6 +106,7 @@
 	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
+	START_PROCESSING(SSobj, src)
 
 /obj/item/gun/microfusion/give_gun_safeties()
 	AddComponent(/datum/component/gun_safety)
@@ -135,14 +132,14 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
-	if(to_handle == cell)
+/obj/item/gun/microfusion/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == cell)
 		cell = null
 		update_appearance()
-	if(to_handle == phase_emitter)
+	else if(gone == phase_emitter)
 		phase_emitter = null
 		update_appearance()
-	return ..()
 
 /obj/item/gun/microfusion/can_shoot()
 	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
@@ -165,6 +162,10 @@
 	if(!chambered && can_shoot())
 		process_chamber() // If the gun was drained and then recharged, load a new shot.
 	return ..()
+
+/obj/item/gun/microfusion/process(seconds_per_tick)
+	for(var/obj/item/microfusion_gun_attachment/attached as anything in attachments)
+		attached.process_attachment(src, seconds_per_tick)
 
 /obj/item/gun/microfusion/update_icon_state()
 	var/skip_inhand = initial(inhand_icon_state) //only build if we aren't using a preset inhand icon
@@ -257,7 +258,7 @@
 
 /obj/item/gun/microfusion/crowbar_act(mob/living/user, obj/item/tool)
 	if(!phase_emitter)
-		to_chat(user, span_danger("There is no phase emitter for you to remove!"))
+		balloon_alert(user, "no phase emitter!")
 		return
 	playsound(src, 'sound/items/crowbar.ogg', 70, TRUE)
 	remove_emitter()
@@ -327,8 +328,12 @@
 
 // To maintain modularity, I am moving this proc override here.
 /obj/item/gun/microfusion/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	var/base_bonus_spread = 0
 	if(user)
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, user, target, params, zone_override)
+		var/list/bonus_spread_values = list(base_bonus_spread, bonus_spread)
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, target, params, zone_override, bonus_spread_values)
+		base_bonus_spread = bonus_spread_values[MIN_BONUS_SPREAD_INDEX]
+		bonus_spread = bonus_spread_values[MAX_BONUS_SPREAD_INDEX]
 
 	SEND_SIGNAL(src, COMSIG_GUN_FIRED, user, target, params, zone_override)
 
@@ -338,32 +343,28 @@
 		return
 
 	//Vary by at least this much
-	var/base_bonus_spread = 0
-	var/calculated_spread = 0
-	var/randomized_gun_spread = 0
-	var/random_spread = rand()
-	if(user && HAS_TRAIT(user, TRAIT_POOR_AIM)) //Nice job hotshot
-		bonus_spread += 35
-		base_bonus_spread += 10
-
-	if(spread)
-		randomized_gun_spread =	rand(0,spread)
 	var/randomized_bonus_spread = rand(base_bonus_spread, bonus_spread)
+	var/randomized_gun_spread = spread ? rand(0, spread) : 0
+	var/total_random_spread = max(0, randomized_bonus_spread + randomized_gun_spread)
+	var/burst_spread_mult = rand()
+
+	var/modified_delay = fire_delay
+	if(phase_emitter)
+		modified_delay = phase_emitter.fire_delay
+	if(user && HAS_TRAIT(user, TRAIT_DOUBLE_TAP))
+		modified_delay = ROUND_UP(fire_delay * 0.5)
 
 	if(burst_size > 1)
 		firing_burst = TRUE
-		var/fire_delay_to_add = 0
-		if(phase_emitter)
-			fire_delay_to_add = phase_emitter.fire_delay
 		for(var/i = 1 to burst_size)
-			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, calculated_spread, randomized_gun_spread, randomized_bonus_spread, random_spread, i), (fire_delay + fire_delay_to_add) * (i - 1))
+			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, total_random_spread, burst_spread_mult, i), modified_delay * (i - 1))
 	else
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 				if(chambered.harmful) // Is the bullet chambered harmful?
-					to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+					balloon_alert(user, "lethally chambered!")
 					return
-			calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
+			var/calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * total_random_spread)
 			before_firing(target,user)
 			process_microfusion()
 			if(!chambered.fire_casing(target, user, params, , suppressed, zone_override, calculated_spread, src))
@@ -394,7 +395,17 @@
 	return TRUE
 
 // Same goes for this!
-/obj/item/gun/microfusion/process_burst(mob/living/user, atom/target, message = TRUE, params=null, zone_override = "", calculated_spread = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, random_spread= 0, iteration = 0)
+/obj/item/gun/microfusion/process_burst(
+		mob/living/user,
+		atom/target,
+		message = TRUE,
+		params = null,
+		zone_override = "",
+		random_spread = 0,
+		burst_spread_mult = 0,
+		iteration = 0,
+	)
+
 	if(!user || !firing_burst)
 		firing_burst = FALSE
 		return FALSE
@@ -410,12 +421,13 @@
 	if(chambered?.loaded_projectile)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
-				to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+				balloon_alert(user, "lethally chambered!")
 				return
+		var/calculated_spread
 		if(randomspread)
-			calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
+			calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (random_spread))
 		else //Smart spread
-			calculated_spread = round((((random_spread/burst_size) * iteration) - (0.5 + (random_spread * 0.25))) * (randomized_gun_spread + randomized_bonus_spread))
+			calculated_spread = round((((burst_spread_mult/burst_size) * iteration) - (0.5 + (burst_spread_mult * 0.25))) * (random_spread))
 		before_firing(target,user)
 		process_microfusion()
 		if(!chambered.fire_casing(target, user, params, ,suppressed, zone_override, calculated_spread, src))
@@ -546,16 +558,16 @@
 	phase_emitter.forceMove(get_turf(src))
 	if(user)
 		user.put_in_hands(phase_emitter)
-		to_chat(user, span_notice("You remove [phase_emitter] from [src]!"))
+		balloon_alert(user, "removed phase emitter")
 	phase_emitter.parent_gun = null
 	phase_emitter = null
 	update_appearance()
 
 /obj/item/gun/microfusion/proc/insert_emitter(obj/item/microfusion_phase_emitter/inserting_phase_emitter, mob/living/user)
 	if(phase_emitter)
-		to_chat(user, span_danger("There is already a phase emitter installed!"))
+		balloon_alert(user, "already one installed!")
 		return FALSE
-	to_chat(user, span_notice("You carefully insert [inserting_phase_emitter] into the slot."))
+	balloon_alert(user, "inserted phase emitter")
 	playsound(src, sound_cell_remove, 50, TRUE)
 	inserting_phase_emitter.forceMove(src)
 	phase_emitter = inserting_phase_emitter
@@ -565,44 +577,24 @@
 
 /// Try to insert the cell into the gun, if successful, return TRUE
 /obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
-	var/tactical_reload = FALSE //We need to do this so that cells don't fall on the ground.
-	var/obj/item/stock_parts/cell/old_cell = cell
-	reload_time_slow = inserting_cell.reloading_time
-	reload_time = inserting_cell.reloading_time_tactical
+	var/hotswap = FALSE
 	if(cell)
-		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
-			if(inserting_cell.charge)
-				to_chat(user, span_warning("It would be far too dangerous to insert [inserting_cell] into [src] without <b>discharging it first</b>."))
-				return FALSE
-			if(display_message)
-				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
-			if(!do_after(user, reload_time, src))
-				if(display_message)
-					to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
-				return FALSE
-		if(display_message)
-			to_chat(user, span_notice("You tactically reload [src], replacing [cell] inside!"))
-		tactical_reload = TRUE
+		hotswap = TRUE
+	var/obj/item/stock_parts/cell/old_cell = cell
+	if(inserting_cell.charge)
+		balloon_alert(user, "can't insert a charged cell!")
+		return FALSE
+	if(display_message)
+		balloon_alert(user, "cell inserted")
+	if(hotswap)
 		eject_cell(user, FALSE, FALSE)
-	else
-		if(inserting_cell.charge)
-			to_chat(user, span_warning("It would be far too dangerous to insert [inserting_cell] into [src] without <b>discharging it first</b>."))
-			return FALSE
-		if(display_message)
-			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
-		if(!do_after(user, reload_time_slow, src))
-			if(display_message)
-				to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
-			return FALSE
-		if(display_message)
-			to_chat(user, span_notice("You insert [inserting_cell] into [src]!"))
 	if(sound_cell_insert)
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
 	inserting_cell.inserted_into_weapon()
 	cell.parent_gun = src
-	if(tactical_reload)
+	if(old_cell)
 		user.put_in_hands(old_cell)
 	recharge_newshot()
 	update_appearance()
@@ -617,41 +609,38 @@
 		if(put_in_hands)
 			user.put_in_hands(old_cell)
 		if(display_message)
-			to_chat(user, span_notice("You remove [old_cell] from [src]!"))
+			balloon_alert(user, "cell removed")
 	if(sound_cell_remove)
 		playsound(src, sound_cell_remove, sound_cell_remove_volume, sound_cell_remove_vary)
 	old_cell.update_appearance()
-	cell.parent_gun = null
+	old_cell.parent_gun = null
 	cell = null
-	// RESET THE RELOAD TIMER WHEN CELL IS OUT
-	reload_time = 6 SECONDS
-	reload_time_slow = 4 SECONDS
 	update_appearance()
 
 /// Attatching an upgrade.
 /obj/item/gun/microfusion/proc/add_attachment(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
 	if(is_type_in_list(microfusion_gun_attachment, attachments))
-		to_chat(user, span_warning("[src] already has [microfusion_gun_attachment] installed!"))
+		balloon_alert(user, "already has one!")
 		return FALSE
 	if(!(microfusion_gun_attachment.slot in attachment_slots))
-		to_chat(user, span_warning("[src] cannot install [microfusion_gun_attachment]!"))
+		balloon_alert(user, "can't install!")
 		return FALSE
 	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attachments)
-		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
-			to_chat(user, span_warning("[microfusion_gun_attachment] is not compatible with [iterating_attachment]!"))
+		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatible_attachments))
+			balloon_alert(user, "not compatible with [iterating_attachment]!")
 			return FALSE
 		if(iterating_attachment.slot != GUN_SLOT_UNIQUE && iterating_attachment.slot == microfusion_gun_attachment.slot)
-			to_chat(user, span_warning("[microfusion_gun_attachment] cannot be installed in the same slot as [iterating_attachment]!"))
+			balloon_alert(user, "slot full!")
 			return FALSE
 	attachments += microfusion_gun_attachment
 	microfusion_gun_attachment.forceMove(src)
 	microfusion_gun_attachment.run_attachment(src)
-	to_chat(user, span_notice("You successfully install [microfusion_gun_attachment] onto [src]!"))
+	balloon_alert(user, "installed attachment")
 	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
 	return TRUE
 
 /obj/item/gun/microfusion/proc/remove_attachment(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
-	to_chat(user, span_notice("You remove [microfusion_gun_attachment] from [src]!"))
+	balloon_alert(user, "removed attachment")
 	playsound(src, 'sound/items/screwdriver.ogg', 70)
 	microfusion_gun_attachment.forceMove(get_turf(src))
 	attachments -= microfusion_gun_attachment
@@ -768,3 +757,10 @@
 				return
 			phase_emitter.toggle_cooling_system(usr)
 
+/// Recalculates the spread, based on attachment-provided values.
+/obj/item/gun/microfusion/proc/recalculate_spread()
+	spread = max(0, attachment_spread)
+
+/// Recalculates the recoil, based on attachment-provided values.
+/obj/item/gun/microfusion/proc/recalculate_recoil()
+	recoil = max(0, attachment_recoil)

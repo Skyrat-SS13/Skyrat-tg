@@ -22,7 +22,7 @@
 			if((target_mob.w_uniform && target_mob.w_uniform.body_parts_covered & genital_location) || (target_mob.wear_suit && target_mob.wear_suit.body_parts_covered & genital_location))
 				return TRUE
 			//Do they have a Hospital Gown covering them? (The gown has no body_parts_covered so needs its own check)
-			if(istype(target_mob.wear_suit, /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown))
+			if(istype(target_mob.wear_suit, /obj/item/clothing/suit/toggle/labcoat/hospitalgown))
 				return TRUE
 
 			//Are they wearing an Undershirt?
@@ -45,6 +45,10 @@
 				else if(genital_location == CHEST && worn_underwear.hides_breasts)
 					return TRUE
 
+			//Are they wearing a bra?
+			if(target_mob.bra != "Nude" && !(target_mob.underwear_visibility & UNDERWEAR_HIDE_BRA) && genital_location == CHEST)
+				return TRUE
+
 			//Nothing they're wearing will cover them
 			else
 				return FALSE
@@ -59,7 +63,7 @@
 
 /datum/sprite_accessory/genital/get_special_render_colour(mob/living/carbon/human/human, render_state)
 	var/obj/item/organ/external/genital/genital = human.get_organ_slot(associated_organ_slot)
-	if(genital?.uses_skin_color && human.dna.species.use_skintones)
+	if(genital?.uses_skin_color && HAS_TRAIT(human, TRAIT_USES_SKINTONES))
 		return skintone2hex(human.skin_tone)
 
 /datum/sprite_accessory/genital/penis

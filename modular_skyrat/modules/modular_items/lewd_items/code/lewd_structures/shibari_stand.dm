@@ -7,7 +7,7 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -70,7 +70,7 @@
 
 /obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/buckled, mob/user, check_loc = TRUE)
 
-	if(!buckled.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!buckled.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [buckled] doesn't want you to do that."))
 		return FALSE
 
@@ -124,8 +124,10 @@
 		return FALSE
 
 /obj/structure/chair/shibari_stand/deconstruct(disassembled)
+	if(obj_flags & NO_DECONSTRUCTION)
+		return
+
 	qdel(src)
-	return TRUE
 
 /obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)

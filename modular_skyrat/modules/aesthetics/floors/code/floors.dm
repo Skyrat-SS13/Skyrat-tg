@@ -74,3 +74,8 @@
 /turf/open/indestructible/cobble/corner
 	icon_state = "cobble_corner"
 
+/turf/open/floor/plating/reinforced
+	icon = 'icons/turf/floors.dmi'
+
+/turf/open/floor/iron/white/textured_large/airless
+	initial_gas_mix = AIRLESS_ATMOS

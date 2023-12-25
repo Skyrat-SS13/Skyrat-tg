@@ -5,8 +5,8 @@
 #define AIRLOCK_STATE_DEPRESSURIZE "depressurize"
 #define AIRLOCK_STATE_OUTOPEN "outopen"
 
-/obj/machinery/airlock_controller // SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	icon = 'icons/obj/airlock_machines.dmi'
+/obj/machinery/airlock_controller
+	icon = 'icons/obj/machines/wallmounts.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon_state = "airlock_control_standby"
 	base_icon_state = "airlock_control"
 
@@ -63,7 +63,7 @@
 		ui = new(user, src, "AirlockController", src)
 		ui.open()
 
-/obj/machinery/airlock_controller/process(delta_time)
+/obj/machinery/airlock_controller/process(seconds_per_tick)
 	var/process_again = TRUE
 	while(process_again)
 		process_again = FALSE

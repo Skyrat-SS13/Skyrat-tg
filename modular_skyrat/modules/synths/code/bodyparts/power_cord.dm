@@ -14,7 +14,7 @@
 /obj/item/apc_powercord
 	name = "power cord"
 	desc = "An internal power cord. Useful if you run on electricity. Not so much otherwise."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wire1"
 
 /obj/item/apc_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -93,6 +93,11 @@
 		user.nutrition += power_use / SYNTH_CHARGE_PER_NUTRITION
 		do_sparks(1, FALSE, target_apc)
 
+	if(target_apc.main_status <= APC_HAS_POWER)
+		target_apc.charging = APC_CHARGING
+		target_apc.update_appearance()
+	else
+		return
 	user.visible_message(span_notice("[user] unplugs from the [target_apc]."), span_notice("You unplug from the [target_apc]."))
 
 #undef SYNTH_CHARGE_MAX

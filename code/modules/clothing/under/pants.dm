@@ -13,8 +13,8 @@
 	desc = "A pair of comfy slacks."
 	icon_state = "slacks"
 	greyscale_config = /datum/greyscale_config/slacks
-	greyscale_config_worn = /datum/greyscale_config/slacks_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/slacks_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+	greyscale_config_worn = /datum/greyscale_config/slacks/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/slacks/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#575757#3E3E3E#75634F"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -23,8 +23,8 @@
 	desc = "A nondescript pair of tough jeans."
 	icon_state = "jeans"
 	greyscale_config = /datum/greyscale_config/jeans
-	greyscale_config_worn = /datum/greyscale_config/jeans_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeans_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+	greyscale_config_worn = /datum/greyscale_config/jeans/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jeans/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
 

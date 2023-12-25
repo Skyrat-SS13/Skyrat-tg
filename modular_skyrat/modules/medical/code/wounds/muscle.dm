@@ -6,39 +6,55 @@
 /datum/wound/muscle
 	name = "Muscle Wound"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
-	wound_type = WOUND_MUSCLE
-	wound_flags = (FLESH_WOUND | ACCEPTS_SPLINT)
-	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	wound_flags = (ACCEPTS_GAUZE | SPLINT_OVERLAY)
+
 	processes = TRUE
 	/// How much do we need to regen. Will regen faster if we're splinted and or laying down
 	var/regen_ticks_needed
 	/// Our current counter for healing
 	var/regen_ticks_current = 0
 
+	can_scar = FALSE
+
+/datum/wound_pregen_data/muscle
+	abstract = TRUE
+
+	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	required_limb_biostate = BIO_FLESH
+
+	required_wounding_types = list(WOUND_BLUNT, WOUND_SLASH, WOUND_PIERCE)
+	match_all_wounding_types = FALSE
+
+	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
+
+	weight = 3 // very low chance to replace a normal wound. this is about 4.5%
+
 /*
 	Overwriting of base procs
 */
 /datum/wound/muscle/wound_injury(datum/wound/old_wound = null, attack_direction)
-	// hook into gaining/losing gauze so crit muscle wounds can re-enable/disable depending if they're slung or not
-	RegisterSignals(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), PROC_REF(update_inefficiencies))
+	var/obj/item/held_item = victim.get_item_for_held_index(limb.held_index || 0)
+	if(held_item && (disabling || prob(30 * severity)))
+		if(istype(held_item, /obj/item/offhand))
+			held_item = victim.get_inactive_held_item()
 
-	RegisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
-	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
-		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
-		if(istype(I, /obj/item/offhand))
-			I = victim.get_inactive_held_item()
+		if(held_item && victim.dropItemToGround(held_item))
+			victim.visible_message(span_danger("[victim] drops [held_item] in shock!"), \
+			span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
-		if(I && victim.dropItemToGround(I))
-			victim.visible_message(span_danger("[victim] drops [I] in shock!"), span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+	return ..()
 
-	update_inefficiencies()
+/datum/wound/muscle/set_victim(new_victim)
+	if (victim)
+		UnregisterSignal(victim, COMSIG_LIVING_EARLY_UNARMED_ATTACK)
+
+	if (new_victim)
+		RegisterSignal(new_victim, COMSIG_LIVING_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
+
+	return ..()
 
 /datum/wound/muscle/remove_wound(ignore_limb, replaced)
 	limp_slowdown = 0
-	if(limb)
-		UnregisterSignal(limb, list(COMSIG_BODYPART_GAUZED, COMSIG_BODYPART_GAUZE_DESTROYED))
-	if(victim)
-		UnregisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
 	return ..()
 
 /datum/wound/muscle/handle_process()
@@ -51,8 +67,8 @@
 		if(victim.IsSleeping())
 			regen_ticks_current += 0.5
 
-	if(limb.current_splint)
-		regen_ticks_current += (1-limb.current_splint.splint_factor)
+	if(limb.current_gauze)
+		regen_ticks_current += (1-limb.current_gauze.splint_factor)
 
 	if(regen_ticks_current > regen_ticks_needed)
 		if(!victim || !limb)
@@ -83,69 +99,49 @@
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/wound/muscle/get_examine_description(mob/user)
-	if(!limb.current_splint)
+	if(!limb.current_gauze)
 		return ..()
 
 	var/list/msg = list()
-	if(!limb.current_splint)
-		msg += "[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] [examine_desc]"
+	if(!limb.current_gauze)
+		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] [examine_desc]"
 	else
-		var/sling_condition = ""
+		var/absorption_capacity = ""
 		// how much life we have left in these bandages
-		switch(limb.current_splint.sling_condition)
+		switch(limb.current_gauze.absorption_capacity)
 			if(0 to 1.25)
-				sling_condition = "just barely"
+				absorption_capacity = "just barely"
 			if(1.25 to 2.75)
-				sling_condition = "loosely"
+				absorption_capacity = "loosely"
 			if(2.75 to 4)
-				sling_condition = "mostly"
+				absorption_capacity = "mostly"
 			if(4 to INFINITY)
-				sling_condition = "tightly"
+				absorption_capacity = "tightly"
 
-		msg += "[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] is [sling_condition] fastened with a [limb.current_splint.name]!"
+		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] is [absorption_capacity] fastened with a [limb.current_gauze.name]!"
 
 	return "<B>[msg.Join()]</B>"
-
-/*
-	Common procs mostly copied from bone wounds, as their behaviour is very similar
-*/
-
-/datum/wound/muscle/proc/update_inefficiencies()
-	SIGNAL_HANDLER
-	if(limb.body_zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
-		if(limb.current_splint)
-			limp_slowdown = initial(limp_slowdown) * limb.current_splint.splint_factor
-		else
-			limp_slowdown = initial(limp_slowdown)
-		victim.apply_status_effect(/datum/status_effect/limp)
-	else if(limb.body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-		if(limb.current_splint)
-			interaction_efficiency_penalty = 1 + ((interaction_efficiency_penalty - 1) * limb.current_splint.splint_factor)
-		else
-			interaction_efficiency_penalty = interaction_efficiency_penalty
-
-	if(initial(disabling))
-		if(limb.current_splint && limb.current_splint.helps_disabled)
-			set_disabling(FALSE)
-		else
-			set_disabling(TRUE)
-
-	limb.update_wounds()
 
 /// Moderate (Muscle Tear)
 /datum/wound/muscle/moderate
 	name = "Muscle Tear"
 	desc = "Patient's muscle has torn, causing serious pain and reduced limb functionality."
-	treat_text = "Recommended rest and sleep, or splinting the limb."
+	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "appears unnaturallly red and swollen"
 	occur_text = "swells up, it's skin turning red"
 	severity = WOUND_SEVERITY_MODERATE
 	interaction_efficiency_penalty = 1.5
 	limp_slowdown = 2
-	threshold_minimum = 35
+	limp_chance = 30
 	threshold_penalty = 15
 	status_effect_type = /datum/status_effect/wound/muscle/moderate
 	regen_ticks_needed = 90
+
+/datum/wound_pregen_data/muscle/tear
+	abstract = FALSE
+
+	wound_path_to_generate = /datum/wound/muscle/moderate
+	threshold_minimum = 35
 
 /*
 	Severe (Ruptured Tendon)
@@ -155,47 +151,23 @@
 	name = "Ruptured Tendon"
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
 	desc = "Patient's tendon has been severed, causing significant pain and near uselessness of limb."
-	treat_text = "Recommended rest and sleep aswell as splinting the limb."
+	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "is limp and awkwardly twitching, skin swollen and red"
 	occur_text = "twists in pain and goes limp, it's tendon ruptured"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2
 	limp_slowdown = 5
-	threshold_minimum = 80
+	limp_chance = 40
 	threshold_penalty = 35
 	disabling = TRUE
 	status_effect_type = /datum/status_effect/wound/muscle/severe
 	regen_ticks_needed = 150
 
-/datum/status_effect/wound/muscle
+/datum/wound_pregen_data/muscle/tendon
+	abstract = FALSE
 
-/datum/status_effect/wound/muscle/on_apply()
-	. = ..()
-	RegisterSignal(owner, COMSIG_MOB_SWAP_HANDS, PROC_REF(on_swap_hands))
-	on_swap_hands()
-
-/datum/status_effect/wound/muscle/on_remove()
-	. = ..()
-	UnregisterSignal(owner, COMSIG_MOB_SWAP_HANDS)
-	var/mob/living/carbon/wound_owner = owner
-	wound_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/muscle_wound)
-
-/datum/status_effect/wound/muscle/proc/on_swap_hands()
-	SIGNAL_HANDLER
-
-	var/mob/living/carbon/wound_owner = owner
-	if(wound_owner.get_active_hand() == linked_limb)
-		wound_owner.add_actionspeed_modifier(/datum/actionspeed_modifier/muscle_wound, (linked_wound.interaction_efficiency_penalty - 1))
-	else
-		wound_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/muscle_wound)
-
-/datum/status_effect/wound/muscle/nextmove_modifier()
-	var/mob/living/carbon/C = owner
-
-	if(C.get_active_hand() == linked_limb)
-		return linked_wound.interaction_efficiency_penalty
-
-	return 1
+	wound_path_to_generate = /datum/wound/muscle/severe
+	threshold_minimum = 80
 
 // muscle
 /datum/status_effect/wound/muscle/moderate
@@ -203,5 +175,8 @@
 /datum/status_effect/wound/muscle/severe
 	id = "ruptured tendon"
 
-/datum/actionspeed_modifier/muscle_wound
-	variable = TRUE
+/datum/status_effect/wound/muscle/robotic/moderate
+	id = "worn servo"
+
+/datum/status_effect/wound/muscle/robotic/severe
+	id = "severed hydraulic"

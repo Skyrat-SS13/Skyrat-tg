@@ -1,4 +1,20 @@
 //ASH CLOTHING
+/datum/armor/ash_headdress
+	melee = 15
+	bullet = 25
+	laser = 15
+	energy = 15
+	bomb = 20
+	bio = 10
+
+/datum/armor/clothing_under/ash_robes
+	melee = 15
+	bullet = 25
+	laser = 15
+	energy = 15
+	bomb = 20
+	bio = 10
+
 /obj/item/clothing/head/ash_headdress
 	name = "ash headdress"
 	desc = "A headdress that shows the dominance of the walkers of ash."
@@ -6,6 +22,7 @@
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "headdress"
 	supports_variations_flags = NONE
+	armor_type = /datum/armor/ash_headdress
 
 	greyscale_colors = null
 	greyscale_config = null
@@ -36,6 +53,7 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "robes"
+	armor_type = /datum/armor/clothing_under/ash_robes
 
 	greyscale_colors = null
 	greyscale_config = null
@@ -52,13 +70,14 @@
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2, /obj/item/stack/sheet/animalhide/goliath_hide, list(MELEE = 5, BULLET = 2, LASER = 2))
 
-/obj/item/clothing/suit/ash_plates
+/obj/item/clothing/under/costume/gladiator/ash_walker/ash_plates
 	name = "ash combat plates"
 	desc = "A combination of bones and hides, strung together by watcher sinew."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "combat_plates"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/clothing_under/ash_robes
 
 	greyscale_colors = null
 	greyscale_config = null
@@ -68,18 +87,18 @@
 
 /datum/crafting_recipe/ash_recipe/ash_plates
 	name = "Ash Combat Plates"
-	result = /obj/item/clothing/suit/ash_plates
+	result = /obj/item/clothing/under/costume/gladiator/ash_walker/ash_plates
 	category = CAT_CLOTHING
 
-/obj/item/clothing/suit/ash_plates/Initialize(mapload)
+/obj/item/clothing/under/costume/gladiator/ash_walker/ash_plates/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2, /obj/item/stack/sheet/animalhide/goliath_hide, list(MELEE = 5, BULLET = 2, LASER = 2))
 
-/obj/item/clothing/suit/ash_plates/decorated
+/obj/item/clothing/under/costume/gladiator/ash_walker/ash_plates/decorated
 	name = "decorated ash combat plates"
 	icon_state = "dec_breastplate"
 
 /datum/crafting_recipe/ash_recipe/ash_plates/decorated
 	name = "Decorated Ash Combat Plates"
-	result = /obj/item/clothing/suit/ash_plates/decorated
+	result = /obj/item/clothing/under/costume/gladiator/ash_walker/ash_plates/decorated
 	category = CAT_CLOTHING

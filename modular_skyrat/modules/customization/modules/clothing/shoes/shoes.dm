@@ -54,7 +54,7 @@
 	greyscale_colors = "#FFFFFF"
 	greyscale_config = /datum/greyscale_config/fancyheels
 	greyscale_config_worn = /datum/greyscale_config/fancyheels/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/fancyheels/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/fancyheels/worn/digi
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/discoshoes
@@ -95,13 +95,24 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "blackjack"
 
-/obj/item/clothing/shoes/wraps/colourable
+/obj/item/clothing/shoes/wraps/cloth
 	name = "cloth foot wraps"
 	desc = "Boxer tape or bandages wrapped like a mummy, all left up to the choice of the wearer."
 	icon_state = "clothwrap"
-	greyscale_config = /datum/greyscale_config/wraps
-	greyscale_config_worn = /datum/greyscale_config/wraps/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/wraps/worn/digi
+	greyscale_config = /datum/greyscale_config/clothwraps
+	greyscale_config_worn = /datum/greyscale_config/clothwraps/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/clothwraps/worn/digi
+	greyscale_colors = "#FFFFFF"
+	body_parts_covered = FALSE
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/shoes/wraps/colourable
+	name = "colourable foot wraps"
+	desc = "Ankle coverings. These ones have a customisable colour design."
+	icon_state = "legwrap"
+	greyscale_config = /datum/greyscale_config/legwraps
+	greyscale_config_worn = /datum/greyscale_config/legwraps/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/legwraps/worn/digi
 	greyscale_colors = "#FFFFFF"
 	body_parts_covered = FALSE
 	flags_1 = IS_PLAYER_COLORABLE_1
@@ -130,16 +141,17 @@
 /obj/item/clothing/shoes/winterboots/christmas
 	name = "red christmas boots"
 	desc = "A pair of fluffy red christmas boots!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "christmasbootsr"
+	icon_state = "christmas_boots"
+	greyscale_colors = "#cc0f0f#c4c2c2"
+	greyscale_config = /datum/greyscale_config/boots/christmasboots
+	greyscale_config_worn = /datum/greyscale_config/boots/christmasboots/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/boots/christmasboots/worn/digi
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/winterboots/christmas/green
 	name = "green christmas boots"
 	desc = "A pair of fluffy green christmas boots!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "christmasbootsg"
+	greyscale_colors = "#1a991a#c4c2c2"
 
 /obj/item/clothing/shoes/clown_shoes/pink
 	name = "pink clown shoes"
@@ -195,4 +207,15 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/boots/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/boots/worn/newvox
 	greyscale_config_worn_vox = /datum/greyscale_config/boots/worn/oldvox
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/shoes/wraps/cloth
+	name = "cloth foot wraps"
+	desc = "Boxer tape or bandages wrapped like a mummy, all left up to the choice of the wearer."
+	icon_state = "clothwrap"
+	greyscale_config = /datum/greyscale_config/clothwraps
+	greyscale_config_worn = /datum/greyscale_config/clothwraps/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/clothwraps/worn/digi
+	greyscale_colors = "#FFFFFF"
+	body_parts_covered = FALSE
 	flags_1 = IS_PLAYER_COLORABLE_1

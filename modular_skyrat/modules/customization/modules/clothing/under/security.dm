@@ -11,7 +11,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/cowboy/armorless //Donator variant, just uses the sprite.
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under/none
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
@@ -44,52 +44,7 @@
 	supports_variations_flags = NONE
 	can_adjust = FALSE
 
-// Police Uniforms
-///OFFICERS
-/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet
-	name = "sol police cadet uniform"
-	desc = "A light blue shirt with navy pants, and no other markings. This is essentially no more than a fancy blue suit."
-	icon_state = "policecadetalt"
-
-/obj/item/clothing/under/rank/security/peacekeeper/sol
-	name = "sol police uniform"
-	desc = "A light blue shirt with navy pants, and a golden insignia on the shoulder. Perfect for standing around idly during emergencies."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "policealt"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
-
-///WARDEN
-/obj/item/clothing/under/rank/security/warden/peacekeeper/sol
-	name = "sol warden uniform"
-	desc = "A light blue shirt with navy pants. This one bears the insignia of a Warden, as well as the stretch marks."
-	icon_state = "policewardenalt"
-
-///HEAD OF SECURITY
-/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
-	name = "sol chief of police uniform"
-	desc = "A white satin shirt with golden pauldrons and a leather belt, which has a large \"NT\" for a buckle. Nice to see where the budget went."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "policechiefalt"
-
-// End Police Uniforms
-
-///SECMED
-/obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
-	name = "security medic scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards and acid, along with some light padding. This one is in a deep red."
-	armor_type = /datum/armor/red_sec
-
 /// PRISONER
-
-/datum/armor/red_sec
-	melee = 10
-	bio = 10
-	fire = 30
-	acid = 30
-	wound = 10
-
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
 	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."

@@ -34,7 +34,6 @@
 /datum/sprite_accessory/ears/fox
 	color_src = USE_ONE_COLOR
 
-
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/external/ears // SET BACK TO THIS AS SOON AS WE GET EARS AS EXTERNAL ORGANS: organ_type = /obj/item/organ/internal/ears/mutant
@@ -319,6 +318,10 @@
 	name = "Teshari Feathers Mane"
 	icon_state = "teshari_feathers_mane"
 
+/datum/sprite_accessory/ears/mutant/teshari/feathers_maneless
+	name = "Teshari Feathers Mane Fluffless"
+	icon_state = "teshari_feathers_maneless"
+
 /datum/sprite_accessory/ears/mutant/teshari/feathers_droopy
 	name = "Teshari Feathers Droopy"
 	icon_state = "teshari_feathers_droopy"
@@ -331,12 +334,14 @@
 	name = "Teshari Feathers Tree"
 	icon_state = "teshari_feathers_tree"
 
+/datum/sprite_accessory/ears/mutant/teshari/feathers_ponytail
+	name = "Teshari Feathers Ponytail"
+	icon_state = "teshari_feathers_ponytail"
+
 /datum/sprite_accessory/ears/mutant/teshari/feathers_mushroom
 	name = "Teshari Feathers Mushroom"
 	icon_state = "teshari_feathers_mushroom"
 	color_src = USE_ONE_COLOR
-	// Converting each one of these to rbg matrixed is like a 20+ minute process per sprite to make it look good
-	// and this one looks kinda meh anyway so I cba, it stays greyscale
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_backstrafe
 	name = "Teshari Feathers Backstrafe"
@@ -348,10 +353,18 @@
 	icon_state = "teshari_feathers_thinmohawk"
 	color_src = USE_ONE_COLOR
 
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thin
+	name = "Teshari Feathers Thin"
+	icon_state = "teshari_feathers_thin"
+	color_src = USE_ONE_COLOR
+
 /datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
 	name = "Teshari Feathers Thin Mane"
 	icon_state = "teshari_feathers_thinmane"
-	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmaneless
+	name = "Teshari Feathers Thin Mane Fluffless"
+	icon_state = "teshari_feathers_thinmaneless"
 
 /datum/sprite_accessory/ears/mutant/deer2
 	name = "Deer 2"
@@ -377,3 +390,15 @@
 /datum/sprite_accessory/ears/mutant/big/fourears3
 	name = "Four Ears 3"
 	icon_state = "four_ears_3"
+
+/datum/sprite_accessory/ears/acrador
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/ears/acrador/long
+	icon_state = "acrador_long"
+	name = "Acrador (Long)"
+
+/datum/sprite_accessory/ears/acrador/short
+	icon_state = "acrador_short"
+	name = "Acrador (Short)"

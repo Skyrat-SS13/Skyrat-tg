@@ -9,7 +9,7 @@
 
 	for(var/obj/structure/flora/plant in contents)
 		qdel(plant)
-	var/turf/T = below()
+	var/turf/T = GET_TURF_BELOW(src)
 	if(T)
 		if(T.turf_flags & NO_RUINS)
 			ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
@@ -33,7 +33,7 @@
 
 /turf/open/floor/plating/ocean/ironsand
 	baseturfs = /turf/open/floor/plating/ocean/ironsand
-	icon_state = "ironsand"
+	icon_state = "ironsand1"
 	base_icon_state = "ironsand"
 	rand_variants = 15
 	rand_chance = 100
@@ -98,8 +98,8 @@
 
 	if(rand_variants && prob(rand_chance))
 		var/random = rand(1,rand_variants)
-		icon_state = "[icon_state][random]"
-		base_icon_state = "[icon_state][random]"
+		icon_state = "[base_icon_state][random]"
+		base_icon_state = "[base_icon_state][random]"
 
 /turf/open/floor/plating/ocean_plating
 	planetary_atmos = TRUE
@@ -219,6 +219,9 @@
 	icon_state = "submarine_perf"
 	liquid_height = -30
 	turf_height = -30
+
+/turf/open/floor/iron/submarine_perf/airless
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return

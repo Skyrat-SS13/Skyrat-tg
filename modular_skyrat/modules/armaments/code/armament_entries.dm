@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(armaments)
 	if(istype(test_item, /obj/item/gun/ballistic))
 		var/obj/item/gun/ballistic/ballistic_test = test_item
 		if(!ballistic_test.internal_magazine)
-			magazine = ballistic_test.mag_type
+			magazine = ballistic_test.spawn_magazine_type
 	cached_base64 = icon2base64(getFlatIcon(test_item, no_anim = TRUE))
 	qdel(test_item)
 

@@ -6,6 +6,9 @@
 	///Whether the trauma will be displayed on a scanner or kiosk
 	var/display_scanner = TRUE
 
+/datum/brain_trauma/very_special
+	abstract_type = /datum/brain_trauma/very_special
+
 /datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
@@ -152,19 +155,19 @@
 
 /datum/brain_trauma/very_special/bimbo/on_gain()
 	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
-	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
-		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM))
+		ADD_TRAIT(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM)
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
-		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, TRAIT_APHRO))
+		ADD_TRAIT(owner, TRAIT_MASOCHISM, TRAIT_APHRO)
 
 /datum/brain_trauma/very_special/bimbo/on_lose()
 	owner.clear_mood_event("bimbo")
-	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
-		REMOVE_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM))
+		REMOVE_TRAIT(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
-	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
-		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, TRAIT_APHRO))
+		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, TRAIT_APHRO)
 
 //Mood boost
 /datum/mood_event/bimbo
@@ -186,19 +189,19 @@
 	gain_text = span_danger("You have a sudden desire for pain...")
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
-	icon = "heart-broken"
+	icon = FA_ICON_HEART_BROKEN
 	erp_quirk = TRUE
 
 /datum/quirk/masochism/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	ADD_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
+	ADD_TRAIT(affected_human, TRAIT_MASOCHISM, TRAIT_LEWDQUIRK)
 	affected_human.pain_limit = 60
 
 /datum/quirk/masochism/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
+	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, TRAIT_LEWDQUIRK)
 	affected_human.pain_limit = 0
 
 /*
@@ -216,11 +219,11 @@
 
 /datum/brain_trauma/very_special/neverboner/on_gain()
 	var/mob/living/carbon/human/affected_human = owner
-	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
+	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, TRAIT_APHRO)
 
 /datum/brain_trauma/very_special/neverboner/on_lose()
 	var/mob/living/carbon/human/affected_human = owner
-	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
+	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, TRAIT_APHRO)
 
 /*
 *	SADISM
@@ -234,7 +237,7 @@
 	gain_text = span_danger("You feel a sudden desire to inflict pain.")
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
-	icon = "hammer"
+	icon = FA_ICON_HAMMER
 	erp_quirk = TRUE
 
 /datum/quirk/sadism/post_add()
@@ -257,9 +260,9 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
+/datum/brain_trauma/very_special/sadism/on_life(seconds_per_tick, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
-	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+	if(!owner.has_status_effect(/datum/status_effect/climax_cooldown) && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp) && someone_suffering())
 		affected_mob.adjust_arousal(2)
 		owner.add_mood_event("sadistic", /datum/mood_event/sadistic)
 	else
@@ -286,20 +289,21 @@
 	desc = "You love being tied up."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_ROPEBUNNY
+	medical_record_text = "Subject has a fondness for restraints."
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
-	icon = "link"
+	icon = FA_ICON_HANDCUFFS
 	erp_quirk = TRUE
 
 /datum/quirk/ropebunny/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	ADD_TRAIT(affected_mob, TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+	ADD_TRAIT(affected_mob, TRAIT_ROPEBUNNY, TRAIT_LEWDQUIRK)
 
 /datum/quirk/ropebunny/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	REMOVE_TRAIT(affected_mob, TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+	REMOVE_TRAIT(affected_mob, TRAIT_ROPEBUNNY, TRAIT_LEWDQUIRK)
 
 //Rigger code
 /datum/quirk/rigger
@@ -307,20 +311,21 @@
 	desc = "You find the weaving of rope knots on the body wonderful."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_RIGGER
+	medical_record_text = "Subject has a increased dexterity when tying knots."
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
-	icon = "chain-broken"
+	icon = FA_ICON_CHAIN_BROKEN
 	erp_quirk = TRUE
 
 /datum/quirk/rigger/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	ADD_TRAIT(affected_mob, TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+	ADD_TRAIT(affected_mob, TRAIT_RIGGER, TRAIT_LEWDQUIRK)
 
 /datum/quirk/rigger/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	REMOVE_TRAIT(affected_mob, TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+	REMOVE_TRAIT(affected_mob, TRAIT_RIGGER, TRAIT_LEWDQUIRK)
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
 

@@ -5,42 +5,23 @@
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
-		TRAIT_VIRUSIMMUNE,
 		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
-		TRAIT_NOCLONELOSS,
 		TRAIT_GENELESS,
 		TRAIT_STABLEHEART,
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
-	)
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
+		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
+		TRAIT_ROBOTIC_DNA_ORGANS,
 	)
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs",
-		MUTANT_SYNTH_ANTENNA = "None",
-		MUTANT_SYNTH_SCREEN = "None",
-		MUTANT_SYNTH_CHASSIS = "Default Chassis",
-		MUTANT_SYNTH_HEAD = "Default Head",
-	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
+	payday_modifier = 1.0 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/internal/brain/synth
@@ -62,8 +43,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
-	burnmod = 1.3 // Every 0.1 is 10% above the base.
-	brutemod = 1.3
 	coldmod = 1.2
 	heatmod = 2 // TWO TIMES DAMAGE FROM BEING TOO HOT?! WHAT?! No wonder lava is literal instant death for us.
 	siemens_coeff = 1.4 // Not more because some shocks will outright crit you, which is very unfun
@@ -71,9 +50,22 @@
 	var/datum/action/innate/monitor_change/screen
 	/// This is the screen that is given to the user after they get revived. On death, their screen is temporarily set to BSOD before it turns off, hence the need for this var.
 	var/saved_screen = "Blank"
-	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
+
+/datum/species/synthetic/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"snout" = list("None", FALSE),
+		MUTANT_SYNTH_ANTENNA = list("None", FALSE),
+		MUTANT_SYNTH_SCREEN = list("None", FALSE),
+		MUTANT_SYNTH_CHASSIS = list("Default Chassis", FALSE),
+		MUTANT_SYNTH_HEAD = list("Default Head", FALSE),
+	)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
+	. = ..()
+
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
 		human.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		human.adjust_bodytemperature(13) //We're overheating!!
@@ -87,12 +79,6 @@
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
 	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
-/datum/species/synthetic/spec_death(gibbed, mob/living/carbon/human/transformer)
-	. = ..()
-	saved_screen = screen
-	switch_to_screen(transformer, "BSOD")
-	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
-
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
 
@@ -104,8 +90,10 @@
 		if(eyes)
 			eyes.eye_icon_state = "None"
 
-		screen = new
+		screen = new(transformer)
 		screen.Grant(transformer)
+
+		RegisterSignal(transformer, COMSIG_LIVING_DEATH, PROC_REF(bsod_death)) // screen displays bsod on death, if they have one
 
 		return
 
@@ -127,7 +115,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		target.add_traits(list(TRAIT_MUTANT_COLORS), SPECIES_TRAIT)
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
@@ -156,6 +144,19 @@
 
 	if(screen)
 		screen.Remove(human)
+		UnregisterSignal(human, COMSIG_LIVING_DEATH)
+
+/**
+ * Makes the IPC screen switch to BSOD followed by a blank screen
+ *
+ * Arguments:
+ * * transformer - The human that will be affected by the screen change (read: IPC).
+ * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to. Defaults to BSOD.
+ */
+/datum/species/synthetic/proc/bsod_death(mob/living/carbon/human/transformer, screen_name = "BSOD")
+	saved_screen = screen // remember the old screen in case of revival
+	switch_to_screen(transformer, screen_name)
+	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
 
 /**
  * Simple proc to switch the screen of a monitor-enabled synth, while updating their appearance.
@@ -164,12 +165,18 @@
  * * transformer - The human that will be affected by the screen change (read: IPC).
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
-/datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
+/datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/transformer, screen_name)
 	if(!screen)
 		return
 
-	tranformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
-	tranformer.update_body()
+	// This is awful. Please find a better way to do this.
+	var/obj/item/organ/external/synth_screen/screen_organ = transformer.get_organ_slot(ORGAN_SLOT_EXTERNAL_SYNTH_SCREEN)
+	if(!istype(screen_organ))
+		return
+
+	transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
+	screen_organ.bodypart_overlay.set_appearance_from_dna(transformer.dna)
+	transformer.update_body()
 
 /datum/species/synthetic/random_name(gender, unique, lastname)
 	var/randname = pick(GLOB.posibrain_names)
@@ -179,6 +186,34 @@
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
 
+/datum/species/synthetic/create_pref_unique_perks()
+	var/list/perk_descriptions = list()
+
+	perk_descriptions += list(list( //tryin to keep traits minimal since synths will get a lot of traits when my upstream traits pr is merged
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = "robot",
+		SPECIES_PERK_NAME = "Synthetic Benefits",
+		SPECIES_PERK_DESC = "Unlike organics, you DON'T explode when faced with a vacuum! Additionally, your chassis is built with such strength as to \
+		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry."
+	))
+
+	perk_descriptions += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = "star-of-life",
+		SPECIES_PERK_NAME = "Unhuskable",
+		SPECIES_PERK_DESC = "[plural_form] can't be husked, disappointing changelings galaxy-wide.",
+	))
+
+	perk_descriptions += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+		SPECIES_PERK_ICON = "robot",
+		SPECIES_PERK_NAME = "Synthetic Oddities",
+		SPECIES_PERK_DESC = "[plural_form] are unable to gain nutrition from traditional foods. Instead, you must either consume welding fuel or extend a \
+		wire from your arm to draw power from an APC. In addition to this, welders and wires are your sutures and mesh and only specific chemicals even metabolize inside \
+		of you. This ranges from whiskey, to synthanol, to various obscure medicines. Finally, you suffer from a set of wounds exclusive to synthetics."
+	))
+
+	return perk_descriptions
 
 /datum/species/synthetic/prepare_human_for_preview(mob/living/carbon/human/beepboop)
 	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list(MUTANT_INDEX_NAME = "Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))

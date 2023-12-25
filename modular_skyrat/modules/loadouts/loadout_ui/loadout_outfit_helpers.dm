@@ -4,6 +4,10 @@
 /datum/outfit/player_loadout
 	name = "Player Loadout"
 
+/datum/outfit/player_loadout/equip(mob/living/carbon/human/user, visualsOnly)
+	. = ..()
+	user.equip_outfit_and_loadout(new /datum/outfit(), user.client.prefs)
+
 /*
  * Actually equip our mob with our job outfit and our loadout items.
  * Loadout items override the pre-existing item in the corresponding slot of the job outfit.
@@ -19,6 +23,7 @@
  */
 /mob/living/carbon/human/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source, visuals_only = FALSE, datum/job/equipping_job)
 	if (!preference_source)
+		equipOutfit(outfit, visuals_only) // no prefs for loadout items, but we should still equip the outfit.
 		return FALSE
 
 	var/datum/outfit/equipped_outfit
@@ -43,6 +48,16 @@
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 				continue
 
+			if(item.blacklisted_roles && equipping_job && (equipping_job.title in item.blacklisted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+				continue
+
+			if(item.restricted_species && !(dna.species.id in item.restricted_species))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
+				continue
+
 			new item.item_path(briefcase)
 
 		briefcase.name = "[preference_source.read_preference(/datum/preference/name/real_name)]'s travel suitcase"
@@ -55,6 +70,16 @@
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 				continue
 
+			if(item.blacklisted_roles && equipping_job && (equipping_job.title in item.blacklisted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+				continue
+
+			if(item.restricted_species && !(dna.species.id in item.restricted_species))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
+				continue
+
 			// Make sure the item is not overriding an important for life outfit item
 			var/datum/outfit/outfit_important_for_life = dna.species.outfit_important_for_life
 			if(!outfit_important_for_life || !item.pre_equip_item(equipped_outfit, outfit_important_for_life, src, visuals_only))
@@ -64,6 +89,8 @@
 		equipOutfit(equipped_outfit, visuals_only)
 
 	for(var/datum/loadout_item/item as anything in loadout_datums)
+		if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
+			continue
 		item.on_equip_item(preference_source, src, visuals_only)
 
 	if(preference_source?.read_preference(/datum/preference/toggle/green_pin))
