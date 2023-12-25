@@ -708,3 +708,189 @@
   - bugfix: fixed the Mafia Warden having a hat that didn't match his jacket, and
       fixed SpacePol masks not covering the nose
   - bugfix: Emojipedia should copy the text on click properly, now
+2023-12-21:
+  KannaLisvern:
+  - rscadd: Added a new ERP emote. *lewdmoan
+  Nerev4r:
+  - rscadd: Due to increased availability of calcium supplements in Sector 13 due
+      to Deep Spacer lobbying, snailpeople have found their shells to be more suited
+      towards protection of themselves and their recently-discovered-to-be-binary
+      hearts in a combat scenario.
+  - rscadd: Snailpeople have been invited to recent EVA training sessions, and have
+      learned to attach themselves to the floors if gravity generators go out; who'd
+      have thunk it?
+  - bugfix: Snailpeople no longer benefit from Settler's equipment load reduction
+      while crawling. I could not think of a funny caption for this.
+  Paxilmaniac:
+  - balance: Shotgun shells, ESPECIALLY skyrat's shotgun shells, have been rebalanced
+      to not either be useless or insane in every situation, see pr for details.
+  - image: New sprites for some projectiles, like flechettes and whatnot
+  - sound: The sound effect that the arc welder uses has been changed to be less quiet
+      and more noticable
+  - balance: SolFed response team equipment has been changed around a bit with the
+      new armor and whatnot.
+  - image: SolFed response teams (and cargo imports) can now see a new set of SolFed
+      uniforms, one for peacekeepers and one for EMTs. No longer do they have to dress
+      as wild west larpers, or half life HECU.
+  - qol: The sol rifles have had their names changed so that they suck less to refer
+      to as characters that don't speak french-afrikaans (coming 2023)
+  RaShCat:
+  - bugfix: offsets of items in teshari's paws and worn head
+  - image: simple redraw of teshari's sabres.
+  SkyratBot:
+  - bugfix: fixes some dropdowns not displaying the right text after selecting something
+  nikothedude:
+  - bugfix: Unspillable organs no longer spill
+  vinylspiders:
+  - bugfix: fixes company imports bluescreen
+  - bugfix: fixed a bug where certain loadout menu items would duplicate themselves
+      across tabs
+2023-12-22:
+  LT3:
+  - qol: Roundstart intercept report and security level announcements are combined
+      into a single announcement
+  Melbert:
+  - qol: When you place a beaker in a chem-master, you no longer thwack it.
+  - bugfix: Crewmembers immune to viruses won't be picked by the fake virus event.
+  Paxilmaniac:
+  - rscadd: A small series of items have been added to the construction section of
+      the rapid construction fabricator to allow users to actually... Rapidly construct
+      things.
+  - image: Sprites for all of the new things made by me.
+  Rhials:
+  - bugfix: Disease Outbreak events will only select players on the station/lavaland
+      as patient zero.
+  SkyratBot:
+  - qol: The bitrunning equipment vending machine now has a unique description for
+      each of the bitrunning disks
+  - rscadd: 'Added new quirk: Cyborg Lover!'
+  - bugfix: Name input in character setup should work properly now.
+  - bugfix: Many inputs should feel more responsive.
+  - bugfix: Examine text on disconnected players is no longer accidentally subtle
+2023-12-23:
+  Melbert:
+  - bugfix: Gibbing a bot will no longer spawn bloody gibs.
+  Rhials:
+  - qol: Wizard apprentices now spawn on the same tile as the contract that summoned
+      them.
+  SkyratBot:
+  - balance: Doing experiments AFTER their tech is researched now gives full 100%
+      points instead of 66%.
+  - bugfix: Fixes Holy Water giving you more blood and making you less drunk than
+      water normally does.
+  - bugfix: '''A whole bunch of spiders in a SWAT suit'' to ''A whole bunch of spiders
+      in a MODsuit'''
+  sqnztb:
+  - bugfix: blueshift - corrects some request console names, virology's outlet now
+      sends to space, and R&D now has a proper R&D console instead of a civilian one.
+2023-12-24:
+  BurgerBB:
+  - balance: Miasma is now filtered through gas mask filters, at medium strength.
+  ChakatStormCloud:
+  - bugfix: Synths now properly regenerate blood volume with oil
+  GreytideSkye:
+  - refactor: LustWish interns, fed up with 5e Grappling Rules, explicitly clarified
+      what is a restraint and what is a structure.
+  Jolly:
+  - image: Colored labcoats have been GAGSed! Please report any weird oddities on
+      Github.
+  - bugfix: The coroners lab coat is no longer offset by one pixel.
+  LemonInTheDark, Donglesplonge:
+  - image: Redoes fov "mask" sprites. They're clean, have a very pleasant dithering
+      effect, and look real fuckin good!
+  - rscdel: Changed FOV, it no longer hides mobs, instead it blurs the hidden area,
+      and makes it a bit darker/oversaturated
+  SkyratBot:
+  - bugfix: the boozeomat ui will stop duplicating space beer bottles
+  - refactor: refactored vending machine backend to have unique keys for their data
+      structures. should fix bugs related to items that happen to have the same name.
+  - balance: Ai's using the mech domination ability can now eject from the mech
+  - qol: Head of Security beret added to their garmet bag
+  - qol: Head of Security bowman added to their locker
+  - rscadd: Nightmares retain their ability to dodge projectiles for a brief period
+      after leaving a dark area, meaning it is now possible to dodge lasers.
+  - qol: Nightmares and Shadow People now receive a screen alert when they are in
+      a sufficiently dark location that their abilities are active.
+  - bugfix: Reactions whose temps/ph values fall way below their optimal values no
+      longer restart & prevents infinite loops. Made reaction code slightly faster
+  - rscadd: Added new GaGs santahats.
+  - bugfix: Injecting yourself twice with a luxury medipen in pressure doesn't runtime
+      and mechs with a cell with no max charge won't runtime.
+  - refactor: Gives hyposprays a var to check if they're fully used up rather than
+      setting total_volume to 0.
+  StrangeWeirdKitten:
+  - config: The headshot is no longer vetted or donor locked
+  vinylspiders:
+  - qol: loadout menu has a search function and is zebra-styled for readability.
+  - code_imp: improved performance of the loadout menu
+  - bugfix: removed nonfunctional tutorial button
+  xXPawnStarrXx:
+  - image: Made Skyrat Christmas clothes GAGS compatable.
+2023-12-25:
+  Gandalf2k15:
+  - rscadd: PDAs with a dead power cell are now limited to using their Messenger app.
+  - bugfix: Microwaves now stop charging PDAs if the cell was removed mid-charge.
+  - bugfix: Microwaves can now charge laptops.
+  - bugfix: 'PDA Flashlights can''t be turned on while the PDA is dead. fix: You can
+      now hold a laptop up to a camera (if it has a notekeeper app installed) like
+      PDAs already could.'
+  Jacquerel and Fikou:
+  - qol: If the station rolls the "Cargo Gorilla" station trait. you will be able
+      to sign up for the role from the game lobby.
+  - qol: If nobody signs up to be the Cargo Gorilla then you can select it from the
+      Late Join menu and arrive on the arrival shuttle.
+  - bugfix: The Cargo Gorilla will actually spawn.
+  KannaLisvern:
+  - qol: Removed Bluespace Crystals and Diamonds from medical emergency bed's recipe.
+  LT3:
+  - qol: TGUI will now wait longer trying to reconnect to a new round
+  Rhials:
+  - qol: Obsessed crewmembers are now displayed in the orbit panel.
+  - qol: The Paradox Clone orbit menu tab is now white. Neat!
+  SkyratBot:
+  - bugfix: Fixed a bug that would give you the chat message "/datum/element/damage_threshold
+      looks unharmed!"
+  - bugfix: bridge assistant no longer passes some head of staff checks
+  - qol: if you steal a command member's liver, you can now sabre better!
+  - qol: NTNet Downloader now has a search bar, and programs are now better sorted.
+  - balance: Cyborg lover has been replaced with Transhumanist. Transhumanists start
+      with a robotic limb and get mood buffs by being near to silicon-based lifeforms.
+      However, they get mood debuffs by being near organics, so there is a tradeoff
+      to taking this quirk. The cost for this quirk has been reduced from 2 to 0.
+  - bugfix: lab coats no longer have directional sprites when thrown
+  - bugfix: Cut down a significant amount of time that caused the start of rounds
+      to lag.
+  - rscadd: Bridge Assistant job accessible from a station trait.
+  - rscadd: Infiltrators (Latejoin/Midround traitors) can now buy and use Contract
+      kits again.
+  - rscdel: Contractor baton can now only be purchased once.
+  - rscadd: The Spectre-Meter modular computer app. A little, amatuerishly coded app
+      that, as the name implies, scan an area for spectral presence. It can be found
+      amongst other apps in maintenance computer disks.
+  - rscadd: An easier, lazier version of the Arcade app, also found in maintenance.
+  - rscadd: Black market computer disks, which contains programs not readily available
+      to the average assistant.
+  - qol: MOD wearers and internal AIs can pin the individual actions in a MOD circuit
+      module in a similar way to how they can pin modules. Circuit module actions
+      can be pinned from the configuration menu of the circuit
+  - refactor: The MOD action and BCI action components have been merged into one component
+      - the Equipment Action component.
+  - code_imp: removed excess calls to `update_total()` making reaction code slightly
+      faster.
+  - code_imp: removed excessive use of chemical constants (quantisation & rounding
+      constants) in places where they were not needed i.e. plumbing buffer, reaction
+      chamber, pyrotechnics & the liver.
+  - rscadd: You can now look up and down through the IC menu
+  - rscadd: Adds a mint condition clear PDA to the Goodies menu for 100,000 credits.
+  - rscadd: Added weapon recharger boards to designs available to print on sec techfab.
+  - bugfix: Camera console search should update automatically
+  - bugfix: Autolathe search should now properly show designs
+  - bugfix: polymorphing into drone no longer gibs
+  jjpark-kb:
+  - balance: (dec) ash combat plates are now to be equipped in the under slot rather
+      than the suit slot
+  theselfish:
+  - rscadd: Multiple titles have been added.
+  - bugfix: You can select Cargo Tech and Shaft Miner, again.
+  zeroisthebiggay:
+  - image: bluesec MODsuits. finally goddamn

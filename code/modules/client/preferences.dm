@@ -325,9 +325,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			return TRUE
 
 		if ("open_loadout")
-			if(parent.open_loadout_ui)
-				parent.open_loadout_ui.ui_interact(usr)
+			var/datum/loadout_manager/open_loadout_ui = parent.open_loadout_ui?.resolve()
+			if(open_loadout_ui)
+				open_loadout_ui.ui_interact(usr)
 			else
+				parent.open_loadout_ui = null
 				var/datum/loadout_manager/tgui = new(usr)
 				tgui.ui_interact(usr)
 			return TRUE
@@ -621,7 +623,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/should_be_random_hardcore(datum/job/job, datum/mind/mind)
 	if(!read_preference(/datum/preference/toggle/random_hardcore))
 		return FALSE
-	if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) //No command staff
+	if(job.job_flags & JOB_HEAD_OF_STAFF) //No heads of staff
 		return FALSE
 	for(var/datum/antagonist/antag as anything in mind.antag_datums)
 		if(antag.get_team()) //No team antags
