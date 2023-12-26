@@ -4,6 +4,7 @@
 		the side reads, 'Mass robot production facility'"
 	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "separator-AO1"
+	base_icon_state = "separator-AO0"
 	layer = ABOVE_ALL_MOB_LAYER // Overhead
 	density = TRUE
 	/// How many cyborgs are we storing
@@ -12,31 +13,18 @@
 	var/max_stored_cyborgs = 4
 	// How much time between the spawning of new cyborgs?
 	var/cooldown_duration = 1 MINUTES
+	/// Handles the Cyborg spawner timer.
+	var/cooldown_timer = 0
+	/// Whether we're on spawn cooldown
+	var/cooldown = FALSE
 	/// How much time between the storing of cyborgs?
 	var/stored_duration = 5 MINUTES
 	/// Handles the stored Cyborg timer.
-	var/stored_timer
-	/// Whether we're on spawn cooldown
-	var/cooldown = FALSE
-	/// Handles the Cyborg spawner timer.
-	var/cooldown_timer
+	var/stored_timer = 0
 	/// The countdown itself
 	var/obj/effect/countdown/transformer_rp/countdown
 	/// The master AI , assigned when placed down with the ability.
 	var/mob/living/silicon/ai/master_ai
-
-/obj/effect/countdown/transformer_rp
-	name = "transformer countdown"
-	color = "#4C5866"
-
-/obj/effect/countdown/transformer_rp/get_value()
-	var/obj/machinery/transformer_rp/T = attached_to
-	if(!istype(T))
-		return
-	if(T.cooldown || (T.stored_cyborgs > 0))
-		return "[round(max(0, (T.cooldown_timer - world.time) / 10))]"
-	if(T.stored_cyborgs == 0)
-		return "[round(max(0, (T.stored_timer - world.time) / 10))]"
 
 /obj/machinery/transformer_rp/Initialize(mapload)
 	// On us
@@ -63,9 +51,9 @@
 /obj/machinery/transformer_rp/update_icon_state()
 	. = ..()
 	if(machine_stat & (BROKEN|NOPOWER))
-		icon_state = "separator-AO0"
+		icon_state = base_icon_state
 	else
-		icon_state = initial(icon_state)
+		icon_state = "separator-AO1"
 
 /obj/machinery/transformer_rp/attack_ghost(mob/dead/observer/target_ghost)
 	. = ..()
