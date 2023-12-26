@@ -67,7 +67,7 @@
 	. = ..()
 	alpha = starting_alpha
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 	our_controller = incoming_controller

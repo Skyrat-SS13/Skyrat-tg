@@ -44,21 +44,21 @@
 	to_chat(infected_human, span_hypnophrase("Your mind feels at ease, your mind feels one with the flesh."))
 	to_chat(infected_human, span_userdanger("IMPORTANT INFO, MUST READ: [CONTROLLED_MOB_POLICY]"))
 
-	RegisterSignal(infected_human, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/update_parent_overlays)
-	RegisterSignal(infected_human, COMSIG_ATOM_EXAMINE, .proc/on_examine)
-	RegisterSignal(infected_human, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
-	RegisterSignal(infected_human, COMSIG_LIVING_DEATH, .proc/host_death)
+	RegisterSignal(infected_human, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(update_parent_overlays))
+	RegisterSignal(infected_human, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(infected_human, COMSIG_ATOM_EMP_ACT, PROC_REF(emp_act))
+	RegisterSignal(infected_human, COMSIG_LIVING_DEATH, PROC_REF(host_death))
 
 	if(our_controller)
 		for(var/obj/structure/fleshmind/structure/core/iterating_core in our_controller.cores)
-			RegisterSignal(iterating_core, COMSIG_QDELETING, .proc/core_death)
+			RegisterSignal(iterating_core, COMSIG_QDELETING, PROC_REF(core_death))
 
 	// Action generation and granting
 	for(var/iterating_action as anything in actions_to_give)
 		var/datum/action/new_action = new iterating_action
 		new_action.Grant(infected_human)
 		granted_actions += new_action
-		RegisterSignal(new_action, COMSIG_QDELETING, .proc/action_destroyed)
+		RegisterSignal(new_action, COMSIG_QDELETING, PROC_REF(action_destroyed))
 
 	infected_human.faction |= FACTION_FLESHMIND
 
@@ -128,7 +128,7 @@
 		return
 
 	parent_movable.add_filter("corruption_glow", 2, list("type" = "outline", "color" = FLESHMIND_LIGHT_BLUE, "size" = 2))
-	addtimer(CALLBACK(src, .proc/start_glow_loop, parent_movable), rand(0.1 SECONDS, 1.9 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(start_glow_loop), parent_movable), rand(0.1 SECONDS, 1.9 SECONDS))
 
 /datum/component/human_corruption/proc/start_glow_loop(atom/movable/parent_movable)
 	var/filter = parent_movable.get_filter("corruption_glow")

@@ -42,7 +42,7 @@
 	if(activation_range)
 		calculate_trigger_turfs()
 	if(automatic_trigger_time_lower)
-		addtimer(CALLBACK(src, .proc/automatic_trigger), rand(automatic_trigger_time_lower, automatic_trigger_time_upper))
+		addtimer(CALLBACK(src, PROC_REF(automatic_trigger)), rand(automatic_trigger_time_lower, automatic_trigger_time_upper))
 	if(immediate_trigger)
 		activate_ability()
 
@@ -63,7 +63,7 @@
  */
 /obj/structure/fleshmind/structure/proc/calculate_trigger_turfs()
 	for(var/turf/open/seen_turf in RANGE_TURFS(activation_range, src))
-		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
+		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, PROC_REF(proximity_trigger))
 
 /**
  * Proximity trigger - INTERNAL PROC
@@ -97,7 +97,7 @@
 	activate_ability(arriving_mob)
 
 /obj/structure/fleshmind/structure/proc/automatic_trigger()
-	addtimer(CALLBACK(src, .proc/activate_ability), rand(automatic_trigger_time_lower, automatic_trigger_time_upper))
+	addtimer(CALLBACK(src, PROC_REF(activate_ability)), rand(automatic_trigger_time_lower, automatic_trigger_time_upper))
 	if(disabled)
 		return
 	if(requires_controller && !our_controller)
@@ -139,7 +139,7 @@
 	balloon_alert_to_viewers("grinds to a hault")
 	Shake(10, 0, duration)
 	disabled = TRUE
-	addtimer(CALLBACK(src, .proc/enable), duration)
+	addtimer(CALLBACK(src, PROC_REF(enable)), duration)
 	update_appearance()
 
 /**
@@ -661,7 +661,7 @@
 
 	var/mob/living/simple_animal/hostile/fleshmind/spawned_mob = our_controller.spawn_mob(get_turf(src), chosen_mob_type)
 
-	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
+	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
 

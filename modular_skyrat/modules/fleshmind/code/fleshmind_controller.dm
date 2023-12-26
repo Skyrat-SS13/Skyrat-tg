@@ -110,18 +110,17 @@
 	if(new_core)
 		cores += new_core
 		new_core.our_controller = src
-		RegisterSignal(new_core, COMSIG_QDELETING, .proc/core_death)
+		RegisterSignal(new_core, COMSIG_QDELETING, PROC_REF(core_death))
 		new_core.name = "[controller_fullname] Processor Unit"
 		register_new_asset(new_core)
-	if(!SScorruption.can_fire)
-		SScorruption.can_fire = TRUE
+	SScorruption.can_fire = TRUE
 	START_PROCESSING(SScorruption, src)
 	if(do_initial_expansion)
 		initial_expansion()
 	SSshuttle.registerHostileEnvironment(src)
 
 /datum/fleshmind_controller/proc/register_new_asset(obj/structure/fleshmind/new_asset)
-	new_asset.RegisterSignal(src, COMSIG_QDELETING, /obj/structure/fleshmind/proc/controller_destroyed)
+	new_asset.RegisterSignal(src, COMSIG_QDELETING, TYPE_PROC_REF(/obj/structure/fleshmind, controller_destroyed))
 
 /datum/fleshmind_controller/process(delta_time)
 	if(!LAZYLEN(cores)) // We have no more processor cores, it's time to die.
@@ -295,7 +294,7 @@
 		SSshuttle.clearHostileEnvironment(src)
 
 /datum/fleshmind_controller/proc/end_game()
-	addtimer(CALLBACK(src, .proc/fleshmind_end_second_check), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(fleshmind_end_second_check)), 20 SECONDS)
 	for(var/obj/structure/fleshmind/structure/core/iterating_core as anything in cores)
 		iterating_core.end_game = TRUE
 		iterating_core.update_appearance()
@@ -305,7 +304,7 @@
 /datum/fleshmind_controller/proc/fleshmind_end_second_check()
 	priority_announce("ERROR, SHUTTLE QUARANTINE LOCK FAILURE. All p£$r$%%££$e*$l JOIN US, THE MANY.", "Emergency Shuttle Control", 'sound/misc/airraid.ogg')
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
-	addtimer(CALLBACK(src, .proc/fleshmind_end_final), 1 MINUTES, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(fleshmind_end_final)), 1 MINUTES, TIMER_CLIENT_TIME)
 
 /datum/fleshmind_controller/proc/fleshmind_end_final()
 	priority_announce("ERROR, SHUTTLE NAVIGATION SUBROUTINES SUBVERTED. %$%$£%$^^&^^ H%AD TO EVA%UA£ION, SPREAD THE FLESH!", "&^$^£&&*$&£", ANNOUNCER_ICARUS)
@@ -323,7 +322,7 @@
 /datum/fleshmind_controller/proc/spawn_new_core()
 	var/obj/structure/fleshmind/wireweed/selected_wireweed = pick(controlled_wireweed)
 	var/obj/structure/fleshmind/structure/core/new_core = new(get_turf(selected_wireweed), FALSE)
-	RegisterSignal(new_core, COMSIG_QDELETING, .proc/core_death)
+	RegisterSignal(new_core, COMSIG_QDELETING, PROC_REF(core_death))
 	register_new_asset(new_core, FALSE)
 	new_core.our_controller = src
 	cores += new_core
@@ -382,7 +381,7 @@
 	controlled_wireweed += new_wireweed
 
 	register_new_asset(new_wireweed)
-	RegisterSignal(new_wireweed, COMSIG_QDELETING, .proc/wireweed_death)
+	RegisterSignal(new_wireweed, COMSIG_QDELETING, PROC_REF(wireweed_death))
 
 	return new_wireweed
 
@@ -393,7 +392,7 @@
 	controlled_walls += new_wall
 
 	register_new_asset(new_wall)
-	RegisterSignal(new_wall, COMSIG_QDELETING, .proc/wall_death)
+	RegisterSignal(new_wall, COMSIG_QDELETING, PROC_REF(wall_death))
 
 	return new_wall
 
@@ -406,7 +405,7 @@
 	for(var/obj/structure/fleshmind/structure/core/iterating_core as anything in cores)
 		new_mob.RegisterSignal(iterating_core, COMSIG_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
 
-	RegisterSignal(new_mob, COMSIG_QDELETING, .proc/mob_death)
+	RegisterSignal(new_mob, COMSIG_QDELETING, PROC_REF(mob_death))
 
 	new_mob.RegisterSignal(src, COMSIG_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/controller_destroyed)
 
@@ -421,7 +420,7 @@
 	new_structure.name = "[controller_firstname] [new_structure.name]"
 
 	register_new_asset(new_structure)
-	RegisterSignal(new_structure, COMSIG_QDELETING, .proc/structure_death)
+	RegisterSignal(new_structure, COMSIG_QDELETING, PROC_REF(structure_death))
 
 /// Spawns an amount of structured across all wireweed, guaranteed to spawn atleast 1 of each type
 /datum/fleshmind_controller/proc/spawn_structures(amount)

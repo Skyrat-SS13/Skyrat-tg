@@ -83,18 +83,18 @@
 		return
 
 	if(incoming_controller)
-		RegisterSignal(incoming_controller, COMSIG_QDELETING, .proc/controller_death)
+		RegisterSignal(incoming_controller, COMSIG_QDELETING, PROC_REF(controller_death))
 		incoming_controller.RegisterSignal(src, COMSIG_QDELETING, /datum/fleshmind_controller/proc/component_death)
 
 	set_overlay = pick(possible_overlays)
 
 	var/obj/machinery/parent_machinery = parent
 
-	RegisterSignal(parent_machinery, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/handle_overlays)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(handle_overlays))
 
 	parent_machinery.update_appearance()
 
-	addtimer(CALLBACK(src, .proc/finish_setup, incoming_controller), COMPONENT_SETUP_TIME)
+	addtimer(CALLBACK(src, PROC_REF(finish_setup), incoming_controller), COMPONENT_SETUP_TIME)
 
 /datum/component/machine_corruption/proc/finish_setup(datum/fleshmind_controller/incoming_controller)
 	var/obj/machinery/parent_machinery = parent
@@ -107,11 +107,11 @@
 		qdel(parent_machinery)
 		return
 
-	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
-	RegisterSignal(parent_machinery, COMSIG_ATOM_EXAMINE, .proc/on_examine)
-	RegisterSignal(parent_machinery, COMSIG_ATOM_ATTACK_HAND, .proc/handle_attack_hand)
-	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
-	RegisterSignal(parent_machinery, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, PROC_REF(react_to_damage))
+	RegisterSignal(parent_machinery, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent_machinery, COMSIG_ATOM_ATTACK_HAND, PROC_REF(handle_attack_hand))
+	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, PROC_REF(handle_destruction))
+	RegisterSignal(parent_machinery, COMSIG_ATOM_EMP_ACT, PROC_REF(emp_act))
 
 	update_name()
 

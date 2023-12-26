@@ -136,7 +136,7 @@
 	if(COOLDOWN_FINISHED(src, rocket_pod_cooldown) && target)
 		balloon_alert_to_viewers("begins whirring violently!")
 		playsound(src, 'modular_skyrat/modules/fleshmind/sound/tyrant/charge_up.ogg', 100, TRUE)
-		addtimer(CALLBACK(src, .proc/fire_rocket_pods, target), rocket_pod_charge_up_time)
+		addtimer(CALLBACK(src, PROC_REF(fire_rocket_pods), target), rocket_pod_charge_up_time)
 		COOLDOWN_START(src, rocket_pod_cooldown, rand(rocket_pod_cooldown_time_lower, rocket_pod_cooldown_time_upper))
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Destroy()
@@ -168,7 +168,7 @@
 	if(!target_atom || QDELETED(target_atom))
 		return
 	if(barrage > 1)
-		var/datum/callback/callback = CALLBACK(src, .proc/fire_custom_projectile, target_atom, rocket_projectile_type, rocket_projectile_sound)
+		var/datum/callback/callback = CALLBACK(src, PROC_REF(fire_custom_projectile), target_atom, rocket_projectile_type, rocket_projectile_sound)
 		for(var/i in 1 to barrage)
 			addtimer(callback, (i - 1) * barrage_interval)
 	else

@@ -230,7 +230,7 @@
 	say(pick("Running diagnostics. Please stand by.", "Organ damaged. Synthesizing replacement.", "Seek new organic components. I-it hurts.", "New muscles needed. I-I'm so glad my body still works.", "O-Oh God, are they using ion weapons on us..?", "Limbs unresponsive. H-hey! Fix it! System initializing.", "Bad t-time, bad time, they're trying to kill us here!",))
 	toggle_ai(AI_OFF)
 	suffering_malfunction = TRUE
-	addtimer(CALLBACK(src, .proc/malfunction_reset), reset_time)
+	addtimer(CALLBACK(src, PROC_REF(malfunction_reset)), reset_time)
 
 /**
  * Malfunction Reset
@@ -279,8 +279,8 @@
 /mob/living/simple_animal/hostile/fleshmind/proc/core_death(obj/structure/fleshmind/structure/core/deleting_core, force)
 	SIGNAL_HANDLER
 
-	INVOKE_ASYNC(src, .proc/core_death_speech)
-	INVOKE_ASYNC(src, .proc/malfunction, MALFUNCTION_CORE_DEATH_RESET_TIME)
+	INVOKE_ASYNC(src, PROC_REF(core_death_speech))
+	INVOKE_ASYNC(src, PROC_REF(malfunction), MALFUNCTION_CORE_DEATH_RESET_TIME)
 
 
 // Mob subtypes
@@ -1087,7 +1087,7 @@
 	animate(src, pixel_x=init_px + 16*pick(-1, 1), time = 5)
 	animate(pixel_x=init_px, time=6, easing=SINE_EASING)
 	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, .proc/phase_jump, new_place), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(phase_jump, new_place)), 0.5 SECONDS)
 	SEND_SIGNAL(src, COMSIG_PHASER_PHASE_MOVE, target_atom, nearby)
 
 /mob/living/simple_animal/hostile/fleshmind/phaser/proc/phase_jump(turf/place)
@@ -1233,7 +1233,7 @@
 	animate(src, pixel_x = init_px + 16 * pick(-1, 1), time=5)
 	animate(pixel_x = init_px, time = 6, easing = SINE_EASING)
 	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, .proc/phase_jump, new_place), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(phase_jump, new_place)), 0.5 SECONDS)
 
 /obj/effect/temp_visual/phaser/proc/phase_jump(turf/target_turf)
 	playsound(target_turf, 'sound/effects/phasein.ogg', 60, 1)
@@ -1407,7 +1407,7 @@
 	hatch_open = TRUE
 	update_appearance()
 	flick("[base_icon_state]-opening_wires", src)
-	addtimer(CALLBACK(src, .proc/close_hatch), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(close_hatch)), 1 SECONDS)
 	contained_mob = target_mob
 	target_mob.forceMove(src)
 
@@ -1415,7 +1415,7 @@
 	visible_message(span_danger("[src] consumes [target_mob]!"))
 	playsound(src, 'sound/effects/blobattack.ogg', 70, 1)
 
-	addtimer(CALLBACK(src, .proc/release_mob), conversion_time)
+	addtimer(CALLBACK(src, PROC_REF(release_mob)), conversion_time)
 
 /mob/living/simple_animal/hostile/fleshmind/mechiver/proc/close_hatch()
 	hatch_open = FALSE
@@ -1429,7 +1429,7 @@
 	hatch_open = TRUE
 	update_appearance()
 	flick("[base_icon_state]-opening", src)
-	addtimer(CALLBACK(src, .proc/close_hatch), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(close_hatch)), 1 SECONDS)
 	contained_mob.forceMove(get_turf(src))
 	convert_mob(contained_mob)
 	contained_mob = null
