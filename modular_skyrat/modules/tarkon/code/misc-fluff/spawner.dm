@@ -87,7 +87,7 @@
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/advanced/tarkon/engi
 	id_trim = /datum/id_trim/away/tarkon/eng
-	gloves = /obj/item/clothing/gloves/combat
+	neck = /obj/item/clothing/neck/security_cape/tarkon
 	l_hand = /obj/item/inducer
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	r_pocket = /obj/item/stack/cable_coil
@@ -101,6 +101,7 @@
 	uniform = /obj/item/clothing/under/tarkon/sec
 	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	gloves = /obj/item/clothing/gloves/tackler/combat
+	neck = /obj/item/clothing/neck/security_cape/tarkon
 	id = /obj/item/card/id/advanced/tarkon/sec
 	id_trim = /datum/id_trim/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
@@ -124,8 +125,7 @@
 	ears = /obj/item/radio/headset/tarkon/command
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
-	neck = /obj/item/clothing/neck/security_cape/armplate
-	gloves = /obj/item/clothing/gloves/combat
+	neck = /obj/item/clothing/neck/security_cape/tarkon
 	l_pocket = null
 	r_pocket = null
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
@@ -151,8 +151,7 @@
 	ears = /obj/item/radio/headset/tarkon/command
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
-	neck = /obj/item/clothing/neck/security_cape/armplate
-	gloves = /obj/item/clothing/gloves/combat
+	neck = /obj/item/clothing/neck/security_cape/tarkon
 	l_pocket = null
 	r_pocket = null
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
@@ -165,7 +164,7 @@
 	ears = /obj/item/radio/headset/tarkon/command
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
-	neck = /obj/item/clothing/neck/security_cape/armplate
+	neck = /obj/item/clothing/neck/security_cape/tarkon
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/mod/control/pre_equipped/tarkon
 	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 5, /obj/effect/spawner/random/astrum/sci_loot)
