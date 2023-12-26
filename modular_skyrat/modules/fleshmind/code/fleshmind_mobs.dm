@@ -1087,7 +1087,7 @@
 	animate(src, pixel_x=init_px + 16*pick(-1, 1), time = 5)
 	animate(pixel_x=init_px, time=6, easing=SINE_EASING)
 	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, PROC_REF(phase_jump, new_place)), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(phase_jump), new_place), 0.5 SECONDS)
 	SEND_SIGNAL(src, COMSIG_PHASER_PHASE_MOVE, target_atom, nearby)
 
 /mob/living/simple_animal/hostile/fleshmind/phaser/proc/phase_jump(turf/place)
@@ -1233,7 +1233,7 @@
 	animate(src, pixel_x = init_px + 16 * pick(-1, 1), time=5)
 	animate(pixel_x = init_px, time = 6, easing = SINE_EASING)
 	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, PROC_REF(phase_jump, new_place)), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(phase_jump), new_place), 0.5 SECONDS)
 
 /obj/effect/temp_visual/phaser/proc/phase_jump(turf/target_turf)
 	playsound(target_turf, 'sound/effects/phasein.ogg', 60, 1)
