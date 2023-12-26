@@ -101,7 +101,7 @@ const ResearchSection = (props) => {
   const { act, data } = useBackend<Data>();
   return (
     <Stack vertical>
-      <Stack.Item fill>
+      <Stack.Item>
         <Section fill title="Basic Research">
           <div style={{ textAlign: 'center' }}>
             {ResearchNode(data.starting_research, act)}

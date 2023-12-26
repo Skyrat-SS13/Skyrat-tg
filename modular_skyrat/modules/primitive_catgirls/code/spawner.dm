@@ -28,12 +28,37 @@
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Initialize(mapload)
 	. = ..()
 	team = new /datum/team/primitive_catgirls()
-
 	important_text = "Read the full policy <a href=\"[CONFIG_GET(string/icecats_policy_link)]\">here</a>."
+	START_PROCESSING(SSprocessing, src)
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
 	team = null
+	STOP_PROCESSING(SSprocessing, src)
 	return ..()
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/process(seconds_per_tick)
+	consume()
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/proc/consume()
+	for(var/mob/living/consumed_mob in range(1, src))
+		if(!consumed_mob.stat) //so ! means that they are conscious
+			continue
+
+		if(ismegafauna(consumed_mob))
+			uses += 5
+
+		else
+			uses += 1
+
+		visible_message(span_warning("[consumed_mob] slowly and with finality falls into [src]. There was no thump..."))
+
+		var/delivery_key = consumed_mob.fingerprintslast
+		var/mob/living/delivery_mob = get_mob_by_key(delivery_key)
+		if(delivery_mob && (delivery_mob.mind?.has_antag_datum(/datum/antagonist/primitive_catgirl)) && (delivery_key in team.players_spawned) && (prob(60)))
+			to_chat(delivery_mob, span_warning("A strange feeling fills your chest. [src] seems to echo your name, pleased..."))
+			team.players_spawned -= delivery_key
+
+		qdel(consumed_mob)
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/examine()
 	. = ..()
@@ -58,7 +83,7 @@
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/primitive_catgirl, team)
 
-	team.players_spawned += (spawned_human.key)
+	team.players_spawned += (spawned_human.ckey)
 
 /datum/job/primitive_catgirl
 	title = "Icemoon Dweller"

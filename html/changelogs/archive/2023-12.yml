@@ -826,3 +826,155 @@
   - bugfix: removed nonfunctional tutorial button
   xXPawnStarrXx:
   - image: Made Skyrat Christmas clothes GAGS compatable.
+2023-12-25:
+  Gandalf2k15:
+  - rscadd: PDAs with a dead power cell are now limited to using their Messenger app.
+  - bugfix: Microwaves now stop charging PDAs if the cell was removed mid-charge.
+  - bugfix: Microwaves can now charge laptops.
+  - bugfix: 'PDA Flashlights can''t be turned on while the PDA is dead. fix: You can
+      now hold a laptop up to a camera (if it has a notekeeper app installed) like
+      PDAs already could.'
+  Jacquerel and Fikou:
+  - qol: If the station rolls the "Cargo Gorilla" station trait. you will be able
+      to sign up for the role from the game lobby.
+  - qol: If nobody signs up to be the Cargo Gorilla then you can select it from the
+      Late Join menu and arrive on the arrival shuttle.
+  - bugfix: The Cargo Gorilla will actually spawn.
+  KannaLisvern:
+  - qol: Removed Bluespace Crystals and Diamonds from medical emergency bed's recipe.
+  LT3:
+  - qol: TGUI will now wait longer trying to reconnect to a new round
+  Rhials:
+  - qol: Obsessed crewmembers are now displayed in the orbit panel.
+  - qol: The Paradox Clone orbit menu tab is now white. Neat!
+  SkyratBot:
+  - bugfix: Fixed a bug that would give you the chat message "/datum/element/damage_threshold
+      looks unharmed!"
+  - bugfix: bridge assistant no longer passes some head of staff checks
+  - qol: if you steal a command member's liver, you can now sabre better!
+  - qol: NTNet Downloader now has a search bar, and programs are now better sorted.
+  - balance: Cyborg lover has been replaced with Transhumanist. Transhumanists start
+      with a robotic limb and get mood buffs by being near to silicon-based lifeforms.
+      However, they get mood debuffs by being near organics, so there is a tradeoff
+      to taking this quirk. The cost for this quirk has been reduced from 2 to 0.
+  - bugfix: lab coats no longer have directional sprites when thrown
+  - bugfix: Cut down a significant amount of time that caused the start of rounds
+      to lag.
+  - rscadd: Bridge Assistant job accessible from a station trait.
+  - rscadd: Infiltrators (Latejoin/Midround traitors) can now buy and use Contract
+      kits again.
+  - rscdel: Contractor baton can now only be purchased once.
+  - rscadd: The Spectre-Meter modular computer app. A little, amatuerishly coded app
+      that, as the name implies, scan an area for spectral presence. It can be found
+      amongst other apps in maintenance computer disks.
+  - rscadd: An easier, lazier version of the Arcade app, also found in maintenance.
+  - rscadd: Black market computer disks, which contains programs not readily available
+      to the average assistant.
+  - qol: MOD wearers and internal AIs can pin the individual actions in a MOD circuit
+      module in a similar way to how they can pin modules. Circuit module actions
+      can be pinned from the configuration menu of the circuit
+  - refactor: The MOD action and BCI action components have been merged into one component
+      - the Equipment Action component.
+  - code_imp: removed excess calls to `update_total()` making reaction code slightly
+      faster.
+  - code_imp: removed excessive use of chemical constants (quantisation & rounding
+      constants) in places where they were not needed i.e. plumbing buffer, reaction
+      chamber, pyrotechnics & the liver.
+  - rscadd: You can now look up and down through the IC menu
+  - rscadd: Adds a mint condition clear PDA to the Goodies menu for 100,000 credits.
+  - rscadd: Added weapon recharger boards to designs available to print on sec techfab.
+  - bugfix: Camera console search should update automatically
+  - bugfix: Autolathe search should now properly show designs
+  - bugfix: polymorphing into drone no longer gibs
+  jjpark-kb:
+  - balance: (dec) ash combat plates are now to be equipped in the under slot rather
+      than the suit slot
+  theselfish:
+  - rscadd: Multiple titles have been added.
+  - bugfix: You can select Cargo Tech and Shaft Miner, again.
+  zeroisthebiggay:
+  - image: bluesec MODsuits. finally goddamn
+2023-12-26:
+  A.C.M.O.:
+  - rscadd: Added the forked cybernetic tongue to Augments+.
+  - rscadd: Added the robotic lizard voicebox to Augments+ and the RoboDrobe vendor.
+  - bugfix: Fixed Personal AI cards, allowing them to wake up from sleep.
+  Gandalf2k15:
+  - rscadd: Epsilon alert level.
+  JungleRat:
+  - image: Adds a buzzed effect to the left side of half shaved instead of leaving
+      it bald.
+  LT3:
+  - code_imp: Announcement CSS is reverted to TG default
+  Lutowski:
+  - rscadd: Void Raptor pharmacy and lab is slightly more spacious and prettier.
+  - qol: Chem vendor moved from pharmacy to chemistry lab on Void Raptor.
+  MelokGleb and KREKS:
+  - image: modified wizard weapon textures
+  Nikothedude:
+  - rscadd: Pet owners can now name and describe their pet
+  SkyratBot:
+  - refactor: Ghost roles now offer ghosts a clickable poll button. Ghosts can select
+      a role, deselect it, alt-click it for "Never For This Round", can cancel "Never",
+      can see the countdown, and can see how many other people are signed up for the
+      role poll.
+  - rscadd: Added the 'Coupon Master' program for the PDA. Install it to receive periodical,
+      redeemable coupons for several cargo packs. Requires NTnet connection and the
+      messenger enabled to work.
+  - rscadd: Coupons are no longer only limited to goodies, but may also apply discount
+      to some other packs as well.
+  - bugfix: Regal rats (and others), won't be punished by the automute system for
+      repeating the same command several times.
+  - bugfix: LUA editor should be usable again
+  - bugfix: fixing damaged sandy dirt lacking an icon
+  - bugfix: plumbing rcd ui no longer has any graphical glitches
+  - bugfix: fixes a potential mob hard del with cardboard boxes
+  - qol: You can now build multiple pipe layers with the RPD, with just 1 click!
+  - bugfix: mat container displays correct number of sheets inserted for alloy materials.
+  - bugfix: remote materials now properly respect the `MATCONTAINER_NO_INSERT` flag.
+  - code_imp: removes material breakdown flags and related traits.
+  - code_imp: adds helper proc to insert materials via the remote material component
+      with proper context.
+  - spellcheck: changes mutiline text to multiline text in vv
+  - bugfix: Camera circuits actually print pictures again!
+  - qol: Camera circuits can now take pictures while on a carbon, whether held, hung
+      around the neck, or sneakily hidden in either pocket. When held they try to
+      deposit their pictures into the holder's hands if possible.
+  - bugfix: Camera circuits should now actually use the camera's x axis picture size,
+      rather than using the camera's y axis picture size setting for both axis.
+  - bugfix: AI voice changer UI should show defaults properly
+  - bugfix: NTOS Software Hub should focus on the input immediately now
+  - bugfix: Ore container UI should autofocus on the search bar now
+  - bugfix: Vend-a-tray registration text should display as intended
+  - qol: Wendigo Cave ruin gets an aesthetic refresh
+  - bugfix: Wendigos (Wendigi?) no longer attack corpses
+  - bugfix: fixes a hard del with thrown items
+  - bugfix: Fixed integrated circuit UI breaking.
+  - rscadd: Canisters now have wires! You can pulse wires to do various canister functions
+      like opening/closing the valve. Make sure it has a cell though.
+  - rscadd: You can rig assembly combos (igniter-timer, prox-signaler, etc.) onto
+      canisters
+  - qol: Canisters now have screentips
+  - bugfix: debug chem heater now withdraws more than 100 units from its inserted
+      beaker.
+  - bugfix: chem heater has correct overlay when its panel is closed with a screwdriver
+      while a beaker is inside.
+  - qol: added more examines and tooltips for the chem heater.
+  - code_imp: converted chem heater UI to typescript. removed unused procs, vars,
+      ui tracking code. Added auto doc for everything.
+  - refactor: removed chem heater tutorial help button & its related reward, chem
+      heater code has been optimized as a whole.
+  Thlumyn:
+  - rscadd: Added and moved some areas in the ghost cafe.
+  - rscadd: Added an icewalker section to the ghost cafe.
+  - rscadd: Added an ashwalker section to the ghost cafe.
+  honkpocket:
+  - balance: Blueshift's vault, armoury, AI upload and prison are a little more antag
+      friendly!
+  jjpark-kb:
+  - rscadd: added the crusher to mining borgs
+  - rscadd: added a cursed ashen necklace to loadout (allows you to understand and
+      speak to ashwalkers)
+  - rscadd: icecats(?) can now respawn, similarly to ashwalkers
+  zeroisthebiggay:
+  - rscadd: icewalkers can be digitigrade
