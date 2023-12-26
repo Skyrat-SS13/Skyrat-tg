@@ -1,7 +1,7 @@
 // Low caliber grenade launcher (fun & games)
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher
-	name = "\improper Carwo 'Kiboko' Grenade Launcher"
+	name = "\improper Kiboko Grenade Launcher"
 	desc = "A unique grenade launcher firing .980 grenades. A laser sight system allows its user to specify a range for the grenades it fires to detonate at."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
@@ -42,6 +42,10 @@
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
+
+/obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine_more(mob/user)
 	. = ..()
