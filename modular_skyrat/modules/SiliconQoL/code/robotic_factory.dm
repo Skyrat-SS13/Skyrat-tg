@@ -81,7 +81,7 @@
 
 	stored_timer = world.time + stored_duration
 
-	if(stored_cyborgs > max_stored_cyborgs)
+	if(stored_cyborgs >= max_stored_cyborgs)
 		return
 
 	stored_cyborgs++
