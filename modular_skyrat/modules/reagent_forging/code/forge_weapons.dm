@@ -293,6 +293,8 @@
 		else
 			playsound(src, 'sound/weapons/parry.ogg', 75, TRUE)
 			owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
+		var/owner_turf = get_turf(owner)
+		new block_effect(owner_turf, COLOR_YELLOW)
 		return TRUE
 	return FALSE
 
