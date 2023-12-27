@@ -34,6 +34,12 @@
 	countdown = new(src)
 	countdown.start()
 
+/obj/machinery/transformer_rp/on_set_is_operational(old_value)
+	if(old_value)
+		end_processing()
+	else
+		begin_processing()
+
 /obj/machinery/transformer_rp/examine(mob/user)
 	. = ..()
 	if(issilicon(user) || isobserver(user))
