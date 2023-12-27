@@ -1,8 +1,7 @@
 // THIS IS A SKYRAT UI FILE
 import { Fragment } from 'react';
-import { useState } from 'react';
 
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import {
   Box,
   Button,
@@ -34,7 +33,10 @@ const convertPower = (power_in) => {
 };
 
 export const ClockworkSlab = (props) => {
-  const [selectedTab, setSelectedTab] = useState('Servitude');
+  const [selectedTab, setSelectedTab] = useLocalState(
+    'selectedTab',
+    'Servitude',
+  );
   return (
     <Window theme="clockwork" width={860} height={700}>
       <Window.Content>
@@ -334,19 +336,16 @@ const ClockworkOverviewStat = (props) => {
 };
 
 const ClockworkButtonSelection = (props) => {
-  const [selectedTab, setSelectedTab] = useState({});
+  const [selectedTab, setSelectedTab] = useLocalState('selectedTab', {});
   const tabs = ['Servitude', 'Preservation', 'Structures'];
   return (
     <Table>
       <Table.Row>
         {tabs.map((tab) => (
           <Table.Cell key={tab} collapsing>
-            <Button
-              key={tab}
-              fluid
-              content={tab}
-              onClick={() => setSelectedTab(tab)}
-            />
+            <Button key={tab} fluid onClick={() => setSelectedTab(tab)}>
+              {tab}
+            </Button>
           </Table.Cell>
         ))}
       </Table.Row>
