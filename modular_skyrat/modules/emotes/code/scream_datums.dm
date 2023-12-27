@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/cat
 	name = "Cat Scream"
-	male_screamsounds = list('modular_nova/modules/emotes/sound/voice/scream_cat.ogg')
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_cat.ogg')
 	female_screamsounds = null
 
 /datum/scream_type/moth
