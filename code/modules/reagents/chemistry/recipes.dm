@@ -60,6 +60,7 @@
 	///A bitflag var for tagging reagents for the reagent loopup functon
 	var/reaction_tags = NONE
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	///If defined, it'll emitt that pollutant on reaction
 	var/pollutant_type
@@ -82,6 +83,8 @@
 	return
 
 
+=======
+>>>>>>> a3dc0d1a939 (Deletes roundstart chemical reaction callback thing (#80618))
 ///REACTION PROCS
 
 /**
