@@ -7,7 +7,7 @@
 	light_color = LIGHT_COLOR_HALOGEN
 	tool_behaviour = NONE
 	toolspeed = 0.2
-	power_use_amount = POWER_CELL_USE_LOW
+	power_use_amount = 30
 	// We don't use fuel
 	change_icons = FALSE
 	var/cell_override = /obj/item/stock_parts/cell/high

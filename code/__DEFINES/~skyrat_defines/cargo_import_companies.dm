@@ -21,8 +21,3 @@
 #define SOL_DEFENSE_DEFENSE_NAME "Sol Defense Imports"
 #define MICROSTAR_ENERGY_NAME "MicroStar Energy Weapon Coalition"
 #define VITEZSTVI_AMMO_NAME "Vitezstvi Ammo & Weapon Accessories"
-
-#define COMPANY_INTEREST_GAIN_BIG 10
-#define COMPANY_INTEREST_GAIN_AVERAGE 5
-#define COMPANY_INTEREST_GAIN_LOW 3
-#define COMPANY_INTEREST_GAIN_PITIFUL 1

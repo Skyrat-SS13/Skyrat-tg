@@ -1,5 +1,5 @@
 /datum/armament_entry/hecu/medical
-	category = ARMAMENT_CATEGORY_MEDICAL
+	category = "Medical Supplies"
 	category_item_limit = 20
 
 /datum/armament_entry/hecu/medical/defib
@@ -8,7 +8,7 @@
 	cost = 4
 
 /datum/armament_entry/hecu/medical/medkit
-	subcategory = ARMAMENT_SUBCATEGORY_MEDKIT
+	subcategory = "Medkits"
 
 /datum/armament_entry/hecu/medical/medkit/basic
 	item_type = /obj/item/storage/medkit/regular
@@ -46,7 +46,7 @@
 	cost = 5
 
 /datum/armament_entry/hecu/medical/injector
-	subcategory = ARMAMENT_SUBCATEGORY_INJECTOR
+	subcategory = "Injectors"
 
 /datum/armament_entry/hecu/medical/injector/bloodloss
 	item_type = /obj/item/reagent_containers/hypospray/medipen/blood_loss

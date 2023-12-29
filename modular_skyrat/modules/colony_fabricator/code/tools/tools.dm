@@ -138,7 +138,7 @@
 	light_range = 2
 	light_power = 0.75
 	toolspeed = 1
-	power_use_amount = POWER_CELL_USE_INSANE
+	power_use_amount = 100
 
 /obj/item/weldingtool/electric/arc_welder/Initialize(mapload)
 	. = ..()

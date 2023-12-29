@@ -24,7 +24,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	/// The item reference to parent.
 	var/obj/item/equipment
 	/// How much power do we use each process?
-	var/power_use_amount = POWER_CELL_USE_NORMAL
+	var/power_use_amount = 50
 	/// Are we using a robot's powersource?
 	var/inside_robot = FALSE
 	/// Callback interaction for when the cell is removed.

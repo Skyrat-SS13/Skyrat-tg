@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(armaments)
 			// only set the OTHER category if something can go inside it! This seems like a copy paste job, but it needs to be here.
 			if(!(ARMAMENT_CATEGORY_STANDARD in armament_dataset))
 				armament_dataset[ARMAMENT_CATEGORY_STANDARD] = list(CATEGORY_ENTRY, CATEGORY_LIMIT)
-				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_LIMIT] = ARMAMENT_CATEGORY_STANDARD_LIMIT
+				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_LIMIT] = 1
 			// We don't have home :( add us to the other category.
 			if(spawned_armament_entry.subcategory)
 				// Check to see if we've already made the subcategory.
@@ -124,3 +124,6 @@ SUBSYSTEM_DEF(armaments)
 
 /datum/armament_entry/proc/after_equip(turf/safe_drop_location, obj/item/item_to_equip)
 	return TRUE
+
+#undef ARMAMENT_CATEGORY_STANDARD
+#undef ARMAMENT_SUBCATEGORY_NONE

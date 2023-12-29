@@ -1,11 +1,11 @@
 /datum/armament_entry/hecu/primary
-	category = ARMAMENT_CATEGORY_PRIMARY
+	category = "Primary Weapons"
 	category_item_limit = 4
 	slot_to_equip = ITEM_SLOT_SUITSTORE
 	cost = 10
 
 /datum/armament_entry/hecu/primary/submachinegun
-	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
+	subcategory = "Submachine Guns"
 	mags_to_spawn = 4
 
 /datum/armament_entry/hecu/primary/submachinegun/sindano
@@ -19,7 +19,7 @@
 	cost = 8
 
 /datum/armament_entry/hecu/primary/assaultrifle
-	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
+	subcategory = "Assault Rifles"
 	mags_to_spawn = 3
 
 /datum/armament_entry/hecu/primary/assaultrifle/automaties
@@ -35,7 +35,7 @@
 	magazine = /obj/item/ammo_box/magazine/c40sol_rifle/standard
 
 /datum/armament_entry/hecu/primary/shotgun
-	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
+	subcategory = "Shotguns"
 	mags_to_spawn = 1
 	magazine = /obj/item/storage/box/ammo_box/shotgun_12g
 	magazine_cost = 4
@@ -51,7 +51,7 @@
 	cost = 7
 
 /datum/armament_entry/hecu/primary/special
-	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
+	subcategory = "Special Weapons"
 	mags_to_spawn = 2
 
 /datum/armament_entry/hecu/primary/special/sniper_rifle

@@ -1,9 +1,9 @@
 /datum/armament_entry/hecu/melee
-	category = ARMAMENT_CATEGORY_MELEE
+	category = "Melee Weapons"
 	category_item_limit = 4
 
 /datum/armament_entry/hecu/melee/lethal
-	subcategory = ARMAMENT_SUBCATEGORY_MELEE_LETHAL
+	subcategory = "Lethal Weaponry"
 
 /datum/armament_entry/hecu/melee/lethal/combat_knife
 	item_type = /obj/item/knife/combat
@@ -16,7 +16,7 @@
 	cost = 5
 
 /datum/armament_entry/hecu/melee/nonlethal
-	subcategory = ARMAMENT_SUBCATEGORY_MELEE_NONLETHAL
+	subcategory = "Non-Lethal Weaponry"
 
 /datum/armament_entry/hecu/melee/nonlethal/baton
 	item_type = /obj/item/melee/baton

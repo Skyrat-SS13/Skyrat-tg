@@ -1,13 +1,13 @@
 // Sacrificial armor has massive bullet protection, but gets damaged by being shot, thus, is sacrificing itself to protect the wearer
 /datum/armor/armor_sf_sacrificial
-	melee = ARMOR_LEVEL_WEAK
-	bullet = ARMOR_LEVEL_INSANE // When the level IV plates stop the bullet but not the energy transfer
-	laser = ARMOR_LEVEL_TINY
-	energy = ARMOR_LEVEL_TINY
-	bomb = ARMOR_LEVEL_MID
-	fire = ARMOR_LEVEL_MID
-	acid = ARMOR_LEVEL_WEAK
-	wound = WOUND_ARMOR_HIGH
+	melee = 30
+	bullet = 90 // When the level IV plates stop the bullet but not the energy transfer
+	laser = 10
+	energy = 10
+	bomb = 50
+	fire = 50
+	acid = 30
+	wound = 30
 
 /obj/item/clothing/suit/armor/sf_sacrificial
 	name = "'Val' sacrificial ballistic vest"
