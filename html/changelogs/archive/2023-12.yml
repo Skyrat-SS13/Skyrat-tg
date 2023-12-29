@@ -1010,3 +1010,27 @@
   - qol: Add UI screentips to spraycans
   - rscadd: basic bots can now display their paths on huds
   - bugfix: medbots can research healing again
+2023-12-29:
+  SkyratBot:
+  - bugfix: Fixed a lot of missing/broken images, such as emojis, language icons,
+      commendation hearts, icons in R&D menu, etc.
+  - bugfix: Fixed "was shocked by /datum/component/energized" message.
+  - rscdel: Removes the wires from canisters. It's a cool idea, but cheap controlled
+      maxcaps are bad actually
+  - refactor: Photo albums and photo frames are now more resilient to data loss, especially
+      when a server crashes.
+  - spellcheck: changes some let's to lets
+  - bugfix: Off station ORM's can redeem points again.
+  - rscadd: Add 50% graffiti speed boost to tagger quirk
+  - bugfix: Fix time duration of large graffiti not applying properly
+  - bugfix: reaction chamber open its UI when inserting/removing beakers from it
+  - bugfix: reaction chamber triggers new reactions & updates UI more often during
+      heating
+  - bugfix: instant and  normal reactions now get triggered more often so for e.g.
+      more plastic sheets from polymer reactions or more reactions occur when there
+      are multiple reagents present
+  - bugfix: Dear mappers, the light debugger tool no longer deletes dragged wall lights
+  - bugfix: NTOS Messenger should clear on enter now
+  - bugfix: ai can now tell if it is in a do_after for resisting and will not interrupt
+      it. monkeys also now don't freeze up when aggressively grabbed and will resist
+      out of those and cuffs.
