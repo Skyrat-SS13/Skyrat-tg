@@ -65,26 +65,32 @@
  */
 /datum/round_event_control/anomaly/anomaly_bioscrambler
 	max_occurrences = 1
+	min_players = 20
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_bluespace
 	max_occurrences = 1
+	min_players = 20
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_dimensional
 	max_occurrences = 1
+	min_players = 20
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_ectoplasm
 	max_occurrences = 1
+	min_players = 20
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_flux
 	max_occurrences = 1
+	min_players = 20
 	weight = LOW_EVENT_FREQ
 
 // We have other intensities
 /datum/round_event_control/anomaly/anomaly_grav
+	min_players = 20
 	max_occurrences = 0
 
 /datum/round_event_control/anomaly/anomaly_grav/high
@@ -102,6 +108,7 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_vortex
+	min_players = 20
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
@@ -349,6 +356,7 @@
 	intensity_restriction = TRUE
 
 /datum/round_event_control/meteor_wave/ices
+	min_players = 30
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
