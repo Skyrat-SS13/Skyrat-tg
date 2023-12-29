@@ -109,8 +109,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
-		unlock_content = !!parent.IsByondMember() || GLOB.donator_list[parent.ckey] //SKYRAT EDIT - ADDED DONATOR CHECK
-		if(unlock_content)
+		unlock_content = !!parent.IsByondMember()
+		donator_status = !!GLOB.donator_list[parent.ckey] //SKYRAT EDIT ADD - DONATOR CHECK
+		if(unlock_content || donator_status) //SKYRAT EDIT - ADD DONATOR CHECK
 			max_save_slots = 50 //SKYRAT EDIT - ORIGINAL 8
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
@@ -206,7 +207,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	data["overflow_role"] = SSjob.GetJobType(SSjob.overflow_role).title
 	data["window"] = current_window
 
-	data["content_unlocked"] = unlock_content
+	data["content_unlocked"] = donator_status // SKYRAT EDIT CHANGE - DONATOR STATUS
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		data += preference_middleware.get_ui_static_data(user)
