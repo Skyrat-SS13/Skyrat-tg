@@ -146,8 +146,9 @@ SUBSYSTEM_DEF(player_ranks)
 	if(!prefs)
 		return
 
+	prefs.unlock_content = !!prefs.parent.IsByondMember()
 	prefs.donator_status = is_donator(prefs.parent)
-	if(prefs.donator_status)
+	if(prefs.unlock_content || prefs.donator_status)
 		prefs.max_save_slots = 50
 
 
