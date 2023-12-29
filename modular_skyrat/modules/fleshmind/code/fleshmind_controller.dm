@@ -369,7 +369,7 @@
 		new_wireweed = new wireweed_type(location, 0, src)
 		var/obj/effect/temp_visual/wireweed_spread/effect = new(location)
 		effect.setDir(get_dir(origin_turf, location))
-		new_wireweed.RegisterSignal(effect, COMSIG_QDELETING, /obj/structure/fleshmind/wireweed/proc/visual_finished)
+		new_wireweed.RegisterSignal(effect, COMSIG_QDELETING, TYPE_PROC_REF(/obj/structure/fleshmind/wireweed, visual_finished))
 	else
 		new_wireweed = new wireweed_type(location, 255, src)
 	new_wireweed.our_controller = src
@@ -403,11 +403,11 @@
 	controlled_mobs += new_mob
 
 	for(var/obj/structure/fleshmind/structure/core/iterating_core as anything in cores)
-		new_mob.RegisterSignal(iterating_core, COMSIG_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
+		new_mob.RegisterSignal(iterating_core, COMSIG_QDELETING, TYPE_PROC_REF(/mob/living/simple_animal/hostile/fleshmind, core_death))
 
 	RegisterSignal(new_mob, COMSIG_QDELETING, PROC_REF(mob_death))
 
-	new_mob.RegisterSignal(src, COMSIG_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/controller_destroyed)
+	new_mob.RegisterSignal(src, COMSIG_QDELETING, TYPE_PROC_REF(/mob/living/simple_animal/hostile/fleshmind, controller_destroyed))
 
 	return new_mob
 
