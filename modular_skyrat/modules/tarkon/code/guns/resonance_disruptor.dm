@@ -4,9 +4,11 @@
 	name = "A.R.C.S Resonator"
 	desc = "The \"Advanced Resonance Control System\" or \"A.R.C.S\" is an advanced, ranged version of a mining resonator. While its main case looks nothing more fancy than a modified proto-kinetic accelerator... One could guess thats not far off the truth. The lugs for a bayonette are missing, but atleast you can play with the new adjustment dial on the side."
 	icon = 'modular_skyrat/modules/tarkon/icons/misc/ARCS.dmi'
+	righthand_file = 'modular_skyrat/modules/tarkon/icons/mob/guns/ARCS/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/tarkon/icons/mob/guns/ARCS/lefthand.dmi'
 	icon_state = "arcs"
 	base_icon_state = "arcs"
-	inhand_icon_state = "kineticgun"
+	inhand_icon_state = "arcs"
 	ammo_type = list(/obj/item/ammo_casing/energy/resonance)
 	item_flags = NONE
 	obj_flags = UNIQUE_RENAME
