@@ -4,24 +4,27 @@
 #define RAD_COLLECTOR_COEFFICIENT 200
 
 /obj/machinery/power/energy_accumulator/rad_collector
-	name = "Radiation Collector Array"
-	desc = "A device which uses radiation and plasma to produce power."
+	name = "Hawking Radiation Collector Array"
+	desc = "A device which uses hawking radiation generated from singularities and plasma to produce power."
 	icon = 'modular_skyrat/modules/aesthetics/emitter/icons/emitter.dmi'
 	icon_state = "ca"
 	req_access = list(ACCESS_ENGINE_EQUIP, ACCESS_ATMOSPHERICS)
 	max_integrity = 350
 	integrity_failure = 0.2
 	rad_insulation = RAD_EXTREME_INSULATION
-	///Stores the loaded tank instance
+	circuit = /obj/item/circuitboard/machine/rad_collector
+	/// Stores the loaded tank instance
 	var/obj/item/tank/internals/plasma/loaded_tank = null
-	///Is the collector working?
+	/// Is the collector working?
 	var/active = FALSE
-	///Is the collector locked with an id?
+	/// Is the collector locked with an id?
 	var/locked = FALSE
-	///Amount of gas removed per tick
+	/// Amount of gas removed per tick
 	var/drain_ratio = 0.5
-	///Multiplier for the amount of gas removed per tick
+	/// Multiplier for the amount of gas removed per tick
 	var/power_production_drain = 0.001
+	/// Base efficiency
+	var/efficiency_multiplier = 1.0
 
 /obj/machinery/power/energy_accumulator/rad_collector/anchored
 	anchored = TRUE
@@ -136,6 +139,16 @@
 	if(.)
 		eject()
 
+/obj/machinery/power/energy_accumulator/rad_collector/RefreshParts()
+	. = ..()
+
+	// Reset the upgrades to base values
+	efficiency_multiplier = 1.0
+
+	// Calculate efficiency based on micro-laser parts
+	for(var/datum/stock_part/micro_laser/laser in component_parts)
+		efficiency_multiplier += (laser.tier - 1) * 0.2 // Each tier above 1 increases efficiency by 20%
+
 /obj/machinery/power/energy_accumulator/rad_collector/proc/eject()
 	locked = FALSE
 	var/obj/item/tank/internals/plasma/tank = loaded_tank
@@ -151,8 +164,10 @@
 		update_appearance()
 
 /obj/machinery/power/energy_accumulator/rad_collector/proc/hawking_pulse(atom/source, pulse_strength)
-	if(loaded_tank && active && pulse_strength > RAD_COLLECTOR_THRESHOLD)
-		stored_energy += joules_to_energy((pulse_strength-RAD_COLLECTOR_THRESHOLD) * RAD_COLLECTOR_COEFFICIENT)
+
+    if(loaded_tank && active && pulse_strength > RAD_COLLECTOR_THRESHOLD)
+        // Adjust energy calculation based on efficiency multiplier
+        stored_energy += joules_to_energy((pulse_strength - RAD_COLLECTOR_THRESHOLD) * RAD_COLLECTOR_COEFFICIENT * efficiency_multiplier)
 
 /obj/machinery/power/energy_accumulator/rad_collector/update_overlays()
 	. = ..()
@@ -176,3 +191,14 @@
 
 #undef RAD_COLLECTOR_THRESHOLD
 #undef RAD_COLLECTOR_COEFFICIENT
+
+
+/obj/item/circuitboard/machine/rad_collector
+	name = "Radiation Collector(hawking)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/power/energy_accumulator/rad_collector
+	req_components = list(
+		/datum/stock_part/micro_laser = 1,
+		/obj/item/stack/cable_coil = 2,
+		/obj/item/stack/sheet/glass = 2)
+	needs_anchored = FALSE

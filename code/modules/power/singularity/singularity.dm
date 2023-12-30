@@ -180,7 +180,7 @@
 	if (!dissipate)
 		return
 
-	time_since_last_dissipiation += seconds_per_tick
+	time_since_last_dissipiation += seconds_per_tick SECONDS
 
 	// Uses a while in case of especially long delta times
 	while (time_since_last_dissipiation >= dissipate_delay)

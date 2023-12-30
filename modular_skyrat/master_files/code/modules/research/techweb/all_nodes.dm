@@ -256,3 +256,10 @@
 		"borg_upgrade_welding",
 	)
 	return ..()
+
+// ENGINEERING
+/datum/techweb_node/engineering/New()
+	design_ids += list(
+		"rad_collector",
+	)
+	return ..()

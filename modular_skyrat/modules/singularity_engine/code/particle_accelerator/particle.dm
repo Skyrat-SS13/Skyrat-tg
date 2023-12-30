@@ -75,5 +75,4 @@
 	if(!movement_range)
 		qdel(src)
 	else
-		addtimer(CALLBACK(src, PROC_REF(move)), speed)
-
+		addtimer(CALLBACK(src, PROC_REF(move)), speed, TIMER_STOPPABLE)
