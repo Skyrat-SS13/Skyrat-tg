@@ -1034,3 +1034,24 @@
   - bugfix: ai can now tell if it is in a do_after for resisting and will not interrupt
       it. monkeys also now don't freeze up when aggressively grabbed and will resist
       out of those and cuffs.
+2023-12-30:
+  Ghommie, 13spacemen:
+  - bugfix: Signing or removing your candidature from ghost roles now properly updates
+      the screen button for it.
+  ReturnToZender:
+  - bugfix: JSX files, when edited, cause TGUI to recompile on build
+  SkyratBot:
+  - bugfix: reduces lag in the tgui textarea input boxes
+  - rscadd: Added a "postal workers strike" negative station trait. In the case of
+      holidays and sunday though, it'll be a "postal system overtime" instead.
+  - bugfix: Poll alert buttons candidate number should be more responsive
+  Useroth:
+  - rscadd: Added a config entry for bypassing the veteran locks on jobs and quirks
+  mogeoko:
+  - bugfix: Atmospherics components will now move air into connected pipeline on deconstruction
+      if possible. Otherwise, air will be released to the outside from open nodes.
+  - bugfix: Unsafe pressure release on atmos components will now work the same way
+      it does in the normal pipes if there is an empty node with air.
+  - bugfix: The HFR user interface would close when the machine is shut down.
+  - bugfix: Atmospherics machinery will now share air from nodes after being rotated
+      and reconnected to pipenet.
