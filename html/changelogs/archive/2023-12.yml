@@ -978,3 +978,80 @@
   - rscadd: icecats(?) can now respawn, similarly to ashwalkers
   zeroisthebiggay:
   - rscadd: icewalkers can be digitigrade
+2023-12-27:
+  Melbert:
+  - bugfix: Fixed some occasions in which heartbeat SFX will continue on revival for
+      longer than expected
+  Ryll/Shaps:
+  - balance: Yawns are less likely to propagate
+  SkyratBot:
+  - bugfix: NTOS Messenger should search as you type now
+  - bugfix: Fixed the surgery menu spamming chat messages when on the eyes section
+      of a player with no eyes.
+  - rscadd: Adds a brown suit jacket to the detective's vendor
+  - image: 'Adds a new sprite for the a brown detective suit jacket
+
+      :cl:'
+  jjpark-kb:
+  - rscadd: added embershroom, polyporeshroom, watermelon, and grass seeds to icewalker
+      seed storage
+  - bugfix: modular computers won't runtime while closing/minimizing programs
+  - bugfix: bokkens have visual block effects now
+  - balance: forging is unleashed-- everyone can imbue, use whatever materials/reagents,
+      and it will no longer break
+2023-12-28:
+  SkyratBot:
+  - bugfix: mercury & lithium will no longer make you randomly move outside of cryotubes
+      or in ground less turfs (space, water, lava etc)
+  - spellcheck: Fixes a typo in chat message when starting a Death Knell with the
+      Vorpal Scythe
+  - admin: Adds logging for the death knell, both when starts and when it is completed
+      successfully.
+  - qol: Add UI screentips to spraycans
+  - rscadd: basic bots can now display their paths on huds
+  - bugfix: medbots can research healing again
+2023-12-29:
+  SkyratBot:
+  - bugfix: Fixed a lot of missing/broken images, such as emojis, language icons,
+      commendation hearts, icons in R&D menu, etc.
+  - bugfix: Fixed "was shocked by /datum/component/energized" message.
+  - rscdel: Removes the wires from canisters. It's a cool idea, but cheap controlled
+      maxcaps are bad actually
+  - refactor: Photo albums and photo frames are now more resilient to data loss, especially
+      when a server crashes.
+  - spellcheck: changes some let's to lets
+  - bugfix: Off station ORM's can redeem points again.
+  - rscadd: Add 50% graffiti speed boost to tagger quirk
+  - bugfix: Fix time duration of large graffiti not applying properly
+  - bugfix: reaction chamber open its UI when inserting/removing beakers from it
+  - bugfix: reaction chamber triggers new reactions & updates UI more often during
+      heating
+  - bugfix: instant and  normal reactions now get triggered more often so for e.g.
+      more plastic sheets from polymer reactions or more reactions occur when there
+      are multiple reagents present
+  - bugfix: Dear mappers, the light debugger tool no longer deletes dragged wall lights
+  - bugfix: NTOS Messenger should clear on enter now
+  - bugfix: ai can now tell if it is in a do_after for resisting and will not interrupt
+      it. monkeys also now don't freeze up when aggressively grabbed and will resist
+      out of those and cuffs.
+2023-12-30:
+  Ghommie, 13spacemen:
+  - bugfix: Signing or removing your candidature from ghost roles now properly updates
+      the screen button for it.
+  ReturnToZender:
+  - bugfix: JSX files, when edited, cause TGUI to recompile on build
+  SkyratBot:
+  - bugfix: reduces lag in the tgui textarea input boxes
+  - rscadd: Added a "postal workers strike" negative station trait. In the case of
+      holidays and sunday though, it'll be a "postal system overtime" instead.
+  - bugfix: Poll alert buttons candidate number should be more responsive
+  Useroth:
+  - rscadd: Added a config entry for bypassing the veteran locks on jobs and quirks
+  mogeoko:
+  - bugfix: Atmospherics components will now move air into connected pipeline on deconstruction
+      if possible. Otherwise, air will be released to the outside from open nodes.
+  - bugfix: Unsafe pressure release on atmos components will now work the same way
+      it does in the normal pipes if there is an empty node with air.
+  - bugfix: The HFR user interface would close when the machine is shut down.
+  - bugfix: Atmospherics machinery will now share air from nodes after being rotated
+      and reconnected to pipenet.
