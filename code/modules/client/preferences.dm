@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
 		unlock_content = !!parent.IsByondMember()
-		donator_status = !!SSplayer_ranks.is_donator(parent) //SKYRAT EDIT ADD - DONATOR CHECK
+		donator_status = !!GLOB.donator_list[parent.ckey] //SKYRAT EDIT ADD - DONATOR CHECK
 		if(unlock_content || donator_status) //SKYRAT EDIT - ADD DONATOR CHECK
 			max_save_slots = 50 //SKYRAT EDIT - ORIGINAL 8
 	else
