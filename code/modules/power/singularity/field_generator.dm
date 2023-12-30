@@ -52,6 +52,8 @@ no power level overlay is currently in the overlays list.
 	///Check for asynk cleanups for this and the connected gens
 	var/clean_up = FALSE
 
+	var/shield_floor = TRUE // SKYRAT EDIT ADDITION
+
 /datum/armor/field_generator
 	melee = 25
 	bullet = 10
@@ -337,7 +339,8 @@ no power level overlay is currently in the overlays list.
 
 	connected_gens |= found_generator
 	found_generator.connected_gens |= src
-	shield_floor(TRUE)
+	if(shield_floor) // SKYRAT EDIT ADDITION
+		shield_floor(TRUE)
 	update_appearance()
 
 

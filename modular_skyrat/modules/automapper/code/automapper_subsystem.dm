@@ -35,9 +35,12 @@ SUBSYSTEM_DEF(automapper)
 /datum/controller/subsystem/automapper/proc/preload_templates_from_toml(map_names)
 	if(!islist(map_names))
 		map_names = list(map_names)
+	// We need a list of the modular engine templates so we can load one ONLY.
+	var/list/modular_engine_templates
 	for(var/template in loaded_config["templates"])
 		var/selected_template = loaded_config["templates"][template]
 		var/required_map = selected_template["required_map"]
+		var/map_type = selected_template["map_type"]
 
 		// !builtin is a magic code for built in maps, ie CentCom levels.
 		// We'll pretend it's loaded with the station z-level, because they by definition they are loaded before the station z-levels.
@@ -62,8 +65,18 @@ SUBSYSTEM_DEF(automapper)
 		if(!fexists(map_file))
 			CRASH("[template] could not find map file [map_file]!")
 
-		var/datum/map_template/automap_template/map = new(map_file, template, required_map, load_turf)
-		preloaded_map_templates += map
+
+
+		var/datum/map_template/automap_template/map = new(map_file, template, required_map, map_type, load_turf)
+
+		if(map_type == AUTOMAPPER_MAP_TYPE_MODULAR_ENGINE)
+			LAZYADD(modular_engine_templates, map)
+		else
+			preloaded_map_templates += map
+
+	// Now we can pick a modular engine to load and add it to the preloads.
+	if(modular_engine_templates)
+		preloaded_map_templates += pick(modular_engine_templates)
 
 /**
  * Assuming we have preloaded our templates, this will load them from the cache.
