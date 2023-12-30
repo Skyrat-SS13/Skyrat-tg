@@ -258,7 +258,7 @@ const NifSettings = (props) => {
 };
 
 const NifProductNotes = (props) => {
-  const { act, data } = useBackend(t);
+  const { act, data } = useBackend();
   const { product_notes } = data;
   return <BlockQuote>{product_notes}</BlockQuote>;
 };
