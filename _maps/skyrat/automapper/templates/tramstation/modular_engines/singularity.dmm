@@ -30,7 +30,7 @@
 "fm" = (
 /obj/machinery/power/energy_accumulator/rad_collector,
 /obj/effect/turf_decal/bot_blue,
-/obj/structure/cable/layer1,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "fQ" = (
@@ -45,8 +45,8 @@
 /obj/machinery/power/emitter{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "hI" = (
@@ -84,6 +84,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
+"nQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
 "oe" = (
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
@@ -97,7 +104,8 @@
 /turf/open/floor/plating,
 /area/space/nearstation)
 "pi" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/airlock/external/glass/emp_proof,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
@@ -142,13 +150,9 @@
 /turf/open/floor/plating,
 /area/space/nearstation)
 "um" = (
-/obj/effect/turf_decal/caution/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/caution/red,
-/obj/structure/cable,
+/obj/machinery/light/directional/west,
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/station/engineering/supermatter/room)
 "vs" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Supermatter Engine Room"
@@ -172,6 +176,14 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
+/area/station/engineering/supermatter/room)
+"vB" = (
+/obj/machinery/door/airlock/external/glass/emp_proof,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "vO" = (
 /obj/machinery/singularity_generator,
@@ -287,7 +299,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot_white,
-/obj/structure/cable,
+/obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "EI" = (
@@ -365,13 +377,13 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "OL" = (
-/obj/machinery/power/emitter{
-	dir = 4
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
 	},
-/obj/effect/turf_decal/bot_white,
-/obj/structure/cable,
+/obj/structure/cable/layer1,
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/station/engineering/supermatter/room)
 "Pe" = (
 /obj/structure/cable/layer1,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -428,7 +440,6 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "Ys" = (
-/obj/structure/cable,
 /obj/structure/cable/layer1,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
@@ -437,11 +448,12 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "Zk" = (
 /obj/effect/turf_decal/stripes/red/full,
-/obj/structure/cable/layer1,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/space/nearstation)
 
@@ -478,15 +490,15 @@ sE
 iB
 Wq
 iB
-sT
-OL
-UI
-UI
-UI
-UI
-UI
+oT
 hc
-UI
+oT
+oT
+oT
+oT
+oT
+hc
+oT
 MK
 "}
 (3,1,1) = {"
@@ -495,12 +507,12 @@ ND
 SK
 bJ
 Ae
-Ae
-Ae
-Cd
-Mq
+nQ
+nQ
+pi
+oe
 YV
-sT
+oT
 tq
 WT
 WT
@@ -508,7 +520,7 @@ WT
 WT
 WT
 xx
-UI
+oT
 MK
 "}
 (4,1,1) = {"
@@ -517,20 +529,20 @@ SK
 Qv
 iB
 yz
+OL
 yz
-yz
 iB
 iB
 iB
-oT
+UI
 Zk
 fm
-oT
+UI
 fm
-oT
+UI
 fm
 oK
-UI
+oT
 Ef
 "}
 (5,1,1) = {"
@@ -540,11 +552,11 @@ Ys
 CA
 oe
 oe
-oe
-oe
-CA
-pi
-oT
+Mq
+Mq
+um
+cu
+UI
 IO
 LU
 LU
@@ -552,7 +564,7 @@ sT
 LU
 LU
 IO
-UI
+oT
 MK
 "}
 (6,1,1) = {"
@@ -566,7 +578,7 @@ Gf
 Mq
 Ym
 cu
-oT
+UI
 LU
 WT
 WT
@@ -574,7 +586,7 @@ sT
 WT
 WT
 LU
-UI
+oT
 MK
 "}
 (7,1,1) = {"
@@ -588,7 +600,7 @@ Ht
 DU
 qL
 cu
-oT
+UI
 LU
 WT
 WT
@@ -596,7 +608,7 @@ sT
 WT
 WT
 LU
-UI
+oT
 MK
 "}
 (8,1,1) = {"
@@ -610,7 +622,7 @@ jm
 Fy
 qL
 cu
-oT
+UI
 sT
 sT
 sT
@@ -618,7 +630,7 @@ vO
 sT
 sT
 sT
-UI
+oT
 MK
 "}
 (9,1,1) = {"
@@ -632,7 +644,7 @@ Ea
 kQ
 qL
 cu
-oT
+UI
 LU
 WT
 WT
@@ -640,7 +652,7 @@ sT
 WT
 WT
 LU
-UI
+oT
 MK
 "}
 (10,1,1) = {"
@@ -654,7 +666,7 @@ Mq
 Mq
 cP
 cu
-oT
+UI
 LU
 WT
 WT
@@ -662,7 +674,7 @@ sT
 WT
 WT
 LU
-UI
+oT
 MK
 "}
 (11,1,1) = {"
@@ -676,7 +688,7 @@ Mq
 DD
 CF
 cu
-oT
+UI
 IO
 LU
 LU
@@ -684,7 +696,7 @@ sT
 LU
 LU
 IO
-UI
+oT
 MK
 "}
 (12,1,1) = {"
@@ -698,15 +710,15 @@ yz
 iB
 iB
 iB
-oT
+UI
 Zk
 fm
-oT
+UI
 fm
-oT
+UI
 fm
 oK
-UI
+oT
 Ef
 "}
 (13,1,1) = {"
@@ -719,16 +731,16 @@ qc
 qc
 Cd
 Iv
-YV
+vB
 UI
-um
+xx
 WT
 WT
 WT
 WT
 WT
 xx
-UI
+oT
 MK
 "}
 (14,1,1) = {"
@@ -744,13 +756,13 @@ AG
 iB
 sT
 En
-UI
-UI
-UI
-UI
-UI
+oT
+oT
+oT
+oT
+oT
 En
-UI
+oT
 MK
 "}
 (15,1,1) = {"
