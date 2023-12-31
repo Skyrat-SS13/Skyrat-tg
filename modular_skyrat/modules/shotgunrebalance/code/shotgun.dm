@@ -255,35 +255,33 @@
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0
 
-/obj/item/ammo_casing/shotgun/honk
+/obj/item/ammo_casing/shotgun/honkshot
 	name = "confetti shell"
-	desc = "A 12 gauge buckshot shell thats been filled to the brim with confetti. Who is making all these?"
+	desc = "A 12 gauge buckshot shell thats been filled to the brim with confetti, yippie!"
 	icon_state = "honkshell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/honk
+	projectile_type = /obj/projectile/bullet/honkshot
 	pellets = 12
 	variance = 35
 	fire_sound = 'sound/items/bikehorn.ogg'
 	harmful = FALSE
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/honk
+/obj/projectile/bullet/honkshot
 	name = "confetti"
 	damage = 0
-	stamina = 1
-	stamina_falloff_tile = 0
-	wound_bonus = 0
-	bare_wound_bonus = 0
+	sharpness = NONE
+	shrapnel_type = NONE
+	impact_effect_type = null
+	ricochet_chance = 0
 	jitter = 1 SECONDS
 	eyeblur = 1 SECONDS
-	sharpness = NONE
 	hitsound = SFX_CLOWN_STEP
-	range = 12
+	range = 4
 	icon_state = "guardian"
-	embedding = null
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/honk/Initialize(mapload)
+/obj/projectile/bullet/honkshot/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
-	range = rand(6, 12)
+	range = rand(1, 4)
 	color = pick(
 		COLOR_PRIDE_RED,
 		COLOR_PRIDE_ORANGE,
@@ -293,6 +291,19 @@
 		COLOR_PRIDE_PURPLE,
 	)
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/honk/on_range()
+// This proc addition will spawn a decal on each tile the projectile travels over
+/obj/projectile/bullet/honkshot/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+	new /obj/effect/decal/cleanable/confetti(get_turf(old_loc))
+	return ..()
+
+// This proc addition will make living humanoids do a flip animation when hit by the projectile
+/obj/projectile/bullet/honkshot/on_hit(atom/target, blocked, pierce_hit)
+	if(!isliving(target))
+		return ..()
+	target.SpinAnimation(7,1)
+	return ..()
+
+// This proc addition adds a spark effect when the projectile expires/hits
+/obj/projectile/bullet/honkshot/on_range()
 	do_sparks(1, TRUE, src)
-	..()
+	return ..()
