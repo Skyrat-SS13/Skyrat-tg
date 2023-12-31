@@ -22,7 +22,7 @@
 		if(istype(affected_atom, /obj/machinery/power/energy_accumulator/rad_collector))
 			var/obj/machinery/power/energy_accumulator/rad_collector/collector = affected_atom
 			collector.hawking_pulse(src, calculated_pulse_strength)
-			new /obj/effect/temp_visual/hawking_radiation(get_turf(collector))
+
 
 /obj/effect/temp_visual/hawking_radiation
 	icon_state = "electricity"
