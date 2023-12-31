@@ -1,3 +1,4 @@
+<<<<<<< HEAD:code/modules/jobs/job_types/assistant.dm
 GLOBAL_DATUM(colored_assistant, /datum/colored_assistant)
 
 /*
@@ -98,6 +99,8 @@ Assistant
 		H.update_worn_undersuit()
 
 
+=======
+>>>>>>> 402f58aa103 (Geared Assistants Station Trait (#80323)):code/modules/jobs/job_types/assistant/colorful_assistants.dm
 /proc/get_configured_colored_assistant_type()
 	return CONFIG_GET(flag/grey_assistants) ? /datum/colored_assistant/grey : /datum/colored_assistant/random
 
