@@ -164,9 +164,9 @@
 		update_appearance()
 
 /obj/machinery/power/energy_accumulator/rad_collector/proc/hawking_pulse(atom/source, pulse_strength)
-    if(loaded_tank && active && pulse_strength > RAD_COLLECTOR_THRESHOLD)
-        // Adjust energy calculation based on efficiency multiplier
-        stored_energy += joules_to_energy((pulse_strength - RAD_COLLECTOR_THRESHOLD) * RAD_COLLECTOR_COEFFICIENT * efficiency_multiplier)
+	if(loaded_tank && active && pulse_strength > RAD_COLLECTOR_THRESHOLD)
+		// Adjust energy calculation based on efficiency multiplier
+		stored_energy += joules_to_energy((pulse_strength - RAD_COLLECTOR_THRESHOLD) * RAD_COLLECTOR_COEFFICIENT * efficiency_multiplier)
 		new /obj/effect/temp_visual/hawking_radiation(get_turf(src))
 
 /obj/machinery/power/energy_accumulator/rad_collector/update_overlays()
