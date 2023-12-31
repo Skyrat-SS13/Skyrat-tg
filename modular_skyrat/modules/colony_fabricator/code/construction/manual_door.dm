@@ -1,10 +1,10 @@
 /obj/structure/mineral_door/manual_colony_door
 	name = "manual airlock"
-	icon = 'modular_nova/modules/colony_fabricator/icons/doors/airlock_manual.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/doors/airlock_manual.dmi'
 	material_flags = NONE
 	icon_state = "manual"
-	openSound = 'modular_nova/modules/colony_fabricator/sound/manual_door/manual_door_open.wav'
-	closeSound = 'modular_nova/modules/colony_fabricator/sound/manual_door/manual_door_close.wav'
+	openSound = 'modular_skyrat/modules/colony_fabricator/sound/manual_door/manual_door_open.wav'
+	closeSound = 'modular_skyrat/modules/colony_fabricator/sound/manual_door/manual_door_close.wav'
 	/// What we disassemble into
 	var/disassembled_type = /obj/item/flatpacked_machine/airlock_kit_manual
 	/// How long it takes to open/close the door
@@ -71,7 +71,7 @@
 // Parts kit for putting the door together
 /obj/item/flatpacked_machine/airlock_kit_manual
 	name = "prefab manual airlock parts kit"
-	icon = 'modular_nova/modules/colony_fabricator/icons/doors/packed.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/doors/packed.dmi'
 	icon_state = "airlock_parts_manual"
 	type_to_deploy = /obj/structure/mineral_door/manual_colony_door
 	custom_materials = list(

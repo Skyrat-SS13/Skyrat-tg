@@ -4,7 +4,7 @@
 		When placed outdoors in a planet with an atmosphere, will produce a small trickle of power \
 		for free. If there is a storm in the area the turbine is placed, the power production will \
 		multiply significantly."
-	icon = 'modular_nova/modules/colony_fabricator/icons/wind_turbine.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/wind_turbine.dmi'
 	icon_state = "turbine"
 	density = TRUE
 	max_integrity = 100
@@ -13,7 +13,6 @@
 	can_change_cable_layer = FALSE
 	circuit = null
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
 	can_change_cable_layer = TRUE
 	/// How much power the turbine makes without a storm
 	var/regular_power_production = 2500
@@ -77,7 +76,7 @@
 // Item for deploying wind turbines
 /obj/item/flatpacked_machine/wind_turbine
 	name = "flat-packed miniature wind turbine"
-	icon = 'modular_nova/modules/colony_fabricator/icons/wind_turbine.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/wind_turbine.dmi'
 	icon_state = "turbine_packed"
 	type_to_deploy = /obj/machinery/power/colony_wind_turbine
 	custom_materials = list(
