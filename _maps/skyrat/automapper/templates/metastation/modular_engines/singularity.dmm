@@ -1,20 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aq" = (
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "ed" = (
 /obj/structure/cable,
 /obj/structure/particle_accelerator/fuel_chamber{
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/station/engineering/supermatter/room)
-"fv" = (
-/obj/machinery/power/smes/engineering{
-	name = "jump starter SMES"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "fR" = (
 /obj/structure/sign/warning/secure_area,
@@ -24,11 +17,12 @@
 /obj/machinery/singularity_generator,
 /obj/item/wrench,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "gq" = (
-/obj/structure/sign/warning/no_smoking,
-/turf/closed/wall/r_wall,
-/area/station/engineering/supermatter/room)
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/red/full,
+/turf/open/floor/plating,
+/area/space/nearstation)
 "gF" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -47,7 +41,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "iy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/directional/south,
@@ -59,12 +53,9 @@
 /area/station/engineering/supermatter/room)
 "km" = (
 /obj/structure/cable,
-/obj/machinery/camera/directional/south{
-	c_tag = "Engineering Singularity Aft";
-	network = list("ss13","engine")
-	},
+/obj/machinery/camera/emp_proof/directional/south,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "kx" = (
 /obj/structure/cable,
 /obj/structure/particle_accelerator/power_box{
@@ -75,7 +66,7 @@
 "lC" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
-/area/space)
+/area/space/nearstation)
 "lP" = (
 /obj/effect/turf_decal/stripes/red/line,
 /obj/item/stack/cable_coil,
@@ -94,7 +85,7 @@
 "nC" = (
 /obj/structure/sign/warning/radiation,
 /turf/closed/wall/r_wall,
-/area/space)
+/area/space/nearstation)
 "nE" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
@@ -108,7 +99,7 @@
 /area/station/engineering/supermatter/room)
 "oR" = (
 /turf/closed/wall/r_wall,
-/area/space)
+/area/space/nearstation)
 "px" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
@@ -117,15 +108,11 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
-"pW" = (
-/obj/structure/sign/warning/radiation,
-/obj/structure/cable,
-/turf/closed/wall/r_wall,
-/area/space)
 "pX" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/structure/cable,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron,
+/obj/structure/sign/warning/electric_shock/directional/north,
+/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "qW" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -134,10 +121,8 @@
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "rg" = (
-/obj/effect/mapping_helpers/apc/cell_10k,
-/obj/machinery/power/apc/auto_name/emp_proof/directional/south,
 /obj/structure/cable,
-/turf/open/floor/iron,
+/turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
 "rD" = (
 /obj/effect/turf_decal/stripes/line{
@@ -154,14 +139,20 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
-"uP" = (
+"sp" = (
+/obj/machinery/camera/emp_proof/directional/east,
 /obj/structure/cable,
+/turf/open/floor/plating,
+/area/space/nearstation)
+"uP" = (
 /obj/structure/sign/warning/vacuum/external/directional/south,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "wq" = (
-/obj/item/radio/intercom/directional/north,
 /obj/machinery/light/directional/north,
+/obj/machinery/power/apc/auto_name/emp_proof/directional/north,
+/obj/effect/mapping_helpers/apc/cell_10k,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "xp" = (
@@ -172,7 +163,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "xw" = (
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -188,7 +179,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "yi" = (
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
@@ -207,6 +198,11 @@
 /obj/structure/sign/warning/radiation/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
+"zw" = (
+/obj/structure/sign/warning/radiation,
+/obj/structure/cable,
+/turf/closed/wall/r_wall,
+/area/space/nearstation)
 "zN" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -247,7 +243,7 @@
 /obj/machinery/field/generator/singularity,
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "BT" = (
 /obj/structure/sign/warning/doors/directional/south,
 /turf/open/floor/iron,
@@ -262,12 +258,12 @@
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/power/emitter/welded,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "ES" = (
-/obj/structure/cable,
 /obj/effect/turf_decal/stripes/red/full,
+/obj/structure/cable,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "Fj" = (
 /obj/machinery/button/door/directional/east{
 	id = "engsm";
@@ -312,15 +308,18 @@
 /obj/effect/turf_decal/bot_blue,
 /obj/machinery/power/energy_accumulator/rad_collector/anchored,
 /turf/open/floor/plating,
-/area/space)
-"JG" = (
-/obj/structure/cable,
-/obj/machinery/power/terminal,
-/turf/open/floor/iron,
-/area/station/engineering/supermatter/room)
+/area/space/nearstation)
 "JN" = (
 /obj/machinery/light/small/directional/north,
 /obj/structure/closet/emcloset/anchored,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
+"JY" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/external/glass/emp_proof,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "KF" = (
@@ -338,6 +337,7 @@
 /obj/structure/cable,
 /obj/machinery/light/directional/west,
 /obj/item/screwdriver,
+/obj/machinery/firealarm/directional/west,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "NZ" = (
@@ -346,9 +346,14 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "On" = (
-/obj/structure/cable,
 /obj/machinery/airalarm/directional/west,
 /obj/machinery/light/directional/west,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
+"OH" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/cable,
+/obj/structure/sign/warning/electric_shock/directional/south,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "OM" = (
@@ -375,6 +380,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+"TI" = (
+/obj/structure/cable,
+/obj/machinery/camera/emp_proof/directional/north,
+/turf/open/floor/plating,
+/area/space/nearstation)
 "TN" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
@@ -386,13 +396,18 @@
 "TQ" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 "UQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/structure/cable,
 /turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
+"Vj" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "Vk" = (
 /obj/effect/turf_decal/stripes/line{
@@ -419,7 +434,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
 /obj/structure/particle_accelerator/end_cap{
 	dir = 4
 	},
@@ -439,7 +453,14 @@
 "YH" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
-/area/space)
+/area/space/nearstation)
+"YJ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external/glass/emp_proof,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "ZM" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
@@ -449,7 +470,7 @@
 "ZN" = (
 /obj/effect/turf_decal/stripes/red/full,
 /turf/open/floor/plating,
-/area/space)
+/area/space/nearstation)
 
 (1,1,1) = {"
 YG
@@ -461,7 +482,7 @@ YG
 TN
 zN
 TN
-gq
+YG
 fR
 gK
 px
@@ -475,7 +496,7 @@ qW
 BT
 YG
 On
-zS
+yi
 zS
 zS
 NB
@@ -488,24 +509,24 @@ YG
 (3,1,1) = {"
 gK
 jn
-nX
-pX
-Hs
-zS
+jn
+Jm
+MA
+yi
 rD
 WF
 gF
 zS
 Hs
 nE
-JG
-fv
+nX
+jn
 YG
 "}
 (4,1,1) = {"
 gK
 jn
-nX
+jn
 Jm
 MA
 yi
@@ -516,13 +537,13 @@ yi
 MA
 rV
 nX
-rg
+jn
 YG
 "}
 (5,1,1) = {"
 YG
 wq
-nX
+jn
 Fj
 MA
 AP
@@ -538,8 +559,8 @@ YG
 "}
 (6,1,1) = {"
 YG
-YG
-Xf
+rg
+YJ
 YG
 YG
 OM
@@ -572,16 +593,16 @@ YG
 "}
 (8,1,1) = {"
 YG
+rg
+JY
 YG
-xw
-YG
-gK
-gK
-gK
-gK
-gK
-gK
-gK
+pX
+Vj
+Vj
+Vj
+Vj
+Vj
+OH
 YG
 xw
 YG
@@ -590,22 +611,22 @@ YG
 (9,1,1) = {"
 oR
 TQ
-TQ
-TQ
-aq
-YH
-YH
-aq
-YH
-YH
 aq
 TQ
 TQ
+YH
+YH
+aq
+YH
+YH
 TQ
+TQ
+TQ
+aq
 oR
 "}
 (10,1,1) = {"
-pW
+zw
 DS
 xp
 ES
@@ -616,7 +637,7 @@ aq
 lC
 lC
 BB
-ES
+gq
 hB
 xQ
 nC
@@ -657,7 +678,7 @@ oR
 "}
 (13,1,1) = {"
 oR
-TQ
+TI
 YH
 Jy
 aq
@@ -725,19 +746,19 @@ nC
 "}
 (17,1,1) = {"
 oR
-YH
-YH
-YH
-aq
-YH
-YH
-aq
-YH
-YH
-aq
-YH
-YH
-YH
+TQ
+TQ
+TQ
+TQ
+TQ
+TQ
+sp
+TQ
+TQ
+TQ
+TQ
+TQ
+TQ
 oR
 "}
 (18,1,1) = {"

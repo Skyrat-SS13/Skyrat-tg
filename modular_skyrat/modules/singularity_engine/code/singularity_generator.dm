@@ -20,7 +20,7 @@
 	/// How much energy we have recieved so far.
 	var/energy = 0
 	/// What we create when we reach the required amount of energy.
-	var/creation_type = /obj/singularity/engine
+	var/creation_type = /obj/singularity
 	/// How much energy we need to create a singularity.
 	var/required_energy = ENERGY_REQ_SINGULARITY_CREATION
 

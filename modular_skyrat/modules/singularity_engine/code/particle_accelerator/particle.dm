@@ -64,11 +64,16 @@
 /obj/effect/accelerated_particle/singularity_pull()
 	return
 
+/obj/effect/accelerated_particle/singularity_act()
+	return
+
 /obj/effect/accelerated_particle/proc/toxmob(mob/living/target_mob)
 	to_chat(target_mob, span_green("Your body tingles as the accelerated particles pass through you."))
 	target_mob.adjustToxLoss(energy / 10)
 
 /obj/effect/accelerated_particle/proc/move()
+	if(QDELETED(src))
+		return
 	if(!step(src, dir))
 		forceMove(get_step(src, dir))
 	movement_range--

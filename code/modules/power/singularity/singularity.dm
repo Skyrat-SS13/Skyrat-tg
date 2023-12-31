@@ -180,7 +180,7 @@
 	if (!dissipate)
 		return
 
-	time_since_last_dissipiation += seconds_per_tick SECONDS
+	time_since_last_dissipiation += seconds_per_tick SECONDS // SKYRAT EDIT CHANGE
 
 	// Uses a while in case of especially long delta times
 	while (time_since_last_dissipiation >= dissipate_delay)
@@ -458,7 +458,7 @@
 	)
 
 /obj/singularity/proc/emp_area()
-	empulse(src, 8, 10)
+	empulse(src, 5, 8) //SKYRAT EDIT CHANGE
 
 /obj/singularity/singularity_act()
 	var/gain = (energy/2)

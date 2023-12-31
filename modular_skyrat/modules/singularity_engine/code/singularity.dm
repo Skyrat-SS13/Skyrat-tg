@@ -1,13 +1,4 @@
 /**
- * Specific subtype for the engine to use.
- * Dissipates much faster.
- */
-/obj/singularity/engine
-	dissipate_delay = 5
-	dissipate_strength = 5
-
-
-/**
  * Hawking Pulse
  *
  * Due to the fact radiation has changed massively, it is no longer a viable and reliable method of transferring energy from the singularty to the radiation collectors.
