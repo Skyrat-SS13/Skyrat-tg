@@ -30,6 +30,10 @@
 				/obj/item/clothing/under/costume/skyrat/yukata = 5,
 				/obj/item/clothing/under/costume/skyrat/kimono = 5,
 				/obj/item/clothing/head/beret/badge = 5,
+				/obj/item/clothing/mask/masquerade = 5,
+				/obj/item/clothing/mask/masquerade/two_colors = 5,
+				/obj/item/clothing/mask/masquerade/feathered = 5,
+				/obj/item/clothing/mask/masquerade/two_colors/feathered = 5,
 			),
 		),
 		list(
