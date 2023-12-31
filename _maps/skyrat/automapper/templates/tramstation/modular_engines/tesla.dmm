@@ -42,12 +42,13 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "hc" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/power/emitter{
 	dir = 4
 	},
+/obj/effect/turf_decal/bot_white,
 /obj/structure/cable/layer1,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
+/turf/open/floor/plating,
+/area/space/nearstation)
 "hI" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -83,6 +84,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
+"nQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
 "oe" = (
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
@@ -97,9 +105,7 @@
 /area/space/nearstation)
 "pi" = (
 /obj/machinery/door/airlock/external/glass/emp_proof,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
@@ -123,12 +129,6 @@
 /obj/structure/cable,
 /obj/structure/particle_accelerator/particle_emitter/center,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter/room)
-"qG" = (
-/obj/machinery/door/airlock/external/glass/emp_proof,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/structure/cable/layer1,
-/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "qL" = (
 /obj/effect/turf_decal/caution/stand_clear/red,
@@ -176,6 +176,14 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
+/area/station/engineering/supermatter/room)
+"vB" = (
+/obj/machinery/door/airlock/external/glass/emp_proof,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "vO" = (
 /obj/machinery/singularity_generator,
@@ -353,14 +361,6 @@
 "Mq" = (
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
-"Ms" = (
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
-/obj/structure/cable/layer1,
-/turf/open/floor/plating,
-/area/station/engineering/supermatter/room)
 "Mu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -377,13 +377,13 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "OL" = (
-/obj/machinery/power/emitter{
-	dir = 4
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
 	},
-/obj/effect/turf_decal/bot_white,
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/station/engineering/supermatter/room)
 "Pe" = (
 /obj/structure/cable/layer1,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -448,7 +448,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/structure/cable,
+/obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "Zk" = (
@@ -491,13 +491,13 @@ iB
 Wq
 iB
 oT
-OL
+hc
 oT
 oT
 oT
 oT
 oT
-OL
+hc
 oT
 MK
 "}
@@ -507,11 +507,11 @@ ND
 SK
 bJ
 Ae
-hc
-hc
-qG
-oe
+nQ
+nQ
 pi
+oe
+YV
 oT
 tq
 WT
@@ -529,7 +529,7 @@ SK
 Qv
 iB
 yz
-Ms
+OL
 yz
 iB
 iB
@@ -731,7 +731,7 @@ qc
 qc
 Cd
 Iv
-YV
+vB
 UI
 xx
 WT

@@ -1,5 +1,5 @@
-#define TESLA_DEFAULT_POWER 6.95304e8
-#define TESLA_MINI_POWER 3.47652e8
+#define TESLA_DEFAULT_POWER 5214780 // SKYRAT EDIT CHANGE
+#define TESLA_MINI_POWER 1738260 // SKYRAT EDIT CHANGE
 //Zap constants, speeds up targeting
 #define BIKE (COIL + 1)
 #define COIL (ROD + 1)

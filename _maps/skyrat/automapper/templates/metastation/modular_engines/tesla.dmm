@@ -14,13 +14,13 @@
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
 "gl" = (
-/obj/machinery/singularity_generator,
 /obj/item/wrench,
+/obj/machinery/singularity_generator/tesla,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "gq" = (
+/obj/effect/turf_decal/bot_blue,
 /obj/structure/cable,
-/obj/effect/turf_decal/stripes/red/full,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "gF" = (
@@ -64,8 +64,10 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "lC" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
+/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
+/obj/effect/turf_decal/bot_blue,
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/space/nearstation)
 "lP" = (
 /obj/effect/turf_decal/stripes/red/line,
@@ -100,6 +102,14 @@
 "oR" = (
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
+"pc" = (
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "px" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
@@ -155,13 +165,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
-"wU" = (
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
+"xn" = (
+/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "xp" = (
 /obj/effect/turf_decal/caution/red{
@@ -188,11 +195,6 @@
 	},
 /turf/open/floor/plating,
 /area/space/nearstation)
-"ye" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/supermatter/room)
 "yi" = (
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
@@ -253,8 +255,7 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "BB" = (
-/obj/machinery/field/generator/singularity,
-/obj/effect/turf_decal/bot_red,
+/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "BT" = (
@@ -273,10 +274,10 @@
 /turf/open/floor/plating,
 /area/space/nearstation)
 "ES" = (
-/obj/effect/turf_decal/stripes/red/full,
-/obj/structure/cable,
+/obj/machinery/field/generator/singularity,
+/obj/effect/turf_decal/bot_red,
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/space)
 "Fj" = (
 /obj/machinery/button/door/directional/east{
 	id = "engsm";
@@ -317,9 +318,13 @@
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "Jy" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution/red{
+	dir = 4
+	},
 /obj/structure/cable,
-/obj/effect/turf_decal/bot_blue,
-/obj/machinery/power/energy_accumulator/rad_collector/anchored,
 /turf/open/floor/plating,
 /area/space/nearstation)
 "JN" = (
@@ -432,6 +437,10 @@
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"Vx" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/space)
 "WD" = (
 /obj/machinery/button/door/directional/east{
 	id = "engsm";
@@ -540,8 +549,8 @@ YG
 gK
 nX
 nX
-ye
-wU
+xn
+pc
 zS
 UQ
 ed
@@ -627,11 +636,11 @@ TQ
 aq
 TQ
 TQ
-YH
-YH
-aq
-YH
-YH
+TQ
+TQ
+TQ
+TQ
+TQ
 TQ
 TQ
 TQ
@@ -640,36 +649,36 @@ oR
 "}
 (10,1,1) = {"
 zw
-DS
-xp
-ES
+TQ
+YH
+TQ
 BB
 lC
+BB
 lC
+BB
+lC
+BB
+TQ
+YH
 aq
-lC
-lC
-BB
-gq
-hB
-xQ
 nC
 "}
 (11,1,1) = {"
 oR
-TQ
-YH
+DS
+xp
 Jy
-lC
-rK
-rK
+ZN
+ES
+Vx
 aq
-rK
-rK
-lC
+Vx
+ES
+ZN
 Jy
-YH
-TQ
+hB
+xQ
 oR
 "}
 (12,1,1) = {"
@@ -678,11 +687,11 @@ TQ
 YH
 TQ
 lC
-rK
+Vx
 rK
 aq
 rK
-rK
+Vx
 lC
 TQ
 YH
@@ -693,15 +702,15 @@ oR
 oR
 TI
 YH
-Jy
-aq
+TQ
+BB
 aq
 aq
 gl
 aq
 aq
-aq
-Jy
+BB
+gq
 YH
 km
 oR
@@ -712,11 +721,11 @@ TQ
 YH
 TQ
 lC
-rK
+Vx
 rK
 aq
 rK
-rK
+Vx
 lC
 TQ
 YH
@@ -725,36 +734,36 @@ oR
 "}
 (15,1,1) = {"
 oR
-TQ
-YH
-Jy
-lC
-rK
-rK
+DS
+hB
+xp
+ZN
+ES
+Vx
 aq
-rK
-rK
-lC
-Jy
-YH
-TQ
+Vx
+ES
+ZN
+xp
+xp
+xQ
 oR
 "}
 (16,1,1) = {"
 nC
-DS
-hB
-ZN
-BB
-lC
-lC
+TQ
+YH
 aq
-lC
-lC
-BB
-ZN
-xp
-xQ
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+YH
+TQ
 nC
 "}
 (17,1,1) = {"
