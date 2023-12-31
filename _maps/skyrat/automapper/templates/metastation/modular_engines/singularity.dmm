@@ -2,11 +2,6 @@
 "aq" = (
 /turf/open/floor/plating,
 /area/space/nearstation)
-"cS" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/supermatter/room)
 "ed" = (
 /obj/structure/cable,
 /obj/structure/particle_accelerator/fuel_chamber{
@@ -105,6 +100,14 @@
 "oR" = (
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
+"pc" = (
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "px" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
@@ -157,6 +160,11 @@
 /obj/machinery/light/directional/north,
 /obj/machinery/power/apc/auto_name/emp_proof/directional/north,
 /obj/effect/mapping_helpers/apc/cell_10k,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/supermatter/room)
+"xn" = (
+/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
@@ -376,14 +384,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
-"SU" = (
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/engineering/supermatter/room)
 "Tk" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
@@ -540,8 +540,8 @@ YG
 gK
 nX
 nX
-cS
-SU
+xn
+pc
 zS
 UQ
 ed
