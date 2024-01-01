@@ -13,3 +13,4 @@
 
 // Map types
 #define AUTOMAPPER_MAP_TYPE_MODULAR_ENGINE "modular_engine"
+#define AUTOMAPPER_MAP_TYPE_MODULAR_ENGINE_DEFAULT "modular_engine_default"
