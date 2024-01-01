@@ -1,5 +1,5 @@
 
-#define EMOTE_DELAY 5 SECONDS //To prevent spam emotes.
+#define EMOTE_DELAY (5 SECONDS) //To prevent spam emotes.
 
 /mob
 	var/nextsoundemote = 1 //Time at which the next emote can be played
@@ -11,10 +11,19 @@
 /datum/emote/living/custom
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 	cooldown = 0
+	stat_allowed = SOFT_CRIT
 
 //me-verb emotes should not have a cooldown check
 /datum/emote/living/custom/check_cooldown(mob/user, intentional)
 	return TRUE
+
+
+/datum/emote/imaginary_friend/custom/check_cooldown(mob/user, intentional)
+	return TRUE
+
+
+/datum/emote/living/blush
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg'
 
 /datum/emote/living/quill
 	key = "quill"
@@ -52,6 +61,12 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
 	return
 
+/datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
+	if(intentional && (!HAS_TRAIT(user, TRAIT_FREERUNNING) && !HAS_TRAIT(user, TRAIT_STYLISH)) && !isobserver(user))
+		user.balloon_alert(user, "not nimble enough!")
+		return FALSE
+	return ..()
+
 /datum/emote/living/peep
 	key = "peep"
 	key_third_person = "peeps"
@@ -68,20 +83,11 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
 
-/datum/emote/living/snap
-	key = "snap"
-	key_third_person = "snaps"
-	message = "snaps their fingers."
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
-	hands_use_check = TRUE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/snap.ogg'
-
 /datum/emote/living/snap2
 	key = "snap2"
 	key_third_person = "snaps twice"
 	message = "snaps twice."
+	message_param = "snaps twice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
@@ -92,6 +98,7 @@
 	key = "snap3"
 	key_third_person = "snaps thrice"
 	message = "snaps thrice."
+	message_param = "snaps thrice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
@@ -136,7 +143,7 @@
 	message = "squeaks!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'sound/effects/mousesqueek.ogg'
+	sound = 'sound/creatures/mousesqueek.ogg'
 
 /datum/emote/living/merp
 	key = "merp"
@@ -186,7 +193,12 @@
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
+
+/datum/emote/living/chitter/get_sound(mob/living/user)
+	if(ismoth(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
+	else
+		return'sound/creatures/chitter.ogg'
 
 /datum/emote/living/sigh/get_sound(mob/living/user)
 	if(iscarbon(user))
@@ -288,6 +300,49 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living) //Beep already exists on brains and silicons
+
+/datum/emote/living/blink2
+	key = "blink2"
+	key_third_person = "blinks twice"
+	message = "blinks twice."
+	message_AI = "has their display flicker twice."
+
+/datum/emote/living/rblink
+	key = "rblink"
+	key_third_person = "rapidly blinks"
+	message = "rapidly blinks!"
+	message_AI = "has their display port flash rapidly!"
+
+/datum/emote/living/squint
+	key = "squint"
+	key_third_person = "squints"
+	message = "squints."
+	message_AI = "zooms in."
+
+/datum/emote/living/smirk
+	key = "smirk"
+	key_third_person = "smirks"
+	message = "smirks."
+
+/datum/emote/living/eyeroll
+	key = "eyeroll"
+	key_third_person = "rolls their eyes"
+	message = "rolls their eyes."
+
+/datum/emote/living/huff
+	key = "huffs"
+	key_third_person = "huffs"
+	message = "huffs!"
+
+/datum/emote/living/etwitch
+	key = "etwitch"
+	key_third_person = "twitches their ears"
+	message = "twitches their ears!"
+
+/datum/emote/living/clear
+	key = "clear"
+	key_third_person = "clears their throat"
+	message = "clears their throat."
 
 // Avian revolution
 /datum/emote/living/bawk
@@ -406,12 +461,12 @@
 	var/image/gloveimg = image('icons/effects/effects.dmi', slapped, "slapglove", slapped.layer + 0.1)
 	gloveimg.pixel_y = -5
 	gloveimg.pixel_x = 0
-	flick_overlay(gloveimg, GLOB.clients, 10)
+	slapped.flick_overlay_view(gloveimg, 1 SECONDS)
 
 	// And animate the attack!
-	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 3)
-	animate(time = 1)
-	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 0.3 SECONDS)
+	animate(time = 0.1 SECONDS)
+	animate(alpha = 0, time = 0.3 SECONDS, easing = CIRCULAR_EASING|EASE_OUT)
 
 //Froggie Revolution
 /datum/emote/living/warble
@@ -461,3 +516,19 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'
+
+/datum/emote/living/gnash
+	key = "gnash"
+	key_third_person = "gnashes"
+	message = "gnashes."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/weapons/bite.ogg'
+
+/datum/emote/living/thump
+	key = "thump"
+	key_third_person = "thumps"
+	message = "thumps their foot!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/glassbash.ogg'

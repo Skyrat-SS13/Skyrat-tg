@@ -6,8 +6,9 @@
 	antag_hud_name = "brainwashed"
 	ui_name = "AntagInfoBrainwashed"
 	show_in_antagpanel = TRUE
-	antagpanel_category = "Other"
+	antagpanel_category = ANTAG_GROUP_CREW
 	show_name_in_check_antagonists = TRUE
+	count_against_dynamic_roll_chance = FALSE
 
 	silent = TRUE //not actually silent, because greet will be called by the trauma anyway.
 	/// Brain trauma associated with this antag datum

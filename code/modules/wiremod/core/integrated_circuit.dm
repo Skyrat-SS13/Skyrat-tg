@@ -11,9 +11,11 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 /obj/item/integrated_circuit
 	name = "integrated circuit"
 	desc = "By inserting components and a cell into this, wiring them up, and putting them into a shell, anyone can pretend to be a programmer."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "integrated_circuit"
 	inhand_icon_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
 	/// The name that appears on the shell.
 	var/display_name = ""
@@ -48,8 +50,17 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 	/// Set by the shell. Holds the reference to the owner who inserted the component into the shell.
 	var/datum/weakref/inserter_mind
 
-	/// Variables stored on this integrated circuit. with a `variable_name = value` structure
+	/// Variables stored on this integrated circuit, with a `variable_name = value` structure
 	var/list/datum/circuit_variable/circuit_variables = list()
+
+	/// Variables stored on this integrated circuit that can be set by a setter, with a `variable_name = value` structure
+	var/list/datum/circuit_variable/modifiable_circuit_variables = list()
+
+	/// List variables stored on this integrated circuit, with a `variable_name = value` structure
+	var/list/datum/circuit_variable/list_variables = list()
+
+	/// Assoc list variables stored on this integrated circuit, with a `variable_name = value` structure
+	var/list/datum/circuit_variable/assoc_list_variables = list()
 
 	/// The maximum amount of setters and getters a circuit can have
 	var/max_setters_and_getters = 30
@@ -80,7 +91,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 	GLOB.integrated_circuits += src
 
-	RegisterSignal(src, COMSIG_ATOM_USB_CABLE_TRY_ATTACH, .proc/on_atom_usb_cable_try_attach)
+	RegisterSignal(src, COMSIG_ATOM_USB_CABLE_TRY_ATTACH, PROC_REF(on_atom_usb_cable_try_attach))
 
 /obj/item/integrated_circuit/loaded/Initialize(mapload)
 	. = ..()
@@ -91,6 +102,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 		remove_component(to_delete)
 		qdel(to_delete)
 	QDEL_LIST_ASSOC_VAL(circuit_variables)
+	QDEL_LIST_ASSOC_VAL(list_variables)
 	attached_components.Cut()
 	shell = null
 	examined_component = null
@@ -148,7 +160,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 		user.visible_message(span_notice("[user] inserts a power cell into [src]."), span_notice("You insert the power cell into [src]."))
 		return
 
-	if(istype(I, /obj/item/card/id))
+	if(isidcard(I))
 		balloon_alert(user, "owner id set for [I]")
 		owner_id = WEAKREF(I)
 		return
@@ -175,7 +187,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 	set_on(TRUE)
 	SEND_SIGNAL(src, COMSIG_CIRCUIT_SET_SHELL, new_shell)
 	shell = new_shell
-	RegisterSignal(shell, COMSIG_PARENT_QDELETING, .proc/remove_current_shell)
+	RegisterSignal(shell, COMSIG_QDELETING, PROC_REF(remove_current_shell))
 	for(var/obj/item/circuit_component/attached_component as anything in attached_components)
 		attached_component.register_shell(shell)
 		// Their input ports may be updated with user values, but the outputs haven't updated
@@ -192,7 +204,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 	shell.name = initial(shell.name)
 	for(var/obj/item/circuit_component/attached_component as anything in attached_components)
 		attached_component.unregister_shell(shell)
-	UnregisterSignal(shell, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(shell, COMSIG_QDELETING)
 	shell = null
 	set_on(FALSE)
 	SEND_SIGNAL(src, COMSIG_CIRCUIT_SHELL_REMOVED)
@@ -208,19 +220,46 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 	on = new_value
 
 /**
+ * Used for checking if another component of to_check's type exists in the circuit.
+ * Introspects through modules.
+ *
+ * Arguments:
+ * * to_check - The component to check.
+ **/
+/obj/item/integrated_circuit/proc/is_duplicate(obj/item/circuit_component/to_check)
+	for(var/component as anything in attached_components)
+		if(component == to_check)
+			continue
+		if(istype(component, to_check.type))
+			return TRUE
+		if(istype(component, /obj/item/circuit_component/module))
+			var/obj/item/circuit_component/module/module = component
+			for(var/module_component as anything in module.internal_circuit.attached_components)
+				if(module_component == to_check)
+					continue
+				if(istype(module_component, to_check.type))
+					return TRUE
+	return FALSE
+
+/**
  * Adds a component to the circuitboard
  *
  * Once the component is added, the ports can be attached to other components
  */
 /obj/item/integrated_circuit/proc/add_component(obj/item/circuit_component/to_add, mob/living/user)
 	if(to_add.parent)
-		return
+		return FALSE
 
 	if(SEND_SIGNAL(src, COMSIG_CIRCUIT_ADD_COMPONENT, to_add, user) & COMPONENT_CANCEL_ADD_COMPONENT)
-		return
+		return FALSE
 
 	if(!to_add.add_to(src))
-		return
+		return FALSE
+
+	if(to_add.circuit_flags & CIRCUIT_NO_DUPLICATES)
+		if(is_duplicate(to_add))
+			to_chat(user, span_danger("You can't insert multiple instances of this component into the same circuit!"))
+			return FALSE
 
 	var/success = FALSE
 	if(user)
@@ -229,14 +268,14 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 		success = to_add.forceMove(src)
 
 	if(!success)
-		return
+		return FALSE
 
 	to_add.rel_x = rand(COMPONENT_MIN_RANDOM_POS, COMPONENT_MAX_RANDOM_POS) - screen_x
 	to_add.rel_y = rand(COMPONENT_MIN_RANDOM_POS, COMPONENT_MAX_RANDOM_POS) - screen_y
 	to_add.parent = src
 	attached_components += to_add
 	current_size += to_add.circuit_size
-	RegisterSignal(to_add, COMSIG_MOVABLE_MOVED, .proc/component_move_handler)
+	RegisterSignal(to_add, COMSIG_MOVABLE_MOVED, PROC_REF(component_move_handler))
 	SStgui.update_uis(src)
 
 	if(shell)
@@ -346,8 +385,9 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 		variable_data["name"] = variable.name
 		variable_data["datatype"] = variable.datatype
 		variable_data["color"] = variable.color
+		if(islist(variable.value))
+			variable_data["is_list"] = TRUE
 		.["variables"] += list(variable_data)
-
 
 	.["display_name"] = display_name
 
@@ -361,7 +401,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 	.["examined_rel_x"] = examined_rel_x
 	.["examined_rel_y"] = examined_rel_y
 
-	.["is_admin"] = check_rights_for(user.client, R_VAREDIT)
+	.["is_admin"] = (admin_only || isAdminGhostAI(user)) && check_rights_for(user.client, R_VAREDIT)
 
 /obj/item/integrated_circuit/ui_host(mob/user)
 	if(shell)
@@ -533,16 +573,9 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			var/new_name = params["display_name"]
 
 			if(new_name)
-				set_display_name(strip_html(params["display_name"], label_max_length))
+				set_display_name(params["display_name"])
 			else
 				set_display_name("")
-
-			if(shell)
-				if(display_name != "")
-					shell.name = "[initial(shell.name)] ([display_name])"
-				else
-					shell.name = initial(shell.name)
-
 			. = TRUE
 		if("set_examined_component")
 			var/component_id = text2num(params["component_id"])
@@ -568,7 +601,18 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 				return
 			if(params["is_list"])
 				variable_datatype = PORT_TYPE_LIST(variable_datatype)
-			circuit_variables[variable_identifier] = new /datum/circuit_variable(variable_identifier, variable_datatype)
+			else if(params["is_assoc_list"])
+				variable_datatype = PORT_TYPE_ASSOC_LIST(PORT_TYPE_STRING, variable_datatype)
+			var/datum/circuit_variable/variable = new /datum/circuit_variable(variable_identifier, variable_datatype)
+			if(params["is_assoc_list"])
+				variable.set_value(list())
+				assoc_list_variables[variable_identifier] = variable
+			else if(params["is_list"])
+				variable.set_value(list())
+				list_variables[variable_identifier] = variable
+			else
+				modifiable_circuit_variables[variable_identifier] = variable
+			circuit_variables[variable_identifier] = variable
 			. = TRUE
 		if("remove_variable")
 			var/variable_identifier = params["variable_name"]
@@ -578,6 +622,8 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			if(!variable)
 				return
 			circuit_variables -= variable_identifier
+			list_variables -= variable_identifier
+			modifiable_circuit_variables -= variable_identifier
 			qdel(variable)
 			. = TRUE
 		if("add_setter_or_getter")
@@ -594,7 +640,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			component.variable_name.set_input(params["variable"])
 			component.rel_x = text2num(params["rel_x"])
 			component.rel_y = text2num(params["rel_y"])
-			RegisterSignal(component, COMSIG_CIRCUIT_COMPONENT_REMOVED, .proc/clear_setter_or_getter)
+			RegisterSignal(component, COMSIG_CIRCUIT_COMPONENT_REMOVED, PROC_REF(clear_setter_or_getter))
 			setter_and_getter_count++
 			return TRUE
 		if("move_screen")
@@ -605,11 +651,12 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			if(!WITHIN_RANGE(component_id, attached_components))
 				return
 			var/obj/item/circuit_component/component = attached_components[component_id]
+			SEND_SIGNAL(component, COMSIG_CIRCUIT_COMPONENT_PERFORM_ACTION, ui.user, params["action_name"])
 			component.ui_perform_action(ui.user, params["action_name"])
 		if("print_component")
 			var/component_path = text2path(params["component_to_print"])
 			var/obj/item/circuit_component/component
-			if(!check_rights_for(ui.user.client, R_SPAWN))
+			if((!admin_only && !isAdminGhostAI(ui.user)) || !check_rights_for(ui.user.client, R_SPAWN))
 				var/obj/machinery/component_printer/printer = linked_component_printer?.resolve()
 				if(!printer)
 					balloon_alert(ui.user, "linked printer not found!")
@@ -650,7 +697,17 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 /// Sets the display name that appears on the shell.
 /obj/item/integrated_circuit/proc/set_display_name(new_name)
-	display_name = new_name
+	display_name = copytext(new_name, 1, label_max_length)
+	if(!shell)
+		return
+
+	if(display_name != "")
+		if(!admin_only)
+			shell.name = "[initial(shell.name)] ([strip_html(display_name)])"
+		else
+			shell.name = display_name
+	else
+		shell.name = initial(shell.name)
 
 /**
  * Returns the creator of the integrated circuit. Used in admin messages and other related things.
@@ -681,3 +738,9 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 	WRITE_FILE(temp_file, convert_to_json())
 	DIRECT_OUTPUT(saver, ftp(temp_file, "[display_name || "circuit"].json"))
 	return TRUE
+
+/obj/item/integrated_circuit/admin
+	name = "administrative circuit"
+	desc = "The components installed in here are far beyond your comprehension."
+
+	admin_only = TRUE

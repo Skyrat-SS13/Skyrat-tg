@@ -1,19 +1,26 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "I'm meant to put that WHERE?!"
-	icon_state = "buttplug"
-	worn_icon_state = "buttplug"
+	icon_state = "buttplug_pink_small"
+	base_icon_state = "buttplug"
+	worn_icon_state = "buttplug_pink"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
+	/// Current color of the toy, can be changed, affects sprite
 	var/current_color = "pink"
+	/// Current size of the toy, can be changed, affects sprite and arousal
 	var/current_size = "small"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
+	/// A bool of if the color's been changed before
 	var/color_changed = FALSE
+	/// A bool of if the form has been altered before
 	var/form_changed = FALSE
+	/// A static list containing all designs (or colors) of toys
 	var/static/list/buttplug_designs
+	/// A static list containing all forms (or sizes) of toys
 	var/static/list/buttplug_forms
 	w_class = WEIGHT_CLASS_TINY
 
@@ -33,16 +40,12 @@
 		"medium" = image(icon = src.icon, icon_state = "buttplug_pink_medium"),
 		"big" = image(icon = src.icon, icon_state = "buttplug_pink_big"))
 
-/obj/item/clothing/sextoy/buttplug/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/clothing/sextoy/buttplug/AltClick(mob/user, obj/item/I)
-	if(color_changed == FALSE)
+/obj/item/clothing/sextoy/buttplug/AltClick(mob/user)
+	if(!color_changed)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, buttplug_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, buttplug_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -51,30 +54,21 @@
 			set_light(0.25)
 			update_light()
 		color_changed = TRUE
-	if(color_changed == TRUE)
+	else
 		if(form_changed == FALSE)
 			. = ..()
 			if(.)
 				return
-			var/choice = show_radial_menu(user,src, buttplug_forms, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+			var/choice = show_radial_menu(user, src, buttplug_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
 				return FALSE
 			current_size = choice
 			update_icon()
 			form_changed = TRUE
-	else
-		return
 
-//to check if we can change buttplug model
-/obj/item/clothing/sextoy/buttplug/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
-
-/obj/item/clothing/sextoy/buttplug/Initialize()
+/obj/item/clothing/sextoy/buttplug/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	set_light(0)
 	update_light()
 	update_icon_state()
@@ -86,37 +80,40 @@
 
 /obj/item/clothing/sextoy/buttplug/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_size]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[current_size]"
+	worn_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/buttplug/equipped(mob/user, slot)
-	.=..()
-	var/mob/living/carbon/human/H = user
-	if(src == H.anus || src == H.vagina)
+/obj/item/clothing/sextoy/buttplug/lewd_equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(!istype(user))
+		return
+	if(src == user.anus || src == user.vagina)
 		START_PROCESSING(SSobj, src)
 
-	if(src == H.vagina && current_color == "tail")
-		H.cut_overlay(H.overlays_standing[VAGINA_LAYER])
+	if(src == user.vagina && current_color == "tail")
+		user.cut_overlay(user.overlays_standing[VAGINA_LAYER])
 
 	// I did this shit with taur icons on purpose because fuck skyrat's system with taurs, it's dumb and maybe dumber than me I CANT DO THIS ANYMORE WHY THIS OVERLAPPING WITH MY SPRITES AAAAAARGH
-	if(H.dna.species.mutant_bodyparts["taur"] && src == H.anus)
-		H.cut_overlay(H.overlays_standing[ANUS_LAYER])
+	if(user.dna.species.mutant_bodyparts["taur"] && src == user.anus)
+		user.cut_overlay(user.overlays_standing[ANUS_LAYER])
 
 /obj/item/clothing/sextoy/buttplug/dropped(mob/user, slot)
-	.=..()
+	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/buttplug/process(delta_time)
-	var/mob/living/carbon/human/U = loc
-	//i tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
-	if(current_size == "small" && U.arousal < 30)
-		U.adjustArousal(0.6 * delta_time)
-		U.adjustPleasure(0.7 * delta_time)
-	if(current_size == "medium" && U.arousal < 40)
-		U.adjustArousal(0.8 * delta_time)
-		U.adjustPleasure(0.8 * delta_time)
-	if(current_size == "big" && U.arousal < 50)
-		U.adjustArousal(1 * delta_time)
-		U.adjustPleasure(1 * delta_time)
-	if(current_size == "big" && U.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
-		U.adjustPain (1*delta_time)
+/obj/item/clothing/sextoy/buttplug/process(seconds_per_tick)
+	var/mob/living/carbon/human/target = loc
+	if(!istype(target))
+		return
+	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
+	if(current_size == "small" && target.arousal < 30)
+		target.adjust_arousal(0.6 * seconds_per_tick)
+		target.adjust_pleasure(0.7 * seconds_per_tick)
+	else if(current_size == "medium" && target.arousal < 40)
+		target.adjust_arousal(0.8 * seconds_per_tick)
+		target.adjust_pleasure(0.8 * seconds_per_tick)
+	else if(current_size == "big" && target.arousal < 50)
+		target.adjust_arousal(seconds_per_tick)
+		target.adjust_pleasure(seconds_per_tick)
+		if(target.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
+			target.adjust_pain(1 * seconds_per_tick)

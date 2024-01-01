@@ -1,8 +1,8 @@
 /obj/item/clothing/head/mush_helmet
 	name = "mush cap"
 	desc = "A mushroom cap, this one also doubles as an umbrella!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/costume.dmi'
 	icon_state = "mush_cap"
 	worn_icon_state = "mush_cap"
 	greyscale_config = /datum/greyscale_config/mushcap
@@ -13,7 +13,7 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/mush
-	name = "Mushroom suit"
+	name = "mushroom suit"
 	desc = "A mushroom suit, these can be sporadically seen being worn by the more fungal personalities."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'

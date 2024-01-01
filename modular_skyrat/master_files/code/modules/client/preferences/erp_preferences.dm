@@ -1,6 +1,9 @@
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
+/datum/config_entry/flag/disable_lewd_items
+	default = FALSE
+
 /datum/config_entry/str_list/erp_emotes_to_disable
 
 /datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)
@@ -50,11 +53,41 @@
 		return FALSE
 	. = ..()
 
-/datum/preference/toggle/erp/cum_face
-	savefile_key = "cum_face_pref"
+/datum/preference/toggle/erp/apply_to_client_updated(client/client, value)
+	. = ..()
+	var/mob/living/carbon/human/target = client?.mob
+	if(!value && istype(target))
+		target.arousal = 0
+		target.pain = 0
+		target.pleasure = 0
+
+/// Sounds from interaction menu and stimuli
+/datum/preference/toggle/erp/sounds
+	savefile_key = "erp_sounds_pref"
 
 /datum/preference/toggle/erp/sex_toy
 	savefile_key = "sextoy_pref"
+
+/datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
+	apply_to_client(client, value)
+	if(!value)
+		if(ishuman(client.mob))
+			var/mob/living/carbon/human/target = client.mob
+			if(target.vagina != null)
+				target.dropItemToGround(target.vagina, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.anus != null)
+				target.dropItemToGround(target.anus, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.nipples != null)
+				target.dropItemToGround(target.nipples, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.penis != null)
+				target.dropItemToGround(target.penis, TRUE, target.loc, TRUE, FALSE, TRUE)
+
+
+	client.mob.hud_used.hidden_inventory_update(client.mob)
+	client.mob.hud_used.persistent_inventory_update(client.mob)
+
+/datum/preference/toggle/erp/sex_toy_sounds
+	savefile_key = "sextoy_sounds_pref"
 
 /datum/preference/toggle/erp/bimbofication
 	savefile_key = "bimbofication_pref"
@@ -65,17 +98,29 @@
 /datum/preference/toggle/erp/breast_enlargement
 	savefile_key = "breast_enlargement_pref"
 
+/datum/preference/toggle/erp/breast_shrinkage
+	savefile_key = "breast_shrinkage_pref"
+
 /datum/preference/toggle/erp/penis_enlargement
 	savefile_key = "penis_enlargement_pref"
+
+/datum/preference/toggle/erp/penis_shrinkage
+	savefile_key = "penis_shrinkage_pref"
+
+/datum/preference/toggle/erp/genitalia_removal
+	savefile_key = "genitalia_removal_pref"
 
 /datum/preference/toggle/erp/gender_change
 	savefile_key = "gender_change_pref"
 
-/datum/preference/toggle/erp/noncon
-	savefile_key = "noncon_pref"
-
 /datum/preference/toggle/erp/autocum
 	savefile_key = "autocum_pref"
+
+/datum/preference/toggle/erp/autoemote
+	savefile_key = "autoemote_pref"
+
+/datum/preference/toggle/erp/new_genitalia_growth
+	savefile_key = "new_genitalia_growth_pref"
 
 /datum/preference/choiced/erp_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -83,7 +128,7 @@
 	savefile_key = "erp_status_pref"
 
 /datum/preference/choiced/erp_status/init_possible_values()
-	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No", "Yes")
 
 /datum/preference/choiced/erp_status/create_default_value()
 	return "Ask"
@@ -113,7 +158,7 @@
 	savefile_key = "erp_status_pref_nc"
 
 /datum/preference/choiced/erp_status_nc/init_possible_values()
-	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No", "Yes")
 
 /datum/preference/choiced/erp_status_nc/create_default_value()
 	return "Ask"
@@ -143,7 +188,7 @@
 	savefile_key = "erp_status_pref_v"
 
 /datum/preference/choiced/erp_status_v/init_possible_values()
-	return list("Yes - Switch", "Yes - Prey", "Yes - Pred", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Prey", "Yes - Pred", "Check OOC", "Ask", "No", "Yes")
 
 /datum/preference/choiced/erp_status_v/create_default_value()
 	return "Ask"
@@ -195,4 +240,34 @@
 	. = ..()
 
 /datum/preference/choiced/erp_status_mechanics/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/choiced/erp_sexuality
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_identifier = PREFERENCE_PLAYER
+	savefile_key = "erp_sexuality_pref"
+
+/datum/preference/choiced/erp_sexuality/init_possible_values()
+	return list("Gay", "Straight", "None") // For simplicity's sake we only have 3 options.
+
+/datum/preference/choiced/erp_sexuality/create_default_value()
+	return "None"
+
+/datum/preference/choiced/erp_sexuality/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+
+	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
+
+/datum/preference/choiced/erp_sexuality/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return "None"
+	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+		return "None"
+	. = ..()
+
+/datum/preference/choiced/erp_sexuality/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE

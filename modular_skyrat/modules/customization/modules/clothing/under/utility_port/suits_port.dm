@@ -1,19 +1,3 @@
-//Bartender Winter coat, with the ability to hold shakers/beakers/rags in its suit storage slot
-/obj/item/clothing/suit/hooded/wintercoat/bartender
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "bartender's winter coat"
-	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
-	icon_state = "coatbar"
-	mutant_variants = NONE
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/reagent_containers/food/drinks/shaker, /obj/item/reagent_containers/food/drinks/flask, /obj/item/reagent_containers/glass/rag)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/bartender
-
-/obj/item/clothing/head/hooded/winterhood/bartender
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_bar"
-
 //Base Jacket - same stats as /obj/item/clothing/suit/jacket, just toggleable and serving as the base for all the departmental jackets and flannels
 /obj/item/clothing/suit/toggle/jacket
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -25,7 +9,7 @@
 	body_parts_covered = CHEST|ARMS|GROIN
 	cold_protection = CHEST|ARMS|GROIN
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	toggle_noun = "zipper"
 
 //Job Jackets
@@ -33,35 +17,41 @@
 	name = "engineering jacket"
 	desc = "A comfortable jacket in engineering yellow."
 	icon_state = "engi_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 45, WOUND = 0)
+	armor_type = /datum/armor/jacket_engi
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/t_scanner, /obj/item/construction/rcd, /obj/item/pipe_dispenser, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
+
+/datum/armor/jacket_engi
+	fire = 30
+	acid = 45
 
 /obj/item/clothing/suit/toggle/jacket/sci
 	name = "science jacket"
 	desc = "A comfortable jacket in science purple."
 	icon_state = "sci_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 10, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	armor_type = /datum/armor/jacket_sci
+
+/datum/armor/jacket_sci
+	bomb = 10
 
 /obj/item/clothing/suit/toggle/jacket/med
 	name = "medbay jacket"
 	desc = "A comfortable jacket in medical blue."
 	icon_state = "med_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 0, ACID = 45, WOUND = 0)
+	armor_type = /datum/armor/jacket_med
+
+/datum/armor/jacket_med
+	bio = 50
+	acid = 45
 
 /obj/item/clothing/suit/toggle/jacket/supply
 	name = "cargo jacket"
 	desc = "A comfortable jacket in supply brown."
 	icon_state = "supply_dep_jacket"
 
-/obj/item/clothing/suit/gorka	//THIS WILL BE MOVED IN THE NEXT PR ADDING PROPER GORKAS (not cargo related so not in this PR), BUT FOR NOW ITS HERE FOR THE SUBTYPE'S FILE LINKS
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/gorka/supply	//Put here for sorting purposes, considering the cargo gorkas are in the utility file too. The base Gorka and Jacket (to be added later) will most likely be elsewhere
-	name = "supply gorka jacket"
-	desc = "A snug jacket to wear over your gorka. This one matches with supply's colors."
-	icon_state = "gorka_jacket_supply"
+/obj/item/clothing/suit/toggle/jacket/assistant
+	name = "non-departmental jacket"
+	desc = "A comfortable jacket in a neutral black"
+	icon_state = "off_dep_jacket"
 
 /obj/item/clothing/suit/toggle/jacket/supply/head
 	name = "quartermaster's jacket"
@@ -72,7 +62,20 @@
 	name = "security jacket"
 	desc = "A comfortable jacket in security blue. Probably against uniform regulations."
 	icon_state = "sec_dep_jacket"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45, WOUND = 0)
+	armor_type = /datum/armor/sec_dep_jacket
+
+/obj/item/clothing/suit/toggle/jacket/sec/Initialize(mapload)
+	. = ..()
+	allowed = GLOB.security_vest_allowed
+
+/datum/armor/sec_dep_jacket
+	melee = 30
+	bullet = 20
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 30
+	acid = 45
 
 /obj/item/clothing/suit/toggle/jacket/sec/old	//Oldsec (Red)
 	icon_state = "sec_dep_jacket_old"
@@ -100,27 +103,10 @@
 	name = "brown flannel jacket"
 	icon_state = "flannel_brown"
 
-//Labcoats
-/obj/item/clothing/suit/toggle/labcoat/highvis
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "high vis labcoat"
-	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
-	icon_state = "labcoat_highvis"
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/toggle/labcoat/para_red
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "red paramedic labcoat"
-	desc = "A red vest with reflective strips for First Responsers."
-	icon_state = "labcoat_pmedred"
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/toggle/labcoat/para_red/Initialize()
-	. = ..()
-	allowed += list(
-		/obj/item/storage/firstaid,
-	)
-
-//Costume-suits are located under other_port.dm, to keep them with their costume sets
+/obj/item/clothing/suit/toggle/jacket/flannel/gags
+	name = "flannel shirt"
+	icon_state = "flannelgags"
+	greyscale_config = /datum/greyscale_config/flannelgags
+	greyscale_config_worn = /datum/greyscale_config/flannelgags/worn
+	greyscale_colors = "#a61e1f"
+	flags_1 = IS_PLAYER_COLORABLE_1

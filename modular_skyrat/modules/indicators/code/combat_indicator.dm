@@ -1,4 +1,4 @@
-#define COMBAT_NOTICE_COOLDOWN 10 SECONDS
+#define COMBAT_NOTICE_COOLDOWN (10 SECONDS)
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /proc/GenerateCombatOverlay()
@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if (combat_indicator_vehicle)
 		if(world.time > vehicle_next_combat_popup) // As of the time of writing, COMBAT_NOTICE_COOLDOWN is 10 secs, so this is asking "has 10 secs past between last activation of CI?"
 			vehicle_next_combat_popup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10, TRUE)
+			playsound(src, 'sound/machines/chime.ogg', vol = 10, vary = FALSE, extrarange = -6, falloff_exponent = 4, frequency = null, channel = 0, pressure_affected = FALSE, ignore_walls = FALSE, falloff_distance = 1)
 			flick_emote_popup_on_obj("combat", 20)
 			visible_message(span_boldwarning("[src] prepares for combat!"))
 		combat_indicator_vehicle = TRUE
@@ -41,6 +41,11 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	. = ..()
 	if(combat_indicator)
 		. += GLOB.combat_indicator_overlay
+
+/mob/living/silicon/robot/update_icons()
+	. = ..()
+	if(combat_indicator)
+		add_overlay(GLOB.combat_indicator_overlay)
 
 /obj/vehicle/sealed/update_overlays()
 	. = ..()
@@ -80,7 +85,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if(combat_indicator)
 		if(world.time > nextcombatpopup) // As of the time of writing, COMBAT_NOTICE_COOLDOWN is 10 secs, so this is asking "has 10 secs past between last activation of CI?"
 			nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE)
+			playsound(src, 'sound/machines/chime.ogg', vol = 10, vary = FALSE, extrarange = -6, falloff_exponent = 4, frequency = null, channel = 0, pressure_affected = FALSE, ignore_walls = FALSE, falloff_distance = 1)
 			flick_emote_popup_on_mob("combat", 20)
 			var/ciweapon
 			if(get_active_held_item())
@@ -99,12 +104,12 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 				else
 					visible_message(span_boldwarning("[src] gets ready for combat!"))
 		combat_indicator = TRUE
-		apply_status_effect(STATUS_EFFECT_SURRENDER, src)
+		apply_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
-		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal) //From now on, whenever this mob falls unconcious, the referenced proc will fire.
+		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, PROC_REF(combat_indicator_unconscious_signal)) //From now on, whenever this mob falls unconcious, the referenced proc will fire.
 	else
 		combat_indicator = FALSE
-		remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+		remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS) //combat_indicator_unconcious_signal will no longer be fired if this mob is unconcious.
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
@@ -190,11 +195,18 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /datum/emote/living/surrender
 	message = "drops to the floor and raises their hands defensively! They surrender%s!"
+	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/living_user = user
 		living_user.Paralyze(200)
-		living_user.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+		living_user.remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		living_user.set_combat_indicator(FALSE)
+
+/datum/emote/living/surrender/select_message_type(mob/user, intentional)
+	var/mob/living/living_mob = user
+	if(living_mob?.body_position == LYING_DOWN)
+		return "raises their hands defensively! They surrender%s!"
+	. = ..()

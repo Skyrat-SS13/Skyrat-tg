@@ -18,6 +18,10 @@
 	var/leader_experience = TRUE
 	///SKYRAT EDIT: Do we want to notify the players of this ERT?
 	var/notify_players = TRUE
+	/// A custom map template to spawn the ERT at. If this is null or use_custom_shuttle is FALSE, the ERT will spawn at Centcom.
+	var/datum/map_template/ert_template
+	/// If we should actually _use_ the ert_template custom shuttle
+	var/use_custom_shuttle = TRUE
 
 /datum/ert/New()
 	if (!polldesc)
@@ -103,3 +107,24 @@
 	mission = "Create entertainment for the crew."
 	polldesc = "a Code Rainbow Nanotrasen Emergency Response Party"
 	code = "Rainbow"
+
+/datum/ert/bounty_hunters
+	roles = list(/datum/antagonist/ert/bounty_armor, /datum/antagonist/ert/bounty_hook, /datum/antagonist/ert/bounty_synth)
+	leader_role = /datum/antagonist/ert/bounty_armor
+	teamsize = 3
+	opendoors = FALSE
+	rename_team = "Bounty Hunters"
+	mission = "Assist the station in catching perps, dead or alive."
+	polldesc = "a Centcom-hired bounty hunting gang"
+	random_names = FALSE
+	ert_template = /datum/map_template/shuttle/ert/bounty
+
+/datum/ert/militia
+	roles = list(/datum/antagonist/ert/militia)
+	leader_role = /datum/antagonist/ert/militia/general
+	teamsize = 4
+	opendoors = FALSE
+	rename_team = "Frontier Militia"
+	mission = "Having heard the station's request for aid, assist the crew in defending themselves."
+	polldesc = "an independent station defense militia"
+	random_names = TRUE

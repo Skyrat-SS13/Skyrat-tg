@@ -12,18 +12,22 @@
 			msg += "\"01000001 01001001\"."
 		if(TRACK_INFILTRATOR)
 			msg += "\"vasvygengbefuvc\"."
+		/// SKYRAT EDIT BEGIN
+		if(TRACK_GOLDENEYE)
+			msg += "\"goldeneye_key\"."
+		/// SKYRAT EDIT END
 		else
 			msg = "Its tracking indicator is blank."
 	. += msg
-	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
+	for(var/obj/machinery/nuclearbomb/bomb as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/nuclearbomb))
 		if(bomb.timing)
 			. += "Extreme danger. Arming signal detected. Time remaining: [bomb.get_time_left()]."
 
-/obj/item/pinpointer/nuke/process(delta_time)
+/obj/item/pinpointer/nuke/process(seconds_per_tick)
 	..()
 	if(!active || alert)
 		return
-	for(var/obj/machinery/nuclearbomb/bomb as anything in GLOB.nuke_list)
+	for(var/obj/machinery/nuclearbomb/bomb as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/nuclearbomb))
 		if(!bomb.timing)
 			continue
 		alert = TRUE
@@ -44,12 +48,15 @@
 				var/mob/living/silicon/ai/A = V
 				if(A.nuking)
 					target = A
-			for(var/V in GLOB.apcs_list)
-				var/obj/machinery/power/apc/A = V
-				if(A.malfhack && A.occupier)
-					target = A
+			for(var/obj/machinery/power/apc/apc as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc))
+				if(apc.malfhack && apc.occupier)
+					target = apc
 		if(TRACK_INFILTRATOR)
 			target = SSshuttle.getShuttle("syndicate")
+		// SKYRAT EDIT ADDITION
+		if(TRACK_GOLDENEYE)
+			target = SSgoldeneye.goldeneye_keys[1] // Track the first goldeneye key in existence.
+		// SKYRAT EDIT END
 	..()
 
 /obj/item/pinpointer/nuke/proc/switch_mode_to(new_mode)

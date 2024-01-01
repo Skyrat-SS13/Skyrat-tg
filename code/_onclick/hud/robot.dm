@@ -77,120 +77,95 @@
 	var/mob/living/silicon/robot/robit = mymob
 	var/atom/movable/screen/using
 
-	using = new/atom/movable/screen/language_menu
+	using = new/atom/movable/screen/language_menu(null, src)
 	using.screen_loc = ui_borg_language_menu
 	static_inventory += using
 
+// Navigation
+	using = new /atom/movable/screen/navigate(null, src)
+	using.screen_loc = ui_borg_navigate_menu
+	static_inventory += using
+
 //Radio
-	using = new /atom/movable/screen/robot/radio()
+	using = new /atom/movable/screen/robot/radio(null, src)
 	using.screen_loc = ui_borg_radio
-	using.hud = src
 	static_inventory += using
 
 //Module select
 	if(!robit.inv1)
-		robit.inv1 = new /atom/movable/screen/robot/module1()
-
+		robit.inv1 = new /atom/movable/screen/robot/module1(null, src)
 	robit.inv1.screen_loc = ui_inv1
-	robit.inv1.hud = src
 	static_inventory += robit.inv1
 
 	if(!robit.inv2)
-		robit.inv2 = new /atom/movable/screen/robot/module2()
-
+		robit.inv2 = new /atom/movable/screen/robot/module2(null, src)
 	robit.inv2.screen_loc = ui_inv2
-	robit.inv2.hud = src
 	static_inventory += robit.inv2
 
 	if(!robit.inv3)
-		robit.inv3 = new /atom/movable/screen/robot/module3()
-
+		robit.inv3 = new /atom/movable/screen/robot/module3(null, src)
 	robit.inv3.screen_loc = ui_inv3
-	robit.inv3.hud = src
 	static_inventory += robit.inv3
 
 //End of module select
-	using = new /atom/movable/screen/robot/lamp()
+	using = new /atom/movable/screen/robot/lamp(null, src)
 	using.screen_loc = ui_borg_lamp
-	using.hud = src
 	static_inventory += using
 	robit.lampButton = using
 	var/atom/movable/screen/robot/lamp/lampscreen = using
 	lampscreen.robot = robit
 
 //Photography stuff
-	using = new /atom/movable/screen/ai/image_take()
+	using = new /atom/movable/screen/ai/image_take(null, src)
 	using.screen_loc = ui_borg_camera
-	using.hud = src
 	static_inventory += using
 
 //Borg Integrated Tablet
-	using = new /atom/movable/screen/robot/modPC()
+	using = new /atom/movable/screen/robot/modpc(null, src)
 	using.screen_loc = ui_borg_tablet
-	using.hud = src
 	static_inventory += using
 	robit.interfaceButton = using
 	if(robit.modularInterface)
+		// Just trust me
+		robit.modularInterface.vis_flags |= VIS_INHERIT_PLANE
 		using.vis_contents += robit.modularInterface
-	var/atom/movable/screen/robot/modPC/tabletbutton = using
+	var/atom/movable/screen/robot/modpc/tabletbutton = using
 	tabletbutton.robot = robit
 
 //Alerts
-	using = new /atom/movable/screen/robot/alerts()
+	using = new /atom/movable/screen/robot/alerts(null, src)
 	using.screen_loc = ui_borg_alerts
-	using.hud = src
 	static_inventory += using
 
 	//Combat Mode
-	action_intent = new /atom/movable/screen/combattoggle/robot()
-	action_intent.hud = src
+	action_intent = new /atom/movable/screen/combattoggle/robot(null, src)
 	action_intent.icon = ui_style
 	action_intent.screen_loc = ui_combat_toggle
 	static_inventory += action_intent
 
 //Health
-	healths = new /atom/movable/screen/healths/robot()
-	healths.hud = src
+	healths = new /atom/movable/screen/healths/robot(null, src)
 	infodisplay += healths
 
 //Installed Module
-	robit.hands = new /atom/movable/screen/robot/module()
+	robit.hands = new /atom/movable/screen/robot/module(null, src)
 	robit.hands.screen_loc = ui_borg_module
-	robit.hands.hud = src
 	static_inventory += robit.hands
 
 //Store
-	module_store_icon = new /atom/movable/screen/robot/store()
+	module_store_icon = new /atom/movable/screen/robot/store(null, src)
 	module_store_icon.screen_loc = ui_borg_store
-	module_store_icon.hud = src
 
-	pull_icon = new /atom/movable/screen/pull()
+	pull_icon = new /atom/movable/screen/pull(null, src)
 	pull_icon.icon = 'icons/hud/screen_cyborg.dmi'
 	pull_icon.screen_loc = ui_borg_pull
-	pull_icon.hud = src
 	pull_icon.update_appearance()
 	hotkeybuttons += pull_icon
 
 
-	zone_select = new /atom/movable/screen/zone_sel/robot()
-	zone_select.hud = src
+	zone_select = new /atom/movable/screen/zone_sel/robot(null, src)
 	zone_select.update_appearance()
 	static_inventory += zone_select
-
-// SKYRAT EDIT ADDITION BEGIN: Cyborg PDA
-//PDA message
-	using = new /atom/movable/screen/robot/pda_msg_send
-	using.screen_loc = ui_borg_pda_send
-	using.hud = src
-	static_inventory += using
-
-//PDA log
-	using = new /atom/movable/screen/robot/pda_msg_show
-	using.screen_loc = ui_borg_pda_log
-	using.hud = src
-	static_inventory += using
-// SKYRAT EDIT ADDITION END
-
 
 /datum/hud/proc/toggle_show_robot_modules()
 	if(!iscyborg(mymob))
@@ -240,7 +215,7 @@
 				A.screen_loc = "CENTER[x]:16,SOUTH+[y]:7"
 			else
 				A.screen_loc = "CENTER+[x]:16,SOUTH+[y]:7"
-			A.plane = ABOVE_HUD_PLANE
+			SET_PLANE_IMPLICIT(A, ABOVE_HUD_PLANE)
 
 			x++
 			if(x == 4)
@@ -306,18 +281,18 @@
 		robot = null
 	return ..()
 
-/atom/movable/screen/robot/modPC
+/atom/movable/screen/robot/modpc
 	name = "Modular Interface"
 	icon_state = "template"
 	var/mob/living/silicon/robot/robot
 
-/atom/movable/screen/robot/modPC/Click()
+/atom/movable/screen/robot/modpc/Click()
 	. = ..()
 	if(.)
 		return
 	robot.modularInterface?.interact(robot)
 
-/atom/movable/screen/robot/modPC/Destroy()
+/atom/movable/screen/robot/modpc/Destroy()
 	if(robot)
 		robot.interfaceButton = null
 		robot = null

@@ -1,37 +1,47 @@
-import { Loader } from './common/Loader';
-import { InputButtons, Preferences } from './common/InputButtons';
-import { Button, Input, Section, Stack } from '../components';
-import { KEY_A, KEY_DOWN, KEY_ESCAPE, KEY_ENTER, KEY_UP, KEY_Z } from '../../common/keycodes';
-import { Window } from '../layouts';
+import {
+  KEY_A,
+  KEY_DOWN,
+  KEY_ENTER,
+  KEY_ESCAPE,
+  KEY_UP,
+  KEY_Z,
+} from '../../common/keycodes';
 import { useBackend, useLocalState } from '../backend';
+import { Autofocus, Button, Input, Section, Stack } from '../components';
+import { Window } from '../layouts';
+import { InputButtons } from './common/InputButtons';
+import { Loader } from './common/Loader';
 
 type ListInputData = {
-  items: string[];
-  message: string;
   init_value: string;
-  preferences: Preferences;
+  items: string[];
+  large_buttons: boolean;
+  message: string;
   timeout: number;
   title: string;
 };
 
-export const ListInputModal = (_, context) => {
-  const { act, data } = useBackend<ListInputData>(context);
-  const { items = [], message, init_value, preferences, timeout, title } = data;
-  const { large_buttons } = preferences;
+export const ListInputModal = (props) => {
+  const { act, data } = useBackend<ListInputData>();
+  const {
+    items = [],
+    message = '',
+    init_value,
+    large_buttons,
+    timeout,
+    title,
+  } = data;
   const [selected, setSelected] = useLocalState<number>(
-    context,
     'selected',
-    items.indexOf(init_value)
+    items.indexOf(init_value),
   );
   const [searchBarVisible, setSearchBarVisible] = useLocalState<boolean>(
-    context,
     'searchBarVisible',
-    items.length > 9
+    items.length > 9,
   );
   const [searchQuery, setSearchQuery] = useLocalState<string>(
-    context,
     'searchQuery',
-    ''
+    '',
   );
   // User presses up or down on keyboard
   // Simulates clicking an item
@@ -93,12 +103,12 @@ export const ListInputModal = (_, context) => {
     setSearchBarVisible(!searchBarVisible);
     setSearchQuery('');
   };
-  const filteredItems = items.filter((item) =>
-    item?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredItems = items.filter(
+    (item) => item?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
   // Dynamically changes the window height based on the message.
-  const windowHeight
-    = 325 + Math.ceil(message?.length / 3) + (large_buttons ? 5 : 0);
+  const windowHeight =
+    325 + Math.ceil(message.length / 3) + (large_buttons ? 5 : 0);
   // Grabs the cursor when no search bar is visible.
   if (!searchBarVisible) {
     setTimeout(() => document!.getElementById(selected.toString())?.focus(), 1);
@@ -126,24 +136,27 @@ export const ListInputModal = (_, context) => {
             event.preventDefault();
             act('cancel');
           }
-        }}>
+        }}
+      >
         <Section
           buttons={
             <Button
               compact
-              icon={searchBarVisible ? "search" : "font"}
+              icon={searchBarVisible ? 'search' : 'font'}
               selected
-              tooltip={searchBarVisible
-                ? "Search Mode. Type to search or use arrow keys to select manually."
-                : "Hotkey Mode. Type a letter to jump to the first match. Enter to select."}
+              tooltip={
+                searchBarVisible
+                  ? 'Search Mode. Type to search or use arrow keys to select manually.'
+                  : 'Hotkey Mode. Type a letter to jump to the first match. Enter to select.'
+              }
               tooltipPosition="left"
               onClick={() => onSearchBarToggle()}
             />
-
           }
           className="ListInput__Section"
           fill
-          title={message}>
+          title={message}
+        >
           <Stack fill vertical>
             <Stack.Item grow>
               <ListDisplay
@@ -162,7 +175,7 @@ export const ListInputModal = (_, context) => {
                 selected={selected}
               />
             )}
-            <Stack.Item pl={!large_buttons && 4} pr={!large_buttons && 4}>
+            <Stack.Item>
               <InputButtons input={filteredItems[selected]} />
             </Stack.Item>
           </Stack>
@@ -176,22 +189,22 @@ export const ListInputModal = (_, context) => {
  * Displays the list of selectable items.
  * If a search query is provided, filters the items.
  */
-const ListDisplay = (props, context) => {
-  const { act } = useBackend<ListInputData>(context);
-  const { filteredItems, onClick, onFocusSearch, searchBarVisible, selected }
-    = props;
+const ListDisplay = (props) => {
+  const { act } = useBackend<ListInputData>();
+  const { filteredItems, onClick, onFocusSearch, searchBarVisible, selected } =
+    props;
 
   return (
-    <Section fill scrollable tabIndex={0}>
+    <Section fill scrollable>
+      <Autofocus />
       {filteredItems.map((item, index) => {
         return (
           <Button
             color="transparent"
             fluid
-            id={index}
             key={index}
             onClick={() => onClick(index)}
-            onDblClick={(event) => {
+            onDoubleClick={(event) => {
               event.preventDefault();
               act('submit', { entry: filteredItems[selected] });
             }}
@@ -204,9 +217,10 @@ const ListDisplay = (props, context) => {
             }}
             selected={index === selected}
             style={{
-              'animation': 'none',
-              'transition': 'none',
-            }}>
+              animation: 'none',
+              transition: 'none',
+            }}
+          >
             {item.replace(/^\w/, (c) => c.toUpperCase())}
           </Button>
         );
@@ -219,8 +233,8 @@ const ListDisplay = (props, context) => {
  * Renders a search bar input.
  * Closing the bar defaults input to an empty string.
  */
-const SearchBar = (props, context) => {
-  const { act } = useBackend<ListInputData>(context);
+const SearchBar = (props) => {
+  const { act } = useBackend<ListInputData>();
   const { filteredItems, onSearch, searchQuery, selected } = props;
 
   return (

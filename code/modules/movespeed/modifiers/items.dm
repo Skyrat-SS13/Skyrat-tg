@@ -13,3 +13,9 @@
 
 /datum/movespeed_modifier/berserk
 	multiplicative_slowdown = -0.2
+
+/datum/movespeed_modifier/sphere
+	multiplicative_slowdown = -0.5
+
+/datum/movespeed_modifier/shooting_assistant
+	multiplicative_slowdown = 0.5

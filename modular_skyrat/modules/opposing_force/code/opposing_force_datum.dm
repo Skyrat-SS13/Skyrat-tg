@@ -18,6 +18,10 @@
 	opposing_force_equipment = null
 	return ..()
 
+/// Called when the gear is issued, use for unique services (e.g. a power outage) that don't have an item
+/datum/opposing_force_equipment/proc/on_issue(mob/living/target)
+	return
+
 /datum/opposing_force_objective
 	/// The name of the objective
 	var/title = ""
@@ -37,8 +41,6 @@
 /datum/opposing_force
 	/// A list of objectives.
 	var/list/objectives = list()
-	/// A list of items they want spawned.
-	var/list/requested_items = list()
 	/// Justification for wanting to do bad things.
 	var/set_backstory = ""
 	/// Has this been approved?
@@ -51,8 +53,6 @@
 	var/can_edit = TRUE
 	/// The reason we were denied.
 	var/denied_reason = ""
-	/// Any changes required
-	var/requested_changes
 	/// Have we been request update muted by an admin?
 	var/request_updates_muted = FALSE
 	/// A text list of the admin chat.
@@ -65,10 +65,14 @@
 	var/blocked = FALSE
 	/// What admin has this request been assigned to?
 	var/handling_admin = ""
-	/// What changes have the handling admin requested, if any?
-	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
+	/// Contractor hub datum, used if the user OPFORs for a contractor kit
+	var/datum/contractor_hub/contractor_hub
+	/// Corresponding stat() click button
+	var/obj/effect/statclick/opfor_specific/stat_button
+	/// If it is part of the ticket ping subsystem
+	var/ticket_ping = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -77,6 +81,8 @@
 	src.mind_reference = mind_reference
 	ckey = ckey(mind_reference.key)
 	send_system_message("[ckey] created the application")
+	stat_button = new()
+	stat_button.opfor = src
 
 /datum/opposing_force/Destroy(force)
 	mind_reference.opposing_force = null
@@ -85,6 +91,7 @@
 	QDEL_LIST(objectives)
 	QDEL_LIST(admin_chat)
 	QDEL_LIST(modification_log)
+	QDEL_NULL(stat_button)
 	return ..()
 
 /datum/opposing_force/Topic(href, list/href_list)
@@ -116,7 +123,7 @@
 	var/list/data = list()
 
 	var/client/owner_client = GLOB.directory[ckey]
-	data["admin_mode"] = check_rights_for(user.client, R_DEFAULT) && user.client != owner_client
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) && user.client != owner_client
 
 	data["creator_ckey"] = ckey
 
@@ -186,6 +193,7 @@
 				"name" = opfor_equipment.name,
 				"description" = opfor_equipment.description,
 				"equipment_category" = opfor_equipment.category,
+				"admin_note" = opfor_equipment.admin_note,
 			))
 		data["equipment_list"] += list(list(
 			"category" = equipment_category,
@@ -204,6 +212,7 @@
 			"reason" = equipment.reason,
 			"denied_reason" = equipment.denied_reason,
 			"count" = equipment.count,
+			"admin_note" = equipment.opposing_force_equipment.admin_note,
 			)
 		data["selected_equipment"] += list(equipment_data)
 
@@ -273,6 +282,14 @@
 				return
 			set_equipment_count(usr, equipment, params["new_equipment_count"])
 
+		// JSON I/O control
+		if("import_json")
+			if(!length(SSopposing_force.equipment_list)) // sanity check
+				return
+			json_import(usr)
+		if("export_json")
+			json_export(usr)
+
 		//Admin protected procs
 		if("approve")
 			if(!check_rights(R_ADMIN))
@@ -301,7 +318,7 @@
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this application:")
 			// Checking to see if the user is spamming the button, async and all.
-			if(status == OPFOR_STATUS_DENIED)
+			if((status == OPFOR_STATUS_DENIED) || !denied_reason)
 				return
 			SSopposing_force.deny(src, denied_reason, usr)
 		if("mute_request_updates")
@@ -320,6 +337,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			if(!denied_reason)
+				return
 			deny_objective(usr, edited_objective, denied_reason)
 		if("approve_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
@@ -335,6 +354,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			if(!denied_reason)
+				return
 			deny_equipment(usr, equipment, denied_reason)
 		if("flw_user")
 			if(!check_rights(R_ADMIN))
@@ -345,7 +366,7 @@
 	user.client?.admin_follow(mind_reference.current)
 
 /datum/opposing_force/proc/set_equipment_count(mob/user, datum/opposing_force_selected_equipment/equipment, new_count)
-	var/sanitized_newcount = sanitize_integer(new_count, 1, OPFOR_EQUIPMENT_COUNT_LIMIT)
+	var/sanitized_newcount = sanitize_integer(new_count, 1, equipment.opposing_force_equipment.max_amount)
 	equipment.count = new_count
 	add_log(user.ckey, "Set equipment '[equipment.opposing_force_equipment.name] count to [sanitized_newcount]")
 
@@ -401,7 +422,7 @@
 		return
 	if(!incoming_equipment)
 		CRASH("set_equipment_reason tried to update a non existent opfor equipment datum!")
-	var/sanitized_reason = STRIP_HTML_SIMPLE(new_reason, OPFOR_TEXT_LIMIT_DESCRIPTION)
+	var/sanitized_reason = replacetext(STRIP_HTML_SIMPLE(new_reason, OPFOR_TEXT_LIMIT_DESCRIPTION), "\"", " ")
 	add_log(user.ckey, "Updated equipment([incoming_equipment.opposing_force_equipment.name]) REASON from: [incoming_equipment.reason] to: [sanitized_reason]")
 	incoming_equipment.reason = sanitized_reason
 	return TRUE
@@ -422,20 +443,19 @@
 	var/datum/opposing_force_selected_equipment/new_selected = new(incoming_equipment)
 	selected_equipment += new_selected
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
+	return new_selected
 
 /datum/opposing_force/proc/issue_gear(mob/user)
 	if(!selected_equipment.len || !isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
 	var/mob/living/target = mind_reference.current
-	var/obj/item/storage/box/spawned_box = new(get_turf(target))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
-			new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
-	if(ishuman(target))
-		var/mob/living/carbon/human/human = target
-		human.put_in_hands(spawned_box)
+			if(!(iterating_equipment.opposing_force_equipment.item_type == /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
+				new iterating_equipment.opposing_force_equipment.item_type(get_turf(target))
+			iterating_equipment.opposing_force_equipment.on_issue(target)
 
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
@@ -481,6 +501,7 @@
 			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
+	addtimer(CALLBACK(src, PROC_REF(add_to_ping_ss)), 2 MINUTES) // this is not responsible for the notification itself, but only for adding the ticket to the list of those to notify.
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
@@ -532,7 +553,13 @@
 
 	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/approved.ogg'))
 	add_log(approver.ckey, "Approved application")
-	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	var/objective_denied = FALSE
+	for(var/datum/opposing_force_objective/opfor_obj as anything in objectives)
+		if(!(opfor_obj.status == OPFOR_OBJECTIVE_STATUS_DENIED))
+			continue
+		objective_denied = TRUE
+		break
+	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been [objective_denied ? span_bold("partially approved (please view your OPFOR for details)") : span_bold("fully approved")] by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
 	ticket_counter_add_handled(approver.key, 1)
@@ -605,7 +632,7 @@
 		return
 	if(!opposing_force_objective)
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
-	var/sanitized_description = STRIP_HTML_SIMPLE(new_description, OPFOR_TEXT_LIMIT_DESCRIPTION)
+	var/sanitized_description = replacetext(STRIP_HTML_SIMPLE(new_description, OPFOR_TEXT_LIMIT_DESCRIPTION), "\"", " ")
 	opposing_force_objective.description = sanitized_description
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) DESCRIPTION from: [opposing_force_objective.description] to: [sanitized_description]")
 	return TRUE
@@ -615,7 +642,7 @@
 		return
 	if(!opposing_force_objective)
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
-	var/sanitize_justification = STRIP_HTML_SIMPLE(new_justification, OPFOR_TEXT_LIMIT_JUSTIFICATION)
+	var/sanitize_justification = replacetext(STRIP_HTML_SIMPLE(new_justification, OPFOR_TEXT_LIMIT_JUSTIFICATION), "\"", " ")
 	opposing_force_objective.justification = sanitize_justification
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) JUSTIFICATION from: [opposing_force_objective.justification] to: [sanitize_justification]")
 	return TRUE
@@ -636,14 +663,15 @@
 	if(LAZYLEN(objectives) >= OPFOR_MAX_OBJECTIVES)
 		to_chat(user, span_warning("You have too many objectives, please remove one!"))
 		return
-	objectives += new /datum/opposing_force_objective
+	var/datum/opposing_force_objective/opfor_objective = new
+	objectives += opfor_objective
 	add_log(user.ckey, "Added a new blank objective")
-	return TRUE
+	return opfor_objective
 
 /datum/opposing_force/proc/set_objective_title(mob/user, datum/opposing_force_objective/opposing_force_objective, new_title)
 	if(!can_edit)
 		return
-	var/sanitized_title = STRIP_HTML_SIMPLE(new_title, OPFOR_TEXT_LIMIT_TITLE)
+	var/sanitized_title = replacetext(STRIP_HTML_SIMPLE(new_title, OPFOR_TEXT_LIMIT_TITLE), "\"", " ")
 	if(!opposing_force_objective)
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) TITLE from: [opposing_force_objective.title] to: [sanitized_title]")
@@ -655,11 +683,13 @@
 	opposing_force_objective.denied_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
+	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been denied."))
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
+	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been approved."))
 
 /**
  * System procs
@@ -822,9 +852,14 @@
 
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list("<br>")
-	report += span_greentext(mind_reference.current.real_name)
+	report += span_greentext(mind_reference.current?.real_name)
+
+	if(set_backstory)
+		report += "<b>Had an approved OPFOR application with the following backstory:</b><br>"
+		report += "[set_backstory]<br>"
+
 	if(objectives.len)
-		report += "<b>Had an approved OPFOR application with the following objectives:</b><br>"
+		report += "<b>And with the following objectives:</b><br>"
 		for(var/datum/opposing_force_objective/opfor_objective in objectives)
 			if(opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
 				continue
@@ -841,3 +876,143 @@
 			report += "<br>"
 
 	return report.Join("\n")
+
+/// Adds the OPFOR in question to the ticket ping subsystem should it not be approved.
+/datum/opposing_force/proc/add_to_ping_ss()
+	if(status == OPFOR_STATUS_APPROVED)
+		return
+	ticket_ping = TRUE
+
+/// Allows a user to import an OPFOR from json
+/datum/opposing_force/proc/json_import(mob/importer)
+	var/file_uploaded = input(importer, "Choose a .json file to upload. (This WILL override your inputted data)", "Upload JSON template") as null|file
+	if(!file_uploaded)
+		return
+	if(copytext("[file_uploaded]", -5) != ".json") //5 == length(".json")
+		to_chat(importer, span_warning("Filename must end in '.json': [file_uploaded]"))
+		return
+
+	QDEL_LIST(objectives)
+	QDEL_LIST(selected_equipment)
+	set_backstory = null
+
+	add_log(importer.ckey, "Imported a json OPFOR.")
+
+	try
+		var/list/opfor_data = json_load(file_uploaded)
+		for(var/category in opfor_data)
+			switch(category)
+				if("objectives")
+					for(var/iter_num in opfor_data["objectives"])
+						var/datum/opposing_force_objective/opfor_objective = add_objective(importer)
+						if(!opfor_objective)
+							continue
+
+						var/list/iter_obj = opfor_data["objectives"][iter_num]
+
+						set_objective_title(importer, opfor_objective, iter_obj["title"])
+						set_objective_description(importer, opfor_objective, iter_obj["description"])
+						set_objective_justification(importer, opfor_objective, iter_obj["justification"])
+						set_objective_intensity(importer, opfor_objective, iter_obj["intensity"])
+
+				if("backstory")
+					set_backstory(importer, opfor_data["backstory"])
+
+				if("selected_equipment")
+					for(var/iter_num in opfor_data["selected_equipment"])
+						// If there isn't category data / a given equipment type, OR if either of those don't fit within certain perameters, it continues
+						var/list/equipment = opfor_data["selected_equipment"][iter_num]
+
+						if(\
+						!equipment["equipment_parent_category"]|| !(equipment["equipment_parent_category"] in SSopposing_force.equipment_list)\
+						 || !equipment["equipment_parent_type"] || !ispath(text2path(equipment["equipment_parent_type"]), /datum/opposing_force_equipment))
+							continue
+
+						// creates a new selected equipment datum using a type gotten from the given equipment type via SSopposing_force.equipment_list
+						var/datum/opposing_force_selected_equipment/opfor_equipment = select_equipment(importer, \
+						locate(text2path(equipment["equipment_parent_type"])) in SSopposing_force.equipment_list[equipment["equipment_parent_category"]])
+
+						if(!opfor_equipment)
+							continue
+
+						set_equipment_reason(importer, opfor_equipment, equipment["equipment_reason"])
+						set_equipment_count(importer, opfor_equipment, equipment["equipment_count"])
+
+	catch //taking 0 risk
+		QDEL_LIST(objectives)
+		QDEL_LIST(selected_equipment)
+		set_backstory = null
+		to_chat(importer, span_warning("JSON file is corrupted in some form. Please correct and reupload."))
+		add_log(importer.ckey, "Attempted to upload a corrupted JSON, purging leftover data...")
+
+
+/// Allows a user to export from an OPFOR into a json file
+/datum/opposing_force/proc/json_export(mob/exporter)
+
+	var/list/exported_data = list(
+		"objectives" = list(),
+		"backstory" = set_backstory,
+		"selected_equipment" = list(),
+	)
+
+	for(var/datum/opposing_force_objective/iterating_objective as anything in objectives)
+		exported_data["objectives"]["[objectives.Find(iterating_objective)]"] = list(
+			"title" = iterating_objective.title,
+			"description" = iterating_objective.description,
+			"justification" = iterating_objective.justification,
+			"intensity" = iterating_objective.intensity, //remember to use set_objective_number or whatever the proc is
+		)
+
+	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+		exported_data["selected_equipment"]["[objectives.Find(iterating_equipment)]"] = list(
+			"equipment_name" = iterating_equipment.opposing_force_equipment.name,
+			"equipment_parent_category" = iterating_equipment.opposing_force_equipment.category,
+			"equipment_parent_type" = iterating_equipment.opposing_force_equipment.type,
+			"equipment_reason" = iterating_equipment.reason,
+			"equipment_count" = iterating_equipment.count,
+		)
+
+	add_log(exporter.ckey, "Exported a json OPFOR.")
+
+	var/to_write_file = "data/opfor_temp/[REF(src)].json"
+	rustg_file_write(json_encode(exported_data), to_write_file)
+
+	try
+		usr << ftp(file(to_write_file), "exported_OPFOR.json")
+
+	catch
+		log_game("OPFOR by ckey: [exporter.ckey] attempted to export JSON data but ftp(file()) runtimed.")
+		add_log(exporter.ckey, "Attempted to export JSON data but ftp(file()) runtimed.")
+
+	fdel(to_write_file)
+
+
+/datum/action/opfor
+	name = "Open Opposing Force Panel"
+	button_icon_state = "round_end"
+
+/datum/action/opfor/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+	owner.opposing_force()
+
+/datum/action/opfor/IsAvailable(feedback = FALSE)
+	if(!target)
+		return FALSE
+	return ..()
+
+/obj/effect/statclick/opfor_specific
+	var/datum/opposing_force/opfor
+
+/obj/effect/statclick/opfor_specific/Destroy()
+	opfor = null
+	. = ..()
+
+/obj/effect/statclick/opfor_specific/Click()
+	if (!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on an OPFOR statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on an OPFOR statclick! ([src])")
+		return
+
+	opfor.ui_interact(usr)

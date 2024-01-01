@@ -4,7 +4,7 @@
 
 /obj/item/tank/internals/nitrogen
 	name = "nitrogen tank"
-	desc = "A tank of nitrogen. Designed specifically for Vox"
+	desc = "A small tank of nitrogen, for crew who don't breathe the standard air mix."
 	icon_state = "oxygen_fr"
 	force = 10
 	distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
@@ -23,6 +23,7 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
+	inhand_icon_state = "nitrogen"
 	slot_flags = ITEM_SLOT_BELT
 	force = 5
 	volume = 24
@@ -36,6 +37,7 @@
 	name = "emergency nitrogen tank"
 	desc = "Used for emergencies. Contains very little nitrogen, so try to conserve it until you actually need it."
 	icon_state = "nitrogen"
+	worn_icon_state = "nitrogen_extended"
 	volume = 3
 
 /obj/item/tank/internals/nitrogen/belt/emergency/populate_gas()

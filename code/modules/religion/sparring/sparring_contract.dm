@@ -1,7 +1,7 @@
 /obj/item/sparring_contract
 	desc = "A contract for setting up sparring matches. Both sparring partners must agree with the terms to begin."
-	icon = 'icons/obj/wizard.dmi'
-	icon_state = "scroll"
+	icon = 'icons/obj/scrolls.dmi'
+	icon_state = "sparringcontract"
 	drop_sound = 'sound/items/handling/paper_drop.ogg'
 	pickup_sound = 'sound/items/handling/paper_pickup.ogg'
 	throw_range = 1
@@ -10,7 +10,7 @@
 	///what weapons will be allowed during the sparring match
 	var/weapons_condition = CONDITION_MELEE_ONLY
 	///what arena the fight will take place in
-	var/arena_condition = /area/service/chapel
+	var/arena_condition = /area/station/service/chapel
 	///what stakes the fight will have
 	var/stakes_condition = STAKES_NONE
 	///who has signed this contract. fills itself with WEAKREFS, to prevent hanging references
@@ -39,6 +39,7 @@
 	data["set_area"] = arena?.name
 	data["set_stakes"] = stakes_condition
 	data["possible_areas"] = get_possible_areas()
+	data["stakes_holy_match"] = STAKES_HOLY_MATCH
 
 	return data
 

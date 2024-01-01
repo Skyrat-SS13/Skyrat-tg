@@ -29,6 +29,11 @@
 
 /datum/config_entry/flag/everyone_has_maint_access
 
+/datum/config_entry/number/depsec_access_level
+	default = 1
+	min_val = 0
+	max_val = 2
+
 /datum/config_entry/flag/sec_start_brig //makes sec start in brig instead of dept sec posts
 
 /datum/config_entry/flag/force_random_names
@@ -103,6 +108,8 @@
 
 /datum/config_entry/flag/enforce_human_authority //If non-human species are barred from joining as a head of staff
 
+/datum/config_entry/flag/enforce_human_authority_on_everyone //If non-human species are barred from joining as a head of staff, including jobs flagged as allowed for non-humans, ie. Quartermaster.
+
 /datum/config_entry/flag/allow_latejoin_antagonists // If late-joining players can be traitor/changeling
 
 /datum/config_entry/number/shuttle_refuel_delay
@@ -163,10 +170,10 @@
 
 /datum/config_entry/string/alert_red_downto
 	default = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR ALERTS
+
 /datum/config_entry/string/alert_delta
 	default = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
-*/
+
 /datum/config_entry/flag/revival_pod_plants
 
 /datum/config_entry/number/revival_brain_life
@@ -192,9 +199,6 @@
 	default = list( //DEFAULTS
 	/mob/living/simple_animal = 1,
 	/mob/living/silicon/pai = 1,
-	/mob/living/carbon/alien/humanoid/hunter = -1,
-	/mob/living/carbon/alien/humanoid/royal/praetorian = 1,
-	/mob/living/carbon/alien/humanoid/royal/queen = 3
 	)
 
 /datum/config_entry/keyed_list/multiplicative_movespeed/ValidateAndSet()
@@ -258,8 +262,6 @@
 	movedelay_type = /mob/living/simple_animal
 /////////////////////////////////////////////////
 
-/datum/config_entry/flag/virtual_reality //Will virtual reality be loaded
-
 /datum/config_entry/flag/roundstart_away //Will random away mission be loaded.
 
 /datum/config_entry/number/gateway_delay //How long the gateway takes before it activates. Default is half an hour. Only matters if roundstart_away is enabled.
@@ -279,16 +281,21 @@
 /datum/config_entry/flag/silent_ai
 /datum/config_entry/flag/silent_borg
 
-/datum/config_entry/flag/sandbox_autoclose // close the sandbox panel after spawning an item, potentially reducing griff
-
 /datum/config_entry/number/default_laws //Controls what laws the AI spawns with.
 	default = 0
 	min_val = 0
-	max_val = 3
+	max_val = 4
+
+/// Controls if Asimov Superiority appears as a perk for humans even if standard Asimov isn't the default AI lawset
+/datum/config_entry/flag/silicon_asimov_superiority_override
 
 /datum/config_entry/number/silicon_max_law_amount
 	default = 12
 	min_val = 0
+
+/datum/config_entry/keyed_list/specified_laws
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_FLAG
 
 /datum/config_entry/keyed_list/random_laws
 	key_mode = KEY_MODE_TEXT
@@ -309,7 +316,6 @@
 /datum/config_entry/string/overflow_job
 	default = JOB_ASSISTANT
 
-/datum/config_entry/flag/starlight
 /datum/config_entry/flag/grey_assistants
 
 /datum/config_entry/number/lavaland_budget
@@ -328,6 +334,8 @@
 	min_val = 0
 
 /datum/config_entry/flag/allow_random_events // Enables random events mid-round when set
+
+/datum/config_entry/flag/forbid_station_traits
 
 /datum/config_entry/number/events_min_time_mul // Multipliers for random events minimal starting time and minimal players amounts
 	default = 1
@@ -369,6 +377,11 @@
 
 /datum/config_entry/flag/shift_time_realtime
 
+/datum/config_entry/number/shift_time_start_hour
+	default = 12
+	min_val = 0
+	max_val = 23
+
 /datum/config_entry/number/monkeycap
 	default = 64
 	min_val = 0
@@ -391,6 +404,29 @@
 	min_val = 0
 	integer = FALSE // It is in hours, but just in case one wants to specify minutes.
 
-/datum/config_entry/flag/sdql_spells
-
 /datum/config_entry/flag/native_fov
+
+/datum/config_entry/flag/disallow_title_music
+
+/datum/config_entry/number/station_goal_budget
+	default = 1
+	min_val = 0
+	integer = FALSE
+
+/datum/config_entry/flag/disallow_circuit_sounds
+
+/datum/config_entry/string/tts_http_url
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/tts_http_token
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/number/tts_max_concurrent_requests
+	default = 4
+	min_val = 1
+
+/datum/config_entry/str_list/tts_voice_blacklist
+
+/datum/config_entry/flag/give_tutorials_without_db
+
+/datum/config_entry/string/new_player_alert_role_id

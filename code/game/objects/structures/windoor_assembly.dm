@@ -18,6 +18,7 @@
 	anchored = FALSE
 	density = FALSE
 	dir = NORTH
+	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR
 	set_dir_on_move = FALSE
 
 	var/obj/item/electronics/airlock/electronics = null
@@ -29,17 +30,18 @@
 	var/state = "01" //How far the door assembly has progressed
 	can_atmos_pass = ATMOS_PASS_PROC
 
-/obj/structure/windoor_assembly/Initialize(mapload, loc, set_dir)
+/obj/structure/windoor_assembly/Initialize(mapload, set_dir)
 	. = ..()
 	if(set_dir)
 		setDir(set_dir)
 	air_update_turf(TRUE, TRUE)
 
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_EXIT = .proc/on_exit,
+		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
+	AddComponent(/datum/component/simple_rotation, ROTATION_NEEDS_ROOM)
 
 /obj/structure/windoor_assembly/Destroy()
 	set_density(FALSE)
@@ -63,10 +65,10 @@
 
 	if(istype(mover, /obj/structure/window))
 		var/obj/structure/window/moved_window = mover
-		return valid_window_location(loc, moved_window.dir, is_fulltile = moved_window.fulltile)
+		return valid_build_direction(loc, moved_window.dir, is_fulltile = moved_window.fulltile)
 
 	if(istype(mover, /obj/structure/windoor_assembly) || istype(mover, /obj/machinery/door/window))
-		return valid_window_location(loc, mover.dir, is_fulltile = FALSE)
+		return valid_build_direction(loc, mover.dir, is_fulltile = FALSE)
 
 /obj/structure/windoor_assembly/can_atmos_pass(turf/T, vertical = FALSE)
 	if(get_dir(loc, T) == dir)
@@ -96,7 +98,7 @@
 	switch(state)
 		if("01")
 			if(W.tool_behaviour == TOOL_WELDER && !anchored)
-				if(!W.tool_start_check(user, amount=0))
+				if(!W.tool_start_check(user, amount=1))
 					return
 
 				user.visible_message(span_notice("[user] disassembles the windoor assembly."),
@@ -265,55 +267,11 @@
 					span_notice("You start prying the windoor into the frame..."))
 
 				if(W.use_tool(src, user, 40, volume=100) && electronics)
-
 					set_density(TRUE) //Shouldn't matter but just incase
+
 					to_chat(user, span_notice("You finish the windoor."))
 
-					if(secure)
-						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(loc)
-						if(facing == "l")
-							windoor.icon_state = "leftsecureopen"
-							windoor.base_state = "leftsecure"
-						else
-							windoor.icon_state = "rightsecureopen"
-							windoor.base_state = "rightsecure"
-						windoor.setDir(dir)
-						windoor.set_density(FALSE)
-
-						if(electronics.one_access)
-							windoor.req_one_access = electronics.accesses
-						else
-							windoor.req_access = electronics.accesses
-						windoor.electronics = electronics
-						electronics.forceMove(windoor)
-						if(created_name)
-							windoor.name = created_name
-						qdel(src)
-						windoor.close()
-
-
-					else
-						var/obj/machinery/door/window/windoor = new /obj/machinery/door/window(loc)
-						if(facing == "l")
-							windoor.icon_state = "leftopen"
-							windoor.base_state = "left"
-						else
-							windoor.icon_state = "rightopen"
-							windoor.base_state = "right"
-						windoor.setDir(dir)
-						windoor.set_density(FALSE)
-
-						if(electronics.one_access)
-							windoor.req_one_access = electronics.accesses
-						else
-							windoor.req_access = electronics.accesses
-						windoor.electronics = electronics
-						electronics.forceMove(windoor)
-						if(created_name)
-							windoor.name = created_name
-						qdel(src)
-						windoor.close()
-
+					finish_door()
 
 			else
 				return ..()
@@ -321,26 +279,56 @@
 	//Update to reflect changes(if applicable)
 	update_appearance()
 
+/obj/structure/windoor_assembly/proc/finish_door()
+	var/obj/machinery/door/window/windoor
+	if(secure)
+		windoor = new /obj/machinery/door/window/brigdoor(loc)
+		if(facing == "l")
+			windoor.icon_state = "leftsecureopen"
+			windoor.base_state = "leftsecure"
+		else
+			windoor.icon_state = "rightsecureopen"
+			windoor.base_state = "rightsecure"
 
+	else
+		windoor = new /obj/machinery/door/window(loc)
+		if(facing == "l")
+			windoor.icon_state = "leftopen"
+			windoor.base_state = "left"
+		else
+			windoor.icon_state = "rightopen"
+			windoor.base_state = "right"
 
-/obj/structure/windoor_assembly/ComponentInitialize()
-	. = ..()
-	var/static/rotation_flags = ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS
-	AddComponent(/datum/component/simple_rotation, rotation_flags, can_be_rotated=CALLBACK(src, .proc/can_be_rotated), after_rotation=CALLBACK(src,.proc/after_rotation))
+	windoor.setDir(dir)
+	windoor.set_density(FALSE)
+	if(created_name)
+		windoor.name = created_name
+	else if(electronics.passed_name)
+		windoor.name = electronics.passed_name
+	if(electronics.one_access)
+		windoor.req_one_access = electronics.accesses
+	else
+		windoor.req_access = electronics.accesses
+	if(electronics.unres_sides)
+		windoor.unres_sides = electronics.unres_sides
+		switch(dir)
+			if(NORTH,SOUTH)
+				windoor.unres_sides &= ~EAST
+				windoor.unres_sides &= ~WEST
+			if(EAST,WEST)
+				windoor.unres_sides &= ~NORTH
+				windoor.unres_sides &= ~SOUTH
+		windoor.unres_sensor = TRUE
+	electronics.forceMove(windoor)
+	windoor.electronics = electronics
+	windoor.autoclose = TRUE
+	windoor.close()
+	windoor.update_appearance()
 
-/obj/structure/windoor_assembly/proc/can_be_rotated(mob/user,rotation_type)
-	if(anchored)
-		to_chat(user, span_warning("[src] cannot be rotated while it is fastened to the floor!"))
-		return FALSE
-	var/target_dir = turn(dir, rotation_type == ROTATION_CLOCKWISE ? -90 : 90)
+	qdel(src)
 
-	if(!valid_window_location(loc, target_dir, is_fulltile = FALSE))
-		to_chat(user, span_warning("[src] cannot be rotated in that direction!"))
-		return FALSE
-	return TRUE
-
-/obj/structure/windoor_assembly/proc/after_rotation(mob/user)
-	update_appearance()
+/obj/structure/windoor_assembly/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 //Flips the windoor assembly, determines whather the door opens to the left or the right
 /obj/structure/windoor_assembly/verb/flip()

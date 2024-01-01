@@ -1,6 +1,6 @@
 /datum/outfit/faction_captain
 	name = "Faction - Captain"
-	head = /obj/item/clothing/head/hos/beret/faction
+	head = /obj/item/clothing/head/hats/hos/beret/faction
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
 	shoes = /obj/item/clothing/shoes/combat
@@ -32,7 +32,7 @@
 
 /datum/outfit/faction_medic
 	name = "Faction - Medic"
-	head = /obj/item/clothing/head/hos/beret/faction
+	head = /obj/item/clothing/head/hats/hos/beret/faction
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
 	shoes = /obj/item/clothing/shoes/combat
@@ -43,12 +43,12 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/energy/sword
-	l_hand = /obj/item/storage/backpack/duffelbag/med/surgery
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/storage/firstaid/tactical=1,/obj/item/storage/firstaid/regular=1,/obj/item/storage/firstaid/toxin=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/healthanalyzer=1,/obj/item/stack/spacecash/c1000=1)
+	l_hand = /obj/item/surgery_tray/full
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/storage/medkit/tactical=1,/obj/item/storage/medkit/regular=1,/obj/item/storage/medkit/toxin=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/healthanalyzer=1,/obj/item/stack/spacecash/c1000=1)
 
 /datum/outfit/faction_tech
 	name = "Faction - Tech"
-	head = /obj/item/clothing/head/hos/beret/faction
+	head = /obj/item/clothing/head/hats/hos/beret/faction
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
 	suit_store = /obj/item/gun/energy/e_gun

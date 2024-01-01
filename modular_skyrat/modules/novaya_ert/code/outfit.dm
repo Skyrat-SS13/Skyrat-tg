@@ -1,40 +1,177 @@
 /datum/outfit/centcom/ert/nri
 	name = "Novaya Rossiyskaya Imperiya Soldier"
-
-	head = /obj/item/clothing/head/helmet/rus_helmet/nri
+	head = null
 	glasses = /obj/item/clothing/glasses/night
 	ears = /obj/item/radio/headset/headset_cent/alt/with_key
-	mask = /obj/item/clothing/mask/balaclavaadjust
+	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
-	suit = /obj/item/clothing/suit/armor/vest/russian/nri
-	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/akm
+	suit = null
+	suit_store = null
 	gloves = /obj/item/clothing/gloves/combat
-	belt = /obj/item/storage/belt/military/nri/full
-	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/gas/alt)
-	shoes = /obj/item/clothing/shoes/jackboots/black
+	belt = /obj/item/storage/belt/military/nri/soldier
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack,
+		/obj/item/storage/medkit/emergency,
+		/obj/item/advanced_choice_beacon/nri/heavy,
+		/obj/item/beamout_tool,
+		/obj/item/crucifix,
+		/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
+	)
+	l_pocket = /obj/item/knife/combat/survival
+	r_pocket = /obj/item/ammo_box/magazine/recharge/plasma_battery
+	shoes = /obj/item/clothing/shoes/combat
+
+	l_hand = /obj/item/gun/ballistic/automatic/lanca
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
 
-/datum/outfit/centcom/ert/nri/heavy
-	name = "Novaya Rossiyskaya Imperiya Heavy Soldier"
-	head = /obj/item/clothing/head/helmet/nri_heavy
-	suit = /obj/item/clothing/suit/armor/heavy/nri
-	mask = /obj/item/clothing/mask/gas/alt
-	belt = /obj/item/storage/belt/military/nri/full_heavy
-	suit_store = /obj/item/gun/ballistic/automatic/pistol
-	back = /obj/item/deployable_turret_folded
-	backpack_contents = null
-	l_pocket = /obj/item/wrench/combat
-
-	id_trim = /datum/id_trim/nri/heavy
-
 /datum/outfit/centcom/ert/nri/commander
 	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
-	head = /obj/item/clothing/head/beret/sec/nri
-	belt = /obj/item/storage/belt/military/nri/full_commander
-	suit_store = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
+	head = null
+	glasses = /obj/item/clothing/glasses/thermal/eyepatch
+	uniform = /obj/item/clothing/under/costume/nri/captain
+	belt = /obj/item/storage/belt/military/nri/captain/full
+	suit = null
+	suit_store = null
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/storage/medkit/regular,
+							/obj/item/megaphone,
+							/obj/item/binoculars,
+							/obj/item/clothing/head/beret/sec/nri,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
+							/obj/item/gun/ballistic/automatic/pistol/plasma_thrower,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+
+	l_hand = /obj/item/gun/ballistic/automatic/lanca
 
 	id_trim = /datum/id_trim/nri/commander
 
+/datum/outfit/centcom/ert/nri/medic
+	name = "Novaya Rossiyskaya Imperiya Corpsman"
+	head = null
+	glasses = /obj/item/clothing/glasses/hud/health/night
+	uniform = /obj/item/clothing/under/costume/nri/medic
+	belt = /obj/item/storage/belt/military/nri/medic/full
+	suit = null
+	suit_store = null
+	gloves = /obj/item/clothing/gloves/latex/nitrile
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/storage/medkit/tactical,
+							/obj/item/storage/medkit/advanced,
+							/obj/item/storage/medkit/surgery,
+							/obj/item/gun/medbeam,
+							/obj/item/gun/energy/cell_loaded/medigun/cmo,
+							/obj/item/storage/box/medicells,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+
+	l_hand = /obj/item/shield/riot/pointman/nri
+	r_hand = /obj/item/gun/ballistic/automatic/miecz
+
+	id_trim = /datum/id_trim/nri/medic
+
+/datum/outfit/centcom/ert/nri/engineer
+	name = "Novaya Rossiyskaya Imperiya Combat Engineer"
+	head = null
+	glasses = /obj/item/clothing/glasses/meson/night
+	uniform = /obj/item/clothing/under/costume/nri/engineer
+	belt = /obj/item/storage/belt/military/nri/engineer/full
+	suit = null
+	suit_store = null
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/construction/rcd/loaded/upgraded,
+							/obj/item/rcd_ammo/large,
+							/obj/item/advanced_choice_beacon/nri/engineer,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+
+	l_hand = /obj/item/storage/belt/utility/full/powertools
+	r_hand = /obj/item/gun/ballistic/automatic/miecz
+
+	id_trim = /datum/id_trim/nri/engineer
+
+/datum/outfit/centcom/ert/nri/major
+	name = "Novaya Rossiyskaya Imperiya Major"
+	head = null
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	ears = /obj/item/radio/headset/headset_cent/alt/with_key
+	mask = null
+	uniform = /obj/item/clothing/under/costume/russian_officer
+	suit = /obj/item/clothing/suit/jacket/officer/tan
+	suit_store = null
+	gloves = /obj/item/clothing/gloves/combat
+	belt = /obj/item/gun/ballistic/revolver/shotgun_revolver
+	back = /obj/item/storage/backpack/satchel/leather
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/ammo_box/advanced/s12gauge/express,
+							/obj/item/suppressor/standard,
+							/obj/item/knife/combat,
+							/obj/item/beamout_tool)
+	l_pocket = null
+	r_pocket = null
+	shoes = /obj/item/clothing/shoes/combat/swat
+	id = /obj/item/card/id/advanced/centcom/ert/nri
+	id_trim = /datum/id_trim/nri/diplomat/major
+
+/datum/outfit/centcom/ert/nri/scientist
+	name = "Novaya Rossiyskaya Imperiya Research Inspector"
+	head = null
+	glasses = /obj/item/clothing/glasses/regular
+	ears = /obj/item/radio/headset/headset_cent/alt/with_key
+	mask = null
+	uniform = /obj/item/clothing/under/rank/rnd/research_director
+	suit = /obj/item/clothing/suit/toggle/labcoat
+	suit_store = null
+	gloves = /obj/item/clothing/gloves/latex/nitrile
+	belt = /obj/item/clipboard
+	back = /obj/item/storage/backpack/satchel/leather
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/melee/baton/telescopic,
+							/obj/item/gun/energy/e_gun/mini,
+							/obj/item/beamout_tool)
+	l_pocket = null
+	r_pocket = null
+	shoes = /obj/item/clothing/shoes/sneakers/brown
+	id = /obj/item/card/id/advanced/centcom/ert/nri
+	id_trim = /datum/id_trim/nri/diplomat/scientist
+
+/datum/outfit/centcom/ert/nri/doctor
+	name = "Novaya Rossiyskaya Imperiya Medical Inspector"
+	head = null
+	glasses = /obj/item/clothing/glasses/hud/health
+	ears = /obj/item/radio/headset/headset_cent/alt/with_key
+	mask = null
+	uniform = /obj/item/clothing/under/rank/medical/chief_medical_officer
+	suit = /obj/item/clothing/suit/toggle/labcoat/cmo
+	suit_store = null
+	gloves = /obj/item/clothing/gloves/latex/nitrile
+	belt = /obj/item/clipboard
+	back = /obj/item/storage/backpack/satchel/leather
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
+							/obj/item/storage/medkit/expeditionary,
+							/obj/item/melee/baton/telescopic,
+							/obj/item/beamout_tool)
+	l_pocket = null
+	r_pocket = null
+	shoes = /obj/item/clothing/shoes/sneakers/brown
+	id = /obj/item/card/id/advanced/centcom/ert/nri
+	id_trim = /datum/id_trim/nri/diplomat/doctor
+
+/datum/outfit/centcom/ert/nri/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	return
+	//Two reasons for this; one, Russians aren't NT and dont need implants used mostly for NT-sympathizers. Two, the HUD looks ugly with the blue mindshield outline.

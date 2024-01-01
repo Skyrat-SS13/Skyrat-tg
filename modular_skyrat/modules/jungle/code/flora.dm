@@ -11,7 +11,7 @@
 	var/base_icon
 	var/list/random_light = list("#6AFF00","#00FFEE", "#D9FF00", "#FFC800")
 
-/obj/structure/flora/biolumi/Initialize()
+/obj/structure/flora/biolumi/Initialize(mapload)
 	. = ..()
 	base_icon = "[initial(icon_state)][rand(1,variants)]"
 	icon_state = base_icon

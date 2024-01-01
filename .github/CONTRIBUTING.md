@@ -32,7 +32,7 @@ First things first, we want to make it clear how you can contribute (if you've n
 
 /tg/station doesn't have a list of goals and features to add; we instead allow freedom for contributors to suggest and create their ideas for the game. That doesn't mean we aren't determined to squash bugs, which unfortunately pop up a lot due to the deep complexity of the game. Here are some useful starting guides, if you want to contribute or if you want to know what challenges you can tackle with zero knowledge about the game's code structure.
 
-If you want to contribute the first thing you'll need to do is [set up Git](http://tgstation13.org/wiki/Setting_up_git) so you can download the source code.
+If you want to contribute the first thing you'll need to do is [set up Git](https://hackmd.io/@tgstation/HJ8OdjNBc) so you can download the source code.
 After setting it up, optionally navigate your git commandline to the project folder and run the command: `git config blame.ignoreRevsFile .git-blame-ignore-revs`.
 
 We have a [list of guides on the wiki](http://www.tgstation13.org/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to /tg/station with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. If you need help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
@@ -64,6 +64,7 @@ These are the few directives we have for project maintainers.
     - Try to get secondary maintainer approval before merging if you are able to.
   - PRs with empty commits intended to generate a changelog.
 - Do not merge PRs that contain content from the [banned content list](./CONTRIBUTING.md#banned-content).
+- Do not close PRs purely for breaking a template if the same information is contained without it.
 
 These are not steadfast rules as maintainers are expected to use their best judgement when operating.
 
@@ -83,10 +84,13 @@ This should help you understand what you can and can't do with your newfound git
 Things you **CAN** do:
 * Label issues appropriately
 * Close issues when appropriate
-* Label PRs when appropriate
+* Label PRs, unless you are goofball.
 
 Things you **CAN'T** do:
 * [Close PRs](https://imgur.com/w2RqpX8.png): Only maintainers are allowed to close PRs. Do not hit that button.
+* Close issues purely for breaking a template if the same information is contained without it.
+
+For more information reference the [Issue Manager Guide](.github/guides/ISSUE_MANAGER.md).
 
 </details>
 
@@ -103,15 +107,16 @@ Things you **CAN'T** do:
 
 #### Misc
 
-[Policy configuration system](./guides/POLICYCONFIG.md)
-
-[Hard deletes](./guides/HARDDELETES.md)
-
-[UI Development](../tgui/README.md)
-
-[AI Datums](../code/datums/ai/making_your_ai.md)
-
-[MC Tab Guide](./guides/MC_tab.md)
+- [AI Datums](../code/datums/ai/learn_ai.md)
+- [Embedding TGUI Components in Chat](../tgui/docs/chat-embedded-components.md)
+- [Hard Deletes](./guides/HARDDELETES.md)
+- [MC Tab Guide](./guides/MC_tab.md)
+- [Policy Configuration System](./guides/POLICYCONFIG.md)
+- [Quickly setting up a development database with ezdb](./guides/EZDB.md)
+- [Required Tests (Continuous Integration)](./guides/CI.md)
+- [Splitting up pull requests, aka atomization](./guides/ATOMIZATION.md)
+- [UI Development](../tgui/README.md)
+- [Visual Effects and Systems](./guides/VISUALS.md)
 
 ## Pull Request Process
 
@@ -157,7 +162,7 @@ You can see each tag and their GBP values [Here](https://github.com/tgstation/tg
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.
 
-Regarding sprites & sounds, you must credit the artist and possibly the codebase. All /tg/station assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. However if you are porting assets from GoonStation or usually any assets under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0/) are to go into the 'goon' folder of the /tg/station codebase.
+Regarding sprites & sounds, you must credit the artist and possibly the codebase. All /tg/station assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
 
 Regarding sprites in particular, you still need to take your own screenshots of the sprites in-game on your Skyrat code in your PR body, not just re-use the screenshots provided in the original PR.
 
@@ -175,3 +180,11 @@ This repository uses `LF` line endings for all code as specified in the **.gitat
 Unless overridden or a non standard git binary is used the line ending settings should be applied to your clone automatically.
 
 Note: VSC requires an [extension](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) to take advantage of editorconfig.
+
+Github actions that require additional configuration are disabled on the repository until ACTION_ENABLER secret is created with non-empty value.
+
+## Using the Maintainer Role Ping in Discord
+
+This role `@Maintainer` is pingable as a compromise reached with the server host MrStonedOne over the auto-stale system we presently have in the codebase. It should be used only to ping Maintainers when your PR has had the "Stale" label applied. Using it before then can be met with escalating timeouts and referral to /tg/station's Discord moderators for further infractions.
+
+Feel free to engage and obtain general feedback in the Coding General channel without the role ping before your PR goes stale to build interest and get reviews.

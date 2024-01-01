@@ -3,7 +3,6 @@
 	desc = "An experimental welding tool capable of welding functionality through the use of electricity. The flame seems almost cold."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "elwelder"
-	inhand_icon_state = "elwelder"
 	light_power = 1
 	light_color = LIGHT_COLOR_HALOGEN
 	tool_behaviour = NONE
@@ -15,9 +14,9 @@
 	var/powered = FALSE
 	max_fuel = 20
 
-/obj/item/weldingtool/electric/ComponentInitialize()
+/obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/switched_off))
+	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(switched_off)))
 
 /obj/item/weldingtool/electric/attack_self(mob/user, modifiers)
 	. = ..()
@@ -55,7 +54,7 @@
 	update_appearance()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/weldingtool/electric/process(delta_time)
+/obj/item/weldingtool/electric/process(seconds_per_tick)
 	if(!powered)
 		switched_off()
 		return
@@ -87,12 +86,3 @@
 		inhand_icon_state = "[initial(inhand_icon_state)]"
 	return ..()
 
-/datum/design/exwelder
-	name = "Electrical Welding Tool"
-	desc = "An experimental welding tool capable of welding using electricity."
-	id = "exwelder"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
-	build_path = /obj/item/weldingtool/electric
-	category = list("Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING

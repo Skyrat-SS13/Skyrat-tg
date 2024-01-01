@@ -2,9 +2,10 @@
 	name = "hauntium"
 	desc = "very scary!"
 	color = list(460/255, 464/255, 460/255, 0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 0,0,0,0)
-	greyscale_colors = "#FFFFFF"
+	greyscale_colors = "#FFFFFF64"
 	alpha = 100
-	categories = list(MAT_CATEGORY_ITEM_MATERIAL=TRUE)
+	starlight_color = COLOR_ALMOST_BLACK
+	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE, MAT_CATEGORY_ITEM_MATERIAL=TRUE)
 	sheet_type = /obj/item/stack/sheet/hauntium
 	value_per_unit = 0.05
 	beauty_modifier = 0.25
@@ -14,10 +15,8 @@
 
 /datum/material/hauntium/on_applied_obj(obj/o, amount, material_flags)
 	. = ..()
-	if(isitem(o))
-		o.AddElement(/datum/element/haunted)
+	o.make_haunted(INNATE_TRAIT, "#f8f8ff")
 
 /datum/material/hauntium/on_removed_obj(obj/o, amount, material_flags)
 	. = ..()
-	if(isitem(o))
-		o.RemoveElement(/datum/element/haunted)
+	o.remove_haunted(INNATE_TRAIT)

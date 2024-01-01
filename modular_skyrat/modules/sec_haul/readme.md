@@ -16,7 +16,8 @@ Completely overhauls security to something that will hopefully fit us.
 
 ### Master file additions
 
-- N/A
+- `modular_skyrat/master_files/code/modules/cargo/packs/vending_restock.dm`: `var/special`
+- `modular_skyrat/master_files/code/modules/cargo/packs/security.dm`: `var/special`, `var/cost`
 
 ### Included files that are not contained in this module:
 
@@ -28,3 +29,4 @@ Code: Gandalf2k15
 Sprite modification: Gandalf2k15
 Uniforms and equipment sprites: JungleRat
 Gun sprites: Eris and Sojourn
+de-goofsec'd guns: ErdinyoBarboza

@@ -8,7 +8,7 @@
 	for(var/reagent_type in reagent_list)
 		vol_temp = reagent_list[reagent_type]
 		vol_counter += vol_temp
-		raw_reagent = reagent_type //Not initialized
+		raw_reagent = reagent_type // Not initialized
 		cached_color = initial(raw_reagent.color)
 
 		if(!mixcolor)

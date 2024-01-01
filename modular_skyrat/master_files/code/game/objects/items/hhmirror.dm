@@ -1,6 +1,6 @@
 /obj/item/hhmirror
 	name = "handheld mirror"
-	desc = "A handheld mirror that allows you to change your looks."
+	desc = "A handheld mirror."
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirror"
 
@@ -8,14 +8,13 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("Damn, that hairstyle be looking skewed, maybe head to the barber for a change?"))
 
 /obj/item/hhmirror/fullmagic
 	name = "full handheld magic mirror"
-	desc = "A handheld mirror that allows you to change your... self?" //Later, maybe add a charge to the description.
+	desc = "A handheld mirror that allows you to change your... self?" // Later, maybe add a charge to the description.
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirrormagic"
-	var/list/races_blacklist = list(SPECIES_SKELETON, "agent", "angel", SPECIES_SYNTH_MILITARY, SPECIES_ZOMBIE, "clockwork golem servant", SPECIES_ANDROID, SPECIES_SYNTH, SPECIES_MUSHROOM, SPECIES_ZOMBIE_HALLOWEEN, "memezombie")
+	var/list/races_blacklist = list(SPECIES_SKELETON, "agent", "angel", SPECIES_ZOMBIE, "clockwork golem servant", SPECIES_MUSHROOM, "memezombie")
 	var/list/choosable_races = list()
 
 /obj/item/hhmirror/fullmagic/New()
@@ -42,7 +41,7 @@
 
 			if(!newname)
 				return
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return
 			human_user.real_name = newname
 			human_user.name = newname
@@ -58,18 +57,18 @@
 
 			if(!newrace)
 				return
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return
 			human_user.set_species(newrace, icon_update = 0)
 
-			if(human_user.dna.species.use_skintones)
+			if(HAS_TRAIT(human_user, TRAIT_USES_SKINTONES))
 				var/new_s_tone = input(user, "Choose your skin tone:", "Race change")  as null|anything in GLOB.skin_tones
 
 				if(new_s_tone)
 					human_user.skin_tone = new_s_tone
 					human_user.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 
-			if(MUTCOLORS in human_user.dna.species.species_traits)
+			if(HAS_TRAIT(human_user, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(human_user, TRAIT_FIXED_MUTANT_COLORS))
 				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change", human_user.dna.features["mcolor"]) as color|null
 				if(new_mutantcolor)
 					var/temp_hsv = RGBtoHSV(new_mutantcolor)
@@ -81,14 +80,14 @@
 						to_chat(human_user, span_notice("Invalid color. Your color is not bright enough."))
 
 			human_user.update_body()
-			human_user.update_hair()
+			human_user.update_body_parts()
 			human_user.update_body_parts()
 			human_user.update_mutations_overlay() // no hulk lizard
 
 		if("gender")
-			if(!(human_user.gender in list("male", "female"))) //blame the patriarchy
+			if(!(human_user.gender in list("male", "female"))) // blame the patriarchy
 				return
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return
 			if(human_user.gender == "male")
 				if(alert(human_user, "Become a Witch?", "Confirmation", "Yes", "No") == "Yes")
@@ -105,13 +104,13 @@
 					return
 			human_user.dna.update_ui_block(DNA_GENDER_BLOCK)
 			human_user.update_body()
-			human_user.update_mutations_overlay() //(hulk male/female)
+			human_user.update_mutations_overlay() // (hulk male/female)
 
 		if("hair")
 			var/hairchoice = tgui_alert(human_user, "Hair style or hair color?", "Change Hair", list("Style", "Color"))
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return
-			if(hairchoice == "Style") //So you just want to use a mirror then?
+			if(hairchoice == "Style") // So you just want to use a mirror then?
 				..()
 			else
 				var/new_hair_color = input(human_user, "Choose your hair color", "Hair Color", human_user.hair_color) as color|null
@@ -123,24 +122,22 @@
 					if(new_face_color)
 						human_user.facial_hair_color = sanitize_hexcolor(new_face_color)
 						human_user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-				human_user.update_hair()
+				human_user.update_body_parts()
 
 		if(BODY_ZONE_PRECISE_EYES)
-			var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color) as color|null
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return
+			var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color_left) as color|null
+			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+				return TRUE
 			if(new_eye_color)
-				var/n_color = sanitize_hexcolor(new_eye_color)
-				var/obj/item/organ/eyes/eyes = human_user.getorganslot(ORGAN_SLOT_EYES)
-				if(eyes)
-					eyes.eye_color = n_color
-				human_user.eye_color = n_color
-				human_user.dna.update_ui_block(DNA_EYE_COLOR_BLOCK)
-				human_user.dna.species.handle_body()
+				human_user.eye_color_left = sanitize_hexcolor(new_eye_color)
+				human_user.eye_color_right = sanitize_hexcolor(new_eye_color)
+				human_user.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
+				human_user.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
+				human_user.update_body()
 
 /obj/item/hhmirror/wracemagic
 	name = "raceless handheld magic mirror"
-	desc = "A handheld mirror that allows you to change your... self?" //Later, maybe add a charge to the description.
+	desc = "A handheld mirror that allows you to change your... self?" // Later, maybe add a charge to the description.
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirrormagic"
 	var/charges = 4
@@ -162,7 +159,7 @@
 
 				if(!newname)
 					return
-				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return
 				human_user.real_name = newname
 				human_user.name = newname
@@ -172,9 +169,9 @@
 					human_user.mind.name = newname
 
 			if("gender")
-				if(!(human_user.gender in list("male", "female"))) //blame the patriarchy
+				if(!(human_user.gender in list("male", "female"))) // blame the patriarchy
 					return
-				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return
 				if(human_user.gender == "male")
 					if(alert(human_user, "Become a Witch?", "Confirmation", "Yes", "No") == "Yes")
@@ -191,13 +188,13 @@
 						return
 				human_user.dna.update_ui_block(DNA_GENDER_BLOCK)
 				human_user.update_body()
-				human_user.update_mutations_overlay() //(hulk male/female)
+				human_user.update_mutations_overlay() // (hulk male/female)
 
 			if("hair")
 				var/hairchoice = tgui_alert(human_user, "Hair style or hair color?", "Change Hair", list("Style", "Color"))
-				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return
-				if(hairchoice == "Style") //So you just want to use a mirror then?
+				if(hairchoice == "Style") // So you just want to use a mirror then?
 					..()
 				else
 					var/new_hair_color = input(human_user, "Choose your hair color", "Hair Color", human_user.hair_color) as color|null
@@ -209,20 +206,18 @@
 						if(new_face_color)
 							human_user.facial_hair_color = sanitize_hexcolor(new_face_color)
 							human_user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-					human_user.update_hair()
+					human_user.update_body_parts()
 
 			if(BODY_ZONE_PRECISE_EYES)
-				var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color) as color|null
-				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-					return
+				var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color_left) as color|null
+				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+					return TRUE
 				if(new_eye_color)
-					var/n_color = sanitize_hexcolor(new_eye_color)
-					var/obj/item/organ/eyes/eyes = human_user.getorganslot(ORGAN_SLOT_EYES)
-					if(eyes)
-						eyes.eye_color = n_color
-					human_user.eye_color = n_color
-					human_user.dna.update_ui_block(DNA_EYE_COLOR_BLOCK)
-					human_user.dna.species.handle_body()
+					human_user.eye_color_left = sanitize_hexcolor(new_eye_color)
+					human_user.eye_color_right = sanitize_hexcolor(new_eye_color)
+					human_user.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
+					human_user.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
+					human_user.update_body()
 		charges--
 	if(charges == 0)
 		qdel(src)

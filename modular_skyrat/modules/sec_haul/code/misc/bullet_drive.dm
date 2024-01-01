@@ -6,17 +6,18 @@
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/dish_drive/bullet
 	collectable_items = list(/obj/item/ammo_casing)
-	succrange = 10
+	suck_distance = 8
 	binrange = 10
 
 /obj/item/circuitboard/machine/dish_drive/bullet
 	name = "Bullet Drive (Machine Board)"
-	icon_state = "service"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/dish_drive/bullet
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/matter_bin = 2)
+		/datum/stock_part/servo = 1,
+		/datum/stock_part/matter_bin = 2,
+	)
 	needs_anchored = TRUE
 
 /obj/machinery/dish_drive/bullet/do_the_dishes(manual)
@@ -51,7 +52,7 @@
 		do_the_dishes()
 	if(!suction_enabled)
 		return
-	for(var/obj/item/I in view(succrange, src))
+	for(var/obj/item/I in view(2 + suck_distance, src))
 		if(istype(I, /obj/machinery/dish_drive/bullet))
 			visible_message(span_userdanger("[src] has detected another bullet drive nearby, and is sad!"))
 			break

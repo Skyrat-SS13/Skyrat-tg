@@ -4,10 +4,12 @@
 	show_in_antagpanel = FALSE
 	prevent_roundtype_conversion = FALSE
 	suicide_cry = "FOR MY LOVE!!"
+	// Not 'true' antags, this disables certain interactions that assume the owner is a baddie
+	antag_flags = FLAG_FAKE_ANTAG
 	var/datum/mind/date
-	soft_antag = TRUE
+	count_against_dynamic_roll_chance = FALSE
 
-/datum/antagonist/valentine/proc/forge_objectives()
+/datum/antagonist/valentine/forge_objectives()
 	var/datum/objective/protect/protect_objective = new /datum/objective/protect
 	protect_objective.owner = owner
 	protect_objective.target = date
@@ -20,13 +22,13 @@
 	forge_objectives()
 	if(isliving(owner.current))
 		var/mob/living/L = owner.current
-		L.apply_status_effect(STATUS_EFFECT_INLOVE, date.current)
+		L.apply_status_effect(/datum/status_effect/in_love, date.current)
 	. = ..()
 
 /datum/antagonist/valentine/on_removal()
 	if(isliving(owner.current))
 		var/mob/living/L = owner.current
-		L.remove_status_effect(STATUS_EFFECT_INLOVE)
+		L.remove_status_effect(/datum/status_effect/in_love)
 	. = ..()
 
 /datum/antagonist/valentine/greet()

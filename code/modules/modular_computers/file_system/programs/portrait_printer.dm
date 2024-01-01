@@ -2,6 +2,7 @@
 ///how much paper it takes from the printer to create a canvas.
 #define CANVAS_PAPER_COST 10
 
+
 /**
  * ## portrait printer!
  *
@@ -11,19 +12,30 @@
 /datum/computer_file/program/portrait_printer
 	filename = "PortraitPrinter"
 	filedesc = "Marlowe Treeby's Art Galaxy"
-	category = PROGRAM_CATEGORY_CREW
-	program_icon_state = "dummy"
+	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
+	program_open_overlay = "dummy"
 	extended_desc = "This program connects to a Spinward Sector community art site for viewing and printing art."
-	transfer_access = ACCESS_LIBRARY
-	usage_flags = PROGRAM_CONSOLE
-	requires_ntnet = TRUE
+	download_access = list(ACCESS_LIBRARY)
+	can_run_on_flags = PROGRAM_CONSOLE
+	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 9
 	tgui_id = "NtosPortraitPrinter"
 	program_icon = "paint-brush"
+	/**
+	* The last input in the search tab, stored here and reused in the UI to show successive users if
+	* the current list of paintings is limited to the results of a search or not.
+	*/
+	var/search_string
+	/// Whether the search function will check the title of the painting or the author's name.
+	var/search_mode = PAINTINGS_FILTER_SEARCH_TITLE
+	/// Stores the result of the search, for later access.
+	var/list/matching_paintings
 
 /datum/computer_file/program/portrait_printer/ui_data(mob/user)
 	var/list/data = list()
-	data["paintings"] = SSpersistent_paintings.painting_ui_data()
+	data["paintings"] = matching_paintings || SSpersistent_paintings.painting_ui_data()
+	data["search_string"] = search_string
+	data["search_mode"] = search_mode == PAINTINGS_FILTER_SEARCH_TITLE ? "Title" : "Author"
 	return data
 
 /datum/computer_file/program/portrait_printer/ui_assets(mob/user)
@@ -31,25 +43,34 @@
 		get_asset_datum(/datum/asset/simple/portraits)
 	)
 
-/datum/computer_file/program/portrait_printer/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
+/datum/computer_file/program/portrait_printer/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+	switch(action)
+		if("search")
+			if(search_string != params["to_search"])
+				search_string = params["to_search"]
+				generate_matching_paintings_list()
+			. = TRUE
+		if("change_search_mode")
+			search_mode = search_mode == PAINTINGS_FILTER_SEARCH_TITLE ? PAINTINGS_FILTER_SEARCH_CREATOR : PAINTINGS_FILTER_SEARCH_TITLE
+			generate_matching_paintings_list()
+			. = TRUE
+		if("select")
+			print_painting(params["selected"])
 
-	//printer check!
-	var/obj/item/computer_hardware/printer/printer
-	if(computer)
-		printer = computer.all_components[MC_PRINT]
-	if(!printer)
-		to_chat(usr, span_notice("Hardware error: A printer is required to print a canvas."))
+/datum/computer_file/program/portrait_printer/proc/generate_matching_paintings_list()
+	matching_paintings = null
+	if(!search_string)
 		return
-	if(printer.stored_paper < CANVAS_PAPER_COST)
+	matching_paintings = SSpersistent_paintings.painting_ui_data(filter = search_mode, search_text = search_string)
+
+/datum/computer_file/program/portrait_printer/proc/print_painting(selected_painting)
+	if(computer.stored_paper < CANVAS_PAPER_COST)
 		to_chat(usr, span_notice("Printing error: Your printer needs at least [CANVAS_PAPER_COST] paper to print a canvas."))
 		return
-	printer.stored_paper -= CANVAS_PAPER_COST
+	computer.stored_paper -= CANVAS_PAPER_COST
 
 	//canvas printing!
-	var/datum/painting/chosen_portrait = locate(params["selected"]) in SSpersistent_paintings.paintings
+	var/datum/painting/chosen_portrait = locate(selected_painting) in SSpersistent_paintings.paintings
 
 	var/png = "data/paintings/images/[chosen_portrait.md5].png"
 	var/icon/art_icon = new(png)
@@ -75,3 +96,5 @@
 	printed_canvas.update_icon()
 	to_chat(usr, span_notice("You have printed [chosen_portrait.title] onto a new canvas."))
 	playsound(computer.physical, 'sound/items/poster_being_created.ogg', 100, TRUE)
+
+#undef CANVAS_PAPER_COST

@@ -1,11 +1,17 @@
 // Cult buildings!
 /obj/structure/destructible/cult
-	icon = 'icons/obj/cult/structures.dmi'
+	icon = 'icons/obj/antags/cult/structures.dmi'
 	break_sound = 'sound/hallucinations/veryfar_noise.ogg'
 	density = TRUE
 	anchored = TRUE
 	light_power = 2
 	debris = list(/obj/item/stack/sheet/runed_metal = 1)
+	/// Length of the cooldown between uses.
+	var/use_cooldown_duration = 5 MINUTES
+	/// If provided, a bonus tip displayed to cultists on examined.
+	var/cult_examine_tip
+	/// The cooldown for when items can be dispensed.
+	COOLDOWN_DECLARE(use_cooldown)
 
 /obj/structure/destructible/cult/examine_status(mob/user)
 	if(IS_CULTIST(user) || isobserver(user))
@@ -15,6 +21,11 @@
 /obj/structure/destructible/cult/examine(mob/user)
 	. = ..()
 	. += span_notice("[src] is [anchored ? "secured to":"unsecured from"] the floor.")
+	if(IS_CULTIST(user) || isobserver(user))
+		if(cult_examine_tip)
+			. += span_cult(cult_examine_tip)
+		if(!COOLDOWN_FINISHED(src, use_cooldown_duration))
+			. += span_cultitalic("The magic in [src] is too weak, it will be ready to use again in <b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown_duration))]</b>.")
 
 /obj/structure/destructible/cult/set_anchored(anchorvalue)
 	. = ..()
@@ -26,33 +37,13 @@
 	icon_state = "[initial(icon_state)][anchored ? "" : "_off"]"
 	return ..()
 
-/obj/structure/destructible/cult/attack_animal(mob/living/simple_animal/user, list/modifiers)
-	if(!isconstruct(user))
-		return ..()
-
-	var/mob/living/simple_animal/hostile/construct/healer = user
-	if(!healer.can_repair)
-		return ..()
-
-	if(atom_integrity >= max_integrity)
-		to_chat(user, span_cult("You cannot repair [src], as it's undamaged!"))
-		return
-
-	user.changeNext_move(CLICK_CD_MELEE)
-	atom_integrity = min(max_integrity, atom_integrity + 5)
-	Beam(user, icon_state = "sendbeam", time = 0.4 SECONDS)
-	user.visible_message(
-		span_danger("[user] repairs [src]."),
-		span_cult("You repair [src], leaving it at <b>[round(atom_integrity * 100 / max_integrity)]%</b> stability.")
-		)
-
 /*
  * Proc for use with the concealing spell. Hides the building (makes it invisible).
  */
 /obj/structure/destructible/cult/proc/conceal()
 	set_density(FALSE)
 	visible_message(span_danger("[src] fades away."))
-	invisibility = INVISIBILITY_OBSERVER
+	SetInvisibility(INVISIBILITY_OBSERVER, id=type)
 	alpha = 100
 	set_light_power(0)
 	set_light_range(0)
@@ -63,7 +54,7 @@
  */
 /obj/structure/destructible/cult/proc/reveal()
 	set_density(initial(density))
-	invisibility = 0
+	RemoveInvisibility(type)
 	visible_message(span_danger("[src] suddenly appears!"))
 	alpha = initial(alpha)
 	set_light_range(initial(light_range))
@@ -74,24 +65,10 @@
 /obj/structure/destructible/cult/item_dispenser
 	/// An associated list of options this structure can make. See setup_options() for format.
 	var/list/options
-	/// Length of the cooldown between item dispenses.
-	var/use_cooldown_duration = 5 MINUTES
-	/// If provided, a bonus tip displayed to cultists on examined.
-	var/cult_examine_tip
-	/// The cooldown for when items can be dispensed.
-	COOLDOWN_DECLARE(use_cooldown)
 
 /obj/structure/destructible/cult/item_dispenser/Initialize(mapload)
 	. = ..()
 	setup_options()
-
-/obj/structure/destructible/cult/item_dispenser/examine(mob/user)
-	. = ..()
-	if(IS_CULTIST(user) || isobserver(user))
-		if(cult_examine_tip)
-			. += span_cult(cult_examine_tip)
-		if(!COOLDOWN_FINISHED(src, use_cooldown))
-			. += span_cultitalic("The magic in [src] is too weak, it will be ready to use again in <b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown))]</b>.")
 
 /obj/structure/destructible/cult/item_dispenser/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -150,7 +127,7 @@
 		user,
 		src,
 		choices,
-		custom_check = CALLBACK(src, .proc/check_menu, user),
+		custom_check = CALLBACK(src, PROC_REF(check_menu), user),
 		require_near = TRUE,
 		tooltips = TRUE,
 		)
@@ -179,7 +156,7 @@
 /obj/effect/gateway
 	name = "gateway"
 	desc = "You're pretty sure that abyss is staring back."
-	icon = 'icons/obj/cult/structures.dmi'
+	icon = 'icons/obj/antags/cult/structures.dmi'
 	icon_state = "hole"
 	density = TRUE
 	anchored = TRUE

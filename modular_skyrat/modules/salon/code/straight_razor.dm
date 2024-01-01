@@ -18,7 +18,7 @@
 
 /obj/item/straight_razor/proc/shave(mob/living/carbon/human/target_human)
 	target_human.facial_hairstyle = "Shaved"
-	target_human.update_hair()
+	target_human.update_body_parts()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 /obj/item/straight_razor/attack(mob/attacked_mob, mob/living/user)
@@ -32,7 +32,8 @@
 			to_chat(user, span_warning("[target_human] doesn't have a head!"))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
-			if(!(FACEHAIR in target_human.dna.species.species_traits))
+			var/obj/item/bodypart/head/noggin = target_human.get_bodypart(BODY_ZONE_HEAD)
+			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
 				to_chat(user, span_warning("There is no facial hair to shave!"))
 				return
 			if(!get_location_accessible(target_human, location))
@@ -49,7 +50,7 @@
 				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] facial hair clean with [src]."), \
 					span_notice("You finish shaving[self_shaving ? "" : " [target_human]'s facial hair"] with [src]. Fast and clean!"))
 				shave(target_human)
-			
+
 		else
 			..()
 	else

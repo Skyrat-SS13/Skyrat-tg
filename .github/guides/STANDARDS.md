@@ -37,8 +37,9 @@ You can avoid hacky code by using object-oriented methodologies, such as overrid
 
 ### User Interfaces
 
-* All new player-facing user interfaces must use TGUI.
-* Raw HTML is permitted for admin and debug UIs.
+* All new player-facing user interfaces must use TGUI, unless they are critical user interfaces.
+* All critical user interfaces must be usable with HTML or the interface.dmf, with tgui being *optional* for this UI.
+	* Examples of critical user interfaces are the chat box, the observe button, the stat panel, and the chat input.
 * Documentation for TGUI can be found at:
 	* [tgui/README.md](../tgui/README.md)
 	* [tgui/tutorial-and-examples.md](../tgui/docs/tutorial-and-examples.md)
@@ -96,7 +97,54 @@ While we normally encourage (and in some cases, even require) bringing out of da
 
 * Files and path accessed and referenced by code above simply being #included should be strictly lowercase to avoid issues on filesystems where case matters.
 
-### Signal Handlers
+### RegisterSignal()
+
+#### PROC_REF Macros
+When referencing procs in RegisterSignal, Callback and other procs you should use PROC_REF, TYPE_PROC_REF and GLOBAL_PROC_REF macros. 
+They ensure compilation fails if the reffered to procs change names or get removed.
+The macro to be used depends on how the proc you're in relates to the proc you want to use:
+
+PROC_REF if the proc you want to use is defined on the current proc type or any of it's ancestor types.
+Example:
+```
+/mob/proc/funny()
+	to_chat(world,"knock knock")
+
+/mob/subtype/proc/very_funny()
+	to_chat(world,"who's there?")
+
+/mob/subtype/proc/do_something()
+	// Proc on our own type
+	RegisterSignal(x, COMSIG_OTHER_FAKE, PROC_REF(very_funny))
+	// Proc on ancestor type, /mob is parent type of /mob/subtype
+	RegisterSignal(x, COMSIG_FAKE, PROC_REF(funny))
+```
+
+TYPE_PROC_REF if the proc you want to use is defined on a different unrelated type
+Example:
+```
+/obj/thing/proc/funny()
+	to_chat(world,"knock knock")
+
+/mob/subtype/proc/do_something()
+	var/obj/thing/x = new()
+	// we're referring to /obj/thing proc inside /mob/subtype proc
+	RegisterSignal(x, COMSIG_FAKE, TYPE_PROC_REF(/obj/thing, funny)) 
+```
+
+GLOBAL_PROC_REF if the proc you want to use is a global proc.
+Example:
+```
+/proc/funny()
+	to_chat(world,"knock knock")
+
+/mob/subtype/proc/do_something()
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funny)), 100))
+```
+
+Note that the same rules go for verbs too! We have VERB_REF() and TYPE_VERB_REF() as you need it in these same cases. GLOBAL_VERB_REF() isn't a thing however, as verbs are not global.
+
+#### Signal Handlers
 
 All procs that are registered to listen for signals using `RegisterSignal()` must contain at the start of the proc `SIGNAL_HANDLER` eg;
 ```
@@ -107,6 +155,16 @@ All procs that are registered to listen for signals using `RegisterSignal()` mus
 This is to ensure that it is clear the proc handles signals and turns on a lint to ensure it does not sleep.
 
 Any sleeping behaviour that you need to perform inside a `SIGNAL_HANDLER` proc must be called asynchronously (e.g. with `INVOKE_ASYNC()`) or be redone to work asynchronously. 
+
+#### `override`
+
+Each atom can only register a signal on the same object once, or else you will get a runtime. Overriding signals is usually a bug, but if you are confident that it is not, you can silence this runtime with `override = TRUE`.
+
+```dm
+RegisterSignal(fork, COMSIG_FORK_STAB, PROC_REF(on_fork_stab), override = TRUE)
+```
+
+If you decide to do this, you should make it clear with a comment explaining why it is necessary. This helps us to understand that the signal override is not a bug, and may help us to remove it in the future if the assumptions change.
 
 ### Enforcing parent calling
 
@@ -156,7 +214,7 @@ In a lot of our older code, `process()` is frame dependent. Here's some example 
 	var/health = 100
 	var/health_loss = 4 //We want to lose 2 health per second, so 4 per SSmobs process
 
-/mob/testmob/process(delta_time) //SSmobs runs once every 2 seconds
+/mob/testmob/process(seconds_per_tick) //SSmobs runs once every 2 seconds
 	health -= health_loss
 ```
 
@@ -171,11 +229,11 @@ How do we solve this? By using delta-time. Delta-time is the amount of seconds y
 	var/health = 100
 	var/health_loss = 2 //Health loss every second
 
-/mob/testmob/process(delta_time) //SSmobs runs once every 2 seconds
-	health -= health_loss * delta_time
+/mob/testmob/process(seconds_per_tick) //SSmobs runs once every 2 seconds
+	health -= health_loss * seconds_per_tick
 ```
 
-In the above example, we made our health_loss variable a per second value rather than per process. In the actual process() proc we then make use of deltatime. Because SSmobs runs once every  2 seconds. Delta_time would have a value of 2. This means that by doing health_loss * delta_time, you end up with the correct amount of health_loss per process, but if for some reason the SSmobs subsystem gets changed to be faster or slower in a PR, your health_loss variable will work the same.
+In the above example, we made our health_loss variable a per second value rather than per process. In the actual process() proc we then make use of deltatime. Because SSmobs runs once every  2 seconds. Delta_time would have a value of 2. This means that by doing health_loss * seconds_per_tick, you end up with the correct amount of health_loss per process, but if for some reason the SSmobs subsystem gets changed to be faster or slower in a PR, your health_loss variable will work the same.
 
 For example, if SSmobs is set to run once every 4 seconds, it would call process once every 4 seconds and multiply your health_loss var by 4 before subtracting it. Ensuring that your code is frame independent.
 
@@ -309,17 +367,136 @@ https://file.house/zy7H.png
 Code used for the test in a readable format:
 https://pastebin.com/w50uERkG
 
-### Dot variable
+### Dot variable (`.`)
 
-Like other languages in the C family, DM has a `.` or "Dot" operator, used for accessing variables/members/functions of an object instance.
-eg:
-```DM
-var/mob/living/carbon/human/H = YOU_THE_READER
-H.gib()
+The `.` variable is present in all procs. It refers to the value returned by a proc.
+
+```dm
+/proc/return_six()
+	. = 3
+	. *= 2
+
+// ...is equivalent to...
+/proc/return_six()
+	var/output = 3
+	output *= 2
+	return output
 ```
-However, DM also has a dot variable, accessed just as `.` on its own, defaulting to a value of null. Now, what's special about the dot operator is that it is automatically returned (as in the `return` statement) at the end of a proc, provided the proc does not already manually return (`return count` for example.) Why is this special?
 
-With `.` being everpresent in every proc, can we use it as a temporary variable? Of course we can! However, the `.` operator cannot replace a typecasted variable - it can hold data any other var in DM can, it just can't be accessed as one, although the `.` operator is compatible with a few operators that look weird but work perfectly fine, such as: `.++` for incrementing `.'s` value, or `.[1]` for accessing the first element of `.`, provided that it's a list.
+At its best, it can make some very common patterns easy to use, and harder to mess up. However, at its worst, it can make it significantly harder to understand what a proc does.
+
+```dm
+/proc/complex_proc()
+	if (do_something())
+		some_code()
+		if (do_something_else())
+			. = TRUE // Uh oh, what's going on!
+	
+	// even
+	// more
+	// code
+	if (bad_condition())
+		return // This actually will return something set from earlier!
+```
+
+This sort of behavior can create some nasty to debug errors with things returning when you don't expect them to. Would you see `return` and it expect it to return a value, without reading all the code before it? Furthermore, a simple `return` statement cannot easily be checked by the LSP, meaning you can't easily check what is actually being returned. Basically, `return output` lets you go to where `output` is defined/set. `return` does not.
+
+Even in simple cases, this can create some just generally hard to read code, seemingly in the pursuit of being clever.
+
+```dm
+/client/p_were(gender)
+	. = "was"
+	if (gender == PLURAL || gender == NEUTER)
+		. = "were"
+```
+
+Because of these problems, it is encouraged to prefer standard, explicit return statements. The above code would be best written as:
+
+```dm
+/client/p_were(gender)
+	if (gender == PLURAL || gender == NEUTER)
+		return "were"
+	else
+		return "was"
+```
+
+#### Exception: `. = ..()`
+
+As hinted at before, `. = ..()` is *extremely* common. This will call the parent function, and preserve its return type. Code like this:
+
+```dm
+/obj/item/spoon/attack()
+	. = ..()
+	visible_message("Whack!")
+```
+
+...is completely accepted, and in fact, usually *prefered* over:
+
+```dm
+/obj/item/spoon/attack()
+	var/output = ..()
+	visible_message("Whack!")
+	return output
+```
+
+#### Exception: Runtime resilience
+
+One unique property of DM is the ability for procs to error, but for code to continue. For instance, the following:
+
+```dm
+/proc/uh_oh()
+	CRASH("oh no!")
+
+/proc/main()
+	to_chat(world, "1")
+	uh_oh()
+	to_chat(world, "2")
+```
+
+...would print both 1 *and* 2, which may be unexpected if you come from other languages.
+
+This is where `.` provides a new useful behavior--**a proc that runtimes will return `.`**.
+
+Meaning:
+
+```dm
+/proc/uh_oh()
+	. = "woah!"
+	CRASH("oh no!")
+
+/proc/main()
+	to_chat(world, uh_oh())
+```
+
+...will print `woah!`. 
+
+For this reason, it is acceptable for `.` to be used in places where consumers can reasonably continue in the event of a runtime.
+
+If you are using `.` in this case (or for another case that might be acceptable, other than most uses of `. = ..()`), it is still prefered that you explicitly `return .` in order to prevent both editor issues and readability/error-prone issues.
+
+```dm
+/proc/uh_oh()
+	. = "woah!"
+
+	if (do_something())
+		call_code()
+		if (!working_fine())
+			return . // Instead of `return`, we explicitly `return .`
+
+	if (some_fail_state())
+		CRASH("youch!")
+
+	return . // `return .` is used at the end, to signify it has been used
+```
+
+```dm
+/obj/item/spoon/super_attack()
+	. = ..()
+	if (. == BIGGER_SUPER_ATTACK)
+		return BIGGER_SUPER_ATTACK // More readable than `.`
+	
+	// Due to how common it is, most uses of `. = ..()` do not need a trailing `return .`
+```
 
 ### The BYOND walk procs
 

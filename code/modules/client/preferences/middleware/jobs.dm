@@ -1,9 +1,9 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
-		"set_job_preference" = .proc/set_job_preference,
-	// SKYRAT EDIT
-		"set_job_title" = .proc/set_job_title,
-	// SKYRAT EDIT END
+		"set_job_preference" = PROC_REF(set_job_preference),
+		// SKYRAT EDIT
+		"set_job_title" = PROC_REF(set_job_title),
+		// SKYRAT EDIT END
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -53,6 +53,8 @@
 	var/list/jobs = list()
 
 	for (var/datum/job/job as anything in SSjob.joinable_occupations)
+		if (job.job_flags & JOB_LATEJOIN_ONLY)
+			continue
 		var/datum/job_department/department_type = job.department_for_prefs || job.departments_list?[1]
 		if (isnull(department_type))
 			stack_trace("[job] does not have a department set, yet is a joinable occupation!")
@@ -99,7 +101,7 @@
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
 	var/list/data = list()
 	// SKYRAT EDIT
-	if(is_veteran_player(user.client))
+	if(CONFIG_GET(flag/bypass_veteran_system) || SSplayer_ranks.is_veteran(user.client))
 		data["is_veteran"] = TRUE
 	// SKYRAT EDIT END
 	var/list/required_job_playtime = get_required_job_playtime(user)
@@ -118,6 +120,8 @@
 	var/list/job_required_experience = list()
 
 	for (var/datum/job/job as anything in SSjob.all_occupations)
+		if (job.job_flags & JOB_LATEJOIN_ONLY)
+			continue
 		var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 		if (required_playtime_remaining)
 			job_required_experience[job.title] = list(

@@ -7,8 +7,8 @@
 /mob/living/simple_animal/bot/firebot
 	name = "\improper Firebot"
 	desc = "A little fire extinguishing bot. He looks rather anxious."
-	icon = 'icons/mob/aibots.dmi'
-	icon_state = "firebot"
+	icon = 'icons/mob/silicon/aibots.dmi'
+	icon_state = "firebot1"
 	density = FALSE
 	anchored = FALSE
 	health = 25
@@ -20,6 +20,17 @@
 	bot_type = FIRE_BOT
 	hackables = "fire safety protocols"
 	path_image_color = "#FFA500"
+	possessed_message = "You are a firebot! Protect the station from fires to the best of your ability!"
+
+	automated_announcements = list(
+		FIREBOT_VOICED_FIRE_DETECTED = 'sound/voice/firebot/detected.ogg',
+		FIREBOT_VOICED_STOP_DROP = 'sound/voice/firebot/stopdropnroll.ogg',
+		FIREBOT_VOICED_EXTINGUISHING = 'sound/voice/firebot/extinguishing.ogg',
+		FIREBOT_VOICED_NO_FIRES = 'sound/voice/firebot/nofires.ogg',
+		FIREBOT_VOICED_ONLY_YOU = 'sound/voice/firebot/onlyyou.ogg',
+		FIREBOT_VOICED_TEMPERATURE_NOMINAL = 'sound/voice/firebot/tempnominal.ogg',
+		FIREBOT_VOICED_KEEP_COOL = 'sound/voice/firebot/keepitcool.ogg',
+	)
 
 	var/atom/target_fire
 	var/atom/old_target_fire
@@ -48,6 +59,10 @@
 
 	create_extinguisher()
 	AddElement(/datum/element/atmos_sensitive, mapload)
+
+/mob/living/simple_animal/bot/firebot/Destroy()
+	QDEL_NULL(internal_ext)
+	return ..()
 
 /mob/living/simple_animal/bot/firebot/bot_reset()
 	create_extinguisher()
@@ -89,7 +104,6 @@
 	..()
 	target_fire = null
 	old_target_fire = null
-	ignore_list = list()
 	set_anchored(FALSE)
 	update_appearance()
 
@@ -100,14 +114,15 @@
 	last_found = world.time
 	update_appearance()
 
-/mob/living/simple_animal/bot/firebot/emag_act(mob/user)
-	..()
+/mob/living/simple_animal/bot/firebot/emag_act(mob/user, obj/item/card/emag/emag_card)
+	. = ..()
 	if(!(bot_cover_flags & BOT_COVER_EMAGGED))
 		return
-	if(user)
-		to_chat(user, span_danger("[src] buzzes and beeps."))
+
+	to_chat(user, span_warning("You enable the very ironically named \"fighting with fire\" mode, and disable the targeting safeties.")) // heheehe. funny
+
 	audible_message(span_danger("[src] buzzes oddly!"))
-	playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(user)
 		old_target_fire = user
 	extinguish_fires = FALSE
@@ -120,6 +135,7 @@
 	internal_ext.precision = FALSE
 	internal_ext.max_water = INFINITY
 	internal_ext.refill()
+	return TRUE
 
 // Variables sent to TGUI
 /mob/living/simple_animal/bot/firebot/ui_data(mob/user)
@@ -169,13 +185,13 @@
 		return
 
 	if(prob(1) && target_fire == null)
-		var/list/messagevoice = list("No fires detected." = 'sound/voice/firebot/nofires.ogg',
-		"Only you can prevent station fires." = 'sound/voice/firebot/onlyyou.ogg',
-		"Temperature nominal." = 'sound/voice/firebot/tempnominal.ogg',
-		"Keep it cool." = 'sound/voice/firebot/keepitcool.ogg')
-		var/message = pick(messagevoice)
-		speak(message)
-		playsound(src, messagevoice[message], 50)
+		var/static/list/idle_line = list(
+			FIREBOT_VOICED_NO_FIRES,
+			FIREBOT_VOICED_ONLY_YOU,
+			FIREBOT_VOICED_TEMPERATURE_NOMINAL,
+			FIREBOT_VOICED_KEEP_COOL,
+		)
+		speak(pick(idle_line))
 
 	// Couldn't reach the target, reset and try again ignoring the old one
 	if(frustration > 8)
@@ -187,23 +203,23 @@
 		target_fire = null
 		var/scan_range = (stationary_mode ? 1 : DEFAULT_SCAN_RANGE)
 
+		var/list/things_to_extinguish = list()
 		if(extinguish_people)
-			target_fire = scan(/mob/living, old_target_fire, scan_range) // Scan for burning humans first
+			things_to_extinguish += list(/mob/living)
 
 		if(target_fire == null && extinguish_fires)
-			target_fire = scan(/turf/open, old_target_fire, scan_range) // Scan for burning turfs second
+			things_to_extinguish += list(/turf/open)
 
+		target_fire = scan(things_to_extinguish, old_target_fire, scan_range) // Scan for burning turfs second
 		old_target_fire = target_fire
 
 	// Target reached ENGAGE WATER CANNON
 	if(target_fire && (get_dist(src, target_fire) <= (bot_cover_flags & BOT_COVER_EMAGGED ? 1 : 2))) // Make the bot spray water from afar when not emagged
 		if((speech_cooldown + SPEECH_INTERVAL) < world.time)
 			if(ishuman(target_fire))
-				speak("Stop, drop and roll!")
-				playsound(src, 'sound/voice/firebot/stopdropnroll.ogg', 50, FALSE)
+				speak(FIREBOT_VOICED_STOP_DROP)
 			else
-				speak("Extinguishing!")
-				playsound(src, 'sound/voice/firebot/extinguishing.ogg', 50, FALSE)
+				speak(FIREBOT_VOICED_EXTINGUISHING)
 			speech_cooldown = world.time
 
 			flick("firebot1_use", src)
@@ -223,7 +239,7 @@
 
 	if(target_fire && (get_dist(src, target_fire) > 2))
 
-		path = get_path_to(src, target_fire, 30, 1, id=access_card)
+		path = get_path_to(src, target_fire, max_distance=30, mintargetdist=1, access=access_card.GetAccess())
 		mode = BOT_MOVING
 		if(!path.len)
 			soft_reset()
@@ -239,35 +255,31 @@
 		frustration++
 
 	if(bot_mode_flags & BOT_MODE_AUTOPATROL && !target_fire)
-		if(mode == BOT_IDLE || mode == BOT_START_PATROL)
-			start_patrol()
-
-		if(mode == BOT_PATROL)
-			bot_patrol()
+		switch(mode)
+			if(BOT_IDLE, BOT_START_PATROL)
+				start_patrol()
+			if(BOT_PATROL)
+				bot_patrol()
 
 
 //Look for burning people or turfs around the bot
 /mob/living/simple_animal/bot/firebot/process_scan(atom/scan_target)
-	var/result
+	if(!is_burning(scan_target))
+		return null
 
-	if(scan_target == src)
-		return result
-
-	if(is_burning(scan_target))
-		if((detected_cooldown + DETECTED_VOICE_INTERVAL) < world.time)
-			speak("Fire detected!")
-			playsound(src, 'sound/voice/firebot/detected.ogg', 50, FALSE)
-			detected_cooldown = world.time
-		result = scan_target
-
-	return result
+	if((detected_cooldown + DETECTED_VOICE_INTERVAL) < world.time)
+		speak(FIREBOT_VOICED_FIRE_DETECTED)
+		detected_cooldown = world.time
+		return scan_target
 
 /mob/living/simple_animal/bot/firebot/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return (exposed_temperature > T0C + 200 || exposed_temperature < BODYTEMP_COLD_DAMAGE_LIMIT)
 
 /mob/living/simple_animal/bot/firebot/atmos_expose(datum/gas_mixture/air, exposed_temperature)
 	if(COOLDOWN_FINISHED(src, foam_cooldown))
-		new /obj/effect/particle_effect/foam/firefighting(loc)
+		var/datum/effect_system/fluid_spread/foam/firefighting/foam = new
+		foam.set_up(3, holder = src, location = loc)
+		foam.start()
 		COOLDOWN_START(src, foam_cooldown, FOAM_INTERVAL)
 
 /mob/living/simple_animal/bot/firebot/proc/spray_water(atom/target, mob/user)
@@ -289,22 +301,17 @@
 
 
 /mob/living/simple_animal/bot/firebot/explode()
-	bot_mode_flags &= ~BOT_MODE_ON
-	visible_message(span_boldannounce("[src] blows apart!"))
-
 	var/atom/Tsec = drop_location()
 
 	new /obj/item/assembly/prox_sensor(Tsec)
-	new /obj/item/clothing/head/hardhat/red(Tsec)
+	new /obj/item/clothing/head/utility/hardhat/red(Tsec)
 
 	var/turf/T = get_turf(Tsec)
 
 	if(isopenturf(T))
 		var/turf/open/theturf = T
 		theturf.MakeSlippery(TURF_WET_WATER, min_wet_time = 10 SECONDS, wet_time_to_add = 5 SECONDS)
-
-	do_sparks(3, TRUE, src)
-	..()
+	return ..()
 
 #undef SPEECH_INTERVAL
 #undef DETECTED_VOICE_INTERVAL

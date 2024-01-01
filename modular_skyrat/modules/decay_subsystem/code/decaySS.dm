@@ -22,6 +22,8 @@ SUBSYSTEM_DEF(decay)
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_DECAY
 
+	/// This is used to determine what maps we should not spawn on.
+	var/list/station_filter = list("Birdshot Station", "Runtime Station", "MultiZ Debug", "Gateway Test")
 	var/list/possible_turfs = list()
 	var/list/possible_areas = list()
 	var/severity_modifier = 1
@@ -37,24 +39,29 @@ SUBSYSTEM_DEF(decay)
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
 		log_world("SSDecay was disabled in config.")
-		return ..()
+		return SS_INIT_NO_NEED
+
+	if(SSmapping.config.map_name in station_filter)
+		message_admins("SSDecay was disabled due to map filter.")
+		log_world("SSDecay was disabled due to map filter.")
+		return SS_INIT_NO_NEED
+
 	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.
 	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
-		return ..()
+		return SS_INIT_NO_NEED
 
-	for(var/turf/iterating_turf in world)
-		if(!is_station_level(iterating_turf.z))
-			continue
-		if(!(iterating_turf.turf_flags & CAN_BE_DIRTY_1))
-			continue
-		possible_turfs += iterating_turf
-
-	for(var/area/iterating_area in world)
+	for(var/area/iterating_area as anything in GLOB.areas)
 		if(!is_station_level(iterating_area.z))
 			continue
 		possible_areas += iterating_area
+
+		// Now add the turfs
+		for(var/turf/iterating_turf as anything in iterating_area.get_contained_turfs())
+			if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
+				continue
+			possible_turfs += iterating_turf
 
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
@@ -72,7 +79,7 @@ SUBSYSTEM_DEF(decay)
 
 	do_medical()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)
@@ -87,11 +94,13 @@ SUBSYSTEM_DEF(decay)
 			new /obj/effect/decal/cleanable/dirt(iterating_floor)
 
 	for(var/turf/closed/iterating_wall in possible_turfs)
+		if(HAS_TRAIT(iterating_wall, TRAIT_RUSTY))
+			continue
 		if(prob(WALL_RUST_PERCENT_CHANCE * severity_modifier))
 			iterating_wall.AddElement(/datum/element/rust)
 
 /datum/controller/subsystem/decay/proc/do_maintenance()
-	for(var/area/maintenance/iterating_maintenance in possible_areas)
+	for(var/area/station/maintenance/iterating_maintenance in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_maintenance)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
 				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
@@ -104,9 +113,9 @@ SUBSYSTEM_DEF(decay)
 				if(!iterating_floor.Enter(spawned_web))
 					qdel(spawned_web)
 
-			if(prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
+			if(!CONFIG_GET(flag/ssdecay_disable_nests) && prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
 				var/spawner_to_spawn = pick(possible_nests)
-				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn (iterating_floor)
+				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn(iterating_floor)
 				if(!iterating_floor.Enter(spawned_spawner))
 					qdel(spawned_spawner)
 
@@ -115,7 +124,7 @@ SUBSYSTEM_DEF(decay)
 				iterating_light.start_flickering()
 
 /datum/controller/subsystem/decay/proc/do_engineering()
-	for(var/area/engineering/iterating_engineering in possible_areas)
+	for(var/area/station/engineering/iterating_engineering in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_engineering)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
 				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
@@ -129,7 +138,7 @@ SUBSYSTEM_DEF(decay)
 					qdel(spawned_oil)
 
 /datum/controller/subsystem/decay/proc/do_medical()
-	for(var/area/medical/iterating_medical in possible_areas)
+	for(var/area/station/medical/iterating_medical in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_medical)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
 				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
@@ -142,7 +151,7 @@ SUBSYSTEM_DEF(decay)
 				if(!iterating_floor.Enter(spawned_vomit))
 					qdel(spawned_vomit)
 
-		if(is_type_in_list(iterating_medical, list(/area/medical/coldroom, /area/medical/morgue, /area/medical/psychology)))
+		if(is_type_in_list(iterating_medical, list(/area/station/medical/coldroom, /area/station/medical/morgue, /area/station/medical/psychology)))
 			for(var/obj/machinery/light/iterating_light in iterating_medical)
 				if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
 					iterating_light.start_flickering()

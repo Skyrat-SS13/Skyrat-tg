@@ -1,31 +1,25 @@
-//GENERIC ID CARDS//
+// GENERIC
 /obj/item/card/id/advanced/silver/generic
 	name = "generic silver identification card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	icon_state = "card_silvergen"
-	assigned_icon_state = "assigned_silver"
+	assigned_icon_state = null
 
 /obj/item/card/id/advanced/gold/generic
 	name = "generic gold identification card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	icon_state = "card_goldgen"
-	assigned_icon_state = "assigned_gold"
+	assigned_icon_state = null
 
-//POLYCHROMIC ID CARDS//
-/obj/item/card/id/advanced/polychromic
-	name = "polychromic identification card"
-	desc = "A failed prototype for customizable ID cards, it looks.. strange." //Read: I'm too lazy to implement this properly
+// DS2
+/obj/item/card/id/advanced/prisoner/ds2
+	name = "syndicate prisoner card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	icon_state = "card_polychromic"
-	assigned_icon_state = null //Built into the sprite itself.
+	icon_state = "card_ds2prisoner"
 
-/obj/item/card/id/advanced/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
-
-//SOLGOV//
-/obj/item/card/id/advanced/solgov
-	name = "solgov identification card"
+// SOLFED
+/obj/item/card/id/advanced/solfed
+	name = "solfed identification card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	icon_state = "card_solgov"
-	assigned_icon_state = "assigned_solgov"
+	icon_state = "card_solfed"
+	assigned_icon_state = "assigned_solfed"

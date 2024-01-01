@@ -6,11 +6,12 @@
 		var/typename = "[type]"
 		var/static/list/TYPES_SHORTCUTS = list(
 			/obj/effect/decal/cleanable = "CLEANABLE",
+			/obj/item/bodypart = "BODYPART",
 			/obj/item/radio/headset = "HEADSET",
 			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
 			/obj/item/book/manual = "MANUAL",
-			/obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
-			/obj/item/reagent_containers/food = "FOOD",
+			/obj/item/reagent_containers/cup/glass = "DRINK", //longest paths comes first
+			/obj/item/food = "FOOD",
 			/obj/item/reagent_containers = "REAGENT_CONTAINERS",
 			/obj/machinery/atmospherics = "ATMOS_MECH",
 			/obj/machinery/portable_atmospherics = "PORT_ATMOS",
@@ -27,8 +28,9 @@
 			/turf = "T",
 			/mob/living/carbon = "CARBON",
 			/mob/living/simple_animal = "SIMPLE",
+			/mob/living/basic = "BASIC",
 			/mob/living = "LIVING",
-			/mob = "M"
+			/mob = "M",
 		)
 		for (var/tn in TYPES_SHORTCUTS)
 			if(copytext(typename, 1, length("[tn]/") + 1) == "[tn]/" /*findtextEx(typename,"[tn]/",1,2)*/ )

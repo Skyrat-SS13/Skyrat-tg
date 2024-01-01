@@ -1,42 +1,44 @@
 /datum/species/vulpkanin
 	name = "Vulpkanin"
 	id = SPECIES_VULP
-	default_color = "#4B4B4B"
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
-		HAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GRAIN | RAW | MEAT
-	disliked_food = NUTS | CLOTH
-	toxic_food = TOXIC
-	payday_modifier = 0.75
+	mutanttongue = /obj/item/organ/internal/tongue/vulpkanin
+	species_language_holder = /datum/language_holder/vulpkanin
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
-	limbs_id = SPECIES_MAMMAL
+	examine_limb_id = SPECIES_MAMMAL
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
+	)
 
-/datum/species/vulpkanin/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/vulpkanin/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Fox", TRUE),
+		"snout" = list("Mammal, Long", TRUE),
+		"ears" = list("Fox", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
+/obj/item/organ/internal/tongue/vulpkanin
+	liked_foodtypes = RAW | MEAT
+	disliked_foodtypes = CLOTH
+	toxic_foodtypes = TOXIC
+
+
+/datum/species/vulpkanin/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -57,10 +59,10 @@
 		if(5)
 			main_color = "#999999"
 			second_color = "#EEEEEE"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
-	return returned
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
 
 /datum/species/vulpkanin/get_random_body_markings(list/passed_features)
 	var/name = pick("Fox", "Floof", "Floofer")
@@ -70,6 +72,7 @@
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
 
+/*	Runtime in vulpkanin.dm,78: pick() from empty list
 /datum/species/vulpkanin/random_name(gender,unique,lastname)
 	var/randname
 	if(gender == MALE)
@@ -83,3 +86,23 @@
 		randname += " [pick(GLOB.last_names_vulp)]"
 
 	return randname
+*/
+
+/datum/species/vulpkanin/get_species_description()
+	return placeholder_description
+
+/datum/species/vulpkanin/get_species_lore()
+	return list(placeholder_lore)
+
+/datum/species/vulpkanin/prepare_human_for_preview(mob/living/carbon/human/vulp)
+	var/main_color = "#FF8800"
+	var/second_color = "#FFFFFF"
+
+	vulp.dna.features["mcolor"] = main_color
+	vulp.dna.features["mcolor2"] = second_color
+	vulp.dna.features["mcolor3"] = second_color
+	vulp.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Mammal, Long", MUTANT_INDEX_COLOR_LIST = list(main_color, main_color, main_color))
+	vulp.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(second_color, main_color, main_color))
+	vulp.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Wolf", MUTANT_INDEX_COLOR_LIST = list(main_color, second_color, second_color))
+	regenerate_organs(vulp, src, visual_only = TRUE)
+	vulp.update_body(TRUE)

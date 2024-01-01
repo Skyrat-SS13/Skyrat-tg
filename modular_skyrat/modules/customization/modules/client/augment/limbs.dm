@@ -4,35 +4,42 @@
 	///Hardcoded styles that can be chosen from and apply to limb, if it's true
 	var/uses_robotic_styles = TRUE
 
-/datum/augment_item/limb/apply(mob/living/carbon/human/H, character_setup = FALSE, datum/preferences/prefs)
+/datum/augment_item/limb/apply(mob/living/carbon/human/augmented, character_setup = FALSE, datum/preferences/prefs)
 	if(character_setup)
 		//Cheaply "faking" the appearance of the prosthetic. Species code sets this back if it doesnt exist anymore
-		var/obj/item/bodypart/BP = path
-		var/obj/item/bodypart/oldBP = H.get_bodypart(initial(BP.body_zone))
-		oldBP.organic_render = FALSE
+		var/obj/item/bodypart/new_limb = path
+		var/body_zone = initial(new_limb.body_zone)
+		var/obj/item/bodypart/old_limb = augmented.get_bodypart(body_zone)
+
+		old_limb.limb_id = initial(new_limb.limb_id)
+		old_limb.base_limb_id = initial(new_limb.limb_id)
+		old_limb.is_dimorphic = initial(new_limb.is_dimorphic)
+
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
-			oldBP.icon = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
+			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
+			old_limb.set_icon_static(chosen_style)
+			old_limb.current_style = prefs.augment_limb_styles[slot]
 		else
-			oldBP.icon = initial(BP.icon)
-		oldBP.rendered_bp_icon = initial(BP.icon)
-		oldBP.icon_state = initial(BP.icon_state)
-		oldBP.should_draw_greyscale = FALSE
-		H.icon_render_key = "" //To force an update on the limbs
+			old_limb.set_icon_static(initial(new_limb.icon))
+		old_limb.should_draw_greyscale = FALSE
+
+		return body_zone
 	else
-		var/obj/item/bodypart/BP = new path(H)
-		var/obj/item/bodypart/oldBP = H.get_bodypart(BP.body_zone)
+		var/obj/item/bodypart/new_limb = new path(augmented)
+		var/obj/item/bodypart/old_limb = augmented.get_bodypart(new_limb.body_zone)
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
-			BP.icon = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
-		BP.organic_render = FALSE
-		BP.replace_limb(H)
-		qdel(oldBP)
+			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
+			new_limb.set_icon_static(chosen_style)
+			new_limb.current_style = prefs.augment_limb_styles[slot]
+		new_limb.replace_limb(augmented)
+		qdel(old_limb)
 
 //HEADS
 /datum/augment_item/limb/head
 	slot = AUGMENT_SLOT_HEAD
 
 /datum/augment_item/limb/head/cyborg
-	name = "Cyborg"
+	name = "Cyborg head"
 	path = /obj/item/bodypart/head/robot/weak
 
 //CHESTS
@@ -40,7 +47,7 @@
 	slot = AUGMENT_SLOT_CHEST
 
 /datum/augment_item/limb/chest/cyborg
-	name = "Cyborg"
+	name = "Cyborg chest"
 	path = /obj/item/bodypart/chest/robot/weak
 
 //LEFT ARMS
@@ -48,49 +55,93 @@
 	slot = AUGMENT_SLOT_L_ARM
 
 /datum/augment_item/limb/l_arm/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/l_arm/robot/surplus
+	name = "Prosthetic left arm"
+	path = /obj/item/bodypart/arm/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_arm/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/l_arm/robot/weak
+	name = "Cyborg left arm"
+	path = /obj/item/bodypart/arm/left/robot/weak
+
+/datum/augment_item/limb/l_arm/plasmaman
+	name = "Plasmaman left arm"
+	path = /obj/item/bodypart/arm/left/plasmaman
+	uses_robotic_styles = FALSE
+
+/datum/augment_item/limb/l_arm/self_destruct
+	name = "No Left Arm"
+	path = /obj/item/bodypart/arm/left/self_destruct
+	cost = -3
+	uses_robotic_styles = FALSE
 
 //RIGHT ARMS
 /datum/augment_item/limb/r_arm
 	slot = AUGMENT_SLOT_R_ARM
 
 /datum/augment_item/limb/r_arm/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/r_arm/robot/surplus
+	name = "Prosthetic right arm"
+	path = /obj/item/bodypart/arm/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_arm/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/r_arm/robot/weak
+	name = "Cyborg right arm"
+	path = /obj/item/bodypart/arm/right/robot/weak
+
+/datum/augment_item/limb/r_arm/plasmaman
+	name = "Plasmaman right arm"
+	path = /obj/item/bodypart/arm/right/plasmaman
+	uses_robotic_styles = FALSE
+
+/datum/augment_item/limb/r_arm/self_destruct
+	name = "No Right Arm"
+	path = /obj/item/bodypart/arm/right/self_destruct
+	cost = -3
+	uses_robotic_styles = FALSE
 
 //LEFT LEGS
 /datum/augment_item/limb/l_leg
 	slot = AUGMENT_SLOT_L_LEG
 
 /datum/augment_item/limb/l_leg/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/l_leg/robot/surplus
+	name = "Prosthetic left leg"
+	path = /obj/item/bodypart/leg/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_leg/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/l_leg/robot/weak
+	name = "Cyborg left leg"
+	path = /obj/item/bodypart/leg/left/robot/weak
+
+/datum/augment_item/limb/l_leg/plasmaman
+	name = "Plasmaman left leg"
+	path = /obj/item/bodypart/leg/left/plasmaman
+	uses_robotic_styles = FALSE
+
+/datum/augment_item/limb/l_leg/self_destruct
+	name = "No Left Leg"
+	path = /obj/item/bodypart/leg/left/self_destruct
+	cost = -3
+	uses_robotic_styles = FALSE
 
 //RIGHT LEGS
 /datum/augment_item/limb/r_leg
 	slot = AUGMENT_SLOT_R_LEG
 
 /datum/augment_item/limb/r_leg/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/r_leg/robot/surplus
+	name = "Prosthetic right leg"
+	path = /obj/item/bodypart/leg/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_leg/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/r_leg/robot/weak
+	name = "Cyborg right leg"
+	path = /obj/item/bodypart/leg/right/robot/weak
+
+/datum/augment_item/limb/r_leg/plasmaman
+	name = "Plasmaman right leg"
+	path = /obj/item/bodypart/leg/right/plasmaman
+	uses_robotic_styles = FALSE
+
+/datum/augment_item/limb/r_leg/self_destruct
+	name = "No Right Leg"
+	path = /obj/item/bodypart/leg/right/self_destruct
+	cost = -3
+	uses_robotic_styles = FALSE

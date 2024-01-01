@@ -2,7 +2,7 @@
 /obj/item/watertank
 	name = "backpack water tank"
 	desc = "A S.U.N.S.H.I.N.E. brand watertank backpack with nozzle to water plants."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "waterbackpack"
 	inhand_icon_state = "waterbackpack"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
@@ -12,17 +12,21 @@
 	slowdown = 1
 	actions_types = list(/datum/action/item_action/toggle_mister)
 	max_integrity = 200
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 30)
+	armor_type = /datum/armor/item_watertank
 	resistance_flags = FIRE_PROOF
 
 	var/obj/item/noz
 	var/volume = 500
 
+/datum/armor/item_watertank
+	fire = 100
+	acid = 30
+
 /obj/item/watertank/Initialize(mapload)
 	. = ..()
 	create_reagents(volume, OPENCONTAINER)
 	noz = make_noz()
-
+	RegisterSignal(noz, COMSIG_MOVABLE_MOVED, PROC_REF(noz_move))
 
 /obj/item/watertank/Destroy()
 	QDEL_NULL(noz)
@@ -33,7 +37,7 @@
 	toggle_mister(user)
 
 /obj/item/watertank/item_action_slot_check(slot, mob/user)
-	if(slot == user.getBackSlot())
+	if(slot & user.getBackSlot())
 		return 1
 
 /obj/item/watertank/proc/toggle_mister(mob/living/user)
@@ -47,6 +51,7 @@
 
 	if(QDELETED(noz))
 		noz = make_noz()
+		RegisterSignal(noz, COMSIG_MOVABLE_MOVED, PROC_REF(noz_move))
 	if(noz in src)
 		//Detach the nozzle into the user's hands
 		if(!user.put_in_hands(noz))
@@ -64,9 +69,15 @@
 /obj/item/watertank/proc/make_noz()
 	return new /obj/item/reagent_containers/spray/mister(src)
 
+/obj/item/watertank/proc/noz_move(atom/movable/mover, atom/oldloc, direction)
+	if(mover.loc == src || mover.loc == loc)
+		return
+	balloon_alert(loc, "nozzle snaps back")
+	mover.forceMove(src)
+
 /obj/item/watertank/equipped(mob/user, slot)
 	..()
-	if(slot != ITEM_SLOT_BACK)
+	if(!(slot & ITEM_SLOT_BACK))
 		remove_noz()
 
 /obj/item/watertank/proc/remove_noz()
@@ -89,10 +100,10 @@
 		M.putItemFromInventoryInHandIfPossible(src, H.held_index)
 	return ..()
 
-/obj/item/watertank/attackby(obj/item/W, mob/user, params)
-	if(W == noz)
+/obj/item/watertank/attackby(obj/item/attacking_item, mob/user, params)
+	if(attacking_item == noz)
 		remove_noz()
-		return 1
+		return TRUE
 	else
 		return ..()
 
@@ -107,7 +118,7 @@
 /obj/item/reagent_containers/spray/mister
 	name = "water mister"
 	desc = "A mister nozzle attached to a water tank."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "mister"
 	inhand_icon_state = "mister"
 	lefthand_file = 'icons/mob/inhands/equipment/mister_lefthand.dmi'
@@ -120,26 +131,16 @@
 	item_flags = NOBLUDGEON | ABSTRACT  // don't put in storage
 	slot_flags = NONE
 
-	var/obj/item/watertank/tank
-
 /obj/item/reagent_containers/spray/mister/Initialize(mapload)
 	. = ..()
-	tank = loc
-	if(!istype(tank))
+	if(!loc?.reagents)
 		return INITIALIZE_HINT_QDEL
-	reagents = tank.reagents //This mister is really just a proxy for the tank's reagents
-
-/obj/item/reagent_containers/spray/mister/doMove(atom/destination)
-	if(destination && (destination != tank.loc || !ismob(destination)))
-		if (loc != tank)
-			to_chat(tank.loc, span_notice("The mister snaps back onto the watertank."))
-		destination = tank
-	..()
+	reagents = loc.reagents //This mister is really just a proxy for the tank's reagents
 
 /obj/item/reagent_containers/spray/mister/afterattack(obj/target, mob/user, proximity)
 	if(target.loc == loc) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
 		return
-	..()
+	return ..()
 
 //Janitor tank
 /obj/item/watertank/janitor
@@ -147,7 +148,7 @@
 	desc = "A janitorial cleaner backpack with nozzle to clean blood and graffiti."
 	icon_state = "waterbackpackjani"
 	inhand_icon_state = "waterbackpackjani"
-	custom_price = PAYCHECK_EASY * 5
+	custom_price = PAYCHECK_CREW * 5
 
 /obj/item/watertank/janitor/Initialize(mapload)
 	. = ..()
@@ -156,7 +157,7 @@
 /obj/item/reagent_containers/spray/mister/janitor
 	name = "janitor spray nozzle"
 	desc = "A janitorial spray nozzle attached to a watertank, designed to clean up large messes."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "misterjani"
 	inhand_icon_state = "misterjani"
 	lefthand_file = 'icons/mob/inhands/equipment/mister_lefthand.dmi'
@@ -175,19 +176,20 @@
 /obj/item/watertank/pepperspray
 	name = "ANTI-TIDER-2500 suppression backpack"
 	desc = "The ultimate crowd-control device; this tool allows the user to quickly and efficiently pacify groups of hostile targets."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "pepperbackpacksec"
 	inhand_icon_state = "pepperbackpacksec"
-	custom_price = PAYCHECK_MEDIUM * 2
+	custom_price = PAYCHECK_CREW * 2
+	volume = 1000
 
 /obj/item/watertank/pepperspray/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 500)
+	reagents.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 1000)
 
 /obj/item/reagent_containers/spray/mister/pepperspray
 	name = "security spray nozzle"
 	desc = "A pacifying spray nozzle attached to a pepperspray tank, designed to silence perps."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "mistersec"
 	inhand_icon_state = "mistersec"
 	lefthand_file = 'icons/mob/inhands/equipment/mister_lefthand.dmi'
@@ -203,11 +205,6 @@
 	to_chat(user, span_notice("You [amount_per_transfer_from_this == 10 ? "remove" : "affix"] the nozzle. You'll now use [amount_per_transfer_from_this] units per spray."))
 
 //ATMOS FIRE FIGHTING BACKPACK
-
-#define EXTINGUISHER 0
-#define RESIN_LAUNCHER 1
-#define RESIN_FOAM 2
-
 /obj/item/watertank/atmos
 	name = "backpack firefighter tank"
 	desc = "A refrigerated and pressurized backpack tank with extinguisher nozzle, intended to fight fires. Swaps between extinguisher, resin launcher and a smaller scale resin foamer."
@@ -234,7 +231,7 @@
 /obj/item/extinguisher/mini/nozzle
 	name = "extinguisher nozzle"
 	desc = "A heavy duty nozzle attached to a firefighter's backpack tank."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "atmos_nozzle"
 	inhand_icon_state = "nozzleatmos"
 	lefthand_file = 'icons/mob/inhands/equipment/mister_lefthand.dmi'
@@ -248,7 +245,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = ABSTRACT  // don't put in storage
 	chem = null //holds no chems of its own, it takes from the tank.
-	var/obj/item/watertank/tank
+	var/obj/item/tank
 	var/nozzle_mode = 0
 	var/metal_synthesis_cooldown = 0
 	COOLDOWN_DECLARE(resin_cooldown)
@@ -256,10 +253,10 @@
 /obj/item/extinguisher/mini/nozzle/Initialize(mapload)
 	. = ..()
 	tank = loc
-	if (!istype(tank))
+	if (!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents
-	max_water = tank.volume
+	max_water = tank.reagents.maximum_volume
 
 
 /obj/item/extinguisher/mini/nozzle/Destroy()
@@ -267,30 +264,26 @@
 	tank = null
 	return ..()
 
-
-/obj/item/extinguisher/mini/nozzle/doMove(atom/destination)
-	if(destination && (destination != tank.loc || !ismob(destination)))
-		if(loc != tank)
-			to_chat(tank.loc, span_notice("The nozzle snaps back onto the tank."))
-		destination = tank
-	..()
-
 /obj/item/extinguisher/mini/nozzle/attack_self(mob/user)
+	var/uses_pack = istype(tank, /obj/item/watertank/atmos)
 	switch(nozzle_mode)
 		if(EXTINGUISHER)
 			nozzle_mode = RESIN_LAUNCHER
-			tank.icon_state = "waterbackpackatmos_1"
-			to_chat(user, span_notice("Swapped to resin launcher."))
+			if(uses_pack)
+				tank.icon_state = "waterbackpackatmos_1"
+			balloon_alert(user, "switched to resin launcher")
 			return
 		if(RESIN_LAUNCHER)
 			nozzle_mode = RESIN_FOAM
-			tank.icon_state = "waterbackpackatmos_2"
-			to_chat(user, span_notice("Swapped to resin foamer."))
+			if(uses_pack)
+				tank.icon_state = "waterbackpackatmos_2"
+			balloon_alert(user, "switched to resin foam")
 			return
 		if(RESIN_FOAM)
 			nozzle_mode = EXTINGUISHER
-			tank.icon_state = "waterbackpackatmos_0"
-			to_chat(user, span_notice("Swapped to water extinguisher."))
+			if(uses_pack)
+				tank.icon_state = "waterbackpackatmos_0"
+			balloon_alert(user, "switched to fire extinguisher")
 			return
 	return
 
@@ -298,49 +291,49 @@
 	if(AttemptRefill(target, user))
 		return
 	if(nozzle_mode == EXTINGUISHER)
-		..()
-		return
+		return ..()
 	var/Adj = user.Adjacent(target)
 	if(nozzle_mode == RESIN_LAUNCHER)
 		if(Adj)
 			return //Safety check so you don't blast yourself trying to refill your tank
 		var/datum/reagents/R = reagents
 		if(R.total_volume < 100)
-			to_chat(user, span_warning("You need at least 100 units of water to use the resin launcher!"))
+			balloon_alert(user, "not enough water!")
 			return
 		if(!COOLDOWN_FINISHED(src, resin_cooldown))
-			to_chat(user, span_warning("Resin launcher is still recharging..."))
+			balloon_alert(user, "still recharging!")
 			return
 		COOLDOWN_START(src, resin_cooldown, 10 SECONDS)
 		R.remove_any(100)
 		var/obj/effect/resin_container/resin = new (get_turf(src))
-		log_game("[key_name(user)] used Resin Launcher at [AREACOORD(user)].")
+		user.log_message("used Resin Launcher", LOG_GAME)
 		playsound(src,'sound/items/syringeproj.ogg',40,TRUE)
 		var/delay = 2
 		var/datum/move_loop/loop = SSmove_manager.move_towards(resin, target, delay, timeout = delay * 5, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
-		RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, .proc/resin_stop_check)
-		RegisterSignal(loop, COMSIG_PARENT_QDELETING, .proc/resin_landed)
+		RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(resin_stop_check))
+		RegisterSignal(loop, COMSIG_QDELETING, PROC_REF(resin_landed))
 		return
 
 	if(nozzle_mode == RESIN_FOAM)
-		if(!Adj|| !isturf(target))
+		if(!Adj || !isturf(target))
+			balloon_alert(user, "too far!")
 			return
 		for(var/S in target)
-			if(istype(S, /obj/effect/particle_effect/foam/metal/resin) || istype(S, /obj/structure/foamedmetal/resin))
-				to_chat(user, span_warning("There's already resin here!"))
+			if(istype(S, /obj/effect/particle_effect/fluid/foam/metal/resin) || istype(S, /obj/structure/foamedmetal/resin))
+				balloon_alert(user, "already has resin!")
 				return
 		if(metal_synthesis_cooldown < 5)
-			var/obj/effect/particle_effect/foam/metal/resin/F = new (get_turf(target))
-			F.amount = 0
+			var/obj/effect/particle_effect/fluid/foam/metal/resin/foam = new (get_turf(target))
+			foam.group.target_size = 0
 			metal_synthesis_cooldown++
-			addtimer(CALLBACK(src, .proc/reduce_metal_synth_cooldown), 10 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(reduce_metal_synth_cooldown)), 10 SECONDS)
 		else
-			to_chat(user, span_warning("Resin foam mix is still being synthesized..."))
+			balloon_alert(user, "still being synthesized!")
 			return
 
-/obj/item/extinguisher/mini/nozzle/proc/resin_stop_check(datum/move_loop/source, succeeded)
+/obj/item/extinguisher/mini/nozzle/proc/resin_stop_check(datum/move_loop/source, result)
 	SIGNAL_HANDLER
-	if(succeeded)
+	if(result == MOVELOOP_SUCCESS)
 		return
 	resin_landed(source)
 	qdel(source)
@@ -365,12 +358,14 @@
 	anchored = TRUE
 
 /obj/effect/resin_container/proc/Smoke()
-	var/obj/effect/particle_effect/foam/metal/resin/S = new /obj/effect/particle_effect/foam/metal/resin(get_turf(loc))
-	S.amount = 4
+	var/datum/effect_system/fluid_spread/foam/metal/resin/foaming = new
+	foaming.set_up(4, holder = src, location = loc)
+	foaming.start()
 	playsound(src,'sound/effects/bamf.ogg',100,TRUE)
 	qdel(src)
 
-/obj/effect/resin_container/newtonian_move() // Please don't spacedrift thanks
+// Please don't spacedrift thanks
+/obj/effect/resin_container/newtonian_move(direction, instant = FALSE, start_delay = 0)
 	return TRUE
 
 #undef EXTINGUISHER
@@ -380,7 +375,7 @@
 /obj/item/reagent_containers/chemtank
 	name = "backpack chemical injector"
 	desc = "A chemical autoinjector that can be carried on your back."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
+	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "waterbackpackchem"
 	inhand_icon_state = "waterbackpackchem"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
@@ -406,7 +401,7 @@
 	toggle_injection()
 
 /obj/item/reagent_containers/chemtank/item_action_slot_check(slot, mob/user)
-	if(slot == ITEM_SLOT_BACK)
+	if(slot & ITEM_SLOT_BACK)
 		return 1
 
 /obj/item/reagent_containers/chemtank/proc/toggle_injection()
@@ -428,7 +423,7 @@
 	if(isinhands || !reagents.total_volume)
 		return
 
-	var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "backpackmob-10")
+	var/mutable_appearance/filling = mutable_appearance('icons/obj/medical/reagent_fillings.dmi', "backpackmob-10")
 	var/percent = round((reagents.total_volume / volume) * 100)
 	switch(percent)
 		if(0 to 15)
@@ -453,7 +448,7 @@
 	if(ismob(loc))
 		to_chat(loc, span_notice("[src] turns off."))
 
-/obj/item/reagent_containers/chemtank/process(delta_time)
+/obj/item/reagent_containers/chemtank/process(seconds_per_tick)
 	if(!ishuman(loc))
 		turn_off()
 		return
@@ -465,42 +460,11 @@
 		turn_off()
 		return
 
-	var/inj_am = injection_amount * delta_time
+	var/inj_am = injection_amount * seconds_per_tick
 	var/used_amount = inj_am / usage_ratio
-	reagents.trans_to(user, used_amount, multiplier=usage_ratio, methods = INJECT)
+	reagents.trans_to(user, used_amount, usage_ratio, methods = INJECT)
 	update_appearance()
-	user.update_inv_back() //for overlays update
+	user.update_worn_back() //for overlays update
 
-//Operator backpack spray
-/obj/item/watertank/op
-	name = "backpack water tank"
-	desc = "A New Russian backpack spray for systematic cleansing of carbon lifeforms."
-	icon_state = "waterbackpackop"
-	inhand_icon_state = "waterbackpackop"
-	w_class = WEIGHT_CLASS_NORMAL
-	volume = 2000
-	slowdown = 0
-
-/obj/item/watertank/op/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent(/datum/reagent/toxin/mutagen,350)
-	reagents.add_reagent(/datum/reagent/napalm,125)
-	reagents.add_reagent(/datum/reagent/fuel,125)
-	reagents.add_reagent(/datum/reagent/clf3,300)
-	reagents.add_reagent(/datum/reagent/cryptobiolin,350)
-	reagents.add_reagent(/datum/reagent/toxin/plasma,250)
-	reagents.add_reagent(/datum/reagent/consumable/condensedcapsaicin,500)
-
-/obj/item/reagent_containers/spray/mister/op
-	desc = "A mister nozzle attached to several extended water tanks. It suspiciously has a compressor in the system and is labelled entirely in New Cyrillic."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
-	icon_state = "misterop"
-	inhand_icon_state = "misterop"
-	lefthand_file = 'icons/mob/inhands/equipment/mister_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/mister_righthand.dmi'
-	w_class = WEIGHT_CLASS_BULKY
-	amount_per_transfer_from_this = 100
-	possible_transfer_amounts = list(75,100,150)
-
-/obj/item/watertank/op/make_noz()
-	return new /obj/item/reagent_containers/spray/mister/op(src)
+/datum/action/item_action/activate_injector
+	name = "Activate Injector"

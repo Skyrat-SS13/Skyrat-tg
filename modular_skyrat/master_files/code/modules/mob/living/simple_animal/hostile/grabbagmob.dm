@@ -1,60 +1,55 @@
-//Syndicate
-/mob/living/simple_animal/hostile/syndicate/civilian/scientist
-	icon_state = "syndiscientist"
-	icon_living = "syndiscientist"
-	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
-	name = "Syndicate Scientist"
+// Syndicate
 
-/mob/living/simple_animal/hostile/syndicate/melee/anthro
+/mob/living/basic/trooper/syndicate/melee/anthro
 	name = "Syndicate Shanker"
 	desc = "An anthromorphic red panda member of the Syndicate, wielding a knife."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndiredpan"
 	icon_living = "syndiredpan"
 
-/mob/living/simple_animal/hostile/syndicate/melee/sword/anthro
+/mob/living/basic/trooper/syndicate/melee/sword/anthro
 	name = "Syndicate Sword Beast"
 	desc = "An anthromorphic fennec member of the Syndicate, wielding an energy sword and shield."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndifennec"
 	icon_living = "syndifennec"
 
-/mob/living/simple_animal/hostile/syndicate/ranged/anthro
+/mob/living/basic/trooper/syndicate/ranged/anthro
 	name = "Syndicate Pistoleer"
 	desc = "An anthromorphic member of the Syndicate, wielding a pistol."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndisquirrel"
 	icon_living = "syndisquirrel"
 
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/anthro
+/mob/living/basic/trooper/syndicate/ranged/smg/anthro
 	name = "Syndicate Rapid Gunnder"
 	desc = "A moth-person member of the Syndicate, wielding an SMG."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndimoth"
 	icon_living = "syndimoth"
 
-/mob/living/simple_animal/hostile/syndicate/melee/space/anthro/lizard
+/mob/living/basic/trooper/syndicate/melee/space/anthro/lizard
 	name = "Syndicate Commando Lizard"
 	desc = "A reptilian member of the Syndicate!"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndilizard"
 	icon_living = "syndilizard"
 
-/mob/living/simple_animal/hostile/syndicate/ranged/space/anthro/cat
+/mob/living/basic/trooper/syndicate/ranged/space/anthro/cat
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndicat"
 	icon_living = "syndicat"
 	name = "Syndicate Commando Feline"
 	desc = "An anthromorphic feline member of the Syndicate."
 
-/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper/anthro/fox
+/mob/living/basic/trooper/syndicate/ranged/shotgun/space/stormtrooper/anthro/fox
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndifox"
 	icon_living = "syndifox"
 	name = "Syndicate Stormtrooper Fox"
 	desc = "An anthromorphic fox member of the Syndicate."
 
-//Cult
+// Cult
 /mob/living/simple_animal/hostile/cult
 	name = "Blood Cultist"
 	desc = "A follower of the Blood Mother."
@@ -80,7 +75,7 @@
 	loot = list(/obj/effect/gibspawner/human)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list("hostile", "cultist")
+	faction = list(FACTION_HOSTILE, FACTION_CULT)
 	status_flags = CANPUSH
 	del_on_death = 1
 	rapid_melee = 2
@@ -197,7 +192,7 @@
 	turns_per_move = 5
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
-	faction = list("hostile", "cultist")
+	faction = list(FACTION_HOSTILE, FACTION_CULT)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	weather_immunities = list(TRAIT_LAVA_IMMUNE, TRAIT_ASHSTORM_IMMUNE)
 	minbodytemp = 0
@@ -220,7 +215,7 @@
 	projectiletype = /obj/projectile/magic/arcane_barrage
 	projectilesound = 'sound/weapons/barragespellhit.ogg'
 
-//Looters
+// Looters
 /mob/living/simple_animal/hostile/looter
 	name = "Looter"
 	desc = "One of the many random looters or bandits of the frontiers. This one is carrying a pipe."
@@ -241,7 +236,7 @@
 	unsuitable_atmos_damage = 15
 	check_friendly_fire = 1
 	dodging = TRUE
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	rapid_melee = 2
 	del_on_death = 1
 
@@ -289,7 +284,7 @@
 	casingtype = /obj/item/ammo_casing/shotgun/buckshot
 	loot = list(/obj/effect/spawner/random/maintenance/five)
 	dodging = FALSE
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	projectilesound = 'sound/weapons/gun/shotgun/shot.ogg'
 
 /mob/living/simple_animal/hostile/looter/ranged/space
@@ -317,7 +312,7 @@
 	loot = list(/obj/effect/spawner/random/maintenance/five)
 	projectiletype = /obj/projectile/beam/laser
 
-//Damaged Borgs
+// Damaged Borgs
 
 /mob/living/simple_animal/hostile/evilborg
 	name = "Malfunctioning Cyborg"
@@ -329,7 +324,6 @@
 	mob_biotypes = MOB_ROBOTIC
 	health = 75
 	maxHealth = 75
-	healable = 0
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	attack_verb_continuous = "claws"
@@ -338,7 +332,7 @@
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
 	projectiletype = /obj/projectile/hivebotbullet
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	check_friendly_fire = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -443,7 +437,7 @@
 	name = "Corrupt Hound"
 	desc = "A canine-borg, hacked or malfunctioning. This one is large, imposing, and can pack a big punch."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs64x32.dmi'
-	icon_state = "evilbotelite" //ported from VORE
+	icon_state = "evilbotelite" // ported from VORE
 	icon_living = "evilbotelite"
 	health = 130
 	maxHealth = 130
@@ -484,7 +478,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/genhit2.ogg'
 
-//Beasts
+// Beasts
 
 /mob/living/simple_animal/hostile/bigcrab
 	name = "giant crab"
@@ -496,7 +490,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	speak_chance = 0
 	turns_per_move = 5
-	butcher_results = list(/obj/item/food/meat/rawcrab = 8, /obj/item/stack/sheet/bone = 4)
+	butcher_results = list(/obj/item/food/meat/slab/rawcrab = 8, /obj/item/stack/sheet/bone = 4)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -518,7 +512,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -553,7 +547,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -591,7 +585,7 @@
 	atmos_requirements = list("min_oxy" = 10, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile", "vines", "plants")
+	faction = list(FACTION_HOSTILE, "vines", "plants")
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -609,7 +603,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BUG
 	speak_chance = 0
 	turns_per_move = 5
-	loot = list(/obj/item/reagent_containers/glass/bottle/rezadone)
+	loot = list(/obj/item/reagent_containers/cup/bottle/rezadone)
 	response_help_continuous = "pokes"
 	response_help_simple = "poke"
 	response_disarm_continuous = "gently pushes aside"
@@ -630,7 +624,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 800
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -669,7 +663,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 800
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = NO_SPAWN
 
@@ -701,7 +695,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 900
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -772,79 +766,79 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
 /mob/living/simple_animal/hostile/engorge
-    name = "Talon Demon"
-    desc = "A demonic creature that moves relatively fast, but doesn't do a lot of damage."
-    icon = 'modular_skyrat/master_files/icons/mob/newmobs32x64.dmi'
-    icon_state = "engorgedemon"
-    icon_living = "engorgedemon"
-    icon_dead = "demondead"
-    mob_biotypes = MOB_SPIRIT
-    speak_chance = 0
-    turns_per_move = 5
-    butcher_results = list(/obj/item/stack/sheet/runed_metal/ten = 1)
-    response_help_continuous = "pets"
-    response_help_simple = "pet"
-    response_disarm_continuous = "gently pushes aside"
-    response_disarm_simple = "gently push aside"
-    emote_taunt = list("cackles manically")
-    taunt_chance = 30
-    speed = 0
-    maxHealth = 120
-    health = 120
-    harm_intent_damage = 8
-    obj_damage = 20
-    melee_damage_lower = 10
-    melee_damage_upper =10
-    attack_verb_continuous = "claws"
-    attack_verb_simple = "slice"
-    attack_sound = 'sound/weapons/bladeslice.ogg'
-    speak_emote = list("chitters")
-    atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-    minbodytemp = 0
-    maxbodytemp = 1500
-    faction = list("hostile")
-    pressure_resistance = 200
-    gold_core_spawnable = NO_SPAWN
+	name = "Talon Demon"
+	desc = "A demonic creature that moves relatively fast, but doesn't do a lot of damage."
+	icon = 'modular_skyrat/master_files/icons/mob/newmobs32x64.dmi'
+	icon_state = "engorgedemon"
+	icon_living = "engorgedemon"
+	icon_dead = "demondead"
+	mob_biotypes = MOB_SPIRIT
+	speak_chance = 0
+	turns_per_move = 5
+	butcher_results = list(/obj/item/stack/sheet/runed_metal/ten = 1)
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	emote_taunt = list("cackles manically")
+	taunt_chance = 30
+	speed = 0
+	maxHealth = 120
+	health = 120
+	harm_intent_damage = 8
+	obj_damage = 20
+	melee_damage_lower = 10
+	melee_damage_upper =10
+	attack_verb_continuous = "claws"
+	attack_verb_simple = "slice"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	speak_emote = list("chitters")
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = 1500
+	faction = list(FACTION_HOSTILE)
+	pressure_resistance = 200
+	gold_core_spawnable = NO_SPAWN
 
 /mob/living/simple_animal/hostile/devourdem
-    name = "Devour Lord"
-    desc = "This creature is terror itself, a manifestation of the raw hunger and avarice of mortals."
-    icon = 'modular_skyrat/master_files/icons/mob/newmobs32x64.dmi'
-    icon_state = "devourdemon"
-    icon_living = "devourdemon"
-    icon_dead = "demondead"
-    mob_biotypes = MOB_SPIRIT
-    speak_chance = 0
-    turns_per_move = 5
-    butcher_results = list(/obj/item/stack/sheet/runed_metal/ten = 1)
-    response_help_continuous = "pets"
-    response_help_simple = "pet"
-    response_disarm_continuous = "gently pushes aside"
-    response_disarm_simple = "gently push aside"
-    emote_taunt = list("lets out a low, but horrifying sound")
-    taunt_chance = 30
-    speed = 3
-    maxHealth = 250
-    health = 250
-    harm_intent_damage = 12
-    obj_damage = 40
-    melee_damage_lower = 25
-    melee_damage_upper =25
-    attack_verb_continuous = "slices"
-    attack_verb_simple = "slice"
-    attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
-    speak_emote = list("hums ominously")
-    atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-    minbodytemp = 0
-    maxbodytemp = 1500
-    faction = list("hostile")
-    pressure_resistance = 200
-    gold_core_spawnable = NO_SPAWN
+	name = "Devour Lord"
+	desc = "This creature is terror itself, a manifestation of the raw hunger and avarice of mortals."
+	icon = 'modular_skyrat/master_files/icons/mob/newmobs32x64.dmi'
+	icon_state = "devourdemon"
+	icon_living = "devourdemon"
+	icon_dead = "demondead"
+	mob_biotypes = MOB_SPIRIT
+	speak_chance = 0
+	turns_per_move = 5
+	butcher_results = list(/obj/item/stack/sheet/runed_metal/ten = 1)
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	emote_taunt = list("lets out a low, but horrifying sound")
+	taunt_chance = 30
+	speed = 3
+	maxHealth = 250
+	health = 250
+	harm_intent_damage = 12
+	obj_damage = 40
+	melee_damage_lower = 25
+	melee_damage_upper =25
+	attack_verb_continuous = "slices"
+	attack_verb_simple = "slice"
+	attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
+	speak_emote = list("hums ominously")
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = 1500
+	faction = list(FACTION_HOSTILE)
+	pressure_resistance = 200
+	gold_core_spawnable = NO_SPAWN
 
 // Vox Raiders
 
@@ -874,7 +868,7 @@
 	loot = list(/obj/effect/spawner/random/maintenance/three = 1)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 5, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	check_friendly_fire = 1
 	status_flags = CANPUSH
 	del_on_death = 1
@@ -889,13 +883,12 @@
 	icon_dead = "voxmeleedead"
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	loot = list(/obj/effect/spawner/random/medical/firstaid = 1)
+	loot = list(/obj/effect/spawner/random/medical/medkit = 1)
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
 	status_flags = 0
-	var/projectile_deflect_chance = 0
 
 /mob/living/simple_animal/hostile/vox/ranged
 	name = "Vox Gunman"

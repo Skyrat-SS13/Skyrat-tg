@@ -1,0 +1,12 @@
+
+# Whether or not we log game logs to the SQL database. Requires the SQL database to function, as well as our Skyrat-only table, `game_log`.
+#SQL_GAME_LOG
+
+# Whether or not we log game logs to files on the server when we're already logging them on the server, if SQL_GAME_LOG is enabled.
+FILE_GAME_LOG
+
+# The minimum amount of entries there should be in the list of game logs for a mass query to be sent to the database.
+# Depends on SQL_GAME_LOG being enabled, doesn't mean anything otherwise.
+# Setting this to a value that's too low risks to severely affect perceptible performance, due to a high amount of
+# sleeps being involved with running queries.
+SQL_GAME_LOG_MIN_BUNDLE_SIZE 100

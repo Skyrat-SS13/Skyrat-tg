@@ -17,14 +17,11 @@
 
 /obj/machinery/power/generator/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/simple_rotation)
 	find_circs()
 	connect_to_network()
 	SSair.start_processing_machine(src)
 	update_appearance()
-
-/obj/machinery/power/generator/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
 
 /obj/machinery/power/generator/Destroy()
 	kill_circs()
@@ -38,7 +35,7 @@
 
 	var/L = min(round(lastgenlev / 100000), 11)
 	if(L != 0)
-		. += mutable_appearance('icons/obj/power.dmi', "teg-op[L]")
+		. += mutable_appearance('icons/obj/machines/engine/other.dmi', "teg-op[L]")
 	if(hot_circ && cold_circ)
 		. += "teg-oc[lastcirc]"
 
@@ -209,7 +206,7 @@
 /obj/machinery/power/generator/screwdriver_act(mob/user, obj/item/I)
 	if(..())
 		return TRUE
-	panel_open = !panel_open
+	toggle_panel_open()
 	I.play_tool_sound(src)
 	to_chat(user, span_notice("You [panel_open?"open":"close"] the panel on [src]."))
 	return TRUE
@@ -217,6 +214,9 @@
 /obj/machinery/power/generator/crowbar_act(mob/user, obj/item/I)
 	default_deconstruction_crowbar(I)
 	return TRUE
+
+/obj/machinery/power/generator/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 /obj/machinery/power/generator/on_deconstruction()
 	kill_circs()
@@ -228,3 +228,5 @@
 	if(cold_circ)
 		cold_circ.generator = null
 		cold_circ = null
+
+#undef GENRATE

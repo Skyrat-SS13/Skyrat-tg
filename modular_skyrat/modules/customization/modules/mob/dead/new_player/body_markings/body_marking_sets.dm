@@ -4,7 +4,7 @@
 	///List of the body markings in this set
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_TAJARAN, SPECIES_VULP, SPECIES_AQUATIC, SPECIES_AKULA)
+	var/recommended_species = list(SPECIES_MAMMAL, SPECIES_TAJARAN, SPECIES_VULP, SPECIES_AQUATIC, SPECIES_AKULA)
 
 /datum/body_marking_set/none
 	name = "None"
@@ -195,6 +195,14 @@
 	name = "Plain"
 	body_marking_list = list("Plain")
 
+//AKULA MARKINGS
+/datum/body_marking_set/akula
+	recommended_species = list(SPECIES_AKULA)
+
+/datum/body_marking_set/akula/akula
+	name = "Akula"
+	body_marking_list = list("Akula", "Akula Highlight")
+
 //VOX MARKINGS
 /datum/body_marking_set/vox
 	recommended_species = list(SPECIES_VOX)
@@ -220,7 +228,7 @@
 	body_marking_list = list("Vox Talon", "Vox Heart Tattoo")
 
 /datum/body_marking_set/synthliz
-	recommended_species = list(SPECIES_SYNTHLIZ)
+	recommended_species = list(SPECIES_SYNTH)
 
 /datum/body_marking_set/synthliz/scutes
 	name = "Synth Scutes"

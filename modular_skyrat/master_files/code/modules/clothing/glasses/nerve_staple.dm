@@ -1,5 +1,5 @@
 /obj/item/clothing/glasses/nerve_staple
-	name = "nerve staple"
+	name = "\proper a nerve staple"
 	desc = "A horrific looking device that is stapled into your face"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "nerve_staple"
@@ -15,7 +15,7 @@
 
 /obj/item/clothing/glasses/nerve_staple/equipped(mob/user, slot)
 	. = ..()
-	if (slot == ITEM_SLOT_EYES)
+	if (slot & ITEM_SLOT_EYES)
 		ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
 	else
 		REMOVE_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)

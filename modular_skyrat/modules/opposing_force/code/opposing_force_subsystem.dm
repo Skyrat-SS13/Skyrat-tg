@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(opposing_force)
 	msg = "UNSUB: [LAZYLEN(unsubmitted_applications)] | SUB: [LAZYLEN(submitted_applications)] | APPR: [LAZYLEN(approved_applications)]"
 	return ..()
 
-/datum/controller/subsystem/opposing_force/Initialize(start_timeofday)
+/datum/controller/subsystem/opposing_force/Initialize()
 	for(var/datum/opposing_force_equipment/opfor_equipment as anything in subtypesof(/datum/opposing_force_equipment))
 		// Set up our categories so we can add items to them
 		if(initial(opfor_equipment.category))
@@ -48,7 +48,8 @@ SUBSYSTEM_DEF(opposing_force)
 				equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
 			// We don't have home :( add us to the other category.
 			equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] += spawned_opfor_equipment
-	return ..()
+	equipment_list = sort_list(equipment_list, GLOBAL_PROC_REF(cmp_num_string_asc))
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/opposing_force/proc/check_availability()
 	if(get_current_applications() >= max_objectives)
@@ -194,3 +195,9 @@ SUBSYSTEM_DEF(opposing_force)
 		returned_html += " - [opposing_force.build_html_panel_entry()]"
 
 	return returned_html.Join("<br>")
+
+/// Gives a mind the opfor action button, which calls the opfor verb when pressed
+/datum/controller/subsystem/opposing_force/proc/give_opfor_button(mob/living/carbon/human/player)
+	var/datum/action/opfor/info_button
+	info_button = new(src)
+	info_button.Grant(player)

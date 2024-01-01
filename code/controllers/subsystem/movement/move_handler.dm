@@ -52,8 +52,15 @@ SUBSYSTEM_DEF(move_manager)
 /datum/movement_packet
 	///Our parent atom
 	var/atom/movable/parent
-	///The move loop that's currently running
+	///The move loop that's currently running, excluding those that ignore priority.
 	var/datum/move_loop/running_loop
+	/**
+	 * Flags passed from the move loop before it calls move() and unset right after.
+	 * Allows for properties of a move loop to be easily checked by mechanics outside of it.
+	 * Having this a bitfield rather than a type var means we don't get screwed over
+	 * if the move loop gets deleted mid-move, FYI.
+	 */
+	var/processing_move_loop_flags = NONE
 	///Assoc list of subsystems -> loop datum. Only one datum is allowed per subsystem
 	var/list/existing_loops = list()
 
@@ -76,9 +83,13 @@ SUBSYSTEM_DEF(move_manager)
 ///Adds a loop to our parent. Returns the created loop if a success, null otherwise
 /datum/movement_packet/proc/add_loop(datum/controller/subsystem/movement/subsystem, datum/move_loop/loop_type, priority, flags, datum/extra_info)
 	var/datum/move_loop/existing_loop = existing_loops[subsystem]
+
 	if(existing_loop && existing_loop.priority > priority)
 		if(!(existing_loop.flags & MOVEMENT_LOOP_IGNORE_PRIORITY) && !(flags & MOVEMENT_LOOP_IGNORE_PRIORITY))
 			return //Give up
+
+	if(existing_loop?.compare_loops(arglist(args.Copy(2))))
+		return //it already exists stop trying to make the same moveloop
 
 	var/datum/move_loop/new_loop = new loop_type(src, subsystem, parent, priority, flags, extra_info) //Pass the mob to move and ourselves in via new
 	var/list/arguments = args.Copy(6) //Just send the args we've not already dealt with
@@ -110,9 +121,12 @@ SUBSYSTEM_DEF(move_manager)
 
 	var/datum/controller/subsystem/movement/current_subsystem = running_loop.controller
 
-	current_subsystem.remove_loop(running_loop)
-	contesting_subsystem.add_loop(contestant)
+	var/current_running_loop = running_loop
 	running_loop = contestant
+	current_subsystem.remove_loop(current_running_loop)
+	if(running_loop != contestant) // A signal registrant could have messed with things
+		return FALSE
+	contesting_subsystem.add_loop(contestant)
 	return TRUE
 
 ///Tries to figure out the current favorite loop to run. More complex then just deciding between two different loops, assumes no running loop currently exists
@@ -127,7 +141,7 @@ SUBSYSTEM_DEF(move_manager)
 		var/datum/move_loop/checking = existing_loops[owner]
 		if(checking.flags & MOVEMENT_LOOP_IGNORE_PRIORITY)
 			continue
-		if(favorite && favorite.priority < checking.priority)
+		if(favorite && favorite.priority > checking.priority)
 			continue
 		favorite = checking
 
@@ -141,8 +155,8 @@ SUBSYSTEM_DEF(move_manager)
 
 /datum/movement_packet/proc/remove_loop(datum/controller/subsystem/movement/remove_from, datum/move_loop/loop_to_remove)
 	if(loop_to_remove == running_loop)
-		remove_from.remove_loop(loop_to_remove)
 		running_loop = null
+		remove_from.remove_loop(loop_to_remove)
 	if(loop_to_remove.flags & MOVEMENT_LOOP_IGNORE_PRIORITY)
 		remove_from.remove_loop(loop_to_remove)
 	if(QDELETED(src))

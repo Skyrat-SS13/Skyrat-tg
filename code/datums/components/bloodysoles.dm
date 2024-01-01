@@ -7,7 +7,7 @@
 	var/last_blood_state = BLOOD_STATE_NOT_BLOODY
 
 	/// How much of each grubby type we have on our feet
-	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0, BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
 
 	/// The ITEM_SLOT_* slot the item is equipped on, if it is.
 	var/equipped_slot
@@ -26,9 +26,9 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/on_equip)
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/on_drop)
-	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
+	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
 
 /**
  * Unregisters from the wielder if necessary
@@ -44,7 +44,20 @@
  * Returns true if the parent item is obscured by something else that the wielder is wearing
  */
 /datum/component/bloodysoles/proc/is_obscured()
-	return wielder.check_obscured_slots(TRUE) & equipped_slot
+	return wielder.check_obscured_slots(TRUE) & equipped_slot || is_under_feet_covered()
+
+/**
+ * Returns true if the parent item is worn in the ITEM_SLOT_ICLOTHING slot and the
+ * wielder is wearing something on their shoes.
+ *
+ * Allows for jumpsuits to cover feet without getting all bloodied when their wearer
+ * is wearing shoes.
+ */
+/datum/component/bloodysoles/proc/is_under_feet_covered()
+	if(!(equipped_slot & ITEM_SLOT_ICLOTHING))
+		return FALSE
+
+	return !isnull(wielder.shoes)
 
 /**
  * Run to update the icon of the parent
@@ -53,25 +66,48 @@
 	var/obj/item/parent_item = parent
 	parent_item.update_slot_icon()
 
+
+/datum/component/bloodysoles/proc/reset_bloody_shoes()
+	bloody_shoes = list(BLOOD_STATE_HUMAN = 0, BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	on_changed_bloody_shoes(BLOOD_STATE_NOT_BLOODY)
+
+///lowers bloody_shoes[index] by adjust_by
+/datum/component/bloodysoles/proc/adjust_bloody_shoes(index, adjust_by)
+	bloody_shoes[index] = max(bloody_shoes[index] - adjust_by, 0)
+	on_changed_bloody_shoes()
+
+/datum/component/bloodysoles/proc/set_bloody_shoes(index, new_value)
+	bloody_shoes[index] = new_value
+	on_changed_bloody_shoes(index)
+
+///called whenever the value of bloody_soles changes
+/datum/component/bloodysoles/proc/on_changed_bloody_shoes(index)
+	if(index && index != last_blood_state)
+		last_blood_state = index
+	if(!wielder)
+		return
+	if(bloody_shoes[index] <= BLOOD_FOOTPRINTS_MIN * 2)//need twice that amount to make footprints
+		UnregisterSignal(wielder, COMSIG_MOVABLE_MOVED)
+	else
+		RegisterSignal(wielder, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), override = TRUE)
+
 /**
  * Run to equally share the blood between us and a decal
  */
 /datum/component/bloodysoles/proc/share_blood(obj/effect/decal/cleanable/pool)
-	last_blood_state = pool.blood_state
-
 	// Share the blood between our boots and the blood pool
-	var/total_bloodiness = pool.bloodiness + bloody_shoes[last_blood_state]
+	var/total_bloodiness = pool.bloodiness + bloody_shoes[pool.blood_state]
 
 	// We can however be limited by how much blood we can hold
 	var/new_our_bloodiness = min(BLOOD_ITEM_MAX, total_bloodiness / 2)
 
-	bloody_shoes[last_blood_state] = new_our_bloodiness
+	set_bloody_shoes(pool.blood_state, new_our_bloodiness)
 	pool.bloodiness = total_bloodiness - new_our_bloodiness // Give the pool the remaining blood incase we were limited
 
 	if(HAS_TRAIT(parent_atom, TRAIT_LIGHT_STEP)) //the character is agile enough to don't mess their clothing and hands just from one blood splatter at floor
 		return TRUE
 
-	parent_atom.add_blood_DNA(pool.return_blood_DNA())
+	parent_atom.add_blood_DNA(GET_ATOM_BLOOD_DNA(pool))
 	update_icon()
 
 /**
@@ -105,8 +141,9 @@
 
 	equipped_slot = slot
 	wielder = equipper
-	RegisterSignal(wielder, COMSIG_MOVABLE_MOVED, .proc/on_moved)
-	RegisterSignal(wielder, COMSIG_STEP_ON_BLOOD, .proc/on_step_blood)
+	if(bloody_shoes[last_blood_state] > BLOOD_FOOTPRINTS_MIN * 2)
+		RegisterSignal(wielder, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+	RegisterSignal(wielder, COMSIG_STEP_ON_BLOOD, PROC_REF(on_step_blood))
 
 /**
  * Called when the parent item has been dropped
@@ -147,7 +184,7 @@
 				oldLocFP.update_appearance()
 		else if(find_pool_by_blood_state(oldLocTurf))
 			// No footprints in the tile we left, but there was some other blood pool there. Add exit footprints on it
-			bloody_shoes[last_blood_state] -= half_our_blood
+			adjust_bloody_shoes(last_blood_state, half_our_blood)
 			update_icon()
 
 			oldLocFP = new(oldLocTurf)
@@ -156,7 +193,7 @@
 				oldLocFP.exited_dirs |= wielder.dir
 				add_parent_to_footprint(oldLocFP)
 				oldLocFP.bloodiness = half_our_blood
-				oldLocFP.add_blood_DNA(parent_atom.return_blood_DNA())
+				oldLocFP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
 				oldLocFP.update_appearance()
 
 			half_our_blood = bloody_shoes[last_blood_state] / 2
@@ -167,7 +204,7 @@
 
 	// Create new footprints
 	if(half_our_blood >= BLOOD_FOOTPRINTS_MIN)
-		bloody_shoes[last_blood_state] -= half_our_blood
+		adjust_bloody_shoes(last_blood_state, half_our_blood)
 		update_icon()
 
 		var/obj/effect/decal/cleanable/blood/footprints/FP = new(get_turf(parent_atom))
@@ -176,7 +213,7 @@
 			FP.entered_dirs |= wielder.dir
 			add_parent_to_footprint(FP)
 			FP.bloodiness = half_our_blood
-			FP.add_blood_DNA(parent_atom.return_blood_DNA())
+			FP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
 			FP.update_appearance()
 
 
@@ -213,8 +250,7 @@
 	if(!(clean_types & CLEAN_TYPE_BLOOD) || last_blood_state == BLOOD_STATE_NOT_BLOODY)
 		return NONE
 
-	bloody_shoes = list(BLOOD_STATE_HUMAN = 0, BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
-	last_blood_state = BLOOD_STATE_NOT_BLOODY
+	reset_bloody_shoes()
 	update_icon()
 	return COMPONENT_CLEANED
 
@@ -230,26 +266,24 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 	wielder = parent
+
 	if(!bloody_feet)
 		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_moved)
-	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, .proc/on_step_blood)
-	RegisterSignal(parent, COMSIG_CARBON_UNEQUIP_SHOECOVER, .proc/unequip_shoecover)
-	RegisterSignal(parent, COMSIG_CARBON_EQUIP_SHOECOVER, .proc/equip_shoecover)
+
+	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
+	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, PROC_REF(on_step_blood))
+	RegisterSignal(parent, COMSIG_CARBON_UNEQUIP_SHOECOVER, PROC_REF(unequip_shoecover))
+	RegisterSignal(parent, COMSIG_CARBON_EQUIP_SHOECOVER, PROC_REF(equip_shoecover))
 
 /datum/component/bloodysoles/feet/update_icon()
-	if(ishuman(wielder))
-		var/mob/living/carbon/human/human = wielder
-		fix_soles() //SKYRAT ADDITION - DIGI_BLOODSOLE
-		if(NOBLOODOVERLAY in human.dna.species.species_traits)
-			return
-		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
-			human.remove_overlay(SHOES_LAYER)
-			human.overlays_standing[SHOES_LAYER] = bloody_feet
-			human.apply_overlay(SHOES_LAYER)
-		else
-			human.update_inv_shoes()
+	if(!ishuman(wielder) || HAS_TRAIT(wielder, TRAIT_NO_BLOOD_OVERLAY))
+		return
+	if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
+		wielder.remove_overlay(SHOES_LAYER)
+		wielder.overlays_standing[SHOES_LAYER] = bloody_feet
+		wielder.apply_overlay(SHOES_LAYER)
+	else
+		wielder.update_worn_shoes()
 
 /datum/component/bloodysoles/feet/add_parent_to_footprint(obj/effect/decal/cleanable/blood/footprints/FP)
 	if(!ishuman(wielder))
@@ -261,7 +295,7 @@
 		var/obj/item/bodypart/affecting = X
 		if(affecting.body_part == LEG_RIGHT || affecting.body_part == LEG_LEFT)
 			if(!affecting.bodypart_disabled)
-				FP.species_types |= affecting.species_id
+				FP.species_types |= affecting.limb_id
 				break
 
 
@@ -281,16 +315,6 @@
 		return
 
 	..()
-
-//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
-/datum/component/bloodysoles/feet/proc/fix_soles()
-	var/mob/living/carbon/H = parent
-	if (DIGITIGRADE in H.dna.species.species_traits)
-		if (bloody_feet.icon_state != "shoeblood_digi")
-			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/blood.dmi', "shoeblood_digi", SHOES_LAYER)
-	else if (bloody_feet.icon_state != "shoeblood")
-		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-//SKYRAT EDIT ADDITION END
 
 /datum/component/bloodysoles/feet/proc/unequip_shoecover(datum/source)
 	SIGNAL_HANDLER

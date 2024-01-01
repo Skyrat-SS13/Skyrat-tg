@@ -1,36 +1,47 @@
 /obj/machinery/cell_charger
 	name = "cell charger"
 	desc = "It charges power cells."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/machines/cell_charger.dmi'
 	icon_state = "ccharger"
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 5
-	active_power_usage = 60
 	power_channel = AREA_USAGE_EQUIP
 	circuit = /obj/item/circuitboard/machine/cell_charger
 	pass_flags = PASSTABLE
 	var/obj/item/stock_parts/cell/charging = null
 	var/charge_rate = 250
 
+/* OVERWRITTEN IN modular_skyrat\modules\aesthetics\cells\cell.dm
 /obj/machinery/cell_charger/update_overlays()
 	. = ..()
 
 	if(!charging)
 		return
 
-	//. += image(charging.icon, charging.icon_state) SKYRAT EDIT REMOVAL
-	. += "ccharger-on"
 	if(!(machine_stat & (BROKEN|NOPOWER)))
 		var/newlevel = round(charging.percent() * 4 / 100)
 		. += "ccharger-o[newlevel]"
+	. += image(charging.icon, charging.icon_state)
+	if(charging.grown_battery)
+		. += mutable_appearance('icons/obj/machines/cell_charger.dmi', "grown_wires")
+	. += "ccharger-[charging.connector_type]-on"
+	if((charging.charge > 0.01) && charging.charge_light_type)
+		. += mutable_appearance('icons/obj/machines/cell_charger.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
+*/
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
-	. += "There's [charging ? "a" : "no"] cell in the charger."
+	. += "There's [charging ? "\a [charging]" : "no cell"] in the charger."
 	if(charging)
 		. += "Current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Charging power: <b>[charge_rate]W</b>.")
+
+/obj/machinery/cell_charger/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(charging)
+		return FALSE
+	if(default_unfasten_wrench(user, tool))
+		update_appearance()
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell) && !panel_open)
@@ -66,8 +77,6 @@
 		if(!charging && default_deconstruction_screwdriver(user, icon_state, icon_state, W))
 			return
 		if(default_deconstruction_crowbar(W))
-			return
-		if(!charging && default_unfasten_wrench(user, W))
 			return
 		return ..()
 
@@ -124,17 +133,18 @@
 		charging.emp_act(severity)
 
 /obj/machinery/cell_charger/RefreshParts()
+	. = ..()
 	charge_rate = 250
-	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		charge_rate *= C.rating
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		charge_rate *= capacitor.tier
 
-/obj/machinery/cell_charger/process(delta_time)
+/obj/machinery/cell_charger/process(seconds_per_tick)
 	if(!charging || !anchored || (machine_stat & (BROKEN|NOPOWER)))
 		return
 	if(charging.percent() >= 100)
 		return
 
-	var/main_draw = use_power_from_net(charge_rate * delta_time, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
+	var/main_draw = use_power_from_net(charge_rate * seconds_per_tick, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
 	if(!main_draw)
 		return
 	charging.give(main_draw)

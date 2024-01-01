@@ -3,12 +3,7 @@ GLOBAL_LIST_INIT(tier1_reward, list(
 	/obj/item/stack/sheet/sinew = 1,
 	/obj/item/stack/sheet/animalhide/goliath_hide = 1,
 	/obj/item/stack/sheet/bone = 1,
-	/obj/item/organ/regenerative_core/legion = 1,
-	/obj/item/candle = 1,
-	/obj/item/trash/chips = 1,
-	/obj/item/trash/raisins = 1,
-	/obj/item/trash/cheesie = 1,
-	/obj/item/trash/candy = 1,
+	/obj/item/organ/internal/monster_core/regenerative_core/legion = 1,
 ))
 
 GLOBAL_LIST_INIT(tier2_reward, list(
@@ -35,7 +30,6 @@ GLOBAL_LIST_INIT(tech_reward, list(
 	/obj/item/megaphone = 1,
 	/obj/item/bodybag/bluespace = 1,
 	/obj/item/relic = 1,
-	/obj/item/disk/tech_disk/spaceloot = 1,
 	/obj/item/raw_anomaly_core/random = 1,
 	/obj/item/bag_of_holding_inert = 1,
 	/obj/item/construction/plumbing = 1,
@@ -47,12 +41,12 @@ GLOBAL_LIST_INIT(tech_reward, list(
 
 GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/spear/bonespear = 6,
-	/obj/item/gun/ballistic/tribalbow/ashen = 2,
-	/obj/item/ammo_casing/caseless/arrow/ash = 1,
+	/obj/item/gun/ballistic/bow/tribalbow/ashen = 2,
+	/obj/item/ammo_casing/arrow/ash = 1,
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,
-	/obj/item/shield/riot/roman = 1,
+	/obj/item/shield/roman = 1,
 	/obj/item/pneumatic_cannon = 1,
 	/obj/item/gun/syringe/rapidsyringe = 1,
 ))
@@ -81,7 +75,6 @@ GLOBAL_LIST_INIT(clothing_reward, list(
 GLOBAL_LIST_INIT(illegal_reward, list(
 	/obj/item/stack/telecrystal = 1,
 	/obj/item/storage/box/rndboards = 1,
-	/obj/item/disk/tech_disk/spaceloot = 6
 ))
 
 GLOBAL_LIST_INIT(plant_reward, list(
@@ -102,7 +95,7 @@ GLOBAL_LIST_INIT(animal_reward, list(
 	/obj/item/stack/sheet/sinew = 1,
 	/obj/item/stack/sheet/animalhide/goliath_hide = 1,
 	/obj/item/stack/sheet/bone = 1,
-	/obj/item/organ/regenerative_core/legion = 1,
+	/obj/item/organ/internal/monster_core/regenerative_core/legion = 1,
 ))
 
 GLOBAL_LIST_INIT(alien_reward, list(

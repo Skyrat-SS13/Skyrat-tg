@@ -1,243 +1,522 @@
 /datum/species/jelly
-	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD,HAIR,FACEHAIR)
-	default_mutant_bodyparts = list("tail" = "None", "snout" = "None", "ears" = "None", "taur" = "None", "wings" = "None", "legs" = "Normal Legs", "horns" = "None",  "spines" = "None", "frills" = "None")
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
-	learnable_languages = list(/datum/language/common, /datum/language/slime)
-	payday_modifier = 0.75
+	facial_hair_alpha = 160
+
+/datum/species/jelly/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"snout" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"taur" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"horns" = list("None", FALSE),
+		"spines" = list("None", FALSE),
+		"frills" = list("None", FALSE),
+	)
+
+/datum/species/jelly/get_species_description()
+	return placeholder_description
+
+/datum/species/jelly/get_species_lore()
+	return list(placeholder_lore)
 
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
 	id = SPECIES_SLIMESTART
-	limbs_id = SPECIES_SLIMEPERSON
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
-	default_color = "#00FFFF"
-	say_mod = "says"
+	examine_limb_id = SPECIES_SLIMEPERSON
 	coldmod = 3
 	heatmod = 1
-	burnmod = 1
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
+	mutanteyes = /obj/item/organ/internal/eyes
+	mutanttongue = /obj/item/organ/internal/tongue/jelly
 
-/datum/action/innate/slime_change
+	bodypart_overrides = list( //Overriding jelly bodyparts
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/slime/roundstart,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime/roundstart,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime/roundstart,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/slime/roundstart,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime/roundstart,
+	)
+
+/datum/species/jelly/roundstartslime/create_pref_unique_perks()
+	var/list/perk_descriptions = list()
+
+	perk_descriptions += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = "biohazard",
+		SPECIES_PERK_NAME = "Squishy Form",
+		SPECIES_PERK_DESC = "Being made of slime, you have the ability to alter your physical form to be whatever you choose! You may grow ears, change your hair, and even become a taur-like if you so choose, at the press of a button and the snap of a finger!"
+	))
+
+	return perk_descriptions
+
+/**
+ * Alter Form is the ability of slimes to edit many of their character attributes at will
+ * This covers most thing about their character, from body size or colour, to adding new wings, tails, ears, etc, to changing the presence of their genitalia
+ * There are some balance concerns with some of these (looking at you, body size), but nobody has abused it Yet:tm:, and it would be exceedingly obvious if they did
+ */
+/datum/action/innate/alter_form
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "alter_form"
-	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
+	/// Do you need to be a slime-person to use this ability?
 	var/slime_restricted = TRUE
+	///Is the person using this ability oversized?
+	var/oversized_user = FALSE
+	///What text is shown to others when the person uses the ability?
+	var/shapeshift_text = "gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."
+	///List containing all of the avalible parts
+	var/static/list/available_choices
 
-/datum/action/innate/slime_change/admin
+/datum/action/innate/alter_form/New(Target)
+	. = ..()
+	if(length(available_choices))
+		return
+
+	available_choices = deep_copy_list(GLOB.sprite_accessories)
+	for(var/parts_list in available_choices)
+		for(var/parts in available_choices[parts_list])
+			var/datum/sprite_accessory/part = available_choices[parts_list][parts]
+			if(part.locked)
+				available_choices[parts_list] -= parts
+
+/datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
 
-/datum/action/innate/slime_change/Activate()
-	var/mob/living/carbon/human/H = owner
-	if(slime_restricted && !isjellyperson(H))
+/datum/action/innate/alter_form/Activate()
+	var/mob/living/carbon/human/alterer = owner
+	if(slime_restricted && !isjellyperson(alterer))
 		return
-	if(slime_restricted)
-		H.visible_message(span_notice("[owner] gains a look of \
-		concentration while standing perfectly still.\
-		 Their body seems to shift and starts getting more goo-like."),
-		span_notice("You focus intently on altering your body while \
-		standing perfectly still..."))
-	change_form()
+	alterer.visible_message(
+		span_notice("[owner] [shapeshift_text]"),
+		span_notice("You focus intently on altering your body while standing perfectly still...")
+	)
+	change_form(alterer)
 
-/datum/action/innate/slime_change/proc/change_form()
-	var/mob/living/carbon/human/H = owner
-	var/select_alteration = input(H, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Colors","Hair Style", "Facial Hair Style", "Mutant Body Parts", "Markings", "DNA Specifics", "Cancel")
-	if(!select_alteration || select_alteration == "Cancel" || QDELETED(H))
+/**
+ * Change form is the initial proc when using the alter form action
+ * It brings up a radial menu to allow you to pick what about your character it is that you want to edit
+ * Each of these radial menus should be kept from being too long where possible, really
+ */
+/datum/action/innate/alter_form/proc/change_form(mob/living/carbon/human/alterer)
+	var/selected_alteration = show_radial_menu(
+		alterer,
+		alterer,
+		list(
+			"Body Colours" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
+			"DNA" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "dna"),
+			"Hair" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
+			"Markings" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan"),
+		),
+		tooltips = TRUE,
+	)
+	if(!selected_alteration)
 		return
-	var/datum/dna/DNA = H.dna
-	switch(select_alteration)
-		if("Body Colors")
-			var/color_choice = input(H, "What color would you like to change?", "Form Alteration", "cancel") in list("Primary", "Secondary", "Tertiary", "All", "Cancel")
-			if(!color_choice || color_choice == "Cancel" || QDELETED(H))
-				return
-			var/color_target
-			switch(color_choice)
-				if("Primary", "All")
-					color_target = "mcolor"
-				if("Secondary")
-					color_target = "mcolor2"
-				if("Tertiary")
-					color_target = "mcolor3"
-			var/new_mutantcolor = input(H, "Choose your character's new [lowertext(color_choice)] color:", "Form Alteration",DNA.features[color_target]) as color|null
-			if(!new_mutantcolor)
-				return
-			var/marking_reset = tgui_alert(H, "Would you like to reset your markings to match your new colors?", "", list("Yes", "No"))
-			var/mutantpart_reset = tgui_alert(H, "Would you like to reset your mutant body parts(not limbs) to match your new colors?", "", list("Yes", "No"))
-			if(color_choice == "All")
-				DNA.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
-				DNA.features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
-				DNA.features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
-				DNA.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
-				DNA.update_uf_block(DNA_MUTANT_COLOR_2_BLOCK)
-				DNA.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
-			else
-				DNA.features[color_target] = sanitize_hexcolor(new_mutantcolor)
-				switch(color_target)
-					if("mcolor")
-						DNA.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
-					if("mcolor2")
-						DNA.update_uf_block(DNA_MUTANT_COLOR_2_BLOCK)
-					if("mcolor3")
-						DNA.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
-			if(marking_reset && marking_reset == "Yes")
-				for(var/zone in DNA.species.body_markings)
-					for(var/key in DNA.species.body_markings[zone])
-						var/datum/body_marking/BD = GLOB.body_markings[key]
-						if(BD.always_color_customizable)
-							continue
-						DNA.species.body_markings[zone][key] = BD.get_default_color(DNA.features, DNA.species)
-				H.icon_render_key = "" //Currently the render key doesnt recognize the markings colors
-			if(mutantpart_reset && mutantpart_reset == "Yes")
-				H.mutant_renderkey = "" //Just in case
-				for(var/mutant_key in DNA.species.mutant_bodyparts)
-					var/mutant_list = DNA.species.mutant_bodyparts[mutant_key]
-					var/datum/sprite_accessory/SP = GLOB.sprite_accessories[mutant_key][mutant_list[MUTANT_INDEX_NAME]]
-					mutant_list[MUTANT_INDEX_COLOR_LIST] = SP.get_default_color(DNA.features, DNA.species)
-
-			H.update_body()
-			H.update_hair()
-		if("Hair Style")
-			var/new_style = input(owner, "Select a hair style", "Hair Alterations")  as null|anything in GLOB.hairstyles_list
-			if(new_style)
-				H.hairstyle = new_style
-				H.update_hair()
-		if("Facial Hair Style")
-			var/new_style = input(H, "Select a facial hair style", "Hair Alterations")  as null|anything in GLOB.facial_hairstyles_list
-			if(new_style)
-				H.facial_hairstyle = new_style
-				H.update_hair()
-		if("Mutant Body Parts")
-			var/list/key_list = DNA.mutant_bodyparts
-			var/chosen_key = input(H, "Select the part you want to alter", "Body Part Alterations")  as null|anything in key_list + "Cancel"
-			if(!chosen_key || chosen_key == "Cancel")
-				return
-			var/choice_list = GLOB.sprite_accessories[chosen_key]
-			var/chosen_name_key = input(H, "What do you want the part to become?", "Body Part Alterations")  as null|anything in choice_list + "Cancel"
-			if(!chosen_name_key || chosen_name_key == "Cancel")
-				return
-			var/datum/sprite_accessory/SA = GLOB.sprite_accessories[chosen_key][chosen_name_key]
-			H.mutant_renderkey = "" //Just in case
-			if(!SA.factual)
-				if(SA.organ_type)
-					var/obj/item/organ/path = SA.organ_type
-					var/slot = initial(path.slot)
-					var/obj/item/organ/got_organ = H.getorganslot(slot)
-					if(got_organ)
-						got_organ.Remove(H)
-						qdel(got_organ)
-				else
-					DNA.species.mutant_bodyparts -= chosen_key
-			else
-				if(SA.organ_type)
-					var/obj/item/organ/path = SA.organ_type
-					var/slot = initial(path.slot)
-					var/obj/item/organ/got_organ = H.getorganslot(slot)
-					if(got_organ)
-						got_organ.Remove(H)
-						qdel(got_organ)
-					path = new SA.organ_type
-					var/list/new_acc_list = list()
-					new_acc_list[MUTANT_INDEX_NAME] = SA.name
-					new_acc_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(DNA.features, DNA.species)
-					DNA.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
-					if(ROBOTIC_DNA_ORGANS in DNA.species.species_traits)
-						path.status = ORGAN_ROBOTIC
-						path.organ_flags |= ORGAN_SYNTHETIC
-					path.build_from_dna(DNA, chosen_key)
-					path.Insert(H, 0, FALSE)
-
-				else
-					var/list/new_acc_list = list()
-					new_acc_list[MUTANT_INDEX_NAME] = SA.name
-					new_acc_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(DNA.features, DNA.species)
-					DNA.species.mutant_bodyparts[chosen_key] = new_acc_list
-					DNA.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
-				DNA.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
-			if (chosen_key == "legs" && chosen_name_key != "Cancel")
-				if (chosen_name_key == "Digitigrade Legs" && !(DIGITIGRADE in DNA.species.species_traits))
-					DNA.species.species_traits += DIGITIGRADE
-				if (chosen_name_key == "Normal Legs" && (DIGITIGRADE in DNA.species.species_traits))
-					DNA.species.species_traits -= DIGITIGRADE
-				H.Digitigrade_Leg_Swap(chosen_name_key == "Normal Legs")
-				H.update_body()
-				H.update_inv_w_uniform()
-				H.update_inv_wear_suit()
-				H.update_inv_shoes()
-			H.update_mutant_bodyparts()
+	switch(selected_alteration)
+		if("Body Colours")
+			alter_colours(alterer)
+		if("DNA")
+			alter_dna(alterer)
+		if("Hair")
+			alter_hair(alterer)
 		if("Markings")
-			var/list/candidates = GLOB.body_marking_sets
-			var/chosen_name = input(H, "Select which set of markings would you like to change into", "Marking Alterations")  as null|anything in candidates + "Cancel"
-			if(!chosen_name || chosen_name == "Cancel")
+			alter_markings(alterer)
+
+/**
+ * Alter colours handles the changing of mutant colours
+ * This affects skin tone primarily, though has the option to change hair, markings, and mutant body parts to match
+ */
+/datum/action/innate/alter_form/proc/alter_colours(mob/living/carbon/human/alterer)
+	var/color_choice = show_radial_menu(
+		alterer,
+		alterer,
+		list(
+			"Primary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_red"),
+			"Secondary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_green"),
+			"Tertiary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_blue"),
+			"All" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
+		),
+		tooltips = TRUE,
+	)
+	if(!color_choice)
+		return
+	var/color_target
+	switch(color_choice)
+		if("Primary", "All")
+			color_target = "mcolor"
+		if("Secondary")
+			color_target = "mcolor2"
+		if("Tertiary")
+			color_target = "mcolor3"
+
+	var/new_mutant_colour = input(
+		alterer,
+		"Choose your character's new [color_choice = "All" ? "" : lowertext(color_choice)] color:",
+		"Form Alteration",
+		alterer.dna.features[color_target]
+	) as color|null
+	if(!new_mutant_colour)
+		return
+
+	var/marking_reset = tgui_alert(
+		alterer,
+		"Would you like to reset your markings to match your new colors?",
+		"Reset markings",
+		list("Yes", "No"),
+	)
+	var/mutant_part_reset = tgui_alert(
+		alterer,
+		"Would you like to reset your mutant body parts(not limbs) to match your new colors?",
+		"Reset mutant parts",
+		list("Yes", "No"),
+	)
+	var/hair_reset = tgui_alert(
+		alterer,
+		"Would you like to reset your hair to match your new colors?",
+		"Reset hair",
+		list("Hair", "Facial Hair", "Both", "None"),
+	)
+
+	if(color_choice == "All")
+		alterer.dna.features["mcolor"] = sanitize_hexcolor(new_mutant_colour)
+		alterer.dna.features["mcolor2"] = sanitize_hexcolor(new_mutant_colour)
+		alterer.dna.features["mcolor3"] = sanitize_hexcolor(new_mutant_colour)
+		alterer.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
+		alterer.dna.update_uf_block(DNA_MUTANT_COLOR_2_BLOCK)
+		alterer.dna.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
+	else
+		alterer.dna.features[color_target] = sanitize_hexcolor(new_mutant_colour)
+		switch(color_target)
+			if("mcolor")
+				alterer.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
+			if("mcolor2")
+				alterer.dna.update_uf_block(DNA_MUTANT_COLOR_2_BLOCK)
+			if("mcolor3")
+				alterer.dna.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
+
+	if(marking_reset == "Yes")
+		for(var/zone in alterer.dna.species.body_markings)
+			for(var/key in alterer.dna.species.body_markings[zone])
+				var/datum/body_marking/iterated_marking = GLOB.body_markings[key]
+				if(iterated_marking.always_color_customizable)
+					continue
+				alterer.dna.species.body_markings[zone][key] = iterated_marking.get_default_color(alterer.dna.features, alterer.dna.species)
+
+	if(mutant_part_reset == "Yes")
+		alterer.mutant_renderkey = "" //Just in case
+		for(var/mutant_key in alterer.dna.species.mutant_bodyparts)
+			var/mutant_list = alterer.dna.species.mutant_bodyparts[mutant_key]
+			var/datum/sprite_accessory/changed_accessory = GLOB.sprite_accessories[mutant_key][mutant_list[MUTANT_INDEX_NAME]]
+			mutant_list[MUTANT_INDEX_COLOR_LIST] = changed_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
+
+	if(hair_reset)
+		switch(hair_reset)
+			if("Hair")
+				alterer.hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.update_body_parts()
+			if("Facial Hair")
+				alterer.facial_hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.update_body_parts()
+			if("Both")
+				alterer.hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.facial_hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.update_body_parts()
+
+	alterer.update_body(is_creating = TRUE)
+
+/**
+ * Alter hair lets you adjust both the hair on your head as well as your facial hair
+ * You can adjust the style of either
+ */
+/datum/action/innate/alter_form/proc/alter_hair(mob/living/carbon/human/alterer)
+	var/target_hair = show_radial_menu(
+		alterer,
+		alterer,
+		list(
+			"Hair" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
+			"Facial Hair" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "straight_razor"),
+			"Hair Color" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan")
+		),
+		tooltips = TRUE,
+	)
+	if(!target_hair)
+		return
+	switch(target_hair)
+		if("Hair")
+			var/new_style = tgui_input_list(owner, "Select a hair style", "Hair Alterations", GLOB.hairstyles_list)
+			if(new_style)
+				alterer.set_hairstyle(new_style, update = TRUE)
+		if("Facial Hair")
+			var/new_style = tgui_input_list(alterer, "Select a facial hair style", "Hair Alterations", GLOB.facial_hairstyles_list)
+			if(new_style)
+				alterer.set_facial_hairstyle(new_style, update = TRUE)
+		if("Hair Color")
+			var/hair_area = tgui_alert(alterer, "Select which color you would like to change", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
+			if(!hair_area)
 				return
-			var/datum/body_marking_set/BMS = GLOB.body_marking_sets[chosen_name]
-			DNA.species.body_markings = assemble_body_markings_from_set(BMS, DNA.features, DNA.species)
-			H.icon_render_key = "" //Just in case
-			H.update_body()
-		if("DNA Specifics")
-			var/dna_alteration = input(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", "cancel") in list("Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation", "Body Size", "Cancel")
-			if(!dna_alteration || dna_alteration == "Cancel")
+			var/new_hair_color = input(alterer, "Select your new hair color", "Hair Color Alterations", alterer.dna.features["mcolor"]) as color|null
+			if(!new_hair_color)
 				return
-			switch(dna_alteration)
-				if("Breasts Size")
-					var/new_size = input(H, "Choose your character's breasts size:", "DNA Alteration") as null|anything in GLOB.preference_breast_sizes
-					if(new_size)
-						DNA.features["breasts_size"] = breasts_cup_to_size(new_size)
-						var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
-						if(melons)
-							melons.set_size(DNA.features["breasts_size"])
-				if("Breasts Lactation")
-					DNA.features["breasts_lactation"] = !DNA.features["breasts_lactation"]
-					var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
-					if(melons)
-						melons.lactates = DNA.features["breasts_lactation"]
-					to_chat(H, span_notice("Your breasts [DNA.features["breasts_lactation"] ? "will now lactate" : "will not lactate anymore"]."))
-				if("Penis Taur Mode")
-					DNA.features["penis_taur_mode"] = !DNA.features["penis_taur_mode"]
-					to_chat(H, span_notice("Your penis [DNA.features["penis_taur_mode"] ? "will be at your taur part" : "will not be at your taur part anymore"]."))
-				if("Penis Size")
-					var/new_length = input(H, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "DNA Alteration") as num|null
-					if(new_length)
-						DNA.features["penis_size"] = clamp(round(new_length, 1), PENIS_MIN_LENGTH, PENIS_MAX_LENGTH)
-						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
-						if(DNA.features["penis_girth"] >= new_length)
-							DNA.features["penis_girth"] = new_length - 1
-							if(PP)
-								PP.girth = DNA.features["penis_girth"]
-						if(PP)
-							PP.set_size(DNA.features["penis_size"])
-				if("Penis Sheath")
-					var/new_sheath = input(H, "Choose your penis sheath", "DNA Alteration") as null|anything in SHEATH_MODES
-					if(new_sheath)
-						DNA.features["penis_sheath"] = new_sheath
-						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
-						if(PP)
-							PP.sheath = new_sheath
-				if("Penis Girth")
-					var/max_girth = PENIS_MAX_GIRTH
-					if(DNA.features["penis_size"] >= max_girth)
-						max_girth = DNA.features["penis_size"]
-					var/new_girth = input(H, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
-					if(new_girth)
-						DNA.features["penis_girth"] = clamp(round(new_girth, 1), 1, max_girth)
-						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
-						if(PP)
-							PP.girth = DNA.features["penis_girth"]
-				if("Balls Size")
-					var/new_size = input(H, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
-					if(new_size)
-						DNA.features["balls_size"] = balls_description_to_size(new_size)
-						var/obj/item/organ/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)
-						if(avocados)
-							avocados.set_size(DNA.features["balls_size"])
-				if("Body Size")
-					var/new_body_size = input(H, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", DNA.features["body_size"]*100) as num|null
-					if(new_body_size)
-						new_body_size = clamp(new_body_size * 0.01, BODY_SIZE_MIN, BODY_SIZE_MAX)
-						DNA.features["body_size"] = new_body_size
-						DNA.update_body_size()
-			H.mutant_renderkey = "" //Just in case
-			H.update_mutant_bodyparts()
+
+			switch(hair_area)
+
+				if("Hairstyle")
+					alterer.set_haircolor(sanitize_hexcolor(new_hair_color), update = TRUE)
+				if("Facial Hair")
+					alterer.set_facial_haircolor(sanitize_hexcolor(new_hair_color), update = TRUE)
+				if("Both")
+					alterer.set_haircolor(sanitize_hexcolor(new_hair_color), update = FALSE)
+					alterer.set_facial_haircolor(sanitize_hexcolor(new_hair_color), update = TRUE)
+
+/**
+ * Alter DNA is an intermediary proc for the most part
+ * It lets you pick between a few options for DNA specifics
+ */
+/datum/action/innate/alter_form/proc/alter_dna(mob/living/carbon/human/alterer)
+	var/list/key_list = list("Body Size", "Genitals", "Mutant Parts")
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		key_list.Remove("Genitals")
+	var/dna_alteration = tgui_input_list(
+		alterer,
+		"Select what part of your DNA you'd like to alter",
+		"DNA Alteration",
+		key_list,
+	)
+	if(!dna_alteration)
+		return
+	switch(dna_alteration)
+		if("Body Size")
+			if(oversized_user && !HAS_TRAIT(alterer, TRAIT_OVERSIZED))
+				var/reset_size = tgui_alert(alterer, "Do you wish to return to being oversized?", "Size Change", list("Yes", "No"))
+				if(reset_size == "Yes")
+					alterer.add_quirk(/datum/quirk/oversized)
+					return
+
+			var/new_body_size = tgui_input_number(
+				alterer,
+				"Choose your desired sprite size: ([BODY_SIZE_MIN * 100]% to [BODY_SIZE_MAX * 100]%). Warning: May make your character look distorted",
+				"Size Change",
+				default = min(alterer.dna.features["body_size"] * 100, BODY_SIZE_MAX * 100),
+				max_value = BODY_SIZE_MAX * 100,
+				min_value = BODY_SIZE_MIN * 100,
+			)
+			if(!new_body_size)
+				return
+
+			if(HAS_TRAIT(alterer, TRAIT_OVERSIZED))
+				oversized_user = TRUE
+				alterer.remove_quirk(/datum/quirk/oversized)
+
+			new_body_size = new_body_size * 0.01
+			alterer.dna.features["body_size"] = new_body_size
+			alterer.dna.update_body_size()
+
+		if("Genitals")
+			alter_genitals(alterer)
+		if("Mutant Parts")
+			alter_parts(alterer)
+
+	alterer.mutant_renderkey = "" //Just in case
+	alterer.update_mutant_bodyparts()
+
+/**
+ * Alter parts lets you adjust mutant bodyparts
+ * This can be adding (or removing) things like ears, tails, wings, et cetera.
+ */
+/datum/action/innate/alter_form/proc/alter_parts(mob/living/carbon/human/alterer)
+	var/list/key_list = alterer.dna.mutant_bodyparts
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/erp_part in ORGAN_ERP_LIST)
+			key_list -= erp_part
+	var/chosen_key = tgui_input_list(
+		alterer,
+		"Select the part you want to alter",
+		"Body Part Alterations",
+		key_list,
+	)
+	if(!chosen_key)
+		return
+
+	var/choice_list = available_choices[chosen_key]
+	var/chosen_name_key = tgui_input_list(
+		alterer,
+		"What do you want the part to become?",
+		"Body Part Alterations",
+		choice_list,
+	)
+	if(!chosen_name_key)
+		return
+
+	var/datum/sprite_accessory/selected_sprite_accessory = GLOB.sprite_accessories[chosen_key][chosen_name_key]
+	alterer.mutant_renderkey = "" //Just in case
+	if(!selected_sprite_accessory.factual)
+		if(selected_sprite_accessory.organ_type)
+			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
+			var/slot = initial(organ_path.slot)
+			var/obj/item/organ/got_organ = alterer.get_organ_slot(slot)
+			if(got_organ)
+				got_organ.Remove(alterer)
+				qdel(got_organ)
+		else
+			alterer.dna.species.mutant_bodyparts -= chosen_key
+	else
+		if(selected_sprite_accessory.organ_type)
+			var/robot_organs = HAS_TRAIT(alterer, TRAIT_ROBOTIC_DNA_ORGANS)
+
+			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
+			var/slot = initial(organ_path.slot)
+			var/obj/item/organ/got_organ = alterer.get_organ_slot(slot)
+			if(got_organ)
+				got_organ.Remove(alterer)
+				qdel(got_organ)
+
+			var/obj/item/organ/replacement_organ = SSwardrobe.provide_type(selected_sprite_accessory.organ_type)
+			replacement_organ.sprite_accessory_flags = selected_sprite_accessory.flags_for_organ
+			replacement_organ.relevant_layers = selected_sprite_accessory.relevent_layers
+
+			var/list/new_acc_list = list()
+			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name
+			new_acc_list[MUTANT_INDEX_COLOR_LIST] = selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
+			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
+
+			if(robot_organs)
+				replacement_organ.organ_flags |= ORGAN_ROBOTIC
+			replacement_organ.build_from_dna(alterer.dna, chosen_key)
+			replacement_organ.Insert(alterer, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+		else
+			var/list/new_acc_list = list()
+			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name
+			new_acc_list[MUTANT_INDEX_COLOR_LIST] = selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
+			alterer.dna.species.mutant_bodyparts[chosen_key] = new_acc_list
+			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
+		alterer.dna.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
+	alterer.update_mutant_bodyparts()
+	alterer.update_clothing(ALL) // for any clothing that has alternate versions (e.g. muzzled masks)
+
+/**
+ * Alter markings lets you add a particular body marking
+ */
+/datum/action/innate/alter_form/proc/alter_markings(mob/living/carbon/human/alterer)
+	var/list/candidates = GLOB.body_marking_sets
+	var/chosen_name = tgui_input_list(
+		alterer,
+		"Select which set of markings would you like to change into",
+		"Marking Alterations",
+		candidates,
+	)
+	if(!chosen_name)
+		return
+	var/datum/body_marking_set/marking_set = GLOB.body_marking_sets[chosen_name]
+	alterer.dna.species.body_markings = assemble_body_markings_from_set(marking_set, alterer.dna.features, alterer.dna.species)
+	alterer.update_body(is_creating = TRUE)
+
+/**
+ * Alter genitals lets you adjust the size or functionality of genitalia
+ * If you don't own the genital you try to adjust, it'll ask you if you want to add it first
+ */
+/datum/action/innate/alter_form/proc/alter_genitals(mob/living/carbon/human/alterer)
+	var/list/genital_list
+	if(alterer.get_organ_slot(ORGAN_SLOT_BREASTS))
+		genital_list += list("Breasts Lactation", "Breasts Size")
+	if(alterer.get_organ_slot(ORGAN_SLOT_PENIS))
+		genital_list += list("Penis Girth", "Penis Length", "Penis Sheath", "Penis Taur Mode")
+	if(alterer.get_organ_slot(ORGAN_SLOT_TESTICLES))
+		genital_list += list("Testicles Size")
+	if(!length(genital_list))
+		alterer.balloon_alert(alterer, "no genitals!")
+
+	var/dna_alteration = tgui_input_list(
+		alterer,
+		"Select what bodypart you'd like to alter",
+		"Genital Alteration",
+		genital_list
+	)
+	if(!dna_alteration)
+		return
+	switch(dna_alteration)
+		if("Breasts Lactation")
+			var/obj/item/organ/external/genital/breasts/melons = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
+			alterer.dna.features["breasts_lactation"] = !alterer.dna.features["breasts_lactation"]
+			melons.lactates = alterer.dna.features["breasts_lactation"]
+			alterer.balloon_alert(alterer, "[alterer.dna.features["breasts_lactation"] ? "lactating" : "not lactating"]")
+
+		if("Breasts Size")
+			var/obj/item/organ/external/genital/breasts/melons = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
+			var/new_size = tgui_input_list(
+				alterer,
+				"Choose your character's breasts size:",
+				"DNA Alteration",
+				GLOB.breast_size_to_number,
+			)
+			if(!new_size)
+				return
+			alterer.dna.features["breasts_size"] = melons.breasts_cup_to_size(new_size)
+			melons.set_size(alterer.dna.features["breasts_size"])
+
+		if("Penis Girth")
+			var/obj/item/organ/external/genital/penis/sausage = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
+			var/max_girth = PENIS_MAX_GIRTH
+			if(alterer.dna.features["penis_size"] >= max_girth)
+				max_girth = alterer.dna.features["penis_size"]
+			var/new_girth = tgui_input_number(
+				alterer,
+				"Choose your penis girth:\n(1-[max_girth] (based on length) in inches)",
+				"Character Preference",
+				max_value = max_girth,
+				min_value = 1
+			)
+			if(new_girth)
+				alterer.dna.features["penis_girth"] = new_girth
+				sausage.girth = alterer.dna.features["penis_girth"]
+
+		if("Penis Length")
+			var/obj/item/organ/external/genital/penis/wang = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
+			var/new_length = tgui_input_number(
+				alterer,
+				"Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] inches)",
+				"DNA Alteration",
+				max_value = PENIS_MAX_LENGTH,
+				min_value = PENIS_MIN_LENGTH,
+			)
+			if(!new_length)
+				return
+			alterer.dna.features["penis_size"] = new_length
+			if(alterer.dna.features["penis_girth"] >= new_length)
+				alterer.dna.features["penis_girth"] = new_length - 1
+				wang.girth = alterer.dna.features["penis_girth"]
+			wang.set_size(alterer.dna.features["penis_size"])
+
+		if("Penis Sheath")
+			var/obj/item/organ/external/genital/penis/schlong = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
+			var/new_sheath = tgui_input_list(
+				alterer,
+				"Choose your penis sheath",
+				"DNA Alteration",
+				SHEATH_MODES,
+			)
+			if(new_sheath)
+				alterer.dna.features["penis_sheath"] = new_sheath
+				schlong.sheath = new_sheath
+
+		if("Penis Taur Mode")
+			alterer.dna.features["penis_taur_mode"] = !alterer.dna.features["penis_taur_mode"]
+			alterer.balloon_alert(alterer, "[alterer.dna.features["penis_taur_mode"] ? "using taur penis" : "not using taur penis"]")
+
+		if("Testicles Size")
+			var/obj/item/organ/external/genital/testicles/avocados = alterer.get_organ_slot(ORGAN_SLOT_TESTICLES)
+			var/new_size = tgui_input_list(
+				alterer,
+				"Choose your character's testicles size:",
+				"Character Preference",
+				GLOB.preference_balls_sizes,
+			)
+			if(new_size)
+				alterer.dna.features["balls_size"] = avocados.balls_description_to_size(new_size)
+				avocados.set_size(alterer.dna.features["balls_size"])

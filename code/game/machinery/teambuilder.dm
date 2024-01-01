@@ -4,11 +4,12 @@
 /obj/machinery/teambuilder
 	name = "Teambuilding Machine"
 	desc = "A machine that, when passed, colors you based on the color of your team. Lead free!"
-	icon = 'icons/obj/telescience.dmi'
+	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "lpad-idle"
 	density = FALSE
 	can_buckle = FALSE
 	resistance_flags = INDESTRUCTIBLE // Just to be safe.
+	use_power = NO_POWER_USE
 	///Are non-humans allowed to use this?
 	var/humans_only = FALSE
 	///What color is your mob set to when crossed?
@@ -20,7 +21,7 @@
 	. = ..()
 	add_filter("teambuilder", 2, list("type" = "outline", "color" = team_color, "size" = 2))
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 

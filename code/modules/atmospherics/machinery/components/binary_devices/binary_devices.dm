@@ -1,8 +1,9 @@
 /obj/machinery/atmospherics/components/binary
-	icon = 'icons/obj/atmospherics/components/binary_devices.dmi'
+	icon = 'icons/obj/machines/atmospherics/binary_devices.dmi'
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 	use_power = IDLE_POWER_USE
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.25
 	device_type = BINARY
 	layer = GAS_PUMP_LAYER
 	pipe_flags = PIPING_BRIDGE
@@ -15,7 +16,7 @@
 			initialize_directions = EAST|WEST
 
 /obj/machinery/atmospherics/components/binary/get_node_connects()
-	return list(turn(dir, 180), dir)
+	return list(REVERSE_DIR(dir), dir)
 
 /**
  * Used by binary devices to set what the offset will be for each layer, called in update_icon_nopipes()

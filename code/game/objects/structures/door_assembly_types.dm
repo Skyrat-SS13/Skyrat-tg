@@ -1,7 +1,7 @@
 /obj/structure/door_assembly/door_assembly_public
 	name = "public airlock assembly"
-	icon = 'icons/obj/doors/airlocks/station2/glass.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/station2/overlays.dmi'
+	icon = 'icons/obj/doors/airlocks/public/glass.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/public/overlays.dmi'
 	glass_type = /obj/machinery/door/airlock/public/glass
 	airlock_type = /obj/machinery/door/airlock/public
 
@@ -258,3 +258,39 @@
 
 /obj/structure/door_assembly/door_assembly_bronze/seethru
 	airlock_type = /obj/machinery/door/airlock/bronze/seethru
+
+/obj/structure/door_assembly/door_assembly_material
+	name = "airlock assembly"
+	airlock_type = /obj/machinery/door/airlock/material
+	glass_type = /obj/machinery/door/airlock/material/glass
+	greyscale_config = /datum/greyscale_config/material_airlock
+	nomineral = TRUE
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+
+/obj/structure/door_assembly/multi_tile/door_assembly_public
+	name = "large public airlock assembly"
+	base_name = "large public airlock"
+
+/obj/structure/door_assembly/door_assembly_material/deconstruct(disassembled = TRUE)
+	if(!(obj_flags & NO_DECONSTRUCTION))
+		var/turf/T = get_turf(src)
+		for(var/material in custom_materials)
+			var/datum/material/material_datum = material
+			var/material_count = FLOOR(custom_materials[material_datum] / SHEET_MATERIAL_AMOUNT, 1)
+			if(!disassembled)
+				material_count = rand(FLOOR(material_count/2, 1), material_count)
+			new material_datum.sheet_type(T, material_count)
+		if(glass)
+			if(disassembled)
+				if(heat_proof_finished)
+					new /obj/item/stack/sheet/rglass(T)
+				else
+					new /obj/item/stack/sheet/glass(T)
+			else
+				new /obj/item/shard(T)
+	qdel(src)
+
+/obj/structure/door_assembly/door_assembly_material/finish_door()
+	var/obj/machinery/door/airlock/door = ..()
+	door.set_custom_materials(custom_materials)
+	return door

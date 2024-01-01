@@ -2,7 +2,7 @@
 	"version": 1,
 	"map_name": "Tramstation",
 	"map_path": "map_files/tramstation",
-	"map_file": "tramstation_skyrat.dmm",
+	"map_file": "tramstation.dmm",
 	"shuttles": {
 		"cargo": "cargo_skyrat",
 		"ferry": "ferry_fancy",
@@ -11,21 +11,21 @@
 	},
 	"traits": [
 		{
-			"Up": 1,
-			"Baseturf": "/turf/open/floor/plating/asteroid/airless",
+			"Up": true,
+			"Baseturf": "/turf/open/misc/asteroid/airless",
 			"Linkage": "Cross"
 		},
 		{
-			"Down": -1,
+			"Down": true,
 			"Baseturf": "/turf/open/openspace",
 			"Linkage": "Cross"
 		}
 	],
 	"job_changes": {
-		"cook": {
-			"additional_cqc_areas": ["/area/service/kitchen/diner"]
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/commons/lounge"]
 		},
-		"captain": {
+		"Captain": {
 			"special_charter": "asteroid"
 		}
 	}

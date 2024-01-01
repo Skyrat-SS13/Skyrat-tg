@@ -12,7 +12,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "aZ" = (
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space)
 "be" = (
 /obj/effect/spawner/random/trash/bin,
@@ -43,7 +43,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "dc" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/anthro,
+/mob/living/basic/trooper/syndicate/ranged/anthro,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "dq" = (
@@ -57,10 +57,10 @@
 /area/ruin/space/has_grav/powered)
 "dY" = (
 /obj/structure/chair/sofa/corp/left,
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "ei" = (
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "eo" = (
 /obj/machinery/atmospherics/components/tank/air{
@@ -87,15 +87,15 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "hB" = (
-/mob/living/simple_animal/hostile/syndicate/melee/sword/anthro,
+/mob/living/basic/trooper/syndicate/melee/sword/anthro,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "hE" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/space/anthro/cat,
-/turf/open/floor/plating/asteroid/lowpressure,
+/mob/living/basic/trooper/syndicate/ranged/space/anthro/cat,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "if" = (
-/mob/living/simple_animal/hostile/syndicate/ranged,
+/mob/living/basic/trooper/syndicate/ranged,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "il" = (
@@ -112,7 +112,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "ka" = (
-/mob/living/simple_animal/hostile/syndicate/melee/anthro,
+/mob/living/basic/trooper/syndicate/melee/anthro,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "kc" = (
@@ -130,9 +130,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "np" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
+/obj/structure/window/reinforced/tinted/spawner/directional/north,
 /obj/structure/bed,
 /obj/effect/spawner/random/clothing/twentyfive_percent_cyborg_mask,
 /turf/open/floor/iron,
@@ -166,12 +164,12 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "pF" = (
-/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/machinery/cryo_cell,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "pL" = (
 /obj/structure/table/reinforced,
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "qo" = (
 /obj/structure/table/reinforced,
@@ -182,7 +180,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "rM" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/smg,
+/mob/living/basic/trooper/syndicate/ranged/smg,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "sN" = (
@@ -193,7 +191,7 @@
 /area/ruin/space/has_grav/powered)
 "tD" = (
 /obj/structure/chair/sofa/corp/right,
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "tH" = (
 /obj/structure/table/reinforced,
@@ -201,7 +199,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "uf" = (
-/mob/living/simple_animal/hostile/nanotrasen/elite,
+/mob/living/basic/trooper/nanotrasen/ranged/elite,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "vf" = (
@@ -212,10 +210,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "vS" = (
-/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/machinery/door/window/survival_pod{
 	dir = 8;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/structure/bed,
 /obj/effect/spawner/random/clothing/backpack,
@@ -225,13 +223,13 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "eng_secure";
 	name = "engine technician's locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/storage/belt/utility/syndicate,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "wU" = (
-/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/machinery/door/window/survival_pod{
 	dir = 4
 	},
@@ -277,8 +275,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "DI" = (
-/mob/living/simple_animal/hostile/syndicate/melee/space/stormtrooper,
-/turf/open/floor/plating/asteroid/lowpressure,
+/mob/living/basic/trooper/syndicate/melee/space/stormtrooper,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "DM" = (
 /obj/structure/table/optable,
@@ -301,13 +299,13 @@
 "EH" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "EL" = (
-/mob/living/simple_animal/hostile/syndicate/melee/sword/space,
-/turf/open/floor/plating/asteroid/lowpressure,
+/mob/living/basic/trooper/syndicate/melee/sword/space,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "FA" = (
 /obj/effect/spawner/random/entertainment/arcade,
@@ -315,13 +313,13 @@
 /area/ruin/space/has_grav/powered)
 "FJ" = (
 /obj/machinery/door/airlock/external{
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "Gp" = (
-/mob/living/simple_animal/hostile/syndicate/civilian/scientist,
+/mob/living/basic/trooper/syndicate/melee/sword/space,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "GG" = (
@@ -338,7 +336,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "HA" = (
-/mob/living/simple_animal/hostile/syndicate/melee,
+/mob/living/basic/trooper/syndicate/melee,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered)
 "Iw" = (
@@ -368,10 +366,6 @@
 /obj/effect/spawner/random/trash/box,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"KS" = (
-/mob/living/simple_animal/hostile/syndicate/civilian,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "LE" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/sheet/plasteel/twenty,
@@ -384,24 +378,21 @@
 "ME" = (
 /obj/machinery/door/airlock/research{
 	name = "Research";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "MG" = (
 /obj/structure/table,
-/obj/item/disk/tech_disk/spaceloot{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/disk/tech_disk/spaceloot,
+/obj/item/disk/design_disk/bepis,
+/obj/item/disk/design_disk/bepis,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "MZ" = (
 /obj/machinery/porta_turret/syndicate/energy{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "NA" = (
 /obj/machinery/computer{
@@ -410,10 +401,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Pl" = (
-/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/machinery/door/window/survival_pod{
 	dir = 4;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/structure/toilet{
 	dir = 4
@@ -429,7 +420,7 @@
 /area/ruin/space)
 "Qt" = (
 /obj/structure/showcase/machinery/signal_decrypter,
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "Qw" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -457,9 +448,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Uh" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8
-	},
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
 /obj/machinery/door/window/survival_pod{
 	dir = 1
 	},
@@ -485,7 +474,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ws" = (
-/mob/living/simple_animal/hostile/syndicate/melee,
+/mob/living/basic/trooper/syndicate/melee,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "WT" = (
@@ -500,7 +489,7 @@
 /area/ruin/space/has_grav/powered)
 "Yw" = (
 /obj/structure/barricade/sandbags,
-/turf/open/floor/plating/asteroid/lowpressure,
+/turf/open/misc/asteroid/lowpressure,
 /area/ruin/space/has_grav/powered)
 "ZK" = (
 /obj/structure/fluff/empty_sleeper/syndicate{
@@ -721,7 +710,7 @@ Mr
 Ew
 ck
 qT
-KS
+qT
 Qw
 qT
 qT

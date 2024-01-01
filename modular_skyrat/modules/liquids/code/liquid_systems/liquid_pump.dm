@@ -34,7 +34,7 @@
 	toggle_working()
 
 /obj/structure/liquid_pump/AltClick(mob/living/user)
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	to_chat(user, span_notice("You flick [src]'s spewing mode [spewing_mode ? "off" : "on"]."))
 	spewing_mode = !spewing_mode
@@ -90,7 +90,7 @@
 	turned_on = !turned_on
 	update_icon()
 
-/obj/structure/liquid_pump/Initialize()
+/obj/structure/liquid_pump/Initialize(mapload)
 	. = ..()
 	create_reagents(max_volume)
 

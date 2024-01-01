@@ -1,26 +1,23 @@
 /datum/species/moth
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"fluff" = "None",
-		"wings" = ACC_RANDOM,
-		"moth_antennae" = ACC_RANDOM
-	)
-	species_traits = list(
-		LIPS,
-		NOEYESPRITES,
-		HAS_FLESH,
-		HAS_BONE,
-		HAS_MARKINGS,
-		MUTCOLORS
-	)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_HAS_MARKINGS,
+		TRAIT_TACKLING_WINGED_ATTACKER,
+		TRAIT_ANTENNAE,
+		TRAIT_MUTANT_COLORS,
 	)
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/moth_parts_greyscale.dmi'
-	learnable_languages = list(/datum/language/common, /datum/language/moffic)
-	payday_modifier = 0.75
+
+/datum/species/moth/get_default_mutant_bodyparts()
+	return list(
+		"fluff" = list("Plain", FALSE),
+		"wings" = list("Moth (Plain)", TRUE),
+		"moth_antennae" = list("Plain", TRUE),
+	)
+
+/datum/species/moth/randomize_features()
+	var/list/features = ..()
+	features["mcolor"] = "#E5CD99"
+	return features
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"
@@ -36,3 +33,11 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/moth/prepare_human_for_preview(mob/living/carbon/human/moth)
+	moth.dna.features["mcolor"] = "#E5CD99"
+	moth.dna.mutant_bodyparts["moth_antennae"] = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	moth.dna.mutant_bodyparts["moth_markings"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	moth.dna.mutant_bodyparts["wings"] = list(MUTANT_INDEX_NAME = "Moth (Plain)", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	regenerate_organs(moth, src, visual_only = TRUE)
+	moth.update_body(TRUE)

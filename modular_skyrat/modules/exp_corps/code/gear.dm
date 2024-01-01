@@ -1,20 +1,14 @@
 //Gateway Medkit, no more combat defibs!
-/obj/item/storage/firstaid/expeditionary
+/obj/item/storage/medkit/expeditionary
 	name = "combat medical kit"
 	desc = "Now with 100% less bullshit."
-	icon_state = "bezerk"
+	icon_state = "medkit_tactical"
 	damagetype_healed = "all"
 
-/obj/item/storage/firstaid/expeditionary/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/firstaid/expeditionary/PopulateContents()
+/obj/item/storage/medkit/expeditionary/PopulateContents()
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
-	new /obj/item/stack/medical/splint(src)
 	new /obj/item/defibrillator/compact/loaded(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/stack/medical/mesh/advanced(src)
@@ -30,6 +24,7 @@
 	icon = 'modular_skyrat/modules/exp_corps/icons/bonesaw.dmi'
 	lefthand_file = 'modular_skyrat/modules/exp_corps/icons/bonesaw_l.dmi'
 	righthand_file = 'modular_skyrat/modules/exp_corps/icons/bonesaw_r.dmi'
+	inhand_icon_state = "bonesaw"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	toolspeed = 0.2
 	throw_range = 3
@@ -99,35 +94,25 @@
 	force = 12
 	throwforce = 30
 
-/obj/item/storage/bag/ammo/marksman
+/obj/item/storage/pouch/ammo/marksman
 	name = "marksman's knife pouch"
-	component_type = /datum/component/storage/concrete/marksman
+	unique_reskin = NONE
 
-/obj/item/storage/bag/ammo/marksman/ComponentInitialize()
+/obj/item/storage/pouch/ammo/marksman/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 60
-	STR.max_items = 10
-	STR.display_numerical_stacking = TRUE
-	STR.can_hold = typecacheof(list(/obj/item/knife/combat))
+	create_storage(storage_type = /datum/storage/marksman)
 
-/datum/component/storage/concrete/marksman/open_storage(mob/user)
-	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
-		return FALSE
-	if(locked)
-		to_chat(user, span_warning("[parent] seems to be locked!"))
-		return
+/datum/storage/marksman
+	max_total_storage = 60
+	max_slots = 10
+	numerical_stacking = TRUE
+	quickdraw = TRUE
 
-	var/obj/item/knife/combat/knife_to_draw = locate() in real_location()
-	if(!knife_to_draw)
-		return ..()
-	remove_from_storage(knife_to_draw, get_turf(user))
-	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, knife_to_draw)
-	user.visible_message(span_warning("[user] draws [knife_to_draw] from [parent]!"), span_notice("You draw [knife_to_draw] from [parent]."))
+/datum/storage/marksman/New()
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/knife/combat))
 
-/obj/item/storage/bag/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
+/obj/item/storage/pouch/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
 	new /obj/item/knife/combat/marksman(src)
 	new /obj/item/knife/combat/marksman(src)
 	new /obj/item/knife/combat/marksman(src)

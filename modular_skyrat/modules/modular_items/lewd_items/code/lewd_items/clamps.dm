@@ -6,11 +6,12 @@
 	icon_state = "clamps"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_NIPPLES
-
+	lewd_slot_flags = LEWD_SLOT_NIPPLES
+	/// What kind are the wearer's breasts?
 	var/breast_type = null
+	/// What size are the wearer's breasts?
 	var/breast_size = null
-
+	/// Mutable overlay containing the icon of the clamps
 	var/mutable_appearance/clamps_overlay
 
 //some stuff for making overlay of this item. Why? Because.
@@ -19,12 +20,9 @@
 	if(!isinhands)
 		. += clamps_overlay
 
-/obj/item/clothing/sextoy/nipple_clamps/ComponentInitialize()
+/obj/item/clothing/sextoy/nipple_clamps/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/clothing/sextoy/nipple_clamps/Initialize()
-	. = ..()
 
 	update_icon_state()
 
@@ -38,15 +36,16 @@
 	. = ..()
 	worn_icon_state = "[initial(icon_state)]_[breast_type]_[breast_size]"
 
-/obj/item/clothing/sextoy/nipple_clamps/equipped(mob/user, slot, initial)
+/obj/item/clothing/sextoy/nipple_clamps/lewd_equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
-	var/mob/living/carbon/human/U = user
-	var/obj/item/organ/genital/breasts/B = U.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!istype(user))
+		return
+	var/obj/item/organ/external/genital/breasts/user_breast = user.get_organ_slot(ORGAN_SLOT_BREASTS)
 
-	if(src == U.nipples)
-		if(B)
-			breast_type = B?.genital_type
-			breast_size = B?.genital_size
+	if(src == user.nipples)
+		if(user_breast)
+			breast_type = user_breast?.genital_type
+			breast_size = user_breast?.genital_size
 		else //character don't have tits, but male character should suffer too!
 			breast_type = "pair"
 			breast_size = 0
@@ -59,7 +58,7 @@
 	update_appearance()
 	update_overlays()
 
-	if(src == U.nipples)
+	if(src == user.nipples)
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/nipple_clamps/dropped(mob/user, silent)
@@ -68,16 +67,18 @@
 	breast_type = null
 	breast_size = null
 
-/obj/item/clothing/sextoy/nipple_clamps/process(delta_time)
+/obj/item/clothing/sextoy/nipple_clamps/process(seconds_per_tick)
 	. = ..()
-	var/mob/living/carbon/human/U = loc
-	var/obj/item/organ/genital/breasts/B = U.getorganslot(ORGAN_SLOT_BREASTS)
-	U.adjustArousal(1 * delta_time)
-	if(U.pain < 27.5) //To prevent maxing pain by just pair of clamps.
-		U.adjustPain(1 * delta_time)
+	var/mob/living/carbon/human/target = loc
+	var/obj/item/organ/external/genital/breasts/target_breast = target.get_organ_slot(ORGAN_SLOT_BREASTS)
+	if(!target || !target_breast)
+		return
+	target.adjust_arousal(1 * seconds_per_tick)
+	if(target.pain < 27.5) //To prevent maxing pain by just pair of clamps.
+		target.adjust_pain(1 * seconds_per_tick)
 
-	if(U.arousal < 15)
-		U.adjustArousal(1 * delta_time)
+	if(target.arousal < 15)
+		target.adjust_arousal(1 * seconds_per_tick)
 
-	if(B.aroused != AROUSAL_CANT)
-		B.aroused = AROUSAL_FULL //Clamps keeping nipples aroused
+	if(target_breast.aroused != AROUSAL_CANT)
+		target_breast.aroused = AROUSAL_FULL //Clamps keeping nipples aroused

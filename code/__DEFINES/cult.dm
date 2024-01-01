@@ -35,3 +35,16 @@
 /// Defines for cult item_dispensers.
 #define PREVIEW_IMAGE "preview"
 #define OUTPUT_ITEMS "output"
+
+/// The global Nar'sie that the cult's summoned
+GLOBAL_DATUM(cult_narsie, /obj/narsie)
+
+// Used in determining which cinematic to play when cult ends
+#define CULT_VICTORY_MASS_CONVERSION 2
+#define CULT_FAILURE_NARSIE_KILLED 1
+#define CULT_VICTORY_NUKE 0
+
+// Used to determine the roundend report.
+#define CULT_VICTORY 1
+#define CULT_LOSS 0
+#define CULT_NARSIE_KILLED -1

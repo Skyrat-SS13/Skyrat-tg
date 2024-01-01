@@ -1,7 +1,9 @@
-///HOODIES///
-///The hoodies and attached sprites [WERE ORIGINALLY FROM] https://github.com/Citadel-Station-13/Citadel-Station-13-RP before GAGSification
-///Respective datums can be found in modular_skyrat/modules/customization/datums/greyscale/hoodies
-///These are now a subtype of toggle/jacket too, so it properly toggles and isnt the unused 'storage' type
+/*
+*	The hoodies and attached sprites [WERE ORIGINALLY FROM] https://github.com/Citadel-Station-13/Citadel-Station-13-RP before GAGSification
+*	Respective datums can be found in modular_skyrat/modules/customization/datums/greyscale/hoodies
+*	These are now a subtype of toggle/jacket too, so it properly toggles and isnt the unused 'storage' type
+*/
+
 /obj/item/clothing/suit/toggle/jacket/hoodie
 	name = "hoodie"
 	desc = "A warm hoodie. you cant help but mess with the zipper..."
@@ -10,7 +12,7 @@
 	greyscale_config_worn = /datum/greyscale_config/hoodie/worn
 	greyscale_colors = "#FFFFFF"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	min_cold_protection_temperature = T0C - 20	//Not as good as the base jacket
 
 /obj/item/clothing/suit/toggle/jacket/hoodie/trim
@@ -25,7 +27,10 @@
 	greyscale_colors = "#ffffff#313131"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-///Preset greyscales + branded hoodies
+/*
+*	PRESET GREYSCALES & BRANDED
+*/
+
 /obj/item/clothing/suit/toggle/jacket/hoodie/grey
 	greyscale_colors = "#a8a8a8"
 

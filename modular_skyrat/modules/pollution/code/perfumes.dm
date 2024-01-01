@@ -17,7 +17,7 @@
 	/// Whether we have a cap or not
 	var/has_cap = TRUE
 
-/obj/item/perfume/Initialize()
+/obj/item/perfume/Initialize(mapload)
 	. = ..()
 	update_appearance()
 
@@ -42,7 +42,7 @@
 
 /// Proc to handle removing the cap of the perfume bottle.
 /obj/item/perfume/proc/toggle_cap(mob/user)
-	if(has_cap && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(has_cap && user.can_perform_action(src, NEED_DEXTERITY))
 		cap = !cap
 		to_chat(user, span_notice("The cap on [src] is now [cap ? "on" : "off"]."))
 		update_appearance()
@@ -61,7 +61,7 @@
 		return TRUE
 	uses_remaining--
 	var/turf/my_turf = get_turf(user)
-	my_turf.PolluteTurf(fragrance_type, 20)
+	my_turf.pollute_turf(fragrance_type, 20)
 	user.visible_message(span_notice("[user] sprays [attacked] with \the [src]."), span_notice("You spray [attacked] with \the [src]."))
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	playsound(my_turf, 'sound/effects/spray2.ogg', 50, TRUE, -6)

@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(icon_smooth)
 	name = "Icon Smoothing"
 	init_order = INIT_ORDER_ICON_SMOOTHING
 	wait = 1
-	priority = FIRE_PRIOTITY_SMOOTHING
+	priority = FIRE_PRIORITY_SMOOTHING
 	flags = SS_TICKER
 
 	///Blueprints assemble an image of what pipes/manifolds/wires look like on initialization, and thus should be taken after everything's been smoothed
@@ -11,10 +11,17 @@ SUBSYSTEM_DEF(icon_smooth)
 	var/list/deferred = list()
 
 /datum/controller/subsystem/icon_smooth/fire()
-	var/list/cached = smooth_queue
-	while(length(cached))
-		var/atom/smoothing_atom = cached[length(cached)]
-		cached.len--
+	// We do not want to smooth icons of atoms whose neighbors are not initialized yet,
+	// this causes runtimes.
+	// Icon smoothing SS runs after atoms, so this only happens for something like shuttles.
+	// This kind of map loading shouldn't take too long, so the delay is not a problem.
+	if (SSatoms.initializing_something())
+		return
+
+	var/list/smooth_queue_cache = smooth_queue
+	while(length(smooth_queue_cache))
+		var/atom/smoothing_atom = smooth_queue_cache[length(smooth_queue_cache)]
+		smooth_queue_cache.len--
 		if(QDELETED(smoothing_atom) || !(smoothing_atom.smoothing_flags & SMOOTH_QUEUED))
 			continue
 		if(smoothing_atom.flags_1 & INITIALIZED_1)
@@ -24,24 +31,21 @@ SUBSYSTEM_DEF(icon_smooth)
 		if (MC_TICK_CHECK)
 			return
 
-	if (!cached.len)
+	if (!length(smooth_queue_cache))
 		if (deferred.len)
 			smooth_queue = deferred
-			deferred = cached
+			deferred = smooth_queue_cache
 		else
 			can_fire = FALSE
 
 /datum/controller/subsystem/icon_smooth/Initialize()
-	smooth_zlevel(1, TRUE)
-	smooth_zlevel(2, TRUE)
-
 	var/list/queue = smooth_queue
 	smooth_queue = list()
 
 	while(length(queue))
 		var/atom/smoothing_atom = queue[length(queue)]
 		queue.len--
-		if(QDELETED(smoothing_atom) || !(smoothing_atom.smoothing_flags & SMOOTH_QUEUED) || smoothing_atom.z <= 2)
+		if(QDELETED(smoothing_atom) || !(smoothing_atom.smoothing_flags & SMOOTH_QUEUED) || !smoothing_atom.z)
 			continue
 		smoothing_atom.smooth_icon()
 		CHECK_TICK
@@ -49,14 +53,13 @@ SUBSYSTEM_DEF(icon_smooth)
 	queue = blueprint_queue
 	blueprint_queue = null
 
-	for(var/item in queue)
-		var/atom/movable/movable_item = item
+	for(var/atom/movable/movable_item as anything in queue)
 		if(!isturf(movable_item.loc))
 			continue
 		var/turf/item_loc = movable_item.loc
 		item_loc.add_blueprints(movable_item)
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 
 /datum/controller/subsystem/icon_smooth/proc/add_to_queue(atom/thing)

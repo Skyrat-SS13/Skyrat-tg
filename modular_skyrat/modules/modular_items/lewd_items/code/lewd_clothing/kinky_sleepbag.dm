@@ -7,9 +7,9 @@
 	worn_icon_taur_snake = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
-	icon_state = "sleepbag"
-	inhand_icon_state = "sleepbag"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
+	icon_state = "sleepbag_pink_deflated_folded"
+	base_icon_state = "sleepbag"
 	w_class = WEIGHT_CLASS_SMALL
 	var/bag_state = "deflated"
 	var/bag_fold = TRUE
@@ -17,18 +17,14 @@
 	var/color_changed = FALSE
 	var/time_to_sound = 20
 	var/time_to_sound_left
-	var/time = 2
 	var/tt
 	var/static/list/bag_colors
-	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY
+	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
 	strip_delay = 300
 	breakouttime = 1200 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con or erp pref.
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
-	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/l_leg/legr
-	var/obj/item/bodypart/l_leg/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
@@ -51,15 +47,10 @@
 		"inflated" = image (icon = src.icon, icon_state = "sleepbag_pink_deflated_folded"),
 		"deflated" = image(icon = src.icon, icon_state = "sleepbag_teal_deflated_folded"))
 
-//to update model lol
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user, obj/item/I)
-	var/mob/living/carbon/human/H = user
-	if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user)
+	var/mob/living/carbon/human/clicking_human = user
+	if(istype(clicking_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		to_chat(user, span_warning("Your hands are stuck, you can't do this!"))
 		return FALSE
 	switch(color_changed)
@@ -67,7 +58,7 @@
 			. = ..()
 			if(.)
 				return
-			var/choice = show_radial_menu(user,src, bag_colors, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+			var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
 				return FALSE
 			bag_color = choice
@@ -91,8 +82,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize()
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(bag_colors))
@@ -102,45 +94,45 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
-	inhand_icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	inhand_icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/equipped(mob/user, slot)
-	var/mob/living/carbon/human/H = user
-	if(ishuman(user) && slot == ITEM_SLOT_OCLOTHING)
+	var/mob/living/carbon/human/affected_human = user
+	if(ishuman(user) && (slot & ITEM_SLOT_OCLOTHING))
 		ADD_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
 
-		H.cut_overlay(H.overlays_standing[SHOES_LAYER])
-		H.cut_overlay(H.overlays_standing[BELT_LAYER])
-		H.cut_overlay(H.overlays_standing[NECK_LAYER])
-		H.cut_overlay(H.overlays_standing[BACK_LAYER])
-		H.cut_overlay(H.overlays_standing[BODY_BEHIND_LAYER])
+		affected_human.cut_overlay(affected_human.overlays_standing[SHOES_LAYER])
+		affected_human.cut_overlay(affected_human.overlays_standing[BELT_LAYER])
+		affected_human.cut_overlay(affected_human.overlays_standing[NECK_LAYER])
+		affected_human.cut_overlay(affected_human.overlays_standing[BACK_LAYER])
+		affected_human.cut_overlay(affected_human.overlays_standing[BODY_BEHIND_LAYER])
 
 		START_PROCESSING(SSobj, src)
 		time_to_sound_left = time_to_sound
 
 		if(bag_state == "inflated")
-			to_chat(H, span_purple("You realize that you can't move even an inch. The inflated sleeping bag squeezes you from all sides!"))
-			H.cut_overlay(H.overlays_standing[HEAD_LAYER])
-			H.cut_overlay(H.overlays_standing[HAIR_LAYER])
+			to_chat(affected_human, span_purple("You realize that you can't move even an inch. The inflated sleeping bag squeezes you from all sides!"))
+			affected_human.cut_overlay(affected_human.overlays_standing[HEAD_LAYER])
+			affected_human.cut_overlay(affected_human.overlays_standing[HAIR_LAYER])
 		if(bag_state == "deflated")
-			to_chat(H, span_purple("You realize that moving now is much harder. You're fully restrained, any struggling is useless!"))
+			to_chat(affected_human, span_purple("You realize that moving now is much harder. You're fully restrained, any struggling is useless!"))
 	. = ..()
 
 //to inflate/deflate that thing
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/attack_self(mob/user, obj/item/I)
-	var/mob/living/carbon/human/H = user
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/attack_self(mob/user)
+	var/mob/living/carbon/human/affected_human = user
 	if(bag_fold == FALSE)
 		toggle_mode()
-		to_chat(H, span_notice("The sleeping bag now is [bag_state? "inflated." : "deflated."]"))
+		to_chat(affected_human, span_notice("The sleeping bag now is [bag_state? "inflated." : "deflated."]"))
 		update_icon()
 		update_icon_state()
 	else
-		to_chat(H, span_notice("You need to unfold the bag before inflating it!"))
+		to_chat(affected_human, span_notice("You need to unfold the bag before inflating it!"))
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
-	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	if(bag_fold == TRUE)
 		w_class = WEIGHT_CLASS_SMALL
 		slot_flags = NONE
@@ -164,41 +156,41 @@
 	// appearance_update()
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/dropped(mob/user)
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/affected_human = user
 
 	if(ishuman(user))
-		if(src == H.wear_suit)
+		if(src == affected_human.wear_suit)
 			REMOVE_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
 			to_chat(user, span_purple("You are finally free! The bag is no longer constricting your movements."))
 
-			H.add_overlay(H.overlays_standing[SHOES_LAYER])
-			H.update_inv_shoes()
-			H.add_overlay(H.overlays_standing[BELT_LAYER])
-			H.add_overlay(H.overlays_standing[NECK_LAYER])
-			H.add_overlay(H.overlays_standing[BACK_LAYER])
-			H.add_overlay(H.overlays_standing[BODY_BEHIND_LAYER])
-			H.add_overlay(H.overlays_standing[BODY_FRONT_LAYER])
-			H.add_overlay(H.overlays_standing[HEAD_LAYER])
-			H.add_overlay(H.overlays_standing[HAIR_LAYER])
-			H.add_overlay(H.overlays_standing[SHOES_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[SHOES_LAYER])
+			affected_human.update_worn_shoes()
+			affected_human.add_overlay(affected_human.overlays_standing[BELT_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[NECK_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[BACK_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[BODY_BEHIND_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[BODY_FRONT_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[HEAD_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[HAIR_LAYER])
+			affected_human.add_overlay(affected_human.overlays_standing[SHOES_LAYER])
 
-			H.update_inv_shoes()
-			H.regenerate_icons()
+			affected_human.update_worn_shoes()
+			affected_human.regenerate_icons()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(delta_time)
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(seconds_per_tick)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE, ignore_walls = FALSE)
-			tt = rand(15,35) //to do random funny sounds when character inside that thing.
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
+			tt = rand(15, 35) //to do random funny sounds when character inside that thing.
 		else
-			tt -= delta_time
+			tt -= seconds_per_tick
 	else
-		time_to_sound_left -= delta_time
+		time_to_sound_left -= seconds_per_tick
 
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)
 	. = ..()
-	owner.update_inv_hands()
-	stripper.update_inv_hands()
+	owner.update_held_items()
+	stripper.update_held_items()

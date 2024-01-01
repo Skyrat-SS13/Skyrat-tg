@@ -29,8 +29,6 @@
 				return FALSE
 			var/datum/team/brother_team/team = opt
 			src.add_antag_datum(/datum/antagonist/brother, team)
-		if(ROLE_FAMILIES)
-			src.add_antag_datum(/datum/antagonist/gang)
 		if(ROLE_HERETIC)
 			src.add_antag_datum(/datum/antagonist/heretic)
 		else
@@ -84,7 +82,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 
 /datum/admins/
 	var/MAKEANTAG_RESTRICTLIST = list()
-	var/MAKEANTAG_PL_DEFAULT_SECURITY = list(JOB_PRISONER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_BLUESHIELD, JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD)
+	var/MAKEANTAG_PL_DEFAULT_SECURITY = list(JOB_PRISONER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_CORRECTIONS_OFFICER, JOB_BLUESHIELD, JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD)
 	var/MAKEANTAG_PL_DEFAULT_HEADS = list(JOB_CAPTAIN,JOB_HEAD_OF_PERSONNEL,JOB_RESEARCH_DIRECTOR,JOB_CHIEF_ENGINEER,JOB_CHIEF_MEDICAL_OFFICER,JOB_HEAD_OF_SECURITY,JOB_QUARTERMASTER)
 	var/MAKEANTAG_PL_DEFAULT_SILICON = list(JOB_AI, JOB_CYBORG)
 
@@ -111,11 +109,6 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
-		if(ROLE_FAMILIES)
-			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
-			p_p += MAKEANTAG_PL_DEFAULT_HEADS
-			p_r += MAKEANTAG_PL_DEFAULT_SILICON
-			p_r += list(JOB_HEAD_OF_PERSONNEL)
 		if(ROLE_REV)
 			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_r += MAKEANTAG_PL_DEFAULT_HEADS
@@ -153,7 +146,6 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	var/datum/team/brother_team/team
 	if(antagtype == ROLE_BROTHER)
 		team = new
-		team.pick_meeting_area()
 		team.forge_brother_objectives()
 	var/list/restricted_jobs = antag_get_protected_roles(antagtype)
 	var/list/mob/living/carbon/human/candidates = list()
@@ -204,7 +196,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	return FALSE
 
 /datum/admins/proc/make_wizard()
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", ROLE_WIZARD, null)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", role = ROLE_WIZARD)
 	var/mob/living/carbon/human/target
 	do
 		var/mob/dead/observer/selected = pick_n_take(candidates)
@@ -219,7 +211,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	return TRUE
 
 /datum/admins/proc/make_nukies(maxCount = 5)
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for a nuke team being sent in?", ROLE_OPERATIVE, null)
+	var/list/mob/dead/observer/candidates =  SSpolling.poll_ghost_candidates("Do you wish to be considered for a nuke team being sent in?", role = ROLE_OPERATIVE)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 	if(candidates.len)

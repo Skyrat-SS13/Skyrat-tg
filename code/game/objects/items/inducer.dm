@@ -51,11 +51,11 @@
 		return TRUE
 
 	if(!cell)
-		to_chat(user, span_warning("[src] doesn't have a power cell installed!"))
+		balloon_alert(user, "no cell installed!")
 		return TRUE
 
 	if(!cell.charge)
-		to_chat(user, span_warning("[src]'s battery is dead!"))
+		balloon_alert(user, "no charge!")
 		return TRUE
 	return FALSE
 
@@ -106,17 +106,17 @@
 	var/obj/O
 	var/coefficient = 1
 	if(istype(A, /obj/item/gun/energy))
-		to_chat(user, span_alert("Error unable to interface with device."))
+		to_chat(user, span_alert("Error: unable to interface with device."))
 		return FALSE
 	if(istype(A, /obj/item/clothing/suit/space))
-		to_chat(user, span_alert("Error unable to interface with device."))
+		to_chat(user, span_alert("Error: unable to interface with device."))
 		return FALSE
-	if(istype(A, /obj))
+	if(isobj(A))
 		O = A
 	if(C)
 		var/done_any = FALSE
 		if(C.charge >= C.maxcharge)
-			to_chat(user, span_notice("[A] is fully charged!"))
+			balloon_alert(user, "it's fully charged!")
 			recharging = FALSE
 			return TRUE
 		user.visible_message(span_notice("[user] starts recharging [A] with [src]."), span_notice("You start recharging [A] with [src]."))
@@ -172,12 +172,19 @@
 		return
 	. += "inducer-[cell ? "bat" : "nobat"]"
 
+/obj/item/inducer/empty
+	cell_type = null
+	opened = TRUE
+
+/obj/item/inducer/orderable
+	cell_type = /obj/item/stock_parts/cell/inducer_supply
+	opened = FALSE
+
 /obj/item/inducer/sci
 	icon_state = "inducer-sci"
 	inhand_icon_state = "inducer-sci"
 	desc = "A tool for inductively charging internal power cells. This one has a science color scheme, and is less potent than its engineering counterpart."
 	cell_type = null
-	powertransfer = 500
 	opened = TRUE
 
 /obj/item/inducer/sci/Initialize(mapload)

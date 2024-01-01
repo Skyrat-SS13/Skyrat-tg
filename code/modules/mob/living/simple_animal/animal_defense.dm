@@ -32,12 +32,14 @@
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
 			to_chat(user, span_warning("You don't want to hurt [src]!"))
 			return
+		if(check_block(user, harm_intent_damage, "[user]'s punch", UNARMED_ATTACK, 0, BRUTE))
+			return
 		user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 		visible_message(span_danger("[user] [response_harm_continuous] [src]!"),\
 						span_userdanger("[user] [response_harm_continuous] you!"), null, COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("You [response_harm_simple] [src]!"))
 		playsound(loc, attacked_sound, 25, TRUE, -1)
-		attack_threshold_check(harm_intent_damage)
+		apply_damage(harm_intent_damage)
 		log_combat(user, src, "attacked")
 		updatehealth()
 		return TRUE
@@ -46,7 +48,7 @@
 	. = ..()
 	if(!.)
 		return
-	playsound(loc, "punch", 25, TRUE, -1)
+	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
 	visible_message(span_danger("[user] punches [src]!"), \
 					span_userdanger("You're punched by [user]!"), null, COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_danger("You punch [src]!"))
@@ -55,9 +57,7 @@
 /mob/living/simple_animal/attack_paw(mob/living/carbon/human/user, list/modifiers)
 	if(..()) //successful monkey bite.
 		if(stat != DEAD)
-			var/damage = rand(1, 3)
-			attack_threshold_check(damage)
-			return 1
+			return apply_damage(rand(1, 3))
 	if (!user.combat_mode)
 		if (health > 0)
 			visible_message(span_notice("[user.name] [response_help_continuous] [src]."), \
@@ -66,7 +66,7 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
 
-/mob/living/simple_animal/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
+/mob/living/simple_animal/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
 	if(..()) //if harm or disarm intent.
 		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, TRUE, -1)
@@ -75,69 +75,44 @@
 			to_chat(user, span_danger("You [response_disarm_simple] [name]!"))
 			log_combat(user, src, "disarmed")
 		else
-			var/damage = rand(15, 30)
+			var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
 			visible_message(span_danger("[user] slashes at [src]!"), \
 							span_userdanger("You're slashed at by [user]!"), null, COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("You slash at [src]!"))
 			playsound(loc, 'sound/weapons/slice.ogg', 25, TRUE, -1)
-			attack_threshold_check(damage)
+			apply_damage(damage)
 			log_combat(user, src, "attacked")
 		return 1
 
-/mob/living/simple_animal/attack_larva(mob/living/carbon/alien/larva/L)
+/mob/living/simple_animal/attack_larva(mob/living/carbon/alien/larva/L, list/modifiers)
 	. = ..()
 	if(. && stat != DEAD) //successful larva bite
-		var/damage = rand(5, 10)
-		. = attack_threshold_check(damage)
-		if(.)
-			L.amount_grown = min(L.amount_grown + damage, L.max_grown)
+		var/damage_done = apply_damage(rand(L.melee_damage_lower, L.melee_damage_upper), BRUTE)
+		if(damage_done > 0)
+			L.amount_grown = min(L.amount_grown + damage_done, L.max_grown)
 
-/mob/living/simple_animal/attack_basic_mob(mob/living/basic/user, list/modifiers)
-	. = ..()
-	if(.)
-		var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
-		return attack_threshold_check(damage, user.melee_damage_type)
-
-/mob/living/simple_animal/attack_animal(mob/living/simple_animal/user, list/modifiers)
-	. = ..()
-	if(.)
-		var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
-		return attack_threshold_check(damage, user.melee_damage_type)
-
-/mob/living/simple_animal/attack_slime(mob/living/simple_animal/slime/M)
+/mob/living/simple_animal/attack_slime(mob/living/simple_animal/slime/user, list/modifiers)
 	if(..()) //successful slime attack
 		var/damage = rand(15, 25)
-		if(M.is_adult)
+		if(user.is_adult)
 			damage = rand(20, 35)
-		return attack_threshold_check(damage)
+		return apply_damage(damage, user.melee_damage_type)
 
-/mob/living/simple_animal/attack_drone(mob/living/simple_animal/drone/M)
-	if(M.combat_mode) //No kicking dogs even as a rogue drone. Use a weapon.
+/mob/living/simple_animal/attack_drone(mob/living/basic/drone/user)
+	if(user.combat_mode) //No kicking dogs even as a rogue drone. Use a weapon.
 		return
 	return ..()
 
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = MELEE, actuallydamage = TRUE)
-	var/temp_damage = damage
-	if(!damage_coeff[damagetype])
-		temp_damage = 0
-	else
-		temp_damage *= damage_coeff[damagetype]
-
-	if(temp_damage >= 0 && temp_damage <= force_threshold)
-		visible_message(span_warning("[src] looks unharmed!"))
-		return FALSE
-	else
-		if(actuallydamage)
-			apply_damage(damage, damagetype, null, getarmor(null, armorcheck))
-		return TRUE
+/mob/living/simple_animal/attack_drone_secondary(mob/living/basic/drone/user)
+	if(user.combat_mode)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	return ..()
 
 /mob/living/simple_animal/ex_act(severity, target, origin)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
+	. = ..()
+	if(!. || QDELETED(src))
 		return FALSE
 
-	. = ..()
-	if(QDELETED(src))
-		return
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
 			ex_act_devastate()
@@ -146,12 +121,15 @@
 		if (EXPLODE_LIGHT)
 			ex_act_light()
 
+	return TRUE
+
 /// Called when a devastating explosive acts on this mob
 /mob/living/simple_animal/proc/ex_act_devastate()
 	var/bomb_armor = getarmor(null, BOMB)
 	if(prob(bomb_armor))
 		adjustBruteLoss(500)
 	else
+		investigate_log("has been gibbed by an explosion.", INVESTIGATE_DEATHS)
 		gib()
 
 /// Called when a heavy explosive acts on this mob
@@ -183,3 +161,15 @@
 		else
 			visual_effect_icon = ATTACK_EFFECT_SMASH
 	..()
+
+/mob/living/simple_animal/emp_act(severity)
+	. = ..()
+	if(mob_biotypes & MOB_ROBOTIC)
+		switch (severity)
+			if (EMP_LIGHT)
+				visible_message(span_danger("[src] shakes violently, its parts coming loose!"))
+				apply_damage(maxHealth * 0.6)
+				Shake(duration = 1 SECONDS)
+			if (EMP_HEAVY)
+				visible_message(span_danger("[src] suddenly bursts apart!"))
+				apply_damage(maxHealth)

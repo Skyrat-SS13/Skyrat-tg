@@ -4,7 +4,7 @@
 /obj/item/minigunpack
 	name = "backpack power source"
 	desc = "The massive external power source for the laser gatling gun."
-	icon = 'icons/obj/guns/minigun.dmi'
+	icon = 'icons/obj/weapons/guns/minigun.dmi'
 	icon_state = "holstered"
 	inhand_icon_state = "backpack"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
@@ -32,8 +32,8 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/minigunpack/process(delta_time)
-	overheat = max(0, overheat - heat_diffusion * delta_time)
+/obj/item/minigunpack/process(seconds_per_tick)
+	overheat = max(0, overheat - heat_diffusion * seconds_per_tick)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/minigunpack/attack_hand(mob/living/carbon/user, list/modifiers)
@@ -46,7 +46,7 @@
 					to_chat(user, span_warning("You need a free hand to hold the gun!"))
 					return
 				update_appearance()
-				user.update_inv_back()
+				user.update_worn_back()
 		else
 			to_chat(user, span_warning("You are already holding the gun!"))
 	else
@@ -94,13 +94,13 @@
 	else
 		src.visible_message(span_warning("The [gun.name] snaps back onto the [name]!"))
 	update_appearance()
-	user.update_inv_back()
+	user.update_worn_back()
 
 
 /obj/item/gun/energy/minigun
 	name = "laser gatling gun"
 	desc = "An advanced laser cannon with an incredible rate of fire. Requires a bulky backpack power source to use."
-	icon = 'icons/obj/guns/minigun.dmi'
+	icon = 'icons/obj/weapons/guns/minigun.dmi'
 	icon_state = "minigun_spin"
 	inhand_icon_state = "minigun"
 	slowdown = 1
@@ -113,15 +113,13 @@
 	item_flags = NEEDS_PERMIT | SLOWS_WHILE_IN_HAND
 	can_charge = FALSE
 	var/obj/item/minigunpack/ammo_pack
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)//SKYRAT EDIT ADDITION
-
 
 /obj/item/gun/energy/minigun/Initialize(mapload)
 	if(!istype(loc, /obj/item/minigunpack)) //We should spawn inside an ammo pack so let's use that one.
 		return INITIALIZE_HINT_QDEL //No pack, no gun
 	ammo_pack = loc
 	AddElement(/datum/element/update_icon_blocker)
-	//AddComponent(/datum/component/automatic_fire, 0.2 SECONDS) SKYRAT EDIT REMOVAL
+	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 	return ..()
 
 /obj/item/gun/energy/minigun/Destroy()
@@ -160,6 +158,5 @@
 /obj/item/stock_parts/cell/minigun
 	name = "gatling gun fusion core"
 	desc = "Where did these come from?"
-	icon_state = "h+cell"
 	maxcharge = 500000
 	chargerate = 5000

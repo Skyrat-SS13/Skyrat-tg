@@ -5,10 +5,9 @@
 /obj/machinery/chem_recipe_debug
 	name = "chemical reaction tester"
 	density = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "HPLC_debug"
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 40
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.4
 	resistance_flags = FIRE_PROOF | ACID_PROOF | INDESTRUCTIBLE
 	///List of every reaction in the game kept locally for easy access
 	var/list/cached_reactions = list()
@@ -91,7 +90,7 @@
 * The main loop that sets up, creates and displays results from a reaction
 * warning: this code is a hot mess
 */
-/obj/machinery/chem_recipe_debug/process(delta_time)
+/obj/machinery/chem_recipe_debug/process(seconds_per_tick)
 	if(processing == FALSE)
 		setup_reactions()
 	if(should_force_ph)
@@ -99,7 +98,7 @@
 	if(should_force_temp)
 		reagents.chem_temp = force_temp
 	if(reagents.is_reacting == TRUE)
-		react_time += delta_time
+		react_time += seconds_per_tick
 		return
 	if(reaction_stated == TRUE)
 		reaction_stated = FALSE
@@ -129,12 +128,12 @@
 		say("Reaction completed for [cached_reactions[index]] final temperature = [reagents.chem_temp], ph = [reagents.ph], time taken = [react_time]s.")
 		var/datum/chemical_reaction/reaction = cached_reactions[index]
 		for(var/reagent_type in reaction.results)
-			var/datum/reagent/reagent = reagents.get_reagent(reagent_type)
+			var/datum/reagent/reagent = reagents.has_reagent(reagent_type)
 			if(!reagent)
 				say(span_warning("Unable to find product [reagent_type] in holder after reaction! reagents found are:"))
 				for(var/other_reagent in reagents.reagent_list)
 					say("[other_reagent]")
-				var/obj/item/reagent_containers/glass/beaker/bluespace/beaker = new /obj/item/reagent_containers/glass/beaker/bluespace(loc)
+				var/obj/item/reagent_containers/cup/beaker/bluespace/beaker = new /obj/item/reagent_containers/cup/beaker/bluespace(loc)
 				reagents.trans_to(beaker)
 				beaker.name = "[cached_reactions[index]] failed"
 				if(!failed)
@@ -152,7 +151,7 @@
 				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] [span_warning("[reagent.volume]u")] purity of [reagent.purity] index:[index]\n"
 			cached_purity = reagent.purity
 		if(beaker_spawn && reagents.total_volume)
-			var/obj/item/reagent_containers/glass/beaker/bluespace/beaker = new /obj/item/reagent_containers/glass/beaker/bluespace(loc)
+			var/obj/item/reagent_containers/cup/beaker/bluespace/beaker = new /obj/item/reagent_containers/cup/beaker/bluespace(loc)
 			reagents.trans_to(beaker)
 			beaker.name = "[cached_reactions[index]] purity: [cached_purity]"
 		reagents.clear_reagents()
@@ -232,7 +231,7 @@
 			continue
 		if(!equilibrium.reaction.results)//Incase of no result reactions
 			continue
-		var/datum/reagent/reagent = reagents.get_reagent(equilibrium.reaction.results[1]) //Reactions are named after their primary products
+		var/datum/reagent/reagent = reagents.has_reagent(equilibrium.reaction.results[1]) //Reactions are named after their primary products
 		if(!reagent)
 			continue
 		var/overheat = FALSE

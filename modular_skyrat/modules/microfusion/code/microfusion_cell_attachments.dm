@@ -11,8 +11,6 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	w_class = WEIGHT_CLASS_NORMAL
 	/// The overlay that will be automatically added, must be in the cells icon.
 	var/attachment_overlay_icon_state
-	 /// Does this attachment process with the cell?
-	var/processing_attachment = FALSE
 
 
 /obj/item/microfusion_cell_attachment/proc/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
@@ -20,7 +18,7 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	START_PROCESSING(SSobj, microfusion_cell)
 	return
 
-/obj/item/microfusion_cell_attachment/proc/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
+/obj/item/microfusion_cell_attachment/proc/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, seconds_per_tick)
 	return PROCESS_KILL
 
 /obj/item/microfusion_cell_attachment/proc/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
@@ -29,31 +27,11 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	return
 
 /*
-rechargeable ATTACHMENT
-
-Allows the cell to be recharged at a gun recharger OR cell recharger.
-*/
-/obj/item/microfusion_cell_attachment/rechargeable
-	name = "rechargeable microfusion cell attachment"
-	desc = "An adapter meant to be plugged into a microfusion cell, allowing the cell to be recharged at recharge stations for both weapons and civilian-grade batteries. Neither Allstar Lasers Incorporated or Micron Control Systems Incorporated suggest licking the prongs."
-	icon_state = "attachment_rechargeable"
-	attachment_overlay_icon_state = "microfusion_rechargeable"
-	/// The bonus charge rate by adding this attachment.
-	var/bonus_charge_rate = 300
-
-/obj/item/microfusion_cell_attachment/rechargeable/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
-	. = ..()
-	microfusion_cell.chargerate += bonus_charge_rate
-
-/obj/item/microfusion_cell_attachment/rechargeable/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
-	. = ..()
-	microfusion_cell.chargerate -= bonus_charge_rate
-
-/*
 OVERCAPACITY ATTACHMENT
 
 Increases the cell capacity by a set percentage.
 */
+
 /obj/item/microfusion_cell_attachment/overcapacity
 	name = "overcapacity microfusion cell attachment"
 	desc = "An attachment which increases the capacity of the microfusion cell it's attached to. These are an additional, smaller capacitor, using a system to automatically switch from the cell to the capacitor as it's depleted, maximizing the weapon's charge."
@@ -102,6 +80,7 @@ SELFCHARGE ATTACHMENT
 The cell will charge itself.
 If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 */
+
 /obj/item/microfusion_cell_attachment/selfcharging
 	name = "self-charging microfusion cell attachment"
 	desc = "While microfusion cells are normally shipped without their fuel source, this attachment comes with fifteen grams of hydrogen fuel; allowing the cell to sustain a small, yet active reaction to self-charge. These can keep going for weeks to months in ideal conditions, making them more than enough for most campaigns."
@@ -122,11 +101,11 @@ If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 	. = ..()
 	microfusion_cell.self_charging = FALSE
 
-/obj/item/microfusion_cell_attachment/selfcharging/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
+/obj/item/microfusion_cell_attachment/selfcharging/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, seconds_per_tick)
+	if(!microfusion_cell.parent_gun)
+		return
 	if(microfusion_cell.charge < microfusion_cell.maxcharge)
-		microfusion_cell.charge = clamp(microfusion_cell.charge + (self_charge_amount * delta_time), 0, microfusion_cell.maxcharge)
-		if(microfusion_cell.parent_gun)
-			microfusion_cell.parent_gun.update_appearance()
-		if(!microfusion_cell.stabilised && DT_PROB(1, delta_time))
-			radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)
-
+		microfusion_cell.give(self_charge_amount * seconds_per_tick)
+		microfusion_cell.parent_gun.update_appearance()
+	if(!microfusion_cell.stabilised && SPT_PROB(1, seconds_per_tick))
+		radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)

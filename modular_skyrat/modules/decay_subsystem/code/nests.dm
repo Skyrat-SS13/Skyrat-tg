@@ -12,12 +12,12 @@
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_LAVA
+	faction = list(NEST_FACTION)
 	var/spawn_delay = 0
 	/// What mob to spawn
 	var/list/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
 	var/max_mobs = 3
-	var/list/faction = list(NEST_FACTION)
 	var/spawned_mobs = 0
 	/// How long it takes for a new mob to emerge after being triggered.
 	var/spawn_cooldown = 30 SECONDS
@@ -36,7 +36,7 @@
 	/// Does this nest passively spawn mobs too?
 	var/passive_spawning = FALSE
 
-/obj/structure/mob_spawner/Initialize()
+/obj/structure/mob_spawner/Initialize(mapload)
 	. = ..()
 	calculate_trigger_turfs()
 	if(passive_spawning)
@@ -45,7 +45,7 @@
 /obj/structure/mob_spawner/proc/calculate_trigger_turfs()
 	for(var/turf/open/seen_turf in view(trigger_range, src))
 		registered_turfs += seen_turf
-		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
+		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, PROC_REF(proximity_trigger))
 
 /obj/structure/mob_spawner/atom_destruction(damage_flag)
 	if(loot)
@@ -66,7 +66,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/structure/mob_spawner/process(delta_time)
+/obj/structure/mob_spawner/process(seconds_per_tick)
 	if(passive_spawning)
 		if(spawned_mobs >= max_mobs)
 			return
@@ -107,7 +107,7 @@
 	spawned_mob.faction = faction
 	spawned_mob.ghost_controllable = ghost_controllable
 
-	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
+	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
 
@@ -125,20 +125,22 @@
 		var/mob/living/simple_animal/L = new chosen_mob_type(loc)
 		visible_message(span_danger("[L] emerges from [src]."))
 		retaliated = TRUE
-		addtimer(CALLBACK(src, .proc/ready_retaliate), retaliate_cooldown)
+		addtimer(CALLBACK(src, PROC_REF(ready_retaliate)), retaliate_cooldown)
 
 /obj/structure/mob_spawner/proc/ready_retaliate()
 	retaliated = FALSE
 	visible_message(span_danger("[src] calms down."))
 
-///////////// CUSTOM SPAWNERS
+/*
+*	CUSTOM SPAWNERS
+*/
 
 /obj/structure/mob_spawner/spiders
 	name = "sticky cobwebs"
 	desc = "A mush of sticky cobwebs and nasty looking eggs..."
 	icon_state = "nest_spider"
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
-	monster_types = list(/mob/living/simple_animal/hostile/giant_spider/hunter, /mob/living/simple_animal/hostile/giant_spider)
+	monster_types = list(/mob/living/basic/spider/giant/hunter, /mob/living/basic/spider/giant/)
 	loot = list(/obj/item/spider_egg = 4)
 
 /obj/item/spider_egg
@@ -153,7 +155,7 @@
 	if(do_after(user, 3 SECONDS, src))
 		to_chat(user, span_userdanger("You crack [src] open, something monsterous crawls out!"))
 		playsound(src, 'sound/effects/blobattack.ogg', 100)
-		new /mob/living/simple_animal/hostile/giant_spider (user.loc)
+		new /mob/living/basic/spider/giant/ (user.loc)
 		qdel(src)
 
 /obj/structure/mob_spawner/bush
@@ -161,7 +163,7 @@
 	desc = "A bush... oozing blood?"
 	icon_state = "nest_grass"
 	light_color = LIGHT_COLOR_GREEN
-	monster_types = list(/mob/living/simple_animal/hostile/killertomato)
+	monster_types = list(/mob/living/basic/killer_tomato)
 	loot = list(/obj/item/seeds/random = 3)
 	max_mobs = 6
 
@@ -169,11 +171,11 @@
 	name = "beehive"
 	desc = "Filled with little beings that exist only to make your life a living hell."
 	icon_state = "nest_bee"
-	light_color = LIGHT_COLOR_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/bee)
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
+	monster_types = list(/mob/living/basic/bee)
 	max_mobs = 15
 	spawn_cooldown = 5 SECONDS
-	loot = list(/obj/item/reagent_containers/honeycomb = 5, /obj/item/queen_bee)
+	loot = list(/obj/item/food/honeycomb = 5, /obj/item/queen_bee)
 	var/swarmed = FALSE
 
 /obj/structure/mob_spawner/beehive/attacked_by(obj/item/I, mob/living/user)
@@ -182,14 +184,14 @@
 		playsound(src, 'sound/creatures/bee.ogg', 100)
 		visible_message(span_userdanger("[src] buzzes violently as bees pour out!"))
 		for(var/i=1, i<max_mobs, ++i)
-			new /mob/living/simple_animal/hostile/bee (loc)
+			new /mob/living/basic/bee (loc)
 		swarmed = TRUE
 
 /obj/structure/mob_spawner/beehive/toxic
 	name = "oozing beehive"
 	desc = "A beehive... it looks off however, it's oozing some kind of green glowing goop."
 	icon_state = "nest_bee_toxic"
-	monster_types = list(/mob/living/simple_animal/hostile/bee/toxin)
+	monster_types = list(/mob/living/basic/bee/toxin)
 	max_mobs = 6
 	color = LIGHT_COLOR_ELECTRIC_GREEN
 
@@ -197,8 +199,8 @@
 	name = "disgusting eggs"
 	desc = "These pulsating eggs are oozing out a puss like substance..."
 	icon_state = "nest_eggs"
-	light_color = LIGHT_COLOR_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/retaliate/snake)
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
+	monster_types = list(/mob/living/basic/snake)
 	max_mobs = 8
 	spawn_cooldown = 5 SECONDS
 
@@ -209,7 +211,7 @@
 	light_color = LIGHT_COLOR_GREEN
 	max_mobs = 8
 	spawn_cooldown = 15 SECONDS
-	monster_types = list(/mob/living/simple_animal/hostile/rat)
+	monster_types = list(/mob/living/basic/mouse/rat)
 	loot = list(/obj/item/seeds/replicapod = 2)
 
 /obj/structure/mob_spawner/grapes

@@ -4,14 +4,15 @@
 	name = "improvised firebomb"
 	desc = "A weak, improvised incendiary device."
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'icons/obj/grenade.dmi'
+	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "improvised_grenade"
+	icon_state_preview = "ied_preview"
 	inhand_icon_state = "flashbang"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	throw_speed = 3
 	throw_range = 7
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
 	active = FALSE
 	det_time = 50
@@ -38,12 +39,12 @@
 	check_parts = TRUE
 
 /obj/item/grenade/iedcasing/spawned/Initialize(mapload)
-	new /obj/item/reagent_containers/food/drinks/soda_cans/random(src)
+	new /obj/item/reagent_containers/cup/soda_cans/random(src)
 	return ..()
 
 /obj/item/grenade/iedcasing/CheckParts(list/parts_list)
 	..()
-	var/obj/item/reagent_containers/food/drinks/soda_cans/can = locate() in contents
+	var/obj/item/reagent_containers/cup/soda_cans/can = locate() in contents
 	if(!can)
 		stack_trace("[src] generated without a soda can!") //this shouldn't happen.
 		qdel(src)
@@ -65,6 +66,9 @@
 
 /obj/item/grenade/iedcasing/detonate(mob/living/lanced_by) //Blowing that can up
 	. = ..()
+	if(!.)
+		return
+
 	update_mob()
 	explosion(src, devastation_range = -1, heavy_impact_range = -1, light_impact_range = 2, flame_range = 4) // small explosion, plus a very large fireball.
 	qdel(src)

@@ -27,12 +27,12 @@
 
 /obj/docking_port/mobile/tradership
 	name = "trade shuttle"
-	id = "tradership"
+	shuttle_id = "tradership"
 	rechargeTime = 2 MINUTES
 
 /obj/docking_port/stationary/picked/tradership
 	name = "Deep Space"
-	id = "tradership_away"
+	shuttle_id = "tradership_away"
 	dheight = 0
 	dir = 2
 	dwidth = 11
@@ -41,18 +41,25 @@
 	shuttlekeys = list("tradership")
 
 /obj/structure/closet/crate/tradership_cargo
+	/// Determines which items will be spawned, overriding itemspawn_seed
 	var/used_preset
+	/// Determines which items will be spawned
+	var/itemspawn_seed
+
+/obj/structure/closet/crate/tradership_cargo/Initialize(mapload)
+	itemspawn_seed = used_preset || rand(1,5)
+	return ..()
 
 //Generic inventory
 /obj/structure/closet/crate/tradership_cargo/PopulateContents()
-	. = ..()
-	var/random = used_preset || rand(1,5)
-	switch(random)
+	..()
+
+	switch(itemspawn_seed)
 		if(1)
 			for(var/i in 1 to 10)
 				new /obj/item/food/canned/beans(src)
 			for(var/i in 1 to 10)
-				new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+				new /obj/item/reagent_containers/cup/glass/waterbottle(src)
 		if(2)
 			new /obj/item/stack/sheet/iron/fifty(src)
 			new /obj/item/stack/rods/fifty(src)
@@ -73,9 +80,9 @@
 			name = "internals crate"
 			icon_state = "o2crate"
 		if(4)
-			new /obj/item/storage/firstaid/regular(src)
-			new /obj/item/storage/firstaid/o2(src)
-			new /obj/item/storage/firstaid/toxin(src)
+			new /obj/item/storage/medkit/regular(src)
+			new /obj/item/storage/medkit/o2(src)
+			new /obj/item/storage/medkit/toxin(src)
 			new /obj/item/reagent_containers/hypospray/medipen(src)
 			new /obj/item/reagent_containers/hypospray/medipen/ekit(src)
 			desc = "A medical crate."
@@ -87,10 +94,17 @@
 			new /obj/item/storage/toolbox/electrical(src)
 			new /obj/item/storage/toolbox/mechanical(src)
 			new /obj/item/storage/toolbox/mechanical(src)
-			new /obj/item/clothing/gloves/color/yellow(src)
-			new /obj/item/clothing/gloves/color/yellow(src)
 			name = "engineering crate"
 			icon_state = "engi_crate"
+
+// traitor objective items
+/obj/structure/closet/crate/tradership_cargo/populate_contents_immediate()
+	. = ..()
+
+	switch(itemspawn_seed)
+		if(5)
+			new /obj/item/clothing/gloves/color/yellow(src)
+			new /obj/item/clothing/gloves/color/yellow(src)
 
 /obj/structure/closet/crate/freezer/tradership_cargo_freezer
 	var/used_preset
@@ -112,14 +126,14 @@
 			for(var/i in 1 to 3)
 				new /obj/item/reagent_containers/blood/random(src)
 		if(2)
-			new /obj/item/bodypart/l_arm/robot(src)
-			new /obj/item/bodypart/l_arm/robot(src)
-			new /obj/item/bodypart/r_arm/robot(src)
-			new /obj/item/bodypart/r_arm/robot(src)
-			new /obj/item/bodypart/l_leg/robot(src)
-			new /obj/item/bodypart/l_leg/robot(src)
-			new /obj/item/bodypart/r_leg/robot(src)
-			new /obj/item/bodypart/r_leg/robot(src)
+			new /obj/item/bodypart/arm/left/robot(src)
+			new /obj/item/bodypart/arm/left/robot(src)
+			new /obj/item/bodypart/arm/right/robot(src)
+			new /obj/item/bodypart/arm/right/robot(src)
+			new /obj/item/bodypart/leg/left/robot(src)
+			new /obj/item/bodypart/leg/left/robot(src)
+			new /obj/item/bodypart/leg/right/robot(src)
+			new /obj/item/bodypart/leg/right/robot(src)
 		if(3)
 			for(var/i in 1 to 6)
 				new /obj/item/storage/box/ingredients/wildcard(src)
@@ -146,7 +160,7 @@
 		if(1) //Random traitor items
 			new /obj/item/storage/box/syndie_kit/chameleon(src)
 			new /obj/item/storage/backpack/duffelbag/syndie/c4(src)
-			new /obj/item/camera_bug(src)
+			new /obj/item/computer_disk/syndicate/camera_app(src)
 			new /obj/item/gun/chem(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/card/emag/doorjack(src)
@@ -157,9 +171,9 @@
 		if(2) //Energy weapons + energy knives
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun(src)
+			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun/mini(src)
-			new /obj/item/gun/energy/kinetic_accelerator/crossbow(src)
-			new /obj/item/gun/energy/e_gun/nuclear(src)
+			new /obj/item/gun/energy/recharge/ebow(src)
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
 		if(3) //Ballistics + knives
@@ -167,20 +181,17 @@
 			new /obj/item/knife/combat(src)
 			new /obj/item/switchblade(src)
 			new /obj/item/switchblade(src)
-			new /obj/item/gun/ballistic/automatic/cfa_wildcat(src)
-			new /obj/item/gun/ballistic/automatic/cfa_wildcat(src)
+			new /obj/item/gun/ballistic/automatic/sol_smg(src)
+			new /obj/item/gun/ballistic/automatic/sol_smg(src)
 			for(var/i in 1 to 2)
-				new /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat(src)
-				new /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat(src)
-			new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
+				new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
+				new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
+			new /obj/item/gun/ballistic/automatic/lanca(src)
 			for(var/i in 1 to 2)
-				new /obj/item/ammo_box/magazine/akm(src)
-			new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
+				new /obj/item/ammo_box/magazine/lanca(src)
+			new /obj/item/gun/ballistic/automatic/miecz(src)
 			for(var/i in 1 to 2)
-				new /obj/item/ammo_box/magazine/ppsh(src)
-			new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
-			for(var/i in 1 to 2)
-				new /obj/item/ammo_box/magazine/stg(src)
+				new /obj/item/ammo_box/magazine/miecz(src)
 
 		if(4) //MODsuits
 			new /obj/item/mod/control/pre_equipped/mining(src)
@@ -191,11 +202,11 @@
 			new /obj/item/mod/control/pre_equipped/elite(src)
 		if(5) //Implants
 			new /obj/item/storage/box/cyber_implants(src)
-			new /obj/item/organ/cyberimp/arm/combat(src)
-			new /obj/item/organ/cyberimp/arm/surgery(src)
-			new /obj/item/organ/cyberimp/arm/baton(src)
-			new /obj/item/organ/cyberimp/arm/toolset(src)
-			new /obj/item/organ/cyberimp/arm/gun/taser(src)
+			new /obj/item/organ/internal/cyberimp/arm/combat(src)
+			new /obj/item/organ/internal/cyberimp/arm/surgery(src)
+			new /obj/item/organ/internal/cyberimp/arm/baton(src)
+			new /obj/item/organ/internal/cyberimp/arm/toolset(src)
+			new /obj/item/organ/internal/cyberimp/arm/gun/taser(src)
 
 /obj/structure/closet/crate/secure/tradership_cargo_very_valuable
 	req_access = ACCESS_FACTION_COMMAND

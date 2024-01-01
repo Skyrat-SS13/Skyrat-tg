@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bh" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "bn" = (
@@ -17,9 +15,9 @@
 "dF" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "dQ" = (
 /obj/structure/extinguisher_cabinet{
@@ -28,14 +26,12 @@
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "ec" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "er" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "ex" = (
@@ -59,7 +55,7 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "gu" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/escape)
 "gC" = (
@@ -75,16 +71,14 @@
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/escape)
 "iX" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/machinery/light/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "iY" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "jo" = (
 /obj/structure/chair/comfy/shuttle{
@@ -97,9 +91,7 @@
 /area/shuttle/escape)
 "jG" = (
 /obj/structure/closet/secure_closet/medical1,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "kh" = (
@@ -117,8 +109,8 @@
 /area/shuttle/escape)
 "lP" = (
 /obj/structure/table/wood,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/regular{
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/regular{
 	pixel_x = 2;
 	pixel_y = 3
 	},
@@ -127,28 +119,26 @@
 /area/shuttle/escape)
 "mX" = (
 /obj/structure/table/wood,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "nE" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency Shuttle Command Bedroom";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "oL" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "oY" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Emergency Shuttle Brig";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "pm" = (
 /obj/machinery/door/airlock/titanium{
@@ -187,29 +177,25 @@
 /area/shuttle/escape)
 "rk" = (
 /obj/structure/closet,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "rq" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
 "tn" = (
 /obj/structure/table/wood,
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "tv" = (
 /obj/structure/table/glass,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/brute{
+/obj/item/storage/medkit/o2,
+/obj/item/storage/medkit/brute{
 	pixel_x = 2;
 	pixel_y = 3
 	},
@@ -218,7 +204,7 @@
 "tw" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency Shuttle Cockpit";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -242,11 +228,11 @@
 /area/shuttle/escape)
 "vD" = (
 /obj/structure/table/glass,
-/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/item/surgery_tray/full,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "vI" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "wg" = (
@@ -276,7 +262,7 @@
 "AQ" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency Shuttle Cockpit";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -305,19 +291,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape)
-"En" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/white,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "ED" = (
 /obj/machinery/vending/medical,
@@ -327,12 +301,10 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "FG" = (
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "Go" = (
@@ -341,9 +313,7 @@
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "Hk" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
@@ -352,7 +322,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "HI" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "HP" = (
@@ -365,7 +335,7 @@
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
 "Iz" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -381,19 +351,17 @@
 /area/shuttle/escape)
 "Kx" = (
 /obj/structure/table/glass,
-/obj/item/storage/firstaid/regular{
+/obj/item/storage/medkit/regular{
 	pixel_x = 2;
 	pixel_y = 3
 	},
 /obj/item/crowbar,
-/obj/item/storage/firstaid/fire,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/item/storage/medkit/fire,
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "OE" = (
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "OW" = (
 /obj/structure/closet/emcloset,
@@ -419,31 +387,27 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "RH" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/escape)
 "RL" = (
-/obj/machinery/light,
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "SP" = (
 /obj/structure/chair/comfy/shuttle,
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "Tg" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 "TT" = (
 /obj/machinery/stasis,
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "VC" = (
@@ -453,7 +417,7 @@
 "VJ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/fancy/donut_box,
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "Xj" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
@@ -479,9 +443,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 
@@ -672,7 +634,7 @@ gd
 Tg
 Tg
 Tg
-En
+Tg
 uc
 Tg
 Tg

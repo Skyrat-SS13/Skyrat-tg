@@ -23,7 +23,6 @@
 	desc = "Tactical gloves made for military personnel, they are thin to allow easy operation of most firearms."
 	icon_state = "military_gloves"
 	siemens_coefficient = 0.4
-	permeability_coefficient = 0.4
 	strip_delay = 60
 	equip_delay_other = 60
 	cold_protection = HANDS
@@ -31,3 +30,29 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
+
+/obj/item/clothing/gloves/bracer/wraps
+	name = "cloth arm wraps"
+	desc = "Cloth bracers, the colour all left up to the choice of the wearer."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	icon_state = "arm_wraps"
+	inhand_icon_state = "greyscale_gloves"
+	greyscale_config = /datum/greyscale_config/armwraps
+	greyscale_config_worn = /datum/greyscale_config/armwraps/worn
+	greyscale_colors = "#FFFFFF"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/gloves
+	worn_icon_teshari = TESHARI_HANDS_ICON
+
+/obj/item/clothing/gloves/maid_arm_covers
+	name = "maid arm covers"
+	desc = "Maid in China."
+	icon_state = "maid_arm_covers"
+	greyscale_config = /datum/greyscale_config/maid_arm_covers
+	greyscale_config_worn = /datum/greyscale_config/maid_arm_covers/worn
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_colors = "#7b9ab5#edf9ff"
+	flags_1 = IS_PLAYER_COLORABLE_1
+

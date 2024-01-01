@@ -12,8 +12,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	verb_ask = "queries"
 	verb_exclaim = "alarms"
 
-	idle_power_usage = 20
-	active_power_usage = 50
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.05
 
 	circuit = /obj/item/circuitboard/machine/announcement_system
 
@@ -55,7 +54,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system/screwdriver_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
-	panel_open = !panel_open
+	toggle_panel_open()
 	to_chat(user, span_notice("You [panel_open ? "open" : "close"] the maintenance hatch of [src]."))
 	update_appearance()
 	return TRUE
@@ -88,10 +87,6 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
-	//SKYRAT EDIT ADDITION
-	else if(message_type == "CRYOSTORAGE")
-		message = "[user][rank ? ", [rank]" : ""] has been moved to cryo storage."
-	//SKYRAT EDIT END
 
 	broadcast(message, channels)
 
@@ -104,6 +99,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /// Sends a message to the appropriate channels.
 /obj/machinery/announcement_system/proc/broadcast(message, list/channels)
+	use_power(active_power_usage)
 	if(channels.len == 0)
 		radio.talk_into(src, message, null)
 	else
@@ -128,7 +124,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	. = ..()
 	if(.)
 		return
-	if(!usr.canUseTopic(src, !issilicon(usr)))
+	if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & BROKEN)
 		visible_message(span_warning("[src] buzzes."), span_hear("You hear a faint buzz."))
@@ -137,18 +133,18 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	switch(action)
 		if("ArrivalText")
 			var/NewMessage = trim(html_encode(param["newText"]), MAX_MESSAGE_LEN)
-			if(!usr.canUseTopic(src, !issilicon(usr)))
+			if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
 			if(NewMessage)
 				arrival = NewMessage
-				log_game("The arrivals announcement was updated: [NewMessage] by:[key_name(usr)]")
+				usr.log_message("updated the arrivals announcement to: [NewMessage]", LOG_GAME)
 		if("NewheadText")
 			var/NewMessage = trim(html_encode(param["newText"]), MAX_MESSAGE_LEN)
-			if(!usr.canUseTopic(src, !issilicon(usr)))
+			if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
 			if(NewMessage)
 				newhead = NewMessage
-				log_game("The head announcement was updated: [NewMessage] by:[key_name(usr)]")
+				usr.log_message("updated the head announcement to: [NewMessage]", LOG_GAME)
 		if("NewheadToggle")
 			newheadToggle = !newheadToggle
 			update_appearance()
@@ -161,7 +157,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	. = attack_ai(user)
 
 /obj/machinery/announcement_system/attack_ai(mob/user)
-	if(!user.canUseTopic(src, !issilicon(user)))
+	if(!user.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & BROKEN)
 		to_chat(user, span_warning("[src]'s firmware appears to be malfunctioning!"))
@@ -180,8 +176,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!(machine_stat & (NOPOWER|BROKEN)) && !(. & EMP_PROTECT_SELF))
 		act_up()
 
-/obj/machinery/announcement_system/emag_act()
+/obj/machinery/announcement_system/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
 	act_up()
+	balloon_alert(user, "announcement strings corrupted")
+	return TRUE

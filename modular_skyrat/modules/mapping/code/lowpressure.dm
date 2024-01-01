@@ -29,3 +29,14 @@
 
 /turf/open/floor/mineral/titanium/lowpressure
 	initial_gas_mix = "o2=14;n2=30;TEMP=293.15"
+
+/turf/open/floor/iron/stairs/lowpressure
+	icon_state = "stairs-old"
+	base_icon_state = "stairs-old"
+	initial_gas_mix = "o2=14;n2=30;TEMP=293.15"
+
+/turf/open/floor/wood/lowpressure
+	initial_gas_mix = "o2=14;n2=30;TEMP=293.15"
+
+/turf/open/floor/iron/recharge_floor/asteroid/lowpressure
+	initial_gas_mix = "o2=14;n2=30;TEMP=293.15"

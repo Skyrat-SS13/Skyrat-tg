@@ -3,6 +3,8 @@
 	desc = "It's a kit containing a hypospray and specific treatment chemical-filled vials."
 	icon = 'modular_skyrat/modules/hyposprays/icons/hypokits.dmi'
 	icon_state = "firstaid-mini"
+	worn_icon_state = "healthanalyzer" // Get a better sprite later
+	inhand_icon_state = "medkit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
@@ -19,15 +21,14 @@
 	. = ..()
 	. += span_notice("Ctrl-Shift-Click to reskin this")
 
-/obj/item/storage/hypospraykit/Initialize()
+/obj/item/storage/hypospraykit/Initialize(mapload)
 	. = ..()
 	if(!length(case_designs))
 		populate_case_designs()
-	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
-	stored.max_items = 12
-	stored.can_hold = typecacheof(list(
+	atom_storage.max_slots = 12
+	atom_storage.can_hold = typecacheof(list(
 		/obj/item/hypospray/mkii,
-		/obj/item/reagent_containers/glass/vial
+		/obj/item/reagent_containers/cup/vial
 	))
 	update_icon_state()
 	update_icon()
@@ -64,7 +65,7 @@
 	var/casetype = cmo_case_designs
 	if(!src.cmo_case)
 		casetype = case_designs
-	var/choice = show_radial_menu(user, src , casetype, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(user, src , casetype, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 42, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_case = choice
@@ -90,14 +91,12 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
 
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
 	desc = "A kit containing a deluxe hypospray and vials."
 	icon_state = "tactical-mini"
+	inhand_icon_state = "medkit-tactical"
 	current_case = "tactical"
 	cmo_case = TRUE
 
@@ -105,16 +104,16 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii/cmo(src)
-	new /obj/item/reagent_containers/glass/vial/large/multiver(src)
-	new /obj/item/reagent_containers/glass/vial/large/salglu(src)
-	new /obj/item/reagent_containers/glass/vial/large/synthflesh(src)
+	new /obj/item/reagent_containers/cup/vial/large/multiver(src)
+	new /obj/item/reagent_containers/cup/vial/large/salglu(src)
+	new /obj/item/reagent_containers/cup/vial/large/synthflesh(src)
 
 /obj/item/storage/box/vials
 	name = "box of hypovials"
 
 /obj/item/storage/box/vials/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/vial/small( src )
+		new /obj/item/reagent_containers/cup/vial/small( src )
 
 /obj/item/storage/box/hypospray
 	name = "box of hypospray kits"

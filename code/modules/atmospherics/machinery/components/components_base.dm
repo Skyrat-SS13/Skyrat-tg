@@ -3,17 +3,18 @@
 
 /obj/machinery/atmospherics/components
 	hide = FALSE
+	layer = GAS_PUMP_LAYER
 	///Is the component welded?
 	var/welded = FALSE
 	///Should the component should show the pipe underneath it?
 	var/showpipe = TRUE
 	///When the component is on a non default layer should we shift everything? Or just the underlay pipe
 	var/shift_underlay_only = TRUE
-	///Stores the component pipeline
+	///Stores the parent pipeline, used in components
 	var/list/datum/pipeline/parents
 	///If this is queued for a rebuild this var signifies whether parents should be updated after it's done
 	var/update_parents_after_rebuild = FALSE
-	///Stores the component gas mixture
+	///Stores the gasmix for each node, used in components
 	var/list/datum/gas_mixture/airs
 	///Handles whether the custom reconcilation handling should be used
 	var/custom_reconcilation = FALSE
@@ -35,7 +36,7 @@
 	. = ..()
 
 	if(hide)
-		RegisterSignal(src, COMSIG_OBJ_HIDE, .proc/hide_pipe)
+		RegisterSignal(src, COMSIG_OBJ_HIDE, PROC_REF(hide_pipe))
 
 // Iconnery
 
@@ -48,9 +49,13 @@
 /**
  * Called in Initialize(), set the showpipe var to true or false depending on the situation, calls update_icon()
  */
-/obj/machinery/atmospherics/components/proc/hide_pipe(datum/source, covered)
+/obj/machinery/atmospherics/components/proc/hide_pipe(datum/source, underfloor_accessibility)
 	SIGNAL_HANDLER
-	showpipe = !covered
+	showpipe = !!underfloor_accessibility
+	if(showpipe)
+		REMOVE_TRAIT(src, TRAIT_UNDERFLOOR, REF(src))
+	else
+		ADD_TRAIT(src, TRAIT_UNDERFLOOR, REF(src))
 	update_appearance()
 
 /obj/machinery/atmospherics/components/update_icon()
@@ -59,7 +64,7 @@
 	underlays.Cut()
 
 	color = null
-	plane = showpipe ? GAME_PLANE : FLOOR_PLANE
+	SET_PLANE_IMPLICIT(src, showpipe ? GAME_PLANE : FLOOR_PLANE)
 
 	if(!showpipe)
 		return ..()
@@ -73,14 +78,14 @@
 			continue
 		var/obj/machinery/atmospherics/node = nodes[i]
 		var/node_dir = get_dir(src, node)
-		var/mutable_appearance/pipe_appearance = mutable_appearance('icons/obj/atmospherics/pipes/pipe_underlays.dmi', "intact_[node_dir]_[underlay_pipe_layer]")
+		var/mutable_appearance/pipe_appearance = mutable_appearance('icons/obj/pipes_n_cables/pipe_underlays.dmi', "intact_[node_dir]_[underlay_pipe_layer]")
 		pipe_appearance.color = node.pipe_color
 		underlays += pipe_appearance
 		connected |= node_dir
 
 	for(var/direction in GLOB.cardinals)
 		if((initialize_directions & direction) && !(connected & direction))
-			var/mutable_appearance/pipe_appearance = mutable_appearance('icons/obj/atmospherics/pipes/pipe_underlays.dmi', "exposed_[direction]_[underlay_pipe_layer]")
+			var/mutable_appearance/pipe_appearance = mutable_appearance('icons/obj/pipes_n_cables/pipe_underlays.dmi', "exposed_[direction]_[underlay_pipe_layer]")
 			pipe_appearance.color = pipe_color
 			underlays += pipe_appearance
 
@@ -96,9 +101,13 @@
 	airs[i] = null
 	return ..()
 
-/obj/machinery/atmospherics/components/on_construction()
+/obj/machinery/atmospherics/components/on_construction(mob/user)
 	. = ..()
 	update_parents()
+
+/obj/machinery/atmospherics/components/on_deconstruction()
+	relocate_airs()
+	return ..()
 
 /obj/machinery/atmospherics/components/rebuild_pipes()
 	. = ..()
@@ -129,6 +138,8 @@
 			parents[i] = null // Disconnects from the machinery side.
 
 	reference.other_atmos_machines -= src
+	if(custom_reconcilation)
+		reference.require_custom_reconcilation -= src
 
 	/**
 	 *  We explicitly qdel pipeline when this particular pipeline
@@ -164,31 +175,6 @@
 
 /obj/machinery/atmospherics/components/replace_pipenet(datum/pipeline/Old, datum/pipeline/New)
 	parents[parents.Find(Old)] = New
-
-/obj/machinery/atmospherics/components/unsafe_pressure_release(mob/user, pressures)
-	. = ..()
-
-	var/turf/current_turf = get_turf(src)
-	if(!current_turf)
-		return
-	//Remove the gas from airs and assume it
-	var/datum/gas_mixture/environment = current_turf.return_air()
-	var/lost = null
-	var/times_lost = 0
-	for(var/i in 1 to device_type)
-		var/datum/gas_mixture/air = airs[i]
-		lost += pressures*environment.volume/(air.temperature * R_IDEAL_GAS_EQUATION)
-		times_lost++
-	var/shared_loss = lost/times_lost
-
-	var/datum/gas_mixture/to_release
-	for(var/i in 1 to device_type)
-		var/datum/gas_mixture/air = airs[i]
-		if(!to_release)
-			to_release = air.remove(shared_loss)
-			continue
-		to_release.merge(air.remove(shared_loss))
-	current_turf.assume_air(to_release)
 
 // Helpers
 
@@ -238,9 +224,125 @@
 /obj/machinery/atmospherics/components/return_analyzable_air()
 	return airs
 
-/obj/machinery/atmospherics/components/paint(paint_color)
-	if(paintable)
-		add_atom_colour(paint_color, FIXED_COLOUR_PRIORITY)
-		pipe_color = paint_color
-		update_node_icon()
-	return paintable
+/**
+ * Handles machinery deconstruction and unsafe pressure release
+ */
+/obj/machinery/atmospherics/components/proc/crowbar_deconstruction_act(mob/living/user, obj/item/tool, internal_pressure = 0)
+	if(!panel_open)
+		balloon_alert(user, "open panel!")
+		return ITEM_INTERACT_SUCCESS
+	
+	var/unsafe_wrenching = FALSE
+	var/filled_pipe = FALSE
+	var/datum/gas_mixture/environment_air = loc.return_air()
+
+	for(var/i in 1 to device_type)
+		var/datum/gas_mixture/inside_air = airs[i]
+		if(inside_air.total_moles() > 0 || internal_pressure)
+			filled_pipe = TRUE
+		if(!nodes[i] || (istype(nodes[i], /obj/machinery/atmospherics/components/unary/portables_connector) && !portable_device_connected(i)))
+			internal_pressure = internal_pressure > airs[i].return_pressure() ? internal_pressure : airs[i].return_pressure()
+
+	if(!filled_pipe)
+		default_deconstruction_crowbar(tool)
+		return ITEM_INTERACT_SUCCESS
+	
+	to_chat(user, span_notice("You begin to unfasten \the [src]..."))
+
+	internal_pressure -= environment_air.return_pressure()
+
+	if(internal_pressure > 2 * ONE_ATMOSPHERE)
+		to_chat(user, span_warning("As you begin deconstructing \the [src] a gush of air blows in your face... maybe you should reconsider?"))
+		unsafe_wrenching = TRUE
+
+	if(!do_after(user, 2 SECONDS, src))
+		return
+	if(unsafe_wrenching)
+		unsafe_pressure_release(user, internal_pressure)
+	tool.play_tool_sound(src, 50)
+	deconstruct(TRUE)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/atmospherics/components/default_change_direction_wrench(mob/user, obj/item/I)
+	. = ..()
+	if(!.)
+		return FALSE
+	set_init_directions()
+	for(var/i in 1 to device_type)
+		var/obj/machinery/atmospherics/node = nodes[i]
+		if(node)
+			if(src in node.nodes)
+				node.disconnect(src)
+			nodes[i] = null
+		if(parents[i])
+			nullify_pipenet(parents[i])
+	for(var/i in 1 to device_type)
+		var/obj/machinery/atmospherics/node = nodes[i]
+		atmos_init()
+		node = nodes[i]
+		if(node)
+			node.atmos_init()
+			node.add_member(src)
+			update_parents()
+		SSair.add_to_rebuild_queue(src)
+	return TRUE
+
+/**
+ * Disconnects all nodes from ourselves, remove us from the node's nodes.
+ * Nullify our parent pipenet
+ */
+/obj/machinery/atmospherics/components/proc/disconnect_nodes()
+	for(var/i in 1 to device_type)
+		var/obj/machinery/atmospherics/node = nodes[i]
+		if(node)
+			if(src in node.nodes) //Only if it's actually connected. On-pipe version would is one-sided.
+				node.disconnect(src)
+			nodes[i] = null
+		if(parents[i])
+			nullify_pipenet(parents[i])
+
+/**
+ * Connects all nodes to ourselves, add us to the node's nodes.
+ * Calls atmos_init() on the node and on us.
+ */
+/obj/machinery/atmospherics/components/proc/connect_nodes()
+	atmos_init()
+	for(var/i in 1 to device_type)
+		var/obj/machinery/atmospherics/node = nodes[i]
+		if(node)
+			node.atmos_init()
+			node.add_member(src)
+	SSair.add_to_rebuild_queue(src)
+
+/**
+ * Easy way to toggle nodes connection and disconnection.
+ *
+ * Arguments:
+ * * disconnect - if TRUE, disconnects all nodes. If FALSE, connects all nodes.
+ */
+/obj/machinery/atmospherics/components/proc/change_nodes_connection(disconnect)
+	if(disconnect)
+		disconnect_nodes()
+		return
+	connect_nodes()
+
+/obj/machinery/atmospherics/components/update_layer()
+	layer = initial(layer) + (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_LCHANGE + (GLOB.pipe_colors_ordered[pipe_color] * 0.001)
+
+/**
+ * Handles air relocation to the pipenet/environment
+ */
+/obj/machinery/atmospherics/components/proc/relocate_airs(datum/gas_mixture/to_release)
+	var/turf/local_turf = get_turf(src)
+	for(var/i in 1 to device_type)
+		var/datum/gas_mixture/air = airs[i]
+		if(!nodes[i] || (istype(nodes[i], /obj/machinery/atmospherics/components/unary/portables_connector) && !portable_device_connected(i)))
+			if(!to_release)
+				to_release = air
+				continue
+			to_release.merge(air)
+			continue
+		var/datum/gas_mixture/parents_air = parents[i].air
+		parents_air.merge(air)
+	if(to_release)
+		local_turf.assume_air(to_release)

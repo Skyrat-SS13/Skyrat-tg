@@ -5,46 +5,25 @@
  */
 
 import { canRender, classes } from 'common/react';
-import { Component, createRef, InfernoNode, RefObject } from 'inferno';
+import { forwardRef, ReactNode, RefObject, useEffect } from 'react';
+
 import { addScrollableNode, removeScrollableNode } from '../events';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
-interface SectionProps extends BoxProps {
-  className?: string;
-  title?: InfernoNode;
-  buttons?: InfernoNode;
-  fill?: boolean;
-  fitted?: boolean;
-  scrollable?: boolean;
-  /** @deprecated This property no longer works, please remove it. */
-  level?: boolean;
-  /** @deprecated Please use `scrollable` property */
-  overflowY?: any;
-}
-
-export class Section extends Component<SectionProps> {
-  scrollableRef: RefObject<HTMLDivElement>;
+export type SectionProps = Partial<{
+  buttons: ReactNode;
+  fill: boolean;
+  fitted: boolean;
   scrollable: boolean;
+  scrollableHorizontal: boolean;
+  title: ReactNode;
+  /** @member Callback function for the `scroll` event */
+  onScroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+}> &
+  BoxProps;
 
-  constructor(props) {
-    super(props);
-    this.scrollableRef = createRef();
-    this.scrollable = props.scrollable;
-  }
-
-  componentDidMount() {
-    if (this.scrollable) {
-      addScrollableNode(this.scrollableRef.current);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.scrollable) {
-      removeScrollableNode(this.scrollableRef.current);
-    }
-  }
-
-  render() {
+export const Section = forwardRef(
+  (props: SectionProps, ref: RefObject<HTMLDivElement>) => {
     const {
       className,
       title,
@@ -52,38 +31,58 @@ export class Section extends Component<SectionProps> {
       fill,
       fitted,
       scrollable,
+      scrollableHorizontal,
       children,
+      onScroll,
       ...rest
-    } = this.props;
+    } = props;
+
     const hasTitle = canRender(title) || canRender(buttons);
+
+    useEffect(() => {
+      if (!ref?.current) return;
+
+      if (scrollable || scrollableHorizontal) {
+        addScrollableNode(ref.current);
+        if (onScroll && ref.current) {
+          ref.current.onscroll = onScroll;
+        }
+      }
+      return () => {
+        if (!ref?.current) return;
+
+        if (scrollable || scrollableHorizontal) {
+          removeScrollableNode(ref.current);
+        }
+      };
+    }, []);
+
     return (
       <div
         className={classes([
           'Section',
-          Byond.IS_LTE_IE8 && 'Section--iefix',
           fill && 'Section--fill',
           fitted && 'Section--fitted',
           scrollable && 'Section--scrollable',
+          scrollableHorizontal && 'Section--scrollableHorizontal',
           className,
           computeBoxClassName(rest),
         ])}
-        {...computeBoxProps(rest)}>
+        {...computeBoxProps(rest)}
+        ref={ref}
+      >
         {hasTitle && (
           <div className="Section__title">
-            <span className="Section__titleText">
-              {title}
-            </span>
-            <div className="Section__buttons">
-              {buttons}
-            </div>
+            <span className="Section__titleText">{title}</span>
+            <div className="Section__buttons">{buttons}</div>
           </div>
         )}
         <div className="Section__rest">
-          <div ref={this.scrollableRef} className="Section__content">
+          <div onScroll={onScroll as any} className="Section__content">
             {children}
           </div>
         </div>
       </div>
     );
-  }
-}
+  },
+);

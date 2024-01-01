@@ -1,8 +1,9 @@
 /obj/machinery/atmospherics/components/trinary
-	icon = 'icons/obj/atmospherics/components/trinary_devices.dmi'
+	icon = 'icons/obj/machines/atmospherics/trinary_devices.dmi'
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|WEST
 	use_power = IDLE_POWER_USE
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION
 	device_type = TRINARY
 	layer = GAS_FILTER_LAYER
 	pipe_flags = PIPING_ONE_PER_TURF
@@ -39,13 +40,13 @@ Housekeeping and pipe network stuff
 	//Node 3 is rest output
 	//If we flip the filter, 1 and 3 shall exchange positions
 
-	var/node1_connect = turn(dir, -180)
+	var/node1_connect = REVERSE_DIR(dir)
 	var/node2_connect = turn(dir, -90)
 	var/node3_connect = dir
 
 	if(flipped)
-		node1_connect = turn(node1_connect, 180)
-		node3_connect = turn(node3_connect, 180)
+		node1_connect = REVERSE_DIR(node1_connect)
+		node3_connect = REVERSE_DIR(node3_connect)
 
 	return list(node1_connect, node2_connect, node3_connect)
 

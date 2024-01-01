@@ -5,7 +5,7 @@
 	. = ..()
 	if(!istype(parent, /obj/item/gun) && !istype(parent, /obj/item/weldingtool))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(wake_up))
 
 /datum/component/ammo_hud/Destroy()
 	turn_off()
@@ -13,8 +13,6 @@
 
 /datum/component/ammo_hud/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-
-	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED), .proc/turn_off)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -28,7 +26,8 @@
 /datum/component/ammo_hud/proc/turn_on()
 	SIGNAL_HANDLER
 
-	RegisterSignal(parent, COMSIG_UPDATE_AMMO_HUD, .proc/update_hud)
+	RegisterSignals(parent, list(COMSIG_PREQDELETED, COMSIG_ITEM_DROPPED), PROC_REF(turn_off))
+	RegisterSignals(parent, list(COMSIG_UPDATE_AMMO_HUD, COMSIG_GUN_CHAMBER_PROCESSED), PROC_REF(update_hud))
 
 	hud.turn_on()
 	update_hud()
@@ -36,11 +35,25 @@
 /datum/component/ammo_hud/proc/turn_off()
 	SIGNAL_HANDLER
 
-	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_UPDATE_AMMO_HUD))
+	UnregisterSignal(parent, list(COMSIG_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_UPDATE_AMMO_HUD, COMSIG_GUN_CHAMBER_PROCESSED))
 
 	if(hud)
 		hud.turn_off()
 		hud = null
+
+/// Returns get_ammo() with the appropriate args passed to it - some guns like the revolver and bow are special cases
+/datum/component/ammo_hud/proc/get_accurate_ammo_count(obj/item/gun/ballistic/the_gun)
+	// fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
+	if(istype(the_gun, /obj/item/gun/ballistic/revolver))
+		var/obj/item/gun/ballistic/revolver/the_revolver = the_gun
+		return the_revolver.get_ammo(countchambered = FALSE, countempties = FALSE)
+
+	// bows are also weird and shouldn't count the chambered
+	if(istype(the_gun, /obj/item/gun/ballistic/bow))
+		return the_gun.get_ammo(countchambered = FALSE)
+
+	return the_gun.get_ammo(countchambered = TRUE)
+
 
 /datum/component/ammo_hud/proc/update_hud()
 	SIGNAL_HANDLER
@@ -57,24 +70,10 @@
 			return
 
 		var/indicator
-		var/rounds = num2text(pew.get_ammo(TRUE))
+		var/rounds = num2text(get_accurate_ammo_count(pew))
 		var/oth_o
 		var/oth_t
 		var/oth_h
-
-		switch(pew.fire_select)
-			if(SELECT_SEMI_AUTOMATIC)
-				indicator = "semi"
-			if(SELECT_BURST_SHOT)
-				indicator = "burst"
-			if(SELECT_FULLY_AUTOMATIC)
-				indicator = "auto"
-
-		if(pew.safety)
-			indicator = "safe"
-
-		if(pew.jammed)
-			indicator = "jam"
 
 		switch(length(rounds))
 			if(1)
@@ -190,14 +189,14 @@
 		hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'>[battery_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 
 
-/obj/item/gun/ballistic/ComponentInitialize()
+/obj/item/gun/ballistic/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/ammo_hud)
 
-/obj/item/gun/energy/ComponentInitialize()
+/obj/item/gun/energy/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/ammo_hud)
 
-/obj/item/weldingtool/ComponentInitialize()
+/obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/ammo_hud)

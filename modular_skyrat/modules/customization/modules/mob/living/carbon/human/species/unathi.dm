@@ -1,44 +1,48 @@
 /datum/species/unathi
 	name = "Unathi"
 	id = SPECIES_UNATHI
-	default_color = "#4B4B4B"
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
-		HAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"spines" = "None",
-		"frills" = "None",
-		"horns" = ACC_RANDOM,
-		"body_markings" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = NUTS | FRUIT | MEAT
-	disliked_food = GRAIN | DAIRY | CLOTH
-	toxic_food = TOXIC
-	payday_modifier = 0.75
+	mutanttongue = /obj/item/organ/internal/tongue/unathi
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_id = SPECIES_LIZARD
+	examine_limb_id = SPECIES_LIZARD
+	ass_image = 'icons/ass/asslizard.png'
 
-/datum/species/unathi/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/lizard,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/lizard,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/lizard,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/lizard,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/lizard,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/lizard,
+	)
+
+/datum/species/unathi/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Smooth", TRUE),
+		"snout" = list("Sharp + Light", TRUE),
+		"spines" = list("None", FALSE),
+		"frills" = list("None", FALSE),
+		"horns" = list("Curled", TRUE),
+		"body_markings" = list("Smooth Belly", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
+/obj/item/organ/internal/tongue/unathi
+	liked_foodtypes = GORE | MEAT | SEAFOOD | NUTS
+	disliked_foodtypes = GRAIN | DAIRY | CLOTH | GROSS
+	toxic_foodtypes = TOXIC
+
+
+/datum/species/unathi/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -59,7 +63,13 @@
 		if(5)
 			main_color = "#33BB11"
 			second_color = "#339911"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
-	return returned
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
+
+/datum/species/unathi/get_species_description()
+	return placeholder_description
+
+/datum/species/unathi/get_species_lore()
+	return list(placeholder_lore)

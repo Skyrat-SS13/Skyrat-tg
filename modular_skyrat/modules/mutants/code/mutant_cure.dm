@@ -3,7 +3,8 @@
 	desc = "A tool used to extract the RNA from viruses. Apply to skin."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
-	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = SHEET_MATERIAL_AMOUNT, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT)
+	/// Our loaded vial.
 	var/obj/item/rna_vial/loaded_vial
 
 /obj/item/rna_extractor/attackby(obj/item/O, mob/living/user)
@@ -83,7 +84,7 @@
 	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
-	custom_materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
+	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	var/contains_rna = FALSE
 
 /obj/item/rna_vial/proc/load_rna(mob/living/carbon/human/H)
@@ -138,7 +139,7 @@
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
 #define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
-#define RECOMBINATION_STEP_TIME 15 SECONDS
+#define RECOMBINATION_STEP_TIME (15 SECONDS)
 #define RECOMBINATION_STEP_AMOUNT 25
 
 /obj/machinery/rnd/rna_recombinator
@@ -162,17 +163,17 @@
 		timer_id = null
 	. = ..()
 
-/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/O, mob/living/user)
+/obj/machinery/rnd/rna_recombinator/attackby(obj/item/weapon, mob/living/user, params)
 	if(user.combat_mode)
 		return FALSE
 	if(!is_insertion_ready(user))
 		return FALSE
-	if(!istype(O, /obj/item/rna_vial))
+	if(!istype(weapon, /obj/item/rna_vial))
 		return FALSE
-	if(!user.transferItemToLoc(O, src))
+	if(!user.transferItemToLoc(weapon, src))
 		return FALSE
-	loaded_item = O
-	to_chat(user, span_notice("You insert [O] to into [src] reciprocal."))
+	loaded_item = weapon
+	to_chat(user, span_notice("You insert [weapon] to into [src] reciprocal."))
 	flick("h_lathe_load", src)
 	update_appearance()
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
@@ -261,7 +262,7 @@
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
 	use_power(3000)
-	timer_id = addtimer(CALLBACK(src, .proc/recombinate_step), recombination_step_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_step()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -278,7 +279,7 @@
 	flick("h_lathe_wloop", src)
 	use_power(3000)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
-	timer_id = addtimer(CALLBACK(src, .proc/recombinate_step), recombination_step_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_finish()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -294,20 +295,21 @@
 		new /obj/item/hnz_cure(get_turf(src))
 		new /obj/item/hnz_cure(get_turf(src))
 	else
-		new /obj/item/reagent_containers/glass/bottle/hnz/one(get_turf(src))
+		new /obj/item/reagent_containers/cup/bottle/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
 	use_power(3000)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
 	status = STATUS_IDLE
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if(recombination_step_time > 0 && (recombination_step_time - M.rating) >= 1)
-			recombination_step_time -= M.rating
-	for(var/obj/item/stock_parts/scanning_module/M in component_parts)
-		recombination_step_amount += M.rating*2
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		recombination_step_amount += M.rating
+	. = ..()
+	for(var/datum/stock_part/servo/servo in component_parts)
+		if(recombination_step_time > 0 && (recombination_step_time - servo.tier) >= 1)
+			recombination_step_time -= servo.tier
+	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
+		recombination_step_amount += scanning_module.tier * 2
+	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
+		recombination_step_amount += micro_laser.tier
 
 /obj/machinery/rnd/rna_recombinator/update_overlays()
 	. = ..()
@@ -320,8 +322,11 @@
 #undef RECOMBINATION_STEP_TIME
 #undef RECOMBINATION_STEP_AMOUNT
 
+/*
+*	Infection stuff
+*	You didn't think I wouldn't include this did you?
+*/
 
-//////////////////////////////Infection stuff - You didn't think I wouldn't include this did you?
 /datum/reagent/hnz
 	name = "HNZ-1"
 	description = "HNZ-1 is a highly experimental viral bioterror agent \
@@ -338,29 +343,27 @@
 	. = ..()
 	try_to_mutant_infect(exposed_mob, TRUE)
 
-/obj/item/reagent_containers/glass/bottle/hnz
+/obj/item/reagent_containers/cup/bottle/hnz
 	name = "HNZ-1 bottle"
 	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
-	custom_materials = list(/datum/material/glass=500)
+	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT * 5)
 
-/obj/item/reagent_containers/glass/bottle/hnz/one
+/obj/item/reagent_containers/cup/bottle/hnz/one
 	list_reagents = list(/datum/reagent/hnz = 1)
 
 
-/obj/item/storage/briefcase/hnz
-	name = "HNZ-1 biocontainer"
+/obj/item/storage/briefcase/virology/hnz
+	name = "\improper HNZ-1 biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
-	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
-	icon_state = "tvirus_box"
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500
 
-/obj/item/storage/briefcase/hnz/PopulateContents()
-	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
-	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
+/obj/item/storage/briefcase/virology/hnz/PopulateContents()
+	new /obj/item/reagent_containers/cup/bottle/hnz/one(src)
+	new /obj/item/reagent_containers/cup/bottle/hnz/one(src)
 	new /obj/item/circuitboard/machine/rna_recombinator(src)
 	new /obj/item/rna_extractor(src)
 	new /obj/item/rna_vial(src)

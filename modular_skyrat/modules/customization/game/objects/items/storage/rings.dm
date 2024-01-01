@@ -10,12 +10,12 @@
 	base_icon_state = "gold ringbox"
 	w_class = WEIGHT_CLASS_TINY
 	spawn_type = /obj/item/clothing/gloves/ring
+	spawn_count = 1
 
-/obj/item/storage/fancy/ringbox/ComponentInitialize()
+/obj/item/storage/fancy/ringbox/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 1
-	STR.can_hold = typecacheof(list(/obj/item/clothing/gloves/ring))
+	atom_storage.max_slots = 1
+	atom_storage.can_hold = typecacheof(list(/obj/item/clothing/gloves/ring))
 
 /obj/item/storage/fancy/ringbox/diamond
 	icon_state = "diamond ringbox"

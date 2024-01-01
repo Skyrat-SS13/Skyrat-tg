@@ -62,20 +62,28 @@
 	icon_state = "turnbuckle"
 	density = TRUE
 	anchored = TRUE
-	armor = list(MELEE = 50, BULLET = 70, LASER = 70, ENERGY = 100, BOMB = 10, BIO = 100, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/structure_wrestling_corner
 	max_integrity = 75
 	var/ini_dir
 
-/obj/structure/wrestling_corner/Initialize()
+/datum/armor/structure_wrestling_corner
+	melee = 50
+	bullet = 70
+	laser = 70
+	energy = 100
+	bomb = 10
+	bio = 100
+
+/obj/structure/wrestling_corner/Initialize(mapload)
 	. = ..()
 	ini_dir = dir
 
 	AddElement(/datum/element/climbable, climb_time = 20, climb_stun = 0)
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS ,null,CALLBACK(src, .proc/can_be_rotated),CALLBACK(src,.proc/after_rotation))
+	AddComponent(/datum/component/simple_rotation, ROTATION_NEEDS_ROOM)
 
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_enter,
-		COMSIG_ATOM_EXIT = .proc/on_exit,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_enter),
+		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
@@ -106,7 +114,7 @@
 		return TRUE
 
 /obj/structure/wrestling_corner/deconstruct(disassembled)
-	if(!(flags_1 & NODECONSTRUCT_1))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		var/obj/item/stack/sheet/iron/iron_sheets = new /obj/item/stack/sheet/iron(drop_location(), 3)
 		transfer_fingerprints_to(iron_sheets)
 	return ..()
@@ -114,10 +122,10 @@
 ///Implements behaviour that makes it possible to unanchor the railing.
 /obj/structure/wrestling_corner/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(flags_1 & NODECONSTRUCT_1)
+	if(obj_flags & NO_DECONSTRUCTION)
 		return
 	to_chat(user, span_notice("You begin to [anchored ? "unfasten the turnbuckle from":"fasten the turnbuckle to"] the floor..."))
-	if(tool.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, .proc/check_anchored, anchored)))
+	if(tool.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
 		set_anchored(!anchored)
 		to_chat(user, span_notice("You [anchored ? "fasten the turnbuckle to":"unfasten the turnbuckle from"] the floor."))
 	return TRUE
@@ -130,17 +138,9 @@
 			return TRUE
 	return . || mover.throwing || mover.movement_type & (FLYING | FLOATING)
 
-/obj/structure/wrestling_corner/proc/can_be_rotated(mob/user,rotation_type)
-	if(anchored)
-		to_chat(user, span_warning("[src] cannot be rotated while it is fastened to the floor!"))
-		return FALSE
-	return TRUE
 
 /obj/structure/wrestling_corner/proc/check_anchored(checked_anchored)
 	return anchored == checked_anchored
-
-/obj/structure/wrestling_corner/proc/after_rotation(mob/user,rotation_type)
-	add_fingerprint(user)
 
 /obj/structure/wrestling_corner/proc/on_enter(datum/source, atom/movable/movable)
 	SIGNAL_HANDLER

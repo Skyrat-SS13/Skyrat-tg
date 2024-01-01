@@ -19,7 +19,7 @@
 		return
 	ADD_TRAIT(mod.wearer, TRAIT_REAGENT_SCANNER, MOD_TRAIT)
 
-/obj/item/mod/module/reagent_scanner/on_deactivation()
+/obj/item/mod/module/reagent_scanner/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
 	if(!.)
 		return
@@ -35,21 +35,21 @@
 	. = ..()
 	if(!.)
 		return
-	mod.wearer.research_scanner++
-	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION, .proc/sense_explosion)
+	ADD_TRAIT(mod.wearer, TRAIT_RESEARCH_SCANNER, MOD_TRAIT)
+	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION, PROC_REF(sense_explosion))
 
-/obj/item/mod/module/reagent_scanner/advanced/on_deactivation()
+/obj/item/mod/module/reagent_scanner/advanced/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
 	if(!.)
 		return
-	mod.wearer.research_scanner--
-	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION)
+	REMOVE_TRAIT(mod.wearer, TRAIT_RESEARCH_SCANNER, MOD_TRAIT)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION)
 
 /obj/item/mod/module/reagent_scanner/advanced/proc/sense_explosion(datum/source, turf/epicenter,
 	devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)
 	SIGNAL_HANDLER
 	var/turf/wearer_turf = get_turf(mod.wearer)
-	if(wearer_turf.z != epicenter.z)
+	if(!is_valid_z_level(wearer_turf, epicenter))
 		return
 	if(get_dist(epicenter, wearer_turf) > explosion_detection_dist)
 		return
@@ -74,21 +74,24 @@
 	if(mod.wearer.has_gravity())
 		new /obj/effect/temp_visual/mook_dust(get_turf(src))
 	mod.wearer.AddElement(/datum/element/forced_gravity, 0)
-	mod.wearer.update_gravity(mod.wearer.has_gravity())
 	playsound(src, 'sound/effects/gravhit.ogg', 50)
 
-/obj/item/mod/module/anomaly_locked/antigrav/on_deactivation()
+/obj/item/mod/module/anomaly_locked/antigrav/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
 	if(!.)
 		return
 	mod.wearer.RemoveElement(/datum/element/forced_gravity, 0)
-	mod.wearer.update_gravity(mod.wearer.has_gravity())
+	if(deleting)
+		return
 	if(mod.wearer.has_gravity())
 		new /obj/effect/temp_visual/mook_dust(get_turf(src))
 	playsound(src, 'sound/effects/gravhit.ogg', 50)
 
 /obj/item/mod/module/anomaly_locked/antigrav/prebuilt
 	prebuilt = TRUE
+
+/obj/item/mod/module/anomaly_locked/antigrav/prebuilt/locked
+	core_removable = FALSE
 
 ///Teleporter - Lets the user teleport to a nearby location.
 /obj/item/mod/module/anomaly_locked/teleporter
@@ -112,18 +115,22 @@
 		balloon_alert(mod.wearer, "invalid target!")
 		return
 	balloon_alert(mod.wearer, "teleporting...")
-	var/matrix/user_matrix = matrix(mod.wearer.transform)
-	animate(mod.wearer, teleport_time, color = COLOR_CYAN, transform = user_matrix.Scale(4, 0.25), easing = EASE_OUT)
+	var/matrix/pre_matrix = matrix()
+	pre_matrix.Scale(4, 0.25)
+	var/matrix/post_matrix = matrix()
+	post_matrix.Scale(0.25, 4)
+	animate(mod.wearer, teleport_time, color = COLOR_CYAN, transform = pre_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_OUT)
 	if(!do_after(mod.wearer, teleport_time, target = mod))
 		balloon_alert(mod.wearer, "interrupted!")
-		var/matrix/post_matrix = matrix(mod.wearer.transform)
-		animate(mod.wearer, teleport_time, color = null, transform = post_matrix.Scale(0.25, 4), easing = EASE_IN)
+		animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)
 		return
-	var/matrix/post_matrix = matrix(mod.wearer.transform)
-	animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Scale(0.25, 4), easing = EASE_IN)
+	animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)
 	if(!do_teleport(mod.wearer, target_turf, asoundin = 'sound/effects/phasein.ogg'))
 		return
 	drain_power(use_power_cost)
 
 /obj/item/mod/module/anomaly_locked/teleporter/prebuilt
 	prebuilt = TRUE
+
+/obj/item/mod/module/anomaly_locked/teleporter/prebuilt/locked
+	core_removable = FALSE

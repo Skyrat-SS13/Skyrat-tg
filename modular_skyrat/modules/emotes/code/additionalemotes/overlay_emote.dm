@@ -18,7 +18,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 25, TRUE)
 
 /datum/emote/living/exclaim
@@ -31,7 +31,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
 
 /datum/emote/living/question
@@ -44,7 +44,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "question", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/question.ogg', 25, TRUE)
 
 
@@ -56,8 +56,11 @@
 	. = ..()
 	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
-		overlay.pixel_y = 15
-		flick_overlay_static(overlay, user, 50)
+		if(isteshari(user))
+			overlay.pixel_y = 10
+		else
+			overlay.pixel_y = 15
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/realize.ogg', 25, TRUE)
 
 /datum/emote/living/annoyed
@@ -70,54 +73,5 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
-
-
-/datum/emote/living/glasses
-	key = "glasses"
-	key_third_person = "glasses"
-	message = "pushes up their glasses."
-
-/datum/emote/living/glasses/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	var/obj/O = user.get_item_by_slot(ITEM_SLOT_EYES)
-	if((istype(O, /obj/item/clothing/glasses)) && get_toggle(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "glasses", ABOVE_MOB_LAYER)
-		flick_overlay_static(overlay, user, 10)
-	else
-		return FALSE
-
-////
-//	These emotes hook into existing ones
-/datum/emote/living/blush
-	key = "blush"
-	key_third_person = "blushes"
-
-/datum/emote/living/blush/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	if(iscarbon(user) && get_toggle(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "blush", ABOVE_MOB_LAYER)
-		flick_overlay_static(overlay, user, 50)
-		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE)
-
-/datum/emote/living/snore
-	key = "snore"
-	key_third_person = "snores"
-
-/datum/emote/living/snore/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	if(isliving(user) && get_toggle(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "snore", ABOVE_MOB_LAYER)
-		overlay.pixel_y = 6
-		flick_overlay_static(overlay, user, 100)
-
-/datum/emote/living/sigh
-	key = "sigh"
-	key_third_person = "sighs"
-
-/datum/emote/living/sigh/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	if(isliving(user) && get_toggle(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sigh", ABOVE_MOB_LAYER)
-		flick_overlay_static(overlay, user, 50)

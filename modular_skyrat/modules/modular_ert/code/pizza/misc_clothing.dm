@@ -13,6 +13,6 @@
 /obj/item/clothing/under/pizza
 	name = "dogginos employee uniform"
 	desc = "The standard issue for the famous dog-founded pizza brand, Dogginos."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi' //Dogginos is not technically affiliated with CC, but it's not OPPOSING it, and its an "ERT"...
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
 	icon_state = "dominos"

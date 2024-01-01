@@ -9,6 +9,7 @@
 	foodtypes = GRAIN | SUGAR | FRUIT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("fruit" = 1, "raisins" = 1, "christmas spirit" = 1)
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/mimce_pie
 	name = "mimce pie"
@@ -20,6 +21,7 @@
 	foodtypes = GRAIN | SUGAR | FRUIT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("nothing" = 1, "christmas spirit" = 1)
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 // RECIPE
 
@@ -31,7 +33,7 @@
 		/obj/item/food/pastrybase = 1
 	)
 	result = /obj/item/food/mince_pie
-	subcategory = CAT_PASTRY
+	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/mimce_pie
 	name = "Mimce pie"
@@ -42,4 +44,4 @@
 		/obj/item/food/pastrybase = 1
 	)
 	result = /obj/item/food/mimce_pie
-	subcategory = CAT_PASTRY
+	category = CAT_PASTRY

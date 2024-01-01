@@ -1,0 +1,425 @@
+# Automapper configuration
+# [templates.example_template] - example_template should be replaced with the name of your map template.
+# directory - The direct path to our map files.
+# map_files - These are the names of the map files, including the extension, that will be loaded. Supports multiple for randomness.
+# required_map - This is the name of the required map that needs to be loaded in order for this template to load.
+# coordinates - The coordinates of the map template placement. (X, Y, Z). PLEASE NOTE: The Z coordinate is the same as would be shown in SDMM. NOT IN GAME.
+# leave it at 1 if it is not a multi-z map. It is relative to the map file Z, not the one loaded in game.
+# trait_name - The name of the Z level trait that will be used to determine what Z level we use.
+# Traits - Station (for station relatied edits), CentCom (for edits on the CC map), Mining (for edits on Lavaland)
+# More can be found in code\__DEFINES\maps.dm
+
+# CENTRAL COMMAND MAP TEMPLATES
+# CC Ferry Dock - Admin Shuttle
+[templates.centcom_ferry_dock]
+map_files = ["centcom_ferry_dock.dmm"]
+directory = "_maps/skyrat/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [128, 79, 1]
+trait_name = "CentCom"
+
+# CC Evac Docking Port Removal
+[templates.centcom_shuttle_dock]
+map_files = ["centcom_shuttle_dock.dmm"]
+directory = "_maps/skyrat/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [206, 85, 1]
+trait_name = "CentCom"
+
+# METASTATION MAP TEMPLATES
+# Metastation Arrivals
+[templates.metastaton_arrivals]
+map_files = ["metastation_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [20, 107, 1]
+trait_name = "Station"
+
+# Metastation Cryo
+[templates.metastation_cryo]
+map_files = ["metastation_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [133, 182, 1]
+trait_name = "Station"
+
+# Metastation Barber
+[templates.metastation_barber]
+map_files = ["metastation_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [101, 116, 1]
+trait_name = "Station"
+
+# Metastation Armory
+[templates.metastation_armory]
+map_files = ["metastation_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [101, 170, 1]
+trait_name = "Station"
+
+# Metastation NTR Office
+[templates.metastation_ntrep_office]
+map_files = ["metastation_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [57, 119, 1]
+trait_name = "Station"
+
+# Metastation Supermatter Chamber
+[templates.metastation_supermatter]
+map_files = ["metastation_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [163, 155, 1]
+trait_name = "Station"
+
+# DELTASTATION MAP EDITS
+# Deltastation Arrivals
+[templates.deltastation_arrivals]
+map_files = ["deltastation_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [126, 195, 1]
+trait_name = "Station"
+
+# Deltastation Cryo
+[templates.deltastation_cryo]
+map_files = ["deltastation_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [216, 93, 1]
+trait_name = "Station"
+
+# Deltastation Armorys
+[templates.deltastation_armory]
+map_files = ["deltastation_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [210, 130, 1]
+trait_name = "Station"
+
+# Deltastation Barber
+[templates.deltastation_barber]
+map_files = ["deltastation_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [121, 124, 1]
+trait_name = "Station"
+
+# Deltastation NTR Office
+[templates.deltastation_ntrep_office]
+map_files = ["deltastation_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [123, 143, 1]
+trait_name = "Station"
+
+# Deltastation Supermatter Chamber
+[templates.deltastation_supermatter]
+map_files = ["deltastation_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [84, 109, 1]
+trait_name = "Station"
+
+# ICEBOX MAP EDITS
+# Icebox Arrivals
+[templates.icebox_arrivals]
+map_files = ["icebox_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [8, 115, 3]
+trait_name = "Station"
+
+# Icebox Armory Middle
+[templates.icebox_armory_middle]
+map_files = ["icebox_armory_middle.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [104, 178, 2]
+trait_name = "Station"
+
+# Icebox Cryo
+[templates.icebox_cryo]
+map_files = ["icebox_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [117, 142, 3]
+trait_name = "Station"
+
+# Icebox Barber
+[templates.icebox_barber]
+map_files = ["icebox_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [87, 128, 3]
+trait_name = "Station"
+
+# Icebox NTR Office
+[templates.icebox_ntrep_office]
+map_files = ["icebox_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [92, 118, 2]
+trait_name = "Station"
+
+# Icebox HoP Maint
+[templates.icebox_hop_maint]
+map_files = ["icebox_hop_maint.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [98, 123, 3]
+trait_name = "Station"
+
+# Icebox Supermatter Chamber
+[templates.icebox_supermatter]
+map_files = ["icebox_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [114, 65, 3]
+trait_name = "Station"
+
+# Icecats Camp Lower Level
+[templates.icebox_icecats_lower]
+map_files = ["icemoon_underground_icewalker_lower.dmm"]
+directory = "_maps/RandomRuins/IceRuins/skyrat/"
+required_map = "IceBoxStation.dmm"
+coordinates = [202, 16, 1]
+trait_name = "Station"
+
+# Icecats Camp Upper Level
+[templates.icebox_icecats_upper]
+map_files = ["icemoon_underground_icewalker_upper.dmm"]
+directory = "_maps/RandomRuins/IceRuins/skyrat/"
+required_map = "IceBoxStation.dmm"
+coordinates = [202, 16, 2]
+trait_name = "Station"
+
+# TRAMSTATION MAP EDITS
+# Tramstation Arrivals
+[templates.tramstation_arrivals]
+map_files = ["tramstation_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [8, 96, 2]
+trait_name = "Station"
+
+# Tramstation Armory
+[templates.tramstation_armory]
+map_files = ["tramstation_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [70, 162, 2]
+trait_name = "Station"
+
+# Tramstation Barber
+[templates.tramstation_barber]
+map_files = ["tramstation_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [133, 125, 1]
+trait_name = "Station"
+
+# Tramstation Cryo
+[templates.tramstation_cryo]
+map_files = ["tramstation_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [68, 102, 2]
+trait_name = "Station"
+
+# Tramstation NTR Office
+[templates.tramstation_ntrep_office]
+map_files = ["tramstation_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [34, 135, 2]
+trait_name = "Station"
+
+# Tramstation Supermatter Chamber
+[templates.tramstation_supermatter]
+map_files = ["tramstation_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [118, 75, 1]
+trait_name = "Station"
+
+# BIRDSHOT MAP EDITS
+# Birdshot Arrivals
+[templates.birdshot_arrivals]
+map_files = ["birdshot_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [136, 61, 1]
+trait_name = "Station"
+
+# Birdshot Armory
+[templates.birdshot_armory]
+map_files = ["birdshot_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [51, 106, 1]
+trait_name = "Station"
+
+# Birdshot Cryo
+[templates.birdshot_cryo]
+map_files = ["birdshot_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [147, 142, 1]
+trait_name = "Station"
+
+# Birdshot Barber
+[templates.birdshot_barber]
+map_files = ["birdshot_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [129, 127, 1]
+trait_name = "Station"
+
+# Birdshot NTR Office
+[templates.birdshot_ntrep_office]
+map_files = ["birdshot_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [111, 157, 1]
+trait_name = "Station"
+
+# Birdshot ERT Bay
+[templates.birdshot_ert_bay]
+map_files = ["birdshot_ert_bay.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [188, 72, 1]
+trait_name = "Station"
+
+# Birdshot Supermatter Chamber
+[templates.birdshot_supermatter]
+map_files = ["birdshot_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [41, 201, 1]
+trait_name = "Station"
+
+# NORTHSTAR MAP EDITS
+# Northstar Cryo
+[templates.northstar_cryo]
+map_files = ["northstar_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [130, 114, 3]
+trait_name = "Station"
+
+# Northstar Dorms
+[templates.northstar_dorms]
+map_files = ["northstar_dorms.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [137, 132, 3]
+trait_name = "Station"
+
+# Northstar Arrivals
+[templates.northstar_arrivals]
+map_files = ["northstar_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [90, 100, 1]
+trait_name = "Station"
+
+# Northstar ERT Bay
+[templates.northstar_ert_bay]
+map_files = ["northstar_ert_bay.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [54, 118, 2]
+trait_name = "Station"
+
+# Northstar Barber
+[templates.northstar_barber]
+map_files = ["northstar_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [105, 117, 2]
+trait_name = "Station"
+
+# Northstar Armory
+[templates.northstar_armory]
+map_files = ["northstar_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [121, 109, 4]
+trait_name = "Station"
+
+# Northstar Prison
+[templates.northstar_prison]
+map_files = ["northstar_prison.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [149, 109, 4]
+trait_name = "Station"
+
+# Northstar NTR Office
+[templates.northstar_ntrep_office]
+map_files = ["northstar_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [150, 114, 3]
+trait_name = "Station"
+
+# Northstar Supermatter Chamber
+[templates.northstar_supermatter]
+map_files = ["northstar_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [171, 129, 1]
+trait_name = "Station"
+
+# Lavaland NE Ashwalker Nest
+[templates.lavaland_ashwalker_nenest]
+map_files = ["lavaland_ashwalker_nenest.dmm"]
+directory = "_maps/skyrat/automapper/templates/mining/"
+required_map = "Lavaland.dmm"
+coordinates = [223, 224, 1]
+trait_name = "Mining"
+
+# Kilostation Armory
+[templates.kilostation_armory]
+map_files = ["kilostation_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/kilostation/"
+required_map = "kilostation.dmm"
+coordinates = [81, 78, 1]
+trait_name = "Station"
+
+# Kilostation Arrivals
+[templates.kilostation_arrivals]
+map_files = ["kilostation_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/kilostation/"
+required_map = "KiloStation.dmm"
+coordinates = [151, 80, 1]
+trait_name = "Station"
+
+# Kilostation ERT Bay and Barber
+[templates.kilostation_ert_bay]
+map_files = ["kilostation_ert_bay.dmm"]
+directory = "_maps/skyrat/automapper/templates/kilostation/"
+required_map = "KiloStation.dmm"
+coordinates = [77, 151, 1]
+trait_name = "Station"
+
+# Kilostation Cryo
+[templates.kilostation_cryo]
+map_files = ["kilostation_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/kilostation/"
+required_map = "KiloStation.dmm"
+coordinates = [59, 118, 1]
+trait_name = "Station"
+
+# Kilostation Supermatter Chamber
+[templates.kilostation_supermatter]
+map_files = ["kilostation_supermatter.dmm"]
+directory = "_maps/skyrat/automapper/templates/kilostation/"
+required_map = "KiloStation.dmm"
+coordinates = [140, 72, 1]
+trait_name = "Station"

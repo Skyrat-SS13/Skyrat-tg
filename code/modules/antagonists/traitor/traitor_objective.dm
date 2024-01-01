@@ -9,7 +9,7 @@
 	/// The uplink handler holder to give the progression and telecrystals to.
 	var/datum/uplink_handler/handler
 	/// The minimum required progression points for this objective
-	var/progression_minimum = 0 MINUTES
+	var/progression_minimum = null
 	/// The maximum progression before this objective cannot appear anymore
 	var/progression_maximum = INFINITY
 	/// The progression that is rewarded from completing this traitor objective. Can either be a list of list(min, max) or a direct value
@@ -30,12 +30,12 @@
 	var/skipped = FALSE
 
 	/// Determines how influential global progression will affect this objective. Set to 0 to disable.
-	var/global_progression_influence_intensity = 0.5
+	var/global_progression_influence_intensity = 0.1
 	/// Determines how great the deviance has to be before progression starts to get reduced.
-	var/global_progression_deviance_required = 0.5
+	var/global_progression_deviance_required = 1
 	/// Determines the minimum and maximum progression this objective can be worth as a result of being influenced by global progression
 	/// Should only be smaller than or equal to 1
-	var/global_progression_limit_coeff = 0.1
+	var/global_progression_limit_coeff = 0.6
 	/// The deviance coefficient used to determine the randomness of the progression rewards.
 	var/progression_cost_coeff_deviance = 0.05
 	/// This gets added onto the coeff when calculating the updated progression cost. Used for variability and a slight bit of randomness
@@ -44,6 +44,12 @@
 	var/original_progression = 0
 	/// Abstract type that won't be included as a possible objective
 	var/abstract_type = /datum/traitor_objective
+	/// The duplicate type that will be used to check for duplicates.
+	/// If undefined, this will either take from the abstract type or the type of the objective itself
+	var/duplicate_type = null
+	/// Used only in unit testing. Can be used to explicitly skip the progression_reward and telecrystal_reward check for non-abstract objectives.
+	/// Useful for final objectives as they don't need a reward.
+	var/needs_reward = TRUE
 
 /// Returns a list of variables that can be changed by config, allows for balance through configuration.
 /// It is not recommended to finetweak any values of objectives on your server.
@@ -106,7 +112,7 @@
 	if(global_progression_influence_intensity <= 0)
 		return
 	var/minimum_progression = progression_reward * global_progression_limit_coeff
-	var/maximum_progression = global_progression_limit_coeff != 0? progression_reward / global_progression_limit_coeff : INFINITY
+	var/maximum_progression = progression_reward * (2-global_progression_limit_coeff)
 	var/deviance = (SStraitor.current_global_progression - handler.progression_points) / SStraitor.progression_scaling_deviance
 	if(abs(deviance) < global_progression_deviance_required)
 		return
@@ -114,9 +120,13 @@
 		deviance = deviance - global_progression_deviance_required
 	else
 		deviance = deviance + global_progression_deviance_required
-	var/coeff = NUM_E ** (global_progression_influence_intensity * deviance) - 1
-	// This has less of an effect as the coeff gets nearer to 1. Is linear
-	coeff += progression_cost_coeff * (1 - coeff)
+	var/coeff = NUM_E ** (global_progression_influence_intensity * abs(deviance)) - 1
+	if(abs(deviance) != deviance)
+		coeff *= -1
+
+	// This has less of an effect as the coeff gets nearer to -1. Is linear
+	coeff += progression_cost_coeff * min(max(1 - abs(coeff), 1), 0)
+
 
 	progression_reward = clamp(
 		progression_reward + progression_reward * coeff,
@@ -124,9 +134,14 @@
 		maximum_progression
 	)
 
-/datum/traitor_objective/Destroy(force, ...)
+/datum/traitor_objective/Destroy(force)
 	handler = null
 	return ..()
+
+/// Called whenever the objective is about to be generated. Bypassed by forcefully adding objectives.
+/// Returning false or true will do the same as the generate_objective proc.
+/datum/traitor_objective/proc/can_generate_objective(datum/mind/generating_for, list/possible_duplicates)
+	return TRUE
 
 /// Called when the objective should be generated. Should return if the objective has been successfully generated.
 /// If false is returned, the objective will be removed as a potential objective for the traitor it is being generated for.
@@ -148,7 +163,8 @@
 		"progression_reward" = progression_reward,
 		"original_progression" = original_progression,
 		"objective_state" = objective_state,
-		"forced" = forced
+		"forced" = forced,
+		"time_of_creation" = time_of_creation,
 	)
 
 /// Converts the type into a useful debug string to be used for logging and debug display.
@@ -212,10 +228,6 @@
 /datum/traitor_objective/proc/completion_payout()
 	handler.progression_points += progression_reward
 	handler.telecrystals += telecrystal_reward
-
-/// Determines whether this objective is a duplicate. objective_to_compare is always of the type it is being called on.
-/datum/traitor_objective/proc/is_duplicate(datum/traitor_objective/objective_to_compare)
-	return TRUE
 
 /// Used for sending data to the uplink UI
 /datum/traitor_objective/proc/uplink_ui_data(mob/user)

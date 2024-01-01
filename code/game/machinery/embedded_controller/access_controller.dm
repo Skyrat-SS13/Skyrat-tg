@@ -7,8 +7,8 @@
 /obj/machinery/door_buttons
 	power_channel = AREA_USAGE_ENVIRON
 	use_power = IDLE_POWER_USE
-	idle_power_usage = 2
-	active_power_usage = 4
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.04
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/idSelf
 
@@ -25,20 +25,21 @@
 /obj/machinery/door_buttons/LateInitialize()
 	findObjsByTag()
 
-/obj/machinery/door_buttons/emag_act(mob/user)
+/obj/machinery/door_buttons/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
 	req_access = list()
 	req_one_access = list()
-	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	to_chat(user, span_warning("You short out the access controller."))
+	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	balloon_alert(user, "access controller shorted")
+	return TRUE
 
 /obj/machinery/door_buttons/proc/removeMe()
 
 
-/obj/machinery/door_buttons/access_button//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	icon = 'icons/obj/airlock_machines.dmi'
+/obj/machinery/door_buttons/access_button
+	icon = 'icons/obj/machines/wallmounts.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon_state = "access_button_standby"
 	base_icon_state = "access_button"
 	name = "access button"
@@ -49,11 +50,11 @@
 	var/busy
 
 /obj/machinery/door_buttons/access_button/findObjsByTag()
-	for(var/obj/machinery/door_buttons/airlock_controller/A in GLOB.machines)
+	for(var/obj/machinery/door_buttons/airlock_controller/A as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/door_buttons/airlock_controller))
 		if(A.idSelf == idSelf)
 			controller = A
 			break
-	for(var/obj/machinery/door/airlock/I in GLOB.machines)
+	for(var/obj/machinery/door/airlock/I as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/door/airlock))
 		if(I.id_tag == idDoor)
 			door = I
 			break
@@ -79,7 +80,8 @@
 					controller.cycleClose(door)
 		else
 			controller.onlyClose(door)
-		addtimer(CALLBACK(src, .proc/not_busy), 2 SECONDS)
+		use_power(active_power_usage)
+		addtimer(CALLBACK(src, PROC_REF(not_busy)), 2 SECONDS)
 
 /obj/machinery/door_buttons/access_button/proc/not_busy()
 	busy = FALSE
@@ -99,11 +101,12 @@
 
 
 /obj/machinery/door_buttons/airlock_controller
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "access_control_standby"
 	base_icon_state = "access_control"
 	name = "access console"
 	desc = "A small console that can cycle opening between two airlocks."
+	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN|INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_OPEN_SILICON|INTERACT_MACHINE_SET_MACHINE
 	var/obj/machinery/door/airlock/interiorAirlock
 	var/obj/machinery/door/airlock/exteriorAirlock
 	var/idInterior
@@ -118,7 +121,7 @@
 		exteriorAirlock = null
 
 /obj/machinery/door_buttons/airlock_controller/Destroy()
-	for(var/obj/machinery/door_buttons/access_button/A in GLOB.machines)
+	for(var/obj/machinery/door_buttons/access_button/A as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/door_buttons/access_button))
 		if(A.controller == src)
 			A.controller = null
 	return ..()
@@ -207,7 +210,7 @@
 		goIdle(TRUE)
 		return
 	A.unbolt()
-	INVOKE_ASYNC(src, .proc/do_openDoor, A)
+	INVOKE_ASYNC(src, PROC_REF(do_openDoor), A)
 
 /obj/machinery/door_buttons/airlock_controller/proc/do_openDoor(obj/machinery/door/airlock/A)
 	if(A?.open())
@@ -239,11 +242,11 @@
 			lostPower = FALSE
 
 /obj/machinery/door_buttons/airlock_controller/findObjsByTag()
-	for(var/obj/machinery/door/airlock/A in GLOB.machines)
-		if(A.id_tag == idInterior)
-			interiorAirlock = A
-		else if(A.id_tag == idExterior)
-			exteriorAirlock = A
+	for(var/obj/machinery/door/door as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/door))
+		if(door.id_tag == idInterior)
+			interiorAirlock = door
+		else if(door.id_tag == idExterior)
+			exteriorAirlock = door
 
 /obj/machinery/door_buttons/airlock_controller/update_icon_state()
 	if(machine_stat & NOPOWER)

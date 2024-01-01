@@ -30,13 +30,11 @@
 	icon_state = "track"
 
 /atom/movable/screen/ai/camera_track/Click()
-	if(..())
+	. = ..()
+	if(.)
 		return
 	var/mob/living/silicon/ai/AI = usr
-	var/target_name = tgui_input_list(AI, "Select a target", "Tracking", AI.trackable_mobs())
-	if(isnull(target_name))
-		return
-	AI.ai_camera_track(target_name)
+	AI.ai_camera_track()
 
 /atom/movable/screen/ai/camera_light
 	name = "Toggle Camera Light"
@@ -47,6 +45,17 @@
 		return
 	var/mob/living/silicon/ai/AI = usr
 	AI.toggle_camera_light()
+
+/atom/movable/screen/ai/modpc
+	name = "Messenger"
+	icon_state = "pda_send"
+	var/mob/living/silicon/ai/robot
+
+/atom/movable/screen/ai/modpc/Click()
+	. = ..()
+	if(.)
+		return
+	robot.modularInterface?.interact(robot)
 
 /atom/movable/screen/ai/crew_monitor
 	name = "Crew Monitoring Console"
@@ -107,26 +116,6 @@
 		return
 	var/mob/living/silicon/ai/AI = usr
 	AI.checklaws()
-
-/atom/movable/screen/ai/pda_msg_send
-	name = "PDA - Send Message"
-	icon_state = "pda_send"
-
-/atom/movable/screen/ai/pda_msg_send/Click()
-	if(..())
-		return
-	var/mob/living/silicon/ai/AI = usr
-	AI.cmd_send_pdamesg(usr)
-
-/atom/movable/screen/ai/pda_msg_show
-	name = "PDA - Show Message Log"
-	icon_state = "pda_receive"
-
-/atom/movable/screen/ai/pda_msg_show/Click()
-	if(..())
-		return
-	var/mob/living/silicon/ai/AI = usr
-	AI.cmd_show_message_log(usr)
 
 /atom/movable/screen/ai/image_take
 	name = "Take Image"
@@ -190,111 +179,92 @@
 /datum/hud/ai/New(mob/owner)
 	..()
 	var/atom/movable/screen/using
+	var/mob/living/silicon/ai/myai = mymob
 
 // Language menu
-	using = new /atom/movable/screen/language_menu
+	using = new /atom/movable/screen/language_menu(null, src)
 	using.screen_loc = ui_ai_language_menu
-	using.hud = src
 	static_inventory += using
 
 //AI core
-	using = new /atom/movable/screen/ai/aicore()
+	using = new /atom/movable/screen/ai/aicore(null, src)
 	using.screen_loc = ui_ai_core
-	using.hud = src
 	static_inventory += using
 
 //Camera list
-	using = new /atom/movable/screen/ai/camera_list()
+	using = new /atom/movable/screen/ai/camera_list(null, src)
 	using.screen_loc = ui_ai_camera_list
-	using.hud = src
 	static_inventory += using
 
 //Track
-	using = new /atom/movable/screen/ai/camera_track()
+	using = new /atom/movable/screen/ai/camera_track(null, src)
 	using.screen_loc = ui_ai_track_with_camera
-	using.hud = src
 	static_inventory += using
 
 //Camera light
-	using = new /atom/movable/screen/ai/camera_light()
+	using = new /atom/movable/screen/ai/camera_light(null, src)
 	using.screen_loc = ui_ai_camera_light
-	using.hud = src
 	static_inventory += using
 
 //Crew Monitoring
-	using = new /atom/movable/screen/ai/crew_monitor()
+	using = new /atom/movable/screen/ai/crew_monitor(null, src)
 	using.screen_loc = ui_ai_crew_monitor
-	using.hud = src
 	static_inventory += using
 
 //Crew Manifest
-	using = new /atom/movable/screen/ai/crew_manifest()
+	using = new /atom/movable/screen/ai/crew_manifest(null, src)
 	using.screen_loc = ui_ai_crew_manifest
-	using.hud = src
 	static_inventory += using
 
 //Alerts
-	using = new /atom/movable/screen/ai/alerts()
+	using = new /atom/movable/screen/ai/alerts(null, src)
 	using.screen_loc = ui_ai_alerts
-	using.hud = src
 	static_inventory += using
 
 //Announcement
-	using = new /atom/movable/screen/ai/announcement()
+	using = new /atom/movable/screen/ai/announcement(null, src)
 	using.screen_loc = ui_ai_announcement
-	using.hud = src
 	static_inventory += using
 
 //Shuttle
-	using = new /atom/movable/screen/ai/call_shuttle()
+	using = new /atom/movable/screen/ai/call_shuttle(null, src)
 	using.screen_loc = ui_ai_shuttle
-	using.hud = src
 	static_inventory += using
 
 //Laws
-	using = new /atom/movable/screen/ai/state_laws()
+	using = new /atom/movable/screen/ai/state_laws(null, src)
 	using.screen_loc = ui_ai_state_laws
-	using.hud = src
 	static_inventory += using
 
-//PDA message
-	using = new /atom/movable/screen/ai/pda_msg_send()
-	using.screen_loc = ui_ai_pda_send
-	using.hud = src
+// Modular Interface
+	using = new /atom/movable/screen/ai/modpc(null, src)
+	using.screen_loc = ui_ai_mod_int
 	static_inventory += using
-
-//PDA log
-	using = new /atom/movable/screen/ai/pda_msg_show()
-	using.screen_loc = ui_ai_pda_log
-	using.hud = src
-	static_inventory += using
+	myai.interfaceButton = using
+	var/atom/movable/screen/ai/modpc/tabletbutton = using
+	tabletbutton.robot = myai
 
 //Take image
-	using = new /atom/movable/screen/ai/image_take()
+	using = new /atom/movable/screen/ai/image_take(null, src)
 	using.screen_loc = ui_ai_take_picture
-	using.hud = src
 	static_inventory += using
 
 //View images
-	using = new /atom/movable/screen/ai/image_view()
+	using = new /atom/movable/screen/ai/image_view(null, src)
 	using.screen_loc = ui_ai_view_images
-	using.hud = src
 	static_inventory += using
 
 //Medical/Security sensors
-	using = new /atom/movable/screen/ai/sensors()
+	using = new /atom/movable/screen/ai/sensors(null, src)
 	using.screen_loc = ui_ai_sensor
-	using.hud = src
 	static_inventory += using
 
 //Multicamera mode
-	using = new /atom/movable/screen/ai/multicam()
+	using = new /atom/movable/screen/ai/multicam(null, src)
 	using.screen_loc = ui_ai_multicam
-	using.hud = src
 	static_inventory += using
 
 //Add multicamera camera
-	using = new /atom/movable/screen/ai/add_multicam()
+	using = new /atom/movable/screen/ai/add_multicam(null, src)
 	using.screen_loc = ui_ai_add_multicam
-	using.hud = src
 	static_inventory += using

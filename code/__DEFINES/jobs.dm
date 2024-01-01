@@ -6,13 +6,25 @@
 #define JOB_UNAVAILABLE_SLOTFULL 5
 /// Job unavailable due to incompatibility with an antag role.
 #define JOB_UNAVAILABLE_ANTAG_INCOMPAT 6
-#define JOB_UNAVAILABLE_FLAVOUR 7 // SKYRAT EDIT ADDITION
+/// Checks for character age.
+#define JOB_UNAVAILABLE_AGE 7
+
+/// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
+#define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."
+
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
+#define DEFAULT_BIBLE_REPLACE(religion) "The Holy Book of [religion]"
 
 #define JOB_DISPLAY_ORDER_DEFAULT 0
 
+// Keys for jobconfig.toml
+#define JOB_CONFIG_PLAYTIME_REQUIREMENTS "Playtime Requirements"
+#define JOB_CONFIG_REQUIRED_ACCOUNT_AGE "Required Account Age"
+#define JOB_CONFIG_REQUIRED_CHARACTER_AGE "Required Character Age"
+#define JOB_CONFIG_SPAWN_POSITIONS "Spawn Positions"
+#define JOB_CONFIG_TOTAL_POSITIONS "Total Positions"
 
 /**
  * =======================
@@ -36,6 +48,7 @@
 #define JOB_RESEARCH_DIRECTOR "Research Director"
 #define JOB_CHIEF_ENGINEER "Chief Engineer"
 #define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
+#define JOB_BRIDGE_ASSISTANT "Bridge Assistant"
 //Silicon
 #define JOB_AI "AI"
 #define JOB_CYBORG "Cyborg"
@@ -49,14 +62,12 @@
 #define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"
 #define JOB_SECURITY_OFFICER_SUPPLY "Security Officer (Cargo)"
 #define JOB_CORRECTIONS_OFFICER "Corrections Officer" // SKYRAT EDIT ADDITION
-#define JOB_SECURITY_MEDIC "Security Medic" // SKYRAT EDIT ADDITION
-#define JOB_SECURITY_SERGEANT "Security Sergeant" // SKYRAT EDIT ADDITION
-#define JOB_CIVIL_DISPUTES_OFFICER "Civil Disputes Officer" // SKYRAT EDIT ADDITION
 //Engineering
 #define JOB_STATION_ENGINEER "Station Engineer"
 #define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
 #define JOB_ENGINEERING_GUARD "Engineering Guard" // SKYRAT EDIT ADDITION
 //Medical
+#define JOB_CORONER "Coroner"
 #define JOB_MEDICAL_DOCTOR "Medical Doctor"
 #define JOB_PARAMEDIC "Paramedic"
 #define JOB_CHEMIST "Chemist"
@@ -66,12 +77,13 @@
 #define JOB_SCIENTIST "Scientist"
 #define JOB_ROBOTICIST "Roboticist"
 #define JOB_GENETICIST "Geneticist"
-#define JOB_VANGUARD_OPERATIVE "Vanguard Operative" // SKYRAT EDIT ADDITION
 #define JOB_SCIENCE_GUARD "Science Guard"
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
 #define JOB_CARGO_TECHNICIAN "Cargo Technician"
+#define JOB_CARGO_GORILLA "Cargo Gorilla"
 #define JOB_SHAFT_MINER "Shaft Miner"
+#define JOB_BITRUNNER "Bitrunner"
 #define JOB_CUSTOMS_AGENT "Customs Agent" // SKYRAT EDIT ADDITION
 //Service
 #define JOB_BARTENDER "Bartender"
@@ -85,16 +97,16 @@
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
 #define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
-#define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
+#define JOB_BOUNCER "Service Guard" // SKYRAT EDIT ADDITION
 //ERTs
+#define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
 #define JOB_ERT_OFFICER "Security Response Officer"
 #define JOB_ERT_ENGINEER "Engineering Response Officer"
 #define JOB_ERT_MEDICAL_DOCTOR "Medical Response Officer"
-#define JOB_ERT_CLOWN "Entertainment Response Officer"
 #define JOB_ERT_CHAPLAIN "Religious Response Officer"
 #define JOB_ERT_JANITOR "Janitorial Response Officer"
-#define JOB_ERT_DEATHSQUAD "Death Commando"
+#define JOB_ERT_CLOWN "Entertainment Response Officer"
 //CentCom
 #define JOB_CENTCOM "Central Command"
 #define JOB_CENTCOM_OFFICIAL "CentCom Official"
@@ -108,65 +120,81 @@
 #define JOB_CENTCOM_RESEARCH_OFFICER "Research Officer"
 #define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
-#define JOB_BLUESHIELD "Blueshield" // SKYRAT EDIT ADDITION
-#define JOB_NT_REP "Nanotrasen Representative" // SKYRAT EDIT ADDITION
 // SKYRAT EDIT ADDITION START
+#define JOB_BLUESHIELD "Blueshield"
+#define JOB_NT_REP "Nanotrasen Consultant"
+// Nanotrasen Naval Command jobs
+#define JOB_NAVAL_ENSIGN "Ensign"
+#define JOB_NAVAL_LIEUTENANT "Lieutenant"
+#define JOB_NAVAL_LTCR "Lieutenant Commander"
+#define JOB_NAVAL_COMMANDER "Commander"
+#define JOB_NAVAL_CAPTAIN "Captain"
+#define JOB_NAVAL_REAR_ADMIRAL "Rear Admiral"
+#define JOB_NAVAL_ADMIRAL "Admiral"
+#define JOB_NAVAL_FLEET_ADMIRAL "Fleet Admiral"
 // Off-Station
 #define JOB_SPACE_POLICE "Space Police"
-#define JOB_SOLGOV "SolGov"
-#define JOB_SOLGOV_LIASON "SolGov Liason"
+#define JOB_SOLFED "SolFed"
+#define JOB_SOLFED_LIASON "SolFed Liason"
 // SKYRAT EDIT ADDITION END
+
+#define JOB_GROUP_ENGINEERS list( \
+	JOB_STATION_ENGINEER, \
+	JOB_ATMOSPHERIC_TECHNICIAN, \
+)
 
 
 #define JOB_DISPLAY_ORDER_ASSISTANT 1
 #define JOB_DISPLAY_ORDER_CAPTAIN 2
 #define JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL 3
-#define JOB_DISPLAY_ORDER_BARTENDER 4
-#define JOB_DISPLAY_ORDER_BOTANIST 5
-#define JOB_DISPLAY_ORDER_COOK 6
-#define JOB_DISPLAY_ORDER_JANITOR 7
-#define JOB_DISPLAY_ORDER_CLOWN 8
-#define JOB_DISPLAY_ORDER_MIME 9
-#define JOB_DISPLAY_ORDER_CURATOR 10
-#define JOB_DISPLAY_ORDER_LAWYER 11
-#define JOB_DISPLAY_ORDER_CHAPLAIN 12
-#define JOB_DISPLAY_ORDER_PSYCHOLOGIST 13
-#define JOB_DISPLAY_ORDER_AI 14
-#define JOB_DISPLAY_ORDER_CYBORG 15
-#define JOB_DISPLAY_ORDER_CHIEF_ENGINEER 16
-#define JOB_DISPLAY_ORDER_STATION_ENGINEER 17
-#define JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN 18
-#define JOB_DISPLAY_ORDER_QUARTERMASTER 19
-#define JOB_DISPLAY_ORDER_CARGO_TECHNICIAN 20
-#define JOB_DISPLAY_ORDER_SHAFT_MINER 21
-#define JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER 22
-#define JOB_DISPLAY_ORDER_MEDICAL_DOCTOR 23
-#define JOB_DISPLAY_ORDER_PARAMEDIC 24
-#define JOB_DISPLAY_ORDER_CHEMIST 25
-#define JOB_DISPLAY_ORDER_VIROLOGIST 26
-#define JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR 27
-#define JOB_DISPLAY_ORDER_SCIENTIST 28
-#define JOB_DISPLAY_ORDER_ROBOTICIST 29
-#define JOB_DISPLAY_ORDER_GENETICIST 30
-#define JOB_DISPLAY_ORDER_EXP_CORPS 31 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 32
-#define JOB_DISPLAY_ORDER_WARDEN 33
-#define JOB_DISPLAY_ORDER_SECURITY_SERGEANT 34 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_DETECTIVE 35
-#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 36
-#define JOB_DISPLAY_ORDER_JUNIOR_SECURITY_OFFICER 37
-#define JOB_DISPLAY_ORDER_SECURITY_MEDIC 38 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_BRIDGE_ASSISTANT 4
+#define JOB_DISPLAY_ORDER_BARTENDER 5
+#define JOB_DISPLAY_ORDER_BOTANIST 6
+#define JOB_DISPLAY_ORDER_COOK 7
+#define JOB_DISPLAY_ORDER_JANITOR 8
+#define JOB_DISPLAY_ORDER_CLOWN 9
+#define JOB_DISPLAY_ORDER_MIME 10
+#define JOB_DISPLAY_ORDER_CURATOR 11
+#define JOB_DISPLAY_ORDER_LAWYER 12
+#define JOB_DISPLAY_ORDER_CHAPLAIN 13
+#define JOB_DISPLAY_ORDER_PSYCHOLOGIST 14
+#define JOB_DISPLAY_ORDER_AI 15
+#define JOB_DISPLAY_ORDER_CYBORG 16
+#define JOB_DISPLAY_ORDER_CHIEF_ENGINEER 17
+#define JOB_DISPLAY_ORDER_STATION_ENGINEER 18
+#define JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN 19
+#define JOB_DISPLAY_ORDER_QUARTERMASTER 20
+#define JOB_DISPLAY_ORDER_CARGO_TECHNICIAN 21
+#define JOB_DISPLAY_ORDER_SHAFT_MINER 22
+#define JOB_DISPLAY_ORDER_BITRUNNER 23
+#define JOB_DISPLAY_ORDER_CARGO_GORILLA 24
+#define JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER 25
+#define JOB_DISPLAY_ORDER_MEDICAL_DOCTOR 26
+#define JOB_DISPLAY_ORDER_PARAMEDIC 27
+#define JOB_DISPLAY_ORDER_CHEMIST 28
+#define JOB_DISPLAY_ORDER_VIROLOGIST 29
+#define JOB_DISPLAY_ORDER_CORONER 30
+#define JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR 31
+#define JOB_DISPLAY_ORDER_SCIENTIST 32
+#define JOB_DISPLAY_ORDER_ROBOTICIST 33
+#define JOB_DISPLAY_ORDER_GENETICIST 34
+#define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 35
+#define JOB_DISPLAY_ORDER_WARDEN 36
+#define JOB_DISPLAY_ORDER_DETECTIVE 37
+#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 38
 #define JOB_DISPLAY_ORDER_PRISONER 39
-#define JOB_DISPLAY_ORDER_BRIGOFF 40 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE 41 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_BLUESHIELD 42 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_ORDERLY 43 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_SCIENCE_GUARD 44 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_BOUNCER 45 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_ENGINEER_GUARD 46 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 47 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_SECURITY_MEDIC 100 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER 101 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT 102 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_BLUESHIELD 103 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_ORDERLY 104 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_SCIENCE_GUARD 105 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_BOUNCER 106 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_ENGINEER_GUARD 107 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 108 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_EXP_CORPS 109 //SKYRAT EDIT ADDITON
 
-#define DEPARTMENT_UNASSIGNED "No department assigned"
+#define DEPARTMENT_UNASSIGNED "No Department"
 
 #define DEPARTMENT_BITFLAG_SECURITY (1<<0)
 #define DEPARTMENT_SECURITY "Security"
@@ -208,7 +236,35 @@
 #define JOB_REOPEN_ON_ROUNDSTART_LOSS (1<<6)
 /// If the player with this job can have quirks assigned to him or not. Relevant for new player joinable jobs and roundstart antags.
 #define JOB_ASSIGN_QUIRKS (1<<7)
+/// Whether this job can be an intern.
+#define JOB_CAN_BE_INTERN (1<<8)
+/// This job cannot have more slots opened by the Head of Personnel (but admins or other random events can still do this).
+#define JOB_CANNOT_OPEN_SLOTS (1<<9)
+/// This job will not display on the job menu when there are no slots available, instead of appearing greyed out
+#define JOB_HIDE_WHEN_EMPTY (1<<10)
+/// This job cannot be signed up for at round start or recorded in your preferences
+#define JOB_LATEJOIN_ONLY (1<<11)
+/// This job is a head of staff.
+#define JOB_HEAD_OF_STAFF (1<<12)
 
+/// Combination flag for jobs which are considered regular crew members of the station.
+#define STATION_JOB_FLAGS (JOB_ANNOUNCE_ARRIVAL|JOB_CREW_MANIFEST|JOB_EQUIP_RANK|JOB_CREW_MEMBER|JOB_NEW_PLAYER_JOINABLE|JOB_REOPEN_ON_ROUNDSTART_LOSS|JOB_ASSIGN_QUIRKS|JOB_CAN_BE_INTERN)
+/// Combination flag for jobs which are considered heads of staff.
+#define HEAD_OF_STAFF_JOB_FLAGS (JOB_BOLD_SELECT_TEXT|JOB_CANNOT_OPEN_SLOTS|JOB_HEAD_OF_STAFF)
+/// Combination flag for jobs which are enabled by station traits.
+#define STATION_TRAIT_JOB_FLAGS (JOB_CANNOT_OPEN_SLOTS|JOB_HIDE_WHEN_EMPTY|JOB_LATEJOIN_ONLY&~JOB_REOPEN_ON_ROUNDSTART_LOSS)
 
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"
+
+// Variable macros used to declare who is the supervisor for a given job, announced to the player when they join as any given job.
+#define SUPERVISOR_CAPTAIN "the Captain"
+#define SUPERVISOR_CE "the Chief Engineer"
+#define SUPERVISOR_CMO "the Chief Medical Officer"
+#define SUPERVISOR_HOP "the Head of Personnel"
+#define SUPERVISOR_HOS "the Head of Security"
+#define SUPERVISOR_QM "the Quartermaster"
+#define SUPERVISOR_RD "the Research Director"
+
+/// Mind traits that should be shared by every head of staff. has to be this way cause byond lists lol
+#define HEAD_OF_STAFF_MIND_TRAITS TRAIT_FAST_TYING, TRAIT_HIGH_VALUE_RANSOM

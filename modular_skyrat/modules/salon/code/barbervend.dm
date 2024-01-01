@@ -12,6 +12,7 @@
 		/obj/item/reagent_containers/spray/quantum_hair_dye = 3,
 		/obj/item/reagent_containers/spray/baldium = 3,
 		/obj/item/reagent_containers/spray/barbers_aid = 3,
+		/obj/item/clothing/head/hair_tie = 3,
 		/obj/item/dyespray = 5,
 		/obj/item/hairbrush = 3,
 		/obj/item/hairbrush/comb = 3,
@@ -26,8 +27,8 @@
 		/obj/item/storage/box/perfume = 1,
 	)
 	refill_canister = /obj/item/vending_refill/barbervend
-	default_price = PAYCHECK_ASSISTANT
-	extra_price = PAYCHECK_HARD
+	default_price = PAYCHECK_CREW
+	extra_price = PAYCHECK_COMMAND
 	payment_department = ACCOUNT_SRV
 
 /obj/item/vending_refill/barbervend

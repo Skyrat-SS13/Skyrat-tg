@@ -65,7 +65,7 @@
 // For base materials, see materials.dm
 
 /datum/export/stack/plasteel
-	cost = CARGO_CRATE_VALUE * 0.41 // 2000u of plasma + 2000u of iron.
+	cost = CARGO_CRATE_VALUE * 0.41 // 100u of plasma + 100u of iron.
 	message = "of plasteel"
 	export_types = list(/obj/item/stack/sheet/plasteel)
 
@@ -117,14 +117,10 @@
 	unit_name = "of ammonia crystal"
 	export_types = list(/obj/item/stack/ammonia_crystals)
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/export/stack/pizza
 	cost = CARGO_CRATE_VALUE * 0.06
 	unit_name = "of sheetza"
 	export_types = list(/obj/item/stack/sheet/pizza)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/export/stack/meat
 	cost = CARGO_CRATE_VALUE * 0.04

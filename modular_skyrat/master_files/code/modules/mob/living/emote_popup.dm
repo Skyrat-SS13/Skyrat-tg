@@ -20,7 +20,7 @@
 	emote_overlay.icon_state = state
 	vis_contents += emote_overlay
 	animate(emote_overlay, alpha = 255, time = 5, easing = BOUNCE_EASING, pixel_y = 10)
-	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_mob, emote_overlay), time)
+	addtimer(CALLBACK(src, PROC_REF(remove_emote_popup_on_mob), emote_overlay), time)
 
 /**
  * A proc type that, when called, causes a image/sprite to appear above whatever entity it is called on.
@@ -37,7 +37,7 @@
 	emote_overlay.icon_state = state
 	vis_contents += emote_overlay
 	animate(emote_overlay, alpha = 255, time = 5, easing = BOUNCE_EASING, pixel_y = 10)
-	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_obj, emote_overlay), time)
+	addtimer(CALLBACK(src, PROC_REF(remove_emote_popup_on_obj), emote_overlay), time)
 
 /**
  * A proc that is automatically called whenever flick_emote_popup_on_mob's addtimer expires, and removes the popup.

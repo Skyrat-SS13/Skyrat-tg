@@ -1,12 +1,11 @@
-/****************Explorer's Suit and Mask****************/
-/obj/item/clothing/suit/hooded/explorer
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'  //To keep the old version.
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //To keep the old version.
-	icon_state = "explorer"
-	inhand_icon_state = "explorer"
+/obj/item/clothing/suit/hooded/cloak/drake
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor_digi.dmi'
 
-/obj/item/clothing/head/hooded/explorer
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //To keep the old version before #8911
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //To keep the old version before #8911
-	icon_state = "explorer"
-
+/obj/item/clothing/suit/hooded/cloak/goliath
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor_digi.dmi'
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	
+/obj/item/clothing/head/hooded/cloakhood/goliath
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
