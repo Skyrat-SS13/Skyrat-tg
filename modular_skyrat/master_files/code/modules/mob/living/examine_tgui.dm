@@ -57,18 +57,28 @@
 	var/headshot = ""
 
 	//  Handle OOC notes first
-	if(preferences && preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
-		var/e_prefs_hypno = preferences.read_preference(/datum/preference/choiced/erp_status_hypno)
-		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
-		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
-		var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
-		ooc_notes += "ERP: [e_prefs]\n"
-		ooc_notes += "Hypnosis: [e_prefs_hypno]\n"
-		ooc_notes += "Vore: [e_prefs_v]\n"
-		ooc_notes += "Non-Con: [e_prefs_nc]\n"
-		ooc_notes += "ERP Mechanics: [e_prefs_mechanical]\n"
-		ooc_notes += "\n"
+	if(preferences)
+		if(preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+			var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
+			var/e_prefs_hypno = preferences.read_preference(/datum/preference/choiced/erp_status_hypno)
+			var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
+			var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
+			var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
+			ooc_notes += "ERP: [e_prefs]\n"
+			ooc_notes += "Non-Con: [e_prefs_nc]\n"
+			ooc_notes += "Hypnosis: [e_prefs_hypno]\n"
+			ooc_notes += "Vore: [e_prefs_v]\n"
+			ooc_notes += "ERP Mechanics: [e_prefs_mechanical]\n"
+			ooc_notes += "\n"
+
+		if(!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+			var/antag_prefs = holder.mind?.ideal_opt_in_level
+			var/effective_opt_in_level = holder.mind?.get_effective_opt_in_level()
+			if(isnull(antag_prefs))
+				antag_prefs = preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
+			ooc_notes += "Current Antag Opt-In Status: [GLOB.antag_opt_in_strings[num2text(effective_opt_in_level)]]\n"
+			ooc_notes += "Antag Opt-In Status (Preferences): [GLOB.antag_opt_in_strings[num2text(antag_prefs)]]\n"
+			ooc_notes += "\n"
 
 	// Now we handle silicon and/or human, order doesn't really matter
 	// If other variants of mob/living need to be handled at some point, put them here
