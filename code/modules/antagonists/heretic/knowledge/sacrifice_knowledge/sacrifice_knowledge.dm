@@ -113,6 +113,10 @@
 			continue
 		if(possible_target.current.stat == DEAD)
 			continue
+		// SKYRAT EDIT ADDITION BEGIN - Antag opt-in (Only security and command can be targetted)
+		if (!possible_target.assigned_role?.heretic_sac_target)
+			continue
+		// SKYRAT EDIT ADDITION END
 
 		valid_targets += possible_target
 
@@ -142,12 +146,14 @@
 			valid_targets -= sec_mind
 			break
 
+	/* SKYRAT EDIT REMOVAL -- Antag Opt In (Only sec and command may be targetted)
 	// Third target, someone in their department.
 	for(var/datum/mind/department_mind as anything in shuffle(valid_targets))
 		if(department_mind.assigned_role?.departments_bitflags & user.mind.assigned_role?.departments_bitflags)
 			final_targets += department_mind
 			valid_targets -= department_mind
 			break
+	*/ // SKYRAT EDIT REMOVAL END
 
 	// Now grab completely random targets until we'll full
 	var/target_sanity = 0

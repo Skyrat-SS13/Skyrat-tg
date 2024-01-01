@@ -19,9 +19,12 @@
 		return
 	var/datum/team/cult/cult = team
 	var/list/target_candidates = list()
+	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
-		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+			continue
+		if (!opt_in_disabled && !opt_in_valid(player))
 			continue
 		// SKYRAT EDIT END
 		if(player.mind && !player.mind.has_antag_datum(/datum/antagonist/cult) && !is_convertable_to_cult(player) && player.stat != DEAD)
@@ -29,8 +32,10 @@
 	if(target_candidates.len == 0)
 		message_admins("Cult Sacrifice: Could not find unconvertible target, checking for convertible target.")
 		for(var/mob/living/carbon/human/player in GLOB.player_list)
-			// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+			// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 			if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+				continue
+			if (!opt_in_disabled && !opt_in_valid(player))
 				continue
 			// SKYRAT EDIT END
 			if(player.mind && !player.mind.has_antag_datum(/datum/antagonist/cult) && player.stat != DEAD)
