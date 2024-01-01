@@ -295,6 +295,32 @@
 	name = "Colourable Sterile Mask (Worn) (Teshari)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_teshari.dmi'
 
+// MASQUERADE MASKS
+/datum/greyscale_config/masquerade_mask
+	name = "Masquerade Mask"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/masquerade_mask/masquerade_mask.json'
+
+/datum/greyscale_config/masquerade_mask/worn
+	name = "Masquerade Mask (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/snouted
+	name = "Masquerade Mask (Worn) (Snouted)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_snouted.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/teshari
+	name = "Masquerade Mask (Worn) (Teshari)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_teshari.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/better_vox
+	name = "Masquerade Mask (Worn) (Vox Primalis)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_better_vox.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/vox
+	name = "Masquerade Mask (Worn) (Vox)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_vox.dmi'
+
 /*
 *	NECK
 */

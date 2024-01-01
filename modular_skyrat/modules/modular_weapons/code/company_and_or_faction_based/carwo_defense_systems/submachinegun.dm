@@ -1,8 +1,8 @@
 // Base Sol SMG
 
 /obj/item/gun/ballistic/automatic/sol_smg
-	name = "\improper Carwo 'Sindano' Submachinegun"
-	desc = "A small submachinegun commonly seen in the hands of PMCs and other unsavory corpos. Accepts any standard Sol pistol magazine."
+	name = "\improper Sindano Submachine Gun"
+	desc = "A small submachine gun firing .35 Sol. Commonly seen in the hands of PMCs and other unsavory corpos. Accepts any standard Sol pistol magazine."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns32x.dmi'
 	icon_state = "sindano"
@@ -36,6 +36,10 @@
 
 /obj/item/gun/ballistic/automatic/sol_smg/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
+
+/obj/item/gun/ballistic/automatic/sol_smg/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/sol_smg/examine_more(mob/user)
 	. = ..()

@@ -1,7 +1,7 @@
 // .35 Sol mini revolver
 
 /obj/item/gun/ballistic/revolver/sol
-	name = "\improper Trappiste 'Eland' Revolver"
+	name = "\improper Eland Revolver"
 	desc = "A small revolver with a comically short barrel and cylinder space for eight .35 Sol Short rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
@@ -17,6 +17,10 @@
 
 /obj/item/gun/ballistic/revolver/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_TRAPPISTE)
+
+/obj/item/gun/ballistic/revolver/sol/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/revolver/sol/examine_more(mob/user)
 	. = ..()
@@ -39,7 +43,7 @@
 // .585 super revolver
 
 /obj/item/gun/ballistic/revolver/takbok
-	name = "\improper Trappiste 'Takbok' Revolver"
+	name = "\improper Takbok Revolver"
 	desc = "A hefty revolver with an equally large cylinder capable of holding five .585 Trappiste rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
@@ -59,6 +63,10 @@
 
 /obj/item/gun/ballistic/revolver/takbok/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_TRAPPISTE)
+
+/obj/item/gun/ballistic/revolver/takbok/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/revolver/takbok/examine_more(mob/user)
 	. = ..()
