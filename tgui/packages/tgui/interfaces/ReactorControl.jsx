@@ -1,5 +1,13 @@
 import { useBackend } from '../backend';
-import { Section, Stack, Button, LabeledList, NoticeBox, Slider, ProgressBar } from '../components';
+import {
+  Button,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Slider,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 export const ReactorControl = (props, context) => {
@@ -8,6 +16,7 @@ export const ReactorControl = (props, context) => {
     reactor_connected,
     exchanger_connected,
     target_control_rod_insertion,
+    cover_position,
     control_rods = [],
     fuel_rods = [],
   } = data;
@@ -15,7 +24,8 @@ export const ReactorControl = (props, context) => {
     <Window
       title={'Micron Control Systems Incorporated GA37W EBWR'}
       width={900}
-      height={900}>
+      height={900}
+    >
       <Window.Content>
         {reactor_connected ? (
           <Stack vertical grow>
@@ -28,37 +38,40 @@ export const ReactorControl = (props, context) => {
                   <ExchangerStats />
                 ) : (
                   <>
-                    <NoticeBox>
-                      Heat Exchanger is not connected.
-                    </NoticeBox>
+                    <NoticeBox>Heat Exchanger is not connected.</NoticeBox>
                     <Button
                       icon="connect"
                       content="Sync Heatsink"
-                      onClick={() => act('sync_heatsink')} />
+                      onClick={() => act('sync_heatsink')}
+                    />
                   </>
                 )}
               </Section>
             </Stack.Item>
             <Stack.Item>
-              <Section title="Control Rods"
-                buttons={(
+              <Section
+                title="Control Rods"
+                buttons={
                   <Slider
                     value={target_control_rod_insertion}
                     minValue={0}
                     maxValue={100}
-                    onChange={(e, value) => act('move_control_rods', {
-                      control_rod_insertion: value,
-                    })} />
-                )}>
+                    onChange={(e, value) =>
+                      act('move_control_rods', {
+                        control_rod_insertion: value,
+                      })
+                    }
+                  />
+                }
+              >
                 <LabeledList title="Control Rods">
                   {control_rods.map((rod, index) => (
-                    <LabeledList.Item
-                      key={index}
-                      label={rod.name}>
+                    <LabeledList.Item key={index} label={rod.name}>
                       <ProgressBar
                         value={rod.insertion_percent}
                         minValue={0}
-                        maxValue={100} />
+                        maxValue={100}
+                      />
                     </LabeledList.Item>
                   ))}
                 </LabeledList>
@@ -67,13 +80,12 @@ export const ReactorControl = (props, context) => {
           </Stack>
         ) : (
           <>
-            <NoticeBox>
-              The reactor is not connected.
-            </NoticeBox>
+            <NoticeBox>The reactor is not connected.</NoticeBox>
             <Button
               icon="plug"
               content="Sync Reactor"
-              onClick={() => act('sync_reactor')} />
+              onClick={() => act('sync_reactor')}
+            />
           </>
         )}
       </Window.Content>
@@ -101,9 +113,7 @@ export const ReactorStats = (props, context) => {
       <Stack.Item>
         <Section title={'Reactor Information'}>
           <LabeledList>
-            <LabeledList.Item label="Status">
-              {reactor_status}
-            </LabeledList.Item>
+            <LabeledList.Item label="Status">{reactor_status}</LabeledList.Item>
             <LabeledList.Item label="Core Temperature">
               <ProgressBar
                 value={reactor_temperature}
@@ -115,7 +125,8 @@ export const ReactorStats = (props, context) => {
                   yellow: [300, 500],
                   average: [500, 800],
                   bad: [800, Infinity],
-                }}>
+                }}
+              >
                 {reactor_temperature} K
               </ProgressBar>
             </LabeledList.Item>
@@ -126,10 +137,13 @@ export const ReactorStats = (props, context) => {
                 maxValue={reactor_max_pressure}
                 ranges={{
                   bad: [reactor_max_pressure * 0.75, Infinity],
-                  average: [reactor_max_pressure * 0.5,
-                    reactor_max_pressure * 0.75],
+                  average: [
+                    reactor_max_pressure * 0.5,
+                    reactor_max_pressure * 0.75,
+                  ],
                   good: [0, reactor_max_pressure * 0.5],
-                }}>
+                }}
+              >
                 {reactor_pressure} kPa
               </ProgressBar>
             </LabeledList.Item>
@@ -142,7 +156,8 @@ export const ReactorStats = (props, context) => {
                   good: [90, 100],
                   average: [50, 90],
                   bad: [0, 50],
-                }}>
+                }}
+              >
                 {reactor_integrity} %
               </ProgressBar>
             </LabeledList.Item>
@@ -155,7 +170,8 @@ export const ReactorStats = (props, context) => {
                   bad: [4, Infinity],
                   average: [2.5, 4],
                   good: [0, 2.5],
-                }}>
+                }}
+              >
                 {calculated_power} NIPS
               </ProgressBar>
             </LabeledList.Item>
@@ -168,7 +184,8 @@ export const ReactorStats = (props, context) => {
                   good: [1.1, 1.5],
                   average: [1.05, 1.1],
                   bad: [1, 1.05],
-                }}>
+                }}
+              >
                 {calculated_control_rod_efficiency}
               </ProgressBar>
             </LabeledList.Item>
@@ -183,7 +200,8 @@ export const ReactorStats = (props, context) => {
                   yellow: [150, 220],
                   blue: [100, 150],
                   cyan: [0, 100],
-                }}>
+                }}
+              >
                 {calculated_cooling_potential} K
               </ProgressBar>
             </LabeledList.Item>
@@ -198,7 +216,8 @@ export const ReactorStats = (props, context) => {
                   yellow: [300, 500],
                   average: [500, 800],
                   bad: [800, Infinity],
-                }}>
+                }}
+              >
                 {ambient_air_temperature} K
               </ProgressBar>
             </LabeledList.Item>
@@ -213,47 +232,61 @@ export const ReactorStats = (props, context) => {
                 icon="exclamation-triangle"
                 color="bad"
                 content="FULLY RAISE CONTROL RODS"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="AZ-2">
               <Button
                 icon="temperature-high"
                 color="average"
                 content="HIGH TEMPERATURE OPERATION"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="AZ-3">
               <Button
                 icon="temperature-low"
                 color="yellow"
                 content="NOMINAL OPERATION"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="AZ-4">
               <Button
                 icon="atom"
                 color="blue"
                 content="COLD START"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="AZ-5">
               <Button
                 icon="radiation-alt"
                 color="bad"
                 content="SCRAM"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="AZ-6">
               <Button
                 icon="cog"
                 content="MAINTENANCE MODE"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="AZ-7">
               <Button
                 icon="gas-pump"
                 content="FUEL DUMP"
-                onClick={() => act('turn_on')} />
+                onClick={() => act('turn_on')}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="AZ-8">
+              <Button
+                icon="door-open"
+                content="TOGGLE COVER"
+                onClick={() => act('toggle_cover')}
+              />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -294,17 +327,12 @@ export const ExchangerStats = (props, context) => {
       </LabeledList>
       <Section title={'Input Gases'}>
         {exchanger_input_gases.length === 0 ? (
-          <NoticeBox color="red">
-            No input gases detected.
-          </NoticeBox>
+          <NoticeBox color="red">No input gases detected.</NoticeBox>
         ) : (
           <LabeledList>
-            {exchanger_input_gases.map(gas => (
+            {exchanger_input_gases.map((gas) => (
               <LabeledList.Item label={gas.name} key={gas.name}>
-                <ProgressBar
-                  value={gas.amount}
-                  minValue={0}
-                  maxValue={100}>
+                <ProgressBar value={gas.amount} minValue={0} maxValue={100}>
                   {gas.amount} %
                 </ProgressBar>
               </LabeledList.Item>
@@ -314,12 +342,10 @@ export const ExchangerStats = (props, context) => {
       </Section>
       <Section title={'Output Gases'}>
         {exchanger_output_gases.length === 0 ? (
-          <NoticeBox color="red">
-            No output gases detected.
-          </NoticeBox>
+          <NoticeBox color="red">No output gases detected.</NoticeBox>
         ) : (
           <LabeledList>
-            {exchanger_output_gases.map(gas => (
+            {exchanger_output_gases.map((gas) => (
               <LabeledList.Item label={gas.name} key={gas.name}>
                 {gas.amount}
               </LabeledList.Item>
@@ -330,4 +356,3 @@ export const ExchangerStats = (props, context) => {
     </>
   );
 };
-

@@ -117,8 +117,8 @@
 
 	update_appearance()
 
-	//if(core_pressure <= 0)
-		//shut_down()
+	if(core_pressure <= 0 && core_temperature <= T20C)
+		shut_down()
 
 /**
  * A reactor can be destroyed in the following ways:
@@ -132,6 +132,13 @@
  * a very large fireball, leaving the station in a state of chaos as radioactive gasses and toxic gasses are released in all directions, landing all across the station.
  */
 /obj/machinery/reactor/proc/process_damage()
+	if(core_pressure >= (REACTOR_PRESSURE_MAXIMUM / 2) || core_temperature >= (REACTOR_TEMPERATURE_MAXIMUM / 2))
+		if(!half_way_alarm)
+			half_way_alarm = TRUE
+			visible_message(span_warning("[src] is half way to a catastrophic failure!"))
+	else
+		half_way_alarm = FALSE
+
 	if(core_pressure >= REACTOR_PRESSURE_MAXIMUM) // Pressure will kill the reactor before a meltdown happens.
 		vessel_integrity -= clamp(core_pressure / 10000, 0, REACTOR_MAX_DAMAGE_PER_SECOND)
 		if(vessel_integrity <= 0)
@@ -145,10 +152,25 @@
 			return
 
 /obj/machinery/reactor/proc/meltdown()
+	STOP_PROCESSING(SSmachines, src)
+	qdel(src)
 
 /obj/machinery/reactor/proc/blowout()
+	STOP_PROCESSING(SSmachines, src)
+	explosion(src, 0, 2, 4)
+	qdel(src)
 
 /obj/machinery/reactor/proc/process_effects()
+	if(!cover && reactor_status == REACTOR_ONLINE && core_temperature >= REACTOR_TEMPERATURE_MINIMUM) // Cover open and reactor on... you silly.
+		SSradiation.pulse(src)
+		visible_message(span_warning("[src] is emitting radiation, close the cover!"))
+
+
+/obj/machinery/reactor/proc/toggle_cover()
+	cover = !cover
+	playsound(src, 'sound/mecha/hydraulic.ogg', 100)
+	update_appearance()
+
 
 // Returns the current ambient air temperature.
 /obj/machinery/reactor/proc/get_ambient_air_temperature()
@@ -296,137 +318,6 @@
 			return TRUE
 	return ..()
 
-/obj/machinery/computer/reactor_control
-	name = "GA37W Reactor Control Terminal"
-	desc = "This computer controls the Micron Control Systems GA37W Experimental Boiling Water Reactor."
-	/// Our connection to the reactor.
-	var/obj/machinery/reactor/connected_reactor
-
-/obj/machinery/computer/reactor_control/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "ReactorControl")
-		ui.open()
-
-/obj/machinery/computer/reactor_control/ui_data(mob/user)
-	var/list/data = list()
-
-	// Direct reactor stats
-	data["reactor_connected"] = connected_reactor ? TRUE : FALSE
-
-	if(!connected_reactor)
-		return data
-
-	data["reactor_status"] = connected_reactor.reactor_status
-	data["reactor_temperature"] = connected_reactor.core_temperature
-	data["reactor_max_temperature"] = connected_reactor.maximum_temperature
-	data["reactor_pressure"] = connected_reactor.core_pressure
-	data["reactor_max_pressure"] = connected_reactor.maximum_pressure
-	data["reactor_integrity"] = connected_reactor.vessel_integrity
-	data["calculated_power"] = connected_reactor.calculated_power
-	data["calculated_control_rod_efficiency"] = connected_reactor.calculated_control_rod_efficiency
-	data["calculated_cooling_potential"] = connected_reactor.calculated_cooling_potential
-	data["ambient_air_temperature"] = connected_reactor.get_ambient_air_temperature()
-	data["target_control_rod_insertion"] = connected_reactor.desired_control_rod_insertion
-
-	// Heat exchanger information
-	data["exchanger_connected"] = connected_reactor.reactor_heat_exchanger ? TRUE : FALSE
-	data["exchanger_ambient_temperature"] = 0
-
-	data["exchanger_input_gases"] = list()
-	data["exchanger_input_air_temperature"] = 0
-	data["exchanger_input_air_pressure"] = 0
-
-	data["exchanger_output_gases"] = list()
-	data["exchanger_output_air_temperature"] = 0
-	data["exchanger_output_air_pressure"] = 0
-
-	data["exchanger_cooling_potential"] = 0
-
-
-	// If we have a heat exchanger, get the details of it.
-	if(connected_reactor.reactor_heat_exchanger)
-		var/obj/machinery/atmospherics/components/binary/reactor_heat_exchanger/exchanger = connected_reactor.reactor_heat_exchanger
-		var/datum/gas_mixture/air_input = exchanger.get_input_gas()
-		var/datum/gas_mixture/air_output = exchanger.get_output_gas()
-
-		for(var/gasid in air_input.gases)
-			data["exchanger_input_gases"] += list(list(
-				"name"= air_input.gases[gasid][GAS_META][META_GAS_NAME],
-				"amount" = round(100*air_input.gases[gasid][MOLES]/air_input.total_moles(),0.01)
-			))
-
-		data["exchanger_input_air_temperature"] = air_input.return_temperature()
-		data["exchanger_input_air_pressure"] = air_input.return_pressure()
-
-		for(var/gasid in air_output.gases)
-			data["exchanger_output_gases"] += list(list(
-				"name"= air_output.gases[gasid][GAS_META][META_GAS_NAME],
-				"amount" = round(100*air_output.gases[gasid][MOLES]/air_output.total_moles(),0.01)
-			))
-
-		data["exchanger_output_air_temperature"] = air_output.return_temperature()
-		data["exchanger_output_air_pressure"] = air_output.return_pressure()
-
-		data["exchanger_ambient_temperature"] = exchanger.get_ambient_air_temperature()
-
-		data["exchanger_cooling_potential"] = exchanger.calculated_cooling_potential
-
-	data["control_rods"] = list()
-	if(length(connected_reactor.control_rods))
-		for(var/obj/item/reactor_control_rod/rod in connected_reactor.control_rods)
-			data["control_rods"] += list(list(
-				"name" = rod.name,
-				"insertion_percent" = rod.insertion_percent,
-				"max_integrity" = rod.max_integrity,
-				"efficiency" = rod.efficiency,
-				"heat_rating" = rod.heat_rating,
-				"degradation" = rod.degradation,
-				"movement_rate" = rod.movement_rate,
-			))
-
-	data["fuel_rods"] = list()
-	if(length(connected_reactor.fuel_rods))
-		for(var/obj/item/reactor_fuel_rod/fuel_rod in connected_reactor.fuel_rods)
-			data["fuel_rods"] += list(list(
-				"fuel_name" = fuel_rod.fuel_name,
-				"radioactivity" = fuel_rod.radioactivity,
-				"depletion" = fuel_rod.depletion,
-				"depletion_threshold" = fuel_rod.depletion_threshold,
-			))
-
-	return data
-
-/obj/machinery/computer/reactor_control/ui_act(action, list/params)
-	. = ..()
-	if(.)
-		return
-
-	switch(action)
-		if("sync_reactor")
-			if(!find_reactor())
-				playsound(src, 'sound/machines/buzz-two.ogg', 100)
-				balloon_alert_to_viewers("No reactor found!")
-				return
-		if("sync_heatsink")
-			if(!connected_reactor)
-				return
-			if(!connected_reactor.find_heatsink())
-				playsound(src, 'sound/machines/buzz-two.ogg', 100)
-				balloon_alert_to_viewers("No heatsink found!")
-				return
-		if("turn_on")
-			connected_reactor.start_up()
-			return TRUE
-		if("move_control_rods")
-			connected_reactor.desired_control_rod_insertion = clamp(params["control_rod_insertion"], 0, 100)
-
-/obj/machinery/computer/reactor_control/proc/find_reactor()
-	for(var/obj/machinery/reactor/found_reactor in range(20, src))
-		connected_reactor = found_reactor
-		found_reactor.connected_computer = src
-		return TRUE
-	return FALSE
 
 /**
  * Reactor heat exchanger
@@ -544,6 +435,7 @@
 
 /obj/item/reactor_control_rod/proc/final_degrade()
 	efficiency = 0
+	AddElement(/datum/element/radioactive)
 
 /obj/item/reactor_fuel_rod //Uranium is the standard fuel for the GA37W reactor.
 	name = "uranium-235 reactor fuel rod"
@@ -567,9 +459,14 @@
 	/// How fast do we deplete
 	var/depletion_speed_modifier = 1
 
+/obj/item/reactor_fuel_rod/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/radioactive)
+	update_appearance()
+
 /obj/item/reactor_fuel_rod/update_overlays()
 	. = ..()
-	if(fuel_overlay_icon)
+	if(fuel_overlay_icon && !depleted)
 		. += fuel_overlay_icon
 	else
 		. += "overlay_depleted"
@@ -581,6 +478,9 @@
 		depletion_final()
 
 /obj/item/reactor_fuel_rod/proc/depletion_final()
+	depleted = TRUE
+	radioactivity = 0
+	update_appearance()
 
 /obj/item/reactor_fuel_rod/plutonium
 	name = "plutonium-239 reactor fuel rod"
