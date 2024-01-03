@@ -464,7 +464,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
-		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && src.incapacitated(IGNORE_RESTRAINTS))
+		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 			visible_message(span_warning("[helper] tries to boop [src] on the nose, but [p_they()] move[p_s()] out of the way."))
 			return
 		else
