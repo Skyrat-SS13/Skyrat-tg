@@ -73,6 +73,10 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Gas Mask"
 	item_path = /obj/item/clothing/mask/gas
 
+/datum/loadout_item/mask/gas_alt
+	name = "Black Gas Mask"
+	item_path = /obj/item/clothing/mask/gas/alt
+
 /datum/loadout_item/mask/gas_glass
 	name = "Glass Gas Mask"
 	item_path = /obj/item/clothing/mask/gas/glass
