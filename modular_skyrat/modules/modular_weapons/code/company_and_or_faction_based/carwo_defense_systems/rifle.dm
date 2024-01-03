@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle
 	name = "\improper Carwo-Cawil Battle Rifle"
-	desc = "A heavy battle rifle commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
+	desc = "A heavy battle rifle firing .40 Sol. Commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "infanterie"
@@ -53,6 +53,10 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
+
+/obj/item/gun/ballistic/automatic/sol_rifle/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/sol_rifle/examine_more(mob/user)
 	. = ..()
