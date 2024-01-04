@@ -7,10 +7,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	flags_cover = HEADCOVERSEYES
-<<<<<<< HEAD
-	flags_inv = HIDEHAIR|SHOWSPRITEEARS
-=======
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR|SHOWSPRITEEARS // SKYRAT EDIT CHANGE
 
 /obj/item/clothing/head/mothcap/original
 	desc = "An authentic, padded leather cap with magnifying goggles, standard issue aboard the moth fleet. Keeps your head warm and debris away from those big eyes."
@@ -21,4 +18,3 @@
 
 /obj/item/clothing/head/mothcap/original/item_action_slot_check(slot, mob/user, datum/action/action)
 	return (slot & ITEM_SLOT_HEAD)
->>>>>>> 81a668a727d (Changes the scope component to be appliable to other items and not just guns. Binocs and the Curator's mothic cap use it. (#80445))
