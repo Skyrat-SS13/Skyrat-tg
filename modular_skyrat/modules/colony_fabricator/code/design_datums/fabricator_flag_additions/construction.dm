@@ -40,6 +40,8 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
+// Wall frames
+
 /datum/design/camera_assembly/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -47,6 +49,32 @@
 /datum/design/intercom_frame/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
+
+/datum/design/light_switch_frame/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/ignition_control/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/sparker/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/newscaster_frame/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/status_display_frame/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/requests_console/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+// Lights
 
 /datum/design/light_tube/New()
 	. = ..()
@@ -56,6 +84,8 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
+// Conveyors
+
 /datum/design/conveyor_belt/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -63,6 +93,8 @@
 /datum/design/conveyor_switch/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
+
+// Materials
 
 /datum/design/lavarods/New()
 	. = ..()

@@ -1,7 +1,7 @@
 // Evil .585 smg that blueshields spawn with that will throw your screen like hell but itll sure kill whoever threatens a head really good
 
 /obj/item/gun/ballistic/automatic/xhihao_smg
-	name = "\improper Xhihao 'Bogseo' Submachinegun"
+	name = "\improper Bogseo Submachine Gun"
 	desc = "A weapon that could hardly be called a 'sub' machinegun, firing the monstrous .585 cartridge. \
 		It provides enough kick to bruise a shoulder pretty bad if used without protection."
 
@@ -42,6 +42,10 @@
 /obj/item/gun/ballistic/automatic/xhihao_smg/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_XHIHAO)
 	AddComponent(/datum/component/automatic_fire, fire_delay)
+
+/obj/item/gun/ballistic/automatic/xhihao_smg/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/xhihao_smg/examine_more(mob/user)
 	. = ..()

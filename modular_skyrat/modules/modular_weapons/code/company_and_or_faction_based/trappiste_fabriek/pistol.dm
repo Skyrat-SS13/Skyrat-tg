@@ -1,8 +1,8 @@
 // .35 Sol pistol
 
 /obj/item/gun/ballistic/automatic/pistol/sol
-	name = "\improper Trappiste 'Wespe' Pistol"
-	desc = "The standard issue service pistol of SolFed's various military branches. Comes with attached light."
+	name = "\improper Wespe Pistol"
+	desc = "The standard issue service pistol of SolFed's various military branches. Uses .35 Sol and comes with an attached light."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "wespe"
@@ -27,6 +27,10 @@
 		starting_light = new /obj/item/flashlight/seclite(src), \
 		is_light_removable = FALSE, \
 		)
+
+/obj/item/gun/ballistic/automatic/pistol/sol/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/pistol/sol/examine_more(mob/user)
 	. = ..()
@@ -56,8 +60,9 @@
 // Trappiste high caliber pistol in .585
 
 /obj/item/gun/ballistic/automatic/pistol/trappiste
-	name = "\improper Trappiste 'Skild' Pistol"
-	desc = "A somewhat rare to see Trappiste pistol firing the high caliber .585 developed by the same company. Sees rare use mainly due to its tendency to cause severe wrist discomfort."
+	name = "\improper Skild Pistol"
+	desc = "A somewhat rare to see Trappiste pistol firing the high caliber .585 developed by the same company. \
+		Sees rare use mainly due to its tendency to cause severe wrist discomfort."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "skild"
@@ -78,6 +83,10 @@
 
 /obj/item/gun/ballistic/automatic/pistol/trappiste/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_TRAPPISTE)
+
+/obj/item/gun/ballistic/automatic/pistol/sol/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/pistol/trappiste/examine_more(mob/user)
 	. = ..()

@@ -31,5 +31,6 @@
 		'modular_skyrat/modules/colony_fabricator/sound/conditioner/conditioner_4.wav' = 1,
 	)
 	mid_length = 3 SECONDS
-	volume = 75
+	volume = 40
 	falloff_exponent = 3
+

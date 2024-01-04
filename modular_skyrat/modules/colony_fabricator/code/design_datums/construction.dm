@@ -10,6 +10,7 @@
 	description = "Contains all of the colony fabricator's structure designs."
 	design_ids = list(
 		"prefab_airlock_kit",
+		"prefab_manual_airlock_kit",
 		"prefab_shutters_kit",
 		"prefab_floor_tile",
 		"prefab_cat_floor_tile",
@@ -37,6 +38,23 @@
 	)
 	construction_time = 30 SECONDS
 
+// Manul Airlock kit
+
+/datum/design/prefab_manual_airlock_kit
+	name = "Prefab Manual Airlock"
+	id = "prefab_manual_airlock_kit"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+	)
+	build_path = /obj/item/flatpacked_machine/airlock_kit_manual
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
+	)
+	construction_time = 30 SECONDS
+
 // Shutters kit
 
 /datum/design/prefab_shutters_kit
@@ -57,7 +75,7 @@
 // Fancy floor tiles
 
 /datum/design/prefab_floor_tile
-	name = "Prefab Floor Tile"
+	name = "Prefab Floor Tile x4"
 	id = "prefab_floor_tile"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -73,7 +91,7 @@
 // Fancy catwalk floor tiles
 
 /datum/design/prefab_cat_floor_tile
-	name = "Prefab Catwalk Plating"
+	name = "Prefab Catwalk Plating x4"
 	id = "prefab_cat_floor_tile"
 	build_type = COLONY_FABRICATOR
 	materials = list(
