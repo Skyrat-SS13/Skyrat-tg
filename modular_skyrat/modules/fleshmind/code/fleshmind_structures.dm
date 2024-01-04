@@ -387,6 +387,8 @@
 
 /obj/structure/fleshmind/structure/core/proc/build_a_wall()
 	for(var/turf/iterating_turf in RANGE_TURFS(1, src))
+		if(locate(/obj/structure/fleshmind/structure/wireweed_wall) in iterating_turf) // No stacking walls.
+			continue
 		new /obj/structure/fleshmind/structure/wireweed_wall(iterating_turf)
 
 /obj/structure/fleshmind/structure/core/proc/rally_troops()

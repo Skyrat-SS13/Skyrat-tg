@@ -391,6 +391,8 @@
 
 /// Spawns and registers a wall at location
 /datum/fleshmind_controller/proc/spawn_wall(turf/location, wall_type)
+	if(locate(wall_type) in location) // No stacking walls.
+		return FALSE
 	var/obj/structure/fleshmind/structure/wireweed_wall/new_wall = new wall_type(location)
 	new_wall.our_controller = src
 	controlled_walls += new_wall

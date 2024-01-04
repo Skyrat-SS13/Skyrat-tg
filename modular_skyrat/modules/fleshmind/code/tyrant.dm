@@ -128,7 +128,8 @@
 	. = ..()
 	if(health <= (maxHealth * 0.5) && prob(20))
 		do_sparks(3, FALSE, src)
-
+	if(!.) //dead
+		return
 	if(COOLDOWN_FINISHED(src, laser_cooldown) && target)
 		fire_custom_projectile(target, laser_projectile_type, pick(laser_projectile_sounds))
 		COOLDOWN_START(src, laser_cooldown, rand(laser_cooldown_time_lower, laser_cooldown_time_upper))
@@ -142,6 +143,9 @@
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Destroy()
 	QDEL_NULL(particles)
 	return ..()
+
+/mob/living/simple_animal/hostile/fleshmind/tyrant/emp_act(severity)
+	return FALSE
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/updatehealth()
 	. = ..()
