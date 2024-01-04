@@ -339,6 +339,11 @@
 		retaliate_effect()
 	return ..()
 
+/obj/structure/fleshmind/structure/core/examine(mob/user)
+	. = ..()
+	if(our_controller && isobserver(user))
+		. += "Level: [our_controller.level] | Progress to Next Level: [our_controller.level_up_progress_required - our_controller.current_points]"
+
 /obj/structure/fleshmind/structure/core/proc/core_attack_atom(atom/thing)
 	. = FALSE
 	var/has_attacked

@@ -65,7 +65,7 @@
 	var/death_behaviour = CONTROLLER_DEATH_SLOW_DECAY
 	/// Our core level, what is spawned will depend on the level of this core.
 	var/level = CONTROLLER_LEVEL_1
-	/// To level up, we much reach this threshold.
+	/// To level up, we must reach this threshold.
 	var/level_up_progress_required = CONTROLLER_LEVEL_UP_THRESHOLD
 	/// Used to track our last points since levelup.
 	var/last_level_up_points = 0
