@@ -116,6 +116,8 @@
 	. = ..()
 	if (!owner)
 		return
+	if(!iscarbon(granted_to))
+		return
 	RegisterSignal(granted_to, COMSIG_HUMAN_MONKEYIZE, PROC_REF(became_monkey))
 
 /datum/action/fleshmind/weapon/Remove(mob/remove_from)
