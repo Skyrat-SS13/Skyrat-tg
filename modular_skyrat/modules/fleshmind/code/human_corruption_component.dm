@@ -7,7 +7,7 @@
 		/datum/action/cooldown/fleshmind_plant_weeds,
 		/datum/action/cooldown/fleshmind_flesh_call,
 		/datum/action/innate/fleshmind_flesh_chat,
-		/datum/action/fleshmind/weapon,
+		/datum/action/innate/fleshmind/weapon,
 
 	)
 	var/list/granted_actions = list()
