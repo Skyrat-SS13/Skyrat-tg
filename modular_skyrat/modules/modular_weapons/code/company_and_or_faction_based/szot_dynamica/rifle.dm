@@ -1,7 +1,7 @@
 // Semi-automatic rifle firing .310 with reduced damage compared to a Sakhno
 
 /obj/item/gun/ballistic/automatic/lanca
-	name = "\improper Szot 'Lanca' Battle Rifle"
+	name = "\improper Lanca Battle Rifle"
 	desc = "A relatively compact, long barreled bullpup battle rifle chambered for .310 Strilka. Has an integrated sight with \
 		a surprisingly functional amount of magnification, given its place of origin."
 
@@ -50,6 +50,10 @@
 /obj/item/gun/ballistic/automatic/lanca/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
 
+/obj/item/gun/ballistic/automatic/lanca/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+
 /obj/item/gun/ballistic/automatic/lanca/examine_more(mob/user)
 	. = ..()
 
@@ -73,7 +77,7 @@
 // This sounds a lot scarier than it actually is, you'll just have to trust me here
 
 /obj/item/gun/ballistic/automatic/wylom
-	name = "\improper Szot 'Wyłom' AMR"
+	name = "\improper Wyłom Anti-Materiel Rifle"
 	desc = "A massive, outdated beast of an anti materiel rifle that was once in use by CIN military forces. Fires the devastating .60 Strela caseless round, \
 		the massively overperforming penetration of which being the reason this weapon was discontinued."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_64.dmi'
@@ -108,6 +112,10 @@
 
 /obj/item/gun/ballistic/automatic/wylom/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
+
+/obj/item/gun/ballistic/automatic/wylom/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/wylom/examine_more(mob/user)
 	. = ..()

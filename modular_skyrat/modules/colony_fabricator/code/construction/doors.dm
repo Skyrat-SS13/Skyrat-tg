@@ -9,6 +9,17 @@
 	density = FALSE
 	opacity = FALSE
 
+/obj/machinery/door/poddoor/shutters/colony_fabricator/do_animate(animation)
+	switch(animation)
+		if("opening")
+			flick("opening", src)
+			icon_state = "open"
+			playsound(src, animation_sound, 30, TRUE)
+		if("closing")
+			flick("closing", src)
+			icon_state = "closed"
+			playsound(src, animation_sound, 30, TRUE)
+
 /obj/item/flatpacked_machine/shutter_kit
 	name = "prefab shutters parts kit"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/doors/packed.dmi'
