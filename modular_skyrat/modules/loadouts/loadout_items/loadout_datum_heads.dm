@@ -341,6 +341,22 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Flower Pin"
 	item_path = /obj/item/clothing/head/costume/skyrat/flowerpin
 
+/datum/loadout_item/head/floral_garland
+	name = "Floral Garland"
+	item_path = /obj/item/clothing/head/costume/garland
+
+/datum/loadout_item/head/sunflower_crown
+	name = "Sunflower Crown"
+	item_path = /obj/item/clothing/head/costume/garland/sunflower
+
+/datum/loadout_item/head/lily_crown
+	name = "Lily Crown"
+	item_path = /obj/item/clothing/head/costume/garland/lily
+
+/datum/loadout_item/head/poppy_crown
+	name = "Poppy Crown"
+	item_path = /obj/item/clothing/head/costume/garland/poppy
+
 /datum/loadout_item/head/rice_hat
 	name = "Rice Hat"
 	item_path = /obj/item/clothing/head/costume/rice_hat

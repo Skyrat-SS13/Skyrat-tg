@@ -112,13 +112,23 @@
 		current_research += 1
 	if(istype(remove_item, /obj/item/xenoarch/useless_relic))
 		current_research += 5
+	if(istype(remove_item, /obj/item/xenoarch/useless_relic/magnified))//You should be rewarded for the extra bit of effort. Will give +10, instead of +5
+		current_research += 5
 	if(istype(remove_item, /obj/item/xenoarch/broken_item))
 		current_research += 10
 	if(current_research >= 150)
 		current_research -= 150
-		var/list/choices = subtypesof(/obj/machinery/anomalous_crystal)
-		var/random_crystal = pick(choices)
-		new random_crystal(get_turf(src))
+		var/list/choices = list(/obj/item/shared_storage/red,
+							/obj/item/organ/internal/cyberimp/arm/shard/katana,
+							/obj/item/clothing/glasses/godeye,
+							/obj/item/reagent_containers/cup/bottle/potion/flight,
+							/obj/item/clothing/gloves/gauntlets,
+							/obj/item/warp_cube/red,
+							/obj/item/wisp_lantern,
+							/obj/item/book_of_babel,
+							/obj/item/clothing/neck/necklace/memento_mori)
+		var/loot = pick(choices)
+		new loot(get_turf(src))
 	qdel(remove_item)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	world_compare = world.time + process_speed

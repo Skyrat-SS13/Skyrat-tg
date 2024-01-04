@@ -1,4 +1,6 @@
-// THIS IS A SKYRAT SECTOR UI FILE
+// THIS IS A SKYRAT UI FILE
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
   BlockQuote,
