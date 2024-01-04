@@ -105,14 +105,15 @@
 	StartCooldownSelf()
 
 
-/datum/action/fleshmind/weapon
+/datum/action/fleshmind/innate/weapon
 	name = "Deploy Weapon"
 	desc = "Deploy a powerful weapon from your body, a mechanical armblade."
+	button_icon_state = "armblade"
 	/// The weapon we deploy upon clicking.
 	var/weapon_type = /obj/item/melee/arm_blade/fleshmind
 
 
-/datum/action/fleshmind/weapon/Grant(mob/granted_to)
+/datum/action/fleshmind/innate/weapon/Grant(mob/granted_to)
 	. = ..()
 	if (!owner)
 		return
@@ -120,24 +121,24 @@
 		return
 	RegisterSignal(granted_to, COMSIG_HUMAN_MONKEYIZE, PROC_REF(became_monkey))
 
-/datum/action/fleshmind/weapon/Remove(mob/remove_from)
+/datum/action/fleshmind/innate/weapon/Remove(mob/remove_from)
 	UnregisterSignal(remove_from, COMSIG_HUMAN_MONKEYIZE)
 	unequip_held(remove_from)
 	return ..()
 
 /// Remove weapons if we become a monkey
-/datum/action/fleshmind/weapon/proc/became_monkey(mob/source)
+/datum/action/fleshmind/innate/weapon/proc/became_monkey(mob/source)
 	SIGNAL_HANDLER
 	unequip_held(source)
 
 /// Removes weapon if it exists, returns true if we removed something
-/datum/action/fleshmind/weapon/proc/unequip_held(mob/user)
+/datum/action/fleshmind/innate/weapon/proc/unequip_held(mob/user)
 	var/found_weapon = FALSE
 	for(var/obj/item/held in user.held_items)
 		found_weapon = check_weapon(user, held) || found_weapon
 	return found_weapon
 
-/datum/action/fleshmind/weapon/proc/check_weapon(mob/user, obj/item/hand_item)
+/datum/action/fleshmind/innate/weapon/proc/check_weapon(mob/user, obj/item/hand_item)
 	if(istype(hand_item, weapon_type))
 		user.temporarilyRemoveItemFromInventory(hand_item, TRUE) //DROPDEL will delete the item
 		playsound(user, 'sound/effects/blobattack.ogg', 30, TRUE)
@@ -145,12 +146,17 @@
 		user.update_held_items()
 		return TRUE
 
-/datum/action/fleshmind/weapon/Trigger(trigger_flags)
+/datum/action/fleshmind/innate/weapon/Deactivate()
+	unequip_held(owner)
+	active = FALSE
+
+/datum/action/fleshmind/innate/weapon/Activate()
 	. = ..()
 	var/mob/living/carbon/user = owner
 	var/obj/item/held = user.get_active_held_item()
 	if(held && !user.dropItemToGround(held))
 		user.balloon_alert(user, "hand occupied!")
+		active = FALSE
 		return FALSE
 	var/limb_regen = 0
 	if(user.active_hand_index % 2 == 0) //we regen the arm before changing it into the weapon
@@ -163,6 +169,7 @@
 	var/obj/item/new_weapon_type = new weapon_type(user)
 	user.put_in_hands(new_weapon_type)
 	playsound(user, 'sound/effects/blobattack.ogg', 30, TRUE)
+	active = TRUE
 	return new_weapon_type
 
 /obj/item/melee/arm_blade/fleshmind
