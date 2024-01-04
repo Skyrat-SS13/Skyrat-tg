@@ -108,7 +108,9 @@
 /datum/action/innate/fleshmind/weapon
 	name = "Deploy Weapon"
 	desc = "Deploy a powerful weapon from your body, a mechanical armblade."
+	button_icon = 'icons/mob/actions/actions_changeling.dmi'
 	button_icon_state = "armblade"
+	background_icon_state = "bg_fugu"
 	/// The weapon we deploy upon clicking.
 	var/weapon_type = /obj/item/melee/arm_blade/fleshmind
 
