@@ -14,11 +14,11 @@
 	if(isnull(user.client))
 		return null
 
-	var/datum/maturity_prompt/alert = new(user, timeout, ui_state)
-	alert.ui_interact(user)
-	alert.wait()
-	if (alert)
-		. = alert.choice
+	var/datum/maturity_prompt/prompt = new(user, timeout, ui_state)
+	prompt.ui_interact(user)
+	prompt.wait()
+	if (prompt)
+		. = prompt.choice
 		qdel(alert)
 
 /datum/maturity_prompt
@@ -86,18 +86,13 @@
 	. = ..()
 	if (.)
 		return
-	switch(action)
-		if("choose")
-			if (!(params["choice"] in buttons))
-				CRASH("[usr] entered a non-existent button choice: [params["choice"]]")
-			set_choice(params["choice"])
-			closed = TRUE
-			SStgui.close_uis(src)
-			return TRUE
-		if("cancel")
-			closed = TRUE
-			SStgui.close_uis(src)
-			return TRUE
+	if(action == "submit")
+		// validate
+		log_admin("[params["year"]]-[params["month"]]-[params["day"]]")
+		closed = TRUE
+		SStgui.close_uis(src)
+		return TRUE
+
 
 /datum/tgui_alert/proc/set_choice(choice)
 	src.choice = choice
