@@ -289,6 +289,7 @@
 	if(level <= 0 || end_game)
 		return
 	level--
+	last_level_up_points -= level_up_progress_required\
 	notify_ghosts("Corruption AI [controller_fullname] has leveled down to level [level]!")
 	if(level > 0)
 		minor_announce("KERNEL INTEGRITY FALTERING. DO BETTER!", controller_fullname, sound_override = pick('modular_skyrat/modules/fleshmind/sound/ai/level_down_1.ogg', 'modular_skyrat/modules/fleshmind/sound/ai/level_down_2.ogg', 'modular_skyrat/modules/fleshmind/sound/ai/level_down_3.ogg'))

@@ -54,6 +54,7 @@
 	if(our_controller)
 		for(var/obj/structure/fleshmind/structure/core/iterating_core in our_controller.cores)
 			RegisterSignal(iterating_core, COMSIG_QDELETING, PROC_REF(core_death))
+		RegisterSignal(our_controller, COMSIG_QDELETING, PROC_REF(component_death))
 
 	// Action generation and granting
 	for(var/iterating_action as anything in actions_to_give)
@@ -85,6 +86,7 @@
 		REMOVE_TRAIT(parent_mob, trait, "fleshmind")
 	parent_mob.remove_filter("corruption_glow")
 	parent_mob.update_appearance()
+	our_controller = null
 	return ..()
 
 /datum/component/human_corruption/proc/update_parent_overlays(atom/source, list/new_overlays)
@@ -109,12 +111,26 @@
 
 	to_chat(parent, span_userdanger("Your mind screams as you feel a processor core dying!"))
 
+/datum/component/human_corruption/proc/component_death(obj/structure/fleshmind/structure/core/deleting_core, force)
+	SIGNAL_HANDLER
+
+	to_chat(parent, span_userdanger("Your mechanical implants fail catastrophically as your link to the hive is cut off!"))
+
+	var/mob/living/carbon/human/parent_human = parent
+	INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob, emote), "scream")
+	var/obj/item/bodypart/wound_area = parent_human.get_bodypart(BODY_ZONE_CHEST)
+	if(wound_area)
+		var/datum/wound/slash/flesh/severe/implant_wound = new
+		implant_wound.apply_wound(wound_area)
+	qdel(src)
+
+
 /datum/component/human_corruption/proc/emp_act(datum/source, severity)
 	SIGNAL_HANDLER
 
 	var/mob/living/carbon/human/parent_human = parent
 
-	INVOKE_ASYNC(parent_human, /mob/proc/emote, "scream")
+	INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob, emote), "scream")
 	parent_human.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
 	parent_human.Knockdown(10)
 	to_chat(parent_human, span_userdanger("You feel your implants freeze up!"))
