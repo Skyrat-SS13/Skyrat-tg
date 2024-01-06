@@ -18,8 +18,8 @@
 	prompt.ui_interact(user)
 	prompt.wait()
 	if (prompt)
-		. = prompt.choice
-		qdel(alert)
+		. = list(prompt.year, prompt.month, prompt.day)
+		qdel(prompt)
 
 /datum/maturity_prompt
 	/// The title of the TGUI window
@@ -94,5 +94,5 @@
 		return TRUE
 
 
-/datum/tgui_alert/proc/set_choice(choice)
-	src.choice = choice
+// /datum/maturity_prompt/proc/set_choice(choice)
+// 	src.choice = choice

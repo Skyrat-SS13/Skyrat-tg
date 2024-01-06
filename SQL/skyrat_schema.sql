@@ -9,6 +9,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+
+--
+-- Table structure for table `player_dob`.
+--
+DROP TABLE IF EXISTS `player_dob`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player_dob` (
+  `ckey` VARCHAR(32) NOT NULL,
+	`dob_year` smallint(5) NOT NULL,
+	`dob_month` smallint(5) NOT NULL,
+  PRIMARY KEY (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 --
 -- Table structure for table `player_rank`.
 --
