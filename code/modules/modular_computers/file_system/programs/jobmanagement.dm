@@ -34,10 +34,6 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		return FALSE
 	if(job.job_flags & JOB_CANNOT_OPEN_SLOTS)
 		return FALSE
-	// SKYRAT EDIT ADDITION START
-	if(job.veteran_only)
-		return FALSE
-	// SKYRAT EDIT ADDITION END
 	return TRUE
 
 
