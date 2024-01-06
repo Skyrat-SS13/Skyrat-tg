@@ -33,4 +33,3 @@
 	mid_length = 3 SECONDS
 	volume = 40
 	falloff_exponent = 3
-
