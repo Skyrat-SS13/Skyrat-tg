@@ -290,8 +290,8 @@
 	name = "borg forging module"
 	id = "borg_upgrade_forging"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/cargo_tele
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
+	build_path = /obj/item/borg/upgrade/forging
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
 	construction_time = 12 SECONDS
 	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO)
 
@@ -311,19 +311,23 @@
 	var/obj/item/forging/hammer/locate_hammer = locate() in cyborg.model.modules
 	var/obj/item/forging/billow/locate_billow = locate() in cyborg.model.modules
 	var/obj/item/forging/tongs/locate_tongs = locate() in cyborg.model.modules
-	if(locate_hammer || locate_billow || locate_tongs)
+	var/obj/item/borg/forging_setup/locate_forge = locate() in cyborg.model.modules
+	if(locate_hammer || locate_billow || locate_tongs || locate_forge)
 		to_chat(user, span_warning("This cyborg is already equipped with a forging set!"))
 		return FALSE
 
 	locate_hammer = new(cyborg.model)
 	locate_billow = new(cyborg.model)
 	locate_tongs = new(cyborg.model)
+	locate_forge = new(cyborg.model)
 	cyborg.model.basic_modules += locate_hammer
 	cyborg.model.basic_modules += locate_billow
 	cyborg.model.basic_modules += locate_tongs
+	cyborg.model.basic_modules += locate_forge
 	cyborg.model.add_module(locate_hammer, FALSE, TRUE)
 	cyborg.model.add_module(locate_billow, FALSE, TRUE)
 	cyborg.model.add_module(locate_tongs, FALSE, TRUE)
+	cyborg.model.add_module(locate_forge, FALSE, TRUE)
 
 /obj/item/borg/upgrade/forging/deactivate(mob/living/silicon/robot/cyborg, user)
 	. = ..()
@@ -339,6 +343,9 @@
 	var/obj/item/forging/tongs/locate_tongs = locate() in cyborg.model.modules
 	if(locate_tongs)
 		cyborg.model.remove_module(locate_tongs, TRUE)
+	var/obj/item/borg/forging_setup/locate_forge = locate() in cyborg.model.modules
+	if(locate_forge)
+		cyborg.model.remove_module(locate_forge, TRUE)
 
 /*
 *	UNIVERSAL CYBORG UPGRADES

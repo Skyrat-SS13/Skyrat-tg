@@ -831,3 +831,46 @@
 	item_weight_limit = WEIGHT_CLASS_NORMAL
 	clamp_sound_volume = 25
 	clamp_sound = 'sound/items/pshoom.ogg'
+
+/obj/item/borg/forging_setup
+	name = "integrated forging dispenser"
+	desc = "Allows cyborgs to dispense the necessary structures for forging in return for power."
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "forge_dispense"
+	/// how much charge the item will use per use
+	var/charge_cost = 1000
+
+/obj/item/borg/forging_setup/attack_self(mob/user, modifiers)
+	var/mob/living/silicon/robot/robot_user = user
+	if(!istype(robot_user)) //you have to be a borg to use this item
+		to_chat(user, span_warning("Must be a cyborg to use [src]!"))
+		return
+
+	if(robot_user.cell.charge < charge_cost)
+		to_chat(user, span_warning("Not enough charge!"))
+		return
+
+	var/turf/src_turf = get_turf(src)
+	if(!isopenturf(src_turf) || isspaceturf(src_turf))
+		to_chat(user, span_warning("Must be built on a solid surface!"))
+		return
+
+	var/obj/structure/locate_structure = locate() in src_turf
+	if(locate_structure)
+		to_chat(user, span_warning("Must be built on an empty surface!"))
+		return
+
+	robot_user.cell.use(charge_cost)
+
+	var/choice = tgui_input_list(user, "Which structure would you like to produce?", list("Forge", "Anvil", "Water Basin", "Crafting Bench"))
+	if(!choice)
+		return
+	switch(choice)
+		if("Forge")
+			new /obj/structure/reagent_forge(src_turf)
+		if("Anvil")
+			new /obj/structure/reagent_anvil(src_turf)
+		if("Water Basin")
+			new /obj/structure/reagent_water_basin(src_turf)
+		if("Crafting Bench")
+			new /obj/structure/reagent_crafting_bench(src_turf)
