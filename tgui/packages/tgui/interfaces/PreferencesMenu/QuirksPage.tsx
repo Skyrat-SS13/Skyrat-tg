@@ -67,180 +67,6 @@ function QuirkList(props: QuirkProps & QuirkListProps) {
   return (
     // Stack is not used here for a variety of IE flex bugs
     <Box className="PreferencesMenu__Quirks__QuirkList">
-<<<<<<< HEAD
-      {props.quirks.map(([quirkKey, quirk]) => {
-        const [customizationExpanded, setCustomizationExpanded] =
-          useLocalState<boolean>(quirk.name + ' customization', false);
-
-        const className = 'PreferencesMenu__Quirks__QuirkList__quirk';
-
-        const hasExpandableCustomization =
-          quirk.customizable &&
-          props.selected &&
-          customizationExpanded &&
-          quirk.customization_options &&
-          Object.entries(quirk.customization_options).length > 0;
-
-        const child = (
-          <Box
-            className={className}
-            key={quirkKey}
-            onClick={() => {
-              if (props.selected) {
-                setCustomizationExpanded(false);
-              }
-              props.onClick(quirkKey, quirk);
-            }}
-          >
-            <Stack fill>
-              <Stack.Item
-                align="center"
-                style={{
-                  minWidth: '15%',
-                  maxWidth: '15%',
-                  textAlign: 'center',
-                }}
-              >
-                <Icon color="#333" fontSize={3} name={quirk.icon} />
-              </Stack.Item>
-
-              <Stack.Item
-                align="stretch"
-                ml={0}
-                style={{
-                  borderRight: '1px solid black',
-                }}
-              />
-
-              <Stack.Item
-                grow
-                ml={0}
-                style={{
-                  // Fixes an IE bug for text overflowing in Flex boxes
-                  minWidth: '0%',
-                }}
-              >
-                <Stack vertical fill>
-                  <Stack.Item
-                    className={`${className}--${getValueClass(quirk.value)}`}
-                    style={{
-                      borderBottom: '1px solid black',
-                      padding: '2px',
-                    }}
-                  >
-                    <Stack
-                      fill
-                      style={{
-                        fontSize: '1.2em',
-                      }}
-                    >
-                      <Stack.Item grow basis="content">
-                        <b>{quirk.name}</b>
-                      </Stack.Item>
-
-                      <Stack.Item>
-                        <b>{quirk.value}</b>
-                      </Stack.Item>
-                    </Stack>
-                  </Stack.Item>
-
-                  <Stack.Item
-                    grow
-                    basis="content"
-                    mt={0}
-                    style={{
-                      padding: '3px',
-                    }}
-                  >
-                    {quirk.description}
-                    {!!quirk.customizable && (
-                      <Popper
-                        placement="bottom-end"
-                        isOpen={customizationExpanded}
-                        onClickOutside={() => {
-                          setCustomizationExpanded(false);
-                        }}
-                        popperContent={
-                          <Box>
-                            {!!quirk.customization_options &&
-                              hasExpandableCustomization && (
-                                <Box
-                                  mt="1px"
-                                  style={{
-                                    boxShadow:
-                                      '0px 4px 8px 3px rgba(0, 0, 0, 0.7)',
-                                  }}
-                                >
-                                  <Stack
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                    }}
-                                    maxWidth="400px" // SKYRAT EDIT - maxWidth to 600px from 300px
-                                    backgroundColor="black"
-                                    px="5px"
-                                    py="3px"
-                                  >
-                                    <Stack.Item>
-                                      <PreferenceList
-                                        act={act}
-                                        preferences={getCorrespondingPreferences(
-                                          quirk.customization_options,
-                                          data.character_preferences
-                                            .manually_rendered_features,
-                                        )}
-                                        randomizations={getRandomization(
-                                          getCorrespondingPreferences(
-                                            quirk.customization_options,
-                                            data.character_preferences
-                                              .manually_rendered_features,
-                                          ),
-                                          props.serverData,
-                                          props.randomBodyEnabled,
-                                        )}
-                                        maxHeight="100px"
-                                      />
-                                    </Stack.Item>
-                                  </Stack>
-                                </Box>
-                              )}
-                          </Box>
-                        }
-                      >
-                        {props.selected && (
-                          <Button
-                            selected={customizationExpanded}
-                            icon="cog"
-                            tooltip="Customize"
-                            onClick={(e) => {
-                              e.stopPropagation();
-
-                              setCustomizationExpanded(!customizationExpanded);
-                            }}
-                            style={{
-                              float: 'right',
-                            }}
-                          />
-                        )}
-                      </Popper>
-                    )}
-                  </Stack.Item>
-                </Stack>
-              </Stack.Item>
-            </Stack>
-          </Box>
-        );
-
-        if (quirk.failTooltip) {
-          return (
-            <Tooltip key={quirkKey} content={quirk.failTooltip}>
-              {child}
-            </Tooltip>
-          );
-        } else {
-          return child;
-        }
-      })}
-=======
       {quirks.map(([quirkKey, quirk]) => (
         <QuirkDisplay
           key={quirkKey}
@@ -252,7 +78,6 @@ function QuirkList(props: QuirkProps & QuirkListProps) {
           serverData={serverData}
         />
       ))}
->>>>>>> 9dfc098cff6 (Fixes some character prefs issues (#80721))
     </Box>
   );
 }
@@ -413,7 +238,7 @@ function QuirkPopper(props: QuirkPopperProps) {
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
-                  maxWidth="300px"
+                  maxWidth="400px" // SKYRAT EDIT - maxWidth to 600px from 300px
                   backgroundColor="black"
                   px="5px"
                   py="3px"
