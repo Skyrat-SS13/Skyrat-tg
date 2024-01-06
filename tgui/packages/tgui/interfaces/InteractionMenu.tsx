@@ -52,13 +52,11 @@ export const InteractionMenu = (props) => {
           <Section key="interactions">
             {categories.map((category) => (
               <Collapsible key={category} title={category}>
-                <Section fill vertical>
-                  <Box mt={0.2} grow>
+                <Section fill>
+                  <Box mt={0.2}>
                     {interactions[category].map((interaction) => (
                       <Button
                         key={interaction}
-                        margin={0}
-                        padding={0}
                         width="150.5px"
                         lineHeight={1.75}
                         disabled={block_interact}

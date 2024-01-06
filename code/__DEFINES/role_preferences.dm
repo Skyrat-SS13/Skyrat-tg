@@ -43,7 +43,6 @@
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
 //SKYRAT EDIT START
 #define ROLE_BORER "Borer"
-#define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_MUTANT "Mutated Abomination"
 #define ROLE_CLOCK_CULTIST "Clock Cultist"
@@ -172,7 +171,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	//SKYRAT EDIT START
 	ROLE_LONE_INFILTRATOR = 0,
 	ROLE_BORER = 0,
-	ROLE_DRIFTING_CONTRACTOR = 14,
 	ROLE_MUTANT = 0,
 	//SKYRAT EDIT END
 

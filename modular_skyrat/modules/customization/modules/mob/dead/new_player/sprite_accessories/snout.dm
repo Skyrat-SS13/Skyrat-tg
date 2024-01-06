@@ -30,7 +30,7 @@
 	return !sprite_datum.is_hidden(human)
 
 
-/obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
 		external_bodytypes |= BODYTYPE_SNOUTED
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER)

@@ -90,18 +90,16 @@
 		if(!viewable_living.stat)
 			continue
 
-		for(var/obj/item/sacrifice_posession in viewable_living)
-			if(!viewable_living.dropItemToGround(sacrifice_posession))
-				qdel(sacrifice_posession)
+		viewable_living.unequip_everything()
 
 		if(issilicon(viewable_living)) //no advantage to sacrificing borgs...
 			viewable_living.investigate_log("has been gibbed via ashwalker sacrifice as a borg.", INVESTIGATE_DEATHS)
 			viewable_living.gib()
-			continue
+			return
 
 		if(viewable_living.mind?.has_antag_datum(/datum/antagonist/ashwalker) && (viewable_living.ckey || viewable_living.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
 			revive_ashwalker(viewable_living)
-			continue
+			return
 
 		if(ismegafauna(viewable_living))
 			meat_counter += MEGAFAUNA_MEAT_AMOUNT

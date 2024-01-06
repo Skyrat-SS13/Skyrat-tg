@@ -73,6 +73,10 @@
 		/obj/item/storage/backpack/messenger/science/robo = 2,
 	)
 
+	skyrat_contraband = list(
+		/obj/item/organ/internal/tongue/lizard/robot = 2,
+	)
+
 /obj/machinery/vending/wardrobe/science_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience = 3,

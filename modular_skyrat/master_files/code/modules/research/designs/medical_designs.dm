@@ -10,3 +10,9 @@
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cybernetic_tongue/lizard
+	name = "Forked Cybernetic Tongue"
+	desc = "A forked cybernetic tongue."
+	id = "cybernetic_tongue_lizard"
+	build_path = /obj/item/organ/internal/tongue/lizard/cybernetic

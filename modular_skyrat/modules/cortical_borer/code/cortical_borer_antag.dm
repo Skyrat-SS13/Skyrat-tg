@@ -125,7 +125,7 @@
 				vents += temp_vent
 	if(!length(vents))
 		return MAP_ERROR
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 10 SECONDS, POLL_IGNORE_CORTICAL_BORER)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you want to spawn as a cortical borer?", role = ROLE_PAI, check_jobban = FALSE, poll_time = 10 SECONDS, ignore_category = POLL_IGNORE_CORTICAL_BORER)
 	if(!length(candidates))
 		return NOT_ENOUGH_PLAYERS
 	var/living_number = max(length(GLOB.player_list) / POP_PER_BORER, 1)

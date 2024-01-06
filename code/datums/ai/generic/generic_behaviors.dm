@@ -2,6 +2,7 @@
 /datum/ai_behavior/resist/perform(seconds_per_tick, datum/ai_controller/controller)
 	. = ..()
 	var/mob/living/living_pawn = controller.pawn
+	living_pawn.ai_controller.set_blackboard_key(BB_RESISTING, TRUE)
 	living_pawn.execute_resist()
 	finish_action(controller, TRUE)
 
@@ -359,6 +360,10 @@
 			continue
 		if(thing.IsObscured())
 			continue
+		if(isitem(thing))
+			var/obj/item/item = thing
+			if(item.item_flags & ABSTRACT)
+				continue
 		possible_targets += thing
 	if(!possible_targets.len)
 		finish_action(controller, FALSE)

@@ -417,6 +417,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
 /// Mob has fov applied to it
 #define TRAIT_FOV_APPLIED "fov_applied"
+/// Mob is using the scope component
+#define TRAIT_USER_SCOPED "user_scoped"
 
 /// Trait added when a revenant is visible.
 #define TRAIT_REVENANT_REVEALED "revenant_revealed"
@@ -488,6 +490,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Is the mob standing on an elevated surface? This prevents them from dropping down if not elevated first.
 #define TRAIT_ON_ELEVATED_SURFACE "on_elevated_surface"
+
+/// Prevents you from twohanding weapons.
+#define TRAIT_NO_TWOHANDING "no_twohanding"
+
+/// Halves the time of tying a tie.
+#define TRAIT_FAST_TYING "fast_tying"
+
+/// Sells for more money on the pirate bounty pad.
+#define TRAIT_HIGH_VALUE_RANSOM "high_value_ransom"
 
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
@@ -613,9 +624,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 ///Used for managing KEEP_TOGETHER in [/atom/var/appearance_flags]
 #define TRAIT_KEEP_TOGETHER "keep-together"
-
-///Marks the item as having been transmuted. Functionally blacklists the item from being recycled or sold for materials.
-#define TRAIT_MAT_TRANSMUTED "transmuted"
 
 // cargo traits
 ///If the item will block the cargo shuttle from flying to centcom
@@ -776,10 +784,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait applied when an integrated circuit opens a UI on a player (see list pick component)
 #define TRAIT_CIRCUIT_UI_OPEN "circuit_ui_open"
 
-/// PDA Traits. This one makes PDAs explode if the user opens the messages menu
+/// PDA/ModPC Traits. This one makes PDAs explode if the user opens the messages menu
 #define TRAIT_PDA_MESSAGE_MENU_RIGGED "pda_message_menu_rigged"
 /// This one denotes a PDA has received a rigged message and will explode when the user tries to reply to a rigged PDA message
 #define TRAIT_PDA_CAN_EXPLODE "pda_can_explode"
+///The download speeds of programs from the dowloader is halved.
+#define TRAIT_MODPC_HALVED_DOWNLOAD_SPEED "modpc_halved_download_speed"
 
 /// If present on a [/mob/living/carbon], will make them appear to have a medium level disease on health HUDs.
 #define TRAIT_DISEASELIKE_SEVERITY_MEDIUM "diseaselike_severity_medium"
@@ -816,6 +826,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Similar trait given to temporary bodies inhabited by players
 #define TRAIT_TEMPORARY_BODY "temporary_body"
+
+/// Trait given to objects with the wallmounted component
+#define TRAIT_WALLMOUNTED "wallmounted"
 
 /// Trait given to mechs that can have orebox functionality on movement
 #define TRAIT_OREBOX_FUNCTIONAL "orebox_functional"
@@ -1009,6 +1022,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait given to foam darts that have an insert in them
 #define TRAIT_DART_HAS_INSERT "dart_has_insert"
+
+/// Trait determines if this mob has examined an eldritch painting
+#define TRAIT_ELDRITCH_PAINTING_EXAMINE "eldritch_painting_examine"
+
+/// Trait used by the /datum/brain_trauma/severe/flesh_desire trauma to change their preferences of what they eat
+#define TRAIT_FLESH_DESIRE "flesh_desire"
 
 ///Trait granted by janitor skillchip, allows communication with cleanbots
 #define TRAIT_CLEANBOT_WHISPERER "cleanbot_whisperer"
