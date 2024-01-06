@@ -23,6 +23,8 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
+	meat = /obj/item/food/meat/slab/corgi
+
 /datum/species/vulpkanin/get_default_mutant_bodyparts()
 	return list(
 		"tail" = list("Fox", TRUE),
