@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import {
-  Autofocus,
   Box,
   Button,
   LabeledControls,
@@ -15,70 +16,91 @@ type MaturityPromptData = {
   year: number;
   month: number;
   day: number;
-  title: string;
-  message: string;
   timeout: number;
+  current_year: number;
+  current_month: number;
 };
 
 export const MaturityPrompt = (props) => {
   const { act, data } = useBackend<MaturityPromptData>();
-  const { year, month, day, title, message, timeout } = data;
-  // Dynamically sets window dimensions
-  const windowHeight =
-    115 + (message.length > 30 ? Math.ceil(message.length / 4) : 0);
-  const windowWidth = 325;
+  const { current_year, current_month, timeout } = data;
+  const [year, setYear] = useState(current_year);
+  const [month, setMonth] = useState(current_month);
+  const [day, setDay] = useState(1);
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  const windowHeight = 160;
+  const windowWidth = 300;
+
+  const handleButtonClick = () => {
+    if (buttonClicked) {
+      // If button has already been clicked once, perform the submit action
+      act('submit', {
+        year: year,
+        month: month,
+        day: day,
+      });
+    } else {
+      // If button hasn't been clicked yet, set it to clicked state
+      setButtonClicked(true);
+    }
+  };
 
   return (
-    <Window height={windowHeight} title={title} width={windowWidth}>
+    <Window height={windowHeight} title={'Are you 18+?'} width={windowWidth}>
       {!!timeout && <Loader value={timeout} />}
       <Window.Content>
         <Section fill>
           <Stack fill vertical>
             <Stack.Item grow m={1}>
               <Box color="label" overflow="hidden">
-                {message}
+                {'This is an 18+ community. Please submit your date of birth.'}
               </Box>
             </Stack.Item>
-            <LabeledControls>
-              <LabeledControls.Item ml={0.5} label="Year">
-                <NumberInput
-                  value={year}
-                  minValue={1900}
-                  maxValue={2020}
-                  step={1}
-                  stepPixelSize={5}
-                />
-              </LabeledControls.Item>
-              <LabeledControls.Item ml={0.5} label="Month">
-                <NumberInput
-                  value={month}
-                  minValue={1}
-                  maxValue={12}
-                  step={1}
-                  stepPixelSize={5}
-                />
-              </LabeledControls.Item>
-              <LabeledControls.Item ml={0.5} label="Day">
-                <NumberInput
-                  value={day}
-                  minValue={1}
-                  maxValue={31}
-                  step={1}
-                  stepPixelSize={5}
-                />
-              </LabeledControls.Item>
-            </LabeledControls>
+            <Stack.Item align="center">
+              <LabeledControls width="150px">
+                <LabeledControls.Item label="Year">
+                  <NumberInput
+                    value={year}
+                    minValue={1900}
+                    maxValue={current_year}
+                    step={1}
+                    stepPixelSize={5}
+                    onChange={(e, value) => setYear(value)}
+                  />
+                </LabeledControls.Item>
+                {'/'}
+                <LabeledControls.Item label="Month">
+                  <NumberInput
+                    value={month}
+                    minValue={1}
+                    maxValue={12}
+                    step={1}
+                    stepPixelSize={5}
+                    onChange={(e, value) => setMonth(value)}
+                  />
+                </LabeledControls.Item>
+                {'/'}
+                <LabeledControls.Item label="Day">
+                  <NumberInput
+                    value={1}
+                    minValue={1}
+                    maxValue={31}
+                    step={1}
+                    stepPixelSize={5}
+                    onChange={(e, value) => setDay(value)}
+                  />
+                </LabeledControls.Item>
+              </LabeledControls>
+            </Stack.Item>
             <Stack.Item>
-              <Autofocus />
               <Button
-                content="Submit"
-                onClick={() =>
-                  act('submit', {
-                    year: year,
-                    month: month,
-                    day: day,
-                  })
-                }
+                width="100%"
+                align="center"
+                color={buttonClicked ? 'red' : 'green'}
+                content={buttonClicked ? 'Confirm' : 'Submit'}
+                icon="calendar"
+                onClick={handleButtonClick}
               />
             </Stack.Item>
           </Stack>

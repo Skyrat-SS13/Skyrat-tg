@@ -1,11 +1,6 @@
 
 
 /datum/maturity_prompt
-	/// The title of the TGUI window
-	var/title = "18+?"
-	/// The textual body of the TGUI window
-	var/message = "This is an 18+ community. Please declare your date of birth."
-
 	/// Year of birth listed by the user
 	var/year
 	/// Month of birth listed by the user
@@ -52,14 +47,12 @@
 
 /datum/maturity_prompt/ui_static_data(mob/user)
 	var/list/data = list()
-	data["title"] = title
 	return data
 
 /datum/maturity_prompt/ui_data(mob/user)
 	var/list/data = list()
-
-	data["message"] = message
-	data["title"] = title
+	data["current_year"] = SSmaturity_guard.current_year
+	data["current_month"] = SSmaturity_guard.current_month
 
 	if(timeout)
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
