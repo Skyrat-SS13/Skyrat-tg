@@ -20,7 +20,7 @@ type MaturityPromptData = {
   timeout: number;
 };
 
-export const MaturityPromptModal = (props) => {
+export const MaturityPrompt = (props) => {
   const { act, data } = useBackend<MaturityPromptData>();
   const { year, month, day, title, message, timeout } = data;
   // Dynamically sets window dimensions
