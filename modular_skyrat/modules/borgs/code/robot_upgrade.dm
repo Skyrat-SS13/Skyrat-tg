@@ -287,7 +287,7 @@
 		cyborg.model.remove_module(locate_tele, TRUE)
 
 /datum/design/borg_upgrade_forging
-	name = "improved Integrated Hydraulic Clamp Module"
+	name = "borg forging module"
 	id = "borg_upgrade_forging"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/cargo_tele
