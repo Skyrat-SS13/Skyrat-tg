@@ -855,15 +855,15 @@
 		to_chat(user, span_warning("Must be built on a solid surface!"))
 		return
 
-	var/obj/structure/locate_structure = locate() in src_turf
-	if(locate_structure)
-		to_chat(user, span_warning("Must be built on an empty surface!"))
-		return
+	for(var/obj/structure/locate_structure in src_turf)
+		if(locate_structure.density)
+			to_chat(user, span_warning("Must be built on an empty surface!"))
+			return
 
 	robot_user.cell.use(charge_cost)
 
-	var/choice = tgui_input_list(user, "Which structure would you like to produce?", list("Forge", "Anvil", "Water Basin", "Crafting Bench"))
-	if(!choice)
+	var/choice = tgui_input_list(user, "Which structure would you like to produce?", "Structure Choice", list("Forge", "Anvil", "Water Basin", "Crafting Bench"))
+	if(isnull(choice))
 		return
 	switch(choice)
 		if("Forge")
