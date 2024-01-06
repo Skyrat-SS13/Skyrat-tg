@@ -1,25 +1,4 @@
-/**
- * Creates a prompt window for user's date of birth.
- */
-/proc/maturity_prompt(mob/user, list/buttons = list("Submit"), timeout = (60 SECONDS), ui_state = GLOB.always_state)
-	if (!user)
-		user = usr
-	if (!istype(user))
-		if (istype(user, /client))
-			var/client/client = user
-			user = client.mob
-		else
-			return null
 
-	if(isnull(user.client))
-		return null
-
-	var/datum/maturity_prompt/prompt = new(user, timeout, ui_state)
-	prompt.ui_interact(user)
-	prompt.wait()
-	if (prompt)
-		. = list(prompt.year, prompt.month, prompt.day)
-		qdel(prompt)
 
 /datum/maturity_prompt
 	/// The title of the TGUI window
@@ -78,6 +57,10 @@
 
 /datum/maturity_prompt/ui_data(mob/user)
 	var/list/data = list()
+
+	data["message"] = message
+	data["title"] = title
+
 	if(timeout)
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 	return data

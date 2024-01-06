@@ -1,4 +1,4 @@
-import { useBackend } from '../../backend';
+import { useBackend } from '../backend';
 import {
   Autofocus,
   Box,
@@ -7,9 +7,9 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../../components';
-import { Window } from '../../layouts';
-import { Loader } from '../common/Loader';
+} from '../components';
+import { Window } from '../layouts';
+import { Loader } from './common/Loader';
 
 type MaturityPromptData = {
   year: number;
