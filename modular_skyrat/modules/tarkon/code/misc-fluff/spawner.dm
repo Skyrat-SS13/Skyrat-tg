@@ -1,12 +1,12 @@
-//Port Tarkon, 6 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
+//Port Tarkon, 8 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon
 	name = "Port Tarkon Crew Member"
 	prompt_name = "a port deck worker"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	you_are_text = "You are a member of Tarkon Industries, recently assigned to a recently recovered asset known as Port Tarkon. Your supervisors are the Ensign and Site Director"
-	flavour_text = "On the recently reclaimed Port Tarkon, You are tasked to help finish construction and carry on any tasks given by the site director. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
+	you_are_text = "You are a member of Tarkon Industries, recently assigned to a recently recovered asset known as Port Tarkon. Your supervisors are the Ensign and Site Director."
+	flavour_text = "On the recently reclaimed Port Tarkon, You are tasked to help finish construction and carry on any tasks given by the site director. It may be best to look at your departmental noteboard. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
 	important_text = "You are not to abandon Port Tarkon. Check other sleepers for alternative jobs. Listen to the Site Director and Ensign."
 	outfit = /datum/outfit/tarkon
 	spawner_job_path = /datum/job/tarkon
@@ -62,6 +62,7 @@
 	id = /obj/item/card/id/advanced/tarkon/sci
 	id_trim = /datum/id_trim/away/tarkon/sci
 	r_pocket = /obj/item/stock_parts/cell/high
+	l_pocket = /obj/item/card/id/away/tarkonrobo
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
 	prompt_name = "a port trauma medic"
@@ -126,8 +127,6 @@
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/tarkon
-	l_pocket = null
-	r_pocket = null
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/director
@@ -152,9 +151,15 @@
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/tarkon
-	l_pocket = null
-	r_pocket = null
+	r_pocket = /obj/item/card/id/away/tarkonrobo
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
+
+/obj/machinery/computer/cryopod/tarkon
+	radio = /obj/item/radio/headset/tarkon
+	announcement_channel = RADIO_CHANNEL_TARKON
+	req_one_access = list("tarkon")
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 
 ////////////////////// Corpse/Mob Spawners Below
 
@@ -167,7 +172,7 @@
 	neck = /obj/item/clothing/neck/security_cape/tarkon
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/mod/control/pre_equipped/tarkon
-	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 5, /obj/effect/spawner/random/astrum/sci_loot)
+	backpack_contents = list(/obj/item/trench_tool)
 
 /obj/effect/mob_spawn/corpse/human/tarkon
 	icon_state = "corpseminer"
@@ -233,7 +238,7 @@
 	max_mobs = 4
 	spawn_time = 30 SECONDS
 	boss_mob = /mob/living/simple_animal/hostile/alien/queen
-	loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
+	loot_drop = /obj/effect/spawner/random/astrum/sci_loot/tarkon
 
 /obj/structure/spawner/tarkon_xenos/minor
 	name = "infested tunnel"
@@ -248,4 +253,22 @@
 		/mob/living/simple_animal/hostile/alien/drone
 	)
 	boss_mob = /mob/living/simple_animal/hostile/alien/sentinel
-	loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
+	loot_drop = /obj/effect/spawner/random/exotic/technology/tarkon
+
+/obj/effect/spawner/random/astrum/sci_loot/tarkon
+	name = "abductor scientist loot"
+	loot = list(/obj/item/circular_saw/alien = 10,
+				/obj/item/retractor/alien = 10,
+				/obj/item/scalpel/alien = 10,
+				/obj/item/hemostat/alien = 10,
+				/obj/item/crowbar/abductor = 10,
+				/obj/item/screwdriver/abductor = 10,
+				/obj/item/wrench/abductor = 10,
+				/obj/item/weldingtool/abductor = 10,
+				/obj/item/crowbar/abductor = 10,
+				/obj/item/wirecutters/abductor = 10,
+				/obj/item/multitool/abductor = 10,
+				)
+
+/obj/effect/spawner/random/exotic/technology/tarkon
+	spawn_loot_count = 1 //we just need one.

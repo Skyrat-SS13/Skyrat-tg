@@ -113,9 +113,9 @@
 /datum/status_effect/resonant_link/on_apply()
 	if(owner.mob_size >= MOB_SIZE_SMALL) // needs a minimal mass to resonate with.
 		if(autodet)
-			marked_underlay = mutable_appearance('icons/effects/effects.dmi', "at_shield2")
+			marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield2")
 		else
-			marked_underlay = mutable_appearance('icons/effects/effects.dmi', "at_shield1")
+			marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield1")
 		marked_underlay.pixel_x = -owner.pixel_x
 		marked_underlay.pixel_y = -owner.pixel_y
 		owner.underlays += marked_underlay

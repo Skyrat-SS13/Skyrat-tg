@@ -73,9 +73,11 @@
 /datum/id_trim/away/tarkon/robo
 	access = list(ACCESS_ROBOTICS)
 
-/obj/item/card/id/away/tarkon
+/obj/item/card/id/away/tarkonrobo
 	name = "Tarkon Robotics Card"
 	desc = "An access card designed to access robot's access ports, provided by Tarkon Industries."
+	icon = 'modular_skyrat/modules/tarkon/icons/misc/card.dmi'
+	icon_state = "robotics"
 	trim = /datum/id_trim/away/tarkon/robo
 
 /datum/id_trim/away/tarkon/ensign

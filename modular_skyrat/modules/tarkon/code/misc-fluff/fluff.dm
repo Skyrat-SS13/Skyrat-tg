@@ -80,8 +80,8 @@
 /* ----------------- Fluff/Paper ----------------- */
 
 /obj/item/paper/fluff/ruins/tarkon
-	name = "paper - 'Port Integrity Printout'"
-	default_raw_text = "<B>*Warning, Integrity Compromised*</B><BR><BR>Automated Integrity Printout, If printout is inconsistent with results, Please recalibrate sensors.<br><ol><li><b>Aft Hallway:</b> Integrity Nominal.</li><li><b>Fore Hallway:</b> Integrity Compromised. Cause unknown.</li><li><b>Port Hallway:</b> Integrity Compromised, Cause unknown.</li><li><b>Starboard Hallway:</b> Integrity Nominal.</li></ol><br> <b>Please inform any awake maintenance crew and standby for assistance.</b>"
+	name = "paper - 'Engineering Report'"
+	default_raw_text = "<B>Void Damn the last crew</B><BR><BR>Everything was a fucking mess- There was a FUCKING <b>HOLE</b> through the haul to science!<br><br><b>THANKFULLY,</b> The new RCD design came in handy... I swear- They might have taken that artifact and gave me something thats arguably worse... But, Science reassured that they can replace it if i break it... And they gave me that circuitboard they've been stashing, Set it with the blueprints in the solar SMES safe... Felt like a good spot."
 
 /obj/item/paper/fluff/ruins/tarkon/goals
 	name = "paper - 'Tarkon Industries'"
@@ -107,17 +107,22 @@
 	name = "paper - 'Cargo safe note'"
 	default_raw_text = "Hey... Director wasn't happy about bumping their head on the table trying to check funding, so we moved it into the warehouse.  <br> Check in the owlcove by the air alarm, make sure to paint the tiling when you're finished. <br> P.S: 50 credits if you can write the code down"
 
-/obj/item/paper/crumpled/fluff/tarkon
-	name = "Crumpled note"
-	default_raw_text = "Look, i dont know where the fuck that suit was found, but i have a hard time believing it was made by him entirely. I already know his less than ethical obtainment methods, But that piece of tech? Its a blasted shame he's just using it for hauling crates..."
+/obj/item/paper/fluff/ruins/tarkon/sop
+	name = "paper - 'Tarkon Security S.O.P'"
+	default_raw_text = "Hey there, lawman. As you might be aware, We dont have full faculties to hold prisoners for long-term storage... Atleast not without some governments throwing a shit-fit. So, Here's what we do. <br><br> If someone is tresspassing, We ask where they come from. Apparently there's a nearby station, So... Chances are they're from there. Aslong as you dont have to shoot them, You only hold them for questioning. <br><br> If its one of our own, Well... You'll officially be on Warden duty and have to feed them. Tough shit. You can always ask them if they want thrown to the void with whatever they're offered, Just be warned you're on note for anything of major importance. <br><br> Lastly, You aren't to hold people that aren't wanting to be on the port. You may take any and every measure to make sure they dont come back if they are let out, Including dropping them in space or at the nearest station."
 
-/obj/item/storage/backpack/messenger/science/fluffer
-	name = "fluffer messenger bag"
-	desc = "A small bag for more discrete storage. Its fabric is stained with a rather peculiar scent."
+/obj/item/paper/fluff/ruins/tarkon/arcs
+	name = "paper - 'Tarkon Industries' Advanced Resonance Control System'"
+	default_raw_text = "<h1>Tarkon Industries Designs:</h1><br><h2>Advanced Resonance Control System</h2><br><br><b>Having used and seen fault with standard 'Resonators'</b> We at Tarkon Industries took a look at it and bog-standard mining equipment of the modern day. Having come acrossed a so called \"Proto-kinetic Accelerator\", Our engineers got to work deconstructing, reconstructing, modifying and ultimately creating a system we are proud of. <br><br><b>Capable of switching between self-activating and twin-cycle activation,</b> we've made a system that compresses the silicate dusts with-in space to a thin shard capable of transfering vast amounts of energy through \"Piezoelectric Resonance\", imbuing the crystal with enough energy that it vibrates at such a briefly stable magnitude, being capable of switching between a self-tearing frequency, or a more destructive frequency that requires a second trigger. <br><br> <b>As a safety note:</b> We request that any miners turn the safety on while coming in the station, As the brief stability of the shards are capable of transfering their resonant energy to organics."
 
-/obj/item/storage/backpack/messenger/science/fluffer/PopulateContents()
-	new /obj/item/clothing/mask/ballgag
-	new /obj/item/clothing/sextoy/eggvib
-	new /obj/item/restraints/handcuffs/lewd
-	new /obj/item/clothing/glasses/blindfold/kinky
-	new /obj/item/clothing/head/costume/rabbitears
+/obj/item/paper/fluff/ruins/tarkon/trcd
+	name = "paper - 'Tarkon Industries' Engineered RCD'"
+	default_raw_text = "<h1>Tarkon Industries Designs:</h1><br><h2>Advanced R.C.D Design Upgrade</h2><br><br><b>Being an Industry that deals with Architectural Engineering, Station construction, and Port maintenance</b> We at Tarkon Industries took a look at the tooks we provide, and found them wanting. A standard RCD is capable of not much, And while we couldn't manage to expand their designs to make stronger walls (Yet. We strive to improve), We have made a breakthrough with the recent discovery of \"Bluespace Quantum Entanglement.\" <br><br><b>Using bluespace as a vessel for quantum-entangling the RCD's constructing-mechanism,</b> we've designed a tool that allows our engineers to construct port additions, fix breaches, or even construct airlocks beyond arms length. <br><br><b>While we're not able to re-create the efficiency or material space of the \"artifact\" we were given<b>, We have returned it to the cargo hold of the port that has let us analyze it, along with an updated RCD model so that they may put the artifact on display rahter than to use."
+
+/obj/item/paper/fluff/ruins/tarkon/comsafe
+	name = "paper - 'Command Safe Note'"
+	default_raw_text = "Heh... I couldn't handle letting those older papers go, something about them reminded me about why I jumped on this job. The \"Safety of the future\" spiels... Now? Any dingbat can buy their own little constructor in a box... Fancy that we got one ourself, Thing has some handy designs..<br><br> Well- That asside, we did get some new updated circuit boards. Industry standard gave us two sets of research constructor boards for redundancy, So we set the spare set in the special safe within the comms room."
+
+/obj/item/areaeditor/blueprints/tarkon
+	desc = "Blueprints of the Tarkon surface breaching drill and several Tarkon base designs. Red, stamped text reads \"Confidential\" on the backside of it."
+	name = "Tarkon Design Prints"
