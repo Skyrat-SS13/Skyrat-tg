@@ -1,13 +1,8 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 import { useState } from 'react';
 
-<<<<<<< HEAD
-import { useBackend, useLocalState } from '../../backend';
-import { Dropdown, Flex, Stack } from '../../components'; // SKYRAT EDIT CHANGE - ORIGINAL: import { Button, Stack } from '../../components';
-=======
 import { useBackend } from '../../backend';
-import { Button, Stack } from '../../components';
->>>>>>> 5e6d3797bc6 (Replaces most useLocalState with useState (#80784))
+import { Dropdown, Flex, Stack } from '../../components'; // SKYRAT EDIT CHANGE - ORIGINAL: import { Button, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
