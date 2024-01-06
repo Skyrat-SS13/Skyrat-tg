@@ -1,32 +1,6 @@
-/**
- * Creates a prompt window for user's date of birth.
- */
-/proc/maturity_prompt(mob/user, list/buttons = list("Submit"), timeout = (60 SECONDS), ui_state = GLOB.always_state)
-	if (!user)
-		user = usr
-	if (!istype(user))
-		if (istype(user, /client))
-			var/client/client = user
-			user = client.mob
-		else
-			return null
 
-	if(isnull(user.client))
-		return null
-
-	var/datum/maturity_prompt/prompt = new(user, timeout, ui_state)
-	prompt.ui_interact(user)
-	prompt.wait()
-	if (prompt)
-		. = list(prompt.year, prompt.month, prompt.day)
-		qdel(prompt)
 
 /datum/maturity_prompt
-	/// The title of the TGUI window
-	var/title = "18+?"
-	/// The textual body of the TGUI window
-	var/message = "This is an 18+ community. Please declare your date of birth."
-
 	/// Year of birth listed by the user
 	var/year
 	/// Month of birth listed by the user
@@ -73,11 +47,13 @@
 
 /datum/maturity_prompt/ui_static_data(mob/user)
 	var/list/data = list()
-	data["title"] = title
 	return data
 
 /datum/maturity_prompt/ui_data(mob/user)
 	var/list/data = list()
+	data["current_year"] = SSmaturity_guard.current_year
+	data["current_month"] = SSmaturity_guard.current_month
+
 	if(timeout)
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 	return data
