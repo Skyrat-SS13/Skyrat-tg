@@ -471,3 +471,46 @@
 /obj/item/borg/upgrade/transform/syndicatejack/action(mob/living/silicon/robot/cyborg, user = usr) // Only usable on emagged cyborgs. In exchange. makes you unable to get locked down or detonated.
 	if(cyborg.emagged)
 		return ..()
+
+/// Dominatrix time
+/obj/item/borg/upgrade/dominatrixmodule
+	name = "borg dominatrix module"
+	desc = "A module that greatly upgrades the ability of borgs to display affection."
+	icon_state = "cyborg_upgrade3"
+	custom_price = 0
+
+/obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg)
+	. = ..()
+	if(!.)
+		return
+	var/obj/item/kinky_shocker/cur_shocker = locate() in borg.model.modules
+	if(cur_shocker)
+		to_chat(usr, span_warning("This unit already has a dominatrix module installed!"))
+		return FALSE
+
+	var/obj/item/kinky_shocker/shocker = new /obj/item/kinky_shocker()
+	borg.model.basic_modules += shocker
+	borg.model.add_module(shocker, FALSE, TRUE)
+	var/obj/item/clothing/mask/leatherwhip/whipper = new /obj/item/clothing/mask/leatherwhip()
+	borg.model.basic_modules += whipper
+	borg.model.add_module(whipper, FALSE, TRUE)
+	var/obj/item/spanking_pad/spanker = new /obj/item/spanking_pad()
+	borg.model.basic_modules += spanker
+	borg.model.add_module(spanker, FALSE, TRUE)
+	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
+	borg.model.basic_modules += tickler
+	borg.model.add_module(tickler, FALSE, TRUE)
+
+/obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
+	. = ..()
+	if(!.)
+		return
+
+	for(var/obj/item/kinky_shocker/shocker in borg.model.modules)
+		borg.model.remove_module(shocker, TRUE)
+	for(var/obj/item/clothing/mask/leatherwhip/whipper in borg.model.modules)
+		borg.model.remove_module(whipper, TRUE)
+	for(var/obj/item/spanking_pad/spanker in borg.model.modules)
+		borg.model.remove_module(spanker, TRUE)
+	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
+		borg.model.remove_module(tickler, TRUE)
