@@ -173,6 +173,7 @@
 /area/ruin/space/has_grav/port_tarkon/developement
 	name = "P-T Developement Center"
 	icon_state = "science"
+	area_flags = XENOBIOLOGY_COMPATIBLE | UNIQUE_AREA
 
 /area/ruin/space/has_grav/port_tarkon/comms
 	name = "P-T Communication Center"
