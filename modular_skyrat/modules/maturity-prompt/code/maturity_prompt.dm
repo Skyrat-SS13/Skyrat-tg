@@ -68,7 +68,3 @@
 		closed = TRUE
 		SStgui.close_uis(src)
 		return TRUE
-
-
-// /datum/maturity_prompt/proc/set_choice(choice)
-// 	src.choice = choice

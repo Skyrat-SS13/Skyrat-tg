@@ -30,7 +30,7 @@ export const MaturityPrompt = (props) => {
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const windowHeight = 160;
-  const windowWidth = 300;
+  const windowWidth = 280;
 
   const handleButtonClick = () => {
     if (buttonClicked) {
@@ -54,7 +54,10 @@ export const MaturityPrompt = (props) => {
           <Stack fill vertical>
             <Stack.Item grow m={1}>
               <Box color="label" overflow="hidden">
-                {'This is an 18+ community. Please submit your date of birth.'}
+                {
+                  'This is a community with a minimum age requirement. Please submit your date of birth.\
+                   We only retain the year and month, the day is discarded after the initial check.'
+                }
               </Box>
             </Stack.Item>
             <Stack.Item align="center">
@@ -69,7 +72,7 @@ export const MaturityPrompt = (props) => {
                     onChange={(e, value) => setYear(value)}
                   />
                 </LabeledControls.Item>
-                {'/'}
+                {'-'}
                 <LabeledControls.Item label="Month">
                   <NumberInput
                     value={month}
@@ -80,7 +83,7 @@ export const MaturityPrompt = (props) => {
                     onChange={(e, value) => setMonth(value)}
                   />
                 </LabeledControls.Item>
-                {'/'}
+                {'-'}
                 <LabeledControls.Item label="Day">
                   <NumberInput
                     value={1}
