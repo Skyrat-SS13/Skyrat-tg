@@ -128,7 +128,7 @@
 	mask = /obj/item/clothing/mask/whistle
 	uniform = /obj/item/clothing/under/color/red
 
-	neck = /obj/item/camera
+	//neck = /obj/item/camera SKYRAT EDIT REMOVAL
 
 	outfit_weight = 2
 
