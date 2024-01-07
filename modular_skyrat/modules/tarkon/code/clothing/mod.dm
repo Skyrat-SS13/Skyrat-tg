@@ -53,7 +53,7 @@
 /obj/item/mod/construction/plating/tarkon
 	theme = /datum/mod_theme/tarkon
 	icon = 'modular_skyrat/modules/tarkon/icons/obj/mod_construct.dmi'
-	icon_state = "standard-plating"
+	icon_state = "tarkon-plating"
 
 /datum/armor/mod_theme_tarkon
 	melee = 25
