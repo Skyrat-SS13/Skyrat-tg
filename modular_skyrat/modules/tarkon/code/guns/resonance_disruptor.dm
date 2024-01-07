@@ -40,7 +40,7 @@
 	projectile_type = /obj/projectile/resonant_bolt
 	select_name = "kinetic"
 	e_cost = LASER_SHOTS(1, STANDARD_CELL_CHARGE * 0.5)
-	fire_sound = 'sound/weapons/kenetic_accel.ogg'
+	fire_sound = 'sound/weapons/kinetic_accel.ogg'
 
 /obj/item/ammo_casing/energy/resonance/ready_proj(atom/target, mob/living/user, quiet, zone_override = "")
 	..()

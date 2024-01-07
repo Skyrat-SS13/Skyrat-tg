@@ -14,3 +14,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	visor_flags_inv = HIDEEARS|HIDEEYES
 	visor_flags_cover = HEADCOVERSEYES
+
+/obj/item/clothing/head/utility/welding/hat/Initialize(mapload)
+	. = ..()
+	visor_toggling()
