@@ -44,7 +44,8 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(user.ckey in whitelisted_cache)
 		return TRUE
 
-	if(SSdbcore.Connect() && validate_dob(get_age_from_db(user, simple_check=TRUE)))
+	var/age_from_db = get_age_from_db(user)
+	if(age_from_db && validate_dob(age_from_db[1], age_from_db[2], simple_check=TRUE))
 		whitelisted_cache |= user.ckey
 		return TRUE
 
@@ -85,7 +86,10 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(prompt)
 		. = list(prompt.year, prompt.month, prompt.day)
 
-		switch(validate_dob(prompt.year, prompt.month, prompt.day))
+		message_admins("validate_dob called with [prompt.year], [prompt.month], [prompt.day]")
+		var/check_result = validate_dob(prompt.year, prompt.month, prompt.day)
+		message_admins("validate_dob result: [check_result]")
+		switch(check_result)
 			if(AGE_CHECK_PASSED)
 				add_age_to_db(user, prompt.year, prompt.month)
 				whitelisted_cache |= user.ckey
@@ -210,7 +214,7 @@ SUBSYSTEM_DEF(maturity_guard)
 		"global_ban" = TRUE,
 		"expiration_time" = null,
 		"applies_to_admins" = TRUE,
-		"reason" = "You do not meet the minimum age requirements for this community. If you believe this to be a mistake, file an appeal in our community..",
+		"reason" = "You do not meet the minimum age requirements for this community. If you believe this to be a mistake, file an appeal in our community.",
 		"ckey" = user.ckey,
 		"ip" = user.client.address,
 		"computerid" = user.client.computer_id,
@@ -225,15 +229,16 @@ SUBSYSTEM_DEF(maturity_guard)
 		return
 
 	var/target = "[user.ckey]/[user.client.address]/[user.client.computer_id]"
-	var/msg = "has created a [global_ban ? "global" : "local"] [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]." // SKYRAT EDIT CHANGE - MULTISERVER
-	log_admin_private("[kn] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
-	message_admins("[kna] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
-	if(applies_to_admins)
-		send2adminchat("BAN ALERT","[kn] [msg]")
-	if(player_ckey)
-		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, 0, severity)
+	var/msg = "has created a global permanent server ban for [target]."
+	log_admin_private("AGE CHECK SYSTEM [msg]")
+	message_admins("AGE CHECK SYSTEM [msg]")
 
-	var/player_ban_notification = span_boldannounce("You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
-	var/other_ban_notification = span_boldannounce("Another player sharing your IP or CID has been banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
+
+	var/discord_appeal_text = ""
+	if(CONFIG_GET(string/discord_link))
+		discord_appeal_text = "If you believe this to be a mistake, file an appeal in our community. <a href='[CONFIG_GET(string/discord_link)]>[CONFIG_GET(string/discord_link)]</a>"
+
+	var/player_ban_notification = span_boldannounce("You have been banned by the AGE CHECK SYSTEM from the server.\nReason: You do not meet the minimum age requirements for this community. [discord_appeal_text]<br>[span_danger("This ban is permanent. The round ID is [GLOB.round_id].")]")
+	to_chat(user, player_ban_notification)
 
 	qdel(user.client)

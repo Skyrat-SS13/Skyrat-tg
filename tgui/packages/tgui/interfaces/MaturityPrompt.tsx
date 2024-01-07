@@ -29,8 +29,8 @@ export const MaturityPrompt = (props) => {
   const [day, setDay] = useState(1);
   const [buttonClicked, setButtonClicked] = useState(false);
 
-  const windowHeight = 160;
-  const windowWidth = 280;
+  const windowHeight = 200;
+  const windowWidth = 360;
 
   const handleButtonClick = () => {
     if (buttonClicked) {
