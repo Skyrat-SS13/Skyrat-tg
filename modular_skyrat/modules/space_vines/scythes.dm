@@ -63,15 +63,23 @@
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	id = "scythet1"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	build_path = /obj/item/scythe/tier1
-	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_BOTANY)
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_BOTANY,
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/scythe/tier2
 	name = "Scythe (Tier 2)"
 	id = "scythet2"
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	build_path = /obj/item/scythe/tier2
 
 /datum/techweb_node/scythe_t1
