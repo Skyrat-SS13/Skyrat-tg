@@ -1,7 +1,7 @@
 /datum/mod_theme/tarkon
 	name = "tarkon"
 	desc = "A Tarkon Industries general protection suit, designed for port security and general EVA situations."
-	extended_desc = "."
+	extended_desc = "A fourth-generational modular protection suit outfitted by Tarkon Industries, This suit is a safety standard for employees undertaking atmos-sensitive protection on jobs. Offering enough protection from impacts to combat most damage from cave-ins, its design has already been debted for saving dozens of employees from hazardous and unpredictable situations in both organic and inorganic forms."
 	default_skin = "tarkon"
 	armor_type = /datum/armor/mod_theme_tarkon
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
