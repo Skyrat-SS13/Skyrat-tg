@@ -3,11 +3,11 @@
 /obj/item/gun/ballistic/automatic/m6pdw
 	name = "\improper M6 Personal Defense Weapon"
 	desc = "A PDW designed to be used within close to medium range. Its slide seems to stick a bit, having years of dust accumulation, And its manufacturer stamp and symbols have been scratched out."
-	icon = 'modular_skyrat/modules/projectiles/icons/m6pdw.dmi'
+	icon = 'modular_skyrat/modules/tarkon/icons/obj/guns/m6pdw.dmi'
 	icon_state = "m6_pdw"
 	inhand_icon_state = "m6_pdw"
-	righthand_file = 'modular_skyrat/modules/projectiles/icons/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/projectiles/icons/inhands/lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/tarkon/icons/mob/guns/m6pdw/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/tarkon/icons/mob/guns/m6pdw/lefthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	spawnwithmagazine = FALSE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c35sol_pistol
