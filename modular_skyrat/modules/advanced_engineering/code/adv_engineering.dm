@@ -31,7 +31,10 @@
 	name = "industrial RCD matter cartridge"
 	desc = "A cartridge with one complete refill for an industrial RCD."
 	w_class = WEIGHT_CLASS_SMALL
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 60, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 40)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 60,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 40,
+	)
 	ammoamt = 440
 
 /obj/item/storage/box/rcd_ammo
@@ -40,7 +43,9 @@
 	desc = "A durable box with refill cartridges for an industrial RCD."
 	icon_state = "engibox"
 	illustration = "rcd"
-	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 
 /obj/item/storage/box/rcd_ammo/PopulateContents()
 	for(var/i in 1 to 4)

@@ -29,6 +29,7 @@
 	. = ..()
 	AddElement(/datum/element/repackable, undeploy_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
+	connect_to_network()
 
 /obj/machinery/power/colony_wind_turbine/examine(mob/user)
 	. = ..()
