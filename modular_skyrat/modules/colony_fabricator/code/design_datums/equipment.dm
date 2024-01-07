@@ -3,7 +3,7 @@
 	id = "survival_knife"
 	build_type = COLONY_FABRICATOR
 	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 6
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 6,
 	)
 	build_path = /obj/item/knife/combat/survival
 	category = list(
@@ -17,7 +17,7 @@
 	id = "soup_pot"
 	build_type = COLONY_FABRICATOR
 	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
 	)
 	build_path = /obj/item/reagent_containers/cup/soup_pot
 	category = list(

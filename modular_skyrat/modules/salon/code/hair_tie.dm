@@ -30,7 +30,7 @@
 	name = "colorful hair tie"
 	desc = "An elastic hair tie, adornished with colorful plastic beads."
 	icon_state = "hairtie_beads"
-	custom_materials = (list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5))
+	custom_materials = (list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT))
 
 /obj/item/clothing/head/hair_tie/syndicate
 	name = "\improper Syndicate hair tie"
@@ -138,10 +138,12 @@
 	name = "Plastic Hair Tie"
 	id = "plastic_hair_tie"
 	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE | COLONY_FABRICATOR
-	materials = list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	build_path = /obj/item/clothing/head/hair_tie/plastic_beads
 	category = list(
-		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_INITIAL, 
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SERVICE,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
