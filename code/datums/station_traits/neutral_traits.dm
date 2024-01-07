@@ -140,6 +140,7 @@
 	show_in_report = TRUE
 	cost = STATION_TRAIT_COST_MINIMAL
 	report_message = "Due to a shortage in standard issue jumpsuits, we have provided your assistants with one of our backup supplies."
+	blacklist = list(/datum/station_trait/assistant_gimmicks)
 
 /datum/station_trait/colored_assistants/New()
 	. = ..()
