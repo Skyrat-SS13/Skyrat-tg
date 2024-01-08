@@ -2,37 +2,22 @@ Any time you make a change to the schema files, remember to increment the databa
 
 Make sure to also update `DB_MAJOR_VERSION` and `DB_MINOR_VERSION`, which can be found in `code/__DEFINES/subsystem.dm`.
 
-The latest database version is 5.29 (5.26 for /tg/); The query to update the schema revision table is:
+The latest database version is 5.28 (5.26 for /tg/); The query to update the schema revision table is:
 
 ```sql
-INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 29);
+INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 28);
 ```
-
 or
 
 ```sql
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 29);
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 28);
 ```
 
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
-Version 5.29, 08 January 2024, by distributivgesetz
-Add a new table for age-checking purposes. Optional if you don't ever intend to use the age prompt.
-
-```sql
-CREATE TABLE `player_dob` (
-  `ckey` VARCHAR(32) NOT NULL,
- `dob_year` smallint(5) NOT NULL,
- `dob_month` smallint(5) NOT NULL,
-  PRIMARY KEY (`ckey`)
-);
-```
-
------------------------------------------------------
 Version 5.28, 03 December 2023, by distributivgesetz
 Set the default value of cloneloss to 0, as it's obsolete and it won't be set by blackbox anymore.
-
 ```sql
 ALTER TABLE `death` MODIFY COLUMN `cloneloss` SMALLINT(5) UNSIGNED DEFAULT '0';
 ```
@@ -40,7 +25,6 @@ ALTER TABLE `death` MODIFY COLUMN `cloneloss` SMALLINT(5) UNSIGNED DEFAULT '0';
 -----------------------------------------------------
 Version 5.27, 27 September 2023, by Jimmyl
 Removes the text_adventures table because it is no longer used
-
 ```sql
  DROP TABLE IF EXISTS `text_adventures`;
 ```
@@ -48,7 +32,6 @@ Removes the text_adventures table because it is no longer used
 -----------------------------------------------------
 Version 5.26, 17 May 2023, by LemonInTheDark
 Modified the library action table to fit ckeys properly, and to properly store ips.
-
 ```sql
  ALTER TABLE `library_action` MODIFY COLUMN `ckey` varchar(32) NOT NULL;
  ALTER TABLE `library_action` MODIFY COLUMN `ip_addr` int(10) unsigned NOT NULL;
@@ -74,7 +57,6 @@ Fixes a bug in `telemetry_connections` that limited the range of IPs.
 ```sql
 ALTER TABLE `telemetry_connections` MODIFY COLUMN `address` INT(10) UNSIGNED NOT NULL;
 ```
-
 -----------------------------------------------------
 
 Version 5.23, 15 December 2021, by Mothblocks
@@ -93,7 +75,6 @@ CREATE TABLE `telemetry_connections` (
     UNIQUE INDEX `unique_constraints` (`ckey` , `telemetry_ckey` , `address` , `computer_id`)
 );
 ```
-
 -----------------------------------------------------
 
 Version 5.22, 11 November 2021, by Mothblocks
@@ -171,6 +152,7 @@ CREATE TABLE `library_action` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 ```
 
+
 -----------------------------------------------------
 Version 5.16, 2 June 2021, by Mothblocks
 Added verified admin connection log used for 2FA
@@ -195,12 +177,12 @@ Added exploration drone adventure table
 ```sql
 DROP TABLE IF EXISTS `text_adventures`;
 CREATE TABLE `text_adventures` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `adventure_data` LONGTEXT NOT NULL,
- `uploader` VARCHAR(32) NOT NULL,
- `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
- `approved` TINYINT(1) NOT NULL DEFAULT FALSE,
- PRIMARY KEY (`id`)
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`adventure_data` LONGTEXT NOT NULL,
+	`uploader` VARCHAR(32) NOT NULL,
+	`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`approved` TINYINT(1) NOT NULL DEFAULT FALSE,
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 ```
 
@@ -211,21 +193,21 @@ Added the `citation` table for tracking security citations in the database.
 
 ```sql
 CREATE TABLE `citation` (
- `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
- `round_id` INT(11) UNSIGNED NOT NULL,
- `server_ip` INT(11) UNSIGNED NOT NULL,
- `server_port` INT(11) UNSIGNED NOT NULL,
- `citation` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
- `action` VARCHAR(20) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
- `sender` VARCHAR(32) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
- `sender_ic` VARCHAR(64) NOT NULL DEFAULT '' COMMENT 'Longer because this is the character name, not the ckey' COLLATE 'utf8mb4_general_ci',
- `recipient` VARCHAR(64) NOT NULL DEFAULT '' COMMENT 'Longer because this is the character name, not the ckey' COLLATE 'utf8mb4_general_ci',
- `crime` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
- `fine` INT(4) NULL DEFAULT NULL,
- `paid` INT(4) NULL DEFAULT '0',
- `timestamp` DATETIME NOT NULL,
- PRIMARY KEY (`id`) USING BTREE,
- UNIQUE INDEX `idx_constraints` (`round_id`, `server_ip`, `server_port`, `citation`(100)) USING BTREE
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`round_id` INT(11) UNSIGNED NOT NULL,
+	`server_ip` INT(11) UNSIGNED NOT NULL,
+	`server_port` INT(11) UNSIGNED NOT NULL,
+	`citation` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`action` VARCHAR(20) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+	`sender` VARCHAR(32) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+	`sender_ic` VARCHAR(64) NOT NULL DEFAULT '' COMMENT 'Longer because this is the character name, not the ckey' COLLATE 'utf8mb4_general_ci',
+	`recipient` VARCHAR(64) NOT NULL DEFAULT '' COMMENT 'Longer because this is the character name, not the ckey' COLLATE 'utf8mb4_general_ci',
+	`crime` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`fine` INT(4) NULL DEFAULT NULL,
+	`paid` INT(4) NULL DEFAULT '0',
+	`timestamp` DATETIME NOT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `idx_constraints` (`round_id`, `server_ip`, `server_port`, `citation`(100)) USING BTREE
 )
 COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB
@@ -244,27 +226,28 @@ You might also want to update the server_name column in older records in the tab
 
 ```sql
 ALTER TABLE `ban`
- ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `bantime`,
- ADD COLUMN `global_ban` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `role`;
+	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `bantime`,
+	ADD COLUMN `global_ban` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `role`;
 
 UPDATE `ban`
- SET `global_ban` = 1;
+	SET `global_ban` = 1;
 
 ALTER TABLE `legacy_population`
- ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `time`;
+	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `time`;
 
 ALTER TABLE `connection_log`
- ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `datetime`;
+	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `datetime`;
 
 ALTER TABLE `death`
- ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `mapname`;
+	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `mapname`;
 
 ALTER TABLE `messages`
- ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `timestamp`;
+	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `timestamp`;
 
 ALTER TABLE `round`
- ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `end_datetime`;
+	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `end_datetime`;
 ```
+
 
 -----------------------------------------------------
 
@@ -283,10 +266,10 @@ Adds indices to support search operations on the adminhelp ticket tables. This i
 
 ```sql
 ALTER TABLE `ticket`
- ADD INDEX `idx_ticket_act_recip` (`action`, `recipient`),
- ADD INDEX `idx_ticket_act_send` (`action`, `sender`),
- ADD INDEX `idx_ticket_tic_rid` (`ticket`, `round_id`),
- ADD INDEX `idx_ticket_act_time_rid` (`action`, `timestamp`, `round_id`);
+	ADD INDEX `idx_ticket_act_recip` (`action`, `recipient`),
+	ADD INDEX `idx_ticket_act_send` (`action`, `sender`),
+	ADD INDEX `idx_ticket_tic_rid` (`ticket`, `round_id`),
+	ADD INDEX `idx_ticket_act_time_rid` (`action`, `timestamp`, `round_id`);
 ```
 
 -----------------------------------------------------
@@ -302,13 +285,13 @@ START TRANSACTION;
 
 DROP TABLE IF EXISTS `discord_links`;
 CREATE TABLE `discord_links` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `ckey` VARCHAR(32) NOT NULL,
- `discord_id` BIGINT(20) DEFAULT NULL,
- `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
- `one_time_token` VARCHAR(100) NOT NULL,
- `valid` BOOLEAN NOT NULL DEFAULT FALSE,
- PRIMARY KEY (`id`)
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`ckey` VARCHAR(32) NOT NULL,
+	`discord_id` BIGINT(20) DEFAULT NULL,
+	`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`one_time_token` VARCHAR(100) NOT NULL,
+	`valid` BOOLEAN NOT NULL DEFAULT FALSE,
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 INSERT INTO `discord_links` (`ckey`, `discord_id`, `one_time_token`, `valid`) SELECT `ckey`, `discord_id`, CONCAT("presync_from_player_table_", `ckey`), TRUE FROM `player` WHERE discord_id IS NOT NULL;
@@ -328,27 +311,27 @@ Added procedure `set_poll_deleted` that's called when deleting a poll to set del
 
 ```sql
 ALTER TABLE `poll_option`
- ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `default_percentage_calc`;
+	ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `default_percentage_calc`;
 
 ALTER TABLE `poll_question`
- CHANGE COLUMN `createdby_ckey` `createdby_ckey` VARCHAR(32) NOT NULL AFTER `multiplechoiceoptions`,
- ADD COLUMN `created_datetime` datetime NOT NULL AFTER `polltype`,
- ADD COLUMN `subtitle` VARCHAR(255) NULL DEFAULT NULL AFTER `question`,
- ADD COLUMN `allow_revoting` TINYINT(1) UNSIGNED NOT NULL AFTER `dontshow`,
- ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `allow_revoting`,
- DROP INDEX `idx_pquest_time_admin`,
- ADD INDEX `idx_pquest_time_deleted_id` (`starttime`, `endtime`, `deleted`, `id`);
+	CHANGE COLUMN `createdby_ckey` `createdby_ckey` VARCHAR(32) NOT NULL AFTER `multiplechoiceoptions`,
+	ADD COLUMN `created_datetime` datetime NOT NULL AFTER `polltype`,
+	ADD COLUMN `subtitle` VARCHAR(255) NULL DEFAULT NULL AFTER `question`,
+	ADD COLUMN `allow_revoting` TINYINT(1) UNSIGNED NOT NULL AFTER `dontshow`,
+	ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `allow_revoting`,
+	DROP INDEX `idx_pquest_time_admin`,
+	ADD INDEX `idx_pquest_time_deleted_id` (`starttime`, `endtime`, `deleted`, `id`);
 
 ALTER TABLE `poll_textreply`
- CHANGE COLUMN `adminrank` `adminrank` varchar(32) NOT NULL AFTER `replytext`,
- ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `adminrank`;
+	CHANGE COLUMN `adminrank` `adminrank` varchar(32) NOT NULL AFTER `replytext`,
+	ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `adminrank`;
 
 ALTER TABLE `poll_vote`
- ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `rating`;
+	ADD COLUMN `deleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `rating`;
 
 DELIMITER $$
 CREATE PROCEDURE `set_poll_deleted`(
- IN `poll_id` INT
+	IN `poll_id` INT
 )
 SQL SECURITY INVOKER
 BEGIN
@@ -409,10 +392,10 @@ Added achievement_metadata table.
 ```sql
 DROP TABLE IF EXISTS `achievement_metadata`;
 CREATE TABLE `achievement_metadata` (
- `achievement_key` VARCHAR(32) NOT NULL,
- `achievement_version` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
- `achievement_type` enum('achievement','score','award') NULL DEFAULT NULL,
- PRIMARY KEY (`achievement_key`)
+	`achievement_key` VARCHAR(32) NOT NULL,
+	`achievement_version` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+	`achievement_type` enum('achievement','score','award') NULL DEFAULT NULL,
+	PRIMARY KEY (`achievement_key`)
 ) ENGINE=InnoDB;
 ```
 
@@ -424,11 +407,11 @@ See hub migration verb in _achievement_data.dm for details on migrating.
 
 ```sql
 CREATE TABLE `achievements` (
- `ckey` VARCHAR(32) NOT NULL,
- `achievement_key` VARCHAR(32) NOT NULL,
- `value` INT NULL,
- `last_updated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- PRIMARY KEY (`ckey`,`achievement_key`)
+	`ckey` VARCHAR(32) NOT NULL,
+	`achievement_key` VARCHAR(32) NOT NULL,
+	`value` INT NULL,
+	`last_updated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`ckey`,`achievement_key`)
 ) ENGINE=InnoDB;
 ```
 
@@ -448,9 +431,8 @@ Added a field to the `player` table to track ckey and discord ID relationships
 
 ```sql
 ALTER TABLE `player`
- ADD COLUMN `discord_id` BIGINT NULL DEFAULT NULL AFTER `flags`;
+	ADD COLUMN `discord_id` BIGINT NULL DEFAULT NULL AFTER `flags`;
 ```
-
 ----------------------------------------------------
 
 Version 5.1, 25 Feb 2018, by MrStonedOne
@@ -458,36 +440,36 @@ Added four tables to enable storing of stickybans in the database since byond ca
 
 ```sql
 CREATE TABLE `stickyban` (
- `ckey` VARCHAR(32) NOT NULL,
- `reason` VARCHAR(2048) NOT NULL,
- `banning_admin` VARCHAR(32) NOT NULL,
- `datetime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
- PRIMARY KEY (`ckey`)
+	`ckey` VARCHAR(32) NOT NULL,
+	`reason` VARCHAR(2048) NOT NULL,
+	`banning_admin` VARCHAR(32) NOT NULL,
+	`datetime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`ckey`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `stickyban_matched_ckey` (
- `stickyban` VARCHAR(32) NOT NULL,
- `matched_ckey` VARCHAR(32) NOT NULL,
- `first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
- `last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- `exempt` TINYINT(1) NOT NULL DEFAULT '0',
- PRIMARY KEY (`stickyban`, `matched_ckey`)
+	`stickyban` VARCHAR(32) NOT NULL,
+	`matched_ckey` VARCHAR(32) NOT NULL,
+	`first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`exempt` TINYINT(1) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`stickyban`, `matched_ckey`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `stickyban_matched_ip` (
- `stickyban` VARCHAR(32) NOT NULL,
- `matched_ip` INT UNSIGNED NOT NULL,
- `first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
- `last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- PRIMARY KEY (`stickyban`, `matched_ip`)
+	`stickyban` VARCHAR(32) NOT NULL,
+	`matched_ip` INT UNSIGNED NOT NULL,
+	`first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`stickyban`, `matched_ip`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `stickyban_matched_cid` (
- `stickyban` VARCHAR(32) NOT NULL,
- `matched_cid` VARCHAR(32) NOT NULL,
- `first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
- `last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
- PRIMARY KEY (`stickyban`, `matched_cid`)
+	`stickyban` VARCHAR(32) NOT NULL,
+	`matched_cid` VARCHAR(32) NOT NULL,
+	`first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`stickyban`, `matched_cid`)
 ) ENGINE=InnoDB;
 ```
 
@@ -560,12 +542,12 @@ Version 4.4, 9 May 2018, by Jordie0608
 Modified table `round`, renaming column `start_datetime` to `initialize_datetime` and `end_datetime` to `shutdown_datetime` and adding columns to replace both under the same name in preparation for changes to TGS server initialization.
 
 ALTER TABLE `round`
- ALTER `start_datetime` DROP DEFAULT;
+	ALTER `start_datetime` DROP DEFAULT;
 ALTER TABLE `round`
- CHANGE COLUMN `start_datetime` `initialize_datetime` DATETIME NOT NULL AFTER `id`,
- ADD COLUMN `start_datetime` DATETIME NULL DEFAULT NULL AFTER `initialize_datetime`,
- CHANGE COLUMN `end_datetime` `shutdown_datetime` DATETIME NULL DEFAULT NULL AFTER `start_datetime`,
- ADD COLUMN `end_datetime` DATETIME NULL DEFAULT NULL AFTER `shutdown_datetime`;
+	CHANGE COLUMN `start_datetime` `initialize_datetime` DATETIME NOT NULL AFTER `id`,
+	ADD COLUMN `start_datetime` DATETIME NULL DEFAULT NULL AFTER `initialize_datetime`,
+	CHANGE COLUMN `end_datetime` `shutdown_datetime` DATETIME NULL DEFAULT NULL AFTER `start_datetime`,
+	ADD COLUMN `end_datetime` DATETIME NULL DEFAULT NULL AFTER `shutdown_datetime`;
 
 ----------------------------------------------------
 
@@ -590,8 +572,8 @@ DELIMITER ;
 Version 4.2, 17 April 2018, by Jordie0608
 Modified table 'admin', adding the columns 'round_id' and 'target'
 ALTER TABLE `admin_log`
- ADD COLUMN `round_id` INT UNSIGNED NOT NULL AFTER `datetime`,
- ADD COLUMN `target` VARCHAR(32) NOT NULL AFTER `operation`;
+	ADD COLUMN `round_id` INT UNSIGNED NOT NULL AFTER `datetime`,
+	ADD COLUMN `target` VARCHAR(32) NOT NULL AFTER `operation`;
 
 ----------------------------------------------------
 
@@ -602,29 +584,29 @@ To import your existing admins and ranks run the included script 'admin_import_2
 Legacy file-based admin loading is still supported, if you want to continue using it the script doesn't need to be run.
 
 ALTER TABLE `admin`
- CHANGE COLUMN `rank` `rank` VARCHAR(32) NOT NULL AFTER `ckey`,
- DROP COLUMN `id`,
- DROP COLUMN `level`,
- DROP COLUMN `flags`,
- DROP COLUMN `email`,
- DROP PRIMARY KEY,
- ADD PRIMARY KEY (`ckey`);
+	CHANGE COLUMN `rank` `rank` VARCHAR(32) NOT NULL AFTER `ckey`,
+	DROP COLUMN `id`,
+	DROP COLUMN `level`,
+	DROP COLUMN `flags`,
+	DROP COLUMN `email`,
+	DROP PRIMARY KEY,
+	ADD PRIMARY KEY (`ckey`);
 
 ALTER TABLE `admin_log`
- CHANGE COLUMN `datetime` `datetime` DATETIME NOT NULL AFTER `id`,
- CHANGE COLUMN `adminckey` `adminckey` VARCHAR(32) NOT NULL AFTER `datetime`,
- CHANGE COLUMN `adminip` `adminip` INT(10) UNSIGNED NOT NULL AFTER `adminckey`,
- ADD COLUMN `operation` ENUM('add admin','remove admin','change admin rank','add rank','remove rank','change rank flags') NOT NULL AFTER `adminip`,
- CHANGE COLUMN `log` `log` VARCHAR(1000) NOT NULL AFTER `operation`;
+	CHANGE COLUMN `datetime` `datetime` DATETIME NOT NULL AFTER `id`,
+	CHANGE COLUMN `adminckey` `adminckey` VARCHAR(32) NOT NULL AFTER `datetime`,
+	CHANGE COLUMN `adminip` `adminip` INT(10) UNSIGNED NOT NULL AFTER `adminckey`,
+	ADD COLUMN `operation` ENUM('add admin','remove admin','change admin rank','add rank','remove rank','change rank flags') NOT NULL AFTER `adminip`,
+	CHANGE COLUMN `log` `log` VARCHAR(1000) NOT NULL AFTER `operation`;
 
 ALTER TABLE `admin_ranks`
- CHANGE COLUMN `rank` `rank` VARCHAR(32) NOT NULL FIRST,
- CHANGE COLUMN `flags` `flags` SMALLINT UNSIGNED NOT NULL AFTER `rank`,
- ADD COLUMN `exclude_flags` SMALLINT UNSIGNED NOT NULL AFTER `flags`,
- ADD COLUMN `can_edit_flags` SMALLINT(5) UNSIGNED NOT NULL AFTER `exclude_flags`,
- DROP COLUMN `id`,
- DROP PRIMARY KEY,
- ADD PRIMARY KEY (`rank`);
+	CHANGE COLUMN `rank` `rank` VARCHAR(32) NOT NULL FIRST,
+	CHANGE COLUMN `flags` `flags` SMALLINT UNSIGNED NOT NULL AFTER `rank`,
+	ADD COLUMN `exclude_flags` SMALLINT UNSIGNED NOT NULL AFTER `flags`,
+	ADD COLUMN `can_edit_flags` SMALLINT(5) UNSIGNED NOT NULL AFTER `exclude_flags`,
+	DROP COLUMN `id`,
+	DROP PRIMARY KEY,
+	ADD PRIMARY KEY (`rank`);
 
 ----------------------------------------------------
 
