@@ -19,26 +19,27 @@ type MaturityPromptData = {
   timeout: number;
   current_year: number;
   current_month: number;
+  current_day: number;
 };
 
 export const MaturityPrompt = (props) => {
   const { act, data } = useBackend<MaturityPromptData>();
-  const { current_year, current_month, timeout } = data;
-  const [year, setYear] = useState(current_year);
-  const [month, setMonth] = useState(current_month);
-  const [day, setDay] = useState(1);
+  const { current_year, current_month, current_day, timeout } = data;
+  const [set_year, setYear] = useState(current_year);
+  const [set_month, setMonth] = useState(current_month);
+  const [set_day, setDay] = useState(current_day);
   const [buttonClicked, setButtonClicked] = useState(false);
 
-  const windowHeight = 200;
-  const windowWidth = 360;
+  const windowHeight = 210;
+  const windowWidth = 280;
 
   const handleButtonClick = () => {
     if (buttonClicked) {
       // If button has already been clicked once, perform the submit action
       act('submit', {
-        year: year,
-        month: month,
-        day: day,
+        year: set_year,
+        month: set_month,
+        day: set_day,
       });
     } else {
       // If button hasn't been clicked yet, set it to clicked state
@@ -64,7 +65,7 @@ export const MaturityPrompt = (props) => {
               <LabeledControls width="150px">
                 <LabeledControls.Item label="Year">
                   <NumberInput
-                    value={year}
+                    value={set_year}
                     minValue={1900}
                     maxValue={current_year}
                     step={1}
@@ -75,7 +76,7 @@ export const MaturityPrompt = (props) => {
                 {'-'}
                 <LabeledControls.Item label="Month">
                   <NumberInput
-                    value={month}
+                    value={set_month}
                     minValue={1}
                     maxValue={12}
                     step={1}
@@ -86,7 +87,7 @@ export const MaturityPrompt = (props) => {
                 {'-'}
                 <LabeledControls.Item label="Day">
                   <NumberInput
-                    value={1}
+                    value={set_day}
                     minValue={1}
                     maxValue={31}
                     step={1}

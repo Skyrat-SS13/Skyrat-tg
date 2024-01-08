@@ -51,8 +51,9 @@
 
 /datum/maturity_prompt/ui_data(mob/user)
 	var/list/data = list()
-	data["current_year"] = SSmaturity_guard.current_year
-	data["current_month"] = SSmaturity_guard.current_month
+	data["current_year"] = SSmaturity_guard.current_year ? SSmaturity_guard.current_year : 2020
+	data["current_month"] = SSmaturity_guard.current_month ? SSmaturity_guard.current_month : 1
+	data["current_day"] = SSmaturity_guard.current_day ? SSmaturity_guard.current_day : 1
 
 	if(timeout)
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
@@ -65,6 +66,9 @@
 	if(action == "submit")
 		// validate
 		log_admin("[params["year"]]-[params["month"]]-[params["day"]]")
+		day = params["day"]
+		month = params["month"]
+		year = params["year"]
 		closed = TRUE
 		SStgui.close_uis(src)
 		return TRUE
