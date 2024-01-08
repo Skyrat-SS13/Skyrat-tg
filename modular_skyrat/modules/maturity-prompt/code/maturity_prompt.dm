@@ -64,8 +64,6 @@
 	if (.)
 		return
 	if(action == "submit")
-		// validate
-		log_admin("[params["year"]]-[params["month"]]-[params["day"]]")
 		day = params["day"]
 		month = params["month"]
 		year = params["year"]

@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	var/list/prompt_cache = list()
 	/// A list of players who already passed the check via prompt or are listed in the db
 	var/list/whitelisted_cache = list()
+	/// A list of players that failed the age check this round. Stopgap only used if we don't have a db attached to ban people.
 	var/list/blacklisted_cache = list()
 
 	var/current_month
@@ -52,7 +53,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(user.ckey in whitelisted_cache)
 		return TRUE
 
-	if(user.ckey in blacklisted_cache)
+	if(!SSdbcore.Connect() && user.ckey in blacklisted_cache)
 		qdel(user.client)
 		return FALSE
 
@@ -98,9 +99,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(prompt)
 		. = list(prompt.year, prompt.month, prompt.day)
 
-		message_admins("validate_dob called with [prompt.year], [prompt.month], [prompt.day]")
 		var/check_result = validate_dob(prompt.year, prompt.month, prompt.day)
-		message_admins("validate_dob result: [check_result]")
 		switch(check_result)
 			if(AGE_CHECK_PASSED)
 				add_age_to_db(user, prompt.year, prompt.month)
@@ -204,8 +203,17 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(IsAdminAdvancedProcCall())
 		return
 
+	var/discord_appeal_text = ""
+	if(CONFIG_GET(string/discord_link))
+		discord_appeal_text = "If you believe this to be a mistake, file an appeal in our community. <a href='[CONFIG_GET(string/discord_link)]>[CONFIG_GET(string/discord_link)]</a>"
+	var/player_ban_notification = span_boldannounce("You have been banned by the AGE CHECK SYSTEM from the server.\nReason: You do not meet the minimum age requirements for this community. [discord_appeal_text]")
+
 	if(!SSdbcore.Connect())
-		blacklisted_cache |= user.ckey // Gotta do something if the db doesn't work, I guess
+	 	// Just a stopgap measure... this really isn't intended to be used without a db attached
+		message_admins("[user.ckey] has FAILED THE AGE CHECK but couldn't be banned due to lack of database connection.")
+		blacklisted_cache |= user.ckey
+		to_chat(user, player_ban_notification)
+		qdel(user.client)
 		return
 
 	if(!istype(user) || !user.ckey)
@@ -255,12 +263,6 @@ SUBSYSTEM_DEF(maturity_guard)
 	log_admin_private("AGE CHECK SYSTEM [msg]")
 	message_admins("AGE CHECK SYSTEM [msg]")
 
-
-	var/discord_appeal_text = ""
-	if(CONFIG_GET(string/discord_link))
-		discord_appeal_text = "If you believe this to be a mistake, file an appeal in our community. <a href='[CONFIG_GET(string/discord_link)]>[CONFIG_GET(string/discord_link)]</a>"
-
-	var/player_ban_notification = span_boldannounce("You have been banned by the AGE CHECK SYSTEM from the server.\nReason: You do not meet the minimum age requirements for this community. [discord_appeal_text]<br>[span_danger("This ban is permanent. The round ID is [GLOB.round_id].")]")
 	to_chat(user, player_ban_notification)
 
 	qdel(user.client)
