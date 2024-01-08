@@ -293,21 +293,21 @@
 					SSblackbox.ReportCitation(REF(new_citation), human_user.ckey, human_user.real_name, target_record.name, citation_name, fine)
 					return
 
-			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-			if(href_list["genrecords"])
-				if(!human_user.canUseHUD())
-					return
-				if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
-					return
-				to_chat(human_user, "<b>General Record:</b> [target_record.past_general_records]")
+				//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+				if(href_list["genrecords"])
+					if(!human_user.canUseHUD())
+						return
+					if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
+						return
+					to_chat(human_user, "<b>General Record:</b> [target_record.past_general_records]")
 
-			if(href_list["secrecords"])
-				if(!human_user.canUseHUD())
-					return
-				if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
-					return
-				to_chat(human_user, "<b>Security Record:</b> [target_record.past_security_records]")
-			//SKYRAT EDIT END
+				if(href_list["secrecords"])
+					if(!human_user.canUseHUD())
+						return
+					if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
+						return
+					to_chat(human_user, "<b>Security Record:</b> [target_record.past_security_records]")
+				//SKYRAT EDIT END
 
 				if(href_list["add_crime"])
 					var/crime_name = tgui_input_text(human_user, "Crime name", "Security HUD")
