@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(user.ckey in whitelisted_cache)
 		return TRUE
 
-	if(!SSdbcore.Connect() && user.ckey in blacklisted_cache)
+	if(!SSdbcore.Connect() && (user.ckey in blacklisted_cache))
 		qdel(user.client)
 		return FALSE
 
