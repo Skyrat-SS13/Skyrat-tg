@@ -199,3 +199,75 @@
   SomeRandomOwl:
   - bugfix: Build Mode Export's options menu now knows when you want to cancel and
       not change the options
+2024-01-07:
+  LT3:
+  - bugfix: Morgue trays and freezing temperatures will no longer husk bodies
+  - bugfix: Organs outside bodies will properly receive cold damage
+  SkyratBot:
+  - balance: Instead of too much damage to the head beheading someone, it will now
+      split their skull in half. While their skull is open, you can rip out their
+      eyes with your hands. and they will spill their brain out of their head if they
+      slip.
+  - balance: The Path of Blades ascension will accept either a beheaded person, or
+      someone with their skull split open.
+  - rscdel: Removed the beheading objectives from traitor.
+  - bugfix: Hub shuttle time works correctly
+  - bugfix: Papers no longer crash tgui
+  - bugfix: Biogenerator no longer crash tgui
+  - bugfix: Randomization button in prefs should look normal again.
+  - bugfix: Quirk customization shouldn't close immediately.
+  Stalkeros, Zergspower, Paxilmaniac, Vinylspiders, Nova:
+  - refactor: refactors all(?) modular items to a standard list format (zergspower)
+  - rscadd: Ancient Military Simulator got some of the previously implemented items
+      back, i.e. CIN weaponry and DeForest medkits
+  - balance: Ancient Military Simulator, generally speaking, became more 'rigid' and
+      straightforward
+  - balance: Ancient Military Simulator prize room has been moved deeper into SNPC
+      compound to prevent drakes from flying in early.
+  - bugfix: Ancient Military Simulator should no longer break down into space tiles
+      on wall explosions
+  - rscadd: The CO2 Cracker makes a return, a device that takes power and turns ambient
+      CO2 into ambient oxygen, handy!
+  - rscadd: The portable recycler has been added, a machine that lets you recycle
+      stuff autolathe-style, clang!
+  - rscadd: The hydroponics chemical synthesizer has been added, the sister to the
+      water synthesizer, makes all of the basic botany chemicals to work with reagent
+      pipes.
+  - rscadd: The sustenance dispenser makes a return, dispense yourself some powdered
+      coffee or nutraslop today!
+  - rscadd: The organic rations printer has been added, a little biogenerator-type
+      machine specializing in food specifically. An excellent kitchen buddy for the
+      supply-deprived cook.
+  - image: Sprites for all the listed new machines were made by me, Paxilmaniac.
+2024-01-08:
+  SkyratBot:
+  - bugfix: The clown planet biodome and virtual domain can now be completed without
+      slipping directly into the exit.
+  - bugfix: adds missing navigation landmarks to tramstation
+  - refactor: some very large tgui lists (air alarms, all recipes techfab view, techweb
+      view) are loaded on-demand as you scroll, making them not lag so hard
+  - qol: It is now possible to craft more Security bio suits
+  - qol: Bio-emergency crate from Cargo now contains a box of latex gloves and sterile
+      masks
+  - bugfix: fixed coupon codes with expiration times.
+  - rscadd: Adds a geared assistant station trait! Spawn with a skateboard, toolbelt
+      or in your favorite bee suit!
+  - code_imp: Moves assistant code around
+  - bugfix: vents that are turned off dont replay their animation if you go out of
+      sight and back in
+  - bugfix: spasm_animation now correctly resets the transform, as it should
+  - bugfix: Fixed H.A.R.S. fucking up the brains a little.
+  - bugfix: Jumping to C4 via ghost notification works again
+  - bugfix: Comms console should now update as you type.
+  cherdaq:
+  - rscadd: added a hairstyle
+  - image: added an icon state to SR hair.dmi
+  - code_imp: added required code to hair.dm
+  fIoppie:
+  - qol: Cargo techs can now access the windoor in the delivery office on Delta.
+  jjpark-kb:
+  - rscadd: added cargo tele upgrade and forging upgrade to cargo borgs
+  - qol: you can click drag some items to the forge now (fuel, ores, imbuing)
+  theselfish:
+  - rscadd: Skyrat races now produce butcher results closer to their ancestors. Cannibals
+      rejoice.
