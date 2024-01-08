@@ -26,6 +26,13 @@
 
 /obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	attempt_upgrade(user)
+
+/obj/structure/reagent_water_basin/attack_robot(mob/living/user)
+	. = ..()
+	attempt_upgrade(user)
+
+/obj/structure/reagent_water_basin/proc/attempt_upgrade(mob/living/user)
 	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || fishable)
 		return
