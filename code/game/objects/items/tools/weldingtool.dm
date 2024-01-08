@@ -152,7 +152,7 @@
 			span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
 		use_delay = 5 SECONDS
 
-	if(!use_tool(attacked_humanoid, user, self_delay, volume=50, amount=1)) // SKYRAT EDIT CHANGE - ORIGINAL: use_tool(attacked_humanoid, user, use_delay, volume=50, amount=1))
+	if(!use_tool(attacked_humanoid, user, use_delay, volume=50, amount=1))
 		return ITEM_INTERACT_BLOCKING
 
 	// SKYRAT EDIT ADDITION START
