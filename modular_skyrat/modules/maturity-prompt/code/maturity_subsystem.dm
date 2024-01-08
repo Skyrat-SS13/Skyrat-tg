@@ -32,11 +32,14 @@ SUBSYSTEM_DEF(maturity_guard)
  * Checks if the player is declared of age. Prompts the player for DoB if necessary.
  */
 /datum/controller/subsystem/maturity_guard/proc/age_check(mob/user)
+	// Well, if there's no checks meant to be made, everyone automatically passes.
+	if(!CONFIG_GET(flag/age_prompt_system))
+		return TRUE
+
 	if(!istype(user))
 		return FALSE
 
 	if(!SSmaturity_guard.initialized) // To prevent false bans, we dont let people use the prompt until the subsystem is initialized.
-		to_chat_immediate(user, "Maturity guard is not initialized yet. Please wait a moment and try again.")
 		return FALSE
 
 	if(!user.ckey)
@@ -99,9 +102,9 @@ SUBSYSTEM_DEF(maturity_guard)
 				whitelisted_cache |= user.ckey
 			if(AGE_CHECK_UNDERAGE)
 				create_underage_ban(user)
+			if(AGE_CHECK_INVALID)
+				to_chat_immediate(user, span_warning("Invalid information entered. Please try again."))
 		qdel(prompt)
-
-
 
 
 /datum/controller/subsystem/maturity_guard/proc/get_age_from_db(mob/user)
@@ -156,7 +159,7 @@ SUBSYSTEM_DEF(maturity_guard)
 // https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/6e6bce87726b7a5ac7ebf23bec7b020a004c6e60/code/modules/mob/dead/new_player/new_player.dm
 /datum/controller/subsystem/maturity_guard/proc/validate_dob(player_year, player_month, player_day, simple_check = FALSE)
 	//Rudimentary sanity check
-	if(player_year >= 2024 || player_year <= 1900 || player_month < 1 || player_month > 12)
+	if(player_year >= current_year || player_year <= 1900 || player_month < 1 || player_month > 12)
 		return AGE_CHECK_INVALID
 
 	var/player_total_months = (player_year * 12) + player_month
@@ -190,9 +193,18 @@ SUBSYSTEM_DEF(maturity_guard)
 		//it has NOT been their 18th birthday yet
 		return AGE_CHECK_UNDERAGE
 
-/// Because apparently there's no simple proc for applying bans and admin datums need an actual admin holding them
 // I hate this abomination
+/// Because apparently there's no simple proc for applying bans and admin datums need an actual admin holding them
 /datum/controller/subsystem/maturity_guard/proc/create_underage_ban(mob/user)
+	if(IsAdminAdvancedProcCall())
+		return
+
+	if(!SSdbcore.Connect())
+		return
+
+	if(!istype(user) || !user.ckey)
+		return
+
 	var/list/clients_online = GLOB.clients.Copy()
 	var/list/admins_online = list()
 	for(var/client/C in clients_online)
