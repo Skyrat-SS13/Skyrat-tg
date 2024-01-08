@@ -35,6 +35,10 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(!istype(user))
 		return FALSE
 
+	if(!SSmaturity_guard.initialized) // To prevent false bans, we dont let people use the prompt until the subsystem is initialized.
+		to_chat_immediate(user, "Maturity guard is not initialized yet. Please wait a moment and try again.")
+		return FALSE
+
 	if(!user.ckey)
 		return FALSE
 
