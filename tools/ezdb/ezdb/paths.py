@@ -30,5 +30,8 @@ def get_mariadb_install_db_path():
 def get_initial_schema_path():
     return get_root_path() / 'SQL' / 'tgstation_schema.sql'
 
+def get_modular_schema_path():
+    return get_root_path() / 'SQL' / 'skyrat_schema.sql'
+
 def get_changelog_path():
     return get_root_path() / 'SQL' / 'database_changelog.md'

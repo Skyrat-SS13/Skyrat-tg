@@ -3,9 +3,9 @@
 // Y'know, on a downstream you can go ahead and set it to whatever the fuck you want
 #define AGE_TO_PLAY 18
 
-#define AGE_CHECK_PASSED 0
+#define AGE_CHECK_INVALID 0
 #define AGE_CHECK_UNDERAGE 1
-#define AGE_CHECK_INVALID 2
+#define AGE_CHECK_PASSED 2
 
 SUBSYSTEM_DEF(maturity_guard)
 	name = "Maturity guard"
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(maturity_guard)
 		return FALSE
 
 	var/age_from_db = get_age_from_db(user)
-	if(age_from_db && validate_dob(age_from_db[1], age_from_db[2], simple_check=TRUE))
+	if(age_from_db && validate_dob(age_from_db[1], age_from_db[2], simple_check=TRUE) == AGE_CHECK_PASSED)
 		whitelisted_cache |= user.ckey
 		return TRUE
 
@@ -70,6 +70,9 @@ SUBSYSTEM_DEF(maturity_guard)
  */
 /datum/controller/subsystem/maturity_guard/proc/age_prompt(mob/user)
 	if(IsAdminAdvancedProcCall())
+		return FALSE
+
+	if(!SSmaturity_guard.initialized)
 		return FALSE
 
 	if(!user)
@@ -101,13 +104,13 @@ SUBSYSTEM_DEF(maturity_guard)
 
 		var/check_result = validate_dob(prompt.year, prompt.month, prompt.day)
 		switch(check_result)
+			if(AGE_CHECK_INVALID)
+				to_chat_immediate(user, span_warning("Invalid information entered. Please try again."))
+			if(AGE_CHECK_UNDERAGE)
+				create_underage_ban(user)
 			if(AGE_CHECK_PASSED)
 				add_age_to_db(user, prompt.year, prompt.month)
 				whitelisted_cache |= user.ckey
-			if(AGE_CHECK_UNDERAGE)
-				create_underage_ban(user)
-			if(AGE_CHECK_INVALID)
-				to_chat_immediate(user, span_warning("Invalid information entered. Please try again."))
 		qdel(prompt)
 
 
@@ -121,17 +124,19 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(!istype(user) || !user.ckey)
 		return FALSE
 
-	var/datum/db_query/get_age_from_db = SSdbcore.NewQuery(
+	var/datum/db_query/query_age_from_db = SSdbcore.NewQuery(
 		"SELECT dob_year, dob_month FROM [format_table_name("player_dob")] WHERE ckey = :ckey",
 		list("ckey" = user.ckey),
 	)
 
-	if(!get_age_from_db.warn_execute())
-		return  FALSE
+	if(!query_age_from_db.warn_execute())
+		return FALSE
 
 	// There should be only one, we're querying by the primary key; if it returns more than one row something is very wrong
-	get_age_from_db.NextRow()
-	return get_age_from_db.item
+	var/result = query_age_from_db.NextRow()
+	if(result)
+		return query_age_from_db.item
+	return FALSE
 
 
 /datum/controller/subsystem/maturity_guard/proc/add_age_to_db(mob/user, year, month)
@@ -158,8 +163,7 @@ SUBSYSTEM_DEF(maturity_guard)
 
 	return TRUE
 
-// create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, list/roles_to_ban)
-// Logic shamefully borrowed from S.P.L.U.R.T
+// Logic inspired by S.P.L.U.R.T age_gate
 // https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/6e6bce87726b7a5ac7ebf23bec7b020a004c6e60/code/modules/mob/dead/new_player/new_player.dm
 /datum/controller/subsystem/maturity_guard/proc/validate_dob(player_year, player_month, player_day, simple_check = FALSE)
 	//Rudimentary sanity check
@@ -255,7 +259,7 @@ SUBSYSTEM_DEF(maturity_guard)
 		"adminwho" = adminwho
 	)
 
-	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
+	if(!SSdbcore.MassInsert(format_table_name("ban"), list(sql_ban), warn = TRUE, special_columns = special_columns))
 		return
 
 	var/target = "[user.ckey]/[user.client.address]/[user.client.computer_id]"
