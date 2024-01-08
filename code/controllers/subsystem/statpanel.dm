@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
-			"Connected: [GLOB.clients.len] | Active: [active_players]/[CONFIG_GET(number/hard_popcap) ? CONFIG_GET(number/hard_popcap) : "∞"] | Observing: [observing_players]",
+			"Connected: [GLOB.clients.len] | Active: [active_players][CONFIG_GET(number/hard_popcap) ? "/[CONFIG_GET(number/hard_popcap)]" : ""] | Observing: [observing_players]",
 			" ",
 			"OOC: [GLOB.ooc_allowed ? "Enabled" : "Disabled"]",
 			" ",
