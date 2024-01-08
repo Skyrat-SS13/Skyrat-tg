@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	var/list/prompt_cache = list()
 	/// A list of players who already passed the check via prompt or are listed in the db
 	var/list/whitelisted_cache = list()
+	var/list/blacklisted_cache = list()
 
 	var/current_month
 	var/current_year
@@ -50,6 +51,10 @@ SUBSYSTEM_DEF(maturity_guard)
 
 	if(user.ckey in whitelisted_cache)
 		return TRUE
+
+	if(user.ckey in blacklisted_cache)
+		qdel(user.client)
+		return FALSE
 
 	var/age_from_db = get_age_from_db(user)
 	if(age_from_db && validate_dob(age_from_db[1], age_from_db[2], simple_check=TRUE))
@@ -200,6 +205,7 @@ SUBSYSTEM_DEF(maturity_guard)
 		return
 
 	if(!SSdbcore.Connect())
+		blacklisted_cache |= user.ckey // Gotta do something if the db doesn't work, I guess
 		return
 
 	if(!istype(user) || !user.ckey)
