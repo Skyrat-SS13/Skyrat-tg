@@ -18,8 +18,11 @@ SUBSYSTEM_DEF(maturity_guard)
 	/// A list of players that failed the age check this round. Stopgap only used if we don't have a db attached to ban people.
 	var/list/blacklisted_cache = list()
 
-	var/current_month
+	/// Current year, stored on the subsystem init
 	var/current_year
+	/// Current month of the year, stored on the subsystem init
+	var/current_month
+	/// Current day of the month, stored on the subsystem init
 	var/current_day
 
 
