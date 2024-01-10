@@ -12,7 +12,7 @@
 	if(client.interviewee)
 		return FALSE
 
-	if(!SSmaturity_guard.age_check(src))
+	if(!client.maturity_prompt_whitelist && !SSmaturity_guard.age_check(src))
 		return
 
 	if(href_list["observe"])

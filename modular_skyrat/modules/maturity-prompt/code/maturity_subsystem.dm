@@ -13,8 +13,6 @@ SUBSYSTEM_DEF(maturity_guard)
 	init_order = INIT_ORDER_MATURITY_GUARD
 	/// A list of currently active prompts.
 	var/list/prompt_cache = list()
-	/// A list of players who already passed the check via prompt or are listed in the db
-	var/list/whitelisted_cache = list()
 	/// A list of players that failed the age check this round. Stopgap only used if we don't have a db attached to ban people.
 	var/list/blacklisted_cache = list()
 
@@ -41,20 +39,14 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(!CONFIG_GET(flag/age_prompt_system))
 		return TRUE
 
-	if(!istype(user))
+	if(!istype(user) || !user.ckey)
 		return FALSE
 
 	if(!SSmaturity_guard.initialized) // To prevent false bans, we dont let people use the prompt until the subsystem is initialized.
 		return FALSE
 
-	if(!user.ckey)
-		return FALSE
-
 	if(user.ckey in prompt_cache)
 		return FALSE
-
-	if(user.ckey in whitelisted_cache)
-		return TRUE
 
 	if(!SSdbcore.Connect() && (user.ckey in blacklisted_cache))
 		qdel(user.client)
@@ -62,7 +54,7 @@ SUBSYSTEM_DEF(maturity_guard)
 
 	var/age_from_db = get_age_from_db(user)
 	if(age_from_db && validate_dob(age_from_db[1], age_from_db[2], simple_check=TRUE) == AGE_CHECK_PASSED)
-		whitelisted_cache |= user.ckey
+		user.client.maturity_prompt_whitelist = TRUE
 		return TRUE
 
 	// Let's not hold up other procs
@@ -113,7 +105,7 @@ SUBSYSTEM_DEF(maturity_guard)
 				create_underage_ban(user)
 			if(AGE_CHECK_PASSED)
 				add_age_to_db(user, prompt.year, prompt.month)
-				whitelisted_cache |= user.ckey
+				user.client.maturity_prompt_whitelist = TRUE
 		qdel(prompt)
 
 
