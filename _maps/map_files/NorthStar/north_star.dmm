@@ -20971,20 +20971,6 @@
 	dir = 1
 	},
 /area/station/command/bridge)
-"fBE" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mail Sorting"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/supply/general,
-/turf/open/floor/iron/smooth,
-/area/station/cargo/storage)
 "fBM" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
@@ -51078,6 +51064,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/hallway/floor3/aft)
+"nkT" = (
+/obj/machinery/atmospherics/components/trinary/filter/critical{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/directional/north,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "nla" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -75518,13 +75511,6 @@
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/pod/dark,
 /area/station/maintenance/floor3/port)
-"tLH" = (
-/obj/machinery/atmospherics/components/trinary/filter{
-	dir = 4
-	},
-/obj/machinery/status_display/evac/directional/north,
-/turf/open/floor/engine,
-/area/station/engineering/supermatter/room)
 "tMd" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -86658,6 +86644,20 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
+"wEN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mail Sorting"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/turf/open/floor/iron/smooth,
+/area/station/cargo/storage)
 "wEQ" = (
 /obj/structure/stairs/east,
 /turf/open/floor/pod/dark,
@@ -119139,7 +119139,7 @@ cMA
 mnR
 acv
 hNz
-fBE
+wEN
 nlu
 aAZ
 iRK
@@ -140228,7 +140228,7 @@ uyD
 uyD
 uyD
 uyD
-tLH
+nkT
 kfo
 mvg
 dEc
