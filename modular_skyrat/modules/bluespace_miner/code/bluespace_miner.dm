@@ -42,12 +42,12 @@
 	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
 		gas_temp -= (laser_part.tier * 5)
 
-	processing_speed = 6 SECONDS
+	processing_speed = 6 SECONDS //starts at 5 seconds, should go down to 2
 	for(var/datum/stock_part/servo/servo_part in component_parts)
 		processing_speed -= (servo_part.tier * (0.5 SECONDS))
 	processing_speed = FLOOR(processing_speed, 1)
 
-	sheet_amount = 0
+	sheet_amount = 0 //starts at 1 sheet, should go up to 4
 	for(var/datum/stock_part/matter_bin/bin_part in component_parts)
 		sheet_amount += (bin_part.tier * 0.5)
 	sheet_amount = FLOOR(sheet_amount, 1)
