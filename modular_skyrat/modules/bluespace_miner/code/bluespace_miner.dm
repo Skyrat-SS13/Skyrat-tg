@@ -196,34 +196,27 @@
 	crate_name = "Bluespace Miner Circuitboard Crate"
 	crate_type = /obj/structure/closet/crate
 
-/* if we were going to go research based
 /datum/design/board/bluespace_miner
 	name = "Machine Design (Bluespace Miner)"
 	desc = "Allows for the construction of circuit boards used to build a bluespace miner."
 	id = "bluespace_miner"
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
-	category = list(RND_CATEGORY_MISC_MACHINERY)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
-
-/datum/experiment/scanning/points/bluespace_miner
-	name = "Bluespace Miner"
-	description = "We can learn from the past technology and create a better future-- with bluespace miners."
-	required_points = 5
-	required_atoms = list(
-		/obj/item/xenoarch/broken_item/tech = 1,
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
 	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/techweb_node/bluespace_miner
 	id = "bluespace_miner"
 	display_name = "Bluespace Miner"
 	description = "The future is here, where we can mine ores from the great bluespace sea."
-	prereq_ids = list("anomaly_research", "bluespace_power")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	hidden = TRUE
+	experimental = TRUE
+	prereq_ids = list("base")
 	design_ids = list(
 		"bluespace_miner",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	discount_experiments = list(/datum/experiment/scanning/points/bluespace_miner = 5000)
-*/
 
 #undef BLUESPACE_MINER_TOO_HOT
 #undef BLUESPACE_MINER_LOW_PRESSURE
