@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
 	base_build_path = /obj/machinery/smartfridge/producebin
-	contents_icon_state = "produce"
+	base_icon_state = "produce"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
@@ -89,7 +89,7 @@
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
 	base_build_path = /obj/machinery/smartfridge/seedshelf
-	contents_icon_state = "seed"
+	base_icon_state = "seed"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
@@ -119,7 +119,7 @@
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
 	base_build_path = /obj/machinery/smartfridge/rationshelf
-	contents_icon_state = "ration"
+	base_icon_state = "ration"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
@@ -149,7 +149,7 @@
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
 	base_build_path = /obj/machinery/smartfridge/producedisplay
-	contents_icon_state = "nonfood"
+	base_icon_state = "nonfood"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
