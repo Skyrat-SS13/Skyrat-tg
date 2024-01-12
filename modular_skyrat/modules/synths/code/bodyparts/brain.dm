@@ -10,7 +10,7 @@
 	/// The last time (in ticks) a message about brain damage was sent. Don't touch.
 	var/last_message_time = 0
 
-/obj/item/organ/internal/brain/synth/on_mob_insert(mob/living/carbon/brain_owner, movement_flags = NO_ID_TRANSFER)
+/obj/item/organ/internal/brain/synth/on_mob_insert(mob/living/carbon/brain_owner, special, movement_flags = NO_ID_TRANSFER)
 	. = ..()
 
 	if(brain_owner.stat != DEAD || !ishuman(brain_owner))
