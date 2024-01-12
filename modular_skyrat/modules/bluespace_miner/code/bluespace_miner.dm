@@ -17,6 +17,8 @@
 	var/gas_temp = 100
 	///the amount of seconds process_speed goes on cooldown for
 	var/processing_speed = 6 SECONDS
+	///the amount of sheets we should produce per action
+	var/sheet_amount = 0
 	///the current status of the enviroment. Any nonzero value means we can't work
 	var/mining_stat = NONE
 	///the chance each ore has to be picked, weighted list
@@ -36,13 +38,19 @@
 /obj/machinery/bluespace_miner/RefreshParts()
 	. = ..()
 
-	gas_temp = 100 //starts at 100, should go down to 80 at most.
+	gas_temp = 100 //starts at 90 temp, should go down to 60
 	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
 		gas_temp -= (laser_part.tier * 5)
 
-	processing_speed = 6 SECONDS //starts at 6 seconds, should go down to 4 seconds at most.
+	processing_speed = 6 SECONDS
 	for(var/datum/stock_part/servo/servo_part in component_parts)
 		processing_speed -= (servo_part.tier * (0.5 SECONDS))
+	processing_speed = FLOOR(processing_speed, 1)
+
+	sheet_amount = 0
+	for(var/datum/stock_part/matter_bin/bin_part in component_parts)
+		sheet_amount += (bin_part.tier * 0.5)
+	sheet_amount = FLOOR(sheet_amount, 1)
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
@@ -131,7 +139,8 @@
 //if check_factors is good, then we spawn materials
 /obj/machinery/bluespace_miner/proc/spawn_mats()
 	var/obj/chosen_sheet = pick_weight(ore_chance)
-	new chosen_sheet(get_turf(src))
+	for(var/integer in 1 to sheet_amount)
+		new chosen_sheet(get_turf(src))
 
 /obj/machinery/bluespace_miner/process()
 	if(!check_factors())
@@ -155,6 +164,11 @@
 /obj/machinery/bluespace_miner/crowbar_act(mob/living/user, obj/item/tool)
 	if(default_deconstruction_crowbar(tool))
 		return TRUE
+
+/obj/machinery/bluespace_miner/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/bluespace_miner/screwdriver_act(mob/living/user, obj/item/tool)
 	. = TRUE
