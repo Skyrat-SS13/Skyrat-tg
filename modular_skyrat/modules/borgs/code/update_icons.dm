@@ -11,6 +11,12 @@
 			add_overlay("[model.cyborg_base_icon]_cl")
 	update_altborg_icons()
 
+	if(combat_indicator)
+		add_overlay(GLOB.combat_indicator_overlay)
+
+	if(temporary_flavor_text)
+		add_overlay(GLOB.temporary_flavor_text_indicator)
+
 /mob/living/silicon/robot/proc/update_altborg_icons()
 	var/extra_overlay
 	for(var/i in held_items)
