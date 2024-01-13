@@ -31,7 +31,7 @@
 			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
 			new_limb.set_icon_static(chosen_style)
 			new_limb.current_style = prefs.augment_limb_styles[slot]
-		new_limb.replace_limb(augmented)
+		new_limb.replace_limb(augmented, special = TRUE)
 		qdel(old_limb)
 
 //HEADS

@@ -1,6 +1,7 @@
 import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { useState } from 'react';
+import { Popover } from 'react-tiny-popover';
 
 import { sendAct, useBackend } from '../../backend';
 import {
@@ -10,7 +11,6 @@ import {
   Dropdown, // SKYRAT EDIT ADDITION
   Flex,
   LabeledList,
-  Popper,
   Stack,
 } from '../../components';
 import { CharacterPreview } from '../common/CharacterPreview';
@@ -207,10 +207,11 @@ const GenderButton = (props: {
   const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
-    <Popper
+    <Popover
       isOpen={genderMenuOpen}
-      placement="right-end"
-      popperContent={
+      onClickOutside={() => setGenderMenuOpen(false)}
+      positions="right"
+      content={
         <Stack backgroundColor="white" ml={0.5} p={0.3}>
           {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
             (gender) => {
@@ -243,7 +244,7 @@ const GenderButton = (props: {
         tooltip="Gender"
         tooltipPosition="top"
       />
-    </Popper>
+    </Popover>
   );
 };
 
@@ -276,11 +277,11 @@ const MainFeature = (props: {
   const supplementalFeature = catalog.supplemental_feature;
 
   return (
-    <Popper
-      placement="bottom-start"
+    <Popover
+      positions="bottom"
       onClickOutside={() => handleClose()}
       isOpen={isOpen}
-      popperContent={
+      content={
         <ChoicedSelection
           name={catalog.name}
           catalog={catalog}
@@ -348,7 +349,7 @@ const MainFeature = (props: {
           />
         )}
       </Button>
-    </Popper>
+    </Popover>
   );
 };
 
