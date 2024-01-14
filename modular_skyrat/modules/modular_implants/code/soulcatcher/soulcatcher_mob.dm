@@ -94,7 +94,7 @@
 	if(soul_component && soul_component.current_room)
 		var/datum/carrier_room/room = soul_component.current_room.resolve()
 		if(room)
-			room.current_souls -= src
+			room.current_mobs -= src
 
 		soul_component.current_room = null
 

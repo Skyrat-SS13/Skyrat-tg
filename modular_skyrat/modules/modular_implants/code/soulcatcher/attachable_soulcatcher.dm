@@ -43,10 +43,10 @@
 
 	var/datum/component/carrier/dropped_soulcatcher = dropped_item.GetComponent(/datum/component/carrier)
 	var/datum/carrier_room/target_room = dropped_soulcatcher.carrier_rooms[1]
-	var/list/current_souls = get_current_mobs()
+	var/list/current_mobs = get_current_mobs()
 
-	if(current_souls) // If we have souls inside of here, they should be transferred to the new object
-		for(var/mob/living/soul as anything in current_souls)
+	if(current_mobs) // If we have souls inside of here, they should be transferred to the new object
+		for(var/mob/living/soul as anything in current_mobs)
 			transfer_mob(soul, target_room)
 
 	return ..()
@@ -97,9 +97,9 @@
 	playsound(target_item.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
 	var/datum/carrier_room/target_room = new_soulcatcher.carrier_rooms[1]
-	var/list/current_souls = linked_soulcatcher.get_current_mobs()
-	if(current_souls)
-		for(var/mob/living/soul as anything in current_souls)
+	var/list/current_mobs = linked_soulcatcher.get_current_mobs()
+	if(current_mobs)
+		for(var/mob/living/soul as anything in current_mobs)
 			linked_soulcatcher.transfer_mob(soul, target_room)
 
 	if(destroy_on_use)

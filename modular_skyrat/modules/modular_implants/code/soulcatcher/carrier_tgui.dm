@@ -35,7 +35,7 @@
 		"currently_targeted" = currently_targeted,
 		)
 
-		for(var/mob/living/soul in room.current_souls)
+		for(var/mob/living/soul in room.current_mobs)
 			var/datum/component/carrier_user/soul_component = soul.GetComponent(/datum/component/carrier_user)
 			if(!soul_component)
 				continue
@@ -84,7 +84,7 @@
 
 	var/mob/living/soulcatcher_soul/target_soul
 	if(params["target_soul"])
-		target_soul = locate(params["target_soul"]) in target_room.current_souls
+		target_soul = locate(params["target_soul"]) in target_room.current_mobs
 		if(!target_soul)
 			return FALSE
 
@@ -148,8 +148,8 @@
 			target_room.outside_voice = new_name
 			return TRUE
 
-		if("remove_soul")
-			target_room.remove_soul(target_soul)
+		if("remove_mob")
+			target_room.remove_mob(target_soul)
 			return TRUE
 
 		if("transfer_mob")
@@ -304,7 +304,7 @@
 	if(istype(master_soulcatcher))	
 		data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
 
-	for(var/mob/living/soul in current_carrier_room.current_souls)
+	for(var/mob/living/soul in current_carrier_room.current_mobs)
 		if(soul == user_soul)
 			continue
 

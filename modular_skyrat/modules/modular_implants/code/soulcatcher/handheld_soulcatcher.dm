@@ -97,7 +97,7 @@
 	if(!target_mob.mind)
 		return FALSE
 
-	target_room.add_soul(target_mob.mind, FALSE)
+	target_room.add_soul_from_mind(target_mob.mind, FALSE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
@@ -130,7 +130,7 @@
 
 	var/list/soul_list = list()
 	for(var/datum/carrier_room/room as anything in linked_soulcatcher.carrier_rooms)
-		for(var/mob/living/soulcatcher_soul/soul as anything in room.current_souls)
+		for(var/mob/living/soulcatcher_soul/soul as anything in room.current_mobs)
 			if(!istype(soul) || !soul.round_participant || soul.body_scan_needed)
 				continue
 

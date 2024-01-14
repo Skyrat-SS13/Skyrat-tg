@@ -391,7 +391,7 @@ export const Soulcatcher = (props) => {
                           icon="eject"
                           color="red"
                           onClick={() =>
-                            act('remove_soul', {
+                            act('remove_mob', {
                               target_soul: soul.reference,
                               room_ref: room.reference,
                             })

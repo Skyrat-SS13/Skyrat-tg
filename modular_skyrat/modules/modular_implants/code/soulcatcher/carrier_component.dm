@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /datum/component/carrier/proc/get_current_mobs()
 	var/list/current_inhabitants = list()
 	for(var/datum/carrier_room/room as anything in carrier_rooms)
-		for(var/mob/living/inhabitant as anything in room.current_souls)
+		for(var/mob/living/inhabitant as anything in room.current_mobs)
 			current_inhabitants += inhabitant
 
 	return current_inhabitants
@@ -180,16 +180,16 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	else if(target_master_carrier != src)
 		target_soul.forceMove(target_master_carrier.parent)
 
-	var/datum/component/carrier_user/soul_component = target_soul.GetComponent(/datum/component/carrier_user)
-	var/datum/carrier_room/original_room = soul_component?.current_room.resolve()
+	var/datum/component/carrier_user/carrier_component = target_soul.GetComponent(/datum/component/carrier_user)
+	var/datum/carrier_room/original_room = carrier_component?.current_room.resolve()
 	if(original_room)
-		original_room.current_souls -= target_soul
+		original_room.current_mobs -= target_soul
 	else
-		soul_component?.current_room = null
+		carrier_component?.current_room = null
 
 	var/datum/weakref/room_ref = WEAKREF(target_room)
 	SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_CHANGE_ROOM, room_ref)
-	target_room.current_souls += target_soul
+	target_room.current_mobs += target_soul
 
 	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
 	to_chat(target_soul, span_notice(target_room.room_description))
@@ -201,15 +201,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!istype(mob_to_add))
 		return FALSE
 
-	var/datum/component/carrier_user/soul_component = mob_to_add.AddComponent(component_to_give)
-	if(!soul_component)
+	var/datum/component/carrier_user/carrier_component = mob_to_add.AddComponent(component_to_give)
+	if(!carrier_component)
 		return FALSE
 
 	if(!istype(target_room))
 		target_room = carrier_rooms[1] // Put them in the first room we can find if none is provided.
 
-	soul_component.current_room = target_room
-	return soul_component
+	carrier_component.current_room = target_room
+	return carrier_component
 
 /**
  * carrier Room
@@ -224,7 +224,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What is the description of the room?
 	var/room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
 	/// What souls are currently inside of the room?
-	var/list/current_souls = list()
+	var/list/current_mobs = list()
 	/// Weakref for the master carrier datum
 	var/datum/weakref/master_carrier
 	/// What is the name of the person sending the messages?
@@ -244,13 +244,41 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		ghost.mind.name = ghost.name
 		ghost.mind.active = TRUE
 
-	if(!add_soul(ghost.mind))
+	if(!add_soul_from_mind(ghost.mind))
 		return FALSE
 
 	return TRUE
 
+/// Adds a mob into the carrier
+/datum/carrier_room/proc/add_mob(mob/living/mob_to_add)
+	if(!mob_to_add)
+		return FALSE
+
+	var/datum/component/carrier/parent_soulcatcher = master_carrier.resolve()
+	var/datum/parent_object = parent_soulcatcher.parent
+	if(!parent_object)
+		return FALSE
+
+	var/datum/component/carrier_user/carrier_component = parent_soulcatcher.add_mob(mob_to_add, src)
+	if(!carrier_component)
+		return FALSE
+	current_mobs += mob_to_add 
+	carrier_component.current_room = WEAKREF(src)
+
+	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
+	to_chat(mob_to_add, span_notice(room_description))
+
+	var/atom/parent_atom = parent_object
+	if(istype(parent_atom))
+		var/turf/soulcatcher_turf = get_turf(parent_soulcatcher.parent)
+		var/message_to_log = "[key_name(mob_to_add)] entered [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
+		parent_atom.log_message(message_to_log, LOG_GAME)
+		mob_to_add.log_message(message_to_log, LOG_GAME)
+
+	return TRUE
+
 /// Converts a mind into a soul and adds the resulting soul to the room.
-/datum/carrier_room/proc/add_soul(datum/mind/mind_to_add, hide_participant_identity = TRUE)
+/datum/carrier_room/proc/add_soul_from_mind(datum/mind/mind_to_add, hide_participant_identity = TRUE)
 	if(!mind_to_add)
 		return FALSE
 
@@ -277,7 +305,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		soul_component.desc = "[new_soul] lacks a discernible form."
 
 	mind_to_add.transfer_to(new_soul, TRUE)
-	current_souls += new_soul
+	current_mobs += new_soul
 	soul_component.current_room = WEAKREF(src)
 
 	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
@@ -295,16 +323,16 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Removes a soul from a carrier room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
-/datum/carrier_room/proc/remove_soul(mob/living/mob_to_remove)
-	if(!mob_to_remove || !(mob_to_remove in current_souls))
+/// Removes a mob from a carrier room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
+/datum/carrier_room/proc/remove_mob(mob/living/mob_to_remove)
+	if(!mob_to_remove || !(mob_to_remove in current_mobs))
 		return FALSE
 
-	var/datum/component/carrier_user/soul_component = mob_to_remove.GetComponent(/datum/component/carrier_user)
-	if(soul_component)
-		qdel(soul_component)
+	var/datum/component/carrier_user/carrier_component = mob_to_remove.GetComponent(/datum/component/carrier_user)
+	if(carrier_component)
+		qdel(carrier_component)
 
-	current_souls -= mob_to_remove
+	current_mobs -= mob_to_remove
 
 	var/mob/living/soulcatcher_soul/soul_to_remove = mob_to_remove
 	if(istype(soul_to_remove))
@@ -387,7 +415,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
 		log_emote("[sender_mob] in [name] carrier room emoted: [message_to_send]")
 
-	for(var/mob/living/soul as anything in current_souls)
+	for(var/mob/living/soul as anything in current_mobs)
 		var/message_eligible = SEND_SIGNAL(soul, COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES, emote)
 		if(!message_eligible)
 			continue
@@ -407,8 +435,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /datum/carrier_room/Destroy(force, ...)
-	for(var/mob/living/soul as anything in current_souls)
-		remove_soul(soul)
+	for(var/mob/living/occupant as anything in current_mobs)
+		remove_mob(occupant)
 
 	return ..()
 
