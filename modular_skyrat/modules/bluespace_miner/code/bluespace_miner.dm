@@ -17,8 +17,6 @@
 	var/gas_temp = 100
 	///the amount of seconds process_speed goes on cooldown for
 	var/processing_speed = 6 SECONDS
-	///the amount of sheets we should produce per action
-	var/sheet_amount = 0
 	///the current status of the enviroment. Any nonzero value means we can't work
 	var/mining_stat = NONE
 	///the chance each ore has to be picked, weighted list
@@ -46,11 +44,6 @@
 	for(var/datum/stock_part/servo/servo_part in component_parts)
 		processing_speed -= (servo_part.tier * (0.5 SECONDS))
 	processing_speed = FLOOR(processing_speed, 1)
-
-	sheet_amount = 0 //starts at 1 sheet, should go up to 4
-	for(var/datum/stock_part/matter_bin/bin_part in component_parts)
-		sheet_amount += (bin_part.tier * 0.5)
-	sheet_amount = FLOOR(sheet_amount, 1)
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
@@ -139,8 +132,7 @@
 //if check_factors is good, then we spawn materials
 /obj/machinery/bluespace_miner/proc/spawn_mats()
 	var/obj/chosen_sheet = pick_weight(ore_chance)
-	for(var/integer in 1 to sheet_amount)
-		new chosen_sheet(get_turf(src))
+	new chosen_sheet(get_turf(src))
 
 /obj/machinery/bluespace_miner/process()
 	if(!check_factors())
