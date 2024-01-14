@@ -80,7 +80,7 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/parent_mob = parent
-	if(!parent_mob?.mind || !istype(parent_mob.mind))
+	if(istype(parent_mob) || isnull(parent_mob.mind))
 		return FALSE
 
 	var/datum/preferences/preferences = parent_mob.client?.prefs
