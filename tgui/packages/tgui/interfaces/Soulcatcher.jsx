@@ -19,8 +19,8 @@ export const Soulcatcher = (props) => {
     require_approval,
     current_rooms = [],
     ghost_joinable,
-    current_soul_count,
-    max_souls,
+    current_mob_count,
+    max_mobs,
     removable,
     communicate_as_parent,
     theme,
@@ -409,16 +409,16 @@ export const Soulcatcher = (props) => {
             )}
           </Section>
         ))}
-        {max_souls ? (
+        {max_mobs ? (
           <Section>
             <ProgressBar
               textAlign="left"
               minValue={0}
               color="blue"
-              maxValue={max_souls}
-              value={max_souls - current_soul_count}
+              maxValue={max_mobs}
+              value={max_mobs - current_mob_count}
             >
-              Remaining soul capacity: {max_souls - current_soul_count}
+              Remaining soul capacity: {max_mobs - current_mob_count}
             </ProgressBar>
           </Section>
         ) : (

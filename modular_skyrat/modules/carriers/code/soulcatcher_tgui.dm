@@ -1,27 +1,27 @@
-/datum/component/soulcatcher/ui_interact(mob/user, datum/tgui/ui)
+/datum/component/carrier/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(usr, src, ui)
 
 	if(!ui)
 		ui = new(usr, src, "Soulcatcher", name)
 		ui.open()
 
-/datum/component/soulcatcher/nifsoft/ui_state(mob/user)
+/datum/component/carrier/nifsoft/ui_state(mob/user)
 	return GLOB.conscious_state
 
-/datum/component/soulcatcher/ui_data(mob/user)
+/datum/component/carrier/ui_data(mob/user)
 	var/list/data = list()
 
 	data["ghost_joinable"] = ghost_joinable
 	data["require_approval"] = require_approval
 	data["theme"] = ui_theme
 	data["communicate_as_parent"] = communicate_as_parent
-	data["current_soul_count"] = length(get_current_souls())
-	data["max_souls"] = max_souls
+	data["current_mob_count"] = length(get_current_mobs())
+	data["max_mobs"] = max_mobs
 	data["removable"] = removable
 
 	data["current_rooms"] = list()
-	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
-		var/currently_targeted = (room == targeted_soulcatcher_room)
+	for(var/datum/carrier_room/room in carrier_rooms)
+		var/currently_targeted = (room == targeted_carrier_room)
 
 		var/list/room_data = list(
 		"name" = html_decode(room.name),
@@ -33,7 +33,7 @@
 		)
 
 		for(var/mob/living/soul in room.current_souls)
-			var/datum/component/soulcatcher_user/soul_component = soul.GetComponent(/datum/component/soulcatcher_user)
+			var/datum/component/carrier_user/soul_component = soul.GetComponent(/datum/component/carrier_user)
 			if(!soul_component)
 				continue
 
@@ -60,21 +60,21 @@
 
 	return data
 
-/datum/component/soulcatcher/ui_static_data(mob/user)
+/datum/component/carrier/ui_static_data(mob/user)
 	var/list/data = list()
 
 	data["current_vessel"] = parent
 
 	return data
 
-/datum/component/soulcatcher/ui_act(action, list/params)
+/datum/component/carrier/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
 
-	var/datum/soulcatcher_room/target_room
+	var/datum/carrier_room/target_room
 	if(params["room_ref"])
-		target_room = locate(params["room_ref"]) in soulcatcher_rooms
+		target_room = locate(params["room_ref"]) in carrier_rooms
 		if(!target_room)
 			return FALSE
 
@@ -86,16 +86,16 @@
 
 	switch(action)
 		if("delete_room")
-			if(length(soulcatcher_rooms) <= 1)
+			if(length(carrier_rooms) <= 1)
 				return FALSE
 
-			soulcatcher_rooms -= target_room
-			targeted_soulcatcher_room = soulcatcher_rooms[1]
+			carrier_rooms -= target_room
+			targeted_carrier_room = carrier_rooms[1]
 			qdel(target_room)
 			return TRUE
 
 		if("change_targeted_room")
-			targeted_soulcatcher_room = target_room
+			targeted_carrier_room = target_room
 			return TRUE
 
 		if("create_room")
@@ -143,7 +143,7 @@
 			return TRUE
 
 		if("transfer_soul")
-			var/list/available_rooms = soulcatcher_rooms.Copy()
+			var/list/available_rooms = carrier_rooms.Copy()
 			available_rooms -= target_room
 
 			if(ishuman(usr))
@@ -153,7 +153,7 @@
 				if(!installed_nif)
 					soulcatcher_nifsoft.parent_nif = null
 				if(soulcatcher_nifsoft && parent != installed_nif)
-					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
+					var/datum/component/carrier/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
 					if(istype(nifsoft_soulcatcher))
 						available_rooms += nifsoft_soulcatcher.get_open_rooms()
 					else
@@ -163,13 +163,13 @@
 					if(parent == held_item)
 						continue
 
-					var/datum/component/soulcatcher/soulcatcher_component = held_item.GetComponent(/datum/component/soulcatcher)
+					var/datum/component/carrier/soulcatcher_component = held_item.GetComponent(/datum/component/carrier)
 					if(!soulcatcher_component)
 						continue
 
 					available_rooms += soulcatcher_component.get_open_rooms()
 
-			var/datum/soulcatcher_room/transfer_room = tgui_input_list(usr, "Choose a room to transfer to", name, available_rooms)
+			var/datum/carrier_room/transfer_room = tgui_input_list(usr, "Choose a room to transfer to", name, available_rooms)
 			if(!(transfer_room in available_rooms))
 				return FALSE
 
@@ -227,7 +227,7 @@
 			remove_self()
 			return TRUE
 
-/datum/component/soulcatcher_user/New()
+/datum/component/carrier_user/New()
 	. = ..()
 	var/mob/living/parent_mob = parent
 	if(!istype(parent_mob))
@@ -235,16 +235,16 @@
 
 	return TRUE
 
-/datum/component/soulcatcher_user/ui_interact(mob/user, datum/tgui/ui)
+/datum/component/carrier_user/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(usr, src, ui)
 	if(!ui)
 		ui = new(usr, src, "SoulcatcherUser")
 		ui.open()
 
-/datum/component/soulcatcher_user/ui_state(mob/user)
+/datum/component/carrier_user/ui_state(mob/user)
 	return GLOB.conscious_state
 
-/datum/component/soulcatcher_user/ui_data(mob/user)
+/datum/component/carrier_user/ui_data(mob/user)
 	var/list/data = list()
 
 	var/mob/living/parent_mob = parent
@@ -270,29 +270,29 @@
 		"scan_needed" = user_soul?.body_scan_needed,
 	)
 
-	var/datum/soulcatcher_room/current_soulcatcher_room = current_room.resolve()
-	if(!current_soulcatcher_room)
+	var/datum/carrier_room/current_carrier_room = current_room.resolve()
+	if(!current_carrier_room)
 		current_room = null
 		return FALSE
 
 	data["current_room"] = list(
-		"name" = html_decode(current_soulcatcher_room.name),
-		"description" = html_decode(current_soulcatcher_room.room_description),
-		"reference" = REF(current_soulcatcher_room),
-		"color" = current_soulcatcher_room.room_color,
-		"owner" = current_soulcatcher_room.outside_voice,
+		"name" = html_decode(current_carrier_room.name),
+		"description" = html_decode(current_carrier_room.room_description),
+		"reference" = REF(current_carrier_room),
+		"color" = current_carrier_room.room_color,
+		"owner" = current_carrier_room.outside_voice,
 		)
 
-	var/datum/component/soulcatcher/master_soulcatcher = current_soulcatcher_room.master_soulcatcher.resolve()
+	var/datum/component/carrier/master_soulcatcher = current_carrier_room.master_soulcatcher.resolve()
 	if(!master_soulcatcher)
-		current_soulcatcher_room.master_soulcatcher = null
+		current_carrier_room.master_soulcatcher = null
 	data["communicate_as_parent"] = master_soulcatcher?.communicate_as_parent
 
-	for(var/mob/living/soul in current_soulcatcher_room.current_souls)
+	for(var/mob/living/soul in current_carrier_room.current_souls)
 		if(soul == user_soul)
 			continue
 
-		var/datum/component/soulcatcher_user/soul_component = soul.GetComponent(/datum/component/soulcatcher_user)
+		var/datum/component/carrier_user/soul_component = soul.GetComponent(/datum/component/carrier_user)
 		if(!soul_component)
 			continue
 
@@ -306,7 +306,7 @@
 
 	return data
 
-/datum/component/soulcatcher_user/ui_act(action, list/params)
+/datum/component/carrier_user/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return

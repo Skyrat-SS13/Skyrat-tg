@@ -1,5 +1,5 @@
 /// The component given to soulcatcher inhabitants
-/datum/component/soulcatcher_user
+/datum/component/carrier_user
 	/// What is the name of our soul?
 	var/name
 	/// What does our soul look like?
@@ -40,7 +40,7 @@
 	/// The coresponding action used to leave the soulcatcher
 	var/datum/action/innate/leave_soulcatcher/leave_action
 
-/datum/component/soulcatcher_user/New()
+/datum/component/carrier_user/New()
 	. = ..()
 	var/mob/living/parent_mob = parent
 	if(!istype(parent_mob))
@@ -66,8 +66,8 @@
 	refresh_soul_appearance()
 
 	return TRUE
-	
-/datum/component/soulcatcher_user/RegisterWithParent()
+
+/datum/component/carrier_user/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE, PROC_REF(toggle_sense))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME, PROC_REF(change_name))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME, PROC_REF(reset_name))
@@ -76,7 +76,7 @@
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE, PROC_REF(refresh_soul_appearance))
 
 /// Configures the settings of the soulcatcher user to be in accordance with the parent mob
-/datum/component/soulcatcher_user/proc/refresh_soul_appearance(datum/source)
+/datum/component/carrier_user/proc/refresh_soul_appearance(datum/source)
 	SIGNAL_HANDLER
 
 	var/mob/living/parent_mob = parent
@@ -92,7 +92,7 @@
 	desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 /// What do we want to do when a mob tries to say something into the soulcatcher?
-/datum/component/soulcatcher_user/proc/say(message_to_say)
+/datum/component/carrier_user/proc/say(message_to_say)
 	var/mob/living/parent_mob = parent
 	if(!istype(parent_mob))
 		return FALSE
@@ -104,7 +104,7 @@
 	if(!message_to_say)
 		return FALSE
 
-	var/datum/soulcatcher_room/room = current_room.resolve()
+	var/datum/carrier_room/room = current_room.resolve()
 	if(!room) // uhoh.
 		current_room = null
 		return FALSE
@@ -113,7 +113,7 @@
 	return TRUE
 
 /// What do we want to do when a mob tries to do a `me` emote?
-/datum/component/soulcatcher_user/proc/me_verb(message_to_say)
+/datum/component/carrier_user/proc/me_verb(message_to_say)
 	var/mob/living/parent_mob = parent
 	if(!istype(parent_mob))
 		return FALSE
@@ -125,7 +125,7 @@
 	if(!message_to_say)
 		return FALSE
 
-	var/datum/soulcatcher_room/room = current_room.resolve()
+	var/datum/carrier_room/room = current_room.resolve()
 	if(!room) // uhoh.
 		current_room = null
 		return FALSE
@@ -134,7 +134,7 @@
 	return TRUE
 
 /// Modifies the sense of the parent mob based on the variable `sense_to_toggle`. Returns the state of the modified variable
-/datum/component/soulcatcher_user/proc/toggle_sense(datum/source, sense_to_toggle)
+/datum/component/carrier_user/proc/toggle_sense(datum/source, sense_to_toggle)
 	SIGNAL_HANDLER
 	var/status = FALSE
 	var/mob/living/parent_mob = parent
@@ -191,7 +191,7 @@
 	return status
 
 /// Changes the name show on the component based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
-/datum/component/soulcatcher_user/proc/change_name(datum/source, new_name)
+/datum/component/carrier_user/proc/change_name(datum/source, new_name)
 	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
 	if(!new_name || !istype(parent_mob) || !able_to_rename)
@@ -205,7 +205,7 @@
 	return TRUE
 
 /// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
-/datum/component/soulcatcher_user/proc/reset_name(datum/source)
+/datum/component/carrier_user/proc/reset_name(datum/source)
 	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
 	if(!parent_mob?.mind?.name || !change_name(new_name = parent_mob.mind.name))
@@ -214,7 +214,7 @@
 	return TRUE
 
 /// Is the soulcatcher soul able to communicate? Returns `TRUE` if they can, otherwise returns `FALSE`
-/datum/component/soulcatcher_user/proc/can_communicate(emote = FALSE)
+/datum/component/carrier_user/proc/can_communicate(emote = FALSE)
 	if(communicating_externally)
 		if((emote && !able_to_emote_as_container) || (!emote && !able_to_speak_as_container))
 			return FALSE
@@ -225,7 +225,7 @@
 	return TRUE
 
 //// Is the soulcatcher soul able to witness a message? `Emote` determines if the message is an emote or not.
-/datum/component/soulcatcher_user/proc/check_internal_senses(datum/source, emote = FALSE)
+/datum/component/carrier_user/proc/check_internal_senses(datum/source, emote = FALSE)
 	SIGNAL_HANDLER
 	if(emote)
 		return internal_sight
@@ -233,14 +233,14 @@
 	return internal_hearing
 
 /// Sets the current room of the soulcatcher component based off of `room_to_set`
-/datum/component/soulcatcher_user/proc/set_room(datum/source, datum/soulcatcher_room/room_to_set)
+/datum/component/carrier_user/proc/set_room(datum/source, datum/carrier_room/room_to_set)
 	SIGNAL_HANDLER
 	if(!istype(room_to_set))
 		return FALSE
 
 	current_room = room_to_set
 
-/datum/component/soulcatcher_user/Destroy(force, silent)
+/datum/component/carrier_user/Destroy(force, silent)
 	if(!outside_hearing)
 		toggle_sense("external_hearing")
 
@@ -254,8 +254,8 @@
 		QDEL_NULL(leave_action)
 
 	return ..()
-	
-/datum/component/soulcatcher_user/UnregisterFromParent()
+
+/datum/component/carrier_user/UnregisterFromParent()
 	UnregisterSignal(parent, list(
 		COMSIG_SOULCATCHER_TOGGLE_SENSE,
 		COMSIG_SOULCATCHER_SOUL_RENAME,
@@ -276,7 +276,7 @@
 
 /datum/action/innate/soulcatcher_user/Activate()
 	. = ..()
-	var/datum/component/soulcatcher_user/user_component = soulcatcher_user_component.resolve()
+	var/datum/component/carrier_user/user_component = soulcatcher_user_component.resolve()
 	if(!user_component)
 		soulcatcher_user_component = null
 		return FALSE

@@ -36,7 +36,7 @@
 	if(!message)
 		return FALSE
 
-	var/datum/component/soulcatcher_user/soul_component = GetComponent(/datum/component/soulcatcher_user)
+	var/datum/component/carrier_user/soul_component = GetComponent(/datum/component/carrier_user)
 	if(!soul_component)
 		return FALSE
 
@@ -47,7 +47,7 @@
 	if(!message)
 		return FALSE
 
-	var/datum/component/soulcatcher_user/soul_component = GetComponent(/datum/component/soulcatcher_user)
+	var/datum/component/carrier_user/soul_component = GetComponent(/datum/component/carrier_user)
 	if(!soul_component)
 		return FALSE
 
@@ -90,9 +90,9 @@
 
 /mob/living/soulcatcher_soul/Destroy()
 	log_message("[key_name(src)] has exited a soulcatcher.", LOG_GAME)
-	var/datum/component/soulcatcher_user/soul_component = GetComponent(/datum/component/soulcatcher_user)
+	var/datum/component/carrier_user/soul_component = GetComponent(/datum/component/carrier_user)
 	if(soul_component && soul_component.current_room)
-		var/datum/soulcatcher_room/room = soul_component.current_room.resolve()
+		var/datum/carrier_room/room = soul_component.current_room.resolve()
 		if(room)
 			room.current_souls -= src
 

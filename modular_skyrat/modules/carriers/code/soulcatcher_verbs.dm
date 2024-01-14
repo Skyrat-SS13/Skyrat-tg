@@ -3,15 +3,15 @@
 	set name = "Soul Say"
 	set category = "IC"
 	set desc = "Send a Say message to your currently targeted soulcatcher room."
-	var/datum/component/soulcatcher/target_soulcatcher = find_soulcatcher()
-	if(!target_soulcatcher || !target_soulcatcher.targeted_soulcatcher_room)
+	var/datum/component/carrier/target_soulcatcher = find_soulcatcher()
+	if(!target_soulcatcher || !target_soulcatcher.targeted_carrier_room)
 		return FALSE
 
 	var/message_to_send = tgui_input_text(usr, "Input the message you want to send", "Soulcatcher", multiline = TRUE)
 	if(!message_to_send)
 		return FALSE
 
-	target_soulcatcher.targeted_soulcatcher_room.send_message(message_to_send, target_soulcatcher.targeted_soulcatcher_room.outside_voice)
+	target_soulcatcher.targeted_carrier_room.send_message(message_to_send, target_soulcatcher.targeted_carrier_room.outside_voice)
 	return TRUE
 
 /// Prompts the parent mob to send a emote to the soulcatcher. Returns False if no soulcatcher or emote could be found.
@@ -19,24 +19,24 @@
 	set name = "Soul Me"
 	set category = "IC"
 	set desc = "Send a emote to your currently targeted soulcatcher room."
-	var/datum/component/soulcatcher/target_soulcatcher = find_soulcatcher()
-	if(!target_soulcatcher || !target_soulcatcher.targeted_soulcatcher_room)
+	var/datum/component/carrier/target_soulcatcher = find_soulcatcher()
+	if(!target_soulcatcher || !target_soulcatcher.targeted_carrier_room)
 		return FALSE
 
 	var/message_to_send = tgui_input_text(usr, "Input the emote you want to send", "Soulcatcher", multiline = TRUE)
 	if(!message_to_send)
 		return FALSE
 
-	target_soulcatcher.targeted_soulcatcher_room.send_message(message_to_send, target_soulcatcher.targeted_soulcatcher_room.outside_voice, TRUE)
+	target_soulcatcher.targeted_carrier_room.send_message(message_to_send, target_soulcatcher.targeted_carrier_room.outside_voice, TRUE)
 	return TRUE
 
 /// Attempts to find and return the soulcatcher the parent mob is currently using. If none can be found, returns `FALSE`
 /mob/living/proc/find_soulcatcher()
-	var/obj/item/soulcatcher_holder/soul_holder = locate(/obj/item/soulcatcher_holder) in contents
-	if(!soul_holder)
+	var/obj/item/carrier_holder/holder = locate(/obj/item/carrier_holder) in contents
+	if(!holder)
 		return FALSE
 
-	var/datum/component/soulcatcher/target_soulcatcher = soul_holder.GetComponent(/datum/component/soulcatcher)
+	var/datum/component/carrier/target_soulcatcher = holder.GetComponent(/datum/component/carrier)
 	if(!target_soulcatcher)
 		return FALSE
 
@@ -51,7 +51,7 @@
 	if(!souclatcher_nifsoft)
 		return FALSE
 
-	var/datum/component/soulcatcher/target_soulcatcher = souclatcher_nifsoft.linked_soulcatcher.resolve()
+	var/datum/component/carrier/target_soulcatcher = souclatcher_nifsoft.linked_soulcatcher.resolve()
 	if(!target_soulcatcher)
 		return FALSE
 
