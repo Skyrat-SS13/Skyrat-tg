@@ -23,10 +23,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	/// What is the max number of people we can keep in this soulcatcher? If this is set to `FALSE` we don't have a limit
 	var/max_mobs = FALSE
-	/// Are are the souls inside able to emote/speak as the parent?
-	var/communicate_as_parent = FALSE
-	/// Is the soulcatcher removable from the parent object?
-	var/removable = FALSE
 	/// What is the path of user component do we want to give to our mob? This needs to be `/datum/component/carrier_user` or a subtype.
 	var/component_to_give = /datum/component/carrier_user
 	/// What 16x16 chat icon do we want our soulcatcher to display in chat messages?
@@ -37,6 +33,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
 	var/require_approval = TRUE
+	/// Are are the souls inside able to emote/speak as the parent?
+	var/communicate_as_parent = FALSE
+	/// Is the soulcatcher removable from the parent object?
+	var/removable = FALSE
 
 /datum/component/carrier/New()
 	. = ..()
