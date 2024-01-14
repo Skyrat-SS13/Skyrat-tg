@@ -149,7 +149,10 @@
 			if(ishuman(usr))
 				var/mob/living/carbon/human/human_user = usr
 				var/datum/nifsoft/soulcatcher/soulcatcher_nifsoft = human_user.find_nifsoft(/datum/nifsoft/soulcatcher)
-				if(soulcatcher_nifsoft && (parent != soulcatcher_nifsoft.parent_nif.resolve()))
+				var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = soulcatcher_nifsoft.parent_nif.resolve()))
+				if(!installed_nif)
+					parent_nif = null
+				if(soulcatcher_nifsoft && parent != installed_nif)
 					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
 					if(istype(nifsoft_soulcatcher))
 						available_rooms += nifsoft_soulcatcher.get_open_rooms()
