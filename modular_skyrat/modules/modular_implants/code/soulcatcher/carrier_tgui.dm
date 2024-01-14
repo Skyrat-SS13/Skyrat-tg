@@ -11,13 +11,16 @@
 /datum/component/carrier/ui_data(mob/user)
 	var/list/data = list()
 
-	data["ghost_joinable"] = ghost_joinable
+	var/datum/component/carrier/soulcatcher/soulcatcher_carrier = src
+	if(istype(soulcatcher_carrier))
+		data["removable"] = soulcatcher_carrier.removable
+		data["ghost_joinable"] = soulcatcher_carrier.ghost_joinable
+
 	data["require_approval"] = require_approval
 	data["theme"] = ui_theme
 	data["communicate_as_parent"] = communicate_as_parent
 	data["current_mob_count"] = length(get_current_mobs())
 	data["max_mobs"] = max_mobs
-	data["removable"] = removable
 
 	data["current_rooms"] = list()
 	for(var/datum/carrier_room/room in carrier_rooms)
@@ -72,6 +75,7 @@
 	if(.)
 		return
 
+	var/datum/component/carrier/soulcatcher/soulcatcher_carrier = src
 	var/datum/carrier_room/target_room
 	if(params["room_ref"])
 		target_room = locate(params["room_ref"]) in carrier_rooms
@@ -119,11 +123,17 @@
 			return TRUE
 
 		if("toggle_joinable_room")
+			if(!istype(soulcatcher_carrier))
+				return FALSE
+
 			target_room.joinable = !target_room.joinable
 			return TRUE
 
 		if("toggle_joinable")
-			ghost_joinable = !ghost_joinable
+			if(!istype(soulcatcher_carrier))
+				return FALSE
+
+			soulcatcher_carrier.ghost_joinable = !soulcatcher_carrier.ghost_joinable
 			return TRUE
 
 		if("toggle_approval")
@@ -142,7 +152,7 @@
 			target_room.remove_soul(target_soul)
 			return TRUE
 
-		if("transfer_soul")
+		if("transfer_mob")
 			var/list/available_rooms = carrier_rooms.Copy()
 			available_rooms -= target_room
 
@@ -153,7 +163,7 @@
 				if(!installed_nif)
 					soulcatcher_nifsoft.parent_nif = null
 				if(soulcatcher_nifsoft && parent != installed_nif)
-					var/datum/component/carrier/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
+					var/datum/component/carrier/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
 					if(istype(nifsoft_soulcatcher))
 						available_rooms += nifsoft_soulcatcher.get_open_rooms()
 					else
@@ -163,17 +173,17 @@
 					if(parent == held_item)
 						continue
 
-					var/datum/component/carrier/soulcatcher_component = held_item.GetComponent(/datum/component/carrier)
-					if(!soulcatcher_component)
+					var/datum/component/carrier/carrier_component = held_item.GetComponent(/datum/component/carrier)
+					if(!carrier_component)
 						continue
 
-					available_rooms += soulcatcher_component.get_open_rooms()
+					available_rooms += carrier_component.get_open_rooms()
 
 			var/datum/carrier_room/transfer_room = tgui_input_list(usr, "Choose a room to transfer to", name, available_rooms)
 			if(!(transfer_room in available_rooms))
 				return FALSE
 
-			transfer_soul(target_soul, transfer_room)
+			transfer_mob(target_soul, transfer_room)
 			return TRUE
 
 		if("change_room_color")
@@ -221,10 +231,13 @@
 
 
 		if("delete_self")
+			if(!istype(soulcatcher_carrier))
+				return FALSE
+
 			if(tgui_alert(usr, "Are you sure you want to detach the soulcatcher?", parent, list("Yes", "No")) != "Yes")
 				return FALSE
 
-			remove_self()
+			soulcatcher_carrier.remove_self()
 			return TRUE
 
 /datum/component/carrier_user/New()
@@ -283,10 +296,13 @@
 		"owner" = current_carrier_room.outside_voice,
 		)
 
-	var/datum/component/carrier/master_soulcatcher = current_carrier_room.master_soulcatcher.resolve()
-	if(!master_soulcatcher)
-		current_carrier_room.master_soulcatcher = null
-	data["communicate_as_parent"] = master_soulcatcher?.communicate_as_parent
+	var/datum/component/carrier/master_carrier = current_carrier_room.master_carrier.resolve()
+	if(!master_carrier)
+		current_carrier_room.master_carrier = null
+
+	var/datum/component/carrier/soulcatcher/master_soulcatcher
+	if(istype(master_soulcatcher))	
+		data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
 
 	for(var/mob/living/soul in current_carrier_room.current_souls)
 		if(soul == user_soul)

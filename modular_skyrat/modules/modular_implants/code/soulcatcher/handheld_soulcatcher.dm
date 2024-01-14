@@ -12,7 +12,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	obj_flags = UNIQUE_RENAME
 	/// What soulcatcher datum is associated with this item?
-	var/datum/component/carrier/linked_soulcatcher
+	var/datum/component/carrier/soulcatcher/linked_soulcatcher
 	/// The cooldown for the RSD on scanning a body if the ghost refuses. This is here to prevent spamming.
 	COOLDOWN_DECLARE(rsd_scan_cooldown)
 

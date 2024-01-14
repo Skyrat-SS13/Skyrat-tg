@@ -103,14 +103,14 @@
 /datum/emote/living
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/living/soulcatcher_soul)
 
-/datum/action/innate/leave_soulcatcher
+/datum/action/innate/leave_carrier
 	name = "Leave Soulcatcher"
 	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
 	button_icon_state = "soulcatcher_exit"
 
-/datum/action/innate/leave_soulcatcher/Activate()
+/datum/action/innate/leave_carrier/Activate()
 	. = ..()
 	var/mob/living/soulcatcher_soul/parent_soul = owner
 	if(!parent_soul)

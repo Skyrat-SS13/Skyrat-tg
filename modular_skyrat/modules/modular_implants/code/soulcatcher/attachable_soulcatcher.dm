@@ -1,12 +1,12 @@
-/datum/component/carrier/small_device
+/datum/component/carrier/soulcatcher/small_device
 	max_mobs = 1
 
-/datum/component/carrier/attachable_soulcatcher
+/datum/component/carrier/soulcatcher/attachable
 	max_mobs = 1
 	communicate_as_parent = TRUE
 	removable = TRUE
 
-/datum/component/carrier/attachable_soulcatcher/New()
+/datum/component/carrier/soulcatcher/attachable/New()
 	. = ..()
 	var/obj/item/parent_item = parent
 	if(!istype(parent_item))
@@ -22,21 +22,21 @@
 	RegisterSignal(parent, COMSIG_PREQDELETED, PROC_REF(remove_self))
 
 /// Adds text to the examine text of the parent item, explaining that the item can be used to enable the use of NIFSoft HUDs
-/datum/component/carrier/attachable_soulcatcher/proc/on_examine(datum/source, mob/user, list/examine_text)
+/datum/component/carrier/soulcatcher/attachable/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 	examine_text += span_cyan("[source] has a soulcatcher attached to it, <b>Ctrl+Shift+Click</b> to use it.")
 
-/datum/component/carrier/attachable_soulcatcher/proc/bring_up_ui(datum/source, mob/user)
+/datum/component/carrier/soulcatcher/attachable/proc/bring_up_ui(datum/source, mob/user)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
-/datum/component/carrier/attachable_soulcatcher/Destroy(force)
+/datum/component/carrier/soulcatcher/attachable/Destroy(force)
 	UnregisterSignal(parent, COMSIG_ATOM_EXAMINE)
 	UnregisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT)
 	UnregisterSignal(parent, COMSIG_PREQDELETED)
 	return ..()
 
-/datum/component/carrier/attachable_soulcatcher/remove_self()
+/datum/component/carrier/soulcatcher/attachable/remove_self()
 	var/obj/item/parent_item = parent
 	var/turf/drop_turf = get_turf(parent_item)
 	var/obj/item/attachable_soulcatcher/dropped_item = new (drop_turf)
@@ -47,7 +47,7 @@
 
 	if(current_souls) // If we have souls inside of here, they should be transferred to the new object
 		for(var/mob/living/soul as anything in current_souls)
-			transfer_soul(soul, target_room)
+			transfer_mob(soul, target_room)
 
 	return ..()
 
@@ -70,11 +70,11 @@
 		/obj/item/disk/nuclear, // Woah there
 	)
 	/// What soulcathcer component is currnetly linked to this object?
-	var/datum/component/carrier/small_device/linked_soulcatcher
+	var/datum/component/carrier/soulcatcher/small_device/linked_soulcatcher
 
 /obj/item/attachable_soulcatcher/Initialize(mapload)
 	. = ..()
-	linked_soulcatcher = AddComponent(/datum/component/carrier/small_device)
+	linked_soulcatcher = AddComponent(/datum/component/carrier/soulcatcher/small_device)
 	linked_soulcatcher.name = name
 
 /obj/item/attachable_soulcatcher/attack_self(mob/user, modifiers)
@@ -93,14 +93,14 @@
 		balloon_alert(user, "incompatible!")
 		return FALSE
 
-	var/datum/component/carrier/new_soulcatcher = target_item.AddComponent(/datum/component/carrier/attachable_soulcatcher)
+	var/datum/component/carrier/new_soulcatcher = target_item.AddComponent(/datum/component/carrier/soulcatcher/attachable)
 	playsound(target_item.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
 	var/datum/carrier_room/target_room = new_soulcatcher.carrier_rooms[1]
 	var/list/current_souls = linked_soulcatcher.get_current_mobs()
 	if(current_souls)
 		for(var/mob/living/soul as anything in current_souls)
-			linked_soulcatcher.transfer_soul(soul, target_room)
+			linked_soulcatcher.transfer_mob(soul, target_room)
 
 	if(destroy_on_use)
 		qdel(src)

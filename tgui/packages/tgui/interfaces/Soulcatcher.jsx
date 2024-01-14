@@ -194,7 +194,7 @@ export const Soulcatcher = (props) => {
                               icon="paper-plane"
                               tooltip="Transfer a soul to another room"
                               onClick={() =>
-                                act('transfer_soul', {
+                                act('transfer_mob', {
                                   room_ref: room.reference,
                                   target_soul: soul.reference,
                                 })

@@ -68,7 +68,7 @@
 	return TRUE
 
 /datum/component/carrier_user/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_carrier_TOGGLE_SENSE, PROC_REF(toggle_sense))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_TOGGLE_SENSE, PROC_REF(toggle_sense))
 	RegisterSignal(parent, COMSIG_CARRIER_MOB_RENAME, PROC_REF(change_name))
 	RegisterSignal(parent, COMSIG_CARRIER_MOB_RESET_NAME, PROC_REF(reset_name))
 	RegisterSignal(parent, COMSIG_CARRIER_MOB_CHANGE_ROOM, PROC_REF(set_room))
@@ -145,18 +145,18 @@
 		if("external_hearing")
 			outside_hearing = !outside_hearing
 			if(outside_hearing)
-				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_carrier)
+				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_CARRIER)
 			else
-				ADD_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_carrier)
+				ADD_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_CARRIER)
 
 			status = outside_hearing
 
 		if("external_sight")
 			outside_sight = !outside_sight
 			if(outside_sight)
-				parent_mob.cure_blind(TRAIT_carrier)
+				parent_mob.cure_blind(TRAIT_CARRIER)
 			else
-				parent_mob.become_blind(TRAIT_carrier)
+				parent_mob.become_blind(TRAIT_CARRIER)
 
 			status = outside_sight
 
@@ -197,8 +197,8 @@
 	if(!new_name || !istype(parent_mob) || !able_to_rename)
 		return FALSE
 
-	var/mob/living/carrier_mob/parent_mob = parent
-	if(istype(parent_mob) && (parent_mob.round_participant && parent_mob.body_scan_needed))
+	var/mob/living/soulcatcher_soul/soul_mob = parent
+	if(istype(soul_mob) && (soul_mob.round_participant && soul_mob.body_scan_needed))
 		return FALSE
 
 	name = new_name
@@ -257,7 +257,7 @@
 
 /datum/component/carrier_user/UnregisterFromParent()
 	UnregisterSignal(parent, list(
-		COMSIG_carrier_TOGGLE_SENSE,
+		COMSIG_CARRIER_MOB_TOGGLE_SENSE,
 		COMSIG_CARRIER_MOB_RENAME,
 		COMSIG_CARRIER_MOB_RESET_NAME,
 		COMSIG_CARRIER_MOB_CHANGE_ROOM,

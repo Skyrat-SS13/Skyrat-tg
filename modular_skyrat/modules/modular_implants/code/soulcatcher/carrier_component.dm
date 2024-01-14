@@ -5,38 +5,32 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 #define SOULCATCHER_WARNING_MESSAGE "You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."
 
 /**
- * Soulcatcher Component
+ * Carrier Component
  *
  * This component functions as a bridge between the `carrier_room` attached to itself and the parented datum.
- * It handles the creation of new soulcatcher rooms, TGUI, and relaying messages to the parent datum.
- * If the component is deleted, any soulcatcher rooms inside of `carrier_rooms` will be deleted.
+ * It handles the creation of new carrier rooms, TGUI, and relaying messages to the parent datum.
+ * If the component is deleted, any carrier rooms inside of `carrier_rooms` will be deleted.
  */
 /datum/component/carrier
-	/// What is the name of the soulcatcher?
-	var/name = "soulcatcher"
-	/// What rooms are linked to this soulcatcher
+	/// What is the name of the carrier?
+	var/name = "carrier"
+	/// What rooms are linked to this carrier
 	var/list/carrier_rooms = list()
 	/// What carrier room are verbs sending messages to?
 	var/datum/carrier_room/targeted_carrier_room
 	/// What theme are we using for our carrier UI?
 	var/ui_theme = "default"
+	/// Do we want to ask the user permission before the mob enters?
+	var/require_approval = TRUE
+	/// Are are the mobs inside able to emote/speak as the parent?
+	var/communicate_as_parent = FALSE
 
-	/// What is the max number of people we can keep in this soulcatcher? If this is set to `FALSE` we don't have a limit
+	/// What is the max number of people we can keep in this carrier? If this is set to `FALSE` we don't have a limit
 	var/max_mobs = FALSE
 	/// What is the path of user component do we want to give to our mob? This needs to be `/datum/component/carrier_user` or a subtype.
 	var/component_to_give = /datum/component/carrier_user
-	/// What 16x16 chat icon do we want our soulcatcher to display in chat messages?
+	/// What 16x16 chat icon do we want our carrier to display in chat messages?
 	var/chat_icon = "nif-soulcatcher"
-
-/datum/component/carrier/soulcatcher
-	/// Are ghosts currently able to join this soulcatcher?
-	var/ghost_joinable = TRUE
-	/// Do we want to ask the user permission before the ghost joins?
-	var/require_approval = TRUE
-	/// Are are the souls inside able to emote/speak as the parent?
-	var/communicate_as_parent = FALSE
-	/// Is the soulcatcher removable from the parent object?
-	var/removable = FALSE
 
 /datum/component/carrier/New()
 	. = ..()
@@ -45,33 +39,30 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	create_room()
 	targeted_carrier_room = carrier_rooms[1]
-	GLOB.soulcatchers += src
 
 	var/obj/item/carrier_holder/holder = parent
 	if(istype(holder) && ismob(holder.loc))
 		var/mob/living/soulcatcher_owner = holder.loc
 		add_verb(soulcatcher_owner, list(
-			/mob/living/proc/soulcatcher_say,
-			/mob/living/proc/soulcatcher_emote,
+			/mob/living/proc/carrier_say,
+			/mob/living/proc/carrier_emote,
 		))
 
 /datum/component/carrier/Destroy(force, ...)
-	GLOB.soulcatchers -= src
-
 	targeted_carrier_room = null
 	for(var/datum/carrier_room as anything in carrier_rooms)
 		carrier_rooms -= carrier_room
 		qdel(carrier_room)
 
-	var/mob/living/soulcatcher_owner = parent
+	var/mob/living/carrier_owner = parent
 	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
 	if(istype(parent_nif))
-		soulcatcher_owner = parent_nif.linked_mob
+		carrier_owner = parent_nif.linked_mob
 
-	if(istype(soulcatcher_owner))
-		remove_verb(soulcatcher_owner, list(
-			/mob/living/proc/soulcatcher_say,
-			/mob/living/proc/soulcatcher_emote,
+	if(istype(carrier_owner))
+		remove_verb(carrier_owner, list(
+			/mob/living/proc/carrier_say,
+			/mob/living/proc/carrier_emote,
 		))
 
 	return ..()
@@ -91,7 +82,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	created_room.master_carrier = WEAKREF(src)
 
-/// Tries to find out who is currently using the soulcatcher, returns the holder. If no holder can be found, returns FALSE
+/// Tries to find out who is currently using the carrier, returns the holder. If no holder can be found, returns FALSE
 /datum/component/carrier/proc/get_current_holder()
 	var/mob/living/holder
 
@@ -106,7 +97,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return holder
 
-/// Recieves a message from a soulcatcher room.
+/// Recieves a message from a carrier room.
 /datum/component/carrier/proc/recieve_message(message_to_recieve)
 	if(!message_to_recieve)
 		return FALSE
@@ -118,7 +109,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(carrier_owner, message_to_recieve)
 	return TRUE
 
-/// Attempts to ping the current user of the soulcatcher, asking them if `joiner_name` is allowed in. If they are, the proc returns `TRUE`, otherwise returns FALSE
+/// Attempts to ping the current user of the carrier, asking them if `joiner_name` is allowed in. If they are, the proc returns `TRUE`, otherwise returns FALSE
 /datum/component/carrier/proc/get_approval(joiner_name)
 	if(!require_approval)
 		return TRUE
@@ -168,25 +159,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Attempts to remove the soulcatcher from the attached object
-/datum/component/carrier/soulcatcher/proc/remove_self()
-	if(!removable)
-		return FALSE
-
-	qdel(src)
-
-/// Returns a list of all of the rooms that a soul can join/transfer into. `ghost_join` checks if the room is accessible to ghosts.
-/datum/component/carrier/soulcatcher/proc/get_open_rooms(ghost_join = FALSE)
+/datum/component/carrier/proc/get_open_rooms()
 	var/list/datum/carrier_room/room_list = list()
 	for(var/datum/carrier_room/room as anything in carrier_rooms)
-		if((ghost_join && !room.joinable) || !check_for_vacancy())
+		if(!check_for_vacancy())
 			continue
 
 		room_list += room
 
 	return room_list
 
-/// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
+/// Transfers a soul from a carrier room to another carrier room. Returns `FALSE` if the target room or target soul cannot be found.
 /datum/component/carrier/proc/transfer_mob(mob/living/target_soul, datum/carrier_room/target_room)
 	if(!(target_soul in get_current_mobs()) || !target_room)
 		return FALSE
@@ -213,7 +196,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Adds `mob_to_add` into the parent soulcatcher, giving them the soulcatcher component and moving their mob into the room. Returns the component added, if successful
+/// Adds `mob_to_add` into the parent carrier, giving them the carrier component and moving their mob into the room. Returns the component added, if successful
 /datum/component/carrier/proc/add_mob(mob/living/mob_to_add, datum/carrier_room/target_room)
 	if(!istype(mob_to_add))
 		return FALSE
@@ -229,7 +212,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return soul_component
 
 /**
- * Soulcatcher Room
+ * carrier Room
  *
  * This datum is where souls are sent to when joining soulcatchers.
  * It handles sending messages to souls from the outside along with adding new souls, transfering, and removing souls.
@@ -242,7 +225,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
 	/// What souls are currently inside of the room?
 	var/list/current_souls = list()
-	/// Weakref for the master soulcatcher datum
+	/// Weakref for the master carrier datum
 	var/datum/weakref/master_carrier
 	/// What is the name of the person sending the messages?
 	var/outside_voice = "Host"
@@ -312,7 +295,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Removes a soul from a soulcatcher room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
+/// Removes a soul from a carrier room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
 /datum/carrier_room/proc/remove_soul(mob/living/mob_to_remove)
 	if(!mob_to_remove || !(mob_to_remove in current_souls))
 		return FALSE
@@ -343,7 +326,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /**
- * Sends a message or emote to all of the souls currently located inside of the soulcatcher room. Returns `FALSE` if a message cannot be sent, otherwise returns `TRUE`.
+ * Sends a message or emote to all of the souls currently located inside of the carrier room. Returns `FALSE` if a message cannot be sent, otherwise returns `TRUE`.
  *
  * Arguments
  * * message_to_send - The message we want to send to the occupants of the room
@@ -384,10 +367,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		if(emote)
 			parent_object.manual_emote(html_decode(message_to_send))
-			log_emote("[sender_mob] in [name] soulcatcher room emoted: [message_to_send], as an external object")
+			log_emote("[sender_mob] in [name] carrier room emoted: [message_to_send], as an external object")
 		else
 			parent_object.say(html_decode(message_to_send))
-			log_say("[sender_mob] in [name] soulcatcher room said: [message_to_send], as an external object")
+			log_say("[sender_mob] in [name] carrier room said: [message_to_send], as an external object")
 
 		parent_object.name = temp_name
 		return TRUE
@@ -398,11 +381,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!emote)
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
-		log_say("[sender_mob] in [name] soulcatcher room said: [message_to_send]")
+		log_say("[sender_mob] in [name] carrier room said: [message_to_send]")
 	else
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> [message_to_send]</font>"
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
-		log_emote("[sender_mob] in [name] soulcatcher room emoted: [message_to_send]")
+		log_emote("[sender_mob] in [name] carrier room emoted: [message_to_send]")
 
 	for(var/mob/living/soul as anything in current_souls)
 		var/message_eligible = SEND_SIGNAL(soul, COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES, emote)
@@ -414,7 +397,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	relay_message_to_soulcatcher(owner_message)
 	return TRUE
 
-/// Relays a message sent from the send_message proc to the parent soulcatcher datum
+/// Relays a message sent from the send_message proc to the parent carrier datum
 /datum/carrier_room/proc/relay_message_to_soulcatcher(message)
 	if(!message)
 		return FALSE
@@ -451,7 +434,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/joinable_soulcatchers = list()
 	var/list/rooms_to_join = list()
 
-	for(var/datum/component/carrier/soulcatcher in GLOB.soulcatchers)
+	for(var/datum/component/carrier/soulcatcher/soulcatcher in GLOB.soulcatchers)
 		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent) || !soulcatcher.check_for_vacancy())
 			continue
 
@@ -470,7 +453,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		to_chat(src, span_warning("No soulcatchers are joinable."))
 		return FALSE
 
-	var/datum/component/carrier/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
+	var/datum/component/carrier/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 

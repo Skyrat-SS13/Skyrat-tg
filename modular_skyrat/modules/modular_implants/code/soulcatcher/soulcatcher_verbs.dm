@@ -1,5 +1,5 @@
 /// Prompts the parent mob to send a say message to the soulcatcher. Returns False if no soulcatcher or message could be found.
-/mob/living/proc/soulcatcher_say()
+/mob/living/proc/carrier_say()
 	set name = "Soul Say"
 	set category = "IC"
 	set desc = "Send a Say message to your currently targeted soulcatcher room."
@@ -15,7 +15,7 @@
 	return TRUE
 
 /// Prompts the parent mob to send a emote to the soulcatcher. Returns False if no soulcatcher or emote could be found.
-/mob/living/proc/soulcatcher_emote()
+/mob/living/proc/carrier_emote()
 	set name = "Soul Me"
 	set category = "IC"
 	set desc = "Send a emote to your currently targeted soulcatcher room."
