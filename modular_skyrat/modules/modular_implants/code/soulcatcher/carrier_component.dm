@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		soul_component?.current_room = null
 
 	var/datum/weakref/room_ref = WEAKREF(target_room)
-	SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, room_ref)
+	SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_CHANGE_ROOM, room_ref)
 	target_room.current_souls += target_soul
 
 	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
@@ -405,7 +405,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		log_emote("[sender_mob] in [name] soulcatcher room emoted: [message_to_send]")
 
 	for(var/mob/living/soul as anything in current_souls)
-		var/message_eligible = SEND_SIGNAL(soul, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, emote)
+		var/message_eligible = SEND_SIGNAL(soul, COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES, emote)
 		if(!message_eligible)
 			continue
 

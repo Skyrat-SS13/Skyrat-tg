@@ -1,32 +1,32 @@
-/// The component given to soulcatcher inhabitants
+/// The component given to carrier inhabitants
 /datum/component/carrier_user
-	/// What is the name of our soul?
+	/// What is the name of our mob?
 	var/name
-	/// What does our soul look like?
-	var/desc = "It's a soul."
-	/// What are the ooc notes for the soul?
+	/// What does our mob look like?
+	var/desc = "It's a mob."
+	/// What are the ooc notes for the mob?
 	var/ooc_notes = ""
 
-	/// What is the weakref of the soulcatcher room are we currently in?
+	/// What is the weakref of the carrier room are we currently in?
 	var/datum/weakref/current_room
 
-	/// Is the soul able to see things in the outside world?
+	/// Is the mob able to see things in the outside world?
 	var/outside_sight = TRUE
-	/// Is the soul able to hear things from the outside world?
+	/// Is the mob able to hear things from the outside world?
 	var/outside_hearing = TRUE
-	/// Is the soul able to "see" things from inside of the soulcatcher?
+	/// Is the mob able to "see" things from inside of the carrier?
 	var/internal_sight = TRUE
-	/// Is the soul able to "hear" things from inside of the soulcatcher?
+	/// Is the mob able to "hear" things from inside of the carrier?
 	var/internal_hearing = TRUE
-	/// Is the soul able to emote inside the soulcatcher room?
+	/// Is the mob able to emote inside the carrier room?
 	var/able_to_emote = TRUE
-	/// Is the soul able to speak inside the soulcatcher room?
+	/// Is the mob able to speak inside the carrier room?
 	var/able_to_speak = TRUE
-	/// Is the soul able to change their own name?
+	/// Is the mob able to change their own name?
 	var/able_to_rename = TRUE
-	/// Is the soul able to speak as the object it is inside?
+	/// Is the mob able to speak as the object it is inside?
 	var/able_to_speak_as_container = TRUE
-	/// Is the soul able to emote as the object it is inside?
+	/// Is the mob able to emote as the object it is inside?
 	var/able_to_emote_as_container = TRUE
 	/// Are emote's and Say's done through the container the mob is in?
 	var/communicating_externally = FALSE
@@ -34,11 +34,11 @@
 	/// Is the action to control the HUD given to the mob?
 	var/hud_action_given = TRUE
 	/// The coresponding action used to pull up the HUD
-	var/datum/action/innate/soulcatcher_user/soulcatcher_action
+	var/datum/action/innate/carrier_user/carrier_action
 	/// Is the action to leave given to the mob?
 	var/leave_action_given = TRUE
-	/// The coresponding action used to leave the soulcatcher
-	var/datum/action/innate/leave_soulcatcher/leave_action
+	/// The coresponding action used to leave the carrier
+	var/datum/action/innate/leave_carrier/leave_action
 
 /datum/component/carrier_user/New()
 	. = ..()
@@ -47,9 +47,9 @@
 		return COMPONENT_INCOMPATIBLE
 
 	if(hud_action_given)
-		soulcatcher_action = new
-		soulcatcher_action.Grant(parent_mob)
-		soulcatcher_action.soulcatcher_user_component = WEAKREF(src)
+		carrier_action = new
+		carrier_action.Grant(parent_mob)
+		carrier_action.carrier_user_component = WEAKREF(src)
 
 	if(leave_action_given)
 		leave_action = new
@@ -68,14 +68,14 @@
 	return TRUE
 
 /datum/component/carrier_user/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE, PROC_REF(toggle_sense))
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME, PROC_REF(change_name))
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME, PROC_REF(reset_name))
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, PROC_REF(set_room))
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, PROC_REF(check_internal_senses))
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE, PROC_REF(refresh_soul_appearance))
+	RegisterSignal(parent, COMSIG_carrier_TOGGLE_SENSE, PROC_REF(toggle_sense))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_RENAME, PROC_REF(change_name))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_RESET_NAME, PROC_REF(reset_name))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_CHANGE_ROOM, PROC_REF(set_room))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES, PROC_REF(check_internal_senses))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_REFRESH_APPEARANCE, PROC_REF(refresh_soul_appearance))
 
-/// Configures the settings of the soulcatcher user to be in accordance with the parent mob
+/// Configures the settings of the carrier user to be in accordance with the parent mob
 /datum/component/carrier_user/proc/refresh_soul_appearance(datum/source)
 	SIGNAL_HANDLER
 
@@ -91,7 +91,7 @@
 	ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
 	desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
-/// What do we want to do when a mob tries to say something into the soulcatcher?
+/// What do we want to do when a mob tries to say something into the carrier?
 /datum/component/carrier_user/proc/say(message_to_say)
 	var/mob/living/parent_mob = parent
 	if(!istype(parent_mob))
@@ -145,18 +145,18 @@
 		if("external_hearing")
 			outside_hearing = !outside_hearing
 			if(outside_hearing)
-				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_SOULCATCHER)
+				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_carrier)
 			else
-				ADD_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_SOULCATCHER)
+				ADD_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_carrier)
 
 			status = outside_hearing
 
 		if("external_sight")
 			outside_sight = !outside_sight
 			if(outside_sight)
-				parent_mob.cure_blind(TRAIT_SOULCATCHER)
+				parent_mob.cure_blind(TRAIT_carrier)
 			else
-				parent_mob.become_blind(TRAIT_SOULCATCHER)
+				parent_mob.become_blind(TRAIT_carrier)
 
 			status = outside_sight
 
@@ -197,14 +197,14 @@
 	if(!new_name || !istype(parent_mob) || !able_to_rename)
 		return FALSE
 
-	var/mob/living/soulcatcher_soul/parent_soul = parent
-	if(istype(parent_soul) && (parent_soul.round_participant && parent_soul.body_scan_needed))
+	var/mob/living/carrier_mob/parent_mob = parent
+	if(istype(parent_mob) && (parent_mob.round_participant && parent_mob.body_scan_needed))
 		return FALSE
 
 	name = new_name
 	return TRUE
 
-/// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
+/// Attempts to reset the mob's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
 /datum/component/carrier_user/proc/reset_name(datum/source)
 	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
@@ -213,7 +213,7 @@
 
 	return TRUE
 
-/// Is the soulcatcher soul able to communicate? Returns `TRUE` if they can, otherwise returns `FALSE`
+/// Is the carrier mob able to communicate? Returns `TRUE` if they can, otherwise returns `FALSE`
 /datum/component/carrier_user/proc/can_communicate(emote = FALSE)
 	if(communicating_externally)
 		if((emote && !able_to_emote_as_container) || (!emote && !able_to_speak_as_container))
@@ -224,7 +224,7 @@
 
 	return TRUE
 
-//// Is the soulcatcher soul able to witness a message? `Emote` determines if the message is an emote or not.
+//// Is the carrier mob able to witness a message? `Emote` determines if the message is an emote or not.
 /datum/component/carrier_user/proc/check_internal_senses(datum/source, emote = FALSE)
 	SIGNAL_HANDLER
 	if(emote)
@@ -232,7 +232,7 @@
 
 	return internal_hearing
 
-/// Sets the current room of the soulcatcher component based off of `room_to_set`
+/// Sets the current room of the carrier component based off of `room_to_set`
 /datum/component/carrier_user/proc/set_room(datum/source, datum/carrier_room/room_to_set)
 	SIGNAL_HANDLER
 	if(!istype(room_to_set))
@@ -247,8 +247,8 @@
 	if(!outside_sight)
 		toggle_sense("external_sight")
 
-	if(soulcatcher_action)
-		QDEL_NULL(soulcatcher_action)
+	if(carrier_action)
+		QDEL_NULL(carrier_action)
 
 	if(leave_action)
 		QDEL_NULL(leave_action)
@@ -257,28 +257,28 @@
 
 /datum/component/carrier_user/UnregisterFromParent()
 	UnregisterSignal(parent, list(
-		COMSIG_SOULCATCHER_TOGGLE_SENSE,
-		COMSIG_SOULCATCHER_SOUL_RENAME,
-		COMSIG_SOULCATCHER_SOUL_RESET_NAME,
-		COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM,
-		COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES,
-		COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE,
+		COMSIG_carrier_TOGGLE_SENSE,
+		COMSIG_CARRIER_MOB_RENAME,
+		COMSIG_CARRIER_MOB_RESET_NAME,
+		COMSIG_CARRIER_MOB_CHANGE_ROOM,
+		COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES,
+		COMSIG_CARRIER_MOB_REFRESH_APPEARANCE,
 	))
 
-/datum/action/innate/soulcatcher_user
-	name = "Soulcatcher"
+/datum/action/innate/carrier_user
+	name = "carrier"
 	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
-	button_icon_state = "soulcatcher"
-	/// What soulcatcher user component are we bringing up the menu for?
-	var/datum/weakref/soulcatcher_user_component
+	button_icon_state = "carrier"
+	/// What carrier user component are we bringing up the menu for?
+	var/datum/weakref/carrier_user_component
 
-/datum/action/innate/soulcatcher_user/Activate()
+/datum/action/innate/carrier_user/Activate()
 	. = ..()
-	var/datum/component/carrier_user/user_component = soulcatcher_user_component.resolve()
+	var/datum/component/carrier_user/user_component = carrier_user_component.resolve()
 	if(!user_component)
-		soulcatcher_user_component = null
+		carrier_user_component = null
 		return FALSE
 
 	user_component.ui_interact(owner)

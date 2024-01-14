@@ -188,7 +188,7 @@
 			if(!sense_to_change)
 				return FALSE
 
-			SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_TOGGLE_SENSE, sense_to_change)
+			SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_TOGGLE_SENSE, sense_to_change)
 			return TRUE
 
 		if("change_name")
@@ -196,13 +196,13 @@
 			if(!new_name)
 				return FALSE
 
-			return SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_RENAME, new_name)
+			return SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_RENAME, new_name)
 
 		if("reset_name")
 			if(tgui_alert(usr, "Do you wish to reset [target_soul]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
 				return FALSE
 
-			return SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_RESET_NAME)
+			return SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_RESET_NAME)
 
 		if("send_message")
 			var/message_to_send = ""

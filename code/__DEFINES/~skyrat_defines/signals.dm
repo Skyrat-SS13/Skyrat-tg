@@ -89,22 +89,22 @@
 #define COMSIG_SOULCATCHER_SCAN_BODY "soulcatcher_scan_body"
 
 /// Whenever we need to change the current room of a soulcatcher soul.
-#define COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM "soulcatcher_soul_change_room"
+#define COMSIG_CARRIER_MOB_CHANGE_ROOM "carrier_mob_change_room"
 
 /// Whenever we need to toggle the senses of a soulcatcher soul.
-#define COMSIG_SOULCATCHER_TOGGLE_SENSE "soulcatcher_soul_toggle_sense"
+#define COMSIG_CARRIER_MOB_TOGGLE_SENSE "carrier_mob_toggle_sense"
 
 /// Whenever we need to rename a soulcatcher soul.
-#define COMSIG_SOULCATCHER_SOUL_RENAME "soulcatcher_soul_rename"
+#define COMSIG_CARRIER_MOB_RENAME "carrier_mob_rename"
 
 /// Whenever we need to reset the name of a soulcatcher soul.
-#define COMSIG_SOULCATCHER_SOUL_RESET_NAME "soulcatcher_soul_reset_name"
+#define COMSIG_CARRIER_MOB_RESET_NAME "carrier_mob_reset_name"
 
 /// Whenever we need to check if our soulcatcher soul is able to internally hear/see?
-#define COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES "soulcatcher_check_internal_senses"
+#define COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES "carrier_mob_internal_senses"
 
 /// Whenever we need to refresh the internal appearance of a soulcatcher soul.area
-#define COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE "soulcatcher_soul_refresh_appearance"
+#define COMSIG_CARRIER_MOB_REFRESH_APPEARANCE "carrier_mob_refresh_appearance"
 
 /// Whenever we need the soulcatcher soul to communicate something.
-#define COMSIG_SOULCATCHER_SOUL_SAY "soulcatcher_soul_communicate"
+#define COMSIG_CARRIER_MOB_SAY "carrier_mob_communicate"
