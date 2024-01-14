@@ -7,7 +7,6 @@
 		/datum/action/cooldown/fleshmind_plant_weeds,
 		/datum/action/cooldown/fleshmind_flesh_call,
 		/datum/action/innate/fleshmind_flesh_chat,
-		/datum/action/innate/fleshmind/weapon,
 
 	)
 	var/list/granted_actions = list()
@@ -21,7 +20,6 @@
 	)
 	/// These traits will be given and removed from the host.
 	var/static/list/traits_to_give = list(
-		TRAIT_NOGUNS,
 		TRAIT_NOBREATH,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHEAT,
@@ -29,6 +27,7 @@
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_NOHUNGER,
+		TRAIT_HARD_SOLES,
 	)
 
 /datum/component/human_corruption/Initialize(datum/fleshmind_controller/incoming_controller)
@@ -40,8 +39,7 @@
 
 	var/mob/living/carbon/human/infected_human = parent
 
-	infected_human.fully_heal(TRUE)
-	infected_human.heal_and_revive(0)
+	infected_human.revive(ADMIN_HEAL_ALL, force_grab_ghost = TRUE)
 
 	to_chat(infected_human, span_hypnophrase("Your mind feels at ease, your mind feels one with the flesh."))
 	to_chat(infected_human, span_userdanger("IMPORTANT INFO, MUST READ: [CONTROLLED_MOB_POLICY]"))

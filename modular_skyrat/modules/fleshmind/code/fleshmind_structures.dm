@@ -137,7 +137,7 @@
 		return
 	do_sparks(4, FALSE, src)
 	balloon_alert_to_viewers("grinds to a hault")
-	Shake(10, 0, duration)
+	Shake(3, 0, duration)
 	disabled = TRUE
 	addtimer(CALLBACK(src, PROC_REF(enable)), duration)
 	update_appearance()

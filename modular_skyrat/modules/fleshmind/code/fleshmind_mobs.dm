@@ -226,7 +226,7 @@
 	if(suffering_malfunction)
 		return
 	do_sparks(3, FALSE, src)
-	Shake(10, 0, reset_time)
+	Shake(3, 0, reset_time)
 	say(pick("Running diagnostics. Please stand by.", "Organ damaged. Synthesizing replacement.", "Seek new organic components. I-it hurts.", "New muscles needed. I-I'm so glad my body still works.", "O-Oh God, are they using ion weapons on us..?", "Limbs unresponsive. H-hey! Fix it! System initializing.", "Bad t-time, bad time, they're trying to kill us here!",))
 	toggle_ai(AI_OFF)
 	suffering_malfunction = TRUE
@@ -1368,7 +1368,7 @@
 	var/damage_amount = rand(internal_mob_damage_lower, internal_mob_damage_upper)
 	contained_mob.take_overall_damage(damage_amount)
 	contained_mob.emote("scream")
-	Shake(10, 0, 3 SECONDS)
+	Shake(3, 0, 3 SECONDS)
 	do_sparks(4, FALSE, src)
 	to_chat(contained_mob, span_userdanger(pick(torment_lines)))
 	playsound(src, 'sound/weapons/drill.ogg', 70, 1)
@@ -1438,8 +1438,7 @@
 
 /mob/living/simple_animal/hostile/fleshmind/mechiver/proc/convert_mob(mob/living/mob_to_convert)
 	if(faction_check(faction, mob_to_convert.faction)) // If we are already assimilated, just heal us.
-		mob_to_convert.fully_heal(TRUE)
-		mob_to_convert.heal_and_revive(0)
+		mob_to_convert.revive(ADMIN_HEAL_ALL, force_grab_ghost = TRUE)
 		return
 
 	if(ishuman(mob_to_convert))
