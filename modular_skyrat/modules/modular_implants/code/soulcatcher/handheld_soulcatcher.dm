@@ -97,7 +97,7 @@
 	if(!target_mob.mind)
 		return FALSE
 
-	target_room.add_soul(target_mob.mind, TRUE)
+	target_room.add_soul(target_mob.mind, FALSE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
