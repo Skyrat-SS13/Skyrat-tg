@@ -304,11 +304,22 @@
 		iterating_core.end_game = TRUE
 		iterating_core.update_appearance()
 	// Here we summon an ERT to defend the shuttle.
-	make_ert(/datum/ert/asset_protection, 5, "HEAD TO AND BOARD THE EMERGENCY SHUTTLE, DO NOT USE THE FERRY, STOP THE CORRUPTION AT **ALL** COSTS!!!", "the last defense of centcom", "GAMMA", FALSE, TRUE, TRUE, FALSE, TRUE)
+	make_ert(
+		ert_type = /datum/ert/odst/fleshmind,
+		teamsize = 6,
+		mission_objective_override = "PREPARE FOR ORBITAL INSERTION, TARGET: NTSS13 EMERGENCY EVACUATION SHUTTLE. KILL ALL INFECTED FOES. DO NOT ALLOW THEM TO BOARD THE SHUTTLE AT //ALL COSTS//.",
+		poll_description = "the last defense of centcom",
+		code = "GAMMA",
+		enforce_human = TRUE,
+		open_armory_doors = TRUE,
+		leader_experience = TRUE,
+		random_names = TRUE,
+		spawnpoint_override = TRUE
+	)
 
 /datum/fleshmind_controller/proc/fleshmind_end_second_check()
 	priority_announce("ERROR, SHUTTLE QUARANTINE LOCK FAILURE. All p£$r$%%££$e*$l JOIN US, THE MANY.", "Emergency Shuttle Control", 'sound/misc/airraid.ogg')
-	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+	SSsecurity_level.set_level(SEC_LEVEL_GAMMA)
 	addtimer(CALLBACK(src, PROC_REF(fleshmind_end_final)), 1 MINUTES, TIMER_CLIENT_TIME)
 
 /datum/fleshmind_controller/proc/fleshmind_end_final()
@@ -316,6 +327,19 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(play_cinematic), /datum/cinematic/fleshmind, world, CALLBACK(src, PROC_REF(fleshmind_call_shuttle))), 15 SECONDS, TIMER_CLIENT_TIME)
 
 /datum/fleshmind_controller/proc/fleshmind_call_shuttle()
+	for(var/area/check_area in GLOB.areas)
+		if(!is_type_in_list(check_area, GLOB.the_station_areas) || istype(check_area, /area/shuttle))
+			continue
+		for(var/turf/open/floor/iterating_floor in check_area)
+			iterating_floor.color = FLESHMIND_LIGHT_BLUE
+			iterating_floor.name = "flesh hive"
+			iterating_floor.icon = 'modular_skyrat/modules/fleshmind/icons/wireweed_floor.dmi'
+			iterating_floor.icon_state = "wires-255"
+		for(var/turf/closed/wall/iterating_wall in check_area)
+			iterating_wall.color = FLESHMIND_LIGHT_BLUE
+			iterating_wall.name = "flesh hive"
+			iterating_wall.icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
+			iterating_wall.icon_state = "wireweed_wall"
 	SSshuttle.clearHostileEnvironment(src)
 	SSshuttle.fleshmind_call(controller_firstname)
 

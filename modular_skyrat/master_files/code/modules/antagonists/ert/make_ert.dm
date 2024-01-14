@@ -33,7 +33,7 @@
 	if(!LAZYLEN(spawnpoints))
 		CRASH("make_ert had no ERT spawnpoints to choose from!")
 
-	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [created_ert_datum.polldesc]?", ROLE_DEATHSQUAD)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [created_ert_datum.polldesc]?", check_jobban = "deathsquad", pic_source = /obj/item/card/id/advanced/centcom/ert, role_name_text = "emergency response team")
 
 	if(!LAZYLEN(candidates))
 		return FALSE
@@ -116,6 +116,7 @@
 		for(var/obj/machinery/door/poddoor/ert/door as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/door/poddoor/ert))
 			door.open()
 			CHECK_TICK
+	created_ert_datum.post_setup(ert_team)
 	return TRUE
 
 #undef ERT_EXPERIENCED_LEADER_CHOOSE_TOP
