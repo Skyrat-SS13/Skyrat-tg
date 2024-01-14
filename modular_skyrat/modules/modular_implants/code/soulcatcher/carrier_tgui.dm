@@ -82,10 +82,10 @@
 		if(!target_room)
 			return FALSE
 
-	var/mob/living/soulcatcher_soul/target_soul
-	if(params["target_soul"])
-		target_soul = locate(params["target_soul"]) in target_room.current_mobs
-		if(!target_soul)
+	var/mob/living/target_mob
+	if(params["target_mob"])
+		target_mob = locate(params["target_mob"]) in target_room.current_mobs
+		if(!target_mob)
 			return FALSE
 
 	switch(action)
@@ -149,7 +149,7 @@
 			return TRUE
 
 		if("remove_mob")
-			target_room.remove_mob(target_soul)
+			target_room.remove_mob(target_mob)
 			return TRUE
 
 		if("transfer_mob")
@@ -183,7 +183,7 @@
 			if(!(transfer_room in available_rooms))
 				return FALSE
 
-			transfer_mob(target_soul, transfer_room)
+			transfer_mob(target_mob, transfer_room)
 			return TRUE
 
 		if("change_room_color")
@@ -198,21 +198,21 @@
 			if(!sense_to_change)
 				return FALSE
 
-			SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_TOGGLE_SENSE, sense_to_change)
+			SEND_SIGNAL(target_mob, COMSIG_CARRIER_MOB_TOGGLE_SENSE, sense_to_change)
 			return TRUE
 
 		if("change_name")
-			var/new_name = tgui_input_text(usr, "Enter a new name for [target_soul]", "Soulcatcher", target_soul)
+			var/new_name = tgui_input_text(usr, "Enter a new name for [target_mob]", "Soulcatcher", target_mob)
 			if(!new_name)
 				return FALSE
 
-			return SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_RENAME, new_name)
+			return SEND_SIGNAL(target_mob, COMSIG_CARRIER_MOB_RENAME, new_name)
 
 		if("reset_name")
-			if(tgui_alert(usr, "Do you wish to reset [target_soul]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "Do you wish to reset [target_mob]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
 				return FALSE
 
-			return SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_RESET_NAME)
+			return SEND_SIGNAL(target_mob, COMSIG_CARRIER_MOB_RESET_NAME)
 
 		if("send_message")
 			var/message_to_send = ""
