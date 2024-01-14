@@ -9,10 +9,10 @@
 	maxHealth = 1 * STANDARD_ORGAN_THRESHOLD
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 
-/obj/item/organ/internal/lungs/synth/emp_act(severity)
+/obj/item/organ/internal/liver/synth/emp_act(severity)
 	. = ..()
 
-	if(. & EMP_PROTECT_SELF)
+	if(!owner || . & EMP_PROTECT_SELF)
 		return
 
 	if(!COOLDOWN_FINISHED(src, severe_cooldown)) //So we cant just spam emp to kill people.
@@ -34,8 +34,8 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
 	materials = list(
-		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/organ/internal/liver/synth
 	category = list(

@@ -295,6 +295,32 @@
 	name = "Colourable Sterile Mask (Worn) (Teshari)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_teshari.dmi'
 
+// MASQUERADE MASKS
+/datum/greyscale_config/masquerade_mask
+	name = "Masquerade Mask"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/masquerade_mask/masquerade_mask.json'
+
+/datum/greyscale_config/masquerade_mask/worn
+	name = "Masquerade Mask (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/snouted
+	name = "Masquerade Mask (Worn) (Snouted)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_snouted.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/teshari
+	name = "Masquerade Mask (Worn) (Teshari)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_teshari.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/better_vox
+	name = "Masquerade Mask (Worn) (Vox Primalis)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_better_vox.dmi'
+
+/datum/greyscale_config/masquerade_mask/worn/vox
+	name = "Masquerade Mask (Worn) (Vox)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mask/masquerade_mask_worn_vox.dmi'
+
 /*
 *	NECK
 */
@@ -1093,6 +1119,19 @@
 	name = "Buttondown with Double-breasted Vest (Worn, Digi)"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
+/datum/greyscale_config/chrimbo
+	name = "christmas_male"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/chrimbo.json'
+
+/datum/greyscale_config/chrimbo/worn
+	name = "christmas_male (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
+
+/datum/greyscale_config/chrimbo/worn/digi
+	name = "christmas_male (Worn, Digi)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
+
 //GRAYSCALE MAID COSTUME
 
 /datum/greyscale_config/maid_neck_cover
@@ -1191,6 +1230,19 @@ digi
 
 /datum/greyscale_config/boots/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_oldvox.dmi'
+
+/datum/greyscale_config/boots/christmasboots
+	name = "christmas_boots"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/boots/christmas_boots.json'
+
+/datum/greyscale_config/boots/christmasboots/worn
+	name = "christmas_boots (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+
+/datum/greyscale_config/boots/christmasboots/worn/digi
+	name = "christmas_boots (Worn, Digi)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
 // Laceups
 

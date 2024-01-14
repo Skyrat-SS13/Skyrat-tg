@@ -63,8 +63,9 @@
 
 				if(cached_my_atom)
 					if(reaction.required_container)
-						if(reaction.required_container_accepts_subtypes && !istype(cached_my_atom, reaction.required_container))
-							continue
+						if(reaction.required_container_accepts_subtypes)
+							if(!istype(cached_my_atom, reaction.required_container))
+								continue
 						else if(cached_my_atom.type != reaction.required_container)
 							continue
 
@@ -190,7 +191,6 @@
 	if(!LAZYLEN(reaction_list))
 		finish_reacting()
 	else
-		update_total()
 		handle_reactions()
 
 /*
@@ -236,8 +236,6 @@
 	is_reacting = FALSE
 	LAZYNULL(previous_reagent_list) //reset it to 0 - because any change will be different now.
 	update_total()
-	if(!QDELING(src))
-		handle_reactions() //Should be okay without. Each step checks.
 
 /*
 * Force stops the current holder/reagents datum from reacting
@@ -342,8 +340,8 @@
 
 		if(istype(cached_my_atom, /obj/item/slime_extract))
 			var/obj/item/slime_extract/extract = my_atom
-			extract.Uses--
-			if(extract.Uses <= 0) // give the notification that the slime core is dead
+			extract.extract_uses--
+			if(extract.extract_uses <= 0) // give the notification that the slime core is dead
 				my_atom.visible_message(span_notice("[iconhtml] \The [my_atom]'s power is consumed in the reaction."))
 				extract.name = "used slime extract"
 				extract.desc = "This extract has been used up."

@@ -215,28 +215,6 @@
 			ForceContractDisease(D)
 		return TRUE
 
-
-/mob/living/carbon/attack_slime(mob/living/simple_animal/slime/M, list/modifiers)
-	if(..()) //successful slime attack
-		if(M.powerlevel > 0)
-			var/stunprob = M.powerlevel * 7 + 10  // 17 at level 1, 80 at level 10
-			if(prob(stunprob))
-				M.powerlevel -= 3
-				if(M.powerlevel < 0)
-					M.powerlevel = 0
-
-				visible_message(span_danger("The [M.name] shocks [src]!"), \
-				span_userdanger("The [M.name] shocks you!"))
-
-				do_sparks(5, TRUE, src)
-				var/power = M.powerlevel + rand(0,3)
-				Paralyze(power * 2 SECONDS)
-				set_stutter_if_lower(power * 2 SECONDS)
-				if (prob(stunprob) && M.powerlevel >= 8)
-					adjustFireLoss(M.powerlevel * rand(6,10))
-					updatehealth()
-		return 1
-
 /**
  * Really weird proc that attempts to dismebmer the passed zone if it is at max damage
  * Unless the attacker is an NPC, in which case it disregards the zone and picks a random one
@@ -486,17 +464,24 @@
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
-		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
-		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
-			to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
-			src.Knockdown(20)
-			src.apply_damage(30, STAMINA)
-		helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
+		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
+			visible_message(span_warning("[helper] tries to boop [src] on the nose, but [p_they()] move[p_s()] out of the way."))
+			return
+		else
+			playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
+			if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
+				to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
+				src.Knockdown(20)
+				src.apply_damage(30, STAMINA)
+			helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
 	//SKYRAT EDIT ADDITION END
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
-		//SKYRAT EDIT ADDITION BEGIN - OVERSIZED HEADPATS
+		//SKYRAT EDIT ADDITION BEGIN - OVERSIZED & DISALLOWED HEADPATS
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(helper, TRAIT_OVERSIZED))
 			visible_message(span_warning("[helper] tries to pat [src] on the head, but can't reach!"))
+			return
+		else if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
+			visible_message(span_warning("[helper] tries to pat [src] on the head, but [p_they()] move[p_s()] out of the way."))
 			return
 		//SKYRAT EDIT ADDITION END
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
@@ -541,6 +526,11 @@
 			to_chat(helper, span_notice("You wrap [src] into a tight bear hug!"))
 			to_chat(src, span_notice("[helper] squeezes you super tightly in a firm bear hug!"))
 		else
+			// SKYRAT EDIT ADDITION START
+			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
+				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] move[p_s()] out of the way."))
+				return
+			// SKYRAT EDIT ADDITION END
 			helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
 						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 			to_chat(helper, span_notice("You hug [src] to make [p_them()] feel better!"))

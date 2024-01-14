@@ -123,7 +123,7 @@
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
 
-		var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for [ertemplate.polldesc]?", "deathsquad")
+		var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [ertemplate.polldesc]?", check_jobban = "deathsquad", pic_source = /obj/item/card/id/advanced/centcom/ert, role_name_text = "emergency response team")
 		var/teamSpawned = FALSE
 
 		// This list will take priority over spawnpoints if not empty
@@ -256,6 +256,9 @@
 			//SKYRAT EDIT ADDITION BEGIN
 			if(ertemplate.notify_players)
 				priority_announce("Central command has responded to your request for a CODE [uppertext(ertemplate.code)] Emergency Response Team and have confirmed one to be enroute.", "ERT Request", ANNOUNCER_ERTYES)
+				// shitcode begin!
+				if(istype(ertemplate, /datum/ert/deathsquad))
+					SSsecurity_level.set_level(SEC_LEVEL_EPSILON)
 			//SKYRAT EDIT END
 		//Open the Armory doors
 		if(ertemplate.opendoors)

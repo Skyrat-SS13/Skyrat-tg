@@ -106,6 +106,7 @@
 	var/datum/antagonist/rev/revolutionary = has_antag_datum(/datum/antagonist/rev)
 	revolutionary?.remove_revolutionary()
 
+
 /**
  * ## give_uplink
  *

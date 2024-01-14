@@ -33,7 +33,7 @@
 
 	maxHealth = 150
 	health = 150
-	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 0)
+	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 1, STAMINA = 0, OXY = 0)
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 0
 	maximum_survivable_temperature = INFINITY

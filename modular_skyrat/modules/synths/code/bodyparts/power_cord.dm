@@ -38,7 +38,7 @@
 		to_chat(user, span_warning("There is no charge to draw from that APC."))
 		return
 
-	if(ipc.nutrition >= NUTRITION_LEVEL_WELL_FED)
+	if(ipc.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
 		to_chat(user, span_warning("You are already fully charged!"))
 		return
 
@@ -62,7 +62,7 @@
 	user.visible_message(span_notice("[user] inserts a power connector into the [target_apc]."), span_notice("You begin to draw power from the [target_apc]."))
 
 	while(TRUE)
-		var/power_needed = NUTRITION_LEVEL_WELL_FED - user.nutrition // How much charge do we need in total?
+		var/power_needed = NUTRITION_LEVEL_ALMOST_FULL - user.nutrition // How much charge do we need in total?
 		// Do we even need anything?
 		if(power_needed <= SYNTH_CHARGE_MIN * 2) // Times two to make sure minimum draw is always lower than this margin to prevent potential needless loops.
 			to_chat(user, span_notice("You are fully charged."))
@@ -93,6 +93,11 @@
 		user.nutrition += power_use / SYNTH_CHARGE_PER_NUTRITION
 		do_sparks(1, FALSE, target_apc)
 
+	if(target_apc.main_status <= APC_HAS_POWER)
+		target_apc.charging = APC_CHARGING
+		target_apc.update_appearance()
+	else
+		return
 	user.visible_message(span_notice("[user] unplugs from the [target_apc]."), span_notice("You unplug from the [target_apc]."))
 
 #undef SYNTH_CHARGE_MAX

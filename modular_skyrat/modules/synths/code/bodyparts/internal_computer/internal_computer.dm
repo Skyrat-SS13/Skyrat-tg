@@ -9,7 +9,7 @@
 
 	max_idle_programs = 3
 
-	max_capacity = 32
+	max_capacity = 64
 
 /obj/item/modular_computer/pda/synth/Initialize(mapload)
 	. = ..()
@@ -37,12 +37,11 @@
 		return UI_CLOSE
 
 	if(!QDELETED(brain_loc.owner))
-		if(brain_loc.owner == user)
-			return min(
-				ui_status_user_is_abled(user, src),
-				ui_status_only_living(user),
-			)
-		else return UI_CLOSE
+		return min(
+			ui_status_user_is_abled(user, src),
+			ui_status_only_living(user),
+			ui_status_user_is_adjacent(user, brain_loc.owner),
+		)
 	return ..()
 
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
@@ -115,3 +114,25 @@ Attacking a synth with an id loads it into its slot.. pain and probably shitcode
 				robotbrain.internal_computer.interact(user)
 			return
 	return ..()
+
+/obj/item/modular_computer/pda/synth/get_header_data()
+	var/list/data = ..()
+	var/obj/item/organ/internal/brain/synth/brain_loc = loc
+	// Battery level is now according to the synth charge
+	if(istype(brain_loc))
+		var/charge_level = (brain_loc.owner.nutrition / NUTRITION_LEVEL_ALMOST_FULL) * 100
+		switch(charge_level)
+			if(80 to 110)
+				data["PC_batteryicon"] = "batt_100.gif"
+			if(60 to 80)
+				data["PC_batteryicon"] = "batt_80.gif"
+			if(40 to 60)
+				data["PC_batteryicon"] = "batt_60.gif"
+			if(20 to 40)
+				data["PC_batteryicon"] = "batt_40.gif"
+			if(5 to 20)
+				data["PC_batteryicon"] = "batt_20.gif"
+			else
+				data["PC_batteryicon"] = "batt_5.gif"
+		data["PC_batterypercent"] = "[round(charge_level)]%"
+	return data

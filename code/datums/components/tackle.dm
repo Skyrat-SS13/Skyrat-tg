@@ -54,18 +54,18 @@
 
 /datum/component/tackler/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_CLICKON, PROC_REF(checkTackle))
-	RegisterSignal(parent, COMSIG_MOVABLE_IMPACT, PROC_REF(sack))
+	RegisterSignal(parent, COMSIG_MOVABLE_PRE_IMPACT, PROC_REF(sack))
 	RegisterSignal(parent, COMSIG_MOVABLE_POST_THROW, PROC_REF(registerTackle))
 
 /datum/component/tackler/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_MOB_CLICKON, COMSIG_MOVABLE_IMPACT, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_POST_THROW))
+	UnregisterSignal(parent, list(COMSIG_MOB_CLICKON, COMSIG_MOVABLE_PRE_IMPACT, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_POST_THROW))
 
 ///Store the thrownthing datum for later use
 /datum/component/tackler/proc/registerTackle(mob/living/carbon/user, datum/thrownthing/tackle)
 	SIGNAL_HANDLER
 
 	tackle_ref = WEAKREF(tackle)
-	tackle.thrower = user
+	tackle.thrower = WEAKREF(user)
 
 ///See if we can tackle or not. If we can, leap!
 /datum/component/tackler/proc/checkTackle(mob/living/carbon/user, atom/clicked_atom, list/modifiers)
@@ -154,15 +154,17 @@
 	var/mob/living/carbon/target = hit
 	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // SKYRAT EDIT - FELINE TRAITS - ORIGINAL : var/tackle_word = isfelinid(user) ? "pounce" : "tackle" 
 
+	var/roll = rollTackle(target)
+	tackling = FALSE
+	tackle.gentle = TRUE
+
 	if(target.check_block(user, 0, user.name, attack_type = LEAP_ATTACK))
 		user.visible_message(span_danger("[user]'s tackle is blocked by [target], softening the effect!"), span_userdanger("Your tackle is blocked by [target], softening the effect!"), ignored_mobs = target)
 		to_chat(target, span_userdanger("[target] blocks [user]'s tackle attempt, softening the effect!"))
 		neutral_outcome(user, target, tackle_word) //Forces a neutral outcome so you're not screwed too much from being blocked while tackling
-		return
+		return COMPONENT_MOVABLE_IMPACT_FLIP_HITPUSH
 
-	var/roll = rollTackle(target)
-	tackling = FALSE
-	tackle.gentle = TRUE
+
 
 	switch(roll)
 		if(-INFINITY to -1)

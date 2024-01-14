@@ -62,8 +62,8 @@
 
 /obj/machinery/doppler_array/wrench_act(mob/living/user, obj/item/tool)
 	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
-	
+	return ITEM_INTERACT_SUCCESS
+
 /obj/machinery/doppler_array/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!default_deconstruction_screwdriver(user, "[base_icon_state]", "[base_icon_state]", tool))
 		return FALSE
@@ -91,8 +91,8 @@
 	else
 		playsound(src, 'sound/machines/terminal_error.ogg', 25)
 
-/** 
- * Checks a specified tachyon record for fitting reactions, then returns a list with 
+/**
+ * Checks a specified tachyon record for fitting reactions, then returns a list with
  * the experiment typepath as key and score as value.
  * The score is the same for all explosive experiments (light radius).
  */

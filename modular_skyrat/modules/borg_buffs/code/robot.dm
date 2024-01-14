@@ -5,6 +5,7 @@
 		/datum/reagent/consumable/berryjuice,\
 		/datum/reagent/consumable/blumpkinjuice,\
 		/datum/reagent/consumable/carrotjuice,\
+		/datum/reagent/consumable/cherryjelly,\
 		/datum/reagent/consumable/grapejuice,\
 		/datum/reagent/consumable/lemonjuice,\
 		/datum/reagent/consumable/lemon_lime,\
@@ -83,6 +84,7 @@
 		/datum/reagent/toxin/teapowder,\
 		/datum/reagent/consumable/tonic,\
 		/datum/reagent/consumable/vanilla,\
+		/datum/reagent/consumable/vinegar,\
 		/datum/reagent/water\
 	)
 
@@ -215,9 +217,13 @@
 	id = "borg_upgrade_brush"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/wirebrush
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2
+	)
 	construction_time = 40
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR)
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR,
+	)
 
 /obj/item/borg/upgrade/wirebrush
 	name = "janitor cyborg wire-brush"

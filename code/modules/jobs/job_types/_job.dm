@@ -71,7 +71,7 @@
 
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
 
-	///What types of bounty tasks can this job recieve past the default?
+	///What types of bounty tasks can this job receive past the default?
 	var/bounty_types = CIV_JOB_BASIC
 
 	/// Goodies that can be received via the mail system.
@@ -103,7 +103,7 @@
 	/// List of family heirlooms this job can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
 
-	/// All values = (JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN | JOB_CANNOT_OPEN_SLOTS)
+	/// All values = (JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN | JOB_CANNOT_OPEN_SLOTS | JOB_HEAD_OF_STAFF)
 	var/job_flags = NONE
 
 	/// Multiplier for general usage of the voice of god.
@@ -178,6 +178,10 @@
 		for(var/i in roundstart_experience)
 			spawned_human.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
+/// Return the outfit to use
+/datum/job/proc/get_outfit()
+	return outfit
+
 /// Announce that this job as joined the round to all crew members.
 /// Note the joining mob has no client at this point.
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
@@ -220,10 +224,10 @@
 
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, datum/preferences/used_pref) //SKYRAT EDIT CHANGE
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
-	equip_outfit_and_loadout(equipping.outfit, used_pref, visual_only, equipping) //SKYRAT EDIT CHANGE
+	equip_outfit_and_loadout(equipping.get_outfit(), used_pref, visual_only, equipping) //SKYRAT EDIT CHANGE
 
-/// tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
-/datum/job/proc/announce_head(mob/living/carbon/human/H, channels, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels)
+// Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/datum/job/proc/announce_head(mob/living/carbon/human/H, channels, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, H.job, channels), 1))
@@ -533,7 +537,7 @@
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
 
-	var/require_human = CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+	var/require_human = CONFIG_GET(flag/enforce_human_authority) && (job.job_flags & JOB_HEAD_OF_STAFF)
 	if(require_human)
 		var/all_authority_require_human = CONFIG_GET(flag/enforce_human_authority_on_everyone)
 		if(!all_authority_require_human && job.ignore_human_authority)

@@ -81,10 +81,10 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	. = ..()
 	//Clear quickbinds
 	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
-		script.Remove(user)
+		script?.Remove(user)
 
 	if(active_scripture)
-		active_scripture.end_invocation()
+		active_scripture?.end_invocation()
 
 	if(buffer)
 		buffer = null
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 	//Grant quickbound spells
 	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
-		script.Grant(user)
+		script?.Grant(user)
 
 	user.update_action_buttons()
 

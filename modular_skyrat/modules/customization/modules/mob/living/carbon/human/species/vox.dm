@@ -45,6 +45,8 @@
 		LOADOUT_ITEM_EARS = VOX_EARS_ICON
 	)
 
+	meat = /obj/item/food/meat/slab/chicken
+
 /datum/species/vox/get_default_mutant_bodyparts()
 	return list(
 		"tail" = list("Vox Tail", FALSE),

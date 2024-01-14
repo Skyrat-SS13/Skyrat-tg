@@ -275,6 +275,9 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /*
 *	MISC
 */
+/datum/loadout_item/neck/cursed_ashen_necklace
+	name = "Cursed Ashen Necklace"
+	item_path = /obj/item/clothing/neck/necklace/ashwalker/cursed
 
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
@@ -287,7 +290,17 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 
 /datum/loadout_item/neck/link_scryer
 	name = "MODlink Scryer"
-	item_path = /obj/item/clothing/neck/link_scryer
+	item_path = /obj/item/clothing/neck/link_scryer/loaded
+
+/datum/loadout_item/neck/holobadge
+	name = "Holobadge"
+	item_path = /obj/item/clothing/accessory/badge/holo
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/neck/holobadge_cord
+	name = "Holobadge with Lanyard"
+	item_path = /obj/item/clothing/accessory/badge/holo/cord
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
 /*
 *	DONATOR

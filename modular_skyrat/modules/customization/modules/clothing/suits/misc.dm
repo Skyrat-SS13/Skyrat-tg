@@ -262,9 +262,9 @@
 
 /obj/item/clothing/suit/corgisuit/en/process()
 	if(prob(2))
-		for(var/obj/M in orange(2,src))
-			if(!M.anchored && (M.flags_1 & CONDUCT_1))
-				step_towards(M,src)
+		for(var/obj/object in orange(2,src))
+			if(!object.anchored && (object.obj_flags & CONDUCTS_ELECTRICITY))
+				step_towards(object,src)
 		for(var/mob/living/silicon/S in orange(2,src))
 			if(istype(S, /mob/living/silicon/ai)) continue
 			step_towards(S,src)
@@ -336,6 +336,7 @@
 	greyscale_config_worn = /datum/greyscale_config/warm_sweater/worn
 	greyscale_colors = "#867361"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/heart_sweater
 	name = "heart sweater"
@@ -345,3 +346,4 @@
 	greyscale_config_worn = /datum/greyscale_config/heart_sweater/worn
 	greyscale_colors = "#867361#8f3a3a"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

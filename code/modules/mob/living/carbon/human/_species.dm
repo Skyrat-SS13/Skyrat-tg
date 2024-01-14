@@ -375,19 +375,17 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			health_pct = (existing_organ.maxHealth - existing_organ.damage) / existing_organ.maxHealth
 			if(slot == ORGAN_SLOT_BRAIN)
 				var/obj/item/organ/internal/brain/existing_brain = existing_organ
-				if(!existing_brain.decoy_override)
-					existing_brain.before_organ_replacement(new_organ)
-					existing_brain.Remove(organ_holder, special = TRUE, no_id_transfer = TRUE)
-					QDEL_NULL(existing_organ)
+				existing_brain.before_organ_replacement(new_organ)
+				existing_brain.Remove(organ_holder, special = TRUE, movement_flags = NO_ID_TRANSFER)
 			else
 				existing_organ.before_organ_replacement(new_organ)
 				existing_organ.Remove(organ_holder, special = TRUE)
-				QDEL_NULL(existing_organ)
 
-		if(isnull(existing_organ) && should_have && !(new_organ.zone in excluded_zones))
+			QDEL_NULL(existing_organ)
+		if(isnull(existing_organ) && should_have && !(new_organ.zone in excluded_zones) && organ_holder.get_bodypart(deprecise_zone(new_organ.zone)))
 			used_neworgan = TRUE
 			new_organ.set_organ_damage(new_organ.maxHealth * (1 - health_pct))
-			new_organ.Insert(organ_holder, special = TRUE, drop_if_replaced = FALSE)
+			new_organ.Insert(organ_holder, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
 		if(!used_neworgan)
 			QDEL_NULL(new_organ)
@@ -430,7 +428,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(current_organ)
 				current_organ.before_organ_replacement(replacement)
 			// organ.Insert will qdel any current organs in that slot, so we don't need to.
-			replacement.Insert(organ_holder, special=TRUE, drop_if_replaced=FALSE)
+			replacement.Insert(organ_holder, special=TRUE, movement_flags = DELETE_IF_REPLACED)
 
 /datum/species/proc/worn_items_fit_body_check(mob/living/carbon/wearer)
 	for(var/obj/item/equipped_item in wearer.get_all_worn_items())
@@ -497,7 +495,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 			//Load a persons preferences from DNA
 			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
-			new_organ.Insert(human, special=TRUE, drop_if_replaced=FALSE)
+			new_organ.Insert(human, special=TRUE, movement_flags = DELETE_IF_REPLACED)
 
 
 
@@ -1211,6 +1209,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		playsound(target.loc, attacking_bodypart.unarmed_attack_sound || get_sfx("punch"), 25, TRUE, -1) // SKYRAT EDIT - ORIGINAL: playsound(target.loc, attacking_bodypart.unarmed_attack_sound, 25, TRUE, -1)
 
+		if(grappled && attacking_bodypart.grappled_attack_verb)
+			atk_verb = attacking_bodypart.grappled_attack_verb
 		target.visible_message(span_danger("[user] [atk_verb]ed [target]!"), \
 						span_userdanger("You're [atk_verb]ed by [user]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("You [atk_verb] [target]!"))
@@ -1499,6 +1499,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		// Apply the damage to all body parts
 		humi.apply_damage(burn_damage, BURN, spread_damage = TRUE)
+
+	// For cold damage, we cap at the threshold if you're dead
+	if(humi.getFireLoss() >= abs(HEALTH_THRESHOLD_DEAD) && humi.stat == DEAD)
+		return
 
 	// Apply some burn / brute damage to the body (Dependent if the person is hulk or not)
 	var/is_hulk = HAS_TRAIT(humi, TRAIT_HULK)
