@@ -4,11 +4,11 @@
 	/// Is the soulcatcher removable from the parent object?
 	var/removable = FALSE
 
-/datum/component/carrier/New()
+/datum/component/carrier/soulcatcher/New()
 	. = ..()
 	GLOB.soulcatchers += src
 
-/datum/component/carrier/soulcatcher/Destroy(force, ...)	
+/datum/component/carrier/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
 	return ..()
 
