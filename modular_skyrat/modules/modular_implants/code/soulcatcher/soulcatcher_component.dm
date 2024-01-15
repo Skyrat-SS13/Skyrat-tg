@@ -30,3 +30,70 @@
 
 	return room_list
 
+/datum/carrier_room/soulcatcher
+	/// What is the name of the room?
+	var/name = "Default Room"
+	/// What is the description of the room?
+	var/room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
+/// Attemps to add a ghost to the soulcatcher room.
+
+/datum/carrier_room/soulcatcher/proc/add_soul_from_ghost(mob/dead/observer/ghost)
+	if(!ghost || !ghost.ckey)
+		return FALSE
+
+	if(!ghost.mind)
+		ghost.mind = new /datum/mind(ghost.key)
+		ghost.mind.name = ghost.name
+		ghost.mind.active = TRUE
+
+	if(!add_soul_from_mind(ghost.mind))
+		return FALSE
+
+	return TRUE
+
+/// Converts a mind into a soul and adds the resulting soul to the room.
+/datum/carrier_room/proc/add_soul_from_mind(datum/mind/mind_to_add, hide_participant_identity = TRUE)
+	if(!mind_to_add)
+		return FALSE
+
+	var/datum/component/carrier/parent_soulcatcher = master_carrier.resolve()
+	var/datum/parent_object = parent_soulcatcher.parent
+	if(!parent_object)
+		return FALSE
+
+	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
+	if(mind_to_add.current)
+		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
+		body_component.soulcatcher_soul = WEAKREF(new_soul)
+
+		new_soul.round_participant = TRUE
+		new_soul.body_scan_needed = TRUE
+		new_soul.previous_body = WEAKREF(mind_to_add.current)
+
+	var/datum/component/carrier_user/soul_component = parent_soulcatcher.add_mob(new_soul, src)
+	if(!soul_component)
+		return FALSE
+
+	if(hide_participant_identity && new_soul.round_participant)
+		soul_component.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
+		soul_component.desc = "[new_soul] lacks a discernible form."
+
+	mind_to_add.transfer_to(new_soul, TRUE)
+	current_mobs += new_soul
+	soul_component.current_room = WEAKREF(src)
+
+	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
+	to_chat(new_soul, span_notice(room_description))
+	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
+	to_chat(new_soul, span_notice("While inside of [src], you are able to speak and emote by using the normal hotkeys and verbs, unless disabled by the owner."))
+	to_chat(new_soul, span_notice("You may use the leave soulcatcher verb to leave the soulcatcher and return to your body at any time."))
+
+	var/atom/parent_atom = parent_object
+	if(istype(parent_atom))
+		var/turf/soulcatcher_turf = get_turf(parent_soulcatcher.parent)
+		var/message_to_log = "[key_name(new_soul)] entered [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
+		parent_atom.log_message(message_to_log, LOG_GAME)
+		new_soul.log_message(message_to_log, LOG_GAME)
+
+	return TRUE
+

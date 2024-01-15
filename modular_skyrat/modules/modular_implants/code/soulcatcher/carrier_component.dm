@@ -31,6 +31,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/component_to_give = /datum/component/carrier_user
 	/// What 16x16 chat icon do we want our carrier to display in chat messages?
 	var/chat_icon = "nif-soulcatcher"
+	/// What is the type of room that we want to create?
+	var/type_of_room_to_create = /datum/carrier_room
 
 /datum/component/carrier/New()
 	. = ..()
@@ -75,7 +77,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_desc - The description that we want to assign to the created room.
  */
 /datum/component/carrier/proc/create_room(target_name, target_desc)
-	var/datum/carrier_room/created_room = new(src)
+	var/datum/carrier_room/created_room = new type_of_room_to_create(src)
 	if(target_name)
 		created_room.name = target_name
 	if(target_desc)
@@ -236,92 +238,32 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What is the color of chat messages sent by the room?
 	var/room_color = SOULCATCHER_DEFAULT_COLOR
 
-/// Attemps to add a ghost to the soulcatcher room.
-/datum/carrier_room/proc/add_soul_from_ghost(mob/dead/observer/ghost)
-	if(!ghost || !ghost.ckey)
-		return FALSE
-
-	if(!ghost.mind)
-		ghost.mind = new /datum/mind(ghost.key)
-		ghost.mind.name = ghost.name
-		ghost.mind.active = TRUE
-
-	if(!add_soul_from_mind(ghost.mind))
-		return FALSE
-
-	return TRUE
-
 /// Adds a mob into the carrier
 /datum/carrier_room/proc/add_mob(mob/living/mob_to_add)
 	if(!mob_to_add)
 		return FALSE
 
-	var/datum/component/carrier/parent_soulcatcher = master_carrier.resolve()
-	var/datum/parent_object = parent_soulcatcher.parent
+	var/datum/component/carrier/parent_carrier = master_carrier.resolve()
+	var/datum/parent_object = parent_carrier.parent
 	if(!parent_object)
 		return FALSE
 
-	var/datum/component/carrier_user/carrier_component = parent_soulcatcher.add_mob(mob_to_add, src)
+	var/datum/component/carrier_user/carrier_component = parent_carrier.add_mob(mob_to_add, src)
 	if(!carrier_component)
 		return FALSE
 	current_mobs += mob_to_add
 	carrier_component.current_room = WEAKREF(src)
+	mob_to_add.forceMove(target_master_carrier.parent)
 
 	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
 	to_chat(mob_to_add, span_notice(room_description))
 
 	var/atom/parent_atom = parent_object
 	if(istype(parent_atom))
-		var/turf/soulcatcher_turf = get_turf(parent_soulcatcher.parent)
+		var/turf/carrier_turf = get_turf(parent_carrier.parent)
 		var/message_to_log = "[key_name(mob_to_add)] entered [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		mob_to_add.log_message(message_to_log, LOG_GAME)
-
-	return TRUE
-
-/// Converts a mind into a soul and adds the resulting soul to the room.
-/datum/carrier_room/proc/add_soul_from_mind(datum/mind/mind_to_add, hide_participant_identity = TRUE)
-	if(!mind_to_add)
-		return FALSE
-
-	var/datum/component/carrier/parent_soulcatcher = master_carrier.resolve()
-	var/datum/parent_object = parent_soulcatcher.parent
-	if(!parent_object)
-		return FALSE
-
-	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
-	if(mind_to_add.current)
-		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
-		body_component.soulcatcher_soul = WEAKREF(new_soul)
-
-		new_soul.round_participant = TRUE
-		new_soul.body_scan_needed = TRUE
-		new_soul.previous_body = WEAKREF(mind_to_add.current)
-
-	var/datum/component/carrier_user/soul_component = parent_soulcatcher.add_mob(new_soul, src)
-	if(!soul_component)
-		return FALSE
-
-	if(hide_participant_identity && new_soul.round_participant)
-		soul_component.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
-		soul_component.desc = "[new_soul] lacks a discernible form."
-
-	mind_to_add.transfer_to(new_soul, TRUE)
-	current_mobs += new_soul
-	soul_component.current_room = WEAKREF(src)
-
-	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
-	to_chat(new_soul, span_notice(room_description))
-	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
-	to_chat(new_soul, span_notice("While inside of [src], you are able to speak and emote by using the normal hotkeys and verbs, unless disabled by the owner."))
-	to_chat(new_soul, span_notice("You may use the leave soulcatcher verb to leave the soulcatcher and return to your body at any time."))
-
-	var/atom/parent_atom = parent_object
-	if(istype(parent_atom))
-		var/turf/soulcatcher_turf = get_turf(parent_soulcatcher.parent)
-		var/message_to_log = "[key_name(new_soul)] entered [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
-		parent_atom.log_message(message_to_log, LOG_GAME)
-		new_soul.log_message(message_to_log, LOG_GAME)
 
 	return TRUE
 
@@ -343,14 +285,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		return TRUE
 
-	var/datum/component/carrier/parent_soulcatcher = master_carrier.resolve()
-	if(!parent_soulcatcher)
+	var/datum/component/carrier/parent_carrier = master_carrier.resolve()
+	if(!parent_carrier)
 		master_carrier = null
 		return FALSE
-	else if(!parent_soulcatcher.parent)
+	else if(!parent_carrier.parent)
 		return FALSE
 
-	var/turf/current_tile = get_turf(parent_soulcatcher.parent)
+	var/turf/current_tile = get_turf(parent_carrier.parent)
 	mob_to_remove.forceMove(current_tile)
 
 	return TRUE
@@ -374,8 +316,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		master_carrier = null
 		return FALSE
 
-	var/datum/component/carrier/parent_soulcatcher = master_resolved
-	var/tag = sheet.icon_tag(parent_soulcatcher.chat_icon)
+	var/datum/component/carrier/parent_carrier = master_resolved
+	var/tag = sheet.icon_tag(parent_carrier.chat_icon)
 	var/soulcatcher_icon = ""
 
 	if(tag)
@@ -388,7 +330,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 			return FALSE
 
 	if(istype(user_component) && user_component.communicating_externally)
-		var/obj/item/parent_object = parent_soulcatcher.parent
+		var/obj/item/parent_object = parent_carrier.parent
 		if(!istype(parent_object))
 			return FALSE
 
@@ -424,11 +366,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		to_chat(soul, message)
 
-	relay_message_to_soulcatcher(owner_message)
+	relay_message_to_carrier(owner_message)
 	return TRUE
 
 /// Relays a message sent from the send_message proc to the parent carrier datum
-/datum/carrier_room/proc/relay_message_to_soulcatcher(message)
+/datum/carrier_room/proc/relay_message_to_carrier(message)
 	if(!message)
 		return FALSE
 
@@ -441,92 +383,3 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		remove_mob(occupant)
 
 	return ..()
-
-/datum/action/innate/join_soulcatcher
-	name = "Enter Soulcatcher"
-	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
-	button_icon_state = "soulcatcher_enter"
-
-/datum/action/innate/join_soulcatcher/Activate()
-	. = ..()
-	var/mob/dead/observer/joining_soul = owner
-	if(!joining_soul)
-		return FALSE
-
-	joining_soul.join_soulcatcher()
-
-/mob/dead/observer/verb/join_soulcatcher()
-	set name = "Enter Soulcatcher"
-	set category = "Ghost"
-
-	var/list/joinable_soulcatchers = list()
-	var/list/rooms_to_join = list()
-
-	for(var/datum/component/carrier/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent) || !soulcatcher.check_for_vacancy())
-			continue
-
-		var/list/carrier_rooms = soulcatcher.get_open_rooms(TRUE)
-		if(!length(carrier_rooms))
-			continue
-
-		var/obj/item/soulcatcher_parent = soulcatcher.parent
-		if(soulcatcher.name != soulcatcher_parent.name)
-			soulcatcher.name = soulcatcher_parent.name
-
-		joinable_soulcatchers += soulcatcher
-		rooms_to_join += carrier_rooms
-
-	if(!length(joinable_soulcatchers) || !length(rooms_to_join))
-		to_chat(src, span_warning("No soulcatchers are joinable."))
-		return FALSE
-
-	var/datum/component/carrier/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
-	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
-		return FALSE
-
-	var/datum/carrier_room/room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
-	if(!room_to_join)
-		to_chat(src, span_warning("There no rooms that you can join."))
-		return FALSE
-
-	if(soulcatcher_to_join.require_approval)
-		var/ghost_name = name
-		if(mind?.current)
-			ghost_name = "unknown"
-
-		if(!soulcatcher_to_join.get_approval(ghost_name))
-			to_chat(src, span_warning("The owner of [soulcatcher_to_join.name] declined your request to join."))
-			return FALSE
-
-	room_to_join.add_soul_from_ghost(src)
-	return TRUE
-
-/mob/grab_ghost(force)
-	SEND_SIGNAL(src, COMSIG_SOULCATCHER_CHECK_SOUL)
-	return ..()
-
-/mob/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)
-	if(GetComponent(/datum/component/previous_body)) //Is the soul currently within a soulcatcher?
-		return TRUE
-
-	return ..()
-
-/mob/dead/observer/Login()
-	. = ..()
-	var/datum/preferences/preferences = client?.prefs
-	var/soulcatcher_action_given
-
-	if(preferences)
-		soulcatcher_action_given = preferences.read_preference(/datum/preference/toggle/soulcatcher_join_action)
-
-	if(!soulcatcher_action_given)
-		return
-
-	if(locate(/datum/action/innate/join_soulcatcher) in actions)
-		return
-
-	var/datum/action/innate/join_soulcatcher/new_join_action = new(src)
-	new_join_action.Grant(src)
