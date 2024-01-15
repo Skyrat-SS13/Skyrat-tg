@@ -18,10 +18,6 @@
 	icon_state = "tunacan_empty"
 
 /obj/item/food/fishmeat/moonfish/akula
-	name = "aquatic fillet"
-	desc = "A fillet of a rather large fish..."
-
-/obj/item/food/fishmeat/moonfish/akula
 	name = "fillet"
 	desc = "A fillet of a rather large fish..."
 	tastes = list("tender fish" = 1)
