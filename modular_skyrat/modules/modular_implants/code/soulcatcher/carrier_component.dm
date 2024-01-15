@@ -74,12 +74,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_name - The name that we want to assign to the created room.
  * * target_desc - The description that we want to assign to the created room.
  */
-/datum/component/carrier/proc/create_room(target_name = "Default Room", target_desc = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment.")
+/datum/component/carrier/proc/create_room(target_name, target_desc)
 	var/datum/carrier_room/created_room = new(src)
-	created_room.name = target_name
-	created_room.room_description = target_desc
-	carrier_rooms += created_room
+	if(target_name)
+		created_room.name = target_name
+	if(target_desc)
+		created_room.room_description = target_desc
 
+	carrier_rooms += created_room
 	created_room.master_carrier = WEAKREF(src)
 
 /// Tries to find out who is currently using the carrier, returns the holder. If no holder can be found, returns FALSE
@@ -262,7 +264,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/component/carrier_user/carrier_component = parent_soulcatcher.add_mob(mob_to_add, src)
 	if(!carrier_component)
 		return FALSE
-	current_mobs += mob_to_add 
+	current_mobs += mob_to_add
 	carrier_component.current_room = WEAKREF(src)
 
 	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
