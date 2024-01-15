@@ -56,11 +56,12 @@
 
 /obj/item/food/raw_patty/chicken/human
 	name = "strange raw chicken patty"
-	patty_type = /obj/item/food/patty/chicken/human
+	patty_type = /obj/item/food/patty/human/chicken
 
-/obj/item/food/patty/chicken/human
+/obj/item/food/patty/human/chicken
 	name = "strange chicken patty"
 	tastes = list("chikun" = 1)
+	icon_state = "chicken_patty"
 
 /datum/food_processor_process/meat/chicken
 	blacklist = list(/obj/item/food/meat/slab/chicken)
@@ -70,29 +71,37 @@
 	output = /obj/item/food/raw_meatball/chicken/human
 	blacklist = null
 
-/obj/item/food/burger/chicken/human
+/obj/item/food/burger/human/chicken
 	name = "birdman sandwich"
 	desc = "You're pretty sure this sandwich doesn't fund a good cause..."
-tastes = list("bun" = 2, "chikun" = 4, "Against God and Nature" = 1)
+	icon_state = "chickenburger"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/mayonnaise = 3,
+		/datum/reagent/consumable/nutriment/protein = 7,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment/fat/oil = 2,
+	)
+	tastes = list("bun" = 2, "chikun" = 4, "Against God and Nature" = 1)
 	foodtypes = GRAIN | MEAT | FRIED | GORE
+	crafting_complexity = FOOD_COMPLEXITY_3
 	venue_value = FOOD_PRICE_CHEAP
 
-/obj/item/food/burger/chicken/human/CheckParts(list/parts_list)
+/obj/item/food/burger/human/chicken/CheckParts(list/parts_list)
 	..()
-	var/obj/item/food/patty/chicken/human = locate(/obj/item/food/patty/chicken/human) in contents
-	for(var/datum/material/meat/mob_meat/mob_meat_material in chicken_patty.custom_materials)
+	var/obj/item/food/patty/human/human_patty = locate(/obj/item/food/patty/human/chicken) in contents
+	for(var/datum/material/meat/mob_meat/mob_meat_material in human_patty.custom_materials)
 		if(mob_meat_material.subjectname)
-			name = "[mob_meat_material.subjectname] sandwich"
+			name = "[mob_meat_material.subjectname] burger"
 		else if(mob_meat_material.subjectjob)
-			name = "[mob_meat_material.subjectjob] sandwich"
+			name = "[mob_meat_material.subjectjob] burger"
 
-
-/datum/crafting_recipe/food/chickenburger
+/datum/crafting_recipe/food/chickenburger/human
 	name = "Birdman Sandwich"
 	reqs = list(
-			/obj/item/food/patty/chicken/human = 1,
+			/obj/item/food/patty/human/chicken = 1,
 			/datum/reagent/consumable/mayonnaise = 5,
 			/obj/item/food/bun = 1
 	)
-	result = /obj/item/food/burger/chicken/human
+	result = /obj/item/food/burger/human/chicken
 	category = CAT_BURGER
