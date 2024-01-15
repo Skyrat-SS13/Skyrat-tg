@@ -43,7 +43,7 @@
 	processing_speed = 6 SECONDS //starts at 5 seconds, should go down to 2
 	for(var/datum/stock_part/servo/servo_part in component_parts)
 		processing_speed -= (servo_part.tier * (0.5 SECONDS))
-	processing_speed = FLOOR(processing_speed, 1)
+	processing_speed = CEILING(processing_speed, 1)
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
