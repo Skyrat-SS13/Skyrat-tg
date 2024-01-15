@@ -59,7 +59,7 @@
 			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 			return FALSE
 
-		var/datum/carrier_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.carrier_rooms, timeout = 30 SECONDS)
+		var/datum/carrier_room/soulcatcher/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.carrier_rooms, timeout = 30 SECONDS)
 		if(!target_room)
 			return FALSE
 

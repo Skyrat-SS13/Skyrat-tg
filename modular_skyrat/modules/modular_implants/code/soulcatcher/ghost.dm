@@ -43,7 +43,7 @@
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 
-	var/datum/carrier_room/room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
+	var/datum/carrier_room/soulcatcher/room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
 	if(!room_to_join)
 		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE

@@ -30,13 +30,19 @@
 
 	return room_list
 
+/datum/component/carrier/soulcatcher/get_current_holder(long_term_holder)
+	if(long_term_holder && !istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
+		return FALSE
+
+	return ..()
+
 /datum/carrier_room/soulcatcher
 	/// What is the name of the room?
-	var/name = "Default Room"
+	name = "Default Room"
 	/// What is the description of the room?
-	var/room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
-/// Attemps to add a ghost to the soulcatcher room.
+	room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
 
+/// Attemps to add a ghost to the soulcatcher room.
 /datum/carrier_room/soulcatcher/proc/add_soul_from_ghost(mob/dead/observer/ghost)
 	if(!ghost || !ghost.ckey)
 		return FALSE
@@ -96,4 +102,3 @@
 		new_soul.log_message(message_to_log, LOG_GAME)
 
 	return TRUE
-

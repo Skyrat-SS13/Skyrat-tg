@@ -34,21 +34,31 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What is the type of room that we want to create?
 	var/type_of_room_to_create = /datum/carrier_room
 
+	/// What say verb do we want to give the owner in circumstances, if any?
+	var/say_verb_type = /mob/living/proc/soulcatcher_say
+	/// What emote verb do we want to give the owner in circumstances, if any?
+	var/emote_verb_type = /mob/living/proc/soulcatcher_emote
+
 /datum/component/carrier/New()
 	. = ..()
 	if(!parent)
 		return COMPONENT_INCOMPATIBLE
 
+	var/mob/living/holder = get_current_holder(TRUE)
+	if(!holder)
+		return FALSE
+
+	var/list/verb_list = list()
+	if(say_verb_type)
+		verb_list += say_verb_type
+	if(emote_verb_type)
+		verb_list += emote_verb_type
+
+	if(istype(holder) && length(verb_list))
+		add_verb(holder, verb_list)
+
 	create_room()
 	targeted_carrier_room = carrier_rooms[1]
-
-	var/obj/item/carrier_holder/holder = parent
-	if(istype(holder) && ismob(holder.loc))
-		var/mob/living/soulcatcher_owner = holder.loc
-		add_verb(soulcatcher_owner, list(
-			/mob/living/proc/carrier_say,
-			/mob/living/proc/carrier_emote,
-		))
 
 /datum/component/carrier/Destroy(force, ...)
 	targeted_carrier_room = null
@@ -56,16 +66,18 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		carrier_rooms -= carrier_room
 		qdel(carrier_room)
 
-	var/mob/living/carrier_owner = parent
-	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
-	if(istype(parent_nif))
-		carrier_owner = parent_nif.linked_mob
+	var/mob/living/holder = get_current_holder(TRUE)
+	if(!holder)
+		return FALSE
 
-	if(istype(carrier_owner))
-		remove_verb(carrier_owner, list(
-			/mob/living/proc/carrier_say,
-			/mob/living/proc/carrier_emote,
-		))
+	var/list/verb_list = list()
+	if(say_verb_type)
+		verb_list += say_verb_type
+	if(emote_verb_type)
+		verb_list += emote_verb_type
+
+	if(istype(holder) && length(verb_list))
+		remove_verb(holder, verb_list)
 
 	return ..()
 
@@ -87,10 +99,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	created_room.master_carrier = WEAKREF(src)
 
 /// Tries to find out who is currently using the carrier, returns the holder. If no holder can be found, returns FALSE
-/datum/component/carrier/proc/get_current_holder()
+/datum/component/carrier/proc/get_current_holder(long_term_holder = FALSE)
 	var/mob/living/holder
 
 	if(!istype(parent, /obj/item))
+		return FALSE
+	if(long_term_holder && !istype(parent, /obj/item/carrier_holder))
 		return FALSE
 
 	var/obj/item/parent_item = parent
@@ -224,9 +238,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  */
 /datum/carrier_room
 	/// What is the name of the room?
-	var/name = "Default Room"
+	var/name = "Carrier room"
 	/// What is the description of the room?
-	var/room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
+	var/room_description = "it feels roomy in here."
 	/// What souls are currently inside of the room?
 	var/list/current_mobs = list()
 	/// Weakref for the master carrier datum
@@ -253,7 +267,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 	current_mobs += mob_to_add
 	carrier_component.current_room = WEAKREF(src)
-	mob_to_add.forceMove(target_master_carrier.parent)
+	mob_to_add.forceMove(parent_carrier.parent)
 
 	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
 	to_chat(mob_to_add, span_notice(room_description))
@@ -261,7 +275,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/atom/parent_atom = parent_object
 	if(istype(parent_atom))
 		var/turf/carrier_turf = get_turf(parent_carrier.parent)
-		var/message_to_log = "[key_name(mob_to_add)] entered [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
+		var/message_to_log = "[key_name(mob_to_add)] entered [src] inside of [parent_atom] at [loc_name(carrier_turf)]"
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		mob_to_add.log_message(message_to_log, LOG_GAME)
 
