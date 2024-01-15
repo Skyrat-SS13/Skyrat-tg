@@ -45,7 +45,7 @@
 		LOADOUT_ITEM_EARS = VOX_EARS_ICON
 	)
 
-	meat = /obj/item/food/meat/slab/chicken
+	meat = /obj/item/food/meat/slab/chicken/human //item file in teshari module
 
 /datum/species/vox/get_default_mutant_bodyparts()
 	return list(

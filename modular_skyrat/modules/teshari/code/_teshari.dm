@@ -48,7 +48,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/teshari,
 	)
 
-	meat = /obj/item/food/meat/slab/chicken
+	meat = /obj/item/food/meat/slab/chicken/human
 
 /datum/species/teshari/get_default_mutant_bodyparts()
 	return list(
