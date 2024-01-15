@@ -5,9 +5,9 @@
 		<b>higher maximum output</b> than some larger units. Most commonly seen being used not for their ability to store \
 		power, but rather for use in regulating power input and output."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/power_storage_unit/small_battery.dmi'
-	capacity = 75e4
-	input_level_max = 4e5
-	output_level_max = 4e5
+	capacity = 750 * 1000
+	input_level_max = 400 * 1000
+	output_level_max = 400 * 1000
 	circuit = null
 	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	/// The item we turn into when repacked
@@ -39,8 +39,16 @@
 	return
 
 // We also don't need to bother with fuddling with charging power cells, there are none to remove
-/obj/machinery/power/smes/on_deconstruction()
+/obj/machinery/power/smes/battery_pack/on_deconstruction()
 	return
+
+// Automatically set themselves to be completely charged on init
+
+/obj/machinery/power/smes/battery_pack/precharged
+
+/obj/machinery/power/smes/battery_pack/precharged/Initialize(mapload)
+	. = ..()
+	charge = capacity
 
 // Item for creating the small battery and carrying it around
 
@@ -58,10 +66,18 @@
 		<b>low maximum output</b> compared to smaller units. Most commonly seen as large backup batteries, or simply \
 		for large power storage where throughput is not a concern."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/power_storage_unit/large_battery.dmi'
-	capacity = 1e7
-	input_level_max = 5e4
-	output_level_max = 5e4
+	capacity = 10000 * 1000
+	input_level_max = 50 * 1000
+	output_level_max = 50 * 1000
 	repacked_type = /obj/item/flatpacked_machine/large_station_battery
+
+// Automatically set themselves to be completely charged on init
+
+/obj/machinery/power/smes/battery_pack/large/precharged
+
+/obj/machinery/power/smes/battery_pack/large/precharged/Initialize(mapload)
+	. = ..()
+	charge = capacity
 
 /obj/item/flatpacked_machine/large_station_battery
 	name = "flat-packed large stationary battery"
