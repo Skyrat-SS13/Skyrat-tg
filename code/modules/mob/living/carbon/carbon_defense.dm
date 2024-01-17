@@ -161,10 +161,9 @@
 /mob/living/carbon/attack_drone_secondary(mob/living/basic/drone/user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-//ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user, list/modifiers)
-	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
-		. = TRUE
+	. = ..()
+
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
@@ -175,13 +174,8 @@
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 			ContactContractDisease(D)
 
-	for(var/datum/surgery/operations as anything in surgeries)
-		if(user.combat_mode)
-			break
-		if(body_position != LYING_DOWN && (operations.surgery_flags & SURGERY_REQUIRE_RESTING))
-			continue
-		if(operations.next_step(user, modifiers))
-			return TRUE
+	if(.)
+		return TRUE
 
 	for(var/datum/wound/wounds as anything in all_wounds)
 		if(wounds.try_handling(user))
@@ -247,6 +241,7 @@
 
 	return dam_zone
 
+<<<<<<< HEAD
 /**
  * Attempt to disarm the target mob.
  * Will shove the target mob back, and drop them if they're in front of something dense
@@ -377,6 +372,8 @@
 			return TRUE
 	return FALSE
 
+=======
+>>>>>>> 68677dc7214 (Disarm refactor, plus shoving people with shields (#80123))
 /mob/living/carbon/blob_act(obj/structure/blob/B)
 	if (stat == DEAD)
 		return
@@ -887,6 +884,12 @@
 			continue
 		organs -= organ_type
 	GLOB.bioscrambler_valid_organs = organs
+
+/mob/living/carbon/get_shove_flags(mob/living/shover, obj/item/weapon)
+	. = ..()
+	. |= SHOVE_CAN_STAGGER
+	if(IsKnockdown() && !IsParalyzed())
+		. |= SHOVE_CAN_KICK_SIDE
 
 #undef SHAKE_ANIMATION_OFFSET
 #undef PERSONAL_SPACE_DAMAGE
