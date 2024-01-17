@@ -438,3 +438,18 @@
       character preview anymore.
   - bugfix: Sections will be more polite by not stealing focus from Input boxes in
       TGUI
+2024-01-17:
+  SkyratBot:
+  - qol: Using a Lawyer badge in your hand now shows a thought bubble with the badge,
+      rather than giving a lousy message in your chat.
+  - image: the plumbing chemical splitter no longer has a wrongly rotated direction
+  - bugfix: Signers no longer use the wrong verb when speaking directly into a radio
+      for the first message after toggling sign language.
+  - refactor: Moved the updating of verb variables into a new method which is called
+      earlier in living's say, which should avoid this happening for other things
+      which updated their verbs the same way.
+  jjpark-kb:
+  - rscadd: the bluespace miner will now produce more sheets depending on the matter
+      bins' tier
+  - rscadd: the bluespace miner is now also found through bepis-tech
+  - rscadd: the bluespace miner is now wrenchable, it won't work unanchored though
