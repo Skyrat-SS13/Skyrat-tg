@@ -175,10 +175,17 @@
 		var/is_stack = ispath(being_built.build_path, /obj/item/stack)
 		var/coeff = (is_stack ? 1 : creation_efficiency) // Stacks are unaffected by production coefficient
 
+<<<<<<< HEAD
 		var/multiplier = round(text2num(params["multiplier"]))
 		if(!multiplier || !IS_FINITE(multiplier))
 			return
 		multiplier = clamp(multiplier, 1, 50)
+=======
+/// Begins the act of making the given design the given number of items
+/// Does not check or use materials/power/etc
+/obj/machinery/autolathe/proc/start_making(datum/design/design, build_count, mob/user, build_time_per_item, list/materials_per_item)
+	PROTECTED_PROC(TRUE)
+>>>>>>> 216bfa69390 (swap private procs on production procs to protected instead (#80972))
 
 		//check for materials
 		var/list/materials_used = list()
@@ -206,9 +213,16 @@
 				custom_materials[used_material] += amount_needed
 			materials_used[used_material] = amount_needed
 
+<<<<<<< HEAD
 		if(!materials.has_materials(materials_used, coeff, multiplier))
 			say("Not enough materials for this operation!.")
 			return
+=======
+/// Callback for start_making, actually makes the item
+/// Called using timers started by start_making
+/obj/machinery/autolathe/proc/do_make_item(datum/design/design, list/materials_per_item, time_per_item, items_remaining)
+	PROTECTED_PROC(TRUE)
+>>>>>>> 216bfa69390 (swap private procs on production procs to protected instead (#80972))
 
 		//use power
 		var/total_amount = 0
@@ -226,7 +240,44 @@
 		var/time_per_item = is_stack ? 32 : ((32 * coeff * multiplier) ** 0.8) / multiplier
 		make_items(custom_materials, multiplier, is_stack, usr, time_per_item)
 
+<<<<<<< HEAD
 		return TRUE
+=======
+	var/turf/target = get_step(src, drop_direction)
+	if(isclosedturf(target))
+		target = get_turf(src)
+
+	var/atom/movable/created
+	if(is_stack)
+		created = new design.build_path(target, items_remaining)
+	else
+		created = new design.build_path(target)
+		created.set_custom_materials(materials_per_item.Copy())
+
+	created.pixel_x = created.base_pixel_x + rand(-6, 6)
+	created.pixel_y = created.base_pixel_y + rand(-6, 6)
+	for(var/atom/movable/content in created)
+		content.set_custom_materials(list()) // no
+	created.forceMove(target)
+
+	if(is_stack)
+		items_remaining = 0
+	else
+		items_remaining -= 1
+
+	if(!items_remaining)
+		finalize_build()
+		return
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, materials_per_item, time_per_item, items_remaining), time_per_item)
+
+/// Resets the icon state and busy flag
+/// Called at the end of do_make_item's timer loop
+/obj/machinery/autolathe/proc/finalize_build()
+	PROTECTED_PROC(TRUE)
+	icon_state = initial(icon_state)
+	busy = FALSE
+	update_static_data_for_all_viewers()
+>>>>>>> 216bfa69390 (swap private procs on production procs to protected instead (#80972))
 
 /obj/machinery/autolathe/crowbar_act(mob/living/user, obj/item/tool)
 	if(default_deconstruction_crowbar(tool))

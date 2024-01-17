@@ -292,6 +292,67 @@
 
 	return TRUE
 
+<<<<<<< HEAD
+=======
+/// Begins the act of making the given design the given number of items
+/// Does not check or use materials/power/etc
+/obj/machinery/rnd/production/proc/start_making(datum/design/design, build_count, mob/user, build_time_per_item, list/materials_per_item)
+	PROTECTED_PROC(TRUE)
+
+	busy = TRUE
+	update_static_data_for_all_viewers()
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, materials_per_item, build_time_per_item, build_count), build_time_per_item)
+
+/// Callback for start_making, actually makes the item
+/// Called using timers started by start_making
+/obj/machinery/rnd/production/proc/do_make_item(datum/design/design, list/materials_per_item, time_per_item, items_remaining)
+	PROTECTED_PROC(TRUE)
+
+	if(!items_remaining) // how
+		finalize_build()
+		return
+
+	if(!is_operational)
+		say("Unable to continue production, power failure.")
+		finalize_build()
+		return
+
+	var/is_stack = ispath(design.build_path, /obj/item/stack)
+	if(!materials.mat_container.has_materials(materials_per_item, multiplier = is_stack ? items_remaining : 1))
+		say("Unable to continue production, missing materials.")
+		return
+	materials.use_materials(materials_per_item, multiplier = is_stack ? items_remaining : 1, action = "built", name = "[design.name]")
+
+	var/atom/movable/created
+	if(is_stack)
+		created = new design.build_path(get_turf(src), items_remaining)
+	else
+		created = new design.build_path(get_turf(src))
+		created.set_custom_materials(materials_per_item.Copy())
+
+	created.pixel_x = created.base_pixel_x + rand(-6, 6)
+	created.pixel_y = created.base_pixel_y + rand(-6, 6)
+	for(var/atom/movable/content in created)
+		content.set_custom_materials(list()) // no
+
+	if(is_stack)
+		items_remaining = 0
+	else
+		items_remaining -= 1
+
+	if(!items_remaining)
+		finalize_build()
+		return
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, materials_per_item, time_per_item, items_remaining), time_per_item)
+
+/// Resets the busy flag
+/// Called at the end of do_make_item's timer loop
+/obj/machinery/rnd/production/proc/finalize_build()
+	PROTECTED_PROC(TRUE)
+	busy = FALSE
+	update_static_data_for_all_viewers()
+
+>>>>>>> 216bfa69390 (swap private procs on production procs to protected instead (#80972))
 // Stuff for the stripe on the department machines
 /obj/machinery/rnd/production/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
 	. = ..()
