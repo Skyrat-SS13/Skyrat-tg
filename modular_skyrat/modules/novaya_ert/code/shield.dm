@@ -7,9 +7,6 @@
 	righthand_file = 'modular_skyrat/modules/novaya_ert/icons/riot_right.dmi'
 	transparent = FALSE
 
-/obj/item/shield/riot/pointman/nri/shatter(mob/living/carbon/human/owner)
-	playsound(owner, 'sound/effects/glassbr3.ogg', 100)
-	new /obj/item/corpsman_broken((get_turf(src)))
 
 
 /obj/item/corpsman_broken
