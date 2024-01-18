@@ -36,13 +36,14 @@
 /obj/machinery/bluespace_miner/RefreshParts()
 	. = ..()
 
-	gas_temp = 100 //starts at 100, should go down to 80 at most.
+	gas_temp = 100 //starts at 90 temp, should go down to 60
 	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
 		gas_temp -= (laser_part.tier * 5)
 
-	processing_speed = 6 SECONDS //starts at 6 seconds, should go down to 4 seconds at most.
+	processing_speed = 6 SECONDS //starts at 5 seconds, should go down to 2
 	for(var/datum/stock_part/servo/servo_part in component_parts)
 		processing_speed -= (servo_part.tier * (0.5 SECONDS))
+	processing_speed = CEILING(processing_speed, 1)
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
@@ -156,6 +157,11 @@
 	if(default_deconstruction_crowbar(tool))
 		return TRUE
 
+/obj/machinery/bluespace_miner/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return ITEM_INTERACT_SUCCESS
+
 /obj/machinery/bluespace_miner/screwdriver_act(mob/living/user, obj/item/tool)
 	. = TRUE
 	if(..())
@@ -196,34 +202,27 @@
 	crate_name = "Bluespace Miner Circuitboard Crate"
 	crate_type = /obj/structure/closet/crate
 
-/* if we were going to go research based
 /datum/design/board/bluespace_miner
 	name = "Machine Design (Bluespace Miner)"
 	desc = "Allows for the construction of circuit boards used to build a bluespace miner."
 	id = "bluespace_miner"
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
-	category = list(RND_CATEGORY_MISC_MACHINERY)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
-
-/datum/experiment/scanning/points/bluespace_miner
-	name = "Bluespace Miner"
-	description = "We can learn from the past technology and create a better future-- with bluespace miners."
-	required_points = 5
-	required_atoms = list(
-		/obj/item/xenoarch/broken_item/tech = 1,
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
 	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/techweb_node/bluespace_miner
 	id = "bluespace_miner"
 	display_name = "Bluespace Miner"
 	description = "The future is here, where we can mine ores from the great bluespace sea."
-	prereq_ids = list("anomaly_research", "bluespace_power")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	hidden = TRUE
+	experimental = TRUE
+	prereq_ids = list("base")
 	design_ids = list(
 		"bluespace_miner",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	discount_experiments = list(/datum/experiment/scanning/points/bluespace_miner = 5000)
-*/
 
 #undef BLUESPACE_MINER_TOO_HOT
 #undef BLUESPACE_MINER_LOW_PRESSURE
