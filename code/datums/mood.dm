@@ -278,12 +278,12 @@
 			mood_screen_object.color = "#f15d36"
 
 	if (!conflicting_moodies.len) // theres no special icons, use the normal icon states
-		//NOVA EDIT ADDITION BEGIN - ALEXITHYMIA
+		//SKYRAT EDIT ADDITION BEGIN - ALEXITHYMIA
 		if(HAS_TRAIT(mob_parent, TRAIT_MOOD_NOEXAMINE))
 			mood_screen_object.icon_state = "mood5"
 			mood_screen_object.color = "#4b96c4"
 			return
-		//NOVA EDIT ADDITION END
+		//SKYRAT EDIT ADDITION END
 		mood_screen_object.icon_state = "mood[mood_level]"
 		return
 
@@ -342,7 +342,7 @@
 		if(SANITY_INSANE to SANITY_CRAZY)
 			msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
 	*/
-	//NOVA EDIT CHANGE BEGIN - ALEXITHYMIA
+	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
 		switch(sanity)
 			if(SANITY_GREAT to INFINITY)
@@ -359,7 +359,7 @@
 				msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
 	else
 		msg += span_notice("I don't really know.")
-	//NOVA EDIT CHANGE END
+	//SKYRAT EDIT CHANGE END
 
 	msg += span_notice("My current mood: ") //Short term
 	//ORIGINAL
@@ -384,7 +384,7 @@
 		if(MOOD_LEVEL_HAPPY4)
 			msg += "[span_boldnicegreen("I love life!")]\n"
 	*/
-	//NOVA EDIT CHANGE BEGIN - ALEXITHYMIA
+	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
 		switch(mood_level)
 			if(MOOD_LEVEL_SAD4)
@@ -407,10 +407,10 @@
 				msg += "[span_boldnicegreen("I love life!")]\n"
 	else
 		msg += "[span_notice("No clue.")]\n"
-	//NOVA EDIT CHANGE END
+	//SKYRAT EDIT CHANGE END
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
 	//if(mood_events.len) //ORIGINAL
-	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //NOVA EDIT CHANGE - ALEXITHYMIA
+	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
 		for(var/category in mood_events)
 			var/datum/mood_event/event = mood_events[category]
 			switch(event.mood_change)
@@ -436,7 +436,7 @@
 
 	update_beauty(new_area)
 	if (new_area.mood_bonus && (!new_area.mood_trait || HAS_TRAIT(source, new_area.mood_trait)))
-		add_mood_event("area", /datum/mood_event/area, new_area.mood_bonus, new_area.mood_message)
+		add_mood_event("area", /datum/mood_event/area, new_area.mood_bonus, 1, new_area.mood_message)
 	else
 		clear_mood_event("area")
 
