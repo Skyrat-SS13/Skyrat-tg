@@ -69,7 +69,7 @@
 	name = "ID, jumpsuit and shoes"
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	id = /obj/item/card/id/advanced/ghost_cafe
+	id = /obj/item/card/id/advanced/chameleon/ghost_cafe
 	back = /obj/item/storage/backpack/chameleon
 	backpack_contents = list(/obj/item/storage/box/syndie_kit/chameleon/ghostcafe = 1)
 
@@ -112,9 +112,10 @@
 	new /obj/item/clothing/neck/chameleon(src)
 	new /obj/item/storage/belt/chameleon(src)
 	new /obj/item/card/id/advanced/chameleon(src)
+	new /obj/item/stamp/chameleon(src)
 	new /obj/item/hhmirror/syndie(src)
 
-/obj/item/card/id/advanced/ghost_cafe
+/obj/item/card/id/advanced/chameleon/ghost_cafe
 	name = "\improper Cafe ID"
 	desc = "An ID straight from God."
 	icon_state = "card_centcom"
