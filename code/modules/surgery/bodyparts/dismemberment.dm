@@ -20,7 +20,7 @@
 		limb_owner.visible_message(span_danger("<B>[limb_owner]'s [name] is violently dismembered!</B>"))
 	INVOKE_ASYNC(limb_owner, TYPE_PROC_REF(/mob, emote), "scream")
 	playsound(get_turf(limb_owner), 'sound/effects/dismember.ogg', 80, TRUE)
-	limb_owner.add_mood_event("dismembered_[body_zone]", /datum/mood_event/dismembered, src)
+	limb_owner.add_mood_event("dismembered_[body_zone]", /datum/mood_event/dismembered, 1, src)
 	limb_owner.add_mob_memory(/datum/memory/was_dismembered, lost_limb = src)
 
 	if (wounding_type)
@@ -189,46 +189,6 @@
 		var/datum/wound/loss/dismembering = new
 		return dismembering.apply_dismember(src, wounding_type)
 
-/obj/item/organ/internal/eyes/on_bodypart_insert(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.eyes = src
-	return ..()
-
-/obj/item/organ/internal/ears/on_bodypart_insert(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.ears = src
-	return ..()
-
-/obj/item/organ/internal/tongue/on_bodypart_insert(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.tongue = src
-	return ..()
-
-/obj/item/organ/internal/brain/on_bodypart_insert(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.brain = src
-	return ..()
-
-/obj/item/organ/internal/eyes/on_bodypart_remove(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.eyes = null
-	return ..()
-
-/obj/item/organ/internal/ears/on_bodypart_remove(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.ears = null
-	return ..()
-
-/obj/item/organ/internal/tongue/on_bodypart_remove(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.tongue = null
-	return ..()
-
-/obj/item/organ/internal/brain/on_bodypart_remove(obj/item/bodypart/head/head)
-	if(istype(head))
-		head.brain = null
-	return ..()
-
 /obj/item/bodypart/chest/drop_limb(special, dismembered, move_to_floor = TRUE)
 	if(special)
 		return ..()
@@ -356,7 +316,7 @@
 
 	if(new_limb_owner.mob_mood?.has_mood_of_category("dismembered_[body_zone]"))
 		new_limb_owner.clear_mood_event("dismembered_[body_zone]")
-		new_limb_owner.add_mood_event("phantom_pain_[body_zone]", /datum/mood_event/reattachment, src)
+		new_limb_owner.add_mood_event("phantom_pain_[body_zone]", /datum/mood_event/reattachment, 1, src)
 
 	update_bodypart_damage_state()
 	if(can_be_disabled)
