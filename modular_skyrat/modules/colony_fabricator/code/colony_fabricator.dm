@@ -44,7 +44,7 @@
 	icon_state = "colony_lathe_working"
 	update_appearance()
 
-/obj/machinery/rnd/production/colony_lathe/do_print(path, amount)
+/obj/machinery/rnd/production/colony_lathe/finalize_build()
 	. = ..()
 	soundloop.stop()
 	set_light(l_range = 0)
