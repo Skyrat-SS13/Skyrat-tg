@@ -121,7 +121,7 @@
 
 	constant_dose_time += seconds_per_tick
 
-	our_guy.add_mood_event("tweaking", /datum/mood_event/stimulant_heavy/sundowner, name)
+	our_guy.add_mood_event("tweaking", /datum/mood_event/stimulant_heavy/sundowner, 1, name)
 
 	our_guy.adjustStaminaLoss(-10 * REM * seconds_per_tick)
 	our_guy.AdjustSleeping(-20 * REM * seconds_per_tick)
