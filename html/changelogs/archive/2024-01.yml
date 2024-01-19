@@ -496,3 +496,21 @@
   - bugfix: Reeling in items (and mobs) now respects movement resistance and anchorage.
   - bugfix: Fixed the fishing rod equipment UI being too small to fit its components.
   - sound: Reeling in something now plays a sound.
+2024-01-19:
+  SkyratBot:
+  - code_imp: removed the timeout_mod arg from add_mood_event, which was only used
+      for one thing and causes more issues than it's worth
+  - bugfix: Moodlets with parameters/effects e.g. limb reattachment moodlets should
+      probably disappear more appropriately.
+  - code_imp: Hub status shows if server is restarting, starting, time to start. The
+      "Time" is more accurate and based on roundstart now
+  - bugfix: Autolathes no longer allow you to duplicate materials at higher levels
+      of stock parts
+  - qol: Autolathes now show name instead of typepath when selecting a custom material
+  - qol: Autolathe now print out items one by one instead of waiting for all of them
+      to print at once
+  YakumoChen:
+  - rscadd: New cannibal "chicken" sandwich made from vox and teshari
+  - bugfix: Gave birdman and aquatic meat proper food types
+  theselfish:
+  - rscadd: Paper ERPers rejoice. You can now stamp stuff in the Cafe.

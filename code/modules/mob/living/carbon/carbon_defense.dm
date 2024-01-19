@@ -1,6 +1,4 @@
 #define SHAKE_ANIMATION_OFFSET 4
-#define PERSONAL_SPACE_DAMAGE 2
-#define ASS_SLAP_EXTRA_RANGE -1
 
 /mob/living/carbon/get_eye_protection()
 	. = ..()
@@ -161,10 +159,9 @@
 /mob/living/carbon/attack_drone_secondary(mob/living/basic/drone/user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-//ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user, list/modifiers)
-	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
-		. = TRUE
+	. = ..()
+
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
@@ -175,13 +172,8 @@
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 			ContactContractDisease(D)
 
-	for(var/datum/surgery/operations as anything in surgeries)
-		if(user.combat_mode)
-			break
-		if(body_position != LYING_DOWN && (operations.surgery_flags & SURGERY_REQUIRE_RESTING))
-			continue
-		if(operations.next_step(user, modifiers))
-			return TRUE
+	if(.)
+		return TRUE
 
 	for(var/datum/wound/wounds as anything in all_wounds)
 		if(wounds.try_handling(user))
@@ -246,136 +238,6 @@
 			return null
 
 	return dam_zone
-
-/**
- * Attempt to disarm the target mob.
- * Will shove the target mob back, and drop them if they're in front of something dense
- * or another carbon.
-*/
-/mob/living/carbon/proc/disarm(mob/living/carbon/target)
-	if(zone_selected == BODY_ZONE_PRECISE_MOUTH)
-		var/target_on_help_and_unarmed = !target.combat_mode && !target.get_active_held_item()
-		if(target_on_help_and_unarmed || HAS_TRAIT(target, TRAIT_RESTRAINED))
-			do_slap_animation(target)
-			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
-			visible_message("<span class='danger'>[src] slaps [target] in the face!</span>",
-				"<span class='notice'>You slap [target] in the face! </span>",\
-			"You hear a slap.")
-			target.dna?.species?.stop_wagging_tail(target)
-			return
-	//SKYRAT EDIT ADDITION BEGIN - EMOTES
-	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
-		if(HAS_TRAIT(target, TRAIT_PERSONALSPACE) && (target.stat != UNCONSCIOUS) && (!target.handcuffed)) //You need to be conscious and uncuffed to use Personal Space
-			if(target.combat_mode && (!HAS_TRAIT(target, TRAIT_PACIFISM))) //Being pacified prevents violent counters
-				var/obj/item/bodypart/affecting = src.get_bodypart(BODY_ZONE_HEAD)
-				if(affecting?.receive_damage(PERSONAL_SPACE_DAMAGE))
-					src.update_damage_overlays()
-				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were slapped instead!"),
-				span_danger("You tried slapping [target]'s ass, but they hit you back, ouch!"),
-				"You hear a slap.", ignored_mobs = list(target))
-				playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-				to_chat(target, span_danger("[src] tried slapping your ass, but you hit them back!"))
-				return
-			else
-				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were blocked!"),
-				span_danger("You tried slapping [target]'s ass, but they blocked you!"),
-				"You hear a slap.", ignored_mobs = list(target))
-				playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-				to_chat(target, span_danger("[src] tried slapping your ass, but you blocked them!"))
-				return
-		else
-			do_ass_slap_animation(target)
-			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
-				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
-				"You hear a slap.", ignored_mobs = list(target))
-			to_chat(target, "<span class='danger'>[src] slaps your ass!")
-			return
-	//SKYRAT EDIT END
-	do_attack_animation(target, ATTACK_EFFECT_DISARM)
-	playsound(target, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
-	if (ishuman(target))
-		var/mob/living/carbon/human/human_target = target
-		human_target.w_uniform?.add_fingerprint(src)
-
-	SEND_SIGNAL(target, COMSIG_HUMAN_DISARM_HIT, src, zone_selected)
-	var/shove_dir = get_dir(loc, target.loc)
-	var/turf/target_shove_turf = get_step(target.loc, shove_dir)
-	var/shove_blocked = FALSE //Used to check if a shove is blocked so that if it is knockdown logic can be applied
-	var/turf/target_old_turf = target.loc
-
-	//Are we hitting anything? or
-	if(SEND_SIGNAL(target_shove_turf, COMSIG_CARBON_DISARM_PRESHOVE) & COMSIG_CARBON_ACT_SOLID)
-		shove_blocked = TRUE
-	else
-		target.Move(target_shove_turf, shove_dir)
-		if(get_turf(target) == target_old_turf)
-			shove_blocked = TRUE
-
-	if(!shove_blocked)
-		target.setGrabState(GRAB_PASSIVE)
-
-	if(target.IsKnockdown() && !target.IsParalyzed()) //KICK HIM IN THE NUTS
-		target.Paralyze(SHOVE_CHAIN_PARALYZE)
-		target.visible_message(span_danger("[name] kicks [target.name] onto [target.p_their()] side!"),
-						span_userdanger("You're kicked onto your side by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-		to_chat(src, span_danger("You kick [target.name] onto [target.p_their()] side!"))
-		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, SetKnockdown), 0), SHOVE_CHAIN_PARALYZE)
-		log_combat(src, target, "kicks", "onto their side (paralyzing)")
-
-	var/directional_blocked = FALSE
-	var/can_hit_something = (!target.is_shove_knockdown_blocked() && !target.buckled)
-
-	//Directional checks to make sure that we're not shoving through a windoor or something like that
-	if(shove_blocked && can_hit_something && (shove_dir in GLOB.cardinals))
-		var/target_turf = get_turf(target)
-		for(var/obj/obj_content in target_turf)
-			if(obj_content.flags_1 & ON_BORDER_1 && obj_content.dir == shove_dir && obj_content.density)
-				directional_blocked = TRUE
-				break
-		if(target_turf != target_shove_turf && !directional_blocked) //Make sure that we don't run the exact same check twice on the same tile
-			for(var/obj/obj_content in target_shove_turf)
-				if(obj_content.flags_1 & ON_BORDER_1 && obj_content.dir == REVERSE_DIR(shove_dir) && obj_content.density)
-					directional_blocked = TRUE
-					break
-
-	if(can_hit_something)
-		//Don't hit people through windows, ok?
-		if(!directional_blocked && SEND_SIGNAL(target_shove_turf, COMSIG_CARBON_DISARM_COLLIDE, src, target, shove_blocked) & COMSIG_CARBON_SHOVE_HANDLED)
-			return
-		if(directional_blocked || shove_blocked)
-			target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
-			target.visible_message(span_danger("[name] shoves [target.name], knocking [target.p_them()] down!"),
-				span_userdanger("You're knocked down from a shove by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You shove [target.name], knocking [target.p_them()] down!"))
-			log_combat(src, target, "shoved", "knocking them down")
-			return
-
-	target.visible_message(span_danger("[name] shoves [target.name]!"),
-		span_userdanger("You're shoved by [name]!"), span_hear("You hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, src)
-	to_chat(src, span_danger("You shove [target.name]!"))
-
-	//Take their lunch money
-	var/target_held_item = target.get_active_held_item()
-	var/append_message = ""
-	if(!is_type_in_typecache(target_held_item, GLOB.shove_disarming_types)) //It's too expensive we'll get caught
-		target_held_item = null
-
-	if(target_held_item && target.get_timed_status_effect_duration(/datum/status_effect/staggered))
-		target.dropItemToGround(target_held_item)
-		append_message = "causing [target.p_them()] to drop [target_held_item]"
-		target.visible_message(span_danger("[target.name] drops \the [target_held_item]!"),
-			span_warning("You drop \the [target_held_item]!"), null, COMBAT_MESSAGE_RANGE)
-
-	target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 10 SECONDS)
-
-	log_combat(src, target, "shoved", append_message)
-
-/mob/living/carbon/proc/is_shove_knockdown_blocked() //If you want to add more things that block shove knockdown, extend this
-	for (var/obj/item/clothing/clothing in get_equipped_items())
-		if(clothing.clothing_flags & BLOCKS_SHOVE_KNOCKDOWN)
-			return TRUE
-	return FALSE
 
 /mob/living/carbon/blob_act(obj/structure/blob/B)
 	if (stat == DEAD)
@@ -888,6 +750,10 @@
 		organs -= organ_type
 	GLOB.bioscrambler_valid_organs = organs
 
+/mob/living/carbon/get_shove_flags(mob/living/shover, obj/item/weapon)
+	. = ..()
+	. |= SHOVE_CAN_STAGGER
+	if(IsKnockdown() && !IsParalyzed())
+		. |= SHOVE_CAN_KICK_SIDE
+
 #undef SHAKE_ANIMATION_OFFSET
-#undef PERSONAL_SPACE_DAMAGE
-#undef ASS_SLAP_EXTRA_RANGE
