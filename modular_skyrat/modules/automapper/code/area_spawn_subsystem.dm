@@ -336,16 +336,16 @@ SUBSYSTEM_DEF(area_spawn)
 
 		for (var/list/zlevel_turfs as anything in found_area.get_zlevel_turf_lists())
 			for(var/turf/area_turf as anything in zlevel_turfs)
-			// Don't spawn if there's already a desired_atom here.
-			if(is_type_on_turf(area_turf, desired_atom))
-				continue
+				// Don't spawn if there's already a desired_atom here.
+				if(is_type_on_turf(area_turf, desired_atom))
+					continue
 
-			for(var/over_atom_type in over_atoms)
-				// Spawn on the first one we find in the turf and stop.
-				if(is_type_on_turf(area_turf, over_atom_type))
-					new desired_atom(area_turf)
-					// Break the over_atom_type loop.
-					break
+				for(var/over_atom_type in over_atoms)
+					// Spawn on the first one we find in the turf and stop.
+					if(is_type_on_turf(area_turf, over_atom_type))
+						new desired_atom(area_turf)
+						// Break the over_atom_type loop.
+						break
 
 /obj/effect/turf_test
 	name = "PASS"
