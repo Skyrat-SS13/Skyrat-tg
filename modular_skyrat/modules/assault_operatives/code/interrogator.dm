@@ -207,11 +207,12 @@
 	var/obj/structure/test_structure = new() // This is apparently the most intuative way to check if a turf is able to support entering.
 
 	for(var/area/station/maintenance/maint_area in GLOB.areas)
-		for(var/turf/floor as anything in maint_area.get_contained_turfs())
-			if(!is_station_level(floor.z))
-				continue
-			if(floor.Enter(test_structure))
-				possible_turfs += floor
+		for(var/list/zlevel_turfs as anything in maint_area.get_zlevel_turf_lists())
+			for(var/turf/area_turf as anything in zlevel_turfs)
+				if(!is_station_level(area_turf.z))
+					continue
+				if(area_turf.Enter(test_structure))
+					possible_turfs += area_turf
 	qdel(test_structure)
 
 	//Pick a turf to spawn at if we can
