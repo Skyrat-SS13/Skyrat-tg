@@ -148,7 +148,7 @@
 
 /obj/item/clothing/suit/croptop
 	name = "crop top turtleneck"
-	desc = "A comfy looking turtleneck that exposes your midriff, fashionable but makes the point of a sweater moot."
+	desc = "A comfy looking turtleneck that exposes your midriff, fashionable but makes the point of a sweater moot. Now with Pycroft polychromatic tech!"
 	icon_state = "croptop"
 	greyscale_config = /datum/greyscale_config/croptop
 	greyscale_config_worn = /datum/greyscale_config/croptop/worn
@@ -159,6 +159,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/croptop/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/gags_recolorable)
+	update_icon(UPDATE_OVERLAYS)
 
 /obj/item/clothing/suit/varsity
 	name = "varsity jacket"
