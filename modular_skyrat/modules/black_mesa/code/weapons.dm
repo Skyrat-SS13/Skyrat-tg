@@ -44,10 +44,6 @@
 	repairable_by = /obj/item/stack/sheet/iron //what to repair the shield with
 
 
-/obj/item/shield/riot/pointman/hecu/shatter(mob/living/carbon/human/owner)
-	playsound(owner, 'sound/effects/glassbr3.ogg', 100)
-	new /obj/item/ballistic_broken((get_turf(src)))
-
 /obj/item/ballistic_broken
 	name = "broken ballistic shield"
 	desc = "An unsalvageable, unrecoverable mess of armor steel and kevlar. Should've maintained it, huh?"
