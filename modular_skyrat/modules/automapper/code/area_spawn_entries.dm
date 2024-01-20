@@ -48,7 +48,7 @@
 
 /datum/area_spawn/bar_jukebox
 	target_areas = list(/area/station/commons/lounge, /area/station/service/bar/atrium)
-	desired_atom = /obj/machinery/jukebox/free_access
+	desired_atom = /obj/machinery/jukebox/public
 	mode = AREA_SPAWN_MODE_OPEN
 
 // Wall mounts. Use sparingly as walls are prime real estate

@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(jukeboxes)
 					volume = min(
 						50,
 						volume,
-						volume * ((max(1,volume*0.1 + 20 - distance)/80)**0.2 - (distance/100))
+						volume * ((max(1,volume*0.1 + jukebox.falloff_dist_offset - distance)/80)**0.2 - (distance/jukebox.falloff_dist_divider))
 					)
 					volume = round(volume,1)
 					if(volume < jukebox.volume*0.5)

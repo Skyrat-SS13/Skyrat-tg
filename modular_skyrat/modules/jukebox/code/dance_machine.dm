@@ -20,7 +20,10 @@
 	/// Current song selected
 	var/datum/track/selection = null
 	/// Volume of the songs played
-	var/volume = 100
+	var/volume = 50
+	//https://www.desmos.com/calculator/ybto1dyqzk
+	var/falloff_dist_offset = 20 // higher = jukebox can be heard from further away
+	var/falloff_dist_divider = 100 // lower = falloff begins sooner
 
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
@@ -38,8 +41,10 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
-/obj/machinery/jukebox/free_access
+/obj/machinery/jukebox/public
 	req_access = list()
+	falloff_dist_offset = 10
+	falloff_dist_divider = 50
 
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
