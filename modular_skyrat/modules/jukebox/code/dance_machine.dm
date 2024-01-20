@@ -38,6 +38,9 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
+/obj/machinery/jukebox/free_access
+	req_access = list()
+
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
 	songs = SSjukeboxes.songs
@@ -73,6 +76,10 @@
 		SSvis_overlays.add_vis_overlay(src, icon, "active", layer, plane, dir, alpha)
 		SSvis_overlays.add_vis_overlay(src, icon, "active", 0, EMISSIVE_PLANE, dir, alpha)
 
+/obj/machinery/jukebox/examine(mob/user)
+	. = ..()
+	if (active)
+		. += "Now playing: [selection.song_name]"
 
 /obj/machinery/jukebox/ui_status(mob/user)
 	if(!anchored)
