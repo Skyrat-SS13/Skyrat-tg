@@ -47,7 +47,7 @@
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 /datum/area_spawn/bar_jukebox
-	target_areas = list(/area/station/commons/lounge, /area/station/service/bar/atrium)
+	target_areas = list(/area/station/commons/lounge, /area/station/service/bar/atrium, /area/station/service/bar)
 	desired_atom = /obj/machinery/jukebox/public
 	mode = AREA_SPAWN_MODE_OPEN
 
