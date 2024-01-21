@@ -50,9 +50,6 @@
 	max_integrity = 200
 	var/repairable_by = /obj/item/stack/sheet/plasteel //what to repair the shield with
 
-/obj/item/shield/riot/pointman/shatter(mob/living/carbon/human/owner)
-	playsound(owner, 'sound/effects/glassbr3.ogg', 100)
-	new /obj/item/pointman_broken((get_turf(src)))
 
 /obj/item/shield/riot/pointman/attackby(obj/item/W, mob/user, params)
 	if(istype(W, repairable_by))

@@ -147,14 +147,23 @@
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/croptop
-	name = "black crop top turtleneck"
-	desc = "A comfy looking turtleneck that exposes your midriff, fashionable but makes the point of a sweater moot."
-	icon_state = "croptop_black"
+	name = "crop top turtleneck"
+	desc = "A comfy looking turtleneck that exposes your midriff, fashionable but makes the point of a sweater moot. Now with Pycroft polychromatic tech!"
+	icon_state = "croptop"
+	greyscale_config = /datum/greyscale_config/croptop
+	greyscale_config_worn = /datum/greyscale_config/croptop/worn
+	greyscale_colors = "#1d1b1b"
 	body_parts_covered = CHEST|ARMS
 	cold_protection = CHEST|ARMS
+	flags_1 = IS_PLAYER_COLORABLE_1
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/croptop/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/gags_recolorable)
+	update_icon(UPDATE_OVERLAYS)
 
 /obj/item/clothing/suit/varsity
 	name = "varsity jacket"
