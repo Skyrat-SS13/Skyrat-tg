@@ -436,7 +436,7 @@
 
 	update_beauty(new_area)
 	if (new_area.mood_bonus && (!new_area.mood_trait || HAS_TRAIT(source, new_area.mood_trait)))
-		add_mood_event("area", /datum/mood_event/area, new_area.mood_bonus, 1, new_area.mood_message)
+		add_mood_event("area", /datum/mood_event/area, new_area.mood_bonus, new_area.mood_message)
 	else
 		clear_mood_event("area")
 
