@@ -48,6 +48,8 @@
 
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
+	if(!length(SSjukeboxes.songs))
+		SSjukeboxes.reload_songs()
 	songs = SSjukeboxes.songs
 	if(length(songs))
 		selection = pick(songs)

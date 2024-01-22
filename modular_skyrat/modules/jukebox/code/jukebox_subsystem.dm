@@ -3,6 +3,7 @@
 SUBSYSTEM_DEF(jukeboxes)
 	name = "Jukeboxes"
 	wait = 5
+	init_order = INIT_ORDER_JUKEBOX
 	var/list/songs = list()
 	var/list/activejukeboxes = list()
 	var/list/freejukeboxchannels = list()
@@ -65,7 +66,8 @@ SUBSYSTEM_DEF(jukeboxes)
 				return activejukeboxes.Find(jukeinfo)
 	return FALSE
 
-/datum/controller/subsystem/jukeboxes/Initialize()
+/datum/controller/subsystem/proc/reload_songs()
+	songs = list()
 	var/list/tracks = flist("[global.config.directory]/jukebox_music/sounds/")
 	for(var/S in tracks)
 		var/datum/track/T = new()
@@ -78,6 +80,9 @@ SUBSYSTEM_DEF(jukeboxes)
 		T.song_beat = text2num(L[3])
 		T.song_associated_id = L[4]
 		songs |= T
+
+/datum/controller/subsystem/jukeboxes/Initialize()
+	reload_songs()
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
 	return SS_INIT_SUCCESS
