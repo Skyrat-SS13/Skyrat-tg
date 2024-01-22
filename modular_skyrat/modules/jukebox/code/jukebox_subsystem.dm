@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(jukeboxes)
 				return activejukeboxes.Find(jukeinfo)
 	return FALSE
 
-/datum/controller/subsystem/proc/reload_songs()
+/datum/controller/subsystem/jukeboxes/proc/reload_songs()
 	songs = list()
 	var/list/tracks = flist("[global.config.directory]/jukebox_music/sounds/")
 	for(var/S in tracks)
