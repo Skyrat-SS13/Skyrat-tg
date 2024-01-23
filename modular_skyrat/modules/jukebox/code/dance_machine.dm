@@ -15,8 +15,6 @@
 	var/list/datum/weakref/rangers = list()
 	/// World.time when the current song will stop playing, but also a cooldown between activations
 	var/stop = 0
-	/// List of /datum/tracks we can play
-	var/list/songs = list()
 	/// Current song selected
 	var/datum/track/selection = null
 	/// Volume of the songs played
@@ -48,14 +46,12 @@
 
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
-	songs = SSjukeboxes.songs
-	if(length(songs))
-		selection = pick(songs)
+	if(length(SSjukeboxes.songs))
+		selection = pick(SSjukeboxes.songs)
 
 /obj/machinery/jukebox/Destroy()
 	dance_over()
 	selection = null
-	songs.Cut()
 	return ..()
 
 /obj/machinery/jukebox/attackby(obj/item/O, mob/user, params)
