@@ -15,13 +15,6 @@ SUBSYSTEM_DEF(jukeboxes)
 	var/song_beat = 0
 	var/song_associated_id = null
 
-/datum/track/New(name, path, length, beat, assocID)
-	song_name = name
-	song_path = path
-	song_length = length
-	song_beat = beat
-	song_associated_id = assocID
-
 /datum/controller/subsystem/jukeboxes/proc/addjukebox(obj/machinery/jukebox/jukebox, datum/track/T, jukefalloff = 1)
 	if(!istype(T))
 		CRASH("[src] tried to play a song with a nonexistant track")
