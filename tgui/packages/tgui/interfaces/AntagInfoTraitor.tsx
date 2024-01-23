@@ -37,6 +37,7 @@ type Info = {
   has_uplink: BooleanLike;
   uplink_intro: string;
   uplink_unlock_info: string;
+  given_uplink: BooleanLike;
   objectives: Objective[];
 };
 
@@ -233,7 +234,7 @@ const CodewordsSection = (props) => {
 // SKYRAT EDIT: change height from 580 to 650
 export const AntagInfoTraitor = (props) => {
   const { data } = useBackend<Info>();
-  const { theme } = data;
+  const { theme, given_uplink } = data;
   return (
     <Window width={620} height={650} theme={theme}>
       <Window.Content>
@@ -248,9 +249,11 @@ export const AntagInfoTraitor = (props) => {
               </Stack.Item>
             </Stack>
           </Stack.Item>
-          <Stack.Item>
-            <UplinkSection />
-          </Stack.Item>
+          {!!given_uplink && (
+            <Stack.Item>
+              <UplinkSection />
+            </Stack.Item>
+          )}
           <Stack.Item>
             <CodewordsSection />
           </Stack.Item>
