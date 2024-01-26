@@ -219,6 +219,7 @@
 	glasses = /obj/item/clothing/glasses/welding/up
 	belt = /obj/item/storage/belt/utility/syndicate
 	gloves = /obj/item/clothing/gloves/combat
+	r_pocket = /obj/item/gun/energy/e_gun/mini
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
@@ -228,6 +229,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/chemical
 	gloves = /obj/item/clothing/gloves/color/black
 	back = /obj/item/storage/backpack/satchel
+	r_pocket = /obj/item/gun/energy/e_gun/mini
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Medical Officer"
@@ -297,6 +299,7 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack/satchel
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
+	belt = /obj/item/gun/energy/e_gun
 
 /datum/outfit/ds2/syndicate_command/admiral
 	name = "DS-2 Admiral"
