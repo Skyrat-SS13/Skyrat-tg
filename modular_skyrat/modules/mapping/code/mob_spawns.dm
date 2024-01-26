@@ -214,6 +214,7 @@
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
+		/obj/item/storage/box/syndie_kit/space_suit = 1,
 		)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/enginetechnician
 	glasses = /obj/item/clothing/glasses/welding/up
