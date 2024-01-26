@@ -23,8 +23,7 @@
 /obj/structure/closet/secure_closet/interdynefob/sa_locker/PopulateContents()
 	..()
 
-	new /obj/item/ammo_box/magazine/m9mm_aps(src)
-	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/pistol/aps(src)
 	new /obj/item/storage/bag/garment/station_admiral(src)
 	new /obj/item/radio/headset/interdyne/command(src)
 
@@ -59,6 +58,7 @@
 	new /obj/item/clothing/suit/armor/hos/maa_greatcoat(src)
 	new /obj/item/clothing/head/beret/sec/navywarden/syndicate(src)
 	new /obj/item/clothing/head/hats/hos/beret/syndicate(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/c20r(src)
 
 /obj/structure/closet/secure_closet/interdynefob/maa_locker/PopulateContents()
 	..()
