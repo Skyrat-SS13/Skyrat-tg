@@ -24,6 +24,7 @@
 	..()
 
 	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+	new /obj/item/ammo_box/magazine/m9mm_aps(src)
 	new /obj/item/storage/bag/garment/station_admiral(src)
 	new /obj/item/radio/headset/interdyne/command(src)
 
