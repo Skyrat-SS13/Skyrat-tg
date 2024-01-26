@@ -39,7 +39,9 @@
 		announce_to_ghosts(newAnomaly)
 
 /datum/round_event/anomaly/anomaly_ectoplasm/announce(fake)
-	priority_announce("Paranormal ectoplasmic outburst detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE
+	if(isnull(impact_area))
+		impact_area = placer.findValidArea()
+	priority_announce("Paranormal ectoplasmic outburst detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE - ORIGINAL: priority_announce("Paranormal ectoplasmic outburst detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
 
 /datum/event_admin_setup/anomaly_ectoplasm
 	///The admin-selected intensity

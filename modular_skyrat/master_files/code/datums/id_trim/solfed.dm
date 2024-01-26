@@ -5,6 +5,7 @@
 	department_color = COLOR_SOLFED_GOLD
 	subdepartment_color = COLOR_SOLFED_GOLD
 	sechud_icon_state = SECHUD_SOLFED
+	threat_modifier = -5 // Solfed Count as a police force
 
 /datum/id_trim/solfed/atmos/New()
 	. = ..()

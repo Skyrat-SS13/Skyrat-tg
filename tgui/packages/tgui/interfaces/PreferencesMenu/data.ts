@@ -1,4 +1,5 @@
 import { BooleanLike } from 'common/react';
+
 import { sendAct } from '../../backend';
 import { Gender } from './preferences/gender';
 
@@ -89,6 +90,8 @@ export type Quirk = {
   icon: string;
   name: string;
   value: number;
+  customizable: boolean;
+  customization_options?: string[];
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 };
 
@@ -186,6 +189,7 @@ export type PreferencesMenuData = {
     };
     secondary_features: Record<string, unknown>;
     supplemental_features: Record<string, unknown>;
+    manually_rendered_features: Record<string, string>;
 
     names: Record<string, string>;
 

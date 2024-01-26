@@ -182,7 +182,7 @@
 	. = ..()
 	update_icon_state()
 	update_icon()
-	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
+	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_STRAPON)
 
 /obj/item/strapon_dildo/update_icon_state()
 	. = ..()

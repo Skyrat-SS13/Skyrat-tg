@@ -173,18 +173,18 @@
 	duration = 1 SECONDS // worth tweaking?
 
 /datum/status_effect/dodgeroll_iframes/on_apply()
-	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(whiff))
+	RegisterSignal(owner, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(whiff))
 	return TRUE
 
 /datum/status_effect/dodgeroll_iframes/on_remove()
-	UnregisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS)
+	UnregisterSignal(owner, COMSIG_LIVING_CHECK_BLOCK)
 	return ..()
 
 /datum/status_effect/dodgeroll_iframes/proc/whiff()
 	SIGNAL_HANDLER
 	owner.balloon_alert_to_viewers("MISS!")
 	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
-	return SHIELD_BLOCK
+	return SUCCESSFUL_BLOCK
 
 /obj/item/claymore/dragonslayer/very_fucking_loud
 	name = "\proper Tempered Dragonslayer"

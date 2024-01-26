@@ -22,6 +22,8 @@
 		"flatpack_fuel_generator",
 		"flatpack_rtg",
 		"flatpack_thermo",
+		"flatpack_ore_silo",
+		"flatpack_turbine_team_fortress_two",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -200,6 +202,46 @@
 		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_ATMOS,
 	)
 	construction_time = 20 SECONDS
+
+// Ore silo except it beeps
+
+/datum/design/flatpack_ore_silo
+	name = "Flat-packed Ore Silo"
+	desc = "An all-in-one materials management solution. Connects resource-using machines \
+		through a network of distrobution systems."
+	id = "flatpack_ore_silo"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5,
+	)
+	build_path = /obj/item/flatpacked_machine/ore_silo
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_MATERIALS,
+	)
+	construction_time = 1 MINUTES
+
+// Wind turbine, produces tiny amounts of power when placed outdoors in an atmosphere, but makes significantly more if there's a storm in that area
+
+/datum/design/flatpack_turbine_team_fortress_two
+	name = "Flat-packed Miniature Wind Turbine"
+	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
+		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
+		and moved to any location you see fit. This one makes specialized engineering designs and tools."
+	id = "flatpack_turbine_team_fortress_two"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/flatpacked_machine/wind_turbine
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
+	)
+	construction_time = 30 SECONDS
 
 #undef FABRICATOR_CATEGORY_FLATPACK_MACHINES
 #undef FABRICATOR_SUBCATEGORY_MANUFACTURING

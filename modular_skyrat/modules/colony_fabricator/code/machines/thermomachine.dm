@@ -20,6 +20,7 @@
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 	flick("thermo_deploy", src)
+	setDir(dir)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/deployable/RefreshParts()
 	. = ..()
@@ -47,6 +48,10 @@
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 	)
+
+// This prevents some weird visual bugs with the inlet
+/obj/item/flatpacked_machine/thermomachine/give_deployable_component()
+	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, direction_setting = FALSE)
 
 // Greyscale config for the light on this machine
 

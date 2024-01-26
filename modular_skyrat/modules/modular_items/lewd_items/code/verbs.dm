@@ -12,6 +12,28 @@
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
 
+/mob/living/verb/reflexes_verb()
+    set name = "Toggle Reflexes"
+    set category = "IC"
+    if(!HAS_TRAIT_FROM(src, TRAIT_QUICKREFLEXES, REF(src)))
+        ADD_TRAIT(src, TRAIT_QUICKREFLEXES, REF(src))
+        to_chat(src, span_notice("[get_reflexes_gain_text()]"))
+    else
+        REMOVE_TRAIT(src, TRAIT_QUICKREFLEXES, REF(src))
+        to_chat(src, span_notice("[get_reflexes_lose_text()]"))
+
+/mob/living/proc/get_reflexes_gain_text()
+	return "You don't feel like being touched right now."
+
+/mob/living/proc/get_reflexes_lose_text()
+	return "You'll allow yourself to be touched now."
+
+/mob/living/silicon/get_reflexes_gain_text()
+	return "Our systems will disallow platonic contact."
+
+/mob/living/silicon/get_reflexes_lose_text()
+	return "Our systems will allow platonic contact."
+
 /mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))

@@ -220,6 +220,9 @@
 	liquid_height = -30
 	turf_height = -30
 
+/turf/open/floor/iron/submarine_perf/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
 /turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return
 

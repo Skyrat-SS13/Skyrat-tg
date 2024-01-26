@@ -13,6 +13,7 @@
 
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
+	name = "blink (Rapid)"
 	message = "blinks rapidly."
 
 //SKYRAT EDIT REMOVAL BEGIN - EMOTES - (Moved to modular_skyrat/modules/emotes/code/emotes.dm as /datum/emote/living/clap)

@@ -50,6 +50,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	var/list/ckeywhitelist
 	/// If set, is a list of job names of which can get the loadout item
 	var/list/restricted_roles
+	/// If set, is a list of job names of which can't get the loadout item
+	var/list/blacklisted_roles
 	/// If set, is a list of species which can get the loadout item
 	var/list/restricted_species
 	/// Whether the item is restricted to supporters
@@ -119,8 +121,10 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 		if(equipped_item)
 			if(INFO_NAMED in our_loadout[item_path])
 				equipped_item.name = our_loadout[item_path][INFO_NAMED]
+				equipped_item.on_loadout_custom_named()
 			if(INFO_DESCRIBED in our_loadout[item_path])
 				equipped_item.desc = our_loadout[item_path][INFO_DESCRIBED]
+				equipped_item.on_loadout_custom_described()
 		else
 			stack_trace("[type] on_equip_item(): Could not locate item (path: [item_path]) in [equipper]'s contents to set name/desc!")
 

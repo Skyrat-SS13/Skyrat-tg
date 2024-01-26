@@ -40,16 +40,12 @@
 
 	affected_mob.Paralyze(1 SECONDS)
 
-	var/before_cloneloss = affected_mob.getCloneLoss()
-	affected_mob.adjustCloneLoss(20, TRUE, TRUE)
-	var/after_cloneloss = affected_mob.getCloneLoss()
-
-	if(before_cloneloss == after_cloneloss)
+	if(!affected_mob.adjustBruteLoss(20, updating_health = TRUE, forced = TRUE))
 		visible_message(span_clockred("[src] fails to siphon [affected_mob]'s spirit!"))
 		return
 
 	playsound(loc, 'modular_skyrat/modules/clock_cult/sound/magic/ratvar_attack.ogg', 40)
-	if((affected_mob.stat == DEAD) || (affected_mob.getCloneLoss() >= affected_mob.maxHealth))
+	if((affected_mob.stat == DEAD) || (affected_mob.getBruteLoss() >= affected_mob.maxHealth))
 		affected_mob.do_jitter_animation()
 		affected_mob.death()
 		playsound(loc, 'sound/magic/exit_blood.ogg', 60)

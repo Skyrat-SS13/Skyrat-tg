@@ -269,7 +269,7 @@
 	yield = 4
 	potency = 15
 	growthstages = 3
-	rarity = 20
+	rarity = PLANT_MODERATELY_RARE
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 	species = "polypore" // silence unit test
 	genes = list(/datum/plant_gene/trait/fire_resistance)
@@ -404,4 +404,17 @@
 /obj/item/reagent_containers/cup/bowl/mushroom_bowl/update_icon_state()
 	if(!reagents.total_volume)
 		icon_state = "mushroom_bowl"
+	return ..()
+
+/obj/item/reagent_containers/cup/bowl/wood_bowl
+	name = "wooden bowl"
+	desc = "A bowl made out of wood. Primitive, but effective."
+	icon = 'icons/obj/mining_zones/ash_flora.dmi'
+	icon_state = "wood_bowl"
+	fill_icon_state = "fullbowl"
+	fill_icon = 'icons/obj/mining_zones/ash_flora.dmi'
+
+/obj/item/reagent_containers/cup/bowl/mushroom_bowl/update_icon_state()
+	if(!reagents.total_volume)
+		icon_state = "wood_bowl"
 	return ..()

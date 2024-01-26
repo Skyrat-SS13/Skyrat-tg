@@ -12,13 +12,13 @@
 	meat = /obj/item/food/meat/slab/monkey
 	knife_butcher_results = list(/obj/item/food/meat/slab/monkey = 5, /obj/item/stack/sheet/animalhide/monkey = 1)
 	inherent_traits = list(
-		TRAIT_NO_UNDERWEAR,
-		TRAIT_NO_BLOOD_OVERLAY,
 		TRAIT_GUN_NATURAL,
+		TRAIT_NO_AUGMENTS,
+		TRAIT_NO_BLOOD_OVERLAY,
+		TRAIT_NO_DNA_COPY,
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_VENTCRAWLER_NUDE,
 		TRAIT_WEAK_SOUL,
-		TRAIT_NO_TRANSFORMATION_STING,
-		TRAIT_NO_AUGMENTS,
 	)
 	no_equip_flags = ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_SUITSTORE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN | SLIME_EXTRACT
@@ -40,8 +40,6 @@
 	payday_modifier = 1.5
 	ai_controlled_species = TRUE
 
-
-
 /datum/species/monkey/random_name(gender,unique,lastname)
 	var/randname = "monkey ([rand(1,999)])"
 
@@ -61,7 +59,8 @@
 	C.RemoveElement(/datum/element/human_biter)
 
 /datum/species/monkey/check_roundstart_eligible()
-	if(check_holidays(MONKEYDAY))
+	// STOP ADDING MONKEY SUBTYPES YOU HEATHEN
+	if(check_holidays(MONKEYDAY) && id == SPECIES_MONKEY)
 		return TRUE
 	return ..()
 
@@ -168,11 +167,11 @@
 	build_all_button_icons()
 
 
-/obj/item/organ/internal/brain/primate/on_insert(mob/living/carbon/primate)
+/obj/item/organ/internal/brain/primate/on_mob_insert(mob/living/carbon/primate)
 	. = ..()
 	RegisterSignal(primate, COMSIG_MOVABLE_CROSS, PROC_REF(on_crossed), TRUE)
 
-/obj/item/organ/internal/brain/primate/on_remove(mob/living/carbon/primate)
+/obj/item/organ/internal/brain/primate/on_mob_remove(mob/living/carbon/primate)
 	. = ..()
 	UnregisterSignal(primate, COMSIG_MOVABLE_CROSS)
 
@@ -209,14 +208,6 @@
 		TRAIT_NOBLOOD,
 		TRAIT_NOHUNGER,
 		TRAIT_VENTCRAWLER_NUDE,
-	)
-	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/monkey,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/monkey,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/monkey,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/monkey,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/monkey,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/monkey,
 	)
 
 #undef MONKEY_SPEC_ATTACK_BITE_MISS_CHANCE

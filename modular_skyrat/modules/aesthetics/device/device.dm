@@ -15,4 +15,4 @@
 
 // This needs default but is a subtype. Pain.
 /obj/item/t_scanner/adv_mining_scanner
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/scanner.dmi'

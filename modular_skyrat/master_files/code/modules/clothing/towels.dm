@@ -15,6 +15,10 @@
 #define TOWEL_WORN_ICON 'modular_skyrat/master_files/icons/mob/clothing/towel.dmi'
 /// Icon path to the worn icon of the towel for digitigrades.
 #define TOWEL_WORN_ICON_DIGI 'modular_skyrat/master_files/icons/mob/clothing/towel_digi.dmi'
+/// Icon path to the left-hand inhand icons of the towel.
+#define TOWEL_LEFTHAND_ICON 'modular_skyrat/master_files/icons/mob/inhands/clothing/towel_lefthand.dmi'
+/// Icon path to the right-hand inhand icons of the towel.
+#define TOWEL_RIGHTHAND_ICON 'modular_skyrat/master_files/icons/mob/inhands/clothing/towel_righthand.dmi'
 
 /// How much cloth goes into a towel.
 #define TOWEL_CLOTH_AMOUNT 2
@@ -33,6 +37,9 @@
 	worn_icon_digi = TOWEL_WORN_ICON_DIGI
 	icon_state = "towel"
 	base_icon_state = "towel"
+	lefthand_file = TOWEL_LEFTHAND_ICON
+	righthand_file = TOWEL_RIGHTHAND_ICON
+	inhand_icon_state = "towel"
 	force = 0
 	throwforce = 0
 	throw_speed = 1
@@ -136,7 +143,7 @@
 
 	var/cleaning_themselves = target_mob == user
 
-	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
+	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you"] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
 
 	if(!cleaning_themselves)
 		to_chat(user, span_notice("You start drying [target_mob] up with [src]."))

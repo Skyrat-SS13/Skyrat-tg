@@ -29,6 +29,11 @@
 /datum/armament_entry/company_import/akh_frontier/deployables_fab/rapid_construction_fabricator
 	item_type = /obj/item/flatpacked_machine
 	cost = CARGO_CRATE_VALUE * 6
+	restricted = TRUE
+
+/datum/armament_entry/company_import/akh_frontier/deployables_fab/foodricator
+	item_type = /obj/item/flatpacked_machine/organics_ration_printer
+	cost = CARGO_CRATE_VALUE * 2
 
 // Various smaller appliances than the deployable machines below
 
@@ -43,6 +48,13 @@
 /datum/armament_entry/company_import/akh_frontier/appliances/water_synth
 	item_type = /obj/item/flatpacked_machine/water_synth
 
+/datum/armament_entry/company_import/akh_frontier/appliances/hydro_synth
+	item_type = /obj/item/flatpacked_machine/hydro_synth
+
+/datum/armament_entry/company_import/akh_frontier/appliances/sustenance_dispenser
+	item_type = /obj/item/flatpacked_machine/sustenance_machine
+	cost = PAYCHECK_COMMAND * 2
+
 // Flatpacked, ready to deploy machines
 
 /datum/armament_entry/company_import/akh_frontier/deployables_misc
@@ -54,6 +66,12 @@
 
 /datum/armament_entry/company_import/akh_frontier/deployables_misc/thermomachine
 	item_type = /obj/item/flatpacked_machine/thermomachine
+
+/datum/armament_entry/company_import/akh_frontier/deployables_misc/co2_cracker
+	item_type = /obj/item/flatpacked_machine/co2_cracker
+
+/datum/armament_entry/company_import/akh_frontier/deployables_misc/recycler
+	item_type = /obj/item/flatpacked_machine/recycler
 
 // Flatpacked, ready to deploy machines for power related activities
 
@@ -80,3 +98,4 @@
 
 /datum/armament_entry/company_import/akh_frontier/deployables/rtg
 	item_type = /obj/item/flatpacked_machine/rtg
+	restricted = TRUE

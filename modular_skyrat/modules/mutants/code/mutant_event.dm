@@ -24,7 +24,9 @@
 			break
 		if(try_to_mutant_infect(iterating_human, TRUE))
 			infectees++
-			notify_ghosts("[iterating_human] has been infected by the HNZ-1 pathogen!", source = iterating_human)
+			notify_ghosts("[iterating_human] has been infected by the HNZ-1 pathogen!",
+				source = iterating_human,
+			)
 
 /datum/round_event/mutant_infestation/announce(fake)
 	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alerts/alert2.ogg'), override_volume = TRUE)

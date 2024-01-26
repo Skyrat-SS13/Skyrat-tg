@@ -15,7 +15,6 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
 
 /obj/effect/overlay/water/top
 	icon_state = "top"

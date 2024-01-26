@@ -77,7 +77,7 @@
 	if (!destroy_on_removal)
 		create_deployable()
 
-/datum/component/toggle_attached_clothing/Destroy(force, silent)
+/datum/component/toggle_attached_clothing/Destroy(force)
 	unequip_deployable()
 	QDEL_NULL(deployable)
 	QDEL_NULL(toggle_action)

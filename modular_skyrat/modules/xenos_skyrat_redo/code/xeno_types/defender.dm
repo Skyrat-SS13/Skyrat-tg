@@ -9,28 +9,19 @@
 	icon_state = "aliendefender"
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	/// Holds the basic charge ability that the defender will be granted
-	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
-	/// Holds the wrecking ball tail sweep that the defender will be granted
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/tail_sweep
 	next_evolution = /mob/living/carbon/alien/adult/skyrat/warrior
 
 /mob/living/carbon/alien/adult/skyrat/defender/Initialize(mapload)
 	. = ..()
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep()
-	tail_sweep.Grant(src)
-
-	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender()
-	charge.Grant(src)
+	var/static/list/innate_actions = list(
+		/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep,
+		/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender,
+	)
+	grant_actions_by_list(innate_actions)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_heavy)
-
-/mob/living/carbon/alien/adult/skyrat/defender/Destroy()
-	QDEL_NULL(charge)
-	QDEL_NULL(tail_sweep)
-	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/defender/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel/small

@@ -7,29 +7,21 @@
 	maxHealth = 400
 	health = 400
 	icon_state = "alienpraetorian"
-	/// Holds the improved healing aura ability to be granted to the praetorian later
-	var/datum/action/cooldown/alien/skyrat/heal_aura/juiced/heal_aura_ability
-	/// Holds the less lethal tail sweep ability to be granted to the praetorian later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing/tail_sweep
 	melee_damage_lower = 25
 	melee_damage_upper = 30
 	next_evolution = /mob/living/carbon/alien/adult/skyrat/queen
 
 /mob/living/carbon/alien/adult/skyrat/praetorian/Initialize(mapload)
 	. = ..()
-	heal_aura_ability = new /datum/action/cooldown/alien/skyrat/heal_aura/juiced()
-	heal_aura_ability.Grant(src)
-
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing()
-	tail_sweep.Grant(src)
+	var/static/list/innate_actions = list(
+		/datum/action/cooldown/alien/skyrat/heal_aura/juiced,
+		/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing,
+	)
+	grant_actions_by_list(innate_actions)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
-
-/mob/living/carbon/alien/adult/skyrat/praetorian/Destroy()
-	QDEL_NULL(heal_aura_ability)
-	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/praetorian/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel/large

@@ -45,10 +45,10 @@
 	if(!outside_hearing)
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
 
-	var/datum/action/innate/leave_soulcatcher/leave_action = new
+	var/datum/action/innate/leave_soulcatcher/leave_action = new(src)
 	leave_action.Grant(src)
 
-	var/datum/action/innate/soulcatcher_user/soulcatcher_action = new
+	var/datum/action/innate/soulcatcher_user/soulcatcher_action = new(src)
 	soulcatcher_action.Grant(src)
 	var/datum/component/soulcatcher_user/user_component = AddComponent(/datum/component/soulcatcher_user)
 	soulcatcher_action.soulcatcher_user_component = WEAKREF(user_component)

@@ -10,7 +10,9 @@
 	anchored = TRUE
 	max_integrity = 200
 	pass_flags = PASSTABLE
-	custom_materials = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 6)
+	custom_materials = list(
+		/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 6,
+	)
 	drag_slowdown = 2
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
@@ -35,7 +37,7 @@
 	else
 		. += span_notice("It can hold [maximum_contained_items] items, and there is nothing in it presently.")
 
-	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click/b>.")
+	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click</b>.")
 	. += span_notice("With a <b>prying tool</b> of some sort, you could take [src] apart.")
 
 /obj/structure/millstone/Destroy()

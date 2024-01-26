@@ -52,7 +52,7 @@
 		var/turf/converted_turf = pick(valid_turfs)
 
 		if(isplatingturf(converted_turf))
-			converted_turf.PlaceOnTop(/turf/open/floor/bronze, flags = CHANGETURF_INHERIT_AIR)
+			converted_turf.place_on_top(/turf/open/floor/bronze, flags = CHANGETURF_INHERIT_AIR)
 			new /obj/effect/temp_visual/ratvar/floor(converted_turf)
 
 		else if(isopenturf(converted_turf))

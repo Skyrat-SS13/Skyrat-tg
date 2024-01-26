@@ -70,6 +70,9 @@
 	SIGNAL_HANDLER
 
 	examine_list += "<span>The safety is [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
+	var/keybinding = examiner.client?.prefs?.key_bindings?["toggle_safety"]?[1]
+	if (!isnull(keybinding))
+		examine_list += "Press [span_notice("[keybinding]")] with it in hand to toggle the safety."
 
 /// Small proc to update the actio button's icon, just so I can not have to copypaste the same thing several times.
 /datum/component/gun_safety/proc/update_action_button_state()

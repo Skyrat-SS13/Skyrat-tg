@@ -108,9 +108,6 @@
 	for(var/create_reagent in imbued_reagent)
 		living_target.reagents.add_reagent(create_reagent, REAGENT_WEAPON_INJECT_AMOUNT)
 
-	//now lets take damage corresponding to the amount of chems we have imbued (hit either 100 times or 50 times before it breaks)
-	parent_weapon.take_damage(length(imbued_reagent) * REAGENT_WEAPON_DAMAGE_MULTIPLIER)
-
 #undef MAX_IMBUE_STORAGE
 #undef REAGENT_CLOTHING_INJECT_AMOUNT
 #undef REAGENT_WEAPON_INJECT_AMOUNT

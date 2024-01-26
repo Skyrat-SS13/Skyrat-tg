@@ -7,9 +7,6 @@
 /datum/supply_pack/goody/rubber
 	special = TRUE
 
-/datum/supply_pack/goody/mars_single
-	special = TRUE
-
 /datum/supply_pack/goody/Survivalknives_single
 	special = TRUE
 

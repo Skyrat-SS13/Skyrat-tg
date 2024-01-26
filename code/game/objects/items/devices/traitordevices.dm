@@ -18,13 +18,13 @@ effective or pretty fucking useless.
 /obj/item/batterer
 	name = "mind batterer"
 	desc = "A strange device with twin antennas."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "batterer"
 	throwforce = 5
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
@@ -70,38 +70,37 @@ effective or pretty fucking useless.
 */
 
 /obj/item/healthanalyzer/rad_laser
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
-	special_desc = "This syndicate-modified health analyzer can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
 	var/irradiate = TRUE
 	var/stealth = FALSE
 	var/used = FALSE // is it cooling down?
 	var/intensity = 10 // how much damage the radiation does
 	var/wavelength = 10 // time it takes for the radiation to kick in, in seconds
 
-/obj/item/healthanalyzer/rad_laser/attack(mob/living/M, mob/living/user)
+/obj/item/healthanalyzer/rad_laser/interact_with_atom(atom/interacting_with, mob/living/user)
 	if(!stealth || !irradiate)
-		..()
+		. = ..()
 
-	if(!irradiate)
-		return
+	if(!ishuman(interacting_with) || !irradiate)
+		return .
 
-	var/mob/living/carbon/human/human_target = M
+	var/mob/living/carbon/human/human_target = interacting_with
 	if(istype(human_target) && !used && SSradiation.wearing_rad_protected_clothing(human_target)) //intentionally not checking for TRAIT_RADIMMUNE here so that tatortot can still fuck up and waste their cooldown.
-		to_chat(user, span_warning("[M]'s clothing is fully protecting [M.p_them()] from irradiation!"))
-		return
+		to_chat(user, span_warning("[interacting_with]'s clothing is fully protecting [interacting_with.p_them()] from irradiation!"))
+		return . | ITEM_INTERACT_BLOCKING
 
 	if(!used)
-		log_combat(user, M, "irradiated", src)
+		log_combat(user, interacting_with, "irradiated", src)
 		var/cooldown = get_cooldown()
 		used = TRUE
 		icon_state = "health1"
 		addtimer(VARSET_CALLBACK(src, used, FALSE), cooldown)
 		addtimer(VARSET_CALLBACK(src, icon_state, "health"), cooldown)
-		to_chat(user, span_warning("Successfully irradiated [M]."))
-		addtimer(CALLBACK(src, PROC_REF(radiation_aftereffect), M, intensity), (wavelength+(intensity*4))*5)
-		return
+		to_chat(user, span_warning("Successfully irradiated [interacting_with]."))
+		addtimer(CALLBACK(src, PROC_REF(radiation_aftereffect), interacting_with, intensity), (wavelength+(intensity*4))*5)
+		return . | ITEM_INTERACT_SUCCESS
 
 	to_chat(user, span_warning("The radioactive microlaser is still recharging."))
+	return . | ITEM_INTERACT_BLOCKING
 
 /obj/item/healthanalyzer/rad_laser/proc/radiation_aftereffect(mob/living/M, passed_intensity)
 	if(QDELETED(M) || !ishuman(M) || HAS_TRAIT(M, TRAIT_RADIMMUNE))
@@ -284,13 +283,10 @@ effective or pretty fucking useless.
 	return FALSE
 
 /obj/item/jammer
-	name = "suspicious transmitter" //SKYRAT CHANGE
-	desc = "A suspicious device vaguely resembling a radio, but without a speaker or microphone." //SKYRAT CHANGE
-	icon = 'icons/obj/device.dmi'
+	name = "radio jammer"
+	desc = "Device used to disrupt nearby radio communication."
+	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "jammer"
-	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
-	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
-	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 12
 

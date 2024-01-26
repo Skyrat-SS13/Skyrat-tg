@@ -9,14 +9,14 @@
 
 /obj/item/healthanalyzer
 	name = "health analyzer"
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "health"
 	inhand_icon_state = "healthanalyzer"
 	worn_icon_state = "healthanalyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	desc = "A hand-held body scanner capable of distinguishing vital signs of the subject. Has a side button to scan for chemicals, and can be toggled to scan wounds."
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
 	throwforce = 3
@@ -54,9 +54,15 @@
 		if(SCANMODE_WOUND)
 			to_chat(user, span_notice("You switch the health analyzer to report extra info on wounds."))
 
-/obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
-	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
-		return
+/obj/item/healthanalyzer/interact_with_atom(atom/interacting_with, mob/living/user)
+	if(!isliving(interacting_with))
+		return NONE
+	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again- ORIGINAL: if(!user.can_read(src) || user.is_blind())
+		return ITEM_INTERACT_BLOCKING
+
+	var/mob/living/M = interacting_with
+
+	. = ITEM_INTERACT_SUCCESS
 
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning
 
@@ -86,13 +92,14 @@
 
 	add_fingerprint(user)
 
-/obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	//if(!user.can_read(src) || user.is_blind()) - ORIGINAL
-	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyse again
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+/obj/item/healthanalyzer/interact_with_atom_secondary(atom/interacting_with, mob/living/user)
+	if(!isliving(interacting_with))
+		return NONE
+	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyze again - ORIGINAL: if(!user.can_read(src) || user.is_blind())
+		return ITEM_INTERACT_BLOCKING
 
-	chemscan(user, victim)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	chemscan(user, interacting_with)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/healthanalyzer/add_item_context(
 	obj/item/source,
@@ -170,14 +177,10 @@
 			render_list += "<span class='alert ml-1'>Fatigue level: [target.getStaminaLoss()]%.</span>\n"
 		else
 			render_list += "<span class='alert ml-1'>Subject appears to be suffering from fatigue.</span>\n"
-	if (target.getCloneLoss())
-		if(advanced)
-			render_list += "<span class='alert ml-1'>Cellular damage level: [target.getCloneLoss()].</span>\n"
-		else
-			render_list += "<span class='alert ml-1'>Subject appears to have [target.getCloneLoss() > 30 ? "severe" : "minor"] cellular damage.</span>\n"
 	if (!target.get_organ_slot(ORGAN_SLOT_BRAIN)) // kept exclusively for soul purposes
 		render_list += "<span class='alert ml-1'>Subject lacks a brain.</span>\n"
 
+	var/death_consequences_status_text // SKYRAT EDIT ADDITION: Death consequences quirk
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
 		if(LAZYLEN(carbontarget.get_traumas()))
@@ -199,6 +202,11 @@
 						trauma_desc += "permanent "
 				trauma_desc += trauma.scan_desc
 				trauma_text += trauma_desc
+				// SKYRAT EDIT ADDITION START: Death Consequences Quirk
+				if (istype(trauma, /datum/brain_trauma/severe/death_consequences))
+					var/datum/brain_trauma/severe/death_consequences/consequences_trauma = trauma
+					death_consequences_status_text = consequences_trauma.get_health_analyzer_link_text(user)
+				// SKYRAT EDIT ADDITION END: Death Consequences Quirk
 			render_list += "<span class='alert ml-1'>Cerebral traumas detected: subject appears to be suffering from [english_list(trauma_text)].</span>\n"
 		if(carbontarget.quirks.len)
 			render_list += "<span class='info ml-1'>Subject Major Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span>\n"
@@ -319,19 +327,9 @@
 		if(advanced && humantarget.has_dna())
 			render_list += "<span class='info ml-1'>Genetic Stability: [humantarget.dna.stability]%.</span>\n"
 
-		// Species and body temperature
+		// Hulk and body temperature
 		var/datum/species/targetspecies = humantarget.dna.species
-		var/mutant = humantarget.dna.check_mutation(/datum/mutation/human/hulk) \
-			|| targetspecies.mutantlungs != initial(targetspecies.mutantlungs) \
-			|| targetspecies.mutantbrain != initial(targetspecies.mutantbrain) \
-			|| targetspecies.mutantheart != initial(targetspecies.mutantheart) \
-			|| targetspecies.mutanteyes != initial(targetspecies.mutanteyes) \
-			|| targetspecies.mutantears != initial(targetspecies.mutantears) \
-			|| targetspecies.mutanttongue != initial(targetspecies.mutanttongue) \
-			|| targetspecies.mutantliver != initial(targetspecies.mutantliver) \
-			|| targetspecies.mutantstomach != initial(targetspecies.mutantstomach) \
-			|| targetspecies.mutantappendix != initial(targetspecies.mutantappendix) \
-			|| istype(humantarget.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/external/wings/functional)
+		var/mutant = humantarget.dna.check_mutation(/datum/mutation/human/hulk)
 
 		render_list += "<span class='info ml-1'>Species: [targetspecies.name][mutant ? "-derived mutant" : ""]</span>\n"
 		var/core_temperature_message = "Core temperature: [round(humantarget.coretemperature-T0C, 0.1)] &deg;C ([round(humantarget.coretemperature*1.8-459.67,0.1)] &deg;F)"
@@ -409,6 +407,11 @@
 	// SKYRAT EDIT ADDITION - Mutant stuff
 	if(target.GetComponent(/datum/component/mutant_infection))
 		render_list += span_userdanger("UNKNOWN PROTO-VIRAL INFECTION DETECTED. ISOLATE IMMEDIATELY.")
+	// SKYRAT EDIT END
+
+	// SKYRAT EDIT ADDITION - DEATH CONSEQUENCES QUIRK
+	if(death_consequences_status_text)
+		render_list += death_consequences_status_text
 	// SKYRAT EDIT END
 
 	if(tochat)
@@ -546,21 +549,24 @@
 	icon_state = "first_aid"
 	desc = "A helpful, child-proofed, and most importantly, extremely cheap MeLo-Tech medical scanner used to diagnose injuries and recommend treatment for serious wounds. While it might not sound very informative for it to be able to tell you if you have a gaping hole in your body or not, it applies a temporary holoimage near the wound with information that is guaranteed to double the efficacy and speed of treatment."
 	mode = SCANNER_NO_MODE
-	// Cooldown for when the analyzer will allow you to ask it for encouragement. Don't get greedy!
+	give_wound_treatment_bonus = TRUE
+
+	/// Cooldown for when the analyzer will allow you to ask it for encouragement. Don't get greedy!
 	var/next_encouragement
-	// The analyzer's current emotion. Affects the sprite overlays and if it's going to prick you for being greedy or not.
+	/// The analyzer's current emotion. Affects the sprite overlays and if it's going to prick you for being greedy or not.
 	var/emotion = AID_EMOTION_NEUTRAL
-	// Encouragements to play when attack_selfing
+	/// Encouragements to play when attack_selfing
 	var/list/encouragements = list("briefly displays a happy face, gazing emptily at you", "briefly displays a spinning cartoon heart", "displays an encouraging message about eating healthy and exercising", \
 			"reminds you that everyone is doing their best", "displays a message wishing you well", "displays a sincere thank-you for your interest in first-aid", "formally absolves you of all your sins")
-	// How often one can ask for encouragement
+	/// How often one can ask for encouragement
 	var/patience = 10 SECONDS
-	give_wound_treatment_bonus = TRUE
+	/// What do we scan for, only used in descriptions
+	var/scan_for_what = "serious injuries"
 
 /obj/item/healthanalyzer/simple/attack_self(mob/user)
 	if(next_encouragement < world.time)
 		playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
-		to_chat(user, span_notice("\The [src] makes a happy ping and [pick(encouragements)]!"))
+		to_chat(user, span_notice("[src] makes a happy ping and [pick(encouragements)]!"))
 		next_encouragement = world.time + 10 SECONDS
 		show_emotion(AID_EMOTION_HAPPY)
 	else if(emotion != AID_EMOTION_ANGRY)
@@ -569,35 +575,47 @@
 		violence(user)
 
 /obj/item/healthanalyzer/simple/proc/greed_warning(mob/user)
-	to_chat(user, span_warning("\The [src] displays an eerily high-definition frowny face, chastizing you for asking it for too much encouragement."))
+	to_chat(user, span_warning("[src] displays an eerily high-definition frowny face, chastizing you for asking it for too much encouragement."))
 	show_emotion(AID_EMOTION_ANGRY)
 
 /obj/item/healthanalyzer/simple/proc/violence(mob/user)
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 	if(isliving(user))
 		var/mob/living/L = user
-		to_chat(L, span_warning("\The [src] makes a disappointed buzz and pricks your finger for being greedy. Ow!"))
+		to_chat(L, span_warning("[src] makes a disappointed buzz and pricks your finger for being greedy. Ow!"))
 		flick(icon_state + "_pinprick", src)
-		L.adjustBruteLoss(4)
-		L.dropItemToGround(src)
+		violence_damage(user)
+		user.dropItemToGround(src)
 		show_emotion(AID_EMOTION_HAPPY)
 
+/obj/item/healthanalyzer/simple/proc/violence_damage(mob/living/user)
+	user.adjustBruteLoss(4)
 
-/obj/item/healthanalyzer/simple/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
-	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
-		return
+/obj/item/healthanalyzer/simple/interact_with_atom(atom/interacting_with, mob/living/user)
+	if(!isliving(interacting_with))
+		return NONE
+	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL: if(!user.can_read(src) || user.is_blind())
+		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)
-	user.visible_message(span_notice("[user] scans [patient] for serious injuries."), span_notice("You scan [patient] for serious injuries."))
+	user.visible_message(
+		span_notice("[user] scans [interacting_with] for [scan_for_what]."),
+		span_notice("You scan [interacting_with] for [scan_for_what]."),
+	)
 
-	if(!istype(patient))
+	if(!iscarbon(interacting_with))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
-		to_chat(user, span_notice("\The [src] makes a sad buzz and briefly displays an unhappy face, indicating it can't scan [patient]."))
+		to_chat(user, span_notice("[src] makes a sad buzz and briefly displays an unhappy face, indicating it can't scan [interacting_with]."))
 		show_emotion(AI_EMOTION_SAD)
-		return
+		return ITEM_INTERACT_BLOCKING
 
-	woundscan(user, patient, src, simple_scan = TRUE)
+	do_the_scan(interacting_with, user)
 	flick(icon_state + "_pinprick", src)
+	update_appearance(UPDATE_OVERLAYS)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/healthanalyzer/simple/proc/do_the_scan(mob/living/carbon/scanning, mob/living/user)
+	woundscan(user, scanning, src, simple_scan = TRUE)
 
 /obj/item/healthanalyzer/simple/update_overlays()
 	. = ..()
@@ -636,39 +654,14 @@
 	encouragements = list("encourages you to take your medication", "briefly displays a spinning cartoon heart", "reasures you about your condition", \
 			"reminds you that everyone is doing their best", "displays a message wishing you well", "displays a message saying how proud it is that you're taking care of yourself", "formally absolves you of all your sins")
 	patience = 20 SECONDS
+	scan_for_what = "diseases"
 
-/obj/item/healthanalyzer/simple/disease/greed_warning(mob/user)
-	to_chat(user, span_warning("\The [src] displays an eerily high-definition frowny face, chastizing you for asking it for too much encouragement."))
-	show_emotion(AID_EMOTION_ANGRY)
+/obj/item/healthanalyzer/simple/disease/violence_damage(mob/living/user)
+	user.adjustBruteLoss(1)
+	user.reagents.add_reagent(/datum/reagent/toxin, rand(1, 3))
 
-/obj/item/healthanalyzer/simple/disease/violence(mob/user)
-	playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
-	if(isliving(user))
-		var/mob/living/L = user
-		to_chat(L, span_warning("\The [src] makes a disappointed buzz and pricks your finger for being greedy. Ow!"))
-		flick(icon_state + "_pinprick", src)
-		L.adjustBruteLoss(1)
-		L.reagents.add_reagent(/datum/reagent/toxin, rand(1, 3))
-		L.dropItemToGround(src)
-		show_emotion(AID_EMOTION_ANGRY)
-
-/obj/item/healthanalyzer/simple/disease/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
-	if(!user.can_read(src) || user.is_blind())
-		return
-
-	add_fingerprint(user)
-	user.visible_message(span_notice("[user] scans [patient] for diseases."), span_notice("You scan [patient] for diseases."))
-
-	if(!istype(user))
-		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
-		to_chat(user, span_notice("\The [src] makes a sad buzz and briefly displays a frowny face, indicating it can't scan [patient]."))
-		emotion = AID_EMOTION_SAD
-		update_appearance(UPDATE_OVERLAYS)
-		return
-
-	diseasescan(user, patient, src) // this updates emotion
-	update_appearance(UPDATE_OVERLAYS)
-	flick(icon_state + "_pinprick", src)
+/obj/item/healthanalyzer/simple/disease/do_the_scan(mob/living/carbon/scanning, mob/living/user)
+	diseasescan(user, scanning, src)
 
 /obj/item/healthanalyzer/simple/disease/update_overlays()
 	. = ..()
@@ -684,7 +677,7 @@
 	if(emotion != AID_EMOTION_NEUTRAL)
 		addtimer(CALLBACK(src, PROC_REF(reset_emotions)), 4 SECONDS) // longer on purpose
 
-//Checks the individual for any diseases that are visible to the scanner, and displays the diseases in the attacked to the attacker.
+/// Checks the individual for any diseases that are visible to the scanner, and displays the diseases in the attacked to the attacker.
 /proc/diseasescan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/simple/scanner)
 	if(!istype(patient) || user.incapacitated())
 		return

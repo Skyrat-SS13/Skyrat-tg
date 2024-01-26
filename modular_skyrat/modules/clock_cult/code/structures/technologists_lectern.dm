@@ -65,8 +65,11 @@
 		primary_researcher = FALSE
 		log_game("A research ritual of [selected_research] was cancelled by deconstruction of [src].")
 		send_clock_message(null, "A research ritual has been disrupted in [get_area(src)]! All research data has been lost.", msg_ghosts = FALSE)
-		notify_ghosts("A research ritual was disrupted in [get_area(src)]", source = get_turf(src), action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Research ritual cancelled")
-
+		notify_ghosts("A research ritual was disrupted in [get_area(src)]",
+			source = get_turf(src),
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+			header = "Research ritual cancelled",
+		)
 
 	return ..()
 
@@ -295,7 +298,11 @@
 	playsound(target_turf, 'modular_skyrat/modules/clock_cult/sound/machinery/ark_deathrattle.ogg', 80, FALSE, pressure_affected = FALSE)
 	research_sigil = new(target_turf)
 	send_clock_message(null, "A research ritual has begun in [get_area(src)], ensure nobody stops it until it is completed in [DisplayTimeText(selected_research.time_to_research)]!", msg_ghosts = FALSE)
-	notify_ghosts("[owner] has begun a research ritual in [get_area(src)]", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Research ritual")
+	notify_ghosts("[owner] has begun a research ritual in [get_area(src)]",
+		source = src,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Research ritual"
+	)
 	log_game("[owner] began a research ritual of [selected_research.name] in [get_area(src)].")
 
 	research_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_research), owner), selected_research.time_to_research, TIMER_STOPPABLE)
@@ -337,7 +344,11 @@
 		return
 
 	send_clock_message(null, "The research ritual in [get_area(src)] has completed, rejoice!", msg_ghosts = FALSE)
-	notify_ghosts("A research ritual in [get_area(src)] has been completed", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Research ritual completed")
+	notify_ghosts("A research ritual in [get_area(src)] has been completed",
+		source = src,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Research ritual completed",
+	)
 	log_game("Finished a research ritual of [selected_research.name] in [get_area(src)].")
 
 	researching = FALSE
@@ -417,10 +428,11 @@
 			apc_loop:
 				for(var/obj/machinery/power/apc/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc))
 					var/area/apc_area = get_area(controller) // make sure that no "critical" APCs lose their power (SM, namely)
-					for(var/turf/turf as anything in apc_area.contained_turfs)
-						for(var/obj/machinery/depowered_machinery in turf)
-							if(depowered_machinery.critical_machine)
-								continue apc_loop
+					for(var/list/zlevel_turfs as anything in apc_area.get_zlevel_turf_lists())
+						for(var/turf/area_turf as anything in zlevel_turfs)
+							for(var/obj/machinery/depowered_machinery in area_turf)
+								if(depowered_machinery.critical_machine)
+									continue apc_loop
 
 					controller.cell?.charge = 0
 

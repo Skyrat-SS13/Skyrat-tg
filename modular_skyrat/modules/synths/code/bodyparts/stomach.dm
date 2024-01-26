@@ -38,11 +38,29 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
 	materials = list(
-		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/organ/internal/stomach/synth
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
+
+/obj/item/organ/internal/stomach/synth/Insert(mob/living/carbon/receiver, special, movement_flags)
+	. = ..()
+	RegisterSignal(receiver, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(on_borg_charge))
+
+/obj/item/organ/internal/stomach/synth/Remove(mob/living/carbon/stomach_owner, special)
+	. = ..()
+	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
+
+///Handles charging the synth from borg chargers
+/obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, amount)
+	SIGNAL_HANDLER
+
+	if(owner.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
+		return
+
+	amount /= 50 // Lowers the charging amount so it isn't instant
+	owner.nutrition = min((owner.nutrition + amount), NUTRITION_LEVEL_ALMOST_FULL) // Makes sure we don't make the synth too full, which would apply the overweight slowdown

@@ -1156,3 +1156,269 @@
   - balance: it is faster to insert food into the worm barrel
   - code_imp: removed a meaningless var from ash farming components
   - code_imp: moved some code to become procs for easier use for ash farming
+2023-10-24:
+  CandleJaxx:
+  - rscadd: roboticists can now wear more clothing? yeah
+  GoldenAlpharex:
+  - rscdel: Yawns no longer spread to other people. We gave it a honest try, it just
+      wasn't working well for us.
+  Hatterhat:
+  - balance: Medicells no longer require reagents to print because reagent costs for
+      lathe designs got depreciated. Rejoice.
+  - balance: Oppressive force relocation cell is made like the body teleporter cell
+      (with a bluespace slime extract or something).
+  RatFromTheJungle:
+  - qol: most neck items are now small-sized
+  SkyratBot:
+  - bugfix: Entering a virtual domain should no longer give you a message that it
+      doesn't forbid items
+  - rscdel: Protolathe/circuit imprinter/techfab designs costing reagents is now totally
+      deprecated.
+  - bugfix: Food created by mixing chemicals once again has a reagent purity based
+      on the component chemicals.
+  - bugfix: Replaced error spaghetti in thunderdome kitchen with regular cooked spaghetti
+  - qol: The Command intercom now has a High-Volume setting like command headsets
+  - qol: A memo telling frequencies of station radio channels are now present near
+      the Command intercom and T-Comms room
+  - image: Station, Command, and Prison intercoms have received new sprites
+  - spellcheck: Station and Command intercom descriptions have been changed to tell
+      about their functionality
+  - bugfix: The polymorphic belt shouldn't work on animated objects. Logically wouldn't
+      have DNA.
+  nikothedude:
+  - bugfix: Synth puncture wounds now properly appear when manually generated (IV
+      drips)
+2023-10-25:
+  GoldenAlpharex:
+  - bugfix: Pollution (smoke et al.) will no longer be added to turfs when the subsystem
+      is offline. Basically, you can now turn off pollution properly.
+  - qol: Only player-made bonfires will produce smoke.
+  Melbert:
+  - refactor: Refactored zombies to use the regenerator component. Now they'll have
+      a slight glow/animation when the regeneration actually kicks in.
+  - qol: Monkey cubes have a slight animation associated now.
+  - bugfix: Cooking Deserts 101 grants all intended recipes
+  RatFromTheJungle:
+  - balance: made the colony fabricator's tools actually slower, removed the RCD per
+      request
+  SkyratBot:
+  - rscadd: Anomaly-locked MODsuit modules can now be varedited to have unremovable
+      cores, or can be spawned with this functionality by using the /prebuilt/locked
+      subtype.
+  - bugfix: The Infected Domain should no longer fill up with smelly, poisonous gas
+      over time.
+  - bugfix: plastic sheet produces 4 tiles via the tiles option without using the
+      crafting menu
+  - image: resprites air alarms
+  - bugfix: The nanites inside of thermal pistols are once again angry, and aggressively
+      want to burn/puncture people.
+  - image: Muzzle flashes got a new sprite, each direction included!
+  - image: Temperature Gun "BAKE" beams are now lava colored
+  - qol: improves blackout drunk character gameplay
+  - bugfix: fixed improper prob() placement that caused blackout character to be forced
+      sleep
+  - sound: added hiccup sound
+  - refactor: Hostile skeleton NPCs now use the basic mob framework. They're a little
+      smarter, and they also have a slightly improved set of attack effects and sounds.
+      They love to drink milk, but will be harmed greatly if any heartless spaceman
+      tricks them into drinking soymilk instead. Please report any bugs.
+  - refactor: Juggernaut constructs now use the basic mob framework. Please report
+      any bugs.
+  - qol: Universal scanners are now capable of recognizing the account owners and
+      assigned profit splits on barcodes. Cargo technicians are asked to do their
+      due diligence when matters call for it.
+  - bugfix: Ghost alerts have been tuned down a bit.
+  - qol: Railings now have Examine hints for how to deconstruct them
+  - bugfix: hallucination announcements use new announcement style
+  - bugfix: surgical trays no longer animate when opened
+  - rscadd: New automatic weapon for the crew - Disabler SMG. Capable of rapidly firing
+      weak disabler beams.
+  - bugfix: '[Tramstation] fixed a missing Scrubber in the Civilian Radiation Shelter'
+  - bugfix: You will no longer be asked to construct meteor shields on stations which
+      cannot be hit by meteors.
+  - bugfix: you may not enter knock path caretakers last refuge with the nuke disk
+  - bugfix: you can no longer cuff knock heretics in refuge
+  SpringSkipper:
+  - qol: clocked-out crew now has assistant access to maints
+  honkpocket:
+  - balance: Reverts the dual e-sword's block_chance from 45% back to 75%
+  jjpark-kb:
+  - qol: you can now directly feed worm/ant farms from plant bags
+  - qol: you can now directly harvest ash farms with plant bags
+  - bugfix: worm farms can reproduce with 2 now (instead of the 3 due to a logic error)
+  - bugfix: fixed fertilizer being deleted even if it didn't upgrade an ash farm
+  wiverns:
+  - rscadd: drake to service borgs
+2023-10-26:
+  OrionTheFox:
+  - balance: the flatpacked Fabricator and RTG are now restricted-access imports
+  SkyratBot:
+  - refactor: Hostile Nanotrasen mobs now use the basic mob framework. This should
+      make them a little smarter and more dangerous. Please report any bugs.
+  - bugfix: Russian mobs will now actually use those knives they're holding.
+  - bugfix: fixed hair gradients not applying correctly to huge afros
+  - refactor: Adds charges to omens and omen smiting rather than only being permanent
+      or one-use. Mirrors now grant seven bad luckers.
+  - qol: Reduces omen bad luck if nobody's nearby to witness the funny. (Ghosts are
+      included in the check!)
+  - bugfix: Fixed an issue where a monkey check in doorcrushing was never actually
+      able to pass. Also they screech now.
+  - qol: Add smoke particles to burning fireplace
+  - bugfix: Fixed gorilla attack cooldown. Now attacking speed to mobs is the same
+      as attacking speed to objects.
+  - bugfix: fixed hair gradients not applying properly on dismembered heads.
+  Smol42, OrionTheFox, & softservedeath:
+  - rscadd: Added a few new clothing items.
+  Stalkeros:
+  - rscadd: Added some helpful utility items to the loadout.
+  - rscadd: Loadout crucifix ungatelocked from being chaplain-only and now available
+      to be taken by anyone.
+  - code_imp: New job blacklisting proc for the loadout menu.
+  - rscadd: Saner employment contracts that no longer mention slavery and deity corporations.
+  Thlumyn:
+  - spellcheck: fixed millstone description typo
+  Zergspower:
+  - rscadd: Cargo borgs now gets a boxcutter! You can now manage packages properly
+  - qol: Mining borg survival tweaks, Service borg overload tweaks
+  - qol: Borgs can now have their own front panel sprite!
+  - qol: Cargo borgs can now hold unwrapped crates with the upgraded clamp
+  - qol: Reduces the cost and building time for cyborgs
+  - balance: Mining borgs now have an upgraded welder option for research, the PKA
+      nerf has been removed to match a normal one.
+  - refactor: Most borg code has been refactored into one master module folder
+2023-10-27:
+  GoldenAlpharex:
+  - spellcheck: Fixes a CRITICAL typo in one of the towel feedback messages.
+  Hatterhat:
+  - qol: Pocket medkits and first-aid pouches no longer use numerical stacking for
+      items stuffed in them.
+  Iamgoofball, Paxilmaniac, lessthnthree:
+  - rscadd: Assistants now spawn with Good Assistant Points Punchcards.
+  - rscadd: The punchcards can be punched by heads of staff, who spawn with punchers.
+  - rscadd: A punchcard can have six punches at maximum. Your starting punchcard comes
+      with a free punch.
+  - rscadd: Turning in a punchcard gives 50 credits for each punch directly to your
+      ID card's bank account, a box of chicken nuggets, and a new fresh punchcard.
+  - rscadd: Punchcards are turned in at the Good Assistant Points Redemption Machine
+      in the Cargo lobby.
+  - rscadd: Don't lose your punchcard, or you can't replace it.
+  LT3:
+  - bugfix: You can no longer use the GAP card to get infinite chicken nuggies
+  SkyratBot:
+  - rscadd: Reworked the colour schemes for the minor and major announcements as well
+      as their layout
+  - rscdel: Rolled back changes to deadchat notifications
+  - admin: Admins can now select the colour of their announcements as well as the
+      subheader when creating a command report.
+  - bugfix: Dying when using (most) shapeshift spells will now kill you rather than
+      having you pop out of the corpse of your previous form.
+  - bugfix: Damage will now be accurately carried between forms rather than being
+      slightly reduced upon each transformation.
+  - bugfix: venus human traps no longer die when on weeds
+  - qol: Examining an ammo box (incl. magazines) now tells you the top loaded round,
+      so if you have different ammo types in different magazines, you can at least
+      try to figure out which one is which.
+  - spellcheck: Ammo boxes (incl. magazines) can now be set to use different phrasing
+      for their ammunition (e.g. cartridges, shells, etc. instead of just mixing "rounds"
+      and "shells").
+  sqnztb:
+  - rscadd: Adds Vexcint's donation item.
+2023-10-28:
+  AshtonFox:
+  - image: '''Tajaran, Normal'' and ''Mammal, Short'' snout types now come with colorable
+      noses.'
+  GoldenAlpharex:
+  - bugfix: Inserting a comma as the first character of your emote will now once again
+      remove the space that separates your emote from your character's name! Yay for
+      correct spacing!
+  IsaacTheSharkWolf & Motho:
+  - rscadd: The derelict NSV Blueshift has been located and refitted for active duty
+      after being "lost with all hands" for nearly a year. NanoTrasen leadership has
+      declined to comment on why the ship went missing in the first place, sparking
+      rumors of esoteric circumstances regarding the ship's disappearance.
+  - config: Revamped Blueshift added back into rotation.
+  Kyo:
+  - rscadd: Adds a new, unique modsuit for Blueshields - The Praetorian Modsuit!
+  - rscadd: Adds the Praetorian modsuit to blueshield lockers.
+  - code_imp: Added the Praetorian modsuit to list of items removed from cryo, in
+      case a sleepy blueshield forgets to take off their suit.
+  Melbert:
+  - bugfix: Disablers and Lasers now show their on-impact effects on hit mobs again.
+  - bugfix: People held at gunpoint can now flinch when being hit.
+  - bugfix: Regenerating mobs no longer stop regenerating no matter hit with what.
+  - bugfix: Pressure damage is now properly modified by a mob's brute damage modifier.
+  - bugfix: Fixes some occasions which some effects (glass jaw, explodable worn items)
+      won't respond to hits.
+  - refactor: Refactored core code related to mobs sustaining damage.
+  Nerev4r:
+  - image: The Naga taur option has been replaced with a new sprite, with two Naga
+      variants.
+  - image: A new Drider option, Tarantula, has been added; as well as a new Tentacle
+      option.
+  - image: A new plug tail option, as well as a new set of wings.
+  Paxilmaniac:
+  - bugfix: the printable water synthesizer now only synthesizes water again
+  SkyratBot:
+  - bugfix: Mobs without the "advanced tool user" trait - such as monkeys - are no
+      longer able to interact with camera consoles.
+  - bugfix: Every misaligned railing ending has been corrected by the Nanotrasen Hall
+      Monitor's Lunchclub.
+  - bugfix: Wigs now properly follow your head when you're any non-standard height
+  - bugfix: If a mob you are shapeshifted into attempts to grow up into a different
+      kind of mob then you will stop being shapeshifted
+  - bugfix: The health bar on the mech diagnostic hud display should update consistently
+      now.
+  - balance: Sutures now heal a percentage of basic/animal max health instead of a
+      flat amount.
+  - bugfix: Monkeys can now properly attack parrots.
+  - bugfix: The Demonic Frost-Miner will no longer run around destroying the corpses
+      in its arena the moment the round begins.
+  projectkepler-ru:
+  - image: gave the sindano  proper inhand icon for both variant
+2023-10-29:
+  GoldenAlpharex:
+  - code_imp: Added support to the wet_floor component to make it so the wet overlay
+      could not be applied to certain turfs if desired.
+  - bugfix: Ice turfs no longer look tiled, and instead look smooth when placed next
+      to one-another.
+  Iajret:
+  - bugfix: fixed new disabler smg having 20x more shots
+  Kyo:
+  - bugfix: Digitigrade sprites for Praetorian modsuit will now work as intended.
+  Melbert:
+  - bugfix: Fixes being unable to open airlocks with telekinesis
+  SkyratBot:
+  - bugfix: Gnomes no longer runtime if they explode while sinking into the ground
+  - bugfix: Every person on the station now no longer has the Tranquility Evades the
+      Shield Pinky Finger Shovegrab unarmed combat technique, an ancient and forbidden
+      strike that allows anyone (literally anyone) to bypass all forms of blocking
+      defense by simply not being in combat mode when they shove or grab their target.
+      As a direct result, the chakra energy of the Spinward Sector has become severely
+      misaligned. Oh well.
+  - rscadd: Added a few fish related bounties.
+  - rscadd: Fish cases to store and preserve life fish within can be now printed from
+      the service techfab and the autolathe.
+  - sound: Dying with a SecHailer on your face will make a unique death sound
+  - code_imp: the deployable component has been tweaked and improved with some new
+      options to it
+  Zergspower:
+  - qol: Service Borg reagent mixers alphabetized
+  - bugfix: Fixes the oversight that prevented RP borgs from being able to use the
+      Hilbert Hotel ball in the Cafe
+2023-10-30:
+  LT3:
+  - bugfix: Blueshift now has PDA charging microwaves available similar to other maps
+  SkyratBot:
+  - bugfix: Light-Eaten objects can no longer emit light after being turned off and
+      then back on.
+  - code_imp: Flashlights now use light_on instead of defining their own variable.
+      Please report buggy behavior.
+2023-10-31:
+  SkyratBot:
+  - bugfix: Removed rare hard delete involving telecomms machines.
+  - spellcheck: Changed candy description to read better
+  - bugfix: Fixed an invisibility exploit on large mobs. Probably better this way
+  - rscadd: Corn oil is now produced from corn instead of regular vegetable oil.
+  - balance: Glycerol now uses corn oil instead of vegetable oil in it's recipe.
+  - bugfix: Grinding corn now produces oil when it previously only made cornmeal despite
+      having oil in it's reagents.

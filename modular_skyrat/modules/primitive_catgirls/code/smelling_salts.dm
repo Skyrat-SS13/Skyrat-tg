@@ -25,7 +25,7 @@
 
 /// If the right conditions are present (basically could this person be defibrilated), revives the target
 /obj/item/smelling_salts/proc/try_revive(mob/living/carbon/carbon_target, mob/user)
-	carbon_target.notify_ghost_cloning("You are being brought back to life!")
+	carbon_target.notify_revival("You are being brought back to life!")
 	carbon_target.grab_ghost()
 
 	user.balloon_alert_to_viewers("trying to revive [carbon_target]")

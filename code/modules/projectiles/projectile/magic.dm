@@ -173,41 +173,12 @@
 
 /obj/projectile/magic/animate/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	target.animate_atom_living(firer)
+	if(!is_type_in_typecache(target, GLOB.animatable_blacklist))
+		target.animate_atom_living(firer)
 
-/atom/proc/animate_atom_living(mob/living/owner = null)
-	if((isitem(src) || isstructure(src)) && !is_type_in_list(src, GLOB.animatable_blacklist))
-		if(istype(src, /obj/structure/statue/petrified))
-			var/obj/structure/statue/petrified/P = src
-			if(P.petrified_mob)
-				var/mob/living/L = P.petrified_mob
-				var/mob/living/basic/statue/S = new(P.loc, owner)
-				S.name = "statue of [L.name]"
-				if(owner)
-					S.faction = list("[REF(owner)]")
-				S.icon = P.icon
-				S.icon_state = P.icon_state
-				S.copy_overlays(P, TRUE)
-				S.color = P.color
-				S.atom_colours = P.atom_colours.Copy()
-				if(L.mind)
-					L.mind.transfer_to(S)
-					if(owner)
-						to_chat(S, span_userdanger("You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator."))
-				P.forceMove(S)
-				return
-		else
-			var/obj/O = src
-			if(isgun(O))
-				new /mob/living/simple_animal/hostile/mimic/copy/ranged(drop_location(), src, owner)
-			else
-				new /mob/living/simple_animal/hostile/mimic/copy(drop_location(), src, owner)
-
-	else if(istype(src, /mob/living/simple_animal/hostile/mimic/copy))
-		// Change our allegiance!
-		var/mob/living/simple_animal/hostile/mimic/copy/C = src
-		if(owner)
-			C.ChangeOwner(owner)
+///proc to animate the target into a living creature
+/atom/proc/animate_atom_living(mob/living/owner)
+	return
 
 /obj/projectile/magic/spellblade
 	name = "blade energy"
@@ -400,7 +371,7 @@
 		var/datum/antagonist/A = target.mind.has_antag_datum(/datum/antagonist/)
 		if(A)
 			poll_message = "[poll_message] Status:[A.name]."
-	var/list/mob/dead/observer/candidates = poll_candidates_for_mob(poll_message, ROLE_PAI, FALSE, 10 SECONDS, target)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates_for_mob(poll_message, check_jobban = ROLE_PAI, poll_time = 10 SECONDS, target_mob = target, pic_source = target, role_name_text = "bolt of possession")
 	if(target.stat == DEAD)//boo.
 		return
 	if(LAZYLEN(candidates))
@@ -481,7 +452,7 @@
 	speed = 0.3
 
 	/// The power of the zap itself when it electrocutes someone
-	var/zap_power = 8e6
+	var/zap_power = 2e4
 	/// The range of the zap itself when it electrocutes someone
 	var/zap_range = 15
 	/// The flags of the zap itself when it electrocutes someone
@@ -496,14 +467,14 @@
 
 /obj/projectile/magic/aoe/lightning/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	tesla_zap(src, zap_range, zap_power, zap_flags)
+	tesla_zap(source = src, zap_range = zap_range, power = zap_power, cutoff = 1e3, zap_flags = zap_flags)
 
 /obj/projectile/magic/aoe/lightning/Destroy()
 	QDEL_NULL(chain)
 	return ..()
 
 /obj/projectile/magic/aoe/lightning/no_zap
-	zap_power = 4e6
+	zap_power = 1e4
 	zap_range = 4
 	zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_LOW_POWER_GEN
 

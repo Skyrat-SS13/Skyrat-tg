@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/primitive_structures/icons/windows.dmi'
 	icon_state = "green_glass"
 	flags_1 = NONE
-	obj_flags = CAN_BE_HIT
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	can_be_unanchored = FALSE
 	fulltile = TRUE
-	flags_1 = NODECONSTRUCT_1 | PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1

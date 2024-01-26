@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	vis_flags = VIS_INHERIT_ID // Important for interaction with and visualization of openspace.
 	luminosity = 1
 	light_height = LIGHTING_HEIGHT_FLOOR
-	
+
 	///what /mob/oranges_ear instance is already assigned to us as there should only ever be one.
 	///used for guaranteeing there is only one oranges_ear per turf when assigned, speeds up view() iteration
 	var/mob/oranges_ear/assigned_oranges_ear
@@ -200,12 +200,12 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		for(var/A in B.contents)
 			qdel(A)
 		return
-	QDEL_LIST(blueprint_data)
+	LAZYCLEARLIST(blueprint_data)
 	flags_1 &= ~INITIALIZED_1
 	requires_activation = FALSE
 	..()
 
-	if (length(vis_contents))
+	if(length(vis_contents))
 		vis_contents.Cut()
 
 /// WARNING WARNING
@@ -228,9 +228,11 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		return
 
 	//move the turf
-	old_area.turfs_to_uncontain += src
+	LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, z, list())
+	LISTASSERTLEN(new_area.turfs_by_zlevel, z, list())
+	old_area.turfs_to_uncontain_by_zlevel[z] += src
+	new_area.turfs_by_zlevel[z] += src
 	new_area.contents += src
-	new_area.contained_turfs += src
 
 	//changes to make after turf has moved
 	on_change_area(old_area, new_area)
@@ -756,3 +758,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	explosive_resistance -= get_explosive_block()
 	inherent_explosive_resistance = explosion_block
 	explosive_resistance += get_explosive_block()
+
+/// Returns whether it is safe for an atom to move across this turf
+/turf/proc/can_cross_safely(atom/movable/crossing)
+	return TRUE

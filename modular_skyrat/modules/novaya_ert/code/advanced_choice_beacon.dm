@@ -1,7 +1,7 @@
 /obj/item/advanced_choice_beacon
 	name = "advanced choice beacon"
 	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "gangtool-red"
 	inhand_icon_state = null
 
@@ -121,8 +121,8 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
-	stun_projectile = /obj/projectile/bullet/a762x39/rubber
-	lethal_projectile = /obj/projectile/bullet/a762x39
+	stun_projectile = /obj/projectile/bullet/c27_54cesarzowa/rubber
+	lethal_projectile = /obj/projectile/bullet/c27_54cesarzowa
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
 	faction = list(FACTION_NEUTRAL, FACTION_ERT)
@@ -227,10 +227,9 @@
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)
 	new /obj/item/storage/toolbox/ammobox/full/l6_saw(src)
 	new /obj/item/storage/toolbox/ammobox/full/krinkov(src)
-	new /obj/item/storage/toolbox/ammobox/full/krinkov/emp(src)
-	new /obj/item/storage/toolbox/ammobox/full/krinkov/fire(src)
-	new /obj/item/storage/toolbox/ammobox/full/krinkov/ricochet(src)
-	new /obj/item/storage/toolbox/ammobox/full/krinkov/ap(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov(src)
 	new /obj/item/storage/toolbox/ammobox/full/nri_smg(src)
 	new /obj/item/storage/toolbox/ammobox/full/nri_smg(src)
 	new /obj/item/storage/toolbox/ammobox/full/aps(src)

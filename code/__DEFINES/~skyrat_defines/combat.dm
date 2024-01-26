@@ -1,4 +1,3 @@
-#define PUNCH_STAMINA_MULTIPLIER 2.6
 
 //Stamina threshold from which resisting a grab becomes hard
 #define STAMINA_THRESHOLD_HARD_RESIST 80
@@ -11,6 +10,9 @@
 #define GET_UP_FAST 0.6
 #define GET_UP_MEDIUM 1.5
 #define GET_UP_SLOW 3
+
+#define PERSONAL_SPACE_DAMAGE 2
+#define ASS_SLAP_EXTRA_RANGE -1
 
 //Stamina threshold for attacking slower with items
 #define STAMINA_THRESHOLD_TIRED_CLICK_CD 120

@@ -9,8 +9,6 @@
 	/// How much toxin damage did the mob have on them?
 	var/toxin_damage = 0
 
-	/// How much clone damage did the mob have on them?
-	var/clone_damage = 0
 	/// How much blood did the mob have?
 	var/stored_blood_volume = 0
 
@@ -27,7 +25,6 @@
 	burn_damage = tracked_mob.getFireLoss()
 	toxin_damage = tracked_mob.getToxLoss()
 	oxygen_damage = tracked_mob.getOxyLoss()
-	clone_damage = tracked_mob.getCloneLoss()
 	stored_blood_volume = tracked_mob.blood_volume
 
 	return TRUE
@@ -42,7 +39,6 @@
 	tracked_mob.setFireLoss(burn_damage)
 	tracked_mob.setToxLoss(toxin_damage)
 	tracked_mob.setOxyLoss(oxygen_damage)
-	tracked_mob.setCloneLoss(clone_damage)
 	tracked_mob.blood_volume = stored_blood_volume
 
 	return TRUE

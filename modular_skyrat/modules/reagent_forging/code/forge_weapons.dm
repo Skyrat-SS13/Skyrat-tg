@@ -4,6 +4,7 @@
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_worn.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	obj_flags = UNIQUE_RENAME
 	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
@@ -292,6 +293,8 @@
 		else
 			playsound(src, 'sound/weapons/parry.ogg', 75, TRUE)
 			owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
+		var/owner_turf = get_turf(owner)
+		new block_effect(owner_turf, COLOR_YELLOW)
 		return TRUE
 	return FALSE
 

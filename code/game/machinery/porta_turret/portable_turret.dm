@@ -133,6 +133,8 @@ DEFINE_BITFIELD(turret_flags, list(
 	if(!has_cover)
 		INVOKE_ASYNC(src, PROC_REF(popUp))
 
+	AddElement(/datum/element/hostile_machine)
+
 /obj/machinery/porta_turret/proc/toggle_on(set_to)
 	var/current = on
 	if (!isnull(set_to))
@@ -326,7 +328,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		//This code handles moving the turret around. After all, it's a portable turret!
 		if(!anchored && !isinspace())
 			set_anchored(TRUE)
-			SetInvisibility(INVISIBILITY_MAXIMUM, id=type)
+			RemoveInvisibility(id=type)
 			update_appearance()
 			to_chat(user, span_notice("You secure the exterior bolts on the turret."))
 			if(has_cover)
@@ -336,7 +338,7 @@ DEFINE_BITFIELD(turret_flags, list(
 			set_anchored(FALSE)
 			to_chat(user, span_notice("You unsecure the exterior bolts on the turret."))
 			power_change()
-			RemoveInvisibility(type)
+			SetInvisibility(INVISIBILITY_NONE, id=type)
 			qdel(cover) //deletes the cover, and the turret instance itself becomes its own cover.
 
 	else if(I.GetID())
@@ -407,7 +409,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	. = ..()
 	if(.)
 		power_change()
-		RemoveInvisibility(type)
+		SetInvisibility(INVISIBILITY_NONE, id=type)
 		spark_system.start() //creates some sparks because they look cool
 		qdel(cover) //deletes the cover - no need on keeping it there!
 
@@ -514,7 +516,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return
 	if(machine_stat & BROKEN)
 		return
-	RemoveInvisibility(type)
+	SetInvisibility(INVISIBILITY_NONE, id=type)
 	raising = 1
 	if(cover)
 		flick("popup", cover)
@@ -556,7 +558,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	// If we aren't shooting heads then return a threatcount of 0
 	if (!(turret_flags & TURRET_FLAG_SHOOT_HEADS))
 		var/datum/job/apparent_job = SSjob.GetJob(perp.get_assignment())
-		if(apparent_job?.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+		if(apparent_job?.job_flags & JOB_HEAD_OF_STAFF)
 			return 0
 
 	if(turret_flags & TURRET_FLAG_AUTH_WEAPONS) //check for weapon authorization

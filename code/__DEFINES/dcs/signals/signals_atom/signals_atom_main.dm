@@ -20,6 +20,8 @@
 #define COMSIG_ATOM_REAGENT_EXAMINE "atom_reagent_examine"
 	/// Stop the generic reagent examine text
 	#define STOP_GENERIC_REAGENT_EXAMINE (1<<0)
+	/// Allows the generic reaegent examine text regardless of whether the user can scan reagents.
+	#define ALLOW_GENERIC_REAGENT_EXAMINE (1<<1)
 ///from base of atom/examine_more(): (/mob, examine_list)
 #define COMSIG_ATOM_EXAMINE_MORE "atom_examine_more"
 /// from atom/examine_more(): (/atom/examining, examine_list)
@@ -125,5 +127,5 @@
 #define COMSIG_ATOM_GERM_EXPOSED "atom_germ_exposed"
 /// when atom is picked up from the floor or moved to an elevated structure: (datum/component/germ_exposure)
 #define COMSIG_ATOM_GERM_UNEXPOSED "atom_germ_unexposed"
-/// when atom is washed
-#define COMSIG_ATOM_WASHED "atom_washed"
+/// signal sent to puzzle pieces by activator
+#define COMSIG_PUZZLE_COMPLETED "puzzle_completed"

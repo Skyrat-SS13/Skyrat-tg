@@ -44,6 +44,11 @@
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
 	organ_type = /obj/item/organ/external/tail/lizard
 
+/datum/sprite_accessory/tails/lizard/short/twotone
+	name = "Short (Two-Tone)"
+	icon_state = "short2tone"
+	color_src = USE_MATRIXED_COLORS
+
 /datum/sprite_accessory/tails/human
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_MAMMAL, SPECIES_GHOUL)
 	organ_type = /obj/item/organ/external/tail/cat
@@ -261,6 +266,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/plug
 	name = "Plug"
 	icon_state = "plugtail"
+
+/datum/sprite_accessory/tails/mammal/wagging/plug/scorpion
+	name = "Scorpion Plug"
+	icon_state = "scorptail"
 
 /datum/sprite_accessory/tails/mammal/wagging/rabbit
 	name = "Rabbit"

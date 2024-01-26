@@ -25,7 +25,7 @@
 	var/bloodloss_rate = NORMAL_BLOOD_DRAIN
 
 
-/obj/item/organ/internal/heart/hemophage/Insert(mob/living/carbon/tumorful, special, drop_if_replaced)
+/obj/item/organ/internal/heart/hemophage/Insert(mob/living/carbon/tumorful, special, movement_flags)
 	. = ..()
 	if(!. || !owner)
 		return
@@ -120,7 +120,7 @@
 	if(owner.health >= owner.maxHealth || is_dormant || owner.blood_volume <= MINIMUM_VOLUME_FOR_REGEN || (!in_closet(owner) && !in_total_darkness(owner)))
 		return FALSE
 
-	return owner.getBruteLoss() || owner.getFireLoss() || owner.getToxLoss() || owner.getCloneLoss()
+	return owner.getBruteLoss() || owner.getFireLoss() || owner.getToxLoss()
 
 
 /// Simple helper to toggle the hemophage's vulnerability (or lack thereof) based on the status of their tumor.
@@ -133,7 +133,6 @@
 	hemophage_physiology.brute_mod *= damage_multiplier
 	hemophage_physiology.burn_mod *= damage_multiplier
 	hemophage_physiology.tox_mod *= damage_multiplier
-	hemophage_physiology.clone_mod *= damage_multiplier
 	hemophage_physiology.stamina_mod *= damage_multiplier / 2 // Doing half here so that they don't instantly hit stam-crit when hit like only once.
 
 

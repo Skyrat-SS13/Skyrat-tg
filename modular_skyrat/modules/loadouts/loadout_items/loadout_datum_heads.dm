@@ -177,6 +177,18 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	MISC
 */
 
+/datum/loadout_item/head/hair_tie
+	name = "Hair Tie"
+	item_path = /obj/item/clothing/head/hair_tie
+
+/datum/loadout_item/head/hair_tie_scrunchie
+	name = "Scrunchie"
+	item_path = /obj/item/clothing/head/hair_tie/scrunchie
+
+/datum/loadout_item/head/hair_tie_plastic_beads
+	name = "Colorful Hair tie"
+	item_path = /obj/item/clothing/head/hair_tie/plastic_beads
+
 /datum/loadout_item/head/standalone_hood
 	name = "Recolorable Standalone Hood"
 	item_path = /obj/item/clothing/head/standalone_hood
@@ -241,6 +253,26 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Pink Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/pink_tiger
 
+/datum/loadout_item/head/large_bow
+	name = "Colourable Large Bow"
+	item_path = /obj/item/clothing/head/large_bow
+
+/datum/loadout_item/head/back_bow
+	name = "Colourable Back Bow"
+	item_path = /obj/item/clothing/head/back_bow
+
+/datum/loadout_item/head/small_bow
+	name = "Colourable Small Bow"
+	item_path = /obj/item/clothing/head/small_bow
+
+/datum/loadout_item/head/sweet_bow
+	name = "Colourable Sweet bow"
+	item_path = /obj/item/clothing/head/sweet_bow
+
+/datum/loadout_item/head/maid_headband
+	name = "Colourable Maid Headband"
+	item_path = /obj/item/clothing/head/maid_headband
+
 /*
 *	CHRISTMAS
 */
@@ -248,17 +280,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/santa
 	name = "Santa Hat"
 	item_path = /obj/item/clothing/head/costume/santa
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas
 	name = "Red Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas/green
 	name = "Green Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas/green
-	required_season = CHRISTMAS
 
 /*
 *	HALLOWEEN
@@ -311,6 +340,22 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/flowerpin
 	name = "Flower Pin"
 	item_path = /obj/item/clothing/head/costume/skyrat/flowerpin
+
+/datum/loadout_item/head/floral_garland
+	name = "Floral Garland"
+	item_path = /obj/item/clothing/head/costume/garland
+
+/datum/loadout_item/head/sunflower_crown
+	name = "Sunflower Crown"
+	item_path = /obj/item/clothing/head/costume/garland/sunflower
+
+/datum/loadout_item/head/lily_crown
+	name = "Lily Crown"
+	item_path = /obj/item/clothing/head/costume/garland/lily
+
+/datum/loadout_item/head/poppy_crown
+	name = "Poppy Crown"
+	item_path = /obj/item/clothing/head/costume/garland/poppy
 
 /datum/loadout_item/head/rice_hat
 	name = "Rice Hat"

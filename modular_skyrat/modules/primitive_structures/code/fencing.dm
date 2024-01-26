@@ -7,7 +7,7 @@
 	icon_state = "fence"
 	layer = BELOW_OBJ_LAYER // I think this is the default but lets be safe?
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1 | ON_BORDER_1
+	flags_1 = NO_DECONSTRUCTION | ON_BORDER_1
 	/// If we randomize our icon on spawning
 	var/random_icons = TRUE
 

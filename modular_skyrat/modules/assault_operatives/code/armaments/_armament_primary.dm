@@ -93,8 +93,8 @@
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/flechette
 	item_type = /obj/item/ammo_box/advanced/s12gauge/flechette
 
-/datum/armament_entry/assault_operatives/primary/shotgun_ammo/hollowpoint
-	item_type = /obj/item/ammo_box/advanced/s12gauge/hp
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo/magnum
+	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/beehive
 	item_type = /obj/item/ammo_box/advanced/s12gauge/beehive

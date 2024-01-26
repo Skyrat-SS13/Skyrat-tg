@@ -22,9 +22,4 @@
 		set_light(light_on_range)
 		return TRUE
 
-	if(update_state & UPSTATE_BLUESCREEN)
-		set_light_color(LIGHT_COLOR_BLUE)
-		set_light(light_on_range)
-		return TRUE
-
 	set_light(0)

@@ -1,8 +1,8 @@
 // Base Sol rifle
 
 /obj/item/gun/ballistic/automatic/sol_rifle
-	name = "\improper Carwo 'd'Infanteria' Rifle"
-	desc = "A heavy battle rifle commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
+	name = "\improper Carwo-Cawil Battle Rifle"
+	desc = "A heavy battle rifle firing .40 Sol. Commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "infanterie"
@@ -54,10 +54,14 @@
 /obj/item/gun/ballistic/automatic/sol_rifle/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
 
+/obj/item/gun/ballistic/automatic/sol_rifle/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+
 /obj/item/gun/ballistic/automatic/sol_rifle/examine_more(mob/user)
 	. = ..()
 
-	. += "The d'Infanterie rifles are, as the name may imply, built by Carwo for \
+	. += "The Carwo-Cawil rifles are built by Carwo for \
 		use by SolFed's various infantry branches. Following the rather reasonable \
 		military requirements of using the same few cartridges and magazines, \
 		the lifespans of logistics coordinators and quartermasters everywhere \
@@ -74,7 +78,7 @@
 // Sol marksman rifle
 
 /obj/item/gun/ballistic/automatic/sol_rifle/marksman
-	name = "\improper Carwo 'd'Elite' Marksman Rifle"
+	name = "\improper Cawil Marksman Rifle"
 	desc = "A heavy marksman rifle commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
 
 	icon_state = "elite"
@@ -100,7 +104,7 @@
 /obj/item/gun/ballistic/automatic/sol_rifle/marksman/examine_more(mob/user)
 	. = ..()
 
-	. += "This particlar variant, often called 'd'Elite', is a marksman rifle. \
+	. += "This particlar variant is a marksman rifle. \
 		Automatic fire was forsaken for a semi-automatic setup, a more fitting \
 		stock, and more often than not a scope. Typically also seen with smaller \
 		magazines for convenience for the shooter, but as with any other Sol \
@@ -114,7 +118,7 @@
 // Machinegun based on the base Sol rifle
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
-	name = "\improper Carwo 'd'Outomaties' Machinegun"
+	name = "\improper Qarad Light Machinegun"
 	desc = "A hefty machinegun commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
 
 	icon_state = "outomaties"
@@ -134,7 +138,7 @@
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun/examine_more(mob/user)
 	. = ..()
 
-	. += "The d'Outomaties variant of the rifle, what you are looking at now, \
+	. += "The 'Qarad' variant of the rifle, what you are looking at now, \
 		is a modification to turn the weapon into a passable, if sub-optimal \
 		light machinegun. To support the machinegun role, the internals were \
 		converted to make the gun into an open bolt, faster firing machine. These \

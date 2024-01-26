@@ -1,16 +1,41 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/floor/plating/airless,
-/area/space)
+/area/station/hallway/secondary/entry)
+"b" = (
+/obj/effect/landmark/start/hangover,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "e" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/computer/shuttle/arrivals/recall{
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/pen,
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
 "f" = (
 /turf/closed/wall/rust,
+/area/station/hallway/secondary/entry)
+"g" = (
+/obj/machinery/door/airlock/external{
+	name = "Arrival Shuttle Airlock";
+	space_dir = 2
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "arrival-airlock-east"
+	},
+/turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
 "h" = (
 /obj/effect/turf_decal/tile/blue{
@@ -23,16 +48,10 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "i" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/stripes/line,
-/obj/item/radio/intercom/directional/east,
-/turf/open/floor/iron,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/grass/jungle/a/style_random,
+/turf/open/misc/asteroid/airless,
 /area/station/hallway/secondary/entry)
 "j" = (
 /obj/effect/turf_decal/stripes/line,
@@ -48,30 +67,23 @@
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
 "n" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/vending/clothing,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/pen,
-/obj/effect/turf_decal/loading_area{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
+"o" = (
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "p" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/stripes/corner,
-/obj/effect/landmark/start/hangover,
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "q" = (
@@ -98,7 +110,7 @@
 /obj/structure/flora/bush/pale/style_random,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/misc/asteroid/airless,
-/area/space/nearstation)
+/area/station/hallway/secondary/entry)
 "t" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/small/directional/east,
@@ -112,7 +124,7 @@
 /obj/structure/flora/grass/jungle/a/style_random,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/misc/asteroid/airless,
-/area/space/nearstation)
+/area/station/hallway/secondary/entry)
 "x" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/emcloset,
@@ -126,9 +138,23 @@
 /obj/structure/sign/poster/contraband/random/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
+"y" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/station/hallway/secondary/entry)
 "z" = (
-/obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/bot,
+/obj/machinery/computer/shuttle/arrivals/recall{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
 "A" = (
@@ -144,7 +170,7 @@
 "D" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/misc/asteroid/airless,
-/area/space/nearstation)
+/area/station/hallway/secondary/entry)
 "E" = (
 /obj/machinery/door/airlock/external{
 	name = "Arrival Shuttle Airlock"
@@ -171,12 +197,20 @@
 /turf/closed/wall,
 /area/station/hallway/secondary/entry)
 "J" = (
-/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
 /turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
+"K" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/flora/bush/lavendergrass/style_random,
+/obj/structure/flora/bush/ferny/style_random,
+/turf/open/misc/asteroid/airless,
 /area/station/hallway/secondary/entry)
 "M" = (
 /turf/closed/mineral/random/labormineral,
-/area/space/nearstation)
+/area/station/hallway/secondary/entry)
 "O" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -187,31 +221,48 @@
 	width = 5
 	},
 /turf/open/floor/plating/airless,
-/area/space)
+/area/station/hallway/secondary/entry)
+"P" = (
+/obj/effect/turf_decal/box/corners{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/station/hallway/secondary/entry)
 "S" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/flora/grass/jungle/b/style_random,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/misc/asteroid/airless,
-/area/space/nearstation)
+/area/station/hallway/secondary/entry)
 "T" = (
 /obj/structure/sign/warning/secure_area{
 	name = "EMERGENCY STORAGE"
 	},
 /turf/closed/wall,
 /area/station/hallway/secondary/entry)
+"U" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/grass/jungle/b/style_random,
+/turf/open/misc/asteroid/airless,
+/area/station/hallway/secondary/entry)
 "V" = (
-/obj/effect/turf_decal/delivery,
-/obj/machinery/vending/clothing,
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/vending/colavend,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
 "W" = (
 /obj/machinery/door/airlock/external{
 	name = "Arrival Shuttle Airlock"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/landmark/navigate_destination,
-/turf/open/floor/iron/dark,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "arrival-airlock-east"
+	},
+/turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
 "X" = (
 /obj/effect/turf_decal/bot,
@@ -225,13 +276,10 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
 "Y" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/effect/landmark/start/assistant,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
-/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 
@@ -316,10 +364,10 @@ a
 a
 "}
 (9,1,1) = {"
-J
+b
 e
 F
-v
+U
 a
 a
 a
@@ -327,30 +375,50 @@ a
 "}
 (10,1,1) = {"
 p
+y
 F
-F
-F
+K
 a
 a
 a
 a
 "}
 (11,1,1) = {"
-i
+f
 W
-t
-G
+F
+F
 a
 a
 a
 a
 "}
 (12,1,1) = {"
+q
+o
+t
+g
+a
+a
+a
+a
+"}
+(13,1,1) = {"
 f
 q
 f
 I
 a
+a
+a
+a
+"}
+(14,1,1) = {"
+f
+M
+M
+i
+P
 a
 a
 a

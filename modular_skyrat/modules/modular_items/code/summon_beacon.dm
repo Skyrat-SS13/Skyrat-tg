@@ -1,7 +1,7 @@
 /obj/item/summon_beacon
 	name = "summoner beacon"
 	desc = "Summons a thing. Probably shouldn't use this one, though."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "gangtool-blue"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL

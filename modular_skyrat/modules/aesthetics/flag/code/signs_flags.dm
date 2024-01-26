@@ -16,7 +16,7 @@
 /obj/structure/sign/flag/MouseDrop(over_object, src_location, over_location)
 	. = ..()
 	if(over_object == usr && Adjacent(usr))
-		if(!item_flag || src.flags_1 & NODECONSTRUCT_1)
+		if(!item_flag || src.obj_flags & NO_DECONSTRUCTION)
 			return
 		if(!usr.can_perform_action(src, NEED_DEXTERITY))
 			return

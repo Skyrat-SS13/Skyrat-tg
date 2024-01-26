@@ -204,6 +204,26 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Colourable Mantle"
 	item_path = /obj/item/clothing/neck/mantle/recolorable
 
+/datum/loadout_item/neck/long_cape
+	name = "Long Colourable Cape"
+	item_path = /obj/item/clothing/neck/long_cape
+
+/datum/loadout_item/neck/wide_cape
+	name = "Wide Colourable Cape"
+	item_path = /obj/item/clothing/neck/wide_cape
+
+/datum/loadout_item/neck/robe_cape
+	name = "Robed Colourable Cape"
+	item_path = /obj/item/clothing/neck/robe_cape
+
+/datum/loadout_item/neck/maid_neck_cover
+	name = "Colourable Maid Neck Cover"
+	item_path = /obj/item/clothing/neck/maid_neck_cover
+
+/datum/loadout_item/neck/face_scarf
+	name = "Colourable Face Scarf"
+	item_path = /obj/item/clothing/neck/face_scarf
+
 /*
 *	MANTLES
 */
@@ -255,6 +275,9 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /*
 *	MISC
 */
+/datum/loadout_item/neck/cursed_ashen_necklace
+	name = "Cursed Ashen Necklace"
+	item_path = /obj/item/clothing/neck/necklace/ashwalker/cursed
 
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
@@ -267,7 +290,17 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 
 /datum/loadout_item/neck/link_scryer
 	name = "MODlink Scryer"
-	item_path = /obj/item/clothing/neck/link_scryer
+	item_path = /obj/item/clothing/neck/link_scryer/loaded
+
+/datum/loadout_item/neck/holobadge
+	name = "Holobadge"
+	item_path = /obj/item/clothing/accessory/badge/holo
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/neck/holobadge_cord
+	name = "Holobadge with Lanyard"
+	item_path = /obj/item/clothing/accessory/badge/holo/cord
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
 /*
 *	DONATOR

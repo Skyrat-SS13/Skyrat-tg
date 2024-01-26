@@ -126,7 +126,7 @@
 	QDEL_LIST(loaded_nifsofts)
 	return ..()
 
-/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 
 	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
@@ -185,7 +185,7 @@
 /obj/item/organ/internal/cyberimp/brain/nif/process(seconds_per_tick)
 	. = ..()
 
-	if(!linked_mob || broken || IS_IN_STASIS(linked_mob))
+	if(!linked_mob || broken || HAS_TRAIT(linked_mob, TRAIT_STASIS))
 		return FALSE
 
 	if(calibrating)

@@ -8,13 +8,13 @@
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 	mags_to_spawn = 4
 
-/datum/armament_entry/hecu/primary/submachinegun/p90
-	item_type = /obj/item/gun/ballistic/automatic/p90
+/datum/armament_entry/hecu/primary/submachinegun/sindano
+	item_type = /obj/item/gun/ballistic/automatic/sol_smg
 	max_purchase = 4
 	cost = 7
 
-/datum/armament_entry/hecu/primary/submachinegun/mp5
-	item_type = /obj/item/gun/ballistic/automatic/mp5
+/datum/armament_entry/hecu/primary/submachinegun/bogseo
+	item_type = /obj/item/gun/ballistic/automatic/xhihao_smg
 	max_purchase = 2
 	cost = 8
 
@@ -22,17 +22,17 @@
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 	mags_to_spawn = 3
 
-/datum/armament_entry/hecu/primary/assaultrifle/m16
-	item_type = /obj/item/gun/ballistic/automatic/m16
+/datum/armament_entry/hecu/primary/assaultrifle/automaties
+	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
 	max_purchase = 1
 	cost = 14
-	magazine = /obj/item/ammo_box/magazine/m16
+	magazine = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
-/datum/armament_entry/hecu/primary/assaultrifle/m16_but_horrible
-	item_type = /obj/item/gun/ballistic/automatic/m16/oldarms
+/datum/armament_entry/hecu/primary/assaultrifle/infanteria
+	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
 	max_purchase = 2
 	cost = 11
-	magazine = /obj/item/ammo_box/magazine/m16/vintage/oldarms
+	magazine = /obj/item/ammo_box/magazine/c40sol_rifle/standard
 
 /datum/armament_entry/hecu/primary/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
@@ -70,13 +70,13 @@
 /obj/item/storage/box/ammo_box/shotgun_12g
 
 /obj/item/storage/box/ammo_box/shotgun_12g/PopulateContents()
-	var/funshell = pick(/obj/item/ammo_box/advanced/s12gauge/pt20,
-						/obj/item/ammo_box/advanced/s12gauge/incendiary,
-						/obj/item/ammo_box/advanced/s12gauge/flechette,
-						/obj/item/ammo_box/advanced/s12gauge/beehive,
-						/obj/item/ammo_box/advanced/s12gauge/iceblox,
-						/obj/item/ammo_box/advanced/s12gauge/rip,
-						)
+	var/funshell = pick(
+		/obj/item/ammo_box/advanced/s12gauge/incendiary,
+		/obj/item/ammo_box/advanced/s12gauge/flechette,
+		/obj/item/ammo_box/advanced/s12gauge/beehive,
+		/obj/item/ammo_box/advanced/s12gauge/antitide,
+		/obj/item/ammo_box/advanced/s12gauge/express,
+	)
 	new /obj/item/ammo_box/advanced/s12gauge/magnum(src)
 	new /obj/item/ammo_box/advanced/s12gauge(src)
 	new funshell(src)

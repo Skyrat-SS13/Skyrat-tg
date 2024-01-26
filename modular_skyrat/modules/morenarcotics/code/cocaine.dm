@@ -46,7 +46,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
 		to_chat(M, span_notice("[high_message]"))
-	M.add_mood_event("zoinked", /datum/mood_event/stimulant_heavy, name)
+	M.add_mood_event("zoinked", /datum/mood_event/stimulant_heavy, 1, name)
 	M.AdjustStun(-15 * REM * seconds_per_tick)
 	M.AdjustKnockdown(-15 * REM * seconds_per_tick)
 	M.AdjustUnconscious(-15 * REM * seconds_per_tick)

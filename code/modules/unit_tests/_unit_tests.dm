@@ -109,6 +109,7 @@
 #include "card_mismatch.dm"
 #include "cardboard_cutouts.dm"
 #include "chain_pull_through_space.dm"
+#include "changeling.dm"
 #include "chat_filter.dm"
 #include "circuit_component_category.dm"
 #include "client_colours.dm"
@@ -168,6 +169,7 @@
 #include "load_map_security.dm"
 #include "lungs.dm"
 #include "machine_disassembly.dm"
+#include "mafia.dm"
 #include "map_landmarks.dm"
 #include "mapload_space_verification.dm"
 #include "mapping.dm"
@@ -193,6 +195,7 @@
 #include "objectives.dm"
 #include "operating_table.dm"
 #include "orderable_items.dm"
+#include "organ_bodypart_shuffle.dm"
 #include "organ_set_bonus.dm"
 #include "organs.dm"
 #include "outfit_sanity.dm"
@@ -221,6 +224,7 @@
 #include "screenshot_antag_icons.dm"
 #include "screenshot_basic.dm"
 #include "screenshot_dynamic_human_icons.dm"
+#include "screenshot_high_luminosity_eyes.dm"
 #include "screenshot_humanoids.dm"
 #include "screenshot_husk.dm"
 #include "screenshot_saturnx.dm"
@@ -254,6 +258,7 @@
 #include "subsystem_init.dm"
 #include "suit_storage_icons.dm"
 #include "surgeries.dm"
+#include "tail_wag.dm"
 #include "teleporters.dm"
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
@@ -271,6 +276,7 @@
 #include "worn_icons.dm"
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
+#include "~skyrat\loadout_dupes.dm"
 #include "~skyrat\opposing_force.dm"
 // SKYRAT EDIT END
 // END_INCLUDE

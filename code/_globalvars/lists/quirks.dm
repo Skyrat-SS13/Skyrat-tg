@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(nearsighted_glasses, list(
 	"Thin" = /obj/item/clothing/glasses/regular/thin,
 	"Jamjar" = /obj/item/clothing/glasses/regular/jamjar,
 	"Binoclard" = /obj/item/clothing/glasses/regular/kim,
-	"Modern" = /obj/item/clothing/glasses/betterunshit, // SKYRAT ADD
+	"Modern" = /obj/item/clothing/glasses/regular/betterunshit, // SKYRAT EDIT ADDITION
 
 ))
 
@@ -18,4 +18,11 @@ GLOBAL_LIST_INIT(limb_choice, list(
 	"Right Arm" = /obj/item/bodypart/arm/right/robot/surplus,
 	"Left Leg" = /obj/item/bodypart/leg/left/robot/surplus,
 	"Right Leg" = /obj/item/bodypart/leg/right/robot/surplus,
+))
+
+GLOBAL_LIST_INIT(limb_choice_transhuman, list(
+	"Left Arm" = /obj/item/bodypart/arm/left/robot,
+	"Right Arm" = /obj/item/bodypart/arm/right/robot,
+	"Left Leg" = /obj/item/bodypart/leg/left/robot,
+	"Right Leg" = /obj/item/bodypart/leg/right/robot,
 ))

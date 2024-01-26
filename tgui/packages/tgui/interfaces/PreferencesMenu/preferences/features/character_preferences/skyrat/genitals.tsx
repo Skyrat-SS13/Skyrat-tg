@@ -1,9 +1,22 @@
-import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureNumeric, FeatureToggle, FeatureChoiced, FeatureValueProps, FeatureChoicedServerData } from '../../base';
+// THIS IS A SKYRAT UI FILE
+import {
+  CheckboxInput,
+  Feature,
+  FeatureChoiced,
+  FeatureChoicedServerData,
+  FeatureDropdownInput,
+  FeatureNumberInput,
+  FeatureNumeric,
+  FeatureToggle,
+  FeatureTriBoolInput,
+  FeatureTriColorInput,
+  FeatureValueProps,
+} from '../../base';
 
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -26,13 +39,14 @@ export const penis_color: Feature<string[]> = {
 
 export const penis_emissive: Feature<boolean[]> = {
   name: 'Penis Emissives',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
 export const penis_sheath: Feature<string> = {
   name: 'Penis Sheath',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -50,13 +64,16 @@ export const penis_girth: FeatureNumeric = {
 
 export const penis_taur_mode_toggle: FeatureToggle = {
   name: 'Penis Taur Mode',
+  description:
+    'If the chosen taur body has a penis sprite, it will be used \
+    instead of the usual.',
   component: CheckboxInput,
 };
 
 export const feature_testicles: Feature<string> = {
   name: 'Testicles Choice',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -79,6 +96,7 @@ export const testicles_color: Feature<string[]> = {
 
 export const testicles_emissive: Feature<boolean[]> = {
   name: 'Testicles Emissives',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -90,7 +108,7 @@ export const balls_size: FeatureNumeric = {
 export const feature_vagina: Feature<string> = {
   name: 'Vagina Choice',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -113,13 +131,14 @@ export const vagina_color: Feature<string[]> = {
 
 export const vagina_emissive: Feature<boolean[]> = {
   name: 'Vagina Emissives',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
 export const feature_womb: Feature<string> = {
   name: 'Womb Choice',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -128,7 +147,7 @@ export const feature_womb: Feature<string> = {
 export const feature_breasts: Feature<string> = {
   name: 'Breast Choice',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -151,6 +170,7 @@ export const breasts_color: Feature<string[]> = {
 
 export const breasts_emissive: Feature<boolean[]> = {
   name: 'Breast Emissives',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -162,7 +182,7 @@ export const breasts_lactation_toggle: FeatureToggle = {
 export const breasts_size: Feature<string> = {
   name: 'Breast Size',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -180,6 +200,10 @@ export const body_size: FeatureNumeric = {
 
 export const erp_status_pref: FeatureChoiced = {
   name: 'ERP Status',
+  description:
+    'All ERP status preferences are merely markers to other players of \
+  your preference towards various broad categories of ERP. Selecting no will virtually isolate you from \
+  all directed ERP.',
   component: FeatureDropdownInput,
 };
 

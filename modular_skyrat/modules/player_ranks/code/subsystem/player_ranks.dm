@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(CONFIG_GET(flag/donator_legacy_system))
 		donator_controller.load_legacy()
-		update_all_prefs_unlock_contents()
+		update_all_prefs_donator_status()
 		return
 
 	if(!SSdbcore.Connect())
@@ -124,30 +124,31 @@ SUBSYSTEM_DEF(player_ranks)
 		return
 
 	load_player_rank_sql(donator_controller)
-	update_all_prefs_unlock_contents()
+	update_all_prefs_donator_status()
 
 
 /**
  * Handles updating all of the preferences datums to have the appropriate
- * `unlock_content` and `max_save_slots` once donators are loaded.
+ * `donator_status` and `max_save_slots` once donators are loaded.
  */
-/datum/controller/subsystem/player_ranks/proc/update_all_prefs_unlock_contents()
+/datum/controller/subsystem/player_ranks/proc/update_all_prefs_donator_status()
 	for(var/ckey as anything in GLOB.preferences_datums)
-		update_prefs_unlock_content(GLOB.preferences_datums[ckey])
+		update_prefs_donator_status(GLOB.preferences_datums[ckey])
 
 
 /**
- * Updates the `unlock_contents` and the `max_save_slots`
+ * Updates the `donator_status` and the `max_save_slots`
  *
  * Arguments:
- * * prefs - The preferences datum to check the unlock_content eligibility.
+ * * prefs - The preferences datum to check the donator_status eligibility.
  */
-/datum/controller/subsystem/player_ranks/proc/update_prefs_unlock_content(datum/preferences/prefs)
+/datum/controller/subsystem/player_ranks/proc/update_prefs_donator_status(datum/preferences/prefs)
 	if(!prefs)
 		return
 
-	prefs.unlock_content = !!prefs.parent.IsByondMember() || is_donator(prefs.parent)
-	if(prefs.unlock_content)
+	prefs.unlock_content = !!prefs.parent.IsByondMember()
+	prefs.donator_status = is_donator(prefs.parent)
+	if(prefs.unlock_content || prefs.donator_status)
 		prefs.max_save_slots = 50
 
 

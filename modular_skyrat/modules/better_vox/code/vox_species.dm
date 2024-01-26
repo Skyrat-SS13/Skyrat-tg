@@ -8,7 +8,6 @@
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_MUTANT_COLORS,
 	)
@@ -17,10 +16,8 @@
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
+	meat = /obj/item/food/meat/slab/chicken/human //item file in teshari module
 	mutanttongue = /obj/item/organ/internal/tongue/vox
-	default_mutant_bodyparts = list(
-		"tail" = "Vox Primalis Tail",
-	)
 	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
@@ -51,6 +48,10 @@
 		LOADOUT_ITEM_EARS = VOX_PRIMALIS_EARS_ICON,
 	)
 
+/datum/species/vox_primalis/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Vox Primalis Tail", FALSE),
+	)
 
 /datum/species/vox_primalis/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()

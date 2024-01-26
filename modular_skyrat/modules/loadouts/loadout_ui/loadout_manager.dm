@@ -1,8 +1,8 @@
 /// -- The loadout manager and UI --
 /// Tracking when a client has an open loadout manager, to prevent funky stuff.
 /client
-	/// A ref to loadout_manager datum.
-	var/datum/loadout_manager/open_loadout_ui = null
+	/// A weakref to loadout_manager datum.
+	var/datum/weakref/open_loadout_ui
 
 /// Datum holder for the loadout manager UI.
 /datum/loadout_manager
@@ -10,28 +10,22 @@
 	var/client/owner
 	/// The current selected loadout list.
 	var/list/loadout_on_open
-	/// The key of the dummy we use to generate sprites
-	var/dummy_key
-	/// The dir the dummy is facing.
-	var/list/dummy_dir = list(SOUTH)
-	/// A ref to the dummy outfit we're using
-	var/datum/outfit/player_loadout/custom_loadout
-	/// Whether we see our favorite job's clothes on the dummy
-	var/view_job_clothes = TRUE
 	/// Our currently open greyscaling menu.
 	var/datum/greyscale_modify_menu/menu
 
 /datum/loadout_manager/Destroy(force, ...)
+	if(menu)
+		SStgui.close_uis(menu)
+		menu = null
+	owner?.open_loadout_ui = null
 	owner = null
 	QDEL_NULL(menu)
-	QDEL_NULL(custom_loadout)
 	return ..()
 
 /datum/loadout_manager/New(user)
 	owner = CLIENT_FROM_VAR(user)
-	owner.open_loadout_ui = src
 	loadout_on_open = LAZYLISTDUPLICATE(owner.prefs.loadout_list)
-	custom_loadout = new()
+	owner.open_loadout_ui = WEAKREF(src)
 
 /datum/loadout_manager/ui_close(mob/user)
 	owner?.prefs.save_character()
@@ -39,7 +33,6 @@
 		SStgui.close_uis(menu)
 		menu = null
 	owner?.open_loadout_ui = null
-	qdel(custom_loadout)
 	qdel(src)
 
 /datum/loadout_manager/ui_state(mob/user)
@@ -50,6 +43,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "LoadoutManager")
+		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/loadout_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -96,23 +90,12 @@
 
 		if("display_restrictions")
 			display_job_restrictions(interacted_item)
+			display_job_blacklists(interacted_item)
 			display_species_restrictions(interacted_item)
 
 		// Clears the loadout list entirely.
 		if("clear_all_items")
 			LAZYNULL(owner.prefs.loadout_list)
-			owner?.prefs?.character_preview_view.update_body()
-
-		// Rotates the dummy left or right depending on params["dir"]
-		if("rotate_dummy")
-			rotate_model_dir(params["dir"])
-
-		// Toggles between showing all dirs of the dummy at once.
-		if("show_all_dirs")
-			toggle_model_dirs()
-
-		if("update_preview")
-			owner?.prefs.preview_pref = params["updated_preview"]
 			owner?.prefs?.character_preview_view.update_body()
 
 		if("donator_explain")
@@ -209,6 +192,11 @@
 /datum/loadout_manager/proc/set_item_name(datum/loadout_item/item)
 	var/current_name = ""
 	var/current_desc = ""
+
+	if(!(item.item_path in owner.prefs.loadout_list))
+		to_chat(owner, span_warning("Select the item before attempting to name it!"))
+		return
+
 	if(INFO_NAMED in owner.prefs.loadout_list[item.item_path])
 		current_name = owner.prefs.loadout_list[item.item_path][INFO_NAMED]
 	if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
@@ -217,10 +205,6 @@
 	var/input_name = tgui_input_text(owner, "What name do you want to give [item.name]? Leave blank to clear.", "[item.name] name", current_name, MAX_NAME_LEN)
 	var/input_desc = tgui_input_text(owner, "What description do you want to give [item.name]? 256 character max, leave blank to clear.", "[item.name] description", current_desc, 256, multiline = TRUE)
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(owner.prefs))
-		return
-
-	if(!(item.item_path in owner.prefs.loadout_list))
-		to_chat(owner, span_warning("Select the item before attempting to name to it!"))
 		return
 
 	if(input_name)
@@ -234,12 +218,23 @@
 		if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
 			owner.prefs.loadout_list[item.item_path] -= INFO_DESCRIBED
 
+/// If only certain jobs are allowed to equip this loadout item, display which
 /datum/loadout_manager/proc/display_job_restrictions(datum/loadout_item/item)
 	if(!length(item.restricted_roles))
 		return
-	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is restricted to the following roles: <br>")
+	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is whitelisted to the following roles: <br>")
 	for(var/job_type in item.restricted_roles)
 		composed_message += span_green("[job_type] <br>")
+
+	to_chat(owner, examine_block(composed_message))
+
+/// If certain jobs aren't allowed to equip this loadout item, display which
+/datum/loadout_manager/proc/display_job_blacklists(datum/loadout_item/item)
+	if(!length(item.blacklisted_roles))
+		return
+	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is blacklisted from the following roles: <br>")
+	for(var/job_type in item.blacklisted_roles)
+		composed_message += span_red("[job_type] <br>")
 
 	to_chat(owner, examine_block(composed_message))
 
@@ -249,23 +244,9 @@
 		return
 	var/composed_message = span_boldnotice("\The [initial(item.item_path.name)] is restricted to the following species: <br>")
 	for(var/species_type in item.restricted_species)
-		composed_message += span_green("[species_type] <br>")
+		composed_message += span_grey("[species_type] <br>")
 
 	to_chat(owner, examine_block(composed_message))
-
-/// Rotate the dummy [DIR] direction, or reset it to SOUTH dir if we're showing all dirs at once.
-/datum/loadout_manager/proc/rotate_model_dir(dir)
-	if(dir == "left")
-		owner?.prefs?.character_preview_view.dir = turn(owner?.prefs?.character_preview_view.dir, 90)
-	else
-		owner?.prefs?.character_preview_view.dir = turn(owner?.prefs?.character_preview_view.dir, -90)
-
-/// Toggle between showing all the dirs and just the front dir of the dummy.
-/datum/loadout_manager/proc/toggle_model_dirs()
-	if(dummy_dir.len > 1)
-		dummy_dir = list(SOUTH)
-	else
-		dummy_dir = GLOB.cardinals
 
 /datum/loadout_manager/ui_data(mob/user)
 	var/list/data = list()
@@ -275,10 +256,6 @@
 		all_selected_paths += path
 	data["selected_loadout"] = all_selected_paths
 	data["user_is_donator"] = !!(GLOB.donator_list[owner.ckey] || is_admin(owner))
-	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
-	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
-	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
-	data["preview_selection"] = owner?.prefs.preview_pref
 
 	return data
 
@@ -349,8 +326,9 @@
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
-		formatted_item["is_renamable"] = item.can_be_named
+		formatted_item["is_renameable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
+		formatted_item["is_job_blacklisted"] = !isnull(item.blacklisted_roles)
 		formatted_item["is_species_restricted"] = !isnull(item.restricted_species)
 		formatted_item["is_donator_only"] = !isnull(item.donator_only)
 		formatted_item["is_ckey_whitelisted"] = !isnull(item.ckeywhitelist)

@@ -35,7 +35,7 @@
 /obj/item/duty_checker //Test item
 	name = "duty checker"
 	desc = "Checks if the mob this is used on is off-duty. You probably shouldn't see this in-game..."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "gangtool-purple"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'

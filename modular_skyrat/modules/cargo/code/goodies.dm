@@ -70,13 +70,6 @@
 	cost = PAYCHECK_CREW * 35 // 1750 credit goody? do bounties
 	contains = list(/obj/item/skillchip/xenoarch_magnifier)
 
-/datum/supply_pack/goody/gravity_harness
-	name = "Gravity Suspension Harness"
-	desc = "A back-mounted suspensor harness powered by cells, designed by Deep Spacer tribes to either nullify or amplify gravity. \
-		While it's a pretty cheap bootleg of the personal gravitic engines used by the Skrell, this one's been fitted with straps and a basic storage module."
-	cost = CARGO_CRATE_VALUE * 6 // 1200 credits
-	contains = list(/obj/item/gravity_harness)
-
 /datum/supply_pack/goody/scratching_stone
 	name = "Scratching Stone"
 	desc = "A high-grade sharpening stone made of specialized alloys, meant to sharpen razor-claws. Unfortunately, this particular one has by far seen better days."

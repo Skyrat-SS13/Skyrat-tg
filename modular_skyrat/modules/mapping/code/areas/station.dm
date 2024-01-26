@@ -174,7 +174,7 @@
 	icon_state = "nightclub_backstage"
 
 /area/station/common/night_club/changing_room
-	name = "Night Club Chaning Room"
+	name = "Night Club Changing Room"
 	icon_state = "nightclub_changing_room"
 
 // Rec related areas
@@ -197,6 +197,46 @@
 	name = "Cafeteria"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "cafeteria"
+
+/area/station/common/gaskiosk
+	name = "\improper Internals Kiosk"
+	icon_state = "vacant_commissary"
+
+/area/station/commons/dorms/room5
+	name = "\improper Dorms Room 5"
+	icon_state = "room1"
+
+/area/station/commons/dorms/room6
+	name = "\improper Dorms Room 6"
+	icon_state = "room2"
+
+/area/station/commons/dorms/room7
+	name = "\improper Dorms Room 7"
+	icon_state = "room3"
+
+/area/station/commons/dorms/room8
+	name = "\improper Dorms Room 8"
+	icon_state = "room4"
+
+/area/station/commons/dorms/vacantroom
+	name = "\improper Vacant Dorms Room"
+	icon_state = "vacant_room"
+
+/area/station/common/wrestling/beverage
+	name = "\improper Arena Beverage Stand"
+	icon_state = "wrestle_maint"
+
+/area/station/common/wrestling/concessions
+	name = "\improper Arena Concessions Stand"
+	icon_state = "wrestle_maint"
+
+/area/station/common/pool/sauna
+	name = "\improper Pool Sauna"
+	icon_state = "pool"
+
+/area/station/service/barber/spa
+	name = "\improper Spa"
+	icon_state = "barber"
 
 /*
 * Department/Generic maintenance areas
@@ -530,3 +570,8 @@
 /area/station/maintenance/eva_shed/starboard
 	name = "Starboard EVA Shed"
 	icon_state = "eva_shed_sb"
+
+// Department Rooms
+/area/station/science/xenobiology/control
+	name = "\improper Xenobiology Control Room"
+	icon_state = "xenobio"

@@ -14,7 +14,7 @@
 	reqs = list(/obj/item/grown/log = 5)
 	parts = list(/obj/item/grown/log = 5)
 	blacklist = list(/obj/item/grown/log/steel)
-	result = /obj/structure/bonfire
+	result = /obj/structure/bonfire/player_made // SKYRAT EDIT - Pollution - ORIGINAL: result = /obj/structure/bonfire
 	category = CAT_TOOLS
 
 /datum/crafting_recipe/boneshovel
@@ -54,4 +54,27 @@
 		/datum/reagent/medicine/c2/libital = 10,
 	)
 	result = /obj/item/stack/medical/bandage/makeshift
+	category = CAT_TOOLS
+
+/datum/crafting_recipe/bone_rod
+	name = "Bone Fishing Rod"
+	result = /obj/item/fishing_rod/bone
+	time = 5 SECONDS
+	reqs = list(/obj/item/stack/sheet/leather = 1,
+				/obj/item/stack/sheet/sinew = 2,
+				/obj/item/stack/sheet/bone = 2)
+	category = CAT_TOOLS
+
+/datum/crafting_recipe/sinew_line
+	name = "Sinew Fishing Line Reel"
+	result = /obj/item/fishing_line/sinew
+	reqs = list(/obj/item/stack/sheet/sinew = 2)
+	time = 2 SECONDS
+	category = CAT_TOOLS
+
+/datum/crafting_recipe/bone_hook
+	name = "Goliath Bone Hook"
+	result = /obj/item/fishing_hook/bone
+	reqs = list(/obj/item/stack/sheet/bone = 1)
+	time = 2 SECONDS
 	category = CAT_TOOLS

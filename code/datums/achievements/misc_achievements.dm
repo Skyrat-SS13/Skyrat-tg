@@ -68,6 +68,7 @@
 	name = "One Lean, Mean, Cleaning Machine"
 	desc = "How does it feel to know that your workplace values a mop bucket on wheels more than you?" // i can do better than this give me time
 	database_id = MEDAL_CLEANBOSS
+	icon = "cleanboss"
 
 /datum/award/achievement/misc/rule8
 	name = "Rule 8"
@@ -135,11 +136,17 @@
 	database_id = MEDAL_COSMOS_ASCENSION
 	icon = "cosmicascend"
 
-/datum/award/achievement/misc/knock_ascension
-	name = "Secrets behind the Spider Door"
+/datum/award/achievement/misc/lock_ascension
+	name = "Secrets of the Locked Labyrinth"
 	desc = "You managed to open a gate into the mansus."
-	database_id = MEDAL_KNOCK_ASCENSION
-	icon = "knockascend"
+	database_id = MEDAL_LOCK_ASCENSION
+	icon = "lockascend"
+
+/datum/award/achievement/misc/moon_ascension
+	name = "The Last Act"
+	desc = "You managed to become the ringleader and slay the lie."
+	database_id = MEDAL_MOON_ASCENSION
+	icon = "moonascend"
 
 /datum/award/achievement/misc/grand_ritual_finale
 	name = "Archmage"

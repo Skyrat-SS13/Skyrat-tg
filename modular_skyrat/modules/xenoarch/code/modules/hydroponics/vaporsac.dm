@@ -1,6 +1,6 @@
 /obj/item/seeds/vaporsac
 	name = "pack of vaporsac seeds"
-	desc = "These seeds grow into vaporsac plants."
+	desc = "These seeds grow into vaporsac plants. Normally vaporsac plants spread by floating through the air and exploding, but this strand of vaporsac thankfully does not."
 	icon = 'modular_skyrat/modules/xenoarch/icons/seeds.dmi'
 	icon_state = "vaporsac"
 	species = "vaporsac"
@@ -12,13 +12,13 @@
 	growing_icon = 'modular_skyrat/modules/xenoarch/icons/growing.dmi'
 	icon_grow = "vaporsac-stage"
 	growthstages = 3
-	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/nitrous_oxide = 0.1)
+	genes = list(/datum/plant_gene/trait/squash, /datum/plant_gene/trait/smoke)
+	reagents_add = list(/datum/reagent/nitrous_oxide = 0.1, /datum/reagent/medicine/muscle_stimulant = 0.1, /datum/reagent/medicine/coagulant = 0.1)
 
 /obj/item/food/grown/vaporsac
 	seed = /obj/item/seeds/vaporsac
 	name = "vaporsac"
-	desc = "It's a little piece of vaporsac."
+	desc = "An buoyant vaporsac, full of aerosolized chemicals."
 	icon = 'modular_skyrat/modules/xenoarch/icons/harvest.dmi'
 	icon_state = "vaporsac"
 	filling_color = "#FF4500"

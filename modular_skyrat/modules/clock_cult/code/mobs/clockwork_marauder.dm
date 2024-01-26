@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	minimum_survivable_temperature = 0
 	obj_damage = 80
 	faction = list(FACTION_CLOCK)
-	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
+	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, STAMINA = 0, OXY = 0)
 	ai_controller = /datum/ai_controller/basic_controller/clockwork_marauder
 	initial_language_holder = /datum/language_holder/clockmob
 
@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	if(length(loot))
 		AddElement(/datum/element/death_drops, loot)
 
-	var/datum/action/innate/clockcult/comm/communicate = new
+	var/datum/action/innate/clockcult/comm/communicate = new(src)
 	communicate.Grant(src)
 
 	GLOB.clockwork_marauders += src
@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_controller/basic_controller/clockwork_marauder
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 

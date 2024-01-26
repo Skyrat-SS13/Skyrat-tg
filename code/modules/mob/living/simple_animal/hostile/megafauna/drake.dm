@@ -69,6 +69,7 @@
 	death_message = "collapses into a pile of bones, its flesh sloughing away."
 	death_sound = 'sound/magic/demon_dies.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
+	summon_line = "ROOOOOOOOAAAAAAAAAAAR!"
 	/// Fire cone ability
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_cone
 	/// Meteors ability
@@ -80,10 +81,10 @@
 
 /mob/living/simple_animal/hostile/megafauna/dragon/Initialize(mapload)
 	. = ..()
-	fire_cone = new /datum/action/cooldown/mob_cooldown/fire_breath/cone()
-	meteors = new /datum/action/cooldown/mob_cooldown/meteors()
-	mass_fire = new /datum/action/cooldown/mob_cooldown/fire_breath/mass_fire()
-	lava_swoop = new /datum/action/cooldown/mob_cooldown/lava_swoop()
+	fire_cone = new(src)
+	meteors = new(src)
+	mass_fire = new(src)
+	lava_swoop = new(src)
 	fire_cone.Grant(src)
 	meteors.Grant(src)
 	mass_fire.Grant(src)
@@ -95,10 +96,10 @@
 	AddElement(/datum/element/change_force_on_death, move_force = MOVE_FORCE_DEFAULT)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/Destroy()
-	QDEL_NULL(fire_cone)
-	QDEL_NULL(meteors)
-	QDEL_NULL(mass_fire)
-	QDEL_NULL(lava_swoop)
+	fire_cone = null
+	meteors = null
+	mass_fire = null
+	lava_swoop = null
 	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/dragon/OpenFire()
@@ -174,7 +175,7 @@
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ")  // SKYRAT EDIT ADDITION - Better emotes - Original: /mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE)
+/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ", pref_to_check)  // SKYRAT EDIT ADDITION - Better emotes - Original: /mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE), pref checks
 	if(swooping & SWOOP_INVULNERABLE) //to suppress attack messages without overriding every single proc that could send a message saying we got hit
 		return
 	return ..()
@@ -308,7 +309,7 @@
 	melee_damage_upper = 30
 	melee_damage_lower = 30
 	mouse_opacity = MOUSE_OPACITY_ICON
-	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 	loot = list()
 	crusher_loot = list()
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
@@ -322,7 +323,7 @@
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()
-	lava_swoop.enraged = FALSE
+	lava_swoop?.enraged = FALSE // In case taking damage caused us to start deleting ourselves
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser/grant_achievement(medaltype,scoretype)
 	return

@@ -3,9 +3,10 @@
 /obj/item/universal_scanner
 	name = "universal scanner"
 	desc = "A device used to check objects against Nanotrasen exports database, assign price tags, or ready an item for a custom vending machine."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "export scanner"
-	inhand_icon_state = "radio"
+	worn_icon_state = "electronic"
+	inhand_icon_state = "export_scanner"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	item_flags = NOBLUDGEON
@@ -183,7 +184,7 @@
 			warning = TRUE
 		if(!report.all_contents_scannable)
 			message += " (Undeterminable value detected, final value may differ)"
-		message += "."	
+		message += "."
 	else
 		if(!report.all_contents_scannable)
 			message += ", unable to determine value."
@@ -200,6 +201,19 @@
 
 	if(price)
 		playsound(src, 'sound/machines/terminal_select.ogg', 50, vary = TRUE)
+
+	if(istype(target, /obj/item/delivery))
+		var/obj/item/delivery/parcel = target
+		if(!parcel.sticker)
+			return
+		var/obj/item/barcode/our_code = parcel.sticker
+		to_chat(user, span_notice("Export barcode detected! This parcel, upon export, will pay out to [our_code.payments_acc.account_holder], \
+			with a [our_code.cut_multiplier * 100]% split to them (already reflected in above recorded value)."))
+
+	if(istype(target, /obj/item/barcode))
+		var/obj/item/barcode/our_code = target
+		to_chat(user, span_notice("Export barcode detected! This barcode, if attached to a parcel, will pay out to [our_code.payments_acc.account_holder], \
+			with a [our_code.cut_multiplier * 100]% split to them."))
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/scan_human = user

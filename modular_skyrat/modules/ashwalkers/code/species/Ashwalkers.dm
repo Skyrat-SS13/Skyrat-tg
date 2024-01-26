@@ -95,7 +95,7 @@
 			to_chat(human_target, span_notice("Your body feels hotter..."))
 		if(5)
 			var/datum/action/cooldown/mob_cooldown/fire_breath/granted_action
-			granted_action = new()
+			granted_action = new(human_target)
 			granted_action.Grant(human_target)
 			to_chat(human_target, span_notice("Your throat feels larger..."))
 		if(6 to INFINITY)

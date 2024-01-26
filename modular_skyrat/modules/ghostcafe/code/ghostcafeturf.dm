@@ -6,6 +6,10 @@
 	lava_damage = 0
 	lava_firestacks = 0
 	temperature_damage = 0
-	immunity_trait = GHOSTROLE_TRAIT
+	immunity_trait = TRAIT_GHOSTROLE
 	immunity_resistance_flags = LAVA_PROOF
 
+/turf/open/floor/plating/vox
+	name = "nitrogen-filled plating"
+	desc = "Vox box certified."
+	initial_gas_mix = "n2=104;TEMP=293.15"

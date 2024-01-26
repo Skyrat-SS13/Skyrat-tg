@@ -17,11 +17,11 @@
 			return
 		if(istype(target, /obj/item))
 			var/obj/item/I = target
-			if(HAS_TRAIT_FROM(I, TRAIT_NODROP, GLUED_ITEM_TRAIT))
+			if(HAS_TRAIT_FROM(I, TRAIT_NODROP, TRAIT_GLUED_ITEM))
 				to_chat(user, span_warning("[I] is already sticky!"))
 				return
 			uses -= 1
-			ADD_TRAIT(I, TRAIT_NODROP, GLUED_ITEM_TRAIT)
+			ADD_TRAIT(I, TRAIT_NODROP, TRAIT_GLUED_ITEM)
 			I.desc += " It looks sticky."
 			to_chat(user, span_notice("You smear the [I] with glue, making it incredibly sticky!"))
 			if(uses == 0)

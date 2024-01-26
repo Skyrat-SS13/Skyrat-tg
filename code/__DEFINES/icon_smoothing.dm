@@ -132,12 +132,12 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_TURF_OPEN_CLIFF S_TURF(60) ///turf/open/cliff
 
 // SKYRAT EDIT ADDITION
-#define SMOOTH_GROUP_ELEVATED_PLASTEEL S_TURF(60)
-#define SMOOTH_GROUP_LOWERED_PLASTEEL S_TURF(61)
+#define SMOOTH_GROUP_ELEVATED_PLASTEEL S_TURF(61)
+#define SMOOTH_GROUP_LOWERED_PLASTEEL S_TURF(62)
 
-#define SMOOTH_GROUP_FISSURE S_TURF(62)
+#define SMOOTH_GROUP_FISSURE S_TURF(63)
 
-#define MAX_S_TURF 62 //Always match this value with the one above it.
+#define MAX_S_TURF 63 //Always match this value with the one above it.
 //SKYRAT EDIT END
 
 

@@ -87,7 +87,7 @@
 		span_notice("[user] begins to force a reboot in [target]'s posibrain."),
 	)
 
-	target.notify_ghost_cloning("Someone is trying to reboot your posibrain.", source = target)
+	target.notify_revival("Someone is trying to reboot your posibrain.", source = target)
 
 /datum/surgery_step/finalize_positronic_restoration/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if (target.stat < DEAD)

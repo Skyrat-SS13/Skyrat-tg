@@ -13,7 +13,6 @@
 	generic_canpass = FALSE
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	layer = MOB_LAYER
-	plane = GAME_PLANE_FOV_HIDDEN
 	//The sound this plays on impact.
 	var/hitsound // SKYRAT EDIT CHANGE
 	var/hitsound_wall = ""
@@ -145,7 +144,7 @@
 	var/homing_offset_y = 0
 
 	var/damage = 10
-	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
+	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY are the only things that should be in here
 
 	///Defines what armor to use when it hits things.  Must be set to bullet, laser, energy, or bomb
 	var/armor_flag = BULLET
@@ -193,6 +192,10 @@
 	var/hit_prone_targets = FALSE
 	///For what kind of brute wounds we're rolling for, if we're doing such a thing. Lasers obviously don't care since they do burn instead.
 	var/sharpness = NONE
+	///How much we want to drop damage per tile as it travels through the air
+	var/damage_falloff_tile
+	///How much we want to drop stamina damage (defined by the stamina variable) per tile as it travels through the air
+	var/stamina_falloff_tile
 	///How much we want to drop both wound_bonus and bare_wound_bonus (to a minimum of 0 for the latter) per tile, for falloff purposes
 	var/wound_falloff_tile
 	///How much we want to drop the embed_chance value, if we can embed, per tile, for falloff purposes
@@ -225,8 +228,16 @@
 		bare_wound_bonus = max(0, bare_wound_bonus + wound_falloff_tile)
 	if(embedding)
 		embedding["embed_chance"] += embed_falloff_tile
+	if(damage_falloff_tile && damage >= 0)
+		damage += damage_falloff_tile
+	if(stamina_falloff_tile && stamina >= 0)
+		stamina += stamina_falloff_tile
+
 	SEND_SIGNAL(src, COMSIG_PROJECTILE_RANGE)
 	if(range <= 0 && loc)
+		on_range()
+
+	if(damage_falloff_tile && damage <= 0 || stamina_falloff_tile && stamina <= 0)
 		on_range()
 
 /obj/projectile/proc/on_range() //if we want there to be effects when they reach the end of their range
@@ -270,8 +281,8 @@
 		var/mob/living/L = target
 		hit_limb_zone = L.check_hit_limb_zone_name(def_zone)
 	if(fired_from)
-		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_ON_HIT, firer, target, Angle, hit_limb_zone)
-	SEND_SIGNAL(src, COMSIG_PROJECTILE_SELF_ON_HIT, firer, target, Angle, hit_limb_zone)
+		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_ON_HIT, firer, target, Angle, hit_limb_zone, blocked)
+	SEND_SIGNAL(src, COMSIG_PROJECTILE_SELF_ON_HIT, firer, target, Angle, hit_limb_zone, blocked)
 
 	if(QDELETED(src)) // in case one of the above signals deleted the projectile for whatever reason
 		return BULLET_ACT_BLOCK
@@ -321,8 +332,8 @@
 
 	if(blocked != 100) // not completely blocked
 		var/obj/item/bodypart/hit_bodypart = living_target.get_bodypart(hit_limb_zone)
-		if (damage)
-			if (living_target.blood_volume && damage_type == BRUTE && (isnull(hit_bodypart) || hit_bodypart.can_bleed()))
+		if (damage && damage_type == BRUTE)
+			if (living_target.blood_volume && (isnull(hit_bodypart) || hit_bodypart.can_bleed()))
 				var/splatter_dir = dir
 				if(starting)
 					splatter_dir = get_dir(starting, target_turf)
@@ -332,7 +343,7 @@
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
 				if(prob(33))
 					living_target.add_splatter_floor(target_turf)
-			else if (!isnull(hit_bodypart) && (hit_bodypart.biological_state & (BIO_METAL|BIO_WIRED)))
+			else if (hit_bodypart?.biological_state & (BIO_METAL|BIO_WIRED))
 				var/random_damage_mult = RANDOM_DECIMAL(0.85, 1.15) // SOMETIMES you can get more or less sparks
 				var/damage_dealt = ((damage / (1 - (blocked / 100))) * random_damage_mult)
 
@@ -799,9 +810,7 @@
 		set_angle(get_angle(src, target))
 	original_angle = Angle
 	if(!nondirectional_sprite)
-		var/matrix/matrix = new
-		matrix.Turn(Angle)
-		transform = matrix
+		transform = transform.Turn(Angle)
 	trajectory_ignore_forcemove = TRUE
 	forceMove(starting)
 	trajectory_ignore_forcemove = FALSE
@@ -818,11 +827,9 @@
 	pixel_move(pixel_speed_multiplier, FALSE) //move it now!
 
 /obj/projectile/proc/set_angle(new_angle) //wrapper for overrides.
-	Angle = new_angle
 	if(!nondirectional_sprite)
-		var/matrix/matrix = new
-		matrix.Turn(Angle)
-		transform = matrix
+		transform = transform.TurnTo(Angle, new_angle)
+	Angle = new_angle
 	if(trajectory)
 		trajectory.set_angle(new_angle)
 	if(fired && hitscan && isloc(loc) && (loc != last_angle_set_hitscan_store))
@@ -834,11 +841,9 @@
 
 /// Same as set_angle, but the reflection continues from the center of the object that reflects it instead of the side
 /obj/projectile/proc/set_angle_centered(new_angle)
-	Angle = new_angle
 	if(!nondirectional_sprite)
-		var/matrix/matrix = new
-		matrix.Turn(Angle)
-		transform = matrix
+		transform = transform.TurnTo(Angle, new_angle)
+	Angle = new_angle
 	if(trajectory)
 		trajectory.set_angle(new_angle)
 
@@ -916,10 +921,6 @@
 	if(!loc || !trajectory)
 		return
 	last_projectile_move = world.time
-	if(!nondirectional_sprite && !hitscanning)
-		var/matrix/matrix = new
-		matrix.Turn(Angle)
-		transform = matrix
 	if(homing)
 		process_homing()
 	var/forcemoved = FALSE
@@ -1167,6 +1168,25 @@
 ///Checks if the projectile can embed into someone
 /obj/projectile/proc/can_embed_into(atom/hit)
 	return embedding && shrapnel_type && iscarbon(hit) && !HAS_TRAIT(hit, TRAIT_PIERCEIMMUNE)
+
+/// Reflects the projectile off of something
+/obj/projectile/proc/reflect(atom/hit_atom)
+	if(!starting)
+		return
+	var/new_x = starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
+	var/new_y = starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
+	var/turf/current_tile = get_turf(hit_atom)
+
+	// redirect the projectile
+	original = locate(new_x, new_y, z)
+	starting = current_tile
+	firer = hit_atom
+	yo = new_y - current_tile.y
+	xo = new_x - current_tile.x
+	var/new_angle_s = Angle + rand(120,240)
+	while(new_angle_s > 180) // Translate to regular projectile degrees
+		new_angle_s -= 360
+	set_angle(new_angle_s)
 
 #undef MOVES_HITSCAN
 #undef MUZZLE_EFFECT_PIXEL_INCREMENT

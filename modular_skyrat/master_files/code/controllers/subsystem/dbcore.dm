@@ -38,5 +38,5 @@
 	if(length(queued_log_entries_by_table[table]) < CONFIG_GET(number/sql_game_log_min_bundle_size))
 		return
 
-	INVOKE_ASYNC(src, PROC_REF(MassInsert), table, /*rows =*/ queued_log_entries_by_table[table], /*duplicate_key =*/ FALSE, /*ignore_errors =*/ FALSE, /*delayed =*/ FALSE, /*warn =*/ FALSE, /*async =*/ TRUE, /*special_columns =*/ null)
+	INVOKE_ASYNC(src, PROC_REF(MassInsert), table, /*rows =*/ queued_log_entries_by_table[table], /*duplicate_key =*/ FALSE, /*ignore_errors =*/ FALSE, /*warn =*/ FALSE, /*async =*/ TRUE, /*special_columns =*/ null)
 	queued_log_entries_by_table -= table

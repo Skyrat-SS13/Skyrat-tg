@@ -6,7 +6,7 @@
 		application."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	circuit = null
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	power_gen = 7500
 	/// What we turn into when we are repacked
 	var/repacked_type = /obj/item/flatpacked_machine/rtg

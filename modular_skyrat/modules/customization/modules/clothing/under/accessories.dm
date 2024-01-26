@@ -65,7 +65,7 @@
 /obj/item/clothing/accessory/badge/holo
 	name = "holobadge"
 	desc = "This glowing blue badge marks the holder as THE LAW."
-	icon_state = "holobadge"
+	icon_state = "holobadge_lopland"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
 
@@ -98,7 +98,7 @@
 		if(istype(object, /obj/item/card/id))
 			id_card = object
 
-		if(ACCESS_BRIG in id_card.access || (obj_flags & EMAGGED))
+		if(ACCESS_SECURITY in id_card.access || (obj_flags & EMAGGED))
 			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
 			badge_string = id_card.assignment
