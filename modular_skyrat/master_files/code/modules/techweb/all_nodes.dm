@@ -20,7 +20,7 @@
 		"sheetifier",
 		"weldingmask",
 		"bolter_wrench",
-		"teg",  // Added Teg and its circulator, overwrites the tgstation engineering tech nodes
+		"thermoelectric_generator",  // Added Teg and its circulator, overwrites the tgstation engineering tech nodes
 		"circulator",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
