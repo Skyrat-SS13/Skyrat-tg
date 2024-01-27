@@ -1,17 +1,14 @@
-/*
-
-Skyrat removal START, moved to modular file
-
-#define TEG_EFFICIENCY 0.65
+#define TEG_EFFICIENCY 0.45
 
 /obj/machinery/power/thermoelectric_generator
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
-	icon_state = "teg"
-	base_icon_state = "teg"
+	icon = 'modular_skyrat/master_files/icons/obj/machines/thermoelectric.dmi'
+	icon_state = "teg-unassembled"
 	density = TRUE
 	use_power = NO_POWER_USE
-	circuit = /obj/item/circuitboard/machine/thermoelectric_generator
+	integrity_failure = 0.375
+
 
 	///The cold circulator machine, containing cold gas for the mix.
 	var/obj/machinery/atmospherics/components/binary/circulator/cold_circ
@@ -35,64 +32,41 @@ Skyrat removal START, moved to modular file
 
 /obj/machinery/power/thermoelectric_generator/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
 	find_circulators()
 	connect_to_network()
-	SSair.start_processing_machine(src)
+	SSair.start_processing_machine(src, mapload)
 	update_appearance()
+	component_parts = list(new /obj/item/circuitboard/machine/thermoelectric_generator)
+
 
 /obj/machinery/power/thermoelectric_generator/Destroy()
 	null_circulators()
 	SSair.stop_processing_machine(src)
 	return ..()
 
-/obj/machinery/power/thermoelectric_generator/on_deconstruction()
-	null_circulators()
+/obj/machinery/power/thermoelectric_generator/update_appearance()
+	cut_overlays()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 
-/obj/machinery/power/thermoelectric_generator/update_overlays()
-	. = ..()
-	if(machine_stat & (NOPOWER|BROKEN))
+	if(machine_stat & (BROKEN))
+		icon_state = "teg-broken"
 		return
-
-	var/level = min(round(lastgenlev / 100000), 11)
-	if(level)
-		. += mutable_appearance('icons/obj/machines/engine/other.dmi', "[base_icon_state]-op[level]")
 	if(hot_circ && cold_circ)
-		. += "[base_icon_state]-oc[last_pressure_overlay]"
-
-/obj/machinery/power/thermoelectric_generator/wrench_act(mob/living/user, obj/item/tool)
-	if(!panel_open)
-		balloon_alert(user, "open the panel!")
-		return
-	set_anchored(!anchored)
-	tool.play_tool_sound(src)
-	if(anchored)
-		connect_to_network()
+		icon_state = "teg-assembled"
 	else
-		null_circulators()
-	balloon_alert(user, "[anchored ? "secure" : "unsecure"]")
-	return TRUE
-
-/obj/machinery/power/thermoelectric_generator/multitool_act(mob/living/user, obj/item/tool)
-	. = ..()
-	if(!anchored)
+		icon_state = "teg-unassembled"
+		if(panel_open)
+			add_overlay("teg-panel")
 		return
-	find_circulators()
-	balloon_alert(user, "circulators updated")
-	return TRUE
 
-/obj/machinery/power/thermoelectric_generator/screwdriver_act(mob/user, obj/item/tool)
-	if(!anchored)
-		balloon_alert(user, "anchor it down!")
+	if(machine_stat & (NOPOWER))
 		return
-	toggle_panel_open()
-	tool.play_tool_sound(src)
-	balloon_alert(user, "panel [panel_open ? "open" : "closed"]")
-	return TRUE
+	else
+		var/level = min(round(lastgenlev/100000),11)
+		if(level != 0)
+			add_overlay("teg-op[level]")
+	return ..()
 
-/obj/machinery/power/thermoelectric_generator/crowbar_act(mob/living/user, obj/item/tool)
-	default_deconstruction_crowbar(tool)
-	return TRUE
 
 /obj/machinery/power/thermoelectric_generator/process()
 	//Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**
@@ -117,7 +91,7 @@ Skyrat removal START, moved to modular file
 			var/efficiency = TEG_EFFICIENCY
 			var/energy_transfer = delta_temperature*hot_air_heat_capacity*cold_air_heat_capacity/(hot_air_heat_capacity+cold_air_heat_capacity)
 			var/heat = energy_transfer*(1-efficiency)
-			lastgen += energy_transfer*efficiency
+			lastgen += (1000000 * (LOGISTIC_FUNCTION(2,0.5,(delta_temperature/10000),0)-1))
 			hot_air.temperature = hot_air.temperature - energy_transfer/hot_air_heat_capacity
 			cold_air.temperature = cold_air.temperature + heat/cold_air_heat_capacity
 
@@ -214,7 +188,75 @@ Skyrat removal START, moved to modular file
 			hot_circ = circulators
 			circulators.generator = src
 
-///Removes hot and cold circulators from the generator, nulling them.
+/obj/machinery/power/thermoelectric_generator/wrench_act(mob/living/user, obj/item/I)
+	. = ..()
+
+	if(!panel_open) //connect/disconnect circulators
+		if(!anchored)
+			balloon_alert(user, "<span class='warning'>Anchor [src] before trying to connect the circulators!</span>")
+			return TRUE
+		else
+			if(hot_circ && cold_circ)
+				balloon_alert(user, "<span class='notice'>You start removing the circulators...</span>")
+				if(I.use_tool(src, user, 30, volume=50))
+					null_circulators()
+					update_appearance()
+					balloon_alert(user, "<span class='notice'>You disconnect [src]'s circulator links.</span>")
+					playsound(src, 'sound/misc/box_deploy.ogg', 50)
+				return TRUE
+
+			balloon_alert(user, "<span class='notice'>You attempt to attach the circulators...</span>")
+			if(I.use_tool(src, user, 30, volume=50))
+				switch(find_circulators())
+					if(0)
+						balloon_alert(user, "<span class='warning'>No circulators found!</span>")
+					if(1)
+						balloon_alert(user, "<span class='warning'>Only one circulator found!</span>")
+					if(2)
+						balloon_alert(user, "<span class='notice'>You connect [src]'s circulator links.</span>")
+						playsound(src, 'sound/misc/box_deploy.ogg', 50)
+						return TRUE
+					if(3)
+						balloon_alert(user, "<span class='warning'>Both circulators are the same mode!</span>")
+				return TRUE
+
+	set_anchored(!anchored)
+	I.play_tool_sound(src)
+	if(!anchored)
+		null_circulators()
+	connect_to_network()
+	balloon_alert(user, "<span class='notice'>You [anchored?"secure":"unsecure"] [src].</span>")
+	update_appearance()
+	return TRUE
+
+/obj/machinery/power/thermoelectric_generator/screwdriver_act(mob/user, obj/item/I)
+	if(..())
+		return TRUE
+
+	if(hot_circ && cold_circ)
+		balloon_alert(user, "<span class='warning'>Disconnect the circulators first!</span>")
+		return TRUE
+	panel_open = !panel_open
+	I.play_tool_sound(src)
+	balloon_alert(user, "<span class='notice'>You [panel_open?"open":"close"] the panel on [src].</span>")
+	update_appearance()
+	return TRUE
+
+/obj/machinery/power/thermoelectric_generator/crowbar_act(mob/user, obj/item/I)
+
+	if(anchored)
+		balloon_alert(user, "<span class='warning'>[src] is anchored!</span>")
+		return TRUE
+	else if(!panel_open)
+		balloon_alert(user, "<span class='warning'>Open the panel first!</span>")
+		return TRUE
+	else
+		default_deconstruction_crowbar(I)
+		return TRUE
+
+/obj/machinery/power/thermoelectric_generator/on_deconstruction()
+	null_circulators()
+
 /obj/machinery/power/thermoelectric_generator/proc/null_circulators()
 	if(hot_circ)
 		hot_circ.generator = null
@@ -223,7 +265,8 @@ Skyrat removal START, moved to modular file
 		cold_circ.generator = null
 		cold_circ = null
 
-#undef TEG_EFFICIENCY
+/obj/machinery/power/thermoelectric_generator/atom_break(damage_flag)
+	null_circulators()
+	..()
 
-Skyrat removal END
-*/
+#undef TEG_EFFICIENCY
