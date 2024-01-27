@@ -44,6 +44,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!parent)
 		return COMPONENT_INCOMPATIBLE
 
+	create_room()
+	targeted_carrier_room = carrier_rooms[1]
+
 	var/mob/living/holder = get_current_holder(TRUE)
 	if(!holder)
 		return FALSE
@@ -56,9 +59,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(istype(holder) && length(verb_list))
 		add_verb(holder, verb_list)
-
-	create_room()
-	targeted_carrier_room = carrier_rooms[1]
 
 /datum/component/carrier/Destroy(force, ...)
 	targeted_carrier_room = null
@@ -138,23 +138,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(tgui_alert(carrier_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
-
-	return TRUE
-
-/// Attempts to scan the body for the `previous_body component`, returns FALSE if the body is unable to be scanned, otherwise returns TRUE
-/datum/component/carrier/soulcatcher/proc/scan_body(mob/living/parent_body, mob/living/user)
-	if(!parent_body || !user)
-		return FALSE
-
-	var/signal_result = SEND_SIGNAL(parent_body, COMSIG_SOULCATCHER_SCAN_BODY, parent_body)
-	if(!signal_result)
-		to_chat(user, span_warning("[parent_body] has already been scanned!"))
-		return FALSE
-
-	if(istype(parent, /obj/item/handheld_soulcatcher))
-		var/obj/item/handheld_soulcatcher/parent_device = parent
-		playsound(parent_device, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
-		parent_device.visible_message(span_notice("[parent_device] beeps: [parent_body] is now scanned."))
 
 	return TRUE
 

@@ -26,7 +26,7 @@
 	soulcatcher_action.parent_nifsoft = WEAKREF(src)
 
 	holder = new(linked_mob)
-	var/datum/component/carrier/soulcatcher/new_soulcatcher = holder.AddComponent(/datum/component/carrier/nifsoft)
+	var/datum/component/carrier/soulcatcher/new_soulcatcher = holder.AddComponent(/datum/component/carrier/soulcatcher/nifsoft)
 	holder.name = linked_mob.name
 
 	for(var/room in saved_carrier_rooms)

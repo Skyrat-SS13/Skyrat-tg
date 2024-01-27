@@ -5,7 +5,7 @@
 		ui = new(usr, src, "Soulcatcher", name)
 		ui.open()
 
-/datum/component/carrier/nifsoft/ui_state(mob/user)
+/datum/component/carrier/soulcatcher/nifsoft/ui_state(mob/user)
 	return GLOB.conscious_state
 
 /datum/component/carrier/ui_data(mob/user)
@@ -56,6 +56,7 @@
 				"able_to_speak_as_container" = soul_component.able_to_speak_as_container,
 				"able_to_emote_as_container" = soul_component.able_to_emote_as_container,
 				"scan_needed" = soul_to_check?.body_scan_needed,
+				"is_soul" = istype(soul_to_check),
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -301,7 +302,7 @@
 		current_carrier_room.master_carrier = null
 
 	var/datum/component/carrier/soulcatcher/master_soulcatcher
-	if(istype(master_soulcatcher))	
+	if(istype(master_soulcatcher))
 		data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
 
 	for(var/mob/living/soul in current_carrier_room.current_mobs)

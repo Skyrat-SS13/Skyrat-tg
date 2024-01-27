@@ -26,7 +26,7 @@
 
 /obj/item/handheld_soulcatcher/New(loc, ...)
 	. = ..()
-	linked_soulcatcher = AddComponent(/datum/component/carrier)
+	linked_soulcatcher = AddComponent(/datum/component/carrier/soulcatcher)
 	linked_soulcatcher.name = name
 
 /obj/item/handheld_soulcatcher/Destroy(force)

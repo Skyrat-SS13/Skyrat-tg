@@ -93,7 +93,7 @@
 		balloon_alert(user, "incompatible!")
 		return FALSE
 
-	var/datum/component/carrier/new_soulcatcher = target_item.AddComponent(/datum/component/carrier/soulcatcher/attachable)
+	var/datum/component/carrier/soulcatcher/attachable/new_soulcatcher = target_item.AddComponent(/datum/component/carrier/soulcatcher/attachable)
 	playsound(target_item.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
 	var/datum/carrier_room/target_room = new_soulcatcher.carrier_rooms[1]
