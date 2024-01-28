@@ -38,9 +38,8 @@
 		/datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
-	research_icon_state = "security-plating"
-	research_icon = 'icons/obj/clothing/modsuit/mod_construction.dmi'
-	research_icon_state = "standard-plating"
+	research_icon_state = "tarkon-plating"
+	research_icon = 'modular_skyrat/modules/tarkon/icons/obj/clothing/mod.dmi'
 
 /datum/design/arcs
 	name = "A.R.C.S Resonator"
