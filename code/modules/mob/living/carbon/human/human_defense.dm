@@ -392,14 +392,6 @@
 	//Don't go further if the shock was blocked/too weak.
 	if(!.)
 		return
-	//SKYRAT EDIT BEGIN: MAKES POWERFUL SHOCKS HAVE A CHANCE TO STOP YOUR HEART. DANGER
-	if(can_heartattack() && !(flags & SHOCK_ILLUSION) && shock_damage >= 70)
-		if(shock_damage * siemens_coeff >= 1 && prob(30))//Higher chance to disrupt the pacemaker cells
-			var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
-			heart.Stop()
-			visible_message("<span class='danger'>[src.name] briefly twitches; before falling limp - their breathing irratic and chest spasming violently!</span>", \
-								"<span class='danger'>You feel your heart thump eratically; before ceasing to beat, a violent twitch overcoming your form!</span>", ignored_mobs=src)
-	//SKYRAT EDIT END
 	if(!(flags & SHOCK_ILLUSION))
 		if(shock_damage * siemens_coeff >= 5)
 			force_say()
