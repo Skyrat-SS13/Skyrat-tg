@@ -39,7 +39,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	research_icon_state = "tarkon-plating"
-	research_icon = 'modular_skyrat/modules/tarkon/icons/obj/clothing/mod.dmi'
+	research_icon = 'modular_skyrat/modules/tarkon/icons/obj/mod_construct.dmi'
 
 /datum/design/arcs
 	name = "A.R.C.S Resonator"
