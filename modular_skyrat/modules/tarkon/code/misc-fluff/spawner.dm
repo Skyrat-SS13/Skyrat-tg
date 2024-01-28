@@ -20,6 +20,9 @@
 	uniform = /obj/item/clothing/under/tarkon
 	head = /obj/item/clothing/head/utility/welding/hat
 	back = /obj/item/storage/backpack
+	backpack_contents = list(
+		/obj/item/crowbar = 1,
+	)
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/combat
 	id = /obj/item/card/id/advanced/tarkon
@@ -148,8 +151,8 @@
 	name = "Port Tarkon Ensigns Outfit"
 	uniform = /obj/item/clothing/under/tarkon/com
 	ears = /obj/item/radio/headset/tarkon/command
-	id = /obj/item/card/id/advanced/tarkon/ensign
-	id_trim = /datum/id_trim/away/tarkon/ensign
+	id = /obj/item/card/id/advanced/tarkon/director
+	id_trim = /datum/id_trim/away/tarkon/director
 	neck = /obj/item/clothing/neck/security_cape/tarkon
 	r_pocket = /obj/item/card/id/away/tarkonrobo
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
