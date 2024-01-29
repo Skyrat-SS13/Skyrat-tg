@@ -58,7 +58,6 @@
 	new /obj/item/clothing/suit/armor/hos/maa_greatcoat(src)
 	new /obj/item/clothing/head/beret/sec/navywarden/syndicate(src)
 	new /obj/item/clothing/head/hats/hos/beret/syndicate(src)
-	new /obj/item/storage/toolbox/guncase/skyrat/c20r(src)
 
 /obj/structure/closet/secure_closet/interdynefob/maa_locker/PopulateContents()
 	..()
@@ -68,6 +67,7 @@
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/storage/bag/garment/master_arms(src)
 	new /obj/item/radio/headset/interdyne(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/c20r(src)
 
 /obj/structure/closet/secure_closet/interdynefob/cl_locker
 	icon_door = "hop"

@@ -245,6 +245,7 @@
 		/obj/item/storage/box/survival = 1,
 		/obj/item/crowbar = 1,
 		/obj/item/storage/medkit/surgery = 1,
+		/obj/item/gun/syringe/rapidsyringe = 1,
 		)
 
 /datum/outfit/ds2/syndicate/brigoff
@@ -288,6 +289,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	back = /obj/item/storage/backpack/satchel/sec/redsec
 	head = /obj/item/clothing/head/hats/hos/beret/syndicate
+	l_pocket = /obj/item/gun/energy/e_gun/mini
 	r_pocket = /obj/item/flashlight/seclite
 	implants = list(
 		/obj/item/implant/weapons_auth,
