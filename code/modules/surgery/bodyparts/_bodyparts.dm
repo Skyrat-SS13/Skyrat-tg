@@ -366,7 +366,11 @@
 
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human_victim = victim
-		if(HAS_TRAIT(victim, TRAIT_LIMBATTACHMENT))
+		if(HAS_TRAIT(victim, TRAIT_LIMBATTACHMENT) || HAS_TRAIT(victim, TRAIT_ROBOTIC_LIMBATTACHMENT)) // SKYRAT EDIT CHANGE - ORIGINAL: if(HAS_TRAIT(victim, TRAIT_LIMBATTACHMENT))
+			// SKYRAT EDIT ADDITION START - robot_limb_detach_quirk
+			if (HAS_TRAIT(victim, TRAIT_ROBOTIC_LIMBATTACHMENT) && !(bodytype & BODYTYPE_ROBOTIC)) //if we're trying to attach something that's not robotic, end out
+				return
+			// SKYRAT EDIT ADDITION END
 			if(!human_victim.get_bodypart(body_zone))
 				user.temporarilyRemoveItemFromInventory(src, TRUE)
 				if(!try_attach_limb(victim))
@@ -1053,12 +1057,10 @@
 			huskify_image(thing_to_husk = aux)
 		draw_color = husk_color
 	if(draw_color)
-		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
-		var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]"
-		limb.color = limb_color
+		var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]" // SKYRAT EDIT ADDITION - Alpha values on limbs. We check if the limb is attached and if the owner has an alpha value to append
+		limb.color = limb_color // SKYRAT EDIT CHANGE - ORIGINAL: limb.color = "[draw_color]"
 		if(aux_zone)
-			aux.color = limb_color
-		//SKYRAT EDIT END
+			aux.color = limb_color // SKYRAT EDIT CHANGE - ORIGINAL: aux.color = "[draw_color]"
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.
