@@ -308,8 +308,8 @@ export function QuirksPage(props) {
   return (
     <ServerPreferencesFetcher
       // SKYRAT EDIT START - Quirks balance refactor
-      render={(quirks_data) => {
-        if (!quirks_data) {
+      render={(server_data) => {
+        if (!server_data) {
           // SKYRAT EDIT END
           return <Box>Loading quirks...</Box>;
         }
@@ -319,7 +319,7 @@ export function QuirksPage(props) {
           quirk_blacklist: quirkBlacklist,
           quirk_info: quirkInfo,
           points_enabled: pointsEnabled,
-        } = quirks_data.quirks; // SKYRAT EDIT - Quirks balance refactor
+        } = server_data.quirks; // SKYRAT EDIT - Quirks balance refactor
 
         const quirks = Object.entries(quirkInfo);
         quirks.sort(([_, quirkA], [__, quirkB]) => {
@@ -440,7 +440,7 @@ export function QuirksPage(props) {
                           },
                         ];
                       })}
-                    serverData={quirks_data} // SKYRAT EDIT CHANGE
+                    serverData={server_data} // SKYRAT EDIT CHANGE
                     randomBodyEnabled={randomBodyEnabled}
                   />
                 </Stack.Item>
@@ -504,7 +504,7 @@ export function QuirksPage(props) {
                           },
                         ];
                       })}
-                    serverData={quirks_data} // sKYRAT EDIT CHANGE
+                    serverData={server_data} // sKYRAT EDIT CHANGE
                     randomBodyEnabled={randomBodyEnabled}
                   />
                 </Stack.Item>
