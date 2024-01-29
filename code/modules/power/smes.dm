@@ -38,6 +38,8 @@
 	var/output_level_max = 200000 // cap on output_level
 	var/output_used = 0 // amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
+	var/obj/machinery/power/terminal/terminal = null
+
 
 /obj/machinery/power/smes/examine(user)
 	. = ..()

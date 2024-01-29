@@ -200,8 +200,6 @@
 
 
 
-
-
 #undef SMESRATE
 
 #undef SMES_CLEVEL_1

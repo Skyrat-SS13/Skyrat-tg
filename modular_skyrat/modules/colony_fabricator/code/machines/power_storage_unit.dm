@@ -34,6 +34,24 @@
 		to_chat(user, span_notice("You close the maintenance hatch of [src]."))
 	return TRUE
 
+/obj/machinery/power/smes/battery_pack/update_overlays()
+	. = ..()
+
+	if(machine_stat & BROKEN)
+		return
+
+	if(panel_open)
+		return
+
+	. += "smes-op[outputting ? 1 : 0]"
+	. += "smes-oc[inputting ? 1 : 0]"
+	var/clevel = chargedisplay()
+
+	if(clevel > 0)
+		. += "smes-og[clevel]"
+
+
+
 // We don't care about the parts updates because we don't want them to change
 /obj/machinery/power/smes/battery_pack/RefreshParts()
 	return
