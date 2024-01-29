@@ -12,6 +12,9 @@
 	if(client.interviewee)
 		return FALSE
 
+	if(!client.maturity_prompt_whitelist && !SSmaturity_guard.age_check(src))
+		return
+
 	if(href_list["observe"])
 		play_lobby_button_sound()
 		make_me_an_observer()
