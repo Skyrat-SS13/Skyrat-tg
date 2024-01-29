@@ -26,8 +26,6 @@
 	/// checks if SMES was EMPED OR NO, purerly cosmetic
 	var/is_emped = FALSE
 
-	var/obj/machinery/power/terminal/terminal = null
-
 /obj/machinery/power/smes/attackby(obj/item/I, mob/user, params)
 	//opening using screwdriver
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))
