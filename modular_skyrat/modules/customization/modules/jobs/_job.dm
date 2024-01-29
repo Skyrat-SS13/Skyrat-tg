@@ -161,9 +161,14 @@
 /datum/job/proc/has_required_languages(datum/preferences/pref)
 	if(!required_languages)
 		return TRUE
-	for(var/lang in required_languages)
+	// if we have a bilingual quirk, check that as well
+	var/bilingual_pref
+	if(/datum/quirk/bilingual::name in pref.all_quirks)
+		bilingual_pref = pref.read_preference(/datum/preference/choiced/language)
+
+	for(var/datum/language/lang as anything in required_languages)
 		//Doesnt have language, or the required "level" is too low (understood, while needing spoken)
-		if(!pref.languages[lang] || pref.languages[lang] < required_languages[lang])
+		if((!pref.languages[lang] || pref.languages[lang] < required_languages[lang]) && bilingual_pref != lang.name) // SKYRAT EDIT - check the bilingual quirk
 			return FALSE
 	return TRUE
 
