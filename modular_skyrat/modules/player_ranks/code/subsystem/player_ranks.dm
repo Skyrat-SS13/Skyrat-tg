@@ -222,9 +222,11 @@ SUBSYSTEM_DEF(player_ranks)
 	)
 
 	if(!query_load_player_rank.warn_execute())
+		qdel(query_load_player_rank)
 		return
 
 	rank_controller.load_from_query(query_load_player_rank)
+	qdel(query_load_player_rank)
 
 
 /// Allows fetching the appropriate player_rank_controller based on its
@@ -333,9 +335,11 @@ SUBSYSTEM_DEF(player_ranks)
 	)
 
 	if(!query_add_player_rank.warn_execute())
+		qdel(query_add_player_rank)
 		return FALSE
 
 	controller.add_player(ckey)
+	qdel(query_add_player_rank)
 	return TRUE
 
 
@@ -412,9 +416,11 @@ SUBSYSTEM_DEF(player_ranks)
 	)
 
 	if(!query_remove_player_rank.warn_execute())
+		qdel(query_remove_player_rank)
 		return FALSE
 
 	controller.remove_player(ckey)
+	qdel(query_remove_player_rank)
 	return TRUE
 
 
@@ -468,11 +474,14 @@ SUBSYSTEM_DEF(player_ranks)
 	)
 
 	if(!query_get_existing_entries.warn_execute())
+		qdel(query_get_existing_entries)
 		return
 
 	while(query_get_existing_entries.NextRow())
 		var/ckey = ckey(query_get_existing_entries.item[INDEX_CKEY])
 		ckeys_to_migrate -= ckey
+
+	qdel(query_get_existing_entries)
 
 	var/list/rows_to_insert = list()
 
