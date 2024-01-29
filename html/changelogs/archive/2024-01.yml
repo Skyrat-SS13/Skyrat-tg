@@ -649,3 +649,57 @@
       are now properly centered on the screen
   - bugfix: fixes runtime when mineral scanning, passes right argument for scanner
       in golem eyes
+2024-01-27:
+  JohnFulpWillard, Unit2E teaching me the TEG:
+  - bugfix: The TEG now works again (still unobtainable by regular means though).
+  - bugfix: the TEG and its circulators can now be rotated counterclockwise again.
+  - refactor: The TEG now uses a TGUI interface rather than the old HTML one.
+  Melbert:
+  - bugfix: You can no longer neck snap anyone with martial arts assuming you've got
+      someone in a tight grip.
+  SkyratBot:
+  - bugfix: items that contain recursive contents inside them (like foam dart boxes
+      from autolathes) now have their custom materials set to match with its design
+      cost rather than being nullified, meaning they are now recyclable.
+  - code_imp: all custom materials are now integer values. Improved code for how materials
+      are used in techfab & auto lathe for printing
+  - bugfix: Icebox will no longer spawn a fuck ton of plasma after gibonite blows.
+      YW besties
+  - refactor: airlock controllers now use tgui
+  - refactor: Newspapers now use TGUI.
+  - bugfix: Fixed the newscaster's wanted section showing a non-existent photo.
+  - bugfix: fixes a hard del with decals
+  - bugfix: Fixed the messenger circuit not sending messages.
+  - bugfix: Added several ports to modpc circuits that were missing or needing them.
+  - bugfix: Fixes ever-expanding ports whenever circuits are re-inserted in a modular
+      computer.
+2024-01-28:
+  Useroth:
+  - rscadd: Jukeboxes added to automapper, to spawn in open areas in the bar
+  - rscadd: Ported BurgerLUA's jukebox overhaul from bubber (https://github.com/Bubberstation/Bubberstation/pull/552)
+  - rscadd: Added an age prompting system.
+  - server: Added a new SQL table for keeping some of the data declared by players
+  - rscadd: EZDB will now apply our modular sql schema when used during development
+2024-01-29:
+  LT3:
+  - bugfix: Emergency shuttle console now only works while on the emergency shuttle
+  Melbert:
+  - bugfix: Rush Gland now triggers correctly on being grabbed by a Goliath
+  SkyratBot:
+  - bugfix: Removed kitten omniscience. (They stop pointing at you now.)
+  - refactor: Legions abilities have been changed into actions that can be added to
+      any mob.
+  - bugfix: Oppenheimer, the nukie medbot, has been reprogrammed to use Airplane Mode
+      as a factory default. The station AI is no longer immediately aware of his presence!
+  - spellcheck: shortened description for the PCM and capitalized some text for its
+      examines.
+  - code_imp: adds sanity checks and removed deprecated `content` tag from PCM UI.
+      Stops hologram items from being inserted.
+  - spellcheck: You no longer fail to find "a anything" when swabbing something for
+      cytology that doesn't have swabbing results.
+  - bugfix: Cats can be swabbed for feliform cells again.
+  - sound: Cats have had their mastery of silent walking revoked, and have their pitter-pattering
+      footsteps back again.
+  - refactor: 'Refactored Telecommunications Monitoring Console UI: added search bar,
+      made UI more compact.'
+  - image: Added an icon to the "My Watchlist Status is Not Important" achievement.
