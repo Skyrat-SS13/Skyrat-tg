@@ -798,6 +798,31 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 	///Whether this underwear includes a bottom (For Leotards and the likes)
 	var/hides_groin = FALSE
+	
+/datum/sprite_accessory/undershirt/shirt
+	name = "Shirt"
+	icon_state = "shirt"
+	use_static = null
+	
+/datum/sprite_accessory/undershirt/shirt_alt
+	name = "Shirt - Alt"
+	icon_state = "shirt_alt"
+	use_static = null
+	
+/datum/sprite_accessory/undershirt/shortsleeve
+	name = "Short-Sleeved Shirt"
+	icon_state = "shortsleeve"
+	use_static = null
+	
+/datum/sprite_accessory/undershirt/polo
+	name = "Polo Shirt"
+	icon_state = "polo"
+	use_static = null
+	
+/datum/sprite_accessory/undershirt/tanktop
+	name = "Tank Top"
+	icon_state = "tanktop"
+	use_static = null
 
 /datum/sprite_accessory/undershirt/tanktop_alt
 	name = "Tank Top - Alt"
@@ -820,9 +845,14 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Tank Top - Striped"
 	icon_state = "tank_stripes"
 	use_static = TRUE
+	
+/datum/sprite_accessory/undershirt/tank_top_rainbow
+	name = "Tank Top - Rainbow"
+	icon_state = "tank_rainbow"
+	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/tank_top_sun
-	name = "Tank top - Sun"
+	name = "Tank Top - Sun"
 	icon_state = "tank_sun"
 	use_static = TRUE
 
