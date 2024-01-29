@@ -220,6 +220,7 @@
 
 /obj/machinery/power/smes/update_overlays()
 	. = ..()
+/* Skyrat Removal Start Moved to modular file
 	if(machine_stat & BROKEN)
 		return
 
@@ -230,9 +231,12 @@
 	. += "smes-oc[inputting ? 1 : 0]"
 
 	var/clevel = chargedisplay()
+
 	if(clevel > 0)
 		. += "smes-og[clevel]"
 
+	Skyrat Removal END
+*/
 
 /obj/machinery/power/smes/proc/chargedisplay()
 	return clamp(round(5.5*charge/capacity),0,5)
