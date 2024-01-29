@@ -770,63 +770,70 @@ export const AdminTab = (props) => {
               <Section
                 title={index + 1 + '. ' + objective.title}
                 key={objective.id}
-                buttons={
-                  <>
-                    <Button
-                      icon="check"
-                      color="good"
-                      disabled={
-                        objective.approved &&
-                        objective.status_text !== 'Not Reviewed'
-                      }
-                      content="Approve Objective"
-                      onClick={() =>
-                        act('approve_objective', {
-                          objective_ref: objective.ref,
-                        })
-                      }
-                    />
-                    <Button
-                      icon="times"
-                      color="bad"
-                      disabled={
-                        !objective.approved &&
-                        objective.status_text !== 'Not Reviewed'
-                      }
-                      content="Deny Objective"
-                      onClick={() =>
-                        act('deny_objective', {
-                          objective_ref: objective.ref,
-                        })
-                      }
-                    />
-                  </>
-                }
               >
-                <LabeledList key={objective.id}>
-                  <LabeledList.Item label="Description">
-                    {objective.description}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Justification">
-                    {objective.justification}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Intensity">
-                    {'(' +
-                      objective.intensity +
-                      ') ' +
-                      objective.text_intensity}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Status">
-                    {objective.status_text === 'Not Reviewed'
-                      ? 'Objective Not Reviewed'
-                      : objective.approved
-                        ? 'Objective Approved'
-                        : objective.denied_text
-                          ? 'Objective Denied - Reason: ' +
-                            objective.denied_text
-                          : 'Objective Denied'}
-                  </LabeledList.Item>
-                </LabeledList>
+                <Stack vertical>
+                  <Stack.Item>
+                    <LabeledList key={objective.id}>
+                      <LabeledList.Item label="Description">
+                        {objective.description}
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Justification">
+                        {objective.justification}
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Intensity">
+                        {'(' +
+                          objective.intensity +
+                          ') ' +
+                          objective.text_intensity}
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Status">
+                        {objective.status_text === 'Not Reviewed'
+                          ? 'Objective Not Reviewed'
+                          : objective.approved
+                            ? 'Objective Approved'
+                            : objective.denied_text
+                              ? 'Objective Denied - Reason: ' +
+                                objective.denied_text
+                              : 'Objective Denied'}
+                      </LabeledList.Item>
+                    </LabeledList>
+                  </Stack.Item>
+                  <Stack mb={-1.5}>
+                    <Stack.Divider hidden grow width="50%" />
+                    <Stack.Item>
+                      <Button
+                        icon="check"
+                        color="good"
+                        disabled={
+                          objective.approved &&
+                          objective.status_text !== 'Not Reviewed'
+                        }
+                        content="Approve Objective"
+                        onClick={() =>
+                          act('approve_objective', {
+                            objective_ref: objective.ref,
+                          })
+                        }
+                      />
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        icon="times"
+                        color="bad"
+                        disabled={
+                          !objective.approved &&
+                          objective.status_text !== 'Not Reviewed'
+                        }
+                        content="Deny Objective"
+                        onClick={() =>
+                          act('deny_objective', {
+                            objective_ref: objective.ref,
+                          })
+                        }
+                      />
+                    </Stack.Item>
+                  </Stack>
+                </Stack>
               </Section>
             ))
           )}
