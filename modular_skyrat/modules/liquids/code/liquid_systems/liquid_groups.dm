@@ -147,7 +147,9 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		cached_add[reagent_type] = cached_add[reagent_type] / members.len
 	cached_volume = cached_volume / members.len
 	cached_thermal = cached_thermal / members.len
-	var/temp_to_set = cached_thermal / cached_volume
+	var/temp_to_set
+	if(cached_volume)
+		temp_to_set = cached_thermal / cached_volume
 	last_cached_thermal = cached_thermal
 	last_cached_fraction_share = cached_add
 	last_cached_total_volume = cached_volume
@@ -190,7 +192,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 		cached_liquids.reagent_list = cached_add.Copy()
 		cached_liquids.total_reagents = cached_volume
-		cached_liquids.temp = temp_to_set
+		if(temp_to_set)
+			cached_liquids.temp = temp_to_set
 
 		cached_liquids.has_cached_share = TRUE
 		cached_liquids.attrition = 0

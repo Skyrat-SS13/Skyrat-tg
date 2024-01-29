@@ -323,6 +323,8 @@
 /datum/brain_trauma/severe/death_consequences/proc/damage_stamina(seconds_per_tick)
 	if (victim_properly_resting())
 		return
+	if (!stamina_damage_max_degradation)
+		return
 
 	var/clamped_degradation = clamp((current_degradation - stamina_damage_minimum_degradation), 0, stamina_damage_max_degradation)
 	var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
