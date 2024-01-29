@@ -386,12 +386,14 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
-		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
+		/obj/item/screwdriver/cyborg/power, // SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/screwdriver/cyborg,
+		//obj/item/wrench/cyborg, // SKYRAT EDIT REMOVAL - Combines Screwdriver and Wrench into one
+		/obj/item/crowbar/cyborg/power, // SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/crowbar/cyborg,
+		//obj/item/wirecutters/cyborg, // SKYRAT EDIT REMOVAL - Combines Crowbar and Wirecutters into one
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
-		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
+		/obj/item/holosign_creator/atmos, // SKYRAT EDIT ADDITION - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -399,7 +401,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
+		/obj/item/lightreplacer/cyborg, // SKYRAT EDIT ADDITION - Surprised Engie borgs don't get these
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil,
 	)
@@ -706,6 +708,10 @@
 	model_select_icon = "medical"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	borg_skins = list(
+		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical"),
+		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
+	)
 
 /obj/item/robot_model/miner
 	name = "Miner"
@@ -715,7 +721,6 @@
 		/obj/item/storage/bag/ore/cyborg,
 		/obj/item/pickaxe/drill/cyborg,
 		/obj/item/shovel,
-		/obj/item/kinetic_crusher, //SKYRAT EDIT
 		/obj/item/crowbar/cyborg,
 		/obj/item/weldingtool/mini,
 		/obj/item/extinguisher/mini,
@@ -723,7 +728,6 @@
 		/obj/item/gun/energy/recharge/kinetic_accelerator/cyborg,
 		/obj/item/gps/cyborg,
 		/obj/item/stack/marker_beacon,
-		/obj/item/t_scanner/adv_mining_scanner/cyborg,
 	)
 	radio_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(
@@ -737,6 +741,16 @@
 		"Spider Miner" = list(SKIN_ICON_STATE = "spidermin"),
 		"Lavaland Miner" = list(SKIN_ICON_STATE = "miner"),
 	)
+	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes. //fuck you
+
+/obj/item/robot_model/miner/rebuild_modules()
+	. = ..()
+	if(!mining_scanner)
+		mining_scanner = new(src)
+
+/obj/item/robot_model/miner/Destroy()
+	QDEL_NULL(mining_scanner)
+	return ..()
 
 /obj/item/robot_model/peacekeeper
 	name = "Peacekeeper"
@@ -802,23 +816,23 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		// SKYRAT EDIT START
-		// /obj/item/reagent_containers/borghypo/borgshaker,
+		//obj/item/reagent_containers/borghypo/borgshaker, // SKYRAT EDIT REMOVAL - SPECIFIC SHAKERS
+		//SKYRAT EDIT ADDITION START
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol,
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda,
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice,
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc,
+		//SKYRAT EDIT ADDITION END
 		/obj/item/borg/apparatus/beaker/service,
-		/obj/item/borg/apparatus/beaker, // Allows the pickup of different beakers for easier drink mixing
-		// SKYRAT EDIT END
+		/obj/item/borg/apparatus/beaker, // SKYRAT EDIT ADDITION - Allows the pickup of different beakers for easier drink mixing
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		//obj/item/reagent_containers/condiment/enzyme, // SKYRAT EDIT - Borg shaker has it
+		//obj/item/reagent_containers/condiment/enzyme, // SKYRAT EDIT REMOVAL - Borg shaker has it
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/syringe, // SKYRAT EDIT
+		/obj/item/reagent_containers/syringe, //SKYRAT EDIT ADDITION
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
-		/obj/item/storage/bag/tray, // SKYRAT EDIT: Moves the second tray up to be near the default one
-		/obj/item/cooking/cyborg/power, // SKYRAT EDIT
+		/obj/item/storage/bag/tray, // SKYRAT EDIT ADDITION: Adds second tray
+		/obj/item/cooking/cyborg/power, //SKYRAT EDIT ADDITION
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
