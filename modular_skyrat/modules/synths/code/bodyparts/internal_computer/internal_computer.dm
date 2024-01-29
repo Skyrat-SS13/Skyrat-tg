@@ -11,6 +11,8 @@
 
 	max_capacity = 64
 
+	var/id_pointer // God is dead and synth PDA code is the reason why
+
 /obj/item/modular_computer/pda/synth/Initialize(mapload)
 	. = ..()
 
@@ -45,6 +47,8 @@
 	return ..()
 
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
+	return
+/*
 	var/obj/item/organ/internal/brain/synth/brain_loc = loc
 	if(!istype(brain_loc))
 		return ..()
@@ -63,8 +67,15 @@
 	computer_id_slot = null
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 	balloon_alert(user, "removed ID")
+*/
 
 /obj/item/modular_computer/pda/synth/get_ntnet_status()
+	. = ..()
+	if(is_centcom_level(loc.z)) // Centcom is excluded because cafe
+		. = NTNET_NO_SIGNAL
+	return .
+
+/*
 	. = NTNET_NO_SIGNAL
 	// NTNet is down and we are not connected via wired connection. The synth is no more
 	var/obj/item/organ/internal/brain/synth/brain_loc = loc
@@ -77,7 +88,7 @@
 		return NTNET_GOOD_SIGNAL
 	else if(long_ranged && !is_centcom_level(current_turf.z)) // Centcom is excluded because cafe
 		return NTNET_LOW_SIGNAL
-
+*/
 /*
 So, I am not snowflaking more code.. except this
 Attacking a synth with an id loads it into its slot.. pain and probably shitcode
