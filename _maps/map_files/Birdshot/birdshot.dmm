@@ -12627,12 +12627,6 @@
 /obj/structure/cable,
 /turf/open/floor/wood/tile,
 /area/station/maintenance/port/lesser)
-"eHQ" = (
-/obj/machinery/flasher/directional/east{
-	id = "hopflash"
-	},
-/turf/open/floor/iron/half,
-/area/station/hallway/primary/central/fore)
 "eHR" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /obj/effect/spawner/structure/window/reinforced,
@@ -18753,20 +18747,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
-"gOY" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/dark_red/half/contrasted{
-	dir = 8
-	},
-/obj/machinery/button/flasher{
-	id = "IsolationFlash2";
-	pixel_x = 28
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/station/security/execution/transfer)
 "gPa" = (
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 1
@@ -19983,12 +19963,6 @@
 	},
 /turf/open/space/basic,
 /area/space)
-"hia" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/station/maintenance/department/medical/central)
 "hic" = (
 /obj/machinery/holopad,
 /turf/open/floor/wood/large,
@@ -21887,6 +21861,12 @@
 /obj/item/binoculars,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+"hRv" = (
+/obj/machinery/transport/power_rectifier{
+	configured_transport_id = "bird_1"
+	},
+/turf/open/floor/plating,
+/area/station/security/tram)
 "hRz" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -41907,6 +41887,15 @@
 /obj/structure/broken_flooring/singular/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"oVB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/transport/power_rectifier{
+	configured_transport_id = "bird_2"
+	},
+/turf/open/floor/iron,
+/area/station/maintenance/department/medical/central)
 "oVK" = (
 /obj/structure/chair{
 	pixel_y = -2
@@ -53515,6 +53504,13 @@
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/wood/tile,
 /area/station/service/bar)
+"szN" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/transport/power_rectifier{
+	configured_transport_id = "bird_2"
+	},
+/turf/open/floor/iron,
+/area/station/maintenance/port/aft)
 "szS" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/tile/neutral/full,
@@ -61357,6 +61353,20 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
+"vfN" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/dark_red/half/contrasted{
+	dir = 8
+	},
+/obj/machinery/button/flasher{
+	id = "IsolationFlash2";
+	pixel_x = 28
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/security/execution/transfer)
 "vfT" = (
 /obj/structure/table/glass,
 /obj/machinery/light/cold/directional/west,
@@ -66090,6 +66100,12 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/supermatter/room)
+"wCt" = (
+/obj/machinery/flasher/directional/east{
+	id = "hopflash"
+	},
+/turf/open/floor/iron/half,
+/area/station/hallway/primary/central/fore)
 "wCx" = (
 /obj/effect/turf_decal/siding/green{
 	dir = 8
@@ -86835,7 +86851,7 @@ dwa
 dBr
 eWB
 lzM
-aFR
+hRv
 mnb
 cDt
 xpV
@@ -89446,7 +89462,7 @@ tTW
 wvg
 tMS
 xIj
-gOY
+vfN
 xCS
 wcu
 aWi
@@ -91471,7 +91487,7 @@ trp
 trp
 trp
 trp
-nFu
+szN
 xqd
 xul
 trp
@@ -92674,7 +92690,7 @@ tsF
 ibq
 nZg
 yat
-eHQ
+wCt
 lEa
 lWk
 xRV
@@ -100467,7 +100483,7 @@ kel
 wgL
 rWW
 sSQ
-hia
+oVB
 ggl
 eBQ
 ndp
