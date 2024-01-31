@@ -64,7 +64,7 @@ export const Jukebox = (props) => {
                   value={volume}
                   unit="%"
                   minValue={0}
-                  maxValue={50}
+                  maxValue={100}
                   step={1}
                   stepPixelSize={1}
                   disabled={active}
