@@ -1,4 +1,3 @@
-#define SCANNER_VERBOSE 1
 /obj/machinery/stasissleeper
 	name = "lifeform stasis unit"
 	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis."
@@ -177,5 +176,3 @@
 
 /obj/machinery/stasissleeper/attack_ai_secondary(mob/user) // this works for borgs and ais shrug
 	attack_hand_secondary(user)
-
-#undef SCANNER_VERBOSE
