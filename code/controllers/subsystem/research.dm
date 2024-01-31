@@ -74,6 +74,7 @@ SUBSYSTEM_DEF(research)
 	new /datum/techweb/science
 	new /datum/techweb/admin
 	new /datum/techweb/oldstation
+	new /datum/techweb/tarkon //Skyrat Edit
 	autosort_categories()
 	error_design = new
 	error_node = new

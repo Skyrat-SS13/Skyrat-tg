@@ -13,3 +13,22 @@
 	name = "nitrogen-filled plating"
 	desc = "Vox box certified."
 	initial_gas_mix = "n2=104;TEMP=293.15"
+
+/turf/open/indestructible/bathroom
+	icon = 'modular_skyrat/modules/ghostcafe/icons/floors.dmi';
+	icon_state = "titanium_blue_old";
+	name = "bathroom floor"
+	footstep = FOOTSTEP_FLOOR
+	tiled_dirt = FALSE
+
+/turf/open/indestructible/carpet
+	desc = "It's really cozy! Great for soft paws!";
+	icon = 'modular_skyrat/modules/ghostcafe/icons/carpet_royalblack.dmi';
+	icon_state = "carpet";
+	name = "soft carpet"
+	bullet_bounce_sound = null
+	footstep = FOOTSTEP_CARPET
+	barefootstep = FOOTSTEP_CARPET_BAREFOOT
+	clawfootstep = FOOTSTEP_CARPET_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
