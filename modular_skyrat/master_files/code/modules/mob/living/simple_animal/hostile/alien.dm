@@ -1,2 +1,4 @@
 /mob/living/simple_animal/hostile/alien
-	pressure_resistance = 200 //You're telling me this exo-skeletal death machine had less pressure resistance than a human?
+	maxbodytemp = 950 //If you dont want to fight them, Burn them. If you want the rewards from tarkon? Dont burn them.
+	unsuitable_heat_damage = 50 //Hot Acid Blood.
+	pressure_resistance = 200 //Exoskeleton. The likeliness of them being in high-pressure places naturally are 0% anyways.
