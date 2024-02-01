@@ -35,6 +35,12 @@
 	sechud_icon_state = SECHUD_SECURITY_OFFICER
 	trim_state = "trim_securityofficer"
 
+/obj/item/card/id/advanced/tarkon/sec
+	name = "P-T resident deputy's access card"
+	desc = "An access card designated for \"security members\". Everyone wants your guns, partner. Yee-haw."
+	trim = /datum/id_trim/away/tarkon/sec
+
+
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
 	access = list(ACCESS_MEDICAL, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
@@ -88,13 +94,19 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_blueshield"
 
-/obj/item/card/id/advanced/tarkon/sec
-	name = "P-T resident deputy's access card"
-	desc = "An access card designated for \"security members\". Everyone wants your guns, partner. Yee-haw."
-	trim = /datum/id_trim/away/tarkon/sec
-
-
 /obj/item/card/id/advanced/tarkon/ensign
 	name = "Tarkon ensign's access card"
 	desc = "An access card designated for \"Tarkon ensign\". No one has to listen to you... But you're the closest there is for command around here."
 	trim = /datum/id_trim/away/tarkon/ensign
+
+/datum/id_trim/away/tarkon/director
+	assignment = "Port Tarkon Director"
+	access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_TARKON, ACCESS_WEAPONS)
+	department_color = COLOR_COMMAND_BLUE
+	sechud_icon_state = SECHUD_CAPTAIN
+	trim_state = "trim_captain"
+
+/obj/item/card/id/advanced/tarkon/director
+	name = "Tarkon port director's access card"
+	desc = "An access card designated for \"Tarkon's Port Director\". Its no longer hesitation, only consideration."
+	trim = /datum/id_trim/away/tarkon/director

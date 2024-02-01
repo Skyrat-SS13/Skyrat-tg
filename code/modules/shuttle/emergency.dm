@@ -553,7 +553,6 @@
 					color_override = "orange",
 				)
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
-				bolt_all_doors() //SKYRAT EDIT ADDITION
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 
 				if(!is_reserved_level(z))
