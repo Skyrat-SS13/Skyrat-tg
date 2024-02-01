@@ -11,8 +11,6 @@
 
 	max_capacity = 64
 
-	var/id_pointer // God is dead and synth PDA code is the reason why
-
 /obj/item/modular_computer/pda/synth/Initialize(mapload)
 	. = ..()
 
