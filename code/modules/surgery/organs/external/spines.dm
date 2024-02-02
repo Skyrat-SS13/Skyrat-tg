@@ -7,8 +7,12 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_SPINES
 
+<<<<<<< HEAD
 	preference = "feature_lizard_spines"
 	//dna_block = DNA_SPINES_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
+=======
+	dna_block = DNA_SPINES_BLOCK
+>>>>>>> ca61d0f8681 (Turns mush cap into an extorgan (#80952))
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/spines

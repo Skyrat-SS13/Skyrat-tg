@@ -754,12 +754,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.wings_open_list[source.dna.features["wings"]]
 				if("legs")
 					accessory = GLOB.legs_list[source.dna.features["legs"]]
+<<<<<<< HEAD
 				if("moth_wings")
 					accessory = GLOB.moth_wings_list[source.dna.features["moth_wings"]]
 				if("moth_antennae")
 					accessory = GLOB.moth_antennae_list[source.dna.features["moth_antennae"]]
 				if("caps")
 					accessory = GLOB.caps_list[source.dna.features["caps"]]
+=======
+>>>>>>> ca61d0f8681 (Turns mush cap into an extorgan (#80952))
 
 			if(!accessory || accessory.icon_state == "none")
 				continue
