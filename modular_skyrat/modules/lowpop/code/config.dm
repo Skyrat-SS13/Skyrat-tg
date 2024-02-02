@@ -8,4 +8,4 @@
 
 // How often the subsystem should fire.
 /datum/config_entry/number/lowpop_subsystem_fire
-	default = 10 MINUTES
+	default = 5 MINUTES
