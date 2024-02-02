@@ -92,4 +92,5 @@ SUBSYSTEM_DEF(lowpop)
 		smes.update_appearance()
 		smes.power_change()
 
-	minor_announce("All SMESs on [station_name()] have been recharged via electron beam.", "Power Systems Recharged")
+	// Let's keep it running quieter
+	// minor_announce("All SMESs on [station_name()] have been recharged via electron beam.", "Power Systems Recharged")
