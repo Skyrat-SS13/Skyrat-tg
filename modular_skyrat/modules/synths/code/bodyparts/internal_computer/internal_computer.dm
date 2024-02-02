@@ -44,6 +44,21 @@
 		)
 	return ..()
 
+/obj/item/modular_computer/pda/synth/proc/handle_id_slot(mob/living/carbon/human/synth)
+	if(!istype(synth))
+		return
+	var/obj/item = synth.wear_id
+	if(item)
+		if(istype(item, /obj/item/card/id))
+			computer_id_slot = item
+		else if(istype(item, /obj/item/modular_computer))
+			var/obj/item/modular_computer/pda = item
+			computer_id_slot = pda.computer_id_slot
+		else
+			computer_id_slot = null
+	else
+		computer_id_slot = null
+
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
 	return
 /*
@@ -91,7 +106,7 @@
 So, I am not snowflaking more code.. except this
 Attacking a synth with an id loads it into its slot.. pain and probably shitcode
 */
-
+/*
 /obj/item/card/id/attack(mob/living/target_mob, mob/living/user, params)
 	var/mob/living/carbon/human/targetmachine = target_mob
 	if(!istype(targetmachine))
@@ -107,6 +122,7 @@ Attacking a synth with an id loads it into its slot.. pain and probably shitcode
 				robotbrain.internal_computer.InsertID(src, user)
 			return
 	return ..()
+*/
 
 /obj/item/modular_computer/pda/attack(mob/living/target_mob, mob/living/user, params)
 	var/mob/living/carbon/human/targetmachine = target_mob
