@@ -673,3 +673,78 @@
   - bugfix: Added several ports to modpc circuits that were missing or needing them.
   - bugfix: Fixes ever-expanding ports whenever circuits are re-inserted in a modular
       computer.
+2024-01-28:
+  Useroth:
+  - rscadd: Jukeboxes added to automapper, to spawn in open areas in the bar
+  - rscadd: Ported BurgerLUA's jukebox overhaul from bubber (https://github.com/Bubberstation/Bubberstation/pull/552)
+  - rscadd: Added an age prompting system.
+  - server: Added a new SQL table for keeping some of the data declared by players
+  - rscadd: EZDB will now apply our modular sql schema when used during development
+2024-01-29:
+  LT3:
+  - bugfix: Emergency shuttle console now only works while on the emergency shuttle
+  Melbert:
+  - bugfix: Rush Gland now triggers correctly on being grabbed by a Goliath
+  SkyratBot:
+  - bugfix: Removed kitten omniscience. (They stop pointing at you now.)
+  - refactor: Legions abilities have been changed into actions that can be added to
+      any mob.
+  - bugfix: Oppenheimer, the nukie medbot, has been reprogrammed to use Airplane Mode
+      as a factory default. The station AI is no longer immediately aware of his presence!
+  - spellcheck: shortened description for the PCM and capitalized some text for its
+      examines.
+  - code_imp: adds sanity checks and removed deprecated `content` tag from PCM UI.
+      Stops hologram items from being inserted.
+  - spellcheck: You no longer fail to find "a anything" when swabbing something for
+      cytology that doesn't have swabbing results.
+  - bugfix: Cats can be swabbed for feliform cells again.
+  - sound: Cats have had their mastery of silent walking revoked, and have their pitter-pattering
+      footsteps back again.
+  - refactor: 'Refactored Telecommunications Monitoring Console UI: added search bar,
+      made UI more compact.'
+  - image: Added an icon to the "My Watchlist Status is Not Important" achievement.
+2024-01-30:
+  A.C.M.O.:
+  - config: Added two new config flags for quirks, DISABLE_QUIRK_POINTS and MAX_POSITIVE_QUIRKS.
+  LT3:
+  - bugfix: Tramstation external atmos ports are now properly connected
+  Melbert:
+  - bugfix: You can build on some niche tables again, such as the Wabbajack Altar.
+  - bugfix: Wizarditis Timestop now has the desired effect.
+  - admin: Admins can now VV Timestop to make the caster not immune to their own Timestop.
+      If they really wanted.
+  Rhials:
+  - bugfix: The encrypted bitrunner cache is now impervious to most conventional means
+      of destruction.
+  SkyratBot:
+  - image: Resprited the goldfish and lanternfish as well.
+  - bugfix: Rootbread soup now uses poached egg (egg reagents in soup pot) instead
+      of raw unpeeled egg (which would break into reagents upon coming into contact
+      with the soup pot) and is thus craftable again.
+  - bugfix: The hub time should be accurate for servers with different timezones
+  - bugfix: auto lathes don't hog local apc supply when printing items
+  - bugfix: Blobs sitting on APCs no longer break them when already broken, and so
+      no longer spam the power down noise.
+  - bugfix: The construction console drone becomes visible again while its in use
+  - spellcheck: typos fixed in the fireproof clothing religious rite
+  - bugfix: pesto pizza (cooked) is no longer raw, and cilbir is meat instead of fruit
+  - bugfix: sets minimum volume of reagent allowed to exist inside anything to 0.01
+      therefore allowing plumbing iv drip small transfer rates to occur without reagents
+      disappearing.
+  - bugfix: Bone daggers and shivs are now longer electrically conductive
+  - bugfix: Ambient loops will now refresh when entering a mob.
+  - bugfix: Jerry Tramstation can get laid again! (Fixed cat breeding.)
+  - rscdel: The lathe tax on printing items has been removed from the game for both
+      humans and silicons.
+  - refactor: Husk icons are now dynamically generated. See if you can identify what
+      species it was!
+  - bugfix: ' The buttons for flashers on birdshot/tramstation now work'
+  - bugfix: fixes a runtime that sometimes happens in ai controllers
+  Zergspower:
+  - bugfix: fixes the missing ARC Mining setup in Kilo
+2024-01-31:
+  Zenitheevee:
+  - bugfix: Port Tarkon's research server works correctly now.
+  - bugfix: Port Director now spawns with Port Director ID card
+  - bugfix: Port Tarkon Residents spawn with Crowbars to fix lack of them in map,
+      and it makes sense.
