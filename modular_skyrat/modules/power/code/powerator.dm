@@ -50,7 +50,7 @@
 	icon_state = "powerator"
 
 	density = TRUE
-	circuit = /obj/item/circuitboard/machine/bluespace_miner
+	circuit = /obj/item/circuitboard/machine/powerator
 	idle_power_usage = 100
 
 	/// the current amount of power that we are trying to process
@@ -61,6 +61,8 @@
 	var/divide_ratio = 0.00001
 	/// the attached cable to the machine
 	var/obj/structure/cable/attached_cable
+	/// how many credits this machine has actually made so far
+	var/credits_made = 0
 
 /obj/machinery/powerator/Initialize(mapload)
 	. = ..()
@@ -95,6 +97,7 @@
 		. += span_notice("There is a power cable underneath.")
 
 	. += span_notice("Current Power: [display_power(current_power)]/[display_power(max_power)]")
+	. += span_notice("This machine has made [credits_made] credits from selling power so far.")
 
 /obj/machinery/powerator/RefreshParts()
 	. = ..()
@@ -157,6 +160,7 @@
 	var/money_ratio = round(current_power * divide_ratio)
 	var/datum/bank_account/synced_bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	synced_bank_account.adjust_money(money_ratio)
+	credits_made += money_ratio
 
 	update_appearance() //lets just update this
 
