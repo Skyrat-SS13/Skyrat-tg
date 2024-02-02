@@ -85,6 +85,10 @@
 	var/datum/reagent/blood/blood = reagents.has_reagent(/datum/reagent/blood)
 	if(blood)
 		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
+		var/blood_DNA = blood.data["blood_DNA"]
+		if (!blood_DNA) //does the blood we're digesting have any DNA? if it doesn't, it's artificial, and that's gross.
+			src.owner.adjust_disgust(DISGUST_LEVEL_GROSS / 16, DISGUST_LEVEL_VERYGROSS)
+			src.owner.add_mood_event("gross_food", /datum/mood_event/disgust/hemophage_feed_synthesized_blood)
 
 	return ..()
 

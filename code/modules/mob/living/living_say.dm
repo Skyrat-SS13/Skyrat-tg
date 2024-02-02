@@ -222,6 +222,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	//Get which verb is prefixed to the message before radio but after most modifications
 	message_mods[SAY_MOD_VERB] = say_mod(message, message_mods)
 
+	// SKYRAT EDIT ADDITION START: autopunctuation
+	//ensure EOL punctuation exists and that word-bounded 'i' are capitalized before we do anything else
+	message = autopunct_bare(message)
+	// SKYRAT EDIT ADDITION END
 	//This is before anything that sends say a radio message, and after all important message type modifications, so you can scumb in alien chat or something
 	if(saymode && !saymode.handle_message(src, message, language))
 		return
@@ -274,7 +278,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/understood = TRUE
 	if(!is_custom_emote) // we do not translate emotes
 		var/untranslated_raw_message = raw_message
-		raw_message = translate_language(src, message_language, raw_message) // translate
+		raw_message = translate_language(speaker, message_language, raw_message, spans, message_mods) // translate
 		if(raw_message != untranslated_raw_message)
 			understood = FALSE
 

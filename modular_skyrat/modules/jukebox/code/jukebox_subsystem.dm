@@ -14,13 +14,6 @@ SUBSYSTEM_DEF(jukeboxes)
 	var/song_beat = 0
 	var/song_associated_id = null
 
-/datum/track/New(name, path, length, beat, assocID)
-	song_name = name
-	song_path = path
-	song_length = length
-	song_beat = beat
-	song_associated_id = assocID
-
 /datum/controller/subsystem/jukeboxes/proc/addjukebox(obj/machinery/jukebox/jukebox, datum/track/T, jukefalloff = 1)
 	if(!istype(T))
 		CRASH("[src] tried to play a song with a nonexistant track")
@@ -65,7 +58,8 @@ SUBSYSTEM_DEF(jukeboxes)
 				return activejukeboxes.Find(jukeinfo)
 	return FALSE
 
-/datum/controller/subsystem/jukeboxes/Initialize()
+/datum/controller/subsystem/jukeboxes/proc/reload_songs()
+	songs = list()
 	var/list/tracks = flist("[global.config.directory]/jukebox_music/sounds/")
 	for(var/S in tracks)
 		var/datum/track/T = new()
@@ -78,6 +72,9 @@ SUBSYSTEM_DEF(jukeboxes)
 		T.song_beat = text2num(L[3])
 		T.song_associated_id = L[4]
 		songs |= T
+
+/datum/controller/subsystem/jukeboxes/Initialize()
+	reload_songs()
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
 	return SS_INIT_SUCCESS
@@ -98,21 +95,43 @@ SUBSYSTEM_DEF(jukeboxes)
 			stack_trace("Nonexistant or invalid object associated with jukebox.")
 			continue
 		var/sound/song_played = sound(juketrack.song_path)
-		var/turf/currentturf = get_turf(jukebox)
 
-		song_played.falloff = jukeinfo[4]
+		song_played.falloff = 255
 
 		for(var/mob/M in GLOB.player_list)
 			if(!HAS_JUKEBOX_PREF(M))
 				M.stop_sound_channel(jukeinfo[2])
 				continue
 
+			var/volume = jukebox.volume
+
 			if(jukebox.z == M.z)	//todo - expand this to work with mining planet z-levels when robust jukebox audio gets merged to master
 				song_played.status = SOUND_UPDATE
+				//https://www.desmos.com/calculator/ybto1dyqzk
+				if(jukeinfo[4]) //HAS FALLOFF
+					var/distance = get_dist(M,jukebox)
+					volume = min(
+						50,
+						volume,
+						volume * ((max(1,volume*0.1 + jukebox.falloff_dist_offset - distance)/80)**0.2 - (distance/jukebox.falloff_dist_divider))
+					)
+					volume = round(volume,1)
+					if(volume < jukebox.volume*0.5)
+						var/volume_mod = 1 - (volume / 50)
+						song_played.x = clamp(jukebox.x - M.x,-1,1) * volume_mod * 4
+						song_played.y = clamp(jukebox.y - M.y,-1,1) * volume_mod * 4
+						song_played.z = 1
+					else
+						song_played.x = 0
+						song_played.y = 0
+						song_played.z = 1
+
+				if(volume < 1)
+					song_played.status |= SOUND_MUTE
 			else
 				song_played.status = SOUND_MUTE | SOUND_UPDATE	//Setting volume = 0 doesn't let the sound properties update at all, which is lame.
 
-			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], sound_to_use = song_played)
+			M.playsound_local(null, null, volume, channel = jukeinfo[2], sound_to_use = song_played)
 			CHECK_TICK
 	return
 
