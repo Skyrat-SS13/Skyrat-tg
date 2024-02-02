@@ -26,11 +26,8 @@ SUBSYSTEM_DEF(lowpop)
 	return SS_INIT_SUCCESS
 
 /**
- * Roundstart check
- *
- * We check at roundstart if we should activate the measures.
+ * We check if we should activate the measures.
  */
-
 /datum/controller/subsystem/lowpop/proc/lowpop_check()
 	if(get_active_player_count(TRUE, FALSE, FALSE) > CONFIG_GET(number/lowpop_threshold))
 		disable_lowpop_measures()
@@ -71,7 +68,7 @@ SUBSYSTEM_DEF(lowpop)
 				atmos_device.update_use_power(initial(atmos_device.use_power))
 
 /**
- * Here we check a few things, namely, if the SMES on station are more than percent critically low, we recharge!
+ * Here, we recharge!
  */
 /datum/controller/subsystem/lowpop/proc/power_restore()
 	var/list/all_smes = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/smes)
