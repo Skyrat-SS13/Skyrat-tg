@@ -75,7 +75,6 @@ SUBSYSTEM_DEF(automapper)
 			preloaded_map_templates += map
 
 	// Now we can pick a modular engine to load and add it to the preloads.
-	/*
 	if(modular_engine_templates)
 		var/datum/map_template/automap_template/default_map = new() // SHITCODE! :D
 		default_map.map_type = AUTOMAPPER_MAP_TYPE_MODULAR_ENGINE_DEFAULT
@@ -83,10 +82,6 @@ SUBSYSTEM_DEF(automapper)
 		var/datum/map_template/automap_template/chosen_map = pick(modular_engine_templates)
 		if(chosen_map.map_type != AUTOMAPPER_MAP_TYPE_MODULAR_ENGINE_DEFAULT)
 			preloaded_map_templates += pick(modular_engine_templates)
-	*/
-
-	if(modular_engine_templates)
-		preloaded_map_templates += pick(modular_engine_templates)
 
 
 /**
