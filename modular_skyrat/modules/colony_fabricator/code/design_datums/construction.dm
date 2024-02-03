@@ -112,7 +112,7 @@
 	build_type = COLONY_FABRICATOR
 	materials = list(
 		/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5,
 	)
 	build_path = /obj/item/stack/sheet/plastic_wall_panel/ten
 	category = list(

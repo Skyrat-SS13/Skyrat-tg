@@ -1,14 +1,21 @@
-/datum/language/moffic
-	name = "Chitin-Click"
-	desc = "A popular non-Human language that finds extensive use by various types of anthropomorphic invertebrates the likes of Mothpeople and other types of insects. It consists of complex flutters, chittering, antenna movements, and sparse guttural syllables. In modern Sol standard writing, some of its sounds have been compared to Ancient Swedish (Dating back to the Human 19th century)."
+/datum/language/chitinclick
+	name = "Chitinclick"
+	desc = "A popular non-Human language that finds extensive use by various types of anthropomorphic invertebrates. It consists of complex flutters, chittering, antenna movements, and sparse guttural syllables."
 	key = "C"
-	space_chance = 30
+	space_chance = 40
 	//References some replaced languages.
 	syllables = list(
 		// Original
-		"chi", "cha", "at", "mo", "kli", "ac", "f", "cli", "fz", "fs",
+		"a", "ak", "ae", "ai", "az", "ba", "bz", "bu", "bh", "br", "bi",
+		"c", "ca", "ci", "ch", "chk", "cr", "cl", "ce", "cu", "cli", "cla",
+		"du", "dr", "dri", "de", "do", "dza", "dk", "g", "ga", "gr", "dz",
+		"gi", "gchk", "i", "ii", "ik", "it", "il", "ie", "iz", "ir", "io",
+		"pi", "pz", "pe", "po", "phk", "k", "kz", "kl", "ka", "kli", "kh",
+		"kch", "vh", "vr", "vz", "veh", "mr", "mz", "mi", "ma", "mhk", "zz",
+		"ze", "zu", "zo", "za", "nz", "zi", "fz", "fr", "f", "fi", "click",
+		"chit", "rr", "ru", "ra", "rzz", "ri", "re",
 		// Buzzwords
 		"zz", "buzz", "ZZ",
-		// Moffic
-		"ø", "öh", "ää", "år", "käyt", "dår", "ån", "næ", "møt", "om", "när",
 	)
+	icon_state = "chitinclick"
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'

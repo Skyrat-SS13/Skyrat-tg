@@ -23,6 +23,8 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/aquatic,
 	)
 
+	meat = /obj/item/food/fishmeat/moonfish/akula
+
 /datum/species/aquatic/get_default_mutant_bodyparts()
 	return list(
 		"tail" = list("Shark", TRUE),

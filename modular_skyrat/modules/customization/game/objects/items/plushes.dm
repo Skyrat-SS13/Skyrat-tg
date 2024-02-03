@@ -426,7 +426,7 @@
 	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam, in some cases (sadly not all of them)
 	var/mob/living/living_user = user
 	if(istype(living_user))
-		living_user.add_mood_event("hug", /datum/mood_event/warmhug/rubi, src)
+		living_user.add_mood_event("hug", /datum/mood_event/warmhug/rubi, 1, src)
 	user.visible_message(span_notice("[user] hugs \the [src]."), span_notice("You hug \the [src]."))
 
 /datum/mood_event/warmhug/rubi

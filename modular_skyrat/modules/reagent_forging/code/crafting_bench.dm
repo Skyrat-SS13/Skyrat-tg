@@ -108,6 +108,13 @@
 
 /obj/structure/reagent_crafting_bench/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	select_recipe(user)
+
+/obj/structure/reagent_crafting_bench/attack_robot(mob/living/user)
+	. = ..()
+	select_recipe(user)
+
+/obj/structure/reagent_crafting_bench/proc/select_recipe(mob/living/user)
 	update_appearance()
 
 	if(length(contents))
@@ -142,16 +149,31 @@
 
 /obj/structure/reagent_crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/forging/complete))
-		if(length(contents))
-			balloon_alert(user, "already full")
-			return TRUE
-
-		attacking_item.forceMove(src)
-		balloon_alert_to_viewers("placed [attacking_item]")
-		update_appearance()
+		attempt_place(attacking_item, user)
 		return TRUE
 
 	return ..()
+
+/obj/structure/reagent_crafting_bench/MouseDrop_T(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	if(!isliving(user))
+		return
+
+	if(!isobj(attacking_item))
+		return
+
+	if(istype(attacking_item, /obj/item/forging/complete))
+		attempt_place(attacking_item, user)
+
+/obj/structure/reagent_crafting_bench/proc/attempt_place(obj/item/attacking_item, mob/user)
+	if(length(contents))
+		balloon_alert(user, "already full")
+		return
+
+	attacking_item.forceMove(src)
+	balloon_alert_to_viewers("placed [attacking_item]")
+	update_appearance()
+	return
 
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)

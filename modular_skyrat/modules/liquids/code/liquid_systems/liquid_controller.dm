@@ -35,14 +35,17 @@ SUBSYSTEM_DEF(liquids)
 
 /datum/controller/subsystem/liquids/fire(resumed = FALSE)
 	if(run_type == SSLIQUIDS_RUN_TYPE_TURFS)
-		if(!currentrun_active_turfs.len && active_turfs.len)
-			currentrun_active_turfs = active_turfs.Copy()
-		for(var/tur in currentrun_active_turfs)
+		if(!resumed)
+			src.currentrun_active_turfs = active_turfs.Copy()
+		// cache for speed
+		var/list/currentrun_active_turfs = src.currentrun_active_turfs
+		while(currentrun_active_turfs.len)
+			var/turf/turf = currentrun_active_turfs[currentrun_active_turfs.len]
+			turf.process_liquid_cell()
+			currentrun_active_turfs.Remove(turf)
 			if(MC_TICK_CHECK)
-				return
-			var/turf/T = tur
-			T.process_liquid_cell()
-			currentrun_active_turfs -= T //work off of index later
+				break
+		resumed = FALSE
 		if(!currentrun_active_turfs.len)
 			run_type = SSLIQUIDS_RUN_TYPE_GROUPS
 	if (run_type == SSLIQUIDS_RUN_TYPE_GROUPS)
@@ -58,7 +61,8 @@ SUBSYSTEM_DEF(liquids)
 					LG.break_group()
 			if(MC_TICK_CHECK)
 				run_type = SSLIQUIDS_RUN_TYPE_IMMUTABLES //No currentrun here for now
-				return
+				break
+		resumed = FALSE
 		run_type = SSLIQUIDS_RUN_TYPE_IMMUTABLES
 	if(run_type == SSLIQUIDS_RUN_TYPE_IMMUTABLES)
 		for(var/t in active_immutables)
@@ -66,8 +70,9 @@ SUBSYSTEM_DEF(liquids)
 			T.process_immutable_liquid()
 			/*
 			if(MC_TICK_CHECK)
-				return
+				break
 			*/
+		resumed = FALSE
 		run_type = SSLIQUIDS_RUN_TYPE_EVAPORATION
 
 	if(run_type == SSLIQUIDS_RUN_TYPE_EVAPORATION)
@@ -78,7 +83,8 @@ SUBSYSTEM_DEF(liquids)
 				if(prob(EVAPORATION_CHANCE))
 					T.liquids.process_evaporation()
 				if(MC_TICK_CHECK)
-					return
+					break
+			resumed = FALSE
 			evaporation_counter = 0
 		run_type = SSLIQUIDS_RUN_TYPE_FIRE
 
@@ -90,11 +96,12 @@ SUBSYSTEM_DEF(liquids)
 				T.liquids.process_fire()
 			if(MC_TICK_CHECK)
 				return
+			resumed = FALSE
 			fire_counter = 0
 		run_type = SSLIQUIDS_RUN_TYPE_TURFS
 
 /datum/controller/subsystem/liquids/proc/add_active_turf(turf/T)
-	if(!active_turfs[T])
+	if(can_fire && !active_turfs[T])
 		active_turfs[T] = TRUE
 		if(T.lgroup)
 			T.lgroup.amount_of_active_turfs++

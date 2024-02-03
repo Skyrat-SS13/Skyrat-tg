@@ -230,6 +230,8 @@
 /datum/techweb_node/cyborg_upg_util/New()
 	design_ids += list(
 		"borg_upgrade_clamp",
+		"borg_upgrade_cargo_tele",
+		"borg_upgrade_forging",
 		"borg_upgrade_brush",
 	)
 	return ..()

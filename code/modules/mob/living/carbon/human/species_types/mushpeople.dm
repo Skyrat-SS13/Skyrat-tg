@@ -45,12 +45,13 @@
 		if(!H.dna.mutant_bodyparts["caps"] || H.dna.mutant_bodyparts["caps"][MUTANT_INDEX_NAME] != "None") // SKYRAT EDIT - Customization - ORIGINAL: if(!H.dna.features["caps"])
 			H.dna.mutant_bodyparts["caps"] = list(MUTANT_INDEX_NAME = "Round", MUTANT_INDEX_COLOR_LIST = list(H.hair_color)) // SKYRAT EDIT - Customization - ORIGINAL: H.dna.features["caps"] = "Round"
 			handle_mutant_bodyparts(H)
-		mush = new(null)
-		mush.teach(H)
+		mush = new()
+		mush.teach(C)
+		mush.allow_temp_override = FALSE
 
 /datum/species/mush/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	mush.remove(C)
+	mush.fully_remove(C)
 	QDEL_NULL(mush)
 
 /datum/species/mush/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)

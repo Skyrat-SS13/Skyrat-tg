@@ -211,6 +211,10 @@
 	name = "Long Gloomy Bangs"
 	icon_state = "hair_gloomy_long"
 
+/datum/sprite_accessory/hair/skyrat/gloomy_longer
+	name = "Very Long Gloomy Bangs"
+	icon_state = "hair_gloomy_longer"
+
 /datum/sprite_accessory/hair/skyrat/halfshave
 	name = "Half-shaved 2"
 	icon_state = "hair_halfshave"

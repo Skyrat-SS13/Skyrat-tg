@@ -149,5 +149,19 @@ VETERAN_LEGACY_SYSTEM
 ## How much time arrivals shuttle should stay at station after its engines recharged before returning to interlink. In deciseconds. 150 - 15 seconds. 0 - disables autoreturn.
 ARRIVALS_WAIT 150
 
+## LOWPOP MEASURES
+
+## Enables or disables the lowpop system entirely.
+# LOWPOP_MEASURES_ENABLED
+
+## The threshold for enabling/disabling the lowpop system LIVE. It's updated every so often(see below).
+LOWPOP_THRESHOLD 10
+
+## The lowpop subsystem fire rate. It does actions each time it fires.(default is 10 minutes)
+LOWPOP_SUBSYSTEM_FIRE 6000
+
 ## Uncomment to make veteran quirks and jobs available to everybody
 #BYPASS_VETERAN_SYSTEM
+
+## Uncomment to enable the age prompt system; It asks players for their date of birth upon entry and denies players below a certain age.
+#AGE_PROMPT_SYSTEM

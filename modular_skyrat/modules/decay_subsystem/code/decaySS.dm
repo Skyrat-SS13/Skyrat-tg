@@ -58,10 +58,11 @@ SUBSYSTEM_DEF(decay)
 		possible_areas += iterating_area
 
 		// Now add the turfs
-		for(var/turf/iterating_turf as anything in iterating_area.get_contained_turfs())
-			if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
-				continue
-			possible_turfs += iterating_turf
+		for(var/list/zlevel_turfs as anything in iterating_area.get_zlevel_turf_lists())
+			for(var/turf/area_turf as anything in zlevel_turfs)
+				if(!(area_turf.flags_1 & CAN_BE_DIRTY_1))
+					continue
+				possible_turfs += area_turf
 
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")

@@ -454,128 +454,13 @@
 	handlebank(crewman)
 	return ..()
 
-//Port Tarkon, 6 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
 
-/obj/effect/mob_spawn/ghost_role/human/tarkon
-	name = "P-T Abandoned Crew"
-	prompt_name = "an abandoned cargo member"
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper"
-	you_are_text = "You are an abandoned member of Port Tarkon, an attempt to create steady living vaults within large asteroids. You have no real idea who Interdyne is, And your last recollection of NT is the producer of some... Less than ethically obtained goods on the port."
-	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus. Bring P-T to the success it was ment to be, or die trying. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "DO NOT abandon the port, PERIOD, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
-	outfit = /datum/outfit/tarkon
-	spawner_job_path = /datum/job/tarkon
-	loadout_enabled = TRUE
-	quirks_enabled = TRUE
-	random_appearance = FALSE
-	computer_area = /area/ruin/space/has_grav/port_tarkon/centerhall
-
-/datum/outfit/tarkon
-	name = "default port tarkon outfit"
-	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
-	back = /obj/item/storage/backpack
-	shoes = /obj/item/clothing/shoes/winterboots
-	gloves = /obj/item/clothing/gloves/fingerless
-	glasses = /obj/item/clothing/glasses/sunglasses
-	id = /obj/item/card/id/away/tarkon/cargo
-	l_pocket = /obj/item/card/mining_point_card
-	r_pocket = /obj/item/mining_voucher
-	ears = /obj/item/radio/headset/tarkon
-
-/datum/outfit/tarkon/post_equip(mob/living/carbon/human/tarkon, visualsOnly = FALSE)
-	var/obj/item/card/id/id_card = tarkon.wear_id
-	if(istype(id_card))
-		id_card.registered_name = tarkon.real_name
-		id_card.update_label()
-		id_card.update_icon()
-	var/obj/item/radio/target_radio = tarkon.ears
-	target_radio.set_frequency(FREQ_TARKON)
-	target_radio.recalculateChannels()
-
-	handlebank(tarkon)
-	return ..()
-
-/obj/effect/mob_spawn/ghost_role/human/tarkon/sci
-	prompt_name = "an abandoned scientist"
-	outfit = /datum/outfit/tarkon/sci
-
-/datum/outfit/tarkon/sci
-	name = "Port Tarkon Science Outfit"
-	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
-	glasses = /obj/item/clothing/glasses/hud/diagnostic
-	id = /obj/item/card/id/away/tarkon/sci
-	l_hand = /obj/item/inducer
-	l_pocket = null
-	r_pocket = /obj/item/stock_parts/cell/high
-
-/obj/effect/mob_spawn/ghost_role/human/tarkon/med
-	prompt_name = "an abandoned medical resident"
-	outfit = /datum/outfit/tarkon/med
-
-/datum/outfit/tarkon/med
-	name = "Port Tarkon Medical Outfit"
-	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
-	glasses = /obj/item/clothing/glasses/hud/health
-	id = /obj/item/card/id/away/tarkon/med
-	neck = /obj/item/clothing/neck/stethoscope
-	l_pocket = /obj/item/healthanalyzer
-	r_pocket = /obj/item/stack/medical/suture/medicated
-
-/obj/effect/mob_spawn/ghost_role/human/tarkon/engi
-	prompt_name = "an abandoned maintenance engineer"
-	outfit = /datum/outfit/tarkon/engi
-
-/datum/outfit/tarkon/engi
-	name = "Port Tarkon Engineering Outfit"
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
-	glasses = /obj/item/clothing/glasses/meson/engine/tray
-	id = /obj/item/card/id/away/tarkon/engi
-	gloves = /obj/item/clothing/gloves/combat
-	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
-	r_pocket = /obj/item/stack/cable_coil
-
-/obj/effect/mob_spawn/ghost_role/human/tarkon/sec
-	prompt_name = "an abandoned security deputy"
-	outfit = /datum/outfit/tarkon/sec
-
-/datum/outfit/tarkon/sec
-	name = "Port Tarkon Security Outfit"
-	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec
-	glasses = /obj/item/clothing/glasses/hud/security/redsec
-	gloves = /obj/item/clothing/gloves/tackler/combat
-	id = /obj/item/card/id/away/tarkon/sec
-	l_pocket = /obj/item/melee/baton/telescopic
-	r_pocket = /obj/item/grenade/barrier
-	skillchips = list(/obj/item/skillchip/chameleon/reload)
-
-/obj/effect/mob_spawn/ghost_role/human/tarkon/ensign
-	name = "P-T Abandoned Ensign"
-	prompt_name = "an abandoned ensign"
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper-o"
-	you_are_text = "You were tasked by Tarkon Industries to Port Tarkon as a low-level command member, Holding no actual command, but as just another scapegoat to blame should it failed... And failed it did. Scan were never done when the overseer commanded construction, and you were left, forever branded with a task not possible for you"
-	flavour_text = "The rest of command bailed, and left as nothing more than a glorified assistant, you are held responsible should you be unable to wrangle what hopes of success Headquarters has. Find the blueprints and keep them close, Lest looters and raiders plan to seize what isn't theirs. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "People aren't obligated to listen to you, and you are, otherwise, just another body with some remnant of control. Make sure important items aren't traded and do your best to survive in the hellscape left for you. Unwelcomed and uninvited guests are not obligated to your kindness."
-	outfit = /datum/outfit/tarkon/ensign
-	spawner_job_path = /datum/job/tarkon
-
-/datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
-	name = "Port Tarkon Ensigns Outfit"
-	uniform = /obj/item/clothing/under/misc/skyrat/utility
-	ears = /obj/item/radio/headset/tarkon/ensign
-	id = /obj/item/card/id/away/tarkon/ensign
-	neck = /obj/item/clothing/neck/security_cape/armplate
-	gloves = /obj/item/clothing/gloves/combat
-	l_pocket = null
-	r_pocket = null
-	skillchips = list(/obj/item/skillchip/chameleon/reload)
 
 /datum/outfit/proc/handlebank(mob/living/carbon/human/owner)
 	var/datum/bank_account/offstation_bank_account = new(owner.real_name)
 	owner.account_id = offstation_bank_account.account_id
 	offstation_bank_account.replaceable = FALSE
-	offstation_bank_account.account_job = new /datum/job/ghost_role //note to self: Replace later
+	offstation_bank_account.account_job = new /datum/job/ghost_role
 	owner.add_mob_memory(/datum/memory/key/account, remembered_id = owner.account_id)
 	if(owner.wear_id)
 		var/obj/item/card/id/id_card = owner.wear_id
@@ -591,16 +476,6 @@
 	desc = "The headset of the boss."
 	command = TRUE
 
-/obj/item/radio/headset/tarkon
-	name = "tarkon headset"
-	freerange = TRUE
-	freqlock = TRUE
-	keyslot = new /obj/item/encryptionkey/headset_cargo/tarkon
-
-/obj/item/radio/headset/tarkon/ensign //spoiler for upcoming update
-	name = "tarkon ensign headset"
-	desc = "A headset personally handed to trusted crew of Tarkon. It fills you with will to do... Something."
-	command = TRUE
 
 //OBJECTS//
 /obj/structure/showcase/machinery/oldpod/used
@@ -653,59 +528,6 @@
 /datum/id_trim/away/hotel/security
 	assignment = "Hotel Security"
 
-/datum/id_trim/away/tarkon
-	assignment = "P-T Cargo Personnel"
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-
-/datum/id_trim/away/tarkon/sec
-	assignment = "P-T Port Guard"
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-
-/datum/id_trim/away/tarkon/med
-	assignment = "P-T Trauma Medic"
-	access = list(ACCESS_MEDICAL, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-
-/datum/id_trim/away/tarkon/eng
-	assignment = "P-T Maintenance Crew"
-
-/datum/id_trim/away/tarkon/sci
-	assignment = "P-T Field Researcher"
-	access = list(ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-
-/datum/id_trim/away/tarkon/ensign
-	assignment = "Tarkon Ensign"
-	access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_TARKON, ACCESS_WEAPONS)
-
-/obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
-	name = "P-T field researcher's access card"
-	desc = "An access card designated for \"the science team\". You are forgotten basically immediately when it comes to the lab."
-	trim = /datum/id_trim/away/tarkon/sci
-
-/obj/item/card/id/away/tarkon/med
-	name = "P-T trauma medic's access card"
-	desc = "An access card designated for \"medical staff\". You provide the medic bags."
-	trim = /datum/id_trim/away/tarkon/med
-
-/obj/item/card/id/away/tarkon/sec
-	name = "P-T resident deputy's access card"
-	desc = "An access card designated for \"security members\". Everyone wants your guns, partner. Yee-haw."
-	trim = /datum/id_trim/away/tarkon/sec
-
-/obj/item/card/id/away/tarkon/cargo
-	name = "P-T cargo hauler's access card"
-	desc = "An access card designated for \"cargo's finest\". You're also a part time space miner, when cargonia is quiet."
-	trim = /datum/id_trim/away/tarkon
-
-
-/obj/item/card/id/away/tarkon/engi
-	name = "P-T maintenance engineer's access card"
-	desc = "An access card designated for \"engineering staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
-	trim = /datum/id_trim/away/tarkon/eng
-
-/obj/item/card/id/away/tarkon/ensign
-	name = "Tarkon ensign's access card"
-	desc = "An access card designated for \"Tarkon ensign\". No one has to listen to you... But you're the closest there is for command around here."
-	trim = /datum/id_trim/away/tarkon/ensign
 
 //CRYO CONSOLES
 /obj/machinery/computer/cryopod/interdyne
@@ -715,9 +537,3 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/interdyne, 32)
 
-/obj/machinery/computer/cryopod/tarkon
-	radio = /obj/item/radio/headset/tarkon
-	announcement_channel = RADIO_CHANNEL_TARKON
-	req_one_access = list("tarkon")
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)

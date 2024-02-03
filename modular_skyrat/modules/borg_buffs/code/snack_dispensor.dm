@@ -3,9 +3,14 @@
 	id = "borg_upgrade_snacks"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/snack_dispenser
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	construction_time = 1 SECONDS
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL,
+	)
 
 /obj/item/borg/upgrade/snack_dispenser
 	name = "Snack Dispenser Module"

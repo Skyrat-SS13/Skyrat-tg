@@ -202,6 +202,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	icon_state = "unanchoredstatusdisplay"
 	result_path = /obj/machinery/time_clock
 	pixel_shift = 28
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+	)
 
 #undef CLOCK_IN_COOLDOWN
