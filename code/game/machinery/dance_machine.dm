@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL BEGIN - JUKEBOX - MOVED TO 'modular_skyrat/modules/jukebox/code/dance_machine.dm'
-/// Helper macro to check if the passed mob has jukebox sound preference enabled
-#define HAS_JUKEBOX_PREF(mob) (!QDELETED(mob) && !isnull(mob.client) && mob.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-
-=======
->>>>>>> 7ffc073b33a (Refactor jukebox, jukebox datum, now jukebox audio is positional. And it fully respects deaf people.  (#81135))
+/* SKYRAT EDIT: See modular_skyrat/modules/jukebox
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
@@ -393,66 +387,4 @@
 /obj/machinery/jukebox/disco/proc/dance4_revert(mob/living/dancer, matrix/starting_matrix)
 	animate(dancer, transform = starting_matrix, time = 5, loop = 0)
 	REMOVE_TRAIT(dancer, TRAIT_DISCO_DANCER, REF(src))
-<<<<<<< HEAD
-
-/obj/machinery/jukebox/proc/dance_over()
-	for(var/datum/weakref/weak_to_hide_from as anything in rangers)
-		var/mob/to_hide_from = weak_to_hide_from?.resolve()
-		to_hide_from?.stop_sound_channel(CHANNEL_JUKEBOX)
-
-	rangers.Cut()
-
-/obj/machinery/jukebox/disco/dance_over()
-	..()
-	QDEL_LIST(spotlights)
-	QDEL_LIST(sparkles)
-
-/obj/machinery/jukebox/process()
-	if(world.time < stop && active)
-		var/sound/song_played = sound(selection.song_path)
-
-		// Goes through existing mobs in rangers to determine if they should not be played to
-		for(var/datum/weakref/weak_to_hide_from as anything in rangers)
-			var/mob/to_hide_from = weak_to_hide_from?.resolve()
-			if(!HAS_JUKEBOX_PREF(to_hide_from) || get_dist(src, get_turf(to_hide_from)) > 10)
-				rangers -= weak_to_hide_from
-				to_hide_from?.stop_sound_channel(CHANNEL_JUKEBOX)
-
-		// Collect mobs to play the song to, stores weakrefs of them in rangers
-		for(var/mob/to_play_to in range(world.view, src))
-			if(!HAS_JUKEBOX_PREF(to_play_to))
-				continue
-			var/datum/weakref/weak_playing_to = WEAKREF(to_play_to)
-			if(rangers[weak_playing_to])
-				continue
-			rangers[weak_playing_to] = TRUE
-			// This plays the sound directly underneath the mob because otherwise it'd get stuck in their left ear or whatever
-			// Would be neat if it sourced from the box itself though
-			to_play_to.playsound_local(get_turf(to_play_to), null, volume, channel = CHANNEL_JUKEBOX, sound_to_use = song_played, use_reverb = FALSE)
-
-	else if(active)
-		active = FALSE
-		update_use_power(IDLE_POWER_USE)
-		STOP_PROCESSING(SSobj, src)
-		dance_over()
-		playsound(src,'sound/machines/terminal_off.ogg',50,TRUE)
-		update_appearance(UPDATE_ICON_STATE)
-		stop = world.time + 100
-
-/obj/machinery/jukebox/disco/process()
-	. = ..()
-	if(!active)
-		return
-
-	var/dance_num = rand(1,4) //all will do the same dance
-	for(var/datum/weakref/weak_dancer as anything in rangers)
-		var/mob/living/to_dance = weak_dancer.resolve()
-		if(!istype(to_dance) || !(to_dance.mobility_flags & MOBILITY_MOVE))
-			continue
-		if(!HAS_TRAIT(to_dance, TRAIT_DISCO_DANCER))
-			dance(to_dance, dance_num)
-
-#undef HAS_JUKEBOX_PREF
-*/ //SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 7ffc073b33a (Refactor jukebox, jukebox datum, now jukebox audio is positional. And it fully respects deaf people.  (#81135))
+SKYRAT EDIT END*/
