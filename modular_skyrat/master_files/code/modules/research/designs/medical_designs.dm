@@ -21,12 +21,6 @@
 	id = "cybernetic_tongue_lizard"
 	build_path = /obj/item/organ/internal/tongue/lizard/cybernetic
 
-/datum/design/cybernetic_tongue/lizard
-	name = "Forked Cybernetic Tongue"
-	desc = "A forked cybernetic tongue."
-	id = "cybernetic_tongue_lizard"
-	build_path = /obj/item/organ/internal/tongue/lizard/cybernetic
-
 /datum/design/cyberimp_surgical/alien
 	name = "Alien Surgical Arm Implant"
 	desc = "A set of surgical tools hidden behind a concealed panel on the user's arm."
