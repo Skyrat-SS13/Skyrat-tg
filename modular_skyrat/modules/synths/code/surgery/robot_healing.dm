@@ -87,7 +87,7 @@
 
 /datum/surgery_step/robot_heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(..())
-		while((heals_brute && target.getBruteLoss() && tool/*.tool_use_check(user, 1)*/) || (heals_burn && target.getFireLoss() && tool))
+		while((heals_brute && target.getBruteLoss() && tool) || (heals_burn && target.getFireLoss() && tool))
 			if(!..())
 				break
 
