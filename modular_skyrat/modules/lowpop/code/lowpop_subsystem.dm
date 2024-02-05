@@ -20,8 +20,6 @@ SUBSYSTEM_DEF(lowpop)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 	wait = CONFIG_GET(number/lowpop_subsystem_fire)
-	if(LAZYLEN(GLOB.player_list) > CONFIG_GET(number/lowpop_threshold)) // Don't announce it if we're not within the threshold. We use player list as people haven't spawned in yet.
-		return SS_INIT_SUCCESS
 	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, PROC_REF(lowpop_check))
 	return SS_INIT_SUCCESS
 
@@ -29,10 +27,15 @@ SUBSYSTEM_DEF(lowpop)
  * We check if we should activate the measures.
  */
 /datum/controller/subsystem/lowpop/proc/lowpop_check()
-	if(get_active_player_count(TRUE, FALSE, FALSE) > CONFIG_GET(number/lowpop_threshold))
+	var/player_count = get_active_player_count(TRUE, FALSE, FALSE)
+
+	if(player_count >= CONFIG_GET(number/lowpop_threshold_disable))
 		disable_lowpop_measures()
-	else
+		return
+
+	if(player_count <= CONFIG_GET(number/lowpop_threshold_enable))
 		enable_lowpop_measures()
+		return
 
 /datum/controller/subsystem/lowpop/proc/send_announcement(message)
 	priority_announce(message, "Staffing Bureau")
