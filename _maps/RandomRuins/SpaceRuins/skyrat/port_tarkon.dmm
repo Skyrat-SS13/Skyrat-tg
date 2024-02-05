@@ -1742,6 +1742,9 @@
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 1
 	},
+/obj/item/circuitboard/machine/thermoelectric_generator,
+/obj/item/circuitboard/machine/circulator,
+/obj/item/circuitboard/machine/circulator,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "mn" = (
@@ -2316,10 +2319,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon)
 "pP" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "pR" = (
@@ -2437,9 +2439,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor/solid,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/starboardhall)
 "qE" = (
@@ -2494,10 +2493,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "qR" = (
-/obj/structure/cable,
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/brown/half{
 	dir = 4
 	},
@@ -2930,7 +2927,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "ud" = (
@@ -3061,6 +3057,18 @@
 	},
 /turf/open/floor/engine/n2o,
 /area/ruin/space/has_grav/port_tarkon/atmos)
+"vj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/half{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/centerhall)
 "vl" = (
 /obj/machinery/door/airlock/public/glass/incinerator/tarkon_interior,
 /obj/machinery/airlock_controller/incinerator_tarkon{
@@ -3891,7 +3899,6 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/crowbar,
 /obj/machinery/doppler_array,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
@@ -3947,11 +3954,12 @@
 /turf/open/misc/asteroid/airless,
 /area/solars/tarkon)
 "Bu" = (
-/obj/item/crowbar,
-/obj/item/crowbar,
-/obj/item/crowbar,
 /obj/structure/table,
 /obj/machinery/light/warm/directional/south,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon)
 "Bv" = (
@@ -4054,7 +4062,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor/solid,
-/obj/structure/cable,
 /obj/structure/alien/resin/wall,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
@@ -5544,6 +5551,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
+"Ms" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/forehall)
 "Mw" = (
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
 /obj/machinery/door/poddoor/shutters{
@@ -5704,11 +5716,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/afthall)
 "Ns" = (
-/obj/item/crowbar,
-/obj/item/crowbar,
-/obj/item/crowbar,
-/obj/item/crowbar,
 /obj/structure/table,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
+/obj/item/storage/box/nif_ghost_box/ghost_role,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon)
 "Nv" = (
@@ -6238,14 +6250,10 @@
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
 "QL" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/starboardhall)
+/area/ruin/space/has_grav/port_tarkon/mining)
 "QM" = (
 /obj/structure/closet,
 /obj/item/storage/backpack/satchel/explorer,
@@ -6285,10 +6293,8 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "Re" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/light/small/directional/south,
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "Ri" = (
@@ -6808,6 +6814,8 @@
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "UI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "UN" = (
@@ -6882,7 +6890,6 @@
 /area/ruin/space/has_grav/port_tarkon/power1)
 "Vs" = (
 /obj/machinery/light/directional/north,
-/obj/item/crowbar,
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 1
 	},
@@ -10286,7 +10293,7 @@ DL
 KF
 EH
 rh
-Tv
+vj
 cD
 pF
 xx
@@ -10859,7 +10866,7 @@ zY
 eT
 xr
 Qy
-Sq
+Ms
 EH
 Cg
 lA
@@ -11005,7 +11012,7 @@ zY
 eT
 xr
 OI
-Sq
+Ms
 eT
 zY
 bt
@@ -11393,7 +11400,7 @@ gv
 Xf
 hB
 zZ
-QL
+zZ
 zZ
 gT
 tG
@@ -11620,10 +11627,10 @@ mD
 eM
 Jf
 Zw
-Zw
+Gz
 eP
-Zw
-Zw
+Gz
+Gz
 Gz
 fy
 BZ
@@ -11692,10 +11699,10 @@ Xs
 mD
 Ol
 aG
-UI
+QL
 UI
 HM
-UI
+QL
 ae
 ae
 mX

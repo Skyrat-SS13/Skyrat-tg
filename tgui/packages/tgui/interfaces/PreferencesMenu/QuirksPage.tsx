@@ -1,9 +1,8 @@
 import { filterMap } from 'common/collections';
 import { useState } from 'react';
-import { Popover } from 'react-tiny-popover';
 
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Stack, Tooltip } from '../../components';
+import { Box, Button, Icon, Popper, Stack, Tooltip } from '../../components';
 import { PreferencesMenuData, Quirk, RandomSetting, ServerData } from './data';
 import { getRandomization, PreferenceList } from './MainPage';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
@@ -212,8 +211,8 @@ function QuirkPopper(props: QuirkPopperProps) {
     Object.entries(customization_options).length > 0;
 
   return (
-    <Popover
-      positions="bottom"
+    <Popper
+      placement="bottom-end"
       onClickOutside={() => setCustomizationExpanded(false)}
       isOpen={customizationExpanded}
       content={
@@ -274,7 +273,7 @@ function QuirkPopper(props: QuirkPopperProps) {
           />
         )}
       </div>
-    </Popover>
+    </Popper>
   );
 }
 
@@ -309,8 +308,8 @@ export function QuirksPage(props) {
   return (
     <ServerPreferencesFetcher
       // SKYRAT EDIT START - Quirks balance refactor
-      render={(quirks_data) => {
-        if (!quirks_data) {
+      render={(server_data) => {
+        if (!server_data) {
           // SKYRAT EDIT END
           return <Box>Loading quirks...</Box>;
         }
@@ -319,7 +318,8 @@ export function QuirksPage(props) {
           max_positive_quirks: maxPositiveQuirks,
           quirk_blacklist: quirkBlacklist,
           quirk_info: quirkInfo,
-        } = quirks_data.quirks; // SKYRAT EDIT - Quirks balance refactor
+          points_enabled: pointsEnabled,
+        } = server_data.quirks; // SKYRAT EDIT - Quirks balance refactor
 
         const quirks = Object.entries(quirkInfo);
         quirks.sort(([_, quirkA], [__, quirkB]) => {
@@ -339,9 +339,12 @@ export function QuirksPage(props) {
           const quirk = quirkInfo[quirkName];
 
           if (quirk.value > 0) {
-            if (positiveQuirks >= maxPositiveQuirks) {
+            if (
+              maxPositiveQuirks !== -1 &&
+              positiveQuirks >= maxPositiveQuirks
+            ) {
               return "You can't have any more positive quirks!";
-            } else if (balance + quirk.value > 0) {
+            } else if (pointsEnabled && balance + quirk.value > 0) {
               return 'You need a negative quirk to balance this out!';
             }
           }
@@ -377,7 +380,7 @@ export function QuirksPage(props) {
         const getReasonToNotRemove = (quirkName: string) => {
           const quirk = quirkInfo[quirkName];
 
-          if (balance - quirk.value > 0) {
+          if (pointsEnabled && balance - quirk.value > 0) {
             return 'You need to remove a positive quirk first!';
           }
 
@@ -389,13 +392,21 @@ export function QuirksPage(props) {
             <Stack.Item basis="50%">
               <Stack vertical fill align="center">
                 <Stack.Item>
-                  <Box fontSize="1.3em">Positive Quirks</Box>
+                  {maxPositiveQuirks > 0 ? (
+                    <Box fontSize="1.3em">Positive Quirks</Box>
+                  ) : (
+                    <Box mt={pointsEnabled ? 3.4 : 0} />
+                  )}
                 </Stack.Item>
 
                 <Stack.Item>
-                  <StatDisplay>
-                    {positiveQuirks} / {maxPositiveQuirks}
-                  </StatDisplay>
+                  {maxPositiveQuirks > 0 ? (
+                    <StatDisplay>
+                      {positiveQuirks} / {maxPositiveQuirks}
+                    </StatDisplay>
+                  ) : (
+                    <Box mt={pointsEnabled ? 3.4 : 0} />
+                  )}
                 </Stack.Item>
 
                 <Stack.Item>
@@ -429,7 +440,7 @@ export function QuirksPage(props) {
                           },
                         ];
                       })}
-                    serverData={quirks_data} // SKYRAT EDIT CHANGE
+                    serverData={server_data} // SKYRAT EDIT CHANGE
                     randomBodyEnabled={randomBodyEnabled}
                   />
                 </Stack.Item>
@@ -443,11 +454,19 @@ export function QuirksPage(props) {
             <Stack.Item basis="50%">
               <Stack vertical fill align="center">
                 <Stack.Item>
-                  <Box fontSize="1.3em">Quirk Balance</Box>
+                  {pointsEnabled ? (
+                    <Box fontSize="1.3em">Quirk Balance</Box>
+                  ) : (
+                    <Box mt={maxPositiveQuirks > 0 ? 3.4 : 0} />
+                  )}
                 </Stack.Item>
 
                 <Stack.Item>
-                  <StatDisplay>{balance}</StatDisplay>
+                  {pointsEnabled ? (
+                    <StatDisplay>{balance}</StatDisplay>
+                  ) : (
+                    <Box mt={maxPositiveQuirks > 0 ? 3.4 : 0} />
+                  )}
                 </Stack.Item>
 
                 <Stack.Item>
@@ -485,7 +504,7 @@ export function QuirksPage(props) {
                           },
                         ];
                       })}
-                    serverData={quirks_data} // sKYRAT EDIT CHANGE
+                    serverData={server_data} // sKYRAT EDIT CHANGE
                     randomBodyEnabled={randomBodyEnabled}
                   />
                 </Stack.Item>

@@ -20,3 +20,6 @@
 /obj/item/food/fishmeat/moonfish/akula
 	name = "aquatic fillet"
 	desc = "A fillet of a rather large fish..."
+	tastes = list("tender fish" = 1)
+	foodtypes = SEAFOOD | GORE
+	venue_value = FOOD_MEAT_HUMAN

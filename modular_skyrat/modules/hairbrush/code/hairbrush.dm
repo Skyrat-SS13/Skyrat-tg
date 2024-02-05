@@ -47,7 +47,7 @@
 		else
 			user.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."), ignored_mobs=list(human_target))
 			human_target.show_message(span_notice("[usr] brushes your hair!"), MSG_VISUAL)
-			human_target.add_mood_event("brushed", /datum/mood_event/brushed, user)
+			human_target.add_mood_event("brushed", /datum/mood_event/brushed, 1, user)
 
 	else if(istype(target, /mob/living/simple_animal/pet))
 		if(!do_after(usr, brush_speed, target))
@@ -55,4 +55,4 @@
 		to_chat(user, span_notice("[target] closes [target.p_their()] eyes as you brush [target.p_them()]!"))
 		var/mob/living/living_user = user
 		if(istype(living_user))
-			living_user.add_mood_event("brushed", /datum/mood_event/brushed/pet, target)
+			living_user.add_mood_event("brushed", /datum/mood_event/brushed/pet, 1, target)

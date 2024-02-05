@@ -7,7 +7,7 @@
 	maximum_value_length = MAX_MESSAGE_LEN
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
-	var/static/link_regex = regex("i.gyazo.com|media.discordapp.net|cdn.discordapp.com")
+	var/static/link_regex = regex("i.gyazo.com|media.discordapp.net|cdn.discordapp.com|a.l3n.co|b.l3n.co|c.l3n.co") //gyazo, discord, lensdump
 	var/static/list/valid_extensions = list("jpg", "png", "jpeg") // Regex works fine, if you know how it works
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)

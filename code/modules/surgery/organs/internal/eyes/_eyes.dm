@@ -310,7 +310,7 @@
 
 /datum/action/cooldown/golem_ore_sight/Activate(atom/target)
 	. = ..()
-	mineral_scan_pulse(get_turf(target))
+	mineral_scan_pulse(get_turf(target), scanner = target)
 
 ///Robotic
 
