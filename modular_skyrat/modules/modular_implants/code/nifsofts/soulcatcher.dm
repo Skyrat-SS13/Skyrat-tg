@@ -27,7 +27,7 @@
 
 	holder = new(linked_mob)
 	var/datum/component/carrier/soulcatcher/new_soulcatcher = holder.AddComponent(/datum/component/carrier/soulcatcher/nifsoft)
-	holder.name = linked_mob.name
+	holder.name = "[linked_mob.name]'s soulcatcher"
 
 	for(var/room in saved_carrier_rooms)
 		new_soulcatcher.create_room(room, saved_carrier_rooms[room])

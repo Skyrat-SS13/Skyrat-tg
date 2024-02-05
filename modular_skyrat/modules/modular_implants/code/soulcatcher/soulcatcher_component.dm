@@ -32,12 +32,6 @@
 
 	return room_list
 
-/datum/component/carrier/soulcatcher/get_current_holder(long_term_holder)
-	if(long_term_holder && !istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
-		return FALSE
-
-	return ..()
-
 /// Attempts to scan the body for the `previous_body component`, returns FALSE if the body is unable to be scanned, otherwise returns TRUE
 /datum/component/carrier/soulcatcher/proc/scan_body(mob/living/parent_body, mob/living/user)
 	if(!parent_body || !user)

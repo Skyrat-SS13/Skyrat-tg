@@ -24,6 +24,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/require_approval = TRUE
 	/// Are are the mobs inside able to emote/speak as the parent?
 	var/communicate_as_parent = FALSE
+	/// Is this carrier going to stay within the possesion of one mob within it's lifespan?
+	var/single_owner = FALSE
 
 	/// What is the max number of people we can keep in this carrier? If this is set to `FALSE` we don't have a limit
 	var/max_mobs = FALSE
@@ -47,7 +49,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	create_room()
 	targeted_carrier_room = carrier_rooms[1]
 
-	var/mob/living/holder = get_current_holder(TRUE)
+	if(!single_owner)
+		return TRUE
+
+	var/mob/living/holder = get_current_holder()
 	if(!holder)
 		return FALSE
 
@@ -66,7 +71,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		carrier_rooms -= carrier_room
 		qdel(carrier_room)
 
-	var/mob/living/holder = get_current_holder(TRUE)
+	if(!single_owner)
+		return ..()
+
+	var/mob/living/holder = get_current_holder()
 	if(!holder)
 		return FALSE
 
@@ -99,17 +107,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	created_room.master_carrier = WEAKREF(src)
 
 /// Tries to find out who is currently using the carrier, returns the holder. If no holder can be found, returns FALSE
-/datum/component/carrier/proc/get_current_holder(long_term_holder = FALSE)
+/datum/component/carrier/proc/get_current_holder()
 	var/mob/living/holder
-
-	if(!istype(parent, /obj/item))
-		return FALSE
-	if(long_term_holder && !istype(parent, /obj/item/carrier_holder))
-		return FALSE
-
 	var/obj/item/parent_item = parent
-	holder = parent_item.loc
+	if(!istype(parent_item))
+		return FALSE
 
+	holder = parent_item.loc
 	if(!istype(holder))
 		return FALSE
 
@@ -121,7 +125,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/mob/living/carrier_owner = get_current_holder()
-	if(!carrier_owner)
+	if(!istype(carrier_owner))
 		return FALSE
 
 	to_chat(carrier_owner, message_to_recieve)
@@ -321,10 +325,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		soulcatcher_icon = tag
 
 	var/datum/component/carrier_user/user_component
-	if(istype(sender_mob))
+	if(sender_mob && istype(sender_mob))
 		user_component = sender_mob.GetComponent(/datum/component/carrier_user)
 		if(!istype(user_component))
 			return FALSE
+	else
+		sender_mob = "soulcatcher host"
 
 	if(istype(user_component) && user_component.communicating_externally)
 		var/obj/item/parent_object = parent_carrier.parent
@@ -349,11 +355,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/owner_message = ""
 	if(!emote)
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
-		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
+		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
 		log_say("[sender_mob] in [name] carrier room said: [message_to_send]")
 	else
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> [message_to_send]</font>"
-		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
+		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b> [message_to_send]</font>"
 		log_emote("[sender_mob] in [name] carrier room emoted: [message_to_send]")
 
 	for(var/mob/living/soul as anything in current_mobs)
@@ -371,8 +377,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message)
 		return FALSE
 
-	var/datum/component/carrier/recepient_soulcatcher = master_carrier.resolve()
-	recepient_soulcatcher.recieve_message(message)
+	var/datum/component/carrier/recepient_carrier = master_carrier.resolve()
+	if(!recepient_carrier)
+		return FALSE // This really isn't good.
+
+	recepient_carrier.recieve_message(message)
 	return TRUE
 
 /datum/carrier_room/Destroy(force, ...)

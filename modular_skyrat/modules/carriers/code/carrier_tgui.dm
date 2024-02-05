@@ -163,6 +163,7 @@
 				var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = soulcatcher_nifsoft.parent_nif.resolve()
 				if(!installed_nif)
 					soulcatcher_nifsoft.parent_nif = null
+
 				if(soulcatcher_nifsoft && parent != installed_nif)
 					var/datum/component/carrier/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
 					if(istype(nifsoft_soulcatcher))
@@ -217,17 +218,17 @@
 
 		if("send_message")
 			var/message_to_send = ""
-			var/emote = params["emote"]
+			var/emote_sent = params["emote"]
 			var/message_sender = target_room.outside_voice
 			if(params["narration"])
-				message_sender = FALSE
+				message_sender = null
 
 			message_to_send = tgui_input_text(usr, "Input the message you want to send", name, multiline = TRUE)
 
 			if(!message_to_send)
 				return FALSE
 
-			target_room.send_message(message_to_send, message_sender, usr, emote)
+			target_room.send_message(message_to_send, message_sender, emote = emote_sent)
 			return TRUE
 
 
