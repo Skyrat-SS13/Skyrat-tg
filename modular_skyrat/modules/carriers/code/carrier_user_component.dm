@@ -63,7 +63,7 @@
 		outside_hearing = TRUE
 		toggle_sense(sense_to_toggle = "outside_hearing")
 
-	refresh_soul_appearance()
+	refresh_mob_appearance()
 
 	return TRUE
 
@@ -73,21 +73,22 @@
 	RegisterSignal(parent, COMSIG_CARRIER_MOB_RESET_NAME, PROC_REF(reset_name))
 	RegisterSignal(parent, COMSIG_CARRIER_MOB_CHANGE_ROOM, PROC_REF(set_room))
 	RegisterSignal(parent, COMSIG_CARRIER_MOB_CHECK_INTERNAL_SENSES, PROC_REF(check_internal_senses))
-	RegisterSignal(parent, COMSIG_CARRIER_MOB_REFRESH_APPEARANCE, PROC_REF(refresh_soul_appearance))
+	RegisterSignal(parent, COMSIG_CARRIER_MOB_REFRESH_APPEARANCE, PROC_REF(refresh_mob_appearance))
 
 /// Configures the settings of the carrier user to be in accordance with the parent mob
-/datum/component/carrier_user/proc/refresh_soul_appearance(datum/source)
+/datum/component/carrier_user/proc/refresh_mob_appearance(datum/source)
 	SIGNAL_HANDLER
 
 	var/mob/living/parent_mob = parent
-	if(istype(parent_mob) || isnull(parent_mob.mind))
-		return FALSE
-
-	var/datum/preferences/preferences = parent_mob.client?.prefs
-	if(!preferences)
+	if(!istype(parent_mob) || !istype(parent_mob.mind))
 		return FALSE
 
 	name = parent_mob.mind.name
+
+	var/datum/preferences/preferences = parent_mob?.client?.prefs
+	if(!preferences)
+		return FALSE
+
 	ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
 	desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
@@ -270,7 +271,7 @@
 	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
-	button_icon_state = "carrier"
+	button_icon_state = "soulcatcher"
 	/// What carrier user component are we bringing up the menu for?
 	var/datum/weakref/carrier_user_component
 
