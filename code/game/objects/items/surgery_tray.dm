@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /datum/storage/surgery_tray
 	max_total_storage = 30
 	max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -24,6 +25,8 @@
 		/obj/item/surgicaldrill,
 	))
 
+=======
+>>>>>>> 12afcb911ef (Comprehensive cleanup of storage datum, replaces the weakrefs with just refs (because they were managed already) (#81120))
 /**
  * Surgery Trays
  * A storage object that displays tools in its contents based on tier, better tools are more visible.
