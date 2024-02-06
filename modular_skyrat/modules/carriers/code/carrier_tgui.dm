@@ -170,17 +170,12 @@
 
 			if(ishuman(usr))
 				var/mob/living/carbon/human/human_user = usr
-				var/datum/nifsoft/soulcatcher/soulcatcher_nifsoft = human_user.find_nifsoft(/datum/nifsoft/soulcatcher)
-				var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = soulcatcher_nifsoft.parent_nif.resolve()
-				if(!installed_nif)
-					soulcatcher_nifsoft.parent_nif = null
+				for(var/obj/item/carrier_holder/holders in human_user.contents)
+					var/datum/component/carrier/holder_carrier = human_user.GetComponent(/datum/component/carrier)
+					if(!istype(holder_carrier))
+						continue
 
-				if(soulcatcher_nifsoft && parent != installed_nif)
-					var/datum/component/carrier/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
-					if(istype(nifsoft_soulcatcher))
-						available_rooms += nifsoft_soulcatcher.get_open_rooms()
-					else
-						soulcatcher_nifsoft.linked_soulcatcher = null
+					available_rooms += holder_carrier.get_open_rooms()
 
 				for(var/obj/item/held_item in human_user.get_all_gear())
 					if(parent == held_item)
