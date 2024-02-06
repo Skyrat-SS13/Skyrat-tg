@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return ..()
 
 /// Updates the target carrier component for the carrier me/emote verb to send messages to.
-/datum/component/carrier/proc/update_targeted_carrier(mob/living/target_mob)
+/datum/component/carrier/proc/update_targeted_carrier(mob/living/target_mob, inside_carrier = FALSE)
 	var/mob/living/holder = get_current_holder()
 	if(istype(target_mob))
 		holder = target_mob
@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		communicator_component = holder.AddComponent(/datum/component/carrier_communicator)
 
 	communicator_component.target_carrier = WEAKREF(src)
-	return TRUE
+	return communicator_component
 
 /**
  * Creates a `/datum/carrier_room` and adds it to the `carrier_rooms` list.
@@ -205,7 +205,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		target_room = carrier_rooms[1] // Put them in the first room we can find if none is provided.
 
 	carrier_component.current_room = target_room
-	update_targeted_carrier(mob_to_add)
+	var/datum/component/carrier_communicator/communicator_component = update_targeted_carrier(mob_to_add)
+	communicator_component.carried_mob = TRUE
 
 	return carrier_component
 

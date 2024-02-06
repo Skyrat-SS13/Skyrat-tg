@@ -277,7 +277,7 @@
 	if(!istype(parent_mob))
 		return FALSE //uhoh
 
-	var/datum/component/carrier_communicator/communicator = GetComponent(/datum/component/carrier_communicator)
+	var/datum/component/carrier_communicator/communicator = parent.GetComponent(/datum/component/carrier_communicator)
 	data["targeted"] = communicator?.carried_mob
 
 	var/mob/living/soulcatcher_soul/user_soul = parent_mob
@@ -364,7 +364,7 @@
 			return TRUE
 
 		if("toggle_target")
-			var/datum/component/carrier_communicator/communicator = GetComponent(/datum/component/carrier_communicator)
+			var/datum/component/carrier_communicator/communicator = parent.GetComponent(/datum/component/carrier_communicator)
 			if(!istype(communicator))
 				return FALSE
 

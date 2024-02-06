@@ -455,7 +455,7 @@ export const Soulcatcher = (props) => {
           icon={carrier_targeted ? 'check' : 'xmark'}
           onClick={() => act('change_targeted_carrier', {})}
         >
-          Approval is {require_approval ? '' : 'not'} required to join
+          Verb messages are {require_approval ? '' : 'not'} sent to this carrier
         </Button>
         {removable ? (
           <Button

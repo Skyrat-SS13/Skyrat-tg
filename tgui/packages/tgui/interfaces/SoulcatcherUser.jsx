@@ -40,6 +40,12 @@ export const SoulcatcherUser = (props) => {
           <br />
           <Box textAlign="center" fontSize="15px" opacity={0.8}>
             <b>{user_data.name} </b>
+            <Button
+              color={targeted ? 'green' : 'red'}
+              icon={targeted ? 'check' : 'xmark'}
+              tooltip="Toggle if the carrier say and carrier emote verbs will send to this soulcatcher."
+              onClick={() => act('toggle_target', {})}
+            />
             {!user_data.scan_needed && user_data.able_to_rename ? (
               <>
                 <Button
@@ -70,12 +76,6 @@ export const SoulcatcherUser = (props) => {
             ) : (
               <> </>
             )}
-            <Button
-              color={targeted ? 'green' : 'red'}
-              icon={targeted ? 'check' : 'xmark'}
-              tooltip="Toggle sending messages as part of the soulcatcher."
-              onClick={() => act('toggle_target', {})}
-            />
           </Box>
           <Divider />
           <Collapsible title="Flavor Text">
