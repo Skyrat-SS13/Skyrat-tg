@@ -21,7 +21,7 @@
 	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albeit at limited efficiency. In case of emergency, \
 				subject may be subjected to high temperatures to allow solder to reset."
 
-	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
+	sound_effect = 'modular_nova/modules/medical/sound/robotic_slash_T1.ogg'
 
 	severity = WOUND_SEVERITY_MODERATE
 
@@ -41,7 +41,7 @@
 	process_shock_spark_count_max = 1
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.065 // not even faster at this point
+	wirecut_repair_percent = 0.104
 	wire_repair_percent = 0.026
 
 	initial_sparks_amount = 1
@@ -64,7 +64,7 @@
 	examine_desc = "is shuddering significantly, its servos briefly giving way in a rythmic pattern"
 	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
 
-	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
+	sound_effect = 'modular_nova/modules/medical/sound/robotic_slash_T2.ogg'
 
 	severity = WOUND_SEVERITY_SEVERE
 
@@ -84,7 +84,7 @@
 	process_shock_spark_count_max = 2
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.068
+	wirecut_repair_percent = 0.08
 	wire_repair_percent = 0.02
 
 	initial_sparks_amount = 3
@@ -111,7 +111,7 @@
 	severity = WOUND_SEVERITY_CRITICAL
 	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
 
-	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T3.ogg'
+	sound_effect = 'modular_nova/modules/medical/sound/robotic_slash_T3.ogg'
 
 	sound_volume = 30
 
@@ -129,7 +129,7 @@
 	process_shock_spark_count_max = 3
 	process_shock_spark_count_min = 2
 
-	wirecut_repair_percent = 0.067
+	wirecut_repair_percent = 0.072
 	wire_repair_percent = 0.018
 
 	initial_sparks_amount = 8

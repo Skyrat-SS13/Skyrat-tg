@@ -32,7 +32,7 @@
 	chest_attacked_stagger_chance_ratio = 5
 	chest_attacked_stagger_mult = 3
 
-	chest_movement_stagger_chance = 3
+	chest_movement_stagger_chance = 2
 
 	stagger_aftershock_knockdown_ratio = 0.3
 	stagger_aftershock_knockdown_movement_ratio = 0.2
