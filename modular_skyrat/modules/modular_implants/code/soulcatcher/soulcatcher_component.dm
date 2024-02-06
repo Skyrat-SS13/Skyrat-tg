@@ -14,6 +14,9 @@
 	GLOB.soulcatchers -= src
 	return ..()
 
+/datum/component/carrier/soulcatcher/nifsoft
+	single_owner = TRUE
+
 /// Attempts to remove the carrier from the attached object
 /datum/component/carrier/soulcatcher/proc/remove_self()
 	if(!removable)

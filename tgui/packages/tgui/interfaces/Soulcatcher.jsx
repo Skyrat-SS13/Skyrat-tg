@@ -24,6 +24,7 @@ export const Soulcatcher = (props) => {
     removable,
     communicate_as_parent,
     theme,
+    carrier_targeted,
   } = data;
 
   return (

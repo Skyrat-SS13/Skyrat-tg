@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/datum/component/carrier_communicator/communicator_component = holder.GetComponent(/datum/component/carrier_communicator)
 	if(!istype(communicator_component))
-		communicator_component = AddComponent(holder, /datum/component/carrier_communicator)
+		communicator_component = holder.AddComponent(/datum/component/carrier_communicator)
 
 	communicator_component.target_carrier = WEAKREF(src)
 	return TRUE

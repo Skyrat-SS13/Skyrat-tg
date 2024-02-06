@@ -24,8 +24,9 @@
 
 	var/carrier_targeted = FALSE
 	var/datum/component/carrier_communicator/communicator = user.GetComponent(/datum/component/carrier_communicator)
-	if(communicator)
-		carrier_targeted = (communicator.target_carrier.resolve() == src)
+	if(istype(communicator) && communicator?.target_carrier?.resolve())
+		var/datum/component/carrier/held_carrier = communicator.target_carrier.resolve()
+		carrier_targeted = (held_carrier == src)
 	data["carrier_targeted"] = carrier_targeted
 
 	data["current_rooms"] = list()

@@ -14,7 +14,13 @@ import { Window } from '../layouts';
 
 export const SoulcatcherUser = (props) => {
   const { act, data } = useBackend();
-  const { current_room, user_data, communicate_as_parent, souls = [] } = data;
+  const {
+    current_room,
+    user_data,
+    communicate_as_parent,
+    targeted,
+    souls = [],
+  } = data;
 
   return (
     <Window width={520} height={400} resizable>
