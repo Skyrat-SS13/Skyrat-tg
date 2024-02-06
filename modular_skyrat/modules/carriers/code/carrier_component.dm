@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!single_owner)
 		return TRUE
 
-	update_target_carrier() // Give them the verbs if the soulcatcher is unlikely to change hands
+	update_targeted_carrier() // Give them the verbs if the soulcatcher is unlikely to change hands
 
 /datum/component/carrier/Destroy(force, ...)
 	targeted_carrier_room = null
@@ -65,8 +65,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return ..()
 
 /// Updates the target carrier component for the carrier me/emote verb to send messages to.
-/datum/component/carrier/proc/update_target_carrier()
+/datum/component/carrier/proc/update_targeted_carrier(mob/living/target_mob)
 	var/mob/living/holder = get_current_holder()
+	if(istype(target_mob))
+		holder = target_mob
+
 	if(!holder)
 		return FALSE
 
@@ -202,6 +205,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		target_room = carrier_rooms[1] // Put them in the first room we can find if none is provided.
 
 	carrier_component.current_room = target_room
+	update_targeted_carrier(mob_to_add)
+
 	return carrier_component
 
 /**

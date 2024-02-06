@@ -26,7 +26,6 @@
 	var/datum/component/carrier_communicator/communicator = user.GetComponent(/datum/component/carrier_communicator)
 	if(communicator)
 		carrier_targeted = (communicator.target_carrier.resolve() == src)
-
 	data["carrier_targeted"] = carrier_targeted
 
 	data["current_rooms"] = list()
@@ -110,8 +109,8 @@
 			targeted_carrier_room = target_room
 			return TRUE
 
-		if("change_targeted_soulcatcher")
-			update_target_carrier()
+		if("change_targeted_carrier")
+			update_targeted_carrier()
 			return TRUE
 
 		if("create_room")

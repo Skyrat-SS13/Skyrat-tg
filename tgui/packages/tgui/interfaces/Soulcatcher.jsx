@@ -448,6 +448,14 @@ export const Soulcatcher = (props) => {
         >
           Approval is {require_approval ? '' : 'not'} required to join
         </Button>
+        <Button
+          fluid
+          color={carrier_targeted ? 'green' : 'red'}
+          icon={carrier_targeted ? 'check' : 'xmark'}
+          onClick={() => act('change_targeted_carrier', {})}
+        >
+          Approval is {require_approval ? '' : 'not'} required to join
+        </Button>
         {removable ? (
           <Button
             require_approval

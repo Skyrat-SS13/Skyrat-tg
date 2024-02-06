@@ -64,6 +64,12 @@ export const SoulcatcherUser = (props) => {
             ) : (
               <> </>
             )}
+            <Button
+              color={targeted ? 'green' : 'red'}
+              icon={targeted ? 'check' : 'xmark'}
+              tooltip="Toggle sending messages as part of the soulcatcher."
+              onClick={() => act('toggle_target', {})}
+            />
           </Box>
           <Divider />
           <Collapsible title="Flavor Text">
