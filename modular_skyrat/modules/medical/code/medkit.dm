@@ -1,16 +1,15 @@
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit
 	name = "synthetic treatment kit"
 	desc = "A \"surgical\" duffel bag containing everything you need to treat the worst and <i>best</i> of inorganic wounds."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
+	icon = 'modular_nova/master_files/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'modular_nova/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_nova/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_nova/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_robo"
 	inhand_icon_state = "duffel_robo"
 
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit/PopulateContents() // yes, this is all within the storage capacity
 	// Slash/Pierce wound tools - can reduce intensity of electrical damage (wires can fix generic burn damage)
-	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/wirecutters(src)
@@ -24,6 +23,7 @@
 	new /obj/item/clothing/glasses/hud/diagnostic(src) // When worn, generally improves wound treatment quality
 	// Reagent containers
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // Highly effective (specifically coded to be) against burn wounds
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src) // same
 	// Generic medical items
 	new /obj/item/stack/medical/gauze/twelve(src)
 	new /obj/item/healthanalyzer(src)
@@ -41,8 +41,8 @@
 
 /datum/storage/duffel/synth_trauma_kit
 	exception_max = 6
-	max_slots = 27
-	max_total_storage = 35
+	max_slots = 28
+	max_total_storage = 36
 
 /datum/storage/duffel/synth_trauma_kit/New(atom/parent, max_slots, max_specific_storage, max_total_storage, numerical_stacking, allow_quick_gather, allow_quick_empty, collection_mode, attack_hand_interact)
 	. = ..()
@@ -121,6 +121,7 @@
 	new /obj/item/clothing/glasses/hud/diagnostic(src) // When worn, generally improves wound treatment quality
 	// Reagent containers
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // Highly effective (specifically coded to be) against burn wounds
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src) // same
 	// Generic medical items
 	new /obj/item/stack/medical/gauze/twelve(src)
 	new /obj/item/healthanalyzer(src)
@@ -140,8 +141,8 @@
 
 /datum/storage/duffel/synth_trauma_kit/advanced
 	exception_max = 10
-	max_slots = 31
-	max_total_storage = 48
+	max_slots = 33
+	max_total_storage = 50
 
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced/PopulateContents() // yes, this is all within the storage capacity
 	// Slash/Pierce wound tools - can reduce intensity of electrical damage (wires can fix generic burn damage)
@@ -162,6 +163,8 @@
 	// Reagent containers
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // Highly effective (specifically coded to be) against burn wounds
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // 2 of them
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src) // same
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src)
 	new /obj/item/storage/pill_bottle/nanite_slurry(src) // Heals blunt/burn
 	new /obj/item/storage/pill_bottle/liquid_solder(src) // Heals brain damage
 	new /obj/item/storage/pill_bottle/system_cleaner(src) // Heals toxin damage and purges chems
