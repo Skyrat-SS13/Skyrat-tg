@@ -1,10 +1,10 @@
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit
 	name = "synthetic treatment kit"
 	desc = "A \"surgical\" duffel bag containing everything you need to treat the worst and <i>best</i> of inorganic wounds."
-	icon = 'modular_nova/master_files/icons/obj/clothing/backpacks.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/back.dmi'
-	lefthand_file = 'modular_nova/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
-	righthand_file = 'modular_nova/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_robo"
 	inhand_icon_state = "duffel_robo"
 
