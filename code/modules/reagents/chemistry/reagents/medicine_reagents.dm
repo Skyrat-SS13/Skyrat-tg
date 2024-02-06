@@ -1739,6 +1739,14 @@
 	if(!affected_mob.blood_volume)
 		return
 
+	// SKYRAT EDIT CHANGE BEGIN -- Adds check for owner_flags
+	var/owner_flags
+	if (iscarbon(affected_mob))
+		var/mob/living/carbon/carbon_mob = affected_mob
+		owner_flags = carbon_mob.dna.species.reagent_flags
+	if (!isnull(owner_flags) && !(owner_flags & PROCESS_ORGANIC))
+		return
+	// SKYRAT EDIT CHANGE END
 	if(SPT_PROB(7.5, seconds_per_tick))
 		affected_mob.losebreath += rand(2, 4)
 		affected_mob.adjustOxyLoss(rand(1, 3), updating_health = FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)

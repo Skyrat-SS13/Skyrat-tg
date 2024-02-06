@@ -21,6 +21,9 @@
 /// The maximum burn damage our limb can have before we refuse to let people who havent aggrograbbed the limb repair it with wires. This is so people can opt to just fix the burn damage.
 #define ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR 5
 
+/// If progress is positive (not decreasing) after applying ELECTRICAL_DAMAGE_CLOTTING_HEALING_AMOUNT, we multiply it against this.
+#define ELECTRICAL_DAMAGE_CLOTTING_PROGRESS_MULT 0.5
+
 /datum/wound/electrical_damage
 	name = "Electrical (Wires) Wound"
 
@@ -217,7 +220,12 @@
 	if (!victim)
 		return seconds_for_intensity
 
-	return seconds_for_intensity - (get_heat_healing() * seconds_per_tick)
+	seconds_for_intensity -= (get_heat_healing() * seconds_per_tick)
+
+	if (seconds_for_intensity > 0 && HAS_TRAIT(victim, TRAIT_COAGULATING))
+		seconds_for_intensity *= ELECTRICAL_DAMAGE_CLOTTING_PROGRESS_MULT
+
+	return seconds_for_intensity
 
 /// Returns how many deciseconds progress should be reduced by, based on the current heat of our victim's body.
 /datum/wound/electrical_damage/proc/get_heat_healing(do_message = prob(heat_heal_message_chance))
@@ -626,3 +634,5 @@
 #undef ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR
 #undef ELECTRICAL_DAMAGE_POWER_PER_TICK_MULT
 #undef ELECTRICAL_DAMAGE_SUTURE_WIRE_HEALING_AMOUNT_MULT
+
+#undef ELECTRICAL_DAMAGE_CLOTTING_PROGRESS_MULT
