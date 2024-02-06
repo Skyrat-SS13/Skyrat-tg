@@ -496,7 +496,7 @@
 	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albeit at limited efficiency. In case of emergency, \
 				subject may be subjected to high temperatures to allow solder to reset."
 
-	sound_effect = 'modular_nova/modules/medical/sound/robotic_slash_T1.ogg'
+	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
 
 	severity = WOUND_SEVERITY_MODERATE
 
@@ -539,7 +539,7 @@
 	examine_desc = "has multiple severed wires visible to the outside"
 	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
 
-	sound_effect = 'modular_nova/modules/medical/sound/robotic_slash_T2.ogg'
+	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
 
 	severity = WOUND_SEVERITY_SEVERE
 
@@ -586,7 +586,7 @@
 	severity = WOUND_SEVERITY_CRITICAL
 	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
 
-	sound_effect = 'modular_nova/modules/medical/sound/robotic_slash_T3.ogg'
+	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T3.ogg'
 
 	sound_volume = 30
 
