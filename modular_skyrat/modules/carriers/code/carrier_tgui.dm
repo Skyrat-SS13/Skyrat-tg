@@ -22,6 +22,13 @@
 	data["current_mob_count"] = length(get_current_mobs())
 	data["max_mobs"] = max_mobs
 
+	var/carrier_targeted = FALSE
+	var/datum/component/carrier_communicator/communicator = user.GetComponent(/datum/component/carrier_communicator)
+	if(communicator)
+		carrier_targeted = (communicator.target_carrier.resolve() == src)
+
+	data["carrier_targeted"] = carrier_targeted
+
 	data["current_rooms"] = list()
 	for(var/datum/carrier_room/room in carrier_rooms)
 		var/currently_targeted = (room == targeted_carrier_room)
@@ -101,6 +108,10 @@
 
 		if("change_targeted_room")
 			targeted_carrier_room = target_room
+			return TRUE
+
+		if("change_targeted_soulcatcher")
+			update_target_carrier()
 			return TRUE
 
 		if("create_room")
@@ -266,6 +277,9 @@
 	if(!istype(parent_mob))
 		return FALSE //uhoh
 
+	var/datum/component/carrier_communicator/communicator = GetComponent(/datum/component/carrier_communicator)
+	data["targeted"] = communicator?.carried_mob
+
 	var/mob/living/soulcatcher_soul/user_soul = parent_mob
 	data["user_data"] = list(
 		"name" = name,
@@ -347,4 +361,12 @@
 
 		if("toggle_external_communication")
 			communicating_externally = !communicating_externally
+			return TRUE
+
+		if("toggle_target")
+			var/datum/component/carrier_communicator/communicator = GetComponent(/datum/component/carrier_communicator)
+			if(!istype(communicator))
+				return FALSE
+
+			communicator.carried_mob = !communicator.carried_mob
 			return TRUE

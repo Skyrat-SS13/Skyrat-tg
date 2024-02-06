@@ -36,11 +36,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What is the type of room that we want to create?
 	var/type_of_room_to_create = /datum/carrier_room
 
-	/// What say verb do we want to give the owner in circumstances, if any?
-	var/say_verb_type = /mob/living/proc/soulcatcher_say
-	/// What emote verb do we want to give the owner in circumstances, if any?
-	var/emote_verb_type = /mob/living/proc/soulcatcher_emote
-
 /datum/component/carrier/New()
 	. = ..()
 	if(!parent)
@@ -52,18 +47,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!single_owner)
 		return TRUE
 
-	var/mob/living/holder = get_current_holder()
-	if(!holder)
-		return FALSE
-
-	var/list/verb_list = list()
-	if(say_verb_type)
-		verb_list += say_verb_type
-	if(emote_verb_type)
-		verb_list += emote_verb_type
-
-	if(istype(holder) && length(verb_list))
-		add_verb(holder, verb_list)
+	update_target_carrier() // Give them the verbs if the soulcatcher is unlikely to change hands
 
 /datum/component/carrier/Destroy(force, ...)
 	targeted_carrier_room = null
@@ -78,16 +62,20 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!holder)
 		return FALSE
 
-	var/list/verb_list = list()
-	if(say_verb_type)
-		verb_list += say_verb_type
-	if(emote_verb_type)
-		verb_list += emote_verb_type
-
-	if(istype(holder) && length(verb_list))
-		remove_verb(holder, verb_list)
-
 	return ..()
+
+/// Updates the target carrier component for the carrier me/emote verb to send messages to.
+/datum/component/carrier/proc/update_target_carrier()
+	var/mob/living/holder = get_current_holder()
+	if(!holder)
+		return FALSE
+
+	var/datum/component/carrier_communicator/communicator_component = holder.GetComponent(/datum/component/carrier_communicator)
+	if(!istype(communicator_component))
+		communicator_component = AddComponent(holder, /datum/component/carrier_communicator)
+
+	communicator_component.target_carrier = WEAKREF(src)
+	return TRUE
 
 /**
  * Creates a `/datum/carrier_room` and adds it to the `carrier_rooms` list.
