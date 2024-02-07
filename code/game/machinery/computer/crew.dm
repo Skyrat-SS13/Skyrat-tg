@@ -135,12 +135,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SHAFT_MINER = 51,
 		JOB_CARGO_TECHNICIAN = 52,
 		JOB_BITRUNNER = 53,
-<<<<<<< HEAD
 		JOB_CUSTOMS_AGENT = 54, // SKYRAT EDIT ADDITION
-		// 60+: Civilian/other
-=======
 		// 60+: Service
->>>>>>> 37f441c2a2b (Service now has their own color in crew monitor (#81316))
 		JOB_HEAD_OF_PERSONNEL = 60,
 		JOB_BARTENDER = 61,
 		JOB_COOK = 62,
