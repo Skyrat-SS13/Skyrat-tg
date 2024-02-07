@@ -42,6 +42,18 @@
 			return FALSE
 	return ..()
 
+/datum/preference/text/taste
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "custom_taste"
+	maximum_value_length = 100
+
+/datum/preference/text/smell
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "custom_smell"
+	maximum_value_length = 100
+
 /datum/preference/text/custom_species_lore
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
