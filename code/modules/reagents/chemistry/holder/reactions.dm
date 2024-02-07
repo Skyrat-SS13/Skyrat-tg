@@ -323,9 +323,23 @@
 		remove_reagent(_reagent, (multiplier * cached_required_reagents[_reagent]))
 	sum_purity /= cached_required_reagents.len
 
+<<<<<<< HEAD
 	for(var/product in selected_reaction.results)
 		multiplier = max(multiplier, 1) //this shouldn't happen ...
 		var/yield = (cached_results[product]*multiplier)*sum_purity
+=======
+	//average purity to be used in scaling the yield of products formed
+	var/average_purity = get_average_purity()
+
+	//remove the required reagents
+	for(var/datum/reagent/requirement as anything in cached_required_reagents)//this is not an object
+		remove_reagent(requirement, cached_required_reagents[requirement] * multiplier)
+
+	//add the result reagents whose yield depend on the average purity
+	var/yield
+	for(var/datum/reagent/product as anything in cached_results)
+		yield = cached_results[product] * multiplier * average_purity
+>>>>>>> eda08fef89f ([NO GBP] Instant reactions yield reagent results again (#81334))
 		SSblackbox.record_feedback("tally", "chemical_reaction", yield, product)
 		add_reagent(product, yield, null, chem_temp, sum_purity)
 
