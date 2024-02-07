@@ -68,7 +68,7 @@
 		to_chat(src, span_warning("[target] doesn't seem to have a taste."))
 		return FALSE
 
-	to_chat(src, span_notice("You taste [target], they taste like [taste]."))
+	to_chat(src, span_notice("[target] tastes like [taste]."))
 	to_chat(target, span_notice("[target] licks you."))
 
 /mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_human_hearers_in_view(1, src))
@@ -83,7 +83,7 @@
 		to_chat(src, span_warning("[target] doesn't seem to have a smell."))
 		return FALSE
 
-	to_chat(src, span_notice("You smell [target], they smell like [smell]."))
+	to_chat(src, span_notice("[target] smells like [smell]."))
 
 /// Returns the smell/taste of the parent mob
 /mob/living/carbon/human/proc/get_taste_or_smell(smell = FALSE)
