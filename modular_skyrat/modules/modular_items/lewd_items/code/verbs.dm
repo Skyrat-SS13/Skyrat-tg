@@ -56,7 +56,7 @@
 
 	return TRUE
 
-/mob/living/carbon/human/verb/lick(mob/living/carbon/human/target in get_hearers_in_view(1, src))
+/mob/living/carbon/human/verb/lick(mob/living/carbon/human/target in get_human_hearers_in_view(1, src))
 	set name = "Lick"
 	set category = "IC"
 
@@ -71,7 +71,7 @@
 	to_chat(src, span_notice("You taste [target], they taste like [taste]."))
 	to_chat(target, span_notice("[target] licks you."))
 
-/mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_hearers_in_view(1, src))
+/mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_human_hearers_in_view(1, src))
 	set name = "Smell"
 	set category = "IC"
 
@@ -96,4 +96,16 @@
 		string_to_return = preferences.read_preference(/datum/preference/text/smell)
 
 	return string_to_return
+
+
+/// Functions similiar to get hearers in view, but it only counts humans.
+/proc/get_human_hearers_in_view(view_radius, atom/source)
+	var/list/hear_list = get_hearers_in_view(view_radius, source)
+	for(var/mob/living/carbon/human/hearer as anything in hear_list)
+		if(ishuman(hearer))
+			continue
+
+		hear_list -= hearer
+
+	return hear_list
 
