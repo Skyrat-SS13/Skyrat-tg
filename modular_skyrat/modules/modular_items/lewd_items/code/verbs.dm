@@ -55,3 +55,45 @@
 		dropItemToGround(equipped_item, TRUE)
 
 	return TRUE
+
+/mob/living/carbon/human/verb/lick(mob/living/carbon/human/target in get_hearers_in_view(1, src))
+	set name = "Lick"
+	set category = "IC"
+
+	if(!istype(target))
+		return FALSE
+
+	var/taste = target.get_taste_or_smell()
+	if(!taste)
+		to_chat(src, span_warning("[target] doesn't seem to have a taste."))
+		return FALSE
+
+	to_chat(src, span_notice("You taste [target], they taste like [taste]."))
+	to_chat(target, span_notice("[target] licks you."))
+
+/mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_hearers_in_view(1, src))
+	set name = "Smell"
+	set category = "IC"
+
+	if(!istype(target))
+		return FALSE
+
+	var/smell = target.get_taste_or_smell(TRUE)
+	if(!smell)
+		to_chat(src, span_warning("[target] doesn't seem to have a smell."))
+		return FALSE
+
+	to_chat(src, span_notice("You smell [target], they smell like [smell]."))
+
+/// Returns the smell/taste of the parent mob
+/mob/living/carbon/human/proc/get_taste_or_smell(smell = FALSE)
+	var/datum/preferences/preferences = client?.prefs
+	if(!istype(preferences))
+		return FALSE
+
+	var/string_to_return = preferences.read_preference(/datum/preference/text/taste)
+	if(smell)
+		string_to_return = preferences.read_preference(/datum/preference/text/smell)
+
+	return string_to_return
+
