@@ -152,7 +152,7 @@
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/storage/security/open_storage(datum/source, mob/user)
-	var/atom/resolve_parent = parent?.resolve()
+	var/atom/resolve_parent = parent
 	if(!resolve_parent)
 		return
 	if(isobserver(user))
@@ -166,7 +166,7 @@
 	if(!isliving(user) || user.incapacitated())
 		return FALSE
 
-	var/obj/item/gun/gun_to_draw = locate() in real_location?.resolve()
+	var/obj/item/gun/gun_to_draw = locate() in real_location
 	if(!gun_to_draw)
 		return ..()
 	resolve_parent.add_fingerprint(user)

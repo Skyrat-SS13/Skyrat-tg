@@ -65,7 +65,7 @@
 
 	return FALSE
 
-#define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
+#define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2.5 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
 #define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
 ///Modifier given to surgery speed for dissected bodies.
 #define SURGERY_SPEED_DISSECTION_MODIFIER 0.8
