@@ -94,6 +94,7 @@
 	return ..()
 
 /obj/machinery/rnd/server/tarkon/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
 	if(held_item && istype(held_item, /obj/item/research_notes))
 		context[SCREENTIP_CONTEXT_LMB] = "Generate research points"
 	return CONTEXTUAL_SCREENTIP_SET
