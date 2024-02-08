@@ -23,4 +23,5 @@
 		/obj/item/storage/pill_bottle/system_cleaner = 6,
 		/obj/item/storage/pill_bottle/nanite_slurry = 6,
 		/obj/item/reagent_containers/spray/hercuri/chilled = 8,
+		/obj/item/reagent_containers/spray/dinitrogen_plasmide = 8,
 	)
