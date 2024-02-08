@@ -100,7 +100,6 @@
 		/datum/reagent/dinitrogen_plasmide = 0.6,
 	)
 
-
 /datum/wound/burn/robotic/overheat/New(temperature)
 	chassis_temperature = (isnull(temperature) ? get_random_starting_temperature() : temperature)
 

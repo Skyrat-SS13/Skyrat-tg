@@ -41,7 +41,7 @@
 	process_shock_spark_count_max = 1
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.065 // not even faster at this point
+	wirecut_repair_percent = 0.104
 	wire_repair_percent = 0.026
 
 	initial_sparks_amount = 1
@@ -84,7 +84,7 @@
 	process_shock_spark_count_max = 2
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.068
+	wirecut_repair_percent = 0.08
 	wire_repair_percent = 0.02
 
 	initial_sparks_amount = 3
@@ -129,7 +129,7 @@
 	process_shock_spark_count_max = 3
 	process_shock_spark_count_min = 2
 
-	wirecut_repair_percent = 0.067
+	wirecut_repair_percent = 0.072
 	wire_repair_percent = 0.018
 
 	initial_sparks_amount = 8

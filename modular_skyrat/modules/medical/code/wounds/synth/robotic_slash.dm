@@ -326,12 +326,12 @@
 	var/change = (processing_full_shock_threshold * wire_repair_percent) * ELECTRICAL_DAMAGE_SUTURE_WIRE_HEALING_AMOUNT_MULT
 	var/delay_mult = 1
 	if (user == victim)
-		delay_mult *= 1.5
+		delay_mult *= 1.4
 	if (is_suture)
-		delay_mult *= 2
+		delay_mult *= 1.5
 		var/obj/item/stack/medical/suture/suture_item = suturing_item
 		var/obj/item/stack/medical/suture/base_suture = /obj/item/stack/medical/suture
-		change += (suture_item.heal_brute - initial(base_suture.heal_brute))
+		change = max(change - (suture_item.heal_brute - initial(base_suture.heal_brute)), 0.00001)
 
 	// as this is the trauma treatment, there are less bonuses
 	// if youre doing this, youre probably doing this on-the-spot
@@ -342,7 +342,7 @@
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		delay_mult *= 0.8
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		change *= 1.2
+		change *= 1.5
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
@@ -385,17 +385,15 @@
 	var/change = (processing_full_shock_threshold * wirecut_repair_percent)
 	var/delay_mult = 1
 	if (user == victim)
-		delay_mult *= 2.5
+		delay_mult *= 2
 	if (is_retractor)
 		delay_mult *= 2
-		change *= 0.8
 	var/knows_wires = FALSE
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		delay_mult *= 0.9
-		change *= 1.7
+		delay_mult *= 0.3
 		knows_wires = TRUE
 	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		change *= 1.35
+		delay_mult *= 0.6
 		knows_wires = TRUE
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		if (knows_wires)
@@ -403,7 +401,7 @@
 		else
 			delay_mult *= 0.75
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		delay_mult *= 0.8
+		change *= 1.5
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
@@ -518,7 +516,7 @@
 	process_shock_spark_count_max = 1
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.085 // not even faster at this point
+	wirecut_repair_percent = 0.14
 	wire_repair_percent = 0.035
 
 	initial_sparks_amount = 1
@@ -561,7 +559,7 @@
 	process_shock_spark_count_max = 2
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.1
+	wirecut_repair_percent = 0.128
 	wire_repair_percent = 0.032
 
 	initial_sparks_amount = 3
