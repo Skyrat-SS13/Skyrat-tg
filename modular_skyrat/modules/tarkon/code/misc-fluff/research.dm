@@ -112,8 +112,6 @@
 	desc = "Converts raw materials into useful objects. Refurbished and updated from its previous, limited capabilities."
 	circuit = /obj/item/circuitboard/machine/protolathe/tarkon
 	stripe_color = "#350f04"
-	charges_tax = FALSE
-
 /obj/item/circuitboard/machine/protolathe/tarkon
 	name = "Tarkon Industries Protolathe"
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY

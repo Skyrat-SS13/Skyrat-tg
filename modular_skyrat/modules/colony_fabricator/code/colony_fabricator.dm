@@ -12,7 +12,6 @@
 	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_power = 5
-	charges_tax = FALSE
 	allowed_buildtypes = COLONY_FABRICATOR
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine
@@ -33,16 +32,13 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)
+/obj/machinery/rnd/production/colony_lathe/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
-
-	if(!.)
-		return
-
-	soundloop.start()
-	set_light(l_range = 1.5)
-	icon_state = "colony_lathe_working"
-	update_appearance()
+	if (. && action == "build")
+		soundloop.start()
+		set_light(l_range = 1.5)
+		icon_state = "colony_lathe_working"
+		update_appearance()
 
 /obj/machinery/rnd/production/colony_lathe/finalize_build()
 	. = ..()
@@ -51,9 +47,6 @@
 	icon_state = base_icon_state
 	update_appearance()
 	flick("colony_lathe_finish_print", src)
-
-/obj/machinery/rnd/production/colony_lathe/calculate_efficiency()
-	efficiency_coeff = 1
 
 // We take from all nodes even unresearched ones
 /obj/machinery/rnd/production/colony_lathe/update_designs()
