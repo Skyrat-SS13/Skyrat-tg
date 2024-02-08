@@ -89,13 +89,50 @@
 	/// The glow we have attached to our victim, to simulate our limb glowing.
 	var/obj/effect/dummy/lighting_obj/moblight/mob_glow
 
+	/// A bad system I'm using to track the worst scar we earned (since we can demote, we want the biggest our wound has been, not what it was when it was cured (probably moderate))
+	var/datum/scar/highest_scar
+
 /datum/wound/burn/robotic/overheat/New(temperature)
 	chassis_temperature = (isnull(temperature) ? get_random_starting_temperature() : temperature)
 
 	return ..()
 
+/datum/wound/burn/robotic/overheat/wound_injury(datum/wound/old_wound, attack_direction)
+	. = ..()
+
+	if (old_wound && old_wound.severity > severity && istype(old_wound, /datum/wound/burn/robotic/overheat))
+		var/datum/wound/burn/robotic/overheat/overheat_wound = old_wound
+		if (overheat_wound.highest_scar)
+			set_highest_scar(overheat_wound.highest_scar)
+			overheat_wound.clear_highest_scar()
+
+	if (!highest_scar && can_scar)
+		var/datum/scar/new_scar = new
+		set_highest_scar(new_scar)
+		new_scar.generate(limb, src, add_to_scars = FALSE)
+
+/datum/wound/burn/robotic/overheat/proc/set_highest_scar(datum/scar/new_scar)
+	if (highest_scar)
+		UnregisterSignal(highest_scar, COMSIG_QDELETING)
+	if (new_scar)
+		RegisterSignal(new_scar, COMSIG_QDELETING, PROC_REF(clear_highest_scar))
+	highest_scar = new_scar
+
+/datum/wound/burn/robotic/overheat/proc/clear_highest_scar(datum/source)
+	SIGNAL_HANDLER
+
+	set_highest_scar(null)
+
+/datum/wound/burn/robotic/overheat/remove_wound(ignore_limb, replaced)
+	if (!replaced && highest_scar)
+		already_scarred = TRUE
+		highest_scar.lazy_attach(limb)
+	return ..()
+
 /datum/wound/burn/robotic/overheat/Destroy()
 	QDEL_NULL(mob_glow)
+
+	highest_scar = null
 	return ..()
 
 /datum/wound/burn/robotic/overheat/set_victim(mob/living/new_victim)
@@ -219,7 +256,7 @@
 	var/clamped_new_temperature
 	var/heat_adjustment_used
 
-	if(temp_delta > 0)
+	if (temp_delta > 0)
 		clamped_new_temperature = min(min(chassis_temperature + max(temp_delta, 1), temperature), heating_threshold)
 		heat_adjustment_used = (clamped_new_temperature / unclamped_new_temperature)
 	else
