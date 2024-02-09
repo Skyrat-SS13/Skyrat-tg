@@ -177,3 +177,68 @@
   - bugfix: Regenerative Materia blobs can no longer drug non-carbons.
   nikothedude:
   - balance: Coagulants now work on electrical damage
+2024-02-09:
+  LT3:
+  - bugfix: SM cascade delam messages no longer display to clients not in game
+  Lutowski:
+  - rscadd: Void Raptor's Kitchen is renovated and more spacious.
+  - bugfix: Void Raptor Mining Dock should have air again.
+  - rscadd: The barbers have been hard at work! Emo Long & Gloomy Bangs hairstyles
+      are updated to modern standards.
+  Majkl-J:
+  - qol: Synths now use their ID slot as their internal computer's slot
+  - code_imp: Added COMSIG_HUMAN_UNEQUIPPED_ITEM for handling human unequipping
+  Melbert:
+  - bugfix: Krav Maga users can shove again
+  - bugfix: The object overlay circuit component will no longer take things with it.
+  - bugfix: Fixed Puncture Repair surgery not having surgical sounds
+  - bugfix: Fixed Surgery Initiator potentially showing invalid surgeries
+  SkyratBot:
+  - qol: Added a new head-only target hotkey, unbound by default.
+  - bugfix: fix heretic's rust mark failing to damage any items if the victim has
+      any container on them with another item inside, and maybe other bugs of similar
+      nature
+  - bugfix: Fixed text effects for runechat messages (the stuff enclosed in +, | and
+      _ characters).
+  - spellcheck: Improved the tip for say/text effects.
+  - bugfix: blood brothers should now properly succeed in converting non-targets
+  - bugfix: ash mark now properly lowers the cooldown of mansus grasp when triggered
+  - bugfix: Meteor Satellites no longer erroneously count every piece of paper as
+      a protected turf.
+  - bugfix: As a result the station goal is slightly more difficult
+  - bugfix: Xenomorphs now have legcuffs applied to them properly.
+  - rscadd: Ghost hair looks better now. Insert nerd shit about RGB vs HSL color space
+      here, go watch a youtube video or whatever.
+  - bugfix: Fixed some things in Ice Box's gas station ruin
+  - rscadd: Adds some things in Ice Box's gas station ruin
+  - bugfix: icebox ore generation underground is normal again
+  - rscadd: 'Adds in the Red Mons, The Wizard, The Rune and MOTHS-MOTHS-MOTHS bar
+      signs from the bar sign contest.
+
+      Congratulations to the winners!'
+  - image: Adds in the Red Mons, The Wizard, The Rune and MOTHS-MOTHS-MOTHS bar signs
+      from the bar sign contest.
+  - qol: The barcode scanner is now part of computer tech and can be printed at the
+      service techfab.
+  - bugfix: Instant reactions yield reagent results again
+  - bugfix: fixes ghetto surgery by gently adjusting time sensitivity cap and making
+      the cleaver not unintuitively bad at bone-sawing.
+  - qol: Service personnel now show up in green in the crew monitor console.
+  - bugfix: you may no longer altclick unanchored toiletbongs from any range in any
+      condition to rotate them
+  - bugfix: Alien Hunter's pounce ability no longer has any weird offset issues once
+      the pounce is completed.
+  Wallem:
+  - rscadd: Adds a new suicide_act() to the smite spell
+  nikothedude:
+  - bugfix: Synth wound oscillations will no longer cause you to reel from impacts
+      if there were no impacts
+  - balance: Synth blunt wounds are now faster to treat
+  - balance: Wirecutters on electrical damage have been streamlined and are always
+      fix 4x more than suturing
+  - balance: Synth wound oscillations now have a minimum of 3 seconds between each
+      oscillation
+  - bugfix: Synth burn wounds now apply scars
+  - spellcheck: Certain synth wounds have been rewritten
+  optimumtact, whomst didn't write this CL entry.:
+  - bugfix: Fixed the colorful lights of the ethereal disco ball.
