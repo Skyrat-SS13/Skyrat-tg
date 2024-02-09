@@ -271,3 +271,17 @@
 
 /datum/preference/choiced/erp_sexuality/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
+
+/datum/preference/toggle/erp/vore_overlays
+	savefile_key = "vore_overlays"
+
+/datum/preference/toggle/erp/vore_overlays/apply_to_client_updated(client/client, value)
+	. = ..()
+	var/mob/living/carbon/human/target = client?.mob
+	if(!value && istype(target))
+		var/atom/movable/screen/fullscreen/carrier/screen = target.screens["carrier"]
+		if(istype(screen) && screen.vore_overlay)
+			target.clear_fullscreen("carrier")
+
+/datum/preference/toggle/erp/vore_overlay_options
+	savefile_key = "vore_overlay_options"

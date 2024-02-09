@@ -34,6 +34,10 @@
 		return FALSE
 
 	if(!soulcatcher_prefs.read_preference(/datum/preference/toggle/soulcatcher_overlays))
+		return FALSE
+
+	if(initial(current_overlay_path.vore_overlay) && !soulcatcher_prefs.read_preference(/datum/preference/toggle/erp/vore_overlays))
+		return FALSE
 
 	if(!ispath(current_overlay_path))
 		occupant.clear_fullscreen("carrier", FALSE)
@@ -45,6 +49,12 @@
 
 	return TRUE
 
+/*
+READ ME BEFORE ADDING MORE OVERLAYS
+If you are going to add a new overlay and it is vore/kink focused please set `vore_overlay` to TRUE
+There are downstream SFW servers using this code and I'd rather them not be exposed to this.
+*/
+
 /atom/movable/screen/fullscreen/carrier
 	icon = 'modular_skyrat/master_files/icons/mob/carrier_fullscreen.dmi'
 	icon_state = "da_tumby"
@@ -53,6 +63,8 @@
 
 	/// Is the overlay able to be recolored?
 	var/recolorable = FALSE
+	/// Is the overlay vore related?
+	var/vore_overlay = FALSE
 
 /atom/movable/screen/fullscreen/carrier/default
 	name = "default"
