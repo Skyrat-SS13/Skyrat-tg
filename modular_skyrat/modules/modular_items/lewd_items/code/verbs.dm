@@ -88,11 +88,11 @@
 /// Returns a list containing all of the humans adjacent to the user.
 /mob/living/proc/get_adjacent_humans()
 	var/list/hear_list = orange(1, src)
-	for(var/mob/living/carbon/human/hearer as anything in hear_list)
-		if(ishuman(hearer))
+	for(var/mob/living/carbon/human/nearby_human as anything in hear_list)
+		if(ishuman(nearby_human))
 			continue
 
-		hear_list -= hearer
+		hear_list -= nearby_human
 
 	return hear_list
 
