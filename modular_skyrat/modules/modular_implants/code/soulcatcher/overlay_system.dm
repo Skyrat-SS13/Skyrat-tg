@@ -29,6 +29,12 @@
 	if(!istype(occupant))
 		return FALSE
 
+	var/datum/preferences/soulcatcher_prefs = occupant?.client?.prefs
+	if(!istype(soulcatcher_prefs))
+		return FALSE
+
+	if(!soulcatcher_prefs.read_preference(/datum/preference/toggle/soulcatcher_overlays))
+
 	if(!ispath(current_overlay_path))
 		occupant.clear_fullscreen("carrier", FALSE)
 		return TRUE
