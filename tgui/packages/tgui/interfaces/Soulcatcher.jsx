@@ -141,7 +141,7 @@ export const Soulcatcher = (props) => {
                 <>
                   <Button
                     icon="eye"
-                    tooltip="previews the overlay of the current room"
+                    tooltip="Previews the overlay of the current room"
                     onClick={() =>
                       act('preview_overlay', { room_ref: room.reference })
                     }
