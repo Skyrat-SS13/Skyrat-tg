@@ -185,9 +185,16 @@
 			target_room.change_fullscreen_overlay(target_room.current_overlay_path)
 
 		if("change_overlay")
+			var/mob/living/user = usr
+			var/disable_vore_overlays = (CONFIG_GET(flag/disable_erp_preferences) || !safe_read_pref(usr, /datum/preference/toggle/erp/vore_overlay_options)
+
 			var/list/available_overlays = list()
+
 			for(var/path in subtypesof(/atom/movable/screen/fullscreen/carrier))
-				var/atom/movable/screen/fullscreen/carrier_atom = path
+				var/atom/movable/screen/fullscreen/carrier/carrier_atom = path
+				if(carrier_atom.vore_overlay && disable_vore_overlays)) // No, we don't want that.
+					continue
+
 				available_overlays[initial(carrier_atom.name)] = path
 
 			available_overlays += "None"
