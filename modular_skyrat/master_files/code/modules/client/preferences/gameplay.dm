@@ -5,8 +5,8 @@
 	default_value = TRUE
 
 /datum/preference/toggle/soulcatcher_overlays/apply_to_client_updated(client/client, value)
-	. = ..()
-	var/mob/living/carbon/human/target = client?.mob
+	apply_to_client(client, value)
+	var/mob/living/target = client?.mob
 	if(!value && istype(target))
-		target.clear_fullscreen("carrier")
+		target.clear_fullscreen("carrier", FALSE)
 

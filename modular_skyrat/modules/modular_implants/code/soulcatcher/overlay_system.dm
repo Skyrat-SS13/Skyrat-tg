@@ -68,8 +68,9 @@ There are downstream SFW servers using this code and I'd rather them not be expo
 
 /atom/movable/screen/fullscreen/carrier/default
 	name = "default"
-/atom/movable/screen/fullscreen/carrier/test
+
+/atom/movable/screen/fullscreen/carrier/animated
 	name = "Animated Belly"
 	icon_state = "a_anim_belly"
 	recolorable = TRUE
-
+	vore_overlay = TRUE

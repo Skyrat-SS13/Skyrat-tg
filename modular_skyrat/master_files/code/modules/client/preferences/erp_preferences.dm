@@ -276,12 +276,12 @@
 	savefile_key = "vore_overlays"
 
 /datum/preference/toggle/erp/vore_overlays/apply_to_client_updated(client/client, value)
-	. = ..()
-	var/mob/living/carbon/human/target = client?.mob
+	apply_to_client(client, value)
+	var/mob/living/target = client?.mob
 	if(!value && istype(target))
 		var/atom/movable/screen/fullscreen/carrier/screen = target.screens["carrier"]
 		if(istype(screen) && screen.vore_overlay)
-			target.clear_fullscreen("carrier")
+			target.clear_fullscreen("carrier", FALSE)
 
 /datum/preference/toggle/erp/vore_overlay_options
 	savefile_key = "vore_overlay_options"
