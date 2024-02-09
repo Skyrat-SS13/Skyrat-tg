@@ -28,6 +28,9 @@
 		"description" = html_decode(room.room_description),
 		"reference" = REF(room),
 		"joinable" = room.joinable,
+		"overlay_name" = (istype(room.current_overlay_path) && initial(room.current_overlay_path.name)),
+		"overlay_recolorable" = room.overlay_recolorable,
+		"overlay_color" = room.overlay_color,
 		"color" = room.room_color,
 		"currently_targeted" = currently_targeted,
 		)
@@ -173,6 +176,38 @@
 				return FALSE
 
 			target_room.room_color = new_room_color
+
+		if("change_overlay_color")
+			var/new_overlay_color = input(usr, "", "Choose Color", SOULCATCHER_DEFAULT_COLOR) as color
+			if(!new_overlay_color)
+				return FALSE
+
+			target_room.overlay_color = new_overlay_color
+
+		if("change_overlay")
+			var/list/available_overlays = list()
+			for(var/path in subtypesof(/atom/movable/screen/fullscreen/carrier))
+				var/atom/movable/screen/fullscreen/carrier_atom = path
+				available_overlays[initial(carrier_atom.name)] = path
+
+			available_overlays += "None"
+			var/target_overlay = tgui_input_list(usr, "Choose a overlay to use", name, available_overlays)
+			if(available_overlays != "None")
+				target_overlay = available_overlays[target_overlay]
+
+			if(!target_overlay)
+				return FALSE
+
+			target_room.change_fullscreen_overlay(target_overlay)
+			return TRUE
+
+		if("preview_overlay")
+			var/mob/living/user = usr
+			if(!istype(user))
+				return FALSE
+
+			user.overlay_fullscreen("carrier", target_room.current_overlay_path)
+			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, clear_fullscreen), "carrier"), 10 SECONDS)
 
 		if("toggle_soul_outside_sense")
 			if(params["sense_to_change"] == "hearing")

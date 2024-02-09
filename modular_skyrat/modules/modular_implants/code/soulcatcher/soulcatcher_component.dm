@@ -255,6 +255,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		new_soul.log_message(message_to_log, LOG_GAME)
 
+	set_overlay_for_mob(new_soul)
 	return TRUE
 
 /// Removes a soul from a soulcatcher room, leaving it as a ghost. Returns `FALSE` if the `soul_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
@@ -264,6 +265,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	current_souls -= soul_to_remove
 	soul_to_remove.current_room = null
+	soul_to_remove.clear_fullscreen("carrier", FALSE)
 
 	soul_to_remove.return_to_body()
 	qdel(soul_to_remove)
