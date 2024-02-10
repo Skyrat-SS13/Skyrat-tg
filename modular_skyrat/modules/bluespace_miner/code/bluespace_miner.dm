@@ -19,8 +19,8 @@
 	var/processing_speed = 6 SECONDS
 	///the current status of the enviroment. Any nonzero value means we can't work
 	var/mining_stat = NONE
-	///whether the bsminer has been probability modified
-	var/probability_mod = FALSE
+	///what the bs miner will have a triple chance to produce, if any
+	var/probability_mod = null
 	///the chance each ore has to be picked, weighted list
 	var/list/ore_chance = list(
 		/obj/item/stack/sheet/iron = 20,
