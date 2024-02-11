@@ -528,10 +528,8 @@
 		if(!(listed_human.mob_biotypes & MOB_ORGANIC) && cortical_owner.organic_restricted)
 			continue
 		//hosts cannot be changelings
-		if(listed_human.mind)
-			var/datum/antagonist/changeling/changeling = listed_human.mind.has_antag_datum(/datum/antagonist/changeling)
-			if(changeling && cortical_owner.changeling_restricted)
-				continue
+		if(IS_CHANGELING(listed_human) && cortical_owner.changeling_restricted)
+			continue
 		usable_hosts += listed_human
 
 	//if the list of possible hosts is one, just go straight in, no choosing
