@@ -783,14 +783,9 @@
 	illustration = "writing_syndie"
 
 /obj/item/storage/box/syndicate/contractor_loadout/PopulateContents()
-<<<<<<< HEAD
-	/* SKYRAT EDIT REMOVAL BEGIN - Contractors get MODSuits instead, see contractor modular for overrides
-=======
-	new /obj/item/mod/control/pre_equipped/infiltrator(src)
->>>>>>> 19b2ffd2d32 (Contractor loadout adjustment + Price tweak (#81293))
+	new /obj/item/mod/control/pre_equipped/contractor(src) //SKYRAT EDIT: Was infiltrator variant
 	new /obj/item/clothing/head/helmet/space/syndicate/contract(src)
 	new /obj/item/clothing/suit/space/syndicate/contract(src)
-	SKYRAT EDIT REMOVAL END */
 	new /obj/item/clothing/under/chameleon(src)
 	new /obj/item/clothing/mask/chameleon(src)
 	new /obj/item/card/id/advanced/chameleon(src)
