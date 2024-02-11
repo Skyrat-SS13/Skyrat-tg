@@ -289,6 +289,7 @@
 
 	starting_programs = list(
 		/datum/computer_file/program/contract_uplink,
+		/datum/computer_file/program/secureye/syndicate,
 	)
 
 /**
