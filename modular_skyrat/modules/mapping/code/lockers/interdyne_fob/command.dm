@@ -23,7 +23,7 @@
 /obj/structure/closet/secure_closet/interdynefob/sa_locker/PopulateContents()
 	..()
 
-	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/pistol/aps(src)
 	new /obj/item/storage/bag/garment/station_admiral(src)
 	new /obj/item/radio/headset/interdyne/command(src)
 
@@ -67,6 +67,7 @@
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/storage/bag/garment/master_arms(src)
 	new /obj/item/radio/headset/interdyne(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/c20r(src)
 
 /obj/structure/closet/secure_closet/interdynefob/cl_locker
 	icon_door = "hop"

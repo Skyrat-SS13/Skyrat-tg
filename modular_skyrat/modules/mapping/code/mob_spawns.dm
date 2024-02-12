@@ -194,6 +194,7 @@
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser = 1,
 		/obj/item/gun/energy/recharge/kinetic_accelerator = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol = 1,
 		)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/miner
 	l_pocket = /obj/item/card/mining_point_card
@@ -214,11 +215,13 @@
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
+		/obj/item/storage/box/syndie_kit/space_suit = 1,
 		)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/enginetechnician
 	glasses = /obj/item/clothing/glasses/welding/up
 	belt = /obj/item/storage/belt/utility/syndicate
 	gloves = /obj/item/clothing/gloves/combat
+	r_pocket = /obj/item/gun/energy/e_gun/mini
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
@@ -228,6 +231,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/chemical
 	gloves = /obj/item/clothing/gloves/color/black
 	back = /obj/item/storage/backpack/satchel
+	r_pocket = /obj/item/gun/energy/e_gun/mini
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Medical Officer"
@@ -241,6 +245,7 @@
 		/obj/item/storage/box/survival = 1,
 		/obj/item/crowbar = 1,
 		/obj/item/storage/medkit/surgery = 1,
+		/obj/item/gun/syringe/rapidsyringe = 1,
 		)
 
 /datum/outfit/ds2/syndicate/brigoff
@@ -284,6 +289,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	back = /obj/item/storage/backpack/satchel/sec/redsec
 	head = /obj/item/clothing/head/hats/hos/beret/syndicate
+	l_pocket = /obj/item/gun/energy/e_gun/mini
 	r_pocket = /obj/item/flashlight/seclite
 	implants = list(
 		/obj/item/implant/weapons_auth,
@@ -297,13 +303,14 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack/satchel
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
+	belt = /obj/item/gun/energy/e_gun
 
 /datum/outfit/ds2/syndicate_command/admiral
 	name = "DS-2 Admiral"
 	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	back = /obj/item/storage/backpack/satchel
-	belt = /obj/item/gun/ballistic/automatic/pistol/aps
+	belt = /obj/item/storage/belt/sabre
 	head = /obj/item/clothing/head/hats/hos/cap/syndicate
 	id = /obj/item/card/id/advanced/gold/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral

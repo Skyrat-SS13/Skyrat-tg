@@ -105,8 +105,6 @@
 
 	var/distance = 128 // Max distance for a get_dist is 127
 	for(var/obj/structure/ore_vent/vent as anything in SSore_generation.possible_vents)
-		if(vent.unique_vent)
-			continue
 		if(vent.z != src.z)
 			continue //Silly
 		var/temp_distance = get_dist(src, vent)
@@ -410,7 +408,7 @@
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
-	proximity_based = TRUE
+	proximity_based = FALSE //SKYRAT EDIT: Original TRUE
 	mineralChance = 5
 
 /turf/closed/mineral/random/volcanic/mineral_chances()
@@ -438,7 +436,7 @@
 	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	weak_turf = TRUE
-	proximity_based = TRUE
+	proximity_based = FALSE //SKYRAT EDIT: Original TRUE
 
 /turf/closed/mineral/random/snow/Change_Ore(ore_type, random = 0)
 	. = ..()
