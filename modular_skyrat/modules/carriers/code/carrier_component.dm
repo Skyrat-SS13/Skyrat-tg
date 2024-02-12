@@ -173,18 +173,19 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/component/carrier/target_master_carrier = target_room.master_carrier.resolve()
 	if(!target_master_carrier)
 		target_room.master_carrier = null
+		return FALSE
+
 	else if(target_master_carrier != src)
 		target_soul.forceMove(target_master_carrier.parent)
 
 	var/datum/component/carrier_user/carrier_component = target_soul.GetComponent(/datum/component/carrier_user)
-	var/datum/carrier_room/original_room = carrier_component?.current_room.resolve()
-	if(original_room)
-		original_room.current_mobs -= target_soul
-	else
-		carrier_component?.current_room = null
+	var/datum/carrier_room/original_room = carrier_component?.current_room?.resolve()
+	if(!istype(carrier_component) || !istype(original_room))
+		return FALSE // Don't transfer someone that isn't already inside of a carrier.
 
+	original_room.current_mobs -= target_soul
 	var/datum/weakref/room_ref = WEAKREF(target_room)
-	SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_CHANGE_ROOM, room_ref)
+	carrier_component.current_room = room_ref
 	target_room.current_mobs += target_soul
 
 	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))

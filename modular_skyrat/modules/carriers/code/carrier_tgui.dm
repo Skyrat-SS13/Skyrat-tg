@@ -170,8 +170,8 @@
 
 			if(ishuman(usr))
 				var/mob/living/carbon/human/human_user = usr
-				for(var/obj/item/carrier_holder/holders in human_user.contents)
-					var/datum/component/carrier/holder_carrier = human_user.GetComponent(/datum/component/carrier)
+				for(var/obj/item/carrier_holder/holder in human_user.contents)
+					var/datum/component/carrier/holder_carrier = holder.GetComponent(/datum/component/carrier)
 					if(!istype(holder_carrier))
 						continue
 
