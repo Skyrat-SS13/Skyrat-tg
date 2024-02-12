@@ -10,7 +10,7 @@
 	layer = BELOW_MOB_LAYER
 	pseudo_z_axis = 9 //stepping onto the pole makes you raise upwards!
 	density = 0 //easy to step up on
-	light_system = STATIC_LIGHT
+	light_system = COMPLEX_LIGHT
 	light_range = 3
 	light_power = 1
 	light_color = COLOR_LIGHT_PINK
