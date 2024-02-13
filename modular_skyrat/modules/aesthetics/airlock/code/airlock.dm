@@ -332,6 +332,15 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/highsec/highsec.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/highsec/overlays.dmi'
 
+//TITANIUM / SHUTTLE
+/obj/machinery/door/airlock/titanium
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/shuttle.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/overlays.dmi'
+
+/obj/machinery/door/airlock/shuttle
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/shuttle.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/overlays.dmi'
+
 //MULTI-TILE
 
 /obj/machinery/door/airlock/multi_tile
