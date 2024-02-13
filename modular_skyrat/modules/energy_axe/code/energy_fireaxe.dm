@@ -12,7 +12,7 @@
 	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading: \"property of the Gorlex Marauders\""
 	force = 5
 	throwforce = 15
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_range = 6
 	light_color = COLOR_SOFT_RED
 	light_on = FALSE
