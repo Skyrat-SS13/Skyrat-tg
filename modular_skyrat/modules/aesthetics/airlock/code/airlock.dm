@@ -342,7 +342,7 @@
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/overlays.dmi'
 
 //SHUTTLE2
-/obj/machinery/door/airlock/external/ferry
+/obj/machinery/door/airlock/shuttle/ferry
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/erokez.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/overlays.dmi'
 
