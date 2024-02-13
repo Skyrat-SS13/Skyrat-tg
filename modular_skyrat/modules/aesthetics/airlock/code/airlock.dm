@@ -341,6 +341,15 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/shuttle.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/overlays.dmi'
 
+//SHUTTLE2
+/obj/machinery/door/airlock/external/ferry
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/erokez.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/overlays.dmi'
+
+/obj/machinery/door/airlock/external/wagon
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/wagon.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/overlays.dmi'
+
 //MULTI-TILE
 
 /obj/machinery/door/airlock/multi_tile
