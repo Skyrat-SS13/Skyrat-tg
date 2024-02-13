@@ -29,7 +29,7 @@
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 	var/frame_state
-	var/light_state
+	var/light_state = AIRLOCK_LIGHT_POWERON
 	var/pre_light_color
 	switch(airlock_state)
 		if(AIRLOCK_CLOSED)
@@ -47,7 +47,6 @@
 				light_state = AIRLOCK_LIGHT_ENGINEERING
 				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				light_state = AIRLOCK_LIGHT_POWERON
 				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 		if(AIRLOCK_DENY)
 			frame_state = AIRLOCK_FRAME_CLOSED
@@ -74,7 +73,6 @@
 				light_state = AIRLOCK_LIGHT_ENGINEERING
 				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				light_state = AIRLOCK_LIGHT_POWERON
 				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 			light_state += "_open"
 		if(AIRLOCK_OPENING)
