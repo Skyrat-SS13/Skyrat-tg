@@ -137,9 +137,15 @@
 		return
 	var/obj/item/organ/external/tail/oranges_accessory = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(oranges_accessory.wag_flags & WAG_WAGGING) //We verified the tail exists in can_run_emote()
+<<<<<<< HEAD
 		SEND_SIGNAL(user, COMSIG_ORGAN_WAG_TAIL, FALSE)
 	else
 		SEND_SIGNAL(user, COMSIG_ORGAN_WAG_TAIL, TRUE)
+=======
+		oranges_accessory.stop_wag(user)
+	else
+		oranges_accessory.start_wag(user)
+>>>>>>> 75dacba5868 (Adds unit test for tail wag emote, fixes tail wag emote (#81437))
 
 /datum/emote/living/carbon/human/wag/select_message_type(mob/user, intentional)
 	. = ..()
