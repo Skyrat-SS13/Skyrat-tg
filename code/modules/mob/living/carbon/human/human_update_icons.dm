@@ -528,7 +528,7 @@ There are several things that need to be remembered:
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE
 
-		if(!mutant_override && bodytype & BODYTYPE_CUSTOM) 	// SKYRAT EDIT -- Allows multi-bodytype characters to use all bodytypes
+		if(!mutant_override && bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
