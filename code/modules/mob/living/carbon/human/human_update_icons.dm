@@ -375,15 +375,15 @@ There are several things that need to be remembered:
 
 		if((bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
-			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
+			if(leg.limb_id == "digitigrade" || leg.bodytype & BODYTYPE_DIGITIGRADE)//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE // SKYRAT EDIT ADDITION
-		else if(bodytype & BODYTYPE_CUSTOM)
+		if(!mutant_override && bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		else if(bodytype & BODYTYPE_HIDE_SHOES)
+		if(bodytype & BODYTYPE_HIDE_SHOES)
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// SKYRAT EDIT END
 
@@ -528,7 +528,7 @@ There are several things that need to be remembered:
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE
 
-		else if(bodytype & BODYTYPE_CUSTOM)
+		if(!mutant_override && bodytype & BODYTYPE_CUSTOM) 	// SKYRAT EDIT -- Allows multi-bodytype characters to use all bodytypes
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
