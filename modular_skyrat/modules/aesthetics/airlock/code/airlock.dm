@@ -350,6 +350,25 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/wagon.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/overlays.dmi'
 
+//SURVIVAL
+/obj/machinery/door/airlock/survival_pod
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/survival/overlays.dmi'
+
+//ABDUCTOR
+/obj/machinery/door/airlock/abductor
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/abductor/overlays.dmi'
+
+//CULT
+/obj/machinery/door/airlock/cult
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/cult/runed/overlays.dmi'
+
+/obj/machinery/door/airlock/cult/unruned
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/cult/unruned/overlays.dmi'
+
+//CLOCKWORK
+/obj/machinery/door/airlock/bronze
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/clockwork/overlays.dmi'
+
 //MULTI-TILE
 
 /obj/machinery/door/airlock/multi_tile
