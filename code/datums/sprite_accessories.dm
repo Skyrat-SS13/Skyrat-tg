@@ -2087,7 +2087,11 @@
 	icon = 'icons/mob/human/species/lizard/lizard_spines.dmi'
 	em_block = TRUE
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated
+=======
+/datum/sprite_accessory/tail_spines
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	icon = 'icons/mob/human/species/lizard/lizard_spines.dmi'
 	em_block = TRUE
 
@@ -2095,7 +2099,11 @@
 	name = "None"
 	icon_state = "none"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated/none
+=======
+/datum/sprite_accessory/tail_spines/none
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	name = "None"
 	icon_state = "none"
 
@@ -2103,7 +2111,11 @@
 	name = "Short"
 	icon_state = "short"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated/short
+=======
+/datum/sprite_accessory/tail_spines/short
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	name = "Short"
 	icon_state = "short"
 
@@ -2111,7 +2123,11 @@
 	name = "Short + Membrane"
 	icon_state = "shortmeme"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated/shortmeme
+=======
+/datum/sprite_accessory/tail_spines/shortmeme
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	name = "Short + Membrane"
 	icon_state = "shortmeme"
 
@@ -2119,7 +2135,11 @@
 	name = "Long"
 	icon_state = "long"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated/long
+=======
+/datum/sprite_accessory/tail_spines/long
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	name = "Long"
 	icon_state = "long"
 
@@ -2127,7 +2147,11 @@
 	name = "Long + Membrane"
 	icon_state = "longmeme"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated/longmeme
+=======
+/datum/sprite_accessory/tail_spines/longmeme
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	name = "Long + Membrane"
 	icon_state = "longmeme"
 
@@ -2135,7 +2159,11 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/spines_animated/aquatic
+=======
+/datum/sprite_accessory/tail_spines/aquatic
+>>>>>>> cf092b555bc (remove unused animated tail spines code (#81492))
 	name = "Aquatic"
 	icon_state = "aqua"
 
