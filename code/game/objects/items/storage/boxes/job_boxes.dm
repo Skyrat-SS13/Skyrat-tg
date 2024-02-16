@@ -29,6 +29,7 @@
 		return
 	if(!isnull(mask_type))
 		new mask_type(src)
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
 	if(!isplasmaman(loc))
 		if(isvox(loc))
@@ -38,6 +39,11 @@
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
 	//SKYRAT EDIT ADDITION END - VOX INTERNALS
+=======
+
+	if(!isnull(internal_type))
+		new internal_type(src)
+>>>>>>> 25909dc9323 (remove plasmaman check in survival boxes (#81493))
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
