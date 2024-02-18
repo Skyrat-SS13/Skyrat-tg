@@ -335,6 +335,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				tgui.ui_interact(usr)
 			return TRUE
 
+		if ("open_food")
+			GLOB.food_prefs_menu.ui_interact(usr)
+			return TRUE
+
 		if ("set_tricolor_preference")
 			var/requested_preference_key = params["preference"]
 			var/index_key = params["value"]
