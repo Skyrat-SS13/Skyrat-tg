@@ -17,7 +17,7 @@
 	usesound = list('sound/items/welder.ogg', 'sound/items/welder2.ogg')
 	drop_sound = 'sound/items/handling/weldingtool_drop.ogg'
 	pickup_sound = 'sound/items/handling/weldingtool_pickup.ogg'
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_range = 2
 	light_power = 0.75
 	light_color = LIGHT_COLOR_FIRE
@@ -145,7 +145,7 @@
 	if(isnull(affecting) || !IS_ROBOTIC_LIMB(affecting))
 		return NONE
 
-	var/use_delay = 0
+	var/use_delay = 1 SECONDS // SKYRAT EDIT: ORIGINAL 0
 
 	if(user == attacked_humanoid)
 		user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
@@ -154,11 +154,6 @@
 
 	if(!use_tool(attacked_humanoid, user, use_delay, volume=50, amount=1))
 		return ITEM_INTERACT_BLOCKING
-
-	// SKYRAT EDIT ADDITION START
-	if(!do_after(user, other_delay, attacked_humanoid))
-		return ITEM_INTERACT_BLOCKING
-	// SKYRAT EDIT ADDITION END
 
 	item_heal_robotic(attacked_humanoid, user, 15, 0)
 	return ITEM_INTERACT_SUCCESS

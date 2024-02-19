@@ -86,7 +86,7 @@
 	can_breed = FALSE
 
 	// These lights enable when E-N is emagged
-	light_system = MOVABLE_LIGHT_DIRECTIONAL
+	light_system = OVERLAY_LIGHT_DIRECTIONAL
 	light_color = COLOR_RED
 	light_range = 2
 	light_power = 0.8
