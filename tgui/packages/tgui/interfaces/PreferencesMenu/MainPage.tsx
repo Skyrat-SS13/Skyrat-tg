@@ -79,7 +79,6 @@ const CharacterControls = (props: {
       )}
       {/* SKYRAT EDIT ADDITION START */}
       {props.handleLoadout && (
-        // SKYRAT EDIT ADDITION
         <Stack.Item>
           <Button
             onClick={props.handleLoadout}

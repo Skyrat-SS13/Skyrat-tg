@@ -25,15 +25,12 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	var/obj/item/organ/internal/tongue/target_tongue = target.get_organ_slot(ORGAN_SLOT_TONGUE)
 
-	if(!target_tongue)
+	if(isnull(target_tongue) || !preferences.food_preferences["enabled"])
 		return
 
-	if (!preferences.food_preferences["enabled"])
-		return
-	else
-		target_tongue.liked_foodtypes  = NONE
-		target_tongue.disliked_foodtypes  = NONE
-		target_tongue.toxic_foodtypes = NONE
+	target_tongue.liked_foodtypes  = NONE
+	target_tongue.disliked_foodtypes  = NONE
+	target_tongue.toxic_foodtypes = NONE
 
 	for(var/food_entry in GLOB.food_defaults)
 		var/list/food_default = GLOB.food_defaults[food_entry]
@@ -57,8 +54,12 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 /datum/food_prefs_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	if(.)
+		return
 
 	var/datum/preferences/preferences = ui?.user?.client?.prefs
+	if(!preferences)
+		return
 
 	switch(action)
 		if("reset")
@@ -144,9 +145,9 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 				toxic_food_length++
 
 	if(liked_food_length > MAXIMUM_LIKES)
-		return "too many like choices"
+		return "too many liked choices"
 	if(disliked_food_length + toxic_food_length < MINIMUM_REQUIRED_DISLIKES)
-		return "too few dislike choices"
+		return "too few disliked choices"
 	if(toxic_food_length < MINIMUM_REQUIRED_TOXICS)
 		return "too few toxic choices"
 

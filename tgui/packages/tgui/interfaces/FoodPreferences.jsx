@@ -12,7 +12,6 @@ import {
 } from '../components';
 import { Button } from '../components/Button';
 import { Window } from '../layouts';
-import { logger } from '../logging';
 
 type Data = {
   food_types: Record<string, number>;
@@ -32,7 +31,6 @@ const OBSCURE_FOOD = 5;
 
 export const FoodPreferences = (props) => {
   const { act, data } = useBackend<Data>();
-  logger.log(data);
 
   return (
     <Window width={1300} height={600}>
