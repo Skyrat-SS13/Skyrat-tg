@@ -14,11 +14,10 @@
 /obj/machinery/power/solar/deployable/crowbar_act(mob/user, obj/item/I)
 	return
 
-/obj/machinery/power/solar/deployable/deconstruct(disassembled = TRUE)
+/obj/machinery/power/solar/deployable/on_deconstruction(disassembled)
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
-	return ..()
 
 // Solar panel deployable item
 
@@ -48,11 +47,10 @@
 /obj/machinery/power/tracker/deployable/crowbar_act(mob/user, obj/item/item_acting)
 	return
 
-/obj/machinery/power/tracker/deployable/deconstruct(disassembled = TRUE)
+/obj/machinery/power/tracker/deployable/on_deconstruction(disassembled)
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
-	return ..()
 
 // Solar tracker deployable item
 
