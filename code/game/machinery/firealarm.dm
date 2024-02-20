@@ -194,6 +194,8 @@
 						set_light(l_color = LIGHT_COLOR_ORANGE)
 					if(SEC_LEVEL_AMBER)
 						set_light(l_color = LIGHT_COLOR_DIM_YELLOW)
+					if(SEC_LEVEL_EPSILON)
+						set_light(l_color = COLOR_ASSEMBLY_WHITE)
 					if(SEC_LEVEL_GAMMA)
 						set_light(l_color = COLOR_ASSEMBLY_PURPLE)
 					//SKYRAT EDIT ADDITION END
