@@ -46,9 +46,8 @@
 	if(length(contents))
 		. += span_notice("It has <b>[contents[1]]</b> sitting in it.")
 
-/obj/machinery/arc_furnace/deconstruct(disassembled = TRUE)
+/obj/machinery/arc_furnace/on_deconstruction(disassembled)
 	eject_contents()
-	return ..()
 
 /obj/machinery/arc_furnace/update_appearance()
 	. = ..()
