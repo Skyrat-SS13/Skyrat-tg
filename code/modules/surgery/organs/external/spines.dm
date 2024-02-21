@@ -8,6 +8,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_SPINES
 
 	preference = "feature_lizard_spines"
+
 	//dna_block = DNA_SPINES_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
