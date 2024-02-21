@@ -29,15 +29,9 @@
 		return
 	if(!isnull(mask_type))
 		new mask_type(src)
-	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
-	if(!isplasmaman(loc))
-		if(isvox(loc))
-			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
-		else
-			new internal_type(src)
-	else
-		new /obj/item/tank/internals/plasmaman/belt(src)
-	//SKYRAT EDIT ADDITION END - VOX INTERNALS
+
+	if(!isnull(internal_type))
+		new internal_type(src)
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -48,7 +42,7 @@
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_RADIOACTIVE_NEBULA))
 		new /obj/item/storage/pill_bottle/potassiodide(src)
-	
+
 	if(SSmapping.is_planetary() && LAZYLEN(SSmapping.multiz_levels))
 		new /obj/item/climbing_hook/emergency(src)
 
