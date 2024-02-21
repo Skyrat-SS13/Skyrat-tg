@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/labcoat_pharmacist
 	name = "Pharmacist's Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/pharmacist
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/regular
 
 /*
 *	PONCHOS

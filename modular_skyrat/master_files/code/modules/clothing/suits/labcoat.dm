@@ -28,11 +28,16 @@
 	icon_state = "labcoat_regular"
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/suit/toggle/labcoat/nova/pharmacist
+/obj/item/clothing/suit/toggle/labcoat/skyrat/pharmacist
 	name = "pharmacist's labcoat"
 	desc = "A standard labcoat for chemistry which protects the wearer from acid spills."
 	icon_state = "labcoat_pharm"
 	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/suit/toggle/labcoat/skyrat/regular
+	name = "researcher's labcoat"
+	desc = "A Nanotrasen standard labcoat for researchers in the scientific field."
+	icon_state = "labcoat_regular"
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	name = "high vis labcoat"
