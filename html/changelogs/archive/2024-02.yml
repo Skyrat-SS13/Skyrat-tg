@@ -468,3 +468,70 @@
   - bugfix: Maps loaded in after roundstart will no longer have broken smoothing
   - bugfix: The crystallizer screentip for rotating it has been updated with the correct
       button
+2024-02-20:
+  Aylong:
+  - rscadd: Added `Mute` button into `Chat Tabs` settings, it disables tab unread
+      counter
+  - rscadd: Added `Clear chat` button into `General` settings, you can clear your
+      dirty chat like you did it before TGchat
+  - bugfix: Case-sensitive highlighting now works properly
+  Cursor:
+  - rscadd: Security Officers are now Haram.
+  LT3:
+  - qol: Airlocks don't flash constantly on engineering override, override/overlay
+      added for fire alarm
+  - bugfix: Airlock lighting should no longer render on top of player characters
+  - bugfix: Airlock emissives no longer overlap firedoors
+  - bugfix: Fixed missing overlays on various airlock types
+  - bugfix: Fixed status display for epsilon alert
+  - bugfix: Fixed fire alarm for epsilon alert
+  - bugfix: MULEbot will correctly display its loaded cargo on BotKeeper
+  - bugfix: MULEbot home beacon can be set from control panel
+  - code_imp: MULEbot home location is automatically set on init
+  Melbert:
+  - rscadd: Valentines Day now polls all players for candidates when it triggers rather
+      than forcing all players to be a Valentine. Consent is important.
+  - rscadd: Valentine silicons now gain special laws pertaining to their date.
+  - qol: Valentines Cards are now paper, so you can write on them, stamp them, or
+      burn them.
+  - qol: Valentine's roundend report no longer takes up a massive amount of space
+      and also no longer sound so, so weird.
+  - rscdel: You can only vote for 1 map at a time again
+  - admin: You can now set someone's TC to 0
+  - admin: Removing Traitor from automatically removes the uplink from them
+  - admin: Removing Uplink from someone no longer wipes ALL of their memories
+  - bugfix: Fixes AI double-click tracking
+  MelokGleb and KREKS, McRamon, Ghommie:
+  - image: New sprites for changeling powers and items. Woooh.
+  SkyratBot:
+  - qol: Circuit multitools can now mark (visible) items worn/held by a mob.
+  - bugfix: Grill checks if the item got deleted to avoid runtimes. Also cook time
+      is set based on the individual items type & not a constant of 20 seconds
+  - bugfix: BBQ ribs can be grilled on a grill but now takes anywhere between 30 to
+      40 seconds to get proper smoked ribs and not lightly smoked ribs or turn into
+      a mouldy mess on a girddle. Delicious.
+  - bugfix: you may not put disposal outlets on cargo shuttle
+  - bugfix: mecha drill won't use power & do other checks if the target cannot be
+      drilled.
+  - bugfix: mecha drill will stop drilling if the mech moves even without changing
+      direction. Also will use power & check other conditions every drill cycle.
+  - bugfix: forcefully pushing disposal outlets and chutes deconstructs them instead
+      of making them behave like budget eigenstatium lockers
+  - rscadd: deathmatch minigame
+  - qol: makes the tgui_input_number user friendly for negative and decimal inputs
+  - code_imp: the  onBlur={(_, value) => onBlur(value)} event should now be used on
+      all uses of RestrictedInput to ensure that the number is fully sanitized whenever
+      the user leaves the field or submits it through a button
+  - rscadd: nanotrasen museum gateway map
+  jjpark-kb:
+  - rscadd: you can now increase the probability of certain mats from bluespace miners
+      at the cost of not producing the other mats
+2024-02-21:
+  Melbert:
+  - balance: Scientists have discovered Nuka Cola is not good for short term health.
+  SkyratBot:
+  - bugfix: machines that should not drop contents when deleted no longer do.
+  - refactor: refactors how machines are deconstructed. report bugs on github.
+  nikothedude:
+  - bugfix: Characters with multiple bodytypes are no longer forced to bear broken
+      clothing sprites
