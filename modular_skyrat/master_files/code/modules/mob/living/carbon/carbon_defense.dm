@@ -11,7 +11,7 @@
 			visible_message("<span class='danger'>[src] slaps [target] in the face!</span>",
 				"<span class='notice'>You slap [target] in the face! </span>",\
 			"You hear a slap.")
-			target.dna?.species?.stop_wagging_tail(target)
+			target.unwag_tail()
 			return
 	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
 		if(HAS_TRAIT(target, TRAIT_PERSONALSPACE) && (target.stat != UNCONSCIOUS) && (!target.handcuffed)) //You need to be conscious and uncuffed to use Personal Space
