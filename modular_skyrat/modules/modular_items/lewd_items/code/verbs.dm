@@ -69,7 +69,7 @@
 		return FALSE
 
 	to_chat(src, span_notice("[target] tastes like [taste]."))
-	to_chat(target, span_notice("[target] licks you."))
+	to_chat(target, span_notice("[src] licks you."))
 
 /mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_adjacent_humans())
 	set name = "Smell"
