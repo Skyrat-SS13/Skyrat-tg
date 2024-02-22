@@ -39,16 +39,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 	///Set this to true to make an accessory appear as color customizable in preferences despite advanced color settings being off, will also prevent the accessory from being reset
 	var/always_color_customizable
-	///Whether the accessory can have a special icon_state to render, i.e. wagging tails
-	var/special_render_case
 	///Special case of whether the accessory should be shifted in the X dimension, check taur genitals for example
 	var/special_x_dimension
 	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
 	///Special case for MODsuit overlays
 	var/use_custom_mod_icon
-	///Special case of applying a different color
-	var/special_colorize
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
 	///Whether this feature is genetic, and thus modifiable by DNA consoles
@@ -86,15 +82,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/owner)
 	return FALSE
-
-/datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H)
-	return null
-
-/datum/sprite_accessory/proc/get_special_render_key(mob/living/carbon/human/owner)
-	return key
-
-/datum/sprite_accessory/proc/get_special_render_colour(mob/living/carbon/human/H, passed_state)
-	return null
 
 /datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H, passed_state)
 	return icon
@@ -148,40 +135,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	key = "pod_hair"
 	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
 	organ_type = /obj/item/organ/external/pod_hair
-
-
-/datum/sprite_accessory/spines
-	key = "spines"
-	generic = "Spines"
-	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/lizard_spines.dmi'
-	special_render_case = TRUE
-	default_color = DEFAULT_SECONDARY
-	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
-	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
-	genetic = TRUE
-	organ_type = /obj/item/organ/external/spines
-
-/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer)
-	var/obj/item/organ/external/tail/tail = wearer.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!wearer.w_uniform && !wearer.wear_suit)
-		return FALSE
-	//	Can hide if wearing uniform
-	if(key in wearer.try_hide_mutant_parts)
-		return TRUE
-	if(wearer.wear_suit)
-	//	Exception for MODs
-		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-			return FALSE
-	else if(!tail \
-			|| (wearer.wear_suit \
-				&& (wearer.wear_suit.flags_inv & HIDETAIL \
-				|| wearer.wear_suit.flags_inv & HIDESPINE) \
-			)
-		)
-		return TRUE
-
-/datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
-	return icon_state
 
 /datum/sprite_accessory/caps
 	key = "caps"

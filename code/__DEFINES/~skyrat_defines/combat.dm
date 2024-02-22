@@ -11,9 +11,6 @@
 #define GET_UP_MEDIUM 1.5
 #define GET_UP_SLOW 3
 
-#define PERSONAL_SPACE_DAMAGE 2
-#define ASS_SLAP_EXTRA_RANGE -1
-
 //Stamina threshold for attacking slower with items
 #define STAMINA_THRESHOLD_TIRED_CLICK_CD 120
 #define CLICK_CD_RANGE_TIRED 5 //#define CLICK_CD_RANGE 4, so 25% slower
