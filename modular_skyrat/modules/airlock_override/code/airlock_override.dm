@@ -70,9 +70,15 @@
 /obj/machinery/door/airlock
 	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
+	/// If there is an active fire alarm in the door's area
+	var/fire_active = FALSE
+	/// Area the door is located in
+	var/area/door_area
 
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
+	door_area = get_area(src)
+	RegisterSignal(door_area, COMSIG_AREA_FIRE_CHANGED, PROC_REF(update_fire_status))
 	RegisterSignal(SSdcs, COMSIG_GLOB_FORCE_ENG_OVERRIDE, PROC_REF(force_eng_override))
 
 ///Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
@@ -83,7 +89,7 @@
 	if(unrestricted_side(user))
 		return TRUE
 
-	if(engineering_override)
+	if(engineering_override || fire_active)
 		var/mob/living/carbon/human/interacting_human = user
 		if(!istype(interacting_human))
 			return ..()
@@ -111,7 +117,9 @@
 		return
 
 	engineering_override = FALSE
-	normalspeed = TRUE
+	if(!fire_active)
+		normalspeed = TRUE
+
 	update_appearance()
 	return
 
@@ -150,17 +158,30 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 /obj/machinery/door/airlock/proc/force_eng_override(datum/source, status)
 	SIGNAL_HANDLER
 
-	if(!status)
-		engineering_override = FALSE
+	engineering_override = status
+	if(!engineering_override && !fire_active)
 		normalspeed = TRUE
 		update_appearance()
 		return
 
-	var/area/source_area = get_area(src)
-	if(!source_area.engineering_override_eligible)
+	if(!door_area.engineering_override_eligible)
 		return
 
-	engineering_override = TRUE
+	normalspeed = FALSE
+	update_appearance()
+
+/obj/machinery/door/airlock/proc/update_fire_status(datum/source, fire)
+	SIGNAL_HANDLER
+
+	fire_active = fire
+	if(!fire_active && !engineering_override)
+		normalspeed = TRUE
+		update_appearance()
+		return
+
+	if(!door_area.engineering_override_eligible)
+		return
+
 	normalspeed = FALSE
 	update_appearance()
 

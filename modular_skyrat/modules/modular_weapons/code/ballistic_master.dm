@@ -71,7 +71,7 @@
 	to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src][box_load ?  ", but it takes some extra effort" : ""]."))
 
 /obj/effect/temp_visual/dir_setting/firing_effect
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_FIRE

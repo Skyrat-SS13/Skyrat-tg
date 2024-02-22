@@ -6,8 +6,7 @@
 	lefthand_file = 'modular_skyrat/modules/novaya_ert/icons/riot_left.dmi'
 	righthand_file = 'modular_skyrat/modules/novaya_ert/icons/riot_right.dmi'
 	transparent = FALSE
-
-
+	shield_break_leftover = /obj/item/corpsman_broken
 
 /obj/item/corpsman_broken
 	name = "broken corpsman shield"
