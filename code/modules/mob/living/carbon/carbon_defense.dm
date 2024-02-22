@@ -439,8 +439,8 @@
 	if(body_position != STANDING_UP && !resting && !buckled && !HAS_TRAIT(src, TRAIT_FLOORED))
 		get_up(TRUE)
 
-	if(!nosound) //SKYRAT EDIT ADDITION - EMOTES
-		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	if(!nosound) // SKYRAT EDIT ADDITION - EMOTES
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1) // SKYRAT EDIT CHANGE - EMOTES - Original was unindented but otherwise the same
 
 	// Shake animation
 	if (incapacitated())
@@ -610,8 +610,7 @@
 	if(user != src)
 		return ..()
 
-	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-	/*
+	var/obj/item/bodypart/grasped_part = grabbed_part ? grabbed_part : get_bodypart(zone_selected) // SKYRAT EDIT CHANGE - ORIGINAL: var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	if(!grasped_part?.can_be_grasped())
 		return
 	var/starting_hand_index = active_hand_index
@@ -632,8 +631,6 @@
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
-	*/ // SKYRAT EDIT REMOVAL - MODULARIZED INTO grasp.dm's self_grasp_bleeding_limb !! IF THIS PROC IS UPDATED, PUT IT IN THERE !!
-	self_grasp_bleeding_limb(grasped_part, supress_message)
 
 /// If TRUE, the owner of this bodypart can try grabbing it to slow bleeding, as well as various other effects.
 /obj/item/bodypart/proc/can_be_grasped()
