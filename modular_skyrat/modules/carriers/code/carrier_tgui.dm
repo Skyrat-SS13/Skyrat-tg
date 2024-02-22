@@ -202,7 +202,7 @@
 			target_room.room_color = new_room_color
 
 		if("toggle_soul_sense")
-			var/sense_to_change = params["sesnse_to_change"]
+			var/sense_to_change = params["sense_to_change"]
 			if(!sense_to_change)
 				return FALSE
 
