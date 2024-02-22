@@ -27,10 +27,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 29)
 		deconstruct(TRUE)
 		return
 
-/obj/machinery/cell_charger_multi/wall_mounted/deconstruct(disassembled)
+/obj/machinery/cell_charger_multi/wall_mounted/on_deconstruction(disassembled)
 	if(disassembled)
 		new repacked_type(drop_location())
-	return ..()
 
 /obj/machinery/cell_charger_multi/wall_mounted/RefreshParts()
 	. = ..()

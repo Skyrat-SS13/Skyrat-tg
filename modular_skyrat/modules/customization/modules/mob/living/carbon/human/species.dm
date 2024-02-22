@@ -202,50 +202,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	species_human.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(species_human)
 
-/datum/species/spec_stun(mob/living/carbon/human/H,amount)
-	if(H)
-		stop_wagging_tail(H)
-	. = ..()
-
-/*
-*	TAIL WAGGING
-*/
-
-/datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
-	if(!H) //Somewhere in the core code we're getting those procs with H being null
-		return FALSE
-	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!T)
-		return FALSE
-	if(T.can_wag)
-		return TRUE
-	return FALSE
-
-/datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
-	if(!H) //Somewhere in the core code we're getting those procs with H being null
-		return FALSE
-	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!T)
-		return FALSE
-	return T.wagging
-
-/datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
-	if(!H) //Somewhere in the core code we're getting those procs with H being null
-		return
-	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!T)
-		return FALSE
-	T.wagging = TRUE
-	H.update_body()
-
-/datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
-	if(!H) //Somewhere in the core code we're getting those procs with H being null
-		return
-	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!T)
-		return
-	T.wagging = FALSE
-	H.update_body()
+/datum/species/spec_stun(mob/living/carbon/human/target, amount)
+	if(istype(target))
+		target.unwag_tail()
+	return ..()
 
 /datum/species/regenerate_organs(mob/living/carbon/target, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
 	. = ..()
