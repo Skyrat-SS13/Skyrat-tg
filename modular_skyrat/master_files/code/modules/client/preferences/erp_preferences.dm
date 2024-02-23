@@ -280,6 +280,7 @@
 
 /datum/preference/toggle/erp/vore_overlays
 	savefile_key = "vore_overlays"
+	default_value = FALSE
 
 /datum/preference/toggle/erp/vore_overlays/apply_to_client_updated(client/client, value)
 	apply_to_client(client, value)
