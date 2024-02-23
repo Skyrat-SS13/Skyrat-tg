@@ -14,7 +14,13 @@ import { Window } from '../layouts';
 
 export const SoulcatcherUser = (props) => {
   const { act, data } = useBackend();
-  const { current_room, user_data, communicate_as_parent, souls = [] } = data;
+  const {
+    current_room,
+    user_data,
+    communicate_as_parent,
+    targeted,
+    souls = [],
+  } = data;
 
   return (
     <Window width={520} height={400} resizable>
@@ -34,6 +40,12 @@ export const SoulcatcherUser = (props) => {
           <br />
           <Box textAlign="center" fontSize="15px" opacity={0.8}>
             <b>{user_data.name} </b>
+            <Button
+              color={targeted ? 'green' : 'red'}
+              icon={targeted ? 'check' : 'xmark'}
+              tooltip="Toggle if the carrier say and carrier emote verbs will send to this soulcatcher."
+              onClick={() => act('toggle_target', {})}
+            />
             {!user_data.scan_needed && user_data.able_to_rename ? (
               <>
                 <Button
