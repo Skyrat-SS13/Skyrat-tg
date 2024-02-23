@@ -94,7 +94,7 @@
 	if(!original_size) //If we aren't able to get the original size, we shouldn't exist.
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_ENTER_AREA, .proc/check_area)
+	RegisterSignal(parent, COMSIG_ENTER_AREA, PROC_REF(check_area))
 
 	target_size = size_to_apply
 	check_area()
