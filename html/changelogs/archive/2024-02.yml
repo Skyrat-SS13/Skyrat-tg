@@ -591,3 +591,61 @@
   jjpark-kb:
   - rscadd: stone tiles (the turf) will now speed you up slowly
   - bugfix: railroads will now have the appropriate icon
+2024-02-23:
+  Melbert:
+  - rscdel: Deletes Mythril Coins from random coin spawners
+  - rscdel: Replaces Mythril sheets in icebox vent fishing with Runite sheets
+  - refactor: Frames have been refactored, you know the things you use to build computers
+      and machines, report any oddities
+  - bugfix: You can now smack (de)constructed computer and machine frames to break
+      them, rather than doing nothing.
+  - rscadd: Machine frames can now be deconstructed with screwdrivers, and computer
+      frames can now be deconstructed with welding torches. Welders are faster.
+  Rhials:
+  - bugfix: Removes the double-newscaster from the arrivals sec post.
+  SkyratBot:
+  - bugfix: Chefs (not to be confused with cooks) actually display as being a part
+      of service on the crew monitor.
+  - refactor: Holographic mobs now gives better feedback to players and should more
+      consistently not give any drops.
+  - rscadd: Painkillers (i.e morphine, miner's salve) now actually induce analgesic
+      effects, preventing various pain-related effects, such as screaming due to pain,
+      and also provides a speed bonus during surgery.
+  - rscadd: The tenacity trauma (traumatic neuropathy) also applies analgesic effects.
+  - refactor: Simplified code related to reagents adding traits.
+  - spellcheck: Removed a double space in health analyzer's message telling you someone
+      is deaf.
+  - bugfix: ForceEvent tgui panel search is more reliable.
+  - qol: adds examines & screentips for crowbar, screwdriver acts to BRM & refinery
+      machines
+  - qol: adds examines about the number of boulders stored & processed to BRM & refinery
+      machines
+  - qol: BRM now has its lights turn on/off depending on wether automatic boulder
+      retrieval is on/off for visual clarity along with examines
+  - qol: refinery machines now display ballon alerts & plays sounds more frequently
+      when processing boulders for better feedback
+  - bugfix: vents now spawn boulders of all sizes & not just small ones
+  - bugfix: expanded gulag boulders now have correct materials in them.
+  - bugfix: manual tapping of vents now has a cooldown applied as intended.
+  - bugfix: BRM has its light turned off when area power goes off
+  - bugfix: boulders ejected from refineries by hand no longer teleport all over the
+      place occasionally.
+  - bugfix: refineries no longer eject boulders with 0 durability
+  - bugfix: Boulders & refineries no longer pile up on top of BRM's & refineries in
+      long rounds. Their locs have to be clear of boulders before they spit out more
+      boulders to prevent a large pile of boulders from causing lag
+  - bugfix: sheets ejected from lathes no longer get rejected when inserted back which
+      could happen at random, no more boulders with empty materials
+  - code_imp: splits boulder types into its own file along with other items
+  - code_imp: merges & autodocs procs, vars related to boulders
+  - refactor: repaths BRM to a simpler subtype
+  - refactor: BRM now spawns boulders in batches(batch size can be increased with
+      upgraded parts) with a boulder appearing every second. After a batch is processed
+      a 3 second cooldown is applied to stop the conveyer belt from clogging up, With
+      this BRM wires are removed as there is no need for timers to be attached to
+      wires which intefers without our batch processing timings.
+  - bugfix: Feature manipulation surgery will now properly update the patient's appearance.
+  - refactor: The tail portion of lizard spines will no longer draw on people who
+      do not have a tail.
+  softcerv:
+  - spellcheck: when someone else licks you, you no longer lick yourself
