@@ -86,8 +86,10 @@ SUBSYSTEM_DEF(lowpop)
 	// recharge all those smes if we're out of power!
 	for(var/obj/machinery/power/smes/smes as anything in valid_smes)
 		smes.charge = smes.capacity
-		smes.input_level = smes.input_level_max
-		smes.output_level = smes.output_level_max * 0.8
+		if(smes.input_level == initial(smes.input_level))
+			smes.input_level = smes.input_level_max
+		if(smes.output_level == initial(smes.output_level))
+			smes.output_level = smes.output_level_max * 0.8
 		smes.output_attempt = TRUE
 		smes.update_appearance()
 		smes.power_change()

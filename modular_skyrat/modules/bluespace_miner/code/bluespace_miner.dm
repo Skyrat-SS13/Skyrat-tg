@@ -19,6 +19,8 @@
 	var/processing_speed = 6 SECONDS
 	///the current status of the enviroment. Any nonzero value means we can't work
 	var/mining_stat = NONE
+	///what the bs miner will have a triple chance to produce, if any
+	var/probability_mod = null
 	///the chance each ore has to be picked, weighted list
 	var/list/ore_chance = list(
 		/obj/item/stack/sheet/iron = 20,
@@ -132,6 +134,8 @@
 //if check_factors is good, then we spawn materials
 /obj/machinery/bluespace_miner/proc/spawn_mats()
 	var/obj/chosen_sheet = pick_weight(ore_chance)
+	if(probability_mod && (probability_mod != chosen_sheet))
+		return
 	new chosen_sheet(get_turf(src))
 
 /obj/machinery/bluespace_miner/process()
@@ -152,6 +156,42 @@
 	// Crazy? I was crazy once. They locked me in a room, an atmos room, an atmos room with bluespace miners, and the bluespace miners made me crazy.
 	// This sound no longer echoes through departments like before. Got that was an era.
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
+
+/obj/machinery/bluespace_miner/attack_hand(mob/living/user, list/modifiers)
+	if(!change_probability(user))
+		return ..()
+
+/obj/machinery/bluespace_miner/attack_ai(mob/user)
+	if(!change_probability(user))
+		return ..()
+
+/obj/machinery/bluespace_miner/attack_drone(mob/living/basic/drone/user, list/modifiers)
+	if(!change_probability(user))
+		return ..()
+
+/obj/machinery/bluespace_miner/attack_robot(mob/user)
+	if(!change_probability(user))
+		return ..()
+
+/**
+ * Allows players to triple the chance of the ore of their choice whilst losing the other ores
+ * Must be able to actually produce stuff before you can change the probabilities
+ */
+/obj/machinery/bluespace_miner/proc/change_probability(mob/user)
+	if(probability_mod)
+		ore_chance[probability_mod] /= 3
+		probability_mod = null
+		balloon_alert(user, "probability change disabled")
+		return TRUE
+
+	var/choice = tgui_input_list(user, "Which would you like to triple?", "Probability Change", ore_chance)
+	if(!choice)
+		return FALSE
+
+	ore_chance[choice] *= 3
+	probability_mod = choice
+	balloon_alert(user, "probability change enabled")
+	return TRUE
 
 /obj/machinery/bluespace_miner/crowbar_act(mob/living/user, obj/item/tool)
 	if(default_deconstruction_crowbar(tool))
