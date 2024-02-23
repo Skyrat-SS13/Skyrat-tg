@@ -5320,15 +5320,6 @@
 "bBy" = (
 /turf/closed/indestructible/opshuttle,
 /area/station/science/ordnance/bomb)
-"bBE" = (
-/obj/machinery/newscaster/directional/east,
-/obj/item/bedsheet/random,
-/obj/structure/bed,
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/station/commons/dorms)
 "bBU" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/light_switch/directional/north,
@@ -6909,6 +6900,15 @@
 "cdo" = (
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/cmo)
+"cdr" = (
+/obj/machinery/newscaster/directional/east,
+/obj/effect/spawner/random/bedsheet/any,
+/obj/structure/bed,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/station/commons/dorms)
 "cdz" = (
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
@@ -12559,7 +12559,7 @@
 /area/station/medical/treatment_center)
 "dIL" = (
 /obj/structure/bed/double,
-/obj/item/bedsheet/random/double,
+/obj/effect/spawner/random/bedsheet/double,
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/station/maintenance/department/science/xenobiology)
@@ -14949,7 +14949,7 @@
 /area/station/medical/treatment_center)
 "enC" = (
 /obj/structure/bed/double,
-/obj/item/bedsheet/random/double,
+/obj/effect/spawner/random/bedsheet/double,
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/carpet,
 /area/station/commons/dorms)
@@ -18683,7 +18683,7 @@
 	},
 /area/station/hallway/primary/aft)
 "fsk" = (
-/obj/item/bedsheet/random/double,
+/obj/effect/spawner/random/bedsheet/double,
 /obj/machinery/newscaster/directional/east,
 /obj/structure/bed/double/pod,
 /turf/open/floor/carpet/cyan,
@@ -33401,15 +33401,6 @@
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/aft)
-"jAS" = (
-/obj/machinery/brm,
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/conveyor{
-	id = "mining";
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/station/cargo/miningdock)
 "jBm" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -49150,7 +49141,7 @@
 /area/station/maintenance/department/crew_quarters/bar)
 "nQh" = (
 /obj/structure/bed/double,
-/obj/item/bedsheet/random/double,
+/obj/effect/spawner/random/bedsheet/double,
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/carpet/black,
 /area/station/commons/dorms)
@@ -79269,6 +79260,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/starboard/lesser)
+"vWH" = (
+/obj/machinery/brm,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/conveyor{
+	id = "mining";
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/station/cargo/miningdock)
 "vWI" = (
 /obj/machinery/firealarm/directional/south,
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -113391,7 +113391,7 @@ vRi
 eFp
 stJ
 jCE
-bBE
+cdr
 juC
 ieX
 mhe
@@ -130133,7 +130133,7 @@ odJ
 xMq
 oXI
 oCm
-jAS
+vWH
 krz
 pmM
 oXI

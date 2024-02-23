@@ -209,7 +209,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	carrier_component.current_room = target_room
 	var/datum/component/carrier_communicator/communicator_component = update_targeted_carrier(mob_to_add)
 	communicator_component.carried_mob = TRUE
-	set_overlay_for_mob(new_soul)
+	target_room.set_overlay_for_mob(new_soul)
 
 	return carrier_component
 

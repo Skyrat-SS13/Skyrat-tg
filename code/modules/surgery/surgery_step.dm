@@ -71,6 +71,8 @@
 #define SURGERY_SPEED_DISSECTION_MODIFIER 0.8
 ///Modifier given to users with TRAIT_MORBID on certain surgeries
 #define SURGERY_SPEED_MORBID_CURIOSITY 0.7
+///Modifier given to patients with TRAIT_ANALGESIA
+#define SURGERY_SPEED_TRAIT_ANALGESIA 0.8
 
 /datum/surgery_step/proc/initiate(mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	// Only followers of Asclepius have the ability to use Healing Touch and perform miracle feats of surgery.
@@ -95,6 +97,9 @@
 
 	if(check_morbid_curiosity(user, tool, surgery))
 		speed_mod *= SURGERY_SPEED_MORBID_CURIOSITY
+
+	if(HAS_TRAIT(target, TRAIT_ANALGESIA))
+		speed_mod *= SURGERY_SPEED_TRAIT_ANALGESIA
 
 	var/implement_speed_mod = 1
 	if(implement_type) //this means it isn't a require hand or any item step.
@@ -276,22 +281,16 @@
  * * pain_message - The message to be displayed
  * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
  */
-//SKYRAT EDIT START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
-	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
-		return
-	if(HAS_TRAIT(target, TRAIT_NUMBED)) //numbing helps but is not perfect - this is the tradeoff for being awake
-		target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
-		return
-	if(mechanical_surgery == TRUE) //robots can't benefit from numbing agents like most but have no reason not to sleep - their debuff falls in-between
-		target.add_mood_event("robot_surgery", /datum/mood_event/robot_surgery)
-		return
-	to_chat(target, span_userdanger(pain_message))
-	target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
-	if(prob(30))
-		target.emote("scream")
-//SKYRAT EDIT END
+	if(target.stat < UNCONSCIOUS)
+		if(HAS_TRAIT(target, TRAIT_ANALGESIA))
+			to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
+		else
+			to_chat(target, span_userdanger(pain_message))
+			if(prob(30) && !mechanical_surgery)
+				target.emote("scream")
 
+#undef SURGERY_SPEED_TRAIT_ANALGESIA
 #undef SURGERY_SPEED_DISSECTION_MODIFIER
 #undef SURGERY_SPEED_MORBID_CURIOSITY
 #undef SURGERY_SLOWDOWN_CAP_MULTIPLIER

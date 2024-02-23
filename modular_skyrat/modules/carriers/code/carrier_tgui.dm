@@ -249,6 +249,7 @@
 
 			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, clear_fullscreen), "carrier"), 15 SECONDS)
 
+
 		if("toggle_soul_sense")
 			var/sense_to_change = params["sense_to_change"]
 			if(!sense_to_change)
