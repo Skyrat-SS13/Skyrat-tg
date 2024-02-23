@@ -61,8 +61,12 @@
 					update_damage_overlays()
 				damage_dealt = actual_hit.get_damage() - delta // Unfortunately bodypart receive_damage doesn't return damage dealt so we do it manually
 			else
+<<<<<<< HEAD
 				damage_dealt = adjustBruteLoss(damage_amount, forced = forced)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
+=======
+				damage_dealt = -1 * adjustBruteLoss(damage_amount, forced = forced)
+>>>>>>> 20637030020 (Fix some attack effects not playing / Fix `apply_damage` returning innacurate values (#81635))
 		if(BURN)
 			if(isbodypart(def_zone))
 				var/obj/item/bodypart/actual_hit = def_zone
@@ -78,18 +82,22 @@
 					damage_source = attacking_item,
 				))
 					update_damage_overlays()
-				damage_dealt = delta - actual_hit.get_damage() // See above
+				damage_dealt = actual_hit.get_damage() - delta // See above
 			else
+<<<<<<< HEAD
 				damage_dealt = adjustFireLoss(damage_amount, forced = forced)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
+=======
+				damage_dealt = -1 * adjustFireLoss(damage_amount, forced = forced)
+>>>>>>> 20637030020 (Fix some attack effects not playing / Fix `apply_damage` returning innacurate values (#81635))
 		if(TOX)
-			damage_dealt = adjustToxLoss(damage_amount, forced = forced)
+			damage_dealt = -1 * adjustToxLoss(damage_amount, forced = forced)
 		if(OXY)
-			damage_dealt = adjustOxyLoss(damage_amount, forced = forced)
+			damage_dealt = -1 * adjustOxyLoss(damage_amount, forced = forced)
 		if(STAMINA)
-			damage_dealt = adjustStaminaLoss(damage_amount, forced = forced)
+			damage_dealt = -1 * adjustStaminaLoss(damage_amount, forced = forced)
 		if(BRAIN)
-			damage_dealt = adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
+			damage_dealt = -1 * adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
 
 	SEND_SIGNAL(src, COMSIG_MOB_AFTER_APPLY_DAMAGE, damage_dealt, damagetype, def_zone, blocked, wound_bonus, bare_wound_bonus, sharpness, attack_direction, attacking_item)
 	return damage_dealt
