@@ -80,12 +80,8 @@
 					update_damage_overlays()
 				damage_dealt = actual_hit.get_damage() - delta // See above
 			else
-<<<<<<< HEAD
-				damage_dealt = adjustFireLoss(damage_amount, forced = forced)
-			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
-=======
 				damage_dealt = -1 * adjustFireLoss(damage_amount, forced = forced)
->>>>>>> 20637030020 (Fix some attack effects not playing / Fix `apply_damage` returning innacurate values (#81635))
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(TOX)
 			damage_dealt = -1 * adjustToxLoss(damage_amount, forced = forced)
 		if(OXY)
