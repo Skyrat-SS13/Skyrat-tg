@@ -184,7 +184,7 @@
 					if(!carrier_component)
 						continue
 
-					if(same_type_only_transfer && istype(carrier_component, src))
+					if(same_type_only_transfer && !istype(carrier_component, src))
 						continue
 
 					available_rooms += carrier_component.get_open_rooms()
