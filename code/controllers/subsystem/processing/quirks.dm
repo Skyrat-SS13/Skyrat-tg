@@ -36,7 +36,6 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/light_drinker, /datum/quirk/drunkhealing),
 	list(/datum/quirk/oversized, /datum/quirk/freerunning),
 	list(/datum/quirk/oversized, /datum/quirk/item_quirk/settler),
-	list(/datum/quirk/poor_aim, /datum/quirk/better_aim, /datum/quirk/nonviolent, /datum/quirk/no_guns),
 	//SKYRAT EDIT ADDITION END
 ))
 
