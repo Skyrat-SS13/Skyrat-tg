@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/veteran_only = FALSE
 	///Flavor text of the species displayed on character creation screeen
 	var/flavor_text = "No description."
-	///Path to BODYTYPE_CUSTOM species worn icons. An assoc list of ITEM_SLOT_X => /icon
+	///Path to BODYSHAPE_CUSTOM species worn icons. An assoc list of ITEM_SLOT_X => /icon
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/female_sprite_flags = FEMALE_UNIFORM_FULL // the default gender shaping
 			if(underwear)
 				var/icon_state = underwear.icon_state
-				if(underwear.has_digitigrade && (species_human.bodytype & BODYTYPE_DIGITIGRADE))
+				if(underwear.has_digitigrade && (species_human.bodyshape & BODYSHAPE_DIGITIGRADE))
 					icon_state += "_d"
 					female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY // for digi gender shaping
 				if(species_human.dna.species.sexes && species_human.physique == FEMALE && (underwear.gender == MALE))
@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(socks)
 				var/mutable_appearance/socks_overlay
 				var/icon_state = socks.icon_state
-				if((species_human.bodytype & BODYTYPE_DIGITIGRADE))
+				if((species_human.bodyshape & BODYSHAPE_DIGITIGRADE))
 					icon_state += "_d"
 				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
 				if(!socks.use_static)
