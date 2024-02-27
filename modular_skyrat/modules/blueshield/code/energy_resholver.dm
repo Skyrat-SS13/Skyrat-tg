@@ -19,6 +19,7 @@
 /obj/item/gun/energy/e_gun/blueshield/specop
 	name = "tactical energy revolver"
 	desc = "An advanced model of the energy revolver with all of it's benefit and a much more powerful phase emitter."
+	icon_state = "redgrip"
 
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/laser/hellfire)
 
@@ -60,5 +61,5 @@
 
 
 /obj/projectile/energy/electrode/blueshield
-	stamina = 45 //Still a 3 shot down, just a lot more rough to use
+	stamina = 45 //Still a 3 shot down but much more safe to have
 
