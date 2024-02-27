@@ -35,6 +35,7 @@ type ActiveVote = {
   vote: Vote;
   question: string | null;
   timeRemaining: number;
+  displayStatistics: boolean;
   choices: Option[];
   countMethod: number;
 };
@@ -209,11 +210,10 @@ const ChoicesPanel = (props) => {
                         name="vote-yea"
                       />
                     )}
-                  {
-                    user.isLowerAdmin
-                      ? `${choice.votes} Votes`
-                      : '' /* SKYRAT EDIT*/
-                  }
+                  {currentVote.displayStatistics ||
+                  user.isLowerAdmin /* SKYRAT EDIT*/
+                    ? choice.votes + ' Votes'
+                    : null}
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>
