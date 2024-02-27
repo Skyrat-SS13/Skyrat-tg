@@ -38,11 +38,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
-<<<<<<< HEAD
-				"trim" = trim, // SKYRAT EDIT ADDITION - Alt Titles
-=======
 				"trim" = trim,
->>>>>>> bb8c6acecf1 (Make lobby manifest use trim instead of rank to determine command status (#81636))
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
