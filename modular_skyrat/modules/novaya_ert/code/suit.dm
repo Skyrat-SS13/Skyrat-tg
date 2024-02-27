@@ -23,6 +23,7 @@
 	actions_types = list(/datum/action/item_action/hev_toggle/nri, /datum/action/item_action/hev_toggle_notifs/nri, /datum/action/item_action/toggle_spacesuit)
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT
+	clothing_traits = list(TRAIT_BRAWLING_KNOCKDOWN_BLOCKED)
 
 	activation_song = null //No nice song.
 
