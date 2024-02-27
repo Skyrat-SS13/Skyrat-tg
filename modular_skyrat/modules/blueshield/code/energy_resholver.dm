@@ -33,7 +33,7 @@
 	inhand_icon = "bsr"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/blueshield, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
-	charge_delay = 15
+	charge_delay = 16
 	can_charge = TRUE //In case you aren't charging fast enough, the recharge is meant to be slow on purpose
 	selfcharge = 1
 
@@ -49,10 +49,10 @@
 	var/static/list/selectable_gun_types = list(
 		"Energy Revolver" = /obj/item/gun/energy/e_gun/blueshield,
 		"Energy Carbine" = /obj/item/gun/energy/e_gun/stun/blueshield,
+		".585 SMG" = /obj/item/storage/toolbox/guncase/skyrat/xhihao_large_case/bogseo
 	)
 
 	return selectable_gun_types
-
 
 
 //Energy Define
