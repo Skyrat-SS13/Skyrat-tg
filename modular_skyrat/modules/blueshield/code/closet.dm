@@ -14,6 +14,17 @@
 	new /obj/item/clothing/suit/armor/vest/blueshield/jacket(src)
 	new /obj/item/clothing/neck/mantle/bsmantle(src)
 
+/obj/item/storage/box/glasseskit
+	name = "sunglasses kit"
+	desc = "Contain different type of sunglasses for different blueshield needs"
+
+/obj/item/storage/box/glasseskit/PopulateContents() //paradise stuff
+	new /obj/item/clothing/glasses/hud/diagnostic/sunglasses(src)
+	new /obj/item/clothing/glasses/hud/health/sunglasses(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/clothing/glasses/sunglasses/chemical(src)
+	new /obj/item/clothing/glasses/hud/gun_permit/sunglasses(src)
+
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
 	icon_state = "bs"
@@ -32,3 +43,4 @@
 	new /obj/item/choice_beacon/blueshield(src)
 	new /obj/item/storage/bag/garment/blueshield(src)
 	new /obj/item/mod/control/pre_equipped/blueshield(src)
+	new /obj/item/storage/box/glasseskit(src)
