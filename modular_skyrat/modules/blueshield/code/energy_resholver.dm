@@ -3,7 +3,7 @@
 
 /obj/item/gun/energy/e_gun/blueshield
 	name = "energy revolver"
-	desc = "An energy weapon fitted with self recharging-cells, the cylinder of the gun rotate upon firing, allowing new cell to load into the breech while the spent one charges up." //Obligatory Ultrakill reference
+	desc = "An energy weapon fitted with self recharging-cells. Feels somewhat heavy to carry and would certainly hurt to get whacked by."
 	icon = 'modular_skyrat/modules/blueshield/icons/energy.dmi'
 	icon_state = "blackgrip"
 	inhand_icon_state = "mini"
@@ -12,7 +12,7 @@
 	selfcharge = 1
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 	w_class = WEIGHT_CLASS_NORMAL //Fits in bag!
-	force = 10
+	force = 15 //smash sulls in
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hos)
 	ammo_x_offset = 1
 
@@ -24,7 +24,7 @@
 
 //Alternative for people who prefers energy carbine, remain inclusive and all.
 /obj/item/gun/energy/e_gun/stun/blueshield
-	name = "x-02 energy gun"
+	name = "defender energy carbine"
 	desc = "Military issue energy gun, is able to fire stun rounds."
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/blueshield, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
