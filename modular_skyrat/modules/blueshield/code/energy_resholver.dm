@@ -20,7 +20,7 @@
 	name = "tactical energy revolver"
 	desc = "An advanced model of the energy revolver with all of it's benefit and a much more powerful phase emitter."
 	icon_state = "redgrip"
-	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/laser/hellfire)
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/laser/hellfire, /obj/item/ammo_casing/energy/disabler,)
 
 //Alternative for people who prefers energy carbine, remain inclusive and all.
 /obj/item/gun/energy/e_gun/stun/blueshield
