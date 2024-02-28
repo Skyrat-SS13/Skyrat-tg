@@ -74,4 +74,9 @@
 	desc = "Contain different type of sunglasses for different blueshield needs"
 
 /obj/item/storage/box/glasseskit/PopulateContents() //paradise stuff
-	new /obj/item/clothing/glasses/sunglasses(src)
+	new /obj/item/clothing/glasses/hud/diagnostic/sunglasses(src)
+	new /obj/item/clothing/glasses/hud/health/sunglasses(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/clothing/glasses/sunglasses/chemical(src)
+	new /obj/item/clothing/glasses/hud/gun_permit/sunglasses(src)
+
