@@ -79,4 +79,3 @@
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/clothing/glasses/sunglasses/chemical(src)
 	new /obj/item/clothing/glasses/hud/gun_permit/sunglasses(src)
-
