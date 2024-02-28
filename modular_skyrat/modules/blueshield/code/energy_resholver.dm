@@ -24,7 +24,7 @@
 //Alternative for people who prefers energy carbine, remain inclusive and all.
 /obj/item/gun/energy/e_gun/stun/blueshield
 	name = "defender energy carbine"
-	desc = "Military issue energy gun, is able to fire stun rounds."
+	desc = "Military issue energy gun, is able to fire stun rounds. Extremely slow recharge"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/blueshield, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
 	charge_delay = 18
