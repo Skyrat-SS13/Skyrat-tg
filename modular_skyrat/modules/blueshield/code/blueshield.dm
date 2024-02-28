@@ -68,3 +68,10 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
+
+/obj/item/storage/box/glasseskit
+	name = "sunglasses kit"
+	desc = "Contain different type of sunglasses for different blueshield needs"
+
+/obj/item/storage/box/glasseskit/PopulateContents() //paradise stuff
+	new /obj/item/clothing/glasses/sunglasses(src)
