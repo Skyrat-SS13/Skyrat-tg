@@ -6,7 +6,7 @@
 	desc = "An energy weapon fitted with self recharging-cells, the cylinder of the gun rotate upon firing, allowing new cell to load into the breech while the spent one charges up." //Obligatory Ultrakill reference
 	icon = 'modular_skyrat/modules/blueshield/icons/energy.dmi'
 	icon_state = "blackgrip"
-	inhand_icon = "mini"
+	inhand_icon_state = "mini"
 	charge_delay = 6
 	can_charge = FALSE //Doesn't work like that son
 	selfcharge = 1
