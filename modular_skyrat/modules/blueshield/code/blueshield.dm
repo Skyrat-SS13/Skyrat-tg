@@ -68,14 +68,3 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
-
-/obj/item/storage/box/glasseskit
-	name = "sunglasses kit"
-	desc = "Contain different type of sunglasses for different blueshield needs"
-
-/obj/item/storage/box/glasseskit/PopulateContents() //paradise stuff
-	new /obj/item/clothing/glasses/hud/diagnostic/sunglasses(src)
-	new /obj/item/clothing/glasses/hud/health/sunglasses(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
-	new /obj/item/clothing/glasses/sunglasses/chemical(src)
-	new /obj/item/clothing/glasses/hud/gun_permit/sunglasses(src)
