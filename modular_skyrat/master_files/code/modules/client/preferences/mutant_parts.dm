@@ -172,6 +172,7 @@
 	else
 		our_head.bodyshape &= ~BODYSHAPE_SNOUTED
 	target.synchronize_bodytypes()
+	target.synchronize_bodyshapes()
 
 /datum/preference/tri_color/snout
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
