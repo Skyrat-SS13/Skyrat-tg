@@ -200,6 +200,7 @@
 		/obj/item/wrench,
 		/obj/item/weldingtool,
 		/obj/item/wirecutters,
+		/obj/item/multitool,
 		/obj/item/plunger,
 		/obj/item/clothing/head/utility/welding,
 		/obj/item/clothing/glasses/welding,
