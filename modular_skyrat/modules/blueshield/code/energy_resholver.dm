@@ -8,7 +8,7 @@
 	icon_state = "blackgrip"
 	lefthand_file = 'modular_skyrat/modules/blueshield/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/blueshield/icons/guns_righthand.dmi'
-	charge_delay = 6
+	charge_delay = 9
 	can_charge = FALSE //Doesn't work like that son
 	selfcharge = 1
 	cell_type = /obj/item/stock_parts/cell/hos_gun
