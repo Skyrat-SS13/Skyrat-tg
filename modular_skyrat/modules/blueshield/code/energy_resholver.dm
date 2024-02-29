@@ -14,6 +14,7 @@
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 	w_class = WEIGHT_CLASS_NORMAL //Fits in bag!
 	force = 15 //smash sulls in
+	throwforce = 15
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hos)
 	ammo_x_offset = 1
 
