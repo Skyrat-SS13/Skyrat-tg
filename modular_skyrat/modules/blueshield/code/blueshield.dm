@@ -71,7 +71,7 @@
 
 /obj/item/modular_computer/pda/blueshield
 	name = "blueshield PDA"
-	greyscale_colors = "#EA3232#0000cc"
+	greyscale_colors = "#2B356D#1E1E1E"
 	inserted_item = /obj/item/pen/red/security
 	starting_programs = list(
 		/datum/computer_file/program/records/security,
