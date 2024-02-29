@@ -6,6 +6,8 @@
 	desc = "An energy weapon fitted with self recharging-cells. Feels somewhat heavy to carry and would certainly hurt to get whacked by."
 	icon = 'modular_skyrat/modules/blueshield/icons/energy.dmi'
 	icon_state = "blackgrip"
+	lefthand_file = 'modular_skyrat/modules/blueshield/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/blueshield/icons/guns_righthand.dmi'
 	charge_delay = 6
 	can_charge = FALSE //Doesn't work like that son
 	selfcharge = 1
@@ -27,7 +29,7 @@
 	desc = "Military issue energy gun, is able to fire stun rounds. Extremely slow recharge"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/blueshield, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
-	charge_delay = 18
+	charge_delay = 14
 	can_charge = TRUE //In case you aren't charging fast enough, the recharge is meant to be slow on purpose
 	selfcharge = 1
 
