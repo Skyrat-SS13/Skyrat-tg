@@ -167,8 +167,7 @@
 		if("transfer_mob")
 			var/list/available_rooms = carrier_rooms.Copy()
 			available_rooms -= target_room
-
-			if(ishuman(usr))
+			if(able_to_transfer_to_another_carrier && ishuman(usr))
 				var/mob/living/carbon/human/human_user = usr
 				for(var/obj/item/carrier_holder/holder in human_user.contents)
 					var/datum/component/carrier/holder_carrier = holder.GetComponent(/datum/component/carrier)
@@ -183,6 +182,9 @@
 
 					var/datum/component/carrier/carrier_component = held_item.GetComponent(/datum/component/carrier)
 					if(!carrier_component)
+						continue
+
+					if(same_type_only_transfer && !istype(carrier_component, src))
 						continue
 
 					available_rooms += carrier_component.get_open_rooms()

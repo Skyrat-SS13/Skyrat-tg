@@ -26,9 +26,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/communicate_as_parent = FALSE
 	/// Is this carrier going to stay within the possesion of one mob within it's lifespan?
 	var/single_owner = FALSE
+	/// Is there a limit on the number of rooms that you can make?
+	var/room_limit = FALSE
 
 	/// What is the max number of people we can keep in this carrier? If this is set to `FALSE` we don't have a limit
 	var/max_mobs = FALSE
+	/// Do we want to prevent someone with the same type of carrier from being inside of our carrier?
+	var/no_dolling = FALSE
+	/// Are you able to move mobs out of this carrier?
+	var/able_to_transfer_to_another_carrier = FALSE
+	/// If we transfer a mob to another carrier, does it need to be the same type?
+	var/same_type_only_transfer = TRUE
 	/// What is the path of user component do we want to give to our mob? This needs to be `/datum/component/carrier_user` or a subtype.
 	var/component_to_give = /datum/component/carrier_user
 	/// What 16x16 chat icon do we want our carrier to display in chat messages?
@@ -88,6 +96,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_desc - The description that we want to assign to the created room.
  */
 /datum/component/carrier/proc/create_room(target_name, target_desc)
+	if(room_limit && (length(carrier_rooms) >= room_limit))
+		return FALSE
+
 	var/datum/carrier_room/created_room = new type_of_room_to_create(src)
 	if(target_name)
 		created_room.name = target_name
@@ -197,6 +208,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /datum/component/carrier/proc/add_mob(mob/living/mob_to_add, datum/carrier_room/target_room)
 	if(!istype(mob_to_add))
 		return FALSE
+
+	if(no_dolling)
+		var/obj/item/carrier_holder/holder = locate() in mob_to_add.contents
+		if(holder)
+			var/datum/component/carrier/holder_component = holder.GetComponent(/datum/component/carrier)
+			if(istype(holder_component, src))
+				return FALSE
 
 	var/datum/component/carrier_user/carrier_component = mob_to_add.AddComponent(component_to_give)
 	if(!carrier_component)

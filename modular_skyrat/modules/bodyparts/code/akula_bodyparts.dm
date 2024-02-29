@@ -2,7 +2,7 @@
 /obj/item/bodypart/head/mutant/akula
 	icon_greyscale = BODYPART_ICON_AKULA
 	limb_id = SPECIES_AKULA
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED
+	bodyshape = parent_type::bodyshape | BODYSHAPE_SNOUTED
 
 /obj/item/bodypart/chest/mutant/akula
 	icon_greyscale = BODYPART_ICON_AKULA
