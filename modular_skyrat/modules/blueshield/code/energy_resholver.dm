@@ -2,7 +2,7 @@
 //Icon and such by @EspeciallyStrange 'Calvin'
 
 /obj/item/gun/energy/e_gun/blueshield
-	name = "energy revolver"
+	name = "x-02 energy revolver"
 	desc = "An energy weapon fitted with self recharging-cells. Feels somewhat heavy to carry and would certainly hurt to get whacked by."
 	icon = 'modular_skyrat/modules/blueshield/icons/energy.dmi'
 	icon_state = "blackgrip"
@@ -20,6 +20,7 @@
 	desc = "An advanced model of the energy revolver with all of it's benefit and a much more powerful phase emitter."
 	icon_state = "redgrip"
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/laser/hellfire, /obj/item/ammo_casing/energy/disabler,)
+
 
 //Alternative for people who prefers energy carbine, remain inclusive and all.
 /obj/item/gun/energy/e_gun/stun/blueshield
@@ -39,14 +40,31 @@
 	company_source = "Sol Security Solution"
 	company_message = span_bold("Supply Pod incoming please stand by")
 
-/obj/item/choice_beacon/blueshield/generate_display_names()
-	var/static/list/selectable_gun_types = list(
-		"Energy Revolver" = /obj/item/gun/energy/e_gun/blueshield,
-		"Energy Carbine" = /obj/item/gun/energy/e_gun/stun/blueshield,
-		".585 SMG" = /obj/item/storage/toolbox/guncase/skyrat/xhihao_large_case/bogseo //This can obviously be replaced out with any gun of your choice for future coder
+/obj/item/choice_beacon/blueshield/open_options_menu(mob/living/user)
+	var/list/selectable_gun_types = list(
+		"Energy Revolver" = image(icon = 'modular_skyrat/modules/blueshield/icons/energy.dmi', icon_state = "blackgrip", desc = "self-recharging energy sidearm with lethal and disabler function, fit in your bag and would hurt a lot to get whacked by."),
+		"Defender Energy Carbine" = image(icon = 'icons/obj/weapons/guns/energy.dmi', icon_state = "energytac", desc = "An energy carbine normally only given to ERT capable of firing taser electrode alongside laser and disabler shot. Extremely slow self-recharge rate."),
+		".585 Submachine Gun" = image(icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/xhihao_light_arms/guns32x.dmi', icon_state = "bogseo", desc = "A weapon that could hardly be called a sub machinegun, firing the monstrous .585 cartridge."),
 	)
+ //This can obviously be replaced out with any gun of your choice for future code
+	for(var/gun in selectable_gun_types)
+	var/gun_choice = show_radial_menu(user, selectable_gun_types, require_near = TRUE)
 
-	return selectable_gun_types
+	if(!gun_choice)
+		mob.user(user, "no selection made")
+		return
+
+	switch(gun_choice)
+		if("Energy Revolver")
+			spawn += /obj/item/gun/energy/e_gun/blueshield
+		if("Defender Energy Carbine")
+			spawn += /obj/item/gun/energy/e_gun/stun/blueshield
+		if(".585 Submachine Gun")
+			spawn += /obj/item/storage/toolbox/guncase/skyrat/xhihao_large_case/bogseo
+	if(!can_use_beacon(user))
+		return
+
+	consume_use(gun_choice, user)
 
 //Blueshield Energy
 /obj/item/ammo_casing/energy/electrode/blueshield
