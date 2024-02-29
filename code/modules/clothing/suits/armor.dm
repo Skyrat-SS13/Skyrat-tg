@@ -595,6 +595,7 @@
 	name = "\improper Elder Atmosian Armor"
 	desc = "A superb armor made with the toughest and rarest materials available to man."
 	icon_state = "h2armor"
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS//Can change color and add prefix
 	armor_type = /datum/armor/armor_elder_atmosian
