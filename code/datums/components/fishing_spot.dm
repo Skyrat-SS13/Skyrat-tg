@@ -15,6 +15,15 @@
 	fish_source.on_fishing_spot_init()
 	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(handle_attackby))
 	RegisterSignal(parent, COMSIG_FISHING_ROD_CAST, PROC_REF(handle_cast))
+<<<<<<< HEAD
+=======
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examined))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE_MORE, PROC_REF(on_examined_more))
+
+/datum/component/fishing_spot/Destroy()
+	fish_source = null
+	return ..()
+>>>>>>> d36990801ec ([NO GBP] You can actually check what fishes can be caught while examining a spot now (#81772))
 
 /datum/component/fishing_spot/proc/handle_cast(datum/source, obj/item/fishing_rod/rod, mob/user)
 	SIGNAL_HANDLER
