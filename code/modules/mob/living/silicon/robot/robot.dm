@@ -11,8 +11,8 @@
 		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
 		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), \
 		roleplay_friendly = TRUE, \
-		roleplay_emotes = list(/datum/emote/living/human/buzz, /datum/emote/living/human/buzz2, /datum/emote/living/human/beep, /datum/emote/living/human/beep2), \
-		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay))) // SKYRAT EDIT CHANGE
+		roleplay_emotes = list(/datum/emote/living/human/buzz, /datum/emote/living/human/buzz2, /datum/emote/living/beep, /datum/emote/living/human/beep2), /* SKYRAT EDIT CHANGE - ORIGINAL: roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/living/beep), */ \
+		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
 
 	set_wires(new /datum/wires/robot(src))
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)

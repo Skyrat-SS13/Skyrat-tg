@@ -9,7 +9,7 @@
 	if(slot & ITEM_SLOT_HEAD)
 		if(user.ears && (flags_inv & HIDEEARS))
 			user.update_inv_ears()
-		if(!(user.bodytype & BODYTYPE_ALT_FACEWEAR_LAYER))
+		if(!(user.bodyshape & BODYSHAPE_ALT_FACEWEAR_LAYER))
 			return
 		if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
 			return

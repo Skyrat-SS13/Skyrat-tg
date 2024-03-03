@@ -69,25 +69,19 @@
 		if(P.catastropic_dismemberment)
 			apply_damage(P.damage, P.damtype, BODY_ZONE_CHEST, wound_bonus = P.wound_bonus) //stops a projectile blowing off a limb effectively doing no damage. Mostly relevant for sniper rifles.
 
-/mob/living/carbon/proc/can_catch_item(skip_throw_mode_check)
-	. = FALSE
-	if(!skip_throw_mode_check && !throw_mode)
-		return
-	if(get_active_held_item())
-		return
-	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
-		return
-	return TRUE
+/mob/living/carbon/try_catch_item(obj/item/item, skip_throw_mode_check = FALSE, try_offhand = FALSE)
+	. = ..()
+	if(.)
+		throw_mode_off(THROW_MODE_TOGGLE)
 
-/mob/living/carbon/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
-	if(!skipcatch && can_catch_item() && isitem(AM) && !HAS_TRAIT(AM, TRAIT_UNCATCHABLE) && isturf(AM.loc))
-		var/obj/item/I = AM
-		I.attack_hand(src)
-		if(get_active_held_item() == I) //if our attack_hand() picks up the item...
-			visible_message(span_warning("[src] catches [I]!"), \
-							span_userdanger("You catch [I] in mid-air!"))
-			throw_mode_off(THROW_MODE_TOGGLE)
-			return TRUE
+/mob/living/carbon/can_catch_item(skip_throw_mode_check = FALSE, try_offhand = FALSE)
+	if(!skip_throw_mode_check && !throw_mode)
+		return FALSE
+	return ..()
+
+/mob/living/carbon/hitby(atom/movable/movable, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+	if(!skipcatch && try_catch_item(movable))
+		return TRUE
 	return ..()
 
 /mob/living/carbon/send_item_attack_message(obj/item/I, mob/living/user, hit_area, def_zone)
@@ -445,8 +439,8 @@
 	if(body_position != STANDING_UP && !resting && !buckled && !HAS_TRAIT(src, TRAIT_FLOORED))
 		get_up(TRUE)
 
-	if(!nosound) //SKYRAT EDIT ADDITION - EMOTES
-		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	if(!nosound) // SKYRAT EDIT ADDITION - EMOTES
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1) // SKYRAT EDIT CHANGE - EMOTES - Original was unindented but otherwise the same
 
 	// Shake animation
 	if (incapacitated())
@@ -616,8 +610,7 @@
 	if(user != src)
 		return ..()
 
-	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-	/*
+	var/obj/item/bodypart/grasped_part = grabbed_part ? grabbed_part : get_bodypart(zone_selected) // SKYRAT EDIT CHANGE - ORIGINAL: var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	if(!grasped_part?.can_be_grasped())
 		return
 	var/starting_hand_index = active_hand_index
@@ -638,8 +631,6 @@
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
-	*/ // SKYRAT EDIT REMOVAL - MODULARIZED INTO grasp.dm's self_grasp_bleeding_limb !! IF THIS PROC IS UPDATED, PUT IT IN THERE !!
-	self_grasp_bleeding_limb(grasped_part, supress_message)
 
 /// If TRUE, the owner of this bodypart can try grabbing it to slow bleeding, as well as various other effects.
 /obj/item/bodypart/proc/can_be_grasped()

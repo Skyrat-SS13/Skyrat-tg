@@ -84,6 +84,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /turf/open/floor/stone
 	desc = "Blocks of stone arranged in a tile-like pattern, odd, really, how it looks like real stone too, because it is!" //A play on the original description for stone tiles
+	slowdown = -0.3
 
 /turf/closed/wall/mineral/stone
 	name = "stone wall"

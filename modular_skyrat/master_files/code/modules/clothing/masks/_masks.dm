@@ -4,7 +4,7 @@
 	if(!ishuman(user))
 		return
 	if(slot & ITEM_SLOT_MASK)
-		if(!(user.bodytype & BODYTYPE_ALT_FACEWEAR_LAYER))
+		if(!(user.bodyshape & BODYSHAPE_ALT_FACEWEAR_LAYER))
 			return
 		if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
 			return

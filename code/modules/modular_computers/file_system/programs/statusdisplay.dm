@@ -75,6 +75,8 @@
 					post_status("alert", "orangealert")
 				if(SEC_LEVEL_AMBER)
 					post_status("alert", "amberalert")
+				if(SEC_LEVEL_EPSILON)
+					post_status("alert", "epsilonalert")
 				if(SEC_LEVEL_GAMMA)
 					post_status("alert", "gammaalert")
 				// SKYRAT EDIT ADD END - Alert Levels

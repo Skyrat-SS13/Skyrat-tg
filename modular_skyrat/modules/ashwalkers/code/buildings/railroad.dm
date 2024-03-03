@@ -31,33 +31,29 @@
 
 /obj/structure/railroad/Initialize(mapload)
 	. = ..()
-	for(var/obj/structure/railroad/rail in range(1))
-		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 5)
+	for(var/obj/structure/railroad/rail in range(2, src))
+		rail.change_look()
 
 /obj/structure/railroad/Destroy()
-	. = ..()
-	for(var/obj/structure/railroad/rail in range(1))
-		if(rail == src)
-			continue
-		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 5)
+	for(var/obj/structure/railroad/rail in range(2, src))
+		rail.change_look(src)
+	return ..()
 
-/obj/structure/railroad/update_appearance(updates)
+/obj/structure/railroad/proc/change_look(obj/structure/target_structure = null)
 	icon_state = "rail"
 	var/turf/src_turf = get_turf(src)
 	for(var/direction in GLOB.cardinals)
 		var/obj/structure/railroad/locate_rail = locate() in get_step(src_turf, direction)
-		if(!locate_rail)
+		if(!locate_rail || (target_structure && locate_rail == target_structure))
 			continue
 		icon_state = "[icon_state][direction]"
-	return ..()
+	update_appearance()
 
 /obj/structure/railroad/crowbar_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
-	if(!do_after(user, 2 SECONDS, src))
-		return
-	tool.play_tool_sound(src)
 	new /obj/item/stack/rail_track(get_turf(src))
 	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/vehicle/ridden/rail_cart
 	name = "rail cart"
