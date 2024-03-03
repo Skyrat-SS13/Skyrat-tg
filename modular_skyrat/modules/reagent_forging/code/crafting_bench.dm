@@ -311,6 +311,7 @@
 	if(completing_a_weapon)
 		var/obj/item/forging/complete/completed_forge_item = contents[1]
 		newly_created_thing = new completed_forge_item.spawning_item(src)
+		newly_created_thing.force += round(completed_forge_item.current_perfects * INVERSE(10)) //adds a maximum of 3 force, and 6 if dual-wielded
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
 			for(var/custom_material in completed_forge_item.custom_materials)
 				materials_to_transfer[custom_material] += completed_forge_item.custom_materials[custom_material]
