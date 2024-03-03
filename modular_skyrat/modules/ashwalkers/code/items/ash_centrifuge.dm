@@ -3,6 +3,7 @@
 	desc = "A small cup that allows a person to slowly spin out liquids they do not desire."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
 	icon_state = "primitive_centrifuge"
+	volume = 100
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/examine()
