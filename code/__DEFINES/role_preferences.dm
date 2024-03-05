@@ -149,13 +149,10 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_REV_HEAD = 14,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
-<<<<<<< HEAD
+	ROLE_SPY = 0,
 	// SKYRAT EDIT ADDITION
 	ROLE_ASSAULT_OPERATIVE = 14,
 	// SKYRAT EDIT END
-=======
-	ROLE_SPY = 0,
->>>>>>> 977799a2e75 (A red spy has entered the base: Adds Spies, a roundstart antagonist inspired by Goonstation's Spy-Thief (#81231))
 
 	// Midround
 	ROLE_ABDUCTOR = 0,
