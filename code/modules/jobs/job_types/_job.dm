@@ -114,13 +114,20 @@
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
 
+<<<<<<< HEAD
 	//SKYRAT ADDITION START
 	/// Job title to use for spawning. Allows a job to spawn without needing map edits.
 	var/job_spawn_title
 	//SKYRAT ADDITION END
 
 	///RPG job names, for the memes
+=======
+	/// RPG job names, for the memes
+>>>>>>> 16f6200b654 (Alternate job titles such as chef and department security get injected to the manifest normally, and show up as the right department. (#81634))
 	var/rpg_title
+
+	/// Alternate titles to register as pointing to this job. 
+	var/list/alternate_titles
 
 	/// Does this job ignore human authority?
 	var/ignore_human_authority = FALSE
