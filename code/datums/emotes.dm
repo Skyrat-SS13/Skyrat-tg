@@ -60,12 +60,6 @@
 	var/can_message_change = FALSE
 	/// How long is the cooldown on the audio of the emote, if it has one?
 	var/audio_cooldown = 2 SECONDS
-	//SKYRAT EDIT ADDITION BEGIN - EMOTES
-	var/sound_volume = 25 //Emote volume
-	var/list/allowed_species
-	/// Are silicons explicitely allowed to use this emote?
-	var/silicon_allowed = FALSE
-	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -299,15 +293,12 @@
 		return FALSE
 
 	//SKYRAT EDIT BEGIN
-	if(allowed_species)
-		var/check = FALSE
-		if(silicon_allowed && issilicon(user))
-			check = TRUE
-		if(ishuman(user))
-			var/mob/living/carbon/human/sender = user
-			if(sender.dna.species.type in allowed_species)
-				check = TRUE
-		return check
+	if(allowed_species && ishuman(user))
+		var/mob/living/carbon/human/sender = user
+		if(sender.dna.species.type in allowed_species)
+			return TRUE
+		else
+			return FALSE
 	//SKYRAT EDIT END
 
 	return TRUE
