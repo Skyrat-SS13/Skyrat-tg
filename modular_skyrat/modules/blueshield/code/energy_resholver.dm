@@ -15,7 +15,7 @@
 	w_class = WEIGHT_CLASS_NORMAL //Fits in bag!
 	force = 15 //smash sulls in
 	throwforce = 15
-	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hellfire, /obj/item/ammo_casing/energy/electrode/blueshield)
+	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hellfire)
 	ammo_x_offset = 1
 
 /obj/item/gun/energy/e_gun/blueshield/specop
@@ -28,7 +28,7 @@
 	name = "defender energy carbine"
 	desc = "Military issue energy gun, is able to fire stun rounds. Extremely slow recharge"
 	ammo_x_offset = 2
-	ammo_type = list(/obj/item/ammo_casing/energy/electrode/blueshield, /obj/item/ammo_casing/energy/laser/scatter/disabler, /obj/item/ammo_casing/energy/lasergun)
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode/blueshield, /obj/item/ammo_casing/energy/laser/scatter/disabler, /obj/item/ammo_casing/energy/lasergun/blueshield)
 	charge_delay = 14
 	can_charge = TRUE //In case you aren't charging fast enough, the recharge is meant to be slow on purpose
 	selfcharge = 1
@@ -54,6 +54,9 @@
 /obj/item/ammo_casing/energy/electrode/blueshield
 	e_cost = LASER_SHOTS(6, STANDARD_CELL_CHARGE)
 	projectile_type = /obj/projectile/energy/electrode/blueshield
+
+/obj/item/ammo_casing/energy/lasergun/blueshield
+	e_cost = LASER_SHOTS(30, STANDARD_CELL_CHARGE)
 
 /obj/projectile/energy/electrode/blueshield
 	stamina = 55 //Still a 3 shot down but much more safe to have
