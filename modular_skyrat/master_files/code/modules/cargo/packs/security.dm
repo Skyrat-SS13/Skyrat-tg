@@ -12,9 +12,3 @@
 
 /datum/supply_pack/security/securityclothes
 	special = TRUE
-
-/datum/supply_pack/security/armory/ballistic
-	special = TRUE
-
-/datum/supply_pack/security/armory/thermal
-	special = TRUE
