@@ -10,9 +10,6 @@
 /datum/supply_pack/goody/Survivalknives_single
 	special = TRUE
 
-/datum/supply_pack/goody/ballistic_single
-	special = TRUE
-
 /datum/supply_pack/goody/disabler_single
 	special = TRUE
 
