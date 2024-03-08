@@ -8,7 +8,6 @@
 	ph = 6.09
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_ANALGESIA)
-	addiction_types = list(/datum/addiction/opioids = 20)
 	inverse_chem_val = 0.55
 	inverse_chem = /datum/reagent/inverse/lidocaine
 
