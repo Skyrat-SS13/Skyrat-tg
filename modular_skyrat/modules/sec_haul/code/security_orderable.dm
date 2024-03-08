@@ -5,9 +5,6 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/box/beanbag = 3,
 					/obj/item/storage/box/rubbershot = 3,
-					/obj/item/ammo_box/c38/trac,
-					/obj/item/ammo_box/c38/hotshot,
-					/obj/item/ammo_box/c38/iceblox,
 				)
 	crate_name = "wespe pistols crate"
 
@@ -18,9 +15,6 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/box/beanbag = 3,
 					/obj/item/storage/box/rubbershot = 3,
-					/obj/item/ammo_box/c38/trac,
-					/obj/item/ammo_box/c38/hotshot,
-					/obj/item/ammo_box/c38/iceblox,
 				)
-	crate_name = "wespe pistols crate"
+	crate_name = "eland pistols crate"
 
