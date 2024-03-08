@@ -22,11 +22,9 @@
 /datum/supply_pack/goody/laser_single
 	special = TRUE
 
-/datum/supply_pack/goody/hell_single
-	special = TRUE
-
-/datum/supply_pack/goody/thermal_single
-	special = TRUE
-
 /datum/supply_pack/goody/dyespray
 	special = TRUE
+
+/datum/supply_pack/goody/ballistic_single
+	name = "Peacekeeper Combat Shotgun Single-Pack"
+	contains = list(/obj/item/gun/ballistic/shotgun/automatic/combat, /obj/item/storage/belt/bandolier)
