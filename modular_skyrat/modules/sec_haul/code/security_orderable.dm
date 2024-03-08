@@ -34,7 +34,7 @@
 /datum/supply_pack/security/armory/exoticskyratammo
 	name = "12 Gauge Exotic Ammunition Crates"
 	desc = "Contains 5 boxes of exotic ammunition for all 12 Gauge Shotguns."
-	cost = CARGO_CRATE_VALUE * 10
+	cost = CARGO_CRATE_VALUE * 12
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/incendiary= 1,
 					/obj/item/ammo_box/advanced/s12gauge/flechette = 1,
@@ -60,7 +60,7 @@
 
 //SOL GUNS
 
-/datum/supply_pack/security/armory/wespe
+/datum/supply_pack/security/wespe
 	name = "Wespe Crates"
 	desc = "Contains three case of the .35 sol handgun, magazines included."
 	cost = CARGO_CRATE_VALUE * 8
@@ -70,7 +70,7 @@
 				)
 	crate_name = "wespe pistols crate"
 
-/datum/supply_pack/security/armory/eland
+/datum/supply_pack/security/eland
 	name = "Eland Crate"
 	desc = "Contains three case of the .35 sol revolver, munition boxes included."
 	cost = CARGO_CRATE_VALUE * 8
@@ -83,7 +83,7 @@
 /datum/supply_pack/security/armory/cawilmarksmanrifle
 	name = "Cawil Marksman Rifle Crates"
 	desc = "Contains 2 Cawil Marksman Rifle with spare ammunition."
-	cost = CARGO_CRATE_VALUE * 12
+	cost = CARGO_CRATE_VALUE * 17.5
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/ballistic/automatic/sol_rifle/marksman = 2,
 					/obj/item/ammo_box/magazine/c40sol_rifle = 4,
