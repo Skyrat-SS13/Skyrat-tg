@@ -12,3 +12,7 @@
 
 /datum/supply_pack/security/securityclothes
 	special = TRUE
+
+/datum/supply_pack/security/armory/thermal
+	access = ACCESS_SECURITY
+	access_view = ACCESS_SECURITY
