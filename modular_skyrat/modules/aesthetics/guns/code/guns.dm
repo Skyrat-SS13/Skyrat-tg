@@ -91,7 +91,6 @@
 	name = "\improper Peacekeeper compact combat shotgun"
 	desc = "A tactical variant of the peacekeeper combat shotgun used by NT Raiding Parties and Space Marines."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	worn_icon = null
 
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
