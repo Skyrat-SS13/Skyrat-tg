@@ -4,7 +4,6 @@
 	name = ".35 Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for Sol .35 Pistol."
 	cost = CARGO_CRATE_VALUE * 3
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/c35sol= 3,
 					/obj/item/ammo_box/c35sol/ripper = 3,
 				)
@@ -14,7 +13,6 @@
 	name = ".40 Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for Sol .40 Rifle."
 	cost = CARGO_CRATE_VALUE * 5
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/c40sol= 4,
 					/obj/item/ammo_box/c40sol/pierce = 1,
 					/obj/item/ammo_box/c40sol/incendiary = 1,
@@ -25,7 +23,6 @@
 	name = "12 Gauge Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for all 12 Gauge Shotguns."
 	cost = CARGO_CRATE_VALUE * 3
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/buckshot= 3,
 					/obj/item/ammo_box/advanced/s12gauge = 3,
 				)
@@ -35,7 +32,6 @@
 	name = "12 Gauge Exotic Ammunition Crates"
 	desc = "Contains 5 boxes of exotic ammunition for all 12 Gauge Shotguns."
 	cost = CARGO_CRATE_VALUE * 12
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/incendiary= 1,
 					/obj/item/ammo_box/advanced/s12gauge/flechette = 1,
 					/obj/item/ammo_box/advanced/s12gauge/express = 1,
@@ -50,7 +46,6 @@
 	name = "12 Gauge Anti Riot Ammunition Crates"
 	desc = "Contains 6 boxes of anti riot grade ammunition for all 12 Gauge Shotguns."
 	cost = CARGO_CRATE_VALUE * 4
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 2,
 					/obj/item/ammo_box/advanced/s12gauge/beehive = 2,
 					/obj/item/ammo_box/advanced/s12gauge/antitide = 2,
@@ -64,7 +59,6 @@
 	name = "Wespe Crates"
 	desc = "Contains three case of the .35 sol handgun, magazines included."
 	cost = CARGO_CRATE_VALUE * 8
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/wespe = 3,
 					/obj/item/ammo_box/c35sol/incapacitator = 3,
 				)
@@ -74,7 +68,6 @@
 	name = "Eland Crate"
 	desc = "Contains three case of the .35 sol revolver, munition boxes included."
 	cost = CARGO_CRATE_VALUE * 8
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/eland = 3,
 					/obj/item/ammo_box/c35sol/incapacitator = 3,
 				)
@@ -84,7 +77,6 @@
 	name = "Cawil Marksman Rifle Crates"
 	desc = "Contains 2 Cawil Marksman Rifle with spare ammunition."
 	cost = CARGO_CRATE_VALUE * 17.5
-	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/ballistic/automatic/sol_rifle/marksman = 2,
 					/obj/item/ammo_box/magazine/c40sol_rifle = 4,
 				)
