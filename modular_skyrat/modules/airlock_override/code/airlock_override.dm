@@ -103,8 +103,10 @@
 ///When the signal is received of a changed security level, check if it's orange.
 /obj/machinery/door/airlock/check_security_level(datum/source, level)
 	. = ..()
-	var/area/source_area = get_area(src)
-	if(!source_area.engineering_override_eligible)
+	if(!door_area.engineering_override_eligible)
+		return
+
+	if(isnull(req_access) && isnull(req_one_access)) // no restrictions, no problem
 		return
 
 	if(level != SEC_LEVEL_ORANGE && GLOB.force_eng_override)
@@ -158,28 +160,43 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 /obj/machinery/door/airlock/proc/force_eng_override(datum/source, status)
 	SIGNAL_HANDLER
 
+	if(!door_area.engineering_override_eligible)
+		return
+
+	if(isnull(req_access) && isnull(req_one_access)) // no restrictions, no problem
+		return
+
 	engineering_override = status
 	if(!engineering_override && !fire_active)
 		normalspeed = TRUE
 		update_appearance()
 		return
 
-	if(!door_area.engineering_override_eligible)
-		return
-
 	normalspeed = FALSE
 	update_appearance()
 
+/**
+ * Change the airlock's fire_active status, triggered by COMSIG_AREA_FIRE_CHANGED
+ * Activates fire status overlay and increases door speed.
+ *
+ * Arguments:
+ * * source - The /area with changed fire status
+ * * fire - the new fire status (TRUE/FALSE)
+ *
+*/
 /obj/machinery/door/airlock/proc/update_fire_status(datum/source, fire)
 	SIGNAL_HANDLER
+
+	if(!door_area.engineering_override_eligible)
+		return
+
+	if(isnull(req_access) && isnull(req_one_access)) // no restrictions, no problem
+		return
 
 	fire_active = fire
 	if(!fire_active && !engineering_override)
 		normalspeed = TRUE
 		update_appearance()
-		return
-
-	if(!door_area.engineering_override_eligible)
 		return
 
 	normalspeed = FALSE
