@@ -16,6 +16,7 @@
 	. = ..()
 	if(advanced)
 		. += span_notice("This is an advanced hammer. It can change its digging depth from 1 to 30. Click to change depth.")
+
 	. += span_notice("Current Digging Depth: [dig_amount]cm")
 
 /obj/item/xenoarch/hammer/attack_self(mob/user, modifiers)
@@ -23,20 +24,24 @@
 	if(!advanced)
 		to_chat(user, span_warning("This is not an advanced hammer, it cannot change its digging depth."))
 		return
+
 	var/user_choice = input(user, "Choose the digging depth. 1 to 30", "Digging Depth Selection") as null|num
 	if(!user_choice)
 		dig_amount = 1
 		dig_speed = 1
 		return
+
 	if(dig_amount <= 0)
 		dig_amount = 1
 		dig_speed = 1
 		return
+
 	var/round_dig = round(user_choice)
 	if(round_dig >= 30)
 		dig_amount = 30
 		dig_speed = 30
 		return
+
 	dig_amount = round_dig
 	dig_speed = round_dig * 0.5
 	to_chat(user, span_notice("You change the hammer's digging depth to [round_dig]cm."))
@@ -131,45 +136,61 @@
 /obj/item/xenoarch/handheld_recoverer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
 		return
+
 	var/turf/target_turf = get_turf(target)
 	if(istype(target, /obj/item/xenoarch/broken_item/tech))
 		var/spawn_item = pick_weight(GLOB.tech_reward)
 		new spawn_item(target_turf)
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	if(istype(target, /obj/item/xenoarch/broken_item/weapon))
 		var/spawn_item = pick_weight(GLOB.weapon_reward)
 		new spawn_item(target_turf)
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	if(istype(target, /obj/item/xenoarch/broken_item/illegal))
 		var/spawn_item = pick_weight(GLOB.illegal_reward)
 		new spawn_item(target_turf)
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	if(istype(target, /obj/item/xenoarch/broken_item/alien))
 		var/spawn_item = pick_weight(GLOB.alien_reward)
 		new spawn_item(target_turf)
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	if(istype(target, /obj/item/xenoarch/broken_item/plant))
 		var/spawn_item = pick_weight(GLOB.plant_reward)
 		new spawn_item(target_turf)
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	if(istype(target, /obj/item/xenoarch/broken_item/clothing))
 		var/spawn_item = pick_weight(GLOB.clothing_reward)
 		new spawn_item(target_turf)
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	if(istype(target, /obj/item/xenoarch/broken_item/animal))
 		var/spawn_item
 		var/turf/src_turf = get_turf(src)
 		for(var/looptime in 1 to rand(1,4))
 			spawn_item = pick_weight(GLOB.animal_reward)
 			new spawn_item(src_turf)
+
+		user.mind.adjust_experience(/datum/skill/research, 5)
 		qdel(target)
 		return
+
 	return ..()
 
 /obj/item/storage/belt/utility/xenoarch
@@ -222,8 +243,10 @@
 	. = ..()
 	if(listeningTo == user)
 		return
+
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
+
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(pickup_rocks))
 	listeningTo = user
 
@@ -231,6 +254,7 @@
 	. = ..()
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
+
 	listeningTo = null
 
 /obj/item/storage/bag/xenoarch/proc/pickup_rocks(mob/living/user)
@@ -244,17 +268,21 @@
 		for(var/A in tile)
 			if (!is_type_in_typecache(A, atom_storage.can_hold))
 				continue
+
 			else if(atom_storage.attempt_insert(A, user))
 				show_message = TRUE
+
 			else
 				if(!spam_protection)
 					to_chat(user, span_warning("Your [name] is full and can't hold any more!"))
 					spam_protection = TRUE
 					continue
+
 	if(show_message)
 		playsound(user, SFX_RUSTLE, 50, TRUE)
 		user.visible_message(span_notice("[user] scoops up the rocks beneath [user.p_them()]."), \
 			span_notice("You scoop up the rocks beneath you with your [name]."))
+
 	spam_protection = FALSE
 
 /obj/item/storage/bag/xenoarch/adv
