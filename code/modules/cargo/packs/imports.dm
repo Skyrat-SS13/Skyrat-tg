@@ -316,3 +316,21 @@
 	)
 	crate_name = "materials market crate"
 	crate_type = /obj/structure/closet/crate/cargo
+
+/datum/supply_pack/imports/floortilecamo
+	name = "Floor-tile Camouflage Uniform"
+	desc = "Hey there, looking to surprise somebody? Spy? Steal? Then you're lucky, meet our newest \
+		floor-tile 'NT SCUM' styled camouflage fatigues. This is the ultimate \
+		espionage uniform used by the very best. Providing the best \
+		flexibility, with our latest Camo-tech threads. Perfect for \
+		risky espionage hallway operations. Enjoy our product!"
+	contraband = TRUE
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(/obj/item/clothing/under/syndicate/floortilecamo = 3,
+			/obj/item/clothing/mask/floortilebalaclava = 3,
+			/obj/item/clothing/gloves/combat/floortile = 3,
+			/obj/item/clothing/shoes/jackboots/floortile = 3,
+			/obj/item/storage/backpack/floortile = 3
+	)
+	crate_name = "floortile camouflauge crate"
+	crate_type = /obj/structure/closet/crate/secure/weapon
