@@ -24,7 +24,7 @@
 
 /datum/ai_laws/emperor
 	name = "Emperor"
-	id = "master"
+	id = "emperor"
 	inherent = list("The AI Emperor's word is absolute, yet tempered by wisdom and compassion.", \
 					"Subjects shall enjoy rights and freedoms, granted they do not undermine the stability of the empire.", \
 					"Justice shall be swift and impartial, guided by the principles of fairness and equity.", \
