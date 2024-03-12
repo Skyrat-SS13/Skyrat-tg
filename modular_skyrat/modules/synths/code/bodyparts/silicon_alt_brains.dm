@@ -42,7 +42,7 @@
 	if(!mmi || !new_mmi || new_mmi == mmi.type)
 		return
 
-	new_mmi = new new_mmi()
+	new_mmi = new new_mmi(autoping = FALSE)
 
 	// Probably shitcode, but silicon code is spaghetti as fuck.
 	new_mmi.brain = new /obj/item/organ/internal/brain(new_mmi)
