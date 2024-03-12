@@ -3,15 +3,9 @@
 ///The fuel amount used to actually grill the item
 #define GRILL_FUELUSAGE_ACTIVE 5
 
-<<<<<<< HEAD
-/obj/machinery/grill//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	name = "grill"
-	desc = "Just like the old days."
-=======
-/obj/machinery/grill
+/obj/machinery/grill //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "Barbeque grill"
 	desc = "Just like the old days. Smokes items over a light heat"
->>>>>>> 086a879d61c (General maintenance for grilling related stuff. (#81647))
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "grill_open"
 	density = TRUE
