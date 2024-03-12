@@ -96,13 +96,8 @@
 	if(multitooled)
 		src.multitooled = multitooled
 
-<<<<<<< HEAD
-	RegisterSignal(src, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL), PROC_REF(on_parent_multitool))
-
 	ADD_TRAIT(mob_parent, TRAIT_STYLISH, REF(src)) // SKYRAT EDIT ADD - allows style meter chads to do flips
 
-=======
->>>>>>> 5e69e6d3691 (Refactors weird funky signal usage in style meter (#81930))
 /datum/component/style/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK, PROC_REF(hotswap))
 	RegisterSignal(parent, COMSIG_MOB_MINED, PROC_REF(on_mine))
