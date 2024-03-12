@@ -232,7 +232,8 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		if(get_amount() < 2)
 			user.balloon_alert(user, "not enough material!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-		if(!do_after(user, 4 SECONDS, build_on))
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
+		if(!do_after(user, 4 SECONDS * skill_modifier, build_on))
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		if(build_on.is_blocked_turf())
 			user.balloon_alert(user, "something is blocking the tile!")
@@ -241,6 +242,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 			user.balloon_alert(user, "not enough material!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		new/obj/structure/girder/displaced(build_on)
+		user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT: Construction Skill
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
