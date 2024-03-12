@@ -255,9 +255,9 @@
 
 		//if we reached here means we have found our specific reagent type so break
 		if(!include_subtypes)
-			break
+			return total_removed_amount
 
-	return total_removed_amount
+	return round(total_removed_amount, CHEMICAL_VOLUME_ROUNDING)
 
 /**
  * Removes a reagent at random and by a random quantity till the specified amount has been removed.
@@ -337,8 +337,8 @@
 		part /= total_volume
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		total_removed_amount += remove_reagent(reagent.type, reagent.volume * part)
-
 	handle_reactions()
+
 	return round(total_removed_amount, CHEMICAL_VOLUME_ROUNDING)
 
 /**
