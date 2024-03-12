@@ -113,24 +113,6 @@
 
 	if(panel_open)
 		. += mutable_appearance(icon, "[base_icon_state]_panel-o")
-<<<<<<< HEAD
-
-/obj/machinery/chem_mass_spec/wrench_act(mob/living/user, obj/item/tool)
-	. = ..()
-	default_unfasten_wrench(user, tool)
-	return ITEM_INTERACT_SUCCESS
-
-/*			beaker swapping/attack code			*/
-
-/obj/machinery/chem_mass_spec/attackby(obj/item/item, mob/user, params)
-	if(processing_reagents)
-		to_chat(user, "<span class='notice'> The [src] is currently processing a batch!")
-		return ..()
-
-	if(default_deconstruction_screwdriver(user, icon_state, icon_state, item))
-		update_appearance()
-=======
->>>>>>> 352c8bdbfb5 (General maintainence for HPLC (#81613))
 		return
 
 	if(!QDELETED(beaker1))
