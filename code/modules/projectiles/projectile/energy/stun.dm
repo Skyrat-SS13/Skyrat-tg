@@ -2,7 +2,7 @@
 	name = "electrode"
 	icon_state = "spark"
 	color = "#FFFF00"
-	stamina = 80 // SKYRAT EDIT CHANGE
+	stamina = 70 // SKYRAT EDIT CHANGE
 	stutter = 10 SECONDS
 	jitter = 40 SECONDS
 	hitsound = 'sound/weapons/taserhit.ogg'

@@ -74,6 +74,16 @@
 	harmful = FALSE
 	projectile_type = /obj/projectile/bullet/dart/syringe/dart
 
+//Handles loading smartdarts into regular syringeguns
+/obj/item/ammo_casing/syringegun/newshot(alternative_ammo)
+	if(!loaded_projectile)
+		if(!isnull(alternative_ammo))
+			loaded_projectile = new alternative_ammo(src, src)
+			harmful = FALSE
+		else
+			loaded_projectile = new projectile_type(src, src)
+			harmful = TRUE
+
 /obj/projectile/bullet/dart/syringe/dart
 	name = "SmartDart"
 	damage = 0
