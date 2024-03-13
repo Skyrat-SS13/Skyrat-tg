@@ -1,4 +1,3 @@
-
 /datum/design/board/emperor
 	name = "Empeoror Module"
 	desc = "Allows for the construction of a Emperor AI Core Module."
