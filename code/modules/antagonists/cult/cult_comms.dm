@@ -147,7 +147,11 @@
 		asked_cultists += team_member.current
 
 	var/list/yes_voters = SSpolling.poll_candidates(
+<<<<<<< HEAD
 		question = "[nominee] seeks to lead your cult, do you support [nominee.p_them()]?",
+=======
+		question = "[span_notice(nominee.name)] seeks to lead your cult, do you support [nominee.p_them()]?",
+>>>>>>> 31996c114b5 ([no gbp] fix span type errors with poll alerts (#81979))
 		poll_time = 30 SECONDS,
 		group = asked_cultists,
 		pic_source = nominee,

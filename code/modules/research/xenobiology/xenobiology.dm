@@ -707,12 +707,24 @@
 
 	balloon_alert(user, "offering...")
 	being_used = TRUE
+<<<<<<< HEAD
 
 	var/datum/callback/to_call = CALLBACK(src, PROC_REF(on_poll_concluded), user, dumb_mob)
 	dumb_mob.AddComponent(/datum/component/orbit_poll, \
 		ignore_key = POLL_IGNORE_SENTIENCE_POTION, \
 		job_bans = ROLE_SENTIENCE, \
 		to_call = to_call, \
+=======
+	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
+		question = "[span_danger(user.name)] is offering [span_notice(dumb_mob.name)] an intelligence potion! Reason: [span_boldnotice(potion_reason)]",
+		check_jobban = ROLE_SENTIENCE,
+		poll_time = 20 SECONDS,
+		checked_target = dumb_mob,
+		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
+		alert_pic = dumb_mob,
+		role_name_text = "intelligence potion",
+		chat_text_border_icon = src,
+>>>>>>> 31996c114b5 ([no gbp] fix span type errors with poll alerts (#81979))
 	)
 
 /// Assign the chosen ghost to the mob
