@@ -1469,8 +1469,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	base_icon_state = "kinkphones"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
-	lefthand_file = null
-	righthand_file = null
+	inhand_icon_state = null
 	current_kinkphones_color = "black"
 	color_changed = TRUE
 
