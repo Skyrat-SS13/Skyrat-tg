@@ -1467,7 +1467,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	desc = "Black metalic headphones with a glossy finish. The soft rubber cushions are comftorable and form fitting"
 	icon_state = "kinkphones_black_off"
 	base_icon_state = "kinkphones"
-	inhand_icon_state = "kinkphones_black_off"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
 	lefthand_file = null
