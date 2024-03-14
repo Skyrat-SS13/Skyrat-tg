@@ -1454,7 +1454,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 /obj/item/clothing/gloves/ring/hypno/nuke
 	name = "suspiciously glossy ring"
 	desc = "This ring oozes with an assertive edge as sharp light bends along the smooth, black bronze. Like the finger that wears it, an exceptional amount of polish repels nearly all the light that glances along its surface. If you look closer, a slight golden hue indicates the precious metals inside the alloy."
-	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	icon_state = "ringblack"
 	spans = list("glossy")
 
@@ -1842,3 +1843,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	name = "implant case - 'Toaster'"
 	desc = "A glass case containing a toaster implant. Sweet."
 	imp_type = /obj/item/implant/toaster
+
+/obj/item/clothing/ears/kinky_headphones/nuke
+	name = "suspiciously glossy headphones"
+	desc = "Black metalic headphones with a glossy finish. The soft rubber cushions are comftorable and tight"
+	icon_state = "kinkphones_black_off"
+	base_icon_state = "kinkphones"
+	inhand_icon_state = "kinkphones_black_off"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
+	var/current_kinkphones_color = "black"
+	var/color_changed = TRUE
+
