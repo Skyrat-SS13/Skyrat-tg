@@ -754,3 +754,8 @@
 	name = "Toaster Implant"
 	item_path = /obj/item/implanter/toaster
 	ckeywhitelist = list("jasohavents")
+
+/datum/loadout_item/ears/kinkphone_nuke
+	name = "Suspiciously Glossy Headphones"
+	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
+	ckeywhitelist = list("sonicgotnuked")

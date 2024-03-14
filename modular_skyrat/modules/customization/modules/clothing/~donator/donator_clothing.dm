@@ -1457,7 +1457,21 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	icon_state = "ringblack"
+	worn_icon_state = "ringblack"
+	lefthand_file = null
+	righthand_file = null
 	spans = list("glossy")
+
+/obj/item/clothing/ears/kinky_headphones/nuke
+	name = "suspiciously glossy headphones"
+	desc = "Black metalic headphones with a glossy finish. The soft rubber cushions are comftorable and form fitting"
+	icon_state = "kinkphones_black_off"
+	base_icon_state = "kinkphones"
+	inhand_icon_state = "kinkphones_black_off"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
+	current_kinkphones_color = "black"
+	color_changed = TRUE
 
 //reward for SomeRandomOwl
 /obj/item/clothing/head/costume/strigihat
@@ -1843,15 +1857,4 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	name = "implant case - 'Toaster'"
 	desc = "A glass case containing a toaster implant. Sweet."
 	imp_type = /obj/item/implant/toaster
-
-/obj/item/clothing/ears/kinky_headphones/nuke
-	name = "suspiciously glossy headphones"
-	desc = "Black metalic headphones with a glossy finish. The soft rubber cushions are comftorable and tight"
-	icon_state = "kinkphones_black_off"
-	base_icon_state = "kinkphones"
-	inhand_icon_state = "kinkphones_black_off"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
-	var/current_kinkphones_color = "black"
-	var/color_changed = TRUE
 
