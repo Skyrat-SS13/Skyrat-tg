@@ -98,7 +98,7 @@
 	if(check_morbid_curiosity(user, tool, surgery))
 		speed_mod *= SURGERY_SPEED_MORBID_CURIOSITY
 
-	/* SKYRAT EDIT START - Worked in with changes below
+	/* SKYRAT EDIT START - Worked in with reward buffs below
 	if(HAS_TRAIT(target, TRAIT_ANALGESIA))
 		speed_mod *= SURGERY_SPEED_TRAIT_ANALGESIA
 	*/ // SKYRAT EDIT END
@@ -287,10 +287,15 @@
 	if(target.stat < UNCONSCIOUS)
 		if(HAS_TRAIT(target, TRAIT_ANALGESIA))
 			to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
-		else
+		// SKYRAT EDIT BEGIN - Mood events from surgeries added
+			target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
+		else if(!mechanical_surgery)
 			to_chat(target, span_userdanger(pain_message))
-			if(prob(30) && !mechanical_surgery)
+			target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
+			if(prob(30))
 				target.emote("scream")
+		// SKYRAT EDIT END
+
 
 #undef SURGERY_SPEED_TRAIT_ANALGESIA
 #undef SURGERY_SPEED_DISSECTION_MODIFIER
