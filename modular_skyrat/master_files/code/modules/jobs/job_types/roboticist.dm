@@ -4,9 +4,20 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/science/robo
 	messenger = /obj/item/storage/backpack/messenger/science/robo
 
+	glasses = /obj/item/clothing/glasses/hud/diagnostic
+	gloves = /obj/item/clothing/gloves/color/black
+
+	l_hand = /obj/item/storage/medkit/mechanical/roboticist
+
 /datum/job/roboticist
 	description = "Build cyborgs, mechs, AIs, and maintain them all. Create MODsuits for those that wish. Try to remind medical that you're \
 	actually a lot better at treating synthetic crew members than them."
+
+/datum/outfit/job/roboticist/New()
+	. = ..()
+
+	LAZYINITLIST(backpack_contents)
+	backpack_contents[/obj/item/clothing/head/utility/welding] = 1
 
 /datum/job/roboticist/New()
 	. = ..()
