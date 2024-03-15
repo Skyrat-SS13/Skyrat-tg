@@ -44,12 +44,8 @@
 /obj/item/toy/plush/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, squeak_override)
-<<<<<<< HEAD
-	AddElement(/datum/element/bed_tuckable, 6, -5, 90)
-=======
 	AddElement(/datum/element/bed_tuckable, mapload, 6, -5, 90)
 	AddElement(/datum/element/toy_talk)
->>>>>>> 47dc38fee2b (Let's you talk through action figures, plushies, and toy mechs with `.l` and `.r`. Also a big clean up of `say` because its support for non-mobs was lackluster. (#81848))
 
 	//have we decided if Pinocchio goes in the blue or pink aisle yet?
 	if(gender == NEUTER)
