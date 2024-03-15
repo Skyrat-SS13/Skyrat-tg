@@ -61,7 +61,12 @@ SUBSYSTEM_DEF(polling)
 	// Start firing
 	total_polls++
 
+<<<<<<< HEAD
 	var/jumpable = isatom(pic_source) ? pic_source : null
+=======
+	if(isnull(jump_target) && isatom(alert_pic))
+		jump_target = alert_pic
+>>>>>>> c7b2e2be507 (Fix polling mutating its target's plane and layer (#82009))
 
 	var/datum/candidate_poll/new_poll = new(role_name_text, question, poll_time, ignore_category, jumpable, custom_response_messages)
 	LAZYADD(currently_polling, new_poll)
@@ -122,6 +127,7 @@ SUBSYSTEM_DEF(polling)
 
 		// Image to display
 		var/image/poll_image
+<<<<<<< HEAD
 		if(pic_source)
 			if(!ispath(pic_source))
 				var/atom/the_pic_source = pic_source
@@ -137,6 +143,16 @@ SUBSYSTEM_DEF(polling)
 		else
 			// Just use a generic image
 			poll_image = image('icons/effects/effects.dmi', icon_state = "static", layer = FLOAT_LAYER)
+=======
+		if(ispath(alert_pic, /atom))
+			poll_image = image(alert_pic)
+		else if(isatom(alert_pic))
+			poll_image = new /mutable_appearance(alert_pic)
+		else if(!isnull(alert_pic))
+			poll_image = alert_pic
+		else
+			poll_image = image('icons/effects/effects.dmi', icon_state = "static")
+>>>>>>> c7b2e2be507 (Fix polling mutating its target's plane and layer (#82009))
 
 		if(poll_image)
 			poll_image.plane = poll_alert_button.plane
