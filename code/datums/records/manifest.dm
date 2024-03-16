@@ -111,7 +111,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		person_gender = "Male"
 	if(person.gender == "female")
 		person_gender = "Female"
-	var/datum/dna/record_dna = new()
+	var/datum/dna/stored/record_dna = new()
 	person.dna.copy_dna(record_dna)
 
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES

@@ -3,6 +3,8 @@
 	desc = "A little security robot. He looks less than thrilled."
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "secbot"
+	light_color = "#f56275"
+	light_power = 0.8
 	density = FALSE
 	anchored = FALSE
 	health = 25
@@ -95,6 +97,7 @@
 /mob/living/simple_animal/bot/secbot/pingsky
 	name = "Officer Pingsky"
 	desc = "It's Officer Pingsky! Delegated to satellite guard duty for harbouring anti-human sentiment."
+	light_color = "#62baf5"
 	radio_channel = RADIO_CHANNEL_AI_PRIVATE
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
 	security_mode_flags = SECBOT_DECLARE_ARRESTS | SECBOT_CHECK_IDS | SECBOT_CHECK_RECORDS
@@ -129,6 +132,7 @@
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 	AddComponent(/datum/component/security_vision, judgement_criteria = NONE, update_judgement_criteria = CALLBACK(src, PROC_REF(judgement_criteria)))
+	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 
 /mob/living/simple_animal/bot/secbot/Destroy()
 	QDEL_NULL(weapon)
@@ -151,6 +155,16 @@
 	set_anchored(FALSE)
 	SSmove_manager.stop_looping(src)
 	last_found = world.time
+
+/mob/living/simple_animal/bot/secbot/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	if(!(security_mode_flags & SECBOT_SABOTEUR_AFFECTED))
+		security_mode_flags |= SECBOT_SABOTEUR_AFFECTED
+		addtimer(CALLBACK(src, PROC_REF(remove_saboteur_effect)), disrupt_duration)
+		return COMSIG_SABOTEUR_SUCCESS
+
+/mob/living/simple_animal/bot/secbot/proc/remove_saboteur_effect()
+	security_mode_flags &= ~SECBOT_SABOTEUR_AFFECTED
 
 /mob/living/simple_animal/bot/secbot/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)//shocks only make him angry
 	if(base_speed < initial(base_speed) + 3)
@@ -215,6 +229,8 @@
 		final |= JUDGE_RECORDCHECK
 	if(security_mode_flags & SECBOT_CHECK_WEAPONS)
 		final |= JUDGE_WEAPONCHECK
+	if(security_mode_flags & SECBOT_SABOTEUR_AFFECTED)
+		final |= JUDGE_CHILLOUT
 	return final
 
 /mob/living/simple_animal/bot/secbot/proc/special_retaliate_after_attack(mob/user) //allows special actions to take place after being attacked.

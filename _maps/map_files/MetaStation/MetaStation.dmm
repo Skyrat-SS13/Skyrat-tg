@@ -5856,6 +5856,14 @@
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"cer" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Surgery C Maintenance"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/access/all/medical/surgery,
+/turf/open/floor/plating,
+/area/station/maintenance/aft/greater)
 "ces" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/processor/slime,
@@ -9484,6 +9492,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+"dxF" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Pharmacy"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/landmark/navigate_destination,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "dxK" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/purple,
@@ -31010,6 +31032,23 @@
 /obj/effect/mapping_helpers/airlock/access/any/supply/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
+"lcq" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "chem_lockdown";
+	name = "Chemistry Shutters"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Chemistry"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/medical/chemistry,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/chemistry)
 "lcG" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -37314,6 +37353,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"nry" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Pharmacy Maintenance"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
+/turf/open/floor/plating,
+/area/station/maintenance/department/medical/central)
 "nrV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
@@ -43202,23 +43250,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
-"pyM" = (
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	id = "chem_lockdown";
-	name = "Chemistry Shutters"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/research/glass{
-	name = "Chemistry Lab"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/medical/chemistry,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/tile/yellow/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/chemistry)
 "pyP" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -45198,16 +45229,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"qhG" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Pharmacy Maintenance"
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
-/turf/open/floor/plating,
-/area/station/maintenance/department/medical/central)
 "qhI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
 	dir = 8
@@ -50123,14 +50144,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
-"rTF" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Surgery C Maintenance"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/access/all/medical/general,
-/turf/open/floor/plating,
-/area/station/maintenance/aft/greater)
 "rTL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -62649,21 +62662,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
-"whx" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/research/glass{
-	name = "Pharmacy"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
-/obj/effect/turf_decal/tile/yellow/fourcorners,
-/obj/effect/landmark/navigate_destination,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "why" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -87169,7 +87167,7 @@ tzE
 ucc
 tSw
 tSw
-rTF
+cer
 tSw
 tSw
 tSw
@@ -91793,7 +91791,7 @@ yfg
 yfg
 bqX
 iMr
-pyM
+lcq
 oNy
 bqX
 bqX
@@ -93830,7 +93828,7 @@ vLf
 kXD
 kWO
 rvE
-whx
+dxF
 cIK
 hoN
 eIO
@@ -94351,7 +94349,7 @@ gtb
 fJW
 xWE
 kzj
-qhG
+nry
 iqq
 qWK
 cdk

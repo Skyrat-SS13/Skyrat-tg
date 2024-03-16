@@ -48,11 +48,10 @@
 		return
 	//SKYRAT EDIT SMARTDARTS
 	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
-		chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+		chambered.newshot(/obj/projectile/bullet/dart/syringe/dart)
 	else
-		chambered = new /obj/item/ammo_casing/syringegun(src)
+		chambered.newshot()
 	//SKYRAT EDIT SMARTDARTS END
-	chambered.newshot()
 
 /obj/item/gun/syringe/can_shoot()
 	return syringes.len
