@@ -98,8 +98,10 @@
 	if(check_morbid_curiosity(user, tool, surgery))
 		speed_mod *= SURGERY_SPEED_MORBID_CURIOSITY
 
+	/* SKYRAT EDIT START - Worked in with reward buffs below
 	if(HAS_TRAIT(target, TRAIT_ANALGESIA))
 		speed_mod *= SURGERY_SPEED_TRAIT_ANALGESIA
+	*/ // SKYRAT EDIT END
 
 	var/implement_speed_mod = 1
 	if(implement_type) //this means it isn't a require hand or any item step.
@@ -115,7 +117,7 @@
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
 	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
-	if(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == DEAD)
+	if(was_sleeping || HAS_TRAIT(target, TRAIT_ANALGESIA) || target.stat == DEAD)
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
 	var/quiet_enviromnent = TRUE
@@ -285,10 +287,15 @@
 	if(target.stat < UNCONSCIOUS)
 		if(HAS_TRAIT(target, TRAIT_ANALGESIA))
 			to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
-		else
+		// SKYRAT EDIT BEGIN - Mood events from surgeries added
+			target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
+		else if(!mechanical_surgery)
 			to_chat(target, span_userdanger(pain_message))
-			if(prob(30) && !mechanical_surgery)
+			target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
+			if(prob(30))
 				target.emote("scream")
+		// SKYRAT EDIT END
+
 
 #undef SURGERY_SPEED_TRAIT_ANALGESIA
 #undef SURGERY_SPEED_DISSECTION_MODIFIER
