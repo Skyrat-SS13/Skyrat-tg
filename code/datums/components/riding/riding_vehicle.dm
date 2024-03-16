@@ -253,12 +253,8 @@
 			our_turf.zFall(movable, falling_from_move = is_moving)
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys
-<<<<<<< HEAD
 	vehicle_move_delay = 1.75 // SKYRAT EDIT - ORIGINAL: 0
-=======
-	vehicle_move_delay = 0
 	can_slow_down = FALSE
->>>>>>> bff8de4fe18 (Skateboard tweaks and buffs. (#81928))
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys/handle_specials()
 	. = ..()
