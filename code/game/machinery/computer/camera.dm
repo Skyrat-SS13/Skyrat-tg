@@ -50,7 +50,11 @@
 
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
+<<<<<<< HEAD
 	if(!user.can_perform_action(src, NEED_DEXTERITY)) //prevents monkeys from using camera consoles
+=======
+	if(!user.client) //prevents errors by trying to pass clients that don't exist.
+>>>>>>> de846bddccf (Fixes sec computers having infinite distance (#82016))
 		return
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
