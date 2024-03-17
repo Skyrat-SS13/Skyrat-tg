@@ -74,7 +74,39 @@ Then the player gets the profit from selling his own wasted time.
 		if(!QDELETED(thing))
 			qdel(thing)
 
+<<<<<<< HEAD
 	return report
+=======
+	return external_report
+
+/// It works like export_item_and_contents(), however it ignores the contents. Meaning only `exported_atom` will be valued.
+/proc/export_single_item(atom/movable/exported_atom, apply_elastic = TRUE, delete_unsold = TRUE, dry_run = FALSE, datum/export_report/external_report)
+	external_report = init_export()
+
+	var/sold = _export_loop(exported_atom, apply_elastic, dry_run, external_report)
+	if(!dry_run && (sold || delete_unsold) && sold != EXPORT_SOLD_DONT_DELETE)
+		if(ismob(exported_atom))
+			exported_atom.investigate_log("deleted through cargo export", INVESTIGATE_CARGO)
+		qdel(exported_atom)
+
+	return external_report
+
+/// The main bit responsible for selling the item. Shared by export_single_item() and export_item_and_contents()
+/proc/_export_loop(atom/movable/exported_atom, apply_elastic = TRUE, dry_run = FALSE, datum/export_report/external_report)
+	var/sold = EXPORT_NOT_SOLD
+	for(var/datum/export/export as anything in GLOB.exports_list)
+		if(export.applies_to(exported_atom, apply_elastic))
+			if(!dry_run && (SEND_SIGNAL(exported_atom, COMSIG_ITEM_PRE_EXPORT) & COMPONENT_STOP_EXPORT))
+				break
+			//Don't add value of unscannable items for a dry run report
+			if(dry_run && !export.scannable)
+				external_report.all_contents_scannable = FALSE
+				break
+			sold = export.sell_object(exported_atom, external_report, dry_run, apply_elastic)
+			external_report.exported_atoms += " [exported_atom.name]"
+			break
+	return sold
+>>>>>>> 2ba40403a0c (Fixing cargo. (#82036))
 
 /datum/export
 	/// Unit name. Only used in "Received [total_amount] [name]s [message]."
