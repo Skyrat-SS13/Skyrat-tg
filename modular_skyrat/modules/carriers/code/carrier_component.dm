@@ -168,8 +168,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return room_list
 
 /// Transfers a soul from a carrier room to another carrier room. Returns `FALSE` if the target room or target soul cannot be found.
-/datum/component/carrier/proc/transfer_mob(mob/living/target_soul, datum/carrier_room/target_room)
-	if(!(target_soul in get_current_mobs()) || !target_room)
+/datum/component/carrier/proc/transfer_mob(mob/living/target_mob, datum/carrier_room/target_room)
+	if(!(target_mob in get_current_mobs()) || !target_room)
 		return FALSE
 
 	var/datum/component/carrier/target_master_carrier = target_room.master_carrier.resolve()
@@ -178,20 +178,25 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	else if(target_master_carrier != src)
-		target_soul.forceMove(target_master_carrier.parent)
+		target_mob.forceMove(target_master_carrier.parent)
 
-	var/datum/component/carrier_user/carrier_component = target_soul.GetComponent(/datum/component/carrier_user)
+	var/datum/component/carrier_user/carrier_component = target_mob.GetComponent(/datum/component/carrier_user)
 	var/datum/carrier_room/original_room = carrier_component?.current_room?.resolve()
 	if(!istype(carrier_component) || !istype(original_room))
 		return FALSE // Don't transfer someone that isn't already inside of a carrier.
 
-	original_room.current_mobs -= target_soul
+	original_room.current_mobs -= target_mob
 	var/datum/weakref/room_ref = WEAKREF(target_room)
 	carrier_component.current_room = room_ref
-	target_room.current_mobs += target_soul
+	target_room.current_mobs += target_mob
 
-	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
-	to_chat(target_soul, span_notice(target_room.room_description))
+	if(original_room.room_exit_text)
+		to_chat(target_mob_span_notice(original_room.room_exit_text))
+
+	to_chat(target_mob, span_cyan("you've been transferred to [target_room]!"))
+	if(target_room.room_enter_text)
+		to_chat(mob_to_add, span_notice(room_enter_text))
+	to_chat(target_mob, span_notice(target_room.room_description))
 
 	return TRUE
 
@@ -238,6 +243,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/name = "Carrier room"
 	/// What is the description of the room?
 	var/room_description = "it feels roomy in here."
+	/// What text is shown when exiting the room?
+	var/room_exit_text = ""
+	/// What text is shown when entering the room?
+	var/room_enter_text = ""
+
 	/// What souls are currently inside of the room?
 	var/list/current_mobs = list()
 	/// Weakref for the master carrier datum
@@ -270,7 +280,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	carrier_component.current_room = WEAKREF(src)
 	mob_to_add.forceMove(parent_carrier.parent)
 
-	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
+	if(room_enter_text)
+		to_chat(mob_to_add, span_notice(room_enter_text))
+	else
+		to_chat(mob_to_add, cyan("You find yourself now inside of: [name]"))
+
 	to_chat(mob_to_add, span_notice(room_description))
 
 	var/atom/parent_atom = parent_object
