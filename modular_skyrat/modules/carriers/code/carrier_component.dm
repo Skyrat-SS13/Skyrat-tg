@@ -280,6 +280,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		mob_to_add.log_message(message_to_log, LOG_GAME)
 
+	ADD_TRAIT(mob_to_add, TRAIT_FLOORED, TRAIT_CARRIER)
 	return TRUE
 
 /// Removes a mob from a carrier room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
@@ -311,6 +312,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	mob_to_remove.forceMove(current_tile)
 	parent_carrier.remove_item_box(mob_to_remove.ckey)
 
+	REMOVE_TRAIT(mob_to_remove, TRAIT_FLOORED, TRAIT_CARRIER)
 	return TRUE
 
 /**

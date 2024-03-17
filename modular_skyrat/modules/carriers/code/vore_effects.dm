@@ -14,11 +14,21 @@
 	if(!.)
 		return FALSE
 
-	if(target_mob.nutrition < nutrient_drain_rate)
+	if(target_mob.nutrition < nutrient_drain_rate) // They empty :3
+		if(!HAS_TRAIT_FROM(target_mob, TRAIT_HANDS_BLOCKED, TRAIT_CARRIER))
+			ADD_TRAIT(target_mob, TRAIT_HANDS_BLOCKED, TRAIT_CARRIER)
+
 		return TRUE
 
 	target_mob.nutrition = max((target_mob.nutrition - nutrient_drain_rate), 0)
 	stored_nutrients += nutrient_drain_rate
+
+/datum/carrier_effect/vore/absorb/remove_from_carrier_mob(mob/living/target_mob)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	REMOVE_TRAIT(target_mob, TRAIT_HANDS_BLOCKED, TRAIT_CARRIER)
 
 /datum/carrier_effect/vore/absorb/apply_to_owner()
 	. = ..()
@@ -30,7 +40,6 @@
 	stored_nutrients = 0
 
 	return TRUE
-
 
 /datum/carrier_effect/vore/digestion
 	name = "Digestion"
