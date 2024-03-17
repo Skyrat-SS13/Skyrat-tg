@@ -35,6 +35,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/chat_icon = "nif-soulcatcher"
 	/// What is the type of room that we want to create?
 	var/type_of_room_to_create = /datum/carrier_room
+	/// What items if any are stored inside of this component?
+	var/list/linked_item_boxes = list()
 
 /datum/component/carrier/New()
 	. = ..()
@@ -193,6 +195,19 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
+/// If we have any item box for the mob with the associated ckey, expel the item onto the floor.
+/datum/component/carrier/proc/remove_item_box(ckey_to_check)
+	if(!ckey_to_check || !linked_item_boxes[ckey_to_check])
+		return FALSE
+
+	var/obj/item/item_box/found_box = linked_item_boxes[ckey_to_check]
+	if(!istype(found_box))
+		return FALSE
+
+	linked_item_boxes[ckey_to_check] = null
+	found_box.forceMove(get_turf(parent))
+	return TRUE
+
 /// Adds `mob_to_add` into the parent carrier, giving them the carrier component and moving their mob into the room. Returns the component added, if successful
 /datum/component/carrier/proc/add_mob(mob/living/mob_to_add, datum/carrier_room/target_room)
 	if(!istype(mob_to_add))
@@ -233,6 +248,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/joinable = TRUE
 	/// What is the color of chat messages sent by the room?
 	var/room_color = SOULCATCHER_DEFAULT_COLOR
+	/// What effects are currently being applied by the room?
+	var/list/carrier_effects = list()
+	/// What carrier effects are we able to apply?
+	var/list/applyable_effects = list()
 
 /// Adds a mob into the carrier
 /datum/carrier_room/proc/add_mob(mob/living/mob_to_add)
@@ -290,6 +309,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/turf/current_tile = get_turf(parent_carrier.parent)
 	mob_to_remove.forceMove(current_tile)
+	parent_carrier.remove_item_box(mob_to_remove.ckey)
 
 	return TRUE
 
@@ -366,6 +386,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	relay_message_to_carrier(owner_message)
 	return TRUE
+
+/datum/carrier_room/process(seconds_per_tick)
+	for(var/datum/carrier_effect/active_effect as anything in carrier_effects)
+		active_effect.apply_to_carrier_mob()
+		for(var/mob/living/current_mob as anything in current_mobs)
+			active_effect.apply_to_carrier_mob(current_mob)
 
 /// Relays a message sent from the send_message proc to the parent carrier datum
 /datum/carrier_room/proc/relay_message_to_carrier(message)

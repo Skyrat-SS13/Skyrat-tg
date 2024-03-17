@@ -109,8 +109,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait that was granted by a NIFSoft
 #define TRAIT_NIFSOFT "nifsoft"
 
-/// Trait that was granted by a soulcatcher
-#define TRAIT_CARRIER "soulcatcher"
+/// Trait that was granted by a carrier
+#define TRAIT_CARRIER "carrier"
+
+/// Trait that muffles communications
+#define TRAIT_NO_COMMS "no_comms"
 
 /// Trait given to a piece of eyewear that allows the user to use NIFSoft HUDs
 #define TRAIT_NIFSOFT_HUD_GRANTER "nifsoft_hud_granter"
