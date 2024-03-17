@@ -100,8 +100,6 @@
 	delays = list(POD_TRANSIT = 20, POD_FALLING = 4, POD_OPENING = 30, POD_LEAVING = 30)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
-<<<<<<< HEAD
-=======
 /obj/structure/closet/supplypod/back_to_station
 	name = "blood-red supply pod"
 	desc = "An intimidating supply pod, covered in the blood-red markings"
@@ -124,7 +122,6 @@
 	effectMissile = TRUE
 	shrapnel_type = /obj/projectile/bullet/shrapnel/short_range
 
->>>>>>> 7e907771fbb (Deathmatch modifiers (#81673))
 /datum/armor/closet_supplypod
 	melee = 30
 	bullet = 50
