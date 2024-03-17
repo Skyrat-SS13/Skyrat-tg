@@ -87,9 +87,6 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 	merge_type = /obj/item/stack/tile/catwalk_tile/colony_lathe
 	tile_reskin_types = null
 
-/obj/item/stack/tile/catwalk_tile/colony_lathe/lathe_spawn
-	amount = 4
-
 /obj/item/stack/tile/iron/colony
 	name = "prefab floor tiles"
 	singular_name = "prefab floor tile"
@@ -106,9 +103,6 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 		/obj/item/stack/tile/iron/colony/white/texture,
 		/obj/item/stack/tile/iron/colony/white/bolts,
 	)
-
-/obj/item/stack/tile/iron/colony/lathe_spawn
-	amount = 4
 
 // Grated floor tile, for seeing wires under
 

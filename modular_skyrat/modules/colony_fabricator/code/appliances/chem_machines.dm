@@ -12,10 +12,13 @@
 	var/static/list/synthesizable_reagents = list(
 		/datum/reagent/water,
 	)
+	/// What this repacks into
+	var/repacked_type = /obj/item/flatpacked_machine/water_synth
 
-/obj/machinery/plumbing/synthesizer/water_synth/Initialize(mapload, bolt, layer)
+/obj/machinery/plumbing/synthesizer/water_synth/Initialize(mapload, bolt = FALSE, layer)
 	. = ..()
 	dispensable_reagents = synthesizable_reagents
+	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 // Deployable item for cargo for the water synth
@@ -27,6 +30,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	type_to_deploy = /obj/machinery/plumbing/synthesizer/water_synth
 	deploy_time = 2 SECONDS
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
 
 // Machine that makes botany nutrients for hydroponics farming
 
@@ -48,10 +55,13 @@
 		/datum/reagent/toxin/plantbgone/weedkiller,
 		/datum/reagent/toxin/pestkiller,
 	)
+	/// What this repacks into
+	var/repacked_type = /obj/item/flatpacked_machine/hydro_synth
 
-/obj/machinery/plumbing/synthesizer/colony_hydroponics/Initialize(mapload, bolt, layer)
+/obj/machinery/plumbing/synthesizer/colony_hydroponics/Initialize(mapload, bolt = FALSE, layer)
 	. = ..()
 	dispensable_reagents = synthesizable_reagents
+	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 // Deployable item for cargo for the hydro synth
@@ -63,6 +73,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	type_to_deploy = /obj/machinery/plumbing/synthesizer/colony_hydroponics
 	deploy_time = 2 SECONDS
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
 
 // Chem dispenser with a limited range of thematic reagents to dispense
 
@@ -117,8 +131,9 @@
 	powerefficiency = 0.5
 	recharge_amount = 50
 
-/obj/machinery/chem_dispenser/frontier_appliance/default_deconstruction_crowbar()
-	return
+/obj/machinery/chem_dispenser/frontier_appliance/examine(mob/user)
+	. = ..()
+	. += span_notice("It cannot be repacked, but can be deconstructed normally.")
 
 // Deployable item for cargo for the sustenance machine
 
@@ -129,3 +144,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	type_to_deploy = /obj/machinery/chem_dispenser/frontier_appliance
 	deploy_time = 2 SECONDS
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)

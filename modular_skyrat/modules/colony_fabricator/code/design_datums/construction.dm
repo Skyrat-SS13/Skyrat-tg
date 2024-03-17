@@ -36,7 +36,7 @@
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
-	construction_time = 30 SECONDS
+	construction_time = 10 SECONDS
 
 // Manul Airlock kit
 
@@ -53,7 +53,7 @@
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
-	construction_time = 30 SECONDS
+	construction_time = 5 SECONDS
 
 // Shutters kit
 
@@ -70,55 +70,55 @@
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
-	construction_time = 30 SECONDS
+	construction_time = 10 SECONDS
 
 // Fancy floor tiles
 
 /datum/design/prefab_floor_tile
-	name = "Prefab Floor Tile x4"
+	name = "Prefab Floor Tile"
 	id = "prefab_floor_tile"
 	build_type = COLONY_FABRICATOR
 	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT / 4,
 	)
-	build_path = /obj/item/stack/tile/iron/colony/lathe_spawn
+	build_path = /obj/item/stack/tile/iron/colony
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
-	construction_time = 15 SECONDS
+	construction_time = 0.5 SECONDS
 
 // Fancy catwalk floor tiles
 
 /datum/design/prefab_cat_floor_tile
-	name = "Prefab Catwalk Plating x4"
+	name = "Prefab Catwalk Plating"
 	id = "prefab_cat_floor_tile"
 	build_type = COLONY_FABRICATOR
 	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT / 4,
 	)
-	build_path = /obj/item/stack/tile/catwalk_tile/colony_lathe/lathe_spawn
+	build_path = /obj/item/stack/tile/catwalk_tile/colony_lathe
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
-	construction_time = 15 SECONDS
+	construction_time = 0.5 SECONDS
 
 // Plastic wall panels, twice the wall for the same price in plastic, efficient!
 
 /datum/design/colony_fab_plastic_wall_panel
-	name = "Plastic Paneling x10"
+	name = "Plastic Paneling"
 	id = "colony_fab_plastic_wall_panel"
 	build_type = COLONY_FABRICATOR
 	materials = list(
-		/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/stack/sheet/plastic_wall_panel/ten
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + FABRICATOR_SUBCATEGORY_STRUCTURES,
 	)
-	construction_time = 15 SECONDS
+	construction_time = 1 SECONDS
 
 #undef FABRICATOR_SUBCATEGORY_STRUCTURES

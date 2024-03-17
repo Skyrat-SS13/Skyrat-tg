@@ -4,12 +4,16 @@
 		through a network of distribution systems."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/ore_silo.dmi'
 	circuit = null
-	/// What this unpacks into
-	var/unpacked_type = /obj/item/flatpacked_machine/ore_silo
+	/// What this packs into
+	var/packed_type = /obj/item/flatpacked_machine/ore_silo
 
 /obj/machinery/ore_silo/colony_lathe/silo_log(obj/machinery/machinery_in_question, action, amount, noun, list/mats)
 	. = ..()
 	playsound(src, 'sound/machines/beep.ogg', 30, TRUE)
+	AddElement(/datum/element/repackable, packed_type, 10 SECONDS)
+
+/obj/machinery/ore_silo/colony_lathe/default_deconstruction_crowbar()
+	return
 
 // Item for deploying ore silos
 /obj/item/flatpacked_machine/ore_silo
