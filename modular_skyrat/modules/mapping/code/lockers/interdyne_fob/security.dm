@@ -33,7 +33,6 @@
 	..()
 
 	new /obj/item/storage/belt/security/full(src)
-	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/storage/bag/garment/brig_officer(src)
 	new /obj/item/radio/headset/interdyne(src)
 
