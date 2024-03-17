@@ -37,6 +37,11 @@
 	new /obj/item/storage/bag/garment/brig_officer(src)
 	new /obj/item/radio/headset/interdyne(src)
 
+/obj/structure/closet/secure_closet/interdynefob/brig_officer_locker/populate_contents_immediate()
+	. = ..()
+
+	new /obj/item/gun/energy/e_gun(src)
+
 /obj/structure/closet/secure_closet/interdynefob/armory_gear_locker
 	anchored = 1
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
