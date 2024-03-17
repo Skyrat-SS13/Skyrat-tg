@@ -135,7 +135,7 @@
 	if(!.)
 		return FALSE
 
-	REMOVE_TRAIT(target_mob, TRAIT_NO_COMMMS, TRAIT_CARRIER)
+	REMOVE_TRAIT(target_mob, TRAIT_NO_COMMS, TRAIT_CARRIER)
 
 /datum/computer_file/program/messenger/send_message_signal(atom/source, message, list/datum/computer_file/program/messenger/targets, photo_path, everyone, rigged, fake_name, fake_job)
 	var/mob/sender
@@ -151,7 +151,7 @@
 /obj/item/radio/talk_into_impl(atom/movable/talking_movable, message, channel, list/spans, datum/language/language, list/message_mods)
 	var/mob/living/talker = talking_movable
 	if(istype(talker) && HAS_TRAIT(talker, TRAIT_NO_COMMS))
-		to_chat(sender, span_warning("There seems to be something stopping you from communicating with the outside world!"))
+		to_chat(talker, span_warning("There seems to be something stopping you from communicating with the outside world!"))
 		return FALSE
 
 	return ..()
