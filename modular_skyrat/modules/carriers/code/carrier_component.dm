@@ -389,9 +389,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /datum/carrier_room/process(seconds_per_tick)
 	for(var/datum/carrier_effect/active_effect as anything in carrier_effects)
-		active_effect.apply_to_carrier_mob()
 		for(var/mob/living/current_mob as anything in current_mobs)
 			active_effect.apply_to_carrier_mob(current_mob)
+
+		active_effect.apply_to_owner()
 
 /// Relays a message sent from the send_message proc to the parent carrier datum
 /datum/carrier_room/proc/relay_message_to_carrier(message)

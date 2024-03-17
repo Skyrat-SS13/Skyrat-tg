@@ -41,10 +41,10 @@
 
 /datum/carrier_effect/proc/apply_to_owner()
 	var/mob/living/carrier_owner = get_owner_mob()
-	if(!carrier_owner)
+	if(!istype(carrier_owner))
 		return FALSE
 
-	return TRUE
+	return carrier_owner
 
 /// Creates a carrier effect based off `effect to create`
 /datum/carrier_room/proc/create_effect(datum/carrier_effect/effect_to_create)

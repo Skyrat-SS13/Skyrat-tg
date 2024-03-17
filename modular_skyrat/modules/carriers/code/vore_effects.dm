@@ -1,6 +1,54 @@
 /datum/carrier_effect/vore
 	name = "Vore effect"
 
+/datum/carrier_effect/vore/absorb
+	name = "Absorb"
+	desc = "Absorbs all of the nutrients of the mobs inside of you."
+	/// How many nutrients have we absorbed from those inside?
+	var/stored_nutrients = 0
+	/// How fast do we want to drain nutrients from those inside of us?
+	var/nutrient_drain_rate = 0
+
+/datum/carrier_effect/vore/absorb/apply_to_carrier_mob(mob/living/target_mob)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	if(target_mob.nutrition < nutrient_drain_rate)
+		return TRUE
+
+	target_mob.nutrition = max((target_mob.nutrition - nutrient_drain_rate), 0)
+	stored_nutrients += nutrient_drain_rate
+
+/datum/carrier_effect/vore/absorb/apply_to_owner()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	var/mob/living/carrier_owner = .
+	carrier_owner.nutrition += stored_nutrients
+	stored_nutrients = 0
+
+	return TRUE
+
+
+/datum/carrier_effect/vore/digestion
+	name = "Digestion"
+	desc = "Melts the prey currently inside of you into nutrients"
+	/// How fast do we want to melt the prey inside?
+	var/digestion_rate = 3
+
+/datum/carrier_effect/vore/digestion/apply_to_carrier_mob(mob/living/target_mob)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	if(target_mob.stat == DEAD) // No need to melt further.
+		return TRUE
+
+	target_mob.adjustBruteLoss(digestion_rate)
+	return TRUE
+
 /datum/carrier_effect/vore/numbing
 	name = "Numbing"
 	desc = "Numbs all of those currently inside of this carrier."
