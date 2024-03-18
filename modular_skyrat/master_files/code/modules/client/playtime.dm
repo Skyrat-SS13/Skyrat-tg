@@ -20,11 +20,11 @@
 	return preferences?.parent?.is_green()
 
 /datum/preference/toggle/green_pin/apply_to_client(client/client, value)
+	. = ..()
+
 	if(value && client && !client.is_green())
 		// This way, it doesn't stick for those that had it set to TRUE before they got their 100 hours in.
 		client.prefs?.write_preference(GLOB.preference_entries[/datum/preference/toggle/green_pin], FALSE)
-
-	return
 
 /client/proc/is_green()
 	return get_exp_living(pure_numeric = TRUE) <= PLAYTIME_GREEN
