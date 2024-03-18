@@ -26,5 +26,9 @@
 		// This way, it doesn't stick for those that had it set to TRUE before they got their 100 hours in.
 		client.prefs?.write_preference(GLOB.preference_entries[/datum/preference/toggle/green_pin], FALSE)
 
+/datum/preference/toggle/green_pin/apply_to_human(mob/living/carbon/human/wearer, value)
+    . = ..()
+
+
 /client/proc/is_green()
 	return get_exp_living(pure_numeric = TRUE) <= PLAYTIME_GREEN
