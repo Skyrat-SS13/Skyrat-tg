@@ -27,7 +27,7 @@
 		client.prefs?.write_preference(GLOB.preference_entries[/datum/preference/toggle/green_pin], FALSE)
 
 /datum/preference/toggle/green_pin/apply_to_human(mob/living/carbon/human/wearer, value)
-    . = ..()
+    return
 
 
 /client/proc/is_green()
