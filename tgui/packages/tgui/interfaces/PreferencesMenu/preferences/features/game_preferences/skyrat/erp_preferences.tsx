@@ -157,3 +157,19 @@ export const new_genitalia_growth_pref: FeatureToggle = {
     'If checked, allows drugs to grow new genitalia on your character.',
   component: CheckboxInput,
 };
+
+export const vore_overlays: FeatureToggle = {
+  name: 'Vore Overlays',
+  category: 'ERP',
+  description:
+    'When enabled, will you be shown fullscreen vore overlays while inside of a soulcatcher?',
+  component: CheckboxInput,
+};
+
+export const vore_overlay_options: FeatureToggle = {
+  name: 'Vore Overlay Options',
+  category: 'ERP',
+  description:
+    'Do you want to see fullscreen vore overlays as an option for soulcatcher overlays?',
+  component: CheckboxInput,
+};
