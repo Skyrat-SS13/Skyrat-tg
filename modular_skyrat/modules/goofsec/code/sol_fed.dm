@@ -329,13 +329,13 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	ears = /obj/item/radio/headset/headset_sec/alt
 	head = /obj/item/clothing/head/soft/black
 	suit_store = /obj/item/gun/energy/disabler
-	belt = /obj/item/melee/baton/security/loaded
+	belt = /obj/item/storage/belt/security/full
 	r_pocket = /obj/item/flashlight/seclite
-	l_pocket = /obj/item/restraints/handcuffs
+	l_pocket = /obj/item/gun/ballistic/revolver/sol
 	id = /obj/item/card/id/advanced/solfed
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
-		/obj/item/storage/box/handcuffs = 1,
+		/obj/item/ammo_box/c35sol = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1,
 	)
@@ -412,11 +412,13 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	suit_store = /obj/item/tank/internals/emergency_oxygen/engi
 	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/storage/medkit/civil_defense
+	r_hand = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/emergency_bed = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1,
+		/obj/item/defibrillator/compact/loaded = 1,
 	)
 
 	id_trim = /datum/id_trim/solfed
