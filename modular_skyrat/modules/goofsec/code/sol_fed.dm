@@ -338,6 +338,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/ammo_box/c35sol = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1,
+		/obj/item/taperecorder = 1,
+		/obj/item/storage/box/evidence = 1,
 	)
 
 	id_trim = /datum/id_trim/solfed
@@ -458,12 +460,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
-	l_hand = /obj/item/gun/ballistic/shotgun/riot/sol
+	l_hand = /obj/item/gun/ballistic/automatic/sol_rifle
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/box/lethalshot = 2,
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 3,
 		/obj/item/solfed_reporter/treason_reporter = 1,
 		/obj/item/beamout_tool = 1,
 	)
@@ -471,7 +473,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/treason_destroyer
-	name = "Sol Federation Military"
+	name = "Sol Federation Peacekeeper"
 	role = "Private"
 	department = "Military"
 	outfit = /datum/outfit/request_911/treason_destroyer
