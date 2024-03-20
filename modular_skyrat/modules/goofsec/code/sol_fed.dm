@@ -11,7 +11,7 @@
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
 GLOBAL_VAR(pizza_order)
-GLOBAL_VAR_INIT(solfed_tech_charge, -15000)
+GLOBAL_VAR_INIT(solfed_tech_charge, -7500)
 GLOBAL_LIST_INIT(pizza_names, list(
 	"Dixon Buttes",
 	"I. C. Weiner",
