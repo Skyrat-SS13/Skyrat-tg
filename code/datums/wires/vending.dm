@@ -35,15 +35,10 @@
 	if(!..())
 		return FALSE
 	var/obj/machinery/vending/vending_machine = holder
-<<<<<<< HEAD
-	if(!issilicon(user) && vending_machine.seconds_electrified && vending_machine.shock(user, 100))
-		return FALSE
-=======
 	if(!HAS_SILICON_ACCESS(user) && vending_machine.seconds_electrified)
 		var/mob/living/carbon/carbon_user = user
 		if (!istype(carbon_user) || carbon_user.should_electrocute(get_area(vending_machine)))
 			return FALSE
->>>>>>> 54fdf6963ea (Fix vending machine shocking you twice when you pulse high voltage wire (#82077))
 	if(vending_machine.panel_open)
 		return TRUE
 
