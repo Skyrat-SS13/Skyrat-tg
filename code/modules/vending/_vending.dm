@@ -342,6 +342,27 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	if(light_mask && !(machine_stat & BROKEN) && powered())
 		. += emissive_appearance(icon, light_mask, src)
 
+<<<<<<< HEAD
+=======
+/obj/machinery/vending/examine(mob/user)
+	. = ..()
+	if(isnull(refill_canister))
+		return // you can add the comment here instead
+	if((total_loaded_stock() / total_max_stock()) < 1)
+		. += span_notice("\The [src] can be restocked with [span_boldnotice("\a [initial(refill_canister.machine_name)] [initial(refill_canister.name)]")] with the panel open.")
+	else
+		. += span_notice("\The [src] is fully stocked.")
+	if(credits_contained < CREDITS_DUMP_THRESHOLD && credits_contained > 0)
+		. += span_notice("It should have a handfull of credits stored based on the missing items.")
+	else if (credits_contained > PAYCHECK_CREW)
+		. += span_notice("It should have at least a full paycheck worth of credits inside!")
+		/**
+		 * Intentionally leaving out a case for zero credits as it should be covered by the vending machine's stock being full,
+		 * or covered by first case if items were returned.
+		 */
+
+
+>>>>>>> 014ffc818be ([No GBP] Vending examine message now properly shows the name of the vending refill required. (#82101))
 /obj/machinery/vending/atom_break(damage_flag)
 	. = ..()
 	if(!.)
