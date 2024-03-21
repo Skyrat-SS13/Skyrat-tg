@@ -1,8 +1,8 @@
 /datum/supply_pack/science/synthetic_burns
 	name = "Synthetic Burns Kit"
-	desc = "Contains a bottle of pre-chilled hercuri and a bottle of dinitrogen plasmide, perfect for treating synthetic burns!"
+	desc = "Contains bottles of pre-chilled hercuri and dinitrogen plasmide, perfect for treating synthetic burns!"
 	cost = CARGO_CRATE_VALUE * 2.5
-	contains = list(/obj/item/reagent_containers/spray/hercuri/chilled = 1, /obj/item/reagent_containers/spray/dinitrogen_plasmide = 1)
+	contains = list(/obj/item/reagent_containers/spray/hercuri/chilled = 3, /obj/item/reagent_containers/spray/dinitrogen_plasmide = 3)
 	crate_name = "chilled hercuri crate"
 
 	access_view = FALSE
@@ -34,3 +34,21 @@
 	access_view = FALSE
 	access = FALSE
 	access_any = FALSE
+
+/datum/supply_pack/science/synth_medkits
+	name = "Mechanical Repair Kits"
+	desc = "Contains a few low-grade portable synthetic medkits, useful for distributing to the crew."
+	cost = CARGO_CRATE_VALUE * 4.5 // same as treatment kits
+	contains = list(/obj/item/storage/medkit/mechanical/regular = 4)
+
+	crate_name = "synthetic repair kits crate"
+
+	access_view = FALSE
+	access = FALSE
+	access_any = FALSE
+
+/datum/supply_pack/goody/mechanical_repair_kit_single
+	name = "Mechanical Repair Kit Single-Pack"
+	desc = "A single mechanical repair kit, fit for fixing most robotic injuries."
+	cost = PAYCHECK_CREW * 3
+	contains = list(/obj/item/storage/medkit/mechanical/regular)

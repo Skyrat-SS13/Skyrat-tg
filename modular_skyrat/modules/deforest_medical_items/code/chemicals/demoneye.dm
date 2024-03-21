@@ -29,6 +29,8 @@
 	overdose_threshold = 15
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/stimulants = 15)
+
+	metabolized_traits = list(TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NOSOFTCRIT, TRAIT_NOHARDCRIT, TRAIT_FEARLESS, TRAIT_ANALGESIA)
 	/// How much time has the drug been in them?
 	var/constant_dose_time = 0
 	/// What the original color of the user's left eye is
@@ -38,14 +40,6 @@
 
 /datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/carbon/human/our_guy)
 	. = ..()
-
-	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
-	// IM FUCKIN INVINCIBLE
-	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS)
-	ADD_TRAIT(our_guy, TRAIT_NOHARDCRIT, TRAIT_NARCOTICS)
-	ADD_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
-	ADD_TRAIT(our_guy, TRAIT_NUMBED, TRAIT_NARCOTICS)
-
 	user_left_eye_color = our_guy.eye_color_left
 	user_right_eye_color = our_guy.eye_color_right
 
@@ -73,13 +67,6 @@
 
 /datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/human/our_guy)
 	. = ..()
-
-	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
-	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS)
-	REMOVE_TRAIT(our_guy, TRAIT_NOHARDCRIT, TRAIT_NARCOTICS)
-	REMOVE_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
-	REMOVE_TRAIT(our_guy, TRAIT_NUMBED, TRAIT_NARCOTICS)
-
 	our_guy.eye_color_left = user_left_eye_color
 	our_guy.eye_color_right = user_right_eye_color
 	our_guy.update_body()

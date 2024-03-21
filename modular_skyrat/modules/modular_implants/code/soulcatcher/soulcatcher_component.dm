@@ -118,4 +118,5 @@
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		new_soul.log_message(message_to_log, LOG_GAME)
 
+	set_overlay_for_mob(new_soul)
 	return TRUE

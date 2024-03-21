@@ -10,6 +10,7 @@
 	anchored = FALSE
 	health = 25
 	maxHealth = 25
+	light_color = "#99ccff"
 
 	maints_access_required = list(ACCESS_ROBOTICS, ACCESS_JANITOR)
 	radio_key = /obj/item/encryptionkey/headset_service
@@ -331,7 +332,7 @@
 		INVOKE_ASYNC(our_mop, TYPE_PROC_REF(/obj/item, melee_attack_chain), src, target)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
-	if(!iscarbon(target) && !is_type_in_typecache(target, huntable_trash))
+	if(!(iscarbon(target) && (bot_access_flags & BOT_COVER_EMAGGED)) && !is_type_in_typecache(target, huntable_trash))
 		return NONE
 
 	visible_message(span_danger("[src] sprays hydrofluoric acid at [target]!"))

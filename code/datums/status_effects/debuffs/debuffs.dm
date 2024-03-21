@@ -278,7 +278,7 @@
 	. = ..()
 	if(!.)
 		return
-	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
+	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_ANALGESIA), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
 	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT ADDITION - STASIS APPLIES NUMBED
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
@@ -294,7 +294,7 @@
 		owner.Sleeping(15 SECONDS) //SKYRAT EDIT END
 
 /datum/status_effect/grouped/stasis/on_remove()
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_ANALGESIA), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
 	owner.clear_alert("stasis numbed") //SKYRAT EDIT ADDITION - STASIS APPLIED NUMBED
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
@@ -346,7 +346,7 @@
 /datum/status_effect/crusher_mark
 	id = "crusher_mark"
 	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
-	status_type = STATUS_EFFECT_REPLACE
+	status_type = STATUS_EFFECT_MULTIPLE
 	alert_type = null
 	var/mutable_appearance/marked_underlay
 	var/obj/item/kinetic_crusher/hammer_synced
@@ -373,9 +373,9 @@
 	QDEL_NULL(marked_underlay)
 	return ..()
 
-/datum/status_effect/crusher_mark/be_replaced()
-	owner.underlays -= marked_underlay //if this is being called, we should have an owner at this point.
-	..()
+//we will only clear ourselves if the crusher is the one that owns us.
+/datum/status_effect/crusher_mark/before_remove(obj/item/kinetic_crusher/attacking_hammer)
+	return (attacking_hammer == hammer_synced)
 
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"

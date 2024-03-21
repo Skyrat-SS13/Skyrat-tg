@@ -61,7 +61,7 @@
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
 	if(biowares)
-		QDEL_LIST(biowares)
+		QDEL_LAZYLIST(biowares)
 	GLOB.human_list -= src
 
 	if (mob_mood)
@@ -381,6 +381,10 @@
 		var/obj/item/bodypart/the_part = isbodypart(target_zone) ? target_zone : get_bodypart(check_zone(target_zone)) //keep these synced
 		to_chat(user, span_alert("There is no exposed flesh or thin material on [p_their()] [the_part.name]."))
 
+/mob/living/carbon/human/get_butt_sprite()
+	var/obj/item/bodypart/chest/chest = get_bodypart(BODY_ZONE_CHEST)
+	return chest?.get_butt_sprite()
+
 /mob/living/carbon/human/get_footprint_sprite()
 	var/obj/item/bodypart/leg/L = get_bodypart(BODY_ZONE_R_LEG) || get_bodypart(BODY_ZONE_L_LEG)
 	return shoes?.footprint_sprite || L?.footprint_sprite
@@ -391,7 +395,7 @@
 	if(judgement_criteria & JUDGE_EMAGGED || HAS_TRAIT(src, TRAIT_ALWAYS_WANTED))
 		return 10 //Everyone is a criminal!
 
-	var/threatcount = 0
+	var/threatcount = judgement_criteria & JUDGE_CHILLOUT ? -THREAT_ASSESS_DANGEROUS : 0
 
 	//Lasertag bullshit
 	if(lasercolor)

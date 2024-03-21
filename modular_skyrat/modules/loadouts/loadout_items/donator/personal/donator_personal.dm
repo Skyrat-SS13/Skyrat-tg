@@ -649,6 +649,11 @@
 	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
 	ckeywhitelist = list("sonicgotnuked")
 
+/datum/loadout_item/ears/kinkphone_nuke
+	name = "Suspiciously Glossy Headphones"
+	item_path = /obj/item/clothing/ears/kinky_headphones/nuke
+	ckeywhitelist = list("sonicgotnuked")
+
 /datum/loadout_item/head/somerandomowl
 	name = "Starry Witch Hat"
 	item_path = /obj/item/clothing/head/costume/strigihat
