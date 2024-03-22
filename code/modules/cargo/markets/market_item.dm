@@ -34,8 +34,28 @@
 		stock = rand(stock_min, stock_max)
 
 /// Used for spawning the wanted item, override if you need to do something special with the item.
+<<<<<<< HEAD
 /datum/market_item/proc/spawn_item(loc)
 	return new item(loc)
+=======
+/datum/market_item/proc/spawn_item(loc, datum/market_purchase/purchase)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MARKET_ITEM_SPAWNED, purchase.uplink, purchase.method, loc)
+	if(ismovable(item))
+		var/atom/movable/return_item = item
+		UnregisterSignal(item, COMSIG_QDELETING)
+		item.visible_message(span_notice("[item] vanishes..."))
+		do_sparks(8, FALSE, item)
+		if(isnull(loc))
+			item.moveToNullspace()
+		else
+			item.forceMove(loc)
+		item = null
+		return return_item
+	if(ispath(item))
+		return new item(loc)
+	CRASH("Invalid item type for market item [item || "null"]")
+>>>>>>> 5fb00889832 (Fixes the LTSRBT)
 
 /// Buys the item and makes SSblackmarket handle it.
 /datum/market_item/proc/buy(obj/item/market_uplink/uplink, mob/buyer, shipping_method)

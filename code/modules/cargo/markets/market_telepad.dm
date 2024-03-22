@@ -28,7 +28,7 @@
 	/// Current recharge progress.
 	var/recharge_cooldown = 0
 	/// Base recharge time in seconds which is used to get recharge_time.
-	var/base_recharge_time = 100
+	var/base_recharge_time = 10 SECONDS
 	/// Current /datum/market_purchase being received.
 	var/receiving
 	/// Current /datum/market_purchase being sent to the target uplink.
@@ -43,7 +43,7 @@
 /obj/machinery/ltsrbt/Destroy()
 	SSblackmarket.telepads -= src
 	// Bye bye orders.
-	if(SSblackmarket.telepads.len)
+	if(length(SSblackmarket.telepads))
 		for(var/datum/market_purchase/P in queue)
 			SSblackmarket.queue_item(P)
 	. = ..()
@@ -53,7 +53,7 @@
 	recharge_time = base_recharge_time
 	// On tier 4 recharge_time should be 20 and by default it is 80 as scanning modules should be tier 1.
 	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
-		recharge_time -= scanning_module.tier * 10
+		recharge_time -= scanning_module.tier * 1 SECONDS
 	recharge_cooldown = recharge_time
 
 	power_efficiency = 0
@@ -67,8 +67,23 @@
 /obj/machinery/ltsrbt/proc/add_to_queue(datum/market_purchase/purchase)
 	if(!recharge_cooldown && !receiving && !transmitting)
 		receiving = purchase
+<<<<<<< HEAD
 		return
 	queue += purchase
+=======
+	else
+		queue += purchase
+
+	RegisterSignal(purchase, COMSIG_QDELETING, PROC_REF(on_purchase_del))
+
+/obj/machinery/ltsrbt/proc/on_purchase_del(datum/market_purchase/purchase)
+	SIGNAL_HANDLER
+	queue -= purchase
+	if(receiving == purchase)
+		receiving = null
+	if(transmitting == purchase)
+		transmitting = null
+>>>>>>> 5fb00889832 (Fixes the LTSRBT)
 
 /obj/machinery/ltsrbt/process(seconds_per_tick)
 	if(machine_stat & NOPOWER)
@@ -78,7 +93,11 @@
 		recharge_cooldown -= seconds_per_tick
 		return
 
+<<<<<<< HEAD
 	var/turf/T = get_turf(src)
+=======
+	var/turf/turf = get_turf(src)
+>>>>>>> 5fb00889832 (Fixes the LTSRBT)
 	if(receiving)
 		var/datum/market_purchase/P = receiving
 
@@ -97,7 +116,7 @@
 		receiving = null
 		transmitting = P
 
-		recharge_cooldown = recharge_time
+		COOLDOWN_START(src, recharge_cooldown, recharge_time)
 		return
 	else if(transmitting)
 		var/datum/market_purchase/P = transmitting
@@ -113,5 +132,5 @@
 		recharge_cooldown = recharge_time
 		return
 
-	if(queue.len)
+	if(length(queue))
 		receiving = pick_n_take(queue)
