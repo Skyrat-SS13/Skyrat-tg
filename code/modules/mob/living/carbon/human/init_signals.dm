@@ -38,3 +38,28 @@
 	if(name != voice_name)
 		voice_name += " (as [get_id_name("Unknown")])"
 	stored_name[NAME_PART_INDEX] = voice_name
+<<<<<<< HEAD
+=======
+
+/mob/living/carbon/human/proc/on_fat(datum/source)
+	SIGNAL_HANDLER
+	hud_used?.hunger?.update_appearance()
+	mob_mood?.update_nutrition_moodlets()
+
+	if(HAS_TRAIT(src, TRAIT_FAT))
+		add_movespeed_modifier(/datum/movespeed_modifier/obesity)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/obesity)
+
+/mob/living/carbon/human/proc/on_nohunger(datum/source)
+	SIGNAL_HANDLER
+	// When gaining NOHUNGER, we restore nutrition to normal levels, since we no longer interact with the hunger system
+	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
+		set_nutrition(NUTRITION_LEVEL_FED, forced = TRUE)
+		satiety = 0
+		overeatduration = 0
+		remove_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
+	else
+		hud_used?.hunger?.update_appearance()
+		mob_mood?.update_nutrition_moodlets()
+>>>>>>> 5a3938ce3ee (Fat trait fix attempt 2 (#81947))
