@@ -224,7 +224,7 @@
 /obj/effect/abstract/liquid_turf/proc/make_state_layer(state, has_top)
 	PRIVATE_PROC(TRUE)
 
-	. = list(make_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER))
+	. = list(make_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, ABOVE_GAME_PLANE))
 
 	if(!has_top)
 		return

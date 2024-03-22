@@ -377,6 +377,12 @@
 	/// Maximum range we can set.
 	var/max_range = 5
 
+/obj/item/mod/module/flashlight/on_suit_activation()
+	RegisterSignal(mod.wearer, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
+
+/obj/item/mod/module/flashlight/on_suit_deactivation(deleting = FALSE)
+	UnregisterSignal(mod.wearer, COMSIG_HIT_BY_SABOTEUR)
+
 /obj/item/mod/module/flashlight/on_activation()
 	. = ..()
 	if(!.)
@@ -391,6 +397,12 @@
 		return
 	set_light_flags(light_flags & ~LIGHT_ATTACHED)
 	set_light_on(active)
+
+/obj/item/mod/module/flashlight/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	if(active)
+		on_deactivation()
+		return COMSIG_SABOTEUR_SUCCESS
 
 /obj/item/mod/module/flashlight/on_process(seconds_per_tick)
 	active_power_cost = base_power * light_range
@@ -423,6 +435,21 @@
 			mod.wearer.update_clothing(mod.slot_flags)
 		if("light_range")
 			set_light_range(clamp(value, min_range, max_range))
+
+///Like the flashlight module, except the light color is stuck to black and cannot be changed.
+/obj/item/mod/module/flashlight/darkness
+	name = "MOD flashdark module"
+	desc = "A quirky pair of configurable flashdarks installed on the sides of the helmet, \
+		useful for providing darkness at a configurable range."
+	light_color = COLOR_BLACK
+	light_system = OVERLAY_LIGHT
+	light_range = 2
+	min_range = 1
+	max_range = 3
+
+/obj/item/mod/module/flashlight/darkness/get_configuration()
+	. = ..()
+	. -= "light_color"
 
 ///Dispenser - Dispenses an item after a time passes.
 /obj/item/mod/module/dispenser
