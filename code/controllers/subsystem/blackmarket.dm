@@ -48,9 +48,10 @@ SUBSYSTEM_DEF(blackmarket)
 		switch(purchase.method)
 			// Find a ltsrbt pad and make it handle the shipping.
 			if(SHIPPING_METHOD_LTSRBT)
-				if(!telepads.len)
+				if(!length(telepads))
 					continue
 				// Prioritize pads that don't have a cooldown active.
+<<<<<<< HEAD
 				var/free_pad_found = FALSE
 				for(var/obj/machinery/ltsrbt/pad in telepads)
 					if(pad.recharge_cooldown)
@@ -64,6 +65,24 @@ SUBSYSTEM_DEF(blackmarket)
 					continue
 
 				var/obj/machinery/ltsrbt/pad = pick(telepads)
+=======
+				var/obj/machinery/ltsrbt/lowest_cd_pad
+				// The time left of the shortest cooldown amongst all telepads.
+				var/lowest_timeleft = INFINITY
+				for(var/obj/machinery/ltsrbt/pad as anything in telepads)
+					if(!COOLDOWN_FINISHED(pad, recharge_cooldown))
+						var/timeleft = COOLDOWN_TIMELEFT(pad, recharge_cooldown)
+						if(timeleft < lowest_timeleft)
+							lowest_cd_pad = pad
+							lowest_timeleft = timeleft
+						continue
+					lowest_cd_pad = pad
+					break
+
+				lowest_cd_pad.add_to_queue(purchase)
+
+				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting that the order is being processed by [lowest_cd_pad]."))
+>>>>>>> 5fb00889832 (Fixes the LTSRBT)
 
 				to_chat(recursive_loc_check(purchase.uplink.loc, /mob), span_notice("[purchase.uplink] flashes a message noting that the order is being processed by [pad]."))
 
