@@ -294,12 +294,7 @@ suffix = "whiteshipruin_box.dmm"*/
 	id = "whiteshipruin_box_skyrat"
 	suffix = "whiteshipruin_box_skyrat.dmm"
 	// SKYRAT EDIT CHANGE END
-	name = "NT Medical Ship"
-=======
-	id = "whiteshipruin_box"
-	suffix = "whiteshipruin_box.dmm"
 	name = "Space-Ruin NT Medical Ship"
->>>>>>> d68ef829ad7 (Universalizing ruin names  (#81737))
 	description = "An ancient ship, said to be among the first discovered derelicts near Space Station 13 that was still in working order. \
 	Aged and deprecated by time, this relic of a vessel is now broken beyond repair."
 
