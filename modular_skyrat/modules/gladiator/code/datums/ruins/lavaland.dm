@@ -1,5 +1,5 @@
 /datum/map_template/ruin/lavaland/arena
-	name = "Grand Arena"
+	name = "Lava-Ruin Grand Arena"
 	id = "arena"
 	description = "An ancient gladitorial arena containing a deadly warrior within."
 	prefix = "_maps/RandomRuins/LavaRuins/skyrat/"
