@@ -182,8 +182,13 @@
 /obj/item/antag_spawner/nuke_ops/borg_tele
 	name = "syndicate cyborg beacon"
 	desc = "A single-use beacon designed to quickly launch reinforcement cyborgs into the field."
+<<<<<<< HEAD
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "gangtool-red"
+=======
+	antag_datum = /datum/antagonist/nukeop/reinforcement/cyborg
+	special_role_name = "Syndicate Cyborg"
+>>>>>>> cc800323da3 (Throws gangtools into a bottomless pit (#82145))
 
 /obj/item/antag_spawner/nuke_ops/borg_tele/assault
 	name = "syndicate assault cyborg beacon"
