@@ -18,8 +18,13 @@
 	if(reagents.total_volume)
 		if(icon_state != initial(icon_state) + "_working") //threw it here instead of update icon since it only has two states
 			icon_state = initial(icon_state) + "_working"
+<<<<<<< HEAD
 		reagents.remove_any(disposal_rate * seconds_per_tick)
 		use_power(active_power_usage * seconds_per_tick)
+=======
+		reagents.remove_all(disposal_rate * seconds_per_tick)
+		use_energy(active_power_usage * seconds_per_tick)
+>>>>>>> c1f11f26cef (Converts arbitrary energy units to the joule. Fixes conservation of energy issues relating to charging cells. (#81579))
 	else
 		if(icon_state != initial(icon_state))
 			icon_state = initial(icon_state)

@@ -19,10 +19,10 @@
 
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 2
 
-	/// Divider for power_usage_per_teleport.
+	/// Divider for energy_usage_per_teleport.
 	var/power_efficiency = 1
 	/// Power used per teleported which gets divided by power_efficiency.
-	var/power_usage_per_teleport = 10000
+	var/energy_usage_per_teleport = 10 KILO JOULES
 	/// The time it takes for the machine to recharge before being able to send or receive items.
 	var/recharge_time = 0
 	/// Current recharge progress.
@@ -88,7 +88,7 @@
 			var/atom/movable/M = P.item
 			M.forceMove(T)
 
-		use_power(power_usage_per_teleport / power_efficiency)
+		use_energy(energy_usage_per_teleport / power_efficiency)
 		var/datum/effect_system/spark_spread/sparks = new
 		sparks.set_up(5, 1, get_turf(src))
 		sparks.attach(P.item)
@@ -99,6 +99,7 @@
 
 		recharge_cooldown = recharge_time
 		return
+<<<<<<< HEAD
 	else if(transmitting)
 		var/datum/market_purchase/P = transmitting
 		if(!P.item)
@@ -108,6 +109,12 @@
 			return
 		do_teleport(P.item, get_turf(P.uplink))
 		use_power(power_usage_per_teleport / power_efficiency)
+=======
+	if(transmitting)
+		if(transmitting.item.loc == turf)
+			do_teleport(transmitting.item, get_turf(transmitting.uplink))
+			use_energy(energy_usage_per_teleport / power_efficiency)
+>>>>>>> c1f11f26cef (Converts arbitrary energy units to the joule. Fixes conservation of energy issues relating to charging cells. (#81579))
 		QDEL_NULL(transmitting)
 
 		recharge_cooldown = recharge_time
