@@ -169,11 +169,10 @@
 			new /obj/item/pen/sleepy(src)
 			new /obj/item/storage/fancy/cigarettes/cigpack_syndicate(src)
 		if(2) //Energy weapons + energy knives
-			new /obj/item/gun/energy/e_gun(src)
-			new /obj/item/gun/energy/e_gun(src)
-			new /obj/item/gun/energy/e_gun(src)
-			new /obj/item/gun/energy/e_gun/mini(src)
 			new /obj/item/gun/energy/recharge/ebow(src)
+			new /obj/item/gun/energy/recharge/ebow(src)
+			new /obj/item/melee/energy/sword(src)
+			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
 		if(3) //Ballistics + knives
