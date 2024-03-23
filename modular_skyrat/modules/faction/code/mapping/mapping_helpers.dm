@@ -196,7 +196,6 @@
 			new /obj/item/mod/control/pre_equipped/mining(src)
 			new /obj/item/mod/control/pre_equipped/engineering(src)
 			new /obj/item/mod/control/pre_equipped/atmospheric(src)
-			new /obj/item/mod/control/pre_equipped/research(src)
 			new /obj/item/mod/control/pre_equipped/traitor(src)
 			new /obj/item/mod/control/pre_equipped/elite(src)
 		if(5) //Implants
