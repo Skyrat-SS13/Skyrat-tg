@@ -21,7 +21,6 @@
 #define DYNAMIC_TO_STATIC_CHANNEL(dyn_channel) (dyn_channel + (AREA_USAGE_STATIC_START - AREA_USAGE_DYNAMIC_START))
 #define STATIC_TO_DYNAMIC_CHANNEL(static_channel) (static_channel - (AREA_USAGE_STATIC_START - AREA_USAGE_DYNAMIC_START))
 
-
 //Power use
 #define NO_POWER_USE 0
 #define IDLE_POWER_USE 1
@@ -52,6 +51,7 @@
 #define BYPASS_DOOR_CHECKS 2
 
 //used in design to specify which machine can build it
+//Note: More than one of these can be added to a design but imprinter and lathe designs are incompatable.
 #define IMPRINTER (1<<0) //For circuits. Uses glass/chemicals.
 #define PROTOLATHE (1<<1) //New stuff. Uses various minerals
 #define AUTOLATHE (1<<2) //Prints basic designs without research
@@ -65,6 +65,7 @@
 #define AWAY_IMPRINTER (1<<9)
 /// For wiremod/integrated circuits. Uses various minerals.
 #define COMPONENT_PRINTER (1<<10)
+<<<<<<< HEAD
 //Note: More than one of these can be added to a design but imprinter and lathe designs are incompatable.
 // SKYRAT EDIT ADDITION
 /// Can be made by the orderable colony fabricator
@@ -73,6 +74,8 @@
 
 #define FIREDOOR_OPEN 1
 #define FIREDOOR_CLOSED 2
+=======
+>>>>>>> 466b3df0483 (Refactor removing unused defines. (#82115))
 
 #define HYPERTORUS_INACTIVE 0 // No or minimal energy
 #define HYPERTORUS_NOMINAL 1 // Normal operation

@@ -1,8 +1,13 @@
 /obj/projectile/energy/electrode
 	name = "electrode"
 	icon_state = "spark"
+<<<<<<< HEAD
 	color = "#FFFF00"
 	stamina = 70 // SKYRAT EDIT CHANGE
+=======
+	color = COLOR_YELLOW
+	paralyze = 10 SECONDS
+>>>>>>> 466b3df0483 (Refactor removing unused defines. (#82115))
 	stutter = 10 SECONDS
 	jitter = 40 SECONDS
 	hitsound = 'sound/weapons/taserhit.ogg'
