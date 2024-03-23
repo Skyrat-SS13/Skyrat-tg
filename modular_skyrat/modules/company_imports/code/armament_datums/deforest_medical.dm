@@ -203,6 +203,18 @@
 	item_type = /obj/item/wallframe/frontier_medstation
 	cost = PAYCHECK_COMMAND * 5
 
+/datum/armament_entry/company_import/deforest/equipment/medhud
+	item_type = /obj/item/clothing/glasses/hud/health
+	cost = PAYCHECK_COMMAND * 2
+
+/datum/armament_entry/company_import/deforest/equipment/medhud_night
+	item_type = /obj/item/clothing/glasses/hud/health/night
+	cost = PAYCHECK_COMMAND * 4
+
+/datum/armament_entry/company_import/deforest/equipment/medhud_night_sci
+	item_type = /obj/item/clothing/glasses/hud/health/night/science
+	cost = PAYCHECK_COMMAND * 6
+
 // Modsuit Modules from the medical category, here instead of in Nakamura because nobody buys from this company
 
 /datum/armament_entry/company_import/deforest/medical_modules
