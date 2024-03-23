@@ -31,10 +31,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/biogenerator/medstation, 29)
 		deconstruct(TRUE)
 		return
 
-/obj/machinery/biogenerator/medstation/deconstruct(disassembled)
+/obj/machinery/biogenerator/medstation/on_deconstruction(disassembled)
 	if(disassembled)
 		new repacked_type(drop_location())
-	return ..()
 
 /obj/machinery/biogenerator/medstation/default_deconstruction_crowbar()
 	return
