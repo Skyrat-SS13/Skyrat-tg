@@ -127,6 +127,7 @@
 	if(HAS_TRAIT_FROM(human, TRAIT_FAT, OBESITY))//I share your pain, past coder.
 		if(human.overeatduration < (200 SECONDS))
 			to_chat(human, span_notice("You feel fit again!"))
+<<<<<<< HEAD
 			REMOVE_TRAIT(human, TRAIT_FAT, OBESITY)
 			human.remove_movespeed_modifier(/datum/movespeed_modifier/obesity)
 			human.update_worn_undersuit()
@@ -138,6 +139,14 @@
 			human.add_movespeed_modifier(/datum/movespeed_modifier/obesity)
 			human.update_worn_undersuit()
 			human.update_worn_oversuit()
+=======
+			human.remove_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
+
+	else
+		if(human.overeatduration >= (200 SECONDS))
+			to_chat(human, span_danger("You suddenly feel blubbery!"))
+			human.add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
+>>>>>>> 5a3938ce3ee (Fat trait fix attempt 2 (#81947))
 
 	// nutrition decrease and satiety
 	if (human.nutrition > 0 && human.stat != DEAD)
