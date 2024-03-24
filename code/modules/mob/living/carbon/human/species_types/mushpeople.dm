@@ -6,7 +6,6 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 
 	fixed_mut_color = "#DBBF92"
-	hair_color = "#FF4B19" //cap color, spot color uses eye color
 
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
@@ -61,6 +60,42 @@
 	if(chem.type == /datum/reagent/toxin/plantbgone/weedkiller)
 		affected.adjustToxLoss(3 * REM * seconds_per_tick)
 
+<<<<<<< HEAD
 /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
 	forced_colour = FALSE
 	return ..()
+=======
+/datum/species/mush/get_fixed_hair_color(mob/living/carbon/human/for_mob)
+	return "#FF4B19" //cap color, spot color uses eye color
+
+/// A mushpersons mushroom cap organ
+/obj/item/organ/external/mushroom_cap
+	name = "mushroom cap"
+	desc = "These are yummie, no cap."
+
+	use_mob_sprite_as_obj_sprite = TRUE
+
+	zone = BODY_ZONE_HEAD
+	slot = ORGAN_SLOT_EXTERNAL_POD_HAIR
+
+	preference = "feature_mushperson_cap"
+
+	dna_block = DNA_MUSHROOM_CAPS_BLOCK
+	restyle_flags = EXTERNAL_RESTYLE_PLANT
+
+	bodypart_overlay = /datum/bodypart_overlay/mutant/mushroom_cap
+
+/// Bodypart overlay for the mushroom cap organ
+/datum/bodypart_overlay/mutant/mushroom_cap
+	layers = EXTERNAL_ADJACENT
+	feature_key = "caps"
+
+/datum/bodypart_overlay/mutant/mushroom_cap/get_global_feature_list()
+	return GLOB.caps_list
+
+/datum/bodypart_overlay/mutant/mushroom_cap/can_draw_on_bodypart(mob/living/carbon/human/human)
+	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
+		return FALSE
+
+	return TRUE
+>>>>>>> afe1b7443c1 (Fix species `var/hair_color` not being used for, well, hair color (#82168))
