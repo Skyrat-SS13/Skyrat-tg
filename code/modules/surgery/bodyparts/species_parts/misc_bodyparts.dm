@@ -126,35 +126,31 @@
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 ///SLIME
-/obj/item/bodypart/head/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/head/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = FALSE
+<<<<<<< HEAD
 	head_flags = HEAD_ALL_FEATURES
+=======
+>>>>>>> 959c15cdbe3 (Fix some slime species subtypes not having burn resistance (#82164))
 
-/obj/item/bodypart/chest/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED)
-	limb_id = SPECIES_SLIMEPERSON
-	is_dimorphic = TRUE
-	wing_types = list(/obj/item/organ/external/wings/functional/slime)
-
-/obj/item/bodypart/arm/left/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/chest/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 
-/obj/item/bodypart/arm/right/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/arm/left/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 
-/obj/item/bodypart/leg/left/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/arm/right/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 
-/obj/item/bodypart/leg/right/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/leg/left/jelly/slime
+	limb_id = SPECIES_SLIMEPERSON
+
+/obj/item/bodypart/leg/right/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 
 ///LUMINESCENT
+<<<<<<< HEAD
 /obj/item/bodypart/head/luminescent
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
@@ -169,18 +165,24 @@
 
 /obj/item/bodypart/arm/left/luminescent
 	biological_state = (BIO_FLESH|BIO_BLOODED)
+=======
+/obj/item/bodypart/head/jelly/luminescent
+>>>>>>> 959c15cdbe3 (Fix some slime species subtypes not having burn resistance (#82164))
 	limb_id = SPECIES_LUMINESCENT
 
-/obj/item/bodypart/arm/right/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/chest/jelly/luminescent
 	limb_id = SPECIES_LUMINESCENT
 
-/obj/item/bodypart/leg/left/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/arm/left/jelly/luminescent
 	limb_id = SPECIES_LUMINESCENT
 
-/obj/item/bodypart/leg/right/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED)
+/obj/item/bodypart/arm/right/jelly/luminescent
+	limb_id = SPECIES_LUMINESCENT
+
+/obj/item/bodypart/leg/left/jelly/luminescent
+	limb_id = SPECIES_LUMINESCENT
+
+/obj/item/bodypart/leg/right/jelly/luminescent
 	limb_id = SPECIES_LUMINESCENT
 
 ///ZOMBIE
