@@ -74,9 +74,6 @@ Then the player gets the profit from selling his own wasted time.
 		if(!QDELETED(thing))
 			qdel(thing)
 
-<<<<<<< HEAD
-	return report
-=======
 	return external_report
 
 /// It works like export_item_and_contents(), however it ignores the contents. Meaning only `exported_atom` will be valued.
@@ -106,7 +103,6 @@ Then the player gets the profit from selling his own wasted time.
 			external_report.exported_atoms += " [exported_atom.name]"
 			break
 	return sold
->>>>>>> 2ba40403a0c (Fixing cargo. (#82036))
 
 /datum/export
 	/// Unit name. Only used in "Received [total_amount] [name]s [message]."
