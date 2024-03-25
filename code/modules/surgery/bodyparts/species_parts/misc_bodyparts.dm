@@ -129,7 +129,6 @@
 /obj/item/bodypart/head/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = FALSE
-	head_flags = HEAD_ALL_FEATURES
 
 /obj/item/bodypart/chest/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
