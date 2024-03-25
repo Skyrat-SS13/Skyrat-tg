@@ -313,3 +313,38 @@
 	if(skyrat_obj_flags & ANVIL_REPAIR)
 		forceMove(tool)
 		tool.icon_state = "tong_full"
+
+/obj/item/empty_circuit
+	name = "empty circuit"
+	desc = "This is a circuit that is close to being finished; it just requires some forethought and gold."
+	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
+	icon_state = "circuit"
+	var/static/recycleable_circuits = typecacheof(list(
+		/obj/item/electronics/airalarm,
+		/obj/item/electronics/firealarm,
+		/obj/item/electronics/apc,
+	))//A typecache of circuits consumable for material
+
+/obj/item/empty_circuit/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/gold))
+		var/obj/item/stack/attacking_stack = attacking_item
+		var/choice = tgui_input_list(user, "Which circuit are you thinking about?", "Circuit Creation", recycleable_circuits)
+		if(!choice)
+			to_chat(user, span_notice("You decide against creating the circuit..."))
+			return
+
+		if(!do_after(user, 5 SECONDS, src))
+			to_chat(user, span_warning("You moved around, destroying the circuit!"))
+			qdel(src)
+			return
+
+		if(!attacking_stack.use(1))
+			to_chat(user, span_warning("You weren't able to use the gold, destroying the circuit!"))
+			qdel(src)
+			return
+
+		new choice(get_turf(src))
+		qdel(src)
+		return
+
+	return ..()
