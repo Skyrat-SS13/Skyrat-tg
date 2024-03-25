@@ -569,7 +569,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
 /**
-<<<<<<< HEAD
  * Proc called when mail goodies need to be updated for this species.
  *
  * Updates the mail goodies if that is required. e.g. for the blood deficiency quirk, which sends bloodbags to quirk holders, update the sent bloodpack to match the species' exotic blood.
@@ -602,8 +601,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return
 
 /**
-=======
->>>>>>> e634d661212 (Cleans up blood deficiency hardcoding (#82185))
  * Handles the body of a human
  *
  * Handles lipstick, having no eyes, eye color, undergarnments like underwear, undershirts, and socks, and body layers.
