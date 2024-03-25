@@ -129,10 +129,7 @@
 /obj/item/bodypart/head/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = FALSE
-<<<<<<< HEAD
 	head_flags = HEAD_ALL_FEATURES
-=======
->>>>>>> 959c15cdbe3 (Fix some slime species subtypes not having burn resistance (#82164))
 
 /obj/item/bodypart/chest/jelly/slime
 	limb_id = SPECIES_SLIMEPERSON
