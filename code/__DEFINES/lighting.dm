@@ -18,15 +18,11 @@
 /// Does this light ignore inherent offsets? (Pixels, transforms, etc)
 #define LIGHT_IGNORE_OFFSET (1<<2)
 
-<<<<<<< HEAD
 // Bay lighting engine shit, not in /code/modules/lighting because BYOND is being shit about it
 /// frequency, in 1/10ths of a second, of the lighting process
 #define LIGHTING_INTERVAL 5
 
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.5 // SKYRAT EDIT CHANGE - Original value 1.4
-=======
-#define MINIMUM_USEFUL_LIGHT_RANGE 1.4
->>>>>>> 466b3df0483 (Refactor removing unused defines. (#82115))
 
 /// light UNDER the floor. primarily used for starlight, shouldn't fuck with this
 #define LIGHTING_HEIGHT_SPACE -0.5
