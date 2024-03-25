@@ -65,17 +65,12 @@
 #define AWAY_IMPRINTER (1<<9)
 /// For wiremod/integrated circuits. Uses various minerals.
 #define COMPONENT_PRINTER (1<<10)
-<<<<<<< HEAD
 //Note: More than one of these can be added to a design but imprinter and lathe designs are incompatable.
-// SKYRAT EDIT ADDITION
-/// Can be made by the orderable colony fabricator
+/// Can be made by the orderable colony fabricator (SKYRAT EDIT THIS AND 1 BELOW)
 #define COLONY_FABRICATOR (1<<11)
-// SKYRAT EDIT END
 
 #define FIREDOOR_OPEN 1
 #define FIREDOOR_CLOSED 2
-=======
->>>>>>> 466b3df0483 (Refactor removing unused defines. (#82115))
 
 #define HYPERTORUS_INACTIVE 0 // No or minimal energy
 #define HYPERTORUS_NOMINAL 1 // Normal operation
