@@ -742,6 +742,26 @@
 /obj/machinery/power/apc/proc/set_full_charge()
 	cell.charge = cell.maxcharge
 
+<<<<<<< HEAD
+=======
+/// Returns the cell's current charge.
+/obj/machinery/power/apc/proc/charge()
+	return cell.charge
+
+/// Draws energy from the connected grid. When there isn't enough surplus energy from the grid, draws the rest of the demand from its cell. Returns the energy used.
+/obj/machinery/power/apc/proc/draw_energy(amount)
+	var/grid_used = min(terminal?.surplus(), amount)
+	terminal?.add_load(grid_used)
+	var/cell_used = 0
+	if(amount > grid_used)
+		cell_used += cell.use(amount - grid_used, force = TRUE)
+	return grid_used + cell_used
+
+/// Draws power from the connected grid. When there isn't enough surplus energy from the grid, draws the rest of the demand from its cell. Returns the energy used.
+/obj/machinery/power/apc/proc/draw_power(amount)
+	return draw_energy(power_to_energy(amount))
+
+>>>>>>> 047470c7be6 ([NO GBP]Fixes static power usage not always drawing the remaining energy of an APC cell. (#82205))
 /*Power module, used for APC construction*/
 /obj/item/electronics/apc
 	name = "power control module"
