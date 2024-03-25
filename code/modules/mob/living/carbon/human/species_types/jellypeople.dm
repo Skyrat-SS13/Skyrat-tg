@@ -47,24 +47,20 @@
 	if(ishuman(new_jellyperson))
 		regenerate_limbs = new
 		regenerate_limbs.Grant(new_jellyperson)
-<<<<<<< HEAD
 		update_mail_goodies(new_jellyperson)
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		alter_form = new
-		alter_form.Grant(new_jellyperson)
-		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> e634d661212 (Cleans up blood deficiency hardcoding (#82185))
+		alter_form = new //SKYRAT EDIT CUSTOMIZATION
+		alter_form.Grant(new_jellyperson) //SKYRAT EDIT CUSTOMIZATION
+
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 	RegisterSignal(new_jellyperson, COMSIG_HUMAN_ON_HANDLE_BLOOD, PROC_REF(slime_blood))
 
 /datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(former_jellyperson)
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(alter_form)
-		alter_form.Remove(former_jellyperson)
-	//SKYRAT EDIT ADDITION END
+
+	if(alter_form) //SKYRAT EDIT CUSTOMIZATION
+		alter_form.Remove(former_jellyperson) //SKYRAT EDIT CUSTOMIZATION
+
 	former_jellyperson.RemoveElement(/datum/element/soft_landing)
 	UnregisterSignal(former_jellyperson, COMSIG_HUMAN_ON_HANDLE_BLOOD)
 	return ..()
