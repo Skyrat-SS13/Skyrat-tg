@@ -418,7 +418,8 @@
 /obj/item/construction/rcd/borg
 	desc = "A device used to rapidly build walls and floors."
 	banned_upgrades = RCD_UPGRADE_SILO_LINK
-	var/energyfactor = 72
+	/// enery usage
+	var/energyfactor = 72 KILO JOULES
 
 /obj/item/construction/rcd/borg/get_matter(mob/user)
 	if(!iscyborg(user))
@@ -460,7 +461,7 @@
 	desc = "A reverse-engineered RCD with black market upgrades that allow this device to deconstruct reinforced walls. Property of Donk Co."
 	icon_state = "ircd"
 	inhand_icon_state = "ircd"
-	energyfactor = 66
+	energyfactor = 66 KILO JOULES
 	canRturf = TRUE
 
 /obj/item/construction/rcd/loaded
@@ -511,6 +512,9 @@
 	has_ammobar = FALSE
 	upgrade = RCD_ALL_UPGRADES & ~RCD_UPGRADE_SILO_LINK
 
+///How much charge is used up for each matter unit.
+#define MASS_TO_ENERGY (16 KILO JOULES)
+
 /obj/item/construction/rcd/exosuit
 	name = "mounted RCD"
 	desc = "An exosuit-mounted Rapid Construction Device."
@@ -521,8 +525,6 @@
 	resistance_flags = FIRE_PROOF | INDESTRUCTIBLE // should NOT be destroyed unless the equipment is destroyed
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON | DROPDEL // already qdeleted in the equipment's Destroy() but you can never be too sure
 	delay_mod = 0.5
-	///How much charge is used up for each matter unit.
-	var/mass_to_energy = 16
 
 /obj/item/construction/rcd/exosuit/ui_status(mob/user, datum/ui_state/state)
 	if(ismecha(owner))
@@ -535,7 +537,7 @@
 	if(!ismecha(owner))
 		return 0
 	var/obj/vehicle/sealed/mecha/gundam = owner
-	return round(gundam.get_charge() / mass_to_energy)
+	return round(gundam.get_charge() / MASS_TO_ENERGY)
 
 /obj/item/construction/rcd/exosuit/useResource(amount, mob/user)
 	if(silo_link)
@@ -543,7 +545,11 @@
 	if(!ismecha(owner))
 		return 0
 	var/obj/vehicle/sealed/mecha/gundam = owner
+<<<<<<< HEAD
 	if(!gundam.use_power(amount * mass_to_energy))
+=======
+	if(!gundam.use_energy(amount * MASS_TO_ENERGY))
+>>>>>>> 7862b168a1e (Fixing cell power usage (Part 1) (#82197))
 		gundam.balloon_alert(user, "insufficient charge!")
 		return FALSE
 	return TRUE
@@ -554,10 +560,12 @@
 	if(!ismecha(owner))
 		return 0
 	var/obj/vehicle/sealed/mecha/gundam = owner
-	if(!gundam.has_charge(amount * mass_to_energy))
+	if(!gundam.has_charge(amount * MASS_TO_ENERGY))
 		gundam.balloon_alert(user, "insufficient charge!")
 		return FALSE
 	return TRUE
+
+#undef MASS_TO_ENERGY
 
 #undef FREQUENT_USE_DEBUFF_MULTIPLIER
 
