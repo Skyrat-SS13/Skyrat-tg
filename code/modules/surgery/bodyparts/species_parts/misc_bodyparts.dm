@@ -147,24 +147,7 @@
 	limb_id = SPECIES_SLIMEPERSON
 
 ///LUMINESCENT
-<<<<<<< HEAD
-/obj/item/bodypart/head/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED)
-	limb_id = SPECIES_LUMINESCENT
-	is_dimorphic = TRUE
-	head_flags = HEAD_ALL_FEATURES
-
-/obj/item/bodypart/chest/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED)
-	limb_id = SPECIES_LUMINESCENT
-	is_dimorphic = TRUE
-	wing_types = list(/obj/item/organ/external/wings/functional/slime)
-
-/obj/item/bodypart/arm/left/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED)
-=======
 /obj/item/bodypart/head/jelly/luminescent
->>>>>>> 959c15cdbe3 (Fix some slime species subtypes not having burn resistance (#82164))
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/chest/jelly/luminescent
