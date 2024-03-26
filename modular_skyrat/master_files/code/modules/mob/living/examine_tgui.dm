@@ -65,7 +65,6 @@
 		var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
 		ooc_notes += "ERP: [e_prefs]\n"
 		ooc_notes += "Hypnosis: [e_prefs_hypno]\n"
-		ooc_notes += "Non-Con: [e_prefs_nc]\n"
 		ooc_notes += "Vore: [e_prefs_v]\n"
 		ooc_notes += "Non-Con: [e_prefs_nc]\n"
 		ooc_notes += "ERP Mechanics: [e_prefs_mechanical]\n"
