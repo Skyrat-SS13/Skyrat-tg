@@ -199,6 +199,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	carrier_component.current_room = room_ref
 	target_room.current_mobs += target_soul
 
+	target_soul.clear_fullscreen("carrier", FALSE)
 	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
 	to_chat(target_soul, span_notice(target_room.room_description))
 
@@ -226,6 +227,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	carrier_component.current_room = target_room
 	var/datum/component/carrier_communicator/communicator_component = update_targeted_carrier(mob_to_add)
 	communicator_component.carried_mob = TRUE
+	target_room.set_overlay_for_mob(mob_to_add)
 
 	return carrier_component
 
@@ -308,6 +310,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/turf/current_tile = get_turf(parent_carrier.parent)
 	mob_to_remove.forceMove(current_tile)
+	soul_to_remove.clear_fullscreen("carrier", FALSE)
 
 	return TRUE
 
