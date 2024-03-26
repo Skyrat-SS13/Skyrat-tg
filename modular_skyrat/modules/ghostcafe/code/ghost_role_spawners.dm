@@ -50,6 +50,7 @@
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
 	random_appearance = FALSE
 	loadout_enabled = TRUE
+	quirks_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
 	. = ..()
@@ -62,7 +63,6 @@
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, TRAIT_GHOSTROLE)
 		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
-		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
 		D.Grant(new_spawn)
 
 /datum/outfit/ghostcafe
