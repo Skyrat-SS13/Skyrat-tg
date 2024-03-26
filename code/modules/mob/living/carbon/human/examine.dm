@@ -506,14 +506,12 @@
 		else
 			. += span_revennotice("<br>They look different than usual: [copytext_char(temporary_flavor_text, 1, TEMPORARY_FLAVOR_PREVIEW_LIMIT)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 
-	. += EXAMINE_SECTION_BREAK
-
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
 		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
+			. += EXAMINE_SECTION_BREAK
 			. += span_info("ERP Status: [span_revenboldnotice(erp_status_pref)]")
 
-	
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 
 /**
