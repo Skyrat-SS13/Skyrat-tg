@@ -130,6 +130,46 @@ export const Soulcatcher = (props) => {
                 Redecorate
               </Button>
               <Button
+                icon="image"
+                tooltip="Changes the current overlay of the room"
+                onClick={() =>
+                  act('change_overlay', { room_ref: room.reference })
+                }
+              >
+                {room.overlay_name ? room.overlay_name : 'Change Overlay'}
+              </Button>
+              {room.overlay_name ? (
+                <>
+                  <Button
+                    icon="eye"
+                    tooltip="Previews the overlay of the current room"
+                    onClick={() =>
+                      act('preview_overlay', { room_ref: room.reference })
+                    }
+                  >
+                    Preview Room
+                  </Button>
+                  {room.overlay_recolorable ? (
+                    <Button
+                      icon="eye-dropper"
+                      tooltip="changes the color of the current room overlay"
+                      onClick={() =>
+                        act('change_overlay_color', {
+                          room_ref: room.reference,
+                        })
+                      }
+                    >
+                      Modify Color
+                    </Button>
+                  ) : (
+                    <> </>
+                  )}
+                </>
+              ) : (
+                <> </>
+              )}
+
+              <Button
                 color={room.joinable ? 'green' : 'red'}
                 icon={room.joinable ? 'door-open' : 'door-closed'}
                 onClick={() =>

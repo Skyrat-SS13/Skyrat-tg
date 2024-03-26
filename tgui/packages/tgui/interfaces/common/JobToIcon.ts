@@ -54,6 +54,7 @@ const BASEICONS = {
   'Shaft Miner': 'digging',
   'Station Engineer': 'gears',
   'Syndicate Operative': 'dragon',
+  'Veteran Security Advisor': 'ribbon',
   Virologist: 'virus',
   Warden: 'handcuffs',
   // SKYRAT EDIT START - Skyrat-exclusive jobs have icons too
