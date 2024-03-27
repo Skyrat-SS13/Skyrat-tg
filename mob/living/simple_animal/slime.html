@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living/simple_animal/slime.html#var">Var Details</a> - <a href="mob/living/simple_animal/slime.html#proc">Proc Details</a></header>
+<main>
+<h1>slime <aside>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/simple_animal.html">simple_animal</a>/<a href="mob/living/simple_animal/slime.html">slime</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 6"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/Friends">Friends</a></th><td>A list of friends; they are not considered targets for feeding; passed down after splitting</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/Leader">Leader</a></th><td>AI variable - tells the slime to follow this person</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/Target">Target</a></th><td>AI variable - tells the slime to hunt this down</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/amount_grown">amount_grown</a></th><td>Controls how long the slime has been overfed, if 10, grows or reproduces</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/applied_crossbreed_amount">applied_crossbreed_amount</a></th><td>How many extracts of the modtype have been applied.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/attacked_stacks">attacked_stacks</a></th><td>Determines if it's been attacked recently. Can be any number, is a cooloff-ish variable</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/cores">cores</a></th><td>The number of /obj/item/slime_extract's the slime has left inside</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/crossbreed_modification">crossbreed_modification</a></th><td>What cross core modification is being used.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/current_mood">current_mood</a></th><td>The current mood of the slime, set randomly or through emotes (if sentient).</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/discipline_stacks">discipline_stacks</a></th><td>If a slime has been hit with a freeze gun, or wrestled/attacked off a human, they become disciplined and don't attack anymore for a while</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/docile">docile</a></th><td>Is the slime docile?</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/force_stasis">force_stasis</a></th><td>Is the slime forced into being immobile, despite the gases present?</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/grow_nutrition">grow_nutrition</a></th><td>Above it we grow our amount_grown and our power_level, below it we can eat</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/holding_still">holding_still</a></th><td>AI variable, cooloff-ish for how long it's going to stay in one place</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/hunger_nutrition">hunger_nutrition</a></th><td>Below this, we feel hungry</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/is_attack_on_cooldown">is_attack_on_cooldown</a></th><td>Attack cooldown</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/life_stage">life_stage</a></th><td>What is our current lifestage?</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/max_nutrition">max_nutrition</a></th><td>The maximum amount of nutrition a slime can contain</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/mutation_chance">mutation_chance</a></th><td>Chance of mutating, should be between 25 and 35</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/mutator_used">mutator_used</a></th><td>Has a mutator been used on the slime? Only one is allowed</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/powerlevel">powerlevel</a></th><td>1-10 controls how much electricity they are generating</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/rabid">rabid</a></th><td>If set to 1, the slime will attack and eat anything it comes in contact with</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/slime_ai_processing">slime_ai_processing</a></th><td>Determines if the AI loop is activated</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/slime_id">slime_id</a></th><td>Used to understand when someone is talking to it</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/speech_buffer">speech_buffer</a></th><td>Last phrase said near it and person who said it</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/starve_nutrition">starve_nutrition</a></th><td>Below this, we feel starving</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/stunned_until">stunned_until</a></th><td>Stored the world time when the slime's stun wears off</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#var/target_patience">target_patience</a></th><td>AI variable, cooloff-ish for how long it's going to follow its target</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/add_friendship">add_friendship</a></th><td>Alters the friendship value of the target</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/add_nutrition">add_nutrition</a></th><td>Adds nutrition to the slime's nutrition level. Has a chance to increase its electric levels.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/can_feed_on">can_feed_on</a></th><td>Can the slime leech life energy from the target?</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/clear_friends">clear_friends</a></th><td>Removes everyone from the friend list</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/clear_memories_of">clear_memories_of</a></th><td>The passed source will be no longer be the slime's target, leader, or one of its friends</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/discipline_slime">discipline_slime</a></th><td>Makes a slime not attack people for a while</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/handle_feeding">handle_feeding</a></th><td>The divisor controls how fast body temperature changes, lower causes faster changes
+Handles the slime draining the target it is attached to</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/handle_mood">handle_mood</a></th><td>Handles slime mood</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/handle_nutrition">handle_nutrition</a></th><td>Handles the slime's nutirion level</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/handle_speech">handle_speech</a></th><td>Handles the slime understanding commends spoken to it</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/handle_targets">handle_targets</a></th><td>Handles selecting targets</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/process_slime_ai">process_slime_ai</a></th><td>the master AI process</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/random_colour">random_colour</a></th><td>randomizes the colour of a slime</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/regenerate_icons">regenerate_icons</a></th><td>Checks if the slime has a generic name, in the format of baby/adult slime (123)</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/remove_friend">remove_friend</a></th><td>Removes someone from the friendlist</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/set_friends">set_friends</a></th><td>Adds someone to the friend list</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/set_friendship">set_friendship</a></th><td>Sets the friendship value of the target</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/set_leader">set_leader</a></th><td>Sets the person the slime is following around</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/set_life_stage">set_life_stage</a></th><td>Changes the slime's current life state</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/set_slime_type">set_slime_type</a></th><td>Sets the slime's type, name and its icons</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/set_target">set_target</a></th><td>Sets the slime's current attack target</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/slime_move">slime_move</a></th><td>Makes a slime move away, used for a timed callback</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/slime_pre_attack">slime_pre_attack</a></th><td>Handles slime attacking restrictions, and any extra effects that would trigger</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/spawn_corecross">spawn_corecross</a></th><td>Spawns a crossed slimecore item</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/start_feeding">start_feeding</a></th><td>The slime will start feeding on the target</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/stop_feeding">stop_feeding</a></th><td>The slime will stop feeding</td></tr>
+            <tr><th><a href="mob/living/simple_animal/slime.html#proc/will_hunt">will_hunt</a></th><td>Check for being stopped from feeding and chasing</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/Friends"><aside class="declaration">var </aside>Friends
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L121">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 121"/></a></h3>
+        <p>A list of friends; they are not considered targets for feeding; passed down after splitting</p><h3 id="var/Leader"><aside class="declaration">var </aside>Leader
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L110">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 110"/></a></h3>
+        <p>AI variable - tells the slime to follow this person</p><h3 id="var/Target"><aside class="declaration">var </aside>Target
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 108"/></a></h3>
+        <p>AI variable - tells the slime to hunt this down</p><h3 id="var/amount_grown"><aside class="declaration">var </aside>amount_grown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 63"/></a></h3>
+        <p>Controls how long the slime has been overfed, if 10, grows or reproduces</p><h3 id="var/applied_crossbreed_amount"><aside class="declaration">var </aside>applied_crossbreed_amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 86"/></a></h3>
+        <p>How many extracts of the modtype have been applied.</p><h3 id="var/attacked_stacks"><aside class="declaration">var </aside>attacked_stacks
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L113">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 113"/></a></h3>
+        <p>Determines if it's been attacked recently. Can be any number, is a cooloff-ish variable</p><h3 id="var/cores"><aside class="declaration">var </aside>cores
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 57"/></a></h3>
+        <p>The number of /obj/item/slime_extract's the slime has left inside</p><h3 id="var/crossbreed_modification"><aside class="declaration">var </aside>crossbreed_modification
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 84"/></a></h3>
+        <p>What cross core modification is being used.</p><h3 id="var/current_mood"><aside class="declaration">var </aside>current_mood
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 91"/></a></h3>
+        <p>The current mood of the slime, set randomly or through emotes (if sentient).</p><h3 id="var/discipline_stacks"><aside class="declaration">var </aside>discipline_stacks
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L98">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 98"/></a></h3>
+        <p>If a slime has been hit with a freeze gun, or wrestled/attacked off a human, they become disciplined and don't attack anymore for a while</p><h3 id="var/docile"><aside class="declaration">var </aside>docile
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L103">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 103"/></a></h3>
+        <p>Is the slime docile?</p><h3 id="var/force_stasis"><aside class="declaration">var </aside>force_stasis
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 76"/></a></h3>
+        <p>Is the slime forced into being immobile, despite the gases present?</p><h3 id="var/grow_nutrition"><aside class="declaration">var </aside>grow_nutrition
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 67"/></a></h3>
+        <p>Above it we grow our amount_grown and our power_level, below it we can eat</p><h3 id="var/holding_still"><aside class="declaration">var </aside>holding_still
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L117">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 117"/></a></h3>
+        <p>AI variable, cooloff-ish for how long it's going to stay in one place</p><h3 id="var/hunger_nutrition"><aside class="declaration">var </aside>hunger_nutrition
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 69"/></a></h3>
+        <p>Below this, we feel hungry</p><h3 id="var/is_attack_on_cooldown"><aside class="declaration">var </aside>is_attack_on_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 96"/></a></h3>
+        <p>Attack cooldown</p><h3 id="var/life_stage"><aside class="declaration">var </aside>life_stage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 54"/></a></h3>
+        <p>What is our current lifestage?</p><h3 id="var/max_nutrition"><aside class="declaration">var </aside>max_nutrition
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 65"/></a></h3>
+        <p>The maximum amount of nutrition a slime can contain</p><h3 id="var/mutation_chance"><aside class="declaration">var </aside>mutation_chance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 59"/></a></h3>
+        <p>Chance of mutating, should be between 25 and 35</p><h3 id="var/mutator_used"><aside class="declaration">var </aside>mutator_used
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 74"/></a></h3>
+        <p>Has a mutator been used on the slime? Only one is allowed</p><h3 id="var/powerlevel"><aside class="declaration">var </aside>powerlevel
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 61"/></a></h3>
+        <p>1-10 controls how much electricity they are generating</p><h3 id="var/rabid"><aside class="declaration">var </aside>rabid
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L115">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 115"/></a></h3>
+        <p>If set to 1, the slime will attack and eat anything it comes in contact with</p><h3 id="var/slime_ai_processing"><aside class="declaration">var </aside>slime_ai_processing
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L94">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 94"/></a></h3>
+        <p>Determines if the AI loop is activated</p><h3 id="var/slime_id"><aside class="declaration">var </aside>slime_id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L106">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 106"/></a></h3>
+        <p>Used to understand when someone is talking to it</p><h3 id="var/speech_buffer"><aside class="declaration">var </aside>speech_buffer
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 123"/></a></h3>
+        <p>Last phrase said near it and person who said it</p><h3 id="var/starve_nutrition"><aside class="declaration">var </aside>starve_nutrition
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 71"/></a></h3>
+        <p>Below this, we feel starving</p><h3 id="var/stunned_until"><aside class="declaration">var </aside>stunned_until
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 100"/></a></h3>
+        <p>Stored the world time when the slime's stun wears off</p><h3 id="var/target_patience"><aside class="declaration">var </aside>target_patience
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L119">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 119"/></a></h3>
+        <p>AI variable, cooloff-ish for how long it's going to follow its target</p><h2 id="proc">Proc Details</h2><h3 id="proc/add_friendship"><aside class="declaration">proc </aside>add_friendship<aside>(new_friend, amount) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L242">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 242"/></a></aside>
+        </h3>
+        <p>Alters the friendship value of the target</p><h3 id="proc/add_nutrition"><aside class="declaration">proc </aside>add_nutrition<aside>(nutrition_to_add) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/life.dm#L172">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;life.dm 172"/></a></aside>
+        </h3>
+        <p>Adds nutrition to the slime's nutrition level. Has a chance to increase its electric levels.</p><h3 id="proc/can_feed_on"><aside class="declaration">proc </aside>can_feed_on<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/meal, silent) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/powers.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;powers.dm 65"/></a></aside>
+        </h3>
+        <p>Can the slime leech life energy from the target?</p><h3 id="proc/clear_friends"><aside class="declaration">proc </aside>clear_friends<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L268">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 268"/></a></aside>
+        </h3>
+        <p>Removes everyone from the friend list</p><h3 id="proc/clear_memories_of"><aside class="declaration">proc </aside>clear_memories_of<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L273">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 273"/></a></aside>
+        </h3>
+        <p>The passed source will be no longer be the slime's target, leader, or one of its friends</p><h3 id="proc/discipline_slime"><aside class="declaration">proc </aside>discipline_slime<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L367">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 367"/></a></aside>
+        </h3>
+        <p>Makes a slime not attack people for a while</p><h3 id="proc/handle_feeding"><aside class="declaration">proc </aside>handle_feeding<aside>(seconds_per_tick, times_fired) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/life.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;life.dm 86"/></a></aside>
+        </h3>
+        <p>The divisor controls how fast body temperature changes, lower causes faster changes
+Handles the slime draining the target it is attached to</p><h3 id="proc/handle_mood"><aside class="declaration">proc </aside>handle_mood<aside>(seconds_per_tick, times_fired) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 13"/></a></aside>
+        </h3>
+        <p>Handles slime mood</p><h3 id="proc/handle_nutrition"><aside class="declaration">proc </aside>handle_nutrition<aside>(seconds_per_tick, times_fired) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/life.dm#L146">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;life.dm 146"/></a></aside>
+        </h3>
+        <p>Handles the slime's nutirion level</p><h3 id="proc/handle_speech"><aside class="declaration">proc </aside>handle_speech<aside>(seconds_per_tick, times_fired) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 51"/></a></aside>
+        </h3>
+        <p>Handles the slime understanding commends spoken to it</p><h3 id="proc/handle_targets"><aside class="declaration">proc </aside>handle_targets<aside>(seconds_per_tick, times_fired) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L282">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 282"/></a></aside>
+        </h3>
+        <p>Handles selecting targets</p><h3 id="proc/process_slime_ai"><aside class="declaration">proc </aside>process_slime_ai<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L413">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 413"/></a></aside>
+        </h3>
+        <p>the master AI process</p><h3 id="proc/random_colour"><aside class="declaration">proc </aside>random_colour<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L363">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 363"/></a></aside>
+        </h3>
+        <p>randomizes the colour of a slime</p><h3 id="proc/regenerate_icons"><aside class="parent"><a title="/mob" href="mob.html#proc/regenerate_icons">&uarr;</a></aside>regenerate_icons<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L168">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 168"/></a></aside>
+        </h3>
+        <p>Checks if the slime has a generic name, in the format of baby/adult slime (123)</p><h3 id="proc/remove_friend"><aside class="declaration">proc </aside>remove_friend<aside>(friend) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L256">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 256"/></a></aside>
+        </h3>
+        <p>Removes someone from the friendlist</p><h3 id="proc/set_friends"><aside class="declaration">proc </aside>set_friends<aside>(new_buds) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L262">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 262"/></a></aside>
+        </h3>
+        <p>Adds someone to the friend list</p><h3 id="proc/set_friendship"><aside class="declaration">proc </aside>set_friendship<aside>(new_friend, amount) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L250">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 250"/></a></aside>
+        </h3>
+        <p>Sets the friendship value of the target</p><h3 id="proc/set_leader"><aside class="declaration">proc </aside>set_leader<aside>(new_leader) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L233">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 233"/></a></aside>
+        </h3>
+        <p>Sets the person the slime is following around</p><h3 id="proc/set_life_stage"><aside class="declaration">proc </aside>set_life_stage<aside>(new_life_stage) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L313">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 313"/></a></aside>
+        </h3>
+        <p>Changes the slime's current life state</p><h3 id="proc/set_slime_type"><aside class="declaration">proc </aside>set_slime_type<aside>(new_type) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L357">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 357"/></a></aside>
+        </h3>
+        <p>Sets the slime's type, name and its icons</p><h3 id="proc/set_target"><aside class="declaration">proc </aside>set_target<aside>(new_target) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L224">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 224"/></a></aside>
+        </h3>
+        <p>Sets the slime's current attack target</p><h3 id="proc/slime_move"><aside class="declaration">proc </aside>slime_move<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L390">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 390"/></a></aside>
+        </h3>
+        <p>Makes a slime move away, used for a timed callback</p><h3 id="proc/slime_pre_attack"><aside class="declaration">proc </aside>slime_pre_attack<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/simple_animal.html">simple_animal</a>/<a href="mob/living/simple_animal/slime.html">slime</a>/our_slime, /<a href="atom.html">atom</a>/target, proximity, modifiers) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L412">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 412"/></a></aside>
+        </h3>
+        <p>Handles slime attacking restrictions, and any extra effects that would trigger</p><h3 id="proc/spawn_corecross"><aside class="declaration">proc </aside>spawn_corecross<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/slime.dm#L395">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;slime.dm 395"/></a></aside>
+        </h3>
+        <p>Spawns a crossed slimecore item</p><h3 id="proc/start_feeding"><aside class="declaration">proc </aside>start_feeding<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/target_mob) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/powers.dm#L133">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;powers.dm 133"/></a></aside>
+        </h3>
+        <p>The slime will start feeding on the target</p><h3 id="proc/stop_feeding"><aside class="declaration">proc </aside>stop_feeding<aside>(silent, living) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/powers.dm#L143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;powers.dm 143"/></a></aside>
+        </h3>
+        <p>The slime will stop feeding</p><h3 id="proc/will_hunt"><aside class="declaration">proc </aside>will_hunt<aside>(hunger) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/mob/living/simple_animal/slime/ai.dm#L401">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;slime&#x2F;ai.dm 401"/></a></aside>
+        </h3>
+        <p>Check for being stopped from feeding and chasing</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b690568de8a3c103b3e566d88f5bfa7e896279b1">b690568</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

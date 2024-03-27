@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;loadout_manager - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/loadout_manager.html#var">Var Details</a> - <a href="datum/loadout_manager.html#proc">Proc Details</a></header>
+<main>
+<h1>loadout_manager <aside>/<a href="datum.html">datum</a>/<a href="datum/loadout_manager.html">loadout_manager</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L8">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 8"/></a></h1>
+
+<p>Datum holder for the loadout manager UI.</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/loadout_manager.html#var/loadout_on_open">loadout_on_open</a></th><td>The current selected loadout list.</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#var/menu">menu</a></th><td>Our currently open greyscaling menu.</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#var/owner">owner</a></th><td>The client of the person using the UI</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/cleanup_greyscale_menu">cleanup_greyscale_menu</a></th><td>A proc to make sure our menu gets null'd properly when it's deleted.
+If we delete the greyscale menu from the greyscale datum, we don't null it correctly here, it harddels.</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/deselect_item">deselect_item</a></th><td>Deselect [deselected_item].</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/display_job_blacklists">display_job_blacklists</a></th><td>If certain jobs aren't allowed to equip this loadout item, display which</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/display_job_restrictions">display_job_restrictions</a></th><td>If only certain jobs are allowed to equip this loadout item, display which</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/display_species_restrictions">display_species_restrictions</a></th><td>If only a certain species is allowed to equip this loadout item, display which</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/select_item">select_item</a></th><td>Select [path] item to [category_slot] slot.</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/select_item_color">select_item_color</a></th><td>Select [path] item to [category_slot] slot, and open up the greyscale UI to customize [path] in [category] slot.</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/set_item_name">set_item_name</a></th><td>Set [item]'s name to input provided.</td></tr>
+            <tr><th><a href="datum/loadout_manager.html#proc/set_slot_greyscale">set_slot_greyscale</a></th><td>Sets [category_slot]'s greyscale colors to the colors in the currently opened [open_menu].</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/loadout_on_open"><aside class="declaration">var </aside>loadout_on_open
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L12">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 12"/></a></h3>
+        <p>The current selected loadout list.</p><h3 id="var/menu"><aside class="declaration">var </aside>menu
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/greyscale_modify_menu.html">greyscale_modify_menu</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L16">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 16"/></a></h3>
+        <p>Our currently open greyscaling menu.</p><h3 id="var/owner"><aside class="declaration">var </aside>owner
+            <aside>&ndash; /<a href="client.html">client</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L10">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 10"/></a></h3>
+        <p>The client of the person using the UI</p><h2 id="proc">Proc Details</h2><h3 id="proc/cleanup_greyscale_menu"><aside class="declaration">proc </aside>cleanup_greyscale_menu<aside>(/<a href="datum.html">datum</a>/source) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L169">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 169"/></a></aside>
+        </h3>
+        <p>A proc to make sure our menu gets null'd properly when it's deleted.
+If we delete the greyscale menu from the greyscale datum, we don't null it correctly here, it harddels.</p><h3 id="proc/deselect_item"><aside class="declaration">proc </aside>deselect_item<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/deselected_item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L129">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 129"/></a></aside>
+        </h3>
+        <p>Deselect [deselected_item].</p><h3 id="proc/display_job_blacklists"><aside class="declaration">proc </aside>display_job_blacklists<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L232">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 232"/></a></aside>
+        </h3>
+        <p>If certain jobs aren't allowed to equip this loadout item, display which</p><h3 id="proc/display_job_restrictions"><aside class="declaration">proc </aside>display_job_restrictions<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L222">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 222"/></a></aside>
+        </h3>
+        <p>If only certain jobs are allowed to equip this loadout item, display which</p><h3 id="proc/display_species_restrictions"><aside class="declaration">proc </aside>display_species_restrictions<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L242">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 242"/></a></aside>
+        </h3>
+        <p>If only a certain species is allowed to equip this loadout item, display which</p><h3 id="proc/select_item"><aside class="declaration">proc </aside>select_item<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/selected_item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L113">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 113"/></a></aside>
+        </h3>
+        <p>Select [path] item to [category_slot] slot.</p><h3 id="proc/select_item_color"><aside class="declaration">proc </aside>select_item_color<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L133">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 133"/></a></aside>
+        </h3>
+        <p>Select [path] item to [category_slot] slot, and open up the greyscale UI to customize [path] in [category] slot.</p><h3 id="proc/set_item_name"><aside class="declaration">proc </aside>set_item_name<aside>(/<a href="datum.html">datum</a>/<a href="datum/loadout_item.html">loadout_item</a>/item) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L192">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 192"/></a></aside>
+        </h3>
+        <p>Set [item]'s name to input provided.</p><h3 id="proc/set_slot_greyscale"><aside class="declaration">proc </aside>set_slot_greyscale<aside>(path, /<a href="datum.html">datum</a>/<a href="datum/greyscale_modify_menu.html">greyscale_modify_menu</a>/open_menu) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/modular_skyrat/modules/loadouts/loadout_ui/loadout_manager.dm#L175">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;loadouts&#x2F;loadout_ui&#x2F;loadout_manager.dm 175"/></a></aside>
+        </h3>
+        <p>Sets [category_slot]'s greyscale colors to the colors in the currently opened [open_menu].</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b690568de8a3c103b3e566d88f5bfa7e896279b1">b690568</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery&#x2F;status_display&#x2F;door_timer - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery/status_display/door_timer.html#var">Var Details</a> - <a href="obj/machinery/status_display/door_timer.html#proc">Proc Details</a></header>
+<main>
+<h1>door_timer <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/status_display.html">status_display</a>/<a href="obj/machinery/status_display/door_timer.html">door_timer</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 16"/></a></h1>
+
+<p>Brig Door control displays.</p>
+<p>This is a controls the timer for the brig doors, displays the timer on itself and
+has a popup window when used, allowing to set the timer.</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#var/closets">closets</a></th><td>List of weakrefs to nearby closets</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#var/doors">doors</a></th><td>List of weakrefs to nearby doors</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#var/flashers">flashers</a></th><td>List of weakrefs to nearby flashers</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#var/sec_radio">sec_radio</a></th><td>needed to send messages to sec radio</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#proc/set_timer">set_timer</a></th><td>Set the timer. Does NOT automatically start counting down, but does update the display.</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#proc/time_left">time_left</a></th><td>Return time left.
+Arguments:</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#proc/timer_end">timer_end</a></th><td>Stops the timer and resets the timer to 0, and opens the linked door.
+Arguments:</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#proc/timer_start">timer_start</a></th><td>Starts counting down the timer and closes linked the door.
+The timer is expected to have already been set by set_timer()</td></tr>
+            <tr><th><a href="obj/machinery/status_display/door_timer.html#proc/update_content">update_content</a></th><td>Update the display content.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/closets"><aside class="declaration">var </aside>closets
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 35"/></a></h3>
+        <p>List of weakrefs to nearby closets</p><h3 id="var/doors"><aside class="declaration">var </aside>doors
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 31"/></a></h3>
+        <p>List of weakrefs to nearby doors</p><h3 id="var/flashers"><aside class="declaration">var </aside>flashers
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 33"/></a></h3>
+        <p>List of weakrefs to nearby flashers</p><h3 id="var/sec_radio"><aside class="declaration">var </aside>sec_radio
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/radio.html">radio</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 39"/></a></h3>
+        <p>needed to send messages to sec radio</p><h2 id="proc">Proc Details</h2><h3 id="proc/set_timer"><aside class="declaration">proc </aside>set_timer<aside>(value) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L190">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 190"/></a></aside>
+        </h3>
+        <p>Set the timer. Does NOT automatically start counting down, but does update the display.</p>
+<p>returns TRUE if no change occurred</p>
+<p>Arguments:
+value - time in deciseconds to set the timer for.</p><h3 id="proc/time_left"><aside class="declaration">proc </aside>time_left<aside>(seconds) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 177"/></a></aside>
+        </h3>
+        <p>Return time left.
+Arguments:</p>
+<ul>
+<li>seconds - return time in seconds it TRUE, else deciseconds.</li>
+</ul><h3 id="proc/timer_end"><aside class="declaration">proc </aside>timer_end<aside>(forced) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 136"/></a></aside>
+        </h3>
+        <p>Stops the timer and resets the timer to 0, and opens the linked door.
+Arguments:</p>
+<ul>
+<li>forced - TRUE if it was forced to stop rather than timing out. Will skip radioing, etc.</li>
+</ul><h3 id="proc/timer_start"><aside class="declaration">proc </aside>timer_start<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L101">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 101"/></a></aside>
+        </h3>
+        <p>Starts counting down the timer and closes linked the door.
+The timer is expected to have already been set by set_timer()</p><h3 id="proc/update_content"><aside class="declaration">proc </aside>update_content<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/game/machinery/doors/brigdoors.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;doors&#x2F;brigdoors.dm 86"/></a></aside>
+        </h3>
+        <p>Update the display content.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b690568de8a3c103b3e566d88f5bfa7e896279b1">b690568</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

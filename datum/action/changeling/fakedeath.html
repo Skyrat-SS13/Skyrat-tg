@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;action&#x2F;changeling&#x2F;fakedeath - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/action/changeling/fakedeath.html#var">Var Details</a> - <a href="datum/action/changeling/fakedeath.html#proc">Proc Details</a></header>
+<main>
+<h1>fakedeath <aside>/<a href="datum.html">datum</a>/<a href="datum/action.html">action</a>/<a href="datum/action/changeling.html">changeling</a>/<a href="datum/action/changeling/fakedeath.html">fakedeath</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#var/fakedeath_duration">fakedeath_duration</a></th><td>How long it takes for revival to ready upon entering stasis.
+The changeling can opt to stay in fakedeath for longer, though.</td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#var/revive_ready">revive_ready</a></th><td>If TRUE, we're ready to revive and can click the button to heal.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#proc/disable_revive">disable_revive</a></th><td>Sets [revive_ready] to FALSE and updates the button icons.
+Can be called mid-revival if the process is being cancelled</td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#proc/enable_fakedeath">enable_fakedeath</a></th><td>Used to enable fakedeath and register relevant signals / start timers</td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#proc/enable_revive">enable_revive</a></th><td>Sets [revive_ready] to TRUE and updates the button icons.</td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#proc/fakedeath_reset">fakedeath_reset</a></th><td>Signal proc to stop the revival process if the changeling exits their stasis early.</td></tr>
+            <tr><th><a href="datum/action/changeling/fakedeath.html#proc/on_stat_change">on_stat_change</a></th><td>Signal proc to exit fakedeath early if we're revived from being previously dead</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/fakedeath_duration"><aside class="declaration">var </aside>fakedeath_duration
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 13"/></a></h3>
+        <p>How long it takes for revival to ready upon entering stasis.
+The changeling can opt to stay in fakedeath for longer, though.</p><h3 id="var/revive_ready"><aside class="declaration">var </aside>revive_ready
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 15"/></a></h3>
+        <p>If TRUE, we're ready to revive and can click the button to heal.</p><h2 id="proc">Proc Details</h2><h3 id="proc/disable_revive"><aside class="declaration">proc </aside>disable_revive<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/changeling) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 52"/></a></aside>
+        </h3>
+        <p>Sets [revive_ready] to FALSE and updates the button icons.
+Can be called mid-revival if the process is being cancelled</p><h3 id="proc/enable_fakedeath"><aside class="declaration">proc </aside>enable_fakedeath<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/changeling, duration_modifier) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 38"/></a></aside>
+        </h3>
+        <p>Used to enable fakedeath and register relevant signals / start timers</p><h3 id="proc/enable_revive"><aside class="declaration">proc </aside>enable_revive<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/changeling) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 63"/></a></aside>
+        </h3>
+        <p>Sets [revive_ready] to TRUE and updates the button icons.</p><h3 id="proc/fakedeath_reset"><aside class="declaration">proc </aside>fakedeath_reset<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/source) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 72"/></a></aside>
+        </h3>
+        <p>Signal proc to stop the revival process if the changeling exits their stasis early.</p><h3 id="proc/on_stat_change"><aside class="declaration">proc </aside>on_stat_change<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/source, new_stat, old_stat) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/antagonists/changeling/powers/fakedeath.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;changeling&#x2F;powers&#x2F;fakedeath.dm 81"/></a></aside>
+        </h3>
+        <p>Signal proc to exit fakedeath early if we're revived from being previously dead</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b690568de8a3c103b3e566d88f5bfa7e896279b1">b690568</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

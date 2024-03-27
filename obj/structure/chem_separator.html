@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;structure&#x2F;chem_separator - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/structure/chem_separator.html#var">Var Details</a> - <a href="obj/structure/chem_separator.html#proc">Proc Details</a></header>
+<main>
+<h1>chem_separator <aside>/<a href="obj.html">obj</a>/<a href="obj/structure.html">structure</a>/<a href="obj/structure/chem_separator.html">chem_separator</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/beaker">beaker</a></th><td>Reagent container for condensate or separator filling</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/boiling">boiling</a></th><td>Whether the mixture is above the required temperature and the separation is in process</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/burning">burning</a></th><td>Whether the burner is currently on and the mixture is heating up</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/condenser">condenser</a></th><td>Reagent container for the vapor of the separating reagent</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/distillation_rate">distillation_rate</a></th><td>Separation speed in units per second</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/fill_icon_thresholds">fill_icon_thresholds</a></th><td>Icons for different percentages of beaker/separator reagent volumes</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/heating_rate">heating_rate</a></th><td>Mixture heating speed in degrees per second for full container</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/required_temp">required_temp</a></th><td>Minimal mixture temperature for separation</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/separating_reagent">separating_reagent</a></th><td>The reagent chosen for separation</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/soundloop">soundloop</a></th><td>Sound during separation</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#var/temperature_icon_thresholds">temperature_icon_thresholds</a></th><td>The temperature thresholds used for thermometer icon update, in Celsius</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/can_process">can_process</a></th><td>Check whether the separation can process</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/ignite_with">ignite_with</a></th><td>Checks whether the item can ignite the separator</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/load">load</a></th><td>Fill internal storage with reagents from the container</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/replace_beaker">replace_beaker</a></th><td>Insert, replace or eject the container depending on the state and parameters</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/start">start</a></th><td>Ignite the burner to start the separation process</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/stop">stop</a></th><td>Extinguish the burner to stop the separation process</td></tr>
+            <tr><th><a href="obj/structure/chem_separator.html#proc/unload">unload</a></th><td>Drain internal reagents into the container</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/beaker"><aside class="declaration">var </aside>beaker
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/reagent_containers.html">reagent_containers</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 32"/></a></h3>
+        <p>Reagent container for condensate or separator filling</p><h3 id="var/boiling"><aside class="declaration">var </aside>boiling
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 16"/></a></h3>
+        <p>Whether the mixture is above the required temperature and the separation is in process</p><h3 id="var/burning"><aside class="declaration">var </aside>burning
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 14"/></a></h3>
+        <p>Whether the burner is currently on and the mixture is heating up</p><h3 id="var/condenser"><aside class="declaration">var </aside>condenser
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/reagents.html">reagents</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 26"/></a></h3>
+        <p>Reagent container for the vapor of the separating reagent</p><h3 id="var/distillation_rate"><aside class="declaration">var </aside>distillation_rate
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 24"/></a></h3>
+        <p>Separation speed in units per second</p><h3 id="var/fill_icon_thresholds"><aside class="declaration">var </aside>fill_icon_thresholds
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 10"/></a></h3>
+        <p>Icons for different percentages of beaker/separator reagent volumes</p><h3 id="var/heating_rate"><aside class="declaration">var </aside>heating_rate
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 22"/></a></h3>
+        <p>Mixture heating speed in degrees per second for full container</p><h3 id="var/required_temp"><aside class="declaration">var </aside>required_temp
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 20"/></a></h3>
+        <p>Minimal mixture temperature for separation</p><h3 id="var/separating_reagent"><aside class="declaration">var </aside>separating_reagent
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/reagent.html">reagent</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 28"/></a></h3>
+        <p>The reagent chosen for separation</p><h3 id="var/soundloop"><aside class="declaration">var </aside>soundloop
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/looping_sound.html">looping_sound</a>/boiling</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 18"/></a></h3>
+        <p>Sound during separation</p><h3 id="var/temperature_icon_thresholds"><aside class="declaration">var </aside>temperature_icon_thresholds
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 12"/></a></h3>
+        <p>The temperature thresholds used for thermometer icon update, in Celsius</p><h2 id="proc">Proc Details</h2><h3 id="proc/can_process"><aside class="declaration">proc </aside>can_process<aside>(/<a href="datum.html">datum</a>/<a href="datum/gas_mixture.html">gas_mixture</a>/air) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L201">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 201"/></a></aside>
+        </h3>
+        <p>Check whether the separation can process</p><h3 id="proc/ignite_with"><aside class="declaration">proc </aside>ignite_with<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/object, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 100"/></a></aside>
+        </h3>
+        <p>Checks whether the item can ignite the separator</p><h3 id="proc/load"><aside class="declaration">proc </aside>load<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 177"/></a></aside>
+        </h3>
+        <p>Fill internal storage with reagents from the container</p><h3 id="proc/replace_beaker"><aside class="declaration">proc </aside>replace_beaker<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/reagent_containers.html">reagent_containers</a>/new_beaker) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L122">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 122"/></a></aside>
+        </h3>
+        <p>Insert, replace or eject the container depending on the state and parameters</p><h3 id="proc/start"><aside class="declaration">proc </aside>start<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L151">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 151"/></a></aside>
+        </h3>
+        <p>Ignite the burner to start the separation process</p><h3 id="proc/stop"><aside class="declaration">proc </aside>stop<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L166">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 166"/></a></aside>
+        </h3>
+        <p>Extinguish the burner to stop the separation process</p><h3 id="proc/unload"><aside class="declaration">proc </aside>unload<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b690568de8a3c103b3e566d88f5bfa7e896279b1/code/modules/reagents/chemistry/machinery/chem_separator.dm#L188">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;reagents&#x2F;chemistry&#x2F;machinery&#x2F;chem_separator.dm 188"/></a></aside>
+        </h3>
+        <p>Drain internal reagents into the container</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b690568de8a3c103b3e566d88f5bfa7e896279b1">b690568</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>
