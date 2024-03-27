@@ -198,8 +198,13 @@
 					if(istype(content, recipe.result))
 						return ", object already present."
 			//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
-			if(ismob(crafter) && !do_after(crafter, recipe.time, target = crafter))
-				return "."
+			//SKYRAT EDIT START: Construction Skill
+			var/mob/crafter_mob
+			if(ismob(crafter))
+				crafter_mob = crafter
+				var/skill_modifier = crafter_mob.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER)
+				if(!do_after(crafter, recipe.time * skill_modifier, target = crafter))
+					return "."
 			contents = get_surroundings(crafter, recipe.blacklist)
 			if(!check_contents(crafter, recipe, contents))
 				return ", missing component."
@@ -214,6 +219,9 @@
 				if(result.atom_storage && recipe.delete_contents)
 					for(var/obj/item/thing in result)
 						qdel(thing)
+			if(crafter_mob)
+				crafter_mob.mind.adjust_experience(/datum/skill/construction, 5)
+			//SKYRAT EDIT STOP: Construction Skill
 			var/datum/reagents/holder = locate() in parts
 			if(holder) //transfer reagents from ingredients to result
 				if(!ispath(recipe.result,  /obj/item/reagent_containers) && result.reagents)
