@@ -688,7 +688,6 @@
 	desc = "A miraculous chemical mix that grants human like intelligence to living beings."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "potpink"
-	var/list/not_interested = list()
 	var/being_used = FALSE
 	var/sentience_type = SENTIENCE_ORGANIC
 
@@ -704,7 +703,9 @@
 	if(!dumb_mob.compare_sentience_type(sentience_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
 		balloon_alert(user, "invalid creature!")
 		return
-
+	var/potion_reason = tgui_input_text(user, "For what reason?", "Intelligence Potion", multiline = TRUE, timeout = 2 MINUTES)
+	if(isnull(potion_reason))
+		return
 	balloon_alert(user, "offering...")
 	being_used = TRUE
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
@@ -716,8 +717,8 @@
 		alert_pic = dumb_mob,
 		role_name_text = "intelligence potion",
 		chat_text_border_icon = src,
->>>>>>> 31996c114b5 ([no gbp] fix span type errors with poll alerts (#81979))
 	)
+	on_poll_concluded(user, dumb_mob, chosen_one)
 
 /// Assign the chosen ghost to the mob
 /obj/item/slimepotion/slime/sentience/proc/on_poll_concluded(mob/user, mob/living/dumb_mob, mob/dead/observer/ghost)
