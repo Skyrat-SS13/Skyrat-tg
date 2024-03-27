@@ -28,14 +28,14 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 20)
 	build_path = /obj/item/organ/internal/lungs/nitrogen
-	category = list(RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_INITIAL)
+	category = list(SPECIES_HUMAN, RND_CATEGORY_INITIAL)
 
 /datum/design/vox_nitrogen_lungs
 	name = "Vox Nitrogen Lungs"
-	id = "nitrogenlunggeneric"
+	id = "nitrogenlungvox"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 20)
 	build_path = /obj/item/organ/internal/lungs/nitrogen/vox
-	category = list(RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_INITIAL)
+	category = list(SPECIES_HUMAN, RND_CATEGORY_INITIAL)
 
 
