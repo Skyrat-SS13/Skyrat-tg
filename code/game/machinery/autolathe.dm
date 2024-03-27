@@ -365,7 +365,11 @@
 
 /obj/machinery/autolathe/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
+<<<<<<< HEAD
 	if((!issilicon(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
+=======
+	if(!can_interact(usr) || (!HAS_SILICON_ACCESS(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
+>>>>>>> fb974c42703 (Stops Ghosts changing lathe output (#82146))
 		return
 	if(busy)
 		balloon_alert(usr, "printing started!")
