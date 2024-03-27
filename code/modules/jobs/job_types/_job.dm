@@ -119,8 +119,11 @@
 	var/job_spawn_title
 	//SKYRAT ADDITION END
 
-	///RPG job names, for the memes
+	/// RPG job names, for the memes
 	var/rpg_title
+
+	/// Alternate titles to register as pointing to this job. 
+	var/list/alternate_titles
 
 	/// Does this job ignore human authority?
 	var/ignore_human_authority = FALSE

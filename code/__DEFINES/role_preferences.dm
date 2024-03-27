@@ -16,6 +16,7 @@
 #define ROLE_OPERATIVE "Operative"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
+#define ROLE_SPY "Spy"
 // SKYRAT EDIT START
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
 #define ROLE_OPFOR_CANDIDATE "OPFOR Candidate"
@@ -145,6 +146,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_REV_HEAD = 14,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
+	ROLE_SPY = 0,
 	// SKYRAT EDIT ADDITION
 	ROLE_ASSAULT_OPERATIVE = 14,
 	// SKYRAT EDIT END
