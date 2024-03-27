@@ -11,6 +11,7 @@
 		/datum/reagent/medicine/silibinin = 5,
 		/datum/reagent/toxin/leadacetate = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 3.5
 
 // Demoneye, for when you feel the need to become "fucking invincible"
 /obj/item/reagent_containers/hypospray/medipen/deforest/demoneye
@@ -24,6 +25,7 @@
 		/datum/reagent/drug/maint/sludge = 10,
 		/datum/reagent/toxin/leadacetate = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 3.5
 
 // Mix of many of the stamina damage regenerating drugs to provide a cocktail no baton could hope to beat
 /obj/item/reagent_containers/hypospray/medipen/deforest/aranepaine
@@ -39,6 +41,7 @@
 		/datum/reagent/medicine/diphenhydramine = 5,
 		/datum/reagent/impurity = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 2.5
 
 // Nothing inherently illegal, just a potentially very dangerous mix of chems to be able to inject into people
 /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
@@ -54,6 +57,7 @@
 		/datum/reagent/medicine/omnizine = 5,
 		/datum/reagent/inverse/healing/tirimol = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 2.5
 
 // Combat stimulant that makes you immune to slowdowns for a bit
 /obj/item/reagent_containers/hypospray/medipen/deforest/synalvipitol
@@ -68,3 +72,4 @@
 		/datum/reagent/medicine/muscle_stimulant = 5,
 		/datum/reagent/impurity = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 2.5

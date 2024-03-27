@@ -666,6 +666,7 @@
 		/obj/machinery/vending/imported/tiziran = "Tiziran Imported Delicacies", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported/yangyu = "Fudobenda", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/security = "Armadyne Peacekeeper Equipment Vendor", //SKYRAT EDIT CHANGE - SEC_HUAL - ORIGINAL: /obj/machinery/vending/security = "SecTech",
+		/obj/machinery/vending/deforest_medvend = "DeForest Med-Vend", //SKYRAT PORT ADDITION
 	)
 
 /obj/item/circuitboard/machine/vendor/screwdriver_act(mob/living/user, obj/item/tool)

@@ -9,23 +9,23 @@
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/civil_defense
 	item_type = /obj/item/storage/medkit/civil_defense/stocked
-	cost = PAYCHECK_COMMAND * 4
+	cost = PAYCHECK_COMMAND * 2.5
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/frontier
 	item_type = /obj/item/storage/medkit/frontier/stocked
-	cost = PAYCHECK_COMMAND * 5
+	cost = PAYCHECK_COMMAND * 3.5
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/combat_surgeon
 	item_type = /obj/item/storage/medkit/combat_surgeon/stocked
-	cost = PAYCHECK_COMMAND * 6
+	cost = PAYCHECK_COMMAND * 3.5
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/first_responder
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
-	cost = PAYCHECK_COMMAND * 10
+	cost = PAYCHECK_COMMAND * 6
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/orange_satchel
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
-	cost = PAYCHECK_COMMAND * 15
+	cost = PAYCHECK_COMMAND * 8
 
 // Basic first aid supplies like gauze, sutures, mesh, so on
 
@@ -44,6 +44,22 @@
 	item_type = /obj/item/stack/medical/gauze/sterilized
 	cost = PAYCHECK_LOWER
 
+/datum/armament_entry/company_import/deforest/first_aid/suture
+	item_type = /obj/item/stack/medical/suture
+	cost = PAYCHECK_LOWER
+
+/datum/armament_entry/company_import/deforest/first_aid/ointment
+	item_type = /obj/item/stack/medical/ointment
+	cost = PAYCHECK_LOWER
+
+/datum/armament_entry/company_import/deforest/first_aid/mesh
+	item_type = /obj/item/stack/medical/mesh
+	cost = PAYCHECK_LOWER
+
+/datum/armament_entry/company_import/deforest/first_aid/bandaid
+	item_type = /obj/item/storage/box/bandages
+	cost = PAYCHECK_CREW * 1.5
+
 /datum/armament_entry/company_import/deforest/first_aid/amollin
 	item_type = /obj/item/storage/pill_bottle/painkiller
 	cost = PAYCHECK_CREW
@@ -60,7 +76,7 @@
 
 /datum/armament_entry/company_import/deforest/medpens
 	subcategory = "Medical Autoinjectors"
-	cost = PAYCHECK_COMMAND * 1.5
+	cost = PAYCHECK_LOWER * 3
 
 /datum/armament_entry/company_import/deforest/medpens/occuisate
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate
@@ -131,6 +147,10 @@
 /datum/armament_entry/company_import/deforest/equipment
 	subcategory = "Medical Equipment"
 
+/datum/armament_entry/company_import/deforest/equipment/treatment_zone_projector
+	item_type = /obj/item/holosign_creator/medical/treatment_zone
+	cost = PAYCHECK_LOWER
+
 /datum/armament_entry/company_import/deforest/equipment/health_analyzer
 	item_type = /obj/item/healthanalyzer
 	cost = PAYCHECK_LOWER
@@ -138,6 +158,14 @@
 /datum/armament_entry/company_import/deforest/equipment/loaded_defib
 	item_type = /obj/item/defibrillator/loaded
 	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/deforest/equipment/loaded_belt_defib
+	item_type = /obj/item/defibrillator/compact/loaded
+	cost = PAYCHECK_COMMAND*2
+
+/datum/armament_entry/company_import/deforest/equipment/loaded_belt_defib2
+	item_type = /obj/item/defibrillator/compact/combat/loaded/nanotrasen
+	cost = PAYCHECK_COMMAND*8
 
 /datum/armament_entry/company_import/deforest/equipment/surgical_tools
 	item_type = /obj/item/surgery_tray/full
@@ -171,6 +199,22 @@
 	item_type = /obj/item/gun/medbeam/afad
 	cost = PAYCHECK_COMMAND * 5
 
+/datum/armament_entry/company_import/deforest/equipment/medstation
+	item_type = /obj/item/wallframe/frontier_medstation
+	cost = PAYCHECK_COMMAND * 5
+
+/datum/armament_entry/company_import/deforest/equipment/medhud
+	item_type = /obj/item/clothing/glasses/hud/health
+	cost = PAYCHECK_COMMAND * 2
+
+/datum/armament_entry/company_import/deforest/equipment/medhud_night
+	item_type = /obj/item/clothing/glasses/hud/health/night
+	cost = PAYCHECK_COMMAND * 4
+
+/datum/armament_entry/company_import/deforest/equipment/medhud_night_sci
+	item_type = /obj/item/clothing/glasses/hud/health/night/science
+	cost = PAYCHECK_COMMAND * 6
+
 // Modsuit Modules from the medical category, here instead of in Nakamura because nobody buys from this company
 
 /datum/armament_entry/company_import/deforest/medical_modules
@@ -196,3 +240,8 @@
 /datum/armament_entry/company_import/deforest/medical_modules/surgical_processor
 	name = "MOD surgical processor module"
 	item_type = /obj/item/mod/module/surgical_processor
+
+/datum/armament_entry/company_import/deforest/medical_modules/defibrillator
+	name = "MOD defibrillator module"
+	item_type = /obj/item/mod/module/defibrillator
+
