@@ -106,6 +106,7 @@
 	var/choice = tgui_input_list(user, "Remove the rocks from [src]?", "Rock Removal", list("Yes", "No"))
 	if(choice != "Yes")
 		return
+
 	var/turf/src_turf = get_turf(src)
 	for(var/obj/item/removed_item in storage_unit.contents)
 		removed_item.forceMove(src_turf)
