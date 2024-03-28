@@ -11,7 +11,7 @@
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
 GLOBAL_VAR(pizza_order)
-GLOBAL_VAR_INIT(solfed_tech_charge, -15000)
+GLOBAL_VAR_INIT(solfed_tech_charge, -7500)
 GLOBAL_LIST_INIT(pizza_names, list(
 	"Dixon Buttes",
 	"I. C. Weiner",
@@ -329,15 +329,17 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	ears = /obj/item/radio/headset/headset_sec/alt
 	head = /obj/item/clothing/head/soft/black
 	suit_store = /obj/item/gun/energy/disabler
-	belt = /obj/item/melee/baton/security/loaded
+	belt = /obj/item/storage/belt/security/full
 	r_pocket = /obj/item/flashlight/seclite
-	l_pocket = /obj/item/restraints/handcuffs
+	l_pocket = /obj/item/gun/ballistic/revolver/sol
 	id = /obj/item/card/id/advanced/solfed
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
-		/obj/item/storage/box/handcuffs = 1,
+		/obj/item/ammo_box/c35sol = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1,
+		/obj/item/taperecorder = 1,
+		/obj/item/storage/box/evidence = 1,
 	)
 
 	id_trim = /datum/id_trim/solfed
@@ -412,11 +414,13 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	suit_store = /obj/item/tank/internals/emergency_oxygen/engi
 	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/storage/medkit/civil_defense
+	r_hand = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/emergency_bed = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1,
+		/obj/item/defibrillator/compact/loaded = 1,
 	)
 
 	id_trim = /datum/id_trim/solfed
@@ -456,12 +460,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
-	l_hand = /obj/item/gun/ballistic/shotgun/riot/sol
+	l_hand = /obj/item/gun/ballistic/automatic/sol_rifle
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/box/lethalshot = 2,
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 3,
 		/obj/item/solfed_reporter/treason_reporter = 1,
 		/obj/item/beamout_tool = 1,
 	)
@@ -469,7 +473,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/treason_destroyer
-	name = "Sol Federation Military"
+	name = "Sol Federation Peacekeeper"
 	role = "Private"
 	department = "Military"
 	outfit = /datum/outfit/request_911/treason_destroyer
