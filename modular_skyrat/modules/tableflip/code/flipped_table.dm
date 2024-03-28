@@ -46,7 +46,7 @@
 	if(direction == dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 
-/obj/structure/flippedtable/CtrlShiftClick(mob/user)
+/obj/structure/flippedtable/CtrlShiftClick(mob/living/user)
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return FALSE
@@ -64,7 +64,7 @@
 
 /obj/structure/table/CtrlShiftClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src) || isobserver(user) || iscorticalborer(user))
+	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return
 	if(!can_flip)
 		return
