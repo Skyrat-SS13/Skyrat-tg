@@ -20,7 +20,10 @@
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 	flick("thermo_deploy", src)
+
+	// Makes for certain that we are visually facing the correct way
 	setDir(dir)
+	update_appearance()
 
 /obj/machinery/atmospherics/components/unary/thermomachine/deployable/RefreshParts()
 	. = ..()

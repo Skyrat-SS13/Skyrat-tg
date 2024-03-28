@@ -24,6 +24,7 @@
 		"flatpack_thermo",
 		"flatpack_ore_silo",
 		"flatpack_turbine_team_fortress_two",
+		"flatpack_bootleg_teg",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -33,7 +34,7 @@
 // Lets the colony lathe make more colony lathes but at very hihg cost, for fun
 
 /datum/design/flatpack_colony_fabricator
-	name = "Flat-packed Colony Fabricator"
+	name = "Flat-Packed Colony Fabricator"
 	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
 		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
 		and moved to any location you see fit."
@@ -51,12 +52,12 @@
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_MANUFACTURING,
 	)
-	construction_time = 30 SECONDS
+	construction_time = 2 MINUTES
 
 // Solar panels and trackers
 
 /datum/design/flatpack_solar_panel
-	name = "Flat-packed Solar Panel"
+	name = "Flat-Packed Solar Panel"
 	desc = "A deployable solar panel, able to be repacked after placement for relocation or recycling."
 	id = "flatpack_solar_panel"
 	build_type = COLONY_FABRICATOR
@@ -72,7 +73,7 @@
 	construction_time = 5 SECONDS
 
 /datum/design/flatpack_solar_tracker
-	name = "Flat-packed Solar Tracker"
+	name = "Flat-Packed Solar Tracker"
 	desc = "A deployable solar tracker, able to be repacked after placement for relocation or recycling."
 	id = "flatpack_solar_tracker"
 	build_type = COLONY_FABRICATOR
@@ -90,7 +91,7 @@
 // Arc furance
 
 /datum/design/flatpack_arc_furnace
-	name = "Flat-packed Arc Furnace"
+	name = "Flat-Packed Arc Furnace"
 	desc = "A deployable furnace for refining ores. While slower and less safe than conventional refining methods, \
 		it multiplies the output of refined materials enough to still outperform simply recycling ore."
 	id = "flatpack_arc_furnace"
@@ -109,7 +110,7 @@
 // Power storage structures
 
 /datum/design/flatpack_power_storage
-	name = "Flat-packed Stationary Battery"
+	name = "Flat-Packed Stationary Battery"
 	desc = "A deployable station-scale power cell with an overall low capacity, but high input and output rate."
 	id = "flatpack_station_battery"
 	build_type = COLONY_FABRICATOR
@@ -126,7 +127,7 @@
 	construction_time = 20 SECONDS
 
 /datum/design/flatpack_power_storage_large
-	name = "Flat-packed Large Stationary Battery"
+	name = "Flat-Packed Large Stationary Battery"
 	desc = "A deployable station-scale power cell with an overall extremely high capacity, but low input and output rate."
 	id = "flatpack_station_battery_large"
 	build_type = COLONY_FABRICATOR
@@ -166,7 +167,7 @@
 // Buildable RTG that is quite radioactive
 
 /datum/design/flatpack_rtg
-	name = "Flat-packed Radioisotope Thermoelectric Generator"
+	name = "Flat-Packed Radioisotope Thermoelectric Generator"
 	desc = "A deployable radioisotope generator capable of producing a practically free trickle of power. \
 		Free if you can tolerate the radiation that the machine makes while deployed, that is."
 	id = "flatpack_rtg"
@@ -187,7 +188,7 @@
 // Thermomachine with decent temperature change rate, but a limited max/min temperature
 
 /datum/design/flatpack_thermomachine
-	name = "Flat-packed Atmospheric Temperature Regulator"
+	name = "Flat-Packed Atmospheric Temperature Regulator"
 	desc = "A deployable temperature control device for use with atmospherics pipe systems. \
 		Limited in its temperature range, however comes with a higher than normal heat capacity."
 	id = "flatpack_thermo"
@@ -206,7 +207,7 @@
 // Ore silo except it beeps
 
 /datum/design/flatpack_ore_silo
-	name = "Flat-packed Ore Silo"
+	name = "Flat-Packed Ore Silo"
 	desc = "An all-in-one materials management solution. Connects resource-using machines \
 		through a network of distrobution systems."
 	id = "flatpack_ore_silo"
@@ -225,7 +226,7 @@
 // Wind turbine, produces tiny amounts of power when placed outdoors in an atmosphere, but makes significantly more if there's a storm in that area
 
 /datum/design/flatpack_turbine_team_fortress_two
-	name = "Flat-packed Miniature Wind Turbine"
+	name = "Flat-Packed Miniature Wind Turbine"
 	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
 		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
 		and moved to any location you see fit. This one makes specialized engineering designs and tools."
@@ -242,6 +243,30 @@
 		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
 	)
 	construction_time = 30 SECONDS
+
+// Stirling generator, kinda like a TEG but on a smaller scale and producing less insane amounts of power
+
+/datum/design/flatpack_bootleg_teg
+	name = "Flat-Packed Stirling Generator"
+	desc = "An industrial scale stirling generator. Stirling generators operate by intaking \
+		hot gasses through their inlet pipes, and being cooled by the ambient air around them. \
+		The cycling compression and expansion that this creates creates power, and this one is made \
+		to make power on the scale of small stations and outposts."
+	id = "flatpack_bootleg_teg"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 10,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 5,
+	)
+	build_path = /obj/item/flatpacked_machine/stirling_generator
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
+	)
+	construction_time = 2 MINUTES
 
 #undef FABRICATOR_CATEGORY_FLATPACK_MACHINES
 #undef FABRICATOR_SUBCATEGORY_MANUFACTURING
