@@ -71,6 +71,8 @@
 	var/times_hit = 0
 	///the required time before each strike to prevent spamming
 	var/average_wait = 1 SECONDS
+	///the number of current perfect hits (really only impacts weapons atm)
+	var/current_perfects = 0
 	///the path of the item that will be spawned upon completion
 	var/spawn_item
 	//because who doesn't want to have a plasma sword?
@@ -168,6 +170,8 @@
 /obj/item/forging/complete
 	///the path of the item that will be created
 	var/spawning_item
+	///the amount of perfect hits on the item, if it was allowed
+	var/current_perfects = 0
 	//because who doesn't want to have a plasma sword?
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
