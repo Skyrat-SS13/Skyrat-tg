@@ -5005,6 +5005,7 @@
 	dir = 1
 	},
 /obj/machinery/newscaster/directional/north,
+/obj/machinery/modular_computer/preset/cargochat/science,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "aJN" = (
@@ -17311,6 +17312,21 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Science - Research & Development";
+	network = list("ss13","rd")
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/kirbyplants/organic/plant10,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "faN" = (
@@ -18739,9 +18755,6 @@
 	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
-	},
-/obj/machinery/computer/department_orders/science{
-	dir = 4
 	},
 /turf/open/floor/glass/reinforced,
 /area/station/science/research)
@@ -46538,10 +46551,10 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/central)
 "pza" = (
-/obj/machinery/computer/department_orders/medical{
+/obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
-/obj/effect/turf_decal/siding/white{
+/obj/machinery/modular_computer/preset/cargochat/medical{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -49431,10 +49444,8 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 5
 	},
-/obj/machinery/computer/department_orders/engineering{
-	dir = 8
-	},
 /obj/structure/cable,
+/obj/structure/table,
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "qAl" = (
@@ -52455,9 +52466,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/modular_computer/preset/cargochat/medical{
-	dir = 4
-	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "rDj" = (
@@ -54658,9 +54666,6 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/machinery/modular_computer/preset/civilian{
-	dir = 8
-	},
 /turf/open/floor/glass/reinforced,
 /area/station/science/research)
 "srz" = (
@@ -54769,12 +54774,16 @@
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/starboard/greater)
 "ssN" = (
-/obj/machinery/computer/department_orders/service,
 /obj/machinery/camera/directional/north{
 	c_tag = "Service - Autolathe Room"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/light/dim/directional/north,
+/obj/structure/table,
+/obj/machinery/fax{
+	fax_name = "Service Hallway";
+	name = "Service Fax Machine"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "ssT" = (
@@ -55821,10 +55830,8 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "sMi" = (
-/obj/machinery/modular_computer/preset/cargochat/service{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "sMr" = (
@@ -57554,6 +57561,13 @@
 	name = "Service Fax Machine"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/modular_computer/preset/cargochat/service,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "try" = (
@@ -58652,15 +58666,21 @@
 /turf/open/floor/iron,
 /area/station/security/checkpoint/supply)
 "tJY" = (
-/obj/machinery/computer/department_orders/security{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
 /obj/machinery/status_display/evac/directional/west,
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 4
+	},
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_x = 3;
+	pixel_y = 8
 	},
 /turf/open/floor/iron,
 /area/station/security/office)
@@ -59517,7 +59537,6 @@
 	dir = 9
 	},
 /obj/item/radio/intercom/directional/north,
-/obj/structure/table,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "uaM" = (
