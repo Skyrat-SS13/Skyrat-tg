@@ -147,8 +147,13 @@
 )
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	if(SEND_SIGNAL(mod, COMSIG_ITEM_HIT_REACT, owner, hitby, attack_text, 0, damage, attack_type, damage_type) & COMPONENT_HIT_REACTION_BLOCK)
 		drain_power(use_power_cost)
+=======
+	if(mod.hit_reaction(owner, hitby, attack_text, 0, damage, attack_type))
+		drain_power(use_energy_cost)
+>>>>>>> 8dadc1e9ed6 (Fixes unfathomable curios not blocking when equipped. Fixes the shielded component still blocking despite not having a 'wearer'. (#82073))
 		return SUCCESSFUL_BLOCK
 	return NONE
 
