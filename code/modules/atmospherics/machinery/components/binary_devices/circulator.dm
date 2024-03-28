@@ -1,3 +1,7 @@
+/*
+
+Skyrat removal START, moved to modular file
+
 //node2, air2, network2 correspond to input
 //node1, air1, network1 correspond to output
 
@@ -173,3 +177,6 @@
 	..()
 	pixel_x = 0
 	pixel_y = 0
+
+Skyrat removal END
+*/
