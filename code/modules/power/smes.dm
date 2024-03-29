@@ -23,8 +23,15 @@
 	circuit = /obj/item/circuitboard/machine/smes
 	can_change_cable_layer = TRUE
 
+<<<<<<< HEAD
 	var/capacity = 5e6 // maximum charge
 	var/charge = 0 // actual charge
+=======
+	/// The charge capacity.
+	var/capacity = 50 * STANDARD_CELL_CHARGE // The board defaults with 5 high capacity power cells.
+	/// The current charge.
+	var/charge = 0
+>>>>>>> 5c31529dea5 ([NO GBP]Fixes some mapped SMES starting with low energy. (#82203))
 
 	var/input_attempt = TRUE // TRUE = attempting to charge, FALSE = not attempting to charge
 	var/inputting = TRUE // TRUE = actually inputting, FALSE = not inputting
@@ -422,6 +429,12 @@
 		charge = 0
 	update_appearance()
 	log_smes()
+
+/obj/machinery/power/smes/full
+	charge = 50 * STANDARD_CELL_CHARGE
+
+/obj/machinery/power/smes/ship
+	charge = 20 * STANDARD_CELL_CHARGE
 
 /obj/machinery/power/smes/engineering
 	charge = 2.5e6 // Engineering starts with some charge for singulo //sorry little one, singulo as engine is gone
