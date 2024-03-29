@@ -245,11 +245,8 @@
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/muzzle,
 		/obj/item/clothing/mask/surgical,
-<<<<<<< HEAD
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
-=======
 		/obj/item/clothing/head/utility/surgerycap,
->>>>>>> 7361eb3d980 (makes surgery caps small (#82201))
 		/obj/item/construction/plumbing,
 		/obj/item/dnainjector,
 		/obj/item/extinguisher/mini,
