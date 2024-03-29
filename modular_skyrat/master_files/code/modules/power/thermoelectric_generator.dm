@@ -245,7 +245,7 @@
 /obj/machinery/power/thermoelectric_generator/crowbar_act(mob/user, obj/item/I)
 
 	if(anchored)
-		balloon_alert(user, "<span class='warning'>[src] is anchored!</span>")
+		balloon_alert(user, span_warning("[src] is anchored!"))
 		return TRUE
 	else if(!panel_open)
 		balloon_alert(user, span_warning("Open the panel first!"))
