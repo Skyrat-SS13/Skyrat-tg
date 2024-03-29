@@ -218,7 +218,7 @@
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
-	balloon_alert(user, "<span class='notice'>You [panel_open?"open":"close"] the panel on [src].</span>")
+	balloon_alert(user, span_notice("You [panel_open?"open":"close"] the panel on [src]."))
 	update_icon_nopipes()
 	return TRUE
 
