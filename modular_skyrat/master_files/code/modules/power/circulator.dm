@@ -150,7 +150,7 @@
 
 	set_anchored(!anchored)
 	I.play_tool_sound(src)
-	balloon_alert(user, "<span class='notice'>You [anchored?"secure":"unsecure"] [src].</span>")
+	balloon_alert(user, span_notice("You [anchored?"secure":"unsecure"] [src]."))
 
 	var/obj/machinery/atmospherics/node1 = nodes[1]
 	var/obj/machinery/atmospherics/node2 = nodes[2]
