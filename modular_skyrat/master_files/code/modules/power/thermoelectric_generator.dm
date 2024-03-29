@@ -248,7 +248,7 @@
 		balloon_alert(user, "<span class='warning'>[src] is anchored!</span>")
 		return TRUE
 	else if(!panel_open)
-		balloon_alert(user, "<span class='warning'>Open the panel first!</span>")
+		balloon_alert(user, span_warning("Open the panel first!"))
 		return TRUE
 	else
 		default_deconstruction_crowbar(I)
