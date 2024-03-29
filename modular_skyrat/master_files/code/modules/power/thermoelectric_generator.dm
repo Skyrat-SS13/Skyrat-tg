@@ -211,7 +211,7 @@
 					if(0)
 						balloon_alert(user, "<span class='warning'>No circulators found!</span>")
 					if(1)
-						balloon_alert(user, "<span class='warning'>Only one circulator found!</span>")
+						balloon_alert(user, span_warning("Only one circulator found!"))
 					if(2)
 						balloon_alert(user, "<span class='notice'>You connect [src]'s circulator links.</span>")
 						playsound(src, 'sound/misc/box_deploy.ogg', 50)
