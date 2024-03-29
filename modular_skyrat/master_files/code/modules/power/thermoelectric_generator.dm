@@ -217,7 +217,7 @@
 						playsound(src, 'sound/misc/box_deploy.ogg', 50)
 						return TRUE
 					if(3)
-						balloon_alert(user, "<span class='warning'>Both circulators are the same mode!</span>")
+						balloon_alert(user, span_warning("Both circulators are the same mode!"))
 				return TRUE
 
 	set_anchored(!anchored)
