@@ -207,7 +207,7 @@
 		return TRUE
 
 	mode = !mode
-	balloon_alert(user, "<span class='notice'>You set [src] to [mode?"cold":"hot"] mode.</span>")
+	balloon_alert(user, span_notice("You set [src] to [mode?"cold":"hot"] mode."))
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/screwdriver_act(mob/user, obj/item/I)
