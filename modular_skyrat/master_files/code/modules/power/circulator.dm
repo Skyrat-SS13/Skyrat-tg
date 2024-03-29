@@ -203,7 +203,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator/multitool_act(mob/living/user, obj/item/I)
 	if(generator)
-		balloon_alert(user, "<span class='warning'>Disconnect [generator] first!</span>")
+		balloon_alert(user, span_warning("Disconnect [generator] first!"))
 		return TRUE
 
 	mode = !mode
