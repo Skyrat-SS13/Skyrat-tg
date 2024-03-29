@@ -234,7 +234,7 @@
 		return TRUE
 
 	if(hot_circ && cold_circ)
-		balloon_alert(user, "<span class='warning'>Disconnect the circulators first!</span>")
+		balloon_alert(user, span_warning("Disconnect the circulators first!"))
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
