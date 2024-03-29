@@ -214,7 +214,7 @@
 	if(..())
 		return TRUE
 	if(generator)
-		balloon_alert(user, "<span class='warning'>Disconnect the generator first!</span>")
+		balloon_alert(user, span_warning("Disconnect the generator first!"))
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
@@ -234,7 +234,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator/crowbar_act(mob/user, obj/item/I)
 	if(anchored)
-		balloon_alert(user, "<span class='warning'>[src] is anchored!</span>")
+		balloon_alert(user, span_warning("[src] is anchored!"))
 		return TRUE
 	if(!panel_open)
 		circulator_flip()
@@ -268,7 +268,7 @@
 	if(!ishuman(usr))
 		return
 	flipped = !flipped
-	balloon_alert(usr, "<span class='notice'>You flip [src].</span>")
+	balloon_alert(usr, span_notice("You flip [src]."))
 	playsound(src, 'sound/items/change_drill.ogg', 50)
 	update_icon_nopipes()
 

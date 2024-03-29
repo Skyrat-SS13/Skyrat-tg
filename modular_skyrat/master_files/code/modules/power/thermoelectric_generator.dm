@@ -193,27 +193,27 @@
 
 	if(!panel_open) //connect/disconnect circulators
 		if(!anchored)
-			balloon_alert(user, "<span class='warning'>Anchor [src] before trying to connect the circulators!</span>")
+			balloon_alert(user, span_warning("Anchor [src] before trying to connect the circulators!"))
 			return TRUE
 		else
 			if(hot_circ && cold_circ)
-				balloon_alert(user, "<span class='notice'>You start removing the circulators...</span>")
+				balloon_alert(user, span_notice("You start removing the circulators..."))
 				if(I.use_tool(src, user, 30, volume=50))
 					null_circulators()
 					update_appearance()
-					balloon_alert(user, "<span class='notice'>You disconnect [src]'s circulator links.</span>")
+					balloon_alert(user, span_notice("You disconnect [src]'s circulator links."))
 					playsound(src, 'sound/misc/box_deploy.ogg', 50)
 				return TRUE
 
-			balloon_alert(user, "<span class='notice'>You attempt to attach the circulators...</span>")
+			balloon_alert(user, span_notice("You attempt to attach the circulators..."))
 			if(I.use_tool(src, user, 30, volume=50))
 				switch(find_circulators())
 					if(0)
-						balloon_alert(user, "<span class='warning'>No circulators found!</span>")
+						balloon_alert(user, span_warning("No circulators found!"))
 					if(1)
 						balloon_alert(user, span_warning("Only one circulator found!"))
 					if(2)
-						balloon_alert(user, "<span class='notice'>You connect [src]'s circulator links.</span>")
+						balloon_alert(user, span_notice("You connect [src]'s circulator links."))
 						playsound(src, 'sound/misc/box_deploy.ogg', 50)
 						return TRUE
 					if(3)
