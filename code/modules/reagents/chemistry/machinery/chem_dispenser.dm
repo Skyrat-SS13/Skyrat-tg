@@ -263,15 +263,19 @@
 		is_hallucinating = !!living_user.has_status_effect(/datum/status_effect/hallucination)
 	ui.set_autoupdate(!is_hallucinating) //to not ruin the immersion by constantly changing the fake chemicals
 
-/obj/machinery/chem_dispenser/ui_static_data(mob/user)
-	. = ..()
-	.["showpH"] = show_ph
-
 /obj/machinery/chem_dispenser/ui_data(mob/user)
 	. = list()
 	.["amount"] = amount
+<<<<<<< HEAD
 	.["energy"] = cell.charge ? cell.charge * powerefficiency : 0 //To prevent NaN in the UI.
 	.["maxEnergy"] = cell.maxcharge * powerefficiency
+=======
+	.["energy"] = cell.charge ? cell.charge : 0 //To prevent NaN in the UI.
+	.["maxEnergy"] = cell.maxcharge
+	.["displayedEnergy"] = display_energy(cell.charge)
+	.["displayedMaxEnergy"] = display_energy(cell.maxcharge)
+	.["showpH"] = isnull(recording_recipe) ? show_ph : FALSE //virtual beakers have no ph to compute & display
+>>>>>>> 164c0409e1f (Chem dispenser UI minor patches (#82123))
 
 	var/list/chemicals = list()
 	var/is_hallucinating = FALSE
@@ -306,7 +310,7 @@
 		beaker_data["currentVolume"] = round(beaker.reagents.total_volume, CHEMICAL_VOLUME_ROUNDING)
 		var/list/beakerContents = list()
 		if(length(beaker.reagents.reagent_list))
-			for(var/datum/reagent/reagent in beaker.reagents.reagent_list)
+			for(var/datum/reagent/reagent as anything in beaker.reagents.reagent_list)
 				beakerContents += list(list("name" = reagent.name, "volume" = round(reagent.volume, CHEMICAL_VOLUME_ROUNDING))) // list in a list because Byond merges the first list...
 		beaker_data["contents"] = beakerContents
 	.["beaker"] = beaker_data
