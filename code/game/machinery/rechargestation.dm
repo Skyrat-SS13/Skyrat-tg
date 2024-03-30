@@ -46,7 +46,11 @@
 	recharge_speed = 0
 	repairs = 0
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+<<<<<<< HEAD
 		recharge_speed += capacitor.tier * 100
+=======
+		recharge_speed += (capacitor.tier * STANDARD_CELL_CHARGE * 0.1)
+>>>>>>> 7abafa7819b (Fixing cell power usage (Part 5) (#82296))
 	for(var/datum/stock_part/servo/servo in component_parts)
 		repairs += servo.tier - 1
 	for(var/obj/item/stock_parts/cell/cell in component_parts)

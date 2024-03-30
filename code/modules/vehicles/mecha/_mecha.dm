@@ -187,7 +187,7 @@
 	///check for phasing, if it is set to text (to describe how it is phasing: "flying", "phasing") it will let the mech walk through walls.
 	var/phasing = ""
 	///Power we use every time we phaze through something
-	var/phasing_energy_drain = 200
+	var/phasing_energy_drain = 0.2 * STANDARD_CELL_CHARGE
 	///icon_state for flick() when phazing
 	var/phase_state = ""
 
@@ -554,8 +554,14 @@
 
 	if(internal_damage & MECHA_INT_SHORT_CIRCUIT && get_charge())
 		spark_system.start()
+<<<<<<< HEAD
 		use_power(min(10 * seconds_per_tick, cell.charge))
 		cell.maxcharge -= min(10 * seconds_per_tick, cell.maxcharge)
+=======
+		var/damage_energy_consumption = 0.005 * STANDARD_CELL_CHARGE * seconds_per_tick
+		use_energy(damage_energy_consumption)
+		cell.maxcharge -= min(damage_energy_consumption, cell.maxcharge)
+>>>>>>> 7abafa7819b (Fixing cell power usage (Part 5) (#82296))
 
 /obj/vehicle/sealed/mecha/proc/process_cabin_air(seconds_per_tick)
 	if(!(internal_damage & MECHA_INT_TEMP_CONTROL) && cabin_air && cabin_air.return_volume() > 0)

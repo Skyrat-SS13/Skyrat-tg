@@ -271,7 +271,11 @@ own integrity back to max. Shield is automatically dropped if we run out of powe
 		return
 	. = ..()
 	flick("shield_impact", src)
+<<<<<<< HEAD
 	if(!chassis.use_power((max_integrity - atom_integrity) * 100))
+=======
+	if(!chassis.use_energy((max_integrity - atom_integrity) * 0.1 * STANDARD_CELL_CHARGE))
+>>>>>>> 7abafa7819b (Fixing cell power usage (Part 5) (#82296))
 		chassis.cell?.charge = 0
 		for(var/O in chassis.occupants)
 			var/mob/living/occupant = O
