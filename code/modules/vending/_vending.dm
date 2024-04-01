@@ -361,7 +361,6 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		 */
 
 
-
 /obj/machinery/vending/atom_break(damage_flag)
 	. = ..()
 	if(!.)
