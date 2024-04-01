@@ -342,8 +342,6 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	if(light_mask && !(machine_stat & BROKEN) && powered())
 		. += emissive_appearance(icon, light_mask, src)
 
-<<<<<<< HEAD
-=======
 /obj/machinery/vending/examine(mob/user)
 	. = ..()
 	if(isnull(refill_canister))
@@ -362,7 +360,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		 */
 
 
->>>>>>> 014ffc818be ([No GBP] Vending examine message now properly shows the name of the vending refill required. (#82101))
+
 /obj/machinery/vending/atom_break(damage_flag)
 	. = ..()
 	if(!.)
