@@ -18,6 +18,7 @@
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
+	return ..()
 
 // Solar panel deployable item
 
@@ -26,6 +27,7 @@
 	icon_state = "solar_panel_packed"
 	type_to_deploy = /obj/machinery/power/solar/deployable
 	deploy_time = 2 SECONDS
+	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 3,
@@ -51,6 +53,7 @@
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
+	return ..()
 
 // Solar tracker deployable item
 
@@ -59,6 +62,7 @@
 	icon_state = "solar_tracker_packed"
 	type_to_deploy = /obj/machinery/power/tracker/deployable
 	deploy_time = 3 SECONDS
+	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 3.5,
