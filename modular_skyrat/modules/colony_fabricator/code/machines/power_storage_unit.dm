@@ -56,6 +56,11 @@
 	name = "flat-packed stationary battery"
 	icon_state = "battery_small_packed"
 	type_to_deploy = /obj/machinery/power/smes/battery_pack
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 
 // Larger station batteries, hold more but have less in/output
 
@@ -83,3 +88,8 @@
 	name = "flat-packed large stationary battery"
 	icon_state = "battery_large_packed"
 	type_to_deploy = /obj/machinery/power/smes/battery_pack/large
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 12,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 4,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT,
+	)

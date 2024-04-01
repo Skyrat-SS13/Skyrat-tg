@@ -33,9 +33,13 @@
 	..()
 
 	new /obj/item/storage/belt/security/full(src)
-	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/storage/bag/garment/brig_officer(src)
 	new /obj/item/radio/headset/interdyne(src)
+
+/obj/structure/closet/secure_closet/interdynefob/brig_officer_locker/populate_contents_immediate()
+	. = ..()
+
+	new /obj/item/gun/energy/e_gun(src)
 
 /obj/structure/closet/secure_closet/interdynefob/armory_gear_locker
 	anchored = 1
