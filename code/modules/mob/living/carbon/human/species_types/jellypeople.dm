@@ -30,7 +30,9 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	inherent_factions = list(FACTION_SLIME)
 	species_language_holder = /datum/language_holder/jelly
-
+	hair_color = "mutcolor"
+	hair_alpha = 150
+	facial_hair_alpha = 150
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/jelly,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/jelly,
@@ -118,6 +120,20 @@
 	qdel(consumed_limb)
 	H.blood_volume += 20
 
+/datum/species/jelly/get_species_description()
+	return "Jellypeople are a strange and alien species with three eyes, made entirely out of gel."
+
+/datum/species/jelly/get_species_lore()
+	return list(
+		"Jellypeople are actively being experimented on my Nanotrasen scientists, who are trying to unlock the secrets of their unique biology.",
+	)
+
+/datum/species/jelly/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.dna.features["mcolor"] = COLOR_PINK
+	human.hairstyle = "Bob Hair 2"
+	human.hair_color = COLOR_PINK
+	human.update_body(is_creating = TRUE)
+
 // Slimes have both TRAIT_NOBLOOD and an exotic bloodtype set, so they need to be handled uniquely here.
 // They may not be roundstart but in the unlikely event they become one might as well not leave a glaring issue open.
 /datum/species/jelly/create_pref_blood_perks()
@@ -182,9 +198,6 @@
 	name = "\improper Slimeperson"
 	plural_form = "Slimepeople"
 	id = SPECIES_SLIMEPERSON
-	hair_color = "mutcolor"
-	hair_alpha = 150
-	facial_hair_alpha = 150
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	mutanteyes = /obj/item/organ/internal/eyes
 	var/datum/action/innate/split_body/slime_split
