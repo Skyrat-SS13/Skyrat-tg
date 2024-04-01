@@ -200,9 +200,11 @@
 	UnregisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 	return ..()
 
+/* SKYRAT EDIT - REMOVAL
 /datum/station_trait/job/human_ai/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
 	. = ..()
 	overlays += LAZYFIND(lobby_candidates, lobby_button.get_mob()) ? "human_ai_on" : "human_ai_off"
+*/
 
 /datum/station_trait/job/human_ai/proc/remove_ai_job(datum/source)
 	SIGNAL_HANDLER
