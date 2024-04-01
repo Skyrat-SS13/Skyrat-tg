@@ -26,10 +26,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_RUSTY" = TRAIT_RUSTY,
 		"TRAIT_SPINNING" = TRAIT_SPINNING,
 		"TRAIT_STICKERED" = TRAIT_STICKERED,
-<<<<<<< HEAD
-=======
 		"TRAIT_UNHITTABLE_BY_PROJECTILES" = TRAIT_UNHITTABLE_BY_PROJECTILES,
->>>>>>> 76fa5bcdad5 (Skillchips are now copied to bitrunning avatars, plus a new chip to dodge bullets while flipping. (#81980))
 	),
 	/atom/movable = list(
 		"TRAIT_ACTIVE_STORAGE" = TRAIT_ACTIVE_STORAGE,
