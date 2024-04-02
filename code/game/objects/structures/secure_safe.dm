@@ -45,9 +45,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/secure_safe, 32)
 		It remains quite flush against the wall, and there only seems to be enough room to fit something as slim as an ID card."
 	armor_type = /datum/armor/safe_caps_spare
 	max_integrity = 300
+<<<<<<< HEAD
 	color = "#ffdd33"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/secure_safe/caps_spare, 32)
+=======
+	damage_deflection = 30 // prevents stealing the captain's spare using null rods/lavaland monsters/AP projectiles
+	density = TRUE
+	anchored_tabletop_offset = 4
+	custom_materials = list(/datum/material/gold = SMALL_MATERIAL_AMOUNT)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+>>>>>>> e42e8b7f78d (Makes the Captain's Spare safe actually secure from being smashed open now that it's been removed from a wall. (#82076))
 
 /datum/armor/safe_caps_spare
 	melee = 100
