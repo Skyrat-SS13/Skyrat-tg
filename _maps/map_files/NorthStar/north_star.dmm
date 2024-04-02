@@ -3391,17 +3391,6 @@
 /obj/effect/spawner/random/trash/cigbutt,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/floor2/starboard/aft)
-"aSI" = (
-/obj/machinery/shower/directional/west,
-/obj/structure/fluff{
-	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/mining_zones/survival_pod.dmi';
-	icon_state = "fan_tiny";
-	name = "shower drain"
-	},
-/obj/machinery/airalarm/directional/south,
-/turf/open/floor/iron/white/small,
-/area/station/commons/fitness/recreation)
 "aSK" = (
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/pod/light,
@@ -12797,6 +12786,12 @@
 	dir = 4
 	},
 /area/station/hallway/floor4/aft)
+"diQ" = (
+/obj/structure/fluff/shower_drain,
+/obj/effect/turf_decal/trimline/neutral,
+/obj/machinery/shower/directional/west,
+/turf/open/floor/iron/freezer,
+/area/station/hallway/secondary/service)
 "diS" = (
 /obj/machinery/door/airlock/freezer{
 	name = "Bathroom"
@@ -26898,18 +26893,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"gYI" = (
-/obj/structure/fluff{
-	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/mining_zones/survival_pod.dmi';
-	icon_state = "fan_tiny";
-	name = "shower drain"
-	},
-/obj/machinery/duct,
-/turf/open/floor/iron/showroomfloor{
-	name = "bathroom tiles"
-	},
-/area/station/security/lockers)
 "gYN" = (
 /obj/machinery/airalarm/directional/west,
 /obj/item/kirbyplants/random,
@@ -30403,6 +30386,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
+"hTm" = (
+/obj/structure/fluff/shower_drain,
+/obj/machinery/shower/directional/north,
+/turf/open/floor/iron/showroomfloor,
+/area/station/command/heads_quarters/qm)
 "hTr" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/decal/cleanable/dirt,
@@ -41778,6 +41766,12 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/station/hallway/floor3/aft)
+"kNS" = (
+/obj/machinery/shower/directional/east,
+/obj/item/bikehorn/rubberducky,
+/obj/structure/fluff/shower_drain,
+/turf/open/floor/iron/white/small,
+/area/station/commons/fitness/recreation)
 "kNT" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -44837,17 +44831,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark/textured,
 /area/station/commons/toilet)
-"lBR" = (
-/obj/machinery/shower/directional/east,
-/obj/item/bikehorn/rubberducky,
-/obj/structure/fluff{
-	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/mining_zones/survival_pod.dmi';
-	icon_state = "fan_tiny";
-	name = "shower drain"
-	},
-/turf/open/floor/iron/white/small,
-/area/station/commons/fitness/recreation)
 "lCf" = (
 /obj/effect/turf_decal/trimline/green/warning,
 /obj/machinery/light/floor,
@@ -53638,13 +53621,6 @@
 /mob/living/basic/cow,
 /turf/open/floor/grass,
 /area/station/service/hydroponics)
-"nKc" = (
-/obj/structure/cable,
-/obj/machinery/conveyor/inverted{
-	dir = 10
-	},
-/turf/open/floor/iron/checker,
-/area/station/cargo/miningdock)
 "nKn" = (
 /obj/structure/sign/directions/dorms/directional/east,
 /obj/structure/sign/directions/evac/directional/east{
@@ -56026,16 +56002,6 @@
 	dir = 1
 	},
 /area/station/hallway/floor1/fore)
-"oqc" = (
-/obj/structure/fluff{
-	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/mining_zones/survival_pod.dmi';
-	icon_state = "fan_tiny";
-	name = "shower drain"
-	},
-/obj/machinery/shower/directional/north,
-/turf/open/floor/iron/showroomfloor,
-/area/station/command/heads_quarters/qm)
 "oqd" = (
 /obj/structure/chair/comfy/brown{
 	dir = 4
@@ -73997,14 +73963,6 @@
 /obj/machinery/light/red/dim/directional/north,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/floor3/port)
-"tbt" = (
-/obj/structure/cable,
-/obj/machinery/bouldertech/refinery/smelter,
-/obj/machinery/conveyor/inverted{
-	dir = 10
-	},
-/turf/open/floor/iron/checker,
-/area/station/cargo/miningdock)
 "tbu" = (
 /obj/effect/spawner/random/trash/hobo_squat,
 /obj/effect/decal/cleanable/dirt,
@@ -74481,6 +74439,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor2/port/fore)
+"thx" = (
+/obj/structure/cable,
+/obj/machinery/conveyor/inverted{
+	dir = 10;
+	id = "mining"
+	},
+/turf/open/floor/iron/checker,
+/area/station/cargo/miningdock)
 "thD" = (
 /obj/structure/table/reinforced,
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -74680,13 +74646,6 @@
 	},
 /turf/open/floor/eighties,
 /area/station/commons/fitness/recreation/entertainment)
-"tkZ" = (
-/obj/structure/cable,
-/obj/machinery/conveyor/inverted{
-	dir = 6
-	},
-/turf/open/floor/iron/checker,
-/area/station/cargo/miningdock)
 "tld" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/sheet/mineral/plasma/five,
@@ -79196,6 +79155,13 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/floor3/starboard)
+"uvh" = (
+/obj/structure/fluff/shower_drain,
+/obj/machinery/duct,
+/turf/open/floor/iron/showroomfloor{
+	name = "bathroom tiles"
+	},
+/area/station/security/lockers)
 "uvv" = (
 /obj/effect/turf_decal/stripes,
 /obj/structure/emergency_shield/regenerating,
@@ -81465,6 +81431,14 @@
 "uXX" = (
 /turf/closed/wall,
 /area/station/commons/toilet)
+"uYd" = (
+/obj/structure/cable,
+/obj/machinery/conveyor/inverted{
+	dir = 6;
+	id = "mining"
+	},
+/turf/open/floor/iron/checker,
+/area/station/cargo/miningdock)
 "uYe" = (
 /obj/effect/turf_decal/trimline/red/corner,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -82401,17 +82375,6 @@
 	dir = 1
 	},
 /area/station/security/prison)
-"vlh" = (
-/obj/structure/fluff{
-	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/mining_zones/survival_pod.dmi';
-	icon_state = "fan_tiny";
-	name = "shower drain"
-	},
-/obj/effect/turf_decal/trimline/neutral,
-/obj/machinery/shower/directional/west,
-/turf/open/floor/iron/freezer,
-/area/station/hallway/secondary/service)
 "vlm" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -83341,6 +83304,12 @@
 /obj/machinery/door/airlock/hydroponics/glass,
 /turf/open/floor/iron/dark,
 /area/station/service/hydroponics)
+"vvy" = (
+/obj/machinery/shower/directional/west,
+/obj/structure/fluff/shower_drain,
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/iron/white/small,
+/area/station/commons/fitness/recreation)
 "vvC" = (
 /obj/structure/ladder,
 /obj/effect/turf_decal/stripes/white/box,
@@ -84274,6 +84243,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/rd)
+"vIq" = (
+/obj/structure/cable,
+/obj/machinery/bouldertech/refinery/smelter,
+/obj/machinery/conveyor/inverted{
+	dir = 10;
+	id = "mining"
+	},
+/turf/open/floor/iron/checker,
+/area/station/cargo/miningdock)
 "vIr" = (
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
@@ -109227,7 +109205,7 @@ owI
 owI
 imY
 imY
-lBR
+kNS
 hpI
 jZE
 jSj
@@ -110255,7 +110233,7 @@ owI
 owI
 imY
 imY
-aSI
+vvy
 hpI
 vTL
 vTL
@@ -123358,7 +123336,7 @@ owI
 hKN
 lWH
 oLL
-oqc
+hTm
 hKN
 hKN
 mar
@@ -127232,9 +127210,9 @@ quB
 mRt
 dAc
 sBK
-tbt
-tkZ
-nKc
+vIq
+uYd
+thx
 qas
 jwr
 cax
@@ -186619,7 +186597,7 @@ hLz
 ilY
 hLz
 pLy
-vlh
+diQ
 joh
 hLz
 aQU
@@ -316664,7 +316642,7 @@ dDw
 mau
 xPE
 qFL
-gYI
+uvh
 rPK
 vEa
 owb
