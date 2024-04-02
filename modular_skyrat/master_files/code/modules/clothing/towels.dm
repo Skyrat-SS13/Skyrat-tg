@@ -315,7 +315,7 @@
 	. = ..() // This isn't really needed, but I'm including it in case we ever get dyeable towels.
 
 	// Washing allows you to remove all reagents from a towel, so it comes out clean!
-	reagents.remove_any(reagents.total_volume)
+	reagents.remove_all(reagents.total_volume)
 
 	set_wet(FALSE, FALSE)
 	make_used(null, silent = TRUE)
@@ -459,7 +459,7 @@
 	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transferred_by = user)
 
 	if(loss_factor && reagents.total_volume)
-		reagents.remove_any(amount * loss_factor)
+		reagents.remove_all(amount * loss_factor)
 
 	if(!reagents.total_volume)
 		set_wet(FALSE, !make_used)
