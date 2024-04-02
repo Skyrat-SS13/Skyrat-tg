@@ -340,6 +340,10 @@
 				charge_per_item += design.materials[material]
 			charge_per_item = ROUND_UP((charge_per_item / (MAX_STACK_SIZE * SHEET_MATERIAL_AMOUNT)) * coefficient * 0.05 * active_power_usage)
 			var/build_time_per_item = (design.construction_time * design.lathe_time_factor) ** 0.8
+			// SKYRAT EDIT - Faster lathes
+			if(!speedup_disabled)
+				build_time_per_item *= 0.1
+			// SKYRAT EDIT END
 
 			//start production
 			busy = TRUE
@@ -380,6 +384,7 @@
 		finalize_build()
 		return
 	if(!materials.can_use_resource())
+		say("Unable to continue production, materials on hold.")
 		finalize_build()
 		return
 
@@ -387,6 +392,7 @@
 	var/list/design_materials = design.materials
 	if(!materials.mat_container.has_materials(design_materials, material_cost_coefficient, is_stack ? items_remaining : 1))
 		say("Unable to continue production, missing materials.")
+		finalize_build()
 		return
 	materials.use_materials(design_materials, material_cost_coefficient, is_stack ? items_remaining : 1, "built", "[design.name]")
 
@@ -421,7 +427,7 @@
 
 /obj/machinery/rnd/production/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
-	if((!issilicon(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
+	if(!can_interact(usr) || (!issilicon(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
 		return
 	if(busy)
 		balloon_alert(usr, "busy printing!")

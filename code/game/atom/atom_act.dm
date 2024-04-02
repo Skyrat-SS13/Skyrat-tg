@@ -67,6 +67,8 @@
  * We then return the protection value
  */
 /atom/proc/emp_act(severity)
+	// SKYRAT EDIT - REMOVAL
+	//SHOULD_CALL_PARENT(TRUE)
 	var/protection = SEND_SIGNAL(src, COMSIG_ATOM_PRE_EMP_ACT, severity)
 	if(!(protection & EMP_PROTECT_WIRES) && istype(wires))
 		wires.emp_pulse()
