@@ -1,9 +1,3 @@
-/**
- * x1, y1, x2, y2 - Represents the bounding box for the ID card's non-transparent portion of its various icon_states.
- * Used to crop the ID card's transparency away when chaching the icon for better use in tgui chat.
- */
-#define ID_ICON_BORDERS 1, 9, 32, 24
-
 /// Fallback time if none of the config entries are set for USE_LOW_LIVING_HOUR_INTERN
 #define INTERN_THRESHOLD_FALLBACK_HOURS 15
 
@@ -1084,6 +1078,14 @@
 	assigned_icon_state = "assigned_silver"
 	wildcard_slots = WILDCARD_LIMIT_SILVER
 
+/obj/item/card/id/advanced/robotic
+	name = "magnetic identification card"
+	desc = "An integrated card which shows the work poured into opening doors."
+	icon_state = "card_carp" //im not a spriter
+	inhand_icon_state = "silver_id"
+	assigned_icon_state = "assigned_silver"
+	wildcard_slots = WILDCARD_LIMIT_GREY
+
 /datum/id_trim/maint_reaper
 	access = list(ACCESS_MAINT_TUNNELS)
 	trim_state = "trim_janitor"
@@ -1700,7 +1702,6 @@
 	icon_state = "ctf_green"
 
 #undef INTERN_THRESHOLD_FALLBACK_HOURS
-#undef ID_ICON_BORDERS
 #undef HOLOPAY_PROJECTION_INTERVAL
 
 #define INDEX_NAME_COLOR 1
@@ -1728,7 +1729,7 @@
 	///An icon state used as trim.
 	var/scribbled_trim
 	///The colors for each of the above variables, for when overlays are updated.
-	var/details_colors = list("#000000", "#000000", "#000000")
+	var/details_colors = list(COLOR_BLACK, COLOR_BLACK, COLOR_BLACK)
 
 /obj/item/card/cardboard/equipped(mob/user, slot, initial = FALSE)
 	. = ..()
@@ -1774,14 +1775,14 @@
 				return
 			scribbled_name = input_name
 			var/list/details = item.get_writing_implement_details()
-			details_colors[INDEX_NAME_COLOR] = details["color"] || "#000000"
+			details_colors[INDEX_NAME_COLOR] = details["color"] || COLOR_BLACK
 		if("Assignment")
 			var/input_assignment = tgui_input_text(user, "What assignment would you like to put on this card?", "Cardboard card job ssignment", scribbled_assignment || "Assistant", MAX_NAME_LEN)
 			if(!after_input_check(user, item, input_assignment, scribbled_assignment))
 				return
 			scribbled_assignment = sanitize(input_assignment)
 			var/list/details = item.get_writing_implement_details()
-			details_colors[INDEX_ASSIGNMENT_COLOR] = details["color"] || "#000000"
+			details_colors[INDEX_ASSIGNMENT_COLOR] = details["color"] || COLOR_BLACK
 		if("Trim")
 			var/static/list/possible_trims
 			if(!possible_trims)
@@ -1796,12 +1797,12 @@
 				return
 			scribbled_trim = "cardboard_[input_trim]"
 			var/list/details = item.get_writing_implement_details()
-			details_colors[INDEX_TRIM_COLOR] = details["color"] || "#000000"
+			details_colors[INDEX_TRIM_COLOR] = details["color"] || COLOR_BLACK
 		if("Reset")
 			scribbled_name = null
 			scribbled_assignment = null
 			scribbled_trim = null
-			details_colors = list("#000000", "#000000", "#000000")
+			details_colors = list(COLOR_BLACK, COLOR_BLACK, COLOR_BLACK)
 
 	update_appearance()
 

@@ -803,7 +803,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!(issilicon(user) || isAdminGhostAI(user)))
+	if(!HAS_SILICON_ACCESS(user))
 		if(isElectrified() && shock(user, 100))
 			return
 
@@ -1001,7 +1001,7 @@
 	return TRUE
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user, params)
-	if(!issilicon(user) && !isAdminGhostAI(user))
+	if(!HAS_SILICON_ACCESS(user))
 		if(isElectrified() && (C.obj_flags & CONDUCTS_ELECTRICITY) && shock(user, 75))
 			return
 	add_fingerprint(user)
@@ -1689,7 +1689,7 @@
 			. = TRUE
 
 /obj/machinery/door/airlock/proc/user_allowed(mob/user)
-	return (issilicon(user) && canAIControl(user)) || isAdminGhostAI(user)
+	return (HAS_SILICON_ACCESS(user) && canAIControl(user)) || isAdminGhostAI(user)
 
 /obj/machinery/door/airlock/proc/shock_restore(mob/user)
 	if(!user_allowed(user))
@@ -2311,6 +2311,7 @@
 /obj/machinery/door/airlock/cult/Initialize(mapload)
 	. = ..()
 	new openingoverlaytype(loc)
+	AddElement(/datum/element/empprotection, EMP_PROTECT_ALL)
 
 /obj/machinery/door/airlock/cult/canAIControl(mob/user)
 	return (IS_CULTIST(user) && !isAllPowerCut())
@@ -2337,7 +2338,7 @@
 			var/atom/throwtarget
 			throwtarget = get_edge_target_turf(src, get_dir(src, get_step_away(L, src)))
 			SEND_SOUND(L, sound(pick('sound/hallucinations/turn_around1.ogg','sound/hallucinations/turn_around2.ogg'),0,1,50))
-			flash_color(L, flash_color="#960000", flash_time=20)
+			flash_color(L, flash_color=COLOR_CULT_RED, flash_time=20)
 			L.Paralyze(40)
 			L.throw_at(throwtarget, 5, 1)
 		return FALSE
@@ -2359,9 +2360,6 @@
 	update_appearance()
 
 /obj/machinery/door/airlock/cult/narsie_act()
-	return
-
-/obj/machinery/door/airlock/cult/emp_act(severity)
 	return
 
 /obj/machinery/door/airlock/cult/friendly
