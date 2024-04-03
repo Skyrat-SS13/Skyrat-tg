@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /obj/machinery/power/apc/attackby(obj/item/attacking_object, mob/living/user, params)
 	if(HAS_TRAIT(attacking_object, TRAIT_APC_SHOCKING))
 		var/metal = 0
@@ -179,6 +180,8 @@
 
 	return ..()
 
+=======
+>>>>>>> 6f68fa424fe (Refactor APCs interaction chain from attackby to item_interaction (#82390))
 /obj/machinery/power/apc/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(!can_interact(user))
