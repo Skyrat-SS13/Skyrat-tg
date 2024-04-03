@@ -58,7 +58,7 @@
 	/// the max amount of power that can be sent per process, from 100000 (t1) to 10000000 (t4)
 	var/max_power = 100000
 	/// how much the current_power is divided by to determine the profit
-	var/divide_ratio = 0.00001
+	var/divide_ratio = 0.0000001
 	/// the attached cable to the machine
 	var/obj/structure/cable/attached_cable
 	/// how many credits this machine has actually made so far
