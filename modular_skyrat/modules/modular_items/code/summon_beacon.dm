@@ -2,8 +2,8 @@
 	name = "summoner beacon"
 	desc = "Summons a thing. Probably shouldn't use this one, though."
 	icon = 'icons/obj/devices/remote.dmi'
-	icon_state = "med"
-	inhand_icon_state = null
+	icon_state = "generic_delivery"
+	inhand_icon_state = "generic_delivery"
 	w_class = WEIGHT_CLASS_SMALL
 
 	/// How many uses the beacon has left
