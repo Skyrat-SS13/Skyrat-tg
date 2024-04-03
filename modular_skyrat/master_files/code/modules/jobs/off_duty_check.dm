@@ -39,7 +39,7 @@
 	icon_state = "gangtool-purple"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	inhand_icon_state = "electronic"
+	inhand_icon_state = "sci"
 
 /obj/item/duty_checker/attack(mob/living/carbon/human/target_human, mob/living/user, params)
 	. = ..()

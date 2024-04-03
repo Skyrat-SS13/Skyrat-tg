@@ -2,7 +2,7 @@
 	name = "summoner beacon"
 	desc = "Summons a thing. Probably shouldn't use this one, though."
 	icon = 'icons/obj/devices/remote.dmi'
-	icon_state = "gangtool-blue"
+	icon_state = "med"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL
 
