@@ -383,7 +383,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 //previously had borers unable to emote... but that means less RP, and we want that
 
 //borers should not be talking without a host at least
-/mob/living/basic/cortical_borer/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
+/mob/living/basic/cortical_borer/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null, message_mods = list())
 	if(!inside_human())
 		to_chat(src, span_warning("You are not able to speak without a host!"))
 		return
