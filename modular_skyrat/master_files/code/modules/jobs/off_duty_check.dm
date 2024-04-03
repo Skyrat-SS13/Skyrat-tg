@@ -36,10 +36,10 @@
 	name = "duty checker"
 	desc = "Checks if the mob this is used on is off-duty. You probably shouldn't see this in-game..."
 	icon = 'icons/obj/devices/remote.dmi'
-	icon_state = "gangtool-purple"
+	icon_state = "sci"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	inhand_icon_state = "sci"
+	inhand_icon_state = "electronic"
 
 /obj/item/duty_checker/attack(mob/living/carbon/human/target_human, mob/living/user, params)
 	. = ..()
