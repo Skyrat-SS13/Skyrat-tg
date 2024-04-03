@@ -154,6 +154,7 @@
 	speech_args[SPEECH_MESSAGE] = message
 
 /datum/brain_trauma/very_special/bimbo/on_gain()
+	. = ..()
 	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM))
 		ADD_TRAIT(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM)
@@ -162,6 +163,7 @@
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, TRAIT_APHRO)
 
 /datum/brain_trauma/very_special/bimbo/on_lose()
+	. = ..()
 	owner.clear_mood_event("bimbo")
 	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM))
 		REMOVE_TRAIT(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM)
@@ -218,10 +220,12 @@
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
 /datum/brain_trauma/very_special/neverboner/on_gain()
+	. = ..()
 	var/mob/living/carbon/human/affected_human = owner
 	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, TRAIT_APHRO)
 
 /datum/brain_trauma/very_special/neverboner/on_lose()
+	. = ..()
 	var/mob/living/carbon/human/affected_human = owner
 	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, TRAIT_APHRO)
 
