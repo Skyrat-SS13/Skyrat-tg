@@ -139,6 +139,8 @@
 	return FALSE
 
 /datum/brain_trauma/very_special/bimbo/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
 	if(!HAS_TRAIT(owner, TRAIT_BIMBO)) //You have the trauma but not the trait, go ahead and fail here
 		return ..()
 	var/message = speech_args[SPEECH_MESSAGE]
