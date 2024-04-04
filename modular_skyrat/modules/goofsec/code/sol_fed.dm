@@ -555,7 +555,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR>You are here to assistf [station_name()] due to the occupants encountering difficulties with their workspace.\n"
 	missiondesc += "<BR><B>Your Mission</B>:"
 	missiondesc += "<BR> <B>1.</B> Keep in touch with the other unit using your phone."
-	missiondesc += "<BR> <B>2.</B> Arrest all suspects involved in the treason attempt."
+	missiondesc += "<BR> <B>2.</B> Neutralise all suspect engaging with the station authority."
 	missiondesc += "<BR> <B>4.</B> You are authorised to use lethal force."
 	to_chat(owner, missiondesc)
 	var/mob/living/greeted_mob = owner.current
@@ -591,6 +591,49 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/pmc_heavy
+	name = "Ironmoon Heavy PMC"
+	outfit = /datum/outfit/request_911/pmc_heavy
+
+/datum/antagonist/ert/request_911/pmc/greet()
+	var/missiondesc =  ""
+	missiondesc += "<B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Ironmoon Military Company as a [role].</font></B>"
+	missiondesc += "<BR>You are here to assistf [station_name()] due to the occupants encountering difficulties with their workspace.\n"
+	missiondesc += "<BR><B>Your Mission</B>:"
+	missiondesc += "<BR> <B>1.</B> Keep in touch with the other unit using your phone."
+	missiondesc += "<BR> <B>2.</B> Neutralise all suspect engaging with the station authority."
+	missiondesc += "<BR> <B>4.</B> You are authorised to use lethal force."
+	to_chat(owner, missiondesc)
+	var/mob/living/greeted_mob = owner.current
+	greeted_mob.playsound_local(greeted_mob, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+
+/datum/outfit/request_911/pmc_reinforcement
+	name = "Ironmoon Reinforcement PMC"
+
+	uniform = /obj/item/clothing/under/rank/security/officer/hecu
+	head = /obj/item/clothing/head/helmet/marine/security
+	mask = /obj/item/clothing/mask/gas/sechailer/swat
+	gloves = /obj/item/clothing/gloves/combat
+	suit = /obj/item/clothing/suit/armor/vest/marine/security
+	shoes = /obj/item/clothing/shoes/jackboots
+	belt = /obj/item/storage/belt/military/nri/medic/full
+	back = /obj/item/mod/control/pre_equipped/security/pmc
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	ears = /obj/item/radio/headset/headset_sec/alt
+	l_pocket = /obj/item/grenade/c4
+	r_pocket = /obj/item/flashlight/seclite
+	id = /obj/item/card/id/advanced/solfed
+	r_hand = /obj/item/gun/ballistic/automatic/sol_smg/evil
+	backpack_contents = list(
+		/obj/item/storage/box/handcuffs = 1,
+		/obj/item/ammo_box/magazine/c35sol_pistol/stendo= 3,
+		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/storage/box/stingbangs = 1,
+		/obj/item/storage/medkit/brute = 1,
+		/obj/item/solfed_reporter/pmc_heavy = 1,
+		/obj/item/beamout_tool = 1,
+	)
+
+	id_trim = /datum/id_trim/solfed
 
 /obj/item/solfed_reporter
 	name = "SolFed reporter"
