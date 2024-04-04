@@ -71,10 +71,13 @@ GLOBAL_LIST_INIT(cracker_reactions, cracker_reactions_list())
 	working_power = 1
 	/// Soundloop for while the thermomachine is turned on
 	var/datum/looping_sound/conditioner_running/soundloop
+	/// What this repacks into
+	var/repacked_type = /obj/item/flatpacked_machine/co2_cracker
 
 /obj/machinery/electrolyzer/co2_cracker/Initialize(mapload)
 	. = ..()
 	soundloop = new(src, FALSE)
+	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 /obj/machinery/electrolyzer/co2_cracker/process_atmos()
