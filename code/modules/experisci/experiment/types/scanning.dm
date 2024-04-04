@@ -106,12 +106,20 @@
  * Arguments:
  * * target - The atom to attempt to scan
  */
+<<<<<<< HEAD
 /datum/experiment/scanning/proc/get_contributing_index(atom/target)
 	var/destructive = traits & EXPERIMENT_TRAIT_DESTRUCTIVE
 	for (var/req_atom in required_atoms)
 		if (!istype(target, req_atom))
 			continue
 
+=======
+/datum/experiment/scanning/proc/experiment_requirements(datum/component/experiment_handler/experiment_handler, atom/target)
+	var/destructive = (traits & EXPERIMENT_TRAIT_DESTRUCTIVE)
+	for (var/req_atom in required_atoms)
+		if (!istype(target, req_atom))
+			continue
+>>>>>>> 29ecfb7e568 (fixes material scanning, so we can scan again (#82428))
 		// Try to select a required atom that this scanned atom would contribute towards
 		var/selected
 		var/list/seen = scanned[req_atom]
@@ -119,9 +127,14 @@
 			selected = req_atom
 		else if (!destructive && seen.len < required_atoms[req_atom] && !(WEAKREF(target) in seen))
 			selected = req_atom
+<<<<<<< HEAD
 
 		// Run any additonal checks if necessary
 		if (selected && final_contributing_index_checks(target, selected))
+=======
+		// Run any additonal checks if necessary
+		if (selected && final_contributing_index_checks(experiment_handler, target, selected))
+>>>>>>> 29ecfb7e568 (fixes material scanning, so we can scan again (#82428))
 			return selected
 
 /**
