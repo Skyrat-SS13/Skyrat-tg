@@ -20,6 +20,7 @@
 
 /area/shuttle/tarkon_driver
 	name = "Tarkon Driver"
+	requires_power = TRUE
 
 /area/shuttle/trader/bridge
 	name = "Trader Ship Bridge"

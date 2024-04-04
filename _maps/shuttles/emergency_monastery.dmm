@@ -84,6 +84,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"bc" = (
+/obj/item/kirbyplants/organic/plant22,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "bd" = (
 /obj/structure/lattice,
 /obj/structure/grille/broken,
@@ -228,6 +233,13 @@
 	},
 /turf/closed/wall,
 /area/shuttle/escape)
+"do" = (
+/obj/item/kirbyplants/organic/plant22,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/airalarm/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "dp" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/lattice,
@@ -268,15 +280,6 @@
 /obj/machinery/camera/directional/west{
 	c_tag = "Monastery Library";
 	network = list("ss13","monastery")
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"es" = (
-/obj/structure/sign/picture_frame/portrait{
-	pixel_y = 28
-	},
-/obj/item/kirbyplants/organic/plant21{
-	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
@@ -413,17 +416,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"gF" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 5
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "gO" = (
 /obj/structure/flora/bush/leavy/style_random,
 /turf/open/misc/asteroid,
@@ -515,14 +507,11 @@
 /area/shuttle/escape)
 "ig" = (
 /obj/machinery/light/small/directional/west,
-/obj/machinery/door/window/right/directional/north{
-	base_state = "left";
-	dir = 2;
-	icon_state = "left";
+/obj/effect/turf_decal/tile/red/half/contrasted,
+/obj/machinery/door/window/left/directional/south{
 	name = "Curator Desk Door";
 	req_access = list("library")
 	},
-/obj/effect/turf_decal/tile/red/half/contrasted,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "it" = (
@@ -826,13 +815,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/escape)
-"mF" = (
-/obj/structure/table/wood,
-/obj/item/kirbyplants/organic/plant22{
-	pixel_y = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "mG" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -990,6 +972,15 @@
 /obj/item/book/bible,
 /turf/open/floor/carpet,
 /area/shuttle/escape)
+"oH" = (
+/obj/structure/sign/picture_frame/portrait{
+	pixel_y = 28
+	},
+/obj/item/kirbyplants/organic/plant21{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "oI" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/unlocked,
@@ -1022,9 +1013,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "oX" = (
-/obj/machinery/door/window/right/directional/north{
-	base_state = "left";
-	icon_state = "left";
+/obj/machinery/door/window/left/directional/north{
 	name = "Secure Art Exhibit";
 	req_access = list("library")
 	},
@@ -1204,10 +1193,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "rL" = (
-/obj/machinery/door/window/left/directional/east{
-	base_state = "right";
-	dir = 1;
-	icon_state = "right";
+/obj/machinery/door/window/right/directional/north{
 	name = "Coffin Storage";
 	req_access = list("chapel_office")
 	},
@@ -1345,10 +1331,6 @@
 /obj/machinery/computer/libraryconsole/bookmanagement,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"tS" = (
-/obj/item/kirbyplants/organic/plant22,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "tT" = (
 /obj/machinery/bookbinder,
 /turf/open/floor/iron/dark,
@@ -1419,6 +1401,17 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/shuttle/escape)
+"vj" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "vk" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/turf_decal/tile/yellow{
@@ -1462,6 +1455,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"vU" = (
+/obj/item/kirbyplants/organic/plant21{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "vW" = (
 /obj/machinery/camera/directional/east{
 	c_tag = "Chapel Office";
@@ -1481,6 +1480,17 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"vY" = (
+/obj/item/kirbyplants/organic/plant10,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "wp" = (
 /turf/open/floor/iron/chapel{
 	dir = 4
@@ -1497,6 +1507,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"xd" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "xl" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
@@ -1506,6 +1526,10 @@
 /obj/machinery/light/small/directional/west,
 /obj/item/bikehorn/rubberducky,
 /turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"xt" = (
+/obj/item/kirbyplants/organic/plant22,
+/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "xw" = (
 /obj/structure/chair/wood,
@@ -1533,8 +1557,7 @@
 /turf/closed/wall/mineral/iron,
 /area/shuttle/escape)
 "yd" = (
-/obj/machinery/door/window/left/directional/east{
-	dir = 1;
+/obj/machinery/door/window/left/directional/north{
 	name = "Coffin Storage";
 	req_access = list("chapel_office")
 	},
@@ -1827,16 +1850,6 @@
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"Bt" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "BA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 8
@@ -1859,13 +1872,6 @@
 	throwforce = 8
 	},
 /obj/machinery/light/dim/directional/south,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"BF" = (
-/obj/item/kirbyplants/organic/plant22,
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/machinery/airalarm/directional/north,
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "BG" = (
@@ -2144,17 +2150,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/shuttle/escape)
-"Fo" = (
-/obj/item/kirbyplants/organic/plant10,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 6
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "Fp" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
@@ -2293,15 +2288,6 @@
 "Ho" = (
 /turf/closed/mineral,
 /area/shuttle/escape)
-"Hv" = (
-/obj/item/kirbyplants/organic/plant22,
-/obj/machinery/camera/directional/north{
-	c_tag = "Monastery Archives Fore";
-	network = list("ss13","monastery")
-	},
-/obj/machinery/firealarm/directional/north,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "Hw" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/suit/chaplainsuit/holidaypriest,
@@ -2386,24 +2372,18 @@
 /obj/structure/destructible/cult/item_dispenser/archives/library,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"IL" = (
+/obj/item/kirbyplants/organic/plant22,
+/obj/machinery/camera/directional/north{
+	c_tag = "Monastery Archives Fore";
+	network = list("ss13","monastery")
+	},
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "IM" = (
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/space/basic,
-/area/shuttle/escape)
-"IN" = (
-/obj/item/radio/intercom/directional/north,
-/obj/machinery/requests_console/directional/west{
-	department = "Chapel";
-	name = "Monastery Requests Console"
-	},
-/obj/effect/mapping_helpers/requests_console/supplies,
-/obj/structure/closet,
-/obj/item/storage/backpack/cultpack,
-/obj/item/clothing/head/chaplain/nun_hood,
-/obj/item/clothing/suit/chaplainsuit/nun,
-/obj/item/clothing/suit/chaplainsuit/holidaypriest,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "IR" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
@@ -2451,19 +2431,6 @@
 	pixel_y = 8
 	},
 /turf/open/floor/carpet,
-/area/shuttle/escape)
-"Ju" = (
-/obj/structure/rack{
-	icon = 'icons/obj/fluff/general.dmi';
-	icon_state = "minibar";
-	name = "skeletal minibar"
-	},
-/obj/item/book/codex_gigas,
-/obj/machinery/camera/directional/south{
-	c_tag = "Monastery Archives Aft";
-	network = list("ss13","monastery")
-	},
-/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "Jv" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
@@ -2568,6 +2535,10 @@
 "KE" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/firealarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
+"KH" = (
+/obj/item/kirbyplants/organic/plant8,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "KK" = (
@@ -2683,12 +2654,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 9
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"Mm" = (
-/obj/item/kirbyplants/organic/plant21{
-	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
@@ -2812,6 +2777,21 @@
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"NV" = (
+/obj/item/radio/intercom/directional/north,
+/obj/machinery/requests_console/directional/west{
+	department = "Chapel";
+	name = "Monastery Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/structure/closet,
+/obj/item/storage/backpack/cultpack,
+/obj/item/clothing/head/chaplain/nun_hood,
+/obj/item/clothing/suit/chaplainsuit/nun,
+/obj/item/clothing/suit/chaplainsuit/holidaypriest,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "NX" = (
 /obj/structure/chair{
 	dir = 8
@@ -2885,10 +2865,6 @@
 "OM" = (
 /obj/item/cultivator,
 /turf/open/floor/grass,
-/area/shuttle/escape)
-"ON" = (
-/obj/item/kirbyplants/organic/plant8,
-/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "OW" = (
 /obj/item/seeds/banana,
@@ -3141,8 +3117,7 @@
 /area/shuttle/escape)
 "RM" = (
 /obj/machinery/mass_driver/chapelgun,
-/obj/machinery/door/window/left/directional/east{
-	dir = 8;
+/obj/machinery/door/window/left/directional/west{
 	name = "Mass Driver"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3299,8 +3274,7 @@
 /area/shuttle/escape)
 "Tb" = (
 /obj/machinery/light/small/directional/east,
-/obj/machinery/door/window/right/directional/north{
-	dir = 2;
+/obj/machinery/door/window/right/directional/south{
 	name = "Curator Desk Door";
 	req_access = list("library")
 	},
@@ -3384,14 +3358,6 @@
 /obj/machinery/computer/emergency_shuttle{
 	use_power = 0
 	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"TV" = (
-/obj/structure/table/wood,
-/obj/item/kirbyplants/organic/plant5{
-	pixel_y = 10
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "Ua" = (
@@ -3556,6 +3522,15 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/escape)
+"Wd" = (
+/obj/item/book/codex_gigas,
+/obj/machinery/camera/directional/south{
+	c_tag = "Monastery Archives Aft";
+	network = list("ss13","monastery")
+	},
+/obj/structure/rack/skeletal,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "We" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -3625,6 +3600,21 @@
 "WQ" = (
 /obj/machinery/biogenerator,
 /turf/open/floor/iron,
+/area/shuttle/escape)
+"Xb" = (
+/obj/structure/table/wood,
+/obj/item/kirbyplants/organic/plant22{
+	pixel_y = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
+"Xk" = (
+/obj/structure/table/wood,
+/obj/item/kirbyplants/organic/plant5{
+	pixel_y = 10
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "Xm" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
@@ -3767,11 +3757,6 @@
 	},
 /turf/open/space/basic,
 /area/shuttle/escape)
-"YV" = (
-/obj/item/kirbyplants/organic/plant22,
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "YZ" = (
 /obj/structure/table/wood,
 /obj/item/storage/bag/books,
@@ -3797,8 +3782,7 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "Zh" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 4;
+/obj/machinery/door/window/brigdoor/left/directional/east{
 	req_access = list("security")
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -3967,7 +3951,7 @@ JG
 JG
 nr
 nr
-IN
+NV
 PY
 rA
 nr
@@ -4211,13 +4195,13 @@ nr
 nr
 nr
 nr
-es
+oH
 lX
 yE
 yE
 yE
 lX
-Mm
+vU
 nr
 nr
 Ho
@@ -4708,7 +4692,7 @@ jx
 YE
 Br
 eW
-mF
+Xb
 nr
 Ho
 nr
@@ -5283,7 +5267,7 @@ Ih
 mw
 jx
 yc
-Fo
+vY
 bI
 MC
 zr
@@ -5295,7 +5279,7 @@ MC
 zr
 Tk
 bI
-gF
+vj
 yc
 Jf
 sf
@@ -5609,7 +5593,7 @@ XN
 pO
 lB
 ZM
-ON
+KH
 yc
 rj
 oc
@@ -5648,7 +5632,7 @@ jx
 jx
 UJ
 jx
-tS
+xt
 zE
 JG
 JG
@@ -5895,7 +5879,7 @@ Jt
 ar
 PC
 oc
-TV
+Xk
 jx
 aF
 nr
@@ -5953,7 +5937,7 @@ nr
 oc
 It
 yc
-YV
+bc
 iB
 rk
 dY
@@ -5967,7 +5951,7 @@ qx
 Kg
 nr
 nr
-Hv
+IL
 jx
 jx
 jx
@@ -6019,7 +6003,7 @@ nf
 wp
 HD
 PC
-ON
+KH
 yc
 rj
 oc
@@ -6144,7 +6128,7 @@ ID
 fY
 pD
 Iw
-Ju
+Wd
 zE
 JG
 JG
@@ -6199,7 +6183,7 @@ nr
 oc
 ZM
 yc
-BF
+do
 Gb
 Vl
 Ws
@@ -6213,7 +6197,7 @@ DS
 Kg
 nr
 nr
-tS
+xt
 Am
 jx
 jx
@@ -6305,7 +6289,7 @@ Vt
 YZ
 Xu
 oc
-TV
+Xk
 jx
 yZ
 nr
@@ -6349,7 +6333,7 @@ ru
 jx
 PC
 yc
-Bt
+xd
 Hc
 Hc
 zQ
@@ -6550,7 +6534,7 @@ NS
 jx
 Md
 jx
-tS
+xt
 zE
 JG
 JG

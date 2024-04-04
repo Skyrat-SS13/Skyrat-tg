@@ -57,6 +57,20 @@ export const sextoy_sounds_pref: FeatureToggle = {
   component: CheckboxInput,
 };
 
+export const vore_pred_pref: FeatureToggle = {
+  name: 'Vore - Pred',
+  category: 'ERP',
+  description: 'Toggles if you are able to use vore mechanics on others.',
+  component: CheckboxInput,
+};
+
+export const vore_prey_pref: FeatureToggle = {
+  name: 'Vore - Prey',
+  category: 'ERP',
+  description: 'Toggles if others are able to use vore mechanics on you',
+  component: CheckboxInput,
+};
+
 export const breast_enlargement_pref: FeatureToggle = {
   name: 'Breast enlargement',
   category: 'ERP',
@@ -141,5 +155,21 @@ export const new_genitalia_growth_pref: FeatureToggle = {
   category: 'ERP',
   description:
     'If checked, allows drugs to grow new genitalia on your character.',
+  component: CheckboxInput,
+};
+
+export const vore_overlays: FeatureToggle = {
+  name: 'Vore Overlays',
+  category: 'ERP',
+  description:
+    'When enabled, will you be shown fullscreen vore overlays while inside of a soulcatcher?',
+  component: CheckboxInput,
+};
+
+export const vore_overlay_options: FeatureToggle = {
+  name: 'Vore Overlay Options',
+  category: 'ERP',
+  description:
+    'Do you want to see fullscreen vore overlays as an option for soulcatcher overlays?',
   component: CheckboxInput,
 };

@@ -753,3 +753,124 @@
 	if(active)
 		to_chat(user, span_danger("Your chameleon field deactivates."))
 		deactivate(user)
+
+// Quadruped tongue - lick lick
+/obj/item/quadborg_tongue
+	name = "synthetic tongue"
+	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "synthtongue"
+	hitsound = 'sound/effects/attackblob.ogg'
+	desc = "For giving affectionate kisses."
+	item_flags = NOBLUDGEON
+
+/obj/item/quadborg_tongue/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if(!proximity || !isliving(target))
+		return
+	var/mob/living/silicon/robot/borg = user
+	var/mob/living/mob = target
+
+	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
+		if(check_zone(borg.zone_selected) == "head")
+			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
+			playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+		else
+			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
+			playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+	else
+		to_chat(user, span_warning("ERROR: [target] is on the Do Not Lick registry!"))
+
+// Quadruped nose - Boop
+/obj/item/quadborg_nose
+	name = "boop module"
+	desc = "The BOOP module"
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "nose"
+	obj_flags = CONDUCTS_ELECTRICITY
+	item_flags = NOBLUDGEON
+	force = 0
+
+/obj/item/quadborg_nose/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if(!proximity)
+		return
+
+	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
+		do_attack_animation(target, null, src)
+		user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
+	else
+		to_chat(user, span_warning("ERROR: [target] is on the No Nosing registry!"))
+
+/// Better Clamp
+/obj/item/borg/hydraulic_clamp/better
+	name = "improved integrated hydraulic clamp"
+	desc = "A neat way to lift and move around crates for quick and painless deliveries!"
+	storage_capacity = 4
+	whitelisted_item_types = list(/obj/structure/closet/crate, /obj/item/delivery/big, /obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
+	whitelisted_item_description = "wrapped packages"
+	item_weight_limit = NONE
+	clamp_sound_volume = 50
+
+/obj/item/borg/hydraulic_clamp/better/examine(mob/user)
+	. = ..()
+	var/crate_count = contents.len
+	. += "There is currently <b>[crate_count > 0 ? crate_count : "no"]</b> crate[crate_count > 1 ? "s" : ""] stored in the clamp's internal storage."
+
+/obj/item/borg/hydraulic_clamp/mail
+	name = "integrated rapid mail delivery device"
+	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
+	icon = 'icons/obj/service/library.dmi'
+	icon_state = "bookbag"
+	storage_capacity = 100
+	loading_time = 0.25 SECONDS
+	unloading_time = 0.25 SECONDS
+	cooldown_duration = 0.25 SECONDS
+	whitelisted_item_types = list(/obj/item/mail)
+	whitelisted_item_description = "envelopes"
+	item_weight_limit = WEIGHT_CLASS_NORMAL
+	clamp_sound_volume = 25
+	clamp_sound = 'sound/items/pshoom.ogg'
+
+/obj/item/borg/forging_setup
+	name = "integrated forging dispenser"
+	desc = "Allows cyborgs to dispense the necessary structures for forging in return for power."
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "forge_dispense"
+	/// how much charge the item will use per use
+	var/charge_cost = 1000
+
+/obj/item/borg/forging_setup/attack_self(mob/user, modifiers)
+	var/mob/living/silicon/robot/robot_user = user
+	if(!istype(robot_user)) //you have to be a borg to use this item
+		to_chat(user, span_warning("Must be a cyborg to use [src]!"))
+		return
+
+	if(robot_user.cell.charge < charge_cost)
+		to_chat(user, span_warning("Not enough charge!"))
+		return
+
+	var/turf/src_turf = get_turf(src)
+	if(!isopenturf(src_turf) || isspaceturf(src_turf))
+		to_chat(user, span_warning("Must be built on a solid surface!"))
+		return
+
+	for(var/obj/structure/locate_structure in src_turf)
+		if(locate_structure.density)
+			to_chat(user, span_warning("Must be built on an empty surface!"))
+			return
+
+	robot_user.cell.use(charge_cost)
+
+	var/choice = tgui_input_list(user, "Which structure would you like to produce?", "Structure Choice", list("Forge", "Anvil", "Water Basin", "Crafting Bench"))
+	if(isnull(choice))
+		return
+	switch(choice)
+		if("Forge")
+			new /obj/structure/reagent_forge(src_turf)
+		if("Anvil")
+			new /obj/structure/reagent_anvil(src_turf)
+		if("Water Basin")
+			new /obj/structure/reagent_water_basin(src_turf)
+		if("Crafting Bench")
+			new /obj/structure/reagent_crafting_bench(src_turf)

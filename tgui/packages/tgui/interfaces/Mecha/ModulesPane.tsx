@@ -308,7 +308,9 @@ const MECHA_SNOWFLAKE_ID_RADIO = 'radio_snowflake';
 const MECHA_SNOWFLAKE_ID_AIR_TANK = 'air_tank_snowflake';
 const MECHA_SNOWFLAKE_ID_WEAPON_BALLISTIC = 'ballistic_weapon_snowflake';
 const MECHA_SNOWFLAKE_ID_GENERATOR = 'generator_snowflake';
+const MECHA_SNOWFLAKE_ID_ORE_SCANNER = 'orescanner_snowflake';
 const MECHA_SNOWFLAKE_ID_CLAW = 'lawclaw_snowflake';
+const MECHA_SNOWFLAKE_ID_RCD = 'rcd_snowflake';
 
 export const ModuleDetailsExtra = (props: { module: MechModule }) => {
   const module = props.module;
@@ -327,8 +329,12 @@ export const ModuleDetailsExtra = (props: { module: MechModule }) => {
       return <SnowflakeRadio module={module} />;
     case MECHA_SNOWFLAKE_ID_GENERATOR:
       return <SnowflakeGeneraor module={module} />;
+    case MECHA_SNOWFLAKE_ID_ORE_SCANNER:
+      return <SnowflakeOreScanner module={module} />;
     case MECHA_SNOWFLAKE_ID_CLAW:
       return <SnowflakeLawClaw module={module} />;
+    case MECHA_SNOWFLAKE_ID_RCD:
+      return <SnowflakeRCD module={module} />;
     default:
       return null;
   }
@@ -541,7 +547,7 @@ const SnowflakeRadio = (props) => {
       </LabeledList.Item>
       <LabeledList.Item label="Frequency">
         <NumberInput
-          animate
+          animated
           unit="kHz"
           step={0.2}
           stepPixelSize={10}
@@ -549,7 +555,7 @@ const SnowflakeRadio = (props) => {
           maxValue={maxFrequency / 10}
           value={frequency / 10}
           format={(value) => toFixed(value, 1)}
-          onDrag={(e, value) =>
+          onDrag={(value) =>
             act('equip_act', {
               ref: ref,
               gear_action: 'set_frequency',
@@ -655,7 +661,7 @@ const SnowflakeAirTank = (props) => {
               minValue={tank_release_pressure_min}
               maxValue={tank_release_pressure_max}
               step={10}
-              onChange={(e, value) =>
+              onChange={(value) =>
                 act('equip_act', {
                   ref: ref,
                   gear_action: 'set_cabin_pressure',
@@ -734,8 +740,8 @@ const SnowflakeAirTank = (props) => {
             minValue={tank_pump_pressure_min}
             maxValue={tank_pump_pressure_max}
             step={10}
-            format={(value) => Math.round(value)}
-            onChange={(e, value) =>
+            format={(value) => `${Math.round(value)}`}
+            onChange={(value) =>
               act('equip_act', {
                 ref: ref,
                 gear_action: 'set_tank_pump_pressure',
@@ -924,6 +930,34 @@ const SnowflakeGeneraor = (props) => {
   );
 };
 
+const SnowflakeOreScanner = (props) => {
+  const { act, data } = useBackend<MainData>();
+  const { ref } = props.module;
+  const { cooldown } = props.module.snowflake;
+  return (
+    <LabeledList.Item label="Vent Scanner">
+      <NoticeBox info={cooldown <= 0 ? true : false}>
+        {cooldown / 10 > 0 ? 'Recharging...' : 'Ready to scan vents'}
+        <Button
+          my={1}
+          width="100%"
+          icon="satellite-dish"
+          color={cooldown <= 0 ? 'green' : 'transparent'}
+          onClick={() =>
+            act('equip_act', {
+              ref: ref,
+              gear_action: 'area_scan',
+            })
+          }
+          disabled={cooldown <= 0 ? false : true}
+        >
+          Scan all nearby vents
+        </Button>
+      </NoticeBox>
+    </LabeledList.Item>
+  );
+};
+
 const SnowflakeLawClaw = (props) => {
   const { act, data } = useBackend<MainData>();
   const { ref } = props.module;
@@ -945,5 +979,51 @@ const SnowflakeLawClaw = (props) => {
         />
       }
     />
+  );
+};
+
+const SnowflakeRCD = (props) => {
+  const { act, data } = useBackend<MainData>();
+  const { ref } = props.module;
+  const { scan_ready, deconstructing, mode } = props.module.snowflake;
+  return (
+    <>
+      <LabeledList.Item label="Destruction Scan">
+        <Button
+          icon="satellite-dish"
+          color={scan_ready ? 'green' : 'transparent'}
+          onClick={() =>
+            act('equip_act', {
+              ref: ref,
+              gear_action: 'rcd_scan',
+            })
+          }
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Deconstructing">
+        <Button
+          icon="power-off"
+          content={deconstructing ? 'On' : 'Off'}
+          color={deconstructing ? 'green' : 'blue'}
+          onClick={() =>
+            act('equip_act', {
+              ref: ref,
+              gear_action: 'toggle_deconstruct',
+            })
+          }
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Construction Mode">
+        <Button
+          content={mode}
+          onClick={() =>
+            act('equip_act', {
+              ref: ref,
+              gear_action: 'change_mode',
+            })
+          }
+        />
+      </LabeledList.Item>
+    </>
   );
 };

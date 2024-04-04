@@ -11,7 +11,7 @@
 	hardcore_value = 2
 	mail_goodies = list(
 		/obj/item/clothing/glasses/blindfold,
-		/obj/item/bedsheet/random,
+		/obj/effect/spawner/random/bedsheet/any,
 		/obj/item/clothing/under/misc/pj/red,
 		/obj/item/clothing/head/costume/nightcap/red,
 		/obj/item/clothing/under/misc/pj/blue,

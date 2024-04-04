@@ -102,19 +102,19 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /// Are we NOT a silicon, AND we're logged in as the captain?
 /obj/machinery/computer/communications/proc/authenticated_as_non_silicon_captain(mob/user)
-	if (issilicon(user))
+	if (HAS_SILICON_ACCESS(user))
 		return FALSE
 	return ACCESS_CAPTAIN in authorize_access
 
 /// Are we a silicon, OR we're logged in as the captain?
 /obj/machinery/computer/communications/proc/authenticated_as_silicon_or_captain(mob/user)
-	if (issilicon(user))
+	if (HAS_SILICON_ACCESS(user))
 		return TRUE
 	return ACCESS_CAPTAIN in authorize_access
 
 /// Are we a silicon, OR logged in?
 /obj/machinery/computer/communications/proc/authenticated(mob/user)
-	if (issilicon(user))
+	if (HAS_SILICON_ACCESS(user))
 		return TRUE
 	return authenticated
 
@@ -202,7 +202,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 
 			// Check if they have
-			if (!issilicon(usr))
+			if (!HAS_SILICON_ACCESS(usr))
 				var/obj/item/held_item = usr.get_active_held_item()
 				var/obj/item/card/id/id_card = held_item?.GetID()
 				if (!istype(id_card))
@@ -301,7 +301,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			state = STATE_MAIN
 		if ("recallShuttle")
 			// AIs cannot recall the shuttle
-			if (!authenticated(usr) || issilicon(usr) || syndicate)
+			if (!authenticated(usr) || HAS_SILICON_ACCESS(usr) || syndicate)
 				return
 			SSshuttle.cancelEvac(usr)
 		if ("requestNukeCodes")
@@ -411,6 +411,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 							post_status("alert", "orangealert")
 						if(SEC_LEVEL_AMBER)
 							post_status("alert", "amberalert")
+						if(SEC_LEVEL_EPSILON)
+							post_status("alert", "epsilonalert")
 						if(SEC_LEVEL_GAMMA)
 							post_status("alert", "gammaalert")
 						// SKYRAT EDIT ADD END - Alert Levels
@@ -568,7 +570,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		"syndicate" = syndicate,
 	)
 
-	var/ui_state = issilicon(user) ? cyborg_state : state
+	var/ui_state = HAS_SILICON_ACCESS(user) ? cyborg_state : state
 
 	var/has_connection = has_communication()
 	data["hasConnection"] = has_connection
@@ -585,9 +587,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			data["safeCodeDeliveryWait"] = 0
 			data["safeCodeDeliveryArea"] = null
 
-	if (authenticated || issilicon(user))
+	if (authenticated || HAS_SILICON_ACCESS(user))
 		data["authenticated"] = TRUE
-		data["canLogOut"] = !issilicon(user)
+		data["canLogOut"] = !HAS_SILICON_ACCESS(user)
 		data["page"] = ui_state
 
 		if ((obj_flags & EMAGGED) || syndicate)
@@ -598,7 +600,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["canBuyShuttles"] = can_buy_shuttles(user)
 				data["canMakeAnnouncement"] = FALSE
 				data["canMessageAssociates"] = FALSE
-				data["canRecallShuttles"] = !issilicon(user)
+				data["canRecallShuttles"] = !HAS_SILICON_ACCESS(user)
 				data["canRequestNuke"] = FALSE
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
@@ -610,7 +612,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["aprilFools"] = check_holidays(APRIL_FOOLS)
 				data["alertLevel"] = SSsecurity_level.get_current_level_as_text()
 				data["authorizeName"] = authorize_name
-				data["canLogOut"] = !issilicon(user)
+				data["canLogOut"] = !HAS_SILICON_ACCESS(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac()
 				if(syndicate)
 					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
@@ -639,7 +641,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					data["engineeringOverride"] = GLOB.force_eng_override //SKYRAT EDIT - Engineering Override Toggle
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
-					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
+					data["canSetAlertLevel"] = HAS_SILICON_ACCESS(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
 				else if(syndicate)
 					data["canMakeAnnouncement"] = TRUE
 
@@ -743,7 +745,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	return is_station_level(z_level) || is_centcom_level(z_level)
 
 /obj/machinery/computer/communications/proc/set_state(mob/user, new_state)
-	if (issilicon(user))
+	if (HAS_SILICON_ACCESS(user))
 		cyborg_state = new_state
 	else
 		state = new_state
@@ -753,7 +755,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 /obj/machinery/computer/communications/proc/can_buy_shuttles(mob/user)
 	if (!SSmapping.config.allow_custom_shuttles)
 		return FALSE
-	if (issilicon(user))
+	if (HAS_SILICON_ACCESS(user))
 		return FALSE
 
 	var/has_access = FALSE
@@ -796,7 +798,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
 
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
-	var/is_ai = issilicon(user)
+	var/is_ai = HAS_SILICON_ACCESS(user)
 	if(!SScommunications.can_announce(user, is_ai))
 		to_chat(user, span_alert("Intercomms recharging. Please stand by."))
 		return

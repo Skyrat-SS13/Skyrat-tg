@@ -91,11 +91,12 @@ SUBSYSTEM_DEF(area_spawn)
 	turf_list = area_turf_info["[mode]"] = list()
 
 	// Get highest priority items
-	for(var/turf/iterating_turf as anything in area.get_contained_turfs())
-		// Only retain turfs of the highest priority
-		var/priority = process_turf(iterating_turf, mode)
-		if(priority > 0)
-			LAZYADDASSOC(turf_list, "[priority]", list(iterating_turf))
+	for(var/list/zlevel_turfs as anything in area.get_zlevel_turf_lists())
+		for(var/turf/area_turf as anything in zlevel_turfs)
+			// Only retain turfs of the highest priority
+			var/priority = process_turf(area_turf, mode)
+			if(priority > 0)
+				LAZYADDASSOC(turf_list, "[priority]", list(area_turf))
 
 	// Sort the priorities descending
 	return sortTim(turf_list, GLOBAL_PROC_REF(cmp_num_string_asc))
@@ -333,17 +334,18 @@ SUBSYSTEM_DEF(area_spawn)
 		if(!found_area)
 			continue
 
-		for(var/turf/candidate_turf as anything in found_area.get_contained_turfs())
-			// Don't spawn if there's already a desired_atom here.
-			if(is_type_on_turf(candidate_turf, desired_atom))
-				continue
+		for (var/list/zlevel_turfs as anything in found_area.get_zlevel_turf_lists())
+			for(var/turf/area_turf as anything in zlevel_turfs)
+				// Don't spawn if there's already a desired_atom here.
+				if(is_type_on_turf(area_turf, desired_atom))
+					continue
 
-			for(var/over_atom_type in over_atoms)
-				// Spawn on the first one we find in the turf and stop.
-				if(is_type_on_turf(candidate_turf, over_atom_type))
-					new desired_atom(candidate_turf)
-					// Break the over_atom_type loop.
-					break
+				for(var/over_atom_type in over_atoms)
+					// Spawn on the first one we find in the turf and stop.
+					if(is_type_on_turf(area_turf, over_atom_type))
+						new desired_atom(area_turf)
+						// Break the over_atom_type loop.
+						break
 
 /obj/effect/turf_test
 	name = "PASS"

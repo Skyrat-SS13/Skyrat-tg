@@ -35,13 +35,9 @@
 		return FALSE
 
 	to_chat(target_soul, span_cyan("Your body has scanned, revealing your true identity."))
-	target_soul.name = source_mob.real_name
 	target_soul.body_scan_needed = FALSE
 
-	var/datum/preferences/preferences = target_soul.client?.prefs
-	if(preferences)
-		target_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
-
+	SEND_SIGNAL(target_soul, COMSIG_CARRIER_MOB_REFRESH_APPEARANCE)
 	return TRUE
 
 /// Attempts to destroy the component. If `restore_mind` is true, it will attempt to place the mind back inside of the body and delete the soulcatcher soul.

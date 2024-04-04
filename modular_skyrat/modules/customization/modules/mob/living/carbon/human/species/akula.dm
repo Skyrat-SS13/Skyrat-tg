@@ -40,6 +40,9 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
+
+	meat = /obj/item/food/fishmeat/moonfish/akula
+
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
 

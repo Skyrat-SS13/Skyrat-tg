@@ -60,6 +60,9 @@
 	should_draw_greyscale = FALSE
 	wing_types = NONE
 
+/obj/item/bodypart/chest/abductor/get_butt_sprite()
+	return BUTT_SPRITE_GREY
+
 /obj/item/bodypart/arm/left/abductor
 	limb_id = SPECIES_ABDUCTOR
 	should_draw_greyscale = FALSE
@@ -85,7 +88,7 @@
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
-	head_flags = HEAD_ALL_FEATURES
+	head_flags = HEAD_EYECOLOR | HEAD_EYESPRITES | HEAD_HAIR | HEAD_FACIAL_HAIR
 
 /obj/item/bodypart/chest/jelly
 	biological_state = (BIO_FLESH|BIO_BLOODED)
@@ -94,6 +97,9 @@
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 	wing_types = list(/obj/item/organ/external/wings/functional/slime)
+
+/obj/item/bodypart/chest/jelly/get_butt_sprite()
+	return BUTT_SPRITE_SLIME
 
 /obj/item/bodypart/arm/left/jelly
 	biological_state = (BIO_FLESH|BIO_BLOODED)
@@ -124,7 +130,7 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = FALSE
-	head_flags = HEAD_ALL_FEATURES
+	head_flags = HEAD_EYECOLOR | HEAD_EYESPRITES | HEAD_HAIR | HEAD_FACIAL_HAIR
 
 /obj/item/bodypart/chest/slime
 	biological_state = (BIO_FLESH|BIO_BLOODED)
@@ -153,7 +159,7 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 	is_dimorphic = TRUE
-	head_flags = HEAD_ALL_FEATURES
+	head_flags = HEAD_EYECOLOR | HEAD_EYESPRITES | HEAD_HAIR | HEAD_FACIAL_HAIR
 
 /obj/item/bodypart/chest/luminescent
 	biological_state = (BIO_FLESH|BIO_BLOODED)
@@ -183,6 +189,7 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	head_flags = HEAD_EYESPRITES|HEAD_DEBRAIN
+	can_dismember = TRUE
 
 /obj/item/bodypart/chest/zombie
 	limb_id = SPECIES_ZOMBIE
@@ -228,6 +235,9 @@
 	is_dimorphic = TRUE
 	burn_modifier = 1.25
 	wing_types = NONE
+
+/obj/item/bodypart/chest/pod/get_butt_sprite()
+	return BUTT_SPRITE_FLOWERPOT
 
 /obj/item/bodypart/arm/left/pod
 	limb_id = SPECIES_PODPERSON

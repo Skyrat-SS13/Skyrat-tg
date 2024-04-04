@@ -79,7 +79,7 @@
 	var/obj/machinery/power/emitter/energycannon/magical/our_statue
 	var/list/mob/living/sleepers = list()
 	var/never_spoken = TRUE
-	obj_flags = /obj::obj_flags | NO_DECONSTRUCTION
+	obj_flags = parent_type::obj_flags | NO_DECONSTRUCTION
 
 /obj/structure/table/abductor/wabbajack/Initialize(mapload)
 	. = ..()
@@ -90,17 +90,14 @@
 	. = ..()
 
 /obj/structure/table/abductor/wabbajack/process()
-	var/area = orange(4, src)
-	if(!our_statue)
-		for(var/obj/machinery/power/emitter/energycannon/magical/M in area)
-			our_statue = M
-			break
+	if(isnull(our_statue))
+		our_statue = locate() in orange(4, src)
 
-	if(!our_statue)
+	if(isnull(our_statue))
 		name = "inert [initial(name)]"
 		return
-	else
-		name = initial(name)
+
+	name = initial(name)
 
 	var/turf/T = get_turf(src)
 	var/list/found = list()
@@ -111,7 +108,7 @@
 	// New sleepers
 	for(var/i in found - sleepers)
 		var/mob/living/L = i
-		L.add_atom_colour("#800080", TEMPORARY_COLOUR_PRIORITY)
+		L.add_atom_colour(COLOR_PURPLE, TEMPORARY_COLOUR_PRIORITY)
 		L.visible_message(span_revennotice("A strange purple glow wraps itself around [L] as [L.p_they()] suddenly fall[L.p_s()] unconscious."),
 			span_revendanger("[desc]"))
 		// Don't let them sit suround unconscious forever
@@ -125,7 +122,7 @@
 	// Missing sleepers
 	for(var/i in sleepers - found)
 		var/mob/living/L = i
-		L.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#800080")
+		L.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_PURPLE)
 		L.visible_message("<span class='revennotice'>The glow from [L] fades \
 			away.</span>")
 		L.grab_ghost()
@@ -201,7 +198,7 @@
 
 /obj/structure/table/wood/shuttle_bar
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	obj_flags = /obj::obj_flags | NO_DECONSTRUCTION
+	obj_flags = parent_type::obj_flags | NO_DECONSTRUCTION
 	max_integrity = 1000
 	var/boot_dir = 1
 
@@ -381,15 +378,13 @@
 		var/change = FALSE
 		if(payees[AM] > 0)
 			change = TRUE
-			var/obj/item/holochip/HC = new /obj/item/holochip(AM.loc) //Change is made in holocredits exclusively.
-			HC.credits = payees[AM]
-			HC.name = "[HC.credits] credit holochip"
+			var/obj/item/holochip/holocred = new /obj/item/holochip(AM.loc, payees[AM]) //Change is made in holocredits exclusively.
 			if(ishuman(AM))
 				var/mob/living/carbon/human/H = AM
-				if(!H.put_in_hands(HC))
-					AM.pulling = HC
+				if(!H.put_in_hands(holocred))
+					AM.pulling = holocred
 			else
-				AM.pulling = HC
+				AM.pulling = holocred
 			payees[AM] -= payees[AM]
 
 		say("Welcome to first class, [driver_holdout ? "[driver_holdout]" : "[AM]" ]![change ? " Here is your change." : ""]")

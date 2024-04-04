@@ -168,6 +168,7 @@
 			message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
 			Original Name: [original_name], New Name: [patient.dna.real_name]. \
 			This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+		SSquirks.AssignQuirks(patient, patient.client)
 		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 	open_machine()

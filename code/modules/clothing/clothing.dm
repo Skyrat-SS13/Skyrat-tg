@@ -54,7 +54,7 @@
 
 /obj/item/clothing/Initialize(mapload)
 	if(clothing_flags & VOICEBOX_TOGGLABLE)
-		actions_types += /datum/action/item_action/toggle_voice_box
+		actions_types += list(/datum/action/item_action/toggle_voice_box)
 	. = ..()
 	AddElement(/datum/element/venue_price, FOOD_PRICE_CHEAP)
 	if(can_be_bloody && ((body_parts_covered & FEET) || (flags_inv & HIDESHOES)))
@@ -314,6 +314,9 @@
 			. += "[src] offers the wearer some protection from fire."
 		if (1601 to 35000)
 			. += "[src] offers the wearer robust protection from fire."
+
+	if(TRAIT_FAST_CUFFING in clothing_traits)
+		. += "[src] increase the speed that you handcuff others."
 
 	for(var/zone in damage_by_parts)
 		var/pct_damage_part = damage_by_parts[zone] / limb_integrity * 100

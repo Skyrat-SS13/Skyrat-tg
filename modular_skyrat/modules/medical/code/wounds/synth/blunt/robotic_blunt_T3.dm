@@ -38,7 +38,7 @@
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/critical
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
 
-	base_movement_stagger_score = 55
+	base_movement_stagger_score = 50
 
 	base_aftershock_camera_shake_duration = 1.75 SECONDS
 	base_aftershock_camera_shake_strength = 1
@@ -46,7 +46,7 @@
 	chest_attacked_stagger_chance_ratio = 6.5
 	chest_attacked_stagger_mult = 4
 
-	chest_movement_stagger_chance = 14
+	chest_movement_stagger_chance = 8
 
 	aftershock_stopped_moving_score_mult = 0.3
 
@@ -117,7 +117,7 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 
-	if(!do_after(user, 8 SECONDS, target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
+	if(!do_after(user, 4 SECONDS, target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 	mold_metal(user)
 	return TRUE
@@ -213,7 +213,7 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 
-	if (!welder.use_tool(target = victim, user = user, delay = 10 SECONDS * delay_mult, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
+	if (!welder.use_tool(target = victim, user = user, delay = 7 SECONDS * delay_mult, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
 	var/wound_path = /datum/wound/burn/robotic/overheat/severe
@@ -249,11 +249,11 @@
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
-	var/base_time = 10 SECONDS
+	var/base_time = 7 SECONDS
 	var/delay_mult = 1
 	var/knows_wires = FALSE
 	if (victim == user)
-		delay_mult *= 3 // real slow
+		delay_mult *= 2
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
@@ -335,7 +335,7 @@
 
 	delay_mult /= treating_plunger.plunge_mod
 
-	if (!treating_plunger.use_tool(target = victim, user = user, delay = 8 SECONDS * delay_mult, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
+	if (!treating_plunger.use_tool(target = victim, user = user, delay = 6 SECONDS * delay_mult, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
 	var/success_chance = 80

@@ -46,9 +46,8 @@
 	if(length(contents))
 		. += span_notice("It has <b>[contents[1]]</b> sitting in it.")
 
-/obj/machinery/arc_furnace/deconstruct(disassembled = TRUE)
+/obj/machinery/arc_furnace/on_deconstruction(disassembled)
 	eject_contents()
-	return ..()
 
 /obj/machinery/arc_furnace/update_appearance()
 	. = ..()
@@ -169,6 +168,8 @@
 			where_we_spawn_air.atmos_spawn_air("co2=50;TEMP=1200")
 		if(/obj/item/stack/sheet/mineral/titanium)
 			where_we_spawn_air.atmos_spawn_air("n2=10;co2=10;TEMP=1200")
+		if(/obj/item/stack/sheet/mineral/plasma)
+			where_we_spawn_air.atmos_spawn_air("co2=75;TEMP=2000")
 		else
 			where_we_spawn_air.atmos_spawn_air("co2=20;TEMP=1200")
 

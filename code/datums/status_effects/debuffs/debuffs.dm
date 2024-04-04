@@ -278,7 +278,7 @@
 	. = ..()
 	if(!.)
 		return
-	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
+	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_ANALGESIA), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
 	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT ADDITION - STASIS APPLIES NUMBED
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
@@ -294,7 +294,7 @@
 		owner.Sleeping(15 SECONDS) //SKYRAT EDIT END
 
 /datum/status_effect/grouped/stasis/on_remove()
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_ANALGESIA), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
 	owner.clear_alert("stasis numbed") //SKYRAT EDIT ADDITION - STASIS APPLIED NUMBED
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
@@ -346,7 +346,7 @@
 /datum/status_effect/crusher_mark
 	id = "crusher_mark"
 	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
-	status_type = STATUS_EFFECT_REPLACE
+	status_type = STATUS_EFFECT_MULTIPLE
 	alert_type = null
 	var/mutable_appearance/marked_underlay
 	var/obj/item/kinetic_crusher/hammer_synced
@@ -373,9 +373,9 @@
 	QDEL_NULL(marked_underlay)
 	return ..()
 
-/datum/status_effect/crusher_mark/be_replaced()
-	owner.underlays -= marked_underlay //if this is being called, we should have an owner at this point.
-	..()
+//we will only clear ourselves if the crusher is the one that owns us.
+/datum/status_effect/crusher_mark/before_remove(obj/item/kinetic_crusher/attacking_hammer)
+	return (attacking_hammer == hammer_synced)
 
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"
@@ -795,6 +795,8 @@
 	processing_speed = STATUS_EFFECT_NORMAL_PROCESS
 	/// Will act as the main timer as well as changing how much damage the ants do.
 	var/ants_remaining = 0
+	/// Amount of damage done per ant on the victim
+	var/damage_per_ant = 0.0016
 	/// Common phrases people covered in ants scream
 	var/static/list/ant_debuff_speech = list(
 		"GET THEM OFF ME!!",
@@ -841,7 +843,7 @@
 /datum/status_effect/ants/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/victim = owner
 	var/need_mob_update
-	need_mob_update = victim.adjustBruteLoss(max(0.1, round((ants_remaining * 0.0016) * seconds_between_ticks,0.1)), updating_health = FALSE) //Scales with # of ants (lowers with time). Roughly 10 brute over 50 seconds.
+	need_mob_update = victim.adjustBruteLoss(max(0.1, round((ants_remaining * damage_per_ant) * seconds_between_ticks,0.1)), updating_health = FALSE) //Scales with # of ants (lowers with time). Roughly 10 brute over 50 seconds.
 	if(victim.stat <= SOFT_CRIT) //Makes sure people don't scratch at themselves while they're in a critical condition
 		if(prob(15))
 			switch(rand(1,2))
@@ -871,7 +873,7 @@
 	if(need_mob_update)
 		victim.updatehealth()
 	if(ants_remaining <= 0 || victim.stat >= HARD_CRIT)
-		victim.remove_status_effect(/datum/status_effect/ants) //If this person has no more ants on them or are dead, they are no longer affected.
+		victim.remove_status_effect(type) //If this person has no more ants on them or are dead, they are no longer affected.
 
 /atom/movable/screen/alert/status_effect/ants
 	name = "Ants!"
@@ -888,6 +890,15 @@
 	for (var/datum/status_effect/ants/ant_covered in living.status_effects)
 		to_chat(living, span_notice("You manage to get some of the ants off!"))
 		ant_covered.ants_remaining -= 10 // 5 Times more ants removed per second than just waiting in place
+
+/datum/status_effect/ants/fire
+	id = "fire_ants"
+	alert_type = /atom/movable/screen/alert/status_effect/ants/fire
+	damage_per_ant = 0.0064
+
+/atom/movable/screen/alert/status_effect/ants/fire
+	name = "Fire Ants!"
+	desc = span_warning("JESUS FUCKING CHRIST IT BURNS! CLICK TO GET THOSE THINGS OFF!")
 
 /datum/status_effect/stagger
 	id = "stagger"

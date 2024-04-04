@@ -89,14 +89,18 @@
 	name = "empty nachos tray"
 	desc = "Covered in sauce smearings and smaller pieces of the dish on the inside, a plastic food tray with not much use anymore. It's probably best to dispose of it or recycle it."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
-	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	icon_state = "nacho_trash"
 
 /obj/item/trash/blins
 	name = "empty crepes wrapper"
 	desc = "Empty torn wrapper that used to hold something ridiculously sweet. It's probably best to recycle it."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
-	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT * 0.5)
+	custom_materials = list(
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT * 0.5,
+	)
 	icon_state = "blin_trash"
 
 /obj/item/storage/box/gum/colonial

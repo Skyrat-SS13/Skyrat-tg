@@ -165,6 +165,14 @@
 /obj/item/card/id/advanced/black/syndicate_command/crew_id,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"fc" = (
+/obj/structure/filingcabinet,
+/obj/machinery/door/window/left/directional/west{
+	name = "Syndicate Interior Door";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "fd" = (
 /obj/structure/transit_tube/crossing,
 /turf/open/space/basic,
@@ -182,6 +190,13 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "fV" = (
 /obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"gw" = (
+/obj/machinery/door/window/left/directional/north{
+	name = "Spare Equipment";
+	req_access = list("syndicate")
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "gD" = (
@@ -251,14 +266,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"ja" = (
-/obj/machinery/door/window{
-	dir = 1;
-	name = "Spare Equipment";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "jl" = (
 /obj/structure/bodycontainer/crematorium{
 	id = "fscremate"
@@ -309,6 +316,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"kJ" = (
+/obj/modular_map_root/safehouse{
+	key = "shuttle_space"
+	},
+/turf/template_noop,
+/area/virtual_domain/safehouse)
 "li" = (
 /obj/structure/transit_tube/station/dispenser/reverse{
 	dir = 4
@@ -465,13 +478,6 @@
 /obj/machinery/ore_silo,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"sq" = (
-/obj/machinery/door/window{
-	name = "Control Room";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "sz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump{
 	dir = 4
@@ -522,12 +528,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"tR" = (
-/obj/modular_map_root/safehouse{
-	key = "shuttle_space"
-	},
-/turf/template_noop,
-/area/virtual_domain/safehouse)
 "uP" = (
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
@@ -887,15 +887,6 @@
 /obj/structure/transit_tube/crossing,
 /turf/closed/mineral/random,
 /area/space)
-"Lo" = (
-/obj/structure/filingcabinet,
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Syndicate Interior Door";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "Mc" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -1179,6 +1170,13 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Zb" = (
 /turf/open/floor/plastic,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Zf" = (
+/obj/machinery/door/window/left/directional/south{
+	name = "Control Room";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "ZA" = (
 /obj/machinery/power/shuttle_engine/propulsion{
@@ -2417,7 +2415,7 @@ qx
 qx
 Ig
 ru
-Lo
+fc
 ru
 tv
 ki
@@ -2517,7 +2515,7 @@ sM
 sM
 sM
 sM
-tR
+kJ
 qx
 Hq
 "}
@@ -3346,7 +3344,7 @@ qx
 ru
 Kz
 dz
-sq
+Zf
 Kz
 CK
 Kz
@@ -3356,7 +3354,7 @@ vU
 Kz
 CK
 Kz
-ja
+gw
 Kz
 Jg
 ru

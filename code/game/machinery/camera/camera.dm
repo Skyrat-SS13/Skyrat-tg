@@ -115,6 +115,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 /obj/machinery/camera/proc/create_prox_monitor()
 	if(!proximity_monitor)
 		proximity_monitor = new(src, 1)
+		RegisterSignal(proximity_monitor, COMSIG_QDELETING, PROC_REF(proximity_deleted))
+
+/obj/machinery/camera/proc/proximity_deleted()
+	SIGNAL_HANDLER
+	proximity_monitor = null
 
 /obj/machinery/camera/proc/set_area_motion(area/A)
 	area_motion = A
@@ -180,7 +185,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 
 /obj/machinery/camera/proc/on_saboteur(datum/source, disrupt_duration)
 	SIGNAL_HANDLER
-	emp_act(EMP_LIGHT, reset_time = disrupt_duration)
+	//lasts twice as much so we don't have to constantly shoot cameras just to be S T E A L T H Y
+	emp_act(EMP_LIGHT, reset_time = disrupt_duration * 2)
 	return COMSIG_SABOTEUR_SUCCESS
 
 /obj/machinery/camera/proc/post_emp_reset(thisemp, previous_network)
@@ -438,21 +444,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 		triggerCameraAlarm()
 		toggle_cam(null, 0)
 
-/obj/machinery/camera/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		if(disassembled)
-			var/obj/structure/camera_assembly/assembly = assembly_ref?.resolve()
-			if(!assembly)
-				assembly = new()
-			assembly.forceMove(drop_location())
-			assembly.state = 1
-			assembly.setDir(dir)
-			assembly_ref = null
-		else
-			var/obj/item/I = new /obj/item/wallframe/camera (loc)
-			I.update_integrity(I.max_integrity * 0.5)
-			new /obj/item/stack/cable_coil(loc, 2)
-	qdel(src)
+/obj/machinery/camera/on_deconstruction(disassembled)
+	if(disassembled)
+		var/obj/structure/camera_assembly/assembly = assembly_ref?.resolve()
+		if(!assembly)
+			assembly = new()
+		assembly.forceMove(drop_location())
+		assembly.state = 1
+		assembly.setDir(dir)
+		assembly_ref = null
+		return
+
+	var/obj/item/I = new /obj/item/wallframe/camera (loc)
+	I.update_integrity(I.max_integrity * 0.5)
+	new /obj/item/stack/cable_coil(loc, 2)
 
 /obj/machinery/camera/update_icon_state() //TO-DO: Make panel open states, xray camera, and indicator lights overlays instead.
 	var/xray_module

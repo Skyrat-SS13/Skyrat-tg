@@ -47,7 +47,7 @@
 	make_climbable()
 
 	var/static/list/loc_connections = list(
-		COMSIG_CARBON_DISARM_COLLIDE = PROC_REF(table_carbon),
+		COMSIG_LIVING_DISARM_COLLIDE = PROC_REF(table_living),
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
@@ -181,7 +181,7 @@
 	pushed_mob.Knockdown(30)
 	pushed_mob.apply_damage(10, BRUTE)
 	pushed_mob.apply_damage(40, STAMINA)
-	if(user.mind?.martial_art.smashes_tables && user.mind?.martial_art.can_use(user))
+	if(user.mind?.martial_art?.smashes_tables && user.mind?.martial_art.can_use(user))
 		deconstruct(FALSE)
 	playsound(pushed_mob, 'sound/effects/tableslam.ogg', 90, TRUE)
 	pushed_mob.visible_message(span_danger("[user] slams [pushed_mob] onto \the [src]!"), \
@@ -198,7 +198,7 @@
 	banged_limb?.receive_damage(30, wound_bonus = extra_wound)
 	pushed_mob.apply_damage(60, STAMINA)
 	take_damage(50)
-	if(user.mind?.martial_art.smashes_tables && user.mind?.martial_art.can_use(user))
+	if(user.mind?.martial_art?.smashes_tables && user.mind?.martial_art.can_use(user))
 		deconstruct(FALSE)
 	playsound(pushed_mob, 'sound/effects/bang.ogg', 90, TRUE)
 	pushed_mob.visible_message(span_danger("[user] smashes [pushed_mob]'s [banged_limb.plaintext_zone] against \the [src]!"),
@@ -323,17 +323,17 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/table/proc/table_carbon(datum/source, mob/living/carbon/shover, mob/living/carbon/target, shove_blocked)
+/obj/structure/table/proc/table_living(datum/source, mob/living/shover, mob/living/target, shove_flags, obj/item/weapon)
 	SIGNAL_HANDLER
-	if(!shove_blocked)
+	if((shove_flags & SHOVE_KNOCKDOWN_BLOCKED) || !(shove_flags & SHOVE_BLOCKED))
 		return
 	target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
 	target.visible_message(span_danger("[shover.name] shoves [target.name] onto \the [src]!"),
-		span_userdanger("You're shoved onto \the [src] by [shover.name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+		span_userdanger("You're shoved onto \the [src] by [shover.name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, shover)
 	to_chat(shover, span_danger("You shove [target.name] onto \the [src]!"))
 	target.throw_at(src, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
-	log_combat(shover, target, "shoved", "onto [src] (table)")
-	return COMSIG_CARBON_SHOVE_HANDLED
+	log_combat(shover, target, "shoved", "onto [src] (table)[weapon ? " with [weapon]" : ""]")
+	return COMSIG_LIVING_SHOVE_HANDLED
 
 /obj/structure/table/greyscale
 	icon = 'icons/obj/smooth_structures/table_greyscale.dmi'
@@ -829,6 +829,29 @@
 	pass_flags_self = LETPASSTHROW //You can throw objects over this, despite it's density.
 	max_integrity = 20
 
+/obj/structure/rack/skeletal
+	name = "skeletal minibar"
+	desc = "Rattle me boozes!"
+	icon = 'icons/obj/fluff/general.dmi'
+	icon_state = "minibar"
+
+/obj/structure/rack/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/climbable)
+	AddElement(/datum/element/elevation, pixel_shift = 12)
+	register_context()
+
+/obj/structure/rack/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	if(isnull(held_item))
+		return NONE
+
+	if(!(obj_flags & NO_DECONSTRUCTION))
+		if(held_item.tool_behaviour == TOOL_WRENCH)
+			context[SCREENTIP_CONTEXT_RMB] = "Deconstruct"
+			return CONTEXTUAL_SCREENTIP_SET
+
+	return NONE
+
 /obj/structure/rack/examine(mob/user)
 	. = ..()
 	. += span_notice("It's held together by a couple of <b>bolts</b>.")
@@ -840,25 +863,19 @@
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
 		return TRUE
 
-/obj/structure/rack/MouseDrop_T(obj/O, mob/user)
-	. = ..()
-	if ((!( isitem(O) ) || user.get_active_held_item() != O))
-		return
-	if(!user.dropItemToGround(O))
-		return
-	if(O.loc != src.loc)
-		step(O, get_dir(O, src))
+/obj/structure/rack/wrench_act_secondary(mob/living/user, obj/item/tool)
+	if(obj_flags & NO_DECONSTRUCTION)
+		return NONE
+	tool.play_tool_sound(src)
+	deconstruct(TRUE)
+	return ITEM_INTERACT_SUCCESS
 
-/obj/structure/rack/attackby(obj/item/W, mob/living/user, params)
-	var/list/modifiers = params2list(params)
-	if (W.tool_behaviour == TOOL_WRENCH && !(obj_flags & NO_DECONSTRUCTION) && LAZYACCESS(modifiers, RIGHT_CLICK))
-		W.play_tool_sound(src)
-		deconstruct(TRUE)
-		return
-	if(user.combat_mode)
-		return ..()
-	if(user.transferItemToLoc(W, drop_location()))
-		return 1
+/obj/structure/rack/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
+	. = ..()
+	if(. || tool.item_flags & ABSTRACT)
+		return .
+	if(user.transferItemToLoc(tool, drop_location(), silent = FALSE))
+		return ITEM_INTERACT_SUCCESS
 
 /obj/structure/rack/attack_paw(mob/living/user, list/modifiers)
 	attack_hand(user, modifiers)
@@ -867,7 +884,7 @@
 	. = ..()
 	if(.)
 		return
-	if(user.body_position == LYING_DOWN || user.usable_legs < 2)
+	if(!user.combat_mode || user.body_position == LYING_DOWN || user.usable_legs < 2)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
@@ -910,12 +927,36 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT)
 	var/building = FALSE
 
-/obj/item/rack_parts/attackby(obj/item/W, mob/user, params)
-	if (W.tool_behaviour == TOOL_WRENCH)
-		new /obj/item/stack/sheet/iron(user.loc)
-		qdel(src)
-	else
-		. = ..()
+/obj/item/rack_parts/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/item/rack_parts/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	if(isnull(held_item))
+		return NONE
+
+	if(held_item == src)
+		context[SCREENTIP_CONTEXT_LMB] = "Construct Rack"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	if(!(obj_flags & NO_DECONSTRUCTION))
+		if(held_item.tool_behaviour == TOOL_WRENCH)
+			context[SCREENTIP_CONTEXT_LMB] = "Deconstruct"
+			return CONTEXTUAL_SCREENTIP_SET
+
+	return NONE
+
+/obj/item/rack_parts/wrench_act(mob/living/user, obj/item/tool)
+	if(obj_flags & NO_DECONSTRUCTION)
+		return NONE
+	tool.play_tool_sound(src)
+	deconstruct(TRUE)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/rack_parts/deconstruct(disassembled = TRUE)
+	if(!(obj_flags & NO_DECONSTRUCTION))
+		new /obj/item/stack/sheet/iron(drop_location())
+	return ..()
 
 /obj/item/rack_parts/attack_self(mob/user)
 	if(building)

@@ -73,7 +73,7 @@
 	if(target_slime.stat)
 		to_chat(user, span_warning("The slime is dead!"))
 		return
-	if(!target_slime.is_adult)
+	if(target_slime.life_stage != SLIME_LIFE_STAGE_ADULT)
 		to_chat(user, span_warning("The slime must be an adult to cross its core!"))
 		return
 	if(target_slime.crossbreed_modification && target_slime.crossbreed_modification != crossbreed_modification)
@@ -688,9 +688,28 @@
 	desc = "A miraculous chemical mix that grants human like intelligence to living beings."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "potpink"
-	var/list/not_interested = list()
+	/// Are we being offered to a mob, and therefore is a ghost poll currently in progress for the sentient mob?
 	var/being_used = FALSE
 	var/sentience_type = SENTIENCE_ORGANIC
+	/// Reason for offering potion. This will be displayed in the poll alert to ghosts.
+	var/potion_reason
+
+/obj/item/slimepotion/slime/sentience/examine(mob/user)
+	. = ..()
+	. += span_notice("Alt-click to set potion offer reason. [potion_reason ? "Current reason: [span_warning(potion_reason)]" : null]")
+
+/obj/item/slimepotion/slime/sentience/Initialize(mapload)
+	register_context()
+	return ..()
+
+/obj/item/slimepotion/slime/sentience/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Set potion offer reason"
+	return CONTEXTUAL_SCREENTIP_SET
+
+/obj/item/slimepotion/slime/sentience/AltClick(mob/living/user)
+	if(!can_interact(user))
+		return
+	potion_reason = tgui_input_text(user, "Enter reason for offering potion", "Intelligence Potion", potion_reason, multiline = TRUE)
 
 /obj/item/slimepotion/slime/sentience/attack(mob/living/dumb_mob, mob/user)
 	if(being_used || !isliving(dumb_mob))
@@ -704,16 +723,22 @@
 	if(!dumb_mob.compare_sentience_type(sentience_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
 		balloon_alert(user, "invalid creature!")
 		return
-
+	if(isnull(potion_reason))
+		balloon_alert(user, "no reason for offering set!")
+		return
 	balloon_alert(user, "offering...")
 	being_used = TRUE
-
-	var/datum/callback/to_call = CALLBACK(src, PROC_REF(on_poll_concluded), user, dumb_mob)
-	dumb_mob.AddComponent(/datum/component/orbit_poll, \
-		ignore_key = POLL_IGNORE_SENTIENCE_POTION, \
-		job_bans = ROLE_SENTIENCE, \
-		to_call = to_call, \
+	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
+		question = "[span_danger(user.name)] is offering [span_notice(dumb_mob.name)] an intelligence potion! Reason: [span_boldnotice(potion_reason)]",
+		check_jobban = ROLE_SENTIENCE,
+		poll_time = 20 SECONDS,
+		checked_target = dumb_mob,
+		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
+		alert_pic = dumb_mob,
+		role_name_text = "intelligence potion",
+		chat_text_border_icon = src,
 	)
+	on_poll_concluded(user, dumb_mob, chosen_one)
 
 /// Assign the chosen ghost to the mob
 /obj/item/slimepotion/slime/sentience/proc/on_poll_concluded(mob/user, mob/living/dumb_mob, mob/dead/observer/ghost)
@@ -804,22 +829,22 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "potred"
 
-/obj/item/slimepotion/slime/steroid/attack(mob/living/simple_animal/slime/M, mob/user)
-	if(!isslime(M))//If target is not a slime.
+/obj/item/slimepotion/slime/steroid/attack(mob/living/simple_animal/slime/target, mob/user)
+	if(!isslime(target))//If target is not a slime.
 		to_chat(user, span_warning("The steroid only works on baby slimes!"))
 		return ..()
-	if(M.is_adult) //Can't steroidify adults
+	if(target.life_stage == SLIME_LIFE_STAGE_ADULT) //Can't steroidify adults
 		to_chat(user, span_warning("Only baby slimes can use the steroid!"))
 		return
-	if(M.stat)
+	if(target.stat)
 		to_chat(user, span_warning("The slime is dead!"))
 		return
-	if(M.cores >= 5)
+	if(target.cores >= 5)
 		to_chat(user, span_warning("The slime already has the maximum amount of extract!"))
 		return
 
 	to_chat(user, span_notice("You feed the slime the steroid. It will now produce one more extract."))
-	M.cores++
+	target.cores++
 	qdel(src)
 
 /obj/item/slimepotion/enhancer
@@ -892,14 +917,14 @@
 		return
 	if(isitem(C))
 		var/obj/item/I = C
-		if(I.slowdown <= 0 || I.obj_flags & IMMUTABLE_SLOW)
+		if(I.slowdown <= 0 || (I.item_flags & IMMUTABLE_SLOW))
 			to_chat(user, span_warning("The [C] can't be made any faster!"))
 			return ..()
 		I.slowdown = 0
 
 	to_chat(user, span_notice("You slather the red gunk over the [C], making it faster."))
 	C.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-	C.add_atom_colour("#FF0000", FIXED_COLOUR_PRIORITY)
+	C.add_atom_colour(COLOR_RED, FIXED_COLOUR_PRIORITY)
 	qdel(src)
 
 /obj/item/slimepotion/speed/attackby_storage_insert(datum/storage, atom/storage_holder, mob/user)
@@ -936,7 +961,7 @@
 	to_chat(user, span_notice("You slather the blue gunk over the [clothing], fireproofing it."))
 	clothing.name = "fireproofed [clothing.name]"
 	clothing.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-	clothing.add_atom_colour("#000080", FIXED_COLOUR_PRIORITY)
+	clothing.add_atom_colour(COLOR_NAVY, FIXED_COLOUR_PRIORITY)
 	clothing.max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	clothing.heat_protection = clothing.body_parts_covered
 	clothing.resistance_flags |= FIRE_PROOF
@@ -1065,9 +1090,10 @@
 
 /obj/item/areaeditor/blueprints/slime/edit_area()
 	..()
-	var/area/A = get_area(src)
-	for(var/turf/T in A)
-		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-		T.add_atom_colour("#2956B2", FIXED_COLOUR_PRIORITY)
-	A.area_flags |= XENOBIOLOGY_COMPATIBLE
+	var/area/area = get_area(src)
+	for (var/list/zlevel_turfs as anything in area.get_zlevel_turf_lists())
+		for(var/turf/area_turf as anything in zlevel_turfs)
+			area_turf.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+			area_turf.add_atom_colour("#2956B2", FIXED_COLOUR_PRIORITY)
+	area.area_flags |= XENOBIOLOGY_COMPATIBLE
 	qdel(src)

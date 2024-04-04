@@ -22,7 +22,7 @@
 	src.location = get_turf(location)
 	src.amount = amount
 	carry?.copy_to(chemholder, 20)
-	carry?.remove_any(amount / efficiency)
+	carry?.remove_all(amount / efficiency)
 
 /// A factory which produces clouds of smoke for the smoke machine.
 /datum/effect_system/fluid_spread/smoke/chem/smoke_machine
@@ -37,6 +37,7 @@
 	. = ..()
 	create_reagents(REAGENTS_BASE_VOLUME, INJECTABLE)
 	AddComponent(/datum/component/plumbing/simple_demand)
+	AddComponent(/datum/component/simple_rotation)
 	for(var/datum/stock_part/matter_bin/B in component_parts)
 		reagents.maximum_volume += REAGENTS_BASE_VOLUME * B.tier
 	if(is_operational)
@@ -77,7 +78,6 @@
 
 
 /obj/machinery/smoke_machine/process()
-	..()
 	if(reagents.total_volume == 0)
 		on = FALSE
 		update_appearance()
@@ -112,10 +112,9 @@
 		return
 	return ..()
 
-/obj/machinery/smoke_machine/deconstruct()
+/obj/machinery/smoke_machine/on_deconstruction(disassembled)
 	reagents.expose(loc, TOUCH)
 	reagents.clear_reagents()
-	return ..()
 
 /obj/machinery/smoke_machine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

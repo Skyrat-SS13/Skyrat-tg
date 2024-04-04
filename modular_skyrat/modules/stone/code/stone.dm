@@ -79,11 +79,12 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	inhand_icon_state = "tile"
 	turf_type = /turf/open/floor/stone
 	mineralType = "stone"
-	mats_per_unit = list(/datum/material/stone= SMALL_MATERIAL_AMOUNT * 5)
+	mats_per_unit = list(/datum/material/stone= HALF_SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/tile/mineral/stone
 
 /turf/open/floor/stone
 	desc = "Blocks of stone arranged in a tile-like pattern, odd, really, how it looks like real stone too, because it is!" //A play on the original description for stone tiles
+	slowdown = -0.3
 
 /turf/closed/wall/mineral/stone
 	name = "stone wall"
@@ -96,7 +97,9 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_STONE_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_STONE_WALLS
-	custom_materials = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 2)
+	custom_materials = list(
+		/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 2,
+	)
 
 /turf/closed/wall/mineral/stone/try_decon(obj/item/item_used, mob/user) // Lets you break down stone walls with stone breaking tools
 	if(item_used.tool_behaviour != TOOL_MINING)
@@ -121,7 +124,9 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_STONE_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_STONE_WALLS
-	custom_materials = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 2) // Does this even need materials?
+	custom_materials = list(
+		/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 2,
+	)
 
 /obj/structure/falsewall/stone
 	name = "stone wall"

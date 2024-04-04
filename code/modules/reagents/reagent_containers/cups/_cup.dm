@@ -126,6 +126,8 @@
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user)
 		to_chat(user, span_notice("You transfer [trans] unit\s of the solution to [target]."))
+		SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_TO, target)
+		target.update_appearance()
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if(!target.reagents.total_volume)
@@ -138,8 +140,8 @@
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user)
 		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
-
-	target.update_appearance()
+		SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_FROM, target)
+		target.update_appearance()
 
 /obj/item/reagent_containers/cup/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	if((!proximity_flag) || !check_allowed_items(target, target_self = TRUE))
@@ -416,7 +418,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				user.balloon_alert(user, "mop is full!")
 				return
-			mop.reagents.remove_any(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
+			mop.reagents.remove_all(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			mop.reagents.trans_to(src, mop.reagents.total_volume, transferred_by = user)
 			user.balloon_alert(user, "mop squeezed")
 		else

@@ -20,52 +20,24 @@
 	var/flicker_timer = null
 	var/roundstart_flicker = FALSE
 
-/obj/machinery/light/proc/turn_on(trigger, play_sound = TRUE)
+/obj/machinery/light/proc/delayed_turn_on(trigger, play_sound = TRUE, color_set, power_set, brightness_set)
 	if(QDELETED(src))
 		return
 	turning_on = FALSE
 	if(!on)
 		return
-	var/area/local_area  = get_room_area(src)
-	var/new_brightness = brightness
-	var/new_power = bulb_power
-	var/new_color = bulb_colour
-	if (local_area?.fire)
-		new_color = fire_colour
-		new_brightness = fire_brightness
-	else if(color)
-		new_color = color
-	else if (nightshift_enabled)
-		new_brightness -= new_brightness * NIGHTSHIFT_LIGHT_MODIFIER
-		new_power -= new_power * NIGHTSHIFT_LIGHT_MODIFIER
-		if(!color && nightshift_light_color)
-			new_color = nightshift_light_color
-		else if(color) // In case it's spraypainted.
-			new_color = color
-		else // Adjust light values to be warmer. I doubt caching would speed this up by any worthwhile amount, as it's all very fast number and string operations.
-			// Convert to numbers for easier manipulation.
-			var/red = GETREDPART(bulb_colour)
-			var/green = GETGREENPART(bulb_colour)
-			var/blue = GETBLUEPART(bulb_colour)
-
-			red += round(red * NIGHTSHIFT_COLOR_MODIFIER)
-			green -= round(green * NIGHTSHIFT_COLOR_MODIFIER * 0.3)
-			red = clamp(red, 0, 255) // clamp to be safe, or you can end up with an invalid hex value
-			green = clamp(green, 0, 255)
-			blue = clamp(blue, 0, 255)
-			new_color = "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"  // Splice the numbers together and turn them back to hex.
-
-	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color
-	if(!matching)
-		switchcount++
-		if( prob( min(60, (switchcount**2)*0.01) ) )
-			if(trigger)
-				burn_out()
-		else
-			use_power = ACTIVE_POWER_USE
-			set_light(new_brightness, new_power, new_color)
-			if(play_sound)
-				playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
+	if( prob( min(60, (switchcount**2)*0.01) ) )
+		if(trigger)
+			burn_out()
+	else
+		use_power = ACTIVE_POWER_USE
+		set_light(
+			l_range = brightness_set,
+			l_power = power_set,
+			l_color = color_set
+			)
+		if(play_sound)
+			playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
 
 /obj/machinery/light/proc/start_flickering()
 	on = FALSE

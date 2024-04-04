@@ -47,6 +47,7 @@
 	var/safe_plasma_min = 0
 	///How much breath partial pressure is a safe amount of plasma. 0 means that we are immune to plasma.
 	var/safe_plasma_max = 0.05
+	var/n2o_detect_min = 0.08 //Minimum n2o for effects
 	var/n2o_para_min = 1 //Sleeping agent
 	var/n2o_sleep_min = 5 //Sleeping agent
 	var/BZ_trip_balls_min = 1 //BZ gas
@@ -443,7 +444,7 @@
 /// React to speach while hopped up on the high pitched voice juice
 /obj/item/organ/internal/lungs/proc/handle_helium_speech(mob/living/carbon/breather, list/speech_args)
 	SIGNAL_HANDLER
-	speech_args[SPEECH_SPANS] |= SPAN_HELIUM
+	speech_args[SPEECH_SPANS] |= SPAN_SMALL_VOICE
 
 /// Gain hypernob effects if we have enough of the stuff
 /obj/item/organ/internal/lungs/proc/consume_hypernoblium(mob/living/carbon/breather, datum/gas_mixture/breath, hypernob_pp, old_hypernob_pp)
@@ -503,12 +504,12 @@
 /obj/item/organ/internal/lungs/proc/too_much_n2o(mob/living/carbon/breather, datum/gas_mixture/breath, n2o_pp, old_n2o_pp)
 	if(n2o_pp < n2o_para_min)
 		// Small amount of N2O, small side-effects.
-		if(n2o_pp <= 0.01)
-			if(old_n2o_pp > 0.01)
+		if(n2o_pp <= n2o_detect_min)
+			if(old_n2o_pp > n2o_detect_min)
 				return BREATH_LOST
 			return
 		// No alert for small amounts, but the mob randomly feels euphoric.
-		if(old_n2o_pp >= n2o_para_min || old_n2o_pp <= 0.01)
+		if(old_n2o_pp >= n2o_para_min || old_n2o_pp <= n2o_detect_min)
 			breather.clear_alert(ALERT_TOO_MUCH_N2O)
 
 		if(prob(20))

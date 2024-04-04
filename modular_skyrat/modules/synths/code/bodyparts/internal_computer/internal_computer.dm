@@ -9,7 +9,7 @@
 
 	max_idle_programs = 3
 
-	max_capacity = 32
+	max_capacity = 64
 
 /obj/item/modular_computer/pda/synth/Initialize(mapload)
 	. = ..()
@@ -44,60 +44,29 @@
 		)
 	return ..()
 
-/obj/item/modular_computer/pda/synth/RemoveID(mob/user)
-	var/obj/item/organ/internal/brain/synth/brain_loc = loc
-	if(!istype(brain_loc))
-		return ..()
-
-	if(!computer_id_slot)
-		return ..()
-
-	if(crew_manifest_update)
-		GLOB.manifest.modify(computer_id_slot.registered_name, computer_id_slot.assignment, computer_id_slot.get_trim_assignment())
-
-	if(user && !issilicon(user) && in_range(brain_loc.owner || brain_loc, user))
-		user.put_in_hands(computer_id_slot)
+/obj/item/modular_computer/pda/synth/proc/handle_id_slot(mob/living/carbon/human/synth)
+	if(!istype(synth))
+		return
+	var/obj/item = synth.wear_id
+	if(item)
+		if(istype(item, /obj/item/card/id))
+			computer_id_slot = item
+		else if(istype(item, /obj/item/modular_computer))
+			var/obj/item/modular_computer/pda = item
+			computer_id_slot = pda.computer_id_slot
+		else
+			computer_id_slot = null
 	else
-		computer_id_slot.forceMove(brain_loc.owner ? brain_loc.owner.drop_location() : brain_loc.drop_location()) //We actually update the physical on brain removal/insert
+		computer_id_slot = null
 
-	computer_id_slot = null
-	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
-	balloon_alert(user, "removed ID")
+/obj/item/modular_computer/pda/synth/RemoveID(mob/user, silent = TRUE)
+	return
 
 /obj/item/modular_computer/pda/synth/get_ntnet_status()
-	. = NTNET_NO_SIGNAL
-	// NTNet is down and we are not connected via wired connection. The synth is no more
-	var/obj/item/organ/internal/brain/synth/brain_loc = loc
-	if(!istype(brain_loc))
-		return
-	if(!find_functional_ntnet_relay() || isnull(brain_loc.owner))
-		return
-	var/turf/current_turf = get_turf(brain_loc.owner || brain_loc)
-	if(is_station_level(current_turf.z))
-		return NTNET_GOOD_SIGNAL
-	else if(long_ranged && !is_centcom_level(current_turf.z)) // Centcom is excluded because cafe
-		return NTNET_LOW_SIGNAL
-
-/*
-So, I am not snowflaking more code.. except this
-Attacking a synth with an id loads it into its slot.. pain and probably shitcode
-*/
-
-/obj/item/card/id/attack(mob/living/target_mob, mob/living/user, params)
-	var/mob/living/carbon/human/targetmachine = target_mob
-	if(!istype(targetmachine))
-		return ..()
-
-	var/obj/item/organ/internal/brain/synth/robotbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(istype(robotbrain))
-		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "Inserting ID into persocom slot...")
-			if(do_after(user, 5 SECONDS))
-				balloon_alert(user, "ID slot interface registered!")
-				to_chat(targetmachine, span_notice("[user] inserts [src] into your persocom's card slot."))
-				robotbrain.internal_computer.InsertID(src, user)
-			return
-	return ..()
+	. = ..()
+	if(is_centcom_level(loc.z)) // Centcom is excluded because cafe
+		. = NTNET_NO_SIGNAL
+	return .
 
 /obj/item/modular_computer/pda/attack(mob/living/target_mob, mob/living/user, params)
 	var/mob/living/carbon/human/targetmachine = target_mob
@@ -114,3 +83,25 @@ Attacking a synth with an id loads it into its slot.. pain and probably shitcode
 				robotbrain.internal_computer.interact(user)
 			return
 	return ..()
+
+/obj/item/modular_computer/pda/synth/get_header_data()
+	var/list/data = ..()
+	var/obj/item/organ/internal/brain/synth/brain_loc = loc
+	// Battery level is now according to the synth charge
+	if(istype(brain_loc))
+		var/charge_level = (brain_loc.owner.nutrition / NUTRITION_LEVEL_ALMOST_FULL) * 100
+		switch(charge_level)
+			if(80 to 110)
+				data["PC_batteryicon"] = "batt_100.gif"
+			if(60 to 80)
+				data["PC_batteryicon"] = "batt_80.gif"
+			if(40 to 60)
+				data["PC_batteryicon"] = "batt_60.gif"
+			if(20 to 40)
+				data["PC_batteryicon"] = "batt_40.gif"
+			if(5 to 20)
+				data["PC_batteryicon"] = "batt_20.gif"
+			else
+				data["PC_batteryicon"] = "batt_5.gif"
+		data["PC_batterypercent"] = "[round(charge_level)]%"
+	return data

@@ -27,7 +27,7 @@
 	gain_text = span_notice("Your palms hurt a bit from the sharpness of your nails.")
 	lose_text = span_danger("You feel a distinct emptiness as your nails dull; good luck scratching that itch.")
 	medical_record_text = "Patient ended up scratching through the examination table's cushions; recommended they look into clipping their claws."
-	icon = FA_ICON_HAND
+	icon = FA_ICON_LINES_LEANING
 
 /datum/quirk/sharpclaws/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder

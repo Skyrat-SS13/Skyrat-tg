@@ -1,7 +1,9 @@
+///This station traits gives 5 bananium sheets to the clown (and every dead clown out there in deep space or lavaland).
 /datum/station_trait/bananium_shipment
 	name = "Bananium Shipment"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
+	cost = STATION_TRAIT_COST_LOW
 	report_message = "Rumors has it that the clown planet has been sending support packages to clowns in this system."
 	trait_to_give = STATION_TRAIT_BANANIUM_SHIPMENTS
 
@@ -9,6 +11,7 @@
 	name = "Unnatural atmospherical properties"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
+	cost = STATION_TRAIT_COST_LOW
 	show_in_report = TRUE
 	report_message = "System's local planet has irregular atmospherical properties."
 	trait_to_give = STATION_TRAIT_UNNATURAL_ATMOSPHERE
@@ -26,6 +29,7 @@
 /datum/station_trait/unique_ai
 	name = "Unique AI"
 	trait_type = STATION_TRAIT_NEUTRAL
+	trait_flags = parent_type::trait_flags | STATION_TRAIT_REQUIRES_AI
 	weight = 5
 	show_in_report = TRUE
 	report_message = "For experimental purposes, this station AI might show divergence from default lawset. Do not meddle with this experiment, we've removed \
@@ -42,6 +46,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	show_in_report = FALSE
+	cost = STATION_TRAIT_COST_LOW
 	report_message = "Ian has gone exploring somewhere in the station."
 
 /datum/station_trait/ian_adventure/on_round_start()
@@ -99,8 +104,9 @@
 /datum/station_trait/glitched_pdas
 	name = "PDA glitch"
 	trait_type = STATION_TRAIT_NEUTRAL
-	weight = 15
+	weight = 10
 	show_in_report = TRUE
+	cost = STATION_TRAIT_COST_MINIMAL
 	report_message = "Something seems to be wrong with the PDAs issued to you all this shift. Nothing too bad though."
 	trait_to_give = STATION_TRAIT_PDA_GLITCHED
 
@@ -133,7 +139,9 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 10
 	show_in_report = TRUE
+	cost = STATION_TRAIT_COST_MINIMAL
 	report_message = "Due to a shortage in standard issue jumpsuits, we have provided your assistants with one of our backup supplies."
+	blacklist = list(/datum/station_trait/assistant_gimmicks)
 
 /datum/station_trait/colored_assistants/New()
 	. = ..()
@@ -276,6 +284,7 @@
 	name = "Scarves"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 10
+	cost = STATION_TRAIT_COST_MINIMAL
 	show_in_report = TRUE
 	var/list/scarves
 
@@ -309,6 +318,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	show_in_report = TRUE
 	weight = 10
+	cost = STATION_TRAIT_COST_MINIMAL
 	report_message = "It has become temporarily fashionable to use a wallet, so everyone on the station has been issued one."
 
 /datum/station_trait/wallets/New()
@@ -353,26 +363,69 @@
 	show_in_report = TRUE
 	report_message = "There sure are a lot of trees out there."
 
+/datum/station_trait/linked_closets
+	name = "Closet Anomaly"
+	trait_type = STATION_TRAIT_NEUTRAL
+	show_in_report = TRUE
+	weight = 1
+	report_message = "We've reports of high amount of trace eigenstasium on your station. Ensure that your closets are working correctly."
+
+/datum/station_trait/linked_closets/on_round_start()
+	. = ..()
+	var/list/roundstart_non_secure_closets = GLOB.roundstart_station_closets.Copy()
+	for(var/obj/structure/closet/closet in roundstart_non_secure_closets)
+		if(closet.secure)
+			roundstart_non_secure_closets -= closet
+
+	/**
+	 * The number of links to perform.
+	 * Combined with 50/50 the probability of the link being triangular, the boundaries of any given
+	 * on-station, non-secure closet being linked are as high as 1 in 7/8 and as low as 1 in 16-17,
+	 * nearing an a mean of 1 in 9 to 11/12 the more repetitions are done.
+	 *
+	 * There are more than 220 roundstart closets on meta, around 150 of which aren't secure,
+	 * so, about 13 to 17 closets will be affected by this most of the times.
+	 */
+	var/number_of_links = round(length(roundstart_non_secure_closets) * (rand(350, 450)*0.0001), 1)
+	for(var/repetition in 1 to number_of_links)
+		var/closets_left = length(roundstart_non_secure_closets)
+		if(closets_left < 2)
+			return
+		var/list/targets = list()
+		for(var/how_many in 1 to min(closets_left, rand(2,3)))
+			targets += pick_n_take(roundstart_non_secure_closets)
+		if(closets_left == 1) //there's only one closet left. Let's not leave it alone.
+			targets += roundstart_non_secure_closets[1]
+		GLOB.eigenstate_manager.create_new_link(targets)
+
 /datum/station_trait/triple_ai
 	name = "AI Triumvirate"
 	trait_type = STATION_TRAIT_NEUTRAL
+	trait_flags = parent_type::trait_flags | STATION_TRAIT_REQUIRES_AI
 	show_in_report = TRUE
 	weight = 0 // SKYRAT EDIT Original = 1
 	report_message = "Your station has been instated with three Nanotrasen Artificial Intelligence models."
 
 /datum/station_trait/triple_ai/New()
 	. = ..()
-	RegisterSignal(SSjob, COMSIG_OCCUPATIONS_DIVIDED, PROC_REF(on_occupations_divided))
+	RegisterSignal(SSjob, COMSIG_OCCUPATIONS_SETUP, PROC_REF(on_occupations_setup))
 
 /datum/station_trait/triple_ai/revert()
-	UnregisterSignal(SSjob, COMSIG_OCCUPATIONS_DIVIDED)
+	UnregisterSignal(SSjob, COMSIG_OCCUPATIONS_SETUP)
 	return ..()
 
-/datum/station_trait/triple_ai/proc/on_occupations_divided(datum/source, pure, allow_all)
+/datum/station_trait/triple_ai/proc/on_occupations_setup(datum/controller/subsystem/job/source)
 	SIGNAL_HANDLER
 
+	//allows for latejoining AIs
+	for(var/obj/effect/landmark/start/ai/secondary/secondary_ai_spawn in GLOB.start_landmarks_list)
+		secondary_ai_spawn.latejoin_active = TRUE
+
+	var/datum/station_trait/job/human_ai/ai_trait = locate() in SSstation.station_traits
+	//human AI quirk will handle adding its own job positions, but for now don't allow more AI slots.
+	if(ai_trait)
+		return
 	for(var/datum/job/ai/ai_datum in SSjob.joinable_occupations)
 		ai_datum.spawn_positions = 3
-	if(!pure)
-		for(var/obj/effect/landmark/start/ai/secondary/secondary_ai_spawn in GLOB.start_landmarks_list)
-			secondary_ai_spawn.latejoin_active = TRUE
+		ai_datum.total_positions = 3
+
