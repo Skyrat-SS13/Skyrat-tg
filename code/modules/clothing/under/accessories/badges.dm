@@ -171,14 +171,11 @@
 	else
 		display = span_notice("The dogtag is all scratched up.")
 
-<<<<<<< HEAD
-/* MODULAR SKYRAT - OVERRIDDEN IN (\modular_skyrat\modules\customization\modules\clothing\under\accessories.dm)
-=======
 /obj/item/clothing/accessory/dogtag/borg_ready
 	name = "Pre-Approved Cyborg Cantidate dogtag"
 	display = "This employee has been screened for negative mental traits to an acceptable level of accuracy, and is approved for the NT Cyborg program as an alternative to medical resuscitation."
 
->>>>>>> 060d7da7151 (New Neutral Quirk to indicate to Medical you're willing to be borged (#82232))
+/* MODULAR SKYRAT - OVERRIDDEN IN (\modular_skyrat\modules\customization\modules\clothing\under\accessories.dm)
 /// Reskins for the pride pin accessory, mapped by display name to icon state
 GLOBAL_LIST_INIT(pride_pin_reskins, list(
 	"Rainbow Pride" = "pride",
