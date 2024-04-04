@@ -44,6 +44,7 @@ const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
   handleLoadout: () => void; // SKYRAT EDIT ADDITION
+  handleFood: () => void; // SKYRAT EDIT ADDITION
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -78,8 +79,8 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      {/* SKYRAT EDIT ADDITION START */}
       {props.handleLoadout && (
-        // SKYRAT EDIT ADDITION
         <Stack.Item>
           <Button
             onClick={props.handleLoadout}
@@ -90,6 +91,16 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      <Stack.Item>
+        <Button
+          onClick={props.handleFood}
+          fontSize="22px"
+          icon="drumstick-bite"
+          tooltip="Edit Food Preferences"
+          tooltipPosition="top"
+        />
+        {/* SKYRAT EDIT ADDITION END */}
+      </Stack.Item>
     </Stack>
   );
 };
@@ -599,6 +610,11 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       handleLoadout={() => {
                         act('open_loadout');
                       }}
+                      // SKYRAT EDIT ADDITION - BEGIN
+                      handleFood={() => {
+                        act('open_food');
+                      }}
+                      // SKYRAT EDIT ADDITION - END
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
