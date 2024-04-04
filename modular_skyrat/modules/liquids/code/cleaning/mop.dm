@@ -33,5 +33,5 @@
 	tempr.trans_to(reagents, tempr.total_volume)
 	to_chat(user, span_notice("You soak \the [src] with some liquids."))
 	qdel(tempr)
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(CLICK_CD_RAPID) // This used to be CLICK_CD_MELEE, which is painfully slow
 	return TRUE
