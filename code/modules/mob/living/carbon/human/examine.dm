@@ -448,6 +448,7 @@
 					. += jointext(list("<a href='?src=[REF(src)];hud=s;add_citation=1;examine_time=[world.time]'>\[Add citation\]</a>",
 						"<a href='?src=[REF(src)];hud=s;add_crime=1;examine_time=[world.time]'>\[Add crime\]</a>",
 						"<a href='?src=[REF(src)];hud=s;add_note=1;examine_time=[world.time]'>\[Add note\]</a>"), "")
+<<<<<<< HEAD
 				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				if(target_record && length(target_record.past_security_records) > RECORDS_INVISIBLE_THRESHOLD)
 					. += "<a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View past security records\]</a>"
@@ -511,6 +512,11 @@
 		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
 			. += EXAMINE_SECTION_BREAK
 			. += span_info("ERP Status: [span_revenboldnotice(erp_status_pref)]")
+=======
+	if(isobserver(user))
+		. += span_info("\n<b>Quirks:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
+	. += "</span>"
+>>>>>>> 6ae15437c91 (Fixes quirk being examined when observing (#82424))
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 
