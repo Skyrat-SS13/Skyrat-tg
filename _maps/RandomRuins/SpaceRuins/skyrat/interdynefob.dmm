@@ -1246,7 +1246,7 @@
 "fd" = (
 /mob/living/basic/bot/medbot/stationary{
 	faction = list("Syndicate");
-	maints_access_required = list("syndicate");
+	req_one_access = list("syndicate");
 	name = "Insurgent Care";
 	radio_channel = "Syndicate"
 	},
@@ -4618,6 +4618,7 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/structure/cable,
+/obj/item/folded_navigation_gigabeacon,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "uf" = (
@@ -5875,8 +5876,7 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/red/directional/north,
-/obj/item/folded_navigation_gigabeacon,
-/obj/structure/frame/machine/secured,
+/obj/machinery/rnd/server/interdyne,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "Bj" = (
