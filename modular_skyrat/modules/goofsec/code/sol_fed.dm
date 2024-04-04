@@ -7,6 +7,7 @@
 #define EMERGENCY_RESPONSE_ATMOS "DISCO INFERNO"
 #define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
 #define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
+#define EMERGENCY_RESPONSE_PMC "MURKYWATER IN THE HOUSE"
 
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
@@ -66,6 +67,16 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 		SOLFED_AMT = 0,
 		SOLFED_VOTES = 0,
 		SOLFED_DECLARED = FALSE
+	),
+	"pmc_militant" = list(
+		SOLFED_AMT = 0,
+		SOLFED_VOTES = 0,
+		SOLFED_DECLARED = FALSE
+	),
+	"pmc_heavy" = list(
+		SOLFED_AMT = 0,
+		SOLFED_VOTES = 0,
+		SOLFED_DECLARED = FALSE
 	)
 ))
 GLOBAL_LIST_INIT(call911_do_and_do_not, list(
@@ -86,6 +97,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		A trashcan on fire in the library, a single breached room, heating issues, etc. - especially with capable Engineers/Atmos Techs.\n\
 		There is a response fee of [abs(GLOB.solfed_tech_charge)] credits per emergency responder.\n\
 		Are you sure you want to call Advanced Atmospherics?"
+	EMERGENCY_RESPONSE_PMC = "You SHOULD call Ironmoon Security Contractor for:\n\
+		Stationwide Emergency, Lack of available security force to maintain law and orders, handling manhunts, corporate affair. \n\
+		You SHOULD NOT call Ironmoon Security Contractor for:\n\
+		Security ignoring Command, Territorial Dispute, any political affairs involving Sol or the NRI.\n\
+		There is a response fee of [abs(GLOB.solfed_tech_charge)] credits per hired gun.\n\
+		Are you sure you want to call Ironmoon Security Contrator?"
 ))
 
 /// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
@@ -130,6 +147,16 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				[GLOB.call_911_msg]"
 			announcer = "Sol Federation EMTs"
 			poll_question = "The station has called for medical support. Will you respond?"
+		if(EMERGENCY_RESPONSE_PMC)
+			team_size = tgui_input_number(usr, "How many gunmen would you like dispatched?", "How badly did you screw up?", 3, 3, 1)
+			cops_to_send = /datum/antagonist/ert/request_911/pmc
+			announcement_message = "Crewmembers of [station_name()]. this is the Ironmoon Security Contractor. We've recieved a request for reinforcement and payment has been proceeded in advance \
+				We are on the way.\n\n\
+				The transcript of the call is as follows:\n\
+				[GLOB.call_911_msg]"
+			announcer = "Ironmoon Military Company"
+			poll_question = "The station has called for security contractor. Will you respond?"
+			cell_phone_number = "911"	//This needs to stay so they can communicate with SWAT
 		if(EMERGENCY_RESPONSE_EMAG)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/pizza/false_call
