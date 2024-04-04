@@ -229,7 +229,7 @@
 	if(!has_top)
 		return
 
-	. += make_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
+	. += make_liquid_overlay("stage[state]_top", BELOW_OBJ_LAYER, GAME_PLANE)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
