@@ -178,9 +178,26 @@
 		/obj/item/reagent_containers/cup/glass/bottle/sake,
 	)
 
+<<<<<<< HEAD:code/datums/quirks/negative_quirks/junkie.dm
 	return ..()
 
 /datum/quirk/item_quirk/junkie/alcoholic/post_add()
+=======
+/datum/quirk/item_quirk/addict/alcoholic/New()
+	var/random_alcohol = pick(GLOB.possible_alcoholic_addictions)
+	drug_container_type = GLOB.possible_alcoholic_addictions[random_alcohol]["bottlepath"]
+	favorite_alcohol = GLOB.possible_alcoholic_addictions[random_alcohol]["reagent"]
+	return ..()
+
+/datum/quirk/item_quirk/addict/alcoholic/add_unique(client/client_source)
+	var/addiction = client_source?.prefs.read_preference(/datum/preference/choiced/alcoholic)
+	if(addiction && (addiction != "Random"))
+		drug_container_type = GLOB.possible_alcoholic_addictions[addiction]["bottlepath"]
+		favorite_alcohol = GLOB.possible_alcoholic_addictions[addiction]["reagent"]
+	return ..()
+
+/datum/quirk/item_quirk/addict/alcoholic/post_add()
+>>>>>>> a02dc8221c5 ([NO GBP] Fixes Alcoholic quirk selection and addiction in general not being forever. (#82403)):code/datums/quirks/negative_quirks/addict.dm
 	. = ..()
 	RegisterSignal(quirk_holder, COMSIG_MOB_REAGENT_CHECK, PROC_REF(check_brandy))
 
@@ -188,10 +205,14 @@
 	if(isnull(brandy_container))
 		stack_trace("Alcoholic quirk added while the GLOB.alcohol_containers is (somehow) not initialized!")
 		brandy_container = new drug_container_type
+<<<<<<< HEAD:code/datums/quirks/negative_quirks/junkie.dm
 		favorite_alcohol = brandy_container.list_reagents[1]
 		qdel(brandy_container)
 	else
 		favorite_alcohol = brandy_container.list_reagents[1]
+=======
+		qdel(brandy_container)
+>>>>>>> a02dc8221c5 ([NO GBP] Fixes Alcoholic quirk selection and addiction in general not being forever. (#82403)):code/datums/quirks/negative_quirks/addict.dm
 
 	quirk_holder.add_mob_memory(/datum/memory/key/quirk_alcoholic, protagonist = quirk_holder, preferred_brandy = initial(favorite_alcohol.name))
 	// alcoholic livers have 25% less health and healing
