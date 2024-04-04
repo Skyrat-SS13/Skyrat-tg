@@ -220,13 +220,6 @@
 
 #define BRAIN_DAMAGE_INTEGRITY_MULTIPLIER 0.5
 
-//Surgery Defines
-#define BIOWARE_GENERIC "generic"
-#define BIOWARE_NERVES "nerves"
-#define BIOWARE_CIRCULATION "circulation"
-#define BIOWARE_LIGAMENTS "ligaments"
-#define BIOWARE_CORTEX "cortex"
-
 //Health hud screws for carbon mobs
 #define SCREWYHUD_NONE 0
 #define SCREWYHUD_CRIT 1
@@ -278,6 +271,8 @@
 #define SANITY_LEVEL_UNSTABLE 4
 #define SANITY_LEVEL_CRAZY 5
 #define SANITY_LEVEL_INSANE 6
+/// Equal to the highest sanity level
+#define SANITY_LEVEL_MAX SANITY_LEVEL_INSANE
 
 //Nutrition levels for humans
 #define NUTRITION_LEVEL_FAT 600
