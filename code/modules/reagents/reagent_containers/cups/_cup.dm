@@ -418,7 +418,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				user.balloon_alert(user, "mop is full!")
 				return
-			mop.reagents.remove_any(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
+			mop.reagents.remove_all(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			mop.reagents.trans_to(src, mop.reagents.total_volume, transferred_by = user)
 			user.balloon_alert(user, "mop squeezed")
 		else
