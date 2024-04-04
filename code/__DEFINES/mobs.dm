@@ -72,11 +72,6 @@
 #define RESPIRATION_N2 (1 << 1)
 #define RESPIRATION_PLASMA (1 << 2)
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/human/bodyparts_greyscale.dmi'
-#define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
-
-#define MONKEY_BODYPART "monkey"
-#define ALIEN_BODYPART "alien"
-#define LARVA_BODYPART "larva"
 
 //Bodytype defines for surgery, and other misc things.
 ///The limb is organic.
@@ -225,26 +220,11 @@
 
 #define BRAIN_DAMAGE_INTEGRITY_MULTIPLIER 0.5
 
-//Surgery Defines
-#define BIOWARE_GENERIC "generic"
-#define BIOWARE_NERVES "nerves"
-#define BIOWARE_CIRCULATION "circulation"
-#define BIOWARE_LIGAMENTS "ligaments"
-#define BIOWARE_CORTEX "cortex"
-
 //Health hud screws for carbon mobs
 #define SCREWYHUD_NONE 0
 #define SCREWYHUD_CRIT 1
 #define SCREWYHUD_DEAD 2
 #define SCREWYHUD_HEALTHY 3
-
-//Health doll screws for human mobs
-#define SCREWYDOLL_HEAD /obj/item/bodypart/head
-#define SCREWYDOLL_CHEST /obj/item/bodypart/chest
-#define SCREWYDOLL_L_ARM /obj/item/bodypart/arm/left
-#define SCREWYDOLL_R_ARM /obj/item/bodypart/arm/right
-#define SCREWYDOLL_L_LEG /obj/item/bodypart/leg/left
-#define SCREWYDOLL_R_LEG /obj/item/bodypart/leg/right
 
 //Threshold levels for beauty for humans
 #define BEAUTY_LEVEL_HORRID -66
@@ -291,6 +271,8 @@
 #define SANITY_LEVEL_UNSTABLE 4
 #define SANITY_LEVEL_CRAZY 5
 #define SANITY_LEVEL_INSANE 6
+/// Equal to the highest sanity level
+#define SANITY_LEVEL_MAX SANITY_LEVEL_INSANE
 
 //Nutrition levels for humans
 #define NUTRITION_LEVEL_FAT 600
@@ -427,14 +409,6 @@
 #define COOLDOWN_UPDATE_ADD_RANGED "add_ranged"
 #define COOLDOWN_UPDATE_SET_ENRAGE "set_enrage"
 #define COOLDOWN_UPDATE_ADD_ENRAGE "add_enrage"
-#define COOLDOWN_UPDATE_SET_SPAWN "set_spawn"
-#define COOLDOWN_UPDATE_ADD_SPAWN "add_spawn"
-#define COOLDOWN_UPDATE_SET_HELP "set_help"
-#define COOLDOWN_UPDATE_ADD_HELP "add_help"
-#define COOLDOWN_UPDATE_SET_DASH "set_dash"
-#define COOLDOWN_UPDATE_ADD_DASH "add_dash"
-#define COOLDOWN_UPDATE_SET_TRANSFORM "set_transform"
-#define COOLDOWN_UPDATE_ADD_TRANSFORM "add_transform"
 #define COOLDOWN_UPDATE_SET_CHASER "set_chaser"
 #define COOLDOWN_UPDATE_ADD_CHASER "add_chaser"
 #define COOLDOWN_UPDATE_SET_ARENA "set_arena"
@@ -469,7 +443,6 @@
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
 
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
-#define SHOES_SPEED_SLIGHT SHOES_SLOWDOWN - 1 // slightest speed boost to movement
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
@@ -572,8 +545,6 @@
 #define RECENT_EXAMINE_MAX_WINDOW (2 SECONDS)
 /// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
 #define EXAMINE_MORE_WINDOW (1 SECONDS)
-/// If you examine another mob who's successfully examined you during this duration of time, you two try to make eye contact. Cute!
-#define EYE_CONTACT_WINDOW (2 SECONDS)
 /// If you yawn while someone nearby has examined you within this time frame, it will force them to yawn as well. Tradecraft!
 #define YAWN_PROPAGATION_EXAMINE_WINDOW (2 SECONDS)
 

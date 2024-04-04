@@ -208,11 +208,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This object innately spawns with fantasy variables already applied (the magical component is given to it on initialize), and thus we never want to give it the component again.
 #define TRAIT_INNATELY_FANTASTICAL_ITEM "innately_fantastical_item"
 #define TRAIT_DEPRESSION "depression"
-#define TRAIT_BLOOD_DEFICIENCY "blood_deficiency"
 #define TRAIT_JOLLY "jolly"
 #define TRAIT_NOCRITDAMAGE "no_crit"
 /// Prevents shovies and some strong blows such as unarmed punches and (unreliably) tackles the owner down
 #define TRAIT_BRAWLING_KNOCKDOWN_BLOCKED "brawling_knockdown_blocked"
+/// Applies tackling defense bonus to any mob that has it
+#define TRAIT_OFF_BALANCE_TACKLER "off_balance_tackler"
 /// Prevents some severe head injuries being sustained from heavy collisions or blunt force injuries.
 #define TRAIT_HEAD_INJURY_BLOCKED "head_injury_blocked"
 /// Prevents staggering.
@@ -388,6 +389,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_COAGULATING "coagulating"
 /// From anti-convulsant medication against seizures.
 #define TRAIT_ANTICONVULSANT "anticonvulsant"
+/// From stimulant reagents, this affects whether the all-nighter lack of sleep penalty should be countered
+#define TRAIT_STIMULATED "stimulated"
 /// The holder of this trait has antennae or whatever that hurt a ton when noogied
 #define TRAIT_ANTENNAE "antennae"
 /// Blowing kisses actually does damage to the victim
@@ -525,6 +528,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Makes the user handcuff others faster
 #define TRAIT_FAST_CUFFING "fast_cuffing"
+
+///Given by /obj/item/virgin_mary, mobs that used this can no longer use it again ever
+#define TRAIT_MAFIAINITIATE "mafiainitiate"
 
 ///Makes the player appear as their respective job in Binary Talk rather than being a 'Default Cyborg'.
 #define DISPLAYS_JOB_IN_BINARY "display_job_in_binary"
@@ -1079,6 +1085,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Trait granted by janitor skillchip, allows communication with cleanbots
 #define TRAIT_CLEANBOT_WHISPERER "cleanbot_whisperer"
 
+///Trait granted by the miner skillchip, allows communication with minebots
+#define TRAIT_ROCK_STONER "rock_stoner"
+
+///Trait given by the regenerative shield component
+#define TRAIT_REGEN_SHIELD "regen_shield"
+
 /// Trait given when a mob is currently in invisimin mode
 #define TRAIT_INVISIMIN "invisimin"
 
@@ -1088,6 +1100,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait which self-identifies as an enemy of the law
 #define TRAIT_ALWAYS_WANTED "always_wanted"
 
+/// Trait given to mobs that have the basic eating element
+#define TRAIT_MOB_EATER "mob_eater"
 /// Trait which means whatever has this is dancing by a dance machine
 #define TRAIT_DISCO_DANCER "disco_dancer"
 
