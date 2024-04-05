@@ -146,7 +146,13 @@
 	var/main_draw = use_power_from_net(charge_rate * seconds_per_tick, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
 	if(!main_draw)
 		return
+<<<<<<< HEAD
 	charging.give(main_draw)
 	use_power(charge_rate / 100) //use a small bit for the charger itself, but power usage scales up with the part tier
+=======
+
+	use_energy(main_draw * 0.01) //use a small bit for the charger itself, but power usage scales up with the part tier
+	charge_cell(main_draw, charging, grid_only = TRUE)
+>>>>>>> cd2bceafeca (cell chargers now bypass APCs (#82309))
 
 	update_appearance()

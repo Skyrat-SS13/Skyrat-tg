@@ -561,9 +561,15 @@
 	if(!cell || cell.charge == cell.maxcharge)
 		return
 
+<<<<<<< HEAD
 	var/cell_charged = cell.give(final_charge_rate * seconds_per_tick)
 	if(cell_charged)
 		use_power((active_power_usage + final_charge_rate) * seconds_per_tick)
+=======
+	var/charge_per_item = (final_charge_rate * seconds_per_tick) / cell_count
+	for(var/obj/item/stock_parts/cell/cell as anything in cells_to_charge)
+		charge_cell(charge_per_item, cell, grid_only = TRUE)
+>>>>>>> cd2bceafeca (cell chargers now bypass APCs (#82309))
 
 /obj/machinery/suit_storage_unit/proc/shock(mob/user, prb)
 	if(!prob(prb))
