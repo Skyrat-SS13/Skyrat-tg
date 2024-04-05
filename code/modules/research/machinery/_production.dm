@@ -340,6 +340,10 @@
 				charge_per_item += design.materials[material]
 			charge_per_item = ROUND_UP((charge_per_item / (MAX_STACK_SIZE * SHEET_MATERIAL_AMOUNT)) * coefficient * 0.05 * active_power_usage)
 			var/build_time_per_item = (design.construction_time * design.lathe_time_factor) ** 0.8
+			// SKYRAT EDIT - Faster lathes
+			if(!speedup_disabled)
+				build_time_per_item *= 0.1
+			// SKYRAT EDIT END
 
 			//start production
 			busy = TRUE
@@ -423,7 +427,7 @@
 
 /obj/machinery/rnd/production/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
-	if((!issilicon(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
+	if(!can_interact(usr) || (!issilicon(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
 		return
 	if(busy)
 		balloon_alert(usr, "busy printing!")
