@@ -144,8 +144,13 @@
 		to_chat(user, span_notice("You start building the power terminal..."))
 		playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 
+<<<<<<< HEAD
 		if(do_after(user, 20, target = src))
 			if(C.get_amount() < 10 || !C)
+=======
+		if(do_after(user, 2 SECONDS, target = src))
+			if(cable.get_amount() < 10 || !cable)
+>>>>>>> 1443ef79d3d (Replaces a number of deciseconds into SECONDS (#82436))
 				return
 			var/obj/structure/cable/N = T.get_cable_node(terminal_cable_layer) //get the connecting node cable, if there's one
 			if (prob(50) && electrocute_mob(usr, N, N, 1, TRUE)) //animate the electrocution if uncautious and unlucky

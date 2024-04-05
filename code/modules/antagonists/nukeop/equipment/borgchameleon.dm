@@ -65,7 +65,11 @@
 		to_chat(user, span_notice("You activate \the [src]."))
 		playsound(src, 'sound/effects/seedling_chargeup.ogg', 100, TRUE, -6)
 		apply_wibbly_filters(user)
+<<<<<<< HEAD
 		if (do_after(user, 50, target=user) && user.cell.use(activationCost))
+=======
+		if (do_after(user, 5 SECONDS, target=user) && user.cell.use(ACTIVATION_COST))
+>>>>>>> 1443ef79d3d (Replaces a number of deciseconds into SECONDS (#82436))
 			playsound(src, 'sound/effects/bamf.ogg', 100, TRUE, -6)
 			to_chat(user, span_notice("You are now disguised as the Nanotrasen engineering borg \"[friendlyName]\"."))
 			activate(user)
