@@ -259,8 +259,13 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/full/proc/reload()
 	ready = FALSE
+<<<<<<< HEAD
 	use_power(power_used_per_shot)
 	addtimer(CALLBACK(src,"ready_cannon"),600)
+=======
+	use_energy(power_used_per_shot)
+	addtimer(CALLBACK(src,"ready_cannon"), 1 MINUTES)
+>>>>>>> 9723b4b317a (Replaces even more deciseconds with SECONDS (#82438))
 
 /obj/machinery/bsa/full/proc/ready_cannon()
 	ready = TRUE
