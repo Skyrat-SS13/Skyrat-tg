@@ -3,6 +3,9 @@ import { exhaustiveCheck } from 'common/exhaustive';
 import { classes } from 'common/react';
 import { useState } from 'react';
 
+import { filter } from '../../../common/collections';
+import { flow } from '../../../common/fp';
+import { createSearch } from '../../../common/string';
 import { sendAct, useBackend } from '../../backend';
 import {
   Autofocus,
@@ -10,6 +13,7 @@ import {
   Button,
   Dropdown, // SKYRAT EDIT ADDITION
   Flex,
+  Input,
   LabeledList,
   Popper,
   Stack,
@@ -117,6 +121,7 @@ const ChoicedSelection = (props: {
   const { act } = useBackend<PreferencesMenuData>();
 
   const { catalog, supplementalFeature, supplementalValue } = props;
+  const [getSearchText, searchTextSet] = useState('');
 
   if (!catalog.icons) {
     return <Box color="red">Provided catalog had no icons!</Box>;
@@ -172,45 +177,60 @@ const ChoicedSelection = (props: {
 
         <Stack.Item overflowX="hidden" overflowY="scroll">
           <Autofocus>
+            <Input
+              placeholder="Search..."
+              style={{
+                margin: '0px 5px',
+                width: '95%',
+              }}
+              onInput={(_, value) => searchTextSet(value)}
+            />
             <Flex wrap>
-              {Object.entries(catalog.icons).map(([name, image], index) => {
-                return (
-                  <Flex.Item
-                    key={index}
-                    basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
-                    style={{
-                      padding: '5px',
-                    }}
-                  >
-                    <Button
-                      onClick={() => {
-                        props.onSelect(name);
-                      }}
-                      selected={name === props.selected}
-                      tooltip={name}
-                      tooltipPosition="right"
+              {searchInCatalog(getSearchText, catalog.icons).map(
+                ([name, image], index) => {
+                  return (
+                    <Flex.Item
+                      key={index}
+                      basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
                       style={{
-                        height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
-                        width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                        padding: '5px',
                       }}
                     >
-                      <Box
-                        className={classes([
-                          'preferences32x32',
-                          image,
-                          'centered-image',
-                        ])}
-                      />
-                    </Button>
-                  </Flex.Item>
-                );
-              })}
+                      <Button
+                        onClick={() => {
+                          props.onSelect(name);
+                        }}
+                        selected={name === props.selected}
+                        tooltip={name}
+                        tooltipPosition="right"
+                        style={{
+                          height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                          width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                        }}
+                      >
+                        <Box
+                          className={classes([
+                            'preferences32x32',
+                            image,
+                            'centered-image',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                  );
+                },
+              )}
             </Flex>
           </Autofocus>
         </Stack.Item>
       </Stack>
     </Box>
   );
+};
+
+const searchInCatalog = (searchText = '', catalog: Record<string, string>) => {
+  const maybeSearch = createSearch(searchText, ([name, _icon]) => name);
+  return flow([searchText && filter(maybeSearch)])(Object.entries(catalog));
 };
 
 const GenderButton = (props: {
