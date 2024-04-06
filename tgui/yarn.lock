@@ -1622,9 +1622,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@types/react-dom@npm:^18.2.17":
   version: 18.2.17
   resolution: "@types/react-dom@npm:18.2.17"
+=======
+"@types/react-dom@npm:^18.2.24":
+  version: 18.2.24
+  resolution: "@types/react-dom@npm:18.2.24"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/9ec38e5ab4727c56ef17bd8e938ead88748ba19db314b8d9807714a5cae430f5b799514667b221b4f2dc8d9b4ca17dd1c3da8c41c083c2de9eddcc31bec6b8ff
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^18.2.74":
+  version: 18.2.74
+  resolution: "@types/react@npm:18.2.74"
+>>>>>>> 34890b9d0a8 (Pre-516 tgui prep (#82473))
   dependencies:
     "@types/react": "*"
   checksum: 7a4e704ed4be6e0c3ccd8a22ff69386fe548304bf4db090513f42e059ff4c65f7a427790320051524d6578a2e4c9667bb7a80a4c989b72361c019fbe851d9385
@@ -9105,9 +9120,17 @@ resolve@^1.20.0:
   version: 0.0.0-use.local
   resolution: "tgui-say@workspace:packages/tgui-say"
   dependencies:
+<<<<<<< HEAD
     "@types/react": ^18.2.39
     common: "workspace:*"
     react: ^18.2.0
+=======
+    "@types/react": "npm:^18.2.74"
+    "@types/react-dom": "npm:^18.2.24"
+    common: "workspace:*"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+>>>>>>> 34890b9d0a8 (Pre-516 tgui prep (#82473))
     tgui: "workspace:*"
     tgui-polyfill: "workspace:*"
   languageName: unknown
