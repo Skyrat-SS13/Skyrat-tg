@@ -7,8 +7,11 @@
 
 GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
+///A group of any liquids, helps not make processing a pain in the ass by handling all the turfs as one big group
 /datum/liquid_group
+	///All the turfs with liquids on them
 	var/list/members = list()
+	///The color of the liquid group
 	var/color
 	var/next_share = 0
 	var/dirty = TRUE
@@ -17,7 +20,9 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/expected_turf_height = 0
 	var/cached_color
 	var/list/last_cached_fraction_share
+	///Last calculated volume of the liquid group, see /datum/liquid_group/proc/share()
 	var/last_cached_total_volume = 0
+	///Last calculated heat of the liquid group
 	var/last_cached_thermal = 0
 	var/last_cached_overlay_state = LIQUID_STATE_PUDDLE
 
@@ -49,39 +54,36 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 /datum/liquid_group/proc/merge_group(datum/liquid_group/otherg)
 	amount_of_active_turfs += otherg.amount_of_active_turfs
-	for(var/t in otherg.members)
-		var/turf/T = t
-		T.lgroup = src
-		members[T] = TRUE
-		if(T.liquids)
-			T.liquids.has_cached_share = FALSE
+	for(var/turf/liquid_turf in otherg.members)
+		liquid_turf.lgroup = src
+		members[liquid_turf] = TRUE
+		if(liquid_turf.liquids)
+			liquid_turf.liquids.has_cached_share = FALSE
 	otherg.members = list()
 	qdel(otherg)
 	share()
 
 /datum/liquid_group/proc/break_group()
 	//Flag puddles to the evaporation queue
-	for(var/t in members)
-		var/turf/T = t
-		if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_PUDDLE)
-			SSliquids.evaporation_queue[T] = TRUE
+	for(var/turf/liquid_turf in members)
+		if(liquid_turf.liquids?.liquid_state >= LIQUID_STATE_PUDDLE)
+			SSliquids.evaporation_queue[liquid_turf] = TRUE
 
 	share(TRUE)
 	qdel(src)
 
 /datum/liquid_group/Destroy()
 	SSliquids.active_groups -= src
-	for(var/t in members)
-		var/turf/T = t
-		T.lgroup = null
+	for(var/turf/liquid_turf in members)
+		liquid_turf.lgroup = null
 	members = null
 	return ..()
 
-/datum/liquid_group/proc/check_adjacency(turf/T)
+/datum/liquid_group/proc/check_adjacency(turf/liquid_turf)
 	var/list/recursive_adjacent = list()
 	var/list/current_adjacent = list()
-	current_adjacent[T] = TRUE
-	recursive_adjacent[T] = TRUE
+	current_adjacent[liquid_turf] = TRUE
+	recursive_adjacent[liquid_turf] = TRUE
 	var/getting_new_turfs = TRUE
 	var/indef_loop_safety = 0
 	while(getting_new_turfs && indef_loop_safety < LIQUID_RECURSIVE_LOOP_SAFETY)
@@ -112,13 +114,11 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/cached_volume = 0
 	var/cached_thermal = 0
 
-	var/turf/T
 	var/obj/effect/abstract/liquid_turf/cached_liquids
-	for(var/t in members)
-		T = t
-		if(T.liquids)
+	for(var/turf/liquid_turf in members)
+		if(liquid_turf.liquids)
 			any_share = TRUE
-			cached_liquids = T.liquids
+			cached_liquids = liquid_turf.liquids
 
 			if(cached_liquids.has_cached_share && last_cached_fraction_share)
 				cached_shares++
@@ -128,9 +128,21 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 				if(!cached_add[r_type])
 					cached_add[r_type] = 0
 				cached_add[r_type] += cached_liquids.reagent_list[r_type]
-			cached_volume += cached_liquids.total_reagents
+
+			// So, due to reactions these turfs can sometimes become empty,
+			// causing issues with divisions by 0
+			// This is a very sloppy fix by making them delete if we find that to be a case
+			// Whoever wrote this didn't document anything and honestly I barely understand it
+			// Feel free to make this better~! - Waterpig
+
+			var/turf_reagents = cached_liquids.total_reagents
+			if(turf_reagents == 0) // Deletes empty liquid turfs. This should wipe them from our members too
+				qdel(cached_liquids, TRUE)
+				continue
+			cached_volume += turf_reagents
 			cached_thermal += cached_liquids.total_reagents * cached_liquids.temp
-	if(!any_share)
+
+	if(!any_share || !cached_volume)
 		return
 
 	decay_counter = 0
@@ -180,13 +192,12 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 			determined_new_state = LIQUID_STATE_FULLTILE
 
 	var/new_liquids = FALSE
-	for(var/t in members)
-		T = t
+	for(var/turf/liquid_turf in members)
 		new_liquids = FALSE
-		if(!T.liquids)
+		if(!liquid_turf.liquids)
 			new_liquids = TRUE
-			T.liquids = new(T)
-		cached_liquids = T.liquids
+			liquid_turf.liquids = new(liquid_turf)
+		cached_liquids = liquid_turf.liquids
 
 		cached_liquids.reagent_list = cached_add.Copy()
 		cached_liquids.total_reagents = cached_volume

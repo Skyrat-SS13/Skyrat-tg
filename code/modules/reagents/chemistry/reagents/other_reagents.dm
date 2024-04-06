@@ -1333,7 +1333,7 @@
 
 /datum/reagent/space_cleaner/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
-	if(reac_volume < 0.6) // SKYRAT EDIT - original: reac_volume < 1
+	if(reac_volume < 1)
 		return
 
 	exposed_turf.wash(clean_types)
