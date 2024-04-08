@@ -715,8 +715,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 
 /obj/structure/window/reinforced/fulltile
 	name = "full tile reinforced window"
+<<<<<<< HEAD
 	desc = "A full tile reinforced window"
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	desc = "A full tile window that is reinforced with metal rods."
+	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
+>>>>>>> 6a1519471d3 (Very small atom examine tweaks (#82501))
 	icon_state = "reinforced_window-0"
 	base_icon_state = "reinforced_window"
 	max_integrity = 150
