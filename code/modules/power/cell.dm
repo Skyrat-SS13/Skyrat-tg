@@ -270,10 +270,14 @@
 	SSexplosions.high_mov_atom += src
 
 /obj/item/stock_parts/cell/proc/get_electrocute_damage()
+<<<<<<< HEAD
 	if(charge >= 1000)
 		return clamp(20 + round(charge/25000), 20, 195) + rand(-5,5)
 	else
 		return 0
+=======
+	return ELECTROCUTE_DAMAGE(charge / max(0.001 * STANDARD_CELL_CHARGE, 1)) // Wouldn't want it to consider more energy than whatever is actually in the cell if for some strange reason someone set the STANDARD_CELL_CHARGE to below 1kJ.
+>>>>>>> 1d6671ee76a ([NO GBP]Cells will only consider 0.1% of their charge when shocking a user. (#82456))
 
 /obj/item/stock_parts/cell/get_part_rating()
 	return maxcharge * 10 + charge
