@@ -44,8 +44,16 @@
 	upgradeXRay()
 	upgradeMotion()
 
+<<<<<<< HEAD
 // AUTONAME
 
+=======
+/**
+ * Autonaming camera
+ * Automatically names itself after the area it's in during post_machine_initialize,
+ * good for mappers who don't want to manually name them all.
+ */
+>>>>>>> fa314033537 (LateInitialize is not allowed to call parent anymore (#82540))
 /obj/machinery/camera/autoname
 	var/number = 0 //camera number in area
 
@@ -54,7 +62,7 @@
 	..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/camera/autoname/LateInitialize()
+/obj/machinery/camera/autoname/post_machine_initialize()
 	. = ..()
 
 	var/static/list/autonames_in_areas = list()
