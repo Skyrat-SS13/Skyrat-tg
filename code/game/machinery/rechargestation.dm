@@ -46,16 +46,24 @@
 	recharge_speed = 0
 	repairs = 0
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+<<<<<<< HEAD
 		recharge_speed += capacitor.tier * 100
 	for(var/datum/stock_part/servo/servo in component_parts)
 		repairs += servo.tier - 1
 	for(var/obj/item/stock_parts/cell/cell in component_parts)
 		recharge_speed *= cell.maxcharge / 10000
+=======
+		recharge_speed += 5e-3 * capacitor.tier
+	for(var/datum/stock_part/servo/servo in component_parts)
+		repairs += servo.tier - 1
+	for(var/obj/item/stock_parts/cell/cell in component_parts)
+		recharge_speed *= cell.maxcharge
+>>>>>>> 5fbfd2447ad ([NO GBP]Fixes ethereal charging and recharge station charge speed. (#82483))
 
 /obj/machinery/recharge_station/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Recharging <b>[recharge_speed]J</b> per cycle.")
+		. += span_notice("The status display reads: Recharging: <b>[display_power(recharge_speed, convert = FALSE)]</b>.")
 		if(materials.silo)
 			. += span_notice("The ore silo link indicator is lit, and cyborg restocking can be toggled by <b>Right-Clicking</b> [src].")
 		if(repairs)

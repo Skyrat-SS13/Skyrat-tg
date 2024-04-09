@@ -58,7 +58,11 @@
 /// How long it takes an ethereal to drain or charge APCs. Also used as a spam limiter.
 #define APC_DRAIN_TIME (7.5 SECONDS)
 /// How much power ethereals gain/drain from APCs.
+<<<<<<< HEAD
 #define APC_POWER_GAIN 200
+=======
+#define APC_POWER_GAIN (0.2 * STANDARD_CELL_CHARGE)
+>>>>>>> 5fbfd2447ad ([NO GBP]Fixes ethereal charging and recharge station charge speed. (#82483))
 
 // Wires & EMPs:
 /// The wire value used to reset the APCs wires after one's EMPed.
