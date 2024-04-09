@@ -136,7 +136,7 @@
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
-	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
+	return "[wagging ? "wagging_" : ""][sprite_datum.icon_state]" //add the wagging tag if we be wagging
 
 // SKYRAT EDIT ADDITION - CUSTOMIZATION
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
@@ -156,6 +156,9 @@
 
 	wag_flags = WAG_ABLE
 
+/datum/bodypart_overlay/mutant/tail/get_global_feature_list()
+	return GLOB.tails_list_human
+
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return BUTT_SPRITE_CAT
 
@@ -168,7 +171,12 @@
 	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
 
 /obj/item/organ/external/tail/monkey
+	name = "monkey tail"
+	preference = "feature_monkey_tail"
+
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
+
+	dna_block = DNA_MONKEY_TAIL_BLOCK
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
