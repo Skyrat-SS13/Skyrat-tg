@@ -58,7 +58,7 @@
 	/// the max amount of power that can be sent per process, from 100000 (t1) to 10000000 (t4)
 	var/max_power = 100000
 	/// how much the current_power is divided by to determine the profit
-	var/divide_ratio = 0.0000004
+	var/divide_ratio = 0.00001
 	/// the attached cable to the machine
 	var/obj/structure/cable/attached_cable
 	/// how many credits this machine has actually made so far
@@ -66,10 +66,14 @@
 
 /obj/machinery/powerator/Initialize(mapload)
 	. = ..()
+	SSpowerator_penality.sum_powerators()
+	SSpowerator_penality.calculate_penality()
 	START_PROCESSING(SSobj, src)
 
 /obj/machinery/powerator/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	SSpowerator_penality.remove_deled_powerators(src)
+	SSpowerator_penality.calculate_penality()
 	attached_cable = null
 	return ..()
 
@@ -98,6 +102,8 @@
 
 	. += span_notice("Current Power: [display_power(current_power)]/[display_power(max_power)]")
 	. += span_notice("This machine has made [credits_made] credits from selling power so far.")
+	if(length(SSpowerator_penality.powerator_list) > 1)
+		. += span_notice("Multiple powerators detected, total efficiency reduced by [(SSpowerator_penality.diminishing_gains_multiplier)*100]%")
 
 /obj/machinery/powerator/RefreshParts()
 	. = ..()
@@ -157,7 +163,7 @@
 		current_power = attached_cable.newavail()
 	attached_cable.add_delayedload(current_power)
 
-	var/money_ratio = round(current_power * divide_ratio)
+	var/money_ratio = round(current_power * divide_ratio) * SSpowerator_penality.diminishing_gains_multiplier
 	var/datum/bank_account/synced_bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	synced_bank_account.adjust_money(money_ratio)
 	credits_made += money_ratio
