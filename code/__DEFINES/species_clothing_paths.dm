@@ -6,10 +6,13 @@
 ///The dmi for humanoid oversuits
 #define DEFAULT_SUIT_FILE 'icons/mob/clothing/suits/default.dmi'
 
+<<<<<<< HEAD
 //MONKEY PATHS
 ///The dmi for monkey uniforms
 #define MONKEY_UNIFORM_FILE 'modular_skyrat/master_files/icons/mob/clothing/species/monkey/uniform.dmi' // SKYRAT EDIT CHANGE
 
+=======
+>>>>>>> 611c48be405 (Monkeys now use height offset (and monkey tail works) (#81598))
 //DIGITIGRADE PATHS
 ///The dmi containing digitigrade uniforms
 #define DIGITIGRADE_UNIFORM_FILE 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi' // SKYRAT EDIT CHANGE
