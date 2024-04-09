@@ -99,6 +99,10 @@
 /datum/armament_entry/company_import/nri_surplus/firearm/shotgun_revolver
 	item_type = /obj/item/gun/ballistic/revolver/shotgun_revolver
 	cost = PAYCHECK_COMMAND * 6
+	contraband = TRUE
+	restricted = TRUE
+
+//Even if they're weapon, I'd argue they can technically be considered mining tools, which is why they will stay there
 
 /datum/armament_entry/company_import/nri_surplus/firearm/plasma_thrower
 	item_type = /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
@@ -111,10 +115,14 @@
 /datum/armament_entry/company_import/nri_surplus/firearm/miecz
 	item_type = /obj/item/gun/ballistic/automatic/miecz
 	cost = PAYCHECK_COMMAND * 10
+	contraband = TRUE
+	restricted = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm/sakhno_rifle
 	item_type = /obj/item/gun/ballistic/rifle/boltaction
 	cost = PAYCHECK_COMMAND * 12
+	contraband = TRUE
+	restricted = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm/lanca
 	item_type = /obj/item/gun/ballistic/automatic/lanca
@@ -137,9 +145,11 @@
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/miecz
 	item_type = /obj/item/ammo_box/magazine/miecz/spawns_empty
+	contraband = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/sakhno
 	item_type = /obj/item/ammo_box/strilka310
+	contraband = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/lanca
 	item_type = /obj/item/ammo_box/magazine/lanca/spawns_empty

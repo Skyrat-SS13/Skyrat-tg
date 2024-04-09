@@ -7,36 +7,12 @@
 /datum/armament_entry/company_import/microstar/basic_energy_weapons
 	subcategory = "Basic Energy Smallarms"
 
-/datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler
-	item_type = /obj/item/gun/energy/disabler
-	cost = PAYCHECK_CREW * 5
-
-/datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler_smg
-	item_type = /obj/item/gun/energy/disabler/smg
-	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
-
 /datum/armament_entry/company_import/microstar/basic_energy_weapons/mini_egun
 	item_type = /obj/item/gun/energy/e_gun/mini
-	cost = PAYCHECK_CREW * 5
-
-/datum/armament_entry/company_import/microstar/lethal_sidearm/energy_holster
-	item_type = /obj/item/storage/belt/holster/energy/thermal
-	cost = PAYCHECK_COMMAND * 6
+	cost = PAYCHECK_CREW * 4
 
 /datum/armament_entry/company_import/microstar/basic_energy_long_weapons
 	subcategory = "Basic Energy Longarms"
-
-/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/laser
-	item_type = /obj/item/gun/energy/laser
-	cost = PAYCHECK_CREW * 5
-
-/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/laser_carbine
-	item_type = /obj/item/gun/energy/laser/carbine
-	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
-
-/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/egun
-	item_type = /obj/item/gun/energy/e_gun
-	cost = PAYCHECK_COMMAND * 4
 
 /datum/armament_entry/company_import/microstar/basic_energy_long_weapons/basic_mcr
 	item_type = /obj/item/gun/microfusion/mcr01
