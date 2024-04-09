@@ -220,7 +220,12 @@
 	to_chat(user, span_notice("You start deconstructing [src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
+<<<<<<< HEAD
 		deconstruct(TRUE, 1)
+=======
+		frame = null
+		deconstruct(TRUE)
+>>>>>>> ccaa9f8f458 (Fix table top deconstruction (#82508))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/table/attackby(obj/item/I, mob/living/user, params)
@@ -297,6 +302,7 @@
 /obj/structure/table/proc/AfterPutItemOnTable(obj/item/thing, mob/living/user)
 	return
 
+<<<<<<< HEAD
 /obj/structure/table/deconstruct(disassembled = TRUE, wrench_disassembly = 0)
 	if(!(obj_flags & NO_DECONSTRUCTION))
 		var/turf/T = get_turf(src)
@@ -311,6 +317,20 @@
 		else
 			new framestack(T, framestackamount)
 	qdel(src)
+=======
+/obj/structure/table/atom_deconstruct(disassembled = TRUE)
+	var/turf/target_turf = get_turf(src)
+	if(buildstack)
+		new buildstack(target_turf, buildstackamount)
+	else
+		for(var/datum/material/mat in custom_materials)
+			new mat.sheet_type(target_turf, FLOOR(custom_materials[mat] / SHEET_MATERIAL_AMOUNT, 1))
+
+	if(frame)
+		new frame(target_turf)
+	else
+		new framestack(get_turf(src), framestackamount)
+>>>>>>> ccaa9f8f458 (Fix table top deconstruction (#82508))
 
 /obj/structure/table/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(the_rcd.mode == RCD_DECONSTRUCT)
