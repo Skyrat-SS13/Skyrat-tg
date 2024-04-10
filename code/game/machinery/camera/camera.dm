@@ -79,10 +79,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 		else if(assembly.malf_xray_firmware_present) //if it was secretly upgraded via the MALF AI Upgrade Camera Network ability
 			upgradeXRay(TRUE)
 
+<<<<<<< HEAD
 		if(assembly.emp_module)
 			upgradeEmpProof()
 		else if(assembly.malf_xray_firmware_present) //if it was secretly upgraded via the MALF AI Upgrade Camera Network ability
 			upgradeEmpProof(TRUE)
+=======
+	if(building)
+		setDir(ndir)
+
+	for(var/network_name in network)
+		network -= network_name
+		network += LOWER_TEXT(network_name)
+>>>>>>> c403a6ecccc (Wraps `lowertext()` to ensure proper stringification. (#82442))
 
 		if(assembly.proxy_module)
 			upgradeMotion()

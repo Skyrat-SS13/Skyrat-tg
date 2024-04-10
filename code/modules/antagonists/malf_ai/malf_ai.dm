@@ -265,9 +265,13 @@
 
 	result += objectives_text
 
+<<<<<<< HEAD
 	// SKYRAT EDIT REMOVAL START
 	/*
 	var/special_role_text = lowertext(name)
+=======
+	var/special_role_text = LOWER_TEXT(name)
+>>>>>>> c403a6ecccc (Wraps `lowertext()` to ensure proper stringification. (#82442))
 
 	if(malf_ai_won)
 		result += span_greentext("The [special_role_text] was successful!")

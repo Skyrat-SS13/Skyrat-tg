@@ -91,9 +91,33 @@
 
 /obj/machinery/modular_computer/preset/cargochat/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	var/datum/computer_file/program/chatclient/chatprogram = cpu.find_file_by_name("ntnrc_client")
 	chatprogram.username = "[lowertext(console_department)]_department"
 	cpu.active_program = chatprogram
+=======
+	setup_starting_software()
+	REGISTER_REQUIRED_MAP_ITEM(1, 1)
+	if(department_type)
+		name = "[LOWER_TEXT(initial(department_type.department_name))] [name]"
+		cpu.name = name
+
+/obj/machinery/modular_computer/preset/cargochat/proc/add_starting_software()
+	starting_programs += /datum/computer_file/program/department_order
+
+/obj/machinery/modular_computer/preset/cargochat/proc/setup_starting_software()
+	if(!department_type)
+		return
+
+	var/datum/computer_file/program/chatclient/chatprogram = cpu.find_file_by_name("ntnrc_client")
+	chatprogram.username = "[LOWER_TEXT(initial(department_type.department_name))]_department"
+	cpu.idle_threads += chatprogram
+
+	var/datum/computer_file/program/department_order/orderprogram = cpu.find_file_by_name("dept_order")
+	orderprogram.set_linked_department(department_type)
+	cpu.active_program = orderprogram
+	update_appearance(UPDATE_ICON)
+>>>>>>> c403a6ecccc (Wraps `lowertext()` to ensure proper stringification. (#82442))
 
 /obj/machinery/modular_computer/preset/cargochat/service
 	console_department = "Service"
