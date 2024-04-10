@@ -29,7 +29,7 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 	var/list/user_selections = list()
 
 /datum/ticket_history_holder/proc/cache_history_for_ckey(ckey, entries = 5)
-	ckey = lowertext(ckey)
+	ckey = LOWER_TEXT(ckey)
 
 	if(!isnum(entries) || entries <= 0)
 		return
