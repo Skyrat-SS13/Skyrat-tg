@@ -35,9 +35,15 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/plumbing/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+<<<<<<< HEAD
 	to_chat(user, span_notice("You start furiously plunging [name]."))
 	if(do_after(user, 30, target = src))
 		to_chat(user, span_notice("You finish plunging the [name]."))
+=======
+	user.balloon_alert_to_viewers("furiously plunging...")
+	if(do_after(user, 3 SECONDS, target = src))
+		user.balloon_alert_to_viewers("finished plunging")
+>>>>>>> ed26554345a (Add balloon alerts to plunging (#82559))
 		reagents.expose(get_turf(src), TOUCH) //splash on the floor
 		reagents.clear_reagents()
 
