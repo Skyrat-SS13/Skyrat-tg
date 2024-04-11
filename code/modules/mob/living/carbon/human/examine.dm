@@ -450,16 +450,13 @@
 						"<a href='?src=[REF(src)];hud=s;add_note=1;examine_time=[world.time]'>\[Add note\]</a>"), "")
 				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				if(target_record && length(target_record.past_security_records) > RECORDS_INVISIBLE_THRESHOLD)
-					. += "<span class='deptradio'>Past security records:</span> <a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View past security records\]</a>"
+					. += "<a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View past security records\]</a>"
 
 		if (target_record && length(target_record.past_general_records) > RECORDS_INVISIBLE_THRESHOLD)
 			. += "<a href='?src=[REF(src)];hud=[HAS_TRAIT(user, TRAIT_SECURITY_HUD) ? "s" : "m"];genrecords=1;examine_time=[world.time]'>\[View general records\]</a>"
-		//SKYRAT EDIT ADDITION END
 	else if(isobserver(user))
 		. += span_info("<b>Quirks:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
-	. += "</span>"
 
-	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 	if(isobserver(user) || user.mind?.can_see_exploitables || user.mind?.has_exploitables_override)
 		var/datum/record/crew/target_records = find_record(perpname)
 		if(target_records)
@@ -469,6 +466,8 @@
 				. += "<a href='?src=[REF(src)];bgrecords=1'>\[View background info\]</a>"
 			if((length(exploitable_text) > RECORDS_INVISIBLE_THRESHOLD) && ((exploitable_text) != EXPLOITABLE_DEFAULT_TEXT))
 				. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+
+	. += EXAMINE_SECTION_BREAK
 	//SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 	if(gunpointing)
@@ -500,18 +499,19 @@
 	if (flavor_text_link)
 		. += flavor_text_link
 
-	if(client)
-		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
-		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
-			. += span_notice("ERP STATUS: [erp_status_pref]")
-
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) < TEMPORARY_FLAVOR_PREVIEW_LIMIT)
-			. += span_notice("<b>They look different than usual:</b> [temporary_flavor_text]")
+			. += span_revennotice("<br>They look different than usual: [temporary_flavor_text]")
 		else
-			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, TEMPORARY_FLAVOR_PREVIEW_LIMIT)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
-	. += "</span>"
+			. += span_revennotice("<br>They look different than usual: [copytext_char(temporary_flavor_text, 1, TEMPORARY_FLAVOR_PREVIEW_LIMIT)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
+
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
+			. += EXAMINE_SECTION_BREAK
+			. += span_info("ERP Status: [span_revenboldnotice(erp_status_pref)]")
+
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 
 /**

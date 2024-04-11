@@ -12,7 +12,7 @@
 /proc/random_eye_color()
 	switch(pick(20;"brown",20;"hazel",20;"grey",15;"blue",15;"green",1;"amber",1;"albino"))
 		if("brown")
-			return "#663300"
+			return COLOR_BROWNER_BROWN
 		if("hazel")
 			return "#554422"
 		if("grey")
@@ -26,7 +26,7 @@
 		if("albino")
 			return "#" + pick("cc","dd","ee","ff") + pick("00","11","22","33","44","55","66","77","88","99") + pick("00","11","22","33","44","55","66","77","88","99")
 		else
-			return "#000000"
+			return COLOR_BLACK
 
 /proc/random_underwear(gender)
 	if(!GLOB.underwear_list.len)
@@ -281,7 +281,8 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	var/datum/progressbar/progbar
 	if(progress)
-		progbar = new(user, delay, target || user)
+		if(user.client)
+			progbar = new(user, delay, target || user)
 
 	SEND_SIGNAL(user, COMSIG_DO_AFTER_BEGAN)
 
