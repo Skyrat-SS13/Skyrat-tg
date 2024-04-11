@@ -8,15 +8,17 @@ import { classes } from 'common/react';
 
 import { useBackend } from '../backend';
 import { Box } from '../components';
+<<<<<<< HEAD:tgui/packages/tgui/layouts/Pane.jsx
+=======
+import { BoxProps } from '../components/Box';
+import { useDebug } from '../debug';
+>>>>>>> b523190c6dd (Fixes TGUI debugging tools (#82569)):tgui/packages/tgui/layouts/Pane.tsx
 import { Layout } from './Layout';
 
 export const Pane = (props, context) => {
   const { theme, children, className, ...rest } = props;
-  const { suspended, debug } = useBackend();
-  let debugLayout = false;
-  if (debug) {
-    debugLayout = debug.debugLayout;
-  }
+  const { suspended } = useBackend();
+  const { debugLayout = false } = useDebug();
 
   return (
     <Layout className={classes(['Window', className])} theme={theme} {...rest}>
