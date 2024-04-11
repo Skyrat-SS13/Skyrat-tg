@@ -308,6 +308,14 @@ SUBSYSTEM_DEF(research)
 	var/list/local_servers = list()
 	if(!location)
 		return local_servers
+	// SKYRAT EDIT ADDITION BEGIN - prioritize same z level servers in list (ensures any ghost role syndicate base uses their own server)
+	for (var/datum/techweb/individual_techweb as anything in techwebs)
+		var/list/servers = find_valid_servers_on_z_level(location, individual_techweb)
+		if(length(servers))
+			local_servers += servers
+	if(length(local_servers)) ///We found a server in our same z level, return
+		return local_servers
+	// SKYRAT EDIT ADDITION END
 	for (var/datum/techweb/individual_techweb as anything in techwebs)
 		var/list/servers = find_valid_servers(location, individual_techweb)
 		if(length(servers))
@@ -327,3 +335,20 @@ SUBSYSTEM_DEF(research)
 			continue
 		valid_servers += server
 	return valid_servers
+
+// SKYRAT EDIT ADDITION BEGIN
+/**
+ * Goes through an individual techweb's servers and finds one on the same z-level
+ * Returns a list of existing ones, or an empty list otherwise.
+ * Args:
+ * - checking_web - The techweb we're checking the servers of.
+ */
+/datum/controller/subsystem/research/proc/find_valid_servers_on_z_level(turf/location, datum/techweb/checking_web)
+	var/list/valid_servers = list()
+	for(var/obj/machinery/rnd/server/server as anything in checking_web.techweb_servers)
+		var/turf/source_loc = get_turf(server)
+		if(source_loc.z != location.z)
+			continue
+		valid_servers += server
+	return valid_servers
+// SKYRAT EDIT ADDITION END
