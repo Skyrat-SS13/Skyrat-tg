@@ -41,6 +41,7 @@
 	death_sound = 'sound/voice/hiss6.ogg'
 	death_message = "lets out a waning guttural screech, green blood bubbling from its maw..."
 
+
 	habitable_atmos = null
 	unsuitable_atmos_damage = FALSE
 	unsuitable_heat_damage = 20
