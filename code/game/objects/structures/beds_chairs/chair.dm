@@ -492,9 +492,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	icon_state = null
 	buildstacktype = null
 	item_chair = null
-	obj_flags = parent_type::obj_flags | NO_DECONSTRUCTION
+	obj_flags = parent_type::obj_flags | NO_DEBRIS_AFTER_DECONSTRUCTION
 	alpha = 0
 
+<<<<<<< HEAD
+=======
+/obj/structure/chair/mime/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
+
+>>>>>>> 227cdd2c7cd ([NO GBP] Patches & renaming for `NO_DECONSTRUCTION` flag (#82547))
 /obj/structure/chair/mime/post_buckle_mob(mob/living/M)
 	M.pixel_y += 5
 

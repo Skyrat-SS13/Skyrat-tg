@@ -156,7 +156,42 @@
 			var/mob/living/buckled_mob = m
 			buckled_mob.electrocute_act((clamp(round(strength * 1.25e-3), 10, 90) + rand(-5, 5)), src, flags = SHOCK_TESLA)
 
+<<<<<<< HEAD
 ///the obj is deconstructed into pieces, whether through careful disassembly or when destroyed.
+=======
+/**
+ * Custom behaviour per atom subtype on how they should deconstruct themselves
+ * Arguments
+ *
+ * * disassembled - TRUE means we cleanly took this atom apart using tools. FALSE means this was destroyed in a violent way
+ */
+/obj/proc/atom_deconstruct(disassembled = TRUE)
+	PROTECTED_PROC(TRUE)
+
+	return
+
+/**
+ * The interminate proc between deconstruct() & atom_deconstruct(). By default this delegates deconstruction to
+ * atom_deconstruct if NO_DEBRIS_AFTER_DECONSTRUCTION is absent but subtypes can override this to handle NO_DEBRIS_AFTER_DECONSTRUCTION in their
+ * own unique way. Override this if for example you want to dump out important content like mobs from the
+ * atom before deconstruction regardless if NO_DEBRIS_AFTER_DECONSTRUCTION is present or not
+ * Arguments
+ *
+ * * disassembled - TRUE means we cleanly took this atom apart using tools. FALSE means this was destroyed in a violent way
+ */
+/obj/proc/handle_deconstruct(disassembled = TRUE)
+	SHOULD_CALL_PARENT(FALSE)
+
+	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
+		atom_deconstruct(disassembled)
+
+/**
+ * The obj is deconstructed into pieces, whether through careful disassembly or when destroyed.
+ * Arguments
+ *
+ * * disassembled - TRUE means we cleanly took this atom apart using tools. FALSE means this was destroyed in a violent way
+ */
+>>>>>>> 227cdd2c7cd ([NO GBP] Patches & renaming for `NO_DECONSTRUCTION` flag (#82547))
 /obj/proc/deconstruct(disassembled = TRUE)
 	SEND_SIGNAL(src, COMSIG_OBJ_DECONSTRUCT, disassembled)
 	qdel(src)

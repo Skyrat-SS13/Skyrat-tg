@@ -818,9 +818,15 @@
 /obj/machinery/deconstruct(disassembled = TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+<<<<<<< HEAD
 	if(obj_flags & NO_DECONSTRUCTION)
 		dump_contents() //drop everything inside us
 		return ..() //Just delete us, no need to call anything else.
+=======
+	if(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION)
+		dump_inventory_contents() //drop stuff we consider important
+		return //Just delete us, no need to call anything else.
+>>>>>>> 227cdd2c7cd ([NO GBP] Patches & renaming for `NO_DECONSTRUCTION` flag (#82547))
 
 	on_deconstruction(disassembled)
 	if(!LAZYLEN(component_parts))
