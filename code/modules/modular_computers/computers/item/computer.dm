@@ -71,7 +71,7 @@
 	/// How far the computer's light can reach, is not editable by players.
 	var/comp_light_luminosity = 3
 	/// The built-in light's color, editable by players.
-	var/comp_light_color = "#FFFFFF"
+	var/comp_light_color = COLOR_WHITE
 
 	///Power usage when the computer is open (screen is active) and can be interacted with.
 	var/base_active_power_usage = 15 // SKYRAT EDIT CHANGE - Original: 125
@@ -482,7 +482,7 @@
 	playsound(src, 'sound/machines/card_slide.ogg', 50)
 
 /obj/item/modular_computer/proc/turn_on(mob/user, open_ui = TRUE)
-	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
+	var/issynth = HAS_SILICON_ACCESS(user) // Robots and AIs get different activation messages.
 	if(atom_integrity <= integrity_failure * max_integrity)
 		if(user)
 			if(issynth)
