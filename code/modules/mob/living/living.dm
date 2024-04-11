@@ -1862,14 +1862,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(isliving(dropping))
 		var/mob/living/M = dropping
 		if(M.can_be_held && U.pulling == M)
-<<<<<<< HEAD
 			return M.mob_try_pickup(U) //SKYRAT EDIT CHANGE //blame kevinz dont open the mobs inventory if you are picking them up
-	. = ..()
-=======
-			M.mob_try_pickup(U)//blame kevinz
-			return//dont open the mobs inventory if you are picking them up
 	return ..()
->>>>>>> 2163f605274 (Simple animal xenos are now basic animal xenos (#82187))
 
 /mob/living/proc/mob_pickup(mob/living/user)
 	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, held_state, head_icon, held_lh, held_rh, worn_slot_flags)
