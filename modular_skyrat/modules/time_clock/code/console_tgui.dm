@@ -45,7 +45,7 @@
 	/obj/item/mod/control/pre_equipped/safeguard, \
 	/obj/item/gun/energy/cell_loaded/medigun/cmo, \
 	/obj/item/defibrillator/compact/loaded, \
-	/obj/item/storage/hypospraykit/cmo, \
+	/obj/item/storage/hypospraykit/cmo/preloaded, \
 	/obj/item/mod/control/pre_equipped/rescue, \
 	/obj/item/gun/ballistic/rifle/boltaction/sporterized, \
 	/obj/item/clothing/glasses/hud/gun_permit/sunglasses, \
