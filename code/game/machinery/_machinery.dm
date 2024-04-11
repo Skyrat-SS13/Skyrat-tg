@@ -956,9 +956,12 @@
 	if(!istype(replacer_tool))
 		return FALSE
 
+<<<<<<< HEAD
 	if((obj_flags & NO_DECONSTRUCTION) && !replacer_tool.works_from_distance)
 		return FALSE
 
+=======
+>>>>>>> eb1deb53462 (Fixes standard RPEDs not working on machines (#82528))
 	var/shouldplaysound = FALSE
 	if(!component_parts)
 		return FALSE

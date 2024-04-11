@@ -1142,8 +1142,11 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 /obj/machinery/vending/exchange_parts(mob/user, obj/item/storage/part_replacer/replacer)
 	if(!istype(replacer))
 		return FALSE
+<<<<<<< HEAD
 	if((obj_flags & NO_DECONSTRUCTION) && !replacer.works_from_distance)
 		return FALSE
+=======
+>>>>>>> eb1deb53462 (Fixes standard RPEDs not working on machines (#82528))
 	if(!component_parts || !refill_canister)
 		return FALSE
 
