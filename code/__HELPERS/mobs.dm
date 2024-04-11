@@ -633,16 +633,13 @@ GLOBAL_LIST_EMPTY(species_list)
 		moblist += mob_to_sort
 	for(var/mob/living/basic/mob_to_sort in sortmob)
 		moblist += mob_to_sort
-<<<<<<< HEAD
+		// We've already added slimes.
+		if(isslime(mob_to_sort))
+			continue
 	// SKYRAT EDIT START - SOULCATCHERS
 	for(var/mob/living/soulcatcher_soul/mob_to_sort in sortmob)
 		moblist += mob_to_sort
 	// SKYRAT EDIT END - SOULCATCHERS
-=======
-		// We've already added slimes.
-		if(isslime(mob_to_sort))
-			continue
->>>>>>> b20c9824045 (Converts slimes to basic mobs (#82176))
 	return moblist
 ///returns a mob type controlled by a specified ckey
 /proc/get_mob_by_ckey(key)
