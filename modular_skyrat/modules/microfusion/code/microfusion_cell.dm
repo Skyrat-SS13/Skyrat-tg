@@ -70,7 +70,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	if(prob(prob_percent) && !meltdown && !stabilised)
 		process_instability()
 
-/obj/item/stock_parts/cell/microfusion/use(amount)
+/obj/item/stock_parts/cell/microfusion/use(amount, force = FALSE)
 	if(!parent_gun) // If an MCR cell is used in anything that's not an MCR, you might have problems
 		if(prob(fail_prob))
 			process_instability()
@@ -179,7 +179,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	maxcharge = 600
 	max_attachments = 0
 
-/obj/item/stock_parts/cell/microfusion/makeshift/use(amount)
+/obj/item/stock_parts/cell/microfusion/makeshift/use(amount, force = FALSE)
 	if(prob(fail_prob))
 		process_instability()
 	return ..()
