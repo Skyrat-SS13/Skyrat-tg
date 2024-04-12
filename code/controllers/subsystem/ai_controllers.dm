@@ -8,14 +8,32 @@ SUBSYSTEM_DEF(ai_controllers)
 	wait = 0.5 SECONDS //Plan every half second if required, not great not terrible.
 
 	///List of all ai_subtree singletons, key is the typepath while assigned value is a newly created instance of the typepath. See setup_subtrees()
+<<<<<<< HEAD
 	var/list/ai_subtrees = list()
 	///List of all ai controllers currently running
 	var/list/active_ai_controllers = list()
+=======
+	var/list/datum/ai_planning_subtree/ai_subtrees = list()
+	///Assoc List of all AI statuses and all AI controllers with that status.
+	var/list/ai_controllers_by_status = list(
+		AI_STATUS_ON = list(),
+		AI_STATUS_OFF = list(),
+		AI_STATUS_IDLE = list(),
+	)
+	///Assoc List of all AI controllers and the Z level they are on, which we check when someone enters/leaves a Z level to turn them on/off.
+	var/list/ai_controllers_by_zlevel = list()
+	/// The tick cost of all active AI, calculated on fire.
+	var/cost_on
+	/// The tick cost of all idle AI, calculated on fire.
+	var/cost_idle
+
+>>>>>>> e0d335b4420 (Fixes AI lag by re-adding idle mode to all AI that was lost with the simple mob to basic mob conversion. (#82539))
 
 /datum/controller/subsystem/ai_controllers/Initialize()
 	setup_subtrees()
 	return SS_INIT_SUCCESS
 
+<<<<<<< HEAD
 /datum/controller/subsystem/ai_controllers/proc/setup_subtrees()
 	ai_subtrees = list()
 	for(var/subtree_type in subtypesof(/datum/ai_planning_subtree))
@@ -24,6 +42,26 @@ SUBSYSTEM_DEF(ai_controllers)
 
 /datum/controller/subsystem/ai_controllers/fire(resumed)
 	for(var/datum/ai_controller/ai_controller as anything in active_ai_controllers)
+=======
+/datum/controller/subsystem/ai_controllers/stat_entry(msg)
+	var/list/active_list = ai_controllers_by_status[AI_STATUS_ON]
+	var/list/inactive_list = ai_controllers_by_status[AI_STATUS_OFF]
+	var/list/idle_list = ai_controllers_by_status[AI_STATUS_IDLE]
+	msg = "Active AIs:[length(active_list)]/[round(cost_on,1)]%|Inactive:[length(inactive_list)]|Idle:[length(idle_list)]/[round(cost_idle,1)]%"
+	return ..()
+
+/datum/controller/subsystem/ai_controllers/fire(resumed)
+	var/timer = TICK_USAGE_REAL
+	for(var/datum/ai_controller/ai_controller as anything in ai_controllers_by_status[AI_STATUS_IDLE])
+		for(var/client/client_found in GLOB.clients)
+			if(get_dist(get_turf(client_found.mob), get_turf(ai_controller.pawn)) <= ai_controller.interesting_dist)
+				ai_controller.set_ai_status(AI_STATUS_ON)
+				break
+	cost_idle = MC_AVERAGE(cost_idle, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
+
+	timer = TICK_USAGE_REAL
+	for(var/datum/ai_controller/ai_controller as anything in ai_controllers_by_status[AI_STATUS_ON])
+>>>>>>> e0d335b4420 (Fixes AI lag by re-adding idle mode to all AI that was lost with the simple mob to basic mob conversion. (#82539))
 		if(!COOLDOWN_FINISHED(ai_controller, failed_planning_cooldown))
 			continue
 
@@ -32,3 +70,29 @@ SUBSYSTEM_DEF(ai_controllers)
 		ai_controller.SelectBehaviors(wait * 0.1)
 		if(!LAZYLEN(ai_controller.current_behaviors)) //Still no plan
 			COOLDOWN_START(ai_controller, failed_planning_cooldown, AI_FAILED_PLANNING_COOLDOWN)
+<<<<<<< HEAD
+=======
+		if(ai_controller.can_idle)
+			var/found_interesting = FALSE
+			for(var/client/client_found in GLOB.clients)
+				if(get_dist(get_turf(client_found.mob), get_turf(ai_controller.pawn)) <= ai_controller.interesting_dist)
+					found_interesting = TRUE
+					break
+			if(!found_interesting)
+				ai_controller.set_ai_status(AI_STATUS_IDLE)
+	cost_on = MC_AVERAGE(cost_on, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
+
+///Creates all instances of ai_subtrees and assigns them to the ai_subtrees list.
+/datum/controller/subsystem/ai_controllers/proc/setup_subtrees()
+	for(var/subtree_type in subtypesof(/datum/ai_planning_subtree))
+		var/datum/ai_planning_subtree/subtree = new subtree_type
+		ai_subtrees[subtree_type] = subtree
+
+///Called when the max Z level was changed, updating our coverage.
+/datum/controller/subsystem/ai_controllers/proc/on_max_z_changed()
+	if (!islist(ai_controllers_by_zlevel))
+		ai_controllers_by_zlevel = new /list(world.maxz,0)
+	while (SSai_controllers.ai_controllers_by_zlevel.len < world.maxz)
+		SSai_controllers.ai_controllers_by_zlevel.len++
+		SSai_controllers.ai_controllers_by_zlevel[ai_controllers_by_zlevel.len] = list()
+>>>>>>> e0d335b4420 (Fixes AI lag by re-adding idle mode to all AI that was lost with the simple mob to basic mob conversion. (#82539))

@@ -19,6 +19,12 @@
 
 	// Ai controlling processes expect a seconds_per_tick, supply a real-fake dt
 	var/fake_dt = SSai_controllers.wait * 0.1
+<<<<<<< HEAD
+=======
+	// Set AI - AIs by default are off in z-levels with no client, we have to force it on.
+	biter.ai_controller.set_ai_status(AI_STATUS_ON)
+	biter.ai_controller.can_idle = FALSE
+>>>>>>> e0d335b4420 (Fixes AI lag by re-adding idle mode to all AI that was lost with the simple mob to basic mob conversion. (#82539))
 	// Select behavior - this will queue finding the cable
 	biter.ai_controller.SelectBehaviors(fake_dt)
 	// Process behavior - this will execute the "locate the cable" behavior

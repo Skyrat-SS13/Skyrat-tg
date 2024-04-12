@@ -2,12 +2,26 @@
 #define GET_TARGETING_STRATEGY(targeting_type) SSai_behaviors.targeting_strategies[targeting_type]
 #define HAS_AI_CONTROLLER_TYPE(thing, type) istype(thing?.ai_controller, type)
 
+<<<<<<< HEAD
 #define AI_STATUS_ON 1
 #define AI_STATUS_OFF 2
+=======
+//AI controller flags
+//If you add a new status, be sure to add it to the ai_controllers subsystem's ai_controllers_by_status list.
+///The AI is currently active.
+#define AI_STATUS_ON "ai_on"
+///The AI is currently offline for any reason.
+#define AI_STATUS_OFF "ai_off"
+///The AI is currently in idle mode.
+#define AI_STATUS_IDLE "ai_idle"
+>>>>>>> e0d335b4420 (Fixes AI lag by re-adding idle mode to all AI that was lost with the simple mob to basic mob conversion. (#82539))
 
 ///For JPS pathing, the maximum length of a path we'll try to generate. Should be modularized depending on what we're doing later on
 #define AI_MAX_PATH_LENGTH 30 // 30 is possibly overkill since by default we lose interest after 14 tiles of distance, but this gives wiggle room for weaving around obstacles
 #define AI_BOT_PATH_LENGTH 150
+
+// How far should we, by default, be looking for interesting things to de-idle?
+#define AI_DEFAULT_INTERESTING_DIST 14
 
 ///Cooldown on planning if planning failed last time
 

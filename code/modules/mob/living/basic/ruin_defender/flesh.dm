@@ -160,7 +160,13 @@
 	addtimer(CALLBACK(src, PROC_REF(wake_up), source), 2 SECONDS)
 
 /mob/living/basic/living_limb_flesh/proc/wake_up(atom/limb)
+<<<<<<< HEAD
 	ai_controller.set_ai_status(AI_STATUS_ON)
+=======
+	visible_message(span_warning("[src] begins flailing around!"))
+	Shake(6, 6, 0.5 SECONDS)
+	ai_controller.set_ai_status(AI_STATUS_IDLE)
+>>>>>>> e0d335b4420 (Fixes AI lag by re-adding idle mode to all AI that was lost with the simple mob to basic mob conversion. (#82539))
 	forceMove(limb.drop_location())
 	current_bodypart = null
 	qdel(limb)
