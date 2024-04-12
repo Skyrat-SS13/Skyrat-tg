@@ -38,7 +38,29 @@ export const TableRow = (props) => {
       {...computeBoxProps(rest)}
     />
   );
+<<<<<<< HEAD:tgui/packages/tgui/components/Table.jsx
 };
+=======
+}
+
+Table.Row = TableRow;
+
+type CellProps = Partial<{
+  /** Collapses table cell to the smallest possible size,
+  and stops any text inside from wrapping. */
+  collapsing: boolean;
+  /** Additional columns for this cell to expand, assuming there is room. */
+  colSpan: number;
+  /** Whether this is a header cell. */
+  header: boolean;
+  /** Rows for this cell to expand, assuming there is room. */
+  rowSpan: number;
+}> &
+  BoxProps;
+
+export function TableCell(props: CellProps) {
+  const { className, collapsing, colSpan, header, ...rest } = props;
+>>>>>>> 01492ce8e5a (Removes grid usage + heavy refactors (#82571)):tgui/packages/tgui/components/Table.tsx
 
 export const TableCell = (props) => {
   const { className, collapsing, header, ...rest } = props;
