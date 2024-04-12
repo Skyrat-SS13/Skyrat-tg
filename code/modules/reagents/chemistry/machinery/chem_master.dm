@@ -284,7 +284,63 @@
 
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/chem_master/ui_act(action, params)
+=======
+/**
+ * Transfers a single reagent between buffer & beaker
+ * Arguments
+ *
+ * * mob/user - the player who is attempting the transfer
+ * * datum/reagents/source - the holder we are transferring from
+ * * datum/reagents/target - the holder we are transferring to
+ * * datum/reagent/path - the reagent typepath we are transfering
+ * * amount - volume to transfer -1 means custom amount
+ * * do_transfer - transfer the reagents else destroy them
+ */
+/obj/machinery/chem_master/proc/transfer_reagent(mob/user, datum/reagents/source, datum/reagents/target, datum/reagent/path, amount, do_transfer)
+	PRIVATE_PROC(TRUE)
+
+	//sanity checks for transfer amount
+	if(isnull(amount))
+		return FALSE
+	amount = text2num(amount)
+	if(isnull(amount))
+		return FALSE
+	if(amount == -1)
+		var/target_amount = tgui_input_number(user, "Enter amount to transfer", "Transfer amount")
+		if(!target_amount)
+			return FALSE
+		amount = text2num(target_amount)
+		if(isnull(amount))
+			return FALSE
+	if(amount <= 0)
+		return FALSE
+
+	//sanity checks for reagent path
+	var/datum/reagent/reagent = text2path(path)
+	if (!reagent)
+		return FALSE
+
+	//use energy
+	if(!use_energy(active_power_usage, force = FALSE))
+		return FALSE
+
+	//do the operation
+	. = FALSE
+	if(do_transfer)
+		if(target.is_reacting)
+			return FALSE
+		if(source.trans_to(target, amount, target_id = reagent))
+			. = TRUE
+	else if(source.remove_reagent(reagent, amount))
+		. = TRUE
+	if(. && !QDELETED(src)) //transferring volatile reagents can cause a explosion & destory us
+		update_appearance(UPDATE_OVERLAYS)
+	return .
+
+/obj/machinery/chem_master/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> e3a554662d4 ([NO GBP] Power outage operation fixes for chem master (#82591))
 	. = ..()
 	if(.)
 		return
@@ -316,7 +372,110 @@
 		update_appearance(UPDATE_ICON)
 		return TRUE
 
+<<<<<<< HEAD
 	if(action == "stopPrinting")
+=======
+			var/reagent_ref = params["reagentRef"]
+			var/amount = params["amount"]
+			var/target = params["target"]
+
+			if(target == "buffer")
+				return transfer_reagent(ui.user, beaker.reagents, reagents, reagent_ref, amount, TRUE)
+			else if(target == "beaker")
+				return transfer_reagent(ui.user, reagents, beaker.reagents, reagent_ref, amount, is_transfering)
+			return FALSE
+
+		if("toggleTransferMode")
+			is_transfering = !is_transfering
+			return TRUE
+
+		if("stopPrinting")
+			is_printing = FALSE
+			update_appearance(UPDATE_OVERLAYS)
+			return TRUE
+
+		if("selectContainer")
+			var/obj/item/reagent_containers/target = locate(params["ref"])
+			if(!ispath(target))
+				return FALSE
+
+			selected_container = target
+			return TRUE
+
+		if("create")
+			if(!reagents.total_volume || is_printing)
+				return FALSE
+
+			//validate print count
+			var/item_count = params["itemCount"]
+			if(isnull(item_count))
+				return FALSE
+			item_count = text2num(item_count)
+			if(isnull(item_count) || item_count <= 0)
+				return FALSE
+			item_count = min(item_count, printing_amount)
+			var/volume_in_each = round(reagents.total_volume / item_count, CHEMICAL_VOLUME_ROUNDING)
+
+			// Generate item name
+			var/item_name_default = initial(selected_container.name)
+			var/datum/reagent/master_reagent = reagents.get_master_reagent()
+			if(selected_container == default_container) // Tubes and bottles gain reagent name
+				item_name_default = "[master_reagent.name] [item_name_default]"
+			if(!(initial(selected_container.reagent_flags) & OPENCONTAINER)) // Closed containers get both reagent name and units in the name
+				item_name_default = "[master_reagent.name] [item_name_default] ([volume_in_each]u)"
+			var/item_name = tgui_input_text(usr,
+				"Container name",
+				"Name",
+				item_name_default,
+				MAX_NAME_LEN)
+			if(!item_name)
+				return FALSE
+
+			//start printing
+			is_printing = TRUE
+			printing_progress = 0
+			printing_total = item_count
+			update_appearance(UPDATE_OVERLAYS)
+			create_containers(ui.user, item_count, item_name, volume_in_each)
+			return TRUE
+
+/**
+ * Create N selected containers with reagents from buffer split between them
+ * Arguments
+ *
+ * * mob/user - the player printing these containers
+ * * item_count - number of containers to print
+ * * item_name - the name for each container printed
+ * * volume_in_each - volume in each container created
+ */
+/obj/machinery/chem_master/proc/create_containers(mob/user, item_count, item_name, volume_in_each)
+	PRIVATE_PROC(TRUE)
+
+	//lost power or manually stopped
+	if(!is_printing)
+		return
+
+	//use power
+	if(!use_energy(active_power_usage, force = FALSE))
+		is_printing = FALSE
+		update_appearance(UPDATE_OVERLAYS)
+		return
+
+	//print the stuff
+	var/obj/item/reagent_containers/item = new selected_container(drop_location())
+	adjust_item_drop_location(item)
+	item.name = item_name
+	item.reagents.clear_reagents()
+	reagents.trans_to(item, volume_in_each, transferred_by = user)
+	printing_progress++
+	update_appearance(UPDATE_OVERLAYS)
+
+	//print more items
+	item_count --
+	if(item_count > 0)
+		addtimer(CALLBACK(src, PROC_REF(create_containers), user, item_count, item_name, volume_in_each), 0.75 SECONDS)
+	else
+>>>>>>> e3a554662d4 ([NO GBP] Power outage operation fixes for chem master (#82591))
 		is_printing = FALSE
 		return TRUE
 
