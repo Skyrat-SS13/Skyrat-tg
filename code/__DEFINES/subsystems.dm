@@ -137,7 +137,11 @@
 #define INIT_ORDER_BLACKBOX 94
 #define INIT_ORDER_SERVER_MAINT 93
 #define INIT_ORDER_INPUT 85
+<<<<<<< HEAD
 #define INIT_ORDER_PLAYER_RANKS 84 // SKYRAT EDIT - Player Ranks Subsystem
+=======
+#define INIT_ORDER_ADMIN_VERBS 84 // needs to be pretty high, admins cant do much without it
+>>>>>>> 7f8752be147 (Admin Verb Datums MkIII | Now with functional command bar (#82511))
 #define INIT_ORDER_SOUNDS 83
 #define INIT_ORDER_INSTRUMENTS 82
 #define INIT_ORDER_GREYSCALE 81
