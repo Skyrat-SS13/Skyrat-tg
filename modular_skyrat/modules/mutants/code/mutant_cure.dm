@@ -230,7 +230,8 @@
 	else if(operation == "eject")
 		ejectItem()
 	else if(operation == "refresh")
-		updateUsrDialog()
+		SStgui.update_uis(src)
+		return
 	else
 		if(status != STATUS_IDLE)
 			to_chat(usr, span_warning("[src] is currently recombinating!"))
@@ -246,7 +247,7 @@
 			recombinate_start()
 			use_energy(3000 JOULES)
 
-	updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/rnd/rna_recombinator/proc/ejectItem()
 	if(loaded_item)
