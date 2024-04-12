@@ -112,6 +112,7 @@
 		return
 
 	//building and linking a terminal
+<<<<<<< HEAD
 	if(istype(I, /obj/item/stack/cable_coil))
 		var/dir = get_dir(user,src)
 		if(dir & (dir-1))//we don't want diagonal click
@@ -134,18 +135,29 @@
 		var/obj/item/stack/cable_coil/C = I
 		if(C.get_amount() < 10)
 			to_chat(user, span_warning("You need more wires!"))
+=======
+	if(istype(item, /obj/item/stack/cable_coil))
+		if(!can_place_terminal(user, item, silent = FALSE))
+>>>>>>> 995d8e2ee1a (Fixes a variety of input stalling exploits (#82577))
 			return
 
 		var/terminal_cable_layer
 		if(LAZYACCESS(params2list(params), RIGHT_CLICK))
 			var/choice = tgui_input_list(user, "Select Power Input Cable Layer", "Select Cable Layer", GLOB.cable_name_to_layer)
-			if(isnull(choice))
+			if(isnull(choice) \
+				|| !user.is_holding(item) \
+				|| !user.Adjacent(src) \
+				|| user.incapacitated() \
+				|| !can_place_terminal(user, item, silent = TRUE) \
+			)
 				return
 			terminal_cable_layer = GLOB.cable_name_to_layer[choice]
 
-		to_chat(user, span_notice("You start building the power terminal..."))
-		playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
+		user.visible_message(span_notice("[user.name] starts adding cables to [src]."))
+		balloon_alert(user, "adding cables...")
+		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
+<<<<<<< HEAD
 		if(do_after(user, 20, target = src))
 			if(C.get_amount() < 10 || !C)
 				return
@@ -162,6 +174,25 @@
 				make_terminal(T, terminal_cable_layer)
 				terminal.connect_to_network()
 				connect_to_network()
+=======
+		if(!do_after(user, 2 SECONDS, target = src))
+			return
+		if(!can_place_terminal(user, item, silent = TRUE))
+			return
+		var/obj/item/stack/cable_coil/cable = item
+		var/turf/turf = get_turf(src)
+		var/obj/structure/cable/connected_cable = turf.get_cable_node(terminal_cable_layer) //get the connecting node cable, if there's one
+		if (prob(50) && electrocute_mob(user, connected_cable, connected_cable, 1, TRUE)) //animate the electrocution if uncautious and unlucky
+			do_sparks(5, TRUE, src)
+			return
+		cable.use(10)
+		user.visible_message(span_notice("[user.name] adds cables to [src]"))
+		balloon_alert(user, "cables added")
+		//build the terminal and link it to the network
+		make_terminal(turf, terminal_cable_layer)
+		terminal.connect_to_network()
+		connect_to_network()
+>>>>>>> 995d8e2ee1a (Fixes a variety of input stalling exploits (#82577))
 		return
 
 	//crowbarring it !
@@ -176,7 +207,36 @@
 
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/power/smes/wirecutter_act(mob/living/user, obj/item/I)
+=======
+/// Checks if we're in a valid state to place a terminal
+/obj/machinery/power/smes/proc/can_place_terminal(mob/living/user, obj/item/stack/cable_coil/installing_cable, silent = TRUE)
+	var/set_dir = get_dir(user, src)
+	if(set_dir & (set_dir - 1))//we don't want diagonal click
+		return FALSE
+
+	var/turf/smes_turf = get_turf(src)
+	if(!panel_open)
+		if(!silent && user)
+			balloon_alert(user, "open the maintenance panel!")
+		return FALSE
+	if(smes_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
+		if(!silent && user)
+			balloon_alert(user, "remove the floor plating!")
+		return FALSE
+	if(terminal)
+		if(!silent && user)
+			balloon_alert(user, "already wired!")
+		return FALSE
+	if(installing_cable.get_amount() < 10)
+		if(!silent && user)
+			balloon_alert(user, "need ten lengths of cable!")
+		return FALSE
+	return TRUE
+
+/obj/machinery/power/smes/wirecutter_act(mob/living/user, obj/item/item)
+>>>>>>> 995d8e2ee1a (Fixes a variety of input stalling exploits (#82577))
 	//disassembling the terminal
 	. = ..()
 	if(terminal && panel_open)
