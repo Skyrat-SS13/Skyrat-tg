@@ -36,7 +36,19 @@
 ///removes the corresponding moodlet and visual effects
 /datum/quirk/all_nighter/remove(client/client_source)
 	quirk_holder.clear_mood_event("all_nighter", /datum/mood_event/all_nighter)
+<<<<<<< HEAD
 	remove_bags()
+=======
+	if(bodypart_overlay)
+		remove_bags()
+
+///if we have bags and lost a head, remove them
+/datum/quirk/all_nighter/proc/on_removed_limb(datum/source, obj/item/bodypart/removed_limb, special, dismembered)
+	SIGNAL_HANDLER
+
+	if(bodypart_overlay && istype(removed_limb, /obj/item/bodypart/head))
+		remove_bags()
+>>>>>>> 035205fb83d ([NO GBP] ...Remember to add SIGNAL_HANDLER (#82630))
 
 ///adds the bag overlay
 /datum/quirk/all_nighter/proc/add_bags(client/client_source)
