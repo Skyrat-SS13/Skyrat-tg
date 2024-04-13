@@ -115,8 +115,24 @@
 	if(speak_emote)
 		speak_emote = string_list(speak_emote)
 
+<<<<<<< HEAD
 	apply_atmos_requirements()
 	apply_temperature_requirements()
+=======
+	///We need to wait for SSair to be initialized before we can check atmos/temp requirements.
+	if(PERFORM_ALL_TESTS(focus_only/atmos_and_temp_requirements) && mapload && !SSair.initialized)
+		RegisterSignal(SSair, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(on_ssair_init))
+		return
+	apply_atmos_requirements(mapload)
+	apply_temperature_requirements(mapload)
+	apply_target_randomisation()
+
+/mob/living/basic/proc/on_ssair_init(datum/source)
+	SIGNAL_HANDLER
+	UnregisterSignal(SSair, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+	apply_atmos_requirements(TRUE)
+	apply_temperature_requirements(TRUE)
+>>>>>>> 4019835b3e8 (Living Limb fixes (feat: Basic mobs attack random body zones again) (#82556))
 
 /// Ensures this mob can take atmospheric damage if it's supposed to
 /mob/living/basic/proc/apply_atmos_requirements()
@@ -132,6 +148,11 @@
 		return
 	AddElement(/datum/element/basic_body_temp_sensitive, minimum_survivable_temperature, maximum_survivable_temperature, unsuitable_cold_damage, unsuitable_heat_damage)
 
+
+/mob/living/basic/proc/apply_target_randomisation()
+	if (basic_mob_flags & PRECISE_ATTACK_ZONES)
+		return
+	AddElement(/datum/element/attack_zone_randomiser)
 
 /mob/living/basic/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	. = ..()
