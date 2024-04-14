@@ -45,14 +45,6 @@
 	descriptor = SCENT_DESC_SMELL
 	scent = "sulphur"
 
-///Organic waste and garbage makes this
-/datum/pollutant/decaying_waste
-	name = "Decaying Waste"
-	pollutant_flags = POLLUTANT_SMELL
-	smell_intensity = 3
-	descriptor = SCENT_DESC_ODOR
-	scent = "decaying waste"
-
 ///Splashing blood makes a tiny bit of this
 /datum/pollutant/metallic_scent
 	name = "Metallic Scent"
