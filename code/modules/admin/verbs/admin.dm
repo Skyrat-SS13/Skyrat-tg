@@ -41,6 +41,7 @@
 		log_admin("Announce: [key_name(usr)] : [message]")
 	BLACKBOX_LOG_ADMIN_VERB("Announce")
 
+<<<<<<< HEAD
 /datum/admins/proc/unprison(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Unprison"
@@ -50,6 +51,16 @@
 		log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 	else
 		tgui_alert(usr,"[M.name] is not prisoned.")
+=======
+ADMIN_VERB(unprison, R_ADMIN, "UnPrison", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/prisoner in GLOB.mob_list)
+	if(!is_centcom_level(prisoner.z))
+		tgui_alert(user, "[prisoner.name] is not prisoned.")
+		return
+
+	SSjob.SendToLateJoin(prisoner)
+	message_admins("[key_name_admin(user)] has unprisoned [key_name_admin(prisoner)]")
+	log_admin("[key_name(user)] has unprisoned [key_name(prisoner)]")
+>>>>>>> 9124a73b606 (Put some admin jump verbs back into the context menu | sorts area jump list again (#82647))
 	BLACKBOX_LOG_ADMIN_VERB("Unprison")
 
 /client/proc/cmd_admin_check_player_exp() //Allows admins to determine who the newer players are.
@@ -164,6 +175,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_drop_everything(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Drop Everything"
@@ -171,6 +183,10 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Make [M] drop everything?", "Message", list("Yes", "No"))
+=======
+ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/dropee in GLOB.mob_list)
+	var/confirm = tgui_alert(user, "Make [dropee] drop everything?", "Message", list("Yes", "No"))
+>>>>>>> 9124a73b606 (Put some admin jump verbs back into the context menu | sorts area jump list again (#82647))
 	if(confirm != "Yes")
 		return
 

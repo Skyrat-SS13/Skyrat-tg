@@ -53,6 +53,7 @@
 		message_admins("[key_name_admin(usr)] created an EM Pulse ([heavy],[light]) at [AREACOORD(O)]")
 		BLACKBOX_LOG_ADMIN_VERB("EM Pulse")
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_gib(mob/victim in GLOB.mob_list)
 	set category = "Admin.Fun"
 	set name = "Gib"
@@ -61,6 +62,10 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Drop a brain?", "Confirm", list("Yes", "No","Cancel")) || "Cancel"
+=======
+ADMIN_VERB(gib_them, R_ADMIN, "Gib", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/victim in GLOB.mob_list)
+	var/confirm = tgui_alert(user, "Drop a brain?", "Confirm", list("Yes", "No","Cancel")) || "Cancel"
+>>>>>>> 9124a73b606 (Put some admin jump verbs back into the context menu | sorts area jump list again (#82647))
 	if(confirm == "Cancel")
 		return
 	//Due to the delay here its easy for something to have happened to the mob
