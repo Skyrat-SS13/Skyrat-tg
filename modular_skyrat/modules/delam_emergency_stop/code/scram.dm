@@ -189,6 +189,7 @@
 
 	// Fire bell close, that nice 'are we gonna die?' rumble out far
 	on = TRUE
+	SSpersistence.reset_delam_counter()
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	update_appearance()
 
