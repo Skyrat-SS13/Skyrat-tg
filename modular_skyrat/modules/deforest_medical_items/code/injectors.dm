@@ -6,6 +6,7 @@
 	icon_state = "default"
 	volume = 25
 	list_reagents = list()
+	custom_price = PAYCHECK_COMMAND
 	/// If this pen has a timer for injecting others with, just for safety with some of the drugs in these
 	var/inject_others_time = 1.5 SECONDS
 
@@ -112,8 +113,8 @@
 	base_icon_state = "meridine"
 	icon_state = "meridine"
 	list_reagents = list(
-		/datum/reagent/medicine/ammoniated_mercury = 5,
-		/datum/reagent/medicine/potass_iodide = 15,
+		/datum/reagent/medicine/ammoniated_mercury = 10,
+		/datum/reagent/medicine/potass_iodide = 10,
 		/datum/reagent/nitrous_oxide = 5,
 	)
 
@@ -128,6 +129,7 @@
 		/datum/reagent/medicine/synaptizine = 5,
 		/datum/reagent/medicine/synaphydramine = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 2.5
 
 // Critical condition stabilizer
 /obj/item/reagent_containers/hypospray/medipen/deforest/calopine
@@ -166,6 +168,7 @@
 		/datum/reagent/medicine/omnizine/protozine = 10,
 		/datum/reagent/drug/maint/tar = 5,
 	)
+	custom_price = PAYCHECK_COMMAND * 2.5
 
 // Stuff really good at healing burn stuff and stabilizing temps
 /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi

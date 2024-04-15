@@ -131,7 +131,7 @@
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
 
-	use_power(500)
+	use_energy(500 JOULES)
 
 /// Ejects the occupant after asking them if they want to accept the rejuvenation. If yes, they exit as their preferences character.
 /obj/machinery/self_actualization_device/proc/eject_new_you()

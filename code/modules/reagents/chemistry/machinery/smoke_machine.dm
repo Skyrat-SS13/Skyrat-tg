@@ -22,7 +22,7 @@
 	src.location = get_turf(location)
 	src.amount = amount
 	carry?.copy_to(chemholder, 20)
-	carry?.remove_any(amount / efficiency)
+	carry?.remove_all(amount / efficiency)
 
 /// A factory which produces clouds of smoke for the smoke machine.
 /datum/effect_system/fluid_spread/smoke/chem/smoke_machine
@@ -89,7 +89,7 @@
 		var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/smoke = new()
 		smoke.set_up(setting * 3, holder = src, location = location, carry = reagents, efficiency = efficiency)
 		smoke.start()
-		use_power(active_power_usage)
+		use_energy(active_power_usage)
 
 /obj/machinery/smoke_machine/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
