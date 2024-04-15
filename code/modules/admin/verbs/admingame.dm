@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 // Admin Tab - Game Verbs
+=======
+ADMIN_VERB_AND_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", "Get the player panel for the target mob.", ADMIN_CATEGORY_MAIN, mob/player in world)
+	log_admin("[key_name(user)] checked the individual player panel for [key_name(player)][isobserver(user.mob)?"":" while in game"].")
+>>>>>>> abbee36f1d0 (Hey what if admins were allowed to use the player panel (#82682))
 
 /datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set category = "Admin.Game"
