@@ -208,7 +208,7 @@
 *	ADVANCED CARGO CYBORG UPGRADES
 */
 /datum/design/borg_upgrade_clamp
-	name = "improved Integrated Hydraulic Clamp Module"
+	name = "Improved Integrated Hydraulic Clamp Module"
 	id = "borg_upgrade_clamp"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/better_clamp
@@ -252,7 +252,7 @@
 		cyborg.model.remove_module(big_clamp, TRUE)
 
 /datum/design/borg_upgrade_cargo_tele
-	name = "cargo teleporter module"
+	name = "Cargo teleporter module"
 	id = "borg_upgrade_cargo_tele"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/cargo_tele
@@ -263,7 +263,7 @@
 	)
 
 /obj/item/borg/upgrade/cargo_tele
-	name = "Cargo teleporter module"
+	name = "cargo teleporter module"
 	desc = "Allows you to upgrade a cargo cyborg with the cargo teleporter"
 	icon_state = "cyborg_upgrade3"
 	require_model = TRUE
@@ -305,7 +305,7 @@
 	)
 
 /obj/item/borg/upgrade/forging
-	name = "borg forging module"
+	name = "cyborg forging module"
 	desc = "Allows you to upgrade a cargo cyborg with forging gear"
 	icon_state = "cyborg_upgrade3"
 	require_model = TRUE
@@ -416,7 +416,7 @@
 
 /// ShapeShifter
 /obj/item/borg/upgrade/borg_shapeshifter
-	name = "Cyborg Shapeshifter Module"
+	name = "cyborg shapeshifter module"
 	desc = "An experimental device which allows a cyborg to disguise themself into another type of cyborg."
 	icon_state = "cyborg_upgrade3"
 
