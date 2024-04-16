@@ -117,7 +117,7 @@
 		if(mask_on == TRUE)
 			var/mob/living/carbon/wearer = user
 			if(wearer.wear_mask == src)
-				if(!do_after(wearer, 600, target = src))
+				if(!do_after(wearer, 60 SECONDS, target = src))
 					to_chat(wearer, span_warning("You fail to remove the gas mask!"))
 					return
 				else
@@ -138,7 +138,7 @@
 				if(iscarbon(usr))
 					if(mask_on == TRUE)
 						if(src == target_carbon.wear_mask || . == target_carbon.wear_mask)
-							if(!do_after(target_carbon, 600, target = src))
+							if(!do_after(target_carbon, 60 SECONDS, target = src))
 								to_chat(target_mob, span_warning("You fail to remove the gas mask!"))
 								return
 							else
@@ -334,7 +334,7 @@
 // Reagent consumption process handler
 /obj/item/reagent_containers/cup/lewd_filter/proc/reagent_consumption(mob/living/user, amount_per_transfer_from_this)
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, user, user)
-	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 0.5 SECONDS)
 
 // I just wanted to add 2th color variation. Because.
 /obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)

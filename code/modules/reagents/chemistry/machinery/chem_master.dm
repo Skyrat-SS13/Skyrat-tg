@@ -368,7 +368,7 @@
 	while(item_count > 0)
 		if(!is_printing)
 			break
-		use_power(active_power_usage)
+		use_energy(active_power_usage)
 		stoplag(printing_speed)
 		for(var/i in 1 to printing_amount_current)
 			if(!item_count)
@@ -397,7 +397,7 @@
 	if (!reagent)
 		return FALSE
 
-	use_power(active_power_usage)
+	use_energy(active_power_usage)
 
 	if (target == TARGET_BUFFER)
 		if(!check_reactions(reagent, beaker.reagents))
