@@ -21,8 +21,13 @@
 	var/drops_core = TRUE
 	///Do we keep on living forever?
 	var/immortal = FALSE
+<<<<<<< HEAD
 	///Do we stay in one place?
 	var/immobile = FALSE
+=======
+	///Chance per second that we will move
+	var/move_chance = ANOMALY_MOVECHANCE
+>>>>>>> d218f236d21 (Anomaly Releaser logging and fixes (#82684))
 
 /obj/effect/anomaly/Initialize(mapload, new_lifespan, drops_core = TRUE)
 	. = ..()
@@ -116,4 +121,5 @@
 	if(!has_core)
 		drops_core = FALSE
 		QDEL_NULL(aSignal)
-	immobile = anchor
+	if (anchor)
+		move_chance = 0
