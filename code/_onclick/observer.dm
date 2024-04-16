@@ -31,7 +31,11 @@
 			MiddleClickOn(A, params)
 		return
 	if(LAZYACCESS(modifiers, ALT_CLICK))
+<<<<<<< HEAD
 		AltClickNoInteract(src, A)
+=======
+		base_click_alt(A)
+>>>>>>> 8e3f635b988 (Alt click refactor (#82656))
 		return
 	if(LAZYACCESS(modifiers, CTRL_CLICK))
 		CtrlClickOn(A)

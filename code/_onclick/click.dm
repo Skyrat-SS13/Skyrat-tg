@@ -96,7 +96,7 @@
 		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			alt_click_on_secondary(A)
 		else
-			AltClickOn(A)
+			base_click_alt(A)
 		return
 	if(LAZYACCESS(modifiers, CTRL_CLICK))
 		CtrlClickOn(A)
@@ -385,6 +385,7 @@
 		A.CtrlClick(src)
 	return
 
+<<<<<<< HEAD
 /**
  * Alt click
  * Unused except for AI
@@ -403,6 +404,8 @@
 	var/turf/T = get_turf(src)
 	if(T && (isturf(loc) || isturf(src)) && user.TurfAdjacent(T) && !HAS_TRAIT(user, TRAIT_MOVE_VENTCRAWLING))
 		user.set_listed_turf(T)
+=======
+>>>>>>> 8e3f635b988 (Alt click refactor (#82656))
 
 ///The base proc of when something is right clicked on when alt is held - generally use alt_click_secondary instead
 /atom/proc/alt_click_on_secondary(atom/A)

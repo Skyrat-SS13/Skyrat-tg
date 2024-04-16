@@ -363,6 +363,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	if(get_dist(get_turf(src), get_turf(user)) <= 1)
 		promptExit(user)
 
+<<<<<<< HEAD
 /turf/closed/indestructible/hoteldoor/AltClick(mob/user)
 	. = ..()
 	if(get_dist(get_turf(src), get_turf(user)) <= 1)
@@ -372,6 +373,16 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
 		PHC.Grant(user)
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/, check_eye), user)
+=======
+/turf/closed/indestructible/hoteldoor/click_alt(mob/user)
+	to_chat(user, span_notice("You peak through the door's bluespace peephole..."))
+	user.reset_perspective(parentSphere)
+	var/datum/action/peephole_cancel/PHC = new
+	user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
+	PHC.Grant(user)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_eye))
+	return CLICK_ACTION_SUCCESS
+>>>>>>> 8e3f635b988 (Alt click refactor (#82656))
 
 /turf/closed/indestructible/hoteldoor/check_eye(mob/user)
 	if(get_dist(get_turf(src), get_turf(user)) >= 2)

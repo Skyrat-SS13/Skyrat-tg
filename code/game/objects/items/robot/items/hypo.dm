@@ -245,6 +245,7 @@
 	. += "Currently loaded: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nothing."]"
 	. += span_notice("<i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this]u.")
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/borghypo/AltClick(mob/living/user)
 	. = ..()
 /* SKYRAT REMOVAL START - Changing transfer amounts is now handled by the parent proc in modular files.
@@ -252,6 +253,11 @@
 		return //IF YOU CAN HEAR ME SET MY TRANSFER AMOUNT TO 1
 	change_transfer_amount(user)	
 */ // SKYRAT REMOVAL END
+=======
+/obj/item/reagent_containers/borghypo/click_alt(mob/living/user)
+	change_transfer_amount(user)
+	return CLICK_ACTION_SUCCESS
+>>>>>>> 8e3f635b988 (Alt click refactor (#82656))
 
 /// Default Medborg Hypospray
 /obj/item/reagent_containers/borghypo/medical

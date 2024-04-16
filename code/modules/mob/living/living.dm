@@ -1391,8 +1391,13 @@
 
 			var/datum/dna/mob_DNA = has_dna()
 			if(!mob_DNA || !mob_DNA.check_mutation(/datum/mutation/human/telekinesis) || !tkMaxRangeCheck(src, target))
-				to_chat(src, span_warning("You are too far away!"))
+				if(!(action_bitflags & SILENT_ADJACENCY))
+					to_chat(src, span_warning("You are too far away!"))
 				return FALSE
+
+	if((action_bitflags & NEED_VENTCRAWL) && !HAS_TRAIT(src, TRAIT_VENTCRAWLER_NUDE) && !HAS_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS))
+		to_chat(src, span_warning("You wouldn't fit!"))
+		return FALSE
 
 	if((action_bitflags & NEED_DEXTERITY) && !ISADVANCEDTOOLUSER(src))
 		to_chat(src, span_warning("You don't have the dexterity to do this!"))
@@ -1837,12 +1842,25 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 							//Start AI idle if nobody else was on this z level before (mobs will switch off when this is the case)
 							SA.toggle_ai(AI_IDLE)
 
+<<<<<<< HEAD
 						//If they are also within a close distance ask the AI if it wants to wake up
 						if(get_dist(get_turf(src), get_turf(SA)) < MAX_SIMPLEMOB_WAKEUP_RANGE)
 							SA.consider_wakeup() // Ask the mob if it wants to turn on it's AI
 					//They should clean up in destroy, but often don't so we get them here
 					else
 						SSidlenpcpool.idle_mobs_by_zlevel[new_z] -= SA
+=======
+	//Check the amount of clients exists on the Z level we're leaving from,
+	//this excludes us as we haven't added ourselves to the new z level yet.
+	var/old_level_new_clients = (registered_z ? SSmobs.clients_by_zlevel[registered_z].len : null)
+	//No one is left after we're gone, shut off inactive ones
+	if(registered_z && old_level_new_clients == 0)
+		for(var/datum/ai_controller/controller as anything in SSai_controllers.ai_controllers_by_zlevel[registered_z])
+			controller.set_ai_status(AI_STATUS_OFF)
+
+	//Check the amount of clients exists on the Z level we're moving towards, excluding ourselves.
+	var/new_level_old_clients = SSmobs.clients_by_zlevel[new_z].len
+>>>>>>> 8e3f635b988 (Alt click refactor (#82656))
 
 
 			registered_z = new_z
