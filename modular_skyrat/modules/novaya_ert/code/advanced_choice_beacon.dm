@@ -5,6 +5,9 @@
 	icon_state = "designator_syndicate"
 	inhand_icon_state = "nukietalkie"
 
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+
 	var/list/possible_choices = list()
 
 	var/pod_style = STYLE_CENTCOM
