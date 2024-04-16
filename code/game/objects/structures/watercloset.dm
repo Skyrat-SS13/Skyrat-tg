@@ -256,7 +256,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 /obj/item/food/urinalcake/attack_self(mob/living/user)
 	user.visible_message(span_notice("[user] squishes [src]!"), span_notice("You squish [src]."), "<i>You hear a squish.</i>")
 	icon_state = "urinalcake_squish"
-	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 8)
+	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 0.8 SECONDS)
 
 /obj/item/bikehorn/rubberducky/plasticducky
 	name = "plastic ducky"
@@ -357,7 +357,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 						span_notice("You start washing your [washing_face ? "face" : "hands"]..."))
 	busy = TRUE
 
-	if(!do_after(user, 40, target = src))
+	if(!do_after(user, 4 SECONDS, target = src))
 		busy = FALSE
 		return
 
@@ -483,7 +483,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	if(!user.combat_mode)
 		to_chat(user, span_notice("You start washing [O]..."))
 		busy = TRUE
-		if(!do_after(user, 40, target = src))
+		if(!do_after(user, 4 SECONDS, target = src))
 			busy = FALSE
 			return 1
 		busy = FALSE
