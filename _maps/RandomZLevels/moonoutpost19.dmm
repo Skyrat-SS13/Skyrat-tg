@@ -521,6 +521,18 @@
 	temperature = 251
 	},
 /area/awaymission/moonoutpost19/arrivals)
+"dS" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/queen/large{
+	desc = "A gigantic alien who is in charge of the hive and all of its loyal servants.";
+	name = "alien queen";
+	pixel_x = -16;
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "dU" = (
 /obj/structure/fence/cut{
 	dir = 4
@@ -731,6 +743,14 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/awaymission/moonoutpost19/research)
+"fm" = (
+/mob/living/basic/alien/drone{
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/main)
 "fo" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	desc = "Your instincts say you shouldn't be following these.";
@@ -2087,13 +2107,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/wood,
 /area/awaymission/moonoutpost19/syndicate)
-"nz" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien/sentinel,
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "nE" = (
 /obj/machinery/door/poddoor/preopen{
 	desc = "A heavy duty blast door that opens mechanically. This one has been applied with an acid-proof coating.";
@@ -3088,15 +3101,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/arrivals)
-"tN" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_animal/hostile/alien/drone{
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/mines)
 "tQ" = (
 /obj/structure/table,
 /obj/item/stack/sheet/mineral/plasma,
@@ -3223,18 +3227,6 @@
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
 	},
 /area/awaymission/moonoutpost19/arrivals)
-"uH" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien/queen/large{
-	desc = "A gigantic alien who is in charge of the hive and all of its loyal servants.";
-	name = "alien queen";
-	pixel_x = -16;
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "uK" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/public/glass{
@@ -3338,6 +3330,16 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/closed/wall/r_wall/rust,
 /area/awaymission/moonoutpost19/research)
+"vo" = (
+/obj/machinery/power/smes{
+	charge = 3e+007;
+	input_level = 10000;
+	inputting = 0;
+	output_level = 15000
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/awaymission/moonoutpost19/research)
 "vp" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/closed/wall/r_wall,
@@ -3431,6 +3433,15 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/closed/wall/r_wall,
 /area/awaymission/moonoutpost19/research)
+"vH" = (
+/obj/structure/alien/weeds/node,
+/mob/living/basic/alien/drone{
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/mines)
 "vK" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -4690,13 +4701,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/research)
-"EZ" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_animal/hostile/alien,
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "Fc" = (
 /obj/machinery/light/floor,
 /obj/effect/turf_decal/stripes/line{
@@ -5004,13 +5008,6 @@
 	dir = 8
 	},
 /area/awaymission/moonoutpost19/research)
-"Ha" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien,
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "Hd" = (
 /obj/item/stack/rods,
 /obj/item/shard{
@@ -5143,6 +5140,15 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/research)
+"HW" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/drone{
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/mines)
 "HY" = (
 /obj/structure/sign/departments/science{
 	pixel_y = 32
@@ -5289,16 +5295,6 @@
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
 	},
 /area/awaymission/moonoutpost19/main)
-"Ja" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/hostile/alien/drone{
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "Jb" = (
 /obj/structure/fence/post{
 	dir = 4
@@ -5368,15 +5364,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/moonoutpost19/research)
-"Jw" = (
-/obj/structure/alien/weeds/node,
-/mob/living/simple_animal/hostile/alien/drone{
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "Jz" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
@@ -5502,15 +5489,6 @@
 "Ky" = (
 /turf/open/floor/iron/white/side,
 /area/awaymission/moonoutpost19/research)
-"KA" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien/drone{
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/mines)
 "KF" = (
 /obj/item/banner/command/mundane{
 	desc = "The banner of Central Command, impaled into the rock upon first landing on this moon.";
@@ -5583,6 +5561,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/syndicate)
+"Lu" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien,
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "LA" = (
 /obj/item/stack/ore/iron{
 	pixel_x = -3;
@@ -5626,6 +5611,15 @@
 	},
 /turf/open/floor/iron/white/corner,
 /area/awaymission/moonoutpost19/arrivals)
+"LO" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/drone{
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "LQ" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -5949,14 +5943,6 @@
 	temperature = 251
 	},
 /area/awaymission/moonoutpost19/arrivals)
-"NU" = (
-/mob/living/simple_animal/hostile/alien/drone{
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/main)
 "NW" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/wood{
@@ -6095,16 +6081,6 @@
 	temperature = 251
 	},
 /area/awaymission/moonoutpost19/syndicate)
-"OO" = (
-/obj/machinery/power/smes{
-	charge = 1.5e+006;
-	input_level = 10000;
-	inputting = 0;
-	output_level = 15000
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/awaymission/moonoutpost19/research)
 "OQ" = (
 /obj/structure/trap/cult,
 /obj/effect/decal/cleanable/blood/drip,
@@ -6832,6 +6808,16 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/awaymission/moonoutpost19/syndicate)
+"Tn" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/alien/drone{
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "Ts" = (
 /obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/siding/purple,
@@ -6916,6 +6902,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/arrivals)
+"Ua" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/sentinel,
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "Ud" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie,
@@ -6940,6 +6933,15 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/awaymission/moonoutpost19/research)
+"Ui" = (
+/obj/structure/alien/weeds/node,
+/mob/living/basic/alien/drone{
+	can_plant_weeds = 0
+	},
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "Uj" = (
 /obj/structure/cable,
 /obj/structure/fluff/tram_rail/end,
@@ -7009,15 +7011,6 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/moonoutpost19/research)
-"UI" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien/drone{
-	plants_off = 1
-	},
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/hive)
 "UO" = (
 /obj/structure/closet/crate/miningcar{
 	desc = "A mining cart. It's caked with old basalt and lunar debris.";
@@ -7119,6 +7112,13 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/arrivals)
+"VF" = (
+/obj/structure/alien/weeds/node,
+/mob/living/basic/alien,
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/hive)
 "VH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -26878,7 +26878,7 @@ AP
 fY
 fY
 AP
-UI
+LO
 fY
 bJ
 um
@@ -27391,7 +27391,7 @@ fY
 fY
 qA
 fY
-uH
+dS
 AO
 LY
 Gj
@@ -27645,7 +27645,7 @@ ac
 ac
 um
 bJ
-nz
+Ua
 fY
 fY
 fY
@@ -27907,7 +27907,7 @@ fY
 fY
 XO
 fY
-nz
+Ua
 bJ
 um
 ac
@@ -29209,7 +29209,7 @@ um
 um
 bJ
 AO
-Ja
+Tn
 fY
 um
 ac
@@ -29976,7 +29976,7 @@ ac
 um
 um
 fY
-Ha
+Lu
 fY
 bJ
 um
@@ -30510,7 +30510,7 @@ My
 My
 My
 My
-NU
+fm
 My
 My
 My
@@ -31497,7 +31497,7 @@ ae
 um
 bJ
 fY
-Ha
+Lu
 kj
 um
 um
@@ -31527,7 +31527,7 @@ ac
 dA
 dA
 My
-NU
+fm
 Wg
 My
 My
@@ -32275,7 +32275,7 @@ ac
 ac
 ac
 um
-UI
+LO
 um
 um
 bl
@@ -32285,7 +32285,7 @@ bl
 bl
 um
 fY
-Jw
+Ui
 um
 um
 um
@@ -32309,7 +32309,7 @@ My
 My
 My
 My
-NU
+fm
 My
 My
 My
@@ -33302,7 +33302,7 @@ ac
 um
 dz
 QA
-Ha
+Lu
 fY
 bJ
 qA
@@ -33848,7 +33848,7 @@ My
 My
 My
 My
-NU
+fm
 My
 My
 My
@@ -33929,7 +33929,7 @@ My
 My
 My
 eI
-OO
+vo
 op
 op
 Xr
@@ -34098,7 +34098,7 @@ vs
 My
 My
 My
-NU
+fm
 My
 My
 My
@@ -35387,7 +35387,7 @@ My
 My
 My
 My
-NU
+fm
 My
 My
 My
@@ -35878,7 +35878,7 @@ um
 um
 fY
 fY
-EZ
+VF
 fY
 fY
 um
@@ -36128,7 +36128,7 @@ ac
 ac
 um
 qA
-UI
+LO
 fY
 fY
 fY
@@ -36665,7 +36665,7 @@ My
 My
 My
 My
-NU
+fm
 Wg
 My
 My
@@ -38208,7 +38208,7 @@ My
 My
 My
 My
-NU
+fm
 My
 My
 My
@@ -40803,7 +40803,7 @@ LG
 dA
 Wg
 My
-NU
+fm
 dA
 ae
 ae
@@ -52420,7 +52420,7 @@ pS
 tb
 pS
 pS
-tN
+vH
 tb
 tb
 tb
@@ -55775,7 +55775,7 @@ nw
 nw
 nw
 nw
-KA
+HW
 pS
 pS
 pS
@@ -56807,7 +56807,7 @@ Oq
 Oq
 Oq
 nw
-KA
+HW
 pS
 zY
 tb
@@ -57054,7 +57054,7 @@ zY
 pS
 pS
 nw
-KA
+HW
 pS
 pS
 pS

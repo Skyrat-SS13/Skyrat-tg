@@ -15,6 +15,10 @@
 /obj/item/clothing/under/dress/skirt/skyrat	//Just so they can stay under TG's skirts in case code needs subtypes of them (also SDMM dropdown looks nicer like this)
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+	// TG gave these greyscales but ours don't get them yet
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_colors = null
 
 //TG's icons only have a dress.dmi, but that means its not ABC-sorted to be beside shorts_pants_shirts.dmi. So its skirts_dresses for us.
 
