@@ -98,7 +98,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
 
 	GLOB.shuttle_caller_list += src
-	AddComponent(/datum/component/gps, "Secured Communications Signal")
 
 /// Are we NOT a silicon, AND we're logged in as the captain?
 /obj/machinery/computer/communications/proc/authenticated_as_non_silicon_captain(mob/user)
@@ -445,6 +444,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			state = STATE_MAIN
 			playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
+			imprint_gps(gps_tag = "Encrypted Communications Channel")
+			
 		if ("toggleEmergencyAccess")
 			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
 				return

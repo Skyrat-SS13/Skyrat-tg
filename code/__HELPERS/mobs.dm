@@ -251,7 +251,22 @@ GLOBAL_LIST_EMPTY(species_list)
  *
  * Checks that `user` does not move, change hands, get stunned, etc. for the
  * given `delay`. Returns `TRUE` on success or `FALSE` on failure.
- * Interaction_key is the assoc key under which the do_after is capped, with max_interact_count being the cap. Interaction key will default to target if not set.
+ * 
+ * @param {mob} user - The mob performing the action.
+ * 
+ * @param {number} delay - The time in deciseconds. Use the SECONDS define for readability. `1 SECONDS` is 10 deciseconds.
+ * 
+ * @param {atom} target - The target of the action. This is where the progressbar will display.
+ * 
+ * @param {flag} timed_action_flags - Flags to control the behavior of the timed action.
+ * 
+ * @param {boolean} progress - Whether to display a progress bar / cogbar.
+ * 
+ * @param {datum/callback} extra_checks - Additional checks to perform before the action is executed.
+ * 
+ * @param {string} interaction_key - The assoc key under which the do_after is capped, with max_interact_count being the cap. Interaction key will default to target if not set.
+ * 
+ * @param {number} max_interact_count - The maximum amount of interactions allowed.
  */
 /proc/do_after(mob/user, delay, atom/target, timed_action_flags = NONE, progress = TRUE, datum/callback/extra_checks, interaction_key, max_interact_count = 1)
 	if(!user)
@@ -281,7 +296,8 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	var/datum/progressbar/progbar
 	if(progress)
-		progbar = new(user, delay, target || user)
+		if(user.client)
+			progbar = new(user, delay, target || user)
 
 	SEND_SIGNAL(user, COMSIG_DO_AFTER_BEGAN)
 
@@ -627,15 +643,15 @@ GLOBAL_LIST_EMPTY(species_list)
 		moblist += mob_to_sort
 	for(var/mob/dead/new_player/mob_to_sort in sortmob)
 		moblist += mob_to_sort
-	for(var/mob/living/simple_animal/slime/mob_to_sort in sortmob)
+	for(var/mob/living/basic/slime/mob_to_sort in sortmob)
 		moblist += mob_to_sort
 	for(var/mob/living/simple_animal/mob_to_sort in sortmob)
-		// We've already added slimes.
-		if(isslime(mob_to_sort))
-			continue
 		moblist += mob_to_sort
 	for(var/mob/living/basic/mob_to_sort in sortmob)
 		moblist += mob_to_sort
+		// We've already added slimes.
+		if(isslime(mob_to_sort))
+			continue
 	// SKYRAT EDIT START - SOULCATCHERS
 	for(var/mob/living/soulcatcher_soul/mob_to_sort in sortmob)
 		moblist += mob_to_sort
