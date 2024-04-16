@@ -624,13 +624,13 @@
 	switch(wire)
 		if(WIRE_HACK)
 			A.adjust_hacked(!A.hacked)
-			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 6 SECONDS)
 		if(WIRE_SHOCK)
 			A.shocked = !A.shocked
-			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 6 SECONDS)
 		if(WIRE_DISABLE)
 			A.disabled = !A.disabled
-			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 6 SECONDS)
 
 /datum/wires/ammo_workbench/on_cut(wire, mend, source)
 	var/obj/machinery/ammo_workbench/A = holder
