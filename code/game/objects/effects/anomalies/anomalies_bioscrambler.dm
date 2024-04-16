@@ -19,3 +19,56 @@
 	COOLDOWN_START(src, pulse_cooldown, pulse_delay)
 	for(var/mob/living/carbon/nearby in range(range, src))
 		nearby.bioscramble(name)
+<<<<<<< HEAD
+=======
+
+/obj/effect/anomaly/bioscrambler/move_anomaly()
+	update_target()
+	if (isnull(pursuit_target))
+		return ..()
+	var/turf/step_turf = get_step(src, get_dir(src, pursuit_target.resolve()))
+	if (!HAS_TRAIT(step_turf, TRAIT_CONTAINMENT_FIELD))
+		Move(step_turf)
+
+/// Select a new target if we need one
+/obj/effect/anomaly/bioscrambler/proc/update_target()
+	var/mob/living/current_target = pursuit_target?.resolve()
+	if (QDELETED(current_target))
+		pursuit_target = null
+	if (!isnull(pursuit_target) && prob(80))
+		return
+	var/mob/living/new_target = find_nearest_target()
+	if (isnull(new_target))
+		pursuit_target = null
+		return
+	if (new_target == current_target)
+		return
+	current_target = new_target
+	pursuit_target = WEAKREF(new_target)
+	new_target.ominous_nosebleed()
+
+/// Returns the closest conscious carbon on our z level or null if there somehow isn't one
+/obj/effect/anomaly/bioscrambler/proc/find_nearest_target()
+	var/closest_distance = INFINITY
+	var/mob/living/carbon/closest_target = null
+	for(var/mob/living/carbon/target in GLOB.player_list)
+		if (target.z != z)
+			continue
+		if (target.status_flags & GODMODE)
+			continue
+		if (target.stat >= UNCONSCIOUS)
+			continue // Don't just haunt a corpse
+		var/distance_from_target = get_dist(src, target)
+		if(distance_from_target >= closest_distance)
+			continue
+		closest_distance = distance_from_target
+		closest_target = target
+
+	return closest_target
+
+/// A bioscrambler anomaly subtype which does not pursue people, for purposes of a space ruin
+/obj/effect/anomaly/bioscrambler/docile
+
+/obj/effect/anomaly/bioscrambler/docile/update_target()
+	return
+>>>>>>> 9579eb338ab ([no gbp] Space Ruin bioscramblers shouldn't chase people around (#82649))
