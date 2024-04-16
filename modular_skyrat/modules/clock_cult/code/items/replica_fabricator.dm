@@ -1,4 +1,4 @@
-#define BRASS_POWER_COST 10
+#define BRASS_POWER_COST 10 JOULES
 #define REGULAR_POWER_COST (BRASS_POWER_COST / 2)
 
 /obj/item/clockwork/replica_fabricator
@@ -11,7 +11,7 @@
 	/// How much power this has. 5 generated per sheet inserted, one sheet of bronze costs 10, one floor tile costs 15, one wall costs 20
 	var/power = 0
 	/// How much power this can contain at most. By default, is 2 stacks of regular materials or 1 stack of brass
-	var/max_power = 500
+	var/max_power = 500 JOULES
 	/// List of things that the fabricator can build for the radial menu
 	var/static/list/crafting_possibilities = list(
 		"floor" = image(icon = 'icons/turf/floors.dmi', icon_state = "clockwork_floor"),
@@ -39,7 +39,7 @@
 /obj/item/clockwork/replica_fabricator/examine(mob/user)
 	. = ..()
 	if(IS_CLOCK(user))
-		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("W / ")][span_clockyellow("[max_power]")] [span_brass("W.")]"
+		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("J / ")][span_clockyellow("[max_power]")] [span_brass("J.")]"
 		. += span_brass("Use on brass to convert it into power.")
 		. += span_brass("Use on other materials to convert them into power, but less efficiently.")
 		. += span_brass("<b>Use</b> in-hand to select what to fabricate.")
@@ -65,7 +65,7 @@
 		return
 
 	if(power < selected_output.cost)
-		to_chat(user, span_clockyellow("[src] needs at least [selected_output.cost]W of power to create this."))
+		to_chat(user, span_clockyellow("[src] needs at least [display_energy(selected_output.cost)] of power to create this."))
 		return
 
 	var/obj/effect/temp_visual/ratvar/constructing_effect/effect = new(creation_turf, selected_output.creation_delay)
@@ -101,7 +101,7 @@
 		return
 
 	if(power < BRASS_POWER_COST)
-		to_chat(user, span_clockyellow("You need at least [BRASS_POWER_COST]W of power to fabricate bronze."))
+		to_chat(user, span_clockyellow("You need at least [display_energy(BRASS_POWER_COST)] of power to fabricate bronze."))
 		return
 
 	var/sheets = tgui_input_number(user, "How many sheets do you want to fabricate?", "Sheet Fabrication", 0, round(power / BRASS_POWER_COST), 0)
@@ -210,7 +210,7 @@
 /datum/replica_fabricator_output/proc/on_create(atom/created_atom, turf/creation_turf, mob/creator)
 	SHOULD_CALL_PARENT(TRUE)
 	playsound(creation_turf, 'modular_skyrat/modules/clock_cult/sound/machinery/integration_cog_install.ogg', 50, 1) // better sound?
-	to_chat(creator, span_clockyellow("You create \an [name] for [cost]W of power."))
+	to_chat(creator, span_clockyellow("You create \an [name] for [display_energy(cost)] of power."))
 
 
 /datum/replica_fabricator_output/brass_floor

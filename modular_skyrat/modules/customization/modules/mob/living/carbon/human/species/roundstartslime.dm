@@ -35,12 +35,12 @@
 	mutanttongue = /obj/item/organ/internal/tongue/jelly
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/slime/roundstart,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime/roundstart,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime/roundstart,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/slime/roundstart,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime/roundstart,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/jelly/slime/roundstart,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/jelly/slime/roundstart,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/jelly/slime/roundstart,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/jelly/slime/roundstart,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/jelly/slime/roundstart,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly/slime/roundstart,
 	)
 
 /datum/species/jelly/roundstartslime/create_pref_unique_perks()
