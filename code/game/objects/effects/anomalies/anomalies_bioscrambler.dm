@@ -19,8 +19,6 @@
 	COOLDOWN_START(src, pulse_cooldown, pulse_delay)
 	for(var/mob/living/carbon/nearby in range(range, src))
 		nearby.bioscramble(name)
-<<<<<<< HEAD
-=======
 
 /obj/effect/anomaly/bioscrambler/move_anomaly()
 	update_target()
@@ -71,4 +69,3 @@
 
 /obj/effect/anomaly/bioscrambler/docile/update_target()
 	return
->>>>>>> 9579eb338ab ([no gbp] Space Ruin bioscramblers shouldn't chase people around (#82649))
