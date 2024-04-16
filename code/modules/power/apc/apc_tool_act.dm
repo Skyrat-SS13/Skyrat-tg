@@ -1,6 +1,4 @@
 //attack with an item - open/close cover, insert cell, or (un)lock interface
-<<<<<<< HEAD
-=======
 
 /obj/machinery/power/apc/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	. = ..()
@@ -222,7 +220,6 @@
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
->>>>>>> 1443ef79d3d (Replaces a number of deciseconds into SECONDS (#82436))
 /obj/machinery/power/apc/crowbar_act(mob/user, obj/item/crowbar)
 	. = TRUE
 
@@ -417,7 +414,6 @@
 		var/obj/item/stock_parts/cell/crap/empty/C = new(src)
 		C.forceMove(src)
 		cell = C
-		chargecount = 0
 		balloon_alert(user, "power cell installed")
 		update_appearance()
 		return TRUE
