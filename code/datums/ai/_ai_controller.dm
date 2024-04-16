@@ -143,7 +143,22 @@ multiple modular subtrees with behaviors
 		return final_status
 
 	if(mob_pawn.stat == DEAD)
+<<<<<<< HEAD
 		final_status = AI_STATUS_OFF
+=======
+		if(ai_traits & CAN_ACT_WHILE_DEAD)
+			return AI_STATUS_ON
+		return AI_STATUS_OFF
+
+	var/turf/pawn_turf = get_turf(mob_pawn)
+#ifdef TESTING
+	if(!pawn_turf)
+		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
+#endif
+	if(!length(SSmobs.clients_by_zlevel[pawn_turf.z]))
+		return AI_STATUS_OFF
+	return AI_STATUS_ON
+>>>>>>> 37aad4720d5 (Reworks targeting behavior to fall back onto proximity monitors. Refactors ai cooldowns a bit (#82640))
 
 	return final_status
 
@@ -172,7 +187,6 @@ multiple modular subtrees with behaviors
 		return FALSE
 	return TRUE
 
-
 ///Runs any actions that are currently running
 /datum/ai_controller/process(seconds_per_tick)
 
@@ -200,7 +214,7 @@ multiple modular subtrees with behaviors
 		// Convert the current behaviour action cooldown to realtime seconds from deciseconds.current_behavior
 		// Then pick the max of this and the seconds_per_tick passed to ai_controller.process()
 		// Action cooldowns cannot happen faster than seconds_per_tick, so seconds_per_tick should be the value used in this scenario.
-		var/action_seconds_per_tick = max(current_behavior.action_cooldown * 0.1, seconds_per_tick)
+		var/action_seconds_per_tick = max(current_behavior.get_cooldown(src) * 0.1, seconds_per_tick)
 
 		if(current_behavior.behavior_flags & AI_BEHAVIOR_REQUIRE_MOVEMENT) //Might need to move closer
 			if(!current_movement_target)
@@ -256,6 +270,7 @@ multiple modular subtrees with behaviors
 			if(subtree.SelectBehaviors(src, seconds_per_tick) == SUBTREE_RETURN_FINISH_PLANNING)
 				break
 
+	SEND_SIGNAL(src, COMSIG_AI_CONTROLLER_PICKED_BEHAVIORS, current_behaviors, planned_behaviors)
 	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
 		if(LAZYACCESS(planned_behaviors, current_behavior))
 			continue
@@ -270,6 +285,12 @@ multiple modular subtrees with behaviors
 	if(ai_status == new_ai_status)
 		return FALSE //no change
 
+<<<<<<< HEAD
+=======
+	//remove old status, if we've got one
+	if(ai_status)
+		SSai_controllers.ai_controllers_by_status[ai_status] -= src
+>>>>>>> 37aad4720d5 (Reworks targeting behavior to fall back onto proximity monitors. Refactors ai cooldowns a bit (#82640))
 	ai_status = new_ai_status
 	switch(ai_status)
 		if(AI_STATUS_ON)
@@ -282,6 +303,9 @@ multiple modular subtrees with behaviors
 
 /datum/ai_controller/proc/PauseAi(time)
 	paused_until = world.time + time
+
+/datum/ai_controller/proc/modify_cooldown(datum/ai_behavior/behavior, new_cooldown)
+	behavior_cooldowns[behavior.type] = new_cooldown
 
 ///Call this to add a behavior to the stack.
 /datum/ai_controller/proc/queue_behavior(behavior_type, ...)
@@ -304,6 +328,7 @@ multiple modular subtrees with behaviors
 		behavior_args[behavior_type] = arguments
 	else
 		behavior_args -= behavior_type
+	SEND_SIGNAL(src, AI_CONTROLLER_BEHAVIOR_QUEUED(behavior_type), arguments)
 
 /datum/ai_controller/proc/ProcessBehavior(seconds_per_tick, datum/ai_behavior/behavior)
 	var/list/arguments = list(seconds_per_tick, src)
