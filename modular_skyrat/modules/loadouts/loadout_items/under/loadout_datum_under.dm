@@ -409,6 +409,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Treasure Hunter"
 	item_path = /obj/item/clothing/under/rank/civilian/curator/treasure_hunter
 
+/datum/loadout_item/under/miscellaneous/jester
+	name = "Jester Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/clown/jester
+
+/datum/loadout_item/under/miscellaneous/jesteralt
+	name = "Jeset Suit (Alt)"
+	item_path = /obj/item/clothing/under/rank/civilian/clown/jesteralt
+
 /datum/loadout_item/under/miscellaneous/overalls
 	name = "Overalls"
 	item_path = /obj/item/clothing/under/misc/overalls
