@@ -343,6 +343,15 @@
 	key = "clear"
 	key_third_person = "clears their throat"
 	message = "clears their throat."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/clear/get_sound(mob/living/user)
+	if(!iscarbon(user))
+		return
+	if(user.gender == MALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/male/clear_m.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/female/clear_f.ogg'
 
 // Avian revolution
 /datum/emote/living/bawk
@@ -414,6 +423,20 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
+
+/datum/emote/living/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "lets out a long howl."
+	emote_type = EMOTE_AUDIBLE
+	audio_cooldown = 30 SECONDS
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/howl.ogg'
+
+/datum/emote/living/howl/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+	if(!HAS_TRAIT(user, TRAIT_CANINE))
+		return FALSE
+	return ..()
 
 /datum/emote/living/baa
 	key = "baa"
