@@ -42,6 +42,7 @@
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
+/* SKYRAT EDIT CHANGE BEGIN - MOVED TO modular_skyrat/master_files/code/modules/power/tesla/coil.dm
 /obj/machinery/power/energy_accumulator/tesla_coil/RefreshParts()
 	. = ..()
 	var/power_multiplier = 0
@@ -50,6 +51,7 @@
 		power_multiplier += capacitor.tier
 		zap_cooldown -= (capacitor.tier * 20)
 	input_power_multiplier = max(1 * (power_multiplier / 8), 0.25) //Max out at 50% efficency.
+*/// SKYRAT EDIT CHANGE END
 
 /obj/machinery/power/energy_accumulator/tesla_coil/examine(mob/user)
 	. = ..()
