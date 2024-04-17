@@ -1,6 +1,6 @@
 /obj/machinery/power/apc
 	/// Has the APC been protected against arcing?
-	var/arc_shielded = FALSE
+	var/arc_shielded = TRUE
 	/// Should we be forcing arcing, assuming there isn't arc shielding?
 	var/force_arcing = FALSE
 
