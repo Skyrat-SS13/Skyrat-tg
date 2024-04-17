@@ -435,6 +435,7 @@
 	key_third_person = "pants"
 	message = "pants like a dog!"
 	audio_cooldown = 15 SECONDS
+	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/pant.ogg'
 
