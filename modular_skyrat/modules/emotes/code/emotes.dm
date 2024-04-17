@@ -430,6 +430,11 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/howl.ogg'
 
+/datum/emote/living/howl/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+	if(!HAS_TRAIT(user, TRAIT_CANINE))
+		return FALSE
+	return ..()
+
 /datum/emote/living/pant
 	key = "pant"
 	key_third_person = "pants"
@@ -438,11 +443,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/pant.ogg'
-
-/datum/emote/living/howl/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
-	if(!HAS_TRAIT(user, TRAIT_CANINE))
-		return FALSE
-	return ..()
 
 /datum/emote/living/baa
 	key = "baa"
