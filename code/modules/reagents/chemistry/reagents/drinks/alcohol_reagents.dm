@@ -57,7 +57,7 @@
 		if(HAS_TRAIT(drinker, TRAIT_ALCOHOL_TOLERANCE)) // we're an accomplished drinker
 			booze_power *= 0.7
 		if(HAS_TRAIT(drinker, TRAIT_LIGHT_DRINKER))
-			booze_power *= 2
+			booze_power *= 1.33 // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: booze_power *= 2
 
 		// water will dilute alcohol effects
 		var/total_water_volume = 0
@@ -73,12 +73,12 @@
 			booze_power *= (total_alcohol_volume / combined_dilute_volume)
 
 		// Volume, power, and server alcohol rate effect how quickly one gets drunk
-		drinker.adjust_drunk_effect(sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick * 0.25) // SKYRAT EDIT CHANGE - Alcohol Tolerance - Original: (sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick)
+		drinker.adjust_drunk_effect(booze_power * ALCOHOL_RATE * REM * seconds_per_tick) // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: (sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick)
 		if(boozepwr > 0)
 			var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
 			var/heavy_drinker_multiplier = (HAS_TRAIT(drinker, TRAIT_HEAVY_DRINKER) ? 0.5 : 1)
 			if (istype(liver))
-				if(liver.apply_organ_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/300))) // SKYRAT EDIT CHANGE - Alcohol Tolerance - Original: if((((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/150)))
+				if(liver.apply_organ_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/300))) // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: if((((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/150)))
 					return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/ethanol/expose_obj(obj/exposed_obj, reac_volume)
@@ -182,6 +182,7 @@
 	boozepwr = 45
 	ph = 6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	metabolized_traits = list(TRAIT_STIMULATED)
 
 /datum/reagent/consumable/ethanol/kahlua/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	. = ..()
@@ -230,6 +231,7 @@
 	overdose_threshold = 60
 	taste_description = "jitters and death"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	metabolized_traits = list(TRAIT_STIMULATED)
 
 /datum/reagent/consumable/ethanol/thirteenloko/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	. = ..()
@@ -716,7 +718,7 @@
 	. = ..()
 	to_chat(drinker, span_notice("You feel gentle warmth spread through your body!"))
 	light_holder = new(drinker)
-	light_holder.set_light(3, 0.7, "#FFCC00") //Tequila Sunrise makes you radiate dim light, like a sunrise!
+	light_holder.set_light(3, 0.7, COLOR_TANGERINE_YELLOW) //Tequila Sunrise makes you radiate dim light, like a sunrise!
 
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	if(QDELETED(light_holder))
@@ -746,7 +748,7 @@
 /datum/reagent/consumable/ethanol/beepsky_smash
 	name = "Beepsky Smash"
 	description = "Drink this and prepare for the LAW."
-	color = "#808000" // rgb: 128,128,0
+	color = COLOR_OLIVE // rgb: 128,128,0
 	boozepwr = 60 //THE FIST OF THE LAW IS STRONG AND HARD
 	quality = DRINK_GOOD
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
@@ -867,6 +869,7 @@
 	quality = DRINK_NICE
 	taste_description = "giving up on the day"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	metabolized_traits = list(TRAIT_STIMULATED)
 
 /datum/reagent/consumable/ethanol/margarita
 	name = "Margarita"
@@ -952,7 +955,7 @@
 /datum/reagent/consumable/ethanol/snowwhite
 	name = "Snow White"
 	description = "A cold refreshment."
-	color = "#FFFFFF" // rgb: 255, 255, 255
+	color = COLOR_WHITE // rgb: 255, 255, 255
 	boozepwr = 35
 	quality = DRINK_NICE
 	taste_description = "refreshing cold"
@@ -966,6 +969,7 @@
 	quality = DRINK_VERYGOOD
 	taste_description = "sweet tasting iron"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	metabolized_traits = list(TRAIT_STIMULATED)
 
 /datum/reagent/consumable/ethanol/demonsblood/on_mob_metabolize(mob/living/metabolizer)
 	. = ..()
@@ -1544,7 +1548,7 @@
 /datum/reagent/consumable/ethanol/triple_sec
 	name = "Triple Sec"
 	description = "A sweet and vibrant orange liqueur."
-	color = "#ffcc66"
+	color = COLOR_ICECREAM_PEACH
 	boozepwr = 30
 	taste_description = "a warm flowery orange taste which recalls the ocean air and summer wind of the caribbean"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1631,7 +1635,7 @@
 /datum/reagent/consumable/ethanol/bastion_bourbon
 	name = "Bastion Bourbon"
 	description = "Soothing hot herbal brew with restorative properties. Hints of citrus and berry flavors."
-	color = "#00FFFF"
+	color = COLOR_CYAN
 	boozepwr = 30
 	quality = DRINK_FANTASTIC
 	taste_description = "hot herbal brew with a hint of fruit"
@@ -1673,7 +1677,7 @@
 /datum/reagent/consumable/ethanol/squirt_cider
 	name = "Squirt Cider"
 	description = "Fermented squirt extract with a nose of stale bread and ocean water. Whatever a squirt is."
-	color = "#FF0000"
+	color = COLOR_RED
 	boozepwr = 40
 	taste_description = "stale bread with a staler aftertaste"
 	nutriment_factor = 2
@@ -1947,7 +1951,7 @@
 /datum/reagent/consumable/ethanol/fruit_wine
 	name = "Fruit Wine"
 	description = "A wine made from grown plants."
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	boozepwr = 35
 	quality = DRINK_GOOD
 	taste_description = "bad coding"
@@ -2410,7 +2414,7 @@
 	name = "Triumphal Arch"
 	description = "A drink celebrating the Lizard Empire and its military victories. It's popular at bars on Unification Day."
 	boozepwr = 60
-	color = "#FFD700"
+	color = COLOR_GOLD
 	quality = DRINK_FANTASTIC
 	taste_description = "victory"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -2628,7 +2632,7 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
-		stomach.adjust_charge(reac_volume * 3)
+		stomach.adjust_charge(reac_volume * 0.003 * STANDARD_CELL_CHARGE)
 
 /datum/reagent/consumable/ethanol/telepole
 	name = "Telepole"
@@ -2648,7 +2652,7 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
-		stomach.adjust_charge(reac_volume * 2)
+		stomach.adjust_charge(reac_volume * 0.002 * STANDARD_CELL_CHARGE)
 
 /datum/reagent/consumable/ethanol/pod_tesla
 	name = "Pod Tesla"
@@ -2675,7 +2679,7 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
-		stomach.adjust_charge(reac_volume * 5)
+		stomach.adjust_charge(reac_volume * 0.005 * STANDARD_CELL_CHARGE)
 
 // Welcome to the Blue Room Bar and Grill, home to Mars' finest cocktails
 /datum/reagent/consumable/ethanol/rice_beer
@@ -2876,6 +2880,7 @@
 	quality = DRINK_VERYGOOD
 	taste_description = "coconut coffee"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	metabolized_traits = list(TRAIT_STIMULATED)
 
 /datum/reagent/consumable/ethanol/blue_hawaiian //pineapple juice, lemon juice, coconut rum, blue curacao
 	name = "Blue Hawaiian"

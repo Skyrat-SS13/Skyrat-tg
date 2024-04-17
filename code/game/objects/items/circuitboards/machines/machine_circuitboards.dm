@@ -79,7 +79,6 @@
 	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
 
-
 /obj/item/circuitboard/machine/telecomms/broadcaster
 	name = "Subspace Broadcaster"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
@@ -525,9 +524,11 @@
 /obj/item/circuitboard/machine/reagentgrinder
 	name = "All-In-One Grinder"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
-	build_path = /obj/machinery/reagentgrinder/constructed
+	build_path = /obj/machinery/reagentgrinder
 	req_components = list(
-		/datum/stock_part/servo = 1)
+		/datum/stock_part/servo = 1,
+		/datum/stock_part/matter_bin = 1,
+	)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/smartfridge
@@ -666,6 +667,7 @@
 		/obj/machinery/vending/imported/tiziran = "Tiziran Imported Delicacies", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported/yangyu = "Fudobenda", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/security = "Armadyne Peacekeeper Equipment Vendor", //SKYRAT EDIT CHANGE - SEC_HUAL - ORIGINAL: /obj/machinery/vending/security = "SecTech",
+		/obj/machinery/vending/deforest_medvend = "DeForest Med-Vend", //SKYRAT PORT ADDITION
 	)
 
 /obj/item/circuitboard/machine/vendor/screwdriver_act(mob/living/user, obj/item/tool)
@@ -1119,6 +1121,19 @@
 	build_path = /obj/machinery/rnd/production/techfab/department/security
 
 //Service
+/obj/item/circuitboard/machine/photobooth
+	name = "Photobooth"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/photobooth
+	req_components = list(
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/servo = 1,
+	)
+
+/obj/item/circuitboard/machine/photobooth/security
+	name = "Security Photobooth"
+	greyscale_colors = CIRCUIT_COLOR_SECURITY
+	build_path = /obj/machinery/photobooth/security
 
 /obj/item/circuitboard/machine/biogenerator
 	name = "Biogenerator"

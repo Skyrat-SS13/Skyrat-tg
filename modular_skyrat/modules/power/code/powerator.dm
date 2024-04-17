@@ -54,9 +54,9 @@
 	idle_power_usage = 100
 
 	/// the current amount of power that we are trying to process
-	var/current_power = 10000
-	/// the max amount of power that can be sent per process, from 100000 (t1) to 10000000 (t4)
-	var/max_power = 100000
+	var/current_power = 10 KILO WATTS
+	/// the max amount of power that can be sent per process, from 100 KW (t1) to 10000 KW (t4)
+	var/max_power = 100 KILO WATTS
 	/// how much the current_power is divided by to determine the profit
 	var/divide_ratio = 0.00001
 	/// the attached cable to the machine
@@ -103,10 +103,10 @@
 	. = ..()
 
 	var/efficiency = -2 //set to -2 so that tier 1 parts do nothing
-	max_power = 100000
+	max_power = 100 KILO WATTS
 	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
 		efficiency += laser_part.tier
-	max_power += (efficiency * 1650000)
+	max_power += (efficiency * 1650 KILO WATTS)
 
 	efficiency = -2
 	divide_ratio = 0.00001
@@ -166,9 +166,9 @@
 
 /obj/machinery/powerator/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	current_power = tgui_input_number(user, "How much power would you like to draw? Max: [display_power(max_power)]", "Power Draw", current_power, max_power, 0)
+	current_power = tgui_input_number(user, "How much power (in Watts) would you like to draw? Max: [display_power(max_power)]", "Power Draw", current_power, max_power, 0)
 	if(isnull(current_power))
-		current_power = 10000
+		current_power = 10 KILO WATTS
 		return
 
 /obj/machinery/powerator/screwdriver_act(mob/living/user, obj/item/tool)
