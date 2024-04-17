@@ -46,6 +46,8 @@ multiple modular subtrees with behaviors
 
 	///The idle behavior this AI performs when it has no actions.
 	var/datum/idle_behavior/idle_behavior = null
+	///our current cell grid
+	var/datum/cell_tracker/our_cells
 
 	// Movement related things here
 	///Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.
@@ -70,6 +72,7 @@ multiple modular subtrees with behaviors
 /datum/ai_controller/Destroy(force)
 	set_ai_status(AI_STATUS_OFF)
 	UnpossessPawn(FALSE)
+	our_cells = null
 	set_movement_target(type, null)
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
@@ -123,13 +126,69 @@ multiple modular subtrees with behaviors
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, PROC_REF(on_sentience_gained))
 	RegisterSignal(pawn, COMSIG_QDELETING, PROC_REF(on_pawn_qdeleted))
 
+	our_cells = new(interesting_dist, interesting_dist, 1)
+	set_new_cells()
+
+	RegisterSignal(pawn, COMSIG_MOVABLE_MOVED, PROC_REF(update_grid))
+
+/datum/ai_controller/proc/update_grid(datum/source, datum/spatial_grid_cell/new_cell)
+	SIGNAL_HANDLER
+
+	set_new_cells()
+
+/datum/ai_controller/proc/set_new_cells()
+
+	var/turf/our_turf = get_turf(pawn)
+
+	if(isnull(our_turf))
+		return
+
+	var/list/cell_collections = our_cells.recalculate_cells(our_turf)
+
+	for(var/datum/old_grid as anything in cell_collections[2])
+		UnregisterSignal(old_grid, list(SPATIAL_GRID_CELL_ENTERED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), SPATIAL_GRID_CELL_EXITED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS)))
+
+	for(var/datum/spatial_grid_cell/new_grid as anything in cell_collections[1])
+		RegisterSignal(new_grid, SPATIAL_GRID_CELL_ENTERED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), PROC_REF(on_client_enter))
+		RegisterSignal(new_grid, SPATIAL_GRID_CELL_EXITED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), PROC_REF(on_client_exit))
+
+	recalculate_idle()
+
+/datum/ai_controller/proc/should_idle()
+	if(!can_idle)
+		return FALSE
+	for(var/datum/spatial_grid_cell/grid as anything in our_cells.member_cells)
+		if(length(grid.client_contents))
+			return FALSE
+	return TRUE
+
+/datum/ai_controller/proc/recalculate_idle()
+	if(ai_status == AI_STATUS_OFF)
+		return
+	if(should_idle())
+		set_ai_status(AI_STATUS_IDLE)
+
+/datum/ai_controller/proc/on_client_enter(datum/source, atom/target)
+	SIGNAL_HANDLER
+
+	if(ai_status == AI_STATUS_IDLE)
+		set_ai_status(AI_STATUS_ON)
+
+/datum/ai_controller/proc/on_client_exit(datum/source, datum/exited)
+	SIGNAL_HANDLER
+
+	recalculate_idle()
+
 /// Sets the AI on or off based on current conditions, call to reset after you've manually disabled it somewhere
 /datum/ai_controller/proc/reset_ai_status()
 	set_ai_status(get_expected_ai_status())
 
 /// Returns what the AI status should be based on current conditions.
 /datum/ai_controller/proc/get_expected_ai_status()
+<<<<<<< HEAD
 	var/final_status = AI_STATUS_ON
+=======
+>>>>>>> f01035fb27c (ai controllers use cell trackers to know when to idle (#82691))
 
 	if (!ismob(pawn))
 		return final_status
@@ -145,7 +204,41 @@ multiple modular subtrees with behaviors
 	if(mob_pawn.stat == DEAD)
 		final_status = AI_STATUS_OFF
 
+<<<<<<< HEAD
 	return final_status
+=======
+	var/turf/pawn_turf = get_turf(mob_pawn)
+#ifdef TESTING
+	if(!pawn_turf)
+		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
+#endif
+	if(!length(SSmobs.clients_by_zlevel[pawn_turf.z]))
+		return AI_STATUS_OFF
+	if(should_idle())
+		return AI_STATUS_IDLE
+	return AI_STATUS_ON
+
+/datum/ai_controller/proc/get_current_turf()
+	var/mob/living/mob_pawn = pawn
+	var/turf/pawn_turf = get_turf(mob_pawn)
+	to_chat(world, "[pawn_turf]")
+
+///Called when the AI controller pawn changes z levels, we check if there's any clients on the new one and wake up the AI if there is.
+/datum/ai_controller/proc/on_changed_z_level(atom/source, turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	SIGNAL_HANDLER
+	var/mob/mob_pawn = pawn
+	if((mob_pawn?.client && !continue_processing_when_client))
+		return
+	if(old_turf)
+		SSai_controllers.ai_controllers_by_zlevel[old_turf.z] -= src
+	if(new_turf)
+		SSai_controllers.ai_controllers_by_zlevel[new_turf.z] += src
+		var/new_level_clients = SSmobs.clients_by_zlevel[new_turf.z].len
+		if(new_level_clients)
+			set_ai_status(AI_STATUS_IDLE)
+		else
+			set_ai_status(AI_STATUS_OFF)
+>>>>>>> f01035fb27c (ai controllers use cell trackers to know when to idle (#82691))
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)

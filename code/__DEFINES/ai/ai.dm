@@ -9,6 +9,12 @@
 #define AI_MAX_PATH_LENGTH 30 // 30 is possibly overkill since by default we lose interest after 14 tiles of distance, but this gives wiggle room for weaving around obstacles
 #define AI_BOT_PATH_LENGTH 150
 
+<<<<<<< HEAD
+=======
+// How far should we, by default, be looking for interesting things to de-idle?
+#define AI_DEFAULT_INTERESTING_DIST 10
+
+>>>>>>> f01035fb27c (ai controllers use cell trackers to know when to idle (#82691))
 ///Cooldown on planning if planning failed last time
 
 #define AI_FAILED_PLANNING_COOLDOWN (1.5 SECONDS)
