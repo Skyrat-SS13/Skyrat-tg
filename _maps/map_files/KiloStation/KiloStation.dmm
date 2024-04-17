@@ -23448,7 +23448,7 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /mob/living/basic/bot/cleanbot/medbay{
-	maints_access_required = list(22);
+	req_one_access = list(22);
 	name = "Deacon Scrubsy"
 	},
 /turf/open/floor/iron/smooth_large,
@@ -30010,6 +30010,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/secure_safe/caps_spare,
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "jKz" = (
@@ -33507,7 +33508,7 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/spawner/random/structure/crate,
 /mob/living/basic/chicken{
-	habitable_atmos = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=1,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
+	habitable_atmos = null;
 	desc = "A timeless classic.";
 	name = "Kentucky"
 	},
@@ -39133,9 +39134,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/computer/department_orders/security{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
 /turf/open/floor/iron/dark,
 /area/station/security/office)
@@ -39992,9 +39990,6 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central)
 "nan" = (
-/obj/machinery/computer/department_orders/engineering{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "naw" = (
@@ -41754,11 +41749,6 @@
 /area/station/cargo/storage)
 "nFN" = (
 /obj/machinery/igniter/incinerator_ordmix,
-/mob/living/basic/chicken{
-	habitable_atmos = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=1,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
-	desc = "A timeless classic.";
-	name = "Kentucky"
-	},
 /turf/open/floor/engine/vacuum,
 /area/station/science/ordnance/burnchamber)
 "nFT" = (
@@ -45578,7 +45568,6 @@
 /obj/structure/table,
 /obj/item/healthanalyzer,
 /obj/item/hand_labeler,
-/obj/structure/secure_safe/caps_spare/directional/north,
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 1
 	},
@@ -54007,6 +53996,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
+/obj/item/piggy_bank/vault,
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
@@ -61804,9 +61794,6 @@
 /area/station/medical/chemistry)
 "ugG" = (
 /obj/structure/cable,
-/obj/machinery/computer/department_orders/service{
-	dir = 4
-	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -63470,9 +63457,6 @@
 /obj/effect/turf_decal/trimline/brown/filled/end{
 	dir = 4
 	},
-/obj/machinery/computer/department_orders/science{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "uJN" = (
@@ -64814,7 +64798,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
 "vhx" = (
-/mob/living/simple_animal/slime,
+/mob/living/basic/slime,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "vhK" = (
@@ -69736,9 +69720,6 @@
 	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/computer/department_orders/medical{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4

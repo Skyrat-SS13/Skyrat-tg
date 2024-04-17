@@ -418,7 +418,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				user.balloon_alert(user, "mop is full!")
 				return
-			mop.reagents.remove_any(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
+			mop.reagents.remove_all(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			mop.reagents.trans_to(src, mop.reagents.total_volume, transferred_by = user)
 			user.balloon_alert(user, "mop squeezed")
 		else
@@ -501,7 +501,7 @@
 			var/picked_option = show_radial_menu(user, src, choose_options, radius = 38, require_near = TRUE)
 			if(grinded && in_range(src, user) && user.is_holding(I) && picked_option)
 				to_chat(user, span_notice("You start grinding..."))
-				if(do_after(user, 25, target = src))
+				if(do_after(user, 2.5 SECONDS, target = src))
 					user.adjustStaminaLoss(40)
 					switch(picked_option)
 						if("Juice")
