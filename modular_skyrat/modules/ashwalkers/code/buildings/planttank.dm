@@ -107,7 +107,7 @@
 	deconstruct()
 	return TRUE
 
-/obj/structure/plant_tank/deconstruct(disassembled)
+/obj/structure/plant_tank/atom_deconstruct(disassembled)
 	var/target_turf = get_turf(src)
 	for(var/loop in 1 to 4)
 		new /obj/item/stack/sheet/glass(target_turf)

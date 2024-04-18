@@ -53,7 +53,7 @@
 	deconstruct(TRUE)
 	return TRUE
 
-/obj/structure/reagent_anvil/deconstruct(disassembled = TRUE)
+/obj/structure/reagent_anvil/atom_deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 
