@@ -24,7 +24,7 @@
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/structure/rack/wooden/deconstruct(disassembled = TRUE)
+/obj/structure/rack/wooden/atom_deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
 	return ..()
 
@@ -47,7 +47,7 @@
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
+/obj/structure/closet/crate/wooden/storage_barrel/atom_deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
 	return ..()
 

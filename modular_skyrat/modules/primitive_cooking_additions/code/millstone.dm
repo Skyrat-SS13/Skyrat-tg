@@ -44,7 +44,7 @@
 	drop_everything_contained()
 	return ..()
 
-/obj/structure/millstone/deconstruct(disassembled)
+/obj/structure/millstone/atom_deconstruct(disassembled)
 	var/obj/item/stack/sheet/mineral/stone = new (drop_location())
 	stone.amount = 6
 	stone.update_appearance(UPDATE_ICON)

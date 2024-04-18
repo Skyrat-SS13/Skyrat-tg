@@ -200,7 +200,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	var/boss_mob = /mob/living/basic/alien/queen/large
 	var/loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
 
-/obj/structure/spawner/tarkon_xenos/deconstruct(disassembled)
+/obj/structure/spawner/tarkon_xenos/atom_deconstruct(disassembled)
 	var/obj/effect/nest_break/nest = new /obj/effect/nest_break(loc)
 	nest.loot_drop = loot_drop
 	nest.boss_mob = boss_mob
