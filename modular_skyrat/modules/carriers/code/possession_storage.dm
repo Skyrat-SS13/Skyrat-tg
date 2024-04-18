@@ -1,5 +1,5 @@
 /// This item holds all of the items that someone has when anything is removed inside of a carrier.
-/obj/item/item_box
+/obj/item/carrier_box
 	name = "Storage Box"
 	desc = "Holds items for those that are unable to hold them."
 	icon = 'icons/obj/storage/box.dmi'
@@ -16,7 +16,7 @@
 	/// What ckey is allowed to open this box?
 	var/allowed_ckey = ""
 
-/obj/item/item_box/attack_self(mob/user, modifiers)
+/obj/item/carrier_box/attack_self(mob/user, modifiers)
 	if(!istype(user))
 		return
 

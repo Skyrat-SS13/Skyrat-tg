@@ -95,10 +95,10 @@
 	if(!istype(parent_carrier) || !istype(target_human) || !target_human.ckey)
 		return FALSE
 
-	var/obj/item/item_box/current_box = parent_carrier.linked_item_boxes[target_human.ckey]
+	var/obj/item/carrier_box/current_box = parent_carrier.linked_carrier_boxes[target_human.ckey]
 	if(!istype(current_box))
 		current_box = new (parent_carrier.parent) // Put it in the object the parent carrier is parented to.
-		parent_carrier.linked_item_boxes[target_human.ckey] = current_box
+		parent_carrier.linked_carrier_boxes[target_human.ckey] = current_box
 		current_box.ckey_locked = FALSE
 
 	if(!istype(target_human))

@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What is the type of room that we want to create?
 	var/type_of_room_to_create = /datum/carrier_room
 	/// What items if any are stored inside of this component?
-	var/list/linked_item_boxes = list()
+	var/list/linked_carrier_boxes = list()
 
 /datum/component/carrier/New()
 	. = ..()
@@ -216,15 +216,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /// If we have any item box for the mob with the associated ckey, expel the item onto the floor.
-/datum/component/carrier/proc/remove_item_box(ckey_to_check)
-	if(!ckey_to_check || !linked_item_boxes[ckey_to_check])
+/datum/component/carrier/proc/remove_carrier_box(ckey_to_check)
+	if(!ckey_to_check || !linked_carrier_boxes[ckey_to_check])
 		return FALSE
 
-	var/obj/item/item_box/found_box = linked_item_boxes[ckey_to_check]
+	var/obj/item/carrier_box/found_box = linked_carrier_boxes[ckey_to_check]
 	if(!istype(found_box))
 		return FALSE
 
-	linked_item_boxes[ckey_to_check] = null
+	linked_carrier_boxes[ckey_to_check] = null
 	found_box.forceMove(get_turf(parent))
 	return TRUE
 
@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/turf/current_tile = get_turf(parent_carrier.parent)
 	mob_to_remove.forceMove(current_tile)
 
-	parent_carrier.remove_item_box(mob_to_remove.ckey)
+	parent_carrier.remove_carrier_box(mob_to_remove.ckey)
 	soul_to_remove.clear_fullscreen("carrier", FALSE)
 
 	REMOVE_TRAIT(mob_to_remove, TRAIT_FLOORED, TRAIT_CARRIER)
