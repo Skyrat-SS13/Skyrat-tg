@@ -35,7 +35,7 @@ LINEN BINS
 /obj/item/bedsheet/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/surgery_initiator)
-	AddElement(/datum/element/bed_tuckable, 0, 0, 0)
+	AddElement(/datum/element/bed_tuckable, mapload, 0, 0, 0)
 	if(bedsheet_type == BEDSHEET_DOUBLE)
 		stack_amount *= 2
 		dying_key = DYE_REGISTRY_DOUBLE_BEDSHEET
@@ -609,8 +609,6 @@ LINEN BINS
 	..()
 
 /obj/structure/bedsheetbin/screwdriver_act(mob/living/user, obj/item/tool)
-	if(obj_flags & NO_DECONSTRUCTION)
-		return FALSE
 	if(amount)
 		to_chat(user, span_warning("The [src] must be empty first!"))
 		return ITEM_INTERACT_SUCCESS

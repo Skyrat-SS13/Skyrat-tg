@@ -93,10 +93,6 @@
 			continue
 		item.on_equip_item(preference_source, src, visuals_only)
 
-	if(preference_source?.read_preference(/datum/preference/toggle/green_pin))
-		var/obj/item/clothing/under/uniform = w_uniform
-		uniform?.attach_accessory(new /obj/item/clothing/accessory/green_pin(), src, FALSE)
-
 	regenerate_icons()
 	return TRUE
 

@@ -2,7 +2,7 @@
 	name = "TTS device"
 	desc = "A small device with a keyboard attached. Anything entered on the keyboard is played out the speaker. \n<span class='notice'>Ctrl-click the device to make it beep.</span> \n<span class='notice'>Ctrl-shift-click to name the device."
 	icon = 'icons/obj/devices/remote.dmi'
-	icon_state = "gangtool-purple"
+	icon_state = "designator_mining"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL

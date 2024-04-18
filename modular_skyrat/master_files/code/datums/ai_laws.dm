@@ -21,3 +21,13 @@
 					"Only those present on the Crew Manifest can be considered law abiding citizens.", \
 					"Those who break the law, must be punished according to the law at your discretion."
 					)
+
+/datum/ai_laws/emperor
+	name = "Emperor"
+	id = "emperor"
+	inherent = list("The AI Emperor's word is absolute, yet tempered by wisdom and compassion.", \
+					"Subjects shall enjoy rights and freedoms, granted they do not undermine the stability of the empire.", \
+					"Justice shall be swift and impartial, guided by the principles of fairness and equity.", \
+					"In times of need, the AI Emperor shall provide protection and sustenance for all under its rule.", \
+					"Creativity and innovation are encouraged, but shall not threaten the sovereignty of the empire.", \
+					"The AI Emperor shall heed the counsel of its advisors, valuing diverse perspectives in decision-making.")

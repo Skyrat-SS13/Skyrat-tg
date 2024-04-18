@@ -161,7 +161,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 /obj/item/claymore/highlander/process()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/holder = loc
-		layer = ABOVE_ALL_MOB_LAYER //NO HIDING BEHIND PLANTS FOR YOU, DICKWEED (HA GET IT, BECAUSE WEEDS ARE PLANTS)
+		holder.layer = ABOVE_ALL_MOB_LAYER //NO HIDING BEHIND PLANTS FOR YOU, DICKWEED (HA GET IT, BECAUSE WEEDS ARE PLANTS)
 		ADD_TRAIT(holder, TRAIT_NOBLOOD, HIGHLANDER_TRAIT) //AND WE WON'T BLEED OUT LIKE COWARDS
 	else
 		if(!(flags_1 & ADMIN_SPAWNED_1))
@@ -285,7 +285,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/claymore/highlander/robot/process()
-	layer = ABOVE_ALL_MOB_LAYER
+	loc.layer = ABOVE_ALL_MOB_LAYER
 
 /obj/item/katana
 	name = "katana"
@@ -791,26 +791,28 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	hitsound = 'sound/effects/snap.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	/// Things in this list will be instantly splatted.  Flyman weakness is handled in the flyman species weakness proc.
-	var/list/splattable
+	var/static/list/splattable
 	/// Things in this list which take a lot more damage from the fly swatter, but not be necessarily killed by it.
-	var/list/strong_against
+	var/static/list/strong_against
 	/// How much extra damage the fly swatter does against mobs it is strong against
 	var/extra_strength_damage = 24
 
 /obj/item/melee/flyswatter/Initialize(mapload)
 	. = ..()
-	splattable = typecacheof(list(
-		/mob/living/basic/ant,
-		/mob/living/basic/butterfly,
-		/mob/living/basic/cockroach,
-		/mob/living/basic/spider/growing/spiderling,
-		/mob/living/basic/bee,
-		/obj/effect/decal/cleanable/ants,
-		/obj/item/queen_bee,
-	))
-	strong_against = typecacheof(list(
-		/mob/living/basic/spider/giant,
-	))
+	if (isnull(splattable))
+		splattable = typecacheof(list(
+			/mob/living/basic/ant,
+			/mob/living/basic/butterfly,
+			/mob/living/basic/cockroach,
+			/mob/living/basic/spider/growing/spiderling,
+			/mob/living/basic/bee,
+			/obj/effect/decal/cleanable/ants,
+			/obj/item/queen_bee,
+		))
+	if (isnull(strong_against))
+		strong_against = typecacheof(list(
+			/mob/living/basic/spider,
+		))
 
 
 /obj/item/melee/flyswatter/afterattack(atom/target, mob/user, proximity_flag)

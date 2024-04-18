@@ -211,7 +211,7 @@
 /obj/item/clothing/mask/facescarf
 	name = "facescarf"
 	desc = "Cover your face like in the cowboy movies. It also has breathtube so you can wear it everywhere!"
-	actions_types = /datum/action/item_action/adjust
+	actions_types = list(/datum/action/item_action/adjust)
 	icon_state = "facescarf"
 	inhand_icon_state = "greyscale_facescarf"
 	alternate_worn_layer = BACK_LAYER
@@ -229,6 +229,9 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/facescarf/inhands_left
 	greyscale_config_inhand_right = /datum/greyscale_config/facescarf/inhands_right
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/mask/facescarf/attack_self(mob/user)
+	adjustmask(user)
 
 /obj/item/clothing/mask/facescarf/AltClick(mob/user)
 	..()

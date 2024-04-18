@@ -57,13 +57,13 @@
  *
  *
  *     Default definition uses 'use_power', 'power_channel', 'active_power_usage',
- *     'idle_power_usage', 'powered()', and 'use_power()' implement behavior.
+ *     'idle_power_usage', 'powered()', and 'use_energy()' implement behavior.
  *
  *  powered(chan = -1)         'modules/power/power.dm'
  *     Checks to see if area that contains the object has power available for power
  *     channel given in 'chan'. -1 defaults to power_channel
  *
- *  use_power(amount, chan=-1)   'modules/power/power.dm'
+ *  use_energy(amount, chan=-1)   'modules/power/power.dm'
  *     Deducts 'amount' from the power channel 'chan' of the area that contains the object.
  *
  *  power_change()               'modules/power/power.dm'
@@ -191,7 +191,7 @@
 	update_current_power_usage()
 	setup_area_power_relationship()
 
-/obj/machinery/Destroy()
+/obj/machinery/Destroy(force)
 	SSmachines.unregister_machine(src)
 	end_processing()
 
@@ -304,7 +304,7 @@
 	. = ..()
 	if(!use_power || machine_stat || (. & EMP_PROTECT_SELF))
 		return
-	use_power(7500/severity)
+	use_energy(7.5 KILO JOULES / severity)
 	new /obj/effect/temp_visual/emp(loc)
 
 	if(!prob(70/severity))
@@ -593,10 +593,10 @@
 	if(!isliving(user))
 		return FALSE //no ghosts allowed, sorry
 
-	if(!issilicon(user) && !user.can_hold_items())
+	if(!HAS_SILICON_ACCESS(user) && !user.can_hold_items())
 		return FALSE //spiders gtfo
 
-	if(issilicon(user)) // If we are a silicon, make sure the machine allows silicons to interact with it
+	if(HAS_SILICON_ACCESS(user)) // If we are a silicon, make sure the machine allows silicons to interact with it
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
 
@@ -657,7 +657,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 //Return a non FALSE value to interrupt attack_hand propagation to subtypes.
-/obj/machinery/interact(mob/user, special_state)
+/obj/machinery/interact(mob/user)
 	if(interaction_flags_machine & INTERACT_MACHINE_SET_MACHINE)
 		user.set_machine(src)
 	update_last_used(user)
@@ -666,7 +666,7 @@
 /obj/machinery/ui_act(action, list/params)
 	add_fingerprint(usr)
 	update_last_used(usr)
-	if(isAI(usr) && !GLOB.cameranet.checkTurfVis(get_turf(src))) //We check if they're an AI specifically here, so borgs can still access off-camera stuff.
+	if(HAS_AI_ACCESS(usr) && !GLOB.cameranet.checkTurfVis(get_turf(src))) //We check if they're an AI specifically here, so borgs can still access off-camera stuff.
 		to_chat(usr, span_warning("You can no longer connect to this device!"))
 		return FALSE
 	return ..()
@@ -699,8 +699,8 @@
 			hit_with_what_noun += plural_s(hit_with_what_noun) // hit with "their hands"
 
 	user.visible_message(
-		span_danger("[user] smashes [src] with [user.p_their()] [hit_with_what_noun][damage ? "." : ", without leaving a mark!"]"),
-		span_danger("You smash [src] with your [hit_with_what_noun][damage ? "." : ", without leaving a mark!"]"),
+		span_danger("[user] smashes [src] with [user.p_their()] [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
+		span_danger("You smash [src] with your [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
 		span_hear("You hear a [damage ? "smash" : "thud"]."),
 		COMBAT_MESSAGE_RANGE,
 	)
@@ -799,7 +799,7 @@
 	SEND_SIGNAL(src, COMSIG_MACHINERY_REFRESH_PARTS)
 
 /obj/machinery/proc/default_pry_open(obj/item/crowbar, close_after_pry = FALSE, open_density = FALSE, closed_density = TRUE)
-	. = !(state_open || panel_open || is_operational || (obj_flags & NO_DECONSTRUCTION)) && crowbar.tool_behaviour == TOOL_CROWBAR
+	. = !(state_open || panel_open || is_operational) && crowbar.tool_behaviour == TOOL_CROWBAR
 	if(!.)
 		return
 	crowbar.play_tool_sound(src, 50)
@@ -809,23 +809,23 @@
 		close_machine(density_to_set = closed_density)
 
 /obj/machinery/proc/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel = 0, custom_deconstruct = FALSE)
-	. = (panel_open || ignore_panel) && !(obj_flags & NO_DECONSTRUCTION) && crowbar.tool_behaviour == TOOL_CROWBAR
+	. = (panel_open || ignore_panel) && crowbar.tool_behaviour == TOOL_CROWBAR
 	if(!. || custom_deconstruct)
 		return
 	crowbar.play_tool_sound(src, 50)
 	deconstruct(TRUE)
 
-/obj/machinery/deconstruct(disassembled = TRUE)
+/obj/machinery/handle_deconstruct(disassembled = TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	if(obj_flags & NO_DECONSTRUCTION)
-		dump_contents() //drop everything inside us
-		return ..() //Just delete us, no need to call anything else.
+		dump_inventory_contents() //drop stuff we consider important
+		return //Just delete us, no need to call anything else.
 
 	on_deconstruction(disassembled)
 	if(!LAZYLEN(component_parts))
 		dump_contents() //drop everything inside us
-		return ..() //we don't have any parts.
+		return //we don't have any parts.
 	spawn_frame(disassembled)
 
 	for(var/part in component_parts)
@@ -848,8 +848,6 @@
 	//drop everything inside us. we do this last to give machines a chance
 	//to handle their contents before we dump them
 	dump_contents()
-
-	return ..()
 
 /**
  * Spawns a frame where this machine is. If the machine was not disassmbled, the
@@ -882,7 +880,7 @@
 
 /obj/machinery/atom_break(damage_flag)
 	. = ..()
-	if(!(machine_stat & BROKEN) && !(obj_flags & NO_DECONSTRUCTION))
+	if(!(machine_stat & BROKEN))
 		set_machine_stat(machine_stat | BROKEN)
 		SEND_SIGNAL(src, COMSIG_MACHINERY_BROKEN, damage_flag)
 		update_appearance()
@@ -929,7 +927,7 @@
 		qdel(atom_part)
 
 /obj/machinery/proc/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
-	if((obj_flags & NO_DECONSTRUCTION) || screwdriver.tool_behaviour != TOOL_SCREWDRIVER)
+	if(screwdriver.tool_behaviour != TOOL_SCREWDRIVER)
 		return FALSE
 
 	screwdriver.play_tool_sound(src, 50)
@@ -956,7 +954,7 @@
 	if(!istype(replacer_tool))
 		return FALSE
 
-	if((obj_flags & NO_DECONSTRUCTION) && !replacer_tool.works_from_distance)
+	if(!replacer_tool.works_from_distance)
 		return FALSE
 
 	var/shouldplaysound = FALSE
