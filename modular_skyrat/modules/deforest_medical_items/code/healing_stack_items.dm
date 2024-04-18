@@ -21,6 +21,7 @@
 	max_amount = 3
 	amount = 3
 	merge_type = /obj/item/stack/medical/wound_recovery
+	custom_price = PAYCHECK_COMMAND * 2.5
 	/// The types of wounds that we work on, in list format
 	var/list/applicable_wounds = list(
 		/datum/wound/blunt/bone,
@@ -72,7 +73,7 @@
 	user.visible_message(span_green("[user] applies [src] to [patient]'s [limb.plaintext_zone]."), span_green("You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]."))
 	playsound(patient, treatment_sound, 50, TRUE)
 	woundies.remove_wound()
-	if(!HAS_TRAIT(patient, TRAIT_NUMBED))
+	if(!HAS_TRAIT(patient, TRAIT_ANALGESIA))
 		patient.emote("scream")
 		to_chat(patient, span_userdanger("Your [limb.plaintext_zone] burns like hell as the wounds on it are rapidly healed, fuck!"))
 		patient.add_mood_event("severe_surgery", /datum/mood_event/rapid_wound_healing)
@@ -129,6 +130,7 @@
 	sanitization = 3
 	grind_results = list(/datum/reagent/medicine/oxandrolone = 3)
 	merge_type = /obj/item/stack/medical/ointment/red_sun
+	custom_price = PAYCHECK_LOWER * 1.5
 
 /obj/item/stack/medical/ointment/red_sun/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -150,6 +152,7 @@
 	splint_factor = 1.2
 	burn_cleanliness_bonus = 0.1
 	merge_type = /obj/item/stack/medical/gauze/sterilized
+	custom_price = PAYCHECK_LOWER * 1.5
 
 /obj/item/stack/medical/gauze/sterilized/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -173,6 +176,7 @@
 	heal_brute = 0
 	stop_bleeding = 2
 	merge_type = /obj/item/stack/medical/suture/coagulant
+	custom_price = PAYCHECK_LOWER * 1.5
 
 #undef INSTANT_WOUND_HEAL_STAMINA_DAMAGE
 #undef INSTANT_WOUND_HEAL_LIMB_DAMAGE

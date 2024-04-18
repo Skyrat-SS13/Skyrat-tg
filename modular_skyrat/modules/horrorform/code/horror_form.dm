@@ -19,7 +19,7 @@
 		return 0
 	user.visible_message(span_warning("[user] writhes and contorts, their body expanding to inhuman proportions!"), \
 						span_danger("We begin our transformation to our true form!"))
-	if(!do_after(user, 30, target = user, timed_action_flags = IGNORE_HELD_ITEM))
+	if(!do_after(user, 3 SECONDS, target = user, timed_action_flags = IGNORE_HELD_ITEM))
 		user.visible_message(span_warning("[user]'s transformation abruptly reverts itself!"), \
 							span_warning("Our transformation has been interrupted!"))
 		return 0

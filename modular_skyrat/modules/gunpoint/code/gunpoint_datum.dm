@@ -49,7 +49,7 @@
 	RegisterSignal(source, COMSIG_QDELETING, PROC_REF(Destroy))
 
 
-	addtimer(CALLBACK(src, PROC_REF(lock_on)), 7)
+	addtimer(CALLBACK(src, PROC_REF(lock_on)), 0.7 SECONDS)
 
 /datum/gunpoint/proc/lock_on()
 	if(src) //if we're not present then locking on failed and this datum is deleted
