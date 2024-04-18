@@ -140,14 +140,22 @@
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
+<<<<<<< HEAD
 /obj/machinery/chem_master/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	if(is_reagent_container(tool) && !(tool.item_flags & ABSTRACT) && tool.is_open_container())
+=======
+/obj/machinery/chem_master/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(user.combat_mode || (tool.item_flags & ABSTRACT) || (tool.flags_1 & HOLOGRAM_1) || !can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH | FORBID_TELEKINESIS_REACH))
+		return NONE
+
+	if(is_reagent_container(tool) && tool.is_open_container())
+>>>>>>> d280c9cccee (Makes it EVEN EASIER to work with atom item interactions ft. "Leaf and Branch" & "Death to Chains" (#82625))
 		replace_beaker(user, tool)
 		if(!panel_open)
 			ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
 
-	return ..()
+	return NONE
 
 /obj/machinery/chem_master/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()

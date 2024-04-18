@@ -458,7 +458,7 @@
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
-/obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
+/obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(is_reagent_container(tool) && !(tool.item_flags & ABSTRACT) && tool.is_open_container())
 		//SKYRAT EDIT ADDITION START - CHEMISTRY QOL
 		var/obj/item/reagent_containers/container = tool
@@ -467,12 +467,12 @@
 		transferAmounts = container.possible_transfer_amounts
 		//SKYRAT EDIT ADDITION END
 		if(!user.transferItemToLoc(tool, src))
-			return ..()
+			return ITEM_INTERACT_BLOCKING
 		replace_beaker(user, tool)
 		ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
 
-	return ..()
+	return NONE
 
 /obj/machinery/chem_dispenser/get_cell()
 	return cell

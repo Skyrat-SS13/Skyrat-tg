@@ -140,6 +140,15 @@
 	update_appearance(UPDATE_OVERLAYS)
 	return TRUE
 
+<<<<<<< HEAD
+=======
+/obj/item/reagent_containers/cup/soup_pot/item_interaction(mob/living/user, obj/item/item, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		return NONE
+
+	return transfer_from_container_to_pot(item, user)
+
+>>>>>>> d280c9cccee (Makes it EVEN EASIER to work with atom item interactions ft. "Leaf and Branch" & "Death to Chains" (#82625))
 /obj/item/reagent_containers/cup/soup_pot/attack_hand_secondary(mob/user, list/modifiers)
 	if(!LAZYLEN(added_ingredients))
 		return SECONDARY_ATTACK_CALL_NORMAL
