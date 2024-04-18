@@ -286,7 +286,6 @@
 // SKYRAT EDIT CHANGE START -- Reworked whiteship ruin
 /* SKYRAT EDIT CHANGE -- ORIGINAL COMMENTED OUT
 /datum/map_template/ruin/space/whiteshipruin_box
-<<<<<<< HEAD
 id = "whiteshipruin_box"
 suffix = "whiteshipruin_box.dmm"*/
 
