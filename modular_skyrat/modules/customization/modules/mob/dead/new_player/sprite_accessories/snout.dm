@@ -17,7 +17,7 @@
 /obj/item/organ/external/snout
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
+	external_bodyshapes = NONE // We don't actually want this to have  by default, since some of them don't apply that.
 	preference = "feature_snout"
 
 /datum/bodypart_overlay/mutant/snout
@@ -32,9 +32,9 @@
 
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
-		external_bodytypes |= BODYTYPE_SNOUTED
+		external_bodyshapes |= BODYSHAPE_SNOUTED
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER)
-		external_bodytypes |= BODYTYPE_ALT_FACEWEAR_LAYER
+		external_bodyshapes |= BODYSHAPE_ALT_FACEWEAR_LAYER
 
 	return ..()
 

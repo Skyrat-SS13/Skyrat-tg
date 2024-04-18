@@ -1,4 +1,5 @@
 /datum/component/carrier/soulcatcher
+	able_to_transfer_to_another_carrier = TRUE
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
 	/// Is the soulcatcher removable from the parent object?
@@ -117,4 +118,5 @@
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		new_soul.log_message(message_to_log, LOG_GAME)
 
+	set_overlay_for_mob(new_soul)
 	return TRUE

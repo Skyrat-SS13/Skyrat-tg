@@ -40,6 +40,7 @@
 		/obj/item/ai_module/remove,
 		/obj/item/ai_module/core/full/dagothbot, // SKYRAT EDIT - EDITION
 		/obj/item/ai_module/core/full/texas, // SKYRAT EDIT - EDITION
+		/obj/item/ai_module/core/full/emperor, // SKYRAT EDIT - EDITION
 	)
 
 /obj/effect/spawner/random/aimodule/harmful

@@ -57,9 +57,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// The trait which is applied when a `slick skin` trait haver actually gets wet_stacks
 #define TRAIT_SLIPPERY "slippery"
 
-/// Under the effect of a numbling agent, such as morphine, for surgery.
-#define TRAIT_NUMBED "numbed"
-
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
 

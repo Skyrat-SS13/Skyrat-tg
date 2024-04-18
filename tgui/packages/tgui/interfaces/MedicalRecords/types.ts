@@ -26,6 +26,7 @@ export type MedicalRecord = {
   quirk_notes: string;
   rank: string;
   species: string;
+  trim: string;
   // SKYRAT EDIT START - RP Records
   past_general_records: string;
   past_medical_records: string;

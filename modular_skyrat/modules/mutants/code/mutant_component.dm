@@ -156,11 +156,10 @@
 
 /datum/component/mutant_infection/proc/regenerate()
 	if(!host.mind)
-		var/list/candidates = SSpolling.poll_ghost_candidates_for_mob("Do you want to play as a mutant([host.name])?", target_mob = host)
-		if(!candidates.len)
+		var/mob/canidate = SSpolling.poll_ghosts_for_target("Do you want to play as a mutant([host.name])?", checked_target = host)
+		if(!istype(canidate))
 			return
-		var/client/C = pick_n_take(candidates)
-		host.key = C.key
+		host.key = canidate.key
 	else
 		host.grab_ghost()
 	to_chat(host, span_notice("You feel an itching, both inside and \

@@ -127,6 +127,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define NO_DEATH_MESSAGE (1<<14)
 /// This area should have extra shielding from certain event effects
 #define EVENT_PROTECTED (1<<15)
+/// This Area Doesn't have Flood or Bomb Admin Messages, but will still log
+#define QUIET_LOGS (1<<16)
 
 /*
 	These defines are used specifically with the atom/pass_flags bitmask
@@ -193,6 +195,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define INDESTRUCTIBLE (1<<6)
 /// can't be frozen
 #define FREEZE_PROOF (1<<7)
+/// can't be shuttle crushed.
+#define SHUTTLE_CRUSH_PROOF (1<<8)
 
 //tesla_zap
 #define ZAP_MACHINE_EXPLOSIVE (1<<0)
