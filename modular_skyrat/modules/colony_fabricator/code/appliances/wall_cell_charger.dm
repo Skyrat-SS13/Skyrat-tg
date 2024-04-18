@@ -7,7 +7,7 @@
 	circuit = null
 	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	max_batteries = 3
-	charge_rate = 750
+	charge_rate = 900 KILO WATTS
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/wallframe/cell_charger_multi
 
@@ -33,7 +33,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 29)
 
 /obj/machinery/cell_charger_multi/wall_mounted/RefreshParts()
 	. = ..()
-	charge_rate = 750 // Nuh uh!
+	charge_rate = 900 KILO WATTS // Nuh uh!
 
 // Item for creating the arc furnace or carrying it around
 
