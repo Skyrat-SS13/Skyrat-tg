@@ -19,6 +19,8 @@
 	var/processing_speed = 6 SECONDS
 	///the current status of the enviroment. Any nonzero value means we can't work
 	var/mining_stat = NONE
+	///what the bs miner will have a triple chance to produce, if any
+	var/probability_mod = null
 	///the chance each ore has to be picked, weighted list
 	var/list/ore_chance = list(
 		/obj/item/stack/sheet/iron = 20,
@@ -36,13 +38,14 @@
 /obj/machinery/bluespace_miner/RefreshParts()
 	. = ..()
 
-	gas_temp = 100 //starts at 100, should go down to 80 at most.
+	gas_temp = 100 //starts at 90 temp, should go down to 60
 	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
 		gas_temp -= (laser_part.tier * 5)
 
-	processing_speed = 6 SECONDS //starts at 6 seconds, should go down to 4 seconds at most.
+	processing_speed = 6 SECONDS //starts at 5 seconds, should go down to 2
 	for(var/datum/stock_part/servo/servo_part in component_parts)
 		processing_speed -= (servo_part.tier * (0.5 SECONDS))
+	processing_speed = CEILING(processing_speed, 1)
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
@@ -131,6 +134,8 @@
 //if check_factors is good, then we spawn materials
 /obj/machinery/bluespace_miner/proc/spawn_mats()
 	var/obj/chosen_sheet = pick_weight(ore_chance)
+	if(probability_mod && (probability_mod != chosen_sheet))
+		return
 	new chosen_sheet(get_turf(src))
 
 /obj/machinery/bluespace_miner/process()
@@ -152,9 +157,50 @@
 	// This sound no longer echoes through departments like before. Got that was an era.
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
 
+/obj/machinery/bluespace_miner/attack_hand(mob/living/user, list/modifiers)
+	if(!change_probability(user))
+		return ..()
+
+/obj/machinery/bluespace_miner/attack_ai(mob/user)
+	if(!change_probability(user))
+		return ..()
+
+/obj/machinery/bluespace_miner/attack_drone(mob/living/basic/drone/user, list/modifiers)
+	if(!change_probability(user))
+		return ..()
+
+/obj/machinery/bluespace_miner/attack_robot(mob/user)
+	if(!change_probability(user))
+		return ..()
+
+/**
+ * Allows players to triple the chance of the ore of their choice whilst losing the other ores
+ * Must be able to actually produce stuff before you can change the probabilities
+ */
+/obj/machinery/bluespace_miner/proc/change_probability(mob/user)
+	if(probability_mod)
+		ore_chance[probability_mod] /= 3
+		probability_mod = null
+		balloon_alert(user, "probability change disabled")
+		return TRUE
+
+	var/choice = tgui_input_list(user, "Which would you like to triple?", "Probability Change", ore_chance)
+	if(!choice)
+		return FALSE
+
+	ore_chance[choice] *= 3
+	probability_mod = choice
+	balloon_alert(user, "probability change enabled")
+	return TRUE
+
 /obj/machinery/bluespace_miner/crowbar_act(mob/living/user, obj/item/tool)
 	if(default_deconstruction_crowbar(tool))
 		return TRUE
+
+/obj/machinery/bluespace_miner/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/bluespace_miner/screwdriver_act(mob/living/user, obj/item/tool)
 	. = TRUE
@@ -196,34 +242,27 @@
 	crate_name = "Bluespace Miner Circuitboard Crate"
 	crate_type = /obj/structure/closet/crate
 
-/* if we were going to go research based
 /datum/design/board/bluespace_miner
 	name = "Machine Design (Bluespace Miner)"
 	desc = "Allows for the construction of circuit boards used to build a bluespace miner."
 	id = "bluespace_miner"
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
-	category = list(RND_CATEGORY_MISC_MACHINERY)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
-
-/datum/experiment/scanning/points/bluespace_miner
-	name = "Bluespace Miner"
-	description = "We can learn from the past technology and create a better future-- with bluespace miners."
-	required_points = 5
-	required_atoms = list(
-		/obj/item/xenoarch/broken_item/tech = 1,
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
 	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/techweb_node/bluespace_miner
 	id = "bluespace_miner"
 	display_name = "Bluespace Miner"
 	description = "The future is here, where we can mine ores from the great bluespace sea."
-	prereq_ids = list("anomaly_research", "bluespace_power")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	hidden = TRUE
+	experimental = TRUE
+	prereq_ids = list("base")
 	design_ids = list(
 		"bluespace_miner",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	discount_experiments = list(/datum/experiment/scanning/points/bluespace_miner = 5000)
-*/
 
 #undef BLUESPACE_MINER_TOO_HOT
 #undef BLUESPACE_MINER_LOW_PRESSURE

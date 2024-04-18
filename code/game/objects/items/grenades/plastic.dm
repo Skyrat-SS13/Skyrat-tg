@@ -111,7 +111,7 @@
 
 	to_chat(user, span_notice("You start planting [src]. The timer is set to [det_time]..."))
 
-	if(do_after(user, 30, target = bomb_target))
+	if(do_after(user, 3 SECONDS, target = bomb_target))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return .
 		target = bomb_target
@@ -119,10 +119,14 @@
 
 		message_admins("[ADMIN_LOOKUPFLW(user)] planted [name] on [target.name] at [ADMIN_VERBOSEJMP(target)] with [det_time] second fuse")
 		user.log_message("planted [name] on [target.name] with a [det_time] second fuse.", LOG_ATTACK)
+		var/icon/target_icon = icon(bomb_target.icon, bomb_target.icon_state)
+		target_icon.Blend(icon(icon, icon_state), ICON_OVERLAY)
+		var/mutable_appearance/bomb_target_image = mutable_appearance(target_icon)
 		notify_ghosts(
 			"[user] has planted \a [src] on [target] with a [det_time] second fuse!",
 			source = bomb_target,
 			header = "Explosive Planted",
+			alert_overlay = bomb_target_image,
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		)
 

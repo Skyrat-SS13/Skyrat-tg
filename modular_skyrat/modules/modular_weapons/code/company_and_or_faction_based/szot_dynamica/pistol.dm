@@ -2,8 +2,10 @@
 // Sprays a wall of plasma that sucks against armor but fucks against unarmored targets
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
-	name = "\improper Szot 'Słońce' plasma projector"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
+	name = "\improper Słońce Plasma Projector"
+	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
+		Uses plasma power packs. \
+		Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "slonce"
 
@@ -28,6 +30,10 @@
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
 
+/obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine_more(mob/user)
 	. = ..()
 
@@ -48,8 +54,10 @@
 // Shoots single, strong plasma blasts at a slow rate
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
-	name = "\improper Szot 'Gwiazda' plasma sharpshooter"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Fires relatively accurate globs of searing plasma."
+	name = "\improper Gwiazda Plasma Sharpshooter"
+	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
+		Uses plasma power packs. \
+		Fires relatively accurate globs of searing plasma."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "gwiazda"
 
@@ -72,6 +80,10 @@
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
 
+/obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine_more(mob/user)
 	. = ..()
 
@@ -89,7 +101,7 @@
 // Woe, buckshot be upon ye
 
 /obj/item/gun/ballistic/revolver/shotgun_revolver
-	name = "\improper Szot 'Bóbr' 12 GA revolver"
+	name = "\improper Bóbr 12 GA revolver"
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. A revolver type design with a four shell cylinder. That's right, shell, this one shoots twelve guage."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
 	recoil = SAWN_OFF_RECOIL

@@ -35,6 +35,10 @@
 	sharpness = SHARP_EDGED
 	max_integrity = 150
 
+/obj/item/forging/reagent_weapon/sword/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded = 15, force_wielded = 20)
+
 /obj/item/forging/reagent_weapon/katana
 	name = "reagent katana"
 	desc = "A katana sharp enough to penetrate body armor, but not quite million-times-folded sharp."
@@ -53,6 +57,10 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
 
+/obj/item/forging/reagent_weapon/katana/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded = 15, force_wielded = 20)
+
 /obj/item/forging/reagent_weapon/dagger
 	name = "reagent dagger"
 	desc = "A lightweight dagger with an extremely quick swing!"
@@ -69,6 +77,10 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
+
+/obj/item/forging/reagent_weapon/dagger/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 70)
 
 /obj/item/forging/reagent_weapon/dagger/attack(mob/living/M, mob/living/user, params)
 	. = ..()
@@ -109,12 +121,14 @@
 	attack_verb_simple = list("attack", "poke", "jab", "tear", "lacerate", "gore")
 	wound_bonus = -15
 	bare_wound_bonus = 15
-	reach = 2
 	sharpness = SHARP_POINTY
 
 /obj/item/forging/reagent_weapon/spear/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 17) //better than the bone spear
+	AddComponent(/datum/component/jousting, max_tile_charge = 9, min_tile_charge = 6)
+	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 70)
+	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 15)
+	AddComponent(/datum/component/two_hand_reach, unwield_reach = 1, wield_reach = 2)
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
@@ -133,6 +147,11 @@
 	attack_verb_continuous = list("slashes", "bashes")
 	attack_verb_simple = list("slash", "bash")
 	sharpness = SHARP_EDGED
+
+/obj/item/forging/reagent_weapon/axe/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 70)
+	AddComponent(/datum/component/two_handed, force_unwielded = 15, force_wielded = 20)
 
 /obj/item/forging/reagent_weapon/hammer
 	name = "reagent hammer"
@@ -158,6 +177,7 @@
 /obj/item/forging/reagent_weapon/hammer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/kneejerk)
+	AddComponent(/datum/component/two_handed, force_unwielded = 19, force_wielded = 24)
 
 /obj/item/forging/reagent_weapon/hammer/attack_atom(atom/attacked_atom, mob/living/user, params)
 	. = ..()
@@ -313,3 +333,7 @@
 /obj/item/forging/reagent_weapon/bokken/proc/on_unwield()
 	SIGNAL_HANDLER
 	wielded = FALSE
+
+/obj/item/spear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_hand_reach, unwield_reach = 1, wield_reach = 2)

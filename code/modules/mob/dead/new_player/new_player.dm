@@ -167,7 +167,7 @@
 		return JOB_UNAVAILABLE_LANGUAGE
 	if(job.has_banned_quirk(client.prefs))
 		return JOB_UNAVAILABLE_QUIRK
-	if(job.veteran_only && !SSplayer_ranks.is_veteran(client))
+	if(!CONFIG_GET(flag/bypass_veteran_system) && job.veteran_only && !SSplayer_ranks.is_veteran(client))
 		return JOB_NOT_VETERAN
 	if(job.has_banned_species(client.prefs))
 		return JOB_UNAVAILABLE_SPECIES
@@ -275,7 +275,10 @@
 	if((job.job_flags & JOB_ASSIGN_QUIRKS) && humanc && CONFIG_GET(flag/roundstart_traits))
 		SSquirks.AssignQuirks(humanc, humanc.client)
 
-	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
+	var/area/station/arrivals = GLOB.areas_by_type[/area/station/hallway/secondary/entry]
+	if(humanc && arrivals && !arrivals.power_environ) //arrivals depowered
+		humanc.put_in_hands(new /obj/item/crowbar/large/emergency(get_turf(humanc))) //if hands full then just drops on the floor
+	log_manifest(character.mind.key, character.mind, character, latejoin = TRUE)
 
 	// SKYRAT EDIT ADDITION START
 	if(humanc)

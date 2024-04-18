@@ -1,8 +1,8 @@
 // Rapid firing submachinegun firing .27-54 Cesarzowa
 
 /obj/item/gun/ballistic/automatic/miecz
-	name = "\improper Szot 'Miecz' Submachinegun"
-	desc = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber cartridges. \
+	name = "\improper Miecz Submachine Gun"
+	desc = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber .27-54 cartridges. \
 		Due to the intended purpose of the weapon, and less than optimal ranged performance of the projectile, it has \
 		nothing more than basic glow-sights as opposed to the ranged scope Lanca users might be used to."
 
@@ -20,7 +20,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_MEDIUM
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/miecz
 
@@ -43,6 +43,10 @@
 
 /obj/item/gun/ballistic/automatic/miecz/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
+
+/obj/item/gun/ballistic/automatic/miecz/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/automatic/miecz/examine_more(mob/user)
 	. = ..()

@@ -7,6 +7,7 @@
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
 	mob_size = MOB_SIZE_LARGE
 	layer = LARGE_MOB_LAYER //above most mobs, but below speechbubbles
+	plane = ABOVE_GAME_PLANE
 	maptext_height = 64
 	maptext_width = 64
 	pressure_resistance = 200
@@ -190,31 +191,6 @@
 		mind.name = xeno_to_transfer_to.real_name
 		mind.transfer_to(xeno_to_transfer_to)
 	qdel(src)
-
-/mob/living/carbon/alien/adult/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
-	var/fire_icon = "generic_fire[suffix]"
-
-	if(!GLOB.fire_appearances[fire_icon])
-		var/mutable_appearance/xeno_fire_overlay = mutable_appearance('icons/mob/effects/onfire.dmi', fire_icon, -FIRE_LAYER, appearance_flags = RESET_COLOR)
-		xeno_fire_overlay.pixel_x = on_fire_pixel_x
-		xeno_fire_overlay.pixel_y = on_fire_pixel_y
-		GLOB.fire_appearances[fire_icon] = xeno_fire_overlay
-
-	if((stacks > 0 && on_fire) || HAS_TRAIT(src, TRAIT_PERMANENTLY_ONFIRE))
-		if(fire_icon == last_icon_state)
-			return last_icon_state
-
-		remove_overlay(FIRE_LAYER)
-		overlays_standing[FIRE_LAYER] = GLOB.fire_appearances[fire_icon]
-		apply_overlay(FIRE_LAYER)
-		return fire_icon
-
-	if(!last_icon_state)
-		return last_icon_state
-
-	remove_overlay(FIRE_LAYER)
-	apply_overlay(FIRE_LAYER)
-	return null
 
 /mob/living/carbon/alien/adult/skyrat/findQueen() //Yes we really do need to do this whole thing to let the queen finder work
 	if(hud_used)

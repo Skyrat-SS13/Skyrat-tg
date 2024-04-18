@@ -1,7 +1,9 @@
 import { filterMap, sortBy } from 'common/collections';
+import { exhaustiveCheck } from 'common/exhaustive';
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { sendAct, useBackend, useLocalState } from '../../backend';
+import { sendAct, useBackend } from '../../backend';
 import {
   Autofocus,
   Box,
@@ -11,7 +13,6 @@ import {
   LabeledList,
   Popper,
   Stack,
-  TrackOutsideClicks,
 } from '../../components';
 import { CharacterPreview } from '../common/CharacterPreview';
 import {
@@ -21,6 +22,7 @@ import {
   ServerData,
 } from './data';
 import { MultiNameInput, NameInput } from './names';
+import { PageButton } from './PageButton';
 import features from './preferences/features';
 import {
   FeatureChoicedServerData,
@@ -42,6 +44,7 @@ const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
   handleLoadout: () => void; // SKYRAT EDIT ADDITION
+  handleFood: () => void; // SKYRAT EDIT ADDITION
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -76,8 +79,8 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      {/* SKYRAT EDIT ADDITION START */}
       {props.handleLoadout && (
-        // SKYRAT EDIT ADDITION
         <Stack.Item>
           <Button
             onClick={props.handleLoadout}
@@ -88,6 +91,16 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      <Stack.Item>
+        <Button
+          onClick={props.handleFood}
+          fontSize="22px"
+          icon="drumstick-bite"
+          tooltip="Edit Food Preferences"
+          tooltipPosition="top"
+        />
+        {/* SKYRAT EDIT ADDITION END */}
+      </Stack.Item>
     </Stack>
   );
 };
@@ -111,8 +124,8 @@ const ChoicedSelection = (props: {
 
   return (
     <Box
+      className="ChoicedSelection"
       style={{
-        background: 'white',
         padding: '5px',
 
         height: `${
@@ -204,42 +217,35 @@ const GenderButton = (props: {
   handleSetGender: (gender: Gender) => void;
   gender: Gender;
 }) => {
-  const [genderMenuOpen, setGenderMenuOpen] = useLocalState(
-    'genderMenuOpen',
-    false,
-  );
+  const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
     <Popper
-      options={{
-        placement: 'right-end',
-      }}
-      popperContent={
-        genderMenuOpen ? (
-          <Stack backgroundColor="white" ml={0.5} p={0.3}>
-            {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
-              (gender) => {
-                return (
-                  <Stack.Item key={gender}>
-                    <Button
-                      selected={gender === props.gender}
-                      onClick={() => {
-                        props.handleSetGender(gender);
-                        setGenderMenuOpen(false);
-                      }}
-                      fontSize="22px"
-                      icon={GENDERS[gender].icon}
-                      tooltip={GENDERS[gender].text}
-                      tooltipPosition="top"
-                    />
-                  </Stack.Item>
-                );
-              },
-            )}
-          </Stack>
-        ) : (
-          <> </>
-        )
+      isOpen={genderMenuOpen}
+      onClickOutside={() => setGenderMenuOpen(false)}
+      placement="right-end"
+      content={
+        <Stack backgroundColor="white" ml={0.5} p={0.3}>
+          {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
+            (gender) => {
+              return (
+                <Stack.Item key={gender}>
+                  <Button
+                    selected={gender === props.gender}
+                    onClick={() => {
+                      props.handleSetGender(gender);
+                      setGenderMenuOpen(false);
+                    }}
+                    fontSize="22px"
+                    icon={GENDERS[gender].icon}
+                    tooltip={GENDERS[gender].text}
+                    tooltipPosition="top"
+                  />
+                </Stack.Item>
+              );
+            },
+          )}
+        </Stack>
       }
     >
       <Button
@@ -285,30 +291,25 @@ const MainFeature = (props: {
 
   return (
     <Popper
-      options={{
-        placement: 'bottom-start',
-      }}
-      popperContent={
-        isOpen ? (
-          <TrackOutsideClicks onOutsideClick={props.handleClose}>
-            <ChoicedSelection
-              name={catalog.name}
-              catalog={catalog}
-              selected={currentValue}
-              supplementalFeature={supplementalFeature}
-              supplementalValue={
-                supplementalFeature &&
-                data.character_preferences.supplemental_features[
-                  supplementalFeature
-                ]
-              }
-              onClose={handleClose}
-              onSelect={handleSelect}
-            />
-          </TrackOutsideClicks>
-        ) : (
-          <> </>
-        )
+      placement="bottom-start"
+      isOpen={isOpen}
+      onClickOutside={handleClose}
+      baseZIndex={1} // Below the default popper at z 2
+      content={
+        <ChoicedSelection
+          name={catalog.name}
+          catalog={catalog}
+          selected={currentValue}
+          supplementalFeature={supplementalFeature}
+          supplementalValue={
+            supplementalFeature &&
+            data.character_preferences.supplemental_features[
+              supplementalFeature
+            ]
+          }
+          onClose={handleClose}
+          onSelect={handleSelect}
+        />
       }
     >
       <Button
@@ -478,14 +479,20 @@ export const getRandomization = (
 
 export const MainPage = (props: { openSpecies: () => void }) => {
   const { act, data } = useBackend<PreferencesMenuData>();
-  const [currentClothingMenu, setCurrentClothingMenu] = useLocalState<
-    string | null
-  >('currentClothingMenu', null);
-  const [multiNameInputOpen, setMultiNameInputOpen] = useLocalState(
-    'multiNameInputOpen',
-    false,
+  const [currentClothingMenu, setCurrentClothingMenu] = useState<string | null>(
+    null,
   );
+  const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
+
+  // SKYRAT EDIT BEGIN: SWAPPABLE PREF MENUS
+  enum PrefPage {
+    Visual, // The visual parts
+    Lore, // Lore, Flavor Text, Age, Records
+  }
+
+  const [currentPrefPage, setCurrentPrefPage] = useState(PrefPage.Visual);
+  // SKYRAT EDIT END
 
   return (
     <ServerPreferencesFetcher
@@ -535,6 +542,41 @@ export const MainPage = (props: { openSpecies: () => void }) => {
           delete nonContextualPreferences['random_name'];
         }
 
+        // SKYRAT EDIT BEGIN: SWAPPABLE PREF MENUS
+        let prefPageContents;
+        switch (currentPrefPage) {
+          case PrefPage.Visual:
+            prefPageContents = (
+              <PreferenceList
+                act={act}
+                randomizations={getRandomization(
+                  contextualPreferences,
+                  serverData,
+                  randomBodyEnabled,
+                )}
+                preferences={contextualPreferences}
+                maxHeight="auto"
+              />
+            );
+            break;
+          case PrefPage.Lore:
+            prefPageContents = (
+              <PreferenceList
+                act={act}
+                randomizations={getRandomization(
+                  nonContextualPreferences,
+                  serverData,
+                  randomBodyEnabled,
+                )}
+                preferences={nonContextualPreferences}
+                maxHeight="auto"
+              />
+            );
+            break;
+          default:
+            exhaustiveCheck(currentPrefPage);
+        }
+        // SKYRAT EDIT END
         return (
           <>
             {multiNameInputOpen && (
@@ -568,6 +610,11 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       handleLoadout={() => {
                         act('open_loadout');
                       }}
+                      // SKYRAT EDIT ADDITION - BEGIN
+                      handleFood={() => {
+                        act('open_food');
+                      }}
+                      // SKYRAT EDIT ADDITION - END
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
@@ -652,29 +699,32 @@ export const MainPage = (props: { openSpecies: () => void }) => {
               </Stack.Item>
 
               <Stack.Item grow basis={0}>
-                <Stack vertical fill>
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(
-                      contextualPreferences,
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    preferences={contextualPreferences}
-                    maxHeight="auto"
-                  />
-
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(
-                      nonContextualPreferences,
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    preferences={nonContextualPreferences}
-                    maxHeight="auto"
-                  />
+                {/* SKYRAT EDIT BEGIN: Swappable pref menus */}
+                <Stack>
+                  <Stack.Item grow>
+                    <PageButton
+                      currentPage={currentPrefPage}
+                      page={PrefPage.Visual}
+                      setPage={setCurrentPrefPage}
+                    >
+                      Character Visuals
+                    </PageButton>
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    <PageButton
+                      currentPage={currentPrefPage}
+                      page={PrefPage.Lore}
+                      setPage={setCurrentPrefPage}
+                    >
+                      Character Lore
+                    </PageButton>
+                  </Stack.Item>
                 </Stack>
+                <Stack fill vertical>
+                  <Stack.Divider />
+                  {prefPageContents}
+                </Stack>
+                {/* SKYRAT EDIT END: Swappable pref menus */}
               </Stack.Item>
             </Stack>
           </>

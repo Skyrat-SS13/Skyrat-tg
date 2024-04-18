@@ -10,7 +10,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	strip_delay = 60
 	// equip_delay_other = 60
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3, /datum/material/glass = SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
 	var/random = TRUE
 	var/freq_in_name = TRUE
 	var/tagname = null
@@ -20,8 +23,14 @@
 	id = "shockcollar"
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3, /datum/material/glass = SHEET_MATERIAL_AMOUNT)
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
+	category = list(
+		RND_CATEGORY_HACKED,
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC,
+	)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
@@ -40,7 +49,7 @@
 		if(shock_cooldown == TRUE)
 			return
 		shock_cooldown = TRUE
-		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
+		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 10 SECONDS)
 		step(affected_mob, pick(GLOB.cardinals))
 
 		to_chat(affected_mob, span_danger("You feel a sharp shock from the collar!"))

@@ -7,9 +7,9 @@
 	density = TRUE
 	use_internal_storage = TRUE
 
-/obj/machinery/iv_drip/plumbing/Initialize(mapload)
+/obj/machinery/iv_drip/plumbing/Initialize(mapload, bolt, layer)
 	. = ..()
-	AddComponent(/datum/component/plumbing/iv_drip, anchored)
+	AddComponent(/datum/component/plumbing/iv_drip, bolt, layer)
 	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/iv_drip/plumbing/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
@@ -24,7 +24,7 @@
 
 /obj/machinery/iv_drip/plumbing/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	to_chat(user, span_notice("You start furiously plunging [name]."))
-	if(do_after(user, 30, target = src))
+	if(do_after(user, 3 SECONDS, target = src))
 		to_chat(user, span_notice("You finish plunging the [name]."))
 		reagents.expose(get_turf(src), TOUCH) //splash on the floor
 		reagents.clear_reagents()
@@ -36,5 +36,5 @@
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
 		return ITEM_INTERACT_SUCCESS
 
-/obj/machinery/iv_drip/plumbing/deconstruct(disassembled = TRUE)
+/obj/machinery/iv_drip/plumbing/on_deconstruction(disassembled)
 	qdel(src)

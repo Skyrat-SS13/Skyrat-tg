@@ -24,11 +24,20 @@
 
 //Cyberpunk PI Costume - Sprites from Eris
 /obj/item/clothing/head/fedora/det_hat/cybergoggles //Subset of detective fedora so that detectives dont have to sacrifice candycorns for style
-	name = "type-34C semi-enclosed headwear"
-	desc = "Civilian model of a popular helmet used by certain law enforcement agencies. It does not have any armor plating, but has a neo-laminated fiber lining."
+	name = "type-34P semi-enclosed headwear"
+	desc = "A popular helmet used by certain law enforcement agencies. It has minor armor plating and a neo-laminated fiber lining."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "cyberpunkgoggle"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/fedora/det_hat/cybergoggles/civilian //Actually civilian with no armor for drip purposes only
+	name = "type-34C semi-enclosed headwear"
+	desc = "The civilian model of a popular helmet used by certain law enforcement agencies. It has no armor plating."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "cyberpunkgoggle"
+	armor_type = /datum/armor/none
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hats/intern/developer

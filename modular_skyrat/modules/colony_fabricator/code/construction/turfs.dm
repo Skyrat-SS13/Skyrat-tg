@@ -16,7 +16,7 @@
 
 GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 	new/datum/stack_recipe("prefabricated wall", /turf/closed/wall/prefab_plastic, time = 3 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("prefabricated window", /obj/structure/window/reinforced/colony_fabricator, time = 0.5 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, is_fulltile = TRUE, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("prefabricated window", /obj/structure/window/fulltile/colony_fabricator, time = 1 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, is_fulltile = TRUE, category = CAT_WINDOWS), \
 	))
 
 /obj/item/stack/sheet/plastic_wall_panel
@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 	if(!use(1))
 		user.balloon_alert(user, "not enough material!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	new walltype(build_on)
+	build_on.place_on_top(walltype, flags = CHANGETURF_INHERIT_AIR)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/stack/sheet/plastic_wall_panel/get_main_recipes()
@@ -87,9 +87,6 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 	merge_type = /obj/item/stack/tile/catwalk_tile/colony_lathe
 	tile_reskin_types = null
 
-/obj/item/stack/tile/catwalk_tile/colony_lathe/lathe_spawn
-	amount = 4
-
 /obj/item/stack/tile/iron/colony
 	name = "prefab floor tiles"
 	singular_name = "prefab floor tile"
@@ -106,9 +103,6 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 		/obj/item/stack/tile/iron/colony/white/texture,
 		/obj/item/stack/tile/iron/colony/white/bolts,
 	)
-
-/obj/item/stack/tile/iron/colony/lathe_spawn
-	amount = 4
 
 // Grated floor tile, for seeing wires under
 

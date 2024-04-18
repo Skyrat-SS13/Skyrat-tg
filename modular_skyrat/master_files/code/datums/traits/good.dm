@@ -27,7 +27,7 @@
 	gain_text = span_notice("Your palms hurt a bit from the sharpness of your nails.")
 	lose_text = span_danger("You feel a distinct emptiness as your nails dull; good luck scratching that itch.")
 	medical_record_text = "Patient ended up scratching through the examination table's cushions; recommended they look into clipping their claws."
-	icon = FA_ICON_HAND
+	icon = FA_ICON_LINES_LEANING
 
 /datum/quirk/sharpclaws/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -128,3 +128,42 @@
 	lose_text = span_danger("Somehow, you've completely cleaned yourself of glitter..")
 	medical_record_text = "Patient seems to be looking fabulous."
 	icon = FA_ICON_HAND_SPARKLES
+
+/datum/quirk/no_appendix
+	name = "Appendicitis Survivor"
+	desc = "You had a run in with appendicitis in the past and no longer have an appendix."
+	icon = FA_ICON_NOTES_MEDICAL
+	value = 2
+	gain_text = span_notice("You no longer have an appendix.")
+	lose_text = span_danger("Your appendix has magically.. regrown?")
+	medical_record_text = "Patient had appendicitis in the past and has had their appendix surgically removed."
+	/// The mob's original appendix
+	var/obj/item/organ/internal/appendix/old_appendix
+
+/datum/quirk/no_appendix/post_add()
+	var/mob/living/carbon/carbon_quirk_holder = quirk_holder
+	old_appendix = carbon_quirk_holder.get_organ_slot(ORGAN_SLOT_APPENDIX)
+
+	if(isnull(old_appendix))
+		return
+
+	old_appendix.Remove(carbon_quirk_holder, special = TRUE)
+	old_appendix.moveToNullspace()
+
+	STOP_PROCESSING(SSobj, old_appendix)
+
+/datum/quirk/no_appendix/remove()
+	var/mob/living/carbon/carbon_quirk_holder = quirk_holder
+
+	if(isnull(old_appendix))
+		return
+
+	var/obj/item/organ/internal/appendix/current_appendix = carbon_quirk_holder.get_organ_slot(ORGAN_SLOT_APPENDIX)
+
+	// if we have not gained an appendix already, put the old one back
+	if(isnull(current_appendix))
+		old_appendix.Insert(carbon_quirk_holder, special = TRUE)
+	else
+		qdel(old_appendix)
+
+	old_appendix = null

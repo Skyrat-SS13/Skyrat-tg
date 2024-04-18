@@ -17,7 +17,12 @@
 	desc = "A heads-up display that scans humanoids in view, and displays if their current ID possesses a firearms permit or not."
 	id = "permit_glasses"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	build_path = /obj/item/clothing/glasses/hud/gun_permit
-	category = list(RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC,
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO

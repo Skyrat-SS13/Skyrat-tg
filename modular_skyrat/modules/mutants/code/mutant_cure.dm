@@ -3,7 +3,12 @@
 	desc = "A tool used to extract the RNA from viruses. Apply to skin."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = SHEET_MATERIAL_AMOUNT, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	/// Our loaded vial.
 	var/obj/item/rna_vial/loaded_vial
 
@@ -84,7 +89,11 @@
 	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
-	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	var/contains_rna = FALSE
 
 /obj/item/rna_vial/proc/load_rna(mob/living/carbon/human/H)
@@ -235,7 +244,7 @@
 			else
 				status = STATUS_RECOMBINATING_CURE
 			recombinate_start()
-			use_power(3000)
+			use_energy(3000 JOULES)
 
 	updateUsrDialog()
 
@@ -261,7 +270,7 @@
 	ejectItem()
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_step()
@@ -277,7 +286,7 @@
 		recombinate_finish()
 		return
 	flick("h_lathe_wloop", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
@@ -297,7 +306,7 @@
 	else
 		new /obj/item/reagent_containers/cup/bottle/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
 	status = STATUS_IDLE
 
@@ -349,7 +358,9 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
-	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT * 5)
+	custom_materials = list(
+		/datum/material/glass=HALF_SHEET_MATERIAL_AMOUNT,
+	)
 
 /obj/item/reagent_containers/cup/bottle/hnz/one
 	list_reagents = list(/datum/reagent/hnz = 1)

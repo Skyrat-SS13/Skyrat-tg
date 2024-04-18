@@ -85,7 +85,7 @@ Notes:
 	queueHide = showing ? TRUE : FALSE
 
 	if (queueHide)
-		addtimer(CALLBACK(src, PROC_REF(do_hide)), 1)
+		addtimer(CALLBACK(src, PROC_REF(do_hide)), 0.1 SECONDS)
 	else
 		do_hide()
 
@@ -100,7 +100,7 @@ Notes:
 /datum/tooltip/proc/do_hide()
 	winshow(owner, control, FALSE)
 
-/datum/tooltip/Destroy(force, ...)
+/datum/tooltip/Destroy(force)
 	last_target = null
 	return ..()
 

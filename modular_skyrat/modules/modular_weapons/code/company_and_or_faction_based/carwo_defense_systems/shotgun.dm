@@ -1,7 +1,7 @@
 // SolFed shotgun (this was gonna be in a proprietary shotgun shell type outside of 12ga at some point, wild right?)
 
 /obj/item/gun/ballistic/shotgun/riot/sol
-	name = "\improper Carwo 'Renoster' Shotgun"
+	name = "\improper Renoster Shotgun"
 	desc = "A twelve gauge shotgun with a six shell capacity underneath. Made for and used by SolFed's various military branches."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
@@ -27,10 +27,14 @@
 	suppressor_x_offset = 9
 
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 
 /obj/item/gun/ballistic/shotgun/riot/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
+
+/obj/item/gun/ballistic/shotgun/riot/sol/examine(mob/user)
+	. = ..()
+	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
 /obj/item/gun/ballistic/shotgun/riot/sol/examine_more(mob/user)
 	. = ..()

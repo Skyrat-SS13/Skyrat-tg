@@ -1,5 +1,7 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   BlockQuote,
   Box,
@@ -26,7 +28,7 @@ export const NifPanel = (props) => {
     max_power,
     current_theme,
   } = data;
-  const [settingsOpen, setSettingsOpen] = useLocalState('settingsOpen', false);
+  const [settingsOpen, setSettingsOpen] = useState(0);
 
   return (
     <Window
@@ -258,7 +260,7 @@ const NifSettings = (props) => {
 };
 
 const NifProductNotes = (props) => {
-  const { act, data } = useBackend(t);
+  const { act, data } = useBackend();
   const { product_notes } = data;
   return <BlockQuote>{product_notes}</BlockQuote>;
 };

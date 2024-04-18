@@ -34,7 +34,7 @@
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	gold_core_spawnable = NO_SPAWN
-	light_system = MOVABLE_LIGHT_DIRECTIONAL
+	light_system = OVERLAY_LIGHT_DIRECTIONAL
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_range = 2
 	light_power = 0.8

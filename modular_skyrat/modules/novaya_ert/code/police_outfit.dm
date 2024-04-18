@@ -14,6 +14,15 @@
 	desc = "A cloak made from heavy tarpaulin. Nigh wind- and waterproof thanks to its design. The signature white rectangle of the NRI police covers the garment's back."
 	icon_state = "cloak_police"
 
+// Just some extra police equipment
+/obj/item/clothing/neck/cloak/colonial/nri_police/Initialize()
+	allowed += list(
+		/obj/item/restraints/handcuffs,
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+	)
+	return ..()
+
 /obj/item/clothing/head/hats/colonial/nri_police
 	name = "imperial police cap"
 	desc = "A puffy cap made out of tarpaulin covered by some textile. It is sturdy and comfortable, and seems to retain its form very well. <br>\

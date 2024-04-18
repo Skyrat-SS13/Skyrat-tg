@@ -63,6 +63,19 @@ export const custom_species_lore: Feature<string> = {
   description: "Won't show up if there's no custom species.",
   component: FeatureTextInput,
 };
+
+export const custom_taste: Feature<string> = {
+  name: 'Character Taste',
+  description: 'How does your character taste if someone licks them.',
+  component: FeatureShortTextInput,
+};
+
+export const custom_smell: Feature<string> = {
+  name: 'Character Smell',
+  description: 'How does your character smell if someone sniffs them.',
+  component: FeatureShortTextInput,
+};
+
 export const general_record: Feature<string> = {
   name: 'Records - General',
   description:

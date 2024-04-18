@@ -38,6 +38,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
 	icon_state = "armband_lopland"
 
+/obj/item/clothing/accessory/armband/deputy/lopland/nonsec
+	name = "blue armband"
+	desc = "An armband, worn to signify proficiency in a skill or association with a department. This one is blue."
+
 /obj/item/clothing/accessory/armband/deputy/lopland
 	desc = "A Peacekeeper-blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
 
@@ -148,7 +152,7 @@
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/storage/security/open_storage(datum/source, mob/user)
-	var/atom/resolve_parent = parent?.resolve()
+	var/atom/resolve_parent = parent
 	if(!resolve_parent)
 		return
 	if(isobserver(user))
@@ -162,7 +166,7 @@
 	if(!isliving(user) || user.incapacitated())
 		return FALSE
 
-	var/obj/item/gun/gun_to_draw = locate() in real_location?.resolve()
+	var/obj/item/gun/gun_to_draw = locate() in real_location
 	if(!gun_to_draw)
 		return ..()
 	resolve_parent.add_fingerprint(user)

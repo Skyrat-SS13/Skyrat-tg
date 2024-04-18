@@ -149,7 +149,7 @@
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari/groin/equipped(mob/living/user, slot)
 	var/mob/living/carbon/human/hooman = user
-	slowdown = hooman?.bodytype & BODYTYPE_TAUR ? 4 : 0
+	slowdown = hooman?.bodyshape & BODYSHAPE_TAUR ? 4 : 0
 	return..()
 
 //processing stuff

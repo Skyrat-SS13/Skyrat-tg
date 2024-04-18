@@ -116,6 +116,10 @@
 	icon_state = "secbox_xl"
 	illustration = "breacherslug"
 
+/obj/item/storage/box/slugs
+	icon_state = "secbox_xl"
+	illustration = "breacherslug"
+
 /obj/item/storage/box/evidence
 	icon_state = "secbox"
 	illustration = "evidence"

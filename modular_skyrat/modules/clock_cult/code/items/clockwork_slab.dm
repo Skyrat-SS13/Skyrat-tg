@@ -81,10 +81,10 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	. = ..()
 	//Clear quickbinds
 	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
-		script.Remove(user)
+		script?.Remove(user)
 
 	if(active_scripture)
-		active_scripture.end_invocation()
+		active_scripture?.end_invocation()
 
 	if(buffer)
 		buffer = null
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 	//Grant quickbound spells
 	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
-		script.Grant(user)
+		script?.Grant(user)
 
 	user.update_action_buttons()
 
@@ -202,11 +202,11 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 					return FALSE
 
 				if(scripture.power_cost > GLOB.clock_power)
-					living_user.balloon_alert(living_user, "[scripture.power_cost]W required!")
+					living_user.balloon_alert(living_user, "[display_energy(scripture.power_cost)] required!")
 					return FALSE
 
 				if(scripture.vitality_cost > GLOB.clock_vitality)
-					living_user.balloon_alert(living_user, "[scripture.vitality_cost] vitality required!")
+					living_user.balloon_alert(living_user, "[display_energy(scripture.vitality_cost)] vitality required!")
 					return FALSE
 
 				scripture.begin_invoke(living_user, src)

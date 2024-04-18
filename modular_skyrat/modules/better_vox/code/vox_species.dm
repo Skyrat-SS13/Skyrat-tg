@@ -16,6 +16,7 @@
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
+	meat = /obj/item/food/meat/slab/chicken/human //item file in teshari module
 	mutanttongue = /obj/item/organ/internal/tongue/vox
 	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox

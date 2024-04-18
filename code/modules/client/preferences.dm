@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// If set to TRUE, will update character_profiles on the next ui_data tick.
 	var/tainted_character_profiles = FALSE
 
-/datum/preferences/Destroy(force, ...)
+/datum/preferences/Destroy(force)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
@@ -109,8 +109,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
-		unlock_content = !!parent.IsByondMember() || GLOB.donator_list[parent.ckey] //SKYRAT EDIT - ADDED DONATOR CHECK
-		if(unlock_content)
+		unlock_content = !!parent.IsByondMember()
+		donator_status = !!GLOB.donator_list[parent.ckey] //SKYRAT EDIT ADD - DONATOR CHECK
+		if(unlock_content || donator_status) //SKYRAT EDIT - ADD DONATOR CHECK
 			max_save_slots = 50 //SKYRAT EDIT - ORIGINAL 8
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
@@ -334,6 +335,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				tgui.ui_interact(usr)
 			return TRUE
 
+		if ("open_food")
+			GLOB.food_prefs_menu.ui_interact(usr)
+			return TRUE
+
 		if ("set_tricolor_preference")
 			var/requested_preference_key = params["preference"]
 			var/index_key = params["value"]
@@ -539,6 +544,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			.++
 
 /datum/preferences/proc/validate_quirks()
+	if(CONFIG_GET(flag/disable_quirk_points))
+		return
 	if(GetQuirkBalance() < 0)
 		all_quirks = list()
 

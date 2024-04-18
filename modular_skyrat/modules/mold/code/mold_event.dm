@@ -48,17 +48,18 @@
 		if(!is_type_in_typecache(checked_area, possible_spawn_areas))
 			continue
 
-		for(var/turf/open/floor in checked_area.get_contained_turfs())
-			if(isopenspaceturf(floor))
-				continue
+		for (var/list/zlevel_turfs as anything in checked_area.get_zlevel_turf_lists())
+			for(var/turf/area_turf as anything in zlevel_turfs)
+				if(isopenspaceturf(area_turf))
+					continue
 
-			if(!floor.Enter(test_resin))
-				continue
+				if(!area_turf.Enter(test_resin))
+					continue
 
-			if(locate(/turf/closed) in range(2, floor))
-				continue
+				if(locate(/turf/closed) in range(2, area_turf))
+					continue
 
-			turfs += floor
+				turfs += area_turf
 
 	qdel(test_resin)
 
