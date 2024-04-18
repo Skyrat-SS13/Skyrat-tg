@@ -64,7 +64,7 @@
 	icon_state = "chicken_patty"
 
 /datum/food_processor_process/meat/chicken
-	blacklist = list(/obj/item/food/meat/slab/chicken)
+	blacklist = list(/obj/item/food/meat/slab/chicken/human)
 
 /datum/food_processor_process/meat/chicken/human
 	input = /obj/item/food/meat/slab/chicken/human

@@ -1,6 +1,6 @@
 /datum/emote/living/scream
 	message = "screams!"
-	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
+	mob_type_blacklist_typecache = list(/mob/living/basic/slime, /mob/living/brain)
 	vary = TRUE
 
 /datum/emote/living/scream/run_emote(mob/living/user, params)

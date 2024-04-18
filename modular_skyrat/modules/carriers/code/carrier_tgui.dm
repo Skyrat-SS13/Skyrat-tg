@@ -38,6 +38,9 @@
 		"description" = html_decode(room.room_description),
 		"reference" = REF(room),
 		"joinable" = room.joinable,
+		"overlay_name" = (ispath(room.current_overlay_path) && initial(room.current_overlay_path.name)),
+		"overlay_recolorable" = room.overlay_recolorable,
+		"overlay_color" = room.overlay_color,
 		"color" = room.room_color,
 		"currently_targeted" = currently_targeted,
 		)
@@ -202,6 +205,52 @@
 				return FALSE
 
 			target_room.room_color = new_room_color
+
+		if("change_overlay_color")
+			var/new_overlay_color = input(usr, "", "Choose Color", SOULCATCHER_DEFAULT_COLOR) as color
+			// It's okay for us not to have an overlay color
+
+			target_room.overlay_color = new_overlay_color
+			target_room.change_fullscreen_overlay(target_room.current_overlay_path)
+
+		if("change_overlay")
+			var/mob/living/user = usr
+			var/disable_vore_overlays = CONFIG_GET(flag/disable_erp_preferences) || !safe_read_pref(user.client, /datum/preference/toggle/erp/vore_overlay_options)
+			var/list/available_overlays = list()
+
+			for(var/path in subtypesof(/atom/movable/screen/fullscreen/carrier))
+				var/atom/movable/screen/fullscreen/carrier/carrier_atom = path
+				var/atom_name = initial(carrier_atom.name)
+
+				if(initial(carrier_atom.vore_overlay))
+					if(disable_vore_overlays) // No, we don't want that.
+						continue
+					atom_name += " (Vore)"
+
+				available_overlays[atom_name] = path
+
+			available_overlays += "None"
+			var/target_overlay = tgui_input_list(usr, "Choose a overlay to use", name, available_overlays)
+			if(target_overlay != "None")
+				target_overlay = available_overlays[target_overlay]
+
+			if(!target_overlay)
+				return FALSE
+
+			target_room.change_fullscreen_overlay(target_overlay)
+			return TRUE
+
+		if("preview_overlay")
+			var/mob/living/user = usr
+			if(!istype(user))
+				return FALSE
+
+			var/atom/movable/screen/fullscreen/carrier/new_screen = user.overlay_fullscreen("carrier", target_room.current_overlay_path)
+			if(new_screen.recolorable && target_room.overlay_color)
+				new_screen.color = target_room.overlay_color
+
+			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, clear_fullscreen), "carrier"), 15 SECONDS)
+
 
 		if("toggle_soul_sense")
 			var/sense_to_change = params["sense_to_change"]

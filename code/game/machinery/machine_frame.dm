@@ -12,7 +12,6 @@
 /obj/structure/frame/machine/Initialize(mapload)
 	. = ..()
 	register_context()
-	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/frame/machine/Destroy()
 	QDEL_LIST(components)
@@ -25,24 +24,19 @@
 		dump_contents()
 	return ..()
 
-/obj/structure/frame/machine/try_dissassemble(mob/living/user, obj/item/tool, disassemble_time)
-	if(anchored)
-		balloon_alert(user, "must be unsecured first!")
-		return FALSE
-	return ..()
-
 /obj/structure/frame/machine/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = NONE
 	if(isnull(held_item))
 		return
 
+	if(held_item.tool_behaviour == TOOL_WRENCH && !circuit?.needs_anchored)
+		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Un" : ""]anchor"
+		return CONTEXTUAL_SCREENTIP_SET
+
 	switch(state)
 		if(FRAME_STATE_EMPTY)
 			if(istype(held_item, /obj/item/stack/cable_coil))
 				context[SCREENTIP_CONTEXT_LMB] = "Wire Frame"
-				return CONTEXTUAL_SCREENTIP_SET
-			else if(held_item.tool_behaviour == TOOL_WRENCH)
-				context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Un" : ""]anchor"
 				return CONTEXTUAL_SCREENTIP_SET
 			else if(held_item.tool_behaviour == TOOL_WELDER)
 				context[SCREENTIP_CONTEXT_LMB] = "Unweld frame"
@@ -61,11 +55,6 @@
 			if(held_item.tool_behaviour == TOOL_CROWBAR)
 				context[SCREENTIP_CONTEXT_LMB] = "Pry out components"
 				return CONTEXTUAL_SCREENTIP_SET
-			else if(held_item.tool_behaviour == TOOL_WRENCH)
-				if(!circuit.needs_anchored)
-					context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Un" : ""]anchor"
-					return CONTEXTUAL_SCREENTIP_SET
-				return NONE
 			else if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
 				var/needs_components = FALSE
 				for(var/component in req_components)
@@ -95,6 +84,8 @@
 	if(!circuit?.needs_anchored)
 		. += span_notice("It can be [EXAMINE_HINT("anchored")] [anchored ? "loose" : "in place"]")
 	if(state == FRAME_STATE_EMPTY)
+		if(!anchored)
+			. += span_notice("It can be [EXAMINE_HINT("welded")] or [EXAMINE_HINT("screwed")] apart.")
 		. += span_warning("It needs [EXAMINE_HINT("5 cable")] pieces to wire it.")
 		return
 	if(state == FRAME_STATE_WIRED)
@@ -470,5 +461,6 @@
 	return TRUE
 
 /obj/structure/frame/machine/secured
+	icon_state = "box_1"
 	state = FRAME_STATE_WIRED
 	anchored = TRUE

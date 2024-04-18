@@ -131,7 +131,7 @@
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
 
-	use_power(500)
+	use_energy(500 JOULES)
 
 /// Ejects the occupant after asking them if they want to accept the rejuvenation. If yes, they exit as their preferences character.
 /obj/machinery/self_actualization_device/proc/eject_new_you()
@@ -168,6 +168,7 @@
 			message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
 			Original Name: [original_name], New Name: [patient.dna.real_name]. \
 			This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+		SSquirks.AssignQuirks(patient, patient.client)
 		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 	open_machine()
