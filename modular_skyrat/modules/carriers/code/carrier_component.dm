@@ -203,15 +203,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 
 	if(original_room.room_exit_text)
-		to_chat(target_mob_span_notice(original_room.room_exit_text))
-	else
+		to_chat(target_mob, span_notice(original_room.room_exit_text))
 
-	target_soul.clear_fullscreen("carrier", FALSE)
-	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
+	target_mob.clear_fullscreen("carrier", FALSE)
+	to_chat(target_mob, span_cyan("you've been transferred to [target_room]!"))
 
 	to_chat(target_mob, span_cyan("you've been transferred to [target_room]!"))
 	if(target_room.room_enter_text)
-		to_chat(mob_to_add, span_notice(room_enter_text))
+		to_chat(target_mob, span_notice(target_room.room_enter_text))
 	to_chat(target_mob, span_notice(target_room.room_description))
 
 	return TRUE
@@ -307,7 +306,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(room_enter_text)
 		to_chat(mob_to_add, span_notice(room_enter_text))
 	else
-		to_chat(mob_to_add, cyan("You find yourself now inside of: [name]"))
+		to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
 
 	to_chat(mob_to_add, span_notice(room_description))
 
