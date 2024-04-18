@@ -202,11 +202,11 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 					return FALSE
 
 				if(scripture.power_cost > GLOB.clock_power)
-					living_user.balloon_alert(living_user, "[scripture.power_cost]W required!")
+					living_user.balloon_alert(living_user, "[display_energy(scripture.power_cost)] required!")
 					return FALSE
 
 				if(scripture.vitality_cost > GLOB.clock_vitality)
-					living_user.balloon_alert(living_user, "[scripture.vitality_cost] vitality required!")
+					living_user.balloon_alert(living_user, "[display_energy(scripture.vitality_cost)] vitality required!")
 					return FALSE
 
 				scripture.begin_invoke(living_user, src)

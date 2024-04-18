@@ -46,11 +46,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "aj" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/mech_recharger,
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /obj/effect/turf_decal/siding/dark{
@@ -801,11 +797,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/ore_redemption,
 /obj/item/assembly/igniter,
 /turf/open/floor/iron/dark/textured_large,
@@ -1254,7 +1246,7 @@
 "fd" = (
 /mob/living/basic/bot/medbot/stationary{
 	faction = list("Syndicate");
-	maints_access_required = list("syndicate");
+	req_one_access = list("syndicate");
 	name = "Insurgent Care";
 	radio_channel = "Syndicate"
 	},
@@ -1477,11 +1469,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "gw" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/component_printer,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 5
@@ -1942,11 +1930,7 @@
 	dir = 4
 	},
 /obj/item/circuitboard/machine/circuit_imprinter/offstation,
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "il" = (
@@ -2302,11 +2286,7 @@
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "jJ" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/mechfab,
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /turf/open/floor/iron/dark,
@@ -2773,11 +2753,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 9
 	},
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/smes,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -3510,11 +3486,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "pk" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/module_duplicator,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
@@ -4646,6 +4618,7 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/structure/cable,
+/obj/item/folded_navigation_gigabeacon,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "uf" = (
@@ -4781,11 +4754,7 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "vd" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/cyborgrecharger,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
@@ -5500,11 +5469,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "zh" = (
@@ -5911,12 +5876,7 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/red/directional/north,
-/obj/item/folded_navigation_gigabeacon,
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/machinery/rnd/server/interdyne,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "Bj" = (
@@ -7477,11 +7437,7 @@
 	dir = 5
 	},
 /obj/item/circuitboard/machine/destructive_analyzer,
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "IM" = (
@@ -7522,11 +7478,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "IU" = (
 /obj/item/circuitboard/machine/ammo_workbench,
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/disk/ammo_workbench/advanced,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
@@ -10411,11 +10363,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/light/red/directional/south,
 /obj/item/circuitboard/machine/ore_silo,
-/obj/structure/frame/machine{
-	anchored = 1;
-	icon_state = "box_1";
-	state = 2
-	},
+/obj/structure/frame/machine/secured,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "VJ" = (

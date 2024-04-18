@@ -1,33 +1,7 @@
 // Numbing effects
-/datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/affected_mob)
-	. = ..()
-	ADD_TRAIT(affected_mob, TRAIT_NUMBED, type) // ANAESTHETIC FOR SURGERY PAIN
-	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
-/datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/affected_mob)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, type) // ANAESTHETIC FOR SURGERY PAIN
-	affected_mob.clear_alert("numbed")
-	return ..()
-
-/datum/reagent/consumable/ethanol/drunken_espatier/on_mob_metabolize(mob/living/affected_mob)
-	. = ..()
-	ADD_TRAIT(affected_mob, TRAIT_NUMBED, type)
-	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed)
-
-/datum/reagent/consumable/ethanol/drunken_espatier/on_mob_end_metabolize(mob/living/affected_mob)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, type)
-	affected_mob.clear_alert("numbed")
-	return ..()
-
-/datum/reagent/medicine/mine_salve/on_mob_metabolize(mob/living/affected_mob)
-	ADD_TRAIT(affected_mob, TRAIT_NUMBED, type)
-	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed)
-	return ..()
-
-/datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/affected_mob)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, type)
-	affected_mob.clear_alert("numbed")
-	return ..()
+/datum/reagent/consumable/ethanol/drunken_espatier
+	metabolized_traits = list(TRAIT_ANALGESIA)
 
 //Changeling balancing
 /datum/reagent/medicine/rezadone/expose_mob(mob/living/carbon/exposed_mob, methods=TOUCH, reac_volume)

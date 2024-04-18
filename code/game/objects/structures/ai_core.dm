@@ -214,7 +214,7 @@
 					if(C.get_amount() >= 5)
 						playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 						balloon_alert(user, "adding cables to frame...")
-						if(do_after(user, 20, target = src) && state == SCREWED_CORE && C.use(5))
+						if(do_after(user, 2 SECONDS, target = src) && state == SCREWED_CORE && C.use(5))
 							balloon_alert(user, "added cables to frame.")
 							state = CABLED_CORE
 							update_appearance()
@@ -241,7 +241,7 @@
 					if(G.get_amount() >= 2)
 						playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 						balloon_alert(user, "adding glass panel...")
-						if(do_after(user, 20, target = src) && state == CABLED_CORE && G.use(2))
+						if(do_after(user, 2 SECONDS, target = src) && state == CABLED_CORE && G.use(2))
 							balloon_alert(user, "added glass panel")
 							state = GLASS_CORE
 							update_appearance()
@@ -440,5 +440,10 @@ That prevents a few funky behaviors.
 /obj/item/circuitboard/aicore
 	name = "AI core (AI Core Board)" //Well, duh, but best to be consistent
 	var/battery = 200 //backup battery for when the AI loses power. Copied to/from AI mobs when carding, and placed here to avoid recharge via deconning the core
+
+/obj/item/circuitboard/aicore/Initialize(mapload)
+	. = ..()
+	if(mapload && HAS_TRAIT(SSstation, STATION_TRAIT_HUMAN_AI))
+		return INITIALIZE_HINT_QDEL
 
 #undef AI_CORE_BRAIN

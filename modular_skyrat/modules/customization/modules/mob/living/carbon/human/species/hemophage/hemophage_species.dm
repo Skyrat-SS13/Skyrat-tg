@@ -28,6 +28,9 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	veteran_only = TRUE
 
+/datum/species/hemophage/allows_food_preferences()
+	return FALSE
+
 /datum/species/hemophage/get_default_mutant_bodyparts()
 	return list(
 		"legs" = list("Normal Legs", FALSE),
@@ -43,7 +46,6 @@
 	. = ..()
 	to_chat(new_hemophage, HEMOPHAGE_SPAWN_TEXT)
 	new_hemophage.update_body()
-	new_hemophage.set_safe_hunger_level()
 
 
 /datum/species/hemophage/get_species_description()
