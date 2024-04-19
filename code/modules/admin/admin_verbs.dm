@@ -391,12 +391,21 @@ GLOBAL_PROTECT(admin_verbs_poll)
 			body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		BLACKBOX_LOG_ADMIN_VERB("Admin Ghost")
 
+<<<<<<< HEAD
 /client/proc/invisimin()
 	set name = "Invisimin"
 	set category = "Admin.Game"
 	set desc = "Toggles ghost-like invisibility (Don't abuse this)"
 
 	if(isnull(holder) || isnull(mob))
+=======
+ADMIN_VERB(invisimin, R_ADMIN, "Invisimin", "Toggles ghost-like invisibility.", ADMIN_CATEGORY_GAME)
+	if(HAS_TRAIT(user.mob, TRAIT_INVISIMIN))
+		REMOVE_TRAIT(user.mob, TRAIT_INVISIMIN, ADMIN_TRAIT)
+		user.mob.add_to_all_human_data_huds()
+		user.mob.RemoveInvisibility(INVISIBILITY_SOURCE_INVISIMIN)
+		to_chat(user, span_adminnotice(span_bold("Invisimin off. Invisibility reset.")), confidential = TRUE)
+>>>>>>> fa28207f6bb (Fixes a minor spelling mistake on the admin panel/verb list (#82747))
 		return
 
 	if(HAS_TRAIT(mob, TRAIT_INVISIMIN))
