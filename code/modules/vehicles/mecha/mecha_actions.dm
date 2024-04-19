@@ -91,6 +91,7 @@
 
 	chassis.toggle_strafe()
 
+<<<<<<< HEAD
 /obj/vehicle/sealed/mecha/AltClick(mob/living/user)
 	if(!(user in occupants) || !user.can_perform_action(src))
 		return
@@ -99,6 +100,8 @@
 		return
 
 	toggle_strafe()
+=======
+>>>>>>> b122176c607 (Alt click no longer conflicts with mech suit [no gbp] (#82758))
 
 /obj/vehicle/sealed/mecha/proc/toggle_strafe()
 	if(!(mecha_flags & CAN_STRAFE))
@@ -107,7 +110,9 @@
 
 	strafe = !strafe
 
-	to_chat(occupants, "strafing mode [strafe?"on":"off"].")
+	for(var/mob/occupant in occupants)
+		balloon_alert(occupant, "strafing [strafe?"on":"off"]")
+		occupant.playsound_local(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
 	log_message("Toggled strafing mode [strafe?"on":"off"].", LOG_MECHA)
 
 	for(var/occupant in occupants)
