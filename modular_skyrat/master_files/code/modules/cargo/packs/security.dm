@@ -131,7 +131,7 @@
 	crate_name = "eland pistols crate"
 
 /datum/supply_pack/security/armory/cawilmarksmanrifle
-	name = "Cawil Marksman Rifle Crates"
+	name = "Carwil Marksman Rifle Crates"
 	desc = "Contains 2 Cawil Marksman Rifle with spare ammunition."
 	cost = CARGO_CRATE_VALUE * 17.5
 	contains = list(/obj/item/gun/ballistic/automatic/sol_rifle/marksman = 2,
