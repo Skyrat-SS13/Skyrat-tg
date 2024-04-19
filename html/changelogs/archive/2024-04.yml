@@ -346,3 +346,54 @@
   - rscadd: 'Adds the following emotes: howl, pant.'
   - rscadd: Adds audio to clear_throat (male and female cues)
   - rscdel: Removed duplicate definition for clear_throat.
+2024-04-19:
+  Bisar:
+  - bugfix: Mechs will no longer delete their living non-occupant contents when destroyed.
+  Majkl-J:
+  - code_imp: All cafe areas are now children of /area/centcom/holding/cafe
+  - bugfix: There is only one borg inducer now, fixing a few bugs related to there
+      being multiple under the same path
+  Melbert:
+  - refactor: Staff of Healing should perform slightly better.
+  Nerev4r:
+  - rscadd: Teshari are now more agile, better at hearing stuff, and can feast on
+      carrion!
+  - spellcheck: The language icon and description for Schechi has been reworked to
+      be more lore-compliant.
+  Rhials:
+  - bugfix: The tide of post-round blob zombies when a blob wins will no longer break
+      the speakers in your headset.
+  SkyratBot:
+  - bugfix: Fixes Radiation Hood not having FOV blockage
+  - bugfix: Autolathe correctly computes the print amount of custom material items
+      like toolboxes and doesn't grey out its print button
+  - bugfix: 'LUA: Registering a signal on a deleted datum will throw a more descriptive
+      error message.'
+  - qol: slaughter/laughter demons have a cooler round end report
+  - qol: you may not bodyslam yourself as a demon
+  - code_imp: slaughter and laughter demons are given their antag datum when their
+      mind initializes
+  - bugfix: Medipens can no longer be deepfried, closing an exploit that allowed people
+      to drain/inject chems into it with saltshakers and IV drips.
+  - bugfix: fixes ody sleeper UI not updating to new chems to inject.
+  - bugfix: fixes ody sleeper not telling user why they can't pick up a person.
+  - code_imp: gives a common method for giving reagent list data to .tsx
+  - bugfix: Netpods have had their security against exploits increased.
+  - bugfix: deathmatch can no longer occassionally send people to nullspace
+  - bugfix: facescarf ui toggle button works again
+  - qol: Basic dexterous mobs now have a health doll and screen damage indication
+      like other basic mobs.
+  - bugfix: Vorpal Scythe execute messages now read correctly.
+  - bugfix: Bit avatars no longer have access to free binary comms with the AI outfit
+  - image: Fixed the lobby menu's collapse button being offset by a pixel
+  jjpark-kb:
+  - rscadd: added the cursed ash carver (ashwalker crusher)
+  - rscadd: added primitive bonesetter and primitive-looking plant bags
+  - balance: removed the time limit from the ash staff
+  - balance: doubled the volume of the primitive centrifuge (50 to 100)
+  - balance: removed the consumption of bluespace in many ashwalker rituals
+  - rscadd: added the research paper from simple research (4 cloth in the crafting
+      menu)
+  - rscadd: added the research skill
+  - balance: experisci scanner affected by research skill
+  - balance: xenoarch affected by research skill
