@@ -176,4 +176,3 @@
 	ai_controller.set_ai_status(AI_STATUS_ON)
 	forceMove(limb.drop_location())
 	qdel(limb)
-

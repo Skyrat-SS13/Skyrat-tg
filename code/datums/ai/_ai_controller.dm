@@ -316,7 +316,11 @@ multiple modular subtrees with behaviors
 	switch(ai_status)
 		if(AI_STATUS_ON)
 			START_PROCESSING(SSai_behaviors, src)
+<<<<<<< HEAD
 		if(AI_STATUS_OFF)
+=======
+		if(AI_STATUS_OFF, AI_STATUS_IDLE)
+>>>>>>> 153d09e4c47 (Fix Primal Instincts (#82741))
 			STOP_PROCESSING(SSai_behaviors, src)
 			CancelActions()
 
