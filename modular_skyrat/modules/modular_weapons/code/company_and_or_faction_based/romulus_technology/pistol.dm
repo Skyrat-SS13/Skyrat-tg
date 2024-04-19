@@ -6,5 +6,3 @@
 	icon = 'modular_zubbers/icons/obj/reshipistol.dmi'
 	icon_state = "m1911"
 
-/obj/item/gun/ballistic/automatic/romulus_liberator
-
