@@ -274,7 +274,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
                 <Dropdown
                   width="100%"
                   options={job.alt_titles}
-                  displayText={alt_title_selected}
+                  selected={alt_title_selected}
                   onSelected={(value) =>
                     act('set_job_title', { job: name, new_title: value })
                   }
