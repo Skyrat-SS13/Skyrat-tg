@@ -191,16 +191,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	max_mobs = 7
 	spawn_time = 20 SECONDS
 	mob_types = list(
-		/mob/living/simple_animal/hostile/alien,
-		/mob/living/simple_animal/hostile/alien/drone,
-		/mob/living/simple_animal/hostile/alien/sentinel
+		/mob/living/basic/alien,
+		/mob/living/basic/alien/drone,
+		/mob/living/basic/alien/sentinel
 	)
 	spawn_text = "crawls out of"
 	faction = list(ROLE_ALIEN)
-	var/boss_mob = /mob/living/simple_animal/hostile/alien/queen/large
+	var/boss_mob = /mob/living/basic/alien/queen/large
 	var/loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
 
-/obj/structure/spawner/tarkon_xenos/deconstruct(disassembled)
+/obj/structure/spawner/tarkon_xenos/atom_deconstruct(disassembled)
 	var/obj/effect/nest_break/nest = new /obj/effect/nest_break(loc)
 	nest.loot_drop = loot_drop
 	nest.boss_mob = boss_mob
@@ -230,7 +230,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	. = ..()
 	visible_message(span_boldannounce("The nest rumbles violently as the entrance begins to crack and break apart!"))
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, FALSE, 50, TRUE, TRUE)
-	addtimer(CALLBACK(src, PROC_REF(rustle)), 50)
+	addtimer(CALLBACK(src, PROC_REF(rustle)), 5 SECONDS)
 	do_jiggle()
 
 /obj/structure/spawner/tarkon_xenos/common
@@ -241,7 +241,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	max_integrity = 300
 	max_mobs = 4
 	spawn_time = 30 SECONDS
-	boss_mob = /mob/living/simple_animal/hostile/alien/queen
+	boss_mob = /mob/living/basic/alien/queen
 	loot_drop = /obj/effect/spawner/random/astrum/sci_loot/tarkon
 
 /obj/structure/spawner/tarkon_xenos/minor
@@ -253,10 +253,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	max_mobs = 2
 	spawn_time = 30 SECONDS
 	mob_types = list(
-		/mob/living/simple_animal/hostile/alien,
-		/mob/living/simple_animal/hostile/alien/drone
+		/mob/living/basic/alien,
+		/mob/living/basic/alien/drone
 	)
-	boss_mob = /mob/living/simple_animal/hostile/alien/sentinel
+	boss_mob = /mob/living/basic/alien/sentinel
 	loot_drop = /obj/effect/spawner/random/exotic/technology/tarkon
 
 /obj/effect/spawner/random/astrum/sci_loot/tarkon

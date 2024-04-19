@@ -419,7 +419,7 @@
 	return TRUE
 
 // Machine deconstruction process handler
-/obj/structure/chair/milking_machine/deconstruct(disassembled)
+/obj/structure/chair/milking_machine/atom_deconstruct(disassembled)
 	if(beaker)
 		beaker.forceMove(drop_location())
 		adjust_item_drop_location(beaker)
