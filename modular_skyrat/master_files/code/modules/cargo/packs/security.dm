@@ -3,14 +3,15 @@
 /datum/supply_pack/security/ammo
 	special = TRUE
 
-//The price seems silly but do understand that ballistic should  be as restricted as possible
-//We should prioritise the availability and viability of energy weapon first and foremost
-
 /datum/supply_pack/security/armory/ballistic
 	name = "Peacekeeper Combat Shotguns Crates"
 	contains = list(/obj/item/gun/ballistic/shotgun/automatic/combat = 3,
 					/obj/item/storage/pouch/ammo = 3,
 					/obj/item/storage/belt/bandolier = 3)
+
+//The price seems silly but do understand that ballistic should  be as restricted as possible
+//We should prioritise the availability and viability of energy weapon first and foremost
+
 
 /datum/supply_pack/goody/energy_single
 	name = "Energy Gun Single-Pack"
