@@ -129,12 +129,14 @@
 	contraband = TRUE
 	cost = PAYCHECK_COMMAND * 14
 	restricted = TRUE
-
+//Begone 
+/*
 /datum/armament_entry/company_import/nri_surplus/firearm/anti_materiel_rifle
 	item_type = /obj/item/gun/ballistic/automatic/wylom
 	contraband = TRUE
 	cost = PAYCHECK_COMMAND * 16
 	restricted = TRUE
+*/
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo
 	subcategory = "Firearm Magazines"
@@ -154,8 +156,9 @@
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/lanca
 	item_type = /obj/item/ammo_box/magazine/lanca/spawns_empty
 	contraband = TRUE
-
+/*
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/amr_magazine
 	item_type = /obj/item/ammo_box/magazine/wylom
 	contraband = TRUE
 	cost = PAYCHECK_CREW * 3
+*/
