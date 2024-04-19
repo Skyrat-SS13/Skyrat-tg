@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { sortBy, sortStrings } from 'common/collections';
 import { BooleanLike, classes } from 'common/react';
+=======
+import { sortBy } from 'common/collections';
+import { BooleanLike } from 'common/react';
+>>>>>>> f81f52aa3ef (Makes dropdowns better (#82697))
 import {
   ComponentType,
   createElement,
@@ -123,16 +128,15 @@ export const CheckboxInputInverse = (
   );
 };
 
-export const createDropdownInput = <T extends string | number = string>(
+export function createDropdownInput<T extends string | number = string>(
   // Map of value to display texts
   choices: Record<T, ReactNode>,
   dropdownProps?: Record<T, unknown>,
-): FeatureValue<T> => {
+): FeatureValue<T> {
   return (props: FeatureValueProps<T>) => {
     return (
       <Dropdown
-        selected={props.value}
-        displayText={choices[props.value]}
+        selected={choices[props.value] as string}
         onSelected={props.handleSetValue}
         width="100%"
         options={sortChoices(Object.entries(choices)).map(
@@ -147,7 +151,7 @@ export const createDropdownInput = <T extends string | number = string>(
       />
     );
   };
-};
+}
 
 export type FeatureChoicedServerData = {
   choices: string[];
@@ -157,6 +161,7 @@ export type FeatureChoicedServerData = {
 
 export type FeatureChoiced = Feature<string, string, FeatureChoicedServerData>;
 
+<<<<<<< HEAD
 const capitalizeFirstLetter = (text: string) =>
   text.toString().charAt(0).toUpperCase() + text.toString().slice(1);
 
@@ -287,6 +292,8 @@ export const FeatureIconnedDropdownInput = (
   );
 };
 
+=======
+>>>>>>> f81f52aa3ef (Makes dropdowns better (#82697))
 export type FeatureNumericData = {
   minimum: number;
   maximum: number;
