@@ -3,21 +3,22 @@
 /datum/supply_pack/security/ammo
 	special = TRUE
 
-/datum/supply_pack/security/armor
-	special = TRUE
+/datum/supply_pack/goody/energy_single
+	name = "Energy Gun Single-Pack"
+	desc = "Contains one energy gun, capable of firing both nonlethal and lethal blasts of light."
+	cost = PAYCHECK_COMMAND * 6
+	access_view = ACCESS_WEAPONS
+	contains = list(/obj/item/gun/energy/e_gun)
 
-/datum/supply_pack/security/disabler
-	cost = CARGO_CRATE_VALUE * 5
+//The price seems silly but do understand that ballistic should  be as restricted as possible
+//We should prioritise the availability and viability of energy weapon first and foremost
 
-/datum/supply_pack/security/helmets
-	special = TRUE
-
-/datum/supply_pack/security/securityclothes
-	special = TRUE
-
-/datum/supply_pack/security/armory/thermal
-	access = ACCESS_SECURITY
-	access_view = ACCESS_SECURITY
+/datum/supply_pack/goody/laser_single
+	name = "Laser Gun Single-Pack"
+	desc = "Contains one laser gun, the lethal workhorse of Nanotrasen security everywehere."
+	cost = PAYCHECK_COMMAND * 3
+	access_view = ACCESS_WEAPONS
+	contains = list(/obj/item/gun/energy/laser)
 
 /datum/supply_pack/security/armory/ballistic
 	name = "Peacekeeper Combat Shotguns Crates"
@@ -25,10 +26,19 @@
 					/obj/item/storage/pouch/ammo = 3,
 					/obj/item/storage/belt/bandolier = 3)
 
-/datum/supply_pack/security/disabler
-	cost = CARGO_CRATE_VALUE * 3
-//Why were these made more expensive?
-//Good question
+/datum/supply_pack/goody/energy_single
+	name = "Energy Gun Single-Pack"
+	desc = "Contains one energy gun, capable of firing both nonlethal and lethal blasts of light."
+	cost = PAYCHECK_COMMAND * 12
+	access_view = ACCESS_WEAPONS
+	contains = list(/obj/item/gun/energy/e_gun)
+
+/datum/supply_pack/goody/laser_single
+	name = "Laser Gun Single-Pack"
+	desc = "Contains one laser gun, the lethal workhorse of Nanotrasen security everywehere."
+	cost = PAYCHECK_COMMAND * 6
+	access_view = ACCESS_WEAPONS
+	contains = list(/obj/item/gun/energy/laser)
 
 /datum/supply_pack/security/armory/ionrifle
 	name = "Ion Carbine Crate"
@@ -103,7 +113,7 @@
 //SOL GUNS
 
 /datum/supply_pack/security/wespe
-	name = "Wespe Crates"
+	name = "Wespe Three-Pack Crates"
 	desc = "Contains three case of the .35 sol handgun, magazines included."
 	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/wespe = 3,
@@ -112,7 +122,7 @@
 	crate_name = "wespe pistols crate"
 
 /datum/supply_pack/security/eland
-	name = "Eland Crate"
+	name = "Eland Three-Pack Crates"
 	desc = "Contains three case of the .35 sol revolver, munition boxes included."
 	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/eland = 3,
