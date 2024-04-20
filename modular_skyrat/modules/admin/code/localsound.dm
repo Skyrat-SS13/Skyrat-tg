@@ -2,6 +2,8 @@
 #define SHELLEO_STDOUT 2
 #define SHELLEO_STDERR 3
 
+#define COOLDOWN_LOCAL_INTERNET_SOUND "local_internet_sound"
+
 ///Takes an input from either proc/play_web_sound or the request manager and runs it through youtube-dl and prompts the user before playing it to the server.
 /proc/localweb_sound(mob/user, input, credit,range = null)
 	if(!check_rights(R_SOUND))
@@ -88,20 +90,18 @@
 
 		return
 	if(localweb_sound_url || stop_localweb_sounds)
-		for(var/m in GLOB.player_list)
-			var/mob/M = m
-			var/client/C = M.client
-			if (range)
-				var/players = list()
-				for (var/mob/listening_mob as anything in hearers(range,user))
-					if(listening_mob.client)
-						players += listening_mob
-			for(var/mob/player_mob as anything in players)
-			if(C.prefs.read_preference(/datum/preference/toggle/sound_midi))
-			if(!stop_localweb_sounds)
-				player_mob.client.tgui_panel?.play_music(localweb_sound_url, music_extra_data)
-			else
-				player_mob.client.tgui_panel?.stop_music()
+		var/list/players = GLOB.player_list
+		if (range)
+			players = list()
+			for (var/mob/listening_mob as anything in hearers(range, user))
+				if (listening_mob.client)
+					players += listening_mob
+		for(var/mob/player_mob as anything in players)
+			if(player_mob.client.prefs.read_preference(/datum/preference/toggle/sound_midi))
+				if(!stop_localweb_sounds)
+					player_mob.client.tgui_panel?.play_music(localweb_sound_url, music_extra_data)
+				else
+					player_mob.client.tgui_panel?.stop_music()
 
 	S_TIMER_COOLDOWN_START(SStimer, COOLDOWN_LOCAL_INTERNET_SOUND, duration)
 
