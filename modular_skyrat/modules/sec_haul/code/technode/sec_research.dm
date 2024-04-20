@@ -292,4 +292,17 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+//Conversion Kit
 
+/datum/design/sol_rifle_carbine_kit
+	name = "Sol Carbine Conversion Part Kit"
+	desc = "The kit to brutalise your functional battle rifle into a short carbine, ideal for close quarter."
+	id = "nuclear_gun"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/weaponcrafting/gunkit/sol_rifle_carbine_kit
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+	autolathe_exportable = FALSE
