@@ -1,5 +1,7 @@
+//Security Crafting Recipe
+
 /datum/crafting_recipe/sol_rifle_carbine_kit
-	name = "Sol Carbine"
+	name = "Sol Carbine Conversion"
 	result = /obj/item/gun/ballistic/automatic/sol_rifle/carbine
 	reqs = list(
 		/obj/item/gun/ballistic/automatic/sol_rifle = 1,
