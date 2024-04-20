@@ -157,7 +157,7 @@
 		return
 
 	time -= 1 SECONDS
-	use_power(active_power_usage)
+	use_energy(active_power_usage)
 
 	var/turf/where_we_spawn_air = get_turf(src)
 	var/obj/item/stack/ore/ore_stack_to_check = contents[1]

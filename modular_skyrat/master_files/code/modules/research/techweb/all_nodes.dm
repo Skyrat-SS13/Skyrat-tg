@@ -239,7 +239,6 @@
 /datum/techweb_node/cyborg_upg_engiminer/New()
 	design_ids += list(
 		"advanced_materials",
-		"inducer_module",
 	)
 	return ..()
 

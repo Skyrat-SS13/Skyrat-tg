@@ -25,7 +25,7 @@
 		return
 	if(istype(target, /obj/structure/drain))
 		var/obj/structure/drain/drain_target = target
-		if(do_after(user, 20, target = target))
+		if(do_after(user, 2 SECONDS, target = target))
 			drain_target.deconstruct() //Let's not substract matter
 			playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
 	else

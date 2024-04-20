@@ -658,7 +658,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 		user.visible_message(span_danger("[src] goes off!"), span_danger("[src] goes off in your face!"))
 		return
 
-	if(do_after(user, 30, target = src))
+	if(do_after(user, 3 SECONDS, target = src))
 		if(sawn_off)
 			return
 		user.visible_message(span_notice("[user] shortens [src]!"), span_notice("You shorten [src]."))
@@ -688,7 +688,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	user.changeNext_move(CLICK_CD_MELEE)
 	balloon_alert(user, "cleaning...")
 
-	if(do_after(user, 100, target = src))
+	if(do_after(user, 10 SECONDS, target = src))
 		misfire_probability = initial(misfire_probability)
 		balloon_alert(user, "fouling cleaned out")
 		return TRUE
