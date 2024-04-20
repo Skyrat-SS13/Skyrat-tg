@@ -1,11 +1,11 @@
-/obj/item/gun/ballistic/automatic/sol_rifle/carbine
+/obj/item/gun/ballistic/automatic/rom_carbine
 	name = "\improper RomTech Carbine"
 	desc = "An unusual conversion of the Carwo-Carwil Battle Rifle by Romulus Technology, preferred by some law enforcement agency for the compact nature. Accepts any standard .40 SolFed rifle magazine."
 
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/guns48x32.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun48x32.dmi'
 	icon_state = "carbine"
 
-	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_worn.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
 	worn_icon_state = "infanterie"
 
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
