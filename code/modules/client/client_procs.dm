@@ -263,11 +263,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.ahelp_tickets.ClientLogin(src)
 	GLOB.interviews.client_login(src)
 	GLOB.requests.client_login(src)
-	//SKYRAT EDIT ADDITION //We will check the population here, because we need to know if the client is an admin or not.
-	if(!check_population(connecting_admin))
-		qdel(src)
-		return
-	// SKYRAT EDIT END
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
 	if(prefs)
@@ -351,6 +346,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
+	//SKYRAT EDIT ADDITION //We will check the population here, because we need to know if the client is an admin or not.
+	if(!check_population(connecting_admin))
+		qdel(src)
+		return
+	// SKYRAT EDIT END
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
 			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))

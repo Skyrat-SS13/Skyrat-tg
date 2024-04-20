@@ -18,7 +18,7 @@ ADMIN_VERB(cmd_admin_say, R_NONE, "ASay", "Send a message to other admins", ADMI
 
 	user.mob.log_talk(message, LOG_ASAY)
 	message = keywords_lookup(message)
-	send_asay_to_other_server(ckey, msg) //SKYRAT EDIT ADDITION
+	send_asay_to_other_server(user.ckey, message) //SKYRAT EDIT ADDITION
 	var/asay_color = user.prefs.read_preference(/datum/preference/color/asay_color)
 	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && asay_color) ? "<font color=[asay_color]>" : "<font color='[DEFAULT_ASAY_COLOR]'>"
 	message = "[span_adminsay("[span_prefix("ADMIN:")] <EM>[key_name_admin(user)]</EM> [ADMIN_FLW(user.mob)]: [custom_asay_color]<span class='message linkify'>[message]")]</span>[custom_asay_color ? "</font>":null]"
