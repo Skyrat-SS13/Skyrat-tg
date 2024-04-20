@@ -123,7 +123,7 @@
 		Would you like to override?", "Musicalis Interruptus", list("No","Yes")) != "Yes")
 			return
 
-	var/web_sound_input = tgui_input_text(usr, "Enter content URL (supported sites only, leave blank to stop playing)", "Play Internet Sound", null)
+	var/web_sound_input = tgui_input_text(usr, "Enter content URL (supported sites only, leave blank to stop playing)", "Play Local Internet Sound", null)
 
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
@@ -131,7 +131,7 @@
 			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."), confidential = TRUE)
 			to_chat(src, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
 			return
-		var/number_input = tgui_input_number(usr, "What range would you like to play it in? (leave empty for everyone)", "Play Internet Sound", null)
+		var/number_input = tgui_input_number(usr, "What range would you like to play it in? (leave empty for everyone)", "Play Local Internet Sound", null)
 		localweb_sound(usr, web_sound_input, range=number_input)
 	else
 		localweb_sound(usr, null, null, null)
