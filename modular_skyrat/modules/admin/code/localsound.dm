@@ -5,7 +5,7 @@
 #define COOLDOWN_LOCAL_INTERNET_SOUND "local_internet_sound"
 
 ///Takes an input from either proc/play_web_sound or the request manager and runs it through youtube-dl and prompts the user before playing it to the server.
-/proc/localweb_sound(mob/user, input, credit,range = null)
+/proc/localweb_sound(mob/user, input, credit, range = null)
 	if(!check_rights(R_SOUND))
 		return
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
@@ -132,6 +132,6 @@
 			to_chat(src, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
 			return
 		var/number_input = tgui_input_number(usr, "What range would you like to play it in? (leave empty for everyone)", "Play Internet Sound", null)
-		localweb_sound(usr, web_sound_input, number_input)
+		localweb_sound(usr, web_sound_input, range=number_input)
 	else
-		localweb_sound(usr, null, null)
+		localweb_sound(usr, null, null, null)
