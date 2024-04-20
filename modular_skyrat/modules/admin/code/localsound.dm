@@ -131,6 +131,7 @@
 			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."), confidential = TRUE)
 			to_chat(src, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
 			return
-		web_sound(usr, web_sound_input)
+		var/number_input = tgui_input_number(usr, "What range would you like to play it in? (leave empty for everyone)", "Play Internet Sound", null)
+		localweb_sound(usr, web_sound_input, number_input)
 	else
-		web_sound(usr, null)
+		localweb_sound(usr, null, null)
