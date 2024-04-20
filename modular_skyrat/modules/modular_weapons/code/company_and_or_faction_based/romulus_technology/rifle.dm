@@ -20,7 +20,7 @@
 	fire_delay = 0.24 SECONDS
 
 	spread = 9.5
-	projectile_wound_bonus = -30
+	projectile_wound_bonus = -35
 
 /obj/item/gun/ballistic/automatic/sol_rifle/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMULUS)
