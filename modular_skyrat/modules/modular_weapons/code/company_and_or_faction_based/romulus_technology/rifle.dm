@@ -23,7 +23,7 @@
 	projectile_wound_bonus = -35
 
 /obj/item/gun/ballistic/automatic/sol_rifle/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMULUS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
 /obj/item/gun/ballistic/automatic/sol_rifle/carbine/examine(mob/user)
 	. = ..()
