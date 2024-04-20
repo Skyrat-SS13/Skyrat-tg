@@ -32,8 +32,9 @@
 /obj/item/gun/ballistic/automatic/sol_rifle/carbine/examine_more(mob/user)
 	. = ..()
 
-	. += "This Design was made by RomTech for \
-		usage during the start of the NRI-Sol Border war. Following the embargo and trade restriction \
+	. += "This Design was made by Romulus Technology for \
+		usage during the start of the NRI-Sol Border war. \
+		Following the embargo and trade restriction \
 		making it impossible for Romulus Federation to source weapory, \
 		with this design being rapidly pushed out, being made from converted rifle making it easier to acquire, \
 		this rifle seems rather unassuming but it has been, itself, the new symbol of peace  \
