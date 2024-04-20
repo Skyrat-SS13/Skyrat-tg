@@ -361,34 +361,34 @@
 	fire = 80
 	acid = 40
 
-/obj/structure/deployable_barricade/metal/AltClick(mob/user)
+/obj/structure/deployable_barricade/metal/click_alt(mob/user)
 	if(portable_type)
 		if(anchored)
 			to_chat(user, span_warning("[src] cannot be folded up while anchored to the ground!"))
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		if(barricade_upgrade_type)
 			to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		if(get_integrity() < max_integrity)
 			to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		user.visible_message(span_notice("[user] starts folding [src] up!"), span_notice("You start folding [src] up!"))
 		if(do_after(user, 5 SECONDS, src))
 			if(QDELETED(src)) //Copied encase we change states.
 				return
 			if(anchored)
 				to_chat(user, span_warning("[src] cannot be folded up while anchored to the ground!"))
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			if(barricade_upgrade_type)
 				to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			if(get_integrity() < max_integrity)
 				to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			user.visible_message(span_notice("[user] folds [src] up!"), span_notice("You neatly fold [src] up!"))
 			playsound(src, 'sound/items/ratchet.ogg', 25, TRUE)
 			fold_up()
-			return TRUE
+			return CLICK_ACTION_SUCCESS
 	return ..()
 
 /obj/structure/deployable_barricade/metal/proc/fold_up()

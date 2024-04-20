@@ -40,31 +40,27 @@
 		"medium" = image(icon = src.icon, icon_state = "buttplug_pink_medium"),
 		"big" = image(icon = src.icon, icon_state = "buttplug_pink_big"))
 
-/obj/item/clothing/sextoy/buttplug/AltClick(mob/user)
+/obj/item/clothing/sextoy/buttplug/click_alt(mob/user)
 	if(!color_changed)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, buttplug_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_color = choice
 		update_icon()
 		if(choice == "green")
 			set_light(0.25)
 			update_light()
 		color_changed = TRUE
+		return CLICK_ACTION_SUCCESS
 	else
 		if(form_changed == FALSE)
-			. = ..()
-			if(.)
-				return
 			var/choice = show_radial_menu(user, src, buttplug_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			current_size = choice
 			update_icon()
 			form_changed = TRUE
+			return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/buttplug/Initialize(mapload)
 	. = ..()

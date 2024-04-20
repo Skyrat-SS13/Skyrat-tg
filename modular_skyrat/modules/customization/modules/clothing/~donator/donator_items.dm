@@ -256,11 +256,11 @@
 		else
 			icon_state = "catear_headphone[song?.playing ? "_on" : null]"
 
-/obj/item/instrument/piano_synth/headphones/catear_headphone/AltClick(mob/user)
-	. = ..()
+/obj/item/instrument/piano_synth/headphones/catear_headphone/click_alt(mob/user)
 	catTailToggled = !catTailToggled
 	user.update_worn_head()
 	update_icon(UPDATE_OVERLAYS)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/instrument/piano_synth/headphones/catear_headphone/update_overlays()
 	. = ..()

@@ -843,7 +843,7 @@
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
 
-/obj/item/clothing/suit/space/hev_suit/pcv/AltClick(mob/living/user)
+/obj/item/clothing/suit/space/hev_suit/pcv/click_alt(mob/living/user)
 	reskin_obj(user)
 	. = ..()
 

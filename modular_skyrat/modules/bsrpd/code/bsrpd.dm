@@ -48,13 +48,11 @@
 
 	. += span_notice("<b>Alt-Click</b> to toggle remote piping.")
 
-/obj/item/pipe_dispenser/bluespace/AltClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return // too far away
+/obj/item/pipe_dispenser/bluespace/click_alt(mob/user)
 	remote_piping_toggle = !remote_piping_toggle
 	balloon_alert(user, "remote piping [remote_piping_toggle ? "on" : "off"]")
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/pipe_dispenser/bluespace/afterattack(atom/target, mob/user, prox)
 	if(prox || !remote_piping_toggle) // If we are in proximity to the target or have our safety on, don't use charge and don't call this shitcode.
