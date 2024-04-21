@@ -67,6 +67,11 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
 	force = 15
 
+	special_mags = TRUE
+
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m45a5
+	spawn_magazine_type = /obj/item/ammo_box/magazine/m45a5
+
 /obj/item/gun/ballistic/automatic/pistol/m45a5/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 

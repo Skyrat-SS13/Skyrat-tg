@@ -12,6 +12,8 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_righthand.dmi'
 	inhand_icon_state = "carbine"
 
+	special_mags = TRUE
+
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
@@ -21,6 +23,9 @@
 
 	spread = 9.5
 	projectile_wound_bonus = -35
+
+	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
 
 /obj/item/gun/ballistic/automatic/rom_carbine/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)

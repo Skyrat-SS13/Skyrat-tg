@@ -20,3 +20,6 @@
 
 /// Caliber used by the pepperball gun
 #define CALIBER_PEPPERBALL "pepperball"
+
+/// Used by the Rowland Magnum Pistol
+#define CALIBER_460ROWLAND ".460 Rowland Magnum"
