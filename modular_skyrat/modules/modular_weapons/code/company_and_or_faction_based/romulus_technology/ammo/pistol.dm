@@ -65,13 +65,12 @@
 	caliber = CALIBER_457GOVT
 	projectile_type = /obj/projectile/bullet/c457govt/dart
 
-/obj/projectile/bullet/c457/dart
+/obj/projectile/bullet/c457govt/dart
 	name = ".457 Government Accelerating"
 	damage = 15
 
 	wound_bonus = -10
 	bare_wound_bonus = -10
 	armour_penetration = 45
-	damage_falloff_tile -5
 	speed = 0.5
 	range = 14
