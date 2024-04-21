@@ -28,7 +28,7 @@
 
 /obj/item/storage/bag/b460reloadpouch
 	name = "reload pouch"
-	desc = "A pouch for holding loose casings for .357 ammo. incompatible with anything else. Fit on your belt too"
+	desc = "A pouch for holding loose casings for .357 ammo and .457 ammo. incompatible with anything else. Fit on your belt too"
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/pouches.dmi'
 	icon_state = "reloadpouch"
 	slot_flags = ITEM_SLOT_POCKETS | ITEM_SLOT_BELT
