@@ -15,9 +15,9 @@
 
 /datum/techweb_node/magazineresearch
 	id = "storedmunition_tech_two"
-	display_name = "Military Grade Munition Research"
-	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
-	prereq_ids = list("adv_weaponry")
+	display_name = "Romulus Technology Research"
+	description = "Romulus is a major Industrial powerhouse in the outerrim, but they also logistical difficulties, learn how they lasted."
+	prereq_ids = list("storedmunition_tech")
 	design_ids = list(
 		"sol_rifle_carbine_gun"
 	)
@@ -27,7 +27,7 @@
 	id = "storedmunition_tech_three"
 	display_name = "Anti Eldritch Munition Research"
 	description = "The same technology we used to defeat eldritch god, even you can have it"
-	prereq_ids = list("syndicate_basic")
+	prereq_ids = list("syndicate_basic","storedmunition_tech_two")
 	design_ids = list(
 		"sol40_rifldrummag",
 	)
