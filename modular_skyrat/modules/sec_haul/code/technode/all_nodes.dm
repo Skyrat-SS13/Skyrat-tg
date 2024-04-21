@@ -20,8 +20,8 @@
 	description = "Romulus is a major Industrial powerhouse in the outerrim, but they also faced logistical difficulties, learn how they lasted."
 	prereq_ids = list("storedmunition_tech")
 	design_ids = list(
-		"sol_rifle_carbine_gun"
-		"sol_smg_rapidfire_kit"
+		"sol_rifle_carbine_gun",
+		"sol_smg_rapidfire_kit",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
