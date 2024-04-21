@@ -21,6 +21,7 @@
 	prereq_ids = list("storedmunition_tech")
 	design_ids = list(
 		"sol_rifle_carbine_gun"
+		"sol_smg_rapidfire_kit"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
