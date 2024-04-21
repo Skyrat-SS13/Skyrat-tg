@@ -44,7 +44,7 @@
 	atom_storage.numerical_stacking = TRUE
 	atom_storage.set_holdable(list(
 		/obj/item/ammo_casing/c457govt,
-		/obj/item/ammo_casing/c357,
+		/obj/item/ammo_casing/a357,
 	))
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver
