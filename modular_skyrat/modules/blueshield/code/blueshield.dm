@@ -37,6 +37,8 @@
 		/obj/item/stack/spacecash/c500 = 3,
 		/obj/item/disk/nuclear/fake/obvious = 2,
 		/obj/item/clothing/head/collectable/captain = 4,
+		/obj/item/gun/energy/disabler/smoothbore = 1,
+		/obj/item/restraints/legcuffs/bola/energy = 10,
 	)
 
 	veteran_only = TRUE

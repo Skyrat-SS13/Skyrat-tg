@@ -55,6 +55,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/choice_beacon/ntc = 1,
+		/obj/item/gun/energy/e_gun/mini = 1,
 		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -152,5 +153,3 @@
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/storage/bag/garment/nanotrasen_consultant(src)
 	new /obj/item/choice_beacon/station_magistrate(src)
-
-

@@ -22,14 +22,14 @@
 	spread = 9.5
 	projectile_wound_bonus = -35
 
-/obj/item/gun/ballistic/automatic/sol_rifle/give_manufacturer_examine()
+/obj/item/gun/ballistic/automatic/rom_carbine/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
-/obj/item/gun/ballistic/automatic/sol_rifle/carbine/examine(mob/user)
+/obj/item/gun/ballistic/automatic/rom_carbine/examine(mob/user)
 	. = ..()
 	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
 
-/obj/item/gun/ballistic/automatic/sol_rifle/carbine/examine_more(mob/user)
+/obj/item/gun/ballistic/automatic/rom_carbine/examine_more(mob/user)
 	. = ..()
 
 	. += "This Design was made by Romulus Technology for \

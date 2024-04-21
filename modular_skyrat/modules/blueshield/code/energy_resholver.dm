@@ -2,7 +2,7 @@
 //Icon and such by @EspeciallyStrange 'Calvin'
 
 /obj/item/gun/energy/e_gun/blueshield
-	name = "energy revolver"
+	name = "X-02 energy revolver"
 	desc = "An energy weapon fitted with self recharging-cells. Feels somewhat heavy to carry and would certainly hurt to get whacked by."
 	icon = 'modular_skyrat/modules/blueshield/icons/energy.dmi'
 	icon_state = "blackgrip"
