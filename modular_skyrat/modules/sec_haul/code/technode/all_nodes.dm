@@ -11,13 +11,21 @@
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+
+/datum/techweb_node/magazineresearch
+	id = "storedmunition_tech_two"
+	display_name = "Military Grade Munition Research"
+	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
+	prereq_ids = list("adv_weaponry")
+	design_ids = list(
 		"sol_rifle_carbine_gun"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 20000)
 
 /datum/techweb_node/magazineresearch_heavy
-	id = "storedmunition_tech_two"
-	display_name = "Advanced Munition Research"
+	id = "storedmunition_tech_three"
+	display_name = "Anti Eldritch Munition Research"
 	description = "The same technology we used to defeat eldritch god, even you can have it"
 	prereq_ids = list("syndicate_basic")
 	design_ids = list(
