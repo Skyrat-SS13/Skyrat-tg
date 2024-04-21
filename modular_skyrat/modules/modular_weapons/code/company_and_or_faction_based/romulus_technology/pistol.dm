@@ -91,8 +91,8 @@
 		usage during the start of the NRI-Sol Border war. \
 		Following the embargo and trade restriction \
 		making it impossible for Romulus Federation to source weapory, \
-		with this design being rapidly pushed out, being made from converted rifle making it easier to acquire, \
-		this rifle seems rather unassuming but it has been, itself, the new symbol of peace  \
+		with this design being rapidly pushed out, being made from an advanced sol design \
+		this pistol seems rather unassuming but it has been, itself, the new symbol of peace  \
 		Leaving NRI weapon in the past, as it now became the symbol of the oppressive era of Romulus\
 		To whom it may concerns, These weapon were mostly used by the new Romulus National Army,\
 		 it was a symbol of struggle and freedom \
