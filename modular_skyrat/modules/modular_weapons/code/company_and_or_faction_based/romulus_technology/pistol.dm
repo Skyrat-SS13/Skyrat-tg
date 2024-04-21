@@ -10,7 +10,7 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
 
 /obj/item/gun/ballistic/revolver/hos_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
@@ -64,7 +64,7 @@
 	desc = "A standard issue pistol given to officers in Romulus Federation, chambered in .460 Rowland Magnum, now commonly found in the hands of high ranking NanotTrasen Staff"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/pistol.dmi'
 	icon_state = "m45a5"
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
 	force = 15
 
 	special_mags = TRUE
