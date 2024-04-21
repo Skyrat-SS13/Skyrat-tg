@@ -114,6 +114,12 @@
 	fail_prob = min(max(0, modded_time - (time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)),99)//if modded_time > time * modifier, then fail_prob = modded_time - time*modifier. starts at 0, caps at 99
 	modded_time = min(modded_time, time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)//also if that, then cap modded_time at time*modifier
 
+<<<<<<< HEAD
+=======
+	if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
+		modded_time = time * tool.toolspeed
+
+>>>>>>> b11bdb19102 (Adds Omnitools for engineer and medical cyborgs, reducing on inventory clutter. (#82425))
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
 	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
