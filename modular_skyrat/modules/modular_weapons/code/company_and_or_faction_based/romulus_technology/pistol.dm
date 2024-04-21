@@ -33,7 +33,6 @@
 	icon_state = "reloadpouch"
 	slot_flags = ITEM_SLOT_POCKETS | ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
-	resistance_flags = FLAMMABLE
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
 	worn_icon_state = ""
 
@@ -43,6 +42,10 @@
 	atom_storage.max_total_storage = 30
 	atom_storage.max_slots = 30
 	atom_storage.numerical_stacking = TRUE
+	atom_storage.set_holdable(list(
+		/obj/item/ammo_casing/c457govt,
+		/obj/item/ammo_casing/c357,
+	))
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver
 	name = "heavy revolver .357"
