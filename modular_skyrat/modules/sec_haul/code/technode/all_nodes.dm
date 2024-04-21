@@ -11,7 +11,7 @@
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
 /datum/techweb_node/magazineresearch
 	id = "storedmunition_tech_two"
@@ -21,7 +21,7 @@
 	design_ids = list(
 		"sol_rifle_carbine_gun"
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 20000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
