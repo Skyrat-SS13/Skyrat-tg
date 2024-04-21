@@ -36,3 +36,42 @@
 	bare_wound_bonus = -10
 	weak_against_armour = FALSE
 	armour_penetration = 40
+
+//457
+
+/obj/item/ammo_casing/c457govt
+	name = ".460 Rowland Rose bullet casing"
+	desc = "A Romulus Tech standard lethal pistol round."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
+	icon_state = "sl-casing"
+
+	caliber = CALIBER_457GOVT
+	projectile_type = /obj/projectile/bullet/c457govt
+
+/obj/projectile/bullet/c457govt
+	name = ".457 Government"
+	damage = 35
+	wound_bonus = -10
+	bare_wound_bonus = -5
+	weak_against_armour = FALSE
+	damage_falloff_tile = 0.7
+
+/obj/item/ammo_casing/c457govt/dart
+	name = ".457 Government Accelerating"
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
+	icon_state = "sr-casing"
+
+	caliber = CALIBER_457GOVT
+	projectile_type = /obj/projectile/bullet/c457govt/dart
+
+/obj/projectile/bullet/c457/dart
+	name = ".460 Rowland Armour Piercing"
+	damage = 25
+
+	wound_bonus = -10
+	bare_wound_bonus = -10
+	weak_against_armour = FALSE
+	armour_penetration = 40
+
