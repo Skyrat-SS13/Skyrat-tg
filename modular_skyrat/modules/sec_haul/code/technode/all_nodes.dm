@@ -26,8 +26,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 45000)  //Unreasonably expensive and locked behind multiple tier of research, you can have abit of powercreep as a treat
 
 /datum/techweb_node/weaponry/New()
-	design_ids += "wt550_ammo_rubber"
-	design_ids += "wt550_ammo_flathead"
 	design_ids += "sol35_shortmag"
 	design_ids += "m45_mag"
 	design_ids += "s12g_hornet"
@@ -45,15 +43,7 @@
 	design_ids += "solgrenade_mag"
 	. = ..()
 
-/datum/techweb_node/exotic_ammo/New()
-	design_ids += "wt550_ammo_ap"
-	. = ..()
-
 /datum/techweb_node/syndicate_basic/New()
-	design_ids -= "mag_autorifle"
-	design_ids -= "mag_autorifle_ap"
-	design_ids -= "mag_autorifle_ic"
-	design_ids += "wt550_ammo_incendiary"
 	design_ids += "s12g_magnum"
 	design_ids += "s12g_express"
 	. = ..()
