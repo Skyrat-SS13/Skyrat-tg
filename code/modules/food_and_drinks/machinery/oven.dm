@@ -239,6 +239,46 @@
 	max_items = 6
 	biggest_w_class = WEIGHT_CLASS_BULKY
 
+<<<<<<< HEAD
+=======
+/obj/item/plate/oven_tray/item_interaction_secondary(mob/living/user, obj/item/item, list/modifiers)
+	if(isnull(item.atom_storage))
+		return NONE
+
+	for(var/obj/tray_item in src)
+		item.atom_storage.attempt_insert(tray_item, user, TRUE)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/plate/oven_tray/item_interaction(mob/living/user, obj/item/item, list/modifiers)
+	if(isnull(item.atom_storage))
+		return NONE
+
+	if(length(contents) >= max_items)
+		balloon_alert(user, "it's full!")
+		return ITEM_INTERACT_BLOCKING
+
+	if(!istype(item, /obj/item/storage/bag/tray))
+		// Non-tray dumping requires a do_after
+		to_chat(user, span_notice("You start dumping out the contents of [item] into [src]..."))
+		if(!do_after(user, 2 SECONDS, target = item))
+			return ITEM_INTERACT_BLOCKING
+
+	var/loaded = 0
+	for(var/obj/tray_item in item)
+		if(!IS_EDIBLE(tray_item))
+			continue
+		if(length(contents) >= max_items)
+			break
+		if(item.atom_storage.attempt_remove(tray_item, src))
+			loaded++
+			AddToPlate(tray_item, user)
+	if(loaded)
+		to_chat(user, span_notice("You insert [loaded] item\s into [src]."))
+		update_appearance()
+		return ITEM_INTERACT_SUCCESS
+	return ITEM_INTERACT_BLOCKING
+
+>>>>>>> 6c3f9a74ed4 (Fix oven tray runtime (#82782))
 #undef OVEN_SMOKE_STATE_NONE
 #undef OVEN_SMOKE_STATE_GOOD
 #undef OVEN_SMOKE_STATE_NEUTRAL
