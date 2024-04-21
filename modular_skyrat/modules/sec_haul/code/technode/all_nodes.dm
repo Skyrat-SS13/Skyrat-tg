@@ -16,7 +16,7 @@
 /datum/techweb_node/magazineresearch
 	id = "storedmunition_tech_two"
 	display_name = "Romulus Technology Research"
-	description = "Romulus is a major Industrial powerhouse in the outerrim, but they also logistical difficulties, learn how they lasted."
+	description = "Romulus is a major Industrial powerhouse in the outerrim, but they also faced logistical difficulties, learn how they lasted."
 	prereq_ids = list("storedmunition_tech")
 	design_ids = list(
 		"sol_rifle_carbine_gun"
@@ -25,13 +25,13 @@
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
-	display_name = "Anti Eldritch Munition Research"
-	description = "The same technology we used to defeat eldritch god, even you can have it"
+	display_name = "Hostile Environment Risk Control Weaponry Research"
+	description = "The same technology used in the Sol 2184 Campaign, Highly classified."
 	prereq_ids = list("syndicate_basic","storedmunition_tech_two")
 	design_ids = list(
 		"sol40_rifldrummag",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 45000)  //Unreasonably expensive and locked behind multiple tier of research, you can have abit of powercreep as a treat
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 25000)  //Unreasonably expensive and locked behind multiple tier of research, you can have abit of powercreep as a treat
 
 /datum/techweb_node/weaponry/New()
 	design_ids += "sol35_shortmag"
