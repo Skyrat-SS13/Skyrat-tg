@@ -6,7 +6,7 @@
 
 /obj/item/gun/ballistic/revolver/hos_revolver
 	name = "\improper HR-460MS"
-	desc = "A large unwiedly revolver developed by Romulus Technology  prior to destruction of the planet, if the initial damage did not kill, the bleedout would. Uses the brutal .460 Rowland ammo."
+	desc = "A large unwiedly revolver developed by Romulus Technology  prior to destruction of the planet, if the initial damage did not kill, the bleedout would. Uses .357."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
@@ -22,18 +22,20 @@
 
 /obj/item/gun/ballistic/revolver/hos_revolver/long
 	name = "\improper HR-460LR"
-	desc = "A long unwiedly revolver from Romulus Technology. chambered in the rare .460 Rowland. You might be able to kill someone by whacking it over the head"
+	desc = "A long unwiedly revolver from Romulus Technology. chambered in the rare .357. You might be able to kill someone by whacking it over the head"
 	icon_state = "tracker"
 	force = 15
 
 /obj/item/storage/bag/b460reloadpouch
 	name = "reload pouch"
-	desc = "A pouch for holding loose casings for .460 Rowland ammo. incompatible with anything else. Fit on your belt too"
+	desc = "A pouch for holding loose casings for .357 ammo. incompatible with anything else. Fit on your belt too"
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/pouches.dmi'
 	icon_state = "reloadpouch"
 	slot_flags = ITEM_SLOT_POCKETS | ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
+	worn_icon_state = ""
 
 /obj/item/storage/bag/b460reloadpouch/Initialize(mapload)
 	. = ..()
@@ -43,7 +45,7 @@
 	atom_storage.numerical_stacking = TRUE
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver
-	name = "heavy revolver .460"
+	name = "heavy revolver .357"
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver/PopulateContents()
 	. = ..()
