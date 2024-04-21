@@ -33,13 +33,68 @@
 	id = "comp_ccharge"
 	build_path = /obj/item/circuit_component/cell_charge
 
-/datum/techweb_node/comp_advanced_sensors
-	id = "comp_advanced_sensors"
-	display_name = "Advanced Sensor Components"
-	description = "Grants access to advanced sensor components component for shells."
-	prereq_ids = list("adv_shells")
-	design_ids = list(
-		"comp_tscanner",
-		"comp_ccharge",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)
+//NTNet Transmitter List Literal
+/datum/design/component/list_literal/ntnet_send
+	name = "NTNet Transmitter List Literal"
+	id = "comp_list_literal_ntnet_send"
+	build_path = /obj/item/circuit_component/list_literal/ntnet_send
+
+//Reagent Injector Component (Bluespace)
+/datum/design/component/bci/reagent_injector_bluespace
+	name = "Reagent Injector Component (Bluespace)"
+	id = "comp_reagent_injector_bluespace"
+	build_path = /obj/item/circuit_component/reagent_injector_bluespace
+
+//User Status
+/datum/design/component/bci/user_status
+	name = "User Status"
+	id = "comp_user_status"
+	build_path = /obj/item/circuit_component/compare/user_status
+
+//Drone Camera
+/datum/design/component/drone_camera
+	name = "Drone Camera"
+	id = "comp_drone_camera"
+	build_path = /obj/item/circuit_component/compare/remotecam/drone
+
+//Polaroid Camera Add-On
+/datum/design/component/polaroid_camera
+	name = "Polaroid Camera Add-On"
+	id = "comp_polaroid_camera"
+	build_path = /obj/item/circuit_component/compare/remotecam/polaroid
+
+//Eye Camera
+/datum/design/component/bci/eye_camera
+	name = "Eye Camera"
+	id = "comp_eye_camera"
+	build_path = /obj/item/circuit_component/compare/remotecam/bci
+
+//Toggle Component
+/datum/design/component/toggle
+	name = "Toggle Component"
+	id = "comp_toggle"
+	build_path = /obj/item/circuit_component/compare/toggle
+
+/datum/techweb_node/adv_shells/New()
+	. = ..()
+	design_ids += "comp_tscanner"
+	design_ids += "comp_ccharge"
+
+/datum/techweb_node/basic_circuitry/New()
+	. = ..()
+	design_ids += "comp_list_literal_ntnet_send"
+	design_ids += "comp_toggle"
+	design_ids += "comp_polaroid_camera"
+
+/datum/techweb_node/bci_shells/New()
+	. = ..()
+	design_ids += "comp_eye_camera"
+	design_ids += "comp_user_status"
+
+/datum/techweb_node/movable_shells_tech/New()
+	. = ..()
+	design_ids += "comp_drone_camera"
+
+/datum/techweb_node/syndicate_basic/New()
+	. = ..()
+	design_ids += "comp_reagent_injector_bluespace"
