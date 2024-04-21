@@ -11,10 +11,13 @@
 /obj/projectile/bullet/c460rowland
 	name = ".460 Rowland Rose"
 	damage = 30
+	stamina = 5 //knock the winds outta ya
 
 	wound_bonus = 30
 	bare_wound_bonus = 20
 	weak_against_armour = TRUE
+	damage_falloff_tile = 0.2
+	stamina_falloff_tile = 0.3
 
 /obj/item/ammo_casing/c460rowland/dart
 	name = ".460 Rowland Armour Piercing bullet casing"
