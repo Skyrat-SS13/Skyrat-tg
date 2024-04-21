@@ -839,6 +839,10 @@
 	inhand_icon_state = "sheath"
 	worn_icon_state = "sheath"
 	w_class = WEIGHT_CLASS_BULKY
+<<<<<<< HEAD
+=======
+	interaction_flags_click = parent_type::interaction_flags_click | NEED_DEXTERITY | NEED_HANDS
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 
 /obj/item/storage/belt/sabre/Initialize(mapload)
 	. = ..()

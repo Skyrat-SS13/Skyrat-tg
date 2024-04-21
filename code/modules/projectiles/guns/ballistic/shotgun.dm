@@ -85,6 +85,10 @@
 	w_class = WEIGHT_CLASS_HUGE
 	semi_auto = TRUE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/tube
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	/// If defined, the secondary tube is this type, if you want different shell loads
 	var/alt_mag_type
 	/// If TRUE, we're drawing from the alternate_magazine

@@ -372,6 +372,10 @@
  */
 /obj/item/paper/fake_report/water
 	grind_results = list(/datum/reagent/water = 5)
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 
 /obj/item/paper/fake_report/water/AltClick(mob/living/user, obj/item/I)
 	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))

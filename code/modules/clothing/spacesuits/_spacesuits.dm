@@ -58,11 +58,25 @@
 	equip_delay_other = 80
 	resistance_flags = NONE
 	actions_types = list(/datum/action/item_action/toggle_spacesuit)
+<<<<<<< HEAD
 	var/temperature_setting = BODYTEMP_NORMAL /// The default temperature setting
 	var/obj/item/stock_parts/cell/cell = /obj/item/stock_parts/cell/high /// If this is a path, this gets created as an object in Initialize.
 	var/cell_cover_open = FALSE /// Status of the cell cover on the suit
 	var/thermal_on = FALSE /// Status of the thermal regulator
 	var/show_hud = TRUE /// If this is FALSE the batery status UI will be disabled. This is used for suits that don't use bateries like the changeling's flesh suit mutation.
+=======
+	interaction_flags_click = NEED_DEXTERITY|ALLOW_RESTING
+	/// The default temperature setting
+	var/temperature_setting = BODYTEMP_NORMAL
+	/// If this is a path, this gets created as an object in Initialize.
+	var/obj/item/stock_parts/cell/cell = /obj/item/stock_parts/cell/high
+	/// Status of the cell cover on the suit
+	var/cell_cover_open = FALSE
+	/// Status of the thermal regulator
+	var/thermal_on = FALSE
+	/// If this is FALSE the batery status UI will be disabled. This is used for suits that don't use bateries like the changeling's flesh suit mutation.
+	var/show_hud = TRUE
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 
 /datum/armor/suit_space
 	bio = 100

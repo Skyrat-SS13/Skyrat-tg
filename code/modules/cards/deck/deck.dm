@@ -11,6 +11,10 @@
 	hitsound = null
 	attack_verb_continuous = list("attacks")
 	attack_verb_simple = list("attack")
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|FORBID_TELEKINESIS_REACH|ALLOW_RESTING
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	/// The amount of time it takes to shuffle
 	var/shuffle_time = DECK_SHUFFLE_TIME
 	/// Deck shuffling cooldown.

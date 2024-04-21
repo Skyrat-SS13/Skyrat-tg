@@ -7,6 +7,11 @@
 	throwforce = 0
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|FORBID_TELEKINESIS_REACH|ALLOW_RESTING
+	/// Amount on money on the card
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	var/credits = 0
 
 /obj/item/holochip/Initialize(mapload, amount = 1)

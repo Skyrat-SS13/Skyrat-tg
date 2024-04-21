@@ -173,6 +173,11 @@
 	armor_type = /datum/armor/fedora_det_hat
 	icon_state = "detective"
 	inhand_icon_state = "det_hat"
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
+	/// Cooldown for retrieving precious candy corn on alt click
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	var/candy_cooldown = 0
 	dog_fashion = /datum/dog_fashion/head/detective
 	///Path for the flask that spawns inside their hat roundstart
@@ -221,6 +226,10 @@
 	icon_state = "detective"
 	inhand_icon_state = "det_hat"
 	dog_fashion = /datum/dog_fashion/head/detective
+<<<<<<< HEAD
+=======
+	interaction_flags_click = FORBID_TELEKINESIS_REACH|ALLOW_RESTING
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	///prefix our phrases must begin with
 	var/prefix = "go go gadget"
 	///an assoc list of phrase = item (like gun = revolver)

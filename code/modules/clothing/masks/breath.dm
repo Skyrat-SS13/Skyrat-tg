@@ -12,6 +12,10 @@
 	flags_cover = MASKCOVERSMOUTH
 	visor_flags_cover = MASKCOVERSMOUTH
 	resistance_flags = NONE
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|ALLOW_RESTING
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 
 /datum/armor/mask_breath
 	bio = 50

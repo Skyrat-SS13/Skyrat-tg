@@ -20,6 +20,10 @@
 	light_range = 2
 	light_power = 2
 	light_on = FALSE
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	var/status = FALSE
 	var/lit = FALSE //on or off
 	var/operating = FALSE//cooldown

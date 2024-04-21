@@ -9,8 +9,17 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	custom_materials = list(/datum/material/iron= SMALL_MATERIAL_AMOUNT * 2.5, /datum/material/glass= SMALL_MATERIAL_AMOUNT * 5)
+<<<<<<< HEAD
 	var/max_duration = 3000
 	var/duration = 300
+=======
+	interaction_flags_click = NEED_DEXTERITY|ALLOW_RESTING
+	/// Max time this can be set
+	var/max_duration = 300 SECONDS
+	/// Currently set time
+	var/duration = 30 SECONDS
+	/// Last world time
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	var/last_use = 0
 	var/next_use = 0
 	var/obj/effect/abstract/sync_holder/sync_holder

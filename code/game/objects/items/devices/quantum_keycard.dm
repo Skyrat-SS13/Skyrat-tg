@@ -10,6 +10,11 @@
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	obj_flags = UNIQUE_RENAME
+<<<<<<< HEAD
+=======
+	interaction_flags_click = NEED_DEXTERITY|ALLOW_RESTING
+	/// The linked quantum pad
+>>>>>>> a21742ff606 (Adds `ALLOW_RESTING` to a bunch of items (#82761))
 	var/obj/machinery/quantumpad/qpad
 
 	/// where the pad is located and what color the card will become
