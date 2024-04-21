@@ -58,7 +58,7 @@
 /datum/supply_pack/security/wespe
 	name = "Wespe Three-Pack Crates"
 	desc = "Contains three case of the .35 sol handgun, magazines included."
-	cost = CARGO_CRATE_VALUE * 6
+	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/wespe = 3,
 					/obj/item/ammo_box/c35sol/incapacitator = 3,
 				)
@@ -67,7 +67,7 @@
 /datum/supply_pack/security/eland
 	name = "Eland Three-Pack Crates"
 	desc = "Contains three case of the .35 sol revolver, munition boxes included."
-	cost = CARGO_CRATE_VALUE * 6
+	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/eland = 3,
 					/obj/item/ammo_box/c35sol/incapacitator = 3,
 				)
