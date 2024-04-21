@@ -242,3 +242,16 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
+
+/datum/design/sol_smg_rapidfire_kit
+	name = "Romulus SMG Twin-Burst Conversion Kit"
+	desc = "The kit to brutalise your functional submachine gun into a monstrosity that fires in two round-burst at a faster rate."
+	id = "sol_smg_rapidfire_kit"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/weaponcrafting/gunkit/sol_smg_rapidfire_kit
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+	autolathe_exportable = FALSE

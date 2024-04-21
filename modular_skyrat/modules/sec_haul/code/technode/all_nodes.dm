@@ -14,7 +14,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
-/datum/techweb_node/magazineresearch
+/datum/techweb_node/magazineresearch_romfed
 	id = "storedmunition_tech_two"
 	display_name = "Romulus Technology Research"
 	description = "Romulus is a major Industrial powerhouse in the outerrim, but they also faced logistical difficulties, learn how they lasted."
