@@ -11,6 +11,7 @@
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
+	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
 /datum/techweb_node/magazineresearch
