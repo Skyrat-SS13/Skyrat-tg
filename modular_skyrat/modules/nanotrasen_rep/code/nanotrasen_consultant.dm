@@ -151,20 +151,6 @@
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/storage/bag/garment/nanotrasen_consultant(src)
+	new /obj/item/choice_beacon/station_magistrate(src)
 
-//Choice Beacon, I hope in the future they're going to be given proper unique gun but this will do.
 
-
-/obj/item/choice_beacon/ntc
-	name = "gunset beacon"
-	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
-	company_source = "Trappiste Fabriek Company"
-	company_message = span_bold("Supply Pod incoming please stand by")
-
-/obj/item/choice_beacon/ntc/generate_display_names()
-	var/static/list/selectable_gun_types = list(
-		"Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok,
-		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
-	)
-
-	return selectable_gun_types
