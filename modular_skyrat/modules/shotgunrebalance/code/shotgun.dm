@@ -154,7 +154,7 @@
 	desc = "A 12 gauge flechette shell that specializes in ripping unarmored targets apart."
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
-	pellets = 8 //8 x 6 = 48 Damage Potential
+	pellets = 8
 	variance = 25
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
@@ -163,10 +163,12 @@
 	name = "flechette"
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "flechette"
-	damage = 6
+	damage = 5
 	wound_bonus = 10
 	bare_wound_bonus = 20
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
+	weak_against_armour = FALSE
+	damage_falloff_tile = 0
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette/Initialize(mapload)
 	. = ..()

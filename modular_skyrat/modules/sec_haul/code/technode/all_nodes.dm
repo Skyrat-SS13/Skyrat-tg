@@ -7,7 +7,7 @@
 	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
 	prereq_ids = list("adv_weaponry")
 	design_ids = list(
-		"s12g_buckshot",
+		"s12g_flechette",
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
@@ -28,7 +28,7 @@
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
 	display_name = "Hostile Environment Risk Control Weaponry Research"
-	description = "The same technology used in the Sol 2184 Campaign, Highly classified."
+	description = "The same technology used in the Sol 2351 Campaign, Highly classified."
 	prereq_ids = list("syndicate_basic","storedmunition_tech_two")
 	design_ids = list(
 		"sol40_rifldrummag",
@@ -43,7 +43,7 @@
 	design_ids += "s12g_rubber"
 	design_ids += "s12g_bslug"
 	design_ids += "s12g_incinslug"
-	design_ids += "s12g_flechette"
+	design_ids += "s12g_buckshot"
 	. = ..()
 
 /datum/techweb_node/adv_weaponry/New()
