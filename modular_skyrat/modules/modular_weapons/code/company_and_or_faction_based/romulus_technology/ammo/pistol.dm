@@ -10,13 +10,13 @@
 
 /obj/projectile/bullet/c460rowland
 	name = ".460 Rowland Rose"
-	damage = 30
-	stamina = 5 //knock the winds outta ya
+	damage = 35
+	stamina = 8 //knock the winds outta ya
 
 	wound_bonus = 30
 	bare_wound_bonus = 20
 	weak_against_armour = TRUE
-	damage_falloff_tile = 0.2
+	damage_falloff_tile = 2.5
 	stamina_falloff_tile = 0.3
 
 /obj/item/ammo_casing/c460rowland/dart
@@ -32,10 +32,12 @@
 	name = ".460 Rowland Armour Piercing"
 	damage = 25
 
-	wound_bonus = -10
+	wound_bonus = -30
 	bare_wound_bonus = -10
 	weak_against_armour = FALSE
 	armour_penetration = 40
+	damage_falloff_tile = 0
+	stamina_falloff_tile = 0
 
 //457
 
