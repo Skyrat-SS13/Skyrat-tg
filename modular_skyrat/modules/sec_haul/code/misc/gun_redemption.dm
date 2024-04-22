@@ -50,3 +50,5 @@
 
 	return selectable_gun_types
 
+//Security Sidearm
+
