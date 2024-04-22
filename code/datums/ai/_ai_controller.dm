@@ -294,14 +294,19 @@ multiple modular subtrees with behaviors
 			if(subtree.SelectBehaviors(src, seconds_per_tick) == SUBTREE_RETURN_FINISH_PLANNING)
 				break
 
+<<<<<<< HEAD
 	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
 		if(LAZYACCESS(planned_behaviors, current_behavior))
 			continue
+=======
+	SEND_SIGNAL(src, COMSIG_AI_CONTROLLER_PICKED_BEHAVIORS, current_behaviors, planned_behaviors)
+	for(var/datum/ai_behavior/forgotten_behavior as anything in current_behaviors - planned_behaviors)
+>>>>>>> 1e78db84714 (Refactors how basic ais do their success/failures (#82643))
 		var/list/arguments = list(src, FALSE)
 		var/list/stored_arguments = behavior_args[type]
 		if(stored_arguments)
 			arguments += stored_arguments
-		current_behavior.finish_action(arglist(arguments))
+		forgotten_behavior.finish_action(arglist(arguments))
 
 ///This proc handles changing ai status, and starts/stops processing if required.
 /datum/ai_controller/proc/set_ai_status(new_ai_status)
@@ -323,6 +328,12 @@ multiple modular subtrees with behaviors
 /datum/ai_controller/proc/PauseAi(time)
 	paused_until = world.time + time
 
+<<<<<<< HEAD
+=======
+/datum/ai_controller/proc/modify_cooldown(datum/ai_behavior/behavior, new_cooldown)
+	behavior_cooldowns[behavior] = new_cooldown
+
+>>>>>>> 1e78db84714 (Refactors how basic ais do their success/failures (#82643))
 ///Call this to add a behavior to the stack.
 /datum/ai_controller/proc/queue_behavior(behavior_type, ...)
 	var/datum/ai_behavior/behavior = GET_AI_BEHAVIOR(behavior_type)
@@ -350,13 +361,23 @@ multiple modular subtrees with behaviors
 	var/list/stored_arguments = behavior_args[behavior.type]
 	if(stored_arguments)
 		arguments += stored_arguments
-	behavior.perform(arglist(arguments))
+
+	var/process_flags = behavior.perform(arglist(arguments))
+	if(process_flags & AI_BEHAVIOR_DELAY)
+		behavior_cooldowns[behavior] = world.time + behavior.get_cooldown(src)
+	if(process_flags & AI_BEHAVIOR_FAILED)
+		arguments[1] = src
+		arguments[2] = FALSE
+		behavior.finish_action(arglist(arguments))
+	else if (process_flags & AI_BEHAVIOR_SUCCEEDED)
+		arguments[1] = src
+		arguments[2] = TRUE
+		behavior.finish_action(arglist(arguments))
 
 /datum/ai_controller/proc/CancelActions()
 	if(!LAZYLEN(current_behaviors))
 		return
-	for(var/i in current_behaviors)
-		var/datum/ai_behavior/current_behavior = i
+	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
 		var/list/arguments = list(src, FALSE)
 		var/list/stored_arguments = behavior_args[current_behavior.type]
 		if(stored_arguments)
