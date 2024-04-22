@@ -95,7 +95,7 @@
 //I hate it
 
 /datum/design/advancedgaugeboxes
-	name = "12 Gauge Advanced Buckshot Ammunition Box"
+	name = "12 Gauge Advanced Buckshot Ammunition Box(Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_buckshot"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -107,7 +107,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_slug
-	name = "12 Gauge Advanced Slug Ammunition Box"
+	name = "12 Gauge Advanced Slug Ammunition Box(Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_slug"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -119,7 +119,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_flech
-	name = "12 Gauge Advanced Flechette Ammunition Box"
+	name = "12 Gauge Advanced Flechette Ammunition Box(Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_flechette"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -131,7 +131,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_antitide
-	name = "12 Gauge Advanced Anti Riot Ammunition Box"
+	name = "12 Gauge Advanced Anti Riot Ammunition Box(Non-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_antitide"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -143,7 +143,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_incinslug
-	name = "12 Gauge Advanced Incendiary Slug Ammunition Box"
+	name = "12 Gauge Advanced Incendiary Slug Ammunition Box(Very Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_incinslug"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -155,10 +155,10 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_hornet
-	name = "12 Gauge Advanced Hornest Anti Riot Ammunition Box"
+	name = "12 Gauge Advanced Hornest Anti Riot Ammunition Box(Non-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_hornet"
-	build_type = PROTOLATHE | AWAY_LATHE
+	build_type = PROTOLATHE | AWAY_LATHE)
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 8, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 25)
 	build_path = /obj/item/ammo_box/advanced/s12gauge/beehive
 	category = list(
@@ -167,7 +167,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_magnum
-	name = "12 Gauge Advanced Magnum Ammunition Box"
+	name = "12 Gauge Advanced Magnum Ammunition Box(Very Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_magnum"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -179,7 +179,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_express
-	name = "12 Gauge Advanced Express Ammunition Box"
+	name = "12 Gauge Advanced Express Ammunition Box(Very Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_express"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -191,7 +191,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_beanbagslug
-	name = "12 Gauge Advanced Bean Bag Ammunition Box"
+	name = "12 Gauge Advanced Bean Bag Ammunition Box(Non-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_bslug"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -203,7 +203,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_rubbershot
-	name = "12 Gauge Advanced Rubber Shot Ammunition Box"
+	name = "12 Gauge Advanced Rubber Shot Ammunition Box(Less-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_rubber"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -217,7 +217,7 @@
 // Misc Gun Stuff
 
 /datum/design/m45_mag
-	name = ".460 Ceres Pistol Magazine"
+	name = ".460 Ceres Pistol Magazine(Lethal)"
 	desc = "A standard magazine for pistol using .460 Ceres."
 	id = "m45_mag"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -231,7 +231,7 @@
 //Conversion Kit
 
 /datum/design/sol_rifle_carbine_kit
-	name = "Sol Carbine Conversion Part Kit"
+	name = "Sol Carbine Conversion Part Kit(Very Lethal)"
 	desc = "The kit to brutalise your functional battle rifle into a short carbine, ideal for close quarter."
 	id = "sol_rifle_carbine_gun"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -244,7 +244,7 @@
 	autolathe_exportable = FALSE
 
 /datum/design/sol_smg_rapidfire_kit
-	name = "Romulus SMG Twin-Burst Conversion Kit"
+	name = "Romulus SMG Twin-Burst Conversion Kit(Very Lethal)"
 	desc = "The kit to brutalise your functional submachine gun into a monstrosity that fires in two round-burst at a faster rate."
 	id = "sol_smg_rapidfire_kit"
 	build_type = PROTOLATHE | AWAY_LATHE
