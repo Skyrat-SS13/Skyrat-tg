@@ -21,12 +21,18 @@
 	return OXYLOSS
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)
-	adjustmask(user)
+	adjust_visor(user)
 
+<<<<<<< HEAD
 /obj/item/clothing/mask/breath/AltClick(mob/user)
 	..()
 	if(user.can_perform_action(src, NEED_DEXTERITY))
 		adjustmask(user)
+=======
+/obj/item/clothing/mask/breath/click_alt(mob/user)
+	adjust_visor(user)
+	return CLICK_ACTION_SUCCESS
+>>>>>>> 7847efd2707 ([READY] the unfuckening of clothing rendering (#79784))
 
 /obj/item/clothing/mask/breath/examine(mob/user)
 	. = ..()
