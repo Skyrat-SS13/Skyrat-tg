@@ -158,7 +158,7 @@
 	name = "12 Gauge Advanced Hornest Anti Riot Ammunition Box(Non-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_hornet"
-	build_type = PROTOLATHE | AWAY_LATHE)
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 8, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 25)
 	build_path = /obj/item/ammo_box/advanced/s12gauge/beehive
 	category = list(
