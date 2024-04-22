@@ -33,7 +33,7 @@
 
 	return selectable_gun_types
 
-
+//Station Central Command Staff
 
 /obj/item/choice_beacon/station_magistrate
 	name = "nanotrasen dignitaries weapon beacon"
@@ -44,8 +44,8 @@
 /obj/item/choice_beacon/station_magistrate/generate_display_names()
 	var/static/list/selectable_gun_types = list(
 		"Energy Revolver" = /obj/item/gun/energy/e_gun/blueshield,
-		".357 Romulus Revolver" = /obj/item/gun/ballistic/revolver/hos_revolver,
-		".460 Rowland Magnum Pistol" = /obj/item/gun/ballistic/automatic/pistol/m45a5,
+		".357 Romulus Revolver" = /obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver,
+		".460 Rowland Magnum Pistol" = /obj/item/storage/toolbox/guncase/m45a5
 	)
 
 	return selectable_gun_types

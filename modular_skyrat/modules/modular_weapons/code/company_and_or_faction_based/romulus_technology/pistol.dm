@@ -50,7 +50,7 @@
 /obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver
 	name = "heavy revolver .357"
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/hos_revolver/PopulateContents()
+/obj/item/storage/toolbox/guncase/hos_revolver/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/hos_revolver(src)
 	new /obj/item/storage/bag/b460reloadpouch(src)
@@ -63,6 +63,15 @@
 
 /obj/item/gun/ballistic/automatic/pistol/m1911/gold/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
+
+/obj/item/storage/toolbox/guncase/m45a5
+	name = "heavy pistol .460 magnum"
+
+/obj/item/storage/toolbox/guncase/m45a5/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "m45a5"
