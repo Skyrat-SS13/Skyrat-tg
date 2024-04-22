@@ -191,7 +191,7 @@
 
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
-		carbon_user.head_update(src, forced = TRUE)
+		carbon_user.update_worn_head()
 
 
 /// "enable" the spectacles, flipping them down and applying their effects, calling on_toggle_eyes() if someone is wearing them
@@ -294,7 +294,7 @@
 
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
-		carbon_user.head_update(src, forced = TRUE)
+		carbon_user.update_worn_head()
 
 
 /// Turn on the visor, calling apply_to_wearer() and changing the icon state
