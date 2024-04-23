@@ -350,12 +350,23 @@
 	log_admin("[key_name(usr)] started weather of type [weather_type] on the z-level [z_level].")
 	BLACKBOX_LOG_ADMIN_VERB("Run Weather")
 
+<<<<<<< HEAD
 /client/proc/add_marked_mob_ability()
 	set category = "Admin.Events"
 	set name = "Add Mob Ability (Marked Mob)"
 	set desc = "Adds an ability to a marked mob."
 
 	if(!holder)
+=======
+ADMIN_VERB(command_report_footnote, R_ADMIN, "Command Report Footnote", "Adds a footnote to the roundstart command report.", ADMIN_CATEGORY_EVENTS)
+	var/datum/command_footnote/command_report_footnote = new /datum/command_footnote()
+	DScommunications.block_command_report += 1 //Add a blocking condition to the counter until the inputs are done.
+
+	command_report_footnote.message = tgui_input_text(user, "This message will be attached to the bottom of the roundstart threat report. Be sure to delay the roundstart report if you need extra time.", "P.S.")
+	if(!command_report_footnote.message)
+		DScommunications.block_command_report -= 1
+		qdel(command_report_footnote)
+>>>>>>> c1a775efe19 (Implements data systems (#82816))
 		return
 
 	if(!isliving(holder.marked_datum))
@@ -398,8 +409,8 @@
 	if(!command_report_footnote.signature)
 		command_report_footnote.signature = "Classified"
 
-	SScommunications.command_report_footnotes += command_report_footnote
-	SScommunications.block_command_report--
+	DScommunications.command_report_footnotes += command_report_footnote
+	DScommunications.block_command_report--
 
 	message_admins("[usr] has added a footnote to the command report: [command_report_footnote.message], signed [command_report_footnote.signature]")
 
@@ -407,6 +418,7 @@
 	var/message
 	var/signature
 
+<<<<<<< HEAD
 /client/proc/delay_command_report()
 	set category = "Admin.Events"
 	set name = "Delay Command Report"
@@ -422,3 +434,8 @@
 		SScommunications.block_command_report++
 		message_admins("[usr] has delayed the roundstart command report.")
 
+=======
+ADMIN_VERB(delay_command_report, R_FUN, "Delay Command Report", "Prevents the roundstart command report from being sent; or forces it to send it delayed.", ADMIN_CATEGORY_EVENTS)
+	DScommunications.block_command_report = !DScommunications.block_command_report
+	message_admins("[key_name_admin(user)] has [(DScommunications.block_command_report ? "delayed" : "sent")] the roundstart command report.")
+>>>>>>> c1a775efe19 (Implements data systems (#82816))
