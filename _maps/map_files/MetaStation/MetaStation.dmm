@@ -943,6 +943,13 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
+"atf" = (
+/obj/structure/table/glass,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/surgery/theatre)
 "atk" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -5040,6 +5047,15 @@
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
+"bMS" = (
+/obj/structure/table/glass,
+/obj/machinery/button/door/directional/south{
+	id = "main_surgery";
+	name = "privacy shutters control"
+	},
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/surgery/theatre)
 "bMY" = (
 /turf/closed/wall,
 /area/station/medical/office)
@@ -5109,6 +5125,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"bOa" = (
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/obj/effect/landmark/start/virologist,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "bOk" = (
 /obj/machinery/light/directional/west,
 /obj/item/radio/intercom/directional/west,
@@ -5965,13 +5989,6 @@
 /obj/machinery/oven/range,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
-"cfT" = (
-/obj/structure/table/glass,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/theatre)
 "cgi" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/side{
@@ -8916,16 +8933,6 @@
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
-"dmD" = (
-/obj/structure/cable,
-/obj/structure/chair/office/light,
-/obj/effect/landmark/start/virologist,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "dmJ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
@@ -9489,6 +9496,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
+"dyq" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/machinery/status_display/evac/directional/west,
+/obj/machinery/digital_clock/directional/south,
+/obj/item/surgery_tray/full,
+/turf/open/floor/iron/white,
+/area/station/medical/surgery/theatre)
 "dyr" = (
 /obj/machinery/status_display/door_timer{
 	id = "Cell 3";
@@ -11041,15 +11056,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"ebP" = (
-/obj/structure/table/glass,
-/obj/machinery/button/door/directional/north{
-	id = "main_surgery";
-	name = "privacy shutters control"
-	},
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/theatre)
 "ebV" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -11727,6 +11733,16 @@
 /obj/effect/spawner/random/structure/closet_private,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"emd" = (
+/obj/structure/cable,
+/obj/structure/chair/office/light,
+/obj/effect/landmark/start/virologist,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "eme" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -13097,13 +13113,6 @@
 /obj/machinery/vending/wardrobe/coroner_wardrobe,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
-"eNr" = (
-/obj/structure/table/glass,
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/machinery/status_display/evac/directional/west,
-/obj/item/surgery_tray/full,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/theatre)
 "eNR" = (
 /turf/closed/wall,
 /area/station/ai_monitored/aisat/exterior)
@@ -14253,6 +14262,12 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
+"fiK" = (
+/obj/structure/table/glass,
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/surgery/theatre)
 "fiS" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 4
@@ -14285,6 +14300,18 @@
 /obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"fjo" = (
+/obj/structure/table/glass,
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
+	},
+/obj/item/toy/figure/virologist{
+	pixel_x = -8
+	},
+/obj/effect/turf_decal/tile/green/half/contrasted,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "fjq" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -14690,6 +14717,13 @@
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
+"fpg" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/machinery/status_display/evac/directional/west,
+/obj/item/surgery_tray/full,
+/turf/open/floor/iron/white,
+/area/station/medical/surgery/theatre)
 "fpj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -34209,12 +34243,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
-"mrd" = (
-/obj/structure/table/glass,
-/obj/machinery/airalarm/directional/south,
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/theatre)
 "mru" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -42030,15 +42058,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/greater)
-"pdR" = (
-/obj/structure/table/glass,
-/obj/machinery/button/door/directional/south{
-	id = "main_surgery";
-	name = "privacy shutters control"
-	},
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/theatre)
 "pdT" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/delivery,
@@ -51730,18 +51749,6 @@
 /obj/item/radio/intercom/directional/west,
 /turf/open/floor/iron/white,
 /area/station/science/research)
-"szi" = (
-/obj/structure/table/glass,
-/obj/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/item/toy/figure/virologist{
-	pixel_x = -8
-	},
-/obj/effect/turf_decal/tile/green/half/contrasted,
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "szk" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -53139,14 +53146,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"sWn" = (
-/obj/structure/chair/office/light{
-	dir = 8
-	},
-/obj/effect/landmark/start/virologist,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "sWs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -54750,14 +54749,6 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/grass,
 /area/station/science/research)
-"tBb" = (
-/obj/structure/table/glass,
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/machinery/status_display/evac/directional/west,
-/obj/machinery/digital_clock/directional/south,
-/obj/item/surgery_tray/full,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/theatre)
 "tBc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -55518,6 +55509,15 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
+"tOT" = (
+/obj/structure/table/glass,
+/obj/machinery/button/door/directional/north{
+	id = "main_surgery";
+	name = "privacy shutters control"
+	},
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/surgery/theatre)
 "tOV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -55901,17 +55901,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/station/service/chapel/funeral)
-"tVC" = (
-/obj/machinery/power/smes/full,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/flasher/directional/north{
-	id = "AI";
-	pixel_x = -22
-	},
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/turret_protected/ai)
 "tVG" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/machinery/firealarm/directional/north,
@@ -61770,6 +61759,17 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
+"vTr" = (
+/obj/machinery/power/smes/super/full,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/flasher/directional/north{
+	id = "AI";
+	pixel_x = -22
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/ai_monitored/turret_protected/ai)
 "vTs" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/under/misc/assistantformal,
@@ -82741,8 +82741,8 @@ xjH
 pIU
 dno
 uKy
-sWn
-szi
+bOa
+fjo
 xjH
 nzQ
 vol
@@ -83519,7 +83519,7 @@ pWX
 eYE
 hcR
 gqV
-dmD
+emd
 vUH
 rUE
 suP
@@ -86835,13 +86835,13 @@ rke
 jUb
 nTn
 jUb
-eNr
+fpg
 snb
 kpV
 qOO
 gGK
 snb
-tBb
+dyq
 jUb
 iEm
 kym
@@ -87092,13 +87092,13 @@ gJu
 jUb
 mam
 jUb
-cfT
+atf
 eWq
 aJP
 hiB
 aJP
 rpA
-mrd
+fiK
 jUb
 iEm
 kym
@@ -87349,13 +87349,13 @@ cIS
 jUb
 rvI
 jUb
-ebP
+tOT
 tJr
 vSI
 ude
 jSA
 oZO
-pdR
+bMS
 jUb
 dqN
 vCC
@@ -123284,7 +123284,7 @@ qyc
 jZC
 pan
 mbS
-tVC
+vTr
 mCL
 aWO
 aYz

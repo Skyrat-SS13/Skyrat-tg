@@ -870,10 +870,6 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
-"fP" = (
-/obj/structure/gulag_vent,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "fQ" = (
 /turf/open/genturf,
 /area/lavaland/surface/outdoors/unexplored/danger)
@@ -2834,12 +2830,6 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/iron/white,
 /area/mine/laborcamp/production)
-"ps" = (
-/obj/structure/cable,
-/obj/machinery/power/smes/full,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "pu" = (
 /obj/item/chair/stool{
 	pixel_x = -2;
@@ -3247,6 +3237,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/mine/maintenance/service)
+"sc" = (
+/obj/structure/lattice/catwalk/mining,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/toy/plush/shark{
+	desc = "A plushie depicting a somewhat cartoonish shark. The tag calls it a 'hákarl', noting that it was made by an obscure furniture manufacturer in old Scandinavia. This one seems to have some cable wiring sticking out of its mouth."
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "se" = (
 /turf/open/floor/iron/dark/textured_large,
 /area/mine/eva)
@@ -3416,15 +3415,6 @@
 	dir = 4
 	},
 /area/mine/cafeteria)
-"tg" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "ti" = (
 /obj/structure/table,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -3670,14 +3660,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white/smooth_corner,
 /area/mine/medical)
-"vc" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "vd" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -3865,6 +3847,17 @@
 	dir = 1
 	},
 /area/mine/lounge)
+"vT" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external{
+	name = "Mining External Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "lavaland_services_north"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance/departmental,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "vU" = (
 /obj/structure/ore_box,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
@@ -3936,6 +3929,12 @@
 /obj/machinery/hydroponics/soil,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"ws" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/super/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "wt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4107,16 +4106,6 @@
 /obj/effect/turf_decal/sand/plating/volcanic,
 /turf/open/floor/plating/lavaland_atmos,
 /area/mine/maintenance/service/disposals)
-"xI" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/tcoms,
-/turf/open/floor/plating,
-/area/mine/maintenance/service/comms)
 "xJ" = (
 /obj/machinery/vending/coffee,
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -4164,6 +4153,10 @@
 	dir = 1
 	},
 /area/mine/storage/public)
+"xX" = (
+/obj/structure/gulag_vent,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "yc" = (
 /obj/docking_port/stationary{
 	dir = 2;
@@ -4372,6 +4365,11 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
+"zm" = (
+/obj/machinery/power/smes/super/full,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/mine/maintenance/labor)
 "zq" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -4490,6 +4488,14 @@
 /obj/structure/lattice/catwalk,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Af" = (
+/obj/machinery/mineral/processing_unit/gulag{
+	dir = 1;
+	input_dir = 8;
+	output_dir = 4
+	},
+/turf/open/floor/plating,
+/area/mine/laborcamp/production)
 "Ai" = (
 /obj/structure/stone_tile/cracked{
 	dir = 1
@@ -4957,11 +4963,6 @@
 /obj/effect/turf_decal/sand/plating/volcanic,
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
-"Ee" = (
-/obj/machinery/power/smes/full,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/mine/maintenance/labor)
 "Eg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
@@ -5118,6 +5119,13 @@
 "Ff" = (
 /turf/open/floor/glass/reinforced,
 /area/mine/lounge)
+"Fj" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance/departmental,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "Fn" = (
 /obj/structure/stone_tile/cracked{
 	dir = 4
@@ -6006,6 +6014,17 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/mine/living_quarters)
+"KE" = (
+/obj/machinery/door/airlock/external{
+	name = "Mining External Airlock"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "lavaland_services_north"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance/departmental,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "KI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -6253,14 +6272,6 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
-"LT" = (
-/obj/machinery/mineral/processing_unit/gulag{
-	dir = 1;
-	input_dir = 8;
-	output_dir = 4
-	},
-/turf/open/floor/plating,
-/area/mine/laborcamp/production)
 "LY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -7476,13 +7487,6 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/mine/laborcamp/security)
-"TV" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "TW" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Storage"
@@ -7572,6 +7576,16 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/mine/production)
+"Us" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance/departmental,
+/turf/open/floor/plating,
+/area/mine/maintenance/service/comms)
 "Ut" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -7885,6 +7899,15 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/mine/hydroponics)
+"Wv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance/departmental,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "Wx" = (
 /obj/machinery/computer/arcade/battle{
 	dir = 4
@@ -7952,6 +7975,14 @@
 	},
 /turf/open/floor/plating,
 /area/mine/maintenance/production)
+"WR" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance/departmental,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "WU" = (
 /obj/machinery/space_heater,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22573,7 +22604,7 @@ uU
 uU
 uU
 pU
-fP
+xX
 pU
 ff
 Gf
@@ -24377,7 +24408,7 @@ Hd
 Nb
 NR
 Kv
-LT
+Af
 ff
 gm
 mN
@@ -28238,7 +28269,7 @@ Zt
 Zt
 Zt
 Zt
-Ee
+zm
 ve
 RD
 RD
@@ -29779,7 +29810,7 @@ Xw
 aj
 aj
 aj
-cU
+sc
 aj
 aj
 aj
@@ -37975,7 +38006,7 @@ ni
 rZ
 ni
 ON
-TV
+Fj
 xD
 xD
 xD
@@ -38485,12 +38516,12 @@ Ue
 AA
 gB
 ON
-ps
+ws
 gq
 ER
-vc
+WR
 YR
-xI
+Us
 DF
 Kn
 xD
@@ -38998,7 +39029,7 @@ pU
 Dx
 cm
 FL
-cm
+KE
 Ao
 Ao
 aW
@@ -39255,7 +39286,7 @@ pU
 aD
 cV
 fi
-cV
+vT
 Jh
 cr
 JS
@@ -39514,7 +39545,7 @@ ON
 ON
 ON
 ON
-tg
+Wv
 ON
 ON
 ON
