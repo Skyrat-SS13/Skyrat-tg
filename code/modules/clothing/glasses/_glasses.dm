@@ -458,6 +458,10 @@
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)
 
+/obj/item/clothing/glasses/welding/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)][up ? "up" : ""]"
+
 /obj/item/clothing/glasses/welding/up/Initialize(mapload)
 	. = ..()
 	visor_toggling()

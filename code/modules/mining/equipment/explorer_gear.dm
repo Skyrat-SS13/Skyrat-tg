@@ -90,10 +90,14 @@
 /obj/item/clothing/mask/gas/explorer/adjustmask(mob/user)
 	. = ..()
 	// adjusted = out of the way = smaller = can fit in boxes
+<<<<<<< HEAD
 	w_class = mask_adjusted ? WEIGHT_CLASS_SMALL : WEIGHT_CLASS_NORMAL
 	inhand_icon_state = mask_adjusted ? "[initial(inhand_icon_state)]_up" : initial(inhand_icon_state)
 	if(user)
 		user.update_held_items()
+=======
+	update_weight_class(up ? WEIGHT_CLASS_SMALL : WEIGHT_CLASS_NORMAL)
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 
 
 /obj/item/clothing/mask/gas/explorer/examine(mob/user)

@@ -70,6 +70,14 @@ There are several things that need to be remembered:
 		//damage overlays
 		update_damage_overlays()
 
+<<<<<<< HEAD
+=======
+/mob/living/carbon/human/update_obscured_slots(obscured_flags)
+	..()
+	if(obscured_flags & HIDEFACE)
+		sec_hud_set_security_status()
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
 
@@ -84,6 +92,12 @@ There are several things that need to be remembered:
 		var/obj/item/clothing/under/uniform = w_uniform
 		update_hud_uniform(uniform)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(uniform.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_ICLOTHING)
 			return
 
@@ -165,6 +179,13 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
+<<<<<<< HEAD
+=======
+
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		var/icon_file = 'icons/mob/clothing/id.dmi'
 
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
@@ -202,6 +223,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = gloves
 		update_hud_gloves(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_GLOVES)
 			return
 
@@ -245,6 +272,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = glasses
 		update_hud_glasses(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_EYES)
 			return
 
@@ -284,6 +317,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = ears
 		update_hud_ears(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_EARS)
 			return
 
@@ -318,6 +357,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_neck
 		update_hud_neck(wear_neck)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_NECK)
 			return
 
@@ -363,6 +408,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = shoes
 		update_hud_shoes(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_FEET)
 			return
 
@@ -418,6 +469,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = s_store
 		update_hud_s_store(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_SUITSTORE)
 			return
 
@@ -437,6 +494,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = head
 		update_hud_head(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_HEAD)
 			return
 
@@ -479,6 +542,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = belt
 		update_hud_belt(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_BELT)
 			return
 
@@ -514,6 +583,13 @@ There are several things that need to be remembered:
 	if(wear_suit)
 		var/obj/item/worn_item = wear_suit
 		update_hud_wear_suit(worn_item)
+<<<<<<< HEAD
+=======
+
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		var/icon_file = DEFAULT_SUIT_FILE
 
 		// SKYRAT EDIT ADDITION
@@ -588,6 +664,12 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_mask
 		update_hud_wear_mask(worn_item)
 
+<<<<<<< HEAD
+=======
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_MASK)
 			return
 
@@ -629,6 +711,13 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = back
 		var/mutable_appearance/back_overlay
 		update_hud_back(worn_item)
+<<<<<<< HEAD
+=======
+
+		if(update_obscured)
+			update_obscured_slots(worn_item.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		var/icon_file = 'icons/mob/clothing/back.dmi'
 
 		// SKYRAT EDIT ADDITION

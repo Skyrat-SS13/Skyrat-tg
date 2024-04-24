@@ -465,7 +465,12 @@ BLIND     // can't see anything
 	female_clothing_icon = fcopy_rsc(female_clothing_icon)
 	GLOB.female_clothing_icons[index] = female_clothing_icon
 
+<<<<<<< HEAD
 /obj/item/clothing/proc/weldingvisortoggle(mob/user) //proc to toggle welding visors on helmets, masks, goggles, etc.
+=======
+/// Proc that adjusts the clothing item, used by things like breathing masks, welding helmets, welding goggles etc.
+/obj/item/clothing/proc/adjust_visor(mob/living/user)
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 	if(!can_use(user))
 		return FALSE
 
@@ -477,6 +482,23 @@ BLIND     // can't see anything
 		var/mob/living/carbon/C = user
 		C.head_update(src, forced = 1)
 	update_item_action_buttons()
+<<<<<<< HEAD
+=======
+
+	if(user.is_holding(src))
+		user.update_held_items()
+		return TRUE
+	if(up)
+		user.update_obscured_slots(visor_flags_inv)
+	user.update_clothing(slot_flags)
+	if(!iscarbon(user))
+		return TRUE
+	var/mob/living/carbon/carbon_user = user
+	if(visor_vars_to_toggle & VISOR_TINT)
+		carbon_user.update_tint()
+	if((visor_flags & (MASKINTERNALS|HEADINTERNALS)) && carbon_user.invalid_internals())
+		carbon_user.cutoff_internals()
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 	return TRUE
 
 /obj/item/clothing/proc/visor_toggling() //handles all the actual toggling of flags

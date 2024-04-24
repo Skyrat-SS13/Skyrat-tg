@@ -305,6 +305,15 @@
 	if((I.body_parts_covered & FEET) || (I.flags_inv | I.transparent_protection) & HIDESHOES)
 		SEND_SIGNAL(src, COMSIG_CARBON_UNEQUIP_SHOECOVER, I, force, newloc, no_move, invdrop, silent)
 
+<<<<<<< HEAD
+=======
+	if(not_handled)
+		return
+
+	update_equipment_speed_mods()
+	update_obscured_slots(I.flags_inv)
+
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 /mob/living/carbon/human/toggle_internals(obj/item/tank, is_external = FALSE)
 	// Just close the tank if it's the one the mob already has open.
 	var/obj/item/existing_tank = is_external ? external : internal

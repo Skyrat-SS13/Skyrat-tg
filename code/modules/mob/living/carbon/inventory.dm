@@ -208,6 +208,10 @@
 			update_mob_action_buttons(UPDATE_BUTTON_STATUS)
 
 	update_equipment_speed_mods()
+<<<<<<< HEAD
+=======
+	update_obscured_slots(I.flags_inv)
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 
 /// Returns TRUE if an air tank compatible helmet is equipped.
 /mob/living/carbon/proc/can_breathe_helmet()

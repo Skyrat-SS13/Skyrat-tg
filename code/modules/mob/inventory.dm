@@ -429,10 +429,15 @@
 	var/obscured = NONE
 	var/hidden_slots = NONE
 
+<<<<<<< HEAD
 	for(var/obj/item/I in get_all_worn_items())
 		hidden_slots |= I.flags_inv
+=======
+	for(var/obj/item/equipped_item in get_equipped_items())
+		hidden_slots |= equipped_item.flags_inv
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		if(transparent_protection)
-			hidden_slots |= I.transparent_protection
+			hidden_slots |= equipped_item.transparent_protection
 
 	if(hidden_slots & HIDENECK)
 		obscured |= ITEM_SLOT_NECK
@@ -504,12 +509,17 @@
 	if(!I)
 		to_chat(src, span_warning("You are not holding anything to equip!"))
 		return
+<<<<<<< HEAD
 	if (temporarilyRemoveItemFromInventory(I) && !QDELETED(I))
 		if(I.equip_to_best_slot(src))
 			return
 		if(put_in_active_hand(I))
 			return
 		I.forceMove(drop_location())
+=======
+	if(!QDELETED(I))
+		I.equip_to_best_slot(src)
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 
 //used in code for items usable by both carbon and drones, this gives the proper back slot for each mob.(defibrillator, backpack watertank, ...)
 /mob/proc/getBackSlot()

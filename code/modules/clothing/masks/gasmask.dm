@@ -219,6 +219,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	flags_cover = MASKCOVERSEYES
 	visor_flags_inv = HIDEEYES
 	visor_flags_cover = MASKCOVERSEYES
+	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	resistance_flags = FIRE_PROOF
 
 /datum/armor/gas_welding
@@ -228,7 +229,15 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	acid = 55
 
 /obj/item/clothing/mask/gas/welding/attack_self(mob/user)
+<<<<<<< HEAD
 	if(weldingvisortoggle(user))
+=======
+	adjust_visor(user)
+
+/obj/item/clothing/mask/gas/welding/adjust_visor(mob/living/user)
+	. = ..()
+	if(.)
+>>>>>>> 2e11db2344e ([NO GBP] fixes issues with human rendering fixes (#82852))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE)
 
 /obj/item/clothing/mask/gas/welding/up
