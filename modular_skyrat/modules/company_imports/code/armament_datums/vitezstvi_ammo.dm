@@ -96,7 +96,7 @@
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol40_pierce
 	item_type = /obj/item/ammo_box/c40sol/pierce
-*/
+
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/trappiste585
 	item_type = /obj/item/ammo_box/c585trappiste
 
@@ -105,7 +105,7 @@
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/trappiste585_hollowpoint
 	item_type = /obj/item/ammo_box/c585trappiste/hollowpoint
-
+*/
 // Revolver speedloaders
 
 /datum/armament_entry/company_import/vitezstvi/speedloader

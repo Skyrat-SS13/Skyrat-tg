@@ -94,7 +94,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/sol
 	cost = PAYCHECK_COMMAND * 4
 	restricted = TRUE
-
+/*
 /datum/armament_entry/company_import/sol_defense/sidearm/skild
 	item_type = /obj/item/gun/ballistic/automatic/pistol/trappiste
 	cost = PAYCHECK_COMMAND * 6
@@ -106,9 +106,9 @@
 	cost = PAYCHECK_COMMAND * 6
 	contraband = TRUE
 	restricted = TRUE
-
+*/
 // Lethal anything that's not a pistol, requires high company interest
-
+/*
 /datum/armament_entry/company_import/sol_defense/longarm
 	subcategory = "Longarms"
 	restricted = TRUE
@@ -120,18 +120,18 @@
 /datum/armament_entry/company_import/sol_defense/longarm/sindano
 	item_type = /obj/item/gun/ballistic/automatic/sol_smg
 	cost = PAYCHECK_COMMAND * 6
-
+*/
 /datum/armament_entry/company_import/sol_defense/longarm/elite
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
-	cost = PAYCHECK_COMMAND * 12
+	cost = PAYCHECK_COMMAND * 8
 
 /*
 /datum/armament_entry/company_import/sol_defense/longarm/bogseo
 	item_type = /obj/item/gun/ballistic/automatic/xhihao_smg
 	cost = PAYCHECK_COMMAND * 10
 	contraband = TRUE
-//Begone 
-*/ 
+//Begone
+*/
 
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
@@ -159,10 +159,10 @@
 
 /datum/armament_entry/company_import/sol_defense/magazines/c35_extended
 	item_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo/starts_empty
-
+/*
 /datum/armament_entry/company_import/sol_defense/magazines/c585_mag
 	item_type = /obj/item/ammo_box/magazine/c585trappiste_pistol/spawns_empty
-
+*/
 /datum/armament_entry/company_import/sol_defense/magazines/sol_rifle_short
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/starts_empty
 
