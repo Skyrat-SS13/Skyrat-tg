@@ -1742,17 +1742,17 @@
 /datum/sprite_accessory/body_markings/dtiger
 	name = "Dark Tiger Body"
 	icon_state = "dtiger"
-	gender_specific = TRUE
+	gender_specific = 1
 
 /datum/sprite_accessory/body_markings/ltiger
 	name = "Light Tiger Body"
 	icon_state = "ltiger"
-	gender_specific = TRUE
+	gender_specific = 1
 
 /datum/sprite_accessory/body_markings/lbelly
 	name = "Light Belly"
 	icon_state = "lbelly"
-	gender_specific = TRUE
+	gender_specific = 1
 
 /datum/sprite_accessory/tails
 	em_block = TRUE
@@ -1790,11 +1790,13 @@
 	icon_state = "default"
 	color_src = HAIR_COLOR
 
-/datum/sprite_accessory/tails/monkey/default
-	name = "Monkey"
+/datum/sprite_accessory/tails/monkey
 	icon = 'icons/mob/human/species/monkey/monkey_tail.dmi'
-	icon_state = "default"
 	color_src = FALSE
+
+/datum/sprite_accessory/tails/monkey/standard
+	name = "Monkey"
+	icon_state = "monkey"
 
 /datum/sprite_accessory/pod_hair
 	icon = 'icons/mob/human/species/podperson_hair.dmi'
