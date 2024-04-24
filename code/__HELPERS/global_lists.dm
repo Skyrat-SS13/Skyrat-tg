@@ -17,7 +17,11 @@
 	//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 	/*
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
+	*/
+	//SKYRAT EDIT REMOVAL END - CUSTOMIZATION
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human, add_blank = TRUE)
+	//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+	/*
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard, add_blank = TRUE)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, GLOB.tails_list_monkey, add_blank = FALSE)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts, GLOB.snouts_list)

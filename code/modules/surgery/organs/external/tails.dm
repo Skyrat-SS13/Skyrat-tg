@@ -178,7 +178,7 @@
 
 	dna_block = DNA_MONKEY_TAIL_BLOCK
 
-///Monkey tail bodypart overlay
+//Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
 	color_source = NONE
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
