@@ -256,30 +256,6 @@
 /obj/machinery/chem_master/attack_ai_secondary(mob/user, list/modifiers)
 	return attack_hand_secondary(user, modifiers)
 
-<<<<<<< HEAD
-/// Insert new beaker and/or eject the inserted one
-/obj/machinery/chem_master/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
-	if(new_beaker && user && !user.transferItemToLoc(new_beaker, src))
-		return FALSE
-	if(beaker)
-		try_put_in_hand(beaker, user)
-		beaker = null
-	if(new_beaker)
-		beaker = new_beaker
-	update_appearance(UPDATE_ICON)
-	return TRUE
-
-/obj/machinery/chem_master/proc/load_printable_containers()
-	printable_containers = list(
-		CAT_TUBES = GLOB.reagent_containers[CAT_TUBES],
-		CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
-		CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
-		CAT_HYPOS = GLOB.reagent_containers[CAT_HYPOS], // SKYRAT EDIT ADDITION
-		CAT_DARTS = GLOB.reagent_containers[CAT_DARTS], // SKYRAT EDIT ADDITION
-	)
-
-=======
->>>>>>> c045d79fcab (General maintenance for chem master (#82002))
 /obj/machinery/chem_master/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/chemmaster)
