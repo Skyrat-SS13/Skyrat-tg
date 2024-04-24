@@ -2004,6 +2004,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_HALLUCINATION, "Give Hallucination")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DELUSION_HALLUCINATION, "Give Delusion Hallucination")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_GUARDIAN_SPIRIT, "Give Guardian Spirit")
+	VV_DROPDOWN_OPTION(VV_HK_ADMIN_RENAME, "Force Change Name")
 
 /mob/living/vv_do_topic(list/href_list)
 	. = ..()
@@ -2040,6 +2041,29 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(!check_rights(NONE))
 			return
 		admin_give_guardian(usr)
+
+	if(href_list[VV_HK_ADMIN_RENAME])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/old_name = real_name
+		var/new_name = sanitize_name(tgui_input_text(usr, "Enter the new name.", "Admin Rename", real_name))
+		if(!new_name || new_name == real_name)
+			return
+
+		fully_replace_character_name(real_name, new_name)
+		var/replace_preferences = !isnull(client) && (tgui_alert(usr, "Would you like to update the client's preference with the new name?", "Pref Overwrite", list("Yes", "No")) == "Yes")
+		if(replace_preferences)
+			client.prefs.write_preference(GLOB.preference_entries[/datum/preference/name/real_name], new_name)
+
+		log_admin("forced rename", list(
+			"admin" = key_name(usr),
+			"player" = key_name(src),
+			"old_name" = old_name,
+			"new_name" = new_name,
+			"updated_prefs" = replace_preferences,
+		))
+		message_admins("[key_name_admin(usr)] has forcibly changed the real name of [key_name(src)] from '[old_name]' to '[real_name]'[(replace_preferences ? " and their preferences" : "")]")
 
 /mob/living/proc/move_to_error_room()
 	var/obj/effect/landmark/error/error_landmark = locate(/obj/effect/landmark/error) in GLOB.landmarks_list
@@ -2502,6 +2526,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			span_userdanger("You're thrown violently into [lattice], smashing through it and punching straight through!"))
 		apply_damage(rand(5,10), BRUTE, BODY_ZONE_CHEST)
 		lattice.deconstruct(FALSE)
+
+/// Prints an ominous message if something bad is going to happen to you
+/mob/living/proc/ominous_nosebleed()
+	to_chat(src, span_warning("You feel a bit nauseous for just a moment."))
 
 /**
  * Proc used by different station pets such as Ian and Poly so that some of their data can persist between rounds.
