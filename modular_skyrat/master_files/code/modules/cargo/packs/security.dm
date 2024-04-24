@@ -41,4 +41,3 @@
 	contains = list(/obj/item/gun/energy/e_gun/mini = 3)
 	crate_name = "Mini E-Gun Bulk Crate"
 //You know the problem is literally nobody want to buy the mini-egun even if it was cheap
-
