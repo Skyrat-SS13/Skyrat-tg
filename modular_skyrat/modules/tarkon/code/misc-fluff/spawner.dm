@@ -200,7 +200,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	var/boss_mob = /mob/living/basic/alien/queen/large
 	var/loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
 
-/obj/structure/spawner/tarkon_xenos/deconstruct(disassembled)
+/obj/structure/spawner/tarkon_xenos/atom_deconstruct(disassembled)
 	var/obj/effect/nest_break/nest = new /obj/effect/nest_break(loc)
 	nest.loot_drop = loot_drop
 	nest.boss_mob = boss_mob
@@ -230,7 +230,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	. = ..()
 	visible_message(span_boldannounce("The nest rumbles violently as the entrance begins to crack and break apart!"))
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, FALSE, 50, TRUE, TRUE)
-	addtimer(CALLBACK(src, PROC_REF(rustle)), 50)
+	addtimer(CALLBACK(src, PROC_REF(rustle)), 5 SECONDS)
 	do_jiggle()
 
 /obj/structure/spawner/tarkon_xenos/common

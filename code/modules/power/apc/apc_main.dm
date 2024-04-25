@@ -208,7 +208,7 @@
 
 	//Make the apc visually interactive
 	register_context()
-	addtimer(CALLBACK(src, PROC_REF(update)), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 0.5 SECONDS)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GREY_TIDE, PROC_REF(grey_tide))
 	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	update_appearance()
@@ -551,7 +551,7 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 15) // <15%, turn off lighting & equipment
+		else if(cell.percent() < 7) // SKYRAT EDIT CHANGE - ORIGINAL: cell.percent() < 15
 			equipment = autoset(equipment, AUTOSET_OFF)
 			lighting = autoset(lighting, AUTOSET_OFF)
 			environ = autoset(environ, AUTOSET_ON)
@@ -559,9 +559,9 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 30) // <30%, turn off equipment
-			equipment = autoset(equipment, AUTOSET_OFF)
-			lighting = autoset(lighting, AUTOSET_ON)
+		else if(cell.percent() < 17) // SKYRAT EDIT CHANGE - ORIGINAL: cell.percent() < 30
+			equipment = autoset(equipment, AUTOSET_ON) // SKYRAT EDIT CHANGE - ORIGINAL: AUTOSET_OFF
+			lighting = autoset(lighting, AUTOSET_OFF) // SKYRAT EDIT CHANGE - ORIGINAL: AUTOSET_ON
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
