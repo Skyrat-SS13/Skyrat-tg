@@ -1,10 +1,5 @@
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 
-/// Returned when the phase emtiter process is successful.
-#define SHOT_SUCCESS "success"
-/// Returned when a gun is fired but there is no phase emitter.
-#define SHOT_FAILURE_NO_EMITTER "no phase emitter!"
-
 // Master file for cell loadable energy guns. PROCS ONLY YOU MONKEYS!
 // This file is a copy/paste of _energy.dm with extensive modification.
 
@@ -769,6 +764,3 @@
 /// Recalculates the recoil, based on attachment-provided values.
 /obj/item/gun/microfusion/proc/recalculate_recoil()
 	recoil = max(0, attachment_recoil)
-
-#undef SHOT_SUCCESS
-#undef SHOT_FAILURE_NO_EMITTER

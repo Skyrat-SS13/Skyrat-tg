@@ -1,3 +1,8 @@
+/// Returned when the phase emtiter process is successful.
+#define SHOT_SUCCESS "success"
+/// Returned when a gun is fired but there is no phase emitter.
+#define SHOT_FAILURE_NO_EMITTER "no phase emitter!"
+
 // Slot defines for the gun.
 /// The gun barrel slot.
 #define GUN_SLOT_BARREL "barrel"
