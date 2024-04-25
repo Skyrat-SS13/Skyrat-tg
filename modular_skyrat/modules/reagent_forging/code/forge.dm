@@ -888,7 +888,7 @@
 	deconstruct(TRUE)
 	return TRUE
 
-/obj/structure/reagent_forge/deconstruct(disassembled)
+/obj/structure/reagent_forge/atom_deconstruct(disassembled)
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 

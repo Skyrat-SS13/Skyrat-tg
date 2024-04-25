@@ -58,7 +58,7 @@
 	return ..()
 
 
-/obj/structure/destructible/clockwork/gear_base/technologists_lectern/deconstruct(disassembled)
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern/atom_deconstruct(disassembled)
 	if(primary_researcher)
 		deltimer(research_timer_id)
 		researching = FALSE

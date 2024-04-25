@@ -132,7 +132,7 @@
 	update_icon()
 
 
-/obj/structure/deployable_barricade/deconstruct(disassembled = TRUE)
+/obj/structure/deployable_barricade/atom_deconstruct(disassembled = TRUE)
 	if(stack_type)
 		var/stack_amt
 		if(!disassembled && destroyed_stack_amount)
