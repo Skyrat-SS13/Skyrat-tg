@@ -48,7 +48,6 @@
 	name = "heavy revolver .357"
 
 /obj/item/storage/toolbox/guncase/skyrat/hos_revolver/PopulateContents()
-	. = ..()
 	new /obj/item/gun/ballistic/revolver/hos_revolver(src)
 	new /obj/item/storage/bag/b460reloadpouch(src)
 
