@@ -24,5 +24,5 @@
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/gold = 1,
 	/obj/item/ammo_box/magazine/m45 = 3,
 	)
-	cost = PAYCHECK_COMMAND * 12
+	cost = PAYCHECK_COMMAND * 20
 	access_view = ACCESS_WEAPONS
