@@ -1,7 +1,4 @@
 //Pistol, Handguns and Revolvers
-
-
-#define AMMO_GIVEN_ON_START 24
 //Now improved
 
 /obj/item/gun/ballistic/revolver/hos_revolver
@@ -108,5 +105,3 @@
 		Weapons cannot bring people back, but it can save your life."
 
 	return .
-
-#undef AMMO_GIVEN_ON_START
