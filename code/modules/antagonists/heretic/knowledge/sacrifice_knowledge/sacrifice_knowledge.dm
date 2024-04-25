@@ -113,7 +113,7 @@
 			continue
 		if(possible_target.current.stat == DEAD)
 			continue
-		// SKYRAT EDIT ADDITION BEGIN - Antag opt-in (Only security and command can be targetted)
+		// SKYRAT EDIT ADDITION BEGIN - Round Removal opt-in (Only security and command can be targeted)
 		if (!possible_target.assigned_role?.heretic_sac_target)
 			continue
 		// SKYRAT EDIT ADDITION END
@@ -146,7 +146,7 @@
 			valid_targets -= sec_mind
 			break
 
-	/* SKYRAT EDIT REMOVAL -- Antag Opt In (Only sec and command may be targetted)
+	/* SKYRAT EDIT REMOVAL -- Round Removal Opt In (Only sec and command may be targeted)
 	// Third target, someone in their department.
 	for(var/datum/mind/department_mind as anything in shuffle(valid_targets))
 		if(department_mind.assigned_role?.departments_bitflags & user.mind.assigned_role?.departments_bitflags)

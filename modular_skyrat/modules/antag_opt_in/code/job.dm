@@ -1,5 +1,5 @@
 /datum/job
-	/// The minimum antag opt-in any holder of this job must use. If null, will defer to the mind's opt in level.
+	/// The minimum Round Removal opt-in any holder of this job must use. If null, will defer to the mind's opt in level.
 	var/minimum_opt_in_level
 	/// Can this job be targetted as a heretic sacrifice target?
 	var/heretic_sac_target
@@ -8,7 +8,7 @@
 
 /// Updates [minimum_opt_in_level] [heretic_sac_target] and [contractable].
 /datum/job/proc/update_opt_in_vars()
-	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
+	if(CONFIG_GET(flag/disable_rr_opt_in_preferences))
 		return
 
 	if(isnull(minimum_opt_in_level))
@@ -46,7 +46,7 @@
 	var/list/suffixes = list()
 
 	if (minimum_opt_in_level)
-		suffixes += " Forces a minimum of [GLOB.antag_opt_in_strings["[minimum_opt_in_level]"]] antag opt-in."
+		suffixes += " Forces a minimum of [GLOB.rr_opt_in_strings["[minimum_opt_in_level]"]] round removal opt-in."
 	if (contractable)
 		suffixes += " Targettable by contractors."
 	if (heretic_sac_target)
@@ -65,7 +65,7 @@
 /datum/controller/subsystem/job/SetupOccupations()
 	. = ..()
 
-	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
+	if(CONFIG_GET(flag/disable_rr_opt_in_preferences))
 		return
 
 	for(var/datum/job/job as anything in all_occupations)

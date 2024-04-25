@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		var/datum/mind/O = I
 		if(O.late_joiner)
 			try_target_late_joiners = TRUE
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
+	var/opt_in_disabled = CONFIG_GET(flag/disable_rr_opt_in_preferences) // SKYRAT EDIT ADDITION - Round Removal OPT-IN
 	for(var/datum/mind/possible_target in get_crewmember_minds())
 		if(possible_target in owners)
 			continue
@@ -877,9 +877,9 @@ GLOBAL_LIST_EMPTY(possible_items)
 	var/list/possible_targets = active_ais(TRUE)
 	possible_targets -= blacklist
 	//var/mob/living/silicon/ai/target_ai = pick(possible_targets) // SKYRAT EDIT REMOVAL - Uses the below loop
-	// SKYRAT EDIT ADDITION BEGIN - ANTAG OPTIN
+	// SKYRAT EDIT ADDITION BEGIN - Round Removal OPTIN
 	var/mob/living/silicon/ai/target_ai
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
+	var/opt_in_disabled = CONFIG_GET(flag/disable_rr_opt_in_preferences) // SKYRAT EDIT ADDITION - Round Removal OPT-IN
 	for (var/mob/living/silicon/ai/possible_target as anything in shuffle(possible_targets))
 		if (!opt_in_disabled && !opt_in_valid(possible_target))
 			continue

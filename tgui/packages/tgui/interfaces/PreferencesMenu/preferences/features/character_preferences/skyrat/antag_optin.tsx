@@ -1,11 +1,10 @@
-// THIS IS A NOVA SECTOR UI FILE
+// THIS IS A SKYRAT UI FILE
 import { FeatureChoiced, FeatureDropdownInput } from '../../base';
 
-export const antag_opt_in_status_pref: FeatureChoiced = {
-  name: 'Be Antagonist Target',
+export const rr_opt_in_status_pref: FeatureChoiced = {
+  name: 'Be Round Removed',
   description:
     'Enabling any non-ghost antags \
-  (revenant, abductor contractor, etc.) will force your opt-in to be, \
-  at minimum, "Temporarily Inconvenience".',
+  (revenant, abductor contractor, etc.) will force your opt-in.',
   component: FeatureDropdownInput,
 };

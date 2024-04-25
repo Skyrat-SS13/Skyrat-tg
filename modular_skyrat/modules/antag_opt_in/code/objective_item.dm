@@ -1,6 +1,6 @@
 /datum/objective_item
 	/// The opt in level all owners of the item must meet for this to be eligible as an objective target.
-	var/opt_in_level = OPT_IN_YES_TEMP
+	var/opt_in_level = OPT_IN_RR
 
 /// Returns TRUE if we have no owners, or all owners's effective opt in level is above [opt_in_level]. FALSE otherwise.
 /datum/objective_item/proc/owner_opted_in()
@@ -13,7 +13,7 @@
 	return TRUE
 
 /datum/objective_item/valid_objective_for(list/potential_thieves, require_owner)
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences)
+	var/opt_in_disabled = CONFIG_GET(flag/disable_rr_opt_in_preferences)
 	if (!opt_in_disabled && require_owner && !owner_opted_in())
 		return FALSE
 

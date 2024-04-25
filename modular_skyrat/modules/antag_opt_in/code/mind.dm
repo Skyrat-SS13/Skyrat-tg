@@ -1,13 +1,13 @@
-/// If a player has any of these enabled, they are forced to use a minimum of OPT_IN_ANTAG_ENABLED_LEVEL antag optin. Dynamic - checked on the fly, not cached.
-GLOBAL_LIST_INIT(optin_forcing_midround_antag_categories, list(
+/// If a player has any of these enabled, they are forced to use a minimum of OPT_IN_RR_ENABLED_LEVEL round removal optin. Dynamic - checked on the fly, not cached.
+GLOBAL_LIST_INIT(rr_optin_forcing_midround_antag_categories, list(
 	ROLE_CHANGELING_MIDROUND,
 	ROLE_MALF_MIDROUND,
 	ROLE_OBSESSED,
 	ROLE_SLEEPER_AGENT,
 ))
 
-/// If a player has any of these enabled ON SPAWN, they are forced to use a minimum of OPT_IN_ANTAG_ENABLED_LEVEL antag optin for the rest of the round.
-GLOBAL_LIST_INIT(optin_forcing_on_spawn_antag_categories, list(
+/// If a player has any of these enabled ON SPAWN, they are forced to use a minimum of OPT_IN_RR_ENABLED_LEVEL round removal optin for the rest of the round.
+GLOBAL_LIST_INIT(rr_optin_forcing_on_spawn_antag_categories, list(
 	ROLE_BROTHER,
 	ROLE_CHANGELING,
 	ROLE_CULTIST,
@@ -29,34 +29,34 @@ GLOBAL_LIST_INIT(optin_forcing_on_spawn_antag_categories, list(
 	/// The optin level set by preferences.
 	var/ideal_opt_in_level = OPT_IN_DEFAULT_LEVEL
 	/// Set on mind transfer. Set by on-spawn antags (e.g. if you have traitor on and spawn, this will be set to OPT_IN_ANTAG_ENABLED_LEVEL and cannot change)
-	var/on_spawn_antag_opt_in_level = OPT_IN_NOT_TARGET
+	var/on_spawn_rr_opt_in_level = OPT_OUT_RR
 
 /datum/mind/transfer_to(mob/new_character, force_key_move)
 	. = ..()
 
 	update_opt_in()
-	send_antag_optin_reminder()
+	send_rr_optin_reminder()
 
-/// Refreshes our ideal/on spawn antag opt in level by accessing preferences.
+/// Refreshes our ideal/on spawn round removal opt in level by accessing preferences.
 /datum/mind/proc/update_opt_in()
 	var/datum/preferences/preference_instance = GLOB.preferences_datums[lowertext(key)]
 	if (!isnull(preference_instance))
-		ideal_opt_in_level = preference_instance.read_preference(/datum/preference/choiced/antag_opt_in_status)
+		ideal_opt_in_level = preference_instance.read_preference(/datum/preference/choiced/rr_opt_in_status)
 
-		for (var/antag_category in GLOB.optin_forcing_on_spawn_antag_categories)
+		for (var/antag_category in GLOB.rr_optin_forcing_on_spawn_antag_categories)
 			if (antag_category in preference_instance.be_special)
-				on_spawn_antag_opt_in_level = OPT_IN_ANTAG_ENABLED_LEVEL
+				on_spawn_rr_opt_in_level = OPT_IN_ANTAG_ENABLED_LEVEL
 				break
 
 /// Sends a bold message to our holder, telling them if their optin setting has been set to a minimum due to their antag preferences.
-/datum/mind/proc/send_antag_optin_reminder()
+/datum/mind/proc/send_rr_optin_reminder()
 	var/datum/preferences/preference_instance = GLOB.preferences_datums[lowertext(key)]
 	var/client/our_client = preference_instance?.parent // that moment when /mind doesnt have a ref to client :)
 	if (our_client)
-		var/antag_level = get_antag_opt_in_level()
-		if (antag_level <= OPT_IN_NOT_TARGET)
+		var/rr_level = get_rr_opt_in_level()
+		if (rr_level <= OPT_IN_NOT_TARGET)
 			return
-		var/stringified_level = GLOB.antag_opt_in_strings["[antag_level]"]
+		var/stringified_level = GLOB.antag_opt_in_strings["[rr_level]"]
 		to_chat(our_client, span_boldnotice("Due to your antag preferences, your antag-optin status has been set to a minimum of [stringified_level]."))
 
 /// Gets the actual opt-in level used for determining targets.
@@ -69,14 +69,14 @@ GLOBAL_LIST_INIT(optin_forcing_on_spawn_antag_categories, list(
 /datum/mind/proc/get_job_opt_in_level()
 	return assigned_role?.minimum_opt_in_level || OPT_IN_NOT_TARGET
 
-/// If we have any antags enabled in GLOB.optin_forcing_midround_antag_categories, returns OPT_IN_ANTAG_ENABLED_LEVEL. OPT_IN_NOT_TARGET otherwise.
-/datum/mind/proc/get_antag_opt_in_level()
-	if (on_spawn_antag_opt_in_level > OPT_IN_NOT_TARGET)
-		return on_spawn_antag_opt_in_level
+/// If we have any antags enabled in GLOB.rr_optin_forcing_midround_antag_categories, returns OPT_IN_ANTAG_ENABLED_LEVEL. OPT_IN_NOT_TARGET otherwise.
+/datum/mind/proc/get_rr_opt_in_level()
+	if (on_spawn_rr_opt_in_level > OPT_IN_NOT_TARGET)
+		return on_spawn_rr_opt_in_level
 
 	var/datum/preferences/preference_instance = GLOB.preferences_datums[lowertext(key)]
 	if (!isnull(preference_instance))
-		for (var/antag_category in GLOB.optin_forcing_midround_antag_categories)
+		for (var/antag_category in GLOB.rr_optin_forcing_midround_antag_categories)
 			if (antag_category in preference_instance.be_special)
-				return OPT_IN_ANTAG_ENABLED_LEVEL
+				return OPT_IN_RR_ENABLED_LEVEL
 	return OPT_IN_NOT_TARGET

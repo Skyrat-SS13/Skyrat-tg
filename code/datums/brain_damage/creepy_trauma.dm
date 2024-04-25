@@ -131,7 +131,7 @@
 	var/list/special_pool = list() //The special list, for quirk-based
 	var/chosen_victim  //The obsession target
 
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
+	var/opt_in_disabled = CONFIG_GET(flag/disable_rr_opt_in_preferences) // SKYRAT EDIT ADDITION - Round Removal OPT-IN
 	for(var/mob/player as anything in GLOB.player_list)//prevents crew members falling in love with nuke ops they never met, and other annoying hijinks
 		if(!player.client || !player.mind || isnewplayer(player) || player.stat == DEAD || isbrain(player) || player == owner)
 			continue
@@ -140,7 +140,7 @@
 		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
 			continue
-		if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < OPT_IN_YES_KILL)
+		if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < OPT_IN_RR)
 			continue
 		// SKYRAT EDIT ADDITION END
 		viable_minds += player.mind

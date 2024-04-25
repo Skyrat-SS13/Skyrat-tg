@@ -1,13 +1,13 @@
 https://github.com/NovaSector/NovaSector/pull/121
 
-## \<Title Antagonist Opt In>
+## \<Title Round Removal Opt In>
 
-Module ID: ANTAG_OPTIN
+Module ID: RR_OPTIN
 
 ### Description:
 
 
-Adds functionality to allow players to 'opt-in' to being an antagonist's mechanical target, with three different levels of involvement - being temporarily inconvenienced, killed, and round removed. Command roles & security are automatically opted-in to at least 'KILL' level. Additionally, contractor & heretic have their objectives adjusted to only have command staff & security as their targets
+Adds functionality to allow players to 'opt-in' to being an antagonist's mechanical target, and for round removal. Command roles & security are automatically opted-in, contractor & heretic have their objectives adjusted to only have command staff & security as their targets
 
 ### TG Proc/File Changes:
 
@@ -21,7 +21,7 @@ Adds functionality to allow players to 'opt-in' to being an antagonist's mechani
 
 ### Defines:
 
-- antag_opt_in - lives in ~skyrat_defines located in __DEFINES folder. Defines named OPT_IN_YES_KILL, OPT_IN_YES_TEMP, OPT_IN_YES_ROUND_REMOVE, and OPT_IN_OPT_IN_NOT_TARGET - used for managing opt in stuff. 
+- rr_opt_in - lives in ~skyrat_defines located in __DEFINES folder. Defines named OPT_IN_RR, OPT_OUT_RR - used for managing opt in stuff.
 
 ### Included files that are not contained in this module:
 
