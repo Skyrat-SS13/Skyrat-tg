@@ -42,7 +42,7 @@
 //457
 
 /obj/item/ammo_casing/c457govt
-	name = ".460 Rowland Rose bullet casing"
+	name = ".457 Government bullet casing"
 	desc = "A Romulus Tech standard lethal pistol round."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'

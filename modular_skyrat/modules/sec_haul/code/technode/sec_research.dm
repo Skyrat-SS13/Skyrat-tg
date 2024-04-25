@@ -228,6 +228,18 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/casingfor457
+	name = ".457 Government Casing (Very lethal)"
+	desc = "A bullet casing for .457 Government."
+	id = "c457_casing"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 5)
+	build_path = /obj/item/ammo_casing/c457govt
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 //Conversion Kit
 
 /datum/design/sol_rifle_carbine_kit

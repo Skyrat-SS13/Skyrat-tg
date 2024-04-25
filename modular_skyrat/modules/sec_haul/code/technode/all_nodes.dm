@@ -44,6 +44,7 @@
 	design_ids += "s12g_bslug"
 	design_ids += "s12g_incinslug"
 	design_ids += "s12g_buckshot"
+	design_ids += "c457_casing"
 	. = ..()
 
 /datum/techweb_node/adv_weaponry/New()
