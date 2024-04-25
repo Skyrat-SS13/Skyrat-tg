@@ -151,11 +151,11 @@
 
 /obj/item/ammo_casing/shotgun/flechette
 	name = "flechette shell"
-	desc = "A 12 gauge flechette shell that specializes in ripping unarmored targets apart."
+	desc = "A 12 gauge flechette shell that specializes in ripping armoured targets apart."
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 4
-	variance = 8
+	variance = 12
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
 
@@ -169,6 +169,7 @@
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
 	weak_against_armour = FALSE
 	damage_falloff_tile = 0
+	armour_penetration = 20
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette/Initialize(mapload)
 	. = ..()
