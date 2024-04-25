@@ -46,12 +46,28 @@
 	))
 
 /obj/item/storage/toolbox/guncase/skyrat/hos_revolver
-	name = "heavy revolver .357"
+	name = "heavy revolver .457"
 
 /obj/item/storage/toolbox/guncase/skyrat/hos_revolver/PopulateContents()
 	new /obj/item/gun/ballistic/revolver/hos_revolver(src)
 	new /obj/item/storage/bag/b460reloadpouch(src)
 
+
+/obj/item/storage/bag/b460reloadpouch(PopulateContents)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
 
 /obj/item/gun/ballistic/automatic/pistol/m1911/gold
 	name = "gold trimmed m1911"

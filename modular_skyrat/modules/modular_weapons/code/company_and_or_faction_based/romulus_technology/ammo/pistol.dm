@@ -11,12 +11,12 @@
 /obj/projectile/bullet/c460rowland
 	name = ".460 Rowland Rose"
 	damage = 35
-	stamina = 8 //knock the winds outta ya
+	stamina = 10 //knock the winds outta ya
 
 	wound_bonus = 30
 	bare_wound_bonus = 20
 	weak_against_armour = TRUE
-	damage_falloff_tile = 2.5
+	damage_falloff_tile = 1.5
 	stamina_falloff_tile = 0.3
 
 /obj/item/ammo_casing/c460rowland/dart
