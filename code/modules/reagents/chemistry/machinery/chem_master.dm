@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 #define TRANSFER_MODE_DESTROY 0
 #define TRANSFER_MODE_MOVE 1
 #define TARGET_BEAKER "beaker"
 #define TARGET_BUFFER "buffer"
+=======
+#define MAX_CONTAINER_PRINT_AMOUNT 50
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
@@ -43,10 +47,15 @@
 	/// Number of printed containers in the current printing cycle for UI progress bar
 	var/printing_progress
 	var/printing_total
+<<<<<<< HEAD
 	/// Default duration of printing cycle
 	var/printing_speed = 0.75 SECONDS // Duration of animation
 	/// The amount of containers printed in one cycle
 	var/printing_amount = 1
+=======
+	/// The time it takes to print a container
+	var/printing_speed = 0.75 SECONDS
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 /obj/machinery/chem_master/Initialize(mapload)
 	create_reagents(100)
@@ -65,9 +74,19 @@
 
 /obj/machinery/chem_master/Exited(atom/movable/gone, direction)
 	. = ..()
+<<<<<<< HEAD
 	if(gone == beaker)
 		beaker = null
 		update_appearance(UPDATE_ICON)
+=======
+	if(in_range(user, src) || isobserver(user))
+		. += span_notice("The status display reads:<br>Reagent buffer capacity: <b>[reagents.maximum_volume]</b> units.<br>Printing speed: <b>[0.75 SECONDS / printing_speed * 100]%</b>.")
+		if(!QDELETED(beaker))
+			. += span_notice("[beaker] of <b>[beaker.reagents.maximum_volume]u</b> capacity inserted")
+			. += span_notice("Right click with empty hand to remove beaker")
+		else
+			. += span_warning("Missing input beaker")
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 /obj/machinery/chem_master/RefreshParts()
 	. = ..()
@@ -135,10 +154,18 @@
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
+<<<<<<< HEAD
 /obj/machinery/chem_master/crowbar_act(mob/living/user, obj/item/tool)
 	if(default_deconstruction_crowbar(tool))
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
+=======
+	//Servo tier determines printing speed
+	printing_speed = 1 SECONDS
+	for(var/datum/stock_part/servo/servo in component_parts)
+		printing_speed -= servo.tier * 0.25 SECONDS
+	printing_speed = max(printing_speed, 0.25 SECONDS)
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 /obj/machinery/chem_master/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	if(is_reagent_container(tool) && !(tool.item_flags & ABSTRACT) && tool.is_open_container())
@@ -198,6 +225,11 @@
 
 /obj/machinery/chem_master/ui_static_data(mob/user)
 	var/list/data = list()
+<<<<<<< HEAD
+=======
+
+	data["maxPrintable"] = MAX_CONTAINER_PRINT_AMOUNT
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 	data["categories"] = list()
 	for(var/category in printable_containers)
 		var/container_data = list()
@@ -218,6 +250,7 @@
 /obj/machinery/chem_master/ui_data(mob/user)
 	var/list/data = list()
 
+<<<<<<< HEAD
 	data["reagentAnalysisMode"] = reagent_analysis_mode
 	if(reagent_analysis_mode && analyzed_reagent)
 		var/state
@@ -253,6 +286,12 @@
 			for(var/datum/reagent/reagent in beaker.reagents.reagent_list)
 				beaker_contents.Add(list(list("name" = reagent.name, "ref" = REF(reagent), "volume" = round(reagent.volume, 0.01))))
 		data["beakerContents"] = beaker_contents
+=======
+	//printing statictics
+	.["isPrinting"] = is_printing
+	.["printingProgress"] = printing_progress
+	.["printingTotal"] = printing_total
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 		var/list/buffer_contents = list()
 		if(reagents.total_volume)
@@ -397,7 +436,19 @@
 	if (!reagent)
 		return FALSE
 
+<<<<<<< HEAD
 	use_energy(active_power_usage)
+=======
+			//validate print count
+			var/item_count = params["itemCount"]
+			if(isnull(item_count))
+				return FALSE
+			item_count = text2num(item_count)
+			if(isnull(item_count) || item_count <= 0)
+				return FALSE
+			item_count = min(item_count, MAX_CONTAINER_PRINT_AMOUNT)
+			var/volume_in_each = round(reagents.total_volume / item_count, CHEMICAL_VOLUME_ROUNDING)
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 	if (target == TARGET_BUFFER)
 		if(!check_reactions(reagent, beaker.reagents))
@@ -444,10 +495,29 @@
 				return REF(container)
 	return default_container
 
+<<<<<<< HEAD
 /obj/machinery/chem_master/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads:<br>Reagent buffer capacity: <b>[reagents.maximum_volume]</b> units.<br>Number of containers printed at once increased by <b>[100 * (printing_amount / initial(printing_amount)) - 100]%</b>.")
+=======
+	//print the stuff
+	var/obj/item/reagent_containers/item = new selected_container(drop_location())
+	adjust_item_drop_location(item)
+	item.name = item_name
+	item.reagents.clear_reagents()
+	reagents.trans_to(item, volume_in_each, transferred_by = user)
+	printing_progress++
+	update_appearance(UPDATE_OVERLAYS)
+
+	//print more items
+	item_count --
+	if(item_count > 0)
+		addtimer(CALLBACK(src, PROC_REF(create_containers), user, item_count, item_name, volume_in_each), printing_speed)
+	else
+		is_printing = FALSE
+		update_appearance(UPDATE_OVERLAYS)
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
 
 /obj/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
@@ -456,6 +526,7 @@
 	has_container_suggestion = TRUE
 
 /obj/machinery/chem_master/condimaster/load_printable_containers()
+<<<<<<< HEAD
 	printable_containers = list(
 		CAT_CONDIMENTS = GLOB.reagent_containers[CAT_CONDIMENTS],
 	)
@@ -464,3 +535,11 @@
 #undef TRANSFER_MODE_MOVE
 #undef TARGET_BEAKER
 #undef TARGET_BUFFER
+=======
+	var/static/list/containers
+	if(!length(containers))
+		containers = list(CAT_CONDIMENTS = GLOB.reagent_containers[CAT_CONDIMENTS])
+	return containers
+
+#undef MAX_CONTAINER_PRINT_AMOUNT
+>>>>>>> 061ce73c99a (ChemMaster 3000 printing speed based on servo tier (#82836))
