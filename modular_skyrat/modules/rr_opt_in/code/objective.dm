@@ -14,7 +14,7 @@
     default_opt_in_level = OPT_IN_RR
 
 /datum/objective/capture
-	default_opt_in_level = OPT_IN_RRE
+	default_opt_in_level = OPT_IN_RR
 
 /datum/objective/absorb
 	default_opt_in_level = OPT_IN_RR
