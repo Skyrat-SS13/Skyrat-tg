@@ -60,6 +60,10 @@ GLOBAL_LIST_EMPTY_TYPED(hostile_machines, /atom)
 	. = ..()
 	if (succeeded)
 		controller.CancelActions() // On retarget cancel any further queued actions so that they will setup again with new target
+<<<<<<< HEAD
+=======
+		controller.modify_cooldown(src, get_cooldown(controller))
+>>>>>>> f31b2794b58 (fixes ai controllers hard deletes (#82861))
 
 /// Returns the desired final target from the filtered list of targets
 /datum/ai_behavior/find_potential_targets/proc/pick_final_target(datum/ai_controller/controller, list/filtered_targets)
