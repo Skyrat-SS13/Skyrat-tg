@@ -60,6 +60,20 @@
 	new /obj/item/ammo_casing/c457govt(src)
 	new /obj/item/ammo_casing/c457govt(src)
 	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
+	new /obj/item/ammo_casing/c457govt(src)
 
 /obj/item/storage/toolbox/guncase/skyrat/hos_revolver
 	name = "heavy revolver .457"

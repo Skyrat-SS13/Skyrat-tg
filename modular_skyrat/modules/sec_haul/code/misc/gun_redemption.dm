@@ -44,7 +44,7 @@
 /obj/item/choice_beacon/station_magistrate/generate_display_names()
 	var/static/list/selectable_gun_types = list(
 		"Energy Revolver" = /obj/item/gun/energy/e_gun/blueshield,
-		".357 Romulus Revolver" = /obj/item/storage/toolbox/guncase/skyrat/hos_revolver,
+		".457 Romulus Revolver" = /obj/item/storage/toolbox/guncase/skyrat/hos_revolver,
 		".460 Rowland Magnum Pistol" = /obj/item/storage/toolbox/guncase/skyrat/m45a5
 	)
 
