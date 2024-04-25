@@ -3,7 +3,7 @@
 
 /obj/item/gun/ballistic/revolver/hos_revolver
 	name = "\improper HR-460MS"
-	desc = "A large unwiedly revolver developed by Romulus Technology  prior to destruction of the planet, if the initial damage did not kill, the bleedout would. Uses .357."
+	desc = "An experimental revolver design that can only be loaded one shot at a time, if the initial damage did not kill, the bleedout would. Uses .357."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
@@ -12,10 +12,11 @@
 /obj/item/gun/ballistic/revolver/hos_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
-
+//PLease keep this in
 /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	name = "\improper rowland revolver cylinder"
-	max_ammo = 6
+	max_ammo = 7
+	ammo_type = /obj/item/ammo_casing/c457govt
 
 /obj/item/gun/ballistic/revolver/hos_revolver/long
 	name = "\improper HR-460LR"
@@ -36,8 +37,8 @@
 /obj/item/storage/bag/b460reloadpouch/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
-	atom_storage.max_total_storage = 30
-	atom_storage.max_slots = 30
+	atom_storage.max_total_storage = 35
+	atom_storage.max_slots = 35
 	atom_storage.numerical_stacking = TRUE
 	atom_storage.set_holdable(list(
 		/obj/item/ammo_casing/c457govt,
@@ -50,6 +51,7 @@
 /obj/item/storage/toolbox/guncase/skyrat/hos_revolver/PopulateContents()
 	new /obj/item/gun/ballistic/revolver/hos_revolver(src)
 	new /obj/item/storage/bag/b460reloadpouch(src)
+
 
 /obj/item/gun/ballistic/automatic/pistol/m1911/gold
 	name = "gold trimmed m1911"

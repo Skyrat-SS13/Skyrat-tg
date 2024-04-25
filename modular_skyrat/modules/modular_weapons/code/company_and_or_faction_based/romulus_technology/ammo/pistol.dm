@@ -54,9 +54,8 @@
 /obj/projectile/bullet/c457govt
 	name = ".457 Government"
 	damage = 35
-	wound_bonus = -10
-	bare_wound_bonus = -5
-	damage_falloff_tile = 0.5
+	wound_bonus = -20
+	bare_wound_bonus = -15
 
 /obj/item/ammo_casing/c457govt/dart
 	name = ".457 Government Accelerating"
