@@ -15,6 +15,19 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 /// The radiation range for when a cell suffers a radiation failure.
 #define MICROFUSION_CELL_RADIATION_RANGE_FAILURE 1
 
+/// The lower most time for a microfusion cell meltdown.
+#define MICROFUSION_CELL_FAILURE_LOWER (10 SECONDS)
+/// The upper most time for a microfusion cell meltdown.
+#define MICROFUSION_CELL_FAILURE_UPPER (15 SECONDS)
+
+/// A charge drain failure.
+#define MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN 1
+/// A small explosion failure.
+#define MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION 2
+/// EMP failure.
+#define MICROFUSION_CELL_FAILURE_TYPE_EMP 3
+/// Radiation failure.
+#define MICROFUSION_CELL_FAILURE_TYPE_RADIATION 4
 
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
@@ -226,3 +239,11 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 #undef MICROFUSION_CELL_EMP_HEAVY_FAILURE
 #undef MICROFUSION_CELL_EMP_LIGHT_FAILURE
 #undef MICROFUSION_CELL_RADIATION_RANGE_FAILURE
+
+#undef MICROFUSION_CELL_FAILURE_LOWER
+#undef MICROFUSION_CELL_FAILURE_UPPER
+
+#undef MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN
+#undef MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION
+#undef MICROFUSION_CELL_FAILURE_TYPE_EMP
+#undef MICROFUSION_CELL_FAILURE_TYPE_RADIATION
