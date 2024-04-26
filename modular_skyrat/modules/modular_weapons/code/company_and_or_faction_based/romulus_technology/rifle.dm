@@ -18,7 +18,7 @@
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
-	burst_size = 1
+	burst_size = 2
 	fire_delay = 0.24 SECONDS
 
 	spread = 9.5
