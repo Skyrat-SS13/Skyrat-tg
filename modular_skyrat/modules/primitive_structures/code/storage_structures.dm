@@ -49,7 +49,7 @@
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
 	base_build_path = /obj/machinery/smartfridge/wooden
-	base_icon_state = "produce"
+	base_icon_state = "producebin"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
