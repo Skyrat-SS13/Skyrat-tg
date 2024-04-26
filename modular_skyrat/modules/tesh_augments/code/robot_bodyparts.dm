@@ -150,6 +150,7 @@
 
 	brute_modifier = 1.25
 	burn_modifier = 1.2
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_PROSTHESIS
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_PROSTHESIS
@@ -168,6 +169,7 @@
 
 	brute_modifier = 1.25
 	burn_modifier = 1.2
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_PROSTHESIS
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_PROSTHESIS
@@ -224,6 +226,7 @@
 
 	brute_modifier = 1.25
 	burn_modifier = 1.2
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_PROSTHESIS
 
@@ -243,6 +246,7 @@
 
 	brute_modifier = 1.25
 	burn_modifier = 1.2
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_PROSTHESIS
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_PROSTHESIS
@@ -299,6 +303,7 @@
 
 	brute_modifier = 0.8
 	burn_modifier = 1
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_ADVANCED
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_ADVANCED
@@ -317,6 +322,7 @@
 
 	brute_modifier = 0.8
 	burn_modifier = 1
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_ADVANCED
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_ADVANCED
