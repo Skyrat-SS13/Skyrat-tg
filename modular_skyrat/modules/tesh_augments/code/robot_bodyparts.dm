@@ -54,6 +54,7 @@
 
 	brute_modifier = 1
 	burn_modifier = 0.9
+	speed_modifier = -0.1
 
 /obj/item/bodypart/leg/right/robot/teshari
 	name = "cybernetic right raptoral hindlimb"
@@ -67,6 +68,7 @@
 
 	brute_modifier = 1
 	burn_modifier = 0.9
+	speed_modifier = -0.1
 
 /obj/item/bodypart/chest/robot/teshari
 	name = "cybernetic raptoral torso"
@@ -367,6 +369,7 @@
 
 	brute_modifier = 1
 	burn_modifier = 0.9
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_ADVANCED
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_ADVANCED
@@ -385,6 +388,7 @@
 
 	brute_modifier = 1
 	burn_modifier = 0.9
+	speed_modifier = -0.1
 
 	max_damage = LIMB_MAX_HP_ADVANCED
 	body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_ADVANCED
