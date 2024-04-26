@@ -58,7 +58,7 @@
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
 	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
-			new /obj/item/stack/rods(loc, 2)
+		new /obj/item/stack/rods(loc, 2)
 
 /obj/structure/towel_bin/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
