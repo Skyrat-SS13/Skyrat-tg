@@ -3,11 +3,12 @@
 
 /obj/item/gun/ballistic/revolver/hos_revolver
 	name = "\improper HR-460MS"
-	desc = "An experimental revolver design that can only be loaded one shot at a time, if the initial damage did not kill, the bleedout would. Uses .357."
+	desc = "An experimental revolver design that can only be loaded one shot at a time, if the initial damage did not kill, the bleedout would. Chambered in .457 Government."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
+	caliber = CALIBER_457GOVT
 
 /obj/item/gun/ballistic/revolver/hos_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
@@ -15,7 +16,7 @@
 //PLease keep this in
 /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	name = "\improper rowland revolver cylinder"
-	max_ammo = 7
+	max_ammo = 5
 	ammo_type = /obj/item/ammo_casing/c457govt
 
 /obj/item/gun/ballistic/revolver/hos_revolver/long
