@@ -618,7 +618,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	// The ticket's id
 	var/ticket_id = ticket?.id
 
-	var/compliant_msg = trim(lowertext(message))
+	var/compliant_msg = trim(LOWER_TEXT(message))
 	var/tgs_tagged = "[sender](TGS/External)"
 	var/list/splits = splittext(compliant_msg, " ")
 	var/split_size = length(splits)
