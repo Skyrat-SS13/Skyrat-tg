@@ -8,7 +8,6 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
-	caliber = CALIBER_457GOVT
 
 /obj/item/gun/ballistic/revolver/hos_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
@@ -18,10 +17,11 @@
 	name = "\improper rowland revolver cylinder"
 	max_ammo = 5
 	ammo_type = /obj/item/ammo_casing/c457govt
+	caliber = CALIBER_457GOVT
 
 /obj/item/gun/ballistic/revolver/hos_revolver/long
 	name = "\improper HR-460LR"
-	desc = "A long unwiedly revolver from Romulus Technology. chambered in the rare .357. You might be able to kill someone by whacking it over the head"
+	desc = "A long unwiedly revolver from Romulus Technology. chambered in the rare .457 Government. You might be able to kill someone by whacking it over the head"
 	icon_state = "tracker"
 	force = 15
 
