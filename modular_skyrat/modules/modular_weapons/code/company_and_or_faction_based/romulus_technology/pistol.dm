@@ -7,7 +7,7 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rowland
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
-	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/revolver_heavy.ogg'
 
 /obj/item/gun/ballistic/revolver/hos_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
