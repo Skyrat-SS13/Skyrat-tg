@@ -12,13 +12,15 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_righthand.dmi'
 	inhand_icon_state = "carbine"
 
+	bolt_type = BOLT_TYPE_LOCKING
+
 	special_mags = TRUE
 
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
-	burst_size = 3
+	burst_size = 1
 	fire_delay = 0.24 SECONDS
 
 	spread = 9.5
@@ -29,6 +31,10 @@
 
 /obj/item/gun/ballistic/automatic/rom_carbine/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
+
+/obj/item/gun/ballistic/automatic/rom_carbine/proc/give_autofire()
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
 
 /obj/item/gun/ballistic/automatic/rom_carbine/examine(mob/user)
 	. = ..()
