@@ -8989,6 +8989,31 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/station/construction)
+"cjz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/button/door/directional/west{
+	id = "viro-inner";
+	name = "Inner Virology Lockdown";
+	pixel_y = -8
+	},
+/obj/machinery/button/door/directional/west{
+	id = "viro-outer";
+	name = "Outer Virology Lockdown";
+	pixel_y = 8
+	},
+/obj/machinery/button/door/directional/west{
+	id = "viro-iso";
+	name = "Isolation Bolts";
+	normaldoorcontrol = 1;
+	pixel_x = -36;
+	specialfunctions = 4
+	},
+/obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "cjB" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
@@ -12175,6 +12200,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/service)
+"daa" = (
+/obj/machinery/camera/motion/directional/north{
+	c_tag = "Minisat North"
+	},
+/obj/machinery/power/smes/super/full,
+/obj/structure/cable,
+/turf/open/floor/circuit,
+/area/station/ai_monitored/turret_protected/aisat/service)
 "dab" = (
 /obj/effect/spawner/random/trash/garbage{
 	spawn_scatter_radius = 1
@@ -19499,15 +19532,6 @@
 	},
 /turf/open/openspace,
 /area/station/science/xenobiology/hallway)
-"fbl" = (
-/obj/machinery/power/smes,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/light/small/directional/west,
-/turf/open/floor/plating,
-/area/station/engineering/gravity_generator)
 "fbo" = (
 /obj/effect/turf_decal/tile/red/opposingcorners{
 	dir = 1
@@ -25866,14 +25890,6 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology/hallway)
-"gKc" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "gKg" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
@@ -34866,12 +34882,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor4/starboard/fore)
-"jbe" = (
-/obj/machinery/firealarm/directional/west,
-/obj/machinery/power/smes/super/full,
-/obj/structure/cable,
-/turf/open/floor/circuit,
-/area/station/ai_monitored/turret_protected/aisat_interior)
 "jbg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -36843,6 +36853,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/floor1/aft)
+"jCk" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/directional/west,
+/obj/machinery/power/smes/full,
+/turf/open/floor/plating,
+/area/station/engineering/gravity_generator)
 "jCz" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -40334,6 +40353,14 @@
 	},
 /turf/open/floor/iron/chapel,
 /area/station/service/chapel)
+"kvW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "kwc" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -47987,14 +48014,6 @@
 /obj/item/storage/belt/utility,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/ai_monitored/command/storage/eva)
-"mpP" = (
-/obj/machinery/camera/motion/directional/north{
-	c_tag = "Minisat North"
-	},
-/obj/machinery/power/smes/super/full,
-/obj/structure/cable,
-/turf/open/floor/circuit,
-/area/station/ai_monitored/turret_protected/aisat/service)
 "mpY" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 5
@@ -53341,31 +53360,6 @@
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/floor3/starboard/aft)
-"nHh" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/machinery/button/door/directional/west{
-	id = "viro-inner";
-	name = "Inner Virology Lockdown";
-	pixel_y = -8
-	},
-/obj/machinery/button/door/directional/west{
-	id = "viro-outer";
-	name = "Outer Virology Lockdown";
-	pixel_y = 8
-	},
-/obj/machinery/button/door/directional/west{
-	id = "viro-iso";
-	name = "Isolation Bolts";
-	normaldoorcontrol = 1;
-	pixel_x = -36;
-	specialfunctions = 4
-	},
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "nHr" = (
 /obj/structure/chair{
 	dir = 8
@@ -61948,6 +61942,11 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
+"pUB" = (
+/obj/machinery/power/smes/super/full,
+/obj/structure/cable,
+/turf/open/floor/circuit,
+/area/station/ai_monitored/turret_protected/aisat/service)
 "pUC" = (
 /obj/effect/spawner/random/trash/graffiti,
 /turf/open/floor/pod/light,
@@ -79798,6 +79797,12 @@
 	},
 /turf/open/floor/iron/corner,
 /area/station/maintenance/solars/starboard/fore)
+"uDR" = (
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/power/smes/super/full,
+/obj/structure/cable,
+/turf/open/floor/circuit,
+/area/station/ai_monitored/turret_protected/aisat_interior)
 "uDZ" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/airalarm/directional/north,
@@ -92498,11 +92503,6 @@
 /obj/structure/railing/corner,
 /turf/open/space/openspace,
 /area/space)
-"xKv" = (
-/obj/machinery/power/smes/super/full,
-/obj/structure/cable,
-/turf/open/floor/circuit,
-/area/station/ai_monitored/turret_protected/aisat/service)
 "xKy" = (
 /obj/machinery/modular_computer/preset/id{
 	dir = 8
@@ -143683,7 +143683,7 @@ lEI
 aVc
 dEc
 dFq
-fbl
+jCk
 oHx
 dEc
 vYD
@@ -195562,7 +195562,7 @@ mqc
 mRQ
 dVV
 xNy
-nHh
+cjz
 mcI
 rPC
 sJn
@@ -196076,7 +196076,7 @@ iOA
 utl
 doh
 gJz
-gKc
+kvW
 hwQ
 piz
 aWO
@@ -196590,7 +196590,7 @@ iOA
 dfU
 pZm
 wJy
-gKc
+kvW
 dVV
 bLm
 yhv
@@ -335641,7 +335641,7 @@ aFj
 aFj
 sOy
 rZC
-jbe
+uDR
 knY
 sOy
 vyR
@@ -336147,7 +336147,7 @@ oyh
 oyh
 aFj
 aFj
-xKv
+pUB
 kZZ
 kum
 kum
@@ -336918,7 +336918,7 @@ dkh
 aFj
 aFj
 aFj
-mpP
+daa
 kZZ
 tOV
 knH
