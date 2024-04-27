@@ -115,7 +115,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 		if(3) // Emp pulse
 			empulse(get_turf(src), 2, 4, FALSE) // 2 Heavy, 4 Light
 		if(4) // Deathly radiation pulse
-			radiation_pulse(src, 1, RAD_MEDIUM_INSULATION, 30)
+			radiation_pulse(src, 2, RAD_MEDIUM_INSULATION, 30)
 	meltdown = FALSE
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
