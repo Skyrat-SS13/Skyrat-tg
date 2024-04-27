@@ -20,7 +20,7 @@
 	/obj/item/circuitboard/machine/techfab/department/medical, \
 	/obj/item/circuitboard/machine/techfab/department/cargo, \
 	/obj/item/circuitboard/machine/techfab/department/science, \
-	/obj/item/areaeditor/blueprints, \
+	/obj/item/blueprints, \
 	/obj/item/pipe_dispenser/bluespace, \
 	/obj/item/mod/control/pre_equipped/advanced, \
 	/obj/item/clothing/shoes/magboots/advance, \

@@ -440,3 +440,35 @@
   - qol: 'Charlie pods now have pref and loadout spawning.
 
       :cl:'
+2024-04-26:
+  Jacquerel and Melbert:
+  - rscadd: A new achievement for moving a boulder from one place to another, at great
+      effort.
+  - balance: Hauling a boulder around makes you move slower, as it does when dragging
+      it.
+  Majkl-J:
+  - bugfix: Medicells now correctly use power
+  - bugfix: MCRs now correctly use power
+  - bugfix: Infinite powercells now have infinite power that's useful and not 2500
+      Joules
+  - qol: slimes will stay active without needing any one to watch over
+  - code_imp: The way mobs idle has been refactored, please report any issues with
+      non-reactive mobs
+  Melbert:
+  - bugfix: Playing Cards memory now reads better
+  SkyratBot:
+  - bugfix: Fixes AI lag by re-adding idle mode to all AI that was lost with the simple
+      mob to basic mob conversion.
+  - bugfix: AI controllers with no clients around for 14 tiles will move into idle
+      mode and stop planning or acting.
+  - bugfix: AI controllers will now record how much time was spent on planning or
+      un-idling AI controllers.
+  - bugfix: The rebar crossbows now properly loosen their bowstring upon firing.
+  - balance: Longfall modules no logner stun you when they activate.
+  - balance: Falling from a height greater than one z-level while using the longfall
+      module will still stagger you.
+  - bugfix: The plasma flower modsuit core now actually contains a reasonable quantity
+      of power.
+2024-04-27:
+  aKromatopzia:
+  - rscadd: Chaplains can be "Clerics"
