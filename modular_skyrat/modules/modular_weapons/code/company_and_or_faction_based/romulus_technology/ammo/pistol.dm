@@ -16,7 +16,6 @@
 	wound_bonus = 10
 	bare_wound_bonus = -40
 	weak_against_armour = TRUE
-	damage_falloff_tile = 1.5
 	stamina_falloff_tile = 0.3
 
 /obj/item/ammo_casing/c460rowland/dart
