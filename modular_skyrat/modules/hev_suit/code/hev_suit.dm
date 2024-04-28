@@ -843,10 +843,11 @@
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
 
-/obj/item/clothing/suit/space/hev_suit/pcv/click_alt(mob/living/user)
-	if (reskin_obj(user))
-		return CLICK_ACTION_SUCCESS
+/obj/item/clothing/suit/space/hev_suit/pcv/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
+	if(!current_skin)
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Reskin"
+		return CONTEXTUAL_SCREENTIP_SET
 
 #undef HEV_COLOR_GREEN
 #undef HEV_COLOR_RED
