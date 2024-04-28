@@ -264,12 +264,11 @@
 	remove_emitter()
 
 /obj/item/gun/microfusion/click_alt(mob/user)
-	. = ..()
-	if(can_interact(user))
-		var/obj/item/microfusion_gun_attachment/to_remove = input(user, "Please select what part you'd like to remove.", "Remove attachment")  as null|obj in sort_names(attachments)
-		if(!to_remove)
-			return
-		remove_attachment(to_remove, user)
+	var/obj/item/microfusion_gun_attachment/to_remove = input(user, "Please select what part you'd like to remove.", "Remove attachment")  as null|obj in sort_names(attachments)
+	if(!to_remove)
+		return CLICK_ACTION_BLOCKING
+	remove_attachment(to_remove, user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/gun/microfusion/proc/remove_all_attachments()
 	if(attachments.len)

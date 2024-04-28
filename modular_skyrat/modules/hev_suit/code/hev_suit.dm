@@ -844,7 +844,8 @@
 	suit_name = "PCV MARK II"
 
 /obj/item/clothing/suit/space/hev_suit/pcv/click_alt(mob/living/user)
-	reskin_obj(user)
+	if (reskin_obj(user))
+		return CLICK_ACTION_SUCCESS
 	. = ..()
 
 #undef HEV_COLOR_GREEN

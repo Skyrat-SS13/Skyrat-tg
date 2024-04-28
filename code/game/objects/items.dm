@@ -1512,6 +1512,7 @@
 		wearer.regenerate_icons() // update that mf
 	to_chat(M, "[src] is now skinned as '[pick].'")
 	post_reskin(M)
+	return TRUE
 
 /// Automatically called after a reskin, for any extra variable changes.
 /obj/item/proc/post_reskin(mob/our_mob)
