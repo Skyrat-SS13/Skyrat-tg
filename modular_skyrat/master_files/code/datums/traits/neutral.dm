@@ -236,6 +236,13 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	mob_trait = TRAIT_FELINE
 	icon = FA_ICON_CAT
 
+/datum/quirk/feline_aspect/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/obj/item/organ/internal/tongue/cat/new_tongue = new(get_turf(human_holder))
+	
+	new_tongue.copy_traits_from(human_holder.get_organ_slot(ORGAN_SLOT_TONGUE))
+	new_tongue.Insert(human_holder, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"
 	desc = "Bark. You seem to act like a canine for whatever reason. This will replace most other tongue-based speech quirks."
