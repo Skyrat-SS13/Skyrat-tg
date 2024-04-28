@@ -1,4 +1,4 @@
-import { sortBy, sortStrings } from 'common/collections';
+import { sort, sortBy } from 'common/collections';
 import { BooleanLike, classes } from 'common/react';
 import {
   ComponentType,
@@ -22,7 +22,8 @@ import {
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
-export const sortChoices = sortBy<[string, ReactNode]>(([name]) => name);
+export const sortChoices = (array: [string, ReactNode][]) =>
+  sortBy(array, ([name]) => name);
 
 export type Feature<
   TReceiving,
@@ -210,7 +211,7 @@ export const FeatureDropdownInput = (
 
   return (
     <StandardizedDropdown
-      choices={sortStrings(serverData.choices)}
+      choices={sort(serverData.choices)}
       disabled={props.disabled}
       buttons={props.buttons}
       displayNames={displayNames}
@@ -279,7 +280,7 @@ export const FeatureIconnedDropdownInput = (
 
   return (
     <StandardizedDropdown
-      choices={sortStrings(serverData.choices)}
+      choices={sort(serverData.choices)}
       displayNames={displayNames}
       onSetValue={props.handleSetValue}
       value={props.value.value}

@@ -2799,6 +2799,12 @@
 	},
 /turf/open/floor/circuit/green,
 /area/station/science/robotics/mechbay)
+"boT" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/light/cold/dim/directional/west,
+/obj/machinery/vending/wardrobe/engi_wardrobe,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "boW" = (
 /obj/structure/table/glass,
 /obj/machinery/status_display/ai/directional/south,
@@ -10007,18 +10013,6 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/tile,
 /area/station/science/lower)
-"erJ" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/structure/table/greyscale,
-/obj/item/folder/yellow{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/meson,
-/turf/open/floor/iron/grimy,
-/area/station/engineering/main)
 "erK" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/thinplating_new,
@@ -11513,13 +11507,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
-"eWf" = (
-/obj/structure/closet/cardboard,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/iron/grimy,
-/area/station/engineering/main)
 "eWj" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
 	dir = 4;
@@ -11999,17 +11986,6 @@
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/cafeteria)
-"fhX" = (
-/obj/structure/table/greyscale,
-/obj/item/folder/yellow{
-	pixel_x = 2;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = -4
-	},
-/turf/open/floor/iron/grimy,
-/area/station/engineering/main)
 "fib" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -31165,6 +31141,18 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
+"lwl" = (
+/obj/effect/gibspawner/human,
+/obj/structure/table/optable{
+	desc = "A cold, hard place for your final rest.";
+	name = "Morgue Slab"
+	},
+/mob/living/carbon/human/species/monkey/humand_legged{
+	name = "Charles";
+	real_name = "Charles"
+	},
+/turf/open/floor/iron/white/diagonal,
+/area/station/maintenance/department/science/xenobiology)
 "lwn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/hatch,
@@ -33051,6 +33039,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"lWK" = (
+/obj/structure/closet/cardboard,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/item/airlock_painter,
+/turf/open/floor/iron/grimy,
+/area/station/engineering/main)
 "lWQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/ticket_machine/directional/north,
@@ -36959,31 +36955,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron/textured_half,
 /area/station/security)
-"nki" = (
-/obj/structure/rack,
-/obj/item/airlock_painter,
-/obj/item/lightreplacer{
-	pixel_y = 7
-	},
-/obj/item/clothing/head/utility/hardhat/welding{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/utility/hardhat/welding{
-	pixel_x = -4
-	},
-/obj/item/clothing/head/utility/hardhat/welding{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/effect/turf_decal/bot,
-/obj/machinery/light/cold/dim/directional/west,
-/obj/item/grenade/chem_grenade/smart_metal_foam{
-	pixel_x = 9;
-	pixel_y = 5
-	},
-/turf/open/floor/iron,
-/area/station/engineering/main)
 "nkl" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -45700,10 +45671,6 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/station/science/xenobiology)
-"pRb" = (
-/obj/item/computer_disk/virus/mime,
-/turf/closed/mineral/random/stationside,
-/area/space/nearstation)
 "pRe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/table/wood,
@@ -60444,18 +60411,6 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
-"tUa" = (
-/obj/effect/gibspawner/human,
-/obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
-	name = "Morgue Slab"
-	},
-/mob/living/carbon/human/species/monkey/humand_legged{
-	name = "Charles";
-	real_name = "Charles"
-	},
-/turf/open/floor/iron/white/diagonal,
-/area/station/maintenance/department/science/xenobiology)
 "tUc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68928,6 +68883,17 @@
 	},
 /turf/open/space/basic,
 /area/station/engineering/atmos/space_catwalk)
+"wlW" = (
+/obj/structure/table/greyscale,
+/obj/item/lightreplacer{
+	pixel_y = 7
+	},
+/obj/item/lightreplacer{
+	pixel_y = 2;
+	pixel_x = -2
+	},
+/turf/open/floor/iron/grimy,
+/area/station/engineering/main)
 "wmd" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible/layer2{
@@ -70351,8 +70317,8 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "wHO" = (
-/obj/structure/dresser,
 /obj/structure/sign/poster/official/random/directional/north,
+/obj/structure/closet/crate/wooden/toy,
 /turf/open/floor/wood/parquet,
 /area/station/service/greenroom)
 "wHP" = (
@@ -74918,6 +74884,22 @@
 	},
 /turf/open/floor/plating,
 /area/station/service/abandoned_gambling_den/gaming)
+"xMU" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/table/greyscale,
+/obj/item/folder/yellow{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/clothing/glasses/meson,
+/obj/item/grenade/chem_grenade/smart_metal_foam{
+	pixel_x = -8;
+	pixel_y = 14
+	},
+/turf/open/floor/iron/grimy,
+/area/station/engineering/main)
 "xMY" = (
 /turf/closed/wall/r_wall,
 /area/station/command/teleporter)
@@ -88018,7 +88000,7 @@ aJq
 aJq
 aJq
 aJq
-pRb
+aJq
 dDB
 dDB
 dDB
@@ -88275,7 +88257,7 @@ aJq
 aJq
 aJq
 aJq
-pRb
+aJq
 aJq
 aJq
 aJq
@@ -88532,7 +88514,7 @@ aJq
 aJq
 aJq
 aJq
-pRb
+aJq
 aJq
 aJq
 aJq
@@ -92010,7 +91992,7 @@ dgV
 sHH
 rQi
 rPV
-nki
+boT
 uOk
 nmH
 sHO
@@ -92275,7 +92257,7 @@ dgm
 wIu
 oHO
 sDo
-fhX
+wlW
 lsd
 jJu
 kya
@@ -92786,11 +92768,11 @@ rmM
 btV
 lMl
 ayR
-erJ
+xMU
 vDg
 euP
 all
-eWf
+lWK
 eIx
 kWg
 bNq
@@ -113439,7 +113421,7 @@ dDB
 blb
 dDB
 ldq
-tUa
+lwl
 vXn
 ldq
 ldq

@@ -310,7 +310,7 @@
 		return FALSE
 
 	replace_beaker(user, used_container)
-	updateUsrDialog()
+	SStgui.update_uis(src)
 	return TRUE
 
 // Beaker change handler
@@ -586,7 +586,7 @@
 		data["current_vagina"] = current_vagina = null
 
 	data["machine_color"] = machine_color
-	updateUsrDialog()
+	SStgui.update_uis(src)
 	return data
 
 // User action handler in the interface
