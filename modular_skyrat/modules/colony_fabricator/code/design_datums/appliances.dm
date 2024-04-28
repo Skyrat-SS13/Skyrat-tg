@@ -18,7 +18,6 @@
 		"portable_lil_pump",
 		"portable_scrubbs",
 		"survival_knife", // I just don't want to make a whole new node for this one sorry
-		"soup_pot", // This one too
 		"water_synth",
 		"hydro_synth",
 		"frontier_sustenance_dispenser",

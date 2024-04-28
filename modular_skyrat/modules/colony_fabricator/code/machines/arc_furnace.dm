@@ -107,7 +107,6 @@
 	if(isAI(user) && (machine_stat & NOPOWER))
 		return
 
-	usr.set_machine(src) // What does this even do??
 	switch(choice)
 		if(RADIAL_CHOICE_EJECT)
 			eject_contents()
