@@ -24,7 +24,7 @@
 
 /obj/item/storage/box/material/Initialize(mapload)
 	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_GIGANTIC
+	atom_storage.max_specific_storage = WEIGHT_CLASS_GIGANTIC //This needs to be set here too because the parent type overrides it again
 
 /obj/item/storage/box/material/PopulateContents() //less uranium because radioactive
 	var/static/items_inside = list(
