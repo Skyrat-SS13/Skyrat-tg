@@ -136,10 +136,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/job/clocked_in_job = id_component.stored_trim.job
-	if(!clocked_in_job || (clocked_in_job.total_positions <= clocked_in_job.current_positions))
+	if(!SSjob.OccupyRole(clocked_in_job.title))
+		say("[capitalize(clocked_in_job.title)] has no free slots available, unable to clock in!")
 		return FALSE
 
-	clocked_in_job.current_positions++
 
 	SSid_access.apply_trim_to_card(inserted_id, id_component.stored_trim.type, TRUE)
 	inserted_id.assignment = id_component.stored_assignment
