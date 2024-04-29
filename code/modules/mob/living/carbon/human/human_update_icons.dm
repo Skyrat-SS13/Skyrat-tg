@@ -74,6 +74,10 @@ There are several things that need to be remembered:
 	..()
 	if(obscured_flags & HIDEFACE)
 		sec_hud_set_security_status()
+	// SKYRAT EDIT ADDITION START - ERP Overlays
+	if(obscured_flags & HIDESEXTOY)
+		update_inv_lewd()
+	// SKYRAT EDIT ADDITION END
 
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
