@@ -13,6 +13,7 @@
 	var/last_stasis_sound = FALSE
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
+	interaction_flags_click = ALLOW_SILICON_REACH
 
 /obj/machinery/stasissleeper/Destroy()
 	. = ..()
@@ -53,9 +54,7 @@
 			playsound(src, 'sound/machines/synth_no.ogg', 50, TRUE, frequency = sound_freq)
 		last_stasis_sound = _running
 
-/obj/machinery/stasissleeper/AltClick(mob/user)
-	if(!user.can_perform_action(src, ALLOW_SILICON_REACH))
-		return
+/obj/machinery/stasissleeper/click_alt(mob/user)
 	if(!panel_open)
 		user.visible_message(span_notice("\The [src] [state_open ? "hisses as it seals shut." : "hisses as it swings open."]."), \
 						span_notice("You [state_open ? "close" : "open"] \the [src]."), \
@@ -64,6 +63,8 @@
 		close_machine()
 	else
 		open_machine()
+
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/stasissleeper/Exited(atom/movable/AM, atom/newloc)
 	if(!state_open && AM == occupant)
