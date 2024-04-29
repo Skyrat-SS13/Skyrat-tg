@@ -256,7 +256,7 @@
 	user.update_worn_head()
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
-		carbon_user.head_update(src, forced = TRUE)
+		carbon_user.update_worn_head()
 
 
 //Beret replacement

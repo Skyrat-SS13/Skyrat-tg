@@ -43,7 +43,7 @@ const CharacterProfiles = (props: {
       <Flex.Item width="25%">
         <Dropdown
           width="100%"
-          selected={activeSlot}
+          selected={activeSlot as unknown as string}
           displayText={profiles[activeSlot]}
           options={profiles.map((profile, slot) => ({
             value: slot,
