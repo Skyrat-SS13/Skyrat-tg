@@ -13,9 +13,6 @@
 
 /obj/item/gps/computer/space/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(obj_flags & NO_DECONSTRUCTION)
-		return TRUE
-
 	if(I.use_tool(src, user, 20, volume=50))
 		user.visible_message(span_warning("[user] disassembles [src]."),
 			span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))

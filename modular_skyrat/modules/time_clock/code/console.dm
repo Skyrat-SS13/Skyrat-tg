@@ -77,14 +77,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 	return TRUE
 
-/obj/machinery/time_clock/AltClick(mob/user)
-	. = ..()
-	if(!Adjacent(user))
-		to_chat(user, span_warning("You are out of range of the [src]!"))
-		return FALSE
-
+/obj/machinery/time_clock/click_alt(mob/user)
 	if(!eject_inserted_id(user))
-		return FALSE
+		return CLICK_ACTION_BLOCKING
+
+	return CLICK_ACTION_SUCCESS
 
 ///Ejects the ID stored inside of the parent machine, if there is one.
 /obj/machinery/time_clock/proc/eject_inserted_id(mob/recepient)

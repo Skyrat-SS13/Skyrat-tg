@@ -78,10 +78,9 @@
 	attached_tank = attacking_item
 	update_icon()
 
-/obj/machinery/anesthetic_machine/AltClick(mob/user)
-	. = ..()
+/obj/machinery/anesthetic_machine/click_alt(mob/user)
 	if(!attached_tank)
-		return
+		return CLICK_ACTION_BLOCKING
 
 	attached_tank.forceMove(loc)
 	to_chat(user, span_notice("You remove the [attached_tank]."))
@@ -89,6 +88,7 @@
 	update_icon()
 	if(mask_out)
 		retract_mask()
+	return CLICK_ACTION_SUCCESS
 
 ///Retracts the attached_mask back into the machine
 /obj/machinery/anesthetic_machine/proc/retract_mask()
