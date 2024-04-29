@@ -20,14 +20,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 /// The upper most time for a microfusion cell meltdown.
 #define MICROFUSION_CELL_FAILURE_UPPER (15 SECONDS)
 
-/// A charge drain failure.
-#define MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN 1
-/// A small explosion failure.
-#define MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION 2
-/// EMP failure.
-#define MICROFUSION_CELL_FAILURE_TYPE_EMP 3
-/// Radiation failure.
-#define MICROFUSION_CELL_FAILURE_TYPE_RADIATION 4
+
 
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
@@ -112,18 +105,17 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	addtimer(CALLBACK(src, PROC_REF(process_failure)), seconds_to_explode)
 
 /obj/item/stock_parts/cell/microfusion/proc/process_failure()
-	var/fuckup_type = rand(1, 4)
 	remove_filter("rad_glow")
 	playsound(src, 'sound/effects/spray.ogg', 70)
-	switch(fuckup_type)
-		if(MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN)
+	switch(rand(1, 4))
+		if(1) // Charge drain
 			charge = clamp(charge - MICROFUSION_CELL_DRAIN_FAILURE, 0, maxcharge)
-		if(MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION)
+		if(2) // Explosion
 			explode()
-		if(MICROFUSION_CELL_FAILURE_TYPE_EMP)
-			empulse(get_turf(src), MICROFUSION_CELL_EMP_HEAVY_FAILURE, MICROFUSION_CELL_EMP_LIGHT_FAILURE, FALSE)
-		if(MICROFUSION_CELL_FAILURE_TYPE_RADIATION)
-			radiation_pulse(src, MICROFUSION_CELL_RADIATION_RANGE_FAILURE, RAD_MEDIUM_INSULATION)
+		if(3) // Emp pulse
+			empulse(get_turf(src), 2, 4, FALSE) // 2 Heavy, 4 Light
+		if(4) // Deathly radiation pulse
+			radiation_pulse(src, 2, RAD_MEDIUM_INSULATION, 30)
 	meltdown = FALSE
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
@@ -236,14 +228,6 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 
 
 #undef MICROFUSION_CELL_DRAIN_FAILURE
-#undef MICROFUSION_CELL_EMP_HEAVY_FAILURE
-#undef MICROFUSION_CELL_EMP_LIGHT_FAILURE
-#undef MICROFUSION_CELL_RADIATION_RANGE_FAILURE
 
 #undef MICROFUSION_CELL_FAILURE_LOWER
 #undef MICROFUSION_CELL_FAILURE_UPPER
-
-#undef MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN
-#undef MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION
-#undef MICROFUSION_CELL_FAILURE_TYPE_EMP
-#undef MICROFUSION_CELL_FAILURE_TYPE_RADIATION
