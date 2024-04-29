@@ -125,6 +125,14 @@
 	},
 /turf/open/floor/iron/checker,
 /area/mine/laborcamp)
+"aQ" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "aV" = (
 /obj/structure/marker_beacon/teal,
 /obj/effect/turf_decal/sand/plating/volcanic,
@@ -869,10 +877,6 @@
 	dir = 4
 	},
 /turf/open/floor/plating/lavaland_atmos,
-/area/lavaland/surface/outdoors)
-"fP" = (
-/obj/structure/gulag_vent,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "fQ" = (
 /turf/open/genturf,
@@ -2834,12 +2838,6 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/iron/white,
 /area/mine/laborcamp/production)
-"ps" = (
-/obj/structure/cable,
-/obj/machinery/power/smes/full,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "pu" = (
 /obj/item/chair/stool{
 	pixel_x = -2;
@@ -3416,15 +3414,6 @@
 	dir = 4
 	},
 /area/mine/cafeteria)
-"tg" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "ti" = (
 /obj/structure/table,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -3670,14 +3659,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white/smooth_corner,
 /area/mine/medical)
-"vc" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "vd" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -4107,16 +4088,6 @@
 /obj/effect/turf_decal/sand/plating/volcanic,
 /turf/open/floor/plating/lavaland_atmos,
 /area/mine/maintenance/service/disposals)
-"xI" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/tcoms,
-/turf/open/floor/plating,
-/area/mine/maintenance/service/comms)
 "xJ" = (
 /obj/machinery/vending/coffee,
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -4164,6 +4135,10 @@
 	dir = 1
 	},
 /area/mine/storage/public)
+"xX" = (
+/obj/structure/gulag_vent,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "yc" = (
 /obj/docking_port/stationary{
 	dir = 2;
@@ -4490,6 +4465,14 @@
 /obj/structure/lattice/catwalk,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Af" = (
+/obj/machinery/mineral/processing_unit/gulag{
+	dir = 1;
+	input_dir = 8;
+	output_dir = 4
+	},
+/turf/open/floor/plating,
+/area/mine/laborcamp/production)
 "Ai" = (
 /obj/structure/stone_tile/cracked{
 	dir = 1
@@ -4957,11 +4940,6 @@
 /obj/effect/turf_decal/sand/plating/volcanic,
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
-"Ee" = (
-/obj/machinery/power/smes/full,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/mine/maintenance/labor)
 "Eg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
@@ -5083,6 +5061,15 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /turf/open/floor/plating,
 /area/mine/maintenance/service)
+"EV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "EX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -5118,6 +5105,16 @@
 "Ff" = (
 /turf/open/floor/glass/reinforced,
 /area/mine/lounge)
+"Fk" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/tcoms,
+/turf/open/floor/plating,
+/area/mine/maintenance/service/comms)
 "Fn" = (
 /obj/structure/stone_tile/cracked{
 	dir = 4
@@ -6022,12 +6019,24 @@
 /obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron,
 /area/mine/lounge)
+"KK" = (
+/obj/machinery/power/smes/full,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/mine/maintenance/labor)
 "KL" = (
 /obj/effect/turf_decal/tile/bar/opposingcorners{
 	dir = 1
 	},
 /turf/open/floor/iron/checker,
 /area/mine/cafeteria)
+"KT" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "KV" = (
 /obj/structure/table,
 /obj/machinery/light/directional/east,
@@ -6253,14 +6262,6 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
-"LT" = (
-/obj/machinery/mineral/processing_unit/gulag{
-	dir = 1;
-	input_dir = 8;
-	output_dir = 4
-	},
-/turf/open/floor/plating,
-/area/mine/laborcamp/production)
 "LY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -7476,13 +7477,6 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/mine/laborcamp/security)
-"TV" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Mining Station Maintenance"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
-/turf/open/floor/plating,
-/area/mine/maintenance/service)
 "TW" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Storage"
@@ -8043,6 +8037,12 @@
 	dir = 4
 	},
 /area/mine/production)
+"Xk" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/mine/maintenance/service)
 "Xp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22573,7 +22573,7 @@ uU
 uU
 uU
 pU
-fP
+xX
 pU
 ff
 Gf
@@ -24377,7 +24377,7 @@ Hd
 Nb
 NR
 Kv
-LT
+Af
 ff
 gm
 mN
@@ -28238,7 +28238,7 @@ Zt
 Zt
 Zt
 Zt
-Ee
+KK
 ve
 RD
 RD
@@ -37975,7 +37975,7 @@ ni
 rZ
 ni
 ON
-TV
+KT
 xD
 xD
 xD
@@ -38485,12 +38485,12 @@ Ue
 AA
 gB
 ON
-ps
+Xk
 gq
 ER
-vc
+aQ
 YR
-xI
+Fk
 DF
 Kn
 xD
@@ -39514,7 +39514,7 @@ ON
 ON
 ON
 ON
-tg
+EV
 ON
 ON
 ON
