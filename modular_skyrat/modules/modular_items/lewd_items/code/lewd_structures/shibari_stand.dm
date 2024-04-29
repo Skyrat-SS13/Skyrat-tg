@@ -7,7 +7,6 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -44,6 +43,10 @@
 	. = ..()
 	if(!has_buckled_mobs() && can_buckle)
 		. += span_notice("They need to be wearing <b>full-body shibari</b>, and you need to be <b>holding ropes</b>!")
+
+// previously NO_DECONSTRUCT
+/obj/structure/chair/shibari_stand/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
 
 /obj/structure/chair/shibari_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	var/mob/living/buckled = buckled_mob

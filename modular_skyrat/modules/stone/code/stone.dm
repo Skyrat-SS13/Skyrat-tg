@@ -11,7 +11,6 @@
 	resistance_flags = FIRE_PROOF
 	merge_type = /obj/item/stack/sheet/mineral/stone
 	grind_results = null
-	point_value = 0
 	material_type = /datum/material/stone
 	matter_amount = 0
 	source = null
