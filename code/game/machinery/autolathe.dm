@@ -4,8 +4,8 @@
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "autolathe"
 	density = TRUE
-	//Energy cost per full stack of sheets worth of materials used. Material insertion is 40% of this.
-	active_power_usage = 25 * BASE_MACHINE_ACTIVE_CONSUMPTION
+	///Energy cost per full stack of sheets worth of materials used. Material insertion is 40% of this.
+	active_power_usage = 0.025 * STANDARD_CELL_RATE
 	circuit = /obj/item/circuitboard/machine/autolathe
 	layer = BELOW_OBJ_LAYER
 	processing_flags = NONE
@@ -32,7 +32,7 @@
 /obj/machinery/autolathe/Initialize(mapload)
 	materials = AddComponent( \
 		/datum/component/material_container, \
-		SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
+		DSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
 		0, \
 		MATCONTAINER_EXAMINE, \
 		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/autolathe, AfterMaterialInsert)) \
@@ -252,7 +252,7 @@
 		var/amount_needed = design.materials[material]
 		if(istext(material)) // category
 			var/list/choices = list()
-			for(var/datum/material/valid_candidate as anything in SSmaterials.materials_by_category[material])
+			for(var/datum/material/valid_candidate as anything in DSmaterials.materials_by_category[material])
 				if(materials.get_material_amount(valid_candidate) < amount_needed)
 					continue
 				choices[valid_candidate.name] = valid_candidate

@@ -456,7 +456,7 @@
 
 /datum/loadout_item/toys/plushe_winrow
 	name = "Dark and Brooding Lizard Plushie"
-	item_path = /obj/item/toy/plush/skyrat/plushie_winrow
+	item_path = /obj/item/toy/plush/skyrat/chunko/plushie_winrow
 
 /datum/loadout_item/toys/plushie_star
 	name = "Star Angel Plushie"

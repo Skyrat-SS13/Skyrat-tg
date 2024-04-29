@@ -229,6 +229,8 @@
 	var/current_skin
 	///// List of options to reskin.
 	var/list/unique_reskin
+	/// Do we apply a click cooldown when resisting this object if it is restraining them?
+	var/resist_cooldown = CLICK_CD_BREAKOUT
 
 /obj/item/Initialize(mapload)
 	if(attack_verb_continuous)
@@ -921,7 +923,7 @@
 	if(flags & ITEM_SLOT_EYES)
 		owner.update_worn_glasses()
 	if(flags & ITEM_SLOT_EARS)
-		owner.update_inv_ears()
+		owner.update_worn_ears()
 	if(flags & ITEM_SLOT_MASK)
 		owner.update_worn_mask()
 	if(flags & ITEM_SLOT_HEAD)
