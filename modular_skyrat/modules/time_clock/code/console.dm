@@ -111,7 +111,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	var/current_assignment = inserted_id.assignment
 	var/datum/id_trim/job/current_trim = inserted_id.trim
 	var/datum/job/clocked_out_job = current_trim.job
-	clocked_out_job.current_positions = max(0, clocked_out_job.current_positions - 1)
+	SSjob.FreeRole(clocked_out_job.title)
 
 	radio.talk_into(src, "[inserted_id.registered_name], [current_assignment] has gone off-duty.", announcement_channel)
 	update_static_data_for_all_viewers()
@@ -136,10 +136,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/job/clocked_in_job = id_component.stored_trim.job
-	if(!clocked_in_job || (clocked_in_job.total_positions <= clocked_in_job.current_positions))
+	if(!SSjob.OccupyRole(clocked_in_job.title))
+		say("[capitalize(clocked_in_job.title)] has no free slots available, unable to clock in!")
 		return FALSE
 
-	clocked_in_job.current_positions++
 
 	SSid_access.apply_trim_to_card(inserted_id, id_component.stored_trim.type, TRUE)
 	inserted_id.assignment = id_component.stored_assignment
