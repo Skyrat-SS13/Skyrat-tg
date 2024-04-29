@@ -13,7 +13,7 @@
 			if(location.z != individual_server.z) /// Not on the same z level, skip
 				continue
 			server_distance_current = get_dist(location, get_turf(individual_server))
-			if(server_distance_closest > server_distance_current) /// This in closer than the last server we tested
+			if(server_distance_closest > server_distance_current) /// This is closer than the last server we tested
 				server_distance_closest = server_distance_current
 				closest_server = individual_server
 		return list(closest_server)
