@@ -68,7 +68,7 @@
 /obj/machinery/ammo_workbench/Initialize(mapload)
 	AddComponent( \
 		/datum/component/material_container, \
-		SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
+		DSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
 		200000, \
 		MATCONTAINER_EXAMINE, \
 		allowed_items = /obj/item/stack, \
@@ -385,12 +385,12 @@
 		error_type = "good"
 		return
 
-	updateDialog()
+	SStgui.update_uis(src)
 
 	timer_id = addtimer(CALLBACK(src, PROC_REF(fill_round), casing_type), time_per_round, TIMER_STOPPABLE)
 
 /obj/machinery/ammo_workbench/proc/ammo_fill_finish(successfully = TRUE)
-	updateDialog()
+	SStgui.update_uis(src)
 	if(successfully)
 		playsound(loc, 'sound/machines/ping.ogg', 40, TRUE)
 	else

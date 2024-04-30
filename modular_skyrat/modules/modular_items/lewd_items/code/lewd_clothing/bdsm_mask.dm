@@ -72,20 +72,17 @@
 		"cyan" = image(icon = src.icon, icon_state = "mask_cyan_off"))
 
 // Using multitool on pole
-/obj/item/clothing/mask/gas/bdsm_mask/AltClick(mob/user)
+/obj/item/clothing/mask/gas/bdsm_mask/click_alt(mob/user)
 	if(color_changed == FALSE)
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, mask_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_mask_color = choice
 		update_icon_state()
 		update_icon()
 		update_mob_action_buttonss()
 		color_changed = TRUE
-		return
-	. = ..()
+	return CLICK_ACTION_SUCCESS
 
 // To check if we can change mask's model
 /obj/item/clothing/mask/gas/bdsm_mask/proc/check_menu(mob/living/user)
@@ -321,6 +318,7 @@
 	volume = 50
 	possible_transfer_amounts = list(1, 2, 3, 4, 5, 10, 25, 50)
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
+	interaction_flags_click = NEED_DEXTERITY
 
 // Standard initialize code for filter
 /obj/item/reagent_containers/cup/lewd_filter/Initialize(mapload)
@@ -337,11 +335,7 @@
 	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 0.5 SECONDS)
 
 // I just wanted to add 2th color variation. Because.
-/obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
-	// Catch first AltClick and open reskin menu
-	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
-		reskin_obj(user)
-		return
+/obj/item/reagent_containers/cup/lewd_filter/click_alt(mob/user)
 	// After reskin all clicks go normal, but we can't change the flow rate if mask on and equipped
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
 	if(worn_mask)
@@ -350,8 +344,8 @@
 				if(worn_mask.mask_on == TRUE)
 					if(istype(src, /obj/item/reagent_containers/cup/lewd_filter))
 						to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
-						return
-	. = ..()
+						return CLICK_ACTION_BLOCKING
+	return ..()
 
 // Filter click handling
 /obj/item/reagent_containers/cup/lewd_filter/attack_hand(mob/user)

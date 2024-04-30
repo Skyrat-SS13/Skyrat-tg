@@ -20,7 +20,7 @@
 	/obj/item/circuitboard/machine/techfab/department/medical, \
 	/obj/item/circuitboard/machine/techfab/department/cargo, \
 	/obj/item/circuitboard/machine/techfab/department/science, \
-	/obj/item/areaeditor/blueprints, \
+	/obj/item/blueprints, \
 	/obj/item/pipe_dispenser/bluespace, \
 	/obj/item/mod/control/pre_equipped/advanced, \
 	/obj/item/clothing/shoes/magboots/advance, \
@@ -99,7 +99,8 @@
 	switch(action)
 		if("clock_in_or_out")
 			if(off_duty_check())
-				clock_in()
+				if(!(clock_in()))
+					return
 				log_admin("[key_name(usr)] clocked in as \an [inserted_id.assignment].")
 
 				var/datum/mind/user_mind = usr.mind
