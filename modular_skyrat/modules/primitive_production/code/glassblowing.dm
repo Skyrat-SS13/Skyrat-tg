@@ -227,7 +227,6 @@
 	if(!Adjacent(usr))
 		return
 	add_fingerprint(usr)
-	usr.set_machine(src)
 
 	var/obj/item/glassblowing/molten_glass/glass = glass_ref?.resolve()
 	var/actioning_speed = usr.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED

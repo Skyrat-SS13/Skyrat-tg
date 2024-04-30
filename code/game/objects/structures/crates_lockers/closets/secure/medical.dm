@@ -102,7 +102,7 @@
 
 	// Traitor steal objective
 	//new /obj/item/reagent_containers/hypospray/cmo(src) - ORIGINAL
-	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT EDIT ADDITION - New Hyposprays
+	new /obj/item/storage/hypospraykit/cmo/preloaded(src) //SKYRAT EDIT ADDITION - New Hyposprays
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control locker"

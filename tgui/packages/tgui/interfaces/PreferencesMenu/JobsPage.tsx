@@ -14,10 +14,11 @@ import {
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
 const sortJobs = (entries: [string, Job][], head?: string) =>
-  sortBy<[string, Job]>(
+  sortBy(
+    entries,
     ([key, _]) => (key === head ? -1 : 1),
     ([key, _]) => key,
-  )(entries);
+  );
 
 const PRIORITY_BUTTON_SIZE = '18px';
 
@@ -273,7 +274,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
                 <Dropdown
                   width="100%"
                   options={job.alt_titles}
-                  displayText={alt_title_selected}
+                  selected={alt_title_selected}
                   onSelected={(value) =>
                     act('set_job_title', { job: name, new_title: value })
                   }
@@ -373,18 +374,17 @@ const JoblessRoleDropdown = (props) => {
     },
   ];
 
+  const selection = options?.find(
+    (option) => option.value === selected,
+  )!.displayText;
+
   return (
     <Box position="absolute" right={0} width="30%">
       <Dropdown
         width="100%"
-        selected={selected}
+        selected={selection}
         onSelected={createSetPreference(act, 'joblessrole')}
         options={options}
-        displayText={
-          <Box pr={1}>
-            {options.find((option) => option.value === selected)!.displayText}
-          </Box>
-        }
       />
     </Box>
   );

@@ -9,7 +9,7 @@
 	status_flags = CANSTUN|CANKNOCKDOWN|CANPUSH
 	mouse_opacity = MOUSE_OPACITY_ICON
 	combat_mode = TRUE
-	habitable_atmos  = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	habitable_atmos = null
 	minimum_survivable_temperature = 0
 	health = 125
 	maxHealth = 125
@@ -203,12 +203,12 @@
 		combat_overlay.color = selected_color
 	update_appearance()
 
-/mob/living/basic/mining_drone/AltClick(mob/living/user)
-	. = ..()
+/mob/living/basic/mining_drone/click_alt(mob/living/user)
 	if(user.combat_mode)
-		return
+		return CLICK_ACTION_BLOCKING
 	set_combat_mode(!combat_mode)
 	balloon_alert(user, "now [combat_mode ? "attacking wildlife" : "collecting loose ore"]")
+	return CLICK_ACTION_SUCCESS
 
 /mob/living/basic/mining_drone/RangedAttack(atom/target)
 	if(!combat_mode)

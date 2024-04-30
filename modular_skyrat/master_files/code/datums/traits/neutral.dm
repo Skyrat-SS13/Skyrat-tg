@@ -205,7 +205,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	..()
 	icon_state = "joker"
 
-/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/card)
+/obj/item/paper/joker/click_alt(mob/user)
 	var/list/datum/paper_input/old_raw_text_inputs = raw_text_inputs
 	var/list/datum/paper_stamp/old_raw_stamp_data = raw_stamp_data
 	var/list/datum/paper_stamp/old_raw_field_input_data = raw_field_input_data
@@ -225,6 +225,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	update_static_data()
 
 	balloon_alert(user, "card flipped")
+	return CLICK_ACTION_SUCCESS
 
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
