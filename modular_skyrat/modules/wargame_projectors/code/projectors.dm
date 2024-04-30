@@ -86,7 +86,7 @@
 /obj/item/wargame_projector/attack_self(mob/user)
 	select_hologram(user)
 
-/obj/item/wargame_projector/AltClick(mob/user)
+/obj/item/wargame_projector/click_alt(mob/user)
 	var/selected_color = tgui_input_list(user, "Select a color", "Color Selection", color_options)
 	if(isnull(selected_color))
 		balloon_alert(user, "no color change")
@@ -95,6 +95,7 @@
 	holosign_color = color_to_set_to
 	balloon_alert(user, "color changed")
 	set_greyscale(holosign_color)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/wargame_projector/CtrlClick(mob/user)
 	if(tgui_alert(usr,"Clear all currently active holograms?", "Hologram Removal", list("Yes", "No")) == "Yes")
