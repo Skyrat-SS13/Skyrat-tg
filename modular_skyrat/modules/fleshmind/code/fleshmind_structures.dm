@@ -386,7 +386,7 @@
 		iterating_mob.throw_at(throw_target, 20, 2)
 
 /obj/structure/fleshmind/structure/core/proc/build_a_wall()
-	for(var/turf/iterating_turf in RANGE_TURFS(1, src))
+	for(var/turf/iterating_turf in TURF_NEIGHBORS(src))
 		if(locate(/obj/structure/fleshmind/structure/wireweed_wall) in iterating_turf) // No stacking walls.
 			continue
 		new /obj/structure/fleshmind/structure/wireweed_wall(iterating_turf)

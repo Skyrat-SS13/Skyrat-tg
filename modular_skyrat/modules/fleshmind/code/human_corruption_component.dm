@@ -116,10 +116,18 @@
 
 	var/mob/living/carbon/human/parent_human = parent
 	INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob, emote), "scream")
-	var/obj/item/bodypart/wound_area = parent_human.get_bodypart(BODY_ZONE_CHEST)
-	if(wound_area)
-		var/datum/wound/slash/flesh/severe/implant_wound = new
-		implant_wound.apply_wound(wound_area)
+	var/list/limbs_to_destroy = list(
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_LEG,
+		BODY_ZONE_R_LEG,
+	)
+	for(var/i in 1 to 2)
+		var/obj/item/bodypart/limb = parent_human.get_bodypart(pick_n_take(limbs_to_destroy)) // Your going to get fucked up
+		limb.receive_damage(brute = WOUND_SEVERITY_CRITICAL, wound_bonus = 100)
+		parent_human.update_damage_overlays()
+
+	parent_human.adjustBruteLoss(pick(rand(50,75)))
 	qdel(src)
 
 
