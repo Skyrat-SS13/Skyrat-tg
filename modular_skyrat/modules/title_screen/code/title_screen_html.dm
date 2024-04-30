@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			<a class="menu_button" href='?src=[text_ref(src)];server_swap=1'>SWAP SERVERS</a>
 		"}
 
-		if(length(GLOB.lobby_station_traits) && !SSticker.HasRoundStarted())
+		if(length(GLOB.lobby_station_traits))
 			dat += {"<a class="menu_button" href='?src=[text_ref(src)];job_traits=1'>JOB TRAITS</a>"}
 
 		if(!is_guest_key(src.key))
