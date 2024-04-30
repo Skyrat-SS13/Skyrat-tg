@@ -155,7 +155,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_hornet
-	name = "12 Gauge Advanced Hornest Anti Riot Ammunition Box(Non-Lethal)"
+	name = "12 Gauge Advanced Hornet Ammunition Box(Less-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_hornet"
 	build_type = PROTOLATHE | AWAY_LATHE
