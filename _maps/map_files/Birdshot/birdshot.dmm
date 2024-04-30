@@ -15527,6 +15527,12 @@
 	dir = 4
 	},
 /area/station/science/lobby)
+"gyf" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/super/full,
+/obj/machinery/status_display/ai/directional/north,
+/turf/open/floor/iron/smooth,
+/area/station/ai_monitored/turret_protected/aisat/equipment)
 "gyi" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/effect/decal/cleanable/dirt,
@@ -20182,6 +20188,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
 /area/station/engineering/gravity_generator)
+"hYA" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/super/full,
+/obj/machinery/camera/directional/north{
+	c_tag = "AI Chamber - SMES";
+	network = list("aicore")
+	},
+/obj/machinery/flasher/directional/north,
+/turf/open/floor/circuit/red,
+/area/station/ai_monitored/turret_protected/ai)
 "hYC" = (
 /turf/closed/wall,
 /area/station/engineering/atmos)
@@ -25700,13 +25716,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/warehouse)
-"jMq" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white/small,
-/area/station/medical/virology)
 "jMy" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 8;
@@ -26482,6 +26491,18 @@
 /obj/effect/mapping_helpers/airlock/access/all/service/chapel_office,
 /turf/open/floor/iron/textured_half,
 /area/station/service/chapel/office)
+"kas" = (
+/obj/effect/gibspawner/human,
+/obj/structure/table/optable{
+	desc = "A cold, hard place for your final rest.";
+	name = "Morgue Slab"
+	},
+/mob/living/carbon/human/species/monkey/humand_legged{
+	name = "Charles";
+	real_name = "Charles"
+	},
+/turf/open/floor/iron/white/diagonal,
+/area/station/maintenance/department/science/xenobiology)
 "kat" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -28881,13 +28902,6 @@
 /obj/effect/turf_decal/trimline/blue/warning,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
-"kNk" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white,
-/area/station/medical/medbay/aft)
 "kNn" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -38523,6 +38537,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/small,
 /area/station/engineering/atmos)
+"nIO" = (
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/iron/showroomfloor,
+/area/station/medical/virology)
 "nIS" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock{
@@ -52601,6 +52619,13 @@
 /obj/machinery/status_display/ai/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
+"rHW" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/aft)
 "rIb" = (
 /obj/effect/turf_decal/tile/dark_red/opposingcorners,
 /obj/structure/closet/secure_closet/security/sec,
@@ -56921,19 +56946,6 @@
 "sSB" = (
 /turf/open/floor/catwalk_floor,
 /area/station/engineering/break_room)
-"sSF" = (
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/structure/chair/office/light{
-	dir = 8
-	},
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "sSK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -60124,18 +60136,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/cargo/bitrunning/den)
-"tQd" = (
-/obj/effect/gibspawner/human,
-/obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
-	name = "Morgue Slab"
-	},
-/mob/living/carbon/human/species/monkey/humand_legged{
-	name = "Charles";
-	real_name = "Charles"
-	},
-/turf/open/floor/iron/white/diagonal,
-/area/station/maintenance/department/science/xenobiology)
 "tQx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank,
@@ -67789,16 +67789,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/cafeteria)
-"vVd" = (
-/obj/structure/cable,
-/obj/machinery/power/smes/full,
-/obj/machinery/camera/directional/north{
-	c_tag = "AI Chamber - SMES";
-	network = list("aicore")
-	},
-/obj/machinery/flasher/directional/north,
-/turf/open/floor/circuit/red,
-/area/station/ai_monitored/turret_protected/ai)
 "vVo" = (
 /obj/machinery/light/cold/directional/south,
 /obj/structure/table/reinforced,
@@ -68974,10 +68964,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/security/medical)
-"wmT" = (
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/showroomfloor,
-/area/station/medical/virology)
 "wmV" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -69629,6 +69615,13 @@
 /obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
 /turf/open/floor/iron/cafeteria,
 /area/station/maintenance/starboard/fore)
+"wxm" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/iron/white/small,
+/area/station/medical/virology)
 "wxp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -70070,6 +70063,19 @@
 "wCY" = (
 /turf/closed/wall,
 /area/station/command/heads_quarters/cmo)
+"wDg" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "wDo" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -75490,12 +75496,6 @@
 /obj/effect/landmark/start/paramedic,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
-"xTL" = (
-/obj/structure/cable,
-/obj/machinery/power/smes/full,
-/obj/machinery/status_display/ai/directional/north,
-/turf/open/floor/iron/smooth,
-/area/station/ai_monitored/turret_protected/aisat/equipment)
 "xTM" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 6
@@ -103045,7 +103045,7 @@ aJq
 yjV
 fpY
 uTA
-vVd
+hYA
 xTV
 dua
 gnA
@@ -104086,7 +104086,7 @@ wct
 hJp
 wct
 gOm
-xTL
+gyf
 eFe
 eYk
 xvT
@@ -106247,7 +106247,7 @@ tRc
 tRc
 tRc
 tRc
-kNk
+rHW
 dHT
 sSQ
 sSQ
@@ -107022,7 +107022,7 @@ bUv
 cSk
 gLb
 nlS
-jMq
+wxm
 gpM
 sSQ
 hrF
@@ -108560,12 +108560,12 @@ jrk
 gIF
 wYA
 bpS
-wmT
+nIO
 nYk
 vVP
 xAA
 hgf
-sSF
+wDg
 uGj
 wgL
 oiA
@@ -113421,7 +113421,7 @@ dDB
 blb
 dDB
 ldq
-tQd
+kas
 vXn
 ldq
 ldq
