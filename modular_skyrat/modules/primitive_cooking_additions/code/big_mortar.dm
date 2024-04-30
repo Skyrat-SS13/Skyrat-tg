@@ -33,13 +33,14 @@
 	drop_everything_contained()
 	return ..()
 
-/obj/structure/large_mortar/AltClick(mob/user)
+/obj/structure/large_mortar/click_alt(mob/user)
 	if(!length(contents))
 		balloon_alert(user, "nothing inside")
-		return
+		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
+	return CLICK_ACTION_SUCCESS
 
 /// Drops all contents at the mortar
 /obj/structure/large_mortar/proc/drop_everything_contained()

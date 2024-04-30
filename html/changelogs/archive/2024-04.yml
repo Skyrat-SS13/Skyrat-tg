@@ -346,3 +346,206 @@
   - rscadd: 'Adds the following emotes: howl, pant.'
   - rscadd: Adds audio to clear_throat (male and female cues)
   - rscdel: Removed duplicate definition for clear_throat.
+2024-04-19:
+  Bisar:
+  - bugfix: Mechs will no longer delete their living non-occupant contents when destroyed.
+  Majkl-J:
+  - code_imp: All cafe areas are now children of /area/centcom/holding/cafe
+  - bugfix: There is only one borg inducer now, fixing a few bugs related to there
+      being multiple under the same path
+  Melbert:
+  - refactor: Staff of Healing should perform slightly better.
+  Nerev4r:
+  - rscadd: Teshari are now more agile, better at hearing stuff, and can feast on
+      carrion!
+  - spellcheck: The language icon and description for Schechi has been reworked to
+      be more lore-compliant.
+  Rhials:
+  - bugfix: The tide of post-round blob zombies when a blob wins will no longer break
+      the speakers in your headset.
+  SkyratBot:
+  - bugfix: Fixes Radiation Hood not having FOV blockage
+  - bugfix: Autolathe correctly computes the print amount of custom material items
+      like toolboxes and doesn't grey out its print button
+  - bugfix: 'LUA: Registering a signal on a deleted datum will throw a more descriptive
+      error message.'
+  - qol: slaughter/laughter demons have a cooler round end report
+  - qol: you may not bodyslam yourself as a demon
+  - code_imp: slaughter and laughter demons are given their antag datum when their
+      mind initializes
+  - bugfix: Medipens can no longer be deepfried, closing an exploit that allowed people
+      to drain/inject chems into it with saltshakers and IV drips.
+  - bugfix: fixes ody sleeper UI not updating to new chems to inject.
+  - bugfix: fixes ody sleeper not telling user why they can't pick up a person.
+  - code_imp: gives a common method for giving reagent list data to .tsx
+  - bugfix: Netpods have had their security against exploits increased.
+  - bugfix: deathmatch can no longer occassionally send people to nullspace
+  - bugfix: facescarf ui toggle button works again
+  - qol: Basic dexterous mobs now have a health doll and screen damage indication
+      like other basic mobs.
+  - bugfix: Vorpal Scythe execute messages now read correctly.
+  - bugfix: Bit avatars no longer have access to free binary comms with the AI outfit
+  - image: Fixed the lobby menu's collapse button being offset by a pixel
+  jjpark-kb:
+  - rscadd: added the cursed ash carver (ashwalker crusher)
+  - rscadd: added primitive bonesetter and primitive-looking plant bags
+  - balance: removed the time limit from the ash staff
+  - balance: doubled the volume of the primitive centrifuge (50 to 100)
+  - balance: removed the consumption of bluespace in many ashwalker rituals
+  - rscadd: added the research paper from simple research (4 cloth in the crafting
+      menu)
+  - rscadd: added the research skill
+  - balance: experisci scanner affected by research skill
+  - balance: xenoarch affected by research skill
+2024-04-21:
+  CliffracerX:
+  - rscadd: you can mount Mk. II Hyposprays onto the underside of Hypospray Kits &
+      quickdraw them
+  - rscadd: MK. II hypospray upgrade kit through imports - bigger vials, but it'll
+      hurt your wallet to get 'em!
+  - image: redid every Mk. II Hypospray, hypokit & vial sprite!
+  - qol: hypovials are now color-codable & the type can still be seen when loaded
+      into a hypospray
+  - qol: R&D can research how to make new hypokits & Mk. II Hyposprays
+  - balance: boosted deluxe hypokits' storage, nerfed small hypokits' storage & made
+      them pocketable
+  - admin: icspawning supports quirks & loadout items now
+  - admin: bluespace technician RPED has been significantly upgraded
+  - bugfix: hotfix for loadout wallets not filling properly
+2024-04-24:
+  Majkl-J:
+  - bugfix: Basicmob xenos no longer die to lack of heating
+  SkyratBot:
+  - balance: The Bioscrambler will now actively attempt to get closer to living targets
+      rather than chilling in a closet nobody goes into (unless you trap it in a containment
+      field).
+  - balance: Because it can now travel through walls, the Bioscrambler will no longer
+      transform you THROUGH walls.
+  TreePizza:
+  - rscadd: Added a fax machine to the Tarkon bridge, as well as it's unique contact
+      for Tarkon TB (Top Brass).
+  - rscadd: The station can now fax the Tarkon bridge. The Ensign can now finally
+      do their job without having to leave their chair.
+  - rscadd: Added an Ectosniffer to the science lab so ghosts may now request a brain
+      to possess.
+  - rscadd: ~1 "hidden" Xenoplush for Monophobia characters.~ Goodnight sweet prince
+      you were too good for this world.
+  - rscadd: Added a light to the freezer and an additional one to the kitchen.
+  - bugfix: Added that awkwardly missing window to the top airlock and deleted the
+      equally awkward single disposal pipe that was underneath it.
+  - bugfix: 'Moved the glowing resin in the cargo_warehouse variation (the infested
+      one) so that it is no longer under the glass wall.
+
+      ### Charlie:'
+  - qol: 'Charlie pods now have pref and loadout spawning.
+
+      :cl:'
+2024-04-26:
+  Jacquerel and Melbert:
+  - rscadd: A new achievement for moving a boulder from one place to another, at great
+      effort.
+  - balance: Hauling a boulder around makes you move slower, as it does when dragging
+      it.
+  Majkl-J:
+  - bugfix: Medicells now correctly use power
+  - bugfix: MCRs now correctly use power
+  - bugfix: Infinite powercells now have infinite power that's useful and not 2500
+      Joules
+  - qol: slimes will stay active without needing any one to watch over
+  - code_imp: The way mobs idle has been refactored, please report any issues with
+      non-reactive mobs
+  Melbert:
+  - bugfix: Playing Cards memory now reads better
+  SkyratBot:
+  - bugfix: Fixes AI lag by re-adding idle mode to all AI that was lost with the simple
+      mob to basic mob conversion.
+  - bugfix: AI controllers with no clients around for 14 tiles will move into idle
+      mode and stop planning or acting.
+  - bugfix: AI controllers will now record how much time was spent on planning or
+      un-idling AI controllers.
+  - bugfix: The rebar crossbows now properly loosen their bowstring upon firing.
+  - balance: Longfall modules no logner stun you when they activate.
+  - balance: Falling from a height greater than one z-level while using the longfall
+      module will still stagger you.
+  - bugfix: The plasma flower modsuit core now actually contains a reasonable quantity
+      of power.
+2024-04-27:
+  aKromatopzia:
+  - rscadd: Chaplains can be "Clerics"
+2024-04-28:
+  Melbert:
+  - qol: Tuberculosis makes you cough more
+  - qol: Nicotine Addiciton makes you cough less
+  - qol: Medicine Addiction maybe makes you cough more, maybe makes you cough less
+  - rscadd: Being deafnened from a loud sound (flashbang, explosions) will now force
+      people not naturally deaf to shout
+  - rscadd: Ear damage multiplier now only applies to taking damage, not healing damage,
+      meaning Felinids (who take 2x the ear damage) will no longer heal ear damage
+      2x faster.
+  - refactor: Ears have been refactored slightly, ear deafness should now update more
+      snappily
+  Rhials:
+  - qol: Water tiles now extinguish fires on items and people.
+  SkyratBot:
+  - bugfix: basic bots no longer start with all access
+  - bugfix: being revived with a cyber-heart now properly restarts the cyber heart
+  - rscadd: miners can now purchase grapple guns
+  - bugfix: Fixes clipping in the ESC menu between buttons and long station names.
+  - bugfix: brimbeams no longer make a cog appear above the mob
+  - bugfix: cooling and anti-disruption RCD upgrades can now be printed in ancient
+      protolathes
+  - qol: There's a bit more user feedback when it comes to attempting to handcuff
+      someone.
+  grungussuss:
+  - bugfix: fixed being able to install multiple of the same upgrade to medical cyborgs
+2024-04-29:
+  Majkl-J:
+  - bugfix: Synth recharging in mechchargers is now fixed
+  - bugfix: Crank cell can now be cranked for 1MJ of energy instead of 100J. How a
+      human manages to pull that off shall not be discussed
+  SpaceLoveSs13:
+  - admin: New verb to play local internet music!
+  StrangeWeirdKitten:
+  - bugfix: Hardlight wheelchair no longer drops metal when deconstructed
+  VexingRaven:
+  - bugfix: The debug box no longer spills its contents everywhere
+2024-04-30:
+  LT3:
+  - bugfix: Skyrat specific crew monitors work properly
+  Majkl-J:
+  - code_imp: Further cleared out MCR defines
+  Melbert:
+  - bugfix: Midround malf can roll again
+  - bugfix: You can handcuff people with 2 arms and you can no longer handcuff people
+      with 0 arms
+  Rhials:
+  - bugfix: Overwatch Intelligence Agents no longer get their own uplinks, leading
+      to a self-replicating grey goo scenario.
+  - admin: Lazy loading map templates now gives you the option to not ghost/teleport
+      to the loaded area upon completion.
+  - bugfix: Fake handcuffs/Zipties no longer block clicks for a few seconds after
+      being resisted out of.
+  SkyratBot:
+  - bugfix: minebot shields are now actually orderable
+  - bugfix: vinegar may once again be crafted with wine, water, and sugar
+  - rscadd: Added a short scene when getting an Ordeal of Sisyphus achievement.
+  - bugfix: All alert polls ignore option works
+  - bugfix: Mech domination now properly integrates with shunting.
+  - bugfix: Combat upgraded AIs no longer get two buggy malf ability pickers if they
+      also become malfunctioning
+  - refactor: Refactored most of the functionality around malf AI shunting, mech control
+  - bugfix: The start-of-the-round tips will no longer feature virologists, but will,
+      however, start featuring heretics and coroners.
+  - admin: Possess Object is now back in the right-click context menu.
+  - balance: Netguardian Prime can see in the dark.
+  - image: You can see Netguardian Prime in the dark.
+  - bugfix: fixes mobs getting stuck trying to reach something unreachable
+  - bugfix: Examining someone with Med/Sec HUDs will no longer filter the message
+      under Radio.
+  - bugfix: CentCom dispatched a team of interns to fix the loot panel's loading message.
+      It should now load properly. It did before too, but now the message is fixed.
+  - image: The Infiltrator Suit has received a new model, sleeker than ever!
+  - admin: spy can now be rolebanned
+  - bugfix: pAI requests should no longer randomly permanently break in a round.
+  scabs3:
+  - rscadd: Added new lines and responses to the 'dark and brooding lizard plushie'

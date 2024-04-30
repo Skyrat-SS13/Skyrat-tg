@@ -1,3 +1,4 @@
+
 // SUIT STORAGE UNIT /////////////////
 /obj/machinery/suit_storage_unit
 	name = "suit storage unit"
@@ -55,9 +56,9 @@
 	/// How long it takes to break out of the SSU.
 	var/breakout_time = 30 SECONDS
 	/// Power contributed by this machine to charge the mod suits cell without any capacitors
-	var/base_charge_rate = 200 KILO WATTS
+	var/base_charge_rate = 0.2 * STANDARD_CELL_RATE
 	/// Final charge rate which is base_charge_rate + contribution by capacitors
-	var/final_charge_rate = 250 KILO WATTS
+	var/final_charge_rate = 0.25 * STANDARD_CELL_RATE
 	/// is the card reader installed in this machine
 	var/card_reader_installed = FALSE
 	/// physical reference of the players id card to check for PERSONAL access level
@@ -287,7 +288,7 @@
 	. = ..()
 
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
-		final_charge_rate = base_charge_rate + (capacitor.tier * 50 KILO WATTS)
+		final_charge_rate = base_charge_rate + (capacitor.tier * 0.05 * STANDARD_CELL_RATE)
 
 	set_access()
 
@@ -794,21 +795,21 @@
 	causes the SSU to break due to state_open being set to TRUE at the end, and the panel becoming inaccessible.
 */
 /obj/machinery/suit_storage_unit/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
-	if(!(obj_flags & NO_DECONSTRUCTION) && screwdriver.tool_behaviour == TOOL_SCREWDRIVER && (uv || locked))
+	if(screwdriver.tool_behaviour == TOOL_SCREWDRIVER && (uv || locked))
 		to_chat(user, span_warning("You cant open the panel while its [locked ? "locked" : "decontaminating"]"))
 		return TRUE
 	return ..()
 
 
 /obj/machinery/suit_storage_unit/default_pry_open(obj/item/crowbar)//needs to check if the storage is locked.
-	. = !(state_open || panel_open || is_operational || locked || (obj_flags & NO_DECONSTRUCTION)) && crowbar.tool_behaviour == TOOL_CROWBAR
+	. = !(state_open || panel_open || is_operational || locked) && crowbar.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		crowbar.play_tool_sound(src, 50)
 		visible_message(span_notice("[usr] pries open \the [src]."), span_notice("You pry open \the [src]."))
 		open_machine()
 
 /obj/machinery/suit_storage_unit/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
-	. = (!locked && panel_open && !(obj_flags & NO_DECONSTRUCTION) && crowbar.tool_behaviour == TOOL_CROWBAR)
+	. = (!locked && panel_open && crowbar.tool_behaviour == TOOL_CROWBAR)
 	if(.)
 		return ..()
 

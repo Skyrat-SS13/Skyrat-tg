@@ -458,7 +458,7 @@
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
-/obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
+/obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(is_reagent_container(tool) && !(tool.item_flags & ABSTRACT) && tool.is_open_container())
 		//SKYRAT EDIT ADDITION START - CHEMISTRY QOL
 		var/obj/item/reagent_containers/container = tool
@@ -467,12 +467,12 @@
 		transferAmounts = container.possible_transfer_amounts
 		//SKYRAT EDIT ADDITION END
 		if(!user.transferItemToLoc(tool, src))
-			return ..()
+			return ITEM_INTERACT_BLOCKING
 		replace_beaker(user, tool)
 		ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
 
-	return ..()
+	return NONE
 
 /obj/machinery/chem_dispenser/get_cell()
 	return cell
@@ -569,8 +569,6 @@
 /obj/machinery/chem_dispenser/attack_ai_secondary(mob/user, list/modifiers)
 	return attack_hand_secondary(user, modifiers)
 
-/obj/machinery/chem_dispenser/AltClick(mob/user)
-	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 /obj/machinery/chem_dispenser/drinks
 	name = "soda dispenser"
@@ -689,8 +687,7 @@
 
 /obj/machinery/chem_dispenser/drinks/fullupgrade //fully ugpraded stock parts, emagged
 	desc = "Contains a large reservoir of soft drinks. This model has had its safeties shorted out."
-	obj_flags = CAN_BE_HIT | EMAGGED | NO_DECONSTRUCTION
-	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks/fullupgrade
+	obj_flags = CAN_BE_HIT | EMAGGED
 
 /obj/machinery/chem_dispenser/drinks/fullupgrade/Initialize(mapload)
 	. = ..()
@@ -752,7 +749,7 @@
 
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade //fully ugpraded stock parts, emagged
 	desc = "Contains a large reservoir of the good stuff. This model has had its safeties shorted out."
-	obj_flags = CAN_BE_HIT | EMAGGED | NO_DECONSTRUCTION
+	obj_flags = CAN_BE_HIT | EMAGGED
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks/beer/fullupgrade
 
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade/Initialize(mapload)
@@ -776,7 +773,6 @@
 /obj/machinery/chem_dispenser/mutagensaltpeter
 	name = "botanical chemical dispenser"
 	desc = "Creates and dispenses chemicals useful for botany."
-	obj_flags = parent_type::obj_flags | NO_DECONSTRUCTION
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/mutagensaltpeter
 
 	/// The default list of dispensable reagents available in the mutagensaltpeter chem dispenser
@@ -802,7 +798,7 @@
 
 /obj/machinery/chem_dispenser/fullupgrade //fully ugpraded stock parts, emagged
 	desc = "Creates and dispenses chemicals. This model has had its safeties shorted out."
-	obj_flags = CAN_BE_HIT | EMAGGED | NO_DECONSTRUCTION
+	obj_flags = CAN_BE_HIT | EMAGGED
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/fullupgrade
 
 /obj/machinery/chem_dispenser/fullupgrade/Initialize(mapload)

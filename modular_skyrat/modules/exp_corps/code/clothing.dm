@@ -240,11 +240,8 @@
 		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
 		current_user.update_sight()
 
-/obj/item/clothing/head/helmet/expeditionary_corps/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/head/helmet/expeditionary_corps/click_alt(mob/user)
 	if(!current_user)
-		return
-	if(!can_interact(user))
 		return
 
 	nightvision = !nightvision
@@ -255,6 +252,7 @@
 		to_chat(user, span_notice("You flip the NV goggles up."))
 		disable_nv()
 	update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/head/helmet/expeditionary_corps/dropped(mob/user)
 	. = ..()
