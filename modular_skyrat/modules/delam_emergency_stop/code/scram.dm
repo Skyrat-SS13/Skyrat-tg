@@ -63,7 +63,7 @@
 
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/atmospherics/components/unary/delam_scram/LateInitialize()
+/obj/machinery/atmospherics/components/unary/delam_scram/post_machine_initialize()
 	. = ..()
 	if(isnull(id_tag))
 		id_tag = "SCRAM"
@@ -387,7 +387,7 @@
 	else if(machine_stat & (NOPOWER|BROKEN))
 		icon_state += "-nopower"
 
-/obj/machinery/power/emitter/LateInitialize(mapload)
+/obj/machinery/power/emitter/post_machine_initialize()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_MAIN_SM_DELAMINATING, PROC_REF(emergency_stop))
 

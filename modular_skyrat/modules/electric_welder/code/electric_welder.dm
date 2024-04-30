@@ -71,10 +71,6 @@
 /obj/item/weldingtool/electric/use(used = 0)
 	return isOn()
 
-// This is what starts fires. Overriding it stops it starting fires
-/obj/item/weldingtool/electric/handle_fuel_and_temps(used = 0, mob/living/user)
-	return
-
 /obj/item/weldingtool/electric/examine()
 	. = ..()
 	. += "[src] is currently [powered ? "powered" : "unpowered"]."

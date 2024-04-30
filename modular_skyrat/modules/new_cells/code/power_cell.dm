@@ -4,11 +4,11 @@
 	icon = 'modular_skyrat/modules/new_cells/icons/power.dmi'
 	icon_state = "crankcell"
 	/// how much each crank will give the cell charge
-	var/crank_amount = 100
+	var/crank_amount = STANDARD_CELL_CHARGE * 0.1
 	/// how fast it takes to crank to get the crank_amount
 	var/crank_speed = 1 SECONDS
 	/// how much gets discharged every process
-	var/discharge_amount = 10
+	var/discharge_amount = STANDARD_CELL_CHARGE * 0.01
 	charge_light_type = "old"
 
 /obj/item/stock_parts/cell/crank/examine(mob/user)
@@ -38,10 +38,10 @@
 	desc = "A special cell that will recharge itself over time."
 	icon = 'modular_skyrat/modules/new_cells/icons/power.dmi'
 	icon_state = "chargecell"
-	maxcharge = 2500
+	maxcharge = STANDARD_CELL_CHARGE * 2.5
 	charge_light_type = "old"
 	/// how much is recharged every process
-	var/recharge_amount = 200
+	var/recharge_amount = STANDARD_CELL_CHARGE * 0.2
 
 /obj/item/stock_parts/cell/self_charge/Initialize(mapload, override_maxcharge)
 	. = ..()

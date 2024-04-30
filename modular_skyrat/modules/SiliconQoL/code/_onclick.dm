@@ -4,7 +4,7 @@
 
 /mob/living/silicon/ai/CtrlShiftClickOn(atom/A)
 	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
+		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.AICtrlShiftClick(src)
 	else
@@ -12,7 +12,7 @@
 
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
 	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
+		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.AIShiftClick(src)
 	else
@@ -21,19 +21,19 @@
 
 /mob/living/silicon/ai/CtrlClickOn(atom/A)
 	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
+		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.AICtrlClick(src)
 	else
 		A.AICtrlClick(src)
 
-/mob/living/silicon/ai/AltClickOn(atom/A)
-	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
-		if(airlock)
-			airlock.AIAltClick(src)
-	else
-		A.AIAltClick(src)
+/turf/ai_click_alt(mob/living/silicon/ai/user)
+	var/obj/machinery/door/airlock/airlock = locate() in src
+	if(airlock)
+		airlock.ai_click_alt(user)
+		return
+	return ..()
+
 
 /atom/proc/AIExamine() // Used for AI specific examines .Currently only employed to stop door examines.
 	usr.examinate(src)
@@ -45,10 +45,10 @@
 /mob/living/silicon/ai/ClickOn(atom/A, params)
 	..()
 	var/list/modifiers = params2list(params)
-	if(isturf(A)&&(!modifiers)) // Have to check for modifiers.
-		var/obj/machinery/door/firedoor/TheDoor = locate(/obj/machinery/door/firedoor) in A
-		if(TheDoor)
-			TheDoor.attack_ai(usr)
+	if(isturf(A) && !modifiers) // Have to check for modifiers.
+		var/obj/machinery/door/firedoor/the_door = locate() in A
+		if(the_door)
+			the_door.attack_ai(usr)
 
 /*
 *	CYBORG CHANGES
@@ -56,7 +56,7 @@
 
 /mob/living/silicon/robot/CtrlShiftClickOn(atom/A)
 	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
+		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.BorgCtrlShiftClick(src)
 	else
@@ -64,7 +64,7 @@
 
 /mob/living/silicon/robot/ShiftClickOn(atom/A)
 	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
+		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.BorgShiftClick(src)
 	else
@@ -72,16 +72,15 @@
 
 /mob/living/silicon/robot/CtrlClickOn(atom/A)
 	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
+		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.BorgCtrlClick(src)
 	else
 		A.BorgCtrlClick(src) // End of skyrat edit
 
-/mob/living/silicon/robot/AltClickOn(atom/A)
-	if(isturf(A))
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
-		if(airlock)
-			airlock.BorgAltClick(src)
-	else
-		A.BorgAltClick(src)
+/turf/borg_click_alt(mob/living/silicon/robot/user)
+	var/obj/machinery/door/airlock/airlock = locate() in src
+	if(airlock)
+		airlock.borg_click_alt(user)
+		return
+	return ..()

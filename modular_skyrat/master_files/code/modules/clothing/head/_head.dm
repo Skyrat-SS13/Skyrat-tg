@@ -8,7 +8,7 @@
 		return
 	if(slot & ITEM_SLOT_HEAD)
 		if(user.ears && (flags_inv & HIDEEARS))
-			user.update_inv_ears()
+			user.update_worn_ears()
 		if(!(user.bodyshape & BODYSHAPE_ALT_FACEWEAR_LAYER))
 			return
 		if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
@@ -27,7 +27,7 @@
 /obj/item/clothing/head/proc/update_on_removed(mob/living/carbon/user, obj/item/hat)
 	SIGNAL_HANDLER
 	if(istype(user) && user.ears)
-		user.update_inv_ears()
+		user.update_worn_ears()
 	UnregisterSignal(user, COMSIG_CARBON_UNEQUIP_HAT)
 
 /obj/item/clothing/head/bio_hood

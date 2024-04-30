@@ -17,6 +17,7 @@
 	damage_deflection = 10
 	resistance_flags = FIRE_PROOF
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
+	interaction_flags_click = ALLOW_SILICON_REACH
 	processing_flags = START_PROCESSING_MANUALLY
 
 	///Range of the light emitted when on
@@ -227,8 +228,11 @@
 	find_and_hang_on_wall()
 
 /obj/machinery/power/apc/Destroy()
-	if(malfai && operating)
-		malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10, 0, 1000)
+	if(malfai)
+		if(operating)
+			malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10, 0, 1000)
+		malfai.hacked_apcs -= src
+		malfai = null
 	disconnect_from_area()
 	QDEL_NULL(alarm_manager)
 	if(occupier)
@@ -636,7 +640,7 @@
 /obj/machinery/power/apc/proc/overload_lighting()
 	if(!operating || shorted)
 		return
-	if(cell && cell.use(20 KILO JOULES))
+	if(cell && cell.use(0.02 * STANDARD_CELL_CHARGE))
 		INVOKE_ASYNC(src, PROC_REF(break_lights))
 
 /obj/machinery/power/apc/proc/break_lights()
