@@ -14,7 +14,6 @@
 			var/affecting = crossing_human.get_bodypart(BODY_ZONE_HEAD)
 			crossing_human.apply_damage(15, BRUTE, affecting)
 			crossing_human.Knockdown(20)
-			crossing_human.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15) //We do a bit of brain damage
 			crossing_human.visible_message(span_warning("[crossing_human] slams their head into the frame of [src] with a sickening thud!"), \
 				span_userdanger("You slam your head against [src]!")
 			)

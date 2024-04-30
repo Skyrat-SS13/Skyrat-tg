@@ -335,6 +335,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				tgui.ui_interact(usr)
 			return TRUE
 
+		if ("open_food")
+			GLOB.food_prefs_menu.ui_interact(usr)
+			return TRUE
+
 		if ("set_tricolor_preference")
 			var/requested_preference_key = params["preference"]
 			var/index_key = params["value"]
@@ -540,6 +544,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			.++
 
 /datum/preferences/proc/validate_quirks()
+	if(CONFIG_GET(flag/disable_quirk_points))
+		return
 	if(GetQuirkBalance() < 0)
 		all_quirks = list()
 

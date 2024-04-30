@@ -4,7 +4,6 @@ import {
   Feature,
   FeatureChoiced,
   FeatureChoicedServerData,
-  FeatureDropdownInput,
   FeatureNumberInput,
   FeatureNumeric,
   FeatureToggle,
@@ -12,6 +11,7 @@ import {
   FeatureTriColorInput,
   FeatureValueProps,
 } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',
@@ -214,6 +214,11 @@ export const erp_status_pref_nc: FeatureChoiced = {
 
 export const erp_status_pref_v: FeatureChoiced = {
   name: 'ERP Vore Status',
+  component: FeatureDropdownInput,
+};
+
+export const erp_status_pref_hypnosis: FeatureChoiced = {
+  name: 'ERP Hypnosis Status',
   component: FeatureDropdownInput,
 };
 

@@ -467,12 +467,6 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/catwalk_floor,
 /area/centcom/central_command_areas/holding)
-"lh" = (
-/obj/structure/toilet,
-/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
-/obj/machinery/door/window/survival_pod,
-/turf/open/floor/iron/showroomfloor,
-/area/centcom/central_command_areas/holding)
 "ln" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -590,13 +584,6 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/centcom/central_command_areas/holding)
-"os" = (
-/obj/machinery/shower/directional/south,
-/obj/item/soap/syndie,
-/obj/structure/curtain,
-/obj/machinery/door/window/survival_pod,
-/turf/open/floor/iron/showroomfloor,
-/area/centcom/central_command_areas/holding)
 "ov" = (
 /obj/structure/flora/rock/pile/style_random,
 /turf/open/misc/asteroid/basalt/airless,
@@ -705,20 +692,6 @@
 	color = "#525252";
 	initial_gas_mix = "TEMP=2.7"
 	},
-/area/centcom/central_command_areas/holding)
-"pU" = (
-/obj/structure/closet,
-/obj/item/surgery_tray/full,
-/obj/machinery/iv_drip,
-/obj/item/emergency_bed,
-/obj/item/storage/medkit/regular,
-/obj/item/reagent_containers/medigel/synthflesh,
-/obj/item/reagent_containers/medigel/synthflesh,
-/obj/item/reagent_containers/medigel/synthflesh,
-/obj/item/organ/internal/heart/cybernetic/tier2,
-/obj/item/organ/internal/heart/cybernetic/tier2,
-/obj/item/defibrillator,
-/turf/open/floor/iron/sepia,
 /area/centcom/central_command_areas/holding)
 "pX" = (
 /obj/machinery/light/small/directional/north,
@@ -901,6 +874,13 @@
 	pixel_y = 32
 	},
 /turf/open/floor/wood/tile,
+/area/centcom/central_command_areas/holding)
+"uN" = (
+/obj/machinery/shower/directional/south,
+/obj/item/soap/syndie,
+/obj/structure/curtain,
+/obj/machinery/door/window/survival_pod/left/directional/south,
+/turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/holding)
 "uQ" = (
 /obj/structure/chair/wood{
@@ -1662,6 +1642,20 @@
 	},
 /turf/open/floor/iron/sepia,
 /area/centcom/central_command_areas/holding)
+"Mz" = (
+/obj/structure/closet,
+/obj/item/surgery_tray/full,
+/obj/machinery/iv_drip,
+/obj/item/emergency_bed,
+/obj/item/storage/medkit/regular,
+/obj/item/reagent_containers/medigel/synthflesh,
+/obj/item/reagent_containers/medigel/synthflesh,
+/obj/item/reagent_containers/medigel/synthflesh,
+/obj/item/organ/internal/heart/cybernetic/tier2,
+/obj/item/organ/internal/heart/cybernetic/tier2,
+/obj/item/defibrillator,
+/turf/open/floor/iron/sepia,
+/area/centcom/central_command_areas/holding)
 "ML" = (
 /obj/structure/window/paperframe{
 	can_atmos_pass = 0
@@ -2124,6 +2118,12 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/tile/dark/opposingcorners,
 /turf/open/floor/iron/sepia,
+/area/centcom/central_command_areas/holding)
+"XE" = (
+/obj/structure/toilet,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/machinery/door/window/survival_pod/left/directional/south,
+/turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/holding)
 "XL" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -3083,7 +3083,7 @@ Zj
 Zj
 Zj
 LK
-lh
+XE
 qx
 dg
 QJ
@@ -3120,7 +3120,7 @@ HU
 Zj
 HU
 LK
-lh
+XE
 jv
 Tv
 Xt
@@ -3157,7 +3157,7 @@ Zj
 ov
 HU
 LK
-os
+uN
 sc
 dg
 QJ
@@ -3754,7 +3754,7 @@ bl
 xM
 DF
 dg
-pU
+Mz
 DI
 dv
 dg
@@ -3766,7 +3766,7 @@ EC
 dg
 Od
 Wm
-pU
+Mz
 dg
 uL
 hO

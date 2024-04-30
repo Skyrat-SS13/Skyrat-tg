@@ -43,7 +43,7 @@
 	var/delay_mult = 1
 
 	if (user == victim)
-		delay_mult *= 3
+		delay_mult *= 2
 
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		delay_mult *= 0.5
@@ -56,7 +56,7 @@
 	victim.visible_message(span_notice("[user] begins fastening the screws of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin fastening the screws of [your_or_other] [limb.plaintext_zone]..."))
 
-	if (!screwdriver_tool.use_tool(target = victim, user = user, delay = (10 SECONDS * delay_mult), volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
+	if (!screwdriver_tool.use_tool(target = victim, user = user, delay = (6 SECONDS * delay_mult), volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 
 	victim.visible_message(span_green("[user] finishes fastening [their_or_other] [limb.plaintext_zone]!"), \

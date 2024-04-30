@@ -456,7 +456,7 @@
 
 /datum/loadout_item/toys/plushe_winrow
 	name = "Dark and Brooding Lizard Plushie"
-	item_path = /obj/item/toy/plush/skyrat/plushie_winrow
+	item_path = /obj/item/toy/plush/skyrat/chunko/plushie_winrow
 
 /datum/loadout_item/toys/plushie_star
 	name = "Star Angel Plushie"
@@ -647,6 +647,11 @@
 /datum/loadout_item/gloves/hypnoring_nuke
 	name = "Suspiciously Glossy Ring"
 	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
+	ckeywhitelist = list("sonicgotnuked")
+
+/datum/loadout_item/ears/kinkphone_nuke
+	name = "Suspiciously Glossy Headphones"
+	item_path = /obj/item/clothing/ears/kinky_headphones/nuke
 	ckeywhitelist = list("sonicgotnuked")
 
 /datum/loadout_item/head/somerandomowl

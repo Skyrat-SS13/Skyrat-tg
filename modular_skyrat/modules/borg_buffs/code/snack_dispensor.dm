@@ -3,9 +3,14 @@
 	id = "borg_upgrade_snacks"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/snack_dispenser
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	construction_time = 1 SECONDS
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL,
+	)
 
 /obj/item/borg/upgrade/snack_dispenser
 	name = "Snack Dispenser Module"
@@ -106,9 +111,10 @@
 	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
 	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
 
-/obj/item/borg_snack_dispenser/AltClick(mob/user)
+/obj/item/borg_snack_dispenser/click_alt(mob/user)
 	launch_mode = !launch_mode
 	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/borg_snack_dispenser/afterattack(atom/target, mob/living/silicon/robot/user, proximity_flag, click_parameters)
 	if(Adjacent(target) || !launch_mode)

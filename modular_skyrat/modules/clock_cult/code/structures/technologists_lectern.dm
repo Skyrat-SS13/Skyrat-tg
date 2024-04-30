@@ -58,7 +58,7 @@
 	return ..()
 
 
-/obj/structure/destructible/clockwork/gear_base/technologists_lectern/deconstruct(disassembled)
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern/atom_deconstruct(disassembled)
 	if(primary_researcher)
 		deltimer(research_timer_id)
 		researching = FALSE
@@ -311,7 +311,7 @@
 
 	send_message("You hear the echoing of cogs ")
 
-	addtimer(CALLBACK(src, PROC_REF(send_message), "The echoing of cogs returns, even louder, "), (selected_research.time_to_research / 2), 90)
+	addtimer(CALLBACK(src, PROC_REF(send_message), "The echoing of cogs returns, even louder, "), (selected_research.time_to_research / 2), 9 SECONDS)
 
 /// Send a message to everyone on the Z level with directions to the lectern
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern/proc/send_message(initial_message = "You hear the echoing of cogs ", volume = 70)
@@ -428,10 +428,11 @@
 			apc_loop:
 				for(var/obj/machinery/power/apc/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc))
 					var/area/apc_area = get_area(controller) // make sure that no "critical" APCs lose their power (SM, namely)
-					for(var/turf/turf as anything in apc_area.contained_turfs)
-						for(var/obj/machinery/depowered_machinery in turf)
-							if(depowered_machinery.critical_machine)
-								continue apc_loop
+					for(var/list/zlevel_turfs as anything in apc_area.get_zlevel_turf_lists())
+						for(var/turf/area_turf as anything in zlevel_turfs)
+							for(var/obj/machinery/depowered_machinery in area_turf)
+								if(depowered_machinery.critical_machine)
+									continue apc_loop
 
 					controller.cell?.charge = 0
 

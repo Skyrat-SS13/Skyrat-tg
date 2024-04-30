@@ -46,6 +46,11 @@
 	desired_atom = /obj/machinery/gbp_redemption
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
+/datum/area_spawn/bar_jukebox
+	target_areas = list(/area/station/commons/lounge, /area/station/service/bar/atrium, /area/station/service/bar)
+	desired_atom = /obj/machinery/jukebox/public
+	mode = AREA_SPAWN_MODE_OPEN
+
 // Wall mounts. Use sparingly as walls are prime real estate
 /datum/area_spawn/posialert_robotics
 	target_areas = list(/area/station/science/robotics, /area/station/science/robotics/lab)
@@ -96,11 +101,6 @@
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
-
-/datum/area_spawn_over/prison_curtains
-	desired_atom = /obj/structure/curtain/cloth/prison
-	over_atoms = list(/obj/structure/window/reinforced/fulltile, /obj/machinery/door/airlock/security/glass, /obj/machinery/door/airlock/public/glass)
-	target_areas = list(/area/station/security/prison/safe)
 
 /datum/area_spawn/corrections_officer_landmark
 	desired_atom = /obj/effect/landmark/start/corrections_officer

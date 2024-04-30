@@ -339,7 +339,11 @@ Doesn't work on other aliens/AI.*/
 		span_notice("[owner] vomits up a thick purple substance and begins to shape it."),
 		span_notice("You shape a [choice] out of resin."),
 	)
-
+	//SKYRAT EDIT START - Roundstart xenohybrid organs
+	if(build_duration && !do_after(owner, build_duration))
+		owner.balloon_alert(owner, "interrupted!")
+		return
+	//SKYRAT EDIT END
 	new choice_path(owner.loc)
 	return TRUE
 

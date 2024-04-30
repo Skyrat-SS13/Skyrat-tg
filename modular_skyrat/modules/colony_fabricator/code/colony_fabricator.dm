@@ -9,11 +9,10 @@
 	production_animation = null
 	circuit = null
 	production_animation = "colony_lathe_n"
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_power = 5
-	charges_tax = FALSE
 	allowed_buildtypes = COLONY_FABRICATOR
+	speedup_disabled = TRUE
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine
 	/// The sound loop played while the fabricator is making something
@@ -33,27 +32,31 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)
+// previously NO_DECONSTRUCTION
+/obj/machinery/rnd/production/colony_lathe/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
+
+/obj/machinery/rnd/production/colony_lathe/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
+
+/obj/machinery/rnd/production/colony_lathe/default_pry_open(obj/item/crowbar, close_after_pry, open_density, closed_density)
+	return NONE
+
+/obj/machinery/rnd/production/colony_lathe/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if (. && action == "build")
+		soundloop.start()
+		set_light(l_range = 1.5)
+		icon_state = "colony_lathe_working"
+		update_appearance()
 
-	if(!.)
-		return
-
-	soundloop.start()
-	set_light(l_range = 1.5)
-	icon_state = "colony_lathe_working"
-	update_appearance()
-
-/obj/machinery/rnd/production/colony_lathe/do_print(path, amount)
+/obj/machinery/rnd/production/colony_lathe/finalize_build()
 	. = ..()
 	soundloop.stop()
 	set_light(l_range = 0)
 	icon_state = base_icon_state
 	update_appearance()
 	flick("colony_lathe_finish_print", src)
-
-/obj/machinery/rnd/production/colony_lathe/calculate_efficiency()
-	efficiency_coeff = 1
 
 // We take from all nodes even unresearched ones
 /obj/machinery/rnd/production/colony_lathe/update_designs()

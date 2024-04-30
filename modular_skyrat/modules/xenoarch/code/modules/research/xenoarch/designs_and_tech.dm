@@ -6,10 +6,15 @@
 /datum/design/xenoarch
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 
 /datum/design/xenoarch/tool
-	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_XENOARCH)
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_XENOARCH,
+	)
 
 /datum/design/xenoarch/tool/hammer
 	desc = "A hammer that can slowly remove debris on strange rocks."
@@ -68,8 +73,15 @@
 	build_path = /obj/item/xenoarch/handheld_scanner
 
 /datum/design/xenoarch/tool/advanced
-	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_XENOARCH_ADVANCED)
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_XENOARCH_ADVANCED,
+	)
+
 
 /datum/design/xenoarch/tool/advanced/scanner
 	name = "Xenoarch Advanced Handheld Scanner"
@@ -80,7 +92,10 @@
 	name = "Xenoarch Handheld Recoverer"
 	desc = "A device with the capabilities to recover items lost due to time."
 	id = "xenoarch_handrecoverer"
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	// rebalance material req after first repath/categorization?
 	build_path = /obj/item/xenoarch/handheld_recoverer
 
@@ -99,7 +114,9 @@
 /datum/design/xenoarch/equipment
 	// everything under this except the adv bag feels redundant because cloth/leather are there too
 	// but i guess we'll burn that bridge another time
-	category = list(RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_XENOARCH)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_XENOARCH,
+	)
 
 /datum/design/xenoarch/equipment/bag
 	name = "Xenoarchaeology Bag"
@@ -117,12 +134,18 @@
 	name = "Advanced Xenoarch Bag"
 	desc = "A bag that can hold about fifty strange rocks."
 	id = "xenoarch_bag_adv"
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	// i kinda hate how this requires diamond, but this is supposed to be a fix pr, burn the gbp on it later
 	build_path = /obj/item/storage/bag/xenoarch/adv
 
 /datum/design/board/xenoarch
-	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_XENOARCH)
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_XENOARCH,
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/xenoarch/researcher

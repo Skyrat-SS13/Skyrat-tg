@@ -1,5 +1,6 @@
 import { sortBy } from 'common/collections';
 import { capitalize } from 'common/string';
+import { useState } from 'react';
 
 import { useBackend, useLocalState } from '../backend';
 import {
@@ -28,10 +29,12 @@ const SWIPE_NEEDED = 'SWIPE_NEEDED';
 const EMAG_SHUTTLE_NOTICE =
   'This shuttle is deemed significantly dangerous to the crew, and is only supplied by the Syndicate.';
 
-const sortShuttles = sortBy(
-  (shuttle) => !shuttle.emagOnly,
-  (shuttle) => shuttle.initial_cost,
-);
+const sortShuttles = (shuttles) =>
+  sortBy(
+    shuttles,
+    (shuttle) => !shuttle.emagOnly,
+    (shuttle) => shuttle.initial_cost,
+  );
 
 const AlertButton = (props) => {
   const { act, data } = useBackend();
@@ -85,7 +88,7 @@ const MessageModal = (props) => {
             width="80vw"
             backgroundColor="black"
             textColor="white"
-            onChange={(_, value) => {
+            onInput={(_, value) => {
               setInput(value.substring(0, maxMessageLength));
             }}
             value={input}
@@ -267,27 +270,15 @@ const PageMain = (props) => {
     shuttleRecallable,
   } = data;
 
-  const [callingShuttle, setCallingShuttle] = useLocalState(
-    'calling_shuttle',
-    false,
-  );
-  const [messagingAssociates, setMessagingAssociates] = useLocalState(
-    'messaging_associates',
-    false,
-  );
-  const [messagingSector, setMessagingSector] = useLocalState(
-    'messaing_sector',
-    null,
-  );
-  const [requestingNukeCodes, setRequestingNukeCodes] = useLocalState(
-    'requesting_nuke_codes',
-    false,
-  );
+  const [callingShuttle, setCallingShuttle] = useState(false);
+  const [messagingAssociates, setMessagingAssociates] = useState(false);
+  const [messagingSector, setMessagingSector] = useState(null);
+  const [requestingNukeCodes, setRequestingNukeCodes] = useState(false);
 
   const [
     [showAlertLevelConfirm, confirmingAlertLevelTick],
     setShowAlertLevelConfirm,
-  ] = useLocalState('showConfirmPrompt', [null, null]);
+  ] = useState([null, null]);
 
   return (
     <Box>

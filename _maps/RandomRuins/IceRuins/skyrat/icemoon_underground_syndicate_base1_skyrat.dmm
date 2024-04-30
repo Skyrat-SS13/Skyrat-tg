@@ -47,8 +47,7 @@
 /area/ruin/syndicate_lava_base/main)
 "al" = (
 /obj/machinery/hydroponics/constructable,
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -146,8 +145,7 @@
 	dir = 1
 	},
 /obj/machinery/duct,
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -252,11 +250,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "bv" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/ore_redemption,
 /obj/item/assembly/igniter,
 /obj/structure/marker_beacon/burgundy,
@@ -273,8 +267,7 @@
 "bC" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/light/directional/north,
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -409,11 +402,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "cm" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
+/obj/structure/frame/machine/secured,
 /obj/item/circuitboard/machine/ore_silo,
 /obj/structure/marker_beacon/burgundy,
 /obj/structure/sign/flag/syndicate/directional/north,
@@ -1991,8 +1980,7 @@
 	req_access = list("syndicate");
 	pixel_y = 42
 	},
-/obj/machinery/door/window/survival_pod{
-	dir = 1;
+/obj/machinery/door/window/survival_pod/left/directional/north{
 	pixel_y = 4
 	},
 /obj/effect/turf_decal/stripes/red/line{
@@ -2219,8 +2207,7 @@
 	dir = 8
 	},
 /obj/machinery/duct,
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -3066,8 +3053,7 @@
 /obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
 	dir = 1
 	},
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -4009,7 +3995,7 @@
 /area/ruin/syndicate_lava_base/testlab)
 "yY" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/window/survival_pod{
+/obj/machinery/door/window/survival_pod/left/directional/south{
 	req_access = list("syndicate");
 	name = "Slime Pacification Chamber"
 	},
@@ -4121,7 +4107,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/machinery/door/window/survival_pod{
+/obj/machinery/door/window/survival_pod/left/directional/south{
 	req_access = list("syndicate");
 	pixel_y = -4
 	},
@@ -4854,8 +4840,7 @@
 /obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
 	dir = 1
 	},
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -5310,7 +5295,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "Hs" = (
-/obj/machinery/door/window/survival_pod{
+/obj/machinery/door/window/survival_pod/left/directional/south{
 	req_access = list("syndicate");
 	name = "Slime Euthanization Chamber"
 	},
@@ -5382,8 +5367,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -5391,9 +5375,7 @@
 /area/ruin/syndicate_lava_base/main)
 "Ib" = (
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/door/window/survival_pod{
-	dir = 1
-	},
+/obj/machinery/door/window/survival_pod/left/directional/north,
 /obj/effect/turf_decal/tile/dark/full,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
@@ -5622,7 +5604,7 @@
 /area/ruin/syndicate_lava_base/cargo)
 "Km" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/window/survival_pod{
+/obj/machinery/door/window/survival_pod/left/directional/south{
 	req_access = list("syndicate")
 	},
 /obj/machinery/shower/directional/west,
@@ -5811,6 +5793,13 @@
 /obj/structure/table/wood/fancy/black,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
+"Lu" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/main)
 "Lw" = (
 /obj/effect/turf_decal/siding/wood/end{
 	dir = 1
@@ -6871,8 +6860,7 @@
 /area/ruin/syndicate_lava_base/cargo)
 "TB" = (
 /obj/machinery/biogenerator,
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -7622,8 +7610,7 @@
 /area/ruin/syndicate_lava_base/bar)
 "XW" = (
 /obj/machinery/hydroponics/constructable,
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
+/obj/machinery/door/window/survival_pod/left/directional/west{
 	req_access = list("syndicate");
 	pixel_x = -4
 	},
@@ -9125,7 +9112,7 @@ pI
 xc
 Uo
 Tm
-cu
+Lu
 Yf
 rv
 us

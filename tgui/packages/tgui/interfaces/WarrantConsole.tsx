@@ -1,4 +1,5 @@
 import { sortBy } from 'common/collections';
+import { useState } from 'react';
 
 import { useBackend, useLocalState } from '../backend';
 import {
@@ -62,7 +63,7 @@ export const WarrantConsole = (props) => {
 const RecordList = (props) => {
   const { act, data } = useBackend<Data>();
   const { records = [] } = data;
-  const sorted = sortBy((record: WarrantRecord) => record.crew_name)(records);
+  const sorted = sortBy(records, (record) => record.crew_name);
 
   const [selectedRecord, setSelectedRecord] = useLocalState<
     WarrantRecord | undefined
@@ -144,7 +145,7 @@ const CitationManager = (props) => {
 
   const { crew_ref } = foundRecord;
 
-  const [paying, setPaying] = useLocalState('citationAmount', 5);
+  const [paying, setPaying] = useState(5);
 
   return (
     <Collapsible

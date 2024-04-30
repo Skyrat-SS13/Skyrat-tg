@@ -225,6 +225,10 @@
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
+	cyborg.diag_hud_set_health()
+	cyborg.diag_hud_set_status()
+	cyborg.diag_hud_set_borgcell()
+	cyborg.diag_hud_set_aishell()
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
@@ -266,6 +270,7 @@
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
 			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
+		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
 			cyborg.base_pixel_y = details[SKIN_PIXEL_Y]
@@ -381,14 +386,16 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
-		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
-		/obj/item/multitool/cyborg,
+		/obj/item/screwdriver/cyborg/power, // Skyrat ADDITION - Combines Screwdriver and Wrench into one
+		/obj/item/crowbar/cyborg/power, // Skyrat ADDITION - Combines Crowbar and Wirecutters into one
+		/obj/item/multitool/cyborg, //Skyrat ADDITION - Adds multitool for easier access
+		/obj/item/borg/cyborg_omnitool/engineering,
+		///obj/item/borg/cyborg_omnitool/engineering, //Skyrat REMOVAL
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
-		/obj/item/areaeditor/blueprints/cyborg,
+		/obj/item/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
@@ -621,7 +628,7 @@
 
 	reagents.expose(our_turf, TOUCH, min(1, 10 / reagents.total_volume))
 	// We use more water doing this then mopping
-	reagents.remove_any(2) //reaction() doesn't use up the reagents
+	reagents.remove_all(2) //reaction() doesn't use up the reagents
 
 /datum/action/toggle_buffer/update_button_name(atom/movable/screen/movable/action_button/current_button, force)
 	if(buffer_on)
@@ -676,14 +683,9 @@
 		/obj/item/borg/apparatus/beaker,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/surgical_drapes,
-		/obj/item/retractor,
-		/obj/item/hemostat,
-		/obj/item/cautery,
-		/obj/item/surgicaldrill,
-		/obj/item/scalpel,
-		/obj/item/circular_saw,
-		/obj/item/bonesetter,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/blood_filter,
 		/obj/item/extinguisher/mini,
 		/obj/item/emergency_bed/silicon,
 		/obj/item/borg/cyborghug/medical,
@@ -717,6 +719,7 @@
 		/obj/item/gun/energy/recharge/kinetic_accelerator/cyborg,
 		/obj/item/gps/cyborg,
 		/obj/item/stack/marker_beacon,
+		/obj/item/t_scanner/adv_mining_scanner/cyborg,
 	)
 	radio_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(
@@ -730,16 +733,6 @@
 		"Spider Miner" = list(SKIN_ICON_STATE = "spidermin"),
 		"Lavaland Miner" = list(SKIN_ICON_STATE = "miner"),
 	)
-	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes. //fuck you
-
-/obj/item/robot_model/miner/rebuild_modules()
-	. = ..()
-	if(!mining_scanner)
-		mining_scanner = new(src)
-
-/obj/item/robot_model/miner/Destroy()
-	QDEL_NULL(mining_scanner)
-	return ..()
 
 /obj/item/robot_model/peacekeeper
 	name = "Peacekeeper"
@@ -805,35 +798,45 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/reagent_containers/borghypo/borgshaker,
+		// SKYRAT EDIT START
+		// /obj/item/reagent_containers/borghypo/borgshaker,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc,
 		/obj/item/borg/apparatus/beaker/service,
+		/obj/item/borg/apparatus/beaker, // Allows the pickup of different beakers for easier drink mixing
+		// SKYRAT EDIT END
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		//Skyrat Edit Start: Borg Buff
-		//obj/item/reagent_containers/condiment/enzyme, //edit - Borg shaker has it
-		/obj/item/borg/apparatus/beaker, // SKYRAT EDIT: allows the pickup of different beakers for easier drink mixing
+		//obj/item/reagent_containers/condiment/enzyme, // SKYRAT EDIT - Borg shaker has it
 		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/syringe, // SKYRAT EDIT
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
 		/obj/item/storage/bag/tray, // SKYRAT EDIT: Moves the second tray up to be near the default one
+		// SKYRAT EDIT START - COMMENTS OUT STUFF, MOVING IT TO SPECIALIZED MODULES
+		/*
+		// Moved to artistic module
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
+		*/
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
 		/obj/item/razor,
-		/obj/item/instrument/guitar,
-		/obj/item/instrument/piano_synth,
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
-		/obj/item/reagent_containers/syringe, //edit
-		/obj/item/cooking/cyborg/power, //edit
+		/*
+		// Moved to artistic module
+		//obj/item/instrument/guitar,
+		//obj/item/instrument/piano_synth,
+		*/
 		/obj/item/lighter,
-		/obj/item/borg/lollipop,
-		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/chisel,
+		//obj/item/borg/lollipop, // Moved to snack module
+		/* Moved to artistic module
+		//obj/item/stack/pipe_cleaner_coil/cyborg,
+		//obj/item/chisel,
+		*/
 		/obj/item/reagent_containers/cup/rag,
-		/obj/item/storage/bag/money,
+		//obj/item/storage/bag/money, //This is never used and there's already too much bloat
+		// SKYRAT EDIT END
 	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(
@@ -891,15 +894,10 @@
 		/obj/item/reagent_containers/borghypo/syndicate,
 		/obj/item/shockpaddles/syndicate/cyborg,
 		/obj/item/healthanalyzer,
-		/obj/item/surgical_drapes,
-		/obj/item/retractor,
-		/obj/item/hemostat,
-		/obj/item/cautery,
-		/obj/item/surgicaldrill,
-		/obj/item/scalpel,
-		/obj/item/melee/energy/sword/cyborg/saw,
-		/obj/item/bonesetter,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/borg/cyborg_omnitool/medical,
 		/obj/item/blood_filter,
+		/obj/item/melee/energy/sword/cyborg/saw,
 		/obj/item/emergency_bed/silicon,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini,
@@ -924,12 +922,9 @@
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/nuke,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
 		/obj/item/analyzer,
-		/obj/item/multitool/cyborg,
+		/obj/item/borg/cyborg_omnitool/engineering,
+		/obj/item/borg/cyborg_omnitool/engineering,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
 		/obj/item/borg/apparatus/sheet_manipulator,

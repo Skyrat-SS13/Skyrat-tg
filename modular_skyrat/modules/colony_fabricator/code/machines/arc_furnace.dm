@@ -18,7 +18,6 @@
 	circuit = null
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_power = 10
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 10 // This baby consumes so much power
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/arc_furnace
@@ -46,9 +45,18 @@
 	if(length(contents))
 		. += span_notice("It has <b>[contents[1]]</b> sitting in it.")
 
-/obj/machinery/arc_furnace/deconstruct(disassembled = TRUE)
+// previously NO_DECONSTRUCTION
+/obj/machinery/arc_furnace/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
+
+/obj/machinery/arc_furnace/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
+
+/obj/machinery/arc_furnace/default_pry_open(obj/item/crowbar, close_after_pry, open_density, closed_density)
+	return NONE
+
+/obj/machinery/arc_furnace/on_deconstruction(disassembled)
 	eject_contents()
-	return ..()
 
 /obj/machinery/arc_furnace/update_appearance()
 	. = ..()
@@ -99,7 +107,6 @@
 	if(isAI(user) && (machine_stat & NOPOWER))
 		return
 
-	usr.set_machine(src) // What does this even do??
 	switch(choice)
 		if(RADIAL_CHOICE_EJECT)
 			eject_contents()
@@ -158,7 +165,7 @@
 		return
 
 	time -= 1 SECONDS
-	use_power(active_power_usage)
+	use_energy(active_power_usage)
 
 	var/turf/where_we_spawn_air = get_turf(src)
 	var/obj/item/stack/ore/ore_stack_to_check = contents[1]
@@ -169,6 +176,8 @@
 			where_we_spawn_air.atmos_spawn_air("co2=50;TEMP=1200")
 		if(/obj/item/stack/sheet/mineral/titanium)
 			where_we_spawn_air.atmos_spawn_air("n2=10;co2=10;TEMP=1200")
+		if(/obj/item/stack/sheet/mineral/plasma)
+			where_we_spawn_air.atmos_spawn_air("co2=75;TEMP=2000")
 		else
 			where_we_spawn_air.atmos_spawn_air("co2=20;TEMP=1200")
 

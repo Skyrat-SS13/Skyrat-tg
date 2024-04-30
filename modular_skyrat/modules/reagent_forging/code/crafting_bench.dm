@@ -39,6 +39,7 @@
 		/datum/crafting_bench_recipe/centrifuge,
 		/datum/crafting_bench_recipe/bokken,
 		/datum/crafting_bench_recipe/bow,
+		/datum/crafting_bench_recipe/empty_circuit,
 	)
 	/// Radial options for recipes in the allowed_choices list, populated by populate_radial_choice_list
 	var/list/radial_choice_list = list()
@@ -108,6 +109,13 @@
 
 /obj/structure/reagent_crafting_bench/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	select_recipe(user)
+
+/obj/structure/reagent_crafting_bench/attack_robot(mob/living/user)
+	. = ..()
+	select_recipe(user)
+
+/obj/structure/reagent_crafting_bench/proc/select_recipe(mob/living/user)
 	update_appearance()
 
 	if(length(contents))
@@ -142,16 +150,31 @@
 
 /obj/structure/reagent_crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/forging/complete))
-		if(length(contents))
-			balloon_alert(user, "already full")
-			return TRUE
-
-		attacking_item.forceMove(src)
-		balloon_alert_to_viewers("placed [attacking_item]")
-		update_appearance()
+		attempt_place(attacking_item, user)
 		return TRUE
 
 	return ..()
+
+/obj/structure/reagent_crafting_bench/MouseDrop_T(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	if(!isliving(user))
+		return
+
+	if(!isobj(attacking_item))
+		return
+
+	if(istype(attacking_item, /obj/item/forging/complete))
+		attempt_place(attacking_item, user)
+
+/obj/structure/reagent_crafting_bench/proc/attempt_place(obj/item/attacking_item, mob/user)
+	if(length(contents))
+		balloon_alert(user, "already full")
+		return
+
+	attacking_item.forceMove(src)
+	balloon_alert_to_viewers("placed [attacking_item]")
+	update_appearance()
+	return
 
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
@@ -289,9 +312,13 @@
 	if(completing_a_weapon)
 		var/obj/item/forging/complete/completed_forge_item = contents[1]
 		newly_created_thing = new completed_forge_item.spawning_item(src)
+		if(newly_created_thing.force > 0) //we don't want the staff to get added damage
+			newly_created_thing.force += round(completed_forge_item.current_perfects * INVERSE(10)) //adds a maximum of 3 force, and 6 if dual-wielded
+
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
 			for(var/custom_material in completed_forge_item.custom_materials)
 				materials_to_transfer[custom_material] += completed_forge_item.custom_materials[custom_material]
+
 		qdel(completed_forge_item) // And then we also need to 'use' the item
 
 	else

@@ -103,12 +103,12 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, toggle_noun = "scarf")
 
-/obj/item/clothing/neck/face_scarf/AltClick(mob/user) //Make sure that toggling actually hides the snout so that it doesn't clip
-	. = ..()
+/obj/item/clothing/neck/face_scarf/click_alt(mob/user) //Make sure that toggling actually hides the snout so that it doesn't clip
 	if(icon_state != "face_scarf_t")
 		flags_inv = HIDEFACIALHAIR | HIDESNOUT
 	else
 		flags_inv = HIDEFACIALHAIR
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/neck/maid_neck_cover
 	name = "maid neck cover"

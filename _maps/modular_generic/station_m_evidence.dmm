@@ -2,15 +2,6 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"d" = (
-/obj/effect/turf_decal/tile/dark_red/opposingcorners,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/cobweb,
-/obj/structure/secure_safe/directional/north{
-	name = "evidence safe"
-	},
-/turf/open/floor/iron/dark,
-/area/template_noop)
 "h" = (
 /obj/effect/turf_decal/tile/dark/opposingcorners,
 /obj/effect/turf_decal/siding/red{
@@ -33,6 +24,15 @@
 /area/template_noop)
 "n" = (
 /obj/effect/turf_decal/tile/dark/opposingcorners,
+/turf/open/floor/iron/dark,
+/area/template_noop)
+"p" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/secure_safe/directional/north{
+	name = "evidence safe"
+	},
 /turf/open/floor/iron/dark,
 /area/template_noop)
 "q" = (
@@ -75,15 +75,6 @@
 	spawn_loot_chance = 35
 	},
 /turf/open/floor/iron/dark/textured_large,
-/area/template_noop)
-"z" = (
-/obj/machinery/door/window/brigdoor{
-	name = "Secure Evidence Lockup";
-	req_one_access = list("armory","detective")
-	},
-/obj/effect/turf_decal/tile/dark_red/opposingcorners,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "A" = (
 /obj/machinery/door/airlock/security{
@@ -162,6 +153,15 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
+"W" = (
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	name = "Secure Evidence Lockup";
+	req_one_access = list("armory","detective")
+	},
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "X" = (
 /obj/effect/turf_decal/tile/dark/opposingcorners,
 /obj/effect/turf_decal/siding/red{
@@ -205,9 +205,9 @@ a
 (3,1,1) = {"
 a
 G
-d
+p
 s
-z
+W
 h
 K
 m

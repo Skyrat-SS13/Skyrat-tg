@@ -280,14 +280,14 @@
 	visor_flags_inv = HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	tint = 0
+	interaction_flags_click = NEED_DEXTERITY
 
 /obj/item/clothing/mask/gas/nightlight/attack_self(mob/user)
-	adjustmask(user)
+	adjust_visor(user)
 
-/obj/item/clothing/mask/gas/nightlight/AltClick(mob/user)
-	..()
-	if(user.can_perform_action(src, NEED_DEXTERITY))
-		adjustmask(user)
+/obj/item/clothing/mask/gas/nightlight/click_alt(mob/user)
+	adjust_visor(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/mask/gas/nightlight/examine(mob/user)
 	. = ..()
@@ -471,7 +471,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "avipilotup"
 	inhand_icon_state = "rus_ushanka"
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = HIDEHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT //about as warm as an ushanka
 	actions_types = list(/datum/action/item_action/adjust)
@@ -489,7 +489,7 @@
 		to_chat(user, span_notice("You focus all your willpower to put the goggles down on your eyes."))
 	goggles = !goggles
 	if(user)
-		user.head_update(src, forced = 1)
+		user.update_worn_head()
 		user.update_mob_action_buttons()
 
 /obj/item/clothing/head/avipilot/ui_action_click(mob/living/carbon/user, action)
@@ -798,7 +798,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 
-
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/space/plasmaman/candlejax2
 	name = "azulean's environment helmet"
@@ -924,7 +923,7 @@
 	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
 	toggle_vision_effects()
 
-/obj/item/clothing/glasses/welding/steampunk_goggles/weldingvisortoggle(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/adjust_visor(mob/user)
 	. = ..()
 	handle_sight_updating(user)
 
@@ -951,7 +950,7 @@
 	playsound(user, shutters_sound, 100, TRUE)
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
-		carbon_user.head_update(src, forced = 1)
+		carbon_user.update_worn_head()
 	update_item_action_buttons()
 	return TRUE
 
@@ -983,7 +982,7 @@
 		if(iscarbon(user))
 			var/mob/living/carbon/carbon_user = user
 			carbon_user.update_tint()
-			carbon_user.head_update(src, forced = TRUE)
+			carbon_user.update_worn_head()
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
 	if(!is_welding_toggle)
@@ -1454,9 +1453,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 /obj/item/clothing/gloves/ring/hypno/nuke
 	name = "suspiciously glossy ring"
 	desc = "This ring oozes with an assertive edge as sharp light bends along the smooth, black bronze. Like the finger that wears it, an exceptional amount of polish repels nearly all the light that glances along its surface. If you look closer, a slight golden hue indicates the precious metals inside the alloy."
-	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	icon_state = "ringblack"
+	worn_icon_state = "ringblack"
+	lefthand_file = null
+	righthand_file = null
 	spans = list("glossy")
+
+/obj/item/clothing/ears/kinky_headphones/nuke
+	name = "suspiciously glossy headphones"
+	desc = "Black metalic headphones with a glossy finish. The soft rubber cushions are comftorable and form fitting"
+	icon_state = "kinkphones_black_off"
+	base_icon_state = "kinkphones"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/ears.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/ears.dmi'
+	inhand_icon_state = null
+	current_kinkphones_color = "black"
+	color_changed = TRUE
 
 //reward for SomeRandomOwl
 /obj/item/clothing/head/costume/strigihat

@@ -509,6 +509,7 @@
 			borer_organ.Remove(cortical_owner.human_host)
 		cortical_owner.forceMove(human_turfone)
 		cortical_owner.human_host = null
+		REMOVE_TRAIT(cortical_owner, TRAIT_WEATHER_IMMUNE, "borer_in_host")
 		StartCooldown()
 		return
 
@@ -528,10 +529,8 @@
 		if(!(listed_human.mob_biotypes & MOB_ORGANIC) && cortical_owner.organic_restricted)
 			continue
 		//hosts cannot be changelings
-		if(listed_human.mind)
-			var/datum/antagonist/changeling/changeling = listed_human.mind.has_antag_datum(/datum/antagonist/changeling)
-			if(changeling && cortical_owner.changeling_restricted)
-				continue
+		if(IS_CHANGELING(listed_human) && cortical_owner.changeling_restricted)
+			continue
 		usable_hosts += listed_human
 
 	//if the list of possible hosts is one, just go straight in, no choosing
@@ -572,6 +571,7 @@
 	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
 	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
+	ADD_TRAIT(cortical_owner, TRAIT_WEATHER_IMMUNE, "borer_in_host")
 	StartCooldown()
 
 /// Checks if the target's head is bio protected, returns true if this is the case

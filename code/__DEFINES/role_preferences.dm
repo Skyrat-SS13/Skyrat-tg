@@ -16,6 +16,7 @@
 #define ROLE_OPERATIVE "Operative"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
+#define ROLE_SPY "Spy"
 // SKYRAT EDIT START
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
 #define ROLE_OPFOR_CANDIDATE "OPFOR Candidate"
@@ -86,6 +87,11 @@
 #define ROLE_SLAUGHTER_DEMON "Slaughter Demon"
 #define ROLE_WIZARD_APPRENTICE "apprentice"
 #define ROLE_SYNDICATE_MONKEY "Syndicate Monkey Agent"
+#define ROLE_CONTRACTOR_SUPPORT "Contractor Support Unit"
+#define ROLE_OPERATIVE_OVERWATCH "Operative Overwatch Agent"
+#define ROLE_SYNDICATE_SABOBORG "Syndicate Sabotage Cyborg"
+#define ROLE_SYNDICATE_MEDBORG "Syndicate Medical Cyborg"
+#define ROLE_SYNDICATE_ASSAULTBORG "Syndicate Assault Cyborg"
 
 //Spawner roles
 #define ROLE_ANCIENT_CREW "Ancient Crew"
@@ -144,6 +150,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_REV_HEAD = 14,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
+	ROLE_SPY = 0,
 	// SKYRAT EDIT ADDITION
 	ROLE_ASSAULT_OPERATIVE = 14,
 	// SKYRAT EDIT END

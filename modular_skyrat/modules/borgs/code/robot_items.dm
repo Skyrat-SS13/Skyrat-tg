@@ -32,20 +32,20 @@
 
 /obj/item/clipboard/cyborg/examine()
 	. = ..()
-	. += "Alt-click to synthetize a piece of paper."
+	. += "Alt-click to synthesize a piece of paper."
 	if(!COOLDOWN_FINISHED(src, printer_cooldown))
-		. += "Its integrated paper synthetizer seems to still be on cooldown."
+		. += "Its integrated paper synthesizer seems to still be on cooldown."
 
 
-/obj/item/clipboard/cyborg/AltClick(mob/user)
+/obj/item/clipboard/cyborg/click_alt(mob/user)
 	if(!iscyborg(user))
 		to_chat(user, span_warning("You do not seem to understand how to use [src]."))
-		return
+		return CLICK_ACTION_BLOCKING
 	var/mob/living/silicon/robot/cyborg_user = user
 	// Not enough charge? Tough luck.
 	if(cyborg_user?.cell.charge < paper_charge_cost)
 		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use [src]'s integrated printer."))
-		return
+		return CLICK_ACTION_BLOCKING
 	// Check for cooldown to avoid paper spamming
 	if(COOLDOWN_FINISHED(src, printer_cooldown))
 		// If there's not too much paper already, let's go
@@ -61,10 +61,12 @@
 			toppaper_ref = WEAKREF(new_paper)
 			update_appearance()
 			to_chat(user, span_notice("[src]'s integrated printer whirs to life, spitting out a fresh piece of paper and clipping it into place."))
+			return CLICK_ACTION_SUCCESS
 		else
 			to_chat(user, span_warning("[src]'s integrated printer refuses to print more paper, as [src] already contains enough paper."))
 	else
-		to_chat(user, span_warning("[src]'s integrated printer refuses to print more paper, its bluespace paper synthetizer not having finished recovering from its last synthesis."))
+		to_chat(user, span_warning("[src]'s integrated printer refuses to print more paper, its bluespace paper synthesizer not having finished recovering from its last synthesis."))
+	return CLICK_ACTION_BLOCKING
 
 
 /obj/item/hand_labeler/cyborg
@@ -660,7 +662,7 @@
 			f = user.filters[start+i]
 			animate(f, offset=f:offset, time=0, loop=3, flags=ANIMATION_PARALLEL)
 			animate(offset=f:offset-1, time=rand()*20+10)
-		if (do_after(user, 50, target=user) && user.cell.use(activationCost))
+		if (do_after(user, 5 SECONDS, target=user) && user.cell.use(activationCost))
 			playsound(src, 'sound/effects/bamf.ogg', 100, TRUE, -6)
 			to_chat(user, span_notice("You are now disguised."))
 			activate(user)
@@ -753,3 +755,124 @@
 	if(active)
 		to_chat(user, span_danger("Your chameleon field deactivates."))
 		deactivate(user)
+
+// Quadruped tongue - lick lick
+/obj/item/quadborg_tongue
+	name = "synthetic tongue"
+	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "synthtongue"
+	hitsound = 'sound/effects/attackblob.ogg'
+	desc = "For giving affectionate kisses."
+	item_flags = NOBLUDGEON
+
+/obj/item/quadborg_tongue/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if(!proximity || !isliving(target))
+		return
+	var/mob/living/silicon/robot/borg = user
+	var/mob/living/mob = target
+
+	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
+		if(check_zone(borg.zone_selected) == "head")
+			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
+			playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+		else
+			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
+			playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+	else
+		to_chat(user, span_warning("ERROR: [target] is on the Do Not Lick registry!"))
+
+// Quadruped nose - Boop
+/obj/item/quadborg_nose
+	name = "boop module"
+	desc = "The BOOP module"
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "nose"
+	obj_flags = CONDUCTS_ELECTRICITY
+	item_flags = NOBLUDGEON
+	force = 0
+
+/obj/item/quadborg_nose/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if(!proximity)
+		return
+
+	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
+		do_attack_animation(target, null, src)
+		user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
+	else
+		to_chat(user, span_warning("ERROR: [target] is on the No Nosing registry!"))
+
+/// Better Clamp
+/obj/item/borg/hydraulic_clamp/better
+	name = "improved integrated hydraulic clamp"
+	desc = "A neat way to lift and move around crates for quick and painless deliveries!"
+	storage_capacity = 4
+	whitelisted_item_types = list(/obj/structure/closet/crate, /obj/item/delivery/big, /obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
+	whitelisted_item_description = "wrapped packages"
+	item_weight_limit = NONE
+	clamp_sound_volume = 50
+
+/obj/item/borg/hydraulic_clamp/better/examine(mob/user)
+	. = ..()
+	var/crate_count = contents.len
+	. += "There is currently <b>[crate_count > 0 ? crate_count : "no"]</b> crate[crate_count > 1 ? "s" : ""] stored in the clamp's internal storage."
+
+/obj/item/borg/hydraulic_clamp/mail
+	name = "integrated rapid mail delivery device"
+	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
+	icon = 'icons/obj/service/library.dmi'
+	icon_state = "bookbag"
+	storage_capacity = 100
+	loading_time = 0.25 SECONDS
+	unloading_time = 0.25 SECONDS
+	cooldown_duration = 0.25 SECONDS
+	whitelisted_item_types = list(/obj/item/mail)
+	whitelisted_item_description = "envelopes"
+	item_weight_limit = WEIGHT_CLASS_NORMAL
+	clamp_sound_volume = 25
+	clamp_sound = 'sound/items/pshoom.ogg'
+
+/obj/item/borg/forging_setup
+	name = "integrated forging dispenser"
+	desc = "Allows cyborgs to dispense the necessary structures for forging in return for power."
+	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
+	icon_state = "forge_dispense"
+	/// how much charge the item will use per use
+	var/charge_cost = 1000
+
+/obj/item/borg/forging_setup/attack_self(mob/user, modifiers)
+	var/mob/living/silicon/robot/robot_user = user
+	if(!istype(robot_user)) //you have to be a borg to use this item
+		to_chat(user, span_warning("Must be a cyborg to use [src]!"))
+		return
+
+	if(robot_user.cell.charge < charge_cost)
+		to_chat(user, span_warning("Not enough charge!"))
+		return
+
+	var/turf/src_turf = get_turf(src)
+	if(!isopenturf(src_turf) || isspaceturf(src_turf))
+		to_chat(user, span_warning("Must be built on a solid surface!"))
+		return
+
+	for(var/obj/structure/locate_structure in src_turf)
+		if(locate_structure.density)
+			to_chat(user, span_warning("Must be built on an empty surface!"))
+			return
+
+	robot_user.cell.use(charge_cost)
+
+	var/choice = tgui_input_list(user, "Which structure would you like to produce?", "Structure Choice", list("Forge", "Anvil", "Water Basin", "Crafting Bench"))
+	if(isnull(choice))
+		return
+	switch(choice)
+		if("Forge")
+			new /obj/structure/reagent_forge(src_turf)
+		if("Anvil")
+			new /obj/structure/reagent_anvil(src_turf)
+		if("Water Basin")
+			new /obj/structure/reagent_water_basin(src_turf)
+		if("Crafting Bench")
+			new /obj/structure/reagent_crafting_bench(src_turf)

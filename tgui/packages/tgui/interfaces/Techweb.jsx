@@ -1,4 +1,5 @@
 import { map, sortBy } from 'common/collections';
+import { useState } from 'react';
 
 import { useBackend, useLocalState } from '../backend';
 import {
@@ -13,6 +14,7 @@ import {
   ProgressBar,
   Section,
   Tabs,
+  VirtualList,
 } from '../components';
 import { NtosWindow, Window } from '../layouts';
 import { Experiment } from './ExperimentConfigure';
@@ -39,9 +41,9 @@ const selectRemappedStaticData = (data) => {
       ...node,
       id: remapId(id),
       costs,
-      prereq_ids: map(remapId)(node.prereq_ids || []),
-      design_ids: map(remapId)(node.design_ids || []),
-      unlock_ids: map(remapId)(node.unlock_ids || []),
+      prereq_ids: map(node.prereq_ids || [], remapId),
+      design_ids: map(node.design_ids || [], remapId),
+      unlock_ids: map(node.unlock_ids || [], remapId),
       required_experiments: node.required_experiments || [],
       discount_experiments: node.discount_experiments || [],
     };
@@ -83,13 +85,6 @@ const useRemappedBackend = () => {
     ...rest,
   };
 };
-
-// Utility Functions
-
-const abbreviations = {
-  'General Research': 'Gen. Res.',
-};
-const abbreviateName = (name) => abbreviations[name] ?? name;
 
 // Actual Components
 
@@ -154,7 +149,7 @@ export const TechwebContent = (props) => {
     locked,
   } = data;
   const [techwebRoute, setTechwebRoute] = useLocalState('techwebRoute', null);
-  const [lastPoints, setLastPoints] = useLocalState('lastPoints', {});
+  const [lastPoints, setLastPoints] = useState({});
 
   return (
     <Flex direction="column" className="Techweb__Viewport" height="100%">
@@ -237,7 +232,7 @@ const TechwebRouter = (props) => {
 const TechwebOverview = (props) => {
   const { act, data } = useRemappedBackend();
   const { nodes, node_cache, design_cache } = data;
-  const [tabIndex, setTabIndex] = useLocalState('overviewTabIndex', 1);
+  const [tabIndex, setTabIndex] = useState(1);
   const [searchText, setSearchText] = useLocalState('searchText');
 
   // Only search when 3 or more characters have been input
@@ -256,10 +251,11 @@ const TechwebOverview = (props) => {
       );
     });
   } else {
-    displayedNodes = sortBy((x) => node_cache[x.id].name)(
+    displayedNodes = sortBy(
       tabIndex < 2
         ? nodes.filter((x) => x.tier === tabIndex)
         : nodes.filter((x) => x.tier >= tabIndex),
+      (x) => node_cache[x.id].name,
     );
   }
 
@@ -308,9 +304,11 @@ const TechwebOverview = (props) => {
         </Flex>
       </Flex.Item>
       <Flex.Item className={'Techweb__OverviewNodes'} height="100%">
-        {displayedNodes.map((n) => {
-          return <TechNode node={n} key={n.id} />;
-        })}
+        <VirtualList key={tabIndex + searchText}>
+          {displayedNodes.map((n) => {
+            return <TechNode node={n} key={n.id} />;
+          })}
+        </VirtualList>
       </Flex.Item>
     </Flex>
   );
@@ -424,7 +422,7 @@ const TechNodeDetail = (props) => {
   const { node } = props;
   const { id } = node;
   const { prereq_ids, unlock_ids } = node_cache[id];
-  const [tabIndex, setTabIndex] = useLocalState('nodeDetailTabIndex', 0);
+  const [tabIndex, setTabIndex] = useState(0);
   const [techwebRoute, setTechwebRoute] = useLocalState('techwebRoute', null);
 
   const prereqNodes = nodes.filter((x) => prereq_ids.includes(x.id));
@@ -488,7 +486,14 @@ const TechNodeDetail = (props) => {
 
 const TechNode = (props) => {
   const { act, data } = useRemappedBackend();
-  const { node_cache, design_cache, experiments, points, nodes } = data;
+  const {
+    node_cache,
+    design_cache,
+    experiments,
+    points = [],
+    nodes,
+    point_types_abbreviations = [],
+  } = data;
   const { node, nodetails, nocontrols } = props;
   const { id, can_unlock, tier } = node;
   const {
@@ -501,7 +506,7 @@ const TechNode = (props) => {
     discount_experiments,
   } = node_cache[id];
   const [techwebRoute, setTechwebRoute] = useLocalState('techwebRoute', null);
-  const [tabIndex, setTabIndex] = useLocalState('nodeDetailTabIndex', 0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   const expcompl = required_experiments.filter(
     (x) => experiments[x]?.completed,
@@ -593,7 +598,7 @@ const TechNode = (props) => {
                       : Math.min(1, (points[k.type] || 0) / reqPts)
                   }
                 >
-                  {abbreviateName(k.type)} ({nodeProg}/{reqPts})
+                  {point_types_abbreviations[k.type]} ({nodeProg}/{reqPts})
                 </ProgressBar>
               </Flex.Item>
             );

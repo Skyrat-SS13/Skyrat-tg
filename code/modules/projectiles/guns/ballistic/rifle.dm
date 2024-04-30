@@ -219,6 +219,10 @@
 	bolt_locked = FALSE
 	update_appearance()
 
+/obj/item/gun/ballistic/rifle/rebarxbow/shoot_live_shot(mob/living/user)
+	..()
+	rack()
+
 /obj/item/gun/ballistic/rifle/rebarxbow/can_shoot()
 	if (bolt_locked)
 		return FALSE
@@ -274,6 +278,7 @@
 	alternative_fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
 	can_modify_ammo = TRUE
 	can_bayonet = TRUE
+	knife_x_offset = 25
 	knife_y_offset = 11
 	can_be_sawn_off = FALSE
 	projectile_damage_multiplier = 0.75

@@ -69,7 +69,16 @@
 	shuttleId = "slaver_syndie"
 	possible_destinations = "syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
+
+// previously NO_DECONSTRUCTION
+/obj/machinery/computer/shuttle/slaver/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
+
+/obj/machinery/computer/shuttle/slaver/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
+
+/obj/machinery/computer/shuttle/slaver/default_pry_open(obj/item/crowbar, close_after_pry = FALSE, open_density = FALSE, closed_density = TRUE)
+	return NONE
 
 /datum/map_template/shuttle/slaver_ship
 	port_id = "slaver ship"
@@ -160,7 +169,7 @@
 /*----- Tarkon Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/tarkon_driver
 	prefix = "_maps/shuttles/skyrat/"
-	suffix = "tarkon_driverdc54"
+	suffix = "tarkon_driver"
 	name = "Tarkon Drill Driver"
 
 /obj/machinery/computer/shuttle/tarkon_driver
@@ -183,9 +192,4 @@
 	name = "Tarkon Driver Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
 
-/datum/map_template/shuttle/ruin/tarkon_driver/defcon3
-	suffix = "tarkon_driverdc3"
-
-/datum/map_template/shuttle/ruin/tarkon_driver/defcon2
-	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/

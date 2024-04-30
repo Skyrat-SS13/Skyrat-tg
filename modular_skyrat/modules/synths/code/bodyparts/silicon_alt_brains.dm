@@ -32,18 +32,17 @@
 		if(ORGAN_PREF_CIRCUIT_BRAIN)
 			return is_cyborg ? /obj/item/mmi/posibrain/circuit : /obj/item/organ/internal/brain/synth/circuit
 
-/mob/living/silicon/robot/Initialize(mapload)
+/mob/living/silicon/robot/Login()
 	. = ..()
-	// Intentionally set like this, because people have different lore for their cyborgs, and there's no real non-invasive way to print posibrains that match.
-	RegisterSignal(src, COMSIG_MOB_MIND_TRANSFERRED_INTO, PROC_REF(update_brain_type))
+	update_brain_type(client?.prefs.read_preference(/datum/preference/choiced/brain_type))
 
 /// Sets the MMI type for a cyborg, if applicable.
-/mob/living/silicon/robot/proc/update_brain_type()
-	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(client?.prefs?.read_preference(/datum/preference/choiced/brain_type), TRUE)
+/mob/living/silicon/robot/proc/update_brain_type(braintype)
+	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(braintype, TRUE)
 	if(!mmi || !new_mmi || new_mmi == mmi.type)
 		return
 
-	new_mmi = new new_mmi()
+	new_mmi = new new_mmi(autoping = FALSE)
 
 	// Probably shitcode, but silicon code is spaghetti as fuck.
 	new_mmi.brain = new /obj/item/organ/internal/brain(new_mmi)

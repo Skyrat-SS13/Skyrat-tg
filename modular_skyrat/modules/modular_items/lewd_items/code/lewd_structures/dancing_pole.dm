@@ -10,7 +10,7 @@
 	layer = BELOW_MOB_LAYER
 	pseudo_z_axis = 9 //stepping onto the pole makes you raise upwards!
 	density = 0 //easy to step up on
-	light_system = STATIC_LIGHT
+	light_system = COMPLEX_LIGHT
 	light_range = 3
 	light_power = 1
 	light_color = COLOR_LIGHT_PINK
@@ -31,7 +31,8 @@
 								"green" = COLOR_GREEN,
 								"white" = COLOR_WHITE,
 								)
-
+	/// Is the pole in use currently?
+	var/pole_in_use
 
 /obj/structure/stripper_pole/examine(mob/user)
 	. = ..()
@@ -65,13 +66,14 @@
 
 
 // Alt-click to turn the lights on or off.
-/obj/structure/stripper_pole/AltClick(mob/user)
+/obj/structure/stripper_pole/click_alt(mob/user)
 	lights_enabled = !lights_enabled
 	balloon_alert(user, "lights [lights_enabled ? "on" : "off"]")
 	playsound(user, lights_enabled ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_icon()
 	update_brightness()
+	return CLICK_ACTION_SUCCESS
 
 
 /obj/structure/stripper_pole/Initialize(mapload)
@@ -98,17 +100,17 @@
 	. = ..()
 	if(.)
 		return
-	if(obj_flags & IN_USE)
+	if(pole_in_use)
 		balloon_alert(user, "already in use!")
 		return
-	obj_flags |= IN_USE
+	pole_in_use = TRUE
 	dancer = user
 	user.setDir(SOUTH)
 	user.Stun(10 SECONDS)
 	user.forceMove(loc)
 	user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
 	dance_animate(user)
-	obj_flags &= ~IN_USE
+	pole_in_use = FALSE
 	user.pixel_y = 0
 	user.pixel_z = pseudo_z_axis //incase we are off it when we jump on!
 	dancer = null

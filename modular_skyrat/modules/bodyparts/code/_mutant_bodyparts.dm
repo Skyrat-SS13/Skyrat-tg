@@ -24,7 +24,6 @@
 /obj/item/bodypart/head/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 	head_flags = HEAD_ALL_FEATURES
 
 /obj/item/bodypart/chest/mutant
@@ -35,7 +34,7 @@
 /obj/item/bodypart/arm/left/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
-	unarmed_attack_verb = "slash"
+	unarmed_attack_verbs = list("slash")
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'sound/weapons/slash.ogg'
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -44,7 +43,7 @@
 /obj/item/bodypart/arm/right/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
-	unarmed_attack_verb = "slash"
+	unarmed_attack_verbs = list("slash")
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'sound/weapons/slash.ogg'
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -61,7 +60,7 @@
 /obj/item/bodypart/leg/left/digitigrade
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
+	bodyshape = parent_type::bodyshape | BODYSHAPE_DIGITIGRADE
 	base_limb_id = "digitigrade"
 
 /obj/item/bodypart/leg/left/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
@@ -71,7 +70,7 @@
 /obj/item/bodypart/leg/right/digitigrade
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
+	bodyshape = parent_type::bodyshape | BODYSHAPE_DIGITIGRADE
 	base_limb_id = "digitigrade"
 
 /obj/item/bodypart/leg/right/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)

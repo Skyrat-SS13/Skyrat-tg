@@ -114,20 +114,18 @@
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 	atom_storage.max_slots = 10
 	atom_storage.max_total_storage = 20
-	atom_storage.set_holdable(list(/obj/item/clothing/accessory/medal))
+	atom_storage.set_holdable(/obj/item/clothing/accessory/medal)
 
 /obj/item/storage/lockbox/medal/examine(mob/user)
 	. = ..()
 	if(!atom_storage.locked)
 		. += span_notice("Alt-click to [open ? "close":"open"] it.")
 
-/obj/item/storage/lockbox/medal/AltClick(mob/user)
-	if(!user.can_perform_action(src))
-		return
+/obj/item/storage/lockbox/medal/click_alt(mob/user)
 	if(!atom_storage.locked)
 		open = (open ? FALSE : TRUE)
 		update_appearance()
-	..()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/storage/lockbox/medal/PopulateContents()
 	new /obj/item/clothing/accessory/medal/gold/captain(src)
@@ -239,6 +237,8 @@
 	desc = "A box used to secure small cargo orders from being looted by those who didn't order it. Yeah, cargo tech, that means you."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "secure"
+	icon_closed = "secure"
+	icon_locked = "secure_locked"
 	icon_broken = "secure+b"
 	inhand_icon_state = "sec-case"
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
@@ -273,8 +273,10 @@
 
 	if(privacy_lock)
 		atom_storage.locked = STORAGE_NOT_LOCKED
+		icon_state = icon_locked
 	else
 		atom_storage.locked = STORAGE_FULLY_LOCKED
+		icon_state = icon_closed
 	privacy_lock = atom_storage.locked
 	user.visible_message(span_notice("[user] [privacy_lock ? "" : "un"]locks [src]'s privacy lock."),
 					span_notice("You [privacy_lock ? "" : "un"]lock [src]'s privacy lock."))

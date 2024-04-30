@@ -78,6 +78,10 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	name = "Evening Gloves"
 	item_path = /obj/item/clothing/gloves/evening
 
+/datum/loadout_item/gloves/kim
+	name = "Aerostatic Gloves"
+	item_path = /obj/item/clothing/gloves/kim
+
 /datum/loadout_item/gloves/maid
 	name = "Maid Arm Covers"
 	item_path = /obj/item/clothing/gloves/maid

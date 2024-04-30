@@ -10,7 +10,9 @@
 	anchored = TRUE
 	max_integrity = 200
 	pass_flags = PASSTABLE
-	custom_materials = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 6)
+	custom_materials = list(
+		/datum/material/stone = SHEET_MATERIAL_AMOUNT  * 6,
+	)
 	drag_slowdown = 2
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
@@ -42,20 +44,21 @@
 	drop_everything_contained()
 	return ..()
 
-/obj/structure/millstone/deconstruct(disassembled)
+/obj/structure/millstone/atom_deconstruct(disassembled)
 	var/obj/item/stack/sheet/mineral/stone = new (drop_location())
 	stone.amount = 6
 	stone.update_appearance(UPDATE_ICON)
 	transfer_fingerprints_to(stone)
 	return ..()
 
-/obj/structure/millstone/AltClick(mob/user)
+/obj/structure/millstone/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "nothing inside")
-		return
+		balloon_alert(user, "nothing inside!")
+		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/millstone/CtrlShiftClick(mob/user)
 	set_anchored(!anchored)

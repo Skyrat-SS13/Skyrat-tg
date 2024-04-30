@@ -9,7 +9,7 @@
 	///Has the discount card been used on the vending machine?
 	var/card_used = FALSE
 	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;Don't forget to use protection!"
-	vend_reply = "Enjoy!;We're glad to satisfy your desires!"
+	vend_reply = "We're glad to satisfy your desires!"
 
 	//STUFF SOLD HERE//
 	product_categories = list(
@@ -43,6 +43,7 @@
 				/obj/item/bdsm_candle = 4,
 				/obj/item/spanking_pad = 4,
 				/obj/item/tickle_feather = 8,
+				/obj/item/borg/upgrade/dominatrixmodule = 5,
 			),
 		),
 		list(

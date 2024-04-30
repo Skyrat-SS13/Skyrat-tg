@@ -11,7 +11,9 @@
 	max_integrity = 100
 	pass_flags = PASSTABLE
 	resistance_flags = FLAMMABLE
-	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT  * 10)
+	custom_materials = list(
+		/datum/material/wood = SHEET_MATERIAL_AMOUNT  * 10,
+	)
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
 
@@ -31,13 +33,14 @@
 	drop_everything_contained()
 	return ..()
 
-/obj/structure/large_mortar/AltClick(mob/user)
+/obj/structure/large_mortar/click_alt(mob/user)
 	if(!length(contents))
 		balloon_alert(user, "nothing inside")
-		return
+		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
+	return CLICK_ACTION_SUCCESS
 
 /// Drops all contents at the mortar
 /obj/structure/large_mortar/proc/drop_everything_contained()

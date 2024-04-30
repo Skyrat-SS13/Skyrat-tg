@@ -68,16 +68,20 @@
 					human_user.skin_tone = new_s_tone
 					human_user.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 
+			#define MIN_MCOLOR_VALUE 50
+
 			if(HAS_TRAIT(human_user, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(human_user, TRAIT_FIXED_MUTANT_COLORS))
 				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change", human_user.dna.features["mcolor"]) as color|null
 				if(new_mutantcolor)
-					var/temp_hsv = RGBtoHSV(new_mutantcolor)
+					var/mutantcolor_hsv = rgb2hsv(new_mutantcolor)
 
-					if(ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright
+					if(mutantcolor_hsv[3] >= MIN_MCOLOR_VALUE) // mutantcolors must be bright
 						human_user.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 
 					else
 						to_chat(human_user, span_notice("Invalid color. Your color is not bright enough."))
+						
+			#undef MIN_MCOLOR_VALUE
 
 			human_user.update_body()
 			human_user.update_body_parts()

@@ -15,12 +15,13 @@
 	var/list/datum/weakref/rangers = list()
 	/// World.time when the current song will stop playing, but also a cooldown between activations
 	var/stop = 0
-	/// List of /datum/tracks we can play
-	var/list/songs = list()
 	/// Current song selected
 	var/datum/track/selection = null
 	/// Volume of the songs played
-	var/volume = 100
+	var/volume = 50
+	//https://www.desmos.com/calculator/ybto1dyqzk
+	var/falloff_dist_offset = 20 // higher = jukebox can be heard from further away
+	var/falloff_dist_divider = 100 // lower = falloff begins sooner
 
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
@@ -36,22 +37,23 @@
 	desc = "Now redesigned with data gathered from the extensive disco and plasma research."
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
+/obj/machinery/jukebox/public
+	req_access = list()
+	falloff_dist_offset = 10
+	falloff_dist_divider = 50
 
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
-	songs = SSjukeboxes.songs
-	if(length(songs))
-		selection = pick(songs)
+	if(length(SSjukeboxes.songs))
+		selection = pick(SSjukeboxes.songs)
 
 /obj/machinery/jukebox/Destroy()
 	dance_over()
 	selection = null
-	songs.Cut()
 	return ..()
 
 /obj/machinery/jukebox/attackby(obj/item/O, mob/user, params)
-	if(!active && !(obj_flags & NO_DECONSTRUCTION))
+	if(!active)
 		if(O.tool_behaviour == TOOL_WRENCH)
 			if(!anchored && !isinspace())
 				to_chat(user,span_notice("You secure [src] to the floor."))
@@ -73,6 +75,10 @@
 		SSvis_overlays.add_vis_overlay(src, icon, "active", layer, plane, dir, alpha)
 		SSvis_overlays.add_vis_overlay(src, icon, "active", 0, EMISSIVE_PLANE, dir, alpha)
 
+/obj/machinery/jukebox/examine(mob/user)
+	. = ..()
+	if (active)
+		. += "Now playing: [selection.song_name]"
 
 /obj/machinery/jukebox/ui_status(mob/user)
 	if(!anchored)

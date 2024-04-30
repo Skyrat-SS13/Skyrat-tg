@@ -1,4 +1,5 @@
 /// The multiplier put against our movement effects if our victim has the determined reagent
+/// The multiplier put against our movement effects if our victim has the determined reagent
 #define ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD 0.7
 /// The multiplier of stagger intensity on hit if our victim has the determined reagent
 #define ROBOTIC_WOUND_DETERMINATION_STAGGER_MOVEMENT_MULT 0.7
@@ -89,6 +90,8 @@
 	var/last_time_victim_moved = 0
 
 	processes = TRUE
+	/// Whenever an oscillation is triggered by movement, we wait 4 seconds before trying to do another.
+	COOLDOWN_DECLARE(movement_stagger_cooldown)
 
 /datum/wound_pregen_data/blunt_metal
 	abstract = TRUE
@@ -249,7 +252,7 @@
 	message += "!"
 	self_message += "! You might be able to avoid an aftershock by stopping and waiting..."
 
-	if (isnull(attack_direction))
+	if (isnull(attack_direction) && !isnull(attacking_item))
 		attack_direction = get_dir(victim, attacking_item)
 
 	if (!isnull(attack_direction) && prob(stagger_score * stagger_movement_chance_ratio))
@@ -359,9 +362,10 @@
 
 	overall_mult *= get_buckled_movement_consequence_mult(victim.buckled)
 
-	if (limb.body_zone == BODY_ZONE_CHEST)
+	if (limb.body_zone == BODY_ZONE_CHEST && COOLDOWN_FINISHED(src, movement_stagger_cooldown))
 		var/stagger_chance = chest_movement_stagger_chance * overall_mult
 		if (prob(stagger_chance))
+			COOLDOWN_START(src, movement_stagger_cooldown, 4 SECONDS)
 			stagger(base_movement_stagger_score, shake_duration = base_stagger_movement_shake_duration, from_movement = TRUE, shift = movement_stagger_shift, knockdown_ratio = stagger_aftershock_knockdown_movement_ratio)
 
 	last_time_victim_moved = world.time

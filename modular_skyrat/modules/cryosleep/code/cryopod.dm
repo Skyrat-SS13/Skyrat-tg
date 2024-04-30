@@ -179,7 +179,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		GLOB.valid_cryopods += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
-/obj/machinery/cryopod/LateInitialize()
+/obj/machinery/cryopod/post_machine_initialize()
+	. = ..()
 	update_icon()
 	find_control_computer()
 
@@ -496,7 +497,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 			return
 		to_chat(user, span_notice("You tuck [occupant.name] into their pod!"))
 		qdel(weapon)
-		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
+		user.add_mood_event("tucked", /datum/mood_event/tucked_in, 1, occupant)
 		tucked = TRUE
 
 /obj/machinery/cryopod/update_icon_state()

@@ -113,17 +113,14 @@
 		deconstruct()
 		return TRUE
 
-/obj/structure/wrestling_corner/deconstruct(disassembled)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		var/obj/item/stack/sheet/iron/iron_sheets = new /obj/item/stack/sheet/iron(drop_location(), 3)
-		transfer_fingerprints_to(iron_sheets)
-	return ..()
+/obj/structure/wrestling_corner/atom_deconstruct(disassembled)
+	. = ..()
+	var/obj/item/stack/sheet/iron/iron_sheets = new /obj/item/stack/sheet/iron(drop_location(), 3)
+	transfer_fingerprints_to(iron_sheets)
 
 ///Implements behaviour that makes it possible to unanchor the railing.
 /obj/structure/wrestling_corner/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(obj_flags & NO_DECONSTRUCTION)
-		return
 	to_chat(user, span_notice("You begin to [anchored ? "unfasten the turnbuckle from":"fasten the turnbuckle to"] the floor..."))
 	if(tool.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
 		set_anchored(!anchored)

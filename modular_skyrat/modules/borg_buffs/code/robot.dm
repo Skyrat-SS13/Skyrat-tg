@@ -5,6 +5,7 @@
 		/datum/reagent/consumable/berryjuice,\
 		/datum/reagent/consumable/blumpkinjuice,\
 		/datum/reagent/consumable/carrotjuice,\
+		/datum/reagent/consumable/cherryjelly,\
 		/datum/reagent/consumable/grapejuice,\
 		/datum/reagent/consumable/lemonjuice,\
 		/datum/reagent/consumable/lemon_lime,\
@@ -83,6 +84,7 @@
 		/datum/reagent/toxin/teapowder,\
 		/datum/reagent/consumable/tonic,\
 		/datum/reagent/consumable/vanilla,\
+		/datum/reagent/consumable/vinegar,\
 		/datum/reagent/water\
 	)
 
@@ -111,113 +113,19 @@
 	icon_state = "misc"
 	default_reagent_types = BASE_SHAKER_MISC_REAGENTS
 
-/obj/item/cooking/cyborg/power
-	name =	"automated cooking tool"
-	desc = "A cyborg fitted module resembling the rolling pins and Knifes"
-	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
-	icon_state = "knife_screw_cyborg"
-	hitsound = 'sound/items/drill_hit.ogg'
-	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.5
-	tool_behaviour = TOOL_KNIFE
-
-/obj/item/cooking/cyborg/power/examine()
-	. = ..()
-	. += " It's fitted with a [tool_behaviour == TOOL_KNIFE ? "knife" : "rolling pin"] head."
-
-/obj/item/cooking/cyborg/power/attack_self(mob/user)
-	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
-	if(tool_behaviour != TOOL_ROLLINGPIN)
-		tool_behaviour = TOOL_ROLLINGPIN
-		to_chat(user, span_notice("You attach the rolling pin bit to [src]."))
-		icon_state = "rolling_bolt_cyborg"
-	else
-		tool_behaviour = TOOL_KNIFE
-		to_chat(user, span_notice("You attach the knife bit to [src]."))
-		icon_state = "knife_screw_cyborg"
-
-/obj/item/inducer/cyborg
-	name = "Cyborg Inducer"
-	desc = "A tool for inductively charging internal power cells using the battery of a cyborg"
-	powertransfer = 250
-	var/power_safety_threshold = 1000
-
-
-
-/obj/item/inducer/cyborg/attackby(obj/item/weapon, mob/user)
-	return
-
-/obj/item/inducer/cyborg/recharge(atom/movable/target_atom, mob/user)
-	if(!iscyborg(user))
-		return
-	var/mob/living/silicon/robot/borg_user = user
-	cell = borg_user.cell
-	if(!isturf(target_atom) && user.loc == target_atom)
-		return FALSE
-	if(recharging)
-		return TRUE
-	else
-		recharging = TRUE
-	var/obj/item/stock_parts/cell/target_cell = target_atom.get_cell()
-	var/obj/target_object
-	var/coefficient = 1
-	if(istype(target_atom, /obj/item/gun/energy))
-		to_chat(user, span_alert("Error unable to interface with device."))
-		return FALSE
-	if(istype(target_atom, /obj/item/clothing/suit/space))
-		to_chat(user, span_alert("Error unable to interface with device."))
-		return FALSE
-	if(cell.charge <= power_safety_threshold ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
-		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
-		return
-	if(istype(target_atom, /obj))
-		target_object = target_atom
-	if(target_cell)
-		var/done_any = FALSE
-		if(target_cell.charge >= target_cell.maxcharge)
-			to_chat(user, span_notice("[target_atom] is fully charged!"))
-			recharging = FALSE
-			return TRUE
-		user.visible_message(span_notice("[user] starts recharging [target_atom] with [src]."), span_notice("You start recharging [target_atom] with [src]."))
-		while(target_cell.charge < target_cell.maxcharge)
-			if(do_after(user, 1 SECONDS, target = user) && cell.charge > (power_safety_threshold + powertransfer))
-				done_any = TRUE
-				induce(target_cell, coefficient)
-				do_sparks(1, FALSE, target_atom)
-				if(target_object)
-					target_object.update_appearance()
-			else
-				break
-		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message(span_notice("[user] recharged [target_atom]!"), span_notice("You recharged [target_atom]!"))
-		recharging = FALSE
-		return TRUE
-	recharging = FALSE
-
-
-/obj/item/inducer/attack(mob/target_mob, mob/living/user)
-	if(user.combat_mode)
-		return ..()
-
-	if(cantbeused(user))
-		return
-
-	if(recharge(target_mob, user))
-		return
-	return ..()
-
-/obj/item/inducer/cyborg/attack_self(mob/user)
-	return
-
 // Wirebrush for janiborg
 /datum/design/borg_wirebrush
 	name = "Wire-brush Module"
 	id = "borg_upgrade_brush"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/wirebrush
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2
+	)
 	construction_time = 40
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR)
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR,
+	)
 
 /obj/item/borg/upgrade/wirebrush
 	name = "janitor cyborg wire-brush"

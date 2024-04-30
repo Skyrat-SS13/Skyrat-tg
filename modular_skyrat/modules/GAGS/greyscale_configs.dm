@@ -796,6 +796,17 @@
 	name = "Varsity Jacket (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
 
+//CROPTOP SWEATER
+
+/datum/greyscale_config/croptop
+	name = "Croptop Sweater"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/croptop/croptop.json'
+
+/datum/greyscale_config/croptop/worn
+	name = "Croptop Sweater (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/croptop/croptop_worn.json'
+
 // TAILORED JACKET
 
 /datum/greyscale_config/tailored_jacket
@@ -1478,6 +1489,21 @@ digi
 	name = "Wargame Hologram Projector"
 	icon_file = 'modular_skyrat/modules/wargame_projectors/icons/projectors_and_holograms.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wargame_holoprojector/projector.json'
+	
+/datum/greyscale_config/hypokit
+	name = "Hypospray Kit"
+	icon_file = 'modular_skyrat/modules/hyposprays/icons/hypokits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/hypokit.json'
+
+/datum/greyscale_config/hypospray_mkii
+	name = "Hypospray Mk. II"
+	icon_file = 'modular_skyrat/modules/hyposprays/icons/hyposprays.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/hypospray.json'
+
+/datum/greyscale_config/hypovial
+	name = "Hypovial"
+	icon_file = 'modular_skyrat/modules/hyposprays/icons/vials.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/hypovial.json'
 
 // Evil primitive catgirl clothing
 

@@ -7,6 +7,7 @@
 #define MAX_CORES_HALLUCINATION 8
 #define MAX_CORES_BIOSCRAMBLER 8
 #define MAX_CORES_DIMENSIONAL 8
+#define MAX_CORES_ECTOPLASMIC 8
 
 ///Defines for the different types of explosion a flux anomaly can have
 #define FLUX_NO_EXPLOSION 0
@@ -38,10 +39,13 @@ GLOBAL_LIST_INIT(bioscrambler_organs_blacklist, typecacheof(list (
 	/obj/item/organ/internal/brain,
 	/obj/item/organ/internal/body_egg,
 	/obj/item/organ/internal/cyberimp,
+	/obj/item/organ/internal/ears/dullahan,
+	/obj/item/organ/internal/eyes/dullahan,
 	/obj/item/organ/internal/heart/cursed,
 	/obj/item/organ/internal/heart/demon,
 	/obj/item/organ/internal/lungs,
 	/obj/item/organ/internal/monster_core,
+	/obj/item/organ/internal/tongue/dullahan,
 	/obj/item/organ/internal/vocal_cords/colossus,
 	/obj/item/organ/internal/zombie_infection,
 	/obj/item/organ/internal/empowered_borer_egg, // SKYRAT EDIT ADDITION

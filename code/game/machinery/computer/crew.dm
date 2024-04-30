@@ -1,7 +1,7 @@
 /// How often the sensor data is updated
 #define SENSORS_UPDATE_PERIOD (10 SECONDS) //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
-#define UNKNOWN_JOB_ID 81
+#define UNKNOWN_JOB_ID 998
 
 /obj/machinery/computer/crew
 	name = "crew monitoring console"
@@ -97,7 +97,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	var/list/jobs = list(
 		// Note that jobs divisible by 10 are considered heads of staff, and bolded
 		// 00: Captain
-		JOB_CAPTAIN = 00,
+		JOB_CAPTAIN = 0,
+		JOB_HUMAN_AI = 1,
 		// 10-19: Security
 		JOB_HEAD_OF_SECURITY = 10,
 		JOB_WARDEN = 11,
@@ -136,20 +137,21 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_CARGO_TECHNICIAN = 52,
 		JOB_BITRUNNER = 53,
 		JOB_CUSTOMS_AGENT = 54, // SKYRAT EDIT ADDITION
-		// 60+: Civilian/other
+		// 60+: Service
 		JOB_HEAD_OF_PERSONNEL = 60,
 		JOB_BARTENDER = 61,
-		JOB_COOK = 62,
-		JOB_BOTANIST = 63,
-		JOB_CURATOR = 64,
-		JOB_CHAPLAIN = 65,
-		JOB_CLOWN = 66,
-		JOB_MIME = 67,
-		JOB_JANITOR = 68,
-		JOB_LAWYER = 69,
-		JOB_BARBER = 71, // SKYRAT EDIT ADDITION
-		JOB_BOUNCER = 72, // SKYRAT EDIT ADDITION
-		// 200-239: Centcom
+		JOB_CHEF = 62,
+		JOB_COOK = 63,
+		JOB_BOTANIST = 64,
+		JOB_CURATOR = 65,
+		JOB_CHAPLAIN = 66,
+		JOB_CLOWN = 67,
+		JOB_MIME = 68,
+		JOB_JANITOR = 69,
+		JOB_LAWYER = 71,
+		JOB_BARBER = 72, // SKYRAT EDIT ADDITION
+		JOB_BOUNCER = 73, // SKYRAT EDIT ADDITION
+		// 200-229: Centcom
 		JOB_CENTCOM_ADMIRAL = 200,
 		JOB_CENTCOM = 201,
 		JOB_CENTCOM_OFFICIAL = 210,
@@ -194,7 +196,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		z = T.z
 	. = list(
 		"sensors" = update_data(z),
-		"link_allowed" = isAI(user)
+		"link_allowed" = HAS_AI_ACCESS(user)
 	)
 
 /datum/crewmonitor/proc/update_data(z)
@@ -245,7 +247,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		var/list/entry = list(
 			"ref" = REF(tracked_living_mob),
 			"name" = "Unknown",
-			"ijob" = UNKNOWN_JOB_ID
+			"ijob" = UNKNOWN_JOB_ID,
 		)
 
 		// ID and id-related data
@@ -301,7 +303,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			var/mob/living/silicon/ai/AI = usr
 			if(!istype(AI))
 				return
-			AI.ai_tracking_tool.set_tracked_mob(AI, params["name"])
+			AI.ai_tracking_tool.track_name(AI, params["name"])
 
 #undef SENSORS_UPDATE_PERIOD
 #undef UNKNOWN_JOB_ID

@@ -52,7 +52,7 @@
 	GLOB.species_clothing_fallback_cache[name]["[file_to_use]-[state_to_use]-[meta]"] = cached_value
 
 /**
- * Allow for custom clothing icon generation. Only called if the species is BODYTYPE_CUSTOM
+ * Allow for custom clothing icon generation. Only called if the species is BODYSHAPE_CUSTOM
  * If null is returned, use default human icon.
  * Arguments:
  * * item_slot: The slot we're updating. One of LOADOUT_ITEM_HEAD, etc.

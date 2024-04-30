@@ -26,6 +26,13 @@
 
 /obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	attempt_upgrade(user)
+
+/obj/structure/reagent_water_basin/attack_robot(mob/living/user)
+	. = ..()
+	attempt_upgrade(user)
+
+/obj/structure/reagent_water_basin/proc/attempt_upgrade(mob/living/user)
 	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || fishable)
 		return
@@ -85,6 +92,10 @@
 		var/obj/spawned_obj = new search_incomplete.spawn_item(get_turf(src))
 		if(search_incomplete.custom_materials)
 			spawned_obj.set_custom_materials(search_incomplete.custom_materials, 1) //lets set its material
+
+		if(istype(spawned_obj, /obj/item/forging/complete))
+			var/obj/item/forging/complete/complete_spawned = spawned_obj
+			complete_spawned.current_perfects = search_incomplete.current_perfects
 
 		qdel(search_incomplete)
 		tool.icon_state = "tong_empty"

@@ -12,7 +12,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	obj_flags = UNIQUE_RENAME
 	/// What soulcatcher datum is associated with this item?
-	var/datum/component/soulcatcher/linked_soulcatcher
+	var/datum/component/carrier/soulcatcher/linked_soulcatcher
 	/// The cooldown for the RSD on scanning a body if the ghost refuses. This is here to prevent spamming.
 	COOLDOWN_DECLARE(rsd_scan_cooldown)
 
@@ -26,7 +26,7 @@
 
 /obj/item/handheld_soulcatcher/New(loc, ...)
 	. = ..()
-	linked_soulcatcher = AddComponent(/datum/component/soulcatcher)
+	linked_soulcatcher = AddComponent(/datum/component/carrier/soulcatcher)
 	linked_soulcatcher.name = name
 
 /obj/item/handheld_soulcatcher/Destroy(force)
@@ -59,7 +59,7 @@
 			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 			return FALSE
 
-		var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, timeout = 30 SECONDS)
+		var/datum/carrier_room/soulcatcher/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.carrier_rooms, timeout = 30 SECONDS)
 		if(!target_room)
 			return FALSE
 
@@ -82,7 +82,7 @@
 		linked_soulcatcher.scan_body(target_mob, user)
 		return TRUE
 
-	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, timeout = 30 SECONDS)
+	var/datum/carrier_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.carrier_rooms, timeout = 30 SECONDS)
 	if(!target_room)
 		return FALSE
 
@@ -97,7 +97,7 @@
 	if(!target_mob.mind)
 		return FALSE
 
-	target_room.add_soul(target_mob.mind, TRUE)
+	target_room.add_soul_from_mind(target_mob.mind, FALSE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
@@ -129,9 +129,9 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/list/soul_list = list()
-	for(var/datum/soulcatcher_room/room as anything in linked_soulcatcher.soulcatcher_rooms)
-		for(var/mob/living/soulcatcher_soul/soul as anything in room.current_souls)
-			if(!soul.round_participant || soul.body_scan_needed)
+	for(var/datum/carrier_room/room as anything in linked_soulcatcher.carrier_rooms)
+		for(var/mob/living/soulcatcher_soul/soul as anything in room.current_mobs)
+			if(!istype(soul) || !soul.round_participant || soul.body_scan_needed)
 				continue
 
 			soul_list += soul

@@ -57,7 +57,7 @@
 		game_plane_master_controller.add_filter("weed_blur", 10, angular_blur_filter(0, 0, 0.45))
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
-	M.add_mood_event("stoned", /datum/mood_event/stoned, name)
+	M.add_mood_event("stoned", /datum/mood_event/stoned, 1, name)
 	M.throw_alert("stoned", /atom/movable/screen/alert/stoned)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	M.set_dizzy_if_lower(5 * REM * seconds_per_tick * 2 SECONDS)
@@ -67,6 +67,7 @@
 	..()
 
 /datum/reagent/drug/thc/on_mob_end_metabolize(mob/living/carbon/M)
+	. = ..()
 	if(M.hud_used!=null)
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.remove_filter("weed_blur")

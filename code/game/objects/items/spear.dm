@@ -160,13 +160,12 @@
 	. = ..()
 	. += span_notice("Alt-click to set your war cry.")
 
-/obj/item/spear/explosive/AltClick(mob/user)
-	if(user.can_perform_action(src))
-		..()
-		if(istype(user) && loc == user)
-			var/input = tgui_input_text(user, "What do you want your war cry to be? You will shout it when you hit someone in melee.", "War Cry", max_length = 50)
-			if(input)
-				src.war_cry = input
+/obj/item/spear/explosive/click_alt(mob/user)
+	var/input = tgui_input_text(user, "What do you want your war cry to be? You will shout it when you hit someone in melee.", "War Cry", max_length = 50)
+	if(input)
+		war_cry = input
+	return CLICK_ACTION_SUCCESS
+
 
 /obj/item/spear/explosive/afterattack(atom/movable/AM, mob/user, proximity)
 	. = ..()
@@ -217,6 +216,31 @@
 			M.Copy_Parent(user, 100, user.health/2.5, 12, 30)
 			M.GiveTarget(L)
 
+//MILITARY
+/obj/item/spear/military
+	icon_state = "military_spear0"
+	base_icon_state = "military_spear0"
+	icon_prefix = "military_spear"
+	name = "military Javelin"
+	desc = "A stick with a seemingly blunt spearhead on its end. Looks like it might break bones easily."
+	attack_verb_continuous = list("attacks", "pokes", "jabs")
+	attack_verb_simple = list("attack", "poke", "jab")
+	throwforce = 30
+	demolition_mod = 1
+	wound_bonus = 5
+	bare_wound_bonus = 25
+	throw_range = 9
+	throw_speed = 5
+	sharpness = NONE // we break bones instead of cutting flesh
+
+/obj/item/spear/military/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikemilitary)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
+
 /*
  * Bone Spear
  */
@@ -230,12 +254,8 @@
 	throwforce = 22
 	armour_penetration = 15 //Enhanced armor piercing
 	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
-	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
-	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
-
-	//SKYRAT EDIT ADDITION BEGIN - increases bone spear range to 2
-	reach = 2
-	//SKYRAT EDIT ADDITION END
+	force_unwielded = 12
+	force_wielded = 20
 
 /obj/item/spear/bonespear/add_headpike_component()
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebone)
