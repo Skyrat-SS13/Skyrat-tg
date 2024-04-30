@@ -214,10 +214,9 @@ DEFINE_BITFIELD(smoothing_junction, list(
 //SKYRAT EDIT ADDITION
 #define SMOOTH_GROUP_SHUTTERS S_OBJ(75)
 
-#define SMOOTH_GROUP_WATER S_OBJ(75) ///obj/effect/abstract/liquid_turf
+#define SMOOTH_GROUP_WATER S_OBJ(76) ///obj/effect/abstract/liquid_turf
 
-#define SMOOTH_GROUP_WIREWEED S_OBJ(76)
-#define SMOOTH_GROUP_WATER S_OBJ(77) ///obj/effect/abstract/liquid_turf
+#define SMOOTH_GROUP_WIREWEED S_OBJ(77)
 //SKYRAT EDIT END
 
 /// Performs the work to set smoothing_groups and canSmoothWith.
