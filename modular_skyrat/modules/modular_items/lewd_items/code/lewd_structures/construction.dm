@@ -3,7 +3,7 @@
 	name = "construction kit"
 	desc = "Used for constructing various things"
 	w_class = WEIGHT_CLASS_BULKY
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
+	obj_flags = CAN_BE_HIT
 	throwforce = 0
 	///What is the path for the resulting structure generating by using this item?
 	var/obj/structure/resulting_structure = /obj/structure/chair

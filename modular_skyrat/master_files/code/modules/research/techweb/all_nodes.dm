@@ -239,7 +239,6 @@
 /datum/techweb_node/cyborg_upg_engiminer/New()
 	design_ids += list(
 		"advanced_materials",
-		"inducer_module",
 	)
 	return ..()
 
@@ -252,6 +251,13 @@
 		"borg_upgrade_pinpointer",
 	)
 	return ..()
+/datum/techweb_node/cyborg_upg_serv/New()
+	design_ids += list(
+		"borg_upgrade_artistic"
+	)
+	return ..()
+	
+
 
 /datum/techweb_node/basic_mining/New()
 	design_ids += list(

@@ -138,6 +138,21 @@
 	mob_type = /mob/living/carbon/human/species/lizard/ashwalker;
 	outfit = /datum/outfit/consumed_ashwalker
 
+/obj/effect/mob_spawn/ghost_role/human/oldsec
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
+	random_appearance = FALSE
+
+/obj/effect/mob_spawn/ghost_role/human/oldsci
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
+	random_appearance = FALSE
+
+/obj/effect/mob_spawn/ghost_role/human/oldeng
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
+	random_appearance = FALSE
+
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
 	ears = /obj/item/radio/headset/cybersun

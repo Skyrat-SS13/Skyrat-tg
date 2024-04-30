@@ -74,6 +74,7 @@
 	. = ..()
 	if(!isnull(puzzle_id) && uses_queuelinks)
 		SSqueuelinks.add_to_queue(src, puzzle_id)
+	AddElement(/datum/element/empprotection, EMP_PROTECT_ALL)
 
 /obj/machinery/door/puzzle/MatchedLinks(id, list/partners)
 	for(var/partner in partners)
@@ -87,9 +88,6 @@
 
 /obj/machinery/door/puzzle/Bumped(atom/movable/AM)
 	return !density && ..()
-
-/obj/machinery/door/puzzle/emp_act(severity)
-	return
 
 /obj/machinery/door/puzzle/ex_act(severity, target)
 	return FALSE
@@ -325,7 +323,7 @@
 		SSqueuelinks.add_to_queue(src, id, late_initialize_pop ? 0 : queue_size)
 		return late_initialize_pop ? INITIALIZE_HINT_LATELOAD : .
 
-/obj/machinery/puzzle/LateInitialize()
+/obj/machinery/puzzle/post_machine_initialize()
 	. = ..()
 	if(late_initialize_pop && id && SSqueuelinks.queues[id])
 		SSqueuelinks.pop_link(id)

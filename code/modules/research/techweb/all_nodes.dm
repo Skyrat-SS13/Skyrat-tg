@@ -106,6 +106,7 @@
 		"slime_scanner",
 		"solar_panel",
 		"solar_tracker",
+		"souppot",
 		"space_heater",
 		"spoon",
 		"status_display_frame",
@@ -1021,6 +1022,7 @@
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
 		"borg_upgrade_inducer",
+		"borg_upgrade_engineeringomnitool",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1036,6 +1038,7 @@
 		"borg_upgrade_piercinghypospray",
 		"borg_upgrade_pinpointer",
 		"borg_upgrade_surgicalprocessor",
+		"borg_upgrade_surgicalomnitool",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1067,6 +1070,18 @@
 		"remove_module",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/datum/techweb_node/ai_basic/New()
+	. = ..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_HUMAN_AI))
+		design_ids -= list(
+			"aicore",
+			"borg_ai_control",
+			"intellicard",
+			"mecha_tracking_ai_control",
+			"aifixer",
+			"aiupload",
+		)
 
 /datum/techweb_node/ai_adv
 	id = "ai_adv"
@@ -1193,8 +1208,10 @@
 		"idcard",
 		"libraryconsole",
 		"mining",
+		"photobooth",
 		"rdcamera",
 		"seccamera",
+		"security_photobooth",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
