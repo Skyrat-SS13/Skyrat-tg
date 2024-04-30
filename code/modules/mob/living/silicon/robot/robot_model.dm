@@ -814,20 +814,29 @@
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
 		/obj/item/storage/bag/tray, // SKYRAT EDIT: Moves the second tray up to be near the default one
-		/obj/item/cooking/cyborg/power, // SKYRAT EDIT
+		// SKYRAT EDIT START - COMMENTS OUT STUFF, MOVING IT TO SPECIALIZED MODULES
+		/*
+		// Moved to artistic module
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
+		*/
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
 		/obj/item/razor,
-		/obj/item/instrument/guitar,
-		/obj/item/instrument/piano_synth,
+		/*
+		// Moved to artistic module
+		//obj/item/instrument/guitar,
+		//obj/item/instrument/piano_synth,
+		*/
 		/obj/item/lighter,
-		/obj/item/borg/lollipop,
-		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/chisel,
+		//obj/item/borg/lollipop, // Moved to snack module
+		/* Moved to artistic module
+		//obj/item/stack/pipe_cleaner_coil/cyborg,
+		//obj/item/chisel,
+		*/
 		/obj/item/reagent_containers/cup/rag,
-		/obj/item/storage/bag/money,
+		//obj/item/storage/bag/money, //This is never used and there's already too much bloat
+		// SKYRAT EDIT END
 	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(
