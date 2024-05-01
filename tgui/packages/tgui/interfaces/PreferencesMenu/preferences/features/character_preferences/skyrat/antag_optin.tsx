@@ -1,5 +1,6 @@
 // THIS IS A SKYRAT UI FILE
-import { FeatureChoiced, FeatureDropdownInput } from '../../base';
+import { FeatureChoiced } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const rr_opt_in_status_pref: FeatureChoiced = {
   name: 'Be Round Removed',
