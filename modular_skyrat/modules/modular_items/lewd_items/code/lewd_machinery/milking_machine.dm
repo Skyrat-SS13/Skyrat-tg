@@ -586,7 +586,6 @@
 		data["current_vagina"] = current_vagina = null
 
 	data["machine_color"] = machine_color
-	SStgui.update_uis(src)
 	return data
 
 // User action handler in the interface
