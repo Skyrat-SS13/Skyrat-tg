@@ -80,6 +80,14 @@ SUBSYSTEM_DEF(jukeboxes)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/jukeboxes/fire()
+	if (!length(songs))
+		reload_songs()
+		if (!length(songs))
+			wait = 200
+			return
+		else
+			wait = initial(wait)
+
 	if(!length(activejukeboxes))
 		return
 	for(var/list/jukeinfo in activejukeboxes)
