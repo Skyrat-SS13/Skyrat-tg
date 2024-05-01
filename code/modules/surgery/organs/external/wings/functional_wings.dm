@@ -140,8 +140,9 @@
 /datum/bodypart_overlay/mutant/wings/functional/get_global_feature_list()
 	/* SKYRAT EDIT - CUSTOMIZATION - ORIGINAL:
 	if(wings_open)
-		return GLOB.wings_open_list
+		return SSaccessories.wings_open_list
 	else
+<<<<<<< HEAD
 		return GLOB.wings_list
 	*/ // ORIGINAL END - SKYRAT EDIT START - CUSTOMIZATION - TODO: Add support for wings_open
 	if(wings_open)
@@ -149,6 +150,9 @@
 
 	return GLOB.sprite_accessories["wings"]
 	// SKYRAT EDIT END
+=======
+		return SSaccessories.wings_list
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 ///Update our wingsprite to the open wings variant
 /datum/bodypart_overlay/mutant/wings/functional/proc/open_wings()

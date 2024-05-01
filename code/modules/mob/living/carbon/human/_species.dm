@@ -635,7 +635,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/bodypart/arm/left/left_arm = species_human.get_bodypart(BODY_ZONE_L_ARM)
 			var/obj/item/bodypart/leg/right/right_leg = species_human.get_bodypart(BODY_ZONE_R_LEG)
 			var/obj/item/bodypart/leg/left/left_leg = species_human.get_bodypart(BODY_ZONE_L_LEG)
+<<<<<<< HEAD
 			var/datum/sprite_accessory/markings = GLOB.moth_markings_list[species_human.dna.features["moth_markings"]]
+=======
+			var/datum/sprite_accessory/markings = SSaccessories.moth_markings_list[species_human.dna.features["moth_markings"]]
+			var/mutable_appearance/marking = mutable_appearance(layer = -BODY_LAYER, appearance_flags = KEEP_TOGETHER)
+
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 			if(noggin && (IS_ORGANIC_LIMB(noggin)))
 				var/mutable_appearance/markings_head_overlay = mutable_appearance(markings.icon, "[markings.icon_state]_head", -BODY_LAYER)
 				markings_head_overlay.pixel_y += height_offset
@@ -667,7 +673,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Underwear, Undershirts & Socks
 	if(!HAS_TRAIT(species_human, TRAIT_NO_UNDERWEAR))
 		if(species_human.underwear)
-			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[species_human.underwear]
+			var/datum/sprite_accessory/underwear/underwear = SSaccessories.underwear_list[species_human.underwear]
 			var/mutable_appearance/underwear_overlay
 			if(underwear)
 				if(species_human.dna.species.sexes && species_human.physique == FEMALE && (underwear.gender == MALE))
@@ -680,7 +686,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				standing += underwear_overlay
 
 		if(species_human.undershirt)
-			var/datum/sprite_accessory/undershirt/undershirt = GLOB.undershirt_list[species_human.undershirt]
+			var/datum/sprite_accessory/undershirt/undershirt = SSaccessories.undershirt_list[species_human.undershirt]
 			if(undershirt)
 				var/mutable_appearance/working_shirt
 				if(species_human.dna.species.sexes && species_human.physique == FEMALE)
@@ -691,7 +697,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				standing += working_shirt
 
 		if(species_human.socks && species_human.num_legs >= 2 && !(species_human.bodyshape & BODYSHAPE_DIGITIGRADE))
-			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[species_human.socks]
+			var/datum/sprite_accessory/socks/socks = SSaccessories.socks_list[species_human.socks]
 			if(socks)
 				standing += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
 
@@ -745,8 +751,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/datum/sprite_accessory/accessory
 			switch(bodypart)
 				if("ears")
-					accessory = GLOB.ears_list[source.dna.features["ears"]]
+					accessory = SSaccessories.ears_list[source.dna.features["ears"]]
 				if("body_markings")
+<<<<<<< HEAD
 					accessory = GLOB.body_markings_list[source.dna.features["body_markings"]]
 				if("wings")
 					accessory = GLOB.wings_list[source.dna.features["wings"]]
@@ -760,6 +767,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.moth_antennae_list[source.dna.features["moth_antennae"]]
 				if("caps")
 					accessory = GLOB.caps_list[source.dna.features["caps"]]
+=======
+					accessory = SSaccessories.body_markings_list[source.dna.features["body_markings"]]
+				if("legs")
+					accessory = SSaccessories.legs_list[source.dna.features["legs"]]
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 			if(!accessory || accessory.icon_state == "none")
 				continue

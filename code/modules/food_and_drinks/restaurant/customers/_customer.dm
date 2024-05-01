@@ -306,7 +306,11 @@
 /datum/customer_data/moth/proc/get_wings(mob/living/basic/robot_customer/customer)
 	var/customer_ref = WEAKREF(customer)
 	if (!LAZYACCESS(wings_chosen, customer_ref))
+<<<<<<< HEAD
 		LAZYSET(wings_chosen, customer_ref, pick(GLOB.sprite_accessories["wings"]))
+=======
+		LAZYSET(wings_chosen, customer_ref, SSaccessories.moth_wings_list[pick(SSaccessories.moth_wings_list)])
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 	return wings_chosen[customer_ref]
 
 /datum/customer_data/moth/get_underlays(mob/living/basic/robot_customer/customer)

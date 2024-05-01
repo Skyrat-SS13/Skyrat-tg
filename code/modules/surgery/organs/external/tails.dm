@@ -156,6 +156,12 @@
 
 	wag_flags = WAG_ABLE
 
+<<<<<<< HEAD
+=======
+/datum/bodypart_overlay/mutant/tail/get_global_feature_list()
+	return SSaccessories.tails_list_human
+
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return BUTT_SPRITE_CAT
 
@@ -176,7 +182,7 @@
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
 
 /datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
-	return GLOB.tails_list_monkey
+	return SSaccessories.tails_list_monkey
 
 /obj/item/organ/external/tail/lizard
 	name = "lizard tail"
@@ -193,7 +199,11 @@
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_lizard"
 
 /datum/bodypart_overlay/mutant/tail/lizard/get_global_feature_list()
+<<<<<<< HEAD
 	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_lizard
+=======
+	return SSaccessories.tails_list_lizard
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 /obj/item/organ/external/tail/lizard/fake
 	name = "fabricated lizard tail"
@@ -209,7 +219,11 @@
 	var/tail_spine_key = NONE
 
 /datum/bodypart_overlay/mutant/tail_spines/get_global_feature_list()
+<<<<<<< HEAD
 	return GLOB.sprite_accessories["tailspines"] // SKYRAT EDIT CHANGE - ORIGINAL: return GLOB.tail_spines_list
+=======
+	return SSaccessories.tail_spines_list
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 /datum/bodypart_overlay/mutant/tail_spines/get_base_icon_state()
 	return (!isnull(tail_spine_key) ? "[tail_spine_key]_" : "") + (wagging ? "wagging_" : "") + sprite_datum.icon_state // Select the wagging state if appropriate

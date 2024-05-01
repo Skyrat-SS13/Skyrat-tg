@@ -196,8 +196,13 @@
 	podman.faction |= factions
 	if(!features["mcolor"])
 		features["mcolor"] = "#59CE00"
+<<<<<<< HEAD
 	/*if(!features["pod_hair"])
 		features["pod_hair"] = pick(GLOB.pod_hair_list)*/ //SKYRAT EDIT - Tricolor Pod Hair
+=======
+	if(!features["pod_hair"])
+		features["pod_hair"] = pick(SSaccessories.pod_hair_list)
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 	for(var/V in quirks)
 		new V(podman)

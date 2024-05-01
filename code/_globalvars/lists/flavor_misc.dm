@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Preferences stuff
 	//Hairstyles
 GLOBAL_LIST_EMPTY(hairstyles_list) //stores /datum/sprite_accessory/hair indexed by name
@@ -46,6 +47,8 @@ GLOBAL_LIST_EMPTY(moth_wings_list) // SKYRAT EDIT ADDITION - Customization
 GLOBAL_LIST_EMPTY(tails_list_monkey) // SKYRAT EDIT ADDITION - Customization
 GLOBAL_LIST_EMPTY(pod_hair_list)
 
+=======
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Blue" = "#3399ff",
 	"Bright Yellow" = "#ffff99",

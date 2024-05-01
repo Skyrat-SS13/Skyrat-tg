@@ -61,7 +61,11 @@
 
 /datum/species/moth/randomize_features()
 	var/list/features = ..()
+<<<<<<< HEAD
 	features["moth_markings"] = pick(GLOB.moth_wings_list) // SKYRAT EDIT CHANGE - ORIGINAL: features["moth_markings"] = pick(GLOB.moth_markings_list)
+=======
+	features["moth_markings"] = pick(SSaccessories.moth_markings_list)
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 	return features
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human)

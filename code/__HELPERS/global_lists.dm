@@ -2,6 +2,7 @@
 /////Initial Building/////
 //////////////////////////
 
+<<<<<<< HEAD
 /proc/init_sprite_accessories()
 	//hair
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/hair, GLOB.hairstyles_list, GLOB.hairstyles_male_list, GLOB.hairstyles_female_list)
@@ -55,6 +56,8 @@
 	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	//SKYRAT EDIT END
 
+=======
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 /// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
 /proc/init_species_list()
 	for(var/species_path in subtypesof(/datum/species))
@@ -70,21 +73,10 @@
 	sort_list(surgeries, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	return surgeries
 
-/// Hair Gradients - Initialise all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
-/proc/init_hair_gradients()
-	for(var/path in subtypesof(/datum/sprite_accessory/gradient))
-		var/datum/sprite_accessory/gradient/gradient = new path()
-		if(gradient.gradient_category  & GRADIENT_APPLIES_TO_HAIR)
-			GLOB.hair_gradients_list[gradient.name] = gradient
-		if(gradient.gradient_category & GRADIENT_APPLIES_TO_FACIAL_HAIR)
-			GLOB.facial_hair_gradients_list[gradient.name] = gradient
-
 /// Legacy procs that really should be replaced with proper _INIT macros
 /proc/make_datum_reference_lists()
 	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
-	init_sprite_accessories()
 	init_species_list()
-	init_hair_gradients()
 	init_keybindings()
 
 	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS

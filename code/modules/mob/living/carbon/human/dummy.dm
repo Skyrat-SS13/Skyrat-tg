@@ -91,6 +91,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	/* SKYRAT EDIT START - Customization - ORIGINAL:
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["ethcolor"] = COLOR_WHITE
+<<<<<<< HEAD
 	target.dna.features["body_markings"] = get_consistent_feature_entry(GLOB.body_markings_list)
 	target.dna.features["ears"] = get_consistent_feature_entry(GLOB.ears_list)
 	target.dna.features["frills"] = get_consistent_feature_entry(GLOB.frills_list)
@@ -107,6 +108,21 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["ethcolor"] = COLOR_WHITE
 	// SKYRAT EDIT END
+=======
+	target.dna.features["body_markings"] = get_consistent_feature_entry(SSaccessories.body_markings_list)
+	target.dna.features["ears"] = get_consistent_feature_entry(SSaccessories.ears_list)
+	target.dna.features["frills"] = get_consistent_feature_entry(SSaccessories.frills_list)
+	target.dna.features["horns"] = get_consistent_feature_entry(SSaccessories.horns_list)
+	target.dna.features["moth_antennae"] = get_consistent_feature_entry(SSaccessories.moth_antennae_list)
+	target.dna.features["moth_markings"] = get_consistent_feature_entry(SSaccessories.moth_markings_list)
+	target.dna.features["moth_wings"] = get_consistent_feature_entry(SSaccessories.moth_wings_list)
+	target.dna.features["snout"] = get_consistent_feature_entry(SSaccessories.snouts_list)
+	target.dna.features["spines"] = get_consistent_feature_entry(SSaccessories.spines_list)
+	target.dna.features["tail_cat"] = get_consistent_feature_entry(SSaccessories.tails_list_human) // it's a lie
+	target.dna.features["tail_lizard"] = get_consistent_feature_entry(SSaccessories.tails_list_lizard)
+	target.dna.features["tail_monkey"] = get_consistent_feature_entry(SSaccessories.tails_list_monkey)
+	target.dna.features["pod_hair"] = get_consistent_feature_entry(SSaccessories.pod_hair_list)
+>>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 	target.dna.initialize_dna(create_mutation_blocks = FALSE, randomize_features = FALSE)
 	// UF and UI are nondeterministic, even though the features are the same some blocks will randomize slightly
 	// In practice this doesn't matter, but this is for the sake of 100%(ish) consistency
