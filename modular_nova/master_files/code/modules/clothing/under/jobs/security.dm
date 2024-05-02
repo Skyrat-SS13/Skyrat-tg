@@ -32,6 +32,15 @@
 	armor_type = /datum/armor/clothing_under/redsec_syndicate
 	has_sensor = NO_SENSORS
 
+/obj/item/clothing/under/rank/security/peacekeeper/skirt
+	name = "security battle dress"
+	desc = "An asymmetrical, unisex uniform with the legs replaced by a utility skirt."
+	worn_icon_state = "security_skirt"
+	icon_state = "security_skirt"
+	uses_advanced_reskins = FALSE
+	unique_reskin = null
+	alt_covers_chest = FALSE
+
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "security trousers"
 	desc = "Some Peacekeeper-blue combat trousers. Probably should pair it with a vest for safety."
@@ -86,7 +95,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
-/obj/item/clothing/under/rank/security/peacekeeper/jumpskirt
+/obj/item/clothing/under/rank/security/officer/skirt
 	name = "security jumpskirt"
 	desc = "Turtleneck sweater commonly worn by Peacekeepers, attached with a skirt."
 	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
