@@ -82,8 +82,9 @@
 	name = "security jumpsuit"
 	desc = "Turtleneck sweater commonly worn by Peacekeepers, attached with pants."
 	icon_state = "jumpsuit_blue"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/jumpskirt
 	name = "security jumpskirt"
