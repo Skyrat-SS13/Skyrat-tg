@@ -80,14 +80,14 @@
 
 /obj/item/clothing/under/rank/security/peacekeeper/jumpsuit
 	name = "security jumpsuit"
-	desc = "test."
+	desc = "Turtleneck sweater commonly worn by Peacekeepers, attached with pants."
 	icon_state = "jumpsuit_blue"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = TRUE
 
 /obj/item/clothing/under/rank/security/peacekeeper/jumpskirt
 	name = "security jumpskirt"
-	desc = "test."
+	desc = "Turtleneck sweater commonly worn by Peacekeepers, attached with a skirt."
 	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "jumpskirt_blue"
@@ -98,24 +98,16 @@
 		"Blue Variant" = list(
 			RESKIN_ICON_STATE = "jumpskirt_blue",
 			RESKIN_WORN_ICON_STATE = "jumpskirt_blue"
-		),
-		"Blue Variant, Down" = list(
-			RESKIN_ICON_STATE = "jumpskirt_blue_d",
-			RESKIN_WORN_ICON_STATE = "jumpskirt_blue_d"
         ),
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "jumpskirt_black",
 			RESKIN_WORN_ICON_STATE = "jumpskirt_black"
 		),
-		"Black Variant, Down" = list(
-			RESKIN_ICON_STATE = "jumpskirt_black_d",
-			RESKIN_WORN_ICON_STATE = "jumpskirt_black_d"
-		),
 	)
 
 /obj/item/clothing/under/rank/security/peacekeeper/shortskirt
 	name = "security shortskirt"
-	desc = "test."
+	desc = "Plainshirted uniform commonly worn by Peacekeepers, attached with a skirt."
 	icon_state = "shortskirt_blue"
 	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
@@ -127,23 +119,15 @@
 			RESKIN_ICON_STATE = "shortskirt_blue",
 			RESKIN_WORN_ICON_STATE = "shortskirt_blue"
 	    ),
-		"Blue Variant, Down" = list(
-			RESKIN_ICON_STATE = "shortskirt_blue_d",
-			RESKIN_WORN_ICON_STATE = "shortskirt_blue_d"
-	    ),
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "shortskirt_black",
 			RESKIN_WORN_ICON_STATE = "shortskirt_black"
-	    ),
-		"Black Variant, Down" = list(
-			RESKIN_ICON_STATE = "shortskirt_black_d",
-			RESKIN_WORN_ICON_STATE = "shortskirt_black_d"
 	    ),
 	)
 
 /obj/item/clothing/under/rank/security/peacekeeper/miniskirt
 	name = "security miniskirt"
-	desc = "test."
+	desc = "This miniskirt was originally featured in a gag calendar, but entered official use once they realized its potential for arid climates."
 	icon_state = "miniskirt"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	gets_cropped_on_taurs = FALSE
