@@ -165,10 +165,10 @@
 		if(advanced)
 			if(HAS_TRAIT_FROM(target, TRAIT_HUSK, BURN))
 				/* SKYRAT EDIT START: More unhusking information */
-				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns. Use repairing burn damage and following up with \
+				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns. Proceed by repairing burn damage and following up with \
 								application of [SYNTHFLESH_UNHUSK_AMOUNT]u synthflesh or injection of rezadone as treatment.</span>\n"
 			else if (HAS_TRAIT_FROM(target, TRAIT_HUSK, CHANGELING_DRAIN))
-				render_list += "<span class='alert ml-1'>Subject has been husked by dessication. Use applying [SYNTHFLESH_LING_UNHUSK_AMOUNT]u \
+				render_list += "<span class='alert ml-1'>Subject has been husked by dessication. Use application of [SYNTHFLESH_LING_UNHUSK_AMOUNT]u \
 								of synthflesh or injection of rezadone as treatment.</span>\n"
 				/* SKYRAT EDIT END */
 			else
