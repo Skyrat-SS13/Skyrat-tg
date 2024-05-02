@@ -113,31 +113,6 @@
 	icon_state = "misc"
 	default_reagent_types = BASE_SHAKER_MISC_REAGENTS
 
-/obj/item/cooking/cyborg/power
-	name =	"automated cooking tool"
-	desc = "A cyborg fitted module resembling the rolling pins and Knifes"
-	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
-	icon_state = "knife_screw_cyborg"
-	hitsound = 'sound/items/drill_hit.ogg'
-	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.5
-	tool_behaviour = TOOL_KNIFE
-
-/obj/item/cooking/cyborg/power/examine()
-	. = ..()
-	. += " It's fitted with a [tool_behaviour == TOOL_KNIFE ? "knife" : "rolling pin"] head."
-
-/obj/item/cooking/cyborg/power/attack_self(mob/user)
-	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
-	if(tool_behaviour != TOOL_ROLLINGPIN)
-		tool_behaviour = TOOL_ROLLINGPIN
-		to_chat(user, span_notice("You attach the rolling pin bit to [src]."))
-		icon_state = "rolling_bolt_cyborg"
-	else
-		tool_behaviour = TOOL_KNIFE
-		to_chat(user, span_notice("You attach the knife bit to [src]."))
-		icon_state = "knife_screw_cyborg"
-
 // Wirebrush for janiborg
 /datum/design/borg_wirebrush
 	name = "Wire-brush Module"

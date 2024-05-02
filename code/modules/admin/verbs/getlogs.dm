@@ -12,6 +12,7 @@ ADMIN_VERB(get_current_logs, R_ADMIN, "Get Current Logs", "View or retrieve logf
 	if(file_spam_check())
 		return
 
+	log_admin("[key_name(src)] accessed file: [path]") // SKYRAT EDIT -- ADDITION
 	message_admins("[key_name_admin(src)] accessed file: [path]")
 	switch(tgui_alert(usr,"View (in game), Open (in your system's text editor), or Download?", path, list("View", "Open", "Download")))
 		if ("View")
