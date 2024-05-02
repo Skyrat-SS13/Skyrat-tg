@@ -88,7 +88,7 @@ export const CrewConsoleSkyrat = () => {
 
 const CrewTable = (props) => {
   const { act, data } = useBackend();
-  const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
+  const sensors = sortBy(data.sensors ?? [], (s) => s.ijob);
   return (
     <Table cellpadding="3">
       <Table.Row>

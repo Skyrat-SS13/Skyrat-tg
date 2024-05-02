@@ -76,7 +76,7 @@
 	if(!iscarbon(target_mob))
 		return
 
-	attempt_to_cuff(target_mob, user) // avoid locking up the attack chain with sleeps
+	attempt_to_cuff(target_mob, user)
 
 /// Handles all of the checks and application in a typical situation where someone attacks a carbon victim with the handcuff item.
 /obj/item/restraints/handcuffs/proc/attempt_to_cuff(mob/living/carbon/victim, mob/living/user)
@@ -93,9 +93,8 @@
 		victim.balloon_alert(user, "already handcuffed!")
 		return
 
-	if(victim.canBeHandcuffed())
+	if(!victim.canBeHandcuffed())
 		victim.balloon_alert(user, "can't be handcuffed!")
-		to_chat(user, span_warning("[victim] doesn't have two hands..."))
 		return
 
 	victim.visible_message(
@@ -176,6 +175,7 @@
 	desc = "Fake handcuffs meant for gag purposes."
 	breakouttime = 1 SECONDS
 	restraint_strength = HANDCUFFS_TYPE_WEAK
+	resist_cooldown = CLICK_CD_SLOW
 
 /**
  * # Cable restraints
@@ -357,6 +357,7 @@
 	name = "fake zipties"
 	desc = "Fake zipties meant for gag purposes."
 	breakouttime = 1 SECONDS
+	resist_cooldown = CLICK_CD_SLOW
 
 /obj/item/restraints/handcuffs/cable/zipties/fake/used
 	desc = "A pair of broken fake zipties."

@@ -254,7 +254,7 @@
 		var/obj/item/restraints/cuffs = src.get_item_by_slot(ITEM_SLOT_HANDCUFFED)
 		buckle_cd = cuffs.breakouttime
 
-	visible_message(span_warning("[src] attempts to unbuckle [p_them()]self!"), 
+	visible_message(span_warning("[src] attempts to unbuckle [p_them()]self!"),
 				span_notice("You attempt to unbuckle yourself... \
 				(This will take around [DisplayTimeText(buckle_cd)] and you must stay still.)"))
 
@@ -262,7 +262,7 @@
 		if(buckled)
 			to_chat(src, span_warning("You fail to unbuckle yourself!"))
 		return
-	
+
 	if(QDELETED(src) || isnull(buckled))
 		return
 
@@ -283,8 +283,8 @@
 		type = 2
 	if(I)
 		if(type == 1)
-			changeNext_move(CLICK_CD_BREAKOUT)
-			last_special = world.time + CLICK_CD_BREAKOUT
+			changeNext_move(I.resist_cooldown)
+			last_special = world.time + I.resist_cooldown
 		if(type == 2)
 			changeNext_move(CLICK_CD_RANGE)
 			last_special = world.time + CLICK_CD_RANGE
@@ -658,12 +658,8 @@
  */
 /mob/living/carbon/proc/update_tint()
 	var/tint = 0
-	if(isclothing(head))
-		tint += head.tint
-	if(isclothing(wear_mask))
-		tint += wear_mask.tint
-	if(isclothing(glasses))
-		tint += glasses.tint
+	for(var/obj/item/clothing/worn_item in get_equipped_items())
+		tint += worn_item.tint
 
 	var/obj/item/organ/internal/eyes/eyes = get_organ_slot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -1260,35 +1256,35 @@
 		update_worn_back(0)
 		. = TRUE
 
-	if(head?.wash(clean_types))
-		update_worn_head()
-		. = TRUE
-
 	// Check and wash stuff that can be covered
 	var/obscured = check_obscured_slots()
 
+	if(!(obscured & ITEM_SLOT_HEAD) && head?.wash(clean_types))
+		update_worn_head()
+		. = TRUE
+
 	// If the eyes are covered by anything but glasses, that thing will be covering any potential glasses as well.
-	if(glasses && is_eyes_covered(ITEM_SLOT_MASK|ITEM_SLOT_HEAD) && glasses.wash(clean_types))
+	if(is_eyes_covered(ITEM_SLOT_MASK|ITEM_SLOT_HEAD) && glasses?.wash(clean_types))
 		update_worn_glasses()
 		. = TRUE
 
-	if(wear_mask && !(obscured & ITEM_SLOT_MASK) && wear_mask.wash(clean_types))
+	if(!(obscured & ITEM_SLOT_MASK) && wear_mask?.wash(clean_types))
 		update_worn_mask()
 		. = TRUE
 
-	if(ears && !(obscured & ITEM_SLOT_EARS) && ears.wash(clean_types))
-		update_inv_ears()
+	if(!(obscured & ITEM_SLOT_EARS) && ears?.wash(clean_types))
+		update_worn_ears()
 		. = TRUE
 
-	if(wear_neck && !(obscured & ITEM_SLOT_NECK) && wear_neck.wash(clean_types))
+	if(!(obscured & ITEM_SLOT_NECK) && wear_neck?.wash(clean_types))
 		update_worn_neck()
 		. = TRUE
 
-	if(shoes && !(obscured & ITEM_SLOT_FEET) && shoes.wash(clean_types))
+	if(!(obscured & ITEM_SLOT_FEET) && shoes?.wash(clean_types))
 		update_worn_shoes()
 		. = TRUE
 
-	if(gloves && !(obscured & ITEM_SLOT_GLOVES) && gloves.wash(clean_types))
+	if(!(obscured & ITEM_SLOT_GLOVES) && gloves?.wash(clean_types))
 		update_worn_gloves()
 		. = TRUE
 
