@@ -47,6 +47,7 @@
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/gladiator/icons/berserker_suit_digi.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
 	w_class = WEIGHT_CLASS_BULKY
 	armor_type = /datum/armor/berserker_gatsu
