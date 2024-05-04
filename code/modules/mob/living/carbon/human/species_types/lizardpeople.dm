@@ -47,6 +47,7 @@
 /datum/species/lizard/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	return
 
+<<<<<<< HEAD
 /datum/species/lizard/random_name(gender,unique,lastname)
 	if(unique)
 		return random_unique_lizard_name(gender)
@@ -61,6 +62,9 @@
 //SKYRAT EDIT REMOVAL BEGIN
 /*
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
+=======
+/datum/species/lizard/randomize_features()
+>>>>>>> 0cc5cfb178e (Random Name Generation refactor, generate random names based on languages (for species without name lists, like Felinids and Podpeople) (#83021))
 	var/list/features = ..()
 	features["body_markings"] = pick(GLOB.body_markings_list)
 	return features
