@@ -62,11 +62,15 @@
 	src.res_amount = res_amount
 	src.max_res_amount = max_res_amount
 	src.time = time
+<<<<<<< HEAD
 	src.one_per_turf = one_per_turf
 	src.on_solid_ground = on_solid_ground
 	src.is_fulltile = is_fulltile
 	src.check_direction = check_direction || is_fulltile
 	src.check_density = check_density
+=======
+	src.crafting_flags = crafting_flags
+>>>>>>> 02e09efb458 (Fix missing crafting flags (#83025))
 	src.placement_checks = placement_checks
 	src.applies_mats = applies_mats
 	src.trait_booster = trait_booster
