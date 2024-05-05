@@ -573,8 +573,8 @@
 /obj/item/clothing/under/rank/security/officer/skirt
 	name = "security jumpskirt"
 	desc = "Turtleneck sweater commonly worn by Peacekeepers, attached with a skirt."
-	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "jumpskirt_blue"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	gets_cropped_on_taurs = FALSE

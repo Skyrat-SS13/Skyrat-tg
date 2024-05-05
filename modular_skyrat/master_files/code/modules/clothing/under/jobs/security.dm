@@ -1,13 +1,13 @@
 /obj/item/clothing/under/rank/security
-	worn_icon_digi = 'modular_nova/master_files/icons/mob/clothing/under/security_digi.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/security_digi.dmi'
 
 /obj/item/clothing/under/rank/security/nova
-	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/nova
-	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
 //DEBATE MOVING *ALL* SECURITY STUFF HERE? Even overrides, at least as a like, sub-file?
 
@@ -44,8 +44,8 @@
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "security trousers"
 	desc = "Some Peacekeeper-blue combat trousers. Probably should pair it with a vest for safety."
-	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "workpants_blue"
 	body_parts_covered = GROIN|LEGS
 	can_adjust = FALSE
@@ -98,8 +98,8 @@
 /obj/item/clothing/under/rank/security/officer/skirt
 	name = "security jumpskirt"
 	desc = "Turtleneck sweater commonly worn by Peacekeepers, attached with a skirt."
-	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "jumpskirt_blue"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	gets_cropped_on_taurs = FALSE
@@ -119,8 +119,8 @@
 	name = "security shortskirt"
 	desc = "Plainshirted uniform commonly worn by Peacekeepers, attached with a skirt."
 	icon_state = "shortskirt_blue"
-	icon = 'modular_nova/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_nova/master_files/icons/mob/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	gets_cropped_on_taurs = FALSE
 	uses_advanced_reskins = TRUE
