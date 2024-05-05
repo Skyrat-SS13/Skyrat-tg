@@ -140,7 +140,7 @@
 		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
 		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
 			continue
-		if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < OPT_IN_RR)
+		if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < RR_OPT_IN)
 			continue
 		// SKYRAT EDIT ADDITION END
 		viable_minds += player.mind

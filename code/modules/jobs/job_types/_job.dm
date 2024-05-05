@@ -318,7 +318,7 @@
 			have been added to your ID card.")
 	//SKYRAT EDIT ADDITION BEGIN - Round Removal OPT IN
 	if (!CONFIG_GET(flag/disable_rr_opt_in_preferences))
-		if (isnum(minimum_opt_in_level) && minimum_opt_in_level > OPT_OUT_RR)
+		if (isnum(minimum_opt_in_level) && minimum_opt_in_level > RR_OPT_OUT)
 			info += span_bolddanger("This job forces a minimum opt-in setting of [GLOB.rr_opt_in_strings["[minimum_opt_in_level]"]].")
 		if (heretic_sac_target)
 			info += span_bolddanger("This job can be sacrificed by heretics.")

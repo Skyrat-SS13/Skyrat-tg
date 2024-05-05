@@ -10,18 +10,18 @@ GLOBAL_LIST_INIT(rr_opt_in_strings, list(
 //command + sec roles are always opted in regardless of opt in status
 
 /// Round removal opt-in define
-#define OPT_IN_RR 1
+#define RR_OPT_IN 1
 
 /// Prefers not to round removed. Will still be a potential target if playing sec or command.
-#define OPT_OUT_RR 0
+#define RR_OPT_OUT 0
 
 /// The minimum opt-in level for people playing sec.
-#define SECURITY_OPT_IN_LEVEL OPT_IN_RR
+#define RR_OPT_LEVEL_SECURITY RR_OPT_IN
 /// The minimum opt-in level for people playing command.
-#define COMMAND_OPT_IN_LEVEL OPT_IN_RR
+#define RR_OPT_LEVEL_COMMAND RR_OPT_IN
 
 /// The default opt in level for preferences and mindless mobs.
-#define OPT_IN_DEFAULT_LEVEL OPT_OUT_RR
+#define RR_OPT_LEVEL_DEFAULT RR_OPT_OUT
 
 /// If the player has any non-ghost role antags enabled, they are forced to use a minimum of this.
-#define OPT_IN_ANTAG_ENABLED_LEVEL OPT_IN_RR
+#define RR_OPT_LEVEL_ANTAG RR_OPT_IN

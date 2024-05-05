@@ -23,9 +23,9 @@
 /// Returns this job's initial opt in level, taking into account departmental bitflags.
 /datum/job/proc/get_initial_opt_in_level()
 	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY))
-		return SECURITY_OPT_IN_LEVEL
+		return RR_OPT_LEVEL_SECURITY
 	if (departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND))
-		return COMMAND_OPT_IN_LEVEL
+		return RR_OPT_LEVEL_COMMAND
 
 /// Determines if this job should be sacrificable by heretics.
 /datum/job/proc/initialize_heretic_target_status()

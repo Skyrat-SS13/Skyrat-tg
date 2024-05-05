@@ -7,10 +7,10 @@
 	savefile_key = "rr_opt_in_status_pref"
 
 /datum/preference/choiced/rr_opt_in_status/init_possible_values()
-	return list(OPT_IN_RR, OPT_OUT_RR)
+	return list(RR_OPT_IN, RR_OPT_OUT)
 
 /datum/preference/choiced/rr_opt_in_status/create_default_value()
-	return OPT_IN_DEFAULT_LEVEL
+	return RR_OPT_LEVEL_DEFAULT
 
 /datum/preference/choiced/rr_opt_in_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
@@ -20,7 +20,7 @@
 
 /datum/preference/choiced/rr_opt_in_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_rr_opt_in_preferences))
-		return OPT_IN_DEFAULT_LEVEL
+		return RR_OPT_LEVEL_DEFAULT
 
 	return ..()
 
