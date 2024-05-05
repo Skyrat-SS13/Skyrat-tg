@@ -955,7 +955,7 @@
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
 		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
-		if (!opt_in_disabled && player.mind?.get_effective_opt_in_level() < RR_OPT_IN)
+		if (!opt_in_disabled && player.mind.get_effective_opt_in_level() < RR_OPT_IN)
 			continue
 		// SKYRAT EDIT ADDITION END
 

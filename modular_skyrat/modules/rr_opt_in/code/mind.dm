@@ -78,3 +78,7 @@ GLOBAL_LIST_INIT(rr_optin_forcing_on_spawn_antag_categories, list(
 			if (antag_category in preference_instance.be_special)
 				return RR_OPT_LEVEL_ANTAG
 	return RR_OPT_OUT
+
+/datum/mind/Destroy()
+	log_game("Mind [src] destroying with RR [get_effective_opt_in_level() ? "enabled" : "disabled"]")
+	. = ..()
