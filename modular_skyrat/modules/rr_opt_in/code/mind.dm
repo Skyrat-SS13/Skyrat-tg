@@ -61,9 +61,7 @@ GLOBAL_LIST_INIT(rr_optin_forcing_on_spawn_antag_categories, list(
 
 /// Gets the actual opt-in level used for determining targets.
 /datum/mind/proc/get_effective_opt_in_level()
-	var/step_1 = max(ideal_opt_in_level, get_job_opt_in_level())
-	var/step_2 = max(step_1, get_rr_opt_in_level())
-	return step_2
+	return max(ideal_opt_in_level, get_job_opt_in_level(), get_rr_opt_in_level())
 
 /// Returns the opt in level of our job.
 /datum/mind/proc/get_job_opt_in_level()
