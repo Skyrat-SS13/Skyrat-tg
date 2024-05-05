@@ -21,13 +21,12 @@
 	fire = 80
 	acid = 70
 
-/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
-/obj/item/clothing/suit/toggle/labcoat/nova/regular
+/obj/item/clothing/suit/toggle/labcoat/skyrat/regular
 	name = "researcher's labcoat"
 	desc = "A Nanotrasen standard labcoat for researchers in the scientific field."
 	icon_state = "labcoat_regular"
 
-/obj/item/clothing/suit/toggle/labcoat/nova/highvis
+/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	name = "high vis labcoat"
 	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
 	icon_state = "labcoat_highvis"
