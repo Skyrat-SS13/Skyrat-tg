@@ -34,11 +34,6 @@
 	icon_state = "labcoat_pharm"
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/suit/toggle/labcoat/skyrat/regular
-	name = "researcher's labcoat"
-	desc = "A Nanotrasen standard labcoat for researchers in the scientific field."
-	icon_state = "labcoat_regular"
-
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	name = "high vis labcoat"
 	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
