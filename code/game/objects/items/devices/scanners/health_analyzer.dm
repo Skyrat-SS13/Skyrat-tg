@@ -164,9 +164,13 @@
 	if(HAS_TRAIT(target, TRAIT_HUSK))
 		if(advanced)
 			if(HAS_TRAIT_FROM(target, TRAIT_HUSK, BURN))
-				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns.</span>\n"
+				/* SKYRAT EDIT START: More unhusking information */
+				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns. Proceed by repairing burn damage and following up with \
+								application of [SYNTHFLESH_UNHUSK_AMOUNT]u synthflesh or injection of rezadone as treatment.</span>\n"
 			else if (HAS_TRAIT_FROM(target, TRAIT_HUSK, CHANGELING_DRAIN))
-				render_list += "<span class='alert ml-1'>Subject has been husked by dessication.</span>\n"
+				render_list += "<span class='alert ml-1'>Subject has been husked by dessication. Use application of [SYNTHFLESH_LING_UNHUSK_AMOUNT]u \
+								of synthflesh or injection of rezadone as treatment.</span>\n"
+				/* SKYRAT EDIT END */
 			else
 				render_list += "<span class='alert ml-1'>Subject has been husked by mysterious causes.</span>\n"
 
@@ -213,6 +217,17 @@
 			render_list += "<span class='info ml-1'>Subject Major Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span>\n"
 			if(advanced)
 				render_list += "<span class='info ml-1'>Subject Minor Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, TRUE)].</span>\n"
+
+	// SKYRAT EDIT ADDITION START -- Show increased/decreased brute/burn mods, to "leave a paper trail" for the fragility quirk
+	if(ishuman(target))
+		var/mob/living/carbon/human/humantarget = target
+
+		var/datum/physiology/physiology = humantarget.physiology
+		if (physiology.brute_mod != 1)
+			render_list += "<span class='danger ml-1'>Subject takes [(physiology.brute_mod) * 100]% brute damage.</span>\n"
+		if (physiology.burn_mod != 1)
+			render_list += "<span class='danger ml-1'>Subject takes [(physiology.burn_mod) * 100]% burn damage.</span>\n"
+	// SKYRAT EDIT ADDITION END
 
 	if (HAS_TRAIT(target, TRAIT_IRRADIATED))
 		render_list += "<span class='alert ml-1'>Subject is irradiated. Supply toxin healing.</span>\n"

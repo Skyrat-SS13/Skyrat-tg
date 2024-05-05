@@ -265,14 +265,13 @@
 	//SKYRAT EDIT CHANGE BEGIN - EMOTES - GLOBAL COOLDOWN
 	//if(user.emotes_used && user.emotes_used[src] + cooldown > world.time) - SKYRAT EDIT - ORIGINAL
 	if(user.nextsoundemote > world.time)
-		var/datum/emote/default_emote = /datum/emote
+		var/datum/emote/default_emote = new /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
 			to_chat(user, span_danger("You must wait another [DisplayTimeText(user.nextsoundemote - world.time)] before using that emote."))
 		return FALSE
 	//if(!user.emotes_used)
 	//	user.emotes_used = list()
 	//user.emotes_used[src] = world.time - SKYRAT EDIT - ORIGINAL
-	user.nextsoundemote = world.time + cooldown
 	//SKYRAT EDIT CHANGE END
 	return TRUE
 
