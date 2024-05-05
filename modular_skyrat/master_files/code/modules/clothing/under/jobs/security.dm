@@ -1,11 +1,11 @@
 /obj/item/clothing/under/rank/security
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/security_digi.dmi'
 
-/obj/item/clothing/under/rank/security/nova
+/obj/item/clothing/under/rank/security/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
-/obj/item/clothing/under/rank/security/head_of_security/nova
+/obj/item/clothing/under/rank/security/head_of_security/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
