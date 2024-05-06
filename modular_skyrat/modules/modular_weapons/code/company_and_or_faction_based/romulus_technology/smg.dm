@@ -1,7 +1,7 @@
 //While I could also just, make it a subtype, I prefer to keep it seperate incase I need to switch later
 
 /obj/item/gun/ballistic/automatic/rom_smg
-	name = "\improper Gelato Submachine Gun"
+	name = "\improper RomTech Submachine gun"
 	desc = "A horrible conversion kit of the sindano only seen in usage by PMC and in Romulus Police Force. Accepts any standard Sol pistol magazine."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun40x32.dmi'
