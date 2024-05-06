@@ -103,14 +103,14 @@
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "M4A5"
-	desc = "A standard issue pistol given to officers in Romulus Federation, chambered in .460 Rowland Magnum, now commonly found in the hands of high ranking NanotTrasen Staff"
+	desc = "A standard issue pistol given to pilot officers in Romulus Federation, chambered in .460 Rowland Magnum, now commonly found in the hands of high ranking NanotTrasen Staff"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/pistol.dmi'
 	icon_state = "m45a5"
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
 	force = 15
-	fire_delay = 1 SECONDS
+	fire_delay = 1.8 SECONDS
 	special_mags = TRUE
-	recoil = 2
+	recoil = 3
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m45a5
 	spawn_magazine_type = /obj/item/ammo_box/magazine/m45a5
