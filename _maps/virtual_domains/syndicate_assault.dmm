@@ -12,25 +12,23 @@
 /obj/effect/landmark/bitrunning/mob_segment,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"aN" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/plasteel/twenty,
-/obj/item/stack/sheet/mineral/plastitanium{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/rods/fifty,
-/turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "aO" = (
 /obj/machinery/recharge_station,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"bg" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/silver{
+	amount = 30
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "bh" = (
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/powered/virtual_domain)
@@ -42,9 +40,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"bG" = (
-/turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "cc" = (
 /obj/structure/closet/crate/secure/gear{
 	req_access = list("syndicate")
@@ -52,10 +47,12 @@
 /obj/effect/spawner/random/clothing/costume,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"cj" = (
-/obj/structure/transit_tube/crossing,
-/turf/closed/wall/r_wall/syndicate,
-/area/ruin/space/has_grav/powered/virtual_domain)
+"cd" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
+/obj/item/ammo_box/magazine/m7mm,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "ct" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -97,6 +94,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"cA" = (
+/obj/structure/sign/poster/contraband/tools,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
 "cB" = (
 /obj/machinery/camera/xray{
 	c_tag = "Medbay";
@@ -109,12 +110,6 @@
 "cR" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/carpet/royalblack,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"cZ" = (
-/obj/structure/table/reinforced,
-/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
-/obj/item/ammo_box/magazine/m7mm,
-/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "da" = (
 /obj/machinery/stasis,
@@ -136,6 +131,9 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"dx" = (
+/turf/closed/mineral/random,
+/area/virtual_domain/protected_space)
 "dz" = (
 /obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/mineral/plastitanium/red,
@@ -149,34 +147,14 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"eB" = (
-/obj/machinery/camera/xray{
-	c_tag = "Cargo pod";
-	dir = 9;
-	network = list("fsci");
-	screen_loc = ""
-	},
-/obj/structure/closet,
-/obj/item/clothing/under/syndicate/tacticool,
-/obj/item/clothing/under/syndicate/tacticool,
-/obj/item/clothing/under/syndicate/tacticool,
-/obj/item/card/id/advanced/black/syndicate_command/crew_id,
-/obj/item/card/id/advanced/black/syndicate_command/crew_id,
-/obj/item/card/id/advanced/black/syndicate_command/crew_id,
+"ec" = (
+/obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"fc" = (
-/obj/structure/filingcabinet,
-/obj/machinery/door/window/left/directional/west{
-	name = "Syndicate Interior Door";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"fd" = (
-/obj/structure/transit_tube/crossing,
-/turf/open/space/basic,
-/area/space)
+/area/virtual_domain/protected_space)
+"fz" = (
+/obj/structure/sign/departments/cargo,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
 "fG" = (
 /obj/structure/toilet{
 	dir = 1
@@ -192,17 +170,12 @@
 /obj/machinery/atmospherics/components/unary/vent_pump,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"gw" = (
-/obj/machinery/door/window/left/directional/north{
-	name = "Spare Equipment";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"gD" = (
-/obj/effect/mob_spawn/ghost_role/human/syndicatespace,
+"gN" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/regular,
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
+/area/virtual_domain/protected_space)
 "hg" = (
 /obj/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor{
@@ -225,6 +198,9 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"if" = (
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "ip" = (
 /obj/effect/landmark/bitrunning/mob_segment,
 /turf/open/floor/plastic,
@@ -232,18 +208,6 @@
 "iB" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"iL" = (
-/obj/structure/sign/departments/cargo,
-/turf/closed/wall/r_wall/syndicate,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"iU" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/obj/item/melee/energy/sword/saber/red,
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "iW" = (
 /obj/structure/table/reinforced,
@@ -265,6 +229,13 @@
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"ja" = (
+/obj/machinery/door/window/left/directional/north{
+	name = "Spare Equipment";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "jl" = (
 /obj/structure/bodycontainer/crematorium{
@@ -310,6 +281,21 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"kD" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
+	},
+/obj/item/disk/surgery/forgottenship,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"kF" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
+	},
+/obj/item/clothing/head/helmet/space/syndicate/black/engie,
+/obj/item/clothing/suit/space/syndicate/black/engie,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "kI" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 8
@@ -322,12 +308,6 @@
 	},
 /turf/template_noop,
 /area/virtual_domain/safehouse)
-"li" = (
-/obj/structure/transit_tube/station/dispenser/reverse{
-	dir = 4
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "ln" = (
 /obj/machinery/turretid{
 	control_area = "/area/ruin/space/has_grav/syndicate_forgotten_ship";
@@ -352,6 +332,9 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"mm" = (
+/turf/closed/indestructible/syndicate,
+/area/virtual_domain/protected_space)
 "mo" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
 	dir = 8
@@ -365,12 +348,39 @@
 /obj/item/wrench,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"mW" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Syndicate Ship Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/cable,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/virtual_domain/protected_space)
+"mY" = (
+/obj/structure/table/reinforced,
+/obj/item/dualsaber/green,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "nk" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"nn" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
+	},
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 40
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 15
+	},
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "nB" = (
 /turf/closed/mineral/random,
 /area/space)
@@ -433,15 +443,19 @@
 "qx" = (
 /turf/open/space/basic,
 /area/space)
-"qU" = (
-/obj/structure/sign/poster/contraband/c20r,
-/turf/closed/wall/r_wall/syndicate,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "qY" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"re" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "rm" = (
 /obj/machinery/button/crematorium{
 	id = "fscremate";
@@ -469,14 +483,12 @@
 /obj/effect/spawner/random/contraband/armory,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"rP" = (
-/obj/effect/mob_spawn/ghost_role/human/syndicatespace,
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"sg" = (
-/obj/machinery/ore_silo,
-/turf/open/floor/mineral/plastitanium,
+"sq" = (
+/obj/machinery/door/window/left/directional/south{
+	name = "Control Room";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "sz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump{
@@ -490,18 +502,6 @@
 	start_showpiece_type = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"sK" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/obj/item/stack/sheet/mineral/titanium{
-	amount = 40
-	},
-/obj/item/stack/sheet/mineral/uranium{
-	amount = 15
-	},
-/turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "sL" = (
 /obj/structure/chair/comfy,
@@ -562,6 +562,28 @@
 "we" = (
 /turf/closed/mineral/random/high_chance,
 /area/space)
+"wi" = (
+/obj/machinery/ore_silo,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"wn" = (
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"wu" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
+	},
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/plasteel/twenty,
+/obj/item/stack/sheet/mineral/plastitanium{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/rods/fifty,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "wK" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Syndicate Ship Airlock"
@@ -569,12 +591,10 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"wL" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/medkit/regular,
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
+"xl" = (
+/obj/structure/transit_tube/crossing,
+/turf/closed/mineral/random,
+/area/virtual_domain/protected_space)
 "xJ" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -643,10 +663,10 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Bm" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/closed/indestructible/syndicate,
-/area/ruin/space/has_grav/powered/virtual_domain)
+"Bn" = (
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "BK" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -682,6 +702,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Cy" = (
+/obj/structure/transit_tube/crossing,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
 "CK" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -711,14 +735,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Dj" = (
-/obj/structure/table/reinforced,
-/obj/item/ammo_box/magazine/smgm45,
-/obj/item/ammo_box/magazine/smgm45,
-/obj/item/ammo_box/magazine/smgm45,
-/obj/item/gun/ballistic/automatic/c20r/unrestricted,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "DA" = (
 /obj/structure/closet/crate/secure/gear{
 	req_access = list("syndicate")
@@ -735,6 +751,10 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"EF" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "Fp" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/mineral/plastitanium,
@@ -790,10 +810,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Ia" = (
-/obj/effect/mob_spawn/ghost_role/human/syndicatespace/captain,
-/turf/open/floor/carpet/royalblack,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "Id" = (
 /obj/machinery/power/shuttle_engine/huge{
 	dir = 8
@@ -828,20 +844,21 @@
 /obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"It" = (
+/turf/open/space/basic,
+/area/virtual_domain/protected_space)
+"IA" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "IC" = (
 /obj/structure/table/reinforced,
 /obj/item/paper,
 /obj/item/pen,
 /turf/open/floor/carpet/royalblack,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"IH" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Syndicate Ship Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/structure/cable,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "IV" = (
 /obj/machinery/door/airlock/grunge{
@@ -850,6 +867,10 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Jd" = (
+/obj/structure/transit_tube/crossing,
+/turf/open/space/basic,
+/area/virtual_domain/protected_space)
 "Jg" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
@@ -866,6 +887,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"JM" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/syndicate,
+/area/virtual_domain/protected_space)
 "JN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -883,10 +908,26 @@
 "Kz" = (
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Lk" = (
-/obj/structure/transit_tube/crossing,
-/turf/closed/mineral/random,
-/area/space)
+"Lo" = (
+/obj/structure/filingcabinet,
+/obj/machinery/door/window/left/directional/west{
+	name = "Syndicate Interior Door";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"LV" = (
+/obj/machinery/door/password/voice/sfc{
+	password = null
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/grunge{
+	desc = "Vault airlock preventing air from going out.";
+	name = "Syndicate Vault Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "Mc" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -919,6 +960,10 @@
 /obj/item/clothing/shoes/combat,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"MQ" = (
+/obj/effect/mob_spawn/ghost_role/human/virtual_domain/syndie,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "MR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
@@ -926,41 +971,8 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Nm" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Nr" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/obj/item/stack/sheet/mineral/gold{
-	amount = 30
-	},
-/obj/item/stack/sheet/mineral/silver{
-	amount = 30
-	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Of" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/obj/item/disk/surgery/forgottenship,
-/turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "Ox" = (
 /obj/machinery/atmospherics/components/unary/vent_pump,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"OH" = (
-/obj/structure/cable,
-/obj/structure/table/reinforced,
-/obj/item/storage/toolbox/syndicate,
-/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "OI" = (
@@ -970,18 +982,12 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"PR" = (
-/obj/machinery/door/password/voice/sfc{
-	password = null
+"Pv" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
 	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/grunge{
-	desc = "Vault airlock preventing air from going out.";
-	name = "Syndicate Vault Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/powered/virtual_domain)
+/area/virtual_domain/protected_space)
 "Qg" = (
 /obj/machinery/suit_storage_unit/syndicate{
 	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black;
@@ -997,12 +1003,6 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"QF" = (
-/obj/structure/table/reinforced,
-/obj/item/dualsaber/green,
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "QG" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/closed/mineral/random,
@@ -1016,16 +1016,15 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"RD" = (
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
 "RQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"RU" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Sc" = (
 /obj/structure/cable,
@@ -1065,16 +1064,35 @@
 "Sz" = (
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"SD" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access = list("syndicate")
+	},
+/obj/item/melee/energy/sword/saber/red,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
 "SX" = (
 /obj/machinery/vending/medical/syndicate_access/cybersun,
 /turf/open/floor/plastic,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"TB" = (
-/turf/closed/indestructible/syndicate,
-/area/ruin/space/has_grav/powered/virtual_domain)
+"Ta" = (
+/obj/structure/transit_tube/station/dispenser/reverse{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"TT" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "UQ" = (
 /obj/structure/sign/poster/contraband/syndicate_recruitment,
 /turf/closed/wall/r_wall/syndicate,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"UR" = (
+/obj/effect/mob_spawn/ghost_role/human/virtual_domain/syndie,
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Vk" = (
 /obj/machinery/porta_turret/syndicate/energy{
@@ -1091,10 +1109,10 @@
 	},
 /turf/template_noop,
 /area/virtual_domain/safehouse)
-"Wd" = (
-/obj/structure/sign/poster/contraband/tools,
+"Wl" = (
+/obj/structure/sign/poster/contraband/c20r,
 /turf/closed/wall/r_wall/syndicate,
-/area/ruin/space/has_grav/powered/virtual_domain)
+/area/virtual_domain/protected_space)
 "Wy" = (
 /obj/structure/closet/crate/secure/gear{
 	req_access = list("syndicate")
@@ -1102,6 +1120,11 @@
 /obj/item/stack/ore/plasma{
 	amount = 19
 	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"WD" = (
+/obj/machinery/light/small/directional/south,
+/obj/effect/mob_spawn/ghost_role/human/virtual_domain/syndie,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "WR" = (
@@ -1117,14 +1140,6 @@
 "XS" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Yb" = (
-/obj/structure/closet/crate/secure/gear{
-	req_access = list("syndicate")
-	},
-/obj/item/clothing/head/helmet/space/syndicate/black/engie,
-/obj/item/clothing/suit/space/syndicate/black/engie,
-/turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Yi" = (
 /obj/effect/landmark/bitrunning/cache_spawn,
@@ -1151,6 +1166,22 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Yq" = (
+/obj/machinery/camera/xray{
+	c_tag = "Cargo pod";
+	dir = 9;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/obj/structure/closet,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/card/id/advanced/black/syndicate_command/crew_id,
+/obj/item/card/id/advanced/black/syndicate_command/crew_id,
+/obj/item/card/id/advanced/black/syndicate_command/crew_id,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
 "Yr" = (
 /obj/effect/baseturf_helper/virtual_domain,
 /turf/template_noop,
@@ -1170,13 +1201,6 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Zb" = (
 /turf/open/floor/plastic,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Zf" = (
-/obj/machinery/door/window/left/directional/south{
-	name = "Control Room";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "ZA" = (
 /obj/machinery/power/shuttle_engine/propulsion{
@@ -2127,7 +2151,7 @@ ru
 ru
 vp
 ru
-Ia
+UR
 Ci
 ru
 Sq
@@ -2196,7 +2220,7 @@ Mc
 uP
 uP
 uP
-rP
+WD
 ru
 qx
 qx
@@ -2264,10 +2288,10 @@ qx
 qx
 nB
 nB
-TB
-TB
-TB
-TB
+mm
+mm
+mm
+mm
 nB
 nB
 qx
@@ -2321,12 +2345,12 @@ qx
 qx
 nB
 nB
-TB
-TB
-Yb
-Yb
-TB
-Bm
+mm
+mm
+kF
+kF
+mm
+JM
 nB
 qx
 qx
@@ -2370,7 +2394,7 @@ Sd
 uP
 uP
 uP
-gD
+MQ
 ru
 qx
 qx
@@ -2379,12 +2403,12 @@ qx
 nB
 QG
 nB
-TB
-aN
-bG
-bG
-sK
-TB
+mm
+wu
+if
+if
+nn
+mm
 nB
 qx
 qx
@@ -2415,7 +2439,7 @@ qx
 qx
 Ig
 ru
-fc
+Lo
 ru
 tv
 ki
@@ -2437,12 +2461,12 @@ qx
 nB
 we
 nB
-TB
-iU
-bG
-bG
-Nr
-TB
+mm
+SD
+if
+if
+bg
+mm
 nB
 we
 qx
@@ -2495,12 +2519,12 @@ qx
 qx
 nB
 nB
-TB
-Nm
-bG
-bG
-Of
-TB
+mm
+Pv
+if
+if
+kD
+mm
 nB
 nB
 qx
@@ -2553,12 +2577,12 @@ qx
 nB
 nB
 nB
-TB
-TB
-PR
-TB
-TB
-TB
+mm
+mm
+LV
+mm
+mm
+mm
 nB
 nB
 nB
@@ -2611,21 +2635,21 @@ qx
 nB
 nB
 we
-ru
-ru
-uP
-sg
-ru
-ru
-nB
-nB
-nB
-nB
-qx
-qx
-qx
-qx
-qx
+RD
+RD
+wn
+wi
+RD
+RD
+dx
+dx
+dx
+dx
+It
+It
+It
+It
+It
 sM
 sM
 sM
@@ -2669,21 +2693,21 @@ qx
 qx
 nB
 nB
-qU
-Fp
-uP
-uP
-li
-cj
-Lk
-Lk
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+Wl
+ec
+wn
+wn
+Ta
+Cy
+xl
+xl
+Jd
+Jd
+Jd
+Jd
+Jd
+Jd
+Jd
 BN
 Vq
 sM
@@ -2727,21 +2751,21 @@ qx
 qx
 nB
 nB
-ru
-eB
-uP
-uP
-uP
-ru
-nB
-qx
-qx
-qx
-qx
-qx
-qx
-qx
-qx
+RD
+Yq
+wn
+wn
+wn
+RD
+dx
+It
+It
+It
+It
+It
+It
+It
+It
 sM
 sM
 sM
@@ -2785,12 +2809,12 @@ qx
 qx
 qx
 nB
-ru
-wL
-oM
-uP
-dw
-ru
+RD
+gN
+Bn
+wn
+EF
+RD
 yZ
 nB
 nB
@@ -2843,12 +2867,12 @@ qx
 qx
 qx
 qx
-Wd
-OH
-oM
-uP
-RU
-ru
+cA
+IA
+Bn
+wn
+TT
+RD
 we
 nB
 nB
@@ -2901,12 +2925,12 @@ BK
 BK
 BK
 BK
-IH
-oM
-oM
-uP
-RU
-ru
+mW
+Bn
+Bn
+wn
+TT
+RD
 nB
 nB
 qx
@@ -2959,12 +2983,12 @@ qx
 qx
 qx
 qx
-iL
-cZ
-uP
-uP
-RU
-ru
+fz
+cd
+wn
+wn
+TT
+RD
 nB
 nB
 qx
@@ -3017,12 +3041,12 @@ qx
 qx
 qx
 nB
-ru
-ru
-Dj
-QF
-ru
-ru
+RD
+RD
+re
+mY
+RD
+RD
 nB
 nB
 qx
@@ -3076,10 +3100,10 @@ qx
 nB
 nB
 nB
-ru
-ru
-ru
-ru
+RD
+RD
+RD
+RD
 nB
 nB
 we
@@ -3344,7 +3368,7 @@ qx
 ru
 Kz
 dz
-Zf
+sq
 Kz
 CK
 Kz
@@ -3354,7 +3378,7 @@ vU
 Kz
 CK
 Kz
-gw
+ja
 Kz
 Jg
 ru
