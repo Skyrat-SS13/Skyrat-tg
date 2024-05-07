@@ -75,8 +75,8 @@
 	desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat \
 			and gain the ability to swat bullets from the air, but you will also refuse to use dishonorable ranged weaponry."
 	item = /obj/item/book/granter/martial/carp
-	progression_minimum = 30 MINUTES
-	cost = 17
+	progression_minimum = 180 MINUTES //SR Edit Original at 30 Minutes
+	cost = 20 //SR Edit Original at 17
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
