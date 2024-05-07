@@ -11,6 +11,9 @@ import { CargoData } from './types';
 enum TAB {
   Catalog = 'catalog',
   Requests = 'requests',
+  /* SKYRAT EDIT BELOW - ADDS company imports */
+  Imports = 'company_import_window',
+  /* SKYRAT EDIT END */
   Cart = 'cart',
   Help = 'help',
 }
@@ -26,7 +29,9 @@ export function Cargo(props) {
 }
 
 export function CargoContent(props) {
-  const { data } = useBackend<CargoData>();
+  /* SKYRAT EDIT BELOW - ADDS act */
+  const { act, data } = useBackend<CargoData>();
+  /* SKYRAT EDIT END */
 
   const { cart = [], requests = [], requestonly } = data;
 
@@ -51,6 +56,15 @@ export function CargoContent(props) {
           >
             Catalog
           </Tabs.Tab>
+          {/* SKYRAT EDIT START - Company imports */}
+          <Tabs.Tab
+            icon="clipboard-list"
+            selected={tab === TAB.Imports}
+            onClick={() => act(TAB.Imports)}
+          >
+            Company Imports
+          </Tabs.Tab>
+          {/* SKYRAT EDIT END */}
           <Tabs.Tab
             icon="envelope"
             textColor={tab !== TAB.Requests && requests.length > 0 && 'yellow'}
