@@ -126,6 +126,9 @@
 	skyrat_products = list(
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/pharmacist = 2,
 		/obj/item/clothing/head/beret/medical/chemist = 2,
 		/obj/item/storage/backpack/messenger/chem = 2,
 	)
