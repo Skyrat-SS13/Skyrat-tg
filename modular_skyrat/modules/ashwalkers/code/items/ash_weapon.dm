@@ -25,5 +25,10 @@
 		/obj/item/stack/sheet/sinew = 2,
 		/obj/item/stack/sheet/animalhide/goliath_hide = 2,
 	)
-	always_available = FALSE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 	category = CAT_WEAPON_MELEE
+
+/obj/item/kinetic_crusher/cursed
+	name = "cursed ash carver"
+	desc = "A horrible, alive-looking weapon that pulses every so often. The tendril created this monstrosity to mimic and compete with those who invade the land."
+	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'

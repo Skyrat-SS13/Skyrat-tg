@@ -5,7 +5,6 @@ import {
   FeatureChoiced,
   FeatureChoicedServerData,
   FeatureColorInput,
-  FeatureDropdownInput,
   FeatureNumberInput,
   FeatureShortTextInput,
   FeatureTextInput,
@@ -14,6 +13,7 @@ import {
   FeatureTriColorInput,
   FeatureValueProps,
 } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const feature_leg_type: FeatureChoiced = {
   name: 'Leg type',

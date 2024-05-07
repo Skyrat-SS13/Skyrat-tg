@@ -205,7 +205,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	..()
 	icon_state = "joker"
 
-/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/card)
+/obj/item/paper/joker/click_alt(mob/user)
 	var/list/datum/paper_input/old_raw_text_inputs = raw_text_inputs
 	var/list/datum/paper_stamp/old_raw_stamp_data = raw_stamp_data
 	var/list/datum/paper_stamp/old_raw_field_input_data = raw_field_input_data
@@ -225,15 +225,23 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	update_static_data()
 
 	balloon_alert(user, "card flipped")
+	return CLICK_ACTION_SUCCESS
 
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
-	desc = "You happen to act like a feline, for whatever reason."
+	desc = "You happen to act like a feline, for whatever reason. This will replace most other tongue-based speech quirks."
 	gain_text = span_notice("Nya could go for some catnip right about now...")
 	lose_text = span_notice("You feel less attracted to lasers.")
 	medical_record_text = "Patient seems to possess behavior much like a feline."
 	mob_trait = TRAIT_FELINE
 	icon = FA_ICON_CAT
+
+/datum/quirk/feline_aspect/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/obj/item/organ/internal/tongue/cat/new_tongue = new(get_turf(human_holder))
+
+	new_tongue.copy_traits_from(human_holder.get_organ_slot(ORGAN_SLOT_TONGUE))
+	new_tongue.Insert(human_holder, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"

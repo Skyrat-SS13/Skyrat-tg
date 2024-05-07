@@ -193,12 +193,12 @@
 	var/datum/action/innate/swap_body/swap_body
 
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/slime,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/slime,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/jelly/slime,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/jelly/slime,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/jelly/slime,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/jelly/slime,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/jelly/slime,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly/slime,
 	)
 
 /datum/species/jelly/slime/get_physical_attributes()
@@ -493,12 +493,12 @@
 	id = SPECIES_LUMINESCENT
 	examine_limb_id = SPECIES_LUMINESCENT
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/luminescent,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/luminescent,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/luminescent,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/luminescent,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/luminescent,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/luminescent,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/jelly/luminescent,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/jelly/luminescent,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/jelly/luminescent,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/jelly/luminescent,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/jelly/luminescent,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly/luminescent,
 	)
 	mutanteyes = /obj/item/organ/internal/eyes
 	/// How strong is our glow
@@ -731,10 +731,13 @@
 		to_chat(telepath, span_warning("You don't see anyone to send your thought to."))
 		return
 	var/mob/living/recipient = tgui_input_list(telepath, "Choose a telepathic message recipient", "Telepathy", sort_names(recipient_options))
-	if(isnull(recipient))
+	if(isnull(recipient) || telepath.stat == DEAD || !is_species(telepath, /datum/species/jelly/stargazer))
 		return
 	var/msg = tgui_input_text(telepath, title = "Telepathy")
-	if(isnull(msg))
+	if(isnull(msg) || telepath.stat == DEAD || !is_species(telepath, /datum/species/jelly/stargazer))
+		return
+	if(!(recipient in oview(telepath)))
+		to_chat(telepath, span_warning("You can't see [recipient] anymore!"))
 		return
 	if(recipient.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
 		to_chat(telepath, span_warning("As you reach into [recipient]'s mind, you are stopped by a mental blockage. It seems you've been foiled."))

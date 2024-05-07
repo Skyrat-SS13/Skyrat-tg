@@ -142,35 +142,6 @@
 	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
 		qdel(titanium_energy)
 
-/// funny borg inducer upgrade
-/obj/item/borg/upgrade/inducer
-	name = "engineering cyborg inducer upgrade"
-	desc = "An inducer device for the engineering cyborg."
-	icon_state = "cyborg_upgrade3"
-	require_model = TRUE
-	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
-	model_flags = BORG_MODEL_ENGINEERING
-
-/obj/item/borg/upgrade/inducer/action(mob/living/silicon/robot/target_robot, user = usr)
-	. = ..()
-	if(.)
-
-		var/obj/item/inducer/cyborg/inducer = locate() in target_robot
-		if(inducer)
-			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
-			return FALSE
-
-		inducer = new(target_robot.model)
-		target_robot.model.basic_modules += inducer
-		target_robot.model.add_module(inducer, FALSE, TRUE)
-
-/obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/target_robot, user = usr)
-	. = ..()
-	if (.)
-		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
-		if (inducer)
-			target_robot.model.remove_module(inducer, TRUE)
-
 /*
 *	ADVANCED MINING CYBORG UPGRADES
 */
@@ -208,7 +179,7 @@
 *	ADVANCED CARGO CYBORG UPGRADES
 */
 /datum/design/borg_upgrade_clamp
-	name = "improved Integrated Hydraulic Clamp Module"
+	name = "Improved Integrated Hydraulic Clamp Module"
 	id = "borg_upgrade_clamp"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/better_clamp
@@ -252,7 +223,7 @@
 		cyborg.model.remove_module(big_clamp, TRUE)
 
 /datum/design/borg_upgrade_cargo_tele
-	name = "cargo teleporter module"
+	name = "Cargo teleporter module"
 	id = "borg_upgrade_cargo_tele"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/cargo_tele
@@ -263,7 +234,7 @@
 	)
 
 /obj/item/borg/upgrade/cargo_tele
-	name = "borg cargo teleporter module"
+	name = "cargo teleporter module"
 	desc = "Allows you to upgrade a cargo cyborg with the cargo teleporter"
 	icon_state = "cyborg_upgrade3"
 	require_model = TRUE
@@ -294,7 +265,7 @@
 		cyborg.model.remove_module(locate_tele, TRUE)
 
 /datum/design/borg_upgrade_forging
-	name = "borg forging module"
+	name = "Forging module"
 	id = "borg_upgrade_forging"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/forging
@@ -305,7 +276,7 @@
 	)
 
 /obj/item/borg/upgrade/forging
-	name = "borg forging module"
+	name = "cyborg forging module"
 	desc = "Allows you to upgrade a cargo cyborg with forging gear"
 	icon_state = "cyborg_upgrade3"
 	require_model = TRUE
@@ -357,12 +328,66 @@
 		cyborg.model.remove_module(locate_forge, TRUE)
 
 /*
+* SERVICE CYBORG UPGRADES
+*/
+
+/datum/design/borg_upgrade_artistic
+	name = "Artistic module"
+	id = "borg_upgrade_artistic"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/artistic
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,
+					/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
+	construction_time = 10 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
+	)
+
+/obj/item/borg/upgrade/artistic
+	name = "borg artistic module"
+	desc = "Allows you to upgrade a service cyborg with tools for creating art."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/service)
+	model_flags = BORG_MODEL_SERVICE
+	var/list/items_to_add = list(
+			/obj/item/pen,
+			/obj/item/toy/crayon/spraycan/borg,
+			/obj/item/instrument/guitar,
+			/obj/item/instrument/piano_synth,
+			/obj/item/stack/pipe_cleaner_coil/cyborg,
+			/obj/item/chisel,
+			)
+
+/obj/item/borg/upgrade/artistic/action(mob/living/silicon/robot/install, user = usr)
+	. = ..()
+	if(!.)
+		return FALSE
+	for(var/item_to_add in items_to_add)
+		if(locate(item_to_add) in install.model.modules)
+			install.balloon_alert_to_viewers("already installed!")
+			return FALSE
+		else
+			var/obj/item/module_item = new item_to_add(install.model.modules)
+			install.model.basic_modules += module_item
+			install.model.add_module(module_item, FALSE, TRUE)
+
+/obj/item/borg/upgrade/artistic/deactivate(mob/living/silicon/robot/install, user = usr)
+	. = ..()
+	if (!.)
+		return FALSE
+	for(var/item_to_add in items_to_add)
+		var/obj/item/module_item = locate(item_to_add) in install.model.modules
+		if (module_item)
+			install.model.remove_module(module_item, TRUE)
+
+/*
 *	UNIVERSAL CYBORG UPGRADES
 */
 
 /// ShapeShifter
 /obj/item/borg/upgrade/borg_shapeshifter
-	name = "Cyborg Shapeshifter Module"
+	name = "cyborg shapeshifter module"
 	desc = "An experimental device which allows a cyborg to disguise themself into another type of cyborg."
 	icon_state = "cyborg_upgrade3"
 

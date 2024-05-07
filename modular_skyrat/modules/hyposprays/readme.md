@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/1929
+Original PR: https://github.com/Skyrat-SS13/Skyrat-tg/pull/1929
 
 ## Title: Hyposprays
 
@@ -11,7 +11,10 @@ Gives Medical back its Hyposprays. Oldbase stuff is good.
 ### TG Proc Changes:
 
 - CMO's locker now contains a new object, the CMO's Hypospray Kit. Old Hypospray has been commented out.
-- Medical Doctor and Paramedic jobs now spawn with a standard Hypospray kit in backpack_contents
+- Chemistry lockers now contain two boxes of Standard Hypospray Kits.
+- Medical belts can carry the Mk II Hyposprays, vials, and Hypospray Kits.
+- Adds CAT_HYPOS to ``code/_globalvars/lists/reagents.dm`` to allow vials to be printed from chem dispensers.
+- Bluespace technicans get combat hypospray kits for QOL and testing.
 
 ### Defines:
 
@@ -41,3 +44,4 @@ Gives Medical back its Hyposprays. Oldbase stuff is good.
 ### Credits:
 
 ShadeAware - Porting
+CliffracerX - Tweaks & new sprites

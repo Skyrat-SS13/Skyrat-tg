@@ -10,13 +10,13 @@
 /area/centcom/holding/cafe
 	name = "Ghost Cafe"
 
-/area/centcom/holding/cafevox
+/area/centcom/holding/cafe/vox
 	name = "Cafe Vox Box"
 
-/area/centcom/holding/cafedorms
+/area/centcom/holding/cafe/dorms
 	name = "Ghost Cafe Dorms"
 
-/area/centcom/holding/cafepark
+/area/centcom/holding/cafe/park
 	name = "Ghost Cafe Outdoors"
 
 /area/centcom/interlink
