@@ -372,7 +372,7 @@
 		new_casing.set_custom_materials(efficient_materials)
 		loaded_magazine.update_appearance()
 		flick("ammobench_process", src)
-		use_power(3000)
+		use_energy(3000 JOULES)
 		playsound(loc, 'sound/machines/piston_raise.ogg', 60, 1)
 	else
 		qdel(new_casing)
@@ -385,12 +385,12 @@
 		error_type = "good"
 		return
 
-	updateDialog()
+	SStgui.update_uis(src)
 
 	timer_id = addtimer(CALLBACK(src, PROC_REF(fill_round), casing_type), time_per_round, TIMER_STOPPABLE)
 
 /obj/machinery/ammo_workbench/proc/ammo_fill_finish(successfully = TRUE)
-	updateDialog()
+	SStgui.update_uis(src)
 	if(successfully)
 		playsound(loc, 'sound/machines/ping.ogg', 40, TRUE)
 	else
@@ -624,13 +624,13 @@
 	switch(wire)
 		if(WIRE_HACK)
 			A.adjust_hacked(!A.hacked)
-			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 6 SECONDS)
 		if(WIRE_SHOCK)
 			A.shocked = !A.shocked
-			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 6 SECONDS)
 		if(WIRE_DISABLE)
 			A.disabled = !A.disabled
-			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 6 SECONDS)
 
 /datum/wires/ammo_workbench/on_cut(wire, mend, source)
 	var/obj/machinery/ammo_workbench/A = holder

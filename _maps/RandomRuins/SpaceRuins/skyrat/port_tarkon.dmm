@@ -839,6 +839,7 @@
 "gd" = (
 /obj/structure/table/reinforced,
 /obj/item/kitchen/rollingpin,
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "gm" = (
@@ -1903,6 +1904,7 @@
 /obj/item/storage/part_replacer/cargo,
 /obj/structure/noticeboard/directional/east,
 /obj/item/paper/fluff/ruins/tarkon/scisafe,
+/obj/machinery/ecto_sniffer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "ns" = (
@@ -2319,11 +2321,10 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon)
 "pP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/forehall)
+/obj/structure/closet/secure_closet/freezer/meat/open,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/port_tarkon/kitchen)
 "pR" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
@@ -4274,7 +4275,7 @@
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "DG" = (
 /obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder/constructed,
+/obj/machinery/reagentgrinder,
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
@@ -4421,13 +4422,13 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "EE" = (
-/obj/item/stack/sheet/mineral/gold{
-	amount = 25
-	},
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 4
 	},
 /obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 25
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "EG" = (
@@ -4803,6 +4804,11 @@
 "HE" = (
 /obj/effect/turf_decal/tile/blue/half,
 /obj/structure/table/reinforced,
+/obj/machinery/fax{
+	name = "Port Tarkon Fax Machine";
+	fax_name = "Tarkon Industries Bridge";
+	special_networks = list("tarkon" = list("fax_name" = "Tarkon TB.", "fax_id" = "tarkon_command", "color" = "brown", "emag_needed" = 0))
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "HH" = (
@@ -5064,7 +5070,7 @@
 /area/ruin/space/has_grav/port_tarkon/mining)
 "Jg" = (
 /obj/structure/safe/floor,
-/obj/item/areaeditor/blueprints/tarkon,
+/obj/item/blueprints/tarkon,
 /obj/item/circuitboard/machine/bluespace_miner,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/power1)
@@ -7058,7 +7064,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder/constructed,
+/obj/machinery/reagentgrinder,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Wy" = (
@@ -7307,7 +7313,7 @@
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 1
 	},
-/obj/item/areaeditor/blueprints/slime,
+/obj/item/blueprints/slime,
 /obj/item/slime_extract/grey,
 /obj/item/slime_extract/grey,
 /obj/item/slime_extract/grey,
@@ -11115,7 +11121,7 @@ iG
 hG
 VZ
 VZ
-Ut
+pP
 hG
 yc
 qv
@@ -11158,7 +11164,7 @@ bt
 eT
 YZ
 Hg
-pP
+YZ
 eT
 bt
 bt

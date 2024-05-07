@@ -36,14 +36,8 @@
 			return FALSE
 	return TRUE
 
-/client/proc/one_click_antag()
-	set name = "Create Antagonist"
-	set desc = "Auto-create an antagonist of your choice"
-	set category = "Admin.Events"
-
-	if(holder)
-		holder.one_click_antag()
-	return
+ADMIN_VERB(one_click_antag, R_ADMIN, "Create Antagonist", "Auto-create an antagonist of your choice", ADMIN_CATEGORY_EVENTS)
+	user.holder?.one_click_antag()
 
 /**
 If anyone can figure out how to get Obsessed to work I would be very appreciative.

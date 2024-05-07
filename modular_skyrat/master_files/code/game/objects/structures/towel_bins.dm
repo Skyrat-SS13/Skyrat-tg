@@ -48,9 +48,6 @@
 
 
 /obj/structure/towel_bin/screwdriver_act(mob/living/user, obj/item/tool)
-	if(obj_flags & NO_DECONSTRUCTION)
-		return FALSE
-
 	if(amount)
 		to_chat(user, span_warning("[src] must be empty first!"))
 		return ITEM_INTERACT_SUCCESS
@@ -60,7 +57,8 @@
 		new /obj/item/stack/rods(loc, 2)
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
-
+	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
+		new /obj/item/stack/rods(loc, 2)
 
 /obj/structure/towel_bin/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()

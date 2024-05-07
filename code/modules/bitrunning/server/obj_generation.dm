@@ -43,6 +43,7 @@
 	var/datum/outfit/to_wear = new outfit_path()
 
 	to_wear.belt = /obj/item/bitrunning_host_monitor
+	to_wear.ears = null
 	to_wear.glasses = null
 	to_wear.gloves = null
 	to_wear.l_pocket = null
@@ -83,6 +84,13 @@
 
 		SSid_access.apply_trim_to_card(outfit_id, /datum/id_trim/bit_avatar)
 
+	avatar.AddComponent( \
+		/datum/component/simple_bodycam, \
+		camera_name = "bitrunner bodycam", \
+		c_tag = "Avatar [avatar.real_name]", \
+		network = BITRUNNER_CAMERA_NET, \
+		emp_proof = TRUE, \
+	)
 	return avatar
 
 /// Generates a new hololadder for the bitrunner. Effectively a respawn attempt.

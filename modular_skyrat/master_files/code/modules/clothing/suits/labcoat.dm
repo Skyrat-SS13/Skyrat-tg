@@ -12,6 +12,7 @@
 	name = "research directors labcoat"
 	desc = "A Nanotrasen standard labcoat for certified Research Directors. It has an extra plastic-latex lining on the outside for more protection from chemical and viral hazards."
 	icon_state = "labcoat_rd"
+	gets_cropped_on_taurs = FALSE
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor_type = /datum/armor/skyrat_rd
 
@@ -20,6 +21,18 @@
 	bio = 80
 	fire = 80
 	acid = 70
+
+/obj/item/clothing/suit/toggle/labcoat/skyrat/regular
+	name = "researcher's labcoat"
+	desc = "A Nanotrasen standard labcoat for researchers in the scientific field."
+	icon_state = "labcoat_regular"
+	gets_cropped_on_taurs = FALSE
+
+/obj/item/clothing/suit/toggle/labcoat/skyrat/pharmacist
+	name = "pharmacist's labcoat"
+	desc = "A standard labcoat for chemistry which protects the wearer from acid spills."
+	icon_state = "labcoat_pharm"
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	name = "high vis labcoat"
