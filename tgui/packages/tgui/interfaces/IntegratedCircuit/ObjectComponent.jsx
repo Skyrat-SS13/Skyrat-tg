@@ -37,10 +37,6 @@ export class ObjectComponent extends Component {
     const { dragPos } = this.state;
     const { index, act = () => _ } = this.props;
     if (dragPos) {
-      // SKYRAT ADDITION BEGIN - Always use grid stepping motion
-      dragPos.x = Math.round(dragPos.x / 10) * 10;
-      dragPos.y = Math.round(dragPos.y / 10) * 10;
-      // SKYRAT ADDITION END
       act('set_component_coordinates', {
         component_id: index,
         rel_x: dragPos.x,
@@ -111,10 +107,6 @@ export class ObjectComponent extends Component {
     if (dragPos && startPos && startPos.x === x_pos && startPos.y === y_pos) {
       x_pos = dragPos.x;
       y_pos = dragPos.y;
-      // SKYRAT ADDITION BEGIN - Always use grid stepping motion
-      x_pos = Math.round(x_pos / 10) * 10;
-      y_pos = Math.round(y_pos / 10) * 10;
-      // SKYRAT ADDITION END
     }
 
     // Assigned onto the ports
