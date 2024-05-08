@@ -81,4 +81,9 @@
 	var/obj/item/I = user.get_active_held_item()
 	if(!I)
 		return
+	//SKYRAT EDIT START
+	if(istype(I, /obj/item/kinetic_gauntlet))
+		var/obj/item/kinetic_gauntlet/gauntlet = I
+		gauntlet.next_attack = 0 //i hate this but i also don't know how else to implement this
+	//SKYRAT EDIT END
 	I.melee_attack_chain(user, target, null)
