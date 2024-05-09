@@ -11,7 +11,7 @@
 /obj/projectile/bullet/c460rowland
 	name = ".460 Rowland Rose"
 	damage = 35
-	stamina = 10 //knock the winds outta ya
+	stamina = 15 //knock the winds outta ya
 
 	wound_bonus = 15
 	bare_wound_bonus = -40

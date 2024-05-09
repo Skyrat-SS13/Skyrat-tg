@@ -30,11 +30,11 @@
 	suppressor_x_offset = 11
 
 	burst_size = 2
-	fire_delay = 0.1 SECONDS
+	fire_delay = 0.5 SECONDS
 
 	spread = 4
 
-/obj/item/gun/ballistic/automatic/gelato/give_manufacturer_examine()
+/obj/item/gun/ballistic/automatic/rom_smg/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
 //Does not have additional examine text.. Yet
