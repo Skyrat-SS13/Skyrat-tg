@@ -56,6 +56,7 @@
 	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	//SKYRAT EDIT END
 
+<<<<<<< HEAD
 /// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
 /proc/init_species_list()
 	for(var/species_path in subtypesof(/datum/species))
@@ -65,6 +66,8 @@
 
 =======
 >>>>>>> 0cc5cfb178e (Random Name Generation refactor, generate random names based on languages (for species without name lists, like Felinids and Podpeople) (#83021))
+=======
+>>>>>>> 7296d5d50b6 ([MIRROR] Random Name Generation refactor, generate random names based on languages (for species without name lists, like Felinids and Podpeople) (#2314))
 /// Inits GLOB.surgeries
 /proc/init_surgeries()
 	var/surgeries = list()
@@ -87,7 +90,6 @@
 	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
 <<<<<<< HEAD
 	init_sprite_accessories()
-	init_species_list()
 	init_hair_gradients()
 =======
 >>>>>>> 0cc5cfb178e (Random Name Generation refactor, generate random names based on languages (for species without name lists, like Felinids and Podpeople) (#83021))

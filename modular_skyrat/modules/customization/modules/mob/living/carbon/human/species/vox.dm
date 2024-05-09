@@ -62,17 +62,6 @@
 	else
 		give_important_for_life(equipping)
 
-/datum/species/vox/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_vox_name()
-
-	var/randname = vox_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
-
 /datum/species/vox/randomize_features()
 	var/list/features = ..()
 	features["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
