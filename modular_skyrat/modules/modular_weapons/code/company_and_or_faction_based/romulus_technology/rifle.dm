@@ -20,26 +20,17 @@
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
-	burst_size = 1
+	burst_size = 3
 	fire_delay = 0.24 SECONDS
 
-	spread = 7.5
+	spread = 5.5
 	projectile_wound_bonus = -35
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
 
-/obj/item/gun/ballistic/automatic/rom_carbine/Initialize(mapload)
-	. = ..()
-
-	give_autofire()
-
 /obj/item/gun/ballistic/automatic/rom_carbine/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
-
-/obj/item/gun/ballistic/automatic/rom_carbine/proc/give_autofire()
-	AddComponent(/datum/component/automatic_fire, fire_delay)
-
 
 /obj/item/gun/ballistic/automatic/rom_carbine/examine(mob/user)
 	. = ..()
