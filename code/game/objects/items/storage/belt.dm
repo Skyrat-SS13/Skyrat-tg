@@ -292,6 +292,7 @@
 		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
 		/obj/item/handheld_soulcatcher, // SKYRAT EDIT SOULCATCHERS
 		/obj/item/wrench/medical,
+		/obj/item/knife/ritual,
 	))
 
 /obj/item/storage/belt/medical/paramedic
