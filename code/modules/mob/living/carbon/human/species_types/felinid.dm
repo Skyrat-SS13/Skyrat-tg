@@ -136,13 +136,6 @@
 		var/datum/species/human/felinid/cat_species = soon_to_be_felinid.dna.species
 		cat_species.original_felinid = FALSE
 	else
-<<<<<<< HEAD
-		// GOLDEN TODO - Make this check that they don't already have tails and ears before inserting them.
-		var/obj/item/organ/internal/ears/cat/kitty_ears = new
-		var/obj/item/organ/external/tail/cat/kitty_tail = new
-
-=======
->>>>>>> 3c51accda69 (Fixes masspurbation erroring out when trying to give/remove cat tails from incompatible subspecies of humans (#83108))
 		// This removes the spines if they exist
 		var/obj/item/organ/external/spines/current_spines = soon_to_be_felinid.get_organ_slot(ORGAN_SLOT_EXTERNAL_SPINES)
 		if(current_spines)
