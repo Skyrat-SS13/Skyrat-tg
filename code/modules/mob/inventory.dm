@@ -468,11 +468,6 @@
 	if(user.active_storage?.attempt_insert(src, user, messages = FALSE))
 		return TRUE
 
-<<<<<<< HEAD
-	var/list/obj/item/possible = list(M.get_inactive_held_item(), M.get_item_by_slot(ITEM_SLOT_BELT), M.get_item_by_slot(ITEM_SLOT_DEX_STORAGE), M.get_item_by_slot(ITEM_SLOT_BACK))
-	for(var/i in possible)
-		if(!i)
-=======
 	var/list/obj/item/possible = list(
 		user.get_inactive_held_item(),
 		user.get_item_by_slot(ITEM_SLOT_BELT),
@@ -481,7 +476,6 @@
 	)
 	for(var/thing in possible)
 		if(isnull(thing))
->>>>>>> 177a2edfe59 (Quick equip no longer throws balloon alerts (#83117))
 			continue
 		var/obj/item/gear = thing
 		if(gear.atom_storage?.attempt_insert(src, user, messages = FALSE))
