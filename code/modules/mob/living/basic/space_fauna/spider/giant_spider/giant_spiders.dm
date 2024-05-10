@@ -111,7 +111,7 @@
 
 /mob/living/basic/spider/giant/hunter/mold //skyrat edit: exists to make molds not spam the world with simple mobs
 	basic_mob_flags = DEL_ON_DEATH
-	habitable_atmos = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	habitable_atmos = null
 	
 ///Used in the caves away mission.
 /mob/living/basic/spider/giant/hunter/away_caves
