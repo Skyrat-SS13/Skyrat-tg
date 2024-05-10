@@ -48,7 +48,11 @@
 		/datum/job/chemist,
 		/datum/job/doctor,
 		/datum/job/psychologist,
+<<<<<<< HEAD
 		/datum/job/virologist,
+=======
+		/datum/job/coroner,
+>>>>>>> 1fc79309b34 (Coroner, Chief Engineer, Bitrunner are no longer exempt from certain Traitor objectives (#83165))
 		// Science
 		/datum/job/geneticist,
 		/datum/job/roboticist,
@@ -80,6 +84,7 @@
 
 	target_jobs = list(
 		// Cargo
+		/datum/job/bitrunner,
 		/datum/job/shaft_miner,
 		// Medical
 		/datum/job/paramedic,
