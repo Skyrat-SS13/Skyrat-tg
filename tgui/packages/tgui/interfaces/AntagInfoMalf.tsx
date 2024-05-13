@@ -1,5 +1,4 @@
 import { BooleanLike } from 'common/react';
-import { multiline } from 'common/string';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -82,12 +81,12 @@ const FlavorSection = (props) => {
           mt={-0.5}
           icon="hammer"
           /* SKYRAT EDIT: ORIGINAL TOOLTIP
-          tooltip={multiline`
+          tooltip={`
             This is a gameplay suggestion for bored ais.
             You don't have to follow it, unless you want some
             ideas for how to spend the round.`}
           */
-          tooltip={multiline`
+          tooltip={`
             Please refer to the 'Antagonist Policy' section of the wiki
             if you have any questions.`}
           tooltipPosition="bottom-start"
