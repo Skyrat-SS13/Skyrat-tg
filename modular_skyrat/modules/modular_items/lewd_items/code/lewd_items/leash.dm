@@ -1,8 +1,8 @@
 /obj/item/clothing/erp_leash
 	name = "leash"
 	desc = "A guiding hand's best friend; in a sleek, semi-elastic package. Can either clip to a collar or be affixed to the neck on its own."
-	icon = 'modular_nova/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_belts.dmi'
-	worn_icon = 'modular_nova/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_belts.dmi'
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_belts.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_belts.dmi'
 	icon_state = "neckleash_pink"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
