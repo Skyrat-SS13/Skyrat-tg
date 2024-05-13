@@ -5,7 +5,7 @@
 	desc = "A needle-tip foam gun filled with an advanced synthetic foam that rapidly \
 		fills and stabilizes structural damage in synthetics. The damaged area will be \
 		vulnerable to further damage while the foam hardens"
-	icon = 'modular_nova/modules/deforest_medical_items/icons/stack_items.dmi'
+	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "robofoam"
 	inhand_icon_state = "implantcase"
 	applicable_wounds = list(
@@ -36,7 +36,7 @@
 		vulnerable to further damage while the foam hardens. \
 		This special premium type can also be used to repair almost any possible type \
 		of synthetic damage."
-	icon = 'modular_nova/modules/deforest_medical_items/icons/stack_items.dmi'
+	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "robofoam_super"
 	inhand_icon_state = "implantcase"
 	applicable_wounds = list(
@@ -66,7 +66,7 @@
 /obj/item/reagent_containers/pill/robotic_patch
 	name = "robotic patch"
 	desc = "A chemical patch for touch-based applications on synthetics."
-	icon = 'modular_nova/modules/deforest_medical_items/icons/stack_items.dmi'
+	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "synth_patch"
 	inhand_icon_state = null
 	possible_transfer_amounts = list()

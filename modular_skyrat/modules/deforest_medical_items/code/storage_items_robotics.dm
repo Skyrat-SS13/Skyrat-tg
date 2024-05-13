@@ -2,11 +2,11 @@
 /obj/item/storage/medkit/robotic_repair
 	name = "robotic repair equipment kit"
 	desc = "An industrial-strength plastic box filled with supplies for repairing synthetics from critical damage."
-	icon = 'modular_nova/modules/deforest_medical_items/icons/storage.dmi'
+	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "synth_medkit"
 	inhand_icon_state = "medkit"
-	worn_icon = 'modular_nova/modules/deforest_medical_items/icons/worn/worn.dmi'
-	worn_icon_teshari = 'modular_nova/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
+	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
 	worn_icon_state = "frontier"
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
