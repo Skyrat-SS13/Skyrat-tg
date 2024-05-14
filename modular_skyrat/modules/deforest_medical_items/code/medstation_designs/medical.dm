@@ -75,6 +75,28 @@
 		RND_CATEGORY_DEFOREST_MEDICAL,
 	)
 
+/datum/design/organic_printer_synth_patch
+	name = "Robotic Repair Patch"
+	id = "organic_repair_patch"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 100)
+	build_path = /obj/item/reagent_containers/pill/robotic_patch/synth_repair
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_DEFOREST_MEDICAL,
+	)
+
+/datum/design/organic_printer_repair_foam
+	name = "Robotic Repair Spray"
+	id = "organic_repair_foam"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 100)
+	build_path = /obj/item/stack/sticky_tape/surgical
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_DEFOREST_MEDICAL,
+	)
+
 /datum/design/organic_printer_bone_gel
 	name = "Bone Gel"
 	id = "organic_bone_gel"
