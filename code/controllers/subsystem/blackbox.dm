@@ -44,6 +44,7 @@ SUBSYSTEM_DEF(blackbox)
 		return
 	var/playercount = LAZYLEN(GLOB.player_list)
 	var/admincount = GLOB.admins.len
+<<<<<<< HEAD
 	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_name, server_ip, server_port, round_id)
 		VALUES (:playercount, :admincount, :time, :server_name, INET_ATON(:server_ip), :server_port, :round_id)
@@ -52,6 +53,14 @@ SUBSYSTEM_DEF(blackbox)
 		"admincount" = admincount,
 		"time" = SQLtime(),
 		"server_name" = CONFIG_GET(string/serversqlname), // SKYRAT EDIT ADDITION - MULTISERVER
+=======
+	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery({"
+		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_ip, server_port, round_id)
+		VALUES (:playercount, :admincount, NOW(), INET_ATON(:server_ip), :server_port, :round_id)
+	"}, list(
+		"playercount" = playercount,
+		"admincount" = admincount,
+>>>>>>> a8dda646a1a (Moves as many db related date/time operations to the db side to avoid byond bugs with dates and times. (#83193))
 		"server_ip" = world.internet_address || "0",
 		"server_port" = "[world.port]",
 		"round_id" = GLOB.round_id,
@@ -299,7 +308,7 @@ Versioning
 
 	var/datum/db_query/query_log_ahelp = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("ticket")] (ticket, action, message, recipient, sender, server_ip, server_port, round_id, timestamp, urgent)
-		VALUES (:ticket, :action, :message, :recipient, :sender, INET_ATON(:server_ip), :server_port, :round_id, :time, :urgent)
+		VALUES (:ticket, :action, :message, :recipient, :sender, INET_ATON(:server_ip), :server_port, :round_id, NOW(), :urgent)
 	"}, list(
 		"ticket" = ticket,
 		"action" = action,
@@ -309,7 +318,6 @@ Versioning
 		"server_ip" = world.internet_address || "0",
 		"server_port" = world.port,
 		"round_id" = GLOB.round_id,
-		"time" = SQLtime(),
 		"urgent" = urgent,
 	))
 	query_log_ahelp.Execute()
@@ -336,9 +344,15 @@ Versioning
 	if(!SSdbcore.Connect())
 		return
 
+<<<<<<< HEAD
 	var/datum/db_query/query_report_death = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_name, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, staminaloss, last_words, suicide)
 		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, :server_name, INET_ATON(:internet_address), :port, :round_id, :time, :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :clone, :stamina, :last_words, :suicide)
+=======
+	var/datum/db_query/query_report_death = SSdbcore.NewQuery({"
+		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, staminaloss, last_words, suicide)
+		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, INET_ATON(:internet_address), :port, :round_id, NOW(), :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :stamina, :last_words, :suicide)
+>>>>>>> a8dda646a1a (Moves as many db related date/time operations to the db side to avoid byond bugs with dates and times. (#83193))
 	"}, list(
 		"name" = L.real_name,
 		"key" = L.ckey,
@@ -363,7 +377,6 @@ Versioning
 		"internet_address" = world.internet_address || "0",
 		"port" = "[world.port]",
 		"round_id" = GLOB.round_id,
-		"time" = SQLtime(),
 	))
 	if(query_report_death)
 		query_report_death.Execute(async = TRUE)
@@ -394,7 +407,7 @@ Versioning
 	:message,
 	:fine,
 	:paid,
-	:timestamp
+	NOW()
 	) ON DUPLICATE KEY UPDATE
 	paid = paid + VALUES(paid)"}, list(
 		"server_ip" = world.internet_address || "0",
@@ -408,7 +421,6 @@ Versioning
 		"message" = message,
 		"fine" = fine,
 		"paid" = paid,
-		"timestamp" = SQLtime()
 	))
 	if(query_report_citation)
 		query_report_citation.Execute(async = TRUE)
