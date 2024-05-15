@@ -332,6 +332,11 @@
 /obj/item/empty_circuit/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stack/sheet/mineral/gold))
 		var/obj/item/stack/attacking_stack = attacking_item
+
+		if(user.mind.get_skill_level(/datum/skill/research) < SKILL_LEVEL_JOURNEYMAN)
+			to_chat(user, span_warning("You are not skilled enough in research to create a circuit!"))
+			return
+
 		var/choice = tgui_input_list(user, "Which circuit are you thinking about?", "Circuit Creation", recycleable_circuits)
 		if(!choice)
 			to_chat(user, span_notice("You decide against creating the circuit..."))
