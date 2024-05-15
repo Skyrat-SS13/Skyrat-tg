@@ -139,6 +139,7 @@
 		"Pontifex",
 		"Rabbi",
 		"Reverend",
+		"Cleric",
 	)
 
 /datum/job/chemist

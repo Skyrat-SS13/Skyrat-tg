@@ -20,7 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_MINOR_VERSION 26
+#define DB_MINOR_VERSION 30
 
 
 //! ## Timing subsystem
@@ -136,8 +136,9 @@
 #define INIT_ORDER_DBCORE 95
 #define INIT_ORDER_BLACKBOX 94
 #define INIT_ORDER_SERVER_MAINT 93
+#define INIT_ORDER_PLAYER_RANKS 86 // SKYRAT EDIT - Player Ranks Subsystem
 #define INIT_ORDER_INPUT 85
-#define INIT_ORDER_PLAYER_RANKS 84 // SKYRAT EDIT - Player Ranks Subsystem
+#define INIT_ORDER_ADMIN_VERBS 84 // needs to be pretty high, admins cant do much without it
 #define INIT_ORDER_SOUNDS 83
 #define INIT_ORDER_INSTRUMENTS 82
 #define INIT_ORDER_GREYSCALE 81
@@ -189,6 +190,7 @@
 #define INIT_ORDER_PATH -50
 #define INIT_ORDER_MATURITY_GUARD -60 //SKYRAT EDIT ADDITION
 #define INIT_ORDER_DECAY -61 //SKYRAT EDIT ADDITION
+#define INIT_ORDER_POWERATOR_PENALITY -62 // SKYRAT EDIT ADDITION
 #define INIT_ORDER_EXPLOSIONS -69
 #define INIT_ORDER_STATPANELS -97
 #define INIT_ORDER_BAN_CACHE -98
@@ -351,3 +353,6 @@
 #define VOTE_WINNER_METHOD_WEIGHTED_RANDOM "Weighted Random"
 /// There is no winner for this vote.
 #define VOTE_WINNER_METHOD_NONE "None"
+
+/// Returned by [/datum/vote/proc/can_be_initiated] to denote the vote is valid and can be initiated.
+#define VOTE_AVAILABLE "Vote Available"

@@ -5,8 +5,8 @@
 	icon_state = "alienpaper_words"
 	show_written_words = FALSE
 
-/obj/item/paper/fluff/awaymissions/astrum/AltClick()
-	return //no folding these
+/obj/item/paper/fluff/awaymissions/astrum/click_alt(mob/user)
+	return NONE //no folding these
 
 /obj/item/paper/fluff/awaymissions/astrum/combat
 	name = "Report: Combat Holodeck"
