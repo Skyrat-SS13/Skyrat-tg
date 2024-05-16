@@ -1,3 +1,4 @@
+<<<<<<< HEAD:code/modules/antagonists/traitor/objectives/sleeper_protocol.dm
 /datum/traitor_objective_category/sleeper_protocol
 	name = "Sleeper Protocol"
 	objectives = list(
@@ -66,6 +67,8 @@
 
 /datum/traitor_objective/sleeper_protocol/ungenerate_objective()
 	disk = null
+=======
+>>>>>>> 926f8197aad (Remove sleeper protocol objective + Remove the upper limit to sabotage RND server/Telecomms (#83206)):code/modules/surgery/sleeper_protocol.dm
 /obj/item/disk/surgery/sleeper_protocol
 	name = "Suspicious Surgery Disk"
 	desc = "The disk provides instructions on how to turn someone into a sleeper agent for the Syndicate."
@@ -129,10 +132,3 @@
 	if(!.)
 		return
 	target.gain_trauma(new /datum/brain_trauma/mild/phobia/conspiracies(), TRAUMA_RESILIENCE_LOBOTOMY)
-
-/datum/traitor_objective/sleeper_protocol/everybody //Much harder for non-med and non-robo
-	progression_minimum = 30 MINUTES
-	progression_reward = list(8 MINUTES, 15 MINUTES)
-	telecrystal_reward = 1
-
-	inverted_limitation = TRUE
