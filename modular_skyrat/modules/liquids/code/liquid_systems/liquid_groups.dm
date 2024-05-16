@@ -54,7 +54,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 /datum/liquid_group/proc/merge_group(datum/liquid_group/otherg)
 	amount_of_active_turfs += otherg.amount_of_active_turfs
-	for(var/turf/liquid_turf in otherg.members)
+	for(var/turf/liquid_turf as anything in otherg.members)
 		liquid_turf.lgroup = src
 		members[liquid_turf] = TRUE
 		if(liquid_turf.liquids)
@@ -90,9 +90,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		indef_loop_safety++
 		getting_new_turfs = FALSE
 		var/list/new_adjacent = list()
-		for(var/t in current_adjacent)
-			var/turf/T2 = t
-			for(var/y in T2.get_atmos_adjacent_turfs())
+		for(var/turf/adjacent as anything in current_adjacent)
+			for(var/y in adjacent.get_atmos_adjacent_turfs())
 				if(!recursive_adjacent[y])
 					new_adjacent[y] = TRUE
 					recursive_adjacent[y] = TRUE
@@ -115,8 +114,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/cached_thermal = 0
 
 	var/obj/effect/abstract/liquid_turf/cached_liquids
-	for(var/turf/liquid_turf in members)
-		if(liquid_turf.liquids)
+	for(var/turf/liquid_turf as anything in members)
+		if(!isnull(liquid_turf.liquids))
 			any_share = TRUE
 			cached_liquids = liquid_turf.liquids
 
@@ -219,22 +218,21 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 /datum/liquid_group/proc/process_cell(turf/T)
 	if(T.liquids.height <= 1) //Causes a bug when the liquid hangs in the air and is supposed to fall down a level
 		return FALSE
-	for(var/tur in T.get_atmos_adjacent_turfs())
-		var/turf/T2 = tur
+	for(var/turf/adjacent as anything in T.get_atmos_adjacent_turfs())
 		//Immutable check thing
-		if(T2.liquids && T2.liquids.immutable)
-			if(T.z != T2.z)
+		if(adjacent.liquids && adjacent.liquids.immutable)
+			if(T.z != adjacent.z)
 				var/turf/Z_turf_below = GET_TURF_BELOW(T)
-				if(T2 == Z_turf_below)
+				if(adjacent == Z_turf_below)
 					qdel(T.liquids, TRUE)
 					return
 				else
 					continue
 
 			//CHECK DIFFERENT TURF HEIGHT THING
-			if(T.liquid_height != T2.liquid_height)
+			if(T.liquid_height != adjacent.liquid_height)
 				var/my_liquid_height = T.liquid_height + T.liquids.height
-				var/target_liquid_height = T2.liquid_height + T2.liquids.height
+				var/target_liquid_height = adjacent.liquid_height + adjacent.liquids.height
 				if(my_liquid_height > target_liquid_height+2)
 					var/coeff = (T.liquids.height / (T.liquids.height + abs(T.liquid_height)))
 					var/height_diff = min(0.4,abs((target_liquid_height / my_liquid_height)-1)*coeff)
@@ -242,40 +240,40 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 					. = TRUE
 				continue
 
-			if(T2.liquids.height > T.liquids.height + 1)
-				SSliquids.active_immutables[T2] = TRUE
+			if(adjacent.liquids.height > T.liquids.height + 1)
+				SSliquids.active_immutables[adjacent] = TRUE
 				. = TRUE
 				continue
 		//END OF IMMUTABLE MADNESS
 
-		if(T.z != T2.z)
+		if(T.z != adjacent.z)
 			var/turf/Z_turf_below = GET_TURF_BELOW(T)
-			if(T2 == Z_turf_below)
-				if(!(T2.liquids && T2.liquids.height + T2.liquid_height >= LIQUID_HEIGHT_CONSIDER_FULL_TILE))
-					T.liquid_fraction_share(T2, 1)
+			if(adjacent == Z_turf_below)
+				if(!(adjacent.liquids && adjacent.liquids.height + adjacent.liquid_height >= LIQUID_HEIGHT_CONSIDER_FULL_TILE))
+					T.liquid_fraction_share(adjacent, 1)
 					qdel(T.liquids, TRUE)
 					. = TRUE
 			continue
 		//CHECK DIFFERENT TURF HEIGHT THING
-		if(T.liquid_height != T2.liquid_height)
+		if(T.liquid_height != adjacent.liquid_height)
 			var/my_liquid_height = T.liquid_height + T.liquids.height
-			var/target_liquid_height = T2.liquid_height + (T2.liquids ? T2.liquids.height : 0)
+			var/target_liquid_height = adjacent.liquid_height + (adjacent.liquids ? adjacent.liquids.height : 0)
 			if(my_liquid_height > target_liquid_height+1)
 				var/coeff = (T.liquids.height / (T.liquids.height + abs(T.liquid_height)))
 				var/height_diff = min(0.4,abs((target_liquid_height / my_liquid_height)-1)*coeff)
-				T.liquid_fraction_share(T2, height_diff)
+				T.liquid_fraction_share(adjacent, height_diff)
 				. = TRUE
 			continue
 		//END OF TURF HEIGHT
-		if(!T.can_share_liquids_with(T2))
+		if(!T.can_share_liquids_with(adjacent))
 			continue
-		if(!T2.lgroup)
-			add_to_group(T2)
+		if(!adjacent.lgroup)
+			add_to_group(adjacent)
 		//Try merge groups if possible
-		else if(T2.lgroup != T.lgroup && T.lgroup.can_merge_group(T2.lgroup))
-			T.lgroup.merge_group(T2.lgroup)
+		else if(adjacent.lgroup != T.lgroup && T.lgroup.can_merge_group(adjacent.lgroup))
+			T.lgroup.merge_group(adjacent.lgroup)
 		. = TRUE
-		SSliquids.add_active_turf(T2)
+		SSliquids.add_active_turf(adjacent)
 	if(.)
 		dirty = TRUE
 			//return //Do we want it to spread once per process or many times?
