@@ -85,6 +85,8 @@
 	var/max_harvest = 3
 	///the cooldown amount between each harvest
 	var/harvest_cooldown = 1 MINUTES
+	///the extra potency applied to the seed
+	var/bonus_potency = 0
 	//the cooldown between each harvest
 	COOLDOWN_DECLARE(harvest_timer)
 
@@ -115,6 +117,8 @@
 		. += span_notice("<br>You can use sinew or worm fertilizer to lower the time between each harvest!")
 	if(harvest_cooldown > 30 SECONDS)
 		. += span_notice("You can use goliath hides or worm fertilizer to increase the amount dropped per harvest!")
+	if(bonus_potency < 50)
+		. += span_notice("You can use worm fertilizer to increase the potency of dropped crops!")
 
 /obj/structure/simple_farm/process(seconds_per_tick)
 	update_appearance()
@@ -186,7 +190,7 @@
 			balloon_alert(user, "unable to use [attacking_item]")
 			return
 
-		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE))
+		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE) && !increase_potency(user, silent = TRUE))
 			balloon_alert(user, "plant is already fully upgraded")
 
 		else
@@ -240,6 +244,23 @@
 	return TRUE
 
 /**
+ * a proc that will increase the potency the crop grows at
+ */
+/obj/structure/simple_farm/proc/increase_potency(mob/user, var/silent = FALSE)
+	if(bonus_potency >= 50)
+		if(!silent)
+			balloon_alert(user, "plant is at maximum potency")
+
+		return FALSE
+
+	bonus_potency += 10
+
+	if(!silent)
+		balloon_alert_to_viewers("plant will have increased potency")
+
+	return TRUE
+
+/**
  * used during the component so that it can move when its attached atom moves
  */
 /obj/structure/simple_farm/proc/late_setup()
@@ -261,30 +282,19 @@
 		return
 
 	for(var/i in 1 to rand(1, max_harvest))
-		var/obj/creating_obj
-
+		var/obj/item/seeds/seed
 		if(prob(15) && length(planted_seed.mutatelist))
-			var/obj/item/seeds/choose_seed = pick(planted_seed.mutatelist)
-			creating_obj = initial(choose_seed.product)
-
-			if(!creating_obj)
-				creating_obj = choose_seed
-
-			var/created_special = new creating_obj(get_turf(src))
-
-			plant_bag?.atom_storage?.attempt_insert(created_special, user, TRUE)
-
+			var/type = pick(planted_seed.mutatelist)
+			seed = new type
 			balloon_alert_to_viewers("something special drops!")
-			continue
+		else
+			seed = new planted_seed.type(null)
 
-		creating_obj = planted_seed.product
+		seed.potency = 50 + bonus_potency
 
-		if(!creating_obj)
-			creating_obj = planted_seed.type
-
-		var/created_harvest = new creating_obj(get_turf(src))
-
-		plant_bag?.atom_storage?.attempt_insert(created_harvest, user, TRUE)
+		var/harvest_type = seed.product || seed.type
+		var/harvest = new harvest_type(get_turf(src), seed)
+		plant_bag?.atom_storage?.attempt_insert(harvest, user, TRUE)
 
 /turf/open/misc/asteroid/basalt/getDug()
 	. = ..()
