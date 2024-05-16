@@ -74,7 +74,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 /datum/liquid_group/Destroy()
 	SSliquids.active_groups -= src
-	for(var/turf/liquid_turf in members)
+	for(var/turf/liquid_turf as anything in members)
 		liquid_turf.lgroup = null
 	members = null
 	return ..()
