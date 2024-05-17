@@ -5,7 +5,7 @@
 	id = "storedmunition_tech"
 	display_name = "Military Grade Munition Research"
 	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
-	prereq_ids = list("adv_weaponry")
+	prereq_ids = list("adv_weaponry", "exotic_ammo")
 	design_ids = list(
 		"s12g_flechette",
 		"s12g_slug",
@@ -43,6 +43,7 @@
 	design_ids += "s12g_rubber"
 	design_ids += "s12g_bslug"
 	design_ids += "s12g_incinslug"
+	design_ids += "s12g_buckshot"
 	design_ids += "c457_casing"
 	. = ..()
 
