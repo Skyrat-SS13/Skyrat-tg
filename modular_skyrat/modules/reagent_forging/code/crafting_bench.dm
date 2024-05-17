@@ -313,7 +313,7 @@
 		var/obj/item/forging/complete/completed_forge_item = contents[1]
 		newly_created_thing = new completed_forge_item.spawning_item(src)
 		if(newly_created_thing.force > 0) //we don't want the staff to get added damage
-			newly_created_thing.force += round(completed_forge_item.current_perfects * INVERSE(10)) //adds a maximum of 3 force, and 6 if dual-wielded
+			newly_created_thing.force += min(round(completed_forge_item.current_perfects * INVERSE(10)), 3) //adds a maximum of 3 force, and 6 if dual-wielded
 
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
 			for(var/custom_material in completed_forge_item.custom_materials)
