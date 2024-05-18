@@ -22,11 +22,13 @@
 		return
 
 	user.balloon_alert_to_viewers("spinning [src]...")
-	if(!do_after(user, 5 SECONDS, target = src))
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+	if(!do_after(user, 5 SECONDS * skill_modifier, target = src))
 		user.balloon_alert_to_viewers("stopped spinning [src]")
 		return
 
 	reagents.del_reagent(user_input.type)
+	user.mind.adjust_experience(/datum/skill/primitive, 5)
 	balloon_alert(user, "removed reagent from [src]")
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/CtrlShiftClick(mob/user)
@@ -40,7 +42,8 @@
 		return
 
 	user.balloon_alert_to_viewers("spinning [src]...")
-	if(!do_after(user, 5 SECONDS, target = src))
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+	if(!do_after(user, 5 SECONDS * skill_modifier, target = src))
 		user.balloon_alert_to_viewers("stopped spinning [src]")
 		return
 
@@ -48,4 +51,5 @@
 		if(!istype(remove_reagent, user_input.type))
 			reagents.del_reagent(remove_reagent.type)
 
+	user.mind.adjust_experience(/datum/skill/primitive, 5)
 	balloon_alert(user, "removed reagents from [src]")
