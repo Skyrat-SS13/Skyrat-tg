@@ -44,6 +44,12 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/frills.dmi'
 	color_src = USE_MATRIXED_COLORS
 
+/datum/sprite_accessory/frills/cobraslim
+	name = "Cobra Hood (Narrow)"
+	icon_state = "cobraslim"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/frills.dmi'
+	color_src = USE_MATRIXED_COLORS
+
 /datum/sprite_accessory/frills/neckfrills
 	name = "Neck Frills"
 	icon_state = "neck"
