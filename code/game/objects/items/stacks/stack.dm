@@ -400,7 +400,8 @@
 			adjusted_time = (recipe.time * recipe.trait_modifier)
 		else
 			adjusted_time = recipe.time
-		if(!do_after(builder, adjusted_time, target = builder))
+		var/skill_modifier = builder.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
+		if(!do_after(builder, adjusted_time * skill_modifier, target = builder))
 			builder.balloon_alert(builder, "interrupted!")
 			return
 		if(!building_checks(builder, recipe, multiplier))
@@ -427,6 +428,8 @@
 	if(created)
 		created.setDir(builder.dir)
 		on_item_crafted(builder, created)
+
+	builder.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT: Construction Skill
 
 	// Use up the material
 	use(recipe.req_amount * multiplier)
