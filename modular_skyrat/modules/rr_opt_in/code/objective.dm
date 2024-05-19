@@ -1,6 +1,6 @@
 /datum/objective
 	/// The default opt in level of this objective. Only targets with opt in above or at this will be considered for this objective.
-	var/default_opt_in_level = RR_OPT_IN
+	var/default_opt_in_level = RR_OPT_OUT
 
 /// Simple getter for [default_opt_in_level]. Use for custom behavior.
 /datum/objective/proc/get_opt_in_level(datum/mind/target_mind)
