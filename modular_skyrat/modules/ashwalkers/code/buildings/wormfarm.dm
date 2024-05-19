@@ -53,7 +53,8 @@
 		return ..()
 
 	balloon_alert(user, "digging up worms")
-	if(!do_after(user, 2 SECONDS, src))
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+	if(!do_after(user, 2 SECONDS * skill_modifier, src))
 		balloon_alert(user, "stopped digging")
 		in_use = FALSE
 		return ..()
@@ -89,7 +90,8 @@
 		in_use = TRUE
 
 		balloon_alert(user, "feeding the worms")
-		if(!do_after(user, 1 SECONDS, src))
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+		if(!do_after(user, 1 SECONDS * skill_modifier, src))
 			balloon_alert(user, "stopped feeding the worms")
 			in_use = FALSE
 			return
@@ -103,7 +105,10 @@
 		balloon_alert(user, "feeding complete, check back later")
 
 		current_food++
+		if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+			current_food++
 
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		in_use = FALSE
 		return
 
@@ -114,14 +119,18 @@
 		in_use = TRUE
 
 		balloon_alert(user, "feeding the worms")
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
 		for(var/obj/item/food/selected_food in attacking_item.contents)
-			if(!do_after(user, 1 SECONDS, src))
+			if(!do_after(user, 1 SECONDS * skill_modifier, src))
 				in_use = FALSE
 				return
 
 			qdel(selected_food)
 			current_food++
+			if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+				current_food++
 
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		in_use = FALSE
 		return
 
