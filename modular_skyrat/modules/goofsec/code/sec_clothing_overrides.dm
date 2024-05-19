@@ -217,7 +217,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmetalt_blue"
 	base_icon_state = "helmetalt_blue"
-
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	///chat message when the visor is toggled down.
 	var/toggle_message = "You pull the visor down on"
 	///chat message when the visor is toggled up.
@@ -236,7 +236,7 @@
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	dog_fashion = null
-
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
 /obj/item/clothing/head/helmet/alt/attack_self(mob/user)
