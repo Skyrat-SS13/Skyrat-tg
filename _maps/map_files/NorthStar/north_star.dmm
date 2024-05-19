@@ -8543,12 +8543,12 @@
 /area/station/hallway/secondary/entry)
 "ceF" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
-	id = "cmo_privacy";
-	name = "CMO Privacy Shutters"
-	},
 /obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "CMO Privacy Shutters";
+	dir = 4;
+	id = "cmoshutter"
+	},
 /turf/open/floor/plating,
 /area/station/medical/storage)
 "ceH" = (
@@ -8989,31 +8989,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/station/construction)
-"cjz" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/machinery/button/door/directional/west{
-	id = "viro-inner";
-	name = "Inner Virology Lockdown";
-	pixel_y = -8
-	},
-/obj/machinery/button/door/directional/west{
-	id = "viro-outer";
-	name = "Outer Virology Lockdown";
-	pixel_y = 8
-	},
-/obj/machinery/button/door/directional/west{
-	id = "viro-iso";
-	name = "Isolation Bolts";
-	normaldoorcontrol = 1;
-	pixel_x = -36;
-	specialfunctions = 4
-	},
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "cjB" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
@@ -19532,6 +19507,15 @@
 	},
 /turf/open/openspace,
 /area/station/science/xenobiology/hallway)
+"fbl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/directional/west,
+/obj/machinery/power/smes/full,
+/turf/open/floor/plating,
+/area/station/engineering/gravity_generator)
 "fbo" = (
 /obj/effect/turf_decal/tile/red/opposingcorners{
 	dir = 1
@@ -26950,6 +26934,16 @@
 /obj/effect/landmark/start/atmospheric_technician,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"hab" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id = "cmoshutter";
+	name = "CMO Privacy Shutters"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/command/heads_quarters/cmo)
 "hah" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white/smooth_corner{
@@ -36853,15 +36847,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/floor1/aft)
-"jCk" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/light/small/directional/west,
-/obj/machinery/power/smes/full,
-/turf/open/floor/plating,
-/area/station/engineering/gravity_generator)
 "jCz" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -40353,14 +40338,6 @@
 	},
 /turf/open/floor/iron/chapel,
 /area/station/service/chapel)
-"kvW" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/landmark/start/virologist,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "kwc" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -41725,6 +41702,11 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
+"kNy" = (
+/obj/item/storage/toolbox/maint_kit,
+/obj/effect/spawner/random/junk_shell,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor4/port)
 "kNA" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -46270,12 +46252,12 @@
 /area/station/maintenance/floor2/port)
 "lTO" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 1;
-	id = "cmo_privacy";
+	id = "cmoshutter";
 	name = "CMO Privacy Shutters"
 	},
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/cmo)
 "lTV" = (
@@ -51252,6 +51234,16 @@
 /obj/structure/cable/layer3,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat)
+"nge" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "cmoshutter";
+	name = "CMO Privacy Shutters"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/command/heads_quarters/cmo)
 "ngf" = (
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
@@ -57404,12 +57396,12 @@
 /area/station/science/xenobiology)
 "oJs" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
-	id = "cmo_privacy";
+	id = "cmoshutter";
 	name = "CMO Privacy Shutters"
 	},
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/cmo)
 "oJO" = (
@@ -68089,11 +68081,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/floor1/starboard/fore)
-"rxZ" = (
-/obj/item/storage/toolbox/maint_kit,
-/obj/item/ammo_casing/shotgun/improvised,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor4/port)
 "ryh" = (
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating/airless,
@@ -92012,11 +91999,11 @@
 	pixel_x = 9
 	},
 /obj/machinery/button/door/directional/north{
-	id = "cmo_privacy";
-	name = "Robotics Privacy Control";
-	pixel_x = -6;
+	name = "CMO Privacy Shutters";
+	id = "cmoshutter";
+	req_access = list("cmo");
 	pixel_y = 25;
-	req_access = list("cmo")
+	pixel_x = -5
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
@@ -94298,6 +94285,30 @@
 /obj/item/reagent_containers/pill/maintenance,
 /turf/open/floor/iron/white,
 /area/station/medical/abandoned)
+"yks" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/button/door/directional/west{
+	id = "viro-inner";
+	name = "Inner Virology Lockdown";
+	pixel_y = -8
+	},
+/obj/machinery/button/door/directional/west{
+	id = "viro-outer";
+	name = "Outer Virology Lockdown";
+	pixel_y = 8
+	},
+/obj/machinery/button/door/directional/west{
+	id = "viro-iso";
+	name = "Isolation Bolts";
+	normaldoorcontrol = 1;
+	pixel_x = -36;
+	specialfunctions = 4
+	},
+/obj/effect/turf_decal/tile/green/opposingcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "ykt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -143683,7 +143694,7 @@ lEI
 aVc
 dEc
 dFq
-jCk
+fbl
 oHx
 dEc
 vYD
@@ -190447,7 +190458,7 @@ syV
 wPX
 xKq
 nCG
-oJs
+nge
 goX
 oJs
 nCG
@@ -190960,7 +190971,7 @@ jRO
 eCO
 wyE
 xKq
-lTO
+hab
 dZz
 bPP
 xhJ
@@ -195562,7 +195573,7 @@ mqc
 mRQ
 dVV
 xNy
-cjz
+yks
 mcI
 rPC
 sJn
@@ -196076,7 +196087,7 @@ iOA
 utl
 doh
 gJz
-kvW
+rPC
 hwQ
 piz
 aWO
@@ -196590,7 +196601,7 @@ iOA
 dfU
 pZm
 wJy
-kvW
+rPC
 dVV
 bLm
 yhv
@@ -314330,7 +314341,7 @@ cis
 cub
 wTg
 vEa
-rxZ
+kNy
 tCG
 pme
 iho

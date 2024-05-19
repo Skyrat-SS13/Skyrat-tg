@@ -10,7 +10,7 @@ Simple datum which is instanced once per type and is used for every object of sa
 	var/name = "material"
 	/// A short description of the material. Not used anywhere, yet...
 	var/desc = "its..stuff."
-	/// What the material is indexed by in the DSmaterials.materials list. Defaults to the type of the material.
+	/// What the material is indexed by in the SSmaterials.materials list. Defaults to the type of the material.
 	var/id
 
 	///Base color of the material, is used for greyscale. Item isn't changed in color if this is null.
@@ -23,7 +23,7 @@ Simple datum which is instanced once per type and is used for every object of sa
 	///Starlight color of the material
 	///This is the color of light it'll emit if its turf is transparent and over space. Defaults to COLOR_STARLIGHT if not set
 	var/starlight_color
-	///Bitflags that influence how DSmaterials handles this material.
+	///Bitflags that influence how SSmaterials handles this material.
 	var/init_flags = MATERIAL_INIT_MAPLOAD
 	///Materials "Traits". its a map of key = category | Value = Bool. Used to define what it can be used for
 	var/list/categories = list()
@@ -59,6 +59,8 @@ Simple datum which is instanced once per type and is used for every object of sa
 	var/cached_texture_filter_icon
 	///What type of shard the material will shatter to
 	var/obj/item/shard_type
+	///How resistant the material is to rusting when applied to a turf
+	var/mat_rust_resistance = RUST_RESISTANCE_ORGANIC
 	///What type of debris the tile will leave behind when shattered.
 	var/obj/effect/decal/debris_type
 	/// How likely this mineral is to be found in a boulder during mining.
@@ -160,6 +162,7 @@ Simple datum which is instanced once per type and is used for every object of sa
 	if(alpha < 255)
 		T.AddElement(/datum/element/turf_z_transparency)
 		setup_glow(T)
+	T.rust_resistance = mat_rust_resistance
 	return
 
 /datum/material/proc/setup_glow(turf/on)

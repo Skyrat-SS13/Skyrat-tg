@@ -56,7 +56,6 @@ const BASEICONS = {
   'Station Engineer': 'gears',
   'Syndicate Operative': 'dragon',
   'Veteran Security Advisor': 'ribbon',
-  Virologist: 'virus',
   Warden: 'handcuffs',
   // SKYRAT EDIT START - Skyrat-exclusive jobs have icons too
   Barber: 'scissors',
@@ -271,6 +270,7 @@ const ALTTITLES = {
   'Apprentice Engineer': BASEICONS['Station Engineer'],
   'Engineering Trainee': BASEICONS['Station Engineer'],
   // Virologist - virus
+  Virologist: 'virus',
   Pathologist: BASEICONS['Virologist'],
   'Junior Pathologist': BASEICONS['Virologist'],
   // Warden - handcuffs

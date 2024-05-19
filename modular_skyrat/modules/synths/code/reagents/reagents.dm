@@ -59,7 +59,7 @@
 	process_flags = REAGENT_SYNTHETIC | REAGENT_ORGANIC
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	/// How much brute and burn individually is healed per tick
-	var/healing = 2
+	var/healing = 3
 	/// How much body temperature is increased by per overdose cycle on robotic bodyparts.
 	var/temperature_change = 50
 
