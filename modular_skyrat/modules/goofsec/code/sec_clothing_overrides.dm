@@ -218,6 +218,13 @@
 	icon_state = "helmetalt_blue"
 	base_icon_state = "helmetalt_blue"
 
+	///chat message when the visor is toggled down.
+	var/toggle_message = "You pull the visor down on"
+	///chat message when the visor is toggled up.
+	var/alt_toggle_message = "You push the visor up on"
+	///Can toggle?
+	var/can_toggle = TRUE
+
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
@@ -230,15 +237,9 @@
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	dog_fashion = null
 
-	///chat message when the visor is toggled down.
-	var/toggle_message = "You pull the visor down on"
-	///chat message when the visor is toggled up.
-	var/alt_toggle_message = "You push the visor up on"
-	///Can toggle?
-	var/can_toggle = TRUE
 
 /// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
-/obj/item/clothing/head/helmet/sec/attack_self(mob/user)
+/obj/item/clothing/head/helmet/alt/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
