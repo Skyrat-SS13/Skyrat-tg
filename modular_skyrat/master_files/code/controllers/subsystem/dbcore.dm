@@ -17,7 +17,7 @@
  * * log_entry - Associative list representing all of the information that needs to be logged.
  * Default format is as follows, for the `game_log` table (even if this could be used for another table):
  * 	list(
- * 		"datetime" = SQLtime(),
+ * 		"datetime" = ISOtime(),
  * 		"round_id" = "[GLOB.round_id]",
  * 		"ckey" = key_name(src),
  * 		"loc" = loc_name(src),
