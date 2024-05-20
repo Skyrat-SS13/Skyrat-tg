@@ -681,13 +681,15 @@
 	return stripped_multiline_input(usr, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN) // SKYRAT EDIT CHANGE - ORIGINAL : return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
 
 /datum/emote/living/custom/proc/get_custom_emote_type_from_user()
-	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
+	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable", "Both")
 
 	switch(type)
 		if("Visible")
 			return EMOTE_VISIBLE
 		if("Hearable")
 			return EMOTE_AUDIBLE
+		if("Both")
+			return EMOTE_VISIBLE | EMOTE_AUDIBLE
 		else
 			tgui_alert(usr,"Unable to use this emote, must be either hearable or visible.")
 			return FALSE
