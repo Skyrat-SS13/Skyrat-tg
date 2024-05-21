@@ -29,10 +29,19 @@
 
 	suppressor_x_offset = 11
 
-	burst_size = 2
+	burst_size = 1
 	fire_delay = 0.5 SECONDS
 
 	spread = 4
+
+/obj/item/gun/ballistic/automatic/rom_smg/Initialize(mapload)
+	. = ..()
+
+	give_autofire()
+
+/// Separate proc for handling auto fire just because one of these subtypes isn't otomatica
+/obj/item/gun/ballistic/automatic/rom_smg/proc/give_autofire()
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/rom_smg/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
