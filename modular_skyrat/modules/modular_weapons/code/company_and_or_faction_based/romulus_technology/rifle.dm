@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/rom_carbine
 	name = "\improper RomTech Carbine"
-	desc = "An unusual conversion of the Carwo-Carwil Battle Rifle by Romulus Technology, preferred by some law enforcement agency for the compact nature. Accepts any standard .40 SolFed rifle magazine."
+	desc = "An unusual variation of the Carwo-Carwil Battle rifle fielded as service rifle in Romulus Federation, preferred by some law enforcement agency for the compact nature. Accepts any standard .40 SolFed rifle magazine."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun48x32.dmi'
 	icon_state = "carbine"
@@ -20,7 +20,7 @@
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
-	burst_size = 3
+	burst_size = 1
 	fire_delay = 1.7
 
 	spread = 6.5
@@ -29,23 +29,14 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
 
-/obj/item/gun/ballistic/automatic/rom_carbine/burst_select()
+/obj/item/gun/ballistic/automatic/rom_carbine/Initialize(mapload)
 	. = ..()
-	var/mob/living/carbon/human/user = usr
-	burst_fire_selection = !burst_fire_selection
-	if(!burst_fire_selection)
-		burst_size = 1
-		fire_delay = 0
-		spread = 0
-		balloon_alert(user, "switched to semi-automatic")
-	else
-		burst_size = initial(burst_size)
-		fire_delay = initial(fire_delay)
-		balloon_alert(user, "switched to [burst_size]-round burst")
 
-	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
-	update_appearance()
-	update_item_action_buttons()
+	give_autofire()
+
+/// Separate proc for handling auto fire just because one of these subtypes isn't otomatica
+/obj/item/gun/ballistic/automatic/rom_carbine/proc/give_autofire()
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/rom_carbine/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
