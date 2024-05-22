@@ -19,14 +19,7 @@
 	var/eye_color_right
 	/// Does the profile source's eyes glow - Skyrats addition
 	var/emissive_eyes
-	/// The profile sorce's gradient styles - Skyrats addition
-	var/list/grad_style = list("None", "None")
-	/// The colors for the profile source's gradients - Skyrats addition
-	var/list/grad_color = list(null, null)
-
-	/// The physique used by the profile source - Skyrats addition
-	var/physique
-	/// Profile source digi leg icons - Skyrats addition
+	/// Profile source digi leg icons
 	var/list/worn_icon_digi_list = list()
 	/// profile source monkey icons - Skyrats addition
 	var/list/worn_icon_monkey_list = list()
@@ -40,7 +33,3 @@
 	var/scream_type
 	/// The profile source laugh type - Skyrats addition
 	var/laugh_type
-	/// The profile source's age - Skyrats addition
-	var/age
-	/// The quirks used by the profile source - Skyrats addition
-	var/list/quirks = list()

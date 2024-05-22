@@ -9,7 +9,10 @@
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
 		/obj/item/clothing/suit/toggle/labcoat/medical = 4,
+		/obj/item/clothing/under/rank/medical/virologist = 4,
+		/obj/item/clothing/suit/toggle/labcoat/virologist = 4,
 		/obj/item/storage/backpack/messenger/med = 4,
+		/obj/item/storage/backpack/messenger/vir = 4
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
