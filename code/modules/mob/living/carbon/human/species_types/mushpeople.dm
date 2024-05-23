@@ -60,10 +60,6 @@
 	if(chem.type == /datum/reagent/toxin/plantbgone/weedkiller)
 		affected.adjustToxLoss(3 * REM * seconds_per_tick)
 
-/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
-	forced_colour = FALSE
-	return ..()
-
 /datum/species/mush/get_fixed_hair_color(mob/living/carbon/human/for_mob)
 	return "#FF4B19" //cap color, spot color uses eye color
 
@@ -79,7 +75,7 @@
 
 	preference = "feature_mushperson_cap"
 
-	dna_block = DNA_MUSHROOM_CAPS_BLOCK
+	//dna_block = DNA_MUSHROOM_CAPS_BLOCK // SKYRAT EDIT REMOVAL - Customization  - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_PLANT
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/mushroom_cap
