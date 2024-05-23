@@ -656,7 +656,7 @@
 			//R.update_transform(0.5) // Original
 			R.update_transform(0.8) // SKYRAT EDIT CHANGE
 
-/obj/item/borg/upgrade/rped//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/borg/upgrade/rped//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "engineering cyborg RPED"
 	desc = "A rapid part exchange device for the engineering cyborg."
 	icon = 'icons/obj/storage/storage.dmi'

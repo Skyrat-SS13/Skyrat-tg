@@ -700,8 +700,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	species_human.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(species_human)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /**
  * Handles the mutant bodyparts of a human
@@ -712,8 +710,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * * H - Human, whoever we're handling the body for
  * * forced_colour - The forced color of an accessory. Leave null to use mutant color.
  */
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/source, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)

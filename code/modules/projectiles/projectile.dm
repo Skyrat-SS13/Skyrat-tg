@@ -206,10 +206,10 @@
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 		COMSIG_ATOM_ATTACK_HAND = PROC_REF(attempt_parry),
 	)
-	//SKYRAT ADDITION START
+	// SKYRAT EDIT ADDITION START
 	/// If this should be able to hit the target even on direct firing when `ignored_factions` applies
 	var/ignore_direct_target = FALSE
-	//SKYRAT ADDITION END
+	// SKYRAT EDIT ADDITION END
 
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE

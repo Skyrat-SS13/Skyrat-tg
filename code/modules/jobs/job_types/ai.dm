@@ -25,13 +25,13 @@
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
-	/* SKYRAT REMOVAL START
+	/* SKYRAT EDIT REMOVAL START
 	//we may have been created after our borg
 	if(SSticker.current_state == GAME_STATE_SETTING_UP)
 		for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
 			if(!R.connected_ai)
 				R.TryConnectToAI()
-	*/ //SKYRAT REMOVAL END
+	*/ // SKYRAT EDIT REMOVAL END
 	var/mob/living/silicon/ai/ai_spawn = spawned
 	ai_spawn.log_current_laws()
 	// SKYRAT EDIT ADDITION START

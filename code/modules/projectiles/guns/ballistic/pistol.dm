@@ -105,7 +105,7 @@
 	simulated_hit.firer = throwingdatum.get_thrower()
 	simulated_hit.on_hit(hit_atom)
 
-/obj/item/gun/ballistic/automatic/pistol/m1911 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/automatic/pistol/m1911 //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper M1911"
 	desc = "A classic .45 handgun with a small magazine capacity."
 	icon_state = "m1911"

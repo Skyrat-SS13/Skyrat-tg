@@ -2,7 +2,7 @@
 
 /turf/closed/wall
 	name = "wall"
-	desc = "A huge chunk of iron used to separate rooms." //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	desc = "A huge chunk of iron used to separate rooms." //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"

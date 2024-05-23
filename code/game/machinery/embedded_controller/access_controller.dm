@@ -31,7 +31,7 @@
 	return TRUE
 
 /obj/machinery/door_buttons/access_button
-	icon = 'icons/obj/machines/wallmounts.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/wallmounts.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	icon_state = "access_button_standby"
 	base_icon_state = "access_button"
 	name = "access button"
