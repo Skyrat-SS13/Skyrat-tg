@@ -80,11 +80,11 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 /obj/item/clockwork/clockwork_slab/dropped(mob/user)
 	. = ..()
 	//Clear quickbinds
-	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
-		script.Remove(user)
+	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
+		script?.Remove(user)
 
 	if(active_scripture)
-		active_scripture.end_invocation()
+		active_scripture?.end_invocation()
 
 	if(buffer)
 		buffer = null
@@ -96,8 +96,8 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		return
 
 	//Grant quickbound spells
-	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
-		script.Grant(user)
+	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
+		script?.Grant(user)
 
 	user.update_action_buttons()
 
@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		qdel(quick_bound_scriptures[position])
 
 	//Put the quickbound action onto the slab, the slab should grant when picked up
-	var/datum/action/innate/clockcult/quick_bind/quickbound = new
+	var/datum/action/innate/clockcult/quick_bind/quickbound = new(src)
 	quickbound.scripture = spell
 	quickbound.slab_weakref = WEAKREF(src)
 	quick_bound_scriptures[position] = quickbound
@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 			"purchased" = (scripture.type in purchased_scriptures),
 			"cog_cost" = scripture.cogs_required,
 			"typepath" = scripture.type,
+			"research_required" = !!(scripture.research_required ? !(scripture.type in GLOB.clockwork_research_unlocked_scriptures) : FALSE),
 		)
 		//Add it to the correct list
 		data["scriptures"] += list(scripture_data)
@@ -201,16 +202,20 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 					return FALSE
 
 				if(scripture.power_cost > GLOB.clock_power)
-					living_user.balloon_alert(living_user, "[scripture.power_cost]W required!")
+					living_user.balloon_alert(living_user, "[display_energy(scripture.power_cost)] required!")
 					return FALSE
 
 				if(scripture.vitality_cost > GLOB.clock_vitality)
-					living_user.balloon_alert(living_user, "[scripture.vitality_cost] vitality required!")
+					living_user.balloon_alert(living_user, "[display_energy(scripture.vitality_cost)] vitality required!")
 					return FALSE
 
 				scripture.begin_invoke(living_user, src)
 
 			else
+				if(scripture.research_required && !(scripture.type in GLOB.clockwork_research_unlocked_scriptures))
+					living_user.balloon_alert(living_user, "research required!")
+					return FALSE
+
 				if(cogs >= scripture.cogs_required)
 					cogs -= scripture.cogs_required
 					living_user.balloon_alert(living_user, "[scripture.name] purchased")

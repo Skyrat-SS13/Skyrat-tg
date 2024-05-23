@@ -32,10 +32,11 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	spawned_marker.parent_item = src
 	marker_children += spawned_marker
 
-/obj/item/cargo_teleporter/AltClick(mob/user)
+/obj/item/cargo_teleporter/click_alt(mob/user)
 	if(length(marker_children))
 		for(var/obj/effect/decal/cleanable/cargo_mark/destroy_children in marker_children)
 			qdel(destroy_children)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/cargo_teleporter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
@@ -74,9 +75,13 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	id = "cargotele"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/cargo_teleporter
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/uranium = 500)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	category = list(
-		RND_CATEGORY_EQUIPMENT
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_CARGO,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 

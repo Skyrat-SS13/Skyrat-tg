@@ -37,14 +37,14 @@
 		if(do_after(user, 2 SECONDS, src))
 			soundloop = new(src, TRUE)
 			balloon_alert(user, "hands unscrewed!")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 		return ..()
 
 	balloon_alert(user, "screwing the hands...")
 	if(do_after(user, 2 SECONDS, src))
 		QDEL_NULL(soundloop)
 		balloon_alert(user, "hands screwed tight!")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 	return ..()
 /obj/structure/sign/painting/meat
 	name = "Figure With Meat"

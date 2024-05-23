@@ -1,37 +1,16 @@
 /datum/species/insect
 	name = "Anthromorphic Insect"
 	id = SPECIES_INSECT
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"snout" = "None",
-		"horns" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs",
-		"taur" = "None",
-		"fluff" = "None",
-		"wings" = "Bee",
-		"moth_antennae" = "None"
-	)
 	mutanttongue = /obj/item/organ/internal/tongue/insect
-	liked_food = GROSS | RAW | TOXIC | GORE
-	disliked_food = CLOTH | GRAIN | FRIED
-	toxic_food = DAIRY
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_INSECT
 	bodypart_overrides = list(
@@ -43,6 +22,19 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/insect,
 	)
 	eyes_icon = 'modular_skyrat/modules/organs/icons/insect_eyes.dmi'
+
+/datum/species/insect/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"snout" = list("None", FALSE),
+		"horns" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"taur" = list("None", FALSE),
+		"fluff" = list("None", FALSE),
+		"wings" = list("Bee", FALSE),
+		"moth_antennae" = list("None", FALSE),
+	)
 
 /datum/species/insect/get_species_description()
 	return placeholder_description

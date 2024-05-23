@@ -1,6 +1,6 @@
 #define RAT_ORGAN_COLOR "#646464"
 #define RAT_SCLERA_COLOR "#f0e055"
-#define RAT_PUPIL_COLOR "#000000"
+#define RAT_PUPIL_COLOR COLOR_BLACK
 #define RAT_COLORS RAT_ORGAN_COLOR + RAT_SCLERA_COLOR + RAT_PUPIL_COLOR
 
 ///bonus of the rat: you can ventcrawl!
@@ -16,8 +16,8 @@
 	name = "mutated rat-eyes"
 	desc = "Rat DNA infused into what was once a normal pair of eyes."
 	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
-	eye_color_left = "#000000"
-	eye_color_right = "#000000"
+	eye_color_left = COLOR_BLACK
+	eye_color_right = COLOR_BLACK
 
 	icon = 'icons/obj/medical/organs/infuser_organs.dmi'
 	icon_state = "eyes"
@@ -29,7 +29,7 @@
 
 /obj/item/organ/internal/eyes/night_vision/rat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "eyes have deep, shifty black pupils, surrounded by a sickening yellow sclera.", BODY_ZONE_PRECISE_EYES)
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_Their eyes have deep, shifty black pupils, surrounded by a sickening yellow sclera.", BODY_ZONE_PRECISE_EYES)
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
 
 ///increases hunger, disgust recovers quicker, expands what is defined as "food"
@@ -42,57 +42,17 @@
 	icon_state = "stomach"
 	greyscale_config = /datum/greyscale_config/mutant_organ
 	greyscale_colors = RAT_COLORS
-	/// Multiplier of [physiology.hunger_mod].
-	var/hunger_mod = 10
+	hunger_modifier = 10
 
 /obj/item/organ/internal/stomach/rat/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
-	AddElement(/datum/element/noticable_organ, "mouth is drooling excessively.", BODY_ZONE_PRECISE_MOUTH)
-
-/obj/item/organ/internal/stomach/rat/on_insert(mob/living/carbon/receiver)
-	. = ..()
-	if(!ishuman(receiver))
-		return
-	var/mob/living/carbon/human/human_holder = receiver
-	if(!human_holder.can_mutate())
-		return
-	var/datum/species/species = human_holder.dna.species
-	//mmm, cheese. doesn't especially like anything else
-	species.liked_food = DAIRY
-	//but a rat can eat anything without issue
-	species.disliked_food = NONE
-	species.toxic_food = NONE
-	if(human_holder.physiology)
-		human_holder.physiology.hunger_mod *= hunger_mod
-	RegisterSignal(human_holder, COMSIG_SPECIES_GAIN, PROC_REF(on_species_gain))
-
-/obj/item/organ/internal/stomach/rat/proc/on_species_gain(datum/source, datum/species/new_species, datum/species/old_species)
-	SIGNAL_HANDLER
-	new_species.liked_food = DAIRY
-	new_species.disliked_food = NONE
-	new_species.toxic_food = NONE
-
-/obj/item/organ/internal/stomach/rat/on_remove(mob/living/carbon/stomach_owner)
-	. = ..()
-	if(!ishuman(stomach_owner))
-		return
-	var/mob/living/carbon/human/human_holder = stomach_owner
-	if(!human_holder.can_mutate())
-		return
-	var/datum/species/species = human_holder.dna.species
-	species.liked_food = initial(species.liked_food)
-	species.disliked_food = initial(species.disliked_food)
-	species.toxic_food = initial(species.toxic_food)
-	if(human_holder.physiology)
-		human_holder.physiology.hunger_mod /= hunger_mod
-	UnregisterSignal(stomach_owner, COMSIG_SPECIES_GAIN)
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_Their mouth is drooling excessively.", BODY_ZONE_PRECISE_MOUTH)
 
 /// makes you smaller, walk over tables, and take 1.5x damage
 /obj/item/organ/internal/heart/rat
 	name = "mutated rat-heart"
 	desc = "Rat DNA infused into what was once a normal heart."
-
 	icon = 'icons/obj/medical/organs/infuser_organs.dmi'
 	icon_state = "heart"
 	greyscale_config = /datum/greyscale_config/mutant_organ
@@ -101,61 +61,60 @@
 /obj/item/organ/internal/heart/rat/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
-	AddElement(/datum/element/noticable_organ, "hunch%PRONOUN_ES over unnaturally!")
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_They hunch%PRONOUN_es over unnaturally!")
+	AddElement(/datum/element/update_icon_blocker)
 
-/obj/item/organ/internal/heart/rat/on_insert(mob/living/carbon/receiver)
+/obj/item/organ/internal/heart/rat/on_mob_insert(mob/living/carbon/receiver)
 	. = ..()
-	if(!. || !ishuman(receiver))
+	if(!ishuman(receiver))
 		return
 	var/mob/living/carbon/human/human_receiver = receiver
-	if(!human_receiver.can_mutate())
-		return
-	human_receiver.dna.add_mutation(/datum/mutation/human/dwarfism)
+	if(human_receiver.can_mutate())
+		human_receiver.dna.add_mutation(/datum/mutation/human/dwarfism)
 	//but 1.5 damage
-	if(human_receiver.physiology)
-		human_receiver.physiology.damage_resistance -= 50
+	human_receiver.physiology?.damage_resistance -= 50
 
-/obj/item/organ/internal/heart/rat/on_remove(mob/living/carbon/heartless, special)
+/obj/item/organ/internal/heart/rat/on_mob_remove(mob/living/carbon/heartless, special)
 	. = ..()
 	if(!ishuman(heartless))
 		return
 	var/mob/living/carbon/human/human_heartless = heartless
-	if(!human_heartless.can_mutate())
-		return
-	human_heartless.dna.remove_mutation(/datum/mutation/human/dwarfism)
-	if(human_heartless.physiology)
-		human_heartless.physiology.damage_resistance += 50
+	if(human_heartless.can_mutate())
+		human_heartless.dna.remove_mutation(/datum/mutation/human/dwarfism)
+	human_heartless.physiology?.damage_resistance += 50
 
 /// you occasionally squeak, and have some rat related verbal tics
 /obj/item/organ/internal/tongue/rat
 	name = "mutated rat-tongue"
 	desc = "Rat DNA infused into what was once a normal tongue."
-	say_mod = "squeaks"
-	modifies_speech = TRUE
-
 	icon = 'icons/obj/medical/organs/infuser_organs.dmi'
 	icon_state = "tongue"
+	say_mod = "squeaks"
+	modifies_speech = TRUE
 	greyscale_config = /datum/greyscale_config/mutant_organ
 	greyscale_colors = RAT_COLORS
+	liked_foodtypes = DAIRY //mmm, cheese. doesn't especially like anything else
+	disliked_foodtypes = NONE //but a rat can eat anything without issue
+	toxic_foodtypes = NONE
 
 /obj/item/organ/internal/tongue/rat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "teeth are oddly shaped and yellowing.", BODY_ZONE_PRECISE_MOUTH)
+	AddElement(/datum/element/noticable_organ, "%PRONOUN_Their teeth are oddly shaped and yellowing.", BODY_ZONE_PRECISE_MOUTH)
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
 
 /obj/item/organ/internal/tongue/rat/modify_speech(datum/source, list/speech_args)
 	. = ..()
-	var/message = lowertext(speech_args[SPEECH_MESSAGE])
+	var/message = LOWER_TEXT(speech_args[SPEECH_MESSAGE])
 	if(message == "hi" || message == "hi.")
 		speech_args[SPEECH_MESSAGE] = "Cheesed to meet you!"
 	if(message == "hi?")
 		speech_args[SPEECH_MESSAGE] = "Um... cheesed to meet you?"
 
-/obj/item/organ/internal/tongue/rat/on_insert(mob/living/carbon/tongue_owner, special, drop_if_replaced)
+/obj/item/organ/internal/tongue/rat/on_mob_insert(mob/living/carbon/tongue_owner, special, movement_flags)
 	. = ..()
 	RegisterSignal(tongue_owner, COMSIG_CARBON_ITEM_GIVEN, PROC_REF(its_on_the_mouse))
 
-/obj/item/organ/internal/tongue/rat/on_remove(mob/living/carbon/tongue_owner)
+/obj/item/organ/internal/tongue/rat/on_mob_remove(mob/living/carbon/tongue_owner)
 	. = ..()
 	UnregisterSignal(tongue_owner, COMSIG_CARBON_ITEM_GIVEN)
 
@@ -171,7 +130,7 @@
 	. = ..()
 	if(prob(5))
 		owner.emote("squeaks")
-		playsound(owner, 'sound/effects/mousesqueek.ogg', 100)
+		playsound(owner, 'sound/creatures/mousesqueek.ogg', 100)
 
 #undef RAT_ORGAN_COLOR
 #undef RAT_SCLERA_COLOR

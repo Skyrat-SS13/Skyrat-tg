@@ -30,21 +30,28 @@
 	chambered = new /obj/item/ammo_casing/syringegun(src)
 	recharge_newshot()
 
-/obj/item/gun/syringe/handle_atom_del(atom/A)
+/obj/item/gun/syringe/apply_fantasy_bonuses(bonus)
 	. = ..()
-	if(A in syringes)
-		syringes.Remove(A)
+	max_syringes = modify_fantasy_variable("max_syringes", max_syringes, bonus, minimum = 1)
+
+/obj/item/gun/syringe/remove_fantasy_bonuses(bonus)
+	max_syringes = reset_fantasy_variable("max_syringes", max_syringes)
+	return ..()
+
+/obj/item/gun/syringe/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone in syringes)
+		syringes -= gone
 
 /obj/item/gun/syringe/recharge_newshot()
 	if(!syringes.len)
 		return
 	//SKYRAT EDIT SMARTDARTS
 	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
-		chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+		chambered.newshot(/obj/projectile/bullet/dart/syringe/dart)
 	else
-		chambered = new /obj/item/ammo_casing/syringegun(src)
+		chambered.newshot()
 	//SKYRAT EDIT SMARTDARTS END
-	chambered.newshot()
 
 /obj/item/gun/syringe/can_shoot()
 	return syringes.len
@@ -198,6 +205,6 @@
 /obj/item/gun/syringe/blowgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	visible_message(span_danger("[user] shoots the blowgun!"))
 
-	user.adjustStaminaLoss(20)
+	user.adjustStaminaLoss(20, updating_stamina = FALSE)
 	user.adjustOxyLoss(20)
 	return ..()

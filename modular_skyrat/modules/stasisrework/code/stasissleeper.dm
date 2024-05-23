@@ -1,4 +1,3 @@
-#define SCANNER_VERBOSE 1
 /obj/machinery/stasissleeper
 	name = "lifeform stasis unit"
 	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis."
@@ -14,6 +13,7 @@
 	var/last_stasis_sound = FALSE
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
+	interaction_flags_click = ALLOW_SILICON_REACH
 
 /obj/machinery/stasissleeper/Destroy()
 	. = ..()
@@ -54,9 +54,7 @@
 			playsound(src, 'sound/machines/synth_no.ogg', 50, TRUE, frequency = sound_freq)
 		last_stasis_sound = _running
 
-/obj/machinery/stasissleeper/AltClick(mob/user)
-	if(!user.can_perform_action(src, ALLOW_SILICON_REACH))
-		return
+/obj/machinery/stasissleeper/click_alt(mob/user)
 	if(!panel_open)
 		user.visible_message(span_notice("\The [src] [state_open ? "hisses as it seals shut." : "hisses as it swings open."]."), \
 						span_notice("You [state_open ? "close" : "open"] \the [src]."), \
@@ -65,6 +63,8 @@
 		close_machine()
 	else
 		open_machine()
+
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/stasissleeper/Exited(atom/movable/AM, atom/newloc)
 	if(!state_open && AM == occupant)
@@ -75,7 +75,7 @@
 	visible_message(span_notice("[occupant] emerges from [src]!"),
 		span_notice("You climb out of [src]!"))
 	open_machine()
-	if(IS_IN_STASIS(user))
+	if(HAS_TRAIT(user, TRAIT_STASIS))
 		thaw_them(user)
 
 /obj/machinery/stasissleeper/proc/stasis_running()
@@ -112,9 +112,9 @@
 		return
 	var/mob/living/L_occupant = occupant
 	if(stasis_running())
-		if(!IS_IN_STASIS(L_occupant))
+		if(!HAS_TRAIT(L_occupant, TRAIT_STASIS))
 			chill_out(L_occupant)
-	else if(IS_IN_STASIS(L_occupant))
+	else if(HAS_TRAIT(L_occupant, TRAIT_STASIS))
 		thaw_them(L_occupant)
 
 /obj/machinery/stasissleeper/screwdriver_act(mob/living/user, obj/item/used_item)
@@ -142,7 +142,7 @@
 /obj/machinery/stasissleeper/default_pry_open(obj/item/used_item)
 	if(occupant)
 		thaw_them(occupant)
-	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && used_item.tool_behaviour == TOOL_CROWBAR
+	. = !(state_open || panel_open) && used_item.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		used_item.play_tool_sound(src, 50)
 		visible_message(span_notice("[usr] pries open [src]."), span_notice("You pry open [src]."))
@@ -177,5 +177,3 @@
 
 /obj/machinery/stasissleeper/attack_ai_secondary(mob/user) // this works for borgs and ais shrug
 	attack_hand_secondary(user)
-
-#undef SCANNER_VERBOSE

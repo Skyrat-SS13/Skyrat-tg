@@ -8,8 +8,10 @@
 	name = "bluespace artillery control"
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/computer/bsa_control
-	icon = 'modular_skyrat/modules/fixing_missing_icons/particle_accelerator.dmi'
+	icon = 'icons/obj/machines/particle_accelerator.dmi'
 	icon_state = "control_boxp"
+	icon_keyboard = null
+	icon_screen = null
 	/// A weakref to our cannon
 	var/datum/weakref/connected_cannon
 	/// The current system status of the gun
@@ -72,9 +74,11 @@
 
 /obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
-	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out."))
+	balloon_alert(user, "rigged to explode")
+	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
+	return TRUE
 
 /**
  * Changes the target charge for the internal capacitors

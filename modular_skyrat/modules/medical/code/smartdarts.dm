@@ -34,7 +34,7 @@
 		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 
-	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user) // transfer from, transfer to - who cares?
+	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
 	to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
 
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
@@ -74,6 +74,16 @@
 	harmful = FALSE
 	projectile_type = /obj/projectile/bullet/dart/syringe/dart
 
+//Handles loading smartdarts into regular syringeguns
+/obj/item/ammo_casing/syringegun/newshot(alternative_ammo)
+	if(!loaded_projectile)
+		if(!isnull(alternative_ammo))
+			loaded_projectile = new alternative_ammo(src, src)
+			harmful = FALSE
+		else
+			loaded_projectile = new projectile_type(src, src)
+			harmful = TRUE
+
 /obj/projectile/bullet/dart/syringe/dart
 	name = "SmartDart"
 	damage = 0
@@ -92,7 +102,7 @@
 		/datum/reagent/medicine/morphine,
 	)
 
-/obj/projectile/bullet/dart/syringe/dart/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/dart/syringe/dart/on_hit(atom/target, blocked = 0, pierce_hit)
 	if(!iscarbon(target))
 		..(target, blocked)
 		reagents.flags &= ~(NO_REACT)

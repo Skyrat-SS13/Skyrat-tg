@@ -1,9 +1,11 @@
 /obj/structure/fermenting_barrel
 	name = "wooden barrel"
 	desc = "A large wooden barrel. You can ferment fruits and such inside it, or just use it to hold reagents."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrel"
+	base_icon_state = "barrel"
 	resistance_flags = FLAMMABLE
+	obj_flags = UNIQUE_RENAME
 	density = TRUE
 	anchored = FALSE
 	pressure_resistance = 2 * ONE_ATMOSPHERE
@@ -26,6 +28,13 @@
 	create_reagents(600, DRAINABLE)
 	soundloop = new(src, fermenting)
 	soundloop.volume = sound_volume
+
+	RegisterSignals(src, list(
+		SIGNAL_ADDTRAIT(TRAIT_WAS_RENAMED),
+		SIGNAL_ADDTRAIT(TRAIT_HAS_LABEL),
+		SIGNAL_REMOVETRAIT(TRAIT_WAS_RENAMED),
+		SIGNAL_REMOVETRAIT(TRAIT_HAS_LABEL),
+	), PROC_REF(update_overlay_on_sig))
 
 /obj/structure/fermenting_barrel/Destroy()
 	QDEL_NULL(soundloop)
@@ -79,6 +88,15 @@
 /obj/structure/fermenting_barrel/update_icon_state()
 	icon_state = open ? "barrel_open" : "barrel"
 	return ..()
+
+/obj/structure/fermenting_barrel/proc/update_overlay_on_sig()
+	SIGNAL_HANDLER
+	update_appearance(UPDATE_ICON)
+
+/obj/structure/fermenting_barrel/update_overlays()
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_WAS_RENAMED) || HAS_TRAIT(src, TRAIT_HAS_LABEL))
+		. += mutable_appearance(icon, "[base_icon_state]_overlay_label")
 
 /// Adds the fruit to the barrel to queue the fermentation
 /obj/structure/fermenting_barrel/proc/insert_fruit(mob/user, obj/item/food/grown/fruit, obj/item/storage/bag/plants/bag = null)
@@ -145,3 +163,13 @@
 /obj/structure/fermenting_barrel/gunpowder/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/gunpowder, 500)
+
+/// Medieval pirates can have a barrel as a treat
+/obj/structure/fermenting_barrel/thermite
+	name = "thermite barrel"
+	desc = "A large wooden barrel for holding thermite. Use this to make a big flipping hole on walls."
+	can_open = FALSE
+
+/obj/structure/fermenting_barrel/thermite/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(/datum/reagent/thermite, 500)

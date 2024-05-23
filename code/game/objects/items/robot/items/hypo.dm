@@ -74,7 +74,7 @@
 	/datum/reagent/consumable/blackpepper,\
 	/datum/reagent/consumable/coco,\
 	/datum/reagent/consumable/cornmeal,\
-	/datum/reagent/consumable/cornoil,\
+	/datum/reagent/consumable/nutriment/fat/oil,\
 	/datum/reagent/consumable/corn_starch,\
 	/datum/reagent/consumable/eggwhite,\
 	/datum/reagent/consumable/eggyolk,\
@@ -109,7 +109,7 @@
 	 */
 	var/max_volume_per_reagent = 30
 	/// Cell cost for charging a reagent
-	var/charge_cost = 50
+	var/charge_cost = 0.05 * STANDARD_CELL_CHARGE
 	/// Counts up to the next time we charge
 	var/charge_timer = 0
 	/// Time it takes for shots to recharge (in seconds)
@@ -191,11 +191,11 @@
 		to_chat(user, span_notice("You inject [injectee] with the injector ([selected_reagent.name])."))
 
 		if(injectee.reagents)
-			hypospray_injector.trans_to(injectee, amount_per_transfer_from_this, transfered_by = user, methods = INJECT)
+			hypospray_injector.trans_to(injectee, amount_per_transfer_from_this, transferred_by = user, methods = INJECT)
 			balloon_alert(user, "[amount_per_transfer_from_this] unit\s injected")
 			log_combat(user, injectee, "injected", src, "(CHEMICALS: [selected_reagent])")
 	else
-		balloon_alert(user, "[parse_zone(user.zone_selected)] is blocked!")
+		balloon_alert(user, "[injectee.parse_zone_with_bodypart(user.zone_selected)] is blocked!")
 
 /obj/item/reagent_containers/borghypo/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -245,13 +245,12 @@
 	. += "Currently loaded: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nothing."]"
 	. += span_notice("<i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this]u.")
 
-/obj/item/reagent_containers/borghypo/AltClick(mob/living/user)
-	. = ..()
-/* SKYRAT REMOVAL START - Changing transfer amounts is now handled by the parent proc in modular files.
-	if(user.stat == DEAD || user != loc) 
-		return //IF YOU CAN HEAR ME SET MY TRANSFER AMOUNT TO 1
-	change_transfer_amount(user)	
-*/ // SKYRAT REMOVAL END
+/* SKYRAT EDIT REMOVAL START - SEE master_files/code/modules/reagents/reagent_containers.dm
+/obj/item/reagent_containers/borghypo/click_alt(mob/living/user)
+
+	change_transfer_amount(user)
+	return CLICK_ACTION_SUCCESS
+SKYRAT EDIT REMOVAL END */
 
 /// Default Medborg Hypospray
 /obj/item/reagent_containers/borghypo/medical
@@ -311,7 +310,7 @@
 		Also metabolizes potassium iodide for radiation poisoning, inacusiate for ear damage and morphine for offense."
 	icon_state = "borghypo_s"
 	tgui_theme = "syndicate"
-	charge_cost = 20
+	charge_cost = 0.02 * STANDARD_CELL_CHARGE
 	recharge_time = 2
 	default_reagent_types = BASE_SYNDICATE_REAGENTS
 	bypass_protection = TRUE
@@ -324,7 +323,7 @@
 	icon_state = "shaker"
 	possible_transfer_amounts = list(5,10,20,1)
 	// Lots of reagents all regenerating at once, so the charge cost is lower. They also regenerate faster.
-	charge_cost = 20
+	charge_cost = 0.02 * STANDARD_CELL_CHARGE
 	recharge_time = 3
 	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP //Water stays wet, ice stays ice
 	default_reagent_types = BASE_SERVICE_REAGENTS
@@ -385,10 +384,10 @@
 		stored_reagents.remove_reagent(selected_reagent.type, amount_per_transfer_from_this)
 		shaker.add_reagent(selected_reagent.type, amount_per_transfer_from_this, reagtemp = dispensed_temperature, no_react = TRUE)
 
-		shaker.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
+		shaker.trans_to(target, amount_per_transfer_from_this, transferred_by = user)
 		balloon_alert(user, "[amount_per_transfer_from_this] unit\s poured")
 	return .
-	
+
 /obj/item/reagent_containers/borghypo/condiment_synthesizer // Solids! Condiments! The borger uprising!
 	name = "Condiment Synthesizer"
 	desc = "An advanced condiment synthesizer"
@@ -396,9 +395,9 @@
 	icon_state = "flour"
 	possible_transfer_amounts = list(5,10,20,1)
 	// Lots of reagents all regenerating at once, so the charge cost is lower. They also regenerate faster.
-	charge_cost = 40 //Costs double the power of the borgshaker due to synthesizing solids
+	charge_cost = 0.04 * STANDARD_CELL_CHARGE //Costs double the power of the borgshaker due to synthesizing solids
 	recharge_time = 6 //Double the recharge time too, for the same reason.
-	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP 
+	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP
 	default_reagent_types = EXPANDED_SERVICE_REAGENTS
 
 /obj/item/reagent_containers/borghypo/condiment_synthesizer/ui_interact(mob/user, datum/tgui/ui)
@@ -424,9 +423,9 @@
 	data["reagents"] = condiments
 	data["selectedReagent"] = selected_reagent?.name
 	return data
-		
+
 /obj/item/reagent_containers/borghypo/condiment_synthesizer/attack(mob/M, mob/user)
-	return 
+	return
 
 /obj/item/reagent_containers/borghypo/condiment_synthesizer/afterattack(obj/target, mob/user, proximity)
 	. = ..()
@@ -449,9 +448,9 @@
 	var/datum/reagents/shaker = new()
 	stored_reagents.remove_reagent(selected_reagent.type, amount_per_transfer_from_this)
 	shaker.add_reagent(selected_reagent.type, amount_per_transfer_from_this, reagtemp = dispensed_temperature, no_react = TRUE)
-	shaker.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
+	shaker.trans_to(target, amount_per_transfer_from_this, transferred_by = user)
 	balloon_alert(user, "[amount_per_transfer_from_this] unit\s poured")
-	
+
 
 /obj/item/reagent_containers/borghypo/borgshaker/hacked
 	name = "cyborg shaker"

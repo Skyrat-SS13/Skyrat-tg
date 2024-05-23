@@ -28,51 +28,18 @@ GLOBAL_PROTECT(##log_var_name);\
 	SHOULD_CALL_PARENT(TRUE)
 	return
 
-// All individual log files
+// All individual log files.
+// These should be used where the log category cannot easily be a json log file.
 DECLARE_LOG(config_error_log, DONT_START_LOG)
-DECLARE_LOG(dynamic_log, DONT_START_LOG)
-DECLARE_LOG(lua_log, DONT_START_LOG)
 DECLARE_LOG(perf_log, DONT_START_LOG) // Declared here but name is set in time_track subsystem
-DECLARE_LOG(query_debug_log, DONT_START_LOG)
-DECLARE_LOG(signals_log, DONT_START_LOG)
-DECLARE_LOG(tgui_log, START_LOG)
-#ifdef REFERENCE_DOING_IT_LIVE
+
+#ifdef REFERENCE_TRACKING_LOG_APART
 DECLARE_LOG_NAMED(harddel_log, "harddels", START_LOG)
 #endif
+
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 DECLARE_LOG_NAMED(test_log, "tests", START_LOG)
 #endif
-DECLARE_LOG_NAMED(filter_log, "filters", DONT_START_LOG)
-DECLARE_LOG_NAMED(sql_error_log, "sql", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_asset_log, "asset", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_attack_log, "attack", START_LOG)
-DECLARE_LOG_NAMED(world_econ_log, "econ", START_LOG)
-DECLARE_LOG_NAMED(world_game_log, "game", START_LOG)
-DECLARE_LOG_NAMED(world_href_log, "hrefs", START_LOG)
-DECLARE_LOG_NAMED(world_job_debug_log, "job_debug", START_LOG)
-DECLARE_LOG_NAMED(world_manifest_log, "manifest", START_LOG)
-DECLARE_LOG_NAMED(world_map_error_log, "map_errors", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_mecha_log, "mecha", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_mob_tag_log, "mob_tags", START_LOG)
-DECLARE_LOG_NAMED(world_paper_log, "paper", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_pda_log, "pda", START_LOG)
-DECLARE_LOG_NAMED(world_qdel_log, "qdel", START_LOG)
-DECLARE_LOG_NAMED(world_runtime_log, "runtime", START_LOG)
-DECLARE_LOG_NAMED(world_shuttle_log, "shuttle", START_LOG)
-DECLARE_LOG_NAMED(world_silicon_log, "silicon", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_speech_indicators_log, "speech_indicators", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_telecomms_log, "telecomms", START_LOG)
-DECLARE_LOG_NAMED(world_tool_log, "tools", DONT_START_LOG)
-DECLARE_LOG_NAMED(world_uplink_log, "uplink", START_LOG)
-DECLARE_LOG_NAMED(world_virus_log, "virus", DONT_START_LOG)
-/// Log associated with [/proc/log_suspicious_login()]
-/// Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.
-DECLARE_LOG_NAMED(world_suspicious_login_log, "suspicious_logins", DONT_START_LOG)
-
-// SKYRAT EDIT ADDITION
-DECLARE_LOG_NAMED(event_vote_log, "event_vote", START_LOG)
-DECLARE_LOG_NAMED(character_creation_log, "character_creation", START_LOG)
-// SKYRAT EDIT END
 
 /// Picture logging
 GLOBAL_VAR(picture_log_directory)
@@ -92,9 +59,17 @@ GLOBAL_PROTECT(admin_activities)
 GLOBAL_LIST_EMPTY(bombers)
 GLOBAL_PROTECT(bombers)
 
-/// All signals here in format: "[src] used [REF(src)] @ location [src.loc]: [freq]/[code]"
-GLOBAL_LIST_EMPTY(lastsignalers)
-GLOBAL_PROTECT(lastsignalers)
+/// Investigate log for signaler usage, use the add_to_signaler_investigate_log proc
+GLOBAL_LIST_EMPTY(investigate_signaler)
+GLOBAL_PROTECT(investigate_signaler)
+
+/// Used to add a text log to the signaler investigation log.
+/// Do not add to the list directly; if the list is too large it can cause lag when an admin tries to view it.
+/proc/add_to_signaler_investigate_log(text)
+	var/log_length = length(GLOB.investigate_signaler)
+	if(log_length >= INVESTIGATE_SIGNALER_LOG_MAX_LENGTH)
+		GLOB.investigate_signaler = GLOB.investigate_signaler.Copy((INVESTIGATE_SIGNALER_LOG_MAX_LENGTH - log_length) + 2)
+	GLOB.investigate_signaler += list(text)
 
 /// Stores who uploaded laws to which silicon-based lifeform, and what the law was
 GLOBAL_LIST_EMPTY(lawchanges)

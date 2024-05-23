@@ -31,6 +31,16 @@
 	item_path = /obj/item/food/fishmeat
 	cost_per_order = 12
 
+/datum/orderable_item/milk_eggs/octopus
+	name = "Octopus Tentacle"
+	item_path = /obj/item/food/fishmeat/octopus
+	cost_per_order = 12
+
+/datum/orderable_item/milk_eggs/chicken
+	name = "Chicken Breast"
+	item_path = /obj/item/food/meat/slab/chicken
+	cost_per_order = 15
+
 /datum/orderable_item/milk_eggs/spider_eggs
 	name = "Spider Eggs"
 	item_path = /obj/item/food/spidereggs
@@ -65,6 +75,16 @@
 	item_path = /obj/item/food/canned/pine_nuts
 	cost_per_order = 20
 
+/datum/orderable_item/milk_eggs/canned_squid_ink
+	name = "Canned Squid Ink"
+	item_path = /obj/item/food/canned/squid_ink
+	cost_per_order = 20
+
+/datum/orderable_item/milk_eggs/chap
+	name = "Can of CHAP"
+	item_path = /obj/item/food/canned/chap
+	cost_per_order = 20
+
 /datum/orderable_item/milk_eggs/ready_donk
 	name = "Ready-Donk Meal: Bachelor Chow"
 	item_path = /obj/item/food/ready_donk
@@ -78,6 +98,16 @@
 /datum/orderable_item/milk_eggs/ready_donk_mex
 	name = "Ready-Donk Meal: Donkhiladas"
 	item_path = /obj/item/food/ready_donk/donkhiladas
+	cost_per_order = 40
+
+/datum/orderable_item/milk_eggs/ready_donk_nachos
+	name = "Ready-Donk Meal: Donk Sol Series Boritos Nachos Grandes"
+	item_path = /obj/item/food/ready_donk/nachos_grandes
+	cost_per_order = 40
+
+/datum/orderable_item/milk_eggs/ready_donk_orange
+	name = "Ready-Donk Meal: Donk-range Chicken"
+	item_path = /obj/item/food/ready_donk/donkrange_chicken
 	cost_per_order = 40
 
 /datum/orderable_item/milk_eggs/tiziran_goods
@@ -104,3 +134,13 @@
 	name = "Mothic Pantry Pack"
 	item_path = /obj/item/storage/box/mothic_cans_sauces
 	cost_per_order = 120
+
+/datum/orderable_item/milk_eggs/armorfish
+	name = "Cleaned Armorfish"
+	item_path = /obj/item/food/fishmeat/armorfish
+	cost_per_order = 30
+
+/datum/orderable_item/milk_eggs/moonfish
+	name = "Moonfish"
+	item_path = /obj/item/food/fishmeat/moonfish
+	cost_per_order = 30

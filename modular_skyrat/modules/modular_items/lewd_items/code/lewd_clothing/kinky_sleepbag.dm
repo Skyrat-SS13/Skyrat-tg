@@ -17,7 +17,6 @@
 	var/color_changed = FALSE
 	var/time_to_sound = 20
 	var/time_to_sound_left
-	var/time = 2
 	var/tt
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
@@ -26,9 +25,6 @@
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
-	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/leg/left/legr
-	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
@@ -52,23 +48,21 @@
 		"deflated" = image(icon = src.icon, icon_state = "sleepbag_teal_deflated_folded"))
 
 //to change model
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user)
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/click_alt(mob/user)
 	var/mob/living/carbon/human/clicking_human = user
 	if(istype(clicking_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		to_chat(user, span_warning("Your hands are stuck, you can't do this!"))
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 	switch(color_changed)
 		if(FALSE)
-			. = ..()
-			if(.)
-				return
 			var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			bag_color = choice
 			update_icon()
 			update_icon_state()
 			color_changed = TRUE
+			return CLICK_ACTION_SUCCESS
 
 		if(TRUE)
 			if(bag_state == "deflated")
@@ -76,8 +70,10 @@
 				to_chat(user, span_notice("The sleeping bag now is [bag_fold? "folded." : "unfolded."]"))
 				update_icon()
 				update_icon_state()
+				return CLICK_ACTION_SUCCESS
 			else
 				to_chat(user, span_notice("You can't fold the bag while it's inflated!"))
+				return CLICK_ACTION_BLOCKING
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -136,7 +132,7 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
-	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	if(bag_fold == TRUE)
 		w_class = WEIGHT_CLASS_SMALL
 		slot_flags = NONE
@@ -186,7 +182,7 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(seconds_per_tick)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
 			tt = rand(15, 35) //to do random funny sounds when character inside that thing.
 		else
 			tt -= seconds_per_tick

@@ -2,12 +2,13 @@
 
 /obj/machinery/portable_atmospherics
 	name = "portable_atmospherics"
-	icon = 'icons/obj/atmospherics/atmos.dmi'
+	icon = 'icons/obj/pipes_n_cables/atmos.dmi'
 	use_power = NO_POWER_USE
 	max_integrity = 250
 	armor_type = /datum/armor/machinery_portable_atmospherics
 	anchored = FALSE
 	layer = ABOVE_OBJ_LAYER
+	interaction_flags_click = NEED_DEXTERITY
 
 	///Stores the gas mixture of the portable component. Don't access this directly, use return_air() so you support the temporary processing it provides
 	var/datum/gas_mixture/air_contents
@@ -43,14 +44,19 @@
 	air_contents.volume = volume
 	air_contents.temperature = T20C
 	SSair.start_processing_machine(src)
+	AddElement(/datum/element/climbable, climb_time = 3 SECONDS, climb_stun = 3 SECONDS)
+	AddElement(/datum/element/elevation, pixel_shift = 8)
+
+/obj/machinery/portable_atmospherics/on_deconstruction(disassembled)
+	if(nob_crystal_inserted)
+		new /obj/item/hypernoblium_crystal(src)
+
+	return ..()
 
 /obj/machinery/portable_atmospherics/Destroy()
 	disconnect()
 	air_contents = null
 	SSair.stop_processing_machine(src)
-
-	if(nob_crystal_inserted)
-		new /obj/item/hypernoblium_crystal(src)
 
 	return ..()
 
@@ -157,14 +163,12 @@
 	update_appearance()
 	return TRUE
 
-/obj/machinery/portable_atmospherics/AltClick(mob/living/user)
-	. = ..()
-	if(!istype(user) || !user.can_perform_action(src, NEED_DEXTERITY) || !can_interact(user))
-		return
+/obj/machinery/portable_atmospherics/click_alt(mob/living/user)
 	if(!holding)
-		return
+		return CLICK_ACTION_BLOCKING
 	to_chat(user, span_notice("You remove [holding] from [src]."))
 	replace_tank(user, TRUE)
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/portable_atmospherics/examine(mob/user)
 	. = ..()
@@ -184,12 +188,15 @@
 	if(!user)
 		return FALSE
 	if(holding)
-		user.put_in_hands(holding)
-		UnregisterSignal(holding, COMSIG_PARENT_QDELETING)
+		if(Adjacent(user))
+			user.put_in_hands(holding)
+		else
+			holding.forceMove(get_turf(src))
+		UnregisterSignal(holding, COMSIG_QDELETING)
 		holding = null
 	if(new_tank)
 		holding = new_tank
-		RegisterSignal(holding, COMSIG_PARENT_QDELETING, PROC_REF(unregister_holding))
+		RegisterSignal(holding, COMSIG_QDELETING, PROC_REF(unregister_holding))
 
 	SSair.start_processing_machine(src)
 	update_appearance()
@@ -250,7 +257,7 @@
 /obj/machinery/portable_atmospherics/proc/unregister_holding()
 	SIGNAL_HANDLER
 
-	UnregisterSignal(holding, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(holding, COMSIG_QDELETING)
 	holding = null
 
 #undef PORTABLE_ATMOS_IGNORE_ATMOS_LIMIT

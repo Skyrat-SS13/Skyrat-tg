@@ -15,11 +15,12 @@
 	// No running around with open laptops in hands.
 	item_flags = SLOWS_WHILE_IN_HAND
 
+	drag_slowdown = 0
 	screen_on = FALSE // Starts closed
 	var/start_open = TRUE // unless this var is set to 1
 	var/icon_state_closed = "laptop-closed"
 	var/w_class_open = WEIGHT_CLASS_BULKY
-	var/slowdown_open = TRUE
+	var/slowdown_open = 1
 
 /obj/item/modular_computer/laptop/examine(mob/user)
 	. = ..()
@@ -90,29 +91,33 @@
 	toggle_open(user)
 
 
-/obj/item/modular_computer/laptop/AltClick(mob/user)
-	. = ..()
-	if(!can_interact(user))
-		return
-	if(screen_on) // Close it.
-		try_toggle_open(user)
-	else
-		return ..()
+/obj/item/modular_computer/laptop/click_alt(mob/user)
+	if(!screen_on)
+		return CLICK_ACTION_BLOCKING
+	try_toggle_open(user) // Close it.
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/modular_computer/laptop/proc/toggle_open(mob/living/user=null)
 	if(screen_on)
 		to_chat(user, span_notice("You close \the [src]."))
 		slowdown = initial(slowdown)
-		w_class = initial(w_class)
+		update_weight_class(initial(w_class))
+		drag_slowdown = initial(drag_slowdown)
 	else
 		to_chat(user, span_notice("You open \the [src]."))
 		slowdown = slowdown_open
-		w_class = w_class_open
+		update_weight_class(w_class_open)
+		drag_slowdown = slowdown_open
+	if(isliving(loc))
+		var/mob/living/localmob = loc
+		localmob.update_equipment_speed_mods()
+		localmob.update_pull_movespeed()
 
 	screen_on = !screen_on
 	update_appearance()
 
-
+/obj/item/modular_computer/laptop/get_messenger_ending()
+	return "Sent from my UNIX Laptop"
 
 // Laptop frame, starts empty and closed.
 /obj/item/modular_computer/laptop/buildable

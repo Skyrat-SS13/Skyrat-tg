@@ -49,8 +49,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, PROC_REF(interact))
 	if(!emp_proof)
 		RegisterSignal(parent, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp_act))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(on_AltClick))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(on_click_alt))
 
 ///Called on COMSIG_ITEM_ATTACK_SELF
 /datum/component/gps/item/proc/interact(datum/source, mob/user)
@@ -59,16 +59,17 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	if(user)
 		INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
-///Called on COMSIG_PARENT_EXAMINE
+///Called on COMSIG_ATOM_EXAMINE
 /datum/component/gps/item/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
 	examine_list += span_notice("Alt-click to switch it [tracking ? "off":"on"].")
 
 ///Called on COMSIG_ATOM_EMP_ACT
-/datum/component/gps/item/proc/on_emp_act(datum/source, severity)
+/datum/component/gps/item/proc/on_emp_act(datum/source, severity, protection)
 	SIGNAL_HANDLER
-
+	if(protection & EMP_PROTECT_SELF)
+		return
 	emped = TRUE
 	var/atom/A = parent
 	A.cut_overlay("working")
@@ -84,10 +85,11 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	A.add_overlay("working")
 
 ///Calls toggletracking
-/datum/component/gps/item/proc/on_AltClick(datum/source, mob/user)
+/datum/component/gps/item/proc/on_click_alt(datum/source, mob/user)
 	SIGNAL_HANDLER
 
 	toggletracking(user)
+	return CLICK_ACTION_SUCCESS
 
 ///Toggles the tracking for the gps
 /datum/component/gps/item/proc/toggletracking(mob/user)
@@ -152,7 +154,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	data["signals"] = signals
 	return data
 
-/datum/component/gps/item/ui_act(action, params)
+/datum/component/gps/item/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -161,7 +163,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		if("rename")
 			var/atom/parentasatom = parent
 			var/a = tgui_input_text(usr, "Enter the desired tag", "GPS Tag", gpstag, 20)
-
+			if (QDELETED(ui) || ui.status != UI_INTERACTIVE)
+				return
 			if (!a)
 				return
 

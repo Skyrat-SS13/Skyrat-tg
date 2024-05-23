@@ -12,8 +12,8 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	max_purchase = 4
 
-/datum/armament_entry/hecu/secondary/pistol/glock
-	item_type = /obj/item/gun/ballistic/automatic/pistol/g17/mesa
+/datum/armament_entry/hecu/secondary/pistol/pistol
+	item_type = /obj/item/gun/ballistic/automatic/pistol/sol
 	max_purchase = 4
 	mags_to_spawn = 3
 

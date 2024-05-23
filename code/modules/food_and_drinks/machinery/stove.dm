@@ -14,7 +14,7 @@
 	active_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.8
 
 	// Stove icon is 32x48, we'll use a Range for preview instead
-	icon_preview = 'icons/obj/machines/kitchenmachines.dmi'
+	icon_preview = 'icons/obj/machines/kitchen.dmi'
 	icon_state_preview = "range_off"
 
 /obj/machinery/stove/Initialize(mapload)
@@ -28,13 +28,12 @@
 /obj/item/reagent_containers/cup/soup_pot
 	name = "soup pot"
 	desc = "A tall soup designed to mix and cook all kinds of soup."
-	icon = 'icons/obj/soup_pot.dmi'
+	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "pot"
 	base_icon_state = "pot"
 	volume = 200
 	possible_transfer_amounts = list(20, 50, 100, 200)
 	amount_per_transfer_from_this = 50
-	amount_list_position = 2
 	reagent_flags = REFILLABLE | DRAINABLE
 	custom_materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5)
 	w_class = WEIGHT_CLASS_BULKY
@@ -49,7 +48,7 @@
 /obj/item/reagent_containers/cup/soup_pot/Initialize(mapload, vol)
 	. = ..()
 	RegisterSignal(reagents, COMSIG_REAGENTS_CLEAR_REAGENTS, PROC_REF(on_reagents_cleared))
-	RegisterSignal(src, COMSIG_PARENT_REAGENT_EXAMINE, PROC_REF(reagent_special_examine))
+	RegisterSignal(src, COMSIG_ATOM_REAGENT_EXAMINE, PROC_REF(reagent_special_examine))
 	register_context()
 
 /obj/item/reagent_containers/cup/soup_pot/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -116,6 +115,34 @@
 	. = ..()
 	LAZYREMOVE(added_ingredients, gone)
 
+/**
+ * Adds items to a soup pot without invoking any procs that call sleep() when using in a component.
+ *
+ * Args:
+ * * transfer_from: The container that's being used to add items to the soup pot. Must not be null.
+ * * user: the entity adding ingredients via a container to a soup pot. Must not be null.
+ */
+/obj/item/reagent_containers/cup/soup_pot/proc/transfer_from_container_to_pot(obj/item/transfer_from, mob/user)
+	if(!transfer_from.atom_storage)
+		return
+
+	var/obj/item/storage/tray = transfer_from
+	var/loaded = 0
+
+	for(var/obj/tray_item in tray.contents)
+		if(!can_add_ingredient(tray_item))
+			continue
+		if(LAZYLEN(added_ingredients) >= max_ingredients)
+			balloon_alert(user, "it's full!")
+			return TRUE
+		if(tray.atom_storage.attempt_remove(tray_item, src))
+			loaded++
+			LAZYADD(added_ingredients, tray_item)
+	if(loaded)
+		to_chat(user, span_notice("You insert [loaded] items into \the [src]."))
+		update_appearance(UPDATE_OVERLAYS)
+	return TRUE
+
 /obj/item/reagent_containers/cup/soup_pot/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if(.)
@@ -140,6 +167,12 @@
 	LAZYADD(added_ingredients, attacking_item)
 	update_appearance(UPDATE_OVERLAYS)
 	return TRUE
+
+/obj/item/reagent_containers/cup/soup_pot/item_interaction(mob/living/user, obj/item/item, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		return NONE
+
+	return transfer_from_container_to_pot(item, user)
 
 /obj/item/reagent_containers/cup/soup_pot/attack_hand_secondary(mob/user, list/modifiers)
 	if(!LAZYLEN(added_ingredients))
@@ -181,11 +214,18 @@
 		// Clearing reagents Will do this for us already, but if we have no reagents this is a failsafe
 		dump_ingredients()
 
-/obj/item/reagent_containers/cup/soup_pot/proc/dump_ingredients(atom/drop_loc = drop_location())
+/**
+ * Dumps all inside ingredients to a spot
+ *
+ * * drop_loc - Where to drop the ingredients, defaults to drop loc
+ * * x_offset - How much pixel X offset to give every ingredient, if not set will be random
+ * * y_offset - How much pixel Y offset to give every ingredient, if not set will be random
+ */
+/obj/item/reagent_containers/cup/soup_pot/proc/dump_ingredients(atom/drop_loc = drop_location(), x_offset, y_offset)
 	for(var/obj/item/ingredient as anything in added_ingredients)
 		ingredient.forceMove(drop_loc)
-		ingredient.pixel_x += rand(-4, 4)
-		ingredient.pixel_y += rand(-4, 4)
+		ingredient.pixel_x += (isnum(x_offset) ? x_offset : rand(-4, 4))
+		ingredient.pixel_y += (isnum(y_offset) ? x_offset : rand(-4, 4))
 		ingredient.SpinAnimation(loops = 1)
 	update_appearance(UPDATE_OVERLAYS)
 

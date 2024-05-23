@@ -23,11 +23,11 @@
 	/// Assoc list of modes and what they'll convert to
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
 	/// Looping sound used for the toy's audible bit
-	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/lewd/vibrator/low/soundloop1
 	/// Looping sound used for the toy's audible bit
-	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/lewd/vibrator/medium/soundloop2
 	/// Looping sound used for the toy's audible bit
-	var/datum/looping_sound/vibrator/high/soundloop3
+	var/datum/looping_sound/lewd/vibrator/high/soundloop3
 	/// Static list of designs of the toy, used for the color selection radial menu
 	var/static/list/vibrator_designs
 	w_class = WEIGHT_CLASS_TINY
@@ -42,19 +42,17 @@
 		"yellow" = image(icon = src.icon, icon_state = "vibrator_yellow_low"),
 		"green" = image(icon = src.icon, icon_state = "vibrator_green_low"))
 
-/obj/item/clothing/sextoy/vibrator/AltClick(mob/user)
+/obj/item/clothing/sextoy/vibrator/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
 		return
 	var/choice = show_radial_menu(user, src, vibrator_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 	current_color = choice
 	update_icon_state()
 	update_icon()
 	color_changed = TRUE
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/vibrator/Initialize(mapload)
 	. = ..()
@@ -79,10 +77,11 @@
 	icon_state = "[base_icon_state]_[current_color]_[vibration_mode]"
 	inhand_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/vibrator/equipped(mob/user, slot)
+/obj/item/clothing/sextoy/vibrator/lewd_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	var/mob/living/carbon/human/target = user
-	if(src == target.anus || src == target.vagina)
+	if(!istype(user))
+		return
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/vibrator/dropped(mob/user, slot)
@@ -118,7 +117,7 @@
 	if(!toy_on)
 		to_chat(user, span_notice("[src] must be on to use it!"))
 		return
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [target] don't want you to do that."))
 		return
 
@@ -166,7 +165,7 @@
 	if(!targetedsomewhere)
 		return
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 /obj/item/clothing/sextoy/vibrator/attack_self(mob/user, obj/item/attack_item)
 	toggle_mode()
@@ -187,21 +186,21 @@
 	switch(vibration_mode)
 		if("low")
 			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop1.start()
 		if("medium")
 			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop1.stop()
 			soundloop2.start()
 		if("hard")
 			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop2.stop()
 			soundloop3.start()
 		if("off")
 			toy_on = FALSE
-			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
 
 #undef DEFAULT_AROUSAL_INCREASE

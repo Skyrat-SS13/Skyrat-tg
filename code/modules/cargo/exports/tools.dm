@@ -99,7 +99,7 @@
 /datum/export/weldingtool/experimental
 	cost = CARGO_CRATE_VALUE * 0.45
 	unit_name = "experimental welding tool"
-	export_types = list(/obj/item/weldingtool/electric) //SKYRAT EDIT CHANGE - ELECTRIC WELDER
+	export_types = list(/obj/item/weldingtool/experimental)
 
 /datum/export/jawsoflife
 	cost = CARGO_CRATE_VALUE * 0.5

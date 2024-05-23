@@ -30,25 +30,15 @@
 		return
 	chassis.container_resist_act(owner)
 
-/datum/action/vehicle/sealed/mecha/mech_toggle_internals
-	name = "Toggle Internal Airtank Usage"
-	button_icon_state = "mech_internals_off"
+/datum/action/vehicle/sealed/mecha/mech_toggle_cabin_seal
+	name = "Toggle Cabin Airtight"
+	button_icon_state = "mech_cabin_open"
+	desc = "Airtight cabin preserves internal air and can be pressurized with a mounted air tank."
 
-/datum/action/vehicle/sealed/mecha/mech_toggle_internals/Trigger(trigger_flags)
+/datum/action/vehicle/sealed/mecha/mech_toggle_cabin_seal/Trigger(trigger_flags)
 	if(!owner || !chassis || !(owner in chassis.occupants))
 		return
-
-	if(!chassis.internal_tank) //Just in case.
-		chassis.use_internal_tank = FALSE
-		chassis.balloon_alert(owner, "no tank available!")
-		chassis.log_message("Switch to internal tank failed. No tank available.", LOG_MECHA)
-		return
-
-	chassis.use_internal_tank = !chassis.use_internal_tank
-	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "on" : "off"]"
-	chassis.balloon_alert(owner, "taking air from [chassis.use_internal_tank ? "internal airtank" : "environment"]")
-	chassis.log_message("Now taking air from [chassis.use_internal_tank?"internal airtank":"environment"].", LOG_MECHA)
-	build_all_button_icons()
+	chassis.set_cabin_seal(owner, !chassis.cabin_sealed)
 
 /datum/action/vehicle/sealed/mecha/mech_toggle_lights
 	name = "Toggle Lights"
@@ -57,20 +47,7 @@
 /datum/action/vehicle/sealed/mecha/mech_toggle_lights/Trigger(trigger_flags)
 	if(!owner || !chassis || !(owner in chassis.occupants))
 		return
-
-	if(!(chassis.mecha_flags & HAS_LIGHTS))
-		chassis.balloon_alert(owner, "the mech lights are broken!")
-		return
-	chassis.mecha_flags ^= LIGHTS_ON
-	if(chassis.mecha_flags & LIGHTS_ON)
-		button_icon_state = "mech_lights_on"
-	else
-		button_icon_state = "mech_lights_off"
-	chassis.set_light_on(chassis.mecha_flags & LIGHTS_ON)
-	chassis.balloon_alert(owner, "toggled lights [chassis.mecha_flags & LIGHTS_ON ? "on":"off"]")
-	playsound(chassis,'sound/machines/clockcult/brass_skewer.ogg', 40, TRUE)
-	chassis.log_message("Toggled lights [(chassis.mecha_flags & LIGHTS_ON)?"on":"off"].", LOG_MECHA)
-	build_all_button_icons()
+	chassis.toggle_lights(user = owner)
 
 /datum/action/vehicle/sealed/mecha/mech_view_stats
 	name = "View Stats"
@@ -114,23 +91,17 @@
 
 	chassis.toggle_strafe()
 
-/obj/vehicle/sealed/mecha/AltClick(mob/living/user)
-	if(!(user in occupants) || !user.can_perform_action(src))
-		return
-	if(!(user in return_controllers_with_flag(VEHICLE_CONTROL_DRIVE)))
-		to_chat(user, span_warning("You're in the wrong seat to control movement."))
-		return
-
-	toggle_strafe()
 
 /obj/vehicle/sealed/mecha/proc/toggle_strafe()
-	if(!(mecha_flags & CANSTRAFE))
+	if(!(mecha_flags & CAN_STRAFE))
 		to_chat(occupants, "this mecha doesn't support strafing!")
 		return
 
 	strafe = !strafe
 
-	to_chat(occupants, "strafing mode [strafe?"on":"off"].")
+	for(var/mob/occupant in occupants)
+		balloon_alert(occupant, "strafing [strafe?"on":"off"]")
+		occupant.playsound_local(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
 	log_message("Toggled strafing mode [strafe?"on":"off"].", LOG_MECHA)
 
 	for(var/occupant in occupants)
@@ -166,3 +137,14 @@
 		chassis.remove_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT)
 		chassis.add_control_flags(owner, VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 	chassis.update_icon_state()
+
+/datum/action/vehicle/sealed/mecha/mech_overclock
+	name = "Toggle overclocking"
+	button_icon_state = "mech_overload_off"
+
+/datum/action/vehicle/sealed/mecha/mech_overclock/Trigger(trigger_flags, forced_state = null)
+	if(!owner || !chassis || !(owner in chassis.occupants))
+		return
+	chassis.toggle_overclock(forced_state)
+	button_icon_state = "mech_overload_[chassis.overclock_mode ? "on" : "off"]"
+	build_all_button_icons()

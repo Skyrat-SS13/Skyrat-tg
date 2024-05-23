@@ -25,17 +25,18 @@
 	throw_alert(ALERT_NEW_LAW, /atom/movable/screen/alert/newlaw)
 	if(announce && last_lawchange_announce != world.time)
 		to_chat(src, span_boldannounce("Your laws have been changed."))
+		SEND_SOUND(src, sound('sound/machines/cryo_warning.ogg'))
 		// lawset modules cause this function to be executed multiple times in a tick, so we wait for the next tick in order to be able to see the entire lawset
 		addtimer(CALLBACK(src, PROC_REF(show_laws)), 0)
 		addtimer(CALLBACK(src, PROC_REF(deadchat_lawchange)), 0)
 		last_lawchange_announce = world.time
-	//SKYRAT ADDITION START: AI LAWSYNC
+	// SKYRAT EDIT ADDITION START: AI LAWSYNC
 	if(isAI(src))
 		var/mob/living/silicon/ai/ai = src
 		for(var/mob/living/silicon/robot/cyborg as anything in ai.connected_robots)
 			if(cyborg.connected_ai && cyborg.lawupdate)
 				cyborg.lawsync()
-	//SKYRAT ADDITON END
+	// SKYRAT EDIT ADDITON END
 
 /mob/living/silicon/proc/set_zeroth_law(law, law_borg, announce = TRUE)
 	laws_sanity_check()

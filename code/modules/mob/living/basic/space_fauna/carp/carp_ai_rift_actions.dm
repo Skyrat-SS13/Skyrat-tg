@@ -12,9 +12,10 @@
 	if (!rift_behaviour)
 		CRASH("Forgot to specify rift behaviour for [src]")
 
-	var/mob/living/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if (!controller.blackboard_key_exists(BB_BASIC_MOB_CURRENT_TARGET))
+		return
 	var/datum/action/cooldown/using_action = controller.blackboard[BB_CARP_RIFT]
-	if (QDELETED(target) || QDELETED(using_action) || !using_action.IsAvailable())
+	if (!using_action?.IsAvailable())
 		return
 
 	controller.queue_behavior(rift_behaviour, BB_CARP_RIFT, BB_BASIC_MOB_CURRENT_TARGET)
@@ -30,7 +31,7 @@
 	finish_planning = TRUE
 
 /datum/ai_planning_subtree/make_carp_rift/panic_teleport/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
-	if (!controller.blackboard[BB_BASIC_MOB_FLEEING])
+	if (controller.blackboard[BB_BASIC_MOB_STOP_FLEEING])
 		return
 	return ..()
 
@@ -51,21 +52,19 @@
 	return controller.blackboard[ability_key] && controller.blackboard[target_key]
 
 /datum/ai_behavior/make_carp_rift/perform(seconds_per_tick, datum/ai_controller/controller, ability_key, target_key)
-	. = ..()
 	var/datum/action/cooldown/mob_cooldown/lesser_carp_rift/ability = controller.blackboard[ability_key]
 	var/atom/target = controller.blackboard[target_key]
 
 	if (!validate_target(controller, target, ability))
-		finish_action(controller, FALSE, ability_key, target_key)
-		return
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
 	var/turf/target_destination = find_target_turf(controller, target, ability)
 	if (!target_destination)
-		finish_action(controller, FALSE, ability_key, target_key)
-		return
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
-	var/result = ability.InterceptClickOn(controller.pawn, null, target_destination)
-	finish_action(controller, result, ability_key, target_key)
+	if(ability.InterceptClickOn(controller.pawn, null, target_destination))
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
+	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
 /// Return true if your target is valid for the action
 /datum/ai_behavior/make_carp_rift/proc/validate_target(datum/ai_controller/controller, atom/target, datum/action/cooldown/mob_cooldown/lesser_carp_rift/ability)

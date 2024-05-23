@@ -2,7 +2,7 @@
 	name = "taur body"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_TAUR
-	external_bodytypes = BODYTYPE_TAUR
+	external_bodyshapes = BODYSHAPE_TAUR
 	use_mob_sprite_as_obj_sprite = TRUE
 
 	preference = "feature_taur"
@@ -15,8 +15,7 @@
 	var/obj/item/bodypart/leg/right/old_left_leg = null
 
 /obj/item/organ/external/taur_body/synth
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_ROBOTIC
 
 /datum/bodypart_overlay/mutant/taur_body
 	feature_key = "taur"
@@ -32,30 +31,30 @@
 	return GLOB.sprite_accessories["taur"]
 
 
-/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
-		external_bodytypes |= BODYTYPE_HIDE_SHOES
+		external_bodyshapes |= BODYSHAPE_HIDE_SHOES
 
 	old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
 	old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
 	var/obj/item/bodypart/leg/left/taur/new_left_leg
 	var/obj/item/bodypart/leg/right/taur/new_right_leg
 
-	if(status & ORGAN_ORGANIC)
+	if(organ_flags & ORGAN_ORGANIC)
 		new_left_leg = new /obj/item/bodypart/leg/left/taur()
 		new_right_leg = new /obj/item/bodypart/leg/right/taur()
 
-	if(status & ORGAN_ROBOTIC)
+	if(organ_flags & ORGAN_ROBOTIC)
 		new_left_leg = new /obj/item/bodypart/leg/left/robot/synth/taur()
 		new_right_leg = new /obj/item/bodypart/leg/right/robot/synth/taur()
 
 
-	new_left_leg.bodytype |= external_bodytypes
+	new_left_leg.bodyshape |= external_bodyshapes
 	new_left_leg.replace_limb(reciever, TRUE)
 	if(old_left_leg)
 		old_left_leg.forceMove(src)
 
-	new_right_leg.bodytype |= external_bodytypes
+	new_right_leg.bodyshape |= external_bodyshapes
 	new_right_leg.replace_limb(reciever, TRUE)
 	if(old_right_leg)
 		old_right_leg.forceMove(src)
@@ -87,7 +86,7 @@
 		old_right_leg.replace_limb(organ_owner, TRUE)
 		old_right_leg = null
 
-	// We don't call `synchronize_bodytypes()` here, because it's already going to get called in the parent because `external_bodytypes` has a value.
+	// We don't call `synchronize_bodytypes()` here, because it's already going to get called in the parent because `external_bodyshapes` has a value.
 
 	return ..()
 

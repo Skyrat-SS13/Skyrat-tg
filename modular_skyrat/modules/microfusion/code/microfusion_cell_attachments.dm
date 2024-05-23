@@ -11,8 +11,6 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	w_class = WEIGHT_CLASS_NORMAL
 	/// The overlay that will be automatically added, must be in the cells icon.
 	var/attachment_overlay_icon_state
-	/// Does this attachment process with the cell?
-	var/processing_attachment = FALSE
 
 
 /obj/item/microfusion_cell_attachment/proc/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
@@ -107,7 +105,7 @@ If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 	if(!microfusion_cell.parent_gun)
 		return
 	if(microfusion_cell.charge < microfusion_cell.maxcharge)
-		microfusion_cell.charge = clamp(microfusion_cell.charge + (self_charge_amount * seconds_per_tick), 0, microfusion_cell.maxcharge)
+		microfusion_cell.give(self_charge_amount * seconds_per_tick)
 		microfusion_cell.parent_gun.update_appearance()
 	if(!microfusion_cell.stabilised && SPT_PROB(1, seconds_per_tick))
 		radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)

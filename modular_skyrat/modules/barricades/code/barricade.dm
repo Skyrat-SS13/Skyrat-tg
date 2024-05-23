@@ -8,15 +8,13 @@
 	flags_1 = ON_BORDER_1
 	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR | IGNORE_DENSITY
 	max_integrity = 100
+	pass_flags_self = PASSSTRUCTURE | LETPASSTHROW
 	///The type of stack the barricade dropped when disassembled if any.
 	var/stack_type
 	///The amount of stack dropped when disassembled at full health
 	var/stack_amount = 5
 	///to specify a non-zero amount of stack to drop when destroyed
 	var/destroyed_stack_amount = 0
-	var/base_acid_damage = 2
-	///Whether things can be thrown over
-	var/allow_thrown_objs = TRUE
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
 	///Whether this barricade has damaged states
 	var/can_change_dmg_state = TRUE
@@ -134,7 +132,7 @@
 	update_icon()
 
 
-/obj/structure/deployable_barricade/deconstruct(disassembled = TRUE)
+/obj/structure/deployable_barricade/atom_deconstruct(disassembled = TRUE)
 	if(stack_type)
 		var/stack_amt
 		if(!disassembled && destroyed_stack_amount)
@@ -264,7 +262,7 @@
 	stack_type = /obj/item/stack/rods
 	destroyed_stack_amount = 2
 	barricade_type = "railing"
-	allow_thrown_objs = FALSE
+	pass_flags_self = PASSSTRUCTURE
 	can_wire = FALSE
 
 /datum/armor/deployable_barricade_guardrail
@@ -363,34 +361,34 @@
 	fire = 80
 	acid = 40
 
-/obj/structure/deployable_barricade/metal/AltClick(mob/user)
+/obj/structure/deployable_barricade/metal/click_alt(mob/user)
 	if(portable_type)
 		if(anchored)
 			to_chat(user, span_warning("[src] cannot be folded up while anchored to the ground!"))
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		if(barricade_upgrade_type)
 			to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		if(get_integrity() < max_integrity)
 			to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		user.visible_message(span_notice("[user] starts folding [src] up!"), span_notice("You start folding [src] up!"))
 		if(do_after(user, 5 SECONDS, src))
 			if(QDELETED(src)) //Copied encase we change states.
 				return
 			if(anchored)
 				to_chat(user, span_warning("[src] cannot be folded up while anchored to the ground!"))
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			if(barricade_upgrade_type)
 				to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			if(get_integrity() < max_integrity)
 				to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
-				return FALSE
+				return CLICK_ACTION_BLOCKING
 			user.visible_message(span_notice("[user] folds [src] up!"), span_notice("You neatly fold [src] up!"))
 			playsound(src, 'sound/items/ratchet.ogg', 25, TRUE)
 			fold_up()
-			return TRUE
+			return CLICK_ACTION_SUCCESS
 	return ..()
 
 /obj/structure/deployable_barricade/metal/proc/fold_up()
@@ -426,7 +424,7 @@
 		if(can_upgrade && get_integrity() > max_integrity * 0.3)
 			return attempt_barricade_upgrade(I, user, params)
 
-		if(metal_sheets.get_amount() < 2)
+		if(metal_sheets.get_amount() < repair_amount)
 			to_chat(user, span_warning("You need at least two sheets of metal to repair [src]!"))
 			return FALSE
 
@@ -435,7 +433,7 @@
 		if(!do_after(user, 2 SECONDS, src) || get_integrity() >= max_integrity)
 			return FALSE
 
-		if(!metal_sheets.use(2))
+		if(!metal_sheets.use(repair_amount))
 			return FALSE
 
 		repair_damage(max_integrity * 0.3)
@@ -550,7 +548,7 @@
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
 
-			user.visible_message (span_notice ("[user] removes the panel from[src]."),
+			user.visible_message (span_notice ("[user] removes the panel from [src]."),
 			span_notice ("You remove the panel from [src], revealing some <b>bolts</b> beneath it."))
 			build_state = BARRICADE_METAL_ANCHORED
 			return TRUE

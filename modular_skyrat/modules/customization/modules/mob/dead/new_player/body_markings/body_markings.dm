@@ -33,7 +33,7 @@
 		if(DEFAULT_TERTIARY)
 			colors = sanitize_hexcolor(features["mcolor3"])
 		if(DEFAULT_SKIN_OR_PRIMARY)
-			if(pref_species && pref_species.use_skintones)
+			if(pref_species && !(TRAIT_USES_SKINTONES in pref_species.inherent_traits))
 				colors = sanitize_hexcolor(features["skin_color"])
 			else
 				colors = sanitize_hexcolor(features["mcolor"])
@@ -64,6 +64,12 @@
 /datum/body_marking/other/flushed_cheeks
 	name = "Flushed Cheeks"
 	icon_state = "flushed_cheeks"
+	default_color = "#CCCCCC"
+	affected_bodyparts = HEAD
+
+/datum/body_marking/other/cyclops
+	name = "Cyclopean Eye"
+	icon_state = "cyclops"
 	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
 

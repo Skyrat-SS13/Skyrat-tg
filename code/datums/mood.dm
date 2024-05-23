@@ -50,7 +50,7 @@
 	RegisterSignal(mob_to_make_moody, COMSIG_ENTER_AREA, PROC_REF(check_area_mood))
 	RegisterSignal(mob_to_make_moody, COMSIG_LIVING_REVIVE, PROC_REF(on_revive))
 	RegisterSignal(mob_to_make_moody, COMSIG_MOB_STATCHANGE, PROC_REF(handle_mob_death))
-	RegisterSignal(mob_to_make_moody, COMSIG_PARENT_QDELETING, PROC_REF(clear_parent_ref))
+	RegisterSignal(mob_to_make_moody, COMSIG_QDELETING, PROC_REF(clear_parent_ref))
 
 	mob_to_make_moody.become_area_sensitive(MOOD_DATUM_TRAIT)
 	if(mob_to_make_moody.hud_used)
@@ -63,11 +63,11 @@
 
 	unmodify_hud()
 	mob_parent.lose_area_sensitivity(MOOD_DATUM_TRAIT)
-	UnregisterSignal(mob_parent, list(COMSIG_MOB_HUD_CREATED, COMSIG_ENTER_AREA, COMSIG_LIVING_REVIVE, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING))
+	UnregisterSignal(mob_parent, list(COMSIG_MOB_HUD_CREATED, COMSIG_ENTER_AREA, COMSIG_LIVING_REVIVE, COMSIG_MOB_STATCHANGE, COMSIG_QDELETING))
 
 	mob_parent = null
 
-/datum/mood/Destroy(force, ...)
+/datum/mood/Destroy(force)
 	STOP_PROCESSING(SSmood, src)
 	QDEL_LIST_ASSOC_VAL(mood_events)
 	return ..()
@@ -92,7 +92,6 @@
 			set_sanity(sanity + 0.4 * seconds_per_tick, SANITY_NEUTRAL, SANITY_MAXIMUM)
 		if(MOOD_LEVEL_HAPPY4)
 			set_sanity(sanity + 0.6 * seconds_per_tick, SANITY_NEUTRAL, SANITY_MAXIMUM)
-	handle_nutrition()
 
 	// 0.416% is 15 successes / 3600 seconds. Calculated with 2 minute
 	// mood runtime, so 50% average uptime across the hour.
@@ -112,16 +111,18 @@
 	last_stat = mob_parent.stat
 
 /// Handles mood given by nutrition
-/datum/mood/proc/handle_nutrition()
-	if (HAS_TRAIT(mob_parent, TRAIT_NOHUNGER))
-		clear_mood_event(MOOD_CATEGORY_NUTRITION)  // if you happen to switch species while hungry youre no longer hungy
-		return FALSE // no moods for nutrition
+/datum/mood/proc/update_nutrition_moodlets()
+	if(HAS_TRAIT(mob_parent, TRAIT_NOHUNGER))
+		clear_mood_event(MOOD_CATEGORY_NUTRITION)
+		return FALSE
+
+	if(HAS_TRAIT(mob_parent, TRAIT_FAT) && !HAS_TRAIT(mob_parent, TRAIT_VORACIOUS))
+		add_mood_event(MOOD_CATEGORY_NUTRITION, /datum/mood_event/fat)
+		return TRUE
+
 	switch(mob_parent.nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
-			if (!HAS_TRAIT(mob_parent, TRAIT_VORACIOUS))
-				add_mood_event(MOOD_CATEGORY_NUTRITION, /datum/mood_event/fat)
-			else
-				add_mood_event(MOOD_CATEGORY_NUTRITION, /datum/mood_event/wellfed) // round and full
+			add_mood_event(MOOD_CATEGORY_NUTRITION, HAS_TRAIT(mob_parent, TRAIT_VORACIOUS) ? /datum/mood_event/wellfed : /datum/mood_event/too_wellfed)
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			add_mood_event(MOOD_CATEGORY_NUTRITION, /datum/mood_event/wellfed)
 		if( NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
@@ -133,6 +134,8 @@
 		if(0 to NUTRITION_LEVEL_STARVING)
 			add_mood_event(MOOD_CATEGORY_NUTRITION, /datum/mood_event/starving)
 
+	return TRUE
+
 /**
  * Adds a mood event to the mob
  *
@@ -141,6 +144,14 @@
  * * type - (path) any /datum/mood_event
  */
 /datum/mood/proc/add_mood_event(category, type, ...)
+	// we may be passed an instantiated mood datum with a modified timeout
+	// it is to be used as a vehicle to copy data from and then cleaned up afterwards.
+	// why do it this way? because the params list may contain numbers, and we may not necessarily want those to be interpreted as a timeout modifier.
+	// this is only used by the food quality system currently
+	var/datum/mood_event/mood_to_copy_from
+	if (istype(type, /datum/mood_event))
+		mood_to_copy_from = type
+		type = mood_to_copy_from.type
 	if (!ispath(type, /datum/mood_event))
 		CRASH("A non path ([type]), was used to add a mood event. This shouldn't be happening.")
 	if (!istext(category))
@@ -153,7 +164,10 @@
 			clear_mood_event(category)
 		else
 			if (the_event.timeout)
+				if (!isnull(mood_to_copy_from))
+					the_event.timeout = mood_to_copy_from.timeout
 				addtimer(CALLBACK(src, PROC_REF(clear_mood_event), category), the_event.timeout, (TIMER_UNIQUE|TIMER_OVERRIDE))
+			qdel(mood_to_copy_from)
 			return // Don't need to update the event.
 	var/list/params = args.Copy(3)
 
@@ -162,8 +176,11 @@
 	if (QDELETED(the_event)) // the mood event has been deleted for whatever reason (requires a job, etc)
 		return
 
-	mood_events[category] = the_event
 	the_event.category = category
+	if (!isnull(mood_to_copy_from))
+		the_event.timeout = mood_to_copy_from.timeout
+	qdel(mood_to_copy_from)
+	mood_events[category] = the_event
 	update_mood()
 
 	if (the_event.timeout)
@@ -286,8 +303,8 @@
 	mood_screen_object = new
 	mood_screen_object.color = "#4b96c4"
 	hud.infodisplay += mood_screen_object
-	RegisterSignal(hud, COMSIG_PARENT_QDELETING, PROC_REF(unmodify_hud))
-	RegisterSignal(mood_screen_object, COMSIG_CLICK, PROC_REF(hud_click))
+	RegisterSignal(hud, COMSIG_QDELETING, PROC_REF(unmodify_hud))
+	RegisterSignal(mood_screen_object, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(hud_click))
 
 /// Removes the mood HUD object
 /datum/mood/proc/unmodify_hud(datum/source)
@@ -370,7 +387,7 @@
 		if(MOOD_LEVEL_HAPPY4)
 			msg += "[span_boldnicegreen("I love life!")]\n"
 	*/
-	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
+	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA / ALCOHOL_PROCESSING
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
 		switch(mood_level)
 			if(MOOD_LEVEL_SAD4)
@@ -393,10 +410,12 @@
 				msg += "[span_boldnicegreen("I love life!")]\n"
 	else
 		msg += "[span_notice("No clue.")]\n"
-	//SKYRAT EDIT CHANGE END
+	
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
-	//if(mood_events.len) //ORIGINAL
-	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
+	msg += get_alcohol_processing(user)
+	msg += get_drunk_mood(user)
+	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) // ORIGINAL - //if(mood_events.len)
+	//SKYRAT EDIT CHANGE END
 		for(var/category in mood_events)
 			var/datum/mood_event/event = mood_events[category]
 			switch(event.mood_change)

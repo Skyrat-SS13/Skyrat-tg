@@ -12,9 +12,8 @@
 /obj/machinery/ctf/spawner/medisim/Initialize(mapload)
 	. = ..()
 	ctf_game.setup_rules(victory_rejoin_text = "Teams have been cleared. The next game is starting automatically. Rejoin a team if you wish!", auto_restart = TRUE)
-	return INITIALIZE_HINT_LATELOAD //Start CTF needs to run after both medisim spawners have initalized.
 
-/obj/machinery/ctf/spawner/medisim/LateInitialize()
+/obj/machinery/ctf/spawner/medisim/post_machine_initialize()
 	. = ..()
 	ctf_game.start_ctf()
 
@@ -64,7 +63,9 @@
 	name = "\improper Bluesworth Hold Fair Maiden"
 	desc = "Protect your maiden, and capture theirs!"
 	icon = 'icons/obj/toys/plushes.dmi'
-	icon_state = "plushie_slime"
+	icon_state = "map_plushie_slime"
+	greyscale_config = /datum/greyscale_config/plush_slime
+	greyscale_colors = "#3399ff#000000"
 	force = 0
 	movement_type = FLOATING //there are chasms, and resetting when they fall in is really lame so lets minimize that
 	game_id = CTF_MEDISIM_CTF_GAME_ID

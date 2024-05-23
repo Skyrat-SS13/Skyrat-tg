@@ -1,5 +1,5 @@
 /////////////////////////////////////
-//////////Limb Grower Designs ///////
+////////// Designs ///////
 /////////////////////////////////////
 
 /datum/design/leftarm
@@ -162,7 +162,7 @@
 	id = "plasmamanliver"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/toxin/plasma = 20)
-	build_path = /obj/item/organ/internal/liver/plasmaman
+	build_path = /obj/item/organ/internal/liver/bone/plasmaman
 	category = list(SPECIES_PLASMAMAN)
 
 /datum/design/plasmaman_stomach

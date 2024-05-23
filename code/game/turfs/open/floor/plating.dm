@@ -14,6 +14,7 @@
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	rust_resistance = RUST_RESISTANCE_BASIC
 
 	//Can this plating have reinforced floors placed ontop of it
 	var/attachment_holes = TRUE
@@ -62,9 +63,9 @@
 			return
 		else
 			to_chat(user, span_notice("You begin reinforcing the floor..."))
-			if(do_after(user, 30, target = src))
+			if(do_after(user, 3 SECONDS, target = src))
 				if (R.get_amount() >= 2 && !istype(src, /turf/open/floor/engine))
-					PlaceOnTop(/turf/open/floor/engine, flags = CHANGETURF_INHERIT_AIR)
+					place_on_top(/turf/open/floor/engine, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/items/deconstruct.ogg', 80, TRUE)
 					R.use(2)
 					to_chat(user, span_notice("You reinforce the floor."))
@@ -100,7 +101,7 @@
 					return
 				sheets.use(PLATE_REINFORCE_COST)
 				playsound(src, 'sound/machines/creak.ogg', 100, vary = TRUE)
-				PlaceOnTop(/turf/open/floor/plating/reinforced)
+				place_on_top(/turf/open/floor/plating/reinforced)
 		else
 			if(!iscyborg(user))
 				balloon_alert(user, "too damaged, use a welding tool!")
@@ -121,10 +122,7 @@
 
 #undef PLATE_REINFORCE_COST
 
-/turf/open/floor/plating/rust_heretic_act()
-	if(prob(70))
-		new /obj/effect/temp_visual/glowing_rune(src)
-	return ..()
+
 
 /turf/open/floor/plating/make_plating(force = FALSE)
 	return
@@ -163,12 +161,11 @@
 			to_chat(user, span_danger("You hit [src], to no effect!"))
 
 /turf/open/floor/plating/foam/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	if(the_rcd.mode == RCD_FLOORWALL)
-		return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 1)
+	if(the_rcd.mode == RCD_TURF && the_rcd.rcd_design_path == /turf/open/floor/plating/rcd)
+		return list("delay" = 0, "cost" = 1)
 
-/turf/open/floor/plating/foam/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, span_notice("You build a floor."))
+/turf/open/floor/plating/foam/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	if(rcd_data["[RCD_DESIGN_MODE]"] == RCD_TURF && rcd_data["[RCD_DESIGN_PATH]"] == /turf/open/floor/plating/rcd)
 		ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 		return TRUE
 	return FALSE
@@ -178,8 +175,8 @@
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	return TRUE
 
-/turf/open/floor/plating/foam/tool_act(mob/living/user, obj/item/I, tool_type)
-	return
+/turf/open/floor/plating/foam/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	return user.combat_mode ? ITEM_INTERACT_SKIP_TO_ATTACK : ITEM_INTERACT_BLOCKING // Fuck you
 
 //reinforced plating deconstruction states
 #define PLATE_INTACT 0
@@ -198,6 +195,7 @@
 	allow_replacement = FALSE
 	rcd_proof = TRUE
 	upgradable = FALSE
+	rust_resistance = RUST_RESISTANCE_REINFORCED
 
 	//Used to track which stage of deconstruction the plate is currently in, Intact > Bolts Loosened > Cut
 	var/deconstruction_state = PLATE_INTACT
@@ -213,7 +211,7 @@
 		if(PLATE_BOLTS_LOOSENED)
 			return span_notice("The plating reinforcement is <i>unscrewed</i> but <b>welded</b> firmly to the plating.")
 		if(PLATE_CUT)
-			return span_notice("The plating reinforcements have been <i>sliced through</i> but is still <b>loosly</b> held in place.")
+			return span_notice("The plating reinforcements have been <i>sliced through</i> but are still <b>loosely</b> held in place.")
 
 /turf/open/floor/plating/reinforced/update_icon_state()
 	icon_state = "r_plate-[deconstruction_state]"
@@ -252,7 +250,7 @@
 		if(PLATE_BOLTS_LOOSENED)
 			switch(tool_used.tool_behaviour)
 				if(TOOL_WELDER)
-					if(!tool_used.tool_start_check(user, amount=0))
+					if(!tool_used.tool_start_check(user, amount=3))
 						return
 					balloon_alert(user, "slicing...")
 					if(tool_used.use_tool(src, user, 15 SECONDS, volume=100))
@@ -287,7 +285,7 @@
 					return TRUE
 
 				if(TOOL_WELDER)
-					if(!tool_used.tool_start_check(user, amount=0))
+					if(!tool_used.tool_start_check(user, amount=3))
 						return
 					balloon_alert(user, "welding back on...")
 					if(tool_used.use_tool(src, user, 15 SECONDS, volume=100))
@@ -307,6 +305,15 @@
 	if(!isnull(below_turf) && !isspaceturf(below_turf))
 		new /obj/effect/decal/cleanable/glass/plastitanium/screws(below_turf)
 		playsound(src, 'sound/effects/structure_stress/pop3.ogg', 100, vary = TRUE)
+
+/turf/open/floor/plating/reinforced/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+///not an actual turf its used just for rcd ui purposes
+/turf/open/floor/plating/rcd
+	name = "Floor/Wall"
+	icon = 'icons/hud/radial.dmi'
+	icon_state = "wallfloor"
 
 #undef PLATE_INTACT
 #undef PLATE_BOLTS_LOOSENED

@@ -9,6 +9,7 @@
 	description = "The perfect shuttle for rectangle enthuasiasts, this long and slender shuttle has been known for it's incredible(Citation Needed) safety rating."
 	admin_notes = "Has airlocks on both sides of the shuttle and will probably ram deltastation's maint wing below medical. Oh well?"
 	credit_cost = CARGO_CRATE_VALUE * 4
+	occupancy_limit = 45
 
 /*----- Black Market Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/blackmarket_chevvy
@@ -68,7 +69,16 @@
 	shuttleId = "slaver_syndie"
 	possible_destinations = "syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	flags_1 = NODECONSTRUCT_1
+
+// previously NO_DECONSTRUCTION
+/obj/machinery/computer/shuttle/slaver/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
+
+/obj/machinery/computer/shuttle/slaver/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
+
+/obj/machinery/computer/shuttle/slaver/default_pry_open(obj/item/crowbar, close_after_pry = FALSE, open_density = FALSE, closed_density = TRUE)
+	return NONE
 
 /datum/map_template/shuttle/slaver_ship
 	port_id = "slaver ship"
@@ -119,20 +129,15 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
-	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
+	r_pocket = /obj/item/storage/pouch/ammo
+	l_pocket = /obj/item/gun/energy/e_gun/mini
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/ballistic/automatic/pistol/cfa_snub/empty,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/wespe,
 		/obj/item/grenade/c4,
 		/obj/item/grenade/smokebomb
 	)
@@ -149,26 +154,22 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
-	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
+	r_pocket = /obj/item/storage/pouch/ammo
+	l_pocket = /obj/item/gun/energy/e_gun/mini
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
 		/obj/item/megaphone/command
 	)
 
 /*----- Tarkon Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/tarkon_driver
 	prefix = "_maps/shuttles/skyrat/"
-	suffix = "tarkon_driverdc54"
+	suffix = "tarkon_driver"
 	name = "Tarkon Drill Driver"
 
 /obj/machinery/computer/shuttle/tarkon_driver
@@ -191,9 +192,4 @@
 	name = "Tarkon Driver Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
 
-/datum/map_template/shuttle/ruin/tarkon_driver/defcon3
-	suffix = "tarkon_driverdc3"
-
-/datum/map_template/shuttle/ruin/tarkon_driver/defcon2
-	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/

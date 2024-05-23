@@ -2,7 +2,9 @@
 	name = "\improper Paradox Clone"
 	roundend_category = "Paradox Clone"
 	job_rank = ROLE_PARADOX_CLONE
+	antagpanel_category = ANTAG_GROUP_PARADOX
 	antag_hud_name = "paradox_clone"
+	show_to_ghosts = TRUE
 	suicide_cry = "THERE CAN BE ONLY ONE!!"
 	preview_outfit = /datum/outfit/paradox_clone
 
@@ -93,3 +95,9 @@
 		explanation_text = "Free Objective"
 		CRASH("WARNING! [ADMIN_LOOKUPFLW(owner)] paradox clone objectives forged without an original!")
 	explanation_text = "Murder and replace [target.name], the [!target_role_type ? target.assigned_role.title : target.special_role]. Remember, your mission is to blend in, do not kill anyone else unless you have to!"
+
+///Static bluespace stream used in its ghost poll icon.
+/obj/effect/bluespace_stream
+	name = "bluespace stream"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "bluestream"

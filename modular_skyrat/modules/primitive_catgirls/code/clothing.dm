@@ -125,7 +125,7 @@
 	actions_types = list(/datum/action/item_action/adjust)
 
 /obj/item/clothing/mask/primitive_catgirl_greyscale_gaiter/attack_self(mob/user)
-	adjustmask(user)
+	adjust_visor(user)
 
 // Head
 
@@ -135,4 +135,4 @@
 // Misc Items
 
 /obj/item/forging/reagent_weapon/axe/fake_copper
-	custom_materials = list(/datum/material/copporcitite = SHEET_MATERIAL_AMOUNT )
+	custom_materials = list(/datum/material/copporcitite = SHEET_MATERIAL_AMOUNT)

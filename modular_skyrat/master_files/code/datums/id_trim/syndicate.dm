@@ -18,6 +18,7 @@
 	trim_state = "trim_unknown"
 	department_color = COLOR_ASSEMBLY_BLACK
 	subdepartment_color = COLOR_SYNDIE_RED
+	threat_modifier = 5 // Matching the syndicate threat level since DS2 is a syndicate station.
 
 /datum/id_trim/syndicom/skyrat/ds2/prisoner
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi' // I can't put this on the basetype AAAAAA

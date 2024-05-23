@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 /datum/round_event_control/spacevine
 	name = "Space Vines"
 	typepath = /datum/round_event/spacevine
@@ -39,7 +38,7 @@
 		var/obj/structure/spacevine/vine = new()
 
 		for(var/area/station/hallway/area in GLOB.areas)
-			for(var/turf/open/floor in area.get_contained_turfs())
+			for(var/turf/open/floor in area.get_turfs_from_all_zlevels())
 				if(floor.Enter(vine))
 					turfs += floor
 
@@ -112,4 +111,3 @@
 
 /datum/event_admin_setup/input_number/spacevine_production/apply_to_event(datum/round_event/spacevine/event)
 	event.production = chosen_value
-*/

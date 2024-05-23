@@ -1,5 +1,3 @@
-#define LOOC_RANGE 7
-
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
@@ -42,8 +40,8 @@
 		if(is_banned_from(ckey, BAN_LOOC))
 			to_chat(src, span_warning("You are LOOC banned!"))
 			return
-		if(mob.stat)
-			to_chat(src, span_danger("You cannot use LOOC while unconscious or dead."))
+		if(mob.stat == DEAD)
+			to_chat(src, span_danger("You cannot use LOOC while dead."))
 			return
 		if(istype(mob, /mob/dead))
 			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
@@ -54,7 +52,7 @@
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 	var/list/heard
 	if(wall_pierce)
-		heard = get_hearers_in_range(LOOC_RANGE, mob.get_top_level_mob())
+		heard = get_hearers_in_looc_range(mob.get_top_level_mob())
 	else
 		heard = get_hearers_in_view(LOOC_RANGE, mob.get_top_level_mob())
 
@@ -62,7 +60,7 @@
 	if(istype(mob, /mob/living/silicon/ai))
 		var/mob/living/silicon/ai/ai = mob
 		if(wall_pierce)
-			heard = get_hearers_in_range(LOOC_RANGE, ai.eyeobj)
+			heard = get_hearers_in_looc_range(ai.eyeobj)
 		else
 			heard = get_hearers_in_view(LOOC_RANGE, ai.eyeobj)
 	//so the ai can see looc text
@@ -90,5 +88,3 @@
 			to_chat(cli_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
 		else if (cli_client.prefs.read_preference(/datum/preference/toggle/admin/see_looc))
 			to_chat(cli_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
-
-#undef LOOC_RANGE

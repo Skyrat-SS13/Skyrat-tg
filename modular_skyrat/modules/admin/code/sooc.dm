@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	if(!mob)
 		return
 
-	var/static/list/job_lookup = list(JOB_CAPTAIN=TRUE, JOB_HEAD_OF_SECURITY=TRUE, JOB_WARDEN=TRUE, JOB_DETECTIVE=TRUE, JOB_SECURITY_OFFICER=TRUE, JOB_CORRECTIONS_OFFICER=TRUE, JOB_SECURITY_MEDIC=TRUE)
+	var/static/list/job_lookup = list(JOB_CAPTAIN=TRUE, JOB_HEAD_OF_SECURITY=TRUE, JOB_WARDEN=TRUE, JOB_DETECTIVE=TRUE, JOB_SECURITY_OFFICER=TRUE, JOB_CORRECTIONS_OFFICER=TRUE)
 	if(!holder)
 		var/job = mob?.mind.assigned_role.title
 		if(!job || !job_lookup[job])
@@ -104,9 +104,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 		var/client/iterated_client = iterated_listener
 		to_chat(iterated_client, span_oocplain("<b>The SOOC channel has been globally [GLOB.sooc_allowed ? "enabled" : "disabled"].</b>"))
 
-/datum/admins/proc/togglesooc()
-	set category = "Server"
-	set name = "Toggle Security OOC"
+ADMIN_VERB(togglesooc, R_ADMIN, "Toggle Security OOC", "Toggles Security OOC.", ADMIN_CATEGORY_SERVER)
 	toggle_sooc()
 	log_admin("[key_name(usr)] toggled Security OOC.")
 	message_admins("[key_name_admin(usr)] toggled Security OOC.")

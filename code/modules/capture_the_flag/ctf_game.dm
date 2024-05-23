@@ -9,7 +9,7 @@
 /obj/machinery/ctf
 	name = "CTF Controller"
 	desc = "Used for running friendly games of capture the flag."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/machines/beacon.dmi'
 	icon_state = "syndbeacon"
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -135,7 +135,7 @@
 			var/datum/outfit/ctf/class = ctf_gear[key]
 			var/datum/radial_menu_choice/option = new
 			option.image  = image(icon = initial(class.icon), icon_state = initial(class.icon_state))
-			option.info = "<span class='boldnotice'>[initial(class.class_description)]</span>"
+			option.info = span_boldnotice("[initial(class.class_description)]")
 			display_classes[key] = option
 
 		sort_list(display_classes)
@@ -151,6 +151,15 @@
 	new_team_member.prefs.safe_transfer_prefs_to(player_mob, is_antag = TRUE)
 	if(player_mob.dna.species.outfit_important_for_life)
 		player_mob.set_species(/datum/species/human)
+
+	var/datum/mind/new_member_mind = new_team_member.mob.mind
+	if(new_member_mind?.current)
+		player_mob.AddComponent( \
+			/datum/component/temporary_body, \
+			old_mind = new_member_mind, \
+			old_body = new_member_mind.current, \
+		)
+
 	player_mob.ckey = new_team_member.ckey
 	if(isnull(ctf_player_component))
 		var/datum/component/ctf_player/player_component = player_mob.mind.AddComponent(/datum/component/ctf_player, team, ctf_game, ammo_type)
@@ -212,7 +221,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/ctf_flag/LateInitialize()
-	. = ..()
 	ctf_game = GLOB.ctf_games[game_id] //Flags don't create ctf games by themselves since you can get ctf flags from christmas trees.
 
 /obj/item/ctf_flag/Destroy()
@@ -256,8 +264,18 @@
 		anchored = TRUE // Avoid directly assigning to anchored and prefer to use set_anchored() on normal circumstances.
 		return
 	//passing means the user picked up the flag so we can now apply this
+	to_chat(user, span_userdanger("Take \the [initial(name)] to your team's controller!"))
 	user.set_anchored(TRUE)
 	user.status_flags &= ~CANPUSH
+
+/obj/item/ctf_flag/attackby(obj/item/item, mob/user, params)
+	if(!istype(item, /obj/item/ctf_flag))
+		return ..()
+
+	var/obj/item/ctf_flag/flag = item
+	if(flag.team != team)
+		to_chat(user, span_userdanger("Take \the [initial(flag.name)] to your team's controller!"))
+		user.playsound_local(get_turf(user), 'sound/machines/buzz-sigh.ogg', 100, vary = FALSE, use_reverb = FALSE)
 
 /obj/item/ctf_flag/dropped(mob/user)
 	..()
@@ -349,7 +367,7 @@
 			scores += UNLINT("<span style='color: [ctf_team.team_color]'>[ctf_team.team_color] - [ctf_team.points]/[ctf_game.points_to_win]</span>\n")
 		balloon_alert_to_viewers(scores)
 
-/obj/machinery/ctf/control_point/attackby(mob/user, params)
+/obj/machinery/ctf/control_point/attackby(obj/item/item, mob/user, params)
 	capture(user)
 
 /obj/machinery/ctf/control_point/attack_hand(mob/user, list/modifiers)
@@ -424,7 +442,7 @@
 /obj/effect/ctf/dead_barricade
 	name = "dead barrier"
 	desc = "It provided cover in fire fights. And now it's gone."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrier0"
 	var/game_id = CTF_GHOST_CTF_GAME_ID
 	var/datum/ctf_controller/ctf_game
@@ -445,7 +463,12 @@
 
 /obj/structure/table/reinforced/ctf
 	resistance_flags = INDESTRUCTIBLE
-	flags_1 = NODECONSTRUCT_1
+
+/obj/structure/table/reinforced/ctf/wrench_act_secondary(mob/living/user, obj/item/tool)
+	return NONE
+
+/obj/structure/table/reinforced/ctf/screwdriver_act_secondary(mob/living/user, obj/item/tool)
+	return NONE
 
 #define CTF_LOADING_UNLOADED 0
 #define CTF_LOADING_LOADING 1
@@ -491,17 +514,26 @@
 
 	var/ctf_enabled = FALSE
 	ctf_enabled = ctf_controller.toggle_ctf()
-	for(var/obj/machinery/power/emitter/emitter in ctf_area)
-		emitter.active = ctf_enabled
+	for(var/turf/ctf_turf as anything in get_area_turfs(ctf_area))
+		for(var/obj/machinery/power/emitter/emitter in ctf_turf)
+			emitter.active = ctf_enabled
 	if(user)
 		message_admins("[key_name_admin(user)] has [ctf_enabled ? "enabled" : "disabled"] CTF!")
 	else if(automated)
 		message_admins("CTF has finished a round and automatically restarted.")
-		notify_ghosts("CTF has automatically restarted after a round finished in [initial(ctf_area.name)]!",'sound/effects/ghost2.ogg')
+		notify_ghosts(
+			"CTF has automatically restarted after a round finished in [initial(ctf_area.name)]!",
+			ghost_sound = 'sound/effects/ghost2.ogg',
+			header = "CTF Restarted"
+		)
 	else
 		message_admins("The players have spoken! Voting has enabled CTF!")
 	if(!automated)
-		notify_ghosts("CTF has been [ctf_enabled? "enabled" : "disabled"] in [initial(ctf_area.name)]!",'sound/effects/ghost2.ogg')
+		notify_ghosts(
+			"CTF has been [ctf_enabled? "enabled" : "disabled"] in [initial(ctf_area.name)]!",
+			ghost_sound = 'sound/effects/ghost2.ogg',
+			header = "CTF [ctf_enabled? "Enabled" : "Disabled"]"
+		)
 
 #undef CTF_LOADING_UNLOADED
 #undef CTF_LOADING_LOADING

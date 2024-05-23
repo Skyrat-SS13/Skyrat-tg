@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crack"
 	volume = 10
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 10)
 
 /obj/item/reagent_containers/crackbrick
@@ -13,7 +13,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crackbrick"
 	volume = 40
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 40)
 
 /obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
@@ -38,7 +38,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocaine"
 	volume = 5
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine = 5)
 
 /obj/item/reagent_containers/cocaine/proc/snort(mob/living/user)
@@ -52,11 +52,11 @@
 	if(covered)
 		to_chat(user, span_warning("You have to remove your [covered] first!"))
 		return
-	user.visible_message(span_notice("'[user] starts snorting the [src]."))
+	user.visible_message(span_notice("[user] starts snorting the [src]."))
 	if(do_after(user, 30))
 		to_chat(user, span_notice("You finish snorting the [src]."))
 		if(reagents.total_volume)
-			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+			reagents.trans_to(user, reagents.total_volume, transferred_by = user, methods = INGEST)
 		qdel(src)
 
 /obj/item/reagent_containers/cocaine/attack(mob/target, mob/user)
@@ -83,7 +83,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocainebrick"
 	volume = 25
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine = 25)
 
 

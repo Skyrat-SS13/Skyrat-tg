@@ -53,10 +53,11 @@
 	current_sort += target.type
 	to_chat(user, span_notice("[target] has been added to [src]'s sorting list."))
 
-/obj/item/conveyor_sorter/AltClick(mob/user)
+/obj/item/conveyor_sorter/click_alt(mob/user)
 	visible_message("[src] pings, resetting its sorting list!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	current_sort = list()
+	return CLICK_ACTION_SUCCESS
 
 /obj/effect/decal/conveyor_sorter
 	name = "conveyor sorter"
@@ -99,7 +100,7 @@
 	. += span_notice("Ctrl-Click to remove.")
 
 /obj/effect/decal/conveyor_sorter/attack_hand(mob/living/user, list/modifiers)
-	var/user_choice = tgui_input_list(user, "Choose which direction to sort to!", "Direction choice", directions)
+	var/user_choice = tgui_input_list(user, "Choose which direction to sort to!", "Direction choice", directions) // this would be cooler as a radial
 	if(!user_choice)
 		return ..()
 
@@ -122,10 +123,11 @@
 	else
 		return ..()
 
-/obj/effect/decal/conveyor_sorter/AltClick(mob/user)
+/obj/effect/decal/conveyor_sorter/click_alt(mob/user)
 	visible_message("[src] pings, resetting its sorting list!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	sorting_list = list()
+	return CLICK_ACTION_SUCCESS
 
 /obj/effect/decal/conveyor_sorter/CtrlClick(mob/user)
 	visible_message("[src] begins to ping violently!")
@@ -144,9 +146,12 @@
 	id = "conveysorter"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/conveyor_sorter
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	category = list(
-		RND_CATEGORY_EQUIPMENT
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_CARGO,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
@@ -170,7 +175,7 @@
 
 /obj/effect/decal/conveyor_sorter/improved
 	name = "improved conveyor sorter"
-	desc = "A mark that will sort items out based on what they are. This one can sort in multiple directions."
+	desc = "A mark that will sort items out based on what they are. This one can sort in ordinal directions as well!"
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
 	icon_state = "sorter_improved"
 	light_range = 3
@@ -183,10 +188,10 @@
 	id = "conveyor_sorter_improved"
 	build_path = /obj/item/conveyor_sorter/improved
 	materials = list(
-		/datum/material/iron = 500,
-		/datum/material/plastic = 500,
-		/datum/material/gold = 500,
-		/datum/material/bluespace = 500,
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 
 
@@ -198,4 +203,4 @@
 	design_ids = list(
 		"conveyor_sorter_improved",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500) // Why.

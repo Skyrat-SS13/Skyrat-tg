@@ -1,10 +1,10 @@
-/datum/antagonist/traitor/infiltrator
+/datum/antagonist/traitor/lone_infiltrator
 	name = "Lone Infiltrator"
 	var/infil_outfit = /datum/outfit/syndicateinfiltrator
 	preview_outfit = /datum/outfit/lone_infiltrator_preview
 	job_rank = ROLE_LONE_INFILTRATOR
 
-/datum/antagonist/traitor/infiltrator/on_gain()
+/datum/antagonist/traitor/lone_infiltrator/on_gain()
 	var/mob/living/carbon/human/current = owner.current
 	current.equipOutfit(infil_outfit)
 	var/chosen_name = current.dna.species.random_name(current.gender,1,1)

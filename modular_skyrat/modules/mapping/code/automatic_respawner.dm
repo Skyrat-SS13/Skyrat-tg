@@ -115,7 +115,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 	var/datum/mind/parent_mind = parent
-	RegisterSignal(parent_mind.current, COMSIG_LIVING_DEATH, .proc/start_timer)
+	RegisterSignal(parent_mind.current, COMSIG_LIVING_DEATH, PROC_REF(start_timer))
 
 /datum/component/respawner/Destroy(force, silent)
 	var/datum/mind/parent_mind = parent

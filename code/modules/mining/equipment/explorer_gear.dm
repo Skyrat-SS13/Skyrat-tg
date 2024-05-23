@@ -85,20 +85,20 @@
 	starting_filter_type = /obj/item/gas_filter/plasmaman
 
 /obj/item/clothing/mask/gas/explorer/attack_self(mob/user)
-	adjustmask(user)
+	adjust_visor(user)
 
-/obj/item/clothing/mask/gas/explorer/adjustmask(mob/user)
+/obj/item/clothing/mask/gas/explorer/visor_toggling()
 	. = ..()
 	// adjusted = out of the way = smaller = can fit in boxes
-	w_class = mask_adjusted ? WEIGHT_CLASS_SMALL : WEIGHT_CLASS_NORMAL
-	inhand_icon_state = mask_adjusted ? "[initial(inhand_icon_state)]_up" : initial(inhand_icon_state)
-	if(user)
-		user.update_held_items()
+	update_weight_class(up ? WEIGHT_CLASS_SMALL : WEIGHT_CLASS_NORMAL)
 
+/obj/item/clothing/mask/gas/explorer/update_icon_state()
+	. = ..()
+	inhand_icon_state = "[initial(inhand_icon_state)][up ? "_up" : ""]"
 
 /obj/item/clothing/mask/gas/explorer/examine(mob/user)
 	. = ..()
-	if(mask_adjusted || w_class == WEIGHT_CLASS_SMALL)
+	if(up || w_class == WEIGHT_CLASS_SMALL)
 		return
 	. += span_notice("You could fit this into a box if you adjusted it.")
 
@@ -107,7 +107,7 @@
 
 /obj/item/clothing/mask/gas/explorer/folded/Initialize(mapload)
 	. = ..()
-	adjustmask()
+	visor_toggling()
 
 /obj/item/clothing/suit/hooded/cloak
 	icon = 'icons/obj/clothing/suits/armor.dmi'
@@ -130,30 +130,27 @@
 	armor_type = /datum/armor/cloak_goliath
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/goliath
 	body_parts_covered = CHEST|GROIN|ARMS
-	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	//SKYRAT ADDITION END
 
-/obj/item/clothing/suit/hooded/cloak/goliath/AltClick(mob/user)
-	. = ..()
-	if(iscarbon(user))
-		var/mob/living/carbon/char = user
-		if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_OCLOTHING) == src))
-			to_chat(user, span_warning("You can't adjust [src] while wearing it!"))
-			return
-		if(!user.is_holding(src))
-			to_chat(user, span_warning("You must be holding [src] in order to adjust it!"))
-			return
-		if(slot_flags & ITEM_SLOT_OCLOTHING)
-			slot_flags = ITEM_SLOT_NECK
-			set_armor(/datum/armor/none)
-			user.visible_message(span_notice("[user] adjusts their [src] for ceremonial use."), span_notice("You adjust your [src] for ceremonial use."))
-		else
-			slot_flags = initial(slot_flags)			
-			set_armor(initial(armor_type))
-			user.visible_message(span_notice("[user] adjusts their [src] for defensive use."), span_notice("You adjust your [src] for defensive use."))
-			
+/obj/item/clothing/suit/hooded/cloak/goliath/click_alt(mob/user)
+	if(!iscarbon(user))
+		return NONE
+	var/mob/living/carbon/char = user
+	if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_OCLOTHING) == src))
+		to_chat(user, span_warning("You can't adjust [src] while wearing it!"))
+		return CLICK_ACTION_BLOCKING
+	if(!user.is_holding(src))
+		to_chat(user, span_warning("You must be holding [src] in order to adjust it!"))
+		return CLICK_ACTION_BLOCKING
+	if(slot_flags & ITEM_SLOT_OCLOTHING)
+		slot_flags = ITEM_SLOT_NECK
+		set_armor(/datum/armor/none)
+		user.visible_message(span_notice("[user] adjusts their [src] for ceremonial use."), span_notice("You adjust your [src] for ceremonial use."))
+	else
+		slot_flags = initial(slot_flags)
+		set_armor(initial(armor_type))
+		user.visible_message(span_notice("[user] adjusts their [src] for defensive use."), span_notice("You adjust your [src] for defensive use."))
+	return CLICK_ACTION_SUCCESS
+
 /datum/armor/cloak_goliath
 	melee = 35
 	bullet = 10
@@ -174,10 +171,6 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
 	resistance_flags = FIRE_PROOF
-	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	//SKYRAT ADDITION END
 
 /datum/armor/cloakhood_goliath
 	melee = 35
@@ -337,3 +330,27 @@
 		user.heal_ordered_damage(heal_amount, damage_heal_order)
 		user.visible_message(span_notice("[user] suddenly revives, as their armor swirls with demonic energy!"), span_notice("You suddenly feel invigorated!"))
 		playsound(user.loc, 'sound/magic/clockwork/ratvar_attack.ogg', 50)
+
+/obj/item/clothing/suit/hooded/explorer/syndicate
+	name = "syndicate explorer suit"
+	desc = "An armoured suit for exploring harsh environments, dyed in the sinister red and black of the Syndicate. This one seems better armored than the ones Nanotrasen gives out."
+	icon_state = "explorer_syndicate"
+	icon = 'icons/obj/clothing/suits/utility.dmi'
+	worn_icon = 'icons/mob/clothing/suits/utility.dmi'
+	hoodtype = /obj/item/clothing/head/hooded/explorer/syndicate
+	armor_type = /datum/armor/hooded_explorer_syndicate
+
+/datum/armor/hooded_explorer_syndicate
+	melee = 30
+	bullet = 15
+	laser = 25
+	energy = 35
+	bomb = 50
+	fire = 60
+	acid = 60
+
+/obj/item/clothing/head/hooded/explorer/syndicate
+	name = "syndicate explorer hood"
+	desc = "An armoured hood for exploring harsh environments."
+	icon_state = "explorer_syndicate"
+	armor_type = /datum/armor/hooded_explorer_syndicate

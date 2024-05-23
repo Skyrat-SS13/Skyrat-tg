@@ -3,8 +3,6 @@
 	generic = "Tail"
 	organ_type = /obj/item/organ/external/tail
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
-	special_render_case = TRUE
-	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 	/// Can we use this tail for the fluffy tail turf emote?
@@ -29,9 +27,6 @@
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return TRUE
 
-/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
-	return icon_state
-
 /datum/sprite_accessory/tails/none
 	name = "None"
 	icon_state = "none"
@@ -43,6 +38,11 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
 	organ_type = /obj/item/organ/external/tail/lizard
+
+/datum/sprite_accessory/tails/lizard/short/twotone
+	name = "Short (Two-Tone)"
+	icon_state = "short2tone"
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/tails/human
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_MAMMAL, SPECIES_GHOUL)
@@ -56,7 +56,7 @@
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
 	icon_state = "monkey"
-	icon = 'icons/mob/species/monkey/monkey_tail.dmi'
+	icon = 'icons/mob/human/species/monkey/monkey_tail.dmi'
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
 	color_src = FALSE
 	organ_type = /obj/item/organ/external/tail/monkey
@@ -163,10 +163,6 @@
 	icon_state = "fennec"
 	fluffy = TRUE
 
-/datum/sprite_accessory/tails/mammal/wagging/fish
-	name = "Fish"
-	icon_state = "fish"
-
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
@@ -192,7 +188,7 @@
 	name = "Horse"
 	icon_state = "horse"
 	color_src = USE_ONE_COLOR
-	default_color = HAIR
+	default_color = DEFAULT_PRIMARY
 
 /datum/sprite_accessory/tails/mammal/wagging/husky
 	name = "Husky"
@@ -266,6 +262,10 @@
 	name = "Plug"
 	icon_state = "plugtail"
 
+/datum/sprite_accessory/tails/mammal/wagging/plug/scorpion
+	name = "Scorpion Plug"
+	icon_state = "scorptail"
+
 /datum/sprite_accessory/tails/mammal/wagging/rabbit
 	name = "Rabbit"
 	icon_state = "rabbit"
@@ -313,6 +313,15 @@
 	name = "Shade (Striped)"
 	icon_state = "shadekinlongstriped_large"
 
+/datum/sprite_accessory/tails/mammal/wagging/big/ringtail
+	name = "Ring Tail (Long)"
+	icon_state = "bigring_large"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/tails/mammal/wagging/akula/akula
+	name = "Akula"
+	icon_state = "akula"
+
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
@@ -320,6 +329,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark_no_fin
 	name = "Shark (No Fin)"
 	icon_state = "sharknofin"
+
+/datum/sprite_accessory/tails/mammal/wagging/akula/fish
+	name = "Fish"
+	icon_state = "fish"
 
 /datum/sprite_accessory/tails/mammal/wagging/shepherd
 	name = "Shepherd"
@@ -416,3 +429,7 @@
 	name = "Slim reptile"
 	icon_state = "reptileslim"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"

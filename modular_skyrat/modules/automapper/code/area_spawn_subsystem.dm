@@ -91,11 +91,12 @@ SUBSYSTEM_DEF(area_spawn)
 	turf_list = area_turf_info["[mode]"] = list()
 
 	// Get highest priority items
-	for(var/turf/iterating_turf as anything in area.get_contained_turfs())
-		// Only retain turfs of the highest priority
-		var/priority = process_turf(iterating_turf, mode)
-		if(priority > 0)
-			LAZYADDASSOC(turf_list, "[priority]", list(iterating_turf))
+	for(var/list/zlevel_turfs as anything in area.get_zlevel_turf_lists())
+		for(var/turf/area_turf as anything in zlevel_turfs)
+			// Only retain turfs of the highest priority
+			var/priority = process_turf(area_turf, mode)
+			if(priority > 0)
+				LAZYADDASSOC(turf_list, "[priority]", list(area_turf))
 
 	// Sort the priorities descending
 	return sortTim(turf_list, GLOBAL_PROC_REF(cmp_num_string_asc))
@@ -262,7 +263,7 @@ SUBSYSTEM_DEF(area_spawn)
 	/// See code/__DEFINES/~skyrat_defines/automapper.dm
 	var/mode = AREA_SPAWN_MODE_OPEN
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
-	var/list/blacklisted_stations = list("Void Raptor", "Runtime Station", "MultiZ Debug")
+	var/list/blacklisted_stations = list("Void Raptor", "Runtime Station", "MultiZ Debug", "Gateway Test", "Blueshift")
 	/// If failing to find a suitable area is OK, then this should be TRUE or CI will fail.
 	/// Should probably be true if the target_areas are random, such as ruins.
 	var/optional = FALSE
@@ -288,7 +289,7 @@ SUBSYSTEM_DEF(area_spawn)
 	if(!LAZYLEN(available_turfs))
 		if(!optional)
 			log_mapping("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
-			SSarea_spawn.failed_area_spawns += src
+			SSarea_spawn.failed_area_spawns += src.type
 		return
 
 	for(var/i in 1 to amount_to_spawn)
@@ -319,7 +320,7 @@ SUBSYSTEM_DEF(area_spawn)
 	/// The atom type that we want to spawn
 	var/desired_atom
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
-	var/list/blacklisted_stations = list("Void Raptor", "Runtime Station", "MultiZ Debug")
+	var/list/blacklisted_stations = list("Void Raptor", "Runtime Station", "MultiZ Debug", "Gateway Test")
 
 /**
  * Spawn the atoms.
@@ -333,17 +334,18 @@ SUBSYSTEM_DEF(area_spawn)
 		if(!found_area)
 			continue
 
-		for(var/turf/candidate_turf as anything in found_area.get_contained_turfs())
-			// Don't spawn if there's already a desired_atom here.
-			if(is_type_on_turf(candidate_turf, desired_atom))
-				continue
+		for (var/list/zlevel_turfs as anything in found_area.get_zlevel_turf_lists())
+			for(var/turf/area_turf as anything in zlevel_turfs)
+				// Don't spawn if there's already a desired_atom here.
+				if(is_type_on_turf(area_turf, desired_atom))
+					continue
 
-			for(var/over_atom_type in over_atoms)
-				// Spawn on the first one we find in the turf and stop.
-				if(is_type_on_turf(candidate_turf, over_atom_type))
-					new desired_atom(candidate_turf)
-					// Break the over_atom_type loop.
-					break
+				for(var/over_atom_type in over_atoms)
+					// Spawn on the first one we find in the turf and stop.
+					if(is_type_on_turf(area_turf, over_atom_type))
+						new desired_atom(area_turf)
+						// Break the over_atom_type loop.
+						break
 
 /obj/effect/turf_test
 	name = "PASS"
@@ -356,11 +358,7 @@ SUBSYSTEM_DEF(area_spawn)
 /**
  * Show overlay over area of priorities. Wall priority over open priority.
  */
-/client/proc/test_area_spawner(area/area)
-	set category = "Debug"
-	set name = "Test Area Spawner"
-	set desc = "Show area spawner placement candidates as an overlay."
-
+ADMIN_VERB(test_area_spawner, R_DEBUG, "Test Area Spawner", "Show area spawner placement candidates as an overlay.", ADMIN_CATEGORY_DEBUG, area/area)
 	for(var/obj/effect/turf_test/old_test in area)
 		qdel(old_test)
 

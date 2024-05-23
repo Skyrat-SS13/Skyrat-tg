@@ -17,7 +17,7 @@
 /obj/item/organ/external/snout
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
+	external_bodyshapes = NONE // We don't actually want this to have  by default, since some of them don't apply that.
 	preference = "feature_snout"
 
 /datum/bodypart_overlay/mutant/snout
@@ -30,11 +30,11 @@
 	return !sprite_datum.is_hidden(human)
 
 
-/obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
-		external_bodytypes |= BODYTYPE_SNOUTED
+		external_bodyshapes |= BODYSHAPE_SNOUTED
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER)
-		external_bodytypes |= BODYTYPE_ALT_FACEWEAR_LAYER
+		external_bodyshapes |= BODYSHAPE_ALT_FACEWEAR_LAYER
 
 	return ..()
 
@@ -176,7 +176,6 @@
 /datum/sprite_accessory/snouts/mammal/tajaran/normal
 	name = "Tajaran, normal"
 	icon_state = "ntajaran"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"
@@ -428,3 +427,33 @@
 	icon_state = "leporid"
 	color_src = USE_MATRIXED_COLORS
 	flags_for_organ = NONE
+
+/datum/sprite_accessory/snouts/acrador
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador (Short)"
+	icon_state = "acrador_short"
+
+/datum/sprite_accessory/snouts/acrador_1
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 1 (Normal)"
+	icon_state = "acrador_1"
+
+/datum/sprite_accessory/snouts/acrador_2
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 2 (Normal)"
+	icon_state = "acrador_2"
+
+/datum/sprite_accessory/snouts/acrador_3
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 3 (Normal)"
+	icon_state = "acrador_3"
+
+/datum/sprite_accessory/snouts/acrador_4
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 4 (Normal)"
+	icon_state = "acrador_4"

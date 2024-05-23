@@ -3,6 +3,7 @@
 //Most of the old brain damage effects have been transferred to the dumbness trauma.
 
 /datum/brain_trauma/mild
+	abstract_type = /datum/brain_trauma/mild
 
 /datum/brain_trauma/mild/hallucinations
 	name = "Hallucinations"
@@ -88,7 +89,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		switch(rand(1,11))
 			if(1)
-				owner.vomit()
+				owner.vomit(VOMIT_CATEGORY_DEFAULT)
 			if(2,3)
 				owner.adjust_dizzy(20 SECONDS)
 			if(4,5)
@@ -132,7 +133,7 @@
 
 /datum/brain_trauma/mild/muscle_weakness/on_life(seconds_per_tick, times_fired)
 	var/fall_chance = 1
-	if(owner.m_intent == MOVE_INTENT_RUN)
+	if(owner.move_intent == MOVE_INTENT_RUN)
 		fall_chance += 2
 	if(SPT_PROB(0.5 * fall_chance, seconds_per_tick) && owner.body_position == STANDING_UP)
 		to_chat(owner, span_warning("Your leg gives out!"))
@@ -178,8 +179,8 @@
 			to_chat(owner, span_warning("[pick("You have a coughing fit!", "You can't stop coughing!")]"))
 			owner.Immobilize(20)
 			owner.emote("cough")
-			addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/, emote), "cough"), 6)
-			addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/, emote), "cough"), 12)
+			addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/, emote), "cough"), 0.6 SECONDS)
+			addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/, emote), "cough"), 1.2 SECONDS)
 		owner.emote("cough")
 	..()
 
@@ -211,7 +212,7 @@
 				word = copytext(word, 1, suffix_foundon)
 			word = html_decode(word)
 
-			if(lowertext(word) in common_words)
+			if(LOWER_TEXT(word) in common_words)
 				new_message += word + suffix
 			else
 				if(prob(30) && message_split.len > 2)
@@ -265,3 +266,56 @@
 			speak_dejavu += speech_args[SPEECH_MESSAGE]
 	else
 		speak_dejavu += speech_args[SPEECH_MESSAGE]
+
+/datum/brain_trauma/mild/color_blindness
+	name = "Achromatopsia"
+	desc = "Patient's occipital lobe is unable to recognize and interpret color, rendering the patient completely colorblind."
+	scan_desc = "colorblindness"
+	gain_text = span_warning("The world around you seems to lose its color.")
+	lose_text = span_notice("The world feels bright and colorful again.")
+
+/datum/brain_trauma/mild/color_blindness/on_gain()
+	owner.add_client_colour(/datum/client_colour/monochrome/colorblind)
+	return ..()
+
+/datum/brain_trauma/mild/color_blindness/on_lose(silent)
+	owner.remove_client_colour(/datum/client_colour/monochrome/colorblind)
+	return ..()
+
+/datum/brain_trauma/mild/possessive
+	name = "Possessive"
+	desc = "Patient is extremely possessive of their belongings."
+	scan_desc = "possessiveness"
+	gain_text = span_warning("You start to worry about your belongings.")
+	lose_text = span_notice("You worry less about your belongings.")
+
+/datum/brain_trauma/mild/possessive/on_lose(silent)
+	. = ..()
+	for(var/obj/item/thing in owner.held_items)
+		clear_trait(thing)
+
+/datum/brain_trauma/mild/possessive/on_life(seconds_per_tick, times_fired)
+	if(!SPT_PROB(5, seconds_per_tick))
+		return
+
+	var/obj/item/my_thing = pick(owner.held_items) // can pick null, that's fine
+	if(isnull(my_thing) || HAS_TRAIT(my_thing, TRAIT_NODROP) || (my_thing.item_flags & (HAND_ITEM|ABSTRACT)))
+		return
+
+	ADD_TRAIT(my_thing, TRAIT_NODROP, TRAUMA_TRAIT)
+	RegisterSignals(my_thing, list(COMSIG_ITEM_DROPPED, COMSIG_MOVABLE_MOVED), PROC_REF(clear_trait))
+	to_chat(owner, span_warning("You feel a need to keep [my_thing] close..."))
+	addtimer(CALLBACK(src, PROC_REF(relax), my_thing), rand(30 SECONDS, 3 MINUTES), TIMER_DELETE_ME)
+
+/datum/brain_trauma/mild/possessive/proc/relax(obj/item/my_thing)
+	if(QDELETED(my_thing))
+		return
+	if(HAS_TRAIT_FROM_ONLY(my_thing, TRAIT_NODROP, TRAUMA_TRAIT)) // in case something else adds nodrop, somehow?
+		to_chat(owner, span_notice("You feel more comfortable letting go of [my_thing]."))
+	clear_trait(my_thing)
+
+/datum/brain_trauma/mild/possessive/proc/clear_trait(obj/item/my_thing, ...)
+	SIGNAL_HANDLER
+
+	REMOVE_TRAIT(my_thing, TRAIT_NODROP, TRAUMA_TRAIT)
+	UnregisterSignal(my_thing, list(COMSIG_ITEM_DROPPED, COMSIG_MOVABLE_MOVED))

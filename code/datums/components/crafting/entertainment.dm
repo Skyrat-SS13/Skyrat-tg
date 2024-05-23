@@ -1,3 +1,22 @@
+/datum/crafting_recipe/moffers
+	name = "Moffers"
+	result = /obj/item/clothing/shoes/clown_shoes/moffers
+	time = 6 SECONDS //opportunity to rethink your life
+	reqs = list(
+		/obj/item/stack/sheet/animalhide/mothroach = 2,
+		/obj/item/clothing/shoes/clown_shoes = 1,
+	)
+	parts = list(/obj/item/clothing/shoes/clown_shoes = 1)
+	blacklist = list(
+		/obj/item/clothing/shoes/clown_shoes/combat,
+		/obj/item/clothing/shoes/clown_shoes/banana_shoes,
+		/obj/item/clothing/shoes/clown_shoes/banana_shoes/combat,
+		/obj/item/clothing/shoes/clown_shoes/jester,
+		/obj/item/clothing/shoes/clown_shoes/meown_shoes,
+		/obj/item/clothing/shoes/clown_shoes/moffers,
+	)
+	category = CAT_ENTERTAINMENT
+
 /datum/crafting_recipe/mothplush
 	name = "Moth Plushie"
 	result = /obj/item/toy/plush/moth
@@ -5,6 +24,16 @@
 		/obj/item/stack/sheet/animalhide/mothroach = 1,
 		/obj/item/organ/internal/heart = 1,
 		/obj/item/stack/sheet/cloth = 3,
+	)
+	category = CAT_ENTERTAINMENT
+
+/datum/crafting_recipe/sharkplush
+	name = "Shark Plushie"
+	result = /obj/item/toy/plush/shark
+	reqs = list(
+		/obj/item/clothing/suit/hooded/shark_costume = 1,
+		/obj/item/grown/cotton = 10,
+		/obj/item/stack/sheet/cloth = 5,
 	)
 	category = CAT_ENTERTAINMENT
 
@@ -83,6 +112,7 @@
 		/obj/item/spear/explosive,
 		/obj/item/spear/bonespear,
 		/obj/item/spear/bamboospear,
+		/obj/item/spear/military,
 	)
 	result = /obj/structure/headpike
 	category = CAT_ENTERTAINMENT
@@ -113,6 +143,20 @@
 		/obj/item/spear/bamboospear = 1,
 	)
 	result = /obj/structure/headpike/bamboo
+	category = CAT_ENTERTAINMENT
+
+/datum/crafting_recipe/headpikemilitary
+	name = "Spike Head (Military)"
+	time = 6.5 SECONDS
+	reqs = list(
+		/obj/item/spear/military = 1,
+		/obj/item/bodypart/head = 1,
+	)
+	parts = list(
+		/obj/item/bodypart/head = 1,
+		/obj/item/spear/military = 1,
+	)
+	result = /obj/structure/headpike/military
 	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/guillotine
@@ -149,7 +193,7 @@
 	var/obj/structure/toiletbong/toiletbong = result
 
 	// because we want to set the toilet's location and dir, we need to do the consumption manually
-	var/obj/structure/toilet/toilet = locate(/obj/structure/toilet) in range(1) 
+	var/obj/structure/toilet/toilet = locate(/obj/structure/toilet) in range(1)
 	if(toilet)
 		for (var/obj/item/cistern_item in toilet.contents)
 			cistern_item.forceMove(user.drop_location())
@@ -157,7 +201,7 @@
 		toiletbong.dir = toilet.dir
 		toiletbong.loc = toilet.loc
 		qdel(toilet)
-	
+
 	to_chat(user, span_notice("[user] attaches the flamethrower to the repurposed toilet."))
 
 /datum/crafting_recipe/punching_bag
@@ -174,7 +218,7 @@
 
 /datum/crafting_recipe/stacklifter
 	name = "Chest Press"
-	result = /obj/structure/weightmachine/stacklifter
+	result = /obj/structure/weightmachine
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	reqs = list(
 		/obj/item/stack/sheet/iron = 5,
@@ -195,7 +239,7 @@
 	)
 	category = CAT_ENTERTAINMENT
 	time = 10 SECONDS
-	
+
 /datum/crafting_recipe/latexballoon
 	name = "Latex Balloon"
 	result = /obj/item/latexballoon
@@ -203,5 +247,14 @@
 	reqs = list(
 		/obj/item/clothing/gloves/latex = 1,
 		/obj/item/stack/cable_coil = 2,
+	)
+	category = CAT_EQUIPMENT
+
+/datum/crafting_recipe/bonedice
+	name = "Bone Die"
+	result = /obj/item/dice/d6/bone
+	time = 5 SECONDS
+	reqs = list(
+		/obj/item/stack/sheet/bone = 1,
 	)
 	category = CAT_EQUIPMENT

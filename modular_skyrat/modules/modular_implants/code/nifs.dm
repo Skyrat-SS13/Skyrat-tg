@@ -92,6 +92,8 @@
 	var/list/loaded_nifsofts = list()
 	///What programs come already installed on the NIF?
 	var/list/preinstalled_nifsofts = list(/datum/nifsoft/soul_poem)
+	///What programs do we want to carry between rounds?
+	var/list/persistent_nifsofts = list()
 	///This shows up in the NIF settings screen as a way to ICly display lore.
 	var/manufacturer_notes = "There is no data currently avalible for this product."
 
@@ -124,7 +126,7 @@
 	QDEL_LIST(loaded_nifsofts)
 	return ..()
 
-/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 
 	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
@@ -138,7 +140,6 @@
 	linked_mob = insertee
 	stored_ckey = linked_mob.ckey
 
-	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
 	START_PROCESSING(SSobj, src)
 
 	if(!is_calibrated)
@@ -148,8 +149,8 @@
 	linked_mob.AddComponent(/datum/component/nif_examine)
 	RegisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
-	if(preinstalled_nifsofts)
-		send_message("Loading preinstalled NIFSofts, please wait...")
+	if(preinstalled_nifsofts || persistent_nifsofts)
+		send_message("Loading preinstalled and stored NIFSofts, please wait...")
 		addtimer(CALLBACK(src, PROC_REF(install_preinstalled_nifsofts)), 3 SECONDS)
 
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
@@ -175,12 +176,16 @@
 	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
 		new preinstalled_nifsoft(src)
 
+	for(var/stored_nifsoft in persistent_nifsofts)
+		var/datum/nifsoft/new_stored_nifsoft = new stored_nifsoft(src)
+		new_stored_nifsoft.keep_installed = TRUE
+
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(seconds_per_tick)
 	. = ..()
 
-	if(!linked_mob || broken || IS_IN_STASIS(linked_mob))
+	if(!linked_mob || broken || HAS_TRAIT(linked_mob, TRAIT_STASIS))
 		return FALSE
 
 	if(calibrating)
@@ -322,12 +327,12 @@
 			send_message("Multiple of [loaded_nifsoft] cannot be installed.", TRUE)
 			return FALSE
 
-		if(current_nifsoft.type in loaded_nifsoft.mutually_exclusive_programs)
+		if(is_type_in_list(current_nifsoft, loaded_nifsoft.mutually_exclusive_programs))
 			send_message("[current_nifsoft] is preventing [loaded_nifsoft] from being installed.", TRUE)
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
-	loaded_nifsoft.parent_nif = src
+	loaded_nifsoft.parent_nif = WEAKREF(src)
 	loaded_nifsoft.linked_mob = linked_mob
 	rewards_points += (loaded_nifsoft.rewards_points_rate * loaded_nifsoft.purchase_price)
 
@@ -407,7 +412,7 @@
 		broken = TRUE
 		addtimer(CALLBACK(src, PROC_REF(fix_nif)), 30 SECONDS)
 
-	addtimer(CALLBACK(src, .proc/make_vulnerable), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(make_vulnerable)), 3 MINUTES)
 
 	switch(severity)
 		if(1)
@@ -449,7 +454,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(add_examine))
 
 /datum/component/nif_examine/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
@@ -459,7 +464,7 @@
 /datum/component/nif_examine/proc/add_examine(mob/nif_user, mob/looker, list/examine_texts)
 	SIGNAL_HANDLER
 
-	examine_texts += span_purple("<b>[nif_examine_text]</b>")
+	examine_texts += span_purple("[EXAMINE_SECTION_BREAK][EXAMINE_HINT(nif_examine_text)]")
 
 ///Checks to see if a human with a NIF has the nifsoft_to_find type of NIFSoft installed?
 /mob/living/carbon/human/proc/find_nifsoft(datum/nifsoft/nifsoft_to_find)
@@ -498,11 +503,16 @@
 
 /obj/item/storage/box/nif_ghost_box/PopulateContents()
 	new /obj/item/autosurgeon/organ/nif/ghost_role(src)
-	new /obj/item/disk/nifsoft_uploader/hivemind(src)
 	new /obj/item/disk/nifsoft_uploader/shapeshifter(src)
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
-	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
+	new /obj/item/disk/nifsoft_uploader/dorms/hypnosis(src)
+	new /obj/item/disk/nifsoft_uploader/soulcatcher(src)
+	new /obj/item/disk/nifsoft_uploader/money_sense(src)
+
+/obj/item/storage/box/nif_ghost_box/ghost_role/PopulateContents()
+	. = ..()
+	new /obj/item/disk/nifsoft_uploader/hivemind(src)
 
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END

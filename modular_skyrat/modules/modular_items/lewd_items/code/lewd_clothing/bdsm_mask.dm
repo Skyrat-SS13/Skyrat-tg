@@ -27,11 +27,14 @@
 	actions_types = list(
 		/datum/action/item_action/toggle_breathcontrol,
 		/datum/action/item_action/mask_inhale,
+		/datum/action/item_action/toggle_gag,
 	)
 	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...") // Phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.
 	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
 	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
+	/// Does the gasmask impede the user's ability to talk?
+	var/speech_disabled
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
@@ -53,11 +56,14 @@
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)
+	if(speech_disabled)
+		return
+
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
-	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
+	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1, ignore_walls = FALSE)
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1)
 
 // Create radial menu
 /obj/item/clothing/mask/gas/bdsm_mask/proc/populate_mask_designs()
@@ -66,20 +72,17 @@
 		"cyan" = image(icon = src.icon, icon_state = "mask_cyan_off"))
 
 // Using multitool on pole
-/obj/item/clothing/mask/gas/bdsm_mask/AltClick(mob/user)
+/obj/item/clothing/mask/gas/bdsm_mask/click_alt(mob/user)
 	if(color_changed == FALSE)
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, mask_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_mask_color = choice
 		update_icon_state()
 		update_icon()
 		update_mob_action_buttonss()
 		color_changed = TRUE
-		return
-	. = ..()
+	return CLICK_ACTION_SUCCESS
 
 // To check if we can change mask's model
 /obj/item/clothing/mask/gas/bdsm_mask/proc/check_menu(mob/living/user)
@@ -111,7 +114,7 @@
 		if(mask_on == TRUE)
 			var/mob/living/carbon/wearer = user
 			if(wearer.wear_mask == src)
-				if(!do_after(wearer, 600, target = src))
+				if(!do_after(wearer, 60 SECONDS, target = src))
 					to_chat(wearer, span_warning("You fail to remove the gas mask!"))
 					return
 				else
@@ -132,7 +135,7 @@
 				if(iscarbon(usr))
 					if(mask_on == TRUE)
 						if(src == target_carbon.wear_mask || . == target_carbon.wear_mask)
-							if(!do_after(target_carbon, 600, target = src))
+							if(!do_after(target_carbon, 60 SECONDS, target = src))
 								to_chat(target_mob, span_warning("You fail to remove the gas mask!"))
 								return
 							else
@@ -164,23 +167,40 @@
 	if(istype(mask))
 		mask.check()
 
+/datum/action/item_action/toggle_gag
+	name = "Toggle gag"
+	desc = "Toggles whether or not the wearer is able to speak."
+
+/datum/action/item_action/toggle_gag/Trigger(trigger_flags)
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
+	if(istype(mask))
+		mask.check_gag()
+
 /datum/action/item_action/mask_inhale
 	name = "Inhale oxygen"
 	desc = "You must inhale oxygen!"
 
 // Open the valve when press the button
 /datum/action/item_action/mask_inhale/Trigger(trigger_flags)
-	if(istype(target, /obj/item/clothing/mask/gas/bdsm_mask))
-		var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
-		if(mask.breath_status == FALSE)
-			mask.time_to_choke_left = mask.time_to_choke
-			mask.breath_status = TRUE
-			var/mob/living/carbon/affected_mob = usr
-			affected_mob.try_lewd_autoemote("inhale")
-			var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
-			filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
-		return
-	return ..()
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
+	if(!istype(mask))
+		return ..()
+
+	if(mask.breath_status)
+		return FALSE
+
+	mask.time_to_choke_left = mask.time_to_choke
+	mask.breath_status = TRUE
+
+	var/mob/living/carbon/affected_mob = usr
+	if(!istype(affected_mob))
+		return FALSE
+
+	affected_mob.try_lewd_autoemote("inhale")
+	var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
+	filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
+
+	return TRUE
 
 // Adding breath_manually on equip
 /obj/item/clothing/mask/gas/bdsm_mask/equipped(/mob/user, slot)
@@ -216,7 +236,7 @@
 /obj/item/clothing/mask/gas/bdsm_mask/proc/toggle(user)
 	mask_on = !mask_on
 	to_chat(user, span_notice("You turn the air filter [mask_on ? "on. Use with caution!" : "off. Now it's safe to wear."]"))
-	playsound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_mob_action_buttonss()
 	update_icon()
@@ -228,10 +248,25 @@
 	else
 		STOP_PROCESSING(SSobj, src)
 
+/obj/item/clothing/mask/gas/bdsm_mask/proc/check_gag(user)
+	var/mob/living/carbon/affected_carbon = user
+	if(src == affected_carbon.wear_mask)
+		to_chat(user, span_notice("You can't reach the gag switch!"))
+	else
+		toggle_gag(affected_carbon)
+
+/obj/item/clothing/mask/gas/bdsm_mask/proc/toggle_gag(user)
+	speech_disabled = !speech_disabled
+	to_chat(user, span_notice("You [speech_disabled ? "disable" : "enable"] the gag on the mask."))
+	update_mob_action_buttonss()
+	update_icon()
+
 // Mask choke processor
 /obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
 	var/mob/living/affected_mob = loc
 	var/mob/living/carbon/affected_carbon = affected_mob
+	if(!istype(affected_carbon))
+		return FALSE
 
 	if(time_to_choke_left < time_to_choke/2 && breath_status == TRUE)
 		if(temp_check == FALSE && affected_mob.stat == CONSCIOUS) // If user passed out while wearing this we should continue when he wakes up
@@ -239,15 +274,14 @@
 			time_to_choke_left = time_to_choke
 			temp_check = TRUE
 
-		if(ispath(affected_carbon))
-			if(affected_mob.stat == CONSCIOUS)
-				affected_carbon.try_lewd_autoemote("exhale")
-				breath_status = FALSE
-				if(rand(0, 3) == 0)
-					affected_carbon.try_lewd_autoemote("moan")
-			else
-				breath_status = TRUE
-				temp_check = FALSE
+		if(affected_mob.stat == CONSCIOUS)
+			affected_carbon.try_lewd_autoemote("exhale")
+			breath_status = FALSE
+			if(rand(0, 3) == 0)
+				affected_carbon.try_lewd_autoemote("moan")
+		else
+			breath_status = TRUE
+			temp_check = FALSE
 
 	if(time_to_choke_left <= 0)
 		if(tt <= 0)
@@ -277,10 +311,14 @@
 	unique_reskin = list("pink" = "filter_pink",
 						"teal" = "filter_teal")
 	w_class = WEIGHT_CLASS_SMALL
-	custom_materials = list(/datum/material/glass = 1500, /datum/material/plastic = 2000)
+	custom_materials = list(
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/plastic = SHEET_MATERIAL_AMOUNT,
+	)
 	volume = 50
-	possible_transfer_amounts = list(1, 2, 3, 4, 5)
+	possible_transfer_amounts = list(1, 2, 3, 4, 5, 10, 25, 50)
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
+	interaction_flags_click = NEED_DEXTERITY
 
 // Standard initialize code for filter
 /obj/item/reagent_containers/cup/lewd_filter/Initialize(mapload)
@@ -294,14 +332,10 @@
 // Reagent consumption process handler
 /obj/item/reagent_containers/cup/lewd_filter/proc/reagent_consumption(mob/living/user, amount_per_transfer_from_this)
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, user, user)
-	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 0.5 SECONDS)
 
 // I just wanted to add 2th color variation. Because.
-/obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
-	// Catch first AltClick and open reskin menu
-	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
-		reskin_obj(user)
-		return
+/obj/item/reagent_containers/cup/lewd_filter/click_alt(mob/user)
 	// After reskin all clicks go normal, but we can't change the flow rate if mask on and equipped
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
 	if(worn_mask)
@@ -310,8 +344,8 @@
 				if(worn_mask.mask_on == TRUE)
 					if(istype(src, /obj/item/reagent_containers/cup/lewd_filter))
 						to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
-						return
-	. = ..()
+						return CLICK_ACTION_BLOCKING
+	return ..()
 
 // Filter click handling
 /obj/item/reagent_containers/cup/lewd_filter/attack_hand(mob/user)

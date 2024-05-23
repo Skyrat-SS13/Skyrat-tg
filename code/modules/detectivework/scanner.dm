@@ -5,14 +5,14 @@
 /obj/item/detective_scanner
 	name = "forensic scanner"
 	desc = "Used to remotely scan objects and biomass for DNA and fingerprints. Can print a report of the findings."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "forensicnew"
 	w_class = WEIGHT_CLASS_SMALL
 	inhand_icon_state = "electronic"
 	worn_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
 	/// if the scanner is currently busy processing
@@ -58,8 +58,8 @@
 	//This could be a global count like sec and med record printouts. See GLOB.manifest.generalPrintCount AKA datacore.dm
 	var/frNum = ++forensicPrintCount
 
-	report_paper.name = text("FR-[] 'Forensic Record'", frNum)
-	var/report_text = text("<center><B>Forensic Record - (FR-[])</B></center><HR><BR>", frNum)
+	report_paper.name = "FR-[frNum] 'Forensic Record'"
+	var/report_text = "<center><B>Forensic Record - (FR-[frNum])</B></center><HR><BR>"
 	report_text += jointext(log, "<BR>")
 	report_text += "<HR><B>Notes:</B><BR>"
 
@@ -218,20 +218,20 @@
 /proc/get_timestamp()
 	return time2text(world.time + 432000, ":ss")
 
-/obj/item/detective_scanner/AltClick(mob/living/user)
-	// Best way for checking if a player can use while not incapacitated, etc
-	if(!user.can_perform_action(src))
-		return
+/obj/item/detective_scanner/click_alt(mob/living/user)
 	if(!LAZYLEN(log))
 		balloon_alert(user, "no logs!")
-		return
+		return CLICK_ACTION_BLOCKING
 	if(scanner_busy)
 		balloon_alert(user, "scanner busy!")
-		return
+		return CLICK_ACTION_BLOCKING
 	balloon_alert(user, "deleting logs...")
-	if(do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "logs cleared")
-		log = list()
+	if(!do_after(user, 3 SECONDS, target = src))
+		return CLICK_ACTION_BLOCKING
+	balloon_alert(user, "logs cleared")
+	log = list()
+	return CLICK_ACTION_SUCCESS
+
 
 /obj/item/detective_scanner/examine(mob/user)
 	. = ..()

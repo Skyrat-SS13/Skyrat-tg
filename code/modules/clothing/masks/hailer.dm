@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	actions_types = list(/datum/action/item_action/halt, /datum/action/item_action/adjust)
 	icon_state = "sechailer"
 	inhand_icon_state = "sechailer"
-	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | GAS_FILTERING
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
@@ -57,12 +57,20 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	visor_flags_cover = MASKCOVERSMOUTH
 	tint = 0
 	has_fov = FALSE
+	unique_death = 'sound/voice/sec_death.ogg'
 	COOLDOWN_DECLARE(hailer_cooldown)
+	///Decides the phrases available for use; defines used are the last index of a category of available phrases
 	var/aggressiveness = AGGR_BAD_COP
-	var/overuse_cooldown = FALSE
-	var/recent_uses = 0
+	///Whether the hailer has been broken due to overuse or not
 	var/broken_hailer = FALSE
+	///Whether the hailer is currently in cooldown for resetting recent_uses
+	var/overuse_cooldown = FALSE
+	///How many times was the hailer used in the last OVERUSE_COOLDOWN seconds
+	var/recent_uses = 0
+	///Whether the hailer is emagged or not
 	var/safety = TRUE
+	voice_filter = @{"[0:a] asetrate=%SAMPLE_RATE%*0.7,aresample=16000,atempo=1/0.7,lowshelf=g=-20:f=500,highpass=f=500,aphaser=in_gain=1:out_gain=1:delay=3.0:decay=0.4:speed=0.5:type=t [out]; [out]atempo=1.2,volume=15dB [final]; anoisesrc=a=0.01:d=60 [noise]; [final][noise] amix=duration=shortest"}
+	use_radio_beeps_tts = TRUE
 
 /obj/item/clothing/mask/gas/sechailer/plasmaman
 	starting_filter_type = /obj/item/gas_filter/plasmaman
@@ -90,17 +98,15 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 /obj/item/clothing/mask/gas/sechailer/cyborg
 	name = "security hailer"
 	desc = "A set of recognizable pre-recorded messages for cyborgs to use when apprehending criminals."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "taperecorder_idle"
 	slot_flags = null
 	aggressiveness = AGGR_GOOD_COP // Borgs are nicecurity!
 	actions_types = list(/datum/action/item_action/halt)
 
 /obj/item/clothing/mask/gas/sechailer/screwdriver_act(mob/living/user, obj/item/I)
-	. = TRUE
-	if(..())
-		return
-	else if (aggressiveness == AGGR_BROKEN)
+	. = ..()
+	if(aggressiveness == AGGR_BROKEN)
 		to_chat(user, span_danger("You adjust the restrictor but nothing happens, probably because it's broken."))
 		return
 	var/position = aggressiveness == AGGR_GOOD_COP ? "middle" : aggressiveness == AGGR_BAD_COP ? "last" : "first"
@@ -108,24 +114,27 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	aggressiveness = aggressiveness % 3 + 1 // loop AGGR_GOOD_COP -> AGGR_SHIT_COP
 
 /obj/item/clothing/mask/gas/sechailer/wirecutter_act(mob/living/user, obj/item/I)
-	. = TRUE
-	..()
+	. = ..()
 	if(aggressiveness != AGGR_BROKEN)
 		to_chat(user, span_danger("You broke the restrictor!"))
 		aggressiveness = AGGR_BROKEN
+		return
 
 /obj/item/clothing/mask/gas/sechailer/ui_action_click(mob/user, action)
 	if(istype(action, /datum/action/item_action/halt))
 		halt()
 	else
-		adjustmask(user)
+		adjust_visor(user)
 
 /obj/item/clothing/mask/gas/sechailer/attack_self()
 	halt()
-/obj/item/clothing/mask/gas/sechailer/emag_act(mob/user)
+
+/obj/item/clothing/mask/gas/sechailer/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(safety)
 		safety = FALSE
-		to_chat(user, span_warning("You silently fry [src]'s vocal circuit."))
+		balloon_alert(user, "vocal circuit fried")
+		return TRUE
+	return FALSE
 
 /obj/item/clothing/mask/gas/sechailer/verb/halt()
 	set category = "Object"
@@ -157,9 +166,8 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	// select phrase to play
 	play_phrase(usr, GLOB.hailer_phrases[select_phrase()])
 
-
 /obj/item/clothing/mask/gas/sechailer/proc/select_phrase()
-	if (!safety)
+	if(!safety)
 		return EMAG_PHRASE
 	else
 		var/upper_limit

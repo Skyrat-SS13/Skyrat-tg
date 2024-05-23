@@ -1,54 +1,19 @@
-//SKYRAT ADDITION BEGIN - AESTHETICS
-#define AIRLOCK_LIGHT_POWER 0.5
-#define AIRLOCK_LIGHT_RANGE 2
-#define AIRLOCK_LIGHT_ENGINEERING "engineering"
-#define AIRLOCK_POWERON_LIGHT_COLOR "#3aa7c2"
-#define AIRLOCK_BOLTS_LIGHT_COLOR "#c22323"
-#define AIRLOCK_ACCESS_LIGHT_COLOR "#57e69c"
-#define AIRLOCK_EMERGENCY_LIGHT_COLOR "#d1d11d"
-#define AIRLOCK_ENGINEERING_LIGHT_COLOR "#fd8719"
-#define AIRLOCK_DENY_LIGHT_COLOR "#c22323"
-//SKYRAT ADDITION END
-
-#define AIRLOCK_CLOSED	1
-#define AIRLOCK_CLOSING	2
-#define AIRLOCK_OPEN	3
-#define AIRLOCK_OPENING	4
-#define AIRLOCK_DENY	5
-#define AIRLOCK_EMAG	6
-
-#define AIRLOCK_FRAME_CLOSED "closed"
-#define AIRLOCK_FRAME_CLOSING "closing"
-#define AIRLOCK_FRAME_OPEN "open"
-#define AIRLOCK_FRAME_OPENING "opening"
-
 /obj/machinery/door/airlock
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
 	boltUp = 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_up.ogg'
 	boltDown = 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_down.ogg'
-	//noPower = 'sound/machines/doorclick.ogg'
 	var/forcedOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open_force.ogg' //Come on guys, why aren't all the sound files like this.
 	var/forcedClosed = 'modular_skyrat/modules/aesthetics/airlock/sound/close_force.ogg'
 
 	/// For those airlocks you might want to have varying "fillings" for, without having to
 	/// have an icon file per door with a different filling.
 	var/fill_state_suffix = null
-	/// For the airlocks that use greyscale lights, set this to the color you want your lights to be.
-	var/greyscale_lights_color = null
 	/// For the airlocks that use a greyscale accent door color, set this color to the accent color you want it to be.
 	var/greyscale_accent_color = null
-
-	var/has_environment_lights = TRUE //Does this airlock emit a light?
-	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
-	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
-	var/light_color_access = AIRLOCK_ACCESS_LIGHT_COLOR
-	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
-	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR
-	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
-	var/door_light_range = AIRLOCK_LIGHT_RANGE
-	var/door_light_power = AIRLOCK_LIGHT_POWER
-	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
+	/// Does this airlock emit a light?
+	var/has_environment_lights = TRUE
+	/// Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
 	var/external = FALSE
 
 /obj/machinery/door/airlock/external
@@ -63,59 +28,57 @@
 
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
-	var/pre_light_range = 0
-	var/pre_light_power = 0
-	var/pre_light_color = ""
-	var/lights_overlay = ""
-
 	var/frame_state
-	var/light_state
+	var/light_state = AIRLOCK_LIGHT_POWERON
+	var/pre_light_color
 	switch(airlock_state)
 		if(AIRLOCK_CLOSED)
 			frame_state = AIRLOCK_FRAME_CLOSED
 			if(locked)
 				light_state = AIRLOCK_LIGHT_BOLTS
-				lights_overlay = "lights_bolts"
-				pre_light_color = light_color_bolts
+				pre_light_color = AIRLOCK_BOLTS_LIGHT_COLOR
 			else if(emergency)
 				light_state = AIRLOCK_LIGHT_EMERGENCY
-				lights_overlay = "lights_emergency"
-				pre_light_color = light_color_emergency
+				pre_light_color = AIRLOCK_EMERGENCY_LIGHT_COLOR
+			else if(fire_active)
+				light_state = AIRLOCK_LIGHT_FIRE
+				pre_light_color = AIRLOCK_FIRE_LIGHT_COLOR
 			else if(engineering_override)
 				light_state = AIRLOCK_LIGHT_ENGINEERING
-				lights_overlay = "lights_engineering"
-				pre_light_color = light_color_engineering
+				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				lights_overlay = "lights_poweron"
-				pre_light_color = light_color_poweron
+				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 		if(AIRLOCK_DENY)
 			frame_state = AIRLOCK_FRAME_CLOSED
 			light_state = AIRLOCK_LIGHT_DENIED
-			lights_overlay = "lights_denied"
-			pre_light_color = light_color_deny
+			pre_light_color = AIRLOCK_DENY_LIGHT_COLOR
 		if(AIRLOCK_EMAG)
 			frame_state = AIRLOCK_FRAME_CLOSED
 		if(AIRLOCK_CLOSING)
 			frame_state = AIRLOCK_FRAME_CLOSING
 			light_state = AIRLOCK_LIGHT_CLOSING
-			lights_overlay = "lights_closing"
-			pre_light_color = light_color_access
+			pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
 		if(AIRLOCK_OPEN)
 			frame_state = AIRLOCK_FRAME_OPEN
 			if(locked)
-				lights_overlay = "lights_bolts_open"
-				pre_light_color = light_color_bolts
+				light_state = AIRLOCK_LIGHT_BOLTS
+				pre_light_color = AIRLOCK_BOLTS_LIGHT_COLOR
 			else if(emergency)
-				lights_overlay = "lights_emergency_open"
-				pre_light_color = light_color_emergency
+				light_state = AIRLOCK_LIGHT_EMERGENCY
+				pre_light_color = AIRLOCK_EMERGENCY_LIGHT_COLOR
+			else if(fire_active)
+				light_state = AIRLOCK_LIGHT_FIRE
+				pre_light_color = AIRLOCK_FIRE_LIGHT_COLOR
+			else if(engineering_override)
+				light_state = AIRLOCK_LIGHT_ENGINEERING
+				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				lights_overlay = "lights_poweron_open"
-				pre_light_color = light_color_poweron
+				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
+			light_state += "_open"
 		if(AIRLOCK_OPENING)
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING
-			lights_overlay = "lights_opening"
-			pre_light_color = light_color_access
+			pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
 
 	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
@@ -123,29 +86,16 @@
 	else
 		. += get_airlock_overlay("fill_[frame_state + fill_state_suffix]", icon, src, em_block = TRUE)
 
-	if(greyscale_lights_color && !light_state)
-		lights_overlay += "_greyscale"
-
-	if(lights && hasPower())
+	if(lights && hasPower() && has_environment_lights)
 		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
-		pre_light_range = door_light_range
-		pre_light_power = door_light_power
-		if(has_environment_lights)
-			set_light(pre_light_range, pre_light_power, pre_light_color, TRUE)
-			if(multi_tile)
-				filler.set_light(pre_light_range, pre_light_power, pre_light_color)
+		. += emissive_appearance(overlays_file, "lights_[light_state]", src, alpha = src.alpha)
+
+		if(multi_tile)
+			filler.set_light(l_range = AIRLOCK_LIGHT_RANGE, l_power = AIRLOCK_LIGHT_POWER, l_color = pre_light_color, l_on = TRUE)
+
+		set_light(l_range = AIRLOCK_LIGHT_RANGE, l_power = AIRLOCK_LIGHT_POWER, l_color = pre_light_color, l_on = TRUE)
 	else
-		lights_overlay = ""
-
-	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
-
-	if(greyscale_lights_color && !light_state)
-		lights_appearance.color = greyscale_lights_color
-
-	if(multi_tile)
-		lights_appearance.dir = dir
-
-	. += lights_appearance
+		set_light(l_on = FALSE)
 
 	if(greyscale_accent_color)
 		. += get_airlock_overlay("[frame_state]_accent", overlays_file, src, em_block = TRUE, state_color = greyscale_accent_color)
@@ -382,11 +332,66 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/highsec/highsec.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/highsec/overlays.dmi'
 
-//GLASS
-/obj/machinery/door/airlock/glass_large
-	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/multi_tile.dmi'
-	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/overlays.dmi'
-	multi_tile = TRUE
+//TITANIUM / SHUTTLE
+/obj/machinery/door/airlock/titanium
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/shuttle.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/overlays.dmi'
+
+/obj/machinery/door/airlock/shuttle
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/shuttle.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle/overlays.dmi'
+
+//SHUTTLE2
+/obj/machinery/door/airlock/shuttle/ferry
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/erokez.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/overlays.dmi'
+
+/obj/machinery/door/airlock/external/wagon
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/wagon.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/shuttle2/overlays.dmi'
+
+//SURVIVAL
+/obj/machinery/door/airlock/survival_pod
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/survival/overlays.dmi'
+
+//ABDUCTOR
+/obj/machinery/door/airlock/abductor
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/abductor/overlays.dmi'
+
+//CULT
+/obj/machinery/door/airlock/cult
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/cult/runed/overlays.dmi'
+
+/obj/machinery/door/airlock/cult/unruned
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/cult/unruned/overlays.dmi'
+
+//CLOCKWORK
+/obj/machinery/door/airlock/bronze
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/clockwork/overlays.dmi'
+
+//MULTI-TILE
+
+/obj/machinery/door/airlock/multi_tile
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
+
+/obj/machinery/door/airlock/multi_tile/glass
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
+
+/obj/machinery/door/airlock/multi_tile/metal
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal_overlays.dmi'
+
+//TRAM
+
+/obj/machinery/door/airlock/tram
+	name = "tram door"
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram_overlays.dmi'
+	doorOpen = 'sound/machines/tramopen.ogg'
+	doorClose = 'sound/machines/tramclose.ogg'
+	has_environment_lights = FALSE
 
 //ASSEMBLYS
 /obj/structure/door_assembly/door_assembly_public
@@ -561,27 +566,3 @@
 /obj/structure/door_assembly/
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/public.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/overlays.dmi'
-
-//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
-#undef AIRLOCK_LIGHT_POWER
-#undef AIRLOCK_LIGHT_RANGE
-#undef AIRLOCK_LIGHT_ENGINEERING
-#undef AIRLOCK_ENGINEERING_LIGHT_COLOR
-#undef AIRLOCK_POWERON_LIGHT_COLOR
-#undef AIRLOCK_BOLTS_LIGHT_COLOR
-#undef AIRLOCK_ACCESS_LIGHT_COLOR
-#undef AIRLOCK_EMERGENCY_LIGHT_COLOR
-#undef AIRLOCK_DENY_LIGHT_COLOR
-//SKYRAT EDIT END
-
-#undef AIRLOCK_CLOSED
-#undef AIRLOCK_CLOSING
-#undef AIRLOCK_OPEN
-#undef AIRLOCK_OPENING
-#undef AIRLOCK_DENY
-#undef AIRLOCK_EMAG
-
-#undef AIRLOCK_FRAME_CLOSED
-#undef AIRLOCK_FRAME_CLOSING
-#undef AIRLOCK_FRAME_OPEN
-#undef AIRLOCK_FRAME_OPENING

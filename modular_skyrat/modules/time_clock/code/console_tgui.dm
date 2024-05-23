@@ -20,7 +20,7 @@
 	/obj/item/circuitboard/machine/techfab/department/medical, \
 	/obj/item/circuitboard/machine/techfab/department/cargo, \
 	/obj/item/circuitboard/machine/techfab/department/science, \
-	/obj/item/areaeditor/blueprints, \
+	/obj/item/blueprints, \
 	/obj/item/pipe_dispenser/bluespace, \
 	/obj/item/mod/control/pre_equipped/advanced, \
 	/obj/item/clothing/shoes/magboots/advance, \
@@ -29,9 +29,10 @@
 	/obj/item/gun/energy/e_gun/hos, \
 	/obj/item/pinpointer/nuke, \
 	/obj/item/gun/energy/e_gun, \
-	/obj/item/storage/box/gunset/pdh, \
+	/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild, \
 	/obj/item/storage/belt/sabre, \
 	/obj/item/mod/control/pre_equipped/magnate, \
+	/obj/item/mod/control/pre_equipped/blueshield, \
 	/obj/item/clothing/suit/armor/vest/warden, \
 	/obj/item/clothing/glasses/hud/security/sunglasses, \
 	/obj/item/clothing/gloves/krav_maga/sec, \
@@ -44,14 +45,13 @@
 	/obj/item/mod/control/pre_equipped/safeguard, \
 	/obj/item/gun/energy/cell_loaded/medigun/cmo, \
 	/obj/item/defibrillator/compact/loaded, \
-	/obj/item/storage/hypospraykit/cmo, \
+	/obj/item/storage/hypospraykit/cmo/preloaded, \
 	/obj/item/mod/control/pre_equipped/rescue, \
-	/obj/item/gun/ballistic/rifle/boltaction/quartermaster, \
+	/obj/item/gun/ballistic/rifle/boltaction/sporterized, \
 	/obj/item/clothing/glasses/hud/gun_permit/sunglasses, \
 	/obj/item/card/id/departmental_budget/car, \
 	/obj/item/clothing/suit/armor/reactive/teleport, \
 	/obj/item/mod/control/pre_equipped/research, \
-	/obj/item/gun/ballistic/automatic/pistol/g18/nomag, \
 )
 
 
@@ -99,14 +99,24 @@
 	switch(action)
 		if("clock_in_or_out")
 			if(off_duty_check())
-				clock_in()
+				if(!(clock_in()))
+					return
 				log_admin("[key_name(usr)] clocked in as \an [inserted_id.assignment].")
+
+				var/datum/mind/user_mind = usr.mind
+				if(user_mind)
+					user_mind.clocked_out_of_job = FALSE
+
 			else
 				log_admin("[key_name(usr)] clocked out as \an [inserted_id.assignment].")
 				clock_out()
 				var/mob/living/carbon/human/human_user = usr
 				if(human_user)
 					human_user.return_items_to_console(TIME_CLOCK_RETURN_ITEMS)
+
+				var/datum/mind/user_mind = usr.mind
+				if(user_mind)
+					user_mind.clocked_out_of_job = TRUE
 
 				if(important_job_check())
 					message_admins("[key_name(usr)] has clocked out as a head of staff. [ADMIN_JMP(src)]")

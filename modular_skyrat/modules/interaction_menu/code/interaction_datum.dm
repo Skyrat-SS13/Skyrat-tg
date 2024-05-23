@@ -261,11 +261,5 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 		GLOB.interaction_instances[iname] = interaction
 
-/client/proc/reload_interactions()
-	set category = "Debug"
-	set name = "Reload Interactions"
-	set desc = "Force reload interactions"
-	if(!check_rights(R_DEBUG))
-		return
-
+ADMIN_VERB(reload_interactions, R_DEBUG, "Reload Interactions", "Force reload interactions.", ADMIN_CATEGORY_DEBUG)
 	populate_interaction_instances()

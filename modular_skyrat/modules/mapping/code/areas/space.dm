@@ -147,30 +147,37 @@
 
 /area/ruin/space/has_grav/port_tarkon
 	name = "P-T Cryo-Storage"
+	icon = 'icons/area/areas_station.dmi'
+	icon_state = "cryo"
 
 /area/ruin/space/has_grav/port_tarkon/afthall
 	name = "P-T Aft Hallway"
+	icon_state = "afthall"
 
 /area/ruin/space/has_grav/port_tarkon/forehall
 	name = "P-T Fore Hallway"
+	icon_state = "forehall"
 
 /area/ruin/space/has_grav/port_tarkon/starboardhall
 	name = "P-T Starboard Hallway"
+	icon_state = "starboardhall"
 
 /area/ruin/space/has_grav/port_tarkon/porthall
 	name = "P-T Port Hallway"
+	icon_state = "porthall"
 
 /area/ruin/space/has_grav/port_tarkon/trauma
 	name = "P-T Trauma Center"
-	icon_state = "medbay1"
+	icon_state = "med_central"
 
 /area/ruin/space/has_grav/port_tarkon/developement
 	name = "P-T Developement Center"
-	icon_state = "research"
+	icon_state = "science"
+	area_flags = XENOBIOLOGY_COMPATIBLE | UNIQUE_AREA
 
 /area/ruin/space/has_grav/port_tarkon/comms
 	name = "P-T Communication Center"
-	icon_state = "captain"
+	icon_state = "command"
 
 /area/ruin/space/has_grav/port_tarkon/power1
 	name = "P-T Solar Control"
@@ -178,7 +185,7 @@
 
 /area/ruin/space/has_grav/port_tarkon/centerhall
 	name = "P-T Central Hallway"
-	icon_state = "hallC"
+	icon_state = "centralhall"
 
 /area/ruin/space/has_grav/port_tarkon/secoff
 	name = "P-T Security Office"
@@ -186,7 +193,7 @@
 
 /area/ruin/space/has_grav/port_tarkon/atmos
 	name = "P-T Atmospheric Center"
-	icon_state = "engine"
+	icon_state = "atmos"
 
 /area/ruin/space/has_grav/port_tarkon/kitchen
 	name = "P-T Kitchen"
@@ -198,15 +205,15 @@
 
 /area/ruin/space/has_grav/port_tarkon/cargo
 	name = "P-T Cargo Center"
-	icon_state = "cargo"
+	icon_state = "cargo_office"
 
 /area/ruin/space/has_grav/port_tarkon/mining
 	name = "P-T Mining Office"
-	icon_state = "cargo"
+	icon_state = "mining_dock"
 
 /area/ruin/space/has_grav/port_tarkon/storage
 	name = "P-T Warehouse"
-	icon_state = "cargo"
+	icon_state = "cargo_warehouse"
 
 /area/ruin/space/has_grav/port_tarkon/toolstorage
 	name = "P-T Tool Storage"
@@ -218,11 +225,11 @@
 
 /area/ruin/space/has_grav/port_tarkon/dorms
 	name = "P-T Dorms"
-	icon_state = "crew_quarters"
+	icon_state = "dorms"
 
 /area/solars/tarkon
 	name = "\improper P-T Solar Array"
-	icon_state = "solarsS"
+	icon_state = "space_near"
 	has_gravity = STANDARD_GRAVITY
 
 // Cargodise Lost Freighter
@@ -232,31 +239,33 @@
 
 /area/ruin/space/has_grav/cargodise_freighter/trauma
 	name = "Freighter Trauma Center"
-	icon_state = "medbay1"
 
 /area/ruin/space/has_grav/cargodise_freighter/utility
 	name = "Freighter Utility Room"
-	icon_state = "engine"
 
 /area/ruin/space/has_grav/cargodise_freighter/kitchen
 	name = "Freighter Kitchen"
-	icon_state = "cafeteria"
 
 /area/ruin/space/has_grav/cargodise_freighter/bridge
 	name = "Freighter Bridge"
-	icon_state = "bridge"
 
 /area/ruin/space/has_grav/cargodise_freighter/cargo
 	name = "Freighter Cargo Bay"
-	icon_state = "cargo"
 
 /area/ruin/space/has_grav/cargodise_freighter/mining
 	name = "Freighter Mining Office"
-	icon_state = "cargo"
 
 /area/ruin/space/has_grav/cargodise_freighter/quarters
 	name = "Freighter Crew Quarters"
-	icon_state = "crew_quarters"
+
+/area/ruin/space/has_grav/cargodise_freighter/hydroponics
+	name = "Freighter Hydroponics"
+
+/area/ruin/space/has_grav/cargodise_freighter/vault
+	name = "Freighter Vault"
+
+/area/ruin/space/has_grav/cargodise_freighter/exterior
+	name = "Freighter Exterior"
 
 // Skyrat's Space Hotel
 
@@ -269,6 +278,6 @@
 /area/ruin/solars/hotel/solars
 	name = "\improper Hotel Solar Array"
 	requires_power = FALSE
-	area_flags = UNIQUE_AREA | AREA_USES_STARLIGHT
+	area_flags = UNIQUE_AREA
 	sound_environment = SOUND_AREA_SPACE
 	base_lighting_alpha = 255

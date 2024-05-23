@@ -1,16 +1,20 @@
 // Status display
-// (formerly Countdown timer display)
 
-#define MAX_STATIC_WIDTH 25
-#define FONT_STYLE "5pt 'Small Fonts'"
+#define MAX_STATIC_WIDTH 22
+#define FONT_STYLE "12pt 'TinyUnicode'"
 #define SCROLL_RATE (0.04 SECONDS) // time per pixel
-#define LINE1_Y -7 // SKYRAT EDIT CHANGE - AESTHETICS - originally -8
-#define LINE2_Y -14 // SKYRAT EDIT CHANGE - AESTHETICS - originally -15
+#define SCROLL_PADDING 2 // how many pixels we chop to make a smooth loop
+#define LINE1_X 1
+#define LINE1_Y -4
+#define LINE2_X 1
+#define LINE2_Y -11
+GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12pt())
+
 /// Status display which can show images and scrolling text.
 /obj/machinery/status_display
 	name = "status display"
 	desc = null
-	icon = 'icons/obj/status_display.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/status_display.dmi' //// SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame"
 	verb_say = "beeps"
 	verb_ask = "beeps"
@@ -18,17 +22,20 @@
 	density = FALSE
 	layer = ABOVE_WINDOW_LAYER
 
-	var/obj/effect/overlay/status_display_text/message1_overlay
-	var/obj/effect/overlay/status_display_text/message2_overlay
+	// We store overlays as keys, so multiple displays can use the same object safely
+	/// String key we use to index the first effect overlay displayed on us
+	var/message_key_1
+	/// String key we use to index the second effect overlay displayed on us
+	var/message_key_2
 	var/current_picture = ""
 	var/current_mode = SD_BLANK
 	var/message1 = ""
 	var/message2 = ""
 
 	/// Normal text color
-	var/text_color = "#09F"
+	var/text_color = COLOR_DISPLAY_BLUE
 	/// Color for headers, eg. "- ETA -"
-	var/header_text_color = "#2CF"
+	var/header_text_color = COLOR_DISPLAY_PURPLE
 
 /obj/item/wallframe/status_display
 	name = "status display frame"
@@ -68,16 +75,13 @@
 	update_appearance()
 	return TRUE
 
-/obj/machinery/status_display/deconstruct(disassembled = TRUE)
-	if(flags_1 & NODECONSTRUCT_1)
-		return
+/obj/machinery/status_display/on_deconstruction(disassembled)
 	if(!disassembled)
 		new /obj/item/stack/sheet/iron(drop_location(), 2)
 		new /obj/item/shard(drop_location())
 		new /obj/item/shard(drop_location())
 	else
 		new /obj/item/wallframe/status_display(drop_location())
-	qdel(src)
 
 /// Immediately change the display to the given picture.
 /obj/machinery/status_display/proc/set_picture(state)
@@ -108,10 +112,26 @@
  * Don't call this in subclasses.
  */
 /obj/machinery/status_display/proc/remove_messages()
-	if(message1_overlay)
-		QDEL_NULL(message1_overlay)
-	if(message2_overlay)
-		QDEL_NULL(message2_overlay)
+	var/obj/effect/overlay/status_display_text/overlay_1 = get_status_text(message_key_1)
+	message_key_1 = null
+	overlay_1?.disown(src)
+	var/obj/effect/overlay/status_display_text/overlay_2 = get_status_text(message_key_2)
+	message_key_2 = null
+	overlay_2?.disown(src)
+
+// List in the form key -> status display that shows said key
+GLOBAL_LIST_EMPTY(key_to_status_display)
+
+/proc/generate_status_text(line_y, message, x_offset, text_color, header_text_color, line_pair)
+	var/key = "[line_y]-[message]-[x_offset]-[text_color]-[header_text_color]-[line_pair]"
+	var/obj/effect/overlay/status_display_text/new_overlay = GLOB.key_to_status_display[key]
+	if(!new_overlay)
+		new_overlay = new(null, line_y, message, text_color, header_text_color, x_offset, line_pair, key)
+		GLOB.key_to_status_display[key] = new_overlay
+	return new_overlay
+
+/proc/get_status_text(key)
+	return GLOB.key_to_status_display[key]
 
 /**
  * Create/update message overlay.
@@ -124,19 +144,16 @@
  * * message - the new message text.
  * Returns new /obj/effect/overlay/status_display_text or null if unchanged.
  */
-/obj/machinery/status_display/proc/update_message(obj/effect/overlay/status_display_text/overlay, line_y, message, x_offset)
-	if(overlay && message == overlay.message)
-		return null
+/obj/machinery/status_display/proc/update_message(current_key, line_y, message, x_offset, line_pair)
+	var/obj/effect/overlay/status_display_text/current_overlay = get_status_text(current_key)
+	var/obj/effect/overlay/status_display_text/new_overlay = generate_status_text(line_y, message, text_color, header_text_color, x_offset, line_pair)
 
-	if(overlay)
-		qdel(overlay)
+	if(current_overlay == new_overlay)
+		return current_key
 
-	var/obj/effect/overlay/status_display_text/new_status_display_text = new(src, line_y, message, text_color, header_text_color, x_offset)
-	// Draw our object visually "in front" of this display, taking advantage of sidemap
-	new_status_display_text.pixel_y = -32
-	new_status_display_text.pixel_z = 32
-	vis_contents += new_status_display_text
-	return new_status_display_text
+	current_overlay?.disown(src)
+	new_overlay.own(src)
+	return new_overlay.status_key
 
 /obj/machinery/status_display/update_appearance(updates=ALL)
 	. = ..()
@@ -147,9 +164,9 @@
 	)
 		set_light(0)
 		return
-	set_light(1.5, 0.7, LIGHT_COLOR_BLUE) // blue light
+	set_light(1.5, 0.7, LIGHT_COLOR_FAINT_CYAN) // blue light
 
-/obj/machinery/status_display/update_overlays()
+/obj/machinery/status_display/update_overlays(updates)
 	. = ..()
 
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -167,18 +184,21 @@
 			if(current_picture == AI_DISPLAY_DONT_GLOW) // If the thing's off, don't display the emissive yeah?
 				return .
 		else
-			var/overlay = update_message(message1_overlay, LINE1_Y, message1)
-			if(overlay)
-				message1_overlay = overlay
-			overlay = update_message(message2_overlay, LINE2_Y, message2)
-			if(overlay)
-				message2_overlay = overlay
+			var/line1_metric
+			var/line2_metric
+			var/line_pair
+			line1_metric = GLOB.status_font.get_metrics(message1)
+			line2_metric = GLOB.status_font.get_metrics(message2)
+			line_pair = (line1_metric > line2_metric ? line1_metric : line2_metric)
+
+			message_key_1 = update_message(message_key_1, LINE1_Y, message1, LINE1_X, line_pair)
+			message_key_2 = update_message(message_key_2, LINE2_Y, message2, LINE2_X, line_pair)
 
 			// Turn off backlight if message is blank
 			if(message1 == "" && message2 == "")
 				return
 
-	. += emissive_appearance(icon, "outline", src, alpha = src.alpha)
+	. += emissive_appearance('modular_skyrat/modules/aesthetics/status_display/icons/status_display.dmi', "outline", src, alpha = src.alpha) // SKYRAT EDIT CHANGE - AESTHETICS
 
 // Timed process - performs nothing in the base class
 /obj/machinery/status_display/process()
@@ -206,6 +226,8 @@
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
+	var/obj/effect/overlay/status_display_text/message1_overlay = get_status_text(message_key_1)
+	var/obj/effect/overlay/status_display_text/message2_overlay = get_status_text(message_key_2)
 	if (message1_overlay || message2_overlay)
 		. += "The display says:"
 		if (message1_overlay.message)
@@ -217,10 +239,10 @@
 /obj/machinery/status_display/proc/display_shuttle_status(obj/docking_port/mobile/shuttle)
 	if(!shuttle)
 		// the shuttle is missing - no processing
-		set_messages("shutl?","")
+		set_messages("shutl","not in service")
 		return PROCESS_KILL
 	else if(shuttle.timer)
-		var/line1 = "- [shuttle.getModeStr()] -"
+		var/line1 = shuttle.getModeStr()
 		var/line2 = shuttle.getTimerStr()
 
 		set_messages(line1, line2)
@@ -236,48 +258,39 @@
  * Nice overlay to make text smoothly scroll with no client updates after setup.
  */
 /obj/effect/overlay/status_display_text
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/machines/status_display.dmi'
 	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	// physically shift down to render correctly
+	pixel_y = -32
+	pixel_z = 32
 
 	/// The message this overlay is displaying.
 	var/message
+	/// Amount of usage this overlay is getting
+	var/use_count = 0
+	/// The status key we represent
+	var/status_key
 
 	// If the line is short enough to not marquee, and it matches this, it's a header.
 	var/static/regex/header_regex = regex("^-.*-$")
 
-	/// Width of each character, including kerning gap afterwards.
-	/// We don't use rich text or anything fancy, so we can bake these values.
-	var/static/list/char_widths = list(
-		//   ! " # $ % & ' ( ) * + , - . /
-		1, 2, 3, 5, 4, 5, 5, 2, 3, 3, 3, 4, 2, 3, 2, 3,
-		// 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
-		4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 3, 3, 3, 3,
-		// @ A B C D E F G H I J K L M N O
-		7, 5, 5, 5, 5, 4, 4, 5, 5, 2, 4, 5, 4, 6, 5, 5,
-		// P Q R S T U V W X Y Z [ \ ] ^ _
-		5, 5, 5, 5, 4, 5, 4, 6, 4, 4, 4, 3, 3, 3, 4, 4,
-		// ` a b c d e f g h i j k l m n o
-		3, 5, 5, 5, 5, 4, 4, 5, 5, 2, 4, 5, 4, 6, 5, 5,
-		// p q r s t u v w x y z { | } ~
-		5, 5, 5, 5, 4, 5, 4, 6, 4, 4, 4, 3, 2, 3, 4,
-	)
-
-/obj/effect/overlay/status_display_text/Initialize(mapload, yoffset, line, text_color, header_text_color, xoffset = 0)
+/obj/effect/overlay/status_display_text/Initialize(mapload, maptext_y, message, text_color, header_text_color, xoffset = 0, line_pair, status_key)
 	. = ..()
 
-	maptext_y = yoffset
-	message = line
+	src.maptext_y = maptext_y
+	src.message = message
+	src.status_key = status_key
 
-	var/line_width = measure_width(line)
+	var/line_width = GLOB.status_font.get_metrics(message)
 
 	if(line_width > MAX_STATIC_WIDTH)
 		// Marquee text
-		var/marquee_message = "[line]  -  [line]  -  [line]"
+		var/marquee_message = "[message]    [message]    [message]"
 
 		// Width of full content. Must of these is never revealed unless the user inputted a single character.
-		var/full_marquee_width = measure_width(marquee_message)
+		var/full_marquee_width = GLOB.status_font.get_metrics("[marquee_message]    ")
 		// We loop after only this much has passed.
-		var/looping_marquee_width = measure_width("[line]  -  ")
+		var/looping_marquee_width = (GLOB.status_font.get_metrics("[message]    ]") - SCROLL_PADDING)
 
 		maptext = generate_text(marquee_message, center = FALSE, text_color = text_color)
 		maptext_width = full_marquee_width
@@ -287,45 +300,42 @@
 		add_filter("mask", 1, alpha_mask_filter(icon = icon(icon, "outline")))
 
 		// Scroll.
-		var/time = looping_marquee_width * SCROLL_RATE
-		animate(src, maptext_x = -looping_marquee_width, time = time, loop = -1)
-		animate(maptext_x = 0, time = 0)
+		var/time = line_pair * SCROLL_RATE
+		animate(src, maptext_x = (-looping_marquee_width) + MAX_STATIC_WIDTH, time = time, loop = -1)
+		animate(maptext_x = MAX_STATIC_WIDTH, time = 0)
 	else
 		// Centered text
-		var/color = header_regex.Find(line) ? header_text_color : text_color
-		maptext = generate_text(line, center = TRUE, text_color = color)
+		var/color = header_regex.Find(message) ? header_text_color : text_color
+		maptext = generate_text(message, center = TRUE, text_color = color)
 		maptext_x = xoffset //Defaults to 0, this would be centered unless overided
 
-/**
- * A hyper-streamlined version of MeasureText that doesn't support different fonts, rich formatting, or multiline.
- * But it also doesn't require a client.
- *
- * Returns the width in pixels
- *
- * Arguments:
- * * text - the text to measure
- */
-/obj/effect/overlay/status_display_text/proc/measure_width(text)
-	var/width = 0
-	for(var/text_idx in 1 to length(text))
-		var/ascii = text2ascii(text, text_idx)
-		if(!(ascii in 0x20 to 0x7E))
-			// So we can't possibly runtime, even though the input should be in range already.
-			width += 3
-			continue
-		width += char_widths[ascii - 0x1F]
+/obj/effect/overlay/status_display_text/Destroy(force)
+	GLOB.key_to_status_display -= status_key
+	return ..()
 
-	return width
+/// Status displays are static, shared by everyone who needs them
+/// This marks us as being used by one more guy
+/obj/effect/overlay/status_display_text/proc/own(atom/movable/owned_by)
+	owned_by.vis_contents += src
+	use_count += 1
+
+/// Status displays are static, shared by everyone who needs them
+/// This marks us as no longer being used by a guy
+/obj/effect/overlay/status_display_text/proc/disown(atom/movable/disowned_by)
+	disowned_by.vis_contents -= src
+	use_count -= 1
+	if(use_count <= 0)
+		qdel(src)
 
 /**
  * Generate the actual maptext.
  * Arguments:
  * * text - the text to display
- * * center - center the text if TRUE, otherwise left-align
+ * * center - center the text if TRUE, otherwise right-align (the direction the text is coming from)
  * * text_color - the text color
  */
 /obj/effect/overlay/status_display_text/proc/generate_text(text, center, text_color)
-	return {"<div style="color:[text_color];font:[FONT_STYLE][center ? ";text-align:center" : ""]" valign="top">[text]</div>"}
+	return {"<div style="color:[text_color];font:[FONT_STYLE][center ? ";text-align:center" : "text-align:right"]" valign="top">[text]</div>"}
 
 /// Evac display which shows shuttle timer or message set by Command.
 /obj/machinery/status_display/evac
@@ -344,6 +354,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 	AddComponent(/datum/component/usb_port, list(
 		/obj/item/circuit_component/status_display,
 	))
+	find_and_hang_on_wall()
 
 /obj/machinery/status_display/evac/Destroy()
 	SSradio.remove_object(src,frequency)
@@ -398,8 +409,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 /obj/machinery/status_display/supply
 	name = "supply display"
 	current_mode = SD_MESSAGE
-	text_color = "#F90"
-	header_text_color = "#FC2"
+	text_color = COLOR_DISPLAY_ORANGE
+	header_text_color = COLOR_DISPLAY_YELLOW
 
 /obj/machinery/status_display/supply/process()
 	if(machine_stat & NOPOWER)
@@ -412,8 +423,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 	if(!SSshuttle.supply)
 		// Might be missing in our first update on initialize before shuttles
 		// have loaded. Cross our fingers that it will soon return.
-		line1 = "CARGO"
-		line2 = "shutl?"
+		line1 = "shutl"
+		line2 = "not in service"
 	else if(SSshuttle.supply.mode == SHUTTLE_IDLE)
 		if(is_station_level(SSshuttle.supply.z))
 			line1 = "CARGO"
@@ -422,7 +433,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 			line1 = ""
 			line2 = ""
 	else
-		line1 = "- [SSshuttle.supply.getModeStr()] -"
+		line1 = SSshuttle.supply.getModeStr()
 		line2 = SSshuttle.supply.getTimerStr()
 	set_messages(line1, line2)
 
@@ -433,8 +444,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 	current_mode = SD_MESSAGE
 	var/shuttle_id
 
-	text_color = "#0F5"
-	header_text_color = "#2FC"
+	text_color = COLOR_DISPLAY_GREEN
+	header_text_color = COLOR_DISPLAY_CYAN
 
 /obj/machinery/status_display/shuttle/process()
 	if(!shuttle_id || (machine_stat & NOPOWER))
@@ -463,47 +474,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 	name = "\improper AI display"
 	desc = "A small screen which the AI can use to present itself."
 	current_mode = SD_PICTURE
-
-	var/emotion = AI_EMOTION_BLANK
-
-	/// A mapping between AI_EMOTION_* string constants, which also double as user readable descriptions, and the name of the iconfile.
-	var/static/list/emotion_map = list(
-		AI_EMOTION_BLANK = AI_DISPLAY_DONT_GLOW,
-		AI_EMOTION_VERY_HAPPY = "ai_veryhappy",
-		AI_EMOTION_HAPPY = "ai_happy",
-		AI_EMOTION_NEUTRAL = "ai_neutral",
-		AI_EMOTION_UNSURE = "ai_unsure",
-		AI_EMOTION_CONFUSED = "ai_confused",
-		AI_EMOTION_SAD = "ai_sad",
-		AI_EMOTION_BSOD = "ai_bsod",
-		AI_EMOTION_PROBLEMS = "ai_trollface",
-		AI_EMOTION_AWESOME = "ai_awesome",
-		AI_EMOTION_DORFY = "ai_urist",
-		AI_EMOTION_THINKING = "ai_thinking",
-		AI_EMOTION_FACEPALM = "ai_facepalm",
-		AI_EMOTION_FRIEND_COMPUTER = "ai_friend",
-		AI_EMOTION_BLUE_GLOW = "ai_sal",
-		AI_EMOTION_RED_GLOW = "ai_hal",
-	)
-
+	var/emotion = AI_DISPLAY_DONT_GLOW
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
-
-/obj/machinery/status_display/ai/Initialize(mapload)
-	. = ..()
-	GLOB.ai_status_displays.Add(src)
-
-/obj/machinery/status_display/ai/Destroy()
-	GLOB.ai_status_displays.Remove(src)
-	. = ..()
 
 /obj/machinery/status_display/ai/attack_ai(mob/living/silicon/ai/user)
 	if(!isAI(user))
 		return
 	var/list/choices = list()
-	for(var/emotion_const in emotion_map)
-		var/icon_state = emotion_map[emotion_const]
-		choices[emotion_const] = image(icon = 'icons/obj/status_display.dmi', icon_state = icon_state)
+	for(var/emotion_const in GLOB.ai_status_display_emotes)
+		var/icon_state = GLOB.ai_status_display_emotes[emotion_const]
+		choices[emotion_const] = image(icon = 'icons/obj/machines/status_display.dmi', icon_state = icon_state)
 
 	var/emotion_result = show_radial_menu(user, src, choices, tooltips = TRUE)
 	for(var/_emote in typesof(/datum/emote/ai/emotion_display))
@@ -517,7 +498,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 		update_appearance()
 		return PROCESS_KILL
 
-	set_picture(emotion_map[emotion])
+	set_picture(GLOB.ai_status_display_emotes[emotion])
 	return PROCESS_KILL
 
 /obj/item/circuit_component/status_display
@@ -549,9 +530,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 
 	var/static/list/picture_options = list(
 		"Default" = "default",
+		"Delta Alert" = "deltaalert",
 		"Red Alert" = "redalert",
+		"Blue Alert" = "bluealert",
+		"Green Alert" = "greenalert",
+		"Violet Alert" = "violetalert", // SKYRAT EDIT ADD - Alert Levels
+		"Orange Alert" = "orangealert", // SKYRAT EDIT ADD - Alert Levels
+		"Amber Alert" = "amberalert", // SKYRAT EDIT ADD - Alert Levels
+		"Gamma Alert" = "gammaalert", // SKYRAT EDIT ADD - Alert Levels
 		"Biohazard" = "biohazard",
 		"Lockdown" = "lockdown",
+		"Radiation" = "radiation",
 		"Happy" = "ai_happy",
 		"Neutral" = "ai_neutral",
 		"Very Happy" = "ai_veryhappy",
@@ -595,8 +584,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 
 	connected_display.receive_signal(status_signal)
 
+/obj/machinery/status_display/random_message
+	current_mode = SD_MESSAGE
+	/// list to pick the first line from
+	var/list/firstline_to_secondline = list()
+
+/obj/machinery/status_display/random_message/Initialize(mapload, ndir, building)
+	if(firstline_to_secondline?.len)
+		message1 = pick(firstline_to_secondline)
+		message2 = firstline_to_secondline[message1]
+	return ..() // status displays call update appearance on init so i suppose we should set the messages before calling parent as to not call it twice
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message, 32)
+
 #undef MAX_STATIC_WIDTH
 #undef FONT_STYLE
 #undef SCROLL_RATE
+#undef LINE1_X
 #undef LINE1_Y
+#undef LINE2_X
 #undef LINE2_Y
+#undef SCROLL_PADDING

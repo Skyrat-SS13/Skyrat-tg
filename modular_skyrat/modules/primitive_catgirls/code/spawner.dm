@@ -19,6 +19,7 @@
 	var/datum/team/primitive_catgirls/team
 
 	restricted_species = list(/datum/species/human/felinid/primitive)
+	quirks_enabled = TRUE
 	random_appearance = FALSE
 	loadout_enabled = FALSE
 	uses = 9
@@ -27,12 +28,37 @@
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Initialize(mapload)
 	. = ..()
 	team = new /datum/team/primitive_catgirls()
-
 	important_text = "Read the full policy <a href=\"[CONFIG_GET(string/icecats_policy_link)]\">here</a>."
+	START_PROCESSING(SSprocessing, src)
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
 	team = null
+	STOP_PROCESSING(SSprocessing, src)
 	return ..()
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/process(seconds_per_tick)
+	consume()
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/proc/consume()
+	for(var/mob/living/consumed_mob in range(1, src))
+		if(!consumed_mob.stat) //so ! means that they are conscious
+			continue
+
+		if(ismegafauna(consumed_mob))
+			uses += 5
+
+		else
+			uses += 1
+
+		visible_message(span_warning("[consumed_mob] slowly and with finality falls into [src]. There was no thump..."))
+
+		var/delivery_key = consumed_mob.fingerprintslast
+		var/mob/living/delivery_mob = get_mob_by_key(delivery_key)
+		if(delivery_mob && (delivery_mob.mind?.has_antag_datum(/datum/antagonist/primitive_catgirl)) && (delivery_key in team.players_spawned) && (prob(60)))
+			to_chat(delivery_mob, span_warning("A strange feeling fills your chest. [src] seems to echo your name, pleased..."))
+			team.players_spawned -= delivery_key
+
+		qdel(consumed_mob)
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/examine()
 	. = ..()
@@ -57,11 +83,7 @@
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/primitive_catgirl, team)
 
-	// I just have to be REALLY sure they get those languages
-	spawned_human.language_holder = new /datum/language_holder/primitive_felinid
-	spawned_human.update_atom_languages()
-
-	team.players_spawned += (spawned_human.key)
+	team.players_spawned += (spawned_human.ckey)
 
 /datum/job/primitive_catgirl
 	title = "Icemoon Dweller"
@@ -70,7 +92,22 @@
 
 /datum/team/primitive_catgirls
 	name = "Icewalkers"
+	member_name = "Icewalker"
 	show_roundend_report = FALSE
+
+/datum/team/primitive_catgirls/roundend_report()
+	var/list/report = list()
+
+	report += span_header("An Ice Walker Tribe inhabited the wastes...</span><br>")
+	if(length(members))
+		report += "The [member_name]s were:"
+		report += printplayerlist(members)
+	else
+		report += "<b>But none of its members woke up!</b>"
+
+	return "<div class='panel redborder'>[report.Join("<br>")]</div>"
+
+// Antagonist datum
 
 /datum/antagonist/primitive_catgirl
 	name = "\improper Icewalker"
@@ -89,22 +126,12 @@
 		/datum/crafting_recipe/boneaxe,
 		/datum/crafting_recipe/bonespear,
 		/datum/crafting_recipe/bonedagger,
+		/datum/crafting_recipe/anointing_oil,
 	)
 
 /datum/antagonist/primitive_catgirl/Destroy()
 	feline_team = null
 	return ..()
-
-/datum/antagonist/primitive_catgirl/apply_innate_effects(mob/living/mob_override)
-	. = ..()
-
-	var/mob/living/owner_mob = mob_override || owner.current
-	var/datum/language_holder/holder = owner_mob.get_language_holder()
-
-	holder.remove_language(/datum/language/common, TRUE, TRUE, LANGUAGE_ALL)
-
-	holder.grant_language(/datum/language/primitive_catgirl, TRUE, TRUE, LANGUAGE_ALL)
-	holder.selected_language = /datum/language/primitive_catgirl
 
 /datum/antagonist/primitive_catgirl/create_team(datum/team/team)
 	if(team)

@@ -1,5 +1,8 @@
 // Icemoon Ruins
 
+/area/ruin/powered/lizard_gas
+	name = "\improper Lizard Gas Station"
+
 /area/ruin/unpowered/buried_library
 	name = "\improper Buried Library"
 
@@ -15,6 +18,7 @@
 	base_icon_state = "block"
 	smoothing_flags = NONE
 	canSmoothWith = null
+	rust_resistance = RUST_RESISTANCE_BASIC
 
 /area/ruin/powered/mailroom
 	name = "\improper Abandoned Post Office"

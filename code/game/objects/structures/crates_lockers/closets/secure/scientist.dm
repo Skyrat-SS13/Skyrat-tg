@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/research_director
-	name = "\proper research director's locker"
+	name = "research director's locker"
 	req_access = list(ACCESS_RD)
 	icon_state = "rd"
 
@@ -18,6 +18,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/science(src)
 	new /obj/item/storage/photo_album/rd(src)
 	new /obj/item/storage/box/skillchips/science(src)
+	new /obj/item/card/id/departmental_budget/sci(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/research_director/populate_contents_immediate()
 	. = ..()

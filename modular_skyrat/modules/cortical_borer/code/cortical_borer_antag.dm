@@ -99,6 +99,7 @@
 	max_occurrences = 1 //should only ever happen once
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
+	description = "A cortical borer has appeared on station. It will also attempt to produce eggs, and will attempt to gather willing hosts and learn chemicals through the blood."
 
 /datum/round_event/ghost_role/cortical_borer
 	announce_when = 400
@@ -111,7 +112,7 @@
 
 /datum/round_event/ghost_role/cortical_borer/start()
 	var/list/vents = list()
-	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_pump))
 		if(QDELETED(temp_vent))
 			continue
 		if(is_station_level(temp_vent.loc.z) && !temp_vent.welded)
@@ -124,7 +125,7 @@
 				vents += temp_vent
 	if(!length(vents))
 		return MAP_ERROR
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 10 SECONDS, POLL_IGNORE_CORTICAL_BORER)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you want to spawn as a cortical borer?", role = ROLE_PAI, check_jobban = FALSE, poll_time = 10 SECONDS, ignore_category = POLL_IGNORE_CORTICAL_BORER)
 	if(!length(candidates))
 		return NOT_ENOUGH_PLAYERS
 	var/living_number = max(length(GLOB.player_list) / POP_PER_BORER, 1)
@@ -161,7 +162,7 @@
 	var/list/vents = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/execute()
-	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_pump))
 		if(QDELETED(temp_vent))
 			continue
 		if(is_station_level(temp_vent.loc.z) && !temp_vent.welded)

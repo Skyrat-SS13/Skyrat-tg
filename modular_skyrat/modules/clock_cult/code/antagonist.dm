@@ -26,14 +26,14 @@
 
 /datum/antagonist/clock_cultist/on_gain()
 	. = ..()
-	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/clock_cult/sound/scripture_tier_up.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/clock_cult/sound/magic/scripture_tier_up.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 
 /datum/antagonist/clock_cultist/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/current = owner.current
 	current.faction |= FACTION_CLOCK
-	current.grant_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_CULTIST)
+	current.grant_language(/datum/language/ratvar, source = LANGUAGE_CULTIST)
 	communicate.Grant(current)
 	recall.Grant(current)
 	RegisterSignal(current, COMSIG_CLOCKWORK_SLAB_USED, PROC_REF(switch_recall_slab))

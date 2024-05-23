@@ -13,35 +13,41 @@
 	var/scan_range = 3
 
 /datum/ai_behavior/find_unwebbed_turf/perform(seconds_per_tick, datum/ai_controller/controller)
-	. = ..()
 	var/mob/living/spider = controller.pawn
 	var/atom/current_target = controller.blackboard[target_key]
 	if (current_target && !(locate(/obj/structure/spider/stickyweb) in current_target))
-		finish_action(controller, succeeded = FALSE) // Already got a target
-		return
+		// Already got a target
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
 	controller.clear_blackboard_key(target_key)
 	var/turf/our_turf = get_turf(spider)
-	if (is_valid_web_turf(our_turf))
+	if (is_valid_web_turf(our_turf, spider))
 		controller.set_blackboard_key(target_key, our_turf)
-		finish_action(controller, succeeded = TRUE)
-		return
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
-	var/list/potential_turfs = list()
-	for(var/turf/turf_in_view in oview(scan_range, our_turf))
-		if (!is_valid_web_turf(turf_in_view))
+	var/list/turfs_by_range = list()
+	for (var/i in 1 to scan_range)
+		turfs_by_range["[i]"] = list()
+	for (var/turf/turf_in_view in oview(scan_range, our_turf))
+		if (!is_valid_web_turf(turf_in_view, spider))
 			continue
-		potential_turfs += turf_in_view
+		turfs_by_range["[get_dist(our_turf, turf_in_view)]"] += turf_in_view
 
-	if (!length(potential_turfs))
-		finish_action(controller, succeeded = FALSE)
-		return
+	var/list/final_turfs
+	for (var/list/turf_list as anything in turfs_by_range)
+		if (length(turfs_by_range[turf_list]))
+			final_turfs = turfs_by_range[turf_list]
+			break
+	if (!length(final_turfs))
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
-	controller.set_blackboard_key(target_key, get_closest_atom(/turf/, potential_turfs, our_turf))
-	finish_action(controller, succeeded = TRUE)
+	controller.set_blackboard_key(target_key, pick(final_turfs))
+	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
 /datum/ai_behavior/find_unwebbed_turf/proc/is_valid_web_turf(turf/target_turf, mob/living/spider)
 	if (locate(/obj/structure/spider/stickyweb) in target_turf)
+		return FALSE
+	if (HAS_TRAIT(target_turf, TRAIT_SPINNING_WEB_TURF))
 		return FALSE
 	return !target_turf.is_blocked_turf(source_atom = spider)
 
@@ -53,12 +59,9 @@
 	var/target_key = BB_SPIDER_WEB_TARGET
 
 /datum/ai_planning_subtree/spin_web/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
-	var/datum/action/cooldown/using_action = controller.blackboard[action_key]
-	var/turf/target_turf = controller.blackboard[target_key]
-	if (QDELETED(using_action) || QDELETED(target_turf))
-		return
-	controller.queue_behavior(/datum/ai_behavior/spin_web, action_key, target_key)
-	return SUBTREE_RETURN_FINISH_PLANNING
+	if (controller.blackboard_key_exists(action_key) && controller.blackboard_key_exists(target_key))
+		controller.queue_behavior(/datum/ai_behavior/spin_web, action_key, target_key)
+		return SUBTREE_RETURN_FINISH_PLANNING
 
 /// Move to an unwebbed nearby turf and web it up
 /datum/ai_behavior/spin_web
@@ -76,9 +79,10 @@
 	return ..()
 
 /datum/ai_behavior/spin_web/perform(seconds_per_tick, datum/ai_controller/controller, action_key, target_key)
-	. = ..()
 	var/datum/action/cooldown/web_action = controller.blackboard[action_key]
-	finish_action(controller, succeeded = web_action?.Trigger(), action_key = action_key, target_key = target_key)
+	if(web_action?.Trigger())
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
+	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
 /datum/ai_behavior/spin_web/finish_action(datum/ai_controller/controller, succeeded, action_key, target_key)
 	controller.clear_blackboard_key(target_key)

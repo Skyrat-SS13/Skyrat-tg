@@ -62,14 +62,3 @@
 /obj/effect/landmark/start/assaultop/Initialize(mapload)
 	. = ..()
 	GLOB.assault_operative_start += get_turf(src)
-
-/obj/effect/spawner/armory_spawn/assaultops
-	name = "gun spawner"
-	guns = list(
-				/obj/item/gun/ballistic/automatic/m16,
-				/obj/item/gun/ballistic/automatic/pistol/deagle,
-				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate,
-				/obj/item/gun/ballistic/automatic/mp40,
-				/obj/item/gun/ballistic/automatic/c20r,
-				/obj/item/gun/ballistic/automatic/m90,
-				)

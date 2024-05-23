@@ -1,20 +1,24 @@
 GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	/datum/nifsoft/hivemind,
 	/datum/nifsoft/summoner,
-	/datum/nifsoft/shapeshifter,
+	/datum/nifsoft/action_granter/shapeshifter,
 	/datum/nifsoft/summoner/dorms,
 	/datum/nifsoft/soul_poem,
+	/datum/nifsoft/soulcatcher,
+	/datum/nifsoft/scryer,
+	/datum/nifsoft/summoner/book,
+	/datum/nifsoft/action_granter/hypnosis,
 ))
 
 /datum/computer_file/program/nifsoft_downloader
 	filename = "nifsoftcatalog"
 	filedesc = "NIFSoft Catalog"
 	extended_desc = "A virtual storefront that allows the user to install NIFSofts and purchase various NIF related products"
-	category = PROGRAM_CATEGORY_MISC
+	downloader_category = PROGRAM_CATEGORY_DEVICE
 	size = 3
 	tgui_id = "NtosNifsoftCatalog"
 	program_icon = "bag-shopping"
-	usage_flags = PROGRAM_TABLET
+	can_run_on_flags = PROGRAM_PDA
 	///What bank account is money being drawn out of?
 	var/datum/bank_account/paying_account
 	///What NIF are the NIFSofts being sent to?
@@ -78,6 +82,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 			"category" = initial(buyable_nifsoft.buying_category),
 			"ui_icon" = initial(buyable_nifsoft.ui_icon),
 			"reference" = buyable_nifsoft,
+			"keepable" = initial(buyable_nifsoft.able_to_keep),
 		)
 		var/category = nifsoft_details["category"]
 		if(!(category in product_list))

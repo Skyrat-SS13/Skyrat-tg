@@ -4,7 +4,7 @@
 	///Sometimes we need multiple layers, for like the back, middle and front of the person (EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
 	var/layers
 	///List of all possible layers. Used for looping through in drawing
-	var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND, EXTERNAL_FRONT_UNDER_CLOTHES, EXTERNAL_FRONT_OVER) // SKYRAT EDIT - Customization - ORIGINAL: var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
+	var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND, EXTERNAL_FRONT_UNDER_CLOTHES, EXTERNAL_FRONT_OVER, EXTERNAL_FRONT_ABOVE_HAIR) // SKYRAT EDIT - Customization - ORIGINAL: var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
 
 	///Key of the icon states of all the sprite_datums for easy caching
 	var/cache_key = ""
@@ -51,6 +51,8 @@
 			return "FRONT_UNDER"
 		if(-ABOVE_BODY_FRONT_HEAD_LAYER)
 			return "FRONT_OVER"
+		if(-HEAD_LAYER)
+			return "FRONT_OVER_HAIR"
 		//SKYRAT EDIT ADDITION END
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
@@ -67,6 +69,8 @@
 			return -BODY_FRONT_UNDER_CLOTHES
 		if(EXTERNAL_FRONT_OVER)
 			return -ABOVE_BODY_FRONT_HEAD_LAYER
+		if(EXTERNAL_FRONT_ABOVE_HAIR)
+			return -HEAD_LAYER
 		//SKYRAT EDIT ADDITION END
 
 ///Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit

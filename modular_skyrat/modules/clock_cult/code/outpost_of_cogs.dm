@@ -13,7 +13,7 @@
 	if(reebe_began_spawning)
 		return
 
-	GLOB.reebe_began_spawning = TRUE
+	reebe_began_spawning = TRUE
 
 	var/turf/atom_turf = get_turf(target_atom) // Protection in case this gets deleted
 	var/area/atom_area = get_area(target_atom)
@@ -43,7 +43,11 @@
 		atom_area = get_area(atom_turf)
 
 	send_clock_message(null, "A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.", "<span class='bigbrass'>", msg_ghosts = FALSE)
-	notify_ghosts("A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.", source = atom_area, action = NOTIFY_JUMP, flashwindow = FALSE, header = "Portal to Reebe")
+	notify_ghosts("A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.",
+		source = atom_area,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Portal to Reebe",
+	)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reebe_station_warning), atom_area, portal), 5 MINUTES)
 
@@ -110,14 +114,22 @@
 	equipped.eye_color_right = BLOODCULT_EYE
 	equipped.update_body()
 
-	var/obj/item/clothing/suit/hooded/hooded = locate() in equipped
-	hooded.ToggleHood()
+	var/obj/item/clothing/suit/hooded/hooded = equipped.wear_suit
+	var/datum/component/toggle_attached_clothing/hood = hooded.GetComponent(/datum/component/toggle_attached_clothing)
+	hood.toggle_deployable() // start unhooded
 
 
 /obj/effect/mob_spawn/corpse/human/clock_cultist
 	name = "Clock Cultist"
 	outfit = /datum/outfit/clock
 
+/obj/effect/mob_spawn/corpse/human/clock_cultist/armored
+	name = "Armored Clock Cultist"
+	outfit = /datum/outfit/clock/armor
+
+/obj/effect/mob_spawn/corpse/human/clock_cultist/support
+	name = "Support Clock Cultist"
+	outfit = /datum/outfit/clock/support
 
 /obj/effect/landmark/late_cog_portals
 	name = "late cog portal spawn"

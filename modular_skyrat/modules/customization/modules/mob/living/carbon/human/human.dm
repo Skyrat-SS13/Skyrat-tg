@@ -1,9 +1,6 @@
 //	This DMI holds our radial icons for the 'hide mutant parts' verb
 #define HIDING_RADIAL_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi'
 
-/mob/living/carbon/human
-	var/static/list/possible_genitals = list(ORGAN_SLOT_PENIS, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_VAGINA, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS)
-
 /mob/living/carbon/human/Topic(href, href_list)
 	. = ..()
 
@@ -11,7 +8,7 @@
 		switch(href_list["lookup_info"])
 			if("genitals")
 				var/list/line = list()
-				for(var/genital in possible_genitals)
+				for(var/genital in GLOB.possible_genitals)
 					if(!dna.species.mutant_bodyparts[genital])
 						continue
 					var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
@@ -83,21 +80,24 @@
 	var/underwear_button = underwear_visibility & UNDERWEAR_HIDE_UNDIES ? "Show underwear" : "Hide underwear"
 	var/undershirt_button = underwear_visibility & UNDERWEAR_HIDE_SHIRT ? "Show shirt" : "Hide shirt"
 	var/socks_button = underwear_visibility & UNDERWEAR_HIDE_SOCKS ? "Show socks" : "Hide socks"
-	var/list/choice_list = list("[underwear_button]" = 1,"[undershirt_button]" = 2,"[socks_button]" = 3,"Show all" = 4, "Hide all" = 5)
+	var/bra_button = underwear_visibility & UNDERWEAR_HIDE_BRA ? "Show bra" : "Hide bra"
+	var/list/choice_list = list("[underwear_button]" = "underwear", "[bra_button]" = "bra", "[undershirt_button]" = "shirt", "[socks_button]" = "socks","show all" = "show", "Hide all" = "hide")
 	var/picked_visibility = input(src, "Choose visibility setting", "Show/Hide underwear") as null|anything in choice_list
 	if(picked_visibility)
 		var/picked_choice = choice_list[picked_visibility]
 		switch(picked_choice)
-			if(1)
+			if("underwear")
 				underwear_visibility ^= UNDERWEAR_HIDE_UNDIES
-			if(2)
+			if("bra")
+				underwear_visibility ^= UNDERWEAR_HIDE_BRA
+			if("shirt")
 				underwear_visibility ^= UNDERWEAR_HIDE_SHIRT
-			if(3)
+			if("socks")
 				underwear_visibility ^= UNDERWEAR_HIDE_SOCKS
-			if(4)
+			if("show")
 				underwear_visibility = NONE
-			if(5)
-				underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
+			if("hide")
+				underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS | UNDERWEAR_HIDE_BRA
 		update_body()
 	return
 

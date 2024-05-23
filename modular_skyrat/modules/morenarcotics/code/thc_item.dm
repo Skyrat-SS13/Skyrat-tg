@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "hash"
 	volume = 20
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/thc = 15, /datum/reagent/toxin/lipolicide = 5)
 
 /obj/item/reagent_containers/hash/dabs
@@ -13,8 +13,8 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "dab"
 	volume = 40
-	possible_transfer_amounts = list()
-	list_reagents = list(/datum/reagent/drug/thc = 40) //horrendously powerful
+	has_variable_transfer_amount = FALSE
+	list_reagents = list(/datum/reagent/drug/thc/concentrated = 40) //horrendously powerful
 
 /obj/item/reagent_containers/hashbrick
 	name = "hash brick"
@@ -22,7 +22,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "hashbrick"
 	volume = 80
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/thc = 60, /datum/reagent/toxin/lipolicide = 20)
 
 

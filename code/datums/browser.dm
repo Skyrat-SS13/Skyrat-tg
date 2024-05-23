@@ -15,7 +15,7 @@
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/nref = null)
 	user = nuser
-	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(user_deleted))
+	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(user_deleted))
 	window_id = nwindow_id
 	if (ntitle)
 		title = format_text(ntitle)
@@ -475,7 +475,3 @@
 			src.Topic(href, params2list(href), hsrc) // this will direct to the atom's
 			return // Topic() proc via client.Topic()
 
-	// no atomref specified (or not found)
-	// so just reset the user mob's machine var
-	if(src?.mob)
-		src.mob.unset_machine()

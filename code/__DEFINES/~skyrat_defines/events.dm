@@ -11,3 +11,6 @@
 #define EVENT_LOWPOP_TIMER_MULTIPLIER 2
 #define EVENT_MIDPOP_TIMER_MULTIPLIER 1.5
 #define EVENT_HIGHPOP_TIMER_MULTIPLIER 1
+
+/// Reason for delam suppression: admin command
+#define DIVINE_INTERVENTION 3

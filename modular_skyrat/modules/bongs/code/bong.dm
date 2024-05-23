@@ -22,8 +22,6 @@
 
 	///Max units able to be stored inside the bong
 	var/chem_volume = 30
-	///What are the reagents inside?
-	var/list_reagents = null
 	///Is it filled?
 	var/packed_item = FALSE
 
@@ -49,7 +47,7 @@
 		bong_hits = max_hits
 		packed_item = TRUE
 		if(grown_item.reagents)
-			grown_item.reagents.trans_to(src, grown_item.reagents.total_volume, transfered_by = user)
+			grown_item.reagents.trans_to(src, grown_item.reagents.total_volume, transferred_by = user)
 			reagent_transfer_per_use = reagents.total_volume / max_hits
 		qdel(grown_item)
 
@@ -61,7 +59,7 @@
 		bong_hits = max_hits
 		packed_item = TRUE
 		if(used_item.reagents)
-			used_item.reagents.trans_to(src, used_item.reagents.total_volume, transfered_by = user)
+			used_item.reagents.trans_to(src, used_item.reagents.total_volume, transferred_by = user)
 			reagent_transfer_per_use = reagents.total_volume / max_hits
 		qdel(used_item)
 	else
@@ -98,7 +96,7 @@
 		return
 	to_chat(hit_mob, span_notice("You finish taking a hit from the [src]."))
 	if(reagents.total_volume)
-		reagents.trans_to(hit_mob, reagent_transfer_per_use, transfered_by = user, methods = VAPOR)
+		reagents.trans_to(hit_mob, reagent_transfer_per_use, transferred_by = user, methods = VAPOR)
 		bong_hits--
 	var/turf/open/pos = get_turf(src)
 	if(istype(pos))

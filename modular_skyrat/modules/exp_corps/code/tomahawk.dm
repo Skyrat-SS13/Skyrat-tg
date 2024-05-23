@@ -7,7 +7,7 @@
 	lefthand_file = 'modular_skyrat/modules/exp_corps/icons/tomahawk_l.dmi'
 	righthand_file = 'modular_skyrat/modules/exp_corps/icons/tomahawk_r.dmi'
 	worn_icon = 'modular_skyrat/modules/exp_corps/icons/tomahawk_worn.dmi'
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	force = 15 //Equivalent to a survival knife
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 18

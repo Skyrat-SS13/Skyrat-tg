@@ -29,7 +29,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_MOB_EXAMINATE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_MOB_EXAMINATE, PROC_REF(add_examine))
 
 /datum/component/money_sense/Destroy(force, silent)
 	. = ..()

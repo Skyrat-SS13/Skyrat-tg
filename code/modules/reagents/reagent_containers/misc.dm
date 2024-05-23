@@ -32,7 +32,7 @@
 	if(on && (!cell || cell.charge <= 0)) //Check if we ran out of power
 		change_power_status(FALSE)
 		return FALSE
-	cell.use(5 * seconds_per_tick) //Basic cell goes for like 200 seconds, bluespace for 8000
+	cell.use(0.005 * STANDARD_CELL_RATE * seconds_per_tick) //Basic cell goes for like 200 seconds, bluespace for 8000
 	if(!reagents.total_volume)
 		return FALSE
 	var/max_temp = min(500 + (500 * (0.2 * cell.rating)), 1000) // 373 to 1000
@@ -125,7 +125,7 @@
 	item_flags = NOBLUDGEON
 	reagent_flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	volume = 5
 	spillable = FALSE
 
@@ -146,7 +146,7 @@
 	var/reagentlist = pretty_string_from_reagent_list(reagents.reagent_list)
 	var/log_object = "containing [reagentlist]"
 	if(user.combat_mode && !carbon_target.is_mouth_covered())
-		reagents.trans_to(carbon_target, reagents.total_volume, transfered_by = user, methods = INGEST)
+		reagents.trans_to(carbon_target, reagents.total_volume, transferred_by = user, methods = INGEST)
 		carbon_target.visible_message(span_danger("[user] smothers \the [carbon_target] with \the [src]!"), span_userdanger("[user] smothers you with \the [src]!"), span_hear("You hear some struggling and muffled cries of surprise."))
 		log_combat(user, carbon_target, "smothered", src, log_object)
 	else

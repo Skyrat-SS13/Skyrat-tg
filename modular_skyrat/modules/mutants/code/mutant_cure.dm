@@ -3,7 +3,12 @@
 	desc = "A tool used to extract the RNA from viruses. Apply to skin."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
-	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	/// Our loaded vial.
 	var/obj/item/rna_vial/loaded_vial
 
@@ -84,7 +89,11 @@
 	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
-	custom_materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
+	custom_materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
+	)
 	var/contains_rna = FALSE
 
 /obj/item/rna_vial/proc/load_rna(mob/living/carbon/human/H)
@@ -163,17 +172,17 @@
 		timer_id = null
 	. = ..()
 
-/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/O, mob/living/user)
+/obj/machinery/rnd/rna_recombinator/attackby(obj/item/weapon, mob/living/user, params)
 	if(user.combat_mode)
 		return FALSE
 	if(!is_insertion_ready(user))
 		return FALSE
-	if(!istype(O, /obj/item/rna_vial))
+	if(!istype(weapon, /obj/item/rna_vial))
 		return FALSE
-	if(!user.transferItemToLoc(O, src))
+	if(!user.transferItemToLoc(weapon, src))
 		return FALSE
-	loaded_item = O
-	to_chat(user, span_notice("You insert [O] to into [src] reciprocal."))
+	loaded_item = weapon
+	to_chat(user, span_notice("You insert [weapon] to into [src] reciprocal."))
 	flick("h_lathe_load", src)
 	update_appearance()
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
@@ -210,8 +219,6 @@
 	if(machine_stat & (NOPOWER|BROKEN|MAINT))
 		return
 
-	usr.set_machine(src)
-
 	var/operation = href_list["function"]
 	var/obj/item/process = locate(href_list["item"]) in src
 
@@ -221,7 +228,7 @@
 	else if(operation == "eject")
 		ejectItem()
 	else if(operation == "refresh")
-		updateUsrDialog()
+		SStgui.update_uis(src)
 	else
 		if(status != STATUS_IDLE)
 			to_chat(usr, span_warning("[src] is currently recombinating!"))
@@ -235,9 +242,9 @@
 			else
 				status = STATUS_RECOMBINATING_CURE
 			recombinate_start()
-			use_power(3000)
+			use_energy(3000 JOULES)
 
-	updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/rnd/rna_recombinator/proc/ejectItem()
 	if(loaded_item)
@@ -261,7 +268,7 @@
 	ejectItem()
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_step()
@@ -277,7 +284,7 @@
 		recombinate_finish()
 		return
 	flick("h_lathe_wloop", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
@@ -297,15 +304,15 @@
 	else
 		new /obj/item/reagent_containers/cup/bottle/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
 	status = STATUS_IDLE
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
 	. = ..()
-	for(var/datum/stock_part/manipulator/manipulator in component_parts)
-		if(recombination_step_time > 0 && (recombination_step_time - manipulator.tier) >= 1)
-			recombination_step_time -= manipulator.tier
+	for(var/datum/stock_part/servo/servo in component_parts)
+		if(recombination_step_time > 0 && (recombination_step_time - servo.tier) >= 1)
+			recombination_step_time -= servo.tier
 	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
 		recombination_step_amount += scanning_module.tier * 2
 	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
@@ -349,7 +356,9 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
-	custom_materials = list(/datum/material/glass=500)
+	custom_materials = list(
+		/datum/material/glass=HALF_SHEET_MATERIAL_AMOUNT,
+	)
 
 /obj/item/reagent_containers/cup/bottle/hnz/one
 	list_reagents = list(/datum/reagent/hnz = 1)

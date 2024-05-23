@@ -24,7 +24,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/human/affected_human = user
 		if(src == affected_human.w_uniform)
-			if(!do_after(affected_human, 60, target = src))
+			if(!do_after(affected_human, 6 SECONDS, target = src))
 				return
 	. = ..()
 

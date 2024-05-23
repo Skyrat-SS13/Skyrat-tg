@@ -28,7 +28,7 @@
 /obj/machinery/bsa/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool, time = 1 SECONDS)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"
@@ -75,7 +75,7 @@
 			to_chat(user, span_notice("You link [src] with [multitool.buffer]."))
 			multitool.buffer = null
 		else if(istype(multitool.buffer, /obj/machinery/bsa/front))
-			front_piece = multitool.buffer
+			front_piece = WEAKREF(multitool.buffer)
 			to_chat(user, span_notice("You link [src] with [multitool.buffer]."))
 			multitool.buffer = null
 	else
@@ -83,8 +83,8 @@
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/check_completion()
-	var/obj/machinery/bsa/back/back_part = back_piece.resolve()
-	var/obj/machinery/bsa/front/front_part = front_piece.resolve()
+	var/obj/machinery/bsa/back/back_part = back_piece?.resolve()
+	var/obj/machinery/bsa/front/front_part = front_piece?.resolve()
 	if(!front_part || !back_part)
 		return "Some parts are missing!"
 	if(!front_part.anchored || !back_part.anchored || !anchored)
@@ -112,8 +112,8 @@
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/get_cannon_direction()
-	var/obj/machinery/bsa/back/back_part = back_piece.resolve()
-	var/obj/machinery/bsa/front/front_part = front_piece.resolve()
+	var/obj/machinery/bsa/back/back_part = back_piece?.resolve()
+	var/obj/machinery/bsa/front/front_part = front_piece?.resolve()
 	if(!back_part || !front_part)
 		return FALSE
 	if(front_part.x > x && back_part.x < x)
@@ -131,7 +131,7 @@
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
-	icon = 'icons/obj/lavaland/cannon.dmi'
+	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
 	use_power = NO_POWER_USE // We use power when we're fired.
 	pixel_y = -32
@@ -330,7 +330,7 @@
 	system_state = BSA_SYSTEM_RELOADING
 	set_light(0)
 	STOP_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/ready_cannon), BSA_RELOAD_TIME)
+	addtimer(CALLBACK(src, PROC_REF(ready_cannon)), BSA_RELOAD_TIME)
 
 /obj/machinery/bsa/full/proc/ready_cannon()
 	if(capacitor_power < BSA_FIRE_POWER_THRESHOLD)

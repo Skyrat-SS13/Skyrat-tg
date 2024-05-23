@@ -40,13 +40,9 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Initialize(mapload)
 	. = ..()
-	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
+	charge = new(src)
 	charge.Grant(src)
 	charge.cooldown_time = 0
-
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Destroy()
-	QDEL_NULL(charge)
-	return ..()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Shoot(atom/targeted_atom)
 	throw_at(targeted_atom, throw_at_range, throw_at_speed)
@@ -102,7 +98,7 @@
 	AddElement(/datum/element/wall_smasher, strength_flag = ENVIRONMENT_SMASH_STRUCTURES)
 	movement_type = GROUND
 	icon_state = ""
-	zombified_human.hairstyle = null
+	zombified_human.set_hairstyle(null, update = FALSE)
 	zombified_human.update_body_parts()
 	zombified_human.forceMove(src)
 	oldguy = zombified_human

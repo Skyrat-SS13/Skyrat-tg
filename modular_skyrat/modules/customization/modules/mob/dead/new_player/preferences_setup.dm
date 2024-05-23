@@ -111,7 +111,7 @@
 	parent.show_character_previews(new /mutable_appearance(mannequin))
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 
-//SKYRAT SPECIFIC PROCS
+// SKYRAT SPECIFIC PROCS
 
 //This proc makes sure that we only have the parts that the species should have, add missing ones, remove extra ones(should any be changed)
 //Also, this handles missing color keys
@@ -162,7 +162,7 @@
 	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
 	for(var/key in new_features)
 		features[key] = new_features[key]
-	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
+	mutant_bodyparts = pref_species.get_mutant_bodyparts(features)
 	body_markings = pref_species.get_random_body_markings(features)
 	if(pref_species.use_skintones)
 		features["uses_skintones"] = TRUE

@@ -34,7 +34,7 @@
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	gold_core_spawnable = NO_SPAWN
-	light_system = MOVABLE_LIGHT_DIRECTIONAL
+	light_system = OVERLAY_LIGHT_DIRECTIONAL
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_range = 2
 	light_power = 0.8
@@ -119,7 +119,11 @@
 	do_jitter_animation(60)
 	manual_emote("'s fur stands up, [src.p_their()] body trembling...")
 
-	notify_ghosts("[src] was startled by the supermatter!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Safety Inspection!")
+	notify_ghosts("[src] was startled by the supermatter!",
+		source = src,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Safety Inspection!",
+	)
 	addtimer(CALLBACK(src, PROC_REF(calm_down)), 60 SECONDS)
 
 /mob/living/simple_animal/pet/poppy/proc/calm_down()

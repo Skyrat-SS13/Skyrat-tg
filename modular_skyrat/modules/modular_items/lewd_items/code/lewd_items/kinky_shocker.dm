@@ -45,7 +45,7 @@
 		//we're below minimum, turn off
 		shocker_on = FALSE
 		update_appearance()
-		playsound(src, activate_sound, 75, TRUE, -1, ignore_walls = FALSE)
+		play_lewd_sound(src, activate_sound, 75, TRUE, -1)
 
 /obj/item/kinky_shocker/examine(mob/user)
 	. = ..()
@@ -69,8 +69,9 @@
 		to_chat(user, span_notice("You install a cell in [src]."))
 		update_appearance()
 
-/obj/item/kinky_shocker/AltClick(mob/user)
+/obj/item/kinky_shocker/click_alt(mob/user)
 	tryremovecell(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/kinky_shocker/proc/tryremovecell(mob/user)
 	if(!(cell && can_remove_cell))
@@ -81,6 +82,7 @@
 	to_chat(user, span_notice("You remove the cell from [src]."))
 	shocker_on = FALSE
 	update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/kinky_shocker/attack_self(mob/user)
 	toggle_shocker(user)
@@ -89,7 +91,7 @@
 	if(cell && cell.charge >= cell_hit_cost)
 		shocker_on = !shocker_on
 		to_chat(user, span_notice("You turn the shocker [shocker_on? "on. Buzz!" : "off."]"))
-		playsound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+		play_lewd_sound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	else
 		shocker_on = FALSE
 		if(!cell)
@@ -114,11 +116,11 @@
 		return
 	var/message = ""
 	var/targetedsomewhere = FALSE
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
 	deductcharge(cell_hit_cost)
-	playsound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
+	play_lewd_sound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
 	switch(user.zone_selected) //to let code know what part of body we gonna tickle
 		if(BODY_ZONE_PRECISE_GROIN)
 			targetedsomewhere = TRUE
@@ -277,7 +279,7 @@
 	if(!targetedsomewhere)
 		return
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, 'sound/weapons/taserhit.ogg')
+	play_lewd_sound(loc, 'sound/weapons/taserhit.ogg')
 	if(target.stat == DEAD)
 		return
 	if(prob(80))
