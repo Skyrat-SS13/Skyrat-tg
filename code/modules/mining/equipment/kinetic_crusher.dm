@@ -1,4 +1,4 @@
-/* SKYRAT EDIT START - OVERRIDEN IN MODULAR
+/* SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
 /**
  * Kinetic Crusher
  *
