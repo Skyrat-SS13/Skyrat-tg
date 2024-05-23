@@ -255,7 +255,7 @@
 /obj/item/crusher_trophy/proc/effect_desc()
 	return "errors"
 
-//SKYRAT EDIT START - OVERRIDEN IN MODULAR
+//SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
 /*
 /obj/item/crusher_trophy/attackby(obj/item/A, mob/living/user)
 	if(istype(A, /obj/item/kinetic_crusher))
@@ -340,7 +340,7 @@
 /obj/item/crusher_trophy/legion_skull/effect_desc()
 	return "a kinetic crusher to recharge <b>[bonus_value*0.1]</b> second\s faster"
 
-//SKYRAT EDIT START - OVERRIDEN IN MODULAR
+//SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
 /*
 /obj/item/crusher_trophy/legion_skull/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
@@ -403,7 +403,7 @@
 	return "melee hits to do <b>[bonus_value * 0.2]</b> more damage and heal you for <b>[bonus_value * 0.1]</b>, with <b>5X</b> effect on mark detonation"
 
 
-//SKYRAT EDIT START - OVERRIDEN IN MODULAR
+//SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
 /*
 /obj/item/crusher_trophy/demon_claws/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
