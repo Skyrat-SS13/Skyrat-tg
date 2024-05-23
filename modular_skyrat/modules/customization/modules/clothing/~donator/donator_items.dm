@@ -181,6 +181,13 @@
 
 	return ..()
 
+/obj/vehicle/ridden/wheelchair/hardlight/atom_destruction(damage_flag)
+	visible_message(span_notice("[src] flickers and vanishes as the hardlight emitters are interrupted"))
+	qdel(src)
+	return ..()
+
+/obj/vehicle/ridden/wheelchair/hardlight/wrench_act(mob/living/user, obj/item/tool)
+	return
 
 /obj/vehicle/ridden/wheelchair/hardlight/post_unbuckle_mob()
 	. = ..()
@@ -256,11 +263,11 @@
 		else
 			icon_state = "catear_headphone[song?.playing ? "_on" : null]"
 
-/obj/item/instrument/piano_synth/headphones/catear_headphone/AltClick(mob/user)
-	. = ..()
+/obj/item/instrument/piano_synth/headphones/catear_headphone/click_alt(mob/user)
 	catTailToggled = !catTailToggled
 	user.update_worn_head()
 	update_icon(UPDATE_OVERLAYS)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/instrument/piano_synth/headphones/catear_headphone/update_overlays()
 	. = ..()

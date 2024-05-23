@@ -36,7 +36,7 @@
 
 	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
-		left_arm.unarmed_attack_verb = "slash"
+		left_arm.unarmed_attack_verbs = list("slash")
 		left_arm.unarmed_attack_effect = ATTACK_EFFECT_CLAW
 		left_arm.unarmed_attack_sound = 'sound/weapons/slash.ogg'
 		left_arm.unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -44,7 +44,7 @@
 
 	var/obj/item/bodypart/arm/right/right_arm = human_holder.get_bodypart(BODY_ZONE_R_ARM)
 	if(right_arm)
-		right_arm.unarmed_attack_verb = "slash"
+		right_arm.unarmed_attack_verbs = list("slash")
 		right_arm.unarmed_attack_effect = ATTACK_EFFECT_CLAW
 		right_arm.unarmed_attack_sound = 'sound/weapons/slash.ogg'
 		right_arm.unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -54,7 +54,7 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
-		left_arm.unarmed_attack_verb = initial(left_arm.unarmed_attack_verb)
+		left_arm.unarmed_attack_verbs = initial(left_arm.unarmed_attack_verbs)
 		left_arm.unarmed_attack_effect = initial(left_arm.unarmed_attack_effect)
 		left_arm.unarmed_attack_sound = initial(left_arm.unarmed_attack_sound)
 		left_arm.unarmed_miss_sound = initial(left_arm.unarmed_miss_sound)
@@ -62,7 +62,7 @@
 
 	var/obj/item/bodypart/arm/right/right_arm = human_holder.get_bodypart(BODY_ZONE_R_ARM)
 	if(right_arm)
-		right_arm.unarmed_attack_verb = initial(right_arm.unarmed_attack_verb)
+		right_arm.unarmed_attack_verbs = initial(right_arm.unarmed_attack_verbs)
 		right_arm.unarmed_attack_effect = initial(right_arm.unarmed_attack_effect)
 		right_arm.unarmed_attack_sound = initial(right_arm.unarmed_attack_sound)
 		right_arm.unarmed_miss_sound = initial(right_arm.unarmed_miss_sound)

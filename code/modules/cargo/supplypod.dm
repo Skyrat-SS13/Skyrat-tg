@@ -99,6 +99,23 @@
 	delays = list(POD_TRANSIT = 20, POD_FALLING = 4, POD_OPENING = 30, POD_LEAVING = 30)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
+/obj/structure/closet/supplypod/centcompod/sisyphus
+	delays = list(POD_TRANSIT = 0, POD_FALLING = 0, POD_OPENING = 0, POD_LEAVING = 0.2)
+	reverse_delays = list(POD_TRANSIT = 0, POD_FALLING = 1.5 SECONDS, POD_OPENING = 0.6 SECONDS, POD_LEAVING = 0)
+	custom_rev_delay = TRUE
+	effectStealth = TRUE
+	reversing = TRUE
+	reverse_option_list = list(
+		"Mobs" = TRUE,
+		"Objects" = FALSE,
+		"Anchored" = FALSE,
+		"Underfloor" = FALSE,
+		"Wallmounted" = FALSE,
+		"Floors" = FALSE,
+		"Walls" = FALSE,
+		"Mecha" = TRUE,
+	)
+
 /obj/structure/closet/supplypod/back_to_station
 	name = "blood-red supply pod"
 	desc = "An intimidating supply pod, covered in the blood-red markings"
@@ -200,7 +217,7 @@
 		var/icon/door_masker = new(icon, door) //The door shape we want to 'cut out' of the decal
 		door_masker.MapColors(0,0,0,1, 0,0,0,1, 0,0,0,1, 1,1,1,0, 0,0,0,1)
 		door_masker.SwapColor("#ffffffff", null)
-		door_masker.Blend("#000000", ICON_SUBTRACT)
+		door_masker.Blend(COLOR_BLACK, ICON_SUBTRACT)
 		masked_decal.Blend(door_masker, ICON_ADD)
 		. += masked_decal
 		return
@@ -217,7 +234,7 @@
 		var/icon/fin_masker = new(icon, "mask_[fin_mask]") //The fin shape we want to 'cut out' of the door
 		fin_masker.MapColors(0,0,0,1, 0,0,0,1, 0,0,0,1, 1,1,1,0, 0,0,0,1)
 		fin_masker.SwapColor("#ffffffff", null)
-		fin_masker.Blend("#000000", ICON_SUBTRACT)
+		fin_masker.Blend(COLOR_BLACK, ICON_SUBTRACT)
 		masked_door.Blend(fin_masker, ICON_ADD)
 		. += masked_door
 	if(decal)
@@ -240,6 +257,24 @@
 
 /obj/structure/closet/supplypod/open(mob/living/user, force = FALSE, special_effects = TRUE)
 	return
+
+///Called by the drop pods that return captured crewmembers from the ninja den.
+/obj/structure/closet/supplypod/proc/return_from_capture(mob/living/victim, turf/destination = get_safe_random_station_turf())
+	if(isnull(destination)) //Uuuuh, something went wrong. This is gonna hurt.
+		to_chat(victim, span_hypnophrase("A million voices echo in your head... \"Seems where you got sent won't \
+			be able to handle our pod... as if we wanted the occupant to survive. Brace yourself, corporate dog.\""))
+		flags_1 &= ~PREVENT_CONTENTS_EXPLOSION_1
+		explosionSize = list(0,1,1,1)
+		destination = get_random_station_turf()
+
+	do_sparks(8, FALSE, victim)
+	victim.visible_message(span_notice("[victim] vanishes..."))
+
+	victim.forceMove(src)
+
+	new /obj/effect/pod_landingzone(destination, src)
+
+	SEND_SIGNAL(victim, COMSIG_LIVING_RETURN_FROM_CAPTURE, destination)
 
 /obj/structure/closet/supplypod/proc/handleReturnAfterDeparting(atom/movable/holder = src)
 	reversing = FALSE //Now that we're done reversing, we set this to false (otherwise we would get stuck in an infinite loop of calling the close proc at the bottom of open_pod() )

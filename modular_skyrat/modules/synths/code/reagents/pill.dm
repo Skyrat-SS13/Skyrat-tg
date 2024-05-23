@@ -13,9 +13,9 @@
 
 /obj/item/reagent_containers/pill/nanite_slurry
 	name = "nanite slurry pill"
-	desc = "Used to repair robotic bodyparts."
+	desc = "Used to to induce an overdose for synthetic organ repair."
 	icon_state = "pill18"
-	list_reagents = list(/datum/reagent/medicine/nanite_slurry = 15) // 20 is OD
+	list_reagents = list(/datum/reagent/medicine/nanite_slurry = 30) // 10 is OD
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/pill/system_cleaner

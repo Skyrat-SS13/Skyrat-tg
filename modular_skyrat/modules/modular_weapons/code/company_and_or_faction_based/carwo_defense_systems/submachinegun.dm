@@ -17,7 +17,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
-	slot_flags = ITEM_SLOT_OCLOTHING | ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c35sol_pistol
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo

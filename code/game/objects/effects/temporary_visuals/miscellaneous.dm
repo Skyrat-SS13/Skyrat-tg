@@ -266,9 +266,8 @@
 
 /obj/effect/temp_visual/telekinesis
 	name = "telekinetic force"
-	//icon_state = "empdisable" //Non-Skyrat version
-	icon_state = "telekinesis_throw" //Skyrat edit, was "empdisable"
-	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' //Skyrat Addition
+	icon_state = "telekinesis_throw" // SKYRAT EDIT CHANGE - ORIGINAL: icon_state = "empdisable"
+	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' // SKYRAT EDIT ADDITION
 	duration = 5
 
 /obj/effect/temp_visual/emp
@@ -557,7 +556,7 @@
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		obj_flags &= ~CAN_BE_HIT
 		icon_state = "rcd_end"
-		addtimer(CALLBACK(src, PROC_REF(end)), 15)
+		addtimer(CALLBACK(src, PROC_REF(end)), 1.5 SECONDS)
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)

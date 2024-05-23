@@ -17,8 +17,8 @@
 	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "/tg/ Station 13"
 	fps = 20
-	cache_lifespan = 0 // SKYRAT EDIT - Makes sure TTS shit isnt kept past rounds
-	//map_format = SIDE_MAP // SKYRAT EDIT - TODO: WALLENING - REMOVE THIS (hopefully the visual z-fighting issues will have been ironed out by then)
+	cache_lifespan = 0
+	//map_format = SIDE_MAP // SKYRAT EDIT - TODO: WALLENING - REMOVE THIS (hopefully the visual z-fighting issues will have been ironed out by then
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif

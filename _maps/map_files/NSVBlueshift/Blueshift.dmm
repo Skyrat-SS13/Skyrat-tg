@@ -3045,7 +3045,7 @@
 /turf/open/floor/iron/dark,
 /area/station/science/genetics)
 "aFb" = (
-/obj/machinery/modular_computer/preset/cargochat,
+/obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "aFf" = (
@@ -3415,7 +3415,6 @@
 /turf/open/floor/iron/dark,
 /area/station/medical/pharmacy)
 "aIA" = (
-/obj/effect/landmark/start/virologist,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/duct,
 /turf/open/floor/carpet/green,
@@ -4777,9 +4776,6 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 9
 	},
-/obj/machinery/computer/department_orders/science{
-	dir = 1
-	},
 /turf/open/floor/iron,
 /area/station/science/lab)
 "aXj" = (
@@ -5548,7 +5544,6 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/effect/landmark/start/virologist,
 /turf/open/floor/iron,
 /area/station/medical/virology/isolation)
 "ben" = (
@@ -30056,6 +30051,7 @@
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted{
 	dir = 8
 	},
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "fJu" = (
@@ -36321,7 +36317,6 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/loading_area,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/computer/department_orders/security,
 /turf/open/floor/iron/dark/corner{
 	dir = 4
 	},
@@ -37961,9 +37956,6 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central)
 "hlQ" = (
-/obj/machinery/power/smes{
-	charge = 5e+006
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -37973,6 +37965,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/power/smes/super/full{
+	name = "ai power storage unit"
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -46730,7 +46725,6 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark/start/virologist,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
@@ -50158,9 +50152,6 @@
 /area/station/security/brig)
 "jDW" = (
 /obj/structure/window/spawner/directional/south,
-/obj/machinery/computer/department_orders/service{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/side,
 /area/station/hallway/secondary/service)
 "jEg" = (
@@ -51526,7 +51517,7 @@
 /area/station/science/ordnance)
 "jQV" = (
 /obj/machinery/light/small/directional/north,
-/mob/living/simple_animal/slime,
+/mob/living/basic/slime,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "jQX" = (
@@ -62016,6 +62007,7 @@
 	pixel_x = -1;
 	pixel_y = 12
 	},
+/obj/item/piggy_bank/vault,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/nuke_storage)
 "lQH" = (
@@ -63953,10 +63945,10 @@
 /area/station/hallway/secondary/service)
 "mjA" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/mechanical,
 /obj/effect/turf_decal/tile/dark_blue/anticorner/contrasted{
 	dir = 1
 	},
+/obj/structure/secure_safe/caps_spare,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "mjB" = (
@@ -65891,9 +65883,6 @@
 /turf/open/floor/iron/dark,
 /area/station/science/cytology)
 "mER" = (
-/obj/machinery/computer/department_orders/engineering{
-	dir = 8
-	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/engineering/break_room)
@@ -67156,7 +67145,7 @@
 /obj/structure/closet/athletic_mixed,
 /obj/item/clothing/mask/animal/frog,
 /obj/item/clothing/head/helmet/skull,
-/obj/item/clothing/head/costume/jester/alt,
+/obj/item/clothing/head/costume/jesteralt,
 /obj/item/clothing/head/costume/ushanka,
 /obj/item/clothing/mask/gas/soviet,
 /obj/item/clothing/mask/luchador/rudos,
@@ -81401,7 +81390,7 @@
 /area/station/hallway/primary/upper)
 "pCC" = (
 /obj/machinery/light/small/directional/south,
-/mob/living/simple_animal/slime,
+/mob/living/basic/slime,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "pCO" = (
@@ -87403,6 +87392,17 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/upper)
+"qHD" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 8
+	},
+/obj/machinery/modular_computer/preset/cargochat/security,
+/obj/effect/turf_decal/stripes/blue/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/station/security/office)
 "qHE" = (
 /obj/structure/rack,
 /obj/item/clothing/shoes/winterboots,
@@ -94057,10 +94057,10 @@
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
 "rXc" = (
-/obj/machinery/power/smes{
-	charge = 5e+006
-	},
 /obj/structure/cable,
+/obj/machinery/power/smes/super/full{
+	name = "ai power storage unit"
+	},
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/ai)
 "rXe" = (
@@ -115551,7 +115551,6 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark/start/virologist,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
@@ -117830,7 +117829,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 6
 	},
-/obj/machinery/computer/department_orders/medical,
 /obj/machinery/digital_clock/directional/north,
 /turf/open/floor/iron,
 /area/station/medical/break_room)
@@ -121723,9 +121721,7 @@
 /obj/machinery/computer/records/security,
 /obj/machinery/light/directional/north,
 /obj/machinery/status_display/evac/directional/north,
-/obj/effect/turf_decal/stripes/blue/line{
-	dir = 5
-	},
+/obj/effect/turf_decal/stripes/blue/line,
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "xhc" = (
@@ -159690,7 +159686,7 @@ tdv
 tdv
 cnP
 nOi
-xTt
+qHD
 xTt
 kRU
 ugJ

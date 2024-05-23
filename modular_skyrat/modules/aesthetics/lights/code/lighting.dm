@@ -45,7 +45,7 @@
 
 	constant_flickering = TRUE
 
-	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_on)), rand(5, 10))
+	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_on)), rand(0.5 SECONDS, 1 SECONDS))
 
 /obj/machinery/light/proc/stop_flickering()
 	constant_flickering = FALSE
@@ -65,11 +65,11 @@
 
 /obj/machinery/light/proc/flicker_on()
 	alter_flicker(TRUE)
-	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_off)), rand(5, 10))
+	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_off)), rand(0.5 SECONDS, 1 SECONDS))
 
 /obj/machinery/light/proc/flicker_off()
 	alter_flicker(FALSE)
-	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_on)), rand(5, 50))
+	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_on)), rand(0.5 SECONDS, 5 SECONDS))
 
 /obj/machinery/light/Initialize(mapload = TRUE)
 	. = ..()

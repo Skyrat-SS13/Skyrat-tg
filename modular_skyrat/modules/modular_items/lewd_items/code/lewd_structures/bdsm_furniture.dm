@@ -7,7 +7,6 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
@@ -40,6 +39,10 @@
 /obj/item/bdsm_bed_kit/examine(mob/user)
 	. = ..()
 	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
+
+// previously NO_DECONSTRUCTION
+/obj/structure/bed/bdsm_bed/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
 
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/affected_mob)
 	density = TRUE

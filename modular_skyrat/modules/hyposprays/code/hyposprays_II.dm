@@ -20,18 +20,18 @@
 	name = "hypospray mk.II"
 	icon_state = "hypo2"
 	icon = 'modular_skyrat/modules/hyposprays/icons/hyposprays.dmi'
-	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
+	greyscale_config = /datum/greyscale_config/hypospray_mkii
+	desc = "A new development from DeForest Medical, this hypospray takes 50-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
 	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
 	var/small_only = TRUE
 	/// Inject or spray?
 	var/mode = HYPO_INJECT
+	/// The presently-inserted vial.
 	var/obj/item/reagent_containers/cup/vial/vial
 	/// If the Hypospray starts with a vial, which vial does it start with?
 	var/start_vial
-	/// Does the Hypospray start with a vial?
-	var/spawnwithvial = FALSE
 
 	/// Time taken to inject others
 	var/inject_wait = WAIT_INJECT
@@ -46,54 +46,86 @@
 	var/quickload = TRUE
 	/// Does it penetrate clothing?
 	var/penetrates = null
+	/// Used for GAGS-ified hypos.
+	var/gags_bodystate = "hypo2_normal"
 
-/obj/item/hypospray/mkii/cmo
+/obj/item/hypospray/mkii/deluxe
 	name = "hypospray mk.II deluxe"
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
-	icon_state = "cmo2"
-	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	start_vial = /obj/item/reagent_containers/cup/vial/large/deluxe
-	spawnwithvial = TRUE
+	icon_state = "bighypo2"
+	gags_bodystate = "hypo2_deluxe"
+	desc = "The deluxe DeForest Mk. II hypospray, able to take both 100u and 50u vials."
 	small_only = FALSE
+
+// Deluxe hypo upgrade Kit
+/obj/item/device/custom_kit/deluxe_hypo2
+	name = "DeForest Mk. II Hypospray Deluxe Bodykit"
+	desc = "Upgrades the DeForest Mk. II Hypospray to support larger vials."
+	// don't tinker with a loaded (medi)gun. fool
+	from_obj = /obj/item/hypospray/mkii
+	to_obj = /obj/item/hypospray/mkii/deluxe
+
+/obj/item/device/custom_kit/deluxe_hypo2/pre_convert_check(obj/target_obj, mob/user)
+	var/obj/item/hypospray/mkii/our_hypo = target_obj
+	if(our_hypo.type in subtypesof(/obj/item/hypospray/mkii/))
+		balloon_alert(user, "only works on basic mk. ii hypos!")
+		return FALSE
+	if(our_hypo.vial != null)
+		balloon_alert(user, "unload the vial first!")
+		return FALSE
+	return TRUE
+
+/obj/item/hypospray/mkii/deluxe/cmo
+	name = "CMO's deluxe hypospray mk.II"
+	icon_state = "cmo2"
+	gags_bodystate = "hypo2_cmo"
+	desc = "The CMO's prized deluxe hypospray, able to take both 100u and 50u vials, acting faster and able to deliver more reagents per spray."
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
 	inject_self = DELUXE_SELF_INJECT
 	penetrates = INJECT_CHECK_PENETRATE_THICK
 
+/obj/item/hypospray/mkii/deluxe/cmo/combat
+	name = "combat-grade hypospray mk.II"
+	icon_state = "combat2"
+	gags_bodystate = "hypo2_tactical"
+	desc = "A variant of the deluxe hypospray, able to take both 100u and 50u vials, with overcharged applicators and an armor-piercing tip."
+	// Made non-indestructible since this is typically an admin spawn.  still robust though!
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	inject_wait = COMBAT_WAIT_INJECT
+	spray_wait = COMBAT_WAIT_SPRAY
+	spray_self = COMBAT_SELF_INJECT
+	inject_self = COMBAT_SELF_SPRAY
+	penetrates = INJECT_CHECK_PENETRATE_THICK
+
 /obj/item/hypospray/mkii/Initialize(mapload)
 	. = ..()
-	if(!spawnwithvial)
-		update_appearance()
-		return
-	if(start_vial)
-		vial = new start_vial
-		update_appearance()
-
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/hypospray/mkii/update_overlays()
 	. = ..()
 	if(!vial)
 		return
-	if(!vial.reagents.total_volume)
-		return
-	var/vial_spritetype = "chem-color"
-	if(!small_only)
-		vial_spritetype += "[vial.type_suffix]"
+	if(vial.reagents.total_volume)
+		var/vial_spritetype = "chem-color"
+		if(!small_only)
+			vial_spritetype += "[vial.type_suffix]"
+		else
+			vial_spritetype += "-s"
+		var/mutable_appearance/chem_loaded = mutable_appearance(initial(icon), vial_spritetype)
+		chem_loaded.color = vial.chem_color
+		. += chem_loaded
+	if(vial.greyscale_colors != null)
+		var/mutable_appearance/vial_overlay = mutable_appearance(initial(icon), "[vial.icon_state]-body")
+		vial_overlay.color = vial.greyscale_colors
+		. += vial_overlay
+		var/mutable_appearance/vial_overlay_glass = mutable_appearance(initial(icon), "[vial.icon_state]-glass")
+		. += vial_overlay_glass
 	else
-		vial_spritetype += "-s"
-	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
-	chem_loaded.color = vial.chem_color
-	. += chem_loaded
-
-/obj/item/hypospray/mkii/update_icon_state()
-	. = ..()
-	var/icon_suffix = "-s"
-	if(!small_only && vial)
-		icon_suffix = vial.type_suffix //Sets the suffix used to the correspoding vial.
-	icon_state = "[initial(icon_state)][vial ? "[icon_suffix]" : ""]"
+		var/mutable_appearance/vial_overlay = mutable_appearance(initial(icon), vial.icon_state)
+		. += vial_overlay
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
@@ -101,6 +133,26 @@
 		. += "[vial] has [vial.reagents.total_volume]u remaining."
 	else
 		. += "It has no vial loaded in."
+	. += span_notice("Ctrl-Shift-Click to change up the colors or reset them.")
+
+/obj/item/hypospray/mkii/CtrlShiftClick(mob/user, obj/item/I)
+	var/choice = tgui_input_list(user, "GAGSify the hypo or reset to default?", "Fashion", list("GAGS", "Nope"))
+	if(choice == "GAGS")
+		icon_state = gags_bodystate
+		//choices go here
+		var/atom/fake_atom = src
+		var/list/allowed_configs = list()
+		var/config = initial(fake_atom.greyscale_config)
+		allowed_configs += "[config]"
+		if(greyscale_colors == null)
+			greyscale_colors = "#00AAFF#FFAA00"
+
+		var/datum/greyscale_modify_menu/menu = new(src, usr, allowed_configs)
+		menu.ui_interact(usr)
+	else
+		icon_state = initial(icon_state)
+		icon = initial(icon)
+		greyscale_colors = null
 
 /obj/item/hypospray/mkii/proc/unload_hypo(obj/item/hypo, mob/user)
 	if((istype(hypo, /obj/item/reagent_containers/cup/vial)))
@@ -218,13 +270,13 @@
 	if(injectee != user)
 		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!"), \
 						span_userdanger("[user] is trying to [fp_verb] you with [src]!"))
-	
+
 	var/selected_wait_time
 	if(target == user)
 		selected_wait_time = (mode == HYPO_INJECT) ? inject_self : spray_self
 	else
 		selected_wait_time = (mode == HYPO_INJECT) ? inject_wait : spray_wait
-			
+
 	if(!do_after(user, selected_wait_time, injectee, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, user.zone_selected, penetrates)))
 		return
 	if(!vial.reagents.total_volume)

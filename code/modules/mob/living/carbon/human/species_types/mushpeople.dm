@@ -2,7 +2,6 @@
 	name = "Mushroomperson"
 	plural_form = "Mushroompeople"
 	id = SPECIES_MUSHROOM
-	mutant_bodyparts = list("caps" = list(MUTANT_INDEX_NAME = "Round", MUTANT_INDEX_COLOR_LIST = list("#FF4B19"))) // SKYRAT EDIT - Customization - ORIGINAL: mutant_bodyparts = list("caps" = "Round")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 
 	fixed_mut_color = "#DBBF92"
@@ -40,10 +39,6 @@
 /datum/species/mush/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		if(!H.dna.mutant_bodyparts["caps"] || H.dna.mutant_bodyparts["caps"][MUTANT_INDEX_NAME] != "None") // SKYRAT EDIT - Customization - ORIGINAL: if(!H.dna.features["caps"])
-			H.dna.mutant_bodyparts["caps"] = list(MUTANT_INDEX_NAME = "Round", MUTANT_INDEX_COLOR_LIST = list(H.hair_color)) // SKYRAT EDIT - Customization - ORIGINAL: H.dna.features["caps"] = "Round"
-			handle_mutant_bodyparts(H)
 		mush = new()
 		mush.teach(C)
 		mush.allow_temp_override = FALSE

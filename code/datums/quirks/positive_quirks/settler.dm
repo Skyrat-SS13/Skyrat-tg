@@ -19,7 +19,10 @@
 	give_item_to_holder(/obj/item/storage/box/papersack/wheat, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 	give_item_to_holder(/obj/item/storage/toolbox/fishing/small, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 	var/mob/living/carbon/human/human_quirkholder = quirk_holder
-	human_quirkholder.set_mob_height(HUMAN_HEIGHT_SHORTEST)
+	//SKYRAT EDIT BEGIN - This is so Teshari don't get the height decrease.
+	if(!isteshari(human_quirkholder))
+		human_quirkholder.set_mob_height(HUMAN_HEIGHT_SHORTEST)
+	//SKYRAT EDIT END
 	human_quirkholder.add_movespeed_modifier(/datum/movespeed_modifier/settler)
 	human_quirkholder.physiology.hunger_mod *= 0.5 //good for you, shortass, you don't get hungry nearly as often
 

@@ -102,9 +102,9 @@
 		return relaydrive(user, direction)
 	return FALSE
 
-/obj/vehicle/ridden/rail_cart/AltClick(mob/user)
-	. = ..()
+/obj/vehicle/ridden/rail_cart/click_alt(mob/user)
 	attach_trailer()
+	return CLICK_ACTION_SUCCESS
 
 /obj/vehicle/ridden/rail_cart/attack_hand(mob/living/user, list/modifiers)
 	. = ..()

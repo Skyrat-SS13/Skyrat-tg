@@ -1,7 +1,7 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
-	icon = 'icons/obj/wallmounts.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/wallmounts.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "extinguisher_closed"
 	anchored = TRUE
 	density = FALSE
@@ -164,7 +164,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 
 /obj/structure/extinguisher_cabinet/atom_break(damage_flag)
 	. = ..()
-	if(!broken && !(obj_flags & NO_DECONSTRUCTION))
+	if(!broken)
 		broken = 1
 		opened = 1
 		if(stored_extinguisher)
@@ -173,16 +173,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 		update_appearance(UPDATE_ICON)
 
 
-/obj/structure/extinguisher_cabinet/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		if(disassembled)
-			new /obj/item/wallframe/extinguisher_cabinet(loc)
-		else
-			new /obj/item/stack/sheet/iron (loc, 2)
-		if(stored_extinguisher)
-			stored_extinguisher.forceMove(loc)
-			stored_extinguisher = null
-	qdel(src)
+/obj/structure/extinguisher_cabinet/atom_deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/wallframe/extinguisher_cabinet(loc)
+	else
+		new /obj/item/stack/sheet/iron (loc, 2)
+	if(stored_extinguisher)
+		stored_extinguisher.forceMove(loc)
+		stored_extinguisher = null
 
 /obj/item/wallframe/extinguisher_cabinet
 	name = "extinguisher cabinet frame"

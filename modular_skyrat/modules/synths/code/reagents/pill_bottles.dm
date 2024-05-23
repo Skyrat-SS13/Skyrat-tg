@@ -17,11 +17,11 @@
 		new /obj/item/reagent_containers/pill/liquid_solder/braintumor(src)
 
 /obj/item/storage/pill_bottle/nanite_slurry
-	name = "bottle of nanite slurry pills"
-	desc = "Contains pills used to treat robotic bodyparts."
+	name = "bottle of concentrated nanite slurry pills"
+	desc = "Contains nanite slurry pills used for <b>critical system repair</b> to induce an overdose in a synthetic to repair organs."
 
 /obj/item/storage/pill_bottle/nanite_slurry/PopulateContents()
-	for(var/i in 1 to 7)
+	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/nanite_slurry(src)
 
 /obj/item/storage/pill_bottle/system_cleaner

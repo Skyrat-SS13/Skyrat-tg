@@ -65,7 +65,7 @@
 ///obj/item/clothing/head/hats/sus_bowler/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	//var/caught = hit_atom.hitby(src, FALSE, FALSE, throwingdatum=throwingdatum)
 	//if(thrownby && !caught)
-		//addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, throw_at), thrownby, throw_range+2, throw_speed, null, TRUE), 1)
+		//addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, throw_at), thrownby, throw_range+2, throw_speed, null, TRUE), 0.1 SECONDS)
 	//else
 		//return ..()
 

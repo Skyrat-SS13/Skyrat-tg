@@ -59,14 +59,13 @@
 #define HEADSMASH_BLOCK_ARMOR 20
 #define SUPLEX_TIMER 3 SECONDS
 
-/// Skyrat change - alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
-/mob/living/carbon/human/AltClick(mob/user)
+// alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
+/mob/living/carbon/human/click_alt(mob/user)
 	if(!ishuman(user))
 		return ..()
 	var/mob/living/carbon/human/human_user = user
 	if(human_user == src || !human_user.combat_mode || !human_user.dna.species.try_grab_maneuver(user, src))
-		return FALSE
-	. = ..()
+		return CLICK_ACTION_BLOCKING
 
 /// State check for grab maneuver - because you can't logically suplex a man if you've stopped grappling them.
 /datum/species/proc/grab_maneuver_state_check(mob/living/carbon/human/user, mob/living/carbon/human/target)

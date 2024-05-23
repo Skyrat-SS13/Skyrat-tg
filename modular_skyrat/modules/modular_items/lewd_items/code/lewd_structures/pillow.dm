@@ -34,32 +34,28 @@
 		"square" = image (icon = src.icon, icon_state = "pillow_pink_square"),
 		"round" = image(icon = src.icon, icon_state = "pillow_pink_round"))
 
-/obj/item/fancy_pillow/AltClick(mob/user)
-	if(color_changed == FALSE)
-		. = ..()
-		if(.)
-			return
+/obj/item/fancy_pillow/click_alt(mob/user)
+	if(!color_changed)
 		var/choice = show_radial_menu(user, src, pillow_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_color = choice
 		update_icon()
 		color_changed = TRUE
 		update_icon_state()
-	if(color_changed == TRUE)
-		if(form_changed == FALSE)
-			. = ..()
-			if(.)
-				return
-			var/choice = show_radial_menu(user, src, pillow_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
-			if(!choice)
-				return FALSE
-			current_form = choice
-			update_icon()
-			form_changed = TRUE
-			update_icon_state()
+		return CLICK_ACTION_SUCCESS
 	else
-		return
+		if(form_changed)
+			return CLICK_ACTION_BLOCKING
+		var/choice = show_radial_menu(user, src, pillow_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
+		if(!choice)
+			return CLICK_ACTION_BLOCKING
+		current_form = choice
+		update_icon()
+		form_changed = TRUE
+		update_icon_state()
+		return CLICK_ACTION_SUCCESS
+
 
 //to check if we can change pillow's model
 /obj/item/fancy_pillow/proc/check_menu(mob/living/user)
@@ -185,7 +181,7 @@
 
 //picking up the pillow
 
-/obj/structure/bed/pillow_tiny/AltClick(mob/user)
+/obj/structure/bed/pillow_tiny/click_alt(mob/user)
 	to_chat(user, span_notice("You pick up [src]."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	user.put_in_hands(taken_pillow)
@@ -198,6 +194,7 @@
 	taken_pillow.update_icon_state()
 	taken_pillow.update_icon()
 	qdel(src)
+	return CLICK_ACTION_SUCCESS
 
 //when we lay on it
 
@@ -308,7 +305,7 @@
 	icon_state = "[base_icon_state]_[current_color]"
 
 //Removing pillow from a pile
-/obj/structure/chair/pillow_small/AltClick(mob/user)
+/obj/structure/chair/pillow_small/click_alt(mob/user)
 	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	var/obj/structure/bed/pillow_tiny/pillow_pile = new(get_turf(src))
@@ -330,6 +327,7 @@
 	pillow_pile.update_icon_state()
 	pillow_pile.update_icon()
 	qdel(src)
+	return CLICK_ACTION_SUCCESS
 
 //Upgrading pillow pile to a PILLOW PILE!
 /obj/structure/chair/pillow_small/attackby(obj/item/used_item, mob/living/user, params)
@@ -437,7 +435,7 @@
 	icon_state = "[base_icon_state]_[current_color]"
 
 //Removing pillow from a pile
-/obj/structure/bed/pillow_large/AltClick(mob/user)
+/obj/structure/bed/pillow_large/click_alt(mob/user)
 	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	var/obj/structure/chair/pillow_small/pillow_pile = new(get_turf(src))
@@ -464,3 +462,4 @@
 	pillow_pile.update_icon_state()
 	pillow_pile.update_icon()
 	qdel(src)
+	return CLICK_ACTION_SUCCESS

@@ -2,8 +2,11 @@
 	name = "advanced choice beacon"
 	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
 	icon = 'icons/obj/devices/remote.dmi'
-	icon_state = "gangtool-red"
-	inhand_icon_state = null
+	icon_state = "designator_syndicate"
+	inhand_icon_state = "nukietalkie"
+
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
 	var/list/possible_choices = list()
 

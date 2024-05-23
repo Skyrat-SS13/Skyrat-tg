@@ -13,6 +13,7 @@
 	greyscale_colors = "#FFFFFF"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 	min_cold_protection_temperature = T0C - 20	//Not as good as the base jacket
 
 /obj/item/clothing/suit/toggle/jacket/hoodie/trim

@@ -1,6 +1,6 @@
 //THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
 
-/obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "dresser"
 	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
 	icon = 'icons/obj/fluff/general.dmi'
@@ -18,10 +18,8 @@
 	else
 		return ..()
 
-/obj/structure/dresser/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
-	qdel(src)
+/obj/structure/dresser/atom_deconstruct(disassembled = TRUE)
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 
 /obj/structure/dresser/attack_hand(mob/user, list/modifiers)
 	. = ..()

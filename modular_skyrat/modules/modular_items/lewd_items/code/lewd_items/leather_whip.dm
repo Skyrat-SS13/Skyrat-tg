@@ -88,32 +88,27 @@
 	update_overlays()
 
 //to change color
-/obj/item/clothing/mask/leatherwhip/AltClick(mob/user)
+/obj/item/clothing/mask/leatherwhip/click_alt(mob/user)
 	if(!color_changed)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, whip_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_whip_color = choice
 		update_icon()
 		update_icon_state()
 		color_changed = TRUE
-
+		return CLICK_ACTION_SUCCESS
 	else
 		if(form_changed)
-			return
-		. = ..()
-		if(.)
-			return
+			return CLICK_ACTION_BLOCKING
 		var/choice = show_radial_menu(user, src, whip_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_whip_form = choice
 		update_icon()
 		update_icon_state()
 		form_changed = TRUE
+		return CLICK_ACTION_SUCCESS
 
 /// A check to see if the radial menu can be used
 /obj/item/clothing/mask/leatherwhip/proc/check_menu(mob/living/user)

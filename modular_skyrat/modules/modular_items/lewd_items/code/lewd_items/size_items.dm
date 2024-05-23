@@ -1,7 +1,7 @@
 /// What areas are we allowed to use size items in?
 #define SIZE_WHITELISTED_AREAS list(\
 		/area/centcom/interlink/dorm_rooms,\
-		/area/centcom/holding/cafedorms,\
+		/area/centcom/holding/cafe/dorms,\
 		/area/misc/hilbertshotel,\
 )
 

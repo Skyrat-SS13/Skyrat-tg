@@ -70,7 +70,7 @@ export const MaturityPrompt = (props) => {
                     maxValue={current_year}
                     step={1}
                     stepPixelSize={5}
-                    onChange={(e, value) => setYear(value)}
+                    onChange={(value) => setYear(value)}
                   />
                 </LabeledControls.Item>
                 {'-'}
@@ -81,7 +81,7 @@ export const MaturityPrompt = (props) => {
                     maxValue={12}
                     step={1}
                     stepPixelSize={5}
-                    onChange={(e, value) => setMonth(value)}
+                    onChange={(value) => setMonth(value)}
                   />
                 </LabeledControls.Item>
                 {'-'}
@@ -92,7 +92,7 @@ export const MaturityPrompt = (props) => {
                     maxValue={31}
                     step={1}
                     stepPixelSize={5}
-                    onChange={(e, value) => setDay(value)}
+                    onChange={(value) => setDay(value)}
                   />
                 </LabeledControls.Item>
               </LabeledControls>

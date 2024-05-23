@@ -53,10 +53,11 @@
 	current_sort += target.type
 	to_chat(user, span_notice("[target] has been added to [src]'s sorting list."))
 
-/obj/item/conveyor_sorter/AltClick(mob/user)
+/obj/item/conveyor_sorter/click_alt(mob/user)
 	visible_message("[src] pings, resetting its sorting list!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	current_sort = list()
+	return CLICK_ACTION_SUCCESS
 
 /obj/effect/decal/conveyor_sorter
 	name = "conveyor sorter"
@@ -122,10 +123,11 @@
 	else
 		return ..()
 
-/obj/effect/decal/conveyor_sorter/AltClick(mob/user)
+/obj/effect/decal/conveyor_sorter/click_alt(mob/user)
 	visible_message("[src] pings, resetting its sorting list!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	sorting_list = list()
+	return CLICK_ACTION_SUCCESS
 
 /obj/effect/decal/conveyor_sorter/CtrlClick(mob/user)
 	visible_message("[src] begins to ping violently!")

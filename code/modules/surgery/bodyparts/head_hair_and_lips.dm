@@ -9,25 +9,10 @@
 	hair_hidden = FALSE
 	facial_hair_hidden = FALSE
 	if(human_head_owner)
-		if(human_head_owner.head)
-			var/obj/item/hat = human_head_owner.head
-			if(hat.flags_inv & HIDEHAIR)
+		for(var/obj/item/worn_item in human_head_owner.get_equipped_items())
+			if(worn_item.flags_inv & HIDEHAIR)
 				hair_hidden = TRUE
-			if(hat.flags_inv & HIDEFACIALHAIR)
-				facial_hair_hidden = TRUE
-
-		if(human_head_owner.wear_mask)
-			var/obj/item/mask = human_head_owner.wear_mask
-			if(mask.flags_inv & HIDEHAIR)
-				hair_hidden = TRUE
-			if(mask.flags_inv & HIDEFACIALHAIR)
-				facial_hair_hidden = TRUE
-
-		if(human_head_owner.w_uniform)
-			var/obj/item/item_uniform = human_head_owner.w_uniform
-			if(item_uniform.flags_inv & HIDEHAIR)
-				hair_hidden = TRUE
-			if(item_uniform.flags_inv & HIDEFACIALHAIR)
+			if(worn_item.flags_inv & HIDEFACIALHAIR)
 				facial_hair_hidden = TRUE
 		//invisibility and husk stuff
 		if(HAS_TRAIT(human_head_owner, TRAIT_INVISIBLE_MAN) || HAS_TRAIT(human_head_owner, TRAIT_HUSK))
@@ -125,11 +110,11 @@
 			hair_overlay = image(hair_sprite_accessory.icon, hair_sprite_accessory.icon_state, -HAIR_LAYER, image_dir)
 			hair_overlay.alpha = hair_alpha
 			hair_overlay.pixel_y = hair_sprite_accessory.y_offset
-			// SKYRAT ADD - Species hair offset
+			// SKYRAT EDIT ADDITION - Species hair offset
 			if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
 				hair_overlay.pixel_x += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
 				hair_overlay.pixel_y += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
-			// SKYRAT ADD END
+			// SKYRAT EDIT ADDITION END
 			//Emissive blocker
 			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
 				hair_overlay.overlays += emissive_blocker(hair_overlay.icon, hair_overlay.icon_state, location, alpha = hair_alpha)
@@ -142,11 +127,11 @@
 				var/hair_gradient_color = LAZYACCESS(gradient_colors, GRADIENT_HAIR_KEY)
 				var/image/hair_gradient_overlay = get_gradient_overlay(hair_sprite_accessory.icon, hair_sprite_accessory.icon_state, -HAIR_LAYER, GLOB.hair_gradients_list[hair_gradient_style], hair_gradient_color, image_dir)
 				hair_gradient_overlay.pixel_y = hair_sprite_accessory.y_offset
-				// SKYRAT ADD - Species hair offset
+				// SKYRAT EDIT ADDITION - Species hair offset
 				if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
 					hair_gradient_overlay.pixel_x += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
 					hair_gradient_overlay.pixel_y += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
-				// SKYRAT ADD END
+				// SKYRAT EDIT ADDITION END
 				. += hair_gradient_overlay
 
 	if(show_debrained && (head_flags & HEAD_DEBRAIN))

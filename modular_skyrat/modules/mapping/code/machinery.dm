@@ -12,16 +12,16 @@
 	gpstag = SPACE_SIGNAL_GPSTAG	//really the only non-aesthetic change, gives the space ruin GPS signal
 
 /obj/item/gps/computer/space/wrench_act(mob/living/user, obj/item/I)
-	..()
-	if(obj_flags & NO_DECONSTRUCTION)
-		return TRUE
-
-	user.visible_message(span_warning("[user] disassembles [src]."),
-		span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
+	. = ..()
 	if(I.use_tool(src, user, 20, volume=50))
-		new /obj/item/gps/spaceruin(loc)	//really the only non-aesthetic change, gives the space ruin GPS signal
-		qdel(src)
+		user.visible_message(span_warning("[user] disassembles [src]."),
+			span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
+		deconstruct(TRUE)
 	return TRUE
+
+/obj/item/gps/computer/space/atom_deconstruct(disassembled)
+	. = ..()
+	new /obj/item/gps/spaceruin(loc)	//really the only non-aesthetic change, gives the space ruin GPS signal
 
 /obj/item/gps/computer/attack_hand(mob/user, list/modifiers)
 	. = ..()

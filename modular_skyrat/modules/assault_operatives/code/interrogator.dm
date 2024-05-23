@@ -36,7 +36,7 @@
 	. = ..()
 	. += "It requies a direct link to a Nanotrasen defence network, stay near a Nanotrasen comms sat!"
 
-/obj/machinery/interrogator/AltClick(mob/user)
+/obj/machinery/interrogator/click_alt(mob/user)
 	. = ..()
 	if(!can_interact(user))
 		return

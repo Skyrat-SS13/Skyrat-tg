@@ -57,7 +57,6 @@
 
 /obj/item/clothing/mask/paper/Initialize(mapload)
 	. = ..()
-	register_context()
 	if(wear_hair_over)
 		alternate_worn_layer = BACK_LAYER
 

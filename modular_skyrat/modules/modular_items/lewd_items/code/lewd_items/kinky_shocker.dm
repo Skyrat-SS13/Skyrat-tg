@@ -69,8 +69,9 @@
 		to_chat(user, span_notice("You install a cell in [src]."))
 		update_appearance()
 
-/obj/item/kinky_shocker/AltClick(mob/user)
+/obj/item/kinky_shocker/click_alt(mob/user)
 	tryremovecell(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/kinky_shocker/proc/tryremovecell(mob/user)
 	if(!(cell && can_remove_cell))
@@ -81,6 +82,7 @@
 	to_chat(user, span_notice("You remove the cell from [src]."))
 	shocker_on = FALSE
 	update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/kinky_shocker/attack_self(mob/user)
 	toggle_shocker(user)

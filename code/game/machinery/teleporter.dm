@@ -50,6 +50,7 @@
 		to_chat(AM, span_warning("You can't use this here!"))
 		return
 	if(is_ready())
+		playsound(loc, "sound/effects/portal_travel.ogg", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		teleport(AM)
 
 /obj/machinery/teleport/hub/attackby(obj/item/W, mob/user, params)
@@ -75,11 +76,11 @@
 		return
 	if (ismovable(M))
 		if(do_teleport(M, target, channel = TELEPORT_CHANNEL_BLUESPACE))
-			use_power(active_power_usage)
+			use_energy(active_power_usage)
 			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				if(ishuman(M))//don't remove people from the round randomly you jerks
 					var/mob/living/carbon/human/human = M
-					/* - SKRYAT EDIT CHANGE ORIGINAL
+					/* - SKYRAT EDIT CHANGE ORIGINAL
 					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
 						var/datum/species/species_to_transform = /datum/species/fly
 						if(check_holidays(MOTH_WEEK))
@@ -90,23 +91,24 @@
 							log_game("[human] ([key_name(human)]) was turned into a [initial(species_to_transform.name)] through [src].")
 
 					*/ //SKYRAT EDIT REMOVAL END
-					//SKRYAT EDIT CHANGE BEGIN
-					to_chat(human, span_danger("Your limbs lose molecular cohesion as you teleport!"))
-					var/list/bodyparts_dismember = list()
-					var/rad_mod = 0
-					for(var/obj/item/bodypart/BP in human.bodyparts)
-						if(BP.body_zone == BODY_ZONE_CHEST || BP.body_zone== BODY_ZONE_HEAD)
-							continue
-						bodyparts_dismember.Add(BP)
-					for(var/i in 1 to 2) //Removing two bodyparts.
-						var/obj/item/bodypart/BP = pick(bodyparts_dismember)
-						if(!istype(BP))
-							rad_mod += 300 //Bad snowflake, take more rads!
-							break
-						bodyparts_dismember.Remove(BP) //GC optimisation
-						BP.dismember()
-						qdel(BP)
-					//SKYRAT EDIT CHANGE END
+					// SKYRAT EDIT ADDITION BEGIN
+					if(!HAS_TRAIT(human, TRAIT_NODISMEMBER))
+						to_chat(human, span_danger("Your limbs lose molecular cohesion as you teleport!"))
+						var/list/bodyparts_dismember = list()
+						var/rad_mod = 0
+						for(var/obj/item/bodypart/BP in human.bodyparts)
+							if(BP.body_zone == BODY_ZONE_CHEST || BP.body_zone== BODY_ZONE_HEAD)
+								continue
+							bodyparts_dismember.Add(BP)
+						for(var/i in 1 to 2) //Removing two bodyparts.
+							var/obj/item/bodypart/BP = pick(bodyparts_dismember)
+							if(!istype(BP))
+								rad_mod += 300 //Bad snowflake, take more rads!
+								break
+							bodyparts_dismember.Remove(BP) //GC optimisation
+							BP.dismember()
+							qdel(BP)
+					//SKYRAT EDIT ADDITION END
 			calibrated = FALSE
 	return
 
@@ -216,7 +218,7 @@
 			to_chat(user, span_alert("The teleporter hub isn't responding."))
 		else
 			engaged = !engaged
-			use_power(active_power_usage)
+			use_energy(active_power_usage)
 			to_chat(user, span_notice("Teleporter [engaged ? "" : "dis"]engaged!"))
 	else
 		teleporter_console.target_ref = null

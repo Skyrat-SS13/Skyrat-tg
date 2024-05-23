@@ -1,3 +1,6 @@
+/datum/species/proc/allows_food_preferences()
+	return TRUE
+
 /**
  * Returns a list of strings representing features this species has.
  *
