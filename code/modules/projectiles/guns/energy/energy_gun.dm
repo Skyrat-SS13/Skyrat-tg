@@ -119,7 +119,7 @@
 /obj/item/gun/energy/e_gun/turret/add_seclight_point()
 	return
 
-/obj/item/gun/energy/e_gun/nuclear //SKYRAT EDIT - ICON OVERRIDDEN IN AESTHETICS MODULE
+/obj/item/gun/energy/e_gun/nuclear // SKYRAT EDIT - ICON OVERRIDDEN IN AESTHETICS MODULE
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"

@@ -203,7 +203,7 @@
 
 ///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it
 /proc/get_sfx(soundin)
-	soundin = get_sfx_skyrat(soundin) //SKYRAT EDIT ADDITION - This overrides the default sound effects too, so use it to modularly change a sound effect output.
+	soundin = get_sfx_skyrat(soundin) // SKYRAT EDIT ADDITION - This overrides the default sound effects too, so use it to modularly change a sound effect output.
 	if(!istext(soundin))
 		return soundin
 	switch(soundin)
