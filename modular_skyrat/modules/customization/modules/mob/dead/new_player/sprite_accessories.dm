@@ -41,8 +41,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/always_color_customizable
 	///Special case of whether the accessory should be shifted in the X dimension, check taur genitals for example
 	var/special_x_dimension
-	///Special case of whether the accessory should have a different icon, check taur genitals for example
-	var/special_icon_case
 	///Special case for MODsuit overlays
 	var/use_custom_mod_icon
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
@@ -139,8 +137,27 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/caps
 	key = "caps"
 	generic = "Caps"
+	icon = 'icons/mob/human/species/mush_cap.dmi'
+	relevent_layers = list(BODY_ADJ_LAYER)
 	color_src = USE_ONE_COLOR
-	organ_type = /obj/item/organ/external/cap
+	organ_type = /obj/item/organ/external/mushroom_cap
+	genetic = TRUE
+
+/datum/sprite_accessory/caps/is_hidden(mob/living/carbon/human/human)
+	if(((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR)) || (key in human.try_hide_mutant_parts))
+		return TRUE
+
+	return FALSE
+
+/datum/sprite_accessory/caps/none
+	name = "None"
+	icon_state = "none"
+	color_src = null
+	factual = FALSE
+
+/datum/sprite_accessory/caps/round
+	name = "Round"
+	icon_state = "round"
 
 /datum/sprite_accessory/body_markings
 	key = "body_markings"

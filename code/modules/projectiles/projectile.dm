@@ -206,10 +206,10 @@
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 		COMSIG_ATOM_ATTACK_HAND = PROC_REF(attempt_parry),
 	)
-	//SKYRAT ADDITION START
+	// SKYRAT EDIT ADDITION START
 	/// If this should be able to hit the target even on direct firing when `ignored_factions` applies
 	var/ignore_direct_target = FALSE
-	//SKYRAT ADDITION END
+	// SKYRAT EDIT ADDITION END
 
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
@@ -358,7 +358,7 @@
 
 		var/organ_hit_text = ""
 		if(hit_limb_zone)
-			organ_hit_text = " in \the [parse_zone(hit_limb_zone)]"
+			organ_hit_text = " in \the [living_target.parse_zone_with_bodypart(hit_limb_zone)]"
 		if(suppressed == SUPPRESSED_VERY)
 			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		else if(suppressed)

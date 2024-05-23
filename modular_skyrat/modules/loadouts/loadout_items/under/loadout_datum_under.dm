@@ -178,6 +178,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Chemist's Formal Jumpskirt"
 	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt
 
+/datum/loadout_item/under/jumpsuit/viro_jumpsuit
+	name = "Virologist's Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/medical/virologist
+
 /datum/loadout_item/under/jumpsuit/hlscientist
 	name = "Ridiculous Scientist Outfit"
 	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
