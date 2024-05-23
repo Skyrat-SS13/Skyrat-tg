@@ -211,7 +211,13 @@
 		L.add_mob_memory(/datum/memory/megafauna_slayer, antagonist = src)
 		L.client.give_award(/datum/award/achievement/boss/boss_killer, L)
 		L.client.give_award(achievement_type, L)
+		//SKYRAT EDIT START
+		/*
 		if(crusher_kill && istype(L.get_active_held_item(), /obj/item/kinetic_crusher))
+		*/
+		var/obj/item/held_item = L.get_active_held_item()
+		if(crusher_kill && (istype(held_item, /obj/item/kinetic_gauntlet) || held_item.GetComponent(/datum/component/kinetic_crusher))) //trust me, i hate this just as much as you
+		//SKYRAT EDIT END
 			L.client.give_award(crusher_achievement_type, L)
 		L.client.give_award(/datum/award/score/boss_score, L) //Score progression for bosses killed in general
 		L.client.give_award(score_achievement_type, L) //Score progression for specific boss killed
