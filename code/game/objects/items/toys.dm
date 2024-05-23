@@ -127,12 +127,8 @@
 	throw_range = 7
 	force = 0
 	var/random_color = TRUE
-	/// the string of the dmi state the balloon has while on the floor.
-	var/world_state 
-	/// the string of the dmi state the balloon has while in your inventory.
-	var/storage_state 
 	/// the string describing the name of balloon's current colour.
-	var/current_color 
+	var/current_color
 
 /obj/item/toy/balloon/long
 	name = "long balloon"
@@ -159,13 +155,6 @@
 		list("orange", "purple") = /obj/item/toy/balloon_animal/plasmaman,
 	)
 
-/obj/item/toy/balloon/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
-	. = ..()
-	if(isturf(loc))
-		icon_state = "[world_state]"
-	else
-		icon_state = "[storage_state]"
-	update_appearance()
 
 /obj/item/toy/balloon/long/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!istype(attacking_item, /obj/item/toy/balloon/long) || !HAS_TRAIT(user, TRAIT_BALLOON_SUTRA))
@@ -183,9 +172,9 @@
 	)
 	for(var/list/pair_of_colors in balloon_combos)
 		if((hit_by.current_color == pair_of_colors[1] && current_color == pair_of_colors[2]) || (current_color == pair_of_colors[1] && hit_by.current_color == pair_of_colors[2]))
-			var/path_to_spawn = balloon_combos[pair_of_colors] 
+			var/path_to_spawn = balloon_combos[pair_of_colors]
 			user.put_in_hands(new path_to_spawn)
-			break 
+			break
 	qdel(hit_by)
 	qdel(src)
 	return TRUE
@@ -217,14 +206,30 @@
 
 /obj/item/toy/balloon/Initialize(mapload)
 	. = ..()
-	if(random_color)
-		var/chosen_balloon_color = pick(BALLOON_COLORS)
-		current_color = "[chosen_balloon_color]"
-		name = "[chosen_balloon_color] [name]"
-		icon_state = "[icon_state]_[chosen_balloon_color]"
-		inhand_icon_state = icon_state
-		world_state = "[icon_state]"
-		storage_state = "[icon_state]_storage"
+	AddElement(/datum/element/update_icon_updates_onmob)
+	if(!random_color)
+		return
+	current_color = pick(BALLOON_COLORS)
+	update_appearance()
+
+/obj/item/toy/balloon/update_name(updates)
+	. = ..()
+	name = "[current_color ? "[current_color] ":null][initial(name)]"
+
+/obj/item/toy/balloon/vv_edit_var(vname, vval)
+	. = ..()
+	if(vname == NAMEOF(src, current_color))
+		update_appearance()
+
+/obj/item/toy/balloon/update_icon_state()
+	. = ..()
+	var/new_icon = "[initial(icon_state)][current_color ? "_[current_color]":null]"
+	inhand_icon_state = new_icon
+	icon_state = "[new_icon][isturf(loc) ? null : "_storage"]"
+
+/obj/item/toy/balloon/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	update_appearance()
 
 /obj/item/toy/balloon/corgi
 	name = "corgi balloon"
@@ -280,7 +285,9 @@
 	name = "balloon animal"
 	desc = "You shouldn't have this."
 	icon = 'icons/obj/toys/balloons.dmi'
-	icon_state = "balloon_guy"
+	inhand_icon_state = "balloon"
+	lefthand_file = 'icons/mob/inhands/items/balloons_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/balloons_righthand.dmi'
 	throwforce = 0
 	throw_speed = 2
 	throw_range = 5
@@ -1204,6 +1211,11 @@
 	icon_state = "bartender"
 	toysay = "Where is Pun Pun?"
 
+/obj/item/toy/figure/bitrunner
+	name = "\improper Bitrunner action figure"
+	icon_state = "bitrunner"
+	toysay = "I'm in..."
+
 /obj/item/toy/figure/borg
 	name = "\improper Cyborg action figure"
 	icon_state = "borg"
@@ -1381,10 +1393,6 @@
 	toysay = "I am the law!"
 	toysound = 'sound/runtime/complionator/dredd.ogg'
 
-/obj/item/toy/figure/virologist
-	name = "\improper Virologist action figure"
-	icon_state = "virologist"
-	toysay = "The cure is potassium!"
 
 /obj/item/toy/figure/warden
 	name = "\improper Warden action figure"

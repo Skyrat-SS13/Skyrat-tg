@@ -1,6 +1,6 @@
 #define EMAG_LOCKED_SHUTTLE_COST (CARGO_CRATE_VALUE * 50)
 
-/datum/map_template/shuttle/emergency // SKYRAT EDIT OVERRIDE - OVERRIDEN IN ADVANCED_SHUTTLES - shuttles.dm
+/datum/map_template/shuttle/emergency // SKYRAT EDIT OVERRIDE - OVERRIDDEN IN ADVANCED_SHUTTLES - shuttles.dm
 	port_id = "emergency"
 	name = "Base Shuttle Template (Emergency)"
 	///assoc list of shuttle events to add to this shuttle on spawn (typepath = weight)

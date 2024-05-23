@@ -101,7 +101,7 @@
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
 		balloon_alert(mod.wearer, "on cooldown!")
 		return FALSE
-	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
+	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) // SKYRAT EDIT ADDITION: INACTIVE USE
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
 

@@ -1,6 +1,6 @@
 //THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
 
-/obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "dresser"
 	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
 	icon = 'icons/obj/fluff/general.dmi'

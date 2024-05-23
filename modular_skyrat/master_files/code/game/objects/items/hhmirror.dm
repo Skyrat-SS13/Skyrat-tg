@@ -84,8 +84,6 @@
 			#undef MIN_MCOLOR_VALUE
 
 			human_user.update_body()
-			human_user.update_body_parts()
-			human_user.update_body_parts()
 			human_user.update_mutations_overlay() // no hulk lizard
 
 		if("gender")
