@@ -325,6 +325,8 @@ Difficulty: Hard
 /obj/item/crusher_trophy/wendigo_horn/effect_desc()
 	return "melee hits inflict twice as much damage"
 
+//SKYRAT EDIT START - MOVED TO MODULAR
+/*
 /obj/item/crusher_trophy/wendigo_horn/add_to(obj/item/kinetic_crusher/crusher, mob/living/user)
 	. = ..()
 	if(.)
@@ -334,6 +336,8 @@ Difficulty: Hard
 	. = ..()
 	if(.)
 		crusher.AddComponent(/datum/component/two_handed, force_wielded=20)
+*/
+//SKYRAT EDIT END
 
 /obj/item/wendigo_skull
 	name = "wendigo skull"

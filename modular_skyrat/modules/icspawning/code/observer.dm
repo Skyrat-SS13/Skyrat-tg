@@ -1,4 +1,4 @@
-//SKYRAT MODULE IC-SPAWNING https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
+// SKYRAT MODULE IC-SPAWNING https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
 
 /mob/dead/observer/CtrlClickOn(mob/user)
 	quickicspawn(user)

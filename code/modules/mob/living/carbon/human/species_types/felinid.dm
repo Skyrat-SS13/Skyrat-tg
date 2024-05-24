@@ -260,14 +260,14 @@
 			SPECIES_PERK_NAME = "Hydrophobia",
 			SPECIES_PERK_DESC = "Felinids don't like getting soaked with water.",
 		),
-//Skyrat addition begin
+// SKYRAT EDIT ADDITION START
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "paw",
 			SPECIES_PERK_NAME = "Soft Landing",
 			SPECIES_PERK_DESC = "Felinids are unhurt by high falls, and land on their feet.",
 		),
-//Skyrat addition end
+// SKYRAT EDIT ADDITION END
 	)
 
 	return to_add

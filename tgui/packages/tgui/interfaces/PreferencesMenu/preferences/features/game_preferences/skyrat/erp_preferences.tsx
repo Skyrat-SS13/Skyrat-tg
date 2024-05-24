@@ -35,7 +35,7 @@ export const aphro_pref: FeatureToggle = {
   name: 'Aphrodisiacs',
   category: 'ERP',
   description:
-    'Toggles whether you wish to recieve the effects of aphrodisiacs',
+    'Toggles whether you wish to receive the effects of aphrodisiacs',
   component: CheckboxInput,
 };
 

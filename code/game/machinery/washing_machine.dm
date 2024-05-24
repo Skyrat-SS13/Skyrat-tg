@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 /obj/machinery/washing_machine
 	name = "washing machine"
 	desc = "Gets rid of those pesky bloodstains, or your money back!"
-	icon = 'icons/obj/machines/washing_machine.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/washing_machine.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "wm_1_0"
 	density = TRUE
 	state_open = TRUE

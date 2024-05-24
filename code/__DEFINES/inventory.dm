@@ -168,7 +168,7 @@
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
-// SKYRAT EDIT END
+// SKYRAT EDIT ADDITION END
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)

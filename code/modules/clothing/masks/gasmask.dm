@@ -367,7 +367,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		return FALSE
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
-		// SKYRAT ADDITION - More mask variations
+		// SKYRAT EDIT ADDITION START - More mask variations
 		var/mob/living/carbon/human/human_user = user
 		if(human_user.dna.species.mutant_bodyparts["snout"])
 			icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 			icon = 'icons/obj/clothing/masks.dmi'
 			worn_icon = 'icons/mob/clothing/mask.dmi'
 			icon_state = options[choice]
-		/* SKYRAT ADDITION END
+		/* SKYRAT EDIT ADDITION END
 		icon_state = options[choice]
 		*/
 		user.update_worn_mask()

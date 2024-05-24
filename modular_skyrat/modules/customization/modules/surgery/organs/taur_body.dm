@@ -31,12 +31,12 @@
 	return GLOB.sprite_accessories["taur"]
 
 
-/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, movement_flags)
+/obj/item/organ/external/taur_body/Insert(mob/living/carbon/receiver, special, movement_flags)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodyshapes |= BODYSHAPE_HIDE_SHOES
 
-	old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
-	old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
+	old_right_leg = receiver.get_bodypart(BODY_ZONE_R_LEG)
+	old_left_leg = receiver.get_bodypart(BODY_ZONE_L_LEG)
 	var/obj/item/bodypart/leg/left/taur/new_left_leg
 	var/obj/item/bodypart/leg/right/taur/new_right_leg
 
@@ -50,12 +50,12 @@
 
 
 	new_left_leg.bodyshape |= external_bodyshapes
-	new_left_leg.replace_limb(reciever, TRUE)
+	new_left_leg.replace_limb(receiver, TRUE)
 	if(old_left_leg)
 		old_left_leg.forceMove(src)
 
 	new_right_leg.bodyshape |= external_bodyshapes
-	new_right_leg.replace_limb(reciever, TRUE)
+	new_right_leg.replace_limb(receiver, TRUE)
 	if(old_right_leg)
 		old_right_leg.forceMove(src)
 
