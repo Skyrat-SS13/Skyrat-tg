@@ -80,8 +80,8 @@
 		/mob/living/simple_animal/pet/gondola/virtual_domain,
 		/mob/living/simple_animal/soulscythe,
 
-		//MODULAR SKYRAT ENTRIES
-		//PLEASE REFACTOR THESE AS YOU CAN
+		// MODULAR SKYRAT ENTRIES
+		// PLEASE REFACTOR THESE AS YOU CAN
 		/mob/living/simple_animal/hostile/bigcrab,
 		/mob/living/simple_animal/hostile/blackmesa,
 		/mob/living/simple_animal/hostile/blackmesa/blackops,

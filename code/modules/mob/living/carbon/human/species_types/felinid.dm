@@ -245,7 +245,7 @@
 			SPECIES_PERK_ICON = FA_ICON_PERSON_FALLING,
 			SPECIES_PERK_NAME = "Catlike Grace",
 			SPECIES_PERK_DESC = "Felinids have catlike instincts allowing them to land upright on their feet.  \
-				Instead of being knocked down from falling, you only recieve a short slowdown. \
+				Instead of being knocked down from falling, you only receive a short slowdown. \
 				However, they do not have catlike legs, and the fall will deal additional damage.",
 		),
 		list(
@@ -260,14 +260,14 @@
 			SPECIES_PERK_NAME = "Hydrophobia",
 			SPECIES_PERK_DESC = "Felinids don't like getting soaked with water.",
 		),
-//Skyrat addition begin
+// SKYRAT EDIT ADDITION START
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "paw",
 			SPECIES_PERK_NAME = "Soft Landing",
 			SPECIES_PERK_DESC = "Felinids are unhurt by high falls, and land on their feet.",
 		),
-//Skyrat addition end
+// SKYRAT EDIT ADDITION END
 	)
 
 	return to_add

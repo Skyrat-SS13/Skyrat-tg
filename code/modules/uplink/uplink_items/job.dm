@@ -319,7 +319,7 @@
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 	surplus = 15
 
-/* //SKYRAT REMOVAL START
+/* // SKYRAT EDIT REMOVAL START
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
 	desc = "Crikey mate, it's been a wild travel from the Australicus sector but we've managed to get \
@@ -333,7 +333,7 @@
 	surplus = 10
 
 */
-// SKYRAT EDIT END
+// SKYRAT EDIT REMOVAL END
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"
 	desc = "A highly specialized weapon, the Blast Cannon is actually relatively simple. It contains an attachment for a tank transfer valve mounted to an angled pipe specially constructed \
