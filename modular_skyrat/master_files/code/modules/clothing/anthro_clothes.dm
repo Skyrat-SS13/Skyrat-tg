@@ -9,6 +9,12 @@
 
 /obj/item/clothing/head/wig
 	flags_inv = HIDEHAIR | SHOWSPRITEEARS
+
+/obj/item/clothing/head/helmet
+	flags_inv = HIDEHAIR | SHOWSPRITEEARS
+
+/obj/item/clothing/head/hooded
+	HIDEFACE | HIDEHAIR | HIDEEARS | SHOWSPRITEEARS
 // EARS
 
 // EYES
