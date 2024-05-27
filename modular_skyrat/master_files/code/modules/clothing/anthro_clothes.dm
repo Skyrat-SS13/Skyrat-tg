@@ -14,7 +14,7 @@
 	flags_inv = HIDEHAIR | SHOWSPRITEEARS
 
 /obj/item/clothing/head/hooded
-	HIDEFACE | HIDEHAIR | HIDEEARS | SHOWSPRITEEARS
+	flags_inv = HIDEFACE | HIDEHAIR | HIDEEARS | SHOWSPRITEEARS
 
 // EARS
 
