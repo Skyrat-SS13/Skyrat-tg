@@ -50,19 +50,25 @@
 /datum/bounty/item/mining/watcher_wreath
 	name = "Watcher Wreaths"
 	description = "Station 14's Research Director thinks they're onto a break-through on the cultural icons of some pagan beliefs. Ship them a few watcher wreaths for analysis."
+	include_subtypes = FALSE
 	reward = CARGO_CRATE_VALUE * 15
 	required_count = 3
-	wanted_types = list(/obj/item/clothing/neck/wreath = FALSE)
+	wanted_types = list(/obj/item/clothing/neck/wreath = TRUE)
 
 /datum/bounty/item/mining/icewing_wreath
 	name = "Icewing Wreath"
 	description = "We're getting some....weird messages from Station 14's Research Director. And most of what they said was incoherent. But they apparently want an icewing wreath. Could you send them one?"
 	reward = CARGO_CRATE_VALUE * 30
 	required_count = 1
+<<<<<<< HEAD
 	wanted_types = list(/obj/item/clothing/neck/wreath/icewing = FALSE)
 	
 //SKYRAT EDIT REMOVAL
 /*
+=======
+	wanted_types = list(/obj/item/clothing/neck/wreath/icewing = TRUE)
+
+>>>>>>> 1507792ec18 (Make Watcher Wreath Bounties Completable (#83523))
 /datum/bounty/item/mining/bone_dagger
 	name = "Bone Daggers"
 	description = "Central Command's canteen is undergoing budget cuts. Ship over some bone daggers so our chef can keep working."
