@@ -101,6 +101,93 @@
 		),
 	)
 
+<<<<<<< HEAD
+=======
+#ifdef UNIT_TESTS
+/datum/mod_theme/New()
+	var/list/skin_parts = list()
+	for(var/variant in variants)
+		skin_parts += list(assoc_to_keys(variants[variant]))
+	for(var/skin in skin_parts)
+		for(var/compared_skin in skin_parts)
+			if(skin ~! compared_skin)
+				stack_trace("[type] variants [skin] and [compared_skin] aren't made of the same parts.")
+		skin_parts -= skin
+#endif
+
+/// Create parts of the suit and modify them using the theme's variables.
+/datum/mod_theme/proc/set_up_parts(obj/item/mod/control/mod, skin)
+	var/list/parts = list(mod)
+	mod.slot_flags = slot_flags
+	mod.extended_desc = extended_desc
+	mod.slowdown_inactive = slowdown_inactive
+	mod.slowdown_active = slowdown_active
+	mod.activation_step_time = activation_step_time
+	mod.complexity_max = complexity_max
+	mod.ui_theme = ui_theme
+	mod.charge_drain = charge_drain
+	var/datum/mod_part/control_part_datum = new()
+	control_part_datum.part_item = mod
+	mod.mod_parts["[mod.slot_flags]"] = control_part_datum
+	for(var/path in variants[default_skin])
+		if(!ispath(path))
+			continue
+		var/obj/item/mod_part = new path(mod)
+		if(mod_part.slot_flags == ITEM_SLOT_OCLOTHING && isclothing(mod_part))
+			var/obj/item/clothing/chestplate = mod_part
+			chestplate.allowed |= allowed_suit_storage
+		var/datum/mod_part/part_datum = new()
+		part_datum.part_item = mod_part
+		mod.mod_parts["[mod_part.slot_flags]"] = part_datum
+		parts += mod_part
+	for(var/obj/item/part as anything in parts)
+		part.name = "[name] [part.name]"
+		part.desc = "[part.desc] [desc]"
+		part.set_armor(armor_type)
+		part.resistance_flags = resistance_flags
+		part.flags_1 |= atom_flags //flags like initialization or admin spawning are here, so we cant set, have to add
+		part.heat_protection = NONE
+		part.cold_protection = NONE
+		part.max_heat_protection_temperature = max_heat_protection_temperature
+		part.min_cold_protection_temperature = min_cold_protection_temperature
+		part.siemens_coefficient = siemens_coefficient
+	set_skin(mod, skin || default_skin)
+
+/datum/mod_theme/proc/set_skin(obj/item/mod/control/mod, skin)
+	mod.skin = skin
+	var/list/used_skin = variants[skin]
+	var/list/parts = mod.get_parts()
+	for(var/obj/item/clothing/part as anything in parts)
+		var/list/category = used_skin[part.type]
+		var/datum/mod_part/part_datum = mod.get_part_datum(part)
+		part_datum.unsealed_layer = category[UNSEALED_LAYER]
+		part_datum.sealed_layer = category[SEALED_LAYER]
+		part_datum.unsealed_message = category[UNSEALED_MESSAGE] || "No unseal message set! Tell a coder!"
+		part_datum.sealed_message = category[SEALED_MESSAGE] || "No seal message set! Tell a coder!"
+		part_datum.can_overslot = category[CAN_OVERSLOT] || FALSE
+		part.clothing_flags = category[UNSEALED_CLOTHING] || NONE
+		part.visor_flags = category[SEALED_CLOTHING] || NONE
+		part.flags_inv = category[UNSEALED_INVISIBILITY] || NONE
+		part.visor_flags_inv = category[SEALED_INVISIBILITY] || NONE
+		part.flags_cover = category[UNSEALED_COVER] || NONE
+		part.visor_flags_cover = category[SEALED_COVER] || NONE
+		if(mod.get_part_datum(part).sealed)
+			part.clothing_flags |= part.visor_flags
+			part.flags_inv |= part.visor_flags_inv
+			part.flags_cover |= part.visor_flags_cover
+			part.alternate_worn_layer = part_datum.sealed_layer
+		else
+			part.alternate_worn_layer = part_datum.unsealed_layer
+		if(!part_datum.can_overslot && part_datum.overslotting)
+			var/obj/item/overslot = part_datum.overslotting
+			overslot.forceMove(mod.drop_location())
+	for(var/obj/item/part as anything in parts + mod)
+		part.icon = used_skin[MOD_ICON_OVERRIDE] || 'icons/obj/clothing/modsuit/mod_clothing.dmi'
+		part.worn_icon = used_skin[MOD_WORN_ICON_OVERRIDE] || 'icons/mob/clothing/modsuit/mod_clothing.dmi'
+		part.icon_state = "[skin]-[part.base_icon_state][mod.get_part_datum(part).sealed ? "-sealed" : ""]"
+		mod.wearer?.update_clothing(part.slot_flags)
+
+>>>>>>> 2e3a90293d1 (Dehardcoded modsuit fixes (#83425))
 /datum/armor/mod_theme
 	melee = 10
 	bullet = 5
@@ -438,10 +525,14 @@
 			GAUNTLETS_FLAGS = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
 			BOOTS_FLAGS = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
@@ -1136,10 +1227,14 @@
 			GAUNTLETS_FLAGS = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
 			BOOTS_FLAGS = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
@@ -1272,6 +1367,8 @@
 				UNSEALED_CLOTHING = THICKMATERIAL|CASTING_CLOTHES,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY = HIDEJUMPSUIT,
+				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
 			GAUNTLETS_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
@@ -1791,14 +1888,20 @@
 			CHESTPLATE_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY = HIDEJUMPSUIT,
+				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
 			GAUNTLETS_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
 			BOOTS_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
