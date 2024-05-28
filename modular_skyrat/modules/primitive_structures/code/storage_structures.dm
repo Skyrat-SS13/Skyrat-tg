@@ -82,9 +82,7 @@
 /obj/machinery/smartfridge/wooden/produce_bin
 	name = "produce bin"
 	desc = "A wooden hamper, used to hold plant products and try to keep them safe from pests."
-	icon_state = "producebin"
 	base_build_path = /obj/machinery/smartfridge/wooden/produce_bin
-	base_icon_state = "produce"
 
 /obj/machinery/smartfridge/wooden/produce_bin/accept_check(obj/item/item_to_check)
 	var/static/list/accepted_items = list(
