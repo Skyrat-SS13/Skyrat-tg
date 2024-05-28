@@ -177,7 +177,7 @@
 	icon_state = "detective"
 	inhand_icon_state = "det_hat"
 
-/obj/item/clothing/head/standalone_hood
+/obj/item/clothing/head/hooded/standalone_hood
 	name = "hood"
 	desc = "A hood with a bit of support around the neck so it actually stays in place, for all those times you want a hood without the coat."
 	icon = 'modular_skyrat/modules/GAGS/icons/head/head.dmi'

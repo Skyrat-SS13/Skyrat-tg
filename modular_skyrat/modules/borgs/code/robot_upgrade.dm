@@ -525,6 +525,9 @@
 	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
 	borg.model.basic_modules += tickler
 	borg.model.add_module(tickler, FALSE, TRUE)
+	var/obj/item/clothing/erp_leash/leash = new /obj/item/clothing/erp_leash()
+	borg.model.basic_modules += leash
+	borg.model.add_module(leash, FALSE, TRUE)
 
 /obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
@@ -539,3 +542,5 @@
 		borg.model.remove_module(spanker, TRUE)
 	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
 		borg.model.remove_module(tickler, TRUE)
+	for(var/obj/item/clothing/erp_leash/leash in borg.model.modules)
+		borg.model.remove_module(leash, TRUE)
