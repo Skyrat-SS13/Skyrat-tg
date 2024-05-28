@@ -19,7 +19,7 @@
 				/obj/item/clothing/head/fedora/brown = 5,
 				/obj/item/clothing/head/fedora/beige = 5,
 				/obj/item/clothing/head/fedora/white = 5,
-				/obj/item/clothing/head/standalone_hood = 5,
+				/obj/item/clothing/head/hooded/standalone_hood = 5,
 				/obj/item/clothing/head/small_bow = 5,
 				/obj/item/clothing/head/large_bow = 5,
 				/obj/item/clothing/head/back_bow = 5,
