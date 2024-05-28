@@ -226,6 +226,7 @@
 	///Can toggle?
 	var/can_toggle = TRUE
 
+
 //Standard helmet
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'

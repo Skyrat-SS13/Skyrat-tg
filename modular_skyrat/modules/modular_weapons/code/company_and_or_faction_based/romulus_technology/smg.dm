@@ -34,6 +34,8 @@
 
 	spread = 4
 
+	actions_types = list()
+
 /obj/item/gun/ballistic/automatic/rom_smg/Initialize(mapload)
 	. = ..()
 

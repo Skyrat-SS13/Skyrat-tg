@@ -21,13 +21,15 @@
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
 	burst_size = 1
-	fire_delay = 1.4
+	fire_delay = 1
 
 	spread = 6.5
 	projectile_wound_bonus = -35
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
+
+	actions_types = list()
 
 /obj/item/gun/ballistic/automatic/rom_carbine/Initialize(mapload)
 	. = ..()
