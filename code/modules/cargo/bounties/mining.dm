@@ -60,15 +60,10 @@
 	description = "We're getting some....weird messages from Station 14's Research Director. And most of what they said was incoherent. But they apparently want an icewing wreath. Could you send them one?"
 	reward = CARGO_CRATE_VALUE * 30
 	required_count = 1
-<<<<<<< HEAD
-	wanted_types = list(/obj/item/clothing/neck/wreath/icewing = FALSE)
+	wanted_types = list(/obj/item/clothing/neck/wreath/icewing = TRUE)
 	
 //SKYRAT EDIT REMOVAL
 /*
-=======
-	wanted_types = list(/obj/item/clothing/neck/wreath/icewing = TRUE)
-
->>>>>>> 1507792ec18 (Make Watcher Wreath Bounties Completable (#83523))
 /datum/bounty/item/mining/bone_dagger
 	name = "Bone Daggers"
 	description = "Central Command's canteen is undergoing budget cuts. Ship over some bone daggers so our chef can keep working."
