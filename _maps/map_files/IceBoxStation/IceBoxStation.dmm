@@ -5990,6 +5990,19 @@
 	dir = 5
 	},
 /area/station/maintenance/port/aft)
+"bLa" = (
+/obj/structure/bed,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/spawner/random/bedsheet,
+/obj/machinery/button/door/directional/east{
+	id = "Dorm1";
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
+/obj/item/pillow/random,
+/turf/open/floor/carpet,
+/area/station/commons/dorms)
 "bLc" = (
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 1
@@ -20915,15 +20928,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
-"glu" = (
-/obj/machinery/door/airlock{
-	id_tag = "Dorm1";
-	name = "Dorm 1"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/wood,
-/area/station/commons/dorms)
 "glC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -32410,19 +32414,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
-"jOn" = (
-/obj/structure/bed,
-/obj/machinery/airalarm/directional/north,
-/obj/effect/spawner/random/bedsheet,
-/obj/machinery/button/door/directional/east{
-	id = "Dorm1";
-	name = "Dorm Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
-	},
-/obj/item/pillow/random,
-/turf/open/floor/carpet,
-/area/station/commons/dorms)
 "jOp" = (
 /obj/effect/spawner/random/structure/steam_vent,
 /turf/open/floor/plating,
@@ -49693,6 +49684,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"oTh" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm1";
+	name = "Dorm 1"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/wood,
+/area/station/commons/dorms)
 "oTx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -59624,6 +59624,15 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/security/range)
+"rMi" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "rMm" = (
 /obj/machinery/airalarm/directional/west,
 /turf/open/openspace,
@@ -74298,15 +74307,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/exit/departure_lounge)
-"woX" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/structure/disposalpipe/junction/flip{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/starboard)
 "wpc" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms"
@@ -242580,7 +242580,7 @@ ygB
 mJO
 oCF
 ygB
-jOn
+bLa
 oCF
 ygB
 lBD
@@ -242838,7 +242838,7 @@ ygB
 lOz
 ygB
 ygB
-glu
+oTh
 ygB
 fEZ
 ygB
@@ -248768,7 +248768,7 @@ oNN
 kGD
 kGD
 rbE
-woX
+rMi
 jyp
 hgh
 qit
