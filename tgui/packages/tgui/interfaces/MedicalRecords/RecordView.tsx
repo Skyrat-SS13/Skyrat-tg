@@ -36,7 +36,7 @@ export const MedicalRecordView = (props) => {
 
   const {
     age,
-	chrono_age, // SKYRAT EDIT ADDITION - Chronological age
+    chrono_age, // SKYRAT EDIT ADDITION - Chronological age
     blood_type,
     crew_ref,
     dna,
@@ -110,7 +110,7 @@ export const MedicalRecordView = (props) => {
                 value={age}
               />
             </LabeledList.Item>
-			{/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
+            {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
             <LabeledList.Item label="Chronological Age">
               <RestrictedInput
                 minValue={min_age}
