@@ -44,11 +44,11 @@ export const NtosRecords = (props) => {
                       record.gender +
                       ' ' +
                       record.age +
-					  /* SKYRAT EDIT ADDITION BEGIN - Chronological age */
+                      ' ' +
+                      /* SKYRAT EDIT ADDITION BEGIN - Chronological age */
                       record.chrono_age +
                       ' ' +
                       /* SKYRAT EDIT ADDITION END */
-                      ' ' +
                       record.fingerprint,
                   )
                 )
@@ -65,7 +65,7 @@ export const NtosRecords = (props) => {
               <br />
               Gender: {record.gender}
               <br />
-             {/*  EDIT CHANGE - Chronological age, ORIGINAL: Age: {record.age} */}
+              {/* SKYRAT EDIT CHANGE - Chronological age, ORIGINAL: Age: {record.age} */}
               Physical Age: {record.age}
               {/* SKYRAT EDIT CHANGE END */}
               <br />
@@ -103,7 +103,7 @@ export const NtosRecords = (props) => {
                 {record.name}
               </Box>
               <br />
-			  {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
+              {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
               Physical Age: {record.age}
               <br />
               Chronological Age: {record.chrono_age}
