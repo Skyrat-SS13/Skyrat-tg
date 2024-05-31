@@ -119,6 +119,7 @@
 
 		records += list(list(
 			age = target.age,
+			chrono_age = target.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
 			citations = citations,
 			crew_ref = REF(target),
 			crimes = crimes,
@@ -144,6 +145,7 @@
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
+	data["max_chrono_age"] = AGE_CHRONO_MAX // SKYRAT EDIT ADDITION - Chronological age
 	return data
 
 /obj/machinery/computer/records/security/ui_act(action, list/params, datum/tgui/ui)
