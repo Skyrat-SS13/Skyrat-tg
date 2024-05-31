@@ -53,14 +53,12 @@ const RecordInfo = (props) => {
   const { available_statuses } = data;
   const [open, setOpen] = useLocalState<boolean>('printOpen', false);
 
-   // const { min_age, max_age } = data; // ORIGINAL
+  // const { min_age, max_age } = data; // ORIGINAL
   const { min_age, max_age, max_chrono_age } = data; // SKYRAT EDIT CHANGE - Chronological age
-
-
 
   const {
     age,
-	chrono_age, // SKYRAT EDIT ADDITION - Chronological age
+    chrono_age, // SKYRAT EDIT ADDITION - Chronological age
     crew_ref,
     crimes,
     fingerprint,
@@ -154,7 +152,7 @@ const RecordInfo = (props) => {
             <LabeledList.Item label="Job">
               <EditableText field="rank" target_ref={crew_ref} text={rank} />
             </LabeledList.Item>
-           {/* <LabeledList.Item label="Age"> // ORIGINAL */}
+            {/* <LabeledList.Item label="Age"> // ORIGINAL */}
             {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
             <LabeledList.Item label="Physical Age">
               {/* SKYRAT EDIT CHANGE END */}
@@ -171,7 +169,7 @@ const RecordInfo = (props) => {
                 value={age}
               />
             </LabeledList.Item>
-			{/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
+            {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
             <LabeledList.Item label="Chronological Age">
               <RestrictedInput
                 minValue={min_age}
