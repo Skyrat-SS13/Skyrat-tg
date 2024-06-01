@@ -6999,9 +6999,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/prison/visit)
-"bZr" = (
-/turf/open/genturf,
-/area/icemoon/surface/outdoors/nospawn)
 "bZx" = (
 /turf/open/openspace,
 /area/station/hallway/primary/fore)
@@ -17210,6 +17207,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
+"fdE" = (
+/obj/structure/toilet/greyscale{
+	cistern_open = 1;
+	dir = 1
+	},
+/obj/effect/spawner/random/entertainment/cigar,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/showroomfloor,
+/area/station/security/prison/toilet)
 "fdF" = (
 /obj/structure/closet/secure_closet/chemical,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -21087,14 +21093,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/command/meeting_room)
-"gnR" = (
-/obj/structure/toilet/greyscale{
-	cistern = 1;
-	dir = 1
-	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/iron/showroomfloor,
-/area/station/security/prison/toilet)
 "gnZ" = (
 /obj/structure/marker_beacon/burgundy,
 /obj/effect/mapping_helpers/no_atoms_ontop,
@@ -24694,6 +24692,14 @@
 /obj/effect/landmark/start/depsec/science,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
+"hua" = (
+/obj/structure/toilet/greyscale{
+	cistern_open = 1;
+	dir = 1
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/showroomfloor,
+/area/station/security/prison/toilet)
 "hue" = (
 /obj/structure/chair/comfy/black,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -48028,6 +48034,9 @@
 /obj/item/healthanalyzer,
 /turf/open/floor/iron/white/textured,
 /area/station/security/medical)
+"otC" = (
+/turf/open/genturf,
+/area/icemoon/surface/outdoors/nospawn)
 "otG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/blue{
@@ -54759,15 +54768,6 @@
 /obj/structure/sign/warning/gas_mask,
 /turf/closed/wall/r_wall,
 /area/station/engineering/storage_shared)
-"qrq" = (
-/obj/structure/toilet/greyscale{
-	cistern = 1;
-	dir = 1
-	},
-/obj/effect/spawner/random/entertainment/cigar,
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/iron/showroomfloor,
-/area/station/security/prison/toilet)
 "qrF" = (
 /obj/machinery/duct,
 /obj/effect/turf_decal/tile/blue{
@@ -59848,9 +59848,6 @@
 /obj/effect/mapping_helpers/no_atoms_ontop,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
-"rPD" = (
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
 "rPL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -61490,12 +61487,6 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hfr_room)
-"soY" = (
-/obj/structure/flora/tree/pine/style_random,
-/obj/structure/marker_beacon/cerulean,
-/obj/effect/mapping_helpers/no_atoms_ontop,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
 "spg" = (
 /obj/structure/table,
 /obj/item/storage/box/monkeycubes{
@@ -66444,6 +66435,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
+"tNN" = (
+/obj/structure/flora/tree/pine/style_random,
+/obj/structure/marker_beacon/cerulean,
+/obj/effect/mapping_helpers/no_atoms_ontop,
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
 "tNY" = (
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
@@ -69005,6 +69002,9 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/security/processing)
+"uFg" = (
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
 "uFh" = (
 /turf/open/floor/plating,
 /area/station/construction)
@@ -104559,10 +104559,10 @@ amx
 fXO
 lBR
 nhg
-gnR
+hua
 lBR
 nhg
-qrq
+fdE
 lBR
 kIo
 hap
@@ -266919,7 +266919,7 @@ wNO
 wNO
 wNO
 wNO
-soY
+tNN
 kDs
 kDs
 kDs
@@ -268462,7 +268462,7 @@ wNO
 tkU
 tkU
 tkU
-rPD
+uFg
 hHG
 hHG
 hHG
@@ -272317,7 +272317,7 @@ wNO
 aaX
 wNO
 wNO
-bZr
+otC
 hHG
 hHG
 hHG
