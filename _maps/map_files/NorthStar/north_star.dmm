@@ -4723,21 +4723,6 @@
 	dir = 1
 	},
 /area/station/hallway/floor3/aft)
-"bio" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Medbay Hall"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/general,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id = "med_lockdown";
-	name = "Medbay Lockdown Shutters"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/unres,
-/turf/open/floor/iron/white,
-/area/station/medical/medbay/lobby)
 "bir" = (
 /obj/effect/turf_decal/trimline/purple/warning{
 	dir = 6
@@ -27251,14 +27236,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor4/starboard)
-"hei" = (
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 9
-	},
-/obj/machinery/disposal/bin,
-/turf/open/floor/iron/white,
-/area/station/medical/medbay/central)
 "hem" = (
 /obj/effect/turf_decal/trimline/brown/arrow_ccw{
 	dir = 8
@@ -31368,6 +31345,21 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
+"ihL" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Medbay Hall"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/medical/general,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id = "med_lockdown";
+	name = "Medbay Lockdown Shutters"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/unres,
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/lobby)
 "ihQ" = (
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/iron/smooth,
@@ -50676,6 +50668,14 @@
 	name = "Holodeck Projector Floor"
 	},
 /area/station/holodeck/rec_center)
+"mZS" = (
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/machinery/disposal/bin,
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
 "mZT" = (
 /obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 10
@@ -65697,10 +65697,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
-"qSD" = (
-/obj/item/kirbyplants/organic/plant21,
-/turf/open/floor/wood/parquet,
-/area/station/service/lawoffice)
 "qSJ" = (
 /obj/structure/sign/poster/official/random/directional/east,
 /turf/open/floor/iron/checker,
@@ -81680,6 +81676,10 @@
 /obj/effect/turf_decal/trimline/green/filled/line,
 /turf/open/floor/iron,
 /area/station/commons/vacant_room/commissary)
+"vcn" = (
+/obj/structure/aquarium/lawyer,
+/turf/open/floor/wood/parquet,
+/area/station/service/lawoffice)
 "vcr" = (
 /turf/closed/wall,
 /area/station/maintenance/floor1/port/aft)
@@ -189792,7 +189792,7 @@ feX
 feX
 feX
 qGm
-hei
+mZS
 vKz
 oHs
 vXP
@@ -195186,7 +195186,7 @@ gvp
 gVI
 qtM
 xNd
-bio
+ihL
 hwV
 hYk
 qXX
@@ -195700,7 +195700,7 @@ gvp
 ffh
 lbi
 blH
-bio
+ihL
 hwV
 opE
 opE
@@ -327020,7 +327020,7 @@ vJS
 pNH
 dOK
 pgL
-qSD
+vcn
 dJF
 bVy
 vOE
