@@ -350,7 +350,7 @@
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
 	model_flags = BORG_MODEL_SERVICE
-	var/list/items_to_add = list(
+	items_to_add = list(
 			/obj/item/pen,
 			/obj/item/toy/crayon/spraycan/borg,
 			/obj/item/instrument/guitar,
