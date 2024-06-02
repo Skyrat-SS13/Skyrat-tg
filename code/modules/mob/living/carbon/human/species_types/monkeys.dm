@@ -41,17 +41,7 @@
 	payday_modifier = 1.5
 	ai_controlled_species = TRUE
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/datum/species/monkey/random_name(gender,unique,lastname)
-	return "monkey ([rand(1, 999)])"
-
-/datum/species/monkey/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
-=======
-=======
->>>>>>> 7296d5d50b6 ([MIRROR] Random Name Generation refactor, generate random names based on languages (for species without name lists, like Felinids and Podpeople) (#2314))
 /datum/species/monkey/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
->>>>>>> 0cc5cfb178e (Random Name Generation refactor, generate random names based on languages (for species without name lists, like Felinids and Podpeople) (#83021))
 	. = ..()
 	passtable_on(H, SPECIES_TRAIT)
 	H.dna.add_mutation(/datum/mutation/human/race, MUT_NORMAL)
