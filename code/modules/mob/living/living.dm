@@ -727,7 +727,7 @@
 				return
 	if(pulledby && pulledby.grab_state)
 		to_chat(src, span_warning("You fail to stand up, you're restrained!"))
-	// NOVA EDIT ADDITION END
+	// SKYRAT EDIT ADDITION END
 		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
