@@ -104,4 +104,4 @@
 /obj/item/clothing/mask/hifl/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, type) //closest thing to "facehugger protection" you can have on masks, but jank as FUCK
-	AddComponent(/datum/component/armor_plate, _maxamount = 1, _upgrade_item = /obj/item/stack/sheet/animalhide/ashdrake)
+	AddComponent(/datum/component/armor_plate, maxamount = 1, upgrade_item = /obj/item/stack/sheet/animalhide/ashdrake)
