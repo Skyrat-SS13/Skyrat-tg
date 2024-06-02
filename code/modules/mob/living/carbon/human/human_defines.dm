@@ -14,6 +14,7 @@
 	can_be_shoved_into = TRUE
 	initial_language_holder = /datum/language_holder/empty // We get stuff from our species
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	max_grab = GRAB_KILL
 
 	maxHealth = HUMAN_MAXHEALTH //SKYRAT EDIT ADDITION
 	health = HUMAN_MAXHEALTH //SKYRAT EDIT ADDITION

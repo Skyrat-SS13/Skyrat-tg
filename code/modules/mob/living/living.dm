@@ -289,20 +289,17 @@
 				return
 
 /mob/living/get_photo_description(obj/item/camera/camera)
-	var/list/mob_details = list()
 	var/list/holding = list()
 	var/len = length(held_items)
 	if(len)
-		for(var/obj/item/I in held_items)
+		for(var/obj/item/held_item in held_items)
 			if(!holding.len)
-				holding += "[p_They()] [p_are()] holding \a [I]"
-			else if(held_items.Find(I) == len)
-				holding += ", and \a [I]."
+				holding += "[p_They()] [p_are()] holding \a [held_item]"
+			else if(held_items.Find(held_item) == len)
+				holding += ", and \a [held_item]"
 			else
-				holding += ", \a [I]"
-	holding += "."
-	mob_details += "You can also see [src] on the photo[health < (maxHealth * 0.75) ? ", looking a bit hurt":""][holding ? ". [holding.Join("")]":"."]."
-	return mob_details.Join("")
+				holding += ", \a [held_item]"
+	return "You can also see [src] on the photo[health < (maxHealth * 0.75) ? ", looking a bit hurt":""][holding.len ? ". [holding.Join("")].":"."]"
 
 //Called when we bump onto an obj
 /mob/living/proc/ObjBump(obj/O)
@@ -2221,6 +2218,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			to_chat(src, span_warning("You can't see through the floor above you."))
 			return
 
+	looking_vertically = TRUE
 	reset_perspective(ceiling)
 
 /mob/living/proc/stop_look_up()
@@ -2229,6 +2227,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 /mob/living/proc/end_look_up()
 	stop_look_up()
+	looking_vertically = FALSE
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -2271,6 +2270,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			to_chat(src, span_warning("You can't see through the floor below you."))
 			return
 
+	looking_vertically = TRUE
 	reset_perspective(lower_level)
 
 /mob/living/proc/stop_look_down()
@@ -2279,6 +2279,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 /mob/living/proc/end_look_down()
 	stop_look_down()
+	looking_vertically = FALSE
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -2776,7 +2777,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	set name = "Look Up"
 	set category = "IC"
 
-	if(client.perspective != MOB_PERSPECTIVE)
+	if(looking_vertically)
 		end_look_up()
 	else
 		look_up()
@@ -2785,7 +2786,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	set name = "Look Down"
 	set category = "IC"
 
-	if(client.perspective != MOB_PERSPECTIVE)
+	if(looking_vertically)
 		end_look_down()
 	else
 		look_down()
