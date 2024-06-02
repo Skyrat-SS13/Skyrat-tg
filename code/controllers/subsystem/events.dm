@@ -67,10 +67,6 @@ SUBSYSTEM_DEF(events)
 /datum/controller/subsystem/events/proc/reschedule()
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
-<<<<<<< HEAD
-//selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) //SKYRAT EDIT CHANGE
-=======
 /**
  * Selects a random event based on whether it can occur and it's 'weight'(probability)
  *
@@ -78,7 +74,6 @@ SUBSYSTEM_DEF(events)
  * * excluded_event - The event path we will be foregoing, if present.
  */
 /datum/controller/subsystem/events/proc/spawnEvent(datum/round_event_control/excluded_event)
->>>>>>> 39b84e7e2c5 (Admins can reroll random events into something else (#83424))
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
@@ -93,10 +88,6 @@ SUBSYSTEM_DEF(events)
 			continue
 		if(!event_to_check.can_spawn_event(players_amt))
 			continue
-		//SKYRAT EDIT ADDITION
-		if(threat_override && !event_to_check.alert_observers)
-			continue
-		//SKYRAT EDIT END
 		if(event_to_check.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(event_to_check)
 			if(res == EVENT_INTERRUPTED)

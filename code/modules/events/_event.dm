@@ -1,4 +1,4 @@
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (3 MINUTES) //SKYRAT EDIT CHANGE
+#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (3 MINUTES) // SKYRAT EDIT CHANGE - ORIGINAL: #define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
 
 //this singleton datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
@@ -102,43 +102,30 @@
 	triggering = TRUE
 
 	// We sleep HERE, in pre-event setup (because there's no sense doing it in run_event() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
-	// SKYRAT EDIT REMOVAL BEGIN - Event notification
-	/**
 	if(alert_observers)
-<<<<<<< HEAD
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
-=======
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>) (<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a>)")
->>>>>>> 39b84e7e2c5 (Admins can reroll random events into something else (#83424))
+				// message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>) (<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a>)") // SKYRAT EDIT REMOVAL
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!can_spawn_event(players_amt))
 			message_admins("Second pre-condition check for [name] failed, rerolling...")
 			SSevents.spawnEvent(excluded_event = src)
 			return EVENT_INTERRUPTED
-	*/
-	// SKYRAT EDIT REMOVAL END - Event notification
 
-	// SKYRAT EDIT ADDITION BEGIN - Event notification
-	message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (\
-		<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
-		<a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)</font>")
-	for(var/client/staff as anything in GLOB.admins)
-		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
-			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
-	sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
-
-	if(triggering)
-		message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [name]. (\
-		<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
-		<a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)</font>")
+	// SKYRAT EDIT ADDITION BEGIN - Event notification Makes an attention-grabbing sound, gives admins two notifications spread over RANDOM_EVENT_ADMIN_INTERVENTION_TIME instead of just the one.
+		message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (\
+			<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
+			<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a></font>")
+		for(var/client/staff as anything in GLOB.admins)
+			if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
+				SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
-	// SKYRAT EDIT ADDITION END - Event notification
 
-	if(!triggering)
-		return EVENT_CANCELLED //admin cancelled
-	triggering = FALSE
-	return EVENT_READY
+		if(triggering)
+			message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [name]. (\
+			<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
+			<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a></font>")
+			sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
+	// SKYRAT EDIT ADDITION END - Event notification
 
 /datum/round_event_control/Topic(href, href_list)
 	..()
@@ -150,18 +137,6 @@
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN
-	if(href_list["something_else"])
-		if(!triggering)
-			to_chat(usr, span_admin("Too late! The event is running."))
-			return
-		triggering = FALSE
-		SSevents.spawnEvent(TRUE)
-		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
-		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
-	//SKYRAT EDIT ADDITION END
-=======
 	if(href_list["different_event"])
 		if(!triggering)
 			to_chat(usr, span_admin("Too late to change events now!"))
@@ -171,7 +146,6 @@
 		log_admin_private("[key_name(usr)] rerolled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_rerolled", 1, typepath)
 		SSevents.spawnEvent(excluded_event = src)
->>>>>>> 39b84e7e2c5 (Admins can reroll random events into something else (#83424))
 
 /*
 Runs the event
