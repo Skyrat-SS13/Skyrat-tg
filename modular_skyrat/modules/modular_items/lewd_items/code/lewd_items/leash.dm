@@ -21,7 +21,7 @@
 /// HERE BE DRAGONS ///
 
 /// Checks; leashing start
-/obj/item/clothing/erp_leash/attack(mob/living/carbon/human/to_be_leashed, mob/living/user, params)
+/obj/item/clothing/erp_leash/attack(mob/living/to_be_leashed, mob/living/user, params)
 	var/datum/component/leash/erp/the_leash_component = our_leash_component?.resolve()
 	if(the_leash_component)
 		if(the_leash_component.parent == to_be_leashed) // We're hooked to them; and we have a component. Get 'em out!
@@ -30,7 +30,11 @@
 	else
 		our_leash_component = null
 	/// Check if we even CAN leash someone / if someone is leashing themselves. If so; prevent it.
-	if(!istype(to_be_leashed) || user == to_be_leashed)
+	if(user == to_be_leashed)
+		return
+	if(!istype(to_be_leashed,/mob/living/carbon/human) && !istype(to_be_leashed,/mob/living/silicon/robot))
+		return
+	if(!istype(user,/mob/living/carbon/human) && !istype(user,/mob/living/silicon/robot))
 		return
 	/// Check their ERP prefs; if they don't allow sextoys: BTFO
 	if(!to_be_leashed.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
