@@ -565,10 +565,10 @@
 		to_chat(usr, span_warning("This unit already has an expand module installed!"))
 		return FALSE
 	// SKYRAT EDIT BEGIN
-	if(robot.model.model_select_icon == "nomod")
+	if(borg.model.model_select_icon == "nomod")
 		to_chat(usr, span_warning("Default models cannot take expand or shrink upgrades."))
 		return FALSE
-	if((TRAIT_R_WIDE in robot.model.model_features) || (TRAIT_R_TALL in robot.model.model_features))
+	if((TRAIT_R_WIDE in borg.model.model_features) || (TRAIT_R_TALL in borg.model.model_features))
 		to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
 		return FALSE
 	// SKYRAT EDIT END
