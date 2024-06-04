@@ -1,4 +1,4 @@
-/mob/living/simple_animal/pet/poppy
+/mob/living/basic/pet/poppy
 	name = "Poppy the Safety Inspector"
 	desc = "Safety first!"
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
@@ -9,19 +9,13 @@
 	unique_pet = TRUE
 	maxHealth = 30
 	health = 30
-	speak = list("Hiss!", "HISS!", "Hissss?")
 	speak_emote = list("hisses")
-	emote_hear = list("hisses.")
-	emote_see = list("runs in a circle.", "shakes.")
-	speak_chance = 2
-	turns_per_move = 3
 	/// Is the inspection currently being passed?
 	var/safety_inspection = TRUE
 	/// Are they scared already?
 	var/upset = FALSE
 	/// Are they near the supermatter?
 	var/near_engine = FALSE
-	animal_species = /mob/living/simple_animal/pet/poppy
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -40,7 +34,26 @@
 	light_power = 0.8
 	light_on = TRUE
 
-/mob/living/simple_animal/pet/poppy/Initialize(mapload)
+/datum/ai_controller/basic_controller/poppy
+	blackboard = list(
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+	)
+
+	ai_traits = STOP_MOVING_WHEN_PULLED
+	ai_movement = /datum/ai_movement/basic_avoidance
+	idle_behavior = /datum/idle_behavior/idle_random_walk
+
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/random_speech/poppy,
+	)
+
+/datum/ai_planning_subtree/random_speech/poppy
+	speak = list("Hiss!", "HISS!", "Hissss?")
+	emote_hear = list("hisses.")
+	emote_see = list("runs in a circle.", "shakes.")
+	speech_chance = 1
+
+/mob/living/basic/pet/poppy/Initialize(mapload)
 	. = ..()
 	add_verb(src, /mob/living/proc/toggle_resting)
 	become_area_sensitive(INNATE_TRAIT)
@@ -54,7 +67,7 @@
 	var/image/cone = lighting_object.cone
 	cone.transform = cone.transform.Translate(0, -16) // adjust the little headlamp
 
-/mob/living/simple_animal/pet/poppy/death()
+/mob/living/basic/pet/poppy/death()
 	lose_area_sensitivity(INNATE_TRAIT)
 	set_light_on(FALSE)
 
@@ -66,12 +79,12 @@
 			// It's just flavor, no tangible punishment
 	return ..()
 
-/mob/living/simple_animal/pet/poppy/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
+/mob/living/basic/pet/poppy/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
 	become_area_sensitive(INNATE_TRAIT)
 	set_light_on(TRUE)
 	..()
 
-/mob/living/simple_animal/pet/poppy/update_resting()
+/mob/living/basic/pet/poppy/update_resting()
 	. = ..()
 	if(resting)
 		icon_state = "[icon_living]_rest"
@@ -81,7 +94,7 @@
 		set_light_on(TRUE)
 	regenerate_icons()
 
-/mob/living/simple_animal/pet/poppy/Life(seconds_per_tick = SSMOBS_DT, times_fired)
+/mob/living/basic/pet/poppy/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(client || stat)
 		return
 
@@ -104,14 +117,14 @@
 
 	return ..()
 
-/mob/living/simple_animal/pet/poppy/proc/check_area()
+/mob/living/basic/pet/poppy/proc/check_area()
 	SIGNAL_HANDLER
 	if(safety_inspection && !upset)
 		var/list/sm_room = get_area_turfs(/area/station/engineering/supermatter/room)
 		if(src.loc in sm_room)
 			near_engine = TRUE
 
-/mob/living/simple_animal/pet/poppy/proc/panic()
+/mob/living/basic/pet/poppy/proc/panic()
 	upset = TRUE
 	icon_state = "poppypossum_aaa"
 
@@ -126,6 +139,6 @@
 	)
 	addtimer(CALLBACK(src, PROC_REF(calm_down)), 60 SECONDS)
 
-/mob/living/simple_animal/pet/poppy/proc/calm_down()
+/mob/living/basic/pet/poppy/proc/calm_down()
 	upset = FALSE
 	icon_state = initial(icon_state)
