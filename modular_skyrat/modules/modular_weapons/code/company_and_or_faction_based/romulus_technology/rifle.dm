@@ -23,7 +23,7 @@
 	burst_size = 1
 	fire_delay = 5
 
-	spread = 6.5
+	spread = 7
 	projectile_wound_bonus = -35
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle

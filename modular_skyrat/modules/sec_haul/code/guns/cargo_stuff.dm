@@ -1,6 +1,6 @@
 //SKYRAT AND SOL AMMO
 
-/datum/supply_pack/security/armory/lethalsolpistols
+/datum/supply_pack/security/lethalsolpistols
 	name = ".35 Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for Sol .35 Pistol."
 	cost = CARGO_CRATE_VALUE * 3
@@ -9,7 +9,7 @@
 				)
 	crate_name = ".35 ammo crate"
 
-/datum/supply_pack/security/armory/lethalsolrifles
+/datum/supply_pack/security/lethalsolrifles
 	name = ".40 Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for Sol .40 Rifle."
 	cost = CARGO_CRATE_VALUE * 5
@@ -19,7 +19,7 @@
 				)
 	crate_name = ".40 ammo crate"
 
-/datum/supply_pack/security/armory/lethalskyratshotgun
+/datum/supply_pack/security/lethalskyratshotgun
 	name = "12 Gauge Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for all 12 Gauge Shotguns."
 	cost = CARGO_CRATE_VALUE * 3
@@ -30,14 +30,14 @@
 
 /datum/supply_pack/security/armory/exoticskyratammo
 	name = "12 Gauge Exotic Ammunition Crates"
-	desc = "Contains 5 boxes of exotic ammunition for all 12 Gauge Shotguns."
-	cost = CARGO_CRATE_VALUE * 12
+	desc = "Contains 6 boxes of exotic ammunition for all 12 Gauge Shotguns."
+	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/incendiary= 1,
 					/obj/item/ammo_box/advanced/s12gauge/flechette = 1,
 					/obj/item/ammo_box/advanced/s12gauge/express = 1,
 					/obj/item/ammo_box/advanced/s12gauge/magnum = 1,
 					/obj/item/ammo_box/advanced/s12gauge/flechette = 1,
-
+					/obj/item/ammo_box/advanced/s12gauge/antitide = 1,
 				)
 	crate_name = "exotic shotgun ammo crate"
 	contraband = TRUE
@@ -45,11 +45,10 @@
 /datum/supply_pack/security/antiriotskyratshotgunammo
 	name = "12 Gauge Anti Riot Ammunition Crates"
 	desc = "Contains 6 boxes of anti riot grade ammunition for all 12 Gauge Shotguns."
-	cost = CARGO_CRATE_VALUE * 4
+	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 2,
 					/obj/item/ammo_box/advanced/s12gauge/beehive = 2,
-					/obj/item/ammo_box/advanced/s12gauge/antitide = 2,
-
+					/obj/item/ammo_box/advanced/s12gauge/rubber = 2,
 				)
 	crate_name = "anti riot shotgun ammo crate"
 
