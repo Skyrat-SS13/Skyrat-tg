@@ -69,6 +69,8 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	/// Stores only the bra names for female-compatible bras.
 	var/list/bra_f
 
+	/// Shroom caps.
+	var/list/caps_list
 	/// Stores moth wings, both open and closed
 	var/list/moth_wings_list
 	/// Monkey tail list
@@ -138,6 +140,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, add_blank = TRUE)[DEFAULT_SPRITE_LIST] // SKYRAT EDIT ADDITION - We don't want monkeys getting randomized non-monkey tails
 	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, add_blank = TRUE)[DEFAULT_SPRITE_LIST] // SKYRAT EDIT - Customization - ORIGINAL: init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
+	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps)[DEFAULT_SPRITE_LIST]
 	//SKYRAT EDIT ADDITION BEGIN
 	//Scream types
 	SSaccessories.scream_types = list()
