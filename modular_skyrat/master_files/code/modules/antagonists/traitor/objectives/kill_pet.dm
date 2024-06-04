@@ -16,7 +16,7 @@
 		// Non-heads like the warden, these are automatically medium-risk at minimum
 		// They are also the only two modular additions so far
 		JOB_ROBOTICIST = /mob/living/basic/pet/dog/corgi/borgi,
-		JOB_STATION_ENGINEER = /mob/living/simple_animal/pet/poppy,
+		JOB_STATION_ENGINEER = /mob/living/basic/pet/poppy,
 	)
 
 	// This variable is for the emag E-N objective. The obj details are below the next block
@@ -29,7 +29,7 @@
 		return FALSE
 
 	// Dust Poppy the safety inspector
-	if(istype(target_pet, /mob/living/simple_animal/pet/poppy))
+	if(istype(target_pet, /mob/living/basic/pet/poppy))
 		name = "Dust the engineering department's esteemed safety inspector and beloved pet, Poppy"
 		description = "A couple of troublemakers in the engineering department have spilled the milk, make them and their colleagues pay for the consequences by throwing Poppy the Safety Inspector into the supermatter engine "
 		telecrystal_reward = 4

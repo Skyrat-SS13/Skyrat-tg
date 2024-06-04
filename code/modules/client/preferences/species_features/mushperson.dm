@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /datum/preference/choiced/mushroom_cap
 	savefile_key = "feature_mushperson_cap"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -5,7 +6,8 @@
 	relevant_mutant_bodypart = "cap"
 
 /datum/preference/choiced/mushroom_cap/init_possible_values()
-	return assoc_to_keys_features(SSaccessories.caps_list)
+	return assoc_to_keys_features(GLOB.caps_list)
 
 /datum/preference/choiced/mushroom_cap/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["caps"] = value
+*/

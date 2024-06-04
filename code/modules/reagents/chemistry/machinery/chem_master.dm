@@ -92,7 +92,7 @@
 
 /obj/machinery/chem_master/update_appearance(updates)
 	. = ..()
-	if(panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(panel_open || !is_operational)
 		set_light(0)
 	else
 		set_light(1, 1, "#fffb00")
@@ -112,7 +112,7 @@
 		. += mutable_appearance(icon, base_icon_state + "_overlay_extruder")
 
 	// Screen overlay
-	if(!panel_open && !(machine_stat & (NOPOWER | BROKEN)))
+	if(!panel_open && is_operational)
 		var/screen_overlay = base_icon_state + "_overlay_screen"
 		if(is_printing)
 			screen_overlay += "_active"
@@ -123,15 +123,9 @@
 
 	// Buffer reagents overlay
 	if(reagents.total_volume)
-		var/threshold = null
 		var/static/list/fill_icon_thresholds = list(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
-		for(var/i in 1 to fill_icon_thresholds.len)
-			if(ROUND_UP(100 * (reagents.total_volume / reagents.maximum_volume)) >= fill_icon_thresholds[i])
-				threshold = i
-		if(threshold)
-			var/fill_name = "chemmaster[fill_icon_thresholds[threshold]]"
-			var/mutable_appearance/filling = mutable_appearance('icons/obj/medical/reagent_fillings.dmi', fill_name)
-			filling.color = mix_color_from_reagents(reagents.reagent_list)
+		var/mutable_appearance/filling = reagent_threshold_overlay(reagents, 'icons/obj/medical/reagent_fillings.dmi', "chemmaster", fill_icon_thresholds)
+		if(!isnull(filling))
 			. += filling
 
 
@@ -174,6 +168,8 @@
 			CAT_TUBES = GLOB.reagent_containers[CAT_TUBES],
 			CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
 			CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
+			CAT_HYPOS = GLOB.reagent_containers[CAT_HYPOS], // SKYRAT EDIT
+			CAT_DARTS = GLOB.reagent_containers[CAT_DARTS], // SKYRAT EDIT
 		)
 	return containers
 
@@ -488,6 +484,10 @@
 				item_name_default = "[master_reagent.name] [item_name_default]"
 			if(!(initial(selected_container.reagent_flags) & OPENCONTAINER)) // Closed containers get both reagent name and units in the name
 				item_name_default = "[master_reagent.name] [item_name_default] ([volume_in_each]u)"
+			// SKYRAT EDIT ADDITION START - Autonamed hyposprays/smartdarts
+			if(ispath(selected_container, /obj/item/reagent_containers/cup/vial) || ispath(selected_container, /obj/item/reagent_containers/syringe/smartdart))
+				item_name_default = "[master_reagent.name] [item_name_default]"
+			// SKYRAT EDIT ADDITION END
 			var/item_name = tgui_input_text(usr,
 				"Container name",
 				"Name",

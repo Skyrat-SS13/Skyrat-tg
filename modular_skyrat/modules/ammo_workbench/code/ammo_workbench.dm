@@ -68,7 +68,7 @@
 /obj/machinery/ammo_workbench/Initialize(mapload)
 	AddComponent( \
 		/datum/component/material_container, \
-		DSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
+		SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
 		200000, \
 		MATCONTAINER_EXAMINE, \
 		allowed_items = /obj/item/stack, \

@@ -5,6 +5,6 @@ export const ticket_ping_pref: FeatureToggle = {
   name: 'Ticket ping',
   category: 'ADMIN',
   description:
-    'When enabled, you will recieve regular pings from unhandled tickets.',
+    'When enabled, you will receive regular pings from unhandled tickets.',
   component: CheckboxInput,
 };

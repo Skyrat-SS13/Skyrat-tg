@@ -350,7 +350,7 @@
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
 	model_flags = BORG_MODEL_SERVICE
-	var/list/items_to_add = list(
+	items_to_add = list(
 			/obj/item/pen,
 			/obj/item/toy/crayon/spraycan/borg,
 			/obj/item/instrument/guitar,
@@ -380,6 +380,54 @@
 		var/obj/item/module_item = locate(item_to_add) in install.model.modules
 		if (module_item)
 			install.model.remove_module(module_item, TRUE)
+
+/datum/design/borg_upgrade_botany
+	name = "Botanical Operator Module"
+	id = "borg_upgrade_botany"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/botany
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
+	construction_time = 10 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
+	)
+
+/obj/item/borg/upgrade/botany
+	name = "botanical operator upgrade"
+	desc = "Provides an assortement of tools for dealing with plants."
+	icon_state = "cyborg_upgrade2"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/service)
+	model_flags = BORG_MODEL_SERVICE
+
+	var/static/list/added_stuff = list(
+		/obj/item/secateurs,
+		/obj/item/cultivator,
+		/obj/item/shovel/spade,
+		/obj/item/plant_analyzer,
+		/obj/item/storage/bag/plants
+	)
+
+/obj/item/borg/upgrade/botany/action(mob/living/silicon/robot/R)
+	. = ..()
+	if(!.)
+		return
+
+	for(var/type in added_stuff)
+		var/obj/item/added_item = new type(R.model)
+		R.model.basic_modules += added_item
+		R.model.add_module(added_item, FALSE, TRUE)
+
+/obj/item/borg/upgrade/botany/deactivate(mob/living/silicon/robot/R)
+	. = ..()
+	if(!.)
+		return
+
+	for(var/obj/item/module as anything in R.model.modules)
+		if(!(module.type in added_stuff))
+			continue
+
+		R.model.remove_module(module, TRUE)
 
 /*
 *	UNIVERSAL CYBORG UPGRADES
@@ -525,6 +573,9 @@
 	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
 	borg.model.basic_modules += tickler
 	borg.model.add_module(tickler, FALSE, TRUE)
+	var/obj/item/clothing/erp_leash/leash = new /obj/item/clothing/erp_leash()
+	borg.model.basic_modules += leash
+	borg.model.add_module(leash, FALSE, TRUE)
 
 /obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
@@ -539,3 +590,5 @@
 		borg.model.remove_module(spanker, TRUE)
 	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
 		borg.model.remove_module(tickler, TRUE)
+	for(var/obj/item/clothing/erp_leash/leash in borg.model.modules)
+		borg.model.remove_module(leash, TRUE)

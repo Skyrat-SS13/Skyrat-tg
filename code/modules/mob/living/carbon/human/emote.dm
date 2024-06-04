@@ -110,7 +110,7 @@
 	message_mime = "mumbles silently!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
-
+/* - SKYRAT EDIT REMOVAL: EMOTES
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
@@ -120,7 +120,7 @@
 	only_forced_audio = TRUE
 	vary = TRUE
 
-/* - SKYRAT EDIT REMOVAL: EMOTES
+
 /datum/emote/carbon/human/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
 	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
 		return

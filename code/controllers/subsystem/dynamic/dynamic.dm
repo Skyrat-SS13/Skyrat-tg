@@ -19,6 +19,8 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 GLOBAL_LIST_EMPTY(dynamic_station_traits)
 /// Rulesets which have been forcibly enabled or disabled
 GLOBAL_LIST_EMPTY(dynamic_forced_rulesets)
+/// Bitflags used during init by Dynamic to determine which rulesets we're allowed to use, used by station traits for gamemode-esque experiences
+GLOBAL_VAR_INIT(dynamic_ruleset_categories, RULESET_CATEGORY_DEFAULT)
 
 SUBSYSTEM_DEF(dynamic)
 	name = "Dynamic"
@@ -317,7 +319,7 @@ SUBSYSTEM_DEF(dynamic)
 		SSticker.news_report = SSshuttle.emergency?.is_hijacked() ? SHUTTLE_HIJACK : STATION_EVACUATED
 
 /datum/controller/subsystem/dynamic/proc/send_intercept()
-	if(DScommunications.block_command_report) //If we don't want the report to be printed just yet, we put it off until it's ready
+	if(GLOB.communications_controller.block_command_report) //If we don't want the report to be printed just yet, we put it off until it's ready
 		addtimer(CALLBACK(src, PROC_REF(send_intercept)), 10 SECONDS)
 		return
 
@@ -349,10 +351,10 @@ SUBSYSTEM_DEF(dynamic)
 	if(trait_list_strings.len > 0)
 		. += "<hr><b>Identified shift divergencies:</b><BR>" + trait_list_strings.Join()
 
-	if(length(DScommunications.command_report_footnotes))
+	if(length(GLOB.communications_controller.command_report_footnotes))
 		var/footnote_pile = ""
 
-		for(var/datum/command_footnote/footnote in DScommunications.command_report_footnotes)
+		for(var/datum/command_footnote/footnote in GLOB.communications_controller.command_report_footnotes)
 			footnote_pile += "[footnote.message]<BR>"
 			footnote_pile += "<i>[footnote.signature]</i><BR>"
 			footnote_pile += "<BR>"
@@ -646,7 +648,6 @@ SUBSYSTEM_DEF(dynamic)
 	log_admin(concatenated_message)
 	to_chat(GLOB.admins, concatenated_message)
 
-
 /// Initializes the internal ruleset variables
 /datum/controller/subsystem/dynamic/proc/setup_rulesets()
 	midround_rules = init_rulesets(/datum/dynamic_ruleset/midround)
@@ -662,6 +663,9 @@ SUBSYSTEM_DEF(dynamic)
 			continue
 
 		if (initial(ruleset_type.weight) == 0)
+			continue
+
+		if(!(initial(ruleset_type.ruleset_category) & GLOB.dynamic_ruleset_categories))
 			continue
 
 		var/ruleset = new ruleset_type

@@ -100,12 +100,7 @@
 /obj/item/radio/intercom/directional/north{
 	pixel_y = 32
 	},
-/obj/structure/table/wood,
-/obj/machinery/fax{
-	fax_name = "Law Office";
-	name = "Law Office Fax Machine";
-	pixel_y = 3
-	},
+/obj/structure/aquarium/lawyer,
 /turf/open/floor/iron/grimy,
 /area/station/service/lawoffice)
 "abP" = (
@@ -22266,7 +22261,6 @@
 /obj/effect/turf_decal/trimline/dark_green/filled/warning{
 	dir = 8
 	},
-/obj/effect/landmark/start/virologist,
 /obj/machinery/duct,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white/smooth_edge{
@@ -30621,6 +30615,7 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/cargo/miningdock)
 "iNk" = (
@@ -33731,14 +33726,10 @@
 "jEy" = (
 /obj/structure/table/wood,
 /obj/machinery/status_display/ai/directional/north,
-/obj/item/paper_bin{
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/sunglasses/big{
-	pixel_y = -11
+/obj/machinery/fax{
+	fax_name = "Law Office";
+	name = "Law Office Fax Machine";
+	pixel_y = 3
 	},
 /turf/open/floor/iron/grimy,
 /area/station/service/lawoffice)
@@ -37439,7 +37430,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/duct,
-/obj/effect/landmark/start/virologist,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -38867,7 +38857,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/event_spawn,
-/mob/living/simple_animal/pet/gondola/funky,
+/mob/living/basic/pet/gondola/funky,
 /turf/open/floor/iron/herringbone,
 /area/station/service/theater)
 "kYC" = (
@@ -44554,6 +44544,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/disposal/incinerator)
 "mCK" = (
+/obj/vehicle/sealed/mecha/ripley/paddy/preset,
 /turf/open/floor/iron/recharge_floor,
 /area/station/security/office)
 "mCM" = (
@@ -49091,7 +49082,6 @@
 /area/station/commons/lounge)
 "nPC" = (
 /obj/structure/cable,
-/obj/effect/landmark/start/virologist,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -49987,6 +49977,14 @@
 /obj/item/taperecorder{
 	pixel_x = 7;
 	pixel_y = 14
+	},
+/obj/item/paper_bin{
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/obj/item/pen{
+	pixel_y = 2;
+	pixel_x = 6
 	},
 /obj/item/flashlight/lamp{
 	pixel_x = -5;
@@ -58497,7 +58495,7 @@
 	name = "Poppy's bed"
 	},
 /obj/machinery/firealarm/directional/south,
-/mob/living/simple_animal/pet/poppy,
+/mob/living/basic/pet/poppy,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/lobby)
@@ -64903,7 +64901,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/effect/landmark/start/virologist,
 /turf/open/floor/iron/dark,
 /area/station/medical/break_room)
 "sfG" = (
@@ -65645,7 +65642,6 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark/start/virologist,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/virology)
 "sqD" = (
@@ -85601,6 +85597,9 @@
 /obj/item/stamp/law,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/item/clothing/glasses/sunglasses/big{
+	pixel_y = 12
 	},
 /turf/open/floor/iron/grimy,
 /area/station/service/lawoffice)

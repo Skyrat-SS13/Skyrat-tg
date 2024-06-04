@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL START
 /datum/preference/choiced/monkey_tail
 	savefile_key = "feature_monkey_tail"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -13,3 +14,4 @@
 /datum/preference/choiced/monkey_tail/create_default_value()
 	var/datum/sprite_accessory/tails/monkey/default/tail = /datum/sprite_accessory/tails/monkey/default
 	return initial(tail.name)
+*/ // SKYRAT EDIT REMOVAL END

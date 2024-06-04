@@ -20,6 +20,7 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	ai_controller = /datum/ai_controller/basic_controller/giant_spider
 	bite_injection_flags = INJECT_CHECK_PENETRATE_THICK
+	max_grab = GRAB_AGGRESSIVE
 	/// Actions to grant on Initialize
 	var/list/innate_actions = null
 
@@ -111,6 +112,7 @@
 
 /mob/living/basic/spider/giant/hunter/mold //skyrat edit: exists to make molds not spam the world with simple mobs
 	basic_mob_flags = DEL_ON_DEATH
+	habitable_atmos = null
 	
 ///Used in the caves away mission.
 /mob/living/basic/spider/giant/hunter/away_caves

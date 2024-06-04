@@ -22,9 +22,7 @@
 	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
 	init_species_list()
 	init_keybindings()
-
 	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
-
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	init_crafting_recipes()
 	init_crafting_recipes_atoms()
@@ -35,7 +33,7 @@
 		if(ispath(path, /datum/crafting_recipe/stack))
 			continue
 		var/datum/crafting_recipe/recipe = new path()
-		var/is_cooking = ((recipe.category in GLOB.crafting_category_food) || (recipe.category in GLOB.crafting_category_food_skyrat)) // SKYRAT EDIT - Add skyrat food crafting category
+		var/is_cooking = ((recipe.category in GLOB.crafting_category_food) || (recipe.category in GLOB.crafting_category_food_skyrat)) // SKYRAT EDIT CHANGE - ORIGINAL: var/is_cooking = (recipe.category in GLOB.crafting_category_food)
 		recipe.reqs = sort_list(recipe.reqs, GLOBAL_PROC_REF(cmp_crafting_req_priority))
 		if(recipe.name != "" && recipe.result)
 			if(is_cooking)
@@ -101,8 +99,8 @@
 					GLOB.crafting_recipes += recipe
 
 	var/list/material_stack_recipes = list(
-		DSmaterials.base_stack_recipes,
-		DSmaterials.rigid_stack_recipes,
+		SSmaterials.base_stack_recipes,
+		SSmaterials.rigid_stack_recipes,
 	)
 
 	for(var/list/recipe_list in material_stack_recipes)
