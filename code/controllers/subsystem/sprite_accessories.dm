@@ -34,6 +34,8 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	//Socks
 	var/list/socks_list //! stores /datum/sprite_accessory/socks indexed by name
 
+	//SKYRAT EDIT REMOVAL - CUSTOMIZATION
+	/*
 	//Lizard Bits (all datum lists indexed by name)
 	var/list/body_markings_list
 	var/list/snouts_list
@@ -54,6 +56,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/moth_antennae_list
 	var/list/moth_markings_list
 	var/list/caps_list
+	*/
 	var/list/pod_hair_list
 
 	// SKYRAT EDIT BEGIN
@@ -65,6 +68,13 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/bra_m
 	/// Stores only the bra names for female-compatible bras.
 	var/list/bra_f
+
+	/// Stores moth wings, both open and closed
+	var/list/moth_wings_list
+	/// Monkey tail list
+	var/list/tails_list_monkey
+	/// All the different scream types
+	var/list/scream_types
 	//SKYRAT EDIT END
 
 /datum/controller/subsystem/accessories/PreInit() // this stuff NEEDS to be set up before GLOB for preferences and stuff to work so this must go here. sorry
@@ -98,6 +108,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
+	/* //SKYRAT EDIT REMOVAL - CUSTOMIZATION
 	body_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings)[DEFAULT_SPRITE_LIST]
 	tails_list_human = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
@@ -116,6 +127,25 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	moth_antennae_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae)[DEFAULT_SPRITE_LIST]
 	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings)[DEFAULT_SPRITE_LIST]
 	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair)[DEFAULT_SPRITE_LIST]
+	*/
+
+	var/bra_lists = init_sprite_accessory_subtypes(/datum/sprite_accessory/bra) // SKYRAT EDIT ADDITION
+	bra_list = bra_lists[DEFAULT_SPRITE_LIST]
+	bra_m = bra_lists[MALE_SPRITE_LIST]
+	bra_f = bra_lists[FEMALE_SPRITE_LIST]
+
+	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/wings/moth)[DEFAULT_SPRITE_LIST] // SKYRAT EDIT ADDITION - Customization
+	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, add_blank = TRUE)[DEFAULT_SPRITE_LIST] // SKYRAT EDIT ADDITION - We don't want monkeys getting randomized non-monkey tails
+	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, add_blank = TRUE)[DEFAULT_SPRITE_LIST] // SKYRAT EDIT - Customization - ORIGINAL: init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
+
+	//SKYRAT EDIT ADDITION BEGIN
+	//Scream types
+	SSaccessories.scream_types = list()
+	for(var/spath in subtypesof(/datum/scream_type))
+		var/datum/scream_type/S = new spath()
+		SSaccessories.scream_types[S.name] = spath
+	sort_list(SSaccessories.scream_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	//SKYRAT EDIT END
 
 /// This proc just intializes all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
 /datum/controller/subsystem/accessories/proc/init_hair_gradients()

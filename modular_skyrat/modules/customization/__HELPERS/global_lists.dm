@@ -1,5 +1,6 @@
 /proc/make_skyrat_datum_references()
 	make_sprite_accessory_references()
+	make_laugh_datum_references()
 	make_default_mutant_bodypart_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
@@ -9,12 +10,14 @@
 	make_augment_references()
 
 /proc/make_sprite_accessory_references()
+	if(isnull(SSaccessories.sprite_accessories))
+		SSaccessories.sprite_accessories = list()
 	// Here we build the global list for all accessories
 	for(var/path in subtypesof(/datum/sprite_accessory))
 		var/datum/sprite_accessory/P = path
 		if(initial(P.key) && initial(P.name))
 			P = new path()
-			if(!SSaccessories.sprite_accessories[P.key])
+			if(isnull(SSaccessories.sprite_accessories[P.key]))
 				SSaccessories.sprite_accessories[P.key] = list()
 			SSaccessories.sprite_accessories[P.key][P.name] = P
 			if(P.genetic)
@@ -30,6 +33,15 @@
 			//TODO: Replace "generic" definitions with something better
 			if(P.generic && !GLOB.generic_accessories[P.key])
 				GLOB.generic_accessories[P.key] = P.generic
+
+/proc/make_laugh_datum_references()
+	//Laugh types
+	GLOB.laugh_types = list()
+	for(var/spath in subtypesof(/datum/laugh_type))
+		var/datum/laugh_type/L = new spath()
+		GLOB.laugh_types[L.name] = spath
+	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
+
 
 /proc/make_default_mutant_bodypart_references()
 	// Build the global list for default species' mutant_bodyparts
