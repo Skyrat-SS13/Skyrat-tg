@@ -172,16 +172,13 @@
 					/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
 	construction_time = 10 SECONDS
 	category = list(
-		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL
 	)
 
 /obj/item/borg/upgrade/artistic
 	name = "borg artistic module"
-	desc = "Allows you to upgrade a service cyborg with tools for creating art."
+	desc = "Allows you to upgrade a cyborg with tools for creating art."
 	icon_state = "cyborg_upgrade3"
-	require_model = TRUE
-	model_type = list(/obj/item/robot_model/service)
-	model_flags = BORG_MODEL_SERVICE
 	items_to_add = list(
 			/obj/item/pen,
 			/obj/item/toy/crayon/spraycan/borg,
