@@ -44,7 +44,7 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/bra/init_possible_values()
-	return assoc_to_keys_features(GLOB.bra_list)
+	return assoc_to_keys_features(SSaccessories.bra_list)
 
 /datum/preference/choiced/bra/icon_for(value)
 	var/static/icon/body
@@ -58,7 +58,7 @@
 	var/icon/icon_with_bra = icon(body)
 
 	if (value != "Nude")
-		var/datum/sprite_accessory/accessory = GLOB.bra_list[value]
+		var/datum/sprite_accessory/accessory = SSaccessories.bra_list[value]
 		icon_with_bra.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY)
 
 	icon_with_bra.Crop(10, 11, 22, 23) // SKYRAT EDIT CHANGE : ORIGINAL - icon_with_undershirt.Crop(9, 9, 23, 23)

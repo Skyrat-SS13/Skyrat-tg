@@ -68,7 +68,7 @@
 				dressing_human.socks_color = sanitize_hexcolor(new_socks_color)
 
 		if("Bra")
-			var/new_bra = tgui_input_list(user, "Select your Bra", "Changing", GLOB.bra_list)
+			var/new_bra = tgui_input_list(user, "Select your Bra", "Changing", SSaccessories.bra_list)
 			if(new_bra)
 				dressing_human.bra = new_bra
 

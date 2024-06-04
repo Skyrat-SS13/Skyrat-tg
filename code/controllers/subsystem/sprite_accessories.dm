@@ -56,6 +56,17 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/caps_list
 	var/list/pod_hair_list
 
+	// SKYRAT EDIT BEGIN
+	var/list/sprite_accessories
+
+	/// Stores all /datum/sprite_accessory/bra indexed by name.
+	var/list/bra_list
+	/// Stores only the bra names for male-compatible bras.
+	var/list/bra_m
+	/// Stores only the bra names for female-compatible bras.
+	var/list/bra_f
+	//SKYRAT EDIT END
+
 /datum/controller/subsystem/accessories/PreInit() // this stuff NEEDS to be set up before GLOB for preferences and stuff to work so this must go here. sorry
 	setup_lists()
 	init_hair_gradients()

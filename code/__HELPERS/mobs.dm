@@ -89,8 +89,8 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae, GLOB.moth_antennae_list)
 	if(!GLOB.moth_markings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
-	if(!GLOB.pod_hair_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
+	if(!SSaccessories.pod_hair_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, SSaccessories.pod_hair_list)
 
 	//For now we will always return none for tail_human and ears. | "For now" he says.
 	return(list(
@@ -111,7 +111,7 @@
 		"moth_antennae" = pick(GLOB.moth_antennae_list),
 		"moth_markings" = pick(GLOB.moth_markings_list),
 		"tail_monkey" = "Monkey",
-		"pod_hair" = pick(GLOB.pod_hair_list),
+		"pod_hair" = pick(SSaccessories.pod_hair_list),
 	))
 */
 //SKYRAT EDIT REMOVAL END

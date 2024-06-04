@@ -140,7 +140,7 @@
 
 // SKYRAT EDIT ADDITION - CUSTOMIZATION
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"]
+	return SSaccessories.sprite_accessories["tail"]
 // SKYRAT EDIT ADDITION END
 
 /datum/bodypart_overlay/mutant/tail/can_draw_on_bodypart(mob/living/carbon/human/human)
@@ -168,7 +168,7 @@
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
 
 /datum/bodypart_overlay/mutant/tail/cat/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
+	return SSaccessories.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
 
 /obj/item/organ/external/tail/monkey
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey

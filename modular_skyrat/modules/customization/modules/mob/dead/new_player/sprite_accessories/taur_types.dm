@@ -9,7 +9,7 @@
 		return NONE
 
 	var/bodypart_name = taur_mutant_bodypart[MUTANT_INDEX_NAME]
-	var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][bodypart_name]
+	var/datum/sprite_accessory/taur/taur = SSaccessories.sprite_accessories["taur"][bodypart_name]
 	if(!taur)
 		return NONE
 

@@ -111,7 +111,7 @@
 	if(socks)
 		. += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
 	//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
-	var/datum/sprite_accessory/bra/bra = GLOB.bra_list[bra_name]
+	var/datum/sprite_accessory/bra/bra = SSaccessories.bra_list[bra_name]
 	if(bra)
 		. += mutable_appearance(bra.icon, bra.icon_state, -BODY_LAYER)
 	//SKYRAT EDIT END
@@ -187,7 +187,7 @@
 				socks_name = new_socks
 		//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
 		if("Bra")
-			var/new_bra = tgui_input_list(user, "Select the mannequin's bra", "Changing", GLOB.bra_list)
+			var/new_bra = tgui_input_list(user, "Select the mannequin's bra", "Changing", SSaccessories.bra_list)
 			if(new_bra)
 				bra_name = new_bra
 		//SKYRAT EDIT END

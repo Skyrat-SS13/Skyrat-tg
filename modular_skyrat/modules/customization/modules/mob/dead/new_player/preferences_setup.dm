@@ -123,13 +123,13 @@
 
 	//Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
-		if(!GLOB.sprite_accessories[key]) //That accessory no longer exists, remove it
+		if(!SSaccessories.sprite_accessories[key]) //That accessory no longer exists, remove it
 			mutant_bodyparts -= key
 			continue
 		if(!pref_species.default_mutant_bodyparts[key])
 			mutant_bodyparts -= key
 			continue
-		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) //The individual accessory no longer exists
+		if(!SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) //The individual accessory no longer exists
 			mutant_bodyparts[key][MUTANT_INDEX_NAME] = pref_species.default_mutant_bodyparts[key]
 		validate_color_keys_for_part(key) //Validate the color count of each accessory that wasnt removed
 
@@ -140,7 +140,7 @@
 			if(target_bodyparts[key] == ACC_RANDOM)
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][target_bodyparts[key]]
+				SA = SSaccessories.sprite_accessories[key][target_bodyparts[key]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -150,7 +150,7 @@
 		reset_colors()
 
 /datum/preferences/proc/validate_color_keys_for_part(key)
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 	var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -179,7 +179,7 @@
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
-		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.always_color_customizable)
 			continue
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
