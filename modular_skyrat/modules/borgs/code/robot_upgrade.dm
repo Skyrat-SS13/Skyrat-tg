@@ -66,9 +66,9 @@
 
 /obj/item/borg/upgrade/advanced_materials/deactivate(mob/living/silicon/robot/borg, mob/living/user)
 	. = ..()
-	for(var/datum/robot_energy_storage/plasteel/plasteel_energy in borgo.model.storages)
+	for(var/datum/robot_energy_storage/plasteel/plasteel_energy in borg.model.storages)
 		qdel(plasteel_energy)
-	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
+	for(var/datum/robot_energy_storage/titanium/titanium_energy in borg.model.storages)
 		qdel(titanium_energy)
 
 /*
