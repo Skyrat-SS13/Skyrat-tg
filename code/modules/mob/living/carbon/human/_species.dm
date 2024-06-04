@@ -635,13 +635,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/bodypart/arm/left/left_arm = species_human.get_bodypart(BODY_ZONE_L_ARM)
 			var/obj/item/bodypart/leg/right/right_leg = species_human.get_bodypart(BODY_ZONE_R_LEG)
 			var/obj/item/bodypart/leg/left/left_leg = species_human.get_bodypart(BODY_ZONE_L_LEG)
-<<<<<<< HEAD
-			var/datum/sprite_accessory/markings = GLOB.moth_markings_list[species_human.dna.features["moth_markings"]]
-=======
 			var/datum/sprite_accessory/markings = SSaccessories.moth_markings_list[species_human.dna.features["moth_markings"]]
 			var/mutable_appearance/marking = mutable_appearance(layer = -BODY_LAYER, appearance_flags = KEEP_TOGETHER)
 
->>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 			if(noggin && (IS_ORGANIC_LIMB(noggin)))
 				var/mutable_appearance/markings_head_overlay = mutable_appearance(markings.icon, "[markings.icon_state]_head", -BODY_LAYER)
 				markings_head_overlay.pixel_y += height_offset
@@ -753,25 +749,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				if("ears")
 					accessory = SSaccessories.ears_list[source.dna.features["ears"]]
 				if("body_markings")
-<<<<<<< HEAD
-					accessory = GLOB.body_markings_list[source.dna.features["body_markings"]]
-				if("wings")
-					accessory = GLOB.wings_list[source.dna.features["wings"]]
-				if("wingsopen")
-					accessory = GLOB.wings_open_list[source.dna.features["wings"]]
-				if("legs")
-					accessory = GLOB.legs_list[source.dna.features["legs"]]
-				if("moth_wings")
-					accessory = GLOB.moth_wings_list[source.dna.features["moth_wings"]]
-				if("moth_antennae")
-					accessory = GLOB.moth_antennae_list[source.dna.features["moth_antennae"]]
-				if("caps")
-					accessory = GLOB.caps_list[source.dna.features["caps"]]
-=======
 					accessory = SSaccessories.body_markings_list[source.dna.features["body_markings"]]
 				if("legs")
 					accessory = SSaccessories.legs_list[source.dna.features["legs"]]
->>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 			if(!accessory || accessory.icon_state == "none")
 				continue

@@ -32,11 +32,7 @@
 	feature_key = "spines"
 
 /datum/bodypart_overlay/mutant/spines/get_global_feature_list()
-<<<<<<< HEAD
-	return GLOB.sprite_accessories["spines"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.spines_list
-=======
-	return SSaccessories.spines_list
->>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
+	return SSaccessories.sprite_accessories["spines"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.spines_list
 
 /datum/bodypart_overlay/mutant/spines/can_draw_on_bodypart(mob/living/carbon/human/human)
 	. = ..()

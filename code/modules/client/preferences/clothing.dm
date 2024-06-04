@@ -135,13 +135,8 @@
 	var/icon/icon_with_undershirt = icon(body)
 
 	if (value != "Nude")
-<<<<<<< HEAD
-		var/datum/sprite_accessory/accessory = GLOB.undershirt_list[value]
-		icon_with_undershirt.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY) // SKYRAT EDIT CHANGE: ORIGINAL - icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
-=======
 		var/datum/sprite_accessory/accessory = SSaccessories.undershirt_list[value]
-		icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
->>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
+		icon_with_undershirt.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY)// SKYRAT EDIT CHANGE: ORIGINAL - icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
 
 	icon_with_undershirt.Crop(10, 11, 22, 23) // SKYRAT EDIT CHANGE : ORIGINAL - icon_with_undershirt.Crop(9, 9, 23, 23)
 	icon_with_undershirt.Scale(32, 32)
@@ -170,11 +165,7 @@
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_r_leg"), ICON_OVERLAY)
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_l_leg"), ICON_OVERLAY)
 
-<<<<<<< HEAD
-	return generate_underwear_icon(GLOB.underwear_list[value], lower_half, COLOR_ALMOST_BLACK, icon_offset = 5) // SKYRAT EDIT CHANGE : ICON_OFFSET
-=======
 	return generate_underwear_icon(SSaccessories.underwear_list[value], lower_half, COLOR_ALMOST_BLACK)
->>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
 
 /datum/preference/choiced/underwear/apply_to_human(mob/living/carbon/human/target, value)
 	target.underwear = value

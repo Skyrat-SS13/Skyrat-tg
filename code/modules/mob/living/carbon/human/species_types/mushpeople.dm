@@ -61,12 +61,12 @@
 	if(chem.type == /datum/reagent/toxin/plantbgone/weedkiller)
 		affected.adjustToxLoss(3 * REM * seconds_per_tick)
 
-<<<<<<< HEAD
 /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
 	forced_colour = FALSE
 	return ..()
-=======
-/datum/species/mush/get_fixed_hair_color(mob/living/carbon/human/for_mob)
+
+// SKYRAT EDIT - Removal
+/*/datum/species/mush/get_fixed_hair_color(mob/living/carbon/human/for_mob)
 	return "#FF4B19" //cap color, spot color uses eye color
 
 /// A mushpersons mushroom cap organ
@@ -98,5 +98,4 @@
 	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
 		return FALSE
 
-	return TRUE
->>>>>>> 5f44545da81 (Moves "sprite accessories" (e.g. Hair, Undergarments, Mutant Bits) from `GLOB` to a datasystem (#82847))
+	return TRUE*/
