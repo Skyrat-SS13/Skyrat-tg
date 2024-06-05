@@ -215,7 +215,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_db
-	name = "12 Gauge Advanced Dragon Breathes Ammunition Box(Very Lethal)"
+	name = "12 Gauge Advanced Dragons Breath Ammunition Box(Very Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_db"
 	build_type = PROTOLATHE | AWAY_LATHE
