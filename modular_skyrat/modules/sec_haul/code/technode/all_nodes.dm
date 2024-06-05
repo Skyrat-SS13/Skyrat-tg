@@ -11,7 +11,6 @@
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
-		"s12g_antitide",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
@@ -56,4 +55,5 @@
 /datum/techweb_node/syndicate_basic/New()
 	design_ids += "s12g_magnum"
 	design_ids += "s12g_express"
+	design_ids += "s12g_antitide"
 	. = ..()
