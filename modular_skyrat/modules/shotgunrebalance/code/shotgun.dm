@@ -126,6 +126,7 @@
 	name = "magnum blockshot pellet"
 	damage = 12
 	wound_bonus = 10
+	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum/Initialize(mapload)
 	. = ..()
@@ -144,6 +145,7 @@
 	name = "express buckshot pellet"
 	damage = 4
 	wound_bonus = 0
+	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express/Initialize(mapload)
 	. = ..()
@@ -154,8 +156,8 @@
 	desc = "A 12 gauge flechette shell that specializes in ripping armoured targets apart."
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
-	pellets = 4
-	variance = 12
+	pellets = 5
+	variance = 8
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
 
@@ -169,7 +171,7 @@
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
 	weak_against_armour = FALSE
 	damage_falloff_tile = 0
-	armour_penetration = 20
+	armour_penetration = 50
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette/Initialize(mapload)
 	. = ..()
@@ -193,7 +195,7 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "hornet"
 	damage = 4
-	stamina = 15
+	stamina = 20
 	damage_falloff_tile = 0.1
 	stamina_falloff_tile = 0.1
 	wound_bonus = -5
@@ -254,9 +256,6 @@
 /obj/projectile/bullet/shotgun_slug/hunter/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 5)
-
-/obj/projectile/bullet/pellet/shotgun_improvised
-	weak_against_armour = TRUE // We will not have Improvised are Better 2.0
 
 /obj/item/ammo_casing/shotgun/honkshot
 	name = "confetti shell"
