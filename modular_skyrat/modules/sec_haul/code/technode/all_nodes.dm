@@ -22,6 +22,7 @@
 		"sol_rifle_carbine_gun",
 		"sol_smg_rapidfire_kit",
 		"s12g_flechette",
+		"s12g_db",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
