@@ -7,7 +7,6 @@
 	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
 	prereq_ids = list("adv_weaponry", "exotic_ammo")
 	design_ids = list(
-		"s12g_flechette",
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
@@ -22,6 +21,7 @@
 	design_ids = list(
 		"sol_rifle_carbine_gun",
 		"sol_smg_rapidfire_kit",
+		"s12g_flechette",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 

@@ -124,7 +124,7 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	name = "magnum blockshot pellet"
-	damage = 12
+	damage = 15
 	wound_bonus = 10
 	weak_against_armour = FALSE
 
@@ -143,8 +143,8 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	name = "express buckshot pellet"
-	damage = 4
-	wound_bonus = 0
+	damage = 5
+	wound_bonus = 5
 	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express/Initialize(mapload)
