@@ -47,7 +47,8 @@
 	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
 
 /obj/item/ammo_casing/shotgun/dragonsbreath
-	can_be_printed = TRUE
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 
 /obj/item/ammo_casing/shotgun/stunslug
 	name = "taser slug"
