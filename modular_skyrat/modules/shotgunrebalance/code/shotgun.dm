@@ -35,7 +35,6 @@
 	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	advanced_print_req = TRUE
 	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 
 /obj/item/ammo_casing/shotgun/techshell
@@ -48,7 +47,7 @@
 	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
 
 /obj/item/ammo_casing/shotgun/dragonsbreath
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+	can_be_printed = TRUE
 
 /obj/item/ammo_casing/shotgun/stunslug
 	name = "taser slug"
