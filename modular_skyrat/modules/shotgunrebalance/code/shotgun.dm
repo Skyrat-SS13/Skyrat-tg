@@ -143,8 +143,8 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	name = "express buckshot pellet"
-	damage = 5
-	wound_bonus = 5
+	damage = 5.5
+	wound_bonus = 10
 	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express/Initialize(mapload)
