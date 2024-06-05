@@ -19,3 +19,6 @@
 	)
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
+
+//Generic Gun Resource here
+
