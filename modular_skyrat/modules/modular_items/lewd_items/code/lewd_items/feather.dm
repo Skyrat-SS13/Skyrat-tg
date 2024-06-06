@@ -8,9 +8,16 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/tickle_feather/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
+/obj/item/tickle_feather/attack(mob/living/target, mob/living/user)
 	. = ..()
-	if(!istype(target))
+	var/mob/living/carbon/human/carbon_target
+	if(istype(target,/mob/living/carbon/human))
+		carbon_target = target
+	else if(istype(target,/mob/living/silicon/robot))
+		// Just use target var, return if it isn't human or robot
+	else
+		return
+	if(!istype(user,/mob/living/carbon/human) && !istype(user,/mob/living/silicon/robot))
 		return
 
 	var/message = ""
@@ -18,7 +25,7 @@
 	switch(user.zone_selected) //to let code know what part of body we gonna tickle
 		if(BODY_ZONE_PRECISE_GROIN)
 			targetedsomewhere = TRUE
-			if(!(target.is_bottomless()))
+			if(carbon_target && !carbon_target.is_bottomless())
 				to_chat(user, span_danger("[target]'s groin is covered!"))
 				return
 			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] belly with [src]") : pick("teases [target]'s belly with [src]", "uses [src] to tickle [target]'s belly", "tickles [target] with [src]")
@@ -29,11 +36,15 @@
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/external/genital/badonkers = target.get_organ_slot(ORGAN_SLOT_BREASTS)
-			if(!(target.is_topless() || badonkers.visibility_preference == GENITAL_ALWAYS_SHOW))
-				to_chat(user, span_danger("[target]'s chest is covered!"))
-				return
-			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own nipples with [src]") : pick("teases [target]'s nipples with [src]", "uses [src] to tickle [target]'s left nipple", "uses [src] to tickle [target]'s right nipple")
+			if(carbon_target)
+				var/obj/item/organ/external/genital/badonkers = carbon_target.get_organ_slot(ORGAN_SLOT_BREASTS)
+				if(!(carbon_target.is_topless() || badonkers.visibility_preference == GENITAL_ALWAYS_SHOW))
+					to_chat(user, span_danger("[target]'s chest is covered!"))
+					return
+				message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own nipples with [src]") : pick("teases [target]'s nipples with [src]", "uses [src] to tickle [target]'s left nipple", "uses [src] to tickle [target]'s right nipple")
+			else
+				message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] synthetic body with [src]") : pick("teases [target]'s touch sensors with [src]")
+
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
@@ -41,11 +52,11 @@
 
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			targetedsomewhere = TRUE
-			if(!target.has_feet())
+			if(carbon_target && !carbon_target.has_feet())
 				to_chat(user, span_danger("[target] doesn't have any feet!"))
 				return
 
-			if(!target.is_barefoot())
+			if(carbon_target && !carbon_target.is_barefoot())
 				to_chat(user, span_danger("[target]'s feet are covered!"))
 				return
 			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own feet with [src]") : pick("teases [target]'s feet with [src]", "uses [src] to tickle [target]'s [user.zone_selected == BODY_ZONE_L_LEG ? "left" : "right"] foot", "uses [src] to tickle [target]'s toes")
@@ -56,7 +67,7 @@
 
 		if(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 			targetedsomewhere = TRUE
-			if(!target.is_topless())
+			if(carbon_target && !carbon_target.is_topless())
 				to_chat(user, span_danger("[target]'s armpits are covered!"))
 				return
 			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own armpit with [src]") : pick("teases [target]'s right armpit with [src]", "uses [src] to tickle [target]'s [user.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] armpit", "uses [src] to tickle [target]'s underarm")
@@ -69,7 +80,8 @@
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(4)
 	target.add_mood_event("tickled", /datum/mood_event/tickled)
-	target.adjust_arousal(3)
+	if(carbon_target)
+		carbon_target.adjust_arousal(3)
 	user.visible_message(span_purple("[user] [message]!"))
 	play_lewd_sound(loc, \
 		pick(

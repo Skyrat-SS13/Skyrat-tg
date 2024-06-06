@@ -9,7 +9,8 @@
  */
 /obj/item/card/emag
 	desc = "It's a card with a magnetic strip attached to some circuitry."
-	name = "cryptographic sequencer" //SKYRAT COMMENT: Everyone knows what an emag is, both IC and OOC, they even make toy lookalikes.
+	// SKYRAT EDIT ADDITION COMMENT: Everyone knows what an emag is, both IC and OOC, they even make toy lookalikes.
+	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION

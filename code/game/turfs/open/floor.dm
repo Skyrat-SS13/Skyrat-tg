@@ -1,7 +1,7 @@
 /// Anything above a lattice should go here.
 /turf/open/floor
 	name = "floor"
-	icon = 'icons/turf/floors.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/turf/floors.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	base_icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
 

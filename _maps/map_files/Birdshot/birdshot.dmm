@@ -254,6 +254,18 @@
 /obj/structure/table,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/aft)
+"agb" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "agy" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/tank/oxygen{
@@ -12586,12 +12598,6 @@
 	},
 /turf/open/space/basic,
 /area/space)
-"fuS" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/medbay/aft)
 "fuT" = (
 /obj/effect/turf_decal/tile/brown/opposingcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
@@ -12616,18 +12622,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor,
 /area/station/command/heads_quarters/ce)
-"fvu" = (
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/structure/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "fvz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -12852,6 +12846,18 @@
 /obj/effect/spawner/random/structure/furniture_parts,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/maint)
+"fAH" = (
+/obj/effect/gibspawner/human,
+/obj/structure/table/optable{
+	desc = "A cold, hard place for your final rest.";
+	name = "Morgue Slab"
+	},
+/mob/living/carbon/human/species/monkey/humand_legged{
+	name = "Charles";
+	real_name = "Charles"
+	},
+/turf/open/floor/iron/white/diagonal,
+/area/station/maintenance/department/science/xenobiology)
 "fAJ" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -19327,6 +19333,12 @@
 	},
 /turf/open/floor/wood,
 /area/station/engineering/main)
+"hGt" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/aft)
 "hGE" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -33496,6 +33508,13 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
+"mdd" = (
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/aquarium/lawyer,
+/turf/open/floor/iron/dark,
+/area/station/service/lawoffice)
 "mdj" = (
 /obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/plating,
@@ -44595,13 +44614,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/qm)
-"pBH" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/visible/layer2{
-	dir = 6
-	},
-/obj/machinery/meter/layer2,
-/turf/open/floor/iron,
-/area/station/engineering/atmos/pumproom)
 "pBJ" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/machinery/airalarm/directional/north,
@@ -48025,13 +48037,6 @@
 /obj/effect/turf_decal/siding/wideplating/dark,
 /turf/open/floor/iron,
 /area/station/security)
-"qwG" = (
-/obj/item/kirbyplants/random/fullysynthetic,
-/obj/effect/decal/cleanable/glass,
-/obj/machinery/airalarm/directional/north,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/station/service/lawoffice)
 "qwU" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/table/glass,
@@ -49322,6 +49327,13 @@
 "qPN" = (
 /turf/closed/wall/r_wall,
 /area/station/security/prison/safe)
+"qPO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/visible/layer2{
+	dir = 6
+	},
+/obj/machinery/meter/layer2,
+/turf/open/floor/iron,
+/area/station/engineering/atmos/pumproom)
 "qQg" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -71770,18 +71782,6 @@
 /obj/structure/grille,
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/station/engineering/atmos)
-"xai" = (
-/obj/effect/gibspawner/human,
-/obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
-	name = "Morgue Slab"
-	},
-/mob/living/carbon/human/species/monkey/humand_legged{
-	name = "Charles";
-	real_name = "Charles"
-	},
-/turf/open/floor/iron/white/diagonal,
-/area/station/maintenance/department/science/xenobiology)
 "xaj" = (
 /obj/machinery/light/cold/directional/west,
 /obj/effect/decal/cleanable/dirt,
@@ -76062,6 +76062,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/north,
+/mob/living/basic/spider/giant/sgt_araneus,
 /turf/open/floor/stone,
 /area/station/command/heads_quarters/hos)
 "yaG" = (
@@ -89419,7 +89420,7 @@ uGB
 vja
 ssP
 ioN
-pBH
+qPO
 oYN
 dNM
 lPw
@@ -106236,7 +106237,7 @@ tRc
 tRc
 tRc
 tRc
-fuS
+hGt
 dHT
 sSQ
 sSQ
@@ -108554,7 +108555,7 @@ nYk
 vVP
 xAA
 hgf
-fvu
+agb
 uGj
 wgL
 oiA
@@ -113410,7 +113411,7 @@ dDB
 blb
 dDB
 ldq
-xai
+fAH
 vXn
 ldq
 ldq
@@ -113634,7 +113635,7 @@ sCc
 tOO
 aYY
 sCi
-qwG
+mdd
 uHe
 rrH
 vwc

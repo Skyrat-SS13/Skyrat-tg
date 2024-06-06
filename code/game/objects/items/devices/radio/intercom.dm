@@ -1,4 +1,4 @@
-/obj/item/radio/intercom //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/radio/intercom //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "station intercom"
 	desc = "A trusty station intercom, ready to spring into action even when the headsets go silent."
 	icon = 'icons/obj/machines/wallmounts.dmi'
@@ -11,7 +11,7 @@
 	item_flags = NO_BLOOD_ON_ITEM
 
 	overlay_speaker_idle = "intercom_s"
-	overlay_speaker_active = "intercom_recieve"
+	overlay_speaker_active = "intercom_receive"
 
 	overlay_mic_idle = "intercom_m"
 	overlay_mic_active = null

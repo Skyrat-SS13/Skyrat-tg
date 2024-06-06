@@ -306,6 +306,8 @@
 	clone.fully_replace_character_name(null, dna.real_name)
 	copy_clothing_prefs(clone)
 	clone.age = age
+	clone.voice = voice
+	clone.pitch = pitch
 	dna.transfer_identity(clone, transfer_SE = TRUE, transfer_species = TRUE)
 
 	clone.dress_up_as_job(SSjob.GetJob(job))
@@ -326,6 +328,8 @@
 		fitness_modifier *= 2
 	if (HAS_TRAIT(src, TRAIT_STRENGTH))
 		fitness_modifier *= 1.5
+	if (HAS_TRAIT(src, TRAIT_ROD_SUPLEX))
+		fitness_modifier *= 2 // To be able to suplex a rod, you must possess an incredible amount of power
 	if (HAS_TRAIT(src, TRAIT_EASILY_WOUNDED))
 		fitness_modifier /= 2
 	if (HAS_TRAIT(src, TRAIT_GAMER))

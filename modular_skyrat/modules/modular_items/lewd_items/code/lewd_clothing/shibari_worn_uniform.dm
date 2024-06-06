@@ -11,7 +11,7 @@
 	greyscale_colors = "#bd8fcf"
 	has_sensor = NO_SENSORS
 
-	///Tightness of the ropes can be low, medium and hard. This var works as multiplier for arousal and pleasure recieved while wearing this item
+	///Tightness of the ropes can be low, medium and hard. This var works as multiplier for arousal and pleasure received while wearing this item
 	var/tightness = SHIBARI_TIGHTNESS_LOW
 
 	///should this clothing item use the emissive system

@@ -121,16 +121,16 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return holder
 
-/// Recieves a message from a carrier room.
-/datum/component/carrier/proc/recieve_message(message_to_recieve)
-	if(!message_to_recieve)
+/// receives a message from a carrier room.
+/datum/component/carrier/proc/receive_message(message_to_receive)
+	if(!message_to_receive)
 		return FALSE
 
 	var/mob/living/carrier_owner = get_current_holder()
 	if(!istype(carrier_owner))
 		return FALSE
 
-	to_chat(carrier_owner, message_to_recieve)
+	to_chat(carrier_owner, message_to_receive)
 	return TRUE
 
 /// Attempts to ping the current user of the carrier, asking them if `joiner_name` is allowed in. If they are, the proc returns `TRUE`, otherwise returns FALSE
@@ -397,7 +397,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!recepient_carrier)
 		return FALSE // This really isn't good.
 
-	recepient_carrier.recieve_message(message)
+	recepient_carrier.receive_message(message)
 	return TRUE
 
 /datum/carrier_room/Destroy(force, ...)

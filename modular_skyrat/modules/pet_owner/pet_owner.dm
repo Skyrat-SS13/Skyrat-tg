@@ -27,7 +27,7 @@
 		pet_type = pick(flatten_list(GLOB.possible_player_pet))
 
 	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier(get_turf(quirk_holder))
-	var/mob/living/simple_animal/pet/pet = new pet_type(carrier)
+	var/mob/living/basic/pet/pet = new pet_type(carrier)
 	var/new_name = client_source?.prefs.read_preference(/datum/preference/text/pet_name)
 	if (new_name)
 		pet.name = new_name
