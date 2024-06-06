@@ -1,0 +1,179 @@
+2024-06-02:
+  '@xXPawnStarrXx, @Majkl-J':
+  - bugfix: fixed an erroneous path to make the produce bin sprite appear.
+  NullDagaf:
+  - rscadd: cyborgs now can do botany
+  Rhials:
+  - bugfix: You can no longer force NODE Drones off of ore vents. That includes using
+      fulton packs!
+  - bugfix: When a NODE Drone is forcibly separated from its vent, it will fly away.
+  SkyratBot:
+  - rscadd: New fish, the anxious zipzap
+  - rscadd: New syndicate fish, the monocloning jumpercable
+  - rscadd: New aquarium, the bioelectricity generator
+  - bugfix: Mixotrophic fish now properly lack food requirements
+  - rscadd: The Law office now has a pet goldfish.
+  - rscadd: 'Station-Wide Background Checks (station trait, rare): Disables crew antagonists,
+      but get a lot more non-crew antagonists'
+  - balance: Reworks Adrenaline Glands into Repurposed Glands (Realingment). Lose
+      the use of your arms, but you can escape any situation!
+  - bugfix: '[Tramstation] Departures and under east tram distro/waste pipes now properly
+      connected'
+  - bugfix: Fixes railings being invisible
+  - bugfix: Snow walls dont spawn on railings anymore in icebox
+  - rscadd: Changes the layout of MetaStation's cargo to fit with new Nanotrasen guidelines.
+  - bugfix: When removing a corrupted organ from a patient, the patient will now be
+      checked for Holy Water or magic resistance, rather than the person performing
+      the surgery.
+  - bugfix: Minebots purchased via mining points are no longer stuck in idle mode.
+      Clicking on them will activate their AI.
+  - spellcheck: Removed the examine text about feeding ore to minebots; this functionality
+      was removed already.
+  - bugfix: Fixes janitor borgs killing the machinery subsystem by charging light
+      replacers 200k times a tick.
+  oranges:
+  - spellcheck: Gripper gloves are now Enhanced Retrieval gloves
+  thegrb93:
+  - code_imp: Can now use kink toys on cyborgs
+  xXPawnStarrXx:
+  - bugfix: fixed an erroneous path
+2024-06-03:
+  GoldenAlpharex:
+  - qol: Fermenting (wooden) barrels can now be emptied when opened by right-clicking
+      with an empty hand!
+  - qol: Fermenting (wooden) barrels can now be anchored/unanchored using wrenches!
+  - qol: Fermenting (wooden) barrels now have contextual helpers, to show what you
+      need to do at a glance to interact with them.
+  - code_imp: Documented a few of the fermenting barrel's variables.
+  Jane:
+  - image: Central Command has cut funding to the Mining department, resulting in
+      leather sleeves for the Shaft Miner Explorer Suit rather than the metal plates
+      of before.
+  LT3:
+  - bugfix: Fixed bug where players could be invisibly attached to the tram forever
+  Melbert:
+  - balance: Wearing a mask can now prevent you from being spread airborne diseases.
+      Prior, it only stopped you from spreading it yourself.
+  - balance: Wearing a mask no longer 100% guarantees you don't spread viruses to
+      others people - it now scales on the masks BIO armor. Get a sterile mask from
+      Medical for max safety.
+  - balance: Wearing a mask to stop you from spreading to other people is doubly effective
+      than wearing a mask to prevent spread to yourself - Mask up for the greater
+      good!
+  - balance: Passive airborne virus spread attempts are now done every time you breathe
+      (every eight seconds), rather than every two seconds. The chance of spread is
+      the same, though - it has been scaled up to accommodate.
+  - code_imp: Cleaned up a fair bid of airborne-transmission-code. Report any oddities.
+  - balance: Re-ups the cost of the new ling adrenal ability
+  - bugfix: Patches an exploit with new ling adrenal ability
+  SkyratBot:
+  - bugfix: Imaginary friend brain trauma works again.
+  - bugfix: Imaginary friends can be heard by their hosts from more than a tile away
+      again.
+  - bugfix: Cryo tube respects `NO_DEBRIS_AFTER_DECONSTRUCTION` for the occupants
+      visual contents flags & traits & won't allow hologram/abstract item interactions
+  - code_imp: Cryo has improved attack chain & uses defines for reagent volume rounding
+  - rscadd: Added crutches! Wooden ones can be made with wood. Medical ones can be
+      bought from the medvendor.
+  - rscadd: Crutches will reduce slowdown from missing a leg by 60%, and they will
+      remove the limping from fractured bones. (canes do that now too) They're also
+      a fairly decent bludgeon. However, they do nothing if both legs are cut off.
+  - refactor: Gondolas (including gondola pods) are now basic mobs.
+  - bugfix: Fixed some borg modules just being constantly eaten up by borgs even when
+      they shouldn't allow duplicates
+  - refactor: Borg module code now has better handling for adding/removing items,
+      and to prevent duplicate module usage (Unless one wishes to override the behaviour.
+  - qol: Sign language users can now sign in cuffs, but to a very limited degree.
+      They also have more descriptive emotes for questions, exclamations, and a combination
+      of the two.
+  - bugfix: Fixed the biogenerator's tabs
+  - balance: When an AI is alive, on main power, and not SSD its bolts cannot be raised
+      or lowered externally.
+  - rscadd: You can now flush toilets. You can also put fish in the toilet. And flush
+      them.
+  - bugfix: Urinals can no longer be used to delete items.
+  - bugfix: Urinals no longer grant infinite urinal cakes.
+  - bugfix: Made the anxious zipzap accessible.
+  - spellcheck: Photo descriptions containing living entities no longer have a pile
+      of unnecessary periods. .. Which they used to have between describing different
+      entities. ..  Also removed that additional space they had too sometimes..
+  - qol: Photo descriptions containing living entities have these sub-descriptions
+      split into newlines for ease of reading.
+  - balance: The various mining related suits now have consistent suit storage. Try
+      putting a knife into your explorer suit's suit storage today!
+  - balance: Bone armor work similarly to explorer suits, with similar armor values
+      and options to upgrade their parts. However, they use bone talismans instead
+      of goliath hides to upgrade. Magic? Just believing really strongly that the
+      drake is hitting you slightly less hard because of the talismans? You be the
+      judge.
+  - balance: Goliath cloaks come fully upgraded. However...
+  - balance: The recipes for bone armor and goliath cloaks are slightly different.
+      Particularly goliath cloaks, which need a lot more dead goliaths to make. Sorry.
+  - balance: Mining MODsuits achieve at maximum ash accretion the same amount of melee
+      armor as an upgraded explorer suit.
+  - balance: These various suits also consistently have wound armor.
+  - bugfix: Berserker armor properly hides underclothing and hair.
+  - balance: Berserker armor pieces can absorb drake armor to gain their enhanced
+      protection. Become the warrior of Khorne you've always wanted to be.
+  - balance: Berserker rage now halves brute damage rather than just adding Melee
+      Armor to you and your squishy body.
+  - qol: Berserker and H.E.C.K. helmets can be used for internals.
+  - bugfix: ambush spider (should instantly agressive grab) and other giant spiders
+      can now agressively grab
+  - bugfix: positive viruses are no longer hidden.
+  - bugfix: Orbit UI icons are no longer scrollable..
+  - balance: 'Floor diseases cures are now common chemicals: Milk, Chlorine, Space
+      Cleaner'
+  - balance: Attack with a pillow now consumes 5 stamina regardless of wielded or
+      not.
+  - bugfix: COMSIG_ATOM_POST_DIR_CHANGE is now a functional signal
+  - balance: you may not decap people with a plasma cutter
+  - bugfix: The NTSS Independence cryogenics thermomachine is now properly hooked
+      up to the cryo loop.
+  - qol: The NTSS Independence's medical bay has received improvements. The medibot
+      and the sleeper are upgraded, and advanced surgery equipment has been added.
+  - bugfix: you are now able to cancel the look up/down verbs from anywhere
+  - refactor: ghetto chem separator has been reworked from scratch. See PR 83275 for
+      details
+  - qol: adds examines & screentips for ghetto chem separator
+  Vekter:
+  - rscadd: Adds an ion law possibility that changes the human status of station pets.
+  grungussuss:
+  - qol: lathes will now print cables coils in packs of 5
+  - bugfix: added missing context tips for atmos canisters
+  theselfish:
+  - bugfix: Blast Helmet's toggled OBJ sprite now exists.
+  xXPawnStarrXx:
+  - rscadd: Added the Kahraman machines to cargo.
+2024-06-05:
+  Goat:
+  - bugfix: meta's cargo lobby and mining maintenance APCs is now connected to the
+      power line
+  Jane:
+  - balance: Spider Breachers and Vipers have swapped castes. Breachers come from
+      Enriched Eggs while Vipers come from Abnormals! Breachers can no longer survive
+      in spaced rooms/temperatures. The Nurse wraps wounds faster, but with less damage
+      healed per wrap.
+  Melbert:
+  - sound: Boiling soup now makes a sound.
+  PapaMichael:
+  - spellcheck: Nukie uplinks no longer claim to have nonexistent "Tesla Energy Relays"
+  SkyratBot:
+  - qol: Failing to hit someone with a proto-kinetic crusher one-handedly no longer
+      force drops everything in your hands.
+  - bugfix: Status displays should now no longer sporadically randomly break when
+      in the custom message mode
+  - qol: AI's jump to AI Core button works while on backup power (likely when needed
+      most).
+  - bugfix: fixes touching a crutch permanently crippling you
+  - bugfix: fixes crutches giving permanent speedboosts even when dropped
+  - qol: The memories for Smoker and Alcoholic now actually mention the preferred
+      brand.
+  - bugfix: A tiny fan was added to Tramstation's disposal room under the blast doors.
+      No more accidental depressurizations.
+  - bugfix: fixed being able to confirm cargo orders from cargo request console (and,
+      probably, from PDAs)
+  - spellcheck: Changed grammar in cat_house.dm
+  Tera:
+  - bugfix: Fix artistic module not installable
+  - qol: Made artistic module accessible at round start for any borg module
