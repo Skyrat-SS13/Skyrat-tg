@@ -57,12 +57,9 @@
 		mod.wearer.investigate_log("has been killed by [src].", INVESTIGATE_DEATHS)
 		mod.wearer.death() //just in case, for some reason, they're still alive
 	flash_color(mod.wearer, flash_color = "#FF0000", flash_time = 10 SECONDS)
-<<<<<<< HEAD
-/* SKYRAT EDIT: See skyrat_modular/modules/jukebox
-=======
 	set_off = FALSE
 
->>>>>>> 49dccad3a0d (unhardcodes modsuit parts (#82905))
+/* SKYRAT EDIT: See skyrat_modular/modules/jukebox
 ///Rave Visor - Gives you a rainbow visor and plays jukebox music to you.
 /obj/item/mod/module/visor/rave
 	name = "MOD rave visor module"

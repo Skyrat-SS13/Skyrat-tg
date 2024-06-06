@@ -118,17 +118,13 @@
 		var/obj/item/overslot = part_datum.overslotting
 		if(!QDELING(wearer) && !wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 			wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
-<<<<<<< HEAD
-		overslotting_parts[part] = null
+		part_datum.overslotting = null
 	// SKYRAT EDIT START - Avoiding exploits with the modules staying active when any of the parts are retracted.
 	for(var/obj/item/mod/module/module as anything in modules)
 		if(module.active)
-			module.on_deactivation(display_message = !!user)
+			module.deactivate(display_message = !!user)
 	// SKYRAT EDIT END
-=======
-		part_datum.overslotting = null
 	SEND_SIGNAL(src, COMSIG_MOD_PART_RETRACTED, user, part)
->>>>>>> 49dccad3a0d (unhardcodes modsuit parts (#82905))
 	if(!user)
 		return
 	wearer.visible_message(span_notice("[wearer]'s [part.name] retract[part.p_s()] back into [src] with a mechanical hiss."),
@@ -175,28 +171,6 @@
 	activating = TRUE
 	mod_link.end_call()
 	to_chat(wearer, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
-<<<<<<< HEAD
-
-	if (ai_assistant)
-		to_chat(ai_assistant, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
-	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer)), hidden = TRUE))
-		to_chat(wearer, span_notice("[boots] [active ? "relax their grip on your legs" : "seal around your feet"]."))
-		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		seal_part(boots, seal = !active)
-	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer)), hidden = TRUE))
-		to_chat(wearer, span_notice("[gauntlets] [active ? "become loose around your fingers" : "tighten around your fingers and wrists"]."))
-		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		seal_part(gauntlets, seal = !active)
-	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer)), hidden = TRUE))
-		to_chat(wearer, span_notice("[chestplate] [active ? "releases your chest" : "cinches tightly against your chest"]."))
-		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		seal_part(chestplate, seal = !active)
-	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer)), hidden = TRUE))
-		to_chat(wearer, span_notice("[helmet] hisses [active ? "open" : "closed"]."))
-		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		seal_part(helmet, seal = !active)
-	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer)), hidden = TRUE))
-=======
 	for(var/obj/item/part as anything in get_parts())
 		var/datum/mod_part/part_datum = get_part_datum(part)
 		if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(get_wearer)), hidden = TRUE))
@@ -204,7 +178,6 @@
 			playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			seal_part(part, is_sealed = !active)
 	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(get_wearer)), hidden = TRUE))
->>>>>>> 49dccad3a0d (unhardcodes modsuit parts (#82905))
 		to_chat(wearer, span_notice("Systems [active ? "shut down. Parts unsealed. Goodbye" : "started up. Parts sealed. Welcome"], [wearer]."))
 		if(ai_assistant)
 			to_chat(ai_assistant, span_notice("<b>SYSTEMS [active ? "DEACTIVATED. GOODBYE" : "ACTIVATED. WELCOME"]: \"[ai_assistant]\"</b>"))

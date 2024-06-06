@@ -175,7 +175,7 @@
 		part_datum.sealed_layer = category[SEALED_LAYER]
 		part_datum.unsealed_message = category[UNSEALED_MESSAGE] || "No unseal message set! Tell a coder!"
 		part_datum.sealed_message = category[SEALED_MESSAGE] || "No seal message set! Tell a coder!"
-		part_datum.can_overslot = category[CAN_OVERSLOT] || FALSE
+		part_datum.can_overslot = TRUE //NOVA EDIT CHANGE, overslottable everything - Original: part_datum.can_overslot = category[CAN_OVERSLOT] || FALSE
 		part.clothing_flags = category[UNSEALED_CLOTHING] || NONE
 		part.visor_flags = category[SEALED_CLOTHING] || NONE
 		part.flags_inv = category[UNSEALED_INVISIBILITY] || NONE
@@ -2171,54 +2171,3 @@
 	fire = 100
 	acid = 100
 	wound = 100
-
-/datum/mod_theme/timeline
-	name = "chrono"
-	desc = "A suit beyond our time, beyond time itself. Used to traverse timelines and \"correct their course\"."
-	extended_desc = "A suit whose tech goes beyond this era's understanding. The internal mechanisms are all but \
-		completely alien, but the purpose is quite simple. The suit protects the user from the many incredibly lethal \
-		and sometimes hilariously painful side effects of jumping timelines, while providing inbuilt equipment for \
-		making timeline adjustments to correct a bad course."
-	default_skin = "timeline"
-	armor_type = /datum/armor/mod_theme_timeline
-	resistance_flags = FIRE_PROOF|ACID_PROOF
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	complexity_max = 15
-	slowdown_inactive = 0
-	slowdown_active = 0
-	skins = list(
-		"timeline" = list(
-			HELMET_LAYER = null,
-			HELMET_FLAGS = list(
-				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE|BLOCK_GAS_SMOKE_EFFECT,
-				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT,
-				SEALED_INVISIBILITY = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE,
-				UNSEALED_COVER = HEADCOVERSMOUTH,
-				SEALED_COVER = HEADCOVERSEYES|PEPPERPROOF,
-			),
-			CHESTPLATE_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT,
-			),
-			GAUNTLETS_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-			),
-			BOOTS_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-			),
-		),
-	)
-
-/datum/armor/mod_theme_timeline
-	melee = 60
-	bullet = 60
-	laser = 60
-	energy = 60
-	bomb = 30
-	bio = 90
-	fire = 100
-	acid = 100
