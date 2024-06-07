@@ -1,4 +1,4 @@
-//SKYRAT MODULE IC-SPAWNING https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
+// SKYRAT MODULE IC-SPAWNING https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
 /obj/item/card/id/advanced/debug/bst
 	name = "\improper Bluespace ID"
 	desc = "A Bluespace ID card. Has ALL the all access, you really shouldn't have this."

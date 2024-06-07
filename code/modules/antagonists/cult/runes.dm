@@ -149,6 +149,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 		for(var/mob/living/cultist in range(1, src))
 			if(!IS_CULTIST(cultist))
 				continue
+			var/datum/antagonist/cult/cultist_datum = locate(/datum/antagonist/cult) in cultist.mind.antag_datums
+			if(!cultist_datum.check_invoke_validity()) //We can assume there's a datum here since we can't get past the previous check otherwise.
+				continue
 			if(cultist == user)
 				continue
 			if(!cultist.can_speak(allow_mimes = TRUE))
@@ -545,7 +548,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 /obj/effect/rune/teleport/proc/handle_portal(portal_type, turf/origin)
 	var/turf/T = get_turf(src)
 	close_portal() // To avoid stacking descriptions/animations
-	playsound(T, pick('sound/effects/sparks1.ogg', 'sound/effects/sparks2.ogg', 'sound/effects/sparks3.ogg', 'sound/effects/sparks4.ogg'), 100, TRUE, 14)
+	playsound(T, 'sound/effects/portal_travel.ogg', 100, TRUE, 14)
 	inner_portal = new /obj/effect/temp_visual/cult/portal(T)
 	if(portal_type == "space")
 		set_light_color(color)

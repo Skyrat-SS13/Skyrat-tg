@@ -26,7 +26,7 @@ no power level overlay is currently in the overlays list.
 /obj/machinery/field/generator
 	name = "field generator"
 	desc = "A large thermal battery that projects a high amount of energy when powered."
-	icon = 'icons/obj/machines/field_generator.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/field_generator.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "Field_Gen"
 	anchored = FALSE
 	density = TRUE

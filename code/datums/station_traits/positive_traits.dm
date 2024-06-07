@@ -1,7 +1,6 @@
 #define PARTY_COOLDOWN_LENGTH_MIN (6 MINUTES)
 #define PARTY_COOLDOWN_LENGTH_MAX (12 MINUTES)
 
-
 /datum/station_trait/lucky_winner
 	name = "Lucky winner"
 	trait_type = STATION_TRAIT_POSITIVE
@@ -30,6 +29,9 @@
 	for(var/i in 1 to 6)
 		new /obj/item/reagent_containers/cup/glass/bottle/beer(toLaunch)
 	new /obj/effect/pod_landingzone(T, toLaunch)
+
+#undef PARTY_COOLDOWN_LENGTH_MIN
+#undef PARTY_COOLDOWN_LENGTH_MAX
 
 /datum/station_trait/galactic_grant
 	name = "Galactic grant"
@@ -233,7 +235,6 @@
 		/datum/job/security_officer = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/shaft_miner = /obj/item/organ/internal/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
-		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
 		// SKYRAT EDIT ADDITION START - MODULAR JOBS
 		/datum/job/blueshield = /obj/item/organ/internal/cyberimp/brain/anti_stun,
@@ -370,6 +371,3 @@
 	trait_to_give = STATION_TRAIT_ASSISTANT_GIMMICKS
 	show_in_report = TRUE
 	blacklist = list(/datum/station_trait/colored_assistants)
-
-#undef PARTY_COOLDOWN_LENGTH_MIN
-#undef PARTY_COOLDOWN_LENGTH_MAX

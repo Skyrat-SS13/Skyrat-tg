@@ -111,7 +111,7 @@
 	parent.show_character_previews(new /mutable_appearance(mannequin))
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 
-//SKYRAT SPECIFIC PROCS
+// SKYRAT SPECIFIC PROCS
 
 //This proc makes sure that we only have the parts that the species should have, add missing ones, remove extra ones(should any be changed)
 //Also, this handles missing color keys

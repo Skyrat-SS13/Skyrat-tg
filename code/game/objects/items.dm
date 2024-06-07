@@ -268,9 +268,7 @@
 	if(LAZYLEN(embedding))
 		updateEmbedding()
 
-	if(unique_reskin)
-		RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(on_click_alt_reskin))
-		register_context()
+	setup_reskinning()
 
 
 /obj/item/Destroy(force)
@@ -294,7 +292,7 @@
 	if(!unique_reskin)
 		return
 
-	if(current_skin && !(item_flags & INFINITE_RESKIN))
+	if(current_skin && !(obj_flags & INFINITE_RESKIN))
 		return
 
 	context[SCREENTIP_CONTEXT_ALT_LMB] = "Reskin"
@@ -1138,6 +1136,12 @@
 			if(user.mind.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_JOURNEYMAN && prob(user.mind.get_skill_modifier(/datum/skill/mining, SKILL_PROBS_MODIFIER))) // we check if the skill level is greater than Journeyman and then we check for the probality for that specific level.
 				mineral_scan_pulse(get_turf(user), SKILL_LEVEL_JOURNEYMAN - 2, scanner = src) //SKILL_LEVEL_JOURNEYMAN = 3 So to get range of 1+ we have to subtract 2 from it,.
 
+	//SKYRAT EDIT START: Construction Skill
+	var/construction_tools = list(TOOL_CROWBAR, TOOL_MULTITOOL, TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WRENCH, TOOL_WELDER)
+	for(var/checking_behavior in construction_tools)
+		if(tool_behaviour == checking_behavior && user.mind)
+			skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER)
+	//SKYRAT EDIT STOP: Construction Skill
 	delay *= toolspeed * skill_modifier
 
 	// Play tool sound at the beginning of tool usage.
@@ -1163,6 +1167,11 @@
 	if(delay >= MIN_TOOL_SOUND_DELAY)
 		play_tool_sound(target, volume)
 
+	//SKYRAT EDIT START: Construction Skill
+	for(var/checking_behavior in construction_tools)
+		if(tool_behaviour == checking_behavior && user.mind)
+			user.mind.adjust_experience(/datum/skill/construction, 2)
+	//SKYRAT EDIT STOP: Construction Skill
 	return TRUE
 
 /// Called before [obj/item/proc/use_tool] if there is a delay, or by [obj/item/proc/use_tool] if there isn't. Only ever used by welding tools and stacks, so it's not added on any other [obj/item/proc/use_tool] checks.

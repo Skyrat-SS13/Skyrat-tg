@@ -1,4 +1,5 @@
 #define RND_SUBCATEGORY_MECHFAB_CYBORG_DIGI "/Digitigrade"
+#define RND_SUBCATEGORY_CYBERNETICS_ADVANCED_DIGI "/Advanced Digitigrade"
 
 /datum/design/digitigrade_cyber_r_leg
 	name = "Digitigrade Cybernetic Right Leg"
@@ -34,7 +35,7 @@
 	)
 	construction_time = 20 SECONDS
 	category = list(
-		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_DIGI
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ADVANCED_DIGI
 	)
 
 /datum/design/digitigrade_adv_l_leg
@@ -49,5 +50,5 @@
 	)
 	construction_time = 20 SECONDS
 	category = list(
-		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_DIGI
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ADVANCED_DIGI
 	)
