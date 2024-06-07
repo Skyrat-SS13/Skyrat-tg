@@ -12,7 +12,6 @@
 	incompatible_modules = list(/obj/item/mod/module/baton_holster)
 	cooldown_time = 0.5 SECONDS
 	allow_flags = MODULE_ALLOW_INACTIVE
-	required_slots = list("ITEM_SLOT_HANDS")
 	/// Have they sacrificed a baton to actually be able to use this?
 	var/eaten_baton = FALSE
 
@@ -90,4 +89,3 @@
 	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
 	device = /obj/item/gun/magic/hook/contractor
 	cooldown_time = 0.5 SECONDS
-	required_slots = list(ITEM_SLOT_HANDS)

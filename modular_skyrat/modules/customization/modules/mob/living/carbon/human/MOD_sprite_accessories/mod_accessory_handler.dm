@@ -1,25 +1,25 @@
 // This DMI holds all of the overlayable textures for MODs
 #define HARDLIGHT_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
 
-/obj/item/mod/control/seal_part(obj/item/clothing/part, is_sealed)
+/obj/item/mod/control/seal_part(obj/item/clothing/part, seal)
 	. = ..()
 	if(activating)
 		return
 
-	update_external_organs_modsuit_status(is_sealed && active)
+	update_external_organs_modsuit_status(seal && active)
 	wearer.update_body_parts(TRUE)
 
-/obj/item/mod/control/finish_activation(is_on)
+/obj/item/mod/control/finish_activation(on)
 	. = ..()
-	update_external_organs_modsuit_status(is_on)
+	update_external_organs_modsuit_status(on)
 	wearer.update_body_parts(TRUE)
 
-/obj/item/mod/control/deploy(mob/user, obj/item/part)
+/obj/item/mod/control/on_mod_deployed(mob/user)
 	. = ..()
 	update_external_organs_modsuit_status(active)
 	wearer.update_body_parts(TRUE)
 
-/obj/item/mod/control/retract(mob/user, obj/item/part)
+/obj/item/mod/control/on_mod_retracted(mob/user)
 	. = ..()
 	update_external_organs_modsuit_status(FALSE)
 	wearer.update_body_parts(TRUE)

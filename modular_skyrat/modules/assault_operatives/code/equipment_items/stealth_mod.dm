@@ -36,40 +36,29 @@
 		/obj/item/melee/energy/sword,
 		/obj/item/shield/energy,
 	)
-	variants = list(
+	skins = list(
 		"stealth" = list(
 			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/assault_operatives/icons/modsuits/mod.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/assault_operatives/icons/modsuits/wornmod.dmi',
-			/obj/item/clothing/head/mod = list(
-				UNSEALED_LAYER = NECK_LAYER,
-				UNSEALED_LAYER = HEAD_LAYER,
+			HELMET_LAYER = NECK_LAYER,
+			HELMET_FLAGS = list(
 				UNSEALED_CLOTHING = SNUG_FIT,
 				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
-				SEALED_INVISIBILITY =  HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
+				UNSEALED_INVISIBILITY = HIDEFACIALHAIR,
+				SEALED_INVISIBILITY = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
 				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
-				UNSEALED_MESSAGE = HELMET_UNSEAL_MESSAGE,
-				SEALED_MESSAGE = HELMET_SEAL_MESSAGE,
 			),
-			/obj/item/clothing/suit/mod = list(
+			CHESTPLATE_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT|HIDETAIL,
-				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
-				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
-			/obj/item/clothing/gloves/mod = list(
+			GAUNTLETS_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				CAN_OVERSLOT = TRUE,
-				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
-				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
-			/obj/item/clothing/shoes/mod = list(
+			BOOTS_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				CAN_OVERSLOT = TRUE,
-				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
-				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
@@ -98,6 +87,7 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/holster,
+		/obj/item/mod/module/status_readout/operational,
 	)
 
 /obj/machinery/suit_storage_unit/industrial/assault_operative
