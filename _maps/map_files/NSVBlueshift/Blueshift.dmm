@@ -6568,6 +6568,13 @@
 	},
 /obj/item/poster/random_official,
 /obj/machinery/firealarm/directional/north,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang{
+	pixel_y = 10
+	},
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang,
+/obj/item/mecha_ammo/flashbang{
+	pixel_y = -10
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/mechbay)
 "bos" = (
@@ -28999,6 +29006,18 @@
 	dir = 4
 	},
 /area/station/hallway/secondary/command)
+"fxt" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/light/small/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 2";
+	name = "Cell 2 Locker"
+	},
+/turf/open/floor/iron/dark,
+/area/station/security/brig)
 "fxv" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -30945,6 +30964,7 @@
 /obj/item/flashlight/seclite,
 /obj/item/key/security,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/vehicle/ridden/secway,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "fRM" = (
@@ -50198,6 +50218,9 @@
 /obj/item/stack/sheet/glass{
 	pixel_y = 14
 	},
+/obj/item/mecha_ammo/flashbang{
+	pixel_y = -10
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/mechbay)
 "jEz" = (
@@ -64181,6 +64204,10 @@
 /obj/item/stack/rods/two,
 /obj/item/stack/cable_coil/five,
 /obj/machinery/light/directional/north,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/breaching{
+	pixel_y = 10
+	},
+/obj/item/mecha_ammo/missiles_pep,
 /turf/open/floor/iron/dark,
 /area/station/security/mechbay)
 "mmz" = (
@@ -95973,8 +96000,8 @@
 "sqn" = (
 /obj/effect/turf_decal/stripes/box,
 /obj/effect/turf_decal/stripes/red/box,
-/obj/vehicle/ridden/secway,
 /obj/structure/sign/poster/official/carwo_grenade/directional/north,
+/obj/structure/mecha_wreckage/gygax,
 /turf/open/floor/iron/recharge_floor,
 /area/station/ai_monitored/security/armory)
 "sqo" = (
@@ -127350,8 +127377,8 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/brig{
-	id = "Cell 3";
-	name = "Cell 3 Locker"
+	id = "Cell 1";
+	name = "Cell 1 Locker"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
@@ -161260,7 +161287,7 @@ vPn
 jrJ
 vPo
 tNE
-ykG
+fxt
 tNE
 tuv
 hGf
