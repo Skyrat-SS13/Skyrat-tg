@@ -11,7 +11,7 @@
 
 
 /datum/preference/choiced/digitigrade_legs/init_possible_values()
-	return assoc_to_keys_features(GLOB.sprite_accessories["legs"])
+	return assoc_to_keys_features(SSaccessories.sprite_accessories["legs"])
 
 /datum/preference/choiced/digitigrade_legs/is_accessible(datum/preferences/preferences)
 	return ..() && is_usable(preferences)
