@@ -281,14 +281,25 @@
  * * target - Who the message will be sent to
  * * pain_message - The message to be displayed
  * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
+ * * mood_event_type - What type of mood event the step applies if they're still conscious (ie "THEY'RE CUTTING ME OPEN!!" when being sliced open with a scalpel/saw/ect)
  */
-/datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
+/datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE, datum/mood_event/mood_event_type)
 	if(target.stat < UNCONSCIOUS)
 		if(HAS_TRAIT(target, TRAIT_ANALGESIA))
+			if(!pain_message)
+				return
 			to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
+<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN - Mood events from surgeries added
 			target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
 		else if(!mechanical_surgery)
+=======
+		else
+			if(mood_event_type)
+				target.add_mood_event("surgery", mood_event_type)
+			if(!pain_message)
+				return
+>>>>>>> 9e11a5c71d17 (Getting surgically cut open while conscious will now give you the "THEY'RE CUTTING ME OPEN!!" surgical mood event. (#83797))
 			to_chat(target, span_userdanger(pain_message))
 			target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
 			if(prob(30))
