@@ -944,7 +944,6 @@ SUBSYSTEM_DEF(dynamic)
 		ruleset.restricted_roles |= ruleset.protected_roles
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		ruleset.restricted_roles |= JOB_ASSISTANT
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	for(var/datum/job/iterating_job as anything in subtypesof(/datum/job))
 		if(!initial(iterating_job.antagonist_restricted))
@@ -957,10 +956,8 @@ SUBSYSTEM_DEF(dynamic)
 		else
 			ruleset.restricted_roles |= initial(iterating_job.title)
 	// SKYRAT EDIT END
-=======
 	if(!(ruleset.ruleset_category & GLOB.dynamic_ruleset_categories))
 		ruleset.requirements = list(101,101,101,101,101,101,101,101,101,101)
->>>>>>> 6348dc9a7c34 (Fixes admins not being able to force some rulesets with Stationwide Background Checks station trait (#83657))
 
 /// Get station traits and call for their config
 /datum/controller/subsystem/dynamic/proc/configure_station_trait_costs()
