@@ -36,6 +36,7 @@
 /datum/techweb_node/cyborg/New()
 	design_ids += list(
 		"affection_module",
+		"borg_upgrade_artistic",
 	)
 	return ..()
 
@@ -253,10 +254,10 @@
 	return ..()
 /datum/techweb_node/cyborg_upg_serv/New()
 	design_ids += list(
-		"borg_upgrade_artistic"
+		"borg_upgrade_botany"
 	)
 	return ..()
-	
+
 
 
 /datum/techweb_node/basic_mining/New()

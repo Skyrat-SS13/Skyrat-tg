@@ -55,9 +55,16 @@
 	color_changed = TRUE
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/spanking_pad/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
+/obj/item/spanking_pad/attack(mob/living/target, mob/living/user)
 	. = ..()
-	if(!istype(target))
+	var/mob/living/carbon/human/carbon_target
+	if(istype(target,/mob/living/carbon/human))
+		carbon_target = target
+	else if(istype(target,/mob/living/silicon/robot))
+		// Just use target var, return if it isn't human or robot
+	else
+		return
+	if(!istype(user,/mob/living/carbon/human) && !istype(user,/mob/living/silicon/robot))
 		return
 
 	var/message = ""
@@ -66,13 +73,14 @@
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna spank.
 		if(BODY_ZONE_PRECISE_GROIN)
-			if(!target.is_bottomless())
+			if(carbon_target && !carbon_target.is_bottomless())
 				to_chat(user, span_danger("[target]'s butt is covered!"))
 				return
 			message = (user == target) ? pick("spanks themselves with [src]", "uses [src] to slap their hips") : pick("slaps [target]'s hips with [src]", "uses [src] to slap [target]'s butt", "spanks [target] with [src], making a loud slapping noise", "slaps [target]'s thighs with [src]")
 			if(prob(40) && (target.stat != DEAD))
 				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
-			target.adjust_arousal(2)
+			if(carbon_target)
+				carbon_target.adjust_arousal(2)
 			target.adjust_pain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)
 			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
