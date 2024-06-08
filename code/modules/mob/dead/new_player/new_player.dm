@@ -244,9 +244,12 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
+<<<<<<< HEAD
 		// BEGIN SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
 		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
 		GLOB.manifest.inject(humanc, humanc.client)
+=======
+>>>>>>> 1e60447adab9 (Fix crew records not accounting for quirks for latejoiners (#83740))
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
@@ -274,6 +277,9 @@
 
 	if((job.job_flags & JOB_ASSIGN_QUIRKS) && humanc && CONFIG_GET(flag/roundstart_traits))
 		SSquirks.AssignQuirks(humanc, humanc.client)
+
+	if(humanc) // Quirks may change manifest datapoints, so inject only after assigning quirks
+		GLOB.manifest.inject(humanc)
 
 	var/area/station/arrivals = GLOB.areas_by_type[/area/station/hallway/secondary/entry]
 	if(humanc && arrivals && !arrivals.power_environ) //arrivals depowered
