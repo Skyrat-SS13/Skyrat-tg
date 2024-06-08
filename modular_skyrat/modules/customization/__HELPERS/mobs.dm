@@ -1,7 +1,7 @@
 /proc/accessory_list_of_key_for_species(key, datum/species/S, mismatched, ckey)
 	var/list/accessory_list = list()
-	for(var/name in GLOB.sprite_accessories[key])
-		var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][name]
+	for(var/name in SSaccessories.sprite_accessories[key])
+		var/datum/sprite_accessory/SP = SSaccessories.sprite_accessories[key][name]
 		if(!mismatched && SP.recommended_species && !(S.id in SP.recommended_species))
 			continue
 		if(SP.ckey_whitelist && !SP.ckey_whitelist[ckey])
@@ -12,7 +12,7 @@
 
 /proc/random_accessory_of_key_for_species(key, datum/species/S, mismatched=FALSE, ckey)
 	var/list/accessory_list = accessory_list_of_key_for_species(key, S, mismatched, ckey)
-	var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][pick(accessory_list)]
+	var/datum/sprite_accessory/SP = SSaccessories.sprite_accessories[key][pick(accessory_list)]
 	if(!SP)
 		CRASH("Cant find random accessory of [key] key, for species [S.id]")
 	return SP
@@ -44,13 +44,13 @@
 	return body_markings
 
 /proc/random_bra(gender)
-	if(!length(GLOB.bra_list))
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/bra, GLOB.bra_list, GLOB.bra_m, GLOB.bra_f)
+	if(!length(SSaccessories.bra_list))
+		SSaccessories.init_sprite_accessory_subtypes(/datum/sprite_accessory/bra, SSaccessories.bra_list, SSaccessories.bra_m, SSaccessories.bra_f)
 
 	switch(gender)
 		if(MALE)
-			return pick(GLOB.bra_m)
+			return pick(SSaccessories.bra_m)
 		if(FEMALE)
-			return pick(GLOB.bra_f)
+			return pick(SSaccessories.bra_f)
 		else
-			return pick(GLOB.bra_list)
+			return pick(SSaccessories.bra_list)

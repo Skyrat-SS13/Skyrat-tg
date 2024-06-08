@@ -62,7 +62,7 @@
 /*
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
 	var/list/features = ..()
-	features["body_markings"] = pick(GLOB.body_markings_list)
+	features["body_markings"] = pick(SSaccessories.body_markings_list)
 	return features
 */
 //SKYRAT EDIT REMOVAL END

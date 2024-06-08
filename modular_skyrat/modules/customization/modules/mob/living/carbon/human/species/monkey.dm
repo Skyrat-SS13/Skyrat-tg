@@ -5,7 +5,7 @@
 
 /datum/species/monkey/randomize_features()
 	var/list/features = ..()
-	features["tail"] = pick(GLOB.tails_list_monkey - list("None")) // No tail-less monkeys.
+	features["tail"] = pick(SSaccessories.tails_list_monkey - list("None")) // No tail-less monkeys.
 	return features
 
 /datum/species/monkey/prepare_human_for_preview(mob/living/carbon/human/monke)
