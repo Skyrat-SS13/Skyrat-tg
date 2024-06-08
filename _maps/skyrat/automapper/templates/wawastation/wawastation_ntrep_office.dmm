@@ -43,6 +43,7 @@
 /area/station/command/heads_quarters/nt_rep)
 "h" = (
 /obj/structure/table/wood,
+/obj/item/radio/intercom/directional/south,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/nt_rep)
 "i" = (
@@ -106,13 +107,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/nt_rep)
-"t" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/obj/item/radio/intercom/directional/west,
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/nt_rep)
 "u" = (
 /obj/structure/sign/flag/nanotrasen/directional/east,
 /turf/open/floor/carpet/green,
@@ -155,7 +149,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sign/flag/nanotrasen/directional/south,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/nt_rep)
 "F" = (
@@ -239,7 +232,8 @@
 	pixel_x = 1;
 	name = "Secure Door";
 	id = "nt_rep_bolt";
-	normaldoorcontrol = 1
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/machinery/button/door/directional/north{
 	pixel_x = -8;
@@ -321,7 +315,7 @@ D
 L
 R
 V
-t
+V
 a
 v
 "}
