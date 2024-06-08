@@ -2171,7 +2171,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(issynthetic(target))
 		var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
 		if(chassis)
-			var/list/chassis_accessory = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS]
+			var/list/chassis_accessory = SSaccessories.sprite_accessories[MUTANT_SYNTH_CHASSIS]
 			var/datum/sprite_accessory/synth_chassis/body_choice
 			if(chassis_accessory)
 				body_choice = chassis_accessory[chassis[MUTANT_INDEX_NAME]]
