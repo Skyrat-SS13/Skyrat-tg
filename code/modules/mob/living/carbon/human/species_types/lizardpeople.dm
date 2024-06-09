@@ -47,20 +47,9 @@
 /datum/species/lizard/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	return
 
-/datum/species/lizard/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_lizard_name(gender)
-
-	var/randname = lizard_name(gender)
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
-
 //SKYRAT EDIT REMOVAL BEGIN
 /*
-/datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/lizard/randomize_features()
 	var/list/features = ..()
 	features["body_markings"] = pick(SSaccessories.body_markings_list)
 	return features
