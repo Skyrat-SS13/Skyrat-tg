@@ -266,9 +266,8 @@
 
 /obj/effect/temp_visual/telekinesis
 	name = "telekinetic force"
-	//icon_state = "empdisable" //Non-Skyrat version
-	icon_state = "telekinesis_throw" //Skyrat edit, was "empdisable"
-	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' //Skyrat Addition
+	icon_state = "telekinesis_throw" // SKYRAT EDIT CHANGE - ORIGINAL: icon_state = "empdisable"
+	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' // SKYRAT EDIT ADDITION
 	duration = 5
 
 /obj/effect/temp_visual/emp
@@ -494,7 +493,7 @@
 	duration = 2 SECONDS
 
 /obj/effect/constructing_effect
-	icon = 'icons/effects/effects_rcd.dmi'
+	icon = 'icons/effects/rcd.dmi'
 	icon_state = ""
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = ABOVE_GAME_PLANE

@@ -17,7 +17,7 @@
 		/obj/item/clothing/gloves/fingerless/primitive_catgirl_gauntlets = 10,
 		/obj/item/clothing/mask/primitive_catgirl_greyscale_gaiter = 10,
 		/obj/item/clothing/suit/apron/chef/colorable_apron/primitive_catgirl_leather = 10,
-		/obj/item/clothing/head/standalone_hood/primitive_catgirl_colors = 10,
+		/obj/item/clothing/head/hooded/standalone_hood/primitive_catgirl_colors = 10,
 		/obj/item/clothing/neck/scarf/primitive_catgirl_scarf = 5,
 		/obj/item/clothing/neck/face_scarf = 5,
 		/obj/item/clothing/neck/large_scarf/primitive_catgirl_off_white = 5,

@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(default_bodypart_data[key][MUTANTPART_CAN_RANDOMIZE])
 			SP = random_accessory_of_key_for_species(key, src)
 		else
-			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANTPART_NAME]]
+			SP = SSaccessories.sprite_accessories[key][bodyparts_to_add[key][MUTANTPART_NAME]]
 			if(!SP)
 				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
 		var/list/color_list = SP.get_default_color(features, src)
@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	//Underwear, Undershirts & Socks
 	if(!HAS_TRAIT(species_human, TRAIT_NO_UNDERWEAR))
 		if(species_human.underwear && !(species_human.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[species_human.underwear]
+			var/datum/sprite_accessory/underwear/underwear = SSaccessories.underwear_list[species_human.underwear]
 			var/mutable_appearance/underwear_overlay
 			var/female_sprite_flags = FEMALE_UNIFORM_FULL // the default gender shaping
 			if(underwear)
@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += underwear_overlay
 
 		if(species_human.bra && !(species_human.underwear_visibility & UNDERWEAR_HIDE_BRA))
-			var/datum/sprite_accessory/bra/bra = GLOB.bra_list[species_human.bra]
+			var/datum/sprite_accessory/bra/bra = SSaccessories.bra_list[species_human.bra]
 
 			if(bra)
 				var/mutable_appearance/bra_overlay
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += bra_overlay
 
 		if(species_human.undershirt && !(species_human.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
-			var/datum/sprite_accessory/undershirt/undershirt = GLOB.undershirt_list[species_human.undershirt]
+			var/datum/sprite_accessory/undershirt/undershirt = SSaccessories.undershirt_list[species_human.undershirt]
 			if(undershirt)
 				var/mutable_appearance/undershirt_overlay
 				if(species_human.dna.species.sexes && species_human.physique == FEMALE)
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += undershirt_overlay
 
 		if(species_human.socks && species_human.num_legs >= 2 && !(mutant_bodyparts["taur"]) && !(species_human.underwear_visibility & UNDERWEAR_HIDE_SOCKS))
-			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[species_human.socks]
+			var/datum/sprite_accessory/socks/socks = SSaccessories.socks_list[species_human.socks]
 			if(socks)
 				var/mutable_appearance/socks_overlay
 				var/icon_state = socks.icon_state
@@ -213,10 +213,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/robot_organs = HAS_TRAIT(target, TRAIT_ROBOTIC_DNA_ORGANS)
 
 	for(var/key in target.dna.mutant_bodyparts)
-		if(!islist(target.dna.mutant_bodyparts[key]) || !(target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.sprite_accessories[key]))
+		if(!islist(target.dna.mutant_bodyparts[key]) || !(target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in SSaccessories.sprite_accessories[key]))
 			continue
 
-		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		var/datum/sprite_accessory/mutant_accessory = SSaccessories.sprite_accessories[key][target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 
 		if(mutant_accessory?.factual && mutant_accessory.organ_type)
 			var/obj/item/organ/current_organ = target.get_organ_by_type(mutant_accessory.organ_type)

@@ -1,3 +1,4 @@
+/* SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
 /**
  * Kinetic Crusher
  *
@@ -85,8 +86,7 @@
 
 /obj/item/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		to_chat(user, span_warning("[src] is too heavy to use with one hand! You fumble and drop everything."))
-		user.drop_all_held_items()
+		user.balloon_alert(user, "must be wielded!")
 		return
 	var/datum/status_effect/crusher_damage/crusher_damage_effect = target.has_status_effect(/datum/status_effect/crusher_damage)
 	if(!crusher_damage_effect)
@@ -235,6 +235,8 @@
 		new /obj/effect/temp_visual/kinetic_blast(hit_mineral)
 		hit_mineral.gets_drilled(firer)
 	return ..()
+*/
+//SKYRAT EDIT END
 
 //trophies
 /obj/item/crusher_trophy
@@ -252,6 +254,8 @@
 /obj/item/crusher_trophy/proc/effect_desc()
 	return "errors"
 
+//SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
+/*
 /obj/item/crusher_trophy/attackby(obj/item/A, mob/living/user)
 	if(istype(A, /obj/item/kinetic_crusher))
 		add_to(A, user)
@@ -272,6 +276,8 @@
 /obj/item/crusher_trophy/proc/remove_from(obj/item/kinetic_crusher/crusher, mob/living/user)
 	forceMove(get_turf(crusher))
 	return TRUE
+*/
+//SKYRAT EDIT END
 
 /obj/item/crusher_trophy/proc/on_melee_hit(mob/living/target, mob/living/user) //the target and the user
 /obj/item/crusher_trophy/proc/on_projectile_fire(obj/projectile/destabilizer/marker, mob/living/user) //the projectile fired and the user
@@ -333,6 +339,8 @@
 /obj/item/crusher_trophy/legion_skull/effect_desc()
 	return "a kinetic crusher to recharge <b>[bonus_value*0.1]</b> second\s faster"
 
+//SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
+/*
 /obj/item/crusher_trophy/legion_skull/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
@@ -342,6 +350,8 @@
 	. = ..()
 	if(.)
 		H.charge_time += bonus_value
+*/
+//SKYRAT EDIT END
 
 //blood-drunk hunter
 /obj/item/crusher_trophy/miner_eye
@@ -391,6 +401,9 @@
 /obj/item/crusher_trophy/demon_claws/effect_desc()
 	return "melee hits to do <b>[bonus_value * 0.2]</b> more damage and heal you for <b>[bonus_value * 0.1]</b>, with <b>5X</b> effect on mark detonation"
 
+
+//SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
+/*
 /obj/item/crusher_trophy/demon_claws/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
@@ -404,6 +417,8 @@
 		H.force -= bonus_value * 0.2
 		H.detonation_damage -= bonus_value * 0.8
 		AddComponent(/datum/component/two_handed, force_wielded=20)
+*/
+//SKYRAT EDIT END
 
 /obj/item/crusher_trophy/demon_claws/on_melee_hit(mob/living/target, mob/living/user)
 	user.heal_ordered_damage(bonus_value * 0.1, damage_heal_order)

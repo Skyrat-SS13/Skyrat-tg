@@ -54,7 +54,7 @@
 	..()
 	rack()
 
-/obj/item/gun/ballistic/shotgun/automatic/combat        //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/shotgun/automatic/combat //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
@@ -239,14 +239,13 @@
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/item/gun/ballistic/shotgun/bulldog/alt_click_secondary(mob/user)
+/obj/item/gun/ballistic/shotgun/bulldog/click_alt_secondary(mob/user)
 	if(secondary_magazine)
 		var/obj/item/ammo_box/magazine/old_mag = secondary_magazine
 		secondary_magazine = null
 		user.put_in_hands(old_mag)
 		update_appearance()
 		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/ballistic/shotgun/bulldog/proc/toggle_magazine()
 	var/primary_magazine = magazine

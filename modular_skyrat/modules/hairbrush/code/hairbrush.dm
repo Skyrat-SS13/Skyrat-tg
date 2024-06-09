@@ -49,7 +49,7 @@
 			human_target.show_message(span_notice("[usr] brushes your hair!"), MSG_VISUAL)
 			human_target.add_mood_event("brushed", /datum/mood_event/brushed, 1, user)
 
-	else if(istype(target, /mob/living/simple_animal/pet))
+	else if(istype(target, /mob/living/basic/pet))
 		if(!do_after(usr, brush_speed, target))
 			return
 		to_chat(user, span_notice("[target] closes [target.p_their()] eyes as you brush [target.p_them()]!"))

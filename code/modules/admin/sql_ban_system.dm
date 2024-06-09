@@ -426,14 +426,13 @@
 				ROLE_REV,
 				ROLE_REVENANT,
 				ROLE_REV_HEAD,
-				ROLE_SENTIENT_DISEASE,
 				ROLE_SPIDER,
 				ROLE_SPY,
 				ROLE_SYNDICATE,
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
-				ROLE_BORER, //SKYRAT EDIT
-				ROLE_ASSAULT_OPERATIVE, //SKYRAT EDIT
+				ROLE_BORER, // SKYRAT EDIT ADDITION
+				ROLE_ASSAULT_OPERATIVE, // SKYRAT EDIT ADDITION
 			),
 			"Skyrat Ban Options" = list(
 				BAN_PACIFICATION,
@@ -445,8 +444,8 @@
 				BAN_EORG,
 				BAN_ANTAGONIST,
 				BAN_OPFOR,
-				BAN_LOOC, //SKYRAT ADDITION - LOOC muting again
-			),//SKYRAT EDIT ADDITION - EXTRA_BANS
+				BAN_LOOC, // SKYRAT EDIT ADDITION - LOOC muting again
+			), // SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'>[tgui_fancy ? "<input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>" : ""][department]</label><div class='content'>"
@@ -869,7 +868,7 @@
 		return
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
-	var/change_message = "[usr.client.key] unbanned [target] from [role] on [SQLtime()] during round #[GLOB.round_id]<hr>"
+	var/change_message = "[usr.client.key] unbanned [target] from [role] on [ISOtime()] during round #[GLOB.round_id]<hr>"
 	var/datum/db_query/query_unban = SSdbcore.NewQuery({"
 		UPDATE [format_table_name("ban")] SET
 			unbanned_datetime = NOW(),
@@ -914,7 +913,7 @@
 
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
-	var/change_message = "[usr.client.key] re-activated ban of [target] from [role] on [SQLtime()] during round #[GLOB.round_id]<hr>"
+	var/change_message = "[usr.client.key] re-activated ban of [target] from [role] on [ISOtime()] during round #[GLOB.round_id]<hr>"
 	var/datum/db_query/query_reban = SSdbcore.NewQuery({"
 		UPDATE [format_table_name("ban")] SET
 			unbanned_datetime = NULL,

@@ -9,7 +9,7 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("moth_markings" = "None")
-	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // SKYRAT EDIT - Fixing moths
+	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // SKYRAT EDIT REMOVAL - Fixing moths
 	meat = /obj/item/food/meat/slab/human/mutant/moth
 	mutanttongue = /obj/item/organ/internal/tongue/moth
 	mutanteyes = /obj/item/organ/internal/eyes/moth
@@ -34,17 +34,6 @@
 		var/mob/living/carbon/human/H = C
 		handle_mutant_bodyparts(H)
 
-/datum/species/moth/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_moth_name()
-
-	var/randname = moth_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
-
 /datum/species/moth/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
 	. = ..()
 	RegisterSignal(human_who_gained_species, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_weakness))
@@ -61,7 +50,7 @@
 
 /datum/species/moth/randomize_features()
 	var/list/features = ..()
-	features["moth_markings"] = pick(GLOB.moth_wings_list) // SKYRAT EDIT CHANGE - ORIGINAL: features["moth_markings"] = pick(GLOB.moth_markings_list)
+	features["moth_markings"] = pick(SSaccessories.moth_wings_list) // SKYRAT EDIT CHANGE - ORIGINAL: features["moth_markings"] = pick(SSaccessories.moth_markings_list)
 	return features
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human)

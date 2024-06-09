@@ -3,7 +3,7 @@
 #define SEND_PRESSURE (0.05*ONE_ATMOSPHERE)
 
 /obj/machinery/disposal
-	icon = 'icons/obj/pipes_n_cables/disposal.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	density = TRUE
 	armor_type = /datum/armor/machinery_disposal
 	max_integrity = 200
@@ -241,7 +241,7 @@
 	flushing = TRUE
 	flushAnimation()
 	sleep(1 SECONDS)
-	if(last_sound < world.time + 1)
+	if(last_sound < world.time - 1) //Prevents piles of items from playing a dozen sounds at once
 		playsound(src, 'sound/machines/disposalflush.ogg', 50, FALSE, FALSE)
 		last_sound = world.time
 	sleep(0.5 SECONDS)

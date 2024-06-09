@@ -64,6 +64,10 @@
 	receiver.update_body_parts()
 
 /obj/item/organ/external/Remove(mob/living/carbon/organ_owner, special, movement_flags)
+	// SKYRAT EDIT ADDITION START
+	if(mutantpart_key)
+		transfer_mutantpart_info(organ_owner, special)
+	// SKYRAT EDIT ADDITION END
 	. = ..()
 	if(!special)
 		organ_owner.update_body_parts()
@@ -77,10 +81,15 @@
 	if(!.)
 		return
 
+	// SKYRAT EDIT ADDITION START
+	if(mutantpart_key)
+		copy_to_mutant_bodyparts(receiver, special)
+	// SKYRAT EDIT ADDITION END
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
 		var/feature_name = receiver.dna.features[bodypart_overlay.feature_key]
 		if (isnull(feature_name))
-			bodypart_overlay.set_appearance_from_dna(receiver.dna) // SKYRAT EDIT CHANGE - ORIGINAL: feature_name = receiver.dna.species.external_organs[type]
+			if(!bodypart_overlay.set_appearance_from_dna(receiver.dna)) // SKYRAT EDIT CHANGE - ORIGINAL: feature_name = receiver.dna.species.external_organs[type]
+				bodypart_overlay.set_appearance_from_name(receiver.dna.species.external_organs[type]) // SKYRAT EDIT ADDITION
 		// SKYRAT EDIT CHANGE START - Puts the following line in an else block
 		else
 			bodypart_overlay.set_appearance_from_name(feature_name)
@@ -189,7 +198,7 @@
 	return TRUE
 
 /datum/bodypart_overlay/mutant/horns/get_global_feature_list()
-	return GLOB.sprite_accessories["horns"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.horns_list
+	return SSaccessories.sprite_accessories["horns"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.horns_list
 
 ///The frills of a lizard (like weird fin ears)
 /obj/item/organ/external/frills
@@ -216,7 +225,7 @@
 	return FALSE
 
 /datum/bodypart_overlay/mutant/frills/get_global_feature_list()
-	return GLOB.sprite_accessories["frills"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.frills_list
+	return SSaccessories.sprite_accessories["frills"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.frills_list
 
 ///Guess what part of the lizard this is?
 /obj/item/organ/external/snout
@@ -245,7 +254,7 @@
 	return FALSE
 
 /datum/bodypart_overlay/mutant/snout/get_global_feature_list()
-	return GLOB.sprite_accessories["snout"] // SKYRAT EDIT - Customization - ORIGINAL : return GLOB.snouts_list
+	return SSaccessories.sprite_accessories["snout"] // SKYRAT EDIT - Customization - ORIGINAL : return SSaccessories.snouts_list
 
 ///A moth's antennae
 /obj/item/organ/external/antennae
@@ -322,7 +331,7 @@
 	burn_datum = fetch_sprite_datum(burn_datum) //turn the path into the singleton instance
 
 /datum/bodypart_overlay/mutant/antennae/get_global_feature_list()
-	return GLOB.sprite_accessories["moth_antennae"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.moth_antennae_list
+	return SSaccessories.sprite_accessories["moth_antennae"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.moth_antennae_list
 
 /datum/bodypart_overlay/mutant/antennae/get_base_icon_state()
 	return burnt ? burn_datum.icon_state : sprite_datum.icon_state
@@ -354,7 +363,7 @@
 	var/color_inverse_base = 255
 
 /datum/bodypart_overlay/mutant/pod_hair/get_global_feature_list()
-	return GLOB.pod_hair_list
+	return SSaccessories.pod_hair_list
 
 /datum/bodypart_overlay/mutant/pod_hair/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
 	if(draw_layer != bitflag_to_layer(color_swapped_layer))

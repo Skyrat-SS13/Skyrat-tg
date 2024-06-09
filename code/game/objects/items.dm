@@ -69,6 +69,8 @@
 	var/hitsound
 	///Played when the item is used, for example tools
 	var/usesound
+	///Played when item is used for long progress
+	var/operating_sound
 	///Used when yate into a mob
 	var/mob_throw_hit_sound
 	///Sound used when equipping the item into a valid slot
@@ -292,7 +294,7 @@
 	if(!unique_reskin)
 		return
 
-	if(current_skin && !(item_flags & INFINITE_RESKIN))
+	if(current_skin && !(obj_flags & INFINITE_RESKIN))
 		return
 
 	context[SCREENTIP_CONTEXT_ALT_LMB] = "Reskin"
@@ -1008,7 +1010,7 @@
 
 	return SEND_SIGNAL(src, COMSIG_ITEM_MICROWAVE_ACT, microwave_source, microwaver, randomize_pixel_offset)
 
-//Used to check for extra requirements for blending(grinding or juicing) an object
+///Used to check for extra requirements for blending(grinding or juicing) an object
 /obj/item/proc/blend_requirements(obj/machinery/reagentgrinder/R)
 	return TRUE
 
@@ -1018,15 +1020,16 @@
 
 ///Grind item, adding grind_results to item's reagents and transfering to target_holder if specified
 /obj/item/proc/grind(datum/reagents/target_holder, mob/user)
+	. = FALSE
 	if(on_grind() == -1)
-		return FALSE
+		return
 
 	if(length(grind_results))
 		target_holder.add_reagent_list(grind_results)
+		. = TRUE
 	if(reagents?.total_volume)
 		reagents.trans_to(target_holder, reagents.total_volume, transferred_by = user)
-
-	return TRUE
+		. = TRUE
 
 ///Called BEFORE the object is ground up - use this to change grind results based on conditions. Return "-1" to prevent the grinding from occurring
 /obj/item/proc/on_juice()
@@ -1136,6 +1139,12 @@
 			if(user.mind.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_JOURNEYMAN && prob(user.mind.get_skill_modifier(/datum/skill/mining, SKILL_PROBS_MODIFIER))) // we check if the skill level is greater than Journeyman and then we check for the probality for that specific level.
 				mineral_scan_pulse(get_turf(user), SKILL_LEVEL_JOURNEYMAN - 2, scanner = src) //SKILL_LEVEL_JOURNEYMAN = 3 So to get range of 1+ we have to subtract 2 from it,.
 
+	//SKYRAT EDIT START: Construction Skill
+	var/construction_tools = list(TOOL_CROWBAR, TOOL_MULTITOOL, TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WRENCH, TOOL_WELDER)
+	for(var/checking_behavior in construction_tools)
+		if(tool_behaviour == checking_behavior && user.mind)
+			skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER)
+	//SKYRAT EDIT STOP: Construction Skill
 	delay *= toolspeed * skill_modifier
 
 	// Play tool sound at the beginning of tool usage.
@@ -1144,6 +1153,9 @@
 	if(delay)
 		// Create a callback with checks that would be called every tick by do_after.
 		var/datum/callback/tool_check = CALLBACK(src, PROC_REF(tool_check_callback), user, amount, extra_checks)
+
+		if(delay >= MIN_TOOL_OPERATING_DELAY)
+			play_tool_operating_sound(target, volume)
 
 		if(!do_after(user, delay, target=target, extra_checks=tool_check))
 			return
@@ -1161,6 +1173,11 @@
 	if(delay >= MIN_TOOL_SOUND_DELAY)
 		play_tool_sound(target, volume)
 
+	//SKYRAT EDIT START: Construction Skill
+	for(var/checking_behavior in construction_tools)
+		if(tool_behaviour == checking_behavior && user.mind)
+			user.mind.adjust_experience(/datum/skill/construction, 2)
+	//SKYRAT EDIT STOP: Construction Skill
 	return TRUE
 
 /// Called before [obj/item/proc/use_tool] if there is a delay, or by [obj/item/proc/use_tool] if there isn't. Only ever used by welding tools and stacks, so it's not added on any other [obj/item/proc/use_tool] checks.
@@ -1186,6 +1203,19 @@
 			played_sound = pick(usesound)
 
 		playsound(target, played_sound, volume, TRUE)
+
+///Play item's operating sound
+/obj/item/proc/play_tool_operating_sound(atom/target, volume=50)
+	if(target && operating_sound && volume)
+		var/played_sound = operating_sound
+
+		if(islist(operating_sound))
+			played_sound = pick(operating_sound)
+
+		if(!TIMER_COOLDOWN_FINISHED(src, COOLDOWN_TOOL_SOUND))
+			return
+		playsound(target, played_sound, volume, TRUE)
+		TIMER_COOLDOWN_START(src, COOLDOWN_TOOL_SOUND, 4 SECONDS) //based on our longest sound clip
 
 /// Used in a callback that is passed by use_tool into do_after call. Do not override, do not call manually.
 /obj/item/proc/tool_check_callback(mob/living/user, amount, datum/callback/extra_checks)
