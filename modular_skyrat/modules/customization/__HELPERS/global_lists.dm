@@ -1,5 +1,6 @@
 /proc/make_skyrat_datum_references()
 	make_sprite_accessory_references()
+	make_laugh_datum_references()
 	make_default_mutant_bodypart_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
@@ -9,14 +10,16 @@
 	make_augment_references()
 
 /proc/make_sprite_accessory_references()
+	if(isnull(SSaccessories.sprite_accessories))
+		SSaccessories.sprite_accessories = list()
 	// Here we build the global list for all accessories
 	for(var/path in subtypesof(/datum/sprite_accessory))
 		var/datum/sprite_accessory/P = path
 		if(initial(P.key) && initial(P.name))
 			P = new path()
-			if(!GLOB.sprite_accessories[P.key])
-				GLOB.sprite_accessories[P.key] = list()
-			GLOB.sprite_accessories[P.key][P.name] = P
+			if(isnull(SSaccessories.sprite_accessories[P.key]))
+				SSaccessories.sprite_accessories[P.key] = list()
+			SSaccessories.sprite_accessories[P.key][P.name] = P
 			if(P.genetic)
 				if(!GLOB.dna_mutant_bodypart_blocks[P.key])
 					GLOB.dna_mutant_bodypart_blocks[P.key] = GLOB.dna_total_feature_blocks+1
@@ -30,6 +33,15 @@
 			//TODO: Replace "generic" definitions with something better
 			if(P.generic && !GLOB.generic_accessories[P.key])
 				GLOB.generic_accessories[P.key] = P.generic
+
+/proc/make_laugh_datum_references()
+	//Laugh types
+	GLOB.laugh_types = list()
+	for(var/spath in subtypesof(/datum/laugh_type))
+		var/datum/laugh_type/L = new spath()
+		GLOB.laugh_types[L.name] = spath
+	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
+
 
 /proc/make_default_mutant_bodypart_references()
 	// Build the global list for default species' mutant_bodyparts
@@ -129,62 +141,62 @@
 			loadout_list -= loadout_typepath
 
 	// Underwear
-	for(var/sprite_name in GLOB.underwear_list)
-		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_list[sprite_name]
+	for(var/sprite_name in SSaccessories.underwear_list)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.underwear_list[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
-		GLOB.underwear_list -= sprite_name
+		SSaccessories.underwear_list -= sprite_name
 
-	for(var/sprite_name in GLOB.underwear_f)
-		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_f[sprite_name]
+	for(var/sprite_name in SSaccessories.underwear_f)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.underwear_f[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
-		GLOB.underwear_f -= sprite_name
+		SSaccessories.underwear_f -= sprite_name
 
-	for(var/sprite_name in GLOB.underwear_m)
-		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_m[sprite_name]
+	for(var/sprite_name in SSaccessories.underwear_m)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.underwear_m[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
-		GLOB.underwear_m -= sprite_name
+		SSaccessories.underwear_m -= sprite_name
 
 	// Undershirts
-	for(var/sprite_name in GLOB.undershirt_list)
-		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_list[sprite_name]
+	for(var/sprite_name in SSaccessories.undershirt_list)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.undershirt_list[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
-		GLOB.undershirt_list -= sprite_name
+		SSaccessories.undershirt_list -= sprite_name
 
-	for(var/sprite_name in GLOB.undershirt_f)
-		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_f[sprite_name]
+	for(var/sprite_name in SSaccessories.undershirt_f)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.undershirt_f[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
-		GLOB.undershirt_f -= sprite_name
+		SSaccessories.undershirt_f -= sprite_name
 
-	for(var/sprite_name in GLOB.undershirt_m)
-		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_m[sprite_name]
+	for(var/sprite_name in SSaccessories.undershirt_m)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.undershirt_m[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
-		GLOB.undershirt_m -= sprite_name
+		SSaccessories.undershirt_m -= sprite_name
 
 
 	// Bras
-	for(var/sprite_name in GLOB.bra_list)
-		var/datum/sprite_accessory/sprite_datum = GLOB.bra_list[sprite_name]
+	for(var/sprite_name in SSaccessories.bra_list)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.bra_list[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
 
-		GLOB.bra_list -= sprite_name
+		SSaccessories.bra_list -= sprite_name
 
-	for(var/sprite_name in GLOB.bra_f)
-		var/datum/sprite_accessory/sprite_datum = GLOB.bra_f[sprite_name]
+	for(var/sprite_name in SSaccessories.bra_f)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.bra_f[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
 
-		GLOB.bra_f -= sprite_name
+		SSaccessories.bra_f -= sprite_name
 
-	for(var/sprite_name in GLOB.bra_m)
-		var/datum/sprite_accessory/sprite_datum = GLOB.bra_m[sprite_name]
+	for(var/sprite_name in SSaccessories.bra_m)
+		var/datum/sprite_accessory/sprite_datum = SSaccessories.bra_m[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
 
-		GLOB.bra_m -= sprite_name
+		SSaccessories.bra_m -= sprite_name
