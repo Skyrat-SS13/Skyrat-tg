@@ -177,3 +177,161 @@
   Tera:
   - bugfix: Fix artistic module not installable
   - qol: Made artistic module accessible at round start for any borg module
+2024-06-07:
+  GoldenAlpharex:
+  - rscadd: Added Biomes capabilities to the Cave Generator, to allow for procedurally-placed
+      biomes to be introduced in cave generation. This feature is not currently used
+      on any map, but the tools are all there for anyone with the motivation to add
+      biomes to any cave-generating area, like Lavaland and Ice Box.
+  - code_imp: Biomes can now affect features (which are usually structures), on top
+      of flora and fauna.
+  LT3:
+  - balance: Doubled number of assignable wildcard slots on grey ID cards
+  - balance: Doubled number of assignable wildcard slots on silver ID cards
+  - balance: Doubled number of assignable wildcard slots on agent/chameleon ID cards
+  - qol: Icebox's service hall has a disposal unit again
+  Majkl-J:
+  - rscadd: Scrubbing tools and cellulose now clean puddles
+  - qol: The mop is now faster at cleaning puddles, making it not as fiddly to use
+  - bugfix: fixes runtime with empty liquid pools
+  - bugfix: fixes liquid pools staying after floor updates to space
+  - code_imp: Minor improvements of overall liquid code, with more comments and less
+      single letter vars
+  NullDagaf:
+  - rscadd: watchers can now drop a new trophy
+  Rhials:
+  - balance: cultist shades can no longer contribute to rune invocation until they've
+      been out of their soulstone for a minute. Put them in a shell for God's sake!
+  - code_imp: sweeps up cultist antag datum code into its own subfolder.
+  - code_imp: cult shades now have their own antag datum.
+  - bugfix: constructs now properly clear the cultist antag datum and transfer the
+      mind slightly earlier.
+  - admin: Admins can now reroll random events into something else.
+  SkyratBot:
+  - bugfix: RLD glowsticks actually glow again.
+  - image: New icons for berserker, godslayer and adamantine armor. Removes the old
+      icons.
+  - qol: Disgust vomit knocks you down rather than stunning you.
+  - rscdel: Mitogen Metabolism Factor knocks you down rather than stunning you.
+  - balance: Mutadone restores your originally monkey status, rather than always turning
+      monkeys into humans
+  - bugfix: Metastation's vault is now connected to the power grid
+  - bugfix: curator whip will no longer disarm when parried
+  - qol: 'Swabbing the clown''s stamp also gives clown cells.
+
+      :cl:'
+  - bugfix: COMSIG_ATOM_POST_DIR_CHANGE should ACTUALLY work now
+  - balance: Corrosive slime left behind after a slime fails to eat you can be scraped
+      off with your hands, or shaken off in some other way, by clicking on the debuff.
+      This is slower and less effective than washing it off using water.
+  - refactor: honkbots are now basic mobs, please report any bugs
+  - rscadd: honkbots will try to slip people on banana peels
+  - qol: Coffee types are overall more consistent, causing jittering only from the
+      overdose effect.
+  - bugfix: Pumpkin lattes will actually work like coffee.
+  - bugfix: Pre-Loaded Syndicate Intellicard AI's no longer appear in PDA messenger.
+  - bugfix: Drake empowerment for berserker armor now uses valuable drake remains,
+      made from ashdrake hides and bones.
+  - rscadd: Drake armor is made use drake remains to construct. (This is a net neutral
+      to the previous recipe)
+  - bugfix: Fixes paradox clones using a different voice from the owner.
+  - bugfix: When implanting functional wings into a new body, they will actually be
+      able to use said wings now.
+  - qol: Cyborgs on AI statpanel now have jules energy format.
+  - bugfix: autolathes don't hang when printing items in areas without apc or if it
+      runs out of materials mid printing
+  - bugfix: Using the 'ESC' key on your keyboard to unbind a key in the keybindings
+      preferences menu should now work as expected. This should also be fixed for
+      people in a variety of other spots too.
+  - balance: cult stun gets weaker when they get red eyes and later more when they
+      have halos
+  - code_imp: crab17 telegraph now uses animated spinning telegraph circle instead
+      of sniper scope button
+  - rscadd: A unique kind of mob is created when a Monkey is infested by a Legion.
+  SpaceLoveSs13:
+  - image: Mech sprites are now back to what they used to be
+  grungussuss:
+  - sound: frog sounds will no longer explode your ears
+2024-06-08:
+  LT3:
+  - bugfix: Fixed timing issue where tram crossing signals would be out of sync with
+      the moving tram
+  - bugfix: Tram crossing signals consistently show green when safe, blue when broken
+  - bugfix: Tram crossing signals show red instead of yellow when degraded
+  Melbert:
+  - bugfix: Fix some modifiers to do after speed (sanity, midas gun) stacking when
+      they shouldn't
+  ShizCalev:
+  - bugfix: Syndicate AI can no longer be selected via the station law upload console.
+  - bugfix: Non-syndicate borgs can no longer accidentally be slaved to syndicate
+      AI by pulsing their AI wires.
+  - bugfix: Syndicate borgs can no longer be slaved to the station AI by pulsing their
+      AI wires.
+  - bugfix: Syndicate operatives onboard the station can no longer end up with an
+      objective to destroy their own syndicate AI.
+  SkyratBot:
+  - bugfix: some missing modsuit (un)sealing messages should no longer be missing
+  - bugfix: MOD circuit adapter core deployed parts output should work again
+  - bugfix: Modsuit painter works again
+  - qol: more examines & screentips for plumbing machinery
+  - qol: plumbing grinder has a grind/juice mode which be toggled by hand
+  - code_imp: improved attack chain for RPLD & plumbing grinder
+  - bugfix: You can deconstruct the plumbing grinder with the RPLD
+  - bugfix: You can attack the plumbing grinder with any item in combat mode without
+      getting that item consumed
+  - bugfix: You cannot grind abstract/ hologram items in the plumbing grinder
+  - bugfix: growing vat now uses the correct layer selected on rapid plumbing device
+  - qol: you now don't need to weld a closet to install/uninstall electronics/card
+      readers.
+  - bugfix: 'Tool-based flashes (read: from welders) are no longer incorrectly locked
+      at flash level 1. Wear proper PPE!'
+  - rscadd: You may choose a color preference for your blindfold with the blindness
+      quirk.
+  - bugfix: Fixes the brig cell timer adjustment not working correctly on live timers.
+  - refactor: modsuits have been refactored if you see bugs report them
+  - bugfix: admin cargo tech modsuit outfit now works correctly
+  - bugfix: Bubblegum can no longer melee you while using his charge abilities.
+  - balance: Antag/Centcom mechs now have top notch un-upgradeable armor out of the
+      box. You can't add armor to centcom or nukie mechs anymore, but their default
+      armor rating is a lot higher.
+  - bugfix: The armor plate component only adds the prefix once.
+  projectkepler-ru:
+  - rscadd: Security's funding has been increased for NTSS Blueshift,  and they have
+      received an additional mecha equipment for their trouble
+  - bugfix: the blueshift brig locker not being set correctly
+2024-06-09:
+  Goat:
+  - bugfix: mobs no longer move during cutscenes
+  MichiRecRoom:
+  - qol: Personal AI's face display selection is now a radial menu. As a bonus, now
+      you can see what the faces look like before selecting them.
+  Rhials:
+  - rscadd: Adds some more station-trait dependent pulsar star reports. Keep an eye
+      on that roundstart command report!
+  - bugfix: Only filled graves will impact your mood.
+  SkyratBot:
+  - rscadd: final destination deathmatch map, loadouts
+  - bugfix: indestructible light tile emits light
+  - spellcheck: Intern announcer no longer has a weird space before the introduction
+      message.
+  - balance: You can now dodge sneezes
+  - balance: Infectious simple diseases that use sneezes now infect with sneezes and
+      have lowered airborn transmission
+  - balance: Damageless attacks, projectiles, hugs etc no longer drain shields
+  - admin: The auto-mute system yells at you harder when you send a bunch of identical
+      messages.
+  - rscadd: 'New deathmatch modifier: "Random martial arts"'
+  - sound: added operating sounds for wrench, wirecutter and crowbar
+  - spellcheck: Corrected wrench contextual screentip typo for smart fridge
+  - rscadd: Janitorial keyrings are now part of every janitor's toolkit instead of
+      just the first one.
+  - bugfix: Fixed borg chargers (especially unpowered ones) constantly draining a
+      borg's cell.
+  - bugfix: Fixed Silicons not being able to (un)lock Air Alarms.
+  - bugfix: Fixes admin borg panel upgrade functions
+  - bugfix: Borg emag module jank when no longer emagged
+  - bugfix: Borg piercing hypospray fail message
+  - qol: Plexagon Access Management now tells you that you need an ID Trim before
+      applying a Template, rather than silently failing.
+  theselfish:
+  - bugfix: Ghost Cafe no longer has a security camera.

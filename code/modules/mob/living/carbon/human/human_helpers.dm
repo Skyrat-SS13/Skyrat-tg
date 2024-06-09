@@ -258,7 +258,7 @@
 		if (preference.is_randomizable())
 			preference.apply_to_human(src, preference.create_random_value(preferences))
 
-	fully_replace_character_name(real_name, dna.species.random_name())
+	fully_replace_character_name(real_name, generate_random_mob_name())
 
 /**
  * Setter for mob height
@@ -306,6 +306,8 @@
 	clone.fully_replace_character_name(null, dna.real_name)
 	copy_clothing_prefs(clone)
 	clone.age = age
+	clone.voice = voice
+	clone.pitch = pitch
 	dna.transfer_identity(clone, transfer_SE = TRUE, transfer_species = TRUE)
 
 	clone.dress_up_as_job(SSjob.GetJob(job))
