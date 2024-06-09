@@ -234,7 +234,8 @@
 		user.client.give_award(/datum/award/achievement/misc/selfouch, user)
 
 	user.do_attack_animation(target_mob)
-	target_mob.attacked_by(src, user)
+	if(!target_mob.attacked_by(src, user))
+		return TRUE
 
 	SEND_SIGNAL(src, COMSIG_ITEM_POST_ATTACK, target_mob, user, params)
 
@@ -289,7 +290,7 @@
 		if(body_position == LYING_DOWN)
 			zone_hit_chance += 10
 		targeting = get_random_valid_zone(targeting, zone_hit_chance)
-	var/targeting_human_readable = parse_zone(targeting)
+	var/targeting_human_readable = parse_zone_with_bodypart(targeting)
 
 	send_item_attack_message(attacking_item, user, targeting_human_readable, targeting)
 
@@ -318,7 +319,7 @@
 	SEND_SIGNAL(attacking_item, COMSIG_ITEM_ATTACK_ZONE, src, user, targeting)
 
 	if(damage <= 0)
-		return FALSE
+		return TRUE
 
 	if(ishuman(src) || client) // istype(src) is kinda bad, but it's to avoid spamming the blackbox
 		SSblackbox.record_feedback("nested tally", "item_used_for_combat", 1, list("[attacking_item.force]", "[attacking_item.type]"))

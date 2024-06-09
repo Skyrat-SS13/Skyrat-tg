@@ -1,4 +1,3 @@
-GLOBAL_LIST_EMPTY(sprite_accessories)
 GLOBAL_LIST_EMPTY(generic_accessories)
 GLOBAL_LIST_EMPTY(genetic_accessories)
 

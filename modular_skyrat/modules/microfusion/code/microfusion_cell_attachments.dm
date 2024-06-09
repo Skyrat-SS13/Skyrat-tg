@@ -87,7 +87,7 @@ If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 	icon_state = "attachment_selfcharge"
 	attachment_overlay_icon_state = "microfusion_selfcharge"
 	/// The amount of charge this cell will passively gain!
-	var/self_charge_amount = 20
+	var/self_charge_amount = STANDARD_CELL_CHARGE*(0.02)
 
 /obj/item/microfusion_cell_attachment/selfcharging/examine(mob/user)
 	. = ..()

@@ -13,7 +13,7 @@
 
 /datum/area_spawn/poppy
 	target_areas = list(/area/station/engineering/main, /area/station/engineering/break_room, /area/station/engineering/lobby, /area/station/engineering/supermatter/room)
-	desired_atom = /mob/living/simple_animal/pet/poppy
+	desired_atom = /mob/living/basic/pet/poppy
 
 // Structures
 /datum/area_spawn/blueshield_locker

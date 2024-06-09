@@ -206,7 +206,7 @@
 
 ///Serializes into JSON. Does not encode type.
 /datum/proc/serialize_json(list/options)
-	. = serialize_list(options)
+	. = serialize_list(options, list())
 	if(!islist(.))
 		. = null
 	else
@@ -315,7 +315,7 @@
 
 /// Reapplies all the filters.
 /datum/proc/update_filters()
-	ASSERT(isatom(src) || istype(src, /image))
+	ASSERT(isatom(src) || isimage(src))
 	var/atom/atom_cast = src // filters only work with images or atoms.
 	atom_cast.filters = null
 	sortTim(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
@@ -377,7 +377,7 @@
 
 /// Returns the filter associated with the passed key
 /datum/proc/get_filter(name)
-	ASSERT(isatom(src) || istype(src, /image))
+	ASSERT(isatom(src) || isimage(src))
 	if(filter_data && filter_data[name])
 		var/atom/atom_cast = src // filters only work with images or atoms.
 		return atom_cast.filters[filter_data.Find(name)]
@@ -400,7 +400,7 @@
 	update_filters()
 
 /datum/proc/clear_filters()
-	ASSERT(isatom(src) || istype(src, /image))
+	ASSERT(isatom(src) || isimage(src))
 	var/atom/atom_cast = src // filters only work with images or atoms.
 	filter_data = null
 	atom_cast.filters = null
@@ -417,4 +417,3 @@
 		return
 	harddel_deets_dumped = TRUE
 	return "Image icon: [icon] - icon_state: [icon_state] [loc ? "loc: [loc] ([loc.x],[loc.y],[loc.z])" : ""]"
-

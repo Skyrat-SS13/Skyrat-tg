@@ -120,6 +120,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Medical Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/medical
 
+/datum/loadout_item/suit/labcoat_viro
+	name = "Virologist's Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/virologist
+
 /datum/loadout_item/suit/labcoat_regular
 	name = "Researcher's Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/regular

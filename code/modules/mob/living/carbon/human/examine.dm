@@ -393,12 +393,14 @@
 		. += trait_exam
 
 	if(isliving(user))
-		var/mob/living/morbid_weirdo = user
-		if(HAS_MIND_TRAIT(morbid_weirdo, TRAIT_MORBID))
+		var/mob/living/privacy_invader = user
+		if(HAS_MIND_TRAIT(privacy_invader, TRAIT_MORBID))
 			if(HAS_TRAIT(src, TRAIT_DISSECTED))
 				msg += "[span_notice("[t_He] appears to have been dissected. Useless for examination... <b><i>for now.</i></b>")]\n"
 			if(HAS_TRAIT(src, TRAIT_SURGICALLY_ANALYZED))
 				msg += "[span_notice("A skilled hand has mapped this one's internal intricacies. It will be far easier to perform future experimentations upon [t_him]. <b><i>Exquisite.</i></b>")]\n"
+		if(HAS_MIND_TRAIT(privacy_invader, TRAIT_EXAMINE_FITNESS))
+			. += compare_fitness(user)
 
 	var/perpname = get_face_name(get_id_name(""))
 	if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)))
@@ -480,7 +482,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	for(var/genital in GLOB.possible_genitals)
 		if(dna.species.mutant_bodyparts[genital])
-			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
 			if(G)
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] [t_has] exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>\[Look closer...\]</a></span>"

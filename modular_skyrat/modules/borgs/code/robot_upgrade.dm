@@ -340,17 +340,14 @@
 					/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
 	construction_time = 10 SECONDS
 	category = list(
-		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL
 	)
 
 /obj/item/borg/upgrade/artistic
 	name = "borg artistic module"
-	desc = "Allows you to upgrade a service cyborg with tools for creating art."
+	desc = "Allows you to upgrade a cyborg with tools for creating art."
 	icon_state = "cyborg_upgrade3"
-	require_model = TRUE
-	model_type = list(/obj/item/robot_model/service)
-	model_flags = BORG_MODEL_SERVICE
-	var/list/items_to_add = list(
+	items_to_add = list(
 			/obj/item/pen,
 			/obj/item/toy/crayon/spraycan/borg,
 			/obj/item/instrument/guitar,
@@ -359,27 +356,31 @@
 			/obj/item/chisel,
 			)
 
-/obj/item/borg/upgrade/artistic/action(mob/living/silicon/robot/install, user = usr)
-	. = ..()
-	if(!.)
-		return FALSE
-	for(var/item_to_add in items_to_add)
-		if(locate(item_to_add) in install.model.modules)
-			install.balloon_alert_to_viewers("already installed!")
-			return FALSE
-		else
-			var/obj/item/module_item = new item_to_add(install.model.modules)
-			install.model.basic_modules += module_item
-			install.model.add_module(module_item, FALSE, TRUE)
+/datum/design/borg_upgrade_botany
+	name = "Botanical Operator Module"
+	id = "borg_upgrade_botany"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/botany
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
+	construction_time = 10 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
+	)
 
-/obj/item/borg/upgrade/artistic/deactivate(mob/living/silicon/robot/install, user = usr)
-	. = ..()
-	if (!.)
-		return FALSE
-	for(var/item_to_add in items_to_add)
-		var/obj/item/module_item = locate(item_to_add) in install.model.modules
-		if (module_item)
-			install.model.remove_module(module_item, TRUE)
+/obj/item/borg/upgrade/botany
+	name = "botanical operator upgrade"
+	desc = "Provides an assortement of tools for dealing with plants."
+	icon_state = "cyborg_upgrade2"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/service)
+	model_flags = BORG_MODEL_SERVICE
+	items_to_add = list(
+		/obj/item/secateurs,
+		/obj/item/cultivator,
+		/obj/item/shovel/spade,
+		/obj/item/plant_analyzer,
+		/obj/item/storage/bag/plants
+	)
 
 /*
 *	UNIVERSAL CYBORG UPGRADES
@@ -503,39 +504,11 @@
 	desc = "A module that greatly upgrades the ability of borgs to display affection."
 	icon_state = "cyborg_upgrade3"
 	custom_price = 0
+	items_to_add = list(
+		/obj/item/kinky_shocker,
+		/obj/item/clothing/mask/leatherwhip,
+		/obj/item/spanking_pad,
+		/obj/item/tickle_feather,
+		/obj/item/clothing/erp_leash,
+	)
 
-/obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg)
-	. = ..()
-	if(!.)
-		return
-	var/obj/item/kinky_shocker/cur_shocker = locate() in borg.model.modules
-	if(cur_shocker)
-		to_chat(usr, span_warning("This unit already has a dominatrix module installed!"))
-		return FALSE
-
-	var/obj/item/kinky_shocker/shocker = new /obj/item/kinky_shocker()
-	borg.model.basic_modules += shocker
-	borg.model.add_module(shocker, FALSE, TRUE)
-	var/obj/item/clothing/mask/leatherwhip/whipper = new /obj/item/clothing/mask/leatherwhip()
-	borg.model.basic_modules += whipper
-	borg.model.add_module(whipper, FALSE, TRUE)
-	var/obj/item/spanking_pad/spanker = new /obj/item/spanking_pad()
-	borg.model.basic_modules += spanker
-	borg.model.add_module(spanker, FALSE, TRUE)
-	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
-	borg.model.basic_modules += tickler
-	borg.model.add_module(tickler, FALSE, TRUE)
-
-/obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
-	. = ..()
-	if(!.)
-		return
-
-	for(var/obj/item/kinky_shocker/shocker in borg.model.modules)
-		borg.model.remove_module(shocker, TRUE)
-	for(var/obj/item/clothing/mask/leatherwhip/whipper in borg.model.modules)
-		borg.model.remove_module(whipper, TRUE)
-	for(var/obj/item/spanking_pad/spanker in borg.model.modules)
-		borg.model.remove_module(spanker, TRUE)
-	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
-		borg.model.remove_module(tickler, TRUE)
