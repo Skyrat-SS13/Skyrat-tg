@@ -39,40 +39,10 @@
 	id = "comp_reagent_injector_bluespace"
 	build_path = /obj/item/circuit_component/reagent_injector_bluespace
 
-//Drone Camera
-/datum/design/component/drone_camera
-	name = "Drone Camera"
-	id = "comp_drone_camera"
-	build_path = /obj/item/circuit_component/compare/remotecam/drone
-
-//Polaroid Camera Add-On
-/datum/design/component/polaroid_camera
-	name = "Polaroid Camera Add-On"
-	id = "comp_polaroid_camera"
-	build_path = /obj/item/circuit_component/compare/remotecam/polaroid
-
-//Eye Camera
-/datum/design/component/bci/eye_camera
-	name = "Eye Camera"
-	id = "comp_eye_camera"
-	build_path = /obj/item/circuit_component/compare/remotecam/bci
-
 /datum/techweb_node/adv_shells/New()
 	. = ..()
 	design_ids += "comp_tscanner"
 	design_ids += "comp_ccharge"
-
-/datum/techweb_node/basic_circuitry/New()
-	. = ..()
-	design_ids += "comp_polaroid_camera"
-
-/datum/techweb_node/bci_shells/New()
-	. = ..()
-	design_ids += "comp_eye_camera"
-
-/datum/techweb_node/movable_shells_tech/New()
-	. = ..()
-	design_ids += "comp_drone_camera"
 
 /datum/techweb_node/syndicate_basic/New()
 	. = ..()
