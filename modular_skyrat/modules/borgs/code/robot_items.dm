@@ -78,7 +78,7 @@
 /obj/item/borg/hydraulic_clamp
 	name = "integrated hydraulic clamp"
 	desc = "A neat way to lift and move around few small packages for quick and painless deliveries!"
-	icon = 'icons/mob/mecha_equipment.dmi' // Just some temporary sprites because I don't have any unique one yet
+	icon = 'icons/obj/devices/mecha_equipment.dmi' // Just some temporary sprites because I don't have any unique one yet
 	icon_state = "mecha_clamp"
 	/// How much power does it draw per operation?
 	var/charge_cost = 20
