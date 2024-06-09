@@ -122,6 +122,8 @@
 	color = "#07e4d1"
 	ph = 6.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC // SKYRAT EDIT
+	metabolization_rate = 0.1 // SKYRAT EDIT
 
 /datum/reagent/medicine/sansufentanyl/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
