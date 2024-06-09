@@ -482,7 +482,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	for(var/genital in GLOB.possible_genitals)
 		if(dna.species.mutant_bodyparts[genital])
-			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
 			if(G)
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] [t_has] exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>\[Look closer...\]</a></span>"

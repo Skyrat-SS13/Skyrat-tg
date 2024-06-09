@@ -182,8 +182,8 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	dna.species.body_markings = dna.body_markings.Copy()
 	var/list/bodyparts_to_add = dna.mutant_bodyparts.Copy()
 	for(var/key in bodyparts_to_add)
-		if(GLOB.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
-			var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
+		if(SSaccessories.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
+			var/datum/sprite_accessory/SP = SSaccessories.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
 			if(!SP?.factual)
 				bodyparts_to_add -= key
 				continue
@@ -210,13 +210,13 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	if(HAS_TRAIT(src, TRAIT_SHAVED))
 		set_facial_hairstyle("Shaved", update = FALSE)
 	else
-		var/style = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+		var/style = SSaccessories.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), SSaccessories.facial_hairstyles_list.len)]
 		set_facial_hairstyle(style, update = FALSE)
 
 	if(HAS_TRAIT(src, TRAIT_BALD))
 		set_hairstyle("Bald", update = FALSE)
 	else
-		var/style = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+		var/style = SSaccessories.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), SSaccessories.hairstyles_list.len)]
 		set_hairstyle(style, update = FALSE)
 
 	var/features = dna.unique_features

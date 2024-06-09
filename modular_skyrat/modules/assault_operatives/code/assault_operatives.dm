@@ -144,7 +144,7 @@
 /datum/antagonist/assault_operative/proc/give_alias()
 	var/chosen_name = sanitize_text(tgui_input_text(owner.current, "Please input your desired name!", "Name", "Randy Random"))
 	if(!chosen_name)
-		owner.current.real_name = random_unique_name()
+		owner.current.real_name = owner.current.generate_random_mob_name(TRUE)
 		return
 	owner.current.real_name = chosen_name
 

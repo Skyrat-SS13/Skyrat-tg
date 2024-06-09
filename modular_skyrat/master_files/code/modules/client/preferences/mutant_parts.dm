@@ -834,8 +834,8 @@
 	var/icon/pod_head = icon('icons/mob/human/bodyparts_greyscale.dmi', "pod_head_m")
 	pod_head.Blend(COLOR_GREEN, ICON_MULTIPLY)
 
-	for (var/pod_name in GLOB.pod_hair_list)
-		var/datum/sprite_accessory/pod_hair/pod_hair = GLOB.pod_hair_list[pod_name]
+	for (var/pod_name in SSaccessories.pod_hair_list)
+		var/datum/sprite_accessory/pod_hair/pod_hair = SSaccessories.pod_hair_list[pod_name]
 		if(pod_hair.locked)
 			continue
 
