@@ -440,7 +440,8 @@
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
 #define AGE_MIN	18	//youngest a character can be //SKYRAT EDIT CHANGE - age
-#define AGE_MAX 85 //oldest a character can be
+#define AGE_MAX 100 //oldest a character can be //SKYRAT EDIT CHANGE - Increase max character age to 100 - ORIGINAL: #define AGE_MAX 85 //oldest a character can be
+#define AGE_CHRONO_MAX 9999 //SKYRAT EDIT ADDITION - Chronological age
 #define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
@@ -638,8 +639,6 @@
 //defines for grad_color and grad_styles list access keys
 #define GRADIENT_HAIR_KEY 1
 #define GRADIENT_FACIAL_HAIR_KEY 2
-//Keep up to date with the highest key value
-#define GRADIENTS_LEN 2
 
 // /datum/sprite_accessory/gradient defines
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
