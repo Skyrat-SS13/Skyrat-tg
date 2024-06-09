@@ -440,7 +440,8 @@
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
 #define AGE_MIN	18	//youngest a character can be //SKYRAT EDIT CHANGE - age
-#define AGE_MAX 85 //oldest a character can be
+#define AGE_MAX 100 //oldest a character can be //SKYRAT EDIT CHANGE - Increase max character age to 100 - ORIGINAL: #define AGE_MAX 85 //oldest a character can be
+#define AGE_CHRONO_MAX 9999 //SKYRAT EDIT ADDITION - Chronological age
 #define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be

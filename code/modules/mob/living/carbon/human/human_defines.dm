@@ -44,6 +44,7 @@
 	var/lip_color = COLOR_WHITE
 
 	var/age = 30 //Player's age
+	var/chrono_age = 30 // SKYRAT EDIT ADDITION - Chronological age
 
 	/// Which body type to use
 	var/physique = MALE
