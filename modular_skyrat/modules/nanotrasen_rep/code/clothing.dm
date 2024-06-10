@@ -17,6 +17,12 @@
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/armor/vest/nanotrasen_consultant/green
+	name = "nanotrasen officers green coat"
+	desc = "A premium green coat with real fur round the neck, it seems to have some armor padding inside as well."
+	icon = 'icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'icons/mob/clothing/suits/jacket.dmi'
+
 /obj/item/clothing/head/nanotrasen_consultant
 	name = "nanotrasen consultant's hat"
 	desc = "A cap made from durathread, it has an insignia on the front denoting the rank of \"Nanotrasen Consultant\"."

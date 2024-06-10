@@ -125,6 +125,9 @@
 		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial = 1,
 		/obj/item/clothing/suit/jacket/hos/blue = 1,
+		/obj/item/clothing/suit/armor/hos = 1,
+		/obj/item/clothing/suit/armor/hos/trenchcoat = 1,
+		/obj/item/clothing/suit/armor/hos/trenchcoat/winter = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/parade = 1,
 		/obj/item/clothing/suit/armor/hos/hos_formal = 1,
 		/obj/item/clothing/neck/cloak/hos = 1,
@@ -164,6 +167,7 @@
 		/obj/item/clothing/under/rank/centcom/skyrat/naval/admiral = 1,
 		/obj/item/clothing/under/rank/centcom/skyrat/naval/fleet_admiral = 1,
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1,
+		/obj/item/clothing/suit/armor/vest/nanotrasen_consultant/green = 1,
 		/obj/item/clothing/gloves/combat/naval/nanotrasen_consultant = 1,
 	)
 
