@@ -179,6 +179,7 @@
 		/obj/item/clothing/head/nanotrasen_consultant = 1,
 		/obj/item/clothing/head/nanotrasen_consultant/beret = 1,
 		/obj/item/clothing/head/beret/centcom_formal/nt_consultant = 1,
+		/obj/item/clothing/head/nanotrasen_consultant/beret/officer = 1,
 		/obj/item/clothing/head/hats/centhat = 1,
 		/obj/item/clothing/head/hats/caphat/naval = 1,
 		/obj/item/clothing/neck/cloak/admiral = 1,
