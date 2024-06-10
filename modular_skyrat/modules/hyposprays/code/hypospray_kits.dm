@@ -123,7 +123,6 @@
 			attached_hypo = null
 			update_appearance()
 			// Ditto here.
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		else
 			balloon_alert(user, "Couldn't pull the hypo!")
 
