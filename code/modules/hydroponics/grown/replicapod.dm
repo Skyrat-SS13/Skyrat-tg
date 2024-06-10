@@ -197,7 +197,7 @@
 	if(!features["mcolor"])
 		features["mcolor"] = "#59CE00"
 	/*if(!features["pod_hair"])
-		features["pod_hair"] = pick(GLOB.pod_hair_list)*/ //SKYRAT EDIT - Tricolor Pod Hair
+		features["pod_hair"] = pick(SSaccessories.pod_hair_list)*/ //SKYRAT EDIT - Tricolor Pod Hair
 
 	for(var/V in quirks)
 		new V(podman)

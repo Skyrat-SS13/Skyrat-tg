@@ -110,8 +110,8 @@
 	if(!chassis && !head)
 		return
 
-	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis[MUTANT_INDEX_NAME]]
-	var/datum/sprite_accessory/synth_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head[MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = SSaccessories.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis[MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/synth_head/head_of_choice = SSaccessories.sprite_accessories[MUTANT_SYNTH_HEAD][head[MUTANT_INDEX_NAME]]
 	if(!chassis_of_choice && !head_of_choice)
 		return
 
@@ -180,11 +180,6 @@
 	transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
 	screen_organ.bodypart_overlay.set_appearance_from_dna(transformer.dna)
 	transformer.update_body()
-
-/datum/species/synthetic/random_name(gender, unique, lastname)
-	var/randname = pick(GLOB.posibrain_names)
-	randname = "[randname]-[rand(100, 999)]"
-	return randname
 
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
