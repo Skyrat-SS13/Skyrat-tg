@@ -124,8 +124,8 @@
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
 	var/quiet_enviromnent = TRUE
-	for(var/mob/living/carbon/loud_people in oview(2, get_turf(user)))
-		if(loud_people != target)
+	for(var/mob/living/carbon/loud_person in oview(2, get_turf(user)))
+		if(loud_person != target && loud_person.stat == CONSCIOUS)
 			quiet_enviromnent = FALSE
 			break
 	if(quiet_enviromnent)
