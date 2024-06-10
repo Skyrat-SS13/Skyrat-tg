@@ -30,7 +30,7 @@
 	suppressor_x_offset = 11
 
 	burst_size = 1
-	fire_delay = 3
+	fire_delay = 2
 
 	spread = 4
 

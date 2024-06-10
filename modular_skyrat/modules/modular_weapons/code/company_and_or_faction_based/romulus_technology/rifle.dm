@@ -21,7 +21,7 @@
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
 	burst_size = 1
-	fire_delay = 5
+	fire_delay = 3
 
 	spread = 7
 	projectile_wound_bonus = -35
