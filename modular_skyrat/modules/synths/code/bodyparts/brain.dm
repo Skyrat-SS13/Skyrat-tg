@@ -2,7 +2,7 @@
 	name = "compact positronic brain"
 	slot = ORGAN_SLOT_BRAIN
 	zone = BODY_ZONE_HEAD
-	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
