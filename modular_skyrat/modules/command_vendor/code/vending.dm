@@ -28,6 +28,8 @@
 		/obj/item/clothing/under/rank/captain/dress = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/kilt = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial = 1,
+		/obj/item/clothing/under/rank/captain/skyrat/pilot = 1,
+		/obj/item/clothing/under/rank/captain/skyrat/pilot/skirt = 1,
 		/obj/item/clothing/head/hats/caphat/parade = 1,
 		/obj/item/clothing/head/costume/crown/fancy = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
