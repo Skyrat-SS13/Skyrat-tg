@@ -115,7 +115,7 @@
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
-/obj/item/storage/hypospraykit/alt_click_secondary(mob/user)
+/obj/item/storage/hypospraykit/click_alt_secondary(mob/user)
 	if(attached_hypo != null)
 		if(user.put_in_hands(attached_hypo))
 			balloon_alert(user, "Removed [attached_hypo].")
@@ -123,10 +123,8 @@
 			attached_hypo = null
 			update_appearance()
 			// Ditto here.
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		else
 			balloon_alert(user, "Couldn't pull the hypo!")
-	return ..()
 
 /obj/item/storage/hypospraykit/proc/on_attached_hypo_qdel()
 	if(attached_hypo)

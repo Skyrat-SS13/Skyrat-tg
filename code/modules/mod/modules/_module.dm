@@ -142,7 +142,7 @@
 
 	// SKYRAT EDIT START - No using modules when not all parts are deployed.
 	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
-		for(var/obj/item/part as anything in mod.mod_parts)
+		for(var/obj/item/part as anything in mod.get_parts())
 			if(part.loc == mod)
 				balloon_alert(mod.wearer, "deploy all parts first!")
 				return FALSE

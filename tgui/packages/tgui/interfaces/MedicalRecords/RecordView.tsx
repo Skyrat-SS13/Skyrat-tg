@@ -31,10 +31,12 @@ export const MedicalRecordView = (props) => {
   const { act, data } = useBackend<MedicalRecordData>();
   const { assigned_view, physical_statuses, mental_statuses, station_z } = data;
 
-  const { min_age, max_age } = data;
+  // const { min_age, max_age } = data; // ORIGINAL
+  const { min_age, max_age, max_chrono_age } = data; // SKYRAT EDIT CHANGE - Chronological age
 
   const {
     age,
+    chrono_age, // SKYRAT EDIT ADDITION - Chronological age
     blood_type,
     crew_ref,
     dna,
@@ -91,7 +93,10 @@ export const MedicalRecordView = (props) => {
             <LabeledList.Item label="Job">
               <EditableText field="job" target_ref={crew_ref} text={rank} />
             </LabeledList.Item>
-            <LabeledList.Item label="Age">
+            {/* <LabeledList.Item label="Age"> // ORIGINAL */}
+            {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
+            <LabeledList.Item label="Physical Age">
+              {/* SKYRAT EDIT CHANGE END */}
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
@@ -105,6 +110,22 @@ export const MedicalRecordView = (props) => {
                 value={age}
               />
             </LabeledList.Item>
+            {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
+            <LabeledList.Item label="Chronological Age">
+              <RestrictedInput
+                minValue={min_age}
+                maxValue={max_chrono_age}
+                onEnter={(event, value) =>
+                  act('edit_field', {
+                    field: 'chrono_age',
+                    ref: crew_ref,
+                    value: value,
+                  })
+                }
+                value={chrono_age}
+              />
+            </LabeledList.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <LabeledList.Item label="Species">
               <EditableText
                 field="species"

@@ -71,7 +71,7 @@
 	return initial(default_accessory_type.name)
 
 /datum/preference/choiced/genital/init_possible_values()
-	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	return assoc_to_keys_features(SSaccessories.sprite_accessories[relevant_mutant_bodypart])
 
 /datum/preference/toggle/genital_skin_tone
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -83,7 +83,7 @@
 /datum/preference/toggle/genital_skin_tone/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/part_name = preferences.read_preference(genital_pref_type)
-	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[relevant_mutant_bodypart]?[part_name]
+	var/datum/sprite_accessory/genital/accessory = SSaccessories.sprite_accessories[relevant_mutant_bodypart]?[part_name]
 	if(!accessory?.factual || !accessory.has_skintone_shading)
 		return FALSE
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)

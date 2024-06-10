@@ -258,7 +258,7 @@
 		if (preference.is_randomizable())
 			preference.apply_to_human(src, preference.create_random_value(preferences))
 
-	fully_replace_character_name(real_name, dna.species.random_name())
+	fully_replace_character_name(real_name, generate_random_mob_name())
 
 /**
  * Setter for mob height
@@ -315,7 +315,7 @@
 	for(var/datum/quirk/original_quircks as anything in quirks)
 		clone.add_quirk(original_quircks.type, override_client = client)
 	for(var/datum/mutation/human/mutations in dna.mutations)
-		clone.dna.add_mutation(mutations)
+		clone.dna.add_mutation(mutations, MUT_NORMAL)
 
 	clone.updateappearance(mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 	clone.domutcheck()
