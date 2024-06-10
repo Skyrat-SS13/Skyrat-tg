@@ -296,13 +296,10 @@
 	important_text = "The base is rigged with explosives, DO NOT abandon it or let it fall into enemy hands!"
 	outfit = /datum/outfit/lavaland_syndicate
 	spawner_job_path = /datum/job/lavaland_syndicate
-<<<<<<< HEAD
 	loadout_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 	random_appearance = FALSE // SKYRAT EDIT ADDITION
-=======
 	deletes_on_zero_uses_left = FALSE
->>>>>>> 57744f6622ca (Icemoon Comms agent (#83404))
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()
