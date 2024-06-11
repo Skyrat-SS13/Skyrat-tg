@@ -141,16 +141,16 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	/// How many times you've levelled up over all
 	var/level = 0
 	///the list of actions that the borer has
-	var/list/known_abilities = list(/datum/action/cooldown/borer/toggle_hiding,
-									/datum/action/cooldown/borer/choosing_host,
-									/datum/action/cooldown/borer/evolution_tree,
-									/datum/action/cooldown/borer/inject_chemical,
-									/datum/action/cooldown/borer/upgrade_chemical,
-									/datum/action/cooldown/borer/learn_focus,
-									/datum/action/cooldown/borer/upgrade_stat,
-									/datum/action/cooldown/borer/force_speak,
-									/datum/action/cooldown/borer/fear_human,
-									/datum/action/cooldown/borer/check_blood,
+	var/list/known_abilities = list(/datum/action/cooldown/mob_cooldown/borer/toggle_hiding,
+									/datum/action/cooldown/mob_cooldown/borer/choosing_host,
+									/datum/action/cooldown/mob_cooldown/borer/evolution_tree,
+									/datum/action/cooldown/mob_cooldown/borer/inject_chemical,
+									/datum/action/cooldown/mob_cooldown/borer/upgrade_chemical,
+									/datum/action/cooldown/mob_cooldown/borer/learn_focus,
+									/datum/action/cooldown/mob_cooldown/borer/upgrade_stat,
+									/datum/action/cooldown/mob_cooldown/borer/force_speak,
+									/datum/action/cooldown/mob_cooldown/borer/fear_human,
+									/datum/action/cooldown/mob_cooldown/borer/check_blood,
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
@@ -363,17 +363,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			adjust_bodytemperature(max(max(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_COOLING_MAX) * seconds_per_tick, temp_delta))
 	else // this is a hot place
 		adjust_bodytemperature(min(min(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_HEATING_MAX) * seconds_per_tick, temp_delta))
-
-//leave the host, forced or not
-/mob/living/basic/cortical_borer/proc/leave_host()
-	if(!human_host)
-		return
-	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
-	if(borer_organ)
-		borer_organ.Remove(human_host)
-	var/turf/human_turf = get_turf(human_host)
-	forceMove(human_turf)
-	human_host = null
 
 //borers shouldnt be able to whisper...
 /mob/living/basic/cortical_borer/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced, filterproof)

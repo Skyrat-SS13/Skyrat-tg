@@ -12,7 +12,7 @@
 
 /datum/borer_evolution/hivelord/produce_offspring/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
-	var/datum/action/cooldown/borer/produce_offspring/attack_action = new(cortical_owner)
+	var/datum/action/cooldown/mob_cooldown/borer/produce_offspring/attack_action = new(cortical_owner)
 	attack_action.Grant(cortical_owner)
 
 // T2
@@ -25,7 +25,7 @@
 
 /datum/borer_evolution/hivelord/blood_chemical/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
-	var/datum/action/cooldown/borer/learn_bloodchemical/attack_action = new(cortical_owner)
+	var/datum/action/cooldown/mob_cooldown/borer/learn_bloodchemical/attack_action = new(cortical_owner)
 	attack_action.Grant(cortical_owner)
 
 // T3
@@ -51,7 +51,7 @@
 
 /datum/borer_evolution/hivelord/stealth_mode/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
-	var/datum/action/cooldown/borer/stealth_mode/attack_action = new(cortical_owner)
+	var/datum/action/cooldown/mob_cooldown/borer/stealth_mode/attack_action = new(cortical_owner)
 	attack_action.Grant(cortical_owner)
 
 // T5
