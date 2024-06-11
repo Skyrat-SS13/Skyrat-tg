@@ -49,10 +49,8 @@
 		if(prob(10/severity))
 			switch(rand(1,5))
 				if(1)
-					if(prob(10))
-						target.name = "[pick(lizard_name(MALE),lizard_name(FEMALE))]"
-					else
-						target.name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
+					target.name = generate_random_name()
+
 				if(2)
 					target.gender = pick("Male", "Female", "Other")
 				if(3)
@@ -119,6 +117,7 @@
 
 		records += list(list(
 			age = target.age,
+			chrono_age = target.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
 			citations = citations,
 			crew_ref = REF(target),
 			crimes = crimes,
@@ -144,6 +143,7 @@
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
+	data["max_chrono_age"] = AGE_CHRONO_MAX // SKYRAT EDIT ADDITION - Chronological age
 	return data
 
 /obj/machinery/computer/records/security/ui_act(action, list/params, datum/tgui/ui)

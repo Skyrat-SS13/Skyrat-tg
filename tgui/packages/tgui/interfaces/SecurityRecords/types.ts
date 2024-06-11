@@ -9,10 +9,12 @@ export type SecurityRecordsData = {
   records: SecurityRecord[];
   min_age: number;
   max_age: number;
+  max_chrono_age: number; // SKYRAT EDIT ADDITION - Chronological age
 };
 
 export type SecurityRecord = {
   age: number;
+  chrono_age: number; // SKYRAT EDIT ADDITION - Chronological age
   citations: Crime[];
   crew_ref: string;
   crimes: Crime[];
