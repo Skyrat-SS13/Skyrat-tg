@@ -567,9 +567,15 @@ SUBSYSTEM_DEF(job)
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
+<<<<<<< HEAD
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.mind?.set_assigned_role_with_greeting(job, player_client)
 	equipping.on_job_equipping(job, player_client?.prefs, player_client) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.on_job_equipping(job)
 	job.announce_job(equipping, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: job.announce_job(equipping)
+=======
+	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
+	equipping.on_job_equipping(job, player_client)
+	job.announce_job(equipping)
+>>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))

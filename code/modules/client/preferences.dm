@@ -259,6 +259,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 		if ("rotate")
+<<<<<<< HEAD
 			/* SKYRAT EDIT - Bi-directional prefs menu rotation - ORIGINAL:
 			character_preview_view.dir = turn(character_preview_view.dir, -90)
 			*/ // ORIGINAL END - SKYRAT EDIT START:
@@ -266,6 +267,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
 			// SKYRAT EDIT END
 
+=======
+			character_preview_view.setDir(turn(character_preview_view.dir, -90))
+>>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 			return TRUE
 		if ("set_preference")
 			var/requested_preference_key = params["preference"]
@@ -454,6 +458,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/mob/living/carbon/human/dummy/body
 	/// The preferences this refers to
 	var/datum/preferences/preferences
+	/// Whether we show current job clothes or nude/loadout only
+	var/show_job_clothes = TRUE
 
 /atom/movable/screen/map_view/char_preview/Initialize(mapload, datum/preferences/preferences)
 	. = ..()
@@ -471,16 +477,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		create_body()
 	else
 		body.wipe_state()
-	appearance = preferences.render_new_preview_appearance(body)
+
+	appearance = preferences.render_new_preview_appearance(body, show_job_clothes)
 
 /atom/movable/screen/map_view/char_preview/proc/create_body()
 	QDEL_NULL(body)
 
 	body = new
 
+<<<<<<< HEAD
 	// Without this, it doesn't show up in the menu
 	body.appearance_flags |= KEEP_TOGETHER // SKYRAT EDIT - Fix pixel scaling - ORIGINAL: body.appearance_flags &= ~KEEP_TOGETHER
 
+=======
+>>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
 
