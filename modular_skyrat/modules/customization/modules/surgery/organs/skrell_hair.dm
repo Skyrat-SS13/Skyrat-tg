@@ -23,4 +23,4 @@
 	return draw_color
 
 /datum/bodypart_overlay/mutant/skrell_hair/get_global_feature_list()
-	return GLOB.sprite_accessories["skrell_hair"]
+	return SSaccessories.sprite_accessories["skrell_hair"]

@@ -23,4 +23,4 @@
 	return draw_color
 
 /datum/bodypart_overlay/mutant/moth_markings/get_global_feature_list()
-	return GLOB.sprite_accessories["moth_markings"]
+	return SSaccessories.sprite_accessories["moth_markings"]

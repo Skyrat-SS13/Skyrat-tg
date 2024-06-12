@@ -6,16 +6,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ruin/cyborg_mothership)
-"aU" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "mothership_main"
-	},
-/obj/machinery/recycler{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/ruin/cyborg_mothership)
 "bE" = (
 /mob/living/basic/bot/cleanbot,
 /turf/open/floor/iron/showroomfloor,
@@ -532,6 +522,16 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ruin/cyborg_mothership)
+"BL" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "mothership_main"
+	},
+/obj/machinery/recycler{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ruin/cyborg_mothership)
 "BS" = (
 /obj/structure/cable,
 /obj/machinery/conveyor/inverted{
@@ -571,6 +571,11 @@
 	id = "mothership_main"
 	},
 /obj/structure/cable,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/ruin/cyborg_mothership)
+"Fe" = (
+/mob/living/basic/bot/hygienebot,
+/obj/machinery/camera/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/ruin/cyborg_mothership)
 "FQ" = (
@@ -637,11 +642,6 @@
 /obj/structure/lattice,
 /mob/living/basic/hivebot/mechanic,
 /turf/template_noop,
-/area/shuttle/ruin/cyborg_mothership)
-"JS" = (
-/mob/living/basic/bot/hygienebot,
-/obj/machinery/camera/directional/south,
-/turf/open/floor/iron/showroomfloor,
 /area/shuttle/ruin/cyborg_mothership)
 "Ks" = (
 /obj/structure/cable,
@@ -1186,7 +1186,7 @@ fB
 zZ
 Ey
 Sd
-JS
+Fe
 yF
 HM
 yF
@@ -1224,7 +1224,7 @@ qz
 zZ
 VU
 tr
-aU
+BL
 ku
 vL
 pL
