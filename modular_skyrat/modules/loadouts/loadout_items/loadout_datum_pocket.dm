@@ -304,22 +304,14 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Amber Perfume"
 	item_path = /obj/item/perfume/amber
 
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/pocket_items/donator
-	donator_only = TRUE
-
-/datum/loadout_item/pocket_items/donator/coin
+/datum/loadout_item/pocket_items/coin
 	name = "Iron Coin"
 	item_path = /obj/item/coin/iron
 
-/datum/loadout_item/pocket_items/donator/havana_cigar_case
+/datum/loadout_item/pocket_items/havana_cigar_case
 	name = "Havanian Cigars"
 	item_path = /obj/item/storage/fancy/cigarettes/cigars/havana
 
-/datum/loadout_item/pocket_items/donator/vape
+/datum/loadout_item/pocket_items/vape
 	name = "E-Cigarette"
 	item_path = /obj/item/clothing/mask/vape

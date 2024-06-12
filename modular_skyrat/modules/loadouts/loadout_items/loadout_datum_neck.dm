@@ -134,39 +134,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Thin Choker"
 	item_path = /obj/item/clothing/neck/human_petcollar/thinchoker
 
-/datum/loadout_item/neck/collar
-	name = "Collar"
-	item_path = /obj/item/clothing/neck/human_petcollar
-
-/datum/loadout_item/neck/leathercollar
-	name = "Leather Collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/leather
-
-/datum/loadout_item/neck/cbellcollar
-	name = "Cowbell Collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/cow
-
-/datum/loadout_item/neck/bellcollar
-	name = "Bell Collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/bell
-
-/datum/loadout_item/neck/spikecollar
-	name = "Spike Collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/spike
-
-/datum/loadout_item/neck/hcollar
-	name = "Holocollar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/holo
-
-/datum/loadout_item/neck/crosscollar
-	name = "Cross Collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
-
-/datum/loadout_item/neck/kinkycollar
-	name = "Kinky Collar"
-	item_path = /obj/item/clothing/neck/kink_collar
-	erp_item = TRUE
-
 /*
 *	PONCHOS
 */
@@ -300,13 +267,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/accessory/badge/holo/cord
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/neck/donator
-	donator_only = TRUE
-
-/datum/loadout_item/neck/donator/mantle/regal
+/datum/loadout_item/neck/mantle/regal
 	name = "Regal Mantle"
 	item_path = /obj/item/clothing/neck/mantle/regal

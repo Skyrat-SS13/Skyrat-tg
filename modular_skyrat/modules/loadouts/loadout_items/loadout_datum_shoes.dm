@@ -235,6 +235,13 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Green Christmas Boots"
 	item_path = /obj/item/clothing/shoes/winterboots/christmas/green
 
+/datum/loadout_item/shoes/blackjackboots
+	name = "Black Jackboots"
+	item_path = /obj/item/clothing/shoes/jackboots/black
+
+/datum/loadout_item/shoes/rainbow
+	name = "Rainbow Converse"
+	item_path = /obj/item/clothing/shoes/sneakers/rainbow
 
 /*
 *	JOB-RESTRICTED
@@ -250,17 +257,3 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
 	restricted_roles = list(JOB_CLOWN)
 
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/shoes/donator
-	donator_only = TRUE
-
-/datum/loadout_item/shoes/donator/blackjackboots
-	name = "Black Jackboots"
-	item_path = /obj/item/clothing/shoes/jackboots/black
-
-/datum/loadout_item/shoes/donator/rainbow
-	name = "Rainbow Converse"
-	item_path = /obj/item/clothing/shoes/sneakers/rainbow

@@ -677,38 +677,31 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Yuri Coat"
 	item_path = /obj/item/clothing/suit/costume/yuri
 
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/suit/donator
-	donator_only = TRUE
-
-/datum/loadout_item/suit/donator/furredjacket
+/datum/loadout_item/suit/furredjacket
 	name = "Furred Jacket"
 	item_path = /obj/item/clothing/suit/brownfurrich/public
 
-/datum/loadout_item/suit/donator/whitefurredjacket
+/datum/loadout_item/suit/whitefurredjacket
 	name = "White Furred Jacket"
 	item_path = /obj/item/clothing/suit/brownfurrich/white
 
-/datum/loadout_item/suit/donator/creamfurredjacket
+/datum/loadout_item/suit/creamfurredjacket
 	name = "Cream Furred Jacket"
 	item_path = /obj/item/clothing/suit/brownfurrich/cream
 
-/datum/loadout_item/suit/donator/modern_winter
+/datum/loadout_item/suit/modern_winter
 	name = "Modern Winter Coat"
 	item_path = /obj/item/clothing/suit/modern_winter
 
-/datum/loadout_item/suit/donator/blondie
+/datum/loadout_item/suit/blondie
 	name = "Cowboy Vest"
 	item_path = /obj/item/clothing/suit/cowboyvest
 
-/datum/loadout_item/suit/donator/digicoat/nanotrasen
+/datum/loadout_item/suit/digicoat/nanotrasen
 	name = "nanotrasen digicoat"
 	item_path = /obj/item/clothing/suit/toggle/digicoat/nanotrasen
 
-/datum/loadout_item/suit/donator/digicoat/interdyne
+/datum/loadout_item/suit/digicoat/interdyne
 	name = "Interdyne Digicoat"
 	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne
 
