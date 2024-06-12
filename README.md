@@ -12,15 +12,13 @@
 | Git / GitHub cheatsheet   | [https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833](https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833) |
 | Guide to Modularization   | [./modular_skyrat/readme.md](./modular_skyrat/readme.md)            |
 | Website                   | [https://www.tgstation13.org](https://www.tgstation13.org)          |
-| Code                      | [https://github.com/Skyrat-SS13/Skyrat-tg](https://github.com/Skyrat-SS13/Skyrat-tg)    |
+| Code                      | [https://github.com/IrisSS13/IrisSS13](https://github.com/IrisSS13/IrisSS13)    |
 | Wiki                      | [https://wiki.skyrat13.space/index.php/Main_Page](https://wiki.skyrat13.space/index.php/Main_Page)   |
 | Codedocs                  | [https://skyrat-ss13.github.io/Skyrat-tg/](https://skyrat-ss13.github.io/Skyrat-tg/)       |
-| Skyrat 13 Discord         | [https://discord.com/invite/hGpZ4Z3](https://discord.com/invite/hGpZ4Z3) |
+| Iris Discord              | [https://discord.gg/azps5ydx2F](https://discord.gg/azps5ydx2F) |
 | Coderbus Discord          | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)               |
 
-This is Skyrat's downstream fork of /tg/station created in byond.
-
-**Please note that this repository contains sexually explicit content and is not suitable for those under the age of 18.**
+This is Iris' downstream fork of Skyrat, which in turn is a fork of /tg/station created in BYOND.
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 

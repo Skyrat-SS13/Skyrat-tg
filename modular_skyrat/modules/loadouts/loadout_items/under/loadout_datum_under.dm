@@ -243,6 +243,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
+/datum/loadout_item/under/jumpsuit/enclavesergeant
+	name = "Enclave - Sergeant"
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave
+
+/datum/loadout_item/under/jumpsuit/enclaveofficer
+	name = "Enclave - Officer"
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave/officer
+
+/datum/loadout_item/under/jumpsuit/blondie
+	name = "Blonde Cowboy Uniform"
+	item_path = /obj/item/clothing/under/rank/security/detective/cowboy/armorless
 /*
 *	MISC UNDERSUITS
 */
@@ -949,11 +960,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
 	restricted_species = list(SPECIES_AKULA)
 
-/// DONATOR
-/datum/loadout_item/under/donator
-	donator_only = TRUE
-
-/datum/loadout_item/under/donator/captain_black
+/datum/loadout_item/under/formal/captain_black
 	name  = "Captains Black Uniform"
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/black
 	restricted_roles = list(JOB_CAPTAIN)
