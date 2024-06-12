@@ -1,4 +1,4 @@
-## Skyrat 13 (/tg/station Downstream)
+## Iris Station 13 (/tg/station Downstream)
 
 [![CI Suite](https://github.com/Skyrat-SS13/Skyrat-tg/workflows/CI%20Suite/badge.svg)](https://github.com/Skyrat-SS13/Skyrat-tg/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Skyrat-SS13/Skyrat-tg.svg)](https://isitmaintained.com/project/Skyrat-SS13/Skyrat-tg "Percentage of issues still open")
@@ -18,7 +18,7 @@
 | Iris Discord              | [https://discord.gg/azps5ydx2F](https://discord.gg/azps5ydx2F) |
 | Coderbus Discord          | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)               |
 
-This is Iris' downstream fork of Skyrat, which in turn is a fork of /tg/station created in BYOND.
+This is Iris' downstream fork of Skyrat, which in turn is a downstream fork of /tg/station created in BYOND.
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
