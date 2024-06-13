@@ -243,14 +243,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
-/datum/loadout_item/under/jumpsuit/enclavesergeant
-	name = "Enclave - Sergeant"
-	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave
-
-/datum/loadout_item/under/jumpsuit/enclaveofficer
-	name = "Enclave - Officer"
-	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave/officer
-
 /datum/loadout_item/under/jumpsuit/blondie
 	name = "Blonde Cowboy Uniform"
 	item_path = /obj/item/clothing/under/rank/security/detective/cowboy/armorless
@@ -459,7 +451,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/civilian/clown/jester
 
 /datum/loadout_item/under/miscellaneous/jesteralt
-	name = "Jeset Suit (Alt)"
+	name = "Jester Suit (Alt)"
 	item_path = /obj/item/clothing/under/rank/civilian/clown/jesteralt
 
 /datum/loadout_item/under/miscellaneous/overalls
