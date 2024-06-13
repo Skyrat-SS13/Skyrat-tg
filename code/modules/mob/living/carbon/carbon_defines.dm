@@ -125,5 +125,8 @@
 
 	COOLDOWN_DECLARE(bleeding_message_cd)
 
+<<<<<<< HEAD
 
 	var/next_smell = 0 //SKYRAT EDIT ADDITION /// Cooldown for the next smell
+=======
+>>>>>>> b6369a47b47 (Mouse drag & drop refactored attack chain (#83690))
