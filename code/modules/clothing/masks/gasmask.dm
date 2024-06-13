@@ -24,8 +24,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	var/list/gas_filters
 	///Type of filter that spawns on roundstart
 	var/starting_filter_type = /obj/item/gas_filter
-	///Does the mask have an FOV?
-	var/has_fov = TRUE
 	///Cigarette in the mask
 	var/obj/item/clothing/mask/cigarette/cig
 	voice_filter = "lowpass=f=750,volume=2"
@@ -37,12 +35,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	. = ..()
 	if(!isinhands && cig)
 		. += cig.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi')
-
-/obj/item/clothing/mask/gas/Initialize(mapload)
-	. = ..()
-	init_fov()
-	if(!max_filters || !starting_filter_type)
-		return
 
 	for(var/i in 1 to max_filters)
 		var/obj/item/gas_filter/inserted_filter = new starting_filter_type(src)
@@ -154,11 +146,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		has_filter = FALSE
 	return filtered_breath
 
-/// Initializes the FoV component for the gas mask
-/obj/item/clothing/mask/gas/proc/init_fov()
-	if (has_fov)
-		AddComponent(/datum/component/clothing_fov_visor, FOV_90_DEGREES)
-
 /**
  * Getter for overall filter durability, takes into consideration all filters filter_status
  */
@@ -253,7 +240,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	icon_state = "plaguedoctor"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT|HIDEHAIR
 	inhand_icon_state = "gas_mask"
-	has_fov = FALSE
 	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/gas/syndicate
@@ -264,7 +250,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	strip_delay = 60
 	w_class = WEIGHT_CLASS_SMALL
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"
@@ -281,7 +266,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = /datum/dog_fashion/head/clown
-	has_fov = FALSE
 	var/list/clownmask_designs = list()
 	voice_filter = null // performer masks expect to be talked through
 
@@ -325,7 +309,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	righthand_file = 'icons/mob/inhands/clothing/hats_righthand.dmi'
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
@@ -338,7 +321,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
 	species_exception = list(/datum/species/golem)
-	has_fov = FALSE
 	var/list/mimemask_designs = list()
 
 /obj/item/clothing/mask/gas/mime/plasmaman
@@ -396,7 +378,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	inhand_icon_state = "owl_mask"
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"
@@ -407,14 +388,12 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem)
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/cyborg
 	name = "cyborg visor"
 	desc = "Beep boop."
 	icon_state = "death"
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/gas/owl_mask
@@ -425,14 +404,12 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	clothing_flags = MASKINTERNALS
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/carp
 	name = "carp mask"
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
 	inhand_icon_state = null
-	has_fov = FALSE
 	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/gas/tiki_mask
@@ -442,7 +419,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	inhand_icon_state = null
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 1.25)
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 	flags_cover = MASKCOVERSEYES
 	max_integrity = 100
 	actions_types = list(/datum/action/item_action/adjust)
@@ -488,7 +464,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	inhand_icon_state = "gas_atmos"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEEARS|HIDEHAIR|HIDESNOUT
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/prop
 	name = "prop gas mask"
@@ -498,7 +473,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	clothing_flags = NONE
 	flags_cover = MASKCOVERSMOUTH
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/atmosprop
 	name = "prop atmospheric gas mask"
@@ -509,7 +483,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	clothing_flags = NONE
 	flags_cover = MASKCOVERSMOUTH
 	resistance_flags = FLAMMABLE
-	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/driscoll
 	name = "driscoll mask"
