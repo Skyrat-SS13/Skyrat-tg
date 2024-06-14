@@ -379,17 +379,35 @@
 	afterattack(user, user, TRUE)
 
 /obj/item/melee/blood_magic/attack(mob/living/M, mob/living/carbon/user)
-	if(!iscarbon(user) || !IS_CULTIST(user))
-		uses = 0
-		qdel(src)
-		return
 	log_combat(user, M, "used a cult spell on", source.name, "")
 	SSblackbox.record_feedback("tally", "cult_spell_invoke", 1, "[name]")
 	M.lastattacker = user.real_name
 	M.lastattackerckey = user.ckey
+<<<<<<< HEAD
 
 /obj/item/melee/blood_magic/afterattack(atom/target, mob/living/carbon/user, proximity)
 	. = ..()
+=======
+	user.do_attack_animation(M)
+	cast_spell(M, user)
+
+/obj/item/melee/blood_magic/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!iscarbon(user) || !IS_CULTIST(user))
+		uses = 0
+		qdel(src)
+		return ITEM_INTERACT_BLOCKING
+
+	if(isliving(interacting_with))
+		return ITEM_INTERACT_SKIP_TO_ATTACK
+
+	user.do_attack_animation(interacting_with)
+	log_combat(user, interacting_with, "used a cult spell on", source.name, "")
+	SSblackbox.record_feedback("tally", "cult_spell_invoke", 1, "[name]")
+	cast_spell(interacting_with, user)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/melee/blood_magic/proc/cast_spell(atom/target, mob/living/carbon/user)
+>>>>>>> cd2f107eefb (Moves cult spells off attack_atom (#83961))
 	if(invocation)
 		user.whisper(invocation, language = /datum/language/common)
 	if(health_cost)
