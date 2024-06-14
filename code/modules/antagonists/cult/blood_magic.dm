@@ -479,6 +479,7 @@
 			to_chat(user, span_warning("There are no valid runes to teleport to!"))
 			return
 
+<<<<<<< HEAD
 		var/turf/T = get_turf(src)
 		if(is_away_level(T.z))
 			to_chat(user, span_cult_italic("You are not in the right dimension!"))
@@ -505,6 +506,44 @@
 				span_cult_italic("You speak the words of the talisman and find yourself somewhere else!"), "<i>You hear a sharp crack.</i>")
 			dest.visible_message(span_warning("There is a boom of outrushing air as something appears above the rune!"), null, "<i>You hear a boom.</i>")
 		..()
+=======
+	if(!length(potential_runes))
+		to_chat(user, span_warning("There are no valid runes to teleport to!"))
+		return
+	var/turf/T = get_turf(src)
+	if(is_away_level(T.z))
+		to_chat(user, span_cult_italic("You are not in the right dimension!"))
+		return
+	var/input_rune_key = tgui_input_list(user, "Rune to teleport to", "Teleportation Target", potential_runes) //we know what key they picked
+	if(isnull(input_rune_key))
+		return
+	if(isnull(potential_runes[input_rune_key]))
+		to_chat(user, span_warning("You must pick a valid rune!"))
+		return
+	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
+	if(QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated() || !actual_selected_rune)
+		return
+	var/turf/dest = get_turf(actual_selected_rune)
+	if(dest.is_blocked_turf(TRUE))
+		to_chat(user, span_warning("The target rune is blocked. You cannot teleport there."))
+		return
+	uses--
+	var/turf/origin = get_turf(user)
+	if(do_teleport(target, dest, channel = TELEPORT_CHANNEL_CULT))
+		origin.visible_message(
+			span_warning("Dust flows from [user]'s hand, and [user.p_they()] disappear[user.p_s()] with a sharp crack!"),
+			span_cult_italic("You speak the words of the talisman and find yourself somewhere else!"),
+			span_hear("You hear a sharp crack."),
+		)
+		dest.visible_message(
+			span_warning("There is a boom of outrushing air as something appears above the rune!"),
+			null,
+			span_hear("You hear a boom."),
+		)
+		playsound(origin, SFX_PORTAL_ENTER, 50, TRUE, SILENCED_SOUND_EXTRARANGE)
+		playsound(dest, SFX_PORTAL_ENTER, 50, TRUE, SILENCED_SOUND_EXTRARANGE)
+	return ..()
+>>>>>>> 6fea9d999d7 (Small playsound audit, particularly involving portal sounds (#83893))
 
 //Shackles
 /obj/item/melee/blood_magic/shackles
