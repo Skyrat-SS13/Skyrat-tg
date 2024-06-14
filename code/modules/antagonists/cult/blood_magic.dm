@@ -424,47 +424,6 @@
 	if(!istype(target) || IS_CULTIST(target))
 		return
 	var/datum/antagonist/cult/cultist = IS_CULTIST(user)
-<<<<<<< HEAD
-	if(!isnull(cultist))
-		var/datum/team/cult/cult_team = cultist.get_team()
-		var/effect_coef = 1 - (cult_team.cult_risen ? 0.4 : 0) - (cult_team.cult_ascendent ? 0.5 : 0)
-		user.visible_message(span_warning("[user] holds up [user.p_their()] hand, which explodes in a flash of red light!"), \
-		span_cult_italic("You attempt to stun [target] with the spell!"))
-		user.mob_light(range = 1.1, power = 2, color = LIGHT_COLOR_BLOOD_MAGIC, duration = 0.2 SECONDS)
-		if(IS_HERETIC(target))
-			to_chat(user, span_warning("Some force greater than you intervenes! [target] is protected by the Forgotten Gods!"))
-			to_chat(target, span_warning("You are protected by your faith to the Forgotten Gods."))
-			var/old_color = target.color
-			target.color = rgb(0, 128, 0)
-			animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
-
-		// SKYRAT EDIT START
-		if(IS_CLOCK(target))
-			to_chat(user, span_warning("Some force greater than you intervenes! [target] is protected by the heretic Ratvar!"))
-			to_chat(target, span_warning("You are protected by your faith to Ratvar!"))
-			var/old_color = target.color
-			target.color = rgb(190, 135, 0)
-			animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
-		// SKYRAT EDIT END
-
-		else if(target.can_block_magic())
-			to_chat(user, span_warning("The spell had no effect!"))
-		else
-			to_chat(user, span_cult_italic("In a brilliant flash of red, [target] falls to the ground!"))
-			target.Paralyze(16 SECONDS * effect_coef)
-			target.flash_act(1, TRUE)
-			if(issilicon(target))
-				var/mob/living/silicon/silicon_target = target
-				silicon_target.emp_act(EMP_HEAVY)
-			else if(iscarbon(target))
-				var/mob/living/carbon/carbon_target = target
-				carbon_target.adjust_silence(12 SECONDS * effect_coef)
-				carbon_target.adjust_stutter(30 SECONDS * effect_coef)
-				carbon_target.adjust_timed_status_effect(30 SECONDS * effect_coef, /datum/status_effect/speech/slurring/cult)
-				carbon_target.set_jitter_if_lower(30 SECONDS * effect_coef)
-		uses--
-	..()
-=======
 	var/datum/team/cult/cult_team = cultist.get_team()
 	var/effect_coef = 1 - (cult_team.cult_risen ? 0.4 : 0) - (cult_team.cult_ascendent ? 0.5 : 0)
 	user.visible_message(
@@ -479,6 +438,14 @@
 		var/old_color = target.color
 		target.color = rgb(0, 128, 0)
 		animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
+		// SKYRAT EDIT START
+		if(IS_CLOCK(target))
+			to_chat(user, span_warning("Some force greater than you intervenes! [target] is protected by the heretic Ratvar!"))
+			to_chat(target, span_warning("You are protected by your faith to Ratvar!"))
+			var/old_color = target.color
+			target.color = rgb(190, 135, 0)
+			animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
+		// SKYRAT EDIT END
 	else if(target.can_block_magic())
 		to_chat(user, span_warning("The spell had no effect!"))
 	else
@@ -496,7 +463,6 @@
 			carbon_target.set_jitter_if_lower(30 SECONDS * effect_coef)
 	uses--
 	return ..()
->>>>>>> ff6b41aa074 (Afterattack is dead, long live Afterattack (#83818))
 
 //Teleportation
 /obj/item/melee/blood_magic/teleport

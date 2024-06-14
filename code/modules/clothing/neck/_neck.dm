@@ -486,15 +486,9 @@
 		if(selling)
 			new /obj/item/holochip(get_turf(user), true_price)
 	else
-<<<<<<< HEAD
-		to_chat(user, span_warning("There is no export value for [I] or any items within it."))
-		
-	return .
-=======
 		to_chat(user, span_warning("There is no export value for [interacting_with] or any items within it."))
 
 	return ITEM_INTERACT_BLOCKING
->>>>>>> ff6b41aa074 (Afterattack is dead, long live Afterattack (#83818))
 
 /obj/item/clothing/neck/beads
 	name = "plastic bead necklace"

@@ -103,33 +103,22 @@
 /obj/item/delivery/can_be_package_wrapped()
 	return FALSE
 
-<<<<<<< HEAD
-/obj/item/stack/package_wrap/afterattack(obj/target, mob/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	if(!istype(target))
-		return
-	if(target.anchored)
-		return
-	// SKYRAT EDIT START - Cargo borgs
-	if(!amount)
-		return
-	// SKYRAT EDIT END
-=======
 /obj/item/stack/package_wrap/storage_insert_on_interaction(datum/storage, atom/storage_holder, mob/user)
 	if(isitem(storage_holder))
 		// Don't insert if the target can be wrapped
 		var/obj/item/item = storage_holder
 		return !item.can_be_package_wrapped()
 	return TRUE
->>>>>>> ff6b41aa074 (Afterattack is dead, long live Afterattack (#83818))
 
 /obj/item/stack/package_wrap/interact_with_atom(obj/interacting_with, mob/living/user, list/modifiers)
 	if(!isobj(interacting_with))
 		return NONE
 	if(interacting_with.anchored)
 		return NONE
+	// SKYRAT EDIT START - Cargo borgs
+	if(!amount)
+		return
+	// SKYRAT EDIT END
 
 	if(isitem(interacting_with))
 		var/obj/item/item = interacting_with
