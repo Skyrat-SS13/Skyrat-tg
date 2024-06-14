@@ -239,7 +239,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		user.balloon_alert(user, "not enough material!")
 		return ITEM_INTERACT_BLOCKING
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
-	if(!do_after(user, 4 SECONDS, build_on))
+	if(!do_after(user, 4 SECONDS * skill_modifier, build_on))
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
 		user.balloon_alert(user, "something is blocking the tile!")
