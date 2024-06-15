@@ -131,7 +131,7 @@
 	amount = 5
 
 /obj/item/ceramic/brick
-	name = "clay brick"
+	name = "clay bricks"
 	desc = "A few block of clay, ready to be fired into bricks!"
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "claybricks"
