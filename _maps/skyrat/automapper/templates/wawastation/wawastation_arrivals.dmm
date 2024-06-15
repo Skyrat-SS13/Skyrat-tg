@@ -182,6 +182,9 @@
 /area/station/hallway/secondary/entry)
 "lG" = (
 /obj/effect/turf_decal/trimline/green/filled/corner,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "lN" = (
@@ -366,6 +369,9 @@
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "xY" = (
@@ -377,12 +383,6 @@
 	name = "Interlink shuttle display"
 	},
 /turf/open/floor/catwalk_floor/flat_white,
-/area/station/hallway/secondary/entry)
-"yn" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "yD" = (
 /obj/effect/turf_decal/stripes/line{
@@ -462,7 +462,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/siding,
-/obj/structure/closet/emcloset,
+/obj/structure/closet/emcloset/wall{
+	pixel_x = 32
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "Dm" = (
@@ -493,9 +495,7 @@
 /turf/template_noop,
 /area/station/service/janitor)
 "Es" = (
-/obj/effect/turf_decal/siding{
-	dir = 1
-	},
+/obj/effect/turf_decal/trimline/green/filled/line,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -519,9 +519,6 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/hangover,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "EW" = (
@@ -691,9 +688,6 @@
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/entry)
 "MQ" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
 /obj/machinery/door/airlock/external{
 	name = "Port Docking Bay 1"
 	},
@@ -727,7 +721,9 @@
 /area/station/hallway/secondary/entry)
 "Nv" = (
 /obj/effect/turf_decal/trimline/green/filled/corner,
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "NL" = (
@@ -747,10 +743,6 @@
 	},
 /obj/effect/turf_decal/siding{
 	dir = 1
-	},
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
@@ -817,8 +809,11 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 6
 	},
-/obj/structure/closet/emcloset,
 /obj/machinery/status_display/evac/directional/south,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/entry)
 "Vt" = (
@@ -829,9 +824,6 @@
 /area/station/service/janitor)
 "Wv" = (
 /obj/effect/turf_decal/siding/corner{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/iron/white,
@@ -1303,7 +1295,7 @@ Ju
 SE
 SE
 SE
-yn
+SE
 Nv
 NL
 NL
@@ -1327,7 +1319,7 @@ Zx
 Zx
 Zx
 Wv
-aI
+Es
 SE
 SE
 SE
@@ -1349,7 +1341,7 @@ Rk
 EW
 EW
 EW
-Es
+lj
 wM
 SE
 SE
