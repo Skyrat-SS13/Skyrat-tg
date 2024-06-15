@@ -11,6 +11,7 @@
 	greyscale_config_inhand_right = /datum/greyscale_config/sneakers/inhand_right
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_config_worn_digi = /datum/greyscale_config/sneakers/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+	interaction_flags_mouse_drop = NEED_HANDS
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
@@ -148,10 +149,9 @@
 			return FALSE
 	return ..()
 
-/obj/item/clothing/shoes/sneakers/orange/MouseDrop(atom/over)
-	var/mob/m = usr
-	if(ishuman(m))
-		var/mob/living/carbon/human/c = m
+/obj/item/clothing/shoes/sneakers/orange/mouse_drop_dragged(atom/over_object, mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/c = user
 		if(c.shoes == src && attached_cuffs)
 			to_chat(c, span_warning("You need help taking these off!"))
 			return
