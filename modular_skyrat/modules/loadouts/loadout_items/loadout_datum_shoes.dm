@@ -6,7 +6,7 @@
 GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes))
 
 /datum/loadout_item/shoes
-	category = LOADOUT_ITEM_SHOES
+	category = OFFSET_SHOES
 
 /datum/loadout_item/shoes/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
 	if(initial(outfit_important_for_life.shoes))

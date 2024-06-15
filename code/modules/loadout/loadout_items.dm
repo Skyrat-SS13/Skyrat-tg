@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
  * * equipper - If we're equipping out outfit onto a mob at the time, this is the mob it is equipped on. Can be null.
  * * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
  */
-/datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, loadout_placement_preference) // SKYRAT EDIT CHANGE - Added loadout_placement_preference
 	if(!visuals_only)
 		LAZYADD(outfit.backpack_contents, item_path)
 

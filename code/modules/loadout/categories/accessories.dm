@@ -52,9 +52,11 @@
 	manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
 	return TRUE // Update UI
 
-/datum/loadout_item/accessory/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(outfit.accessory)
+/datum/loadout_item/accessory/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, loadout_placement_preference) // SKYRAT EDIT CHANGE - Added loadout_placement_preference
+	// SKYRAT EDIT CHANGE
+	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.accessory)
 		LAZYADD(outfit.backpack_contents, outfit.accessory)
+	// SKYRAT EDIT END
 	outfit.accessory = item_path
 
 /datum/loadout_item/accessory/on_equip_item(

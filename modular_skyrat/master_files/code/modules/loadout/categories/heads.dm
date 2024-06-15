@@ -1,53 +1,6 @@
 /*
-*	LOADOUT ITEM DATUMS FOR THE HEAD SLOT
-*/
-
-/// Head Slot Items (Moves overrided items to backpack)
-GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/head))
-
-/datum/loadout_item/head
-	category = LOADOUT_ITEM_HEAD
-
-/datum/loadout_item/head/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(initial(outfit_important_for_life.head))
-		.. ()
-		return TRUE
-
-/datum/loadout_item/head/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
-		if(outfit.head)
-			LAZYADD(outfit.backpack_contents, outfit.head)
-		outfit.head = item_path
-	else
-		outfit.head = item_path
-
-/*
 *	BEANIES
 */
-
-/datum/loadout_item/head/white_beanie
-	name = "Recolorable Beanie"
-	item_path = /obj/item/clothing/head/beanie
-
-/datum/loadout_item/head/black_beanie
-	name = "Black Beanie"
-	item_path = /obj/item/clothing/head/beanie/black
-
-/datum/loadout_item/head/red_beanie
-	name = "Red Beanie"
-	item_path = /obj/item/clothing/head/beanie/red
-
-/datum/loadout_item/head/dark_blue_beanie
-	name = "Dark Blue Beanie"
-	item_path = /obj/item/clothing/head/beanie/darkblue
-
-/datum/loadout_item/head/yellow_beanie
-	name = "Yellow Beanie"
-	item_path = /obj/item/clothing/head/beanie/yellow
-
-/datum/loadout_item/head/orange_beanie
-	name = "Orange Beanie"
-	item_path = /obj/item/clothing/head/beanie/orange
 
 /datum/loadout_item/head/rastafarian
 	name = "Rastafarian Cap"
@@ -61,11 +14,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	BERETS
 */
 
-/datum/loadout_item/head/greyscale_beret
-	name = "Greyscale Beret"
-	item_path = /obj/item/clothing/head/beret
-
-/datum/loadout_item/head/greyscale_beret/badge
+/datum/loadout_item/head/beret_with_badge
 	name = "Greyscale Beret with Badge"
 	item_path = /obj/item/clothing/head/beret/badge
 
@@ -385,12 +334,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/maidhead
 	name = "Simple Maid Headband"
 	item_path = /obj/item/clothing/head/costume/skyrat/maid
-	additional_tooltip_contents = list("Small headband that only fits on top the head.")
+	additional_displayed_text = list("Small headband that only fits on top the head.")
 
 /datum/loadout_item/head/maidhead2
 	name = "Frilly Maid Headband"
 	item_path = /obj/item/clothing/head/costume/maidheadband
-	additional_tooltip_contents = list("Larger headband from the maid rework. Fits around head and ears.")
+	additional_displayed_text = list("Larger headband from the maid rework. Fits around head and ears.")
 
 /datum/loadout_item/head/wig
 	name = "Wig"
@@ -640,57 +589,60 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Deckers Hat"
 	item_path = /obj/item/clothing/head/costume/deckers
 
-/datum/loadout_item/head/saints
-	name = "Fancy Hat"
-	item_path = /obj/item/clothing/head/costume/fancy
-
 /*
 *	DONATOR
 */
 
-/datum/loadout_item/head/donator
-	donator_only = TRUE
 
 /*
 *	FLOWERS
 */
 
-/datum/loadout_item/head/donator/poppy
+/datum/loadout_item/head/poppy
 	name = "Poppy Flower"
 	item_path = /obj/item/food/grown/poppy
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/lily
+/datum/loadout_item/head/lily
 	name = "Lily Flower"
 	item_path = /obj/item/food/grown/poppy/lily
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/geranium
+/datum/loadout_item/head/geranium
 	name = "Geranium Flower"
 	item_path = /obj/item/food/grown/poppy/geranium
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/fraxinella
+/datum/loadout_item/head/fraxinella
 	name = "Fraxinella Flower"
 	item_path = /obj/item/food/grown/poppy/geranium/fraxinella
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/harebell
+/datum/loadout_item/head/harebell
 	name = "Harebell Flower"
 	item_path = /obj/item/food/grown/harebell
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/rose
+/datum/loadout_item/head/rose
 	name = "Rose Flower"
 	item_path = /obj/item/food/grown/rose
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/carbon_rose
+/datum/loadout_item/head/carbon_rose
 	name = "Carbon Rose Flower"
 	item_path = /obj/item/grown/carbon_rose
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/sunflower
+/datum/loadout_item/head/sunflower
 	name = "Sunflower"
 	item_path = /obj/item/food/grown/sunflower
+	donator_only = TRUE
 
-/datum/loadout_item/head/donator/rainbow_bunch
+/datum/loadout_item/head/rainbow_bunch
 	name = "Rainbow Bunch"
 	item_path = /obj/item/food/grown/rainbow_flower
-	additional_tooltip_contents = list(TOOLTIP_RANDOM_COLOR)
+	additional_displayed_text = list(TOOLTIP_RANDOM_COLOR)
+	donator_only = TRUE
 
 // Legacy unpaintable cowboy hat because it fits a character better
 /datum/loadout_item/head/cowboyhat_legacy

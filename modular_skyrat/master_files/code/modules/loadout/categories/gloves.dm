@@ -1,25 +1,16 @@
-/*
-*	LOADOUT ITEM DATUMS FOR THE HAND SLOT
-*/
-
-/// Glove Slot Items (Deletes overrided items)
-GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/gloves))
+/datum/loadout_category/gloves
+	category_name = "Gloves"
+	category_ui_icon = FA_ICON_HAND
+	type_to_generate = /datum/loadout_item/gloves
+	tab_order = /datum/loadout_category/head::tab_order + 8
 
 /datum/loadout_item/gloves
-	category = LOADOUT_ITEM_GLOVES
+	abstract_type = /datum/loadout_item/gloves
 
-/datum/loadout_item/gloves/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(initial(outfit_important_for_life.gloves))
-		.. ()
-		return TRUE
-
-/datum/loadout_item/gloves/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
-		if(outfit.gloves)
-			LAZYADD(outfit.backpack_contents, outfit.gloves)
-		outfit.gloves = item_path
-	else
-		outfit.gloves = item_path
+/datum/loadout_item/gloves/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only, loadout_placement_preference)
+	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.gloves)
+		LAZYADD(outfit.backpack_contents, outfit.gloves)
+	outfit.gloves = item_path
 
 /datum/loadout_item/gloves/fingerless
 	name = "Fingerless Gloves"
@@ -64,7 +55,7 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 /datum/loadout_item/gloves/yellow
 	name = "Yellow Gloves"
 	item_path = /obj/item/clothing/gloves/color/ffyellow
-	additional_tooltip_contents = list("NON-INSULATING - This item is purely cosmetic and provide no shock insulation.")
+	additional_displayed_text = list("NON-INSULATING - This item is purely cosmetic and provide no shock insulation.")
 
 /datum/loadout_item/gloves/white
 	name = "White Gloves"
@@ -114,9 +105,7 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 *	DONATOR
 */
 
-/datum/loadout_item/gloves/donator
-	donator_only = TRUE
-
-/datum/loadout_item/gloves/donator/military
+/datum/loadout_item/gloves/military
 	name = "Military Gloves"
 	item_path = /obj/item/clothing/gloves/military
+	donator_only = TRUE

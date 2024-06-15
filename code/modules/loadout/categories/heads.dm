@@ -8,12 +8,16 @@
 /datum/loadout_item/head
 	abstract_type = /datum/loadout_item/head
 
-/datum/loadout_item/head/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/head/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, loadout_placement_preference) // SKYRAT EDIT CHANGE - Added loadout_placement_preference
 	if(equipper.dna?.species?.outfit_important_for_life)
 		if(!visuals_only)
 			to_chat(equipper, "Your loadout helmet was not equipped directly due to your species outfit.")
 			LAZYADD(outfit.backpack_contents, item_path)
 	else
+		// SKYRAT EDIT ADDITION
+		if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.head)
+			LAZYADD(outfit.backpack_contents, outfit.head)
+		// SKYRAT EDIT END
 		outfit.head = item_path
 
 /datum/loadout_item/head/beanie

@@ -30,6 +30,8 @@
 
 	var/list/preference_list = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_datums = loadout_list_to_datums(preference_list)
+	var/obj/item/storage/briefcase/empty/travel_suitcase
+	var/loadout_placement_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 	// Slap our things into the outfit given
 	for(var/datum/loadout_item/item as anything in loadout_datums)
 		// SKYRAT EDIT ADDITION
@@ -47,12 +49,23 @@
 			if(client)
 				to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
 			continue
-		// SKYRAT EDIT END
-		item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
+
+		if(loadout_placement_preference == LOADOUT_OVERRIDE_CASE)
+			if(!travel_suitcase)
+				travel_suitcase = new
+				new item.item_path(travel_suitcase)
+		else // SKYRAT EDIT END
+			item.insert_path_into_outfit(equipped_outfit, src, visuals_only, loadout_placement_preference)
 	// Equip the outfit loadout items included
 	if(!equipped_outfit.equip(src, visuals_only))
 		return FALSE
-	// Handle any snowflake on_equips
+
+	// SKYRAT EDIT ADDITION
+	if(travel_suitcase)
+		put_in_hands(travel_suitcase)
+	// SKYRAT EDIT END
+
+	// Handle any snowflake on_equips.
 	var/list/new_contents = get_all_gear()
 	var/update = NONE
 	for(var/datum/loadout_item/item as anything in loadout_datums)
@@ -98,12 +111,6 @@
 
 // SKYRAT EDIT ADDITION
 /*
- * Called after the item is equipped on [equipper], at the end of character setup.
- */
-/datum/loadout_item/proc/post_equip_item(datum/preferences/preference_source, mob/living/carbon/human/equipper)
-	return FALSE
-
-/*
  * Removes all invalid paths from loadout lists.
  *
  * passed_list - the loadout list we're sanitizing.
@@ -124,4 +131,7 @@
 			LAZYREMOVE(list_to_clean, path)
 
 	return list_to_clean
+
+/obj/item/storage/briefcase/empty/PopulateContents()
+	return
 // SKYRAT EDIT END

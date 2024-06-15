@@ -1,47 +1,11 @@
 /*
-*	LOADOUT ITEM DATUMS FOR THE EYE SLOT
-*/
-
-/// Glasses Slot Items (Moves overrided items to backpack)
-GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/glasses))
-
-/datum/loadout_item/glasses
-	category = LOADOUT_ITEM_GLASSES
-
-/datum/loadout_item/glasses/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(initial(outfit_important_for_life.glasses))
-		.. ()
-		return TRUE
-
-/datum/loadout_item/glasses/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
-		if(outfit.glasses)
-			LAZYADD(outfit.backpack_contents, outfit.glasses)
-		outfit.glasses = item_path
-	else
-		outfit.glasses = item_path
-
-/datum/loadout_item/glasses/post_equip_item(datum/preferences/preference_source, mob/living/carbon/human/equipper)
-	var/obj/item/clothing/glasses/equipped_glasses = locate(item_path) in equipper.get_equipped_items()
-	if (!equipped_glasses)
-		return
-	if(equipped_glasses.glass_colour_type)
-		equipper.update_glasses_color(equipped_glasses, TRUE)
-	if(equipped_glasses.tint)
-		equipper.update_tint()
-	if(equipped_glasses.vision_flags \
-		|| equipped_glasses.invis_override \
-		|| equipped_glasses.invis_view \
-		|| !isnull(equipped_glasses.color_cutoffs))
-		equipper.update_sight()
-/*
 *	PRESCRIPTION GLASSES
 */
 
 /datum/loadout_item/glasses/prescription_glasses
 	name = "Glasses"
 	item_path = /obj/item/clothing/glasses/regular
-	additional_tooltip_contents = list("PRESCRIPTION - This item functions with the 'nearsighted' quirk.")
+	additional_displayed_text = list("PRESCRIPTION")
 
 /datum/loadout_item/glasses/prescription_glasses/circle_glasses
 	name = "Circle Glasses"
@@ -111,9 +75,6 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Medical Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch/medical
 
-/datum/loadout_item/glasses/blindfold
-	name = "Blindfold"
-	item_path = /obj/item/clothing/glasses/blindfold
 
 /datum/loadout_item/glasses/fakeblindfold
 	name = "Fake Blindfold"
@@ -289,9 +250,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 *	DONATOR
 */
 
-/datum/loadout_item/glasses/donator
-	donator_only = TRUE
-
-/datum/loadout_item/glasses/donator/fake_sunglasses
+/datum/loadout_item/glasses/fake_sunglasses
 	name = "Fake Sunglasses"
 	item_path = /obj/item/clothing/glasses/fake_sunglasses
+	donator_only = TRUE

@@ -332,8 +332,8 @@
 		formatted_item["is_species_restricted"] = !isnull(item.restricted_species)
 		formatted_item["is_donator_only"] = !isnull(item.donator_only)
 		formatted_item["is_ckey_whitelisted"] = !isnull(item.ckeywhitelist)
-		if(LAZYLEN(item.additional_tooltip_contents))
-			formatted_item["tooltip_text"] = item.additional_tooltip_contents.Join("\n")
+		if(LAZYLEN(item.additional_displayed_text))
+			formatted_item["tooltip_text"] = item.additional_displayed_text.Join("\n")
 
 		formatted_list[array_index++] = formatted_item
 
