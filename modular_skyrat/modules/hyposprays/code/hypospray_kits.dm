@@ -169,7 +169,7 @@
 	return TRUE
 
 
-/obj/item/storage/hypospraykit/CtrlShiftClick(mob/user, obj/item/I)
+/obj/item/storage/hypospraykit/click_ctrl_shift(mob/user, obj/item/I)
 	case_menu(user)
 
 //END OF HYPOSPRAY CASE MENU CODE

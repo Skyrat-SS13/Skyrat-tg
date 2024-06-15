@@ -38,7 +38,7 @@
 	. = ..()
 	. += span_notice("Ctrl-Shift-Click to reskin or set a custom color.")
 
-/obj/item/reagent_containers/cup/vial/CtrlShiftClick(mob/user, obj/item/I)
+/obj/item/reagent_containers/cup/vial/click_ctrl_shift(mob/user, obj/item/I)
 	current_skin = null
 	icon_state = initial(icon_state)
 	icon = initial(icon)
