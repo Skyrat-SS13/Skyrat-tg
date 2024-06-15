@@ -576,23 +576,6 @@
 		remove_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
-<<<<<<< HEAD
-/mob/living/carbon/update_stamina()
-	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold)
-		if (!stat)
-			enter_stamcrit()
-	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		filters -= FILTER_STAMINACRIT
-	else
-		return
-	update_stamina_hud()
-
-=======
->>>>>>> 4b8127a777e (Incoming stamina damage while in stamcrit has diminishing returns applied (#83445))
 /mob/living/carbon/update_sight()
 	if(!client)
 		return
