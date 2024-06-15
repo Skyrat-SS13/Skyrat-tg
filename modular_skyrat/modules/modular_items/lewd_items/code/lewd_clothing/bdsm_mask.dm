@@ -123,16 +123,16 @@
 	. = ..()
 
 // To make in unremovable without helping when mask is on (for MouseDrop)
-/obj/item/clothing/mask/gas/bdsm_mask/MouseDrop(atom/over_object)
-	var/mob/target_mob = usr
-	var/mob/living/carbon/human/target_carbon = usr
+/obj/item/clothing/mask/gas/bdsm_mask/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
+	var/mob/target_mob = user
+	var/mob/living/carbon/human/target_carbon = user
 	if(ismecha(target_mob.loc)) // Stops inventory actions in a mech
 		return
 	if(!target_mob.incapacitated())
 		if(loc == target_mob)
 			if(istype(over_object, /atom/movable/screen/inventory/hand))
 				var/atom/movable/screen/inventory/hand/hand = over_object
-				if(iscarbon(usr))
+				if(iscarbon(user))
 					if(mask_on == TRUE)
 						if(src == target_carbon.wear_mask || . == target_carbon.wear_mask)
 							if(!do_after(target_carbon, 60 SECONDS, target = src))
@@ -141,14 +141,14 @@
 							else
 								to_chat(target_mob, span_notice("You remove the gas mask."))
 				if(target_mob.putItemFromInventoryInHandIfPossible(src, hand.held_index))
-					add_fingerprint(usr)
+					add_fingerprint(user)
 				. = ..()
 
 // Handler for clicking on a slot in a mask by hand with a filter
-/datum/storage/pockets/small/bdsm_mask/on_attackby(datum/source, obj/item/used_item, mob/user, params)
+/datum/storage/pockets/small/bdsm_mask/on_item_interact(datum/source, mob/user, obj/item/thing, params)
 	. = ..()
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
-	if(istype(used_item, /obj/item/reagent_containers/cup/lewd_filter))
+	if(istype(thing, /obj/item/reagent_containers/cup/lewd_filter))
 		if(worn_mask) // Null check
 			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask)) // Check that the mask is of the correct type
 				if(worn_mask.mask_on == TRUE)
@@ -367,9 +367,9 @@
 	return ..() || ((obj_flags & CAN_BE_HIT) && used_item.attack_atom(src, user))
 
 // Mouse drop handler
-/obj/item/reagent_containers/cup/lewd_filter/MouseDrop(atom/over_object)
-	var/mob/affected_mob = usr
-	var/mob/living/carbon/human/affected_human = usr
+/obj/item/reagent_containers/cup/lewd_filter/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
+	var/mob/affected_mob = user
+	var/mob/living/carbon/human/affected_human = user
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = affected_human.get_item_by_slot(ITEM_SLOT_MASK)
 
 	if(ismecha(affected_mob.loc)) // Stops inventory actions in a mech
@@ -377,15 +377,15 @@
 
 	if(!affected_mob.incapacitated())
 		if(loc == affected_mob)
-			if(iscarbon(usr))
+			if(iscarbon(user))
 				if(worn_mask.mask_on == TRUE)
 					if(istype(over_object, /atom/movable/screen/inventory/hand))
 						// Place for text about the impossibility of detaching the filter
-						to_chat(usr, span_warning("You can't detach the filter while the mask is locked!"))
+						to_chat(user, span_warning("You can't detach the filter while the mask is locked!"))
 						return
 					else
 						// Place for text about the impossibility to attach a filter
-						to_chat(usr, span_warning("You can't attach a filter while the mask is locked!"))
+						to_chat(user, span_warning("You can't attach a filter while the mask is locked!"))
 						return
-			add_fingerprint(usr)
+			add_fingerprint(user)
 		. = ..()

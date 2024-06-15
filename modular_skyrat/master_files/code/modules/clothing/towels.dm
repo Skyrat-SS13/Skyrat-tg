@@ -256,7 +256,7 @@
 	return CLICK_ACTION_SUCCESS
 
 
-/obj/item/towel/CtrlClick(mob/user)
+/obj/item/towel/item_ctrl_click(mob/user)
 	. = ..()
 
 	if(. == FALSE)

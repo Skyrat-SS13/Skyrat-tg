@@ -38,7 +38,7 @@
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_attack))
 	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK, PROC_REF(on_afterattack))
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SECONDARY, PROC_REF(on_attack_secondary))
-	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK_SECONDARY, PROC_REF(on_afterattack_secondary))
+	RegisterSignal(parent, COMSIG_ITEM_INTERACTING_WITH_ATOM_SECONDARY, PROC_REF(on_afterattack_secondary))
 
 /datum/component/kinetic_crusher/Destroy(force)
 	QDEL_LIST(stored_trophies) //dont be a dummy
