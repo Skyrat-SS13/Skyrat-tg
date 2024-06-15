@@ -74,7 +74,8 @@
 	breasts_icon_overlay.icon_state = "none"
 
 //Plug to bypass the bug with instant suit equip/drop
-/obj/item/clothing/under/misc/latex_catsuit/MouseDrop(atom/over_object)
+/obj/item/clothing/under/misc/latex_catsuit/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
+	return
 
 /obj/item/clothing/under/misc/latex_catsuit/Initialize(mapload)
 	. = ..()

@@ -49,6 +49,17 @@
 	/// Used for GAGS-ified hypos.
 	var/gags_bodystate = "hypo2_normal"
 
+/obj/item/hypospray/mkii/piercing
+	name = "hypospray mk.II combat"
+	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
+	icon_state = "piercinghypo2"
+	desc = "The combat variant of DeForest Mk. II hypospray, able to pierce through thick armor and quickly inject the chemicals."
+	inject_wait = WAIT_INJECT
+	spray_wait = WAIT_SPRAY
+	spray_self = COMBAT_SELF_SPRAY
+	inject_self = COMBAT_SELF_INJECT
+	penetrates = INJECT_CHECK_PENETRATE_THICK
+
 /obj/item/hypospray/mkii/deluxe
 	name = "hypospray mk.II deluxe"
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
@@ -135,7 +146,7 @@
 		. += "It has no vial loaded in."
 	. += span_notice("Ctrl-Shift-Click to change up the colors or reset them.")
 
-/obj/item/hypospray/mkii/CtrlShiftClick(mob/user, obj/item/I)
+/obj/item/hypospray/mkii/click_ctrl_shift(mob/user, obj/item/I)
 	var/choice = tgui_input_list(user, "GAGSify the hypo or reset to default?", "Fashion", list("GAGS", "Nope"))
 	if(choice == "GAGS")
 		icon_state = gags_bodystate
@@ -299,8 +310,8 @@
 	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units."))
 	update_appearance()
 
-/obj/item/hypospray/mkii/afterattack_secondary(atom/target, mob/living/user, proximity)
-	return SECONDARY_ATTACK_CALL_NORMAL
+/obj/item/hypospray/mkii/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/hypospray/mkii/attack_hand(mob/living/user)
 	if(user && loc == user && user.is_holding(src))
