@@ -17,12 +17,9 @@
 
 /datum/element/drag_pickup/proc/pick_up(atom/source, atom/over, mob/user)
 	SIGNAL_HANDLER
-<<<<<<< HEAD
-=======
 
->>>>>>> 373cd851d88 (Fix mousedrop handling on some atoms (#83971))
 	var/mob/living/picker = user
-	if(!istype(picker) || picker.incapacitated() || !source.Adjacent(picker))
+	if(!istype(picker) || !user.can_perform_action(source, FORBID_TELEKINESIS_REACH))
 		return
 
 	if(over == picker)
