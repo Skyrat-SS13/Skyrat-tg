@@ -13,17 +13,16 @@
 /obj/structure/sign/flag/welder_act(mob/living/user, obj/item/I)
 	return
 
-/obj/structure/sign/flag/MouseDrop(over_object, src_location, over_location)
-	. = ..()
-	if(over_object == usr && Adjacent(usr))
+/obj/structure/sign/flag/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
+	if(over == user && Adjacent(user))
 		if(!item_flag || src.obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION)
 			return
-		if(!usr.can_perform_action(src, NEED_DEXTERITY))
+		if(!user.can_perform_action(src, NEED_DEXTERITY))
 			return
-		usr.visible_message(span_notice("[usr] grabs and folds \the [src.name]."), span_notice("You grab and fold \the [src.name]."))
+		user.visible_message(span_notice("[user] grabs and folds \the [src.name]."), span_notice("You grab and fold \the [src.name]."))
 		var/obj/item/flag_item = new item_flag(loc)
 		TransferComponents(flag_item)
-		usr.put_in_hands(flag_item)
+		user.put_in_hands(flag_item)
 		qdel(src)
 
 /obj/structure/sign/flag/ssc
