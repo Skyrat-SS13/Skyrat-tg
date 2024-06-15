@@ -63,6 +63,25 @@
 	QDEL_NULL(device)
 	QDEL_NULL(board)
 	return ..()
+<<<<<<< HEAD
+=======
+
+/obj/machinery/button/proc/setup_device()
+	if(id && istype(device, /obj/item/assembly/control))
+		var/obj/item/assembly/control/control_device = device
+		control_device.id = id
+	initialized_button = TRUE
+
+/obj/machinery/button/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(id)
+		id = "[port.shuttle_id]_[id]"
+		setup_device()
+
+
+/**
+ * APPEARANCE
+ */
+>>>>>>> 5dd87f3ec16 (Fix button frame hard delete (#83969))
 
 /obj/machinery/button/update_icon_state()
 	icon_state = "[base_icon_state][skin]"
