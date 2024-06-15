@@ -61,6 +61,23 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	/// Reskin options of this item if it can be reskinned.
 	VAR_FINAL/list/cached_reskin_options
 
+	//SKYRAT EDIT ADDITION
+		/// If set, it's a list containing ckeys which only can get the item
+	var/list/ckeywhitelist
+	/// If set, is a list of job names of which can get the loadout item
+	var/list/restricted_roles
+	/// If set, is a list of job names of which can't get the loadout item
+	var/list/blacklisted_roles
+	/// If set, is a list of species which can get the loadout item
+	var/list/restricted_species
+	/// Whether the item is restricted to supporters
+	var/donator_only
+	/// Whether the item requires a specific season in order to be available
+	var/required_season = null
+	/// If the item won't appear when the ERP config is disabled
+	var/erp_item = FALSE
+
+
 /datum/loadout_item/New(category)
 	src.category = category
 
@@ -369,3 +386,4 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		))
 
 	return reskins
+

@@ -15,7 +15,8 @@
 	datum/outfit/outfit = /datum/outfit,
 	datum/preferences/preference_source,
 	visuals_only = FALSE,
-)
+	datum/job/equipping,
+) // SKYRAT EDIT CHANGE - Added equipping param
 	if(isnull(preference_source))
 		return equipOutfit(outfit, visuals_only)
 
@@ -31,6 +32,22 @@
 	var/list/loadout_datums = loadout_list_to_datums(preference_list)
 	// Slap our things into the outfit given
 	for(var/datum/loadout_item/item as anything in loadout_datums)
+		// SKYRAT EDIT ADDITION
+		if(item.restricted_roles && equipping && !(equipping.title in item.restricted_roles))
+			if(client)
+				to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
+			continue
+
+		if(item.blacklisted_roles && equipping && (equipping.title in item.blacklisted_roles))
+			if(client)
+				to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+			continue
+
+		if(item.restricted_species && !(dna.species.id in item.restricted_species))
+			if(client)
+				to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
+			continue
+		// SKYRAT EDIT END
 		item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
 	// Equip the outfit loadout items included
 	if(!equipped_outfit.equip(src, visuals_only))
@@ -78,3 +95,33 @@
 		datums += actual_datum
 
 	return datums
+
+// SKYRAT EDIT ADDITION
+/*
+ * Called after the item is equipped on [equipper], at the end of character setup.
+ */
+/datum/loadout_item/proc/post_equip_item(datum/preferences/preference_source, mob/living/carbon/human/equipper)
+	return FALSE
+
+/*
+ * Removes all invalid paths from loadout lists.
+ *
+ * passed_list - the loadout list we're sanitizing.
+ *
+ * returns a list
+ */
+/proc/sanitize_loadout_list(list/passed_list)
+	RETURN_TYPE(/list)
+
+	var/list/list_to_clean = LAZYLISTDUPLICATE(passed_list)
+	for(var/path in list_to_clean)
+		if(!ispath(path))
+			stack_trace("invalid path found in loadout list! (Path: [path])")
+			LAZYREMOVE(list_to_clean, path)
+
+		else if(!(path in GLOB.all_loadout_datums))
+			stack_trace("invalid loadout slot found in loadout list! Path: [path]")
+			LAZYREMOVE(list_to_clean, path)
+
+	return list_to_clean
+// SKYRAT EDIT END

@@ -175,23 +175,6 @@
 	name = "Pre-Approved Cyborg Candidate dogtag"
 	display = "This employee has been screened for negative mental traits to an acceptable level of accuracy, and is approved for the NT Cyborg program as an alternative to medical resuscitation."
 
-<<<<<<< HEAD
-/* MODULAR SKYRAT - OVERRIDDEN IN (\modular_skyrat\modules\customization\modules\clothing\under\accessories.dm)
-/// Reskins for the pride pin accessory, mapped by display name to icon state
-GLOBAL_LIST_INIT(pride_pin_reskins, list(
-	"Rainbow Pride" = "pride",
-	"Bisexual Pride" = "pride_bi",
-	"Pansexual Pride" = "pride_pan",
-	"Asexual Pride" = "pride_ace",
-	"Non-binary Pride" = "pride_enby",
-	"Transgender Pride" = "pride_trans",
-	"Intersex Pride" = "pride_intersex",
-	"Lesbian Pride" = "pride_lesbian",
-))
-*/
-
-=======
->>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 /obj/item/clothing/accessory/pride
 	name = "pride pin"
 	desc = "A Nanotrasen Diversity & Inclusion Center-sponsored holographic pin to show off your pride, reminding the crew of their unwavering commitment to equity, diversity, and inclusion!"

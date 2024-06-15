@@ -7,14 +7,11 @@ import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
-<<<<<<< HEAD
 // SKYRAT EDIT
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
-=======
 import { LoadoutPage } from './loadout/index';
->>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
 import { QuirksPage } from './QuirksPage';

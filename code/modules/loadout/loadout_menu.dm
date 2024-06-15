@@ -28,7 +28,7 @@
 	if(params["deselect"])
 		deselect_item(interacted_item)
 	else
-		select_item(interacted_item)
+		select_item(interacted_item, user) // SKYRAT EDIT CHANGE - Added user param
 	return TRUE
 
 /datum/preference_middleware/loadout/proc/action_clear_all(list/params, mob/user)
@@ -65,7 +65,7 @@
 	return FALSE
 
 /// Select [path] item to [category_slot] slot.
-/datum/preference_middleware/loadout/proc/select_item(datum/loadout_item/selected_item)
+/datum/preference_middleware/loadout/proc/select_item(datum/loadout_item/selected_item, mob/user) // SKYRAT EDIT CHANGE - Added user param
 	var/list/loadout = preferences.read_preference(/datum/preference/loadout)
 	var/list/datum/loadout_item/loadout_datums = loadout_list_to_datums(loadout)
 	for(var/datum/loadout_item/item as anything in loadout_datums)
@@ -73,6 +73,15 @@
 			continue
 		if(!item.category.handle_duplicate_entires(src, item, selected_item, loadout_datums))
 			return
+		// SKYRAT EDIT ADDITION
+		if(item.ckeywhitelist && item.ckeywhitelist != user.ckey)
+			to_chat(user, span_warning("You cannot select this item!"))
+			return
+
+		if(item.donator_only && !GLOB.donator_list[user.ckey])
+			to_chat(user, span_warning("That item is for donators only."))
+			return
+		// SKYRAT EDIT END
 
 	LAZYSET(loadout, selected_item.item_path, list())
 	preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)

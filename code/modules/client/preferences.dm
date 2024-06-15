@@ -259,17 +259,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 		if ("rotate")
-<<<<<<< HEAD
 			/* SKYRAT EDIT - Bi-directional prefs menu rotation - ORIGINAL:
 			character_preview_view.dir = turn(character_preview_view.dir, -90)
 			*/ // ORIGINAL END - SKYRAT EDIT START:
 			var/backwards = params["backwards"]
-			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
+			character_preview_view.setDir(turn(character_preview_view.dir, backwards ? 90 : -90))
 			// SKYRAT EDIT END
 
-=======
-			character_preview_view.setDir(turn(character_preview_view.dir, -90))
->>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 			return TRUE
 		if ("set_preference")
 			var/requested_preference_key = params["preference"]
@@ -327,16 +323,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if("update_preview")
 			preview_pref = params["updated_preview"]
 			character_preview_view.update_body()
-			return TRUE
-
-		if ("open_loadout")
-			var/datum/loadout_manager/open_loadout_ui = parent.open_loadout_ui?.resolve()
-			if(open_loadout_ui)
-				open_loadout_ui.ui_interact(usr)
-			else
-				parent.open_loadout_ui = null
-				var/datum/loadout_manager/tgui = new(usr)
-				tgui.ui_interact(usr)
 			return TRUE
 
 		if ("open_food")
@@ -485,12 +471,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	body = new
 
-<<<<<<< HEAD
-	// Without this, it doesn't show up in the menu
-	body.appearance_flags |= KEEP_TOGETHER // SKYRAT EDIT - Fix pixel scaling - ORIGINAL: body.appearance_flags &= ~KEEP_TOGETHER
-
-=======
->>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
 

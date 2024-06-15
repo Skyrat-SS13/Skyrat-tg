@@ -142,27 +142,7 @@
 
 	return list_to_update
 
-/*
- * Removes all invalid paths from loadout lists.
- *
- * passed_list - the loadout list we're sanitizing.
- *
- * returns a list
- */
-/proc/sanitize_loadout_list(list/passed_list)
-	RETURN_TYPE(/list)
 
-	var/list/list_to_clean = LAZYLISTDUPLICATE(passed_list)
-	for(var/path in list_to_clean)
-		if(!ispath(path))
-			stack_trace("invalid path found in loadout list! (Path: [path])")
-			LAZYREMOVE(list_to_clean, path)
-
-		else if(!(path in GLOB.all_loadout_datums))
-			stack_trace("invalid loadout slot found in loadout list! Path: [path]")
-			LAZYREMOVE(list_to_clean, path)
-
-	return list_to_clean
 
 /obj/item/storage/briefcase/empty/PopulateContents()
 	return

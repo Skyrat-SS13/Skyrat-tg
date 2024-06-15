@@ -93,17 +93,10 @@
 			highest_pref = job_preferences[job]
 
 	return preview_job
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVE - MOVED TO MASTER FILES
 /datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin)
 	var/datum/job/preview_job = get_highest_priority_job()
 	mannequin.dna.mutant_bodyparts = list()
-=======
-
-/datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin, show_job_clothes = TRUE)
-	var/datum/job/no_job = SSjob.GetJobType(/datum/job/unassigned)
-	var/datum/job/preview_job = get_highest_priority_job() || no_job
->>>>>>> d244c86ce64 (Adds Character Loadout Tab to preferences (with just a small handful of items to start) (#83521))
 
 	if(preview_job)
 		// Silicons only need a very basic preview since there is no customization for them.
