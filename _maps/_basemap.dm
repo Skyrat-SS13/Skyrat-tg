@@ -18,7 +18,7 @@
 		#include "map_files\NSVBlueshift\Blueshift.dmm"
 		#include "map_files\KiloStation\KiloStation.dmm"
 		// SKYRAT EDIT END
-
+		#include "map_files\wawastation\wawastation.dmm"
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
