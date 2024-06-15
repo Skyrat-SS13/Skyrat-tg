@@ -178,10 +178,7 @@
 
 	surgery.step_in_progress = FALSE
 	return advance
-
-<<<<<<< HEAD
 #undef SURGERY_SPEEDUP_AREA // SKYRAT EDIT ADDITION
-=======
 /**
  * Handles updating the mob's mood depending on the surgery states.
  * * surgery_state = SURGERY_STATE_STARTED, SURGERY_STATE_FAILURE, SURGERY_STATE_SUCCESS
@@ -209,7 +206,6 @@
 		else
 			CRASH("passed invalid surgery_state, \"[surgery_state]\".")
 
->>>>>>> eba7298ce09 (Fixes certain surgery failure states not properly updating surgery moods (#83976))
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -345,12 +341,7 @@
 			target.add_mood_event("robot_surgery", /datum/mood_event/robot_surgery)
 		// SKYRAT EDIT ADDITION END
 		else
-<<<<<<< HEAD
 			target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery) // SKYRAT EDIT ADDITION - Adds mood effects to surgeries
-			if(mood_event_type)
-				target.add_mood_event("surgery", mood_event_type)
-=======
->>>>>>> eba7298ce09 (Fixes certain surgery failure states not properly updating surgery moods (#83976))
 			if(!pain_message)
 				return
 			to_chat(target, span_userdanger(pain_message))
