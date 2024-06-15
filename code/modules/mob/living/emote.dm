@@ -195,19 +195,6 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	stat_allowed = SOFT_CRIT
 
-<<<<<<< HEAD
-/datum/emote/living/gasp_shock/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/human_user = user
-	if(!HAS_MIND_TRAIT(human_user, TRAIT_MIMING)) // SKYRAT EDIT CHANGE - Let other species gasp - ORIGINAL: if(ishumanbasic(human_user) || isfelinid(human_user) && !HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
-		if(human_user.physique == FEMALE)
-			return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
-		else
-			return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
-
-=======
->>>>>>> f4dc0ebc81a (Cleans up some sound emote related stuff (#83894))
 /datum/emote/living/giggle
 	key = "giggle"
 	key_third_person = "giggles"
@@ -291,13 +278,9 @@
 /datum/emote/living/laugh/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-<<<<<<< HEAD
 	var/mob/living/carbon/human/human_user = user
-	return human_user.dna.species.get_laugh_sound(user)
-*/ //SKYRAT EDIT END
-=======
 	return user.dna.species.get_laugh_sound(user)
->>>>>>> f4dc0ebc81a (Cleans up some sound emote related stuff (#83894))
+*/ //SKYRAT EDIT END
 
 /datum/emote/living/look
 	key = "look"

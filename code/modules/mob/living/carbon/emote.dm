@@ -29,18 +29,8 @@
 	vary = TRUE
 
 /datum/emote/living/carbon/clap/get_sound(mob/living/user)
-<<<<<<< HEAD
-	if(ishuman(user))
-		if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
-			return
-		else
-			return pick('sound/misc/clap1.ogg',
-							'sound/misc/clap2.ogg',
-							'sound/misc/clap3.ogg',
-							'sound/misc/clap4.ogg')
-*/
-//SKYRAT EDIT REMOVAL END
-=======
+	if(!ishuman(user))
+		return
 	if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
 		return
 	return pick(
@@ -49,7 +39,8 @@
 		'sound/misc/clap3.ogg',
 		'sound/misc/clap4.ogg',
 	)
->>>>>>> f4dc0ebc81a (Cleans up some sound emote related stuff (#83894))
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/emote/living/carbon/crack
 	key = "crack"
