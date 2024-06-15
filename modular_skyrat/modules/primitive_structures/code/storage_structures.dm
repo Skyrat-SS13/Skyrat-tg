@@ -22,13 +22,9 @@
 	user.balloon_alert_to_viewers("disassembling...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
 		return
-	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
-
-/obj/structure/rack/wooden/atom_deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
-	return ..()
 
 // Barrel but it works like a crate
 
