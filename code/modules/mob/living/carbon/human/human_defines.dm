@@ -24,9 +24,15 @@
 	var/hairstyle = "Bald"
 
 	///Colours used for hair and facial hair gradients.
-	var/list/grad_color
+	var/list/grad_color = list(
+		COLOR_BLACK,	//Hair Gradient Color
+		COLOR_BLACK,	//Facial Hair Gradient Color
+	)
 	///Styles used for hair and facial hair gradients.
-	var/list/grad_style
+	var/list/grad_style = list(
+		"None",	//Hair Gradient Style
+		"None",	//Facial Hair Gradient Style
+	)
 
 	//Facial hair colour and style
 	var/facial_hair_color = COLOR_BLACK
@@ -44,6 +50,7 @@
 	var/lip_color = COLOR_WHITE
 
 	var/age = 30 //Player's age
+	var/chrono_age = 30 // SKYRAT EDIT ADDITION - Chronological age
 
 	/// Which body type to use
 	var/physique = MALE

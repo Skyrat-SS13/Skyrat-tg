@@ -226,14 +226,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/list/selectable_species = list()
 
 	for(var/species_type in subtypesof(/datum/species))
-		var/datum/species/species = new species_type
+		var/datum/species/species = GLOB.species_prototypes[species_type]
 		if(species.check_roundstart_eligible())
 			selectable_species += species.id
-			var/datum/language_holder/temp_holder = new species.species_language_holder
+			var/datum/language_holder/temp_holder = GLOB.prototype_language_holders[species.species_language_holder]
 			for(var/datum/language/spoken_language as anything in temp_holder.understood_languages)
 				GLOB.uncommon_roundstart_languages |= spoken_language
-			qdel(temp_holder)
-			qdel(species)
 
 	GLOB.uncommon_roundstart_languages -= /datum/language/common
 	if(!selectable_species.len)
@@ -251,32 +249,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(id in (CONFIG_GET(keyed_list/roundstart_races)))
 		return TRUE
 	return FALSE
-
-/**
- * Generates a random name for a carbon.
- *
- * This generates a random unique name based on a human's species and gender.
- * Arguments:
- * * gender - The gender that the name should adhere to. Use MALE for male names, use anything else for female names.
- * * unique - If true, ensures that this new name is not a duplicate of anyone else's name currently on the station.
- * * last_name - Do we use a given last name or pick a random new one?
- */
-/datum/species/proc/random_name(gender, unique, last_name)
-	if(unique)
-		return random_unique_name(gender)
-
-	var/randname
-	if(gender == MALE)
-		randname = pick(GLOB.first_names_male)
-	else
-		randname = pick(GLOB.first_names_female)
-
-	if(last_name)
-		randname += " [last_name]"
-	else
-		randname += " [pick(GLOB.last_names)]"
-
-	return randname
 
 /**
  * Copies some vars and properties over that should be kept when creating a copy of this species.
@@ -1604,7 +1576,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/clear_tail_moodlets(mob/living/carbon/human/former_tail_owner)
 	former_tail_owner.clear_mood_event("tail_lost")
 	former_tail_owner.clear_mood_event("tail_balance_lost")
-	former_tail_owner.clear_mood_event("wrong_tail_regained")
+	former_tail_owner.clear_mood_event("tail_regained")
 
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 
@@ -2171,7 +2143,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(issynthetic(target))
 		var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
 		if(chassis)
-			var/list/chassis_accessory = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS]
+			var/list/chassis_accessory = SSaccessories.sprite_accessories[MUTANT_SYNTH_CHASSIS]
 			var/datum/sprite_accessory/synth_chassis/body_choice
 			if(chassis_accessory)
 				body_choice = chassis_accessory[chassis[MUTANT_INDEX_NAME]]

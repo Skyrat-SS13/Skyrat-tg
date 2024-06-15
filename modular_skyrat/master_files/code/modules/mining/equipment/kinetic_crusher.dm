@@ -7,6 +7,7 @@
 	inhand_icon_state = "crusher0"
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+	resistance_flags = FIRE_PROOF
 	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
@@ -194,3 +195,33 @@
 
 	var/datum/component/two_handed/two_handed = crusher.GetComponent(/datum/component/two_handed)
 	two_handed?.force_wielded *= 0.5
+
+
+/obj/item/crusher_trophy/watcher_eye
+	name = "watcher eye"
+	desc = "An eye ripped out from some unfortunate watcher's eyesocket. Suitable as a trophy for a kinetic crusher."
+	icon = 'modular_skyrat/master_files/icons/obj/artifacts.dmi'
+	icon_state = "watcher_eye"
+	denied_type = /obj/item/crusher_trophy/watcher_eye
+	var/used_color = "#ff7777" //gay by default
+
+/obj/item/crusher_trophy/watcher_eye/effect_desc()
+	return "<font color='[used_color]'>very pretty colors</font> to imbue the destabilizer shots"
+
+/obj/item/crusher_trophy/watcher_eye/attack_self(mob/user, modifiers)
+	var/chosen_color = input(user, "Pick a new color", "[src]", used_color) as color|null
+	if(chosen_color)
+		used_color = chosen_color
+		to_chat(user, span_notice("You recolor [src]."))
+		update_appearance()
+
+/obj/item/crusher_trophy/watcher_eye/update_overlays()
+	. = ..()
+	var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/obj/artifacts.dmi', "watcher_eye_iris")
+	overlay.color = used_color
+	. += overlay
+
+/obj/item/crusher_trophy/watcher_eye/on_projectile_fire(obj/projectile/destabilizer/marker, mob/living/user)
+	marker.icon = 'modular_skyrat/master_files/icons/obj/weapons/guns/projectiles.dmi'
+	marker.icon_state = "pulse1_g"
+	marker.color = used_color
