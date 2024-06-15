@@ -15,24 +15,6 @@
 	pixel_y = -32
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
-<<<<<<< HEAD
-//SKYRAT EDIT START: Nicer RodStopper
-/obj/boh_tear/Initialize(mapload)
-	. = ..()
-	QDEL_IN(src, 10 SECONDS) // vanishes after 10 seconds
-	addtimer(CALLBACK(src, PROC_REF(add_singularity)), 5 SECONDS)
-
-/obj/boh_tear/proc/add_singularity()
-	// the grav_pull was BOH_TEAR_GRAV_PULL (25), but that is a whole lot
-	AddComponent(
-		/datum/component/singularity, \
-		consume_range = BOH_TEAR_CONSUME_RANGE, \
-		grav_pull = 4, \
-		roaming = FALSE, \
-		singularity_size = STAGE_SIX, \
-	)
-//SKYRAT EDIT STOP: Nicer RodStopper
-=======
 
 /obj/boh_tear/proc/start_disaster()
 	apply_wibbly_filters(src)
@@ -56,7 +38,6 @@
 	bagulo.energy = 400
 	qdel(src)
 
->>>>>>> bea0930a188 (Re-adds bagulo (remastered), 3 max bluespace cores, singulos may collapse if a third BoH is added (#83892))
 /obj/boh_tear/attack_tk(mob/user)
 	if(!isliving(user))
 		return
