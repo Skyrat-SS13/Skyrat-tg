@@ -43,10 +43,8 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 
 /obj/item/stack/sheet/plastic_wall_panel/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isopenturf(interacting_with))
-		return ITEM_INTERACT_SKIP_TO_ATTACK
+		return NONE
 	var/turf/open/build_on = interacting_with
-	if(!user.Adjacent(build_on))
-		return ITEM_INTERACT_BLOCKING
 	if(isgroundlessturf(build_on))
 		user.balloon_alert(user, "can't place it here!")
 		return ITEM_INTERACT_BLOCKING
@@ -65,7 +63,7 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 		user.balloon_alert(user, "not enough material!")
 		return ITEM_INTERACT_BLOCKING
 	build_on.place_on_top(walltype, flags = CHANGETURF_INHERIT_AIR)
-	return ITEM_INTERACT_BLOCKING
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/sheet/plastic_wall_panel/get_main_recipes()
 	. = ..()

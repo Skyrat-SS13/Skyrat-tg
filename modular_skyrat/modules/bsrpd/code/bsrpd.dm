@@ -54,21 +54,21 @@
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/pipe_dispenser/bluespace/afterattack(atom/target, mob/user, prox)
-	if(prox || !remote_piping_toggle) // If we are in proximity to the target or have our safety on, don't use charge and don't call this shitcode.
-		return ..()
+/obj/item/pipe_dispenser/bluespace/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!remote_piping_toggle) // If we are in proximity to the target or have our safety on, don't use charge and don't call this shitcode.
+		return NONE
 	if(current_capacity < ranged_use_cost)
 		to_chat(user, span_warning("The [src] lacks the charge to do that."))
-		return FALSE
+		return ITEM_INTERACT_BLOCKING
 	if(!in_use)
-		user.Beam(target, icon_state = "rped_upgrade", time = 1 SECONDS)
+		user.Beam(interacting_with, icon_state = "rped_upgrade", time = 1 SECONDS)
 		in_use = TRUE // So people can't just spam click and get more uses
 		addtimer(VARSET_CALLBACK(src, in_use, FALSE),  1 SECONDS, TIMER_UNIQUE)
-		if(pre_attack(target, user))
+		if(pre_attack(interacting_with, user))
 			current_capacity -= ranged_use_cost
-			return TRUE
+			return ITEM_INTERACT_SUCCESS
 
-	return FALSE
+	return ITEM_INTERACT_BLOCKING
 
 #undef BSRPD_CAPACITY_MAX
 #undef BSRPD_CAPACITY_USE

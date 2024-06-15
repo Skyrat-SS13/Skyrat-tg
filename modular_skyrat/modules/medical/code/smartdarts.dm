@@ -10,13 +10,12 @@
 
 //Code that handles the base interactions involving smartdarts
 /obj/item/reagent_containers/syringe/smartdart/interact_with_atom(atom/target, mob/living/user, list/modifiers)
-	if(isliving(target))
+	if(target.reagents)
 		to_chat(user, span_warning("The [src] is unable to manually inject chemicals."))
-	return
-
+	return NONE
 //A majority of this code is from the original syringes.dm file.
-/obj/item/reagent_containers/syringe/smartdart/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
-	if(!try_syringe(interacting_with, user))
+/obj/item/reagent_containers/syringe/smartdart/interact_with_atom_secondary(atom/target, mob/living/user, list/modifiers)
+	if(!try_syringe(target, user))
 		return ITEM_INTERACT_BLOCKING
 
 	if(reagents.total_volume >= reagents.maximum_volume)
@@ -27,12 +26,12 @@
 		to_chat(user, span_warning("The [src] is unable to take blood."))
 		return ITEM_INTERACT_BLOCKING
 
-	if(!interacting_with.reagents.total_volume)
-		to_chat(user, span_warning("[interacting_with] is empty!"))
+	if(!target.reagents.total_volume)
+		to_chat(user, span_warning("[target] is empty!"))
 		return ITEM_INTERACT_BLOCKING
 
-	if(!interacting_with.is_drawable(user))
-		to_chat(user, span_warning("You cannot directly remove reagents from [interacting_with]!"))
+	if(!target.is_drawable(user))
+		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = interacting_with.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
@@ -57,12 +56,11 @@
 /obj/item/gun/syringe/smartdart/give_gun_safeties()
 	return
 
-/obj/item/gun/syringe/smartdart/attackby(obj/item/container, mob/user, params, show_msg = TRUE)
-	if(istype(container, /obj/item/reagent_containers/syringe/smartdart))
-		..()
-	else
-		to_chat(user, span_notice("The [container] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
-		return FALSE
+/obj/item/gun/syringe/smartdart/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(istype(tool, /obj/item/reagent_containers/syringe/smartdart))
+		return ..()
+	to_chat(user, span_notice("The [tool] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
+	return ITEM_INTERACT_BLOCKING
 
 /obj/item/gun/syringe/smartdart/examine(mob/user)
 	. = ..()
