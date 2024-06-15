@@ -512,13 +512,8 @@
 /datum/wound/proc/check_grab_treatments(obj/item/I, mob/user)
 	return FALSE
 
-<<<<<<< HEAD
-/// Like try_treating() but for unhanded interactions from humans, used by joint dislocations for manual bodypart chiropractice for example. Ignores thick material checks since you can pop an arm into place through a thick suit unlike using sutures
-/datum/wound/proc/try_handling(mob/living/carbon/human/user, modifiers)
-=======
 /// Like try_treating() but for unhanded interactions, used by joint dislocations for manual bodypart chiropractice for example. Ignores thick material checks since you can pop an arm into place through a thick suit unlike using sutures
 /datum/wound/proc/try_handling(mob/living/user)
->>>>>>> c9986346e47 (Ian and Runtime can lick your wounds (#83746))
 	return FALSE
 
 /// Someone is using something that might be used for treating the wound on this limb
