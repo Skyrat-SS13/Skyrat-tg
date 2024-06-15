@@ -10,11 +10,8 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/sneakers/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/sneakers/inhand_right
 	flags_1 = IS_PLAYER_COLORABLE_1
-<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/sneakers/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
 	interaction_flags_mouse_drop = NEED_HANDS
->>>>>>> b6369a47b47 (Mouse drag & drop refactored attack chain (#83690))
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
