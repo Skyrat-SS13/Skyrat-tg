@@ -102,7 +102,7 @@
 /obj/machinery/smartfridge/wooden/ration_shelf
 	name = "Ration shelf"
 	desc = "A wooden shelf, used to store food... preferably preserved."
-	icon_state = "rationshelf"
+	icon_state = "seedshelf"
 	base_build_path = /obj/machinery/smartfridge/wooden/ration_shelf
 	base_icon_state = "ration"
 
