@@ -97,8 +97,8 @@
 	set_greyscale(holosign_color)
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/wargame_projector/CtrlClick(mob/user)
-	if(tgui_alert(usr,"Clear all currently active holograms?", "Hologram Removal", list("Yes", "No")) == "Yes")
+/obj/item/wargame_projector/item_ctrl_click(mob/user)
+	if(tgui_alert(user,"Clear all currently active holograms?", "Hologram Removal", list("Yes", "No")) == "Yes")
 		for(var/hologram as anything in projections)
 			qdel(hologram)
 

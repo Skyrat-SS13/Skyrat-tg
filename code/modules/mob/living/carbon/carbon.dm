@@ -33,8 +33,7 @@
 			return ITEM_INTERACT_SUCCESS
 	return .
 
-/mob/living/carbon/CtrlShiftClick(mob/user)
-	..()
+/mob/living/carbon/click_ctrl_shift(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.give(src)
@@ -574,20 +573,6 @@
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
-
-/mob/living/carbon/update_stamina()
-	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold)
-		if (!stat)
-			enter_stamcrit()
-	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		filters -= FILTER_STAMINACRIT
-	else
-		return
-	update_stamina_hud()
 
 /mob/living/carbon/update_sight()
 	if(!client)
