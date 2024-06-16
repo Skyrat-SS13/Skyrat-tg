@@ -26,11 +26,8 @@
 #define ORGAN_HIDDEN (1<<9)
 /// Has the organ already been inserted inside someone
 #define ORGAN_VIRGIN (1<<10)
-// SKYRAT EDIT START - Customization
-/// Synthetic organ granted by a species (for use for organ replacements between species)
-#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<11)
-// SKYRAT EDIT END
-
+/// ALWAYS show this when scanned by advanced scanners, even if it is totally healthy
+#define ORGAN_PROMINENT (1<<11)
 /// Helper to figure out if a limb is organic
 #define IS_ORGANIC_LIMB(limb) (limb.bodytype & BODYTYPE_ORGANIC)
 /// Helper to figure out if a limb is robotic

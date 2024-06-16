@@ -1,7 +1,7 @@
 /*Power cells are in code\modules\power\cell.dm
 
 If you create T5+ please take a pass at mech_fabricator.dm. The parts being good enough allows it to go into minus values and create materials out of thin air when printing stuff.*/
-/obj/item/storage/part_replacer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/part_replacer //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "rapid part exchange device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
@@ -37,19 +37,24 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 		user.Beam(attacked_machinery, icon_state = "rped_upgrade", time = 0.5 SECONDS)
 	return TRUE
 
-/obj/item/storage/part_replacer/afterattack(obj/attacked_object, mob/living/user, adjacent, params)
-	. = ..()
-	if(!works_from_distance || adjacent) // Adjacent things = already handled by pre-attack
-		return .
+/obj/item/storage/part_replacer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(part_replace_action(interacting_with, user))
+		return ITEM_INTERACT_SUCCESS
+	return NONE
 
-	if(part_replace_action(attacked_object, user))
-		user.Beam(attacked_object, icon_state = "rped_upgrade", time = 0.5 SECONDS)
-		return . | AFTERATTACK_PROCESSED_ITEM
-
-	if(istype(attacked_object, /obj/structure/frame))
-		attacked_object.item_interaction(user, src) // Cursed snowflake but we need to handle frame ranged interaction here
-		user.Beam(attacked_object, icon_state = "rped_upgrade", time = 0.5 SECONDS)
-		return . | AFTERATTACK_PROCESSED_ITEM
+/obj/item/storage/part_replacer/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!works_from_distance)
+		return NONE
+	if(part_replace_action(interacting_with, user))
+		user.Beam(interacting_with, icon_state = "rped_upgrade", time = 0.5 SECONDS)
+		return ITEM_INTERACT_SUCCESS
+	if(istype(interacting_with, /obj/structure/frame))
+		// Cursed snowflake but we need to handle frame ranged interaction here
+		// Likely no longer necessary with the new framework, revisit later
+		interacting_with.item_interaction(user, src)
+		user.Beam(interacting_with, icon_state = "rped_upgrade", time = 0.5 SECONDS)
+		return ITEM_INTERACT_SUCCESS
+	return NONE
 
 /obj/item/storage/part_replacer/proc/play_rped_sound()
 	//Plays the sound for RPED exhanging or installing parts.
@@ -58,7 +63,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	else
 		playsound(src, pshoom_or_beepboopblorpzingshadashwoosh, 40, TRUE)
 
-/obj/item/storage/part_replacer/bluespace//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/part_replacer/bluespace //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace rapid part exchange device"
 	desc = "A version of the RPED that allows for replacement of parts and scanning from a distance, along with higher capacity for parts."
 	icon_state = "BS_RPED"
@@ -184,7 +189,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 		new /obj/item/stock_parts/micro_laser(src)
 		new /obj/item/stock_parts/matter_bin(src)
 
-/obj/item/storage/part_replacer/cyborg //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/part_replacer/cyborg //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "rapid part exchange device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts. This one has an extra large compartment for more parts."
 	icon_state = "borgrped"
@@ -207,7 +212,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 			continue
 		part_list += component_part
 		//Sort the parts. This ensures that higher tier items are applied first.
-	part_list = sortTim(part_list, GLOBAL_PROC_REF(cmp_rped_sort))
+	sortTim(part_list, GLOBAL_PROC_REF(cmp_rped_sort))
 	return part_list
 
 /proc/cmp_rped_sort(obj/item/first_item, obj/item/second_item)

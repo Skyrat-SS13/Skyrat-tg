@@ -49,7 +49,7 @@
 
 	for (var/species_id in (get_selectable_species() + get_customizable_races())) //SKYRAT EDIT CHANGE
 		var/species_type = GLOB.species_list[species_id]
-		var/datum/species/species = new species_type()
+		var/datum/species/species = GLOB.species_prototypes[species_type]
 
 		data[species_id] = list()
 		data[species_id]["name"] = species.name
@@ -62,7 +62,5 @@
 		data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
 		data[species_id]["veteran_only"] = species.veteran_only // SKYRAT EDIT ADDITION - Veteran races
-
-		qdel(species)
 
 	return data

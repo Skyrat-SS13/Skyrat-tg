@@ -164,8 +164,8 @@
 		liquids.reagent_list[reagent] += reagent_list[reagent]
 		liquids.total_reagents += reagent_list[reagent]
 
-	var/recieved_thermal_energy = (liquids.total_reagents - prev_total_reagents) * chem_temp
-	liquids.temp = (recieved_thermal_energy + prev_thermal_energy) / liquids.total_reagents
+	var/received_thermal_energy = (liquids.total_reagents - prev_total_reagents) * chem_temp
+	liquids.temp = (received_thermal_energy + prev_thermal_energy) / liquids.total_reagents
 
 	if(!no_react)
 		//We do react so, make a simulation
@@ -331,7 +331,7 @@
 			moving_mob.onZImpact(new_turf, 1)
 
 // Handles climbing up and down between turfs with height differences, as well as manipulating others to do the same.
-/turf/open/MouseDrop_T(mob/living/dropped_mob, mob/living/user)
+/turf/open/mouse_drop_receive(mob/living/dropped_mob, mob/living/user, params)
 	if(!isliving(dropped_mob) || !isliving(user) || !dropped_mob.has_gravity() || !Adjacent(user) || !dropped_mob.Adjacent(user) || !(user.stat == CONSCIOUS) || user.body_position == LYING_DOWN)
 		return
 	if(!dropped_mob.has_gravity())

@@ -6,7 +6,6 @@
 		application."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	circuit = null
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	power_gen = 7500
 	/// What we turn into when we are repacked
 	var/repacked_type = /obj/item/flatpacked_machine/rtg
@@ -19,8 +18,17 @@
 	if(!mapload)
 		flick("rtg_deploy", src)
 
-// Item for creating the arc furnace or carrying it around
+// previously NO_DECONSTRUCTION
+/obj/machinery/power/rtg/portable/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
 
+/obj/machinery/power/rtg/portable/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
+
+/obj/machinery/power/rtg/portable/default_pry_open(obj/item/crowbar, close_after_pry, open_density, closed_density)
+	return NONE
+
+// Item for creating the arc furnace or carrying it around
 /obj/item/flatpacked_machine/rtg
 	name = "flat-packed radioisotope thermoelectric generator"
 	icon_state = "rtg_packed"

@@ -63,9 +63,10 @@
 
 	return initial(selected.key)
 
+
 /// Removes all blacklisted items from a mob and returns them to base state
 /obj/machinery/quantum_server/proc/reset_equipment(mob/living/carbon/human/person)
-	for(var/item in person.get_contents())
+	for(var/obj/item in person.get_equipped_items(include_pockets = TRUE, include_accessories = TRUE))
 		qdel(item)
 
 	var/datum/antagonist/bitrunning_glitch/antag_datum = locate() in person.mind?.antag_datums
@@ -73,6 +74,9 @@
 		return
 
 	person.equipOutfit(antag_datum.preview_outfit)
+
+	antag_datum.fix_agent_id()
+
 
 /// Severs any connected users
 /obj/machinery/quantum_server/proc/sever_connections()
@@ -98,3 +102,17 @@
 			return chosen_turf
 
 #undef MAX_DISTANCE
+
+/// Toggles broadcast on and off
+/obj/machinery/quantum_server/proc/toggle_broadcast()
+	if(!COOLDOWN_FINISHED(src, broadcast_toggle_cd))
+		return FALSE
+
+	broadcasting = !broadcasting
+
+	if(generated_domain)
+		// The cooldown only really matter is we're flipping TVs
+		COOLDOWN_START(src, broadcast_toggle_cd, 5 SECONDS)
+		// And we only flip TVs when there's a domain, because otherwise there's no cams to watch
+		set_network_broadcast_status(BITRUNNER_CAMERA_NET, broadcasting)
+	return TRUE

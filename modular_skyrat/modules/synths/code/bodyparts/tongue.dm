@@ -13,7 +13,7 @@
 	maxHealth = 100 //RoboTongue!
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_TONGUE
-	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/tongue/synth/can_speak_language(language)
 	return TRUE

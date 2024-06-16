@@ -87,7 +87,7 @@
 
 	if(tail_overlay)
 		user.add_overlay(tail_overlay)
-		icon_state = "[icon_state]_tail"
+		worn_icon_state = "[icon_state]_tail"
 
 	/// Suit armor
 /datum/armor/clothing_under/wetsuit

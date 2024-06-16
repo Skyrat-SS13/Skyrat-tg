@@ -5,9 +5,8 @@
 	icon_state = "wall_charger"
 	base_icon_state = "wall_charger"
 	circuit = null
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	max_batteries = 3
-	charge_rate = 750
+	charge_rate = 900 KILO WATTS
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/wallframe/cell_charger_multi
 
@@ -27,13 +26,23 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 29)
 		deconstruct(TRUE)
 		return
 
+// previously NO_DECONSTRUCTION
+/obj/machinery/cell_charger_multi/wall_mounted/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	return NONE
+
+/obj/machinery/cell_charger_multi/wall_mounted/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
+	return NONE
+
+/obj/machinery/cell_charger_multi/wall_mounted/default_pry_open(obj/item/crowbar, close_after_pry, open_density, closed_density)
+	return NONE
+
 /obj/machinery/cell_charger_multi/wall_mounted/on_deconstruction(disassembled)
 	if(disassembled)
 		new repacked_type(drop_location())
 
 /obj/machinery/cell_charger_multi/wall_mounted/RefreshParts()
 	. = ..()
-	charge_rate = 750 // Nuh uh!
+	charge_rate = 900 KILO WATTS // Nuh uh!
 
 // Item for creating the arc furnace or carrying it around
 

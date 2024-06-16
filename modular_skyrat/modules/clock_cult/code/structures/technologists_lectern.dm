@@ -58,7 +58,7 @@
 	return ..()
 
 
-/obj/structure/destructible/clockwork/gear_base/technologists_lectern/deconstruct(disassembled)
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern/atom_deconstruct(disassembled)
 	if(primary_researcher)
 		deltimer(research_timer_id)
 		researching = FALSE
@@ -311,7 +311,7 @@
 
 	send_message("You hear the echoing of cogs ")
 
-	addtimer(CALLBACK(src, PROC_REF(send_message), "The echoing of cogs returns, even louder, "), (selected_research.time_to_research / 2), 90)
+	addtimer(CALLBACK(src, PROC_REF(send_message), "The echoing of cogs returns, even louder, "), (selected_research.time_to_research / 2), 9 SECONDS)
 
 /// Send a message to everyone on the Z level with directions to the lectern
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern/proc/send_message(initial_message = "You hear the echoing of cogs ", volume = 70)

@@ -54,7 +54,7 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT CHANGE height from 630 to 700
+// SKYRAT EDIT CHANGE - height from 630 to 700
 export const AntagInfoWizard = (props) => {
   const { data, act } = useBackend<Info>();
   const { ritual, objectives, can_change_objective } = data;

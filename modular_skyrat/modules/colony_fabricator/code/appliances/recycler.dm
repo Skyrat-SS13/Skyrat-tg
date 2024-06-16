@@ -61,7 +61,7 @@
 
 	flick("recycler_grind", src)
 	playsound(src, item_recycle_sound, 50, TRUE)
-	use_power(min(active_power_usage * 0.25, amount_inserted / 100))
+	use_energy(min(active_power_usage * 0.25, amount_inserted / 100))
 
 	if(amount_inserted)
 		materials.retrieve_all(drop_location())

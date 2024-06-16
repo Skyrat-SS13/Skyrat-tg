@@ -39,6 +39,7 @@
 		/datum/crafting_bench_recipe/centrifuge,
 		/datum/crafting_bench_recipe/bokken,
 		/datum/crafting_bench_recipe/bow,
+		/datum/crafting_bench_recipe/empty_circuit,
 	)
 	/// Radial options for recipes in the allowed_choices list, populated by populate_radial_choice_list
 	var/list/radial_choice_list = list()
@@ -154,7 +155,7 @@
 
 	return ..()
 
-/obj/structure/reagent_crafting_bench/MouseDrop_T(obj/item/attacking_item, mob/living/user)
+/obj/structure/reagent_crafting_bench/mouse_drop_receive(atom/movable/attacking_item, mob/living/user, params)
 	. = ..()
 	if(!isliving(user))
 		return
@@ -311,9 +312,13 @@
 	if(completing_a_weapon)
 		var/obj/item/forging/complete/completed_forge_item = contents[1]
 		newly_created_thing = new completed_forge_item.spawning_item(src)
+		if(newly_created_thing.force > 0) //we don't want the staff to get added damage
+			newly_created_thing.force += min(round(completed_forge_item.current_perfects * INVERSE(10)), 3) //adds a maximum of 3 force, and 6 if dual-wielded
+
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
 			for(var/custom_material in completed_forge_item.custom_materials)
 				materials_to_transfer[custom_material] += completed_forge_item.custom_materials[custom_material]
+
 		qdel(completed_forge_item) // And then we also need to 'use' the item
 
 	else

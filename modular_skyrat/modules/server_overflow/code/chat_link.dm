@@ -60,19 +60,15 @@
 		html = msg,
 		confidential = TRUE)
 
-/client/proc/request_help()
-	set category = "Admin"
-	set name = "Cross-server Help Request"
-	set desc = "Sends a loud message to all other servers that we are crosslinked to!"
-
-	var/help_request_message = tgui_input_text(src, "Input help message!", "Help message", "Send help!", 150, FALSE)
+ADMIN_VERB(request_help, R_ADMIN, "Cross-server Help Request", "Sends a loud message to all other servers that we are crosslinked to!", ADMIN_CATEGORY_MAIN)
+	var/help_request_message = tgui_input_text(user, "Input help message!", "Help message", "Send help!", 150, FALSE)
 	if(!help_request_message)
 		return
-	send2adminchat(ckey, "CROSSLINK HELP REQUEST([CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()]): [help_request_message]")
-	send_help_request_to_other_server(ckey, help_request_message)
+	send2adminchat(user.ckey, "CROSSLINK HELP REQUEST([CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()]): [help_request_message]")
+	send_help_request_to_other_server(user.ckey, help_request_message)
 
-	message_admins("[ADMIN_LOOKUPFLW(usr)] sent out a cross-server help request with the message: [help_request_message].")
-	log_admin("[key_name(usr)] sent cross-server help request [help_request_message].")
+	message_admins("[ADMIN_LOOKUPFLW(user)] sent out a cross-server help request with the message: [help_request_message].")
+	log_admin("[key_name(user)] sent cross-server help request [help_request_message].")
 
 // Oh no, they need help!
 /proc/send_help_request_to_other_server(exp_name, message)

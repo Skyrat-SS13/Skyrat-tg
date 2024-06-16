@@ -6,7 +6,7 @@
 	anchored = TRUE
 	density = FALSE
 	circuit = null
-	heating_power = 20000
+	heating_energy = 20 KILO JOULES
 	efficiency = 10000
 	display_panel = TRUE
 	/// What this repacks into when its wrenched off a wall
@@ -21,7 +21,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/space_heater/wall_mounted, 29)
 
 /obj/machinery/space_heater/wall_mounted/RefreshParts()
 	. = ..()
-	heating_power = 20000
+	heating_energy = 20 KILO JOULES
 	efficiency = 10000
 
 /obj/machinery/space_heater/wall_mounted/default_deconstruction_crowbar()

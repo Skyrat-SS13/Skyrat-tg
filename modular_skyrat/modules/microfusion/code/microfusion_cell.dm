@@ -6,6 +6,22 @@ Microfusion cells are small battery units that house controlled nuclear fusion w
 Essentially, power cells that malfunction if not used in an MCR, and should only be able to charge inside of one
 */
 
+/// The amount of cell charge drained during a drain failure.
+#define MICROFUSION_CELL_DRAIN_FAILURE STANDARD_CELL_CHARGE * 0.5
+/// The heavy EMP range for when a cell suffers an EMP failure.
+#define MICROFUSION_CELL_EMP_HEAVY_FAILURE 2
+/// The light EMP range for when a cell suffers an EMP failure.
+#define MICROFUSION_CELL_EMP_LIGHT_FAILURE 4
+/// The radiation range for when a cell suffers a radiation failure.
+#define MICROFUSION_CELL_RADIATION_RANGE_FAILURE 1
+
+/// The lower most time for a microfusion cell meltdown.
+#define MICROFUSION_CELL_FAILURE_LOWER (10 SECONDS)
+/// The upper most time for a microfusion cell meltdown.
+#define MICROFUSION_CELL_FAILURE_UPPER (15 SECONDS)
+
+
+
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
 	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. For safety reasons, they cannot be charged unless they are inside of a compatible Micron Control Systems firearm."
@@ -13,7 +29,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	charging_icon = "mf_in" //This is stored in cell.dmi in the aesthetics module
 	icon_state = "microfusion"
 	w_class = WEIGHT_CLASS_NORMAL
-	maxcharge = 1200 //12 shots
+	maxcharge = STANDARD_CELL_CHARGE
 	chargerate = 0 //MF cells should be unable to recharge if they are not currently inside of an MCR
 	microfusion_readout = TRUE
 	empty = TRUE //MF cells should start empty
@@ -70,7 +86,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	if(prob(prob_percent) && !meltdown && !stabilised)
 		process_instability()
 
-/obj/item/stock_parts/cell/microfusion/use(amount)
+/obj/item/stock_parts/cell/microfusion/use(amount, force = FALSE)
 	if(!parent_gun) // If an MCR cell is used in anything that's not an MCR, you might have problems
 		if(prob(fail_prob))
 			process_instability()
@@ -89,18 +105,17 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	addtimer(CALLBACK(src, PROC_REF(process_failure)), seconds_to_explode)
 
 /obj/item/stock_parts/cell/microfusion/proc/process_failure()
-	var/fuckup_type = rand(1, 4)
 	remove_filter("rad_glow")
 	playsound(src, 'sound/effects/spray.ogg', 70)
-	switch(fuckup_type)
-		if(MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN)
+	switch(rand(1, 4))
+		if(1) // Charge drain
 			charge = clamp(charge - MICROFUSION_CELL_DRAIN_FAILURE, 0, maxcharge)
-		if(MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION)
+		if(2) // Explosion
 			explode()
-		if(MICROFUSION_CELL_FAILURE_TYPE_EMP)
-			empulse(get_turf(src), MICROFUSION_CELL_EMP_HEAVY_FAILURE, MICROFUSION_CELL_EMP_LIGHT_FAILURE, FALSE)
-		if(MICROFUSION_CELL_FAILURE_TYPE_RADIATION)
-			radiation_pulse(src, MICROFUSION_CELL_RADIATION_RANGE_FAILURE, RAD_MEDIUM_INSULATION)
+		if(3) // Emp pulse
+			empulse(get_turf(src), 2, 4, FALSE) // 2 Heavy, 4 Light
+		if(4) // Deathly radiation pulse
+			radiation_pulse(src, 2, RAD_MEDIUM_INSULATION, 30)
 	meltdown = FALSE
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
@@ -153,7 +168,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	update_appearance()
 
 /obj/item/stock_parts/cell/microfusion/proc/inserted_into_weapon()
-	chargerate = 300
+	chargerate = STANDARD_CELL_CHARGE * 0.2
 
 /obj/item/stock_parts/cell/microfusion/proc/cell_removal_discharge()
 	chargerate = 0
@@ -176,10 +191,10 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	name = "makeshift microfusion cell"
 	desc = "An... Apparatus, comprised of an everyday aluminum can with several civilian-grade batteries tightly packed together and plugged in. This vaguely resembles a microfusion cell, if you tilt your head to a precise fifty degree angle. While the effects on enemy combatants may be dubious, it will certainly do incredible damage to the gun's warranty. What the hell were you thinking when you came up with this?"
 	icon_state = "microfusion_makeshift"
-	maxcharge = 600
+	maxcharge = STANDARD_CELL_CHARGE * 0.5
 	max_attachments = 0
 
-/obj/item/stock_parts/cell/microfusion/makeshift/use(amount)
+/obj/item/stock_parts/cell/microfusion/makeshift/use(amount, force = FALSE)
 	if(prob(fail_prob))
 		process_instability()
 	return ..()
@@ -188,26 +203,31 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	name = "enhanced microfusion cell"
 	desc = "A second generation microfusion cell, weighing about the same as the standard-issue cell and having the same space for attachments; however, it has a higher capacity."
 	icon_state = "microfusion_enhanced"
-	maxcharge = 1500
+	maxcharge = STANDARD_CELL_CHARGE * 1.4
 
 /obj/item/stock_parts/cell/microfusion/advanced
 	name = "advanced microfusion cell"
 	desc = "A third generation microfusion cell, boasting a much higher shot count. Additionally, these come with support for up to three modifications to the cell itself."
 	icon_state = "microfusion_advanced"
-	maxcharge = 1700
+	maxcharge = STANDARD_CELL_CHARGE * 1.5
 	max_attachments = 3
 
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
 	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has capacity for four modifications to the cell."
 	icon_state = "microfusion_bluespace"
-	maxcharge = 2000
+	maxcharge = STANDARD_CELL_CHARGE * 1.6
 	max_attachments = 4
 
 /obj/item/stock_parts/cell/microfusion/nanocarbon
 	name = "nanocarbon fusion cell"
 	desc = "This cell combines both top-of-the-line nanotech and advanced microfusion power to brute force the most common issue of Nanotrasen Asset Protection operatives, ammunition, through sheer volume. Intended for use with Nanotrasen-brand capacitor arrays only. Warranty void if dropped in toilet."
 	icon_state = "microfusion_nanocarbon"
-	maxcharge = 30000
+	maxcharge = STANDARD_CELL_CHARGE * 60 // Wanted to put 69 here to fit with the 420 but eh this werks too
 	max_attachments = 420
 
+
+#undef MICROFUSION_CELL_DRAIN_FAILURE
+
+#undef MICROFUSION_CELL_FAILURE_LOWER
+#undef MICROFUSION_CELL_FAILURE_UPPER

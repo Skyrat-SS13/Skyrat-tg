@@ -49,10 +49,8 @@
 		if(prob(10/severity))
 			switch(rand(1,5))
 				if(1)
-					if(prob(10))
-						target.name = "[pick(lizard_name(MALE),lizard_name(FEMALE))]"
-					else
-						target.name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
+					target.name = generate_random_name()
+
 				if(2)
 					target.gender = pick("Male", "Female", "Other")
 				if(3)
@@ -119,6 +117,7 @@
 
 		records += list(list(
 			age = target.age,
+			chrono_age = target.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
 			citations = citations,
 			crew_ref = REF(target),
 			crimes = crimes,
@@ -144,12 +143,15 @@
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
+	data["max_chrono_age"] = AGE_CHRONO_MAX // SKYRAT EDIT ADDITION - Chronological age
 	return data
 
 /obj/machinery/computer/records/security/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
 
 	var/datum/record/crew/target
 	if(params["crew_ref"])
@@ -159,29 +161,29 @@
 
 	switch(action)
 		if("add_crime")
-			add_crime(usr, target, params)
+			add_crime(user, target, params)
 			return TRUE
 
 		if("delete_record")
-			investigate_log("[usr] deleted record: \"[target]\".", INVESTIGATE_RECORDS)
+			investigate_log("[user] deleted record: \"[target]\".", INVESTIGATE_RECORDS)
 			qdel(target)
 			return TRUE
 
 		if("edit_crime")
-			edit_crime(usr, target, params)
+			edit_crime(user, target, params)
 			return TRUE
 
 		if("invalidate_crime")
-			invalidate_crime(usr, target, params)
+			invalidate_crime(user, target, params)
 			return TRUE
 
 		if("print_record")
-			print_record(usr, target, params)
+			print_record(user, target, params)
 			return TRUE
 
 		if("set_note")
 			var/note = trim(params["note"], MAX_MESSAGE_LEN)
-			investigate_log("[usr] has changed the security note of record: \"[target]\" from \"[target.security_note]\" to \"[note]\".")
+			investigate_log("[user] has changed the security note of record: \"[target]\" from \"[target.security_note]\" to \"[note]\".")
 			target.security_note = note
 			return TRUE
 
@@ -322,7 +324,7 @@
 /// Handles printing records via UI. Takes the params from UI_act.
 /obj/machinery/computer/records/security/proc/print_record(mob/user, datum/record/crew/target, list/params)
 	if(printing)
-		balloon_alert(usr, "printer busy")
+		balloon_alert(user, "printer busy")
 		playsound(src, 'sound/machines/terminal_error.ogg', 100, TRUE)
 		return FALSE
 

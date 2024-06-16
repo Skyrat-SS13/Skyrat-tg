@@ -12,7 +12,7 @@
 		H.AdjustSleeping(-100, FALSE)
 		to_chat(owner, span_notice("You feel a rush of energy course through your body!"))
 		cooldown = TRUE
-		addtimer(CALLBACK(src, PROC_REF(sleepytimerend)), 50)
+		addtimer(CALLBACK(src, PROC_REF(sleepytimerend)), 5 SECONDS)
 	else
 		return
 

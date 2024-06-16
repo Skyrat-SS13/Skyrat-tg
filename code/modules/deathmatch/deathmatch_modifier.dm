@@ -1,14 +1,16 @@
 ///Deathmatch modifiers are little options the host can choose to spice the match a bit.
 /datum/deathmatch_modifier
-	///The name of the modifier
+	/// The name of the modifier
 	var/name = "Unnamed Modifier"
-	///A small description/tooltip shown in the UI
+	/// A small description/tooltip shown in the UI
 	var/description = "What the heck does this do?"
-	///The color of the button shown in the UI
+	/// The color of the button shown in the UI
 	var/color = "blue"
-	///A list of modifiers this is incompatible with.
-	var/list/blacklisted_modifiers
-	///Is this trait exempted from the "Random Modifiers" modifier.
+	/// A lazylist of modifier typepaths this is incompatible with.
+	var/list/datum/deathmatch_modifier/blacklisted_modifiers
+	/// A lazylist of map typepaths this is incomptable with.
+	var/list/datum/lazy_template/deathmatch/blacklisted_maps
+	/// Is this trait exempted from the "Random Modifiers" modifier.
 	var/random_exempted = FALSE
 
 ///Whether or not this modifier can be selected, for both host and player-selected modifiers.
@@ -18,10 +20,19 @@
 		return FALSE
 	if(length(lobby.modifiers & blacklisted_modifiers))
 		return FALSE
+	if (map_incompatible(lobby.map))
+		return FALSE
 	for(var/modpath in lobby.modifiers)
 		if(src in GLOB.deathmatch_game.modifiers[modpath].blacklisted_modifiers)
 			return FALSE
 	return TRUE
+
+/// Returns TRUE if map.type is in our blacklisted maps, FALSE otherwise.
+/datum/deathmatch_modifier/proc/map_incompatible(datum/lazy_template/deathmatch/map)
+	if (map?.type in blacklisted_maps)
+		return TRUE
+
+	return FALSE
 
 ///Called when selecting the deathmatch modifier.
 /datum/deathmatch_modifier/proc/on_select(datum/deathmatch_lobby/lobby)
@@ -31,9 +42,12 @@
 /datum/deathmatch_modifier/proc/unselect(datum/deathmatch_lobby/lobby)
 	return
 
-///Called when the host chooses to change map.
+///Called when the host chooses to change map. Returns FALSE if the new map is incompatible, TRUE otherwise.
 /datum/deathmatch_modifier/proc/on_map_changed(datum/deathmatch_lobby/lobby)
-	return
+	if (map_incompatible(lobby.map))
+		lobby.unselect_modifier(src)
+		return FALSE
+	return TRUE
 
 ///Called as the game is about to start.
 /datum/deathmatch_modifier/proc/on_start_game(datum/deathmatch_lobby/lobby)
@@ -149,7 +163,7 @@
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/no_gravity)
 
 /datum/deathmatch_modifier/snail_crawl/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
-	player.AddElement(/datum/element/snailcrawl)
+	player.AddElement(/datum/element/lube_walking, require_resting = TRUE)
 
 /datum/deathmatch_modifier/blinking_and_breathing
 	name = "Manual Blinking/Breathing"
@@ -363,6 +377,8 @@
 
 /datum/deathmatch_modifier/drop_pod/proc/populate_contents()
 	contents = typesof(/mob/living/basic/trooper/syndicate)
+	for(var/typepath in contents) //Make sure to set even weights for the keys or `pick_weight` won't work.
+		contents[typepath] = 1
 
 /datum/deathmatch_modifier/drop_pod/monsters
 	name = "Drop Pod: Monsters"
@@ -476,6 +492,7 @@
 /datum/deathmatch_modifier/random
 	name = "Random Modifiers"
 	description = "Picks 3 to 5 random modifiers as the game is about to start"
+	random_exempted = TRUE
 
 /datum/deathmatch_modifier/random/on_select(datum/deathmatch_lobby/lobby)
 	///remove any other global modifier if chosen. It'll pick random ones when the time comes.
@@ -484,36 +501,32 @@
 		if(modifier.random_exempted)
 			continue
 		modifier.unselect(lobby)
-		lobby -= modpath
+		lobby.modifiers -= modpath
 
 /datum/deathmatch_modifier/random/on_start_game(datum/deathmatch_lobby/lobby)
 	lobby.modifiers -= type //remove it before attempting to select other modifiers, or they'll fail.
 
 	var/static/list/static_pool
-	if(!static_pool)
+	if(isnull(static_pool))
 		static_pool = subtypesof(/datum/deathmatch_modifier)
 		for(var/datum/deathmatch_modifier/modpath as anything in static_pool)
 			if(initial(modpath.random_exempted))
 				static_pool -= modpath
 	var/list/modifiers_pool = static_pool.Copy()
+	for(var/modpath in modifiers_pool)
+		var/datum/deathmatch_modifier/modifier = GLOB.deathmatch_game.modifiers[modpath]
+		if(!modifier.selectable(lobby))
+			modifiers_pool -= modpath
 
 	///Pick global modifiers at random.
 	for(var/iteration in rand(3, 5))
-		var/mod_len = length(modifiers_pool)
-		if(!mod_len)
-			break
-		var/datum/deathmatch_modifier/modifier
-		if(mod_len > 1)
-			modifier = GLOB.deathmatch_game.modifiers[pick_n_take(modifiers_pool)]
-		else //pick() throws errors if the list has only one element iirc.
-			modifier = GLOB.deathmatch_game.modifiers[modifiers_pool[1]]
-			modifiers_pool = null
-		if(!modifier.selectable(lobby))
-			continue
+		var/datum/deathmatch_modifier/modifier = GLOB.deathmatch_game.modifiers[pick_n_take(modifiers_pool)]
 		modifier.on_select(lobby)
 		modifier.on_start_game(lobby)
-		lobby += modifier
+		lobby += modifier.type
 		modifiers_pool -= modifier.blacklisted_modifiers
+		if(!length(modifiers_pool))
+			return
 
 /datum/deathmatch_modifier/any_loadout
 	name = "Any Loadout Allowed"
@@ -534,6 +547,54 @@
 
 /datum/deathmatch_modifier/any_loadout/on_map_changed(datum/deathmatch_lobby/lobby)
 	if(lobby.loadouts == GLOB.deathmatch_game.loadouts) //This arena already allows any loadout for some reason.
-		lobby.modifiers -= type
+		lobby.unselect_modifier(src)
 	else
 		lobby.loadouts = GLOB.deathmatch_game.loadouts
+
+/datum/deathmatch_modifier/hear_global_chat
+	name = "Heightened Hearing"
+	description = "This lets you hear people through wall, as well as deadchat"
+	random_exempted = TRUE
+
+/datum/deathmatch_modifier/hear_global_chat/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
+	player.add_traits(list(TRAIT_SIXTHSENSE, TRAIT_XRAY_HEARING), DEATHMATCH_TRAIT)
+
+/datum/deathmatch_modifier/apply_quirks
+	name = "Quirks enabled"
+	description = "Applies selected quirks to all players"
+
+/datum/deathmatch_modifier/apply_quirks/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
+	if (!player.client)
+		return
+
+	SSquirks.AssignQuirks(player, player.client)
+
+/datum/deathmatch_modifier/martial_artistry
+	name = "Random martial arts"
+	description = "Everyone learns a random martial art!"
+	blacklisted_maps = list(/datum/lazy_template/deathmatch/meatower)
+	// krav maga excluded because its too common and too simple, mushpunch excluded because its horrible and not even funny
+	var/static/list/weighted_martial_arts = list(
+		// common
+		/datum/martial_art/cqc = 30,
+		/datum/martial_art/the_sleeping_carp = 30,
+		// uncommon
+		/datum/martial_art/boxing/evil = 20,
+		// LEGENDARY
+		/datum/martial_art/plasma_fist = 5,
+		/datum/martial_art/wrestling = 5, // wrestling is kinda strong ngl
+		/datum/martial_art/psychotic_brawling = 5, // a complete meme. sometimes you just get hardstunned. sometimes you punch someone across the room
+	)
+
+/datum/deathmatch_modifier/martial_artistry/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
+	. = ..()
+
+	var/datum/martial_art/picked_art_path = pick_weight(weighted_martial_arts)
+	var/datum/martial_art/instantiated_art = new picked_art_path()
+
+	if (istype(instantiated_art, /datum/martial_art/boxing))
+		player.mind.adjust_experience(/datum/skill/athletics, SKILL_EXP_LEGENDARY)
+
+	instantiated_art.teach(player)
+
+	to_chat(player, span_revenboldnotice("Your martial art is [uppertext(instantiated_art.name)]!"))

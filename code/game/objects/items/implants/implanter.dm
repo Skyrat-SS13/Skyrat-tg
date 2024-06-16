@@ -1,7 +1,7 @@
 /**
  * Players can use this item to put obj/item/implant's in living mobs. Can be renamed with a pen.
  */
-/obj/item/implanter//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/implanter//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "implanter"
 	desc = "A sterile automatic implant injector."
 	icon = 'icons/obj/medical/syringe.dmi'

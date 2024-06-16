@@ -1,11 +1,7 @@
 /// The list of the available special player ranks
 #define SKYRAT_PLAYER_RANKS list("Donator", "Mentor", "Veteran")
 
-/client/proc/manage_player_ranks()
-	set category = "Admin"
-	set name = "Manage Player Ranks"
-	set desc = "Manage who has the special player ranks while the server is running."
-
+ADMIN_VERB(manage_player_ranks, R_PERMISSIONS, "Manage Player Ranks", "Manage who has the special player ranks while the server is running.", ADMIN_CATEGORY_MAIN)
 	if(!check_rights(R_PERMISSIONS))
 		return
 
@@ -86,16 +82,8 @@
 
 
 
-/client/proc/migrate_player_ranks()
-	set category = "Debug"
-	set name = "Migrate Player Ranks"
-	set desc = "Individually migrate the various player ranks from their legacy system to the SQL-based one."
-
-	if(!check_rights(R_PERMISSIONS | R_DEBUG | R_SERVER))
-		return
-
-	usr.client?.holder.migrate_player_ranks()
-
+ADMIN_VERB(migrate_player_ranks, R_PERMISSIONS|R_DEBUG|R_SERVER, "Migrate Player Ranks", "Individually migrate the various player ranks from their legacy system to the SQL-based one.", ADMIN_CATEGORY_DEBUG)
+	user.mob.client?.holder.migrate_player_ranks()
 
 /datum/admins/proc/migrate_player_ranks()
 	if(IsAdminAdvancedProcCall())

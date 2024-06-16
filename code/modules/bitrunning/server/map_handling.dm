@@ -30,11 +30,11 @@
 		return FALSE
 
 	if(isnull(map_key))
-		balloon_alert_to_viewers("no domain specified.")
+		balloon_alert_to_viewers("no domain specified!")
 		return FALSE
 
 	if(generated_domain)
-		balloon_alert_to_viewers("stop the current domain first.")
+		balloon_alert_to_viewers("stop the current domain first!")
 		return FALSE
 
 	if(length(avatar_connection_refs))
@@ -46,10 +46,12 @@
 
 	/// If any one of these fail, it reverts the entire process
 	if(!load_domain(map_key) || !load_map_items() || !load_mob_segments())
-		balloon_alert_to_viewers("initialization failed.")
+		balloon_alert_to_viewers("initialization failed!")
 		scrub_vdom()
 		is_ready = TRUE
 		return FALSE
+
+	SSblackbox.record_feedback("tally", "bitrunning_domain_loaded", 1, map_key)
 
 	is_ready = TRUE
 
@@ -62,6 +64,9 @@
 	points -= generated_domain.cost
 	update_use_power(ACTIVE_POWER_USE)
 	update_appearance()
+
+	if(broadcasting)
+		start_broadcasting_network(BITRUNNER_CAMERA_NET)
 
 	return TRUE
 
@@ -146,6 +151,8 @@
 	update_use_power(IDLE_POWER_USE)
 	domain_randomized = FALSE
 	retries_spent = 0
+
+	stop_broadcasting_network(BITRUNNER_CAMERA_NET)
 
 /// Tries to clean up everything in the domain
 /obj/machinery/quantum_server/proc/scrub_vdom()

@@ -538,13 +538,16 @@
 	icon_state = "hardlight_down"
 	base_icon_state = "hardlight"
 	max_integrity = 1
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION //Made from nothing, can't deconstruct
 	build_stack_type = null //It would not be good if people could use this to farm materials.
 	var/deploy_time = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.
 
 /obj/structure/bed/medical/medigun/Initialize(mapload)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(check_bed)), deploy_time)
+
+// previously NO_DECONSTRUCTION
+/obj/structure/bed/medical/medigun/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
 
 /obj/structure/bed/medical/medigun/proc/check_bed() //Checks to see if anyone is buckled to the bed, if not the bed will qdel itself.
 	if(!has_buckled_mobs())
@@ -557,15 +560,15 @@
 	. = ..()
 	qdel(src)
 
-/obj/structure/bed/medical/medigun/MouseDrop(over_object, src_location, over_location)
-	if(over_object == usr && Adjacent(usr))
-		if(!ishuman(usr) || !usr.can_perform_action(src))
+/obj/structure/bed/medical/medigun/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
+	if(over == user && Adjacent(user))
+		if(!ishuman(user) || !user.can_perform_action(src))
 			return FALSE
 
 		if(has_buckled_mobs())
 			return FALSE
 
-		usr.visible_message(span_notice("[usr] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
+		user.visible_message(span_notice("[user] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
 		qdel(src)
 
 //Oppressive Force Relocation

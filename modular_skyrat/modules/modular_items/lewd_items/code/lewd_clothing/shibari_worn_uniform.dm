@@ -11,7 +11,7 @@
 	greyscale_colors = "#bd8fcf"
 	has_sensor = NO_SENSORS
 
-	///Tightness of the ropes can be low, medium and hard. This var works as multiplier for arousal and pleasure recieved while wearing this item
+	///Tightness of the ropes can be low, medium and hard. This var works as multiplier for arousal and pleasure received while wearing this item
 	var/tightness = SHIBARI_TIGHTNESS_LOW
 
 	///should this clothing item use the emissive system
@@ -60,13 +60,12 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/clothing/under/shibari/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/under/shibari/click_alt(mob/user)
 	if(!ishuman(loc))
-		return
+		return CLICK_ACTION_BLOCKING
 	var/mob/living/carbon/human/hooman = loc
 	if(user == hooman)
-		return
+		return CLICK_ACTION_BLOCKING
 	switch(tightness)
 		if(SHIBARI_TIGHTNESS_LOW)
 			tightness = SHIBARI_TIGHTNESS_MED
@@ -74,6 +73,7 @@
 			tightness = SHIBARI_TIGHTNESS_HIGH
 		if(SHIBARI_TIGHTNESS_HIGH)
 			tightness = SHIBARI_TIGHTNESS_LOW
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/under/shibari/process(seconds_per_tick)
 	if(!ishuman(loc))

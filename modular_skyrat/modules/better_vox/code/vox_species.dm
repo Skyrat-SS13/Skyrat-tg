@@ -60,17 +60,6 @@
 	else
 		give_important_for_life(equipping)
 
-/datum/species/vox_primalis/random_name(gender, unique, lastname)
-	if(unique)
-		return random_unique_vox_name()
-
-	var/randname = vox_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
-
 /datum/species/vox_primalis/get_custom_worn_icon(item_slot, obj/item/item)
 	return item.worn_icon_better_vox
 

@@ -1263,7 +1263,7 @@
 	name = "Diamond Drill"
 	id = "borg_upgrade_diamonddrill"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/ddrill
+	build_path = /obj/item/borg/upgrade/diamond_drill
 	materials = list(
 		/datum/material/iron=SHEET_MATERIAL_AMOUNT*5,
 		/datum/material/glass =SHEET_MATERIAL_AMOUNT*3,
@@ -1409,6 +1409,36 @@
 	construction_time = 4 SECONDS
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MEDICAL
+	)
+
+/datum/design/borg_upgrade_surgicalomnitool
+	name = "Advanced Surgical Omnitool Upgrade"
+	id = "borg_upgrade_surgicalomnitool"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/surgery_omnitool
+	materials = list(
+		/datum/material/iron=SHEET_MATERIAL_AMOUNT*5,
+		/datum/material/titanium=SHEET_MATERIAL_AMOUNT*3,
+		/datum/material/silver=SHEET_MATERIAL_AMOUNT*2,
+	)
+	construction_time = 4 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MEDICAL
+	)
+
+/datum/design/borg_upgrade_engineeringomnitool
+	name = "Advanced Engineering Omnitool Upgrade"
+	id = "borg_upgrade_engineeringomnitool"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/engineering_omnitool
+	materials = list(
+		/datum/material/iron=SHEET_MATERIAL_AMOUNT*5,
+		/datum/material/titanium=SHEET_MATERIAL_AMOUNT*3,
+		/datum/material/gold=SHEET_MATERIAL_AMOUNT*2,
+	)
+	construction_time = 4 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ENGINEERING,
 	)
 
 /datum/design/borg_upgrade_trashofholding
@@ -2578,3 +2608,21 @@
 	category = list(
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
+
+/datum/design/posisphere
+	name = "Positronic Sphere"
+	desc = "The latest in Artificial Pesterance."
+	id = "posisphere"
+	build_type = MECHFAB
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT * 0.85,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 0.65,
+		/datum/material/gold =SMALL_MATERIAL_AMOUNT * 2.5
+	)
+	construction_time = 7.5 SECONDS
+	build_path = /obj/item/mmi/posibrain/sphere
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CONTROL_INTERFACES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+

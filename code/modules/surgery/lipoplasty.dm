@@ -10,7 +10,7 @@
 	)
 
 /datum/surgery/lipoplasty/can_start(mob/user, mob/living/carbon/target)
-	if(!HAS_TRAIT(target, TRAIT_FAT) || target.nutrition < NUTRITION_LEVEL_WELL_FED)
+	if(!HAS_TRAIT_FROM(target, TRAIT_FAT, OBESITY) || target.nutrition < NUTRITION_LEVEL_WELL_FED)
 		return FALSE
 	return ..()
 
@@ -24,6 +24,7 @@
 		/obj/item/hatchet = 35,
 		/obj/item/knife/butcher = 25)
 	time = 64
+	surgery_effects_mood = TRUE
 	preop_sound = list(
 		/obj/item/circular_saw = 'sound/surgery/saw.ogg',
 		/obj/item = 'sound/surgery/scalpel1.ogg',

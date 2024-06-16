@@ -1,6 +1,6 @@
 /datum/quirk/life_savings
     name = "Life Savings"
-    desc = "Rich are getting richer. Either because of your smart investments or your broad connections you recieve additional currency with each paycheck. Use them wisely or blow it all on drugs. They are yours after all."
+    desc = "Rich are getting richer. Either because of your smart investments or your broad connections you receive additional currency with each paycheck. Use them wisely or blow it all on drugs. They are yours after all."
     icon = FA_ICON_PIGGY_BANK
     value = 4
     hardcore_value = -4

@@ -53,6 +53,10 @@
 	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
+/// An assoc list of food types to liked or dislike values. If null or empty, default species tastes are used instead on application.
+	/// If a food doesn't exist in this list, it uses the default value.
+	var/list/food_preferences = list()
+
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff
@@ -62,7 +66,7 @@
 /datum/preferences/proc/print_bodypart_change_line(key)
 	var/acc_name = mutant_bodyparts[key][MUTANT_INDEX_NAME]
 	var/shown_colors = 0
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][acc_name]
+	var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][acc_name]
 	var/dat = ""
 	if(SA.color_src == USE_MATRIXED_COLORS)
 		shown_colors = 3
@@ -81,7 +85,7 @@
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
-		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.always_color_customizable)
 			continue
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -116,13 +120,13 @@
 
 	// Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
-		if(!GLOB.sprite_accessories[key]) // That accessory no longer exists, remove it
+		if(!SSaccessories.sprite_accessories[key]) // That accessory no longer exists, remove it
 			mutant_bodyparts -= key
 			continue
 		if(!GLOB.default_mutant_bodyparts[pref_species.name][key])
 			mutant_bodyparts -= key
 			continue
-		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
+		if(!SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
 			mutant_bodyparts[key][MUTANT_INDEX_NAME] = GLOB.default_mutant_bodyparts[pref_species.name[key][MUTANTPART_NAME]]
 		validate_color_keys_for_part(key) // Validate the color count of each accessory that wasnt removed
 
@@ -133,7 +137,7 @@
 			if(target_bodyparts[key][MUTANTPART_CAN_RANDOMIZE])
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][target_bodyparts[key][MUTANTPART_NAME]]
+				SA = SSaccessories.sprite_accessories[key][target_bodyparts[key][MUTANTPART_NAME]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -143,7 +147,7 @@
 		reset_colors()
 
 /datum/preferences/proc/validate_color_keys_for_part(key)
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 	var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)

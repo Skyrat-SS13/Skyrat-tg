@@ -9,7 +9,7 @@
 	zone = "chest"
 	slot = "stomach"
 	desc = "A specialised mini reactor, for synthetic use only. Has a low-power mode to ensure baseline functions. Without this, synthetics are unable to stay powered."
-	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/stomach/synth/emp_act(severity)
 	. = ..()
@@ -56,11 +56,13 @@
 	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
 
 ///Handles charging the synth from borg chargers
-/obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, amount)
+/obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, datum/callback/charge_cell, seconds_per_tick)
 	SIGNAL_HANDLER
 
 	if(owner.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
 		return
 
-	amount /= 50 // Lowers the charging amount so it isn't instant
-	owner.nutrition = min((owner.nutrition + amount), NUTRITION_LEVEL_ALMOST_FULL) // Makes sure we don't make the synth too full, which would apply the overweight slowdown
+	// I am NOT rewriting this to fit with TG's standard. I have like 70 bugfixes waiting. Feel free to give synths actual cells if I don't i the future
+	// ~Waterpig
+
+	owner.nutrition = min(owner.nutrition + (40 / seconds_per_tick), NUTRITION_LEVEL_ALMOST_FULL) // Makes sure we don't make the synth too full, which would apply the overweight slowdown

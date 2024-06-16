@@ -33,13 +33,17 @@
 	id = "comp_ccharge"
 	build_path = /obj/item/circuit_component/cell_charge
 
-/datum/techweb_node/comp_advanced_sensors
-	id = "comp_advanced_sensors"
-	display_name = "Advanced Sensor Components"
-	description = "Grants access to advanced sensor components component for shells."
-	prereq_ids = list("adv_shells")
-	design_ids = list(
-		"comp_tscanner",
-		"comp_ccharge",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)
+//Reagent Injector Component (Bluespace)
+/datum/design/component/bci/reagent_injector_bluespace
+	name = "Reagent Injector Component (Bluespace)"
+	id = "comp_reagent_injector_bluespace"
+	build_path = /obj/item/circuit_component/reagent_injector_bluespace
+
+/datum/techweb_node/adv_shells/New()
+	. = ..()
+	design_ids += "comp_tscanner"
+	design_ids += "comp_ccharge"
+
+/datum/techweb_node/syndicate_basic/New()
+	. = ..()
+	design_ids += "comp_reagent_injector_bluespace"

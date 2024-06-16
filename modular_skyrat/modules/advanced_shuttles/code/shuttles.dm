@@ -27,7 +27,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/docking_port/mobile/arrivals_skyrat/LateInitialize()
-	. = ..()
 	console = get_control_console()
 
 /obj/docking_port/mobile/arrivals_skyrat/check()

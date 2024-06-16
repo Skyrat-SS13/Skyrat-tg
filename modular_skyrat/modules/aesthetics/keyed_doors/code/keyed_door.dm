@@ -112,8 +112,8 @@
 	return FALSE
 
 
-/obj/machinery/door/airlock/keyed/AIAltClick()
-	return FALSE
+/obj/machinery/door/airlock/keyed/ai_click_alt(mob/living/silicon/ai/user)
+	return
 
 
 /obj/machinery/door/airlock/keyed/AIShiftClick()
@@ -128,7 +128,7 @@
 	return FALSE
 
 
-/obj/machinery/door/airlock/keyed/BorgAltClick(mob/living/silicon/robot/user)
+/obj/machinery/door/airlock/keyed/borg_click_alt(mob/living/silicon/robot/user)
 	return FALSE
 
 

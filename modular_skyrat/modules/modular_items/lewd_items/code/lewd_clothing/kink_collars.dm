@@ -35,10 +35,7 @@
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
-	/// What the name on the tag is
-	var/tagname = null
-	/// Item path of on-init creation in the collar's storage
-	var/treat_path = /obj/item/food/cookie
+	interaction_flags_click = NEED_DEXTERITY
 	unique_reskin = list("Cyan" = "collar_cyan",
 						"Yellow" = "collar_yellow",
 						"Green" = "collar_green",
@@ -50,6 +47,10 @@
 						"Black" = "collar_black",
 						"Black-teal" = "collar_tealblack",
 						"Spike" = "collar_spike")
+	/// What the name on the tag is
+	var/tagname = null
+	/// Item path of on-init creation in the collar's storage
+	var/treat_path = /obj/item/food/cookie
 
 //spawn thing in collar
 
@@ -65,13 +66,6 @@
 	var/id = REF(src)
 	var/obj/item/key/kink_collar/collar_key = key
 	collar_key.key_id = id
-
-//reskin code
-
-/obj/item/clothing/neck/kink_collar/AltClick(mob/user)
-	. = ..()
-	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
-		reskin_obj(user)
 
 //rename collar code
 
@@ -90,10 +84,7 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar_cyan"
 	treat_path = /obj/item/key/kink_collar
-	/// If the collar is currently locked
-	var/locked = FALSE
-	/// If the collar has been broken or not
-	var/broken = FALSE
+	interaction_flags_click = NEED_DEXTERITY
 	unique_reskin = list("Cyan" = "lock_collar_cyan",
 						"Yellow" = "lock_collar_yellow",
 						"Green" = "lock_collar_green",
@@ -105,19 +96,16 @@
 						"Black" = "lock_collar_black",
 						"Black-teal" = "lock_collar_tealblack",
 						"Spike" = "lock_collar_spike")
+	/// If the collar is currently locked
+	var/locked = FALSE
+	/// If the collar has been broken or not
+	var/broken = FALSE
 
 /obj/item/clothing/neck/kink_collar/locked/Initialize(mapload)
 	. = ..()
 	create_storage(storage_type = /datum/storage/pockets/small/kink_collar/locked)
 
 //spawn thing in collar
-
-//reskin code
-
-/obj/item/clothing/neck/kink_collar/locked/AltClick(mob/user)
-	. = ..()
-	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
-		reskin_obj(user)
 
 //locking or unlocking collar code
 
@@ -156,8 +144,7 @@
 	add_fingerprint(usr)
 	return ..()
 
-/obj/item/clothing/neck/kink_collar/locked/MouseDrop(atom/over_object)
-	var/mob/user = usr
+/obj/item/clothing/neck/kink_collar/locked/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked && istype(over_object, /atom/movable/screen/inventory/hand))
 		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
 		return
@@ -176,6 +163,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "collar_key_metal"
 	base_icon_state = "collar_key"
+	interaction_flags_click = NEED_DEXTERITY
 	/// The name inscribed on the key
 	var/keyname = null
 	/// The ID of the key to pair with a collar. Will normally be the ref of the collar
@@ -191,12 +179,6 @@
 						"Black" = "collar_key_black",
 						"Metal" = "collar_key_metal",
 						"Black-teal" = "collar_key_tealblack")
-
-//changing color of key in case if we using multiple collars
-/obj/item/key/kink_collar/AltClick(mob/user)
-	. = ..()
-	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
-		reskin_obj(user)
 
 //changing name of key in case if we using multiple collars with same color
 /obj/item/key/kink_collar/attack_self(mob/user)

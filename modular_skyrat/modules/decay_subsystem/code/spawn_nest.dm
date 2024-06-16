@@ -1,9 +1,5 @@
-/client/proc/spawn_mob_spawner()
-	set category = "Admin.Fun"
-	set name = "Spawn mob spawner"
-	set desc = "Spawns a mob spawner structure below the user."
-
-	holder?.spawn_mob_spawner()
+ADMIN_VERB(spawn_mob_spawner, R_ADMIN, "Spawn mob spawner", "Spawns a mob spawner structure at your location.", ADMIN_CATEGORY_FUN)
+	user.holder?.spawn_mob_spawner()
 
 /datum/admins/proc/spawn_mob_spawner(chosen_mob as text)
 	if(!check_rights(R_SPAWN))

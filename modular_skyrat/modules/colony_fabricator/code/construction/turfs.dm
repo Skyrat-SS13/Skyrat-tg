@@ -15,8 +15,8 @@
 	sheet_amount = 1
 
 GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
-	new/datum/stack_recipe("prefabricated wall", /turf/closed/wall/prefab_plastic, time = 3 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("prefabricated window", /obj/structure/window/fulltile/colony_fabricator, time = 1 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, is_fulltile = TRUE, category = CAT_WINDOWS), \
+	new/datum/stack_recipe("prefabricated wall", /turf/closed/wall/prefab_plastic, time = 3 SECONDS,  crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
+	new/datum/stack_recipe("prefabricated window", /obj/structure/window/fulltile/colony_fabricator, time = 1 SECONDS,  crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
 	))
 
 /obj/item/stack/sheet/plastic_wall_panel
@@ -41,31 +41,31 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 	. = ..()
 	. += span_notice("You can build a prefabricated wall by right clicking on an empty floor.")
 
-/obj/item/stack/sheet/plastic_wall_panel/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!isopenturf(target))
-		return SECONDARY_ATTACK_CONTINUE_CHAIN
-	var/turf/open/build_on = target
+/obj/item/stack/sheet/plastic_wall_panel/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!isopenturf(interacting_with))
+		return ITEM_INTERACT_SKIP_TO_ATTACK
+	var/turf/open/build_on = interacting_with
 	if(!user.Adjacent(build_on))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	if(isgroundlessturf(build_on))
 		user.balloon_alert(user, "can't place it here!")
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
 		user.balloon_alert(user, "something is blocking the tile!")
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	if(get_amount() < 1)
 		user.balloon_alert(user, "not enough material!")
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	if(!do_after(user, 3 SECONDS, build_on))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
 		user.balloon_alert(user, "something is blocking the tile!")
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	if(!use(1))
 		user.balloon_alert(user, "not enough material!")
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_BLOCKING
 	build_on.place_on_top(walltype, flags = CHANGETURF_INHERIT_AIR)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	return ITEM_INTERACT_BLOCKING
 
 /obj/item/stack/sheet/plastic_wall_panel/get_main_recipes()
 	. = ..()

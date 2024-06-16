@@ -189,6 +189,17 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
+/datum/design/water_balloon
+	name = "Water Balloon"
+	id = "water_balloon"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic =SMALL_MATERIAL_AMOUNT*5)
+	build_path = /obj/item/toy/waterballoon
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SERVICE
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
+
 /datum/design/mesons
 	name = "Optical Meson Scanners"
 	desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting condition."
@@ -709,7 +720,7 @@
 // Armour
 
 /datum/design/reactive_armour
-	name = "Reactive Armour Shell"
+	name = "Reactive Armor Shell"
 	desc = "An experimental suit of armour capable of utilizing an implanted anomaly core to protect the user."
 	id = "reactive_armour"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -720,7 +731,7 @@
 		/datum/material/silver = SHEET_MATERIAL_AMOUNT*2.5,
 		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 2.5,
 	)
-	build_path = /obj/item/reactive_armour_shell
+	build_path = /obj/item/reactive_armor_shell
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
 	)

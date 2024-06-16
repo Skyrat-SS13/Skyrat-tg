@@ -36,7 +36,7 @@
 		if(!A.loaded_projectile)
 			LAZYREMOVE(dish_drive_contents, A)
 			qdel(A)
-			use_power(active_power_usage)
+			use_energy(active_power_usage)
 			disposed++
 	if(disposed)
 		visible_message(span_notice("[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")] and demoleculizes [disposed] stored item\s into the nearby void."))

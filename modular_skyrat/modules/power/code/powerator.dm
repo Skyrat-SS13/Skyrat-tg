@@ -54,9 +54,9 @@
 	idle_power_usage = 100
 
 	/// the current amount of power that we are trying to process
-	var/current_power = 10000
-	/// the max amount of power that can be sent per process, from 100000 (t1) to 10000000 (t4)
-	var/max_power = 100000
+	var/current_power = 10 KILO WATTS
+	/// the max amount of power that can be sent per process, from 100 KW (t1) to 10000 KW (t4)
+	var/max_power = 100 KILO WATTS
 	/// how much the current_power is divided by to determine the profit
 	var/divide_ratio = 0.00001
 	/// the attached cable to the machine
@@ -66,10 +66,14 @@
 
 /obj/machinery/powerator/Initialize(mapload)
 	. = ..()
+	SSpowerator_penality.sum_powerators()
+	SSpowerator_penality.calculate_penality()
 	START_PROCESSING(SSobj, src)
 
 /obj/machinery/powerator/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	SSpowerator_penality.remove_deled_powerators(src)
+	SSpowerator_penality.calculate_penality()
 	attached_cable = null
 	return ..()
 
@@ -98,15 +102,17 @@
 
 	. += span_notice("Current Power: [display_power(current_power)]/[display_power(max_power)]")
 	. += span_notice("This machine has made [credits_made] credits from selling power so far.")
+	if(length(SSpowerator_penality.powerator_list) > 1)
+		. += span_notice("Multiple powerators detected, total efficiency reduced by [(SSpowerator_penality.diminishing_gains_multiplier)*100]%")
 
 /obj/machinery/powerator/RefreshParts()
 	. = ..()
 
 	var/efficiency = -2 //set to -2 so that tier 1 parts do nothing
-	max_power = 100000
+	max_power = 100 KILO WATTS
 	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
 		efficiency += laser_part.tier
-	max_power += (efficiency * 1650000)
+	max_power += (efficiency * 1650 KILO WATTS)
 
 	efficiency = -2
 	divide_ratio = 0.00001
@@ -157,7 +163,7 @@
 		current_power = attached_cable.newavail()
 	attached_cable.add_delayedload(current_power)
 
-	var/money_ratio = round(current_power * divide_ratio)
+	var/money_ratio = round(current_power * divide_ratio) * SSpowerator_penality.diminishing_gains_multiplier
 	var/datum/bank_account/synced_bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	synced_bank_account.adjust_money(money_ratio)
 	credits_made += money_ratio
@@ -166,9 +172,9 @@
 
 /obj/machinery/powerator/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	current_power = tgui_input_number(user, "How much power would you like to draw? Max: [display_power(max_power)]", "Power Draw", current_power, max_power, 0)
+	current_power = tgui_input_number(user, "How much power (in Watts) would you like to draw? Max: [display_power(max_power)]", "Power Draw", current_power, max_power, 0)
 	if(isnull(current_power))
-		current_power = 10000
+		current_power = 10 KILO WATTS
 		return
 
 /obj/machinery/powerator/screwdriver_act(mob/living/user, obj/item/tool)

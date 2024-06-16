@@ -46,6 +46,7 @@
 	. += span_notice("[scanned ? "This item has been scanned. Max Depth: [max_depth] cm. Safe Depth: [safe_depth] cm." : "This item has not been scanned."]")
 	if(adv_scanned)
 		. += span_notice("The item depth is [item_depth] cm.")
+
 	. += span_notice("[measured ? "This item has been measured. Dug Depth: [dug_depth]." : "This item has not been measured."]")
 	if(measured && dug_depth > item_depth)
 		. += span_warning("The rock is crumbling, even just brushing it will destroy it!")
@@ -56,9 +57,11 @@
 		if(1 to 60)
 			hidden_item = pick_weight(GLOB.tier1_reward)
 			choose_tier = REWARD_ONE
+
 		if(61 to 87)
 			hidden_item = pick_weight(GLOB.tier2_reward)
 			choose_tier = REWARD_TWO
+
 		if(88 to 100)
 			hidden_item = pick_weight(GLOB.tier3_reward)
 			choose_tier = REWARD_THREE
@@ -73,6 +76,7 @@
 /obj/item/xenoarch/strange_rock/proc/get_measured()
 	if(measured)
 		return FALSE
+
 	measured = TRUE
 	return TRUE
 
@@ -82,91 +86,113 @@
 		if(!adv_scanned && use_advanced)
 			adv_scanned = TRUE
 			return TRUE
+
 		return FALSE
+
 	scanned = TRUE
 	if(use_advanced)
 		adv_scanned = TRUE
+
 	return TRUE
 
 /obj/item/xenoarch/strange_rock/proc/try_dig(dig_amount)
 	if(!dig_amount)
 		return DIG_UNDEFINED
+
 	dug_depth += dig_amount
 	if(dug_depth > item_depth)
 		qdel(src)
 		return DIG_DELETE
+
 	return DIG_ROCK
 
 /obj/item/xenoarch/strange_rock/proc/try_uncover()
 	if(dug_depth > item_depth)
 		qdel(src)
 		return BRUSH_DELETE
+
 	if(dug_depth == item_depth)
 		new hidden_item(get_turf(src))
 		qdel(src)
 		return BRUSH_UNCOVER
-	try_dig(1)
+
 	return BRUSH_NONE
 
-/obj/item/xenoarch/strange_rock/attackby(obj/item/I, mob/living/user, params)
+/obj/item/xenoarch/strange_rock/attackby(obj/item/attacking_item, mob/living/user, params)
 	. = ..()
-	if(istype(I, /obj/item/xenoarch/hammer))
-		var/obj/item/xenoarch/hammer/xeno_hammer = I
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/research, SKILL_SPEED_MODIFIER)
+	if(istype(attacking_item, /obj/item/xenoarch/hammer))
+		var/obj/item/xenoarch/hammer/xeno_hammer = attacking_item
 		to_chat(user, span_notice("You begin carefully using your hammer."))
-		if(!do_after(user, xeno_hammer.dig_speed, target = src))
+		if(!do_after(user, xeno_hammer.dig_speed * skill_modifier, target = src))
 			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
 			dug_depth += rand(1,5)
 			return
+
 		switch(try_dig(xeno_hammer.dig_amount))
 			if(DIG_UNDEFINED)
 				message_admins("Tell coders something broke with xenoarch hammers and dig amount.")
 				return
+
 			if(DIG_DELETE)
 				to_chat(user, span_warning("The rock crumbles, leaving nothing behind."))
 				return
+
 			if(DIG_ROCK)
 				to_chat(user, span_notice("You successfully dig around the item."))
+				user.mind.adjust_experience(/datum/skill/research, xeno_hammer.dig_amount)
 
-	if(istype(I, /obj/item/xenoarch/brush))
-		var/obj/item/xenoarch/brush/xeno_brush = I
+	if(istype(attacking_item, /obj/item/xenoarch/brush))
+		var/obj/item/xenoarch/brush/xeno_brush = attacking_item
 		to_chat(user, span_notice("You begin carefully using your brush."))
-		if(!do_after(user, xeno_brush.dig_speed, target = src))
+		if(!do_after(user, xeno_brush.dig_speed * skill_modifier, target = src))
 			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
 			dug_depth += rand(1,5)
 			return
+
 		switch(try_uncover())
 			if(BRUSH_DELETE)
 				to_chat(user, span_warning("The rock crumbles, leaving nothing behind."))
 				return
+
 			if(BRUSH_UNCOVER)
 				to_chat(user, span_notice("You successfully brush around the item, fully revealing the item!"))
+				user.mind.adjust_experience(/datum/skill/research, 20)
 				return
+
 			if(BRUSH_NONE)
 				to_chat(user, span_notice("You brush around the item, but it wasn't revealed... hammer some more."))
 
-	if(istype(I, /obj/item/xenoarch/tape_measure))
+	if(istype(attacking_item, /obj/item/xenoarch/tape_measure))
 		to_chat(user, span_notice("You begin carefully using your measuring tape."))
-		if(!do_after(user, 4 SECONDS, target = src))
+		if(!do_after(user, 4 SECONDS * skill_modifier, target = src))
 			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
 			dug_depth += rand(1,5)
 			return
+
 		if(get_measured())
 			to_chat(user, span_notice("You successfully attach a holo measuring tape to the strange rock; the strange rock will now report its dug depth always!"))
+			user.mind.adjust_experience(/datum/skill/research, 5)
 			return
+
 		to_chat(user, span_warning("The strange rock was already marked with a holo measuring tape."))
 
-	if(istype(I, /obj/item/xenoarch/handheld_scanner))
-		var/obj/item/xenoarch/handheld_scanner/item_scanner = I
+	if(istype(attacking_item, /obj/item/xenoarch/handheld_scanner))
+		var/obj/item/xenoarch/handheld_scanner/item_scanner = attacking_item
 		to_chat(user, span_notice("You begin to scan [src] using [item_scanner]."))
-		if(!do_after(user, item_scanner.scanning_speed, target = src))
+		if(!do_after(user, item_scanner.scanning_speed * skill_modifier, target = src))
 			to_chat(user, span_warning("You interrupt your scanning, damaging the rock in the process!"))
 			dug_depth += rand(1,5)
 			return
+
 		if(get_scanned(item_scanner.scan_advanced))
 			to_chat(user, span_notice("You successfully attach a holo scanning module to the strange rock; the strange rock will now report its depth information always!"))
+			user.mind.adjust_experience(/datum/skill/research, 5)
 			if(adv_scanned)
 				to_chat(user, span_notice("The rock's item depth is being reported!"))
+
 			return
+
 		to_chat(user, span_warning("The strange rock was already marked with a holo scanning module."))
 
 //turfs

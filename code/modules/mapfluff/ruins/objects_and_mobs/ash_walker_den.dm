@@ -35,17 +35,15 @@
 	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
-/obj/structure/lavaland/ash_walker/deconstruct(disassembled)
+/obj/structure/lavaland/ash_walker/atom_deconstruct(disassembled)
 	var/core_to_drop = pick(subtypesof(/obj/item/assembly/signaler/anomaly))
 	new core_to_drop (get_step(loc, pick(GLOB.alldirs)))
 	new /obj/effect/collapse(loc)
-	return ..()
 
 /obj/structure/lavaland/ash_walker/process()
 	consume()
 	spawn_mob()
 
-//PLEASE VIEW SKYRAT ASHWALKER MODULE FOR OVERRIDE
 /obj/structure/lavaland/ash_walker/proc/consume()
 	for(var/mob/living/offeredmob in view(src, 1)) //Only for corpse right next to/on same tile
 		if(offeredmob.loc == src)
@@ -94,7 +92,6 @@
 					L.add_mood_event("oogabooga", /datum/mood_event/sacrifice_bad)
 			ashies.sacrifices_made++
 
-// SKYRAT EDIT ADDITION - PLEASE VIEW SKYRAT ASHWALKER MODULE FOR REPLACEMENT
 /obj/structure/lavaland/ash_walker/proc/remake_walker(mob/living/carbon/oldmob)
 	var/mob/living/carbon/human/newwalker = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
 	newwalker.set_species(/datum/species/lizard/ashwalker)

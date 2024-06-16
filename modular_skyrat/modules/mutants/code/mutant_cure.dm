@@ -219,8 +219,6 @@
 	if(machine_stat & (NOPOWER|BROKEN|MAINT))
 		return
 
-	usr.set_machine(src)
-
 	var/operation = href_list["function"]
 	var/obj/item/process = locate(href_list["item"]) in src
 
@@ -230,7 +228,7 @@
 	else if(operation == "eject")
 		ejectItem()
 	else if(operation == "refresh")
-		updateUsrDialog()
+		SStgui.update_uis(src)
 	else
 		if(status != STATUS_IDLE)
 			to_chat(usr, span_warning("[src] is currently recombinating!"))
@@ -244,9 +242,9 @@
 			else
 				status = STATUS_RECOMBINATING_CURE
 			recombinate_start()
-			use_power(3000)
+			use_energy(3000 JOULES)
 
-	updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/rnd/rna_recombinator/proc/ejectItem()
 	if(loaded_item)
@@ -270,7 +268,7 @@
 	ejectItem()
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_step()
@@ -286,7 +284,7 @@
 		recombinate_finish()
 		return
 	flick("h_lathe_wloop", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
@@ -306,7 +304,7 @@
 	else
 		new /obj/item/reagent_containers/cup/bottle/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
-	use_power(3000)
+	use_energy(3000 JOULES)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
 	status = STATUS_IDLE
 
