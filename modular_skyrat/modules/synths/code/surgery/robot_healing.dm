@@ -35,8 +35,8 @@
 		)
 
 /datum/surgery_step/robot_heal
-	name = "repair body (welder/cable)"
-	implements = list(TOOL_WELDER = 100, /obj/item/stack/cable_coil = 100)
+	name = "repair body (crowbar/wirecutters)"
+	implements = list(TOOL_CROWBAR = 100, TOOL_WIRECUTTER = 100)
 	repeatable = TRUE
 	time = 25
 
@@ -52,20 +52,23 @@
 	var/missing_health_bonus = 0
 
 /datum/surgery_step/robot_heal/tool_check(mob/user, obj/item/tool)
-	if(implement_type == TOOL_WELDER && !tool.tool_use_check(user, 1))
+	if(implement_type == TOOL_CROWBAR && implement_type == TOOL_WIRECUTTER)
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/robot_heal/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/woundtype
-	if(implement_type == TOOL_WELDER)
+	if(implement_type == TOOL_CROWBAR)
 		heals_brute = TRUE
 		heals_burn = FALSE
 		woundtype = "dents"
-	else
+		return
+
+	if(implement_type == TOOL_WIRECUTTER)
 		heals_brute = FALSE
 		heals_burn = TRUE
 		woundtype = "wiring"
+		return
 
 	if(!istype(surgery, /datum/surgery/robot_healing))
 		return
@@ -84,7 +87,7 @@
 
 /datum/surgery_step/robot_heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(..())
-		while((heals_brute && target.getBruteLoss() && tool.tool_use_check(user, 1)) || (heals_burn && target.getFireLoss() && tool))
+		while((heals_brute && target.getBruteLoss() && tool) || (heals_burn && target.getFireLoss() && tool))
 			if(!..())
 				break
 
@@ -99,12 +102,8 @@
 
 	var/healed_burn = 0
 	if(heals_burn)
-		var/obj/item/stack/cable_coil/cable = tool
 		healed_burn = burn_heal_amount
-		if(!cable.amount)
-			return
-
-		cable.use(1)
+		tool.use_tool(target, user, 0, volume = 50, amount=1)
 
 	if(missing_health_bonus)
 		if(target.stat != DEAD)

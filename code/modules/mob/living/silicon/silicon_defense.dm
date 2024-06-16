@@ -79,7 +79,7 @@
 		// SKYRAT EDIT ADDITION START
 		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 			visible_message(span_warning("[user] tries to pet [src], but it moves out of the way."))
-			return
+			return TRUE
 		// SKYRAT EDIT ADDITION END
 		visible_message(span_notice("[user] pets [src]."), span_notice("[user] pets you."), null, null, user)
 		to_chat(user, span_notice("You pet [src]."))
@@ -105,13 +105,6 @@
 	if(user.combat_mode)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
-
-/mob/living/silicon/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
-	if(buckled_mobs)
-		for(var/mob/living/M in buckled_mobs)
-			unbuckle_mob(M)
-			M.electrocute_act(shock_damage/100, source, siemens_coeff, flags) //Hard metal shell conducts!
-	return 0 //So borgs they don't die trying to fix wiring
 
 /mob/living/silicon/emp_act(severity)
 	. = ..()

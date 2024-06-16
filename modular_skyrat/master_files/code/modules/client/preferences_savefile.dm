@@ -3,7 +3,7 @@
  * You can't really use the non-modular version, least you eventually want asinine merge
  * conflicts and/or potentially disastrous issues to arise, so here's your own.
  */
-#define MODULAR_SAVEFILE_VERSION_MAX 4
+#define MODULAR_SAVEFILE_VERSION_MAX 5
 
 #define MODULAR_SAVEFILE_UP_TO_DATE -1
 
@@ -11,6 +11,7 @@
 #define VERSION_BREAST_SIZE_CHANGE 2
 #define VERSION_SYNTH_REFACTOR 3
 #define VERSION_UNDERSHIRT_BRA_SPLIT 4
+#define VERSION_CHRONOLOGICAL_AGE 5
 
 #define INDEX_UNDERWEAR 1
 #define INDEX_BRA 2
@@ -95,6 +96,8 @@
 		addtimer(CALLBACK(src, PROC_REF(check_migration)), 10 SECONDS)
 
 	headshot = save_data["headshot"]
+
+	food_preferences = SANITIZE_LIST(save_data["food_preferences"])
 
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
@@ -252,6 +255,9 @@
 			write_preference(GLOB.preference_entries[/datum/preference/color/bra_color], migrated_color)
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/undershirt], "Nude")
 
+	// Resets Chronological Age field to default.
+	if(current_version < VERSION_CHRONOLOGICAL_AGE)
+		write_preference(GLOB.preference_entries[/datum/preference/numeric/chronological_age], read_preference(/datum/preference/numeric/age))
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
@@ -273,6 +279,7 @@
 	save_data["languages"] = languages
 	save_data["headshot"] = headshot
 	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
+	save_data["food_preferences"] = food_preferences
 
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)

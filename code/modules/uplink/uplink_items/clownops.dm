@@ -8,7 +8,7 @@
 	cost = 10
 	item = /obj/item/pneumatic_cannon/pie/selfcharge
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/weapon_kits/bananashield
 	name = "Bananium Energy Shield"
@@ -18,7 +18,7 @@
 	item = /obj/item/shield/energy/bananium
 	cost = 16
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/weapon_kits/clownsword
 	name = "Bananium Energy Sword"
@@ -27,7 +27,7 @@
 	item = /obj/item/melee/energy/sword/bananium
 	cost = 3
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/weapon_kits/clownoppin
 	name = "Ultra Hilarious Firing Pin"
@@ -51,7 +51,7 @@
 	item = /obj/item/gun/ballistic/automatic/c20r/toy
 	cost = 5
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/weapon_kits/foammachinegun
 	name = "Toy Machine Gun"
@@ -60,7 +60,7 @@
 	item = /obj/item/gun/ballistic/automatic/l6_saw/toy
 	cost = 10
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/explosives/bombanana
 	name = "Bombanana"
@@ -69,7 +69,7 @@
 	item = /obj/item/food/grown/banana/bombanana
 	cost = 4 //it is a bit cheaper than a minibomb because you have to take off your helmet to eat it, which is how you arm it
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/explosives/clown_bomb_clownops
 	name = "Clown Bomb"
@@ -81,7 +81,7 @@
 	item = /obj/item/sbeacondrop/clownbomb
 	cost = 15
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/explosives/clown_bomb_clownops/New()
 	. = ..()
@@ -94,7 +94,7 @@
 	item = /obj/item/grenade/chem_grenade/teargas/moustache
 	cost = 3
 	surplus = 0
-	purchasable_from = UPLINK_CLOWN_OPS
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_SPY
 
 /datum/uplink_item/explosives/pinata
 	name = "Weapons Grade Pinata Kit"
@@ -141,7 +141,7 @@
 	cost = 80
 	purchasable_from = UPLINK_CLOWN_OPS
 
-/* //SKYRAT REMOVAL START
+/* // SKYRAT EDIT REMOVAL START
 /datum/uplink_item/stealthy_tools/combatbananashoes
 	name = "Combat Banana Shoes"
 	desc = "While making the wearer immune to most slipping attacks like regular combat clown shoes, these shoes \
@@ -151,7 +151,7 @@
 	cost = 6
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
-*/ //SKYRAT REMOVAL END
+*/ // SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/badass/clownopclumsinessinjector //clowns can buy this too, but it's in the role-restricted items section for them
 	name = "Clumsiness Injector"
@@ -160,4 +160,3 @@
 	cost = 1
 	purchasable_from = UPLINK_CLOWN_OPS
 	illegal_tech = FALSE
-

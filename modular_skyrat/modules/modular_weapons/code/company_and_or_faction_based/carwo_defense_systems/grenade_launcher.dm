@@ -22,7 +22,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c980_grenade
 
@@ -69,11 +69,11 @@
 	. += span_notice("With <b>Right Click</b> you can set the range that shells will detonate at.")
 	. += span_notice("A small indicator in the sight notes the current detonation range is: <b>[target_range]</b>.")
 
-/obj/item/gun/ballistic/automatic/sol_grenade_launcher/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
-	if(!target || !user)
+/obj/item/gun/ballistic/automatic/sol_grenade_launcher/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!interacting_with || !user)
 		return
 
-	var/distance_ranged = get_dist(user, target)
+	var/distance_ranged = get_dist(user, interacting_with)
 	if(distance_ranged > maximum_target_range)
 		user.balloon_alert(user, "out of range")
 		return

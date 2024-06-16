@@ -59,7 +59,7 @@
 	messenger = /obj/item/storage/backpack/messenger/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/modular_computer/pda/security
+	belt = /obj/item/modular_computer/pda/blueshield
 
 	id_trim = /datum/id_trim/job/blueshield
 
@@ -68,3 +68,14 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
+
+/obj/item/modular_computer/pda/blueshield
+	name = "blueshield PDA"
+	greyscale_colors = "#2B356D#1E1E1E"
+	inserted_item = /obj/item/pen/red/security
+	starting_programs = list(
+		/datum/computer_file/program/records/security,
+		/datum/computer_file/program/crew_manifest,
+		/datum/computer_file/program/robocontrol,
+		/datum/computer_file/program/radar/lifeline,
+	)

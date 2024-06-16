@@ -2,7 +2,7 @@
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Definitely can't get past those. No way."
 	gender = PLURAL
-	icon = 'icons/obj/structures.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/structures.dmi'//ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "plasticflaps"
 	armor_type = /datum/armor/structure_plasticflaps
 	density = FALSE
@@ -124,10 +124,8 @@
 			return FALSE //If you're not laying down, or a small creature, or a ventcrawler, then no pass.
 
 
-/obj/structure/plasticflaps/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		new /obj/item/stack/sheet/plastic/five(loc)
-	qdel(src)
+/obj/structure/plasticflaps/atom_deconstruct(disassembled = TRUE)
+	new /obj/item/stack/sheet/plastic/five(loc)
 
 /obj/structure/plasticflaps/Initialize(mapload)
 	. = ..()

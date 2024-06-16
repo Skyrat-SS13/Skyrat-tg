@@ -49,7 +49,7 @@
 		if(shock_cooldown == TRUE)
 			return
 		shock_cooldown = TRUE
-		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
+		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 10 SECONDS)
 		step(affected_mob, pick(GLOB.cardinals))
 
 		to_chat(affected_mob, span_danger("You feel a sharp shock from the collar!"))

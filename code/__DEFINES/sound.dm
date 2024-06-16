@@ -2,7 +2,7 @@
 #define CHANNEL_LOBBYMUSIC 1024
 #define CHANNEL_ADMIN 1023
 #define CHANNEL_VOX 1022
-#define CHANNEL_JUKEBOX 1011 // SKYRAT EDIT - JUKEBOX - ORIGINAL: #define CHANNEL_JUKEBOX 1021
+#define CHANNEL_JUKEBOX 1021
 #define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
 #define CHANNEL_BOSS_MUSIC 1019
 #define CHANNEL_AMBIENCE 1018
@@ -10,6 +10,11 @@
 #define CHANNEL_TRAITOR 1016
 #define CHANNEL_CHARGED_SPELL 1015
 #define CHANNEL_ELEVATOR 1014
+//THIS SHOULD ALWAYS BE THE LOWEST ONE!
+//KEEP IT UPDATED
+#define CHANNEL_HIGHEST_AVAILABLE 1013
+
+#define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
 // SKYRAT EDIT START - JUKEBOX
 #define CHANNEL_JUKEBOX_START 1006
@@ -27,13 +32,6 @@
 #define SOUND_DEFAULT_FALLOFF_DISTANCE 1 //For a normal sound this would be 1 tile of no falloff
 ///The default exponent of sound falloff
 #define SOUND_FALLOFF_EXPONENT 6
-
-//THIS SHOULD ALWAYS BE THE LOWEST ONE!
-//KEEP IT UPDATED
-
-#define CHANNEL_HIGHEST_AVAILABLE 1005 //SKYRAT EDIT CHANGE - JUKEBOX > ORIGINAL VALUE 1015
-
-#define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
 #define SOUND_MINIMUM_PRESSURE 10
 
@@ -235,3 +233,8 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_ROCK_TAP "rock_tap"
 #define SFX_SEAR "sear"
 #define SFX_REEL "reel"
+#define SFX_RATTLE "rattle"
+#define SFX_PORTAL_ENTER "portal_enter"
+#define SFX_PORTAL_CLOSE "portal_closed"
+#define SFX_PORTAL_CREATED "portal_created"
+#define SFX_SCREECH "screech"

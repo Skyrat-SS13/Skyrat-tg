@@ -5,7 +5,7 @@
 			/* hud_owner = */ src,
 			src,
 			"Resume",
-			/* offset = */ 0,
+			/* offset = */ 1,
 			CALLBACK(src, PROC_REF(home_resume)),
 		)
 	)
@@ -16,7 +16,7 @@
 			/* hud_owner = */ null,
 			src,
 			"Settings",
-			/* offset = */ 1,
+			/* offset = */ 2,
 			CALLBACK(src, PROC_REF(home_open_settings)),
 		)
 	)
@@ -27,7 +27,7 @@
 			/* hud_owner = */ src,
 			src,
 			"Admin Help",
-			/* offset = */ 2,
+			/* offset = */ 3,
 		)
 	)
 	//SKYRAT EDIT REMOVAL BEGIN
@@ -38,7 +38,7 @@
 			/* hud_owner = */ src,
 			src,
 			"Leave Body",
-			/* offset = */ 3,
+			/* offset = */ 4,
 			CALLBACK(src, PROC_REF(open_leave_body)),
 		)
 	)

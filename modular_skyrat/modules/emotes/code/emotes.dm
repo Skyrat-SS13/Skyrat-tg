@@ -339,10 +339,16 @@
 	key_third_person = "twitches their ears"
 	message = "twitches their ears!"
 
-/datum/emote/living/clear
-	key = "clear"
-	key_third_person = "clears their throat"
-	message = "clears their throat."
+/datum/emote/living/carbon/human/clear_throat
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/clear_throat/get_sound(mob/living/user)
+	if(!iscarbon(user))
+		return
+	if(user.gender == MALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/male/clear_m.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/female/clear_f.ogg'
 
 // Avian revolution
 /datum/emote/living/bawk
@@ -414,6 +420,29 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
+
+/datum/emote/living/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "lets out a long howl."
+	emote_type = EMOTE_AUDIBLE
+	audio_cooldown = 30 SECONDS
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/howl.ogg'
+
+/datum/emote/living/howl/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+	if(!HAS_TRAIT(user, TRAIT_CANINE))
+		return FALSE
+	return ..()
+
+/datum/emote/living/pant
+	key = "pant"
+	key_third_person = "pants"
+	message = "pants like a dog!"
+	audio_cooldown = 15 SECONDS
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/pant.ogg'
 
 /datum/emote/living/baa
 	key = "baa"

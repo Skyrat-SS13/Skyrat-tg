@@ -54,4 +54,50 @@
 		log_message("[equipped_item] was removed from [key_name(src)].", LOG_ATTACK)
 		dropItemToGround(equipped_item, TRUE)
 
+	// Leashes are treated a smidge different than the rest of the clothing; and need their own handling here.
+	var/leash_check = src?.GetComponent(/datum/component/leash/erp)
+	if(leash_check)
+		qdel(leash_check)
+
 	return TRUE
+
+/mob/living/carbon/human/verb/lick(mob/living/carbon/human/target in get_adjacent_humans())
+	set name = "Lick"
+	set category = "IC"
+
+	if(!istype(target))
+		return FALSE
+
+	var/taste = target?.dna?.features["taste"]
+	if(!taste)
+		to_chat(src, span_warning("[target] doesn't seem to have a taste."))
+		return FALSE
+
+	to_chat(src, span_notice("[target] tastes like [taste]."))
+	to_chat(target, span_notice("[src] licks you."))
+
+/mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_adjacent_humans())
+	set name = "Smell"
+	set category = "IC"
+
+	if(!istype(target))
+		return FALSE
+
+	var/smell = target?.dna?.features["smell"]
+	if(!smell)
+		to_chat(src, span_warning("[target] doesn't seem to have a smell."))
+		return FALSE
+
+	to_chat(src, span_notice("[target] smells like [smell]."))
+
+/// Returns a list containing all of the humans adjacent to the user.
+/mob/living/proc/get_adjacent_humans()
+	var/list/nearby_humans = orange(1, src)
+	for(var/mob/living/carbon/human/nearby_human as anything in nearby_humans)
+		if(ishuman(nearby_human))
+			continue
+
+		nearby_humans -= nearby_human
+
+	return nearby_humans
+

@@ -18,7 +18,7 @@
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"
 	desc = "A sharp, one-handed sword most adept at blocking opposing melee strikes."
-	force = 15
+	force = 10
 	armour_penetration = 10
 	icon_state = "sword"
 	inhand_icon_state = "sword"
@@ -35,10 +35,15 @@
 	sharpness = SHARP_EDGED
 	max_integrity = 150
 
+/obj/item/forging/reagent_weapon/sword/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_multiplier = 2)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
+
 /obj/item/forging/reagent_weapon/katana
 	name = "reagent katana"
 	desc = "A katana sharp enough to penetrate body armor, but not quite million-times-folded sharp."
-	force = 15
+	force = 10
 	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
 	icon_state = "katana"
 	inhand_icon_state = "katana"
@@ -52,6 +57,11 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
+
+/obj/item/forging/reagent_weapon/katana/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_multiplier = 2)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
 
 /obj/item/forging/reagent_weapon/dagger
 	name = "reagent dagger"
@@ -69,6 +79,11 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
+
+/obj/item/forging/reagent_weapon/dagger/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 70)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
 
 /obj/item/forging/reagent_weapon/dagger/attack(mob/living/M, mob/living/user, params)
 	. = ..()
@@ -95,7 +110,7 @@
 /obj/item/forging/reagent_weapon/spear
 	name = "reagent spear"
 	desc = "A long spear that can be wielded in two hands to boost damage at the cost of single-handed versatility."
-	force = 10
+	force = 8
 	armour_penetration = 10
 	icon_state = "spear"
 	inhand_icon_state = "spear"
@@ -109,17 +124,20 @@
 	attack_verb_simple = list("attack", "poke", "jab", "tear", "lacerate", "gore")
 	wound_bonus = -15
 	bare_wound_bonus = 15
-	reach = 2
 	sharpness = SHARP_POINTY
 
 /obj/item/forging/reagent_weapon/spear/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 17) //better than the bone spear
+	AddComponent(/datum/component/jousting, max_tile_charge = 9, min_tile_charge = 6)
+	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 70)
+	AddComponent(/datum/component/two_handed, force_multiplier = 2)
+	AddComponent(/datum/component/two_hand_reach, unwield_reach = 1, wield_reach = 2)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
 	desc = "An axe especially balanced for throwing and embedding into fleshy targets. Nonetheless useful as a traditional melee tool."
-	force = 15
+	force = 10
 	armour_penetration = 10
 	icon_state = "axe"
 	inhand_icon_state = "axe"
@@ -134,10 +152,16 @@
 	attack_verb_simple = list("slash", "bash")
 	sharpness = SHARP_EDGED
 
+/obj/item/forging/reagent_weapon/axe/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 70)
+	AddComponent(/datum/component/two_handed, force_multiplier = 2)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
+
 /obj/item/forging/reagent_weapon/hammer
 	name = "reagent hammer"
 	desc = "A heavy, weighted hammer that packs an incredible punch but can prove to be unwieldy. Useful for forging!"
-	force = 19 //strong but boring.
+	force = 12 //strong when wielded, but boring.
 	armour_penetration = 10
 	icon_state = "crush_hammer"
 	inhand_icon_state = "crush_hammer"
@@ -158,6 +182,8 @@
 /obj/item/forging/reagent_weapon/hammer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/kneejerk)
+	AddComponent(/datum/component/two_handed, force_multiplier = 2)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
 
 /obj/item/forging/reagent_weapon/hammer/attack_atom(atom/attacked_atom, mob/living/user, params)
 	. = ..()
@@ -189,6 +215,7 @@
 /obj/item/shield/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
 
 /obj/item/shield/buckler/reagent_weapon/examine(mob/user)
 	. = ..()
@@ -224,7 +251,8 @@
 
 /obj/item/shield/buckler/reagent_weapon/pavise/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
+	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_multiplier = 2)
+	AddComponent(/datum/component/mindless_killer, mindless_force_override = 0, mindless_multiplier_override = 2)
 
 /obj/item/pickaxe/reagent_weapon
 	name = "reagent pickaxe"
@@ -269,7 +297,7 @@
 /obj/item/forging/reagent_weapon/bokken
 	name = "reagent bokken"
 	desc = "A bokken that is capable of blocking attacks when wielding in two hands, possibly including bullets should the user be brave enough."
-	force = 15
+	force = 16
 	icon_state = "bokken"
 	inhand_icon_state = "bokken"
 	worn_icon_state = "bokken_back"
@@ -304,7 +332,7 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
-	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=7)
+	AddComponent(/datum/component/two_handed, force_multiplier = 0.5)
 
 /obj/item/forging/reagent_weapon/bokken/proc/on_wield()
 	SIGNAL_HANDLER
@@ -313,3 +341,7 @@
 /obj/item/forging/reagent_weapon/bokken/proc/on_unwield()
 	SIGNAL_HANDLER
 	wielded = FALSE
+
+/obj/item/spear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_hand_reach, unwield_reach = 1, wield_reach = 2)

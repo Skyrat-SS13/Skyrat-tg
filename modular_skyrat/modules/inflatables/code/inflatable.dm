@@ -53,11 +53,9 @@
 		return
 	return ..()
 
-/obj/structure/inflatable/AltClick(mob/user)
-	. = ..()
-	if(!user.can_interact_with(src))
-		return
+/obj/structure/inflatable/click_alt(mob/user)
 	deflate(FALSE)
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/inflatable/play_attack_sound(damage_amount, damage_type, damage_flag)
 	playsound(src, hit_sound, 75, TRUE)

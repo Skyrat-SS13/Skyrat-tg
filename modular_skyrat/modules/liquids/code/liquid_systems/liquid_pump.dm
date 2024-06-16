@@ -8,6 +8,7 @@
 	max_integrity = 500
 	anchored = FALSE
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	interaction_flags_click = NEED_DEXTERITY
 	/// How many reagents at maximum can it hold
 	var/max_volume = 10000
 	/// Whether spewing reagents out, instead of siphoning them
@@ -33,12 +34,11 @@
 	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
 	toggle_working()
 
-/obj/structure/liquid_pump/AltClick(mob/living/user)
-	if(!user.can_perform_action(src, NEED_DEXTERITY))
-		return
+/obj/structure/liquid_pump/click_alt(mob/living/user)
 	to_chat(user, span_notice("You flick [src]'s spewing mode [spewing_mode ? "off" : "on"]."))
 	spewing_mode = !spewing_mode
 	update_icon()
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/liquid_pump/examine(mob/user)
 	. = ..()

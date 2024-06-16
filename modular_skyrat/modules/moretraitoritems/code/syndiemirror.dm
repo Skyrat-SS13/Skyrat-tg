@@ -33,7 +33,7 @@
 
 	if(selected_part == "Hair")
 
-		var/hair_id = tgui_input_list(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.hairstyles_list)
+		var/hair_id = tgui_input_list(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece", SSaccessories.hairstyles_list)
 		if(!hair_id)
 			return
 
@@ -47,7 +47,7 @@
 			target_human.set_hairstyle(hair_id, update = TRUE)
 			user.visible_message(span_notice("[target_human]'s hair changes!"), span_notice("The nanites successfully alter [target_human]'s hair!"))
 	else
-		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.facial_hairstyles_list)
+		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", SSaccessories.facial_hairstyles_list)
 		if(!facial_hair_id)
 			return
 

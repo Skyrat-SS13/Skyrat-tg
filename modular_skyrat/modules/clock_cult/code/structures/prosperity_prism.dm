@@ -26,7 +26,7 @@
 			continue
 
 		if(use_power(POWER_PER_USE))
-			possible_cultist.adjustToxLoss(-2.5 * seconds_per_tick)
+			possible_cultist.adjustToxLoss(-2.5 * seconds_per_tick, forced = TRUE)
 			possible_cultist.adjustStaminaLoss(-7.5 * seconds_per_tick)
 			possible_cultist.adjustBruteLoss(-2.5 * seconds_per_tick)
 			possible_cultist.adjustFireLoss(-2.5 * seconds_per_tick)

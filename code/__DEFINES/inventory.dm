@@ -14,6 +14,9 @@
 /// Essentially means it cannot be picked up or placed in an inventory, (e.g. mech parts, safe)
 #define WEIGHT_CLASS_GIGANTIC 6
 
+/// Weight class that can fit in pockets
+#define POCKET_WEIGHT_CLASS WEIGHT_CLASS_SMALL
+
 //Inventory depth: limits how many nested storage items you can access directly.
 //1: stuff in mob, 2: stuff in backpack, 3: stuff in box in backpack, etc
 #define INVENTORY_DEPTH 3
@@ -165,7 +168,7 @@
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
-// SKYRAT EDIT END
+// SKYRAT EDIT ADDITION END
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
@@ -256,6 +259,26 @@ GLOBAL_LIST_INIT(chaplain_suit_allowed, list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/gun/ballistic/bow/divine,
 	/obj/item/gun/ballistic/revolver/chaplain,
+))
+
+//Allowed list for all mining suits
+
+GLOBAL_LIST_INIT(mining_suit_allowed, list(
+	/obj/item/t_scanner/adv_mining_scanner,
+	/obj/item/melee/cleaving_saw,
+	/obj/item/climbing_hook,
+	/obj/item/flashlight,
+	/obj/item/grapple_gun,
+	/obj/item/tank/internals,
+	/obj/item/gun/energy/recharge/kinetic_accelerator,
+	/obj/item/kinetic_crusher,
+	/obj/item/knife,
+	/obj/item/mining_scanner,
+	/obj/item/organ/internal/monster_core,
+	/obj/item/storage/bag/ore,
+	/obj/item/pickaxe,
+	/obj/item/resonator,
+	/obj/item/spear,
 ))
 
 /// String for items placed into the left pocket.

@@ -108,7 +108,13 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "tails"
 			pixel_x = -16 //correcting the offset for 64
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", EXTRA_ABOVE_MOB_LAYER, src)
+			var/mutable_appearance/overlay = mutable_appearance(
+				'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi',
+				"tails_top",
+				EXTRA_ABOVE_MOB_LAYER,
+				src,
+				ABOVE_GAME_PLANE,
+				)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 25, TRUE)
@@ -119,7 +125,13 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "naga"
 			pixel_x = -16
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", EXTRA_ABOVE_MOB_LAYER, src)
+			var/mutable_appearance/overlay = mutable_appearance(
+				'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi',
+				"naga_top",
+				EXTRA_ABOVE_MOB_LAYER,
+				src,
+				ABOVE_GAME_PLANE,
+				)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg', 25, TRUE)

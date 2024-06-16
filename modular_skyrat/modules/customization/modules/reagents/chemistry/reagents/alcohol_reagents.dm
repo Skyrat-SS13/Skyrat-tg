@@ -22,7 +22,7 @@
 
 /datum/glass_style/drinking_glass/synthanol
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol
-	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi' // This should cover anything synthanol related. Will have to individually tag others unless we make an object path for skyrat drinks.
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi' // This should cover anything synthanol related. Will have to individually tag others unless we make an object path for Skyrat drinks.
 	icon_state = "synthanolglass"
 	name = "glass of synthanol"
 	desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."

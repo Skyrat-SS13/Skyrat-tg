@@ -106,6 +106,7 @@
 		"slime_scanner",
 		"solar_panel",
 		"solar_tracker",
+		"souppot",
 		"space_heater",
 		"spoon",
 		"status_display_frame",
@@ -121,6 +122,8 @@
 		"toy_armblade",
 		"toy_balloon",
 		"toygun",
+		"tram_floor_dark",
+		"tram_floor_light",
 		"trapdoor_electronics",
 		"turbine_part_compressor",
 		"turbine_part_rotor",
@@ -210,6 +213,7 @@
 		"mod_plating_standard",
 		"mod_storage",
 		"mod_welding",
+		"mod_safety",
 		"mod_mouthhole",
 		"mod_flashlight",
 		"mod_longfall",
@@ -341,6 +345,7 @@
 		"comp_get_column",
 		"comp_gps",
 		"comp_health",
+		"comp_health_state",
 		"comp_hear",
 		"comp_id_access_reader",
 		"comp_id_getter",
@@ -365,6 +370,7 @@
 		"comp_not",
 		"comp_ntnet_receive",
 		"comp_ntnet_send",
+		"comp_ntnet_send_list_literal",
 		"comp_pinpointer",
 		"comp_pressuresensor",
 		"comp_radio",
@@ -383,6 +389,7 @@
 		"comp_tempsensor",
 		"comp_textcase",
 		"comp_timepiece",
+		"comp_toggle",
 		"comp_tonumber",
 		"comp_tostring",
 		"comp_trigonometry",
@@ -501,6 +508,18 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/cytology = 3000) //Big discount to reinforce doing it.
+
+/datum/techweb_node/marine_util
+	id = "marine_util"
+	display_name = "Marine Utility"
+	description = "Fish are nice to look at and all, but they can be put to use."
+	prereq_ids = list("bio_process")
+	design_ids = list(
+		"bioelec_gen",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
+	// only available if you've done the first fishing experiment (thus unlocking fishing tech), but not a strict requirement to get the tech
+	discount_experiments = list(/datum/experiment/scanning/fish/second = 3000)
 
 /////////////////////////Advanced Surgery/////////////////////////
 
@@ -641,6 +660,7 @@
 		"thermomachine",
 		"w-recycler",
 		"welding_goggles",
+		"flatpacker",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/easy = 7500)
@@ -876,6 +896,7 @@
 		"bci_implanter",
 		"bci_shell",
 		"comp_bar_overlay",
+		"comp_camera_bci",
 		"comp_counter_overlay",
 		"comp_install_detector",
 		"comp_object_overlay",
@@ -1018,6 +1039,7 @@
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
 		"borg_upgrade_inducer",
+		"borg_upgrade_engineeringomnitool",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1033,6 +1055,7 @@
 		"borg_upgrade_piercinghypospray",
 		"borg_upgrade_pinpointer",
 		"borg_upgrade_surgicalprocessor",
+		"borg_upgrade_surgicalomnitool",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1065,6 +1088,18 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
+/datum/techweb_node/ai_basic/New()
+	. = ..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_HUMAN_AI))
+		design_ids -= list(
+			"aicore",
+			"borg_ai_control",
+			"intellicard",
+			"mecha_tracking_ai_control",
+			"aifixer",
+			"aiupload",
+		)
+
 /datum/techweb_node/ai_adv
 	id = "ai_adv"
 	display_name = "Advanced Artificial Intelligence"
@@ -1080,6 +1115,7 @@
 		"maintain_module",
 		"liveandletlive_module",
 		"reporter_module",
+		"yesman_module",
 		"hulkamania_module",
 		"peacekeeper_module",
 		"overlord_module",
@@ -1181,16 +1217,19 @@
 	description = "Computers and how they work."
 	prereq_ids = list("datatheory")
 	design_ids = list(
+		"bankmachine",
+		"barcode_scanner",
 		"cargo",
 		"cargorequest",
 		"comconsole",
-		"bankmachine",
 		"crewconsole",
 		"idcard",
 		"libraryconsole",
 		"mining",
+		"photobooth",
 		"rdcamera",
 		"seccamera",
+		"security_photobooth",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1340,9 +1379,21 @@
 		"c38_trac",
 		"implant_chem",
 		"implant_tracking",
+		"implant_exile",
 		"implantcase",
 		"implanter",
 		"locator",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/datum/techweb_node/advanced_implants
+	id = "adv_subdermal_implants"
+	display_name = "Advanced Subdermal Implants"
+	description = "Subdermal implants that leverage bluespace research to control their bluespace signature."
+	prereq_ids = list("subdermal_implants", "micro_bluespace")
+	design_ids = list(
+		"implant_beacon",
+		"implant_bluespace",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1537,6 +1588,7 @@
 	design_ids = list(
 		"fishing_rod_tech",
 		"stabilized_hook",
+		"auto_reel",
 		"fish_analyzer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
@@ -1611,6 +1663,7 @@
 	description = "Our researchers have found new ways to weaponize just about everything now."
 	prereq_ids = list("engineering")
 	design_ids = list(
+		"ballistic_shield",
 		"pin_testing",
 		"tele_shield",
 		"lasershell",
@@ -2413,6 +2466,33 @@
 		"mod_joint_torsion",
 		"mod_recycler",
 		"mod_shooting",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	hidden = TRUE
+	experimental = TRUE
+
+/datum/techweb_node/mod_experimental
+	id = "mod_experimental"
+	display_name = "Experimental Modular Suits"
+	description = "Applications of experimentality when creating MODsuits have created these..."
+	prereq_ids = list("base")
+	design_ids = list(
+		"mod_disposal",
+		"mod_joint_torsion",
+		"mod_recycler",
+		"mod_shooting",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	hidden = TRUE
+	experimental = TRUE
+
+/datum/techweb_node/posisphere
+	id = "positronic_sphere"
+	display_name = "Experimental Spherical Positronic Brain"
+	description = "Recent developments on cost-cutting measures have allowed us to cut positronic brain cubes into twice-as-cheap spheres. Unfortunately, it also allows them to move around the lab via rolling maneuvers."
+	prereq_ids = list("base")
+	design_ids = list(
+		"posisphere",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE

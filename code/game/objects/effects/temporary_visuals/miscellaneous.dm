@@ -266,9 +266,8 @@
 
 /obj/effect/temp_visual/telekinesis
 	name = "telekinetic force"
-	//icon_state = "empdisable" //Non-Skyrat version
-	icon_state = "telekinesis_throw" //Skyrat edit, was "empdisable"
-	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' //Skyrat Addition
+	icon_state = "telekinesis_throw" // SKYRAT EDIT CHANGE - ORIGINAL: icon_state = "empdisable"
+	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' // SKYRAT EDIT ADDITION
 	duration = 5
 
 /obj/effect/temp_visual/emp
@@ -494,7 +493,7 @@
 	duration = 2 SECONDS
 
 /obj/effect/constructing_effect
-	icon = 'icons/effects/effects_rcd.dmi'
+	icon = 'icons/effects/rcd.dmi'
 	icon_state = ""
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = ABOVE_GAME_PLANE
@@ -557,7 +556,7 @@
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		obj_flags &= ~CAN_BE_HIT
 		icon_state = "rcd_end"
-		addtimer(CALLBACK(src, PROC_REF(end)), 15)
+		addtimer(CALLBACK(src, PROC_REF(end)), 1.5 SECONDS)
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)
@@ -685,11 +684,11 @@
 	duration = 0.4 SECONDS
 
 /// Plays a dispersing animation on hivelord and legion minions so they don't just vanish
-/obj/effect/temp_visual/hive_spawn_wither
+/obj/effect/temp_visual/despawn_effect
 	name = "withering spawn"
 	duration = 1 SECONDS
 
-/obj/effect/temp_visual/hive_spawn_wither/Initialize(mapload, atom/copy_from)
+/obj/effect/temp_visual/despawn_effect/Initialize(mapload, atom/copy_from)
 	if (isnull(copy_from))
 		. = ..()
 		return INITIALIZE_HINT_QDEL

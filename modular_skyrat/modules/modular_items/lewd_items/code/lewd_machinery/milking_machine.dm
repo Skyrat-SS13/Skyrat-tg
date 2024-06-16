@@ -16,7 +16,6 @@
 	icon_state = "milking_pink_off"
 	max_buckled_mobs = 1
 	item_chair = null
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 	max_integrity = 75
 	var/static/list/milkingmachine_designs
 
@@ -67,33 +66,6 @@
 	var/mutable_appearance/organ_overlay
 	var/organ_overlay_new_icon_state = "" // Organ overlay update optimization
 
-// Additional examine text
-/obj/structure/chair/milking_machine/examine(mob/user)
-	. = ..()
-	. += span_notice("What are these metal mounts on the armrests for...?")
-
-/obj/structure/chair/milking_machine/Destroy()
-	if(current_mob)
-		if(current_mob.handcuffed)
-			current_mob.handcuffed.dropped(current_mob)
-		current_mob.set_handcuffed(null)
-		current_mob.update_abstract_handcuffed()
-		current_mob.layer = initial(current_mob.layer)
-
-	if(beaker)
-		qdel(beaker)
-		beaker = null
-
-	current_selected_organ = null
-	current_mob = null
-	current_breasts = null
-	current_testicles = null
-	current_vagina = null
-
-	STOP_PROCESSING(SSobj, src)
-	unbuckle_all_mobs()
-	return ..()
-
 // Object initialization
 /obj/structure/chair/milking_machine/Initialize(mapload)
 	. = ..()
@@ -123,6 +95,37 @@
 	update_all_visuals()
 	populate_milkingmachine_designs()
 	START_PROCESSING(SSobj, src)
+
+// Additional examine text
+/obj/structure/chair/milking_machine/examine(mob/user)
+	. = ..()
+	. += span_notice("What are these metal mounts on the armrests for...?")
+
+/obj/structure/chair/milking_machine/Destroy()
+	if(current_mob)
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.dropped(current_mob)
+		current_mob.set_handcuffed(null)
+		current_mob.update_abstract_handcuffed()
+		current_mob.layer = initial(current_mob.layer)
+
+	if(beaker)
+		qdel(beaker)
+		beaker = null
+
+	current_selected_organ = null
+	current_mob = null
+	current_breasts = null
+	current_testicles = null
+	current_vagina = null
+
+	STOP_PROCESSING(SSobj, src)
+	unbuckle_all_mobs()
+	return ..()
+
+// previously NO_DECONSTRUCTION
+/obj/structure/chair/milking_machine/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
 
 /*
 *	APPEARANCE MANAGEMENT
@@ -307,7 +310,7 @@
 		return FALSE
 
 	replace_beaker(user, used_container)
-	updateUsrDialog()
+	SStgui.update_uis(src)
 	return TRUE
 
 // Beaker change handler
@@ -404,7 +407,7 @@
 	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * seconds_per_tick)
 	current_mob.adjust_pain(pain_amounts[current_mode] * seconds_per_tick)
 
-/obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
+/obj/structure/chair/milking_machine/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -419,7 +422,7 @@
 	return TRUE
 
 // Machine deconstruction process handler
-/obj/structure/chair/milking_machine/deconstruct(disassembled)
+/obj/structure/chair/milking_machine/atom_deconstruct(disassembled)
 	if(beaker)
 		beaker.forceMove(drop_location())
 		adjust_item_drop_location(beaker)
@@ -583,7 +586,6 @@
 		data["current_vagina"] = current_vagina = null
 
 	data["machine_color"] = machine_color
-	updateUsrDialog()
 	return data
 
 // User action handler in the interface

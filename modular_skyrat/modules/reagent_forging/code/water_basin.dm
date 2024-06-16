@@ -93,6 +93,10 @@
 		if(search_incomplete.custom_materials)
 			spawned_obj.set_custom_materials(search_incomplete.custom_materials, 1) //lets set its material
 
+		if(istype(spawned_obj, /obj/item/forging/complete))
+			var/obj/item/forging/complete/complete_spawned = spawned_obj
+			complete_spawned.current_perfects = search_incomplete.current_perfects
+
 		qdel(search_incomplete)
 		tool.icon_state = "tong_empty"
 	return ITEM_INTERACT_SUCCESS

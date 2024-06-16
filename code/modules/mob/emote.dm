@@ -19,7 +19,7 @@
 		param = copytext(act, custom_param + length(act[custom_param]))
 		act = copytext(act, 1, custom_param)
 
-	act = lowertext(act)
+	act = LOWER_TEXT(act)
 	var/list/key_emotes = GLOB.emote_list[act]
 
 	if(!length(key_emotes))
@@ -34,6 +34,7 @@
 		if(P.run_emote(src, param, m_type, intentional))
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, P, act, m_type, message, intentional)
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTED(P.key))
+			src.nextsoundemote = world.time + P.cooldown // SKYRAT EDIT - EMOTE COOLDOWNS
 			return TRUE
 	if(intentional && !silenced && !force_silence)
 		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
@@ -79,7 +80,7 @@
 /datum/emote/flip/run_emote(mob/user, params , type_override, intentional)
 	. = ..()
 	if(.)
-		user.SpinAnimation(7,1)
+		user.SpinAnimation(FLIP_EMOTE_DURATION,1)
 
 /datum/emote/flip/check_cooldown(mob/user, intentional)
 	. = ..()

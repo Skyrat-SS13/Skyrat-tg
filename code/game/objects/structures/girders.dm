@@ -39,6 +39,7 @@
 			. += span_notice("[src] is designed for tram usage. Deconstructed with a screwdriver!")
 
 /obj/structure/girder/attackby(obj/item/W, mob/user, params)
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT
 	var/platingmodifier = 1
 	if(HAS_TRAIT(user, TRAIT_QUICK_BUILD))
 		platingmodifier = 0.7
@@ -81,11 +82,12 @@
 					balloon_alert(user, "need [amount] rods!")
 					return
 				balloon_alert(user, "concealing entrance...")
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(rod.get_amount() < amount)
 						return
 					rod.use(amount)
 					var/obj/structure/falsewall/iron/FW = new (loc)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(FW)
 					qdel(src)
 					return
@@ -94,12 +96,13 @@
 					balloon_alert(user, "need [amount] rods!")
 					return
 				balloon_alert(user, "adding plating...")
-				if(do_after(user, 40, target = src))
+				if(do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(rod.get_amount() < amount)
 						return
 					rod.use(amount)
 					var/turf/T = get_turf(src)
 					T.place_on_top(/turf/closed/wall/mineral/iron)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return
@@ -115,11 +118,12 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "concealing entrance...")
-				if(do_after(user, 20*platingmodifier, target = src))
+				if(do_after(user, 20 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/falsewall/F = new (loc)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(F)
 					qdel(src)
 					return
@@ -131,11 +135,12 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "adding plating...")
-				if (do_after(user, 4 SECONDS, target = src))
+				if (do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/tram/alt/iron/tram_wall = new(loc)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(tram_wall)
 					qdel(src)
 				return
@@ -144,12 +149,13 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "adding plating...")
-				if (do_after(user, 40*platingmodifier, target = src))
+				if (do_after(user, 40 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/turf/T = get_turf(src)
 					T.place_on_top(/turf/closed/wall)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return
@@ -160,11 +166,12 @@
 				balloon_alert(user, "need [amount] sheets!")
 				return
 			balloon_alert(user, "adding panel...")
-			if (do_after(user, 2 SECONDS, target = src))
+			if (do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 				if(sheets.get_amount() < amount)
 					return
 				sheets.use(amount)
 				var/obj/structure/tram/tram_wall = new(loc)
+				user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 				transfer_fingerprints_to(tram_wall)
 				qdel(src)
 			return
@@ -176,11 +183,12 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "concealing entrance...")
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/falsewall/reinforced/FW = new (loc)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(FW)
 					qdel(src)
 					return
@@ -189,12 +197,13 @@
 				if(sheets.get_amount() < amount)
 					return
 				balloon_alert(user, "adding plating...")
-				if(do_after(user, 50*platingmodifier, target = src))
+				if(do_after(user, 50 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/turf/T = get_turf(src)
 					T.place_on_top(/turf/closed/wall/r_wall)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return
@@ -203,11 +212,12 @@
 				if(sheets.get_amount() < amount)
 					return
 				balloon_alert(user, "reinforcing frame...")
-				if(do_after(user, 60*platingmodifier, target = src))
+				if(do_after(user, 60 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/girder/reinforced/R = new (loc)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					transfer_fingerprints_to(R)
 					qdel(src)
 				return
@@ -227,11 +237,12 @@
 					balloon_alert(user, "need titanium glass or mineral!")
 					return
 				balloon_alert(user, "adding plating...")
-				if (do_after(user, 4 SECONDS, target = src))
+				if (do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					var/obj/structure/tram/tram_wall
 					tram_wall = new tram_wall_type(loc)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					sheets.use(amount)
 					transfer_fingerprints_to(tram_wall)
 					qdel(src)
@@ -242,11 +253,12 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "concealing entrance...")
-				if(do_after(user, 20, target = src))
+				if(do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/falsewall/falsewall
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					if(falsewall_type)
 						falsewall = new falsewall_type (loc)
 					else
@@ -264,11 +276,12 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "adding plating...")
-				if (do_after(user, 40, target = src))
+				if (do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/turf/T = get_turf(src)
+					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
 					if(sheets.walltype)
 						T.place_on_top(sheets.walltype)
 					else
@@ -383,11 +396,9 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/girder/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		var/remains = pick(/obj/item/stack/rods, /obj/item/stack/sheet/iron)
-		new remains(loc)
-	qdel(src)
+/obj/structure/girder/atom_deconstruct(disassembled = TRUE)
+	var/remains = pick(/obj/item/stack/rods, /obj/item/stack/sheet/iron)
+	new remains(loc)
 
 /obj/structure/girder/narsie_act()
 	new /obj/structure/girder/cult(loc)
@@ -409,11 +420,10 @@
 	max_integrity = 350
 
 /obj/structure/girder/tram
-	name = "tram frame"
+	name = "tram girder"
 	desc = "Titanium framework to construct tram walls. Can be plated with <b>titanium glass</b> or other wall materials."
 	icon_state = "tram"
 	state = GIRDER_TRAM
-	density = FALSE
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 
 /obj/structure/girder/tram/corner
@@ -447,7 +457,7 @@
 			balloon_alert(user, "need [amount] sheet!")
 			return
 		balloon_alert(user, "adding plating...")
-		if(do_after(user, 50, target = src))
+		if(do_after(user, 5 SECONDS, target = src))
 			if(R.get_amount() < amount)
 				return
 			R.use(amount)
@@ -461,10 +471,8 @@
 /obj/structure/girder/cult/narsie_act()
 	return
 
-/obj/structure/girder/cult/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		new /obj/item/stack/sheet/runed_metal(drop_location(), 1)
-	qdel(src)
+/obj/structure/girder/cult/atom_deconstruct(disassembled = TRUE)
+	new /obj/item/stack/sheet/runed_metal(drop_location(), 1)
 
 /obj/structure/girder/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -519,7 +527,7 @@
 			balloon_alert(user, "need [amount] sheets!")
 			return
 		balloon_alert(user, "adding plating...")
-		if(do_after(user, 50, target = src))
+		if(do_after(user, 5 SECONDS, target = src))
 			if(B.get_amount() < amount)
 				return
 			B.use(amount)

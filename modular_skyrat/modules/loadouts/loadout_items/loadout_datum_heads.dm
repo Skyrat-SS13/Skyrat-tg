@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/standalone_hood
 	name = "Recolorable Standalone Hood"
-	item_path = /obj/item/clothing/head/standalone_hood
+	item_path = /obj/item/clothing/head/hooded/standalone_hood
 
 /datum/loadout_item/head/mail_cap
 	name = "Mail Cap"
@@ -568,6 +568,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/imperial_white
 	name = "White Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/white
+/datum/loadout_item/head/jester
+	name = "Jester hat"
+	item_path = /obj/item/clothing/head/costume/jester
+
+/datum/loadout_item/head/jesteralt
+	name = "Jester hat (Alt)"
+	item_path = /obj/item/clothing/head/costume/jesteralt
 
 /datum/loadout_item/head/azulea_oldblood
 	name = "Oldblood's Royal cap"

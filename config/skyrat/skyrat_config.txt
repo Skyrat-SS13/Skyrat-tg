@@ -154,11 +154,12 @@ ARRIVALS_WAIT 150
 ## Enables or disables the lowpop system entirely.
 # LOWPOP_MEASURES_ENABLED
 
-## The threshold for enabling/disabling the lowpop system LIVE. It's updated every so often(see below).
-LOWPOP_THRESHOLD 10
+## The thresholds for enabling/disabling the lowpop system. Hysteresis ho!
+LOWPOP_THRESHOLD_DISABLE 12
+LOWPOP_THRESHOLD_ENABLE 9
 
 ## The lowpop subsystem fire rate. It does actions each time it fires.(default is 10 minutes)
-LOWPOP_SUBSYSTEM_FIRE 6000
+LOWPOP_SUBSYSTEM_FIRE 3000
 
 ## Uncomment to make veteran quirks and jobs available to everybody
 #BYPASS_VETERAN_SYSTEM

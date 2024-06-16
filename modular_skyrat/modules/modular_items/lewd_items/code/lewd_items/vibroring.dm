@@ -36,18 +36,16 @@
 		"pink" = image(icon = src.icon, icon_state = "vibroring_pink_off"),
 		"teal" = image(icon = src.icon, icon_state = "vibroring_teal_off"))
 
-/obj/item/clothing/sextoy/vibroring/AltClick(mob/user)
+/obj/item/clothing/sextoy/vibroring/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
-		return
+		return CLICK_ACTION_BLOCKING
 	var/choice = show_radial_menu(user, src, vibroring_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 	current_color = choice
 	update_icon()
 	color_changed = TRUE
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/vibroring/Initialize(mapload)
 	. = ..()

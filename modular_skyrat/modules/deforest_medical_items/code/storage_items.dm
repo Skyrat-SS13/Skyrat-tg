@@ -4,6 +4,7 @@
 	desc = "It's an airtight container for storing medication. This one is all-white and has labels for containing amollin, a blend of Miner's Salve and Lidocaine."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "painkiller_bottle"
+	custom_price = PAYCHECK_CREW * 1.5
 
 /obj/item/storage/pill_bottle/painkiller/PopulateContents()
 	for(var/i in 1 to 7)
@@ -19,6 +20,36 @@
 		/datum/reagent/consumable/sugar = 5,
 	)
 
+// Narcolepsy quirk medicines
+/obj/item/storage/pill_bottle/prescription_stimulant
+	name = "alifil pill bottle"
+	desc = "A special miniaturized pill bottle with an insert resembling a revolver cylinder, fitted for the inside of a 'civil defense'-class shell medkit. Holds five alifil pills, and is designed only to accept their proprietary DeForest(tm) shape. A big, bold yellow warning label on the side reads: 'FOLLOW DOSAGE DIRECTIONS'."
+	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
+	icon_state = "painkiller_bottle"
+	w_class = WEIGHT_CLASS_TINY // this is fine because we hard limit what can go in this thing
+
+/obj/item/storage/pill_bottle/prescription_stimulant/Initialize(mapload)
+	. = ..()
+	// Make sure we can only hold alifil pills since this is nested inside a symptom support kit
+	atom_storage.max_slots = 5
+	atom_storage.set_holdable(list(
+		/obj/item/reagent_containers/pill/prescription_stimulant,
+	))
+
+/obj/item/storage/pill_bottle/prescription_stimulant/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/prescription_stimulant(src)
+
+/obj/item/reagent_containers/pill/prescription_stimulant
+	name = "alifil pill"
+	desc = "Used to treat symptoms of drowsiness and sudden loss of consciousness. Contains a mix of sugar, synaptizine and modafinil. A warning label reads: <b>Take in moderation</b>."
+	icon_state = "pill15"
+	list_reagents = list(
+		/datum/reagent/consumable/sugar = 5,
+		/datum/reagent/medicine/synaptizine = 5,
+		/datum/reagent/medicine/modafinil = 3
+	)
+
 // Pre-packed civil defense medkit, with items to heal low damages inside
 /obj/item/storage/medkit/civil_defense
 	name = "civil defense medical kit"
@@ -31,12 +62,14 @@
 	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
+	custom_price = PAYCHECK_COMMAND * 3
 
 /obj/item/storage/medkit/civil_defense/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 4
 	atom_storage.set_holdable(list(
 		/obj/item/reagent_containers/hypospray/medipen,
+		/obj/item/storage/pill_bottle/prescription_stimulant,
 	))
 
 /obj/item/storage/medkit/civil_defense/stocked
@@ -49,6 +82,21 @@
 		/obj/item/reagent_containers/hypospray/medipen/deforest/calopine = 1,
 	)
 	generate_items_inside(items_inside,src)
+
+// Variant on the civil defense medkit for spacer planetside personnel (or other people suffering from chronic illnesses)
+/obj/item/storage/medkit/civil_defense/comfort
+	name = "civil defense symptom support kit"
+	desc = "A small, pocket-sized kit that can typically only fit autoinjectors in it. This variant on the classic 'cheese' civil defense kit contains supplies to address hindering symptomatic burden associated with common chronic diseases or adaptation syndromes, such as gravity sickness."
+	icon_state = "symptom_kit"
+
+/obj/item/storage/medkit/civil_defense/comfort/stocked
+
+/obj/item/storage/medkit/civil_defense/comfort/stocked/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/reagent_containers/hypospray/medipen/deforest/psifinil = 3,
+		/obj/item/storage/pill_bottle/prescription_stimulant = 1,
+	)
+	generate_items_inside(items_inside, src)
 
 // Pre-packed frontier medkit, with supplies to repair most common frontier health issues
 /obj/item/storage/medkit/frontier
@@ -205,6 +253,8 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/storage/pill_bottle,
 		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/storage/box/bandages,
+		/obj/item/bodybag,
 	))
 
 // Big surgical kit that can be worn like a bag, holds 14 normal items (more than what a backpack can do!) but works like a duffelbag
@@ -311,4 +361,6 @@
 		/obj/item/handheld_soulcatcher,
 		/obj/item/wrench/medical,
 		/obj/item/emergency_bed,
+		/obj/item/storage/box/bandages,
+		/obj/item/bodybag,
 	))

@@ -22,7 +22,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/emote.dm > /datum/emote/living/carbon/human/wag/run_emote(), /datum/emote/living/carbon/human/wag/can_run_emote()
  ./code/modules/mob/living/carbon/human/examine.dm > /mob/living/carbon/human/examine()
  ./code/modules/mob/living/carbon/human/human_update_icons.dm > /mob/living/carbon/human/update_inv_w_uniform(), /mob/living/carbon/human/update_inv_glasses(), /mob/living/carbon/human/update_inv_shoes(), /mob/living/carbon/human/update_inv_wear_suit(), /obj/item/proc/build_worn_icon(), /mob/living/carbon/human/generate_icon_render_key()
- ./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/can_wag_tail(), /datum/species/proc/stop_wagging_tail(), /datum/species/proc/start_wagging_tail(), /datum/species/proc/is_wagging_tail(), /datum/species/proc/handle_hair()
+ ./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/handle_hair()
  ./code/modules/mob/living/carbon/human/species_types/felinid.dm > the 5 procs related to wagging tail
  ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
  ./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()

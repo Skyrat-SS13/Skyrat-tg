@@ -68,4 +68,4 @@
 		icon_state = "[model.cyborg_base_icon]-wreck"
 
 
-	update_fire()
+	update_appearance(UPDATE_OVERLAYS)

@@ -41,7 +41,7 @@
 	singular_name = "glowy rope"
 	merge_type = /obj/item/stack/shibari_rope/glow
 	icon_state = "shibari_rope_glow"
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_range = 1
 	light_on = TRUE
 	light_power = 3
@@ -141,7 +141,7 @@
 		return
 	var/obj/item/stack/shibari_rope/split_rope = null
 	var/slow = 0
-	if(them.bodytype & BODYTYPE_TAUR)
+	if(them.bodyshape & BODYSHAPE_TAUR)
 		split_rope = split_stack(null, 2)
 		slow = 4
 	else
@@ -218,7 +218,7 @@
 	if(them.shoes)
 		to_chat(user, span_warning("They're already wearing something on this slot!"))
 		return
-	if(them.bodytype & BODYTYPE_TAUR)
+	if(them.bodyshape & BODYSHAPE_TAUR)
 		to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
 		return
 	them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
@@ -250,7 +250,7 @@
 			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 				return
 			var/slow = 0
-			if(them.bodytype & BODYTYPE_TAUR)
+			if(them.bodyshape & BODYSHAPE_TAUR)
 				slow = 4
 			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 			if(split_rope)
@@ -283,7 +283,7 @@
 				return
 			var/obj/item/stack/shibari_rope/split_rope = null
 			var/slow = 0
-			if(them.bodytype & BODYTYPE_TAUR)
+			if(them.bodyshape & BODYSHAPE_TAUR)
 				split_rope = split_stack(null, 2)
 				slow = 4
 			else

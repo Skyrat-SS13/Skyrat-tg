@@ -48,8 +48,9 @@
 	attack_verb_simple = list("shove", "bash")
 	transparent = TRUE
 	max_integrity = 200
+	shield_break_sound = 'sound/effects/glassbr3.ogg'
+	shield_break_leftover = /obj/item/pointman_broken
 	var/repairable_by = /obj/item/stack/sheet/plasteel //what to repair the shield with
-
 
 /obj/item/shield/riot/pointman/attackby(obj/item/W, mob/user, params)
 	if(istype(W, repairable_by))

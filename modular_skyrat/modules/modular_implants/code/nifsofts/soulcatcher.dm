@@ -15,9 +15,9 @@
 	/// What action to bring up the soulcatcher is linked with this NIFSoft?
 	var/datum/action/innate/soulcatcher/soulcatcher_action
 	/// a list containing saved soulcatcher rooms
-	var/list/saved_soulcatcher_rooms = list()
+	var/list/saved_carrier_rooms = list()
 	/// The item we are using to store the souls
-	var/obj/item/soulcatcher_holder/soul_holder
+	var/obj/item/carrier_holder/holder
 
 /datum/nifsoft/soulcatcher/New()
 	. = ..()
@@ -25,15 +25,15 @@
 	soulcatcher_action.Grant(linked_mob)
 	soulcatcher_action.parent_nifsoft = WEAKREF(src)
 
-	soul_holder = new(linked_mob)
-	var/datum/component/soulcatcher/new_soulcatcher = soul_holder.AddComponent(/datum/component/soulcatcher/nifsoft)
-	soul_holder.name = linked_mob.name
+	holder = new(linked_mob)
+	var/datum/component/carrier/soulcatcher/new_soulcatcher = holder.AddComponent(/datum/component/carrier/soulcatcher/nifsoft)
+	holder.name = "[linked_mob.name]'s soulcatcher"
 
-	for(var/room in saved_soulcatcher_rooms)
-		new_soulcatcher.create_room(room, saved_soulcatcher_rooms[room])
+	for(var/room in saved_carrier_rooms)
+		new_soulcatcher.create_room(room, saved_carrier_rooms[room])
 
-	if(length(new_soulcatcher.soulcatcher_rooms) > 1) //We don't need the default room anymore.
-		new_soulcatcher.soulcatcher_rooms -= new_soulcatcher.soulcatcher_rooms[1]
+	if(length(new_soulcatcher.carrier_rooms) > 1) //We don't need the default room anymore.
+		new_soulcatcher.carrier_rooms -= new_soulcatcher.carrier_rooms[1]
 
 	new_soulcatcher.name = "[linked_mob]"
 
@@ -46,7 +46,7 @@
 	if(!linked_soulcatcher)
 		return FALSE
 
-	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+	var/datum/component/carrier/current_soulcatcher = linked_soulcatcher.resolve()
 	if(!current_soulcatcher)
 		return FALSE
 
@@ -65,11 +65,11 @@
 		qdel(soulcatcher_action)
 
 	if(linked_soulcatcher)
-		var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+		var/datum/component/carrier/current_soulcatcher = linked_soulcatcher.resolve()
 		if(current_soulcatcher)
 			qdel(current_soulcatcher)
 
-	qdel(soul_holder)
+	qdel(holder)
 
 	return ..()
 
@@ -79,7 +79,7 @@
 	if(!persistence)
 		return FALSE
 
-	saved_soulcatcher_rooms = params2list(persistence.nif_soulcatcher_rooms)
+	saved_carrier_rooms = params2list(persistence.nif_carrier_rooms)
 	return TRUE
 
 /datum/nifsoft/soulcatcher/save_persistence_data(datum/modular_persistence/persistence)
@@ -88,11 +88,11 @@
 		return FALSE
 
 	var/list/room_list = list()
-	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
-	for(var/datum/soulcatcher_room/room in current_soulcatcher.soulcatcher_rooms)
+	var/datum/component/carrier/current_soulcatcher = linked_soulcatcher.resolve()
+	for(var/datum/carrier_room/room in current_soulcatcher.carrier_rooms)
 		room_list[room.name] = room.room_description
 
-	persistence.nif_soulcatcher_rooms = list2params(room_list)
+	persistence.nif_carrier_rooms = list2params(room_list)
 	return TRUE
 
 /datum/nifsoft/soulcatcher/update_theme()
@@ -103,7 +103,7 @@
 	if(isnull(linked_soulcatcher))
 		return FALSE
 
-	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+	var/datum/component/carrier/current_soulcatcher = linked_soulcatcher.resolve()
 	if(!istype(current_soulcatcher))
 		stack_trace("[src] ([REF(src)]) tried to update its theme when it was missing a linked_soulcatcher component!")
 		return FALSE
@@ -111,7 +111,7 @@
 
 /datum/modular_persistence
 	///A param string containing soulcatcher rooms
-	var/nif_soulcatcher_rooms = ""
+	var/nif_carrier_rooms = ""
 
 /datum/action/innate/soulcatcher
 	name = "Soulcatcher"
@@ -131,7 +131,7 @@
 	soulcatcher_nifsoft.activate()
 
 /// This is the object we use if we give a mob soulcatcher. Having the souls directly parented could cause issues.
-/obj/item/soulcatcher_holder
+/obj/item/carrier_holder
 	name = "Soul Holder"
 	desc = "You probably shouldn't be seeing this..."
 

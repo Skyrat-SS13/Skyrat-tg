@@ -13,7 +13,7 @@ Makes soulstone no longer permakill people, and makes construct's souls return t
 
 ### TG Proc/File Changes
 
-- code/modules/antagonist/wizard/equipment/soulstone.dm > /obj/item/soulstone/proc/transfer_soul()
+- code/modules/antagonist/wizard/equipment/soulstone.dm > /obj/item/soulstone/proc/transfer_mob()
 - code/modules/antagonist/wizard/equipment/soulstone.dm > /obj/item/soulstone/proc/init_shade()
 - code/modules/antagonist/wizard/equipment/soulstone.dm > /obj/item/soulstone/proc/getCultGhost()
 

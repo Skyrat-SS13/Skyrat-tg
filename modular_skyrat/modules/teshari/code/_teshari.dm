@@ -5,6 +5,7 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
+	no_gender_shaping = TRUE // Female uniform shaping breaks Teshari worn sprites, so this is disabled. This will not affect anything else in regards to gender however.
 	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -38,6 +39,7 @@
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	species_language_holder = /datum/language_holder/teshari
+	mutantears = /obj/item/organ/internal/ears/teshari
 	body_size_restricted = TRUE
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/teshari,
@@ -58,20 +60,8 @@
 
 
 /obj/item/organ/internal/tongue/teshari
-	liked_foodtypes = MEAT
+	liked_foodtypes = MEAT | GORE | RAW
 	disliked_foodtypes = GROSS | GRAIN
-
-
-/datum/species/teshari/random_name(gender, unique, lastname)
-	if(unique)
-		return random_unique_teshari_name()
-
-	var/randname = teshari_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
 
 /datum/species/teshari/prepare_human_for_preview(mob/living/carbon/human/tesh)
 	var/base_color = "#c0965f"
@@ -82,3 +72,11 @@
 	tesh.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_COLOR_LIST = list(base_color, base_color, ear_color))
 	regenerate_organs(tesh, src, visual_only = TRUE)
 	tesh.update_body(TRUE)
+
+/datum/species/teshari/on_species_gain(mob/living/carbon/human/new_teshari, datum/species/old_species, pref_load)
+	. = ..()
+	passtable_on(new_teshari, SPECIES_TRAIT)
+
+/datum/species/teshari/on_species_loss(mob/living/carbon/C, datum/species/new_species, pref_load)
+	. = ..()
+	passtable_off(C, SPECIES_TRAIT)

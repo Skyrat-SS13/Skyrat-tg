@@ -12,7 +12,6 @@
 	// Slash/Pierce wound tools - can reduce intensity of electrical damage (wires can fix generic burn damage)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/cable_coil(src)
-	new /obj/item/stack/cable_coil(src)
 	new /obj/item/wirecutters(src)
 	// Blunt/Brute tools
 	new /obj/item/weldingtool/largetank(src) // Used for repairing blunt damage or heating metal at T3 blunt
@@ -24,6 +23,7 @@
 	new /obj/item/clothing/glasses/hud/diagnostic(src) // When worn, generally improves wound treatment quality
 	// Reagent containers
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // Highly effective (specifically coded to be) against burn wounds
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src) // same
 	// Generic medical items
 	new /obj/item/stack/medical/gauze/twelve(src)
 	new /obj/item/healthanalyzer(src)
@@ -41,8 +41,8 @@
 
 /datum/storage/duffel/synth_trauma_kit
 	exception_max = 6
-	max_slots = 27
-	max_total_storage = 35
+	max_slots = 28
+	max_total_storage = 36
 
 /datum/storage/duffel/synth_trauma_kit/New(atom/parent, max_slots, max_specific_storage, max_total_storage, numerical_stacking, allow_quick_gather, allow_quick_empty, collection_mode, attack_hand_interact)
 	. = ..()
@@ -121,6 +121,7 @@
 	new /obj/item/clothing/glasses/hud/diagnostic(src) // When worn, generally improves wound treatment quality
 	// Reagent containers
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // Highly effective (specifically coded to be) against burn wounds
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src) // same
 	// Generic medical items
 	new /obj/item/stack/medical/gauze/twelve(src)
 	new /obj/item/healthanalyzer(src)
@@ -140,8 +141,8 @@
 
 /datum/storage/duffel/synth_trauma_kit/advanced
 	exception_max = 10
-	max_slots = 31
-	max_total_storage = 48
+	max_slots = 33
+	max_total_storage = 50
 
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced/PopulateContents() // yes, this is all within the storage capacity
 	// Slash/Pierce wound tools - can reduce intensity of electrical damage (wires can fix generic burn damage)
@@ -162,6 +163,8 @@
 	// Reagent containers
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // Highly effective (specifically coded to be) against burn wounds
 	new /obj/item/reagent_containers/spray/hercuri/chilled(src) // 2 of them
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src) // same
+	new /obj/item/reagent_containers/spray/dinitrogen_plasmide(src)
 	new /obj/item/storage/pill_bottle/nanite_slurry(src) // Heals blunt/burn
 	new /obj/item/storage/pill_bottle/liquid_solder(src) // Heals brain damage
 	new /obj/item/storage/pill_bottle/system_cleaner(src) // Heals toxin damage and purges chems
@@ -175,3 +178,37 @@
 
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced/unzipped
 	zipped_up = FALSE
+
+// basetype, do not use
+/obj/item/storage/medkit/mechanical
+	name = "mechanical medkit"
+	desc = "For those mechanical booboos."
+
+	icon = 'modular_skyrat/modules/medical/code/medkit.dmi'
+	icon_state = "medkit_mechanical"
+	inhand_icon_state = "medkit_mechanical"
+	lefthand_file = 'modular_skyrat/modules/medical/code/medical_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/medical/code/medical_righthand.dmi'
+
+/obj/item/storage/medkit/mechanical/Initialize(mapload)
+	. = ..()
+
+	var/static/list/list_of_everything_mechanical_medkits_can_hold = list_of_everything_medkits_can_hold + list(
+		/obj/item/stack/cable_coil,
+		/obj/item/crowbar,
+		/obj/item/screwdriver,
+		/obj/item/wrench,
+		/obj/item/weldingtool,
+		/obj/item/wirecutters,
+		/obj/item/multitool,
+		/obj/item/plunger,
+		/obj/item/clothing/head/utility/welding,
+		/obj/item/clothing/glasses/welding,
+	)
+	var/static/list/exception_cache = typecacheof(
+		/obj/item/clothing/head/utility/welding
+	)
+
+	atom_storage.set_holdable(list_of_everything_mechanical_medkits_can_hold)
+	LAZYINITLIST(atom_storage.exception_hold)
+	atom_storage.exception_hold = atom_storage.exception_hold + exception_cache

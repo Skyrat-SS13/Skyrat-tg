@@ -1,8 +1,4 @@
 #define OVERHEAT_ON_STASIS_HEAT_MULT 0.25
-/// At 100% hercuri composition, a spray of reagents will have its effective chem temp reduced by this. 50%, reduced by half this, etc.
-#define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT 60
-/// At 100% hercuri composition, a spray of reagents will have its heat shock damage reduced by this. 50%, reduced by half this, etc.
-#define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_HEAT_SHOCK_MULT_DECREMENT 0.3
 
 /datum/wound_pregen_data/burnt_metal
 	abstract = TRUE
@@ -89,13 +85,62 @@
 	/// The glow we have attached to our victim, to simulate our limb glowing.
 	var/obj/effect/dummy/lighting_obj/moblight/mob_glow
 
+	/// A bad system I'm using to track the worst scar we earned (since we can demote, we want the biggest our wound has been, not what it was when it was cured (probably moderate))
+	var/datum/scar/highest_scar
+
+	/// A assoc list of (reagent typepath -> cooling), where cooling is how much its presence will reduce the effective temperature of a reagent spray for cooling us.
+	var/static/list/reagent_types_to_extra_cooling = list(
+		/datum/reagent/medicine/c2/hercuri = 60,
+		/datum/reagent/dinitrogen_plasmide = 50,
+	)
+
+	/// A assoc list of (reagent typepath -> damage mult), where the mult will be multiplied against the thermal shock damage.
+	var/static/list/reagent_types_to_thermal_shock_mult = list(
+		/datum/reagent/medicine/c2/hercuri = 0.3,
+		/datum/reagent/dinitrogen_plasmide = 0.6,
+	)
+
 /datum/wound/burn/robotic/overheat/New(temperature)
 	chassis_temperature = (isnull(temperature) ? get_random_starting_temperature() : temperature)
 
 	return ..()
 
+/datum/wound/burn/robotic/overheat/wound_injury(datum/wound/old_wound, attack_direction)
+	. = ..()
+
+	if (old_wound && old_wound.severity > severity && istype(old_wound, /datum/wound/burn/robotic/overheat))
+		var/datum/wound/burn/robotic/overheat/overheat_wound = old_wound
+		if (overheat_wound.highest_scar)
+			set_highest_scar(overheat_wound.highest_scar)
+			overheat_wound.clear_highest_scar()
+
+	if (!highest_scar && can_scar)
+		var/datum/scar/new_scar = new
+		set_highest_scar(new_scar)
+		new_scar.generate(limb, src, add_to_scars = FALSE)
+
+/datum/wound/burn/robotic/overheat/proc/set_highest_scar(datum/scar/new_scar)
+	if (highest_scar)
+		UnregisterSignal(highest_scar, COMSIG_QDELETING)
+	if (new_scar)
+		RegisterSignal(new_scar, COMSIG_QDELETING, PROC_REF(clear_highest_scar))
+	highest_scar = new_scar
+
+/datum/wound/burn/robotic/overheat/proc/clear_highest_scar(datum/source)
+	SIGNAL_HANDLER
+
+	set_highest_scar(null)
+
+/datum/wound/burn/robotic/overheat/remove_wound(ignore_limb, replaced)
+	if (!replaced && highest_scar)
+		already_scarred = TRUE
+		highest_scar.lazy_attach(limb)
+	return ..()
+
 /datum/wound/burn/robotic/overheat/Destroy()
 	QDEL_NULL(mob_glow)
+
+	highest_scar = null
 	return ..()
 
 /datum/wound/burn/robotic/overheat/set_victim(mob/living/new_victim)
@@ -195,20 +240,18 @@
 		return
 
 	var/total_reagent_amount = 0
-	var/hercuri_amount = 0
+	var/chem_temp_increment = 0
+	var/thermal_shock_mult = 1
+	// imperfect, this means you can microdose hercuri/plasmide in a huge tank of water and have the entire effect.
+	// really not a big deal, though, they arent really limited by availability
 	for (var/datum/reagent/iterated_reagent as anything in reagents)
 		total_reagent_amount += reagents[iterated_reagent]
-		if (iterated_reagent.type == /datum/reagent/medicine/c2/hercuri)
-			hercuri_amount = reagents[iterated_reagent]
+		chem_temp_increment += reagent_types_to_extra_cooling[iterated_reagent.type]
+		thermal_shock_mult *= reagent_types_to_thermal_shock_mult[iterated_reagent.type]
 
-	var/hercuri_percent = (hercuri_amount / total_reagent_amount)
+	var/local_chem_temp = max(source.chem_temp - chem_temp_increment, 0)
 
-	var/hercuri_chem_temp_increment = (ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT * hercuri_percent)
-	var/local_chem_temp = max(source.chem_temp - hercuri_chem_temp_increment, 0)
-
-	var/heat_shock_damage_mult = 1 - (ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_HEAT_SHOCK_MULT_DECREMENT * hercuri_percent)
-
-	expose_temperature(local_chem_temp, (reagent_coeff * volume_modifier * total_reagent_amount), TRUE, heat_shock_damage_mult = heat_shock_damage_mult)
+	expose_temperature(local_chem_temp, (reagent_coeff * volume_modifier * total_reagent_amount), TRUE, heat_shock_damage_mult = thermal_shock_mult)
 
 /// Adjusts chassis_temperature by the delta between temperature and itself, multiplied by coeff.
 /// If heat_shock is TRUE, limb will receive brute damage based on the delta.
@@ -219,7 +262,7 @@
 	var/clamped_new_temperature
 	var/heat_adjustment_used
 
-	if(temp_delta > 0)
+	if (temp_delta > 0)
 		clamped_new_temperature = min(min(chassis_temperature + max(temp_delta, 1), temperature), heating_threshold)
 		heat_adjustment_used = (clamped_new_temperature / unclamped_new_temperature)
 	else
@@ -438,4 +481,3 @@
 	threshold_minimum = 140
 
 #undef OVERHEAT_ON_STASIS_HEAT_MULT
-#undef ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT

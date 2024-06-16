@@ -51,15 +51,15 @@
 
 /datum/reagent/medicine/nanite_slurry
 	name = "Nanite Slurry"
-	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Due to the nanites needing to interface with the host's systems to repair them, a surplus of them will cause them to overheat, or for the swarm to forcefully eject out of the mouth of organics for safety."
+	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Concentrated amounts in a synthetic host will rapidly repair organ damage, damaging their exterior and overheating them. Otherwise they will safely purge from an organic host"
 	reagent_state = LIQUID
 	color = "#cccccc"
-	overdose_threshold = 20
+	overdose_threshold = 15
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC | REAGENT_ORGANIC
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	/// How much brute and burn individually is healed per tick
-	var/healing = 1
+	var/healing = 3
 	/// How much body temperature is increased by per overdose cycle on robotic bodyparts.
 	var/temperature_change = 50
 
@@ -69,9 +69,17 @@
 	affected_mob.heal_bodypart_damage(heal_amount, heal_amount, required_bodytype = BODYTYPE_ROBOTIC)
 	return ..()
 
-/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+/datum/reagent/medicine/nanite_slurry/overdose_start(mob/living/affected_mob)
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
-		affected_mob.adjust_bodytemperature(temperature_change * REM * seconds_per_tick)
+		to_chat(affected_mob, span_danger("Your interior systems are overheating as they're being repaired!"))
+	else
+		to_chat(affected_mob, span_danger("Your stomach lurches as concentrations of nanites begin disposing of themselves."))
+
+/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, times_fired) // Mostly to treat a synthetic being EMP'd
+	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
+		affected_mob.adjust_bodytemperature(temperature_change * REM * seconds_per_tick) // Overheats
+		affected_mob.adjustOrganLoss(pick(ORGAN_SLOT_EYES,ORGAN_SLOT_EARS,ORGAN_SLOT_HEART,ORGAN_SLOT_LUNGS,ORGAN_SLOT_STOMACH,ORGAN_SLOT_LIVER),(-5 * REM * seconds_per_tick) * 1.5) // 30 units do ~ 70 brute and 20 burn and heal 240 organ damage (mostly used after being EMP'd)
+		affected_mob.take_bodypart_damage(brute = (healing * REM * seconds_per_tick) * 1.5) // Damages at half healing rate
 		return ..()
 	affected_mob.reagents.remove_reagent(type, NANITE_SLURRY_ORGANIC_PURGE_RATE) //gets removed from organics very fast
 	if(prob(NANITE_SLURRY_ORGANIC_VOMIT_CHANCE))

@@ -48,7 +48,7 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	death_message = "evaporates!"
 
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_color = LIGHT_COLOR_FIRE
 	light_range = 2
 	light_power = 1
@@ -252,7 +252,7 @@
 	obj_damage = 40
 	attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
 
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_GREEN

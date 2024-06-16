@@ -104,7 +104,7 @@
 				affected_cyborgs += owned_borg
 				borg_flw += "[ADMIN_LOOKUPFLW(owned_borg)], "
 				borg_txt += "[owned_borg.name]([owned_borg.key]), "
-				owned_borg.lawsync() //SKYRAT ADDITION
+				owned_borg.lawsync() // SKYRAT EDIT ADDITION
 
 	borg_txt = borg_txt.Join()
 	GLOB.lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) used [src.name] on [ainame]([aikey]).[law2log ? " The law specified [law2log]" : ""], [length(affected_cyborgs) ? ", impacting synced borgs [borg_txt]" : ""]")
@@ -166,7 +166,7 @@
 	name = "ai default lawset spawner"
 	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "x2"
-	color = "#00FF00"
+	color = COLOR_VIBRANT_LIME
 
 /obj/effect/spawner/round_default_module/Initialize(mapload)
 	. = ..()

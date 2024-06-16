@@ -15,10 +15,10 @@
 
 	if(ishuman(user))
 		//feet
-		if(!(human_user.bodytype & BODYTYPE_DIGITIGRADE) && !(human_user.dna.species.mutant_bodyparts["taur"]))
+		if(!(human_user.bodyshape & BODYSHAPE_DIGITIGRADE) && !(human_user.dna.species.mutant_bodyparts["taur"]))
 			user.allowed_turfs += "footprint"
 
-		if((human_user.bodytype & BODYTYPE_DIGITIGRADE) || human_user.dna.species.mutant_bodyparts["taur"])
+		if((human_user.bodyshape & BODYSHAPE_DIGITIGRADE) || human_user.dna.species.mutant_bodyparts["taur"])
 			user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
 		//species & taurs
@@ -58,7 +58,7 @@
 		//body parts
 		if(istype(user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL), /obj/item/organ/external/tail))
 			var/name = human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
-			var/datum/sprite_accessory/tails/tail = GLOB.sprite_accessories["tail"][name]
+			var/datum/sprite_accessory/tails/tail = SSaccessories.sprite_accessories["tail"][name]
 			if(tail.fluffy)
 				user.allowed_turfs += "tails"
 
@@ -127,18 +127,18 @@
 			//coloring
 			var/list/finished_list = list()
 			var/list/color_list = human_user.dna.species.mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] //identify color
-			var/datum/sprite_accessory/sprite_type = GLOB.sprite_accessories[key][human_user.dna.species.mutant_bodyparts[key][MUTANT_INDEX_NAME]] //identify type
+			var/datum/sprite_accessory/sprite_type = SSaccessories.sprite_accessories[key][human_user.dna.species.mutant_bodyparts[key][MUTANT_INDEX_NAME]] //identify type
 
 			switch(sprite_type.color_src)
 				if(USE_MATRIXED_COLORS)
-					finished_list += ReadRGB("[color_list[1]]00")
-					finished_list += ReadRGB("[color_list[2]]00")
-					finished_list += ReadRGB("[color_list[3]]00")
+					finished_list += rgb2num("[color_list[1]]00")
+					finished_list += rgb2num("[color_list[2]]00")
+					finished_list += rgb2num("[color_list[3]]00")
 				if(USE_ONE_COLOR)
 					var/padded_string = "[color_list[1]]00"
-					finished_list += ReadRGB(padded_string)
-					finished_list += ReadRGB(padded_string)
-					finished_list += ReadRGB(padded_string)
+					finished_list += rgb2num(padded_string)
+					finished_list += rgb2num(padded_string)
+					finished_list += rgb2num(padded_string)
 
 			finished_list += list(0,0,0,255)
 			for(var/index in 1 to finished_list.len)

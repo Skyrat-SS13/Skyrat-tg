@@ -108,7 +108,7 @@
 	if(host.stat != DEAD)
 		return
 	if(!ismutant(host))
-		to_chat(host, span_cultlarge("You can feel your heart stopping, but something isn't right... \
+		to_chat(host, span_cult_large("You can feel your heart stopping, but something isn't right... \
 		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
 		not even death can stop, you will rise again!"))
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
@@ -151,16 +151,15 @@
 /datum/component/mutant_infection/proc/mutant_death()
 	SIGNAL_HANDLER
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
-	to_chat(host, span_cultlarge("You can feel your heart stopping, but something isn't right... you will rise again!"))
+	to_chat(host, span_cult_large("You can feel your heart stopping, but something isn't right... you will rise again!"))
 	timer_id = addtimer(CALLBACK(src, PROC_REF(regenerate)), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/regenerate()
 	if(!host.mind)
-		var/list/candidates = SSpolling.poll_ghost_candidates_for_mob("Do you want to play as a mutant([host.name])?", target_mob = host)
-		if(!candidates.len)
+		var/mob/canidate = SSpolling.poll_ghosts_for_target("Do you want to play as a mutant([host.name])?", checked_target = host)
+		if(!istype(canidate))
 			return
-		var/client/C = pick_n_take(candidates)
-		host.key = C.key
+		host.key = canidate.key
 	else
 		host.grab_ghost()
 	to_chat(host, span_notice("You feel an itching, both inside and \

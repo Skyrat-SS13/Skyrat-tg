@@ -3,7 +3,7 @@
 	name = "construction kit"
 	desc = "Used for constructing various things"
 	w_class = WEIGHT_CLASS_BULKY
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
+	obj_flags = CAN_BE_HIT
 	throwforce = 0
 	///What is the path for the resulting structure generating by using this item?
 	var/obj/structure/resulting_structure = /obj/structure/chair
@@ -20,7 +20,7 @@
 	. = ..()
 	. += span_purple("[src] can be assembled by using <b>Ctrl+Shift+Click</b> while [src] is on the floor.")
 
-/obj/item/construction_kit/CtrlShiftClick(mob/user)
+/obj/item/construction_kit/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -104,7 +104,7 @@
 	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
 
 //to change model
-/obj/item/construction_kit/bdsm/shibari/CtrlClick(mob/user)
+/obj/item/construction_kit/bdsm/shibari/item_ctrl_click(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE

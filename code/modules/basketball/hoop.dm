@@ -17,6 +17,7 @@
 	anchored = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	interaction_flags_click = NEED_DEXTERITY | NEED_HANDS | FORBID_TELEKINESIS_REACH
 	/// Keeps track of the total points scored
 	var/total_score = 0
 	/// The chance to score a ball into the hoop based on distance
@@ -24,7 +25,7 @@
 
 /obj/structure/hoop/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_REQUIRE_WRENCH|ROTATION_IGNORE_ANCHORED, AfterRotation = CALLBACK(src, PROC_REF(reset_appearance)))
+	AddComponent(/datum/component/simple_rotation, ROTATION_REQUIRE_WRENCH|ROTATION_IGNORE_ANCHORED, post_rotation = CALLBACK(src, PROC_REF(reset_appearance)))
 	update_appearance()
 	register_context()
 
@@ -133,16 +134,13 @@
 	baller.adjustStaminaLoss(STAMINA_COST_DUNKING_MOB)
 	baller.stop_pulling()
 
-/obj/structure/hoop/CtrlClick(mob/living/user)
-	if(!user.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH|NEED_HANDS))
-		return
-
+/obj/structure/hoop/click_ctrl(mob/user)
 	user.balloon_alert_to_viewers("resetting score...")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(do_after(user, 5 SECONDS, target = src))
 		total_score = 0
 		update_appearance()
-	return ..()
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/hoop/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(!isitem(AM))
@@ -182,8 +180,8 @@
 	return NONE
 
 // No resetting the score for minigame hoops
-/obj/structure/hoop/minigame/CtrlClick(mob/living/user)
-	return
+/obj/structure/hoop/minigame/click_ctrl(mob/user)
+	return CLICK_ACTION_BLOCKING
 
 /obj/structure/hoop/minigame/score(obj/item/toy/basketball/ball, mob/living/baller, points)
 	var/is_team_hoop = !(baller.ckey in team_ckeys)

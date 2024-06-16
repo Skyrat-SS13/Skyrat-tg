@@ -37,9 +37,11 @@
 		/obj/item/ai_module/supplied/safeguard,
 		/obj/item/ai_module/supplied/protect_station,
 		/obj/item/ai_module/supplied/quarantine,
+		/obj/item/ai_module/core/full/yesman,
 		/obj/item/ai_module/remove,
 		/obj/item/ai_module/core/full/dagothbot, // SKYRAT EDIT - EDITION
 		/obj/item/ai_module/core/full/texas, // SKYRAT EDIT - EDITION
+		/obj/item/ai_module/core/full/emperor, // SKYRAT EDIT - EDITION
 	)
 
 /obj/effect/spawner/random/aimodule/harmful

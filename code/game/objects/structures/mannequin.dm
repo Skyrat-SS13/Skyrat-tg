@@ -64,6 +64,7 @@
 	icon_state = "mannequin_[material]_[body_type == FEMALE ? "female" : "male"]"
 	AddElement(/datum/element/strippable, GLOB.strippable_mannequin_items)
 	AddComponent(/datum/component/simple_rotation, ROTATION_IGNORE_ANCHORED)
+	AddComponent(/datum/component/marionette)
 	update_appearance()
 
 /obj/structure/mannequin/Destroy()
@@ -94,23 +95,23 @@
 	var/mutable_appearance/pedestal = mutable_appearance(icon, "pedestal_[material]")
 	pedestal.pixel_y = -3
 	. += pedestal
-	var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[underwear_name]
+	var/datum/sprite_accessory/underwear/underwear = SSaccessories.underwear_list[underwear_name]
 	if(underwear)
 		if(body_type == FEMALE && underwear.gender == MALE)
 			. += wear_female_version(underwear.icon_state, underwear.icon, BODY_LAYER, FEMALE_UNIFORM_FULL)
 		else
 			. += mutable_appearance(underwear.icon, underwear.icon_state, -BODY_LAYER)
-	var/datum/sprite_accessory/undershirt/undershirt = GLOB.undershirt_list[undershirt_name]
+	var/datum/sprite_accessory/undershirt/undershirt = SSaccessories.undershirt_list[undershirt_name]
 	if(undershirt)
 		if(body_type == FEMALE)
 			. += wear_female_version(undershirt.icon_state, undershirt.icon, BODY_LAYER)
 		else
 			. += mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
-	var/datum/sprite_accessory/socks/socks = GLOB.socks_list[socks_name]
+	var/datum/sprite_accessory/socks/socks = SSaccessories.socks_list[socks_name]
 	if(socks)
 		. += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
 	//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
-	var/datum/sprite_accessory/bra/bra = GLOB.bra_list[bra_name]
+	var/datum/sprite_accessory/bra/bra = SSaccessories.bra_list[bra_name]
 	if(bra)
 		. += mutable_appearance(bra.icon, bra.icon_state, -BODY_LAYER)
 	//SKYRAT EDIT END
@@ -173,20 +174,20 @@
 		return
 	switch(choice)
 		if("Underwear")
-			var/new_undies = tgui_input_list(user, "Select the mannequin's underwear", "Changing", GLOB.underwear_list)
+			var/new_undies = tgui_input_list(user, "Select the mannequin's underwear", "Changing", SSaccessories.underwear_list)
 			if(new_undies)
 				underwear_name = new_undies
 		if("Undershirt")
-			var/new_undershirt = tgui_input_list(user, "Select the mannequin's undershirt", "Changing", GLOB.undershirt_list)
+			var/new_undershirt = tgui_input_list(user, "Select the mannequin's undershirt", "Changing", SSaccessories.undershirt_list)
 			if(new_undershirt)
 				undershirt_name = new_undershirt
 		if("Socks")
-			var/new_socks = tgui_input_list(user, "Select the mannequin's socks", "Changing", GLOB.socks_list)
+			var/new_socks = tgui_input_list(user, "Select the mannequin's socks", "Changing", SSaccessories.socks_list)
 			if(new_socks)
 				socks_name = new_socks
 		//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
 		if("Bra")
-			var/new_bra = tgui_input_list(user, "Select the mannequin's bra", "Changing", GLOB.bra_list)
+			var/new_bra = tgui_input_list(user, "Select the mannequin's bra", "Changing", SSaccessories.bra_list)
 			if(new_bra)
 				bra_name = new_bra
 		//SKYRAT EDIT END
@@ -202,7 +203,6 @@
 	name = "skeleton model"
 	desc = "Not to knock over."
 	material = MANNEQUIN_SKELETON
-	anchored = TRUE
 	obj_flags = UNIQUE_RENAME
 	starting_items = list(
 		/obj/item/clothing/glasses/eyepatch,

@@ -34,8 +34,10 @@
 	 * Set to BIO_STANDARD_UNJOINTED because most species have both flesh bone and blood in their limbs.
 	 */
 	var/biological_state = BIO_STANDARD_UNJOINTED
-	///A bitfield of bodytypes for clothing, surgery, and misc information
-	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
+	///A bitfield of bodytypes for surgery, and misc information
+	var/bodytype = BODYTYPE_ORGANIC
+	///A bitfield of bodyshapes for clothing and other sprite information
+	var/bodyshape = BODYSHAPE_HUMANOID
 	///Defines when a bodypart should not be changed. Example: BP_BLOCK_CHANGE_SPECIES prevents the limb from being overwritten on species gain
 	var/change_exempt_flags = NONE
 	///Random flags that describe this bodypart
@@ -163,8 +165,8 @@
 
 	/// Type of an attack from this limb does. Arms will do punches, Legs for kicks, and head for bites. (TO ADD: tactical chestbumps)
 	var/attack_type = BRUTE
-	/// the verb used for an unarmed attack when using this limb, such as arm.unarmed_attack_verb = punch
-	var/unarmed_attack_verb = "bump"
+	/// the verbs used for an unarmed attack when using this limb, such as arm.unarmed_attack_verbs = list("punch")
+	var/list/unarmed_attack_verbs = list("bump")
 	/// if we have a special attack verb for hitting someone who is grappled by us, it goes here.
 	var/grappled_attack_verb
 	/// what visual effect is used when this limb is used to strike someone.
@@ -342,16 +344,16 @@
 	for(var/datum/wound/wound as anything in wounds)
 		switch(wound.severity)
 			if(WOUND_SEVERITY_TRIVIAL)
-				// check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)].")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
+				// check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)].")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
 				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)].")]" // SKYRAT EDIT - Medical overhaul-ish
 			if(WOUND_SEVERITY_MODERATE)
-				// check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
+				// check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)]!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
 				check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!")]" // SKYRAT EDIT - Medical overhaul-ish
 			if(WOUND_SEVERITY_SEVERE)
-				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
+				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lLOWER_TEXT(wound.name)]!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
 				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!")]" // SKYRAT EDIT - Medical overhaul-ish
 			if(WOUND_SEVERITY_CRITICAL)
-				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
+				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)]!!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
 				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!!")]" // SKYRAT EDIT - Medical overhaul-ish
 
 	for(var/obj/item/embedded_thing in embedded_objects)
@@ -395,7 +397,7 @@
 		playsound(loc, 'sound/weapons/slice.ogg', 50, TRUE, -1)
 		user.visible_message(span_warning("[user] begins to cut open [src]."),\
 			span_notice("You begin to cut open [src]..."))
-		if(do_after(user, 54, target = src))
+		if(do_after(user, 5.4 SECONDS, target = src))
 			drop_organs(user, TRUE)
 	else
 		return ..()
@@ -769,13 +771,13 @@
 	if(owner == new_owner)
 		return FALSE //`null` is a valid option, so we need to use a num var to make it clear no change was made.
 
-	SEND_SIGNAL(src, COMSIG_BODYPART_CHANGED_OWNER, new_owner, owner)
-
 	if(owner)
 		. = owner //return value is old owner
 		clear_ownership(owner)
 	if(new_owner)
 		apply_ownership(new_owner)
+
+	SEND_SIGNAL(src, COMSIG_BODYPART_CHANGED_OWNER, new_owner, owner)
 
 	refresh_bleed_rate()
 	return .
@@ -1176,10 +1178,11 @@
 	bodypart_overlays -= overlay
 	overlay.removed_from_limb(src)
 
-/obj/item/bodypart/deconstruct(disassembled = TRUE)
+/obj/item/bodypart/atom_deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	drop_organs()
+
 	return ..()
 
 /// INTERNAL PROC, DO NOT USE
@@ -1402,12 +1405,24 @@
 	else
 		update_icon_dropped()
 
-// Note: Does NOT return EMP protection value from parent call or pass it on to subtypes
+// Note: For effects on subtypes, use the emp_effect() proc instead
 /obj/item/bodypart/emp_act(severity)
 	var/protection = ..()
-	if((protection & EMP_PROTECT_WIRES) || !IS_ROBOTIC_LIMB(src))
-		return FALSE
+	// If the limb doesn't protect contents, strike them first
+	if(!(protection & EMP_PROTECT_CONTENTS))
+		for(var/atom/content as anything in contents)
+			content.emp_act(severity)
 
+	if((protection & (EMP_PROTECT_WIRES | EMP_PROTECT_SELF)))
+		return protection
+
+	emp_effect(severity, protection)
+	return protection
+
+/// The actual effect of EMPs on the limb. Allows children to override it however they want
+/obj/item/bodypart/proc/emp_effect(severity, protection)
+	if(!IS_ROBOTIC_LIMB(src))
+		return FALSE
 	// with defines at the time of writing, this is 2 brute and 1.5 burn
 	// 2 + 1.5 = 3,5, with 6 limbs thats 21, on a heavy 42
 	// 42 * 0.8 = 33.6

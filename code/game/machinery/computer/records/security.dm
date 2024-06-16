@@ -49,10 +49,8 @@
 		if(prob(10/severity))
 			switch(rand(1,5))
 				if(1)
-					if(prob(10))
-						target.name = "[pick(lizard_name(MALE),lizard_name(FEMALE))]"
-					else
-						target.name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
+					target.name = generate_random_name()
+
 				if(2)
 					target.gender = pick("Male", "Female", "Other")
 				if(3)
@@ -119,6 +117,7 @@
 
 		records += list(list(
 			age = target.age,
+			chrono_age = target.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
 			citations = citations,
 			crew_ref = REF(target),
 			crimes = crimes,
@@ -128,6 +127,7 @@
 			note = target.security_note,
 			rank = target.rank,
 			species = target.species,
+			trim = target.trim,
 			wanted_status = target.wanted_status,
 			// SKYRAT EDIT ADDITION - RP Records
 			past_general_records = target.past_general_records,
@@ -143,12 +143,15 @@
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
+	data["max_chrono_age"] = AGE_CHRONO_MAX // SKYRAT EDIT ADDITION - Chronological age
 	return data
 
 /obj/machinery/computer/records/security/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
 
 	var/datum/record/crew/target
 	if(params["crew_ref"])
@@ -158,28 +161,30 @@
 
 	switch(action)
 		if("add_crime")
-			add_crime(usr, target, params)
+			add_crime(user, target, params)
 			return TRUE
 
 		if("delete_record")
+			investigate_log("[user] deleted record: \"[target]\".", INVESTIGATE_RECORDS)
 			qdel(target)
 			return TRUE
 
 		if("edit_crime")
-			edit_crime(usr, target, params)
+			edit_crime(user, target, params)
 			return TRUE
 
 		if("invalidate_crime")
-			invalidate_crime(usr, target, params)
+			invalidate_crime(user, target, params)
 			return TRUE
 
 		if("print_record")
-			print_record(usr, target, params)
+			print_record(user, target, params)
 			return TRUE
 
 		if("set_note")
-			var/note = params["note"]
-			target.security_note = trim(note, MAX_MESSAGE_LEN)
+			var/note = trim(params["note"], MAX_MESSAGE_LEN)
+			investigate_log("[user] has changed the security note of record: \"[target]\" from \"[target.security_note]\" to \"[note]\".")
+			target.security_note = note
 			return TRUE
 
 		if("set_wanted")
@@ -242,14 +247,19 @@
 		return FALSE
 
 	if(user != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author
+		investigate_log("[user] attempted to edit crime: \"[editing_crime.name]\" for target: \"[target.name]\" but failed due to lacking armoury access and not being the author of the crime.", INVESTIGATE_RECORDS)
 		return FALSE
 
 	if(params["name"] && length(params["name"]) > 2 && params["name"] != editing_crime.name)
-		editing_crime.name = trim(params["name"], MAX_CRIME_NAME_LEN)
+		var/new_name = trim(params["name"], MAX_CRIME_NAME_LEN)
+		investigate_log("[user] edited crime: \"[editing_crime.name]\" for target: \"[target.name]\", changing the name to: \"[new_name]\".", INVESTIGATE_RECORDS)
+		editing_crime.name = new_name
 		return TRUE
 
 	if(params["details"] && length(params["description"]) > 2 && params["name"] != editing_crime.name)
-		editing_crime.details = trim(params["details"], MAX_MESSAGE_LEN)
+		var/new_details = trim(params["details"], MAX_MESSAGE_LEN)
+		investigate_log("[user] edited crime \"[editing_crime.name]\" for target: \"[target.name]\", changing the details to: \"[new_details]\" from: \"[editing_crime.details]\".", INVESTIGATE_RECORDS)
+		editing_crime.details = new_details
 		return TRUE
 
 	return FALSE
@@ -314,7 +324,7 @@
 /// Handles printing records via UI. Takes the params from UI_act.
 /obj/machinery/computer/records/security/proc/print_record(mob/user, datum/record/crew/target, list/params)
 	if(printing)
-		balloon_alert(usr, "printer busy")
+		balloon_alert(user, "printer busy")
 		playsound(src, 'sound/machines/terminal_error.ogg', 100, TRUE)
 		return FALSE
 

@@ -40,6 +40,7 @@
 			return
 
 		locate_farm = new(get_turf(atom_parent))
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		locate_farm.pixel_x = pixel_shift[1]
 		locate_farm.pixel_y = pixel_shift[2]
 		locate_farm.layer = atom_parent.layer + 0.1
@@ -85,6 +86,8 @@
 	var/max_harvest = 3
 	///the cooldown amount between each harvest
 	var/harvest_cooldown = 1 MINUTES
+	///the extra potency applied to the seed
+	var/bonus_potency = 0
 	//the cooldown between each harvest
 	COOLDOWN_DECLARE(harvest_timer)
 
@@ -115,6 +118,8 @@
 		. += span_notice("<br>You can use sinew or worm fertilizer to lower the time between each harvest!")
 	if(harvest_cooldown > 30 SECONDS)
 		. += span_notice("You can use goliath hides or worm fertilizer to increase the amount dropped per harvest!")
+	if(bonus_potency < 50)
+		. += span_notice("You can use worm fertilizer to increase the potency of dropped crops!")
 
 /obj/structure/simple_farm/process(seconds_per_tick)
 	update_appearance()
@@ -147,6 +152,7 @@
 
 	COOLDOWN_START(src, harvest_timer, harvest_cooldown)
 	create_harvest()
+	user.mind.adjust_experience(/datum/skill/primitive, 5)
 	update_appearance()
 	return ..()
 
@@ -166,6 +172,7 @@
 			return
 
 		decrease_cooldown(user)
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		return
 
 	//if its goliath hide, increase the amount dropped
@@ -176,21 +183,27 @@
 			return
 
 		increase_yield(user)
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		return
 
 	else if(istype(attacking_item, /obj/item/stack/worm_fertilizer))
 
 		var/obj/item/stack/attacking_stack = attacking_item
 
+		if(!allow_yield_increase() && !allow_decrease_cooldown())
+			balloon_alert(user, "plant is already fully upgraded")
+			return
+
 		if(!attacking_stack.use(1))
 			balloon_alert(user, "unable to use [attacking_item]")
 			return
 
-		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE))
+		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE) && !increase_potency(user, silent = TRUE))
 			balloon_alert(user, "plant is already fully upgraded")
 
 		else
 			balloon_alert(user, "plant was upgraded")
+			user.mind.adjust_experience(/datum/skill/primitive, 5)
 
 		return
 
@@ -200,16 +213,26 @@
 
 		COOLDOWN_START(src, harvest_timer, harvest_cooldown)
 		create_harvest(attacking_item, user)
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		update_appearance()
 		return
 
 	return ..()
 
 /**
+ * a proc that will check if we can increase the yield-- without increasing it
+ */
+/obj/structure/simple_farm/proc/allow_yield_increase()
+	if(max_harvest >= 6)
+		return FALSE
+
+	return TRUE
+
+/**
  * a proc that will increase the amount of items the crop could produce (at a maximum of 6, from base of 3)
  */
 /obj/structure/simple_farm/proc/increase_yield(mob/user, var/silent = FALSE)
-	if(max_harvest >= 6)
+	if(!allow_yield_increase())
 		if(!silent)
 			balloon_alert(user, "plant is at maximum yield")
 
@@ -223,10 +246,19 @@
 	return TRUE
 
 /**
+ * a proc that will check if we can decrease the time-- without increasing it
+ */
+/obj/structure/simple_farm/proc/allow_decrease_cooldown()
+	if(harvest_cooldown <= 30 SECONDS)
+		return FALSE
+
+	return TRUE
+
+/**
  * a proc that will decrease the amount of time it takes to be ready for harvest (at a maximum of 30 seconds, from a base of 1 minute)
  */
 /obj/structure/simple_farm/proc/decrease_cooldown(mob/user, var/silent = FALSE)
-	if(harvest_cooldown <= 30 SECONDS)
+	if(!allow_decrease_cooldown())
 		if(!silent)
 			balloon_alert(user, "already at maximum growth speed!")
 
@@ -236,6 +268,23 @@
 
 	if(!silent)
 		balloon_alert_to_viewers("plant will grow faster")
+
+	return TRUE
+
+/**
+ * a proc that will increase the potency the crop grows at
+ */
+/obj/structure/simple_farm/proc/increase_potency(mob/user, var/silent = FALSE)
+	if(bonus_potency >= 50)
+		if(!silent)
+			balloon_alert(user, "plant is at maximum potency")
+
+		return FALSE
+
+	bonus_potency += 10
+
+	if(!silent)
+		balloon_alert_to_viewers("plant will have increased potency")
 
 	return TRUE
 
@@ -261,30 +310,19 @@
 		return
 
 	for(var/i in 1 to rand(1, max_harvest))
-		var/obj/creating_obj
-
+		var/obj/item/seeds/seed
 		if(prob(15) && length(planted_seed.mutatelist))
-			var/obj/item/seeds/choose_seed = pick(planted_seed.mutatelist)
-			creating_obj = initial(choose_seed.product)
-
-			if(!creating_obj)
-				creating_obj = choose_seed
-
-			var/created_special = new creating_obj(get_turf(src))
-
-			plant_bag?.atom_storage?.attempt_insert(created_special, user, TRUE)
-
+			var/type = pick(planted_seed.mutatelist)
+			seed = new type
 			balloon_alert_to_viewers("something special drops!")
-			continue
+		else
+			seed = new planted_seed.type(null)
 
-		creating_obj = planted_seed.product
+		seed.potency = 50 + bonus_potency
 
-		if(!creating_obj)
-			creating_obj = planted_seed.type
-
-		var/created_harvest = new creating_obj(get_turf(src))
-
-		plant_bag?.atom_storage?.attempt_insert(created_harvest, user, TRUE)
+		var/harvest_type = seed.product || seed.type
+		var/harvest = new harvest_type(get_turf(src), seed)
+		plant_bag?.atom_storage?.attempt_insert(harvest, user, TRUE)
 
 /turf/open/misc/asteroid/basalt/getDug()
 	. = ..()

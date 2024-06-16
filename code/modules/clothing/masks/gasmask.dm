@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	///Cigarette in the mask
 	var/obj/item/clothing/mask/cigarette/cig
 	voice_filter = "lowpass=f=750,volume=2"
+
 /datum/armor/mask_gas
 	bio = 100
 
@@ -56,11 +57,11 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	cig?.equipped(equipee, slot)
 	return ..()
 
-/obj/item/clothing/mask/gas/adjustmask(mob/living/carbon/user)
-	if(isnull(cig))
-		return ..()
-	balloon_alert(user, "there's a cig in the way!")
-
+/obj/item/clothing/mask/gas/adjust_visor(mob/living/user)
+	if(!isnull(cig))
+		balloon_alert(user, "cig in the way!")
+		return FALSE
+	return ..()
 
 /obj/item/clothing/mask/gas/examine(mob/user)
 	. = ..()
@@ -218,6 +219,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	flags_cover = MASKCOVERSEYES
 	visor_flags_inv = HIDEEYES
 	visor_flags_cover = MASKCOVERSEYES
+	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	resistance_flags = FIRE_PROOF
 
 /datum/armor/gas_welding
@@ -227,10 +229,16 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	acid = 55
 
 /obj/item/clothing/mask/gas/welding/attack_self(mob/user)
-	if(weldingvisortoggle(user))
+	adjust_visor(user)
+
+/obj/item/clothing/mask/gas/welding/adjust_visor(mob/living/user)
+	. = ..()
+	if(.)
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE)
 
-/obj/item/clothing/mask/gas/welding/up
+/obj/item/clothing/mask/gas/welding/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)][up ? "up" : ""]"
 
 /obj/item/clothing/mask/gas/welding/up/Initialize(mapload)
 	. = ..()
@@ -269,6 +277,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	dye_color = DYE_CLOWN
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSEYES
+	clothing_traits = list(TRAIT_PERCEIVED_AS_CLOWN)
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = /datum/dog_fashion/head/clown
@@ -359,7 +368,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		return FALSE
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
-		// SKYRAT ADDITION - More mask variations
+		// SKYRAT EDIT ADDITION START - More mask variations
 		var/mob/living/carbon/human/human_user = user
 		if(human_user.dna.species.mutant_bodyparts["snout"])
 			icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
@@ -371,7 +380,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 			icon = 'icons/obj/clothing/masks.dmi'
 			worn_icon = 'icons/mob/clothing/mask.dmi'
 			icon_state = options[choice]
-		/* SKYRAT ADDITION END
+		/* SKYRAT EDIT ADDITION END
 		icon_state = options[choice]
 		*/
 		user.update_worn_mask()

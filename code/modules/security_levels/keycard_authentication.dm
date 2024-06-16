@@ -56,7 +56,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	data["eng_override"] = GLOB.force_eng_override //SKYRAT EDIT
 	return data
 
-/obj/machinery/keycard_auth/ui_status(mob/user)
+/obj/machinery/keycard_auth/ui_status(mob/user, datum/ui_state/state)
 	if(isdrone(user))
 		return UI_CLOSE
 	if(!isanimal_or_basicmob(user))
@@ -139,7 +139,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	event = event_type
 	waiting = TRUE
 	GLOB.keycard_events.fireEvent("triggerEvent", src)
-	addtimer(CALLBACK(src, PROC_REF(eventSent)), 20)
+	addtimer(CALLBACK(src, PROC_REF(eventSent)), 2 SECONDS)
 
 /obj/machinery/keycard_auth/proc/eventSent()
 	triggerer = null
@@ -149,7 +149,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 /obj/machinery/keycard_auth/proc/triggerEvent(source)
 	event_source = source
 	update_appearance()
-	addtimer(CALLBACK(src, PROC_REF(eventTriggered)), 20)
+	addtimer(CALLBACK(src, PROC_REF(eventTriggered)), 2 SECONDS)
 
 /obj/machinery/keycard_auth/proc/eventTriggered()
 	event_source = null

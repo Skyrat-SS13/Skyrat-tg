@@ -246,6 +246,7 @@
 		/obj/item/clothing/mask/muzzle,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
+		/obj/item/clothing/head/utility/surgerycap,
 		/obj/item/construction/plumbing,
 		/obj/item/dnainjector,
 		/obj/item/extinguisher/mini,
@@ -256,6 +257,7 @@
 		/obj/item/hemostat,
 		/obj/item/holosign_creator/medical,
 		/obj/item/hypospray/mkii, //SKYRAT EDIT ADDITION - HYPOSPRAYS
+		/obj/item/storage/hypospraykit/, //SKYRAT EDIT ADDITION - HYPOSPRAYS
 		/obj/item/implant,
 		/obj/item/implantcase,
 		/obj/item/implanter,
@@ -290,6 +292,7 @@
 		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
 		/obj/item/handheld_soulcatcher, // SKYRAT EDIT SOULCATCHERS
 		/obj/item/wrench/medical,
+		/obj/item/knife/ritual,
 	))
 
 /obj/item/storage/belt/medical/paramedic
@@ -511,9 +514,7 @@
 /obj/item/storage/belt/soulstone/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
-	atom_storage.set_holdable(list(
-		/obj/item/soulstone,
-	))
+	atom_storage.set_holdable(/obj/item/soulstone)
 
 /obj/item/storage/belt/soulstone/full/PopulateContents()
 	for(var/i in 1 to 6)
@@ -534,9 +535,7 @@
 /obj/item/storage/belt/champion/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 1
-	atom_storage.set_holdable(list(
-		/obj/item/clothing/mask/luchador,
-	))
+	atom_storage.set_holdable(/obj/item/clothing/mask/luchador)
 
 /obj/item/storage/belt/military
 	name = "chest rig"
@@ -686,10 +685,8 @@
 
 /obj/item/storage/belt/wands/Initialize(mapload)
 	. = ..()
-	atom_storage.max_slots = 6
-	atom_storage.set_holdable(list(
-		/obj/item/gun/magic/wand,
-	))
+	atom_storage.max_slots = 7
+	atom_storage.set_holdable(/obj/item/gun/magic/wand)
 
 /obj/item/storage/belt/wands/full/PopulateContents()
 	new /obj/item/gun/magic/wand/death(src)
@@ -698,6 +695,7 @@
 	new /obj/item/gun/magic/wand/teleport(src)
 	new /obj/item/gun/magic/wand/door(src)
 	new /obj/item/gun/magic/wand/fireball(src)
+	new /obj/item/gun/magic/wand/shrink(src)
 
 	for(var/obj/item/gun/magic/wand/W in contents) //All wands in this pack come in the best possible condition
 		W.max_charges = initial(W.max_charges)
@@ -762,6 +760,7 @@
 		/obj/item/ammo_casing/strilka310,
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_casing/a357,
+		/obj/item/ammo_casing/junk,
 	))
 
 /obj/item/storage/belt/fannypack
@@ -843,6 +842,7 @@
 	inhand_icon_state = "sheath"
 	worn_icon_state = "sheath"
 	w_class = WEIGHT_CLASS_BULKY
+	interaction_flags_click = parent_type::interaction_flags_click | NEED_DEXTERITY | NEED_HANDS
 
 /obj/item/storage/belt/sabre/Initialize(mapload)
 	. = ..()
@@ -851,20 +851,15 @@
 	atom_storage.max_slots = 1
 	atom_storage.rustle_sound = FALSE
 	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
-	atom_storage.set_holdable(
-		list(
-			/obj/item/melee/sabre,
-		)
-	)
+	atom_storage.set_holdable(/obj/item/melee/sabre)
+	atom_storage.click_alt_open = FALSE
 
 /obj/item/storage/belt/sabre/examine(mob/user)
 	. = ..()
 	if(length(contents))
 		. += span_notice("Alt-click it to quickly draw the blade.")
 
-/obj/item/storage/belt/sabre/AltClick(mob/user)
-	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
-		return
+/obj/item/storage/belt/sabre/click_alt(mob/user)
 	if(length(contents))
 		var/obj/item/I = contents[1]
 		user.visible_message(span_notice("[user] takes [I] out of [src]."), span_notice("You take [I] out of [src]."))
@@ -872,6 +867,7 @@
 		update_appearance()
 	else
 		balloon_alert(user, "it's empty!")
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/storage/belt/sabre/update_icon_state()
 	icon_state = initial(inhand_icon_state)

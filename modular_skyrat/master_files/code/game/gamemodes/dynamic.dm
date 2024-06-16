@@ -7,9 +7,9 @@
 	. = "<b><i>Central Command Status Summary</i></b><hr>"
 
 	var/greenshift = GLOB.dynamic_forced_extended || (threat_level < MIN_MIDROUND_COST && shown_threat < MIN_MIDROUND_COST) // if both shown and real threat are below any ruleset, its greenshift time
-	generate_station_goals(greenshift)
+	SSstation.generate_station_goals(greenshift)
 
-	if(!GLOB.station_goals.len)
+	if(!length(SSstation.get_station_goals()))
 		. = "<hr><b>No assigned goals.</b><BR>"
 	else
 		. += generate_station_goal_report()
@@ -30,11 +30,11 @@
  * Returns a formatted string all station goals that are available to the station.
  */
 /datum/controller/subsystem/dynamic/proc/generate_station_goal_report()
-	if(!GLOB.station_goals.len)
+	if(!length(SSstation.get_station_goals()))
 		return
 	. = "<hr><b>Special Orders for [station_name()]:</b><BR>"
 	var/list/goal_reports = list()
-	for(var/datum/station_goal/station_goal as anything in GLOB.station_goals)
+	for(var/datum/station_goal/station_goal as anything in SSstation.get_station_goals())
 		station_goal.on_report()
 		goal_reports += station_goal.get_report()
 

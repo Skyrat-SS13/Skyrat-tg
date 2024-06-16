@@ -124,16 +124,15 @@
 		SSliquids.processing_fire -= my_turf
 	//Try spreading
 	if(fire_state == old_state) //If an extinguisher made our fire smaller, dont spread, else it's too hard to put out
-		for(var/t in my_turf.atmos_adjacent_turfs)
-			var/turf/T = t
-			if(T.liquids && !T.liquids.fire_state && T.liquids.check_fire(TRUE))
-				SSliquids.processing_fire[T] = TRUE
+		for(var/turf/adjacent_turf in my_turf.atmos_adjacent_turfs)
+			if(adjacent_turf.liquids && !adjacent_turf.liquids.fire_state && adjacent_turf.liquids.check_fire(TRUE))
+				SSliquids.processing_fire[adjacent_turf] = TRUE
 	//Burn our resources
-	var/datum/reagent/R //Faster declaration
+	var/datum/reagent/reagent //Faster declaration
 	var/burn_rate
 	for(var/reagent_type in reagent_list)
-		R = reagent_type
-		burn_rate = initial(R.liquid_fire_burnrate)
+		reagent = reagent_type
+		burn_rate = initial(reagent.liquid_fire_burnrate)
 		if(burn_rate)
 			var/amt = reagent_list[reagent_type]
 			if(burn_rate >= amt)
@@ -144,10 +143,9 @@
 				total_reagents -= burn_rate
 
 	my_turf.hotspot_expose((T20C+50) + (50*fire_state), 125)
-	for(var/A in my_turf.contents)
-		var/atom/AT = A
-		if(!QDELETED(AT))
-			AT.fire_act((T20C+50) + (50*fire_state), 125)
+	for(var/atom/content in my_turf.contents)
+		if(!QDELETED(content))
+			content.fire_act((T20C+50) + (50*fire_state), 125)
 
 	if(reagent_list.len == 0)
 		qdel(src, TRUE)
@@ -224,12 +222,12 @@
 /obj/effect/abstract/liquid_turf/proc/make_state_layer(state, has_top)
 	PRIVATE_PROC(TRUE)
 
-	. = list(make_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER))
+	. = list(make_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, ABOVE_GAME_PLANE))
 
 	if(!has_top)
 		return
 
-	. += make_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
+	. += make_liquid_overlay("stage[state]_top", BELOW_OBJ_LAYER, GAME_PLANE)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state

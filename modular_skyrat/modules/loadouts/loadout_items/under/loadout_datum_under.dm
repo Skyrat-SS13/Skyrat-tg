@@ -109,9 +109,39 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Grey Officer's Naval Jumpsuit (Trousers)"
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
 
+/datum/loadout_item/under/jumpsuit/security_skirt
+	name = "Security Battledress"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/skirt
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
 /datum/loadout_item/under/jumpsuit/security_trousers
 	name = "Security Trousers"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/jumpsuit/security_shorts
+	name = "Security Shorts"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers/shorts
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/jumpsuit/security_jumpskirt
+	name = "Security Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/security/officer/skirt
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/jumpsuit/security_shortskirt
+	name = "Security Shortskirt"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/shortskirt
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/jumpsuit/security_miniskirt
+	name = "Security Miniskirt"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/miniskirt
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/jumpsuit/security_jumpsuit
+	name = "Security Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/jumpsuit
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/under/jumpsuit/security_peacekeeper
@@ -147,6 +177,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/chemist_formal_skirt
 	name = "Chemist's Formal Jumpskirt"
 	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt
+
+/datum/loadout_item/under/jumpsuit/viro_jumpsuit
+	name = "Virologist's Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/medical/virologist
 
 /datum/loadout_item/under/jumpsuit/hlscientist
 	name = "Ridiculous Scientist Outfit"
@@ -408,6 +442,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/treasure_hunter
 	name = "Treasure Hunter"
 	item_path = /obj/item/clothing/under/rank/civilian/curator/treasure_hunter
+
+/datum/loadout_item/under/miscellaneous/jester
+	name = "Jester Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/clown/jester
+
+/datum/loadout_item/under/miscellaneous/jesteralt
+	name = "Jeset Suit (Alt)"
+	item_path = /obj/item/clothing/under/rank/civilian/clown/jesteralt
 
 /datum/loadout_item/under/miscellaneous/overalls
 	name = "Overalls"
@@ -748,7 +790,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/red_gown
 	name = "Red Evening Gown"
-	item_path = /obj/item/clothing/under/dress/redeveninggown
+	item_path = /obj/item/clothing/under/dress/eveninggown
 
 /datum/loadout_item/under/formal/sailor
 	name = "Sailor Suit"

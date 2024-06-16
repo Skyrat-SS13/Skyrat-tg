@@ -75,12 +75,12 @@
 		RND_CATEGORY_AKHTER_SEEDS,
 	)
 
-/datum/design/organic_herb_seed
-	name = "Pack of Herb Seeds"
-	id = "oganic_herb_seed"
+/datum/design/organic_plump_helmet
+	name = "Pack of Plump-Helmet Seeds"
+	id = "oganic_plump_helmet"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
-	build_path = /obj/item/seeds/herbs
+	build_path = /obj/item/seeds/plump
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_AKHTER_SEEDS,

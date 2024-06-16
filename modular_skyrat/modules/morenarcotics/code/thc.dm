@@ -67,6 +67,7 @@
 	..()
 
 /datum/reagent/drug/thc/on_mob_end_metabolize(mob/living/carbon/M)
+	. = ..()
 	if(M.hud_used!=null)
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.remove_filter("weed_blur")

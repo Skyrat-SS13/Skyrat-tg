@@ -24,7 +24,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/human/affected_human = user
 		if(src == affected_human.w_uniform)
-			if(!do_after(affected_human, 60, target = src))
+			if(!do_after(affected_human, 6 SECONDS, target = src))
 				return
 	. = ..()
 
@@ -74,7 +74,8 @@
 	breasts_icon_overlay.icon_state = "none"
 
 //Plug to bypass the bug with instant suit equip/drop
-/obj/item/clothing/under/misc/latex_catsuit/MouseDrop(atom/over_object)
+/obj/item/clothing/under/misc/latex_catsuit/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
+	return
 
 /obj/item/clothing/under/misc/latex_catsuit/Initialize(mapload)
 	. = ..()

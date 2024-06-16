@@ -11,9 +11,6 @@
 #define GET_UP_MEDIUM 1.5
 #define GET_UP_SLOW 3
 
-#define PERSONAL_SPACE_DAMAGE 2
-#define ASS_SLAP_EXTRA_RANGE -1
-
 //Stamina threshold for attacking slower with items
 #define STAMINA_THRESHOLD_TIRED_CLICK_CD 120
 #define CLICK_CD_RANGE_TIRED 5 //#define CLICK_CD_RANGE 4, so 25% slower
@@ -27,8 +24,6 @@
 // Damage modifiers
 #define OVERSIZED_HARM_DAMAGE_BONUS 5 /// Those with the oversized trait do 5 more damage.
 #define OVERSIZED_KICK_EFFECTIVENESS_BONUS 5 /// Increased unarmed_effectiveness/stun threshold on oversized kicks.
-
-#define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 //Force mob to rest, does NOT do stamina damage.
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
@@ -62,14 +57,13 @@
 #define HEADSMASH_BLOCK_ARMOR 20
 #define SUPLEX_TIMER 3 SECONDS
 
-/// Skyrat change - alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
-/mob/living/carbon/human/AltClick(mob/user)
+// alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
+/mob/living/carbon/human/click_alt(mob/user)
 	if(!ishuman(user))
 		return ..()
 	var/mob/living/carbon/human/human_user = user
 	if(human_user == src || !human_user.combat_mode || !human_user.dna.species.try_grab_maneuver(user, src))
-		return FALSE
-	. = ..()
+		return CLICK_ACTION_BLOCKING
 
 /// State check for grab maneuver - because you can't logically suplex a man if you've stopped grappling them.
 /datum/species/proc/grab_maneuver_state_check(mob/living/carbon/human/user, mob/living/carbon/human/target)

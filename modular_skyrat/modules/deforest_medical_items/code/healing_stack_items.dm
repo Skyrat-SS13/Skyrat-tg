@@ -21,6 +21,9 @@
 	max_amount = 3
 	amount = 3
 	merge_type = /obj/item/stack/medical/wound_recovery
+	custom_price = PAYCHECK_COMMAND * 2.5
+	/// If this checks for pain, used for synthetic repair foam
+	var/causes_pain = TRUE
 	/// The types of wounds that we work on, in list format
 	var/list/applicable_wounds = list(
 		/datum/wound/blunt/bone,
@@ -69,10 +72,10 @@
 	if(!do_after(user, treatment_delay, target = patient))
 		return
 
-	user.visible_message(span_green("[user] applies [src] to [patient]'s [limb.plaintext_zone]."), span_green("You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]."))
+	user.visible_message(span_green("[user] applies [src] to [patient]'s [limb.plaintext_zone]."), span_green("You treat the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]."))
 	playsound(patient, treatment_sound, 50, TRUE)
 	woundies.remove_wound()
-	if(!HAS_TRAIT(patient, TRAIT_NUMBED))
+	if(!HAS_TRAIT(patient, TRAIT_ANALGESIA) || !causes_pain)
 		patient.emote("scream")
 		to_chat(patient, span_userdanger("Your [limb.plaintext_zone] burns like hell as the wounds on it are rapidly healed, fuck!"))
 		patient.add_mood_event("severe_surgery", /datum/mood_event/rapid_wound_healing)
@@ -82,7 +85,7 @@
 	use(1)
 
 /datum/mood_event/rapid_wound_healing
-	description = "That may have healed my wound fast, but if that wasn't one of the worst experiences!\n"
+	description = "The wound is gone, but that pain was unbearable!\n"
 	mood_change = -3
 	timeout = 5 MINUTES
 
@@ -129,6 +132,7 @@
 	sanitization = 3
 	grind_results = list(/datum/reagent/medicine/oxandrolone = 3)
 	merge_type = /obj/item/stack/medical/ointment/red_sun
+	custom_price = PAYCHECK_LOWER * 1.5
 
 /obj/item/stack/medical/ointment/red_sun/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -150,6 +154,7 @@
 	splint_factor = 1.2
 	burn_cleanliness_bonus = 0.1
 	merge_type = /obj/item/stack/medical/gauze/sterilized
+	custom_price = PAYCHECK_LOWER * 1.5
 
 /obj/item/stack/medical/gauze/sterilized/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -173,6 +178,7 @@
 	heal_brute = 0
 	stop_bleeding = 2
 	merge_type = /obj/item/stack/medical/suture/coagulant
+	custom_price = PAYCHECK_LOWER * 1.5
 
 #undef INSTANT_WOUND_HEAL_STAMINA_DAMAGE
 #undef INSTANT_WOUND_HEAL_LIMB_DAMAGE
