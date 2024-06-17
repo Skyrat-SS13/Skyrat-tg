@@ -119,7 +119,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/alien_bio/New()
+/datum/techweb_node/alien_surgery/New()
 	design_ids += list(
 		"hypomkii_deluxe",
 	)

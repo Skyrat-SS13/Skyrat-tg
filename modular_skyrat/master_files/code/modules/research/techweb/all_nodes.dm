@@ -5,7 +5,7 @@
 	id = "adv_vision"
 	display_name = "Combat Cybernetic Eyes"
 	description = "Military grade combat implants to improve vision."
-	prereq_ids = list("combat_cyber_implants", "alien_bio")
+	prereq_ids = list("combat_implants", "alien_surgery")
 	design_ids = list(
 		"ci-thermals",
 		"ci-xray",
@@ -272,7 +272,7 @@
 	id = "ayy_cyber_implants"
 	display_name = "Alien Cybernetic Implants"
 	description = "The best in cybernetic implants."
-	prereq_ids = list("neural_programming", "cyber_implants","integrated_HUDs", "adv_cyber_implants", "alien_bio", "alien_engi")
+	prereq_ids = list("passive_implants", "cyber_implants","night_vision", "combat_implants", "alien_surgery", "alien_engi")
 	design_ids = list(
 		"ci-surgery-alien",
 		"ci-toolset-alien",
