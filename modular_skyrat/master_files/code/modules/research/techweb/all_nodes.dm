@@ -26,21 +26,22 @@
 // MODULAR ADDITIONS AND REMOVALS
 
 //Base Nodes
-/datum/techweb_node/base/New()
+/datum/techweb_node/parts/New()
 	design_ids += list(
 		"polarizer",
 		"vox_gas_filter",
+		"gbp_machine",
 	)
 	return ..()
 
-/datum/techweb_node/cyborg/New()
+/datum/techweb_node/cybernetics/New()
 	design_ids += list(
 		"affection_module",
 		"borg_upgrade_artistic",
 	)
 	return ..()
 
-/datum/techweb_node/basic_tools/New()
+/datum/techweb_node/cafeteria_equip/New()
 	design_ids += list(
 		"bowl",
 		"drinking_glass",
@@ -48,7 +49,7 @@
 	)
 	return ..()
 
-/datum/techweb_node/basic_medical/New()
+/datum/techweb_node/medbay_equip/New()
 	design_ids += list(
 		"hospital_gown",
 		"synth_eyes",
@@ -63,7 +64,7 @@
 
 /////////////////////////Biotech/////////////////////////
 
-/datum/techweb_node/adv_biotech/New()
+/datum/techweb_node/medbay_equip_adv/New()
 	design_ids += list(
 		"monkey_helmet",
 		"brute2medicell",
@@ -77,7 +78,7 @@
 	)
 	return ..()
 
-/datum/techweb_node/biotech/New()
+/datum/techweb_node/bio_scan/New()
 	design_ids += list(
 		"anesthetic_machine",
 		"smartdartgun",
@@ -86,7 +87,7 @@
 
 /////////////////////////EMP tech/////////////////////////
 
-/datum/techweb_node/emp_basic/New()
+/datum/techweb_node/energy_manipulation/New()
 	design_ids += list(
 		"gownmedicell",
 		"bedmedicell",
@@ -95,13 +96,13 @@
 
 ////////////////////////Computer tech////////////////////////
 
-/datum/techweb_node/comptech/New()
+/datum/techweb_node/consoles/New()
 	design_ids += list(
 		"time_clock_frame",
 	)
 	return ..()
 
-/datum/techweb_node/integrated_hud/New()
+/datum/techweb_node/hud/New()
 	design_ids += list(
 		"health_hud_prescription",
 		"security_hud_prescription",
@@ -131,13 +132,13 @@
 
 ////////////////////////Medical////////////////////////
 
-/datum/techweb_node/genetics/New()
+/datum/techweb_node/gene_engineering/New()
 	design_ids += list(
 		"self_actualization_device",
 	)
 	return ..()
 
-/datum/techweb_node/cyber_organs/New()
+/datum/techweb_node/cyber/cyber_organs/New()
 	design_ids += list(
 		"cybernetic_tongue",
 		"cybernetic_tongue_lizard",
@@ -145,7 +146,7 @@
 	return ..()
 
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
-/datum/techweb_node/combat_cyber_implants/New()
+/datum/techweb_node/cyber/cyber_organs_adv/New()
 	. = ..()
 	design_ids -= list(
 		"ci-thermals",
@@ -156,13 +157,13 @@
 
 ////////////////////////Tools////////////////////////
 
-/datum/techweb_node/botany/New()
+/datum/techweb_node/botany_equip/New()
 	design_ids += list(
 		"salvemedicell",
 	)
 	return ..()
 
-/datum/techweb_node/sec_basic/New()
+/datum/techweb_node/sec_equip/New()
 	. = ..()
 	design_ids += list(
 		"nifsoft_remover",
@@ -171,13 +172,13 @@
 
 /////////////////////////weaponry tech/////////////////////////
 
-/datum/techweb_node/weaponry/New()
+/datum/techweb_node/exotic_ammo/New()
 	design_ids += list(
 		"ammoworkbench_disk_lethal",
 	)
 	return ..()
 
-/datum/techweb_node/adv_weaponry/New()
+/datum/techweb_node/sec_equip/New()
 	design_ids += list(
 		"ammo_workbench",
 	)
@@ -191,7 +192,7 @@
 
 ////////////////////////Alien technology////////////////////////
 
-/datum/techweb_node/alien_bio/New()
+/datum/techweb_node/alien_surgery/New()
 	design_ids += list(
 		"brute3medicell",
 		"burn3medicell",
@@ -202,7 +203,7 @@
 
 /////////////////////////engineering tech/////////////////////////
 
-/datum/techweb_node/adv_engi/New()
+/datum/techweb_node/exp_tools/New()
 	design_ids += list(
 		"engine_goggles_prescription",
 		"mesons_prescription",
@@ -221,14 +222,14 @@
 	)
 	return ..()
 
-/datum/techweb_node/neural_programming/New()
+/datum/techweb_node/passive_implants/New()
 	design_ids += list(
 		"soulcatcher_device",
 		"rsd_interface",
 	)
 	return ..()
 
-/datum/techweb_node/cyborg_upg_util/New()
+/datum/techweb_node/borg_utility/New()
 	design_ids += list(
 		"borg_upgrade_clamp",
 		"borg_upgrade_cargo_tele",
@@ -237,13 +238,13 @@
 	)
 	return ..()
 
-/datum/techweb_node/cyborg_upg_engiminer/New()
+/datum/techweb_node/borg_engi/New()
 	design_ids += list(
 		"advanced_materials",
 	)
 	return ..()
 
-/datum/techweb_node/cyborg_upg_med/New()
+/datum/techweb_node/borg_medical/New()
 	design_ids += list(
 		"borg_upgrade_surgicaltools",
 	)
@@ -252,7 +253,8 @@
 		"borg_upgrade_pinpointer",
 	)
 	return ..()
-/datum/techweb_node/cyborg_upg_serv/New()
+
+/datum/techweb_node/borg_service/New()
 	design_ids += list(
 		"borg_upgrade_botany"
 	)
@@ -260,7 +262,7 @@
 
 
 
-/datum/techweb_node/basic_mining/New()
+/datum/techweb_node/borg_engi/New()
 	design_ids += list(
 		"borg_upgrade_welding",
 	)
