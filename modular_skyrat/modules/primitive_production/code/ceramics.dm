@@ -1,29 +1,5 @@
 #define DEFAULT_SPIN (4 SECONDS)
 
-/*
- * Clay Bricks
- */
-
-/obj/item/stack/sheet/mineral/clay
-	name = "clay brick"
-	desc = "A heavy clay brick."
-	singular_name = "clay brick"
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "sheet-clay"
-	inhand_icon_state = null
-	throw_speed = 3
-	throw_range = 5
-	merge_type = /obj/item/stack/sheet/mineral/clay
-
-GLOBAL_LIST_INIT(clay_recipes, list ( \
-	new/datum/stack_recipe("clay range", /obj/machinery/primitive_stove, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_MISC), \
-	new/datum/stack_recipe("clay oven", /obj/machinery/oven/stone, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_MISC) \
-	))
-
-/obj/item/stack/sheet/mineral/clay/get_main_recipes()
-	. = ..()
-	. += GLOB.clay_recipes
-
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/glass_item = O
@@ -151,12 +127,15 @@ GLOBAL_LIST_INIT(clay_recipes, list ( \
 	icon_state = "clay_cup"
 	custom_materials = null
 
+/obj/item/stack/sheet/mineral/stone/five
+	amount = 5
+
 /obj/item/ceramic/brick
-	name = "ceramic brick"
-	desc = "A dense block of clay, ready to be fired into a brick!"
+	name = "clay bricks"
+	desc = "A few block of clay, ready to be fired into bricks!"
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "sheet-clay"
-	forge_item = /obj/item/stack/sheet/mineral/clay
+	icon_state = "claybricks"
+	forge_item = /obj/item/stack/sheet/mineral/stone/five
 
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
@@ -238,7 +217,7 @@ GLOBAL_LIST_INIT(clay_recipes, list ( \
 		return
 	switch(user_input)
 		if("Create")
-			var/creation_choice = tgui_input_list(user, "What you like to create?", "Creation Choice", list("Cup", "Plate", "Bowl", "Tray", "Brick"))
+			var/creation_choice = tgui_input_list(user, "What you like to create?", "Creation Choice", list("Cup", "Plate", "Bowl", "Tray", "Bricks"))
 			if(!creation_choice)
 				return
 			switch(creation_choice)
@@ -250,7 +229,7 @@ GLOBAL_LIST_INIT(clay_recipes, list ( \
 					use_clay(/obj/item/ceramic/bowl, user)
 				if("Tray")
 					use_clay(/obj/item/ceramic/tray, user)
-				if("Brick")
+				if("Bricks")
 					use_clay(/obj/item/ceramic/brick, user)
 		if("Remove")
 			if(!do_after(user, spinning_speed, target = src))
