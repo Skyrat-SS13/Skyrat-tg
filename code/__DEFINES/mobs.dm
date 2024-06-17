@@ -84,7 +84,8 @@
 #define BODYTYPE_ALIEN (1<<3)
 ///The limb is from a golem
 #define BODYTYPE_GOLEM (1<<4)
-<<<<<<< HEAD
+//The limb is a peg limb
+#define BODYTYPE_PEG (1<<5)
 // SKYRAT EDIT ADDITION
 ///The limb fits a modular custom shape
 #define BODYSHAPE_CUSTOM (1<<9)
@@ -95,10 +96,7 @@
 ///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
 #define BODYSHAPE_ALT_FACEWEAR_LAYER (1<<12)
 // SKYRAT EDIT END
-=======
-//The limb is a peg limb
-#define BODYTYPE_PEG (1<<5)
->>>>>>> 6351073f56d (Pegging Update (#83991))
+
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.

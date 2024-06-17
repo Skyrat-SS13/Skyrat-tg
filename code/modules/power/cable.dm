@@ -576,17 +576,13 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 			/* SKYRAT EDIT START - ORIGINAL:
 			if(!do_after(user, 5 SECONDS, H))
 				return
-<<<<<<< HEAD
 			*/
 		// SKYRAT EDIT CHANGE START
 		if(!do_after(user, (user == H ? self_delay : other_delay)))
 			return
 		// SKYRAT EDIT CHANGE END
-		if(item_heal_robotic(H, user, 0, 15))
-			user.visible_message(span_green("[user] fixes some of the wires in to [H]'s [affecting.name]."), span_green("You fix some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name].")) // SKYRAT EDIT ADD
-=======
 		if(H.item_heal(user, 0, 15, "dents", "burnt wires", BODYTYPE_ROBOTIC))
->>>>>>> 6351073f56d (Pegging Update (#83991))
+			user.visible_message(span_green("[user] fixes some of the wires in to [H]'s [affecting.name]."), span_green("You fix some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name].")) // SKYRAT EDIT ADD
 			use(1)
 		return
 	else
