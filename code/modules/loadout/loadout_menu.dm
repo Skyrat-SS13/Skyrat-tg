@@ -28,7 +28,7 @@
 	if(params["deselect"])
 		deselect_item(interacted_item)
 	else
-		select_item(interacted_item, user) // SKYRAT EDIT CHANGE - Added user param
+		select_item(interacted_item)
 	return TRUE
 
 /datum/preference_middleware/loadout/proc/action_clear_all(list/params, mob/user)
@@ -65,7 +65,7 @@
 	return FALSE
 
 /// Select [path] item to [category_slot] slot.
-/datum/preference_middleware/loadout/proc/select_item(datum/loadout_item/selected_item, mob/user) // SKYRAT EDIT CHANGE - Added user param
+/datum/preference_middleware/loadout/proc/select_item(datum/loadout_item/selected_item)
 	var/list/loadout = preferences.read_preference(/datum/preference/loadout)
 	var/list/datum/loadout_item/loadout_datums = loadout_list_to_datums(loadout)
 	for(var/datum/loadout_item/item as anything in loadout_datums)
@@ -74,12 +74,12 @@
 		if(!item.category.handle_duplicate_entires(src, item, selected_item, loadout_datums))
 			return
 		// SKYRAT EDIT ADDITION
-		if(item.ckeywhitelist && item.ckeywhitelist != user.ckey)
-			to_chat(user, span_warning("You cannot select this item!"))
+		if(item.ckeywhitelist && !(preferences?.parent?.ckey in item.ckeywhitelist))
+			to_chat(preferences.parent, span_warning("You cannot select this item!"))
 			return
 
-		if(item.donator_only && !GLOB.donator_list[user.ckey])
-			to_chat(user, span_warning("That item is for donators only."))
+		if(item.donator_only && !GLOB.donator_list[preferences?.parent?.ckey])
+			to_chat(preferences.parent, span_warning("That item is for donators only."))
 			return
 		// SKYRAT EDIT END
 
@@ -121,8 +121,8 @@
 			"name" = category.category_name,
 			"category_icon" = category.category_ui_icon,
 			"category_info" = category.category_info,
-			"contents" = category.items_to_ui_data(),
-		)
+			"contents" = category.items_to_ui_data(preferences?.parent),
+		) // SKYRAT EDIT CHANGE - items_to_ui_data(preferences?.parent)
 		UNTYPED_LIST_ADD(loadout_tabs, cat_data)
 
 	data["loadout_tabs"] = loadout_tabs

@@ -12,7 +12,7 @@
 	// SKYRAT EDIT CHANGE
 	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.neck)
 		LAZYADD(outfit.backpack_contents, outfit.neck)
-	outfit.head = item_path
+	outfit.neck = item_path
 	// SKYRAT EDIT END
 
 /datum/loadout_item/neck/scarf_greyscale

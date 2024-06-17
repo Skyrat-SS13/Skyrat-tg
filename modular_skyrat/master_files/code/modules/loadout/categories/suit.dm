@@ -1,24 +1,16 @@
-/*
-*	LOADOUT ITEM DATUMS FOR THE (EXO/OUTER)SUIT SLOT
-*/
-
-/// Exosuit / Outersuit Slot Items (Moves items to backpack)
-GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/suit))
+/datum/loadout_category/suit
+	category_name = "Suits"
+	category_ui_icon = FA_ICON_TOILET
+	type_to_generate = /datum/loadout_item/suit
+	tab_order = /datum/loadout_category/head::tab_order + 10
 
 /datum/loadout_item/suit
-	category = LOADOUT_ITEM_SUIT
+	abstract_type = /datum/loadout_item/suit
 
-/datum/loadout_item/suit/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE) // don't bother storing in backpack, can't fit
-	if(initial(outfit_important_for_life.suit))
-		return TRUE
-
-/datum/loadout_item/suit/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
-		if(outfit.suit)
-			LAZYADD(outfit.backpack_contents, outfit.suit)
-		outfit.suit = item_path
-	else
-		outfit.suit = item_path
+/datum/loadout_item/suit/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only, loadout_placement_preference)
+	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.suit)
+		LAZYADD(outfit.backpack_contents, outfit.suit)
+	outfit.suit = item_path
 
 /*
 *	WINTER COATS

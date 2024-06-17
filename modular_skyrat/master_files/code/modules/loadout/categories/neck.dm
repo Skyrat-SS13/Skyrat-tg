@@ -1,25 +1,3 @@
-/*
-*	LOADOUT ITEM DATUMS FOR THE NECK SLOT
-*/
-
-/// Neck Slot Items (Deletes overrided items)
-GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck))
-
-/datum/loadout_item/neck
-	category = OFFSET_NECK
-
-/datum/loadout_item/neck/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(initial(outfit_important_for_life.neck))
-		.. ()
-		return TRUE
-
-/datum/loadout_item/neck/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK)
-		if(outfit.neck)
-			LAZYADD(outfit.backpack_contents, outfit.neck && !visuals_only)
-		outfit.neck = item_path
-	else
-		outfit.neck = item_path
 
 
 /*
@@ -66,9 +44,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Yellow Scarf"
 	item_path = /obj/item/clothing/neck/scarf/yellow
 
-/datum/loadout_item/neck/scarf_white
-	name = "White Scarf"
-	item_path = /obj/item/clothing/neck/scarf
 
 /datum/loadout_item/neck/scarf_red_striped
 	name = "Striped Red Scarf"
@@ -85,10 +60,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/scarf_zebra
 	name = "Zebra Scarf"
 	item_path = /obj/item/clothing/neck/scarf/zebra
-
-/datum/loadout_item/neck/scarf_infinity
-	name = "Infinity Scarf"
-	item_path = /obj/item/clothing/neck/infinity_scarf
 
 /*
 *	NECKTIES
@@ -285,10 +256,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/maid
 	name = "Maid Neck Cover"
 	item_path = /obj/item/clothing/neck/maid
-
-/datum/loadout_item/neck/link_scryer
-	name = "MODlink Scryer"
-	item_path = /obj/item/clothing/neck/link_scryer/loaded
 
 /datum/loadout_item/neck/holobadge
 	name = "Holobadge"

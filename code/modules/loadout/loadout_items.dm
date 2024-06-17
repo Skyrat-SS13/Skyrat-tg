@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	VAR_FINAL/list/cached_reskin_options
 
 	//SKYRAT EDIT ADDITION
-		/// If set, it's a list containing ckeys which only can get the item
+	/// If set, it's a list containing ckeys which only can get the item
 	var/list/ckeywhitelist
 	/// If set, is a list of job names of which can get the loadout item
 	var/list/restricted_roles
@@ -101,6 +101,13 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		else
 			cached_reskin_options = dummy_item.unique_reskin.Copy()
 		qdel(dummy_item)
+
+	// SKYRAT EDIT ADDITION
+	// Let's sanitize in case somebody inserted the player's byond name instead of ckey in canonical form
+	if(ckeywhitelist)
+		for (var/i = 1, i <= length(ckeywhitelist), i++)
+			ckeywhitelist[i] = ckey(ckeywhitelist[i])
+	// SKYRAT EDIT END
 
 /datum/loadout_item/Destroy(force, ...)
 	if(force)
@@ -331,6 +338,16 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	if(can_be_reskinned)
 		displayed_text += "Reskinnable"
 
+	// SKYRAT EDIT ADDITION
+	if(donator_only)
+		displayed_text += "Donator only"
+
+	if(restricted_roles || blacklisted_roles)
+		displayed_text += "Role restricted"
+
+	if(restricted_species)
+		displayed_text += "Species restricted"
+	// SKYRAT EDIT ADDITION
 	return displayed_text
 
 /**

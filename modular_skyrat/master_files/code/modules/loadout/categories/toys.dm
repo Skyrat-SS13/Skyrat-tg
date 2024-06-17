@@ -1,14 +1,11 @@
-GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
+/datum/loadout_category/toys
+	category_name = "Toys"
+	category_ui_icon = FA_ICON_GOLF_BALL
+	type_to_generate = /datum/loadout_item/toys
+	tab_order = /datum/loadout_category/head::tab_order + 13
 
 /datum/loadout_item/toys
-	category = LOADOUT_ITEM_TOYS
-
-/*
-*	PLUSHIES
-*/
-
-/datum/loadout_item/toys/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)  // these go in the backpack
-	return FALSE
+	abstract_type = /datum/loadout_item/toys
 
 /datum/loadout_item/toys/bee
 	name = "Bee Plushie"

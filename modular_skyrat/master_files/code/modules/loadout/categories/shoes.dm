@@ -1,25 +1,16 @@
-/*
-*	LOADOUT ITEM DATUMS FOR THE SHOE SLOT
-*/
-
-/// Shoe Slot Items (Deletes overrided items)
-GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes))
+/datum/loadout_category/shoes
+	category_name = "Shoes"
+	category_ui_icon = FA_ICON_SHOE_PRINTS
+	type_to_generate = /datum/loadout_item/shoes
+	tab_order = /datum/loadout_category/head::tab_order + 11
 
 /datum/loadout_item/shoes
-	category = OFFSET_SHOES
+	abstract_type = /datum/loadout_item/shoes
 
-/datum/loadout_item/shoes/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(initial(outfit_important_for_life.shoes))
-		.. ()
-		return TRUE
-
-/datum/loadout_item/shoes/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
-		if(outfit.shoes)
-			LAZYADD(outfit.backpack_contents, outfit.shoes)
-		outfit.shoes = item_path
-	else
-		outfit.shoes = item_path
+/datum/loadout_item/shoes/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only, loadout_placement_preference)
+	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.shoes)
+		LAZYADD(outfit.backpack_contents, outfit.shoes)
+	outfit.shoes = item_path
 
 /*
 *	JACKBOOTS

@@ -2,15 +2,20 @@
 	category_name = "Uniform"
 	category_ui_icon = FA_ICON_SHIRT
 	type_to_generate = /datum/loadout_item/uniform
-	tab_order = /datum/loadout_category/head::tab_order + 8
+	tab_order = /datum/loadout_category/head::tab_order + 9
 
 /datum/loadout_item/uniform
 	abstract_type = /datum/loadout_item/uniform
 
 /datum/loadout_item/uniform/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only, loadout_placement_preference)
-	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.uniform)
-		LAZYADD(outfit.backpack_contents, outfit.uniform)
-	outfit.uniform = item_path
+	if(equipper.dna?.species?.outfit_important_for_life)
+		if(!visuals_only)
+			to_chat(equipper, "Your loadout uniform was not equipped directly due to your species outfit.")
+			LAZYADD(outfit.backpack_contents, item_path)
+	else
+		if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.uniform)
+			LAZYADD(outfit.backpack_contents, outfit.uniform)
+		outfit.uniform = item_path
 
 
 /*
@@ -939,3 +944,18 @@
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/black
 	restricted_roles = list(JOB_CAPTAIN)
 	donator_only = TRUE
+
+/datum/loadout_item/under/jumpsuit/donator
+	donator_only = TRUE
+
+/datum/loadout_item/under/jumpsuit/donator/enclavesergeant
+	name = "Enclave - Sergeant"
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave
+
+/datum/loadout_item/under/jumpsuit/donator/enclaveofficer
+	name = "Enclave - Officer"
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave/officer
+
+/datum/loadout_item/under/jumpsuit/donator/blondie
+	name = "Blonde Cowboy Uniform"
+	item_path = /obj/item/clothing/under/rank/security/detective/cowboy/armorless

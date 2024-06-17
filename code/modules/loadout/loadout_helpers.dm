@@ -30,30 +30,35 @@
 
 	var/list/preference_list = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_datums = loadout_list_to_datums(preference_list)
-	var/obj/item/storage/briefcase/empty/travel_suitcase
+	var/obj/item/storage/briefcase/empty/travel_suitcase // SKYRAT EDIT ADDITIONi
 	var/loadout_placement_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 	// Slap our things into the outfit given
 	for(var/datum/loadout_item/item as anything in loadout_datums)
 		// SKYRAT EDIT ADDITION
 		if(item.restricted_roles && equipping && !(equipping.title in item.restricted_roles))
-			if(client)
-				to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
+			if(preference_source.parent)
+				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 			continue
 
 		if(item.blacklisted_roles && equipping && (equipping.title in item.blacklisted_roles))
-			if(client)
-				to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+			if(preference_source.parent)
+				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
 			continue
 
 		if(item.restricted_species && !(dna.species.id in item.restricted_species))
-			if(client)
-				to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
+			if(preference_source.parent)
+				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
+			continue
+
+		if(item.ckeywhitelist && !(preference_source?.parent?.ckey in item.ckeywhitelist)) // Sanity checking
+			if(preference_source.parent)
+				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to CKEY restrictions!"))
 			continue
 
 		if(loadout_placement_preference == LOADOUT_OVERRIDE_CASE)
 			if(!travel_suitcase)
-				travel_suitcase = new
-				new item.item_path(travel_suitcase)
+				travel_suitcase  = new(loc)
+			new item.item_path(travel_suitcase)
 		else // SKYRAT EDIT END
 			item.insert_path_into_outfit(equipped_outfit, src, visuals_only, loadout_placement_preference)
 	// Equip the outfit loadout items included
