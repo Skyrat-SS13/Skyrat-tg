@@ -60,7 +60,7 @@
 		return
 	pouch.atom_storage.dump_content_at(dest_object, dumping_mob)
 
-/obj/item/storage/belt/crusader/CtrlClick(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
+/obj/item/storage/belt/crusader/item_ctrl_click(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
 	. = ..()
 	atom_storage.show_contents(user)
 	return

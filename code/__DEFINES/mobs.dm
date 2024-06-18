@@ -174,8 +174,6 @@
 #define HUMAN_MAX_OXYLOSS 3
 #define HUMAN_CRIT_MAX_OXYLOSS (SSMOBS_DT/3)
 
-#define STAMINA_REGEN_BLOCK_TIME (10 SECONDS)
-
 #define HEAT_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 4 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
@@ -440,7 +438,8 @@
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
 #define AGE_MIN	18	//youngest a character can be //SKYRAT EDIT CHANGE - age
-#define AGE_MAX 85 //oldest a character can be
+#define AGE_MAX 100 //oldest a character can be //SKYRAT EDIT CHANGE - Increase max character age to 100 - ORIGINAL: #define AGE_MAX 85 //oldest a character can be
+#define AGE_CHRONO_MAX 9999 //SKYRAT EDIT ADDITION - Chronological age
 #define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
@@ -638,8 +637,6 @@
 //defines for grad_color and grad_styles list access keys
 #define GRADIENT_HAIR_KEY 1
 #define GRADIENT_FACIAL_HAIR_KEY 2
-//Keep up to date with the highest key value
-#define GRADIENTS_LEN 2
 
 // /datum/sprite_accessory/gradient defines
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
@@ -863,8 +860,10 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define ALLOW_RESTING (1<<7)
 /// If this is accessible to creatures with ventcrawl capabilities
 #define NEED_VENTCRAWL (1<<8)
+/// Skips adjacency checks
+#define BYPASS_ADJACENCY (1<<9)
 /// Checks for base adjacency, but silences the error
-#define SILENT_ADJACENCY (1<<9)
+#define SILENT_ADJACENCY (1<<10)
 
 /// The default mob sprite size (used for shrinking or enlarging the mob sprite to regular size)
 #define RESIZE_DEFAULT_SIZE 1
