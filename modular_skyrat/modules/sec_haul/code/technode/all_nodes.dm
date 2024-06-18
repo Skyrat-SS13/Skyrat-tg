@@ -20,7 +20,6 @@
 	prereq_ids = list("storedmunition_tech")
 	design_ids = list(
 		"sol_rifle_carbine_gun",
-		"sol_smg_rapidfire_kit",
 		"s12g_flechette",
 		"s12g_db",
 	)

@@ -216,7 +216,7 @@
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
 	pellets = 1
-	variance = 30
+	variance = 1
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
 	custom_materials = AMMO_MATS_SHOTGUN_TIDE
