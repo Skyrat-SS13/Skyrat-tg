@@ -1,3 +1,4 @@
+/// Possible states of player consent for using the machine.
 #define NO_CONSENT 0
 #define CONSENT_GRANTED 1
 #define WAITING_PLAYER 2
@@ -104,9 +105,8 @@
 		. += span_notice("The status display indicates <b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, sad_processing_time), 2)]</b> remaining on the current cycle.")
 	else
 		. += span_notice("Left-click to <b>[state_open ? "close" : "open"]</b>.")
-
 		if(!isnull(occupant) && !state_open)
-			. += span_notice("Alt-Click to turn on.")
+			. += span_notice("<b>Alt-click</b> to turn on.")
 
 /obj/machinery/self_actualization_device/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(!processing)
@@ -160,6 +160,7 @@
 
 	use_energy(active_power_usage)
 
+/// Asks the player if they want to consent to the rejuvenation procedure (replacing their DNA with what they currently have selected in character preferences.)
 /obj/machinery/self_actualization_device/proc/get_consent()
 	if(state_open || !occupant || !powered())
 		return
@@ -223,6 +224,7 @@
 
 	open_machine()
 
+/// Ejection and shut down of the machine, used before the preferences have been applied to the player. Damage optional.
 /obj/machinery/self_actualization_device/proc/eject_old_you(damaged_goods = FALSE)
 	player_consent = NO_CONSENT
 	set_light(l_on = FALSE)
@@ -243,6 +245,7 @@
 
 	open_machine()
 
+/// The player can break out of the SAD if they've changed their mind about using it.
 /obj/machinery/self_actualization_device/container_resist_act(mob/living/user)
 	if(state_open)
 		return
@@ -292,7 +295,7 @@
 /obj/machinery/self_actualization_device/RefreshParts()
 	. = ..()
 	processing_time = 70 SECONDS
-	for(var/datum/stock_part/micro_laser/laser in component_parts)
+	for(var/datum/stock_part/micro_laser/laser in component_parts) // Laser tier increases speed, at the expense of power.
 		processing_time -= laser.tier * 10 SECONDS
 		active_power_usage = 7200000 / processing_time WATTS
 		idle_power_usage = active_power_usage / 4
