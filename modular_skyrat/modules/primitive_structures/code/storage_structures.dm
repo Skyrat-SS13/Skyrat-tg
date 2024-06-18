@@ -22,13 +22,9 @@
 	user.balloon_alert_to_viewers("disassembling...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
 		return
-	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
-
-/obj/structure/rack/wooden/atom_deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
-	return ..()
 
 // Barrel but it works like a crate
 
@@ -106,7 +102,7 @@
 /obj/machinery/smartfridge/wooden/ration_shelf
 	name = "Ration shelf"
 	desc = "A wooden shelf, used to store food... preferably preserved."
-	icon_state = "rationshelf"
+	icon_state = "seedshelf"
 	base_build_path = /obj/machinery/smartfridge/wooden/ration_shelf
 	base_icon_state = "ration"
 
