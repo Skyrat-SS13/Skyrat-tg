@@ -286,7 +286,22 @@
  */
 /mob/living/carbon/human/proc/get_mob_height()
 	if(HAS_TRAIT(src, TRAIT_DWARF))
+<<<<<<< HEAD
 		return HUMAN_HEIGHT_DWARF
+=======
+		if(ismonkey(src))
+			return MONKEY_HEIGHT_DWARF
+		else
+			return HUMAN_HEIGHT_DWARF
+	if(HAS_TRAIT(src, TRAIT_TOO_TALL))
+		if(ismonkey(src))
+			return MONKEY_HEIGHT_TALL
+		else
+			return HUMAN_HEIGHT_TALLEST
+
+	else if(ismonkey(src))
+		return MONKEY_HEIGHT_MEDIUM
+>>>>>>> 0119b95d2de (Genetics Rebalance: Negative mutations add stability, standarized instability cost for mutations (#83439))
 
 	return mob_height
 

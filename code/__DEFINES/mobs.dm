@@ -652,6 +652,7 @@
 // - They do not start at 0 for futureproofing
 // - They skip numbers for futureproofing as well
 // Otherwise they are completely arbitrary
+<<<<<<< HEAD
 #define HUMAN_HEIGHT_DWARF 2
 #define HUMAN_HEIGHT_SHORTEST 4
 #define HUMAN_HEIGHT_SHORT 6
@@ -659,6 +660,18 @@
 #define HUMAN_HEIGHT_TALL 10
 #define HUMAN_HEIGHT_TALLER 12
 #define HUMAN_HEIGHT_TALLEST 14
+=======
+#define MONKEY_HEIGHT_DWARF 2
+#define MONKEY_HEIGHT_MEDIUM 4
+#define MONKEY_HEIGHT_TALL HUMAN_HEIGHT_DWARF
+#define HUMAN_HEIGHT_DWARF 6
+#define HUMAN_HEIGHT_SHORTEST 8
+#define HUMAN_HEIGHT_SHORT 10
+#define HUMAN_HEIGHT_MEDIUM 12
+#define HUMAN_HEIGHT_TALL 14
+#define HUMAN_HEIGHT_TALLER 16
+#define HUMAN_HEIGHT_TALLEST 18
+>>>>>>> 0119b95d2de (Genetics Rebalance: Negative mutations add stability, standarized instability cost for mutations (#83439))
 
 /// Assoc list of all heights, cast to strings, to """"tuples"""""
 /// The first """tuple""" index is the upper body offset
