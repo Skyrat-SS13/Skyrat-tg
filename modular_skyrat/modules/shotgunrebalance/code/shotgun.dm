@@ -215,7 +215,7 @@
 	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
-	pellets = 8 // 8 * 7 for 56 stamina damage, plus whatever the embedded shells do
+	pellets = 1
 	variance = 30
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
@@ -226,18 +226,18 @@
 	name = "electrode"
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
-	damage = 2
-	stamina = 8
+	damage = 15
+	stamina = 10
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = -50
-	bare_wound_bonus = -50
+	wound_bonus = -20
+	bare_wound_bonus = -20
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
 	sharpness = NONE
-	range = 8
-	embedding = list(embed_chance=100, pain_chance=50, fall_chance=50, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
+	range = 12
+	embedding = list(embed_chance=100, pain_chance=70, fall_chance=30, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/on_range()
 	do_sparks(1, TRUE, src)
@@ -255,7 +255,7 @@
 
 /obj/projectile/bullet/shotgun_slug/hunter/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 5)
+	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 6)
 
 /obj/item/ammo_casing/shotgun/honkshot
 	name = "confetti shell"
