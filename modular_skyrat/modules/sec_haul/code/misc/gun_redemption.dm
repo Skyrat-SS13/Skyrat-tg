@@ -28,7 +28,7 @@
 /obj/item/choice_beacon/ntc/generate_display_names()
 	var/static/list/selectable_gun_types = list(
 		"Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok,
-		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
+		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild
 	)
 
 	return selectable_gun_types
