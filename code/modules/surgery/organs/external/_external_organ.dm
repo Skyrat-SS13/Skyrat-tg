@@ -41,7 +41,7 @@
 
 	// cache_key = jointext(generate_icon_cache(), "_") // SKYRAT EDIT - Species stuff that Goofball ported from /tg/, apparently. Commented for now, to see if I can make it work without it.
 	// SKYRAT EDIT: we have like 145+ fucking dna blocks lmao
-	dna_block = GLOB.dna_mutant_bodypart_blocks[preference]
+	dna_block = SSaccessories.dna_mutant_bodypart_blocks[preference]
 
 	accessory_type = accessory_type ? accessory_type : sprite_accessory_override
 	var/update_overlays = TRUE

@@ -1,6 +1,5 @@
 /proc/make_skyrat_datum_references()
-	make_sprite_accessory_references()
-	make_laugh_datum_references()
+	init_prefs_emotes()
 	make_default_mutant_bodypart_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
@@ -9,30 +8,18 @@
 	populate_total_uf_len_by_block()
 	make_augment_references()
 
-/proc/make_sprite_accessory_references()
-	if(isnull(SSaccessories.sprite_accessories))
-		SSaccessories.sprite_accessories = list()
-	// Here we build the global list for all accessories
-	for(var/path in subtypesof(/datum/sprite_accessory))
-		var/datum/sprite_accessory/P = path
-		if(initial(P.key) && initial(P.name))
-			P = new path()
-			if(isnull(SSaccessories.sprite_accessories[P.key]))
-				SSaccessories.sprite_accessories[P.key] = list()
-			SSaccessories.sprite_accessories[P.key][P.name] = P
-			if(P.genetic)
-				if(!GLOB.dna_mutant_bodypart_blocks[P.key])
-					GLOB.dna_mutant_bodypart_blocks[P.key] = GLOB.dna_total_feature_blocks+1
-				if(!GLOB.genetic_accessories[P.key])
-					GLOB.genetic_accessories[P.key] = list()
-					for(var/color_block in 1 to DNA_FEATURE_COLOR_BLOCKS_PER_FEATURE)
-						GLOB.features_block_lengths["[GLOB.dna_mutant_bodypart_blocks[P.key] + color_block]"] = DNA_BLOCK_SIZE_COLOR
-					GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_FEATURE
+/proc/init_prefs_emotes()
+	//Scream types
+	for(var/spath in subtypesof(/datum/scream_type))
+		var/datum/scream_type/S = new spath()
+		GLOB.scream_types[S.name] = spath
+	sort_list(GLOB.scream_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
-				GLOB.genetic_accessories[P.key] += P.name
-			//TODO: Replace "generic" definitions with something better
-			if(P.generic && !GLOB.generic_accessories[P.key])
-				GLOB.generic_accessories[P.key] = P.generic
+	//Laugh types
+	for(var/spath in subtypesof(/datum/laugh_type))
+		var/datum/laugh_type/L = new spath()
+		GLOB.laugh_types[L.name] = spath
+	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 /proc/make_laugh_datum_references()
 	//Laugh types
@@ -80,11 +67,11 @@
 
 /proc/make_body_marking_dna_block_references()
 	for(var/marking_zone in GLOB.marking_zones)
-		GLOB.dna_body_marking_blocks[marking_zone] = GLOB.dna_total_feature_blocks+1
+		GLOB.dna_body_marking_blocks[marking_zone] = SSaccessories.dna_total_feature_blocks+1
 		for(var/feature_block_set in 1 to MAXIMUM_MARKINGS_PER_LIMB)
 			for(var/color_block in 1 to DNA_MARKING_COLOR_BLOCKS_PER_MARKING)
-				GLOB.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone] + (feature_block_set - 1) * DNA_BLOCKS_PER_MARKING + color_block]"] = DNA_BLOCK_SIZE_COLOR
-		GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
+				SSaccessories.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone] + (feature_block_set - 1) * DNA_BLOCKS_PER_MARKING + color_block]"] = DNA_BLOCK_SIZE_COLOR
+		SSaccessories.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
 
 /proc/make_augment_references()
 	// Here we build the global loadout lists
