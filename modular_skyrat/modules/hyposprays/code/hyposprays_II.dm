@@ -296,7 +296,7 @@
 			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = PATCH)
 
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
-	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_nova/modules/hyposprays/sound/hypospray.ogg','modular_nova/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
+	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units."))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
