@@ -135,7 +135,7 @@
 		. += "It has no vial loaded in."
 	. += span_notice("Ctrl-Shift-Click to change up the colors or reset them.")
 
-/obj/item/hypospray/mkii/CtrlShiftClick(mob/user, obj/item/I)
+/obj/item/hypospray/mkii/click_ctrl_shift(mob/user, obj/item/I)
 	var/choice = tgui_input_list(user, "GAGSify the hypo or reset to default?", "Fashion", list("GAGS", "Nope"))
 	if(choice == "GAGS")
 		icon_state = gags_bodystate

@@ -94,9 +94,9 @@
 	QDEL_NULL(underbarrel)
 	return ..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/afterattack_secondary(atom/target, mob/living/user, flag, params)
-	underbarrel.afterattack(target, user, flag, params)
-	return SECONDARY_ATTACK_CONTINUE_CHAIN
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)
+	underbarrel.item_interaction(user, tool, modifiers)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/attackby(obj/item/attacking_item, mob/user, params)
 	if(!istype(attacking_item, /obj/item/ammo_casing))
@@ -122,9 +122,9 @@
 	QDEL_NULL(underbarrel)
 	return ..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/afterattack_secondary(atom/target, mob/living/user, flag, params)
-	underbarrel.afterattack(target, user, flag, params)
-	return SECONDARY_ATTACK_CONTINUE_CHAIN
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	underbarrel.interact_with_atom(interacting_with, user, modifiers)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/attackby(obj/item/attacking_item, mob/user, params)
 	if(!istype(attacking_item, /obj/item/ammo_casing))
