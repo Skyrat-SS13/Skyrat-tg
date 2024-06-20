@@ -5,14 +5,14 @@
 	id = "adv_vision"
 	display_name = "Combat Cybernetic Eyes"
 	description = "Military grade combat implants to improve vision."
-	prereq_ids = list("combat_implants", "alien_surgery")
+	prereq_ids = list("combat_cyber_implants", "alien_bio")
 	design_ids = list(
 		"ci-thermals",
 		"ci-xray",
 		"ci-thermals-moth",
 		"ci-xray-moth",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
 /datum/techweb_node/borg_shapeshifter
 	id = "borg_shapeshifter"
@@ -20,24 +20,33 @@
 	description = "Some sort of experimental tool that was once used by an rival company."
 	prereq_ids = list("syndicate_basic")
 	design_ids = list("borg_shapeshifter_module")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
 
 // MODULAR ADDITIONS AND REMOVALS
 
 //Base Nodes
-/datum/techweb_node/parts/New()
+/datum/techweb_node/atmos/New()
+	design_ids += list(
+		"vox_gas_filter",
+	)
+	return ..()
+
+/datum/techweb_node/construction/New()
 	design_ids += list(
 		"polarizer",
-		"vox_gas_filter",
+	)
+	return ..()
+
+/datum/techweb_node/construction/New()
+	design_ids += list(
 		"gbp_machine",
 	)
 	return ..()
 
-/datum/techweb_node/cybernetics/New()
+/datum/techweb_node/augmentation/New()
 	design_ids += list(
 		"affection_module",
-		"borg_upgrade_artistic",
 	)
 	return ..()
 
@@ -52,6 +61,11 @@
 /datum/techweb_node/medbay_equip/New()
 	design_ids += list(
 		"hospital_gown",
+	)
+	return ..()
+
+/datum/techweb_node/augmentation/New()
+	design_ids += list(
 		"synth_eyes",
 		"synth_tongue",
 		"synth_liver",
@@ -78,10 +92,9 @@
 	)
 	return ..()
 
-/datum/techweb_node/bio_scan/New()
+/datum/techweb_node/medbay_equip/New()
 	design_ids += list(
 		"anesthetic_machine",
-		"smartdartgun",
 	)
 	return ..()
 
@@ -91,6 +104,7 @@
 	design_ids += list(
 		"gownmedicell",
 		"bedmedicell",
+		"tray_goggles_prescription",
 	)
 	return ..()
 
@@ -157,7 +171,7 @@
 
 ////////////////////////Tools////////////////////////
 
-/datum/techweb_node/botany_equip/New()
+/datum/techweb_node/hydroponics/New()
 	design_ids += list(
 		"salvemedicell",
 	)
@@ -172,13 +186,13 @@
 
 /////////////////////////weaponry tech/////////////////////////
 
-/datum/techweb_node/exotic_ammo/New()
+/datum/techweb_node/basic_arms/New()
 	design_ids += list(
 		"ammoworkbench_disk_lethal",
 	)
 	return ..()
 
-/datum/techweb_node/sec_equip/New()
+/datum/techweb_node/riot_supression/New()
 	design_ids += list(
 		"ammo_workbench",
 	)
@@ -203,13 +217,27 @@
 
 /////////////////////////engineering tech/////////////////////////
 
-/datum/techweb_node/exp_tools/New()
+/datum/techweb_node/fusion/New()
 	design_ids += list(
 		"engine_goggles_prescription",
-		"mesons_prescription",
+	)
+	return ..()
+
+/datum/techweb_node/exp_tools/New()
+	design_ids += list(
 		"multi_cell_charger",
-		"tray_goggles_prescription",
+	)
+	return ..()
+
+/datum/techweb_node/plumbing/New()
+	design_ids += list(
 		"plumbing_eng",
+	)
+	return ..()
+
+/datum/techweb_node/mining/New()
+	design_ids += list(
+		"mesons_prescription",
 	)
 	return ..()
 
@@ -232,15 +260,16 @@
 /datum/techweb_node/borg_utility/New()
 	design_ids += list(
 		"borg_upgrade_clamp",
-		"borg_upgrade_cargo_tele",
-		"borg_upgrade_forging",
 		"borg_upgrade_brush",
+		"borg_upgrade_shrink",
 	)
 	return ..()
 
 /datum/techweb_node/borg_engi/New()
 	design_ids += list(
 		"advanced_materials",
+		"inducer_module",
+		"borg_upgrade_welding",
 	)
 	return ..()
 
@@ -253,28 +282,3 @@
 		"borg_upgrade_pinpointer",
 	)
 	return ..()
-
-/datum/techweb_node/borg_service/New()
-	design_ids += list(
-		"borg_upgrade_botany"
-	)
-	return ..()
-
-
-
-/datum/techweb_node/borg_engi/New()
-	design_ids += list(
-		"borg_upgrade_welding",
-	)
-	return ..()
-
-/datum/techweb_node/ayy_cyber_implants
-	id = "ayy_cyber_implants"
-	display_name = "Alien Cybernetic Implants"
-	description = "The best in cybernetic implants."
-	prereq_ids = list("passive_implants", "cyber_implants","night_vision", "combat_implants", "alien_surgery", "alien_engi")
-	design_ids = list(
-		"ci-surgery-alien",
-		"ci-toolset-alien",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

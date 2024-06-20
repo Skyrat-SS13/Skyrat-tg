@@ -13,7 +13,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/basic_medical/New()
+/datum/techweb_node/medbay_equip/New()
 	design_ids += list(
 		"hypovial",
 	)
@@ -44,7 +44,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/biotech/New()
+/datum/techweb_node/chem_synthesis/New()
 	design_ids += list(
 		"large_hypovial",
 		"hypokit",
