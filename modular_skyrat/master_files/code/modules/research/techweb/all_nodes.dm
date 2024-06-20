@@ -5,7 +5,7 @@
 	id = "adv_vision"
 	display_name = "Combat Cybernetic Eyes"
 	description = "Military grade combat implants to improve vision."
-	prereq_ids = list("combat_cyber_implants", "alien_bio")
+	prereq_ids = list("combat_implants", "alien_surgery")
 	design_ids = list(
 		"ci-thermals",
 		"ci-xray",
@@ -38,7 +38,7 @@
 	)
 	return ..()
 
-/datum/techweb_node/construction/New()
+/datum/techweb_node/office_equip/New()
 	design_ids += list(
 		"gbp_machine",
 	)
@@ -61,6 +61,8 @@
 /datum/techweb_node/medbay_equip/New()
 	design_ids += list(
 		"hospital_gown",
+		"anesthetic_machine",
+		"smartdartgun",
 	)
 	return ..()
 
@@ -89,12 +91,6 @@
 		"tempmedicell",
 		"bodymedicell",
 		"clotmedicell",
-	)
-	return ..()
-
-/datum/techweb_node/medbay_equip/New()
-	design_ids += list(
-		"anesthetic_machine",
 	)
 	return ..()
 
@@ -161,13 +157,13 @@
 
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
 /datum/techweb_node/cyber/cyber_organs_adv/New()
-	. = ..()
 	design_ids -= list(
 		"ci-thermals",
 		"ci-xray",
 		"ci-thermals-moth",
 		"ci-xray-moth",
 	)
+	return ..()
 
 ////////////////////////Tools////////////////////////
 
@@ -178,7 +174,6 @@
 	return ..()
 
 /datum/techweb_node/sec_equip/New()
-	. = ..()
 	design_ids += list(
 		"nifsoft_remover",
 	)
