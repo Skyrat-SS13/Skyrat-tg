@@ -3,4 +3,4 @@
 		"satchel_holding",
 		"duffel_holding",
 	)
-	return()
+	return ..()
