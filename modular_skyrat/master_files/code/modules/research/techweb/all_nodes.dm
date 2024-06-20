@@ -266,6 +266,13 @@
 	)
 	return ..()
 
+// ENGINEERING
+/datum/techweb_node/engineering/New()
+	design_ids += list(
+		"rad_collector",
+	)
+	return ..()
+  
 /datum/techweb_node/ayy_cyber_implants
 	id = "ayy_cyber_implants"
 	display_name = "Alien Cybernetic Implants"

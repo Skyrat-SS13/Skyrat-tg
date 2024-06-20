@@ -44,13 +44,13 @@ export const ParticleAccelerator = (props) => {
               <Button
                 icon="backward"
                 disabled={!assembled}
-                onClick={() => act('remove_strength')}
+                onClick={() => act('decrease_strength')}
               />{' '}
               {String(strength).padStart(1, '0')}{' '}
               <Button
                 icon="forward"
                 disabled={!assembled}
-                onClick={() => act('add_strength')}
+                onClick={() => act('increase_strength')}
               />
             </LabeledList.Item>
           </LabeledList>
