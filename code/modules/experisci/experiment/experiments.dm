@@ -335,7 +335,7 @@
 	name = "Exosuit Materials 2: Load Strain Test"
 	description = "Exosuit equipment places unique strain upon the structure of the vehicle. Scan exosuits you have assembled from your exosuit fabricator and fully equipped to accelerate our structural stress simulations."
 	possible_types = list(/obj/vehicle/sealed/mecha)
-	total_requirement = 2
+	total_requirement = 1
 
 /// Scan for organs you didn't start the round with
 /datum/experiment/scanning/people/novel_organs
@@ -376,3 +376,88 @@
 				continue
 		return TRUE
 	return FALSE
+<<<<<<< HEAD
+=======
+
+/// Scan for cybernetic organs
+/datum/experiment/scanning/people/augmented_organs
+	name = "Human Field Research: Augmented Organs"
+	description = "We need to gather data on how cybernetic vital organs integrate with human biology. Conduct a scan on a human with these implants to help us understand their compatibility"
+	performance_hint = "Perform an organ manipulation surgery to replace one of the vital organs with a cybernetic variant."
+	required_traits_desc = "augmented vital organs"
+	required_count = 1
+
+/datum/experiment/scanning/people/augmented_organs/is_valid_scan_target(mob/living/carbon/human/check)
+	. = ..()
+	if (!.)
+		return
+	var/static/list/vital_organ_slots = list(
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
+
+	for (var/obj/item/organ/organ as anything in check.organs)
+		if (IS_ORGANIC_ORGAN(organ))
+			continue
+		if (!(organ.slot in vital_organ_slots))
+			continue
+		return TRUE
+	return FALSE
+
+/// Scan for skillchips
+/datum/experiment/scanning/people/skillchip
+	name = "Human Field Research: Skill Chip Implants"
+	description = "Before sticking programmed circuits into human brain, we need to know how it handles simple ones. Scan a live person with a skill chip implant in their brain."
+	performance_hint = "Perform a skill chip implantation with a skill station."
+	required_traits_desc = "skill chip implant"
+
+/datum/experiment/scanning/people/skillchip/is_valid_scan_target(mob/living/carbon/human/check, datum/component/experiment_handler/experiment_handler)
+	. = ..()
+	if (!.)
+		return
+	var/obj/item/organ/internal/brain/scanned_brain = check.get_organ_slot(ORGAN_SLOT_BRAIN)
+	if (isnull(scanned_brain))
+		experiment_handler.announce_message("Subject is brainless!")
+		return FALSE
+	if (scanned_brain.get_used_skillchip_slots() == 0)
+		experiment_handler.announce_message("No skill chips found!")
+		return FALSE
+	return TRUE
+
+/datum/experiment/scanning/reagent/cryostylane
+	name = "Pure Cryostylane Scan"
+	description = "It appears that the Cryostylane reagent can potentially halt all physiological processes in the human body. Produce Cryostylane with at least 99% purity and scan the beaker."
+	required_reagent = /datum/reagent/cryostylane
+	min_purity = 0.99
+
+/datum/experiment/scanning/points/bluespace_crystal
+	name = "Bluespace Crystal Sampling"
+	description = "Investigate the properties of bluespace crystals by scanning either an artificial or naturally occurring variant. This will help us deepen our understanding of bluespace phenomena."
+	required_points = 1
+	required_atoms = list(
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		/obj/item/stack/sheet/bluespace_crystal = 1
+	)
+
+/datum/experiment/scanning/points/machinery_tiered_scan/tier2_any
+	name = "Upgraded Stock Parts Benchmark"
+	description = "Our newly-designed machinery components require practical application tests for hints at possible further advancements, as well as a general confirmation that we didn't actually design worse parts somehow. Scan any machinery with Upgraded Parts and report the results."
+	required_points = 4
+	required_atoms = list(
+		/obj/machinery = 1
+	)
+	required_tier = 2
+
+/datum/experiment/scanning/points/machinery_tiered_scan/tier3_any
+	name = "Advanced Stock Parts Benchmark"
+	description = "Our newly-designed machinery components require practical application tests for hints at possible further advancements, as well as a general confirmation that we didn't actually design worse parts somehow. Scan any machinery with Advanced Parts and report the results."
+	required_points = 4
+	required_atoms = list(
+		/obj/machinery = 1
+	)
+	required_tier = 3
+>>>>>>> 881dd195f15 (Techweb tweaks [NO GBP] (#84086))
