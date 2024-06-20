@@ -193,6 +193,12 @@
 /datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] > 1)
+		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
+		owner.adjustBruteLoss(25) // take some DAMAGE
+		return
+	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(1.25)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
@@ -200,9 +206,12 @@
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.update_transform(0.8)
-	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] > 1)
+		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
+		REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
+		return
+	// SKYRAT EDIT END
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/human/clumsy
@@ -481,42 +490,6 @@
 			owner.visible_message(span_warning("[owner]'s skin bubbles and pops."), span_userdanger("Your bubbling flesh pops! It burns!"))
 			playsound(owner,'sound/weapons/sear.ogg', 50, TRUE)
 
-<<<<<<< HEAD
-/datum/mutation/human/gigantism
-	name = "Gigantism"//negative version of dwarfism
-	desc = "The cells within the subject spread out to cover more area, making the subject appear larger."
-	quality = MINOR_NEGATIVE
-	difficulty = 12
-	conflicts = list(/datum/mutation/human/dwarfism)
-
-/datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
-		return
-	// SKYRAT EDIT BEGIN
-	if(owner.dna.features["body_size"] > 1)
-		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
-		owner.adjustBruteLoss(25) // take some DAMAGE
-		return
-	// SKYRAT EDIT END
-	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.update_transform(1.25)
-	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
-
-/datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
-	if(..())
-		return
-	// SKYRAT EDIT BEGIN
-	if(owner.dna.features["body_size"] > 1)
-		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
-		REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-		return
-	// SKYRAT EDIT END
-	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.update_transform(0.8)
-	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
-
-=======
->>>>>>> 0119b95d2de (Genetics Rebalance: Negative mutations add stability, standarized instability cost for mutations (#83439))
 /datum/mutation/human/spastic
 	name = "Spastic"
 	desc = "Subject suffers from muscle spasms."
