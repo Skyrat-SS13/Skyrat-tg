@@ -38,7 +38,7 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	hidden = TRUE
 	experimental = TRUE
-	prereq_ids = list("base")
+	prereq_ids = list("parts_adv")
 	design_ids = list(
 		"powerator",
 	)

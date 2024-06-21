@@ -14,9 +14,8 @@
 	description = "Enhanced microfusion technology allowing for upgraded basic microfusion!"
 	prereq_ids = list(
 		"basic_microfusion",
-		"engineering",
-		"weaponry",
-		"high_efficiency",
+		"energy_manipulation",
+		"parts",
 	)
 	design_ids = list(
 		"enhanced_microfusion_cell",
@@ -34,10 +33,7 @@
 	description = "Advanced microfusion technology allowing for advanced microfusion!"
 	prereq_ids = list(
 		"enhanced_microfusion",
-		"adv_engi",
-		"adv_weaponry",
-		"adv_power",
-		"adv_plasma",
+		"parts_adv",
 	)
 	design_ids = list(
 		"advanced_microfusion_cell",
@@ -61,9 +57,10 @@
 	description = "Bluespace tinkering plus microfusion technology!"
 	prereq_ids = list(
 		"advanced_microfusion",
-		"bluespace_power",
+		"parts_bluespace",
 		"beam_weapons",
-		"explosive_weapons",
+		"electric_weapons",
+		"fusion",
 	)
 	design_ids = list(
 		"bluespace_microfusion_cell",
@@ -111,7 +108,7 @@
 	description = "Microfusion tech that is proprietary tech of Honkicron Clownery Systems. HONK!!"
 	prereq_ids = list(
 		"basic_microfusion",
-		"clown",
+		"toys",
 	)
 	design_ids = list(
 		"microfusion_gun_attachment_honk",
