@@ -734,7 +734,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
               </Stack.Item>
 
               <Stack.Item grow basis={0}>
-<<<<<<< HEAD
                 {/* SKYRAT EDIT BEGIN: Swappable pref menus */}
                 <Stack>
                   <Stack.Item grow>
@@ -755,7 +754,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       Character Lore
                     </PageButton>
                   </Stack.Item>
-=======
                 <Stack vertical fill>
                   <PreferenceList
                     act={act}
@@ -792,7 +790,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       </Button>
                     </Box>
                   </PreferenceList>
->>>>>>> 7b1b4ec2297 (Better delete character ux (#84158))
                 </Stack>
                 <Stack fill vertical>
                   <Stack.Divider />
