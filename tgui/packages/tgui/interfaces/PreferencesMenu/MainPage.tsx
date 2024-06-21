@@ -734,7 +734,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
               </Stack.Item>
 
               <Stack.Item grow basis={0}>
-<<<<<<< HEAD
                 {/* SKYRAT EDIT BEGIN: Swappable pref menus */}
                 <Stack>
                   <Stack.Item grow>
@@ -745,39 +744,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                     >
                       Character Visuals
                     </PageButton>
-                  </Stack.Item>
-                  <Stack.Item grow>
-                    <PageButton
-                      currentPage={currentPrefPage}
-                      page={PrefPage.Lore}
-                      setPage={setCurrentPrefPage}
-                    >
-                      Character Lore
-                    </PageButton>
-                  </Stack.Item>
-=======
-                <Stack vertical fill>
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(
-                      contextualPreferences,
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    preferences={contextualPreferences}
-                    maxHeight="auto"
-                  />
-
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(
-                      nonContextualPreferences,
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    preferences={nonContextualPreferences}
-                    maxHeight="auto"
-                  >
                     <Box my={0.5}>
                       <Button
                         color="red"
@@ -791,8 +757,16 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                         Delete Character
                       </Button>
                     </Box>
-                  </PreferenceList>
->>>>>>> 7b1b4ec2297 (Better delete character ux (#84158))
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    <PageButton
+                      currentPage={currentPrefPage}
+                      page={PrefPage.Lore}
+                      setPage={setCurrentPrefPage}
+                    >
+                      Character Lore
+                    </PageButton>
+                  </Stack.Item>
                 </Stack>
                 <Stack fill vertical>
                   <Stack.Divider />
