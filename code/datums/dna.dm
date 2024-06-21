@@ -775,12 +775,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		update_body(is_creating = mutcolor_update)
 		if(mutations_overlay_update)
 			update_mutations_overlay()
-<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4fd0e28f42f (Refactors body markings into bodypart overlays (#83744))
-
 /mob/proc/domutcheck()
 	return
 
