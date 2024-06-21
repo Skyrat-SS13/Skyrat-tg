@@ -10,6 +10,7 @@
 		"s12g_slug",
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
+		"sol40_riflemag"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
@@ -24,6 +25,9 @@
 		"s12g_db",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+
+/datum/techweb_node/basic_arms/New()
+	design_ids += "sol35_shortextmag"
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
@@ -44,12 +48,6 @@
 	design_ids += "s12g_incinslug"
 	design_ids += "s12g_buckshot"
 	design_ids += "c457_casing"
-	. = ..()
-
-/datum/techweb_node/adv_weaponry/New()
-	design_ids += "sol35_shortextmag"
-	design_ids += "sol40_riflemag"
-	design_ids += "solgrenade_mag"
 	. = ..()
 
 /datum/techweb_node/syndicate_basic/New()
