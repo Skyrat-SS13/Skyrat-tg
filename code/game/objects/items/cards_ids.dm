@@ -567,8 +567,8 @@
 		to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of credits to the linked account."))
 		return ITEM_INTERACT_SUCCESS
 	/// SKYRAT EDIT BEGINS - Trim Tokens - Proc defined in modular_skyrat/modules/trim_tokens/code/cards_id.dm
-	else if(istype(W, /obj/item/trim_token))
-		apply_token(W, user)
+	else if(istype(tool, /obj/item/trim_token))
+		apply_token(tool, user)
 		return
 	/// SKYRAT EDIT ENDS
 	return NONE
