@@ -2,6 +2,7 @@
 #define TESHARI_PUNCH_HIGH 6
 #define TESHARI_BURN_MODIFIER 1.25 // They take more damage from practically everything
 #define TESHARI_BRUTE_MODIFIER 1.2
+#define BUTT_SPRITE_TESHARI "vox"
 
 // teshari!
 /obj/item/bodypart/head/mutant/teshari
@@ -40,7 +41,7 @@
 	burn_modifier = TESHARI_BURN_MODIFIER
 
 /obj/item/bodypart/chest/mutant/teshari/get_butt_sprite()
-	return icon('modular_skyrat/master_files/icons/mob/butts.dmi', BUTT_SPRITE_VOX)
+	return icon('modular_skyrat/master_files/icons/mob/butts.dmi', BUTT_SPRITE_TESHARI)
 
 /obj/item/bodypart/chest/mutant/teshari/Initialize(mapload)
 	worn_back_offset = new(
@@ -129,3 +130,4 @@
 #undef TESHARI_PUNCH_HIGH
 #undef TESHARI_BURN_MODIFIER
 #undef TESHARI_BRUTE_MODIFIER
+#undef BUTT_SPRITE_TESHARI

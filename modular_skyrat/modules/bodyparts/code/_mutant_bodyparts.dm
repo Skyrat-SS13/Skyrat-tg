@@ -1,3 +1,5 @@
+#define BUTT_SPRITE_VULP "vulp"
+
 /obj/item/bodypart
 	/// A list of all of our bodypart markings.
 	var/list/markings
@@ -79,3 +81,5 @@
 /obj/item/bodypart/leg/right/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
 	check_mutant_compatability()
+
+#undef BUTT_SPRITE_VULP
