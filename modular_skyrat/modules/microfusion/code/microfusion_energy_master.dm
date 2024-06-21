@@ -590,7 +590,7 @@
 		if(tactical_reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
 				balloon_alert(user, "inserting cell...")
-			if(!do_after(user, tactical_reload_time, src, IGNORE_USER_LOC_CHANGE))
+			if(!do_after(user, inserting_cell.reloading_time_tactical, src, IGNORE_USER_LOC_CHANGE))
 				if(display_message)
 					balloon_alert(user, "cell insertion failed!")
 				return FALSE
@@ -601,7 +601,7 @@
 	else
 		if(display_message)
 			balloon_alert(user, "inserting cell...")
-		if(!do_after(user, normal_reload_time, src, IGNORE_USER_LOC_CHANGE))
+		if(!do_after(user, inserting_cell.reloading_time, src, IGNORE_USER_LOC_CHANGE))
 			if(display_message)
 				balloon_alert(user, "cell insertion failed!")
 			return FALSE
