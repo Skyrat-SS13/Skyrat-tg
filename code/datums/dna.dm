@@ -777,6 +777,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			update_mutations_overlay()
 */
 //SKYRAT EDIT REMOVAL END
+
 /mob/proc/domutcheck()
 	return
 
