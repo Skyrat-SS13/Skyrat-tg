@@ -110,6 +110,10 @@
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
 	START_PROCESSING(SSobj, src)
+	for(var/type in attachments)
+		attachments -= type
+		var/obj/item/microfusion_gun_attachment/attachment = new type(src)
+		add_attachment(attachment)
 
 /obj/item/gun/microfusion/give_gun_safeties()
 	AddComponent(/datum/component/gun_safety)
