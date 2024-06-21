@@ -485,14 +485,11 @@
 			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
 			// SKYRAT EDIT END - No greentext
 			count++
-<<<<<<< HEAD
 
 	// SKYRAT EDIT START - No greentext
 	/*
-=======
 	if(feast_of_owls)
 		parts += span_greentext("Ascension Forsaken")
->>>>>>> 8a8fac1d078 (Feast of Owls Heretic Ritual : Forsake your ascension (#83769))
 	if(ascended)
 		parts += span_greentext(span_big("THE HERETIC ASCENDED!"))
 
