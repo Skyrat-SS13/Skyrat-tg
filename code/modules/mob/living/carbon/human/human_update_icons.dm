@@ -1029,11 +1029,6 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 
 	switch(get_mob_height())
 		// Don't set this one directly, use TRAIT_DWARF
-<<<<<<< HEAD
-		if(HUMAN_HEIGHT_DWARF)
-			appearance.add_filter("Gnome_Cut_Torso", 1, displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 2))
-			appearance.add_filter("Gnome_Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 3))
-=======
 		if(MONKEY_HEIGHT_DWARF)
 			appearance.add_filters(list(
 				list(
@@ -1088,7 +1083,6 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 					),
 				))
 		// Don't set this one directly, use TRAIT_DWARF
->>>>>>> 0119b95d2de (Genetics Rebalance: Negative mutations add stability, standarized instability cost for mutations (#83439))
 		if(HUMAN_HEIGHT_SHORTEST)
 			appearance.add_filter("Cut_Torso", 1, displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 1))
 			appearance.add_filter("Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1))
