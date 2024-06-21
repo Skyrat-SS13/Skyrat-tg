@@ -199,7 +199,7 @@
 		"xenoarch_belt",
 		"xenoarch_bag",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 
 /datum/techweb_node/xenoarch_machines
 	id = "xenoarch_machines"
@@ -211,7 +211,7 @@
 		"xeno_scanner",
 		"xeno_recoverer",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 
 /datum/techweb_node/adv_xenoarch
 	id = "adv_xenoarch"
@@ -226,7 +226,7 @@
 		"xenoarch_handrecoverer",
 		"xeno_digger",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	required_experiments = list(/datum/experiment/scanning/points/xenoarch)
 
 /datum/experiment/scanning/points/xenoarch

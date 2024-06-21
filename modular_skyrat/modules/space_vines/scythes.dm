@@ -86,11 +86,11 @@
 	id = "t1scythe"
 	display_name = "Scythe (Tier 1)"
 	description = "Culling tools"
-	prereq_ids = list("adv_engi", "biotech", "botany")
+	prereq_ids = list("exp_tools", "chem_synthesis", "botany_equip")
 	design_ids = list(
 		"scythet1",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 500)
 
 /datum/techweb_node/scythe_t2
@@ -101,7 +101,7 @@
 	design_ids = list(
 		"scythet2",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 1000)
 
 /datum/supply_pack/organic/tier3_scythe
