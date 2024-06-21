@@ -31,7 +31,7 @@ These are basically advanced cells.
 	charging_icon = "mf_in" //This is stored in cell.dmi in the aesthetics module
 	icon_state = "microfusion"
 	w_class = WEIGHT_CLASS_NORMAL
-	maxcharge = 1200 //12 shots
+	maxcharge = STANDARD_CELL_CHARGE //12 shots
 	chargerate = 0 //Standard microfusion cells can't be recharged, they're single use.
 	microfusion_readout = TRUE
 	charge_light_type = "microfusion"
@@ -198,14 +198,14 @@ These are basically advanced cells.
 	name = "advanced microfusion cell"
 	desc = "A third generation microfusion cell, boasting a much higher shot count. Additionally, these come with support for up to three modifications to the cell itself."
 	icon_state = "microfusion_advanced"
-	maxcharge = 1700
+	maxcharge = STANDARD_CELL_CHARGE * 1.5
 	max_attachments = 2
 
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
 	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has the highest capacity of any man-portable cell, and has flexibility for four different attachments to the cell itself."
 	icon_state = "microfusion_bluespace"
-	maxcharge = 2000
+	maxcharge = STANDARD_CELL_CHARGE * 1.6
 	max_attachments = 3
 
 /obj/item/stock_parts/cell/microfusion/nanocarbon
