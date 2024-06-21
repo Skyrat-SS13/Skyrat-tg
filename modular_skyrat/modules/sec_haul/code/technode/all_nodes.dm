@@ -35,7 +35,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 25000)  //Unreasonably expensive and locked behind multiple tier of research, you can have abit of powercreep as a treat
 
-/datum/techweb_node/weaponry/New()
+/datum/techweb_node/sec_equip/New()
 	design_ids += "sol35_shortmag"
 	design_ids += "m45_mag"
 	design_ids += "s12g_hornet"
