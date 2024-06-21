@@ -40,7 +40,7 @@
 
 // Sells NRI military surplus clothing, gear, and a few firearms
 /datum/cargo_company/nri_surplus
-	name = COMPANY_NAME_NRI_SURPLUS_COMPANY
+	name = COMPANY_NAME_NRI_SURPLUS
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
 	cost = 3000
 	cost_change_lower = -1000
@@ -74,12 +74,12 @@
 
 // Sells unique construction supplies that the station can't normally obtain
 /datum/cargo_company/akh_frontier
-	name = FRONTIER_EQUIPMENT_NAME
+	name = COMPANY_NAME_FRONTIER_EQUIPMENT
 	company_flag = CARGO_COMPANY_FRONTIER_EQUIPMENT
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
 /datum/cargo_company/nanotrasen_bolt_weapons
-	name = SOL_DEFENSE_DEFENSE_NAME
+	name = COMPANY_NAME_SOL_DEFENSE_DEFENSE
 	company_flag = CARGO_COMPANY_SOL_DEFENSE
 	cost = 6000
 	cost_change_lower = -1000

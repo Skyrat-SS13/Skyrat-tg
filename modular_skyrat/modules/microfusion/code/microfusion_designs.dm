@@ -131,9 +131,9 @@
 	desc = "An attachment for microfusion cells that allows conversion of KJ to MF in standard chargers."
 	id = "microfusion_cell_attachment_rechargeable"
 	materials = list(
-		/datum/material/iron = 1000,
-		/datum/material/glass = 1000,
-		/datum/material/gold = 1000,
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/microfusion_cell_attachment/rechargeable
 
@@ -340,47 +340,8 @@
 	)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/scatter
 
-/datum/design/microfusion/gun_attachment_superheat
-	name = "Superheating Phase Emitter Upgrade"
-	desc = "Superheats the beam, causing targets to ignite!"
-	id = "microfusion_gun_attachment_superheat"
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/plasma = 1000)
-	build_path = /obj/item/microfusion_gun_attachment/superheat
-	category = list(
-		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
-	)
 
-/datum/design/microfusion/gun_attachment_hellfire
-	name = "Hellfire Phase Emitter Upgrade"
-	desc = "Overheats the beam, causing nastier wounds and higher damage!"
-	id = "microfusion_gun_attachment_hellfire"
-	materials = list(
-		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/microfusion_gun_attachment/hellfire
-	category = list(
-		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
-	)
-
-/datum/design/microfusion/gun_attachment_penetrator
-	name = "Focused Repeating Phase Emitter Upgrade"
-	desc = "Upgrades the central phase emitter to repeat twice and penetrate armor."
-	id = "microfusion_gun_attachment_penetrator"
-	materials = list(
-		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/microfusion_gun_attachment/penetrator
-	category = list(
-		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
-	)
-
-/datum/design/microfusion/gun_attachment_scattermax
+/datum/design/microfusion/attachment/barrel/scatter/max
 	name = "Crystalline Diffuser Microfusion Lens Attachment"
 	desc = "Splits the microfusion laser beam entering the lens even more."
 	id = "microfusion_gun_attachment_scattermax"
@@ -428,21 +389,17 @@
 	)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/repeater
 
-/datum/design/microfusion/gun_attachment_xray
-	name = "Phase Inverter Emitter Array"
-	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
-	id = "microfusion_gun_attachment_xray"
+
+/datum/design/microfusion/attachment/barrel/repeater/penetrator
+	name = "Focused Repeating Phase Emitter Upgrade"
+	desc = "Upgrades the central phase emitter to repeat twice and penetrate armor."
+	id = "microfusion_gun_attachment_penetrator"
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5,
 		/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/microfusion_gun_attachment/xray
-	category = list(
-		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
-	)
+		)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/repeater/penetrator
 
 /datum/design/microfusion/attachment/barrel/xray

@@ -26,7 +26,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
-	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. Smaller than a can of soda, these fulfill the need for a power source where plugging into a recharger is inconvenient or unavailable; although they will eventually run dry due to being shipped without a fuel source."
+	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. Smaller than a car battery, these fulfill the need for a power source where plugging into a recharger is inconvenient or unavailable; although they will eventually run dry due to being shipped without a fuel source."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
 	charging_icon = "mf_in" //This is stored in cell.dmi in the aesthetics module
 	icon_state = "microfusion"
@@ -50,6 +50,10 @@ These are basically advanced cells.
 	var/empty_alarm_sound = 'sound/weapons/gun/general/empty_alarm.ogg'
 	/// Do we have the self charging upgrade?
 	var/self_charging = FALSE
+	/// We use this to edit the reload time of the gun
+	var/reloading_time = 4 SECONDS
+	/// We use this to edit the tactical reload time of the gun
+	var/reloading_time_tactical = 6 SECONDS
 	/// The probability of the cell failing, either through being makeshift or being used in something it shouldn't
 	var/fail_prob = 10
 
@@ -59,9 +63,6 @@ These are basically advanced cells.
 	/// Do we show the microfusion readout instead of KJ?
 	var/microfusion_readout = FALSE
 
-/obj/item/stock_parts/cell/microfusion/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
 
 /obj/item/stock_parts/cell/microfusion/Destroy()
 	if(attachments.len)
@@ -69,7 +70,6 @@ These are basically advanced cells.
 			iterating_item.forceMove(get_turf(src))
 		attachments = null
 	parent_gun = null
-	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)

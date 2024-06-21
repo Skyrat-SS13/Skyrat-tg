@@ -74,7 +74,7 @@
 	desc = "A box filled with microfusion cells."
 
 /obj/item/storage/box/ammo_box/microfusion/PopulateContents()
-	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/storage/pouch/ammo(src)
 	new /obj/item/stock_parts/cell/microfusion(src)
 	new /obj/item/stock_parts/cell/microfusion(src)
 	new /obj/item/stock_parts/cell/microfusion(src)
