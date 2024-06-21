@@ -240,6 +240,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if ("change_slot")
 			// Save existing character
 			save_character()
+<<<<<<< HEAD
 
 			// SAFETY: `load_character` performs sanitization the slot number
 			if (!load_character(params["slot"]))
@@ -258,6 +259,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			character_preview_view.update_body()
 
 			return TRUE
+=======
+			// SAFETY: `switch_to_slot` performs sanitization on the slot number
+			switch_to_slot(params["slot"])
+			return TRUE
+		if ("remove_current_slot")
+			remove_current_slot()
+			return TRUE
+>>>>>>> 7b1b4ec2297 (Better delete character ux (#84158))
 		if ("rotate")
 			/* SKYRAT EDIT - Bi-directional prefs menu rotation - ORIGINAL:
 			character_preview_view.dir = turn(character_preview_view.dir, -90)

@@ -114,7 +114,10 @@ export const CharacterPreferenceWindow = (props) => {
               profiles={data.character_profiles}
             />
           </Stack.Item>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b1b4ec2297 (Better delete character ux (#84158))
           {!data.content_unlocked && (
             <Stack.Item align="center">
               Buy BYOND premium for more slots!
