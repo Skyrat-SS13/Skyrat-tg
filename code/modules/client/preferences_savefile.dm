@@ -364,8 +364,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	return TRUE
 
-<<<<<<< HEAD
-=======
 /datum/preferences/proc/switch_to_slot(new_slot)
 	// SAFETY: `load_character` performs sanitization on the slot number
 	if (!load_character(new_slot))
@@ -403,7 +401,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	tainted_character_profiles = TRUE
 	switch_to_slot(closest_slot)
 
->>>>>>> 7b1b4ec2297 (Better delete character ux (#84158))
 /datum/preferences/proc/sanitize_be_special(list/input_be_special)
 	var/list/output = list()
 
