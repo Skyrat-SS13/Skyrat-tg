@@ -5,7 +5,7 @@
 	id = "storedmunition_tech"
 	display_name = "Military Grade Munition Research"
 	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
-	prereq_ids = list("explosives", "exotic_ammo")
+	prereq_ids = list("exotic_ammo")
 	design_ids = list(
 		"s12g_slug",
 		"sol40_riflstandardemag",
@@ -18,7 +18,7 @@
 	id = "storedmunition_tech_two"
 	display_name = "Romulus Technology Research"
 	description = "Romulus is a major Industrial powerhouse in the outerrim, but they also faced logistical difficulties, learn how they lasted."
-	prereq_ids = list("storedmunition_tech")
+	prereq_ids = list("explosives","storedmunition_tech")
 	design_ids = list(
 		"sol_rifle_carbine_gun",
 		"s12g_flechette",
