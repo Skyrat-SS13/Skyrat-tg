@@ -5,7 +5,7 @@
 	id = "storedmunition_tech"
 	display_name = "Military Grade Munition Research"
 	description = "In the wake of the NRI Border Conflict, there was a drive to advances our armament, learn how sol does it."
-	prereq_ids = list("adv_weaponry", "exotic_ammo")
+	prereq_ids = list("explosives", "exotic_ammo")
 	design_ids = list(
 		"s12g_slug",
 		"sol40_riflstandardemag",
