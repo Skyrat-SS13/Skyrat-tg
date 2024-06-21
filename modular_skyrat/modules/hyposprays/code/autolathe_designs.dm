@@ -13,7 +13,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/basic_medical/New()
+/datum/techweb_node/medbay_equip/New()
 	design_ids += list(
 		"hypovial",
 	)
@@ -44,7 +44,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/biotech/New()
+/datum/techweb_node/chem_synthesis/New()
 	design_ids += list(
 		"large_hypovial",
 		"hypokit",
@@ -95,7 +95,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/adv_biotech/New()
+/datum/techweb_node/medbay_equip_adv/New()
 	design_ids += list(
 		"hypokit_deluxe",
 		"hypomkii",
@@ -119,7 +119,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/alien_bio/New()
+/datum/techweb_node/alien_surgery/New()
 	design_ids += list(
 		"hypomkii_deluxe",
 	)

@@ -89,11 +89,11 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	id = "cargoteleporter"
 	display_name = "Cargo Teleporter"
 	description = "We can teleport items across long distances, as long as they are not blocked."
-	prereq_ids = list("bluespace_basic", "engineering")
+	prereq_ids = list("bluespace_theory")
 	design_ids = list(
 		"cargotele",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
 /obj/effect/decal/cleanable/cargo_mark
 	name = "cargo mark"
