@@ -56,19 +56,19 @@
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/connect(mob/user)
 	polling = TRUE
-	var/list/candidates = poll_candidates_for_mob("Do you want to play as a mind magnified monkey?", ROLE_MONKEY_HELMET, null, 5 SECONDS, magnification, POLL_IGNORE_MONKEY_HELMET)
+	var/mob/chosen = SSpolling.poll_ghosts_for_target("Do you want to play as a mind magnified monkey?", ROLE_MONKEY_HELMET, poll_time = 5 SECONDS, checked_target = magnification, ignore_category = POLL_IGNORE_MONKEY_HELMET)
 	polling = FALSE
 	if(!magnification)
 		return
-	if(!candidates.len)
+	if(!chosen)
 		UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 		magnification = null
 		visible_message(span_notice("[src] falls silent and drops on the floor. Maybe you should try again later?"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		user.dropItemToGround(src)
 		return
-	var/mob/picked = pick(candidates)
-	magnification.key = picked.key
+
+	magnification.key = chosen.key
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 	to_chat(magnification, span_notice("You're a mind magnified monkey! Protect your helmet with your life- if you lose it, your sentience goes with it!"))
 	var/policy = get_policy(ROLE_MONKEY_HELMET)
@@ -97,7 +97,9 @@
 		if(prob(10))
 			switch(rand(1, 4))
 				if(1) // blood rage
-					magnification.ai_controller.blackboard[BB_MONKEY_AGGRESSIVE] = TRUE
+					var/datum/ai_controller/monkey/monky_controller = magnification.ai_controller
+					monky_controller.set_trip_mode(mode = FALSE)
+					monky_controller.set_blackboard_key(BB_MONKEY_AGGRESSIVE, TRUE)
 				if(2) // brain death
 					magnification.apply_damage(500, BRAIN, BODY_ZONE_HEAD, FALSE, FALSE, FALSE)
 				if(3) // primal gene (gorilla)

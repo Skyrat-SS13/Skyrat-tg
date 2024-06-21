@@ -39,7 +39,14 @@
 	description = "We need to see how the body functions from the earliest moments. Some cytology experiments will help us gain this understanding."
 	total_requirement = 3
 	max_requirement_per_type = 2
-	possible_types = list(/mob/living/basic/carp, /mob/living/simple_animal/hostile/retaliate/snake, /mob/living/simple_animal/pet/cat, /mob/living/basic/pet/dog/corgi, /mob/living/basic/cow, /mob/living/simple_animal/chicken)
+	possible_types = list(
+		/mob/living/basic/pet/cat,
+		/mob/living/basic/carp,
+		/mob/living/basic/chicken,
+		/mob/living/basic/cow,
+		/mob/living/basic/pet/dog/corgi,
+		/mob/living/basic/snake,
+	)
 
 /datum/experiment/scanning/random/cytology/medium/one
 	name = "Advanced Cytology Scanning Experiment One"
@@ -111,6 +118,14 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/nitrous_oxide
 
+/datum/experiment/ordnance/gaseous/plasma
+	name = "Plasma Gas Shells"
+	description = "The delivery of Plasma gas into an area of operation might prove useful. Pack the specified gas into a tank and burst it using a Tank Compressor. Publish the data in a paper."
+	gain = list(10,40)
+	target_amount = list(200,600)
+	experiment_proper = TRUE
+	required_gas = /datum/gas/plasma
+
 /datum/experiment/ordnance/gaseous/bz
 	name = "BZ Gas Shells"
 	description = "The delivery of BZ gas into an area of operation might prove useful. Pack the specified gas into a tank and burst it using a Tank Compressor. Publish the data in a paper."
@@ -135,15 +150,10 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/halon
 
-// SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
-// ORIGINAL: /datum/experiment/scanning/random/material/meat
-/datum/experiment/scanning/random/material/silver
+/datum/experiment/scanning/random/material/meat
 	name = "Biological Material Scanning Experiment"
-// ORIGINAL: description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
-	description = "Supposedly silver has an inert anti-microbial effect; scan a few samples to test this."
-// ORIGINAL: possible_material_types = list(/datum/material/meat)
-	possible_material_types = list(/datum/material/silver)
-// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
+	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
+	possible_material_types = list(/datum/material/meat)
 
 /datum/experiment/scanning/random/material/easy
 	name = "Low Grade Material Scanning Experiment"
@@ -182,7 +192,7 @@
 
 /datum/experiment/scanning/random/plants/wild
 	name = "Wild Biomatter Mutation Sample"
-	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate with little reason. Scan one of these samples for us."
+	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate upon harvest. Scan one of these samples for us."
 	performance_hint = "\"Wild\" mutations have been recorded to occur above 30 points of instability, while species mutations occur above 60 points of instability."
 	total_requirement = 1
 
@@ -232,7 +242,7 @@
 		/obj/machinery/biogenerator = 3,
 		/obj/machinery/gibber = 3,
 		/obj/machinery/chem_master = 3,
-		/obj/machinery/atmospherics/components/unary/cryo_cell = 3,
+		/obj/machinery/cryo_cell = 3,
 		/obj/machinery/harvester = 5,
 		/obj/machinery/quantumpad = 5
 	)
@@ -289,7 +299,6 @@
 		/obj/machinery/rnd/experimentor = 1,
 		/obj/machinery/medical_kiosk = 2,
 		/obj/machinery/piratepad/civilian = 2,
-		/obj/machinery/rnd/bepis = 3
 	)
 	required_stock_part = /obj/item/stock_parts/scanning_module/adv
 
@@ -322,26 +331,138 @@
 	required_stock_part = /obj/item/stock_parts/micro_laser/ultra
 
 /datum/experiment/scanning/random/mecha_damage_scan
-	name = "Exosuit Materials 1: Stress Failure Test"
+	name = "Exosuit Materials: Stress Failure Test"
 	description = "Your exosuit fabricators allow for rapid production on a small scale, but the structural integrity of created parts is inferior to more traditional means."
 	exp_tag = "Scan"
 	possible_types = list(/obj/vehicle/sealed/mecha)
-	total_requirement = 2
+	total_requirement = 1
 	///Damage percent that each mech needs to be at for a scan to work.
 	var/damage_percent
 
-/datum/experiment/scanning/random/mecha_damage_scan/New()
+/datum/experiment/scanning/random/mecha_equipped_scan
+	name = "Exosuit Materials: Load Strain Test"
+	description = "Exosuit equipment places unique strain upon the structure of the vehicle. Scan exosuits you have assembled from your exosuit fabricator and fully equipped to accelerate our structural stress simulations."
+	possible_types = list(/obj/vehicle/sealed/mecha)
+	total_requirement = 1
+
+/// Scan for organs you didn't start the round with
+/datum/experiment/scanning/people/novel_organs
+	name = "Human Field Research: Divergent Biology"
+	description = "We need data on organic compatibility between species. Scan some samples of humanoid organisms with organs they don't usually have. \
+		Data on mechanical organs isn't of any use to us."
+	performance_hint = "Unusual organs can be introduced manually by transplant, genetic infusion, or very rapidly via a Bioscrambler anomaly effect."
+	required_traits_desc = "non-synthetic organs not typical for their species"
+	/// Disallow prosthetic organs
+	var/organic_only = TRUE
+
+/datum/experiment/scanning/people/novel_organs/is_valid_scan_target(mob/living/carbon/human/check)
 	. = ..()
-	damage_percent = rand(15, 95)
-	//updating the description with the damage_percent var set
-	description = "Your exosuit fabricators allow for rapid production on a small scale, but the structural integrity of created parts is inferior to those made with more traditional means. Damage a few exosuits to around [damage_percent]% integrity and scan them to help us determine how the armor fails under stress."
+	if (!.)
+		return
+	// Organs which are valid for get_mutant_organ_type_for_slot
+	var/static/list/vital_organ_slots = list(
+		ORGAN_SLOT_BRAIN,
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_APPENDIX,
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_TONGUE,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
 
-/datum/experiment/scanning/random/mecha_damage_scan/final_contributing_index_checks(atom/target, typepath)
-	var/found_percent = round((target.get_integrity() / target.max_integrity) * 100)
-	return ..() && (found_percent <= (damage_percent + 2) && found_percent >= (damage_percent - 2))
+	for (var/obj/item/organ/organ as anything in check.organs)
+		if (organic_only && !IS_ORGANIC_ORGAN(organ))
+			continue
+		var/datum/species/target_species = check.dna.species
+		if (organ.slot in vital_organ_slots)
+			if (organ.type == target_species.get_mutant_organ_type_for_slot(organ.slot))
+				continue
+		else
+			if ((organ.type in target_species.mutant_organs) || (organ.type in target_species.external_organs))
+				continue
+		return TRUE
+	return FALSE
 
-/datum/experiment/scanning/random/mecha_destroyed_scan
-	name = "Exosuit Materials 2: Excessive Damage Test"
-	description = "As an extension of testing exosuit damage results, scanning examples of complete structural failure will accelerate our material stress simulations."
-	possible_types = list(/obj/structure/mecha_wreckage)
-	total_requirement = 2
+/// Scan for cybernetic organs
+/datum/experiment/scanning/people/augmented_organs
+	name = "Human Field Research: Augmented Organs"
+	description = "We need to gather data on how cybernetic vital organs integrate with human biology. Conduct a scan on a human with these implants to help us understand their compatibility"
+	performance_hint = "Perform an organ manipulation surgery to replace one of the vital organs with a cybernetic variant."
+	required_traits_desc = "augmented vital organs"
+	required_count = 1
+
+/datum/experiment/scanning/people/augmented_organs/is_valid_scan_target(mob/living/carbon/human/check)
+	. = ..()
+	if (!.)
+		return
+	var/static/list/vital_organ_slots = list(
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
+
+	for (var/obj/item/organ/organ as anything in check.organs)
+		if (IS_ORGANIC_ORGAN(organ))
+			continue
+		if (!(organ.slot in vital_organ_slots))
+			continue
+		return TRUE
+	return FALSE
+
+/// Scan for skillchips
+/datum/experiment/scanning/people/skillchip
+	name = "Human Field Research: Skill Chip Implants"
+	description = "Before sticking programmed circuits into human brain, we need to know how it handles simple ones. Scan a live person with a skill chip implant in their brain."
+	performance_hint = "Perform a skill chip implantation with a skill station."
+	required_traits_desc = "skill chip implant"
+
+/datum/experiment/scanning/people/skillchip/is_valid_scan_target(mob/living/carbon/human/check, datum/component/experiment_handler/experiment_handler)
+	. = ..()
+	if (!.)
+		return
+	var/obj/item/organ/internal/brain/scanned_brain = check.get_organ_slot(ORGAN_SLOT_BRAIN)
+	if (isnull(scanned_brain))
+		experiment_handler.announce_message("Subject is brainless!")
+		return FALSE
+	if (scanned_brain.get_used_skillchip_slots() == 0)
+		experiment_handler.announce_message("No skill chips found!")
+		return FALSE
+	return TRUE
+
+/datum/experiment/scanning/reagent/cryostylane
+	name = "Pure Cryostylane Scan"
+	description = "It appears that the Cryostylane reagent can potentially halt all physiological processes in the human body. Produce Cryostylane with at least 99% purity and scan the beaker."
+	required_reagent = /datum/reagent/cryostylane
+	min_purity = 0.99
+
+/datum/experiment/scanning/points/bluespace_crystal
+	name = "Bluespace Crystal Sampling"
+	description = "Investigate the properties of bluespace crystals by scanning either an artificial or naturally occurring variant. This will help us deepen our understanding of bluespace phenomena."
+	required_points = 1
+	required_atoms = list(
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		/obj/item/stack/sheet/bluespace_crystal = 1
+	)
+
+/datum/experiment/scanning/points/machinery_tiered_scan/tier2_any
+	name = "Upgraded Stock Parts Benchmark"
+	description = "Our newly-designed machinery components require practical application tests for hints at possible further advancements, as well as a general confirmation that we didn't actually design worse parts somehow. Scan any machinery with Upgraded Parts and report the results."
+	required_points = 4
+	required_atoms = list(
+		/obj/machinery = 1
+	)
+	required_tier = 2
+
+/datum/experiment/scanning/points/machinery_tiered_scan/tier3_any
+	name = "Advanced Stock Parts Benchmark"
+	description = "Our newly-designed machinery components require practical application tests for hints at possible further advancements, as well as a general confirmation that we didn't actually design worse parts somehow. Scan any machinery with Advanced Parts and report the results."
+	required_points = 4
+	required_atoms = list(
+		/obj/machinery = 1
+	)
+	required_tier = 3

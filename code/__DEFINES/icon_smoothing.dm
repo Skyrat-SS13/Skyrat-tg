@@ -11,6 +11,15 @@
 #define SMOOTH_QUEUED (1<<4)
 /// Smooths with objects, and will thus need to scan turfs for contents.
 #define SMOOTH_OBJ (1<<5)
+/// Uses directional object smoothing, so we care not only about something being on the right turf, but also its direction
+/// Changes the meaning of smoothing_junction, instead of representing the directions we are smoothing in
+/// it represents the sides of our directional border object that have a neighbor
+/// Is incompatible with SMOOTH_CORNERS because border objects don't have corners
+#define SMOOTH_BORDER_OBJECT (1<<6)
+/// Has a smooth broken sprite, used to decide whether to apply an offset to the broken overlay or not. For /turf/open only.
+#define SMOOTH_BROKEN_TURF (1<<7)
+/// Has a smooth burnt sprite, used to decide whether to apply an offset to the burnt overlay or not. For /turf/open only.
+#define SMOOTH_BURNT_TURF (1<<8)
 
 DEFINE_BITFIELD(smoothing_flags, list(
 	"SMOOTH_CORNERS" = SMOOTH_CORNERS,
@@ -19,8 +28,32 @@ DEFINE_BITFIELD(smoothing_flags, list(
 	"SMOOTH_BORDER" = SMOOTH_BORDER,
 	"SMOOTH_QUEUED" = SMOOTH_QUEUED,
 	"SMOOTH_OBJ" = SMOOTH_OBJ,
+	"SMOOTH_BORDER_OBJECT" = SMOOTH_BORDER_OBJECT,
+	"SMOOTH_BROKEN_TURF" = SMOOTH_BROKEN_TURF,
+	"SMOOTH_BURNT_TURF" = SMOOTH_BURNT_TURF,
 ))
 
+/// Components of a smoothing junction
+/// Redefinitions of the diagonal directions so they can be stored in one var without conflicts
+#define NORTH_JUNCTION NORTH //(1<<0)
+#define SOUTH_JUNCTION SOUTH //(1<<1)
+#define EAST_JUNCTION EAST  //(1<<2)
+#define WEST_JUNCTION WEST  //(1<<3)
+#define NORTHEAST_JUNCTION (1<<4)
+#define SOUTHEAST_JUNCTION (1<<5)
+#define SOUTHWEST_JUNCTION (1<<6)
+#define NORTHWEST_JUNCTION (1<<7)
+
+DEFINE_BITFIELD(smoothing_junction, list(
+	"NORTH_JUNCTION" = NORTH_JUNCTION,
+	"SOUTH_JUNCTION" = SOUTH_JUNCTION,
+	"EAST_JUNCTION" = EAST_JUNCTION,
+	"WEST_JUNCTION" = WEST_JUNCTION,
+	"NORTHEAST_JUNCTION" = NORTHEAST_JUNCTION,
+	"SOUTHEAST_JUNCTION" = SOUTHEAST_JUNCTION,
+	"SOUTHWEST_JUNCTION" = SOUTHWEST_JUNCTION,
+	"NORTHWEST_JUNCTION" = NORTHWEST_JUNCTION,
+))
 
 /*smoothing macros*/
 
@@ -102,14 +135,15 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_MINERAL_WALLS S_TURF(57) ///turf/closed/mineral, /turf/closed/indestructible
 #define SMOOTH_GROUP_BOSS_WALLS S_TURF(58) ///turf/closed/indestructible/riveted/boss
 #define SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS S_TURF(59) ///turf/closed/wall/mineral/titanium/survival
+#define SMOOTH_GROUP_TURF_OPEN_CLIFF S_TURF(60) ///turf/open/cliff
 
 // SKYRAT EDIT ADDITION
-#define SMOOTH_GROUP_ELEVATED_PLASTEEL S_TURF(60)
-#define SMOOTH_GROUP_LOWERED_PLASTEEL S_TURF(61)
+#define SMOOTH_GROUP_ELEVATED_PLASTEEL S_TURF(61)
+#define SMOOTH_GROUP_LOWERED_PLASTEEL S_TURF(62)
 
-#define SMOOTH_GROUP_FISSURE S_TURF(62)
+#define SMOOTH_GROUP_FISSURE S_TURF(63)
 
-#define MAX_S_TURF 62 //Always match this value with the one above it.
+#define MAX_S_TURF 63 //Always match this value with the one above it.
 //SKYRAT EDIT END
 
 
@@ -151,6 +185,9 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define SMOOTH_GROUP_AIRLOCK S_OBJ(41) ///obj/machinery/door/airlock
 
+#define SMOOTH_GROUP_INDUSTRIAL_LIFT S_OBJ(46) ///obj/structure/transport/linear
+#define SMOOTH_GROUP_TRAM_STRUCTURE S_OBJ(47) //obj/structure/tram
+
 #define SMOOTH_GROUP_TABLES S_OBJ(51) ///obj/structure/table
 #define SMOOTH_GROUP_WOOD_TABLES S_OBJ(52) ///obj/structure/table/wood
 #define SMOOTH_GROUP_FANCY_WOOD_TABLES S_OBJ(53) ///obj/structure/table/wood/fancy
@@ -172,14 +209,18 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define SMOOTH_GROUP_CLEANABLE_DIRT S_OBJ(68) ///obj/effect/decal/cleanable/dirt
 
-#define SMOOTH_GROUP_INDUSTRIAL_LIFT S_OBJ(71) ///obj/structure/industrial_lift
+#define SMOOTH_GROUP_GAS_TANK S_OBJ(69)
 
-#define SMOOTH_GROUP_GAS_TANK S_OBJ(72)
+#define SMOOTH_GROUP_SPIDER_WEB S_OBJ(70) // /obj/structure/spider/stickyweb
+#define SMOOTH_GROUP_SPIDER_WEB_WALL S_OBJ(71) // /obj/structure/spider/stickyweb/sealed
+#define SMOOTH_GROUP_SPIDER_WEB_ROOF S_OBJ(72) // /obj/structure/spider/passage
+#define SMOOTH_GROUP_SPIDER_WEB_WALL_TOUGH S_OBJ(73) // /obj/structure/spider/stickyweb/sealed/thick
+#define SMOOTH_GROUP_SPIDER_WEB_WALL_MIRROR S_OBJ(74) // /obj/structure/spider/stickyweb/sealed/reflector
 
 //SKYRAT EDIT ADDITION
-#define SMOOTH_GROUP_SHUTTERS S_OBJ(73)
+#define SMOOTH_GROUP_SHUTTERS S_OBJ(75)
 
-#define SMOOTH_GROUP_WATER S_OBJ(74) ///obj/effect/abstract/liquid_turf
+#define SMOOTH_GROUP_WATER S_OBJ(76) ///obj/effect/abstract/liquid_turf
 //SKYRAT EDIT END
 
 /// Performs the work to set smoothing_groups and canSmoothWith.

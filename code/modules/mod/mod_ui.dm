@@ -6,24 +6,40 @@
 
 /obj/item/mod/control/ui_data(mob/user)
 	var/data = list()
-	data["interface_break"] = interface_break
-	data["malfunctioning"] = malfunctioning
-	data["open"] = open
-	data["active"] = active
-	data["locked"] = locked
-	data["complexity"] = complexity
-	data["selected_module"] = selected_module?.name
-	data["wearer_name"] = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "No Occupant"
-	data["wearer_job"] = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "No Job"
-	// SKYRAT EDIT START - pAIs in MODsuits
-	data["pAI"] = mod_pai?.name
-	data["ispAI"] = mod_pai ? mod_pai == user : FALSE
-	// SKYRAT EDIT END
-	data["core"] = core?.name
-	data["charge"] = get_charge_percent()
-	data["modules"] = list()
+	// Suit information
+	var/suit_status = list(
+		"core_name" = core?.name,
+		"cell_charge_current" = get_charge(),
+		"cell_charge_max" = get_max_charge(),
+		"active" = active,
+		"ai_name" = ai_assistant?.name,
+		"has_pai" = ispAI(ai_assistant),
+		"is_ai" = ai_assistant && ai_assistant == user,
+		"link_id" = mod_link.id,
+		"link_freq" = mod_link.frequency,
+		"link_call" = mod_link.get_other()?.id,
+		// Wires
+		"open" = open,
+		"seconds_electrified" = seconds_electrified,
+		"malfunctioning" = malfunctioning,
+		"locked" = locked,
+		"interface_break" = interface_break,
+		// Modules
+		"complexity" = complexity,
+	)
+	data["suit_status"] = suit_status
+	// User information
+	var/user_status = list(
+		"user_name" = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "",
+		"user_assignment" = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "",
+	)
+	data["user_status"] = user_status
+	// Module information
+	var/module_custom_status = list()
+	var/module_info = list()
 	for(var/obj/item/mod/module/module as anything in modules)
-		var/list/module_data = list(
+		module_custom_status += module.add_ui_data()
+		module_info += list(list(
 			"module_name" = module.name,
 			"description" = module.desc,
 			"module_type" = module.module_type,
@@ -31,16 +47,16 @@
 			"pinned" = module.pinned_to[REF(user)],
 			"idle_power" = module.idle_power_cost,
 			"active_power" = module.active_power_cost,
-			"use_power" = module.use_power_cost,
+			"use_energy" = module.use_energy_cost,
 			"module_complexity" = module.complexity,
 			"cooldown_time" = module.cooldown_time,
 			"cooldown" = round(COOLDOWN_TIMELEFT(module, cooldown_timer), 1 SECONDS),
 			"id" = module.tgui_id,
 			"ref" = REF(module),
-			"configuration_data" = module.get_configuration()
-		)
-		module_data += module.add_ui_data()
-		data["modules"] += list(module_data)
+			"configuration_data" = module.get_configuration(user),
+		))
+	data["module_custom_status"] = module_custom_status
+	data["module_info"] = module_info
 	return data
 
 /obj/item/mod/control/ui_static_data(mob/user)
@@ -48,30 +64,42 @@
 	data["ui_theme"] = ui_theme
 	data["control"] = name
 	data["complexity_max"] = complexity_max
-	data["helmet"] = helmet?.name
-	data["chestplate"] = chestplate?.name
-	data["gauntlets"] = gauntlets?.name
-	data["boots"] = boots?.name
+	var/part_info = list()
+	for(var/obj/item/part as anything in get_parts())
+		part_info += list(list(
+			"slot" = english_list(parse_slot_flags(part.slot_flags)),
+			"name" = part.name,
+		))
+	data["parts"] = part_info
 	return data
+
+/obj/item/mod/control/ui_state(mob/user)
+	if(user == ai_assistant)
+		return GLOB.contained_state
+	return ..()
 
 /obj/item/mod/control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-	// allowed() doesn't allow for pAIs
-	if((!allowed(usr) || !ispAI(usr)) && locked) // SKYRAT EDIT - pAIs in MODsuits
-		balloon_alert(usr, "insufficient access!")
-		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-		return
 	if(malfunctioning && prob(75))
-		balloon_alert(usr, "button malfunctions!")
+		balloon_alert(ui.user, "button malfunctions!")
 		return
 	switch(action)
 		if("lock")
-			locked = !locked
-			balloon_alert(usr, "[locked ? "locked" : "unlocked"]!")
+			if(!locked || allowed(ui.user))
+				locked = !locked
+				balloon_alert(ui.user, "[locked ? "locked" : "unlocked"]!")
+			else
+				balloon_alert(ui.user, "access insufficent!")
+				playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		if("call")
+			if(!mod_link.link_call)
+				call_link(ui.user, mod_link)
+			else
+				mod_link.end_call()
 		if("activate")
-			toggle_activate(usr)
+			toggle_activate(ui.user)
 		if("select")
 			var/obj/item/mod/module/module = locate(params["ref"]) in modules
 			if(!module)
@@ -86,11 +114,9 @@
 			var/obj/item/mod/module/module = locate(params["ref"]) in modules
 			if(!module)
 				return
-			module.pin(usr)
-		// SKYRAT EDIT START - pAIs in MODsuits
-		if("remove_pai")
-			if(ishuman(usr)) // Only the MODsuit's wearer should be removing the pAI.
-				var/mob/user = usr
-				extract_pai(user)
-		// SKYRAT EDIT END
+			module.pin(ui.user)
+		if("eject_pai")
+			if (!ishuman(ui.user))
+				return
+			remove_pai(ui.user)
 	return TRUE

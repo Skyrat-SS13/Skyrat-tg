@@ -1,22 +1,32 @@
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Box, Button, LabeledList, NoticeBox, RestrictedInput, Section, Stack, Table } from 'tgui/components';
+import {
+  Box,
+  Button,
+  LabeledList,
+  NoticeBox,
+  RestrictedInput,
+  Section,
+  Stack,
+  Table,
+} from 'tgui/components';
+
 import { CharacterPreview } from '../common/CharacterPreview';
 import { EditableText } from '../common/EditableText';
-import { CrimeWatcher } from './CrimeWatcher';
-import { RecordPrint } from './RecordPrint';
 import { CRIMESTATUS2COLOR, CRIMESTATUS2DESC } from './constants';
+import { CrimeWatcher } from './CrimeWatcher';
 import { getSecurityRecord } from './helpers';
+import { RecordPrint } from './RecordPrint';
 import { SecurityRecordsData } from './types';
 
 /** Views a selected record. */
-export const SecurityRecordView = (props, context) => {
-  const foundRecord = getSecurityRecord(context);
+export const SecurityRecordView = (props) => {
+  const foundRecord = getSecurityRecord();
   if (!foundRecord) return <NoticeBox>Nothing selected.</NoticeBox>;
 
-  const { data } = useBackend<SecurityRecordsData>(context);
+  const { data } = useBackend<SecurityRecordsData>();
   const { assigned_view } = data;
 
-  const [open] = useLocalState<boolean>(context, 'printOpen', false);
+  const [open] = useLocalState<boolean>('printOpen', false);
 
   return (
     <Stack fill vertical>
@@ -35,18 +45,20 @@ export const SecurityRecordView = (props, context) => {
   );
 };
 
-const RecordInfo = (props, context) => {
-  const foundRecord = getSecurityRecord(context);
+const RecordInfo = (props) => {
+  const foundRecord = getSecurityRecord();
   if (!foundRecord) return <NoticeBox>Nothing selected.</NoticeBox>;
 
-  const { act, data } = useBackend<SecurityRecordsData>(context);
+  const { act, data } = useBackend<SecurityRecordsData>();
   const { available_statuses } = data;
-  const [open, setOpen] = useLocalState<boolean>(context, 'printOpen', false);
+  const [open, setOpen] = useLocalState<boolean>('printOpen', false);
 
-  const { min_age, max_age } = data;
+  // const { min_age, max_age } = data; // ORIGINAL
+  const { min_age, max_age, max_chrono_age } = data; // SKYRAT EDIT CHANGE - Chronological age
 
   const {
     age,
+    chrono_age, // SKYRAT EDIT ADDITION - Chronological age
     crew_ref,
     crimes,
     fingerprint,
@@ -56,6 +68,7 @@ const RecordInfo = (props, context) => {
     rank,
     species,
     wanted_status,
+    voice,
     // SKYRAT EDIT START - RP Records
     past_general_records,
     past_security_records,
@@ -75,7 +88,8 @@ const RecordInfo = (props, context) => {
                   height="1.7rem"
                   icon="print"
                   onClick={() => setOpen(true)}
-                  tooltip="Print a rapsheet or poster.">
+                  tooltip="Print a rapsheet or poster."
+                >
                   Print
                 </Button>
               </Stack.Item>
@@ -95,7 +109,7 @@ const RecordInfo = (props, context) => {
               {name}
             </Table.Cell>
           }
-          wrap>
+        >
           <LabeledList>
             <LabeledList.Item
               buttons={available_statuses.map((button, index) => {
@@ -114,12 +128,14 @@ const RecordInfo = (props, context) => {
                     }
                     pl={!isSelected ? '1.8rem' : 1}
                     tooltip={CRIMESTATUS2DESC[button] || ''}
-                    tooltipPosition="bottom-start">
+                    tooltipPosition="bottom-start"
+                  >
                     {button[0]}
                   </Button>
                 );
               })}
-              label="Status">
+              label="Status"
+            >
               <Box color={CRIMESTATUS2COLOR[wanted_status]}>
                 {wanted_status}
               </Box>
@@ -136,7 +152,10 @@ const RecordInfo = (props, context) => {
             <LabeledList.Item label="Job">
               <EditableText field="rank" target_ref={crew_ref} text={rank} />
             </LabeledList.Item>
-            <LabeledList.Item label="Age">
+            {/* <LabeledList.Item label="Age"> // ORIGINAL */}
+            {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
+            <LabeledList.Item label="Physical Age">
+              {/* SKYRAT EDIT CHANGE END */}
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
@@ -150,6 +169,22 @@ const RecordInfo = (props, context) => {
                 value={age}
               />
             </LabeledList.Item>
+            {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
+            <LabeledList.Item label="Chronological Age">
+              <RestrictedInput
+                minValue={min_age}
+                maxValue={max_chrono_age}
+                onEnter={(event, value) =>
+                  act('edit_field', {
+                    crew_ref: crew_ref,
+                    field: 'chrono_age',
+                    value: value,
+                  })
+                }
+                value={chrono_age}
+              />
+            </LabeledList.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <LabeledList.Item label="Species">
               <EditableText
                 field="species"
@@ -172,6 +207,9 @@ const RecordInfo = (props, context) => {
                 text={fingerprint}
               />
             </LabeledList.Item>
+            <LabeledList.Item label="Voice">
+              <EditableText field="voice" target_ref={crew_ref} text={voice} />
+            </LabeledList.Item>
             <LabeledList.Item label="Note">
               <EditableText
                 field="security_note"
@@ -181,12 +219,12 @@ const RecordInfo = (props, context) => {
             </LabeledList.Item>
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
             <LabeledList.Item label="General Records">
-              <Box wrap maxWidth="100%">
+              <Box maxWidth="100%" preserveWhitespace>
                 {past_general_records || 'N/A'}
               </Box>
             </LabeledList.Item>
             <LabeledList.Item label="Past Security Records">
-              <Box wrap maxWidth="100%">
+              <Box maxWidth="100%" preserveWhitespace>
                 {past_security_records || 'N/A'}
               </Box>
             </LabeledList.Item>

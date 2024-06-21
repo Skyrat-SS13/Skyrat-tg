@@ -11,9 +11,9 @@
 	slowdown = 4
 	item_flags = DROPDEL|IGNORE_DIGITIGRADE
 
-	greyscale_config = /datum/greyscale_config/shibari_clothes/legs
-	greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
-	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
+	greyscale_config = /datum/greyscale_config/shibari/legs
+	greyscale_config_worn = /datum/greyscale_config/shibari/legs/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari/legs/worn/digi
 	greyscale_colors = "#bd8fcf"
 
 	///should this clothing item use the emissive system

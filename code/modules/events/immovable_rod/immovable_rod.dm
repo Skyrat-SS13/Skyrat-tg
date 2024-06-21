@@ -2,7 +2,7 @@
 /obj/effect/immovablerod
 	name = "immovable rod"
 	desc = "What the fuck is that?"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/anomaly.dmi'
 	icon_state = "immrod"
 	throwforce = 100
 	move_force = INFINITY
@@ -45,9 +45,9 @@
 	RegisterSignal(src, COMSIG_ATOM_ENTERING, PROC_REF(on_entering_atom))
 
 	if(special_target)
-		SSmove_manager.home_onto(src, special_target)
+		GLOB.move_manager.home_onto(src, special_target)
 	else
-		SSmove_manager.move_towards(src, real_destination)
+		GLOB.move_manager.move_towards(src, real_destination)
 
 /obj/effect/immovablerod/Destroy(force)
 	UnregisterSignal(src, COMSIG_ATOM_ENTERING)
@@ -75,11 +75,6 @@
 		var/mob/dead/observer/ghost = usr
 		if(istype(ghost))
 			ghost.ManualFollow(src)
-
-/obj/effect/immovablerod/proc/on_entered_over_movable(datum/source, atom/movable/atom_crossed_over)
-	SIGNAL_HANDLER
-	if((atom_crossed_over.density || isliving(atom_crossed_over)) && !QDELETED(atom_crossed_over))
-		Bump(atom_crossed_over)
 
 /obj/effect/immovablerod/proc/on_entering_atom(datum/source, atom/destination, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
@@ -113,7 +108,7 @@
 				return
 
 			visible_message(span_danger("[src] phases into reality."))
-			SSmove_manager.home_onto(src, special_target)
+			GLOB.move_manager.home_onto(src, special_target)
 
 		if(loc == target_turf)
 			complete_trajectory()
@@ -182,7 +177,12 @@
 		SSexplosions.highturf += clong
 		return ..()
 
+	// If we Bump into the tram front or back, push the tram. Otherwise smash the object as usual.
 	if(isobj(clong))
+		if(istramwall(clong) && !special_target)
+			rod_vs_tram_battle()
+			return ..()
+
 		var/obj/clong_obj = clong
 		clong_obj.take_damage(INFINITY, BRUTE, NONE, TRUE, dir, INFINITY)
 		return ..()
@@ -226,7 +226,7 @@
 	if(.)
 		return
 
-	if(!(HAS_TRAIT(user, TRAIT_ROD_SUPLEX) || (user.mind && HAS_TRAIT(user.mind, TRAIT_ROD_SUPLEX))))
+	if(!HAS_MIND_TRAIT(user, TRAIT_ROD_SUPLEX))
 		return
 
 	playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
@@ -244,13 +244,19 @@
  * * strongman - the suplexer of the rod.
  */
 /obj/effect/immovablerod/proc/suplex_rod(mob/living/strongman)
-	strongman.client?.give_award(/datum/award/achievement/misc/feat_of_strength, strongman)
+	strongman.client?.give_award(/datum/award/achievement/jobs/feat_of_strength, strongman)
 	strongman.visible_message(
 		span_boldwarning("[strongman] suplexes [src] into the ground!"),
-		span_warning("You suplex [src] into the ground!")
+		span_warning("As you suplex [src] into the ground, your body ripples with power!")
 		)
 	new /obj/structure/festivus/anchored(drop_location())
 	new /obj/effect/anomaly/flux(drop_location())
+
+	var/is_heavy_gravity = strongman.has_gravity() > STANDARD_GRAVITY //If for some reason you have to suplex the rod in heavy gravity, you get the double experience here as well, why not
+	var/experience_gained = 100 * num_sentient_mobs_hit * (is_heavy_gravity ? 2 : 1) // We gain more expeirence the more sentient mobs the rod has taken out. The deadlier the rod, the stronger we become. At 25 sentient mobs, we instantly become a legendary athlete.
+	strongman.mind?.adjust_experience(/datum/skill/athletics, experience_gained)
+	strongman.apply_status_effect(/datum/status_effect/exercised) //time for a nap, you earned it
+
 	qdel(src)
 	return TRUE
 
@@ -259,7 +265,7 @@
  * Stops your rod's automated movement. Sit... Stay... Good rod!
  */
 /obj/effect/immovablerod/proc/sit_stay_good_rod()
-	SSmove_manager.stop_looping(src)
+	GLOB.move_manager.stop_looping(src)
 
 /**
  * Allows your rod to release restraint level zero and go for a walk.
@@ -273,7 +279,7 @@
 /obj/effect/immovablerod/proc/go_for_a_walk(walkies_location = null)
 	if(walkies_location)
 		special_target = walkies_location
-		SSmove_manager.home_onto(src, special_target)
+		GLOB.move_manager.home_onto(src, special_target)
 		return
 
 	complete_trajectory()
@@ -289,4 +295,26 @@
  */
 /obj/effect/immovablerod/proc/walk_in_direction(direction)
 	destination_turf = get_edge_target_turf(src, direction)
-	SSmove_manager.move_towards(src, destination_turf)
+	GLOB.move_manager.move_towards(src, destination_turf)
+
+/**
+ * Rod will push the tram to a landmark if it hits the tram from the front/back
+ * while flying parallel.
+ */
+/obj/effect/immovablerod/proc/rod_vs_tram_battle()
+	var/obj/structure/transport/linear/tram/transport_module = locate() in src.loc
+
+	if(isnull(transport_module))
+		return
+
+	var/datum/transport_controller/linear/tram/tram_controller = transport_module.transport_controller_datum
+
+	if(isnull(tram_controller))
+		return
+
+	var/push_target = tram_controller.rod_collision(src)
+
+	if(!push_target)
+		return
+
+	go_for_a_walk(push_target)

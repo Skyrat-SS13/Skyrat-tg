@@ -1,9 +1,8 @@
 /obj/item/chameleon
-	name = "clandestine device" //skyrat edit
-	desc = "A vaguely insidious device with a scanner and large projector." // SKYRAT EDIT
-	icon = 'icons/obj/device.dmi'
+	name = "chameleon projector"
+	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "shield0"
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
 	inhand_icon_state = "electronic"
@@ -14,8 +13,6 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A hardlight projector used to seamlessly camouflage Syndicate infiltrators to appear as whatever the scanner touches." // Skyrat edit
 	var/can_use = 1
 	var/obj/effect/dummy/chameleon/active_dummy = null
 	var/saved_appearance = null
@@ -39,28 +36,27 @@
 	else
 		to_chat(user, span_warning("You can't use [src] while inside something!"))
 
-/obj/item/chameleon/afterattack(atom/target, mob/user , proximity)
-	. = ..()
-	if(!proximity)
-		return
-	. |= AFTERATTACK_PROCESSED_ITEM
+/obj/item/chameleon/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!check_sprite(target))
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(active_dummy)//I now present you the blackli(f)st
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(isturf(target))
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(ismob(target))
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(istype(target, /obj/structure/falsewall))
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(target.alpha != 255)
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(target.invisibility != 0)
-		return
-	if(iseffect(target))
-		if(!(istype(target, /obj/effect/decal))) //be a footprint
-			return
+		return ITEM_INTERACT_BLOCKING
+	if(iseffect(target) && !istype(target, /obj/effect/decal)) //be a footprint
+		return ITEM_INTERACT_BLOCKING
+	make_copy(target, user)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/chameleon/proc/make_copy(atom/target, mob/user)
 	playsound(get_turf(src), 'sound/weapons/flash.ogg', 100, TRUE, -6)
 	to_chat(user, span_notice("Scanned [target]."))
 	var/obj/temp = new /obj()
@@ -140,14 +136,12 @@
 /obj/effect/dummy/chameleon/attack_animal(mob/user, list/modifiers)
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/attack_slime(mob/user, list/modifiers)
-	master.disrupt()
-
 /obj/effect/dummy/chameleon/attack_alien(mob/user, list/modifiers)
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/ex_act(S, T)
 	master.disrupt()
+	return TRUE
 
 /obj/effect/dummy/chameleon/bullet_act()
 	. = ..()

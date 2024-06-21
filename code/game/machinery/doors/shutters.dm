@@ -9,11 +9,15 @@
 	armor_type = /datum/armor/poddoor_shutters
 	max_integrity = 100
 	recipe_type = /datum/crafting_recipe/shutters
+	animation_sound = 'sound/machines/shutter.ogg'
 
 /obj/machinery/door/poddoor/shutters/preopen
 	icon_state = "open"
 	density = FALSE
 	opacity = FALSE
+
+/obj/machinery/door/poddoor/shutters/preopen/deconstructed
+	deconstruction = BLASTDOOR_NEEDS_WIRES
 
 /obj/machinery/door/poddoor/shutters/indestructible
 	name = "hardened shutters"
@@ -65,3 +69,12 @@
 /obj/machinery/door/poddoor/shutters/window/preopen
 	icon_state = "open"
 	density = FALSE
+
+/obj/machinery/door/poddoor/shutters/window/indestructible
+	name = "hardened windowed shutters"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+/obj/machinery/door/poddoor/shutters/window/indestructible/preopen
+	icon_state = "open"
+	density = FALSE
+	opacity = FALSE

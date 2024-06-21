@@ -10,7 +10,10 @@
 	anchored = TRUE
 	max_integrity = 100
 	pass_flags = PASSTABLE
-	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 10)
+	resistance_flags = FLAMMABLE
+	custom_materials = list(
+		/datum/material/wood = SHEET_MATERIAL_AMOUNT  * 10,
+	)
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
 
@@ -30,13 +33,14 @@
 	drop_everything_contained()
 	return ..()
 
-/obj/structure/large_mortar/AltClick(mob/user)
+/obj/structure/large_mortar/click_alt(mob/user)
 	if(!length(contents))
 		balloon_alert(user, "nothing inside")
-		return
+		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
+	return CLICK_ACTION_SUCCESS
 
 /// Drops all contents at the mortar
 /obj/structure/large_mortar/proc/drop_everything_contained()
@@ -59,6 +63,28 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/large_mortar/attackby(obj/item/attacking_item, mob/living/carbon/human/user)
+	if(istype(attacking_item, /obj/item/storage/bag))
+		if(length(contents) >= maximum_contained_items)
+			balloon_alert(user, "already full")
+			return TRUE
+
+		if(!length(attacking_item.contents))
+			balloon_alert(user, "nothing to transfer!")
+			return TRUE
+
+		for(var/obj/item/target_item in attacking_item.contents)
+			if(length(contents) >= maximum_contained_items)
+				break
+
+			if(target_item.juice_typepath || target_item.grind_results)
+				target_item.forceMove(src)
+
+		if (length(contents) >= maximum_contained_items)
+			balloon_alert(user, "filled!")
+		else
+			balloon_alert(user, "transferred")
+		return TRUE
+
 	if(istype(attacking_item, /obj/item/pestle))
 		if(!anchored)
 			balloon_alert(user, "secure to ground first")
@@ -82,15 +108,21 @@
 			return
 
 		balloon_alert_to_viewers("grinding...")
-		if(!do_after(user, 5 SECONDS, target = src))
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+		if(!do_after(user, 5 SECONDS * skill_modifier, target = src))
 			balloon_alert_to_viewers("stopped grinding")
 			return
 
-		user.adjustStaminaLoss(LARGE_MORTAR_STAMINA_USE) //This is a bit more tiring than a normal sized mortar and pestle
+		var/stamina_use = LARGE_MORTAR_STAMINA_USE
+		if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+			stamina_use *= 0.5 //so it uses half the amount of stamina (35 instead of 70)
+
+		user.adjustStaminaLoss(stamina_use) //This is a bit more tiring than a normal sized mortar and pestle
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		switch(picked_option)
 			if("Juice")
 				for(var/obj/item/target_item as anything in contents)
-					if(target_item.juice_results)
+					if(target_item.juice_typepath)
 						juice_target_item(target_item, user)
 					else
 						grind_target_item(target_item, user)
@@ -103,7 +135,7 @@
 						juice_target_item(target_item, user)
 		return
 
-	if(!attacking_item.juice_results && !attacking_item.grind_results)
+	if(!attacking_item.grind_results && !attacking_item.juice_typepath)
 		balloon_alert(user, "can't grind this")
 		return ..()
 
@@ -112,27 +144,35 @@
 		return
 
 	attacking_item.forceMove(src)
+	return ..()
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
-	to_be_juiced.on_juice()
-	reagents.add_reagent_list(to_be_juiced.juice_results)
+	if(to_be_juiced.flags_1 & HOLOGRAM_1)
+		to_chat(user, span_notice("You try to juice [to_be_juiced], but it fades away!"))
+		qdel(to_be_juiced)
+		return
 
-	if(to_be_juiced.reagents) //If juiced item has reagents within, transfer them to the mortar
-		to_be_juiced.reagents.trans_to(src, to_be_juiced.reagents.total_volume, transfered_by = user)
+	if(!to_be_juiced.juice(src.reagents, user))
+		to_chat(user, span_danger("You fail to juice [to_be_juiced]."))
 
-	to_chat(user, span_notice("You juice [to_be_juiced] into a fine liquid."))
+	to_chat(user, span_notice("You juice [to_be_juiced] into a liquid."))
 	QDEL_NULL(to_be_juiced)
 
 ///Grinds the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/grind_target_item(obj/item/to_be_ground, mob/living/carbon/human/user)
-	to_be_ground.on_grind()
-	reagents.add_reagent_list(to_be_ground.grind_results)
+	if(to_be_ground.flags_1 & HOLOGRAM_1)
+		to_chat(user, span_notice("You try to grind [to_be_ground], but it fades away!"))
+		qdel(to_be_ground)
+		return
 
-	if(to_be_ground.reagents) //If grinded item has reagents within, transfer them to the mortar
-		to_be_ground.reagents.trans_to(src, to_be_ground.reagents.total_volume, transfered_by = user)
+	if(!to_be_ground.grind(src.reagents, user))
+		if(isstack(to_be_ground))
+			to_chat(usr, span_notice("[src] attempts to grind as many pieces of [to_be_ground] as possible."))
+		else
+			to_chat(user, span_danger("You fail to grind [to_be_ground]."))
 
-	to_chat(user, span_notice("You break [to_be_ground] into powder."))
+	to_chat(user, span_notice("You break [to_be_ground] into a fine powder."))
 	QDEL_NULL(to_be_ground)
 
 #undef LARGE_MORTAR_STAMINA_MINIMUM

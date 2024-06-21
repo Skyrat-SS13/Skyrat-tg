@@ -1,12 +1,6 @@
 ///Allows an admin to open the panel
-/client/proc/intensity_credits_panel()
-	set name = "ICES Events Panel"
-	set category = "Admin.Events"
-
-	if(!holder || !check_rights(R_FUN))
-		return
-
-	holder.intensity_credits_panel()
+ADMIN_VERB(intensity_credits_panel, R_FUN, "ICES Events Panel", "Opens up the ICES panel.", ADMIN_CATEGORY_EVENTS)
+	user.holder?.intensity_credits_panel()
 
 ///Opens up the ICES panel
 /datum/admins/proc/intensity_credits_panel()

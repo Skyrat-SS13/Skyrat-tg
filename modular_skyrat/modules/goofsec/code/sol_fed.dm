@@ -11,7 +11,7 @@
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
 GLOBAL_VAR(pizza_order)
-GLOBAL_VAR_INIT(solfed_tech_charge, -15000)
+GLOBAL_VAR_INIT(solfed_tech_charge, -7500)
 GLOBAL_LIST_INIT(pizza_names, list(
 	"Dixon Buttes",
 	"I. C. Weiner",
@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		if(EMERGENCY_RESPONSE_POLICE)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/request_911/police
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate marshal support, and we are \
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've received a request for immediate marshal support, and we are \
 				sending our best marshals to support your station.\n\n\
 				If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
 				tune of $20,000.\n\n\
@@ -112,7 +112,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		if(EMERGENCY_RESPONSE_ATMOS)
 			team_size = tgui_input_number(usr, "How many techs would you like dispatched?", "How badly did you screw up?", 3, 3, 1)
 			cops_to_send = /datum/antagonist/ert/request_911/atmos
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation's 811 dispatch. We've recieved a report of stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation's 811 dispatch. We've received a report of stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
 				sending an Advanced Atmospherics team to support your station.\n\n\
 				The transcript of the call is as follows:\n\
 				[GLOB.call_911_msg]"
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		if(EMERGENCY_RESPONSE_EMT)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/request_911/emt
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate medical support, and we are \
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've received a request for immediate medical support, and we are \
 				sending our best emergency medical technicians to support your station.\n\n\
 				If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
 				tune of $20,000.\n\n\
@@ -142,8 +142,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			poll_question = "The station has ordered $35,000 in pizza. Will you deliver?"
 			cell_phone_number = "Dogginos"
 			list_to_use = "dogginos"
-	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg', has_important_message=TRUE)
-	var/list/candidates = poll_ghost_candidates(poll_question, "deathsquad")
+	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg', has_important_message=TRUE, color_override = "yellow")
+	var/list/candidates = SSpolling.poll_ghost_candidates(poll_question, ROLE_DEATHSQUAD)
 
 	if(candidates.len)
 		//Pick the (un)lucky players
@@ -172,11 +172,11 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			cop.mind.add_antag_datum(ert_antag)
 			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 			SSjob.SendToLateJoin(cop)
-			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
+			cop.grant_language(/datum/language/common, source = LANGUAGE_SPAWNER)
 
 			if(cops_to_send == /datum/antagonist/ert/request_911/atmos) // charge for atmos techs
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
-				station_balance?._adjust_money(GLOB.solfed_tech_charge)
+				station_balance?.adjust_money(GLOB.solfed_tech_charge)
 			else
 				var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 				phone.gang_id = cell_phone_number
@@ -256,9 +256,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	var/mob/living/M = mob_override || owner.current
 	if(M.hud_used)
 		var/datum/hud/H = M.hud_used
-		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted()
+		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted(null, H)
 		H.wanted_lvl = giving_wanted_lvl
-		giving_wanted_lvl.hud = H
 		H.infodisplay += giving_wanted_lvl
 		H.mymob.client.screen += giving_wanted_lvl
 
@@ -322,21 +321,26 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/outfit/request_911/police
 	name = "911 Response: Marshal"
-	back = /obj/item/storage/backpack/duffelbag/cops
-	uniform = /obj/item/clothing/under/rank/security/detective/cowboy
-	shoes = /obj/item/clothing/shoes/cowboy
+	back = /obj/item/storage/backpack/satchel
+	uniform = /obj/item/clothing/under/sol_peacekeeper
+	suit = /obj/item/clothing/suit/armor/vest/det_suit/sol
+	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/cowboy
-	belt = /obj/item/gun/energy/disabler
-	r_pocket = /obj/item/lighter
-	l_pocket = /obj/item/restraints/handcuffs
+	head = /obj/item/clothing/head/soft/black
+	suit_store = /obj/item/gun/energy/disabler
+	belt = /obj/item/storage/belt/security/full
+	r_pocket = /obj/item/flashlight/seclite
+	l_pocket = /obj/item/gun/ballistic/revolver/sol
 	id = /obj/item/card/id/advanced/solfed
-	backpack_contents = list(/obj/item/storage/box/survival = 1,
-		/obj/item/storage/box/handcuffs = 1,
-		/obj/item/melee/baton/security/loaded = 1,
+	backpack_contents = list(
+		/obj/item/storage/box/survival = 1,
+		/obj/item/ammo_box/c35sol = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		/obj/item/beamout_tool = 1)
+		/obj/item/beamout_tool = 1,
+		/obj/item/taperecorder = 1,
+		/obj/item/storage/box/evidence = 1,
+	)
 
 	id_trim = /datum/id_trim/solfed
 
@@ -367,7 +371,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/rwd/loaded = 1,
 		/obj/item/beamout_tool = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		)
+	)
 	id_trim = /datum/id_trim/solfed/atmos
 
 /obj/item/radio/headset/headset_solfed/atmos
@@ -397,21 +401,27 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/outfit/request_911/emt
 	name = "911 Response: EMT"
-	back = /obj/item/storage/backpack/duffelbag/cops
-	uniform = /obj/item/clothing/under/rank/medical/paramedic
-	shoes = /obj/item/clothing/shoes/sneakers/white
+	back = /obj/item/storage/backpack/medic
+	uniform = /obj/item/clothing/under/sol_emt
+	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_med
-	head = /obj/item/clothing/head/soft/paramedic
+	mask = /obj/item/clothing/mask/gas/alt
+	head = /obj/item/clothing/head/helmet/toggleable/sf_hardened/emt
 	id = /obj/item/card/id/advanced/solfed
-	suit =  /obj/item/clothing/suit/toggle/labcoat/paramedic
+	suit = /obj/item/clothing/suit/armor/sf_hardened/emt
 	gloves = /obj/item/clothing/gloves/latex/nitrile
-	belt = /obj/item/storage/belt/medical/paramedic
-	suit_store = /obj/item/flashlight/pen/paramedic
-	backpack_contents = list(/obj/item/storage/box/survival = 1,
-		/obj/item/roller = 1,
-		/obj/item/storage/medkit/surgery = 1,
+	belt = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
+	suit_store = /obj/item/tank/internals/emergency_oxygen/engi
+	r_pocket = /obj/item/flashlight/seclite
+	l_pocket = /obj/item/storage/medkit/civil_defense
+	r_hand = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
+	backpack_contents = list(
+		/obj/item/storage/box/survival = 1,
+		/obj/item/emergency_bed = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		/obj/item/beamout_tool = 1)
+		/obj/item/beamout_tool = 1,
+		/obj/item/defibrillator/compact/loaded = 1,
+	)
 
 	id_trim = /datum/id_trim/solfed
 
@@ -439,29 +449,31 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/outfit/request_911/condom_destroyer
 	name = "911 Response: Armed S.W.A.T. Officer"
-	back = /obj/item/storage/backpack/duffelbag/cops
-	uniform = /obj/item/clothing/under/rank/security/officer/beatcop
+	back = /obj/item/storage/backpack
+	uniform = /obj/item/clothing/under/sol_peacekeeper
 	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/helmet/toggleable/riot
+	head = /obj/item/clothing/head/helmet/sf_peacekeeper
 	belt = /obj/item/gun/energy/disabler
-	suit = /obj/item/clothing/suit/armor/riot
-	r_pocket = /obj/item/lighter
+	suit = /obj/item/clothing/suit/armor/sf_peacekeeper
+	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
-	l_hand = /obj/item/gun/ballistic/shotgun/riot
-	backpack_contents = list(/obj/item/storage/box/survival = 1,
+	l_hand = /obj/item/gun/ballistic/automatic/sol_rifle
+	backpack_contents = list(
+		/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/box/lethalshot = 2,
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 3,
 		/obj/item/solfed_reporter/treason_reporter = 1,
-		/obj/item/beamout_tool = 1)
+		/obj/item/beamout_tool = 1,
+	)
 
 	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/treason_destroyer
-	name = "Sol Federation Military"
+	name = "Sol Federation Peacekeeper"
 	role = "Private"
 	department = "Military"
 	outfit = /datum/outfit/request_911/treason_destroyer
@@ -483,22 +495,25 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /datum/outfit/request_911/treason_destroyer
 	name = "911 Response: SolFed Military"
 
-	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet
-	mask = /obj/item/clothing/mask/gas/hecu2
+	uniform = /obj/item/clothing/under/sol_peacekeeper
+	head = /obj/item/clothing/head/helmet/sf_sacrificial
+	mask = /obj/item/clothing/mask/gas/alt
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/armor/vest
-	shoes = /obj/item/clothing/shoes/combat
+	suit = /obj/item/clothing/suit/armor/sf_sacrificial
+	shoes = /obj/item/clothing/shoes/jackboots
 
-	back = /obj/item/storage/backpack/duffelbag/cops
+	back = /obj/item/storage/backpack
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
 	l_pocket = /obj/item/restraints/handcuffs
+	r_pocket = /obj/item/flashlight/seclite
 	id = /obj/item/card/id/advanced/solfed
-	r_hand = /obj/item/gun/ballistic/automatic/m16
-	backpack_contents = list(/obj/item/storage/box/handcuffs = 1,
+	r_hand = /obj/item/gun/ballistic/automatic/sol_rifle
+	backpack_contents = list(
+		/obj/item/storage/box/handcuffs = 1,
+		/obj/item/sacrificial_face_shield = 1,
 		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/ammo_box/magazine/m16 = 4
+		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 4,
 	)
 
 	id_trim = /datum/id_trim/solfed
@@ -564,10 +579,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			GLOB.solfed_responder_info[type_of_callers][SOLFED_DECLARED] = TRUE
 			if(fine_station)
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
-				station_balance?._adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
+				station_balance?.adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
 
-			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE)
-			var/list/candidates = poll_ghost_candidates(ghost_poll_msg, jobban_to_check)
+			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE, color_override = "yellow")
+			var/list/candidates = SSpolling.poll_ghost_candidates(ghost_poll_msg, jobban_to_check)
 
 			if(candidates.len)
 				//Pick the (un)lucky players
@@ -596,7 +611,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 					cop.mind.add_antag_datum(ert_antag)
 					cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 					SSjob.SendToLateJoin(cop)
-					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
+					cop.grant_language(/datum/language/common, source = LANGUAGE_SPAWNER)
 
 					var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 					phone.gang_id = cell_phone_number
@@ -681,7 +696,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		you placed at the Dogginos that's the seventh furthest Dogginos in the galaxy from your station, and we want to ensure maximum customer satisfaction and \
 		employee satisfaction as well.\n\
 		We've gone ahead and sent some some of our finest regional managers to handle the situation.\n\
-		We hope you enjoy your pizzas, and that we'll be able to recieve the bill of $35,000 plus the fifteen percent tip for our drivers shortly!"
+		We hope you enjoy your pizzas, and that we'll be able to receive the bill of $35,000 plus the fifteen percent tip for our drivers shortly!"
 	announcement_source = "Dogginos"
 	fine_station = FALSE
 	ghost_poll_msg = "Dogginos is sending regional managers to get the station to pay up the pizza money they owe. Are you ready to do some Customer Relations?"

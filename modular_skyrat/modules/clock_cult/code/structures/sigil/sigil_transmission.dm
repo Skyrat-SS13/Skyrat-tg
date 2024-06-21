@@ -71,7 +71,7 @@
 
 		else
 			if(power_cell.charge)
-				target_mech.use_power(power_cell.chargerate)
+				target_mech.use_energy(power_cell.chargerate)
 				GLOB.clock_power += POWER_SIPHON
 
 	else if(iscyborg(apply_to))

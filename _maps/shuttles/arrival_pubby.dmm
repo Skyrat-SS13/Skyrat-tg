@@ -9,10 +9,12 @@
 /obj/machinery/door/airlock/titanium{
 	name = "Arrivals Shuttle Airlock"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/arrival)
 "d" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plating,
 /area/shuttle/arrival)
 "e" = (
@@ -26,26 +28,12 @@
 "f" = (
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
-"g" = (
-/obj/machinery/light/directional/north,
-/obj/structure/sign/poster/official/enlist{
-	pixel_y = 32
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
 "h" = (
 /obj/structure/closet/wardrobe/black,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "i" = (
 /obj/structure/closet/wardrobe/mixed,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"j" = (
-/obj/machinery/light/directional/north,
-/obj/machinery/requests_console/directional/north{
-	department = "Arrivals shuttle"
-	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "k" = (
@@ -67,6 +55,7 @@
 	name = "Ship Shutters"
 	},
 /obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plating,
 /area/shuttle/arrival)
 "n" = (
@@ -107,11 +96,6 @@
 /obj/item/clothing/mask/breath,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
-"t" = (
-/obj/structure/extinguisher_cabinet/directional/south,
-/obj/machinery/light/directional/south,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
 "u" = (
 /obj/item/radio/intercom/directional/south,
 /obj/machinery/light/directional/south,
@@ -123,8 +107,24 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
+"x" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/arrival)
 "C" = (
 /turf/open/floor/mineral/titanium,
+/area/shuttle/arrival)
+"P" = (
+/obj/machinery/requests_console/directional/north{
+	department = "Arrivals shuttle";
+	name = "Arrival Shuttle Requests Console"
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/arrival)
+"Y" = (
+/obj/machinery/light/directional/north,
+/obj/structure/sign/poster/official/enlist/directional/north,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 
 (1,1,1) = {"
@@ -169,10 +169,10 @@ c
 "}
 (6,1,1) = {"
 b
-g
+Y
 C
 C
-t
+x
 b
 "}
 (7,1,1) = {"
@@ -201,7 +201,7 @@ d
 "}
 (10,1,1) = {"
 b
-j
+P
 o
 o
 u

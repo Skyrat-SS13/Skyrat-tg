@@ -60,7 +60,3 @@ GLOBAL_LIST_INIT(ticket_counter, list())
 		return
 
 	usr.client.view_opfors()
-
-//called by admin topic
-/obj/effect/statclick/opfor_list/proc/Action()
-	Click()

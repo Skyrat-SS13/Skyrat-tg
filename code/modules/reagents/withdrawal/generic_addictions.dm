@@ -74,8 +74,8 @@
 /datum/addiction/hallucinogens/withdrawal_enters_stage_2(mob/living/carbon/affected_carbon)
 	. = ..()
 	var/atom/movable/plane_master_controller/game_plane_master_controller = affected_carbon.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
-	game_plane_master_controller.add_filter("hallucinogen_wave", 10, wave_filter(300, 300, 3, 0, WAVE_SIDEWAYS))
 	game_plane_master_controller.add_filter("hallucinogen_blur", 10, angular_blur_filter(0, 0, 3))
+	game_plane_master_controller.add_filter("hallucinogen_wave", 10, wave_filter(300, 300, 3, 0, WAVE_SIDEWAYS))
 
 
 /datum/addiction/hallucinogens/withdrawal_enters_stage_3(mob/living/carbon/affected_carbon)
@@ -109,12 +109,14 @@
 	var/mob/living/carbon/human/affected_human = affected_carbon
 	if(affected_human.gender == MALE)
 		to_chat(affected_human, span_warning("Your chin itches."))
-		affected_human.facial_hairstyle = "Beard (Full)"
-		affected_human.update_body_parts()
+		affected_human.set_facial_hairstyle("Beard (Full)", update = TRUE)
 	//Only like gross food
-	affected_human.dna?.species.liked_food = GROSS
-	affected_human.dna?.species.disliked_food = NONE
-	affected_human.dna?.species.toxic_food = ~GROSS
+	var/obj/item/organ/internal/tongue/tongue = affected_carbon.get_organ_slot(ORGAN_SLOT_TONGUE)
+	if(!tongue)
+		return
+	tongue.liked_foodtypes = GROSS
+	tongue.disliked_foodtypes = NONE
+	tongue.toxic_foodtypes = ~GROSS
 
 /datum/addiction/maintenance_drugs/withdrawal_enters_stage_3(mob/living/carbon/affected_carbon)
 	. = ..()
@@ -143,15 +145,18 @@
 /datum/addiction/maintenance_drugs/end_withdrawal(mob/living/carbon/affected_carbon)
 	. = ..()
 	affected_carbon.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	//restore tongue's tastes
+	var/obj/item/organ/internal/tongue/tongue = affected_carbon.get_organ_slot(ORGAN_SLOT_TONGUE)
+	if(tongue)
+		tongue.liked_foodtypes = initial(tongue.liked_foodtypes)
+		tongue.disliked_foodtypes = initial(tongue.disliked_foodtypes)
+		tongue.toxic_foodtypes = initial(tongue.toxic_foodtypes)
 	if(!ishuman(affected_carbon))
 		return
 	var/mob/living/carbon/human/affected_human = affected_carbon
-	affected_human.dna?.species.liked_food = initial(affected_human.dna?.species.liked_food)
-	affected_human.dna?.species.disliked_food = initial(affected_human.dna?.species.disliked_food)
-	affected_human.dna?.species.toxic_food = initial(affected_human.dna?.species.toxic_food)
 	REMOVE_TRAIT(affected_human, TRAIT_NIGHT_VISION, "maint_drug_addiction")
 	var/obj/item/organ/internal/eyes/eyes = affected_human.get_organ_by_type(/obj/item/organ/internal/eyes)
-	eyes.refresh()
+	eyes?.refresh()
 
 ///Makes you a hypochondriac - I'd like to call it hypochondria, but "I could use some hypochondria" doesn't work
 /datum/addiction/medicine
@@ -178,7 +183,7 @@
 
 /datum/addiction/medicine/withdrawal_stage_1_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
-	if(SPT_PROB(10, seconds_per_tick))
+	if(SPT_PROB(1, seconds_per_tick))
 		affected_carbon.emote("cough")
 
 /datum/addiction/medicine/withdrawal_enters_stage_2(mob/living/carbon/affected_carbon)
@@ -211,6 +216,9 @@
 
 /datum/addiction/medicine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
+	if(SPT_PROB(2, seconds_per_tick))
+		affected_carbon.emote("cough")
+
 	var/datum/hallucination/fake_health_doll/hallucination = health_doll_ref?.resolve()
 	if(QDELETED(hallucination))
 		health_doll_ref = null
@@ -230,13 +238,12 @@
 
 /datum/addiction/medicine/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
+	if(SPT_PROB(5, seconds_per_tick))
+		affected_carbon.emote("cough")
+
 	var/datum/hallucination/fake_health_doll/hallucination = health_doll_ref?.resolve()
 	if(!QDELETED(hallucination) && SPT_PROB(5, seconds_per_tick))
 		hallucination.increment_fake_damage()
-		return
-
-	if(SPT_PROB(15, seconds_per_tick))
-		affected_carbon.emote("cough")
 		return
 
 	if(SPT_PROB(65, seconds_per_tick))
@@ -262,7 +269,7 @@
 	QDEL_NULL(fake_alert_ref)
 	QDEL_NULL(health_doll_ref)
 
-/* SKYRAT CHANGE, MOVED TO MODULAR.
+/* SKYRAT EDIT REMOVAL START - MOVED TO MODULAR.
 ///Nicotine
 /datum/addiction/nicotine
 	name = "nicotine"
@@ -279,12 +286,12 @@
 /datum/addiction/nicotine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
 	affected_carbon.set_jitter_if_lower(20 SECONDS * seconds_per_tick)
-	if(SPT_PROB(10, seconds_per_tick))
+	if(SPT_PROB(2, seconds_per_tick))
 		affected_carbon.emote("cough")
 
 /datum/addiction/nicotine/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, seconds_per_tick)
 	. = ..()
 	affected_carbon.set_jitter_if_lower(30 SECONDS * seconds_per_tick)
-	if(SPT_PROB(15, seconds_per_tick))
+	if(SPT_PROB(5, seconds_per_tick))
 		affected_carbon.emote("cough")
-*/
+*/ // SKYRAT EDIT REMOVAL END

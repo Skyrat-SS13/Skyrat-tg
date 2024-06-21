@@ -7,7 +7,6 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
-	flags_1 = NODECONSTRUCT_1
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -45,6 +44,10 @@
 	if(!has_buckled_mobs() && can_buckle)
 		. += span_notice("They need to be wearing <b>full-body shibari</b>, and you need to be <b>holding ropes</b>!")
 
+// previously NO_DECONSTRUCT
+/obj/structure/chair/shibari_stand/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
+
 /obj/structure/chair/shibari_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	var/mob/living/buckled = buckled_mob
 	if(buckled)
@@ -70,7 +73,7 @@
 
 /obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/buckled, mob/user, check_loc = TRUE)
 
-	if(!buckled.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!buckled.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [buckled] doesn't want you to do that."))
 		return FALSE
 
@@ -123,9 +126,8 @@
 		to_chat(user, span_warning("You cannot buckle yourself to this stand, there is no way that level of self-bondage exists!"))
 		return FALSE
 
-/obj/structure/chair/shibari_stand/deconstruct(disassembled)
+/obj/structure/chair/shibari_stand/atom_deconstruct(disassembled)
 	qdel(src)
-	return TRUE
 
 /obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)
@@ -185,7 +187,7 @@
 	breakouttime = 2 MINUTES
 
 //Disassembling shibari stand
-/obj/structure/chair/shibari_stand/CtrlShiftClick(mob/user)
+/obj/structure/chair/shibari_stand/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -203,11 +205,7 @@
 	return TRUE
 
 //Changing color of shibari stand
-/obj/structure/chair/shibari_stand/CtrlClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/chair/shibari_stand/click_ctrl(mob/user)
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
 	var/datum/greyscale_modify_menu/menu = new(

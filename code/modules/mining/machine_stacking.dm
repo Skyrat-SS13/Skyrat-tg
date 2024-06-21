@@ -12,12 +12,21 @@
 
 /obj/machinery/mineral/stacking_unit_console/Initialize(mapload)
 	. = ..()
-	machine = locate(/obj/machinery/mineral/stacking_machine) in view(2, src)
-	if (machine)
-		machine.console = src
+	var/area/our_area = get_area(src)
+	if(!isnull(our_area))
+		return
+	var/list/turf_list = our_area.get_turfs_by_zlevel(z)
+	if(!islist(turf_list))
+		return
+	for (var/turf/area_turf as anything in turf_list)
+		var/obj/machinery/mineral/stacking_machine/found_machine = locate(/obj/machinery/mineral/stacking_machine) in area_turf
+		if(!isnull(found_machine) && isnull(found_machine.console))
+			found_machine.console = src
+			machine = found_machine
+			break
 
 /obj/machinery/mineral/stacking_unit_console/Destroy()
-	if(machine)
+	if(!isnull(machine))
 		machine.console = null
 		machine = null
 	return ..()
@@ -26,8 +35,8 @@
 	if(!multitool_check_buffer(user, I))
 		return
 	var/obj/item/multitool/M = I
-	M.buffer = src
-	to_chat(user, span_notice("You store linkage information in [I]'s buffer."))
+	M.set_buffer(src)
+	balloon_alert(user, "saved to multitool buffer")
 	return TRUE
 
 /obj/machinery/mineral/stacking_unit_console/ui_interact(mob/user, datum/tgui/ui)
@@ -101,10 +110,15 @@
 /obj/machinery/mineral/stacking_machine/Initialize(mapload)
 	. = ..()
 	proximity_monitor = new(src, 1)
-	materials = AddComponent(/datum/component/remote_materials, "stacking", mapload, FALSE, (mapload && force_connect))
+	materials = AddComponent(
+		/datum/component/remote_materials, \
+		mapload, \
+		FALSE, \
+		(mapload && force_connect) \
+	)
 
 /obj/machinery/mineral/stacking_machine/Destroy()
-	if(console)
+	if(!isnull(console))
 		console.machine = null
 		console = null
 	materials = null
@@ -132,28 +146,26 @@
 	if (input_dir == output_dir)
 		rotate(input)
 
-/obj/machinery/mineral/stacking_machine/proc/process_sheet(obj/item/stack/sheet/inp)
-	if(QDELETED(inp))
+/obj/machinery/mineral/stacking_machine/proc/process_sheet(obj/item/stack/sheet/input)
+	if(QDELETED(input))
 		return
 
 	// Dump the sheets to the silo if attached
 	if(materials.silo && !materials.on_hold())
-		var/matlist = inp.custom_materials & materials.mat_container.materials
+		var/matlist = input.custom_materials & materials.mat_container.materials
 		if (length(matlist))
-			var/inserted = materials.mat_container.insert_item(inp)
-			materials.silo_log(src, "collected", inserted, "sheets", matlist)
-			qdel(inp)
+			materials.insert_item(input)
 			return
 
 	// No silo attached process to internal storage
-	var/key = inp.merge_type
+	var/key = input.merge_type
 	var/obj/item/stack/sheet/storage = stack_list[key]
 	if(!storage) //It's the first of this sheet added
-		stack_list[key] = storage = new inp.type(src, 0)
-	storage.amount += inp.amount //Stack the sheets
-	qdel(inp)
+		stack_list[key] = storage = new input.type(src, 0)
+	storage.amount += input.amount //Stack the sheets
+	qdel(input)
 
 	while(storage.amount >= stack_amt) //Get rid of excessive stackage
-		var/obj/item/stack/sheet/out = new inp.type(null, stack_amt)
+		var/obj/item/stack/sheet/out = new input.type(null, stack_amt)
 		unload_mineral(out)
 		storage.amount -= stack_amt

@@ -191,7 +191,7 @@
 
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
-		carbon_user.head_update(src, forced = TRUE)
+		carbon_user.update_worn_head()
 
 
 /// "enable" the spectacles, flipping them down and applying their effects, calling on_toggle_eyes() if someone is wearing them
@@ -294,7 +294,7 @@
 
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
-		carbon_user.head_update(src, forced = TRUE)
+		carbon_user.update_worn_head()
 
 
 /// Turn on the visor, calling apply_to_wearer() and changing the icon state
@@ -329,7 +329,7 @@
 
 	ADD_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
-	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
+	ADD_TRAIT(wearer, TRAIT_KNOW_ROBO_WIRES, CLOTHING_TRAIT)
 	color_cutoffs = list(50, 10, 30)
 	wearer.update_sight()
 
@@ -347,7 +347,7 @@
 
 	REMOVE_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
-	REMOVE_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
+	REMOVE_TRAIT(wearer, TRAIT_KNOW_ROBO_WIRES, CLOTHING_TRAIT)
 	color_cutoffs = null
 	wearer.update_sight()
 

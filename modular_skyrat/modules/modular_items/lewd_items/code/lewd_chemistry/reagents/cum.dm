@@ -35,9 +35,3 @@
 	icon_state ="shotglasscream"
 	name = "glass of cum"
 	desc = "O-oh, my...~"
-
-/datum/chemical_reaction/cum
-	results = list(/datum/reagent/consumable/cum = 5)
-	required_reagents = list(/datum/reagent/blood = 2, /datum/reagent/consumable/milk = 2, /datum/reagent/consumable/salt = 1) // Iiiinteresting...
-	mix_message = "The mixture turns into a gooey, musky white liquid..."
-	erp_reaction = TRUE

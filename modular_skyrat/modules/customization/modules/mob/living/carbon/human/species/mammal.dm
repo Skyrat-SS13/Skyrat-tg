@@ -1,37 +1,16 @@
 /datum/species/mammal
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = SPECIES_MAMMAL
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"horns" = "None",
-		"ears" = ACC_RANDOM,
-		"legs" = ACC_RANDOM,
-		"taur" = "None",
-		"fluff" = "None",
-		"wings" = "None",
-		"head_acc" = "None",
-		"neck_acc" = "None"
-	)
-	liked_food = GRAIN | MEAT
-	disliked_food = CLOTH | GROSS | GORE
-	toxic_food = TOXIC
-	payday_modifier = 0.75
+	mutanttongue = /obj/item/organ/internal/tongue/mammal
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
@@ -42,7 +21,28 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
-/datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/mammal/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Husky", TRUE),
+		"snout" = list("Husky", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Husky", TRUE),
+		"legs" = list("Normal Legs", TRUE),
+		"taur" = list("None", FALSE),
+		"fluff" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"head_acc" = list("None", FALSE),
+		"neck_acc" = list("None", FALSE),
+	)
+
+/obj/item/organ/internal/tongue/mammal
+	liked_foodtypes = GRAIN | MEAT
+	disliked_foodtypes = CLOTH | GROSS | GORE
+	toxic_foodtypes = TOXIC
+
+
+/datum/species/mammal/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/third_color
@@ -76,9 +76,10 @@
 			main_color = "#[random_color()]"
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = third_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = third_color
+	return features
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"

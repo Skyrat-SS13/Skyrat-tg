@@ -1,9 +1,9 @@
 /obj/item/disk/surgery/brainwashing
 	name = "Surgery Disk" //SKYRAT EDIT: Formerly "Brainwashing Surgery Disk" //Finally I can upload the funny surgery disk without letting everyone in the room know about it!
-	desc = "The disk provides instructions on some kind of surgery, but the label has been scratched off..." //Skyrat edit: Moved to Special Desc. 
+	desc = "The disk provides instructions on some kind of surgery, but the label has been scratched off..." //Skyrat edit: Moved to Special Desc.
 	surgeries = list(/datum/surgery/advanced/brainwashing)
-	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
-	special_desc_jobs = list("Medical Doctor, Chief Medical Officer, Roboticist") //SKYRAT CHANGE //You mean to tell me the roles that get this role-exclusive item know what it does?
+	special_desc_requirement = EXAMINE_CHECK_JOB // SKYRAT EDIT
+	special_desc_jobs = list("Medical Doctor, Chief Medical Officer, Roboticist") // SKYRAT EDIT CHANGE //You mean to tell me the roles that get this role-exclusive item know what it does?
 	special_desc = "The disk provides instructions on how to impress an order on a brain, making it the primary objective of the patient."
 
 /datum/surgery/advanced/brainwashing

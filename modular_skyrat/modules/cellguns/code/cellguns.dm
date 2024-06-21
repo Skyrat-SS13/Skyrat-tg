@@ -72,10 +72,10 @@
 		charge_overlay.pixel_y = ammo_y_offset * (i - 1)
 		. += new /mutable_appearance(charge_overlay)
 
-/obj/item/gun/energy/cell_loaded/AltClick(mob/user, modifiers)
+/obj/item/gun/energy/cell_loaded/click_alt(mob/user, modifiers)
 	if(!installedcells.len) //Checks to see if there is a cell inside of the gun, before removal.
 		to_chat(user, span_notice("The [src] has no cells inside"))
-		return ..()
+		return CLICK_ACTION_BLOCKING
 
 	to_chat(user, span_notice("You remove a cell"))
 	var/obj/item/last_cell = installedcells[installedcells.len]
@@ -87,6 +87,7 @@
 	installedcells -= last_cell
 	ammo_type.len--
 	select_fire(user)
+	return CLICK_ACTION_SUCCESS
 
 /// A cellgun used for debug, it is able to use any weaponcell.
 /obj/item/gun/energy/cell_loaded/alltypes

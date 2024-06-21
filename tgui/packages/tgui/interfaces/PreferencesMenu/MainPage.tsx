@@ -1,15 +1,39 @@
+import { filter, map, sortBy } from 'common/collections';
+import { exhaustiveCheck } from 'common/exhaustive';
 import { classes } from 'common/react';
-import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE
-import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
+import { createSearch } from 'common/string';
+import { ReactNode, useState } from 'react';
+
+import { sendAct, useBackend } from '../../backend';
+import {
+  Autofocus,
+  Box,
+  Button,
+  Dropdown, // SKYRAT EDIT ADDITION
+  Flex,
+  Input,
+  LabeledList,
+  Popper,
+  Stack,
+} from '../../components';
 import { CharacterPreview } from '../common/CharacterPreview';
+import {
+  createSetPreference,
+  PreferencesMenuData,
+  RandomSetting,
+  ServerData,
+} from './data';
+import { DeleteCharacterPopup } from './DeleteCharacterPopup';
+import { MultiNameInput, NameInput } from './names';
+import { PageButton } from './PageButton';
+import features from './preferences/features';
+import {
+  FeatureChoicedServerData,
+  FeatureValueInput,
+} from './preferences/features/base';
+import { Gender, GENDERS } from './preferences/gender';
 import { RandomizationButton } from './RandomizationButton';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
-import { MultiNameInput, NameInput } from './names';
-import { Gender, GENDERS } from './preferences/gender';
-import features from './preferences/features';
-import { FeatureChoicedServerData, FeatureValueInput } from './preferences/features/base';
-import { filterMap, sortBy } from 'common/collections';
 import { useRandomToggleState } from './useRandomToggleState';
 
 const CLOTHING_CELL_SIZE = 48;
@@ -23,6 +47,7 @@ const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
   handleLoadout: () => void; // SKYRAT EDIT ADDITION
+  handleFood: () => void; // SKYRAT EDIT ADDITION
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -57,8 +82,8 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      {/* SKYRAT EDIT ADDITION START */}
       {props.handleLoadout && (
-        // SKYRAT EDIT ADDITION
         <Stack.Item>
           <Button
             onClick={props.handleLoadout}
@@ -69,25 +94,33 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      <Stack.Item>
+        <Button
+          onClick={props.handleFood}
+          fontSize="22px"
+          icon="drumstick-bite"
+          tooltip="Edit Food Preferences"
+          tooltipPosition="top"
+        />
+        {/* SKYRAT EDIT ADDITION END */}
+      </Stack.Item>
     </Stack>
   );
 };
 
-const ChoicedSelection = (
-  props: {
-    name: string;
-    catalog: FeatureChoicedServerData;
-    selected: string;
-    supplementalFeature?: string;
-    supplementalValue?: unknown;
-    onClose: () => void;
-    onSelect: (value: string) => void;
-  },
-  context
-) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+const ChoicedSelection = (props: {
+  name: string;
+  catalog: FeatureChoicedServerData;
+  selected: string;
+  supplementalFeature?: string;
+  supplementalValue?: unknown;
+  onClose: () => void;
+  onSelect: (value: string) => void;
+}) => {
+  const { act } = useBackend<PreferencesMenuData>();
 
   const { catalog, supplementalFeature, supplementalValue } = props;
+  const [getSearchText, searchTextSet] = useState('');
 
   if (!catalog.icons) {
     return <Box color="red">Provided catalog had no icons!</Box>;
@@ -95,15 +128,16 @@ const ChoicedSelection = (
 
   return (
     <Box
+      className="ChoicedSelection"
       style={{
-        background: 'white',
         padding: '5px',
 
         height: `${
           CLOTHING_SELECTION_CELL_SIZE * CLOTHING_SELECTION_MULTIPLIER
         }px`,
         width: `${CLOTHING_SELECTION_CELL_SIZE * CLOTHING_SELECTION_WIDTH}px`,
-      }}>
+      }}
+    >
       <Stack vertical fill>
         <Stack.Item>
           <Stack fill>
@@ -122,11 +156,12 @@ const ChoicedSelection = (
             <Stack.Item grow>
               <Box
                 style={{
-                  'border-bottom': '1px solid #888',
-                  'font-weight': 'bold',
-                  'font-size': '14px',
-                  'text-align': 'center',
-                }}>
+                  borderBottom: '1px solid #888',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  textAlign: 'center',
+                }}
+              >
                 Select {props.name.toLowerCase()}
               </Box>
             </Stack.Item>
@@ -141,37 +176,49 @@ const ChoicedSelection = (
 
         <Stack.Item overflowX="hidden" overflowY="scroll">
           <Autofocus>
+            <Input
+              placeholder="Search..."
+              style={{
+                margin: '0px 5px',
+                width: '95%',
+              }}
+              onInput={(_, value) => searchTextSet(value)}
+            />
             <Flex wrap>
-              {Object.entries(catalog.icons).map(([name, image], index) => {
-                return (
-                  <Flex.Item
-                    key={index}
-                    basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
-                    style={{
-                      padding: '5px',
-                    }}>
-                    <Button
-                      onClick={() => {
-                        props.onSelect(name);
-                      }}
-                      selected={name === props.selected}
-                      tooltip={name}
-                      tooltipPosition="right"
+              {searchInCatalog(getSearchText, catalog.icons).map(
+                ([name, image], index) => {
+                  return (
+                    <Flex.Item
+                      key={index}
+                      basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
                       style={{
-                        height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
-                        width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
-                      }}>
-                      <Box
-                        className={classes([
-                          'preferences32x32',
-                          image,
-                          'centered-image',
-                        ])}
-                      />
-                    </Button>
-                  </Flex.Item>
-                );
-              })}
+                        padding: '5px',
+                      }}
+                    >
+                      <Button
+                        onClick={() => {
+                          props.onSelect(name);
+                        }}
+                        selected={name === props.selected}
+                        tooltip={name}
+                        tooltipPosition="right"
+                        style={{
+                          height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                          width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                        }}
+                      >
+                        <Box
+                          className={classes([
+                            'preferences32x32',
+                            image,
+                            'centered-image',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                  );
+                },
+              )}
             </Flex>
           </Autofocus>
         </Stack.Item>
@@ -180,28 +227,32 @@ const ChoicedSelection = (
   );
 };
 
-const GenderButton = (
-  props: {
-    handleSetGender: (gender: Gender) => void;
-    gender: Gender;
-  },
-  context
-) => {
-  const [genderMenuOpen, setGenderMenuOpen] = useLocalState(
-    context,
-    'genderMenuOpen',
-    false
-  );
+const searchInCatalog = (searchText = '', catalog: Record<string, string>) => {
+  let items = Object.entries(catalog);
+  if (searchText) {
+    items = filter(
+      items,
+      createSearch(searchText, ([name, _icon]) => name),
+    );
+  }
+  return items;
+};
+
+const GenderButton = (props: {
+  handleSetGender: (gender: Gender) => void;
+  gender: Gender;
+}) => {
+  const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
     <Popper
-      options={{
-        placement: 'right-end',
-      }}
-      popperContent={
-        genderMenuOpen && (
-          <Stack backgroundColor="white" ml={0.5} p={0.3}>
-            {[Gender.Male, Gender.Female, Gender.Other].map((gender) => {
+      isOpen={genderMenuOpen}
+      onClickOutside={() => setGenderMenuOpen(false)}
+      placement="right-end"
+      content={
+        <Stack backgroundColor="white" ml={0.5} p={0.3}>
+          {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
+            (gender) => {
               return (
                 <Stack.Item key={gender}>
                   <Button
@@ -217,10 +268,11 @@ const GenderButton = (
                   />
                 </Stack.Item>
               );
-            })}
-          </Stack>
-        )
-      }>
+            },
+          )}
+        </Stack>
+      }
+    >
       <Button
         onClick={() => {
           setGenderMenuOpen(!genderMenuOpen);
@@ -234,23 +286,20 @@ const GenderButton = (
   );
 };
 
-const MainFeature = (
-  props: {
-    catalog: FeatureChoicedServerData & {
-      name: string;
-      supplemental_feature?: string;
-    };
-    currentValue: string;
-    isOpen: boolean;
-    handleClose: () => void;
-    handleOpen: () => void;
-    handleSelect: (newClothing: string) => void;
-    randomization?: RandomSetting;
-    setRandomization: (newSetting: RandomSetting) => void;
-  },
-  context
-) => {
-  const { act, data } = useBackend<PreferencesMenuData>(context);
+const MainFeature = (props: {
+  catalog: FeatureChoicedServerData & {
+    name: string;
+    supplemental_feature?: string;
+  };
+  currentValue: string;
+  isOpen: boolean;
+  handleClose: () => void;
+  handleOpen: () => void;
+  handleSelect: (newClothing: string) => void;
+  randomization?: RandomSetting;
+  setRandomization: (newSetting: RandomSetting) => void;
+}) => {
+  const { act, data } = useBackend<PreferencesMenuData>();
 
   const {
     catalog,
@@ -267,31 +316,30 @@ const MainFeature = (
 
   return (
     <Popper
-      options={{
-        placement: 'bottom-start',
-      }}
-      popperContent={
-        isOpen && (
-          <TrackOutsideClicks onOutsideClick={props.handleClose}>
-            <ChoicedSelection
-              name={catalog.name}
-              catalog={catalog}
-              selected={currentValue}
-              supplementalFeature={supplementalFeature}
-              supplementalValue={
-                supplementalFeature &&
-                data.character_preferences.supplemental_features[
-                  supplementalFeature
-                ]
-              }
-              onClose={handleClose}
-              onSelect={handleSelect}
-            />
-          </TrackOutsideClicks>
-        )
-      }>
+      placement="bottom-start"
+      isOpen={isOpen}
+      onClickOutside={handleClose}
+      baseZIndex={1} // Below the default popper at z 2
+      content={
+        <ChoicedSelection
+          name={catalog.name}
+          catalog={catalog}
+          selected={currentValue}
+          supplementalFeature={supplementalFeature}
+          supplementalValue={
+            supplementalFeature &&
+            data.character_preferences.supplemental_features[
+              supplementalFeature
+            ]
+          }
+          onClose={handleClose}
+          onSelect={handleSelect}
+        />
+      }
+    >
       <Button
-        onClick={() => {
+        onClick={(event) => {
+          event.stopPropagation();
           if (isOpen) {
             handleClose();
           } else {
@@ -304,7 +352,8 @@ const MainFeature = (
         }}
         position="relative"
         tooltip={catalog.name}
-        tooltipPosition="right">
+        tooltipPosition="right"
+      >
         <Box
           className={classes([
             'preferences32x32',
@@ -351,15 +400,18 @@ const createSetRandomization =
     });
   };
 
-const sortPreferences = sortBy<[string, unknown]>(([featureId, _]) => {
-  const feature = features[featureId];
-  return feature?.name;
-});
+const sortPreferences = (array: [string, unknown][]) =>
+  sortBy(array, ([featureId, _]) => {
+    const feature = features[featureId];
+    return feature?.name;
+  });
 
-const PreferenceList = (props: {
+export const PreferenceList = (props: {
   act: typeof sendAct;
   preferences: Record<string, unknown>;
   randomizations: Record<string, RandomSetting>;
+  maxHeight: string;
+  children?: ReactNode;
 }) => {
   return (
     <Stack.Item
@@ -370,7 +422,9 @@ const PreferenceList = (props: {
         padding: '4px',
       }}
       overflowX="hidden"
-      overflowY="scroll">
+      overflowY="auto"
+      maxHeight={props.maxHeight}
+    >
       <LabeledList>
         {sortPreferences(Object.entries(props.preferences)).map(
           ([featureId, value]) => {
@@ -389,7 +443,9 @@ const PreferenceList = (props: {
               <LabeledList.Item
                 key={featureId}
                 label={feature.name}
-                verticalAlign="middle">
+                tooltip={feature.description}
+                verticalAlign="middle"
+              >
                 <Stack fill>
                   {randomSetting && (
                     <Stack.Item>
@@ -411,29 +467,61 @@ const PreferenceList = (props: {
                 </Stack>
               </LabeledList.Item>
             );
-          }
+          },
         )}
       </LabeledList>
+
+      {props.children}
     </Stack.Item>
   );
 };
 
-export const MainPage = (
-  props: {
-    openSpecies: () => void;
-  },
-  context
-) => {
-  const { act, data } = useBackend<PreferencesMenuData>(context);
-  const [currentClothingMenu, setCurrentClothingMenu] = useLocalState<
-    string | null
-  >(context, 'currentClothingMenu', null);
-  const [multiNameInputOpen, setMultiNameInputOpen] = useLocalState(
-    context,
-    'multiNameInputOpen',
-    false
+export const getRandomization = (
+  preferences: Record<string, unknown>,
+  serverData: ServerData | undefined,
+  randomBodyEnabled: boolean,
+): Record<string, RandomSetting> => {
+  if (!serverData) {
+    return {};
+  }
+
+  const { data } = useBackend<PreferencesMenuData>();
+
+  if (!randomBodyEnabled) {
+    return {};
+  }
+
+  return Object.fromEntries(
+    map(
+      filter(Object.keys(preferences), (key) =>
+        serverData.random.randomizable.includes(key),
+      ),
+      (key) => [
+        key,
+        data.character_preferences.randomization[key] || RandomSetting.Disabled,
+      ],
+    ),
   );
-  const [randomToggleEnabled] = useRandomToggleState(context);
+};
+
+export const MainPage = (props: { openSpecies: () => void }) => {
+  const { act, data } = useBackend<PreferencesMenuData>();
+  const [currentClothingMenu, setCurrentClothingMenu] = useState<string | null>(
+    null,
+  );
+  const [deleteCharacterPopupOpen, setDeleteCharacterPopupOpen] =
+    useState(false);
+  const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
+  const [randomToggleEnabled] = useRandomToggleState();
+
+  // SKYRAT EDIT BEGIN: SWAPPABLE PREF MENUS
+  enum PrefPage {
+    Visual, // The visual parts
+    Lore, // Lore, Flavor Text, Age, Records
+  }
+
+  const [currentPrefPage, setCurrentPrefPage] = useState(PrefPage.Visual);
+  // SKYRAT EDIT END
 
   return (
     <ServerPreferencesFetcher
@@ -456,7 +544,7 @@ export const MainPage = (
               return (
                 currentSpeciesData.enabled_features.indexOf(featureName) !== -1
               );
-            }
+            },
           ),
         ];
 
@@ -464,36 +552,10 @@ export const MainPage = (
           data.character_preferences.non_contextual.random_body !==
             RandomSetting.Disabled || randomToggleEnabled;
 
-        const getRandomization = (
-          preferences: Record<string, unknown>
-        ): Record<string, RandomSetting> => {
-          if (!serverData) {
-            return {};
-          }
-
-          return Object.fromEntries(
-            filterMap(Object.keys(preferences), (preferenceKey) => {
-              if (
-                serverData.random.randomizable.indexOf(preferenceKey) === -1
-              ) {
-                return undefined;
-              }
-
-              if (!randomBodyEnabled) {
-                return undefined;
-              }
-
-              return [
-                preferenceKey,
-                data.character_preferences.randomization[preferenceKey] ||
-                  RandomSetting.Disabled,
-              ];
-            })
-          );
-        };
-
         const randomizationOfMainFeatures = getRandomization(
-          Object.fromEntries(mainFeatures)
+          Object.fromEntries(mainFeatures),
+          serverData,
+          randomBodyEnabled,
         );
 
         const nonContextualPreferences = {
@@ -509,6 +571,41 @@ export const MainPage = (
           delete nonContextualPreferences['random_name'];
         }
 
+        // SKYRAT EDIT BEGIN: SWAPPABLE PREF MENUS
+        let prefPageContents;
+        switch (currentPrefPage) {
+          case PrefPage.Visual:
+            prefPageContents = (
+              <PreferenceList
+                act={act}
+                randomizations={getRandomization(
+                  contextualPreferences,
+                  serverData,
+                  randomBodyEnabled,
+                )}
+                preferences={contextualPreferences}
+                maxHeight="auto"
+              />
+            );
+            break;
+          case PrefPage.Lore:
+            prefPageContents = (
+              <PreferenceList
+                act={act}
+                randomizations={getRandomization(
+                  nonContextualPreferences,
+                  serverData,
+                  randomBodyEnabled,
+                )}
+                preferences={nonContextualPreferences}
+                maxHeight="auto"
+              />
+            );
+            break;
+          default:
+            exhaustiveCheck(currentPrefPage);
+        }
+        // SKYRAT EDIT END
         return (
           <>
             {multiNameInputOpen && (
@@ -529,8 +626,14 @@ export const MainPage = (
               />
             )}
 
+            {deleteCharacterPopupOpen && (
+              <DeleteCharacterPopup
+                close={() => setDeleteCharacterPopupOpen(false)}
+              />
+            )}
+
             <Stack height={`${CLOTHING_SIDEBAR_ROWS * CLOTHING_CELL_SIZE}px`}>
-              <Stack.Item fill>
+              <Stack.Item>
                 <Stack vertical fill>
                   <Stack.Item>
                     <CharacterControls
@@ -542,6 +645,11 @@ export const MainPage = (
                       handleLoadout={() => {
                         act('open_loadout');
                       }}
+                      // SKYRAT EDIT ADDITION - BEGIN
+                      handleFood={() => {
+                        act('open_food');
+                      }}
+                      // SKYRAT EDIT ADDITION - END
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
@@ -556,25 +664,28 @@ export const MainPage = (
                     />
                   </Stack.Item>
 
-                  <Dropdown
+                  <Stack.Item
                     // SKYRAT EDIT ADDITION
-                    width="100%"
                     position="relative"
-                    selected={data.preview_selection}
-                    options={data.preview_options}
-                    onSelected={(value) =>
-                      act('update_preview', {
-                        updated_preview: value,
-                      })
-                    }
-                  />
+                  >
+                    <Dropdown
+                      width="100%"
+                      selected={data.preview_selection}
+                      options={data.preview_options}
+                      onSelected={(value) =>
+                        act('update_preview', {
+                          updated_preview: value,
+                        })
+                      }
+                    />
+                  </Stack.Item>
 
                   <Stack.Item position="relative">
                     <NameInput
                       name={data.character_preferences.names[data.name_to_use]}
                       handleUpdateName={createSetPreference(
                         act,
-                        data.name_to_use
+                        data.name_to_use,
                       )}
                       openMultiNameInput={() => {
                         setMultiNameInputOpen(true);
@@ -584,7 +695,7 @@ export const MainPage = (
                 </Stack>
               </Stack.Item>
 
-              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
+              <Stack.Item width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
                 <Stack height="100%" vertical wrap>
                   {mainFeatures.map(([clothingKey, clothing]) => {
                     const catalog =
@@ -612,7 +723,7 @@ export const MainPage = (
                             }
                             setRandomization={createSetRandomization(
                               act,
-                              clothingKey
+                              clothingKey,
                             )}
                           />
                         </Stack.Item>
@@ -623,19 +734,45 @@ export const MainPage = (
               </Stack.Item>
 
               <Stack.Item grow basis={0}>
-                <Stack vertical fill>
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(contextualPreferences)}
-                    preferences={contextualPreferences}
-                  />
-
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(nonContextualPreferences)}
-                    preferences={nonContextualPreferences}
-                  />
+                {/* SKYRAT EDIT BEGIN: Swappable pref menus */}
+                <Stack>
+                  <Stack.Item grow>
+                    <PageButton
+                      currentPage={currentPrefPage}
+                      page={PrefPage.Visual}
+                      setPage={setCurrentPrefPage}
+                    >
+                      Character Visuals
+                    </PageButton>
+                    <Box my={0.5}>
+                      <Button
+                        color="red"
+                        disabled={
+                          Object.values(data.character_profiles).filter(
+                            (name) => name,
+                          ).length < 2
+                        } // check if existing chars more than one
+                        onClick={() => setDeleteCharacterPopupOpen(true)}
+                      >
+                        Delete Character
+                      </Button>
+                    </Box>
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    <PageButton
+                      currentPage={currentPrefPage}
+                      page={PrefPage.Lore}
+                      setPage={setCurrentPrefPage}
+                    >
+                      Character Lore
+                    </PageButton>
+                  </Stack.Item>
                 </Stack>
+                <Stack fill vertical>
+                  <Stack.Divider />
+                  {prefPageContents}
+                </Stack>
+                {/* SKYRAT EDIT END: Swappable pref menus */}
               </Stack.Item>
             </Stack>
           </>

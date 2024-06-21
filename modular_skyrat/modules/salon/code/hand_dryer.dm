@@ -1,6 +1,6 @@
 /obj/machinery/dryer
 	name = "hand dryer"
-	desc = "The Breath Of Lizads-3000, an experimental dryer."
+	desc = "The Breath Of Lizards-3000, an experimental dryer."
 	icon = 'modular_skyrat/modules/salon/icons/dryer.dmi'
 	icon_state = "dryer"
 	density = FALSE

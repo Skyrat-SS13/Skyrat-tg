@@ -54,3 +54,18 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /// Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
 /datum/config_entry/number/ticket_ping_frequency
+
+/datum/config_entry/number/size_collar_maximum
+	default = 400
+
+/datum/config_entry/number/size_collar_minimum
+	default = 15
+
+// Minimum alert level for pods to actually evacuate people
+/datum/config_entry/number/minimum_alert_for_pods
+
+/// Split the threat budget between roundstart and midrounds
+/datum/config_entry/flag/split_threat_budget
+
+// How much time arrivals shuttle should stay at station after its engines recharged before returning to interlink. In deciseconds. 150 - 15 seconds. 0 - disables autoreturn
+/datum/config_entry/number/arrivals_wait

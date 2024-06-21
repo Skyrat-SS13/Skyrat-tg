@@ -5,30 +5,20 @@
 	can_augment = FALSE
 	body_size_restricted = TRUE
 	digitigrade_customization = DIGITIGRADE_NEVER // We have our own unique sprites!
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID
 	mutantlungs = /obj/item/organ/internal/lungs/nitrogen/vox
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
+	meat = /obj/item/food/meat/slab/chicken/human //item file in teshari module
 	mutanttongue = /obj/item/organ/internal/tongue/vox
-	default_mutant_bodyparts = list(
-		"tail" = "Vox Primalis Tail",
-	)
-	liked_food = MEAT | FRIED
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -58,6 +48,10 @@
 		LOADOUT_ITEM_EARS = VOX_PRIMALIS_EARS_ICON,
 	)
 
+/datum/species/vox_primalis/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Vox Primalis Tail", FALSE),
+	)
 
 /datum/species/vox_primalis/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()
@@ -65,17 +59,6 @@
 		equipping.equipOutfit(job.vox_outfit, visuals_only)
 	else
 		give_important_for_life(equipping)
-
-/datum/species/vox_primalis/random_name(gender, unique, lastname)
-	if(unique)
-		return random_unique_vox_name()
-
-	var/randname = vox_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
 
 /datum/species/vox_primalis/get_custom_worn_icon(item_slot, obj/item/item)
 	return item.worn_icon_better_vox

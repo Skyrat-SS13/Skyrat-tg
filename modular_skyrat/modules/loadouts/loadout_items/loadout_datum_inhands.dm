@@ -27,6 +27,10 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 	name = "Cane"
 	item_path = /obj/item/cane
 
+/datum/loadout_item/inhand/cane/crutch
+	name = "Crutch"
+	item_path = /obj/item/cane/crutch
+
 /datum/loadout_item/inhand/cane/white
 	name = "White Cane"
 	item_path = /obj/item/cane/white
@@ -37,7 +41,7 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/inhand/briefcase_secure
 	name = "Secure Briefcase"
-	item_path = /obj/item/storage/secure/briefcase
+	item_path = /obj/item/storage/briefcase/secure
 
 /datum/loadout_item/inhand/skub
 	name = "Skub"
@@ -46,6 +50,11 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand/skateboard
 	name = "Skateboard"
 	item_path = /obj/item/melee/skateboard
+
+/datum/loadout_item/inhand/toolbox
+	name = "Full Toolbox"
+	item_path = /obj/item/storage/toolbox/mechanical
+	blacklisted_roles = list(JOB_PRISONER)
 
 /datum/loadout_item/inhand/bouquet_mixed
 	name = "Mixed Bouquet"
@@ -94,3 +103,7 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand/flag_nri
 	name = "Folded Novaya Rossiyskaya Imperiya Flag"
 	item_path = /obj/item/sign/flag/nri
+
+/datum/loadout_item/inhand/flag_azulea
+	name = "Folded Azulea Flag"
+	item_path = /obj/item/sign/flag/azulea

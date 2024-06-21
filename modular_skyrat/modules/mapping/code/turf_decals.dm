@@ -5,6 +5,9 @@
 /obj/effect/decal/fakelattice/passthru	//Why the hell did TG make it dense anyways
 	density = FALSE
 
+/obj/effect/decal/fakelattice/passthru/NeverShouldHaveComeHere(turf/here_turf)
+	return !isclosedturf(here_turf) && ..()
+
 ///SYNDICATE EMBLEM///
 //Bottom
 /obj/effect/turf_decal/skyrat_decals/syndicate/bottom/left

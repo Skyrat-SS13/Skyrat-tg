@@ -1,8 +1,16 @@
 /obj/vehicle/sealed
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	interaction_flags_mouse_drop = NEED_HANDS
+
 	var/enter_delay = 2 SECONDS
 	var/mouse_pointer
 	var/headlights_toggle = FALSE
+	///Determines which occupants provide access when bumping into doors
+	var/access_provider_flags = VEHICLE_CONTROL_DRIVE
+
+/obj/vehicle/sealed/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_SUPERMATTER_CONSUMED, PROC_REF(on_entered_supermatter))
 
 /obj/vehicle/sealed/generate_actions()
 	. = ..()
@@ -14,7 +22,7 @@
 	if(istype(E))
 		E.vehicle_entered_target = src
 
-/obj/vehicle/sealed/MouseDrop_T(atom/dropping, mob/M)
+/obj/vehicle/sealed/mouse_drop_receive(atom/dropping, mob/M, params)
 	if(!istype(dropping) || !istype(M))
 		return ..()
 	if(M == dropping)
@@ -31,7 +39,7 @@
 	. = ..()
 	if(istype(A, /obj/machinery/door))
 		var/obj/machinery/door/conditionalwall = A
-		for(var/mob/occupant as anything in return_drivers())
+		for(var/mob/occupant as anything in return_controllers_with_flag(access_provider_flags))
 			if(conditionalwall.try_safety_unlock(occupant))
 				return
 			conditionalwall.bumpopen(occupant)
@@ -46,16 +54,17 @@
 	REMOVE_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 
 
-/obj/vehicle/sealed/proc/mob_try_enter(mob/M)
-	if(!istype(M))
+/obj/vehicle/sealed/proc/mob_try_enter(mob/rider)
+	if(!istype(rider))
 		return FALSE
-	//SKYRAT EDIT ADDITION
-	if(HAS_TRAIT(M, TRAIT_OVERSIZED))
-		to_chat(M, span_warning("You are far too big for this!"))
+	var/enter_delay = get_enter_delay(rider)
+	if (enter_delay == 0)
+		if (enter_checks(rider))
+			mob_enter(rider)
+			return TRUE
 		return FALSE
-	//SKYRAT EDIT END
-	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, PROC_REF(enter_checks), M)))
-		mob_enter(M)
+	if (do_after(rider, enter_delay, src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, PROC_REF(enter_checks), rider)))
+		mob_enter(rider)
 		return TRUE
 	return FALSE
 
@@ -155,3 +164,9 @@
 /// Sinced sealed vehicles (cars and mechs) don't have riding components, the actual movement is handled here from [/obj/vehicle/sealed/proc/relaymove]
 /obj/vehicle/sealed/proc/vehicle_move(direction)
 	return FALSE
+
+/// When we touch a crystal, kill everything inside us
+/obj/vehicle/sealed/proc/on_entered_supermatter(atom/movable/vehicle, atom/movable/supermatter)
+	SIGNAL_HANDLER
+	for (var/mob/passenger as anything in occupants)
+		passenger.Bump(supermatter)

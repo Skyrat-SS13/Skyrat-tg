@@ -4,6 +4,10 @@
  * The temporary equivalent is [/datum/component/light_eater]
  */
 /datum/element/light_eater
+	var/static/list/blacklisted_areas = typecacheof(list(
+		/turf/open/space,
+		/turf/open/lava,
+	))
 
 /datum/element/light_eater/Attach(datum/target)
 	if(isatom(target))
@@ -83,6 +87,10 @@
  * - [eater][/datum]: The light eater eating the morsel. This is the datum that the element is attached to that started this chain.
  */
 /datum/element/light_eater/proc/devour(atom/morsel, datum/eater)
+	if(is_type_in_typecache(morsel, blacklisted_areas))
+		return FALSE
+	if(istransparentturf(morsel))
+		return FALSE
 	if(morsel.light_power <= 0 || morsel.light_range <= 0 || !morsel.light_on)
 		return FALSE
 	if(SEND_SIGNAL(morsel, COMSIG_LIGHT_EATER_ACT, eater) & COMPONENT_BLOCK_LIGHT_EATER)
@@ -118,12 +126,9 @@
  * - [user][/mob/living]: The mob using the source to strike the target
  * - proximity: Whether the strike was in melee range so you can't eat lights from cameras
  */
-/datum/element/light_eater/proc/on_afterattack(obj/item/source, atom/target, mob/living/user, proximity)
+/datum/element/light_eater/proc/on_afterattack(obj/item/source, atom/target, mob/living/user)
 	SIGNAL_HANDLER
-	if(!proximity)
-		return NONE
 	eat_lights(target, source)
-	return COMPONENT_AFTERATTACK_PROCESSED_ITEM
 
 /**
  * Called when a source object is used to block a thrown object, projectile, or attack
@@ -136,7 +141,7 @@
  * - final_block_chance: The probability of blocking the target with the source
  * - attack_type: The type of attack that was blocked
  */
-/datum/element/light_eater/proc/on_hit_reaction(obj/item/source, mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type)
+/datum/element/light_eater/proc/on_hit_reaction(obj/item/source, mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type, damage_type)
 	SIGNAL_HANDLER
 	if(prob(final_block_chance))
 		eat_lights(hitby, source)

@@ -19,12 +19,6 @@
 	cost = 6
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
-/datum/uplink_item/suits/noslip
-	name = "MODsuit Anti-Slip Module"
-	desc = "A MODsuit module preventing the user from slipping on water."
-	item = /obj/item/mod/module/noslip
-	cost = 2
-
 /datum/uplink_item/suits/space_suit
 	name = "Syndicate Space Suit"
 	desc = "This red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
@@ -32,7 +26,6 @@
 			sightings, however."
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 4
-
 
 /datum/uplink_item/suits/modsuit
 	name = "Syndicate MODsuit"
@@ -65,11 +58,16 @@
 	item = /obj/item/mod/module/plate_compression
 	cost = 2
 
-
 /datum/uplink_item/suits/noslip
 	name = "MODsuit Anti-Slip Module"
 	desc = "A MODsuit module preventing the user from slipping on water."
 	item = /obj/item/mod/module/noslip
+	cost = 2
+
+/datum/uplink_item/suits/shock_absorber
+	name = "MODsuit Shock-Absorber Module"
+	desc = "A MODsuit module preventing the user from getting knocked down by batons."
+	item = /obj/item/mod/module/shock_absorber
 	cost = 2
 
 /datum/uplink_item/suits/modsuit/elite_traitor
@@ -78,6 +76,6 @@
 			provides the user with superior armor and mobility compared to the standard Syndicate MODsuit."
 	item = /obj/item/mod/control/pre_equipped/traitor_elite
 	// This one costs more than the nuke op counterpart
-	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS | UPLINK_SPY)
 	progression_minimum = 90 MINUTES
 	cost = 16

@@ -4,11 +4,15 @@
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "bluespace"
 	density = TRUE
-	aSignal = /obj/item/assembly/signaler/anomaly/bluespace
+	anomaly_core = /obj/item/assembly/signaler/anomaly/bluespace
 	///range from which we can teleport someone
 	var/teleport_range = 1
 	///Distance we can teleport someone passively
 	var/teleport_distance = 4
+
+/obj/effect/anomaly/bluespace/Initialize(mapload, new_lifespan, drops_core)
+	. = ..()
+	apply_wibbly_filters(src)
 
 /obj/effect/anomaly/bluespace/anomalyEffect()
 	..()
@@ -41,7 +45,7 @@
 	var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
 
 	playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES) //SKYRAT EDIT CHANGE - ANNOUNCER
+	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_TRANSLOCATION) //SKYRAT EDIT CHANGE - ANNOUNCER
 
 	var/list/flashers = list()
 	for(var/mob/living/carbon/C in viewers(TO, null))
@@ -71,12 +75,17 @@
 	make_sparkle.overlay_fullscreen("bluespace_flash", /atom/movable/screen/fullscreen/bluespace_sparkle, 1)
 	addtimer(CALLBACK(make_sparkle, TYPE_PROC_REF(/mob/, clear_fullscreen), "bluespace_flash"), 2 SECONDS)
 
+/obj/effect/anomaly/bluespace/stabilize(anchor, has_core)
+	. = ..()
+
+	teleport_range = 0 //bumping already teleports, so this just prevents people from being teleported when they don't expect it when interacting with stable bsanoms
+
 ///Bigger, meaner, immortal bluespace anomaly
 /obj/effect/anomaly/bluespace/big
 	immortal = TRUE
 	teleport_range = 2
 	teleport_distance = 12
-	aSignal = null
+	anomaly_core = null
 
 /obj/effect/anomaly/bluespace/big/Initialize(mapload, new_lifespan, drops_core)
 	. = ..()
@@ -93,4 +102,3 @@
 
 	var/mob/living/living = bumpee
 	living.apply_status_effect(/datum/status_effect/teleport_madness)
-

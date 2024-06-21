@@ -72,26 +72,15 @@
 	cost_change_lower = -1000
 	cost_change_upper = 3000
 
-// Allstar energy weapons
-/datum/cargo_company/allstar
-	name = COMPANY_NAME_ALLSTAR_ENERGY
-	company_flag = CARGO_COMPANY_ALLSTAR_ENERGY
-	cost = 6000
-	cost_change_lower = -1000
-	cost_change_upper = 4000
-
-// Nakamura engineering's tooling division, sells tools, possibly even advanced ones
-/datum/cargo_company/nakamura_tooling
-	name = COMPANY_NAME_NAKAMURA_ENGINEERING_TOOLING
-	company_flag = CARGO_COMPANY_NAKAMURA_TOOLING
-	cost = 6000
-	cost_change_lower = -1000
-	cost_change_upper = 3000
+// Sells unique construction supplies that the station can't normally obtain
+/datum/cargo_company/akh_frontier
+	name = FRONTIER_EQUIPMENT_NAME
+	company_flag = CARGO_COMPANY_FRONTIER_EQUIPMENT
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
 /datum/cargo_company/nanotrasen_bolt_weapons
-	name = COMPANY_NAME_BOLT_NANOTRASEN_DEFENSE
-	company_flag = CARGO_COMPANY_BOLT_NANOTRASEN
+	name = SOL_DEFENSE_DEFENSE_NAME
+	company_flag = CARGO_COMPANY_SOL_DEFENSE
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 4000

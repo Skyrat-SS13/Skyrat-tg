@@ -3,22 +3,21 @@
 	flufftext = "A local group of miners are looking for ways to improve their mining output. They are interested in smaller scale explosives."
 	accepted_experiments = list(/datum/experiment/ordnance/explosive/lowyieldbomb)
 	multipliers = list(SCIPAPER_COOPERATION_INDEX = 0.75, SCIPAPER_FUNDING_INDEX = 0.75)
-	boosted_nodes = list(
-		"bluespace_basic" = 2000,
-		"NVGtech" = 1500,
-		"practical_bluespace" = 2500,
-		"basic_plasma" = 2000,
-		"basic_mining" = 2000,
-		"adv_mining" = 2000,
+	boostable_nodes = list(
+		"bluespace_theory" = 2000,
+		"night_vision" = 1500,
+		"anomaly_research" = 2500,
+		"mining" = 2000,
+		"mining_adv" = 2000,
 	)
 
 /datum/scientific_partner/baron
 	name = "Ghost Writing"
 	flufftext = "A nearby research station ran by a very wealthy captain seems to be struggling with their scientific output. They might reward us handsomely if we ghostwrite for them."
 	multipliers = list(SCIPAPER_COOPERATION_INDEX = 0.25, SCIPAPER_FUNDING_INDEX = 2)
-	boosted_nodes = list(
-		"comp_recordkeeping" = 500,
-		"computer_data_disks" = 500,
+	boostable_nodes = list(
+		"consoles" = 500,
+		"fundamental_sci" = 500,
 	)
 
 /datum/scientific_partner/defense
@@ -29,15 +28,12 @@
 		/datum/experiment/ordnance/explosive/pressurebomb,
 		/datum/experiment/ordnance/explosive/hydrogenbomb,
 	)
-	boosted_nodes = list(
-		"adv_weaponry" = 5000,
-		"weaponry" = 2500,
-		"sec_basic" = 1250,
-		"explosive_weapons" = 1250,
-		"electronic_weapons" = 1250,
-		"radioactive_weapons" = 1250,
+	boostable_nodes = list(
+		"riot_supression" = 5000,
+		"sec_equip" = 1250,
+		"explosives" = 1250,
+		"electric_weapons" = 1250,
 		"beam_weapons" = 1250,
-		"explosive_weapons" = 1250,
 	)
 
 /datum/scientific_partner/medical
@@ -47,13 +43,13 @@
 		/datum/experiment/ordnance/gaseous/nitrous_oxide,
 		/datum/experiment/ordnance/gaseous/bz,
 	)
-	boosted_nodes = list(
+	boostable_nodes = list(
 		"cyber_organs" = 750,
 		"cyber_organs_upgraded" = 1000,
-		"genetics" = 500,
-		"subdermal_implants" = 1250,
-		"adv_biotech" = 1000,
-		"biotech" = 1000,
+		"gene_engineering" = 500,
+		"passive_implants" = 1250,
+		"bio_scan" = 1000,
+		"chem_synthesis" = 1000,
 	)
 
 /datum/scientific_partner/physics
@@ -63,12 +59,9 @@
 		/datum/experiment/ordnance/gaseous/noblium,
 		/datum/experiment/ordnance/explosive/nobliumbomb,
 	)
-	boosted_nodes = list(
-		"engineering" = 5000,
-		"adv_engi" = 5000,
-		"emp_super" = 3000,
-		"emp_adv" = 1250,
-		"high_efficiency" = 5000,
-		"micro_bluespace" = 5000,
-		"adv_power" = 1500,
+	boostable_nodes = list(
+		"parts_upg" = 5000,
+		"exp_tools" = 5000,
+		"parts_bluespace" = 3000,
+		"parts_adv" = 1250,
 	)

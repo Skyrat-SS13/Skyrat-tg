@@ -11,8 +11,8 @@
 /datum/armament_entry/assault_operatives/secondary/lethal
 	subcategory = OPS_SUBCATEGORY_LETHAL_SIDE
 
-/datum/armament_entry/assault_operatives/secondary/lethal/ansem
-	item_type = /obj/item/gun/ballistic/automatic/pistol/clandestine/assault_ops
+/datum/armament_entry/assault_operatives/secondary/lethal/pistol
+	item_type = /obj/item/gun/ballistic/automatic/pistol/sol/evil
 
 /datum/armament_entry/assault_operatives/secondary/lethal/energy_sword
 	item_type = /obj/item/melee/energy/sword/saber
@@ -21,7 +21,7 @@
 	subcategory = OPS_SUBCATEGORY_NONLETHAL_SIDE
 
 /datum/armament_entry/assault_operatives/secondary/nonlethal/taze_me_bro
-	item_type = /obj/item/gun/energy/e_gun/advtaser/assault_ops
+	item_type = /obj/item/gun/energy/e_gun/advtaser
 
 /datum/armament_entry/assault_operatives/secondary/nonlethal/baton
 	item_type = /obj/item/melee/baton/telescopic

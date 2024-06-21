@@ -68,7 +68,7 @@
 		)
 
 	if (target_limb)
-		target.apply_damage(damage, BRUTE, target_limb)
+		target.apply_damage(damage, BRUTE, target_limb, attacking_item = item)
 	else
 		target.take_bodypart_damage(damage)
 

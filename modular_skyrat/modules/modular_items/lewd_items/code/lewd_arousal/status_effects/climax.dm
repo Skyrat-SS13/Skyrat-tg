@@ -10,7 +10,7 @@
 	duration = 10 SECONDS
 	alert_type = null
 
-/datum/status_effect/climax/tick()
+/datum/status_effect/climax/tick(seconds_between_ticks)
 	if(!owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 
@@ -29,7 +29,7 @@
 	alert_type = null
 
 // This one should not leave decals on the floor. Used in case if character cumming in beaker.
-/datum/status_effect/masturbation_climax/tick()
+/datum/status_effect/masturbation_climax/tick(seconds_between_ticks)
 	if(!owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 
@@ -47,7 +47,7 @@
 	duration = 30 SECONDS
 	alert_type = null
 
-/datum/status_effect/climax_cooldown/tick()
+/datum/status_effect/climax_cooldown/tick(seconds_between_ticks)
 	var/obj/item/organ/external/genital/vagina/vagina = owner.get_organ_slot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/external/genital/testicles/balls = owner.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/testicles/penis = owner.get_organ_slot(ORGAN_SLOT_PENIS)

@@ -13,7 +13,7 @@
 /obj/structure/filingcabinet
 	name = "filing cabinet"
 	desc = "A large cabinet with drawers."
-	icon = 'icons/obj/bureaucracy.dmi'
+	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
 	anchored = TRUE
@@ -37,12 +37,10 @@
 			if(I.w_class < WEIGHT_CLASS_NORMAL) //there probably shouldn't be anything placed ontop of filing cabinets in a map that isn't meant to go in them
 				I.forceMove(src)
 
-/obj/structure/filingcabinet/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
-		new /obj/item/stack/sheet/iron(loc, 2)
-		for(var/obj/item/I in src)
-			I.forceMove(loc)
-	qdel(src)
+/obj/structure/filingcabinet/atom_deconstruct(disassembled = TRUE)
+	new /obj/item/stack/sheet/iron(loc, 2)
+	for(var/obj/item/obj in src)
+		obj.forceMove(loc)
 
 /obj/structure/filingcabinet/attackby(obj/item/P, mob/living/user, params)
 	var/list/modifiers = params2list(params)
@@ -97,7 +95,7 @@
 			if(istype(content) && in_range(src, usr))
 				usr.put_in_hands(content)
 				icon_state = "[initial(icon_state)]-open"
-				addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 5)
+				addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 0.5 SECONDS)
 				return TRUE
 
 /obj/structure/filingcabinet/attack_tk(mob/user)
@@ -106,7 +104,7 @@
 	return ..()
 
 /obj/structure/filingcabinet/attack_self_tk(mob/user)
-	. = COMPONENT_CANCEL_ATTACK_CHAIN
+	. = ITEM_INTERACT_BLOCKING
 	if(contents.len)
 		if(prob(40 + contents.len * 5))
 			var/obj/item/I = pick(contents)
@@ -193,9 +191,9 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 /obj/structure/filingcabinet/employment/proc/fillCurrent()
 	//This proc fills the cabinet with the current crew.
 	for(var/datum/record/locked/target in GLOB.manifest.locked)
-		var/datum/mind/mind_ref = target.mind_ref
-		if(mind_ref && ishuman(mind_ref.current))
-			addFile(mind_ref.current)
+		var/datum/mind/filed_mind = target.mind_ref.resolve()
+		if(filed_mind && ishuman(filed_mind.current))
+			addFile(filed_mind.current)
 
 /obj/structure/filingcabinet/employment/proc/addFile(mob/living/carbon/human/employee)
 	new /obj/item/paper/employment_contract(src, employee.mind.name)
@@ -205,4 +203,3 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 		fillCurrent()
 		virgin = FALSE
 	return ..()
-

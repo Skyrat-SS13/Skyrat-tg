@@ -7,8 +7,8 @@
 	fill_icon_state = "bottle"
 	inhand_icon_state = "atoxinbottle"
 	worn_icon_state = "bottle"
-	possible_transfer_amounts = list(5, 10, 15, 25, 30)
-	volume = 30
+	possible_transfer_amounts = list(5, 10, 15, 25, 50)
+	volume = 50
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/bottle/Initialize(mapload)
@@ -59,10 +59,14 @@
 	desc = "A small bottle of multiver, which removes toxins and other chemicals from the bloodstream but causes shortness of breath. All effects scale with the amount of reagents in the patient."
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 30)
 
+/obj/item/reagent_containers/cup/bottle/calomel
+	name = "calomel bottle"
+	desc = "A small bottle of calomel, a toxic drug which quickly removes chemicals from the bloodstream. Does not cause additional harm in heavily-injured people."
+	list_reagents = list(/datum/reagent/medicine/calomel = 30)
+
 /obj/item/reagent_containers/cup/bottle/phlogiston
 	name = "Phlogiston bottle"
 	desc = "A small bottle of Phlogiston, that will set you on fire if used."
-	volume = 50
 	list_reagents = list(/datum/reagent/phlogiston = 30)
 
 /obj/item/reagent_containers/cup/bottle/ammoniated_mercury
@@ -473,7 +477,6 @@
 	fill_icon_state = "syrup"
 	fill_icon_thresholds = list(0, 20, 40, 60, 80, 100)
 	possible_transfer_amounts = list(5, 10)
-	volume = 50
 	amount_per_transfer_from_this = 5
 	spillable = FALSE
 	///variable to tell if the bottle can be refilled
@@ -503,7 +506,7 @@
 			balloon_alert(user, "container full!")
 			return TRUE
 
-		var/transfer_amount = reagents.trans_to(attacking_item, amount_per_transfer_from_this, transfered_by = user)
+		var/transfer_amount = reagents.trans_to(attacking_item, amount_per_transfer_from_this, transferred_by = user)
 		balloon_alert(user, "transferred [transfer_amount] unit\s")
 		flick("syrup_anim",src)
 
@@ -515,7 +518,7 @@
 
 	return TRUE
 
-/obj/item/reagent_containers/cup/bottle/syrup_bottle/AltClick(mob/user)
+/obj/item/reagent_containers/cup/bottle/syrup_bottle/click_alt(mob/user)
 	cap_on = !cap_on
 	if(!cap_on)
 		icon_state = "syrup_open"
@@ -524,7 +527,7 @@
 		icon_state = "syrup"
 		balloon_alert(user, "put pump cap on")
 	update_icon_state()
-	return ..()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/proc/rename(mob/user, obj/item/writing_instrument)
 	if(!user.can_write(writing_instrument))

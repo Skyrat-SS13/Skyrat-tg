@@ -11,6 +11,7 @@
 	icon_state = "sigilvitality"
 	density = FALSE
 	alpha = 90
+	layer = SIGIL_LAYER
 	/// How long you stand on the sigil before affect is applied
 	var/effect_stand_time = 0
 	/// The atom/movable that this is currently affecting
@@ -29,6 +30,8 @@
 	var/looping = FALSE
 	/// FALSE if the rune can affect non-living atoms
 	var/living_only = TRUE
+	/// If this can be dispelled by being hit with an empty hand
+	var/can_dispel_by_hand = TRUE
 
 /obj/structure/destructible/clockwork/sigil/Initialize(mapload)
 	. = ..()
@@ -50,7 +53,8 @@
 
 /obj/structure/destructible/clockwork/sigil/attack_hand(mob/user)
 	. = ..()
-	dispel()
+	if(can_dispel_by_hand)
+		dispel()
 
 
 /// For trap sigils and similar; applies effects when someone/something walks over
@@ -133,7 +137,7 @@
 
 /// Dispel the sigil and delete itself
 /obj/structure/destructible/clockwork/sigil/proc/dispel()
-	animate(src, transform = matrix() * 1.5, alpha = 0, time = 3)
+	animate(src, transform = matrix() * 1.5, alpha = 0, time = 0.3 SECONDS)
 	QDEL_IN(src, 0.3 SECONDS)
 
 #undef SIGIL_INVOCATION_ALPHA

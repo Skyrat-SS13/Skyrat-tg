@@ -14,7 +14,7 @@
 	demolition_mod = 0.75
 	embedding = list("impact_pain_mult" = 2, "remove_pain_mult" = 4, "jostle_chance" = 2.5)
 	armour_penetration = 10
-	custom_materials = list(/datum/material/iron=1000, /datum/material/glass=2000)
+	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass= HALF_SHEET_MATERIAL_AMOUNT * 2)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "lacerates", "gores")
 	attack_verb_simple = list("attack", "poke", "jab", "tear", "lacerate", "gore")
@@ -40,7 +40,10 @@
 	. = ..()
 	force = force_unwielded
 	//decent in a pinch, but pretty bad.
-	AddComponent(/datum/component/jousting)
+	AddComponent(/datum/component/jousting, \
+		max_tile_charge = 9, \
+		min_tile_charge = 6, \
+		)
 
 	AddComponent(/datum/component/butchering, \
 		speed = 10 SECONDS, \
@@ -51,7 +54,17 @@
 		force_wielded = force_wielded, \
 		icon_wielded = "[icon_prefix]1", \
 	)
+	add_headpike_component()
 	update_appearance()
+
+// I dunno man
+/obj/item/spear/proc/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpike)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
 
 /obj/item/spear/update_icon_state()
 	icon_state = "[icon_prefix]0"
@@ -70,7 +83,7 @@
 		if(/obj/item/shard/plasma)
 			force = 11
 			throwforce = 21
-			custom_materials = list(/datum/material/iron=1000, /datum/material/alloy/plasmaglass=2000)
+			custom_materials = list(/datum/material/iron= HALF_SHEET_MATERIAL_AMOUNT, /datum/material/alloy/plasmaglass= HALF_SHEET_MATERIAL_AMOUNT * 2)
 			icon_prefix = "spearplasma"
 			force_unwielded = 11
 			force_wielded = 19
@@ -80,7 +93,7 @@
 			throwforce = 21
 			throw_range = 8
 			throw_speed = 5
-			custom_materials = list(/datum/material/iron=1000, /datum/material/alloy/titaniumglass=2000)
+			custom_materials = list(/datum/material/iron= HALF_SHEET_MATERIAL_AMOUNT, /datum/material/alloy/titaniumglass= HALF_SHEET_MATERIAL_AMOUNT * 2)
 			wound_bonus = -10
 			force_unwielded = 13
 			force_wielded = 18
@@ -91,7 +104,7 @@
 			throwforce = 22
 			throw_range = 9
 			throw_speed = 5
-			custom_materials = list(/datum/material/iron=1000, /datum/material/alloy/plastitaniumglass=2000)
+			custom_materials = list(/datum/material/iron= HALF_SHEET_MATERIAL_AMOUNT, /datum/material/alloy/plastitaniumglass= HALF_SHEET_MATERIAL_AMOUNT * 2)
 			wound_bonus = -10
 			bare_wound_bonus = 20
 			force_unwielded = 13
@@ -139,7 +152,7 @@
 	user.say("[war_cry]", forced="spear warcry")
 	explosive.forceMove(user)
 	explosive.detonate()
-	user.gib()
+	user.gib(DROP_ALL_REMAINS)
 	qdel(src)
 	return BRUTELOSS
 
@@ -147,38 +160,34 @@
 	. = ..()
 	. += span_notice("Alt-click to set your war cry.")
 
-/obj/item/spear/explosive/AltClick(mob/user)
-	if(user.can_perform_action(src))
-		..()
-		if(istype(user) && loc == user)
-			var/input = tgui_input_text(user, "What do you want your war cry to be? You will shout it when you hit someone in melee.", "War Cry", max_length = 50)
-			if(input)
-				src.war_cry = input
+/obj/item/spear/explosive/click_alt(mob/user)
+	var/input = tgui_input_text(user, "What do you want your war cry to be? You will shout it when you hit someone in melee.", "War Cry", max_length = 50)
+	if(input)
+		war_cry = input
+	return CLICK_ACTION_SUCCESS
 
-/obj/item/spear/explosive/afterattack(atom/movable/AM, mob/user, proximity)
-	. = ..()
-	if(!proximity || !HAS_TRAIT(src, TRAIT_WIELDED) || !istype(AM))
+
+/obj/item/spear/explosive/afterattack(atom/movable/target, mob/user, click_parameters)
+	if(!HAS_TRAIT(src, TRAIT_WIELDED) || !istype(target))
 		return
-	. |= AFTERATTACK_PROCESSED_ITEM
-	if(AM.resistance_flags & INDESTRUCTIBLE) //due to the lich incident of 2021, embedding grenades inside of indestructible structures is forbidden
-		return .
-	if(ismob(AM))
-		var/mob/mob_target = AM
+	if(target.resistance_flags & INDESTRUCTIBLE) //due to the lich incident of 2021, embedding grenades inside of indestructible structures is forbidden
+		return
+	if(ismob(target))
+		var/mob/mob_target = target
 		if(mob_target.status_flags & GODMODE) //no embedding grenade phylacteries inside of ghost poly either
-			return .
-	if(iseffect(AM)) //and no accidentally wasting your moment of glory on graffiti
-		return .
+			return
+	if(iseffect(target)) //and no accidentally wasting your moment of glory on graffiti
+		return
 	user.say("[war_cry]", forced="spear warcry")
 	if(isliving(user))
 		var/mob/living/living_user = user
 		living_user.set_resting(new_resting = TRUE, silent = TRUE, instant = TRUE)
-		living_user.Move(get_turf(AM))
+		living_user.Move(get_turf(target))
 		explosive.forceMove(get_turf(living_user))
 		explosive.detonate(lanced_by=user)
 		if(!QDELETED(living_user))
 			living_user.set_resting(new_resting = FALSE, silent = TRUE, instant = TRUE)
 	qdel(src)
-	return .
 
 //GREY TIDE
 /obj/item/spear/grey_tide
@@ -189,20 +198,43 @@
 	force_unwielded = 15
 	force_wielded = 25
 
-/obj/item/spear/grey_tide/afterattack(atom/movable/AM, mob/living/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
+/obj/item/spear/grey_tide/afterattack(atom/movable/target, mob/living/user, click_parameters)
 	user.faction |= "greytide([REF(user)])"
-	if(isliving(AM))
-		var/mob/living/L = AM
-		if(istype (L, /mob/living/simple_animal/hostile/illusion))
-			return
-		if(!L.stat && prob(50))
-			var/mob/living/simple_animal/hostile/illusion/M = new(user.loc)
-			M.faction = user.faction.Copy()
-			M.Copy_Parent(user, 100, user.health/2.5, 12, 30)
-			M.GiveTarget(L)
+	if(!isliving(target))
+		return
+	var/mob/living/stabbed = target
+	if(istype(stabbed, /mob/living/simple_animal/hostile/illusion))
+		return
+	if(stabbed.stat == CONSCIOUS && prob(50))
+		var/mob/living/simple_animal/hostile/illusion/fake_clone = new(user.loc)
+		fake_clone.faction = user.faction.Copy()
+		fake_clone.Copy_Parent(user, 100, user.health/2.5, 12, 30)
+		fake_clone.GiveTarget(stabbed)
+
+//MILITARY
+/obj/item/spear/military
+	icon_state = "military_spear0"
+	base_icon_state = "military_spear0"
+	icon_prefix = "military_spear"
+	name = "military Javelin"
+	desc = "A stick with a seemingly blunt spearhead on its end. Looks like it might break bones easily."
+	attack_verb_continuous = list("attacks", "pokes", "jabs")
+	attack_verb_simple = list("attack", "poke", "jab")
+	throwforce = 30
+	demolition_mod = 1
+	wound_bonus = 5
+	bare_wound_bonus = 25
+	throw_range = 9
+	throw_speed = 5
+	sharpness = NONE // we break bones instead of cutting flesh
+
+/obj/item/spear/military/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikemilitary)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
 
 /*
  * Bone Spear
@@ -216,11 +248,17 @@
 
 	throwforce = 22
 	armour_penetration = 15 //Enhanced armor piercing
-	custom_materials = list(/datum/material/bone=7000)
-	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
-	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
+	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
+	force_unwielded = 12
+	force_wielded = 20
 
-	reach = 2 // SKYRAT EDIT ADD
+/obj/item/spear/bonespear/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebone)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
 
 /*
  * Bamboo Spear
@@ -233,6 +271,15 @@
 	desc = "A haphazardly-constructed bamboo stick with a sharpened tip, ready to poke holes into unsuspecting people."
 
 	throwforce = 22	//Better to throw
-	custom_materials = list(/datum/material/bamboo=40000)
+	custom_materials = list(/datum/material/bamboo = SHEET_MATERIAL_AMOUNT * 20)
 	force_unwielded = 10
 	force_wielded = 18
+
+
+/obj/item/spear/bamboospear/add_headpike_component()
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebamboo)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)

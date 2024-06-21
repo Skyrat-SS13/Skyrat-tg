@@ -38,8 +38,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 		id_card.forceMove(wallet)
 
 		if(equipper.back)
-			var/list/backpack_stuff = list()
-			equipper.back.atom_storage?.return_inv(backpack_stuff, FALSE)
+			var/list/backpack_stuff = equipper.back.atom_storage?.return_inv(FALSE)
 			for(var/obj/item/thing in backpack_stuff)
 				if(wallet.contents.len >= 3)
 					break
@@ -117,6 +116,10 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Personal AI Device"
 	item_path = /obj/item/pai_card
 
+/datum/loadout_item/pocket_items/link_scryer
+	name = "MODlink Scryer"
+	item_path = /obj/item/clothing/neck/link_scryer/loaded
+
 /datum/loadout_item/pocket_items/cigarettes
 	name = "Cigarette Pack"
 	item_path = /obj/item/storage/fancy/cigarettes
@@ -172,7 +175,90 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/cross
 	name = "Ornate Cross"
 	item_path = /obj/item/crucifix
-	restricted_roles = list(JOB_CHAPLAIN)
+
+/datum/loadout_item/pocket_items/clipboard
+	name = "Clipboard"
+	item_path = /obj/item/clipboard
+
+/datum/loadout_item/pocket_items/folder
+	name = "Folder"
+	item_path = /obj/item/folder
+
+/*
+*	UTILITY
+*/
+
+/datum/loadout_item/pocket_items/moth_mre
+	name = "Mothic Rations Pack"
+	item_path = /obj/item/storage/box/mothic_rations
+
+/datum/loadout_item/pocket_items/cloth_ten
+	name = "Ten Cloth Sheets"
+	item_path = /obj/item/stack/sheet/cloth/ten
+
+/datum/loadout_item/pocket_items/random_pizza
+	name = "Random Pizza Box"
+	item_path = /obj/item/pizzabox/random
+
+/datum/loadout_item/pocket_items/medkit
+	name = "First-Aid Kit"
+	item_path = /obj/item/storage/medkit/regular
+
+/datum/loadout_item/pocket_items/deforest_cheesekit
+	name = "Civil Defense Medical Kit"
+	item_path = /obj/item/storage/medkit/civil_defense/stocked
+
+/datum/loadout_item/pocket_items/deforest_frontiermedkit
+	name = "Frontier Medical Kit"
+	item_path = /obj/item/storage/medkit/frontier/stocked
+
+/datum/loadout_item/pocket_items/ingredients
+	name = "Wildcard Ingredient Box"
+	item_path = /obj/item/storage/box/ingredients/wildcard
+
+/datum/loadout_item/pocket_items/six_beer
+	name = "Beer Six-Pack"
+	item_path = /obj/item/storage/cans/sixbeer
+
+/datum/loadout_item/pocket_items/six_soda
+	name = "Soda Six-Pack"
+	item_path = /obj/item/storage/cans/sixsoda
+
+/datum/loadout_item/pocket_items/power_cell
+	name = "Standard Power Cell"
+	item_path = /obj/item/stock_parts/cell
+
+/datum/loadout_item/pocket_items/soap
+	name = "Bar of Soap"
+	item_path = /obj/item/soap
+
+/datum/loadout_item/pocket_items/mini_extinguisher
+	name = "Mini Fire Extinguisher"
+	item_path = /obj/item/extinguisher/mini
+
+/datum/loadout_item/pocket_items/binoculars
+	name = "Pair of Binoculars"
+	item_path = /obj/item/binoculars
+
+/datum/loadout_item/pocket_items/drugs_happy
+	name = "Happy Pills"
+	item_path = /obj/item/storage/pill_bottle/happy
+
+/datum/loadout_item/pocket_items/drugs_lsd
+	name = "Mindbreaker Pills"
+	item_path = /obj/item/storage/pill_bottle/lsd
+
+/datum/loadout_item/pocket_items/drugs_weed
+	name = "Cannabis Seeds"
+	item_path = /obj/item/seeds/cannabis
+
+/datum/loadout_item/pocket_items/drugs_reishi
+	name = "Reishi Seeds"
+	item_path = /obj/item/seeds/reishi
+
+/datum/loadout_item/pocket_items/drugs_liberty
+	name = "Liberty Cap Seeds"
+	item_path = /obj/item/seeds/liberty
 
 /*
 *	FRAGRANCES

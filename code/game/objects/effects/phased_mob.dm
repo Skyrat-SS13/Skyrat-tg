@@ -2,7 +2,7 @@
 	name = "water"
 	anchored = TRUE
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
-	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | SHUTTLE_CRUSH_PROOF
 	invisibility = INVISIBILITY_OBSERVER
 	movement_type = FLOATING
 	/// The movable which's jaunting in this dummy
@@ -61,7 +61,8 @@
 /obj/effect/dummy/phased_mob/ex_act()
 	return FALSE
 
-/obj/effect/dummy/phased_mob/bullet_act(blah)
+/obj/effect/dummy/phased_mob/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
+	SHOULD_CALL_PARENT(FALSE)
 	return BULLET_ACT_FORCE_PIERCE
 
 /obj/effect/dummy/phased_mob/relaymove(mob/living/user, direction)
@@ -83,7 +84,7 @@
 		return
 	var/area/destination_area = newloc.loc
 	movedelay = world.time + movespeed
-	if(newloc.flags_1 & NOJAUNT)
+	if(newloc.turf_flags & NOJAUNT)
 		to_chat(user, span_warning("Some strange aura is blocking the way."))
 		return
 	if(destination_area.area_flags & NOTELEPORT || SSmapping.level_trait(newloc.z, ZTRAIT_NOPHASE))

@@ -13,7 +13,7 @@
 	/// A list of designs, used in the radial color selection menu
 	var/static/list/vibroring_designs
 	/// Looping sound called on process
-	var/datum/looping_sound/vibrator/medium/soundloop
+	var/datum/looping_sound/lewd/vibrator/medium/soundloop
 	w_class = WEIGHT_CLASS_TINY
 	lewd_slot_flags = LEWD_SLOT_PENIS
 	clothing_flags = INEDIBLE_CLOTHING
@@ -21,7 +21,7 @@
 /obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
 	toy_on = !toy_on
 	to_chat(user, span_notice("You turn the vibroring [toy_on ? "on. Brrrr..." : "off."]"))
-	playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_icon()
 	switch(toy_on)
@@ -36,18 +36,16 @@
 		"pink" = image(icon = src.icon, icon_state = "vibroring_pink_off"),
 		"teal" = image(icon = src.icon, icon_state = "vibroring_teal_off"))
 
-/obj/item/clothing/sextoy/vibroring/AltClick(mob/user)
+/obj/item/clothing/sextoy/vibroring/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
-		return
+		return CLICK_ACTION_BLOCKING
 	var/choice = show_radial_menu(user, src, vibroring_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 	current_color = choice
 	update_icon()
 	color_changed = TRUE
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/vibroring/Initialize(mapload)
 	. = ..()
@@ -67,11 +65,11 @@
 	icon_state = "[base_icon_state]_[current_color]_[toy_on? "on" : "off"]"
 	inhand_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/vibroring/equipped(mob/living/carbon/human/user, slot, initial)
+/obj/item/clothing/sextoy/vibroring/lewd_equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
-	if(istype(user))
+	if(!istype(user))
 		return
-	if(src == user.penis)
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/vibroring/dropped(mob/user, silent)

@@ -5,7 +5,7 @@
 		You cannot attack while realigning. Can be casted multiple times in short succession, but each cast lengthens the cooldown."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
-	button_icon = 'icons/obj/implants.dmi'
+	button_icon = 'icons/hud/implants.dmi'
 	button_icon_state = "adrenal"
 	// sound = 'sound/magic/whistlereset.ogg'
 
@@ -53,9 +53,10 @@
 	duration = 8 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/realignment
 	tick_interval = 0.2 SECONDS
+	show_duration = TRUE
 
 /datum/status_effect/realignment/get_examine_text()
-	return span_notice("[owner.p_theyre(TRUE)] glowing a soft white.")
+	return span_notice("[owner.p_Theyre()] glowing a soft white.")
 
 /datum/status_effect/realignment/on_apply()
 	ADD_TRAIT(owner, TRAIT_PACIFISM, id)
@@ -69,7 +70,7 @@
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, id)
 	owner.remove_filter(id)
 
-/datum/status_effect/realignment/tick(seconds_per_tick, times_fired)
+/datum/status_effect/realignment/tick(seconds_between_ticks)
 	owner.adjustStaminaLoss(-5)
 	owner.AdjustAllImmobility(-0.5 SECONDS)
 

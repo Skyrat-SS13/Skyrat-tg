@@ -28,7 +28,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "heroin"
 	volume = 4
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/heroin = 4)
 
 /obj/item/reagent_containers/heroin/proc/snort(mob/living/user)
@@ -46,7 +46,7 @@
 	if(do_after(user, 30))
 		to_chat(user, span_notice("You finish snorting the [src]."))
 		if(reagents.total_volume)
-			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+			reagents.trans_to(user, reagents.total_volume, transferred_by = user, methods = INGEST)
 		qdel(src)
 
 /obj/item/reagent_containers/heroin/attack(mob/target, mob/user)
@@ -73,7 +73,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "heroinbrick"
 	volume = 20
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/heroin = 20)
 
 
@@ -110,7 +110,7 @@
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
-	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, name)
+	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, 1, name)
 	M.adjustBruteLoss(-0.1 * REM * seconds_per_tick, 0) //can be used as a (shitty) painkiller
 	M.adjustFireLoss(-0.1 * REM * seconds_per_tick, 0)
 	M.overlay_fullscreen("heroin_euphoria", /atom/movable/screen/fullscreen/color_vision/heroin_color)

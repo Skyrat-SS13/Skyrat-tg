@@ -38,7 +38,7 @@
 			balloon_alert(user, "They have no hair to cut!")
 			return
 
-		var/hair_id = tgui_input_list(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.hairstyles_list)
+		var/hair_id = tgui_input_list(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece", SSaccessories.hairstyles_list)
 		if(!hair_id)
 			return
 
@@ -50,8 +50,7 @@
 		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
 		if(do_after(user, haircut_duration, target_human))
-			target_human.hairstyle = hair_id
-			target_human.update_body_parts()
+			target_human.set_hairstyle(hair_id, update = TRUE)
 			user.visible_message(span_notice("[user] successfully cuts [target_human]'s hair!"), span_notice("You successfully cut [target_human]'s hair!"))
 			new /obj/effect/decal/cleanable/hair(get_turf(src))
 	else
@@ -59,7 +58,7 @@
 			balloon_alert(user, "They have no facial hair to cut!")
 			return
 
-		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.facial_hairstyles_list)
+		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", SSaccessories.facial_hairstyles_list)
 		if(!facial_hair_id)
 			return
 
@@ -71,7 +70,6 @@
 		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
 		if(do_after(user, facial_haircut_duration, target_human))
-			target_human.facial_hairstyle = facial_hair_id
-			target_human.update_body_parts()
+			target_human.set_facial_hairstyle(facial_hair_id, update = TRUE)
 			user.visible_message(span_notice("[user] successfully cuts [target_human]'s facial hair!"), span_notice("You successfully cut [target_human]'s facial hair!"))
 			new /obj/effect/decal/cleanable/hair(get_turf(src))

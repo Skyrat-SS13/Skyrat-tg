@@ -17,7 +17,7 @@
 
 	abstract_type = /datum/traitor_objective/destroy_heirloom
 
-	/// The jobs that this objective is targetting.
+	/// The jobs that this objective is targeting.
 	var/list/target_jobs
 	/// the item we need to destroy
 	var/obj/item/target_item
@@ -41,10 +41,10 @@
 	target_jobs = list(
 		// Medical
 		/datum/job/doctor,
-		/datum/job/virologist,
 		/datum/job/paramedic,
 		/datum/job/psychologist,
 		/datum/job/chemist,
+		/datum/job/coroner,
 		// Service
 		/datum/job/clown,
 		/datum/job/botanist,
@@ -76,6 +76,7 @@
 	telecrystal_reward = list(1, 2)
 	target_jobs = list(
 		// Cargo
+		/datum/job/bitrunner,
 		/datum/job/shaft_miner,
 		// Service
 		/datum/job/chaplain,
@@ -100,6 +101,7 @@
 		/datum/job/chief_medical_officer,
 		/datum/job/research_director,
 		/datum/job/quartermaster,
+		/datum/job/chief_engineer,
 	)
 
 /datum/traitor_objective/destroy_heirloom/captain
@@ -137,10 +139,10 @@
 	if(!length(possible_targets))
 		return FALSE
 	target_mind = pick(possible_targets)
-	AddComponent(/datum/component/traitor_objective_register, target_mind.current, fail_signals = list(COMSIG_PARENT_QDELETING))
+	AddComponent(/datum/component/traitor_objective_register, target_mind.current, fail_signals = list(COMSIG_QDELETING))
 	var/datum/quirk/item_quirk/family_heirloom/quirk = locate() in target_mind.current.quirks
 	target_item = quirk.heirloom.resolve()
-	AddComponent(/datum/component/traitor_objective_register, target_item, succeed_signals = list(COMSIG_PARENT_QDELETING))
+	AddComponent(/datum/component/traitor_objective_register, target_item, succeed_signals = list(COMSIG_QDELETING))
 	replace_in_name("%TARGET%", target_mind.name)
 	replace_in_name("%JOB TITLE%", target_mind.assigned_role.title)
 	replace_in_name("%ITEM%", target_item.name)

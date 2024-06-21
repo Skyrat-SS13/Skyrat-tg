@@ -48,18 +48,16 @@
 		"yellow" = image (icon = src.icon, icon_state = "lewdapron_yellow"))
 
 //to change model
-/obj/item/clothing/accessory/lewdapron/AltClick(mob/user)
+/obj/item/clothing/accessory/lewdapron/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
-		return
+		return CLICK_ACTION_BLOCKING
 	var/choice = show_radial_menu(user, src, apron_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 	current_color = choice
 	update_icon()
 	color_changed = TRUE
+	return CLICK_ACTION_SUCCESS
 
 /// to check if we can change kinkphones's model
 /obj/item/clothing/accessory/lewdapron/proc/check_menu(mob/living/user)
@@ -84,10 +82,11 @@
 
 /obj/item/clothing/under/costume/lewdmaid/attach_accessory(obj/item/attack_item)
 	. = ..()
-	var/accessory_color = attached_accessory.icon_state
+	var/obj/item/clothing/accessory/prime_accessory = attached_accessories[1]
+	var/accessory_color = prime_accessory.icon_state
 	accessory_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[accessory_color]", ABOVE_MOB_LAYER + 0.1)
-	accessory_overlay.alpha = attached_accessory.alpha
-	accessory_overlay.color = attached_accessory.color
+	accessory_overlay.alpha = prime_accessory.alpha
+	accessory_overlay.color = prime_accessory.color
 	if(!ishuman(loc))
 		return TRUE
 	var/mob/living/carbon/human/wearer = loc

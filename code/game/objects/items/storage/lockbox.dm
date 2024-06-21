@@ -23,14 +23,17 @@
 
 	register_context()
 
-/obj/item/storage/lockbox/attackby(obj/item/W, mob/user, params)
+/obj/item/storage/lockbox/storage_insert_on_interacted_with(datum/storage, obj/item/inserted, mob/living/user)
 	var/locked = atom_storage.locked
-	if(W.GetID())
+	if(inserted.GetID())
 		if(broken)
 			balloon_alert(user, "broken!")
-			return
+			return FALSE
 		if(allowed(user))
-			atom_storage.locked = !locked
+			if(atom_storage.locked)
+				atom_storage.locked = STORAGE_NOT_LOCKED
+			else
+				atom_storage.locked = STORAGE_FULLY_LOCKED
 			locked = atom_storage.locked
 			if(locked)
 				icon_state = icon_locked
@@ -39,24 +42,27 @@
 				icon_state = icon_closed
 
 			balloon_alert(user, locked ? "locked" : "unlocked")
-			return
+			return FALSE
 
-		else
-			balloon_alert(user, "access denied!")
-			return
-	if(!locked)
-		return ..()
-	else
+		balloon_alert(user, "access denied!")
+		return FALSE
+
+	if(locked)
 		balloon_alert(user, "locked!")
+		return FALSE
 
-/obj/item/storage/lockbox/emag_act(mob/user)
+	return TRUE
+
+/obj/item/storage/lockbox/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!broken)
 		broken = TRUE
-		atom_storage.locked = FALSE
+		atom_storage.locked = STORAGE_NOT_LOCKED
 		icon_state = src.icon_broken
-		if(user)
-			visible_message(span_warning("\The [src] is broken by [user] with an electromagnetic card!"))
-			return
+		balloon_alert(user, "lock destroyed")
+		if (emag_card && user)
+			user.visible_message(span_warning("[user] swipes [emag_card] over [src], breaking it!"))
+		return TRUE
+	return FALSE
 
 /obj/item/storage/lockbox/examine(mob/user)
 	. = ..()
@@ -109,19 +115,18 @@
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 	atom_storage.max_slots = 10
 	atom_storage.max_total_storage = 20
-	atom_storage.set_holdable(list(/obj/item/clothing/accessory/medal))
+	atom_storage.set_holdable(/obj/item/clothing/accessory/medal)
 
 /obj/item/storage/lockbox/medal/examine(mob/user)
 	. = ..()
 	if(!atom_storage.locked)
 		. += span_notice("Alt-click to [open ? "close":"open"] it.")
 
-/obj/item/storage/lockbox/medal/AltClick(mob/user)
-	if(user.can_perform_action(src))
-		if(!atom_storage.locked)
-			open = (open ? FALSE : TRUE)
-			update_appearance()
-		..()
+/obj/item/storage/lockbox/medal/click_alt(mob/user)
+	if(!atom_storage.locked)
+		open = (open ? FALSE : TRUE)
+		update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/storage/lockbox/medal/PopulateContents()
 	new /obj/item/clothing/accessory/medal/gold/captain(src)
@@ -186,6 +191,8 @@
 /obj/item/storage/lockbox/medal/med/PopulateContents()
 	new /obj/item/clothing/accessory/medal/med_medal(src)
 	new /obj/item/clothing/accessory/medal/med_medal2(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/accessory/medal/silver/emergency_services/medical(src)
 
 /obj/item/storage/lockbox/medal/sec/PopulateContents()
 	for(var/i in 1 to 3)
@@ -216,11 +223,23 @@
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/accessory/medal/plasma/nobel_science(src)
 
+/obj/item/storage/lockbox/medal/engineering
+	name = "engineering medal box"
+	desc = "A locked box used to store awards to be given to members of the engineering department."
+	req_access = list(ACCESS_CE)
+
+/obj/item/storage/lockbox/medal/engineering/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/accessory/medal/silver/emergency_services/engineering(src)
+	new /obj/item/clothing/accessory/medal/silver/elder_atmosian(src)
+
 /obj/item/storage/lockbox/order
 	name = "order lockbox"
 	desc = "A box used to secure small cargo orders from being looted by those who didn't order it. Yeah, cargo tech, that means you."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "secure"
+	icon_closed = "secure"
+	icon_locked = "secure_locked"
 	icon_broken = "secure+b"
 	inhand_icon_state = "sec-case"
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
@@ -233,29 +252,34 @@
 	. = ..()
 	buyer_account = _buyer_account
 	ADD_TRAIT(src, TRAIT_NO_MISSING_ITEM_ERROR, TRAIT_GENERIC)
-
+	ADD_TRAIT(src, TRAIT_NO_MANIFEST_CONTENTS_ERROR, TRAIT_GENERIC)
 	//SKYRAT EDIT START
 	if(istype(buyer_account, /datum/bank_account/department))
 		department_purchase = TRUE
 		department_account = buyer_account
 	//SKYRAT EDIT END
 
-/obj/item/storage/lockbox/order/attackby(obj/item/W, mob/user, params)
-	var/obj/item/card/id/id_card = W.GetID()
+/obj/item/storage/lockbox/order/storage_insert_on_interacted_with(datum/storage, obj/item/inserted, mob/living/user)
+	var/obj/item/card/id/id_card = inserted.GetID()
 	if(!id_card)
 		return ..()
 
-	if(iscarbon(user))
-		add_fingerprint(user)
-
-	if((id_card.registered_account != buyer_account) && !(department_purchase && (id_card.registered_account?.account_job?.paycheck_department) == (department_account.department_id))) //SKYRAT EDIT
+	if(id_card.registered_account != buyer_account)
 		balloon_alert(user, "incorrect bank account!")
-		return
+		return FALSE
 
-	atom_storage.locked = !privacy_lock
+	if(privacy_lock)
+		atom_storage.locked = STORAGE_NOT_LOCKED
+		icon_state = icon_locked
+	else
+		atom_storage.locked = STORAGE_FULLY_LOCKED
+		icon_state = icon_closed
 	privacy_lock = atom_storage.locked
-	user.visible_message(span_notice("[user] [privacy_lock ? "" : "un"]locks [src]'s privacy lock."),
-					span_notice("You [privacy_lock ? "" : "un"]lock [src]'s privacy lock."))
+	user.visible_message(
+		span_notice("[user] [privacy_lock ? "" : "un"]locks [src]'s privacy lock."),
+		span_notice("You [privacy_lock ? "" : "un"]lock [src]'s privacy lock."),
+	)
+	return FALSE
 
 ///screentips for lockboxes
 /obj/item/storage/lockbox/add_context(atom/source, list/context, obj/item/held_item, mob/user)

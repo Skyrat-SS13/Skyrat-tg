@@ -2,27 +2,93 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"c" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external/ruin,
+/obj/docking_port/stationary{
+	dwidth = 11;
+	height = 16;
+	name = "Deep Space";
+	shuttle_id = "pirate_home";
+	width = 17
+	},
+/obj/docking_port/mobile{
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
+	name = "hunter shuttle";
+	rechargeTime = 1800;
+	shuttle_id = "huntership"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/pod/dark,
+/area/shuttle/hunter)
 "d" = (
-/obj/structure/sign/warning/vacuum/external,
-/turf/closed/wall/mineral/plastitanium,
+/obj/structure/table,
+/obj/item/tape{
+	pixel_y = 17;
+	pixel_x = -12
+	},
+/obj/item/reagent_containers/cup/glass/dry_ramen{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "f" = (
 /obj/structure/table,
+/obj/structure/sign/poster/contraband/bountyhunters/directional/north,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/obj/effect/spawner/random/bureaucracy/pen{
+	pixel_x = -6;
+	pixel_y = -7
+	},
 /turf/open/floor/pod/light,
 /area/shuttle/hunter)
 "h" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/hunter)
+"i" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/pod/dark,
+/area/shuttle/hunter)
 "j" = (
 /obj/structure/curtain/bounty,
 /turf/open/floor/pod/dark,
+/area/shuttle/hunter)
+"k" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 6;
+	pixel_x = -5
+	},
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = 8;
+	pixel_y = 14
+	},
+/turf/open/floor/pod/light,
 /area/shuttle/hunter)
 "l" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/hunter)
+"m" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external/ruin,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "n" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -31,7 +97,14 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/pod/dark,
+/area/shuttle/hunter)
+"q" = (
+/obj/structure/closet/crate/bin,
+/obj/item/grenade/chem_grenade/glitter/pink,
+/obj/item/trash/can,
+/obj/item/cigbutt,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "r" = (
 /obj/structure/chair/office{
@@ -66,11 +139,11 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/hunter)
 "w" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+/obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/door/airlock/external/ruin,
-/turf/open/floor/plating,
+/obj/structure/sign/warning/vacuum/directional/west,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "x" = (
 /obj/structure/chair/office{
@@ -87,38 +160,48 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "z" = (
-/obj/structure/sign/poster/contraband/bountyhunters,
-/turf/closed/wall/mineral/plastitanium,
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/cigarettes/cigars/havana{
+	pixel_y = 6
+	},
+/turf/open/floor/pod/light,
 /area/shuttle/hunter)
 "A" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/pod/dark,
-/area/shuttle/hunter)
-"C" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
+"B" = (
+/obj/machinery/light/floor,
+/turf/open/floor/pod/dark,
+/area/shuttle/hunter)
 "D" = (
 /obj/machinery/power/smes,
+/obj/effect/turf_decal/stripes/full,
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "E" = (
 /obj/structure/table,
-/obj/item/phone,
+/obj/item/food/donut/plain{
+	pixel_y = -10;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/cup/glass/dry_ramen{
+	pixel_x = -4;
+	pixel_y = 15
+	},
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "F" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external/ruin,
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "G" = (
-/turf/open/floor/plating,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "H" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/hunter{
@@ -133,6 +216,14 @@
 /obj/effect/landmark/ert_shuttle_brief_spawn,
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
+"J" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external/ruin,
+/turf/open/floor/pod/dark,
+/area/shuttle/hunter)
 "K" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -144,50 +235,64 @@
 /obj/effect/landmark/ert_shuttle_spawn,
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
+"M" = (
+/obj/machinery/suit_storage_unit/standard_unit{
+	storage_type = /obj/item/tank/internals/oxygen/yellow
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/pod/light,
+/area/shuttle/hunter)
 "O" = (
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "P" = (
 /obj/structure/table,
+/obj/item/toy/cards/deck{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/item/multitool{
+	pixel_x = 10;
+	pixel_y = 5
+	},
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "Q" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/external/ruin,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/warning/vacuum/directional/west,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "R" = (
 /obj/structure/table,
 /obj/item/binoculars,
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_y = 16;
+	pixel_x = -7
+	},
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "S" = (
+/obj/structure/table/reinforced,
+/obj/item/paper{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/paper{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/item/stamp/centcom{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/pen/fourcolor{
+	pixel_x = -4
+	},
 /turf/open/floor/pod/light,
 /area/shuttle/hunter)
 "T" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating,
-/area/shuttle/hunter)
-"U" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/machinery/door/airlock/external/ruin,
-/obj/docking_port/stationary{
-	dwidth = 11;
-	height = 16;
-	name = "Deep Space";
-	shuttle_id = "pirate_home";
-	width = 17
-	},
-/obj/docking_port/mobile{
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
-	name = "hunter shuttle";
-	rechargeTime = 1800;
-	shuttle_id = "huntership"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/turf/open/floor/pod/dark,
 /area/shuttle/hunter)
 "V" = (
 /obj/machinery/computer/camera_advanced{
@@ -195,32 +300,43 @@
 	},
 /turf/open/floor/pod/light,
 /area/shuttle/hunter)
-"W" = (
-/obj/structure/table,
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/pod/light,
-/area/shuttle/hunter)
 "X" = (
 /obj/structure/rack,
 /obj/item/grenade/c4{
-	pixel_x = -1;
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/grenade/c4{
+	pixel_x = 3;
 	pixel_y = 1
 	},
 /obj/item/grenade/c4{
-	pixel_x = -6;
-	pixel_y = 7
+	pixel_x = 11;
+	pixel_y = -1
 	},
-/obj/item/grenade/c4{
-	pixel_x = 7;
-	pixel_y = -5
-	},
+/obj/effect/turf_decal/stripes/full,
 /turf/open/floor/pod/dark,
 /area/shuttle/hunter)
-"Z" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
+"Y" = (
+/obj/structure/table,
+/obj/machinery/light/small/directional/north,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 7
 	},
-/turf/open/floor/pod/dark,
+/obj/item/cigbutt/cigarbutt{
+	pixel_x = 7;
+	pixel_y = -10
+	},
+/obj/item/paper_bin{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/hunter)
+"Z" = (
+/obj/structure/bookcase/random/reference,
+/turf/open/floor/pod/light,
 /area/shuttle/hunter)
 
 (1,1,1) = {"
@@ -289,7 +405,7 @@ n
 v
 n
 n
-O
+i
 X
 D
 n
@@ -301,15 +417,15 @@ n
 (6,1,1) = {"
 n
 n
-d
 n
 n
-O
-O
-O
+n
+A
+A
+A
 n
 n
-d
+n
 n
 n
 "}
@@ -317,16 +433,16 @@ n
 F
 p
 G
-T
+J
 w
-A
-C
-Z
+O
+B
+O
 Q
-p
+m
 G
 T
-U
+c
 "}
 (8,1,1) = {"
 n
@@ -334,9 +450,9 @@ n
 h
 n
 n
-j
-j
-j
+q
+O
+O
 n
 n
 h
@@ -362,12 +478,12 @@ a
 a
 a
 h
-z
+n
 f
 E
 P
 O
-t
+M
 n
 h
 a
@@ -378,8 +494,8 @@ a
 a
 a
 n
-W
-P
+Y
+d
 R
 O
 t
@@ -407,13 +523,13 @@ a
 a
 a
 a
-h
+n
+n
+n
 n
 j
-j
-j
 n
-h
+n
 a
 a
 a
@@ -423,11 +539,11 @@ a
 a
 a
 h
-S
+Z
 O
+B
 O
-O
-S
+k
 h
 a
 a
@@ -442,7 +558,7 @@ S
 u
 I
 u
-S
+z
 h
 a
 a

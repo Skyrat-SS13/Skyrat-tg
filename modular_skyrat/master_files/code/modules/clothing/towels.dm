@@ -15,6 +15,10 @@
 #define TOWEL_WORN_ICON 'modular_skyrat/master_files/icons/mob/clothing/towel.dmi'
 /// Icon path to the worn icon of the towel for digitigrades.
 #define TOWEL_WORN_ICON_DIGI 'modular_skyrat/master_files/icons/mob/clothing/towel_digi.dmi'
+/// Icon path to the left-hand inhand icons of the towel.
+#define TOWEL_LEFTHAND_ICON 'modular_skyrat/master_files/icons/mob/inhands/clothing/towel_lefthand.dmi'
+/// Icon path to the right-hand inhand icons of the towel.
+#define TOWEL_RIGHTHAND_ICON 'modular_skyrat/master_files/icons/mob/inhands/clothing/towel_righthand.dmi'
 
 /// How much cloth goes into a towel.
 #define TOWEL_CLOTH_AMOUNT 2
@@ -33,6 +37,9 @@
 	worn_icon_digi = TOWEL_WORN_ICON_DIGI
 	icon_state = "towel"
 	base_icon_state = "towel"
+	lefthand_file = TOWEL_LEFTHAND_ICON
+	righthand_file = TOWEL_RIGHTHAND_ICON
+	inhand_icon_state = "towel"
 	force = 0
 	throwforce = 0
 	throw_speed = 1
@@ -136,7 +143,7 @@
 
 	var/cleaning_themselves = target_mob == user
 
-	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
+	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you"] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
 
 	if(!cleaning_themselves)
 		to_chat(user, span_notice("You start drying [target_mob] up with [src]."))
@@ -229,17 +236,12 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 
-/obj/item/towel/AltClick(mob/user)
-	. = ..()
-
-	if(. == FALSE)
-		return
-
+/obj/item/towel/click_alt(mob/user)
 	if(!(shape == TOWEL_FULL || shape == TOWEL_WAIST))
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 
 	if(!ishuman(user))
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 
 	var/mob/living/carbon/human/towel_user = user
 	var/worn = towel_user.wear_suit == src
@@ -251,9 +253,10 @@
 		return
 
 	to_chat(user, span_notice(shape == TOWEL_FULL ? "You raise \the [src] over your [shape]." : "You lower \the [src] down to your [shape]."))
+	return CLICK_ACTION_SUCCESS
 
 
-/obj/item/towel/CtrlClick(mob/user)
+/obj/item/towel/item_ctrl_click(mob/user)
 	. = ..()
 
 	if(. == FALSE)
@@ -308,7 +311,7 @@
 	. = ..() // This isn't really needed, but I'm including it in case we ever get dyeable towels.
 
 	// Washing allows you to remove all reagents from a towel, so it comes out clean!
-	reagents.remove_any(reagents.total_volume)
+	reagents.remove_all(reagents.total_volume)
 
 	set_wet(FALSE, FALSE)
 	make_used(null, silent = TRUE)
@@ -449,10 +452,10 @@
 	if(!amount)
 		return
 
-	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transfered_by = user)
+	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transferred_by = user)
 
 	if(loss_factor && reagents.total_volume)
-		reagents.remove_any(amount * loss_factor)
+		reagents.remove_all(amount * loss_factor)
 
 	if(!reagents.total_volume)
 		set_wet(FALSE, !make_used)
@@ -483,7 +486,7 @@
 	if(!amount)
 		return
 
-	source.trans_to(reagents, amount, no_react = TRUE, transfered_by = user)
+	source.trans_to(reagents, amount, no_react = TRUE, transferred_by = user)
 
 	if(!wet)
 		set_wet(TRUE, !make_used || shape == TOWEL_USED)

@@ -3,7 +3,7 @@
 /obj/item/hand_item/coom
 	name = "cum"
 	desc = "C-can I watch...?"
-	icon = 'icons/obj/hydroponics/harvest.dmi'
+	icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	icon_state = "eggplant"
 	inhand_icon_state = "nothing"
 
@@ -21,7 +21,7 @@
 	var/mob/living/carbon/human/affected_human = user
 	var/obj/item/organ/external/genital/testicles/testicles = affected_human.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/penis/penis = affected_human.get_organ_slot(ORGAN_SLOT_PENIS)
-	var/datum/sprite_accessory/genital/penis_sprite = GLOB.sprite_accessories[ORGAN_SLOT_PENIS][affected_human.dna.species.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/genital/penis_sprite = SSaccessories.sprite_accessories[ORGAN_SLOT_PENIS][affected_human.dna.species.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME]]
 	if(penis_sprite.is_hidden(affected_human))
 		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return
@@ -48,11 +48,11 @@
 			var/datum/reagents/applied_reagents = new/datum/reagents(50)
 			applied_reagents.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
-			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(target, SFX_DESECRATION, 50, TRUE)
 			applied_reagents.trans_to(target, cum_volume)
 		else
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
-			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(target, SFX_DESECRATION, 50, TRUE)
 			affected_human.add_cum_splatter_floor(get_turf(target))
 
 		log_combat(user, target, "came on")

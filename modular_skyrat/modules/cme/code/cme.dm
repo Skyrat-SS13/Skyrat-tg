@@ -19,6 +19,7 @@
 	max_occurrences = 0
 	earliest_start = 45 MINUTES
 	category = EVENT_CATEGORY_SPACE
+	description = "Spawns a CME event of varied severities"
 
 /datum/round_event/cme
 	start_when = 6
@@ -35,6 +36,7 @@
 	weight = 15
 	min_players = 75
 	max_occurrences = 1
+	description = "Spawns a CME event of a unknown severity"
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
@@ -44,6 +46,7 @@
 	typepath = /datum/round_event/cme/minimal
 	weight = 0
 	max_occurrences = 0
+	description = "Spawns a CME event of minimum severity"
 
 /datum/round_event/cme/minimal
 	cme_intensity = CME_MINIMAL
@@ -53,6 +56,7 @@
 	typepath = /datum/round_event/cme/moderate
 	weight = 0
 	max_occurrences = 0
+	description = "Spawns a CME event of moderate severity"
 
 /datum/round_event/cme/moderate
 	cme_intensity = CME_MODERATE
@@ -63,6 +67,7 @@
 	weight = 0
 	min_players = 75
 	max_occurrences = 0
+	description = "Spawns a CME event of extreme severity"
 
 /datum/round_event/cme/extreme
 	cme_intensity = CME_EXTREME
@@ -72,6 +77,7 @@
 	typepath = /datum/round_event/cme/armageddon
 	weight = 0
 	max_occurrences = 0
+	description = "Spawns a CME event of Arnageddon severity. WARNING this is round ending severe."
 
 /datum/round_event/cme/armageddon
 	cme_intensity = CME_ARMAGEDDON
@@ -143,7 +149,7 @@
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
-/datum/round_event/cme/tick()
+/datum/round_event/cme/tick(seconds_between_ticks)
 	if(ISMULTIPLE(activeFor, rand(cme_frequency_lower, cme_frequency_upper)))
 		var/turf/spawnpoint = pick(cme_start_locs)
 		spawn_cme(spawnpoint, cme_intensity)

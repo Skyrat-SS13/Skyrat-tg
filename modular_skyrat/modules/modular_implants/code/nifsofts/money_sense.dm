@@ -9,6 +9,7 @@
 	active_cost = 0.5
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 	buying_category = NIFSOFT_CATEGORY_UTILITY
+	ui_icon = "coins"
 
 /datum/nifsoft/money_sense/activate()
 	. = ..()
@@ -28,7 +29,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_MOB_EXAMINATE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_MOB_EXAMINATE, PROC_REF(add_examine))
 
 /datum/component/money_sense/Destroy(force, silent)
 	. = ..()

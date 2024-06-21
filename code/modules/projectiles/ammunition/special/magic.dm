@@ -4,7 +4,6 @@
 	slot_flags = null
 	projectile_type = /obj/projectile/magic
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/magic
-	heavy_metal = FALSE
 
 /obj/item/ammo_casing/magic/change
 	projectile_type = /obj/projectile/magic/change
@@ -83,3 +82,9 @@
 /obj/item/ammo_casing/magic/nothing
 	projectile_type = /obj/projectile/magic/nothing
 	harmful = FALSE
+
+/obj/item/ammo_casing/magic/shrink
+	projectile_type = /obj/projectile/magic/shrink
+
+/obj/item/ammo_casing/magic/shrink/wand
+	projectile_type = /obj/projectile/magic/shrink/wand

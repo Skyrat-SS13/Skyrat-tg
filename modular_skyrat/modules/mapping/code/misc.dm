@@ -7,32 +7,6 @@
 	icon_state = "luna"
 	inhand_icon_state = "luna"
 
-/datum/mod_theme/prototype/hauler
-	name = "Prototype: Hauler"
-	desc = "Bulky and quite heavy, This prototype modular suit has seemed to be modified quite a bit with additional supports to distribute its weight. The servos there within have been modified to handle the additional stress, but the loose wiring required an internal lining of rubberized insulation"
-	inbuilt_modules = list()
-	charge_drain = DEFAULT_CHARGE_DRAIN * 3
-	siemens_coefficient = 0
-	slowdown_active = 1
-
-/obj/item/mod/control/pre_equipped/prototype/hauler
-	theme = /datum/mod_theme/prototype/hauler
-	req_access = list(ACCESS_TARKON)
-	applied_cell = /obj/item/stock_parts/cell/high
-	applied_modules = list(
-		/obj/item/mod/module/storage/large_capacity,
-		/obj/item/mod/module/welding,
-		/obj/item/mod/module/clamp,
-		/obj/item/mod/module/flashlight,
-		/obj/item/mod/module/tether,
-	)
-
-/obj/machinery/suit_storage_unit/industrial/hauler
-	mod_type = /obj/item/mod/control/pre_equipped/prototype/hauler
-
-/obj/item/areaeditor/blueprints/tarkon
-	desc = "Blueprints of the Tarkon surface breaching drill and several Tarkon base designs. Red, stamped text reads \"Confidential\" on the backside of it."
-	name = "Tarkon Design Prints"
 
 /obj/item/mod/module/armor_booster/retractplates
 	name = "MOD retractive plates module"

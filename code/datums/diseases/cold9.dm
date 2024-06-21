@@ -9,7 +9,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	desc = "If left untreated the subject will slow, as if partly frozen."
 	severity = DISEASE_SEVERITY_HARMFUL
-
+	required_organ = ORGAN_SLOT_LUNGS
 
 /datum/disease/cold9/stage_act(seconds_per_tick, times_fired)
 	. = ..()
@@ -20,7 +20,7 @@
 		if(2)
 			affected_mob.adjust_bodytemperature(-5 * seconds_per_tick)
 			if(SPT_PROB(0.5, seconds_per_tick))
-				affected_mob.emote("sneeze")
+				affected_mob.infectious_sneeze(src, TRUE)
 			if(SPT_PROB(0.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
@@ -34,7 +34,7 @@
 		if(3)
 			affected_mob.adjust_bodytemperature(-10 * seconds_per_tick)
 			if(SPT_PROB(0.5, seconds_per_tick))
-				affected_mob.emote("sneeze")
+				affected_mob.infectious_sneeze(src, TRUE)
 			if(SPT_PROB(0.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))

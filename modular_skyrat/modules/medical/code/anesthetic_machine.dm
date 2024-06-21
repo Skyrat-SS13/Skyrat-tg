@@ -27,7 +27,6 @@
 /obj/machinery/anesthetic_machine/Initialize(mapload)
 	. = ..()
 	attached_mask = new /obj/item/clothing/mask/breath/anesthetic(src)
-	attached_mask.attached_machine = src
 	update_icon()
 
 /obj/machinery/anesthetic_machine/wrench_act_secondary(mob/living/user, obj/item/tool)
@@ -39,7 +38,7 @@
 		return TRUE
 
 	if(attached_tank)
-		to_chat(user, span_warning("[attached_tank] inside of the [src] deconsturction."))
+		to_chat(user, span_warning("[attached_tank] must be removed from [src] first!"))
 		return TRUE
 
 	new /obj/item/anesthetic_machine_kit(get_turf(src))
@@ -67,22 +66,21 @@
 		return FALSE
 	visible_message(span_notice("[user] retracts [attached_mask] back into [src]."))
 
-/obj/machinery/anesthetic_machine/attacked_by(obj/item/used_item, mob/living/user)
-	if(!istype(used_item, /obj/item/tank))
+/obj/machinery/anesthetic_machine/attackby(obj/item/attacking_item, mob/user, params)
+	if(!istype(attacking_item, /obj/item/tank))
 		return ..()
 
 	if(attached_tank) // If there is an attached tank, remove it and drop it on the floor
 		attached_tank.forceMove(loc)
 
-	used_item.forceMove(src) // Put new tank in, set it as attached tank
-	visible_message(span_notice("[user] inserts [used_item] into [src]."))
-	attached_tank = used_item
+	attacking_item.forceMove(src) // Put new tank in, set it as attached tank
+	visible_message(span_notice("[user] inserts [attacking_item] into [src]."))
+	attached_tank = attacking_item
 	update_icon()
 
-/obj/machinery/anesthetic_machine/AltClick(mob/user)
-	. = ..()
+/obj/machinery/anesthetic_machine/click_alt(mob/user)
 	if(!attached_tank)
-		return
+		return CLICK_ACTION_BLOCKING
 
 	attached_tank.forceMove(loc)
 	to_chat(user, span_notice("You remove the [attached_tank]."))
@@ -90,6 +88,7 @@
 	update_icon()
 	if(mask_out)
 		retract_mask()
+	return CLICK_ACTION_SUCCESS
 
 ///Retracts the attached_mask back into the machine
 /obj/machinery/anesthetic_machine/proc/retract_mask()
@@ -109,26 +108,31 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/anesthetic_machine/MouseDrop(mob/living/carbon/target)
+/obj/machinery/anesthetic_machine/mouse_drop_dragged(mob/living/carbon/target, mob/user, src_location, over_location, params)
 	. = ..()
-	if(!iscarbon(target))
+	if(!istype(target))
 		return
 
-	if((!Adjacent(target)) || !(usr.Adjacent(target)))
+	if((!Adjacent(target)) || !(user.Adjacent(target)))
 		return FALSE
 
 	if(!attached_tank || mask_out)
-		to_chat(usr, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
+		to_chat(user, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
 		return FALSE
 
-	usr.visible_message(span_warning("[usr] attemps to attach the [attached_mask] to [target]."), span_notice("You attempt to attach the [attached_mask] to [target]"))
-	if(!do_after(usr, 5 SECONDS, target))
+	// if we somehow lost the mask, let's just make a brand new one. the wonders of technology!
+	if(QDELETED(attached_mask))
+		attached_mask = new /obj/item/clothing/mask/breath/anesthetic(src)
+		update_icon()
+
+	user.visible_message(span_warning("[user] attemps to attach the [attached_mask] to [target]."), span_notice("You attempt to attach the [attached_mask] to [target]"))
+	if(!do_after(user, 5 SECONDS, target))
 		return
 	if(!target.equip_to_appropriate_slot(attached_mask))
-		to_chat(usr, span_warning("You are unable to attach the [attached_mask] to [target]!"))
+		to_chat(user, span_warning("You are unable to attach the [attached_mask] to [target]!"))
 		return
 
-	usr.visible_message(span_warning("[usr] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
+	user.visible_message(span_warning("[user] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
 
 	// Open the tank externally
 	target.open_internals(attached_tank, is_external = TRUE)
@@ -147,7 +151,7 @@
 		return PROCESS_KILL
 
 	// Attempt to restart airflow if it was temporarily interrupted after mask adjustment.
-	if(attached_tank && istype(carbon_target) && !carbon_target.external && !attached_mask.mask_adjusted)
+	if(attached_tank && istype(carbon_target) && !carbon_target.external && !attached_mask.up)
 		carbon_target.open_internals(attached_tank, is_external = TRUE)
 
 /obj/machinery/anesthetic_machine/Destroy()
@@ -159,7 +163,7 @@
 		attached_tank = null
 
 	QDEL_NULL(attached_mask)
-	. = ..()
+	return ..()
 
 /// This a special version of the breath mask used for the anesthetic machine.
 /obj/item/clothing/mask/breath/anesthetic
@@ -170,6 +174,21 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 
+	// Make sure we are not spawning outside of a machine
+	if(istype(loc, /obj/machinery/anesthetic_machine))
+		attached_machine = WEAKREF(loc)
+
+	var/obj/machinery/anesthetic_machine/our_machine
+	if(attached_machine)
+		our_machine = attached_machine.resolve()
+
+	if(!our_machine)
+		attached_machine = null
+		if(mapload)
+			stack_trace("Abstract, undroppable item [name] spawned at ([loc]) at [AREACOORD(src)] in \the [get_area(src)]. \
+				Please remove it. This item should only ever be created by the anesthetic machine.")
+		return INITIALIZE_HINT_QDEL
+
 /obj/item/clothing/mask/breath/anesthetic/Destroy()
 	attached_machine = null
 	return ..()
@@ -177,22 +196,26 @@
 /obj/item/clothing/mask/breath/anesthetic/dropped(mob/user)
 	. = ..()
 
-	if(loc != attached_machine) //If it isn't in the machine, then it retracts when dropped
-		to_chat(user, span_notice("[src] retracts back into the [attached_machine]."))
+	if(isnull(attached_machine))
+		return
 
-		if(!istype(attached_machine, /obj/machinery/anesthetic_machine))
-			qdel(src)
-			return FALSE
+	var/obj/machinery/anesthetic_machine/our_machine = attached_machine.resolve()
+	// no machine, then delete it
+	if(!our_machine)
+		attached_machine = null
+		qdel(src)
+		return
 
-		var/obj/machinery/anesthetic_machine/source_machine = attached_machine
-		source_machine.retract_mask()
+	if(loc != our_machine) //If it isn't in the machine, then it retracts when dropped
+		to_chat(user, span_notice("[src] retracts back into the [our_machine]."))
+		our_machine.retract_mask()
 
-/obj/item/clothing/mask/breath/anesthetic/adjustmask(mob/living/carbon/user)
-	..()
+/obj/item/clothing/mask/breath/anesthetic/adjust_visor(mob/living/carbon/user)
+	. = ..()
 	// Air only goes through the mask, so temporarily pause airflow if mask is getting adjusted.
 	// Since the mask is NODROP, the only possible user is the wearer
 	var/mob/living/carbon/carbon_target = loc
-	if(mask_adjusted && carbon_target.external)
+	if(up && carbon_target.external)
 		carbon_target.close_externals()
 
 /// A boxed version of the Anesthetic Machine. This is what is printed from the medical prolathe.

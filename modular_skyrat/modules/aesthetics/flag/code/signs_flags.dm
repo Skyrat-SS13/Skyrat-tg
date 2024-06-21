@@ -13,17 +13,16 @@
 /obj/structure/sign/flag/welder_act(mob/living/user, obj/item/I)
 	return
 
-/obj/structure/sign/flag/MouseDrop(over_object, src_location, over_location)
-	. = ..()
-	if(over_object == usr && Adjacent(usr))
-		if(!item_flag || src.flags_1 & NODECONSTRUCT_1)
+/obj/structure/sign/flag/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
+	if(over == user && Adjacent(user))
+		if(!item_flag || src.obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION)
 			return
-		if(!usr.can_perform_action(src, NEED_DEXTERITY))
+		if(!user.can_perform_action(src, NEED_DEXTERITY))
 			return
-		usr.visible_message(span_notice("[usr] grabs and folds \the [src.name]."), span_notice("You grab and fold \the [src.name]."))
+		user.visible_message(span_notice("[user] grabs and folds \the [src.name]."), span_notice("You grab and fold \the [src.name]."))
 		var/obj/item/flag_item = new item_flag(loc)
 		TransferComponents(flag_item)
-		usr.put_in_hands(flag_item)
+		user.put_in_hands(flag_item)
 		qdel(src)
 
 /obj/structure/sign/flag/ssc
@@ -69,6 +68,17 @@
 	item_flag = /obj/item/sign/flag/nri
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
+
+/obj/structure/sign/flag/azulea
+	name = "flag of the Azulean Nation"
+	desc = "The foundations of this banner stretch back almost a millennium, devised by the first King among the Azulean people to unite them under it. \n\
+		Dark blue, representing the seas of Azulean worlds, and light blue, representing the seas inbetween. \
+		Both make waves on each other, but both are pulled in and swallowed by all of the people of Agurkrral coming together as one; as one violent, restless maelstrom. \n\n\
+		It's common to see this banner just about everywhere in both the Old and New Principalities, reminding all of their purpose and unity."
+	icon_state = "flag_azulea"
+	item_flag = /obj/item/sign/flag/azulea
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/azulea, 32)
 
 /// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
 /obj/structure/sign/flag/usa
@@ -147,6 +157,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	desc = "The folded flag of the Novaya Rossiyskaya Imperiya."
 	icon_state = "folded_nri"
 	sign_path = /obj/structure/sign/flag/nri
+
+/obj/item/sign/flag/azulea
+	name = "folded flag of Azulea"
+	desc = "The folded flag of the Akulan nation Azulea."
+	icon_state = "folded_azulea"
+	sign_path = /obj/structure/sign/flag/azulea
 
 /// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
 /obj/item/sign/flag/usa

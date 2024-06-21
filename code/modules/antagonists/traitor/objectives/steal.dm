@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	if(!place || !is_station_level(place.z))
 		objectives_by_path[typepath] -= object
 		return
-	RegisterSignal(object, COMSIG_PARENT_QDELETING, PROC_REF(remove_item))
+	RegisterSignal(object, COMSIG_QDELETING, PROC_REF(remove_item))
 
 /datum/objective_item_handler/proc/remove_item(atom/source)
 	SIGNAL_HANDLER
@@ -97,6 +97,9 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	possible_items = list(
 		/datum/objective_item/steal/traitor/cargo_budget,
 		/datum/objective_item/steal/traitor/clown_shoes,
+		/datum/objective_item/steal/traitor/lawyers_badge,
+		/datum/objective_item/steal/traitor/chef_moustache,
+		/datum/objective_item/steal/traitor/pka,
 	)
 
 /datum/traitor_objective/steal_item/somewhat_risky
@@ -185,7 +188,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 			bug.balloon_alert(user, "the scanner materializes in your hand")
 			bug.target_object_type = target_item.targetitem
 			AddComponent(/datum/component/traitor_objective_register, bug, \
-				fail_signals = list(COMSIG_PARENT_QDELETING), \
+				fail_signals = list(COMSIG_QDELETING), \
 				penalty = telecrystal_penalty)
 			RegisterSignal(bug, COMSIG_TRAITOR_BUG_PLANTED_OBJECT, PROC_REF(on_bug_planted))
 			RegisterSignal(bug, COMSIG_TRAITOR_BUG_PRE_PLANTED_OBJECT, PROC_REF(handle_special_case))
@@ -250,7 +253,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	desc = "It looks dangerous."
 	item_flags = EXAMINE_SKIP
 
-	icon = 'icons/obj/device_syndie.dmi'
+	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "bug"
 
 	/// The object on which this bug can be planted on. Has to be a type.
@@ -270,28 +273,26 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 			. += span_notice("This device must be placed by <b>clicking on the [initial(target_object_type.name)]</b> with it.")
 		. += span_notice("Remember, you may leave behind fingerprints or fibers on the device. Use <b>soap</b> or similar to scrub it clean to be safe!")
 
-/obj/item/traitor_bug/afterattack(atom/movable/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(!target_object_type)
-		return
-	if(!user.Adjacent(target))
-		return
-	. |= AFTERATTACK_PROCESSED_ITEM
+/obj/item/traitor_bug/interact_with_atom(atom/movable/target, mob/living/user, list/modifiers)
+	if(!target_object_type || !ismovable(target))
+		return NONE
+
 	var/result = SEND_SIGNAL(src, COMSIG_TRAITOR_BUG_PRE_PLANTED_OBJECT, target)
 	if(!(result & COMPONENT_FORCE_PLACEMENT))
 		if(result & COMPONENT_FORCE_FAIL_PLACEMENT || !istype(target, target_object_type))
 			balloon_alert(user, "you can't attach this onto here!")
-			return
-	if(!do_after(user, deploy_time, src))
-		return
+			return ITEM_INTERACT_BLOCKING
+	if(!do_after(user, deploy_time, src, hidden = TRUE))
+		return ITEM_INTERACT_BLOCKING
 	if(planted_on)
-		return
+		return ITEM_INTERACT_BLOCKING
 	forceMove(target)
 	target.vis_contents += src
 	vis_flags |= VIS_INHERIT_PLANE
 	planted_on = target
-	RegisterSignal(planted_on, COMSIG_PARENT_QDELETING, PROC_REF(handle_planted_on_deletion))
+	RegisterSignal(planted_on, COMSIG_QDELETING, PROC_REF(handle_planted_on_deletion))
 	SEND_SIGNAL(src, COMSIG_TRAITOR_BUG_PLANTED_OBJECT, target)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/traitor_bug/proc/handle_planted_on_deletion()
 	planted_on = null
@@ -308,8 +309,8 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		vis_flags &= ~VIS_INHERIT_PLANE
 		planted_on.vis_contents -= src
 		anchored = FALSE
-		UnregisterSignal(planted_on, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(planted_on, COMSIG_QDELETING)
 		planted_on = null
 
-/obj/item/traitor_bug/attackby_storage_insert(datum/storage, atom/storage_holder, mob/user)
+/obj/item/traitor_bug/storage_insert_on_interaction(datum/storage, atom/storage_holder, mob/user)
 	return !istype(storage_holder, target_object_type)

@@ -57,7 +57,10 @@
 		var/matrix/our_matrix = matrix()
 		our_matrix.Scale(scale_x, scale_y)
 		transform = our_matrix
-	notify_ghosts("An ICARUS sunbeam has been launched! [target_atom ? "Towards: [target_atom.name]" : ""]", source = src, action = NOTIFY_ORBIT, header = "Somethings burning!")
+	notify_ghosts("An ICARUS sunbeam has been launched! [target_atom ? "Towards: [target_atom.name]" : ""]",
+		source = src,
+		header = "Somethings burning!",
+	)
 	soundloop = new(src, TRUE)
 
 /obj/effect/sunbeam/Destroy(force)
@@ -149,6 +152,7 @@
 	max_occurrences = 0
 	weight = 0
 	category = EVENT_CATEGORY_SPACE
+	description = "Forces the ICARUS weapons system to fire a sunbeam at a random location. Causing massive devistation to the station."
 
 /datum/round_event/icarus_sunbeam
 	announce_when = 1 // Instant announcement

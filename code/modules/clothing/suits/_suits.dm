@@ -8,6 +8,7 @@
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
 		/obj/item/tank/jetpack/oxygen/captain,
+		/obj/item/storage/belt/holster,
 		)
 	armor_type = /datum/armor/none
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
@@ -16,14 +17,7 @@
 	var/blood_overlay_type = "suit"
 	limb_integrity = 0 // disabled for most exo-suits
 
-/obj/item/clothing/suit/Initialize(mapload)
-	. = ..()
-	setup_shielding()
-
-/// SKYRAT EDIT CHANGE BEGIN - taurs and teshis
-// /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE) // ORIGINAL
-/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
-// SKYRAT EDIT CHANGE END
+/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE) // SKYRAT EDIT CHANGE - TAURS AND TESHIS - ORIGINAL: /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
 	if(isinhands)
 		return
@@ -41,26 +35,19 @@
 		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
 		//SKYRAT EDIT CHANGE END
 
-	var/mob/living/carbon/human/M = loc
-	if(!ishuman(M) || !M.w_uniform)
+	var/mob/living/carbon/human/wearer = loc
+	if(!ishuman(wearer) || !wearer.w_uniform)
 		return
-	var/obj/item/clothing/under/U = M.w_uniform
-	if(istype(U) && U.attached_accessory)
-		var/obj/item/clothing/accessory/A = U.attached_accessory
-		if(A.above_suit)
-			. += U.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += U.accessory_overlay
+	var/obj/item/clothing/under/undershirt = wearer.w_uniform
+	if(!istype(undershirt) || !LAZYLEN(undershirt.attached_accessories))
+		return
+
+	var/obj/item/clothing/accessory/displayed = undershirt.attached_accessories[1]
+	if(displayed.above_suit)
+		. += undershirt.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += undershirt.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_worn_oversuit()
-
-/**
- * Wrapper proc to apply shielding through AddComponent().
- * Called in /obj/item/clothing/Initialize().
- * Override with an AddComponent(/datum/component/shielded, args) call containing the desired shield statistics.
- * See /datum/component/shielded documentation for a description of the arguments
- **/
-/obj/item/clothing/suit/proc/setup_shielding()
-	return

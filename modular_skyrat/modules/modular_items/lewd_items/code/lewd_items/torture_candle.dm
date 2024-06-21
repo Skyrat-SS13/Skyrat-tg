@@ -108,23 +108,24 @@
 	open_flame()
 	update_brightness()
 
-/obj/item/bdsm_candle/AltClick(mob/user)
-	. = ..()
+/obj/item/bdsm_candle/click_alt(mob/user)
 	if(!lit)
 		if(color_changed)
-			return
+			return CLICK_ACTION_BLOCKING
 		var/choice = show_radial_menu(user, src, candle_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
-			return FALSE
+			return CLICK_ACTION_BLOCKING
 		current_color = choice
 		light_color = candlelights[choice]
 		update_icon()
 		update_brightness()
 		color_changed = TRUE
+		return CLICK_ACTION_SUCCESS
 	else
 		if(!put_out_candle())
-			return
+			return CLICK_ACTION_BLOCKING
 		user.visible_message(span_notice("[user] snuffs [src]."))
+		return CLICK_ACTION_SUCCESS
 
 /*
 *	WAX DROPPING
@@ -140,7 +141,7 @@
 	if(!lit)
 		to_chat(user, span_danger("[src] needs to be lit to produce wax!"))
 		return
-	if(!attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!attacked.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("It looks like [attacked] don't want you to do that."))
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna wax
@@ -196,8 +197,8 @@
 		if(prob(50))
 			attacked.try_lewd_autoemote(pick("twitch_s" , "gasp", "shiver"))
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 
 #undef CANDLE_LUMINOSITY
 #undef PAIN_DEFAULT

@@ -17,6 +17,10 @@
 	icon_state = "headpike-bamboo"
 	speartype = /obj/item/spear/bamboospear
 
+/obj/structure/headpike/military //for military spears
+	icon_state = "headpike-military"
+	speartype = /obj/item/spear/military
+
 /obj/structure/headpike/Initialize(mapload)
 	. = ..()
 	if(mapload)
@@ -32,7 +36,7 @@
 	victim = locate() in parts_list
 	if(!victim) //likely a mapspawned one
 		victim = new(src)
-		victim.real_name = random_unique_name(prob(50))
+		victim.real_name = generate_random_name()
 	spear = locate(speartype) in parts_list
 	if(!spear)
 		spear = new speartype(src)
@@ -47,31 +51,32 @@
 	. = ..()
 	if(!victim)
 		return
-	var/mutable_appearance/MA = new()
-	MA.copy_overlays(victim)
-	MA.pixel_y = 12
-	MA.pixel_x = pixel_x
-	. += victim
+	var/mutable_appearance/appearance = new()
+	appearance.copy_overlays(victim)
+	appearance.pixel_y = 12
+	appearance.layer = layer + 0.1
+	. += appearance
 
-/obj/structure/headpike/handle_atom_del(atom/A)
-	if(A == victim)
+/obj/structure/headpike/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone != victim && gone != spear)
+		return
+	if(gone == victim)
 		victim = null
-	if(A == spear)
+	if(gone == spear)
 		spear = null
 	if(!QDELETED(src))
 		deconstruct(TRUE)
-	return ..()
 
-/obj/structure/headpike/deconstruct(disassembled)
-	if(victim) //Make sure the head always comes off
-		victim.forceMove(drop_location())
-		victim = null
+/obj/structure/headpike/atom_deconstruct(disassembled)
+	var/obj/item/bodypart/head/our_head = victim
+	var/obj/item/spear/our_spear = spear
+	victim = null
+	spear = null
+	our_head?.forceMove(drop_location()) //Make sure the head always comes off
 	if(!disassembled)
 		return ..()
-	if(spear)
-		spear.forceMove(drop_location())
-		spear = null
-	return ..()
+	our_spear?.forceMove(drop_location())
 
 /obj/structure/headpike/attack_hand(mob/user, list/modifiers)
 	. = ..()

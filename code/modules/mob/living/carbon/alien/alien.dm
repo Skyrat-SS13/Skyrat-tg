@@ -15,7 +15,10 @@
 
 	heat_protection = 0.5 // minor heat insulation
 
+	///Whether or not the alien is leaping. Only used by hunters.
 	var/leaping = FALSE
+	///The speed this alien should move at.
+	var/alien_speed = 0
 	gib_type = /obj/effect/decal/cleanable/xenoblood/xgibs
 	unique_name = TRUE
 
@@ -32,6 +35,8 @@
 	add_traits(list(TRAIT_NEVER_WOUNDED, TRAIT_VENTCRAWLER_ALWAYS), INNATE_TRAIT)
 
 	. = ..()
+	if(alien_speed)
+		update_alien_speed()
 
 /mob/living/carbon/alien/create_internal_organs()
 	organs += new /obj/item/organ/internal/brain/alien
@@ -66,9 +71,6 @@
 	else
 		clear_alert(ALERT_XENO_FIRE)
 
-/mob/living/carbon/alien/reagent_check(datum/reagent/R, seconds_per_tick, times_fired) //can metabolize all reagents
-	return FALSE
-
 /mob/living/carbon/alien/getTrail()
 	if(getBruteLoss() < 200)
 		return pick (list("xltrails_1", "xltrails2"))
@@ -95,11 +97,13 @@ Proc: RemoveInfectionImages()
 Des: Removes all infected images from the alien.
 ----------------------------------------*/
 /mob/living/carbon/alien/proc/RemoveInfectionImages()
-	if (client)
-		for(var/image/I in client.images)
+	if(client)
+		var/list/image/to_remove
+		for(var/image/client_image as anything in client.images)
 			var/searchfor = "infected"
-			if(findtext(I.icon_state, searchfor, 1, length(searchfor) + 1))
-				qdel(I)
+			if(findtext(client_image.icon_state, searchfor, 1, length(searchfor) + 1))
+				to_remove += client_image
+		client.images -= to_remove
 	return
 
 /mob/living/carbon/alien/canBeHandcuffed()
@@ -112,17 +116,31 @@ Des: Removes all infected images from the alien.
 		span_alertalien("[src] begins to twist and contort!"),
 		span_noticealien("You begin to evolve!"),
 	)
+
 	new_xeno.setDir(dir)
-	if(numba && unique_name)
-		new_xeno.numba = numba
-		new_xeno.set_name()
-	if(!alien_name_regex.Find(name))
-		new_xeno.name = name
-		new_xeno.real_name = real_name
+	new_xeno.change_name(name, real_name, numba)
+
 	if(mind)
 		mind.name = new_xeno.real_name
 		mind.transfer_to(new_xeno)
+
 	qdel(src)
+
+/// Changes the name of the xeno we are evolving into in order to keep the same numerical identifier the old xeno had.
+/mob/living/carbon/alien/proc/change_name(old_name, old_real_name, old_number)
+	if(!alien_name_regex.Find(old_name)) // check to make sure there's no admins doing funny stuff with naming these aliens
+		name = old_name
+		real_name = old_real_name
+		return
+
+	if(!unique_name)
+		return
+
+	if(old_number != 0)
+		numba = old_number
+		name = initial(name) // prevent chicanery like two different numerical identifiers tied to the same mob
+
+	set_name()
 
 /mob/living/carbon/alien/can_hold_items(obj/item/I)
 	return (I && (I.item_flags & XENOMORPH_HOLDABLE || ISADVANCEDTOOLUSER(src)) && ..())
@@ -134,3 +152,6 @@ Des: Removes all infected images from the alien.
 /mob/living/carbon/alien/on_standing_up()
 	. = ..()
 	update_icons()
+
+/mob/living/carbon/alien/proc/update_alien_speed()
+	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/alien_speed, multiplicative_slowdown = alien_speed)

@@ -17,7 +17,7 @@
 /** Get all hearers in range, ignores walls and such. Code stolen from `/proc/get_hearers_in_view()`
  * Much faster and less expensive than range()
 */
-/proc/get_hearers_in_range(range_radius, atom/source)
+/proc/get_hearers_in_looc_range(atom/source, range_radius = LOOC_RANGE)
 	var/turf/center_turf = get_turf(source)
 	if(!center_turf)
 		return
@@ -47,9 +47,9 @@
 	center_turf.luminosity = old_luminosity
 	return .
 
-///This will check if GLOB.sprite_accessories[mutant_part]?[part_name] is associated with sprite accessory with factual TRUE.
+///This will check if SSaccessories.sprite_accessories[mutant_part]?[part_name] is associated with sprite accessory with factual TRUE.
 /proc/is_factual_sprite_accessory(mutant_part, part_name)
 	if(!mutant_part || !part_name)
 		return FALSE
-	var/datum/sprite_accessory/accessory = GLOB.sprite_accessories[mutant_part]?[part_name]
+	var/datum/sprite_accessory/accessory = SSaccessories.sprite_accessories[mutant_part]?[part_name]
 	return accessory?.factual

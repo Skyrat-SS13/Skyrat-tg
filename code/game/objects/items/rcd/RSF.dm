@@ -31,12 +31,22 @@ RSF
 	var/dispense_cost = 0
 	w_class = WEIGHT_CLASS_NORMAL
 	///An associated list of atoms and charge costs. This can contain a separate list, as long as it's associated item is an object
-	var/list/cost_by_item = list(/obj/item/reagent_containers/cup/glass/drinkingglass = 20,
-								/obj/item/paper = 10,
-								/obj/item/storage/dice = 200,
-								/obj/item/pen = 50,
-								/obj/item/clothing/mask/cigarette = 10,
-								)
+	///The RSF item list below shows in the player facing ui in this order, this is why it isn't in alphabetical order, but instead sorted by category
+	var/list/cost_by_item = list(
+		/obj/item/reagent_containers/cup/glass/drinkingglass = 20,
+		/obj/item/reagent_containers/cup/glass/sillycup = 10,
+		/obj/item/plate = 70,
+		/obj/item/reagent_containers/cup/bowl = 70,
+		/obj/item/kitchen/fork/plastic = 30,
+		/obj/item/knife/plastic = 30,
+		/obj/item/kitchen/spoon/plastic = 30,
+		/obj/item/food/seaweedsheet = 30,
+		/obj/item/storage/dice = 200,
+		/obj/item/toy/cards/deck = 200,
+		/obj/item/paper = 10,
+		/obj/item/pen = 50,
+		/obj/item/clothing/mask/cigarette = 10,
+	)
 	///An associated list of fuel and it's value
 	var/list/matter_by_item = list(/obj/item/rcd_ammo = 10,)
 	///A list of surfaces that we are allowed to place things on.
@@ -115,21 +125,18 @@ RSF
 		return FALSE
 	return TRUE
 
-/obj/item/rsf/afterattack(atom/A, mob/user, proximity)
+/obj/item/rsf/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(cooldown > world.time)
-		return
-	. = ..()
-	if(!proximity)
-		return .
-	. |= AFTERATTACK_PROCESSED_ITEM
-	if (!is_allowed(A))
-		return .
+		return NONE
+	if (!is_allowed(interacting_with))
+		return NONE
 	if(use_matter(dispense_cost, user))//If we can charge that amount of charge, we do so and return true
 		playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
-		var/atom/meme = new to_dispense(get_turf(A))
+		var/atom/meme = new to_dispense(get_turf(interacting_with))
 		to_chat(user, span_notice("[action_type] [meme.name]..."))
 		cooldown = world.time + cooldowndelay
-	return .
+		return ITEM_INTERACT_SUCCESS
+	return ITEM_INTERACT_BLOCKING
 
 ///A helper proc. checks to see if we can afford the amount of charge that is passed, and if we can docs the charge from our base, and returns TRUE. If we can't we return FALSE
 /obj/item/rsf/proc/use_matter(charge, mob/user)
@@ -153,10 +160,7 @@ RSF
 
 ///Helper proc that iterates through all the things we are allowed to spawn on, and sees if the passed atom is one of them
 /obj/item/rsf/proc/is_allowed(atom/to_check)
-	for(var/sort in allowed_surfaces)
-		if(istype(to_check, sort))
-			return TRUE
-	return FALSE
+	return is_type_in_list(to_check, allowed_surfaces)
 
 /obj/item/rsf/cookiesynth
 	name = "Cookie Synthesizer"
@@ -173,12 +177,13 @@ RSF
 	///Tracks whether or not the cookiesynth is about to print a poisoned cookie
 	var/toxin = FALSE //This might be better suited to some initialize fuckery, but I don't have a good "poisoned" sprite
 
-/obj/item/rsf/cookiesynth/emag_act(mob/user)
+/obj/item/rsf/cookiesynth/emag_act(mob/user, obj/item/card/emag/emag_card)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("You short out [src]'s reagent safety checker!"))
+		balloon_alert(user, "reagent safety checker shorted out")
 	else
-		to_chat(user, span_warning("You reset [src]'s reagent safety checker!"))
+		balloon_alert(user, "reagent safety checker reset")
+	return TRUE
 
 /obj/item/rsf/cookiesynth/attack_self(mob/user)
 	var/mob/living/silicon/robot/P = null

@@ -31,7 +31,7 @@
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_EQUIPPED, PROC_REF(set_wearer))
 	RegisterSignal(parent_clothing, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(remove_wearer))
-	RegisterSignal(parent_clothing, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent_clothing, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/reagent_clothing/Destroy(force, silent)
@@ -86,7 +86,7 @@
 	parent_weapon = parent
 	parent_weapon.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, PROC_REF(inject_attacked))
-	RegisterSignal(parent_weapon, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent_weapon, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/reagent_weapon/Destroy(force, silent)
 	parent_weapon = null
@@ -107,9 +107,6 @@
 	var/mob/living_target = target
 	for(var/create_reagent in imbued_reagent)
 		living_target.reagents.add_reagent(create_reagent, REAGENT_WEAPON_INJECT_AMOUNT)
-
-	//now lets take damage corresponding to the amount of chems we have imbued (hit either 100 times or 50 times before it breaks)
-	parent_weapon.take_damage(length(imbued_reagent) * REAGENT_WEAPON_DAMAGE_MULTIPLIER)
 
 #undef MAX_IMBUE_STORAGE
 #undef REAGENT_CLOTHING_INJECT_AMOUNT

@@ -16,7 +16,7 @@
 	/// Power use when active
 	var/active_power_cost = DEFAULT_CHARGE_DRAIN * 0
 	/// Power use when used, we call it manually
-	var/use_power_cost = DEFAULT_CHARGE_DRAIN * 0
+	var/use_energy_cost = DEFAULT_CHARGE_DRAIN * 0
 	/// ID used by their TGUI
 	var/tgui_id
 	/// Linked MODsuit
@@ -43,6 +43,8 @@
 	var/list/pinned_to = list()
 	/// flags that let the module ability be used in odd circumstances
 	var/allow_flags = NONE
+	/// A list of slots required in the suit to work. Formatted like list(x|y, z, ...) where either x or y are required and z is required.
+	var/list/required_slots = list()
 	/// Timer for the cooldown
 	COOLDOWN_DECLARE(cooldown_timer)
 
@@ -53,54 +55,94 @@
 	if(ispath(device))
 		device = new device(src)
 		ADD_TRAIT(device, TRAIT_NODROP, MOD_TRAIT)
-		RegisterSignal(device, COMSIG_PARENT_QDELETING, PROC_REF(on_device_deletion))
+		RegisterSignal(device, COMSIG_QDELETING, PROC_REF(on_device_deletion))
 		RegisterSignal(src, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
 
 /obj/item/mod/module/Destroy()
 	mod?.uninstall(src)
 	if(device)
-		UnregisterSignal(device, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(device, COMSIG_QDELETING)
 		QDEL_NULL(device)
 	return ..()
 
 /obj/item/mod/module/examine(mob/user)
 	. = ..()
+	if(length(required_slots))
+		var/list/slot_strings = list()
+		for(var/slot in required_slots)
+			var/list/slot_list = parse_slot_flags(slot)
+			slot_strings += (length(slot_list) == 1 ? "" : "one of ") + english_list(slot_list, and_text = " or ")
+		. += span_notice("Requires the MOD unit to have the following slots: [english_list(slot_strings)]")
 	if(HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		. += span_notice("Complexity level: [complexity]")
 
+/// Looks through the MODsuit's parts to see if it has the parts required to support this module
+/obj/item/mod/module/proc/has_required_parts(list/parts, need_extended = FALSE)
+	if(!length(required_slots))
+		return TRUE
+	var/total_slot_flags = NONE
+	for(var/part_slot in parts)
+		if(need_extended)
+			var/datum/mod_part/part_datum = parts[part_slot]
+			if(part_datum.part_item.loc == mod)
+				continue
+		total_slot_flags |= text2num(part_slot)
+	var/list/needed_slots = required_slots.Copy()
+	for(var/needed_slot in needed_slots)
+		if(!(needed_slot & total_slot_flags))
+			break
+		needed_slots -= needed_slot
+	return !length(needed_slots)
 
 /// Called when the module is selected from the TGUI, radial or the action button
 /obj/item/mod/module/proc/on_select()
+	if(!mod.wearer)
+		if(ismob(mod.loc))
+			balloon_alert(mod.loc, "not equipped!")
+		return
 	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || module_type == MODULE_PASSIVE)
 		if(mod.wearer)
 			balloon_alert(mod.wearer, "not active!")
 		return
 	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-	if((mod.wearer.wear_suit != mod.chestplate) && !(allow_flags & MODULE_ALLOW_INACTIVE))
-		balloon_alert(mod.wearer, "chestplate retracted!")
+	var/can_activate = TRUE
+	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
+		for(var/obj/item/part in mod.get_parts())
+			if(part.loc == mod)
+				can_activate = FALSE
+				break
+	if(!can_activate)
+		balloon_alert(mod.wearer, "not fully deployed!")
 		return
 	// SKYRAT EDIT END
 	if(module_type != MODULE_USABLE)
 		if(active)
-			on_deactivation()
+			deactivate()
 		else
-			on_activation()
+			activate()
 	else
-		on_use()
+		used()
 	SEND_SIGNAL(mod, COMSIG_MOD_MODULE_SELECTED, src)
 
+/// Apply a cooldown until this item can be used again
+/obj/item/mod/module/proc/start_cooldown(applied_cooldown)
+	if (isnull(applied_cooldown))
+		applied_cooldown = cooldown_time
+	COOLDOWN_START(src, cooldown_timer, applied_cooldown)
+	SEND_SIGNAL(src, COMSIG_MODULE_COOLDOWN_STARTED, applied_cooldown)
+
 /// Called when the module is activated
-/obj/item/mod/module/proc/on_activation()
+/obj/item/mod/module/proc/activate()
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
 		balloon_alert(mod.wearer, "on cooldown!")
 		return FALSE
-	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
+	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) // SKYRAT EDIT ADDITION: INACTIVE USE
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
 
 	// SKYRAT EDIT START - No using modules when not all parts are deployed.
 	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
-		for(var/obj/item/part as anything in mod.mod_parts)
+		for(var/obj/item/part as anything in mod.get_parts())
 			if(part.loc == mod)
 				balloon_alert(mod.wearer, "deploy all parts first!")
 				return FALSE
@@ -109,10 +151,10 @@
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
 		return FALSE
-	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED) & MOD_ABORT_USE)
+	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED, mod.wearer) & MOD_ABORT_USE)
 		return FALSE
 	if(module_type == MODULE_ACTIVE)
-		if(mod.selected_module && !mod.selected_module.on_deactivation(display_message = FALSE))
+		if(mod.selected_module && !mod.selected_module.deactivate(display_message = FALSE))
 			return FALSE
 		mod.selected_module = src
 		if(device)
@@ -129,13 +171,14 @@
 			update_signal(used_button)
 			balloon_alert(mod.wearer, "[src] activated, [used_button]-click to use")
 	active = TRUE
-	COOLDOWN_START(src, cooldown_timer, cooldown_time)
 	mod.wearer.update_clothing(mod.slot_flags)
+	start_cooldown()
 	SEND_SIGNAL(src, COMSIG_MODULE_ACTIVATED)
+	on_activation()
 	return TRUE
 
 /// Called when the module is deactivated
-/obj/item/mod/module/proc/on_deactivation(display_message = TRUE, deleting = FALSE)
+/obj/item/mod/module/proc/deactivate(display_message = TRUE, deleting = FALSE)
 	active = FALSE
 	if(module_type == MODULE_ACTIVE)
 		mod.selected_module = null
@@ -149,27 +192,29 @@
 			UnregisterSignal(mod.wearer, used_signal)
 			used_signal = null
 	mod.wearer.update_clothing(mod.slot_flags)
-	SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
+	SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED, mod.wearer)
+	on_deactivation(display_message = TRUE, deleting = FALSE)
 	return TRUE
 
 /// Called when the module is used
-/obj/item/mod/module/proc/on_use()
+/obj/item/mod/module/proc/used()
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
 		balloon_alert(mod.wearer, "on cooldown!")
 		return FALSE
-	if(!check_power(use_power_cost))
+	if(!check_power(use_energy_cost))
 		balloon_alert(mod.wearer, "not enough charge!")
 		return FALSE
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
 		return FALSE
-	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED) & MOD_ABORT_USE)
+	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED, mod.wearer) & MOD_ABORT_USE)
 		return FALSE
-	COOLDOWN_START(src, cooldown_timer, cooldown_time)
+	start_cooldown()
 	addtimer(CALLBACK(mod.wearer, TYPE_PROC_REF(/mob, update_clothing), mod.slot_flags), cooldown_time+1) //need to run it a bit after the cooldown starts to avoid conflicts
 	mod.wearer.update_clothing(mod.slot_flags)
 	SEND_SIGNAL(src, COMSIG_MODULE_USED)
+	on_use()
 	return TRUE
 
 /// Called when an activated module without a device is used
@@ -177,7 +222,7 @@
 	if(!(allow_flags & MODULE_ALLOW_INCAPACITATED) && mod.wearer.incapacitated(IGNORE_GRAB))
 		return FALSE
 	mod.wearer.face_atom(target)
-	if(!on_use())
+	if(!used())
 		return FALSE
 	return TRUE
 
@@ -191,22 +236,34 @@
 /obj/item/mod/module/proc/on_process(seconds_per_tick)
 	if(active)
 		if(!drain_power(active_power_cost * seconds_per_tick))
-			on_deactivation()
+			deactivate()
 			return FALSE
 		on_active_process(seconds_per_tick)
 	else
 		drain_power(idle_power_cost * seconds_per_tick)
 	return TRUE
 
+/// Called from the module's activate()
+/obj/item/mod/module/proc/on_activation()
+	return
+
+/// Called from the module's deactivate()
+/obj/item/mod/module/proc/on_deactivation(display_message = TRUE, deleting = FALSE)
+	return
+
+/// Called from the module's used()
+/obj/item/mod/module/proc/on_use()
+	return
+
 /// Called on the MODsuit's process if it is an active module
 /obj/item/mod/module/proc/on_active_process(seconds_per_tick)
 	return
 
-/// Called from MODsuit's install() proc, so when the module is installed.
+/// Called from MODsuit's install() proc, so when the module is installed
 /obj/item/mod/module/proc/on_install()
 	return
 
-/// Called from MODsuit's uninstall() proc, so when the module is uninstalled.
+/// Called from MODsuit's uninstall() proc, so when the module is uninstalled
 /obj/item/mod/module/proc/on_uninstall(deleting = FALSE)
 	return
 
@@ -231,7 +288,6 @@
 	if(!check_power(amount))
 		return FALSE
 	mod.subtract_charge(amount)
-	mod.update_charge_alert()
 	return TRUE
 
 /// Checks if there is enough power in the suit
@@ -243,7 +299,7 @@
 	return list()
 
 /// Creates a list of configuring options for this module
-/obj/item/mod/module/proc/get_configuration()
+/obj/item/mod/module/proc/get_configuration(mob/user)
 	return list()
 
 /// Generates an element of the get_configuration list with a display name, type and value
@@ -265,7 +321,7 @@
 	if(part.loc == mod.wearer)
 		return
 	if(part == device)
-		on_deactivation(display_message = FALSE)
+		deactivate(display_message = FALSE)
 
 /// Called when the device gets deleted on active modules
 /obj/item/mod/module/proc/on_device_deletion(datum/source)
@@ -318,12 +374,12 @@
 	if(module_type == MODULE_PASSIVE)
 		return
 
-	var/datum/action/item_action/mod/pinned_module/existing_action = pinned_to[REF(user)]
+	var/datum/action/item_action/mod/pinnable/module/existing_action = pinned_to[REF(user)]
 	if(existing_action)
 		mod.remove_item_action(existing_action)
 		return
 
-	var/datum/action/item_action/mod/pinned_module/new_action = new(mod, src, user)
+	var/datum/action/item_action/mod/pinnable/module/new_action = new(mod, user, src)
 	mod.add_item_action(new_action)
 
 /// On drop key, concels a device item.
@@ -332,7 +388,7 @@
 
 	if(user.get_active_held_item() != device)
 		return
-	on_deactivation()
+	deactivate()
 	return COMSIG_KB_ACTIVATED
 
 ///Anomaly Locked - Causes the module to not function without an anomaly.
@@ -346,6 +402,8 @@
 	var/list/accepted_anomalies = list(/obj/item/assembly/signaler/anomaly)
 	/// If this one starts with a core in.
 	var/prebuilt = FALSE
+	/// If the core is removable once socketed.
+	var/core_removable = TRUE
 
 /obj/item/mod/module/anomaly_locked/Initialize(mapload)
 	. = ..()
@@ -364,13 +422,15 @@
 	if(!length(accepted_anomalies))
 		return
 	if(core)
-		. += span_notice("There is a [core.name] installed in it. You could remove it with a <b>screwdriver</b>...")
+		. += span_notice("There is a [core.name] installed in it. [core_removable ? "You could remove it with a <b>screwdriver</b>..." : "Unfortunately, due to a design quirk, it's unremovable."]")
 	else
 		var/list/core_list = list()
 		for(var/path in accepted_anomalies)
 			var/atom/core_path = path
 			core_list += initial(core_path.name)
 		. += span_notice("You need to insert \a [english_list(core_list, and_text = " or ")] for this module to function.")
+		if(!core_removable)
+			. += span_notice("Due to some design quirk, once a core is inserted, it won't be removable.")
 
 /obj/item/mod/module/anomaly_locked/on_select()
 	if(!core)
@@ -406,6 +466,9 @@
 	. = ..()
 	if(!core)
 		balloon_alert(user, "no core!")
+		return
+	if(!core_removable)
+		balloon_alert(user, "can't remove core!")
 		return
 	balloon_alert(user, "removing core...")
 	if(!do_after(user, 3 SECONDS, target = src))

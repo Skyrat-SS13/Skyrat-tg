@@ -1,6 +1,6 @@
 /obj/item/organ/external/genital
 	color = "#fcccb3"
-	organ_flags = ORGAN_EDIBLE | ORGAN_NO_DISMEMBERMENT
+	organ_flags = ORGAN_ORGANIC | ORGAN_UNREMOVABLE
 	///Size value of the genital, needs to be translated to proper lengths/diameters/cups
 	var/genital_size = 1
 	///Sprite name of the genital, it's what shows up on character creation
@@ -50,7 +50,7 @@
 		return INITIALIZE_HINT_QDEL
 
 //Removes ERP organs depending on config
-/obj/item/organ/external/genital/Insert(mob/living/carbon/M, special, drop_if_replaced)
+/obj/item/organ/external/genital/Insert(mob/living/carbon/M, special, movement_flags)
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		return
 	. = ..()
@@ -61,7 +61,7 @@
 
 /obj/item/organ/external/genital/build_from_dna(datum/dna/DNA, associated_key)
 	. = ..()
-	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/genital/accessory = SSaccessories.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
 	genital_name = accessory.name
 	genital_type = accessory.icon_state
 	build_from_accessory(accessory, DNA)
@@ -237,7 +237,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /datum/bodypart_overlay/mutant/genital/penis/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_PENIS]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_PENIS]
 
 
 /obj/item/organ/external/genital/testicles
@@ -290,7 +290,7 @@
 	return passed_string
 
 /datum/bodypart_overlay/mutant/genital/testicles/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_TESTICLES]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_TESTICLES]
 
 
 /obj/item/organ/external/genital/testicles/proc/balls_size_to_description(number)
@@ -353,7 +353,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /datum/bodypart_overlay/mutant/genital/vagina/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_VAGINA]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_VAGINA]
 
 
 /obj/item/organ/external/genital/womb
@@ -376,7 +376,7 @@
 	layers = NONE
 
 /datum/bodypart_overlay/mutant/genital/womb/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_WOMB]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_WOMB]
 
 
 /obj/item/organ/external/genital/anus
@@ -405,7 +405,7 @@
 	return returned_string
 
 /datum/bodypart_overlay/mutant/genital/anus/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_ANUS]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_ANUS]
 
 
 /obj/item/organ/external/genital/breasts
@@ -484,7 +484,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /datum/bodypart_overlay/mutant/genital/breasts/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_BREASTS]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_BREASTS]
 
 /obj/item/organ/external/genital/breasts/proc/breasts_size_to_cup(number)
 	if(number < 0)

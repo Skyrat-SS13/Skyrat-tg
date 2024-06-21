@@ -8,6 +8,9 @@
 	desc = "A component that listens for messages. Requires a shell."
 	category = "Entity"
 
+	/// The on/off port
+	var/datum/port/input/on
+
 	/// The message heard
 	var/datum/port/output/message_port
 	/// The language heard
@@ -20,6 +23,7 @@
 	var/datum/port/output/trigger_port
 
 /obj/item/circuit_component/hear/populate_ports()
+	on = add_input_port("On", PORT_TYPE_NUMBER, default = 1)
 	message_port = add_output_port("Message", PORT_TYPE_STRING)
 	language_port = add_output_port("Language", PORT_TYPE_STRING)
 	speaker_port = add_output_port("Speaker", PORT_TYPE_ATOM)
@@ -40,8 +44,10 @@
 	return Hear(arglist(arguments))
 
 /obj/item/circuit_component/hear/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
+	if(!on.value)
+		return FALSE
 	if(speaker == parent?.shell)
-		return
+		return FALSE
 
 	message_port.set_output(raw_message)
 	if(message_language)
@@ -49,3 +55,4 @@
 	speaker_port.set_output(speaker)
 	speaker_name.set_output(speaker.GetVoice())
 	trigger_port.set_output(COMPONENT_SIGNAL)
+	return TRUE

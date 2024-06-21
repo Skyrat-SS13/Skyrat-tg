@@ -2,7 +2,7 @@
 	name = "laptop"
 	desc = "A portable laptop computer."
 
-	icon = 'icons/obj/modular_laptop.dmi'
+	icon = 'icons/obj/devices/modular_laptop.dmi'
 	icon_state = "laptop-closed"
 	icon_state_powered = "laptop"
 	icon_state_unpowered = "laptop-off"
@@ -11,15 +11,18 @@
 	hardware_flag = PROGRAM_LAPTOP
 	max_idle_programs = 3
 	w_class = WEIGHT_CLASS_NORMAL
+	interaction_flags_mouse_drop = NEED_HANDS
+
 
 	// No running around with open laptops in hands.
 	item_flags = SLOWS_WHILE_IN_HAND
 
+	drag_slowdown = 0
 	screen_on = FALSE // Starts closed
 	var/start_open = TRUE // unless this var is set to 1
 	var/icon_state_closed = "laptop-closed"
 	var/w_class_open = WEIGHT_CLASS_BULKY
-	var/slowdown_open = TRUE
+	var/slowdown_open = 1
 
 /obj/item/modular_computer/laptop/examine(mob/user)
 	. = ..()
@@ -57,20 +60,15 @@
 
 	try_toggle_open(usr)
 
-/obj/item/modular_computer/laptop/MouseDrop(obj/over_object, src_location, over_location)
-	. = ..()
-	if(over_object == usr || over_object == src)
-		try_toggle_open(usr)
+/obj/item/modular_computer/laptop/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
+	if(over_object == user || over_object == src)
+		try_toggle_open(user)
 		return
 	if(istype(over_object, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over_object
-		var/mob/M = usr
-
-		if(M.stat != CONSCIOUS || HAS_TRAIT(M, TRAIT_HANDS_BLOCKED))
+		if(!isturf(loc))
 			return
-		if(!isturf(loc) || !Adjacent(M))
-			return
-		M.put_in_hand(src, H.held_index)
+		user.put_in_hand(src, H.held_index)
 
 /obj/item/modular_computer/laptop/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -90,29 +88,33 @@
 	toggle_open(user)
 
 
-/obj/item/modular_computer/laptop/AltClick(mob/user)
-	. = ..()
-	if(!can_interact(user))
-		return
-	if(screen_on) // Close it.
-		try_toggle_open(user)
-	else
-		return ..()
+/obj/item/modular_computer/laptop/click_alt(mob/user)
+	if(!screen_on)
+		return CLICK_ACTION_BLOCKING
+	try_toggle_open(user) // Close it.
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/modular_computer/laptop/proc/toggle_open(mob/living/user=null)
 	if(screen_on)
 		to_chat(user, span_notice("You close \the [src]."))
 		slowdown = initial(slowdown)
-		w_class = initial(w_class)
+		update_weight_class(initial(w_class))
+		drag_slowdown = initial(drag_slowdown)
 	else
 		to_chat(user, span_notice("You open \the [src]."))
 		slowdown = slowdown_open
-		w_class = w_class_open
+		update_weight_class(w_class_open)
+		drag_slowdown = slowdown_open
+	if(isliving(loc))
+		var/mob/living/localmob = loc
+		localmob.update_equipment_speed_mods()
+		localmob.update_pull_movespeed()
 
 	screen_on = !screen_on
 	update_appearance()
 
-
+/obj/item/modular_computer/laptop/get_messenger_ending()
+	return "Sent from my UNIX Laptop"
 
 // Laptop frame, starts empty and closed.
 /obj/item/modular_computer/laptop/buildable

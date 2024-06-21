@@ -31,7 +31,7 @@
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		create_character_preview_view(user)
+		character_preview_view = create_character_preview_view(user)
 		ui = new(user, src, "MedicalRecords")
 		ui.set_autoupdate(FALSE)
 		ui.open()
@@ -52,6 +52,7 @@
 
 		records += list(list(
 			age = target.age,
+			chrono_age = target.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
 			blood_type = target.blood_type,
 			crew_ref = REF(target),
 			dna = target.dna_string,
@@ -65,6 +66,7 @@
 			quirk_notes = target.quirk_notes,
 			rank = target.rank,
 			species = target.species,
+			trim = target.trim,
 			// SKYRAT EDIT ADDITION START - Expanded records!
 			past_medical_records = target.past_medical_records,
 			past_general_records = target.past_general_records,
@@ -79,6 +81,7 @@
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
+	data["max_chrono_age"] = AGE_CHRONO_MAX // SKYRAT EDIT ADDITION - Chronological age
 	data["physical_statuses"] = PHYSICAL_STATUSES
 	data["mental_statuses"] = MENTAL_STATUSES
 	return data
@@ -144,6 +147,7 @@
 		return FALSE
 
 	target.age = 18
+	target.chrono_age = 18 // SKYRAT EDIT ADDITION - Chronological age
 	target.blood_type = pick(list("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"))
 	target.dna_string = "Unknown"
 	target.gender = "Unknown"

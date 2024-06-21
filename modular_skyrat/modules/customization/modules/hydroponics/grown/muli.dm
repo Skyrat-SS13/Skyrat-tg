@@ -22,7 +22,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "muli"
 	foodtypes = VEGETABLES
-	juice_results = list(/datum/reagent/consumable/muli_juice = 0.3)
+	juice_typepath = /datum/reagent/consumable/muli_juice
 	grind_results = list(/datum/reagent/consumable/muli_juice = 0.1)
 	tastes = list("mint and savory sweetness" = 1)
 

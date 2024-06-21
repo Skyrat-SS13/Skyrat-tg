@@ -10,7 +10,7 @@
 	C.icon = H.ui_style
 	H.static_inventory += C
 	CL.screen += C
-	RegisterSignal(C, COMSIG_CLICK, PROC_REF(component_ui_interact))
+	RegisterSignal(C, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(component_ui_interact))
 
 #define COOKING TRUE
 #define CRAFTING FALSE
@@ -20,6 +20,7 @@
 	var/mode = CRAFTING
 	var/display_craftable_only = FALSE
 	var/display_compact = FALSE
+	var/forced_mode = FALSE
 
 /* This is what procs do:
 	get_environment - gets a list of things accessable for crafting by user
@@ -105,8 +106,11 @@
 	for(var/atom/movable/AM in range(radius_range, a))
 		if((AM.flags_1 & HOLOGRAM_1) || (blacklist && (AM.type in blacklist)))
 			continue
+		if(isitem(AM))
+			var/obj/item/item = AM
+			if(item.item_flags & ABSTRACT) //let's not tempt fate, shall we?
+				continue
 		. += AM
-
 
 /datum/component/personal_crafting/proc/get_surroundings(atom/a, list/blacklist=null)
 	. = list()
@@ -122,22 +126,19 @@
 			if(isstack(item))
 				var/obj/item/stack/stack = item
 				.["other"][item.type] += stack.amount
-			else if(item.tool_behaviour)
-				.["tool_behaviour"] += item.tool_behaviour
-				.["other"][item.type] += 1
 			else
-				if(is_reagent_container(item))
-					var/obj/item/reagent_containers/container = item
-					if(container.is_drainable())
-						for(var/datum/reagent/reagent in container.reagents.reagent_list)
-							.["other"][reagent.type] += reagent.volume
 				.["other"][item.type] += 1
+				if(is_reagent_container(item) && item.is_drainable() && length(item.reagents.reagent_list)) //some container that has some reagents inside it that can be drained
+					var/obj/item/reagent_containers/container = item
+					for(var/datum/reagent/reagent as anything in container.reagents.reagent_list)
+						.["other"][reagent.type] += reagent.volume
+				else //a reagent container that is empty can also be used as a tool. e.g. glass bottle can be used as a rolling pin
+					if(item.tool_behaviour)
+						.["tool_behaviour"] += item.tool_behaviour
 		else if (ismachinery(object))
 			LAZYADDASSOCLIST(.["machinery"], object.type, object)
 		else if (isstructure(object))
 			LAZYADDASSOCLIST(.["structures"], object.type, object)
-
-
 
 /// Returns a boolean on whether the tool requirements of the input recipe are satisfied by the input source and surroundings.
 /datum/component/personal_crafting/proc/check_tools(atom/source, datum/crafting_recipe/recipe, list/surroundings)
@@ -170,7 +171,7 @@
 	for(var/required_path in recipe.tool_paths)
 		var/found_this_tool = FALSE
 		for(var/tool_path in available_tools)
-			if(!ispath(required_path, tool_path))
+			if(!ispath(tool_path, required_path))
 				continue
 			found_this_tool = TRUE
 			break
@@ -181,38 +182,104 @@
 	return TRUE
 
 
-/datum/component/personal_crafting/proc/construct_item(atom/a, datum/crafting_recipe/R)
-	var/list/contents = get_surroundings(a,R.blacklist)
+/datum/component/personal_crafting/proc/construct_item(atom/crafter, datum/crafting_recipe/recipe)
+	if(!crafter)
+		return ", unknown error!" // This should never happen, but in the event that it does...
+
+	if(!recipe)
+		return ", invalid recipe!" // This can happen, I can't really explain why, but it can. Better safe than sorry.
+
+	var/list/contents = get_surroundings(crafter, recipe.blacklist)
 	var/send_feedback = 1
-	if(check_contents(a, R, contents))
-		if(check_tools(a, R, contents))
-			if(R.one_per_turf)
-				for(var/content in get_turf(a))
-					if(istype(content, R.result))
-						return ", object already present."
-			//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
-			if(ismob(a) && !do_after(a, R.time, target = a))
-				return "."
-			contents = get_surroundings(a,R.blacklist)
-			if(!check_contents(a, R, contents))
-				return ", missing component."
-			if(!check_tools(a, R, contents))
-				return ", missing tool."
-			var/list/parts = del_reqs(R, a)
-			var/atom/movable/I
-			if(ispath(R.result, /obj/item/stack))
-				I = new R.result (get_turf(a.loc), R.result_amount || 1)
-			else
-				I = new R.result (get_turf(a.loc))
-				if(I.atom_storage && R.delete_contents)
-					for(var/obj/item/thing in I)
-						qdel(thing)
-			I.CheckParts(parts, R)
-			if(send_feedback)
-				SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
-			return I //Send the item back to whatever called this proc so it can handle whatever it wants to do with the new item
+	var/turf/dest_turf = get_turf(crafter)
+
+	if(!check_contents(crafter, recipe, contents))
+		return ", missing component."
+
+	if(!check_tools(crafter, recipe, contents))
 		return ", missing tool."
-	return ", missing component."
+
+
+
+	if((recipe.crafting_flags & CRAFT_ONE_PER_TURF) && (locate(recipe.result) in dest_turf))
+		return ", already one here!"
+
+	if(recipe.crafting_flags & CRAFT_CHECK_DIRECTION)
+		if(!valid_build_direction(dest_turf, crafter.dir, is_fulltile = (recipe.crafting_flags & CRAFT_IS_FULLTILE)))
+			return ", won't fit here!"
+
+	if(recipe.crafting_flags & CRAFT_ON_SOLID_GROUND)
+		if(isclosedturf(dest_turf))
+			return ", cannot be made on a wall!"
+
+		if(is_type_in_typecache(dest_turf, GLOB.turfs_without_ground))
+			if(!locate(/obj/structure/thermoplastic) in dest_turf) // for tram construction
+				return ", must be made on solid ground!"
+
+	if(recipe.crafting_flags & CRAFT_CHECK_DENSITY)
+		for(var/obj/object in dest_turf)
+			if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
+				return ", something is in the way!"
+
+	if(recipe.placement_checks & STACK_CHECK_CARDINALS)
+		var/turf/nearby_turf
+		for(var/direction in GLOB.cardinals)
+			nearby_turf = get_step(dest_turf, direction)
+			if(locate(recipe.result) in nearby_turf)
+				to_chat(crafter, span_warning("\The [recipe.name] must not be built directly adjacent to another!"))
+				return ", can't be adjacent to another!"
+
+	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
+		if(locate(recipe.result) in range(1, dest_turf))
+			return ", can't be near another!"
+
+	if(recipe.placement_checks & STACK_CHECK_TRAM_FORBIDDEN)
+		if(locate(/obj/structure/transport/linear/tram) in dest_turf || locate(/obj/structure/thermoplastic) in dest_turf)
+			return ", can't be on tram!"
+
+	if(recipe.placement_checks & STACK_CHECK_TRAM_EXCLUSIVE)
+		if(!locate(/obj/structure/transport/linear/tram) in dest_turf)
+			return ", must be made on a tram!"
+
+	//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
+	//SKYRAT EDIT START: Two Skills (Construction)
+	var/mob/crafter_mob
+	var/skill_modifier = 1
+	if(ismob(crafter))
+		crafter_mob = crafter
+		skill_modifier = crafter_mob.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER)
+	if(!do_after(crafter, recipe.time * skill_modifier, target = crafter))
+		return "."
+	contents = get_surroundings(crafter, recipe.blacklist)
+	if(!check_contents(crafter, recipe, contents))
+		return ", missing component."
+	if(!check_tools(crafter, recipe, contents))
+		return ", missing tool."
+	var/list/parts = del_reqs(recipe, crafter)
+	var/atom/movable/result
+	if(ispath(recipe.result, /obj/item/stack))
+		result = new recipe.result(get_turf(crafter.loc), recipe.result_amount || 1)
+		result.dir = crafter.dir
+	else
+		result = new recipe.result(get_turf(crafter.loc))
+		result.dir = crafter.dir
+		if(result.atom_storage && recipe.delete_contents)
+			for(var/obj/item/thing in result)
+				qdel(thing)
+	if(crafter_mob)
+		crafter_mob.mind.adjust_experience(/datum/skill/construction, 5)
+	//SKYRAT EDIT STOP: Construction Skill
+	var/datum/reagents/holder = locate() in parts
+	if(holder) //transfer reagents from ingredients to result
+		if(!ispath(recipe.result,  /obj/item/reagent_containers) && result.reagents)
+			result.reagents.clear_reagents()
+			holder.trans_to(result.reagents, holder.total_volume, no_react = TRUE)
+		parts -= holder
+		qdel(holder)
+	result.CheckParts(parts, recipe)
+	if(send_feedback)
+		SSblackbox.record_feedback("tally", "object_crafted", 1, result.type)
+	return result //Send the item back to whatever called this proc so it can handle whatever it wants to do with the new item
 
 /*Del reqs works like this:
 
@@ -239,9 +306,11 @@
 */
 
 /datum/component/personal_crafting/proc/del_reqs(datum/crafting_recipe/R, atom/a)
+	. = list()
+
+	var/datum/reagents/holder
 	var/list/surroundings
 	var/list/Deletion = list()
-	. = list()
 	var/data
 	var/amt
 	var/list/requirements = list()
@@ -259,36 +328,30 @@
 			surroundings = get_environment(a, R.blacklist)
 			surroundings -= Deletion
 			if(ispath(path_key, /datum/reagent))
-				var/datum/reagent/RG = new path_key
-				var/datum/reagent/RGNT
 				while(amt > 0)
 					var/obj/item/reagent_containers/RC = locate() in surroundings
-					RG = RC.reagents.get_reagent(path_key)
-					if(RG)
-						if(!locate(RG.type) in Deletion)
-							Deletion += new RG.type()
-						if(RG.volume > amt)
-							RG.volume -= amt
-							data = RG.data
-							RC.reagents.conditional_update(RC)
-							RC.update_appearance(UPDATE_ICON)
-							RG = locate(RG.type) in Deletion
-							RG.volume = amt
-							RG.data += data
+					if(isnull(RC)) //not found
+						break
+					if(QDELING(RC)) //deleting so is unusable
+						surroundings -= RC
+						continue
+
+					var/reagent_volume = RC.reagents.get_reagent_amount(path_key)
+					if(reagent_volume)
+						if(!holder)
+							holder = new(INFINITY, NO_REACT) //an infinite volume holder than can store reagents without reacting
+							. += holder
+						if(reagent_volume >= amt)
+							RC.reagents.trans_to(holder, amt, target_id = path_key, no_react = TRUE)
 							continue main_loop
 						else
+							RC.reagents.trans_to(holder, reagent_volume, target_id = path_key, no_react = TRUE)
 							surroundings -= RC
-							amt -= RG.volume
-							RC.reagents.reagent_list -= RG
-							RC.reagents.conditional_update(RC)
-							RC.update_appearance(UPDATE_ICON)
-							RGNT = locate(RG.type) in Deletion
-							RGNT.volume += RG.volume
-							RGNT.data += RG.data
-							qdel(RG)
+							amt -= reagent_volume
 						SEND_SIGNAL(RC.reagents, COMSIG_REAGENTS_CRAFTING_PING) // - [] TODO: Make this entire thing less spaghetti
 					else
 						surroundings -= RC
+					RC.update_appearance(UPDATE_ICON)
 			else if(ispath(path_key, /obj/item/stack))
 				var/obj/item/stack/S
 				var/obj/item/stack/SD
@@ -359,7 +422,7 @@
 		qdel(DL)
 
 /datum/component/personal_crafting/proc/is_recipe_available(datum/crafting_recipe/recipe, mob/user)
-	if(!recipe.always_available && !(recipe.type in user?.mind?.learned_recipes)) //User doesn't actually know how to make this.
+	if((recipe.crafting_flags & CRAFT_MUST_BE_LEARNED) && !(recipe.type in user?.mind?.learned_recipes)) //User doesn't actually know how to make this.
 		return FALSE
 	if (recipe.category == CAT_CULT && !IS_CULTIST(user)) // Skip blood cult recipes if not cultist
 		return FALSE
@@ -403,6 +466,7 @@
 	var/list/data = list()
 	var/list/material_occurences = list()
 
+	data["forced_mode"] = forced_mode
 	data["recipes"] = list()
 	data["categories"] = list()
 	data["foodtypes"] = FOOD_FLAGS
@@ -447,28 +511,39 @@
 
 	return data
 
+/datum/component/personal_crafting/proc/make_action(datum/crafting_recipe/recipe, mob/user)
+	var/atom/movable/result = construct_item(user, recipe)
+	if(istext(result)) //We failed to make an item and got a fail message
+		to_chat(user, span_warning("Construction failed[result]"))
+		return FALSE
+	if(ismob(user) && isitem(result)) //In case the user is actually possessing a non mob like a machine
+		user.put_in_hands(result)
+	else if(!istype(result, /obj/effect/spawner))
+		result.forceMove(user.drop_location())
+	to_chat(user, span_notice("[recipe.name] crafted."))
+	user.investigate_log("crafted [recipe]", INVESTIGATE_CRAFTING)
+	recipe.on_craft_completion(user, result)
+	return TRUE
+
+
 /datum/component/personal_crafting/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
 	switch(action)
-		if("make")
+		if("make", "make_mass")
 			var/mob/user = usr
 			var/datum/crafting_recipe/crafting_recipe = locate(params["recipe"]) in (mode ? GLOB.cooking_recipes : GLOB.crafting_recipes)
 			busy = TRUE
 			ui_interact(user)
-			var/atom/movable/result = construct_item(user, crafting_recipe)
-			if(!istext(result)) //We made an item and didn't get a fail message
-				if(ismob(user) && isitem(result)) //In case the user is actually possessing a non mob like a machine
-					user.put_in_hands(result)
-				else
-					if(!istype(result, /obj/effect/spawner))
-						result.forceMove(user.drop_location())
-				to_chat(user, span_notice("[crafting_recipe.name] constructed."))
-				user.investigate_log("crafted [crafting_recipe]", INVESTIGATE_CRAFTING)
-				crafting_recipe.on_craft_completion(user, result)
+			if(action == "make_mass")
+				var/crafted_items = 0
+				while(make_action(crafting_recipe, user))
+					crafted_items++
+				if(crafted_items)
+					to_chat(user, span_notice("You made [crafted_items] item\s."))
 			else
-				to_chat(user, span_warning("Construction failed[result]"))
+				make_action(crafting_recipe, user)
 			busy = FALSE
 		if("toggle_recipes")
 			display_craftable_only = !display_craftable_only
@@ -477,6 +552,8 @@
 			display_compact = !display_compact
 			. = TRUE
 		if("toggle_mode")
+			if(forced_mode)
+				return
 			mode = !mode
 			var/mob/user = usr
 			update_static_data(user)
@@ -487,14 +564,24 @@
 		get_asset_datum(/datum/asset/spritesheet/crafting),
 		get_asset_datum(/datum/asset/spritesheet/crafting/cooking),
 	)
-///
+
 /datum/component/personal_crafting/proc/build_crafting_data(datum/crafting_recipe/recipe)
 	var/list/data = list()
 	var/list/atoms = mode ? GLOB.cooking_recipes_atoms : GLOB.crafting_recipes_atoms
 
 	data["ref"] = "[REF(recipe)]"
 	var/atom/atom = recipe.result
-	data["result"] = atoms.Find(atom)
+
+	//load sprite sheets and select the correct one based on the mode
+	var/static/list/sprite_sheets
+	if(isnull(sprite_sheets))
+		sprite_sheets = ui_assets()
+	var/datum/asset/spritesheet/sheet = sprite_sheets[mode ? 2 : 1]
+
+	//infer icon size of this atom
+	var/atom_id = atoms.Find(atom)
+	var/icon_size = sheet.icon_size_id("a[atom_id]")
+	data["icon"] = "[icon_size] a[atom_id]"
 
 	var/recipe_data = recipe.crafting_ui_data()
 	for(var/new_data in recipe_data)
@@ -504,7 +591,7 @@
 	data["category"] = recipe.category
 
 	// Name, Description
-	data["name"] = recipe.name || initial(atom.name)
+	data["name"] = recipe.name
 
 	if(ispath(recipe.result, /datum/reagent))
 		var/datum/reagent/reagent = recipe.result
@@ -526,6 +613,7 @@
 	// Crafting
 	if(recipe.non_craftable)
 		data["non_craftable"] = recipe.non_craftable
+	data["mass_craftable"] = recipe.mass_craftable
 	if(recipe.steps)
 		data["steps"] = recipe.steps
 

@@ -54,7 +54,7 @@
 /datum/component/trapdoor/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(turf_changed_pre))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	if(!src.assembly)
 		RegisterSignal(SSdcs, COMSIG_GLOB_TRAPDOOR_LINK, PROC_REF(on_link_requested))
 	else
@@ -72,7 +72,7 @@
 	if(assembly)
 		UnregisterSignal(assembly, COMSIG_ASSEMBLY_PULSED)
 	UnregisterSignal(parent, COMSIG_TURF_CHANGE)
-	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(parent, COMSIG_ATOM_EXAMINE)
 	UnregisterSignal(parent, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL))
 
 /datum/component/trapdoor/proc/try_unlink(turf/source, mob/user, obj/item/tool)
@@ -263,7 +263,7 @@
 /obj/item/trapdoor_remote
 	name = "trapdoor remote"
 	desc = "A small machine that interfaces with a trapdoor controller for easy use."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "trapdoor_remote"
 	COOLDOWN_DECLARE(trapdoor_cooldown)
 	var/trapdoor_cooldown_time = 2 SECONDS
@@ -354,26 +354,23 @@
 	. = ..()
 	AddElement(/datum/element/openspace_item_click_handler)
 
-/obj/item/trapdoor_kit/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
-	afterattack(target, user, proximity_flag, click_parameters)
+/obj/item/trapdoor_kit/handle_openspace_click(turf/target, mob/user, click_parameters)
+	interact_with_atom(target, user, click_parameters)
 
-/obj/item/trapdoor_kit/afterattack(atom/target, mob/user, proximity_flag)
-	. = ..()
-	if(!proximity_flag)
-		return
-	var/turf/target_turf = get_turf(target)
+/obj/item/trapdoor_kit/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/turf/target_turf = get_turf(interacting_with)
 	if(!isopenspaceturf(target_turf))
-		return
+		return NONE
 	in_use = TRUE
 	balloon_alert(user, "constructing trapdoor")
-	if(!do_after(user, 5 SECONDS, target = target))
+	if(!do_after(user, 5 SECONDS, interacting_with))
 		in_use = FALSE
-		return
+		return ITEM_INTERACT_BLOCKING
 	in_use = FALSE
 	if(!isopenspaceturf(target_turf)) // second check to make sure nothing changed during constructions
-		return
-	var/turf/new_turf = target_turf.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+		return ITEM_INTERACT_BLOCKING
+	var/turf/new_turf = target_turf.place_on_top(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 	new_turf.AddComponent(/datum/component/trapdoor, starts_open = FALSE, conspicuous = TRUE)
 	balloon_alert(user, "trapdoor constructed")
 	qdel(src)
-	return
+	return ITEM_INTERACT_SUCCESS

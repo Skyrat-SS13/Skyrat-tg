@@ -8,6 +8,22 @@ They cannot be charged as standard, and require upgrades to do so.
 These are basically advanced cells.
 */
 
+/// The amount of cell charge drained during a drain failure.
+#define MICROFUSION_CELL_DRAIN_FAILURE STANDARD_CELL_CHARGE * 0.5
+/// The heavy EMP range for when a cell suffers an EMP failure.
+#define MICROFUSION_CELL_EMP_HEAVY_FAILURE 2
+/// The light EMP range for when a cell suffers an EMP failure.
+#define MICROFUSION_CELL_EMP_LIGHT_FAILURE 4
+/// The radiation range for when a cell suffers a radiation failure.
+#define MICROFUSION_CELL_RADIATION_RANGE_FAILURE 1
+
+/// The lower most time for a microfusion cell meltdown.
+#define MICROFUSION_CELL_FAILURE_LOWER (10 SECONDS)
+/// The upper most time for a microfusion cell meltdown.
+#define MICROFUSION_CELL_FAILURE_UPPER (15 SECONDS)
+
+
+
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
 	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. Smaller than a can of soda, these fulfill the need for a power source where plugging into a recharger is inconvenient or unavailable; although they will eventually run dry due to being shipped without a fuel source."
@@ -34,10 +50,6 @@ These are basically advanced cells.
 	var/empty_alarm_sound = 'sound/weapons/gun/general/empty_alarm.ogg'
 	/// Do we have the self charging upgrade?
 	var/self_charging = FALSE
-	/// We use this to edit the reload time of the gun
-	var/reloading_time = 4 SECONDS
-	/// We use this to edit the tactical reload time of the gun
-	var/reloading_time_tactical = 6 SECONDS
 	/// The probability of the cell failing, either through being makeshift or being used in something it shouldn't
 	var/fail_prob = 10
 
@@ -47,12 +59,17 @@ These are basically advanced cells.
 	/// Do we show the microfusion readout instead of KJ?
 	var/microfusion_readout = FALSE
 
+/obj/item/stock_parts/cell/microfusion/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
 /obj/item/stock_parts/cell/microfusion/Destroy()
 	if(attachments.len)
 		for(var/obj/item/iterating_item as anything in attachments)
 			iterating_item.forceMove(get_turf(src))
 		attachments = null
 	parent_gun = null
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -66,7 +83,7 @@ These are basically advanced cells.
 	if(prob(prob_percent) && !meltdown && !stabilised)
 		process_instability()
 
-/obj/item/stock_parts/cell/microfusion/use(amount)
+/obj/item/stock_parts/cell/microfusion/use(amount, force = FALSE)
 	if(!parent_gun) // If an MCR cell is used in anything that's not an MCR, you might have problems
 		if(prob(fail_prob))
 			process_instability()
@@ -85,18 +102,17 @@ These are basically advanced cells.
 	addtimer(CALLBACK(src, PROC_REF(process_failure)), seconds_to_explode)
 
 /obj/item/stock_parts/cell/microfusion/proc/process_failure()
-	var/fuckup_type = rand(1, 4)
 	remove_filter("rad_glow")
 	playsound(src, 'sound/effects/spray.ogg', 70)
-	switch(fuckup_type)
-		if(MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN)
+	switch(rand(1, 4))
+		if(1) // Charge drain
 			charge = clamp(charge - MICROFUSION_CELL_DRAIN_FAILURE, 0, maxcharge)
-		if(MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION)
+		if(2) // Explosion
 			explode()
-		if(MICROFUSION_CELL_FAILURE_TYPE_EMP)
-			empulse(get_turf(src), MICROFUSION_CELL_EMP_HEAVY_FAILURE, MICROFUSION_CELL_EMP_LIGHT_FAILURE, FALSE)
-		if(MICROFUSION_CELL_FAILURE_TYPE_RADIATION)
-			radiation_pulse(src, MICROFUSION_CELL_RADIATION_RANGE_FAILURE, RAD_MEDIUM_INSULATION)
+		if(3) // Emp pulse
+			empulse(get_turf(src), 2, 4, FALSE) // 2 Heavy, 4 Light
+		if(4) // Deathly radiation pulse
+			radiation_pulse(src, 2, RAD_MEDIUM_INSULATION, 30)
 	meltdown = FALSE
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
@@ -164,10 +180,10 @@ These are basically advanced cells.
 	name = "makeshift microfusion cell"
 	desc = "An... Apparatus, comprised of an everyday aluminum can with several civilian-grade batteries tightly packed together and plugged in. This vaguely resembles a microfusion cell, if you tilt your head to a precise fifty degree angle. While the effects on enemy combatants may be dubious, it will certainly do incredible damage to the gun's warranty. What the hell were you thinking when you came up with this?"
 	icon_state = "microfusion_makeshift"
-	maxcharge = 600
+	maxcharge = STANDARD_CELL_CHARGE * 0.5
 	max_attachments = 0
 
-/obj/item/stock_parts/cell/microfusion/makeshift/use(amount)
+/obj/item/stock_parts/cell/microfusion/makeshift/use(amount, force = FALSE)
 	if(prob(fail_prob))
 		process_instability()
 	return ..()
@@ -176,7 +192,7 @@ These are basically advanced cells.
 	name = "enhanced microfusion cell"
 	desc = "A second generation microfusion cell, weighing about the same as the standard-issue cell and having the same space for attachments; however, it has a higher capacity."
 	icon_state = "microfusion_enhanced"
-	maxcharge = 1500
+	maxcharge = STANDARD_CELL_CHARGE * 1.4
 
 /obj/item/stock_parts/cell/microfusion/advanced
 	name = "advanced microfusion cell"
@@ -196,6 +212,11 @@ These are basically advanced cells.
 	name = "nanocarbon fusion cell"
 	desc = "This cell combines both top-of-the-line nanotech and advanced microfusion power to brute force the most common issue of Nanotrasen Asset Protection operatives, ammunition, through sheer volume. Intended for use with Nanotrasen-brand capacitor arrays only. Warranty void if dropped in toilet."
 	icon_state = "microfusion_nanocarbon"
-	maxcharge = 30000
+	maxcharge = STANDARD_CELL_CHARGE * 60 // Wanted to put 69 here to fit with the 420 but eh this werks too
 	max_attachments = 420
 
+
+#undef MICROFUSION_CELL_DRAIN_FAILURE
+
+#undef MICROFUSION_CELL_FAILURE_LOWER
+#undef MICROFUSION_CELL_FAILURE_UPPER

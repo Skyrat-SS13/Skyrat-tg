@@ -23,6 +23,7 @@
 /datum/outfit/lavaland_syndicate
 	name = "Interdyne Bioweapon Scientist"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
+	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
@@ -61,7 +62,8 @@
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1)
+		/obj/item/stack/marker_beacon/ten=1,\
+		/obj/item/card/mining_point_card=1)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Interdyne Deck Officer"
@@ -93,7 +95,7 @@
 	icon_state = "syndie_headset"
 	inhand_icon_state = null
 	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
-	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
+	keyslot = /obj/item/encryptionkey/headset_syndicate/interdyne
 
 /obj/item/radio/headset/interdyne/Initialize(mapload)
 	. = ..()
@@ -105,5 +107,26 @@
 	command = TRUE
 
 /obj/item/radio/headset/interdyne/comms
-	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
-	keyslot2 = new /obj/item/encryptionkey/syndicate
+	keyslot = /obj/item/encryptionkey/headset_syndicate/interdyne
+	keyslot2 = /obj/item/encryptionkey/syndicate
+
+/obj/structure/closet/crate/freezer/sansufentanyl
+	name = "sansufentanyl crate"
+	desc = "A freezer. Contains refrigerated Sansufentanyl, for managing Hereditary Manifold Sickness. A product of Interdyne Pharmaceuticals."
+
+/obj/structure/closet/crate/freezer/sansufentanyl/PopulateContents()
+	. = ..()
+	for(var/grabbin_pills in 1 to 10)
+		new /obj/item/storage/pill_bottle/sansufentanyl(src)
+
+//MOBS
+
+// hivelords that stand guard where they spawn
+/mob/living/basic/mining/hivelord/no_wander
+	ai_controller = /datum/ai_controller/basic_controller/hivelord/no_wander
+
+//MOB AI
+
+// same as a regular hivelord minus the idle walking
+/datum/ai_controller/basic_controller/hivelord/no_wander
+	idle_behavior = null

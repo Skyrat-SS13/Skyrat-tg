@@ -1,17 +1,23 @@
+#define SHUTDOWN_QUERY_TIMELIMIT (1 MINUTES)
 SUBSYSTEM_DEF(dbcore)
 	name = "Database"
 	flags = SS_TICKER
 	wait = 10 // Not seconds because we're running on SS_TICKER
-	runlevels = RUNLEVEL_INIT|RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
+	runlevels = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	init_order = INIT_ORDER_DBCORE
 	priority = FIRE_PRIORITY_DATABASE
-
-	var/failed_connection_timeout = 0
 
 	var/schema_mismatch = 0
 	var/db_minor = 0
 	var/db_major = 0
+	/// Number of failed connection attempts this try. Resets after the timeout or successful connection
 	var/failed_connections = 0
+	/// Max number of consecutive failures before a timeout (here and not a define so it can be vv'ed mid round if needed)
+	var/max_connection_failures = 5
+	/// world.time that connection attempts can resume
+	var/failed_connection_timeout = 0
+	/// Total number of times connections have had to be timed out.
+	var/failed_connection_timeout_count = 0
 
 	var/last_error
 
@@ -34,8 +40,13 @@ SUBSYSTEM_DEF(dbcore)
 	/// Queries pending execution, mapped to complete arguments
 	var/list/datum/db_query/queries_standby = list()
 
+	/// We are in the process of shutting down and should not allow more DB connections
+	var/shutting_down = FALSE
+
 
 	var/connection  // Arbitrary handle returned from rust_g.
+
+	var/db_daemon_started = FALSE
 
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
@@ -73,8 +84,6 @@ SUBSYSTEM_DEF(dbcore)
 			CONFIG_SET(number/pooling_min_sql_connections, min(min_sql_connections, max_sql_connections))
 			CONFIG_SET(number/pooling_max_sql_connections,  max(min_sql_connections, max_sql_connections))
 			log_config("ERROR: POOLING_MAX_SQL_CONNECTIONS ([max_sql_connections]) is set lower than POOLING_MIN_SQL_CONNECTIONS ([min_sql_connections]). Please check your config or the code defaults for sanity")
-
-
 
 /datum/controller/subsystem/dbcore/stat_entry(msg)
 	msg = "P:[length(all_queries)]|Active:[length(queries_active)]|Standby:[length(queries_standby)]"
@@ -170,24 +179,47 @@ SUBSYSTEM_DEF(dbcore)
 	connection = SSdbcore.connection
 
 /datum/controller/subsystem/dbcore/Shutdown()
+	shutting_down = TRUE
+	var/msg = "Clearing DB queries standby:[length(queries_standby)] active: [length(queries_active)] all: [length(all_queries)]"
+	to_chat(world, span_boldannounce(msg))
+	log_world(msg)
 	//This is as close as we can get to the true round end before Disconnect() without changing where it's called, defeating the reason this is a subsystem
+	var/endtime = REALTIMEOFDAY + SHUTDOWN_QUERY_TIMELIMIT
 	if(SSdbcore.Connect())
+		//Take over control of all active queries
+		var/queries_to_check = queries_active.Copy()
+		queries_active.Cut()
+
+		//Start all waiting queries
 		for(var/datum/db_query/query in queries_standby)
 			run_query(query)
+			queries_to_check += query
+			queries_standby -= query
+
+		//wait for them all to finish
+		for(var/datum/db_query/query in queries_to_check)
+			UNTIL(query.process() || REALTIMEOFDAY > endtime)
 
 		// SKYRAT EDIT START - SQL-based logging
 		for(var/table in queued_log_entries_by_table)
-			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 		// SKYRAT EDIT END
 
+		//log shutdown to the db
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
-			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
+			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id),
+			TRUE
 		)
-		query_round_shutdown.Execute()
+		query_round_shutdown.Execute(FALSE)
 		qdel(query_round_shutdown)
+
+	msg = "Done clearing DB queries standby:[length(queries_standby)] active: [length(queries_active)] all: [length(all_queries)]"
+	to_chat(world, span_boldannounce(msg))
+	log_world(msg)
 	if(IsConnected())
 		Disconnect()
+	stop_db_daemon()
 
 //nu
 /datum/controller/subsystem/dbcore/can_vv_get(var_name)
@@ -221,15 +253,21 @@ SUBSYSTEM_DEF(dbcore)
 	if(IsConnected())
 		return TRUE
 
-	if(failed_connection_timeout <= world.time) //it's been more than 5 seconds since we failed to connect, reset the counter
-		failed_connections = 0
+	if(connection)
+		Disconnect() //clear the current connection handle so isconnected() calls stop invoking rustg
+		connection = null //make sure its cleared even if runtimes happened
 
-	if(failed_connections > 5) //If it failed to establish a connection more than 5 times in a row, don't bother attempting to connect for 5 seconds.
-		failed_connection_timeout = world.time + 50
+	if(failed_connection_timeout <= world.time) //it's been long enough since we failed to connect, reset the counter
+		failed_connections = 0
+		failed_connection_timeout = 0
+
+	if(failed_connection_timeout > 0)
 		return FALSE
 
 	if(!CONFIG_GET(flag/sql_enabled))
 		return FALSE
+
+	start_db_daemon()
 
 	var/user = CONFIG_GET(string/feedback_login)
 	var/pass = CONFIG_GET(string/feedback_password)
@@ -259,6 +297,11 @@ SUBSYSTEM_DEF(dbcore)
 		last_error = result["data"]
 		log_sql("Connect() failed | [last_error]")
 		++failed_connections
+		//If it failed to establish a connection more than 5 times in a row, don't bother attempting to connect for a time.
+		if(failed_connections > max_connection_failures)
+			failed_connection_timeout_count++
+			//basic exponential backoff algorithm
+			failed_connection_timeout = world.time + ((2 ** failed_connection_timeout_count) SECONDS)
 
 /datum/controller/subsystem/dbcore/proc/CheckSchemaVersion()
 	if(CONFIG_GET(flag/sql_enabled))
@@ -281,7 +324,9 @@ SUBSYSTEM_DEF(dbcore)
 	else
 		log_sql("Database is not enabled in configuration.")
 
-/datum/controller/subsystem/dbcore/proc/SetRoundID()
+/datum/controller/subsystem/dbcore/proc/InitializeRound()
+	CheckSchemaVersion()
+
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */
@@ -333,7 +378,11 @@ SUBSYSTEM_DEF(dbcore)
 /datum/controller/subsystem/dbcore/proc/ReportError(error)
 	last_error = error
 
-/datum/controller/subsystem/dbcore/proc/NewQuery(sql_query, arguments)
+/datum/controller/subsystem/dbcore/proc/NewQuery(sql_query, arguments, allow_during_shutdown=FALSE)
+	//If the subsystem is shutting down, disallow new queries
+	if(!allow_during_shutdown && shutting_down)
+		CRASH("Attempting to create a new db query during the world shutdown")
+
 	if(IsAdminAdvancedProcCall())
 		log_admin_private("ERROR: Advanced admin proc call led to sql query: [sql_query]. Query has been blocked")
 		message_admins("ERROR: Advanced admin proc call led to sql query. Query has been blocked")
@@ -381,11 +430,8 @@ The duplicate_key arg can be true to automatically generate this part of the que
 	or set to a string that is appended to the end of the query
 Ignore_errors instructes mysql to continue inserting rows if some of them have errors.
 	the erroneous row(s) aren't inserted and there isn't really any way to know why or why errored
-Delayed insert mode was removed in mysql 7 and only works with MyISAM type tables,
-	It was included because it is still supported in mariadb.
-	It does not work with duplicate_key and the mysql server ignores it in those cases
 */
-/datum/controller/subsystem/dbcore/proc/MassInsert(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+/datum/controller/subsystem/dbcore/proc/MassInsert(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 	if (!table || !rows || !istype(rows))
 		return
 
@@ -402,8 +448,6 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 
 	// Prepare SQL query full of placeholders
 	var/list/query_parts = list("INSERT")
-	if (delayed)
-		query_parts += " DELAYED"
 	if (ignore_errors)
 		query_parts += " IGNORE"
 	query_parts += " INTO "
@@ -444,6 +488,47 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	else
 		. = Query.Execute(async)
 	qdel(Query)
+
+/datum/controller/subsystem/dbcore/proc/start_db_daemon()
+	set waitfor = FALSE
+
+	if (db_daemon_started)
+		return
+
+	db_daemon_started = TRUE
+
+	var/daemon = CONFIG_GET(string/db_daemon)
+	if (!daemon)
+		return
+
+	ASSERT(fexists(daemon), "Configured db_daemon doesn't exist")
+
+	var/list/result = world.shelleo("echo \"Starting ezdb daemon, do not close this window\" && [daemon]")
+	var/result_code = result[1]
+	if (!result_code || result_code == 1)
+		return
+
+	stack_trace("Failed to start DB daemon: [result_code]\n[result[3]]")
+
+/datum/controller/subsystem/dbcore/proc/stop_db_daemon()
+	set waitfor = FALSE
+
+	if (!db_daemon_started)
+		return
+
+	db_daemon_started = FALSE
+
+	var/daemon = CONFIG_GET(string/db_daemon)
+	if (!daemon)
+		return
+
+	switch (world.system_type)
+		if (MS_WINDOWS)
+			var/list/result = world.shelleo("Get-Process | ? { $_.Path -eq '[daemon]' } | Stop-Process")
+			ASSERT(result[1], "Failed to stop DB daemon: [result[3]]")
+		if (UNIX)
+			var/list/result = world.shelleo("kill $(pgrep -f '[daemon]')")
+			ASSERT(result[1], "Failed to stop DB daemon: [result[3]]")
 
 /datum/db_query
 	// Inputs
@@ -528,12 +613,18 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	. = (status != DB_QUERY_BROKEN)
 	var/timed_out = !. && findtext(last_error, "Operation timed out")
 	if(!. && log_error)
-		log_sql("[last_error] | Query used: [sql] | Arguments: [json_encode(arguments)]")
+		logger.Log(LOG_CATEGORY_DEBUG_SQL, "sql query failed", list(
+			"query" = sql,
+			"arguments" = json_encode(arguments),
+			"error" = last_error,
+		))
+
 	if(!async && timed_out)
-		log_query_debug("Query execution started at [start_time]")
-		log_query_debug("Query execution ended at [REALTIMEOFDAY]")
-		log_query_debug("Slow query timeout detected.")
-		log_query_debug("Query used: [sql]")
+		logger.Log(LOG_CATEGORY_DEBUG_SQL, "slow query timeout", list(
+			"query" = sql,
+			"start_time" = start_time,
+			"end_time" = REALTIMEOFDAY,
+		))
 		slow_query_check()
 
 /// Sleeps until execution of the query has finished.
@@ -543,12 +634,12 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 
 /datum/db_query/process(seconds_per_tick)
 	if(status >= DB_QUERY_FINISHED)
-		return
+		return TRUE // we are done processing after all
 
 	status = DB_QUERY_STARTED
 	var/job_result = rustg_sql_check_query(job_id)
 	if(job_result == RUSTG_JOB_NO_RESULTS_YET)
-		return
+		return FALSE //no results yet
 
 	store_data(json_decode(job_result))
 	return TRUE
@@ -590,3 +681,4 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 /datum/db_query/proc/Close()
 	rows = null
 	item = null
+#undef SHUTDOWN_QUERY_TIMELIMIT

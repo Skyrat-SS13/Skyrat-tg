@@ -11,6 +11,7 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "floodlight_c1"
 	density = TRUE
+
 	var/state = FLOODLIGHT_NEEDS_WIRES
 
 /obj/structure/floodlight_frame/Initialize(mapload)
@@ -117,14 +118,13 @@
 		else //A minute of silence for all the accidentally broken light tubes.
 			balloon_alert(user, "light tube is broken!")
 			return
-	if(istype(O, /obj/item/lightreplacer))
-		var/obj/item/lightreplacer/L = O
-		if(state == FLOODLIGHT_NEEDS_LIGHTS && L.can_use(user))
-			L.Use(user)
-			new /obj/machinery/power/floodlight(loc)
-			qdel(src)
-			return
 	..()
+
+/obj/structure/floodlight_frame/completed
+	name = "floodlight frame"
+	desc = "A bare metal frame that looks like a floodlight. Requires a light tube to complete."
+	icon_state = "floodlight_c3"
+	state = FLOODLIGHT_NEEDS_LIGHTS
 
 /obj/machinery/power/floodlight
 	name = "floodlight"
@@ -138,6 +138,8 @@
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION
 	anchored = FALSE
 	light_power = 1.75
+	can_change_cable_layer = TRUE
+
 	/// List of power usage multipliers
 	var/list/light_setting_list = list(0, 5, 10, 15)
 	/// Constant coeff. for power usage
@@ -148,10 +150,13 @@
 /obj/machinery/power/floodlight/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_OBJ_PAINTED, TYPE_PROC_REF(/obj/machinery/power/floodlight, on_color_change))  //update light color when color changes
+	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	register_context()
 
-/obj/machinery/power/floodlight/proc/on_color_change(obj/machinery/power/flood_light, is_dark_color)
+/obj/machinery/power/floodlight/proc/on_color_change(obj/machinery/power/flood_light, mob/user, obj/item/toy/crayon/spraycan/spraycan, is_dark_color)
 	SIGNAL_HANDLER
+	if(!spraycan.actually_paints)
+		return
 
 	if(setting > FLOODLIGHT_OFF)
 		update_light_state()
@@ -242,6 +247,12 @@
 	if(user)
 		to_chat(user, span_notice("You set [src] to [setting_text]."))
 
+/obj/machinery/power/floodlight/cable_layer_act(mob/living/user, obj/item/tool)
+	if(anchored)
+		balloon_alert(user, "unanchor first!")
+		return ITEM_INTERACT_BLOCKING
+	return ..()
+
 /obj/machinery/power/floodlight/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
@@ -250,7 +261,7 @@
 		connect_to_network()
 	else
 		disconnect_from_network()
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/floodlight/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -285,6 +296,11 @@
 /obj/machinery/power/floodlight/attack_ai(mob/user)
 	return attack_hand(user)
 
+/obj/machinery/power/floodlight/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	atom_break(ENERGY) // technically,
+	return COMSIG_SABOTEUR_SUCCESS
+
 /obj/machinery/power/floodlight/atom_break(damage_flag)
 	. = ..()
 	if(!.)
@@ -293,7 +309,8 @@
 
 	var/obj/structure/floodlight_frame/floodlight_frame = new(loc)
 	floodlight_frame.state = FLOODLIGHT_NEEDS_LIGHTS
-	new /obj/item/light/tube(loc)
+	var/obj/item/light/tube/our_light = new(loc)
+	our_light.shatter()
 
 	qdel(src)
 

@@ -12,7 +12,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield2"
 	density = FALSE
-	aSignal = /obj/item/assembly/signaler/anomaly/grav
+	anomaly_core = /obj/item/assembly/signaler/anomaly/grav
 	var/boing = 0
 	///Warp effect holder for displacement filter to "pulse" the anomaly
 	var/atom/movable/warp_effect/warp
@@ -23,6 +23,7 @@
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	apply_wibbly_filters(src)
 
 	warp = new(src)
 	vis_contents += warp
@@ -92,7 +93,7 @@
 	grav_field = new(src, 7, TRUE, rand(0, 3))
 
 /obj/effect/anomaly/grav/high/detonate()
-	for(var/obj/machinery/gravity_generator/main/the_generator in GLOB.machines)
+	for(var/obj/machinery/gravity_generator/main/the_generator as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/gravity_generator/main))
 		if(is_station_level(the_generator.z))
 			the_generator.blackout()
 
@@ -103,7 +104,7 @@
 ///Bigger, meaner, immortal gravity anomaly. although this is just the super grav anomaly but bigger and shattering move force
 /obj/effect/anomaly/grav/high/big
 	immortal = TRUE
-	aSignal = null
+	anomaly_core = null
 	move_force = MOVE_FORCE_OVERPOWERING
 
 /obj/effect/anomaly/grav/high/big/Initialize(mapload, new_lifespan, drops_core)

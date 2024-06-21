@@ -1,26 +1,26 @@
 ///The item used as the basis for construction kits for organic interface
 /obj/item/construction_kit
-	name = " construction kit"
+	name = "construction kit"
 	desc = "Used for constructing various things"
 	w_class = WEIGHT_CLASS_BULKY
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT
 	throwforce = 0
 	///What is the path for the resulting structure generating by using this item?
 	var/obj/structure/resulting_structure = /obj/structure/chair
 	///How much time does it take to construct an item using this?
-	var/consturction_time = 8 SECONDS
+	var/construction_time = 8 SECONDS
 	///What color is the item using? If none, leave this blank.
 	var/current_color = ""
 
 /obj/item/construction_kit/Initialize(mapload)
 	. = ..()
-	name = initial(resulting_structure.name) + name
+	name = "[initial(resulting_structure.name)] [name]"
 
 /obj/item/construction_kit/examine(mob/user)
 	. = ..()
 	. += span_purple("[src] can be assembled by using <b>Ctrl+Shift+Click</b> while [src] is on the floor.")
 
-/obj/item/construction_kit/CtrlShiftClick(mob/user)
+/obj/item/construction_kit/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -29,7 +29,7 @@
 		return FALSE
 
 	to_chat(user, span_notice("You begin to assemble [src]..."))
-	if(!do_after(user, 8 SECONDS, src))
+	if(!do_after(user, construction_time, src))
 		to_chat(user, span_warning("You fail to assemble [src]!"))
 		return FALSE
 
@@ -104,7 +104,7 @@
 	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
 
 //to change model
-/obj/item/construction_kit/bdsm/shibari/CtrlClick(mob/user)
+/obj/item/construction_kit/bdsm/shibari/item_ctrl_click(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE

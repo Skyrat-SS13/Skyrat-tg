@@ -12,12 +12,6 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-// For tracking arousal and fluid regen.
-/mob/living/carbon/human/Initialize(mapload)
-	. = ..()
-	if(!istype(src, /mob/living/carbon/human/species/monkey))
-		apply_status_effect(/datum/status_effect/aroused)
-		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
 /*
 *	This code needed to determine if the human is naked in that part of body or not
@@ -215,6 +209,21 @@
 		else
 			return TRUE
 
+/// Returns true if the human has accessible tail for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
+/mob/living/carbon/human/proc/has_tail(required_state = REQUIRE_GENITAL_ANY)
+	var/obj/item/organ/genital = get_organ_slot(ORGAN_SLOT_TAIL)
+	if(!genital)
+		return FALSE
+
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return !get_item_by_slot(ORGAN_SLOT_TAIL)
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return get_item_by_slot(ORGAN_SLOT_TAIL)
+		else
+			return TRUE
 
 /*
 *	This code needed for changing character's gender by chems
@@ -257,9 +266,8 @@
 	if(!vagina_overlay)
 		vagina_overlay = sex_toy?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		vagina_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		vagina_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+	chest_part?.worn_uniform_offset?.apply_offset(vagina_overlay) // every day we stray further and further from god
 	overlays_standing[VAGINA_LAYER] = vagina_overlay
 
 	apply_overlay(VAGINA_LAYER)
@@ -281,9 +289,9 @@
 	if(!anus_overlay)
 		anus_overlay = sex_toy?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		anus_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		anus_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+
+	chest_part?.worn_uniform_offset?.apply_offset(anus_overlay) // and i keep on asking myself... why? why do we do this?
 	overlays_standing[ANUS_LAYER] = anus_overlay
 
 	apply_overlay(ANUS_LAYER)
@@ -305,9 +313,9 @@
 	if(!nipples_overlay)
 		nipples_overlay = sex_toy?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		nipples_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		nipples_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+	chest_part?.worn_uniform_offset?.apply_offset(nipples_overlay) // then i realised something, something horrific
+
 	overlays_standing[NIPPLES_LAYER] = nipples_overlay
 
 	apply_overlay(NIPPLES_LAYER)
@@ -329,9 +337,9 @@
 	if(!penis_overlay)
 		penis_overlay = sex_toy?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		penis_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		penis_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+	chest_part?.worn_uniform_offset?.apply_offset(penis_overlay) // we can never escape, we are forever governed by sex(two)
+
 	overlays_standing[PENIS_LAYER] = penis_overlay
 
 	apply_overlay(PENIS_LAYER)
@@ -363,10 +371,14 @@
 		return FALSE
 
 	var/obj/item/clothing/sextoy/condom/condom = penis
-	return condom.condom_state == CONDOM_BROKEN
+	return condom.condom_state == TRAIT_CONDOM_BROKEN
 
 // For handling things that don't already have handcuff handlers.
 /mob/living/carbon/human/set_handcuffed(new_value)
 	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		return FALSE
 	..()
+
+/// Checks if the tail is exposed.
+/obj/item/organ/external/tail/proc/is_exposed()
+	return TRUE // your tail is always exposed, dummy! why are you checking this

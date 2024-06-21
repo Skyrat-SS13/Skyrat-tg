@@ -42,11 +42,7 @@
 	transparent = TRUE
 	max_integrity = 150
 	repairable_by = /obj/item/stack/sheet/iron //what to repair the shield with
-
-
-/obj/item/shield/riot/pointman/hecu/shatter(mob/living/carbon/human/owner)
-	playsound(owner, 'sound/effects/glassbr3.ogg', 100)
-	new /obj/item/ballistic_broken((get_turf(src)))
+	shield_break_leftover = /obj/item/ballistic_broken
 
 /obj/item/ballistic_broken
 	name = "broken ballistic shield"

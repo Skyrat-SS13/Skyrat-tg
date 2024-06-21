@@ -10,26 +10,17 @@
 /area/centcom/holding/cafe
 	name = "Ghost Cafe"
 
-/area/centcom/holding/cafewar
-	name = "Cafe Combat Zone"
-
-/area/centcom/holding/cafebotany
-	name = "Cafe Service Area"
-
-/area/centcom/holding/cafebuild
-	name = "Cafe Construction Zone"
-
-/area/centcom/holding/cafevox
+/area/centcom/holding/cafe/vox
 	name = "Cafe Vox Box"
 
-/area/centcom/holding/cafedorms
+/area/centcom/holding/cafe/dorms
 	name = "Ghost Cafe Dorms"
 
-/area/centcom/holding/cafepark
+/area/centcom/holding/cafe/park
 	name = "Ghost Cafe Outdoors"
-
-/area/centcom/holding/cafeplumbing
-	name = "Ghost Cafe Plumbing"
 
 /area/centcom/interlink
 	name = "The Interlink"
+
+/area/centcom/interlink/dorm_rooms
+	name = "Interlink Dorm Rooms"

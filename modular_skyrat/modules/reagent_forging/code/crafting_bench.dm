@@ -39,6 +39,7 @@
 		/datum/crafting_bench_recipe/centrifuge,
 		/datum/crafting_bench_recipe/bokken,
 		/datum/crafting_bench_recipe/bow,
+		/datum/crafting_bench_recipe/empty_circuit,
 	)
 	/// Radial options for recipes in the allowed_choices list, populated by populate_radial_choice_list
 	var/list/radial_choice_list = list()
@@ -108,6 +109,13 @@
 
 /obj/structure/reagent_crafting_bench/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	select_recipe(user)
+
+/obj/structure/reagent_crafting_bench/attack_robot(mob/living/user)
+	. = ..()
+	select_recipe(user)
+
+/obj/structure/reagent_crafting_bench/proc/select_recipe(mob/living/user)
 	update_appearance()
 
 	if(length(contents))
@@ -142,34 +150,49 @@
 
 /obj/structure/reagent_crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/forging/complete))
-		if(length(contents))
-			balloon_alert(user, "already full")
-			return TRUE
-
-		attacking_item.forceMove(src)
-		balloon_alert_to_viewers("placed [attacking_item]")
-		update_appearance()
+		attempt_place(attacking_item, user)
 		return TRUE
 
 	return ..()
 
+/obj/structure/reagent_crafting_bench/mouse_drop_receive(atom/movable/attacking_item, mob/living/user, params)
+	. = ..()
+	if(!isliving(user))
+		return
+
+	if(!isobj(attacking_item))
+		return
+
+	if(istype(attacking_item, /obj/item/forging/complete))
+		attempt_place(attacking_item, user)
+
+/obj/structure/reagent_crafting_bench/proc/attempt_place(obj/item/attacking_item, mob/user)
+	if(length(contents))
+		balloon_alert(user, "already full")
+		return
+
+	attacking_item.forceMove(src)
+	balloon_alert_to_viewers("placed [attacking_item]")
+	update_appearance()
+	return
+
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	deconstruct(disassembled = TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reagent_crafting_bench/hammer_act(mob/living/user, obj/item/tool)
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
 	if(length(contents))
 		if(!istype(contents[1], /obj/item/forging/complete))
 			balloon_alert(user, "invalid item")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		var/obj/item/forging/complete/weapon_to_finish = contents[1]
 
 		if(!weapon_to_finish.spawning_item)
 			balloon_alert(user, "[weapon_to_finish] cannot be completed")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		var/list/wood_required_for_weapons = list(
 			/obj/item/stack/sheet/mineral/wood = WEAPON_COMPLETION_WOOD_AMOUNT,
@@ -177,26 +200,26 @@
 
 		if(!can_we_craft_this(wood_required_for_weapons))
 			balloon_alert(user, "not enough wood")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		var/list/things_to_use = can_we_craft_this(wood_required_for_weapons, TRUE)
 		var/obj/thing_just_made = create_thing_from_requirements(things_to_use, user = user, skill_to_grant = /datum/skill/smithing, skill_amount = 30, completing_a_weapon = TRUE)
 
 		if(!thing_just_made)
 			message_admins("[src] just tried to finish a weapon but somehow created nothing! This is not working as intended!")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		balloon_alert_to_viewers("[thing_just_made] created")
 		update_appearance()
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(!selected_recipe)
 		balloon_alert(user, "no recipe selected")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	if(!can_we_craft_this(selected_recipe.recipe_requirements))
 		balloon_alert(user, "missing ingredients")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	var/skill_modifier = user.mind.get_skill_modifier(selected_recipe.relevant_skill, SKILL_SPEED_MODIFIER) * 1 SECONDS
 
@@ -206,10 +229,10 @@
 		if(current_hits_to_completion <= -(selected_recipe.required_good_hits))
 			balloon_alert_to_viewers("recipe failed")
 			clear_recipe()
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 
 		balloon_alert(user, "bad hit")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
 
@@ -217,12 +240,12 @@
 		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements, TRUE)
 
 		create_thing_from_requirements(things_to_use, selected_recipe, user, selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward)
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	current_hits_to_completion++
 	balloon_alert(user, "good hit")
 	user.mind.adjust_experience(selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward / 15) // Good hits towards the current item grants experience in that skill
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /// Takes the given list of item requirements and checks the surroundings for them, returns TRUE unless return_ingredients_list is set, in which case a list of all the items to use is returned
 /obj/structure/reagent_crafting_bench/proc/can_we_craft_this(list/required_items, return_ingredients_list = FALSE)
@@ -289,9 +312,13 @@
 	if(completing_a_weapon)
 		var/obj/item/forging/complete/completed_forge_item = contents[1]
 		newly_created_thing = new completed_forge_item.spawning_item(src)
+		if(newly_created_thing.force > 0) //we don't want the staff to get added damage
+			newly_created_thing.force += min(round(completed_forge_item.current_perfects * INVERSE(10)), 3) //adds a maximum of 3 force, and 6 if dual-wielded
+
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
 			for(var/custom_material in completed_forge_item.custom_materials)
 				materials_to_transfer[custom_material] += completed_forge_item.custom_materials[custom_material]
+
 		qdel(completed_forge_item) // And then we also need to 'use' the item
 
 	else

@@ -54,7 +54,7 @@
 		/datum/reagent/medicine/system_cleaner,
 		/datum/reagent/medicine/nanite_slurry,
 		/datum/reagent/medicine/liquid_solder,
-		/datum/reagent/oil,
+		/datum/reagent/fuel/oil,
 		/datum/reagent/fuel,
 	)
 

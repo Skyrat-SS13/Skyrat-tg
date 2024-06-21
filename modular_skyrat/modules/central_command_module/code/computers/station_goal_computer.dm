@@ -47,8 +47,6 @@
 	if(machine_stat & (NOPOWER|BROKEN|MAINT))
 		return
 
-	usr.set_machine(src)
-
 	var/selected_goal = href_list["selected_goal"]
 
 	if(href_list["close"])
@@ -59,7 +57,7 @@
 		if(initial(iterating_goal.name) == selected_goal)
 			var/datum/station_goal/goal_to_set = new iterating_goal()
 			goal_to_set.send_report()
-			GLOB.station_goals += goal_to_set
+			SSstation.goals_by_type[iterating_goal] = goal_to_set
 			goal_assigned = TRUE
 			break
-	updateUsrDialog()
+	SStgui.update_uis(src)

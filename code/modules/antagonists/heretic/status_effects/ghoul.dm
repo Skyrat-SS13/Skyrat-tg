@@ -16,8 +16,8 @@
 
 /datum/status_effect/ghoul/Destroy()
 	master_mind = null
-	QDEL_NULL(on_made_callback)
-	QDEL_NULL(on_lost_callback)
+	on_made_callback = null
+	on_lost_callback = null
 	return ..()
 
 /datum/status_effect/ghoul/on_creation(
@@ -67,6 +67,7 @@
 	if(human_target.mind)
 		var/datum/antagonist/heretic_monster/heretic_monster = human_target.mind.add_antag_datum(/datum/antagonist/heretic_monster)
 		heretic_monster.set_owner(master_mind)
+		human_target.mind.remove_antag_datum(/datum/antagonist/cult)
 
 	return TRUE
 

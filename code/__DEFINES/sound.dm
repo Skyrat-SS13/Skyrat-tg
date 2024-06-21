@@ -2,25 +2,23 @@
 #define CHANNEL_LOBBYMUSIC 1024
 #define CHANNEL_ADMIN 1023
 #define CHANNEL_VOX 1022
-/* SKYRAT REMOVAL BEGIN - JUKEBOX - ORIGINAL
 #define CHANNEL_JUKEBOX 1021
 #define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
-#define CHANNEL_AMBIENCE 1019
-#define CHANNEL_BUZZ 1018
-*/ // SKYRAT EDIT END
-#define CHANNEL_TRAITOR 1017
-#define CHANNEL_CHARGED_SPELL 1016
+#define CHANNEL_BOSS_MUSIC 1019
+#define CHANNEL_AMBIENCE 1018
+#define CHANNEL_BUZZ 1017
+#define CHANNEL_TRAITOR 1016
+#define CHANNEL_CHARGED_SPELL 1015
+#define CHANNEL_ELEVATOR 1014
+//THIS SHOULD ALWAYS BE THE LOWEST ONE!
+//KEEP IT UPDATED
+#define CHANNEL_HIGHEST_AVAILABLE 1013
+
+#define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
 // SKYRAT EDIT START - JUKEBOX
-#define CHANNEL_JUKEBOX 1021
-#define CHANNEL_JUKEBOX_START 1016
-#define CHANNEL_HEARTBEAT 1015 //sound channel for heartbeats
-#define CHANNEL_AMBIENCE 1014
-#define CHANNEL_BUZZ 1013
-#define CHANNEL_BICYCLE 1012
-#define CHANNEL_MBOX 1011
-#define CHANNEL_HEV 1010
-#define CHANNEL_PCV 1009
+#define CHANNEL_JUKEBOX_START 1006
+#define CHANNEL_HEV 1005
 //SKYRAT EDIT CHANGE END
 
 ///Default range of a sound.
@@ -35,13 +33,6 @@
 ///The default exponent of sound falloff
 #define SOUND_FALLOFF_EXPONENT 6
 
-//THIS SHOULD ALWAYS BE THE LOWEST ONE!
-//KEEP IT UPDATED
-
-#define CHANNEL_HIGHEST_AVAILABLE 1008 //SKYRAT EDIT CHANGE - JUKEBOX > ORIGINAL VALUE 1015
-
-#define MAX_INSTRUMENT_CHANNELS (128 * 6)
-
 #define SOUND_MINIMUM_PRESSURE 10
 
 #define INTERACTION_SOUND_RANGE_MODIFIER -3
@@ -49,6 +40,7 @@
 #define PICKUP_SOUND_VOLUME 15
 #define DROP_SOUND_VOLUME 20
 #define YEET_SOUND_VOLUME 90
+#define BLOCK_SOUND_VOLUME 70
 
 #define AMBIENCE_GENERIC "generic"
 #define AMBIENCE_HOLY "holy"
@@ -56,6 +48,7 @@
 #define AMBIENCE_RUINS "ruins"
 #define AMBIENCE_ENGI "engi"
 #define AMBIENCE_MINING "mining"
+#define AMBIENCE_ICEMOON "icemoon"
 #define AMBIENCE_MEDICAL "med"
 #define AMBIENCE_VIROLOGY "viro"
 #define AMBIENCE_SPOOKY "spooky"
@@ -136,6 +129,7 @@
 #define ANNOUNCER_ANOMALIES "announcer_anomalies"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
+#define ANNOUNCER_TRANSLOCATION "announcer_translocation"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"
 #define ANNOUNCER_FLUXANOMALIES "announcer_fluxanomalies"
 #define ANNOUNCER_GRAVANOMALIES "announcer_gravanomalies"
@@ -154,7 +148,8 @@
 #define ANNOUNCER_ICARUS "announcer_icarus"
 #define ANNOUNCER_NRI_RAIDERS "announcer_nri_raiders"
 #define ANNOUNCER_OUTBREAK6 "announcer_outbreak6"
-#define ANNOUNCER_FUNGI "announcer_fungi"
+#define ANNOUNCER_DEPARTMENTAL "announcer_departmental"
+#define ANNOUNCER_SHUTTLE "announcer_shuttle"
 //SKYRAT EDIT END
 
 
@@ -182,6 +177,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_VORTEXANOMALIES,
 	ANNOUNCER_CAPTAIN,
 	ANNOUNCER_MASSIVEBSPACEANOMALIES,
+	ANNOUNCER_TRANSLOCATION,
 	ANNOUNCER_PYROANOMALIES,
 	ANNOUNCER_FLUXANOMALIES,
 	ANNOUNCER_GRAVANOMALIES,
@@ -200,7 +196,6 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_ICARUS,
 	ANNOUNCER_NRI_RAIDERS,
 	ANNOUNCER_OUTBREAK6,
-	ANNOUNCER_FUNGI,
 	//SKYRAT EDIT END
 ))
 
@@ -214,6 +209,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_EXPLOSION_CREAKING "explosion_creaking"
 #define SFX_HISS "hiss"
 #define SFX_HONKBOT_E "honkbot_e"
+#define SFX_GOOSE "goose"
 #define SFX_HULL_CREAKING "hull_creaking"
 #define SFX_HYPERTORUS_CALM "hypertorus_calm"
 #define SFX_HYPERTORUS_MELTING "hypertorus_melting"
@@ -235,3 +231,10 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_CRUNCHY_BUSH_WHACK "crunchy_bush_whack"
 #define SFX_TREE_CHOP "tree_chop"
 #define SFX_ROCK_TAP "rock_tap"
+#define SFX_SEAR "sear"
+#define SFX_REEL "reel"
+#define SFX_RATTLE "rattle"
+#define SFX_PORTAL_ENTER "portal_enter"
+#define SFX_PORTAL_CLOSE "portal_closed"
+#define SFX_PORTAL_CREATED "portal_created"
+#define SFX_SCREECH "screech"

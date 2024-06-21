@@ -35,14 +35,15 @@
 			balloon_alert(user, "dyeing...")
 		if(!do_after(usr, 3 SECONDS, target))
 			return
-		human_target.hair_color = sanitize_hexcolor(new_color)
+
+		human_target.set_haircolor(sanitize_hexcolor(new_color), update = TRUE)
 
 	else
 		var/beard_or_hair = input(user, "What do you want to dye?", "Character Preference")  as null|anything in list("Hair", "Facial Hair")
 		if(!beard_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
-		var/list/choices = beard_or_hair == "Hair" ? GLOB.hair_gradients_list : GLOB.facial_hair_gradients_list
+		var/list/choices = beard_or_hair == "Hair" ? SSaccessories.hair_gradients_list : SSaccessories.facial_hair_gradients_list
 		var/new_grad_style = tgui_input_list(usr, "Choose a color pattern:", "Dye Spray", choices)
 		if(!new_grad_style || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
@@ -56,16 +57,19 @@
 			balloon_alert(user, "dyeing...")
 		if(!do_after(usr, 3 SECONDS, target))
 			return
-		var/gradient_key = beard_or_hair == "Hair" ? GRADIENT_HAIR_KEY : GRADIENT_FACIAL_HAIR_KEY
-		LAZYSETLEN(human_target.grad_style, GRADIENTS_LEN)
-		LAZYSETLEN(human_target.grad_color, GRADIENTS_LEN)
-		human_target.grad_style[gradient_key] = new_grad_style
-		human_target.grad_color[gradient_key] = sanitize_hexcolor(new_grad_color)
-	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
+
+		if(beard_or_hair == "Hair")
+			human_target.set_hair_gradient_color(sanitize_hexcolor(new_grad_color), update = FALSE)
+			human_target.set_hair_gradient_style(new_grad_style, update = TRUE)
+		else
+			human_target.set_facial_hair_gradient_color(sanitize_hexcolor(new_grad_color), update = FALSE)
+			human_target.set_facial_hair_gradient_style(new_grad_style, update = TRUE)
+
+	playsound(src, 'sound/effects/spray.ogg', 10, vary = TRUE)
+
 	human_target.visible_message(span_notice("[user] finishes applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair, changing its color!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"] applying hair dye to [dying_themselves ? "your own" : "your"] hair, changing its color!"), ignored_mobs = user)
 	if(!dying_themselves)
 		balloon_alert(user, "dyeing complete!")
-	human_target.update_body_parts()
 
 	uses--
 

@@ -6,7 +6,7 @@
 	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.")
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
-	M.add_mood_event("tweaking", /datum/mood_event/stimulant_medium, name)
+	M.add_mood_event("tweaking", /datum/mood_event/stimulant_medium, 1, name)
 	M.AdjustStun(-40 * REM * seconds_per_tick)
 	M.AdjustKnockdown(-40 * REM * seconds_per_tick)
 	M.AdjustUnconscious(-40 * REM * seconds_per_tick)

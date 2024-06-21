@@ -9,7 +9,7 @@
 	icon_state = "smartgun"
 	worn_icon_state = "module_smartgun_off" // just in case. You shouldn't be able to do this, though
 	inhand_icon_state = "smartgun"
-	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg34_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/rifle_heavy.ogg'
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	fire_sound_volume = 70
@@ -17,7 +17,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
 	spread = 18
-	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
+	accepted_magazine_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
 	fire_delay = 0.15
 	bolt_type = BOLT_TYPE_OPEN
@@ -42,7 +42,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	. = ..()
@@ -77,7 +77,7 @@
 	return ..()
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/attack_item, mob/user, params)
-	if(!cover_open && istype(attack_item, mag_type))
+	if(!cover_open && istype(attack_item, accepted_magazine_type))
 		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
 		return
 	..()
@@ -94,7 +94,7 @@
 	name = "smartgun drum (10x28mm caseless)"
 	icon = 'modular_skyrat/modules/marines/icons/items/ammo.dmi'
 	icon_state = "smartgun_drum"
-	ammo_type = /obj/item/ammo_casing/smart/caseless/a10x28
+	ammo_type = /obj/item/ammo_casing/smart/a10x28
 	caliber = "a10x28"
 	max_ammo = 500
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
@@ -103,7 +103,6 @@
 // Smart ammo casings
 
 /obj/item/ammo_casing/smart
-	icon = 'modular_skyrat/modules/gunsgalore/icons/ammo/ammo.dmi'
 
 /obj/item/ammo_casing/smart/Initialize(mapload)
 	. = ..()
@@ -116,11 +115,14 @@
 		var/obj/projectile/bullet/smart/smart_proj = loaded_projectile
 		smart_proj.ignored_factions = iff_factions.Copy()
 
-/obj/item/ammo_casing/smart/caseless
+/obj/item/ammo_casing/smart
 	firing_effect_type = null
-	heavy_metal = FALSE
 
-/obj/item/ammo_casing/smart/caseless/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
+/obj/item/ammo_casing/smart/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
+
+/obj/item/ammo_casing/smart/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	if (!..()) //failed firing
 		return FALSE
 	if(istype(fired_from, /obj/item/gun))
@@ -130,14 +132,14 @@
 	qdel(src)
 	return TRUE
 
-/obj/item/ammo_casing/smart/caseless/update_icon_state()
+/obj/item/ammo_casing/smart/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]"
 
-/obj/item/ammo_casing/smart/caseless/a10x28
+/obj/item/ammo_casing/smart/a10x28
 	name = "10x28mm bullet"
 	desc = "A 10x28m caseless bullet."
-	icon_state = "792x57-casing"
+	icon_state = "762-casing"
 	caliber = "a10x28"
 	projectile_type = /obj/projectile/bullet/smart/a10x28
 

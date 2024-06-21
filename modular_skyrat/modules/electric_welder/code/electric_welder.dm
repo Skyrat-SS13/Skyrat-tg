@@ -71,10 +71,6 @@
 /obj/item/weldingtool/electric/use(used = 0)
 	return isOn()
 
-// This is what starts fires. Overriding it stops it starting fires
-/obj/item/weldingtool/electric/handle_fuel_and_temps(used = 0, mob/living/user)
-	return
-
 /obj/item/weldingtool/electric/examine()
 	. = ..()
 	. += "[src] is currently [powered ? "powered" : "unpowered"]."
@@ -86,12 +82,3 @@
 		inhand_icon_state = "[initial(inhand_icon_state)]"
 	return ..()
 
-/datum/design/exwelder
-	name = "Electrical Welding Tool"
-	desc = "An experimental welding tool capable of welding using electricity."
-	id = "exwelder"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
-	build_path = /obj/item/weldingtool/electric
-	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING

@@ -25,7 +25,7 @@
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		return ..()
-	exposed_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, name)
+	exposed_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, 1, name)
 	return ..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
@@ -36,7 +36,7 @@
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_start(mob/living/carbon/human/exposed_mob)
 	. = ..()
 	to_chat(exposed_mob, span_purple("You feel so happy!"))
-	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, 1, name)
 
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_effects(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.get_timed_status_effect_duration(/datum/status_effect/hallucination) / (2 SECONDS) < volume && prob(20)))

@@ -1,8 +1,9 @@
-import { useBackend, useLocalState } from '../backend';
+import { paginate, range } from 'common/collections';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { BlockQuote, Box, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
-import { multiline } from 'common/string';
-import { paginate, range } from 'common/collections';
 
 type Entry = {
   name: string;
@@ -28,12 +29,12 @@ type TierData = {
   name: string;
 };
 
-const PAGE_HEIGHT = '235px';
+const PAGE_HEIGHT = 30;
 
 const TIER2TIERDATA: TierData[] = [
   {
     name: 'Lesser Mutant',
-    desc: multiline`
+    desc: `
       Lesser Mutants usually have a smaller list of potential mutations, and
       do not have bonuses for infusing many organs. Common species, cosmetics,
       and things of that sort are here. Always available!
@@ -42,7 +43,7 @@ const TIER2TIERDATA: TierData[] = [
   },
   {
     name: 'Regular Mutant',
-    desc: multiline`
+    desc: `
       Regular Mutants all have bonuses for infusing DNA into yourself, and are
       common enough to find consistently in a shift. Always available!
     `,
@@ -50,7 +51,7 @@ const TIER2TIERDATA: TierData[] = [
   },
   {
     name: 'Greater Mutant',
-    desc: multiline`
+    desc: `
       Greater Mutants have stronger upsides and downsides along with their
       bonus, and are harder to find in a shift. Must be unlocked by first
       unlocking a DNA Mutant bonus of a lower tier.
@@ -59,7 +60,7 @@ const TIER2TIERDATA: TierData[] = [
   },
   {
     name: 'Abberation',
-    desc: multiline`
+    desc: `
       We've been able to get stronger mutants out of vatgrown specimen,
       henceforth named "Abberations". Abberations have either strong utility
       purpose, anomalous qualities, or deadly capabilities.
@@ -68,18 +69,14 @@ const TIER2TIERDATA: TierData[] = [
   },
 ];
 
-export const InfuserBook = (props, context) => {
-  const { data } = useBackend<DnaInfuserData>(context);
+export const InfuserBook = (props) => {
+  const { data, act } = useBackend<DnaInfuserData>();
   const { entries } = data;
 
-  const [bookPosition, setBookPosition] = useLocalState<BookPosition>(
-    context,
-    'bookPosition',
-    {
-      chapter: 0,
-      pageInChapter: 0,
-    }
-  );
+  const [bookPosition, setBookPosition] = useState({
+    chapter: 0,
+    pageInChapter: 0,
+  });
   const { chapter, pageInChapter } = bookPosition;
 
   const paginatedEntries = paginateEntries(entries);
@@ -87,7 +84,11 @@ export const InfuserBook = (props, context) => {
   let currentEntry = paginatedEntries[chapter][pageInChapter];
 
   const switchChapter = (newChapter) => {
+    if (chapter === newChapter) {
+      return;
+    }
     setBookPosition({ chapter: newChapter, pageInChapter: 0 });
+    act('play_flip_sound'); // just so we can play a sound fx on page turn
   };
 
   const setPage = (newPage) => {
@@ -112,6 +113,7 @@ export const InfuserBook = (props, context) => {
       newBookPosition.pageInChapter = newPage;
     }
     setBookPosition(newBookPosition);
+    act('play_flip_sound'); // just so we can play a sound fx on page turn
   };
 
   const tabs = [
@@ -127,7 +129,7 @@ export const InfuserBook = (props, context) => {
   const restrictedNext = chapter === 3 && pageInChapter === 0;
 
   return (
-    <Window title="DNA Infusion Manual" width={620} height={375}>
+    <Window title="DNA Infusion Manual" width={620} height={500}>
       <Window.Content>
         <Stack vertical>
           <Stack.Item mb={-1}>
@@ -144,8 +146,11 @@ export const InfuserBook = (props, context) => {
                       key={tabIndex}
                       selected={chapter === tabIndex}
                       onClick={
-                        tabIndex === 4 ? null : () => switchChapter(tabIndex)
-                      }>
+                        tabIndex === 4
+                          ? undefined
+                          : () => switchChapter(tabIndex)
+                      }
+                    >
                       <Box color={tabIndex === 4 && 'red'}>{tab}</Box>
                     </Tabs.Tab>
                   );
@@ -177,7 +182,8 @@ export const InfuserBook = (props, context) => {
                 <Button
                   color={restrictedNext && 'black'}
                   onClick={() => setPage(pageInChapter + 1)}
-                  fluid>
+                  fluid
+                >
                   {restrictedNext ? 'RESTRICTED' : 'Next Page'}
                 </Button>
               </Stack.Item>
@@ -189,7 +195,7 @@ export const InfuserBook = (props, context) => {
   );
 };
 
-export const InfuserInstructions = (props, context) => {
+export const InfuserInstructions = (props) => {
   return (
     <Section title="DNA Infusion Guide" height={PAGE_HEIGHT}>
       <Stack vertical>
@@ -215,7 +221,7 @@ export const InfuserInstructions = (props, context) => {
           <br />
           3. Have someone activate the machine externally.
           <br />
-          <Box inline color="white">
+          <Box mt="10px" inline color="white">
             And you&apos;re done! Note that the infusion source will be
             obliterated in the process.
           </Box>
@@ -228,7 +234,7 @@ type InfuserEntryProps = {
   entry: Entry;
 };
 
-const InfuserEntry = (props: InfuserEntryProps, context) => {
+const InfuserEntry = (props: InfuserEntryProps) => {
   const { entry } = props;
 
   const tierData = TIER2TIERDATA[entry.tier];
@@ -242,7 +248,8 @@ const InfuserEntry = (props: InfuserEntryProps, context) => {
         <Button tooltip={tierData.desc} icon={tierData.icon}>
           {tierData.name}
         </Button>
-      }>
+      }
+    >
       <Stack vertical fill>
         <Stack.Item>
           <BlockQuote>

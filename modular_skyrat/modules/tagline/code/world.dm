@@ -2,39 +2,33 @@
 
 	var/list/features = list()
 
-	var/s = ""
+	var/new_status = ""
 	var/hostedby
 	if(config)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
-			s += "<b>[server_name]</b> &#8212; "
+			new_status += "<b>[server_name]</b> &#8212; "
 		hostedby = CONFIG_GET(string/hostedby)
 
-	s += " ("
-	s += "<a href=\"[CONFIG_GET(string/discord_link)]\">"
-	s += "Discord"
-	s += ")\]"
-	s += "<br>[CONFIG_GET(string/servertagline)]<br>"
+	new_status += " ("
+	new_status += "<a href=\"[CONFIG_GET(string/discord_link)]\">"
+	new_status += "Discord"
+	new_status += ")\]"
+	new_status += "<br>[CONFIG_GET(string/servertagline)]<br>"
 
 
-	var/n = 0
-	for (var/mob/M in GLOB.player_list)
-		if (M.client)
-			n++
+	var/players = GLOB.clients.len
 
 	if(SSmapping.config)
 		features += "[SSmapping.config.map_name]"
 
-	if (n > 1)
-		features += "~[n] players"
-	else if (n > 0)
-		features += "~[n] player"
+	features += "~[players] player[players == 1 ? "": "s"]"
 
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
 
-	if (features)
-		s += "\[[jointext(features, ", ")]"
+	if(length(features))
+		new_status += "\[[jointext(features, ", ")]"
 
-	status = s
+	status = new_status
 

@@ -51,10 +51,9 @@
 			var/list/exp_department_list = exp_manifest_out[department.department_name]
 
 			if(istype(job, department.department_head))
-				exp_department_list.Insert(1, null)
-				exp_department_list[1] = exp_entry
+				exp_department_list.Insert(1, exp_entry) // add the dept head's entry to front of dept section
 			else
-				exp_department_list[length(exp_department_list) + 1] = exp_entry
+				exp_department_list.Add(exp_entry) // add the rest after
 
 	// Trim the empty categories.
 	for (var/department in exp_manifest_out)
@@ -84,12 +83,14 @@
 	if(action == "show_exploitables")
 		var/exploitable_id = params["exploitable_id"]
 		var/datum/record/crew/target_record = find_record(exploitable_id)
-		to_chat(usr, "<b>Exploitable information:</b> [target_record.exploitable_information]")
+		if(!isnull(target_record)) // this can be null
+			to_chat(usr, "<b>Exploitable information:</b> [target_record.exploitable_information]")
 
 	else if(action == "show_background")
 		var/background_id = params["background_id"]
 		var/datum/record/crew/target_record = find_record(background_id)
-		to_chat(usr, "<b>Background information:</b> [target_record.background_information]")
+		if(!isnull(target_record))
+			to_chat(usr, "<b>Background information:</b> [target_record.background_information]")
 
 
 /datum/record_manifest/ui_data(mob/user)

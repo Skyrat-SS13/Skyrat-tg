@@ -1,8 +1,11 @@
 /obj/item/clothing/under/rank/civilian
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian_digi.dmi' //Anything that was in TG's civilian.dmi, should be in our civilian_digi.dmi
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige	//Some FOOL upstream has this item's worn and object icons seperate. This sucks.
+/obj/item/clothing/under/rank/civilian/lawyer // Lawyers' suits are in TG's suits.dmi
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/bluesuit // EXCEPT THIS ONE.
+	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_slacks/worn/digi
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'

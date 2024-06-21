@@ -43,12 +43,12 @@
 
 	unset_click_ability(source, refund_cooldown = TRUE)
 
-/datum/action/cooldown/spell/pointed/projectile/furious_steel/InterceptClickOn(mob/living/caller, params, atom/click_target)
+/datum/action/cooldown/spell/pointed/projectile/furious_steel/InterceptClickOn(mob/living/caller, params, atom/target)
 	// Let the caster prioritize using items like guns over blade casts
 	if(caller.get_active_held_item())
 		return FALSE
 	// Let the caster prioritize melee attacks like punches and shoves over blade casts
-	if(get_dist(caller, click_target) <= 1)
+	if(get_dist(caller, target) <= 1)
 		return FALSE
 
 	return ..()
@@ -63,12 +63,12 @@
 	// Delete existing
 	if(blade_effect)
 		stack_trace("[type] had an existing blade effect in on_activation. This might be an exploit, and should be investigated.")
-		UnregisterSignal(blade_effect, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(blade_effect, COMSIG_QDELETING)
 		QDEL_NULL(blade_effect)
 
 	var/mob/living/living_user = on_who
 	blade_effect = living_user.apply_status_effect(/datum/status_effect/protective_blades, null, projectile_amount, 25, 0.66 SECONDS)
-	RegisterSignal(blade_effect, COMSIG_PARENT_QDELETING, PROC_REF(on_status_effect_deleted))
+	RegisterSignal(blade_effect, COMSIG_QDELETING, PROC_REF(on_status_effect_deleted))
 
 /datum/action/cooldown/spell/pointed/projectile/furious_steel/on_deactivation(mob/on_who, refund_cooldown = TRUE)
 	. = ..()
@@ -98,8 +98,8 @@
 
 /obj/projectile/floating_blade
 	name = "blade"
-	icon = 'icons/obj/kitchen.dmi'
-	icon_state = "knife"
+	icon = 'icons/effects/eldritch.dmi'
+	icon_state = "dio_knife"
 	speed = 2
 	damage = 25
 	armour_penetration = 100
@@ -109,7 +109,7 @@
 
 /obj/projectile/floating_blade/Initialize(mapload)
 	. = ..()
-	add_filter("knife", 2, list("type" = "outline", "color" = "#f8f8ff", "size" = 1))
+	add_filter("dio_knife", 2, list("type" = "outline", "color" = "#f8f8ff", "size" = 1))
 
 /obj/projectile/floating_blade/prehit_pierce(atom/hit)
 	if(isliving(hit) && isliving(firer))

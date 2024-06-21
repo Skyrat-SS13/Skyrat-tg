@@ -18,7 +18,7 @@
 		relocate()
 
 /datum/component/stationloving/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_PARENT_PREQDELETED, PROC_REF(on_parent_pre_qdeleted))
+	RegisterSignal(parent, COMSIG_PREQDELETED, PROC_REF(on_parent_pre_qdeleted))
 	RegisterSignal(parent, COMSIG_ITEM_IMBUE_SOUL, PROC_REF(check_soul_imbue))
 	RegisterSignal(parent, COMSIG_ITEM_MARK_RETRIEVAL, PROC_REF(check_mark_retrieval))
 	// Relocate when we become unreachable
@@ -33,7 +33,7 @@
 /datum/component/stationloving/UnregisterFromParent()
 	UnregisterSignal(parent, list(
 		COMSIG_MOVABLE_Z_CHANGED,
-		COMSIG_PARENT_PREQDELETED,
+		COMSIG_PREQDELETED,
 		COMSIG_ITEM_IMBUE_SOUL,
 		COMSIG_ITEM_MARK_RETRIEVAL,
 		COMSIG_MOVABLE_MOVED,
@@ -51,7 +51,8 @@
 
 /// Teleports parent to a safe turf on the station z-level.
 /datum/component/stationloving/proc/relocate()
-	var/target_turf = find_safe_turf()
+
+	var/target_turf = length(GLOB.the_station_areas) ? get_safe_random_station_turf(GLOB.the_station_areas) : find_safe_turf() //Fallback. Mostly for debug maps.
 
 	if(!target_turf)
 		if(GLOB.blobstart.len > 0)

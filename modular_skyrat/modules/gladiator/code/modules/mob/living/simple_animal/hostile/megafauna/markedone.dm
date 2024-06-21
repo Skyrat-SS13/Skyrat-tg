@@ -8,6 +8,8 @@
 #define SEVENTY_FIVE_PERCENT 75
 #define FIFTY_PERCENT 50
 #define SHOWDOWN_PERCENT 25
+#define CHARGE_MODIFIER 0.4
+#define TELE_QUIP_CHANCE 20
 
 /**
  * A mean-ass single-combat sword-wielding nigh-demigod that is nothing but a walking, talking, breathing Berserk reference. He do kill shit doe!
@@ -33,6 +35,8 @@
 	move_to_delay = 2.25
 	pixel_x = -32
 	pixel_y = -9
+	base_pixel_x = -32
+	base_pixel_y = -9
 	wander = FALSE
 	ranged = 1
 	ranged_cooldown_time = 30
@@ -59,8 +63,6 @@
 	var/chargerange = 21
 	/// We get stunned whenever we ram into a closed turf
 	var/stunned = FALSE
-	/// Move_to_delay but only while we are charging
-	var/move_to_delay_charge = 0.6
 	/// Chance to block damage entirely on phases 1 and 4
 	var/block_chance = 50
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
@@ -110,14 +112,10 @@
 /// Gets him mad at you if you're a species he's not racist towards, and provides the 50% to block attacks in the first and fourth phases
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
-	if(spinning)
-		balloon_alert_to_viewers("damage blocked!")
-		return FALSE
-	else if(prob(block_chance) && (phase == 1) && !stunned)
-		balloon_alert_to_viewers("damage blocked!")
-		return FALSE
-	else if(prob(block_chance) && (phase == 4) && !stunned)
-		balloon_alert_to_viewers("damage blocked!")
+	if(prob(block_chance) && (phase == 1 || phase == 4) && !stunned)
+		var/our_turf = get_turf(src)
+		new /obj/effect/temp_visual/block(our_turf, COLOR_YELLOW)
+		playsound(src, 'sound/weapons/parry.ogg', BLOCK_SOUND_VOLUME * 2, vary = TRUE) // louder because lavaland low pressure maybe?
 		return FALSE
 	. = ..()
 	update_phase()
@@ -206,7 +204,6 @@
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = addtimer(CALLBACK(src, PROC_REF(get_calm)), MARKED_ONE_ANGER_DURATION, TIMER_STOPPABLE)
-	balloon_alert_to_viewers("angered!")
 
 /// Makes the Marked One a sleepy boy that don't wanna hurt nobody. He starts like this and progresses to his hostile state after seeing an ash walker or being punched in the noggin.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm()
@@ -286,7 +283,7 @@
 			if(phase == MARKED_ONE_SECOND_PHASE)
 				phase = MARKED_ONE_THIRD_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
-				ranged_cooldown += 8 SECONDS
+				ranged_cooldown += 5 SECONDS
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
@@ -294,6 +291,8 @@
 		if(0 to SHOWDOWN_PERCENT)
 			if (phase == MARKED_ONE_THIRD_PHASE)
 				phase = MARKED_ONE_FINAL_PHASE
+				INVOKE_ASYNC(src, PROC_REF(swordslam))
+				INVOKE_ASYNC(src, PROC_REF(stomp))
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				ranged_cooldown += 8 SECONDS
 				icon_state = "marked3"
@@ -301,8 +300,6 @@
 				melee_damage_upper = 50
 				melee_damage_lower = 50
 				move_to_delay = 1.2
-	if(charging)
-		move_to_delay = move_to_delay_charge
 
 /// Proc name speaks for itself. Vinesauce Joel
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack()
@@ -322,7 +319,7 @@
 						)
 	say(message = pick(spin_messages))
 	spinning = TRUE
-	animate(src, color = "#ff6666", 10)
+	animate(src, color = "#ff6666", 1 SECONDS)
 	SLEEP_CHECK_DEATH(5, src)
 	var/list/spinningturfs = list()
 	var/current_angle = 360
@@ -351,11 +348,11 @@
 		if(!spinning)
 			break
 		sleep(0.75) //addtimer(CALLBACK(src, PROC_REF(convince_zonespace_to_let_me_use_sleeps)), 2 WEEKS)
-	animate(src, color = initial(color), 3)
+	animate(src, color = initial(color), 0.3 SECONDS)
 	sleep(1)
 	spinning = FALSE
 
-/// The Marked One's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it hardstuns if it lands
+/// The Marked One's charge is extremely quick, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
 	face_atom(target)
 	var/static/list/charge_messages = list(
@@ -368,21 +365,23 @@
 							"COME ON!!",
 						)
 	say(message = pick(charge_messages))
-	animate(src, color = "#ff6666", 3)
+	animate(src, color = "#ff6666", 0.3 SECONDS)
 	SLEEP_CHECK_DEATH(4, src)
 	face_atom(target)
 	minimum_distance = 0
 	charging = TRUE
+	move_to_delay -= CHARGE_MODIFIER
 	update_phase()
 
-/// Discharge damages the Marked One and stuns him when he slams into a wall whilst charging
+/// Discharge stuns the marked one momentarily after landing a charge into a wall or a person
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
 	stunned = TRUE
 	charging = FALSE
 	minimum_distance = initial(minimum_distance)
 	chargetiles = 0
 	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
-	animate(src, color = initial(color), 5)
+	animate(src, color = initial(color), 0.5 SECONDS)
+	move_to_delay += CHARGE_MODIFIER
 	update_phase()
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
 	stunned = FALSE
@@ -405,6 +404,18 @@
 			targeted = pick(possible_locs)
 			new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 			forceMove(targeted)
+			var/static/list/tele_messages = list(
+				"Hi.",
+				"Hello there.",
+				"Hello.",
+				"Hey.",
+				"Yo.",
+				"Boo.",
+				"Sup.",
+			)
+
+			if(prob(TELE_QUIP_CHANCE))
+				say(message = pick(tele_messages))
 
 /// Bone Knife Throw makes him throw bone knives. woah.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/bone_knife_throw(atom/target)
@@ -474,9 +485,8 @@
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						ranged_cooldown += 2 SECONDS
 				else
-					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
 					INVOKE_ASYNC(src, PROC_REF(teleport), target)
-					ranged_cooldown += 2 SECONDS
+					ranged_cooldown += 5 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(teleport), target)
 				ranged_cooldown += 0.5 SECONDS
@@ -487,11 +497,12 @@
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
 						ranged_cooldown += 3 SECONDS
 					else
-						INVOKE_ASYNC(src, PROC_REF(swordslam))
-						ranged_cooldown += 2 SECONDS
+						INVOKE_ASYNC(src, PROC_REF(teleport), target)
+						INVOKE_ASYNC(src, PROC_REF(stomp))
+						ranged_cooldown += 4 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
-					INVOKE_ASYNC(src, PROC_REF(teleport), target)
+					INVOKE_ASYNC(src, PROC_REF(swordslam))
 					ranged_cooldown += 2 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
@@ -503,11 +514,11 @@
 						INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
 						INVOKE_ASYNC(src, PROC_REF(teleport), target)
 						INVOKE_ASYNC(src, PROC_REF(stomp))
-						ranged_cooldown += 2 SECONDS
+						ranged_cooldown += 1 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						INVOKE_ASYNC(src, PROC_REF(stomp))
-						ranged_cooldown += 2 SECONDS
+						ranged_cooldown += 1 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
 					INVOKE_ASYNC(src, PROC_REF(stomp))
@@ -515,7 +526,7 @@
 			else
 				INVOKE_ASYNC(src, PROC_REF(teleport), target)
 				INVOKE_ASYNC(src, PROC_REF(stomp))
-				ranged_cooldown += 0.5 SECONDS
+				ranged_cooldown += 1 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
@@ -527,3 +538,5 @@
 #undef SEVENTY_FIVE_PERCENT
 #undef FIFTY_PERCENT
 #undef SHOWDOWN_PERCENT
+#undef CHARGE_MODIFIER
+#undef TELE_QUIP_CHANCE

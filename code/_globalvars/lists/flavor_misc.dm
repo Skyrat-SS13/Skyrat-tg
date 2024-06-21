@@ -1,50 +1,3 @@
-//Preferences stuff
-	//Hairstyles
-GLOBAL_LIST_EMPTY(hairstyles_list) //stores /datum/sprite_accessory/hair indexed by name
-GLOBAL_LIST_EMPTY(hairstyles_male_list) //stores only hair names
-GLOBAL_LIST_EMPTY(hairstyles_female_list) //stores only hair names
-GLOBAL_LIST_EMPTY(facial_hairstyles_list) //stores /datum/sprite_accessory/facial_hair indexed by name
-GLOBAL_LIST_EMPTY(facial_hairstyles_male_list) //stores only hair names
-GLOBAL_LIST_EMPTY(facial_hairstyles_female_list) //stores only hair names
-GLOBAL_LIST_EMPTY(hair_gradients_list) //stores /datum/sprite_accessory/hair_gradient indexed by name
-GLOBAL_LIST_EMPTY(facial_hair_gradients_list) //stores /datum/sprite_accessory/facial_hair_gradient indexed by name
-	//Underwear
-GLOBAL_LIST_EMPTY(underwear_list) //stores /datum/sprite_accessory/underwear indexed by name
-GLOBAL_LIST_EMPTY(underwear_m) //stores only underwear name
-GLOBAL_LIST_EMPTY(underwear_f) //stores only underwear name
-	//Undershirts
-GLOBAL_LIST_EMPTY(undershirt_list) //stores /datum/sprite_accessory/undershirt indexed by name
-GLOBAL_LIST_EMPTY(undershirt_m)  //stores only undershirt name
-GLOBAL_LIST_EMPTY(undershirt_f)  //stores only undershirt name
-	//Socks
-GLOBAL_LIST_EMPTY(socks_list) //stores /datum/sprite_accessory/socks indexed by name
-	//Lizard Bits (all datum lists indexed by name)
-//SKYRAT EDIT REMOVAL - CUSTOMIZATION
-/*
-GLOBAL_LIST_EMPTY(body_markings_list)
-GLOBAL_LIST_EMPTY(snouts_list)
-GLOBAL_LIST_EMPTY(horns_list)
-GLOBAL_LIST_EMPTY(frills_list)
-GLOBAL_LIST_EMPTY(spines_list)
-GLOBAL_LIST_EMPTY(legs_list)
-GLOBAL_LIST_EMPTY(animated_spines_list)
-
-	//Mutant Human bits
-GLOBAL_LIST_EMPTY(tails_list)
-GLOBAL_LIST_EMPTY(tails_list_human) //Only exists for preference choices. Use "tails_list" otherwise.
-GLOBAL_LIST_EMPTY(tails_list_lizard) //See above!
-GLOBAL_LIST_EMPTY(ears_list)
-GLOBAL_LIST_EMPTY(wings_list)
-GLOBAL_LIST_EMPTY(wings_open_list)
-GLOBAL_LIST_EMPTY(moth_wings_list)
-GLOBAL_LIST_EMPTY(moth_antennae_list)
-GLOBAL_LIST_EMPTY(moth_markings_list)
-GLOBAL_LIST_EMPTY(caps_list)
-*/
-//SKYRAT EDIT REMOVAL END
-GLOBAL_LIST_EMPTY(moth_wings_list) // SKYRAT EDIT ADDITION - Customization
-GLOBAL_LIST_EMPTY(pod_hair_list)
-
 GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Blue" = "#3399ff",
 	"Bright Yellow" = "#ffff99",
@@ -65,6 +18,14 @@ GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Red" = "#ff4d4d",
 	"Seafoam Green" = "#00fa9a",
 	"White" = "#f2f2f2",
+))
+
+GLOBAL_LIST_INIT(color_list_lustrous, list(
+	"Cyan Blue" = "#00ffff",
+	"Sky Blue" = "#37c0ff",
+	"Blue" = "#3374ff",
+	"Dark Blue" = "#5b5beb",
+	"Bright Red" = "#fa2d2d",
 ))
 
 GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list(
@@ -127,68 +88,6 @@ GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list(
 ))
 //stores the ghost forms that support hair and other such things
 
-GLOBAL_LIST_INIT(ai_core_display_screens, sort_list(list(
-	":thinking:",
-	"Alien",
-	"Angel",
-	"Banned",
-	"Bliss",
-	"Blue",
-	"Clown",
-	"Database",
-	"Dorf",
-	"Firewall",
-	"Fuzzy",
-	"Gentoo",
-	"Glitchman",
-	"Gondola",
-	"Goon",
-	"Hades",
-	"HAL 9000",
-	"Heartline",
-	"Helios",
-	"House",
-	"Inverted",
-	"Matrix",
-	"Monochrome",
-	"Murica",
-	"Nanotrasen",
-	"Not Malf",
-	"Portrait",
-	"President",
-	"Rainbow",
-	"Random",
-	"Red October",
-	"Red",
-	"Static",
-	"Syndicat Meow",
-	"Text",
-	"Too Deep",
-	"Triumvirate-M",
-	"Triumvirate",
-	"Weird",
-)))
-
-/// A form of resolve_ai_icon that is guaranteed to never sleep.
-/// Not always accurate, but always synchronous.
-/proc/resolve_ai_icon_sync(input)
-	SHOULD_NOT_SLEEP(TRUE)
-
-	if(!input || !(input in GLOB.ai_core_display_screens))
-		return "ai"
-	else
-		if(input == "Random")
-			input = pick(GLOB.ai_core_display_screens - "Random")
-		return "ai-[lowertext(input)]"
-
-/proc/resolve_ai_icon(input)
-	if (input == "Portrait")
-		var/datum/portrait_picker/tgui = new(usr)//create the datum
-		tgui.ui_interact(usr)//datum has a tgui component, here we open the window
-		return "ai-portrait" //just take this until they decide
-
-	return resolve_ai_icon_sync(input)
-
 GLOBAL_LIST_INIT(security_depts_prefs, sort_list(list(
 	SEC_DEPT_ENGINEERING,
 	SEC_DEPT_MEDICAL,
@@ -201,17 +100,21 @@ GLOBAL_LIST_INIT(security_depts_prefs, sort_list(list(
 #define DBACKPACK "Department Backpack"
 #define DDUFFELBAG "Department Duffel Bag"
 #define DSATCHEL "Department Satchel"
+#define DMESSENGER "Department Messenger Bag"
 #define GBACKPACK "Grey Backpack"
 #define GDUFFELBAG "Grey Duffel Bag"
 #define GSATCHEL "Grey Satchel"
+#define GMESSENGER "Grey Messenger Bag"
 #define LSATCHEL "Leather Satchel"
 GLOBAL_LIST_INIT(backpacklist, list(
 	DBACKPACK,
 	DDUFFELBAG,
 	DSATCHEL,
+	DMESSENGER,
 	GBACKPACK,
 	GDUFFELBAG,
 	GSATCHEL,
+	GMESSENGER,
 	LSATCHEL,
 ))
 
@@ -348,7 +251,16 @@ GLOBAL_LIST_INIT(status_display_approved_pictures, list(
 	"default",
 	"biohazard",
 	"lockdown",
+	"greenalert",
+	"bluealert",
+	"violetalert", // SKYRAT EDIT ADD - Alert Levels
+	"orangealert", // SKYRAT EDIT ADD - Alert Levels
+	"amberalert", // SKYRAT EDIT ADD - Alert Levels
 	"redalert",
+	"deltaalert",
+	"gammaalert", // SKYRAT EDIT ADD - Alert Levels
+	"radiation",
+	"currentalert", //For automatic set of status display on current level
 ))
 
 // Members of status_display_approved_pictures that are actually states and not alert values

@@ -10,13 +10,14 @@
 		return COMPONENT_INCOMPATIBLE
 	access = new_access
 	RegisterSignal(parent, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
+	RegisterSignal(parent, COMSIG_MOB_RETRIEVE_SIMPLE_ACCESS, PROC_REF(retrieve_access))
 	if(!donor_atom)
 		return
 	if(isorgan(donor_atom))
 		RegisterSignal(donor_atom, COMSIG_ORGAN_REMOVED, PROC_REF(on_donor_removed))
 	else if(istype(donor_atom, /obj/item/implant))
 		RegisterSignal(donor_atom, COMSIG_IMPLANT_REMOVED, PROC_REF(on_donor_removed))
-	RegisterSignal(donor_atom, COMSIG_PARENT_QDELETING, PROC_REF(on_donor_removed))
+	RegisterSignal(donor_atom, COMSIG_QDELETING, PROC_REF(on_donor_removed))
 
 /datum/component/simple_access/proc/on_tried_access(datum/source, atom/locked_thing)
 	SIGNAL_HANDLER
@@ -27,6 +28,10 @@
 		return ACCESS_ALLOWED
 	else
 		return ACCESS_DISALLOWED
+
+/datum/component/simple_access/proc/retrieve_access(datum/source, list/access_list)
+	SIGNAL_HANDLER
+	access_list += access
 
 /datum/component/simple_access/proc/on_donor_removed(datum/source)
 	SIGNAL_HANDLER

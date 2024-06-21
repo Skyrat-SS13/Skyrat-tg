@@ -1,3 +1,7 @@
+// Because plushes have a second desc var that needs to be updated
+/obj/item/toy/plush/on_loadout_custom_described()
+	normal_desc = desc
+
 // // MODULAR PLUSHES
 /obj/item/toy/plush/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
@@ -422,7 +426,7 @@
 	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam, in some cases (sadly not all of them)
 	var/mob/living/living_user = user
 	if(istype(living_user))
-		living_user.add_mood_event("hug", /datum/mood_event/warmhug/rubi, src)
+		living_user.add_mood_event("hug", /datum/mood_event/warmhug/rubi, 1, src)
 	user.visible_message(span_notice("[user] hugs \the [src]."), span_notice("You hug \the [src]."))
 
 /datum/mood_event/warmhug/rubi
@@ -467,7 +471,7 @@
 	gender = FEMALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
-	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
+	squeak_override = list('sound/creatures/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
 	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS +TM+!", "Holland Lops are a breed of rabbit originating in the Netherlands.", "Rabbits may need medication to keep themselves healthy, and that's ok! Make sure to take yours too!", "rabbits really liked this product", "A healthy rabbit diet includes fresh vegetables.", "Rabbits do not hibernate. Their schedules are much too busy.", "the rate of bunnies is measured by RPB (rabbits per bunny)", )
 
 /obj/item/toy/plush/skyrat/chunko/andrew
@@ -477,7 +481,7 @@
 	gender = MALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
-	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
+	squeak_override = list('sound/creatures/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
 	// All lowercase messages are intentional
 	responses = list("bunny who you best pray you never encounter, lest you suffer a fate worse than death.", "this is a bunny!", "I wonder what would happen if you took bunnies, and combined them with rabbits, and merged their properties and characteristics. It's something to think about.", "If you're cold, they're cold. Give them the deed to your house.", "bunny that goes yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah!", "the bunnies are beyond my comprehension", "it's a bunny thing, you wouldn't get it", "this bunny has an unfathomable power level", "%pull the string and I'll bink at you...I'm your bunny.", "Bunny (1954)", "the bunny that pulls the strings....", )
 
@@ -490,6 +494,16 @@
 	attack_verb_simple = list("slash", "dissect", "yawn", "smoke")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg' = 1)
 	responses = list("The human body can survive three weeks without skiiiiiiiiiiin.", "The thigh bone is connected to the hip boooooooooone.", "Yeeeessss?", "Helloooooo.", "Don't be such a baby, ribs grow baaaaaaaaaack.",)
+
+// Donation reward for shyshadow
+/obj/item/toy/plush/skyrat/chunko/plushie_winrow
+	name = "dark and brooding lizard plush"
+	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	icon_state = "plushie_shyshadow"
+	gender = MALE
+	attack_verb_continuous = list("slashes", "bites", "rizzes")
+	attack_verb_simple = list("slash", "bite", "rizz")
+	responses = list("Am I looking in a mirror? Because what I see is beautiful.", "I'm not just a toy. I'm a romantic.", "I'm the diamond, and you're the rough because sooner or later...", "Is that mouth just for talking?", "Come on, don't be so hard on me. I'm so soft!", "Is that a glass of scotch? Because I've been thinking about buttering you up.", "Don't look stare for too long. You might get lost in my eyes.", "Oh wow! Looks like I'm not the only handsome thing around these parts.", "Do NOT the plushie. I am not a voodoo doll.",)
 
 // Donation reward for tobjv
 /obj/item/toy/plush/skyrat/tesh
@@ -514,12 +528,6 @@
 	name = "voodoo doll"
 	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
 	icon_state = "plushie_gamerguy"
-
-// Donation reward for shyshadow
-/obj/item/toy/plush/skyrat/plushie_winrow
-	name = "dark and brooding lizard plush"
-	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
-	icon_state = "plushie_shyshadow"
 
 // Donation reward for Dudewithatude
 /obj/item/toy/plush/skyrat/plushie_star
@@ -563,6 +571,12 @@
 	attack_verb_continuous = list("bites", "eats", "fin slaps")
 	attack_verb_simple = list("bite", "eat", "fin slap")
 	squeak_override = list('sound/weapons/bite.ogg'=1)
+
+//Other donation reward for Razurath
+/obj/item/toy/plush/skyrat/plushie_razurath/second
+	name = "dwarf shark plushie"
+	desc = "Despite her height, the plushie regards you with keen and frankly unamused eyes; the look on her face, and the elegance of her little tiny coat tell you that she knows something you don't."
+	icon_state = "plushie_nedilla"
 
 //Donation reward for October23
 /obj/item/toy/plush/skyrat/plushie_elofy
@@ -611,13 +625,39 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/tracymrowr.ogg' = 1)
 	gender = FEMALE
 
-// Donation reward for isthatdan
-/obj/item/toy/plush/skyrat/dog
-	name = "bad dog plushie"
-	desc = "A collared, black dog plushie."
-	icon_state = "plush_dan"
-	attack_verb_continuous = list("barks at", "borks at", "woofs at")
-	attack_verb_simple = list("bark at", "bork at", "woof at")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
-	gender = MALE
+//Donation reward for Frixit
+/obj/item/toy/plush/skyrat/plushie_synthia
+	name = "adventurous synth plushie"
+	desc = "This plush is perfect For adventures in space and in bed, a cuddly purple Synth, their scarf is extra soft!"
+	icon_state = "plushie_synthia"
+	attack_verb_continuous = list("blushes", "hugs", "whips")
+	attack_verb_simple = list("blush", "hug", "whip")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
 
+//Donation reward for Kitsun
+/obj/item/toy/plush/skyrat/jecca
+	name = "sexy snoodle plushie"
+	desc = "For some reason, this plushie is rather shiny, with glistening, glittering scales, and its ruby colored eyes seem to be rather enticing and full of mischievous, lewd thoughts behind them."
+	icon_state = "plushie_jecca"
+	attack_verb_continuous = list("sighs")
+	attack_verb_simple = list("sigh")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sigh.ogg' = 1)
+	gender = FEMALE
+
+//Donation reward for BriareosBlue
+/obj/item/toy/plush/skyrat/courier_synth
+	name = "courier synth plushie"
+	desc = "This synth plushie looks about ready to deliver hugs and beeps straight to the heart! The tag seems to have an advertisement for a delivery company on it..."
+	icon_state = "plushie_courier"
+	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
+	attack_verb_simple = list("deliver", "export scan", "dwoop", "bwuh", "stamp")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
+
+//Donation reward for olirant
+/obj/item/toy/plush/skyrat/plush_janiborg
+	name = "Friendly Janiborg Plush"
+	desc = "A miniature omnidroid toy straight from the Lockstep Enterprises Corporation marketing department in handsome janitorial purple. Now with real squirting action!"
+	icon_state = "plush_janiborg"
+	attack_verb_continuous = list("beeps", "washes", "mops", "squirts", "soaps")
+	attack_verb_simple = list("beep", "wash", "mop", "squirt", "soap")
+	squeak_override = list('sound/machines/twobeep.ogg' = 1)

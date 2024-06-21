@@ -90,4 +90,3 @@
 		/datum/language/common = list(LANGUAGE_ATOM),
 		/datum/language/canilunzt = list(LANGUAGE_ATOM)
 	)
-

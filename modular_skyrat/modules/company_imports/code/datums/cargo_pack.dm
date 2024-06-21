@@ -1,6 +1,8 @@
 #define CARGO_CUT 0.05
 
 /datum/supply_pack/armament
+	goody = TRUE
+	crate_type = /obj/structure/closet/crate/large/import
 
 /datum/supply_pack/armament/generate(atom/A, datum/bank_account/paying_account)
 	. = ..()
@@ -10,9 +12,6 @@
 		return
 	var/obj/structure/container = .
 	for(var/obj/item/gun/gun_actually in container.contents)
-		var/datum/component/manufacturer_examine/gun_company_examine_component = gun_actually.GetComponent(/datum/component/manufacturer_examine)
-		if((gun_company_examine_component) && (gun_company_examine_component.company_flag & COMPANY_SCARBOROUGH))
-			continue
 		QDEL_NULL(gun_actually.pin)
 		var/obj/item/firing_pin/permit_pin/new_pin = new(gun_actually)
 		gun_actually.pin = new_pin

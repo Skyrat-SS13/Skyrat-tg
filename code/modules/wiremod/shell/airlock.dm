@@ -2,7 +2,7 @@
 	holder_type = /obj/machinery/door/airlock/shell
 	proper_name = "Circuit Airlock"
 
-/datum/wires/airlock/shell/on_cut(wire, mend)
+/datum/wires/airlock/shell/on_cut(wire, mend, source)
 	// Don't allow them to re-enable autoclose.
 	if(wire == WIRE_TIMING)
 		return
@@ -16,7 +16,7 @@
 	. = ..()
 	AddComponent( \
 		/datum/component/shell, \
-		unremovable_circuit_components = list(new /obj/item/circuit_component/airlock, new /obj/item/circuit_component/airlock_access_event), \
+		unremovable_circuit_components = list(new /obj/item/circuit_component/airlock, new /obj/item/circuit_component/airlock_access_event, new /obj/item/circuit_component/remotecam/airlock), \
 		capacity = SHELL_CAPACITY_LARGE, \
 		shell_flags = SHELL_FLAG_ALLOW_FAILURE_ACTION|SHELL_FLAG_REQUIRE_ANCHOR \
 	)
@@ -35,7 +35,7 @@
 		return TRUE
 	return isAdminGhostAI(user)
 
-/obj/machinery/door/airlock/shell/set_wires()
+/obj/machinery/door/airlock/shell/get_wires()
 	return new /datum/wires/airlock/shell(src)
 
 /obj/item/circuit_component/airlock
