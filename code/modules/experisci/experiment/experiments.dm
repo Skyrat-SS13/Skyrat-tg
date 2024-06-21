@@ -118,6 +118,14 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/nitrous_oxide
 
+/datum/experiment/ordnance/gaseous/plasma
+	name = "Plasma Gas Shells"
+	description = "The delivery of Plasma gas into an area of operation might prove useful. Pack the specified gas into a tank and burst it using a Tank Compressor. Publish the data in a paper."
+	gain = list(10,40)
+	target_amount = list(200,600)
+	experiment_proper = TRUE
+	required_gas = /datum/gas/plasma
+
 /datum/experiment/ordnance/gaseous/bz
 	name = "BZ Gas Shells"
 	description = "The delivery of BZ gas into an area of operation might prove useful. Pack the specified gas into a tank and burst it using a Tank Compressor. Publish the data in a paper."
@@ -323,7 +331,7 @@
 	required_stock_part = /obj/item/stock_parts/micro_laser/ultra
 
 /datum/experiment/scanning/random/mecha_damage_scan
-	name = "Exosuit Materials 1: Stress Failure Test"
+	name = "Exosuit Materials: Stress Failure Test"
 	description = "Your exosuit fabricators allow for rapid production on a small scale, but the structural integrity of created parts is inferior to more traditional means."
 	exp_tag = "Scan"
 	possible_types = list(/obj/vehicle/sealed/mecha)
@@ -332,7 +340,7 @@
 	var/damage_percent
 
 /datum/experiment/scanning/random/mecha_equipped_scan
-	name = "Exosuit Materials 2: Load Strain Test"
+	name = "Exosuit Materials: Load Strain Test"
 	description = "Exosuit equipment places unique strain upon the structure of the vehicle. Scan exosuits you have assembled from your exosuit fabricator and fully equipped to accelerate our structural stress simulations."
 	possible_types = list(/obj/vehicle/sealed/mecha)
 	total_requirement = 1
@@ -376,8 +384,6 @@
 				continue
 		return TRUE
 	return FALSE
-<<<<<<< HEAD
-=======
 
 /// Scan for cybernetic organs
 /datum/experiment/scanning/people/augmented_organs
@@ -460,4 +466,3 @@
 		/obj/machinery = 1
 	)
 	required_tier = 3
->>>>>>> 881dd195f15 (Techweb tweaks [NO GBP] (#84086))
