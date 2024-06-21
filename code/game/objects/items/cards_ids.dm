@@ -562,24 +562,16 @@
 		var/obj/item/storage/bag/money/money_bag = tool
 		var/list/money_contained = money_bag.contents
 		var/money_added = mass_insert_money(money_contained, user)
-<<<<<<< HEAD
-		if (money_added)
-			to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of credits to the linked account."))
-		return
+		if(!money_added)
+			return ITEM_INTERACT_BLOCKING
+		to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of credits to the linked account."))
+		return ITEM_INTERACT_SUCCESS
 	/// SKYRAT EDIT BEGINS - Trim Tokens - Proc defined in modular_skyrat/modules/trim_tokens/code/cards_id.dm
 	else if(istype(W, /obj/item/trim_token))
 		apply_token(W, user)
 		return
 	/// SKYRAT EDIT ENDS
-	else
-		return ..()
-=======
-		if(!money_added)
-			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of credits to the linked account."))
-		return ITEM_INTERACT_SUCCESS
 	return NONE
->>>>>>> 24908564f1f (Refactors card attackby chains into item_interaction (#84106))
 
 /**
  * Insert credits or coins into the ID card and add their value to the associated bank account.
