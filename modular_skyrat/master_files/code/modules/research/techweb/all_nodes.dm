@@ -31,7 +31,7 @@
 		"ci-surgery-alien",
 		"ci-toolset-alien",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_POINT_3_POINTS)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
 // MODULAR ADDITIONS AND REMOVALS
 
