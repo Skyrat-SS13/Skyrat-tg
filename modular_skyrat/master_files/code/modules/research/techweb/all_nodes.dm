@@ -22,6 +22,16 @@
 	design_ids = list("borg_shapeshifter_module")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
+/datum/techweb_node/ayy_cyber_implants
+	id = "ayy_cyber_implants"
+	display_name = "Alien Cybernetic Implants"
+	description = "The best in cybernetic implants."
+	prereq_ids = list("alien_surgery", "alien_engi")
+	design_ids = list(
+		"ci-surgery-alien",
+		"ci-toolset-alien",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
 // MODULAR ADDITIONS AND REMOVALS
 
@@ -47,6 +57,7 @@
 /datum/techweb_node/augmentation/New()
 	design_ids += list(
 		"affection_module",
+		"borg_upgrade_artistic",
 	)
 	return ..()
 
@@ -142,7 +153,7 @@
 
 ////////////////////////Medical////////////////////////
 
-/datum/techweb_node/gene_engineering/New()
+/datum/techweb_node/cytology/New()
 	design_ids += list(
 		"self_actualization_device",
 	)
@@ -255,6 +266,8 @@
 /datum/techweb_node/borg_utility/New()
 	design_ids += list(
 		"borg_upgrade_clamp",
+		"borg_upgrade_cargo_tele",
+		"borg_upgrade_forging",
 		"borg_upgrade_brush",
 		"borg_upgrade_shrink",
 	)
@@ -274,5 +287,17 @@
 
 	design_ids -= list(
 		"borg_upgrade_pinpointer",
+	)
+	return ..()
+
+/datum/techweb_node/borg_service/New()
+	design_ids += list(
+		"borg_upgrade_botany"
+	)
+	return ..()
+
+/datum/techweb_node/borg_mining/New()
+	design_ids += list(
+		"borg_upgrade_welding",
 	)
 	return ..()
