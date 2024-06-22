@@ -142,7 +142,7 @@
 
 ////////////////////////Medical////////////////////////
 
-/datum/techweb_node/gene_engineering/New()
+/datum/techweb_node/cytology/New()
 	design_ids += list(
 		"self_actualization_device",
 	)
