@@ -140,6 +140,7 @@
 	/// Typepath indicating the kind of job datum this ghost role will have. PLEASE inherit this with a new job datum, it's not hard. jobs come with policy configs.
 	var/spawner_job_path = /datum/job/ghost_role
 
+<<<<<<< HEAD
 
 	// SKYRAT EDIT ADDITION
 	/// Do we use a random appearance for this ghost role?
@@ -151,6 +152,11 @@
 	/// Are we limited to a certain species type? LISTED TYPE
 	var/restricted_species
 	// SKYRAT EDIT END
+=======
+	/// Whether this offers a temporary body or not. Essentially, you'll be able to reenter your body after using this spawner.
+	var/temp_body = FALSE
+
+>>>>>>> 1116f150eba (Bitrunning: Tweaks, QoL and removals (#84125))
 
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
 	. = ..()
@@ -186,7 +192,7 @@
 
 	if(prompt_ghost)
 		var/prompt = "Become [prompt_name]?"
-		if(user.can_reenter_corpse && user.mind)
+		if(!temp_body && user.can_reenter_corpse && user.mind)
 			prompt += " (Warning, You can no longer be revived!)"
 		var/ghost_role = tgui_alert(usr, prompt, buttons = list("Yes", "No"), timeout = 10 SECONDS)
 		if(ghost_role != "Yes" || !loc || QDELETED(user))
@@ -240,7 +246,8 @@
 
 	user.log_message("became a [prompt_name].", LOG_GAME)
 	uses -= 1 // Remove a use before trying to spawn to prevent strangeness like the spawner trying to spawn more mobs than it should be able to
-	user.mind = null // dissassociate mind, don't let it follow us to the next life
+	if(!temp_body)
+		user.mind = null // dissassociate mind, don't let it follow us to the next life
 
 	var/created = create(user)
 	LAZYREMOVE(ckeys_trying_to_spawn, user_ckey) // We do this AFTER the create() so that we're basically sure that the user won't be in their ghost body anymore, so they can't click on the spawner again.
