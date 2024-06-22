@@ -26,7 +26,7 @@
 	id = "ayy_cyber_implants"
 	display_name = "Alien Cybernetic Implants"
 	description = "The best in cybernetic implants."
-	prereq_ids = list("combat_implants","integrated_toolsets, "alien_surgery", "alien_engi")
+	prereq_ids = list("combat_implants", "integrated_toolsets, "alien_surgery", "alien_engi")
 	design_ids = list(
 		"ci-surgery-alien",
 		"ci-toolset-alien",
