@@ -73,7 +73,7 @@
 	name = "microfusion cell container"
 	desc = "A box filled with microfusion cells."
 
-/obj/item/storage/box/ammo_box/microfusion/armory
+/obj/item/storage/box/ammo_box/microfusion/armory/PopulateContents()
 	new /obj/item/storage/pouch/ammo(src)
 
 /obj/item/storage/box/ammo_box/microfusion/full/PopulateContents()

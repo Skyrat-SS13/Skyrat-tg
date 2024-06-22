@@ -215,20 +215,6 @@
 
 // RAIL MODS
 
-/datum/design/microfusion/gun_attachment_scope
-	name = "Microfusion Weapon Scope"
-	desc = "A scope... for microfusion weapon platforms."
-	id = "microfusion_gun_attachment_scope"
-	materials = list(
-		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/microfusion_gun_attachment/scope
-	category = list(
-		RND_CATEGORY_MICROFUSION_WEAPONS + RND_MICROFUSION_ATTACHMENT + RND_MICROFUSION_ATTACHMENT_RAIL,
-	)
-
 /datum/design/microfusion/attachment/rail_slot/rail
 	name = "Microfusion Weapon Rail"
 	desc = "A carrying handle/rail system for any additional attachments, such as a seclite and/or bayonet."
