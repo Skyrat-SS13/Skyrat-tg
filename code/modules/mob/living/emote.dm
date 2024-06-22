@@ -277,7 +277,6 @@
 /datum/emote/living/laugh/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	var/mob/living/carbon/human/human_user = user
 	return user.dna.species.get_laugh_sound(user)
 
 /datum/emote/living/look
