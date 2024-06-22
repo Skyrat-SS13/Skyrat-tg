@@ -121,7 +121,6 @@ export const CharacterPreferenceWindow = (props) => {
               profiles={data.character_profiles}
             />
           </Stack.Item>
-
           {!data.content_unlocked && (
             <Stack.Item align="center">
               Buy BYOND premium for more slots!
