@@ -100,7 +100,7 @@
 	savefile_key = "feature_body_markings"
 	relevant_mutant_bodypart = "body_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/body_markings
-	default_accessory_type = /datum/sprite_accessory/body_markings/none
+	default_accessory_type = /datum/sprite_accessory/lizard_markings/none
 
 /datum/preference/choiced/mutant_choice/body_markings/is_accessible(datum/preferences/preferences)
 	. = ..() // Got to do this because of linters.

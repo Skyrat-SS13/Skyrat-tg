@@ -108,7 +108,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/obj/item/organ/internal/appendix/mutantappendix = /obj/item/organ/internal/appendix
 
 	/// Store body marking defines. See mobs.dm for bitflags
-	var/list/body_markings = list()
+	//var/list/body_markings = list() // SKYRAT EDIT REMOVAL - We already have this defined as an assoc list
 
 	/// Flat modifier on all damage taken via [apply_damage][/mob/living/proc/apply_damage] (so being punched, shot, etc.)
 	/// IE: 10 = 10% less damage taken.
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
 			new_organ.Insert(human, special=TRUE, movement_flags = DELETE_IF_REPLACED)
 
-	add_body_markings(human_who_gained_species)
+	//add_body_markings(human_who_gained_species) // SKYRAT EDIT REMOVAL - We do this differently
 
 	if(length(inherent_traits))
 		human_who_gained_species.add_traits(inherent_traits, SPECIES_TRAIT)
@@ -602,9 +602,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/organ/internal/eyes/eye_organ = species_human.get_organ_slot(ORGAN_SLOT_EYES)
 			if(eye_organ)
 				eye_organ.refresh(call_update = FALSE)
-				for(var/mutable_appearance/eye_overlay in eye_organ.generate_body_overlay(species_human))
-					eye_overlay.pixel_y += height_offset
-					standing += eye_overlay
+				standing += eye_organ.generate_body_overlay(species_human)
 
 	//Underwear, Undershirts & Socks
 	if(!HAS_TRAIT(species_human, TRAIT_NO_UNDERWEAR))
@@ -743,7 +741,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	source.apply_overlay(BODY_FRONT_LAYER)
 */
 //SKYRAT EDIT REMOVAL END
-
 
 	update_body_markings(source)
 
