@@ -9,4 +9,3 @@
 
 /datum/outfit/centcom/ert/commander
 	l_hand = /obj/item/gun/energy/modular_laser_rifle
-
