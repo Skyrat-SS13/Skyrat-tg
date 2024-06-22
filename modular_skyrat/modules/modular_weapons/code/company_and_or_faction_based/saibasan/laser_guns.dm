@@ -15,12 +15,12 @@
 		Seen commonly amongst the Marsians who produce the weapon, with many different shapes and sizes to fit \
 		the wide variety of modders the planet is home to."
 	base_icon_state = "hyeseong"
-	icon = 'modular_zubbers/modules/modular_weapons/icons/obj/company_and_or_faction_based/saibasan/guns48x.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/saibasan/guns48x.dmi'
 	icon_state = "hyeseong_kill"
-	lefthand_file = 'modular_zubbers/modules/modular_weapons/icons/mob/company_and_or_faction_based/saibasan/guns_lefthand.dmi'
-	righthand_file = 'modular_zubbers/modules/modular_weapons/icons/mob/company_and_or_faction_based/saibasan/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/saibasan/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/saibasan/guns_righthand.dmi'
 	inhand_icon_state = "hyeseong_kill"
-	worn_icon = 'modular_zubbers/modules/modular_weapons/icons/mob/company_and_or_faction_based/saibasan/guns_worn.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/saibasan/guns_worn.dmi'
 	worn_icon_state = "hyeseong_kill"
 	cell_type = /obj/item/stock_parts/cell/hyeseong_internal_cell
 	modifystate = FALSE
@@ -256,7 +256,7 @@
 //Short version of the above modular rifle, has less charge and different modes
 /obj/item/gun/energy/modular_laser_rifle/carbine
 	name = "\improper Hoshi modular laser carbine"
-	icon = 'modular_zubbers/modules/modular_weapons/icons/obj/company_and_or_faction_based/saibasan/guns32x.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/saibasan/guns32x.dmi'
 	icon_state = "hoshi_kill"
 	inhand_icon_state = "hoshi_kill"
 	worn_icon_state = "hoshi_kill"
