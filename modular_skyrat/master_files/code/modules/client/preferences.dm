@@ -1,8 +1,6 @@
 #define MAX_MUTANT_ROWS 4
 
 /datum/preferences
-	/// Loadout prefs. Assoc list of [typepaths] to [associated list of item info].
-	var/list/loadout_list
 	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
 	var/list/languages = list()
 	/// List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
