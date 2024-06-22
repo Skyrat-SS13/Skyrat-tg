@@ -225,7 +225,10 @@
 	var/alt_toggle_message = "You push the visor up on"
 	///Can toggle?
 	var/can_toggle = TRUE
-
+	actions_types = list(/datum/action/item_action/toggle)
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 
 //Standard helmet
 /obj/item/clothing/head/helmet/sec
@@ -233,8 +236,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
-	actions_types = list(/datum/action/item_action/toggle)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	dog_fashion = null
@@ -260,6 +261,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.update_worn_head()
+
 
 
 //Beret replacement
