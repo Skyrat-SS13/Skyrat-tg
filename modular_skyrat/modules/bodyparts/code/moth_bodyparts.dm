@@ -15,7 +15,7 @@
 	wing_types = list(/obj/item/organ/external/wings/functional/moth/megamoth, /obj/item/organ/external/wings/functional/moth/mothra)
 
 /obj/item/bodypart/chest/moth/get_butt_sprite()
-	return BUTT_SPRITE_FUZZY
+	return icon('icons/mob/butts.dmi', BUTT_SPRITE_FUZZY)
 
 /obj/item/bodypart/arm/left/moth
 	icon = BODYPART_ICON_MOTH
