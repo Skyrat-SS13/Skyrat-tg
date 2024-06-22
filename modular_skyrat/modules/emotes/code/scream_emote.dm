@@ -9,15 +9,15 @@
 		var/mob/living/silicon/silicon_user = user
 		var/datum/scream_type/selected_scream = silicon_user.selected_scream
 		if(isnull(selected_scream))
-			return 'modular_nova/modules/emotes/sound/voice/scream_silicon.ogg'
+			return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
 		if(user.gender == FEMALE && LAZYLEN(selected_scream.female_screamsounds))
 			return pick(selected_scream.female_screamsounds)
 		else
 			return pick(selected_scream.male_screamsounds)
 	if(issilicon(user))
-		return 'modular_nova/modules/emotes/sound/voice/scream_silicon.ogg'
+		return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
 	if(ismonkey(user))
-		return 'modular_nova/modules/emotes/sound/voice/scream_monkey.ogg'
+		return 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
 	if(istype(user, /mob/living/basic/gorilla))
 		return 'sound/creatures/gorilla.ogg'
 	if(isalien(user))
