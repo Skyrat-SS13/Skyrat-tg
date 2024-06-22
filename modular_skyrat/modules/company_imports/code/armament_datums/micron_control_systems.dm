@@ -85,7 +85,7 @@
 
 /datum/armament_entry/company_import/micron/cell_upgrade/recharge
 	item_type = /obj/item/microfusion_cell_attachment/rechargeable
-	cost = PAYCHECK_CREW * 4
+	cost = PAYCHECK_CREW * 6
 
 /datum/armament_entry/company_import/micron/cell_upgrade/stabilize
 	item_type = /obj/item/microfusion_cell_attachment/stabiliser

@@ -21,10 +21,6 @@
 		/obj/item/stock_parts/cell/microfusion/advanced,
 		/obj/item/microfusion_cell_attachment/rechargeable,
 		/obj/item/microfusion_cell_attachment/rechargeable,
-		/obj/item/microfusion_cell_attachment/rechargeable,
-		/obj/item/microfusion_cell_attachment/rechargeable,
-		/obj/item/microfusion_cell_attachment/rechargeable,
-		/obj/item/microfusion_cell_attachment/rechargeable,
 	)
 	crate_name = "Microfusion Upgrade Crate"
 

@@ -2,48 +2,56 @@
 	category = COMPANY_NAME_ALLSTAR_ENERGY
 	company_bitflag = CARGO_COMPANY_ALLSTAR_ENERGY
 
-/datum/armament_entry/company_import/allstar/basic_energy_weapons
-	subcategory = "Basic Energy Weapons"
+// Basic lethal/disabler beam weapons, includes the base mcr
 
+/datum/armament_entry/company_import/allstar/basic_energy_weapons
+	subcategory = "Basic Energy Smallarms"
+
+/datum/armament_entry/company_import/allstar/basic_energy_weapons/disabler
+	item_type = /obj/item/gun/energy/disabler
+	cost = PAYCHECK_CREW * 5
+
+/datum/armament_entry/company_import/allstar/basic_energy_weapons/disabler_smg
+	item_type = /obj/item/gun/energy/disabler/smg
+	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
 
 /datum/armament_entry/company_import/allstar/basic_energy_weapons/mini_egun
 	item_type = /obj/item/gun/energy/e_gun/mini
-	cost = PAYCHECK_CREW
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	cost = PAYCHECK_CREW * 5
 
-/datum/armament_entry/company_import/allstar/basic_energy_weapons/sc1
+/datum/armament_entry/company_import/allstar/lethal_sidearm/energy_holster
+	item_type = /obj/item/storage/belt/holster/energy/thermal
+	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/allstar/basic_energy_long_weapons
+	subcategory = "Basic Energy Longarms"
+
+/datum/armament_entry/company_import/allstar/basic_energy_long_weapons/laser
 	item_type = /obj/item/gun/energy/laser
-	cost = PAYCHECK_CREW * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 2.5
-	stock_mult = 2
+	cost = PAYCHECK_CREW * 5
 
-/datum/armament_entry/company_import/allstar/basic_energy_weapons/sc2
+/datum/armament_entry/company_import/allstar/basic_energy_long_weapons/laser_carbine
+	item_type = /obj/item/gun/energy/laser/carbine
+	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
+
+/datum/armament_entry/company_import/allstar/basic_energy_long_weapons/egun
 	item_type = /obj/item/gun/energy/e_gun
-	cost = PAYCHECK_CREW * 3
-	upper_cost = CARGO_CRATE_VALUE * 4
+	cost = PAYCHECK_COMMAND * 4
 
 /datum/armament_entry/company_import/allstar/experimental_energy
 	subcategory = "Experimental Energy Weapons"
-	interest_required = COMPANY_SOME_INTEREST
+	cost = PAYCHECK_COMMAND * 6
 	restricted = TRUE
 
 /datum/armament_entry/company_import/allstar/experimental_energy/hellfire
 	item_type = /obj/item/gun/energy/laser/hellgun
-	cost = PAYCHECK_CREW * 4.5
-	upper_cost = CARGO_CRATE_VALUE * 5
 
 /datum/armament_entry/company_import/allstar/experimental_energy/ion_carbine
 	item_type = /obj/item/gun/energy/ionrifle/carbine
-	cost = PAYCHECK_CREW * 3
-	upper_cost = CARGO_CRATE_VALUE * 4
 
 /datum/armament_entry/company_import/allstar/experimental_energy/xray_gun
 	item_type = /obj/item/gun/energy/xray
-	cost = PAYCHECK_CREW * 4.5
-	upper_cost = CARGO_CRATE_VALUE * 5
 
 /datum/armament_entry/company_import/allstar/experimental_energy/tesla_cannon
 	item_type = /obj/item/gun/energy/tesla_cannon
-	cost = PAYCHECK_CREW * 3
-	upper_cost = CARGO_CRATE_VALUE * 4
 
