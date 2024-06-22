@@ -280,6 +280,16 @@
 	)
 	return ..()
 
+/datum/techweb_node/borg_medical/New()
+	design_ids += list(
+		"borg_upgrade_surgicaltools",
+	)
+
+	design_ids -= list(
+		"borg_upgrade_pinpointer",
+	)
+	return ..()
+
 /datum/techweb_node/borg_service/New()
 	design_ids += list(
 		"borg_upgrade_botany"
