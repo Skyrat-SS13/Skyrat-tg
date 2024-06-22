@@ -1,5 +1,3 @@
-#define BUTT_SPRITE_VOX "vox"
-
 // voxs!
 /obj/item/bodypart/head/mutant/vox
 	icon_greyscale = BODYPART_ICON_VOX
@@ -45,5 +43,3 @@
 	icon_greyscale = BODYPART_ICON_VOX
 	bodyshape = parent_type::bodyshape | BODYSHAPE_SNOUTED | BODYSHAPE_CUSTOM
 	base_limb_id = SPECIES_VOX
-
-#undef BUTT_SPRITE_VOX
