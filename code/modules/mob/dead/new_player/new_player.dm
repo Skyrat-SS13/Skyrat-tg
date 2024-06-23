@@ -283,14 +283,6 @@
 		humanc.put_in_hands(new /obj/item/crowbar/large/emergency(get_turf(humanc))) //if hands full then just drops on the floor
 	log_manifest(character.mind.key, character.mind, character, latejoin = TRUE)
 
-	// SKYRAT EDIT ADDITION START
-	if(humanc)
-		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
-			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
-				continue
-			item.post_equip_item(humanc.client?.prefs, humanc)
-	// SKYRAT EDIT END
-
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.
 	for(var/C in GLOB.employmentCabinets)
