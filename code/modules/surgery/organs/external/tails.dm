@@ -185,7 +185,7 @@
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
 	color_source = NONE
-	feature_key = "tail_monkey"
+	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
 
 /datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
 	return SSaccessories.tails_list_monkey
