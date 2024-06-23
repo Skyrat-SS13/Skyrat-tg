@@ -1,8 +1,6 @@
 #define MAX_MUTANT_ROWS 4
 
 /datum/preferences
-	/// Loadout prefs. Assoc list of [typepaths] to [associated list of item info].
-	var/list/loadout_list
 	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
 	var/list/languages = list()
 	/// List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
@@ -179,3 +177,7 @@
 	safe_transfer_prefs_to(character, icon_updates, is_antag)
 	qdel(added_tracker)
 
+// Updates the mob's chat color in the global cache
+/datum/preferences/safe_transfer_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)
+	. = ..()
+	GLOB.chat_colors_by_mob_name[character.name] = list(character.chat_color, character.chat_color_darkened) // by now the mob has had its prefs applied to it
