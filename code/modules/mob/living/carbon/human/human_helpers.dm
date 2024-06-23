@@ -1,3 +1,4 @@
+
 /mob/living/carbon/human/canBeHandcuffed()
 	if(num_hands < 2)
 		return FALSE
@@ -269,10 +270,8 @@
 /mob/living/carbon/human/proc/set_mob_height(new_height)
 	if(mob_height == new_height)
 		return FALSE
-	if(new_height == HUMAN_HEIGHT_DWARF || new_height == MONKEY_HEIGHT_DWARF)
-		CRASH("Don't set height to dwarf height directly, use dwarf trait instead.")
-	if(new_height == MONKEY_HEIGHT_MEDIUM)
-		CRASH("Don't set height to monkey height directly, use monkified gene/species instead.")
+	if(new_height == HUMAN_HEIGHT_DWARF)
+		CRASH("Don't set height to dwarf height directly, use dwarf trait")
 
 	mob_height = new_height
 	regenerate_icons()

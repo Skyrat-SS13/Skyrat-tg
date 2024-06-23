@@ -24,7 +24,8 @@
 			var/datum/action/cooldown/spell/conjure_item/clown_pockets/new_spell = new(victim)
 			new_spell.Grant(victim)
 			continue
-		dress_as_magic_clown(victim)
+		if (!ismonkey(victim)) // Monkeys cannot yet wear clothes
+			dress_as_magic_clown(victim)
 		if (prob(15))
 			create_vendetta(victim.mind, invoker.mind)
 

@@ -1761,9 +1761,13 @@
 	icon_state = "default"
 	color_src = HAIR_COLOR
 
-/datum/sprite_accessory/tails/monkey/default
+/datum/sprite_accessory/tails/monkey
 	icon = 'icons/mob/human/species/monkey/monkey_tail.dmi'
 	color_src = FALSE
+
+/datum/sprite_accessory/tails/monkey/standard
+	name = "Monkey"
+	icon_state = "monkey"
 
 /datum/sprite_accessory/pod_hair
 	icon = 'icons/mob/human/species/podperson_hair.dmi'
