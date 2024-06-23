@@ -216,6 +216,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		GLOB.roundstart_races = generate_selectable_species_and_languages()
 
 	return GLOB.roundstart_races
+
 /**
  * Generates species available to choose in character setup at roundstart
  *
@@ -585,7 +586,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /*
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
-	var/height_offset = species_human.get_top_offset() // From high changed by varying limb height
 	if(HAS_TRAIT(species_human, TRAIT_INVISIBLE_MAN))
 		return handle_mutant_bodyparts(species_human)
 	var/list/standing = list()
@@ -597,9 +597,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/organ/internal/eyes/eye_organ = species_human.get_organ_slot(ORGAN_SLOT_EYES)
 			if(eye_organ)
 				eye_organ.refresh(call_update = FALSE)
-				for(var/mutable_appearance/eye_overlay in eye_organ.generate_body_overlay(species_human))
-					eye_overlay.pixel_y += height_offset
-					standing += eye_overlay
+					standing += eye_organ.generate_body_overlay(species_human)
 
 		// organic body markings (oh my god this is terrible please rework this to be done on the limbs themselves i beg you)
 		if(HAS_TRAIT(species_human, TRAIT_HAS_MARKINGS))
@@ -920,12 +918,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_ICLOTHING)
-			var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
-			if(chest && (chest.bodyshape & BODYSHAPE_MONKEY))
-				if(!(I.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
-					if(!disable_warning)
-						to_chat(H, span_warning("[I] doesn't fit your [chest.name]!"))
-					return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_ID)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)

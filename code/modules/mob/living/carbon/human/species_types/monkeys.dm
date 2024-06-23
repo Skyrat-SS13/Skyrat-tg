@@ -4,7 +4,7 @@
 	name = "Monkey"
 	id = SPECIES_MONKEY
 	external_organs = list(
-		/obj/item/organ/external/tail/monkey = "Monkey"
+		/obj/item/organ/external/tail/monkey = "Monkey",
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/monkey
 	mutantbrain = /obj/item/organ/internal/brain/primate
@@ -56,6 +56,7 @@
 
 /datum/species/monkey/check_roundstart_eligible()
 	// STOP ADDING MONKEY SUBTYPES YOU HEATHEN
+	// ok we killed monkey subtypes but we're keeping this in cause we can't trust you fuckers
 	if(check_holidays(MONKEYDAY) && id == SPECIES_MONKEY)
 		return TRUE
 	return ..()
@@ -153,7 +154,6 @@
 		background_icon_state = "bg_default_on"
 		to_chat(monkey_brain.owner, span_notice("You will now stumble while while colliding with people who are in combat mode."))
 	build_all_button_icons()
-
 
 /obj/item/organ/internal/brain/primate/on_mob_insert(mob/living/carbon/primate)
 	. = ..()
