@@ -1017,7 +1017,6 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	var/static/icon/cut_legs_mask = icon('icons/effects/cut.dmi', "Cut2")
 	var/static/icon/lenghten_torso_mask = icon('icons/effects/cut.dmi', "Cut3")
 	var/static/icon/lenghten_legs_mask = icon('icons/effects/cut.dmi', "Cut4")
-
 	appearance.remove_filter(list(
 		"Cut_Torso",
 		"Cut_Legs",
@@ -1025,8 +1024,11 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 		"Lenghten_Torso",
 		"Gnome_Cut_Torso",
 		"Gnome_Cut_Legs",
+		"Monkey_Torso",
+		"Monkey_Legs",
+		"Monkey_Gnome_Cut_Torso",
+		"Monkey_Gnome_Cut_Legs",
 	))
-
 	switch(get_mob_height())
 		// Don't set this one directly, use TRAIT_DWARF
 		if(MONKEY_HEIGHT_DWARF)
@@ -1084,25 +1086,53 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 				))
 		// Don't set this one directly, use TRAIT_DWARF
 		if(HUMAN_HEIGHT_SHORTEST)
-			appearance.add_filter("Cut_Torso", 1, displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 1))
-			appearance.add_filter("Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1))
+			appearance.add_filters(list(
+				list(
+					"name" = "Cut_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 1),
+				),
+				list(
+					"name" = "Cut_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1),
+				),
+			))
 		if(HUMAN_HEIGHT_SHORT)
 			appearance.add_filter("Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1))
 		if(HUMAN_HEIGHT_TALL)
 			appearance.add_filter("Lenghten_Legs", 1, displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 1))
 		if(HUMAN_HEIGHT_TALLER)
-			appearance.add_filter("Lenghten_Torso", 1, displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1))
-			appearance.add_filter("Lenghten_Legs", 1, displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 1))
+			appearance.add_filters(list(
+				list(
+					"name" = "Lenghten_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1),
+				),
+				list(
+					"name" = "Lenghten_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 1),
+				),
+			))
 		if(HUMAN_HEIGHT_TALLEST)
-			appearance.add_filter("Lenghten_Torso", 1, displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1))
-			appearance.add_filter("Lenghten_Legs", 1, displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 2))
-
+			appearance.add_filters(list(
+				list(
+					"name" = "Lenghten_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1),
+				),
+				list(
+					"name" = "Lenghten_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 2),
+				),
+			))
 	// Kinda gross but because many humans overlays do not use KEEP_TOGETHER we need to manually propogate the filter
 	// Otherwise overlays, such as worn overlays on icons, won't have the filter "applied", and the effect kinda breaks
 	if(!(appearance.appearance_flags & KEEP_TOGETHER))
 		for(var/image/overlay in list() + appearance.underlays + appearance.overlays)
 			apply_height_filters(overlay)
-
 	return appearance
 
 #undef RESOLVE_ICON_STATE
