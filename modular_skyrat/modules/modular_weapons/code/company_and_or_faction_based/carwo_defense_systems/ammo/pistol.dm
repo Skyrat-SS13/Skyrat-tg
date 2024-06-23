@@ -114,7 +114,7 @@
 	embedding = list(
 		embed_chance = 75,
 		fall_chance = 3,
-		jostle_chance = 4,
+		jostle_chance = 8,
 		ignore_throwspeed_threshold = TRUE,
 		pain_stam_pct = 0.4,
 		pain_mult = 5,
