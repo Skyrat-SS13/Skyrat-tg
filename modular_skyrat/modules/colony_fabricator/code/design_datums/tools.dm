@@ -30,22 +30,6 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
 	)
 
-// Crowbar that is completely normal except it can force doors
-
-/datum/design/colony_door_crowbar
-	name = "Prybar"
-	id = "colony_prybar"
-	build_type = COLONY_FABRICATOR
-	build_path = /obj/item/crowbar/large/doorforcer
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
-		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
-	)
-
 // Welder that takes no fuel or power to run but is quite slow, at least it sounds cool as hell
 
 /datum/design/colony_arc_welder
