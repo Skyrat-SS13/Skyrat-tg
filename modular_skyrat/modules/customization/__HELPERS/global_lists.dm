@@ -108,37 +108,6 @@
 	// Chemical reactions aren't handled here because they're loaded in the reagents SS
 	// See Initialize() on SSReagents
 
-	// Loadouts
-	for(var/loadout_path in GLOB.all_loadout_datums)
-		var/datum/loadout_item/loadout_datum = GLOB.all_loadout_datums[loadout_path]
-		if(!loadout_datum.erp_item)
-			continue
-		GLOB.all_loadout_datums -= loadout_path
-		// Ensure this FULLY works later
-
-	var/list/loadout_lists = list(
-		GLOB.loadout_belts,
-		GLOB.loadout_ears,
-		GLOB.loadout_glasses,
-		GLOB.loadout_gloves,
-		GLOB.loadout_helmets,
-		GLOB.loadout_masks,
-		GLOB.loadout_necks,
-		GLOB.loadout_shoes,
-		GLOB.loadout_exosuits,
-		GLOB.loadout_jumpsuits,
-		GLOB.loadout_undersuits,
-		GLOB.loadout_miscunders,
-		GLOB.loadout_accessory,
-		GLOB.loadout_inhand_items,
-		GLOB.loadout_toys,
-		GLOB.loadout_pocket_items,
-	)
-	for(var/loadout_list in loadout_lists)
-		for(var/datum/loadout_item/loadout_typepath in loadout_list)
-			if(!initial(loadout_typepath.erp_item))
-				continue
-			loadout_list -= loadout_typepath
 
 	// Underwear
 	for(var/sprite_name in SSaccessories.underwear_list)

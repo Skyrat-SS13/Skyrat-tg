@@ -18,7 +18,13 @@
 		user.balloon_alert_to_viewers("stops typing", "stopped typing")
 		playsound(src, 'modular_skyrat/master_files/sound/items/tts/stopped_type.ogg', 50, TRUE)
 		return
-	src.say(str)
+
+	chat_color_name = name
+	chat_color = user.client?.prefs?.read_preference(/datum/preference/color/chat_color)
+	if(chat_color)
+		chat_color_darkened = process_chat_color(chat_color, sat_shift = 0.85, lum_shift = 0.85)
+
+	say(str)
 	str = null
 
 /obj/item/ttsdevice/item_ctrl_click(mob/living/user)
