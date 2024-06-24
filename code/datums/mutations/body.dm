@@ -301,7 +301,10 @@
 	desc = "The user's chemical balance is more robust."
 	quality = POSITIVE
 	text_gain_indication = "<span class='notice'>You feel stimmed.</span>"
+<<<<<<< HEAD
 	instability = 5
+=======
+>>>>>>> d50ac1c0672 (Fixes the Stimmed mutation instability being defined twice (#84237))
 	difficulty = 16
 
 /datum/mutation/human/stimmed/on_acquiring(mob/living/carbon/human/owner)
