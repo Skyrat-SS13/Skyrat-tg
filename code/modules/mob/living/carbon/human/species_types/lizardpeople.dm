@@ -8,13 +8,8 @@
 		TRAIT_TACKLING_TAILED_DEFENDER,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-<<<<<<< HEAD
-	mutant_bodyparts = list("legs" = "Normal Legs")
-	body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None")
-=======
-	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs") // NOVA EDIT CHANGE - ORIGINAL: mutant_bodyparts = list("legs" = "Normal Legs")
-	//body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None") // NOVA EDIT REMOVAL - We do this our own way
->>>>>>> 78e9761f4f7 ([MIRROR] Refactors body markings into bodypart overlays [MDB IGNORE] (#3118))
+	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs") // SKYRAT EDIT CHANGE - ORIGINAL: mutant_bodyparts = list("legs" = "Normal Legs")
+	//body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None") // SKYRAT EDIT REMOVAL - We do this our own way
 	external_organs = list(
 		/obj/item/organ/external/horns = "None",
 		/obj/item/organ/external/frills = "None",
