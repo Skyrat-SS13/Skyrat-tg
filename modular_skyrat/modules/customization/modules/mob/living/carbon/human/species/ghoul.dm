@@ -62,7 +62,7 @@
 		set_ghoul_color(human_ghoul)
 
 		// 2) BODYPARTS
-		RegisterSignal(src, COMSIG_ITEM_ATTACK, PROC_REF(attach_meat))
+		RegisterSignal(human_ghoul, COMSIG_ATOM_ATTACKBY, PROC_REF(attach_meat))
 		human_ghoul.part_default_head = /obj/item/bodypart/head/mutant/ghoul
 		human_ghoul.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
 		human_ghoul.part_default_l_arm = /obj/item/bodypart/arm/left/mutant/ghoul
@@ -74,7 +74,7 @@
 	. = ..()
 
 	// 2) BODYPARTS
-	UnregisterSignal(src, COMSIG_ITEM_ATTACK)
+	UnregisterSignal(former_ghoul, COMSIG_ATOM_ATTACKBY)
 	former_ghoul.part_default_head = /obj/item/bodypart/head
 	former_ghoul.part_default_chest = /obj/item/bodypart/chest
 	former_ghoul.part_default_l_arm = /obj/item/bodypart/arm/left
@@ -123,7 +123,7 @@
 
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/datum/species/ghoul/proc/attach_meat(obj/item/attacking_item, mob/living/carbon/human/target, mob/living/user, params)
+/datum/species/ghoul/proc/attach_meat(mob/living/carbon/human/target, obj/item/attacking_item, mob/living/user, params)
 	SIGNAL_HANDLER
 
 	if(!istype(target))
