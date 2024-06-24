@@ -7,13 +7,8 @@
 		TRAIT_ANTENNAE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-<<<<<<< HEAD
-	body_markings = list(/datum/bodypart_overlay/simple/body_marking/moth = "None")
+	mutant_bodyparts = list("moth_markings" = "None") // SKYRAT EDIT CHANGE - ORIGINAL: body_markings = list(/datum/bodypart_overlay/simple/body_marking/moth = "None")
 	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // SKYRAT EDIT REMOVAL - Fixing moths
-=======
-	mutant_bodyparts = list("moth_markings" = "None") // NOVA EDIT CHANGE - ORIGINAL: body_markings = list(/datum/bodypart_overlay/simple/body_marking/moth = "None")
-	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // NOVA EDIT REMOVAL - Fixing moths
->>>>>>> 78e9761f4f7 ([MIRROR] Refactors body markings into bodypart overlays [MDB IGNORE] (#3118))
 	meat = /obj/item/food/meat/slab/human/mutant/moth
 	mutanttongue = /obj/item/organ/internal/tongue/moth
 	mutanteyes = /obj/item/organ/internal/eyes/moth
