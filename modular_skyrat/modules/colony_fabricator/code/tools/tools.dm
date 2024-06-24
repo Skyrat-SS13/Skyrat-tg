@@ -93,16 +93,15 @@
 		return FALSE
 	return TRUE
 
-// Just a completely normal crowbar except its normal sized and can force doors like jaws of life can
+// Just a completely normal crowbar except its normal sized
 
 /obj/item/crowbar/large/doorforcer
 	name = "prybar"
-	desc = "A large, sturdy crowbar, painted orange. This one just happens to be tough enough to \
-		survive <b>forcing doors open</b>."
+	desc = "A large, sturdy crowbar, painted orange. Nothing special, or unique about it. Waste of money, honestly."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "prybar"
 	toolspeed = 1.3
-	force_opens = TRUE
+	force_opens = FALSE
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
 		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
