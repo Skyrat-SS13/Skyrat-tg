@@ -347,9 +347,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/proc/greet()
 	if(!silent)
 		to_chat(owner.current, span_big("You are \the [src]."))
-<<<<<<< HEAD
 		to_chat(owner.current, span_infoplain(span_doyourjobidiot("Remember that being an antagonist does not exclude you from the server rules regarding RP standards."))) //SKYRAT EDIT - RP REMINDER
-=======
 		play_stinger()
 
 /// Plays the antag stinger sound, if we have one
@@ -358,7 +356,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 		return
 
 	owner.current.playsound_local(get_turf(owner.current), stinger_sound, 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
->>>>>>> 7d8b1b38f6f (Antag stingers are now defined on the datum (#84209))
 
 /**
  * Proc that sends fluff or instructional messages to the player when they lose this antag datum.
