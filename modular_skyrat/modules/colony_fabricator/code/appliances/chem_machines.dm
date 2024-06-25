@@ -91,8 +91,8 @@
 	anchored_tabletop_offset = 4
 	anchored = FALSE
 	circuit = null
-	powerefficiency = 0.5
-	recharge_amount = 50
+	power_cost = 0.1 KILO WATTS
+	recharge_amount = 5 KILO WATTS //50 secs for full charge but shouldn't kill our crappy colony powergrid.
 	show_ph = FALSE
 	base_reagent_purity = 0.5
 	// God's strongest coffee machine
@@ -115,7 +115,7 @@
 		/datum/reagent/consumable/enzyme,
 	)
 	/// Since we don't have a board to take from, we use this to give the dispenser a cell on spawning
-	var/cell_we_spawn_with = /obj/item/stock_parts/cell/crap/empty
+	var/cell_we_spawn_with = /obj/item/stock_parts/power_store/cell/crap/empty
 
 /obj/machinery/chem_dispenser/frontier_appliance/Initialize(mapload)
 	. = ..()
@@ -125,11 +125,6 @@
 /obj/machinery/chem_dispenser/frontier_appliance/display_beaker()
 	var/mutable_appearance/overlayed_beaker = beaker_overlay || mutable_appearance(icon, "disp_beaker")
 	return overlayed_beaker
-
-/obj/machinery/chem_dispenser/frontier_appliance/RefreshParts()
-	. = ..()
-	powerefficiency = 0.5
-	recharge_amount = 50
 
 /obj/machinery/chem_dispenser/frontier_appliance/examine(mob/user)
 	. = ..()

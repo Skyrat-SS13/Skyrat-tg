@@ -18,7 +18,7 @@
 	icon_state = "wire1"
 	///Object basetypes which the powercord is allowed to connect to.
 	var/static/list/synth_charge_whitelist = typecacheof(list(
-		/obj/item/stock_parts/cell,
+		/obj/item/stock_parts/power_store,
 		/obj/machinery/power/apc,
 	))
 
@@ -83,7 +83,7 @@
 	if(istype(target, /obj/machinery/power/apc))
 		target_apc = target
 
-	var/obj/item/stock_parts/cell/target_cell = target_apc ? target_apc.cell : target
+	var/obj/item/stock_parts/power_store/target_cell = target_apc ? target_apc.cell : target
 	var/minimum_cell_charge = target_apc ? SYNTH_APC_MINIMUM_PERCENT : 0
 
 	if(!target_cell || target_cell.percent() < minimum_cell_charge)

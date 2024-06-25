@@ -298,19 +298,18 @@
 			if(stomach_cell.charge() > charge_limit)
 				to_chat(H, span_warning("Your charge is full!"))
 				return
-			to_chat(H, span_notice("You begin clumsily channeling power from [src] into your body."))
+			H.visible_message(span_notice("[user] hovers their fingers above [src], arcs forming from its surface!")) //SKYRAT EDIT CHANGE - Ethereal Rework 2024 - ORIGINAL: to_chat(H, span_notice("You begin clumsily channeling power from [src] into your body."))
 			stomach.drain_time = world.time + CELL_DRAIN_TIME
 			while(do_after(user, CELL_DRAIN_TIME, target = src))
 				if((charge < CELL_POWER_DRAIN) || (stomach_cell.charge() > charge_limit))
 					return
 				if(istype(stomach))
-					to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
+					to_chat(H, span_purple("You receive some charge from [src], wasting some in the process.")) // SKYRAT EDIT CHANGE - Ethereal Rework 2024 - Original: to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
 					stomach.adjust_charge(CELL_POWER_GAIN)
 					charge -= CELL_POWER_DRAIN //you waste way more than you receive, so that ethereals cant just steal one cell and forget about hunger
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))
 			return
-
 
 /obj/item/stock_parts/power_store/blob_act(obj/structure/blob/B)
 	SSexplosions.high_mov_atom += src
