@@ -736,14 +736,11 @@
 	model_select_icon = "medical"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
-<<<<<<< HEAD
-=======
 	toolbox_path = /obj/item/cyborg_omnitoolbox/medical
 	borg_skins = list(
 		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical"),
 		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
 	)
->>>>>>> 70d26adf1ca (Cyborg Omnitool Refactor (#83880))
 
 /obj/item/robot_model/miner
 	name = "Miner"
