@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/automatic/pistol/nt_glock
 	name = "\improper GP-9"
 	desc = "General Purpose Pistl Number 9. A classic .9mm handgun with a small magazine capacity."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "9mm_glock"
 	w_class = WEIGHT_CLASS_NORMAL
 
