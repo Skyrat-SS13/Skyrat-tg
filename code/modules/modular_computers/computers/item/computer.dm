@@ -19,7 +19,7 @@
 	///The disk in this PDA. If set, this will be inserted on Initialize.
 	var/obj/item/computer_disk/inserted_disk
 	///The power cell the computer uses to run on.
-	var/obj/item/stock_parts/cell/internal_cell = /obj/item/stock_parts/cell
+	var/obj/item/stock_parts/power_store/internal_cell = /obj/item/stock_parts/power_store/cell
 	///A pAI currently loaded into the modular computer.
 	var/obj/item/pai_card/inserted_pai
 	///Does the console update the crew manifest when the ID is removed?
@@ -75,9 +75,15 @@
 	var/comp_light_color = COLOR_WHITE
 
 	///Power usage when the computer is open (screen is active) and can be interacted with.
+<<<<<<< HEAD
 	var/base_active_power_usage = 15 // SKYRAT EDIT CHANGE - Original: 125
 	///Power usage when the computer is idle and screen is off.
 	var/base_idle_power_usage = 2 // SKYRAT EDIT CHANGE - Original: 5
+=======
+	var/base_active_power_usage = 2 WATTS
+	///Power usage when the computer is idle and screen is off.
+	var/base_idle_power_usage = 1 WATTS
+>>>>>>> 0db2a23fafd (Adds a new power storage type: The Megacell. Drastically reduces power cell consumption/storage. [MDB Ignore] (#84079))
 
 	// Modular computers can run on various devices. Each DEVICE (Laptop, Console & Tablet)
 	// must have it's own DMI file. Icon states must be called exactly the same in all files, but may look differently
@@ -902,6 +908,115 @@
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
+<<<<<<< HEAD
+=======
+/obj/item/modular_computer/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(isidcard(tool))
+		return InsertID(tool, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
+
+	if(iscash(tool))
+		return money_act(user, tool)
+
+	if(istype(tool, /obj/item/pai_card))
+		return pai_act(user, tool)
+
+	if(istype(tool, /obj/item/stock_parts/power_store/cell))
+		return cell_act(user, tool)
+
+	if(istype(tool, /obj/item/photo))
+		return photo_act(user, tool)
+
+	// Check if any Applications need our item
+	for(var/datum/computer_file/item_holding_app as anything in stored_files)
+		var/app_return = item_holding_app.application_item_interaction(user, tool, modifiers)
+		if(app_return)
+			return app_return
+
+	if(istype(tool, /obj/item/paper))
+		return paper_act(user, tool)
+
+	if(istype(tool, /obj/item/paper_bin))
+		return paper_bin_act(user, tool)
+
+	if(istype(tool, /obj/item/computer_disk))
+		return computer_disk_act(user, tool)
+
+/obj/item/modular_computer/proc/money_act(mob/user, obj/item/money)
+	var/obj/item/card/id/inserted_id = computer_id_slot?.GetID()
+	if(!inserted_id)
+		balloon_alert(user, "no ID!")
+		return ITEM_INTERACT_BLOCKING
+	return inserted_id.insert_money(money, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
+
+/obj/item/modular_computer/proc/pai_act(mob/user, obj/item/pai_card/card)
+	if(inserted_pai)
+		return ITEM_INTERACT_BLOCKING
+	if(!user.transferItemToLoc(card, src))
+		return ITEM_INTERACT_BLOCKING
+	inserted_pai = card
+	balloon_alert(user, "inserted pai")
+	if(inserted_pai.pai)
+		inserted_pai.pai.give_messenger_ability()
+	update_appearance(UPDATE_ICON)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/modular_computer/proc/cell_act(mob/user, obj/item/stock_parts/power_store/cell/new_cell)
+	if(ismachinery(physical))
+		return ITEM_INTERACT_BLOCKING
+	if(internal_cell)
+		to_chat(user, span_warning("You try to connect \the [new_cell] to \the [src], but its connectors are occupied."))
+		return ITEM_INTERACT_BLOCKING
+	if(!user.transferItemToLoc(new_cell, src))
+		return ITEM_INTERACT_BLOCKING
+	internal_cell = new_cell
+	to_chat(user, span_notice("You plug \the [new_cell] to \the [src]."))
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/modular_computer/proc/photo_act(mob/user, obj/item/photo/scanned_photo)
+	if(!store_file(new /datum/computer_file/picture(scanned_photo.picture)))
+		balloon_alert(user, "no space!")
+		return ITEM_INTERACT_BLOCKING
+	balloon_alert(user, "photo scanned")
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/modular_computer/proc/paper_act(mob/user, obj/item/paper/new_paper)
+	if(stored_paper >= max_paper)
+		balloon_alert(user, "no more room!")
+		return ITEM_INTERACT_BLOCKING
+	if(!user.temporarilyRemoveItemFromInventory(new_paper))
+		return ITEM_INTERACT_BLOCKING
+	balloon_alert(user, "inserted paper")
+	qdel(new_paper)
+	stored_paper++
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/modular_computer/proc/paper_bin_act(mob/user, obj/item/paper_bin/bin)
+	if(bin.total_paper <= 0)
+		balloon_alert(user, "empty bin!")
+		return ITEM_INTERACT_BLOCKING
+	var/papers_added //just to keep track
+	while((bin.total_paper > 0) && (stored_paper < max_paper))
+		papers_added++
+		stored_paper++
+		bin.remove_paper()
+	if(!papers_added)
+		return ITEM_INTERACT_BLOCKING
+	balloon_alert(user, "inserted paper")
+	to_chat(user, span_notice("Added in [papers_added] new sheets. You now have [stored_paper] / [max_paper] printing paper stored."))
+	bin.update_appearance()
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/modular_computer/proc/computer_disk_act(mob/user, obj/item/computer_disk/disk)
+	if(!user.transferItemToLoc(disk, src))
+		return ITEM_INTERACT_BLOCKING
+	if(inserted_disk)
+		user.put_in_hands(inserted_disk)
+		balloon_alert(user, "disks swapped")
+	inserted_disk = disk
+	playsound(src, 'sound/machines/card_slide.ogg', 50)
+	return ITEM_INTERACT_SUCCESS
+
+>>>>>>> 0db2a23fafd (Adds a new power storage type: The Megacell. Drastically reduces power cell consumption/storage. [MDB Ignore] (#84079))
 /obj/item/modular_computer/atom_deconstruct(disassembled = TRUE)
 	remove_pai()
 	eject_aicard()

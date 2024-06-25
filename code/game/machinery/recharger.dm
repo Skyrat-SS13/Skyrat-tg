@@ -49,7 +49,7 @@
 	if(!status_display_message_shown)
 		. += span_notice("The status display reads:")
 
-	var/obj/item/stock_parts/cell/charging_cell = charging.get_cell()
+	var/obj/item/stock_parts/power_store/charging_cell = charging.get_cell()
 	if(charging_cell)
 		. += span_notice("- \The [charging]'s cell is at <b>[charging_cell.percent()]%</b>.")
 		return
@@ -160,7 +160,7 @@
 	using_power = FALSE
 	if(isnull(charging))
 		return PROCESS_KILL
-	var/obj/item/stock_parts/cell/charging_cell = charging.get_cell()
+	var/obj/item/stock_parts/power_store/charging_cell = charging.get_cell()
 	if(charging_cell)
 		if(charging_cell.charge < charging_cell.maxcharge)
 			charge_cell(charging_cell.chargerate * recharge_coeff * seconds_per_tick, charging_cell)
