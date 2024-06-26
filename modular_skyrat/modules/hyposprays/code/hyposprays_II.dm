@@ -118,11 +118,11 @@
 	if(!isnull(start_vial))
 		var/init_vial = new start_vial()
 		vial = init_vial
-		init_vial = null
+		start_vial = null
 
 /obj/item/hypospray/mkii/Destroy()
 	if(!isnull(start_vial))
-		QDEL_NULL(start_vial)
+		start_vial = null
 
 	return ..()
 
