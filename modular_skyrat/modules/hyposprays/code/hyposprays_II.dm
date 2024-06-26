@@ -115,10 +115,16 @@
 /obj/item/hypospray/mkii/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	if(starting_vial)
-		var/init_vial = new starting_vial()
+	if(!isnull(start_vial))
+		var/init_vial = new start_vial()
 		vial = init_vial
 		init_vial = null
+
+/obj/item/hypospray/mkii/Destroy()
+	if(!isnull(start_vial))
+		QDEL_NULL(start_vial)
+
+	return ..()
 
 /obj/item/hypospray/mkii/update_overlays()
 	. = ..()
