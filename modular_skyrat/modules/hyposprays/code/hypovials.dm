@@ -208,24 +208,39 @@
 /obj/item/reagent_containers/cup/vial/small/libital
 	name = "brute hypovial (libital)"
 	icon_state = "hypovial-brute"
-	list_reagents = list(/datum/reagent/medicine/c2/libital = 50)
+
+/obj/item/reagent_containers/cup/vial/small/libital/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/libital, amount = 50, added_purity = 1)
 
 /obj/item/reagent_containers/cup/vial/small/lenturi
 	name = "burn hypovial (lenturi)"
 	icon_state = "hypovial-burn"
-	list_reagents = list(/datum/reagent/medicine/c2/lenturi = 50)
+
+/obj/item/reagent_containers/cup/vial/small/lenturi/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/lenturi, amount = 50, added_purity = 1)
 
 /obj/item/reagent_containers/cup/vial/small/seiver
 	name = "tox hypovial (seiver)"
 	icon_state = "hypovial-tox"
-	list_reagents = list(/datum/reagent/medicine/c2/seiver = 50)
+
+/obj/item/reagent_containers/cup/vial/small/seiver/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/seiver, amount = 50, reagtemp = 975, added_purity = 1)
 
 /obj/item/reagent_containers/cup/vial/small/convermol
 	name = "tox hypovial (convermol)"
 	icon_state = "hypovial-oxy"
-	list_reagents = list(/datum/reagent/medicine/c2/convermol = 50)
+
+/obj/item/reagent_containers/cup/vial/small/convermol/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/convermol, amount = 50, added_purity = 1)
 
 /obj/item/reagent_containers/cup/vial/small/atropine
 	name = "crit hypovial (atropine)"
 	icon_state = "hypovial-crit"
-	list_reagents = list(/datum/reagent/medicine/atropine = 50)
+
+/obj/item/reagent_containers/cup/vial/small/atropine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/atropine, amount = 50, added_purity = 1)
