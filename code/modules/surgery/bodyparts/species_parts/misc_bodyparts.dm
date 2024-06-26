@@ -252,12 +252,8 @@
 	limb_id = SPECIES_FLYPERSON
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-<<<<<<< HEAD
 	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN // SKYRAT EDIT - Flies deserve hair - ORIGINAL: head_flags = HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
-=======
-	head_flags = HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
 	teeth_count = 0
->>>>>>> 064c5263af0 (Fixed teeth pill overload by adding a teeth count to species (#83831))
 
 /obj/item/bodypart/chest/fly
 	limb_id = SPECIES_FLYPERSON
