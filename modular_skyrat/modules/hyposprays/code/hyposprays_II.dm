@@ -122,12 +122,6 @@
 		start_vial = null
 		update_appearance()
 
-/obj/item/hypospray/mkii/Destroy()
-	if(!isnull(start_vial))
-		start_vial = null
-
-	return ..()
-
 /obj/item/hypospray/mkii/update_overlays()
 	. = ..()
 	if(!vial)
