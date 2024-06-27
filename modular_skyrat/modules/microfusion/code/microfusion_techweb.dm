@@ -84,7 +84,7 @@
 	display_name = "Quantum Microfusion Technology"
 	description = "Bleeding edge microfusion tech, making use of the latest in materials and components, bluespace or otherwise."
 	prereq_ids = list(
-		TECHWEB_NODE_TECHWEB_BLUESPACE_MICROFUSION
+		TECHWEB_NODE_TECHWEB_BLUESPACE_MICROFUSION,
 		TECHWEB_NODE_ALIENTECH,
 	)
 	design_ids = list(
@@ -98,7 +98,7 @@
 	display_name = "Illegal Microfusion Technology"
 	description = "Microfusion tech that has previously been banned by SolFed. I love the smell of plasma in the mornings."
 	prereq_ids = list(
-		TECHWEB_NODE_ADVANCED_MICROFUSION
+		TECHWEB_NODE_ADVANCED_MICROFUSION,
 		TECHWEB_NODE_SYNDICATE_BASIC,
 	)
 	design_ids = list(
@@ -116,7 +116,7 @@
 	display_name = "Honkicron Clownery Systems Technology"
 	description = "Microfusion tech that is proprietary tech of Honkicron Clownery Systems. HONK!!"
 	prereq_ids = list(
-		TECHWEB_NODE_BASIC_MICROFUSION
+		TECHWEB_NODE_BASIC_MICROFUSION,
 		TECHWEB_NODE_TOYS,
 	)
 	design_ids = list(
