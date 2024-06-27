@@ -1,4 +1,4 @@
-#define TECHWEB_NODE_POWERATOR = "powerator"
+#define TECHWEB_NODE_POWERATOR "powerator"
 
 /obj/item/circuitboard/machine/powerator
 	name = "Powerator"
