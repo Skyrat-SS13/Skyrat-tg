@@ -84,7 +84,7 @@
 	display_name = "Quantum Microfusion Technology"
 	description = "Bleeding edge microfusion tech, making use of the latest in materials and components, bluespace or otherwise."
 	prereq_ids = list(
-		TECHWEB_NODE_TECHWEB_BLUESPACE_MICROFUSION,
+		TECHWEB_NODE_BLUESPACE_MICROFUSION,
 		TECHWEB_NODE_ALIENTECH,
 	)
 	design_ids = list(
