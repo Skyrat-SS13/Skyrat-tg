@@ -1,9 +1,9 @@
 
 // NEW NODES
 
-#define TECHWEB_NODE_ADV_VISION = "adv_vision"
-#define TECHWEB_NODE_BORG_SHAPESHIFTER = "borg_shapeshifter"
-#define TECHWEB_NODE_AYY_CYBER_IMPLANTS = "ayy_cyber_implants"
+#define TECHWEB_NODE_ADV_VISION "adv_vision"
+#define TECHWEB_NODE_BORG_SHAPESHIFTER "borg_shapeshifter"
+#define TECHWEB_NODE_AYY_CYBER_IMPLANTS "ayy_cyber_implants"
 
 /datum/techweb_node/adv_vision
 	id = TECHWEB_NODE_ADV_VISION
