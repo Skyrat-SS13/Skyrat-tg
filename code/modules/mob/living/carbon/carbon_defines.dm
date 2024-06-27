@@ -123,9 +123,3 @@
 	var/bodyshape = BODYSHAPE_HUMANOID
 
 	COOLDOWN_DECLARE(bleeding_message_cd)
-<<<<<<< HEAD
-
-
-	var/next_smell = 0 //SKYRAT EDIT ADDITION /// Cooldown for the next smell
-=======
->>>>>>> 8a16be72ee9 (Fix carbons deathgasping twice (#84347))
