@@ -138,12 +138,12 @@
 								title = "Language level", \
 								items = list("Understood", "Understood and Spoken"), \
 								default = "Cancel")
-	var/flags = ALL
+	var/flags = UNDERSTOOD_LANGUAGE
 	switch(choice)
 		if("Understood")
 			flags = UNDERSTOOD_LANGUAGE
 		if("Understood and Spoken")
-			flags = ALL
+			flags = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
 		if("Cancel")
 			return TRUE
 	preferences.languages[name_to_language[language_name]] = flags
