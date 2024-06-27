@@ -120,6 +120,7 @@
 		var/init_vial = new start_vial()
 		vial = init_vial
 		start_vial = null
+		update_appearance()
 
 /obj/item/hypospray/mkii/Destroy()
 	if(!isnull(start_vial))
