@@ -89,13 +89,17 @@
 			selected_languages += list(list(
 				"description" = language.desc,
 				"name" = language.name,
-				"icon" = sanitize_css_class_name(language.name)
+				"icon" = sanitize_css_class_name(language.name),
+				"can_understand" = preferences.languages[language.type] & UNDERSTOOD_LANGUAGE,
+				"can_speak" = preferences.languages[language.type] & SPOKEN_LANGUAGE,
 			))
 		else
 			unselected_languages += list(list(
 				"description" = language.desc,
 				"name" = language.name,
-				"icon" = sanitize_css_class_name(language.name)
+				"icon" = sanitize_css_class_name(language.name),
+				"can_understand" = 0,
+				"can_speak" = 0,
 			))
 
 	qdel(lang_holder)
