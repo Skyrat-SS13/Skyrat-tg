@@ -342,15 +342,11 @@
 			for(var/material in design.materials)
 				charge_per_item += design.materials[material]
 			charge_per_item = ROUND_UP((charge_per_item / (MAX_STACK_SIZE * SHEET_MATERIAL_AMOUNT)) * coefficient * active_power_usage)
-<<<<<<< HEAD
-			var/build_time_per_item = (design.construction_time * design.lathe_time_factor) ** 0.8
+			var/build_time_per_item = (design.construction_time * design.lathe_time_factor * efficiency_coeff) ** 0.8
 			// SKYRAT EDIT - Faster lathes
 			if(!speedup_disabled)
 				build_time_per_item *= 0.1
 			// SKYRAT EDIT END
-=======
-			var/build_time_per_item = (design.construction_time * design.lathe_time_factor * efficiency_coeff) ** 0.8
->>>>>>> 87c3b1599c2 (Protolathe printing speed is affected by parts again (#84349))
 
 			//start production
 			busy = TRUE
