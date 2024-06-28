@@ -421,6 +421,7 @@
 	can_hold = typecacheof(list(
 		/obj/item/bonesetter,
 		/obj/item/cautery,
+		/obj/item/circular_saw,
 		/obj/item/clothing/neck/stethoscope,
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/muzzle,
@@ -451,6 +452,9 @@
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/spray,
 		/obj/item/reagent_containers/syringe,
+		/obj/item/retractor,
+		/obj/item/scalpel,
+		/obj/item/surgical_drapes,
 		/obj/item/stack/medical,
 		/obj/item/stack/sticky_tape,
 		/obj/item/sensor_device,
