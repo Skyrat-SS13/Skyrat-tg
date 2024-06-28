@@ -117,7 +117,7 @@
 		"hypokit_deluxe",
 		"hypomkii",
 		"hypomkii_advanced",
-		"hypomkii_piercing",
+		"hypomkii_combat",
 	)
 	return ..()
 
