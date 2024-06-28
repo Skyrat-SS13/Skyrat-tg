@@ -3,7 +3,7 @@
 /obj/item/bonesetter/alien
 	name = "alien bonesetter"
 	desc = "A reversed engineered bonesetter... <b> This does not look nice to be on the receiving end of... </b>."
-	icon = 'modular_skyrat/code/modules/filtersandsetters/icons/surgery_tools.dmi'
+	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	icon_state = "bonesetter"
 	toolspeed = 0.25
 
@@ -89,7 +89,7 @@
 /obj/item/blood_filter/alien
 	name = "alien bloodfilter"
 	desc = "A reversed engineered bloodfilter... <b> This does not look nice to be on the receiving end of... </b>."
-	icon = 'modular_skyrat/code/modules/filtersandsetters/icons/surgery_tools.dmi'
+	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	icon_state = "bloodfilter"
 	toolspeed = 0.25
 
@@ -108,7 +108,7 @@
 /obj/item/blood_filter/advanced
 	name = "medical combitool"
 	desc = "An unholy combination of bonesetter and bloodfilter."
-	icon = 'modular_skyrat/code/modules/filtersandsetters/icons/surgery_tools.dmi'
+	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*6, /datum/material/glass = SHEET_MATERIAL_AMOUNT*2, /datum/material/silver = SHEET_MATERIAL_AMOUNT*2, /datum/material/titanium =SHEET_MATERIAL_AMOUNT * 2.5)
 	icon_state = "combitool"
 	inhand_icon_state = "adv_retractor"
