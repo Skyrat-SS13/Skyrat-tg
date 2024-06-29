@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/moth_markings_list
 	var/list/pod_hair_list
 
-	// SKYRAT EDIT BEGIN
+	// SKYRAT EDIT ADDITION START - Customization
 	var/list/sprite_accessories
 
 	/// Stores all /datum/sprite_accessory/bra indexed by name.
@@ -76,6 +76,8 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/moth_wings_list
 	/// Monkey tail list
 	var/list/tails_list_monkey
+	/// Lizard Marking list
+	var/list/lizard_markings_list
 	/// All the different scream types
 	var/list/scream_types
 	//SKYRAT EDIT END
