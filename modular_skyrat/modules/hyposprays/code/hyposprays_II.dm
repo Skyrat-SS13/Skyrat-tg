@@ -242,10 +242,10 @@
 	if(istype(interacting_with, /obj/item/reagent_containers/cup/vial))
 		insert_vial(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS
-	return do_inject(interacting_with, user, mode=HYPO_INJECT)
+	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
 
 /obj/item/hypospray/mkii/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
-	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
+	return do_inject(interacting_with, user, mode=HYPO_INJECT)
 
 /obj/item/hypospray/mkii/proc/do_inject(mob/living/injectee, mob/living/user, mode)
 	if(!isliving(injectee))
@@ -319,7 +319,7 @@
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Left-Click</b> on patients to inject, <b>Right-Click</b> to spray.")
+	. += span_notice("<b>Left-Click</b> on patients to spray, <b>Right-Click</b> to inject.")
 
 #undef HYPO_INJECT
 #undef HYPO_SPRAY
