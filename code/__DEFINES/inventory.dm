@@ -169,7 +169,6 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
 ///The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
-<<<<<<< HEAD
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
 // SKYRAT EDIT ADDITION START
