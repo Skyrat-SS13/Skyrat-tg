@@ -109,6 +109,11 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/datum/wound = list(
 		"TRAIT_WOUND_SCANNED" = TRAIT_WOUND_SCANNED,
 	),
+	// SKYRAT EDIT ADDITON BEGIN - Synthetic wounds
+	/datum/wound/electrical_damage = list(
+		"TRAIT_ELECTRICAL_DAMAGE_REPAIRING" = TRAIT_ELECTRICAL_DAMAGE_REPAIRING,
+	),
+	// SKYRAT EDIT ADDITON END - Synthetic wounds
 	/obj = list(
 		"TRAIT_WALLMOUNTED" = TRAIT_WALLMOUNTED,
 	),
