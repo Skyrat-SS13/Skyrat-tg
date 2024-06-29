@@ -47,20 +47,24 @@
 	/// Used for GAGS-ified hypos.
 	var/gags_bodystate = "hypo2_normal"
 
-/obj/item/hypospray/mkii/deluxe
-	name = "hypospray mk.II deluxe"
-	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
-	icon_state = "bighypo2"
-	gags_bodystate = "hypo2_deluxe"
-	desc = "The deluxe variant in the DeForest Hypospray Mk. II series, able to take both 100u and 50u vials."
-	small_only = FALSE
+/obj/item/hypospray/mkii/combat
+	name = "hypospray mk.II combat"
+	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
+	icon_state = "combathypo2"
+	gags_bodystate = "hypo2_combat"
+	desc = "The combat variant of DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly self-inject the user in combat scenarios."
+	inject_wait = WAIT_INJECT
+	spray_wait = WAIT_SPRAY
+	spray_self = COMBAT_SELF_SPRAY
+	inject_self = COMBAT_SELF_INJECT
+	penetrates = INJECT_CHECK_PENETRATE_THICK
 
 /obj/item/hypospray/mkii/piercing
 	name = "hypospray mk.II advanced"
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
 	icon_state = "piercinghypo2"
 	gags_bodystate = "hypo2_piercing"
-	desc = "The advanced variant in the DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly inject the chemicals."
+	desc = "The advanced variant in the DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly spray or inject the chemicals."
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_INJECT
@@ -242,10 +246,10 @@
 	if(istype(interacting_with, /obj/item/reagent_containers/cup/vial))
 		insert_vial(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS
-	return do_inject(interacting_with, user, mode=HYPO_INJECT)
+	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
 
 /obj/item/hypospray/mkii/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
-	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
+	return do_inject(interacting_with, user, mode=HYPO_INJECT)
 
 /obj/item/hypospray/mkii/proc/do_inject(mob/living/injectee, mob/living/user, mode)
 	if(!isliving(injectee))
@@ -319,7 +323,7 @@
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Left-Click</b> on patients to inject, <b>Right-Click</b> to spray.")
+	. += span_notice("<b>Left-Click</b> on patients to spray, <b>Right-Click</b> to inject.")
 
 #undef HYPO_INJECT
 #undef HYPO_SPRAY
