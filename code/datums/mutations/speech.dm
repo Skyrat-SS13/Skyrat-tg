@@ -9,6 +9,7 @@
 /datum/mutation/human/nervousness
 	name = "Nervousness"
 	desc = "Causes the holder to stutter."
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_danger("You feel nervous.")
 
@@ -19,6 +20,7 @@
 /datum/mutation/human/wacky
 	name = "Wacky"
 	desc = "You are not a clown. You are the entire circus."
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_sans(span_notice("You feel an off sensation in your voicebox."))
 	text_lose_indication = span_notice("The off sensation passes.")
@@ -213,6 +215,7 @@
 /datum/mutation/human/mute
 	name = "Mute"
 	desc = "Completely inhibits the vocal section of the brain."
+	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You feel unable to express yourself at all.")
 	text_lose_indication = span_danger("You feel able to speak freely again.")
@@ -230,6 +233,7 @@
 /datum/mutation/human/unintelligible
 	name = "Unintelligible"
 	desc = "Partially inhibits the vocal center of the brain, severely distorting speech."
+	instability = NEGATIVE_STABILITY_MODERATE
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You can't seem to form any coherent thoughts!")
 	text_lose_indication = span_danger("Your mind feels more clear.")
@@ -247,6 +251,7 @@
 /datum/mutation/human/swedish
 	name = "Swedish"
 	desc = "A horrible mutation originating from the distant past. Thought to be eradicated after the incident in 2037."
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("You feel Swedish, however that works.")
 	text_lose_indication = span_notice("The feeling of Swedishness passes.")
@@ -278,6 +283,7 @@
 /datum/mutation/human/chav
 	name = "Chav"
 	desc = "Unknown"
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("Ye feel like a reet prat like, innit?")
 	text_lose_indication = span_notice("You no longer feel like being rude and sassy.")
@@ -315,6 +321,7 @@
 /datum/mutation/human/elvis
 	name = "Elvis"
 	desc = "A terrifying mutation named after its 'patient-zero'."
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("You feel pretty good, honeydoll.")
 	text_lose_indication = span_notice("You feel a little less conversation would be great.")
@@ -379,6 +386,7 @@
 /datum/mutation/human/medieval
 	name = "Medieval"
 	desc = "A horrible mutation originating from the distant past, thought to have once been a common gene in all of old world Europe."
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("You feel like seeking the holy grail!")
 	text_lose_indication = span_notice("You no longer feel like seeking anything.")
@@ -419,6 +427,7 @@
 /datum/mutation/human/piglatin
 	name = "Pig Latin"
 	desc = "Historians say back in the 2020's humanity spoke entirely in this mystical language."
+	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("Omethingsay eelsfay offyay.")
 	text_lose_indication = span_notice("The off sensation passes.")

@@ -2,15 +2,9 @@
 	name = "Antenna"
 	desc = "The affected person sprouts an antenna. This is known to allow them to access common radio channels passively."
 	quality = POSITIVE
-<<<<<<< HEAD
-	text_gain_indication = "<span class='notice'>You feel an antenna sprout from your forehead.</span>"
-	text_lose_indication = "<span class='notice'>Your antenna shrinks back down.</span>"
-	instability = 5
-=======
 	text_gain_indication = span_notice("You feel an antenna sprout from your forehead.")
 	text_lose_indication = span_notice("Your antenna shrinks back down.")
 	instability = POSITIVE_INSTABILITY_MINOR
->>>>>>> ff836e10bea (First Genetics Content in 5 Years (Adds new positive mutations!) (#83652))
 	difficulty = 8
 	var/datum/weakref/radio_weakref
 
@@ -53,7 +47,7 @@
 	text_gain_indication = span_notice("You hear distant voices at the corners of your mind.")
 	text_lose_indication = span_notice("The distant voices fade.")
 	power_path = /datum/action/cooldown/spell/pointed/mindread
-	instability = 40
+	instability = POSITIVE_INSTABILITY_MINOR
 	difficulty = 8
 	locked = TRUE
 

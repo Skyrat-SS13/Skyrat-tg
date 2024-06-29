@@ -6,5 +6,5 @@
 	text_lose_indication = span_notice("You don't hear your mind echo anymore.")
 	difficulty = 12
 	power_path = /datum/action/cooldown/spell/list_target/telepathy
-	instability = 10
+	instability = POSITIVE_INSTABILITY_MINOR // basically a mediocre PDA messager
 	energy_coeff = 1

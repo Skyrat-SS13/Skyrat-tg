@@ -2,13 +2,8 @@
 	name = "Geladikinesis"
 	desc = "Allows the user to concentrate moisture and sub-zero forces into snow."
 	quality = POSITIVE
-<<<<<<< HEAD
-	text_gain_indication = "<span class='notice'>Your hand feels cold.</span>"
-	instability = 10
-=======
 	text_gain_indication = span_notice("Your hand feels cold.")
 	instability = POSITIVE_INSTABILITY_MINOR
->>>>>>> ff836e10bea (First Genetics Content in 5 Years (Adds new positive mutations!) (#83652))
 	difficulty = 10
 	synchronizer_coeff = 1
 	power_path = /datum/action/cooldown/spell/conjure_item/snow
@@ -29,13 +24,8 @@
 	name = "Cryokinesis"
 	desc = "Draws negative energy from the sub-zero void to freeze surrounding temperatures at subject's will."
 	quality = POSITIVE //upsides and downsides
-<<<<<<< HEAD
-	text_gain_indication = "<span class='notice'>Your hand feels cold.</span>"
-	instability = 30
-=======
 	text_gain_indication = span_notice("Your hand feels cold.")
 	instability = POSITIVE_INSTABILITY_MODERATE
->>>>>>> ff836e10bea (First Genetics Content in 5 Years (Adds new positive mutations!) (#83652))
 	difficulty = 12
 	synchronizer_coeff = 1
 	energy_coeff = 1
