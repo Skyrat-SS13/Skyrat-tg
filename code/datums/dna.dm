@@ -746,6 +746,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["tail_cat"])
 		dna.features["tail_cat"] = SSaccessories.tails_list_human[deconstruct_block(get_uni_feature_block(features, DNA_TAIL_BLOCK), length(SSaccessories.tails_list_human))]
 	if(dna.features["tail_lizard"])
+		dna.features["tail_cat"] = GLOB.tails_list_lizard[deconstruct_block(get_uni_feature_block(features, DNA_LIZARD_TAIL_BLOCK), GLOB.tails_list_lizard.len)]
 		dna.features["tail_lizard"] = SSaccessories.tails_list_lizard[deconstruct_block(get_uni_feature_block(features, DNA_LIZARD_TAIL_BLOCK), length(SSaccessories.tails_list_lizard))]
 	if(dna.features["tail_monkey"])
 		dna.features["tail_monkey"] = SSaccessories.tails_list_monkey[deconstruct_block(get_uni_feature_block(features, DNA_MONKEY_TAIL_BLOCK), length(SSaccessories.tails_list_monkey))]

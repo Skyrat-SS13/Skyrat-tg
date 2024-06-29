@@ -66,16 +66,6 @@
 	background_info = sanitize_text(background_info)
 	exploitable_info = sanitize_text(exploitable_info)
 
-	var/list/save_loadout = SANITIZE_LIST(save_data["loadout_list"])
-	for(var/loadout in save_loadout)
-		var/entry = save_loadout[loadout]
-		save_loadout -= loadout
-
-		if(istext(loadout))
-			loadout = _text2path(loadout)
-		save_loadout[loadout] = entry
-	loadout_list = sanitize_loadout_list(save_loadout)
-
 	var/list/save_languages = SANITIZE_LIST(save_data["languages"])
 	for(var/language in save_languages)
 		var/value = save_languages[language]
@@ -267,7 +257,6 @@
 
 /// Saves the modular customizations of a character on the savefile
 /datum/preferences/proc/save_character_skyrat(list/save_data)
-	save_data["loadout_list"] = loadout_list
 	save_data["augments"] = augments
 	save_data["augment_limb_styles"] = augment_limb_styles
 	save_data["features"] = features

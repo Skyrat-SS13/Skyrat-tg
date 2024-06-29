@@ -29,12 +29,12 @@
 		return
 
 	// If there isn't even a fallback, use snouted sprites for masks and helmets, but offsetted
-	if((item_slot == LOADOUT_ITEM_MASK || item_slot == LOADOUT_ITEM_HEAD) && (item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+	if((item_slot == OFFSET_FACEMASK || item_slot == OFFSET_HEAD) && (item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 		var/obj/item/bodypart/head/my_head = human_owner.get_bodypart(BODY_ZONE_HEAD)
 		var/datum/worn_feature_offset/selected_offset
 		var/human_icon
 		var/human_icon_state = item.worn_icon_state || item.icon_state
-		if(item_slot == LOADOUT_ITEM_HEAD)
+		if(item_slot == OFFSET_HEAD)
 
 			human_icon = item.worn_icon_muzzled || SNOUTED_HEAD_FILE
 			selected_offset = my_head?.worn_head_offset

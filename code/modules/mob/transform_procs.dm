@@ -35,6 +35,7 @@
 	RemoveInvisibility(type)
 	set_species(/datum/species/monkey)
 	name = "monkey"
+	regenerate_icons()
 	set_name()
 	SEND_SIGNAL(src, COMSIG_HUMAN_MONKEYIZE)
 	uncuff()
@@ -139,8 +140,8 @@
 	new_borg.gender = gender
 	new_borg.SetInvisibility(INVISIBILITY_NONE)
 
-	if(client)
-		new_borg.updatename(client)
+	if(client?.prefs.read_preference(/datum/preference/name/cyborg) != DEFAULT_CYBORG_NAME)
+		new_borg.apply_pref_name(/datum/preference/name/cyborg, client)
 
 	if(mind) //TODO //TODO WHAT
 		if(!transfer_after)
@@ -311,7 +312,7 @@
 
 	SSblackbox.record_feedback("amount", "gorillas_created", 1)
 
-	var/Itemlist = get_equipped_items(include_pockets = TRUE)
+	var/Itemlist = get_equipped_items(INCLUDE_POCKETS)
 	Itemlist += held_items
 	for(var/obj/item/W in Itemlist)
 		dropItemToGround(W, TRUE)

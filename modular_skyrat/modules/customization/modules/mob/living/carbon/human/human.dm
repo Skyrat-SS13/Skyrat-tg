@@ -56,6 +56,9 @@
 /mob/living/carbon/human/species/dwarf
 	race = /datum/species/dwarf
 
+/mob/living/carbon/human/species/ghoul
+	race = /datum/species/ghoul
+
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime
 

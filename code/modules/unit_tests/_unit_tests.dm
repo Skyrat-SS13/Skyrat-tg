@@ -127,6 +127,7 @@
 #include "container_sanity.dm"
 #include "crayons.dm"
 #include "create_and_destroy.dm"
+#include "cyborg_tool.dm"
 #include "dcs_check_list_arguments.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
@@ -255,6 +256,7 @@
 #include "spell_mindswap.dm"
 #include "spell_names.dm"
 #include "spell_shapeshift.dm"
+#include "spell_timestop.dm"
 #include "spies.dm"
 #include "spritesheets.dm"
 #include "stack_singular_name.dm"
@@ -286,7 +288,6 @@
 #include "worn_icons.dm"
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
-#include "~skyrat\loadout_dupes.dm"
 #include "~skyrat\opposing_force.dm"
 // SKYRAT EDIT END
 // END_INCLUDE

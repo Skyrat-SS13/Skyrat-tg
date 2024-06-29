@@ -23,10 +23,11 @@
 /obj/item/organ/external/tail/Insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
 	if(.)
-		original_owner ||= WEAKREF(receiver)
-
 		receiver.clear_mood_event("tail_lost")
 		receiver.clear_mood_event("tail_balance_lost")
+
+	if(!special) // if some admin wants to give someone tail moodles for tail shenanigans, they can spawn it and do it by hand
+		original_owner ||= WEAKREF(receiver)
 
 		// If it's your tail, an infinite debuff is replaced with a timed one
 		// If it's not your tail but of same species, I guess it works, but we are more sad
@@ -147,7 +148,7 @@
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
-	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
+	return "[wagging ? "wagging_" : ""][sprite_datum.icon_state]" //add the wagging tag if we be wagging
 
 // SKYRAT EDIT ADDITION - CUSTOMIZATION
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
@@ -171,7 +172,7 @@
 	return SSaccessories.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.tails_list_human
 
 /obj/item/organ/external/tail/cat/get_butt_sprite()
-	return BUTT_SPRITE_CAT
+	return icon('icons/mob/butts.dmi', BUTT_SPRITE_CAT)
 
 ///Cat tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/cat
@@ -179,7 +180,12 @@
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
 
 /obj/item/organ/external/tail/monkey
+	name = "monkey tail"
+	preference = "feature_monkey_tail"
+
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
+
+	// dna_block = DNA_MONKEY_TAIL_BLOCK - // SKYRAT EDIT REMOVAL
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey

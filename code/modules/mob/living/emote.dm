@@ -2,7 +2,7 @@
 /* EMOTE DATUMS */
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
-	mob_type_blacklist_typecache = list(/mob/living/brain) //SKYRAT EDIT - OVERWIRTTEN BY `modular_skyrat\modules\modular_implants\code\soulcatcher\soulcatcher_mob.dm`
+	mob_type_blacklist_typecache = list(/mob/living/brain)
 
 /datum/emote/living/blush
 	key = "blush"
@@ -176,13 +176,13 @@
 	stat_allowed = HARD_CRIT
 
 /datum/emote/living/gasp/get_sound(mob/living/user)
-	if(!HAS_MIND_TRAIT(user, TRAIT_MIMING))
+	if(HAS_MIND_TRAIT(user, TRAIT_MIMING))
 		return
 	if(!ishuman(user))
 		return
 
 	var/mob/living/carbon/human/human_user = user
-	if(human_user.physique == FEMALE)
+	if(human_user.gender == FEMALE) // SKYRAT EDIT CHANGE
 		return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
 	return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
 
@@ -262,7 +262,6 @@
 		qdel(kiss_blower)
 		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
 
-/* SKYRAT EDIT REMOVAL - EMOTES - MOVED TO EMOTES.DM MODULAR
 /datum/emote/living/laugh
 	key = "laugh"
 	key_third_person = "laughs"
@@ -278,9 +277,7 @@
 /datum/emote/living/laugh/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	var/mob/living/carbon/human/human_user = user
 	return user.dna.species.get_laugh_sound(user)
-*/ //SKYRAT EDIT END
 
 /datum/emote/living/look
 	key = "look"
@@ -432,19 +429,6 @@
 	message_mime = "sniffs silently."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
-//SKYRAT EDIT ADDITION
-/datum/emote/living/sniff/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(.)
-		var/turf/open/current_turf = get_turf(user)
-		if(istype(current_turf) && current_turf.pollution)
-			if(iscarbon(user))
-				var/mob/living/carbon/carbon_user = user
-				if(carbon_user.internal) //Breathing from internals means we cant smell
-					return
-				carbon_user.next_smell = world.time + SMELL_COOLDOWN
-			current_turf.pollution.smell_act(user)
-//SKYRAT EDIT END
 
 /datum/emote/living/snore
 	key = "snore"
@@ -476,14 +460,12 @@
 	message = "puts their hands on their head and falls to the ground, they surrender%s!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
-/*	SKYRAT EDIT CHANGE - MOVED TO combat_indicator.dm IN INDICATORS MODULE
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.Paralyze(200)
 		L.remove_status_effect(/datum/status_effect/grouped/surrender)
-*/
 
 /datum/emote/living/sway
 	key = "sway"
@@ -698,7 +680,7 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 
-	if(is_banned_from(user.ckey, "Emote"))
+	if(!isnull(user.ckey) && is_banned_from(user.ckey, "Emote"))
 		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
 		return FALSE
 
