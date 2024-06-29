@@ -179,22 +179,13 @@
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/datum/bodypart_overlay/mutant/tail/cat/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
-
-=======
->>>>>>> 611c48be405 (Monkeys now use height offset (and monkey tail works) (#81598))
-=======
->>>>>>> e6346c747eebf96b1108a98bbf3afee55efe4868
 /obj/item/organ/external/tail/monkey
 	name = "monkey tail"
 	preference = "feature_monkey_tail"
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
 
-	dna_block = DNA_MONKEY_TAIL_BLOCK
+	// dna_block = DNA_MONKEY_TAIL_BLOCK - // SKYRAT EDIT REMOVAL
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
