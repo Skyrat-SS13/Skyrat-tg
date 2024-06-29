@@ -38,8 +38,8 @@
 
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	if(SPT_PROB(16, seconds_per_tick))
-		if(affected_mob.adjustToxLoss(1, updating_health = FALSE, required_biotype = affected_biotype))
+	if(SPT_PROB(30, seconds_per_tick))
+		if(affected_mob.adjustToxLoss(5 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype))
 			return UPDATE_MOB_HEALTH
 
 /datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/containing_mob)
