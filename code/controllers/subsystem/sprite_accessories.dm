@@ -57,6 +57,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/moth_markings_list
 	var/list/caps_list
 	*/
+	var/list/moth_markings_list
 	var/list/pod_hair_list
 
 	// SKYRAT EDIT BEGIN
