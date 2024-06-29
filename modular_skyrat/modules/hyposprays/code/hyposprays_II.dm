@@ -17,7 +17,7 @@
 #define COMBAT_SELF_SPRAY 0
 
 /obj/item/hypospray/mkii
-	name = "\improper hypospray Mk.II""
+	name = "\improper hypospray Mk.II"
 	icon_state = "hypo2"
 	icon = 'modular_skyrat/modules/hyposprays/icons/hyposprays.dmi'
 	greyscale_config = /datum/greyscale_config/hypospray_mkii
