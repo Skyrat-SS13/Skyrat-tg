@@ -655,6 +655,7 @@
 // Otherwise they are completely arbitrary
 #define MONKEY_HEIGHT_DWARF 2
 #define MONKEY_HEIGHT_MEDIUM 4
+#define MONKEY_HEIGHT_TALL HUMAN_HEIGHT_DWARF
 #define HUMAN_HEIGHT_DWARF 6
 #define HUMAN_HEIGHT_SHORTEST 8
 #define HUMAN_HEIGHT_SHORT 10
