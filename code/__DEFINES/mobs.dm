@@ -16,10 +16,11 @@
 #define BLOOD_VOLUME_MAXIMUM 1000 // SKYRAT EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
 #define BLOOD_VOLUME_SLIME_SPLIT 1120
 #define BLOOD_VOLUME_NORMAL 560
-#define BLOOD_VOLUME_SAFE 475
-#define BLOOD_VOLUME_OKAY 336
-#define BLOOD_VOLUME_BAD 224
-#define BLOOD_VOLUME_SURVIVE 122
+#define BLOOD_VOLUME_SAFE (BLOOD_VOLUME_NORMAL * (1 - 0.15)) // Latter number is percentage of blood lost, for readability!
+#define BLOOD_VOLUME_OKAY (BLOOD_VOLUME_NORMAL * (1 - 0.30))
+#define BLOOD_VOLUME_RISKY (BLOOD_VOLUME_NORMAL * (1 - 0.45))
+#define BLOOD_VOLUME_BAD (BLOOD_VOLUME_NORMAL * (1 - 0.60))
+#define BLOOD_VOLUME_SURVIVE (BLOOD_VOLUME_NORMAL * (1 - 0.80))
 
 /// How efficiently humans regenerate blood.
 #define BLOOD_REGEN_FACTOR 0.25
@@ -129,8 +130,6 @@
 #define SPECIES_LIZARD_SILVER "silverscale"
 #define SPECIES_NIGHTMARE "nightmare"
 #define SPECIES_MONKEY "monkey"
-#define SPECIES_MONKEY_FREAK "monkey_freak"
-#define SPECIES_MONKEY_HUMAN_LEGGED "monkey_human_legged"
 #define SPECIES_MOTH "moth"
 #define SPECIES_MUSHROOM "mush"
 #define SPECIES_PLASMAMAN "plasmaman"
@@ -138,7 +137,6 @@
 #define SPECIES_SHADOW "shadow"
 #define SPECIES_SKELETON "skeleton"
 #define SPECIES_SNAIL "snail"
-#define SPECIES_TALLBOY "tallboy"
 #define SPECIES_VAMPIRE "vampire"
 #define SPECIES_ZOMBIE "zombie"
 #define SPECIES_ZOMBIE_INFECTIOUS "memezombie"
@@ -655,18 +653,23 @@
 // - They do not start at 0 for futureproofing
 // - They skip numbers for futureproofing as well
 // Otherwise they are completely arbitrary
-#define HUMAN_HEIGHT_DWARF 2
-#define HUMAN_HEIGHT_SHORTEST 4
-#define HUMAN_HEIGHT_SHORT 6
-#define HUMAN_HEIGHT_MEDIUM 8
-#define HUMAN_HEIGHT_TALL 10
-#define HUMAN_HEIGHT_TALLER 12
-#define HUMAN_HEIGHT_TALLEST 14
+#define MONKEY_HEIGHT_DWARF 2
+#define MONKEY_HEIGHT_MEDIUM 4
+#define MONKEY_HEIGHT_TALL HUMAN_HEIGHT_DWARF
+#define HUMAN_HEIGHT_DWARF 6
+#define HUMAN_HEIGHT_SHORTEST 8
+#define HUMAN_HEIGHT_SHORT 10
+#define HUMAN_HEIGHT_MEDIUM 12
+#define HUMAN_HEIGHT_TALL 14
+#define HUMAN_HEIGHT_TALLER 16
+#define HUMAN_HEIGHT_TALLEST 18
 
 /// Assoc list of all heights, cast to strings, to """"tuples"""""
 /// The first """tuple""" index is the upper body offset
 /// The second """tuple""" index is the lower body offset
 GLOBAL_LIST_INIT(human_heights_to_offsets, list(
+	"[MONKEY_HEIGHT_DWARF]" = list(-9, -3),
+	"[MONKEY_HEIGHT_MEDIUM]" = list(-7, -4),
 	"[HUMAN_HEIGHT_DWARF]" = list(-5, -4),
 	"[HUMAN_HEIGHT_SHORTEST]" = list(-2, -1),
 	"[HUMAN_HEIGHT_SHORT]" = list(-1, -1),

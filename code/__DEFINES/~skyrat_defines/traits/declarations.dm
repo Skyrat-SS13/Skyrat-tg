@@ -57,6 +57,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// The trait which is applied when a `slick skin` trait haver actually gets wet_stacks
 #define TRAIT_SLIPPERY "slippery"
 
+/// When someone is fixing electrical damage, this trait is set and prevents the wound from worsening.
+// We use a trait to avoid erronous setting of a variable to false if two people are repairing and one stops.
+#define TRAIT_ELECTRICAL_DAMAGE_REPAIRING "electrical_damage_repairing"
+
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
 
