@@ -155,13 +155,10 @@
 	QDEL_NULL(closer)
 
 	is_using.Cut()
-<<<<<<< HEAD
-=======
 	QDEL_LIST_ASSOC_VAL(storage_interfaces)
 
 	parent = null
 	real_location = null
->>>>>>> 9861f0e5dfe ([NO GBP] Fixes critical storage issues (#84449))
 
 	return ..()
 
@@ -1100,12 +1097,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	to_hide.client.screen -= boxes
 	to_hide.client.screen -= closer
 	to_hide.client.screen -= real_location.contents
-<<<<<<< HEAD
-=======
 	QDEL_NULL(storage_interfaces[to_hide])
 	storage_interfaces -= to_hide
 
->>>>>>> 9861f0e5dfe ([NO GBP] Fixes critical storage issues (#84449))
 	return TRUE
 
 /datum/storage/proc/action_trigger(datum/source, datum/action/triggered)
