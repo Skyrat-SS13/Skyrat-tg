@@ -330,7 +330,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	return TRUE
 
-/datum/preferences/proc/save_character()
+/datum/preferences/proc/save_character(update) // Skyrat edit - Choose when to update (This is stupid)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!path)
 		return FALSE
@@ -367,7 +367,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
-	save_character_skyrat(save_data) // SKYRAT EDIT ADDITION
+	save_character_skyrat(save_data, update) // SKYRAT EDIT ADDITION
 
 	return TRUE
 

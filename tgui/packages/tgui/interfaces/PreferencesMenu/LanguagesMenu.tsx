@@ -9,11 +9,11 @@ export const KnownLanguage = (props) => {
     <Stack.Item>
       <Section title={props.language.name}>
         {props.language.description}
-        <br /><br />
+        <br />
+        <br />
         {props.language.can_understand
-                  ? 'Can understand.'
-                  : 'Cannot understand.'}
-        {' '}
+          ? 'Can understand.'
+          : 'Cannot understand.'}{' '}
         {props.language.can_speak ? 'Can speak.' : 'Cannot speak.'}
         <br />
         <Button

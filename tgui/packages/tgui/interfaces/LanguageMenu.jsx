@@ -70,7 +70,6 @@ export const LanguageMenu = (props) => {
             ))}
           </LabeledList>
         </Section>
-
         {!!admin_mode && (
           <Section
             title="Unknown Languages"
