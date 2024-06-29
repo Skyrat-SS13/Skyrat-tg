@@ -53,7 +53,7 @@
 	deconstruct(TRUE)
 	return TRUE
 
-/obj/structure/reagent_anvil/deconstruct(disassembled = TRUE)
+/obj/structure/reagent_anvil/atom_deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 
@@ -85,6 +85,10 @@
 	//do we have an incomplete item to hammer out? if so, here is our block of code
 	var/obj/item/forging/incomplete/locate_incomplete = locate() in contents
 	if(locate_incomplete)
+		if(locate_incomplete.times_hit >= locate_incomplete.average_hits) //to prevent people from getting perfect perfects
+			user.balloon_alert(user, "[locate_incomplete] sounds ready")
+			return ITEM_INTERACT_SUCCESS
+
 		if(COOLDOWN_FINISHED(locate_incomplete, heating_remainder))
 			balloon_alert(user, "metal too cool")
 			locate_incomplete.times_hit -= 3
@@ -94,12 +98,14 @@
 			var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * locate_incomplete.average_wait
 			COOLDOWN_START(locate_incomplete, striking_cooldown, skill_modifier)
 			locate_incomplete.times_hit++
+			if(prob(user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_PROBS_MODIFIER)))
+				balloon_alert(user, "perfect hit!")
+				locate_incomplete.current_perfects++
+				user.mind.adjust_experience(/datum/skill/smithing, 10) //A perfect hit gives good experience
+				return ITEM_INTERACT_SUCCESS
+
 			balloon_alert(user, "good hit")
 			user.mind.adjust_experience(/datum/skill/smithing, 1) //A good hit gives minimal experience
-
-			if(locate_incomplete.times_hit >= locate_incomplete.average_hits)
-				user.balloon_alert(user, "[locate_incomplete] sounds ready")
-
 			return ITEM_INTERACT_SUCCESS
 
 		locate_incomplete.times_hit -= 3

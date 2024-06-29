@@ -160,37 +160,3 @@
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	return
 
-// The newbie pin
-/obj/item/clothing/accessory/green_pin
-	name = "green pin"
-	desc = "A pin given to newly hired personnel on deck."
-	icon_state = "green"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
-
-/obj/item/clothing/accessory/green_pin/examine(mob/user)
-	. = ..()
-	// How many hours of playtime left until the green pin expires
-	var/green_time_remaining = sanitize_integer((PLAYTIME_GREEN - user.client?.get_exp_living(pure_numeric = TRUE) / 60), 0, (PLAYTIME_GREEN / 60))
-	if(green_time_remaining > 0)
-		. += span_nicegreen("It reads '[green_time_remaining] hour[green_time_remaining >= 2 ? "s" : ""].'")
-
-// Pride Pin Over-ride
-/obj/item/clothing/accessory/pride
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
-
-GLOBAL_LIST_INIT(pride_pin_reskins, list(
-	"Rainbow Pride" = "pride",
-	"Bisexual Pride" = "pride_bi",
-	"Pansexual Pride" = "pride_pan",
-	"Asexual Pride" = "pride_ace",
-	"Non-binary Pride" = "pride_enby",
-	"Transgender Pride" = "pride_trans",
-	"Intersex Pride" = "pride_intersex",
-	"Lesbian Pride" = "pride_lesbian",
-	"Man-Loving-Man / Gay Pride" = "pride_mlm",
-	"Genderfluid Pride" = "pride_genderfluid",
-	"Genderqueer Pride" = "pride_genderqueer",
-	"Aromantic Pride" = "pride_aromantic",
-))

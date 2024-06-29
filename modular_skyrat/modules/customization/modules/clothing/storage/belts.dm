@@ -7,6 +7,7 @@
 	worn_icon_state = "crusader_belt"
 	inhand_icon_state = "utility"
 	w_class = WEIGHT_CLASS_BULKY //Cant fit a sheath in your bag
+	interaction_flags_click = NEED_DEXTERITY
 
 /obj/item/storage/belt/crusader/Initialize(mapload)
 	. = ..()
@@ -30,7 +31,7 @@
 			/obj/item/nullrod/armblade,
 			/obj/item/nullrod/carp,
 			/obj/item/nullrod/chainsaw,
-			/obj/item/nullrod/claymore/bostaff,
+			/obj/item/nullrod/bostaff,
 			/obj/item/nullrod/hammer,
 			/obj/item/nullrod/pitchfork,
 			/obj/item/nullrod/pride_hammer,
@@ -59,14 +60,12 @@
 		return
 	pouch.atom_storage.dump_content_at(dest_object, dumping_mob)
 
-/obj/item/storage/belt/crusader/CtrlClick(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
+/obj/item/storage/belt/crusader/item_ctrl_click(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
 	. = ..()
 	atom_storage.show_contents(user)
 	return
 
-/obj/item/storage/belt/crusader/AltClick(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
-	if(!user.can_perform_action(src, NEED_DEXTERITY))
-		return
+/obj/item/storage/belt/crusader/click_alt(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
 	if(contents.len == 2)
 		var/obj/item/drawn_item = contents[2]
 		add_fingerprint(user)
@@ -74,12 +73,12 @@
 		if(!user.put_in_hands(drawn_item))
 			to_chat(user, span_notice("You fumble for [drawn_item] and it falls on the floor."))
 			update_appearance()
-			return
+			return CLICK_ACTION_SUCCESS
 		user.visible_message(span_notice("[user] takes [drawn_item] out of [src]."), span_notice("You take [drawn_item] out of [src]."))
 		update_appearance()
 	else
 		to_chat(user, span_warning("[src] is empty!"))
-	. = ..()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/storage/belt/crusader/update_icon(updates)
 	if(contents.len == 2)	//Checks for a sword/rod in the sheath slot, changes the sprite accordingly

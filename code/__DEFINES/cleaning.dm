@@ -1,8 +1,17 @@
 
 // Cleaning flags
 
-///Whether we should not attempt to clean.
-#define DO_NOT_CLEAN "do_not_clean"
+/// Return to prevent clean attempts
+#define CLEAN_BLOCKED (1<<0)
+/// Return to allow clean attempts
+/// This is (currently) the same as returning null / none but more explicit
+#define CLEAN_ALLOWED (1<<1)
+/// Return to prevent XP gain
+/// Only does anything if [CLEAN_ALLOWED] is also returned
+#define CLEAN_NO_XP (1<<2)
+/// Return to stop cleaner component from blocking interaction chain further
+/// Only does anything if [CLEAN_BLOCKED] is also returned
+#define CLEAN_DONT_BLOCK_INTERACTION (1<<3)
 
 // Different kinds of things that can be cleaned.
 // Use these when overriding the wash proc or registering for the clean signals to check if your thing should be cleaned
@@ -23,10 +32,17 @@
 /// Cleans decals such as cobwebs off the floor
 #define CLEAN_TYPE_HARD_DECAL (1 << 7)
 
+// SKYRAT EDIT BEGIN ADD: Turf liquid cleaning type!
+
+/// Cleans all the liquids from a turf, or "evaporates" them
+#define CLEAN_TYPE_LIQUIDS (1 << 10) // Higher so it won't conflict with TG updates easily
+
+// SKYRAT EDIT END
+
 // Different cleaning methods.
 // Use these when calling the wash proc for your cleaning apparatus
 #define CLEAN_WASH (CLEAN_TYPE_BLOOD | CLEAN_TYPE_DISEASE | CLEAN_TYPE_ACID | CLEAN_TYPE_LIGHT_DECAL)
-#define CLEAN_SCRUB (CLEAN_WASH | CLEAN_TYPE_FINGERPRINTS | CLEAN_TYPE_FIBERS | CLEAN_TYPE_HARD_DECAL)
+#define CLEAN_SCRUB (CLEAN_WASH | CLEAN_TYPE_FINGERPRINTS | CLEAN_TYPE_FIBERS | CLEAN_TYPE_HARD_DECAL | CLEAN_TYPE_LIQUIDS) // Skyrat edit - adds CLEAN_TYPE_LIQUIDS
 #define CLEAN_RAD CLEAN_TYPE_RADIATION
 #define CLEAN_ALL ALL
 

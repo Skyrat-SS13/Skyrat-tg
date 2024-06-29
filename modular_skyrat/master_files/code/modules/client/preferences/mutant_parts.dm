@@ -8,17 +8,32 @@
 	default_value = FALSE
 
 /datum/preference/toggle/allow_mismatched_parts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return TRUE // we dont actually want this to do anything
+	return // we dont actually want this to do anything
 
 /datum/preference/toggle/allow_mismatched_parts/is_accessible(datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_mismatched_parts))
 		return FALSE
-	. = ..()
+	return ..()
 
-/datum/preference/toggle/allow_mismatched_parts/deserialize(input, datum/preferences/preferences)
+/datum/preference/toggle/allow_mismatched_parts/deserialize(input)
 	if(CONFIG_GET(flag/disable_mismatched_parts))
 		return FALSE
-	. = ..()
+	return ..()
+
+/datum/preference/toggle/allow_mismatched_hair_color
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "allow_mismatched_hair_color_toggle"
+	default_value = TRUE
+
+/datum/preference/toggle/allow_mismatched_hair_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return // applied in apply_supplementary_body_changes()
+
+/datum/preference/toggle/allow_mismatched_hair_color/is_accessible(datum/preferences/preferences)
+	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
+	if(!ispath(species, /datum/species/jelly)) // only slimes can see this pref
+		return FALSE
+	return ..()
 
 /datum/preference/toggle/allow_emissives
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -819,8 +834,8 @@
 	var/icon/pod_head = icon('icons/mob/human/bodyparts_greyscale.dmi', "pod_head_m")
 	pod_head.Blend(COLOR_GREEN, ICON_MULTIPLY)
 
-	for (var/pod_name in GLOB.pod_hair_list)
-		var/datum/sprite_accessory/pod_hair/pod_hair = GLOB.pod_hair_list[pod_name]
+	for (var/pod_name in SSaccessories.pod_hair_list)
+		var/datum/sprite_accessory/pod_hair/pod_hair = SSaccessories.pod_hair_list[pod_name]
 		if(pod_hair.locked)
 			continue
 

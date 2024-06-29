@@ -102,9 +102,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 		var/client/iterated_client = iterated_listener
 		to_chat(iterated_client, span_oocplain("<B>The AOOC channel has been globally [GLOB.aooc_allowed ? "enabled" : "disabled"].</B>"))
 
-/datum/admins/proc/toggleaooc()
-	set category = "Server"
-	set name = "Toggle Antag OOC"
+ADMIN_VERB(toggleaooc, R_ADMIN, "Toggle Antag OOC", "Toggles Antag OOC.", ADMIN_CATEGORY_SERVER)
 	toggle_aooc()
 	log_admin("[key_name(usr)] toggled Antagonist OOC.")
 	message_admins("[key_name_admin(usr)] toggled Antagonist OOC.")

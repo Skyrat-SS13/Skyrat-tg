@@ -4,7 +4,6 @@ import {
   Feature,
   FeatureChoiced,
   FeatureChoicedServerData,
-  FeatureDropdownInput,
   FeatureNumberInput,
   FeatureNumeric,
   FeatureToggle,
@@ -12,6 +11,7 @@ import {
   FeatureTriColorInput,
   FeatureValueProps,
 } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',

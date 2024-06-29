@@ -79,6 +79,7 @@
 	var/power_equip = TRUE
 	var/power_light = TRUE
 	var/power_environ = TRUE
+	var/power_apc_charge = TRUE
 
 	var/has_gravity = FALSE
 
@@ -105,7 +106,8 @@
 	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
 	var/area/area_limited_icon_smoothing
 
-	var/list/power_usage
+	/// The energy usage of the area in the last machines SS tick.
+	var/list/energy_usage
 
 	/// Wire assignment for airlocks in this area
 	var/airlock_wires = /datum/wires/airlock
@@ -161,7 +163,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if (area_flags & UNIQUE_AREA)
 		GLOB.areas_by_type[type] = src
 	GLOB.areas += src
-	power_usage = new /list(AREA_USAGE_LEN) // Some atoms would like to use power in Initialize()
+	energy_usage = new /list(AREA_USAGE_LEN) // Some atoms would like to use power in Initialize()
 	alarm_manager = new(src) // just in case
 	return ..()
 
@@ -473,7 +475,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 
 /**
- * Add a static amount of power load to an area
+ * Add a static amount of power load to an area. The value is assumed as the watt.
  *
  * Possible channels
  * *AREA_USAGE_STATIC_EQUIP
@@ -481,12 +483,13 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  * *AREA_USAGE_STATIC_ENVIRON
  */
 /area/proc/addStaticPower(value, powerchannel)
+	value = power_to_energy(value)
 	switch(powerchannel)
 		if(AREA_USAGE_STATIC_START to AREA_USAGE_STATIC_END)
-			power_usage[powerchannel] += value
+			energy_usage[powerchannel] += value
 
 /**
- * Remove a static amount of power load to an area
+ * Remove a static amount of power load to an area. The value is assumed as the watt.
  *
  * Possible channels
  * *AREA_USAGE_STATIC_EQUIP
@@ -494,9 +497,10 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  * *AREA_USAGE_STATIC_ENVIRON
  */
 /area/proc/removeStaticPower(value, powerchannel)
+	value = power_to_energy(value)
 	switch(powerchannel)
 		if(AREA_USAGE_STATIC_START to AREA_USAGE_STATIC_END)
-			power_usage[powerchannel] -= value
+			energy_usage[powerchannel] -= value
 
 /**
  * Clear all non-static power usage in area
@@ -504,18 +508,21 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  * Clears all power used for the dynamic equipment, light and environment channels
  */
 /area/proc/clear_usage()
-	power_usage[AREA_USAGE_EQUIP] = 0
-	power_usage[AREA_USAGE_LIGHT] = 0
-	power_usage[AREA_USAGE_ENVIRON] = 0
+	energy_usage[AREA_USAGE_EQUIP] = 0
+	energy_usage[AREA_USAGE_LIGHT] = 0
+	energy_usage[AREA_USAGE_ENVIRON] = 0
+	energy_usage[AREA_USAGE_APC_CHARGE] = 0
 
 
 /**
  * Add a power value amount to the stored used_x variables
  */
-/area/proc/use_power(amount, chan)
+/area/proc/use_energy(amount, chan)
 	switch(chan)
-		if(AREA_USAGE_DYNAMIC_START to AREA_USAGE_DYNAMIC_END)
-			power_usage[chan] += amount
+		if(AREA_USAGE_STATIC_START to AREA_USAGE_STATIC_END)
+			return
+		else
+			energy_usage[chan] += amount
 
 /**
  * Call back when an atom enters an area
@@ -545,13 +552,26 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 ///Tries to play looping ambience to the mobs.
 /mob/proc/refresh_looping_ambience()
+	if(!client) //if a tree falls in the woods...
+		return
 	var/area/my_area = get_area(src)
+	var/sound_to_use = my_area.ambient_buzz
 
-	if(!(client?.prefs.read_preference(/datum/preference/toggle/sound_ship_ambience)) || !my_area.ambient_buzz)
+	if(!sound_to_use || !(client.prefs.read_preference(/datum/preference/toggle/sound_ship_ambience)))
 		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
+		client.current_ambient_sound = null
 		return
 
-	SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol, channel = CHANNEL_BUZZ))
+	if(!can_hear())
+		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
+		client.current_ambient_sound = null
+		return
+
+	if(sound_to_use == client.current_ambient_sound)
+		return //don't reset current loops.
+
+	client.current_ambient_sound = sound_to_use
+	SEND_SOUND(src, sound(sound_to_use, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol, channel = CHANNEL_BUZZ))
 
 /**
  * Called when an atom exits an area

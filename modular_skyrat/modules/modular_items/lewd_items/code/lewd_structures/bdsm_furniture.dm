@@ -7,7 +7,6 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
@@ -16,7 +15,7 @@
 	icon_state = "bdsm_bed_kit"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/bdsm_bed_kit/CtrlShiftClick(mob/user)
+/obj/item/bdsm_bed_kit/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -41,6 +40,10 @@
 	. = ..()
 	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
 
+// previously NO_DECONSTRUCTION
+/obj/structure/bed/bdsm_bed/wrench_act_secondary(mob/living/user, obj/item/weapon)
+	return NONE
+
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/affected_mob)
 	density = TRUE
 	//Push them up from the normal lying position
@@ -51,7 +54,7 @@
 	//Set them back down to the normal lying position
 	affected_mob.pixel_y = affected_mob.base_pixel_y + affected_mob.body_position_pixel_y_offset
 
-/obj/structure/bed/bdsm_bed/CtrlShiftClick(mob/user)
+/obj/structure/bed/bdsm_bed/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -285,7 +288,7 @@
 *	X-STAND CONSTRUCTION KIT
 */
 
-/obj/structure/chair/x_stand/CtrlShiftClick(mob/user)
+/obj/structure/chair/x_stand/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE

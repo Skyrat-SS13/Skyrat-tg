@@ -123,6 +123,6 @@
 	name = "paper - 'Command Safe Note'"
 	default_raw_text = "Heh... I couldn't handle letting those older papers go, something about them reminded me about why I jumped on this job. The \"Safety of the future\" spiels... Now? Any dingbat can buy their own little constructor in a box... Fancy that we got one ourself, Thing has some handy designs..<br><br> Well- That asside, we did get some new updated circuit boards. Industry standard gave us two sets of research constructor boards for redundancy, So we set the spare set in the special safe within the comms room."
 
-/obj/item/areaeditor/blueprints/tarkon
+/obj/item/blueprints/tarkon
 	desc = "Blueprints of the Tarkon surface breaching drill and several Tarkon base designs. Red, stamped text reads \"Confidential\" on the backside of it."
 	name = "Tarkon Design Prints"

@@ -545,11 +545,13 @@
 		ACCESS_MORGUE,
 		ACCESS_RESEARCH,
 		ACCESS_SCIENCE,
+		ACCESS_XENOBIOLOGY,
 		)
 	extra_access = list(
 		ACCESS_ROBOTICS,
 		ACCESS_TECH_STORAGE,
-		ACCESS_XENOBIOLOGY,
+		ACCESS_ORDNANCE,
+		ACCESS_ORDNANCE_STORAGE,
 		)
 	template_access = list(
 		ACCESS_CAPTAIN,
@@ -960,6 +962,8 @@
 		ACCESS_GENETICS,
 		ACCESS_XENOBIOLOGY,
 		ACCESS_MORGUE_SECURE,
+		ACCESS_ORDNANCE,
+		ACCESS_ORDNANCE_STORAGE,
 		)
 	template_access = list(
 		ACCESS_CAPTAIN,
@@ -1213,30 +1217,6 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
 
-/datum/id_trim/job/virologist
-	assignment = "Virologist"
-	trim_state = "trim_virologist"
-	department_color = COLOR_MEDICAL_BLUE
-	subdepartment_color = COLOR_MEDICAL_BLUE
-	sechud_icon_state = SECHUD_VIROLOGIST
-	minimal_access = list(
-		ACCESS_MECH_MEDICAL,
-		ACCESS_MEDICAL,
-		ACCESS_MINERAL_STOREROOM,
-		ACCESS_VIROLOGY,
-		ACCESS_PHARMACY,
-		)
-	extra_access = list(
-		ACCESS_PLUMBING,
-		ACCESS_MORGUE,
-		ACCESS_SURGERY,
-		)
-	template_access = list(
-		ACCESS_CAPTAIN,
-		ACCESS_CHANGE_IDS,
-		ACCESS_CMO,
-		)
-	job = /datum/job/virologist
 
 /datum/id_trim/job/warden
 	assignment = "Warden"

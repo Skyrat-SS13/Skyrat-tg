@@ -125,11 +125,11 @@
 	actions_types = list(/datum/action/item_action/adjust)
 
 /obj/item/clothing/mask/primitive_catgirl_greyscale_gaiter/attack_self(mob/user)
-	adjustmask(user)
+	adjust_visor(user)
 
 // Head
 
-/obj/item/clothing/head/standalone_hood/primitive_catgirl_colors
+/obj/item/clothing/head/hooded/standalone_hood/primitive_catgirl_colors
 	greyscale_colors = "#594032#364660"
 
 // Misc Items

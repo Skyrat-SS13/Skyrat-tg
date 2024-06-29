@@ -139,6 +139,7 @@
 		"Pontifex",
 		"Rabbi",
 		"Reverend",
+		"Cleric",
 	)
 
 /datum/job/chemist
@@ -233,6 +234,10 @@
 		"Physician",
 		"Surgeon",
 		"Medical Student",
+		"Virologist",
+		"Epidemiologist",
+		"Pathologist",
+		"Junior Pathologist",
 	)
 
 /datum/job/engineering_guard //see orderly
@@ -404,14 +409,6 @@
 		"EVA Technician",
 		"Mechanic",
 		"Apprentice Engineer",
-	)
-
-/datum/job/virologist
-	alt_titles = list(
-		"Virologist",
-		"Epidemiologist",
-		"Pathologist",
-		"Junior Pathologist",
 	)
 
 /datum/job/warden

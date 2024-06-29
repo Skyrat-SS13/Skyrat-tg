@@ -271,7 +271,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 				 */
 				var/max_amount = rand(CEILING(product_record.amount * 0.5, 1), product_record.amount)
 				product_record.amount = rand(0, max_amount)
-				credits_contained += rand(0, 1) //randomly add a few credits to the machine to make it look like it's been used, proportional to the amount missing.
+				credits_contained += rand(1, 5) //randomly add a few credits to the machine to make it look like it's been used, proportional to the amount missing.
 			if(tiltable && prob(6)) // 1 in 17 chance to start tilted (as an additional hint to the station trait behind it)
 				INVOKE_ASYNC(src, PROC_REF(tilt), loc)
 				credits_contained = 0 // If it's tilted, it's been looted, so no credits for you.
@@ -549,6 +549,28 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	return .
 
 /**
+ * After-effects of refilling a vending machine from a refill canister
+ *
+ * This takes the amount of products restocked and gives the user our contained credits if needed,
+ * sending the user a fitting message.
+ *
+ * Arguments:
+ * * user - the user restocking us
+ * * restocked - the amount of items we've been refilled with
+ */
+/obj/machinery/vending/proc/post_restock(mob/living/user, restocked)
+	if(!restocked)
+		to_chat(user, span_warning("There's nothing to restock!"))
+		return
+
+	to_chat(user, span_notice("You loaded [restocked] items in [src][credits_contained > 0 ? ", and are rewarded [credits_contained] credits." : "."]"))
+	var/datum/bank_account/cargo_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	cargo_account.adjust_money(round(credits_contained * 0.5), "Vending: Restock")
+	var/obj/item/holochip/payday = new(src, credits_contained)
+	try_put_in_hand(payday, user)
+	credits_contained = 0
+
+/**
  * Refill our inventory from the passed in product list into the record list
  *
  * Arguments:
@@ -704,15 +726,8 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 				to_chat(user, span_warning("[canister] is empty!"))
 			else
 				// instantiate canister if needed
-				var/transferred = restock(canister)
-				if(transferred)
-					to_chat(user, span_notice("You loaded [transferred] items in [src][credits_contained > 0 ? ", and are rewarded [credits_contained] credits." : "."]"))
-					var/datum/bank_account/cargo_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
-					cargo_account.adjust_money(round(credits_contained * 0.5), "Vending: Restock")
-					var/obj/item/holochip/payday = new(src, credits_contained)
-					try_put_in_hand(payday, user)
-				else
-					to_chat(user, span_warning("There's nothing to restock!"))
+				var/restocked = restock(canister)
+				post_restock(user, restocked)
 			return
 
 	if(compartmentLoadAccessCheck(user) && !user.combat_mode)
@@ -1142,22 +1157,21 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 /obj/machinery/vending/exchange_parts(mob/user, obj/item/storage/part_replacer/replacer)
 	if(!istype(replacer))
 		return FALSE
-	if((obj_flags & NO_DECONSTRUCTION) && !replacer.works_from_distance)
-		return FALSE
 	if(!component_parts || !refill_canister)
 		return FALSE
 
-	var/moved = 0
-	if(panel_open || replacer.works_from_distance)
-		if(replacer.works_from_distance)
-			display_parts(user)
-		for(var/replacer_item in replacer)
-			if(istype(replacer, refill_canister))
-				moved += restock(replacer_item)
-	else
-		display_parts(user)
-	if(moved)
-		to_chat(user, span_notice("[moved] items restocked."))
+	if(!panel_open || replacer.works_from_distance)
+		to_chat(user, display_parts(user))
+
+	if(!panel_open && !replacer.works_from_distance)
+		return FALSE
+
+	var/restocked = 0
+	for(var/replacer_item in replacer)
+		if(istype(replacer_item, refill_canister))
+			restocked += restock(replacer_item)
+	post_restock(user, restocked)
+	if(restocked > 0)
 		replacer.play_rped_sound()
 	return TRUE
 
@@ -1180,7 +1194,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 
 		if(tilted && !user.buckled && !isAdminGhostAI(user))
 			to_chat(user, span_notice("You begin righting [src]."))
-			if(do_after(user, 50, target=src))
+			if(do_after(user, 5 SECONDS, target=src))
 				untilt(user)
 			return
 
@@ -1403,7 +1417,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		if(isliving(usr))
 			living_user = usr
 			card_used = living_user.get_idcard(TRUE)
-		else if(age_restrictions && item_record.age_restricted && (!card_used.registered_age || card_used.registered_age < AGE_MINOR))
+		if(age_restrictions && item_record.age_restricted && (!card_used.registered_age || card_used.registered_age < AGE_MINOR))
 			speak("You are not of legal age to purchase [item_record.name].")
 			if(!(usr in GLOB.narcd_underages))
 				if (isnull(sec_radio))
@@ -1426,7 +1440,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		purchase_message_cooldown = world.time + 5 SECONDS
 		//This is not the best practice, but it's safe enough here since the chances of two people using a machine with the same ref in 5 seconds is fuck low
 		last_shopper = REF(usr)
-	use_power(active_power_usage)
+	use_energy(active_power_usage)
 	if(icon_vend) //Show the vending animation if needed
 		flick(icon_vend,src)
 	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
@@ -1444,7 +1458,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	if(usr.CanReach(src) && usr.put_in_hands(vended_item))
 		to_chat(usr, span_notice("You take [item_record.name] out of the slot."))
 	else
-		to_chat(usr, span_warning("[capitalize(item_record.name)] falls onto the floor!"))
+		to_chat(usr, span_warning("[capitalize(format_text(item_record.name))] falls onto the floor!"))
 	SSblackbox.record_feedback("nested tally", "vending_machine_usage", 1, list("[type]", "[item_record.product_path]"))
 	vend_ready = TRUE
 
@@ -1638,6 +1652,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		return
 	var/credits_to_remove = min(CREDITS_DUMP_THRESHOLD, round(credits_contained))
 	var/obj/item/holochip/holochip = new(loc, credits_to_remove)
+	playsound(src, 'sound/effects/cashregister.ogg', 40, TRUE)
 	credits_contained = max(0, credits_contained - credits_to_remove)
 	SSblackbox.record_feedback("amount", "vending machine looted", holochip.credits)
 
@@ -1763,7 +1778,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 			speak("\The [src] has been linked to [card_used].")
 
 	if(compartmentLoadAccessCheck(user))
-		if(istype(attack_item, /obj/item/pen))
+		if(IS_WRITING_UTENSIL(attack_item))
 			name = tgui_input_text(user, "Set name", "Name", name, 20)
 			desc = tgui_input_text(user, "Set description", "Description", desc, 60)
 			slogan_list += tgui_input_text(user, "Set slogan", "Slogan", "Epic", 60)
@@ -1827,12 +1842,12 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 			last_shopper = REF(usr)
 	/// Remove the item
 	loaded_items--
-	use_power(active_power_usage)
+	use_energy(active_power_usage)
 	vending_machine_input[choice] = max(vending_machine_input[choice] - 1, 0)
 	if(user.CanReach(src) && user.put_in_hands(dispensed_item))
 		to_chat(user, span_notice("You take [dispensed_item.name] out of the slot."))
 	else
-		to_chat(user, span_warning("[capitalize(dispensed_item.name)] falls onto the floor!"))
+		to_chat(user, span_warning("[capitalize(format_text(dispensed_item.name))] falls onto the floor!"))
 	return TRUE
 
 /obj/machinery/vending/custom/unbreakable

@@ -11,6 +11,7 @@ import {
   Modal,
   NoticeBox,
   Section,
+  Stack,
   Table,
   Tabs,
 } from '../components';
@@ -181,8 +182,8 @@ export const StatusPane = (props) => {
         </Box>
       }
     >
-      <Grid>
-        <Grid.Column size={0.85}>
+      <Stack>
+        <Stack.Item grow>
           <LabeledList>
             <LabeledList.Item
               label="TC Available"
@@ -200,16 +201,16 @@ export const StatusPane = (props) => {
               {String(data.earned_tc)}
             </LabeledList.Item>
           </LabeledList>
-        </Grid.Column>
-        <Grid.Column>
+        </Stack.Item>
+        <Stack.Item grow>
           <LabeledList>
             <LabeledList.Item label="Contracts Completed">
               {String(data.contracts_completed)}
             </LabeledList.Item>
             <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>
-        </Grid.Column>
-      </Grid>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };

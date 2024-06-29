@@ -72,7 +72,7 @@
 	product = /obj/item/food/grown/cannabis/ultimate
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green, /datum/plant_gene/trait/modified_volume/omega_weed)
 	mutatelist = null
-	reagents_add = list(/datum/reagent/drug/thc = 0.3, //SKYRAT EDIT - MORE NARCOTICS - ORIGINAL: reagents_add = list(/datum/reagent/drug/cannabis = 0.3,
+	reagents_add = list(/datum/reagent/drug/thc = 0.3, //SKYRAT EDIT CHANGE - MORE NARCOTICS - ORIGINAL: reagents_add = list(/datum/reagent/drug/cannabis = 0.3,
 		/datum/reagent/toxin/mindbreaker = 0.3,
 		/datum/reagent/mercury = 0.15,
 		/datum/reagent/lithium = 0.15,
@@ -80,7 +80,7 @@
 		/datum/reagent/drug/methamphetamine = 0.15,
 		/datum/reagent/drug/bath_salts = 0.15,
 		/datum/reagent/drug/krokodil = 0.15,
-		// /datum/reagent/toxin/lipolicide = 0.15, // SKYRAT REMOVAL - MORE NARCOTICS
+		// /datum/reagent/toxin/lipolicide = 0.15, // SKYRAT EDIT REMOVAL - MORE NARCOTICS
 		/datum/reagent/drug/nicotine = 0.1,
 	)
 	rarity = 69

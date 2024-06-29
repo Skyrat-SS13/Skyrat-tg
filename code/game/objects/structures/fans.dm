@@ -10,21 +10,15 @@
 	var/buildstackamount = 5
 	can_atmos_pass = ATMOS_PASS_NO
 
-/obj/structure/fans/deconstruct()
-	if(!(obj_flags & NO_DECONSTRUCTION))
-		if(buildstacktype)
-			new buildstacktype(loc,buildstackamount)
-	qdel(src)
+/obj/structure/fans/atom_deconstruct(disassembled = TRUE)
+	if(buildstacktype)
+		new buildstacktype(loc,buildstackamount)
 
 /obj/structure/fans/wrench_act(mob/living/user, obj/item/I)
-	..()
-	if(obj_flags & NO_DECONSTRUCTION)
-		return TRUE
-
 	user.visible_message(span_warning("[user] disassembles [src]."),
 		span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
 	if(I.use_tool(src, user, 20, volume=50))
-		deconstruct()
+		deconstruct(TRUE)
 	return TRUE
 
 /obj/structure/fans/tiny
@@ -57,3 +51,5 @@
 	light_color = LIGHT_COLOR_BLUE
 	light_range = 4
 
+/obj/structure/fans/tiny/shield/wrench_act(mob/living/user, obj/item/I)
+	return ITEM_INTERACT_SKIP_TO_ATTACK //how you gonna wrench disassemble a shield?????????

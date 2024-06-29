@@ -33,13 +33,14 @@
 	drop_everything_contained()
 	return ..()
 
-/obj/structure/large_mortar/AltClick(mob/user)
+/obj/structure/large_mortar/click_alt(mob/user)
 	if(!length(contents))
 		balloon_alert(user, "nothing inside")
-		return
+		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
+	return CLICK_ACTION_SUCCESS
 
 /// Drops all contents at the mortar
 /obj/structure/large_mortar/proc/drop_everything_contained()
@@ -107,11 +108,17 @@
 			return
 
 		balloon_alert_to_viewers("grinding...")
-		if(!do_after(user, 5 SECONDS, target = src))
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+		if(!do_after(user, 5 SECONDS * skill_modifier, target = src))
 			balloon_alert_to_viewers("stopped grinding")
 			return
 
-		user.adjustStaminaLoss(LARGE_MORTAR_STAMINA_USE) //This is a bit more tiring than a normal sized mortar and pestle
+		var/stamina_use = LARGE_MORTAR_STAMINA_USE
+		if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+			stamina_use *= 0.5 //so it uses half the amount of stamina (35 instead of 70)
+
+		user.adjustStaminaLoss(stamina_use) //This is a bit more tiring than a normal sized mortar and pestle
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		switch(picked_option)
 			if("Juice")
 				for(var/obj/item/target_item as anything in contents)

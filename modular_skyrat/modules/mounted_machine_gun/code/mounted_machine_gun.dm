@@ -171,11 +171,9 @@
 
 	update_positioning()
 
-/obj/machinery/mounted_machine_gun/AltClick(mob/user)
-	. = ..()
-	if(!can_interact(user))
-		return
+/obj/machinery/mounted_machine_gun/click_alt(mob/user)
 	toggle_cover(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/mounted_machine_gun/attack_hand_secondary(mob/living/user, list/modifiers)
 	. = ..()

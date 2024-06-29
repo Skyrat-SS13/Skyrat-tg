@@ -1,8 +1,8 @@
 // Max amounts of cores you can make
-#define MAX_CORES_BLUESPACE 8
+#define MAX_CORES_BLUESPACE 3
 #define MAX_CORES_GRAVITATIONAL 8
 #define MAX_CORES_FLUX 8
-#define MAX_CORES_VORTEX 8
+#define MAX_CORES_VORTEX 1
 #define MAX_CORES_PYRO 8
 #define MAX_CORES_HALLUCINATION 8
 #define MAX_CORES_BIOSCRAMBLER 8
@@ -34,10 +34,13 @@ GLOBAL_LIST_INIT(bioscrambler_organs_blacklist, typecacheof(list (
 	/obj/item/organ/internal/brain,
 	/obj/item/organ/internal/body_egg,
 	/obj/item/organ/internal/cyberimp,
+	/obj/item/organ/internal/ears/dullahan,
+	/obj/item/organ/internal/eyes/dullahan,
 	/obj/item/organ/internal/heart/cursed,
 	/obj/item/organ/internal/heart/demon,
 	/obj/item/organ/internal/lungs,
 	/obj/item/organ/internal/monster_core,
+	/obj/item/organ/internal/tongue/dullahan,
 	/obj/item/organ/internal/vocal_cords/colossus,
 	/obj/item/organ/internal/zombie_infection,
 	/obj/item/organ/internal/empowered_borer_egg, // SKYRAT EDIT ADDITION

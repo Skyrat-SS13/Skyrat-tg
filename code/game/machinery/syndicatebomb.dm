@@ -484,7 +484,7 @@
 		chem_splash(get_turf(src), reagents, spread_range, list(reactants), temp_boost)
 
 		// Detonate it again in one second, until it's out of juice.
-		addtimer(CALLBACK(src, PROC_REF(detonate)), 10)
+		addtimer(CALLBACK(src, PROC_REF(detonate)), 1 SECONDS)
 
 	// If it's not a time release bomb, do normal explosion
 
@@ -642,7 +642,7 @@
 		var/skip_sound = TRUE
 		if(num_affected % 5) //makes it play the sound more sparingly
 			skip_sound = FALSE
-		var/time_mult = round(get_dist_euclidian(get_turf(src), affected)) + 1
+		var/time_mult = round(get_dist_euclidean(get_turf(src), affected)) + 1
 		addtimer(CALLBACK(theme_to_use, TYPE_PROC_REF(/datum/dimension_theme, apply_theme), affected, skip_sound, TRUE), 0.1 SECONDS * time_mult)
 	qdel(src)
 

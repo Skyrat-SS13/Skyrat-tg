@@ -9,10 +9,12 @@ export type MedicalRecordData = {
   records: MedicalRecord[];
   min_age: number;
   max_age: number;
+  max_chrono_age: number; // SKYRAT EDIT ADDITION - Chronological age
 };
 
 export type MedicalRecord = {
   age: number;
+  chrono_age: number; // SKYRAT EDIT ADDITION - Chronological age
   blood_type: string;
   crew_ref: string;
   dna: string;

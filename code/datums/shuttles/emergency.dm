@@ -1,6 +1,6 @@
 #define EMAG_LOCKED_SHUTTLE_COST (CARGO_CRATE_VALUE * 50)
 
-/datum/map_template/shuttle/emergency // SKYRAT EDIT OVERRIDE - OVERRIDEN IN ADVANCED_SHUTTLES - shuttles.dm
+/datum/map_template/shuttle/emergency // SKYRAT EDIT OVERRIDE - OVERRIDDEN IN ADVANCED_SHUTTLES - shuttles.dm
 	port_id = "emergency"
 	name = "Base Shuttle Template (Emergency)"
 	///assoc list of shuttle events to add to this shuttle on spawn (typepath = weight)
@@ -266,6 +266,13 @@
 	credit_cost = CARGO_CRATE_VALUE * 2
 	description = "We pulled this one out of Mothball just for you!"
 	occupancy_limit = "40"
+
+/datum/map_template/shuttle/emergency/wawa
+	suffix = "wawa"
+	name = "Wawa Stand-in Emergency Shuttle"
+	description = "Due to a recent clerical error in the funding department, a lot of funding went to lizard plushies. Due to the costs, Nanotrasen has supplied a nearby garbage truck as a stand-in. Better learn how to share spots."
+	credit_cost = CARGO_CRATE_VALUE * 6
+	occupancy_limit = "25"
 
 /datum/map_template/shuttle/emergency/scrapheap
 	suffix = "scrapheap"

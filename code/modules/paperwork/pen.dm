@@ -34,6 +34,8 @@
 	var/dart_insert_icon = 'icons/obj/weapons/guns/toy.dmi'
 	var/dart_insert_casing_icon_state = "overlay_pen"
 	var/dart_insert_projectile_icon_state = "overlay_pen_proj"
+	/// If this pen can be clicked in order to retract it
+	var/can_click = TRUE
 
 /obj/item/pen/Initialize(mapload)
 	. = ..()
@@ -44,8 +46,38 @@
 		dart_insert_projectile_icon_state, \
 		CALLBACK(src, PROC_REF(get_dart_var_modifiers))\
 	)
+	AddElement(/datum/element/tool_renaming)
 	RegisterSignal(src, COMSIG_DART_INSERT_ADDED, PROC_REF(on_inserted_into_dart))
 	RegisterSignal(src, COMSIG_DART_INSERT_REMOVED, PROC_REF(on_removed_from_dart))
+	if (!can_click)
+		return
+	create_transform_component()
+	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
+
+/// Proc that child classes can override to have custom transforms, like edaggers or pendrivers
+/obj/item/pen/proc/create_transform_component()
+	AddComponent( \
+		/datum/component/transforming, \
+		sharpness_on = NONE, \
+		inhand_icon_change = FALSE, \
+		w_class_on = w_class, \
+	)
+
+/*
+ * Signal proc for [COMSIG_TRANSFORMING_ON_TRANSFORM].
+ *
+ * Clicks the pen to make an annoying sound. Clickity clickery click!
+ */
+/obj/item/pen/proc/on_transform(obj/item/source, mob/user, active)
+	SIGNAL_HANDLER
+
+	if(user)
+		balloon_alert(user, "clicked")
+	playsound(src, 'sound/machines/click.ogg', 30, TRUE, -3)
+	icon_state = initial(icon_state) + (active ? "_retracted" : "")
+	update_appearance(UPDATE_ICON)
+
+	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/pen/proc/on_inserted_into_dart(datum/source, obj/projectile/dart, mob/user, embedded = FALSE)
 	SIGNAL_HANDLER
@@ -89,6 +121,7 @@
 	name = "four-color pen"
 	icon_state = "pen_4color"
 	colour = COLOR_BLACK
+	can_click = FALSE
 
 /obj/item/pen/fourcolor/attack_self(mob/living/carbon/user)
 	. = ..()
@@ -109,6 +142,8 @@
 			colour = COLOR_BLACK
 	to_chat(user, span_notice("\The [src] will now write in [chosen_color]."))
 	desc = "It's a fancy four-color ink pen, set to [chosen_color]."
+	balloon_alert(user, "clicked")
+	playsound(src, 'sound/machines/click.ogg', 30, TRUE, -3)
 
 /obj/item/pen/fountain
 	name = "fountain pen"
@@ -118,6 +153,7 @@
 	requires_gravity = FALSE // fancy spess pens
 	dart_insert_casing_icon_state = "overlay_fountainpen"
 	dart_insert_projectile_icon_state = "overlay_fountainpen_proj"
+	can_click = FALSE
 
 /obj/item/pen/charcoal
 	name = "charcoal stylus"
@@ -128,6 +164,7 @@
 	custom_materials = null
 	grind_results = list(/datum/reagent/ash = 5, /datum/reagent/cellulose = 10)
 	requires_gravity = FALSE // this is technically a pencil
+	can_click = FALSE
 
 /datum/crafting_recipe/charcoal_stylus
 	name = "Charcoal Stylus"
@@ -179,25 +216,24 @@
 	if(current_skin)
 		desc = "It's an expensive [current_skin] fountain pen. The nib is quite sharp."
 
+
 /obj/item/pen/fountain/captain/proc/reskin_dart_insert(datum/component/dart_insert/insert_comp)
 	if(!istype(insert_comp)) //You really shouldn't be sending this signal from anything other than a dart_insert component
 		return
 	insert_comp.casing_overlay_icon_state = overlay_reskin[current_skin]
 	insert_comp.projectile_overlay_icon_state = "[overlay_reskin[current_skin]]_proj"
 
-/obj/item/pen/attack_self(mob/living/carbon/user)
-	. = ..()
-	if(.)
-		return
+/obj/item/pen/item_ctrl_click(mob/living/carbon/user)
 	if(loc != user)
 		to_chat(user, span_warning("You must be holding the pen to continue!"))
-		return
+		return CLICK_ACTION_BLOCKING
 	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (0-360)", "Rotate Pen Head", max_value = 360)
 	if(isnull(deg) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || loc != user)
-		return
+		return CLICK_ACTION_BLOCKING
 	degrees = deg
 	to_chat(user, span_notice("You rotate the top of the pen to [deg] degrees."))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/pen/attack(mob/living/M, mob/user, params)
 	if(force) // If the pen has a force value, call the normal attack procs. Used for e-daggers and captain's pen mostly.
@@ -209,55 +245,9 @@
 	log_combat(user, M, "stabbed", src)
 	return TRUE
 
-/obj/item/pen/afterattack(obj/O, mob/living/user, proximity)
-	. = ..()
-
-	if (!proximity)
-		return .
-
-	. |= AFTERATTACK_PROCESSED_ITEM
-
-	//Changing name/description of items. Only works if they have the UNIQUE_RENAME object flag set
-	if(isobj(O) && (O.obj_flags & UNIQUE_RENAME))
-		var/penchoice = tgui_input_list(user, "What would you like to edit?", "Pen Setting", list("Rename", "Description", "Reset"))
-		if(QDELETED(O) || !user.can_perform_action(O))
-			return
-		if(penchoice == "Rename")
-			var/input = tgui_input_text(user, "What do you want to name [O]?", "Object Name", "[O.name]", MAX_NAME_LEN)
-			var/oldname = O.name
-			if(QDELETED(O) || !user.can_perform_action(O))
-				return
-			if(input == oldname || !input)
-				to_chat(user, span_notice("You changed [O] to... well... [O]."))
-			else
-				O.AddComponent(/datum/component/rename, input, O.desc)
-				to_chat(user, span_notice("You have successfully renamed \the [oldname] to [O]."))
-				ADD_TRAIT(O, TRAIT_WAS_RENAMED, PEN_LABEL_TRAIT)
-				O.update_appearance(UPDATE_ICON)
-
-		if(penchoice == "Description")
-			var/input = tgui_input_text(user, "Describe [O]", "Description", "[O.desc]", 280)
-			var/olddesc = O.desc
-			if(QDELETED(O) || !user.can_perform_action(O))
-				return
-			if(input == olddesc || !input)
-				to_chat(user, span_notice("You decide against changing [O]'s description."))
-			else
-				O.AddComponent(/datum/component/rename, O.name, input)
-				to_chat(user, span_notice("You have successfully changed [O]'s description."))
-				ADD_TRAIT(O, TRAIT_WAS_RENAMED, PEN_LABEL_TRAIT)
-				O.update_appearance(UPDATE_ICON)
-
-		if(penchoice == "Reset")
-			if(QDELETED(O) || !user.can_perform_action(O))
-				return
-
-			qdel(O.GetComponent(/datum/component/rename))
-			to_chat(user, span_notice("You have successfully reset [O]'s name and description."))
-			REMOVE_TRAIT(O, TRAIT_WAS_RENAMED, PEN_LABEL_TRAIT)
-			O.update_appearance(UPDATE_ICON)
-
 /obj/item/pen/get_writing_implement_details()
+	if (HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
+		return null
 	return list(
 		interaction_mode = MODE_WRITING,
 		font = font,
@@ -333,6 +323,9 @@
 	speed = 6 SECONDS, \
 	butcher_sound = 'sound/weapons/blade1.ogg', \
 	)
+	RegisterSignal(src, COMSIG_DETECTIVE_SCANNED, PROC_REF(on_scan))
+
+/obj/item/pen/edagger/create_transform_component()
 	AddComponent( \
 		/datum/component/transforming, \
 		force_on = 18, \
@@ -342,8 +335,6 @@
 		w_class_on = WEIGHT_CLASS_NORMAL, \
 		inhand_icon_change = FALSE, \
 	)
-	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
-	RegisterSignal(src, COMSIG_DETECTIVE_SCANNED, PROC_REF(on_scan))
 
 /obj/item/pen/edagger/on_inserted_into_dart(datum/source, obj/item/ammo_casing/dart, mob/user)
 	. = ..()
@@ -415,9 +406,7 @@
  * Handles swapping their icon files to edagger related icon files -
  * as they're supposed to look like a normal pen.
  */
-/obj/item/pen/edagger/proc/on_transform(obj/item/source, mob/user, active)
-	SIGNAL_HANDLER
-
+/obj/item/pen/edagger/on_transform(obj/item/source, mob/user, active)
 	if(active)
 		name = hidden_name
 		desc = hidden_desc
@@ -464,6 +453,7 @@
 	colour = COLOR_BLUE
 	dart_insert_casing_icon_state = "overlay_survivalpen"
 	dart_insert_projectile_icon_state = "overlay_survivalpen_proj"
+	can_click = FALSE
 
 /obj/item/pen/survival/on_inserted_into_dart(datum/source, obj/item/ammo_casing/dart, mob/user)
 	. = ..()
@@ -502,6 +492,9 @@
 
 /obj/item/pen/screwdriver/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
+
+/obj/item/pen/screwdriver/create_transform_component()
 	AddComponent( \
 		/datum/component/transforming, \
 		throwforce_on = 5, \
@@ -510,12 +503,7 @@
 		inhand_icon_change = FALSE, \
 	)
 
-	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(toggle_screwdriver))
-	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/pen/screwdriver/proc/toggle_screwdriver(obj/item/source, mob/user, active)
-	SIGNAL_HANDLER
-
+/obj/item/pen/screwdriver/on_transform(obj/item/source, mob/user, active)
 	if(user)
 		balloon_alert(user, active ? "extended" : "retracted")
 	playsound(src, 'sound/weapons/batonextend.ogg', 50, TRUE)
@@ -547,22 +535,22 @@
 	. += span_notice("To initiate the surrender prompt, simply click on an individual within your proximity.")
 
 //Code from the medical penlight
-/obj/item/pen/red/security/afterattack(atom/target, mob/living/user, proximity)
-	. = ..()
+/obj/item/pen/red/security/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, holosign_cooldown))
 		balloon_alert(user, "not ready!")
-		return
+		return ITEM_INTERACT_BLOCKING
 
-	var/target_turf = get_turf(target)
+	var/turf/target_turf = get_turf(interacting_with)
 	var/mob/living/living_target = locate(/mob/living) in target_turf
 
 	if(!living_target || (living_target == user))
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	living_target.apply_status_effect(/datum/status_effect/surrender_timed)
 	to_chat(living_target, span_userdanger("[user] requests your immediate surrender! You are given 30 seconds to comply!"))
 	new /obj/effect/temp_visual/security_holosign(target_turf, user) //produce a holographic glow
 	COOLDOWN_START(src, holosign_cooldown, 30 SECONDS)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/effect/temp_visual/security_holosign
 	name = "security holosign"

@@ -53,9 +53,17 @@
 	var/list/ride_offset_y = list("north" = 4, "south" = 4, "east" = 3, "west" = 3)
 	///List of skins the borg can be reskinned to, optional
 	var/list/borg_skins
+	///Omnitoolbox, holder of certain borg tools. Not all models have one
+	var/obj/item/cyborg_omnitoolbox/toolbox
+	///Path to toolbox, if a model gets one
+	var/toolbox_path
 
 /obj/item/robot_model/Initialize(mapload)
 	. = ..()
+
+	if(toolbox_path)
+		toolbox = new toolbox_path(src)
+
 	for(var/path in basic_modules)
 		var/obj/item/new_module = new path(src)
 		basic_modules += new_module
@@ -82,6 +90,8 @@
 	for(var/module in get_usable_modules())
 		if(!(module in cyborg.held_items))
 			. += module
+	if(!cyborg.emagged)
+		. += emag_modules
 
 /obj/item/robot_model/proc/add_module(obj/item/added_module, nonstandard, requires_rebuild)
 	if(isstack(added_module))
@@ -121,41 +131,52 @@
 	var/active_module = cyborg.module_active
 	cyborg.drop_all_held_items()
 	modules = list()
-	for(var/obj/item/module in basic_modules)
+	for(var/obj/item/module as anything in basic_modules)
 		add_module(module, FALSE, FALSE)
 	if(cyborg.emagged)
-		for(var/obj/item/module in emag_modules)
+		for(var/obj/item/module as anything in emag_modules)
 			add_module(module, FALSE, FALSE)
-	for(var/obj/item/module in added_modules)
+	for(var/obj/item/module as anything in added_modules)
 		add_module(module, FALSE, FALSE)
-	for(var/module in held_modules)
-		if(module)
-			cyborg.equip_module_to_slot(module, held_modules.Find(module))
+	for(var/obj/item/module as anything in held_modules & modules)
+		cyborg.equip_module_to_slot(module, held_modules.Find(module))
 	if(active_module)
 		cyborg.select_module(held_modules.Find(active_module))
 	if(cyborg.hud_used)
 		cyborg.hud_used.update_robot_modules_display()
 
+
+///Restocks things that don't take mats, generally at a power cost. Returns True if anything was restocked/replaced, and False otherwise.
 /obj/item/robot_model/proc/respawn_consumable(mob/living/silicon/robot/cyborg, coeff = 1)
 	SHOULD_CALL_PARENT(TRUE)
+
+	///If anything was actually replaced/refilled/recharged. If not, we won't draw power.
+	. = FALSE
 
 	for(var/datum/robot_energy_storage/storage_datum in storages)
 		if(storage_datum.renewable == FALSE)
 			continue
-		storage_datum.energy = min(storage_datum.max_energy, storage_datum.energy + coeff * storage_datum.recharge_rate)
+		if(storage_datum.energy < storage_datum.max_energy)
+			. = TRUE
+			storage_datum.energy = min(storage_datum.max_energy, storage_datum.energy + coeff * storage_datum.recharge_rate)
 
 	for(var/obj/item/module in get_usable_modules())
 		if(istype(module, /obj/item/assembly/flash))
 			var/obj/item/assembly/flash/flash = module
+			if(flash.burnt_out)
+				. = TRUE
 			flash.times_used = 0
 			flash.burnt_out = FALSE
 			flash.update_appearance()
 		else if(istype(module, /obj/item/melee/baton/security))
 			var/obj/item/melee/baton/security/baton = module
-			baton.cell?.charge = baton.cell.maxcharge
+			if(baton.cell?.charge < baton.cell.maxcharge)
+				. = TRUE //if sec borgs ever make a mainstream return, we should probably do this differntly.
+				baton.cell?.charge = baton.cell.maxcharge
 		else if(istype(module, /obj/item/gun/energy))
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
+				. = TRUE
 				gun.recharge_newshot() //try to reload a new shot.
 		/// SKYRAT EDIT START - Cargo borgs
 		else if(istype(module, /obj/item/hand_labeler/cyborg))
@@ -163,7 +184,9 @@
 			labeler.labels_left = 30
 		/// SKYRAT EDIT END
 
-	cyborg.toner = cyborg.tonermax
+	if(cyborg.toner < cyborg.tonermax)
+		. = TRUE
+		cyborg.toner = cyborg.tonermax
 
 /**
  * Refills consumables that require materials, rather than being given for free.
@@ -375,6 +398,7 @@
 	if(!soap)
 		return
 	if(soap.uses < initial(soap.uses))
+		. = TRUE
 		soap.uses += ROUND_UP(initial(soap.uses) / 100) * coeff
 
 /obj/item/robot_model/engineering
@@ -386,14 +410,16 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
-		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
-		/obj/item/multitool/cyborg,
+		/obj/item/screwdriver/cyborg/power, // Skyrat ADDITION - Combines Screwdriver and Wrench into one
+		/obj/item/crowbar/cyborg/power, // Skyrat ADDITION - Combines Crowbar and Wirecutters into one
+		/obj/item/multitool/cyborg, //Skyrat ADDITION - Adds multitool for easier access
+		/obj/item/borg/cyborg_omnitool/engineering,
+		///obj/item/borg/cyborg_omnitool/engineering, //Skyrat REMOVAL
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
-		/obj/item/areaeditor/blueprints/cyborg,
+		/obj/item/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
@@ -411,6 +437,7 @@
 	model_select_icon = "engineer"
 	model_traits = list(TRAIT_NEGATES_GRAVITY)
 	hat_offset = -4
+	toolbox_path = /obj/item/cyborg_omnitoolbox/engineering
 
 /obj/item/robot_model/janitor
 	name = "Janitor"
@@ -655,21 +682,29 @@
 	..()
 	var/obj/item/lightreplacer/light_replacer = locate(/obj/item/lightreplacer) in basic_modules
 	if(light_replacer)
-		for(var/charge in 1 to coeff)
-			light_replacer.Charge(cyborg)
+		if(light_replacer.uses < light_replacer.max_uses)
+			. = TRUE
+			light_replacer.Charge(cyborg, coeff)
 
 	var/obj/item/reagent_containers/spray/cyborg_drying/drying_agent = locate(/obj/item/reagent_containers/spray/cyborg_drying) in basic_modules
 	if(drying_agent)
-		drying_agent.reagents.add_reagent(/datum/reagent/drying_agent, 5 * coeff)
+		var/datum/reagents/anti_water = drying_agent.reagents
+		if(anti_water.total_volume < anti_water.maximum_volume)
+			. = TRUE
+			drying_agent.reagents.add_reagent(/datum/reagent/drying_agent, 5 * coeff)
 
 	var/obj/item/reagent_containers/spray/cyborg_lube/lube = locate(/obj/item/reagent_containers/spray/cyborg_lube) in emag_modules
 	if(lube)
-		lube.reagents.add_reagent(/datum/reagent/lube, 2 * coeff)
+		var/datum/reagents/anti_friction = lube.reagents
+		if(anti_friction.total_volume < anti_friction.maximum_volume)
+			. = TRUE
+			lube.reagents.add_reagent(/datum/reagent/lube, 2 * coeff)
 
 	var/obj/item/soap/nanotrasen/cyborg/soap = locate(/obj/item/soap/nanotrasen/cyborg) in basic_modules
 	if(!soap)
 		return
 	if(soap.uses < initial(soap.uses))
+		. = TRUE
 		soap.uses += ROUND_UP(initial(soap.uses) / 100) * coeff
 
 /obj/item/robot_model/medical
@@ -681,14 +716,9 @@
 		/obj/item/borg/apparatus/beaker,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/surgical_drapes,
-		/obj/item/retractor,
-		/obj/item/hemostat,
-		/obj/item/cautery,
-		/obj/item/surgicaldrill,
-		/obj/item/scalpel,
-		/obj/item/circular_saw,
-		/obj/item/bonesetter,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/surgical_drapes/cyborg,
 		/obj/item/blood_filter,
 		/obj/item/extinguisher/mini,
 		/obj/item/emergency_bed/silicon,
@@ -706,6 +736,11 @@
 	model_select_icon = "medical"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	toolbox_path = /obj/item/cyborg_omnitoolbox/medical
+	borg_skins = list(
+		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical"),
+		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
+	)
 
 /obj/item/robot_model/miner
 	name = "Miner"
@@ -792,6 +827,7 @@
 	var/obj/item/gun/energy/e_gun/advtaser/cyborg/taser = locate(/obj/item/gun/energy/e_gun/advtaser/cyborg) in basic_modules
 	if(taser)
 		if(taser.cell.charge < taser.cell.maxcharge)
+			. = TRUE
 			var/obj/item/ammo_casing/energy/shot = taser.ammo_type[taser.select]
 			taser.cell.give(shot.e_cost * coeff)
 			taser.update_appearance()
@@ -818,20 +854,29 @@
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
 		/obj/item/storage/bag/tray, // SKYRAT EDIT: Moves the second tray up to be near the default one
-		/obj/item/cooking/cyborg/power, // SKYRAT EDIT
+		// SKYRAT EDIT START - COMMENTS OUT STUFF, MOVING IT TO SPECIALIZED MODULES
+		/*
+		// Moved to artistic module
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
+		*/
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
 		/obj/item/razor,
-		/obj/item/instrument/guitar,
-		/obj/item/instrument/piano_synth,
+		/*
+		// Moved to artistic module
+		//obj/item/instrument/guitar,
+		//obj/item/instrument/piano_synth,
+		*/
 		/obj/item/lighter,
-		/obj/item/borg/lollipop,
-		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/chisel,
+		//obj/item/borg/lollipop, // Moved to snack module
+		/* Moved to artistic module
+		//obj/item/stack/pipe_cleaner_coil/cyborg,
+		//obj/item/chisel,
+		*/
 		/obj/item/reagent_containers/cup/rag,
-		/obj/item/storage/bag/money,
+		//obj/item/storage/bag/money, //This is never used and there's already too much bloat
+		// SKYRAT EDIT END
 	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(
@@ -853,7 +898,10 @@
 	..()
 	var/obj/item/reagent_containers/enzyme = locate(/obj/item/reagent_containers/condiment/enzyme) in basic_modules
 	if(enzyme)
-		enzyme.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
+		var/datum/reagents/spicyketchup = enzyme.reagents
+		if(spicyketchup.total_volume < spicyketchup.maximum_volume)
+			. = TRUE
+			enzyme.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
 /obj/item/robot_model/syndicate
 	name = "Syndicate Assault"
@@ -889,15 +937,11 @@
 		/obj/item/reagent_containers/borghypo/syndicate,
 		/obj/item/shockpaddles/syndicate/cyborg,
 		/obj/item/healthanalyzer,
-		/obj/item/surgical_drapes,
-		/obj/item/retractor,
-		/obj/item/hemostat,
-		/obj/item/cautery,
-		/obj/item/surgicaldrill,
-		/obj/item/scalpel,
-		/obj/item/melee/energy/sword/cyborg/saw,
-		/obj/item/bonesetter,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/borg/cyborg_omnitool/medical,
+		/obj/item/surgical_drapes/cyborg,
 		/obj/item/blood_filter,
+		/obj/item/melee/energy/sword/cyborg/saw,
 		/obj/item/emergency_bed/silicon,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini,
@@ -911,6 +955,7 @@
 	model_select_icon = "malf"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	toolbox_path = /obj/item/cyborg_omnitoolbox/medical
 
 /obj/item/robot_model/saboteur
 	name = "Syndicate Saboteur"
@@ -922,12 +967,9 @@
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/nuke,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
 		/obj/item/analyzer,
-		/obj/item/multitool/cyborg,
+		/obj/item/borg/cyborg_omnitool/engineering,
+		/obj/item/borg/cyborg_omnitool/engineering,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
 		/obj/item/borg/apparatus/sheet_manipulator,
@@ -943,6 +985,7 @@
 	model_select_icon = "malf"
 	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NEGATES_GRAVITY)
 	hat_offset = -4
+	toolbox_path = /obj/item/cyborg_omnitoolbox/engineering
 	canDispose = TRUE
 
 /obj/item/robot_model/syndicate/kiltborg

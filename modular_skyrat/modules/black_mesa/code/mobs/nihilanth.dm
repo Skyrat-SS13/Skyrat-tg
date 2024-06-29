@@ -11,7 +11,7 @@
 	icon_dead = "bullsquid_dead"
 	maxHealth = 3000
 	health = 3000
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = null
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
 	projectiletype = /obj/projectile/nihilanth
 	ranged = TRUE

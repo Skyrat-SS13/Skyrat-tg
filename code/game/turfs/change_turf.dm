@@ -96,6 +96,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	var/list/old_baseturfs = baseturfs
 	var/old_type = type
+	var/datum/weakref/old_ref = weak_reference
+	weak_reference = null
 
 	var/list/post_change_callbacks = list()
 	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, new_baseturfs, flags, post_change_callbacks)
@@ -142,6 +144,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	lattice_underneath = old_lattice_underneath
 
+	new_turf.weak_reference = old_ref
+
 	if(SSlighting.initialized)
 		// Space tiles should never have lighting objects
 		if(!space_lit)
@@ -180,7 +184,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			space_tile.enable_starlight()
 	//SKYRAT EDIT ADDITION
 	if(old_liquids)
-		if(new_turf.liquids)
+		if(!isnull(new_turf.liquids)) //isnull is faster
 			var/liquid_cache = new_turf.liquids //Need to cache and re-set some vars due to the cleaning on Destroy(), and turf references
 			if(old_liquids.immutable)
 				old_liquids.remove_turf(src)
@@ -189,7 +193,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			new_turf.liquids = liquid_cache
 			new_turf.liquids.my_turf = new_turf
 		else
-			if(flags & CHANGETURF_INHERIT_AIR)
+			if((flags & CHANGETURF_INHERIT_AIR) && !isspaceturf(new_turf))
 				new_turf.liquids = old_liquids
 				old_liquids.my_turf = new_turf
 				if(old_liquids.immutable)

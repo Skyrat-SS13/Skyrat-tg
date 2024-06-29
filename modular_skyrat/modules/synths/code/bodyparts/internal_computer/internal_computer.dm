@@ -18,6 +18,7 @@
 	if(!istype(loc, /obj/item/organ/internal/brain/synth))
 		return INITIALIZE_HINT_QDEL
 
+/* Action for opening the synthbrain computer */
 /datum/action/item_action/synth/open_internal_computer
 	name = "Open persocom emulation"
 	desc = "Accesses your built-in virtual machine."
@@ -28,6 +29,9 @@
 	var/obj/item/organ/internal/brain/synth/targetmachine = target
 	targetmachine.internal_computer.interact(owner)
 
+/*
+Various overrides necessary to get the persocom working, namely ui status, power, and ID handling
+*/
 /obj/item/modular_computer/pda/synth/ui_state(mob/user)
 	return GLOB.default_state
 
@@ -44,6 +48,11 @@
 		)
 	return ..()
 
+// Needed to tell the power check that we're handling power ourselves
+/obj/item/modular_computer/pda/synth/check_power_override(amount)
+	return TRUE
+
+// Handles the id slot reading our id
 /obj/item/modular_computer/pda/synth/proc/handle_id_slot(mob/living/carbon/human/synth)
 	if(!istype(synth))
 		return
@@ -64,7 +73,7 @@
 
 /obj/item/modular_computer/pda/synth/get_ntnet_status()
 	. = ..()
-	if(is_centcom_level(loc.z)) // Centcom is excluded because cafe
+	if(is_centcom_level(loc.z)) // Centcom is excluded because cafe would allow people to abuse these
 		. = NTNET_NO_SIGNAL
 	return .
 

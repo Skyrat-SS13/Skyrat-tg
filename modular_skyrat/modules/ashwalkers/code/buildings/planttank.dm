@@ -35,15 +35,26 @@
 			qdel(attacking_item)
 
 		balloon_alert(user, "[attacking_item] placed inside")
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		operation_number += 2
+		if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+			operation_number += 2
+
 		return
 
 	if(istype(attacking_item, /obj/item/storage/bag/plants))
 		balloon_alert(user, "placing food inside")
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
 		for(var/obj/item/food/selected_food in attacking_item.contents)
+			if(!do_after(user, 1 SECONDS * skill_modifier, src))
+				return
+
 			qdel(selected_food)
 			operation_number += 2
+			if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+				operation_number += 2
 
+		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		return
 
 	if(istype(attacking_item, /obj/item/stack/ore/glass))
@@ -82,7 +93,6 @@
 
 	var/proportion = src_mixture.gases[/datum/gas/carbon_dioxide][MOLES]
 	if(proportion) //if there is carbon dioxide in the air, lets turn it into oxygen
-		proportion = min(src_mixture.gases[/datum/gas/carbon_dioxide][MOLES], MOLES_CELLSTANDARD)
 		src_mixture.gases[/datum/gas/carbon_dioxide][MOLES] -= proportion
 		src_mixture.gases[/datum/gas/oxygen][MOLES] += proportion
 
@@ -107,7 +117,7 @@
 	deconstruct()
 	return TRUE
 
-/obj/structure/plant_tank/deconstruct(disassembled)
+/obj/structure/plant_tank/atom_deconstruct(disassembled)
 	var/target_turf = get_turf(src)
 	for(var/loop in 1 to 4)
 		new /obj/item/stack/sheet/glass(target_turf)

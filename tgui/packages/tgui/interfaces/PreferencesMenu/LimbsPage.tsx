@@ -45,7 +45,7 @@ export const Markings = (props) => {
               <Dropdown
                 width="100%"
                 options={props.limb.markings.marking_choices}
-                displayText={marking.name}
+                selected={marking.name}
                 onSelected={(shit) =>
                   act('change_marking', {
                     limb_slot: props.limb.slot,
@@ -141,7 +141,7 @@ export const AugmentationPage = (props) => {
                   <Dropdown
                     width="100%"
                     options={Object.values(props.limb.aug_choices) as string[]}
-                    displayText={props.limb.chosen_aug}
+                    selected={props.limb.chosen_aug}
                     onSelected={(value) => {
                       // Since the costs are positive,
                       // it's added and not substracted
@@ -164,7 +164,7 @@ export const AugmentationPage = (props) => {
                   <Dropdown
                     width="100%"
                     options={props.data.robotic_styles}
-                    displayText={props.limb.chosen_style}
+                    selected={props.limb.chosen_style}
                     onSelected={(value) =>
                       act('set_limb_aug_style', {
                         limb_slot: props.limb.slot,
@@ -195,7 +195,7 @@ export const OrganPage = (props) => {
           <Dropdown
             width="100%"
             options={Object.values(props.organ.organ_choices) as string[]}
-            displayText={props.organ.chosen_organ}
+            selected={props.organ.chosen_organ}
             onSelected={(value) => {
               // Since the costs are positive, it's added and not substracted
               if (balance + props.organ.costs[value] > 0) {
@@ -226,7 +226,8 @@ export const LimbsPage = (props) => {
             <Dropdown
               width="100%"
               options={Object.values(markings)}
-              displayText="Pick a preset:"
+              selected={Object.values(markings)[1]}
+              placeholder="Pick a preset:"
               onSelected={(value) => act('set_preset', { preset: value })}
             />
           </div>

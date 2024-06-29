@@ -61,6 +61,22 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
 	return
 
+/datum/emote/living/yawn
+	message_robot = "synthesizes a yawn."
+	message_AI = "synthesizes a yawns."
+
+/datum/emote/living/sniff/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(.)
+		var/turf/open/current_turf = get_turf(user)
+		if(istype(current_turf) && current_turf.pollution)
+			if(iscarbon(user))
+				var/mob/living/carbon/carbon_user = user
+				if(carbon_user.internal) //Breathing from internals means we cant smell
+					return
+				carbon_user.next_smell = world.time + SMELL_COOLDOWN
+			current_turf.pollution.smell_act(user)
+
 /datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
 	if(intentional && (!HAS_TRAIT(user, TRAIT_FREERUNNING) && !HAS_TRAIT(user, TRAIT_STYLISH)) && !isobserver(user))
 		user.balloon_alert(user, "not nimble enough!")
@@ -339,10 +355,16 @@
 	key_third_person = "twitches their ears"
 	message = "twitches their ears!"
 
-/datum/emote/living/clear
-	key = "clear"
-	key_third_person = "clears their throat"
-	message = "clears their throat."
+/datum/emote/living/carbon/human/clear_throat
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/clear_throat/get_sound(mob/living/user)
+	if(!iscarbon(user))
+		return
+	if(user.gender == MALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/male/clear_m.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/female/clear_f.ogg'
 
 // Avian revolution
 /datum/emote/living/bawk
@@ -368,12 +390,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/caw2.ogg'
-
-/datum/emote/living/whistle
-	key = "whistle"
-	key_third_person = "whistles"
-	message = "whistles."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/blep
 	key = "blep"
@@ -414,6 +430,29 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
+
+/datum/emote/living/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "lets out a long howl."
+	emote_type = EMOTE_AUDIBLE
+	audio_cooldown = 30 SECONDS
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/howl.ogg'
+
+/datum/emote/living/howl/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+	if(!HAS_TRAIT(user, TRAIT_CANINE))
+		return FALSE
+	return ..()
+
+/datum/emote/living/pant
+	key = "pant"
+	key_third_person = "pants"
+	message = "pants like a dog!"
+	audio_cooldown = 15 SECONDS
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/pant.ogg'
 
 /datum/emote/living/baa
 	key = "baa"

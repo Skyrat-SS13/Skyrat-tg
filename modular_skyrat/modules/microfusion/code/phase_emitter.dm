@@ -2,6 +2,16 @@
 *	PHASE EMITTERS
 */
 
+/// The error message returned when the phase emitter is processed but damaged.
+#define PHASE_FAILURE_DAMAGED "PHASE EMITTER: Emitter damaged!"
+/// The error message returned when the phase emitter has reached it's htermal throttle.
+#define PHASE_FAILURE_THROTTLE "PHASE EMITTER: Thermal throttle active!"
+
+/// The heat dissipation bonus of an emitter being in space!
+#define PHASE_HEAT_DISSIPATION_BONUS_SPACE 30
+/// The heat dissipation bonus of an emitter being in air!
+#define PHASE_HEAT_DISSIPATION_BONUS_AIR 10
+
 /*
 *	Basically the heart of the gun, can be upgraded.
 */
@@ -212,3 +222,13 @@
 	cooling_system_rate = 60
 	integrity = 500
 	color = "#6966ff"
+
+
+#undef PHASE_FAILURE_DAMAGED
+#undef PHASE_FAILURE_THROTTLE
+
+#undef PHASE_HEAT_DISSIPATION_BONUS_SPACE
+#undef PHASE_HEAT_DISSIPATION_BONUS_AIR
+
+#undef SHOT_SUCCESS
+#undef SHOT_FAILURE_NO_EMITTER

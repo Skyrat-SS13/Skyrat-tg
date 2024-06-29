@@ -1,7 +1,7 @@
 /**
  * Players can use this item to put obj/item/implant's in living mobs. Can be renamed with a pen.
  */
-/obj/item/implanter//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/implanter//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "implanter"
 	desc = "A sterile automatic implant injector."
 	icon = 'icons/obj/medical/syringe.dmi'
@@ -45,7 +45,7 @@
 		to_chat(user, span_warning("[src] fails to implant [target]."))
 
 /obj/item/implanter/attackby(obj/item/I, mob/living/user, params)
-	if(!istype(I, /obj/item/pen))
+	if(IS_WRITING_UTENSIL(I))
 		return ..()
 	if(!user.can_write(I))
 		return

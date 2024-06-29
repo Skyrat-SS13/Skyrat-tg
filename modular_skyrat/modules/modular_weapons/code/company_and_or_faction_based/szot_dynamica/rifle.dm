@@ -112,6 +112,7 @@
 
 /obj/item/gun/ballistic/automatic/wylom/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
+	AddElement(/datum/element/gun_launches_little_guys, throwing_force = 3, throwing_range = 5)
 
 /obj/item/gun/ballistic/automatic/wylom/examine(mob/user)
 	. = ..()

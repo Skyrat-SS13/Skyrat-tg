@@ -47,13 +47,13 @@
 			"pinned" = module.pinned_to[REF(user)],
 			"idle_power" = module.idle_power_cost,
 			"active_power" = module.active_power_cost,
-			"use_power" = module.use_power_cost,
+			"use_energy" = module.use_energy_cost,
 			"module_complexity" = module.complexity,
 			"cooldown_time" = module.cooldown_time,
 			"cooldown" = round(COOLDOWN_TIMELEFT(module, cooldown_timer), 1 SECONDS),
 			"id" = module.tgui_id,
 			"ref" = REF(module),
-			"configuration_data" = module.get_configuration(user)
+			"configuration_data" = module.get_configuration(user),
 		))
 	data["module_custom_status"] = module_custom_status
 	data["module_info"] = module_info
@@ -64,10 +64,13 @@
 	data["ui_theme"] = ui_theme
 	data["control"] = name
 	data["complexity_max"] = complexity_max
-	data["helmet"] = helmet?.name
-	data["chestplate"] = chestplate?.name
-	data["gauntlets"] = gauntlets?.name
-	data["boots"] = boots?.name
+	var/part_info = list()
+	for(var/obj/item/part as anything in get_parts())
+		part_info += list(list(
+			"slot" = english_list(parse_slot_flags(part.slot_flags)),
+			"name" = part.name,
+		))
+	data["parts"] = part_info
 	return data
 
 /obj/item/mod/control/ui_state(mob/user)

@@ -46,7 +46,7 @@
 	if(direction == dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 
-/obj/structure/flippedtable/CtrlShiftClick(mob/user)
+/obj/structure/flippedtable/click_ctrl_shift(mob/living/user)
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return FALSE
@@ -60,11 +60,17 @@
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
 
-//TABLES
+/obj/structure/flippedtable/BorgCtrlShiftClick(mob/living/silicon/robot/user)
+	if(Adjacent(user, src))
+		. = ..()
+	else
+		return FALSE
 
-/obj/structure/table/CtrlShiftClick(mob/living/user)
+
+//TABLES
+/obj/structure/table/click_ctrl_shift(mob/living/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src) || isobserver(user) || iscorticalborer(user))
+	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return
 	if(!can_flip)
 		return
@@ -114,6 +120,12 @@
 			if(movable_entity.throwing || (movable_entity.movement_type & (FLOATING|FLYING)))
 				continue
 			movable_entity.safe_throw_at(throw_target, range = 1, speed = 1, force = MOVE_FORCE_NORMAL, gentle = TRUE)
+
+/obj/structure/table/BorgCtrlShiftClick(mob/living/silicon/robot/user)
+	if(Adjacent(user, src))
+		. = ..()
+	else
+		return FALSE
 
 /obj/structure/table
 	var/flipped_table_type = /obj/structure/flippedtable
