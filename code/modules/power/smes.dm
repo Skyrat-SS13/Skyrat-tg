@@ -13,7 +13,7 @@
 #define SMES_INPUTTING 8
 #define SMES_INPUT_ATTEMPT 9
 
-/* SKYRAT EDIT START: Modularized Power change in modular_nova\master_files\code\modules\power\smes.dm
+// SKYRAT EDIT COMMENT: Modularized Power change in modular_nova\master_files\code\modules\power\smes.dm
 /obj/machinery/power/smes
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
@@ -41,7 +41,6 @@
 	var/output_used = 0 // amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	var/obj/machinery/power/terminal/terminal = null
-*/ // SKYRAT EDIT END
 
 /obj/machinery/power/smes/examine(user)
 	. = ..()
