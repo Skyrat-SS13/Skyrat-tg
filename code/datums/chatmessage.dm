@@ -123,8 +123,8 @@
 
 	// Calculate target color if not already present
 	if (!target.chat_color || target.chat_color_name != target.name)
-		target.chat_color = get_chat_color_string(target.name) // NOVA EDIT CHANGE - ORIGINAL: target.chat_color = colorize_string(target.name)
-		target.chat_color_darkened = get_chat_color_string(target.name, darkened = TRUE) // NOVA EDIT CHANGE - ORIGINAL: target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
+		target.chat_color = get_chat_color_string(target.name) // SKYRAT EDIT CHANGE - ORIGINAL: target.chat_color = colorize_string(target.name)
+		target.chat_color_darkened = get_chat_color_string(target.name, darkened = TRUE) // SKYRAT EDIT CHANGE - ORIGINAL: target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
 		target.chat_color_name = target.name
 
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
