@@ -46,6 +46,24 @@
 	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/under/costume/skyrat/kilt
+	name = "kilt"
+	desc = "Just so we can inheret the properties of the actual kilt."
+	icon_state = "kilt"
+	body_parts_covered = CHEST|GROIN|LEGS|FEET
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+
+
+/obj/item/clothing/under/costume/skyrat/kilt/royal
+	name = "royal kilt"
+	desc = "House of Stuart approved!"
+	icon_state = "royalkilt"
+
+/obj/item/clothing/under/costume/skyrat/tac/irish
+	name = "irish tactical uniform"
+	desc = "The SAM missiles are in the sky! Faint whiffs of cheap booze and Libyan semtex come off this getup, someone was so kind as to leave a book in one of the pockets, too bad it's all in Gaelic!"
+	icon_state = "tactical1"
+
 /*
 *	LUNAR AND JAPANESE CLOTHES
 */
