@@ -196,8 +196,6 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/living_user = user
-		living_user.Paralyze(200)
-		living_user.remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		living_user.set_combat_indicator(FALSE)
 
 /datum/emote/living/surrender/select_message_type(mob/user, intentional)

@@ -34,8 +34,8 @@
 		if(P.run_emote(src, param, m_type, intentional))
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, P, act, m_type, message, intentional)
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTED(P.key))
-			src.nextsoundemote = world.time + P.cooldown // SKYRAT EDIT - EMOTE COOLDOWNS
 			return TRUE
+		src.nextsoundemote = world.time // SKYRAT EDIT ADDITION
 	if(intentional && !silenced && !force_silence)
 		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
 	return FALSE

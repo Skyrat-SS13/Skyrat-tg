@@ -22,7 +22,7 @@
 	id = "adv_power_skyrat"
 	display_name = "Additional Advanced Power Manipulation"
 	description = "How to get different types of zap."
-	prereq_ids = list("adv_power")
+	prereq_ids = list("parts_adv")
 	design_ids = list("teg", "circulator")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier2_capacitors = 500)
