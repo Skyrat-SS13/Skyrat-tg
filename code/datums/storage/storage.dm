@@ -1099,6 +1099,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	to_hide.client.screen -= real_location.contents
 	QDEL_NULL(storage_interfaces[to_hide])
 	storage_interfaces -= to_hide
+
 	return TRUE
 
 /datum/storage/proc/action_trigger(datum/source, datum/action/triggered)
