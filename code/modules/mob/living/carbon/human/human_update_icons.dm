@@ -870,6 +870,20 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	mutant_styles = NONE, // SKYRAT EDIT ADD - Further outfit modification for outfits (added `mutant_styles` argument)
 )
 
+	// SKYRAT EDIT ADDITION START - Taur-friendly uniforms and suits
+	var/using_taur_variant = FALSE
+	if (isnull(override_file))
+		if (mutant_styles & STYLE_TAUR_ALL)
+			if ((mutant_styles & STYLE_TAUR_SNAKE) && worn_icon_taur_snake)
+				override_file = worn_icon_taur_snake
+				using_taur_variant = TRUE
+			else if ((mutant_styles & STYLE_TAUR_PAW) && worn_icon_taur_paw)
+				override_file = worn_icon_taur_paw
+				using_taur_variant = TRUE
+			else if ((mutant_styles & STYLE_TAUR_HOOF) && worn_icon_taur_hoof)
+				override_file = worn_icon_taur_hoof
+				using_taur_variant = TRUE
+	// SKYRAT EDIT END
 	//Find a valid icon_state from variables+arguments
 	var/t_state = override_state || (isinhands ? inhand_icon_state : worn_icon_state) || icon_state
 	//Find a valid icon file from variables+arguments
@@ -883,9 +897,12 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
 	// SKYRAT EDIT ADDITION START - Taur-friendly uniforms and suits
-	if(mutant_styles & STYLE_TAUR_ALL)
-		standing = wear_taur_version(standing.icon_state, standing.icon, layer2use, female_uniform, greyscale_colors)
-	// SKYRAT EDIT END
+	if (mutant_styles & STYLE_TAUR_ALL)
+		if (!using_taur_variant)
+			standing = wear_taur_version(standing.icon_state, standing.icon, layer2use, female_uniform, greyscale_colors)
+		else
+			standing.pixel_x -= 16 // it doesnt look right otherwise
+	// SKYRAT EDIT ADDITION END
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
