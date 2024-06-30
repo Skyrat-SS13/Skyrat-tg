@@ -328,7 +328,6 @@
 	//SKYRAT EDIT END
 
 	return info
-
 /// Returns information pertaining to this job's radio.
 /datum/job/proc/get_radio_information()
 	if(job_flags & JOB_CREW_MEMBER)
