@@ -279,6 +279,7 @@ SKYRAT EDIT REMOVAL END */
 	icon_state = "borghypo_s"
 	tgui_theme = "syndicate"
 	default_reagent_types = HACKED_MEDICAL_REAGENTS
+	expanded_reagent_types = null
 
 /// Peacekeeper hypospray
 /obj/item/reagent_containers/borghypo/peace

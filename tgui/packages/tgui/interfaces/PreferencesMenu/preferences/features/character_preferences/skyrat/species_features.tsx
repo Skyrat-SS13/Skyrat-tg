@@ -654,6 +654,13 @@ export const taur_emissive: Feature<boolean[]> = {
   component: FeatureTriBoolInput,
 };
 
+export const naga_sole: FeatureToggle = {
+  name: 'Taur (Naga) disable hardened soles',
+  description:
+    'If using a serpentine taur body, determines if you are immune to caltrops and a few other effects of being barefoot.',
+  component: CheckboxInput,
+};
+
 export const xenodorsal_toggle: FeatureToggle = {
   name: 'Xenodorsal',
   component: CheckboxInput,

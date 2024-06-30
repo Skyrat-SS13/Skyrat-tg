@@ -203,3 +203,44 @@
 	name = "Numbing"
 	icon_state = "hypoviallarge-generic"
 	list_reagents = list(/datum/reagent/medicine/mine_salve = 50, /datum/reagent/medicine/morphine = 50)
+
+//Some bespoke helper types for preloaded paramedic kits.
+/obj/item/reagent_containers/cup/vial/small/libital
+	name = "brute hypovial (libital)"
+	icon_state = "hypovial-brute"
+
+/obj/item/reagent_containers/cup/vial/small/libital/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/libital, amount = 50, added_purity = 1)
+
+/obj/item/reagent_containers/cup/vial/small/lenturi
+	name = "burn hypovial (lenturi)"
+	icon_state = "hypovial-burn"
+
+/obj/item/reagent_containers/cup/vial/small/lenturi/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/lenturi, amount = 50, added_purity = 1)
+
+/obj/item/reagent_containers/cup/vial/small/seiver
+	name = "tox hypovial (seiver)"
+	icon_state = "hypovial-tox"
+
+/obj/item/reagent_containers/cup/vial/small/seiver/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/seiver, amount = 50, reagtemp = 975, added_purity = 1)
+
+/obj/item/reagent_containers/cup/vial/small/convermol
+	name = "tox hypovial (convermol)"
+	icon_state = "hypovial-oxy"
+
+/obj/item/reagent_containers/cup/vial/small/convermol/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/c2/convermol, amount = 50, added_purity = 1)
+
+/obj/item/reagent_containers/cup/vial/small/atropine
+	name = "crit hypovial (atropine)"
+	icon_state = "hypovial-crit"
+
+/obj/item/reagent_containers/cup/vial/small/atropine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent(reagent_type = /datum/reagent/medicine/atropine, amount = 50, added_purity = 1)
