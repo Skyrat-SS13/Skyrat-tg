@@ -104,7 +104,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["ethcolor"] = COLOR_WHITE
 	/* SKYRAT EDIT START REMOVAL START - Customization
-	target.dna.features["body_markings"] = get_consistent_feature_entry(SSaccessories.body_markings_list)
+	target.dna.features["lizard_markings"] = get_consistent_feature_entry(SSaccessories.lizard_markings_list)
 	target.dna.features["ears"] = get_consistent_feature_entry(SSaccessories.ears_list)
 	target.dna.features["frills"] = get_consistent_feature_entry(SSaccessories.frills_list)
 	target.dna.features["horns"] = get_consistent_feature_entry(SSaccessories.horns_list)
