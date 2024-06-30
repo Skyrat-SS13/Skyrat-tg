@@ -338,6 +338,10 @@
 	name = "Recolorable Kilt"
 	item_path = /obj/item/clothing/under/pants/skyrat/kilt
 
+/datum/loadout_item/uniform/miscellaneous/kilt/royal
+	name = "Royal Kilt"
+	item_path = /obj/item/clothing/under/costume/skyrat/kilt/royal
+
 //TODO: split loadout's miscellaneous to have "Pants/Shorts" and "Dresses/Skirts" as options too. Misc is stupid.
 
 /datum/loadout_item/uniform/miscellaneous/dress_striped
@@ -483,6 +487,10 @@
 /datum/loadout_item/uniform/miscellaneous/tactical_hawaiian_green
 	name = "Tactical Hawaiian Outfit - Green"
 	item_path = /obj/item/clothing/under/tachawaiian/green
+
+/datum/loadout_item/uniform/miscellaneous/tactical/irish
+	name = "Irish Tactical Uniform"
+	item_path = /obj/item/clothing/under/costume/skyrat/tac/irish
 
 /datum/loadout_item/uniform/miscellaneous/maidcostume
 	name = "Maid Costume"

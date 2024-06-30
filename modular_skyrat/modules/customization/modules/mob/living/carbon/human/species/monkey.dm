@@ -9,6 +9,7 @@
 	return features
 
 /datum/species/monkey/prepare_human_for_preview(mob/living/carbon/human/monke)
+	monke.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Monkey", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"))
 	regenerate_organs(monke, src, visual_only = TRUE)
 	monke.update_body(is_creating = TRUE)
 

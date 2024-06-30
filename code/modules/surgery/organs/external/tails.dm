@@ -148,7 +148,7 @@
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
-	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
+	return "[wagging ? "wagging_" : ""][sprite_datum.icon_state]" //add the wagging tag if we be wagging
 
 // SKYRAT EDIT ADDITION - CUSTOMIZATION
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
@@ -180,7 +180,12 @@
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
 
 /obj/item/organ/external/tail/monkey
+	name = "monkey tail"
+	preference = "feature_monkey_tail"
+
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
+
+	// dna_block = DNA_MONKEY_TAIL_BLOCK - // SKYRAT EDIT REMOVAL
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
