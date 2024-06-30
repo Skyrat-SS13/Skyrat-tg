@@ -332,7 +332,7 @@
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(target.stat < UNCONSCIOUS)
 		if(HAS_TRAIT(target, TRAIT_ANALGESIA))
-			target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery) // NOVA EDIT ADDITION - Adds mood effects to surgeries
+			target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery) // SKYRAT EDIT ADDITION - Adds mood effects to surgeries
 			if(!pain_message)
 				return
 			to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
