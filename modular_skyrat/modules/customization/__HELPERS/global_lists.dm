@@ -73,6 +73,39 @@
 				SSaccessories.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone] + (feature_block_set - 1) * DNA_BLOCKS_PER_MARKING + color_block]"] = DNA_BLOCK_SIZE_COLOR
 		SSaccessories.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
 
+/proc/init_skyrat_stack_recipes()
+	var/list/additional_stack_recipes = list(
+		/obj/item/stack/sheet/leather = list(GLOB.skyrat_leather_recipes, GLOB.skyrat_leather_belt_recipes),
+		/obj/item/stack/sheet/mineral/titanium = list(GLOB.skyrat_titanium_recipes),
+		/obj/item/stack/sheet/mineral/snow = list(GLOB.skyrat_snow_recipes),
+		/obj/item/stack/sheet/iron = list(GLOB.skyrat_metal_recipes, GLOB.skyrat_metal_airlock_recipes),
+		/obj/item/stack/sheet/plasteel = list(GLOB.skyrat_plasteel_recipes),
+		/obj/item/stack/sheet/mineral/wood = list(GLOB.skyrat_wood_recipes),
+		/obj/item/stack/sheet/cloth = list(GLOB.skyrat_cloth_recipes),
+		/obj/item/stack/ore/glass = list(GLOB.skyrat_sand_recipes),
+		/obj/item/stack/rods = list(GLOB.skyrat_rod_recipes),
+		/obj/item/stack/sheet/mineral/stone = list(GLOB.stone_recipes),
+		/obj/item/stack/sheet/plastic_wall_panel = list(GLOB.plastic_wall_panel_recipes),
+		/obj/item/stack/sheet/spaceshipglass = list(GLOB.spaceshipglass_recipes),
+	)
+	for(var/stack in additional_stack_recipes)
+		for(var/material_list in additional_stack_recipes[stack])
+			for(var/stack_recipe in material_list)
+				if(istype(stack_recipe, /datum/stack_recipe_list))
+					var/datum/stack_recipe_list/stack_recipe_list = stack_recipe
+					for(var/nested_recipe in stack_recipe_list.recipes)
+						if(!nested_recipe)
+							continue
+						var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, nested_recipe)
+						if(recipe.name != "" && recipe.result)
+							GLOB.crafting_recipes += recipe
+				else
+					if(!stack_recipe)
+						continue
+					var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, stack_recipe)
+					if(recipe.name != "" && recipe.result)
+						GLOB.crafting_recipes += recipe
+
 /proc/make_augment_references()
 	// Here we build the global loadout lists
 	for(var/path in subtypesof(/datum/augment_item))
