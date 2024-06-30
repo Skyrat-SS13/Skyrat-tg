@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(goldeneye)
 	if(here.z != there.z)
 		linked_alert.icon_state = "pinonnull"
 		return
-	if(!get_dist_euclidian(here,there))
+	if(!get_dist_euclidean(here,there))
 		linked_alert.icon_state = "pinondirect"
 		return
 	linked_alert.setDir(get_dir(here, there))
