@@ -1,5 +1,5 @@
 /datum/techweb_node/basic_microfusion
-	id = "basic_microfusion"
+	id = TECHWEB_NODE_BASIC_MICROFUSION
 	starting_node = TRUE
 	display_name = "Basic Microfusion Technology"
 	description = "Basic microfusion technology allowing for basic microfusion designs."
@@ -9,13 +9,13 @@
 
 //Enhanced microfusion
 /datum/techweb_node/enhanced_microfusion
-	id = "enhanced_microfusion"
+	id = TECHWEB_NODE_ENHANCED_MICROFUSION
 	display_name = "Enhanced Microfusion Technology"
 	description = "Enhanced microfusion technology allowing for upgraded basic microfusion!"
 	prereq_ids = list(
-		"basic_microfusion",
-		"energy_manipulation",
-		"parts",
+		TECHWEB_NODE_BASIC_MICROFUSION,
+		TECHWEB_NODE_ENERGY_MANIPULATION,
+		TECHWEB_NODE_PARTS,
 	)
 	design_ids = list(
 		"enhanced_microfusion_cell",
@@ -28,12 +28,12 @@
 
 //Advanced microfusion
 /datum/techweb_node/advanced_microfusion
-	id = "advanced_microfusion"
+	id = TECHWEB_NODE_ADVANCED_MICROFUSION
 	display_name = "Advanced Microfusion Technology"
 	description = "Advanced microfusion technology allowing for advanced microfusion!"
 	prereq_ids = list(
-		"enhanced_microfusion",
-		"parts_adv",
+		TECHWEB_NODE_ENHANCED_MICROFUSION,
+		TECHWEB_NODE_PARTS_ADV,
 	)
 	design_ids = list(
 		"advanced_microfusion_cell",
@@ -52,15 +52,15 @@
 
 // Bluespace microfusion
 /datum/techweb_node/bluespace_microfusion
-	id = "bluespace_microfusion"
+	id = TECHWEB_NODE_BLUESPACE_MICROFUSION
 	display_name = "Bluespace Microfusion Technology"
 	description = "Bluespace tinkering plus microfusion technology!"
 	prereq_ids = list(
-		"advanced_microfusion",
-		"parts_bluespace",
-		"beam_weapons",
-		"electric_weapons",
-		"fusion",
+		TECHWEB_NODE_ADVANCED_MICROFUSION,
+		TECHWEB_NODE_PARTS_BLUESPACE,
+		TECHWEB_NODE_BEAM_WEAPONS,
+		TECHWEB_NODE_ELECTRIC_WEAPONS,
+		TECHWEB_NODE_FUSION,
 	)
 	design_ids = list(
 		"bluespace_microfusion_cell",
@@ -71,12 +71,12 @@
 
 // Quantum microfusion
 /datum/techweb_node/quantum_microfusion
-	id = "quantum_microfusion"
+	id = TECHWEB_NODE_QUANTUM_MICROFUSION
 	display_name = "Quantum Microfusion Technology"
 	description = "Bleeding edge microfusion tech, making use of the latest in materials and components, bluespace or otherwise."
 	prereq_ids = list(
-		"bluespace_microfusion",
-		"alientech",
+		TECHWEB_NODE_BLUESPACE_MICROFUSION,
+		TECHWEB_NODE_ALIENTECH,
 	)
 	design_ids = list(
 		"microfusion_gun_attachment_xray",
@@ -85,12 +85,12 @@
 
 // Warcrime microfusion
 /datum/techweb_node/illegal_microfusion
-	id = "illegal_microfusion"
+	id = TECHWEB_NODE_ILLEGAL_MICROFUSION
 	display_name = "Illegal Microfusion Technology"
 	description = "Microfusion tech that has previously been banned by SolFed. I love the smell of plasma in the mornings."
 	prereq_ids = list(
-		"advanced_microfusion",
-		"syndicate_basic",
+		TECHWEB_NODE_ADVANCED_MICROFUSION,
+		TECHWEB_NODE_SYNDICATE_BASIC,
 	)
 	design_ids = list(
 		"microfusion_gun_attachment_superheat",
@@ -103,12 +103,12 @@
 
 // clown microfusion. | This exists to not make this non modular
 /datum/techweb_node/clown_microfusion
-	id = "clown_microfusion"
+	id = TECHWEB_NODE_CLOWN_MICROFUSION
 	display_name = "Honkicron Clownery Systems Technology"
 	description = "Microfusion tech that is proprietary tech of Honkicron Clownery Systems. HONK!!"
 	prereq_ids = list(
-		"basic_microfusion",
-		"toys",
+		TECHWEB_NODE_BASIC_MICROFUSION,
+		TECHWEB_NODE_TOYS,
 	)
 	design_ids = list(
 		"microfusion_gun_attachment_honk",
