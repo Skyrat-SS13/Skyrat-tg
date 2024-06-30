@@ -86,13 +86,13 @@
 *	TELECOMMS SPECIALIST
 */
 
-/obj/item/clothing/under/rank/engineering/engineer/nova/utility/telecomm
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm
 	desc = "It's a jumpsuit worn by telecomms specialists. Made from fire resistant materials."
 	name = "telecomm jumpsuit"
 	icon_state = "telecomm"
 	can_adjust = TRUE
 
-/obj/item/clothing/under/rank/engineering/engineer/nova/utility/telecomm/skirt
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm/skirt
 	desc = "It's a jumpskirt worn by telecomms specialists. Made from fire resistant materials."
 	name = "telecomm jumpskirt"
 	icon_state = "telecomm_skirt"

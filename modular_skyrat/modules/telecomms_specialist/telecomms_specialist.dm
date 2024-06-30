@@ -53,7 +53,7 @@
 	jobtype = /datum/job/telecomms_specialist
 
 	id_trim = /datum/id_trim/job/telecomms_specialist
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/nova/utility/telecomm
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm
 	suit = /obj/item/clothing/suit/toggle/jacket/tcomm
 	neck = /obj/item/clothing/neck/link_scryer
 	belt = /obj/item/screwdriver
