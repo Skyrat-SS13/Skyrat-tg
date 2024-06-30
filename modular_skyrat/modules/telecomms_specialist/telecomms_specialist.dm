@@ -45,7 +45,7 @@
 
 /obj/effect/landmark/start/telecomms_specialist
 	name = "Telecomms Specialist"
-	icon = 'modular_nova/master_files/icons/mob/landmarks.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 	icon_state = "Engineering Guard"
 
 /datum/outfit/job/telecomms_specialist
@@ -90,7 +90,7 @@
 
 /datum/id_trim/job/telecomms_specialist
 	assignment = "Telecomms Specialist"
-	trim_icon = 'modular_nova/master_files/icons/obj/card.dmi'
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_telecommsspecialist"
 	department_color = COLOR_ENGINEERING_ORANGE
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
