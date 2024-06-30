@@ -28,10 +28,14 @@
 	)
 	design_ids = list(
 		"enhanced_microfusion_cell",
+		"microfusion_cell_attachment_rechargeable",
 		"enhanced_microfusion_phase_emitter",
 		"microfusion_gun_attachment_black_camo",
 		"microfusion_gun_attachment_nt_camo",
 		"microfusion_gun_attachment_heatsink",
+		"microfusion_gun_attachment_rgb",
+		"microfusion_cell_attachment_tactical",
+		"microfusion_cell_attachment_reloader",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
@@ -75,6 +79,7 @@
 		"bluespace_microfusion_cell",
 		"microfusion_gun_attachment_repeater",
 		"bluespace_microfusion_phase_emitter",
+		"microfusion_cell_attachment_selfcharging",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 
