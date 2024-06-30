@@ -2,7 +2,7 @@
 // NEW NODES
 
 /datum/techweb_node/adv_vision
-	id = "adv_vision"
+	id = TECHWEB_NODE_ADVANCED_VISION
 	display_name = "Combat Cybernetic Eyes"
 	description = "Military grade combat implants to improve vision."
 	prereq_ids = list("combat_implants", "alien_surgery")
