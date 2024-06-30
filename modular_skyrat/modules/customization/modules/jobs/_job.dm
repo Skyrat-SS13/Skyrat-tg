@@ -13,8 +13,8 @@
 	var/list/species_whitelist
 	//Blacklist of species for this job.
 	var/list/species_blacklist
-	/// Which languages does the job require, associative to UNDERSTOOD_LANGUAGE or (UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE)
-	var/list/required_languages = list(/datum/language/common = (UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE))
+	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
+	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
 
 	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
 	var/veteran_only = FALSE
@@ -168,7 +168,7 @@
 
 	for(var/datum/language/lang as anything in required_languages)
 		//Doesnt have language, or the required "level" is too low (understood, while needing spoken)
-		if((!pref.languages[lang] || pref.languages[lang] < required_languages[lang]) && bilingual_pref != lang.name)
+		if((!pref.languages[lang] || pref.languages[lang] < required_languages[lang]) && bilingual_pref != lang.name) // SKYRAT EDIT - check the bilingual quirk
 			return FALSE
 	return TRUE
 

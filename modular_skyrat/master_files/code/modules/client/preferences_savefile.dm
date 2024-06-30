@@ -3,7 +3,7 @@
  * You can't really use the non-modular version, least you eventually want asinine merge
  * conflicts and/or potentially disastrous issues to arise, so here's your own.
  */
-#define MODULAR_SAVEFILE_VERSION_MAX 6
+#define MODULAR_SAVEFILE_VERSION_MAX 5
 
 #define MODULAR_SAVEFILE_UP_TO_DATE -1
 
@@ -12,7 +12,6 @@
 #define VERSION_SYNTH_REFACTOR 3
 #define VERSION_UNDERSHIRT_BRA_SPLIT 4
 #define VERSION_CHRONOLOGICAL_AGE 5
-#define VERSION_LANGUAGES 6
 
 #define INDEX_UNDERWEAR 1
 #define INDEX_BRA 2
@@ -89,10 +88,9 @@
 	headshot = save_data["headshot"]
 
 	food_preferences = SANITIZE_LIST(save_data["food_preferences"])
-	var/skyrat_update = savefile_needs_update_skyrat(save_data)
-	if(skyrat_update >= 0)
-		update_character_skyrat(skyrat_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
-		save_character(TRUE)
+
+	if(needs_update >= 0)
+		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
 
 
 /// Brings a savefile up to date with modular preferences. Called if savefile_needs_update_skyrat() returned a value higher than 0
@@ -251,16 +249,6 @@
 	if(current_version < VERSION_CHRONOLOGICAL_AGE)
 		write_preference(GLOB.preference_entries[/datum/preference/numeric/chronological_age], read_preference(/datum/preference/numeric/age))
 
-	if(current_version < VERSION_LANGUAGES)
-		var/static/list/language_number_updates = list(
-			0,
-			UNDERSTOOD_LANGUAGE,
-			UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE,
-		)
-		var/list/save_languages = save_data["languages"]
-		for(var/language in save_languages)
-			languages[language] = language_number_updates[save_languages[language] + 1]// fuck you indexing from 1
-
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
 		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
@@ -268,7 +256,7 @@
 
 
 /// Saves the modular customizations of a character on the savefile
-/datum/preferences/proc/save_character_skyrat(list/save_data, updated)
+/datum/preferences/proc/save_character_skyrat(list/save_data)
 	save_data["augments"] = augments
 	save_data["augment_limb_styles"] = augment_limb_styles
 	save_data["features"] = features
@@ -279,9 +267,8 @@
 	save_data["alt_job_titles"] = alt_job_titles
 	save_data["languages"] = languages
 	save_data["headshot"] = headshot
+	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
 	save_data["food_preferences"] = food_preferences
-	if(updated)
-		save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
 
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)

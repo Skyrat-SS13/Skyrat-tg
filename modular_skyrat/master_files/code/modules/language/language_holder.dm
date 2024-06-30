@@ -36,7 +36,7 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 	remove_languages_by_source(list(LANGUAGE_MIND, LANGUAGE_ATOM, LANGUAGE_SPECIES))
 
 	for(var/lang_path in preferences.languages)
-		grant_language(lang_path, preferences.languages[lang_path])
+		grant_language(lang_path)
 
 	get_selected_language()
 

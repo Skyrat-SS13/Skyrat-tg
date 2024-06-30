@@ -101,8 +101,6 @@ export type Language = {
   description: string;
   name: string;
   icon: string;
-  can_understand: boolean;
-  can_speak: boolean;
 };
 
 export type Marking = {
