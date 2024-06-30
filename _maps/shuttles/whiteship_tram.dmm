@@ -496,25 +496,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/abandoned/engine)
-"ca" = (
-/obj/structure/cable,
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/power_store/cell/high,
-/obj/item/multitool{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/item/stack/cable_coil{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 9
-	},
-/obj/machinery/power/apc/auto_name/directional/west,
-/turf/open/floor/iron/smooth_large,
-/area/shuttle/abandoned/engine)
 "cg" = (
 /obj/structure/sign/warning/fire,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
@@ -1162,16 +1143,6 @@
 /obj/structure/lattice,
 /turf/template_noop,
 /area/shuttle/abandoned/cargo)
-"Ft" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/white/corner{
-	dir = 1
-	},
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/abandoned/bridge)
 "FQ" = (
 /obj/item/shard/titanium,
 /obj/structure/grille/broken,
@@ -1265,6 +1236,18 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/abandoned/engine)
+"NZ" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
+	dir = 8;
+	x_offset = 0;
+	y_offset = 13
+	},
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/abandoned/bridge)
 "OL" = (
 /obj/machinery/computer/shuttle/white_ship/bridge{
 	dir = 8
@@ -1274,6 +1257,25 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/bridge)
+"OV" = (
+/obj/structure/cable,
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/multitool{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/stack/cable_coil{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 9
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/abandoned/engine)
 "PI" = (
 /obj/machinery/door/window/survival_pod/left/directional/east,
 /obj/effect/turf_decal/delivery/red,
@@ -1567,7 +1569,7 @@ RK
 dn
 yd
 OL
-Ft
+NZ
 dx
 "}
 (5,1,1) = {"
@@ -1603,7 +1605,7 @@ da
 cl
 Rs
 ad
-ca
+OV
 NU
 bx
 ad

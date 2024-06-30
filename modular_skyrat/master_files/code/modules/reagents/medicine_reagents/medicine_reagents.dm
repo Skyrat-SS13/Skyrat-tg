@@ -17,4 +17,4 @@
 	if(!istype(exposed_mob) || (reac_volume < 0.5))
 		return
 
-	exposed_mob.update_mutant_bodyparts(force_update=TRUE)
+	exposed_mob.update_mutant_bodyparts()

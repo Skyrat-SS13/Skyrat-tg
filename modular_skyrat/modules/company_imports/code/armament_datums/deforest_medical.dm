@@ -35,6 +35,10 @@
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
 	cost = PAYCHECK_COMMAND * 8
 
+/datum/armament_entry/company_import/deforest/first_aid_kit/technician_satchel
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_paramedic/stocked
+	cost = PAYCHECK_COMMAND * 7
+
 // Basic first aid supplies like gauze, sutures, mesh, so on
 
 /datum/armament_entry/company_import/deforest/first_aid

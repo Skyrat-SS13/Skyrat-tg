@@ -31,7 +31,7 @@
 			/obj/item/nullrod/armblade,
 			/obj/item/nullrod/carp,
 			/obj/item/nullrod/chainsaw,
-			/obj/item/nullrod/claymore/bostaff,
+			/obj/item/nullrod/bostaff,
 			/obj/item/nullrod/hammer,
 			/obj/item/nullrod/pitchfork,
 			/obj/item/nullrod/pride_hammer,

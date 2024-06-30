@@ -268,15 +268,6 @@
 /obj/machinery/recharger,
 /turf/open/floor/pod/light,
 /area/shuttle/abandoned)
-"lV" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
-	y_offset = 2;
-	x_offset = -7
-	},
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/pod/dark,
-/area/shuttle/abandoned)
 "mh" = (
 /obj/effect/turf_decal/trimline/purple/filled/corner{
 	dir = 8
@@ -403,19 +394,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/abandoned)
-"qS" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/power_store/cell/high,
-/obj/effect/turf_decal/bot_white,
-/obj/effect/turf_decal/siding/purple{
-	dir = 9
-	},
-/obj/item/stack/cable_coil,
-/obj/item/multitool,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/white/diagonal,
-/area/shuttle/abandoned)
 "re" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/bot_white,
@@ -536,24 +514,6 @@
 /obj/machinery/light/small/built/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned)
-"vB" = (
-/obj/machinery/door/airlock/external/ruin,
-/obj/effect/turf_decal/loading_area/white{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/docking_port/mobile{
-	dir = 8;
-	shuttle_id = "whiteship";
-	launch_status = 0;
-	name = "White Ship";
-	port_direction = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/abandoned)
 "vJ" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/effect/decal/cleanable/dirt,
@@ -603,6 +563,24 @@
 "zY" = (
 /turf/template_noop,
 /area/template_noop)
+"Ax" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/effect/turf_decal/loading_area/white{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/docking_port/mobile{
+	dir = 8;
+	shuttle_id = "whiteship";
+	launch_status = 0;
+	name = "White Ship";
+	port_direction = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/abandoned)
 "AA" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /mob/living/basic/ant{
@@ -895,6 +873,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/abandoned)
+"Mx" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/siding/purple{
+	dir = 9
+	},
+/obj/item/stack/cable_coil,
+/obj/item/multitool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white/diagonal,
+/area/shuttle/abandoned)
 "MM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
@@ -1184,6 +1175,15 @@
 /obj/item/mop,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned)
+"YF" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
+	y_offset = 2;
+	x_offset = -8
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/pod/dark,
+/area/shuttle/abandoned)
 "YP" = (
 /obj/machinery/light/small/directional/west,
 /obj/effect/turf_decal/siding/purple{
@@ -1411,14 +1411,14 @@ Sc
 "}
 (10,1,1) = {"
 Fw
-lV
+YF
 Np
 nQ
 jT
 RZ
 Ef
 Sc
-qS
+Mx
 YP
 Nr
 Pu
@@ -1560,7 +1560,7 @@ zY
 zY
 Sc
 jT
-vB
+Ax
 jT
 Sc
 zY
