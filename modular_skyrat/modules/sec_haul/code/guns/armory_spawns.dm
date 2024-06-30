@@ -38,6 +38,12 @@
 					for(var/i in 1 to mags_to_spawn)
 						new spawned_ballistic_gun.spawn_magazine_type (spawned_box)
 
+			if(istype(spawned_gun, /obj/item/gun/microfusion))
+				var/obj/item/gun/microfusion/spawned_microfusion_gun = spawned_gun
+				var/obj/item/storage/box/ammo_box/microfusion/armory/spawned_box = new(loc)
+				for(var/i in 1 to mags_to_spawn)
+					new spawned_microfusion_gun.cell_type (spawned_box)
+
 /obj/effect/spawner/armory_spawn/shotguns
 	guns = list(
 		/obj/item/gun/ballistic/shotgun/riot/sol,
@@ -67,7 +73,18 @@
 	name = "microfusion cell container"
 	desc = "A box filled with microfusion cells."
 
-/obj/item/storage/box/ammo_box/microfusion/PopulateContents()
+/obj/item/storage/box/ammo_box/microfusion/armory/PopulateContents()
+	new /obj/item/storage/pouch/ammo(src)
+
+/obj/item/storage/box/ammo_box/microfusion/full/PopulateContents()
+	new /obj/item/storage/pouch/ammo(src)
+	new /obj/item/stock_parts/cell/microfusion(src)
+	new /obj/item/stock_parts/cell/microfusion(src)
+	new /obj/item/stock_parts/cell/microfusion(src)
+
+/obj/item/storage/box/ammo_box/microfusion/bagless
+
+/obj/item/storage/box/ammo_box/microfusion/bagless/PopulateContents()
 	new /obj/item/stock_parts/cell/microfusion(src)
 	new /obj/item/stock_parts/cell/microfusion(src)
 	new /obj/item/stock_parts/cell/microfusion(src)

@@ -1,5 +1,5 @@
 /datum/armament_entry/company_import/deforest
-	category = DEFOREST_MEDICAL_NAME
+	category = COMPANY_NAME_DEFOREST_MEDICAL
 	company_bitflag = CARGO_COMPANY_DEFOREST
 
 // Precompiled first aid kits, ready to go if you don't want to bother getting individual items
@@ -34,6 +34,10 @@
 /datum/armament_entry/company_import/deforest/first_aid_kit/orange_satchel
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
 	cost = PAYCHECK_COMMAND * 8
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/technician_satchel
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_paramedic/stocked
+	cost = PAYCHECK_COMMAND * 7
 
 // Basic first aid supplies like gauze, sutures, mesh, so on
 

@@ -5,7 +5,7 @@
 	id = TECHWEB_NODE_ADVANCED_VISION
 	display_name = "Combat Cybernetic Eyes"
 	description = "Military grade combat implants to improve vision."
-	prereq_ids = list("combat_implants", "alien_surgery")
+	prereq_ids = list(TECHWEB_NODE_COMBAT_IMPLANTS, TECHWEB_NODE_ALIEN_SURGERY)
 	design_ids = list(
 		"ci-thermals",
 		"ci-xray",
@@ -15,18 +15,18 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
 /datum/techweb_node/borg_shapeshifter
-	id = "borg_shapeshifter"
+	id = TECHWEB_NODE_BORG_SHAPESHIFTER
 	display_name = "Illegal Cyborg Addition"
 	description = "Some sort of experimental tool that was once used by an rival company."
-	prereq_ids = list("syndicate_basic")
+	prereq_ids = list(TECHWEB_NODE_SYNDICATE_BASIC)
 	design_ids = list("borg_shapeshifter_module")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
 /datum/techweb_node/ayy_cyber_implants
-	id = "ayy_cyber_implants"
+	id = TECHWEB_NODE_AYY_CYBER_IMPLANTS
 	display_name = "Alien Cybernetic Implants"
 	description = "The best in cybernetic implants."
-	prereq_ids = list("alien_surgery", "alien_engi")
+	prereq_ids = list(TECHWEB_NODE_ALIEN_SURGERY, TECHWEB_NODE_ALIEN_ENGI)
 	design_ids = list(
 		"ci-surgery-alien",
 		"ci-toolset-alien",

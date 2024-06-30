@@ -5,6 +5,7 @@
 	limb_id = SPECIES_MOTH
 	is_dimorphic = TRUE
 	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN //what the fuck, moths have lips?
+	teeth_count = 0
 
 /obj/item/bodypart/chest/moth
 	icon = BODYPART_ICON_MOTH
