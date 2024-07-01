@@ -105,3 +105,11 @@
 /datum/area_spawn/corrections_officer_landmark
 	desired_atom = /obj/effect/landmark/start/corrections_officer
 	target_areas = list(/area/station/security/brig, /area/station/security/prison/)
+
+/datum/area_spawn/telecomms_specialist_landmark
+	target_areas = list(
+		/area/station/tcommsat/computer,
+		/area/station/engineering/lobby,
+		/area/station/engineering/break_room,
+	)
+	desired_atom = /obj/effect/landmark/start/telecomms_specialist
