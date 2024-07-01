@@ -6,6 +6,6 @@
 	name = "\improper 10mm revolver cylinder"
 	desc = "how did you get this"
 	max_ammo = 6
-	ammo_type = /obj/item/ammo_casing/c457govt
+	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
 
