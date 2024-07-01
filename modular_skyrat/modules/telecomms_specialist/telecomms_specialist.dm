@@ -30,6 +30,7 @@
 		/obj/item/modular_computer/laptop,
 		/obj/item/radio,
 		/obj/item/pai_card,
+		/obj/item/multitool,
 		/obj/item/clothing/accessory/pocketprotector,
 	)
 
