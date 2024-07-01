@@ -229,6 +229,8 @@
 	worn_icon_state = "beaker"
 	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
+	pickup_sound = 'sound/items/handling/beaker_pickup.ogg'
+	drop_sound = 'sound/items/handling/beaker_place.ogg'
 	volume = 60 //SKYRAT EDIT: Addition
 	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
 
