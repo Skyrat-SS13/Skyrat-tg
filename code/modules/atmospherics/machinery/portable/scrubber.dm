@@ -60,15 +60,6 @@
 
 	excited = TRUE
 
-<<<<<<< HEAD
-	var/atom/target = holding || get_turf(src)
-	scrub(target.return_air())
-	//SKYRAT EDIT ADDITION
-	for(var/turf/open/open_turf in view(3, src))
-		if(open_turf.pollution)
-			open_turf.pollution.scrub_amount(POLLUTION_HEIGHT_DIVISOR)
-	//SKYRAT EDIT END
-=======
 	if(!isnull(holding))
 		scrub(holding.return_air())
 		return ..()
@@ -76,7 +67,11 @@
 	var/turf/epicentre = get_turf(src)
 	for(var/turf/open/openturf in epicentre.get_atmos_adjacent_turfs(alldir = TRUE))
 		scrub(openturf.return_air())
->>>>>>> 88bb013ca6b (buffs portable air scrubbers (#84412))
+	//SKYRAT EDIT ADDITION
+	for(var/turf/open/open_turf in view(3, src))
+		if(open_turf.pollution)
+			open_turf.pollution.scrub_amount(POLLUTION_HEIGHT_DIVISOR)
+	//SKYRAT EDIT END
 	return ..()
 
 /**
