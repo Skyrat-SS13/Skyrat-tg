@@ -47,6 +47,7 @@
 	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Do not put your fingers infront of the cylinder. This thing has an alert locked firing pin."
 	pin = /obj/item/firing_pin/alert_level
 	fire_delay = 3
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)

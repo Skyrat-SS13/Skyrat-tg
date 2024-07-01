@@ -12,18 +12,11 @@
 /obj/item/gun/ballistic/revolver/hos_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
-//PLease keep this in
-/obj/item/ammo_box/magazine/internal/cylinder/rowland
-	name = "\improper rowland revolver cylinder"
-	max_ammo = 5
-	ammo_type = /obj/item/ammo_casing/c457govt
-	caliber = CALIBER_457GOVT
-
 /obj/item/gun/ballistic/revolver/hos_revolver/long
 	name = "\improper HR-460LR"
 	desc = "A long unwiedly revolver from Romulus Technology. chambered in the rare .457 Government. You might be able to kill someone by whacking it over the head"
 	icon_state = "tracker"
-	force = 15
+	force = 18
 
 /obj/item/storage/bag/b460reloadpouch
 	name = "reload pouch"
@@ -33,7 +26,7 @@
 	slot_flags = ITEM_SLOT_POCKETS | ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
-	worn_icon_state = ""
+	worn_icon_state = null
 
 /obj/item/storage/bag/b460reloadpouch/Initialize(mapload)
 	. = ..()
