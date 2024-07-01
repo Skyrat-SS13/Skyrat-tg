@@ -34,9 +34,6 @@
 	pin = /obj/item/firing_pin
 	fire_delay = 1
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock/spec/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
-
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 	spawnwithmagazine = FALSE
 
