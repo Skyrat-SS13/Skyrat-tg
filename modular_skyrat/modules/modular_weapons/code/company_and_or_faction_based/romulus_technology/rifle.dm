@@ -61,3 +61,5 @@
 		Weapons cannot bring people back, but it can save your life."
 
 	return .
+
+//Flechette Rifle
