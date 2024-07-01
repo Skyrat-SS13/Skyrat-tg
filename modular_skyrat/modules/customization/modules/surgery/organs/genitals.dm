@@ -114,10 +114,10 @@
 		return sprite_datum.color_layer_names
 
 	sprite_datum.color_layer_names = list()
-	if (!GLOB.cached_mutant_icon_files[sprite_datum.icon])
-		GLOB.cached_mutant_icon_files[sprite_datum.icon] = icon_states(new /icon(sprite_datum.icon))
+	if (!SSaccessories.cached_mutant_icon_files[sprite_datum.icon])
+		SSaccessories.cached_mutant_icon_files[sprite_datum.icon] = icon_states(new /icon(sprite_datum.icon))
 
-	var/list/cached_mutant_icon_states = GLOB.cached_mutant_icon_files[sprite_datum.icon]
+	var/list/cached_mutant_icon_states = SSaccessories.cached_mutant_icon_files[sprite_datum.icon]
 
 	for (var/layer in all_layers)
 		if(!(layer & layers))

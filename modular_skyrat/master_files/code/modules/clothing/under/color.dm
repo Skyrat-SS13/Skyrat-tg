@@ -1,6 +1,3 @@
-/obj/item/clothing/under/color
-	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit/worn/monkey
-
 /obj/item/clothing/under/color/rainbow
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
