@@ -60,4 +60,4 @@
 	if(!charging.charging_icon)
 		. += image(charging.icon, charging.icon_state)
 	else
-		.+= image('modular_skyrat/modules/aesthetics/cells/cell.dmi', charging.charging_icon)\
+		.+= image('modular_skyrat/modules/aesthetics/cells/cell.dmi', charging.charging_icon)

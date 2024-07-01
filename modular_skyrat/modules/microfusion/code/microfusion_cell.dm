@@ -3,7 +3,9 @@ MICROFUSION CELL SYSTEM
 
 Microfusion cells are small battery units that house controlled nuclear fusion within, and that fusion is converted into useable energy.
 
-Essentially, power cells that malfunction if not used in an MCR, and should only be able to charge inside of one
+They cannot be charged as standard, and require upgrades to do so.
+
+These are basically advanced cells.
 */
 
 /// The amount of cell charge drained during a drain failure.
@@ -24,15 +26,15 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
-	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. For safety reasons, they cannot be charged unless they are inside of a compatible Micron Control Systems firearm."
+	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. Smaller than a car battery, these fulfill the need for a power source where plugging into a recharger is inconvenient or unavailable; although they will eventually run dry due to being shipped without a fuel source."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
 	charging_icon = "mf_in" //This is stored in cell.dmi in the aesthetics module
 	icon_state = "microfusion"
 	w_class = WEIGHT_CLASS_NORMAL
-	maxcharge = STANDARD_CELL_CHARGE
-	chargerate = 0 //MF cells should be unable to recharge if they are not currently inside of an MCR
+	maxcharge = STANDARD_CELL_CHARGE //12 shots
+	chargerate = 0 //Standard microfusion cells can't be recharged, they're single use.
 	microfusion_readout = TRUE
-	empty = TRUE //MF cells should start empty
+	charge_light_type = "microfusion"
 
 	/// A hard referenced list of upgrades currently attached to the weapon.
 	var/list/attachments = list()
@@ -48,6 +50,10 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	var/empty_alarm_sound = 'sound/weapons/gun/general/empty_alarm.ogg'
 	/// Do we have the self charging upgrade?
 	var/self_charging = FALSE
+	/// We use this to edit the reload time of the gun
+	var/reloading_time = 4 SECONDS
+	/// We use this to edit the tactical reload time of the gun
+	var/reloading_time_tactical = 6 SECONDS
 	/// The probability of the cell failing, either through being makeshift or being used in something it shouldn't
 	var/fail_prob = 10
 
@@ -57,9 +63,6 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	/// Do we show the microfusion readout instead of KJ?
 	var/microfusion_readout = FALSE
 
-/obj/item/stock_parts/cell/microfusion/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
 
 /obj/item/stock_parts/cell/microfusion/Destroy()
 	if(attachments.len)
@@ -67,18 +70,12 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 			iterating_item.forceMove(get_turf(src))
 		attachments = null
 	parent_gun = null
-	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(istype(attacking_item, /obj/item/microfusion_cell_attachment))
 		add_attachment(attacking_item, user)
 		return
-	return ..()
-
-/obj/item/stock_parts/cell/microfusion/attack_self(mob/user)
-	if(charge)
-		cell_removal_discharge()
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/emp_act(severity)
@@ -143,7 +140,6 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment as anything in attachments)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
 		. += span_notice("Use a <b>screwdriver</b> to remove the attachments.")
-	. += span_notice("Using this <b>in hand</b> will discharge the cell, if there is any inside of it preventing insertion into microfusion guns.")
 
 /obj/item/stock_parts/cell/microfusion/proc/add_attachment(obj/item/microfusion_cell_attachment/microfusion_cell_attachment, mob/living/user, obj/item/gun/microfusion/microfusion_gun)
 	if(attachments.len >= max_attachments)
@@ -167,22 +163,15 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 		attachments -= microfusion_cell_attachment
 	update_appearance()
 
-/obj/item/stock_parts/cell/microfusion/proc/inserted_into_weapon()
-	chargerate = STANDARD_CELL_CHARGE * 0.2
-
-/obj/item/stock_parts/cell/microfusion/proc/cell_removal_discharge()
-	chargerate = 0
-	charge = 0
-	do_sparks(4, FALSE, src)
-	update_appearance()
-
 /datum/crafting_recipe/makeshift/microfusion_cell
 	name = "Makeshift Microfusion Cell"
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
 	result = /obj/item/stock_parts/cell/microfusion/makeshift
-	reqs = list(/obj/item/trash/can = 1,
-				/obj/item/stack/sheet/iron = 1,
-				/obj/item/stack/cable_coil = 1)
+	reqs = list(
+		/obj/item/trash/can = 1,
+		/obj/item/stack/sheet/iron = 1,
+		/obj/item/stack/cable_coil = 1,
+		)
 	time = 12 SECONDS
 	category = CAT_MISC
 
@@ -210,14 +199,14 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	desc = "A third generation microfusion cell, boasting a much higher shot count. Additionally, these come with support for up to three modifications to the cell itself."
 	icon_state = "microfusion_advanced"
 	maxcharge = STANDARD_CELL_CHARGE * 1.5
-	max_attachments = 3
+	max_attachments = 2
 
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
-	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has capacity for four modifications to the cell."
+	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has the highest capacity of any man-portable cell, and has flexibility for four different attachments to the cell itself."
 	icon_state = "microfusion_bluespace"
 	maxcharge = STANDARD_CELL_CHARGE * 1.6
-	max_attachments = 4
+	max_attachments = 3
 
 /obj/item/stock_parts/cell/microfusion/nanocarbon
 	name = "nanocarbon fusion cell"
