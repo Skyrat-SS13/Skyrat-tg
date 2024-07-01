@@ -41,3 +41,6 @@
 /obj/item/gun/ballistic/revolver/nt_revolver
 	name = "\improper R10"
 	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Do not put your fingers infront of the cylinder"
+
+/obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
