@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	var/can_be_greyscale = FALSE
 	/// Whether this item can be renamed.
 	/// I recommend you apply this sparingly becuase it certainly can go wrong (or get reset / overridden easily)
-	var/can_be_named = FALSE
+	var/can_be_named = TRUE // SKYRAT EDIT
 	/// Whether this item can be reskinned.
 	/// Only works if the item has a "unique reskin" list set.
 	var/can_be_reskinned = FALSE
@@ -341,6 +341,9 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	// SKYRAT EDIT ADDITION
 	if(donator_only)
 		displayed_text += "Donator only"
+
+	if(ckeywhitelist)
+		displayed_text += "Unique"
 
 	if(restricted_roles || blacklisted_roles)
 		displayed_text += "Role restricted"

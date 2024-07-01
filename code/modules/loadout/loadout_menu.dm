@@ -111,6 +111,11 @@
 /datum/preference_middleware/loadout/get_ui_static_data(mob/user)
 	var/list/data = list()
 	data["loadout_preview_view"] = preferences.character_preview_view.assigned_map
+	// SKYRAT EDIT START - EXPANDED LOADOUT
+	data["ckey"] = user.ckey
+	if(SSplayer_ranks.is_donator(user.client))
+		data["is_donator"] = TRUE
+	// SKYRAT EDIT END
 	return data
 
 /datum/preference_middleware/loadout/get_constant_data()
