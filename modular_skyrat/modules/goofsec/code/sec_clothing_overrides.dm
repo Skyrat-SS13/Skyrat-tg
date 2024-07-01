@@ -241,6 +241,46 @@
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/head/helmet/sec/futuristic
+	icon_state = "security_helmet_future"
+	base_icon_state = "security_helmet_future"
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	dog_fashion = null
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+	unique_reskin = list(
+		"White Variant" = list(
+			RESKIN_ICON_STATE = "security_helmet_future",
+			RESKIN_WORN_ICON_STATE = "security_helmet_future"
+		),
+		"Blue Variant" = list(
+			RESKIN_ICON_STATE = "security_helmet_future_blue",
+			RESKIN_WORN_ICON_STATE = "security_helmet_future_blue"
+		),
+	)
+
+/obj/item/clothing/head/helmet/sec/futuristic/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(user.incapacitated() || !can_toggle)
+		return
+	up = !up
+	flags_1 ^= visor_flags
+	flags_inv ^= visor_flags_inv
+	flags_cover ^= visor_flags_cover
+	// This part is changed to work with the seclight.
+	base_icon_state = "[initial(icon_state)][up ? "up" : ""]"
+	update_icon_state()
+	to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
+
+	user.update_worn_head()
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.update_worn_head()
+
+
 /// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
 /obj/item/clothing/head/helmet/alt/attack_self(mob/user)
 	. = ..()
