@@ -24,7 +24,7 @@
 	center = TRUE
 	relevent_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_FRONT_UNDER_CLOTHES, ABOVE_BODY_FRONT_HEAD_LAYER)
 	genetic = TRUE
-	organ_type = /obj/item/organ/external/taur_body
+	organ_type = /obj/item/organ/external/taur_body/horselike // horselike by default, dont forget to override if you make another bodytype
 	flags_for_organ = SPRITE_ACCESSORY_HIDE_SHOES
 	/// Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
 	var/taur_mode = NONE
@@ -32,15 +32,33 @@
 	var/alt_taur_mode = NONE
 
 /datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target)
-	var/obj/item/clothing/suit/worn_suit = target.wear_suit
-	if(istype(worn_suit) && (worn_suit.flags_inv & HIDETAIL) && !worn_suit.gets_cropped_on_taurs)
+	var/obj/item/organ/external/taur_body/taur_body = target.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAUR)
+	if (taur_body?.hide_self)
 		return TRUE
+
+	var/obj/item/clothing/suit/worn_suit = target.wear_suit
+	if (istype(worn_suit))
+		if((worn_suit.flags_inv & HIDETAIL) && !worn_suit.gets_cropped_on_taurs)
+			return TRUE
+
+		if (worn_suit.flags_inv & HIDETAUR)
+			switch (taur_mode)
+				if (STYLE_TAUR_SNAKE)
+					if (worn_suit.worn_icon_taur_snake)
+						return TRUE
+				if (STYLE_TAUR_PAW)
+					if (worn_suit.worn_icon_taur_paw)
+						return TRUE
+				if (STYLE_TAUR_HOOF)
+					if (worn_suit.worn_icon_taur_hoof)
+						return TRUE
+
 	if(target.owned_turf)
 		var/list/used_in_turf = list("tail")
 		if(target.owned_turf.name in used_in_turf)
 			return TRUE
-	return FALSE
 
+	return FALSE
 
 /datum/sprite_accessory/taur/none
 	name = "None"
@@ -80,10 +98,12 @@
 /datum/sprite_accessory/taur/tarantula
 	name = "Tarantula"
 	icon_state = "tarantula"
+	organ_type = /obj/item/organ/external/taur_body/spider
 
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
 	icon_state = "drider"
+	organ_type = /obj/item/organ/external/taur_body/spider
 
 /datum/sprite_accessory/taur/eevee
 	name = "Eevee"
@@ -100,6 +120,7 @@
 	name = "Naga"
 	icon_state = "naga"
 	taur_mode = STYLE_TAUR_SNAKE
+	organ_type = /obj/item/organ/external/taur_body/serpentine
 
 /datum/sprite_accessory/taur/naga/striped
 	name = "Naga, Striped"
@@ -126,6 +147,7 @@
 	icon_state = "tentacle"
 	taur_mode = STYLE_TAUR_SNAKE
 	color_src = USE_ONE_COLOR
+	organ_type = /obj/item/organ/external/taur_body/tentacle
 
 /datum/sprite_accessory/taur/tentacle/alt
 	name = "Tentacle, Alt"
@@ -148,17 +170,20 @@
 	icon_state = "goop"
 	taur_mode = STYLE_TAUR_SNAKE
 	color_src = USE_ONE_COLOR
+	organ_type = /obj/item/organ/external/taur_body/blob
 
 /datum/sprite_accessory/taur/slime
 	name = "Slime"
 	icon_state = "slime"
 	taur_mode = STYLE_TAUR_SNAKE
 	color_src = USE_ONE_COLOR
+	organ_type = /obj/item/organ/external/taur_body/blob
 
 /datum/sprite_accessory/taur/biglegs
 	name = "Big Legs"
 	icon_state = "biglegs"
 	taur_mode = STYLE_TAUR_PAW
+	organ_type = /obj/item/organ/external/taur_body/anthro
 
 /datum/sprite_accessory/taur/biglegs/stanced
 	name = "Big Legs, Stanced"

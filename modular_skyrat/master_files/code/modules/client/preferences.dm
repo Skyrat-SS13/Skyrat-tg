@@ -1,7 +1,7 @@
 #define MAX_MUTANT_ROWS 4
 
 /datum/preferences
-	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
+	/// Associative list, keyed by language typepath, pointing to UNDERSTOOD_LANGUAGE, or UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE, for whether we understand or speak the language
 	var/list/languages = list()
 	/// List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
 	var/augments = list()
@@ -58,7 +58,7 @@
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff
-	languages[try_get_common_language()] = LANGUAGE_SPOKEN
+	languages[try_get_common_language()] = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
 	save_character()
 
 /datum/preferences/proc/print_bodypart_change_line(key)

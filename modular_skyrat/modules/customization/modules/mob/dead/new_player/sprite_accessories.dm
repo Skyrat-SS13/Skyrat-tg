@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
+// GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /// The flag to show that snouts should use the muzzled sprite.
 #define SPRITE_ACCESSORY_USE_MUZZLED_SPRITE (1<<0)
@@ -67,15 +67,15 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 		default_color = DEFAULT_MATRIXED
 	if (color_src == USE_MATRIXED_COLORS)
 		color_layer_names = list()
-		if (!GLOB.cached_mutant_icon_files[icon])
-			GLOB.cached_mutant_icon_files[icon] = icon_states(new /icon(icon))
+		if (!SSaccessories.cached_mutant_icon_files[icon])
+			SSaccessories.cached_mutant_icon_files[icon] = icon_states(new /icon(icon))
 		for (var/layer in relevent_layers)
 			var/layertext = layer == BODY_BEHIND_LAYER ? "BEHIND" : (layer == BODY_ADJ_LAYER ? "ADJ" : "FRONT")
-			if ("m_[key]_[icon_state]_[layertext]_primary" in GLOB.cached_mutant_icon_files[icon])
+			if ("m_[key]_[icon_state]_[layertext]_primary" in SSaccessories.cached_mutant_icon_files[icon])
 				color_layer_names["1"] = "primary"
-			if ("m_[key]_[icon_state]_[layertext]_secondary" in GLOB.cached_mutant_icon_files[icon])
+			if ("m_[key]_[icon_state]_[layertext]_secondary" in SSaccessories.cached_mutant_icon_files[icon])
 				color_layer_names["2"] = "secondary"
-			if ("m_[key]_[icon_state]_[layertext]_tertiary" in GLOB.cached_mutant_icon_files[icon])
+			if ("m_[key]_[icon_state]_[layertext]_tertiary" in SSaccessories.cached_mutant_icon_files[icon])
 				color_layer_names["3"] = "tertiary"
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/owner)
@@ -120,19 +120,16 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/moth_markings/is_hidden(mob/living/carbon/human/owner)
 	return FALSE
 
-
-/datum/sprite_accessory/moth_antennae/none
-	name = "None"
-	icon_state = "none"
-
-
 /datum/sprite_accessory/pod_hair
-	name = "None"
 	icon = 'modular_skyrat/master_files/icons/mob/species/podperson_hair.dmi'
-	icon_state = "None"
 	key = "pod_hair"
 	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
 	organ_type = /obj/item/organ/external/pod_hair
+
+/datum/sprite_accessory/pod_hair/none
+	name = "None"
+	icon_state = "none"
+	factual = FALSE
 
 /datum/sprite_accessory/caps
 	key = "caps"
@@ -159,7 +156,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Round"
 	icon_state = "round"
 
-/datum/sprite_accessory/body_markings
+/datum/sprite_accessory/lizard_markings
 	key = "body_markings"
 	generic = "Body Markings"
 	default_color = DEFAULT_TERTIARY

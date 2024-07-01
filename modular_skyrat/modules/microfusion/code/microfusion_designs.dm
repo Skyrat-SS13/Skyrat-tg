@@ -126,6 +126,18 @@
 	build_path = /obj/item/stock_parts/cell/microfusion/bluespace
 
 // CELL UPGRADES
+/datum/design/microfusion/cell_attachment_rechargeable
+	name = "Rechargeable Microfusion Cell Attachment"
+	desc = "An attachment for microfusion cells that allows conversion of KJ to MF in standard chargers."
+	id = "microfusion_cell_attachment_rechargeable"
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/microfusion_cell_attachment/rechargeable
 
 /datum/design/microfusion/cell_attachment
 	name = "Placeholder Cell Attachment"
@@ -179,13 +191,31 @@
 		RND_CATEGORY_MICROFUSION_WEAPONS + RND_MICROFUSION_ATTACHMENT,
 	)
 
-// RAIL MODS
-
-/datum/design/microfusion/attachment/rail_slot
-	name = "Placeholder Microfusion Rail Slot Attachment"
-	category = list(
-		RND_CATEGORY_MICROFUSION_WEAPONS + RND_MICROFUSION_ATTACHMENT + RND_MICROFUSION_ATTACHMENT_RAIL,
+/datum/design/microfusion/cell_attachment_tactical
+	name = "Tac-Reload Handle Microfusion Cell Attachment"
+	desc = "An aftermarket modification that makes the process of tactical reloading a MF cell far easier."
+	id = "microfusion_cell_attachment_tactical"
+	materials = list(
+		/datum/material/iron = 1000,
+		/datum/material/glass = 1000,
+		/datum/material/plasma = 1000,
+		/datum/material/silver = 1000,
 	)
+	build_path = /obj/item/microfusion_cell_attachment/tactical
+
+/datum/design/microfusion/cell_attachment_reloader
+	name = "Reloading Handle Microfusion Cell Attachment"
+	desc = "An aftermarket modification that makes the process of loading a MF cell far easier."
+	id = "microfusion_cell_attachment_reloader"
+	materials = list(
+		/datum/material/iron = 1000,
+		/datum/material/glass = 1000,
+		/datum/material/plasma = 1000,
+		/datum/material/silver = 1000,
+	)
+	build_path = /obj/item/microfusion_cell_attachment/reloader
+
+// RAIL MODS
 
 /datum/design/microfusion/attachment/rail_slot/rail
 	name = "Microfusion Weapon Rail"
@@ -298,6 +328,7 @@
 	)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/scatter
 
+
 /datum/design/microfusion/attachment/barrel/scatter/max
 	name = "Crystalline Diffuser Microfusion Lens Attachment"
 	desc = "Splits the microfusion laser beam entering the lens even more."
@@ -346,6 +377,7 @@
 	)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/repeater
 
+
 /datum/design/microfusion/attachment/barrel/repeater/penetrator
 	name = "Focused Repeating Phase Emitter Upgrade"
 	desc = "Upgrades the central phase emitter to repeat twice and penetrate armor."
@@ -353,9 +385,9 @@
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
-		/datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5,
 		/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT,
-	)
+		)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/repeater/penetrator
 
 /datum/design/microfusion/attachment/barrel/xray

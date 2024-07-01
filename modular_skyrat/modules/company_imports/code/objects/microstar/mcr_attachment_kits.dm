@@ -11,8 +11,6 @@
 		)
 	generate_items_inside(items_inside,src)
 
-/obj/item/storage/briefcase/secure/white/mcr_loadout/scatter
-
 /obj/item/storage/briefcase/secure/white/mcr_loadout/scatter/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/microfusion_gun_attachment/barrel/scatter = 1,
@@ -20,8 +18,6 @@
 		/obj/item/microfusion_gun_attachment/grip = 1,
 		)
 	generate_items_inside(items_inside,src)
-
-/obj/item/storage/briefcase/secure/white/mcr_loadout/lance
 
 /obj/item/storage/briefcase/secure/white/mcr_loadout/lance/PopulateContents()
 	var/static/items_inside = list(
@@ -31,8 +27,6 @@
 		)
 	generate_items_inside(items_inside,src)
 
-/obj/item/storage/briefcase/secure/white/mcr_loadout/repeater
-
 /obj/item/storage/briefcase/secure/white/mcr_loadout/repeater/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/microfusion_gun_attachment/barrel/repeater = 1,
@@ -40,8 +34,6 @@
 		/obj/item/microfusion_gun_attachment/heatsink = 1,
 		)
 	generate_items_inside(items_inside,src)
-
-/obj/item/storage/briefcase/secure/white/mcr_loadout/tacticool
 
 /obj/item/storage/briefcase/secure/white/mcr_loadout/tacticool/PopulateContents()
 	var/static/items_inside = list(
@@ -56,8 +48,6 @@
 
 /obj/item/storage/briefcase/secure/white/mcr_parts
 	name = "Microfusion Parts Kit"
-
-/obj/item/storage/briefcase/secure/white/mcr_parts/enhanced
 
 /obj/item/storage/briefcase/secure/white/mcr_parts/enhanced/PopulateContents()
 	var/static/items_inside = list(
@@ -74,8 +64,6 @@
 		/obj/item/microfusion_phase_emitter/advanced = 1,
 		)
 	generate_items_inside(items_inside,src)
-
-/obj/item/storage/briefcase/secure/white/mcr_parts/bluespace
 
 /obj/item/storage/briefcase/secure/white/mcr_parts/bluespace/PopulateContents()
 	var/static/items_inside = list(

@@ -191,10 +191,10 @@
 	)
 
 /datum/techweb_node/xenoarch_storage
-	id = "xenoarch_storage"
+	id = TECHWEB_NODE_XENOARCH_STORAGE
 	display_name = "Xenoarchaeology Storage"
 	description = "When dealing with xenoarchaeology, one may need storage."
-	prereq_ids = list("basic_xenoarch")
+	prereq_ids = list(TECHWEB_NODE_XENOARCH_BASIC)
 	design_ids = list(
 		"xenoarch_belt",
 		"xenoarch_bag",
@@ -202,10 +202,10 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 
 /datum/techweb_node/xenoarch_machines
-	id = "xenoarch_machines"
+	id = TECHWEB_NODE_XENOARCH_MACHINES
 	display_name = "Xenoarchaeology Machines"
 	description = "Sometimes, xenoarchaeology can be time consuming, perhaps machines can help?"
-	prereq_ids = list("basic_xenoarch")
+	prereq_ids = list(TECHWEB_NODE_XENOARCH_BASIC)
 	design_ids = list(
 		"xeno_researcher",
 		"xeno_scanner",
@@ -214,10 +214,10 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 
 /datum/techweb_node/adv_xenoarch
-	id = "adv_xenoarch"
+	id = TECHWEB_NODE_XENOARCH_ADVANCED
 	display_name = "Advanced Xenoarchaeology"
 	description = "After some time, those tools we used have become antiquated-- we need an upgrade."
-	prereq_ids = list("basic_xenoarch", "xenoarch_machines", "xenoarch_storage")
+	prereq_ids = list(TECHWEB_NODE_XENOARCH_BASIC, TECHWEB_NODE_XENOARCH_MACHINES, TECHWEB_NODE_XENOARCH_STORAGE)
 	design_ids = list(
 		"xenoarch_adv_hammer",
 		"xenoarch_adv_brush",
