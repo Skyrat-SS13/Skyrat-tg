@@ -11,6 +11,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
+	pin = /obj/item/firing_pin/alert_level
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
@@ -41,6 +42,7 @@
 /obj/item/gun/ballistic/revolver/nt_revolver
 	name = "\improper R10"
 	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Do not put your fingers infront of the cylinder"
+	pin = /obj/item/firing_pin/alert_level
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
