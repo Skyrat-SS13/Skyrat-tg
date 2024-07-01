@@ -13,6 +13,7 @@
 #define SMES_INPUTTING 8
 #define SMES_INPUT_ATTEMPT 9
 
+// SKYRAT EDIT COMMENT: Modularized Power change in modular_nova\master_files\code\modules\power\smes.dm
 /obj/machinery/power/smes
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
