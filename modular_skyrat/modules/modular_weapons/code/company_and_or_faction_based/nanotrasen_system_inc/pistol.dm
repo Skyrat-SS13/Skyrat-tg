@@ -28,10 +28,6 @@
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
 	spread = 8
-	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
-	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
-	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
-	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin
 	fire_delay = 1
 	projectile_damage_multipler = 0.9
