@@ -17,11 +17,11 @@
 	ammo_x_offset = 2
 
 	/// What type of power cell this uses
-	var/obj/item/stock_parts/cell/microfusion/cell
+	var/obj/item/stock_parts/power_store/cell/microfusion/cell
 	/// The cell we will spawn with
-	var/cell_type = /obj/item/stock_parts/cell/microfusion
+	var/cell_type = /obj/item/stock_parts/power_store/cell/microfusion
 	/// The cell type we check when inserting a cell
-	var/base_cell_type = /obj/item/stock_parts/cell/microfusion
+	var/base_cell_type = /obj/item/stock_parts/power_store/cell/microfusion
 	/// If the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
 	var/modifystate = FALSE
 	/// How many charge sections do we have?
@@ -581,9 +581,9 @@
 
 
 /// Try to insert the cell into the gun, if successful, return TRUE
-/obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
+/obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/power_store/cell/microfusion/inserting_cell, display_message = TRUE)
 	var/tactical_reload = FALSE //We need to do this so that cells don't fall on the ground.
-	var/obj/item/stock_parts/cell/old_cell = cell
+	var/obj/item/stock_parts/power_store/cell/old_cell = cell
 
 	if(cell)
 		if(tactical_reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
@@ -622,7 +622,7 @@
 
 /// Ejecting a cell.
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)
-	var/obj/item/stock_parts/cell/microfusion/old_cell = cell
+	var/obj/item/stock_parts/power_store/cell/microfusion/old_cell = cell
 	old_cell.forceMove(get_turf(src))
 	if(user)
 		if(put_in_hands)

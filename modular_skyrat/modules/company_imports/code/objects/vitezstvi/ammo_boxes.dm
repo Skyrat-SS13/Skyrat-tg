@@ -80,13 +80,13 @@
 
 /obj/item/storage/box/ammo_box/microfusion/bluespace/PopulateContents()
 	new /obj/item/storage/pouch/ammo(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/bluespace(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/bluespace(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/bluespace(src)
 
 
 /obj/item/storage/box/ammo_box/microfusion/bluespace/bagless/PopulateContents()
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/bluespace(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/bluespace(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/bluespace(src)
 
