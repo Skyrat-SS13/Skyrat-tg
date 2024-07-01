@@ -73,15 +73,15 @@
 			continue
 		if(!item.category.handle_duplicate_entires(src, item, selected_item, loadout_datums))
 			return
-		// SKYRAT EDIT ADDITION
-		if(item.ckeywhitelist && !(preferences?.parent?.ckey in item.ckeywhitelist))
-			to_chat(preferences.parent, span_warning("You cannot select this item!"))
-			return
+	// SKYRAT EDIT ADDITION
+	if(!isnull(selected_item.ckeywhitelist) && !(preferences?.parent?.ckey in selected_item.ckeywhitelist))
+		to_chat(preferences.parent, span_warning("You cannot select this item!"))
+		return
 
-		if(item.donator_only && !GLOB.donator_list[preferences?.parent?.ckey])
-			to_chat(preferences.parent, span_warning("That item is for donators only."))
-			return
-		// SKYRAT EDIT END
+	if(!isnull(selected_item.donator_only) && !GLOB.donator_list[preferences?.parent?.ckey])
+		to_chat(preferences.parent, span_warning("This item is for donators only."))
+		return
+	// SKYRAT EDIT END
 
 	LAZYSET(loadout, selected_item.item_path, list())
 	preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
@@ -126,8 +126,8 @@
 			"name" = category.category_name,
 			"category_icon" = category.category_ui_icon,
 			"category_info" = category.category_info,
-			"contents" = category.items_to_ui_data(preferences?.parent),
-		) // SKYRAT EDIT CHANGE - items_to_ui_data(preferences?.parent)
+			"contents" = category.items_to_ui_data(),
+		)
 		UNTYPED_LIST_ADD(loadout_tabs, cat_data)
 
 	data["loadout_tabs"] = loadout_tabs

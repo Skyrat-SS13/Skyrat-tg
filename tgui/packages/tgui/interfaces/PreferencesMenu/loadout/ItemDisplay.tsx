@@ -88,11 +88,10 @@ export const ItemDisplay = (props: {
         )}
         {
           // SKYRAT EDIT START - EXPANDED LOADOUT
-          ShouldDisplayRestriction(item) && (
-            <Flex.Item ml={5.7} mt={0.35}>
-              {ItemRestriction(item)}
-            </Flex.Item>
-          )
+          <Flex.Item ml={5.7} mt={0.35}>
+            {ItemRestriction(item)}
+          </Flex.Item>
+
           /* SKYRAT EDIT END */
         }
       </Flex>
