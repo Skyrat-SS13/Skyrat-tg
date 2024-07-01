@@ -177,11 +177,7 @@
  * * seconds - Return the time in seconds if TRUE, else deciseconds.
  */
 /obj/machinery/status_display/door_timer/proc/time_left(seconds = FALSE)
-<<<<<<< HEAD
-	. = max(0, timer_duration + activation_time - REALTIMEOFDAY) // SKYRAT EDIT CHANGE: original was world.time
-=======
-	. = max(0, timer_duration + (activation_time ? activation_time - world.time : 0))
->>>>>>> 53eaf0c2bb7 (fixes brig timer ui (#84429))
+	. = max(0, timer_duration + (activation_time ? activation_time - REALTIMEOFDAY : 0)) // SKYRAT EDIT CHANGE, Original: . = max(0, timer_duration + (activation_time ? activation_time - world.time : 0))
 	if(seconds)
 		. /= (1 SECONDS)
 
