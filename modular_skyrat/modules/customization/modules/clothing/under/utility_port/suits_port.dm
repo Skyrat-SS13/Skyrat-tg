@@ -27,8 +27,7 @@
 	armor_type = /datum/armor/jacket_engi
 	allowed = list(
 		/obj/item/flashlight,
-		/obj/item/tank/internals/emergency_oxygen,
-		/obj/item/tank/internals/plasmaman,
+		/obj/item/tank/internals,
 		/obj/item/t_scanner,
 		/obj/item/construction/rcd,
 		/obj/item/pipe_dispenser,
