@@ -61,7 +61,7 @@
 	/// Minimum amount of charge a borg can have before snack printing is disallowed
 	var/borg_charge_cutoff = 200
 	/// The amount of charge used per print of a snack
-	var/borg_charge_usage = 50
+	var/borg_charge_usage = STANDARD_CELL_CHARGE * 0.05
 
 /obj/item/borg_snack_dispenser/Initialize(mapload)
 	. = ..()

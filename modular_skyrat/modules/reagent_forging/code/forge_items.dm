@@ -288,9 +288,9 @@
 		new /obj/item/ammo_casing/arrow/(src_turf)
 	qdel(src)
 
-/obj/item/stock_parts/cell/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/stock_parts/power_store/cell/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/forging/coil))
-		var/obj/item/stock_parts/cell/crank/new_crank = new(get_turf(src))
+		var/obj/item/stock_parts/power_store/cell/crank/new_crank = new(get_turf(src))
 		new_crank.maxcharge = maxcharge
 		new_crank.charge = charge
 		qdel(attacking_item)

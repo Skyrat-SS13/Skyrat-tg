@@ -27,10 +27,10 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 
-		if(robot_user.cell?.charge < 200)
+		if(robot_user.cell?.charge < STANDARD_CELL_CHARGE * 0.2)
 			to_chat(robot_user , span_warning("Scream module deactivated. Please recharge."))
 			return FALSE
-		robot_user.cell.use(200)
+		robot_user.cell.use(STANDARD_CELL_CHARGE * 0.2)
 	return ..()
 
 /datum/emote/living/carbon/human/scream
