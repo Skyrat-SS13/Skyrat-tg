@@ -115,9 +115,13 @@
 		/datum/reagent/consumable/enzyme,
 	)
 
+	/// Since we don't have a board to take from, we use this to give the dispenser a cell on spawning
+	var/cell_we_spawn_with = /obj/item/stock_parts/power_store/cell/high
+
 /obj/machinery/chem_dispenser/frontier_appliance/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
+	cell = new cell_we_spawn_with(src)
 
 /obj/machinery/chem_dispenser/frontier_appliance/display_beaker()
 	var/mutable_appearance/overlayed_beaker = beaker_overlay || mutable_appearance(icon, "disp_beaker")

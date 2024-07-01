@@ -15,7 +15,7 @@
 	/// Number of concurrent batteries that can be charged
 	var/max_batteries = 4
 	/// The base charge rate when spawned
-	var/charge_rate = STANDARD_CELL_RATE * 0.375
+	var/charge_rate = STANDARD_CELL_RATE
 
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
@@ -50,7 +50,7 @@
 		for(var/obj/item/stock_parts/power_store/cell/charging in charging_batteries)
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b>.")
+		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b> per cell.")
 	. += span_notice("Right click it to remove all the cells at once!")
 
 /obj/machinery/cell_charger_multi/attackby(obj/item/tool, mob/user, params)
@@ -95,24 +95,20 @@
 		return
 
 	// create a charging queue, we only want cells that require charging to use the power budget
-	var/list/charging_queue = list()
+	var/list/charging_queue
 	for(var/obj/item/stock_parts/power_store/cell/battery_slot in charging_batteries)
 		if(battery_slot.percent() >= 100)
 			continue
 		LAZYADD(charging_queue, battery_slot)
 
-	if(!length(charging_queue))
+	if(!LAZYLEN(charging_queue))
 		return
 
-	// since this loop is running multiple times per tick, we divide so that the total usage in the tick is the expected charge rate
-	// 4 batteries can no longer magically each pull 4MW per tick (16MW total per tick) out of thin air like in the old system
-	var/charge_current = (charge_rate / length(charging_queue)) * seconds_per_tick
-	if(!charge_current)
-		return
+	//use a small bit for the charger itself, but power usage scales up with the part tier
+	use_energy(charge_rate / length(charging_queue) * seconds_per_tick * 0.01)
 
 	for(var/obj/item/stock_parts/power_store/cell/charging_cell in charging_queue)
-		use_energy(charge_current * 0.01) //use a small bit for the charger itself, but power usage scales up with the part tier
-		charge_cell(charge_current, charging_cell, grid_only = TRUE)
+		charge_cell(charge_rate * seconds_per_tick, charging_cell)
 
 	LAZYNULL(charging_queue)
 	update_appearance()
