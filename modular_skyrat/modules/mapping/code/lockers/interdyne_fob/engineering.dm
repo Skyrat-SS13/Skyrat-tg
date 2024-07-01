@@ -25,10 +25,10 @@
 	new /obj/item/electronics/apc(src)
 	new /obj/item/electronics/firelock(src)
 	new /obj/item/electronics/airalarm(src)
-	new /obj/item/stock_parts/cell/high(src)
-	new /obj/item/stock_parts/cell/high(src)
-	new /obj/item/stock_parts/cell/high(src)
-	new /obj/item/stock_parts/cell/high(src)
+	new /obj/item/stock_parts/power_store/cell/high(src)
+	new /obj/item/stock_parts/power_store/cell/high(src)
+	new /obj/item/stock_parts/power_store/battery/high(src)
+	new /obj/item/stock_parts/power_store/battery/high(src)
 	new /obj/item/clothing/glasses/meson/engine(src)
 
 /obj/structure/closet/secure_closet/interdynefob/engie_locker

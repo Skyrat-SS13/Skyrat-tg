@@ -354,7 +354,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 			user.set_facial_haircolor(sanitize_hexcolor(new_face_color), update = FALSE)
 			user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 	user.update_body_parts()
-	user.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT ADDITION - Mirrors are no longer scared of colored ears
+	user.update_mutant_bodyparts() /// SKYRAT EDIT ADDITION - Mirrors are no longer scared of colored ears
 
 /obj/structure/mirror/magic/attack_hand(mob/living/carbon/human/user)
 	. = ..()
