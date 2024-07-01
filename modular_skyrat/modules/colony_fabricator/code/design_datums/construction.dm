@@ -5,7 +5,7 @@
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
 /datum/techweb_node/colony_fabricator_structures
-	id = "colony_fabricator_structures"
+	id = TECHWEB_NODE_COLONY_STRUCTURES
 	display_name = "Colony Fabricator Structure Designs"
 	description = "Contains all of the colony fabricator's structure designs."
 	design_ids = list(

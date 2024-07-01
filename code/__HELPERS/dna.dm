@@ -15,4 +15,4 @@
 ///Getter macro used to get the length of a identity block
 #define GET_UI_BLOCK_LEN(blocknum) (GLOB.identity_block_lengths["[blocknum]"] || DNA_BLOCK_SIZE)
 ///Ditto, but for a feature.
-#define GET_UF_BLOCK_LEN(blocknum) (GLOB.features_block_lengths["[blocknum]"] || DNA_BLOCK_SIZE)
+#define GET_UF_BLOCK_LEN(blocknum) (SSaccessories.features_block_lengths["[blocknum]"] || DNA_BLOCK_SIZE) //SKYRAT CHANGE EDIT - Customization ORIGINAL: #define GET_UF_BLOCK_LEN(blocknum) (GLOB.features_block_lengths["[blocknum]"] || DNA_BLOCK_SIZE)

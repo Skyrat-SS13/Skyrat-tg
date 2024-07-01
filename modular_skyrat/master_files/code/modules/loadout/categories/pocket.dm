@@ -176,7 +176,7 @@
 
 /datum/loadout_item/pocket_items/power_cell
 	name = "Standard Power Cell"
-	item_path = /obj/item/stock_parts/cell
+	item_path = /obj/item/stock_parts/power_store/cell
 
 /datum/loadout_item/pocket_items/soap
 	name = "Bar of Soap"

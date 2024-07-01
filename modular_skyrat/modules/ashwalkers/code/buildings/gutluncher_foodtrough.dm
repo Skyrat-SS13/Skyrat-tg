@@ -1,4 +1,4 @@
-/obj/structure/ore_container/gutlunch_trough/attackby(obj/item/attacking_item, mob/living/carbon/human/user, list/modifiers)
+/obj/structure/ore_container/food_trough/gutlunch_trough/attackby(obj/item/attacking_item, mob/living/carbon/human/user, list/modifiers)
 	if(!istype(attacking_item, /obj/item/storage/bag/ore))
 		return ..()
 
