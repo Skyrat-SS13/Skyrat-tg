@@ -6,5 +6,5 @@
 	name = "\improper rowland revolver cylinder"
 	max_ammo = 6
 	ammo_type = /obj/item/ammo_casing/c457govt
-	caliber = CALIBER_10mm
+	caliber = CALIBER_10MM
 
