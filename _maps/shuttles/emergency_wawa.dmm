@@ -107,11 +107,6 @@
 /obj/machinery/light/small/dim/directional/north,
 /turf/open/floor/plating,
 /area/shuttle/escape)
-"at" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/burgundy,
-/turf/template_noop,
-/area/template_noop)
 "au" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -198,20 +193,6 @@
 "aR" = (
 /obj/machinery/conveyor/auto/inverted{
 	dir = 5
-	},
-/turf/open/floor/plating,
-/area/shuttle/escape)
-"aV" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "dont close or i will kill you"
-	},
-/obj/machinery/conveyor/auto{
-	dir = 4
-	},
-/obj/structure/fans/tiny/shield{
-	max_integrity = 400;
-	name = "recycling shield";
-	layer = 2.61
 	},
 /turf/open/floor/plating,
 /area/shuttle/escape)
@@ -353,6 +334,10 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/engine,
 /area/shuttle/escape)
+"fS" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
 "ga" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
 	dir = 8
@@ -479,6 +464,11 @@
 "pW" = (
 /turf/open/floor/catwalk_floor,
 /area/shuttle/escape/brig)
+"qm" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/burgundy,
+/turf/template_noop,
+/area/template_noop)
 "qJ" = (
 /obj/machinery/conveyor/auto{
 	dir = 8
@@ -564,20 +554,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/shuttle/escape)
-"za" = (
-/obj/machinery/conveyor/auto{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "dont close or i will kill you"
-	},
-/obj/structure/fans/tiny/shield{
-	max_integrity = 400;
-	name = "recycling shield";
-	layer = 2.61
-	},
-/turf/open/floor/plating,
-/area/shuttle/escape)
 "zT" = (
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 1
@@ -587,6 +563,19 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/warm/dim/directional/south,
 /turf/open/floor/iron,
+/area/shuttle/escape)
+"AQ" = (
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "dont close or i will kill you"
+	},
+/obj/structure/fans/tiny/shield{
+	max_integrity = 400;
+	name = "recycling shield"
+	},
+/turf/open/floor/plating,
 /area/shuttle/escape)
 "Di" = (
 /obj/structure/chair/comfy/shuttle{
@@ -725,10 +714,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
-"Pw" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
 "QP" = (
 /obj/machinery/conveyor/auto/inverted{
 	dir = 1
@@ -750,6 +735,19 @@
 /area/shuttle/escape)
 "Tq" = (
 /turf/closed/wall/rust,
+/area/shuttle/escape)
+"Vj" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "dont close or i will kill you"
+	},
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/obj/structure/fans/tiny/shield{
+	max_integrity = 400;
+	name = "recycling shield"
+	},
+/turf/open/floor/plating,
 /area/shuttle/escape)
 "Xl" = (
 /obj/machinery/stasis,
@@ -791,9 +789,9 @@ aa
 aa
 aa
 bq
-aV
+Vj
 bq
-aV
+Vj
 bq
 aa
 aa
@@ -801,8 +799,8 @@ aa
 "}
 (2,1,1) = {"
 aa
-at
-Pw
+qm
+fS
 al
 al
 al
@@ -926,7 +924,7 @@ bk
 "}
 (7,1,1) = {"
 aa
-at
+qm
 al
 al
 ay
@@ -1050,9 +1048,9 @@ bq
 bq
 "}
 (12,1,1) = {"
-at
-Pw
-Pw
+qm
+fS
+fS
 bq
 bq
 bq
@@ -1091,9 +1089,9 @@ aa
 aa
 aa
 bq
-za
+AQ
 bq
-za
+AQ
 bq
 aa
 aa
