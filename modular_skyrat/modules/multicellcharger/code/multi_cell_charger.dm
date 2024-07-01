@@ -15,7 +15,7 @@
 	/// Number of concurrent batteries that can be charged
 	var/max_batteries = 4
 	/// The base charge rate when spawned
-	var/charge_rate = STANDARD_CELL_CHARGE * 0.375
+	var/charge_rate = STANDARD_CELL_RATE * 0.375
 
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
@@ -127,9 +127,10 @@
 
 /obj/machinery/cell_charger_multi/RefreshParts()
 	. = ..()
-	charge_rate = initial(charge_rate)
+	var/tier_total
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
-		charge_rate += (initial(charge_rate) * capacitor.tier) / 4
+		tier_total += capacitor.tier
+	charge_rate = tier_total * (initial(charge_rate) / 6)
 
 /obj/machinery/cell_charger_multi/emp_act(severity)
 	. = ..()
