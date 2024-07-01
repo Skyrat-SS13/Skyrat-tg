@@ -38,8 +38,6 @@
 	var/priority = 0
 	/// What path is this on. If set to "null", assumed to be unreachable (or abstract).
 	var/route
-<<<<<<< HEAD
-=======
 	/// In case we want to override the default UI icon getter and plug in our own icon instead.
 	/// if research_tree_icon_path is not null, research_tree_icon_state must also be specified or things may break
 	var/research_tree_icon_path
@@ -50,7 +48,6 @@
 	var/depth = 1
 	///Determines what kind of monster ghosts will ignore from here on out. Defaults to POLL_IGNORE_HERETIC_MONSTER, but we define other types of monsters for more granularity.
 	var/poll_ignore_define = POLL_IGNORE_HERETIC_MONSTER
->>>>>>> a40a92140d4 (Better UI for heretic research (#84363))
 
 /datum/heretic_knowledge/New()
 	if(!mutually_exclusive)
