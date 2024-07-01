@@ -392,6 +392,9 @@
 	doorOpen = 'sound/machines/tramopen.ogg'
 	doorClose = 'sound/machines/tramclose.ogg'
 
+/obj/machinery/door/airlock/tram/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, l_angle, l_dir, l_height, l_on)
+	return
+
 //ASSEMBLYS
 /obj/structure/door_assembly/door_assembly_public
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station2/glass.dmi'
