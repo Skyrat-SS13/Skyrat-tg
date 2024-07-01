@@ -117,6 +117,18 @@
 /obj/machinery/meter,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
+"df" = (
+/obj/machinery/light/small/directional/west,
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
+	dir = 4;
+	x_offset = -3;
+	y_offset = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm/directional/south,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted,
+/turf/open/floor/iron/dark,
+/area/shuttle/pirate)
 "dI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -130,6 +142,17 @@
 /area/shuttle/pirate)
 "ei" = (
 /obj/structure/sign/poster/random/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"ep" = (
+/obj/machinery/power/apc/auto_name/directional/north{
+	cell_type = /obj/item/stock_parts/cell/bluespace
+	},
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/apc/cut_AI_wire,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
 "eU" = (
@@ -348,18 +371,6 @@
 /obj/item/storage/toolbox/emergency,
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
-/area/shuttle/pirate)
-"ox" = (
-/obj/machinery/light/small/directional/west,
-/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
-	dir = 4;
-	x_offset = -3;
-	y_offset = 7
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/firealarm/directional/south,
-/obj/effect/turf_decal/tile/red/anticorner/contrasted,
-/turf/open/floor/iron/dark,
 /area/shuttle/pirate)
 "oy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -837,39 +848,6 @@
 /obj/item/circuitboard/machine/chem_master,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
-"Bl" = (
-/obj/machinery/door/airlock/external/glass/ruin{
-	id_tag = "piratestarboardexternal"
-	},
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 13;
-	height = 60;
-	name = "Deep Space";
-	shuttle_id = "pirate_home";
-	width = 26
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/docking_port/mobile/pirate{
-	dir = 4
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/pod/light,
-/area/shuttle/pirate)
-"Bu" = (
-/obj/machinery/power/apc/auto_name/directional/north{
-	cell_type = /obj/item/stock_parts/cell/bluespace
-	},
-/obj/structure/reagent_dispensers/watertank,
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/apc/cut_AI_wire,
-/turf/open/floor/plating,
-/area/shuttle/pirate)
 "BL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -924,13 +902,6 @@
 /obj/item/flashlight,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
-"De" = (
-/obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
-/obj/machinery/airalarm/directional/east,
-/turf/open/floor/plating,
-/area/shuttle/pirate)
 "Dn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
@@ -973,6 +944,28 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
+"EI" = (
+/obj/machinery/door/airlock/external/glass/ruin{
+	id_tag = "piratestarboardexternal"
+	},
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 13;
+	height = 60;
+	name = "Deep Space";
+	shuttle_id = "pirate_home";
+	width = 26
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/docking_port/mobile/pirate{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
 "Fn" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/coffee,
@@ -991,6 +984,13 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
+/turf/open/floor/plating,
+/area/shuttle/pirate)
+"FL" = (
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/high,
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
 "FP" = (
@@ -1229,9 +1229,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate)
-"Pn" = (
-/turf/closed/wall,
-/area/template_noop)
 "PM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash/grille_or_waste,
@@ -1512,7 +1509,7 @@ jG
 Gr
 Gr
 zB
-Bl
+EI
 zB
 je
 je
@@ -1769,7 +1766,7 @@ ZU
 dI
 Sv
 ZU
-Bu
+ep
 xO
 yf
 Lk
@@ -1838,7 +1835,7 @@ Bh
 Uf
 DP
 zB
-Pn
+ZU
 "}
 (19,1,1) = {"
 je
@@ -1846,7 +1843,7 @@ zB
 Oo
 AZ
 RU
-ox
+df
 sm
 CY
 fj
@@ -1887,7 +1884,7 @@ yU
 OG
 qo
 pT
-De
+FL
 sh
 ZU
 Zc
