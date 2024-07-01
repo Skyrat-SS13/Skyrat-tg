@@ -821,11 +821,6 @@
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 4a5e8d2644498300286206c020f70eb50f2ebafc
 /obj/item/modular_computer/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(isidcard(tool))
 		return InsertID(tool, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -836,11 +831,7 @@
 	if(istype(tool, /obj/item/pai_card))
 		return pai_act(user, tool)
 
-<<<<<<< HEAD
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
-=======
-	if(istype(tool, /obj/item/stock_parts/cell))
->>>>>>> 4a5e8d2644498300286206c020f70eb50f2ebafc
 		return cell_act(user, tool)
 
 	if(istype(tool, /obj/item/photo))
@@ -880,11 +871,7 @@
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_SUCCESS
 
-<<<<<<< HEAD
 /obj/item/modular_computer/proc/cell_act(mob/user, obj/item/stock_parts/power_store/cell/new_cell)
-=======
-/obj/item/modular_computer/proc/cell_act(mob/user, obj/item/stock_parts/cell/new_cell)
->>>>>>> 4a5e8d2644498300286206c020f70eb50f2ebafc
 	if(ismachinery(physical))
 		return ITEM_INTERACT_BLOCKING
 	if(internal_cell)
@@ -940,10 +927,6 @@
 	playsound(src, 'sound/machines/card_slide.ogg', 50)
 	return ITEM_INTERACT_SUCCESS
 
-<<<<<<< HEAD
->>>>>>> 0db2a23fafd (Adds a new power storage type: The Megacell. Drastically reduces power cell consumption/storage. [MDB Ignore] (#84079))
-=======
->>>>>>> 4a5e8d2644498300286206c020f70eb50f2ebafc
 /obj/item/modular_computer/atom_deconstruct(disassembled = TRUE)
 	remove_pai()
 	eject_aicard()

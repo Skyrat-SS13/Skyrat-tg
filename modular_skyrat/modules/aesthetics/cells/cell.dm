@@ -1,4 +1,3 @@
-<<<<<<< HEAD:modular_skyrat/modules/aesthetics/cells/cell.dm
 /obj/item/stock_parts/power_store/cell
 	icon = 'modular_skyrat/modules/aesthetics/cells/cell.dmi'
 	/// The charge overlay icon file for the cell charge lights
