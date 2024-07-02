@@ -84,16 +84,22 @@ export const ItemDisplay = (props: {
                 {info}
               </Box>
             ))}
+            {
+              // SKYRAT EDIT START - EXPANDED LOADOUT
+              <Flex.Item
+                ml={5.7}
+                mt={0.35}
+                style={{ position: 'absolute', bottom: 5, right: 5 }}
+              >
+                {ShouldDisplayJobRestriction(item) && ItemJobRestriction(item)}
+                {ShouldDisplayPlayerRestriction(item) &&
+                  ItemPlayerRestriction(item)}
+              </Flex.Item>
+
+              /* SKYRAT EDIT END */
+            }
           </Flex.Item>
         )}
-        {
-          // SKYRAT EDIT START - EXPANDED LOADOUT
-          <Flex.Item ml={5.7} mt={0.35}>
-            {ItemRestriction(item)}
-          </Flex.Item>
-
-          /* SKYRAT EDIT END */
-        }
       </Flex>
     </Button>
   );
@@ -132,33 +138,27 @@ const FilterItemList = (items: LoadoutItem[]) => {
     return true;
   });
 };
-
-const ShouldDisplayRestriction = (item: LoadoutItem) => {
-  if (
-    item.ckey_whitelist ||
-    item.restricted_roles ||
-    item.blacklisted_roles ||
-    item.restricted_species
-  ) {
+const ShouldDisplayPlayerRestriction = (item: LoadoutItem) => {
+  if (item.ckey_whitelist || item.restricted_species) {
     return true;
   }
 
   return false;
 };
 
-const ItemRestriction = (item: LoadoutItem) => {
+const ShouldDisplayJobRestriction = (item: LoadoutItem) => {
+  if (item.restricted_roles || item.blacklisted_roles) {
+    return true;
+  }
+
+  return false;
+};
+
+const ItemPlayerRestriction = (item: LoadoutItem) => {
   let restrictions: string[] = [];
 
   if (item.ckey_whitelist) {
     restrictions.push('CKEY Whitelist: ' + item.ckey_whitelist.join(', '));
-  }
-
-  if (item.restricted_roles) {
-    restrictions.push('Job Whitelist: ' + item.restricted_roles.join(', '));
-  }
-
-  if (item.blacklisted_roles) {
-    restrictions.push('Job Blacklist: ' + item.blacklisted_roles.join(', '));
   }
 
   if (item.restricted_species) {
@@ -174,6 +174,29 @@ const ItemRestriction = (item: LoadoutItem) => {
       icon="lock"
       height="22px"
       width="22px"
+      color="yellow"
+      tooltip={tooltip}
+      tooltipPosition={'bottom-start'}
+      style={{ zIndex: '2' }}
+    />
+  );
+};
+
+const ItemJobRestriction = (item: LoadoutItem) => {
+  let restrictions: string[] = [];
+  if (item.restricted_roles) {
+    restrictions.push('Job Whitelist: ' + item.restricted_roles.join(', '));
+  }
+
+  if (item.blacklisted_roles) {
+    restrictions.push('Job Blacklist: ' + item.blacklisted_roles.join(', '));
+  }
+  const tooltip = restrictions.join(', ');
+  return (
+    <Button
+      icon="briefcase"
+      height="22px"
+      width="22px"
       color="blue"
       tooltip={tooltip}
       tooltipPosition={'bottom-start'}
@@ -181,6 +204,7 @@ const ItemRestriction = (item: LoadoutItem) => {
     />
   );
 };
+
 // SKYRAT EDIT END - EXPANDED LOADOUT
 export const LoadoutTabDisplay = (props: {
   category: LoadoutCategory | undefined;
