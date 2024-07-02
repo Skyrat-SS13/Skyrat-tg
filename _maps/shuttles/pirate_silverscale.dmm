@@ -79,6 +79,10 @@
 /obj/effect/turf_decal/trimline/yellow/warning,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate)
+"eK" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
 "eU" = (
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/carpet/royalblack,
@@ -99,6 +103,21 @@
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
+/area/shuttle/pirate)
+"fk" = (
+/obj/structure/rack{
+	dir = 8
+	},
+/obj/item/ammo_box/strilka310,
+/obj/item/ammo_box/strilka310{
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/bot,
+/obj/item/gun/ballistic/rifle/boltaction/prime,
+/obj/item/gun/ballistic/rifle/boltaction/prime{
+	pixel_y = 4
+	},
+/turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "fN" = (
 /obj/structure/dresser,
@@ -147,15 +166,33 @@
 /obj/effect/turf_decal/trimline/blue,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
-"if" = (
-/obj/structure/rack{
-	dir = 8
+"iD" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/cup/glass/bottle/tequila{
+	pixel_x = 10;
+	pixel_y = 10
 	},
-/obj/item/storage/box/lethalshot,
-/obj/item/storage/box/lethalshot,
-/obj/effect/turf_decal/bot,
-/obj/item/gun/ballistic/shotgun/doublebarrel/slugs,
-/turf/open/floor/pod/dark,
+/obj/item/reagent_containers/cup/glass/bottle/hcider{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_x = -15;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/glass/shaker{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/cup/glass/bottle/gin{
+	pixel_x = -10;
+	pixel_y = 15
+	},
+/obj/item/reagent_containers/cup/glass/bottle/wine{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark/textured,
 /area/shuttle/pirate)
 "je" = (
 /turf/template_noop,
@@ -175,6 +212,16 @@
 	dir = 4
 	},
 /turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"kq" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 8;
+	faction = list("pirate")
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 6
+	},
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 "ky" = (
 /obj/structure/toilet{
@@ -285,21 +332,6 @@
 /area/shuttle/pirate)
 "sB" = (
 /turf/open/floor/iron/dark/textured,
-/area/shuttle/pirate)
-"tV" = (
-/obj/structure/rack{
-	dir = 8
-	},
-/obj/item/ammo_box/strilka310,
-/obj/item/ammo_box/strilka310{
-	pixel_y = 3
-	},
-/obj/effect/turf_decal/bot,
-/obj/item/gun/ballistic/rifle/boltaction/prime,
-/obj/item/gun/ballistic/rifle/boltaction/prime{
-	pixel_y = 4
-	},
-/turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "ue" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
@@ -442,6 +474,31 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
+"Bl" = (
+/obj/machinery/door/airlock/external/glass/ruin{
+	id_tag = "piratestarboardexternal"
+	},
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 13;
+	height = 3;
+	shuttle_id = "pirate_home";
+	name = "Deep Space";
+	width = 26
+	},
+/obj/docking_port/mobile/pirate{
+	dir = 4;
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
+	name = "Silverscale Cruiser";
+	preferred_direction = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
 "Ch" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
@@ -478,10 +535,6 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
-"FS" = (
-/obj/machinery/power/shuttle_engine/propulsion,
-/turf/open/floor/plating/airless,
-/area/shuttle/pirate)
 "Gr" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 8
@@ -515,23 +568,6 @@
 	id = "silverbridge"
 	},
 /turf/open/floor/plating,
-/area/shuttle/pirate)
-"HT" = (
-/obj/structure/rack{
-	dir = 8
-	},
-/obj/item/melee/energy/sword/saber/purple{
-	pixel_y = 12
-	},
-/obj/item/melee/energy/sword/saber/purple{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/item/melee/energy/sword/saber/purple{
-	pixel_x = 17
-	},
-/obj/effect/turf_decal/bot,
-/turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "Ig" = (
 /obj/structure/table/glass,
@@ -586,6 +622,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/pirate)
+"KB" = (
+/obj/structure/rack{
+	dir = 8
+	},
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/effect/turf_decal/bot,
+/obj/item/gun/ballistic/shotgun/doublebarrel/slugs,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate)
 "Lk" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -638,6 +684,16 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate)
+"Mo" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
+	dir = 8;
+	x_offset = 10;
+	y_offset = 5
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/shuttle/pirate)
 "Mu" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
@@ -658,44 +714,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
-/area/shuttle/pirate)
-"Np" = (
-/obj/structure/table/glass,
-/obj/item/reagent_containers/cup/glass/bottle/tequila{
-	pixel_x = 10;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/cup/glass/bottle/hcider{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/cup/glass/bottle/rum{
-	pixel_x = -15;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/cup/glass/shaker{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_containers/cup/glass/bottle/gin{
-	pixel_x = -10;
-	pixel_y = 15
-	},
-/obj/item/reagent_containers/cup/glass/bottle/wine{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/pirate)
-"ND" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
-	dir = 8;
-	x_offset = 10;
-	y_offset = 5
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
 /area/shuttle/pirate)
 "NI" = (
 /obj/machinery/door/airlock/silver,
@@ -775,16 +793,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/pirate)
-"Sc" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	dir = 8;
-	faction = list("pirate")
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 6
-	},
-/turf/open/floor/plating/airless,
-/area/template_noop)
 "Sh" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -906,31 +914,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/pirate)
-"Xx" = (
-/obj/machinery/door/airlock/external/glass/ruin{
-	id_tag = "piratestarboardexternal"
-	},
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 13;
-	height = 3;
-	shuttle_id = "pirate_home";
-	name = "Deep Space";
-	width = 26
-	},
-/obj/docking_port/mobile/pirate{
-	dir = 4;
-	launch_status = 0;
-	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
-	name = "Silverscale Cruiser";
-	preferred_direction = 4
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/turf/open/floor/pod/light,
-/area/shuttle/pirate)
 "XB" = (
 /obj/machinery/vending/boozeomat/all_access{
 	onstation = 0
@@ -944,6 +927,23 @@
 "XX" = (
 /obj/structure/bookcase/random/fiction,
 /turf/open/floor/iron/dark/textured,
+/area/shuttle/pirate)
+"Yb" = (
+/obj/structure/rack{
+	dir = 8
+	},
+/obj/item/melee/energy/sword/saber/purple{
+	pixel_y = 12
+	},
+/obj/item/melee/energy/sword/saber/purple{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/melee/energy/sword/saber/purple{
+	pixel_x = 17
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "YD" = (
 /obj/structure/table,
@@ -983,7 +983,7 @@ jG
 Gr
 Gr
 rB
-Xx
+Bl
 rB
 je
 je
@@ -1016,7 +1016,7 @@ rB
 Ww
 Ww
 Ww
-FS
+eK
 Ww
 Ww
 Ww
@@ -1055,9 +1055,9 @@ aZ
 aZ
 aZ
 Is
-if
-tV
-HT
+KB
+fk
+Yb
 rB
 Fk
 QI
@@ -1156,7 +1156,7 @@ dT
 xs
 Ai
 fT
-Np
+iD
 HD
 "}
 (11,1,1) = {"
@@ -1224,7 +1224,7 @@ rB
 rB
 rB
 HD
-ND
+Mo
 fj
 bp
 HD
@@ -1293,7 +1293,7 @@ rB
 rB
 "}
 (18,1,1) = {"
-Sc
+kq
 rB
 zm
 RU
@@ -1309,7 +1309,7 @@ rB
 Uf
 ZY
 rB
-Sc
+kq
 "}
 (19,1,1) = {"
 je

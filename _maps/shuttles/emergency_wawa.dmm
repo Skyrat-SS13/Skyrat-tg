@@ -334,10 +334,19 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/engine,
 /area/shuttle/escape)
-"fS" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
+"ee" = (
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "dont close or i will kill you"
+	},
+/obj/structure/fans/tiny/shield{
+	max_integrity = 400;
+	name = "recycling shield"
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
 "ga" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
 	dir = 8
@@ -412,6 +421,19 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"lE" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "dont close or i will kill you"
+	},
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/obj/structure/fans/tiny/shield{
+	max_integrity = 400;
+	name = "recycling shield"
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
 "lI" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
 	dir = 8
@@ -464,11 +486,6 @@
 "pW" = (
 /turf/open/floor/catwalk_floor,
 /area/shuttle/escape/brig)
-"qm" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/burgundy,
-/turf/template_noop,
-/area/template_noop)
 "qJ" = (
 /obj/machinery/conveyor/auto{
 	dir = 8
@@ -563,19 +580,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/warm/dim/directional/south,
 /turf/open/floor/iron,
-/area/shuttle/escape)
-"AQ" = (
-/obj/machinery/conveyor/auto{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "dont close or i will kill you"
-	},
-/obj/structure/fans/tiny/shield{
-	max_integrity = 400;
-	name = "recycling shield"
-	},
-/turf/open/floor/plating,
 /area/shuttle/escape)
 "Di" = (
 /obj/structure/chair/comfy/shuttle{
@@ -736,19 +740,6 @@
 "Tq" = (
 /turf/closed/wall/rust,
 /area/shuttle/escape)
-"Vj" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "dont close or i will kill you"
-	},
-/obj/machinery/conveyor/auto{
-	dir = 4
-	},
-/obj/structure/fans/tiny/shield{
-	max_integrity = 400;
-	name = "recycling shield"
-	},
-/turf/open/floor/plating,
-/area/shuttle/escape)
 "Xl" = (
 /obj/machinery/stasis,
 /obj/structure/broken_flooring/singular,
@@ -767,9 +758,18 @@
 "XE" = (
 /turf/open/floor/iron/grimy,
 /area/shuttle/escape)
+"XI" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/escape)
 "Yk" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
+/area/shuttle/escape)
+"Zg" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/burgundy,
+/turf/template_noop,
 /area/shuttle/escape)
 
 (1,1,1) = {"
@@ -789,9 +789,9 @@ aa
 aa
 aa
 bq
-Vj
+lE
 bq
-Vj
+lE
 bq
 aa
 aa
@@ -799,8 +799,8 @@ aa
 "}
 (2,1,1) = {"
 aa
-qm
-fS
+Zg
+XI
 al
 al
 al
@@ -924,7 +924,7 @@ bk
 "}
 (7,1,1) = {"
 aa
-qm
+Zg
 al
 al
 ay
@@ -1048,9 +1048,9 @@ bq
 bq
 "}
 (12,1,1) = {"
-qm
-fS
-fS
+Zg
+XI
+XI
 bq
 bq
 bq
@@ -1089,9 +1089,9 @@ aa
 aa
 aa
 bq
-AQ
+ee
 bq
-AQ
+ee
 bq
 aa
 aa
