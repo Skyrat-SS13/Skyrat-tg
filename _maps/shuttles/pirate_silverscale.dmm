@@ -42,6 +42,31 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
+"dw" = (
+/obj/machinery/door/airlock/external/glass/ruin{
+	id_tag = "piratestarboardexternal"
+	},
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 13;
+	height = 3;
+	shuttle_id = "pirate_home";
+	name = "Deep Space";
+	width = 26
+	},
+/obj/docking_port/mobile/pirate{
+	dir = 4;
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
+	name = "Silverscale Cruiser";
+	preferred_direction = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
 "dI" = (
 /obj/structure/dresser,
 /turf/open/floor/carpet/royalblack,
@@ -77,10 +102,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/yellow/warning,
-/turf/open/floor/plating/airless,
-/area/shuttle/pirate)
-"eK" = (
-/obj/machinery/power/shuttle_engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 "eU" = (
@@ -170,6 +191,16 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
+"jX" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 8;
+	faction = list("pirate")
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 6
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
 "ky" = (
 /obj/structure/toilet{
 	dir = 8
@@ -216,6 +247,16 @@
 	dir = 5
 	},
 /turf/open/floor/carpet/royalblack,
+/area/shuttle/pirate)
+"ne" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
+	dir = 8;
+	x_offset = 10;
+	y_offset = 5
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
 /area/shuttle/pirate)
 "nm" = (
 /obj/machinery/power/shuttle_engine/propulsion{
@@ -291,6 +332,10 @@
 /obj/item/bedsheet/pirate,
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/pirate)
+"uZ" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
 "vw" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
@@ -328,16 +373,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
-"wE" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	dir = 8;
-	faction = list("pirate")
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 6
-	},
-/turf/open/floor/plating/airless,
-/area/template_noop)
 "xj" = (
 /obj/structure/table/glass,
 /obj/item/storage/medkit/brute,
@@ -448,31 +483,6 @@
 	},
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/pod/dark,
-/area/shuttle/pirate)
-"Bl" = (
-/obj/machinery/door/airlock/external/glass/ruin{
-	id_tag = "piratestarboardexternal"
-	},
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 13;
-	height = 3;
-	shuttle_id = "pirate_home";
-	name = "Deep Space";
-	width = 26
-	},
-/obj/docking_port/mobile/pirate{
-	dir = 4;
-	launch_status = 0;
-	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
-	name = "Silverscale Cruiser";
-	preferred_direction = 4
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "Ch" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -648,16 +658,6 @@
 /obj/structure/table,
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
-/area/shuttle/pirate)
-"Mo" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
-	dir = 8;
-	x_offset = 10;
-	y_offset = 5
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
 /area/shuttle/pirate)
 "Mu" = (
 /obj/machinery/power/shuttle_engine/propulsion{
@@ -989,7 +989,7 @@ jG
 Gr
 Gr
 rB
-Bl
+dw
 rB
 je
 je
@@ -1022,7 +1022,7 @@ rB
 Ww
 Ww
 Ww
-eK
+uZ
 Ww
 Ww
 Ww
@@ -1230,7 +1230,7 @@ rB
 rB
 rB
 HD
-Mo
+ne
 fj
 bp
 HD
@@ -1299,7 +1299,7 @@ rB
 rB
 "}
 (18,1,1) = {"
-wE
+jX
 rB
 zm
 RU
@@ -1315,7 +1315,7 @@ rB
 Uf
 ZY
 rB
-wE
+jX
 "}
 (19,1,1) = {"
 je
