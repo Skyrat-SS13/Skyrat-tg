@@ -6489,12 +6489,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/atmospherics_engine)
-"bhf" = (
-/obj/effect/spawner/random/engineering/tracking_beacon,
-/obj/effect/landmark/event_spawn,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/turf/open/floor/engine,
-/area/station/science/xenobiology)
 "bhr" = (
 /turf/closed/wall/rock/porous,
 /area/station/security/prison/workout)
@@ -10535,7 +10529,7 @@
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/machinery/light/directional/north,
-/turf/open/floor/engine,
+/turf/open/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "cBo" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -29232,6 +29226,9 @@
 "jvf" = (
 /turf/closed/wall,
 /area/station/command/heads_quarters/hop)
+"jvj" = (
+/turf/open/floor/engine/xenobio,
+/area/station/science/xenobiology)
 "jvk" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -32151,6 +32148,7 @@
 	},
 /obj/effect/turf_decal/siding/thinplating,
 /obj/effect/landmark/event_spawn,
+/obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "ksm" = (
@@ -32890,7 +32888,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/trunk,
-/turf/open/floor/engine,
+/turf/open/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "kGA" = (
 /obj/structure/railing,
@@ -38749,7 +38747,7 @@
 /obj/machinery/sparker/directional/west{
 	id = "Xenobio"
 	},
-/turf/open/floor/engine,
+/turf/open/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "mFo" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -50707,26 +50705,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/primary/tram/left)
-"qVL" = (
-/obj/structure/table,
-/obj/item/assembly/igniter{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 2;
-	pixel_y = -1
-	},
-/turf/open/floor/engine,
-/area/station/science/xenobiology)
 "qVN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -57735,7 +57713,7 @@
 /area/station/command/heads_quarters/captain/private)
 "ttj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/turf/open/floor/engine,
+/turf/open/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "tto" = (
 /obj/machinery/hydroponics/constructable,
@@ -58185,14 +58163,6 @@
 /obj/machinery/disposal/bin,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
-"tBo" = (
-/obj/structure/table,
-/obj/item/stack/sheet/iron{
-	amount = 10
-	},
-/obj/item/electropack,
-/turf/open/floor/engine,
-/area/station/science/xenobiology)
 "tBu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/external{
@@ -58359,7 +58329,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 4
 	},
-/turf/open/floor/engine,
+/turf/open/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "tED" = (
 /obj/effect/turf_decal/tile/neutral/tram,
@@ -59181,16 +59151,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
-"tTh" = (
-/obj/structure/table,
-/obj/machinery/cell_charger{
-	pixel_y = 5
-	},
-/obj/item/stack/cable_coil,
-/obj/item/multitool,
-/obj/item/stock_parts/power_store/cell/high,
-/turf/open/floor/engine,
-/area/station/science/xenobiology)
 "tTs" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -65937,6 +65897,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"weK" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	name = "Test Chamber Blast Door";
+	id = "Xenolab"
+	},
+/obj/structure/sign/warning/gas_mask/directional/north,
+/turf/open/floor/plating,
+/area/station/science/xenobiology)
 "weS" = (
 /obj/structure/railing{
 	dir = 1
@@ -182021,8 +181991,8 @@ umu
 qVr
 qVr
 mFh
-bfH
-bfH
+jvj
+jvj
 qVr
 gYw
 cHY
@@ -182277,11 +182247,11 @@ mAL
 nKU
 qVr
 tEx
-bfH
-bfH
-bfH
+jvj
+jvj
+jvj
 qVr
-pNa
+weK
 uGJ
 pTP
 qyQ
@@ -182534,10 +182504,10 @@ bmz
 pIx
 qVr
 ttj
-bfH
-bfH
-bfH
-bfH
+jvj
+jvj
+jvj
+jvj
 pNa
 qNk
 xmY
@@ -182792,7 +182762,7 @@ pHX
 qVr
 cAK
 ttj
-bhf
+ttj
 ttj
 ttj
 nzg
@@ -183047,10 +183017,10 @@ pbH
 kBo
 kJA
 qVr
-bfH
-bfH
-bfH
-bfH
+jvj
+jvj
+jvj
+jvj
 kGv
 qSS
 cFQ
@@ -183304,10 +183274,10 @@ pbH
 mAL
 nKU
 qVr
-bfH
-bfH
-bfH
-bfH
+jvj
+jvj
+jvj
+jvj
 qVr
 jqK
 ijR
@@ -183562,9 +183532,9 @@ vSa
 cJR
 qVr
 qVr
-tTh
-qVL
-tBo
+jvj
+jvj
+jvj
 qVr
 gYw
 vav
