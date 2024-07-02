@@ -944,12 +944,16 @@
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone/proc/find_original()
 	var/list/possible_targets = list()
 
+	var/opt_in_disabled = CONFIG_GET(flag/disable_rr_opt_in_preferences) // SKYRAT EDIT ADDITION - Round Removal OPT-IN
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(!player.client || !player.mind || player.stat)
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
-		possible_targets += player
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets + Antag Optin
+		if (!opt_in_disabled && player.mind.get_effective_opt_in_level() < RR_OPT_IN)
+			continue
+		// SKYRAT EDIT ADDITION END
 
 	if(possible_targets.len)
 		return pick(possible_targets)
