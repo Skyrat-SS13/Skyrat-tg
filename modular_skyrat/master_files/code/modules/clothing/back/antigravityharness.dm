@@ -1,7 +1,7 @@
 #define MODE_GRAVOFF "Off"
 #define MODE_ANTIGRAVITY "Anti-Gravity Field"
 #define MODE_EXTRAGRAVITY "Extra-Gravity Field"
-#define GRAVITY_FIELD_COST 20
+#define GRAVITY_FIELD_COST STANDARD_CELL_CHARGE * 0.05
 #define OFF_STATE "gravityharness-off"
 #define ANTIGRAVITY_STATE "gravityharness-anti"
 #define EXTRAGRAVITY_STATE "gravityharness-extra"
@@ -21,7 +21,7 @@
 	/// The current operating mode
 	var/mode = MODE_GRAVOFF
 	/// The cell that the harness is currently using
-	var/obj/item/stock_parts/cell/current_cell
+	var/obj/item/stock_parts/power_store/cell/current_cell
 	/// If the cell cover is open or not
 	var/cell_cover_open = FALSE
 	/// If it's manipulating gravity at all.
@@ -259,26 +259,26 @@
 		current_cell.emp_act(severity)
 		change_mode(MODE_GRAVOFF)
 
-/obj/item/gravity_harness/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(!istype(attacking_item, /obj/item/stock_parts/cell))
+/obj/item/gravity_harness/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
 		return ..()
 
 	if(!cell_cover_open)
 		balloon_alert(user, "open the cell cover first!")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-		return FALSE
+		return ITEM_INTERACT_BLOCKING
 
 	if(current_cell)
 		balloon_alert(user, "cell already installed!")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-		return FALSE
+		return ITEM_INTERACT_BLOCKING
 
 	/// Shadow realm? I'm sending you to Lake City, FL!
-	attacking_item.moveToNullspace()
-	current_cell = attacking_item
+	tool.moveToNullspace()
+	current_cell = tool
 	balloon_alert(user, "cell installed")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
-	return TRUE
+	return ITEM_INTERACT_SUCCESS
 
 #undef MODE_GRAVOFF
 #undef MODE_ANTIGRAVITY
