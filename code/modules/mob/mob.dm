@@ -471,6 +471,7 @@
 	return FALSE
 
 /**
+<<<<<<< HEAD
  * Try to equip an item to a slot on the mob
  *
  * This is a SAFE proc. Use this instead of equip_to_slot()!
@@ -562,6 +563,8 @@
 		qdel(W)
 	return FALSE
 /**
+=======
+>>>>>>> 1d92293fccd (Moving some inventory-related procs to the right files. (#84438))
  * Reset the attached clients perspective (viewpoint)
  *
  * reset_perspective(null) set eye to common default : mob on turf, loc otherwise
