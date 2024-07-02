@@ -1,5 +1,5 @@
 /obj/item/mod/control/pre_equipped/responsory/milsim_mechanic
-	applied_cell = /obj/item/stock_parts/cell/super
+	applied_cell = /obj/item/stock_parts/power_store/cell/super
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	req_access = null
 	applied_modules = list(
@@ -19,7 +19,7 @@
 	additional_module = /obj/item/mod/module/dispenser/barrinade
 
 /obj/item/mod/control/pre_equipped/responsory/milsim_trapper
-	applied_cell = /obj/item/stock_parts/cell/super
+	applied_cell = /obj/item/stock_parts/power_store/cell/super
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	req_access = null
 	applied_modules = list(
@@ -39,7 +39,7 @@
 	additional_module = /obj/item/mod/module/dispenser/landmine
 
 /obj/item/mod/control/pre_equipped/responsory/milsim_marksman
-	applied_cell = /obj/item/stock_parts/cell/super
+	applied_cell = /obj/item/stock_parts/power_store/cell/super
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	req_access = null
 	applied_modules = list(
@@ -59,7 +59,7 @@
 	additional_module = /obj/item/mod/module/dispenser/smoke
 
 /obj/item/mod/control/pre_equipped/responsory/milsim_medic
-	applied_cell = /obj/item/stock_parts/cell/super
+	applied_cell = /obj/item/stock_parts/power_store/cell/super
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	req_access = null
 	applied_modules = list(

@@ -37,7 +37,7 @@
 	atom_storage.max_total_storage = 12
 	atom_storage.max_slots = 3
 	atom_storage.numerical_stacking = FALSE
-	atom_storage.can_hold = typecacheof(list(/obj/item/ammo_box/magazine, /obj/item/ammo_casing, /obj/item/stock_parts/cell/microfusion))
+	atom_storage.can_hold = typecacheof(list(/obj/item/ammo_box/magazine, /obj/item/ammo_casing, /obj/item/stock_parts/power_store/cell/microfusion))
 
 /obj/item/storage/pouch/ammo/post_reskin(mob/our_mob)
 	if(icon_state == "casingpouch")

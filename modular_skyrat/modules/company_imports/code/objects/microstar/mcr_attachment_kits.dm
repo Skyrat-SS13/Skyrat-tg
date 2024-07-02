@@ -51,7 +51,7 @@
 
 /obj/item/storage/briefcase/secure/white/mcr_parts/enhanced/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/stock_parts/cell/microfusion/enhanced = 1,
+		/obj/item/stock_parts/power_store/cell/microfusion/enhanced = 1,
 		/obj/item/microfusion_phase_emitter/enhanced = 1,
 		)
 	generate_items_inside(items_inside,src)
@@ -60,14 +60,14 @@
 
 /obj/item/storage/briefcase/secure/white/mcr_parts/advanced/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/stock_parts/cell/microfusion/advanced = 1,
+		/obj/item/stock_parts/power_store/cell/microfusion/advanced = 1,
 		/obj/item/microfusion_phase_emitter/advanced = 1,
 		)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/briefcase/secure/white/mcr_parts/bluespace/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/stock_parts/cell/microfusion/bluespace = 1,
+		/obj/item/stock_parts/power_store/cell/microfusion/bluespace = 1,
 		/obj/item/microfusion_phase_emitter/bluespace = 1,
 		)
 	generate_items_inside(items_inside,src)
