@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;component&#x2F;pixel_shift - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/component/pixel_shift.html#var">Var Details</a> - <a href="datum/component/pixel_shift.html#proc">Proc Details</a></header>
+<main>
+<h1>pixel_shift <aside>/<a href="datum.html">datum</a>/<a href="datum/component.html">component</a>/<a href="datum/component/pixel_shift.html">pixel_shift</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L1">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#var/is_shifted">is_shifted</a></th><td>Whether the mob is pixel shifted or not</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#var/maximum_pixel_shift">maximum_pixel_shift</a></th><td>The maximum amount of pixels allowed to move in the turf.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#var/passable_shift_threshold">passable_shift_threshold</a></th><td>The amount of pixel shift required to make the parent passthroughable.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#var/passthroughable">passthroughable</a></th><td>Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#var/shifting">shifting</a></th><td>If we are in the shifting setting.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#proc/check_passable">check_passable</a></th><td>Checks if the parent is considered passthroughable from a direction. Projectiles will ignore the check and hit.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#proc/pixel_shift">pixel_shift</a></th><td>In-turf pixel movement which can allow things to pass through if the threshold is met.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#proc/pixel_shift_down">pixel_shift_down</a></th><td>Activates Pixel Shift on Keybind down. Only Pixel Shift movement will be allowed.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#proc/pixel_shift_up">pixel_shift_up</a></th><td>Disables Pixel Shift on Keybind up. Allows to Move.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#proc/pre_move_check">pre_move_check</a></th><td>Overrides Move to Pixel Shift.</td></tr>
+            <tr><th><a href="datum/component/pixel_shift.html#proc/unpixel_shift">unpixel_shift</a></th><td>Sets parent pixel offsets to default and deletes the component.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/is_shifted"><aside class="declaration">var </aside>is_shifted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L4">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 4"/></a></h3>
+        <p>Whether the mob is pixel shifted or not</p><h3 id="var/maximum_pixel_shift"><aside class="declaration">var </aside>maximum_pixel_shift
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L10">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 10"/></a></h3>
+        <p>The maximum amount of pixels allowed to move in the turf.</p><h3 id="var/passable_shift_threshold"><aside class="declaration">var </aside>passable_shift_threshold
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L12">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 12"/></a></h3>
+        <p>The amount of pixel shift required to make the parent passthroughable.</p><h3 id="var/passthroughable"><aside class="declaration">var </aside>passthroughable
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L8">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 8"/></a></h3>
+        <p>Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.</p><h3 id="var/shifting"><aside class="declaration">var </aside>shifting
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L6">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 6"/></a></h3>
+        <p>If we are in the shifting setting.</p><h2 id="proc">Proc Details</h2><h3 id="proc/check_passable"><aside class="declaration">proc </aside>check_passable<aside>(/<a href="mob.html">mob</a>/source, /<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/mover, border_dir) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L43">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 43"/></a></aside>
+        </h3>
+        <p>Checks if the parent is considered passthroughable from a direction. Projectiles will ignore the check and hit.</p><h3 id="proc/pixel_shift"><aside class="declaration">proc </aside>pixel_shift<aside>(/<a href="mob.html">mob</a>/source, direct) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L70">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 70"/></a></aside>
+        </h3>
+        <p>In-turf pixel movement which can allow things to pass through if the threshold is met.</p><h3 id="proc/pixel_shift_down"><aside class="declaration">proc </aside>pixel_shift_down<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L49">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 49"/></a></aside>
+        </h3>
+        <p>Activates Pixel Shift on Keybind down. Only Pixel Shift movement will be allowed.</p><h3 id="proc/pixel_shift_up"><aside class="declaration">proc </aside>pixel_shift_up<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L55">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 55"/></a></aside>
+        </h3>
+        <p>Disables Pixel Shift on Keybind up. Allows to Move.</p><h3 id="proc/pre_move_check"><aside class="declaration">proc </aside>pre_move_check<aside>(/<a href="mob.html">mob</a>/source, new_loc, direct) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L36">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 36"/></a></aside>
+        </h3>
+        <p>Overrides Move to Pixel Shift.</p><h3 id="proc/unpixel_shift"><aside class="declaration">proc </aside>unpixel_shift<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/pixel_shift/code/pixel_shift_component.dm#L60">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;pixel_shift&#x2F;code&#x2F;pixel_shift_component.dm 60"/></a></aside>
+        </h3>
+        <p>Sets parent pixel offsets to default and deletes the component.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/67628cdcf9017b18c7fb73bf01ead0d32f3117b9">67628cd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

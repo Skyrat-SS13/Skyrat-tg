@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living&#x2F;basic&#x2F;cortical_borer - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living/basic/cortical_borer.html#var">Var Details</a> - <a href="mob/living/basic/cortical_borer.html#proc">Proc Details</a></header>
+<main>
+<h1>cortical_borer <aside>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/basic.html">basic</a>/<a href="mob/living/basic/cortical_borer.html">cortical_borer</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L73">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 73"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/blood_chems_learned">blood_chems_learned</a></th><td>how many blood chems have been learned through the blood</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/body_focuses">body_focuses</a></th><td>What focuses the borer has unlocked</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/changeling_restricted">changeling_restricted</a></th><td>borers are unable to enter changelings if true</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/chem_regen_per_level">chem_regen_per_level</a></th><td>Chemical regen you gain per level</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/chem_storage_per_level">chem_storage_per_level</a></th><td>How much more chemical storage you gain per level</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/chemical_evolution">chemical_evolution</a></th><td>the amount of &quot;evolution&quot; points a borer has for chemicals. Start with one</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/chemical_regen">chemical_regen</a></th><td>how fast chemicals are gained. Goes up only when inside a host</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/chemical_storage">chemical_storage</a></th><td>how many chemical points the borer has</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/children_produced">children_produced</a></th><td>how many children the borer has produced</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/deathgasp_once">deathgasp_once</a></th><td>we dont want to spam the chat</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/genome_locked">genome_locked</a></th><td>If the borer has evolved with a genome that locks out others of the same &amp; higher tier</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/health_per_level">health_per_level</a></th><td>How much health you gain per level</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/health_regen">health_regen</a></th><td>multiplies the current health up to the max health</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/health_regen_per_level">health_regen_per_level</a></th><td>How much health regen you gain per level</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/host_harm_multiplier">host_harm_multiplier</a></th><td>Multiplier for a borer's negative effects to their host</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/human_host">human_host</a></th><td>the host</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/injection_cooldown">injection_cooldown</a></th><td>Cooldown between injecting chemicals</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/injection_rate_current">injection_rate_current</a></th><td>What is the current injection rate of the borer</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/injection_rates">injection_rates</a></th><td>Assoc list of chemical injection rates that the borer can have</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/injection_rates_unlocked">injection_rates_unlocked</a></th><td>Which injection rates the borer has unlocked</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/known_abilities">known_abilities</a></th><td>the list of actions that the borer has</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/known_chemicals">known_chemicals</a></th><td>what chemicals borers know, starting with none</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/level">level</a></th><td>How many times you've levelled up over all</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/maturity_age">maturity_age</a></th><td>how old the borer is, starting from zero. Goes up only when inside a host</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/max_chemical_storage">max_chemical_storage</a></th><td>how many chemical points the borer can have. Can be upgraded</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/organic_restricted">organic_restricted</a></th><td>borers can only enter biologicals if true</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/past_evolutions">past_evolutions</a></th><td>Evolutions we've already learned</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/possible_focuses">possible_focuses</a></th><td>List of focus datums</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/potential_chemicals">potential_chemicals</a></th><td>what chemicals the borer can learn</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/stat_evolution">stat_evolution</a></th><td>the amount of &quot;evolution&quot; points a borer has for stats</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#var/upgrade_flags">upgrade_flags</a></th><td>Bitflag of upgrades and effects the borer has</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#proc/handle_environment">handle_environment</a></th><td>Base mob environment handler for body temperature, overridden to take into consideration being inside a host</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#proc/mature">mature</a></th><td>Called on Life() for the borer to age a bit</td></tr>
+            <tr><th><a href="mob/living/basic/cortical_borer.html#proc/recalculate_stats">recalculate_stats</a></th><td>Use to recalculate a borer's health and chemical stats when something retroactively affects them</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/blood_chems_learned"><aside class="declaration">var </aside>blood_chems_learned
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L174">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 174"/></a></h3>
+        <p>how many blood chems have been learned through the blood</p><h3 id="var/body_focuses"><aside class="declaration">var </aside>body_focuses
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L170">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 170"/></a></h3>
+        <p>What focuses the borer has unlocked</p><h3 id="var/changeling_restricted"><aside class="declaration">var </aside>changeling_restricted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L182">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 182"/></a></h3>
+        <p>borers are unable to enter changelings if true</p><h3 id="var/chem_regen_per_level"><aside class="declaration">var </aside>chem_regen_per_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L140">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 140"/></a></h3>
+        <p>Chemical regen you gain per level</p><h3 id="var/chem_storage_per_level"><aside class="declaration">var </aside>chem_storage_per_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L138">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 138"/></a></h3>
+        <p>How much more chemical storage you gain per level</p><h3 id="var/chemical_evolution"><aside class="declaration">var </aside>chemical_evolution
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L124">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 124"/></a></h3>
+        <p>the amount of &quot;evolution&quot; points a borer has for chemicals. Start with one</p><h3 id="var/chemical_regen"><aside class="declaration">var </aside>chemical_regen
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L132">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 132"/></a></h3>
+        <p>how fast chemicals are gained. Goes up only when inside a host</p><h3 id="var/chemical_storage"><aside class="declaration">var </aside>chemical_storage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L130">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 130"/></a></h3>
+        <p>how many chemical points the borer has</p><h3 id="var/children_produced"><aside class="declaration">var </aside>children_produced
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L172">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 172"/></a></h3>
+        <p>how many children the borer has produced</p><h3 id="var/deathgasp_once"><aside class="declaration">var </aside>deathgasp_once
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L176">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 176"/></a></h3>
+        <p>we dont want to spam the chat</p><h3 id="var/genome_locked"><aside class="declaration">var </aside>genome_locked
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L203">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 203"/></a></h3>
+        <p>If the borer has evolved with a genome that locks out others of the same &amp; higher tier</p><h3 id="var/health_per_level"><aside class="declaration">var </aside>health_per_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L134">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 134"/></a></h3>
+        <p>How much health you gain per level</p><h3 id="var/health_regen"><aside class="declaration">var </aside>health_regen
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L162">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 162"/></a></h3>
+        <p>multiplies the current health up to the max health</p><h3 id="var/health_regen_per_level"><aside class="declaration">var </aside>health_regen_per_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L136">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 136"/></a></h3>
+        <p>How much health regen you gain per level</p><h3 id="var/host_harm_multiplier"><aside class="declaration">var </aside>host_harm_multiplier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L205">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 205"/></a></h3>
+        <p>Multiplier for a borer's negative effects to their host</p><h3 id="var/human_host"><aside class="declaration">var </aside>human_host
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L156">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 156"/></a></h3>
+        <p>the host</p><h3 id="var/injection_cooldown"><aside class="declaration">var </aside>injection_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L197">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 197"/></a></h3>
+        <p>Cooldown between injecting chemicals</p><h3 id="var/injection_rate_current"><aside class="declaration">var </aside>injection_rate_current
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L195">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 195"/></a></h3>
+        <p>What is the current injection rate of the borer</p><h3 id="var/injection_rates"><aside class="declaration">var </aside>injection_rates
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L184">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 184"/></a></h3>
+        <p>Assoc list of chemical injection rates that the borer can have</p><h3 id="var/injection_rates_unlocked"><aside class="declaration">var </aside>injection_rates_unlocked
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L191">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 191"/></a></h3>
+        <p>Which injection rates the borer has unlocked</p><h3 id="var/known_abilities"><aside class="declaration">var </aside>known_abilities
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L144">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 144"/></a></h3>
+        <p>the list of actions that the borer has</p><h3 id="var/known_chemicals"><aside class="declaration">var </aside>known_chemicals
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L93">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 93"/></a></h3>
+        <p>what chemicals borers know, starting with none</p><h3 id="var/level"><aside class="declaration">var </aside>level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L142">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 142"/></a></h3>
+        <p>How many times you've levelled up over all</p><h3 id="var/maturity_age"><aside class="declaration">var </aside>maturity_age
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L122">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 122"/></a></h3>
+        <p>how old the borer is, starting from zero. Goes up only when inside a host</p><h3 id="var/max_chemical_storage"><aside class="declaration">var </aside>max_chemical_storage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L128">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 128"/></a></h3>
+        <p>how many chemical points the borer can have. Can be upgraded</p><h3 id="var/organic_restricted"><aside class="declaration">var </aside>organic_restricted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L180">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 180"/></a></h3>
+        <p>borers can only enter biologicals if true</p><h3 id="var/past_evolutions"><aside class="declaration">var </aside>past_evolutions
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L199">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 199"/></a></h3>
+        <p>Evolutions we've already learned</p><h3 id="var/possible_focuses"><aside class="declaration">var </aside>possible_focuses
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L168">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 168"/></a></h3>
+        <p>List of focus datums</p><h3 id="var/potential_chemicals"><aside class="declaration">var </aside>potential_chemicals
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L95">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 95"/></a></h3>
+        <p>what chemicals the borer can learn</p><h3 id="var/stat_evolution"><aside class="declaration">var </aside>stat_evolution
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L126">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 126"/></a></h3>
+        <p>the amount of &quot;evolution&quot; points a borer has for stats</p><h3 id="var/upgrade_flags"><aside class="declaration">var </aside>upgrade_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L201">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 201"/></a></h3>
+        <p>Bitflag of upgrades and effects the borer has</p><h2 id="proc">Proc Details</h2><h3 id="proc/handle_environment">handle_environment<aside>(/<a href="datum.html">datum</a>/<a href="datum/gas_mixture.html">gas_mixture</a>/environment, seconds_per_tick, times_fired) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L349">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 349"/></a></aside>
+        </h3>
+        <p>Base mob environment handler for body temperature, overridden to take into consideration being inside a host</p><h3 id="proc/mature"><aside class="declaration">proc </aside>mature<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L422">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 422"/></a></aside>
+        </h3>
+        <p>Called on Life() for the borer to age a bit</p><h3 id="proc/recalculate_stats"><aside class="declaration">proc </aside>recalculate_stats<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/67628cdcf9017b18c7fb73bf01ead0d32f3117b9/modular_skyrat/modules/cortical_borer/code/cortical_borer.dm#L453">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;cortical_borer&#x2F;code&#x2F;cortical_borer.dm 453"/></a></aside>
+        </h3>
+        <p>Use to recalculate a borer's health and chemical stats when something retroactively affects them</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/67628cdcf9017b18c7fb73bf01ead0d32f3117b9">67628cd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>
