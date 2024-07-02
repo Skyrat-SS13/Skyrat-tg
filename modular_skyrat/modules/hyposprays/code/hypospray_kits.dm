@@ -231,7 +231,7 @@
 /obj/item/storage/hypospraykit/cmo/combat/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/hypospray/mkii/deluxe/cmo/combat(src)
+	new /obj/item/hypospray/mkii/deluxe/combat(src)
 	new /obj/item/reagent_containers/cup/vial/large/advbrute(src)
 	new /obj/item/reagent_containers/cup/vial/large/advburn(src)
 	new /obj/item/reagent_containers/cup/vial/large/advtox(src)
