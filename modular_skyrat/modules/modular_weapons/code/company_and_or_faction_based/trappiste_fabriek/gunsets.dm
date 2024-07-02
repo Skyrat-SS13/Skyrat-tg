@@ -23,7 +23,7 @@
 	name = "Trappiste 'Wespe' gunset"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/sol/no_mag
-	extra_to_spawn = /obj/item/ammo_box/magazine/c35sol_pistol
+	extra_to_spawn = /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/eland
 	name = "Trappiste 'Eland' gunset"

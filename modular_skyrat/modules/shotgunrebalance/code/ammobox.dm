@@ -56,6 +56,13 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/flechette
 	max_ammo = 15
 
+/obj/item/ammo_box/advanced/s12gauge/dragonsbreath
+	name = "Dragons Breathe ammo box"
+	desc = "A box of 15 Dragons Breathe shells. Each shell contains plasma inside to create a massive trailing flame, excel at collateral damage."
+	icon_state = "dragonsbreath"
+	ammo_type = /obj/item/ammo_casing/shotgun/dragonsbreath
+	max_ammo = 15
+
 /obj/item/ammo_box/advanced/s12gauge/beehive
 	name = "Hornet's nest ammo box"
 	desc = "A box of 15 hornet's nest shells. These are less-lethal shells that will bounce off walls and direct themselves toward nearby targets."

@@ -38,7 +38,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet_novisor"
 	base_icon_state = "security_helmet_novisor"
-	actions_types = NONE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	armor_type = /datum/armor/head_helmet
 

@@ -33,7 +33,7 @@
 	name = "9x25mm IHDF bullet"
 	damage = 30
 	damage_type = STAMINA
-	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+	embedding = list(embed_chance=20, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
 /obj/item/ammo_casing/c9mm/rubber
 	name = "9x25mm Mk.12 rubber casing"

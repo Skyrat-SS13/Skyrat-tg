@@ -20,10 +20,10 @@
 
 /obj/projectile/bullet/c40sol
 	name = ".40 Sol Long bullet"
-	damage = 35
+	damage = 30
 
-	wound_bonus = 10
-	bare_wound_bonus = 20
+	wound_bonus = -10
+	bare_wound_bonus = -20
 
 
 /obj/item/ammo_box/c40sol
@@ -66,11 +66,11 @@
 
 	sharpness = SHARP_EDGED
 	wound_bonus = 0
-	bare_wound_bonus = 10
+	bare_wound_bonus = 20
 
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embedding = list(
-		embed_chance = 50,
+		embed_chance = 60,
 		fall_chance = 5,
 		jostle_chance = 5,
 		ignore_throwspeed_threshold = TRUE,
