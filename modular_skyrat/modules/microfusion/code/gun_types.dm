@@ -11,7 +11,7 @@
 /// Gun for cargo crates.
 /obj/item/gun/microfusion/mcr01/advanced
 	name = "advanced MCR-01"
-	cell_type = /obj/item/stock_parts/cell/microfusion/advanced
+	cell_type = /obj/item/stock_parts/power_store/cell/microfusion/advanced
 	phase_emitter_type = /obj/item/microfusion_phase_emitter/advanced
 
 
@@ -22,7 +22,7 @@
 	inhand_icon_state = "mcr01"
 	shaded_charge = TRUE
 	phase_emitter_type = /obj/item/microfusion_phase_emitter/nanocarbon
-	cell_type = /obj/item/stock_parts/cell/microfusion/nanocarbon
+	cell_type = /obj/item/stock_parts/power_store/cell/microfusion/nanocarbon
 	attachments = list(
 		/obj/item/microfusion_gun_attachment/barrel/pulse,
 		/obj/item/microfusion_gun_attachment/grip,
@@ -34,7 +34,7 @@
 /obj/item/gun/microfusion/mcr01/syndie
 	name = "SCR-01"
 	desc = "A Syndicate brand copy of the MCR-01. It comes with a proprietary suppressor and some tactical attachments."
-	cell_type = /obj/item/stock_parts/cell/microfusion/advanced
+	cell_type = /obj/item/stock_parts/power_store/cell/microfusion/advanced
 	phase_emitter_type = /obj/item/microfusion_phase_emitter/advanced
 	attachments = list(
 		/obj/item/microfusion_gun_attachment/barrel/suppressor,
@@ -50,16 +50,16 @@
 
 /obj/item/storage/box/ammo_box/microfusion/advanced/PopulateContents()
 	new /obj/item/storage/pouch/ammo(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/advanced(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/advanced(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/advanced(src)
 
 /obj/item/storage/box/ammo_box/microfusion/advanced/bagless
 
 /obj/item/storage/box/ammo_box/microfusion/advanced/bagless/PopulateContents()
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/advanced(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/advanced(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion/advanced(src)
 
 /*
 *	MICROFUSION SPAWNERS
