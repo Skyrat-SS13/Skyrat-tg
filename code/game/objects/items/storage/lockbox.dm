@@ -259,6 +259,11 @@
 	if(id_card.registered_account == buyer_account)
 		return TRUE
 
+	//SKYRAT EDIT ADDITION START - private department orders
+	if(department_purchase && id_card.registered_account?.account_job?.paycheck_department == department_account.department_id)
+		return TRUE
+	//SKYRAT EDIT ADDITION END
+
 	balloon_alert(user, "incorrect bank account!")
 	return FALSE
 

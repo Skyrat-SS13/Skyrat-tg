@@ -32,8 +32,8 @@ GLOBAL_LIST_EMPTY(simple_research)
 	skilled_item = /obj/item/stock_parts/matter_bin/adv
 
 /datum/simple_research/cell
-	research_item = /obj/item/stock_parts/cell
-	skilled_item = /obj/item/stock_parts/cell/high
+	research_item = /obj/item/stock_parts/power_store/cell
+	skilled_item = /obj/item/stock_parts/power_store/cell/high
 
 /datum/simple_research/cable
 	research_item = /obj/item/stack/cable_coil/five

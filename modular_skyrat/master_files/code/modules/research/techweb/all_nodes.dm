@@ -1,12 +1,8 @@
 
 // NEW NODES
 
-#define TECHWEB_NODE_ADV_VISION "adv_vision"
-#define TECHWEB_NODE_BORG_SHAPESHIFTER "borg_shapeshifter"
-#define TECHWEB_NODE_AYY_CYBER_IMPLANTS "ayy_cyber_implants"
-
 /datum/techweb_node/adv_vision
-	id = TECHWEB_NODE_ADV_VISION
+	id = TECHWEB_NODE_ADVANCED_VISION
 	display_name = "Combat Cybernetic Eyes"
 	description = "Military grade combat implants to improve vision."
 	prereq_ids = list(TECHWEB_NODE_COMBAT_IMPLANTS, TECHWEB_NODE_ALIEN_SURGERY)
@@ -49,6 +45,8 @@
 /datum/techweb_node/construction/New()
 	design_ids += list(
 		"polarizer",
+		"rcd_loaded",
+		"rcd_ammo",
 	)
 	return ..()
 

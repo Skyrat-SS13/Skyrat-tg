@@ -3,7 +3,7 @@
 	icon = 'modular_skyrat/modules/blueshield/icons/praetorian.dmi'
 	icon_state = "praetorian-control"
 	theme = /datum/mod_theme/blueshield
-	applied_cell = /obj/item/stock_parts/cell/super
+	applied_cell = /obj/item/stock_parts/power_store/cell/super
 	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/magnetic_harness,
