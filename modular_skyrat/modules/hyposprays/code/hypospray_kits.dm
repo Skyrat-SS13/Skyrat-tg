@@ -102,19 +102,18 @@
 			var/mutable_appearance/hypo_overlay = mutable_appearance(initial(icon), attached_hypo.icon_state)
 			. += hypo_overlay
 
-/obj/item/storage/hypospraykit/attackby_secondary(obj/item/weapon, mob/user, params)
-	if(istype(weapon, /obj/item/hypospray/mkii))
-		if(attached_hypo != null)
-			balloon_alert(user, "Mount point full!  Remove [attached_hypo] first!")
-		else
-			weapon.moveToNullspace()
-			attached_hypo = weapon
-			RegisterSignal(weapon, COMSIG_QDELETING, PROC_REF(on_attached_hypo_qdel))
-			balloon_alert(user, "Attached [attached_hypo].")
-			update_appearance()
-			// This stops atom_storage from hogging your right-click and opening the inventory.
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	return ..()
+/obj/item/storage/hypospraykit/tool_act(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/hypospray/mkii) || !LAZYACCESS(modifiers, RIGHT_CLICK))
+		return ..()
+	if(!isnull(attached_hypo))
+		balloon_alert(user, "Mount point full!  Remove [attached_hypo] first!")
+		return ITEM_INTERACT_BLOCKING
+	tool.moveToNullspace()
+	attached_hypo = tool
+	RegisterSignal(tool, COMSIG_QDELETING, PROC_REF(on_attached_hypo_qdel))
+	balloon_alert(user, "Attached [attached_hypo].")
+	update_appearance()
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/storage/hypospraykit/click_alt_secondary(mob/user)
 	if(attached_hypo != null)
@@ -231,7 +230,7 @@
 /obj/item/storage/hypospraykit/cmo/combat/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/hypospray/mkii/deluxe/cmo/combat(src)
+	new /obj/item/hypospray/mkii/deluxe/combat(src)
 	new /obj/item/reagent_containers/cup/vial/large/advbrute(src)
 	new /obj/item/reagent_containers/cup/vial/large/advburn(src)
 	new /obj/item/reagent_containers/cup/vial/large/advtox(src)
