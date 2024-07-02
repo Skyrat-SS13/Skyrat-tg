@@ -185,6 +185,7 @@
 	// If we got here, the gravity field is on. If there's no cell, turn that shit off
 	if(!current_cell)
 		change_mode(MODE_GRAVOFF)
+		return
 
 	// cell.use will return FALSE if charge is lower than GRAVITY_FIELD_COST
 	if(!current_cell.use(GRAVITY_FIELD_COST))
@@ -194,14 +195,6 @@
 /obj/item/gravity_harness/get_cell()
 	if(cell_cover_open)
 		return current_cell
-
-/obj/item/gravity_harness/Exited(atom/movable/gone, direction)
-	. = ..()
-	if(gone == current_cell)
-		change_mode(MODE_GRAVOFF)
-		current_cell = null
-
-	return ..()
 
 // Show the status of the harness and cell
 /obj/item/gravity_harness/examine(mob/user)
@@ -232,8 +225,8 @@
 	cell_cover_open = !cell_cover_open
 	return TRUE
 
-/obj/item/gravity_harness/attack_hand(mob/user)
-	if(!cell_cover_open)
+/obj/item/gravity_harness/attack_hand(mob/user, list/modifiers)
+	if(!cell_cover_open || loc != user)
 		return ..()
 
 	if(!current_cell)
@@ -245,6 +238,7 @@
 		balloon_alert(user, "interrupted!")
 		return
 
+	change_mode(MODE_GRAVOFF)
 	balloon_alert(user, "cell removed")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(!user.put_in_hands(current_cell))
