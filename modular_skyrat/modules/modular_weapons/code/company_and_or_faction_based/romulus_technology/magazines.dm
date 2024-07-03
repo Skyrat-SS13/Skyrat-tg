@@ -23,3 +23,6 @@
 /obj/item/ammo_box/magazine/m45a5/starts_empty
 	start_empty = TRUE
 
+/obj/item/ammo_box/magazine/internal/cylinder/c457
+	caliber = CALIBER_457
+	ammo_type = /obj/item/ammo_casing/c457govt

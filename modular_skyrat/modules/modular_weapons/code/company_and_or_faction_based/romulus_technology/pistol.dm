@@ -4,7 +4,7 @@
 /obj/item/gun/ballistic/revolver/hos_revolver
 	name = "\improper HR-460MS"
 	desc = "An experimental revolver design that can only be loaded one shot at a time, if the initial damage did not kill, the bleedout would. Chambered in .457 Government."
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rowland
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/c457
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/revolver.dmi'
 	icon_state = "microtracker"
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/revolver_heavy.ogg'
