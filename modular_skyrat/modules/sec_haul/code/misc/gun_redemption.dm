@@ -52,3 +52,16 @@
 
 //Security Sidearm
 
+/obj/item/choice_beacon/security_pistol
+	name = "sidearm weapon beacon"
+	desc = "A single use beacon to deliver a weapon of your choice. Please only call this in your office"
+	company_source = "Romulus Armoury"
+	company_message = span_bold("Supply Pod incoming please stand by")
+
+/obj/item/choice_beacon/security_pistol/generate_display_names()
+	var/static/list/selectable_gun_types = list(
+		"Standard 9x25mm Mk2 Pistol" = /obj/item/gun/ballistic/automatic/pistol/nt_glock,
+		"Special 10mm Auto Revolver" = /obj/item/gun/ballistic/revolver/nt_revolver
+	)
+
+	return selectable_gun_types

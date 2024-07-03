@@ -1,5 +1,14 @@
 //Handgun
 
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock
+	name = "9x25mm Mk2 Standard Pistol"
+
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty(src)
+	new /obj/item/ammo_box/magazine/m9mm/rubber(src)
+	new /obj/item/ammo_box/magazine/m9mm/rubber(src)
+	new /obj/item/ammo_box/magazine/m9mm/ihdf(src)
+
 /obj/item/gun/ballistic/automatic/pistol/nt_glock
 	name = "\improper GP-9"
 	desc = "General Purpose Pistol Number 9. A classic .9mm handgun with a small magazine capacity. This thing has an alert locked firing pin."
@@ -12,14 +21,23 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin/alert_level
-	fire_delay = 3
 	projectile_damage_multiplier = 0.8
+	spawn_magazine_type =
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 	spawnwithmagazine = FALSE
+
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec
+	name = "9x25mm Mk2 Standard Pistol"
+
+/obj/item/gun/ballistic/automatic/pistol/nt_glock/spec/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty(src)
+	new /obj/item/ammo_box/magazine/m9mm/hp(src)
+	new /obj/item/ammo_box/magazine/m9mm/hp(src)
+	new /obj/item/ammo_box/magazine/m9mm/ap(src)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/spec
 	name = "\improper GP-93R"

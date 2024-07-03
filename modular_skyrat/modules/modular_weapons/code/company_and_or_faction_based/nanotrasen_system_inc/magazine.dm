@@ -1,5 +1,13 @@
 //9mm Magazines
+/obj/item/ammo_box/magazine/m9mm/rubber
+	name = "pistol magazine (9x25mm Rubber)"
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
+/obj/item/ammo_box/magazine/m9mm/ihdf
+	name = "pistol magazine (9x25mm Intelligent Dispersal Foam)"
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+
+/obj/item/ammo_casing/c9mm/rubber
 
 //10mm Cylinder
 /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
