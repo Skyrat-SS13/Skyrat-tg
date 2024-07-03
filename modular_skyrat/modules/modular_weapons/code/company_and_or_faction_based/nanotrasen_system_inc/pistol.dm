@@ -23,14 +23,15 @@
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/spec
 	name = "\improper GP-93R"
-	desc = "General Purpose Pistol Number 9. A classic .9mm handgun with a small magazine capacity. It fire in three round burst"
+	desc = "General Purpose Pistol Number 9, 3-Round Burst. A classic .9mm handgun with a small magazine capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
-	spread = 8
+	spread = 20
 	pin = /obj/item/firing_pin
-	fire_delay = 1
 	projectile_damage_multiplier = 0.9
+	fire_delay = 2
+	burst_size = 3
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 	spawnwithmagazine = FALSE
