@@ -35,7 +35,7 @@
 		/obj/item/toy/foamblade/nanite,
 		/obj/item/cane/white/nanite,
 		/obj/item/lighter/nanite,
-		/obj/item/cigarette/nanite,
+		/obj/item/holocigarette/nanite,
 	)
 
 	///The objects currently summoned by the NIFSoft
