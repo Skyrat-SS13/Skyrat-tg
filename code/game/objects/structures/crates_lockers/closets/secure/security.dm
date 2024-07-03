@@ -114,6 +114,7 @@
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/flashlight/seclite(src)
+	new /obj/item/choice_beacon/security_pistol(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/gloves/tackler/security(src) // SKYRAT EDIT CHANGE - Gives Them The Blue Ones - ORIGINAL: new /obj/item/clothing/gloves/tackler(src)
 
 /obj/structure/closet/secure_closet/security/sec
