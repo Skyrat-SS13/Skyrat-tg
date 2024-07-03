@@ -24,5 +24,5 @@
 	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/internal/cylinder/c457
-	caliber = CALIBER_457
+	caliber = CALIBER_457GOVT
 	ammo_type = /obj/item/ammo_casing/c457govt
