@@ -15,7 +15,7 @@
 	var/lit = FALSE
 	actions_types = list(/datum/action/item_action/toggle_lit)
 
-/obj/item/clothing/holocigarette/cigar
+/obj/item/holocigarette/cigar
 	name = "Bright Cosmos cigar"
 	desc = "A fancy cigar created using holodeck technology. They look like they have a \"Bright Cosmos\" branding on their wrap."
 	icon_state = "cigar2off"
@@ -27,7 +27,7 @@
 	desc = "Light or extinguish the holocigarette"
 
 /datum/action/item_action/toggle_lit/Trigger(trigger_flags)
-	var/obj/item/clothing/holocigarette/smoked = target
+	var/obj/item/holocigarette/smoked = target
 	var/mob/living/carbon/smoker = owner
 	if(smoked.lit == FALSE)
 		smoked.icon_state = smoked.icon_on

@@ -13,7 +13,7 @@
 	cost = 1
 
 /datum/armament_entry/hecu/misc/rollie
-	item_type = /obj/item/clothing/mask/cigarette/rollie/cannabis
+	item_type = /obj/item/cigarette/rollie/cannabis
 	max_purchase = 8
 	cost = 1
 
