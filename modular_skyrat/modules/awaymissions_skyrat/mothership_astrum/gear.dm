@@ -20,7 +20,7 @@
 	pin = /obj/item/firing_pin
 	icon_state = "alienpistol"
 	inhand_icon_state = "alienpistol"
-	cell_type = /obj/item/stock_parts/cell/pulse/pistol
+	cell_type = /obj/item/stock_parts/power_store/cell/pulse/pistol
 
 
 /**

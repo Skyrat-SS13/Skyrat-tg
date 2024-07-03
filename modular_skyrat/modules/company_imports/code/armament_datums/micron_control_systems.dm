@@ -15,7 +15,7 @@
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
 
 /datum/armament_entry/company_import/micron/ammo/cell
-	item_type = /obj/item/stock_parts/cell/microfusion
+	item_type = /obj/item/stock_parts/power_store/cell/microfusion
 	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/micron/ammo/cell_bulk
@@ -23,7 +23,7 @@
 	cost = PAYCHECK_CREW * 2
 
 /datum/armament_entry/company_import/micron/ammo/cell_adv
-	item_type = /obj/item/stock_parts/cell/microfusion/advanced
+	item_type = /obj/item/stock_parts/power_store/cell/microfusion/advanced
 	cost = PAYCHECK_CREW * 2
 
 /datum/armament_entry/company_import/micron/ammo/cell_adv_bulk
@@ -31,7 +31,7 @@
 	cost = PAYCHECK_CREW * 3
 
 /datum/armament_entry/company_import/micron/ammo/cell_blue
-	item_type = /obj/item/stock_parts/cell/microfusion/bluespace
+	item_type = /obj/item/stock_parts/power_store/cell/microfusion/bluespace
 	cost = PAYCHECK_CREW * 3
 
 /datum/armament_entry/company_import/micron/ammo/cell_blue_bulk

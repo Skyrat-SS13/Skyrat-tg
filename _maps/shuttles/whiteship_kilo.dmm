@@ -1,14 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ae" = (
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner/directional/east,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/bar)
 "bl" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -100,19 +90,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
-"fs" = (
-/obj/machinery/cell_charger,
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/emproof/empty{
-	pixel_y = 7;
-	pixel_x = 5
-	},
-/obj/effect/turf_decal/tile/brown,
-/turf/open/floor/iron/white/corner{
-	dir = 8
-	},
-/area/shuttle/abandoned/cargo)
 "fL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner{
@@ -238,6 +215,35 @@
 	dir = 1
 	},
 /area/shuttle/abandoned/bar)
+"kk" = (
+/obj/effect/turf_decal/trimline/white/line,
+/obj/effect/turf_decal/trimline/white/filled/warning{
+	dir = 1
+	},
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
+	dir = 4;
+	view_range = 14;
+	y_offset = 5;
+	x_offset = 0
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "whiteship_windows";
+	name = "NTMS-037 Windows Blast Door Control";
+	pixel_x = -24;
+	pixel_y = 6
+	},
+/obj/machinery/button/door{
+	id = "whiteship_bridge";
+	name = "NTMS-037 Bridge Blast Door Control";
+	pixel_x = -24;
+	pixel_y = -6
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/abandoned/bridge)
 "kq" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/bot,
@@ -245,15 +251,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/cargo)
-"kE" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/power/shuttle_engine/propulsion/left{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/engine)
 "kG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
@@ -283,6 +280,29 @@
 	dir = 1
 	},
 /area/shuttle/abandoned/bar)
+"lS" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "External Freight Airlock"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/docking_port/mobile{
+	callTime = 250;
+	can_move_docking_ports = 1;
+	dir = 2;
+	shuttle_id = "whiteship";
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
+	name = "Mining Shuttle";
+	port_direction = 8;
+	preferred_direction = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/abandoned/cargo)
 "mt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -320,6 +340,15 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/abandoned/bridge)
+"mI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/shuttle_engine/propulsion/right{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/bar)
 "nt" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -339,6 +368,16 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/titanium/tiled/white,
 /area/shuttle/abandoned/bridge)
+"pD" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/engine)
 "pI" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
@@ -380,16 +419,6 @@
 /obj/effect/decal/cleanable/robot_debris,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/cargo)
-"rh" = (
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner/directional/east,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/engine)
 "ry" = (
 /obj/machinery/porta_turret/centcom_shuttle/weak{
 	dir = 4;
@@ -408,6 +437,15 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron,
 /area/shuttle/abandoned/bar)
+"sh" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/shuttle_engine/propulsion/right{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/engine)
 "sz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair{
@@ -430,35 +468,6 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/cargo)
-"sU" = (
-/obj/effect/turf_decal/trimline/white/line,
-/obj/effect/turf_decal/trimline/white/filled/warning{
-	dir = 1
-	},
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
-	dir = 4;
-	view_range = 14;
-	y_offset = 5;
-	x_offset = 0
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/door{
-	id = "whiteship_windows";
-	name = "NTMS-037 Windows Blast Door Control";
-	pixel_x = -24;
-	pixel_y = 6
-	},
-/obj/machinery/button/door{
-	id = "whiteship_bridge";
-	name = "NTMS-037 Bridge Blast Door Control";
-	pixel_x = -24;
-	pixel_y = -6
-	},
-/turf/open/floor/pod/light,
-/area/shuttle/abandoned/bridge)
 "tf" = (
 /obj/machinery/atmospherics/components/tank/air,
 /obj/effect/turf_decal/stripes/line{
@@ -489,6 +498,15 @@
 /obj/item/gun/energy/laser/retro,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/abandoned/cargo)
+"tR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/shuttle_engine/propulsion/left{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/engine)
 "uf" = (
 /obj/effect/turf_decal/trimline/white/corner{
 	dir = 8
@@ -526,24 +544,6 @@
 /obj/item/shovel,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/cargo)
-"wy" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/power/shuttle_engine/propulsion/left{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/bar)
-"wT" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/power/shuttle_engine/propulsion{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/engine)
 "xh" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/abandoned/cargo)
@@ -564,28 +564,18 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
-"yV" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "External Freight Airlock"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
+"zd" = (
+/obj/machinery/cell_charger,
+/obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
-/obj/docking_port/mobile{
-	callTime = 250;
-	can_move_docking_ports = 1;
-	dir = 2;
-	shuttle_id = "whiteship";
-	launch_status = 0;
-	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
-	name = "Mining Shuttle";
-	port_direction = 8;
-	preferred_direction = 4
+/obj/item/stock_parts/power_store/cell/emproof/empty{
+	pixel_y = 7;
+	pixel_x = 5
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron/white/corner{
+	dir = 8
+	},
 /area/shuttle/abandoned/cargo)
 "zl" = (
 /obj/effect/turf_decal/trimline/white/line{
@@ -679,6 +669,15 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron,
 /area/shuttle/abandoned/bar)
+"Fz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/engine)
 "FW" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/machinery/door/poddoor{
@@ -877,6 +876,16 @@
 /obj/effect/decal/cleanable/blood/splatter/over_window,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/bar)
+"Md" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/bar)
 "Ml" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/suit_storage_unit/standard_unit{
@@ -971,15 +980,6 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/titanium/tiled/yellow,
 /area/shuttle/abandoned/engine)
-"QQ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/power/shuttle_engine/propulsion/right{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/bar)
 "QR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -1000,6 +1000,15 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/abandoned/cargo)
+"Rw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/shuttle_engine/propulsion/left{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/bar)
 "RF" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/airlock/shuttle{
@@ -1145,15 +1154,6 @@
 	},
 /turf/open/floor/wood/tile,
 /area/shuttle/abandoned/crew)
-"Yu" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/power/shuttle_engine/propulsion/right{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/engine)
 "YM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
@@ -1207,9 +1207,9 @@
 
 (1,1,1) = {"
 Nh
-kE
-wT
-Yu
+tR
+Fz
+sh
 Nh
 Gu
 Gu
@@ -1222,13 +1222,13 @@ Gu
 "}
 (2,1,1) = {"
 Nh
-rh
-rh
-rh
+pD
+pD
+pD
 CG
-kE
-wT
-Yu
+tR
+Fz
+sh
 gL
 Gu
 Gu
@@ -1241,9 +1241,9 @@ Ss
 bl
 eT
 CG
-rh
-rh
-rh
+pD
+pD
+pD
 CG
 Gu
 Gu
@@ -1320,8 +1320,8 @@ NV
 NV
 nN
 NV
-wy
-QQ
+Rw
+mI
 BS
 Gu
 "}
@@ -1332,20 +1332,20 @@ bF
 eD
 Nt
 iI
-sU
+kk
 mH
 NV
-ae
-ae
+Md
+Md
 Of
 Gu
 "}
 (10,1,1) = {"
-yV
+lS
 Bk
 vM
 Wj
-fs
+zd
 iI
 qu
 YV

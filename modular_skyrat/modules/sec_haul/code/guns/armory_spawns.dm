@@ -78,16 +78,16 @@
 
 /obj/item/storage/box/ammo_box/microfusion/full/PopulateContents()
 	new /obj/item/storage/pouch/ammo(src)
-	new /obj/item/stock_parts/cell/microfusion(src)
-	new /obj/item/stock_parts/cell/microfusion(src)
-	new /obj/item/stock_parts/cell/microfusion(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion(src)
 
 /obj/item/storage/box/ammo_box/microfusion/bagless
 
 /obj/item/storage/box/ammo_box/microfusion/bagless/PopulateContents()
-	new /obj/item/stock_parts/cell/microfusion(src)
-	new /obj/item/stock_parts/cell/microfusion(src)
-	new /obj/item/stock_parts/cell/microfusion(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion(src)
+	new /obj/item/stock_parts/power_store/cell/microfusion(src)
 
 /obj/effect/spawner/armory_spawn/centcom_rifles
 	guns = list(

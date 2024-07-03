@@ -34,11 +34,15 @@
 
 /datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/containing_mob)
 	..()
-	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	ADD_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 
+/datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	if(SPT_PROB(30, seconds_per_tick))
+		if(affected_mob.adjustToxLoss(5 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype))
+			return UPDATE_MOB_HEALTH
+
 /datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/containing_mob)
-	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	REMOVE_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 	..()
 
@@ -62,7 +66,7 @@
 	to_chat(M, span_userdanger("Your heart beats is beating so fast, it hurts..."))
 
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, seconds_per_tick, times_fired)
-	M.adjustToxLoss(1 * REM * seconds_per_tick, 0)
+	M.adjustToxLoss(5 * REM * seconds_per_tick, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, (rand(10, 20) / 10) * REM * seconds_per_tick)
 	M.set_jitter_if_lower(5 SECONDS)
 	if(SPT_PROB(2.5, seconds_per_tick))
