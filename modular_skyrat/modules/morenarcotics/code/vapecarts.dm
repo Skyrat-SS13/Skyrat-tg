@@ -11,7 +11,7 @@
 	custom_price = PAYCHECK_CREW
 
 /obj/item/reagent_containers/vapecart/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	var/obj/item/clothing/vape/target_vape = interacting_with
+	var/obj/item/vape/target_vape = interacting_with
 	if(!istype(target_vape))
 		return NONE
 	if(target_vape.screw == TRUE && !target_vape.reagents.total_volume)

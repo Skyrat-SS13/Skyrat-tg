@@ -1,4 +1,4 @@
-/obj/item/clothing/cigarette/pipe/crackpipe
+/obj/item/cigarette/pipe/crackpipe
 	name = "crack pipe"
 	desc = "A slick glass pipe made for smoking one thing: crack."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
@@ -8,7 +8,7 @@
 	icon_off = "glass_pipeoff"
 	chem_volume = 20
 
-/obj/item/clothing/cigarette/pipe/crackpipe/process(seconds_per_tick)
+/obj/item/cigarette/pipe/crackpipe/process(seconds_per_tick)
 	smoketime -= seconds_per_tick
 	if(smoketime <= 0)
 		if(ismob(loc))
@@ -27,7 +27,7 @@
 		handle_reagents()
 
 
-/obj/item/clothing/cigarette/pipe/crackpipe/attackby(obj/item/used_item, mob/user, params)
+/obj/item/cigarette/pipe/crackpipe/attackby(obj/item/used_item, mob/user, params)
 	if(is_type_in_list(used_item, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar)))
 		to_chat(user, span_notice("You stuff [used_item] into [src]."))
 		smoketime = 2 * 60
@@ -47,7 +47,7 @@
 
 /datum/crafting_recipe/crackpipe
 	name = "Crack pipe"
-	result = /obj/item/clothing/cigarette/pipe/crackpipe
+	result = /obj/item/cigarette/pipe/crackpipe
 	reqs = list(/obj/item/stack/cable_coil = 5,
 				/obj/item/shard = 1,
 				/obj/item/stack/rods = 10)
