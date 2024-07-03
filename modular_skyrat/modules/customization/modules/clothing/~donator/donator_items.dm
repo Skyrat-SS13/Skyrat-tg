@@ -1,5 +1,5 @@
 //Donator reward for UltramariFox
-/obj/item/clothing/mask/cigarette/khi
+/obj/item/clothing/cigarette/khi
 	name = "\improper Kitsuhana Singularity cigarette"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
@@ -18,7 +18,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/cigarettes_khi.dmi'
 	icon_state = "khi_cig_packet"
 	base_icon_state = "khi_cig_packet"
-	spawn_type = /obj/item/clothing/mask/cigarette/khi
+	spawn_type = /obj/item/clothing/cigarette/khi
 
 //Donator reward for Stonetear
 /obj/item/hairbrush/switchblade

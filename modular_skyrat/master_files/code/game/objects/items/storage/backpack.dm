@@ -21,7 +21,7 @@
 		/obj/item/reagent_containers/heroinbrick = 3,
 		/obj/item/reagent_containers/blacktar = 12,
 		/obj/item/storage/pill_bottle/stimulant = 9, //ephedrine and coffee. Can actually change whether someone gets out of a runaway situation
-		/obj/item/clothing/mask/cigarette/pipe/crackpipe = 15,
+		/obj/item/clothing/cigarette/pipe/crackpipe = 15,
 		/obj/item/toy/cards/deck/syndicate = 10, //1tc, not balance breaking, small but premium commodity
 		/obj/item/reagent_containers/cup/bottle/morphine = 8,
 		/obj/item/reagent_containers/syringe/contraband/methamphetamine = 12,

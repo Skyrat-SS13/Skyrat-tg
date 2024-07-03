@@ -184,14 +184,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	/// How long the current mob has been smoking this cigarette
 	VAR_FINAL/how_long_have_we_been_smokin = 0 SECONDS
 
-<<<<<<< HEAD
 	var/pollution_type = /datum/pollutant/smoke //SKYRAT EDIT ADDITION /// What type of pollution does this produce on smoking, changed to weed pollution sometimes
 
-
-/obj/item/clothing/mask/cigarette/Initialize(mapload)
-=======
 /obj/item/cigarette/Initialize(mapload)
->>>>>>> 35484728f1f (Cigarettes and vapes are no longer subtypes of masks. (#82942))
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 	if(list_reagents)

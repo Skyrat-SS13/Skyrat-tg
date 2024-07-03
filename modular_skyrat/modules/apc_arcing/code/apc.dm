@@ -15,9 +15,9 @@
 
 /obj/machinery/power/apc/process()
 	. = ..()
-	var/excess = surplus()
 	if(!cell || shorted)
 		return
+	var/excess = energy_to_power(surplus())
 	if(((excess < APC_ARC_LOWERLIMIT) && !force_arcing) || arc_shielded)
 		return
 	var/shock_chance = 5

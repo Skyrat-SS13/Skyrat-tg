@@ -20,6 +20,9 @@
 	/// The mob's old left leg. Used if the person switches to this organ and then back, so they don't just, have no legs anymore. Can be null.
 	var/obj/item/bodypart/leg/right/old_left_leg = null
 
+	/// If true, our sprite accessory will not render.
+	var/hide_self
+
 /obj/item/organ/external/taur_body/horselike
 
 /obj/item/organ/external/taur_body/horselike/synth

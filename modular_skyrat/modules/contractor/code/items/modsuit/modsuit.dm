@@ -5,7 +5,7 @@
 	icon_state = "contractor-control"
 	theme = /datum/mod_theme/contractor
 	starting_frequency = MODLINK_FREQ_SYNDICATE
-	applied_cell = /obj/item/stock_parts/cell/hyper
+	applied_cell = /obj/item/stock_parts/power_store/cell/hyper
 	applied_modules = list(
 		/obj/item/mod/module/dna_lock,
 		/obj/item/mod/module/emp_shield,
@@ -20,7 +20,7 @@
 	)
 
 /obj/item/mod/control/pre_equipped/contractor/upgraded
-	applied_cell = /obj/item/stock_parts/cell/bluespace
+	applied_cell = /obj/item/stock_parts/power_store/cell/bluespace
 	applied_modules = list(
 		/obj/item/mod/module/baton_holster/preloaded,
 		/obj/item/mod/module/dna_lock,

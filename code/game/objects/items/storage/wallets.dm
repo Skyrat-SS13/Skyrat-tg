@@ -18,21 +18,11 @@
 		/obj/item/stack/spacecash,
 		/obj/item/holochip,
 		/obj/item/card,
-<<<<<<< HEAD
-		/obj/item/clothing/mask/cigarette,
+		/obj/item/cigarette,
 		// SKYRAT EDIT BEGIN
 		/obj/item/condom_pack,
 		/obj/item/gbp_punchcard,
 		// SKYRAT EDIT END
-		/obj/item/coupon,
-		/obj/item/flashlight/pen,
-		/obj/item/folder/biscuit,
-		/obj/item/seeds,
-		/obj/item/stack/medical,
-		/obj/item/toy/crayon,
-=======
-		/obj/item/cigarette,
->>>>>>> 35484728f1f (Cigarettes and vapes are no longer subtypes of masks. (#82942))
 		/obj/item/clothing/accessory/dogtag,
 		/obj/item/coin,
 		/obj/item/coupon,

@@ -411,6 +411,16 @@
 		"Apprentice Engineer",
 	)
 
+/datum/job/telecomms_specialist
+	alt_titles = list(
+		"Telecomms Specialist",
+		"Wireless Operator",
+		"Network Engineer",
+		"Sysadmin",
+		"Tram Technician",
+	)
+
+
 /datum/job/warden
 	alt_titles = list(
 		"Warden",

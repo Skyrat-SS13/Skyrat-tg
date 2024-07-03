@@ -10,20 +10,19 @@
 	fill_icon_thresholds = list(0, 5, 20, 40)
 	custom_price = PAYCHECK_CREW
 
-/obj/item/reagent_containers/vapecart/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	if(istype(target, /obj/item/clothing/mask/vape))
-		var/obj/item/clothing/mask/vape/target_vape = target
-		if(target_vape.screw == TRUE && !target_vape.reagents.total_volume)
-			src.reagents.trans_to(target_vape, src.volume, transferred_by = user)
-			qdel(src)
-			to_chat(user, span_notice("You plug the [src.name] into the vape."))
-		else if(!target_vape.screw)
-			to_chat(user, span_warning("You need to open the cap to do that!"))
-		else
-			to_chat(user, span_warning("[target_vape] is already full!"))
+/obj/item/reagent_containers/vapecart/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/obj/item/clothing/vape/target_vape = interacting_with
+	if(!istype(target_vape))
+		return NONE
+	if(target_vape.screw == TRUE && !target_vape.reagents.total_volume)
+		src.reagents.trans_to(target_vape, src.volume, transferred_by = user)
+		to_chat(user, span_notice("You plug the [src.name] into the vape."))
+		qdel(src)
+	else if(!target_vape.screw)
+		to_chat(user, span_warning("You need to open the cap to do that!"))
+	else
+		to_chat(user, span_warning("[target_vape] is already full!"))
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/vapecart/empty
 	name = "customizable vape cart"

@@ -30,9 +30,6 @@
 	return body_markings
 
 /proc/random_bra(gender)
-	if(!length(SSaccessories.bra_list))
-		SSaccessories.init_sprite_accessory_subtypes(/datum/sprite_accessory/bra, SSaccessories.bra_list, SSaccessories.bra_m, SSaccessories.bra_f)
-
 	switch(gender)
 		if(MALE)
 			return pick(SSaccessories.bra_m)
