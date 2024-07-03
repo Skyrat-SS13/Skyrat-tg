@@ -18,17 +18,11 @@
 		/obj/item/stack/spacecash,
 		/obj/item/holochip,
 		/obj/item/card,
-		/obj/item/clothing/mask/cigarette,
+		/obj/item/cigarette,
 		// SKYRAT EDIT BEGIN
 		/obj/item/condom_pack,
 		/obj/item/gbp_punchcard,
 		// SKYRAT EDIT END
-		/obj/item/coupon,
-		/obj/item/flashlight/pen,
-		/obj/item/folder/biscuit,
-		/obj/item/seeds,
-		/obj/item/stack/medical,
-		/obj/item/toy/crayon,
 		/obj/item/clothing/accessory/dogtag,
 		/obj/item/coin,
 		/obj/item/coupon,
