@@ -248,6 +248,12 @@
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	///chat message when the visor is toggled down.
+	var/toggle_message = "You pull the visor down on"
+	///chat message when the visor is toggled up.
+	var/alt_toggle_message = "You push the visor up on"
+	///Can toggle?
+	var/can_toggle = TRUE
 
 	unique_reskin = list(
 		"White Variant" = list(
