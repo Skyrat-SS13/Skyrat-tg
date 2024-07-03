@@ -35,7 +35,7 @@
 		/obj/item/toy/foamblade/nanite,
 		/obj/item/cane/white/nanite,
 		/obj/item/lighter/nanite,
-		/obj/item/clothing/mask/holocigarette/nanite,
+		/obj/item/holocigarette/nanite,
 	)
 
 	///The objects currently summoned by the NIFSoft
@@ -198,7 +198,7 @@
 	name = "catchflame"
 	special_desc = "A work of art by the standards of normal Icons, this one was worked on for five continuous years by a single summoner; now known as Neophyte Inverse after adoption of the Icon by the few physically-bodied members of the Altspace Coven. The engram's work involves the use of nanites to ignite atmospheric hydrogen molecules, the blue glow from the Icon arising from perfect and complete combustion. This allows the lighter to function exactly as a normal zippo would, the description reading '...useful for lighting hearth fires, candles, and incense; try white sage if you can order some off the net, just pray it doesn't dispel engrams lol.'"
 
-/obj/item/clothing/mask/holocigarette/nanite
+/obj/item/holocigarette/nanite
 	name = "cloudstick"
 	special_desc = "One of mankind's many attempts at ending the legacy of Big Tobacco. Contributed by a fully anonymous engram and then forked countless times into countless replications of brands and flavors, the 'Cloudstick' is more of a genre than a single Icon. Most downloadable ones even allow the summoner to change the pixelation of the smoke, to grant them a more 'detached' experience from the real thing. Several summoners report these to help them in quitting smoking, others simply commenting 'It's why I first downloaded the Catchflame.'"
 
