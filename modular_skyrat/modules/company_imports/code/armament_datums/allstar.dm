@@ -38,7 +38,7 @@
 /datum/armament_entry/company_import/allstar/basic_energy_long_weapons/egun
 	item_type = /obj/item/gun/energy/e_gun
 	cost = PAYCHECK_COMMAND * 4
-
+/*
 /datum/armament_entry/company_import/allstar/experimental_energy
 	subcategory = "Experimental Energy Weapons"
 	cost = PAYCHECK_COMMAND * 6
@@ -55,4 +55,4 @@
 
 /datum/armament_entry/company_import/allstar/experimental_energy/tesla_cannon
 	item_type = /obj/item/gun/energy/tesla_cannon
-
+*/
