@@ -231,8 +231,6 @@
 				src.visible_message(span_warning("[living_mob] reemerges from the link!"))
 				qdel(living_mob)
 
-<<<<<<< HEAD
-=======
 /obj/structure/spawner/sentient
 	var/role_name = "A sentient mob"
 	var/assumed_control_message = "You are a sentient mob from a badly coded spawner"
@@ -303,4 +301,3 @@
 /obj/structure/spawner/sentient/proteon_spawner/handle_deconstruct(disassembled)
 	playsound('sound/hallucinations/veryfar_noise.ogg', 125)
 	visible_message(span_cult_bold("[src] completely falls apart, the screams of the damned reaching a feverous pitch before slowly fading away into nothing."))
->>>>>>> 4eaa299c0b2 (Cult Vs. Heretic: 7 Months Later Edition (#82877))
