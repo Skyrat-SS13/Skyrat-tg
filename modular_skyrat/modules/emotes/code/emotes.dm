@@ -6,6 +6,7 @@
 
 /datum/emote
 	cooldown = EMOTE_DELAY
+	var/muzzle_ignore = FALSE
 
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
@@ -105,7 +106,6 @@
 	message = "snaps twice."
 	message_param = "snaps twice at %t."
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap2.ogg'
@@ -116,7 +116,6 @@
 	message = "snaps thrice."
 	message_param = "snaps thrice at %t."
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg'
@@ -182,6 +181,7 @@
 	key_third_person = "squishes"
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg'
 
@@ -225,6 +225,7 @@
 
 /datum/emote/living/sniff
 	vary = TRUE
+	muzzle_ignore = TRUE
 
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	if(iscarbon(user))
@@ -268,7 +269,6 @@
 	key = "clap"
 	key_third_person = "claps"
 	message = "claps."
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 	audio_cooldown = 5 SECONDS
@@ -291,7 +291,6 @@
 	key_third_person = "claps once"
 	message = "claps once."
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
@@ -529,6 +528,7 @@
 	key_third_person = "purrs!"
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/raptor_purr.ogg'
 
@@ -537,6 +537,7 @@
 	key_third_person = "purrs!"
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
 
@@ -569,5 +570,9 @@
 	key_third_person = "thumps"
 	message = "thumps their foot!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
+
+/datum/emote/living/surrender
+	muzzle_ignore = TRUE
