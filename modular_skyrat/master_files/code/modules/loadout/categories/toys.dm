@@ -6,6 +6,7 @@
 
 /datum/loadout_item/toys
 	abstract_type = /datum/loadout_item/toys
+	can_be_named = TRUE
 
 /datum/loadout_item/toys/bee
 	name = "Bee Plushie"
@@ -226,10 +227,6 @@
 /datum/loadout_item/toys/edgy_bird
 	name = "Edgy Bird Plushie"
 	item_path = /obj/item/toy/plush/skyrat/edgy_bird
-
-/datum/loadout_item/toys/tree_ferret
-	name = "Tree Ferret Plushie"
-	item_path = /obj/item/toy/plush/skyrat/tree_ferret
 
 /datum/loadout_item/toys/xixi
 	name = "Familiar Harpy Plushie"

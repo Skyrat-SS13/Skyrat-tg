@@ -79,7 +79,7 @@
 
 /obj/item/mod/control/pre_equipped/marine
 	theme = /datum/mod_theme/marines
-	applied_cell = /obj/item/stock_parts/cell/bluespace
+	applied_cell = /obj/item/stock_parts/power_store/cell/bluespace
 	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/emp_shield,
@@ -102,7 +102,7 @@
 
 /obj/item/mod/control/pre_equipped/marine/engineer //smartgunner version of modsuit, with less versatile modules but the ALMIGHTY SMARTGUN
 	theme = /datum/mod_theme/marines
-	applied_cell = /obj/item/stock_parts/cell/bluespace
+	applied_cell = /obj/item/stock_parts/power_store/cell/bluespace
 	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/emp_shield/advanced,

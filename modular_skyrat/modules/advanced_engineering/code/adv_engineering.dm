@@ -9,7 +9,7 @@
 
 /obj/item/mod/control/pre_equipped/advanced/atmos
 	theme = /datum/mod_theme/advanced/atmos
-	applied_cell = /obj/item/stock_parts/cell/hyper
+	applied_cell = /obj/item/stock_parts/power_store/cell/hyper
 	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/welding,
