@@ -108,11 +108,11 @@
 	restricted = TRUE
 */
 // Lethal anything that's not a pistol, requires high company interest
-/*
+
 /datum/armament_entry/company_import/sol_defense/longarm
 	subcategory = "Longarms"
 	restricted = TRUE
-
+/*
 /datum/armament_entry/company_import/sol_defense/longarm/renoster
 	item_type = /obj/item/gun/ballistic/shotgun/riot/sol
 	cost = PAYCHECK_COMMAND * 6

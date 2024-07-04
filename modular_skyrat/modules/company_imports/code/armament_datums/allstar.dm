@@ -6,6 +6,7 @@
 
 /datum/armament_entry/company_import/allstar/basic_energy_weapons
 	subcategory = "Basic Energy Smallarms"
+	restricted = TRUE
 
 /datum/armament_entry/company_import/allstar/basic_energy_weapons/disabler
 	item_type = /obj/item/gun/energy/disabler
