@@ -26,7 +26,7 @@
 		"flatpack_turbine_team_fortress_two",
 		"flatpack_bootleg_teg",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 50000000000000) // God save you
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = INFINITE) // God save you
 	hidden = TRUE
 	show_on_wiki = FALSE
 	starting_node = TRUE

@@ -90,8 +90,8 @@
 	design_ids = list(
 		"scythet1",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
-	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
+	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = TECHWEB_TIER_1_POINTS)
 
 /datum/techweb_node/scythe_t2
 	id = TECHWEB_NODE_SCYTHE_2
@@ -101,8 +101,8 @@
 	design_ids = list(
 		"scythet2",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
-	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 1000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = TECHWEB_TIER_2_POINTS)
 
 /datum/supply_pack/organic/tier3_scythe
 	name = "Tier 3 Scythe"
