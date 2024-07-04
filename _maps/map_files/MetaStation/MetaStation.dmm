@@ -13228,6 +13228,10 @@
 "eKP" = (
 /turf/closed/wall/r_wall,
 /area/station/science/ordnance/freezerchamber)
+"eKU" = (
+/obj/machinery/vatgrower,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/science/cytology)
 "eLa" = (
 /obj/structure/table/wood,
 /obj/item/storage/briefcase/secure{
@@ -40700,10 +40704,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/item/plunger{
-	pixel_x = -7;
-	pixel_y = 20
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/cytology)
 "ouj" = (
@@ -42932,7 +42932,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/plumbing/growing_vat,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/cytology)
 "pkQ" = (
@@ -51800,7 +51799,6 @@
 /turf/open/floor/wood,
 /area/station/service/library)
 "sri" = (
-/obj/machinery/duct,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/cytology)
 "srk" = (
@@ -58367,9 +58365,6 @@
 /area/station/medical/medbay/lobby)
 "uCe" = (
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/machinery/plumbing/input{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/cytology)
 "uCq" = (
@@ -63500,6 +63495,16 @@
 /obj/item/laser_pointer/red,
 /turf/open/space/basic,
 /area/space/nearstation)
+"wkC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/window/left/directional/south{
+	name = "Cytology Pen";
+	req_access = list("research")
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/station/science/cytology)
 "wkL" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -111737,7 +111742,7 @@ aaa
 aaa
 oMA
 pkP
-sri
+eKU
 sri
 uCe
 tsy
@@ -111996,7 +112001,7 @@ uaR
 jHX
 oQk
 toR
-toR
+wkC
 syV
 jsi
 eoZ

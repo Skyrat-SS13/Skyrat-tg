@@ -38,7 +38,6 @@
 			/obj/machinery/plumbing/synthesizer = 15,
 			/obj/machinery/plumbing/reaction_chamber/chem = 15,
 			/obj/machinery/plumbing/grinder_chemical = 30,
-			/obj/machinery/plumbing/growing_vat = 20,
 			/obj/machinery/plumbing/fermenter = 30,
 			/obj/machinery/plumbing/liquid_pump = 35, //extracting chemicals from ground is one way of creation
 			/obj/machinery/plumbing/disposer = 10,
@@ -310,6 +309,7 @@
 		current_layer = GLOB.plumbing_layers[current_loc]
 	to_chat(source, span_notice("You set the layer to [current_layer]."))
 
+<<<<<<< HEAD
 /obj/item/construction/plumbing/research
 	name = "research plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to conduct cytological research."
@@ -357,6 +357,8 @@
 
 	. = ..()
 
+=======
+>>>>>>> d4765c0657f (Cytology without plumbing (#84235))
 /obj/item/construction/plumbing/service
 	name = "service plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to make a brewery."
