@@ -77,12 +77,9 @@
 		pin = new pin(src)
 
 	add_seclight_point()
-<<<<<<< HEAD
 	give_gun_safeties() // SKYRAT EDIT ADDITION - GUN SAFETIES
 	give_manufacturer_examine() // SKYRAT EDIT ADDITON - MANUFACTURER EXAMINE
-=======
 	add_bayonet_point()
->>>>>>> b359988016cf (Gun Refactor Part 1: Bayonet Componentization (#84246))
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip

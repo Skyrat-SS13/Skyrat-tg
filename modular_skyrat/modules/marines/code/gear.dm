@@ -12,7 +12,6 @@
 	spread = 6
 	pin = /obj/item/firing_pin/implant/mindshield
 	can_suppress = FALSE
-	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m44a
