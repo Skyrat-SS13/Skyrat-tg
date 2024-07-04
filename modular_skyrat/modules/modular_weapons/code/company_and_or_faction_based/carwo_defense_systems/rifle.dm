@@ -31,8 +31,6 @@
 	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_rifle.ogg'
 	can_suppress = TRUE
 
-	can_bayonet = FALSE
-
 	suppressor_x_offset = 12
 
 	burst_size = 1

@@ -29,7 +29,6 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/grenade_launcher.ogg'
 
 	can_suppress = FALSE
-	can_bayonet = FALSE
 
 	burst_size = 1
 	fire_delay = 5
