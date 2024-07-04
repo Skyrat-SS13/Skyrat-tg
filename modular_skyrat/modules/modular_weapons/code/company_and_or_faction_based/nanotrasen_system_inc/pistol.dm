@@ -4,6 +4,7 @@
 	name = "9x25mm Mk2 Standard Pistol"
 
 /obj/item/storage/toolbox/guncase/skyrat/nt_glock/PopulateContents()
+	.=..()
 	new /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty(src)
 	new /obj/item/ammo_box/magazine/m9mm/rubber(src)
 	new /obj/item/ammo_box/magazine/m9mm/rubber(src)
