@@ -34,11 +34,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	. = ..()
-<<<<<<< HEAD
-	if(. || world.time < next_move || !can_perform_action(target, NOT_INSIDE_TARGET | SILENT_ADJACENCY))
-=======
 	if(. || world.time < next_move || !can_perform_action(target, NOT_INSIDE_TARGET | SILENT_ADJACENCY | ALLOW_RESTING | FORBID_TELEKINESIS_REACH))
->>>>>>> d32d75273de (Allow mobs to ctrl click mobs while resting (#84587))
 		return
 
 	. = TRUE
