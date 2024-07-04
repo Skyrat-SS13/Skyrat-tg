@@ -15,7 +15,7 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
-	spread = 15
+	spread = 12
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -45,7 +45,7 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
-	spread = 20
+	spread = 18
 	pin = /obj/item/firing_pin
 	projectile_damage_multiplier = 0.9
 	fire_delay = 2
