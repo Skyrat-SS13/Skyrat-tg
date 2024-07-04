@@ -181,7 +181,7 @@
 	key_third_person = "squishes"
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
-	var/muzzle_ignore = TRUE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg'
 
@@ -225,7 +225,7 @@
 
 /datum/emote/living/sniff
 	vary = TRUE
-	var/muzzle_ignore = TRUE
+	muzzle_ignore = TRUE
 
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	if(iscarbon(user))
@@ -528,7 +528,7 @@
 	key_third_person = "purrs!"
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
-	var/muzzle_ignore = TRUE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/raptor_purr.ogg'
 
@@ -537,7 +537,7 @@
 	key_third_person = "purrs!"
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
-	var/muzzle_ignore = TRUE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
 
@@ -570,9 +570,9 @@
 	key_third_person = "thumps"
 	message = "thumps their foot!"
 	emote_type = EMOTE_AUDIBLE
-	var/muzzle_ignore = TRUE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
 
 /datum/emote/living/surrender
-	var/muzzle_ignore = TRUE
+	muzzle_ignore = TRUE
