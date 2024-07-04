@@ -53,17 +53,13 @@
 	return all_items
 
 /// Returns a list of all /datum/loadout_items in this category, formatted for UI use. Only ran once.
-/datum/loadout_category/proc/items_to_ui_data(client/user) as /list // SKYRAT EDIT CHANGE - Added user poaram
+/datum/loadout_category/proc/items_to_ui_data() as /list
 	if(!length(associated_items))
 		return list()
 
 	var/list/formatted_list = list()
 
 	for(var/datum/loadout_item/item as anything in associated_items)
-		// SKYRAT EDIT ADDITION
-		if(item.ckeywhitelist && !(user?.ckey in item.ckeywhitelist))
-			continue
-		// SKYRAT EDIT END
 		var/list/item_data = item.to_ui_data()
 		UNTYPED_LIST_ADD(formatted_list, item_data)
 

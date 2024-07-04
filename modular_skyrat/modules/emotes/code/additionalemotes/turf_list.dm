@@ -108,33 +108,10 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "tails"
 			pixel_x = -16 //correcting the offset for 64
-			var/mutable_appearance/overlay = mutable_appearance(
-				'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi',
-				"tails_top",
-				EXTRA_ABOVE_MOB_LAYER,
-				src,
-				ABOVE_GAME_PLANE,
-				)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", EXTRA_ABOVE_MOB_LAYER, src)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 25, TRUE)
-
-		if("constrict")
-			name = "tail"
-			desc = "It's a scaly tail."
-			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
-			icon_state = "naga"
-			pixel_x = -16
-			var/mutable_appearance/overlay = mutable_appearance(
-				'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi',
-				"naga_top",
-				EXTRA_ABOVE_MOB_LAYER,
-				src,
-				ABOVE_GAME_PLANE,
-				)
-			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
-			src.add_overlay(overlay)
-			playsound(get_turf(src), 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg', 25, TRUE)
 
 		//prints
 		if("pawprint")
@@ -190,7 +167,7 @@
 			return
 
 /obj/structure/mark_turf/proc/turf_check(mob/living/user) //This gets called when a player leaves their turf
-	var/list/no_trail = list("tail", "constrict")
+	var/list/no_trail = list("tail")
 	var/list/long_trail = list("pawprint", "hoofprint", "clawprint", "footprint", "shoeprint")
 
 	if(user.owned_turf.name in no_trail)

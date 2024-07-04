@@ -1,5 +1,3 @@
-#define TECHWEB_NODE_POWERATOR "powerator"
-
 /obj/item/circuitboard/machine/powerator
 	name = "Powerator"
 	desc = "The powerator is a machine that allows stations to sell their power to other stations that require additional sources."

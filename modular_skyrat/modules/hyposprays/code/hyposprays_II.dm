@@ -17,7 +17,7 @@
 #define COMBAT_SELF_SPRAY 0
 
 /obj/item/hypospray/mkii
-	name = "hypospray mk.II"
+	name = "hypospray Mk.II"
 	icon_state = "hypo2"
 	icon = 'modular_skyrat/modules/hyposprays/icons/hyposprays.dmi'
 	greyscale_config = /datum/greyscale_config/hypospray_mkii
@@ -47,20 +47,24 @@
 	/// Used for GAGS-ified hypos.
 	var/gags_bodystate = "hypo2_normal"
 
-/obj/item/hypospray/mkii/deluxe
-	name = "hypospray mk.II deluxe"
-	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
-	icon_state = "bighypo2"
-	gags_bodystate = "hypo2_deluxe"
-	desc = "The deluxe variant in the DeForest Hypospray Mk. II series, able to take both 100u and 50u vials."
-	small_only = FALSE
+/obj/item/hypospray/mkii/combat
+	name = "hypospray Mk.II combat"
+	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
+	icon_state = "combathypo2"
+	gags_bodystate = "hypo2_combat"
+	desc = "The combat variant of DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly self-inject the user in combat scenarios."
+	inject_wait = WAIT_INJECT
+	spray_wait = WAIT_SPRAY
+	spray_self = COMBAT_SELF_SPRAY
+	inject_self = COMBAT_SELF_INJECT
+	penetrates = INJECT_CHECK_PENETRATE_THICK
 
 /obj/item/hypospray/mkii/piercing
-	name = "hypospray mk.II advanced"
+	name = "hypospray Mk.II advanced"
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
 	icon_state = "piercinghypo2"
 	gags_bodystate = "hypo2_piercing"
-	desc = "The advanced variant in the DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly inject the chemicals."
+	desc = "The advanced variant in the DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly spray or inject the chemicals."
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_INJECT
@@ -72,7 +76,7 @@
 
 // Deluxe hypo upgrade Kit
 /obj/item/device/custom_kit/deluxe_hypo2
-	name = "DeForest Hypospray Mk. II Deluxe Bodykit"
+	name = "hypospray Mk. II deluxe bodykit"
 	desc = "Upgrades the DeForest Hypospray Mk. II to support larger vials."
 	// don't tinker with a loaded (medi)gun. fool
 	from_obj = /obj/item/hypospray/mkii
@@ -88,8 +92,15 @@
 		return FALSE
 	return TRUE
 
+/obj/item/hypospray/mkii/deluxe
+	name = "hypospray Mk.II deluxe"
+	icon_state = "bighypo2"
+	gags_bodystate = "hypo2_deluxe"
+	desc = "The deluxe variant of the Hypospray Mk. II, able to take both 100u and 50u vials."
+	small_only = FALSE
+
 /obj/item/hypospray/mkii/deluxe/cmo
-	name = "hypospray mk.II deluxe: CMO edition"
+	name = "hypospray Mk.II deluxe: CMO edition"
 	icon_state = "cmo2"
 	gags_bodystate = "hypo2_cmo"
 	desc = "The CMO's prized Hypospray Mk. II Deluxe, able to take both 100u and 50u vials, acting faster and able to deliver more reagents per spray."
@@ -100,8 +111,8 @@
 	inject_self = DELUXE_SELF_INJECT
 	penetrates = INJECT_CHECK_PENETRATE_THICK
 
-/obj/item/hypospray/mkii/deluxe/cmo/combat
-	name = "hypospray mk.II deluxe: combat edition"
+/obj/item/hypospray/mkii/deluxe/combat
+	name = "hypospray Mk.II deluxe: combat edition"
 	icon_state = "combat2"
 	gags_bodystate = "hypo2_tactical"
 	desc = "A variant of the Hypospray Mk. II Deluxe, able to take both 100u and 50u vials, with overcharged applicators and an armor-piercing tip."
@@ -242,10 +253,10 @@
 	if(istype(interacting_with, /obj/item/reagent_containers/cup/vial))
 		insert_vial(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS
-	return do_inject(interacting_with, user, mode=HYPO_INJECT)
+	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
 
 /obj/item/hypospray/mkii/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
-	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
+	return do_inject(interacting_with, user, mode=HYPO_INJECT)
 
 /obj/item/hypospray/mkii/proc/do_inject(mob/living/injectee, mob/living/user, mode)
 	if(!isliving(injectee))
@@ -319,7 +330,7 @@
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Left-Click</b> on patients to inject, <b>Right-Click</b> to spray.")
+	. += span_notice("<b>Left-Click</b> on patients to spray, <b>Right-Click</b> to inject.")
 
 #undef HYPO_INJECT
 #undef HYPO_SPRAY
