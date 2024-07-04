@@ -159,20 +159,6 @@
 	},
 /turf/open/indestructible,
 /area/deathmatch)
-"bJ" = (
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	dir = 1;
-	name = "Prison Monitor";
-	network = list("prison");
-	pixel_y = -30
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/indestructible,
-/area/deathmatch)
 "bM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -209,16 +195,6 @@
 "cN" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/indestructible,
-/area/deathmatch)
-"cQ" = (
-/obj/structure/chair/stool/directional/east,
-/obj/effect/turf_decal/trimline/red/warning{
-	dir = 4
-	},
-/obj/machinery/flasher/directional/north{
-	id = "visitorflash"
-	},
-/turf/open/floor/iron,
 /area/deathmatch)
 "cW" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -609,20 +585,6 @@
 /obj/structure/chair/stool/directional/south,
 /turf/open/indestructible,
 /area/deathmatch)
-"kk" = (
-/obj/structure/table/wood,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	name = "Prison Monitor";
-	network = list("prison");
-	pixel_y = 30
-	},
-/obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
-/turf/open/floor/carpet,
-/area/deathmatch)
 "ku" = (
 /obj/structure/table,
 /obj/item/wirecutters,
@@ -749,6 +711,15 @@
 	},
 /obj/structure/cable,
 /turf/open/indestructible,
+/area/deathmatch)
+"mq" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/security/telescreen/prison/directional/north,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet,
 /area/deathmatch)
 "mC" = (
 /obj/effect/turf_decal/bot,
@@ -907,14 +878,6 @@
 	dir = 4
 	},
 /turf/open/indestructible,
-/area/deathmatch)
-"oc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/stool/directional/east,
-/obj/effect/turf_decal/trimline/red/warning{
-	dir = 4
-	},
-/turf/open/floor/iron,
 /area/deathmatch)
 "os" = (
 /obj/structure/sign/warning/pods{
@@ -1274,6 +1237,16 @@
 	},
 /turf/open/indestructible,
 /area/deathmatch)
+"sF" = (
+/obj/structure/chair/stool/directional/east,
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/machinery/flasher/directional/north{
+	id = "visitorflash"
+	},
+/turf/open/floor/iron,
+/area/deathmatch)
 "sG" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -1445,6 +1418,14 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/turf/open/indestructible,
+/area/deathmatch)
+"uV" = (
+/obj/machinery/computer/security/telescreen/prison/directional/south,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
 /turf/open/indestructible,
 /area/deathmatch)
 "vf" = (
@@ -2551,6 +2532,14 @@
 /obj/structure/cable,
 /turf/open/indestructible,
 /area/deathmatch)
+"Kj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/stool/directional/east,
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/deathmatch)
 "Km" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red{
@@ -3644,9 +3633,9 @@ IJ
 Yh
 Yh
 Yh
-cQ
+sF
 YW
-oc
+Kj
 IJ
 IJ
 IJ
@@ -4407,7 +4396,7 @@ vt
 CS
 bA
 GU
-bJ
+uV
 XK
 XK
 XI
@@ -4526,7 +4515,7 @@ Ik
 Os
 mE
 Yh
-kk
+mq
 FY
 dp
 Pt
