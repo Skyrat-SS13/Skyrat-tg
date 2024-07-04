@@ -44,8 +44,8 @@
 /obj/projectile/bullet/c9mm/rubber
 	name = "9x25mm rubber bullet"
 	icon_state = "pellet"
-	damage = 5
-	stamina = 25
+	damage = 18
+	stamina = 30
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130

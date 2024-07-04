@@ -22,7 +22,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin/alert_level
 	projectile_damage_multiplier = 0.8
-	spawn_magazine_type =
+	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/rubber
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
