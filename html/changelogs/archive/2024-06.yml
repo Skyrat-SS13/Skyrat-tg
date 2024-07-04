@@ -1181,3 +1181,118 @@
   Vekter:
   - bugfix: Fixed the visibility of a pipe in Northstar's ordnance lab
   - bugfix: Fixes the door-bolting buttons in the dorms and bathrooms on Birdshot.
+2024-06-30:
+  Bisar:
+  - rscadd: Ashwalkers now start out allied to lavaland fauna (except for raptors).
+      Attacking the fauna will break this alliance with the attacked beast and any
+      who witness it.
+  - bugfix: Ashwalkers are now actually in the ashwalker faction, instead of the neutral
+      one.
+  JohnFulpWillard, Tattax:
+  - rscadd: Monkeys can now wear all jumpsuits.
+  - rscadd: Bioscrambler anomalies can now give monkey legs.
+  - bugfix: Monkeys can have their tails removed, and tails are no longer invisible
+      when implanted into another species.
+  LT3:
+  - bugfix: Combat hypospray exists again, not just in a techweb design
+  - bugfix: You can put all the medical technician kit's items back in the bag
+  - image: Combat hypospray new sprite
+  - spellcheck: More hypospray text consistency
+  - spellcheck: Empty hypospray kits are now called cases, case/hypospray combos remain
+      kits
+  - bugfix: Hypospray techweb fix
+  - qol: Hypospray Mk. II default delivery mode is now 'spray'
+  ShizCalev:
+  - bugfix: Airlocks will now correctly said what other airlock they are cyclelinked
+      with.
+  - bugfix: Portaturrets no longer go invisible when unwrenched from the ground.
+  - bugfix: Deafened mobs will no longer hear the station's ambient sounds.
+  - bugfix: Fixed ambient sounds resetting their loop when entering different bodies
+      (ie admin ghosting, being moved to other mobs, ect.)
+  - bugfix: Monkeys that become sentient through the sentience helmet will no longer
+      be notified that they can ventcrawl.
+  - bugfix: Toggling ambient ship sounds will now instantly turn it on/off.
+  - bugfix: The soups wiki page no longer has error icons for soups that don't have
+      unique sprites.
+  SkyratBot:
+  - bugfix: Emergency firesuits no longer hide your gloves.
+  - bugfix: Guns no longer can be overfilled by 1 bullet
+  - bugfix: Russian revolvers now spawn with only 1 live round as originally intended,
+      and click when firing a blank.
+  - rscadd: Reworked blood loss effects on the user to be much more noticeable.
+  - code_imp: Changed the blood volume defines to be based on the BLOOD_VOLUME_NORMAL
+      define, with a multiplier of blood loss applied, to be more understandable.
+  - qol: The "Dental Implant" surgery no longer forces itself to restart after implanting
+      one pill. Now implanting pills in the surgery has another step to either search
+      the patient's mouth for another tooth to implant, or cauterization to end the
+      surgery.
+  - qol: Punching bags are now a equal method of training to the fitness machinery.
+  - qol: Boxing grants more experience overall for participation.
+  - bugfix: Lavaland elite are at lavaland fauna faction now
+  - sound: added liquid pouring sounds to pouring of any reagents
+  - bugfix: you can access your inventory when lying down
+  - image: Ripley and Ripley-based mechs now have consistent outlines
+  - bugfix: both engineers and roboticists may now access the controls of a firebot
+  - bugfix: The Stimmed mutation now has the appropriate instability value for a largely
+      meaningless mutation.
+  - spellcheck: Syndicate jaws of life are now jaws of death!
+  - spellcheck: Made its desc. more descriptive, stating that its faster.
+  - bugfix: Fixed gas canister shields turning themselves off in unpowered areas when
+      they weren't drawing any cell power.
+  - bugfix: fixed cyborgs and monkeys not being able to buckle to chairs
+  - bugfix: There's now a limit to how many dental implants you can cram into your
+      mouth, which is governed by your species' teeth limit.
+  - refactor: Most species have 32 teeth, due to being based on humans, weirding me
+      out when thinking about their teeth, or lack of enough information
+  - refactor: Moths and flypeople have NO teeth. They CAN'T get dental implants. I'm
+      NERFING moths.
+  - refactor: Lizards have seventy-five (!!!) teeth. Lizards are weird.
+  - bugfix: Holodeck closet & crate items are marked as holograms as well
+  - bugfix: Holodeck closet & crate items delete themselves when the program is changed
+  - bugfix: Mood buffs/penalties are now properly equal on both positive/negative
+      sides.
+  - bugfix: Storage no longer deletes all of its viewers upon being deleted
+  - bugfix: Storage UI now renders properly
+  - bugfix: Removed a bush trapped inside a wall above morgue on Tramstation
+  - bugfix: added a keycard auth to QM room
+  - balance: Changelings regenerate chemicals faster when not on fire
+  - balance: Changelings regenerate chemicals slower when on fire
+  - bugfix: peg legs can't bleed
+  - code_imp: Rewrote a portion of storage UI code to allow it to be influenced by
+      UI style.
+  - image: Prettified storage UI and made it affected by UI theme.
+  - bugfix: Fix being unable to add a flux core to new the combat heart cybernetic
+  - balance: Negative mutations now allow you to have more positive mutations, via
+      reducing your instability!
+  - code_imp: All mutations have been overall standardized via defines on their instability
+      values. Many mediocre positive mutations have had their cost reduced significantly!
+  - rscadd: 'Added a new height mutation: Acromegaly! It''s the opposite of Dwarfism
+      and makes you uncannily tall. It also makes you hit your head 8% or 4% (with
+      synch) of the time  you pass through airlocks. Wear a helmet!'
+  - rscadd: Gigantism is now a recipe mutation, mix Acromegaly with Strength to get
+      it.
+  - qol: Injectors and activators' duration is now dependent on the in/stability (absolute
+      value) of the mutations to be injected! With a minimum of 5-10-15 seconds for
+      each type of injector. Also changed up a bit how part upgrade cooldowns work,
+      by making each tier reduce cooldowns by 25-15-10% for each injector type.
+  Thlumyn:
+  - bugfix: fixed active turfs in icebox listening post
+  Vekter:
+  - rscadd: Bitrunners can now access specific bounties asking for the item rewards
+      from specific bitrunning domains.
+  - bugfix: Fixed bitrunner pulling from a pool of literally every bounty available.
+  grungussuss , Kayozz:
+  - sound: exosuit fabricators, Autolathes and Techfabs will now produce sounds when
+      printing items
+  nikothedude:
+  - spellcheck: Fixed a typo in systemic fault's examine text
+  - balance: Synthetic electrical damage can no longer worsen if its currently being
+      repaired
+  - rscadd: Taurs now have custom leg names
+  - bugfix: Synth taur legs now have all attributes of a organic taur leg except the
+      fact theyre robotic
+  - bugfix: Markings no longer render on taur legs
+  - bugfix: Clothing with taur-specific clothing sprites now render those sprites
+      properly
+  - code_imp: Various improvements to taur leg code
+  - code_imp: Taur bodies are properly subtyped

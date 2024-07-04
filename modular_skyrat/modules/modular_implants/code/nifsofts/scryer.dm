@@ -69,7 +69,7 @@
 	if(cell)
 		QDEL_NULL(cell)
 
-	cell = new /obj/item/stock_parts/cell/infinite/nif_cell(src)
+	cell = new /obj/item/stock_parts/power_store/cell/infinite/nif_cell(src)
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/Destroy()
 	if(parent_nifsoft)
@@ -111,7 +111,7 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /// This cell is only meant for use in items temporarily created by a NIF. Do not let players extract this from devices.
-/obj/item/stock_parts/cell/infinite/nif_cell
+/obj/item/stock_parts/power_store/cell/infinite/nif_cell
 	name = "Nanite Cell"
 	desc = "If you see this, please make an issue on GitHub."
 

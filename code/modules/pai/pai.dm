@@ -164,7 +164,6 @@
 	QDEL_NULL(signaler)
 	QDEL_NULL(leash)
 	card = null
-	GLOB.pai_list.Remove(src)
 	return ..()
 
 /mob/living/silicon/pai/emag_act(mob/user)
@@ -213,7 +212,6 @@
 	if(istype(loc, /obj/item/modular_computer))
 		give_messenger_ability()
 	START_PROCESSING(SSfastprocess, src)
-	GLOB.pai_list += src
 	make_laws()
 	for(var/law in laws.inherent)
 		lawcheck += law

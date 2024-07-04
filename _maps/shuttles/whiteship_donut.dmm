@@ -53,11 +53,6 @@
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /turf/open/floor/plating,
 /area/shuttle/abandoned)
-"cm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/high,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned)
 "da" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/table,
@@ -66,6 +61,17 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
 	},
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned)
+"dc" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
+	dir = 1;
+	x_offset = 0;
+	y_offset = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/disk/holodisk/donutstation/whiteship,
+/obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned)
 "dh" = (
@@ -204,6 +210,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/shreds,
 /turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
+"tK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stock_parts/power_store/cell/high,
+/turf/open/floor/iron/airless,
 /area/shuttle/abandoned)
 "ui" = (
 /obj/effect/decal/cleanable/dirt,
@@ -387,11 +398,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned)
-"NG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/high/empty,
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned)
 "Ot" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/portable_atmospherics/canister/air,
@@ -443,6 +449,11 @@
 /obj/structure/window/reinforced/tinted/spawner/directional/north,
 /turf/open/floor/iron/showroomfloor/airless,
 /area/shuttle/abandoned)
+"UC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stock_parts/power_store/cell/high/empty,
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
 "Wf" = (
 /obj/machinery/computer/mech_bay_power_console{
 	dir = 8
@@ -464,15 +475,6 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 8
 	},
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned)
-"XY" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/disk/holodisk/donutstation/whiteship,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned)
 "YO" = (
@@ -557,7 +559,7 @@ an
 ar
 ac
 PT
-NG
+UC
 ui
 ac
 KL
@@ -645,7 +647,7 @@ ui
 PT
 gf
 Xd
-XY
+dc
 bq
 "}
 (9,1,1) = {"
@@ -683,7 +685,7 @@ aq
 aq
 al
 ac
-cm
+tK
 Hi
 Cg
 bq

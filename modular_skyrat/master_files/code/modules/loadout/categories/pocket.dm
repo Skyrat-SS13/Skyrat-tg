@@ -76,7 +76,7 @@
 
 /datum/loadout_item/pocket_items/cigar //smoking is bad mkay
 	name = "Cigar"
-	item_path = /obj/item/clothing/mask/cigarette/cigar
+	item_path = /obj/item/cigarette/cigar
 
 /datum/loadout_item/pocket_items/flask
 	name = "Flask"
@@ -176,7 +176,7 @@
 
 /datum/loadout_item/pocket_items/power_cell
 	name = "Standard Power Cell"
-	item_path = /obj/item/stock_parts/cell
+	item_path = /obj/item/stock_parts/power_store/cell
 
 /datum/loadout_item/pocket_items/soap
 	name = "Bar of Soap"
@@ -272,4 +272,4 @@
 
 /datum/loadout_item/pocket_items/donator/vape
 	name = "E-Cigarette"
-	item_path = /obj/item/clothing/mask/vape
+	item_path = /obj/item/vape

@@ -27,3 +27,4 @@
 //SR Misc
 #define SECHUD_BARBER "hudbarber"
 #define SECHUD_SCRAMBLED "hudscrambled"
+#define SECHUD_TELECOMMS_SPECIALIST "hudtelecommsspecialist"
