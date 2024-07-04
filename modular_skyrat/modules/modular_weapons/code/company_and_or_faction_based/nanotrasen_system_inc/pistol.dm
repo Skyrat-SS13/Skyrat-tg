@@ -32,7 +32,7 @@
 	spawnwithmagazine = FALSE
 
 /obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec
-	name = "9x25mm Mk2 Standard Pistol"
+	name = "9x25mm Mk2 Standard Pistol Plus P"
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/spec/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty(src)
