@@ -113,7 +113,6 @@
 	description = "Microfusion tech that is proprietary tech of Honkicron Clownery Systems. HONK!!"
 	prereq_ids = list(
 		TECHWEB_NODE_BASIC_MICROFUSION,
-		TECHWEB_NODE_TOYS,
 	)
 	design_ids = list(
 		"microfusion_gun_attachment_honk",

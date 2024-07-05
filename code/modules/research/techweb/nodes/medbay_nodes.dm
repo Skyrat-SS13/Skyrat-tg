@@ -23,6 +23,8 @@
 		"stethoscope",
 		"beaker",
 		"large_beaker",
+		"chem_pack",
+		"blood_pack",
 		"syringe",
 		"dropper",
 		"pillbottle",
@@ -40,8 +42,6 @@
 	prereq_ids = list(TECHWEB_NODE_MEDBAY_EQUIP)
 	design_ids = list(
 		"xlarge_beaker",
-		"blood_pack",
-		"chem_pack",
 		"med_spray_bottle",
 		"medigel",
 		"medipen_refiller",
@@ -91,6 +91,7 @@
 	description = "State-of-the-art medical gear for keeping the crew in one piece — mostly."
 	prereq_ids = list(TECHWEB_NODE_CRYOSTASIS)
 	design_ids = list(
+		"smoke_machine",
 		"chem_mass_spec",
 		"healthanalyzer_advanced",
 		"mod_health_analyzer",
