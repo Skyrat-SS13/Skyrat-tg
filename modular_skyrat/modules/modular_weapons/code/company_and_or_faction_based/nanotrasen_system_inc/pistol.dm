@@ -56,7 +56,6 @@
 	desc = "General Purpose Pistol Number 9, 3-Round Burst. A classic .9mm handgun with a small magazine capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "silver"
-	w_class = WEIGHT_CLASS_NORMAL
 	spread = 18
 	pin = /obj/item/firing_pin
 	projectile_damage_multiplier = 0.9
