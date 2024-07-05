@@ -22,7 +22,7 @@
 /datum/supply_pack/security/lethalskyratshotgun
 	name = "12 Gauge Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for all 12 Gauge Shotguns."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/buckshot= 3,
 					/obj/item/ammo_box/advanced/s12gauge = 3,
 				)
@@ -31,7 +31,7 @@
 /datum/supply_pack/security/armory/exoticskyratammo
 	name = "12 Gauge Exotic Ammunition Crates"
 	desc = "Contains 6 boxes of exotic ammunition for all 12 Gauge Shotguns."
-	cost = CARGO_CRATE_VALUE * 8
+	cost = CARGO_CRATE_VALUE * 20
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/incendiary= 1,
 					/obj/item/ammo_box/advanced/s12gauge/flechette = 1,
 					/obj/item/ammo_box/advanced/s12gauge/express = 1,
@@ -45,7 +45,7 @@
 /datum/supply_pack/security/antiriotskyratshotgunammo
 	name = "12 Gauge Anti Riot Ammunition Crates"
 	desc = "Contains 6 boxes of anti riot grade ammunition for all 12 Gauge Shotguns."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 2,
 					/obj/item/ammo_box/advanced/s12gauge/beehive = 2,
 					/obj/item/ammo_box/advanced/s12gauge/rubber = 2,
@@ -57,7 +57,7 @@
 /datum/supply_pack/security/wespe
 	name = "Wespe Three-Pack Crates"
 	desc = "Contains three case of the .35 sol handgun, magazines included."
-	cost = CARGO_CRATE_VALUE * 8
+	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/wespe = 3,
 					/obj/item/ammo_box/c35sol/incapacitator = 3,
 				)
@@ -66,7 +66,7 @@
 /datum/supply_pack/security/eland
 	name = "Eland Three-Pack Crates"
 	desc = "Contains three case of the .35 sol revolver, munition boxes included."
-	cost = CARGO_CRATE_VALUE * 8
+	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/eland = 3,
 					/obj/item/ammo_box/c35sol/incapacitator = 3,
 				)
@@ -75,7 +75,7 @@
 /datum/supply_pack/security/armory/renoster
 	name = "Carwo 'Renoster' Shotgun Crate"
 	desc = "Contains two Carwo 'Renoster' shotguns. Additional ammmo sold separately."
-	cost = CARGO_CRATE_VALUE * 20
+	cost = CARGO_CRATE_VALUE * 30
 	contains = list(/obj/item/gun/ballistic/shotgun/riot/sol = 2,
 	/obj/item/ammo_box/advanced/s12gauge/buckshot = 2,
 	)
@@ -94,7 +94,7 @@
 /datum/supply_pack/security/armory/cmg
 	name = "Carwo 'Sindano' Submachinegun Crate"
 	desc = "Three entirely proprietary Sindano kits, chambered in .35 Sol Short. Each kit contains three empty magazines and a box each of incapacitator and lethal rounds."
-	cost = CARGO_CRATE_VALUE * 12
+	cost = CARGO_CRATE_VALUE * 20
 	contains = list(
 		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
 		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
@@ -123,7 +123,7 @@
 
 /datum/supply_pack/security/armory/kiboko
 	name = "Kiboko Grenade Launcher Crate"
-	cost = CARGO_CRATE_VALUE * 20
+	cost = CARGO_CRATE_VALUE * 30
 	desc = "Contains a Kiboko 25mm grenade launchers. A small dial on the sight allows you to set the length of the grenade fuse."
 	contains = list(
 		/obj/item/gun/ballistic/automatic/sol_grenade_launcher/no_mag = 1,
