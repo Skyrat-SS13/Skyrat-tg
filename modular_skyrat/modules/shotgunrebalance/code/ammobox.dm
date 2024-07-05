@@ -90,3 +90,10 @@
 	icon_state = "honk"
 	ammo_type = /obj/item/ammo_casing/shotgun/honkshot
 	max_ammo = 35
+
+/obj/item/ammo_box/advanced/s12gauge/breaching
+	name = "Breaching Slug ammo box"
+	desc = "A box of 7 Breaching slug. It's able to punches through structures with ease."
+	icon_state = "dragonsbreath"
+	ammo_type = /obj/item/ammo_casing/shotgun
+	max_ammo = 15
