@@ -9,9 +9,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
-"ax" = (
-/turf/closed/wall/mineral/titanium/overspace,
-/area/shuttle/escape)
 "aQ" = (
 /obj/effect/decal/cleanable/insectguts,
 /turf/open/floor/mineral/plastitanium/red,
@@ -99,7 +96,7 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/obj/item/clothing/mask/cigarette/dromedary{
+/obj/item/cigarette/dromedary{
 	pixel_x = 8;
 	pixel_y = 15
 	},
@@ -229,16 +226,6 @@
 /obj/item/trash/cheesie,
 /turf/open/floor/mineral/titanium/tiled,
 /area/shuttle/escape)
-"ll" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Emergency Shuttle Airlock"
-	},
-/obj/docking_port/mobile/emergency{
-	dir = 8;
-	name = "birdshot emergency shuttle"
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
 "lp" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Emergency Shuttle Airlock"
@@ -283,6 +270,10 @@
 	pixel_x = -5
 	},
 /turf/open/floor/glass/reinforced,
+/area/shuttle/escape)
+"mU" = (
+/obj/structure/lattice,
+/turf/template_noop,
 /area/shuttle/escape)
 "no" = (
 /obj/item/trash/popcorn/caramel,
@@ -537,12 +528,28 @@
 /obj/machinery/power/shuttle_engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
+"zL" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/docking_port/mobile/emergency{
+	dir = 8;
+	name = "birdshot emergency shuttle";
+	port_direction = 4
+	},
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "zV" = (
 /obj/structure/toilet{
 	dir = 4
 	},
 /obj/item/trash/can/food/beans,
 /turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"Aw" = (
+/obj/structure/lattice,
+/obj/item/stack/rods/two,
+/turf/template_noop,
 /area/shuttle/escape)
 "Ay" = (
 /obj/item/shard{
@@ -610,13 +617,6 @@
 /area/shuttle/escape)
 "De" = (
 /turf/open/floor/mineral/titanium/tiled,
-/area/shuttle/escape)
-"DC" = (
-/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/power_store/cell,
-/turf/open/floor/glass/reinforced,
 /area/shuttle/escape)
 "DH" = (
 /obj/effect/mapping_helpers/broken_floor,
@@ -690,6 +690,13 @@
 "HD" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
+"HS" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell,
+/turf/open/floor/glass/reinforced,
 /area/shuttle/escape)
 "Id" = (
 /obj/structure/chair{
@@ -793,10 +800,6 @@
 "MW" = (
 /turf/open/floor/mineral/titanium/tiled/white,
 /area/shuttle/escape)
-"No" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/shuttle/escape)
 "Oq" = (
 /obj/structure/chair{
 	dir = 1;
@@ -827,11 +830,6 @@
 	pixel_y = 5
 	},
 /turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"Pj" = (
-/obj/structure/lattice,
-/obj/item/stack/rods/two,
-/turf/template_noop,
 /area/shuttle/escape)
 "Pq" = (
 /obj/structure/chair/comfy/shuttle{
@@ -1001,24 +999,24 @@ nQ
 nQ
 nQ
 nQ
-ax
-LX
-rZ
-LX
-ax
-nQ
-nQ
-nQ
-ax
-rZ
 LX
 LX
 rZ
 LX
 LX
+nQ
+nQ
+nQ
+LX
+rZ
 LX
 LX
-ax
+rZ
+LX
+LX
+LX
+LX
+LX
 nQ
 "}
 (2,1,1) = {"
@@ -1030,7 +1028,7 @@ nQ
 nQ
 nQ
 nQ
-ax
+LX
 LX
 LX
 ON
@@ -1058,7 +1056,7 @@ nQ
 nQ
 nQ
 nQ
-ax
+LX
 rZ
 rZ
 LX
@@ -1086,7 +1084,7 @@ vk
 (4,1,1) = {"
 nQ
 nQ
-ax
+LX
 LX
 LX
 LX
@@ -1183,26 +1181,26 @@ WH
 De
 ye
 LX
-No
+mU
 nQ
-ax
+LX
 LX
 LX
 hF
 LX
 LX
-ax
+LX
 nQ
 nQ
-No
+mU
 Sm
 hF
 LX
 rZ
 LX
-ax
+LX
 nQ
-ax
+LX
 LX
 nQ
 nQ
@@ -1214,23 +1212,23 @@ yj
 MW
 rZ
 rZ
-No
-No
-No
-No
+mU
+mU
+mU
+mU
 IN
 pl
 ry
-No
-No
-No
-No
-No
+mU
+mU
+mU
+mU
+mU
 mp
 ig
 Kh
 Uh
-No
+mU
 nQ
 nQ
 nQ
@@ -1248,20 +1246,20 @@ nQ
 nQ
 nQ
 nQ
-No
+mU
 IN
 cr
 oC
-No
+mU
 nQ
 nQ
 nQ
 nQ
-DC
+HS
 ig
 fd
 AK
-No
+mU
 nQ
 nQ
 nQ
@@ -1276,23 +1274,23 @@ nO
 MW
 rZ
 rZ
-No
-No
-No
-No
+mU
+mU
+mU
+mU
 bx
 ig
 ry
-No
-No
-No
-No
-No
+mU
+mU
+mU
+mU
+mU
 Vo
 jt
 oN
 IK
-No
+mU
 nQ
 nQ
 nQ
@@ -1307,27 +1305,27 @@ xg
 De
 eR
 LX
-No
+mU
 nQ
-ax
+LX
 LX
 LX
 hF
 LX
 LX
-ax
+LX
 nQ
 nQ
-No
+mU
 Sm
 hF
 LX
 rZ
 LX
-ax
+LX
 nQ
 bo
-No
+mU
 nQ
 nQ
 "}
@@ -1359,7 +1357,7 @@ ho
 LX
 LX
 RW
-No
+mU
 nQ
 "}
 (13,1,1) = {"
@@ -1389,14 +1387,14 @@ Ly
 Oq
 tb
 MC
-No
+mU
 LX
 ST
 "}
 (14,1,1) = {"
 nQ
 nQ
-ax
+LX
 LX
 LX
 LX
@@ -1422,7 +1420,7 @@ LX
 VA
 Em
 Ay
-No
+mU
 "}
 (15,1,1) = {"
 nQ
@@ -1430,7 +1428,7 @@ nQ
 nQ
 nQ
 nQ
-ax
+LX
 rZ
 rZ
 LX
@@ -1451,7 +1449,7 @@ tu
 xC
 tj
 Iv
-No
+mU
 fv
 ce
 "}
@@ -1464,7 +1462,7 @@ nQ
 nQ
 nQ
 nQ
-ax
+LX
 LX
 LX
 dv
@@ -1481,7 +1479,7 @@ eH
 oL
 ho
 kH
-Pj
+Aw
 sU
 LX
 bo
@@ -1497,16 +1495,16 @@ nQ
 nQ
 nQ
 nQ
-ax
+LX
 Xy
 rZ
 Xy
-ax
+LX
 nQ
 nQ
 nQ
-ax
-ll
+LX
+zL
 LX
 lp
 rZ
@@ -1514,6 +1512,6 @@ LX
 rZ
 rZ
 rZ
-ax
+LX
 nQ
 "}

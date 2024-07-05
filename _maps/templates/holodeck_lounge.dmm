@@ -32,8 +32,14 @@
 	},
 /area/template_noop)
 "e" = (
-/obj/structure/table/wood/poker,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/structure/table/wood,
+/obj/item/cigarette/pipe,
+/obj/effect/holodeck_effect/random_book,
+/turf/open/floor/holofloor/carpet,
+/area/template_noop)
+"g" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
 /turf/open/floor/holofloor{
 	dir = 9;
 	icon_state = "wood"
@@ -62,12 +68,6 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-"n" = (
-/obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/pipe,
-/obj/effect/holodeck_effect/random_book,
-/turf/open/floor/holofloor/carpet,
-/area/template_noop)
 "o" = (
 /obj/structure/chair/wood{
 	dir = 1
@@ -86,7 +86,6 @@
 /turf/open/floor/holofloor/carpet,
 /area/template_noop)
 "r" = (
-/obj/structure/chair/stool/bar/directional/south,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/holofloor{
 	dir = 9;
@@ -94,6 +93,7 @@
 	},
 /area/template_noop)
 "s" = (
+/obj/structure/chair/stool/bar/directional/south,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/holofloor{
 	dir = 9;
@@ -112,6 +112,14 @@
 /obj/structure/chair/wood{
 	dir = 4
 	},
+/turf/open/floor/holofloor{
+	dir = 9;
+	icon_state = "wood"
+	},
+/area/template_noop)
+"v" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/holofloor{
 	dir = 9;
 	icon_state = "wood"
@@ -234,14 +242,6 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-"Q" = (
-/obj/structure/table/wood/shuttle_bar,
-/obj/structure/window/reinforced/spawner/directional/east,
-/turf/open/floor/holofloor{
-	dir = 9;
-	icon_state = "wood"
-	},
-/area/template_noop)
 "R" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/holofloor{
@@ -271,9 +271,9 @@
 	icon_state = "wood"
 	},
 /area/template_noop)
-"W" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
+"X" = (
+/obj/structure/table/wood/poker,
+/obj/item/cigarette/pipe,
 /turf/open/floor/holofloor{
 	dir = 9;
 	icon_state = "wood"
@@ -297,7 +297,7 @@ H
 a
 "}
 (2,1,1) = {"
-W
+g
 z
 z
 z
@@ -314,9 +314,9 @@ u
 u
 z
 z
-s
 r
-Q
+s
+v
 c
 G
 "}
@@ -347,7 +347,7 @@ p
 (6,1,1) = {"
 m
 P
-e
+X
 o
 z
 F
@@ -390,5 +390,5 @@ O
 q
 E
 E
-n
+e
 "}

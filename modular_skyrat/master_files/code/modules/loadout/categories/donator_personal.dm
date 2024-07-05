@@ -261,7 +261,7 @@
 
 /datum/loadout_item/pocket_items/brightcosmos
 	name = "Bright Cosmos cigar"
-	item_path = /obj/item/clothing/mask/holocigarette/cigar
+	item_path = /obj/item/holocigarette/cigar
 	ckeywhitelist = list("lyricalpaws")
 
 /datum/loadout_item/under/jumpsuit/lannese
@@ -671,7 +671,7 @@
 
 /datum/loadout_item/pocket_items/masvedishcigar
 	name = "Holocigar"
-	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
+	item_path = /obj/item/holocigarette/masvedishcigar
 	// Asked it to be public, and as such has no whitelist.
 
 /datum/loadout_item/suit/lt3_armor

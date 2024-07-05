@@ -7198,6 +7198,7 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
 	},
+/obj/machinery/computer/security/telescreen/minisat/directional/west,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/command/bridge)
 "chq" = (
@@ -11348,13 +11349,13 @@
 	pixel_x = -8;
 	pixel_y = -3
 	},
-/obj/item/clothing/mask/cigarette/cigar{
+/obj/item/cigarette/cigar{
 	pixel_x = 4.5
 	},
-/obj/item/clothing/mask/cigarette/cigar/havana{
+/obj/item/cigarette/cigar/havana{
 	pixel_x = 3
 	},
-/obj/item/clothing/mask/cigarette/cigar/cohiba{
+/obj/item/cigarette/cigar/cohiba{
 	pixel_x = 6
 	},
 /obj/item/flashlight/lamp{
@@ -15395,7 +15396,7 @@
 /area/station/hallway/primary/fore)
 "euI" = (
 /obj/structure/table/wood/poker,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/cigarette/pipe,
 /turf/open/floor/iron/grimy,
 /area/station/commons/lounge)
 "evd" = (
@@ -17296,12 +17297,9 @@
 /area/station/common/pool)
 "eWi" = (
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/machinery/computer/security/telescreen/ordnance{
-	dir = 4;
-	pixel_x = -32
-	},
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/effect/turf_decal/stripes/red/corner,
+/obj/machinery/computer/security/telescreen/ordnance/directional/west,
 /turf/open/floor/iron/smooth_edge{
 	dir = 1
 	},
@@ -20998,16 +20996,11 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/machinery/computer/security/telescreen{
-	dir = 8;
-	name = "Prisoner Telescreen";
-	network = list("prison");
-	pixel_x = 28
-	},
 /obj/machinery/recharger{
 	pixel_x = -7;
 	pixel_y = 3
 	},
+/obj/machinery/computer/security/telescreen/prison/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "gep" = (
@@ -25946,6 +25939,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/item/flatpack,
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/science/lab)
 "hxh" = (
@@ -26383,11 +26377,9 @@
 /area/station/medical/virology)
 "hBZ" = (
 /obj/machinery/pdapainter/research,
-/obj/machinery/computer/security/telescreen/rd{
-	pixel_y = 30
-	},
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/bot,
+/obj/machinery/computer/security/telescreen/rd/directional/north,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/command/heads_quarters/rd)
 "hCh" = (
@@ -28664,10 +28656,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
-/obj/machinery/computer/security/telescreen/cmo{
-	dir = 1;
-	pixel_y = -32
-	},
+/obj/machinery/computer/security/telescreen/cmo/directional/south,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/cmo)
 "imh" = (
@@ -29544,13 +29533,13 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/item/clothing/mask/cigarette/cigar{
+/obj/item/cigarette/cigar{
 	pixel_x = 4
 	},
-/obj/item/clothing/mask/cigarette/cigar{
+/obj/item/cigarette/cigar{
 	pixel_x = 7
 	},
-/obj/item/clothing/mask/cigarette/cigar{
+/obj/item/cigarette/cigar{
 	pixel_x = 10
 	},
 /turf/open/floor/wood/large,
@@ -29567,6 +29556,13 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos)
+"iwH" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/computer/security/telescreen/ce/directional/south,
+/turf/open/floor/carpet/orange,
+/area/station/command/heads_quarters/ce)
 "iwV" = (
 /obj/structure/disposalpipe/junction/flip{
 	dir = 8
@@ -31127,9 +31123,7 @@
 	color = "#A46106"
 	},
 /obj/effect/landmark/start/quartermaster,
-/obj/machinery/computer/security/telescreen/vault{
-	pixel_y = 30
-	},
+/obj/machinery/computer/security/telescreen/vault/directional/north,
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/qm)
 "iVa" = (
@@ -46560,7 +46554,7 @@
 	pixel_x = 9;
 	pixel_y = 6
 	},
-/obj/item/clothing/mask/cigarette/pipe{
+/obj/item/cigarette/pipe{
 	pixel_x = -5
 	},
 /obj/structure/table/wood,
@@ -49723,13 +49717,7 @@
 	},
 /obj/structure/chair/office,
 /obj/effect/landmark/start/science_guard,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for monitoring medbay to ensure patient safety.";
-	dir = 8;
-	name = "Science Monitor";
-	network = list("rd","toxins","minisat","xeno","test");
-	pixel_x = 32
-	},
+/obj/machinery/computer/security/telescreen/research/directional/east,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},
@@ -52193,6 +52181,7 @@
 /area/station/science/xenobiology)
 "oGH" = (
 /obj/machinery/light/cold/directional/south,
+/obj/machinery/computer/security/telescreen/minisat/directional/south,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
 "oGI" = (
@@ -53311,11 +53300,8 @@
 	pixel_y = 4
 	},
 /obj/machinery/airalarm/directional/north,
-/obj/machinery/computer/security/telescreen/minisat{
-	dir = 4;
-	pixel_x = -32
-	},
 /obj/machinery/light/directional/north,
+/obj/machinery/computer/security/telescreen/tcomms/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/security/checkpoint/engineering)
 "oWD" = (
@@ -58557,13 +58543,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for monitoring the engine.";
-	dir = 4;
-	name = "Engine Monitor";
-	network = list("engine");
-	pixel_x = -32
-	},
+/obj/machinery/computer/security/telescreen/ce/directional/west,
 /turf/open/floor/iron/smooth_edge{
 	dir = 4
 	},
@@ -62229,17 +62209,13 @@
 /obj/item/clothing/glasses/sunglasses{
 	pixel_y = 12
 	},
-/obj/machinery/computer/security/telescreen{
-	name = "Prisoner Telescreen";
-	network = list("prison");
-	pixel_y = 28
-	},
 /obj/machinery/button/door/directional/east{
 	id = "brigprison";
 	name = "Prison Lockdown";
 	req_access = list("brig")
 	},
 /obj/effect/turf_decal/tile/purple/fourcorners,
+/obj/machinery/computer/security/telescreen/isolation/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/security/corrections_officer)
 "rpS" = (
@@ -67225,13 +67201,7 @@
 	pixel_y = 4
 	},
 /obj/machinery/light/small/directional/east,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching the AI Upload.";
-	dir = 4;
-	name = "AI Upload Monitor";
-	network = list("aiupload");
-	pixel_x = -29
-	},
+/obj/machinery/computer/security/telescreen/aiupload/directional/west,
 /turf/open/floor/vault,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "sLs" = (
@@ -74554,12 +74524,7 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/effect/turf_decal/bot,
 /obj/machinery/computer/crew,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for monitoring medbay to ensure patient safety.";
-	name = "Medbay Monitor";
-	network = list("medbay");
-	pixel_y = 32
-	},
+/obj/machinery/computer/security/telescreen/cmo/directional/north,
 /turf/open/floor/iron/freezer,
 /area/station/security/checkpoint/medical)
 "uHq" = (
@@ -83330,10 +83295,6 @@
 /turf/open/floor/iron/smooth,
 /area/station/command/cc_dock)
 "xfA" = (
-/obj/machinery/computer/security/telescreen/vault{
-	dir = 8;
-	pixel_x = 26
-	},
 /obj/machinery/computer/records/medical{
 	dir = 1
 	},
@@ -85081,6 +85042,7 @@
 "xEU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/cold/directional/west,
+/obj/machinery/computer/security/telescreen/tcomms/directional/west,
 /turf/open/floor/engine,
 /area/station/tcommsat/computer)
 "xFd" = (
@@ -125290,7 +125252,7 @@ wfL
 mWh
 oWn
 dJr
-vWd
+iwH
 dhx
 rTf
 sxN
