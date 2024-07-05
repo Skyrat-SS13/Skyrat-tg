@@ -429,17 +429,17 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 	microfusion_gun.AddComponent(/datum/component/seclite_attachable, \
 		light_overlay_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi', \
 		light_overlay = "flight")
-	microfusion_gun.can_bayonet = TRUE
+	microfusion_gun = TRUE
 
 /obj/item/microfusion_gun_attachment/rail/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	var/component_to_delete = microfusion_gun.GetComponent(/datum/component/seclite_attachable)
 	if(component_to_delete)
 		qdel(component_to_delete)
-	microfusion_gun.can_bayonet = initial(microfusion_gun.can_bayonet)
-	if(microfusion_gun.bayonet)
-		microfusion_gun.bayonet.forceMove(get_turf(microfusion_gun))
-		microfusion_gun.bayonet = null
+	microfusion_gun = initial(microfusion_gun)
+	if(microfusion_gun)
+		microfusion_gun.forceMove(get_turf(microfusion_gun))
+		microfusion_gun = null
 		microfusion_gun.update_appearance()
 	microfusion_gun.remove_all_attachments()
 

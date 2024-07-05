@@ -33,8 +33,6 @@
 	suppressor_x_offset = 0
 	suppressor_y_offset = 0
 
-	can_bayonet = FALSE
-
 	burst_size = 1
 	fire_delay = 1.2 SECONDS
 	actions_types = list()
@@ -96,7 +94,6 @@
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/wylom
 	can_suppress = FALSE
-	can_bayonet = FALSE
 
 	fire_sound = 'modular_skyrat/modules/novaya_ert/sound/amr_fire.ogg'
 	fire_sound_volume = 100 // BOOM BABY
