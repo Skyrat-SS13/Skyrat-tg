@@ -119,11 +119,17 @@
 /// Try and keep this to a nice whole number, so it's easy to look at a plane var and know what's going on
 #define PLANE_RANGE (HIGHEST_EVER_PLANE - LOWEST_EVER_PLANE)
 
+// Layer helper macros
+
+/// Gives us a way to hook into topdown layers so we can make stupid DUMBASS MAP EDITOR RENDERING happy
+#define MARK_TOPDOWN(layer, FLOOR, NORMALIZED, MAX) MAP_SWITCH(layer, ( ( (NORMALIZED) - (FLOOR) ) * ( ( (layer) - TOPDOWN_LAYER ) / (MAX) ) ) + (FLOOR))
+
 // PLANE_SPACE layer(s)
 #define SPACE_LAYER 1.8
 
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define. Most floors (FLOOR_PLANE) and walls (WALL_PLANE) use this.
 
+<<<<<<< HEAD
 //FLOOR_PLANE layers
 #define TURF_PLATING_DECAL_LAYER 2.001
 #define TURF_DECAL_LAYER 2.009 //Makes turf decals appear in DM how they will look inworld.
@@ -136,6 +142,32 @@
 #define GLASS_FLOOR_LAYER 2.046
 #define TRAM_RAIL_LAYER 2.047
 #define ABOVE_OPEN_TURF_LAYER 2.049
+=======
+/// Max floor plane layer value (ignoring topdown)
+#define MAX_FLOOR_LAYER 13
+/// The minimum layer floor plane should have normalized to match up with its position in the plane stack
+#define MAPPING_FLOOR_LAYER_NORMALIZED_MIN 1.81
+/// The max layer floor plane should have normalized to match up with its position in the plane stack
+#define MAPPING_FLOOR_LAYER_NORMALIZED_MAX 2
+#define MARK_FLOOR_LAYER(layer) MARK_TOPDOWN(layer, MAPPING_FLOOR_LAYER_NORMALIZED_MIN, MAPPING_FLOOR_LAYER_NORMALIZED_MAX, MAX_FLOOR_LAYER)
+
+// NOTICE: we break from the pattern of increasing in steps of like 0.01 here
+// Because TOPDOWN_LAYER is 10000 and that's enough to floating point our modifications away
+#define LOW_FLOOR_LAYER MARK_FLOOR_LAYER(1 + TOPDOWN_LAYER)
+#define TURF_PLATING_DECAL_LAYER MARK_FLOOR_LAYER(2 + TOPDOWN_LAYER)
+#define TURF_DECAL_LAYER MARK_FLOOR_LAYER(3 + TOPDOWN_LAYER) //Makes turf decals appear in DM how they will look inworld.
+#define CULT_OVERLAY_LAYER MARK_FLOOR_LAYER(4 + TOPDOWN_LAYER)
+#define MID_TURF_LAYER MARK_FLOOR_LAYER(5 + TOPDOWN_LAYER)
+#define HIGH_TURF_LAYER MARK_FLOOR_LAYER(6 + TOPDOWN_LAYER)
+#define LATTICE_LAYER MARK_FLOOR_LAYER(7 + TOPDOWN_LAYER)
+#define DISPOSAL_PIPE_LAYER MARK_FLOOR_LAYER(8 + TOPDOWN_LAYER)
+#define WIRE_LAYER MARK_FLOOR_LAYER(9 + TOPDOWN_LAYER)
+#define GLASS_FLOOR_LAYER MARK_FLOOR_LAYER(10 + TOPDOWN_LAYER)
+#define TRAM_RAIL_LAYER MARK_FLOOR_LAYER(11 + TOPDOWN_LAYER)
+///catwalk overlay of /turf/open/floor/plating/catwalk_floor
+#define CATWALK_LAYER MARK_FLOOR_LAYER(12 + TOPDOWN_LAYER)
+#define ABOVE_OPEN_TURF_LAYER MARK_FLOOR_LAYER(13 + TOPDOWN_LAYER)
+>>>>>>> a132aa92e1b (Fixes fucked rendering in StrongDMM (#84659))
 
 //WALL_PLANE layers
 #define CLOSED_TURF_LAYER 2.05
