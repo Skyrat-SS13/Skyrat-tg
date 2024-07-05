@@ -29,7 +29,7 @@
 		"frontier_range",
 		"tabletop_griddle",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = INFINITE) // God save you
 	hidden = TRUE
 	show_on_wiki = FALSE
 	starting_node = TRUE
