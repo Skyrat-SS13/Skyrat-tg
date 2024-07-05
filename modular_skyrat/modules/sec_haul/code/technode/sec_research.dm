@@ -226,6 +226,18 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/advancedgaugeboxes_breaching
+	name = "12 Gauge Advanced Breaching Slug Ammunition Box(Destructive)"
+	desc = "A 12 gauge ammunition box for shotgun shells."
+	id = "s12g_br"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 20,  /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 15 , /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 25)
+	build_path = /obj/item/ammo_box/advanced/s12gauge/dragonsbreath
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 // Misc Gun Stuff
 
 /datum/design/m9mm_mag
