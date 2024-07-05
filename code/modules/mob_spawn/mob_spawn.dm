@@ -59,11 +59,8 @@
 		spawned_human.underwear = "Nude"
 		spawned_human.undershirt = "Nude"
 		spawned_human.socks = "Nude"
-<<<<<<< HEAD
 		spawned_human.bra = "Nude" //SKYRAT EDIT ADDITION
-=======
 		randomize_human_normie(spawned_human)
->>>>>>> 69b673bba68 (Adds more "curated" version of human randomization (for humonkeys, corpse spawners, and fresh characters) (#84443))
 		if(hairstyle)
 			spawned_human.set_hairstyle(hairstyle, update = FALSE)
 		if(facial_hairstyle)
