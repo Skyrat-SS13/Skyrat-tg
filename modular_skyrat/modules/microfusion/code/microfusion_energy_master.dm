@@ -11,7 +11,6 @@
 	inhand_icon_state = "mcr01"
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
-	can_bayonet = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	obj_flags = UNIQUE_RENAME
 	ammo_x_offset = 2
