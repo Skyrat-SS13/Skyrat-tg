@@ -228,6 +228,42 @@
 
 // Misc Gun Stuff
 
+/datum/design/m9mm_mag
+	name = "9x25mm Mk2 Pistol Magazine(Lethal)"
+	desc = "A standard magazine for pistol using 9x25mm Mk2."
+	id = "m9mm_mag"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 12)
+	build_path = /obj/item/ammo_box/magazine/m9mm
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/m9mm_mag_rubber
+	name = "9x25mm Mk2 Pistol Magazine(Less-Lethal)"
+	desc = "A standard magazine for pistol using 9x25mm Mk2."
+	id = "m9mm_mag_rubber"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
+	build_path = /obj/item/ammo_box/magazine/m9mm/rubber
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/m9mm_mag_ihdf
+	name = "9x25mm Mk2 Pistol Magazine(Non-Lethal)"
+	desc = "A standard magazine for pistol using 9x25mm Mk2."
+	id = "m9mm_mag_ihdf"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5)
+	build_path = /obj/item/ammo_box/magazine/m9mm/ihdf
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 /datum/design/m45_mag
 	name = ".460 Ceres Pistol Magazine(Lethal)"
 	desc = "A standard magazine for pistol using .460 Ceres."
