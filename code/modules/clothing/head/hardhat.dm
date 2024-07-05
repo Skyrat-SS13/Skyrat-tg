@@ -158,6 +158,17 @@
 	if(!up)
 		. += visor_state
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/head/utility/hardhat/welding/up
+	up = TRUE // for calls to worn_overlays before init (prefs)
+
+/obj/item/clothing/head/utility/hardhat/welding/up/Initialize(mapload)
+	. = ..()
+	up = FALSE
+	visor_toggling()
+
+>>>>>>> fa6894a61d9 (Fix master screenshot test (#84694))
 /obj/item/clothing/head/utility/hardhat/welding/orange
 	icon_state = "hardhat0_orange"
 	inhand_icon_state = null
@@ -175,6 +186,18 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/head/utility/hardhat/welding/white/up
+	up = TRUE // for calls to worn_overlays before init (prefs)
+
+/obj/item/clothing/head/utility/hardhat/welding/white/up/Initialize(mapload)
+	. = ..()
+	up = FALSE
+	visor_toggling()
+
+
+>>>>>>> fa6894a61d9 (Fix master screenshot test (#84694))
 /obj/item/clothing/head/utility/hardhat/welding/dblue
 	icon_state = "hardhat0_dblue"
 	inhand_icon_state = null
