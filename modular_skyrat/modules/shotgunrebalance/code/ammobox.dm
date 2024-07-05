@@ -93,7 +93,13 @@
 
 /obj/item/ammo_box/advanced/s12gauge/breaching
 	name = "Breaching Slug ammo box"
-	desc = "A box of 7 Breaching slug. It's able to punches through structures with ease."
-	icon_state = "dragonsbreath"
-	ammo_type = /obj/item/ammo_casing/shotgun
-	max_ammo = 15
+	desc = "A box of 7 Breaching slug. It's able to punches through airlock with ease."
+	icon_state = "fslug"
+	ammo_type = /obj/item/ammo_casing/shotgun/breacher
+	max_ammo = 7
+
+/obj/item/ammo_box/advanced/s12gauge/pulse
+	name = "Pulse Slug ammo box"
+	desc = "A box of 15 Pulse slug. It's able to punches through structures and anything behind it."
+	icon_state = "pulse"
+	ammo_type = /obj/item/ammo_casing/shotgun/pulseslug
