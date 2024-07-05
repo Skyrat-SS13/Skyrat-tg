@@ -309,3 +309,6 @@
 /obj/projectile/bullet/honkshot/on_range()
 	do_sparks(1, TRUE, src)
 	return ..()
+
+/obj/item/ammo_casing/shotgun/beanbag
+	harmful = FALSE
