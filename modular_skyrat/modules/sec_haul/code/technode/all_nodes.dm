@@ -9,7 +9,6 @@
 	design_ids = list(
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
-		"sol40_riflemag",
 		"s12g_buckshot"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
@@ -46,11 +45,13 @@
 	design_ids += "s12g_bslug"
 	design_ids += "s12g_incinslug"
 	design_ids += "c457_casing"
+	design_ids += "sol40_riflemag"
 	. = ..()
 
 /datum/techweb_node/riot_supression/New()
 	design_ids += "s12g_slug"
 	design_ids += "s12g_hornet"
+	design_ids += "s12g_br"
 	. = ..()
 
 /datum/techweb_node/syndicate_basic/New()
