@@ -1,14 +1,19 @@
 //Handgun
 
+
 /obj/item/storage/toolbox/guncase/skyrat/nt_glock
 	name = "9x25mm Mk2 Standard Pistol"
 
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
+	extra_to_spawn = null
+
 /obj/item/storage/toolbox/guncase/skyrat/nt_glock/PopulateContents()
-	.=..()
-	new /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty(src)
-	new /obj/item/ammo_box/magazine/m9mm/rubber(src)
-	new /obj/item/ammo_box/magazine/m9mm/rubber(src)
-	new /obj/item/ammo_box/magazine/m9mm/ihdf(src)
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/m9mm/rubber = 2,
+		/obj/item/ammo_box/magazine/m9mm/ihdf = 2,
+	), src)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock
 	name = "\improper GP-9"
@@ -31,14 +36,20 @@
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec
-	name = "9x25mm Mk2 Standard Pistol Plus P"
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock/spec/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty(src)
-	new /obj/item/ammo_box/magazine/m9mm/hp(src)
-	new /obj/item/ammo_box/magazine/m9mm/hp(src)
-	new /obj/item/ammo_box/magazine/m9mm/ap(src)
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec
+	name = "9x25mm Mk2 Standard Pistol"
+
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
+	extra_to_spawn = null
+
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec/PopulateContents()
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/m9mm/hp = 2,
+		/obj/item/ammo_box/magazine/m9mm/ap = 2,
+	), src)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/spec
 	name = "\improper GP-93R"
