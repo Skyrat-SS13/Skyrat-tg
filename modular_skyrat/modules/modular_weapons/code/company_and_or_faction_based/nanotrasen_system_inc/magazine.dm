@@ -7,8 +7,6 @@
 	name = "pistol magazine (9x25mm Intelligent Dispersal Foam)"
 	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 
-/obj/item/ammo_casing/c9mm/rubber
-
 //10mm Cylinder
 /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 	name = "\improper 10mm revolver cylinder"
