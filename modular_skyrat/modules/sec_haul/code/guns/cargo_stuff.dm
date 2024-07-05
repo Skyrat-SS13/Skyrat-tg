@@ -89,6 +89,7 @@
 	/obj/item/ammo_box/magazine/c40sol_rifle = 4,
 	)
 	crate_name = "Carwil Battle Rifle Crate"
+	contraband = TRUE
 
 /datum/supply_pack/security/armory/cmg
 	name = "Carwo 'Sindano' Submachinegun Crate"
@@ -123,14 +124,14 @@
 /datum/supply_pack/security/armory/kiboko
 	name = "Kiboko Grenade Launcher Crate"
 	cost = CARGO_CRATE_VALUE * 20
-	desc = "Contains two Kiboko 25mm grenade launchers. A small dial on the sight allows you to set the length of the grenade fuse."
+	desc = "Contains a Kiboko 25mm grenade launchers. A small dial on the sight allows you to set the length of the grenade fuse."
 	contains = list(
 		/obj/item/gun/ballistic/automatic/sol_grenade_launcher/no_mag = 1,
 		/obj/item/ammo_box/magazine/c980_grenade/starts_empty = 3
 	)
 	crate_name = "Kiboko Grenade Launcher Crate"
 
-/datum/supply_pack/security/armory/kiboko_variety
+/datum/supply_pack/security/armory/kiboko_riot
 	name = "Kiboko 25mm Riot Pack"
 	cost = CARGO_CRATE_VALUE * 8
 	desc = "Contains three riot grade ammunition box."
