@@ -29,8 +29,6 @@
 	suppressor_x_offset = 0
 	suppressor_y_offset = 0
 
-	can_bayonet = FALSE
-
 	burst_size = 1
 	fire_delay = 0.2 SECONDS
 	actions_types = list()
