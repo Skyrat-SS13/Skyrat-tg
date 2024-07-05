@@ -39,7 +39,7 @@
 	id = "comp_reagent_injector_bluespace"
 	build_path = /obj/item/circuit_component/reagent_injector_bluespace
 
-/datum/techweb_node/adv_shells/New()
+/datum/techweb_node/riot_supression/New()
 	. = ..()
 	design_ids += "comp_tscanner"
 	design_ids += "comp_ccharge"
