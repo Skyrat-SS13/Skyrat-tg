@@ -80,7 +80,7 @@
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2,
 	)
-	build_path = /obj/item/stock_parts/cell/microfusion
+	build_path = /obj/item/stock_parts/power_store/cell/microfusion
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_MICROFUSION_WEAPONS + RND_MICROFUSION_CELLS,
@@ -95,7 +95,7 @@
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2,
 		/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 2,
 	)
-	build_path = /obj/item/stock_parts/cell/microfusion/enhanced
+	build_path = /obj/item/stock_parts/power_store/cell/microfusion/enhanced
 
 /datum/design/microfusion/cell/advanced
 	name = "Advanced Microfusion Cell"
@@ -108,7 +108,7 @@
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 3,
 		/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 3,
 	)
-	build_path = /obj/item/stock_parts/cell/microfusion/advanced
+	build_path = /obj/item/stock_parts/power_store/cell/microfusion/advanced
 
 /datum/design/microfusion/cell/bluespace
 	name = "Bluespace Microfusion Cell"
@@ -123,7 +123,7 @@
 		/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 3,
 		/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 3,
 	)
-	build_path = /obj/item/stock_parts/cell/microfusion/bluespace
+	build_path = /obj/item/stock_parts/power_store/cell/microfusion/bluespace
 
 // CELL UPGRADES
 /datum/design/microfusion/cell_attachment_rechargeable

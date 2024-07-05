@@ -3,8 +3,6 @@
 	mob_type_blacklist_typecache = list(/mob/living/carbon/human, /mob/living/basic/slime, /mob/living/brain) //Humans get specialized scream.
 
 /datum/emote/living/scream/get_sound(mob/living/user)
-	if(user.is_muzzled())
-		return
 	if(issilicon(user))
 		var/mob/living/silicon/silicon_user = user
 		var/datum/scream_type/selected_scream = silicon_user.selected_scream
@@ -27,10 +25,10 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 
-		if(robot_user.cell?.charge < 200)
+		if(robot_user.cell?.charge < STANDARD_CELL_CHARGE * 0.2)
 			to_chat(robot_user , span_warning("Scream module deactivated. Please recharge."))
 			return FALSE
-		robot_user.cell.use(200)
+		robot_user.cell.use(STANDARD_CELL_CHARGE * 0.2)
 	return ..()
 
 /datum/emote/living/carbon/human/scream
@@ -38,8 +36,6 @@
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))
-		return
-	if(user.is_muzzled())
 		return
 	if(isnull(user.selected_scream) || (LAZYLEN(user.selected_scream.male_screamsounds) && LAZYLEN(user.selected_scream.female_screamsounds))) //For things that don't have a selected scream(npcs)
 		if(prob(1))

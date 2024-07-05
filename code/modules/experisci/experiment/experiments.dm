@@ -313,7 +313,7 @@
 		/obj/machinery/chem_dispenser/drinks/beer = 1,
 		/obj/machinery/power/smes = 2
 	)
-	required_stock_part = /obj/item/stock_parts/cell/hyper
+	required_stock_part = /obj/item/stock_parts/power_store/cell/hyper
 
 /datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser
 	name = "Ultra-high-power Micro-lasers Calibration"
@@ -388,7 +388,7 @@
 /// Scan for cybernetic organs
 /datum/experiment/scanning/people/augmented_organs
 	name = "Human Field Research: Augmented Organs"
-	description = "We need to gather data on how cybernetic vital organs integrate with human biology. Conduct a scan on a human with these implants to help us understand their compatibility"
+	description = "We need to gather data on how cybernetic vital organs integrate with human biology. Conduct a scan on a human with these implants to help us understand their compatibility."
 	performance_hint = "Perform an organ manipulation surgery to replace one of the vital organs with a cybernetic variant."
 	required_traits_desc = "augmented vital organs"
 	required_count = 1
@@ -407,11 +407,8 @@
 	)
 
 	for (var/obj/item/organ/organ as anything in check.organs)
-		if (IS_ORGANIC_ORGAN(organ))
-			continue
-		if (!(organ.slot in vital_organ_slots))
-			continue
-		return TRUE
+		if (organ.slot in vital_organ_slots && IS_ROBOTIC_ORGAN(organ))
+			return TRUE
 	return FALSE
 
 /// Scan for skillchips
@@ -434,9 +431,45 @@
 		return FALSE
 	return TRUE
 
+/// Scan an android
+/datum/experiment/scanning/people/android
+	name = "Human Field Research: Full Augmentation"
+	description = "Perform a full cybernetic augmentation on a crewmate then scan them to test their newfound capabilities and new sensory and cognitive functions."
+	performance_hint = "Achieve full augmentation by performing a set of surgery operations."
+	required_traits_desc = "fully augmented android"
+	required_count = 1
+
+/datum/experiment/scanning/people/android/is_valid_scan_target(mob/living/carbon/human/check, datum/component/experiment_handler/experiment_handler)
+	. = ..()
+	if (!.)
+		return
+	if (isandroid(check))
+		return TRUE
+	if (check.organs < 6 || check.bodyparts < 6)
+		return FALSE
+
+	var/static/list/augmented_organ_slots = list(
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
+	for (var/obj/item/organ/organ as anything in check.organs)
+		if (!(organ.slot in augmented_organ_slots))
+			continue
+		if (!IS_ROBOTIC_ORGAN(organ))
+			return FALSE
+	for (var/obj/item/bodypart/bodypart as anything in check.bodyparts)
+		if (bodypart.bodytype != BODYTYPE_ROBOTIC)
+			return FALSE
+	return TRUE
+
 /datum/experiment/scanning/reagent/cryostylane
 	name = "Pure Cryostylane Scan"
 	description = "It appears that the Cryostylane reagent can potentially halt all physiological processes in the human body. Produce Cryostylane with at least 99% purity and scan the beaker."
+	performance_hint = "Keep the temperature as high as possible during the reaction."
 	required_reagent = /datum/reagent/cryostylane
 	min_purity = 0.99
 

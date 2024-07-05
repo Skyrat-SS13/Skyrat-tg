@@ -45,6 +45,12 @@
 /datum/techweb_node/construction/New()
 	design_ids += list(
 		"polarizer",
+		"rcd_loaded",
+		"rcd_ammo",
+		"rtd_loaded",
+		"weldingmask",
+		"magboots",
+		"flatpacker",
 	)
 	return ..()
 
