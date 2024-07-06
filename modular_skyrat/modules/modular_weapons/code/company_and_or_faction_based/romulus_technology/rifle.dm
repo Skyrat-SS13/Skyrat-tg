@@ -96,4 +96,7 @@
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 
+/obj/item/gun/ballistic/rifle/carwil/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
+
 //Flechette Rifle
