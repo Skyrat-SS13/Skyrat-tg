@@ -97,6 +97,15 @@
 
 /////////////////////////Biotech/////////////////////////
 
+/datum/techweb_node/cryostasis
+	prereq_ids = list(TECHWEB_NODE_MEDBAY_EQUIP_ADV, TECHWEB_NODE_PLASMA_CONTROL)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	required_experiments = list(/datum/experiment/scanning/reagent/cryostylane)
+
+/datum/techweb_node/medbay_equip_adv
+	prereq_ids = list(TECHWEB_NODE_PLUMBING)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+
 /datum/techweb_node/medbay_equip_adv/New()
 	design_ids += list(
 		"monkey_helmet",
