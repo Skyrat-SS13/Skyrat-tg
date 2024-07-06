@@ -134,7 +134,13 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 		if("set_name")
 			if(can_be_named)
-				return set_name(manager, user)
+		// SKYRAT EDIT BEGIN - Description
+				return set_name(manager, user, INFO_NAMED)
+
+		if("set_desc")
+			if(can_be_named)
+				return set_name(manager, user, INFO_DESCRIBED)
+		// SKYRAT EDIT END
 
 		if("set_skin")
 			return set_skin(manager, user, params)
@@ -189,14 +195,17 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return TRUE // update UI
 
 /// Sets the name of the item.
-/datum/loadout_item/proc/set_name(datum/preference_middleware/loadout/manager, mob/user)
+// SKYRAT EDIT BEGIN - Adds descriptions with minimal copypaste
+// Generally, if this conflicts, name_slot is to be put anywhere where INFO_NAMED appears in tgcode
+/datum/loadout_item/proc/set_name(datum/preference_middleware/loadout/manager, mob/user, var/name_slot = INFO_NAMED)
+	var/isname = (name_slot == INFO_NAMED)
 	var/list/loadout = manager.preferences.read_preference(/datum/preference/loadout)
 	var/input_name = tgui_input_text(
 		user = user,
-		message = "What name do you want to give the [name]? Leave blank to clear.",
-		title = "[name] name",
-		default = loadout?[item_path]?[INFO_NAMED], // plop in existing name (if any)
-		max_length = MAX_NAME_LEN,
+		message = "What [isname ? "name" : "description"] do you want to give the [name]? Leave blank to clear.",
+		title = "[name] [isname ? "name" : "description"]",
+		default = loadout?[item_path]?[name_slot], // plop in existing name (if any)
+		max_length = isname ? MAX_NAME_LEN : MAX_DESC_LEN,
 	)
 	if(QDELETED(src) || QDELETED(user) || QDELETED(manager) || QDELETED(manager.preferences))
 		return FALSE
@@ -206,12 +215,13 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		return FALSE
 
 	if(input_name)
-		loadout[item_path][INFO_NAMED] = input_name
+		loadout[item_path][name_slot] = input_name
 	else if(input_name == "")
-		loadout[item_path] -= INFO_NAMED
+		loadout[item_path] -= name_slot
 
 	manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
 	return FALSE // no update needed
+// SKYRAT EDIT END
 
 /// Used for reskinning an item to an alt skin.
 /datum/loadout_item/proc/set_skin(datum/preference_middleware/loadout/manager, mob/user, params)
@@ -276,9 +286,18 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		equipped_item.set_greyscale(item_details[INFO_GREYSCALE])
 		update_flag |= equipped_item.slot_flags
 
-	if(can_be_named && item_details?[INFO_NAMED] && !visuals_only)
-		equipped_item.name = trim(item_details[INFO_NAMED], PREVENT_CHARACTER_TRIM_LOSS(MAX_NAME_LEN))
-		ADD_TRAIT(equipped_item, TRAIT_WAS_RENAMED, "Loadout")
+	// SKYRAT EDIT BEGIN - DESCRIPTIONS~
+	if(can_be_named && !visuals_only)
+		var/renamed = 0
+		if(item_details?[INFO_NAMED])
+			equipped_item.name = trim(item_details[INFO_NAMED], PREVENT_CHARACTER_TRIM_LOSS(MAX_NAME_LEN))
+			renamed = 1
+		if(item_details?[INFO_DESCRIBED])
+			equipped_item.desc = trim(item_details[INFO_DESCRIBED], PREVENT_CHARACTER_TRIM_LOSS(MAX_DESC_LEN))
+			renamed = 1
+		if(renamed)
+			ADD_TRAIT(equipped_item, TRAIT_WAS_RENAMED, "Loadout")
+	// SKYRAT EDIT END
 
 	if(can_be_reskinned && item_details?[INFO_RESKIN])
 		var/skin_chosen = item_details[INFO_RESKIN]
@@ -394,7 +413,14 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			"button_icon" = FA_ICON_PEN,
 			"active_key" = INFO_NAMED,
 		))
-
+		// SKYRAT EDIT BEGIN - Descriptions
+		UNTYPED_LIST_ADD(button_list, list(
+			"label" = "Change description",
+			"act_key" = "set_desc",
+			"button_icon" = FA_ICON_PEN,
+			"active_key" = INFO_NAMED,
+		))
+		// SKYRAT EDIT END
 	return button_list
 
 /**
