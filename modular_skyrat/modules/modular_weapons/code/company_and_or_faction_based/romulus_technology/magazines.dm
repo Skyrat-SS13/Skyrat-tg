@@ -1,3 +1,5 @@
+//Handgun Magazine
+
 /obj/item/ammo_box/magazine/m45a5
 	name = "\improper m45a5 magazine (Rose)"
 	desc = "A magazine for the m45a5 chambered in .460 Rowland, holds ten rounds. Warning, contains expanding head that deform on contact, may cause excessive bleeding."
@@ -17,12 +19,26 @@
 	name = "\improper m45a5 magazine (Armour Piercing)"
 	desc = "A magazine for the m45a5 chambered in .460 Rowland, holds ten rounds. Warning, contains lead core intended to defeat body armour."
 
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
-	icon_state = "rowlandmodulargreen"
-
 /obj/item/ammo_box/magazine/m45a5/starts_empty
 	start_empty = TRUE
+
+//Cylinder (not speedloader)
 
 /obj/item/ammo_box/magazine/internal/cylinder/c457
 	caliber = CALIBER_457GOVT
 	ammo_type = /obj/item/ammo_casing/c457govt
+
+//Rifle Magazine
+/obj/item/ammo_box/magazine/flechette
+	name = "flechette penetrator box"
+	ammo_type = /obj/item/ammo_casing/caflechette
+	caliber = CALIBER_FLECHETTE
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
+	icon_state = "cmg_penetrator"
+
+obj/item/ammo_box/magazine/flechette/ripper
+	name = "flechette ripper box"
+	ammo_type = /obj/item/ammo_casing/caflechette
+	caliber = CALIBER_FLECHETTE
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
+	icon_state = "cmg_penetrator"

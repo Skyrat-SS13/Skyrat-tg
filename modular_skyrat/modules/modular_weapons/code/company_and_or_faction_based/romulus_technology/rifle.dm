@@ -124,19 +124,14 @@
 /obj/item/gun/ballistic/automatic/rom_flech
 	name = "\improper RomTech CMG-1 Assault Rifle"
 	desc = "The Compact Machinegun-1 Assault Rifle. It is chambered in an experimental flechette cartridge capable of defeating all type of conventional body armour. Has a folding stock"
-
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun40x32.dmi'
 	icon_state = "cmg1"
-
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
 	worn_icon_state = "carbine"
-
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_righthand.dmi'
 	inhand_icon_state = "carbine"
-
 	bolt_type = BOLT_TYPE_LOCKING
-
 	special_mags = TRUE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
@@ -147,12 +142,10 @@
 	selector_switch_icon = TRUE
 	burst_size = 3
 	fire_delay = 2
-
 	spread = 0
-	projectile_wound_bonus = -35
 
-	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
-	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
+	accepted_magazine_type = /obj/item/ammo_box/magazine/flechette
+	spawn_magazine_type = /obj/item/ammo_box/magazine/flechette
 	var/folding_sound = 'sound/weapons/batonextend.ogg'
 	/// is our stock collapsed?
 	var/folded = FALSE
