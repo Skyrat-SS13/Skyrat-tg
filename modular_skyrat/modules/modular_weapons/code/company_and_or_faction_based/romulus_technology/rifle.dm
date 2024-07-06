@@ -138,11 +138,13 @@
 	bolt_type = BOLT_TYPE_LOCKING
 
 	special_mags = TRUE
-
+	mag_display = TRUE
+	mag_display_ammo = TRUE
+	empty_indicator = TRUE
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
-
+	selector_switch_icon = TRUE
 	burst_size = 3
 	fire_delay = 2
 
