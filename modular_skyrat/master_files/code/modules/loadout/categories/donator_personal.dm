@@ -18,7 +18,7 @@
 	item_path = /obj/item/clothing/suit/furcoat
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/under/jumpsuit/black_turtleneck
+/datum/loadout_item/uniform/black_turtleneck
 	name = "Black turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/black
 	ckeywhitelist = list("thedragmeme")
@@ -28,7 +28,7 @@
 	item_path = /obj/item/clothing/suit/jacket/ryddid
 	ckeywhitelist = list("grunnyyy")
 
-/datum/loadout_item/under/jumpsuit/draculass
+/datum/loadout_item/uniform/draculass
 	name = "Draculass Dress"
 	item_path = /obj/item/clothing/under/costume/draculass
 	ckeywhitelist = list("grunnyyy", "joe_duhan")
@@ -59,7 +59,7 @@
 	ckeywhitelist = list("raxraus")
 	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
-/datum/loadout_item/under/jumpsuit/rax_banded_uniform
+/datum/loadout_item/uniform/rax_banded_uniform
 	name = "Banded Uniform"
 	item_path = /obj/item/clothing/under/rank/security/rax
 	ckeywhitelist = list("raxraus")
@@ -70,7 +70,7 @@
 	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
 	ckeywhitelist = list("goldenalpharex")
 
-/datum/loadout_item/under/jumpsuit/plasmaman_jax
+/datum/loadout_item/uniform/plasmaman_jax
 	name = "XuraCorp Biohazard Underfitting"
 	item_path = /obj/item/clothing/under/plasmaman/jax2
 	ckeywhitelist = list("candlejax")
@@ -86,12 +86,12 @@
 	item_path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax2
 	ckeywhitelist = list("candlejax")
 
-/datum/loadout_item/under/jumpsuit/emissionsuit
+/datum/loadout_item/uniform/emissionsuit
 	name = "Emission's Suit"
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
-/datum/loadout_item/under/jumpsuit/anasuit
+/datum/loadout_item/uniform/anasuit
 	name = "Azulean's Enviro-Suit"
 	item_path = /obj/item/clothing/under/plasmaman/candlejax2
 	ckeywhitelist = list("candlejax")
@@ -111,7 +111,7 @@
 	item_path = /obj/item/clothing/shoes/clown_shoes/britches
 	ckeywhitelist = list("bloodrite")
 
-/datum/loadout_item/under/jumpsuit/britches_dress
+/datum/loadout_item/uniform/britches_dress
 	name = "Britches' dress"
 	item_path = /obj/item/clothing/under/rank/civilian/clown/britches
 	ckeywhitelist = list("bloodrite")
@@ -141,7 +141,7 @@
 	item_path = /obj/item/clothing/head/caligram_cap_tan
 	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
 
-/datum/loadout_item/under/jumpsuit/caligram_fatigues_tan
+/datum/loadout_item/uniform/caligram_fatigues_tan
 	name = "Caligram Tan Fatigues"
 	item_path = /obj/item/clothing/under/jumpsuit/caligram_fatigues_tan
 	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
@@ -192,18 +192,18 @@
 	item_path = /obj/item/clothing/suit/blutigen_kimono
 	ckeywhitelist = list("random516")
 
-/datum/loadout_item/under/jumpsuit/blutigen_undergarment
+/datum/loadout_item/uniform/blutigen_undergarment
 	name = "Dragon Undergarment"
 	item_path = /obj/item/clothing/under/custom/blutigen_undergarment
 	ckeywhitelist = list("random516")
 
-/datum/loadout_item/under/jumpsuit/captain_dress
+/datum/loadout_item/uniform/captain_dress
 	name = "Captain's Dress"
 	item_path = /obj/item/clothing/under/rank/captain/dress
 	ckeywhitelist = list("netrakyram")
 	restricted_roles = list(JOB_CAPTAIN)
 
-/datum/loadout_item/under/jumpsuit/netra_dress
+/datum/loadout_item/uniform/netra_dress
 	name = "Black and Silver Armored Dress"
 	item_path = /obj/item/clothing/under/rank/blueshield/netra
 	ckeywhitelist = list("netrakyram")
@@ -264,12 +264,12 @@
 	item_path = /obj/item/holocigarette/cigar
 	ckeywhitelist = list("lyricalpaws")
 
-/datum/loadout_item/under/jumpsuit/lannese
+/datum/loadout_item/uniform/lannese
 	name = "Lannese Dress"
 	item_path = /obj/item/clothing/under/custom/lannese
 	ckeywhitelist = list("kathrinbailey")
 
-/datum/loadout_item/under/jumpsuit/lannese/vambrace
+/datum/loadout_item/uniform/lannese/vambrace
 	name = "Lannese Dress w/ Vambraces"
 	item_path = /obj/item/clothing/under/custom/lannese/vambrace
 	ckeywhitelist = list("kathrinbailey")
@@ -279,12 +279,12 @@
 	item_path = /obj/item/clothing/suit/scraparmour
 	ckeywhitelist = list("hackertdog")
 
-/datum/loadout_item/under/jumpsuit/mechanic
+/datum/loadout_item/uniform/mechanic
 	name = "Mechanic's Overalls"
 	item_path = /obj/item/clothing/under/misc/skyrat/mechanic
 	ckeywhitelist = list("cypressb")
 
-/datum/loadout_item/under/jumpsuit/mikubikini
+/datum/loadout_item/uniform/mikubikini
 	name = "starlight singer bikini"
 	item_path = /obj/item/clothing/under/mikubikini
 	ckeywhitelist = list("grandvegeta")
@@ -326,7 +326,7 @@
 	ckeywhitelist = list("hackertdog")
 	restricted_roles = list(JOB_NT_REP)
 
-/datum/loadout_item/under/jumpsuit/hubertcc
+/datum/loadout_item/uniform/hubertcc
 	name = "CC Ensign's uniform"
 	item_path = /obj/item/clothing/under/rank/nanotrasen_consultant/hubert
 	ckeywhitelist = list("hackertdog")
@@ -347,7 +347,7 @@
 	item_path = /obj/item/clothing/suit/hooded/occult
 	ckeywhitelist = list("gamerguy14948")
 
-/datum/loadout_item/under/jumpsuit/occult_outfit
+/datum/loadout_item/uniform/occult_outfit
 	name = "Occult Collector's Outfit"
 	item_path = /obj/item/clothing/under/occult
 	ckeywhitelist = list("gamerguy14948")
@@ -432,7 +432,7 @@
 	item_path = /obj/item/toy/plush/skyrat/tesh
 	ckeywhitelist = list("tobjv")
 
-/datum/loadout_item/under/jumpsuit/redhosneck
+/datum/loadout_item/uniform/redhosneck
 	name = "Black and Red Turtleneck"
 	item_path = /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
 	ckeywhitelist = list("ultimarifox")
@@ -477,7 +477,7 @@
 	item_path = /obj/item/clothing/suit/toggle/recruiter_jacket
 	ckeywhitelist = list("m97screwsyourparents")
 
-/datum/loadout_item/under/jumpsuit/recruiter_uniform
+/datum/loadout_item/uniform/recruiter_uniform
 	name = "Recruiter's Uniform"
 	item_path = /obj/item/clothing/under/recruiter_uniform
 	ckeywhitelist = list("m97screwsyourparents")
@@ -487,7 +487,7 @@
 	item_path = /obj/item/clothing/accessory/hypno_watch
 	ckeywhitelist = list("slippyjoe")
 
-/datum/loadout_item/under/jumpsuit/nt_idol
+/datum/loadout_item/uniform/nt_idol
 	name = "NT Idol's Skirt"
 	item_path = /obj/item/clothing/under/nt_idol_skirt
 	ckeywhitelist = list("tetrako")
@@ -520,7 +520,7 @@
 	item_path = /obj/item/toy/plush/skyrat/plushie_dan
 	ckeywhitelist = list("srq", "superlagg")
 
-/datum/loadout_item/under/jumpsuit/bubbly_clown
+/datum/loadout_item/uniform/bubbly_clown
 	name = "Bubbly Clown Dress"
 	item_path = /obj/item/clothing/under/bubbly_clown/skirt
 	restricted_roles = list(JOB_CLOWN)
@@ -536,7 +536,7 @@
 	item_path = /obj/item/toy/plush/skyrat/fox/plushie_jeanne
 //	ckeywhitelist = list("klb100") // Asked it to be public.
 
-/datum/loadout_item/under/jumpsuit/tactichill
+/datum/loadout_item/uniform/tactichill
 	name = "Tactichill Jacket"
 	item_path = /obj/item/clothing/under/tactichill
 	ckeywhitelist = list("kaynite")
@@ -561,7 +561,7 @@
 	item_path = /obj/item/clothing/shoes/fancy_heels/drag
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/under/jumpsuit/bimpcap
+/datum/loadout_item/uniform/bimpcap
 	name = "Formal Matte Black Captain Uniform"
 	item_path = /obj/item/clothing/under/bimpcap
 	restricted_roles = list(JOB_CAPTAIN)
@@ -614,7 +614,7 @@
 	item_path = /obj/item/clothing/glasses/gold_aviators
 	ckeywhitelist = list("nikohyena")
 
-/datum/loadout_item/under/jumpsuit/caged_dress
+/datum/loadout_item/uniform/caged_dress
 	name = "Caged Purple Dress"
 	item_path = /obj/item/clothing/under/caged_dress
 	ckeywhitelist = list("thedragmeme")
@@ -629,7 +629,7 @@
 	item_path = /obj/item/clothing/neck/flower_collar
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/under/jumpsuit/goldenkimono
+/datum/loadout_item/uniform/goldenkimono
 	name = "Short-Sleeved Kimono"
 	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
 	ckeywhitelist = list("sigmaralkahest")
@@ -685,7 +685,7 @@
 	item_path = /obj/item/clothing/suit/jacket/skyy
 	ckeywhitelist = list("lt3")
 
-/datum/loadout_item/under/miscellaneous/lt3_jeans
+/datum/loadout_item/uniform/miscellaneous/lt3_jeans
 	name = "Silver Jeans"
 	item_path = /obj/item/clothing/under/pants/skyy
 	ckeywhitelist = list("lt3")
@@ -715,7 +715,7 @@
 	item_path = /obj/item/holosign_creator/hardlight_wheelchair
 	ckeywhitelist = list("sqnztb")
 
-/datum/loadout_item/under/jumpsuit/noble_gambeson
+/datum/loadout_item/uniform/noble_gambeson
 	name = "Noble Gambeson"
 	item_path = /obj/item/clothing/under/rank/civilian/chaplain/divine_archer/noble
 	ckeywhitelist = list("grasshand")
@@ -735,7 +735,7 @@
 	item_path = /obj/item/clothing/head/anubite
 	ckeywhitelist = list("vexcint")
 
-/datum/loadout_item/under/formal/dragon_maid
+/datum/loadout_item/uniform/formal/dragon_maid
 	name = "Dragon Maid Uniform"
 	item_path = /obj/item/clothing/under/costume/dragon_maid
 	ckeywhitelist = list("sigmaralkahest")
@@ -750,7 +750,7 @@
 	item_path = /obj/item/clothing/neck/trenchcoat
 	ckeywhitelist = list("Smol42", "Awers855")
 
-/datum/loadout_item/under/jumpsuit/old_qm_jumpskirt
+/datum/loadout_item/uniform/old_qm_jumpskirt
 	name = "Old Quartermaster's Jumpskirt"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skirt/old
 	ckeywhitelist = list("jasohavents")
