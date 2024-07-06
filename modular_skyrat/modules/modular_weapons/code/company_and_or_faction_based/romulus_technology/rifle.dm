@@ -165,15 +165,14 @@
 
 /obj/item/gun/ballistic/automatic/rom_flech/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Ctrl-click</b> to [folded ? "extend" : "collapse"] the stock.")
+	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock.")
 
-/obj/item/gun/ballistic/automatic/rom_flech/CtrlClick(mob/user)
+/obj/item/gun/ballistic/automatic/rom_flech/click_alt(mob/user)
 	if(!user.is_holding(src))
 		return
 	if(item_flags & IN_STORAGE)
 		return
 	toggle_stock(user)
-	. = ..()
 
 /obj/item/gun/ballistic/automatic/rom_flech/proc/toggle_stock(mob/user, var/forced)
 	if(!user && forced)
