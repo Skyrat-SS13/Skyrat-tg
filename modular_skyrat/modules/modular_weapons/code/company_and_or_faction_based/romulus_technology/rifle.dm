@@ -62,4 +62,38 @@
 
 	return .
 
+//Bolt Action Rifle
+/obj/item/gun/ballistic/rifle/carwil
+	name = "\improper RomTech Sporting Rifle"
+	desc = "A boltaction sporting rifle, chambered in Sol .40 Rifle While technically outdated in modern arms markets, it still used by recreational hunter \
+		as rifle of this kind are much more controllable."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun48x32.dmi'
+	icon_state = "carbine"
+
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
+	worn_icon_state = "carbine"
+
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_righthand.dmi'
+	inhand_icon_state = "carbine"
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+	weapon_weight = WEAPON_HEAVY
+	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound_volume = 90
+	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
+	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	recoil = 2
+	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
+	internal_magazine = FALSE
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	mag_display = TRUE
+	tac_reloads = TRUE
+	rack_delay = 1 SECONDS
+	can_suppress = TRUE
+	can_unsuppress = TRUE
+
 //Flechette Rifle
