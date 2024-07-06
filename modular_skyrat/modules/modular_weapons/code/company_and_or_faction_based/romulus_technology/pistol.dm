@@ -95,7 +95,7 @@
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/m45 = 2,
+		/obj/item/ammo_box/c45 = 2,
 	), src)
 
 /obj/item/storage/toolbox/guncase/skyrat/m45a5
