@@ -1,3 +1,5 @@
+//Sprite for these guns are modified from the carwil/carwo rifle, they're a pallet swap with very small modification
+//Main Rifle
 /obj/item/gun/ballistic/automatic/rom_carbine
 	name = "\improper RomTech Carbine"
 	desc = "An unusual variation of the Carwo-Carwil Battle rifle fielded as service rifle in Romulus Federation, preferred by some law enforcement agency for the compact nature. Accepts any standard .40 SolFed rifle magazine."
@@ -116,6 +118,8 @@
 	), src)
 
 //Flechette Rifle
+//This Replace The Battle Rifle, handle with care please
+//This is based on the old CMG Code from Hatterhat when he made it foldable, Dragonfruit made the sprite sometime ago and I'm using it as it's  easier than remaking new sprite from the ground up
 
 /obj/item/gun/ballistic/automatic/rom_flech
 	name = "\improper RomTech CMG-1 Assault Rifle"
@@ -142,16 +146,57 @@
 	burst_size = 3
 	fire_delay = 2
 
-	spread = 7
+	spread = 0
 	projectile_wound_bonus = -35
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
-
-/obj/item/gun/ballistic/automatic/rom_flech/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
+	var/folding_sound = 'sound/weapons/batonextend.ogg'
+	/// is our stock collapsed?
+	var/folded = FALSE
+	/// how long does it take to extend/collapse the stock
+	var/toggle_time = 1 SECONDS
+	/// what's our spread with our extended stock (mild varedit compatibility I Guess)?
+	var/unfolded_spread = 0
+	/// what's our spread with a folded stock (see above comment)?
+	var/folded_spread = 20
 
 /obj/item/gun/ballistic/automatic/rom_flech/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("<b>Ctrl-click</b> to [folded ? "extend" : "collapse"] the stock.")
 
+/obj/item/gun/ballistic/automatic/rom_flech/CtrlClick(mob/user)
+	if(!user.is_holding(src))
+		return
+	if(item_flags & IN_STORAGE)
+		return
+	toggle_stock(user)
+	. = ..()
+
+/obj/item/gun/ballistic/automatic/rom_flech/proc/toggle_stock(mob/user, var/forced)
+	if(!user && forced)
+		folded = !folded
+		update_fold_stats()
+		return
+	balloon_alert(user, "[folded ? "extending" : "collapsing"] stock...")
+	if(!do_after(user, toggle_time))
+		balloon_alert(user, "interrupted!")
+		return
+	folded = !folded
+	update_fold_stats()
+	balloon_alert(user, "stock [folded ? "collapsed" : "extended"]")
+	playsound(src.loc, folding_sound, 30, 1)
+
+/obj/item/gun/ballistic/automatic/rom_flech/proc/update_fold_stats()
+	if(folded)
+		spread = folded_spread
+	else
+		spread = unfolded_spread
+	update_icon()
+
+/obj/item/gun/ballistic/automatic/rom_flech/update_overlays()
+	. = ..()
+	. += "[icon_state]-stock[folded ? "_in" : "_out"]"
+
+/obj/item/gun/ballistic/automatic/rom_flech/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
