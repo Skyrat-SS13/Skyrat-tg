@@ -3,7 +3,7 @@
 /datum/supply_pack/security/lethalsolpistols
 	name = ".35 Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for Sol .35 Pistol."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 10
 	contains = list(/obj/item/ammo_box/c35sol= 3,
 					/obj/item/ammo_box/c35sol/ripper = 3,
 				)
@@ -12,7 +12,7 @@
 /datum/supply_pack/security/lethalsolrifles
 	name = ".40 Ammunition Crates"
 	desc = "Contains 6 boxes of lethal ammunition for Sol .40 Rifle."
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 10
 	contains = list(/obj/item/ammo_box/c40sol= 4,
 					/obj/item/ammo_box/c40sol/pierce = 1,
 					/obj/item/ammo_box/c40sol/incendiary = 1,

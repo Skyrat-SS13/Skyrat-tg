@@ -26,3 +26,10 @@
 	)
 	cost = PAYCHECK_COMMAND * 24
 	access_view = ACCESS_WEAPONS
+
+/datum/supply_pack/goody/sporting_rifle
+	name = "Authentic SR Sector M1911"
+	desc = "Old but gold, the m1911 chambered in .45 is sure to give anyone daring to fight you, a second thought."
+	contains = list(/obj/item/storage/toolbox/guncase/skyrat/sporting_rifle = 1)
+	cost = PAYCHECK_COMMAND * 24
+	access_view = ACCESS_WEAPONS

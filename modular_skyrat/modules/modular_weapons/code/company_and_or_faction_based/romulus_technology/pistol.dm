@@ -85,6 +85,19 @@
 /obj/item/gun/ballistic/automatic/pistol/m1911/gold/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
+
+/obj/item/storage/toolbox/guncase/skyrat/m1911_gold
+	name = "Sporting Rifle Case"
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/m1911/gold
+	extra_to_spawn = /obj/item/ammo_box/magazine/m45
+
+/obj/item/storage/toolbox/guncase/skyrat/sporting_rifle/PopulateContents()
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/m45 = 2,
+	), src)
+
 /obj/item/storage/toolbox/guncase/skyrat/m45a5
 	name = "heavy pistol .460 magnum"
 
