@@ -22,7 +22,15 @@
 	ammo_type = /obj/item/ammo_casing/c10mm
 	ammo_band_color = "#795a58"
 	max_ammo = 6
-	multiple_sprites = AMMO_BOX_PER_BULLET
 	item_flags = NO_MAT_REDEMPTION
-	ammo_band_icon = "+357_ammo_band"
-	ammo_band_color = null
+	icon_state = "38"
+	multiple_sprites = AMMO_BOX_PER_BULLET
+	ammo_band_icon = "+38_ammo_band"
+
+/obj/item/ammo_box/c10mm/speedloader/rubber
+
+	name = "speed loader (10mm Auto Rubber)"
+	desc = "Designed to quickly reload revolvers."
+	ammo_type = /obj/item/ammo_casing/c10mm/rubber
+	ammo_band_color = "#792a59"
+
