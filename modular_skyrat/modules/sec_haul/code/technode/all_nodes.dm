@@ -13,6 +13,7 @@
 		"m9mm_mag",
 		"s12g_buckshot",
 		"sol35_shortextmag"
+		"ca_flechmagnesium"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
@@ -60,6 +61,7 @@
 	design_ids += "s12g_br"
 	design_ids += "m9mm_mag_ihdf"
 	design_ids += "s12g_incinslug"
+	design_ids += "ca_flechballpoint"
 	. = ..()
 
 /datum/techweb_node/syndicate_basic/New()

@@ -38,5 +38,15 @@
 
 obj/item/ammo_box/magazine/flechette/ripper
 	name = "flechette ripper box"
-	ammo_type = /obj/item/ammo_casing/caflechette
+	ammo_type = /obj/item/ammo_casing/caflechette/ripper
 	icon_state = "cmg_ripper"
+
+obj/item/ammo_box/magazine/flechette/ballpoint
+	name = "ballpoint box"
+	ammo_type = /obj/item/ammo_casing/caflechette/ballpoint
+	icon_state = "cmg_ballpoint"
+
+obj/item/ammo_box/magazine/flechette/magnesium
+	name = "magnesium rod box"
+	ammo_type = /obj/item/ammo_casing/caflechette/magnesium
+	icon_state = "cmg_incend"
