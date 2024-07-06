@@ -68,7 +68,7 @@
 	desc = "A boltaction sporting rifle, chambered in Sol .40 Rifle While technically outdated in modern arms markets, it still used by recreational hunter \
 		as rifle of this kind are much more controllable."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun48x32.dmi'
-	icon_state = "carbine"
+	icon_state = "elite"
 
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
 	worn_icon_state = "carbine"
