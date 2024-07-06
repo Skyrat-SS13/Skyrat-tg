@@ -11,7 +11,8 @@
 		"solgrenade_extmag",
 		"sol35_shortmag",
 		"m9mm_mag",
-		"s12g_buckshot"
+		"s12g_buckshot",
+		"sol35_shortextmag"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
@@ -29,7 +30,7 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
 /datum/techweb_node/basic_arms/New()
-	design_ids += "sol35_shortextmag"
+	design_ids += "sol35_shortmag"
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
