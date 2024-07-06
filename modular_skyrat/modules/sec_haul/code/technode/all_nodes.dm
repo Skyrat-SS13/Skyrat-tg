@@ -48,6 +48,8 @@
 	design_ids += "c457_casing"
 	design_ids += "sol40_riflemag"
 	design_ids += "m9mm_mag_rubber"
+	design_ids += "c10mm_rl"
+	design_ids += "c10mm_r"
 	. = ..()
 
 /datum/techweb_node/riot_supression/New()

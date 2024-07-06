@@ -300,6 +300,30 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/c10mm_r
+	name = "10mm Auto Speedloader Rubber (Less lethal)"
+	desc = "A speedloader in 10mm Auto."
+	id = "c10mm_r"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/c10mm/speedloader/rubber
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/c10mm_rl
+	name = "10mm Auto Speedloader (lethal)"
+	desc = "A speedloader in 10mm Auto."
+	id = "c10mm_rl"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/c10mm/speedloader
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 //Conversion Kit
 
 /datum/design/sol_rifle_carbine_kit
