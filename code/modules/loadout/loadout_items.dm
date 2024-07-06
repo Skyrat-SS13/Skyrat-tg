@@ -197,7 +197,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 /// Sets the name of the item.
 // SKYRAT EDIT BEGIN - Adds descriptions with minimal copypaste
 // Generally, if this conflicts, name_slot is to be put anywhere where INFO_NAMED appears in tgcode
-/datum/loadout_item/proc/set_name(datum/preference_middleware/loadout/manager, mob/user, var/name_slot = INFO_NAMED)
+/datum/loadout_item/proc/set_name(datum/preference_middleware/loadout/manager, mob/user, name_slot = INFO_NAMED)
 	var/isname = (name_slot == INFO_NAMED)
 	var/list/loadout = manager.preferences.read_preference(/datum/preference/loadout)
 	var/input_name = tgui_input_text(
