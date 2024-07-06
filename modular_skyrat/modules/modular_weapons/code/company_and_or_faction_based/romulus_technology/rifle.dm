@@ -143,6 +143,7 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 0
+	pin = /obj/item/firing_pin/alert_level
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/flechette
 	spawn_magazine_type = /obj/item/ammo_box/magazine/flechette

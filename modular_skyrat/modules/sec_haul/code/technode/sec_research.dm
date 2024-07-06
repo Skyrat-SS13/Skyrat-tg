@@ -324,6 +324,31 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+//IDMA Gun Stuff
+/datum/design/caflechette
+	name = "Flechette Rifle Magazine (lethal)"
+	desc = "A magazine for the CMG-1."
+	id = "ca_flech"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/magazine/flechette
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/caflechette
+	name = "Flechette Ripper Rifle Magazine (lethal/wounding)"
+	desc = "A magazine for the CMG-1. Very likely to embed and cause further damage"
+	id = "ca_flech"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/magazine/flechette
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 //Conversion Kit
 
 /datum/design/sol_rifle_carbine_kit
@@ -339,7 +364,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
-/datum/design/sol_smg_rapidfire_kit
+/datum/design/sol_smg_rapidfire_kit //this is currently un-balanced, please fix it when convenient
 	name = "Romulus SMG Twin-Burst Conversion Kit(Very Lethal)"
 	desc = "The kit to brutalise your functional submachine gun into a monstrosity that fires in two round-burst at a faster rate."
 	id = "sol_smg_rapidfire_kit"
