@@ -53,6 +53,10 @@
 	stamina = 25
 	sharpness = NONE
 	shrapnel_type = NONE
+	ricochet_chance = 50
+	ricochets_max = 3
+	ricochet_auto_aim_angle = 90
+	ricochet_auto_aim_range = 5
 
 /obj/item/ammo_casing/caflechette/magnesium
 	name = "magnesium dart"
