@@ -32,8 +32,8 @@
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/radiogloves)
 
-	AddComponent(
-		/datum/component/slapcrafting,\
+	AddElement(
+		/datum/element/slapcrafting,\
 		slapcraft_recipes = slapcraft_recipe_list,\
 	)
 
@@ -54,8 +54,8 @@
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gripperoffbrand)
 
-	AddComponent(
-		/datum/component/slapcrafting,\
+	AddElement(
+		/datum/element/slapcrafting,\
 		slapcraft_recipes = slapcraft_recipe_list,\
 	)
 
