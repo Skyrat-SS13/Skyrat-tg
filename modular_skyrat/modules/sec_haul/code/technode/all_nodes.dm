@@ -25,7 +25,8 @@
 		"sol_rifle_carbine_gun",
 		"s12g_flechette",
 		"s12g_db",
-		"s12g_incinslug"
+		"ca_flechripper",
+		"ca_flech"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
@@ -58,6 +59,7 @@
 	design_ids += "s12g_hornet"
 	design_ids += "s12g_br"
 	design_ids += "m9mm_mag_ihdf"
+	design_ids += "s12g_incinslug"
 	. = ..()
 
 /datum/techweb_node/syndicate_basic/New()

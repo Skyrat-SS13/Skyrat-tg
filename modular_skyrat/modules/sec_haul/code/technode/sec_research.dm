@@ -337,10 +337,10 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
-/datum/design/caflechette
+/datum/design/caflechette_ripper
 	name = "Flechette Ripper Rifle Magazine (lethal/wounding)"
 	desc = "A magazine for the CMG-1. Very likely to embed and cause further damage"
-	id = "ca_flech"
+	id = "ca_flechripper"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
 	build_path = /obj/item/ammo_box/magazine/flechette
