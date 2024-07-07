@@ -36,17 +36,17 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
 	icon_state = "cmg_penetrator"
 
-obj/item/ammo_box/magazine/caflechette/ripper
+/obj/item/ammo_box/magazine/caflechette/ripper
 	name = "flechette ripper box"
 	ammo_type = /obj/item/ammo_casing/caflechette/ripper
 	icon_state = "cmg_ripper"
 
-obj/item/ammo_box/magazine/caflechette/ballpoint
+/obj/item/ammo_box/magazine/caflechette/ballpoint
 	name = "ballpoint box"
 	ammo_type = /obj/item/ammo_casing/caflechette/ballpoint
 	icon_state = "cmg_ballpoint"
 
-obj/item/ammo_box/magazine/caflechette/magnesium
+/obj/item/ammo_box/magazine/caflechette/magnesium
 	name = "magnesium rod box"
 	ammo_type = /obj/item/ammo_casing/caflechette/magnesium
 	icon_state = "cmg_incend"
