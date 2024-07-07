@@ -39,7 +39,7 @@
 	armour_penetration = 100
 	wound_bonus = -10
 	bare_wound_bonus = -20
-	embedding = list(embed_chance=45, pain_chance=70, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
+	embedding = list(embed_chance=45, pain_chance=70, fall_chance=70, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
 	dismemberment = 0
 
 /obj/item/ammo_casing/caflechette/ripper
@@ -54,7 +54,7 @@
 	armour_penetration = 40
 	wound_bonus = 15
 	bare_wound_bonus = 5
-	embedding = list(embed_chance=150, pain_chance=70, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
+	embedding = list(embed_chance=150, pain_chance=70, fall_chance=50, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
 
 /obj/item/ammo_casing/caflechette/ballpoint
 	name = "steel ball"
@@ -68,7 +68,7 @@
 	armour_penetration = 25
 	wound_bonus = -50
 	bare_wound_bonus = -80
-	embedding = list(embed_chance=0, pain_chance=10, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
+	embedding = list(embed_chance=0, pain_chance=50, fall_chance=90, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
 	stamina = 0
 	sharpness = NONE
 	shrapnel_type = NONE
@@ -88,7 +88,7 @@
 	armour_penetration = 40
 	wound_bonus = 15
 	bare_wound_bonus = 5
-	embedding = list(embed_chance=40, pain_chance=10, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
+	embedding = list(embed_chance=40, pain_chance=10, fall_chance=10, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
 
 /obj/projectile/bullet/caflechette/magnesium/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
