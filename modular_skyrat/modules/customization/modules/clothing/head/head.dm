@@ -258,12 +258,16 @@
 
 /obj/item/clothing/head/hats/caphat/bicorne
 	name = "captain's biscorne"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	desc = "It's good overthrowing the king."
-	icon_state = "captain"
+	icon_state = "solgov_bicorne"
 	worn_y_offset = 2
 
 /obj/item/clothing/head/hats/caphat/sonnensoldner
 	name = "captain's feathered hat"
 	desc = "Cannons ready!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "sonnensoldner_hat"
 	worn_y_offset = 4
