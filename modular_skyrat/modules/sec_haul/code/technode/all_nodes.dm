@@ -52,6 +52,7 @@
 	design_ids += "m9mm_mag_rubber"
 	design_ids += "c10mm_rl"
 	design_ids += "c10mm_r"
+	design_ids += "sol_bolt_to_rifle"
 	. = ..()
 
 /datum/techweb_node/riot_supression/New()
