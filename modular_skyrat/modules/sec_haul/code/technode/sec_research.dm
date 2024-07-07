@@ -355,7 +355,7 @@
 	id = "ca_flechmagnesium"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
-	build_path = obj/item/ammo_box/magazine/flechette/magnesium
+	build_path = /obj/item/ammo_box/magazine/flechette/magnesium
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
@@ -367,7 +367,7 @@
 	id = "ca_flechballpoint"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
-	build_path = obj/item/ammo_box/magazine/flechette/ballpoint
+	build_path = /obj/item/ammo_box/magazine/flechette/ballpoint
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
