@@ -35,7 +35,7 @@
 
 /obj/projectile/bullet/caflechette
 	name = "flechette penetrator"
-	damage = 15
+	damage = 18
 	armour_penetration = 100
 	wound_bonus = 10
 	bare_wound_bonus = 10
