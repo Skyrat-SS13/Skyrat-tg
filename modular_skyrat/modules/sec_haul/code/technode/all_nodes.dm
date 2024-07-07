@@ -12,7 +12,7 @@
 		"sol35_shortmag",
 		"m9mm_mag",
 		"s12g_buckshot",
-		"sol35_shortextmag"
+		"sol35_shortextmag",
 		"ca_flechmagnesium"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
