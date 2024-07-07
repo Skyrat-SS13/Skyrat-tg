@@ -61,7 +61,7 @@
 /obj/item/choice_beacon/security_pistol/generate_display_names()
 	var/static/list/selectable_gun_types = list(
 		"Standard 9x25mm Mk2 Pistol" = /obj/item/gun/ballistic/automatic/pistol/nt_glock,
-		"Special 10mm Auto Revolver" = /obj/item/gun/ballistic/revolver/nt_revolver
+		"Police Special 10mm Auto Revolver" = /obj/item/storage/toolbox/guncase/skyrat/nt_revolver
 	)
 
 	return selectable_gun_types

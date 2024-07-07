@@ -4,23 +4,25 @@
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
 	products = list(
-		/obj/item/restraints/handcuffs = 8,
-		/obj/item/restraints/handcuffs/cable/zipties = 12,
-		/obj/item/grenade/flashbang = 6,
-		/obj/item/assembly/flash/handheld = 8,
+		/obj/item/restraints/handcuffs = 18,
+		/obj/item/restraints/handcuffs/cable/zipties = 22,
+		/obj/item/grenade/flashbang = 16,
+		/obj/item/assembly/flash/handheld = 18,
 		/obj/item/food/donut/plain = 12,
-		/obj/item/storage/box/evidence = 6,
-		/obj/item/flashlight/seclite = 6,
-		/obj/item/restraints/legcuffs/bola/energy = 10,
+		/obj/item/storage/box/evidence = 16,
+		/obj/item/flashlight/seclite = 16,
+		/obj/item/restraints/legcuffs/bola/energy = 20,
 		/obj/item/clothing/gloves/tackler/security = 5,
+		/obj/item/ammo_box/advanced/s12gauge/bean = 2,
 	)
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
 		/obj/item/storage/fancy/donut_box = 2,
+		/obj/item/ammo_box/magazine/m9mm = 4,
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing = 5,
-		/obj/item/storage/belt/security/webbing/peacekeeper = 5,
+		/obj/item/storage/belt/security/webbing = 10,
+		/obj/item/storage/belt/security/webbing/peacekeeper = 10,
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 3,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 3,
@@ -28,6 +30,10 @@
 		/obj/item/watertank/pepperspray = 2,
 		/obj/item/storage/belt/holster/energy = 4,
 		/obj/item/storage/box/holobadge = 1,
+		/obj/item/ammo_box/magazine/m9mm/rubber = 12,
+		/obj/item/ammo_box/magazine/m9mm/ihdf = 12,
+		/obj/item/ammo_box/c10mm/speedloader/rubber = 12,
+		/obj/item/ammo_box/advanced/s12gauge/breaching = 2,
 	)
 
 /obj/item/vending_refill/security

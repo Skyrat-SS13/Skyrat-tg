@@ -7,6 +7,8 @@
 	max_ammo = 15
 	multitype = FALSE // if you enable this and set the box's caliber var to CALIBER_SHOTGUN (at time of writing, "shotgun"), then you can have the fabled any-ammo shellbox
 
+	custom_premium_price = 500
+
 /obj/item/ammo_box/advanced/s12gauge/buckshot
 	name = "Buckshot ammo box"
 	desc = "A box of 15 buckshot shells. These have a modest spread of weaker projectiles."

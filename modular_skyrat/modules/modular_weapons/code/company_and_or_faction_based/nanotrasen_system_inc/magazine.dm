@@ -1,4 +1,7 @@
 //9mm Magazines
+/obj/item/ammo_box/magazine/m9mm
+	custom_premium_price = 50
+
 /obj/item/ammo_box/magazine/m9mm/rubber
 	name = "pistol magazine (9x25mm Rubber)"
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
@@ -26,6 +29,8 @@
 	icon_state = "38"
 	multiple_sprites = AMMO_BOX_PER_BULLET
 	ammo_band_icon = "+38_ammo_band"
+
+	custom_premium_price = 50
 
 /obj/item/ammo_box/c10mm/speedloader/rubber
 

@@ -26,7 +26,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	pin = /obj/item/firing_pin/alert_level
+	pin = /obj/item/firing_pin
 	projectile_damage_multiplier = 0.8
 	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/rubber
 
@@ -73,3 +73,19 @@
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
+
+
+/obj/item/storage/toolbox/guncase/skyrat/nt_revolver
+	name = "10mm Auto Standard Revolver"
+
+	weapon_to_spawn = /obj/item/gun/ballistic/revolver/nt_revolver
+	extra_to_spawn = null
+
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock/PopulateContents()
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/c10mm/speedloader/rubber = 2,
+		/obj/item/ammo_box/c10mm/speedloader = 2,
+	), src)
+
