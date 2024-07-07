@@ -1,7 +1,7 @@
 //Handgun
 
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_glock/pistol
+/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_glock
 	name = "9x25mm Mk2 Standard Pistol"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
@@ -46,7 +46,7 @@
 
 	generate_items_inside(list(
 		/obj/item/ammo_box/magazine/m9mm/hp = 2,
-		/obj/item/ammo_box/magazine/m9mm/ap = 2,
+		/obj/item/ammo_box/magazine/m9mm/ap = 3,
 	), src)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/spec
