@@ -92,6 +92,17 @@
 	contraband = TRUE
 
 /datum/supply_pack/security/armory/cmg
+	name = "Romulus Technology CMG Assault Rifle Crate"
+	desc = "Two CMG-1, chambered in experimental steel flechette."
+	cost = CARGO_CRATE_VALUE * 20
+	contains = list(
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+	)
+	crate_name = "RomTech CMG-1 Crate"
+
+/datum/supply_pack/security/armory/sindano
 	name = "Carwo 'Sindano' Submachinegun Crate"
 	desc = "Three entirely proprietary Sindano kits, chambered in .35 Sol Short. Each kit contains three empty magazines and a box each of incapacitator and lethal rounds."
 	cost = CARGO_CRATE_VALUE * 20

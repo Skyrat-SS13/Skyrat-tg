@@ -195,3 +195,19 @@
 
 /obj/item/gun/ballistic/automatic/rom_flech/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
+
+/obj/item/gun/ballistic/automatic/rom_flech/empty
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/toolbox/guncase/skyrat/rom_flech
+	name = "CMG-1 Rifle Case"
+	weapon_to_spawn = /obj/item/gun/ballistic/rifle/carwil/empty
+	extra_to_spawn = /obj/item/ammo_box/magazine/c40sol_rifle/starts_empty
+
+/obj/item/storage/toolbox/guncase/skyrat/rom_flech/PopulateContents()
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/c40sol/fragmentation = 1,
+		/obj/item/ammo_box/c40sol = 1,
+	), src)
