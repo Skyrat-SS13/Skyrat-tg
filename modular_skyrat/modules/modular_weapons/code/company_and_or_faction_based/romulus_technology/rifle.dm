@@ -202,7 +202,7 @@
 /obj/item/storage/toolbox/guncase/skyrat/rom_flech
 	name = "CMG-1 Rifle Case"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/rom_flech/empty
-	extra_to_spawn = obj/item/ammo_box/magazine/flechette/ballpoint
+	extra_to_spawn = /obj/item/ammo_box/magazine/flechette/ballpoint
 
 /obj/item/storage/toolbox/guncase/skyrat/rom_flech/PopulateContents()
 	new weapon_to_spawn (src)
