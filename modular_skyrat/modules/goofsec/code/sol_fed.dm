@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
 	head = /obj/item/clothing/head/helmet/sf_peacekeeper
-	belt = /obj/item/gun/energy/disabler
+	belt = /obj/item/gun/energy/e_gun
 	suit = /obj/item/clothing/suit/armor/sf_peacekeeper
 	r_pocket = /obj/item/flashlight/seclite
 	l_pocket = /obj/item/restraints/handcuffs
@@ -463,8 +463,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	l_hand = /obj/item/gun/ballistic/automatic/sol_rifle
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
-		/obj/item/storage/box/handcuffs = 1,
-		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/ammo_box/magazine/c40sol_rifle/standard = 3,
 		/obj/item/solfed_reporter/treason_reporter = 1,
 		/obj/item/beamout_tool = 1,
