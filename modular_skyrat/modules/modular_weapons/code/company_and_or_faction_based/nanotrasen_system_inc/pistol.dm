@@ -1,17 +1,17 @@
 //Handgun
 
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_glock
+/obj/item/storage/toolbox/guncase/skyrat/nt_glock/pistol
 	name = "9x25mm Mk2 Standard Pistol"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
-	extra_to_spawn = /obj/item/ammo_box/magazine/m9mm/rubber
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_glock/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_glock/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
 		/obj/item/ammo_box/magazine/m9mm/ihdf = 2,
+		/obj/item/ammo_box/magazine/m9mm/rubber = 3,
 	), src)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock
@@ -40,7 +40,6 @@
 	name = "9x25mm Mk2 Standard Pistol"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
-	extra_to_spawn = null
 
 /obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec/PopulateContents()
 	new weapon_to_spawn (src)
@@ -74,16 +73,16 @@
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_revolver
+/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_revolver
 	name = "10mm Auto Standard Revolver"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/revolver/nt_revolver
-	extra_to_spawn = /obj/item/ammo_box/c10mm/speedloader/rubber
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_glock/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_revolver/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
 		/obj/item/ammo_box/c10mm/speedloader = 2,
+		/obj/item/ammo_box/c10mm/speedloader/rubber = 3,
 	), src)
 
