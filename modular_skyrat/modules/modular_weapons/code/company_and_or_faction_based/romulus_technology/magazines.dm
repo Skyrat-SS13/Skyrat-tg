@@ -35,6 +35,7 @@
 	caliber = CALIBER_FLECHETTE
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
 	icon_state = "cmg_penetrator"
+	max_ammo = 25
 
 /obj/item/ammo_box/magazine/caflechette/ripper
 	name = "flechette ripper box"
