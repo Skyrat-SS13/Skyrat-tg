@@ -17,7 +17,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock
 	name = "\improper GP-9"
-	desc = "General Purpose Pistol Number 9. A classic .9mm handgun with a small magazine capacity. This thing has an alert locked firing pin."
+	desc = "General Purpose Pistol Number 9. A classic .9mm handgun with a small magazine capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -69,10 +69,7 @@
 
 /obj/item/gun/ballistic/revolver/nt_revolver
 	name = "\improper R10"
-	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Do not put your fingers infront of the cylinder. This thing has an alert locked firing pin."
-	pin = /obj/item/firing_pin/alert_level
-	fire_delay = 3
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
+	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Remember our promise"
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
