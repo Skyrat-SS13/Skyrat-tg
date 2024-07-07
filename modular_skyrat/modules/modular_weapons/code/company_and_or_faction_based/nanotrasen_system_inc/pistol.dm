@@ -72,6 +72,7 @@
 	icon_state = "rhino"
 	spawn_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
+	projectile_damage_multiplier = 0.8
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
