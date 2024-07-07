@@ -343,7 +343,7 @@
 	id = "ca_flechripper"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
-	build_path = /obj/item/ammo_box/magazine/flechette
+	build_path = /obj/item/ammo_box/magazine/flechette/ripper
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
@@ -355,7 +355,7 @@
 	id = "ca_flechmagnesium"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
-	build_path = /obj/item/ammo_box/magazine/caflechette/magnesium
+	build_path = obj/item/ammo_box/magazine/flechette/magnesium
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
@@ -366,8 +366,8 @@
 	desc = "A magazine for the CMG-1. Great at dispersing kinetic energy on impact with target"
 	id = "ca_flechballpoint"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
-	build_path = /obj/item/ammo_box/magazine/caflechette/ballpoint
+	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = obj/item/ammo_box/magazine/flechette/ballpoint
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
@@ -395,6 +395,19 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/weaponcrafting/gunkit/sol_smg_rapidfire_kit
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/sol_bolt_to_rifle
+	name = "Sol Battle rifle Conversion Part Kit(Very Lethal)"
+	desc = "The kit to brutalise your functional battle rifle into a short carbine, ideal for close quarter."
+	id = "sol_bolt_to_rifle"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/weaponcrafting/gunkit/sol_bolt_to_rifle
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
 	)

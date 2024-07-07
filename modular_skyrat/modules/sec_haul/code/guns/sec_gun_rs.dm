@@ -20,5 +20,14 @@
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
 
-//Generic Gun Resource here
+/datum/crafting_recipe/sol_bolt_to_rifle
+	name = "Sol Battle Rifle Conversion"
+	result = /obj/item/gun/ballistic/automatic/sol_rifle
+	reqs = list(
+		/obj/item/gun/ballistic/rifle/carwil = 1,
+		/obj/item/weaponcrafting/gunkit/sol_bolt_to_rifle = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPON_RANGED
 
+//Generic Gun Resource here
