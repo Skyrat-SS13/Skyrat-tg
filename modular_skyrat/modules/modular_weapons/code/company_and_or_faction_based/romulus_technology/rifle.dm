@@ -146,8 +146,8 @@
 	spread = 0
 	pin = /obj/item/firing_pin/alert_level
 
-	accepted_magazine_type = /obj/item/ammo_box/magazine/flechette
-	spawn_magazine_type = /obj/item/ammo_box/magazine/flechette
+	accepted_magazine_type = /obj/item/ammo_box/magazine/caflechette
+	spawn_magazine_type = /obj/item/ammo_box/magazine/caflechette
 	var/folding_sound = 'sound/weapons/batonextend.ogg'
 	/// is our stock collapsed?
 	var/folded = FALSE
@@ -203,11 +203,11 @@
 /obj/item/storage/toolbox/guncase/skyrat/rom_flech
 	name = "CMG-1 Rifle Case"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/rom_flech/empty
-	extra_to_spawn = /obj/item/ammo_box/magazine/flechette/ballpoint
+	extra_to_spawn = /obj/item/ammo_box/magazine/caflechette/ballpoint
 
 /obj/item/storage/toolbox/guncase/skyrat/rom_flech/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/flechette = 2,
+		/obj/item/ammo_box/magazine/caflechette = 2,
 	), src)
