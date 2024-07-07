@@ -11,10 +11,11 @@
     return list(TOOL_BONESET, TOOL_ALIEN_BONESET)
 
 /datum/wound/item_can_treat(obj/item/potential_treater, mob/user)
-    // check if we have a valid treatable tool
-    for(var/behaviour in potential_treater.get_all_tool_behaviours())
-        if(behaviour in treatable_tools)
-            return TRUE
+	. = ..()
+	// check if we have a valid treatable tool
+	for(var/behaviour in potential_treater.get_all_tool_behaviours())
+		if(behaviour in treatable_tools)
+			return TRUE
 
 /datum/wound/blunt/bone/severe
 	treatable_tools = list(TOOL_ALIEN_BONESET)
