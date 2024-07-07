@@ -51,6 +51,7 @@
 /obj/projectile/bullet/caflechette/ripper
 	name = "flechette dart"
 	damage = 10
+	armour_penetration = 40
 	wound_bonus = 15
 	bare_wound_bonus = 5
 	embedding = list(embed_chance=150, pain_chance=70, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
@@ -64,10 +65,11 @@
 /obj/projectile/bullet/caflechette/ballpoint
 	name = "high velocity steel ball"
 	damage = 10
+	armour_penetration = 25
 	wound_bonus = -50
 	bare_wound_bonus = -80
 	embedding = list(embed_chance=0, pain_chance=10, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
-	stamina = 25
+	stamina = 0
 	sharpness = NONE
 	shrapnel_type = NONE
 	ricochet_chance = 50
@@ -83,6 +85,7 @@
 /obj/projectile/bullet/caflechette/magnesium
 	name = "high velocity magnesium rod"
 	damage = 5
+	armour_penetration = 40
 	wound_bonus = 15
 	bare_wound_bonus = 5
 	embedding = list(embed_chance=40, pain_chance=10, fall_chance=80, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
