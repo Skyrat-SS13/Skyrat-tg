@@ -208,5 +208,5 @@
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/flechette = 1,
+		/obj/item/ammo_box/magazine/flechette = 2,
 	), src)
