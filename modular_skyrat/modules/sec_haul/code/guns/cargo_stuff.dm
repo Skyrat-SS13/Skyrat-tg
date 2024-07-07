@@ -80,7 +80,7 @@
 	/obj/item/ammo_box/advanced/s12gauge/buckshot = 2,
 	)
 	crate_name = "Carwo 'Renoster' Shotgun Crate"
-
+/* commented out until i figure what to do with it
 /datum/supply_pack/security/armory/infanterie
 	name = "Carwil Battle Rifle Crate"
 	desc = "Contains two Carwil Battle Rifles, and two spare each magazines for them."
@@ -90,6 +90,7 @@
 	)
 	crate_name = "Carwil Battle Rifle Crate"
 	contraband = TRUE
+*/
 
 /datum/supply_pack/security/armory/cmg
 	name = "Romulus Technology CMG Assault Rifle Crate"
