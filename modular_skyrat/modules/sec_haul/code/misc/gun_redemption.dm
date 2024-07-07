@@ -60,8 +60,8 @@
 
 /obj/item/choice_beacon/security_pistol/generate_display_names()
 	var/static/list/selectable_gun_types = list(
-		"Standard 9x25mm Mk2 Pistol" = /obj/item/storage/toolbox/guncase/skyrat/nt_glock,
-		"Police Special 10mm Auto Revolver" = /obj/item/storage/toolbox/guncase/skyrat/nt_revolver
+		"Standard 9x25mm Mk2 Pistol" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_glock,
+		"Police Special 10mm Auto Revolver" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_revolver
 	)
 
 	return selectable_gun_types

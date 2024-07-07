@@ -1,12 +1,12 @@
 //Handgun
 
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_glock
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_glock
 	name = "9x25mm Mk2 Standard Pistol"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_glock/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_glock/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
@@ -41,7 +41,7 @@
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 
-/obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_glock_spec/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
@@ -68,17 +68,21 @@
 /obj/item/gun/ballistic/revolver/nt_revolver
 	name = "\improper R10"
 	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Remember our promise"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
+	icon_state = "rhino"
+	spawn_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_revolver
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_revolver
 	name = "10mm Auto Standard Revolver"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/revolver/nt_revolver
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/nt_revolver/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_revolver/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
