@@ -9,7 +9,6 @@
 	design_ids = list(
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
-		"sol35_shortmag",
 		"m9mm_mag",
 		"s12g_buckshot",
 		"sol35_shortextmag",
