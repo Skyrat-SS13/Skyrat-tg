@@ -126,11 +126,12 @@
 	desc = "The Compact Machinegun-1 Assault Rifle. It is chambered in an experimental flechette cartridge capable of defeating all type of conventional body armour. Has a folding stock"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun40x32.dmi'
 	icon_state = "cmg1"
-	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_worn.dmi'
-	worn_icon_state = "carbine"
-	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/romulus_technology/guns_righthand.dmi'
-	inhand_icon_state = "carbine"
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_worn.dmi'
+	worn_icon_state = "infanterie_evil"
+//placeeholder, I had to do this in a crunch hour.. sorry! - Calvin
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
+	inhand_icon_state = "infanterie_evil"
 	bolt_type = BOLT_TYPE_LOCKING
 	special_mags = TRUE
 	mag_display = TRUE
