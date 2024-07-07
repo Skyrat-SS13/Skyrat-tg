@@ -143,6 +143,10 @@
 	target.dna.features["tail_lizard"] = value
 
 /datum/preference/choiced/lizard_tail/create_default_value()
+<<<<<<< HEAD
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
 */
+=======
+	return /datum/sprite_accessory/tails/lizard/smooth::name
+>>>>>>> 5b3c32e5cf1f (Adds informed default values for a bunch of preferences (to produce less outlandish random characters) (#84726))
