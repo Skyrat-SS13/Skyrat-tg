@@ -57,12 +57,12 @@
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm
 	suit = /obj/item/clothing/suit/toggle/jacket/tcomm
 	neck = /obj/item/clothing/neck/link_scryer
-	belt = /obj/item/screwdriver
+	belt = /obj/item/storage/belt/utility/full/engi
 	ears = /obj/item/radio/headset/headset_eng
 	head = /obj/item/clothing/head/utility/hardhat/dblue
 	shoes = /obj/item/clothing/shoes/laceup
 	l_pocket = /obj/item/modular_computer/pda/telecomms
-	r_pocket = /obj/item/multitool
+	r_pocket = /obj/item/holosign_creator/atmos
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
@@ -75,8 +75,6 @@
 
 	backpack_contents = list(
 		/obj/item/paper/monitorkey,
-		/obj/item/wirecutters,
-		/obj/item/holosign_creator/atmos,
 	)
 
 /obj/item/modular_computer/pda/telecomms
