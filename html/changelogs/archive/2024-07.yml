@@ -230,3 +230,230 @@
   - bugfix: Lowered the static vision time in domain load in.
   - bugfix: Fixed the basic Sandwich recipe and tags, now it matches the description
       and original intent.
+2024-07-05:
+  Bisar:
+  - bugfix: Dastardly clowns will no longer be able to get counted for three times
+      the steps by moving diagonally.
+  DATA_, with sounds made by Beebblie:
+  - sound: You will now be able to hear your muffled breathing while using internals.
+      This can be turned off in the game settings.
+  LT3:
+  - sound: Changed blood filter cycle sound
+  Majkl-J:
+  - bugfix: Fixed the infinite damage exploit on smithing weapons
+  SkyratBot:
+  - qol: You no longer need to reach the very edge of the game screen to reach the
+      maximum zoom range when scoped.
+  - rscadd: Heretics can now sacrifice Cultists for sweet loot.
+  - rscadd: Cultists can now sacrifice Heretics for sick trinkets.
+  - rscdel: Removed Bastard Blade from the game, code, and life
+  - balance: Aggressive Spread now rusts non-turfs next to you as well
+  - balance: Raise Construction cd raised to 7, now breaks rust walls as well, improved
+      autoaim making it actually usable midfight
+  - refactor: Auto-aim code now works on any atoms if configured
+  - bugfix: omni crowbar tool interaction for replacing tiles has been fixed
+  - bugfix: techfab screentip does not runtime when you hover over it with an omnitool
+      multitool
+  - bugfix: medi borgs can do brain surgery again
+  - code_imp: improved multitool & general tool code for some machines
+  - bugfix: 'Fixed the following shuttles flying in unexpected directions: Pubby escape
+      pod,  Humpback emergency shuttle, Pubby monastery shuttle, Birdboat emergency
+      shuttle, Birdshot emergency shuttle'
+  - code_imp: improved mouse drag & drop code
+  - bugfix: deathmatch OSHA Violator map has actually functioning field gens now
+  - bugfix: being polymorphed in deathmatch does not count you dead
+  - bugfix: deathmatch cyborgs may not talk in binary
+  - qol: deathmatch map names are sorted alphabetically
+  - spellcheck: deathmatch final destination clown and chef loadouts have been renamed
+      to avoid confusion
+  - bugfix: Fixed toggleable screen colors for glasses.
+  - code_imp: De-hardcoded, refactored the above, now-fixed feature.
+  - rscadd: Pumpkin hardhats and the hood of the flash suit now affect the color of
+      your screen.
+  - rscadd: Prism glasses, obtainable through xenobiology crossbreeding, now also
+      affect the color of your screen.
+  - rscadd: You can now microwave station pets that you can pick up, with predictable
+      outcomes
+  - image: The sprites for the projectile dampener field have been updated
+  - code_imp: Moved bedsheet interactions to the item interaction code. Please report
+      any issues.
+  - bugfix: Bedsheets adjust their offset to match that of the living they're tucking
+      in.
+  - sound: Bedsheets use the cloth drop/pickup sounds instead of being silent.
+  - qol: You can tuck someone in telekinetically.
+  - rscadd: mecha wire that shoots you or anyone nearby if pulsed or cut
+  - bugfix: mecha shock wire shocks you
+  - bugfix: Reverts the fully interactive lootpanel, please just refresh it if you
+      want to see new contents
+  - bugfix: Fixed telekinesis letting you grab people at a distance, and teleport
+      them to you by strangling them.
+  - image: Updated diamond stacks to fit its "unstacked" version.
+  - bugfix: plumbing machinery should have consistent volumes throughout the course
+      of its operations
+  - bugfix: plumbing iv drop now only accepts reagents from ducts but won't put reagents
+      back into it i.e. it only has a input pipe
+  - rscadd: The Illumination Applications technode now includes a gunkit for a new
+      gun, the Photon Cannon.
+  - qol: Transhumanist and prosthetic limb no longer conflict. If you pick the same
+      limb for both it uses the weaker prosthetic (dumbass)
+  - code_imp: Made the name for prosthetic limb global list more intelligible
+  - bugfix: Birdshot's AI core no longer has windoors concealed under open shutters.
+  - balance: removed tasers, the unfirable turret gun, death wand, polymorph wands
+      and the enchanted modsuit from lootbox loot tables
+  - bugfix: lootbox guns should now mostly not have syndicate firing pins so you can
+      actually use them
+  - image: Some gloves have received new sprites
+  - rscadd: Added Pipe Scrubber portable atmos machine
+  - rscadd: 254 new vox lines
+  - bugfix: fixes not being able to clean microwaves
+  - bugfix: 'Techweb: Moved upgraded cyber organs to tier 3 from tier 4'
+  - qol: 'Techweb: Added fully augmented android scan discount experiment for Advanced
+      Cybernetic Organs techweb node'
+  - rscadd: updated Icebox's lavaland ruin. The incursion grows...
+  - bugfix: Bitrunning hacker aliases are now much more permissive
+  - bugfix: you can hold your wound while resting via ctrl click
+  - bugfix: Mending touch no longer damages non-humans
+  - bugfix: fixes mansus grasp not clearing runes
+  - image: Fixed the cargo crate having wrong stripe width in open state
+  - bugfix: material container won't consume the contents of an item if that item
+      itself is rejected for any reason
+  - qol: you can use any storage medium & not just bags/boxes to dump stuff into material
+      containers
+  - balance: Facehuggers dont make people go to sleep but muffles speech
+  - code_imp: Very very minor xenomorph code cleanup
+  - refactor: Muzzles are now an element
+  - refactor: Bayonet attachment is now a component.
+  - code_imp: Improves cpu performance of transferring & removing reagents
+  - rscadd: the Feast of Owls now leaves more dramatic messages in your chat
+  - sound: the Feast of Owls now has a little theme
+  - rscdel: You can no longer get turned into a dullahan by a genetic meltdown
+  - refactor: Refactored genetic meltdown code into datums, making it more extendable.
+  - qol: Data disks are now printed in lathes instead of circuit imprinter
+  - bugfix: Instruments enhanced with portable tuning can perform the rites that have
+      been granted
+  thegrb93:
+  - bugfix: Fix mask sprites for teshari/vox
+  theselfish:
+  - rscdel: Minecraft Youtuber plush is gone.
+2024-07-06:
+  Jolly:
+  - code_imp: Behind the scenes, maps had a little bit of tweaking. If you see things
+      rendering in weird ways, or they don't look like how they used to/supposed to,
+      please report them on GitHub!
+  Majkl-J:
+  - bugfix: Several techwebs now handle points and experiments correctly
+  Melbert:
+  - rscadd: Humonkeys and random corpse spawns now look more... human.
+  SkyratBot:
+  - rscadd: You can now craft a singularity hammer using all nine anomaly cores and
+      the supermatter.
+  - refactor: Vat grower is a normal machine now that doesn't need plumbing
+  - qol: Cytology petri dish smartfridge starts with 3 random samples
+  - rscadd: Added protein powder condiment bottle, available in the cytology supplies
+      locker and the cargo pack
+  - rscdel: Removed science variant of plumbing RCD
+  - bugfix: Fixed a bug when machines without stock parts didn't spawn frames on deconstruction
+  - bugfix: Fixed vat grower not growing
+  - balance: 'Techweb: High yield explosive is now a discount experiment for Exotic
+      Ammo node, giving more free points'
+  - balance: 'Techweb: Replaced the botany/xenobio discount experiments with a new
+      mutant scan experiment for the Gene Engineering node'
+  - balance: 'Techweb: Damaged mech scan is a discount experiment for tier 4 Mech
+      Energy Guns node, giving twice more free points'
+  - balance: 'Techweb: Added a new anomaly scan experiment that gives full discount
+      for the Advanced Anomaly Shells, also moving the node to tier 5'
+  - balance: 'Techweb: Moved mech RCD to the Experimental Tools node'
+  - balance: 'Techweb: Moved handcuffs to T2 security node, leaving only zipties in
+      T1'
+  - balance: 'Techweb: Non-human Autopsy is a discount experiment instead of a required
+      one now'
+  - balance: 'Techweb: Parts scan experiments require 6 machines instead of 4'
+  - rscdel: 'Techweb: Removed the New Toys node moving contents to sec and medbay
+      trees'
+  - qol: Made air horn craftable from a spraycan and a bikehorn
+  - qol: 'Techweb: Better wording on the slime scan experiment'
+  - balance: Settlers are a bit slower on their steeds.
+  - image: Goody case locked/unlocked sprites have been swapped again, having a gap
+      for unlocked and no gap for locked.
+  - qol: Increased view_range on the Psyker Bounty Hunters' Shuttle navigation console.
+  - bugfix: 'Fixed the shuttle navigation console camera eye being incorrectly offset
+      on: the SpacePol van, the Russian bounty hunters, the default bounty hunters,
+      the Psyker bounty hunters, and the MI13 Foodtruck.'
+  - bugfix: Fixed the SpacePol van, Russian bounty hunters, default bounty hunters,
+      and Psyker bounty hunters' shuttles all flying in incorrect directions.
+  - qol: Linked speech now prevents messages from highlighting if its a message you
+      sent, or if you are the owner of said link..
+  - qol: Linked speech messages are now marked as radio messages, for chat tab purposes.
+  - rscadd: 'New traitor mech: Justice. Emag fabricator to get it.'
+  - qol: portable scubber, pump and pipe scrubber are buildable as any other machines
+  Sosmaster9000:
+  - balance: 'Xenobiologists now have a BZ-filled containment pen. Don''t breathe
+      that!
+
+      balance:Some items which either cannot be printed elsewhere or are part of game
+      progression (e.g. teleporter endpoints and, of course, Nanners) have been moved.
+      Alien Spawnpoints are in the same spot.'
+  thegrb93:
+  - bugfix: Fixes the rest of vox/teshari custom sprites
+  - bugfix: Borg affection module tongue/nose not working
+2024-07-07:
+  Majkl-J:
+  - bugfix: Fixed some loadout items missing
+  - balance: Changed the event horizon to not be a "Destroy 5x5 area every 10 seconds"
+      weapon, instead making it into a single target annihilator
+  Seven:
+  - balance: Bloody footprint trails go a longer distance now.
+  SkyratBot:
+  - bugfix: Autolathe won't eat the borg omni tool
+  - qol: Examining a windoor will now provide the construction steps, like other standard
+      buildable objects.
+  - bugfix: Reagent containers are no longer mysteriously fireproof.
+  - rscadd: Projectile Dampener field now reduces stuns and stamina damage from incoming
+      projectiles
+  - bugfix: Binary devices no longer ignore the volume of the output pipe network
+  - bugfix: Firefighting backpack tank nozzle can be used to hit objects and destroy
+      atmos resin again.
+  - code_imp: Cleaned up relic code.
+  - image: Added necrotech themed relics.
+  - bugfix: Fixed temp n space adaptations not conflicting
+  - image: fixed and touched up the icons for the Doorjack and Cryptographic Sequencer
+      (EMAG)
+  - bugfix: Fixed the augmented organs experiment
+  - bugfix: fixed ninja's adrenaline boost module not being rechargable
+  - qol: CE and Engineer start with their hardhat as the respective welding hard hat
+      variant
+2024-07-08:
+  Imaginos16 (sprites) TheSelfish (port):
+  - rscadd: New, ship like Captain clothes, now in the vendor!
+  Majkl-J:
+  - bugfix: Digitigrade pant sprites work again
+  - bugfix: Fixed loadout descriptions being gone
+  SkyratBot:
+  - bugfix: ' Birdshot botany is resized. bar is also smaller.'
+  - bugfix: Birdshot public shrine now uses the correct dirt. (Goodbye chasms)
+  - bugfix: ' Examining a fishing spot twice with sufficiently high fishing skill
+      (or the skillchip) will get you a list of fishes that can ACTUALLY be caught'
+  - bugfix: Fixes hacker alias name preference not working.
+  - bugfix: Added a forgotten firelock on second floor of wawa
+  - bugfix: you may now use a legion core on an elite tumor
+  - spellcheck: Renamed the organ thrower module to the 'organizer'
+  - spellcheck: Made its description more accurate. Did you know it instantly replaces
+      up to 5 organs in active surgery?
+  - bugfix: defibrillator no longer has an abstract cell
+  - code_imp: defibrillator attackby replaced with item_interaction
+  - bugfix: You require breathing once more.
+  - bugfix: you can craft the singulo hammer with either a supermatter engine/shard
+      again
+  - rscadd: There's a previously undiscovered variant of a nullrod, recently revealed
+      from the depths of the skating rink..
+  - balance: You can only stun someone with a shove if they have been shoved into
+      objects or people, or have been hit by telescopic batons, contractor batons
+      or the Mansus Grasp.
+  - balance: If someone is knocked to the floor, however, you can still disarm them
+      of any object with a shove.
+  - bugfix: Knight helmets no longer burn as though made of cloth.
+  lorwp:
+  - rscadd: using 'skibidi' as a chaplain deity now gives you brain damage
+  theselfish:
+  - qol: Telecomms Sysadmin no longer has to crawl around to get a belt.
+  - bugfix: You can now get Telecomms Drip if it burns off.

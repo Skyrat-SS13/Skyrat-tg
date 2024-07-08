@@ -118,7 +118,12 @@ There are several things that need to be remembered:
 		var/mutant_styles = NONE // SKYRAT EDIT ADDITON - mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
 		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-			icon_file = DIGITIGRADE_UNIFORM_FILE
+			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE - ORIGINAL: icon_file = DIGITIGRADE_UNIFORM_FILE
+			digi = TRUE // SKYRAT EDIT ADDITION - Digi female gender shaping
+		// SKYRAT EDIT ADDITION - birbs
+		else if(bodyshape & BODYSHAPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(OFFSET_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
+		// SKYRAT EDIT END
 		//Female sprites have lower priority than digitigrade sprites
 		if(!dna.species.no_gender_shaping && dna.species.sexes && (bodyshape & BODYSHAPE_HUMANOID) && physique == FEMALE && !(female_sprite_flags & NO_FEMALE_UNIFORM)) // SKYRAT EDIT CHANGE - ORIGINAL: else if(dna.species.sexes && (bodyshape & BODYSHAPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
 			woman = TRUE

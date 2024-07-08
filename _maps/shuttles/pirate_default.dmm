@@ -441,6 +441,19 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
+"bl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/small/directional/north,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate)
 "bm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/pod/dark,
@@ -758,19 +771,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
-"ki" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/light/small/directional/north,
-/obj/machinery/airalarm/directional/north,
-/obj/effect/mapping_helpers/airalarm/all_access,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/power_store/cell/high,
-/turf/open/floor/pod/light,
-/area/shuttle/pirate)
 "km" = (
 /obj/machinery/atmospherics/components/tank/air,
 /obj/effect/turf_decal/bot,
@@ -801,23 +801,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
-"rR" = (
-/obj/structure/table/wood,
-/obj/item/storage/box/matches,
-/obj/item/reagent_containers/cup/glass/bottle/rum{
-	name = "Captain Pete's Private Reserve Cuban Spaced Rum";
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/cigarette/cigar,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/wood,
-/area/shuttle/pirate)
 "sP" = (
 /obj/machinery/light/small/directional/east,
 /obj/machinery/computer/monitor{
@@ -830,22 +813,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/pirate)
-"vB" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/rack{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/item/storage/box/lethalshot,
-/obj/item/gun/ballistic/shotgun/automatic/combat{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "wf" = (
 /obj/machinery/door/airlock{
@@ -875,6 +842,21 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/pod/dark,
+/area/shuttle/pirate)
+"yq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack{
+	dir = 8
+	},
+/obj/item/storage/box/lethalshot,
+/obj/item/gun/ballistic/shotgun/automatic/combat{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "zw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -988,6 +970,23 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
 /turf/open/floor/iron,
 /area/shuttle/pirate)
+"UI" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/matches,
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	name = "Captain Pete's Private Reserve Cuban Spaced Rum";
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/cigarette/cigar,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/wood,
+/area/shuttle/pirate)
 
 (1,1,1) = {"
 af
@@ -1056,7 +1055,7 @@ Oe
 OL
 zw
 dy
-rR
+UI
 ep
 er
 af
@@ -1123,7 +1122,7 @@ ab
 ae
 bf
 aj
-ki
+bl
 fY
 ai
 aU
@@ -1179,7 +1178,7 @@ sP
 aj
 ek
 bA
-vB
+yq
 aj
 np
 aO
