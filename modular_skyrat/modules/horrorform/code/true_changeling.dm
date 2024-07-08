@@ -148,7 +148,17 @@
 	ricochet_incidence_leeway = 0
 	embed_falloff_tile = -2
 	shrapnel_type = /obj/item/shrapnel/bone_fragment
-	embedding = list(embed_chance=55, fall_chance=2, jostle_chance=7, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.7, pain_mult=3, jostle_pain_mult=3, rip_time=15)
+	embed_type = /datum/embed_data/tomahawk
+
+/datum/embed_data/tomahawk
+	embed_chance = 55
+	fall_chance = 2
+	jostle_chance = 7
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.7
+	pain_mult = 3
+	jostle_pain_mult = 3
+	rip_time = 15
 
 /obj/item/shrapnel/bone_fragment
 	name = "bone fragment"
