@@ -63,7 +63,7 @@
 	damage = 10
 	wound_bonus = 25
 	bare_wound_bonus = 35
-	embed_type /datum/embed_data/ripper
+	embed_type = /datum/embed_data/ripper
 
 /datum/embed_data/ripper
 	embed_chance = 200
