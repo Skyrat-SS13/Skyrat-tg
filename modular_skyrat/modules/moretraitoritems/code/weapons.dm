@@ -193,7 +193,7 @@
 	jostle_chance = 4
 	ignore_throwspeed_threshold = TRUE
 	pain_stam_pct = 0.4
-	paint_mult = 5
+	pain_mult = 5
 	jostle_pain_mult = 9
 	rip_time = 10
 
