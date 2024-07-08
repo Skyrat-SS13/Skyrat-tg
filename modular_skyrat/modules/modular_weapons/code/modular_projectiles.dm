@@ -138,7 +138,7 @@
 	wound_bonus = -75
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 
 /obj/item/ammo_casing/c34/ap
 	name = ".34 armor-piercing bullet casing"
