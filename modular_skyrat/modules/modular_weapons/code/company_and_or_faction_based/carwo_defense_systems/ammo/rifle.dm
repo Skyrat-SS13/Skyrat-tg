@@ -69,19 +69,19 @@
 	bare_wound_bonus = 20
 
 	shrapnel_type = /obj/item/shrapnel/stingball
-	embedding = list(
-		embed_chance = 60,
-		fall_chance = 5,
-		jostle_chance = 5,
-		ignore_throwspeed_threshold = TRUE,
-		pain_stam_pct = 0.4,
-		pain_mult = 2,
-		jostle_pain_mult = 3,
-		rip_time = 0.5 SECONDS,
-	)
+	embed_type = /datum/embed_data/c40sol_fragmentation
 
 	embed_falloff_tile = -5
 
+/datum/embed_data/c40sol_fragmentation
+	embed_chance = 50
+	fall_chance = 5
+	jostle_chance = 5
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.4
+	pain_mult = 2
+	jostle_pain_mult = 3
+	rip_time = 0.5 SECONDS
 
 /obj/item/ammo_box/c40sol/fragmentation
 	name = "ammo box (.40 Sol Long fragmentation)"
