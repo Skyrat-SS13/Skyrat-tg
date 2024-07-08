@@ -93,6 +93,14 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/honkshot
 	max_ammo = 35
 
+/obj/item/ammo_box/advanced/s12gauge/frangible
+	name = "Frangible Slug ammo box"
+	desc = "A box of 7 Breaching slug. It's able to punches through airlock with ease."
+	icon_state = "fslug"
+	ammo_type = /obj/item/ammo_casing/shotgun/breacher
+	max_ammo = 7
+
+//The one below here has a destruction damage of 200, it two shot most mech, use the one above
 /obj/item/ammo_box/advanced/s12gauge/breaching
 	name = "Breaching Slug ammo box"
 	desc = "A box of 7 Breaching slug. It's able to punches through airlock with ease."
