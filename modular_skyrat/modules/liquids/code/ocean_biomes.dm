@@ -11,7 +11,7 @@
 	fauna_types = list(/mob/living/basic/carp)
 
 /datum/biome/ocean_redsand
-	turf_type = /turf/open/misc/ocean/ironsand
+	turf_type = /turf/open/misc/ironsand/ocean
 	flora_types = list(/obj/effect/spawner/ocean_curio, /obj/structure/flora/rock/pile, /obj/structure/flora/ocean/glowweed, /obj/structure/flora/ocean/seaweed, /obj/structure/flora/ocean/longseaweed, /obj/structure/flora/ocean/coral)
 	flora_density = 40
 	fauna_density = 0.06
