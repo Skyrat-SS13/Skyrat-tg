@@ -23,7 +23,7 @@
 	damage = 35
 
 	wound_bonus = -30
-	bare_wound_bonus = -25
+	bare_wound_bonus = -35
 
 
 /obj/item/ammo_box/c40sol
