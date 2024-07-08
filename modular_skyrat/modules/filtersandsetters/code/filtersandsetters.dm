@@ -162,15 +162,16 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/exp_tools
-	design_ids = list(
-		"exwelder",
-		"handdrill",
-		"jawsoflife",
-		"laserscalpel",
-		"mechanicalpinches",
-		"rangedanalyzer",
-		"searingtool",
-		"adv_fire_extinguisher",
+/datum/techweb_node/surgery_tools/New()
+	design_ids += list(
 		"combitool",
 	)
+	return ..()
+
+/datum/techweb_node/alien_surgery/New()
+	design_ids += list(
+		"alien_bloodfilter",
+		"alien_bonesetter",
+	)
+	return ..()
+
