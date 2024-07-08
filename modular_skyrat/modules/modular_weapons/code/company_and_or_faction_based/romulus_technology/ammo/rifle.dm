@@ -39,7 +39,7 @@
 	armour_penetration = 100
 	wound_bonus = 10
 	bare_wound_bonus = 10
-	embedding = list(embed_chance=55, pain_chance=70, fall_chance=40, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
+	embedding = list(embed_chance=55, pain_chance=70, fall_chance=30, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
 	dismemberment = 0
 
 /obj/item/ammo_casing/caflechette/ripper
@@ -51,10 +51,9 @@
 /obj/projectile/bullet/caflechette/ripper
 	name = "flechette dart"
 	damage = 10
-	armour_penetration = 100
 	wound_bonus = 25
 	bare_wound_bonus = 35
-	embedding = list(embed_chance=150, pain_chance=70, fall_chance=20, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
+	embedding = list(embed_chance=200, pain_chance=70, fall_chance=1, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time= 5 SECONDS)
 
 /obj/item/ammo_casing/caflechette/ballpoint
 	name = "steel ball"
@@ -65,13 +64,24 @@
 /obj/projectile/bullet/caflechette/ballpoint
 	name = "high velocity steel ball"
 	damage = 10
-	armour_penetration = 25
-	wound_bonus = -50
-	bare_wound_bonus = -80
-	embedding = list(embed_chance=10, pain_chance=50, fall_chance=90, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=3, pain_mult=2, rip_time=8)
+	wound_bonus = 20
+	bare_wound_bonus = 10
+	sharpness = SHARP_EDGED
+	wound_bonus = 0
+	bare_wound_bonus = 20
+
+	shrapnel_type = /obj/item/shrapnel/stingball
+	embedding = list(
+		embed_chance = 30,
+		fall_chance = 5,
+		jostle_chance = 5,
+		ignore_throwspeed_threshold = TRUE,
+		pain_stam_pct = 0.4,
+		pain_mult = 2,
+		jostle_pain_mult = 3,
+		rip_time = 2 SECONDS,
+	)
 	stamina = 30
-	sharpness = NONE
-	shrapnel_type = NONE
 	ricochet_chance = 50
 	ricochets_max = 3
 	ricochet_auto_aim_angle = 90
@@ -87,7 +97,7 @@
 	damage = 5
 	wound_bonus = 15
 	bare_wound_bonus = 5
-	embedding = list(embed_chance=50, pain_chance=10, fall_chance=10, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=8)
+	embedding = list(embed_chance=50, pain_chance=10, fall_chance=10, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
 
 /obj/projectile/bullet/caflechette/magnesium/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
