@@ -1,10 +1,10 @@
 /datum/biome/ocean_sand
-	turf_type = /turf/open/floor/plating/ocean
+	turf_type = /turf/open/misc/ocean
 	flora_types = list(/obj/effect/spawner/ocean_curio, /obj/structure/flora/rock, /obj/structure/flora/rock/pile, /obj/structure/flora/ocean/glowweed, /obj/structure/flora/ocean/seaweed, /obj/structure/flora/ocean/longseaweed)
 	flora_density = 10
 
 /datum/biome/ocean_sand_flora
-	turf_type = /turf/open/floor/plating/ocean
+	turf_type = /turf/open/misc/ocean
 	flora_types = list(/obj/effect/spawner/ocean_curio, /obj/structure/flora/rock/pile, /obj/structure/flora/ocean/glowweed, /obj/structure/flora/ocean/seaweed, /obj/structure/flora/ocean/longseaweed, /obj/structure/flora/ocean/coral)
 	flora_density = 25
 	fauna_density = 0.03
