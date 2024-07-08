@@ -63,7 +63,6 @@
 	damage = 10
 	wound_bonus = 25
 	bare_wound_bonus = 35
-	embedding = list(embed_chance=200, pain_chance=70, fall_chance=1, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time= 5 SECONDS)
 	embed_type /datum/embed_data/ripper
 
 /datum/embed_data/ripper
@@ -93,16 +92,6 @@
 
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embed_type = /datum/embed_data/ballpoint
-	embedding = list(
-		embed_chance = 30,
-		fall_chance = 5,
-		jostle_chance = 5,
-		ignore_throwspeed_threshold = TRUE,
-		pain_stam_pct = 0.4,
-		pain_mult = 2,
-		jostle_pain_mult = 3,
-		rip_time = 2 SECONDS,
-	)
 	stamina = 30
 	ricochet_chance = 50
 	ricochets_max = 3
@@ -130,7 +119,6 @@
 	wound_bonus = 15
 	bare_wound_bonus = 5
 	embed_type = /datum/embed_data/magnesium
-	embedding = list(embed_chance=50, pain_chance=10, fall_chance=10, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
 
 /datum/embed_data/magnesium
 	embed_chance = 50
