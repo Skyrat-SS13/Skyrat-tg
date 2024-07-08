@@ -31,5 +31,5 @@
 	cost = 3
 
 /datum/armament_entry/assault_operatives/modules/jetpack
-	item_type = /obj/item/mod/module/jetpack/advanced
+	item_type = /obj/item/mod/module/jetpack
 	cost = 5
