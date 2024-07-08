@@ -39,7 +39,6 @@
 	wound_bonus = 30
 	bare_wound_bonus = 30
 	embed_type = /datum/embed_data/dumdum
-	embedding = list(embed_chance=85, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
 	wound_falloff_tile = -5
 	embed_falloff_tile = -20
 
