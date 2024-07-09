@@ -1,6 +1,10 @@
 /obj/item/clothing/suit/toggle/labcoat
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
+	. = ..()
+	allowed += list(/obj/item/flashlight, /obj/item/hypospray, /obj/item/storage/hypospraykit)
+
 /obj/item/clothing/suit/toggle/labcoat/skyrat
 	name = "SR LABCOAT SUIT DEBUG"
 	desc = "REPORT THIS IF FOUND"
