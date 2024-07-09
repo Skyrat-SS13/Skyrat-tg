@@ -934,11 +934,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				span_notice("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow."),
 				span_notice("You quietly shut off [src] without even looking at what you're doing. Wow.")
 			)
-<<<<<<< HEAD
-			playsound(src, 'modular_skyrat/master_files/sound/items/zippo_close.ogg', 50, TRUE) // SKYRAT EDIT ADDITION
-=======
 			playsound(src.loc , 'sound/items/zippo_off.ogg', 100, 1)
->>>>>>> 513f675a46db (Lighter/zippo/cigarette sounds (#84736))
 		else
 			user.visible_message(
 				span_notice("[user] quietly shuts off [src]."),
@@ -953,11 +949,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			span_notice("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."),
 			span_notice("Without even breaking stride, you flip open and light [src] in one smooth movement.")
 		)
-<<<<<<< HEAD
-		playsound(src, 'modular_skyrat/master_files/sound/items/zippo_open.ogg', 50, TRUE) // SKYRAT EDIT ADDITION
-=======
 		playsound(src.loc , 'sound/items/zippo_on.ogg', 100, 1)
->>>>>>> 513f675a46db (Lighter/zippo/cigarette sounds (#84736))
 		return
 	else
 		playsound(src.loc, 'sound/items/lighter_on.ogg', 100, 1)
