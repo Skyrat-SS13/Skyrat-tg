@@ -13025,21 +13025,6 @@
 /obj/effect/spawner/random/structure/steam_vent,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
-"eRJ" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Janitorial Closet"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/any/service/janitor,
-/turf/open/floor/iron/textured_half{
-	dir = 8
-	},
-/area/station/commons)
 "eRX" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -22051,6 +22036,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/atmospherics_engine)
+"hNV" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
+	dir = 4
+	},
+/obj/machinery/light/cold/directional/west,
+/turf/open/floor/iron/dark,
+/area/station/science/ordnance)
 "hNY" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -22571,6 +22563,14 @@
 	},
 /turf/open/floor/engine/air,
 /area/station/engineering/atmos/space_catwalk)
+"hXC" = (
+/obj/machinery/atmospherics/components/binary/pump/off/general/visible{
+	name = "Plasma to Pure";
+	color = "#BF40BF";
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/atmos)
 "hXU" = (
 /turf/closed/wall,
 /area/station/security/execution/education)
@@ -33730,6 +33730,21 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
+"lqY" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Janitorial Closet"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/any/service/janitor,
+/turf/open/floor/iron/textured_half{
+	dir = 8
+	},
+/area/station/commons)
 "lrh" = (
 /obj/structure/cable,
 /obj/effect/spawner/random/trash,
@@ -37849,13 +37864,6 @@
 	},
 /turf/open/floor/carpet,
 /area/station/medical/psychology)
-"mGl" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
-	dir = 4
-	},
-/obj/machinery/light/cold/directional/west,
-/turf/open/floor/iron/dark,
-/area/station/science/ordnance)
 "mGn" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/stripes/line{
@@ -46535,14 +46543,6 @@
 	},
 /turf/open/floor/tram,
 /area/station/security/tram)
-"pCD" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general/visible{
-	name = "Plasma to Pure";
-	color = "#BF40BF";
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/engineering/atmos)
 "pCF" = (
 /obj/machinery/door/window/brigdoor/right/directional/east{
 	id = "Cell 2";
@@ -63407,6 +63407,14 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/wood/tile,
 /area/station/command/meeting_room)
+"uOZ" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/departments/exodrone/directional/west,
+/turf/open/floor/plating,
+/area/station/maintenance/port/greater)
 "uPf" = (
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
@@ -67834,26 +67842,6 @@
 /obj/structure/chair/stool/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
-"wcC" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing,
-/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible/layer5{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped/layer2{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/station/engineering/atmos/space_catwalk)
 "wcG" = (
 /obj/effect/turf_decal/tile/red/opposingcorners{
 	dir = 1
@@ -68290,6 +68278,26 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"wlT" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible/layer5{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped/layer2{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/station/engineering/atmos/space_catwalk)
 "wlU" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -82327,7 +82335,7 @@ blb
 blb
 ekf
 blb
-wcC
+wlT
 tbX
 oGn
 hFR
@@ -85391,7 +85399,7 @@ gKs
 hXt
 mXm
 mXx
-pCD
+hXC
 bJN
 hYC
 pwv
@@ -87512,7 +87520,7 @@ fLF
 ahr
 nFX
 nFX
-ozn
+uOZ
 pSP
 mhk
 mhk
@@ -110375,7 +110383,7 @@ rqw
 wZl
 wZl
 wZl
-eRJ
+lqY
 wZl
 wZl
 eeJ
@@ -124288,7 +124296,7 @@ xok
 xok
 xok
 xok
-mGl
+hNV
 tbI
 xok
 qNO
