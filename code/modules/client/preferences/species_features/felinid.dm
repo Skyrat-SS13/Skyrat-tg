@@ -30,10 +30,7 @@
 	target.dna.features["ears"] = value
 
 /datum/preference/choiced/ears/create_default_value()
-<<<<<<< HEAD
 	var/datum/sprite_accessory/ears/cat/ears = /datum/sprite_accessory/ears/cat
 	return initial(ears.name)
-*/
-=======
 	return /datum/sprite_accessory/ears/cat::name
->>>>>>> 5b3c32e5cf1f (Adds informed default values for a bunch of preferences (to produce less outlandish random characters) (#84726))
+*/
