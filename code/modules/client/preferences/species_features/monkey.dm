@@ -13,10 +13,7 @@
 	target.dna.features["tail_monkey"] = value
 
 /datum/preference/choiced/monkey_tail/create_default_value()
-<<<<<<< HEAD
 	var/datum/sprite_accessory/tails/monkey/default/tail = /datum/sprite_accessory/tails/monkey/default
 	return initial(tail.name)
-*/ // SKYRAT EDIT REMOVAL END
-=======
 	return /datum/sprite_accessory/tails/monkey/default::name
->>>>>>> 5b3c32e5cf1f (Adds informed default values for a bunch of preferences (to produce less outlandish random characters) (#84726))
+*/
