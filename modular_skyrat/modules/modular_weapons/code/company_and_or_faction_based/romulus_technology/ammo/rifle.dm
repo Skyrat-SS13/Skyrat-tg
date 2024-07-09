@@ -39,8 +39,18 @@
 	armour_penetration = 100
 	wound_bonus = 10
 	bare_wound_bonus = 10
-	embedding = list(embed_chance=55, pain_chance=70, fall_chance=30, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=2)
+	embed_type = /datum/embed_data/caflechette
 	dismemberment = 0
+
+/datum/embed_data/caflechette
+	embed_chance = 55
+	pain_chance = 70
+	fall_chance = 30
+	jostle_chance = 80
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.9
+	pain_mult = 2
+	rip_time = 2 SECONDS
 
 /obj/item/ammo_casing/caflechette/ripper
 	name = "flechette dart"
@@ -53,7 +63,17 @@
 	damage = 10
 	wound_bonus = 25
 	bare_wound_bonus = 35
-	embedding = list(embed_chance=200, pain_chance=70, fall_chance=1, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time= 5 SECONDS)
+	embed_type = /datum/embed_data/ripper
+
+/datum/embed_data/ripper
+	embed_chance = 200
+	pain_chance = 70
+	fall_chance = 1
+	jostle_chance = 80
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.9
+	pain_mult = 2
+	rip_time = 5 SECONDS
 
 /obj/item/ammo_casing/caflechette/ballpoint
 	name = "steel ball"
@@ -71,21 +91,22 @@
 	bare_wound_bonus = 20
 
 	shrapnel_type = /obj/item/shrapnel/stingball
-	embedding = list(
-		embed_chance = 30,
-		fall_chance = 5,
-		jostle_chance = 5,
-		ignore_throwspeed_threshold = TRUE,
-		pain_stam_pct = 0.4,
-		pain_mult = 2,
-		jostle_pain_mult = 3,
-		rip_time = 2 SECONDS,
-	)
+	embed_type = /datum/embed_data/ballpoint
 	stamina = 30
 	ricochet_chance = 50
 	ricochets_max = 3
 	ricochet_auto_aim_angle = 90
 	ricochet_auto_aim_range = 5
+
+/datum/embed_data/ballpoint
+	embed_chance = 30
+	fall_chance = 5
+	jostle_chance = 5
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.4
+	pain_mult = 2
+	jostle_pain_mult = 3
+	rip_time = 2 SECONDS
 
 /obj/item/ammo_casing/caflechette/magnesium
 	name = "magnesium dart"
@@ -97,7 +118,17 @@
 	damage = 5
 	wound_bonus = 15
 	bare_wound_bonus = 5
-	embedding = list(embed_chance=50, pain_chance=10, fall_chance=10, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
+	embed_type = /datum/embed_data/magnesium
+
+/datum/embed_data/magnesium
+	embed_chance = 50
+	pain_chance = 10
+	fall_chance = 10
+	jostle_chance = 80
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.9
+	pain_mult = 2
+	rip_time = 10 SECONDS
 
 /obj/projectile/bullet/caflechette/magnesium/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()

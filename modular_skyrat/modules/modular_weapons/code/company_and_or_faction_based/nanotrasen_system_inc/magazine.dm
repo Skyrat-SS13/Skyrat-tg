@@ -27,7 +27,7 @@
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 
 // premium .38 ammo from cargo, weak against armor, lower base damage, but excellent at embedding and causing slice wounds at close range
 /obj/projectile/bullet/c38/dumdum
@@ -38,9 +38,19 @@
 	sharpness = SHARP_EDGED
 	wound_bonus = 30
 	bare_wound_bonus = 30
-	embedding = list(embed_chance=85, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
+	embed_type = /datum/embed_data/dumdum
 	wound_falloff_tile = -5
 	embed_falloff_tile = -20
+
+/datum/embed_data/dumdum
+	embed_chance = 85
+	fall_chance = 3
+	jostle_chance = 4
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.4
+	pain_mult = 5
+	jostle_pain_mult = 6
+	rip_time = 1 SECONDS
 
 //10mm Cylinder
 /obj/item/ammo_box/magazine/internal/cylinder/nt_sec

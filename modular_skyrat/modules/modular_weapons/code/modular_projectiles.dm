@@ -30,7 +30,7 @@
 	ricochet_decay_damage = 0.7
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 	wound_bonus = -50
 
 /obj/item/ammo_casing/c45/hp
@@ -58,7 +58,7 @@
 	ricochet_decay_damage = 0.7
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 	wound_bonus = -50
 
 /obj/item/ammo_casing/c46x30mm/rubber
@@ -92,7 +92,7 @@
 	ricochet_decay_damage = 0.7
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 	wound_bonus = -50
 
 /obj/item/ammo_casing/a223/ap
@@ -138,7 +138,7 @@
 	wound_bonus = -75
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 
 /obj/item/ammo_casing/c34/ap
 	name = ".34 armor-piercing bullet casing"

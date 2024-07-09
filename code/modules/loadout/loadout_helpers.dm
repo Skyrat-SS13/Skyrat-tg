@@ -55,7 +55,7 @@
 				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to CKEY restrictions!"))
 			continue
 
-		if(loadout_placement_preference == LOADOUT_OVERRIDE_CASE)
+		if(loadout_placement_preference == LOADOUT_OVERRIDE_CASE && !visuals_only)
 			if(!travel_suitcase)
 				travel_suitcase  = new(loc)
 			new item.item_path(travel_suitcase)

@@ -87,12 +87,12 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/auto_doc,
 		/obj/item/mod/module/visor/thermal,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/magboot/advanced,
 	)
 	default_pins = list(
 		/obj/item/mod/module/visor/thermal,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/magboot/advanced,
 	)
 
