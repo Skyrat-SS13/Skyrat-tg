@@ -42,7 +42,9 @@
 	toxic_foodtypes = NONE // these fucks eat vomit, i am sure they can handle drinking bleach or whatever too
 	modifies_speech = TRUE
 	languages_native = list(/datum/language/buzzwords)
+	var/static/list/speech_replacements = list(new /regex("z+", "g") = "zzz", new /regex("Z+", "g") = "ZZZ", "s" = "z", "S" = "Z")
 
+<<<<<<< HEAD
 /obj/item/organ/internal/tongue/fly/modify_speech(datum/source, list/speech_args)
 	var/static/regex/fly_buzz = new("z+", "g")
 	var/static/regex/fly_buZZ = new("Z+", "g")
@@ -62,6 +64,11 @@
 			message = replacetext(message, "С", "З")
 //SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
+=======
+/obj/item/organ/internal/tongue/fly/New(class, timer, datum/mutation/human/copymut)
+	. = ..()
+	AddComponent(/datum/component/speechmod, replacements = speech_replacements)
+>>>>>>> 565c548108c5 (Converts common speech modifiers into a component (#84675))
 
 /obj/item/organ/internal/tongue/fly/Initialize(mapload)
 	. = ..()

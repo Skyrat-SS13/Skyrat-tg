@@ -187,7 +187,9 @@
 	liked_foodtypes = GORE | MEAT | SEAFOOD | NUTS | BUGS
 	disliked_foodtypes = GRAIN | DAIRY | CLOTH | GROSS
 	voice_filter = @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.9,aresample=%SAMPLE_RATE%,atempo=1/0.9,aformat=channel_layouts=mono,volume=0.2 [p0]; [out2] asetrate=%SAMPLE_RATE%*1.1,aresample=%SAMPLE_RATE%,atempo=1/1.1,aformat=channel_layouts=mono,volume=0.2[p2]; [p0][0][p2] amix=inputs=3"}
+	var/static/list/speech_replacements = list(new /regex("s+", "g") = "sss", new /regex("S+", "g") = "SSS", new /regex(@"(\w)x", "g") = "$1kss", new /regex(@"(\w)X", "g") = "$1KSSS", new /regex(@"\bx([\-|r|R]|\b)", "g") = "ecks$1", new /regex(@"\bX([\-|r|R]|\b)", "g") = "ECKS$1")
 
+<<<<<<< HEAD
 /obj/item/organ/internal/tongue/lizard/modify_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
 	var/static/regex/lizard_hiSS = new("S+", "g")
@@ -219,6 +221,11 @@
 			message = lizard_hiSS_ru.Replace(message, "ССС")
 		//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
+=======
+/obj/item/organ/internal/tongue/lizard/New(class, timer, datum/mutation/human/copymut)
+	. = ..()
+	AddComponent(/datum/component/speechmod, replacements = speech_replacements)
+>>>>>>> 565c548108c5 (Converts common speech modifiers into a component (#84675))
 
 /obj/item/organ/internal/tongue/lizard/silver
 	name = "silver tongue"
