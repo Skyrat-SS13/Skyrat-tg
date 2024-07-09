@@ -39,7 +39,7 @@
 	applied_modules = list(
 		/obj/item/mod/module/baton_holster/preloaded/upgraded,
 		/obj/item/mod/module/emp_shield,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/scorpion_hook,
 		/obj/item/mod/module/springlock/contractor/no_complexity,
 		/obj/item/mod/module/storage/syndicate,

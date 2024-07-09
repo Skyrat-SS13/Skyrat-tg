@@ -11,10 +11,11 @@
     return list(TOOL_BONESET, TOOL_ALIEN_BONESET)
 
 /datum/wound/item_can_treat(obj/item/potential_treater, mob/user)
-    // check if we have a valid treatable tool
-    for(var/behaviour in potential_treater.get_all_tool_behaviours())
-        if(behaviour in treatable_tools)
-            return TRUE
+	. = ..()
+	// check if we have a valid treatable tool
+	for(var/behaviour in potential_treater.get_all_tool_behaviours())
+		if(behaviour in treatable_tools)
+			return TRUE
 
 /datum/wound/blunt/bone/severe
 	treatable_tools = list(TOOL_ALIEN_BONESET)
@@ -161,15 +162,16 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/techweb_node/exp_tools
-	design_ids = list(
-		"exwelder",
-		"handdrill",
-		"jawsoflife",
-		"laserscalpel",
-		"mechanicalpinches",
-		"rangedanalyzer",
-		"searingtool",
-		"adv_fire_extinguisher",
+/datum/techweb_node/surgery_tools/New()
+	design_ids += list(
 		"combitool",
 	)
+	return ..()
+
+/datum/techweb_node/alien_surgery/New()
+	design_ids += list(
+		"alien_bloodfilter",
+		"alien_bonesetter",
+	)
+	return ..()
+

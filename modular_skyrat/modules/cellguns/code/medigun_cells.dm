@@ -425,8 +425,15 @@
 	name = "salve globule"
 	icon_state = "glob_projectile"
 	shrapnel_type = /obj/item/mending_globule/hardlight
-	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	embed_type = /datum/embed_data/salve_globule
 	damage = 0
+
+/datum/embed_data/salve_globule
+	embed_chance = 100
+	ignore_throwspeed_threshold = TRUE
+	pain_mult = 0
+	jostle_pain_mult = 0
+	fall_chance = 0
 
 /obj/projectile/energy/medical/utility/salve/on_hit(mob/living/target, blocked = 0, pierce_hit)
 	if(!IsLivingHuman(target)) //No using this on the dead or synths.
@@ -507,7 +514,7 @@
 /obj/item/mending_globule/hardlight
 	name = "salve globule"
 	desc = "A ball of regenerative synthetic plant matter, contained within a soft hardlight field."
-	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	embed_type = /datum/embed_data/salve_globule
 	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "globule"
 	heals_left = 40 //This means it'll be heaing 15 damage per type max.
