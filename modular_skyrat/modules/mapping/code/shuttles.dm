@@ -193,3 +193,26 @@
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
 
 /*----- End of Tarkon Shuttle Code -----*/
+
+/*----- SerenityStation Shuttle Code -----*/
+/datum/map_template/shuttle/planetary
+	port_id = "planetary"
+	who_can_purchase = null
+
+/datum/map_template/shuttle/planetary/planetary_ferry
+	prefix = "_maps/shuttles/nova/"
+	suffix = "planetary_ferry"
+	name = "Planetary Ferry"
+
+/obj/machinery/computer/shuttle/planetary_ferry
+	name = "Planetary Ferry Console"
+	desc = "Used to control the ferry off-planet."
+	circuit = /obj/item/circuitboard/computer/planetary_ferry
+	shuttleId = "planetary_ferry"
+	possible_destinations = "planetary_dock;orbital_dock"
+
+/obj/item/circuitboard/computer/planetary_ferry
+	name = "Planetary Ferry Console (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/planetary_ferry
+
+/*----- End of SerenityStation Shuttle Code -----*/

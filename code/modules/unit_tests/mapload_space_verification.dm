@@ -6,7 +6,7 @@
 
 /datum/unit_test/mapload_space_verification/Run()
 	// Is our current map a planetary station (NO space turfs allowed)? If so, check for ANY space turfs.
-	if(SSmapping.is_planetary())
+	if(SSmapping.is_planetary() && !SSmapping.is_planetary_with_space())// NOVA EDIT - Planetary maps with space - ORIGINAL: if(SSmapping.is_planetary())
 		validate_planetary_map()
 		return
 

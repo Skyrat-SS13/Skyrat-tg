@@ -63,3 +63,6 @@
 
 /area/shuttle/labor/advanced
 	name = "NMC Drudge"
+
+/area/shuttle/planetary_ferry
+	name = "Planetary Ferry"

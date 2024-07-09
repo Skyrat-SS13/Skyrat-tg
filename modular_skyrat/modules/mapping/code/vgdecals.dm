@@ -71,6 +71,9 @@
 /obj/effect/turf_decal/vg_decals/atmos/mix
 	icon_state = "mix"
 
+/obj/effect/turf_decal/vg_decals/atmos/bz
+	icon_state = "bz"
+
 // ATMOS END
 
 // DEPARTMENT START

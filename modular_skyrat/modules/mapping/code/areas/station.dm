@@ -579,3 +579,54 @@
 /area/station/science/xenobiology/control
 	name = "\improper Xenobiology Control Room"
 	icon_state = "xenobio"
+
+// SerenityStation Rooms
+/area/station/commons/dorms/cyborgA
+	name = "\improper Cyborg Storage A"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "room_a"
+
+/area/station/commons/dorms/cyborgB
+	name = "\improper Cyborg Storage B"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "room_b"
+
+/area/station/cargo/cargo_projects
+	name = "\improper Cargo Project Room"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "cargo_projects"
+
+/area/station/commons/orbital_dock
+	name = "\improper Orbital Dock"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "orbital_dock"
+
+/area/station/commons/orbital_lounge
+	name = "\improper Orbital Lounge"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "orbital_lounge"
+
+/area/station/engineering/orbital_utilities
+	name = "\improper Orbital Utilities"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "orbital_utilities"
+
+/area/station/security/orbital_checkpoint
+	name = "\improper Orbital Checkpoint"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "orbital_checkpoint"
+
+/area/station/maintenance/orbital_maints
+	name = "\improper Orbital Maintenance"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "orbital_maints"
+
+/area/station/solars/orbital
+	name = "\improper Orbital Solar Array"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "orbital_solars"
+
+/area/station/maintenance/sushi_maint
+	name = "\improper Maintenance Sushi Shop"
+	icon = 'modular_nova/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "sushi_maint"
