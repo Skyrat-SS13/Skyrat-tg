@@ -179,6 +179,7 @@
 				var/current_level = SSsecurity_level.get_current_level_as_number()
 				. += mutable_appearance(icon, "fire_[current_level]")
 				. += emissive_appearance(icon, "fire_level_e", src, alpha = src.alpha)
+<<<<<<< HEAD
 				switch(current_level)
 					if(SEC_LEVEL_GREEN)
 						set_light(l_color = LIGHT_COLOR_BLUEGREEN)
@@ -200,6 +201,9 @@
 					if(SEC_LEVEL_GAMMA)
 						set_light(l_color = COLOR_ASSEMBLY_PURPLE)
 					//SKYRAT EDIT ADDITION END
+=======
+				set_light(l_color = SSsecurity_level?.current_security_level?.fire_alarm_light_color || LIGHT_COLOR_BLUEGREEN)
+>>>>>>> 5f2c598427a (refactor: move `status_display_bottom_text` and `fire_alarm_light_color` to security level prototypes (#84830))
 			else
 				. += mutable_appearance(icon, "fire_offstation")
 				. += emissive_appearance(icon, "fire_level_e", src, alpha = src.alpha)

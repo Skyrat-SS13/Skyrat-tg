@@ -394,6 +394,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				post_status(picture)
 			else
 				if(picture == "currentalert") // You cannot set Code Blue display during Code Red and similiar
+<<<<<<< HEAD
 					switch(SSsecurity_level.get_current_level_as_number())
 						if(SEC_LEVEL_DELTA)
 							post_status("alert", "deltaalert")
@@ -415,6 +416,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 						if(SEC_LEVEL_GAMMA)
 							post_status("alert", "gammaalert")
 						// SKYRAT EDIT ADD END - Alert Levels
+=======
+					post_status("alert", SSsecurity_level?.current_security_level?.status_display_icon_state || "greenalert")
+>>>>>>> 5f2c598427a (refactor: move `status_display_bottom_text` and `fire_alarm_light_color` to security level prototypes (#84830))
 				else
 					post_status("alert", picture)
 
