@@ -16,7 +16,6 @@
 	greyscale_config_inhand_right = /datum/greyscale_config/ballgag/right_hand
 	greyscale_colors = "#AD66BE"
 	w_class = WEIGHT_CLASS_SMALL
-	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
 
 	/// Does this gag choke the wearer?
@@ -51,14 +50,27 @@
 	var/size_list_position = 1
 	/// How big the gag is currently
 	var/gag_size = "small"
+	var/modifies_speech = TRUE
 
 // To update the sprite
 /obj/item/clothing/mask/ballgag/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
+/obj/item/clothing/mask/ballgag/equipped(mob/equipper, slot)
+	. = ..()
+	if ((slot & ITEM_SLOT_MASK) && modifies_speech)
+		RegisterSignal(equipper, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	else
+		UnregisterSignal(equipper, COMSIG_MOB_SAY)
+
+/obj/item/clothing/mask/ballgag/dropped(mob/dropper)
+	. = ..()
+	UnregisterSignal(dropper, COMSIG_MOB_SAY)
+
 // Changes speech while worn
-/obj/item/clothing/mask/ballgag/handle_speech(datum/source, list/speech_args)
+/obj/item/clothing/mask/ballgag/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
 	if(!LAZYLEN(moans))
 		return
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
