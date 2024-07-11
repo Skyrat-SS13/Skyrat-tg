@@ -14,8 +14,8 @@
 	hitsound = 'sound/weapons/whip.ogg'
 	clothing_flags = INEDIBLE_CLOTHING
 	//When taking that thing in mouth
-	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
+	var/modifies_speech = TRUE
 	/// If the color of the toy has been changed before
 	var/color_changed = FALSE
 	/// If the form (or size) of the toy has been changed before
@@ -50,8 +50,20 @@
 	if(!isinhands)
 		. += whip_overlay
 
+/obj/item/clothing/mask/leatherwhip/equipped(mob/equipper, slot)
+	. = ..()
+	if ((slot & ITEM_SLOT_MASK) && modifies_speech)
+		RegisterSignal(equipper, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	else
+		UnregisterSignal(equipper, COMSIG_MOB_SAY)
+
+/obj/item/clothing/mask/leatherwhip/dropped(mob/dropper)
+	. = ..()
+	UnregisterSignal(dropper, COMSIG_MOB_SAY)
+
 // Speech handler for moansing when talking
-/obj/item/clothing/mask/leatherwhip/handle_speech(datum/source, list/speech_args)
+/obj/item/clothing/mask/leatherwhip/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
 	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',

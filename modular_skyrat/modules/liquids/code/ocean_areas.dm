@@ -1,6 +1,7 @@
 /area/ocean
 	name = "Ocean"
-	icon_state = "space"
+	icon = 'icons/area/areas_station.dmi'
+	icon_state = "explored"
 	requires_power = TRUE
 	always_unpowered = TRUE
 	power_light = FALSE
@@ -12,6 +13,7 @@
 	sound_environment = SOUND_AREA_SPACE
 
 /area/ocean/generated
+	icon_state = "unexplored"
 	map_generator = /datum/map_generator/ocean_generator
 
 /area/ocean/trench
@@ -19,6 +21,7 @@
 	name = "The Trench"
 
 /area/ocean/trench/generated
+	icon_state = "unexplored"
 	map_generator = /datum/map_generator/cave_generator/trench
 
 /area/ruin/ocean
