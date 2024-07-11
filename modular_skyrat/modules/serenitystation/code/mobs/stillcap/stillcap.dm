@@ -1,7 +1,7 @@
 /mob/living/basic/mining/stillcap
 	name = "stillcap"
 	desc = "A strange, elusive creature that always seems to come out of nowhere."
-	icon = 'modular_nova/modules/serenitystation/icons/newfauna_wide.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/newfauna_wide.dmi'
 	icon_state = "stillcap_red"
 	icon_living = "stillcap_red"
 	base_icon_state = "stillcap_red"

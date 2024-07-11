@@ -29,14 +29,14 @@ To rerun the cutting tool move the relevant .dmi .png and .png.toml files to the
 
 ### Modular File Changes:
 
-- modular_nova/modules/aesthetics/floors/icons/floors.dmi -> added mushroom turf icon
-- modular_nova/modules/automapper/code/area_spawn_subsystem.dm -> added SerenityStation to the automapper's blacklisted stations
-- modular_nova/modules/mapping/code/areas/shuttles.dm -> added the area for the planetary_ferry
-- modular_nova/modules/mapping/code/areas/station.dm -> added the areas used in the station (as these might be reused in mapping; forest-related areas are in the module's folder)
-- modular_nova/modules/mapping/code/shuttles.dm -> added map_template and computer for the planetary feery
-- modular_nova/modules/mapping/code/vgdecals.dm -> added BZ floor decals
-- modular_nova/modules/mapping/icons/areas/areas_station.dmi -> added icons for new station areas (cargo projects room, orbital areas, cyborg storage)
-- modular_nova/modules/mapping/icons/turf/decals/vgstation_decals.dmi -> added BZ floor decals
+- modular_skyrat/modules/aesthetics/floors/icons/floors.dmi -> added mushroom turf icon
+- modular_skyrat/modules/automapper/code/area_spawn_subsystem.dm -> added SerenityStation to the automapper's blacklisted stations
+- modular_skyrat/modules/mapping/code/areas/shuttles.dm -> added the area for the planetary_ferry
+- modular_skyrat/modules/mapping/code/areas/station.dm -> added the areas used in the station (as these might be reused in mapping; forest-related areas are in the module's folder)
+- modular_skyrat/modules/mapping/code/shuttles.dm -> added map_template and computer for the planetary feery
+- modular_skyrat/modules/mapping/code/vgdecals.dm -> added BZ floor decals
+- modular_skyrat/modules/mapping/icons/areas/areas_station.dmi -> added icons for new station areas (cargo projects room, orbital areas, cyborg storage)
+- modular_skyrat/modules/mapping/icons/turf/decals/vgstation_decals.dmi -> added BZ floor decals
 
 ### Defines:
 
@@ -45,7 +45,7 @@ To rerun the cutting tool move the relevant .dmi .png and .png.toml files to the
 
 ### Included files that are not contained in this module:
 
-- modular_nova/master_files/code/controllers/subsystem/mapping.dm -> added proc to return is_planetary_with_space maps
+- modular_skyrat/master_files/code/controllers/subsystem/mapping.dm -> added proc to return is_planetary_with_space maps
 - _maps/map_files/SerenityStation/SerenityStation.dmm
 - _maps/serenitystation.json
 - _maps/shuttles/nova/planetary_planetary_ferry.dmm

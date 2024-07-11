@@ -48,13 +48,13 @@
 /turf/open/misc/asteroid/forest/mushroom
 	name = "mushroom floor"
 	desc = "A patch of mushrooms."
-	icon = 'modular_nova/modules/aesthetics/floors/icons/floors.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "mushroom"
 	base_icon_state = "mushroom"
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_MUSHROOM
 	canSmoothWith = SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MUSHROOM
 	damaged_dmi = 'icons/turf/damaged.dmi'
-	smooth_icon = 'modular_nova/modules/serenitystation/icons/turfs/floors/mushroom.dmi'
+	smooth_icon = 'modular_skyrat/modules/serenitystation/icons/turfs/floors/mushroom.dmi'
 	dig_result = /obj/item/food/grown/ash_flora
 	light_range = 2
 	light_power = 0.50
@@ -63,12 +63,12 @@
 /turf/open/misc/asteroid/forest/mushroom/blue
 	icon_state = "mushroom_blue"
 	base_icon_state = "mushroom_blue"
-	smooth_icon = 'modular_nova/modules/serenitystation/icons/turfs/floors/mushroom_blue.dmi'
+	smooth_icon = 'modular_skyrat/modules/serenitystation/icons/turfs/floors/mushroom_blue.dmi'
 
 /turf/open/misc/asteroid/forest/mushroom/green
 	icon_state = "mushroom_green"
 	base_icon_state = "mushroom_green"
-	smooth_icon = 'modular_nova/modules/serenitystation/icons/turfs/floors/mushroom_green.dmi'
+	smooth_icon = 'modular_skyrat/modules/serenitystation/icons/turfs/floors/mushroom_green.dmi'
 
 /turf/open/openspace/forest
 	name = "open forest air"
@@ -131,8 +131,8 @@
 	baseturfs = /turf/open/lava/plasma/forest
 	planetary_atmos = TRUE
 
-	icon = 'modular_nova/modules/serenitystation/icons/turfs/floors/plasma_forest.dmi'
-	mask_icon = 'modular_nova/modules/serenitystation/icons/turfs/floors/plasma_forest_mask.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/turfs/floors/plasma_forest.dmi'
+	mask_icon = 'modular_skyrat/modules/serenitystation/icons/turfs/floors/plasma_forest_mask.dmi'
 	icon_state = "plasma_forest-255"
 	mask_state = "plasma_forest-255"
 	base_icon_state = "plasma_forest"

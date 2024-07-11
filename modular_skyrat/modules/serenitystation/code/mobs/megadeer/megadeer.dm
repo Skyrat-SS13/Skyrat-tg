@@ -1,7 +1,7 @@
 /mob/living/basic/mining/megadeer
 	name = "megadeer"
 	desc = "The descendants of the common deer, turned into angry beasts by the harshness of the land."
-	icon = 'modular_nova/modules/serenitystation/icons/newfauna_wide.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/newfauna_wide.dmi'
 	icon_state = "megadeer"
 	icon_living = "megadeer"
 	icon_dead = "megadeer_dead"
@@ -51,7 +51,7 @@
 /obj/item/crusher_trophy/deer_fur
 	name = "deer fur"
 	desc = "It's fur from a mega deer."
-	icon = 'modular_nova/modules/serenitystation/icons/misc.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/misc.dmi'
 	icon_state = "deer_fur"
 	denied_type = /obj/item/crusher_trophy/deer_fur
 

@@ -5,7 +5,7 @@
 /obj/structure/flora/tree/mushroom
 	name = "mushroom tree"
 	desc = "A large branching mushroom that seems to thrive under the planet's surface."
-	icon = 'modular_nova/modules/serenitystation/icons/mushroomtrees.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroomtrees.dmi'
 	icon_state = "tree1"
 	base_icon_state = "tree_dead1"
 	pixel_x = -48
@@ -31,7 +31,7 @@
 	stump_type = /obj/structure/flora/tree/stump/mushroom/reverse
 
 /obj/structure/flora/tree/stump/mushroom
-	icon = 'modular_nova/modules/serenitystation/icons/mushroomtrees.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroomtrees.dmi'
 	icon_state = "tree1_dead"
 	pixel_x = -48
 	pixel_y = -20
@@ -41,7 +41,7 @@
 
 /obj/structure/flora/ash/tall_shroom/colored
 	desc = "A number of large mushrooms, covered in a faint layer of what can only be spores."
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "l_mushroom_red1"
 	base_icon_state = "l_mushroom_red"
 	number_of_variants = 1
@@ -56,7 +56,7 @@
 
 /obj/structure/flora/ash/leaf_shroom/colored
 	desc = "A number of mushrooms, each of which surrounds a colorful sporangium with a number of leaf-like structures."
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "s_mushroom_red1"
 	base_icon_state = "s_mushroom_red"
 	number_of_variants = 1
@@ -70,7 +70,7 @@
 	base_icon_state = "s_mushroom_green"
 
 /obj/structure/flora/ash/cap_shroom/colored
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "r_mushroom_red1"
 	base_icon_state = "r_mushroom_red"
 	number_of_variants = 1
@@ -84,7 +84,7 @@
 	base_icon_state = "r_mushroom_green"
 
 /obj/structure/flora/ash/stem_shroom/colored
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "t_mushroom_red1"
 	base_icon_state = "t_mushroom_red"
 
@@ -99,7 +99,7 @@
 /obj/structure/flora/mushroom
 	name = "mushroom"
 	desc = "Some type of large mushroom... It looks suspicious."
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "fake_stillcap_red"
 	flora_flags = FLORA_HERBAL
 
@@ -112,7 +112,7 @@
 /obj/structure/flora/ash/lightshroom
 	name = "lightshroom"
 	desc = "An odd glowing mushroom that grows in areas with underground liquid plasma springs."
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "red_mushroom1"
 	base_icon_state = "red_mushroom"
 	light_range = LIGHT_FIRE_BLOSSOM
@@ -156,7 +156,7 @@
 /obj/item/food/grown/ash_flora/lightshroom
 	name = "red lightshroom"
 	desc = "A glowing mushroom."
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "red_mushroom_grown"
 	seed = /obj/item/seeds/lavaland/lightshroom
 	wine_power = 40
@@ -178,11 +178,11 @@
 	name = "pack of red lightshroom mycelium"
 	desc = "These seeds grow into colorful lightshrooms."
 	plantname = "Red Lightshroom"
-	icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_state = "mycelium_red_mushroom"
 	species = "red_mushroom"
 	growthstages = 3
-	growing_icon = 'modular_nova/modules/serenitystation/icons/mushroom_flora.dmi'
+	growing_icon = 'modular_skyrat/modules/serenitystation/icons/mushroom_flora.dmi'
 	icon_dead = "red_mushroom_dead"
 	product = /obj/item/food/grown/ash_flora/lightshroom
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow/red)
