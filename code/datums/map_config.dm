@@ -150,9 +150,9 @@
 		log_world("map_config shuttles is not a list!")
 		return
 
-	// NOVA ADD BEGIN - EMERGENCY SHUTTLE OVERRIDE
+	// Skyrat ADD BEGIN - EMERGENCY SHUTTLE OVERRIDE
 	shuttles["emergency"] = "emergency_nova"
-	// NOVA ADD END
+	// Skyrat ADD END
 
 	traits = json["traits"]
 	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]
@@ -187,10 +187,10 @@
 	if ("planetary" in json)
 		planetary = json["planetary"]
 
-	// NOVA EDIT ADDITION START - Planetary maps with space access.
+	// Skyrat EDIT ADDITION START - Planetary maps with space access.
 	if ("allow_space_when_planetary" in json)
 		allow_space_when_planetary = json["allow_space_when_planetary"]
-	// NOVA EDIT END
+	// Skyrat EDIT END
 
 	if ("blacklist_file" in json)
 		blacklist_file = json["blacklist_file"]
