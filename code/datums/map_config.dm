@@ -151,7 +151,7 @@
 		return
 
 	// Skyrat ADD BEGIN - EMERGENCY SHUTTLE OVERRIDE
-	shuttles["emergency"] = "emergency_nova"
+	shuttles["emergency"] = "emergency_skyrat"
 	// Skyrat ADD END
 
 	traits = json["traits"]

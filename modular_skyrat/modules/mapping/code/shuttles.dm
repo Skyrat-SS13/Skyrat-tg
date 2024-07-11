@@ -200,7 +200,7 @@
 	who_can_purchase = null
 
 /datum/map_template/shuttle/planetary/planetary_ferry
-	prefix = "_maps/shuttles/nova/"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "planetary_ferry"
 	name = "Planetary Ferry"
 
