@@ -47,6 +47,8 @@
 #define COMSIG_TURF_MOB_FALL "turf_mob_fall"
 ///from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)
 #define COMSIG_TURF_LIQUIDS_CREATION "turf_liquids_creation"
+/// From base of /turf/proc/liquids_change(new_state)
+#define COMSIG_TURF_LIQUIDS_CHANGE "turf_liquids_change"
 
 /// listens to wet_stacks, if wetting a mob above 10 stacks it will signal the akula race trait to apply its buffs and nerfs
 #define COMSIG_MOB_TRIGGER_WET_SKIN "mob_trigger_wet_skin"
