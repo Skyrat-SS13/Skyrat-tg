@@ -250,7 +250,6 @@
 	)
 	category = CAT_EQUIPMENT
 
-<<<<<<< HEAD
 /datum/crafting_recipe/bonedice
 	name = "Bone Die"
 	result = /obj/item/dice/d6/bone
@@ -259,7 +258,7 @@
 		/obj/item/stack/sheet/bone = 1,
 	)
 	category = CAT_EQUIPMENT
-=======
+
 /datum/crafting_recipe/violin
 	name = "Violin"
 	result = /obj/item/instrument/violin
@@ -274,4 +273,3 @@
 	time = 30 SECONDS
 	category = CAT_ENTERTAINMENT
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
->>>>>>> e4adc1a9394 (Bow Update: Fletching instruction manual, bows using projectile damage multipliers, unhardcoded bow sprites, hot pink death (#84435))
