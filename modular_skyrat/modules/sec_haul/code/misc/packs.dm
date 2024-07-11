@@ -20,16 +20,16 @@
 
 /datum/supply_pack/goody/m1911
 	name = "Authentic SR Sector M1911"
-	desc = "Old but gold, the m1911 chambered in .45 is sure to give anyone daring to fight you, a second thought."
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/gold = 1,
+	desc = "Old but gold, the m1911 chambered in .460 Ceres. It is sure to give anyone daring to fight you, a second thought."
+	contains = list(/obj/item/storage/toolbox/guncase/skyrat/m1911_gold = 1,
 	/obj/item/ammo_box/magazine/m45 = 3,
 	)
 	cost = PAYCHECK_COMMAND * 24
 	access_view = ACCESS_WEAPONS
 
 /datum/supply_pack/goody/sporting_rifle
-	name = "Authentic SR Sector M1911"
-	desc = "Old but gold, the m1911 chambered in .45 is sure to give anyone daring to fight you, a second thought."
+	name = "Romulus Sporting Rifle"
+	desc = "A sporting rifle made of light polymer material chambered in Sol .40, poor recoil handling but quite accurate."
 	contains = list(/obj/item/storage/toolbox/guncase/skyrat/sporting_rifle = 1)
 	cost = PAYCHECK_COMMAND * 24
 	access_view = ACCESS_WEAPONS

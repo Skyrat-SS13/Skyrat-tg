@@ -91,7 +91,7 @@
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/m1911/gold
 	extra_to_spawn = /obj/item/ammo_box/magazine/m45
 
-/obj/item/storage/toolbox/guncase/skyrat/sporting_rifle/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/m1911/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
