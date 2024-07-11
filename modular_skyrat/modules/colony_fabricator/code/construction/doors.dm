@@ -9,15 +9,11 @@
 	density = FALSE
 	opacity = FALSE
 
-/obj/machinery/door/poddoor/shutters/colony_fabricator/do_animate(animation)
+/obj/machinery/door/poddoor/shutters/colony_fabricator/animation_effects(animation)
 	switch(animation)
-		if("opening")
-			flick("opening", src)
-			icon_state = "open"
+		if(DOOR_OPENING_ANIMATION)
 			playsound(src, animation_sound, 30, TRUE)
-		if("closing")
-			flick("closing", src)
-			icon_state = "closed"
+		if(DOOR_CLOSING_ANIMATION)
 			playsound(src, animation_sound, 30, TRUE)
 
 /obj/item/flatpacked_machine/shutter_kit

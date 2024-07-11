@@ -191,7 +191,7 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
-	actions_types = list(/datum/action/item_action/toggle_nv)
+	actions_types = list(/datum/action/item_action/toggle_nv_helmet)
 
 /datum/armor/helmet_expeditionary_corps
 	melee = 20
@@ -203,10 +203,10 @@
 	acid = 100
 	wound = 10
 
-/datum/action/item_action/toggle_nv
+/datum/action/item_action/toggle_nv_helmet
 	name = "Toggle Nightvision"
 
-/datum/action/item_action/toggle_nv/Trigger(trigger_flags)
+/datum/action/item_action/toggle_nv_helmet/Trigger(trigger_flags)
 	var/obj/item/clothing/head/helmet/expeditionary_corps/my_helmet = target
 	if(!my_helmet.current_user)
 		return
