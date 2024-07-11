@@ -394,27 +394,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				post_status(picture)
 			else
 				if(picture == "currentalert") // You cannot set Code Blue display during Code Red and similiar
-					switch(SSsecurity_level.get_current_level_as_number())
-						if(SEC_LEVEL_DELTA)
-							post_status("alert", "deltaalert")
-						if(SEC_LEVEL_RED)
-							post_status("alert", "redalert")
-						if(SEC_LEVEL_BLUE)
-							post_status("alert", "bluealert")
-						if(SEC_LEVEL_GREEN)
-							post_status("alert", "greenalert")
-						// SKYRAT EDIT ADD START - Alert Levels
-						if(SEC_LEVEL_VIOLET)
-							post_status("alert", "violetalert")
-						if(SEC_LEVEL_ORANGE)
-							post_status("alert", "orangealert")
-						if(SEC_LEVEL_AMBER)
-							post_status("alert", "amberalert")
-						if(SEC_LEVEL_EPSILON)
-							post_status("alert", "epsilonalert")
-						if(SEC_LEVEL_GAMMA)
-							post_status("alert", "gammaalert")
-						// SKYRAT EDIT ADD END - Alert Levels
+					post_status("alert", SSsecurity_level?.current_security_level?.status_display_icon_state || "greenalert")
 				else
 					post_status("alert", picture)
 

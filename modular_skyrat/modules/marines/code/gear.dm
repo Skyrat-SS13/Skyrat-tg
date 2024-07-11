@@ -50,7 +50,7 @@
 	name = ".300 caseless bullet"
 	damage = 13
 	armour_penetration = 30 //gonna actually kill the brit that made this var require a U in armor
-	embedding = null
+	embed_data = null
 	shrapnel_type = null
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped
