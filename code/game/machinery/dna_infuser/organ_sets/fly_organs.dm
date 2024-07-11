@@ -48,6 +48,7 @@
 		"s" = "z",
 		"S" = "Z",
 	)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Russian version
 	var/static/list/russian_speech_replacements = list(
 		new /regex("z+", "g") = "zzz",
@@ -60,6 +61,8 @@
 		"С" = "З",
 	)
 	// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 36c8b996461 (Multilines this static list (#84872))
 
 /obj/item/organ/internal/tongue/fly/New(class, timer, datum/mutation/human/copymut)
 	. = ..()
