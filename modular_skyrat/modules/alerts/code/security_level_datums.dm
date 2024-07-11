@@ -30,7 +30,7 @@
 	announcement_color = "purple"
 	number_level = SEC_LEVEL_VIOLET
 	status_display_icon_state = "violetalert"
-	fire_alarm_light_color = LIGHT_COLOR_VIOLET
+	fire_alarm_light_color = COLOR_VIOLET
 	lowering_to_configuration_key = /datum/config_entry/string/alert_violet_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_violet_upto
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/violet.ogg'
