@@ -353,13 +353,8 @@
 		how_cool_are_your_threads += "</span>"
 		. += how_cool_are_your_threads.Join()
 
-<<<<<<< HEAD
-	if(get_armor().has_any_armor() || (flags_cover & (HEADCOVERSMOUTH|PEPPERPROOF)))
-		. += span_notice("OOC: Click <a href='?src=[REF(src)];list_armor=1'>here</a> to see its protection classes.") // SKYRAT EDIT ORIGINAL: ("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
-=======
 	if(get_armor().has_any_armor() || (flags_cover & (HEADCOVERSMOUTH|PEPPERPROOF)) || (clothing_flags & STOPSPRESSUREDAMAGE) || (visor_flags & STOPSPRESSUREDAMAGE))
-		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
->>>>>>> 34d5c835c58 (You can now see whether or not a piece of clothing is pressure-proof when examining (#84807))
+		. += span_notice("OOC: Click <a href='?src=[REF(src)];list_armor=1'>here</a> to see its protection classes.") // SKYRAT EDIT ORIGINAL: ("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
