@@ -246,7 +246,7 @@
 	base_icon_state = "security_helmet_future"
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	dog_fashion = null
+	base_icon_state = "security_helmet_future"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	///chat message when the visor is toggled down.
 	var/toggle_message = "You pull the visor down on"
@@ -254,7 +254,7 @@
 	var/alt_toggle_message = "You push the visor up on"
 	///Can toggle?
 	var/can_toggle = TRUE
-
+	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "security_helmet_future",
