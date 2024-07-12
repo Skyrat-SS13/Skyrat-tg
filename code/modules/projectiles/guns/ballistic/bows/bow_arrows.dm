@@ -59,8 +59,8 @@
 	name = "holy arrow"
 	desc = "Here it comes, cultist scum!"
 	icon_state = "holy_arrow_projectile"
-  damage = 20 //still a lot but this is roundstart gear so far less
-  embed_type = /datum/embed_data/holy_arrow
+  	damage = 20 //still a lot but this is roundstart gear so far less
+  	embed_type = /datum/embed_data/holy_arrow
 
 /datum/embed_data/holy_arrow
 	embed_chance = 50
