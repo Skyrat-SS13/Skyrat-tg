@@ -33,16 +33,17 @@
 	speed = 1
 	range = 25
 	shrapnel_type = null
-	embedding = list(
-		embed_chance = 90,
-		fall_chance = 2,
-		jostle_chance = 2,
-		ignore_throwspeed_threshold = TRUE,
-		pain_stam_pct = 0.5,
-		pain_mult = 3,
-		jostle_pain_mult = 3,
-		rip_time = 1 SECONDS
-	)
+	embed_type = /datum/embed_data/arrow
+
+/datum/embed_data/arrow
+	embed_chance = 90
+	fall_chance = 2
+	jostle_chance = 2
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.5
+	pain_mult = 3
+	jostle_pain_mult = 3
+	rip_time = 1 SECONDS
 
 /// holy arrows
 /obj/item/ammo_casing/arrow/holy
@@ -58,6 +59,17 @@
 	name = "holy arrow"
 	desc = "Here it comes, cultist scum!"
 	icon_state = "holy_arrow_projectile"
+  damage = 20 //still a lot but this is roundstart gear so far less
+  embed_type = /datum/embed_data/holy_arrow
+
+/datum/embed_data/holy_arrow
+	embed_chance = 50
+	fall_chance = 2
+	jostle_chance = 0
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.5
+	pain_mult = 3
+	rip_time = 1 SECONDS
 
 /obj/projectile/bullet/arrow/holy/Initialize(mapload)
 	. = ..()
@@ -99,7 +111,7 @@
 	desc = "THE UNMATCHED POWER OF THE SUN"
 	icon_state = "holy_arrow_projectile"
 	damage = 20
-	embedding = null
+	embed_type = null
 
 /obj/projectile/bullet/arrow/blazing/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()

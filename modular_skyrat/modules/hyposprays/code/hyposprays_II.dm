@@ -24,8 +24,6 @@
 	desc = "A new development from DeForest Medical, this hypospray takes 50-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
-	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
-	var/small_only = TRUE
 	/// The presently-inserted vial.
 	var/obj/item/reagent_containers/cup/vial/vial
 	/// If the Hypospray starts with a vial, which vial does it start with?
@@ -97,7 +95,7 @@
 	icon_state = "bighypo2"
 	gags_bodystate = "hypo2_deluxe"
 	desc = "The deluxe variant of the Hypospray Mk. II, able to take both 100u and 50u vials."
-	small_only = FALSE
+	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
 
 /obj/item/hypospray/mkii/deluxe/cmo
 	name = "hypospray Mk.II deluxe: CMO edition"
@@ -139,7 +137,7 @@
 		return
 	if(vial.reagents.total_volume)
 		var/vial_spritetype = "chem-color"
-		if(!small_only)
+		if(istype(vial, /obj/item/reagent_containers/cup/vial/large))
 			vial_spritetype += "[vial.type_suffix]"
 		else
 			vial_spritetype += "-s"
