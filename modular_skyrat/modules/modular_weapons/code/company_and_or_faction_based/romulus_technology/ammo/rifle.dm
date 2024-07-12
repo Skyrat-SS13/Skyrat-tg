@@ -35,7 +35,7 @@
 
 /obj/projectile/bullet/caflechette
 	name = "flechette penetrator"
-	damage = 18
+	damage = 15
 	armour_penetration = 100
 	wound_bonus = 10
 	bare_wound_bonus = 10
@@ -92,14 +92,14 @@
 
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embed_type = /datum/embed_data/ballpoint
-	stamina = 30
+	stamina = 20
 	ricochet_chance = 50
 	ricochets_max = 3
 	ricochet_auto_aim_angle = 90
 	ricochet_auto_aim_range = 5
 
 /datum/embed_data/ballpoint
-	embed_chance = 30
+	embed_chance = 40
 	fall_chance = 5
 	jostle_chance = 5
 	ignore_throwspeed_threshold = TRUE
