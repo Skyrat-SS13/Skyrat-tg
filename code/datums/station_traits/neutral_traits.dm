@@ -409,6 +409,7 @@
 			targets += roundstart_non_secure_closets[1]
 		GLOB.eigenstate_manager.create_new_link(targets)
 
+<<<<<<< HEAD
 /datum/station_trait/triple_ai
 	name = "AI Triumvirate"
 	trait_type = STATION_TRAIT_NEUTRAL
@@ -440,6 +441,8 @@
 		ai_datum.spawn_positions = 3
 		ai_datum.total_positions = 3
 
+=======
+>>>>>>> 45ca1717d08 (Full revert of #79995 (tri-ai station trait). Partal revert of #81681 (human ai) (#84850))
 
 #define PRO_SKUB "pro-skub"
 #define ANTI_SKUB "anti-skub"
