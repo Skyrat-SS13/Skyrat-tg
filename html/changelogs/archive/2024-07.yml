@@ -601,3 +601,52 @@
       hostile environment is stopped, regardless of if the timer displays ETD or ERR.
   - bugfix: Amputating a paraplegic's leg no longer miraculously allows them to walk.
   - bugfix: Fixed lights stopping emitting light in some situations
+2024-07-12:
+  Jolly:
+  - bugfix: '[Birdshot] The Ordnance freezer chamber is now linked to an APC, much
+      like the burn chamber.'
+  - bugfix: '[Birdshot] The Janitors quarters no longer uses `/area/station/commons`,
+      instead, it uses the janitors regular area.'
+  - bugfix: '[Birdshot] The entertainment center now has an APC.'
+  - bugfix: '[Birdshot] A handful of smaller areas have received air alarms.'
+  Melbert:
+  - rscadd: 'Bot Language station trait split into two: One that affects bots (retains
+      the old weight and cost) and one that affects machine (half weight, double the
+      cost)'
+  - rscdel: Bot Language station trait and (new) Machine Language station trait no
+      longer affect newly created machines or bots, just those present at game start
+  - rscdel: Machine Language station trait cannot affect the Automated Announcer in
+      telecomms
+  SkyratBot:
+  - refactor: move `status_display_bottom_text` and `fire_alarm_light_color` to security
+      level prototypes
+  - bugfix: Mapped in grounding rods can be upgraded again (not that upgraded parts
+      do anything for it) and don't disappear when deconstructed anymore.
+  - bugfix: Fixed an oversight that caused knockdown vomits to stun instead.
+  - bugfix: Using a dual wielded deck to add another card to a single card bases the
+      position of the resulting hand of cards on the position of the card.
+  - qol: Clothing now tells you if it is pressure-proof and insulated enough for spacewalking
+      when examining it.
+  - bugfix: Vapes use correct fill level overlays
+  - qol: TV helmet no longer has gas mask FOV, nor does it give you flash sensitivity.
+  - qol: Since those are gone, removed pepper proof from it as well.
+  - bugfix: You no longer try to pull out someones eyes in combat mode if they have
+      cranial fissure
+  - rscadd: You can emag grapple gun to use it on station.
+  - code_imp: added a crash report and removes an arg
+  - refactor: Refactored a lot of speech modifiers to use a component instead of copied
+      over code.
+  - bugfix: humanoid species featured are randomized correctly once again
+  - rscadd: Most door animations now better line up with when they are/are not passable.
+  - bugfix: Fixed being unable to cauterise wounds with improvised cautery tools such
+      as welders.
+  - bugfix: fixes the rightmost wawastation cryo cell
+  - bugfix: gave tram's primary tool storage functional disposals
+  - bugfix: Steaks and meatpacks no longer have an absurd amount of blood stored inside
+      of them.
+  - balance: Buffed the matrix flip skillchip duration. Lowered the stamina cost very,
+      very slightly.
+  - qol: You can now longer matrix-flip yourself into exhaustion, unless the emote
+      is unintentional.
+  - balance: bluespace navigation gigabeacons are now unlocked with Applied Bluespace
+      Research
