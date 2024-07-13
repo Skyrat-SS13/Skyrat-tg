@@ -96,10 +96,7 @@
 	icon_state = "red_panda"
 	icon_living = "red_panda"
 	icon_dead = "dead_panda"
-	speak = list("Churip","Chuuriip","Cheep-cheep","Chiteurp","squueeaacipt")
 	speak_emote = list("chirps", "huff-quacks")
-	emote_hear = list("squeak-chrips.", "huff-squacks.")
-	emote_see = list("shakes its head.", "rolls about.")
 	butcher_results = list(/obj/item/food/meat/slab = 3)
 	gold_core_spawnable = FRIENDLY_SPAWN
 	can_be_held = TRUE
