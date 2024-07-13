@@ -18,20 +18,17 @@
 	else
 		. += "It is empty."
 
-/obj/item/air_refresher/afterattack(atom/attacked, mob/user, proximity)
-	. = ..()
-	if(.)
-		return
+/obj/item/air_refresher/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(uses_remaining <= 0)
 		to_chat(user, span_warning("\The [src] is empty!"))
-		return TRUE
+		return NONE
 	uses_remaining--
-	var/turf/aimed_turf = get_turf(attacked)
+	var/turf/aimed_turf = get_turf(interacting_with)
 	aimed_turf.pollute_turf(/datum/pollutant/fragrance/air_refresher, 200)
 	user.visible_message(span_notice("[user] sprays the air around with \the [src]."), span_notice("You spray the air around with \the [src]."))
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	playsound(aimed_turf, 'sound/effects/spray2.ogg', 50, TRUE, -6)
-	return TRUE
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/pollution_scrubber
 	name = "Pollution Scrubber"
