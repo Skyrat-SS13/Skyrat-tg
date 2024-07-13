@@ -704,6 +704,7 @@
 	if (hasShrunk)
 		hasShrunk = FALSE
 		update_transform(4/3)
+	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
 
 	logevent("Chassis model has been reset.")
