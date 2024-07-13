@@ -349,14 +349,4 @@
 	icon_state = "pitbull"
 	icon_dead = "pitbull_dead"
 	icon_living = "pitbull"
-	can_breed = TRUE //2x Pimpy, 3x Bape must continue.
 
-/mob/living/basic/pet/dog/pitbull/Initialize(mapload)
-	. = ..()
-	if(!can_breed)
-		return
-	AddComponent(\
-		/datum/component/breed,\
-		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/pitbull)),\
-		baby_path = /mob/living/basic/pet/dog/pitbull,\
-	)

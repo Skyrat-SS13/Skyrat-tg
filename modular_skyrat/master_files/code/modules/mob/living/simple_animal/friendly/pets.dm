@@ -90,7 +90,7 @@
 	faction = list(FACTION_NEUTRAL)
 
 /mob/living/basic/pet/fox/redpanda
-	name = "red"
+	name = "red panda"
 	desc = "Wah't a dork."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "red_panda"
