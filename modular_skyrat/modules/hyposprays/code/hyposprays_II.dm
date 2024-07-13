@@ -217,11 +217,7 @@
 	if(!istype(tool, /obj/item/reagent_containers/cup/vial))
 		return NONE
 	if(isnull(vial) || quickload)
-<<<<<<< HEAD:modular_skyrat/modules/hyposprays/code/hyposprays_II.dm
 		insert_vial(tool, user)
-=======
-		insert_vial(tool, user, vial)
->>>>>>> e934b3089ec (afterattack is dead, aughhhh):modular_nova/modules/hyposprays/code/hyposprays_II.dm
 		return ITEM_INTERACT_SUCCESS
 	to_chat(user, span_warning("[src] can not hold more than one vial!"))
 	return ITEM_INTERACT_BLOCKING
@@ -255,21 +251,12 @@
 
 /obj/item/hypospray/mkii/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(istype(interacting_with, /obj/item/reagent_containers/cup/vial))
-<<<<<<< HEAD:modular_skyrat/modules/hyposprays/code/hyposprays_II.dm
 		insert_vial(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS
 	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
 
 /obj/item/hypospray/mkii/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	return do_inject(interacting_with, user, mode=HYPO_INJECT)
-=======
-		insert_vial(interacting_with, user, interacting_with)
-		return ITEM_INTERACT_SUCCESS
-	return do_inject(interacting_with, user, mode=HYPO_INJECT)
-
-/obj/item/hypospray/mkii/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
-	return do_inject(interacting_with, user, mode=HYPO_SPRAY)
->>>>>>> e934b3089ec (afterattack is dead, aughhhh):modular_nova/modules/hyposprays/code/hyposprays_II.dm
 
 /obj/item/hypospray/mkii/proc/do_inject(mob/living/injectee, mob/living/user, mode)
 	if(!isliving(injectee))
