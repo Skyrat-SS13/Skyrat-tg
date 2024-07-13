@@ -237,7 +237,6 @@
 						/obj/item/quadborg_nose)
 
 /obj/item/borg/upgrade/affectionmodule/action(mob/living/silicon/robot/borg)
-	/obj/item/borg/upgrade/affectionmodule/action(mob/living/silicon/robot/borg)
 	. = ..()
 	if(!.)
 		return
@@ -293,6 +292,7 @@
 /// The Shrinkening
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
+	var/hasAffection = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
