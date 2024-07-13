@@ -721,8 +721,6 @@
 		throw_smoke(get_turf(user))
 		warn_admins(user, "Teleport", 0)
 
-<<<<<<< HEAD
-=======
 // Creates a glass and fills it up with a drink.
 /obj/item/relic/proc/drink_dispenser(mob/user)
 	var/obj/item/reagent_containers/cup/glass/drinkingglass/freebie = new(get_step_rand(user))
@@ -884,7 +882,6 @@
 	new_costume.item_flags |= DROPDEL
 	return new_costume
 
->>>>>>> 0863a5d7dfc (Fixed new charger power not working (#84897))
 //Admin Warning proc for relics
 /obj/item/relic/proc/warn_admins(mob/user, relic_type, priority = 1)
 	var/turf/location = get_turf(src)
