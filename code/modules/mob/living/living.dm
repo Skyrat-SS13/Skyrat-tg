@@ -738,12 +738,6 @@
 	if(pulledby && pulledby.grab_state)
 		to_chat(src, span_warning("You fail to stand up, you're restrained!"))
 	// SKYRAT EDIT ADDITION END
-	var/obj/item/organ/internal/cyberimp/chest/spine/potential_spine = get_organ_slot(ORGAN_SLOT_SPINE)
-	if(istype(potential_spine))
-		get_up_time *= potential_spine.athletics_boost_multiplier
-
-	if(!instant && !do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP, hidden = TRUE))
-		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
 	to_chat(src, span_notice("You stand up.")) // SKYRAT EDIT ADDITION
