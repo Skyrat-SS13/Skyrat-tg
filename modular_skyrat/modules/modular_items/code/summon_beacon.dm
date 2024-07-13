@@ -114,6 +114,7 @@
 
 	if(!uses)
 		qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 // Misc stuff here
 

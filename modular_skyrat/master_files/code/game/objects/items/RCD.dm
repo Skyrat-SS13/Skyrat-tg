@@ -20,16 +20,15 @@
 	return ..()
 
 // Drain deconstruction
-/obj/item/construction/plumbing/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
-		return
-	if(istype(target, /obj/structure/drain))
-		var/obj/structure/drain/drain_target = target
-		if(do_after(user, 2 SECONDS, target = target))
-			drain_target.deconstruct() //Let's not substract matter
-			playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
-	else
+/obj/item/construction/plumbing/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!istype(interacting_with, /obj/structure/drain))
 		return ..()
+	var/obj/structure/drain/drain_target = interacting_with
+	if(do_after(user, 2 SECONDS, target = interacting_with))
+		drain_target.deconstruct() //Let's not substract matter
+		playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
+		return ITEM_INTERACT_SUCCESS
+	return ITEM_INTERACT_BLOCKING
 
 /obj/item/construction/plumbing/mining
 	name = "mining plumbing constructor"
