@@ -66,6 +66,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	"Chinchilla (white)" = /mob/living/basic/pet/chinchilla/white,
 	"Corgi" = /mob/living/basic/pet/dog/corgi,
 	"Corgi puppy" = /mob/living/basic/pet/dog/corgi/puppy,
+	"Cyber Corgi" = /mob/living/basic/pet/dog/corgi/robocorgo,
 	"Cockroach" = /mob/living/basic/cockroach,
 	"Crab" = /mob/living/basic/crab,
 	"Deer" = /mob/living/basic/deer,

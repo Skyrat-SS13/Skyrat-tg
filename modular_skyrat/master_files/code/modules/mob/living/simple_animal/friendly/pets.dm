@@ -113,4 +113,16 @@
 	ai_controller = /datum/ai_controller/basic_controller/fox/docile //he's a nice boy
 
 
+/mob/living/basic/pet/dog/corgi/robocorgo
+	name = "\improper robocorgi"
+	real_name = "corgi"
+	desc = "They're a corgi with various mechanical modifications. The first stage in an E-N's life cycle."
+	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
+	icon_state = "robocorgi"
+	icon_living = "robocorgi"
+	icon_dead = "robocorgi_dead"
+	held_state = "corgi"
+	butcher_results = list(/obj/item/food/meat/slab/corgi = 3, /obj/item/stack/sheet/animalhide/corgi = 1)
+	gold_core_spawnable = FRIENDLY_SPAWN
+	collar_icon_state = "robocorgi"
 
