@@ -748,7 +748,6 @@ var/get_up_time = 1 SECONDS
 		get_up_time *= potential_spine.athletics_boost_multiplier
 
 	if(!instant && !do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP, hidden = TRUE))
->>>>>>> eaa4d71c3c7 (Adds the Herculean Gravitronic Spinal Implant; An Athletics focused implant. (#84532))
 		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
