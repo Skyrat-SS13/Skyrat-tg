@@ -341,4 +341,12 @@
 	icon_state = "dobber"
 	icon_dead = "dobbydead"
 	icon_living = "dobber"
-	gender = MALE
+
+/mob/living/basic/pet/dog/pitbull
+	name = "\improper pitbull"
+	desc = "Lover of Blood. Hater of Toddlers"
+	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
+	icon_state = "pitbull"
+	icon_dead = "pitbull_dead"
+	icon_living = "pitbull"
+	can_breed = TRUE //2x Pimpy, 3x Bape must continue.
