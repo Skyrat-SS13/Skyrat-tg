@@ -22,7 +22,7 @@
 		to_chat(user, span_notice("[src] is full."))
 		return ITEM_INTERACT_BLOCKING
 
-	if(isliving(interacting_with))
+	if(isliving(target))
 		to_chat(user, span_warning("The [src] is unable to take blood."))
 		return ITEM_INTERACT_BLOCKING
 
@@ -34,7 +34,7 @@
 		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
 		return ITEM_INTERACT_BLOCKING
 
-	var/trans = interacting_with.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
+	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
 	to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
 
 	return ITEM_INTERACT_SUCCESS
