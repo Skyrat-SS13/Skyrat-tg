@@ -236,35 +236,6 @@
 	items_to_add = list(/obj/item/quadborg_tongue,
 						/obj/item/quadborg_nose)
 
-/obj/item/borg/upgrade/affectionmodule/action(mob/living/silicon/robot/borg)
-	. = ..()
-	if(!.)
-		return
-	if(borg.hasAffection)
-		to_chat(usr, span_warning("This unit already has a affection module installed!"))
-		return FALSE
-	if(!(TRAIT_R_WIDE in borg.model.model_features))
-		to_chat(usr, span_warning("This unit's chassis does not support this module."))
-		return FALSE
-
-	var/obj/item/quadborg_tongue/quadtongue = new /obj/item/quadborg_tongue(borg.model)
-	borg.model.basic_modules += quadtongue
-	borg.model.add_module(quadtongue, FALSE, TRUE)
-	var/obj/item/quadborg_nose/quadnose = new /obj/item/quadborg_nose(borg.model)
-	borg.model.basic_modules += quadnose
-	borg.model.add_module(quadnose, FALSE, TRUE)
-	borg.hasAffection = TRUE
-
-/obj/item/borg/upgrade/affectionmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
-	. = ..()
-	if(.)
-		return
-	borg.hasAffection = FALSE
-	for(var/obj/item/quadborg_tongue/quadtongue in borg.model.modules)
-		borg.model.remove_module(quadtongue, TRUE)
-	for(var/obj/item/quadborg_nose/quadnose in borg.model.modules)
-		borg.model.remove_module(quadnose, TRUE)
-
 /obj/item/quadborg_tongue/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/mob/living/silicon/robot/borg = user
 	var/mob/living/mob = interacting_with
@@ -292,7 +263,6 @@
 /// The Shrinkening
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
-	var/hasAffection = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
