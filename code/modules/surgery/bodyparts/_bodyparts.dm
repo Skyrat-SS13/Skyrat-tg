@@ -115,6 +115,8 @@
 
 	///the type of damage overlay (if any) to use when this bodypart is bruised/burned.
 	var/dmg_overlay_type = "human"
+	///a color (optionally matrix) for the damage overlays to give the limb
+	var/damage_overlay_color
 	/// If we're bleeding, which icon are we displaying on this part
 	var/bleed_overlay_icon
 
@@ -199,6 +201,8 @@
 	var/any_existing_wound_can_mangle_our_interior
 	/// get_damage() / total_damage must surpass this to allow our limb to be disabled, even temporarily, by an EMP.
 	var/robotic_emp_paralyze_damage_percent_threshold = 0.3
+	/// A potential texturing overlay to put on the limb
+	var/datum/bodypart_overlay/texture/texture_bodypart_overlay
 
 /obj/item/bodypart/apply_fantasy_bonuses(bonus)
 	. = ..()
@@ -223,6 +227,10 @@
 		RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_loss))
 
 	RegisterSignal(src, COMSIG_ATOM_RESTYLE, PROC_REF(on_attempt_feature_restyle))
+
+	if(texture_bodypart_overlay)
+		texture_bodypart_overlay = new texture_bodypart_overlay()
+		add_bodypart_overlay(texture_bodypart_overlay)
 
 	if(!IS_ORGANIC_LIMB(src))
 		grind_results = null
@@ -1095,6 +1103,7 @@
 			for(var/external_layer in overlay.all_layers)
 				if(overlay.layers & external_layer)
 					. += overlay.get_overlay(external_layer, src)
+<<<<<<< HEAD
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
@@ -1153,6 +1162,10 @@
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
 
+=======
+			for(var/datum/layer in .)
+				overlay.modify_bodypart_appearance(layer)
+>>>>>>> 89cf4c77870 (The Voidwalker | New Midround Antagonist (#84674))
 	return .
 
 /obj/item/bodypart/proc/huskify_image(image/thing_to_husk, draw_blood = TRUE)
