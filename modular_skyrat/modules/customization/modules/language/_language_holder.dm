@@ -47,12 +47,12 @@
 /datum/language_holder/skeleton
 	understood_languages = list(
 		/datum/language/common = list(LANGUAGE_ATOM),
-		/datum/language/terrum = list(LANGUAGE_ATOM),
+		/datum/language/piratespeak = list(LANGUAGE_ATOM),
 		/datum/language/calcic = list(LANGUAGE_ATOM),
 	)
 	spoken_languages = list(
 		/datum/language/common = list(LANGUAGE_ATOM),
-		/datum/language/terrum = list(LANGUAGE_ATOM),
+		/datum/language/piratespeak = list(LANGUAGE_ATOM),
 		/datum/language/calcic = list(LANGUAGE_ATOM),
 	)
 
