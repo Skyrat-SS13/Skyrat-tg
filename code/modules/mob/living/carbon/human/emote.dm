@@ -66,12 +66,7 @@
 	only_forced_audio = TRUE
 	vary = TRUE
 
-<<<<<<< HEAD
-
-/datum/emote/carbon/human/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
-=======
 /datum/emote/living/carbon/human/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
->>>>>>> eb2b0fda8e4 (Fix Scream emote running the wrong emote (#84943))
 	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
 		return
 	return ..()
