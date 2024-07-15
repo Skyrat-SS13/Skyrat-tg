@@ -8,14 +8,13 @@
 	inhand_icon_state = "nothing"
 
 // Jerk off into bottles and onto people.
-/obj/item/hand_item/coom/afterattack(obj/target, mob/user, proximity)
-	. = ..()
-	do_masturbate(target, user, proximity)
+/obj/item/hand_item/coom/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	do_masturbate(interacting_with, user)
 
 /// Handles masturbation onto a living mob, or an atom.
 /// Attempts to fill the atom's reagent container, if it has one, and it isn't full.
-/obj/item/hand_item/coom/proc/do_masturbate(obj/target, mob/user, proximity)
-	if (CONFIG_GET(flag/disable_erp_preferences) || !proximity || user.stat >= DEAD)
+/obj/item/hand_item/coom/proc/do_masturbate(atom/target, mob/user)
+	if (CONFIG_GET(flag/disable_erp_preferences) || user.stat >= DEAD)
 		return
 
 	var/mob/living/carbon/human/affected_human = user

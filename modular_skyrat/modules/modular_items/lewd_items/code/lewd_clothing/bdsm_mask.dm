@@ -1,6 +1,7 @@
 // Set up the types of items that can be placed in the mask
 /datum/storage/pockets/small/bdsm_mask
 	max_slots = 1
+	click_alt_open = FALSE
 
 /datum/storage/pockets/small/bdsm_mask/New()
 	. = ..()
@@ -17,6 +18,7 @@
 	slot_flags = ITEM_SLOT_MASK
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSMOUTH
+	starting_filter_type = null
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
 	var/breath_status = TRUE
@@ -42,6 +44,19 @@
 /obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
 	. = ..()
 	create_storage(storage_type = /datum/storage/pockets/small/bdsm_mask)
+
+	new /obj/item/reagent_containers/cup/lewd_filter(src)
+	AddElement(/datum/element/update_icon_updates_onmob)
+	update_icon_state()
+	update_icon()
+	update_mob_action_buttonss()
+	if(!length(mask_designs))
+		populate_mask_designs()
+
+/// Can the user reach the filter, false if equipped and active
+/obj/item/clothing/mask/gas/bdsm_mask/proc/is_locked(mob/living/carbon/user)
+	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
+	return istype(user) && src == worn_mask && src.mask_on
 
 /obj/item/clothing/mask/gas/bdsm_mask/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/button
@@ -90,6 +105,7 @@
 		var/choice = show_radial_menu(user, src, mask_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return CLICK_ACTION_BLOCKING
+		atom_storage.click_alt_open = TRUE
 		current_mask_color = choice
 		update_icon_state()
 		update_icon()
@@ -105,69 +121,63 @@
 		return FALSE
 	return TRUE
 
-// Initializing stuff
-/obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-	update_icon_state()
-	update_icon()
-	update_mob_action_buttonss()
-	if(!length(mask_designs))
-		populate_mask_designs()
-
 // To update icon state properly
 /obj/item/clothing/mask/gas/bdsm_mask/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]_[current_mask_color]_[mask_on? "on" : "off"]"
 	inhand_icon_state = "[base_icon_state]_[current_mask_color]_[mask_on? "on" : "off"]"
 
+/obj/item/clothing/mask/gas/bdsm_mask/proc/try_unequip(mob/user)
+	if(!do_after(user, 60 SECONDS, target = user))
+		to_chat(user, span_warning("You fail to remove the gas mask!"))
+		return FALSE
+	to_chat(user, span_notice("You remove the gas mask."))
+	return TRUE
+/obj/item/clothing/mask/gas/bdsm_mask/attack_hand_secondary(mob/user, list/modifiers)
+
+
 // To make in unremovable without helping when mask is on
 /obj/item/clothing/mask/gas/bdsm_mask/attack_hand(mob/user)
-	if(iscarbon(user))
-		if(mask_on == TRUE)
-			var/mob/living/carbon/wearer = user
-			if(wearer.wear_mask == src)
-				if(!do_after(wearer, 60 SECONDS, target = src))
-					to_chat(wearer, span_warning("You fail to remove the gas mask!"))
-					return
-				else
-					to_chat(wearer, span_notice("You remove the gas mask."))
-	add_fingerprint(usr)
-	. = ..()
+	if(!is_locked(user))
+		return ..()
+	if(try_unequip(user))
+		. = ..()
+	if(.)
+		to_chat(user, span_notice("You remove the gas mask."))
 
 // To make in unremovable without helping when mask is on (for MouseDrop)
-/obj/item/clothing/mask/gas/bdsm_mask/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
-	var/mob/target_mob = user
-	var/mob/living/carbon/human/target_carbon = user
-	if(ismecha(target_mob.loc)) // Stops inventory actions in a mech
-		return
-	if(!target_mob.incapacitated())
-		if(loc == target_mob)
-			if(istype(over_object, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/hand = over_object
-				if(iscarbon(user))
-					if(mask_on == TRUE)
-						if(src == target_carbon.wear_mask || . == target_carbon.wear_mask)
-							if(!do_after(target_carbon, 60 SECONDS, target = src))
-								to_chat(target_mob, span_warning("You fail to remove the gas mask!"))
-								return
-							else
-								to_chat(target_mob, span_notice("You remove the gas mask."))
-				if(target_mob.putItemFromInventoryInHandIfPossible(src, hand.held_index))
-					add_fingerprint(user)
-				. = ..()
+/datum/storage/pockets/small/bdsm_mask/on_mousedrop_onto(datum/source, atom/over_object, mob/user)
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = source
+	if(!istype(mask) || ismecha(user.loc) || user.incapacitated() || !mask.is_locked(user))
+		return ..()
+	return NONE //handled in mask mousedrop, don't allow content dumping
 
-// Handler for clicking on a slot in a mask by hand with a filter
-/datum/storage/pockets/small/bdsm_mask/on_item_interact(datum/source, mob/user, obj/item/thing, params)
-	. = ..()
-	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
-	if(istype(thing, /obj/item/reagent_containers/cup/lewd_filter))
-		if(worn_mask) // Null check
-			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask)) // Check that the mask is of the correct type
-				if(worn_mask.mask_on == TRUE)
-					// Place for text about the impossibility to attach a filter
-					to_chat(usr, span_warning("You can't attach a filter while the mask is locked!"))
-					return
+/obj/item/clothing/mask/gas/bdsm_mask/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
+	if(ismecha(user.loc) || user.incapacitated() || !is_locked(user))
+		return
+	if(!istype(over_object, /atom/movable/screen/inventory/hand))
+		return
+	var/atom/movable/screen/inventory/hand/hand = over_object
+	if(!istype(hand))
+		return
+	if(!try_unequip(user) || !user.putItemFromInventoryInHandIfPossible(src, hand.held_index))
+		return
+	to_chat(user, span_notice("You remove the gas mask."))
+	add_fingerprint(user)
+
+/datum/storage/pockets/small/bdsm_mask/remove_single(mob/removing, obj/item/thing, atom/remove_to_loc, silent)
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = parent
+	if(!istype(mask) || !mask.is_locked(removing))
+		return ..()
+	to_chat(removing, span_warning("You can't detach the filter while the mask is locked!"))
+	return FALSE
+
+/datum/storage/pockets/small/bdsm_mask/attempt_insert(obj/item/to_insert, mob/user, override, force, messages)
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = parent
+	if(!istype(mask) || !mask.is_locked(user))
+		return ..()
+	to_chat(user, span_warning("You can't attach a filter while the mask is locked!"))
+	return FALSE
 
 // Breathing valve control button
 /datum/action/item_action/toggle_breathcontrol
@@ -178,7 +188,7 @@
 /datum/action/item_action/toggle_breathcontrol/Trigger(trigger_flags)
 	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
 	if(istype(mask))
-		mask.check()
+		mask.check(owner)
 
 /datum/action/item_action/toggle_gag
 	name = "Toggle gag"
@@ -187,7 +197,7 @@
 /datum/action/item_action/toggle_gag/Trigger(trigger_flags)
 	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
 	if(istype(mask))
-		mask.check_gag()
+		mask.check_gag(owner)
 
 /datum/action/item_action/mask_inhale
 	name = "Inhale oxygen"
@@ -205,13 +215,16 @@
 	mask.time_to_choke_left = mask.time_to_choke
 	mask.breath_status = TRUE
 
-	var/mob/living/carbon/affected_mob = usr
+	var/mob/living/carbon/affected_mob = owner
 	if(!istype(affected_mob))
 		return FALSE
 
 	affected_mob.try_lewd_autoemote("inhale")
+	if(!length(mask.contents))
+		return TRUE
 	var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
-	filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
+	if(istype(filter))
+		filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
 
 	return TRUE
 
@@ -238,24 +251,22 @@
 		temp_check = TRUE
 
 // To check if player already have this mask on and trying to change mode
-/obj/item/clothing/mask/gas/bdsm_mask/proc/check()
-	var/mob/living/carbon/affected_carbon = usr
-	if(src == affected_carbon.wear_mask)
-		to_chat(usr, span_notice("You can't reach the air filter switch!"))
-	else
-		toggle(affected_carbon)
+/obj/item/clothing/mask/gas/bdsm_mask/proc/check(mob/living/carbon/user)
+	if(!istype(user) || src == user.wear_mask)
+		to_chat(user, span_notice("You can't reach the air filter switch!"))
+		return
+	toggle(user)
 
 // Switch the mask valve to the opposite state
-/obj/item/clothing/mask/gas/bdsm_mask/proc/toggle(user)
+/obj/item/clothing/mask/gas/bdsm_mask/proc/toggle(mob/living/carbon/user)
 	mask_on = !mask_on
 	to_chat(user, span_notice("You turn the air filter [mask_on ? "on. Use with caution!" : "off. Now it's safe to wear."]"))
 	play_lewd_sound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_mob_action_buttonss()
 	update_icon()
-	var/mob/living/carbon/human/affected_human = usr
 	if(mask_on)
-		if(src == affected_human.wear_mask && affected_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		if(src == user.wear_mask && user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			START_PROCESSING(SSobj, src)
 			time_to_choke_left = time_to_choke
 	else
@@ -276,18 +287,17 @@
 
 // Mask choke processor
 /obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
-	var/mob/living/affected_mob = loc
-	var/mob/living/carbon/affected_carbon = affected_mob
+	var/mob/living/carbon/affected_carbon = loc
 	if(!istype(affected_carbon))
 		return FALSE
 
 	if(time_to_choke_left < time_to_choke/2 && breath_status == TRUE)
-		if(temp_check == FALSE && affected_mob.stat == CONSCIOUS) // If user passed out while wearing this we should continue when he wakes up
+		if(temp_check == FALSE && affected_carbon.stat == CONSCIOUS) // If user passed out while wearing this we should continue when he wakes up
 			breath_status = FALSE
 			time_to_choke_left = time_to_choke
 			temp_check = TRUE
 
-		if(affected_mob.stat == CONSCIOUS)
+		if(affected_carbon.stat == CONSCIOUS)
 			affected_carbon.try_lewd_autoemote("exhale")
 			breath_status = FALSE
 			if(rand(0, 3) == 0)
@@ -298,10 +308,9 @@
 
 	if(time_to_choke_left <= 0)
 		if(tt <= 0)
-			if(affected_mob.stat == CONSCIOUS)
-				affected_mob.adjustOxyLoss(rand(4, 8)) // Oxy dmg
-				if(ispath(affected_carbon))
-					affected_carbon.try_lewd_autoemote(pick("gasp", "choke", "moan"))
+			if(affected_carbon.stat == CONSCIOUS)
+				affected_carbon.adjustOxyLoss(rand(4, 8)) // Oxy dmg
+				affected_carbon.try_lewd_autoemote(pick("gasp", "choke", "moan"))
 				tt = time
 			else
 				breath_status = TRUE
@@ -331,6 +340,7 @@
 	volume = 50
 	possible_transfer_amounts = list(1, 2, 3, 4, 5, 10, 25, 50)
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
+	amount_per_transfer_from_this = 1
 	interaction_flags_click = NEED_DEXTERITY
 
 // Standard initialize code for filter
@@ -345,60 +355,13 @@
 // Reagent consumption process handler
 /obj/item/reagent_containers/cup/lewd_filter/proc/reagent_consumption(mob/living/user, amount_per_transfer_from_this)
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, user, user)
-	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 0.5 SECONDS)
+	reagents.trans_to(user, amount_per_transfer_from_this, transferred_by = user, methods = INGEST)
 
-// I just wanted to add 2th color variation. Because.
+// I just wanted to add 2nd color variation. Because.
 /obj/item/reagent_containers/cup/lewd_filter/click_alt(mob/user)
 	// After reskin all clicks go normal, but we can't change the flow rate if mask on and equipped
-	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
-	if(worn_mask)
-		if(iscarbon(user))
-			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask))
-				if(worn_mask.mask_on == TRUE)
-					if(istype(src, /obj/item/reagent_containers/cup/lewd_filter))
-						to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
-						return CLICK_ACTION_BLOCKING
-	return ..()
-
-// Filter click handling
-/obj/item/reagent_containers/cup/lewd_filter/attack_hand(mob/user)
-	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
-	if(worn_mask)
-		if(iscarbon(user))
-			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask))
-				if(worn_mask.mask_on == TRUE)
-					if(istype(src, /obj/item/reagent_containers/cup/lewd_filter))
-						// Place for text about the impossibility of detaching the filter
-						to_chat(user, span_warning("You can't detach the filter while the mask is locked!"))
-						return
-
-	. = ..()
-	add_fingerprint(usr)
-
-// Processing a click with a mask filter on the mask. Needed to intercept call at the object class level. Returns automatically to attack_hand(mob/user) method.
-/obj/item/clothing/mask/gas/bdsm_mask/attackby(obj/item/used_item, mob/living/user, params)
-	return ..() || ((obj_flags & CAN_BE_HIT) && used_item.attack_atom(src, user))
-
-// Mouse drop handler
-/obj/item/reagent_containers/cup/lewd_filter/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
-	var/mob/affected_mob = user
-	var/mob/living/carbon/human/affected_human = user
-	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = affected_human.get_item_by_slot(ITEM_SLOT_MASK)
-
-	if(ismecha(affected_mob.loc)) // Stops inventory actions in a mech
-		return
-
-	if(!affected_mob.incapacitated())
-		if(loc == affected_mob)
-			if(iscarbon(user))
-				if(worn_mask.mask_on == TRUE)
-					if(istype(over_object, /atom/movable/screen/inventory/hand))
-						// Place for text about the impossibility of detaching the filter
-						to_chat(user, span_warning("You can't detach the filter while the mask is locked!"))
-						return
-					else
-						// Place for text about the impossibility to attach a filter
-						to_chat(user, span_warning("You can't attach a filter while the mask is locked!"))
-						return
-			add_fingerprint(user)
-		. = ..()
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = loc
+	if(!istype(mask) || !mask.is_locked(user))
+		return ..()
+	to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
+	return CLICK_ACTION_BLOCKING
