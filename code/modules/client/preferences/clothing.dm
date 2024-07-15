@@ -33,6 +33,12 @@
 		DMESSENGER,
 	)
 
+<<<<<<< HEAD
+=======
+/datum/preference/choiced/backpack/create_default_value()
+	return DBACKPACK
+
+>>>>>>> bb79c3859f7 (Changes some default values from character creation and random characters (#84905))
 /datum/preference/choiced/backpack/icon_for(value)
 	switch (value)
 		if (GBACKPACK)
@@ -75,6 +81,9 @@
 		PREF_SUIT,
 		PREF_SKIRT,
 	)
+
+/datum/preference/choiced/jumpsuit/create_default_value()
+	return PREF_SUIT
 
 /datum/preference/choiced/jumpsuit/icon_for(value)
 	switch (value)
