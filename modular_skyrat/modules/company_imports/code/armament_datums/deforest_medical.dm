@@ -29,15 +29,15 @@
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/first_responder
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
-	cost = PAYCHECK_COMMAND * 8
+	cost = PAYCHECK_COMMAND * 10.5
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/orange_satchel
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
-	cost = PAYCHECK_COMMAND * 7
+	cost = PAYCHECK_COMMAND * 9.5
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/technician_satchel
 	item_type = /obj/item/storage/backpack/duffelbag/deforest_paramedic/stocked
-	cost = PAYCHECK_COMMAND * 9
+	cost = PAYCHECK_COMMAND * 11.75
 
 // Basic first aid supplies like gauze, sutures, mesh, so on
 

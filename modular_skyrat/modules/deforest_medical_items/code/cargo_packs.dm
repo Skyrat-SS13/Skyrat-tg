@@ -24,7 +24,7 @@
 	crate_name = "technician kit crate"
 	desc = "Contains a pink medical technician kit."
 	access = ACCESS_MEDICAL
-	cost = CARGO_CRATE_VALUE * 4.75
+	cost = CARGO_CRATE_VALUE * 5.5
 	contains = list(
 		/obj/item/storage/backpack/duffelbag/deforest_paramedic/stocked,
 	)
@@ -34,7 +34,7 @@
 	crate_name = "surgical kit crate"
 	desc = "Contains a grey first responder surgical kit."
 	access = ACCESS_MEDICAL
-	cost = CARGO_CRATE_VALUE * 4.25
+	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/storage/backpack/duffelbag/deforest_surgical/stocked,
 	)
@@ -44,7 +44,7 @@
 	crate_name = "medical kit crate"
 	desc = "Contains an orange satchel medical kit."
 	access = ACCESS_MEDICAL
-	cost = CARGO_CRATE_VALUE * 4
+	cost = CARGO_CRATE_VALUE * 4.5
 	contains = list(
 		/obj/item/storage/backpack/duffelbag/deforest_medkit/stocked,
 	)
