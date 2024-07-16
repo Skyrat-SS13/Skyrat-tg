@@ -11,7 +11,11 @@
 		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
 		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), \
 		roleplay_friendly = TRUE, \
+<<<<<<< HEAD
 		roleplay_emotes = list(/datum/emote/living/human/buzz, /datum/emote/living/human/buzz2, /datum/emote/living/beep, /datum/emote/living/human/beep2), /* SKYRAT EDIT CHANGE - ORIGINAL: roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/living/beep), */ \
+=======
+		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep), \
+>>>>>>> 1f65065ec0b1 (Allows humans with a robotic voicebox installed, MMIs, and posibrains to use silicon emotes, and simple/basic bots to beep (#84912))
 		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
 
 	set_wires(new /datum/wires/robot(src))
