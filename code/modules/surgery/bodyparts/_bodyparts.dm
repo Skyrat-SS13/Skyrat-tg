@@ -1103,8 +1103,8 @@
 			for(var/external_layer in overlay.all_layers)
 				if(overlay.layers & external_layer)
 					. += overlay.get_overlay(external_layer, src)
-<<<<<<< HEAD
-
+			for(var/datum/layer in .)
+				overlay.modify_bodypart_appearance(layer)
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
 	var/atom/offset_spokesman = owner || src
@@ -1161,11 +1161,6 @@
 				if (emissive)
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
-
-=======
-			for(var/datum/layer in .)
-				overlay.modify_bodypart_appearance(layer)
->>>>>>> 89cf4c77870 (The Voidwalker | New Midround Antagonist (#84674))
 	return .
 
 /obj/item/bodypart/proc/huskify_image(image/thing_to_husk, draw_blood = TRUE)

@@ -11,10 +11,6 @@
 	"Ninja Holding" = LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY, \
 	"Abductor Ships" = LAZY_TEMPLATE_KEY_ABDUCTOR_SHIPS, \
 	"Heretic Sacrifice Level" = LAZY_TEMPLATE_KEY_HERETIC_SACRIFICE, \
-<<<<<<< HEAD
-	"Outpost of Cogs" = LAZY_TEMPLATE_KEY_OUTPOST_OF_COGS, \
-) // SKYRAT EDIT ABOVE - OUTPOST OF COGS
-=======
 	"Voidwalker Void" = LAZY_TEMPLATE_KEY_VOIDWALKER_VOID, \
-)
->>>>>>> 89cf4c77870 (The Voidwalker | New Midround Antagonist (#84674))
+	"Outpost of Cogs" = LAZY_TEMPLATE_KEY_OUTPOST_OF_COGS,  \
+)	// SKYRAT EDIT ABOVE - OUTPOST OF COGS
