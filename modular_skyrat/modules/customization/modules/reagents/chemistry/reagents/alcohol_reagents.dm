@@ -8,6 +8,28 @@
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
 
+//Drinks from tg that are made with blood, thus hemophages are able to drink them without suffering ill effects
+
+/datum/reagent/consumable/ethanol/demonsblood
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+/datum/reagent/consumable/ethanol/devilskiss
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+/datum/reagent/consumable/ethanol/narsour
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+/datum/reagent/consumable/ethanol/protein_blend
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+/datum/reagent/consumable/ethanol/red_mead
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+//End of tg blood-based drinks
+
+
+
+
 // ROBOT ALCOHOL PAST THIS POINT
 // WOOO!
 
@@ -173,6 +195,7 @@
 	boozepwr = 66
 	quality = DRINK_FANTASTIC
 	taste_description = "overpowering sweetness with a touch of sourness, followed by iron and the sensation of a warm summer breeze"
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING //component drink is demon's blood, thus this drink is made with blood so hemophages can comfortably drink it
 
 /datum/glass_style/drinking_glass/sins_delight
 	required_drink_type = /datum/reagent/consumable/ethanol/sins_delight
@@ -407,6 +430,7 @@
 	description = "Strong mead mixed with more honey and ethanol. Beloved by its human patrons."
 	boozepwr = 50 //strong!
 	taste_description = "honey and red wine"
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING //component drink is red mead, thus this drink is made with blood so hemophages can comfortably drink it
 
 /datum/glass_style/drinking_glass/nord_king
 	required_drink_type = /datum/reagent/consumable/ethanol/nord_king
