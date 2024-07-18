@@ -40,7 +40,8 @@
 		to_chat(human_host, span_notice("A chilling sensation goes down your spine..."))
 	copy_languages(human_host)
 
-	var/obj/item/organ/internal/borer_body/borer_organ = new(creator = src)
+	var/obj/item/organ/internal/borer_body/borer_organ = new()
+	borer_organ.borer = src
 	borer_organ.Insert(human_host)
 
 	log_message("[key_name(src)] went into [key_name(human_host)] at [loc_name(get_turf(human_host))]", LOG_GAME)

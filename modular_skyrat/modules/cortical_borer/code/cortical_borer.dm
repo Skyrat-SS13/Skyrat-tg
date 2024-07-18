@@ -39,10 +39,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	/// Ref to the borer who this organ belongs to
 	var/mob/living/basic/cortical_borer/borer
 
-/obj/item/organ/internal/borer_body/Initialize(mapload, mob/living/basic/cortical_borer/creator)
-	. = ..()
-	borer = creator
-
 /obj/item/organ/internal/borer_body/Destroy()
 	borer = null
 	return ..()

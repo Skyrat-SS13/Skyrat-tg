@@ -354,6 +354,7 @@
 	name = "Become Stronger"
 	button_icon_state = "level"
 	stat_evo_points = 1
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/upgrade_stat/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -593,6 +594,7 @@
 	cooldown_time = 2 MINUTES
 	button_icon_state = "revive"
 	chemical_cost = 200
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/revive_host/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -633,6 +635,7 @@
 	cooldown_time = 2 MINUTES
 	button_icon_state = "willing"
 	chemical_cost = 150
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/willing_host/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -666,6 +669,7 @@
 	cooldown_time = 2 MINUTES
 	button_icon_state = "hiding"
 	chemical_cost = 100
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/stealth_mode/Trigger(trigger_flags, atom/target)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
@@ -695,6 +699,7 @@
 	cooldown_time = 1 MINUTES
 	button_icon_state = "reproduce"
 	chemical_cost = 150
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/empowered_offspring/Trigger(trigger_flags, atom/target)
 	. = ..()
