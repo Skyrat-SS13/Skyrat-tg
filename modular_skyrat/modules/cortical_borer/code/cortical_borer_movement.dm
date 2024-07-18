@@ -63,16 +63,20 @@
 	var/turf/dropoff_turf = get_turf(human_host)
 	log_message("[key_name(src)] left [key_name(human_host)] at [loc_name(dropoff_turf)]", LOG_GAME)
 
-	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
-	if(borer_organ)
-		borer_organ.Remove(human_host)
-		qdel(borer_organ)
+	leave_host_clean()
 	forceMove(dropoff_turf)
-	UnregisterSignal(human_host.get_organ_slot(ORGAN_SLOT_BRAIN), COMSIG_ORGAN_REMOVED)
-	human_host = null
 
 	REMOVE_TRAIT(src, TRAIT_WEATHER_IMMUNE, "borer_in_host")
 	return TRUE
+
+///This is the version for correctly cleaning up the borer when qdeling/moving out. Don't call this directly
+/mob/living/basic/cortical_borer/proc/leave_host_clean()
+	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
+	if(borer_organ)
+		borer_organ.Remove(human_host)
+	UnregisterSignal(human_host.get_organ_slot(ORGAN_SLOT_BRAIN), COMSIG_ORGAN_REMOVED)
+	human_host = null
+
 
 ///If a person is debrained, the borer is removed with this
 /mob/living/basic/cortical_borer/proc/on_brain_removed(atom/source, mob/living/carbon/target)

@@ -43,14 +43,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	borer = null
 	return ..()
 
-/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, movement_flags)
+/obj/item/organ/internal/borer_body/on_mob_insert(mob/living/carbon/carbon_target, special, movement_flags)
 	. = ..()
 	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
 		body_focus.on_add()
 	carbon_target.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 //on removal, force the borer out
-/obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
+/obj/item/organ/internal/borer_body/on_mob_remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/basic/cortical_borer/cb_inside = carbon_target.has_borer()
 	for(var/datum/borer_focus/body_focus as anything in cb_inside.body_focuses)
@@ -238,7 +238,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	do_evolution(/datum/borer_evolution/base)
 
 /mob/living/basic/cortical_borer/Destroy()
-	human_host = null
+	if(human_host)
+		leave_host_clean()
 	GLOB.cortical_borers -= src
 	QDEL_NULL(reagent_holder)
 	return ..()

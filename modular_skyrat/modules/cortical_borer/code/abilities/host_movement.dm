@@ -28,4 +28,4 @@
 		return
 	if(cortical_owner.try_leave_host())
 		StartCooldown()
-	return
+	return .
