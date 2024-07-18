@@ -236,24 +236,17 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
-	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
+	flags_cover = HEADCOVERSEYES|EARS_COVERED
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
 
 /obj/item/clothing/head/helmet/sec/futuristic
 	icon_state = "security_helmet_future"
 	base_icon_state = "security_helmet_future"
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	base_icon_state = "security_helmet_future"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	///chat message when the visor is toggled down.
-	var/toggle_message = "You pull the visor down on"
-	///chat message when the visor is toggled up.
-	var/alt_toggle_message = "You push the visor up on"
-	///Can toggle?
-	var/can_toggle = TRUE
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"White Variant" = list(
