@@ -31,13 +31,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			return check_content
 	return FALSE
 
-//so if a person is debrained, the borer is removed
-/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, movement_flags)
-	. = ..()
-	var/mob/living/basic/cortical_borer/cb_inside = target.has_borer()
-	if(cb_inside)
-		cb_inside.leave_host()
-
 //borers also create an organ, so you dont need to debrain someone
 /obj/item/organ/internal/borer_body
 	name = "engorged cortical borer"

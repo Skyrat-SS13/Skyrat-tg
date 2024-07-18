@@ -7,6 +7,7 @@
 /datum/action/cooldown/mob_cooldown/borer
 	button_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	cooldown_time = 0
+	shared_cooldown = NONE
 	/// How many chemicals this costs
 	var/chemical_cost = 0
 	/// How many chem evo points are needed to use this ability
@@ -49,6 +50,7 @@
 /datum/action/cooldown/mob_cooldown/borer/inject_chemical
 	name = "Open Chemical Injector"
 	button_icon_state = "chemical"
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/inject_chemical/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -140,6 +142,7 @@
 /datum/action/cooldown/mob_cooldown/borer/evolution_tree
 	name = "Open Evolution Tree"
 	button_icon_state = "newability"
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/evolution_tree/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -229,6 +232,7 @@
 /datum/action/cooldown/mob_cooldown/borer/learn_focus
 	name = "Learn Focus"
 	button_icon_state = "getfocus"
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/learn_focus/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -267,6 +271,7 @@
 	name = "Learn Chemical from Blood"
 	button_icon_state = "bloodchem"
 	chemical_evo_points = 5
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/learn_bloodchemical/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -313,6 +318,7 @@
 	name = "Learn New Chemical"
 	button_icon_state = "bloodlevel"
 	chemical_evo_points = 1
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/upgrade_chemical/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -378,6 +384,7 @@
 /datum/action/cooldown/mob_cooldown/borer/toggle_hiding
 	name = "Toggle Hiding"
 	button_icon_state = "hide"
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/toggle_hiding/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -463,6 +470,7 @@
 	name = "Check Blood"
 	cooldown_time = 5 SECONDS
 	button_icon_state = "blood"
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/check_blood/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -484,6 +492,7 @@
 	name = "Force Host Speak"
 	cooldown_time = 30 SECONDS
 	button_icon_state = "speak"
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/force_speak/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -519,6 +528,7 @@
 	cooldown_time = 1 MINUTES
 	button_icon_state = "reproduce"
 	chemical_cost = 100
+	click_to_activate = FALSE
 
 /datum/action/cooldown/mob_cooldown/borer/produce_offspring/Trigger(trigger_flags, atom/target)
 	. = ..()
