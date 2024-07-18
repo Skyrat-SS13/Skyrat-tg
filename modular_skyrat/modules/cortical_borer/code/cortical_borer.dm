@@ -39,6 +39,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	/// Ref to the borer who this organ belongs to
 	var/mob/living/basic/cortical_borer/borer
 
+/obj/item/organ/internal/borer_body/Initialize(mapload, /mob/living/basic/cortical_borer/creator)
+	. = ..()
+	borer = creator
+
 /obj/item/organ/internal/borer_body/Destroy()
 	borer = null
 	return ..()
@@ -145,8 +149,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 									/datum/action/cooldown/mob_cooldown/borer/fear_human,
 									/datum/action/cooldown/mob_cooldown/borer/check_blood,
 	)
-	///the host
+	/// The human we are hosted in
 	var/mob/living/carbon/human/human_host
+	/// The brain we are currently hooked to
+	var/obj/item/organ/internal/brain/brain_host
 	//what the host gains or loses with the borer
 	var/list/hosts_abilities = list()
 	//just a little "timer" to compare to world.time

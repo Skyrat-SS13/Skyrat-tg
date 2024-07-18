@@ -40,7 +40,7 @@
 		to_chat(human_host, span_notice("A chilling sensation goes down your spine..."))
 	copy_languages(human_host)
 
-	var/obj/item/organ/internal/borer_body/borer_organ = new()
+	var/obj/item/organ/internal/borer_body/borer_organ = new(creator = src)
 	borer_organ.Insert(human_host)
 
 	log_message("[key_name(src)] went into [key_name(human_host)] at [loc_name(get_turf(human_host))]", LOG_GAME)
@@ -48,6 +48,7 @@
 	ADD_TRAIT(src, TRAIT_WEATHER_IMMUNE, "borer_in_host")
 
 	RegisterSignal(brain, COMSIG_ORGAN_REMOVED, PROC_REF(on_brain_removed))
+	brain_host = brain
 	return TRUE
 
 /mob/living/basic/cortical_borer/proc/try_leave_host()
@@ -74,8 +75,10 @@
 	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
 	if(borer_organ)
 		borer_organ.Remove(human_host)
-	UnregisterSignal(human_host.get_organ_slot(ORGAN_SLOT_BRAIN), COMSIG_ORGAN_REMOVED)
+	if(brain_host)
+		UnregisterSignal(brain_host, COMSIG_ORGAN_REMOVED)
 	human_host = null
+	brain_host = null
 
 
 ///If a person is debrained, the borer is removed with this
