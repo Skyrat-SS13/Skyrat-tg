@@ -335,6 +335,11 @@
 		),
 	)
 
+/obj/item/clothing/head/hats/warden/red
+	unique_reskin = null
+
+/obj/item/clothing/head/hats/warden/drill
+	unique_reskin = null
 
 /obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
