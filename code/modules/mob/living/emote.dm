@@ -2,7 +2,7 @@
 /* EMOTE DATUMS */
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
-	mob_type_blacklist_typecache = list(/mob/living/brain) //SKYRAT EDIT - OVERWIRTTEN BY `modular_skyrat\modules\modular_implants\code\soulcatcher\soulcatcher_mob.dm`
+	mob_type_blacklist_typecache = list(/mob/living/brain)
 
 /datum/emote/living/blush
 	key = "blush"
@@ -175,7 +175,18 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	stat_allowed = HARD_CRIT
 
-/datum/emote/living/gasp_shock
+/datum/emote/living/gasp/get_sound(mob/living/user)
+	if(HAS_MIND_TRAIT(user, TRAIT_MIMING))
+		return
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	if(human_user.gender == FEMALE) // SKYRAT EDIT CHANGE
+		return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
+	return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
+
+/datum/emote/living/gasp/shock
 	key = "gaspshock"
 	key_third_person = "gaspsshock"
 	name = "gasp (Shock)"
@@ -183,16 +194,6 @@
 	message_mime = "gasps in silent shock!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	stat_allowed = SOFT_CRIT
-
-/datum/emote/living/gasp_shock/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/human_user = user
-	if(!HAS_MIND_TRAIT(human_user, TRAIT_MIMING)) // SKYRAT EDIT CHANGE - Let other species gasp - ORIGINAL: if(ishumanbasic(human_user) || isfelinid(human_user) && !HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
-		if(human_user.physique == FEMALE)
-			return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
-		else
-			return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
 
 /datum/emote/living/giggle
 	key = "giggle"
@@ -261,7 +262,6 @@
 		qdel(kiss_blower)
 		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
 
-/* SKYRAT EDIT REMOVAL - EMOTES - MOVED TO EMOTES.DM MODULAR
 /datum/emote/living/laugh
 	key = "laugh"
 	key_third_person = "laughs"
@@ -274,12 +274,10 @@
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	return ..() && user.can_speak(allow_mimes = TRUE)
 
-/datum/emote/living/laugh/get_sound(mob/living/carbon/user)
-	if(!ishuman(user))
+/datum/emote/living/laugh/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
 		return
-	var/mob/living/carbon/human/human_user = user
-	return human_user.dna.species.get_laugh_sound(user)
-*/ //SKYRAT EDIT END
+	return user.dna.species.get_laugh_sound(user)
 
 /datum/emote/living/look
 	key = "look"
@@ -313,36 +311,36 @@
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	return ..()
 
-/datum/emote/living/carbon/cry
-	key = "cry"
-	key_third_person = "cries"
-	message = "cries."
-	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	stat_allowed = SOFT_CRIT
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized cry emote with sound and animation.
-
 /datum/emote/living/sneeze
 	key = "sneeze"
 	key_third_person = "sneezes"
 	message = "sneezes."
+	message_mime = "acts out an exaggerated silent sneeze."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized sneeze emote with sound.
+	audio_cooldown = 5 SECONDS
+	vary = TRUE
 
-/datum/emote/living/carbon/human/glasses/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	var/image/emote_animation = image('icons/mob/human/emote_visuals.dmi', user, "glasses")
-	flick_overlay_global(emote_animation, GLOB.clients, 1.6 SECONDS)
+/datum/emote/living/sneeze/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_sneeze_sound(user)
 
-/datum/emote/living/carbon/cough
+/datum/emote/living/cough
 	key = "cough"
 	key_third_person = "coughs"
 	message = "coughs!"
 	message_mime = "acts out an exaggerated cough!"
+	vary = TRUE
+	audio_cooldown = 5 SECONDS
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_RUNECHAT
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized cough emote with sound.
 
 /datum/emote/living/cough/can_run_emote(mob/user, status_check = TRUE , intentional)
 	return !HAS_TRAIT(user, TRAIT_SOOTHED_THROAT) && ..()
+
+/datum/emote/living/cough/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_cough_sound(user)
 
 
 /datum/emote/living/pout
@@ -357,7 +355,7 @@
 	message = "screams!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized scream.
+	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/living/carbon/human)
 
 /datum/emote/living/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
 	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
@@ -432,19 +430,6 @@
 	message_mime = "sniffs silently."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
-//SKYRAT EDIT ADDITION
-/datum/emote/living/sniff/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(.)
-		var/turf/open/current_turf = get_turf(user)
-		if(istype(current_turf) && current_turf.pollution)
-			if(iscarbon(user))
-				var/mob/living/carbon/carbon_user = user
-				if(carbon_user.internal) //Breathing from internals means we cant smell
-					return
-				carbon_user.next_smell = world.time + SMELL_COOLDOWN
-			current_turf.pollution.smell_act(user)
-//SKYRAT EDIT END
 
 /datum/emote/living/snore
 	key = "snore"
@@ -476,14 +461,12 @@
 	message = "puts their hands on their head and falls to the ground, they surrender%s!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
-/*	SKYRAT EDIT CHANGE - MOVED TO combat_indicator.dm IN INDICATORS MODULE
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.Paralyze(200)
 		L.remove_status_effect(/datum/status_effect/grouped/surrender)
-*/
 
 /datum/emote/living/sway
 	key = "sway"
@@ -698,7 +681,7 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 
-	if(is_banned_from(user.ckey, "Emote"))
+	if(!isnull(user.ckey) && is_banned_from(user.ckey, "Emote"))
 		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
 		return FALSE
 
@@ -773,6 +756,4 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/whistle/get_sound(mob/living/user)
-	if(!istype(user))
-		return
 	return 'sound/voice/human/whistle1.ogg'

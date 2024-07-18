@@ -56,28 +56,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/sbc_corvette)
-"ai" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/corvette{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/sbc_corvette)
-"aj" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "SBC_corvette_bolt";
-	name = "Syndicate Corvette Airlock"
-	},
-/obj/docking_port/mobile/syndicate_corvette,
-/obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/effect/turf_decal/siding/thinplating_new/dark{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/sbc_corvette)
 "ak" = (
 /obj/structure/chair/comfy/shuttle{
 	name = "tactical chair"
@@ -288,14 +266,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/sbc_corvette)
-"aO" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "SBC_corvette_blast";
-	layer = 3
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/plating,
-/area/shuttle/sbc_corvette)
 "aP" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Syndicate Corvette Cockpit"
@@ -377,12 +347,34 @@
 "aZ" = (
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/shuttle/sbc_corvette)
+"eV" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "SBC_corvette_bolt";
+	name = "Syndicate Corvette Airlock"
+	},
+/obj/docking_port/mobile/syndicate_corvette,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/sbc_corvette)
 "qH" = (
 /obj/structure/table,
 /obj/item/wrench,
 /obj/machinery/cell_charger,
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/sbc_corvette)
+"rQ" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/corvette{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/sbc_corvette)
@@ -433,6 +425,13 @@
 	dir = 6
 	},
 /turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/sbc_corvette)
+"Zi" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "SBC_corvette_blast"
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
 /area/shuttle/sbc_corvette)
 
 (1,1,1) = {"
@@ -505,7 +504,7 @@ aT
 aZ
 aU
 as
-aj
+eV
 "}
 (9,1,1) = {"
 aM
@@ -535,29 +534,29 @@ ay
 aM
 "}
 (12,1,1) = {"
-aO
+Zi
 qH
 ac
 aW
 ae
 aQ
-aO
+Zi
 "}
 (13,1,1) = {"
-aO
-aO
-ai
+Zi
+Zi
+rQ
 ag
 ap
-aO
-aO
+Zi
+Zi
 "}
 (14,1,1) = {"
 aa
-aO
-aO
-aO
-aO
-aO
+Zi
+Zi
+Zi
+Zi
+Zi
 aa
 "}

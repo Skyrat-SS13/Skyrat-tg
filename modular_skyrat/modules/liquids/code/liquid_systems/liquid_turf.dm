@@ -22,6 +22,10 @@
 		lgroup.remove_from_group(src)
 	SSliquids.add_active_turf(src)
 
+/// Called when liquids flow or otherwise update - intercept COMSIG_TURF_LIQUIDS_CHANGE to react.
+/turf/proc/liquids_change(new_state)
+	SEND_SIGNAL(src, COMSIG_TURF_LIQUIDS_CHANGE, new_state)
+
 /obj/effect/abstract/liquid_turf/proc/liquid_simple_delete_flat(flat_amount)
 	if(flat_amount >= total_reagents)
 		qdel(src, TRUE)
@@ -331,7 +335,7 @@
 			moving_mob.onZImpact(new_turf, 1)
 
 // Handles climbing up and down between turfs with height differences, as well as manipulating others to do the same.
-/turf/open/MouseDrop_T(mob/living/dropped_mob, mob/living/user)
+/turf/open/mouse_drop_receive(mob/living/dropped_mob, mob/living/user, params)
 	if(!isliving(dropped_mob) || !isliving(user) || !dropped_mob.has_gravity() || !Adjacent(user) || !dropped_mob.Adjacent(user) || !(user.stat == CONSCIOUS) || user.body_position == LYING_DOWN)
 		return
 	if(!dropped_mob.has_gravity())

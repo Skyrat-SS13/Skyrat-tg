@@ -69,7 +69,7 @@
 /obj/item/clothing/mask/paper/click_alt_secondary(mob/user)
 		adjust_mask(user)
 
-/obj/item/clothing/mask/paper/CtrlClick(mob/user)
+/obj/item/clothing/mask/paper/item_ctrl_click(mob/user)
 	. = ..()
 	if(.)
 		return

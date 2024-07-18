@@ -77,29 +77,28 @@
 
 	return options
 
-/obj/item/summon_beacon/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
+/obj/item/summon_beacon/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!selected_atom)
 		balloon_alert(user, "no choice selected!")
-		return
-	var/turf/target_turf = get_turf(target)
-	var/area/target_area = get_area(target)
+		return NONE
+	var/turf/target_turf = get_turf(interacting_with)
+	var/area/target_area = get_area(interacting_with)
 	if(!target_turf || !target_area || !is_type_in_list(target_area, allowed_areas))
 		balloon_alert(user, "can't call here!")
-		return
+		return NONE
 
 	var/confirmed = tgui_alert(user, "Are you sure you want to call [initial(selected_atom.name)] here?", "Confirmation", list("Yes", "No"))
 	if(confirmed != "Yes")
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	if(!uses)
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	uses -= 1
 	balloon_alert(user, "[uses] use[uses == 1 ? "" : "s"] left!")
 
 	podspawn(list(
-		"target" = get_turf(target),
+		"target" = target_turf,
 		"path" = supply_pod_stay ? /obj/structure/closet/supplypod/podspawn/no_return : /obj/structure/closet/supplypod/podspawn,
 		"style" = STYLE_CENTCOM,
 		"spawn" = selected_atom,
@@ -115,6 +114,7 @@
 
 	if(!uses)
 		qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 // Misc stuff here
 

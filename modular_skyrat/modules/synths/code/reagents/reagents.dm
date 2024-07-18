@@ -54,7 +54,7 @@
 	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Concentrated amounts in a synthetic host will rapidly repair organ damage, damaging their exterior and overheating them. Otherwise they will safely purge from an organic host"
 	reagent_state = LIQUID
 	color = "#cccccc"
-	overdose_threshold = 10
+	overdose_threshold = 15
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC | REAGENT_ORGANIC
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

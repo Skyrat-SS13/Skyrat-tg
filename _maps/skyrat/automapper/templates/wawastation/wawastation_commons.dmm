@@ -87,8 +87,8 @@
 /turf/open/floor/carpet/purple,
 /area/station/service/library)
 "dG" = (
-/obj/machinery/computer/cryopod/directional/west,
 /obj/effect/turf_decal/siding,
+/obj/structure/sign/poster/timeclock_psa/directional/west,
 /turf/open/floor/iron/white,
 /area/station/common/cryopods)
 "ef" = (
@@ -125,6 +125,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/station/commons)
+"es" = (
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/common/cryopods)
 "eO" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -154,7 +162,7 @@
 /area/station/service/library)
 "fK" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
-/obj/machinery/incident_display/dual{
+/obj/machinery/incident_display/delam{
 	pixel_x = 16
 	},
 /turf/closed/wall,
@@ -197,7 +205,7 @@
 "gV" = (
 /obj/structure/fluff/tram_rail/electric,
 /obj/structure/holosign/barrier/atmos/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "hi" = (
 /obj/effect/turf_decal/siding{
@@ -206,6 +214,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/white,
 /area/station/commons)
+"hs" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/common/cryopods)
 "hx" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -354,10 +368,10 @@
 /turf/open/floor/iron/white,
 /area/station/common/cryopods)
 "mv" = (
-/obj/machinery/vending/snack/blue,
 /obj/effect/turf_decal/siding{
 	dir = 8
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/commons)
 "mx" = (
@@ -448,15 +462,6 @@
 /obj/machinery/vending/wardrobe/curator_wardrobe,
 /turf/open/floor/engine/cult,
 /area/station/service/library)
-"pd" = (
-/obj/effect/turf_decal/trimline/green/filled/corner{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron/white,
-/area/station/commons)
 "pk" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 4
@@ -500,7 +505,7 @@
 	dir = 1
 	},
 /obj/structure/holosign/barrier/atmos/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "qh" = (
 /obj/structure/railing,
@@ -536,13 +541,25 @@
 "rI" = (
 /obj/machinery/time_clock/directional/east,
 /obj/effect/turf_decal/bot_blue,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/computer/cryopod/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/common/cryopods)
 "rL" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/commons)
+"rN" = (
+/obj/machinery/door/airlock/silver{
+	name = "Kiosk";
+	id_tag = "L2_Kiosk_Door"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/station/commons)
@@ -629,9 +646,12 @@
 /area/station/service/library)
 "tO" = (
 /obj/structure/fluff/tram_rail/end,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "ue" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/station/common/cryopods)
 "uC" = (
@@ -720,13 +740,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/commons)
-"vN" = (
-/obj/effect/turf_decal/siding{
-	dir = 6
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/white,
-/area/station/common/cryopods)
 "vT" = (
 /obj/structure/sign/painting/large/library_private{
 	dir = 8;
@@ -801,7 +814,7 @@
 /obj/structure/fluff/tram_rail/electric{
 	dir = 1
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "xD" = (
 /obj/structure/railing{
@@ -936,7 +949,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/common/cryopods)
 "Bc" = (
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Bz" = (
 /obj/effect/turf_decal/siding,
@@ -1074,6 +1087,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/commons)
+"FB" = (
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/station/common/cryopods)
 "FZ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1100,6 +1122,15 @@
 "GB" = (
 /obj/effect/turf_decal/siding/corner,
 /obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/station/commons)
+"GO" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	name = "Kiosk Shutters";
+	id = "L2_Kiosk_Shutters"
+	},
+/obj/structure/table/reinforced/titaniumglass,
 /turf/open/floor/iron/white,
 /area/station/commons)
 "GQ" = (
@@ -1171,7 +1202,7 @@
 /area/station/service/library)
 "Jz" = (
 /obj/structure/holosign/barrier/atmos/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "JH" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
@@ -1205,6 +1236,10 @@
 /obj/machinery/photocopier,
 /turf/open/floor/carpet/purple,
 /area/station/service/library)
+"Ka" = (
+/obj/structure/sign/poster/timeclock_psa/directional/west,
+/turf/template_noop,
+/area/template_noop)
 "Ke" = (
 /obj/machinery/light/directional/north,
 /turf/template_noop,
@@ -1242,14 +1277,11 @@
 /turf/open/floor/iron/white,
 /area/station/commons)
 "Lt" = (
-/obj/machinery/disposal/bin,
 /obj/effect/turf_decal/siding{
 	dir = 8
 	},
 /obj/machinery/status_display/ai/directional/east,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
+/obj/machinery/vending/cola/blue,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/commons)
 "Lv" = (
@@ -1312,6 +1344,16 @@
 /obj/structure/railing,
 /obj/structure/closet/emcloset,
 /turf/open/floor/iron/dark/textured_large,
+/area/station/commons)
+"MN" = (
+/obj/effect/turf_decal/siding/corner,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
 /area/station/commons)
 "No" = (
 /obj/effect/turf_decal/siding,
@@ -1403,12 +1445,19 @@
 	},
 /turf/open/floor/plating,
 /area/station/service/library)
+"PA" = (
+/obj/effect/turf_decal/siding{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/station/common/cryopods)
 "PD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment{
-	dir = 9
+/obj/structure/disposalpipe/junction/yjunction{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/station/commons)
@@ -1432,7 +1481,6 @@
 /obj/structure/railing,
 /obj/structure/statue/sandstone/venus{
 	dir = 1;
-	layer = 3.3;
 	name = "Love, Life, Happiness";
 	desc = "All the things that you do best. You can keep the rest. Just give me the love, life, and happiness."
 	},
@@ -1482,14 +1530,12 @@
 /turf/open/floor/iron/white,
 /area/station/commons)
 "RW" = (
-/obj/structure/chair/sofa/bench/tram/right{
-	dir = 8
-	},
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/siding{
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/east,
+/obj/structure/closet/emcloset,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/commons)
 "Sa" = (
@@ -1537,6 +1583,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/common/cryopods)
 "TN" = (
@@ -1608,7 +1655,7 @@
 /obj/structure/fluff/tram_rail/end{
 	dir = 1
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "WP" = (
 /obj/machinery/vending/games,
@@ -1648,11 +1695,23 @@
 /turf/closed/wall,
 /area/station/commons)
 "Yt" = (
-/obj/machinery/vending/cola/blue,
 /obj/effect/turf_decal/siding{
 	dir = 8
 	},
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured_large,
+/area/station/commons)
+"Yz" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 4
+	},
+/obj/structure/closet/emcloset/wall{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/white,
 /area/station/commons)
 "YC" = (
 /obj/machinery/door/airlock/grunge{
@@ -1680,18 +1739,16 @@
 /turf/closed/wall/r_wall,
 /area/station/maintenance/central/greater)
 "Zo" = (
-/obj/structure/chair/sofa/bench/tram/left{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding{
 	dir = 8
 	},
 /obj/item/radio/intercom/directional/east,
+/obj/machinery/vending/snack/blue,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/commons)
 "Zs" = (
 /obj/structure/fluff/tram_rail/electric,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Zx" = (
 /obj/machinery/light_switch/directional/south,
@@ -1710,6 +1767,19 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/station/service/library)
+"ZI" = (
+/obj/effect/turf_decal/siding,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/commons)
 "ZN" = (
 /turf/open/floor/plating,
 /area/station/commons)
@@ -1831,7 +1901,7 @@ sq
 vv
 uC
 pk
-TN
+Yz
 OO
 CP
 GR
@@ -2331,7 +2401,7 @@ eO
 YW
 WX
 Lq
-ue
+hs
 ue
 aG
 lD
@@ -2350,18 +2420,18 @@ ox
 uS
 Ju
 Mc
-Ju
 VN
+yq
 yq
 yq
 yq
 eo
 yq
 PD
-GB
+MN
+FB
 TB
-TB
-vN
+PA
 rI
 ql
 ql
@@ -2378,18 +2448,18 @@ zK
 Si
 RV
 sq
-TN
 Kg
 TN
 TN
 TN
+TN
 sq
-RV
-pd
-De
+TN
+TN
+ZI
 AR
 jp
-AR
+es
 ql
 ql
 tp
@@ -2412,13 +2482,13 @@ RW
 Zo
 mv
 Yp
-Yp
-Lq
-Yp
-Yp
-Yp
-Yp
-Yp
+GO
+GO
+rN
+ql
+ql
+ql
+ql
 tp
 tp
 tp
@@ -2440,9 +2510,9 @@ Yp
 Yp
 Yp
 Yp
-lE
-lE
-lE
+Yp
+Yp
+Yp
 tp
 tp
 tp
@@ -2478,7 +2548,7 @@ tp
 tp
 lE
 lE
-lE
+Ka
 lE
 lE
 lE

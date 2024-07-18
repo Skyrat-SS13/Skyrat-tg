@@ -17,13 +17,6 @@
 "ag" = (
 /turf/closed/wall/mineral/titanium,
 /area/awaymission/undergroundoutpost45/central)
-"ah" = (
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "ai" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -449,14 +442,6 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/central)
-"ci" = (
-/obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "cm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -555,6 +540,19 @@
 	},
 /turf/open/floor/carpet,
 /area/awaymission/undergroundoutpost45/central)
+"cM" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stack/cable_coil{
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/undergroundoutpost45/gateway)
 "cS" = (
 /obj/machinery/portable_atmospherics/scrubber,
 /obj/structure/window/spawner/directional/west,
@@ -616,9 +614,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
 "do" = (
-/obj/item/kirbyplants{
-	layer = 5
-	},
+/obj/item/kirbyplants,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/iron,
@@ -1027,6 +1023,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
+"eG" = (
+/obj/structure/alien/resin/wall,
+/obj/structure/alien/weeds,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "eH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -1212,6 +1213,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
+"fs" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "ft" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/item/shovel/spade,
@@ -1347,9 +1352,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/undergroundoutpost45/central)
 "fT" = (
-/obj/item/kirbyplants{
-	layer = 5
-	},
+/obj/item/kirbyplants,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -1710,9 +1713,7 @@
 "hq" = (
 /obj/structure/table,
 /obj/item/stack/package_wrap,
-/obj/item/reagent_containers/condiment/enzyme{
-	layer = 5
-	},
+/obj/item/reagent_containers/condiment/enzyme,
 /turf/open/floor/iron/cafeteria{
 	dir = 5
 	},
@@ -2158,14 +2159,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/gateway)
-"iY" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
-/obj/item/stock_parts/cell/high,
-/obj/machinery/light/small/directional/west,
-/turf/open/floor/iron/white,
-/area/awaymission/undergroundoutpost45/research)
 "iZ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -2453,10 +2446,17 @@
 	dir = 5
 	},
 /area/awaymission/undergroundoutpost45/research)
-"kh" = (
-/obj/item/kirbyplants{
-	layer = 5
+"kg" = (
+/obj/structure/disposaloutlet{
+	dir = 8
 	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
+"kh" = (
+/obj/item/kirbyplants,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/research)
@@ -2622,6 +2622,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/gateway)
+"kN" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/effect/turf_decal/tile/yellow/anticorner/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/engineering)
 "kO" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2982,6 +2989,15 @@
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"lV" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/machinery/computer/security/telescreen/underground_outpost/research/directional/south,
+/turf/open/floor/iron/cafeteria{
+	dir = 5
+	},
+/area/awaymission/undergroundoutpost45/research)
 "lW" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
@@ -2991,16 +3007,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"lX" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 26
-	},
-/obj/item/stock_parts/cell/high,
-/obj/item/stock_parts/cell/high,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/awaymission/undergroundoutpost45/engineering)
 "lY" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/camera/directional/north{
@@ -3016,19 +3022,6 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/engineering)
-"ma" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
-/obj/item/stack/cable_coil{
-	pixel_x = 3;
-	pixel_y = -7
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/awaymission/undergroundoutpost45/gateway)
 "mb" = (
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/gateway)
@@ -3272,9 +3265,7 @@
 /area/awaymission/undergroundoutpost45/research)
 "mQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants{
-	layer = 5
-	},
+/obj/item/kirbyplants,
 /turf/open/floor/iron/cafeteria{
 	dir = 5
 	},
@@ -3431,33 +3422,9 @@
 	dir = 5
 	},
 /area/awaymission/undergroundoutpost45/research)
-"no" = (
-/obj/machinery/computer/security{
-	dir = 4;
-	network = list("uo45")
-	},
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/awaymission/undergroundoutpost45/research)
 "np" = (
 /obj/structure/chair/office{
 	dir = 1
-	},
-/turf/open/floor/iron,
-/area/awaymission/undergroundoutpost45/research)
-"nq" = (
-/obj/structure/table,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for monitoring the research division and the labs within.";
-	dir = 8;
-	name = "research monitor";
-	network = list("uo45r")
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 4
 	},
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/research)
@@ -3583,18 +3550,6 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
-/turf/open/floor/iron/cafeteria{
-	dir = 5
-	},
-/area/awaymission/undergroundoutpost45/research)
-"nR" = (
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for monitoring the research division and the labs within.";
-	name = "research monitor";
-	network = list("uo45r")
-	},
 /turf/open/floor/iron/cafeteria{
 	dir = 5
 	},
@@ -4029,14 +3984,6 @@
 	dir = 5
 	},
 /area/awaymission/undergroundoutpost45/research)
-"pf" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/cafeteria{
-	dir = 5
-	},
-/area/awaymission/undergroundoutpost45/research)
 "pg" = (
 /obj/structure/secure_safe{
 	pixel_x = 5;
@@ -4065,9 +4012,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/research)
 "pl" = (
-/obj/item/kirbyplants{
-	layer = 5
-	},
+/obj/item/kirbyplants,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
 	dir = 8
@@ -4278,7 +4223,6 @@
 /area/awaymission/undergroundoutpost45/engineering)
 "qd" = (
 /obj/machinery/meter{
-	layer = 3.3;
 	name = "Mixed Air Tank Out"
 	},
 /obj/machinery/atmospherics/pipe/layer_manifold/supply,
@@ -4287,7 +4231,6 @@
 /area/awaymission/undergroundoutpost45/engineering)
 "qe" = (
 /obj/machinery/meter{
-	layer = 3.3;
 	name = "Mixed Air Tank In"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general,
@@ -4400,9 +4343,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
 "qI" = (
-/obj/structure/window/reinforced/spawner/directional/east{
-	layer = 2.9
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/closet/secure_closet/engineering_personal{
 	req_access = list("away_maintenance")
 	},
@@ -4581,9 +4522,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
 "rk" = (
-/obj/item/kirbyplants{
-	layer = 5
-	},
+/obj/item/kirbyplants,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
 	dir = 4
 	},
@@ -4899,6 +4838,17 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"sc" = (
+/obj/machinery/computer/security{
+	dir = 4;
+	network = list("uo45")
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 8
+	},
+/obj/machinery/computer/security/telescreen/underground_outpost/research/directional/west,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/research)
 "sd" = (
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 8
@@ -4972,9 +4922,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
 "sq" = (
-/obj/machinery/meter{
-	layer = 3.3
-	},
+/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -5143,9 +5091,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
 "td" = (
-/obj/machinery/meter{
-	layer = 3.3
-	},
+/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/layer_manifold/orange{
 	dir = 4
 	},
@@ -5174,6 +5120,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/research)
+"ti" = (
+/obj/structure/alien/weeds,
+/obj/structure/glowshroom/single,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "tj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -5232,9 +5183,7 @@
 /area/awaymission/undergroundoutpost45/engineering)
 "tw" = (
 /obj/machinery/light/small/directional/south,
-/obj/structure/window/reinforced/spawner/directional/east{
-	layer = 2.9
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/machinery/portable_atmospherics/scrubber,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -5307,6 +5256,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"tK" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "tL" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Maintenance"
@@ -5583,17 +5538,13 @@
 /turf/closed/wall/r_wall,
 /area/awaymission/undergroundoutpost45/engineering)
 "uI" = (
-/obj/machinery/meter{
-	layer = 3.3
-	},
+/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/layer_manifold/orange,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/engineering)
 "uJ" = (
-/obj/machinery/meter{
-	layer = 3.3
-	},
+/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -5848,6 +5799,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"vB" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 10
+	},
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "vC" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -5954,13 +5911,6 @@
 	dir = 8
 	},
 /area/awaymission/undergroundoutpost45/engineering)
-"vW" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
-/obj/effect/turf_decal/tile/yellow/anticorner/contrasted,
-/turf/open/floor/iron,
-/area/awaymission/undergroundoutpost45/engineering)
 "vY" = (
 /obj/structure/closet/emcloset,
 /obj/item/clothing/mask/breath,
@@ -5991,6 +5941,16 @@
 /obj/item/bedsheet,
 /turf/open/floor/carpet,
 /area/awaymission/undergroundoutpost45/mining)
+"we" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 26
+	},
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/awaymission/undergroundoutpost45/engineering)
 "wf" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron{
@@ -5999,9 +5959,7 @@
 /area/awaymission/undergroundoutpost45/mining)
 "wg" = (
 /obj/machinery/light/small/directional/north,
-/obj/item/kirbyplants{
-	layer = 5
-	},
+/obj/item/kirbyplants,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -6136,9 +6094,7 @@
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
 "xd" = (
-/obj/machinery/meter{
-	layer = 3.3
-	},
+/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -6440,6 +6396,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/gateway)
+"yr" = (
+/obj/structure/glowshroom/single,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "yN" = (
 /obj/structure/chair/office/light{
 	dir = 1;
@@ -6457,14 +6417,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/gateway)
-"zb" = (
+"yX" = (
 /obj/structure/alien/weeds,
-/obj/structure/alien/resin/wall,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
+/obj/structure/glowshroom/single,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/misc/asteroid/plasma,
 /area/awaymission/undergroundoutpost45/caves)
 "ze" = (
 /obj/structure/table,
@@ -6484,6 +6441,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/research)
+"zg" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "zn" = (
 /obj/machinery/light/small/directional/east,
 /obj/machinery/airalarm/directional/east,
@@ -6493,13 +6454,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
-"zq" = (
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "zr" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -6531,22 +6485,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
-"zK" = (
+"zT" = (
 /obj/structure/alien/weeds,
-/obj/structure/bed/nest,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"zO" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
+/obj/structure/alien/resin/wall,
+/turf/open/misc/asteroid/plasma,
 /area/awaymission/undergroundoutpost45/caves)
 "zX" = (
 /obj/structure/closet/secure_closet{
@@ -6664,16 +6606,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"BL" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/obj/effect/mob_spawn/corpse/human,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "BN" = (
 /obj/machinery/computer/monitor{
 	dir = 1;
@@ -6683,24 +6615,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
-"BQ" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"Cd" = (
-/obj/structure/alien/weeds,
-/obj/structure/glowshroom/single,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Cj" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced/spawner/directional/north,
@@ -6749,6 +6663,14 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"CM" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/white,
+/area/awaymission/undergroundoutpost45/research)
 "CT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -6758,6 +6680,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"CW" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/research)
 "De" = (
 /obj/machinery/computer/monitor{
 	name = "primary power monitoring console"
@@ -6785,6 +6715,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/gateway)
+"Dw" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Dz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6807,16 +6741,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/awaymission/undergroundoutpost45/gateway)
-"DJ" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/effect/turf_decal/stripes/asteroid/line{
-	dir = 6
-	},
-/turf/open/floor/plating{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "DL" = (
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 4
@@ -6893,6 +6817,13 @@
 	dir = 5
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"ET" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron/cafeteria{
+	dir = 5
+	},
+/area/awaymission/undergroundoutpost45/research)
 "Fd" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/command/glass{
@@ -6910,6 +6841,10 @@
 /obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/carpet,
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"Fx" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "FA" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -6926,6 +6861,11 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/awaymission/undergroundoutpost45/central)
+"FU" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Gc" = (
 /obj/machinery/light/blacklight/directional/west,
 /obj/machinery/airalarm/directional/west,
@@ -6946,14 +6886,6 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
-"Gn" = (
-/obj/structure/alien/weeds,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Gp" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/yellow,
@@ -6969,11 +6901,23 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/research)
+"GB" = (
+/obj/structure/closet/crate,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "GI" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"GV" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
+"Hb" = (
+/obj/structure/ore_box,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Hp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -7001,15 +6945,6 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
-"HW" = (
-/obj/structure/alien/weeds,
-/obj/structure/glowshroom/single,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Ic" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -7032,6 +6967,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"Im" = (
+/obj/structure/alien/weeds,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Iw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/purple{
@@ -7056,14 +6995,10 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/awaymission/undergroundoutpost45/central)
-"IT" = (
+"IQ" = (
 /obj/structure/alien/weeds,
-/obj/effect/mob_spawn/corpse/human,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/misc/asteroid/plasma,
 /area/awaymission/undergroundoutpost45/caves)
 "IV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7080,6 +7015,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/research)
+"Jc" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Ji" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -7147,21 +7086,18 @@
 	dir = 1
 	},
 /area/awaymission/undergroundoutpost45/research)
+"Ks" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 6
+	},
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "KE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/awaymission/undergroundoutpost45/research)
-"KN" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "KO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -7178,14 +7114,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"KU" = (
-/obj/structure/closet/crate,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "KW" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -7204,42 +7132,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
-"Lb" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/mob_spawn/corpse/human,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"Lk" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/mob_spawn/corpse/human,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"Lo" = (
-/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
-	dir = 4
-	},
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"Lz" = (
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 351.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "LT" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
@@ -7286,21 +7178,10 @@
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"Mx" = (
-/obj/machinery/light/small/directional/east,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"MC" = (
-/obj/machinery/light/small/directional/west,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
+"ME" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/misc/asteroid/plasma,
 /area/awaymission/undergroundoutpost45/caves)
 "MJ" = (
 /obj/machinery/light/blacklight/directional/west,
@@ -7308,6 +7189,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/central)
+"MS" = (
+/obj/structure/alien/resin/membrane,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Nd" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/airalarm/directional/west,
@@ -7388,6 +7273,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/research)
+"Om" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Oq" = (
 /obj/machinery/light/small/directional/south,
 /obj/structure/bed{
@@ -7415,14 +7304,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
-"OF" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/effect/turf_decal/stripes/asteroid/line,
-/turf/open/floor/plating{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "OL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
@@ -7457,6 +7338,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general,
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/research)
+"PA" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "PB" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -7510,19 +7397,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet,
 /area/awaymission/undergroundoutpost45/central)
-"Qu" = (
-/obj/structure/disposaloutlet{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Qw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7551,6 +7425,11 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/research)
+"QV" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "QX" = (
 /obj/structure/table,
 /obj/item/storage/medkit/regular,
@@ -7564,6 +7443,12 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/awaymission/undergroundoutpost45/central)
+"Rl" = (
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
+	dir = 4
+	},
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Rn" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7580,14 +7465,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/awaymission/undergroundoutpost45/gateway)
-"RA" = (
-/obj/machinery/light/small/directional/south,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "RC" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -7657,6 +7534,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/gateway)
+"Sq" = (
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "Su" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -7691,14 +7571,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"Tr" = (
-/obj/structure/alien/resin/membrane,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Tu" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -7707,6 +7579,11 @@
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"Ty" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "TC" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
@@ -7747,25 +7624,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/research)
-"UH" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"UM" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/effect/turf_decal/stripes/asteroid/line{
-	dir = 10
-	},
-/turf/open/floor/plating{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "UU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -7790,6 +7648,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
+"VI" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "VM" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -7825,15 +7689,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general,
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/research)
-"Wd" = (
-/obj/structure/alien/resin/wall,
-/obj/structure/alien/weeds,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Wk" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7860,14 +7715,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"WE" = (
-/obj/structure/glowshroom/single,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 351.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "WG" = (
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 4
@@ -7928,14 +7775,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron/white,
 /area/awaymission/undergroundoutpost45/research)
-"XF" = (
-/obj/structure/ore_box,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "XJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -7950,28 +7789,10 @@
 /obj/item/folder/red,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
-"XQ" = (
-/obj/structure/glowshroom/single,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "XU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/gateway)
-"Yb" = (
-/obj/structure/alien/weeds,
-/obj/structure/bed/nest,
-/obj/effect/mob_spawn/corpse/human,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "Yf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -8006,6 +7827,10 @@
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"YL" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "YM" = (
 /obj/machinery/conveyor{
 	id = "UO45_mining"
@@ -8016,6 +7841,11 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/undergroundoutpost45/mining)
+"YR" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/misc/asteroid/plasma,
+/area/awaymission/undergroundoutpost45/caves)
 "YV" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -8026,23 +7856,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/awaymission/undergroundoutpost45/engineering)
-"Zs" = (
-/obj/machinery/light/small/directional/north,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
-"ZD" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/misc/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaymission/undergroundoutpost45/caves)
 "ZH" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -26509,8 +26322,8 @@ ad
 ad
 ad
 ad
-Yb
-ZD
+VI
+YR
 ad
 ad
 ad
@@ -26766,9 +26579,9 @@ ad
 ad
 ad
 ad
-zK
-KN
-Gn
+Ty
+FU
+Im
 ad
 ad
 ad
@@ -27023,10 +26836,10 @@ ad
 ad
 ad
 ad
-HW
-Gn
-zq
-Tr
+ti
+Im
+Sq
+MS
 ad
 ad
 ad
@@ -27281,9 +27094,9 @@ ad
 ad
 ad
 ad
-Gn
-zq
-ci
+Im
+Sq
+Fx
 ad
 ad
 ad
@@ -27483,7 +27296,7 @@ jG
 gw
 ky
 DB
-ma
+cM
 mB
 gK
 ad
@@ -27539,12 +27352,12 @@ ad
 ad
 ad
 ad
-zq
-zq
-zO
+Sq
+Sq
+GV
 ad
-UH
-Yb
+IQ
+VI
 ad
 ad
 ad
@@ -27797,11 +27610,11 @@ ad
 ad
 ad
 ad
-Lk
-zq
-KN
-ZD
-BL
+ME
+Sq
+FU
+YR
+PA
 ad
 ad
 ad
@@ -28048,17 +27861,17 @@ ad
 ad
 ad
 ad
-Yb
-ZD
-zb
-Wd
+VI
+YR
+zT
+eG
 ad
 ad
 ad
-zq
-Gn
-zq
-Tr
+Sq
+Im
+Sq
+MS
 ad
 ad
 ad
@@ -28304,17 +28117,17 @@ ad
 ad
 ad
 ad
-Yb
-zK
-Gn
-IT
-zb
+VI
+Ty
+Im
+QV
+zT
 ad
 ad
 ad
-XQ
-zq
-BQ
+yr
+Sq
+zg
 ad
 ad
 ad
@@ -28562,16 +28375,16 @@ ad
 ad
 ad
 ad
-Cd
-zq
-BQ
-ZD
+yX
+Sq
+zg
+YR
 ad
 ad
-Tr
-zq
-zq
-Tr
+MS
+Sq
+Sq
+MS
 ad
 ad
 ad
@@ -28771,7 +28584,7 @@ lt
 XU
 mG
 gw
-zq
+Sq
 ad
 ad
 ad
@@ -28820,21 +28633,21 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-Gn
+Sq
+Sq
+Sq
+Im
 ad
-Lb
-zq
-zq
-ad
-ad
+tK
+Sq
+Sq
 ad
 ad
 ad
-Yb
-Gn
+ad
+ad
+VI
+Im
 ad
 ad
 ad
@@ -29028,8 +28841,8 @@ Qb
 mc
 mH
 gw
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -29078,20 +28891,20 @@ ad
 ad
 ad
 ad
-zO
-Gn
-Gn
-Gn
-Gn
-zq
-zq
+GV
+Im
+Im
+Im
+Im
+Sq
+Sq
 ad
 ad
 ad
 ad
-IT
-ZD
-UH
+QV
+YR
+IQ
 ad
 ad
 ad
@@ -29285,8 +29098,8 @@ kl
 gK
 gw
 gv
-zq
-XQ
+Sq
+yr
 ad
 ad
 ad
@@ -29337,18 +29150,18 @@ ad
 ad
 ad
 ad
-Gn
-zq
-zq
-zq
-zq
-Lk
-Tr
-zO
-XQ
-BQ
-zq
-zb
+Im
+Sq
+Sq
+Sq
+Sq
+ME
+MS
+GV
+yr
+zg
+Sq
+zT
 ad
 ad
 ad
@@ -29541,10 +29354,10 @@ SZ
 lv
 md
 gU
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -29594,18 +29407,18 @@ ad
 ad
 ad
 ad
-Tr
-zq
-zq
-zq
-Gn
-zq
-zq
-zq
-zq
-zq
-zb
-Wd
+MS
+Sq
+Sq
+Sq
+Im
+Sq
+Sq
+Sq
+Sq
+Sq
+zT
+eG
 ad
 ad
 ad
@@ -29798,10 +29611,10 @@ Dt
 lv
 me
 gU
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -29851,15 +29664,15 @@ ad
 ad
 ad
 ad
-IT
-BQ
-zq
-Gn
-Gn
-ZD
-zq
-Gn
-Gn
+QV
+zg
+Sq
+Im
+Im
+YR
+Sq
+Im
+Im
 ad
 ad
 ad
@@ -30055,10 +29868,10 @@ kF
 lx
 gw
 gv
-Zs
-zq
-zq
-zq
+Dw
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -30108,15 +29921,15 @@ ad
 ad
 ad
 ad
-UH
-Gn
-zq
-Gn
+IQ
+Im
+Sq
+Im
 ad
 ad
-KN
-Yb
-zK
+FU
+VI
+Ty
 ad
 ad
 ad
@@ -30304,18 +30117,18 @@ gL
 gv
 gv
 gv
-XQ
-zq
-zq
+yr
+Sq
+Sq
 gv
 kG
 ly
 gw
-zq
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -30366,8 +30179,8 @@ ad
 ad
 ad
 ad
-Gn
-zq
+Im
+Sq
 ad
 ad
 ad
@@ -30559,20 +30372,20 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 gU
 kH
 ly
 gU
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -30613,8 +30426,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -30624,7 +30437,7 @@ ad
 ad
 ad
 ad
-Tr
+MS
 ad
 ad
 ad
@@ -30815,22 +30628,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gU
 kI
 ly
 gU
-zq
-zq
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -30871,8 +30684,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -30881,7 +30694,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -31072,23 +30885,23 @@ ad
 ad
 ad
 ad
-XQ
-zq
-XQ
-zq
-zq
-zq
+yr
+Sq
+yr
+Sq
+Sq
+Sq
 gU
 kH
 ly
 gU
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -31129,16 +30942,16 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -31330,22 +31143,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-RA
+Sq
+Sq
+Sq
+Sq
+YL
 gw
 yR
 lA
 gw
-Zs
-zq
-zq
-zq
-zq
-zq
-zq
+Dw
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -31387,14 +31200,14 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -31587,22 +31400,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 gU
 du
 ly
 gU
-zq
-zq
-XQ
-zq
-zq
-XQ
-zq
+Sq
+Sq
+yr
+Sq
+Sq
+yr
+Sq
 ad
 ad
 ad
@@ -31644,14 +31457,14 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -31843,23 +31656,23 @@ ad
 ad
 ad
 ad
-zq
-XQ
-zq
-zq
-zq
-zq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
 gU
 du
 lB
 gU
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -31902,13 +31715,13 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -32100,22 +31913,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gU
 Iw
 ly
 gU
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -32160,11 +31973,11 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -32358,20 +32171,20 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+Sq
+yr
 gw
 kH
 lC
 gv
-zq
-XQ
-zq
-zq
-XQ
+Sq
+yr
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -32418,9 +32231,9 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -32616,16 +32429,16 @@ ad
 ad
 ad
 ad
-zq
-XQ
-zq
+Sq
+yr
+Sq
 gz
 gw
 kL
 lD
 gv
 hc
-zq
+Sq
 ad
 gz
 hc
@@ -32675,9 +32488,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -32932,8 +32745,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -33131,7 +32944,7 @@ gX
 hB
 ig
 ze
-iY
+CM
 jr
 jO
 mU
@@ -33189,8 +33002,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -33446,7 +33259,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -33703,7 +33516,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -33959,8 +33772,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -34160,8 +33973,8 @@ hF
 YF
 iC
 hc
-zq
-zq
+Sq
+Sq
 gz
 mU
 lJ
@@ -34215,8 +34028,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -34417,8 +34230,8 @@ WT
 ik
 iD
 hc
-zq
-zq
+Sq
+Sq
 hH
 Jo
 lM
@@ -34427,7 +34240,7 @@ mP
 nn
 nQ
 oz
-pf
+lV
 gy
 ql
 qT
@@ -34472,8 +34285,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -34482,8 +34295,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -34674,15 +34487,15 @@ hH
 hH
 hc
 gz
-zq
-zq
+Sq
+Sq
 hH
 Jo
 lL
 mj
 mP
 mP
-nR
+ET
 oA
 pg
 gy
@@ -34729,18 +34542,18 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
-XQ
-zq
-zq
-zq
+Sq
+yr
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -34925,14 +34738,14 @@ ad
 ad
 ad
 ad
-zq
-MC
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Om
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 hH
 Jo
 ON
@@ -34986,18 +34799,18 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -35181,15 +34994,15 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-RA
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+YL
 gz
 IX
 lN
@@ -35243,18 +35056,18 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -35438,21 +35251,21 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
 hH
 Mg
 lM
 hH
 mR
-no
+sc
 RC
 oC
 ph
@@ -35501,17 +35314,17 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
 ad
-XQ
-zq
-zq
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -35695,15 +35508,15 @@ ad
 ad
 ad
 ad
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 hH
 kU
 lM
@@ -35758,17 +35571,17 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -35951,22 +35764,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
 hH
 kV
 lM
 hH
 mT
-nq
+CW
 nV
 WG
 lu
@@ -35978,7 +35791,7 @@ sw
 gz
 tR
 gz
-zq
+Sq
 ad
 ad
 ad
@@ -36016,15 +35829,15 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -36208,15 +36021,15 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
 gz
 gz
 kW
@@ -36235,9 +36048,9 @@ sx
 gz
 tP
 hc
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -36273,15 +36086,15 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
-XQ
-zq
-zq
-XQ
+yr
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -36466,14 +36279,14 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gz
 gn
 kV
@@ -36494,8 +36307,8 @@ tS
 hc
 hc
 hc
-Zs
-zq
+Dw
+Sq
 ad
 ad
 ad
@@ -36531,14 +36344,14 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -36723,14 +36536,14 @@ aC
 aC
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gz
 iL
 kX
@@ -36751,8 +36564,8 @@ tT
 gy
 uN
 hH
-ah
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -36785,18 +36598,18 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -36980,13 +36793,13 @@ fQ
 aC
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 gz
 gz
@@ -37008,9 +36821,9 @@ tP
 gc
 uO
 vk
-ah
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -37041,19 +36854,19 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-XQ
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -37237,13 +37050,13 @@ ZM
 aC
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
 ad
 ad
 gz
@@ -37265,10 +37078,10 @@ tV
 gy
 uP
 hH
-ah
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -37297,21 +37110,21 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+yr
 ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -37493,15 +37306,15 @@ fC
 fS
 aC
 ad
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 gy
 NR
@@ -37522,10 +37335,10 @@ gz
 hc
 hc
 hc
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -37552,23 +37365,23 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -37750,15 +37563,15 @@ fD
 aC
 aC
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 gx
 la
@@ -37767,27 +37580,23 @@ Xq
 gy
 tP
 gz
-zq
-zq
-XQ
-zq
-zq
-zq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-ad
-ad
-ad
-ad
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -37808,10 +37617,14 @@ ad
 ad
 ad
 ad
-XQ
-zq
-zq
-XQ
+ad
+ad
+ad
+ad
+yr
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -37820,12 +37633,12 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -38008,14 +37821,14 @@ fT
 aC
 ad
 ad
-zq
-zq
-Mx
-zq
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Jc
+Sq
+Sq
+Sq
+Sq
+yr
 ad
 gy
 lb
@@ -38024,23 +37837,23 @@ mn
 gy
 tP
 hc
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
 ad
 ad
 ad
@@ -38077,12 +37890,12 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -38284,19 +38097,19 @@ hc
 gr
 gr
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -38334,17 +38147,17 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
-zq
-zq
-zq
-ad
-ad
+Sq
+Sq
+Sq
 ad
 ad
-zq
+ad
+ad
+Sq
 ad
 ad
 ad
@@ -38542,18 +38355,18 @@ nD
 pl
 gr
 gr
-zq
-XQ
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
-XQ
+Sq
+yr
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -38592,16 +38405,16 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
-zq
+Sq
 ad
-zq
+Sq
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -38799,21 +38612,18 @@ gs
 pm
 pN
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-ad
-ad
-ad
+Sq
 ad
 ad
 ad
@@ -38849,15 +38659,18 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-ad
-zq
 ad
 ad
-zq
-zq
+ad
+Sq
+Sq
+Sq
+ad
+Sq
+ad
+ad
+Sq
+Sq
 ad
 ad
 ad
@@ -39056,21 +38869,18 @@ gs
 gs
 pO
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-ad
-ad
-ad
+Sq
 ad
 ad
 ad
@@ -39110,10 +38920,13 @@ ad
 ad
 ad
 ad
-zq
 ad
 ad
-zq
+ad
+Sq
+ad
+ad
+Sq
 ad
 ad
 ad
@@ -39291,15 +39104,15 @@ fq
 Ai
 fV
 ae
-zq
-zq
-zq
-zq
-MC
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+Sq
+Om
+Sq
+Sq
+Sq
+yr
 gg
 gg
 VM
@@ -39313,18 +39126,18 @@ oG
 pn
 pP
 gr
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -39367,10 +39180,10 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -39548,16 +39361,16 @@ fq
 Ai
 aF
 aP
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 fK
 Ro
 lf
@@ -39572,16 +39385,16 @@ fN
 fK
 gg
 gg
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -39624,9 +39437,9 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -39805,16 +39618,16 @@ fr
 Ai
 fW
 aP
-zq
-zq
-zq
-XQ
-zq
-zq
-XQ
-zq
-zq
-zq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
 gr
 KT
 gs
@@ -39829,19 +39642,16 @@ pQ
 qs
 qY
 gg
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-zq
-ad
-ad
-ad
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -39876,14 +39686,17 @@ ad
 ad
 ad
 ad
-zq
+ad
+ad
+ad
+Sq
 ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -40062,16 +39875,16 @@ PB
 fH
 fX
 aP
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 Ro
 gs
@@ -40086,21 +39899,17 @@ pR
 Ie
 mt
 gg
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-ad
-ad
-ad
-ad
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -40132,14 +39941,18 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+ad
+ad
+ad
+ad
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -40319,16 +40132,16 @@ HR
 fI
 fY
 an
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gg
 Ro
 lg
@@ -40344,18 +40157,16 @@ fO
 fO
 gg
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
-zq
-zq
-zq
-zq
-zq
-ad
-ad
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -40395,8 +40206,10 @@ ad
 ad
 ad
 ad
-zq
-zq
+ad
+ad
+Sq
+Sq
 ad
 ad
 ad
@@ -40576,10 +40389,10 @@ ae
 ae
 an
 an
-zq
-zq
-zq
-XQ
+Sq
+Sq
+Sq
+yr
 gg
 gr
 gr
@@ -40601,23 +40414,23 @@ qu
 mu
 fO
 ad
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -40652,8 +40465,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -40832,10 +40645,10 @@ hZ
 ae
 ad
 ad
-XQ
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
 gg
 gg
 hI
@@ -40859,24 +40672,24 @@ qZ
 fN
 ad
 ad
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -40904,12 +40717,12 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -41087,12 +40900,12 @@ aS
 eR
 fe
 ae
-zq
-zq
-zq
-zq
-zq
-RA
+Sq
+Sq
+Sq
+Sq
+Sq
+YL
 gg
 hi
 hJ
@@ -41117,24 +40930,24 @@ fO
 fO
 fK
 gg
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -41163,10 +40976,10 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -41344,12 +41157,12 @@ aS
 aS
 ff
 aP
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 hj
 hK
@@ -41375,8 +41188,8 @@ sA
 ts
 gg
 gg
-zq
-zq
+Sq
+Sq
 vI
 vI
 vI
@@ -41384,15 +41197,15 @@ vI
 vJ
 vI
 vI
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -41423,7 +41236,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -41601,12 +41414,12 @@ eb
 eb
 ff
 aP
-zq
-zq
-XQ
-zq
-zq
-zq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
 gr
 hk
 YK
@@ -41632,8 +41445,8 @@ sB
 pX
 tX
 gg
-zq
-Qu
+Sq
+kg
 vJ
 wb
 rs
@@ -41643,15 +41456,15 @@ wb
 vI
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -41679,8 +41492,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -41858,12 +41671,12 @@ aS
 eS
 ff
 aP
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 hl
 hM
@@ -41902,16 +41715,16 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -41936,7 +41749,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -41945,7 +41758,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -42103,7 +41916,7 @@ ad
 ad
 ad
 ad
-Lz
+Sq
 an
 bq
 aC
@@ -42115,12 +41928,12 @@ eb
 eb
 fe
 aP
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 hm
 hN
@@ -42162,13 +41975,13 @@ vI
 vI
 vJ
 vI
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -42192,8 +42005,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -42202,7 +42015,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -42359,8 +42172,8 @@ ad
 ad
 ad
 ad
-Lz
-WE
+Sq
+yr
 ae
 bq
 aD
@@ -42372,12 +42185,12 @@ aS
 aS
 fg
 an
-Zs
-zq
-zq
-zq
-XQ
-zq
+Dw
+Sq
+Sq
+Sq
+yr
+Sq
 gg
 hn
 hO
@@ -42419,14 +42232,14 @@ xE
 xl
 xl
 vJ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-XF
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Hb
 ad
 ad
 ad
@@ -42448,8 +42261,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -42458,9 +42271,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -42615,9 +42428,9 @@ ad
 ad
 ad
 ad
-WE
-Lz
-Lz
+yr
+Sq
+Sq
 an
 bq
 aC
@@ -42630,9 +42443,9 @@ eb
 fh
 an
 an
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 fK
@@ -42679,11 +42492,11 @@ vI
 vI
 vI
 vI
-Zs
-zq
-zq
-zq
-KU
+Dw
+Sq
+Sq
+Sq
+GB
 ad
 ad
 ad
@@ -42704,8 +42517,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -42716,7 +42529,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -42872,9 +42685,9 @@ ad
 ad
 ad
 ad
-Lz
-Lz
-Lz
+Sq
+Sq
+Sq
 an
 al
 aD
@@ -42936,16 +42749,16 @@ ww
 Ni
 yc
 ww
-UM
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+vB
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -42961,7 +42774,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -42972,8 +42785,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -43129,9 +42942,9 @@ ad
 ad
 ad
 ad
-Lz
-Lz
-Lz
+Sq
+Sq
+Sq
 aP
 bY
 aD
@@ -43193,20 +43006,20 @@ xX
 ya
 yd
 yf
-OF
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+fs
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -43215,22 +43028,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -43387,8 +43200,8 @@ ad
 ad
 ad
 ad
-WE
-Lz
+yr
+Sq
 aP
 bq
 cX
@@ -43450,45 +43263,45 @@ yj
 yb
 ye
 ww
-DJ
-zq
-zq
-zq
-zq
-zq
+Ks
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-XQ
+Sq
+Sq
+yr
 ad
 ad
 ad
@@ -43644,8 +43457,8 @@ ad
 ad
 ad
 ad
-Lz
-Lz
+Sq
+Sq
 an
 bZ
 bq
@@ -43707,46 +43520,46 @@ vI
 vI
 vI
 vI
-Zs
-zq
-zq
-zq
-zq
-zq
+Dw
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
-zq
+Sq
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-ad
-ad
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
+Sq
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
-zq
+ad
+ad
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -43901,8 +43714,8 @@ ad
 ad
 ad
 ad
-Lz
-Lz
+Sq
+Sq
 an
 cS
 al
@@ -43930,29 +43743,29 @@ fO
 fy
 kv
 ae
-zq
-zq
-zq
-zq
-zq
-MC
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Om
+Sq
+Sq
+Sq
 gr
 rQ
 sF
 gr
-zq
-zq
-zq
-zq
-zq
-MC
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Om
+Sq
+Sq
+Sq
+Sq
 ad
 vJ
 xu
@@ -43960,16 +43773,16 @@ xB
 fP
 xQ
 vI
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -43978,12 +43791,12 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -43996,14 +43809,14 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44158,8 +43971,8 @@ ad
 ad
 ad
 ad
-WE
-Lz
+yr
+Sq
 an
 cT
 bq
@@ -44187,29 +44000,29 @@ fN
 ka
 kw
 an
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 rQ
 sG
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 vI
 xu
@@ -44217,16 +44030,16 @@ xC
 xK
 xR
 vJ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44235,9 +44048,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44254,14 +44067,14 @@ ad
 ad
 ad
 ad
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44415,8 +44228,8 @@ ad
 ad
 ad
 ad
-Lz
-Lz
+Sq
+Sq
 ae
 cU
 bq
@@ -44444,45 +44257,45 @@ fN
 kb
 kx
 an
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 rS
 sF
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 vI
 xv
 xD
 xL
 xS
 vI
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44493,9 +44306,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44512,12 +44325,12 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44701,43 +44514,43 @@ jD
 kc
 an
 an
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-RA
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+YL
 gg
 BI
 sH
 gg
-Zs
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Dw
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 vI
 vI
 vJ
 vI
 vJ
 vI
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44751,9 +44564,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -44771,9 +44584,9 @@ ad
 ad
 ad
 ad
-zq
-XQ
-zq
+Sq
+yr
+Sq
 ad
 ad
 ad
@@ -44941,8 +44754,8 @@ et
 eH
 eV
 an
-zq
-zq
+Sq
+Sq
 ae
 an
 an
@@ -44957,43 +44770,43 @@ an
 ae
 an
 ae
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 rQ
 Tf
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -45009,8 +44822,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -45028,7 +44841,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -45198,59 +45011,59 @@ aP
 eI
 aP
 an
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-MC
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Om
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 rU
 Tf
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -45267,8 +45080,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -45285,7 +45098,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -45451,61 +45264,61 @@ ad
 ad
 ad
 ad
-ah
-ah
-ah
-MC
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Om
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 gr
 rV
 sJ
 gr
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -45524,9 +45337,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -45542,7 +45355,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -45709,54 +45522,54 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 fK
 rW
 sK
 fK
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -45782,8 +45595,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -45793,13 +45606,13 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -45970,29 +45783,29 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ni
 ni
 ln
@@ -46005,11 +45818,11 @@ qb
 qb
 ni
 ni
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -46040,8 +45853,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -46049,8 +45862,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -46230,26 +46043,26 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ni
 qC
 rh
@@ -46297,16 +46110,16 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -46489,24 +46302,24 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 qb
 qD
 ri
@@ -46555,14 +46368,14 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -46747,23 +46560,23 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 qb
 qD
 rj
@@ -46812,8 +46625,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -47004,23 +46817,23 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-RA
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+YL
 ni
 ln
 rk
@@ -47069,9 +46882,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -47261,24 +47074,24 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ni
 ni
 Qm
@@ -47327,8 +47140,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -47519,23 +47332,23 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ni
 rl
 sd
@@ -47584,9 +47397,9 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -47779,11 +47592,11 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -47791,8 +47604,8 @@ ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ni
 rm
 rj
@@ -47836,15 +47649,15 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -48049,7 +47862,7 @@ ad
 ad
 ad
 wn
-Lo
+Rl
 ln
 rn
 sf
@@ -48059,7 +47872,7 @@ rr
 qb
 RF
 vy
-vW
+kN
 ni
 ln
 ni
@@ -48095,15 +47908,15 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
-zq
-zq
-zq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -48355,18 +48168,18 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-ad
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -48612,7 +48425,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -48813,7 +48626,7 @@ ad
 ad
 ad
 ln
-lX
+we
 mz
 ln
 nK
@@ -48869,7 +48682,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -49120,13 +48933,13 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -49383,7 +49196,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -49640,7 +49453,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -49897,7 +49710,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -50154,7 +49967,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -50400,8 +50213,8 @@ ad
 ad
 ad
 ad
-zq
-XQ
+Sq
+yr
 ad
 ad
 ad
@@ -50411,7 +50224,7 @@ ad
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
@@ -50654,21 +50467,21 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -50911,21 +50724,21 @@ ad
 ad
 ad
 ad
-zq
-XQ
-zq
+Sq
+yr
+Sq
 ad
 ad
 ad
-zq
+Sq
 ad
 ad
 ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -51167,22 +50980,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
+Sq
+Sq
 ad
 ad
 ad
 ad
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -51424,22 +51237,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-XQ
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+yr
+Sq
 ad
-zq
-zq
+Sq
+Sq
 ad
 ad
 ad
@@ -51681,22 +51494,22 @@ ad
 ad
 ad
 ad
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -51939,20 +51752,20 @@ ad
 ad
 ad
 ad
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -52196,19 +52009,19 @@ ad
 ad
 ad
 ad
-zq
-XQ
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
-zq
+Sq
+yr
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 ad
 ad
 ad
@@ -52460,11 +52273,11 @@ ad
 ad
 ad
 ad
-zq
-XQ
-zq
-zq
-zq
+Sq
+yr
+Sq
+Sq
+Sq
 ad
 ad
 ad

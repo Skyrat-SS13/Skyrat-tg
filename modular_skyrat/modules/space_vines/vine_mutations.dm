@@ -36,7 +36,7 @@
 	quality = POSITIVE
 
 /datum/spacevine_mutation/domesticated/on_spread(obj/structure/spacevine/vine_object, turf/target)
-	vine_object.layer = TURF_LAYER
+	vine_object.layer = LOW_FLOOR_LAYER
 	vine_object.plane = FLOOR_PLANE
 
 

@@ -1,6 +1,5 @@
 /proc/make_skyrat_datum_references()
-	make_sprite_accessory_references()
-	make_laugh_datum_references()
+	init_prefs_emotes()
 	make_default_mutant_bodypart_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
@@ -9,30 +8,18 @@
 	populate_total_uf_len_by_block()
 	make_augment_references()
 
-/proc/make_sprite_accessory_references()
-	if(isnull(SSaccessories.sprite_accessories))
-		SSaccessories.sprite_accessories = list()
-	// Here we build the global list for all accessories
-	for(var/path in subtypesof(/datum/sprite_accessory))
-		var/datum/sprite_accessory/P = path
-		if(initial(P.key) && initial(P.name))
-			P = new path()
-			if(isnull(SSaccessories.sprite_accessories[P.key]))
-				SSaccessories.sprite_accessories[P.key] = list()
-			SSaccessories.sprite_accessories[P.key][P.name] = P
-			if(P.genetic)
-				if(!GLOB.dna_mutant_bodypart_blocks[P.key])
-					GLOB.dna_mutant_bodypart_blocks[P.key] = GLOB.dna_total_feature_blocks+1
-				if(!GLOB.genetic_accessories[P.key])
-					GLOB.genetic_accessories[P.key] = list()
-					for(var/color_block in 1 to DNA_FEATURE_COLOR_BLOCKS_PER_FEATURE)
-						GLOB.features_block_lengths["[GLOB.dna_mutant_bodypart_blocks[P.key] + color_block]"] = DNA_BLOCK_SIZE_COLOR
-					GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_FEATURE
+/proc/init_prefs_emotes()
+	//Scream types
+	for(var/spath in subtypesof(/datum/scream_type))
+		var/datum/scream_type/S = new spath()
+		GLOB.scream_types[S.name] = spath
+	sort_list(GLOB.scream_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
-				GLOB.genetic_accessories[P.key] += P.name
-			//TODO: Replace "generic" definitions with something better
-			if(P.generic && !GLOB.generic_accessories[P.key])
-				GLOB.generic_accessories[P.key] = P.generic
+	//Laugh types
+	for(var/spath in subtypesof(/datum/laugh_type))
+		var/datum/laugh_type/L = new spath()
+		GLOB.laugh_types[L.name] = spath
+	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 /proc/make_laugh_datum_references()
 	//Laugh types
@@ -80,11 +67,44 @@
 
 /proc/make_body_marking_dna_block_references()
 	for(var/marking_zone in GLOB.marking_zones)
-		GLOB.dna_body_marking_blocks[marking_zone] = GLOB.dna_total_feature_blocks+1
+		GLOB.dna_body_marking_blocks[marking_zone] = SSaccessories.dna_total_feature_blocks+1
 		for(var/feature_block_set in 1 to MAXIMUM_MARKINGS_PER_LIMB)
 			for(var/color_block in 1 to DNA_MARKING_COLOR_BLOCKS_PER_MARKING)
-				GLOB.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone] + (feature_block_set - 1) * DNA_BLOCKS_PER_MARKING + color_block]"] = DNA_BLOCK_SIZE_COLOR
-		GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
+				SSaccessories.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone] + (feature_block_set - 1) * DNA_BLOCKS_PER_MARKING + color_block]"] = DNA_BLOCK_SIZE_COLOR
+		SSaccessories.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
+
+/proc/init_skyrat_stack_recipes()
+	var/list/additional_stack_recipes = list(
+		/obj/item/stack/sheet/leather = list(GLOB.skyrat_leather_recipes, GLOB.skyrat_leather_belt_recipes),
+		/obj/item/stack/sheet/mineral/titanium = list(GLOB.skyrat_titanium_recipes),
+		/obj/item/stack/sheet/mineral/snow = list(GLOB.skyrat_snow_recipes),
+		/obj/item/stack/sheet/iron = list(GLOB.skyrat_metal_recipes, GLOB.skyrat_metal_airlock_recipes),
+		/obj/item/stack/sheet/plasteel = list(GLOB.skyrat_plasteel_recipes),
+		/obj/item/stack/sheet/mineral/wood = list(GLOB.skyrat_wood_recipes),
+		/obj/item/stack/sheet/cloth = list(GLOB.skyrat_cloth_recipes),
+		/obj/item/stack/ore/glass = list(GLOB.skyrat_sand_recipes),
+		/obj/item/stack/rods = list(GLOB.skyrat_rod_recipes),
+		/obj/item/stack/sheet/mineral/stone = list(GLOB.stone_recipes),
+		/obj/item/stack/sheet/plastic_wall_panel = list(GLOB.plastic_wall_panel_recipes),
+		/obj/item/stack/sheet/spaceshipglass = list(GLOB.spaceshipglass_recipes),
+	)
+	for(var/stack in additional_stack_recipes)
+		for(var/material_list in additional_stack_recipes[stack])
+			for(var/stack_recipe in material_list)
+				if(istype(stack_recipe, /datum/stack_recipe_list))
+					var/datum/stack_recipe_list/stack_recipe_list = stack_recipe
+					for(var/nested_recipe in stack_recipe_list.recipes)
+						if(!nested_recipe)
+							continue
+						var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, nested_recipe)
+						if(recipe.name != "" && recipe.result)
+							GLOB.crafting_recipes += recipe
+				else
+					if(!stack_recipe)
+						continue
+					var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, stack_recipe)
+					if(recipe.name != "" && recipe.result)
+						GLOB.crafting_recipes += recipe
 
 /proc/make_augment_references()
 	// Here we build the global loadout lists
@@ -108,37 +128,6 @@
 	// Chemical reactions aren't handled here because they're loaded in the reagents SS
 	// See Initialize() on SSReagents
 
-	// Loadouts
-	for(var/loadout_path in GLOB.all_loadout_datums)
-		var/datum/loadout_item/loadout_datum = GLOB.all_loadout_datums[loadout_path]
-		if(!loadout_datum.erp_item)
-			continue
-		GLOB.all_loadout_datums -= loadout_path
-		// Ensure this FULLY works later
-
-	var/list/loadout_lists = list(
-		GLOB.loadout_belts,
-		GLOB.loadout_ears,
-		GLOB.loadout_glasses,
-		GLOB.loadout_gloves,
-		GLOB.loadout_helmets,
-		GLOB.loadout_masks,
-		GLOB.loadout_necks,
-		GLOB.loadout_shoes,
-		GLOB.loadout_exosuits,
-		GLOB.loadout_jumpsuits,
-		GLOB.loadout_undersuits,
-		GLOB.loadout_miscunders,
-		GLOB.loadout_accessory,
-		GLOB.loadout_inhand_items,
-		GLOB.loadout_toys,
-		GLOB.loadout_pocket_items,
-	)
-	for(var/loadout_list in loadout_lists)
-		for(var/datum/loadout_item/loadout_typepath in loadout_list)
-			if(!initial(loadout_typepath.erp_item))
-				continue
-			loadout_list -= loadout_typepath
 
 	// Underwear
 	for(var/sprite_name in SSaccessories.underwear_list)

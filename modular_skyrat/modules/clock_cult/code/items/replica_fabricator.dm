@@ -46,45 +46,45 @@
 		. += span_brass("<b>Right Click</b> in-hand to fabricate bronze sheets.")
 
 
-/obj/item/clockwork/replica_fabricator/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(!proximity_flag || !IS_CLOCK(user))
-		return
+/obj/item/clockwork/replica_fabricator/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!IS_CLOCK(user))
+		return NONE
 
-	if(istype(target, /obj/item/stack/sheet)) // If it's an item, handle it seperately
-		attempt_convert_materials(target, user)
-		return
+	if(istype(interacting_with, /obj/item/stack/sheet)) // If it's an item, handle it seperately
+		attempt_convert_materials(interacting_with, user)
+		return ITEM_INTERACT_SUCCESS
 
-	if(!selected_output || !isopenturf(target)) // Now we handle objects
-		return
+	if(!selected_output || !isopenturf(interacting_with)) // Now we handle objects
+		return ITEM_INTERACT_BLOCKING
 
-	var/turf/creation_turf = get_turf(target)
+	var/turf/creation_turf = get_turf(interacting_with)
 
 	if(locate(selected_output.to_create_path) in creation_turf)
 		to_chat(user, span_clockyellow("There is already one of these on this tile!"))
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	if(power < selected_output.cost)
-		to_chat(user, span_clockyellow("[src] needs at least [display_energy(selected_output.cost)] of power to create this."))
-		return
+		to_chat(user, span_clockyellow("[src] needs at least [selected_output.cost]W of power to create this."))
+		return ITEM_INTERACT_BLOCKING
 
 	var/obj/effect/temp_visual/ratvar/constructing_effect/effect = new(creation_turf, selected_output.creation_delay)
 
-	if(!do_after(user, selected_output.creation_delay, target))
+	if(!do_after(user, selected_output.creation_delay, interacting_with))
 		qdel(effect)
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	if(power < selected_output.cost) // Just in case
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	power -= selected_output.cost
 
 	var/atom/created
 
 	if(selected_output.to_create_path)
-		created = new selected_output.to_create_path(get_turf(target))
+		created = new selected_output.to_create_path(get_turf(interacting_with))
 
 	selected_output.on_create(created, creation_turf, user)
+	return ITEM_INTERACT_SUCCESS
 
 
 /obj/item/clockwork/replica_fabricator/attackby(obj/item/attacking_item, mob/user, params)

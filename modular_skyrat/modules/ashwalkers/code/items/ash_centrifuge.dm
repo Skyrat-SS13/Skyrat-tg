@@ -11,7 +11,7 @@
 	. += span_notice("<b>Ctrl + Click</b> to select chemicals to remove.")
 	. += span_notice("<b>Ctrl + Shift + Click</b> to select a chemical to keep, the rest removed.")
 
-/obj/item/reagent_containers/cup/primitive_centrifuge/CtrlClick(mob/user)
+/obj/item/reagent_containers/cup/primitive_centrifuge/item_ctrl_click(mob/user)
 	if(!length(reagents.reagent_list))
 		return
 
@@ -31,7 +31,7 @@
 	user.mind.adjust_experience(/datum/skill/primitive, 5)
 	balloon_alert(user, "removed reagent from [src]")
 
-/obj/item/reagent_containers/cup/primitive_centrifuge/CtrlShiftClick(mob/user)
+/obj/item/reagent_containers/cup/primitive_centrifuge/click_ctrl_shift(mob/user)
 	if(!length(reagents.reagent_list))
 		return
 

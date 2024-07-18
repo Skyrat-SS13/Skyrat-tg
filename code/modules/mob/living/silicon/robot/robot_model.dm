@@ -65,6 +65,9 @@
 		emag_modules += new_module
 		emag_modules -= path
 
+	if(check_holidays(ICE_CREAM_DAY) && !(locate(/obj/item/borg/lollipop) in basic_modules))
+		basic_modules += new /obj/item/borg/lollipop/ice_cream(src)
+
 /obj/item/robot_model/Destroy()
 	basic_modules.Cut()
 	emag_modules.Cut()
@@ -726,6 +729,10 @@
 	model_select_icon = "medical"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	borg_skins = list(
+		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical"),
+		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
+	)
 
 /obj/item/robot_model/miner
 	name = "Miner"

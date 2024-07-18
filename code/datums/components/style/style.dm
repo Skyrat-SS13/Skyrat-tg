@@ -99,7 +99,7 @@
 	ADD_TRAIT(mob_parent, TRAIT_STYLISH, REF(src)) // SKYRAT EDIT ADD - allows style meter chads to do flips
 
 /datum/component/style/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK, PROC_REF(hotswap))
+	RegisterSignal(parent, COMSIG_USER_ITEM_INTERACTION, PROC_REF(hotswap))
 	RegisterSignal(parent, COMSIG_MOB_MINED, PROC_REF(on_mine))
 	RegisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_take_damage))
 	RegisterSignal(parent, COMSIG_MOB_EMOTED("flip"), PROC_REF(on_flip))
@@ -128,7 +128,7 @@
 
 
 /datum/component/style/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK)
+	UnregisterSignal(parent, COMSIG_USER_ITEM_INTERACTION)
 	UnregisterSignal(parent, COMSIG_MOB_MINED)
 	UnregisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE)
 	UnregisterSignal(parent, list(COMSIG_MOB_EMOTED("flip"), COMSIG_MOB_EMOTED("spin")))
@@ -222,7 +222,7 @@
 
 			rank = rank_changed
 	meter.maptext = "[format_rank_string(rank)][generate_multiplier()][generate_actions()]"
-	meter.maptext_y = 100 - 9 * length(actions)
+	meter.maptext_y = 94 - 12 * length(actions)
 	update_meter(point_to_rank(), go_back)
 
 /datum/component/style/proc/update_meter(new_rank, go_back)
@@ -273,19 +273,15 @@
 			return "SPACED!"
 
 /datum/component/style/proc/format_rank_string(new_rank)
-	var/rank_string = rank_to_string(new_rank)
-	var/final_string = ""
-	final_string += "<span class='maptext' style='font-size: 8px'><font color='[rank_to_color(new_rank)]'><b>[rank_string[1]]</b>"
-	final_string += "<span style='font-size: 7px'>[copytext(rank_string, 2)]</span></font></span>"
-	return final_string
+	return MAPTEXT_PIXELLARI("<font color='[rank_to_color(new_rank)]'>[rank_to_string(new_rank)]</font>")
 
 /datum/component/style/proc/generate_multiplier()
-	return "<br><span class='maptext' style='font-size: 7px'>MULTIPLIER: [point_multiplier]X</span>"
+	return "<br>" + MAPTEXT_GRAND9K("MULTIPLIER: [point_multiplier]X")
 
 /datum/component/style/proc/generate_actions()
 	var/action_string = ""
 	for(var/action in actions)
-		action_string += "<br><span class='maptext'>+ <font color='[action_to_color(actions[action])]'>[actions[action]]</font></span>"
+		action_string += "<br>" + MAPTEXT_GRAND9K("+ <font color='[action_to_color(actions[action])]'>[actions[action]]</font>")
 	return action_string
 
 /datum/component/style/proc/action_to_color(action)
@@ -322,26 +318,27 @@
 			return "#364866"
 
 /// A proc that lets a user, when their rank >= `hotswap_rank`, swap items in storage with what's in their hands, simply by clicking on the stored item with a held item
-/datum/component/style/proc/hotswap(mob/living/source, atom/target, obj/item/weapon, proximity_flag, click_parameters)
+/datum/component/style/proc/hotswap(mob/living/source, atom/target, obj/item/weapon, click_parameters)
 	SIGNAL_HANDLER
 
 	if((rank < hotswap_rank) || !isitem(target) || !(target in source.get_all_contents()))
-		return
+		return NONE
 
 	var/obj/item/item_target = target
 
 	if(!(item_target.item_flags & IN_STORAGE))
-		return
+		return NONE
 
 	var/datum/storage/atom_storage = item_target.loc.atom_storage
 
 	if(!atom_storage.can_insert(weapon, source, messages = FALSE))
 		source.balloon_alert(source, "unable to hotswap!")
-		return
+		return NONE
 
 	atom_storage.attempt_insert(weapon, source, override = TRUE)
 	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob/living, put_in_hands), target)
 	source.visible_message(span_notice("[source] quickly swaps [weapon] out with [target]!"), span_notice("You quickly swap [weapon] with [target]."))
+	return ITEM_INTERACT_BLOCKING
 
 // Point givers
 /datum/component/style/proc/on_punch(mob/living/carbon/human/punching_person, atom/attacked_atom, proximity)

@@ -65,7 +65,7 @@
 #define DNA_MONKEY_TAIL_BLOCK 16
 */ //SKYRAT EDIT REMOVAL END
 
-#define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks // SKYRAT EDIT CHANGE - ORIGINAL: #define DNA_FEATURE_BLOCKS 16
+#define DNA_FEATURE_BLOCKS SSaccessories.dna_total_feature_blocks // SKYRAT EDIT CHANGE - ORIGINAL: #define DNA_FEATURE_BLOCKS 16
 // SKYRAT EDIT ADDITION START
 #define DNA_MANDATORY_COLOR_BLOCKS 5
 #define DNA_MUTANT_COLOR_BLOCK 1
@@ -75,7 +75,6 @@
 #define DNA_SKIN_COLOR_BLOCK 5
 #define DNA_POD_HAIR_BLOCK 15
 // SKYRAT EDIT ADDITION END
-
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -99,6 +98,7 @@
 #define ORGAN_SLOT_MONSTER_CORE "monstercore"
 #define ORGAN_SLOT_RIGHT_ARM_AUG "r_arm_device"
 #define ORGAN_SLOT_LEFT_ARM_AUG "l_arm_device" //This one ignores alphabetical order cause the arms should be together
+#define ORGAN_SLOT_SPINE "spine"
 #define ORGAN_SLOT_STOMACH "stomach"
 #define ORGAN_SLOT_STOMACH_AID "stomach_aid"
 #define ORGAN_SLOT_THRUSTERS "thrusters"

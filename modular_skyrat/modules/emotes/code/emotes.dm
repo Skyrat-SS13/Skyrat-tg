@@ -6,6 +6,7 @@
 
 /datum/emote
 	cooldown = EMOTE_DELAY
+	var/muzzle_ignore = FALSE
 
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
@@ -61,6 +62,22 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
 	return
 
+/datum/emote/living/yawn
+	message_robot = "synthesizes a yawn."
+	message_AI = "synthesizes a yawns."
+
+/datum/emote/living/sniff/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(.)
+		var/turf/open/current_turf = get_turf(user)
+		if(istype(current_turf) && current_turf.pollution)
+			if(iscarbon(user))
+				var/mob/living/carbon/carbon_user = user
+				if(carbon_user.internal) //Breathing from internals means we cant smell
+					return
+				carbon_user.next_smell = world.time + SMELL_COOLDOWN
+			current_turf.pollution.smell_act(user)
+
 /datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
 	if(intentional && (!HAS_TRAIT(user, TRAIT_FREERUNNING) && !HAS_TRAIT(user, TRAIT_STYLISH)) && !isobserver(user))
 		user.balloon_alert(user, "not nimble enough!")
@@ -89,7 +106,6 @@
 	message = "snaps twice."
 	message_param = "snaps twice at %t."
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap2.ogg'
@@ -100,7 +116,6 @@
 	message = "snaps thrice."
 	message_param = "snaps thrice at %t."
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg'
@@ -166,6 +181,7 @@
 	key_third_person = "squishes"
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg'
 
@@ -209,6 +225,7 @@
 
 /datum/emote/living/sniff
 	vary = TRUE
+	muzzle_ignore = TRUE
 
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	if(iscarbon(user))
@@ -252,7 +269,6 @@
 	key = "clap"
 	key_third_person = "claps"
 	message = "claps."
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 	audio_cooldown = 5 SECONDS
@@ -275,7 +291,6 @@
 	key_third_person = "claps once"
 	message = "claps once."
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
@@ -374,12 +389,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/caw2.ogg'
-
-/datum/emote/living/whistle
-	key = "whistle"
-	key_third_person = "whistles"
-	message = "whistles."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/blep
 	key = "blep"
@@ -519,6 +528,7 @@
 	key_third_person = "purrs!"
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/raptor_purr.ogg'
 
@@ -527,6 +537,7 @@
 	key_third_person = "purrs!"
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
 
@@ -559,5 +570,9 @@
 	key_third_person = "thumps"
 	message = "thumps their foot!"
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
+
+/datum/emote/living/surrender
+	muzzle_ignore = TRUE

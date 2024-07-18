@@ -1,26 +1,18 @@
 /datum/emote/living/scream
-	message = "screams!"
-	mob_type_blacklist_typecache = list(/mob/living/basic/slime, /mob/living/brain)
 	vary = TRUE
+	mob_type_blacklist_typecache = list(/mob/living/carbon/human, /mob/living/basic/slime, /mob/living/brain) //Humans get specialized scream.
 
-/datum/emote/living/scream/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(!user.is_muzzled() && !HAS_MIND_TRAIT(user, TRAIT_MIMING))
-		var/sound = get_sound(user, TRUE)
-		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
-
-/datum/emote/living/scream/select_message_type(mob/user, intentional)
-	if(!intentional && isanimal(user))
-		return "makes a loud and pained whimper."
-	if(user.is_muzzled())
-		return "makes a very loud noise."
-	. = ..()
-
-/datum/emote/living/scream/get_sound(mob/living/user, override = FALSE)
-	if(!override)
-		return
-	if(iscyborg(user))
+/datum/emote/living/scream/get_sound(mob/living/user)
+	if(issilicon(user))
+		var/mob/living/silicon/silicon_user = user
+		var/datum/scream_type/selected_scream = silicon_user.selected_scream
+		if(isnull(selected_scream))
+			return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
+		if(user.gender == FEMALE && LAZYLEN(selected_scream.female_screamsounds))
+			return pick(selected_scream.female_screamsounds)
+		else
+			return pick(selected_scream.male_screamsounds)
+	if(issilicon(user))
 		return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
 	if(ismonkey(user))
 		return 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
@@ -28,27 +20,28 @@
 		return 'sound/creatures/gorilla.ogg'
 	if(isalien(user))
 		return 'sound/voice/hiss6.ogg'
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(isnull(H.selected_scream)) //For things that don't have a selected scream(npcs)
-			var/datum/species/userspecies = H.dna.species
-			if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
-				if(prob(1))
-					return 'sound/voice/human/wilhelm_scream.ogg'
-				return pick(userspecies.screamsounds)
-			else
-				return pick(userspecies.femalescreamsounds)
-		if(user.gender == MALE || !LAZYLEN(H.selected_scream.female_screamsounds))
-			return pick(H.selected_scream.male_screamsounds)
-		else
-			return pick(H.selected_scream.female_screamsounds)
 
 /datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional)
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot/robot_user = user
 
-		if(R.cell?.charge < 200)
-			to_chat(R, span_warning("Scream module deactivated. Please recharge."))
+		if(robot_user.cell?.charge < STANDARD_CELL_CHARGE * 0.2)
+			to_chat(robot_user , span_warning("Scream module deactivated. Please recharge."))
 			return FALSE
-		R.cell.use(200)
+		robot_user.cell.use(STANDARD_CELL_CHARGE * 0.2)
 	return ..()
+
+/datum/emote/living/carbon/human/scream
+	only_forced_audio = FALSE
+
+/datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	if(isnull(user.selected_scream) || (LAZYLEN(user.selected_scream.male_screamsounds) && LAZYLEN(user.selected_scream.female_screamsounds))) //For things that don't have a selected scream(npcs)
+		if(prob(1))
+			return 'sound/voice/human/wilhelm_scream.ogg'
+		return user.dna.species.get_scream_sound(user)
+	if(user.gender == FEMALE && LAZYLEN(user.selected_scream.female_screamsounds))
+		return pick(user.selected_scream.female_screamsounds)
+	else
+		return pick(user.selected_scream.male_screamsounds)

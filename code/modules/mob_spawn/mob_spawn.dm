@@ -60,26 +60,15 @@
 		spawned_human.undershirt = "Nude"
 		spawned_human.socks = "Nude"
 		spawned_human.bra = "Nude" //SKYRAT EDIT ADDITION
+		randomize_human_normie(spawned_human)
 		if(hairstyle)
-			spawned_human.hairstyle = hairstyle
-		else
-			spawned_human.hairstyle = random_hairstyle(spawned_human.gender)
+			spawned_human.set_hairstyle(hairstyle, update = FALSE)
 		if(facial_hairstyle)
-			spawned_human.facial_hairstyle = facial_hairstyle
-		else
-			spawned_human.facial_hairstyle = random_facial_hairstyle(spawned_human.gender)
+			spawned_human.set_facial_hairstyle(facial_hairstyle, update = FALSE)
 		if(haircolor)
-			spawned_human.hair_color = haircolor
-		else
-			spawned_human.hair_color = "#[random_color()]"
+			spawned_human.set_haircolor(haircolor, update = FALSE)
 		if(facial_haircolor)
-			spawned_human.facial_hair_color = facial_haircolor
-		else
-			spawned_human.facial_hair_color = "#[random_color()]"
-		if(skin_tone)
-			spawned_human.skin_tone = skin_tone
-		else
-			spawned_human.skin_tone = pick(GLOB.skin_tones)
+			spawned_human.set_facial_haircolor(facial_haircolor, update = FALSE)
 		spawned_human.update_body(is_creating = TRUE)
 
 /obj/effect/mob_spawn/proc/name_mob(mob/living/spawned_mob, forced_name)
@@ -140,17 +129,8 @@
 	/// Typepath indicating the kind of job datum this ghost role will have. PLEASE inherit this with a new job datum, it's not hard. jobs come with policy configs.
 	var/spawner_job_path = /datum/job/ghost_role
 
-
-	// SKYRAT EDIT ADDITION
-	/// Do we use a random appearance for this ghost role?
-	var/random_appearance = TRUE
-	/// Can we use our loadout for this role?
-	var/loadout_enabled = FALSE
-	/// Can we use our quirks for this role?
-	var/quirks_enabled = FALSE
-	/// Are we limited to a certain species type? LISTED TYPE
-	var/restricted_species
-	// SKYRAT EDIT END
+	/// Whether this offers a temporary body or not. Essentially, you'll be able to reenter your body after using this spawner.
+	var/temp_body = FALSE
 
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
 	. = ..()
@@ -176,17 +156,17 @@
 	var/user_ckey = user.ckey // Just in case shenanigans happen, we always want to remove it from the list.
 	LAZYADD(ckeys_trying_to_spawn, user_ckey)
 
-	// SKYRAT EDIT ADDITION
+	// SKYRAT EDIT ADDITION START
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
 		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
 		if(incorrect_species != "Yes")
 			LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 			return
-	// SKYRAT EDIT END
+	// SKYRAT EDIT ADDITION END
 
 	if(prompt_ghost)
 		var/prompt = "Become [prompt_name]?"
-		if(user.can_reenter_corpse && user.mind)
+		if(!temp_body && user.can_reenter_corpse && user.mind)
 			prompt += " (Warning, You can no longer be revived!)"
 		var/ghost_role = tgui_alert(usr, prompt, buttons = list("Yes", "No"), timeout = 10 SECONDS)
 		if(ghost_role != "Yes" || !loc || QDELETED(user))
@@ -206,12 +186,12 @@
 		to_chat(user, span_warning("You are banned from this role!"))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
-	// SKYRAT EDIT ADDITION
+	// SKYRAT EDIT ADDITION START
 	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
 		to_chat(user, span_warning("Error, you are banned from playing ghost roles!"))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
-	// SKYRAT EDIT END
+	// SKYRAT EDIT ADDITION END
 	if(!allow_spawn(user, silent = FALSE))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
@@ -240,7 +220,8 @@
 
 	user.log_message("became a [prompt_name].", LOG_GAME)
 	uses -= 1 // Remove a use before trying to spawn to prevent strangeness like the spawner trying to spawn more mobs than it should be able to
-	user.mind = null // dissassociate mind, don't let it follow us to the next life
+	if(!temp_body)
+		user.mind = null // dissassociate mind, don't let it follow us to the next life
 
 	var/created = create(user)
 	LAZYREMOVE(ckeys_trying_to_spawn, user_ckey) // We do this AFTER the create() so that we're basically sure that the user won't be in their ghost body anymore, so they can't click on the spawner again.

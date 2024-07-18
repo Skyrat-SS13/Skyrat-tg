@@ -38,21 +38,17 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 			qdel(destroy_children)
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/cargo_teleporter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!proximity_flag)
-		return ..()
-	if(target == src)
-		return ..()
+/obj/item/cargo_teleporter/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, use_cooldown))
 		to_chat(user, span_warning("[src] is still on cooldown!"))
-		return
+		return ITEM_INTERACT_BLOCKING
 	var/choice = tgui_input_list(user, "Select which cargo mark to teleport the items to?", "Cargo Mark Selection", GLOB.cargo_marks)
 	if(!choice)
-		return ..()
-	if(get_dist(user, target) > 1)
-		return
+		return ITEM_INTERACT_BLOCKING
+	if(get_dist(user, interacting_with) > 1)
+		return ITEM_INTERACT_BLOCKING
 	var/turf/moving_turf = get_turf(choice)
-	var/turf/target_turf = get_turf(target)
+	var/turf/target_turf = get_turf(interacting_with)
 	for(var/check_content in target_turf.contents)
 		if(isobserver(check_content))
 			continue
@@ -68,6 +64,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 		do_teleport(movable_content, moving_turf, asoundout = 'sound/magic/Disable_Tech.ogg')
 	new /obj/effect/decal/cleanable/ash(target_turf)
 	COOLDOWN_START(src, use_cooldown, 8 SECONDS)
+	return ITEM_INTERACT_SUCCESS
 
 /datum/design/cargo_teleporter
 	name = "Cargo Teleporter"
@@ -86,14 +83,14 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
 /datum/techweb_node/cargo_teleporter
-	id = "cargoteleporter"
+	id = TECHWEB_NODE_CARGO_TELEPORTER
 	display_name = "Cargo Teleporter"
 	description = "We can teleport items across long distances, as long as they are not blocked."
-	prereq_ids = list("bluespace_basic", "engineering")
+	prereq_ids = list(TECHWEB_NODE_BLUESPACE_THEORY)
 	design_ids = list(
 		"cargotele",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
 /obj/effect/decal/cleanable/cargo_mark
 	name = "cargo mark"

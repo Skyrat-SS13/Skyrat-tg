@@ -336,7 +336,7 @@
 	if (owner_staminaloss > (minimum_stamina_damage + 1))
 		return
 	else if ((owner_staminaloss >= (minimum_stamina_damage - 1)) && (owner_staminaloss <= (minimum_stamina_damage + 1)))
-		owner.stam_regen_start_time = world.time + STAMINA_REGEN_BLOCK_TIME
+		owner.apply_status_effect(/datum/status_effect/incapacitating/stamcrit)
 		return
 
 	var/final_adjustment = (minimum_stamina_damage - owner_staminaloss)

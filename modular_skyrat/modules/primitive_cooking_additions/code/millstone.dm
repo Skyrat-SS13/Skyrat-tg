@@ -60,7 +60,7 @@
 	balloon_alert(user, "removed all items")
 	return CLICK_ACTION_SUCCESS
 
-/obj/structure/millstone/CtrlShiftClick(mob/user)
+/obj/structure/millstone/click_ctrl_shift(mob/user)
 	set_anchored(!anchored)
 	balloon_alert(user, "[anchored ? "secured" : "unsecured"]")
 

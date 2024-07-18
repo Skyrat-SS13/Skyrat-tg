@@ -1,5 +1,5 @@
 /datum/techweb_node/colony_fabricator_special_tools
-	id = "colony_fabricator_tools"
+	id = TECHWEB_NODE_COLONY_TOOLS
 	display_name = "Colony Fabricator Tool Designs"
 	description = "Contains all of the colony fabricator's tool designs."
 	design_ids = list(
@@ -8,7 +8,7 @@
 		"colony_arc_welder",
 		"colony_compact_drill",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = INFINITE) // God save you
 	hidden = TRUE
 	show_on_wiki = FALSE
 	starting_node = TRUE

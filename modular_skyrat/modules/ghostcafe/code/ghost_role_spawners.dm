@@ -24,6 +24,7 @@
 	if(new_spawn.client)
 		new_spawn.custom_name = null
 		new_spawn.updatename(new_spawn.client)
+		new_spawn.transfer_emote_pref(new_spawn.client)
 		new_spawn.gender = NEUTER
 		var/area/A = get_area(src)
 		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE) SKYRAT PORT -- Needs to be completely rewritten

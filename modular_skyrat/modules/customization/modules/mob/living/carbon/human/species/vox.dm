@@ -33,16 +33,16 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/vox,
 	)
 	custom_worn_icons = list(
-		LOADOUT_ITEM_HEAD = VOX_HEAD_ICON,
-		LOADOUT_ITEM_MASK = VOX_MASK_ICON,
-		LOADOUT_ITEM_SUIT = VOX_SUIT_ICON,
-		LOADOUT_ITEM_UNIFORM = VOX_UNIFORM_ICON,
-		LOADOUT_ITEM_HANDS =  VOX_HANDS_ICON,
-		LOADOUT_ITEM_SHOES = VOX_FEET_ICON,
-		LOADOUT_ITEM_GLASSES = VOX_EYES_ICON,
-		LOADOUT_ITEM_BELT = VOX_BELT_ICON,
-		LOADOUT_ITEM_MISC = VOX_BACK_ICON,
-		LOADOUT_ITEM_EARS = VOX_EARS_ICON
+		OFFSET_HEAD = VOX_HEAD_ICON,
+		OFFSET_FACEMASK = VOX_MASK_ICON,
+		OFFSET_SUIT = VOX_SUIT_ICON,
+		OFFSET_UNIFORM = VOX_UNIFORM_ICON,
+		OFFSET_GLOVES =  VOX_HANDS_ICON,
+		OFFSET_SHOES = VOX_FEET_ICON,
+		OFFSET_GLASSES = VOX_EYES_ICON,
+		OFFSET_BELT = VOX_BELT_ICON,
+		OFFSET_BACK = VOX_BACK_ICON,
+		OFFSET_EARS = VOX_EARS_ICON
 	)
 
 	meat = /obj/item/food/meat/slab/chicken/human //item file in teshari module
@@ -79,7 +79,7 @@
 
 /datum/species/vox/get_custom_worn_icon(item_slot, obj/item/item)
 	// snowflakey but vox legs weird.
-	if(item_slot == LOADOUT_ITEM_SHOES)
+	if(item_slot == OFFSET_SHOES)
 		var/obj/item/bodypart/leg = bodypart_overrides[BODY_ZONE_L_LEG] || bodypart_overrides[BODY_ZONE_R_LEG]
 		if(initial(leg?.limb_id) != "digitigrade")
 			// normal legs, use normal human shoes

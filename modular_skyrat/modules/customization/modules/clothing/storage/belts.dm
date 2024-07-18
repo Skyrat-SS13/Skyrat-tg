@@ -31,7 +31,7 @@
 			/obj/item/nullrod/armblade,
 			/obj/item/nullrod/carp,
 			/obj/item/nullrod/chainsaw,
-			/obj/item/nullrod/claymore/bostaff,
+			/obj/item/nullrod/bostaff,
 			/obj/item/nullrod/hammer,
 			/obj/item/nullrod/pitchfork,
 			/obj/item/nullrod/pride_hammer,
@@ -60,7 +60,7 @@
 		return
 	pouch.atom_storage.dump_content_at(dest_object, dumping_mob)
 
-/obj/item/storage/belt/crusader/CtrlClick(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
+/obj/item/storage/belt/crusader/item_ctrl_click(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
 	. = ..()
 	atom_storage.show_contents(user)
 	return

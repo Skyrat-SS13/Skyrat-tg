@@ -187,7 +187,7 @@
 	breakouttime = 2 MINUTES
 
 //Disassembling shibari stand
-/obj/structure/chair/shibari_stand/CtrlShiftClick(mob/user)
+/obj/structure/chair/shibari_stand/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -205,11 +205,7 @@
 	return TRUE
 
 //Changing color of shibari stand
-/obj/structure/chair/shibari_stand/CtrlClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/chair/shibari_stand/click_ctrl(mob/user)
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
 	var/datum/greyscale_modify_menu/menu = new(

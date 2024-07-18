@@ -42,6 +42,54 @@
 	for(var/i in 1 to 3)
 		new /mob/living/basic/pet/chinchilla(.)
 
+
+/datum/supply_pack/critter/fennec
+	name = "Fennec Crate"
+	desc = "For when you need someone that can really listen to you. \
+		Contains two fennecs. \
+		Warning, does not mean the fennecs will actually listen to you."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(/mob/living/basic/pet/cat/fennec = 2)
+	crate_name = "fennec crate"
+
+/datum/supply_pack/critter/pitbull
+	name = "Pitbull Crate"
+	desc = "Contains three pitbulls. WARNING: These are NOT pedigree studs, and thus may be less than friendly."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(
+		/mob/living/basic/gorilla/pitbull,
+	)
+	crate_name = "pitbull crate"
+
+/datum/supply_pack/critter/pitbull/generate()
+	. = ..()
+	for(var/i in 1 to 3)
+		new /mob/living/basic/gorilla/pitbull(.)
+
+/datum/supply_pack/critter/pitbull/pimpy
+	name = "Pedigree Stud Pitbull Crate"
+	desc = "Contains three pitbulls. Verified at the top of Mount Bullmore to be Pedigree Studs.."
+	cost = CARGO_CRATE_VALUE * 9
+	contains = list(
+		/mob/living/basic/pet/dog/pitbull,
+	)
+	crate_name = "pedigree stud pitbull crate"
+
+/datum/supply_pack/critter/pitbull/generate()
+	. = ..()
+	for(var/i in 1 to 3)
+		new /mob/living/basic/pet/dog/pitbull(.)
+
+/datum/supply_pack/critter/redpanda
+	name = "Red Panda Crate"
+	desc = "Your station needs a little more Wah? Some more red tails? Order this. You'll never escape your sadness."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(
+		/mob/living/basic/pet/fox/redpanda,
+		/mob/living/basic/pet/fox/redpanda,
+	)
+	crate_name = "wah crate"
+
 /*
 *	MEDICAL
 */
@@ -553,8 +601,8 @@
 		/obj/item/storage/part_replacer/cargo,
 		/obj/item/stack/sheet/iron/ten,
 		/obj/item/stack/sheet/iron/five,
-		/obj/item/stock_parts/cell/high,
-		/obj/item/stock_parts/cell/high,
+		/obj/item/stock_parts/power_store/cell/high,
+		/obj/item/stock_parts/power_store/cell/high,
 		/obj/item/stack/cable_coil,
 		/obj/item/book/manual/wiki/barman_recipes,
 		/obj/item/reagent_containers/cup/glass/shaker,

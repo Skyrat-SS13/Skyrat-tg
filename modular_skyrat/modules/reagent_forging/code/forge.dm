@@ -400,7 +400,7 @@
 	playsound(src, 'sound/weapons/parry.ogg', 50, TRUE) // Play a feedback sound to really let players know we just did an upgrade
 
 //this will allow click dragging certain items
-/obj/structure/reagent_forge/MouseDrop_T(obj/attacking_item, mob/living/user)
+/obj/structure/reagent_forge/mouse_drop_receive(atom/attacking_item, mob/user, params)
 	. = ..()
 	if(!isliving(user))
 		return

@@ -9,7 +9,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/tram_controls/split/directional/south,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "cB" = (
 /obj/structure/fluff/tram_rail/electric{
@@ -17,14 +17,27 @@
 	},
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "cX" = (
 /obj/structure/fluff/tram_rail/electric{
 	dir = 1
 	},
 /obj/structure/holosign/barrier/atmos/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
+/area/station/maintenance/central/greater)
+"dd" = (
+/obj/structure/fluff/tram_rail/electric{
+	dir = 1
+	},
+/obj/structure/cable/multilayer/multiz,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 6
+	},
+/turf/open/floor/engine{
+	liquid_height = -30;
+	turf_height = -30
+	},
 /area/station/maintenance/central/greater)
 "dT" = (
 /obj/structure/fluff/tram_rail/electric{
@@ -47,7 +60,8 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
 /area/station/maintenance/central/greater)
 "er" = (
 /obj/effect/turf_decal/sand/plating,
@@ -62,7 +76,7 @@
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic,
 /obj/structure/chair/sofa/bench/tram/left,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "fb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -79,24 +93,24 @@
 /obj/structure/fluff/tram_rail/electric{
 	dir = 1
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "fk" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
 /obj/machinery/door/airlock/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "fw" = (
 /obj/structure/fluff/tram_rail/electric,
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "fy" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram/alt/titanium,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "hB" = (
 /obj/machinery/transport/destination_sign/indicator/directional,
@@ -110,17 +124,24 @@
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic,
 /obj/structure/chair/sofa/bench/tram/right,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "me" = (
 /obj/machinery/light/small/directional/east,
 /turf/template_noop,
 /area/station/maintenance/central/greater)
+"nf" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/maintenance/central/greater)
 "nk" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
 /obj/machinery/transport/tram_controller,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "nH" = (
 /turf/closed/wall,
@@ -128,7 +149,7 @@
 "nV" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "om" = (
 /obj/structure/cable,
@@ -142,25 +163,39 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/central/greater)
+"ph" = (
+/obj/structure/fluff/tram_rail/electric{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/multiz/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/multiz/supply/hidden/layer4,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 10
+	},
+/turf/open/floor/engine{
+	liquid_height = -30;
+	turf_height = -30
+	},
+/area/station/maintenance/central/greater)
 "pr" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram/split,
 /obj/machinery/transport/destination_sign/split/south,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "pG" = (
 /obj/structure/fluff/tram_rail/electric,
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic,
 /obj/effect/landmark/start/hangover,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "qj" = (
 /obj/structure/fluff/tram_rail,
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic,
 /obj/structure/chair/sofa/bench/tram/right,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "qD" = (
 /obj/structure/cable,
@@ -170,7 +205,8 @@
 	name = "Tram Guideway";
 	desc = "There's always a light at the end of the tunnel. It may seem hard to get to it, but you can do it! Just keep working towards it and you'll find the positive side of things. Alternatively, you'll find a tram to the face."
 	},
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/central/greater)
 "rw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -196,7 +232,7 @@
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
 /obj/structure/plaque/static_plaque/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "sU" = (
 /obj/effect/turf_decal/sand/plating,
@@ -211,10 +247,10 @@
 "ts" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "tK" = (
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "tX" = (
 /obj/machinery/light/directional/west,
@@ -223,6 +259,16 @@
 "ub" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/template_noop,
+/area/station/maintenance/central/greater)
+"vX" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 5
+	},
+/turf/open/floor/engine{
+	liquid_height = -30;
+	turf_height = -30
+	},
 /area/station/maintenance/central/greater)
 "yu" = (
 /obj/effect/turf_decal/tile/neutral/tram,
@@ -236,7 +282,19 @@
 "yX" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram/split,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
+/area/station/maintenance/central/greater)
+"zv" = (
+/obj/structure/fluff/tram_rail/electric{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/turf/open/floor/engine{
+	liquid_height = -30;
+	turf_height = -30
+	},
 /area/station/maintenance/central/greater)
 "AP" = (
 /obj/effect/turf_decal/tile/neutral/tram,
@@ -257,7 +315,17 @@
 	},
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
+/area/station/maintenance/central/greater)
+"Bt" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/central/greater)
 "BL" = (
 /obj/effect/turf_decal/tile/neutral/tram,
@@ -285,7 +353,18 @@
 /obj/structure/tram/spoiler{
 	dir = 1
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
+/area/station/maintenance/central/greater)
+"DM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 9
+	},
+/turf/open/floor/engine{
+	liquid_height = -30;
+	turf_height = -30
+	},
 /area/station/maintenance/central/greater)
 "Ev" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -299,7 +378,7 @@
 /obj/structure/tram/spoiler{
 	dir = 4
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "FJ" = (
 /obj/structure/fluff/tram_rail/electric{
@@ -310,12 +389,12 @@
 /obj/structure/chair/sofa/bench/tram/right{
 	dir = 1
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "GJ" = (
 /obj/structure/transport/linear/tram/corner/southwest,
 /obj/structure/tram/spoiler,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "GR" = (
 /obj/structure/railing,
@@ -340,14 +419,14 @@
 /area/station/maintenance/central/greater)
 "HZ" = (
 /obj/structure/holosign/barrier/atmos/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Im" = (
 /obj/structure/transport/linear/tram/corner/northwest,
 /obj/structure/tram/spoiler{
 	dir = 8
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "KL" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -360,7 +439,7 @@
 "Li" = (
 /obj/structure/fluff/tram_rail/electric,
 /obj/structure/holosign/barrier/atmos/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Mf" = (
 /obj/effect/landmark/start/hangover,
@@ -388,7 +467,7 @@
 /obj/structure/chair/sofa/bench/tram/right{
 	dir = 4
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Of" = (
 /obj/machinery/light/cold/directional/north,
@@ -405,7 +484,7 @@
 /obj/structure/fluff/tram_rail/electric{
 	dir = 1
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Oo" = (
 /obj/structure/fluff/tram_rail/end{
@@ -413,7 +492,7 @@
 	},
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Or" = (
 /obj/effect/turf_decal/sand/plating,
@@ -433,7 +512,7 @@
 /area/station/maintenance/central/greater)
 "Pm" = (
 /obj/structure/fluff/tram_rail/electric,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Qa" = (
 /obj/structure/cable,
@@ -442,20 +521,11 @@
 /obj/structure/lattice,
 /turf/open/openspace,
 /area/station/maintenance/central/greater)
-"Qh" = (
-/obj/item/toy/plush/skyrat/blue_cat{
-	pixel_x = 8;
-	pixel_y = -2;
-	name = "paramedic cat";
-	desc = "Coming to the rescue, the paramedic buddies are attached like you wish that severed arm of yours is!"
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/central/greater)
 "Qk" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
 /obj/structure/fluff/tram_rail/electric,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "QP" = (
 /obj/machinery/transport/power_rectifier{
@@ -474,12 +544,21 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
-"Us" = (
-/obj/item/toy/plush/bigdeer{
-	name = "paramedic deer";
-	desc = "Coming to the rescue, the paramedic buddies are attached like you wish that severed arm of yours is!"
+"Va" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/engine{
+	liquid_height = -30;
+	turf_height = -30
+	},
+/area/station/maintenance/central/greater)
+"Vb" = (
+/obj/effect/spawner/random/trash/graffiti{
+	pixel_x = -32;
+	spawn_loot_chance = 50
+	},
+/turf/template_noop,
 /area/station/maintenance/central/greater)
 "VV" = (
 /obj/effect/turf_decal/tile/neutral/tram,
@@ -511,7 +590,7 @@
 /obj/structure/chair/sofa/bench/tram/left{
 	dir = 8
 	},
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "XH" = (
 /obj/machinery/light/small/blacklight/directional/east,
@@ -522,7 +601,7 @@
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
 /obj/machinery/computer/tram_controls/split/directional/north,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Yk" = (
 /obj/effect/turf_decal/sand/plating,
@@ -540,7 +619,7 @@
 /obj/structure/fluff/tram_rail/electric,
 /obj/structure/transport/linear/tram,
 /obj/structure/tram,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "Zi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -558,7 +637,7 @@
 /obj/structure/transport/linear/tram,
 /obj/structure/tram/split,
 /obj/machinery/transport/destination_sign/split/north,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 "ZR" = (
 /obj/structure/fluff/tram_rail/electric{
@@ -566,13 +645,13 @@
 	},
 /obj/structure/transport/linear/tram,
 /obj/structure/thermoplastic/light,
-/turf/open/floor/plating/elevatorshaft,
+/turf/open/floor/tram/guideway,
 /area/station/maintenance/central/greater)
 
 (1,1,1) = {"
 Ok
 Ok
-Qh
+RJ
 nH
 Ok
 Ok
@@ -587,7 +666,7 @@ Ok
 (2,1,1) = {"
 Ok
 Ok
-Us
+RJ
 nH
 HM
 nH
@@ -632,7 +711,7 @@ Ok
 (5,1,1) = {"
 Ok
 Ok
-Ok
+Vb
 Ok
 AW
 GR
@@ -791,7 +870,7 @@ Pm
 VV
 Ol
 tK
-HM
+Bt
 Ok
 "}
 (16,1,1) = {"
@@ -804,9 +883,9 @@ nH
 tK
 Pm
 VV
-Ol
-tK
-HM
+dd
+vX
+Bt
 Ok
 "}
 (17,1,1) = {"
@@ -819,9 +898,9 @@ nH
 tK
 Pm
 VV
-Ol
-tK
-HM
+zv
+Va
+nf
 Ok
 "}
 (18,1,1) = {"
@@ -834,9 +913,9 @@ nH
 tK
 Pm
 VV
-Ol
-tK
-HM
+ph
+DM
+Bt
 Ok
 "}
 (19,1,1) = {"

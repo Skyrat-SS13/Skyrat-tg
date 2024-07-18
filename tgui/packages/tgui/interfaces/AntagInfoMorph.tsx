@@ -1,4 +1,5 @@
-import { BlockQuote, Stack } from '../components';
+import { BlockQuote, Stack } from 'tgui-core/components';
+
 import { Window } from '../layouts';
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 

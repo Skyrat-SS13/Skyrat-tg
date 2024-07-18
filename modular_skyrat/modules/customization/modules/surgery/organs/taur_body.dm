@@ -9,12 +9,49 @@
 	mutantpart_key = "taur"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	bodypart_overlay = /datum/bodypart_overlay/mutant/taur_body
+
+	/// If not null, the left leg limb we add to our mob will have this name.
+	var/left_leg_name = "front legs"
+	/// If not null, the right leg limb we add to our mob will have this name.
+	var/right_leg_name = "back legs"
+
 	/// The mob's old right leg. Used if the person switches to this organ and then back, so they don't just, have no legs anymore. Can be null.
 	var/obj/item/bodypart/leg/right/old_right_leg = null
 	/// The mob's old left leg. Used if the person switches to this organ and then back, so they don't just, have no legs anymore. Can be null.
 	var/obj/item/bodypart/leg/right/old_left_leg = null
 
-/obj/item/organ/external/taur_body/synth
+	/// If true, our sprite accessory will not render.
+	var/hide_self
+
+/obj/item/organ/external/taur_body/horselike
+
+/obj/item/organ/external/taur_body/horselike/synth
+	organ_flags = ORGAN_ROBOTIC
+
+/obj/item/organ/external/taur_body/serpentine
+	left_leg_name = "upper serpentine body"
+	right_leg_name = "lower serpentine body"
+
+/obj/item/organ/external/taur_body/serpentine/synth
+	organ_flags = ORGAN_ROBOTIC
+
+/obj/item/organ/external/taur_body/spider
+	left_leg_name = "left legs"
+	right_leg_name = "right legs"
+
+/obj/item/organ/external/taur_body/tentacle
+	left_leg_name = "front tentacles"
+	right_leg_name = "back tentacles"
+
+/obj/item/organ/external/taur_body/blob
+	left_leg_name = "outer blob"
+	right_leg_name = "inner blob"
+
+/obj/item/organ/external/taur_body/anthro
+	left_leg_name = null
+	right_leg_name = null
+
+/obj/item/organ/external/taur_body/anthro/synth
 	organ_flags = ORGAN_ROBOTIC
 
 /datum/bodypart_overlay/mutant/taur_body
@@ -48,21 +85,32 @@
 		new_left_leg = new /obj/item/bodypart/leg/left/robot/synth/taur()
 		new_right_leg = new /obj/item/bodypart/leg/right/robot/synth/taur()
 
+	if (left_leg_name)
+		new_left_leg.name = left_leg_name + " (Left leg)"
+		new_left_leg.plaintext_zone = lowertext(new_left_leg.name) // weird otherwise
+	if (right_leg_name)
+		new_right_leg.name = right_leg_name + " (Right leg)"
+		new_right_leg.plaintext_zone = lowertext(new_right_leg.name)
 
 	new_left_leg.bodyshape |= external_bodyshapes
 	new_left_leg.replace_limb(receiver, TRUE)
 	if(old_left_leg)
 		old_left_leg.forceMove(src)
+	new_left_leg.bodytype |= BODYTYPE_TAUR
 
 	new_right_leg.bodyshape |= external_bodyshapes
 	new_right_leg.replace_limb(receiver, TRUE)
 	if(old_right_leg)
 		old_right_leg.forceMove(src)
+	new_right_leg.bodytype |= BODYTYPE_TAUR
 
 	return ..()
 
 
 /obj/item/organ/external/taur_body/Remove(mob/living/carbon/organ_owner, special, moving)
+	if(QDELETED(owner))
+		return ..()
+
 	var/obj/item/bodypart/leg/left/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
 	var/obj/item/bodypart/leg/right/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
 

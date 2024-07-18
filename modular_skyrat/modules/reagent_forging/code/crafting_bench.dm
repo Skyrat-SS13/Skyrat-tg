@@ -155,7 +155,7 @@
 
 	return ..()
 
-/obj/structure/reagent_crafting_bench/MouseDrop_T(obj/item/attacking_item, mob/living/user)
+/obj/structure/reagent_crafting_bench/mouse_drop_receive(atom/movable/attacking_item, mob/living/user, params)
 	. = ..()
 	if(!isliving(user))
 		return

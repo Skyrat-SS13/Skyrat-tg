@@ -146,7 +146,7 @@
 	taur_mode = STYLE_TAUR_PAW
 	recommended_species = list()
 	genetic = FALSE
-	organ_type = /obj/item/organ/external/taur_body/synth
+	organ_type = /obj/item/organ/external/taur_body/horselike/synth
 
 /datum/sprite_accessory/taur/synthliz/inv
 	name = "Cybernetic Lizard (Inverted)"
@@ -182,3 +182,22 @@
 	name = "Cybernetic Naga"
 	icon_state = "synthnaga"
 	taur_mode = STYLE_TAUR_SNAKE
+	organ_type = /obj/item/organ/external/taur_body/serpentine/synth
+
+/datum/sprite_accessory/taur/synthliz/biglegs
+	name = "Synthetic Big Legs"
+	icon_state = "biglegs"
+	taur_mode = STYLE_TAUR_PAW
+	organ_type = /obj/item/organ/external/taur_body/anthro/synth
+
+/datum/sprite_accessory/taur/synthliz/biglegs/stanced
+	name = "Synthetic Big Legs, Stanced"
+	icon_state = "biglegs_stanced"
+
+/datum/sprite_accessory/taur/synthliz/biglegs/bird
+	name = "Synthetic Big Legs, Bird"
+	icon_state = "biglegs_bird"
+
+/datum/sprite_accessory/taur/synthliz/biglegs/stanced/bird
+	name = "Synthetic Big Legs, Stanced Bird"
+	icon_state = "biglegs_bird_stanced"

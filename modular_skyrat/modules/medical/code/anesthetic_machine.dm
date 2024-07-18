@@ -108,16 +108,16 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/anesthetic_machine/MouseDrop(mob/living/carbon/target)
+/obj/machinery/anesthetic_machine/mouse_drop_dragged(mob/living/carbon/target, mob/user, src_location, over_location, params)
 	. = ..()
-	if(!iscarbon(target))
+	if(!istype(target))
 		return
 
-	if((!Adjacent(target)) || !(usr.Adjacent(target)))
+	if((!Adjacent(target)) || !(user.Adjacent(target)))
 		return FALSE
 
 	if(!attached_tank || mask_out)
-		to_chat(usr, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
+		to_chat(user, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
 		return FALSE
 
 	// if we somehow lost the mask, let's just make a brand new one. the wonders of technology!
@@ -125,14 +125,14 @@
 		attached_mask = new /obj/item/clothing/mask/breath/anesthetic(src)
 		update_icon()
 
-	usr.visible_message(span_warning("[usr] attemps to attach the [attached_mask] to [target]."), span_notice("You attempt to attach the [attached_mask] to [target]"))
-	if(!do_after(usr, 5 SECONDS, target))
+	user.visible_message(span_warning("[user] attemps to attach the [attached_mask] to [target]."), span_notice("You attempt to attach the [attached_mask] to [target]"))
+	if(!do_after(user, 5 SECONDS, target))
 		return
 	if(!target.equip_to_appropriate_slot(attached_mask))
-		to_chat(usr, span_warning("You are unable to attach the [attached_mask] to [target]!"))
+		to_chat(user, span_warning("You are unable to attach the [attached_mask] to [target]!"))
 		return
 
-	usr.visible_message(span_warning("[usr] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
+	user.visible_message(span_warning("[user] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
 
 	// Open the tank externally
 	target.open_internals(attached_tank, is_external = TRUE)

@@ -239,7 +239,7 @@
 			atom_storage.attempt_insert(new /obj/item/stock_parts/servo/femto(src), user, TRUE)
 			atom_storage.attempt_insert(new /obj/item/stock_parts/micro_laser/quadultra(src), user, TRUE)
 			atom_storage.attempt_insert(new /obj/item/stock_parts/matter_bin/bluespace(src), user, TRUE)
-			atom_storage.attempt_insert(new /obj/item/stock_parts/cell/bluespace(src), user, TRUE)
+			atom_storage.attempt_insert(new /obj/item/stock_parts/power_store/cell/bluespace(src), user, TRUE)
 	else
 		var/subtype
 		if(spawn_selection == "Machine Board")
