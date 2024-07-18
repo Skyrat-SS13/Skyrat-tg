@@ -11,10 +11,26 @@ SUBSYSTEM_DEF(machines)
 	VAR_PRIVATE/list/all_machines = list()
 
 	var/list/processing = list()
+<<<<<<< HEAD
 	var/list/currentrun = list()
 	var/list/apc_early_processing = list()
 	var/list/apc_late_processing = list()
 	var/current_part = SSMACHINES_APCS_EARLY
+=======
+	var/list/processing_early = list()
+	var/list/processing_late = list()
+	var/list/processing_apcs = list()
+
+	var/list/currentrun = list()
+	var/current_part = SSMACHINES_MACHINES_EARLY
+	var/list/apc_steps = list(
+		SSMACHINES_APCS_EARLY,
+		SSMACHINES_APCS_ENVIRONMENT,
+		SSMACHINES_APCS_LIGHTS,
+		SSMACHINES_APCS_EQUIPMENT,
+		SSMACHINES_APCS_LATE
+		)
+>>>>>>> 5aa4604bce05 (APC and SSmachines hotfixes [NO GBP] (#85043))
 	///List of all powernets on the server.
 	var/list/datum/powernet/powernets = list()
 
@@ -82,6 +98,7 @@ SUBSYSTEM_DEF(machines)
 	if (!resumed)
 		for(var/datum/powernet/powernet as anything in powernets)
 			powernet.reset() //reset the power state.
+<<<<<<< HEAD
 		current_part = SSMACHINES_APCS_EARLY
 		src.currentrun = apc_early_processing.Copy()
 
@@ -102,13 +119,20 @@ SUBSYSTEM_DEF(machines)
 
 	//General machine processing. Their power usage can be dynamic and based on surplus power, so they come after static power usage have been applied.
 	if(current_part == SSMACHINES_MACHINES)
+=======
+		current_part = SSMACHINES_MACHINES_EARLY
+		src.currentrun = processing_early.Copy()
+
+	//Processing machines that get the priority power draw
+	if(current_part == SSMACHINES_MACHINES_EARLY)
+>>>>>>> 5aa4604bce05 (APC and SSmachines hotfixes [NO GBP] (#85043))
 		//cache for sanic speed (lists are references anyways)
 		var/list/currentrun = src.currentrun
 		while(currentrun.len)
 			var/obj/machinery/thing = currentrun[currentrun.len]
 			currentrun.len--
-			if(QDELETED(thing) || thing.process(wait * 0.1) == PROCESS_KILL)
-				processing -= thing
+			if(QDELETED(thing) || thing.process_early(wait * 0.1) == PROCESS_KILL)
+				processing_early -= thing
 				thing.datum_flags &= ~DF_ISPROCESSING
 			if (MC_TICK_CHECK)
 				return
@@ -127,6 +151,44 @@ SUBSYSTEM_DEF(machines)
 				apc_late_processing -= apc
 				apc.datum_flags &= ~DF_ISPROCESSING
 			if(MC_TICK_CHECK)
+				return
+<<<<<<< HEAD
+=======
+		var/next_index = apc_steps.Find(current_part) + 1
+		if (next_index > apc_steps.len)
+			current_part = SSMACHINES_MACHINES
+			src.currentrun = processing.Copy()
+			break
+		current_part = apc_steps[next_index]
+		src.currentrun = processing_apcs.Copy()
+>>>>>>> 5aa4604bce05 (APC and SSmachines hotfixes [NO GBP] (#85043))
+
+	//Processing all machines
+	if(current_part == SSMACHINES_MACHINES)
+		//cache for sanic speed (lists are references anyways)
+		var/list/currentrun = src.currentrun
+		while(currentrun.len)
+			var/obj/machinery/thing = currentrun[currentrun.len]
+			currentrun.len--
+			if(QDELETED(thing) || thing.process(wait * 0.1) == PROCESS_KILL)
+				processing -= thing
+				thing.datum_flags &= ~DF_ISPROCESSING
+			if (MC_TICK_CHECK)
+				return
+		current_part = SSMACHINES_MACHINES_LATE
+		src.currentrun = processing_late.Copy()
+
+	//Processing machines that record the power usage statistics
+	if(current_part == SSMACHINES_MACHINES_LATE)
+		//cache for sanic speed (lists are references anyways)
+		var/list/currentrun = src.currentrun
+		while(currentrun.len)
+			var/obj/machinery/thing = currentrun[currentrun.len]
+			currentrun.len--
+			if(QDELETED(thing) || thing.process_late(wait * 0.1) == PROCESS_KILL)
+				processing_late -= thing
+				thing.datum_flags &= ~DF_ISPROCESSING
+			if (MC_TICK_CHECK)
 				return
 
 /datum/controller/subsystem/machines/proc/setup_template_powernets(list/cables)
