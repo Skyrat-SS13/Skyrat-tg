@@ -271,8 +271,10 @@
 	if (!QDELETED(target) && (isturf(target) || isstructure(target)))
 		if(isobj(target))
 			demolition_mod = 200
+			damage = 30
 		else
 			demolition_mod = 40
+			damage = 10
 	if(isobj(target))
 		var/obj/hit_object = target
 		hit_object.take_damage(object_damage, BRUTE, BULLET, FALSE)
