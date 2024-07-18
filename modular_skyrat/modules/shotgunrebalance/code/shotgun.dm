@@ -264,14 +264,15 @@
 	damage = 10 //I'd kill you if you manage to kill someone with this shit
 	wound_bonus = 30
 	bare_wound_bonus = 30
+	demolition_mod = 40
 
 /obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if (!QDELETED(target) && (isturf(target) || isstructure(target)))
 		if(isobj(target))
-			damage = 300
+			demolition_mod = 200
 		else
-			damage = 10
+			demolition_mod = 40
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter slug shell"
