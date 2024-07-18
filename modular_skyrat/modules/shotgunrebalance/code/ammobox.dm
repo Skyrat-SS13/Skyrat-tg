@@ -95,7 +95,7 @@
 
 /obj/item/ammo_box/advanced/s12gauge/frangible
 	name = "Frangible Slug ammo box"
-	desc = "A box of 7 Breaching slug. It's able to punches through airlock with ease."
+	desc = "A box of 7 Frangible slug. It's able to punches through windows, airlocks whatever with ease. Less-than-effective against people"
 	icon_state = "fslug"
 	ammo_type = /obj/item/ammo_casing/shotgun/breacher
 	max_ammo = 7
@@ -103,11 +103,12 @@
 //The one below here has a destruction damage of 200, it two shot most mech, use the one above
 /obj/item/ammo_box/advanced/s12gauge/breaching
 	name = "Breaching Slug ammo box"
-	desc = "A box of 7 Breaching slug. It's able to punches through airlock with ease."
+	desc = "A box of 7 Breaching slug. It's able to punches through- quite literally anything with ease."
 	icon_state = "fslug"
 	ammo_type = /obj/item/ammo_casing/shotgun/breacher
 	max_ammo = 7
 
+//This is intended for ERT! Have fun with it
 /obj/item/ammo_box/advanced/s12gauge/pulse
 	name = "Pulse Slug ammo box"
 	desc = "A box of 15 Pulse slug. It's able to punches through structures and anything behind it."
