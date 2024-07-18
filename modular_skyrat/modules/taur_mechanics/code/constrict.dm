@@ -392,10 +392,9 @@
 		return
 
 	register_constricted()
+	restrain_constricted()
 	apply_pixel_shift()
 	constricted.apply_status_effect(/datum/status_effect/constricted)
-
-	restrain_constricted()
 
 /// Applies our pixel shift to our constricted. Do not call if we have already applied our pixel shift.
 /obj/structure/serpentine_tail/proc/apply_pixel_shift()
