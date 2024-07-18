@@ -33,7 +33,7 @@
 		/obj/item/ammo_box/magazine/m9mm/rubber = 12,
 		/obj/item/ammo_box/magazine/m9mm/ihdf = 12,
 		/obj/item/ammo_box/c10mm/speedloader/rubber = 12,
-		/obj/item/ammo_box/advanced/s12gauge/breaching = 2,
+		/obj/item/ammo_box/advanced/s12gauge/frangible = 2,
 	)
 
 /obj/item/vending_refill/security

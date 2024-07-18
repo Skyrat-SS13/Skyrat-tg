@@ -195,10 +195,10 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "hornet"
 	damage = 4
-	stamina = 20
-	damage_falloff_tile = 0.1
-	stamina_falloff_tile = 0.1
-	wound_bonus = -5
+	stamina = 25
+	damage_falloff_tile = 1
+	stamina_falloff_tile = 1
+	wound_bonus = 5
 	bare_wound_bonus = 5
 	wound_falloff_tile = 0
 	sharpness = NONE
@@ -226,12 +226,12 @@
 	name = "electrode"
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
-	damage = 15
+	damage = 20
 	stamina = 10
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = -20
-	bare_wound_bonus = -20
+	wound_bonus = 10
+	bare_wound_bonus = 10
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
@@ -252,6 +252,26 @@
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/on_range()
 	do_sparks(1, TRUE, src)
 	..()
+
+/obj/item/ammo_casing/shotgun/frangible
+	name = "frangible slug"
+	desc = "A weak anti materiel shell intended for dislodging airlock, breaking down barricades and structures. Not effective against people."
+	icon_state = "breacher"
+	projectile_type = /obj/projectile/bullet/frangible_slug
+
+/obj/projectile/bullet/frangible_slug
+	name = "Frangible Slug"
+	damage = 10 //I'd kill you if you manage to kill someone with this shit
+	wound_bonus = 30
+	bare_wound_bonus = 30
+
+/obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if (!QDELETED(target) && (isturf(target) || isstructure(target)))
+		if(isobj(target))
+			damage = 300
+		else
+			damage = 10
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter slug shell"

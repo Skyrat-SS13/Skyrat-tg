@@ -97,7 +97,7 @@
 	name = "Frangible Slug ammo box"
 	desc = "A box of 7 Frangible slug. It's able to punches through windows, airlocks whatever with ease. Less-than-effective against people"
 	icon_state = "fslug"
-	ammo_type = /obj/item/ammo_casing/shotgun/breacher
+	ammo_type = /obj/item/ammo_casing/shotgun/frangible
 	max_ammo = 7
 
 //The one below here has a destruction damage of 200, it two shot most mech, use the one above
