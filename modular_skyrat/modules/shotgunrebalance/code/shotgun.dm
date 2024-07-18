@@ -273,6 +273,15 @@
 			demolition_mod = 200
 		else
 			demolition_mod = 40
+	if(isobj(target))
+		var/obj/hit_object = target
+		hit_object.take_damage(object_damage, BRUTE, BULLET, FALSE)
+	else if(isclosedturf(target))
+		damage = 0
+		if(!isindestructiblewall(target))
+			var/turf/closed/hit_turf = target
+			hit_turf.ScrapeAway()
+	return ..()
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter slug shell"
