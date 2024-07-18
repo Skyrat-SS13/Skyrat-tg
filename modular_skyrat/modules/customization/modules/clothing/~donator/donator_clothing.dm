@@ -1776,9 +1776,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 /obj/item/clothing/head/anubite
 	name = "\improper Anubite headpiece"
 	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	icon_state = "anubite_headpiece"
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	worn_y_offset = 4
 
 //  Donator reward Smol42
