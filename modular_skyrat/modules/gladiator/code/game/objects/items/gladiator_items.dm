@@ -154,9 +154,9 @@
 	if(is_nemesis_faction)
 		force -= faction_bonus_force
 
-/obj/item/claymore/dragonslayer/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+/obj/item/claymore/dragonslayer/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(user.IsImmobilized()) // no free dodgerolls
-		return
+		return NONE
 	var/turf/where_to = get_turf(interacting_with)
 	user.apply_damage(damage = roll_stamcost, damagetype = STAMINA)
 	user.Immobilize(0.1 SECONDS) // you dont get to adjust your roll
@@ -164,7 +164,7 @@
 	user.apply_status_effect(/datum/status_effect/dodgeroll_iframes)
 	playsound(user, SFX_BODYFALL, 50, TRUE)
 	playsound(user, SFX_RUSTLE, 50, TRUE)
-	return ..()
+	return ITEM_INTERACT_SUCCESS
 
 /datum/status_effect/dodgeroll_iframes
 	id = "dodgeroll_dodging"

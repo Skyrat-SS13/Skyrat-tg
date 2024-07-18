@@ -131,7 +131,7 @@
 	icon = 'modular_skyrat/modules/mold/icons/blob_resin.dmi'
 	icon_state = "blob_floor"
 	density = FALSE
-	plane = FLOOR_PLANE
+	plane = GAME_PLANE
 	layer = LOW_SIGIL_LAYER
 	max_integrity = 50
 	var/blooming = FALSE

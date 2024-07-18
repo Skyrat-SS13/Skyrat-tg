@@ -1,6 +1,9 @@
 /turf/open/floor
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
 
+/turf/open/floor/catwalk_floor
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/catwalk_plating.dmi'
+
 //Removes redundant textured stuff from this radial, as all of ours are textured by default
 /obj/item/stack/tile/iron
 	tile_reskin_types = list(

@@ -23,16 +23,18 @@
 	))
 
 // Attempt to charge from an object by using them on the power cord.
-/obj/item/synth_powercord/attackby(obj/item/attacking_item, mob/user, params)
-	if(!can_power_draw(attacking_item, user))
-		return ..()
-	try_power_draw(attacking_item, user)
+/obj/item/synth_powercord/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!can_power_draw(tool, user))
+		return NONE
+	try_power_draw(tool, user)
+	return ITEM_INTERACT_SUCCESS
 
 // Attempt to charge from an object by using the power cord on them.
-/obj/item/synth_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!proximity_flag || !can_power_draw(target, user))
-		return ..()
-	try_power_draw(target, user)
+/obj/item/synth_powercord/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!can_power_draw(interacting_with, user))
+		return NONE
+	try_power_draw(interacting_with, user)
+	return ITEM_INTERACT_SUCCESS
 
 /// Returns TRUE or FALSE depending on if the target object can be used as a power source.
 /obj/item/synth_powercord/proc/can_power_draw(obj/target, mob/user)
