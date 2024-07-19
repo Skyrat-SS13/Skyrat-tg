@@ -5,16 +5,6 @@
 	time = 5 SECONDS
 	category = CAT_MISC
 
-/datum/crafting_recipe/wood_bow
-	name = "Wooden Bow"
-	result = /obj/item/gun/ballistic/bow/longbow
-	reqs = list(
-		/obj/item/stack/sheet/mineral/wood = 25,
-		/obj/item/weaponcrafting/silkstring = 2,
-	)
-	time = 30 SECONDS
-	category = CAT_WEAPON_RANGED
-
 /datum/crafting_recipe/pipebow
 	name = "Pipe Bow"
 	result = /obj/item/gun/ballistic/bow/tribalbow/pipe
@@ -25,17 +15,6 @@
 	)
 	time = 45 SECONDS
 	category = CAT_WEAPON_RANGED
-
-/datum/crafting_recipe/arrow
-	name = "Arrow"
-	result = /obj/item/ammo_casing/arrow
-	reqs = list(
-		/obj/item/stack/sheet/mineral/wood = 1,
-		/obj/item/stack/sheet/cloth= 1,
-		/obj/item/stack/rods = 1,
-	)
-	time = 1.5 SECONDS
-	category = CAT_WEAPON_AMMO
 
 /datum/crafting_recipe/bone_arrow
 	name = "Bone Arrow"

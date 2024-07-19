@@ -17,8 +17,8 @@
 /obj/projectile/bullet/arrow/ash
 	name = "ashen arrow"
 	desc = "An arrow made of hardened ash."
-	faction_bonus_force = 60
-	damage = 15//lower me to 20 or 15
+	faction_bonus_force = 80
+	damage = 30
 	nemesis_paths = list(
 		/mob/living/simple_animal/hostile/asteroid,
 		/mob/living/basic/mining,
@@ -29,7 +29,7 @@
 /obj/projectile/bullet/arrow/bone
 	name = "bone arrow"
 	desc = "An arrow made from bone and sinew."
-	faction_bonus_force = 35
+	faction_bonus_force = 120
 	damage = 35
 	armour_penetration = 20
 	wound_bonus = -30
@@ -54,7 +54,7 @@
 /obj/projectile/bullet/arrow/bronze
 	name = "bronze arrow"
 	desc = "A bronze-tipped arrow."
-	faction_bonus_force = 90
+	faction_bonus_force = 140
 	damage = 30
 	armour_penetration = 30
 	nemesis_paths = list(

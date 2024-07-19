@@ -8,10 +8,17 @@
 	base_icon_state = "bow"
 	worn_icon_state = "bow"
 	slot_flags = ITEM_SLOT_BACK
+	projectile_damage_multiplier = 0.5
+	force = 20
 
 /obj/item/gun/ballistic/bow/tribalbow/update_icon()
 	. = ..()
-	icon_state = "[base_icon_state]_[get_ammo() ? (chambered ? "firing" : "loaded") : "unloaded"]"
+	icon_state = "[base_icon_state][drawn ? "_drawn" : ""]"
+
+/obj/item/gun/ballistic/bow/tribalbow/update_overlays()
+	. = ..()
+	if(chambered)
+		. += "[chambered.base_icon_state][drawn ? "_drawn" : ""]"
 
 
 /obj/item/gun/ballistic/bow/tribalbow/ashen
@@ -22,7 +29,6 @@
 	base_icon_state = "ashenbow"
 	inhand_icon_state = "ashenbow"
 	worn_icon_state = "ashenbow"
-	force = 20
 
 /obj/item/gun/ballistic/bow/tribalbow/pipe
 	name = "pipe bow"
@@ -32,5 +38,4 @@
 	base_icon_state = "pipebow"
 	inhand_icon_state = "pipebow"
 	worn_icon_state = "pipebow"
-	force = 10
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
