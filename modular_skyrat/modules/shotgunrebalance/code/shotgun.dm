@@ -277,7 +277,7 @@
 			damage = 10
 	if(isobj(target))
 		var/obj/hit_object = target
-		hit_object.take_damage(object_damage, BRUTE, BULLET, FALSE)
+		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
 	else if(isclosedturf(target))
 		damage = 0
 		if(!isindestructiblewall(target))
