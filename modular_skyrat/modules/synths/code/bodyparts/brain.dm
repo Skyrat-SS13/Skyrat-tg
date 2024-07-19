@@ -9,6 +9,7 @@
 	icon_state = "posibrain-ipc"
 	/// The last time (in ticks) a message about brain damage was sent. Don't touch.
 	var/last_message_time = 0
+	organ_traits = list(TRAIT_SILICON_EMOTES_ALLOWED)
 
 /obj/item/organ/internal/brain/synth/on_mob_insert(mob/living/carbon/brain_owner, special, movement_flags = NO_ID_TRANSFER)
 	. = ..()
