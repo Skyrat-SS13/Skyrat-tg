@@ -8,9 +8,9 @@
 ///Cap for how fast cells charge, as a percentage per second (.01 means cellcharge is capped to 1% per second)
 #define CHARGELEVEL 0.01
 ///Charge percentage at which the lights channel stops working
-#define APC_CHANNEL_LIGHT_TRESHOLD 15
+#define APC_CHANNEL_LIGHT_TRESHOLD 7 //SKYRAT EDIT CHANGE - Original: 15
 ///Charge percentage at which the equipment channel stops working
-#define APC_CHANNEL_EQUIP_TRESHOLD 30
+#define APC_CHANNEL_EQUIP_TRESHOLD 17 //SKYRAT EDIT CHANGE - Original: 30
 ///Charge percentage at which the APC icon indicates discharging
 #define APC_CHANNEL_ALARM_TRESHOLD 75
 
@@ -587,11 +587,7 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-<<<<<<< HEAD
-		else if(cell.percent() < 7) // SKYRAT EDIT CHANGE - ORIGINAL: cell.percent() < 15
-=======
 		else if(cell.percent() < APC_CHANNEL_LIGHT_TRESHOLD) // turn off lighting & equipment
->>>>>>> 69c935dbf1bd (Emitters and Shieldgens work roundstart, APCs charge evenly (#84983))
 			equipment = autoset(equipment, AUTOSET_OFF)
 			lighting = autoset(lighting, AUTOSET_OFF)
 			environ = autoset(environ, AUTOSET_ON)
@@ -599,15 +595,9 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-<<<<<<< HEAD
-		else if(cell.percent() < 17) // SKYRAT EDIT CHANGE - ORIGINAL: cell.percent() < 30
+		else if(cell.percent() < APC_CHANNEL_EQUIP_TRESHOLD)
 			equipment = autoset(equipment, AUTOSET_ON) // SKYRAT EDIT CHANGE - ORIGINAL: AUTOSET_OFF
 			lighting = autoset(lighting, AUTOSET_OFF) // SKYRAT EDIT CHANGE - ORIGINAL: AUTOSET_ON
-=======
-		else if(cell.percent() < APC_CHANNEL_EQUIP_TRESHOLD) // turn off equipment
-			equipment = autoset(equipment, AUTOSET_OFF)
-			lighting = autoset(lighting, AUTOSET_ON)
->>>>>>> 69c935dbf1bd (Emitters and Shieldgens work roundstart, APCs charge evenly (#84983))
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
@@ -623,20 +613,6 @@
 					INVOKE_ASYNC(src, PROC_REF(set_nightshift), FALSE)
 			if(cell.percent() > APC_CHANNEL_ALARM_TRESHOLD)
 				alarm_manager.clear_alarm(ALARM_POWER)
-
-<<<<<<< HEAD
-		charging = APC_NOT_CHARGING
-		// now trickle-charge the cell
-		if(chargemode && operating && excess && cell.used_charge())
-			// Max charge is capped to % per second constant.
-			lastused_total += charge_cell(min(cell.chargerate, cell.maxcharge * CHARGELEVEL) * seconds_per_tick, cell = cell, grid_only = TRUE, channel = AREA_USAGE_APC_CHARGE)
-			charging = APC_CHARGING
-
-		// show cell as fully charged if so
-		if(cell.charge >= cell.maxcharge)
-			cell.charge = cell.maxcharge
-			charging = APC_FULLY_CHARGED
-
 		// SKYRAT ADDITION START - CLOCK CULT
 		if(integration_cog)
 			var/power_delta = clamp(cell.charge - 50, 0, 50)
@@ -647,8 +623,6 @@
 			if(cell.charge <= 50)
 				cell.charge = 0
 		// SKYRAT ADDITION END
-=======
->>>>>>> 69c935dbf1bd (Emitters and Shieldgens work roundstart, APCs charge evenly (#84983))
 	else // no cell, switch everything off
 		charging = APC_NOT_CHARGING
 		equipment = autoset(equipment, AUTOSET_FORCE_OFF)
