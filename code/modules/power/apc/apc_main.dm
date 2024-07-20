@@ -628,7 +628,7 @@
 			if(cell.charge <= 50)
 				cell.charge = 0
 		// SKYRAT ADDITION END
-  	else // no cell, switch everything off
+		else // no cell, switch everything off
 		charging = APC_NOT_CHARGING
 		equipment = autoset(equipment, AUTOSET_FORCE_OFF)
 		lighting = autoset(lighting, AUTOSET_FORCE_OFF)
