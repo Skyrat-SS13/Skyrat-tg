@@ -72,7 +72,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // Trait added to the user of a hippocratic oath status effect
 #define TRAIT_HIPPOCRATIC_OATH "hippocratic_oath"
 #define TRAIT_IGNORESLOWDOWN "ignoreslow"
-#define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 /// Makes it so the mob can use guns regardless of tool user status
 #define TRAIT_GUN_NATURAL "gunnatural"
 /// Causes death-like unconsciousness
@@ -234,6 +233,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EXAMINE_FITNESS "reveal_power_level"
 /// These mobs have particularly hygienic tongues
 #define TRAIT_WOUND_LICKER "wound_licker"
+/// Mobs with this trait are allowed to use silicon emotes
+#define TRAIT_SILICON_EMOTES_ALLOWED "silicon_emotes_allowed"
 
 /// This trait designate that the mob was originally a monkey
 #define TRAIT_BORN_MONKEY "born_as_a_monkey"
@@ -769,6 +770,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DANGEROUS_OBJECT "dangerous_object"
 /// determines whether or not objects are haunted and teleport/attack randomly
 #define TRAIT_HAUNTED "haunted"
+/// An item that, if it has contents, will ignore it's contents when scanning for contraband.
+#define TRAIT_CONTRABAND_BLOCKER "contraband_blocker"
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE "alcohol_tolerance"
@@ -970,6 +973,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// changelings with this trait can no longer talk over the hivemind
 #define TRAIT_CHANGELING_HIVEMIND_MUTE "ling_mute"
+/// This guy is a hulk! (Bulky and green, lacks tact)
 #define TRAIT_HULK "hulk"
 /// Isn't attacked harmfully by blob structures
 #define TRAIT_BLOB_ALLY "blob_ally"
@@ -1162,7 +1166,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait which means whatever has this is dancing by a dance machine
 #define TRAIT_DISCO_DANCER "disco_dancer"
 
-/// That which allows mobs to instantly break down boulders.
+/// Trait which allows mobs to instantly break down boulders.
 #define TRAIT_INSTANTLY_PROCESSES_BOULDERS "instantly_processes_boulders"
 
 /// Trait applied to objects and mobs that can attack a boulder and break it down. (See /obj/item/boulder/manual_process())
@@ -1180,6 +1184,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERCEIVED_AS_CLOWN "perceived_as_clown"
 /// Does this item bypass ranged armor checks?
 #define TRAIT_BYPASS_RANGED_ARMOR "bypass_ranged_armor"
+
+/// Trait which means that this item is considered illegal contraband, and valid for the contraband bounty or when scanned by an nspect scanner.
+#define TRAIT_CONTRABAND "illegal_contraband"
 
 /// Traits given by settler, each with their own specific effects for cases where someone would have that trait, but not the other settler effects
 

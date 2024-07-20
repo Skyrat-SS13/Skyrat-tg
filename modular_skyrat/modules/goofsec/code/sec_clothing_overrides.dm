@@ -305,7 +305,41 @@
 			RESKIN_ICON_STATE = "security_cap_white",
 			RESKIN_WORN_ICON_STATE = "security_cap_white"
 		),
+		"Sol Variant" = list(
+			RESKIN_ICON_STATE = "policesoft",
+			RESKIN_WORN_ICON_STATE = "policesoft"
+		),
+		"Sillitoe Variant" = list(
+			RESKIN_ICON_STATE = "policetrafficsoft",
+			RESKIN_WORN_ICON_STATE = "policetrafficsoft"
+		),
+		"Cadet Variant" = list(
+			RESKIN_ICON_STATE = "policecadetsoft",
+			RESKIN_WORN_ICON_STATE = "policecadetsoft"
+		),
 	)
+
+/obj/item/clothing/head/hats/warden
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "policehelm"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Blue Cap" = list(
+			RESKIN_ICON_STATE = "policehelm",
+			RESKIN_WORN_ICON_STATE = "policehelm"
+		),
+		"Sol Cap" = list(
+			RESKIN_ICON_STATE = "policewardencap",
+			RESKIN_WORN_ICON_STATE = "policewardencap"
+		),
+	)
+
+/obj/item/clothing/head/hats/warden/red
+	unique_reskin = null
+
+/obj/item/clothing/head/hats/warden/drill
+	unique_reskin = null
 
 /obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -431,6 +465,10 @@
 			RESKIN_WORN_ICON_STATE = "gloves_white"
 		),
 	)
+
+/obj/item/clothing/gloves/color/black/security/blu // Wait why these a subtype of black?!? Who did this
+	icon = 'icons/obj/clothing/gloves.dmi'
+	worn_icon = 'icons/mob/clothing/hands.dmi'
 
 /obj/item/clothing/gloves/tackler/security	//Can't just overwrite tackler, as there's a ton of subtypes that we'd then need to account for. This is easier. MUCH easier.
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -565,6 +603,14 @@
 			RESKIN_ICON_STATE = "security_white",
 			RESKIN_WORN_ICON_STATE = "security_white"
 		),
+		"Sol Variant" = list(
+			RESKIN_ICON_STATE = "policealt",
+			RESKIN_WORN_ICON_STATE = "policealt"
+		),
+		"Cadet Variant" = list(
+			RESKIN_ICON_STATE = "policecadetalt",
+			RESKIN_WORN_ICON_STATE = "policecadetalt"
+		),
 	)
 
 /obj/item/clothing/under/rank/security/officer/formal
@@ -595,24 +641,60 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "warden_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "warden_black",
+			RESKIN_WORN_ICON_STATE = "warden_black"
+		),
+		"Blue Variant" = list(
+			RESKIN_ICON_STATE = "peacekeeper_warden",
+			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
+		),
+		"Sol Varient" = list(
+			RESKIN_ICON_STATE = "policewardenalt",
+			RESKIN_WORN_ICON_STATE = "policewardenalt"
+		),
+	)
 
 //HoS
 /obj/item/clothing/under/rank/security/head_of_security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "hos_black",
+			RESKIN_WORN_ICON_STATE = "hos_black"
+		),
+		"Blue Varient" = list(
+			RESKIN_ICON_STATE = "peacekeeper_hos",
+			RESKIN_WORN_ICON_STATE = "peacekeeper_hos"
+		),
+		"Sol Varient" = list(
+			RESKIN_ICON_STATE = "policechiefalt",
+			RESKIN_WORN_ICON_STATE = "policechiefalt"
+		),
+	)
 
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	icon_state = "hos_parade_male_blue"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female
 	icon_state = "hos_parade_fem_blue"
+	unique_reskin = null
+
 
 /obj/item/clothing/under/rank/security/head_of_security/alt
 	icon_state = "hosalt_blue"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	icon_state = "hosalt_skirt_blue"
+	unique_reskin = null
+
 
 /*
 * FEET
