@@ -31,13 +31,6 @@
 		if(!emote.check_cooldown(src, intentional))
 			silenced = TRUE
 			continue
-<<<<<<< HEAD
-		if(P.run_emote(src, param, m_type, intentional))
-			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, P, act, m_type, message, intentional)
-			SEND_SIGNAL(src, COMSIG_MOB_EMOTED(P.key))
-			return TRUE
-		src.nextsoundemote = world.time // SKYRAT EDIT ADDITION
-=======
 		if(!emote.can_run_emote(src, TRUE, intentional, param))
 			continue
 		if(SEND_SIGNAL(src, COMSIG_MOB_PRE_EMOTED, emote.key, param, m_type, intentional, emote) & COMPONENT_CANT_EMOTE)
@@ -47,7 +40,7 @@
 		SEND_SIGNAL(src, COMSIG_MOB_EMOTE, emote, act, m_type, message, intentional)
 		SEND_SIGNAL(src, COMSIG_MOB_EMOTED(emote.key))
 		return TRUE
->>>>>>> 196a631ab813 ( [NO GBP] Fixing beyblade flipping (also an already borked comsig) (#84902))
+		src.nextsoundemote = world.time // SKYRAT EDIT ADDITION
 	if(intentional && !silenced && !force_silence)
 		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
 	return FALSE
