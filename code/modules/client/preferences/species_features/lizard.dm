@@ -145,4 +145,5 @@
 /datum/preference/choiced/lizard_tail/create_default_value()
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
+	return /datum/sprite_accessory/tails/lizard/smooth::name
 */

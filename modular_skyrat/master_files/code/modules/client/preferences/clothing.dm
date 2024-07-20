@@ -82,3 +82,8 @@
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
 	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
+
+/datum/preference/choiced/bra/create_informed_default_value(datum/preferences/preferences)
+	if(preferences.read_preference(/datum/preference/choiced/gender) == FEMALE)
+		return /datum/sprite_accessory/bra/sports_bra::name
+	return /datum/sprite_accessory/bra/nude::name

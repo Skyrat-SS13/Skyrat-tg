@@ -460,6 +460,10 @@
 		),
 	)
 
+/obj/item/clothing/gloves/color/black/security/blu // Wait why these a subtype of black?!? Who did this
+	icon = 'icons/obj/clothing/gloves.dmi'
+	worn_icon = 'icons/mob/clothing/hands.dmi'
+
 /obj/item/clothing/gloves/tackler/security	//Can't just overwrite tackler, as there's a ton of subtypes that we'd then need to account for. This is easier. MUCH easier.
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
