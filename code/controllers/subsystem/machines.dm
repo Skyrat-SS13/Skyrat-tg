@@ -24,17 +24,6 @@ SUBSYSTEM_DEF(machines)
 		SSMACHINES_APCS_EQUIPMENT,
 		SSMACHINES_APCS_LATE
 		)
-	var/list/processing_apcs = list()
-
-	var/list/currentrun = list()
-	var/current_part = SSMACHINES_MACHINES
-	var/list/apc_steps = list(
-		SSMACHINES_APCS_ENVIRONMENT,
-		SSMACHINES_APCS_LIGHTS,
-		SSMACHINES_APCS_EQUIPMENT,
-		SSMACHINES_APCS_EARLY,
-		SSMACHINES_APCS_LATE
-		)
 	///List of all powernets on the server.
 	var/list/datum/powernet/powernets = list()
 
