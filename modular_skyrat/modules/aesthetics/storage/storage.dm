@@ -121,7 +121,7 @@
 	illustration = "breacherslug"
 
 /obj/item/storage/box/large_dart
-	icon_state = "secbox_x1"
+	icon_state = "secbox_xl"
 	illustration = "shotdart"
 
 /obj/item/storage/box/evidence
