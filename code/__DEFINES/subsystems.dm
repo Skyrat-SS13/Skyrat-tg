@@ -305,11 +305,6 @@
 #define SSEXPLOSIONS_THROWS 3
 
 // Machines subsystem subtasks.
-<<<<<<< HEAD
-#define SSMACHINES_APCS_EARLY 1
-#define SSMACHINES_MACHINES 2
-#define SSMACHINES_APCS_LATE 3
-=======
 #define SSMACHINES_MACHINES_EARLY 1
 #define SSMACHINES_APCS_EARLY 2
 #define SSMACHINES_APCS_ENVIRONMENT 3
@@ -318,7 +313,6 @@
 #define SSMACHINES_APCS_LATE 6
 #define SSMACHINES_MACHINES 7
 #define SSMACHINES_MACHINES_LATE 8
->>>>>>> 5aa4604bce05 (APC and SSmachines hotfixes [NO GBP] (#85043))
 
 // Wardrobe subsystem tasks
 #define SSWARDROBE_STOCK 1

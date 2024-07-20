@@ -553,7 +553,7 @@
 			. = rand(-1000, 1000)
 	..() //Called afterwards because getting the mind after getting gibbed is sketchy
 
-/mob/living/carbon/human/help_shake_act(mob/living/carbon/helper)
+/mob/living/carbon/human/help_shake_act(mob/living/carbon/helper, force_friendly)
 	if(!istype(helper))
 		return
 
