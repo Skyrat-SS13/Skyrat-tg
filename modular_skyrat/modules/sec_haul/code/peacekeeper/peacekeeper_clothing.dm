@@ -53,7 +53,8 @@
 	unique_reskin = list(
 		"Blue" = "policeofficercap",
 		"Sillitoe" = "policetrafficcap",
-		"Black" = "policeofficerpatrolcap",
+		"Black and Blue" = "policeofficerpatrolcap",
+		"Long Kesh" = "corrections_officer",
 		"Cadet" = "policecadetcap",
 	)
 
