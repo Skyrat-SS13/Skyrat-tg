@@ -5,6 +5,7 @@
 /obj/item/organ/internal/brain/synth/Initialize(mapload)
 	. = ..()
 	internal_computer = new(src)
+	ADD_TRAIT(src, TRAIT_SILICON_EMOTES_ALLOWED, INNATE_TRAIT)
 
 /obj/item/organ/internal/brain/synth/Destroy()
 	QDEL_NULL(internal_computer)
