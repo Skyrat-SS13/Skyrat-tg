@@ -32,4 +32,5 @@
 /datum/preference/choiced/ears/create_default_value()
 	var/datum/sprite_accessory/ears/cat/ears = /datum/sprite_accessory/ears/cat
 	return initial(ears.name)
+	return /datum/sprite_accessory/ears/cat::name
 */
