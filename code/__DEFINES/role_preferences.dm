@@ -47,6 +47,7 @@
 #define ROLE_MUTANT "Mutated Abomination"
 #define ROLE_CLOCK_CULTIST "Clock Cultist"
 // SKYRAT EDIT END
+#define ROLE_VOIDWALKER "Voidwalker"
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
@@ -178,6 +179,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_BORER = 0,
 	ROLE_MUTANT = 0,
 	//SKYRAT EDIT END
+	ROLE_VOIDWALKER = 0,
 
 	// Latejoin
 	ROLE_HERETIC_SMUGGLER = 0,
