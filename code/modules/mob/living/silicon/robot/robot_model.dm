@@ -301,6 +301,8 @@
 		//SKYRAT EDIT ADDITION
 		if(!isnull(details[SKIN_FEATURES]))
 			model_features += details[SKIN_FEATURES]
+		if (!isnull(details[SKIN_HAT_REST_OFFSET]))
+			rest_hat_offset = details[SKIN_HAT_REST_OFFSET]
 		//SKYRAT EDIT END
 	for(var/i in old_model.added_modules)
 		added_modules += i
