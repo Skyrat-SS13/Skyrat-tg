@@ -44,6 +44,8 @@
 	var/list/mob_type_blacklist_typecache
 	/// Types that can use this emote regardless of their state.
 	var/list/mob_type_ignore_stat_typecache
+	/// Trait that is required to use this emote.
+	var/trait_required
 	/// In which state can you use this emote? (Check stat.dm for a full list of them)
 	var/stat_allowed = CONSCIOUS
 	/// Sound to play when emote is called.
@@ -356,13 +358,9 @@
  *
  * Returns a bool about whether or not the user can run the emote.
  */
-<<<<<<< HEAD
-/datum/emote/proc/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
-=======
 /datum/emote/proc/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE, params)
 	if(trait_required && !HAS_TRAIT(user, trait_required))
 		return FALSE
->>>>>>> 196a631ab813 ( [NO GBP] Fixing beyblade flipping (also an already borked comsig) (#84902))
 	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
 		return FALSE
 	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
