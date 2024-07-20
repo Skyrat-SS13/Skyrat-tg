@@ -205,7 +205,7 @@
 /obj/item/borg/upgrade/botany
 	name = "botanical operator upgrade"
 	desc = "Provides an assortement of tools for dealing with plants."
-	icon_state = "module_general"
+	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
 	model_flags = BORG_MODEL_SERVICE
