@@ -17,7 +17,7 @@
 #define EFFECT_PROB_VERYHIGH 95
 
 #define FAIL 8
-/obj/machinery/rnd/experimentor//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/rnd/experimentor
 	name = "\improper E.X.P.E.R.I-MENTOR"
 	desc = "A \"replacement\" for the destructive analyzer with a slight tendency to catastrophically fail."
 	icon = 'icons/obj/machines/experimentator.dmi'
@@ -776,7 +776,10 @@
 	if(!length(chargeable_batteries))
 		to_chat(user, span_notice("You have a strange feeling for a moment, but then it passes."))
 		return
-	for(var/obj/item/stock_parts/power_store/to_charge as anything in recharges)
+	for(var/obj/item/stock_parts/power_store/to_charge as anything in chargeable_batteries)
+		if(!recharges)
+			return
+		recharges--
 		to_charge = pick(chargeable_batteries)
 		to_charge.charge = to_charge.maxcharge
 		// The device powered by the cell is assumed to be its location.
