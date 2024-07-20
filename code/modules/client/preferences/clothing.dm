@@ -34,7 +34,7 @@
 	)
 
 /datum/preference/choiced/backpack/create_default_value()
-	return GBACKPACK
+	return DBACKPACK
 
 /datum/preference/choiced/backpack/icon_for(value)
 	switch (value)
@@ -79,6 +79,9 @@
 		PREF_SUIT,
 		PREF_SKIRT,
 	)
+
+/datum/preference/choiced/jumpsuit/create_default_value()
+	return PREF_SUIT
 
 /datum/preference/choiced/jumpsuit/icon_for(value)
 	switch (value)
