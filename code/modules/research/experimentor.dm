@@ -616,6 +616,12 @@
 			PROC_REF(uncontrolled_teleport),
 			PROC_REF(heat_and_explode),
 			PROC_REF(rapid_self_dupe),
+			PROC_REF(drink_dispenser),
+			PROC_REF(tummy_ache),
+			PROC_REF(charger),
+			PROC_REF(hugger),
+			PROC_REF(dimensional_shift),
+			PROC_REF(disguiser),
 			)
 
 /obj/item/relic/attack_self(mob/user)

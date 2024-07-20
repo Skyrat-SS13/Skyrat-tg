@@ -30,20 +30,19 @@
 	. = ..()
 	AddElement(/datum/element/kneecapping)
 
-/obj/item/melee/breaching_hammer/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	if(istype(target, /obj/machinery/door))
-		user.changeNext_move(5 SECONDS)
-		if(!registered)
-			RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(remove_track), FALSE)
-			RegisterSignal(target, COMSIG_BREACHING, PROC_REF(try_breaching), TRUE)
-			to_chat(user, text = "You prepare to forcefully strike the door")
-			registered = TRUE
-		breacher = user
-		SEND_SIGNAL(target, COMSIG_BREACHING, user)
-		breaching_target = target
+/obj/item/melee/breaching_hammer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!istype(interacting_with, /obj/machinery/door))
+		return NONE
+	user.changeNext_move(5 SECONDS)
+	if(!registered)
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(remove_track), FALSE)
+		RegisterSignal(interacting_with, COMSIG_BREACHING, PROC_REF(try_breaching), TRUE)
+		to_chat(user, text = "You prepare to forcefully strike the door")
+		registered = TRUE
+	breacher = user
+	SEND_SIGNAL(interacting_with, COMSIG_BREACHING, user)
+	breaching_target = interacting_with
+	return ITEM_INTERACT_SUCCESS
 
 /// Removes any form of tracking from the user and the item , make sure to call it on he proper item
 /obj/item/melee/breaching_hammer/proc/remove_track(mob/living/carbon/human/user)
