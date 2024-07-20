@@ -382,17 +382,11 @@
 		if(LIGHT_BROKEN)
 			. += span_danger("The [fitting] has been smashed.")
 	if(cell || has_mock_cell)
-<<<<<<< HEAD
-		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
+		. +=  span_notice("Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
 	//SKYRAT EDIT ADDITION
 	if(constant_flickering)
 		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
 	//SKYRAT EDIT END
-=======
-		. +=  span_notice("Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%.")
->>>>>>> 99d049b26e46 (Moving the light bulb removal function from the left mouse button to the right one & add screen tips (#85040))
-
-
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
