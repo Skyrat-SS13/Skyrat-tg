@@ -169,15 +169,24 @@
 	wag_flags = WAG_ABLE
 
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
+<<<<<<< HEAD
 	return SSaccessories.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.tails_list_human
+=======
+	return SSaccessories.tails_list_human
+>>>>>>> 3947a03b24f (Revert "Adds the other half of the fox infusion because Arm is a coward" (#85173))
 
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_CAT)
 
 ///Cat tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/cat
+<<<<<<< HEAD
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
+=======
+	feature_key = "tail_cat"
+	color_source = ORGAN_COLOR_HAIR
+>>>>>>> 3947a03b24f (Revert "Adds the other half of the fox infusion because Arm is a coward" (#85173))
 
 /obj/item/organ/external/tail/monkey
 	name = "monkey tail"
