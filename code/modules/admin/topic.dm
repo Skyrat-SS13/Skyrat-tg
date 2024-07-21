@@ -1764,6 +1764,7 @@
 		if(!paper_to_show)
 			return
 		paper_to_show.ui_interact(usr)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	else if(href_list["pass_opfor_candidate"])
 		if(!check_rights(R_ADMIN))
@@ -1773,6 +1774,18 @@
 			message_admins("An OPFOR candidate could not be selected.")
 
 	// SKYRAT EDIT ADDITION END
+=======
+
+	else if (href_list["print_fax"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		for(var/obj/machinery/fax/FAX as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/fax))
+			if(!is_centcom_level(FAX.z))
+				continue
+
+			FAX.receive(locate(href_list["print_fax"]), href_list["fax_name"])
+>>>>>>> 232a9fe18adb (Centcom fax (#84885))
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))
 			return
