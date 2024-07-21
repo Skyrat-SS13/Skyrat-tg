@@ -160,6 +160,9 @@
 		return FALSE
 	return TRUE
 
+/datum/bodypart_overlay/mutant/tail/get_global_feature_list()
+	return SSaccessories.tails_list_human
+
 /obj/item/organ/external/tail/cat
 	name = "tail"
 	preference = "feature_human_tail"
@@ -168,9 +171,12 @@
 
 	wag_flags = WAG_ABLE
 
+<<<<<<< HEAD
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
 	return SSaccessories.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.tails_list_human
 
+=======
+>>>>>>> 9a46f58e6ce (Adds the other half of the fox infusion because Arm is a coward (#85129))
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_CAT)
 
@@ -178,6 +184,15 @@
 /datum/bodypart_overlay/mutant/tail/cat
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
+
+/obj/item/organ/external/tail/cat/fox
+	name = "fox tail"
+	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/cat/fox
+	dna_block = null
+	sprite_accessory_override = /datum/sprite_accessory/tails/human/fox
+
+///Fox tail bodypart overlay
+/datum/bodypart_overlay/mutant/tail/cat/fox
 
 /obj/item/organ/external/tail/monkey
 	name = "monkey tail"
