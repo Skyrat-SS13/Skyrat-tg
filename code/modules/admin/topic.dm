@@ -1764,18 +1764,6 @@
 		if(!paper_to_show)
 			return
 		paper_to_show.ui_interact(usr)
-<<<<<<< HEAD
-	// SKYRAT EDIT ADDITION START
-	else if(href_list["pass_opfor_candidate"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		if(!SSdynamic.picking_specific_rule(/datum/dynamic_ruleset/midround/from_living/opfor_candidate, forced = TRUE, ignore_cost = TRUE))
-			message_admins("An OPFOR candidate could not be selected.")
-
-	// SKYRAT EDIT ADDITION END
-=======
-
 	else if (href_list["print_fax"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -1785,7 +1773,15 @@
 				continue
 
 			FAX.receive(locate(href_list["print_fax"]), href_list["fax_name"])
->>>>>>> 232a9fe18adb (Centcom fax (#84885))
+	// SKYRAT EDIT ADDITION START
+	else if(href_list["pass_opfor_candidate"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(!SSdynamic.picking_specific_rule(/datum/dynamic_ruleset/midround/from_living/opfor_candidate, forced = TRUE, ignore_cost = TRUE))
+			message_admins("An OPFOR candidate could not be selected.")
+
+	// SKYRAT EDIT ADDITION END
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))
 			return
