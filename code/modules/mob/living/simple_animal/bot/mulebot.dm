@@ -430,8 +430,8 @@
 		return TRUE
 
 /mob/living/simple_animal/bot/mulebot/post_unbuckle_mob(mob/living/M)
-		load = null
-		return ..()
+	load = null
+	return ..()
 
 // called to unload the bot
 // argument is optional direction to unload
