@@ -1207,14 +1207,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Trait given to a turf that should not be allowed to be terraformed, such as turfs holding ore vents.
 #define TRAIT_NO_TERRAFORM "no_terraform"
 
-<<<<<<< HEAD
-=======
 /// Given to a mob that can throw to make them not able to throw
 #define TRAIT_NO_THROWING "no_throwing"
 
 ///Trait which allows mobs to parry mining mob projectiles
-#define TRAIT_MINING_PARRYING "mining_parrying"
->>>>>>> 2672a93c6669 (Voidwalker Balancing, Fixes and Additions (#85045))
-
 
 // END TRAIT DEFINES
