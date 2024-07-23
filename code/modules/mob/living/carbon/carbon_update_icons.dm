@@ -487,8 +487,8 @@
 	var/list/needs_update = list()
 	var/limb_count_update = FALSE
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
-		// SKYRAT EDIT BEGIN - Don't handle abstract limbs (Taurs, etc.) Uses compiletime values to be faster
-		if(!initial(limb.show_icon))
+		// SKYRAT EDIT BEGIN - Don't handle abstract limbs (Taurs, etc.)
+		if(!limb.show_icon)
 			continue
 		// SKYRAT EDIT END
 		limb.update_limb(is_creating = update_limb_data) //Update limb actually doesn't do much, get_limb_icon is the cpu eater.
