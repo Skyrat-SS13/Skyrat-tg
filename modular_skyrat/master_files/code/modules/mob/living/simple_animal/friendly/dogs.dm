@@ -355,12 +355,12 @@
 /datum/ai_controller/basic_controller/pitbull
 	blackboard = list(
 		BB_ALWAYS_IGNORE_FACTION = TRUE,
-		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/of_size/smaller
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/of_size/smaller,
 		BB_FLEE_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
-	ai_movement = /datum/ai_movement/dumb
-	idle_behavior = /datum/idle_behavior/idle_dog
+	ai_movement = /datum/ai_movement/dumb,
+	idle_behavior = /datum/idle_behavior/idle_dog,
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/target_retaliate/to_flee,
 		/datum/ai_planning_subtree/flee_target/from_flee_key,
