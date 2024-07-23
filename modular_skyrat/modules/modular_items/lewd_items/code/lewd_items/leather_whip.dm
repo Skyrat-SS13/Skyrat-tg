@@ -171,8 +171,6 @@
 
 	switch(user.zone_selected) //to let code know what part of body we gonna whip
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-			var/leg = user.zone_selected == BODY_ZONE_L_LEG ? "left leg" : "right leg"
-
 			if(!carbon_target?.has_feet())
 				to_chat(user, span_danger("Looks like [target] is missing their legs!"))
 				return
