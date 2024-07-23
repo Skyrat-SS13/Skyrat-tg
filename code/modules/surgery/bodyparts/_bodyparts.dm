@@ -203,6 +203,10 @@
 	var/robotic_emp_paralyze_damage_percent_threshold = 0.3
 	/// A potential texturing overlay to put on the limb
 	var/datum/bodypart_overlay/texture/texture_bodypart_overlay
+	// SKYRAT EDIT BEGIN
+	/// If we even wanna try and handle icons/overlays of the limb (Taurs don't, f.e.). See update_body_parts
+	var/show_icon = TRUE
+	// SKYRAT EDIT END
 
 /obj/item/bodypart/apply_fantasy_bonuses(bonus)
 	. = ..()
