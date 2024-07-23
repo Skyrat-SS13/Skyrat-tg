@@ -349,4 +349,10 @@
 	icon_state = "pitbull"
 	icon_dead = "pitbull_dead"
 	icon_living = "pitbull"
+	can_be_held = FALSE //He's too big.
+
+/mob/living/basic/pet/dog/pitbull/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/tiny_mob_hunter, MOB_SIZE_SMALL)
+	AddElement(/datum/element/ai_retaliate)
 
