@@ -38,7 +38,7 @@
 /obj/item/clothing/sextoy/magic_wand/Initialize(mapload)
 	. = ..()
 
-	magicwand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "magicwand", ABOVE_MOB_LAYER + 0.1) //two arguments
+	magicwand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "magicwand", -BODY_FRONT_UNDER_CLOTHES) //two arguments
 
 	update_icon_state()
 	update_icon()

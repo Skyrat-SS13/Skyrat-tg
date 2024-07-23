@@ -26,7 +26,7 @@
 
 	update_icon_state()
 
-	clamps_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[initial(icon_state)]_[breast_type]_[breast_size]", ABOVE_ALL_MOB_LAYER + 0.1) //two arguments. Yes, all mob layer. Fuck person who was working on genitals, they're working wrong.ABOVE_NORMAL_TURF_LAYER
+	clamps_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[initial(icon_state)]_[breast_type]_[breast_size]", -BODY_FRONT_UNDER_CLOTHES) //two arguments. Yes, all mob layer. Fuck person who was working on genitals, they're working wrong.ABOVE_NORMAL_TURF_LAYER
 
 	update_icon()
 	update_appearance()
@@ -52,7 +52,7 @@
 
 	update_icon_state()
 
-	clamps_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[initial(icon_state)]_[breast_type]_[breast_size]", ABOVE_ALL_MOB_LAYER + 0.1) //two arguments
+	clamps_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[initial(icon_state)]_[breast_type]_[breast_size]", -BODY_FRONT_UNDER_CLOTHES) //two arguments
 
 	update_icon()
 	update_appearance()
