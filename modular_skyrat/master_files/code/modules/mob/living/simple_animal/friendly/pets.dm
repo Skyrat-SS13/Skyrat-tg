@@ -47,8 +47,8 @@
 		"hoooonk!",
 		"meow!",
 		"honk!",
-		"mrow!"
-		"henk!"
+		"mrow!",
+		"henk!",
 	emote_see = list("plays tricks.", "slips.", "honks a tiny horn.")
 	)
 
