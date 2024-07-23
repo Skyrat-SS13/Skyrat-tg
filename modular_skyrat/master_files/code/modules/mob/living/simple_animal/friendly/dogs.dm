@@ -353,6 +353,6 @@
 
 /mob/living/basic/pet/dog/pitbull/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/tiny_mob_hunter, MOB_SIZE_SMALL)
+	AddElement(/datum/element/tiny_mob_hunter, MOB_SIZE_SMALL) //He eats anything that he sees as a toddler.
 	AddElement(/datum/element/ai_retaliate)
 
