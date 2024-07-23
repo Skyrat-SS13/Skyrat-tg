@@ -57,35 +57,35 @@
 
 /obj/item/spanking_pad/attack(mob/living/target, mob/living/user)
 	. = ..()
-	var/mob/living/carbon/human/carbon_target
-	if(istype(target,/mob/living/carbon/human))
-		carbon_target = target
-	else if(istype(target,/mob/living/silicon/robot))
-		// Just use target var, return if it isn't human or robot
-	else
+	if(target.stat == DEAD)
 		return
-	if(!istype(user,/mob/living/carbon/human) && !istype(user,/mob/living/silicon/robot))
+	var/mob/living/carbon/human/carbon_target = target
+	if(!carbon_target && !iscyborg(target))
 		return
 
 	var/message = ""
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
-	switch(user.zone_selected) //to let code know what part of body we gonna spank.
-		if(BODY_ZONE_PRECISE_GROIN)
-			if(carbon_target && !carbon_target.is_bottomless())
-				to_chat(user, span_danger("[target]'s butt is covered!"))
-				return
-			message = (user == target) ? pick("spanks themselves with [src]", "uses [src] to slap their hips") : pick("slaps [target]'s hips with [src]", "uses [src] to slap [target]'s butt", "spanks [target] with [src], making a loud slapping noise", "slaps [target]'s thighs with [src]")
-			if(prob(40) && (target.stat != DEAD))
-				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
-			if(carbon_target)
-				carbon_target.adjust_arousal(2)
-			target.adjust_pain(4)
-			target.apply_status_effect(/datum/status_effect/spanked)
-			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
-				target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
-			if(prob(10) && (target.stat != DEAD))
-				target.apply_status_effect(/datum/status_effect/subspace)
-			user.visible_message(span_purple("[user] [message]!"))
-			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
+
+	if(!carbon_target?.is_bottomless() && !iscyborg(target))
+		to_chat(user, span_danger("[target]'s butt is covered!"))
+		return
+
+	message = (user == target) ? pick("spanks themselves with [src]",
+			"uses [src] to slap their hips") \
+		: pick("slaps [target]'s hips with [src]",
+			"uses [src] to slap [target]'s butt",
+			"spanks [target] with [src], making a loud slapping noise",
+			"slaps [target]'s thighs with [src]")
+	user.visible_message(span_purple("[user] [message]!"))
+	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
+	if(prob(40))
+		target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
+	if(prob(10))
+		target.apply_status_effect(/datum/status_effect/subspace)
+	if(HAS_TRAIT(target, TRAIT_MASOCHISM) || HAS_TRAIT(target, TRAIT_BIMBO))
+		target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
+	carbon_target?.adjust_arousal(2)
+	target.adjust_pain(4)
+	target.apply_status_effect(/datum/status_effect/spanked)

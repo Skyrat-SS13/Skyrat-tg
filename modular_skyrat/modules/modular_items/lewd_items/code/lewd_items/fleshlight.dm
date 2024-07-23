@@ -54,30 +54,33 @@
 	. = ..()
 	if(!istype(target))
 		return
+	if(target.stat == DEAD)
+		return
 
-	var/message = ""
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that!"))
 		return
-	switch(user.zone_selected) //to let code know what part of body we gonna... Uhh... You get the point.
-		if(BODY_ZONE_PRECISE_GROIN)
-			var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
-			if(!penis)
-				to_chat(user, span_danger("[target] doesn't have a penis!"))
-				return
-			if(!(target.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW))
-				to_chat(user, span_danger("[target]'s groin is covered!"))
-				return
-			message = (user == target) ? pick("moans in ecstasy as [target.p_they()] use the [src]", "slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure", "slightly shivers in pleasure as [target.p_they()] use [src]") : pick("uses [src] on [target]'s penis", "fucks [target] with [src]", "masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")
-			if(!(prob(40) && (target.stat != DEAD)))
-				return
-			target.try_lewd_autoemote(pick("twitch_s", "moan", "blush"))
-			target.adjust_arousal(6)
-			target.adjust_pleasure(9)
-			user.visible_message(span_purple("[user] [message]!"))
-			play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
+
+	var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
+	if(!penis?.is_exposed())
+		to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
+		return
+
+	var/message = (user == target) ? pick("moans in ecstasy as [target.p_they()] fuck the [src]",
+			"slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure",
+			"shivers in pleasure as [target.p_they()] move [src] on their penis") \
+		: pick("uses [src] on [target]'s penis",
+			"fucks [target] with [src]",
+			"masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")
+
+	if(prob(70))
+		target.try_lewd_autoemote(pick("twitch_s", "moan", "blush"))
+	target.adjust_arousal(6)
+	target.adjust_pleasure(9)
+	user.visible_message(span_purple("[user] [message]!"))
+	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
