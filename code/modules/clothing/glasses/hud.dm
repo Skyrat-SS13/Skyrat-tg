@@ -36,7 +36,6 @@
 	name = "health scanner HUD"
 	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status."
 	icon_state = "healthhud"
-	hud_types = list(DATA_HUD_MEDICAL_ADVANCED)
 	clothing_traits = list(TRAIT_MEDICAL_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
@@ -44,7 +43,6 @@
 	name = "health scanner security HUD"
 	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status, ID status and security records."
 	icon_state = "medsechud"
-	hud_types = list(DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_SECURITY_ADVANCED)
 	clothing_traits = list(TRAIT_MEDICAL_HUD, TRAIT_SECURITY_HUD)
 
 /obj/item/clothing/glasses/hud/health/night
@@ -98,7 +96,6 @@
 	name = "diagnostic HUD"
 	desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits."
 	icon_state = "diagnostichud"
-	hud_types = list(DATA_HUD_DIAGNOSTIC_BASIC)
 	clothing_traits = list(TRAIT_DIAGNOSTIC_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
@@ -141,7 +138,6 @@
 	name = "security HUD"
 	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	hud_types = list(DATA_HUD_SECURITY_ADVANCED)
 	clothing_traits = list(TRAIT_SECURITY_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
@@ -251,7 +247,6 @@
 	name = "thermal HUD scanner"
 	desc = "Thermal imaging HUD in the shape of glasses."
 	icon_state = "thermal"
-	hud_types = list(DATA_HUD_SECURITY_ADVANCED)
 	vision_flags = SEE_MOBS
 	color_cutoffs = list(25, 8, 5)
 	glass_colour_type = /datum/client_colour/glass_colour/red

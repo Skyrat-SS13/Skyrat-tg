@@ -105,7 +105,7 @@
 /datum/nifsoft/hud/job/diagnostic
 	name = "Diagnostic Scrying Lens"
 	ui_icon = "robot"
-	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
+	hud_type = DATA_HUD_DIAGNOSTIC
 	hud_traits = list(TRAIT_DIAGNOSTIC_HUD)
 
 /datum/nifsoft/hud/job/security
