@@ -17,7 +17,7 @@
 /obj/projectile/bullet/arrow/ash
 	name = "ashen arrow"
 	desc = "An arrow made of hardened ash."
-	faction_bonus_force = 80
+	faction_bonus_force = 90
 	damage = 30
 	nemesis_paths = list(
 		/mob/living/simple_animal/hostile/asteroid,
@@ -42,7 +42,7 @@
 	embed_type = /datum/embed_data/bone_arrow
 
 /datum/embed_data/bone_arrow
-	embed_chance = 33
+	embed_chance = 35
 	fall_chance = 3
 	jostle_chance = 4
 	ignore_throwspeed_threshold = TRUE
