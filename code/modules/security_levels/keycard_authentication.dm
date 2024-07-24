@@ -186,6 +186,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth/wall_mounted, 26)
 	. = ..()
 	find_and_hang_on_wall()
 
+/// Subtype which is stuck to a wall
+/obj/machinery/keycard_auth/wall_mounted
+	icon = 'icons/obj/machines/wallmounts.dmi'
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth/wall_mounted, 26)
+
+/obj/machinery/keycard_auth/wall_mounted/Initialize(mapload)
+	. = ..()
+	find_and_hang_on_wall()
+
 GLOBAL_VAR_INIT(emergency_access, FALSE)
 /proc/make_maint_all_access()
 	for(var/area/station/maintenance/area in GLOB.areas)
