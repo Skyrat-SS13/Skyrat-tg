@@ -4,9 +4,10 @@
 #define BLOOD_CHEM_OBJECTIVE 3
 
 // Parent of all borer actions
-/datum/action/cooldown/borer
+/datum/action/cooldown/mob_cooldown/borer
 	button_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	cooldown_time = 0
+	shared_cooldown = NONE
 	/// How many chemicals this costs
 	var/chemical_cost = 0
 	/// How many chem evo points are needed to use this ability
@@ -14,7 +15,7 @@
 	/// How many stat evo points are needed to use this ability
 	var/stat_evo_points = 0
 
-/datum/action/cooldown/borer/New(Target, original)
+/datum/action/cooldown/mob_cooldown/borer/New(Target, original)
 	. = ..()
 	var/compiled_string = ""
 	if(chemical_cost)
@@ -25,7 +26,7 @@
 		compiled_string += " ([stat_evo_points] stat point[stat_evo_points == 1 ? "" : "s"])"
 	name = "[initial(name)][compiled_string]"
 
-/datum/action/cooldown/borer/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!iscorticalborer(owner))
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
@@ -46,11 +47,12 @@
 	return . == FALSE ? FALSE : TRUE //. can be null, true, or false. There's a difference between null and false here
 
 //inject chemicals into your host
-/datum/action/cooldown/borer/inject_chemical
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical
 	name = "Open Chemical Injector"
 	button_icon_state = "chemical"
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/inject_chemical/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -63,13 +65,13 @@
 		return
 	ui_interact(owner)
 
-/datum/action/cooldown/borer/inject_chemical/ui_interact(mob/user, datum/tgui/ui)
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BorerChem", name)
 		ui.open()
 
-/datum/action/cooldown/borer/inject_chemical/ui_data(mob/user)
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical/ui_data(mob/user)
 	var/list/data = list()
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	data["amount"] = cortical_owner.injection_rate_current
@@ -89,7 +91,7 @@
 
 	return data
 
-/datum/action/cooldown/borer/inject_chemical/ui_act(action, params)
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -124,10 +126,10 @@
 			cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 			. = TRUE
 
-/datum/action/cooldown/borer/inject_chemical/ui_state(mob/user)
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/action/cooldown/borer/inject_chemical/ui_status(mob/user, datum/ui_state/state)
+/datum/action/cooldown/mob_cooldown/borer/inject_chemical/ui_status(mob/user, datum/ui_state/state)
 	if(!iscorticalborer(user))
 		return UI_CLOSE
 
@@ -137,23 +139,24 @@
 		return UI_CLOSE
 	return ..()
 
-/datum/action/cooldown/borer/evolution_tree
+/datum/action/cooldown/mob_cooldown/borer/evolution_tree
 	name = "Open Evolution Tree"
 	button_icon_state = "newability"
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/evolution_tree/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/evolution_tree/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
 	ui_interact(owner)
 
-/datum/action/cooldown/borer/evolution_tree/ui_interact(mob/user, datum/tgui/ui)
+/datum/action/cooldown/mob_cooldown/borer/evolution_tree/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BorerEvolution", name)
 		ui.open()
 
-/datum/action/cooldown/borer/evolution_tree/ui_data(mob/user)
+/datum/action/cooldown/mob_cooldown/borer/evolution_tree/ui_data(mob/user)
 	var/list/data = list()
 
 	var/static/list/path_to_color = list(
@@ -201,7 +204,7 @@
 		data["learnedEvolution"] += list(evo_data)
 	return data
 
-/datum/action/cooldown/borer/evolution_tree/ui_act(action, params)
+/datum/action/cooldown/mob_cooldown/borer/evolution_tree/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -223,14 +226,15 @@
 			cortical_owner.stat_evolution -= initial(to_evolve_path.evo_cost)
 			return TRUE
 
-/datum/action/cooldown/borer/evolution_tree/ui_state(mob/user)
+/datum/action/cooldown/mob_cooldown/borer/evolution_tree/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/action/cooldown/borer/learn_focus
+/datum/action/cooldown/mob_cooldown/borer/learn_focus
 	name = "Learn Focus"
 	button_icon_state = "getfocus"
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/learn_focus/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/learn_focus/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -263,12 +267,13 @@
 	owner.balloon_alert(owner, "focus learned successfully")
 	StartCooldown()
 
-/datum/action/cooldown/borer/learn_bloodchemical
+/datum/action/cooldown/mob_cooldown/borer/learn_bloodchemical
 	name = "Learn Chemical from Blood"
 	button_icon_state = "bloodchem"
 	chemical_evo_points = 5
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/learn_bloodchemical/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/learn_bloodchemical/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -309,12 +314,13 @@
 	StartCooldown()
 
 //become stronger by learning new chemicals
-/datum/action/cooldown/borer/upgrade_chemical
+/datum/action/cooldown/mob_cooldown/borer/upgrade_chemical
 	name = "Learn New Chemical"
 	button_icon_state = "bloodlevel"
 	chemical_evo_points = 1
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/upgrade_chemical/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/upgrade_chemical/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -344,12 +350,13 @@
 	StartCooldown()
 
 //become stronger by affecting the stats
-/datum/action/cooldown/borer/upgrade_stat
+/datum/action/cooldown/mob_cooldown/borer/upgrade_stat
 	name = "Become Stronger"
 	button_icon_state = "level"
 	stat_evo_points = 1
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/upgrade_stat/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/upgrade_stat/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -375,11 +382,12 @@
 	StartCooldown()
 
 //go between either hiding behind tables or behind mobs
-/datum/action/cooldown/borer/toggle_hiding
+/datum/action/cooldown/mob_cooldown/borer/toggle_hiding
 	name = "Toggle Hiding"
 	button_icon_state = "hide"
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/toggle_hiding/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/toggle_hiding/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -396,12 +404,12 @@
 	StartCooldown()
 
 //to paralyze people
-/datum/action/cooldown/borer/fear_human
+/datum/action/cooldown/mob_cooldown/borer/fear_human
 	name = "Incite Fear"
 	cooldown_time = 12 SECONDS
 	button_icon_state = "fear"
 
-/datum/action/cooldown/borer/fear_human/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/fear_human/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -435,7 +443,7 @@
 	incite_fear(choose_fear)
 	StartCooldown()
 
-/datum/action/cooldown/borer/fear_human/proc/incite_fear(mob/living/carbon/human/singular_fear)
+/datum/action/cooldown/mob_cooldown/borer/fear_human/proc/incite_fear(mob/living/carbon/human/singular_fear)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	to_chat(singular_fear, span_warning("Something glares menacingly at you!"))
 	singular_fear.Paralyze(7 SECONDS)
@@ -446,7 +454,7 @@
 	cortical_owner.log_message(logging_text, LOG_GAME)
 	singular_fear.log_message(logging_text, LOG_GAME)
 
-/datum/action/cooldown/borer/fear_human/proc/incite_internal_fear()
+/datum/action/cooldown/mob_cooldown/borer/fear_human/proc/incite_internal_fear()
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	owner.balloon_alert(owner, "fear incited into host")
 	cortical_owner.human_host.Paralyze(10 SECONDS)
@@ -459,12 +467,13 @@
 	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 
 //to check the health of the human
-/datum/action/cooldown/borer/check_blood
+/datum/action/cooldown/mob_cooldown/borer/check_blood
 	name = "Check Blood"
 	cooldown_time = 5 SECONDS
 	button_icon_state = "blood"
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/check_blood/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/check_blood/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -479,121 +488,14 @@
 	chemscan(owner, cortical_owner.human_host)
 	StartCooldown()
 
-//to either get inside, or out, of a host
-/datum/action/cooldown/borer/choosing_host
-	name = "Inhabit/Uninhabit Host"
-	cooldown_time = 10 SECONDS
-	button_icon_state = "host"
-
-/datum/action/cooldown/borer/choosing_host/Trigger(trigger_flags, atom/target)
-	. = ..()
-	if(!.)
-		return FALSE
-	var/mob/living/basic/cortical_borer/cortical_owner = owner
-
-	//having a host means we need to leave them then
-	if(cortical_owner.human_host)
-		if(cortical_owner.host_sugar())
-			owner.balloon_alert(owner, "cannot function with sugar in host")
-			return
-		owner.balloon_alert(owner, "detached from host")
-		if(!(cortical_owner.upgrade_flags & BORER_STEALTH_MODE))
-			to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
-		var/obj/item/organ/internal/borer_body/borer_organ = locate() in cortical_owner.human_host.organs
-		//log the interaction
-		var/turf/human_turfone = get_turf(cortical_owner.human_host)
-		var/logging_text = "[key_name(cortical_owner)] left [key_name(cortical_owner.human_host)] at [loc_name(human_turfone)]"
-		cortical_owner.log_message(logging_text, LOG_GAME)
-		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
-		if(borer_organ)
-			borer_organ.Remove(cortical_owner.human_host)
-		cortical_owner.forceMove(human_turfone)
-		cortical_owner.human_host = null
-		REMOVE_TRAIT(cortical_owner, TRAIT_WEATHER_IMMUNE, "borer_in_host")
-		StartCooldown()
-		return
-
-	//we dont have a host so lets inhabit one
-	var/list/usable_hosts = list()
-	for(var/mob/living/carbon/human/listed_human in range(1, cortical_owner))
-		// no non-human hosts
-		if(!ishuman(listed_human) || ismonkey(listed_human))
-			continue
-		// cannot have multiple borers (for now)
-		if(listed_human.has_borer())
-			continue
-		// hosts need to be organic
-		if(!(listed_human.dna.species.inherent_biotypes & MOB_ORGANIC) && cortical_owner.organic_restricted)
-			continue
-		// hosts need to be organic
-		if(!(listed_human.mob_biotypes & MOB_ORGANIC) && cortical_owner.organic_restricted)
-			continue
-		//hosts cannot be changelings
-		if(IS_CHANGELING(listed_human) && cortical_owner.changeling_restricted)
-			continue
-		usable_hosts += listed_human
-
-	//if the list of possible hosts is one, just go straight in, no choosing
-	if(length(usable_hosts) == 1)
-		enter_host(usable_hosts[1])
-		return
-
-	//if the list of possible host is more than one, allow choosing a host
-	var/choose_host = tgui_input_list(cortical_owner, "Choose your host!", "Host Choice", usable_hosts)
-	if(!choose_host)
-		owner.balloon_alert(owner, "no target selected")
-		return
-	enter_host(choose_host)
-
-/datum/action/cooldown/borer/choosing_host/proc/enter_host(mob/living/carbon/human/singular_host)
-	var/mob/living/basic/cortical_borer/cortical_owner = owner
-	if(check_for_bio_protection(singular_host))
-		owner.balloon_alert(owner, "target head too protected!")
-		return
-	if(singular_host.has_borer())
-		owner.balloon_alert(owner, "target already occupied")
-		return
-	if(!do_after(cortical_owner, (((cortical_owner.upgrade_flags & BORER_FAST_BORING) && !(cortical_owner.upgrade_flags & BORER_HIDING)) ? 3 SECONDS : 6 SECONDS), target = singular_host))
-		owner.balloon_alert(owner, "you and target must be still")
-		return
-	if(get_dist(singular_host, cortical_owner) > 1)
-		owner.balloon_alert(owner, "target too far away")
-		return
-	cortical_owner.human_host = singular_host
-	cortical_owner.forceMove(cortical_owner.human_host)
-	if(!(cortical_owner.upgrade_flags & BORER_STEALTH_MODE))
-		to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
-	cortical_owner.copy_languages(cortical_owner.human_host)
-	var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
-	borer_organ.borer = owner
-	borer_organ.Insert(cortical_owner.human_host)
-	var/turf/human_turftwo = get_turf(cortical_owner.human_host)
-	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
-	cortical_owner.log_message(logging_text, LOG_GAME)
-	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
-	ADD_TRAIT(cortical_owner, TRAIT_WEATHER_IMMUNE, "borer_in_host")
-	StartCooldown()
-
-/// Checks if the target's head is bio protected, returns true if this is the case
-/datum/action/cooldown/borer/choosing_host/proc/check_for_bio_protection(mob/living/carbon/human/target)
-	if(isobj(target.head))
-		if(target.head.get_armor_rating(BIO) >= 100)
-			return TRUE
-	if(isobj(target.wear_mask))
-		if(target.wear_mask.get_armor_rating(BIO) >= 100)
-			return TRUE
-	if(isobj(target.wear_neck))
-		if(target.wear_neck.get_armor_rating(BIO) >= 100)
-			return TRUE
-	return FALSE
-
 //you can force your host to speak... dont abuse this
-/datum/action/cooldown/borer/force_speak
+/datum/action/cooldown/mob_cooldown/borer/force_speak
 	name = "Force Host Speak"
 	cooldown_time = 30 SECONDS
 	button_icon_state = "speak"
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/force_speak/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/force_speak/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -622,13 +524,14 @@
 	StartCooldown()
 
 //we need a way to produce offspring
-/datum/action/cooldown/borer/produce_offspring
+/datum/action/cooldown/mob_cooldown/borer/produce_offspring
 	name = "Produce Offspring"
 	cooldown_time = 1 MINUTES
 	button_icon_state = "reproduce"
 	chemical_cost = 100
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/produce_offspring/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/produce_offspring/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -665,7 +568,7 @@
 	owner.balloon_alert(owner, "egg laid")
 	StartCooldown()
 
-/datum/action/cooldown/borer/produce_offspring/proc/no_host_egg()
+/datum/action/cooldown/mob_cooldown/borer/produce_offspring/proc/no_host_egg()
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	cortical_owner.health = max(cortical_owner.health, 1, cortical_owner.health -= OUT_OF_HOST_EGG_COST)
 	produce_egg()
@@ -676,7 +579,7 @@
 	cortical_owner.log_message(logging_text, LOG_GAME)
 	owner.balloon_alert(owner, "egg laid")
 
-/datum/action/cooldown/borer/produce_offspring/proc/produce_egg()
+/datum/action/cooldown/mob_cooldown/borer/produce_offspring/proc/produce_egg()
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	var/turf/borer_turf = get_turf(cortical_owner)
 	var/obj/effect/mob_spawn/ghost_role/borer_egg/spawned_egg = new /obj/effect/mob_spawn/ghost_role/borer_egg(borer_turf)
@@ -686,13 +589,14 @@
 		GLOB.successful_egg_number += 1
 
 //revive your host
-/datum/action/cooldown/borer/revive_host
+/datum/action/cooldown/mob_cooldown/borer/revive_host
 	name = "Revive Host"
 	cooldown_time = 2 MINUTES
 	button_icon_state = "revive"
 	chemical_cost = 200
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/revive_host/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/revive_host/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -726,13 +630,14 @@
 	StartCooldown()
 
 //to ask if a host is willing
-/datum/action/cooldown/borer/willing_host
+/datum/action/cooldown/mob_cooldown/borer/willing_host
 	name = "Willing Host"
 	cooldown_time = 2 MINUTES
 	button_icon_state = "willing"
 	chemical_cost = 150
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/willing_host/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/willing_host/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -759,13 +664,14 @@
 	GLOB.willing_hosts += cortical_owner.human_host.ckey
 	StartCooldown()
 
-/datum/action/cooldown/borer/stealth_mode
+/datum/action/cooldown/mob_cooldown/borer/stealth_mode
 	name = "Stealth Mode"
 	cooldown_time = 2 MINUTES
 	button_icon_state = "hiding"
 	chemical_cost = 100
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/stealth_mode/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/stealth_mode/Trigger(trigger_flags, atom/target)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	var/in_stealth = (cortical_owner.upgrade_flags & BORER_STEALTH_MODE)
 	if(in_stealth)
@@ -788,13 +694,14 @@
 
 	StartCooldown()
 
-/datum/action/cooldown/borer/empowered_offspring
+/datum/action/cooldown/mob_cooldown/borer/empowered_offspring
 	name = "Produce Empowered Offspring"
 	cooldown_time = 1 MINUTES
 	button_icon_state = "reproduce"
 	chemical_cost = 150
+	click_to_activate = FALSE
 
-/datum/action/cooldown/borer/empowered_offspring/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/mob_cooldown/borer/empowered_offspring/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
