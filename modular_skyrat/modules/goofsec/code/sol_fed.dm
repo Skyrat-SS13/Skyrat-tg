@@ -7,6 +7,7 @@
 #define EMERGENCY_RESPONSE_ATMOS "DISCO INFERNO"
 #define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
 #define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
+#define EMERGENCY_RESPONSE_PMC "MURKYWATER IN THE HOUSE"
 
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
@@ -66,6 +67,16 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 		SOLFED_AMT = 0,
 		SOLFED_VOTES = 0,
 		SOLFED_DECLARED = FALSE
+	),
+	"pmc_militant" = list(
+		SOLFED_AMT = 0,
+		SOLFED_VOTES = 0,
+		SOLFED_DECLARED = FALSE
+	),
+	"pmc_heavy" = list(
+		SOLFED_AMT = 0,
+		SOLFED_VOTES = 0,
+		SOLFED_DECLARED = FALSE
 	)
 ))
 GLOBAL_LIST_INIT(call911_do_and_do_not, list(
@@ -86,6 +97,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		A trashcan on fire in the library, a single breached room, heating issues, etc. - especially with capable Engineers/Atmos Techs.\n\
 		There is a response fee of [abs(GLOB.solfed_tech_charge)] credits per emergency responder.\n\
 		Are you sure you want to call Advanced Atmospherics?"
+	EMERGENCY_RESPONSE_PMC = "You SHOULD call Ironmoon Security Contractor for:\n\
+		Stationwide Emergency, Lack of available security force to maintain law and orders, handling manhunts, corporate affair. \n\
+		You SHOULD NOT call Ironmoon Security Contractor for:\n\
+		Security ignoring Command, Territorial Dispute, any political affairs involving Sol or the NRI.\n\
+		There is a response fee of [abs(GLOB.solfed_tech_charge)] credits per hired gun.\n\
+		Are you sure you want to call Ironmoon Security Contrator?"
 ))
 
 /// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
@@ -130,6 +147,16 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				[GLOB.call_911_msg]"
 			announcer = "Sol Federation EMTs"
 			poll_question = "The station has called for medical support. Will you respond?"
+		if(EMERGENCY_RESPONSE_PMC)
+			team_size = tgui_input_number(usr, "How many gunmen would you like dispatched?", "How badly did you screw up?", 3, 3, 1)
+			cops_to_send = /datum/antagonist/ert/request_911/pmc
+			announcement_message = "Crewmembers of [station_name()]. this is the Ironmoon Security Contractor. We've recieved a request for reinforcement and payment has been proceeded in advance \
+				We are on the way.\n\n\
+				The transcript of the call is as follows:\n\
+				[GLOB.call_911_msg]"
+			announcer = "Ironmoon Military Company"
+			poll_question = "The station has called for security contractor. Will you respond?"
+			cell_phone_number = "pmc"
 		if(EMERGENCY_RESPONSE_EMAG)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/pizza/false_call
@@ -518,6 +545,96 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	id_trim = /datum/id_trim/solfed
 
+/datum/antagonist/ert/request_911/pmc
+	name = "Ironmoon PMC"
+	outfit = /datum/outfit/request_911/pmc
+
+/datum/antagonist/ert/request_911/pmc/greet()
+	var/missiondesc =  ""
+	missiondesc += "<B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Ironmoon Military Company as a [role].</font></B>"
+	missiondesc += "<BR>You are here to assistf [station_name()] due to the occupants encountering difficulties with their workspace.\n"
+	missiondesc += "<BR><B>Your Mission</B>:"
+	missiondesc += "<BR> <B>1.</B> Keep in touch with the other unit using your phone."
+	missiondesc += "<BR> <B>2.</B> Neutralise all suspect engaging with the station authority."
+	missiondesc += "<BR> <B>4.</B> You are authorised to use lethal force."
+	to_chat(owner, missiondesc)
+	var/mob/living/greeted_mob = owner.current
+	greeted_mob.playsound_local(greeted_mob, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+
+/datum/outfit/request_911/pmc
+	name = "Ironmoon PMC"
+
+	uniform = /obj/item/clothing/under/sol_peacekeeper
+	head = /obj/item/clothing/head/helmet/sf_peacekeeper/debranded
+	mask = /obj/item/clothing/mask/gas/sechailer/swat
+	gloves = /obj/item/clothing/gloves/combat
+	suit = /obj/item/clothing/suit/armor/sf_peacekeeper/debranded
+	shoes = /obj/item/clothing/shoes/jackboots
+	belt = /obj/item/storage/belt/military/nri/medic/full
+	back = /obj/item/storage/backpack
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	ears = /obj/item/radio/headset/headset_sec/alt
+	l_pocket = /obj/item/gun/ballistic/revolver/sol
+	r_pocket = /obj/item/flashlight/seclite
+	id = /obj/item/card/id/advanced/solfed
+	r_hand = /obj/item/gun/ballistic/automatic/miecz
+	backpack_contents = list(
+		/obj/item/storage/box/handcuffs = 1,
+		/obj/item/ammo_box/c35sol/ripper = 2,
+		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/storage/box/flashbangs = 1,
+		/obj/item/storage/medkit/brute = 1,
+		/obj/item/solfed_reporter/pmc_reinforcement = 1,
+		/obj/item/beamout_tool = 1,
+	)
+
+	id_trim = /datum/id_trim/solfed
+
+/datum/antagonist/ert/request_911/pmc_heavy
+	name = "Ironmoon Heavy PMC"
+	outfit = /datum/outfit/request_911/pmc_heavy
+
+/datum/antagonist/ert/request_911/pmc/greet()
+	var/missiondesc =  ""
+	missiondesc += "<B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Ironmoon Military Company as a [role].</font></B>"
+	missiondesc += "<BR>You are here to assistf [station_name()] due to the occupants encountering difficulties with their workspace.\n"
+	missiondesc += "<BR><B>Your Mission</B>:"
+	missiondesc += "<BR> <B>1.</B> Keep in touch with the other unit using your phone."
+	missiondesc += "<BR> <B>2.</B> Neutralise all suspect engaging with the station authority."
+	missiondesc += "<BR> <B>4.</B> You are authorised to use lethal force."
+	to_chat(owner, missiondesc)
+	var/mob/living/greeted_mob = owner.current
+	greeted_mob.playsound_local(greeted_mob, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+
+/datum/outfit/request_911/pmc_reinforcement
+	name = "Ironmoon Reinforcement PMC"
+
+	uniform = /obj/item/clothing/under/rank/security/officer/hecu
+	head = /obj/item/clothing/head/helmet/marine/security
+	mask = /obj/item/clothing/mask/gas/sechailer/swat
+	gloves = /obj/item/clothing/gloves/combat
+	suit = /obj/item/clothing/suit/armor/vest/marine/security
+	shoes = /obj/item/clothing/shoes/jackboots
+	belt = /obj/item/storage/belt/military/nri/medic/full
+	back = /obj/item/mod/control/pre_equipped/security/pmc
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	ears = /obj/item/radio/headset/headset_sec/alt
+	l_pocket = /obj/item/grenade/c4
+	r_pocket = /obj/item/flashlight/seclite
+	id = /obj/item/card/id/advanced/solfed
+	r_hand = /obj/item/gun/ballistic/automatic/sol_smg/evil
+	backpack_contents = list(
+		/obj/item/storage/box/handcuffs = 1,
+		/obj/item/ammo_box/magazine/c35sol_pistol/stendo= 3,
+		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/storage/box/stingbangs = 1,
+		/obj/item/storage/medkit/brute = 1,
+		/obj/item/solfed_reporter/pmc_heavy = 1,
+		/obj/item/beamout_tool = 1,
+	)
+
+	id_trim = /datum/id_trim/solfed
+
 /obj/item/solfed_reporter
 	name = "SolFed reporter"
 	desc = "Use this in-hand to vote to call SolFed backup. If half your team votes for it, SWAT will be dispatched."
@@ -745,6 +862,39 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>1.</B> Collect the money owed by [GLOB.pizza_order], which amounts to $35,000 plus a fifteen percent tip for the delivery drivers."
 	missiondesc += "<BR> <B>2.</B> Use any means necessary to collect the owed funds. The thousand degree knife in your backpack will help in this task."
 	to_chat(owner, missiondesc)
+
+/obj/item/solfed_reporter/pmc_reinforcement
+	name = "heavy reinforcement request"
+	desc = "Use this in-hand to vote that the station is beyond  your current armament. If half your team votes for it, the Military will handle the situation."
+	type_to_check = /datum/antagonist/ert/request_911/pmc
+	type_of_callers = "pmc"
+	announcement_source = "Ironmoon Military Company"
+	fine_station = FALSE
+	ghost_poll_msg = "The pmc has requested heavy reinforcement. Do you wish to join the Ironmoon Military?"
+	amount_to_summon = 12
+	type_to_summon = /datum/antagonist/ert/request_911/pmc_heavy
+	summoned_type = "pmc_heavy"
+	announcement_message = "Crewmembers of the station. Additional 40,000 has been charged to compensate for the equipment cost, \
+		The Ironmoon Military Company has sent out an additional squadron to take care of the issue.\n\
+		Have a very safe day."
+
+/obj/item/solfed_reporter/pmc_reinforcement/questions(mob/user)
+	var/list/list_of_questions = list(
+		"Calling in the heavy reinforcement will charge the station an additional 40,000 to compensate for the equipment cost, \
+			please consider the following",
+		"Is the station security force functioning?",
+		"Are there any other active emergency response team onsite?",
+		"Were you and your fellow PMC members unable to handle the issue on your own?",
+		"Are you absolutely sure you wish to request a heavy reinforcement? Misuse of this can and will result in \
+			administrative action against your account."
+	)
+	for(var/question in list_of_questions)
+		if(tgui_input_list(user, question, "PMC Reporter", list("Yes", "No")) != "Yes")
+			to_chat(user, "You decide not to call additional reinforcement.")
+			return FALSE
+	message_admins("[ADMIN_LOOKUPFLW(user)] has acknowledged the consequences of a false call for PMC reinforcement administratively, \
+		and has voted that they need heavy reinforcement.")
+	return TRUE
 
 /obj/item/beamout_tool
 	name = "beam-out tool" // TODO, find a way to make this into drop pods cuz that's cooler visually
