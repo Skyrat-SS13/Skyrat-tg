@@ -21,6 +21,22 @@ GLOBAL_LIST_EMPTY(laugh_types)
 		'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg',
 		)
 
+/datum/laugh_type/humanmasc
+	name = "Masculine Human Laugh"
+	male_laughsounds = list(
+		'sound/voice/human/manlaugh1.ogg',
+		'sound/voice/human/manlaugh2.ogg',
+	)
+	female_laughsounds = null
+
+/datum/laugh_type/humanfemme
+	name = "Feminine Human Laugh"
+	male_laughsounds = list(
+		'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg',
+		'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg',
+	)
+	female_laughsounds null
+
 /datum/laugh_type/lizard
 	name = "Lizard Laugh"
 	male_laughsounds = list('sound/voice/lizard/lizard_laugh1.ogg',)
