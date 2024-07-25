@@ -55,15 +55,17 @@
 	name = "9x25mm rubber bullet"
 	icon_state = "pellet"
 	damage = 18
-	stamina = 30
+	stamina = 32
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
+	ricochet_chance = 180
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
 	sharpness = NONE
 	embed_type = null
 
+/obj/projectile/bullet/c9mm
+	damage = 25
 /*
 *	10mm Auto
 */
@@ -90,10 +92,13 @@
 	projectile_type = /obj/projectile/bullet/c10mm/rubber
 	harmful = FALSE
 
+/obj/projectile/bullet/c10mm
+	damage = 30
+
 /obj/projectile/bullet/c10mm/rubber
 	name = "10mm rubber bullet"
 	damage = 10
-	stamina = 35
+	stamina = 40
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -116,6 +121,48 @@
 
 /datum/embed_data/c10mm_ihdf
 	embed_chance = 0
+	fall_chance = 3
+	jostle_chance = 4
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.4
+	pain_mult = 5
+	jostle_pain_mult = 6
+	rip_time = 1 SECONDS
+
+// .38 Detective Bullets Override
+
+/obj/projectile/bullet/c38
+	name = ".38 bullet"
+	damage = 30
+
+/obj/projectile/bullet/c38/match/bouncy
+	name = ".38 Rubber bullet"
+	damage = 15
+	stamina = 35
+	weak_against_armour = TRUE
+	ricochets_max = 6
+	ricochet_incidence_leeway = 0
+	ricochet_chance = 130
+	ricochet_decay_damage = 0.8
+	shrapnel_type = null
+	sharpness = NONE
+	embed_data = null
+
+// premium .38 ammo from cargo, weak against armor, lower base damage, but excellent at embedding and causing slice wounds at close range
+/obj/projectile/bullet/c38/dumdum
+	name = ".38 DumDum bullet"
+	damage = 20
+	weak_against_armour = TRUE
+	ricochets_max = 0
+	sharpness = SHARP_EDGED
+	wound_bonus = 35
+	bare_wound_bonus = 30
+	embed_type = /datum/embed_data/dumdum
+	wound_falloff_tile = -8
+	embed_falloff_tile = -20
+
+/datum/embed_data/dumdum
+	embed_chance = 90
 	fall_chance = 3
 	jostle_chance = 4
 	ignore_throwspeed_threshold = TRUE
