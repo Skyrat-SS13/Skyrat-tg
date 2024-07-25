@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(laugh_types)
 		'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg',
 		'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg',
 	)
-	female_laughsounds null
+	female_laughsounds = null
 
 /datum/laugh_type/lizard
 	name = "Lizard Laugh"
