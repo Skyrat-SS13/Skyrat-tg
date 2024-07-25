@@ -192,13 +192,10 @@
 	var/pressure_decrease = 0.25
 	var/obj/item/gun/energy/recharge/kinetic_accelerator/kinetic_gun
 
-<<<<<<< HEAD
-=======
 /obj/projectile/kinetic/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/parriable_projectile, parry_callback = CALLBACK(src, PROC_REF(on_parry)))
 
->>>>>>> 9cdea961cc3d (Refactors projectile parrying and makes it actually possible. (#84973))
 /obj/projectile/kinetic/Destroy()
 	kinetic_gun = null
 	return ..()

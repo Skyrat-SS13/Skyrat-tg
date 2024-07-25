@@ -360,7 +360,7 @@
 	boosted = was_boosted
 
 /datum/status_effect/crusher_mark/on_apply()
-	if(owner.mob_size >= MOB_SIZE_LARGE)
+	if(owner.mob_size >= MOB_SIZE_LARGE  && !HAS_TRAIT(owner, TRAIT_OVERSIZED)) // SKYRAT EDIT CHANGE - Original: if(owner.mob_size >= MOB_SIZE_LARGE)
 		marked_underlay = mutable_appearance('icons/effects/effects.dmi', boosted ? "shield" : "shield2")
 		marked_underlay.pixel_x = -owner.pixel_x
 		marked_underlay.pixel_y = -owner.pixel_y
@@ -374,15 +374,9 @@
 	QDEL_NULL(marked_underlay)
 	return ..()
 
-<<<<<<< HEAD
-//we will only clear ourselves if the crusher is the one that owns us.
-/datum/status_effect/crusher_mark/before_remove(obj/item/kinetic_crusher/attacking_hammer)
-	return (attacking_hammer == hammer_synced)
 */
 //SKYRAT EDIT END
 
-=======
->>>>>>> 9cdea961cc3d (Refactors projectile parrying and makes it actually possible. (#84973))
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"
 	tick_interval = 0.6 SECONDS

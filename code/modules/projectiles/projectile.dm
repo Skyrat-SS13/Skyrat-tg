@@ -207,19 +207,11 @@
 	var/wound_falloff_tile
 	///How much we want to drop the embed_chance value, if we can embed, per tile, for falloff purposes
 	var/embed_falloff_tile
-<<<<<<< HEAD
-	var/static/list/projectile_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-		COMSIG_ATOM_ATTACK_HAND = PROC_REF(attempt_parry),
-	)
+	var/static/list/projectile_connections = list(COMSIG_ATOM_ENTERED = PROC_REF(on_entered))
 	// SKYRAT EDIT ADDITION START
 	/// If this should be able to hit the target even on direct firing when `ignored_factions` applies
 	var/ignore_direct_target = FALSE
 	// SKYRAT EDIT ADDITION END
-
-=======
-	var/static/list/projectile_connections = list(COMSIG_ATOM_ENTERED = PROC_REF(on_entered))
->>>>>>> 9cdea961cc3d (Refactors projectile parrying and makes it actually possible. (#84973))
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
 
