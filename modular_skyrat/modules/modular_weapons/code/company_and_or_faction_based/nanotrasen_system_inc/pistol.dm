@@ -20,13 +20,12 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
-	spread = 12
+	spread = 10
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin
-	projectile_damage_multiplier = 0.8
 	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/rubber
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
@@ -54,9 +53,8 @@
 	desc = "General Purpose Pistol Number 9, 3-Round Burst. A classic 9x25mm Mk 2 handgun with a small magazine capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
 	icon_state = "silver"
-	spread = 18
+	spread = 17
 	pin = /obj/item/firing_pin
-	projectile_damage_multiplier = 0.9
 	fire_delay = 2
 	burst_size = 3
 
@@ -72,11 +70,9 @@
 	icon_state = "rhino"
 	spawn_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
-	projectile_damage_multiplier = 0.8
 
 /obj/item/gun/ballistic/revolver/nt_revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
-
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_revolver
 	name = "10mm Auto Standard Revolver"
