@@ -130,7 +130,7 @@
 /obj/item/borg/upgrade/wirebrush
 	name = "janitor cyborg wire-brush"
 	desc = "A tool to remove rust from walls."
-	icon_state = "cyborg_upgrade3"
+	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
 	model_flags = BORG_MODEL_JANITOR
