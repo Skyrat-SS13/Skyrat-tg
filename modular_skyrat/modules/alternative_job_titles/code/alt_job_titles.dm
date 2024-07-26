@@ -19,17 +19,31 @@
 /datum/job/assistant
 	alt_titles = list(
 		"Assistant",
+		"Ambassador"
 		"Artist",
+		"Actor",
 		"Businessman",
 		"Businesswoman",
+		"Colonist",
+		"Contractor",
 		"Civilian",
+		"Duke",
+		"Diplomat"
 		"Entertainer",
 		"Freelancer",
+		"Fitness Instructor",
+		"Fisher",
+		"Fisherman",
+		"Fisherwoman",
+		"Hobbyist",
 		"Tourist",
 		"Trader",
+		"Performer",
+		"Personal Physician",
 		"Off-Duty Crew",
 		"Off-Duty Staff",
 		"Musician",
+		"Waiter",
 	)
 
 /datum/job/atmospheric_technician
@@ -38,6 +52,7 @@
 		"Emergency Fire Technician",
 		"Firefighter",
 		"Life Support Technician",
+		"HVAC Engineer",
 	)
 
 /datum/job/barber
@@ -45,6 +60,7 @@
 		"Barber",
 		"Aethestician",
 		"Colorist",
+		"Masseuse",
 		"Salon Manager",
 		"Salon Technician",
 		"Stylist",
@@ -67,6 +83,7 @@
 		"Pod Jockey",
 		"Union Bitrunner",
 		"Junior Runner",
+		"Professional Gamer",
 	)
 
 /datum/job/blueshield
@@ -74,6 +91,7 @@
 		"Blueshield",
 		"Command Bodyguard",
 		"Executive Protection Agent",
+		"Command Goon",
 	)
 
 /datum/job/botanist
@@ -96,6 +114,9 @@
 	alt_titles = list(
 		"Bouncer",
 		"Service Guard",
+		"Sevice Goon",
+		"Doorman",
+		"Doorwoman",
 	)
 
 /datum/job/corrections_officer
@@ -122,6 +143,10 @@
 		"Deck Worker",
 		"Inventory Associate",
 		"Mailman",
+		"Mailwoman",
+		"Mail Carrier",
+		"Postman",
+		"Postwoman",
 		"Receiving Clerk",
 		"Union Associate",
 	)
@@ -130,21 +155,27 @@
 	alt_titles = list(
 		"Chaplain",
 		"High Priest",
+		"High Priestess",
 		"Imam",
 		"Magister",
 		"Monk",
+		"Nun",
 		"Oracle",
 		"Preacher",
 		"Priest",
+		"Priestess",
 		"Pontifex",
+		"Guru",
 		"Rabbi",
 		"Reverend",
-		"Cleric",
+		"Shrine Maiden",
+		"Shrine Guardian",
 	)
 
 /datum/job/chemist
 	alt_titles = list(
 		"Chemist",
+		"Alchemist",
 		"Pharmacist",
 		"Pharmacologist",
 		"Trainee Pharmacist",
@@ -179,8 +210,11 @@
 		"Cook",
 		"Butcher",
 		"Chef",
+		"Line Cook",
+		"Fry Cook",
 		"Culinary Artist",
 		"Sous-Chef",
+		"Junior Chef",
 		"Baker",
 		"Confectionist",
 		"Pastry Chef",
@@ -202,6 +236,9 @@
 		"Conservator",
 		"Journalist",
 		"Librarian",
+		"Historian",
+		"Archaeologist",
+		"Professor",
 	)
 
 /datum/job/customs_agent
@@ -241,6 +278,10 @@
 	)
 
 /datum/job/engineering_guard //see orderly
+	alt_titles = list(
+		"Engineering Guard",
+		"Engineering Goon",
+	)
 
 /datum/job/geneticist
 	alt_titles = list(
@@ -301,12 +342,21 @@
 		"Nanotrasen Consultant",
 		"Nanotrasen Advisor",
 		"Nanotrasen Diplomat",
+		"Nanotrasen Representative",
+		"Nanotrasen Liason",
+		"Central Command Consultant",
+		"Central Command Advisor",
+		"Central Command Diplomat",
+		"Central Command Representative",
+		"Central Command Liason",
+		"Corporate Liason",
 	)
 
 /datum/job/orderly
 	alt_titles = list(
 		"Orderly",
 		"Medical Guard",
+		"Medical Goon",
 	) //other dept guards' alt-titles should be kept to [department] guard to avoid confusion, unless the department gets a re-do.
 
 /datum/job/paramedic
@@ -314,6 +364,7 @@
 		"Paramedic",
 		"Emergency Medical Technician",
 		"Search and Rescue Technician",
+		"Trauma Team Responder",
 	)
 
 /datum/job/prisoner
@@ -358,12 +409,18 @@
 	alt_titles = list(
 		"Roboticist",
 		"Biomechanical Engineer",
+		"Cyberneticist",
 		"Machinist",
 		"Mechatronic Engineer",
 		"Apprentice Roboticist",
 	)
 
 /datum/job/science_guard //See orderly
+	alt_titles = list(
+		"Science Guard",
+		"Research Guard",
+		"Science Goon",
+	)
 
 /datum/job/scientist
 	alt_titles = list(
@@ -375,6 +432,7 @@
 		"Lab Technician",
 		"Ordnance Technician",
 		"Plasma Researcher",
+		"Resonance Researcher",
 		"Theoretical Physicist",
 		"Xenoarchaeologist",
 		"Xenobiologist",
@@ -387,6 +445,8 @@
 		"Peacekeeper",
 		"Security Operative",
 		"Security Cadet",
+		"Junior Officer",
+		"Security Assistant",
 	)
 
 /datum/job/shaft_miner
@@ -424,8 +484,11 @@
 /datum/job/warden
 	alt_titles = list(
 		"Warden",
+		"Armory Superintendent"
 		"Brig Sergeant",
+		"Brig Sentry",
 		"Brig Governor",
 		"Dispatch Officer",
 		"Jailer",
+		"Master-at-Arms",
 	)
