@@ -120,25 +120,33 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
+<<<<<<< HEAD
 	/* //SKYRAT EDIT REMOVAL - CUSTOMIZATION
 	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings)[DEFAULT_SPRITE_LIST]
+=======
+	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+>>>>>>> 8df2c4bee12d (Deletes monkey tail DNA block, minor sprite accessory cleanup, monkeys (and lizardpeople) will no longer random spawn without tails (#85112))
 	tails_list_human = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
-	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
-	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard)[DEFAULT_SPRITE_LIST]
+	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey)[DEFAULT_SPRITE_LIST]
 	snouts_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts)[DEFAULT_SPRITE_LIST]
-	horns_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/horns)[DEFAULT_SPRITE_LIST]
-	ears_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/ears)[DEFAULT_SPRITE_LIST]
-	wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/wings)[DEFAULT_SPRITE_LIST]
+	horns_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/horns, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+	ears_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+	wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	wings_open_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/wings_open)[DEFAULT_SPRITE_LIST]
-	frills_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/frills)[DEFAULT_SPRITE_LIST]
-	spines_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/spines)[DEFAULT_SPRITE_LIST]
-	tail_spines_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/tail_spines)[DEFAULT_SPRITE_LIST]
+	frills_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/frills, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+	spines_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/spines, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+	tail_spines_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/tail_spines, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	legs_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/legs)[DEFAULT_SPRITE_LIST]
 	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps)[DEFAULT_SPRITE_LIST]
 	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
 	moth_antennae_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae)[DEFAULT_SPRITE_LIST]
+<<<<<<< HEAD
 	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings)[DEFAULT_SPRITE_LIST]
 	*/ // SKYRAT EDIT REMOVAL END
+=======
+	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+>>>>>>> 8df2c4bee12d (Deletes monkey tail DNA block, minor sprite accessory cleanup, monkeys (and lizardpeople) will no longer random spawn without tails (#85112))
 	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair)[DEFAULT_SPRITE_LIST]
 	// SKYRAT EDIT ADDITION START - Customization
 	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, add_blank = TRUE)[DEFAULT_SPRITE_LIST]

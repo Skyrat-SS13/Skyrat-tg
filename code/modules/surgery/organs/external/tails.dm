@@ -185,7 +185,11 @@
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
 
+<<<<<<< HEAD
 	// dna_block = DNA_MONKEY_TAIL_BLOCK - // SKYRAT EDIT REMOVAL
+=======
+	dna_block = null
+>>>>>>> 8df2c4bee12d (Deletes monkey tail DNA block, minor sprite accessory cleanup, monkeys (and lizardpeople) will no longer random spawn without tails (#85112))
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
