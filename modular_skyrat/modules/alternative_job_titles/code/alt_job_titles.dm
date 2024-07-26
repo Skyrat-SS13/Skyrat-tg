@@ -215,7 +215,7 @@
 /datum/job/cook
 	alt_titles = list(
 		"Cook",
-		"Baker"
+		"Baker",
 		"Butcher",
 		"Chef",
 		"Line Cook",
