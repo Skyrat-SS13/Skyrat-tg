@@ -509,7 +509,7 @@
 		"Brig Governor",
 		"Deputy Commissioner of Security",
 		"Dispatch Officer",
-		"Deputy Commissioner
+		"Deputy Commissioner",
 		"Jailer",
 		"Master-at-Arms",
 	)
