@@ -19,7 +19,7 @@
 /datum/job/assistant
 	alt_titles = list(
 		"Assistant",
-		"Ambassador"
+		"Ambassador",
 		"Artist",
 		"Actor",
 		"Businessman",
