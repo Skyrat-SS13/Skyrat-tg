@@ -29,7 +29,7 @@
 		"Contractor",
 		"Civilian",
 		"Duke",
-		"Diplomat"
+		"Diplomat",
 		"Entertainer",
 		"Freelancer",
 		"Fitness Instructor",
