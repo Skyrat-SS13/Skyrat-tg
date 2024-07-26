@@ -503,7 +503,7 @@
 /datum/job/warden
 	alt_titles = list(
 		"Warden",
-		"Armory Superintendent"
+		"Armory Superintendent",
 		"Brig Sergeant",
 		"Brig Sentry",
 		"Brig Governor",
