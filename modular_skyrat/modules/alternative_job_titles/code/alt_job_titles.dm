@@ -24,6 +24,7 @@
 		"Actor",
 		"Businessman",
 		"Businesswoman",
+		"Butler",
 		"Colonist",
 		"Contractor",
 		"Civilian",
@@ -71,6 +72,7 @@
 		"Bartender",
 		"Barista",
 		"Barkeeper",
+		"Tavernkeeper",
 		"Mixologist",
 	)
 
@@ -145,6 +147,8 @@
 		"Mailman",
 		"Mailwoman",
 		"Mail Carrier",
+		"Merchantman",
+		"Merchantwoman",
 		"Postman",
 		"Postwoman",
 		"Receiving Clerk",
@@ -154,6 +158,8 @@
 /datum/job/chaplain
 	alt_titles = list(
 		"Chaplain",
+		"Clockwork Priest",
+		"Cleric",
 		"High Priest",
 		"High Priestess",
 		"Imam",
@@ -184,6 +190,7 @@
 /datum/job/chief_engineer
 	alt_titles = list(
 		"Chief Engineer",
+		"Head Crystallomancer",
 		"Engineering Foreman",
 		"Head of Engineering",
 	)
@@ -208,6 +215,7 @@
 /datum/job/cook
 	alt_titles = list(
 		"Cook",
+		"Baker"
 		"Butcher",
 		"Chef",
 		"Line Cook",
@@ -215,7 +223,7 @@
 		"Culinary Artist",
 		"Sous-Chef",
 		"Junior Chef",
-		"Baker",
+		"Tavern Chef",,
 		"Confectionist",
 		"Pastry Chef",
 	)
@@ -227,11 +235,13 @@
 		"Funeral Director",
 		"Medical Examiner",
 		"Mortician",
+		"Undertaker",
 	)
 
 /datum/job/curator
 	alt_titles = list(
 		"Curator",
+		"Adventurer",
 		"Archivist",
 		"Conservator",
 		"Journalist",
@@ -239,6 +249,7 @@
 		"Historian",
 		"Archaeologist",
 		"Professor",
+		"Veteran Adventurer"
 	)
 
 /datum/job/customs_agent
@@ -286,6 +297,7 @@
 /datum/job/geneticist
 	alt_titles = list(
 		"Geneticist",
+		"Genemancer",
 		"Gene Tailor",
 		"Mutation Researcher",
 	)
@@ -301,6 +313,8 @@
 /datum/job/head_of_security
 	alt_titles = list(
 		"Head of Security",
+		"Commander of the Guard",
+		"Commissioner of Security",
 		"Chief Constable",
 		"Chief of Security",
 		"Security Commander",
@@ -313,6 +327,7 @@
 		"Concierge",
 		"Custodial Technician",
 		"Custodian",
+		"Groundskeeper",
 		"Maid",
 		"Maintenance Technician",
 		"Sanitation Technician",
@@ -325,6 +340,7 @@
 		"Defense Attorney",
 		"Human Resources Agent",
 		"Internal Affairs Agent",
+		"Magistrate",
 		"Legal Clerk",
 		"Prosecutor",
 		"Public Defender",
@@ -442,6 +458,9 @@
 /datum/job/security_officer
 	alt_titles = list(
 		"Security Officer",
+		"Guard",
+		"Security Guard",
+		"Security Constable",
 		"Peacekeeper",
 		"Security Operative",
 		"Security Cadet",
@@ -488,7 +507,9 @@
 		"Brig Sergeant",
 		"Brig Sentry",
 		"Brig Governor",
+		"Deputy Commissioner of Security",
 		"Dispatch Officer",
+		"Deputy Commissioner
 		"Jailer",
 		"Master-at-Arms",
 	)
