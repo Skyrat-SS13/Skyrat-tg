@@ -28,6 +28,7 @@
 		"Colonist",
 		"Contractor",
 		"Civilian",
+		"Duke",
 		"Diplomat",
 		"Entertainer",
 		"Freelancer",
