@@ -28,7 +28,6 @@
 		"Colonist",
 		"Contractor",
 		"Civilian",
-		"Duke",
 		"Diplomat",
 		"Entertainer",
 		"Freelancer",
@@ -93,7 +92,6 @@
 		"Blueshield",
 		"Command Bodyguard",
 		"Executive Protection Agent",
-		"Command Goon",
 	)
 
 /datum/job/botanist
@@ -116,7 +114,6 @@
 	alt_titles = list(
 		"Bouncer",
 		"Service Guard",
-		"Sevice Goon",
 		"Doorman",
 		"Doorwoman",
 	)
@@ -291,7 +288,6 @@
 /datum/job/engineering_guard //see orderly
 	alt_titles = list(
 		"Engineering Guard",
-		"Engineering Goon",
 	)
 
 /datum/job/geneticist
@@ -372,7 +368,6 @@
 	alt_titles = list(
 		"Orderly",
 		"Medical Guard",
-		"Medical Goon",
 	) //other dept guards' alt-titles should be kept to [department] guard to avoid confusion, unless the department gets a re-do.
 
 /datum/job/paramedic
@@ -435,7 +430,6 @@
 	alt_titles = list(
 		"Science Guard",
 		"Research Guard",
-		"Science Goon",
 	)
 
 /datum/job/scientist
