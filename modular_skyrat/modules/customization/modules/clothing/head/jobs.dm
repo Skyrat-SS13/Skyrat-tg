@@ -151,3 +151,18 @@
 	name = "head of personnel's beret"
 	desc = "A fancy beret designed by NT's Personnel division for their favorite head's head. This one is made out of white fabric. Fancy"
 	greyscale_colors = "#FFFFFF#88242D"
+
+/obj/item/clothing/head/beret/clown
+	name = "H.O.N.K tactical beret"
+	desc = "A tactical berret to be used during the enacting of the most dangerous of pranks."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "beret_clown"
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_worn = null
+
+/obj/item/clothing/head/beret/clown/rainbow
+	name = "rainbow beret"
+	desc = "You see, when a Mime loves a Clown very much..."
+	icon_state = "beret_rainbow"
