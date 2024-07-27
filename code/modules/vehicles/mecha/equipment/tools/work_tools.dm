@@ -85,36 +85,6 @@
 	if(!isliving(target))
 		return ..()
 
-<<<<<<< HEAD
-		if(!source.combat_mode)
-			step_away(M,chassis)
-			if(killer_clamp)
-				target.visible_message(span_danger("[chassis] tosses [target] like a piece of paper!"), \
-					span_userdanger("[chassis] tosses you like a piece of paper!"))
-			else
-				to_chat(source, "[icon2html(src, source)][span_notice("You push [target] out of the way.")]")
-				chassis.visible_message(span_notice("[chassis] pushes [target] out of the way."), \
-				span_notice("[chassis] pushes you aside."))
-			return ..()
-
-		/*else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))//meme clamp here
-			if(!killer_clamp)
-				to_chat(source, span_notice("You longingly wish to tear [M]'s arms off."))
-				return
-			var/mob/living/carbon/C = target
-			var/torn_off = FALSE
-			var/obj/item/bodypart/affected = C.get_bodypart(BODY_ZONE_L_ARM)
-			if(affected != null)
-				affected.dismember(damtype)
-				torn_off = TRUE
-			affected = C.get_bodypart(BODY_ZONE_R_ARM)
-			if(affected != null)
-				affected.dismember(damtype)
-				torn_off = TRUE
-			if(!torn_off)
-				to_chat(source, span_notice("[M]'s arms are already torn off, you must find a challenger worthy of the kill clamp!"))
-				return
-=======
 	var/mob/living/victim = target
 	if(victim.stat == DEAD)
 		return
@@ -142,24 +112,11 @@
 			affected.dismember(damtype)
 			torn_off = TRUE
 		if(torn_off)
->>>>>>> 51725b238d7c (Cleans up clamp code, makes kill clamp actually work, fixes anchor resetting issues (#85070))
 			playsound(src, get_dismember_sound(), 80, TRUE)
 			carbon_victim.visible_message(span_danger("[chassis] rips [carbon_victim]'s arms off!"), \
 						span_userdanger("[chassis] rips your arms off!"))
 			log_combat(source, carbon_victim, "removed both arms with a real clamp,", "[name]", "(COMBAT MODE: [uppertext(source.combat_mode)] (DAMTYPE: [uppertext(damtype)])")
 			return ..()
-<<<<<<< HEAD
-*/	// SKYRAT REMOVAL - No instant arm-removals.
-		M.take_overall_damage(clamp_damage)
-		if(!M) //get gibbed stoopid
-			return
-		M.adjustOxyLoss(round(clamp_damage/2))
-		M.updatehealth()
-		target.visible_message(span_danger("[chassis] squeezes [target]!"), \
-							span_userdanger("[chassis] squeezes you!"),\
-							span_hear("You hear something crack."))
-		log_combat(source, M, "attacked", "[name]", "(Combat mode: [source.combat_mode ? "On" : "Off"]) (DAMTYPE: [uppertext(damtype)])")
-=======
 
 	victim.take_overall_damage(clamp_damage)
 	if(isnull(victim)) //get gibbed stoopid
@@ -170,7 +127,6 @@
 						span_userdanger("[chassis] squeezes you!"),\
 						span_hear("You hear something crack."))
 	log_combat(source, victim, "attacked", "[name]", "(Combat mode: [source.combat_mode ? "On" : "Off"]) (DAMTYPE: [uppertext(damtype)])")
->>>>>>> 51725b238d7c (Cleans up clamp code, makes kill clamp actually work, fixes anchor resetting issues (#85070))
 	return ..()
 
 //This is pretty much just for the death-ripley
@@ -179,18 +135,6 @@
 	desc = "They won't know what clamped them! This time for real!"
 	killer_clamp = TRUE
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/fake//harmless fake for pranks
-	desc = "They won't know what clamped them!"
-	energy_drain = 0
-	clamp_damage = 0
-	killer_clamp = FALSE
-
-/obj/item/mecha_parts/mecha_equipment/extinguisher
-	name = "exosuit extinguisher"
-	desc = "Equipment for engineering exosuits. A rapid-firing high capacity fire extinguisher."
-	icon_state = "mecha_exting"
-	equip_cooldown = 5
-	energy_drain = 0
 	equipment_slot = MECHA_UTILITY
 	range = MECHA_MELEE|MECHA_RANGED
 	mech_flags = EXOSUIT_MODULE_WORKING
@@ -201,7 +145,6 @@
 	. = ..()
 	create_reagents(400)
 	reagents.add_reagent(/datum/reagent/water, 400)
-
 /obj/item/mecha_parts/mecha_equipment/extinguisher/proc/spray_extinguisher(mob/user)
 	if(reagents.total_volume < required_amount)
 		return
