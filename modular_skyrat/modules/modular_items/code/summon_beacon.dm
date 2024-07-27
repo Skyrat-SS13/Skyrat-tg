@@ -100,7 +100,7 @@
 	podspawn(list(
 		"target" = target_turf,
 		"path" = supply_pod_stay ? /obj/structure/closet/supplypod/podspawn/no_return : /obj/structure/closet/supplypod/podspawn,
-		"style" = STYLE_CENTCOM,
+		"style" = /datum/pod_style/centcom,
 		"spawn" = selected_atom,
 	))
 
