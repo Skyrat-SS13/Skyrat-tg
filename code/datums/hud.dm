@@ -20,7 +20,14 @@ GLOBAL_LIST_INIT(huds, list(
 	DATA_HUD_FAN = new /datum/atom_hud/data/human/fan_hud(),
 	DATA_HUD_MALF_APC = new /datum/atom_hud/data/malf_apc(),
 	DATA_HUD_PERMIT = new/datum/atom_hud/data/human/permit(), // SKYRAT EDIT ADDITION
-	DATA_HUD_DNR = new/datum/atom_hud/data/human/dnr(), // SKYRAT EDIT ADDITION
+))
+
+GLOBAL_LIST_INIT(trait_to_hud, list(
+	TRAIT_SECURITY_HUD = DATA_HUD_SECURITY_ADVANCED,
+	TRAIT_MEDICAL_HUD = DATA_HUD_MEDICAL_ADVANCED,
+	TRAIT_DIAGNOSTIC_HUD = DATA_HUD_DIAGNOSTIC,
+	TRAIT_BOT_PATH_HUD = DATA_HUD_BOT_PATH, // SKYRAT EDIT CHANGE
+	TRAIT_PERMIT_HUD = DATA_HUD_PERMIT, // SKYRAT EDIT ADDITION
 ))
 
 GLOBAL_LIST_INIT(trait_to_hud, list(

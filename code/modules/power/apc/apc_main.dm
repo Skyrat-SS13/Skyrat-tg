@@ -8,9 +8,9 @@
 ///Cap for how fast cells charge, as a percentage per second (.01 means cellcharge is capped to 1% per second)
 #define CHARGELEVEL 0.01
 ///Charge percentage at which the lights channel stops working
-#define APC_CHANNEL_LIGHT_TRESHOLD 7 //SKYRAT EDIT CHANGE - Original: 15
+#define APC_CHANNEL_LIGHT_TRESHOLD 10 //SKYRAT EDIT CHANGE - Original: 15
 ///Charge percentage at which the equipment channel stops working
-#define APC_CHANNEL_EQUIP_TRESHOLD 17 //SKYRAT EDIT CHANGE - Original: 30
+#define APC_CHANNEL_EQUIP_TRESHOLD 20 //SKYRAT EDIT CHANGE - Original: 30
 ///Charge percentage at which the APC icon indicates discharging
 #define APC_CHANNEL_ALARM_TRESHOLD 75
 
@@ -249,8 +249,6 @@
 	QDEL_NULL(alarm_manager)
 	if(occupier)
 		malfvacate(TRUE)
-	if(wires)
-		QDEL_NULL(wires)
 	if(cell)
 		QDEL_NULL(cell)
 	if(terminal)

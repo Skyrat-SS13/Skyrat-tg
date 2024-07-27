@@ -69,7 +69,17 @@
 	var/max_charge = 0
 	var/new_charge = 0
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
-		power_coefficient += capacitor.tier
+		// SKYRAT EDIT CHANGE START - Original: power_coefficient += capacitor.tier
+		switch(capacitor.tier)
+			if(1)
+				power_coefficient = 1
+			if(2)
+				power_coefficient = 2
+			if(3)
+				power_coefficient = 4
+			else
+				power_coefficient = 8
+		// SKYRAT EDIT CHANGE END
 	input_level_max = initial(input_level_max) * power_coefficient
 	output_level_max = initial(output_level_max) * power_coefficient
 	for(var/obj/item/stock_parts/power_store/power_cell in component_parts)
