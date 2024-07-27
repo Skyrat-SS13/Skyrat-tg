@@ -1063,3 +1063,185 @@
   theselfish:
   - bugfix: another clothing file fixed
   - rscadd: Added admin spawnable Redsec varients to the override file
+2024-07-22:
+  DrDiasyl aka DrTuxedo:
+  - rscadd: Scanner gates now blare into the chat the reason why it got triggered
+  - rscadd: Scanner gates now can have false positives/negatives, and the chance of
+      them being reduced when they are upgraded
+  - rscadd: Brig entrances now have scanner gates preset to detect GUNS
+  - rscadd: You can now scan people with N-Spector for contraband
+  - image: Scanner gates now have a better sprite with dirs
+  - qol: Scanner gates description now tells to what mode they are set
+  - bugfix: You no longer can remove N-Spector from scanner gates without unlocking
+      them first
+  SkyratBot:
+  - qol: Mod UI is narrow again
+  - bugfix: Closing mind transfer popup does not transfer your mind anymore
+  - bugfix: Fixed beyblade *flipping.
+  - bugfix: Recalling lantern wisp now properly removes its effects from you
+  - spellcheck: Fixed a typo in the description for the Syndicate Rebar Crossbow in
+      the Uplink.
+2024-07-23:
+  LT3:
+  - balance: APCs are no longer arc shielded by default
+  - balance: SMES throughput is now a multiplier based on capacitor tier
+  Melbert:
+  - refactor: Refactored how vending machine icons are displayed, please report if
+      you see any broken icons. Also if all the icons look like missing file icons
+      for you, you gotta update byond man, you're like a year out of date.
+  - rscadd: Fox infusion has more content related to it now
+  SkyratBot:
+  - rscadd: Gives voidwalker telepathy
+  - bugfix: Fixes the Unsettle ability ignoring line of sight (which was it's sole
+      gimmick, im just dumb)
+  - balance: Voidwalkers cannot break windows anymore or throw objects
+  - balance: Voidwalkers can no longer harm people in crit
+  - balance: Voidwalkers can only pull mobs
+  - balance: Voidwalkers' space dive enter has been increased by 1 seconds, but dive
+      exit decreased by 1 second
+  - balance: Void eater becomes blunt during use. Kidnap people to refresh it
+  - balance: Removes voidwalker glasses slot
+  - balance: Gives voidwalkers chunky fingers
+  - balance: Voidwalker applies NODEATH on hit
+  - balance: Voided victims get dumped in safer places
+  - rscadd: Adds Untie Shoes, a 1-point wizard spell. It can be upgraded to untie
+      jackboots, summon shoes to untie, and become completely silent!
+  - bugfix: Fixes fishing rods not working on adjacent targets.
+  - refactor: refactored global set_basalt_light proc into object proc
+  - bugfix: Holopads no longer suck in unsuspecting people when crowbared
+  - code_imp: Removed 8 cases of double indentation
+  - bugfix: HONK mech now waddles
+  - rscadd: 'Charlie: Replaced external cycling airlocks with airlock pumps'
+  - bugfix: Shuttle events meteors now dont sometimes kill everyone
+  - admin: 'Nanotrasen has brought Central Command kicking and screaming into the
+      20th Century by providing them with a real fax machine.
+
+      :cl:'
+  - bugfix: Surgical tape and edagger's embedding values have been fixed
+  - refactor: Refactored table item interactions, please report any issues.
+  - bugfix: Fixed being unable to use decks to draw cards directly onto tables.
+  - qol: Right clicking a table with a tray puts it down regardless of it having contents.
+  - bugfix: general bitrunning fixes and 102% faster loading times
+  - bugfix: bitrunning domains are no longer affected by nebulas in the real world
+  - refactor: mulebot UI has been refactored
+  - qol: Self-respiration no longer sends misleading messages and instead tells about
+      lack of need to breathe once it actually gives you the effect
+  - rscadd: You can now fish with explosives.
+  - bugfix: Fixed an inconsistency with examining fishing spots with sufficiently
+      high fishing skill (or skillchip).
+  - qol: There is a larger stock of roundstart clothing availalbe in the clothing
+      vendors. Now you can get your entire gang in matching outfits!
+  - qol: Updated smart fridge UI
+  Thedragmeme:
+  - image: Adds a series of traditional yukata's and kimono's
+  - image: Adds in black sandals and a traditional hairpin for the back of the hair
+2024-07-24:
+  Majkl-J:
+  - bugfix: Collars can be locked again
+  - bugfix: Taur legs can no longer create bloody floating sprites
+  - code_imp: Taur legs no longer take overlay slots
+  SkyratBot:
+  - bugfix: Alexander no longer causes harddels
+  - bugfix: Removed a theoretical infinite block exploit from alexander
+  - bugfix: Fixes bulldog shotgun unique mag display not working on the sprite
+  - image: resprites the bulldog shotgun along with inhands and new worn sprites
+  - code_imp: cleans up a little of the code surrounding the bulldog
+  theselfish:
+  - rscadd: Clown, Tiger and Mime Cats now have unique voice lines!
+  - bugfix: Toddlers beware, you're in for a scare! At a Nanotrasen Finance meeting
+      held by famed comedian Ian Fidance, the choice between the Lustwish and the
+      Pitbull-Toddler-Eating suppression system was made. Pitbulls will now murder
+      small animals if left unattended.
+2024-07-25:
+  SkyratBot:
+  - bugfix: Borgs and AI can now use research queue
+  - bugfix: You can no longer dupe metal by breaking walls under small light fixtures
+  - bugfix: Animal/people skin is no longer metallic sounding
+  - bugfix: Fixed fishing.
+  - spellcheck: Renamed the Crimson Focus to the Crimson Medallion
+  - bugfix: Fixed harvesters not being properly bound to their master, nor dying when
+      they do
+  - bugfix: Fixed heads totally overriding cultist sacrifice rewards
+  - rscadd: Heretic blade now converts to a nullblade
+  - rscadd: Added wooshing, shaking, and glowing to flinging around with the heretic
+      blade
+  - balance: Removed the probability to not gain a reward when sacrificing a cultist
+  - bugfix: Restores some of the items accidentally lost in the autodrobe.
+  - bugfix: You can now put dead mice into mortars/grinders properly
+  - qol: Now IDs and PDAs have money-reader module for picking some cash into your
+      bank by swiping on money.
+  - qol: fish analyzers now have a UI
+  - bugfix: Fixes Hereditary Manifold Sickness's 4th stage not updating health when
+      it should
+  - config: Added an entry for TRAITOR_SCALING_MULTIPLIER, disabled by default
+  - rscadd: You can raise lobstrosities from chasm chrabs inside an aquarium with
+      the 'allow breeding' setting on. Keep the fish well fed, healthy and not lonely
+      if you don't want an hostile one.
+  - rscadd: Juveline lobstrosities (from chasms, plasma rivers, or aquariums, xenobio
+      too) can be tamed with arms and lavaloop fishes.
+  - rscadd: For lobstrosities grown from aquariums, they can have additional effects
+      based on the fish traits they had in the aquarium, like being venomous or even
+      flying.
+  - qol: Chat notifications are now at the top
+  - balance: Mechs now take armor into consideration when calculating punch damage
+  - bugfix: Mechs no longer deal direct limb damage
+  - bugfix: Drills automatically pick up ore on non-ripley mechs now without having
+      to move
+  - bugfix: Drills no longer dismember people immune to melee damage
+  - bugfix: Drills now take armor from correct bodyparts when attacking
+  - code_imp: Cleaned up one-letter variables in mech drill code
+  - bugfix: You can no longer microwave kisses, slappers, and other abstract items
+  - bugfix: fixes bitrunning breaking upon repeatedly climbing in and out the pod
+  - qol: Photocopier updated their UI
+  - bugfix: Stacking machine consoles link to machinery now
+  - rscadd: Dehydrator, a machine version of drying rack, with a circuit board and
+      available on some kitchens roundstart.
+  - image: Updated the color palette of Smart Fridge
+  - bugfix: Having your liver fail no longer keeps drug traits active without metabolizing
+      them
+  Vekter:
+  - spellcheck: Reworded Voidwalker's objectives to be more descriptive of their actual
+      goals as opposed to just fluff.
+  theselfish:
+  - rscadd: Clowns now have a beret. A rainbow one, too.
+2024-07-26:
+  SkyratBot:
+  - balance: Quality cybernetic hearts combat bleeds and restore blood, rather than
+      inject you with epinephrine when you enter crit. This can result in mild toxin
+      buildup, however.
+  - balance: Upgraded cybernetic hearts give an extremely brief amount of action when
+      you enter softcrit (but not hardcrit).
+2024-07-27:
+  LT3:
+  - bugfix: Fixed elevator panel allowing conflicting inputs
+  - bugfix: Fixed elevator sound being out of sync with movement
+  - bugfix: Fixed disease outbreak announcement sometimes missing the disease name
+  - bugfix: Tram will no longer eat its own rails as it travels
+  - bugfix: False supermatter surge announcements are now identical to real ones
+  - bugfix: Fixed delam counter stuck in window near Ice Box bridge
+  SkyratBot:
+  - rscdel: Removed a janky fish bounty
+  - rscadd: introduced exporting fish through cargo.
+  - balance: reduced the average weight of the jumpercable. Conversely, eased up the
+      requirements for the bone fish evolution.
+  - bugfix: Janicart inserts items into the attached trash bag again (manual and vacuumed)
+  - bugfix: Xenomorphs and door pryer basic mobs can now attack airlocks in combat
+      mode
+  - bugfix: Borgs now unequip their equipment upon module change like they should
+  - bugfix: wawastation engineering water tanks are now highcap
+  - image: Updated gas flow meter sprites
+  - bugfix: Tram's Tool Storage now has proper lighting
+  - bugfix: Fixes projectiles facing north if ricocheting, deflected or homing
+  - bugfix: Firelocks will once again respect fire alarm's thermal sensors being disabled.
+  - balance: If a bluespace cookie fails to teleport you then you will trip over.
+  - bugfix: Fixed possessed blades being broken
+  - code_imp: If testing is enabled everyone is polled in ghost polls.
+  - bugfix: Fixes borgs not being able to place apparatus-held items on tables. As
+      a side-effect, they can now combat mode right click splash containers as normal
+      instead of having their own right-click floor splash.
+  Thlumyn:
+  - bugfix: self-resp viruses don't spam messages as often
+  theselfish:
+  - rscadd: New laughs and screams! Be gendered no more!
+  - bugfix: Missing screams were added.
+  - bugfix: Fixes the Cloth Foot Wraps

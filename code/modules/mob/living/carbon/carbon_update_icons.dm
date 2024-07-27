@@ -487,6 +487,10 @@
 	var/list/needs_update = list()
 	var/limb_count_update = FALSE
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
+		// SKYRAT EDIT BEGIN - Don't handle abstract limbs (Taurs, etc.)
+		if(!limb.show_icon)
+			continue
+		// SKYRAT EDIT END
 		limb.update_limb(is_creating = update_limb_data) //Update limb actually doesn't do much, get_limb_icon is the cpu eater.
 
 		var/old_key = icon_render_keys?[limb.body_zone] //Checks the mob's icon render key list for the bodypart

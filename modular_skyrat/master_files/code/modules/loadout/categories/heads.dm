@@ -18,6 +18,14 @@
 	name = "Greyscale Beret with Badge"
 	item_path = /obj/item/clothing/head/beret/badge
 
+/datum/loadout_item/head/beret/clown //Left unlocked to show you're a Clown Enjoyer, essentially.
+	name = "Clown Beret"
+	item_path = /obj/item/clothing/head/beret/clown
+
+/datum/loadout_item/head/beret/rainbow
+	name = "Rainbow Beret"
+	item_path = /obj/item/clothing/head/beret/clown/rainbow
+
 /*
 *	CAPS
 */
