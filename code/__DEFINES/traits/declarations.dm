@@ -701,6 +701,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HONKSPAMMING "trait_honkspamming"
 /// Required by the waddling element since there are multiple sources of it.
 #define TRAIT_WADDLING "trait_waddling"
+/// Required by the on_hit_effect element, which is in turn added by other elements.
+#define TRAIT_ON_HIT_EFFECT "trait_on_hit_effect"
 
 ///Used for managing KEEP_TOGETHER in [/atom/var/appearance_flags]
 #define TRAIT_KEEP_TOGETHER "keep-together"
@@ -770,6 +772,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DANGEROUS_OBJECT "dangerous_object"
 /// determines whether or not objects are haunted and teleport/attack randomly
 #define TRAIT_HAUNTED "haunted"
+/// An item that, if it has contents, will ignore its contents when scanning for contraband.
+#define TRAIT_CONTRABAND_BLOCKER "contraband_blocker"
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE "alcohol_tolerance"
@@ -975,6 +979,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HULK "hulk"
 /// Isn't attacked harmfully by blob structures
 #define TRAIT_BLOB_ALLY "blob_ally"
+/// Has the chuuni component
+#define TRAIT_CHUUNIBYOU "chuunibyou"
+/// Has splattercasting
+#define TRAIT_SPLATTERCASTER "splattercaster"
 
 ///Traits given by station traits
 #define STATION_TRAIT_ASSISTANT_GIMMICKS "station_trait_assistant_gimmicks"
@@ -1121,8 +1129,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait given to a dragon who fails to defend their rifts
 #define TRAIT_RIFT_FAILURE "fail_dragon_loser"
 
-///this mob is able to relay happiness, given by /datum/component/happiness
-#define TRAIT_MOB_RELAY_HAPPINESS "mob_relay_happiness"
+///this trait hides most visible fluff and interactions of happiness, likely temporarily.
+#define TRAIT_MOB_HIDE_HAPPINESS "mob_hide_happiness"
 ///trait determines if this mob can breed given by /datum/component/breeding
 #define TRAIT_MOB_BREEDER "mob_breeder"
 ///trait given to mobs that are hatched
@@ -1164,7 +1172,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait which means whatever has this is dancing by a dance machine
 #define TRAIT_DISCO_DANCER "disco_dancer"
 
-/// That which allows mobs to instantly break down boulders.
+/// Trait which allows mobs to instantly break down boulders.
 #define TRAIT_INSTANTLY_PROCESSES_BOULDERS "instantly_processes_boulders"
 
 /// Trait applied to objects and mobs that can attack a boulder and break it down. (See /obj/item/boulder/manual_process())
@@ -1182,6 +1190,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERCEIVED_AS_CLOWN "perceived_as_clown"
 /// Does this item bypass ranged armor checks?
 #define TRAIT_BYPASS_RANGED_ARMOR "bypass_ranged_armor"
+
+/// Trait which means that this item is considered illegal contraband, and valid for the contraband bounty or when scanned by an nspect scanner.
+#define TRAIT_CONTRABAND "illegal_contraband"
 
 /// Traits given by settler, each with their own specific effects for cases where someone would have that trait, but not the other settler effects
 

@@ -84,7 +84,8 @@
 	/// `speed` a modest value like 1 and set this to a low value like 0.2.
 	var/pixel_speed_multiplier = 1
 
-	var/Angle = 0
+	/// The current angle of the projectile. Initially null, so if the arg is missing from [/fire()], we can calculate it from firer and target as fallback.
+	var/Angle
 	var/original_angle = 0 //Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
 	var/spread = 0 //amount (in degrees) of projectile spread
@@ -774,25 +775,23 @@
 	if(!log_override && firer && original && !do_not_log)
 		log_combat(firer, original, "fired at", src, "from [get_area_name(src, TRUE)]")
 			//note: mecha projectile logging is handled in /obj/item/mecha_parts/mecha_equipment/weapon/action(). try to keep these messages roughly the sameish just for consistency's sake.
-	if(direct_target && (get_dist(direct_target, get_turf(fired_from)) <= 1)) // point blank shots // SKYRAT EDIT - ORIGINAL: if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1))
+	if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1)) // point blank shots
 		process_hit(get_turf(direct_target), direct_target)
 		if(QDELETED(src))
 			return
+	var/turf/starting = get_turf(src)
 	if(isnum(angle))
 		set_angle(angle)
-	if(spread)
-		set_angle(Angle + ((rand() - 0.5) * spread))
-	var/turf/starting = get_turf(src)
-	if(isnull(Angle)) //Try to resolve through offsets if there's no angle set.
+	else if(isnull(Angle)) //Try to resolve through offsets if there's no angle set.
 		if(isnull(xo) || isnull(yo))
 			stack_trace("WARNING: Projectile [type] deleted due to being unable to resolve a target after angle was null!")
 			qdel(src)
 			return
 		var/turf/target = locate(clamp(starting + xo, 1, world.maxx), clamp(starting + yo, 1, world.maxy), starting.z)
 		set_angle(get_angle(src, target))
+	if(spread)
+		set_angle(Angle + (rand() - 0.5) * spread)
 	original_angle = Angle
-	if(!nondirectional_sprite)
-		transform = transform.Turn(Angle)
 	trajectory_ignore_forcemove = TRUE
 	forceMove(starting)
 	trajectory_ignore_forcemove = FALSE
