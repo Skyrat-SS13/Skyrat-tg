@@ -157,6 +157,7 @@
 	. = ..()
 	create_reagents(400)
 	reagents.add_reagent(/datum/reagent/water, 400)
+
 /obj/item/mecha_parts/mecha_equipment/extinguisher/proc/spray_extinguisher(mob/user)
 	if(reagents.total_volume < required_amount)
 		return
