@@ -280,6 +280,7 @@
 		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
 	else if(isclosedturf(target))
 		damage = 0
+		demolition_mod = 0
 		if(!isindestructiblewall(target))
 			var/turf/closed/hit_turf = target
 			hit_turf.ScrapeAway()
