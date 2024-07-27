@@ -39,9 +39,42 @@ GLOBAL_LIST_EMPTY(scream_types)
 		'sound/voice/human/femalescream_5.ogg',
 	)
 
+
+/datum/scream_type/human_masc
+	name = "Masculine Human Scream"
+	male_screamsounds = list(
+		'modular_skyrat/modules/emotes/sound/voice/scream_m1.ogg',
+		'modular_skyrat/modules/emotes/sound/voice/scream_m2.ogg',
+		'sound/voice/human/malescream_1.ogg',
+		'sound/voice/human/malescream_2.ogg',
+		'sound/voice/human/malescream_3.ogg',
+		'sound/voice/human/malescream_4.ogg',
+		'sound/voice/human/malescream_5.ogg',
+		'sound/voice/human/malescream_6.ogg',
+	)
+	female_screamsounds = null
+
+/datum/scream_type/human_femme
+	name = "Feminine Human Scream"
+	male_screamsounds = list(
+		'sound/voice/human/femalescream_1.ogg',
+		'sound/voice/human/femalescream_2.ogg',
+		'sound/voice/human/femalescream_3.ogg',
+		'sound/voice/human/femalescream_4.ogg',
+		'sound/voice/human/femalescream_5.ogg',
+		'modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg',
+		'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg',
+	)
+	female_screamsounds = null
+
 /datum/scream_type/robotic
 	name = "Robotic Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/wilhelm
+	name = "Classic Scream"
+	male_screamsounds = list('sound/voice/human/wilhelm_scream.ogg')
 	female_screamsounds = null
 
 /datum/scream_type/lizard
@@ -65,12 +98,10 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/moth
 	name = "Moth Scream"
-	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
-	female_screamsounds = null
-
-/datum/scream_type/moth_two
-	name = "Moth Scream 2"
-	male_screamsounds = list('sound/voice/moth/scream_moth.ogg')
+	male_screamsounds = list(
+		'modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg',
+		'sound/voice/moth/scream_moth.ogg',
+	)
 	female_screamsounds = null
 
 /datum/scream_type/jelly
@@ -85,7 +116,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/xeno
 	name = "Xeno Scream"
-	male_screamsounds = list('sound/voice/hiss6.ogg')
+	male_screamsounds = list(
+		'sound/voice/hiss6.ogg',
+		'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg',
+		'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg',
+	)
 	female_screamsounds = null
 
 /datum/scream_type/raptor //This is the Teshari scream ported from CitRP which was a cockatoo scream edited by BlackMajor.
@@ -98,12 +133,21 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/rodentscream.ogg')
 	female_screamsounds = null
 
+/datum/scream_type/chicken
+	name = "Chicken Scream"
+	male_screamsounds = list('sound/creatures/bagawk.ogg')
+	female_screamsounds = null
+
 /datum/scream_type/ethereal
 	name = "Ethereal Scream"
 	male_screamsounds = list(
 		'sound/voice/ethereal/ethereal_scream_1.ogg',
 		'sound/voice/ethereal/ethereal_scream_2.ogg',
-		'sound/voice/ethereal/ethereal_scream_3.ogg')
+		'sound/voice/ethereal/ethereal_scream_3.ogg',
+		'sound/voice/ethereal/lustrous_scream_1.ogg',
+		'sound/voice/ethereal/lustrous_scream_2.ogg',
+		'sound/voice/ethereal/lustrous_scream_3.ogg',
+		)
 	female_screamsounds = null
 
 //DONATOR SCREAMS
@@ -114,7 +158,16 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/monkey
 	name = "Monkey Scream"
-	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg')
+	male_screamsounds = list(
+		'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg',
+		'sound/creatures/monkey/monkey_screech_1.ogg',
+		'sound/creatures/monkey/monkey_screech_2.ogg',
+		'sound/creatures/monkey/monkey_screech_3.ogg',
+		'sound/creatures/monkey/monkey_screech_4.ogg',
+		'sound/creatures/monkey/monkey_screech_5.ogg',
+		'sound/creatures/monkey/monkey_screech_6.ogg',
+		'sound/creatures/monkey/monkey_screech_7.ogg',
+	)
 	female_screamsounds = null
 
 /datum/scream_type/gorilla
