@@ -3,9 +3,6 @@
 /obj/structure/flora/bush/sunny,
 /turf/open/misc/grass,
 /area/virtual_domain/fullbright)
-"as" = (
-/turf/closed/mineral/random/jungle,
-/area/virtual_domain/protected_space)
 "bb" = (
 /obj/effect/turf_decal/weather/sand,
 /turf/open/floor/wood,
@@ -83,6 +80,13 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/virtual_domain)
+"dV" = (
+/obj/effect/light_emitter{
+	set_cap = 3;
+	set_luminosity = 5
+	},
+/turf/open/water/beach,
+/area/virtual_domain/fullbright)
 "eS" = (
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
@@ -238,17 +242,6 @@
 /mob/living/basic/trooper/pirate/melee,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
-"oc" = (
-/obj/item/flashlight/flare/torch,
-/turf/open/misc/beach/sand,
-/area/virtual_domain/fullbright)
-"ov" = (
-/obj/effect/light_emitter{
-	set_cap = 3;
-	set_luminosity = 5
-	},
-/turf/open/misc/beach/coast,
-/area/virtual_domain/fullbright)
 "oL" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/bed/maint,
@@ -261,6 +254,10 @@
 "pn" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/grass,
+/area/virtual_domain/fullbright)
+"qa" = (
+/obj/item/flashlight/flare/torch,
+/turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
 "qE" = (
 /obj/structure/table/wood,
@@ -299,6 +296,9 @@
 /obj/item/toy/plush/beeplushie,
 /turf/open/floor/wood,
 /area/virtual_domain/fullbright)
+"rX" = (
+/turf/closed/mineral/random/jungle,
+/area/virtual_domain/protected_space)
 "sj" = (
 /obj/effect/mine/explosive/light,
 /turf/open/misc/beach/sand,
@@ -342,10 +342,6 @@
 "ub" = (
 /turf/template_noop,
 /area/virtual_domain/safehouse)
-"ud" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/closed/indestructible/binary,
-/area/virtual_domain/protected_space/fullbright)
 "uk" = (
 /obj/structure/flora/rock{
 	pixel_x = 7
@@ -509,6 +505,10 @@
 	},
 /turf/open/floor/wood,
 /area/virtual_domain/fullbright)
+"BO" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/binary,
+/area/virtual_domain/protected_space/fullbright)
 "BU" = (
 /turf/open/floor/carpet/blue,
 /area/virtual_domain)
@@ -610,11 +610,6 @@
 /obj/structure/flora/rock/style_2,
 /turf/open/water/beach,
 /area/virtual_domain/fullbright)
-"GM" = (
-/obj/structure/flora/rock/pile/jungle/style_2,
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/open/misc/dirt/jungle,
-/area/virtual_domain/protected_space)
 "Hn" = (
 /obj/effect/baseturf_helper/virtual_domain,
 /turf/closed/wall/mineral/wood/nonmetal,
@@ -637,6 +632,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/virtual_domain/protected_space/fullbright)
+"IL" = (
+/obj/structure/flora/rock/pile/jungle/style_2,
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/open/misc/dirt/jungle,
+/area/virtual_domain/protected_space)
 "Jf" = (
 /obj/structure/flora/bush/sparsegrass,
 /turf/open/misc/grass,
@@ -852,6 +852,13 @@
 "SK" = (
 /turf/open/misc/beach/coast,
 /area/virtual_domain/fullbright)
+"SM" = (
+/obj/effect/light_emitter{
+	set_cap = 3;
+	set_luminosity = 5
+	},
+/turf/open/misc/beach/coast,
+/area/virtual_domain/fullbright)
 "ST" = (
 /obj/structure/bed/maint{
 	pixel_x = -5;
@@ -895,13 +902,6 @@
 "Ul" = (
 /turf/closed/wall/mineral/wood/nonmetal,
 /area/virtual_domain)
-"Vd" = (
-/obj/effect/light_emitter{
-	set_cap = 3;
-	set_luminosity = 5
-	},
-/turf/open/water/beach,
-/area/virtual_domain/fullbright)
 "Vx" = (
 /obj/structure/flora/rock/style_4,
 /turf/open/water/beach,
@@ -1503,7 +1503,7 @@ Mc
 Mc
 Mc
 Mc
-ud
+BO
 "}
 (12,1,1) = {"
 xg
@@ -2094,9 +2094,9 @@ eS
 eS
 nr
 eS
-oc
-ov
-Vd
+qa
+SM
+dV
 xp
 xp
 xp
@@ -2137,12 +2137,12 @@ DM
 DM
 DM
 DM
-as
-as
+rX
+rX
 RC
 Nx
-as
-as
+rX
+rX
 hb
 hb
 xp
@@ -2182,10 +2182,10 @@ DM
 DM
 DM
 DM
-as
+rX
 br
 qT
-as
+rX
 DM
 DM
 hb
@@ -2226,11 +2226,11 @@ DM
 DM
 DM
 DM
-as
+rX
 wf
 qT
-as
-as
+rX
+rX
 DM
 DM
 hb
@@ -2270,13 +2270,13 @@ DM
 DM
 DM
 DM
-as
+rX
 qR
 Ic
 Nx
-as
-as
-as
+rX
+rX
+rX
 DM
 DM
 DM
@@ -2314,16 +2314,16 @@ DM
 DM
 DM
 DM
-as
+rX
 lM
 qR
 Ic
 ki
 Nx
-as
-as
-as
-as
+rX
+rX
+rX
+rX
 DM
 hb
 hb
@@ -2358,17 +2358,17 @@ hb
 DM
 DM
 DM
-as
-as
+rX
+rX
 qR
 qR
 OE
 qT
 Nx
 na
-GM
-as
-as
+IL
+rX
+rX
 DM
 hb
 hb
@@ -2403,8 +2403,8 @@ hb
 DM
 DM
 DM
-as
-as
+rX
+rX
 qR
 dz
 Ic
@@ -2412,8 +2412,8 @@ Nx
 MO
 qR
 MJ
-as
-as
+rX
+rX
 DM
 hb
 xg
@@ -2448,7 +2448,7 @@ hb
 DM
 DM
 DM
-as
+rX
 KW
 qR
 OB
@@ -2457,7 +2457,7 @@ hp
 kl
 qR
 MJ
-as
+rX
 DM
 hb
 xg
@@ -2492,8 +2492,8 @@ hb
 hb
 DM
 DM
-as
-as
+rX
+rX
 qR
 qR
 kE
@@ -2501,7 +2501,7 @@ hx
 vo
 cT
 tR
-as
+rX
 DM
 hb
 xg
@@ -2537,15 +2537,15 @@ hb
 hb
 hb
 DM
-as
-as
-as
-as
-as
-as
-as
-as
-as
+rX
+rX
+rX
+rX
+rX
+rX
+rX
+rX
+rX
 DM
 hb
 xg
