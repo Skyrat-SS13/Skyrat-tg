@@ -30,13 +30,6 @@ GLOBAL_LIST_INIT(trait_to_hud, list(
 	TRAIT_PERMIT_HUD = DATA_HUD_PERMIT, // SKYRAT EDIT ADDITION
 ))
 
-GLOBAL_LIST_INIT(trait_to_hud, list(
-	TRAIT_SECURITY_HUD = DATA_HUD_SECURITY_ADVANCED,
-	TRAIT_MEDICAL_HUD = DATA_HUD_MEDICAL_ADVANCED,
-	TRAIT_DIAGNOSTIC_HUD = DATA_HUD_DIAGNOSTIC,
-	TRAIT_BOT_PATH_HUD = DATA_HUD_BOT_PATH,
-))
-
 /datum/atom_hud
 	///associative list of the form: list(z level = list(hud atom)).
 	///tracks what hud atoms for this hud exists in what z level so we can only give users
