@@ -135,6 +135,18 @@
 	desc = "They won't know what clamped them! This time for real!"
 	killer_clamp = TRUE
 
+	/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/fake//harmless fake for pranks
+	desc = "They won't know what clamped them!"
+	energy_drain = 0
+	clamp_damage = 0
+	killer_clamp = FALSE
+
+/obj/item/mecha_parts/mecha_equipment/extinguisher
+	name = "exosuit extinguisher"
+	desc = "Equipment for engineering exosuits. A rapid-firing high capacity fire extinguisher."
+	icon_state = "mecha_exting"
+	equip_cooldown = 5
+	energy_drain = 0
 	equipment_slot = MECHA_UTILITY
 	range = MECHA_MELEE|MECHA_RANGED
 	mech_flags = EXOSUIT_MODULE_WORKING
