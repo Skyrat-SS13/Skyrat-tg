@@ -135,7 +135,7 @@
 	desc = "They won't know what clamped them! This time for real!"
 	killer_clamp = TRUE
 
-	/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/fake//harmless fake for pranks
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/fake//harmless fake for pranks
 	desc = "They won't know what clamped them!"
 	energy_drain = 0
 	clamp_damage = 0
