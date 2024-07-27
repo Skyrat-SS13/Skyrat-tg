@@ -3,6 +3,9 @@
 /obj/structure/flora/bush/sunny,
 /turf/open/misc/grass,
 /area/virtual_domain/fullbright)
+"as" = (
+/turf/closed/mineral/random/jungle,
+/area/virtual_domain/protected_space)
 "bb" = (
 /obj/effect/turf_decal/weather/sand,
 /turf/open/floor/wood,
@@ -235,6 +238,17 @@
 /mob/living/basic/trooper/pirate/melee,
 /turf/open/misc/beach/sand,
 /area/virtual_domain/fullbright)
+"oc" = (
+/obj/item/flashlight/flare/torch,
+/turf/open/misc/beach/sand,
+/area/virtual_domain/fullbright)
+"ov" = (
+/obj/effect/light_emitter{
+	set_cap = 3;
+	set_luminosity = 5
+	},
+/turf/open/misc/beach/coast,
+/area/virtual_domain/fullbright)
 "oL" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/bed/maint,
@@ -328,6 +342,10 @@
 "ub" = (
 /turf/template_noop,
 /area/virtual_domain/safehouse)
+"ud" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/binary,
+/area/virtual_domain/protected_space/fullbright)
 "uk" = (
 /obj/structure/flora/rock{
 	pixel_x = 7
@@ -594,6 +612,7 @@
 /area/virtual_domain/fullbright)
 "GM" = (
 /obj/structure/flora/rock/pile/jungle/style_2,
+/obj/effect/baseturf_helper/virtual_domain,
 /turf/open/misc/dirt/jungle,
 /area/virtual_domain/protected_space)
 "Hn" = (
@@ -876,6 +895,13 @@
 "Ul" = (
 /turf/closed/wall/mineral/wood/nonmetal,
 /area/virtual_domain)
+"Vd" = (
+/obj/effect/light_emitter{
+	set_cap = 3;
+	set_luminosity = 5
+	},
+/turf/open/water/beach,
+/area/virtual_domain/fullbright)
 "Vx" = (
 /obj/structure/flora/rock/style_4,
 /turf/open/water/beach,
@@ -910,9 +936,6 @@
 	pixel_y = -10
 	},
 /turf/open/misc/beach/sand,
-/area/virtual_domain/fullbright)
-"WW" = (
-/turf/template_noop,
 /area/virtual_domain/fullbright)
 "Xn" = (
 /obj/modular_map_root/safehouse{
@@ -1244,7 +1267,7 @@ DM
 DM
 hb
 hb
-hb
+fR
 Mc
 Mc
 Mc
@@ -1474,13 +1497,13 @@ LX
 wn
 Ka
 Mc
-hb
-hb
-hb
-hb
-hb
-hb
-fR
+Mc
+Mc
+Mc
+Mc
+Mc
+Mc
+ud
 "}
 (12,1,1) = {"
 xg
@@ -1524,7 +1547,7 @@ ub
 ub
 ub
 Xn
-hb
+Mc
 "}
 (13,1,1) = {"
 hb
@@ -1568,7 +1591,7 @@ ub
 ub
 ub
 ub
-hb
+Mc
 "}
 (14,1,1) = {"
 hb
@@ -1612,7 +1635,7 @@ ub
 ub
 ub
 ub
-hb
+Mc
 "}
 (15,1,1) = {"
 hb
@@ -1656,7 +1679,7 @@ ub
 ub
 ub
 ub
-hb
+Mc
 "}
 (16,1,1) = {"
 hb
@@ -1700,7 +1723,7 @@ ub
 ub
 ub
 ub
-hb
+Mc
 "}
 (17,1,1) = {"
 hb
@@ -1744,7 +1767,7 @@ ub
 ub
 ub
 ub
-hb
+Mc
 "}
 (18,1,1) = {"
 hb
@@ -1788,7 +1811,7 @@ ub
 ub
 ub
 zR
-hb
+Mc
 "}
 (19,1,1) = {"
 hb
@@ -1826,13 +1849,13 @@ SE
 LX
 In
 SE
-xp
-xp
-xp
-xp
-xp
-hb
-hb
+SE
+SE
+SE
+SE
+SE
+Mc
+Mc
 "}
 (20,1,1) = {"
 hb
@@ -1870,12 +1893,12 @@ SE
 XR
 vX
 dp
-xp
-xp
-xp
-xp
-xp
-hb
+SE
+SE
+SE
+SE
+SE
+Mc
 xg
 "}
 (21,1,1) = {"
@@ -1914,12 +1937,12 @@ ce
 LX
 gN
 In
-xp
-xp
-xp
-xp
-xp
-hb
+SE
+SE
+SE
+SE
+SE
+Mc
 xg
 "}
 (22,1,1) = {"
@@ -1958,12 +1981,12 @@ SE
 sH
 Ka
 QJ
-xp
-xp
-xp
-xp
-xp
-hb
+SE
+SE
+SE
+SE
+SE
+Mc
 xg
 "}
 (23,1,1) = {"
@@ -2002,12 +2025,12 @@ SE
 SE
 SE
 SE
-xp
-xp
-xp
-DM
-DM
-hb
+SE
+SE
+SE
+VP
+VP
+Mc
 xg
 "}
 (24,1,1) = {"
@@ -2046,12 +2069,12 @@ SE
 SE
 SE
 SE
-xp
-xp
-xp
-DM
-DM
-hb
+SE
+SE
+SE
+VP
+VP
+Mc
 xg
 "}
 (25,1,1) = {"
@@ -2071,9 +2094,9 @@ eS
 eS
 nr
 eS
-eS
-SK
-xp
+oc
+ov
+Vd
 xp
 xp
 xp
@@ -2090,12 +2113,12 @@ SE
 SE
 SE
 SE
-xp
-xp
-DM
-DM
-DM
-hb
+SE
+SE
+VP
+VP
+VP
+Mc
 xg
 "}
 (26,1,1) = {"
@@ -2114,12 +2137,12 @@ DM
 DM
 DM
 DM
-DM
-DM
+as
+as
 RC
 Nx
-DM
-DM
+as
+as
 hb
 hb
 xp
@@ -2134,12 +2157,12 @@ SE
 SE
 SE
 SE
-hb
-DM
-DM
-DM
-DM
-hb
+Mc
+VP
+VP
+VP
+VP
+Mc
 xg
 "}
 (27,1,1) = {"
@@ -2147,7 +2170,7 @@ xg
 xg
 xg
 xg
-WW
+xg
 hb
 DM
 DM
@@ -2159,10 +2182,10 @@ DM
 DM
 DM
 DM
-DM
+as
 br
 qT
-DM
+as
 DM
 DM
 hb
@@ -2178,12 +2201,12 @@ SE
 SE
 SE
 Mc
-hb
-DM
-DM
-DM
-hb
-hb
+Mc
+VP
+VP
+VP
+Mc
+Mc
 xg
 "}
 (28,1,1) = {"
@@ -2203,11 +2226,11 @@ DM
 DM
 DM
 DM
-DM
+as
 wf
 qT
-DM
-DM
+as
+as
 DM
 DM
 hb
@@ -2222,11 +2245,11 @@ SE
 SE
 Mc
 Mc
-hb
-hb
-hb
-hb
-hb
+Mc
+Mc
+Mc
+Mc
+Mc
 xg
 xg
 "}
@@ -2247,13 +2270,13 @@ DM
 DM
 DM
 DM
-DM
+as
 qR
 Ic
 Nx
-DM
-DM
-DM
+as
+as
+as
 DM
 DM
 DM
@@ -2291,16 +2314,16 @@ DM
 DM
 DM
 DM
-DM
+as
 lM
 qR
 Ic
 ki
 Nx
-DM
-DM
-DM
-DM
+as
+as
+as
+as
 DM
 hb
 hb
@@ -2335,8 +2358,8 @@ hb
 DM
 DM
 DM
-DM
-DM
+as
+as
 qR
 qR
 OE
@@ -2344,8 +2367,8 @@ qT
 Nx
 na
 GM
-DM
-DM
+as
+as
 DM
 hb
 hb
@@ -2380,8 +2403,8 @@ hb
 DM
 DM
 DM
-DM
-DM
+as
+as
 qR
 dz
 Ic
@@ -2389,8 +2412,8 @@ Nx
 MO
 qR
 MJ
-DM
-DM
+as
+as
 DM
 hb
 xg
@@ -2425,7 +2448,7 @@ hb
 DM
 DM
 DM
-DM
+as
 KW
 qR
 OB
@@ -2434,7 +2457,7 @@ hp
 kl
 qR
 MJ
-DM
+as
 DM
 hb
 xg
@@ -2469,8 +2492,8 @@ hb
 hb
 DM
 DM
-DM
-DM
+as
+as
 qR
 qR
 kE
@@ -2478,7 +2501,7 @@ hx
 vo
 cT
 tR
-DM
+as
 DM
 hb
 xg
@@ -2514,15 +2537,15 @@ hb
 hb
 hb
 DM
-DM
-DM
-DM
-DM
-DM
-DM
-DM
-DM
-DM
+as
+as
+as
+as
+as
+as
+as
+as
+as
 DM
 hb
 xg

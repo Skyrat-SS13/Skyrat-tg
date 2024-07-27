@@ -64,7 +64,7 @@
 		/obj/item/quadborg_tongue,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/borg_shapeshifter/stable)
-	hat_offset = -3
+	hat_offset = list("north" = list(0, -3), "south" = list(0, -3), "east" = list(0, -3), "west" = list(0, -3))
 
 /obj/item/borg_shapeshifter/stable
 	signalCache = list()

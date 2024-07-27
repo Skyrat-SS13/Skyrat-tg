@@ -1,5 +1,6 @@
 /obj/machinery/door/firedoor/click_alt(mob/user)
 	try_manual_override(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()
