@@ -62,11 +62,16 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 #define DNA_POD_HAIR_BLOCK 15
-<<<<<<< HEAD
-#define DNA_MONKEY_TAIL_BLOCK 16
 */ //SKYRAT EDIT REMOVAL END
 
-#define DNA_FEATURE_BLOCKS SSaccessories.dna_total_feature_blocks // SKYRAT EDIT CHANGE - ORIGINAL: #define DNA_FEATURE_BLOCKS 16
+// Hey! Listen up if you're here because you're adding a species feature!
+//
+// You don't need to add a DNA block for EVERY species feature!
+// You ONLY need DNA blocks if you intend to allow players to change it via GENETICS!
+// (Which means having a DNA block for a feature tied to a mob without DNA is entirely pointless.)
+
+/// Total amount of DNA blocks, must be equal to the highest DNA block number
+#define DNA_FEATURE_BLOCKS SSaccessories.dna_total_feature_blocks // SKYRAT EDIT CHANGE - ORIGINAL: #define DNA_FEATURE_BLOCKS 15
 // SKYRAT EDIT ADDITION START
 #define DNA_MANDATORY_COLOR_BLOCKS 5
 #define DNA_MUTANT_COLOR_BLOCK 1
@@ -76,17 +81,6 @@
 #define DNA_SKIN_COLOR_BLOCK 5
 #define DNA_POD_HAIR_BLOCK 15
 // SKYRAT EDIT ADDITION END
-=======
-
-// Hey! Listen up if you're here because you're adding a species feature!
-//
-// You don't need to add a DNA block for EVERY species feature!
-// You ONLY need DNA blocks if you intend to allow players to change it via GENETICS!
-// (Which means having a DNA block for a feature tied to a mob without DNA is entirely pointless.)
-
-/// Total amount of DNA blocks, must be equal to the highest DNA block number
-#define DNA_FEATURE_BLOCKS 15
->>>>>>> 8df2c4bee12d (Deletes monkey tail DNA block, minor sprite accessory cleanup, monkeys (and lizardpeople) will no longer random spawn without tails (#85112))
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
