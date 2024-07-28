@@ -2083,6 +2083,10 @@
 	icon = 'icons/mob/human/species/lizard/lizard_spines.dmi'
 	em_block = TRUE
 
+/datum/sprite_accessory/spines/none
+	name = SPRITE_ACCESSORY_NONE
+	icon_state = "none"
+
 /datum/sprite_accessory/tail_spines
 	icon = 'icons/mob/human/species/lizard/lizard_spines.dmi'
 	em_block = TRUE

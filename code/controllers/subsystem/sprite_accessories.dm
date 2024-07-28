@@ -120,12 +120,8 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
-<<<<<<< HEAD
-	/* //SKYRAT EDIT REMOVAL - CUSTOMIZATION
-	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings)[DEFAULT_SPRITE_LIST]
-=======
+	/* // SKYRAT EDIT REMOVAL START - Customization
 	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
->>>>>>> 8df2c4bee12d (Deletes monkey tail DNA block, minor sprite accessory cleanup, monkeys (and lizardpeople) will no longer random spawn without tails (#85112))
 	tails_list_human = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard)[DEFAULT_SPRITE_LIST]
 	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey)[DEFAULT_SPRITE_LIST]
@@ -141,15 +137,11 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps)[DEFAULT_SPRITE_LIST]
 	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
 	moth_antennae_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae)[DEFAULT_SPRITE_LIST]
-<<<<<<< HEAD
-	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings)[DEFAULT_SPRITE_LIST]
 	*/ // SKYRAT EDIT REMOVAL END
-=======
 	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
->>>>>>> 8df2c4bee12d (Deletes monkey tail DNA block, minor sprite accessory cleanup, monkeys (and lizardpeople) will no longer random spawn without tails (#85112))
 	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair)[DEFAULT_SPRITE_LIST]
 	// SKYRAT EDIT ADDITION START - Customization
-	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey)[DEFAULT_SPRITE_LIST]
 	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
 

@@ -87,7 +87,7 @@
 
 /datum/sprite_accessory/genital/penis/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -161,7 +161,7 @@
 
 /datum/sprite_accessory/genital/testicles/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -188,8 +188,8 @@
 	var/alt_aroused = TRUE
 
 /datum/sprite_accessory/genital/vagina/none
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
-	name = "None"
 	factual = FALSE
 	color_src = null
 
@@ -236,7 +236,7 @@
 
 /datum/sprite_accessory/genital/womb/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -253,7 +253,7 @@
 
 /datum/sprite_accessory/genital/anus/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -276,7 +276,7 @@
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
