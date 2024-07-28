@@ -19718,10 +19718,6 @@
 /turf/open/floor/wood,
 /area/station/security/courtroom)
 "dJR" = (
-/obj/machinery/camera/directional/south{
-	c_tag = " Prison - Locker Room";
-	network = list("ss13","prison")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/security/prison/shower)
@@ -33090,6 +33086,10 @@
 "gmN" = (
 /obj/structure/chair/sofa/bench/left,
 /obj/machinery/light/small/directional/north,
+/obj/machinery/camera/directional/north{
+	network = list("ss13","prison");
+	c_tag = "Prison - Locker Room"
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -78231,6 +78231,9 @@
 "oUO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Prison - Locker Room"
+	},
 /turf/open/floor/iron,
 /area/station/common/locker_room_shower)
 "oUS" = (
@@ -110154,17 +110157,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
-"uYQ" = (
-/obj/structure/closet/athletic_mixed,
-/obj/effect/turf_decal/bot,
-/obj/machinery/camera{
-	c_tag = "Recreation - Gym Lockers";
-	dir = 5;
-	name = "hallway camera"
-	},
-/obj/item/clothing/shoes/sports,
-/turf/open/floor/iron/dark,
-/area/station/common/locker_room_shower)
 "uYS" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -145886,7 +145878,7 @@ eqf
 bRp
 dcJ
 qxs
-uYQ
+qxs
 eqf
 vzT
 iGE
