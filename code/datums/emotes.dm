@@ -102,7 +102,6 @@
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
-<<<<<<< HEAD
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
 		if(istype(src, /datum/emote/living/lewd))
@@ -110,9 +109,7 @@
 		else
 			playsound(user, tmp_sound, sound_volume, vary)
 		//SKYRAT EDIT CHANGE END
-=======
 		playsound(source = user,soundin = tmp_sound,vol = 50, vary = vary, ignore_walls = sound_wall_ignore)
->>>>>>> 2c36cbc6a4d2 (Emotes by default will not be heard through walls (#85245))
 
 	var/is_important = emote_type & EMOTE_IMPORTANT
 	var/is_visual = emote_type & EMOTE_VISIBLE
