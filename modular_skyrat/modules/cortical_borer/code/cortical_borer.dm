@@ -31,13 +31,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			return check_content
 	return FALSE
 
-//so if a person is debrained, the borer is removed
-/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, movement_flags)
-	. = ..()
-	var/mob/living/basic/cortical_borer/cb_inside = target.has_borer()
-	if(cb_inside)
-		cb_inside.leave_host()
-
 //borers also create an organ, so you dont need to debrain someone
 /obj/item/organ/internal/borer_body
 	name = "engorged cortical borer"
@@ -50,14 +43,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	borer = null
 	return ..()
 
-/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, movement_flags)
+/obj/item/organ/internal/borer_body/on_mob_insert(mob/living/carbon/carbon_target, special, movement_flags)
 	. = ..()
 	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
 		body_focus.on_add()
 	carbon_target.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 //on removal, force the borer out
-/obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
+/obj/item/organ/internal/borer_body/on_mob_remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/basic/cortical_borer/cb_inside = carbon_target.has_borer()
 	for(var/datum/borer_focus/body_focus as anything in cb_inside.body_focuses)
@@ -141,19 +134,21 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	/// How many times you've levelled up over all
 	var/level = 0
 	///the list of actions that the borer has
-	var/list/known_abilities = list(/datum/action/cooldown/borer/toggle_hiding,
-									/datum/action/cooldown/borer/choosing_host,
-									/datum/action/cooldown/borer/evolution_tree,
-									/datum/action/cooldown/borer/inject_chemical,
-									/datum/action/cooldown/borer/upgrade_chemical,
-									/datum/action/cooldown/borer/learn_focus,
-									/datum/action/cooldown/borer/upgrade_stat,
-									/datum/action/cooldown/borer/force_speak,
-									/datum/action/cooldown/borer/fear_human,
-									/datum/action/cooldown/borer/check_blood,
+	var/list/known_abilities = list(/datum/action/cooldown/mob_cooldown/borer/toggle_hiding,
+									/datum/action/cooldown/mob_cooldown/borer/choosing_host,
+									/datum/action/cooldown/mob_cooldown/borer/evolution_tree,
+									/datum/action/cooldown/mob_cooldown/borer/inject_chemical,
+									/datum/action/cooldown/mob_cooldown/borer/upgrade_chemical,
+									/datum/action/cooldown/mob_cooldown/borer/learn_focus,
+									/datum/action/cooldown/mob_cooldown/borer/upgrade_stat,
+									/datum/action/cooldown/mob_cooldown/borer/force_speak,
+									/datum/action/cooldown/mob_cooldown/borer/fear_human,
+									/datum/action/cooldown/mob_cooldown/borer/check_blood,
 	)
-	///the host
+	/// The human we are hosted in
 	var/mob/living/carbon/human/human_host
+	/// The brain we are currently hooked to
+	var/obj/item/organ/internal/brain/brain_host
 	//what the host gains or loses with the borer
 	var/list/hosts_abilities = list()
 	//just a little "timer" to compare to world.time
@@ -245,7 +240,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	do_evolution(/datum/borer_evolution/base)
 
 /mob/living/basic/cortical_borer/Destroy()
-	human_host = null
+	if(human_host)
+		leave_host_clean()
 	GLOB.cortical_borers -= src
 	QDEL_NULL(reagent_holder)
 	return ..()
@@ -363,17 +359,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			adjust_bodytemperature(max(max(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_COOLING_MAX) * seconds_per_tick, temp_delta))
 	else // this is a hot place
 		adjust_bodytemperature(min(min(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_HEATING_MAX) * seconds_per_tick, temp_delta))
-
-//leave the host, forced or not
-/mob/living/basic/cortical_borer/proc/leave_host()
-	if(!human_host)
-		return
-	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
-	if(borer_organ)
-		borer_organ.Remove(human_host)
-	var/turf/human_turf = get_turf(human_host)
-	forceMove(human_turf)
-	human_host = null
 
 //borers shouldnt be able to whisper...
 /mob/living/basic/cortical_borer/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced, filterproof)

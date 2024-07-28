@@ -73,14 +73,14 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/Initialize(mapload)
 	. = ..()
-
+	RegisterSignal(src, COMSIG_ATOM_ITEM_INTERACTION, PROC_REF(try_lock))
 	create_storage(storage_type = /datum/storage/pockets/small/collar/locked)
 
-/obj/item/clothing/neck/human_petcollar/locked/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/clothing/neck/human_petcollar/locked/proc/try_lock(atom/source, mob/user, obj/item/attacking_item, params)
 	if(istype(attacking_item, /obj/item/key/collar))
 		to_chat(user, span_warning("With a click, the collar [locked ? "unlocks" : "locks"]!"))
 		locked = !locked
-	return
+	return TRUE
 
 /obj/item/clothing/neck/human_petcollar/locked/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked)

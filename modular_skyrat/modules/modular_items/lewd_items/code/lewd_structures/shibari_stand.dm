@@ -216,7 +216,7 @@
 	)
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
-	return TRUE
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/chair/shibari_stand/examine(mob/user)
 	. = ..()

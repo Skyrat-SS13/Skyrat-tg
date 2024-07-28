@@ -377,7 +377,7 @@
 
 /obj/item/storage/backpack/satchel/flat
 	name = "smuggler's satchel"
-	desc = "A very slim satchel that can easily fit into tight spaces."
+	desc = "A very slim satchel that can easily fit into tight spaces. Its contents cannot be detected by contraband scanners."
 	icon_state = "satchel-flat"
 	inhand_icon_state = "satchel-flat"
 	w_class = WEIGHT_CLASS_NORMAL //Can fit in backpacks itself.
@@ -387,6 +387,7 @@
 	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_MAXIMUM, use_anchor = TRUE) // SKYRAT EDIT - Ghosts can't see smuggler's satchels
 	atom_storage.max_total_storage = 15
 	atom_storage.set_holdable(cant_hold_list = /obj/item/storage/backpack/satchel/flat) //muh recursive backpacks
+	ADD_TRAIT(src, TRAIT_CONTRABAND_BLOCKER, INNATE_TRAIT)
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
 	for(var/items in 1 to 4)
