@@ -138,5 +138,5 @@
 		return TRUE
 	if(istype(weapon, /obj/item/stack/sheet/cloth)  || istype(weapon, /obj/item/stack/sheet/durathread)  || istype(weapon, /obj/item/stack/sheet/leather))
 		return TRUE
-	if(istype(weapon, /obj/item/stack/mineral/wood) || istype(weapon, /obj/item/stack/mineral/bamboo) || istype(weapon, /obj/item/stack/rods))
+	if(istype(weapon, /obj/item/stack/sheet/mineral/wood) || istype(weapon, /obj/item/stack/sheet/mineral/bamboo) || istype(weapon, /obj/item/stack/rods))
 		return TRUE
