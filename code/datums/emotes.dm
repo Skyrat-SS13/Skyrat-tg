@@ -60,6 +60,8 @@
 	var/can_message_change = FALSE
 	/// How long is the cooldown on the audio of the emote, if it has one?
 	var/audio_cooldown = 2 SECONDS
+	/// Does this emote's sound ignore walls?
+	var/sound_wall_ignore = FALSE
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -107,6 +109,7 @@
 		else
 			playsound(user, tmp_sound, sound_volume, vary)
 		//SKYRAT EDIT CHANGE END
+		playsound(source = user,soundin = tmp_sound,vol = 50, vary = vary, ignore_walls = sound_wall_ignore)
 
 	var/is_important = emote_type & EMOTE_IMPORTANT
 	var/is_visual = emote_type & EMOTE_VISIBLE
