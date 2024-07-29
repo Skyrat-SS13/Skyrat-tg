@@ -100,7 +100,7 @@
 	savefile_key = "feature_body_markings"
 	relevant_mutant_bodypart = "body_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/body_markings
-	default_accessory_type = /datum/sprite_accessory/lizard_markings/none
+	default_accessory_type = /datum/sprite_accessory/lizard_markings
 
 /datum/preference/choiced/mutant_choice/body_markings/is_accessible(datum/preferences/preferences)
 	. = ..() // Got to do this because of linters.
@@ -213,7 +213,7 @@
 	savefile_key = "feature_horns"
 	relevant_mutant_bodypart = "horns"
 	type_to_check = /datum/preference/toggle/mutant_toggle/horns
-	default_accessory_type = /datum/sprite_accessory/horns/none
+	default_accessory_type = /datum/sprite_accessory/horns
 
 /datum/preference/tri_color/horns
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -239,7 +239,7 @@
 	savefile_key = "feature_ears"
 	relevant_mutant_bodypart = "ears"
 	type_to_check = /datum/preference/toggle/mutant_toggle/ears
-	default_accessory_type = /datum/sprite_accessory/ears/none
+	default_accessory_type = /datum/sprite_accessory/ears
 
 /datum/preference/tri_color/ears
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -291,7 +291,7 @@
 	savefile_key = "feature_frills"
 	relevant_mutant_bodypart = "frills"
 	type_to_check = /datum/preference/toggle/mutant_toggle/frills
-	default_accessory_type = /datum/sprite_accessory/frills/none
+	default_accessory_type = /datum/sprite_accessory/frills
 
 /datum/preference/tri_color/frills
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -317,7 +317,7 @@
 	savefile_key = "feature_spines"
 	relevant_mutant_bodypart = "spines"
 	type_to_check = /datum/preference/toggle/mutant_toggle/spines
-	default_accessory_type = /datum/sprite_accessory/spines/none
+	default_accessory_type = /datum/sprite_accessory/spines
 
 /datum/preference/tri_color/spines
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -399,7 +399,7 @@
 	savefile_key = "feature_moth_markings"
 	relevant_mutant_bodypart = "moth_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_markings
-	default_accessory_type = /datum/sprite_accessory/moth_markings/none
+	default_accessory_type = /datum/sprite_accessory/moth_markings
 
 /datum/preference/choiced/mutant_choice/moth_markings/is_accessible(datum/preferences/preferences)
 	. = ..() // Got to do this because of linters.
