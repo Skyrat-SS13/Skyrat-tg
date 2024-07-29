@@ -65,12 +65,12 @@
 			RESKIN_WORN_ICON_STATE = "policetrafficcap"
 		),
 		"Long Kesh Variant" = list(
-			RESKIN_ICON_STATE = "policesoft",
-			RESKIN_WORN_ICON_STATE = "policesoft"
+			RESKIN_ICON_STATE = "corrections_officer",
+			RESKIN_WORN_ICON_STATE = "corrections_officer"
 		),
 		"Sillitoe Variant" = list(
-			RESKIN_ICON_STATE = "policetrafficsoft",
-			RESKIN_WORN_ICON_STATE = "policetrafficsoft"
+			RESKIN_ICON_STATE = "policetrafficcap",
+			RESKIN_WORN_ICON_STATE = "policetrafficcap"
 		),
 		"Cadet Variant" = list(
 			RESKIN_ICON_STATE = "policecadetcap",
