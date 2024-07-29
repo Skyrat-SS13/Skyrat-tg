@@ -89,7 +89,7 @@
 			if("Pod")
 				var/obj/structure/closet/supplypod/empty_pod = new()
 
-				empty_pod.style = STYLE_BLUESPACE
+				empty_pod.style = /datum/pod_style/advanced
 				empty_pod.bluespace = TRUE
 				empty_pod.explosionSize = list(0,0,0,0)
 				empty_pod.desc = "A sleek, and slightly worn bluespace pod - its probably seen many deliveries..."
