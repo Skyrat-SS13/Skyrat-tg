@@ -97,6 +97,13 @@
 	update_appearance()
 	update_overlays()
 
+/obj/item/clothing/mask/leatherwhip/examine(mob/user)
+	. = ..()
+	if(!color_changed)
+		. += span_notice("Alt-click to change it's color.")
+	else if(!form_changed)
+		. += span_notice("Alt-click to change it's form.")
+
 //to change color
 /obj/item/clothing/mask/leatherwhip/click_alt(mob/user)
 	if(!color_changed)
@@ -108,9 +115,7 @@
 		update_icon_state()
 		color_changed = TRUE
 		return CLICK_ACTION_SUCCESS
-	else
-		if(form_changed)
-			return CLICK_ACTION_BLOCKING
+	else if(!form_changed)
 		var/choice = show_radial_menu(user, src, whip_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return CLICK_ACTION_BLOCKING
@@ -119,6 +124,7 @@
 		update_icon_state()
 		form_changed = TRUE
 		return CLICK_ACTION_SUCCESS
+	return CLICK_ACTION_BLOCKING
 
 /// A check to see if the radial menu can be used
 /obj/item/clothing/mask/leatherwhip/proc/check_menu(mob/living/user)

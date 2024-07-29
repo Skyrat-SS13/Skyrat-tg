@@ -1,6 +1,11 @@
 #define DEFAULT_AROUSAL_INCREASE 4
 #define DEFAULT_PLEASURE_INCREASE 2
 
+#define VIB_OFF "off"
+#define VIB_LOW "low"
+#define VIB_MEDIUM "medium"
+#define VIB_HIGH "hard"
+
 //This code huge and blocky, but we're working on update for... my god, 4 months. If you can upgrade it - do it, but don't remove or break something, test carefully. This item is insertable.
 /obj/item/clothing/sextoy/vibrator
 	name = "vibrator"
@@ -19,9 +24,7 @@
 	/// If the color has been changed before
 	var/color_changed = FALSE
 	/// Current vibration mode of the toy
-	var/vibration_mode = "off"
-	/// Assoc list of modes and what they'll convert to
-	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/vibration_mode = VIB_OFF
 	/// Looping sound used for the toy's audible bit
 	var/datum/looping_sound/lewd/vibrator/low/soundloop1
 	/// Looping sound used for the toy's audible bit
@@ -41,6 +44,11 @@
 		"red" = image(icon = src.icon, icon_state = "vibrator_red_low"),
 		"yellow" = image(icon = src.icon, icon_state = "vibrator_yellow_low"),
 		"green" = image(icon = src.icon, icon_state = "vibrator_green_low"))
+
+/obj/item/clothing/sextoy/vibrator/examine(mob/user)
+	. = ..()
+	if(!color_changed)
+		. += span_notice("Alt-click to change it's design.")
 
 /obj/item/clothing/sextoy/vibrator/click_alt(mob/user)
 	if(color_changed)
@@ -93,13 +101,13 @@
 	if(!istype(user))
 		return
 	if(toy_on)
-		if(vibration_mode == "low" && user.arousal < 40) //prevent non-stop cumming from wearing this thing
+		if(vibration_mode == VIB_LOW && user.arousal < 40) //prevent non-stop cumming from wearing this thing
 			user.adjust_arousal(0.7 * seconds_per_tick)
 			user.adjust_pleasure(0.7 * seconds_per_tick)
-		if(vibration_mode == "medium" && user.arousal < 70)
+		if(vibration_mode == VIB_MEDIUM && user.arousal < 70)
 			user.adjust_arousal(1 * seconds_per_tick)
 			user.adjust_pleasure(1 * seconds_per_tick)
-		if(vibration_mode == "hard") //no mercy
+		if(vibration_mode == VIB_HIGH) //no mercy
 			user.adjust_arousal(1.5 * seconds_per_tick)
 			user.adjust_pleasure(1.5 * seconds_per_tick)
 	else if(!toy_on && user.arousal < 30)
@@ -124,9 +132,9 @@
 
 	var/vibration_adj = ""
 	switch(vibration_mode)
-		if("low")
+		if(VIB_LOW)
 			vibration_adj = pick("gently", "delicately")
-		if("hard")
+		if(VIB_HIGH)
 			vibration_adj = pick("roughly", "aggressively")
 
 	switch(user.zone_selected) //to let code know what part of body we gonna vibe
@@ -184,38 +192,44 @@
 /obj/item/clothing/sextoy/vibrator/attack_self(mob/user, obj/item/attack_item)
 	toggle_mode()
 	switch(vibration_mode)
-		if("low")
+		if(VIB_LOW)
 			to_chat(user, span_notice("Vibration mode now is low. Bzzz..."))
-		if("medium")
+		if(VIB_MEDIUM)
 			to_chat(user, span_notice("Vibration mode now is medium. Bzzzz!"))
-		if("hard")
-			to_chat(user, span_notice("Vibration mode now is hard. Careful with that thing."))
-		if("off")
+		if(VIB_HIGH)
+			to_chat(user, span_notice("Vibration mode now is high. Careful with that thing."))
+		if(VIB_OFF)
 			to_chat(user, span_notice("Vibrator turned off. Fun's over?"))
 	update_icon()
 	update_icon_state()
 
 /obj/item/clothing/sextoy/vibrator/proc/toggle_mode()
-	vibration_mode = modes[vibration_mode]
 	switch(vibration_mode)
-		if("low")
+		if(VIB_OFF)
+			vibration_mode = VIB_LOW
 			toy_on = TRUE
 			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop1.start()
-		if("medium")
-			toy_on = TRUE
+		if(VIB_LOW)
+			vibration_mode = VIB_MEDIUM
 			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop1.stop()
 			soundloop2.start()
-		if("hard")
-			toy_on = TRUE
+		if(VIB_MEDIUM)
+			vibration_mode = VIB_HIGH
 			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop2.stop()
 			soundloop3.start()
-		if("off")
+		if(VIB_HIGH)
+			vibration_mode = VIB_OFF
 			toy_on = FALSE
 			play_lewd_sound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
 
 #undef DEFAULT_AROUSAL_INCREASE
 #undef DEFAULT_PLEASURE_INCREASE
+
+#undef VIB_OFF
+#undef VIB_LOW
+#undef VIB_MEDIUM
+#undef VIB_HIGH

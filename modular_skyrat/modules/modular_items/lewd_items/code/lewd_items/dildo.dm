@@ -41,6 +41,11 @@
 		"human" = image(icon = src.icon, icon_state = "[base_icon_state]_human"),
 		"tentacle" = image(icon = src.icon, icon_state = "[base_icon_state]_tentacle"))
 
+/obj/item/clothing/sextoy/dildo/examine(mob/user)
+	. = ..()
+	if(!color_changed && change_sprite)
+		. += span_notice("Alt-click to change it's designs.")
+
 /obj/item/clothing/sextoy/dildo/click_alt(mob/user)
 	if(color_changed)
 		return CLICK_ACTION_BLOCKING
@@ -222,21 +227,24 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		"medium" = image(icon = src.icon, icon_state = "[base_icon_state]_medium"),
 		"big" = image(icon = src.icon, icon_state = "[base_icon_state]_big"))
 
+/obj/item/clothing/sextoy/dildo/custom_dildo/examine(mob/user)
+	. = ..()
+	if(!size_changed && color_changed && change_sprite)
+		. += span_notice("Alt-click to change it's size.")
+
 /obj/item/clothing/sextoy/dildo/custom_dildo/click_alt(mob/living/user)
-	if(!size_changed)
+	if(!color_changed)
+		if(!istype(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+			return CLICK_ACTION_BLOCKING
+		customize(user)
+		color_changed = TRUE
+	else if (!size_changed)
 		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return CLICK_ACTION_BLOCKING
 		poly_size = choice
 		update_icon()
 		size_changed = TRUE
-	else
-		if(color_changed)
-			return CLICK_ACTION_BLOCKING
-		if(!istype(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-			return CLICK_ACTION_BLOCKING
-		customize(user)
-		color_changed = TRUE
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/Initialize(mapload)
@@ -262,10 +270,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	update_icon_state()
 	return TRUE
-
-/obj/item/clothing/sextoy/dildo/custom_dildo/examine(mob/user)
-	. = ..()
-	. += span_notice("<br>Alt-Click \the [src.name] to customize it.")
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/update_icon_state()
 	. = ..()

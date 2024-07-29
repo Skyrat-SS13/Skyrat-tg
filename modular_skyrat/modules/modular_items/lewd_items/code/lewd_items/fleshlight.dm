@@ -27,6 +27,11 @@
 		"yellow" = image(icon = src.icon, icon_state = "[base_icon_state]_yellow"),
 	)
 
+/obj/item/clothing/sextoy/fleshlight/examine(mob/user)
+	. = ..()
+	if(!color_changed)
+		. += span_notice("Alt-click to change it's color.")
+
 /obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
 	. = ..()
 	update_icon()

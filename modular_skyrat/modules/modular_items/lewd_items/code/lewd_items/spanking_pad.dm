@@ -43,6 +43,11 @@
 	icon_state = "[base_icon_state]_[current_color]"
 	inhand_icon_state = "[base_icon_state]_[current_color]"
 
+/obj/item/spanking_pad/examine(mob/user)
+	. = ..()
+	if(!color_changed)
+		. += span_notice("Alt-click to change it's color.")
+
 /obj/item/spanking_pad/click_alt(mob/user)
 	if(color_changed)
 		return CLICK_ACTION_BLOCKING

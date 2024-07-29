@@ -108,10 +108,15 @@
 	open_flame()
 	update_brightness()
 
+/obj/item/bdsm_candle/examine(mob/user)
+	. = ..()
+	if(!color_changed && !lit)
+		. += span_notice("Alt-click to change it's color.")
+	else if(lit)
+		. += span_notice("Alt-click to snuff the flame out.")
+
 /obj/item/bdsm_candle/click_alt(mob/user)
-	if(!lit)
-		if(color_changed)
-			return CLICK_ACTION_BLOCKING
+	if(!lit && !color_changed)
 		var/choice = show_radial_menu(user, src, candle_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return CLICK_ACTION_BLOCKING

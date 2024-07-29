@@ -36,6 +36,11 @@
 		"pink" = image(icon = src.icon, icon_state = "vibroring_pink_off"),
 		"teal" = image(icon = src.icon, icon_state = "vibroring_teal_off"))
 
+/obj/item/clothing/sextoy/vibroring/examine(mob/user)
+	. = ..()
+	if(!color_changed)
+		. += span_notice("Alt-click to change it's color.")
+
 /obj/item/clothing/sextoy/vibroring/click_alt(mob/user)
 	if(color_changed)
 		return CLICK_ACTION_BLOCKING
