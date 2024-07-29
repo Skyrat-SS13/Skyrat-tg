@@ -3,7 +3,7 @@
 	desc = "Though your eyes no longer function, you accommodate for it by some means of extrasensory echolocation and sensitive hearing. Beware: if you're ever deafened, you'll also lose your echolocation until you recover!"
 	gain_text = span_notice("The slightest sounds map your surroundings.")
 	lose_text = span_notice("The world resolves into colour and clarity.")
-	value = 0
+	value = -14
 	icon = FA_ICON_EAR_LISTEN
 	mob_trait = TRAIT_GOOD_HEARING
 	medical_record_text = "Patient's eyes are biologically nonfunctional. Hearing tests indicate almost supernatural acuity."
@@ -20,7 +20,7 @@
 	// echolocation component handles blinding us already so we don't need to worry about that
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	// set up the desired echo group from our quirk preferences
-	var/client_echo_group = lowertext(client_source?.prefs.read_preference(/datum/preference/choiced/echolocation_key))
+	var/client_echo_group = LOWER_TEXT(client_source?.prefs.read_preference(/datum/preference/choiced/echolocation_key))
 	if (isnull(client_echo_group))
 		client_echo_group = "echolocation"
 	if (client_echo_group == "psychic")
@@ -46,7 +46,7 @@
 	if (!istype(echo_ears))
 		return
 
-	echo_ears.damage_multiplier *= 2
+	echo_ears.damage_multiplier *= 1.25
 
 	// add an action/spell to allow the player to toggle echolocation off for a bit (eyestrain on longer rounds, or just roleplay)
 	var/datum/action/cooldown/spell/echolocation_toggle/toggle_action = new /datum/action/cooldown/spell/echolocation_toggle()
