@@ -34,7 +34,7 @@
 		/datum/component/echolocation, \
 		blocking_trait = TRAIT_DEAF, \
 		cooldown_time = 2 SECONDS, \
-		echo_range = 5, \
+		echo_range = 7, \
 		echo_group = client_echo_group, \
 		images_are_static = FALSE, \
 		use_echo = FALSE, \
