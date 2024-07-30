@@ -14,11 +14,11 @@ export const echolocation_outline: Feature<string> = {
 };
 
 export const echolocation_key: FeatureChoiced = {
-  name: 'Echolocation type',
+  name: 'Echolocation group',
   component: FeatureDropdownInput,
 };
 
 export const echolocation_use_echo: FeatureToggle = {
-  name: 'Display echo overlay',
+  name: 'Display own overlay',
   component: CheckboxInput,
 };

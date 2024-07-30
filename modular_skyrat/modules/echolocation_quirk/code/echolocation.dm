@@ -26,27 +26,26 @@
 	if (client_echo_group == "psychic")
 		client_echo_group = "psyker" // set this non-player-facing so they share echolocation with coded chaplain psykers/pirates and the like
 
-	var/client_use_echo = client_source?.prefs.read_preference(/datum/preference/toggle/echolocation_overlay)
-	if (isnull(client_use_echo))
-		client_use_echo = TRUE
+	// Get the prefs
+	var/client_show_outline = client_source?.prefs.read_preference(/datum/preference/toggle/echolocation_overlay)
+	var/col = color_hex2color_matrix(client_source?.prefs.read_preference(/datum/preference/color/echolocation_outline))
 
-	human_holder.AddComponent(/datum/component/echolocation, blocking_trait = TRAIT_DEAF, echo_range = 5, echo_group = client_echo_group, images_are_static = FALSE, use_echo = client_use_echo, show_own_outline = TRUE)
+	human_holder.AddComponent(\
+		/datum/component/echolocation, \
+		blocking_trait = TRAIT_DEAF, \
+		cooldown_time = 2 SECONDS, \
+		echo_range = 5, \
+		echo_group = client_echo_group, \
+		images_are_static = FALSE, \
+		use_echo = FALSE, \
+		show_own_outline = client_show_outline, \
+		personal_color = col \
+	)
 	esp = human_holder.GetComponent(/datum/component/echolocation)
 
-	// HEY! we probably need something to make sure they don't set a color that's too dark or their UI could be totally invisible.
-	// GOOD NEWS! we can re-use the runechat colour stuff for this (probably)
-	human_holder.remove_client_colour(/datum/client_colour/monochrome/blind) // get rid of the existing blind one
+	human_holder.remove_client_colour(/datum/client_colour/monochrome/blind)
 	esp_color = human_holder.add_client_colour(/datum/client_colour/echolocation_custom)
-	var/col = process_chat_color(client_source?.prefs.read_preference(/datum/preference/color/echolocation_outline))
-	esp_color.priority = 1 // mirrors PRIORITY_ABSOLUTE def inside client_color.dm, stops pipes and stuff showing as different colours
 	esp_color.update_colour(col)
-
-	// double the ear/hearing damage multiplier from any source.
-	var/obj/item/organ/internal/ears/echo_ears = human_holder.get_organ_slot(ORGAN_SLOT_EARS)
-	if (!istype(echo_ears))
-		return
-
-	echo_ears.damage_multiplier *= 1.25
 
 	// add an action/spell to allow the player to toggle echolocation off for a bit (eyestrain on longer rounds, or just roleplay)
 	var/datum/action/cooldown/spell/echolocation_toggle/toggle_action = new /datum/action/cooldown/spell/echolocation_toggle()
@@ -64,6 +63,9 @@
 	human_holder.remove_client_colour(/datum/client_colour/echolocation_custom) // clean up the custom colour override we added
 
 /datum/client_colour/echolocation_custom
+	colour = COLOR_MATRIX_SEPIATONE
+	priority = 1
+	override = TRUE
 
 /datum/action/cooldown/spell/echolocation_toggle
 	name = "Toggle echolocation"
