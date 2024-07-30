@@ -68,9 +68,7 @@
 
 	if(quirk_esp.stall == TRUE)
 		return
-	else
-		examine_list += span_cyan("[human_holder.p_They()] [human_holder.p_have()] [human_holder.p_their()] ears perked up, listening closely to even slightest noise.")
-		return
+	examine_list += span_cyan("[human_holder.p_They()] [human_holder.p_have()] [human_holder.p_their()] ears perked up, listening closely to even slightest noise.")
 
 /datum/client_colour/echolocation_custom
 	colour = COLOR_MATRIX_SEPIATONE
