@@ -51,6 +51,7 @@
 	var/datum/action/cooldown/spell/echolocation_toggle/toggle_action = new /datum/action/cooldown/spell/echolocation_toggle()
 	toggle_action.Grant(human_holder)
 	added_action = toggle_action
+	RegisterSignal(human_holder, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine_text))
 
 /datum/quirk/echolocation/remove()
 	QDEL_NULL(esp) // echolocation component removal handles graceful disposal of everything above except the ears
@@ -61,6 +62,7 @@
 		return
 	echo_ears.damage_multiplier = initial(echo_ears.damage_multiplier)
 	human_holder.remove_client_colour(/datum/client_colour/echolocation_custom) // clean up the custom colour override we added
+	UnregisterSignal(human_holder, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine_text))
 
 /datum/client_colour/echolocation_custom
 	colour = COLOR_MATRIX_SEPIATONE
@@ -149,3 +151,15 @@
 
 /datum/preference/toggle/echolocation_overlay/apply_to_human(mob/living/carbon/human/target, value)
 	return
+
+/datum/quirk/echolocation/proc/on_examine_text(client/client_source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/datum/quirk/echolocation/echo = human_holder.get_quirk(/datum/quirk/echolocation)
+	var/datum/component/echolocation/quirk_esp = echo.esp
+
+	if(quirk_esp.stall == TRUE)
+		return
+	else
+		examine_list += span_cyan("[human_holder.p_They()] [human_holder.p_have()] [human_holder.p_their()] ears perked up, listening closely to even slightest noise.")
+		return
