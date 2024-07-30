@@ -240,17 +240,10 @@
 	base_icon_state = "security_helmet_future"
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"White Variant" = list(
-			RESKIN_ICON_STATE = "security_helmet_future",
-			RESKIN_WORN_ICON_STATE = "security_helmet_future"
-		),
-		"Blue Variant" = list(
-			RESKIN_ICON_STATE = "security_helmet_future_blue",
-			RESKIN_WORN_ICON_STATE = "security_helmet_future_blue"
-		),
-	)
+
+/obj/item/clothing/head/helmet/sec/futuristic/blue
+	icon_state = "security_helmet_future_blue"
+	base_icon_state = "security_helmet_future_blue"
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison

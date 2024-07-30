@@ -122,13 +122,13 @@
 //This is based on the old CMG Code from Hatterhat when he made it foldable, Dragonfruit made the sprite sometime ago and I'm using it as it's  easier than remaking new sprite from the ground up
 
 /obj/item/gun/ballistic/automatic/rom_flech
-	name = "\improper RomTech CMG-1 Assault Rifle"
-	desc = "The Compact Machinegun-1 Assault Rifle. It is chambered in an experimental flechette cartridge capable of defeating all type of conventional body armour. Has a folding stock"
+	name = "\improper RomTech CMG-1 Rifle"
+	desc = "The Compact Machinegun-1 is a bullpup rifle fielded by the Romulus Expeditionary Force, chambered in an experimental flechette cartridge capable of defeating all type of conventional body armour. Has a folding stock"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun40x32.dmi'
 	icon_state = "cmg1"
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_worn.dmi'
 	worn_icon_state = "infanterie_evil"
-//placeeholder, I had to do this in a crunch hour.. sorry! - Calvin
+//placeeholder, I had to do this in a crunch hour.. sorry! - Kali
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
 	inhand_icon_state = "infanterie_evil"
@@ -141,9 +141,9 @@
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 	selector_switch_icon = TRUE
-	burst_size = 3
+	burst_size = 2
 	fire_delay = 2
-	spread = 0
+	spread = 5
 	pin = /obj/item/firing_pin/alert_level
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/caflechette
@@ -154,7 +154,7 @@
 	/// how long does it take to extend/collapse the stock
 	var/toggle_time = 1 SECONDS
 	/// what's our spread with our extended stock (mild varedit compatibility I Guess)?
-	var/unfolded_spread = 0
+	var/unfolded_spread = 5
 	/// what's our spread with a folded stock (see above comment)?
 	var/folded_spread = 20
 
