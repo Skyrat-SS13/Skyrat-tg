@@ -54,15 +54,23 @@
 	RegisterSignal(human_holder, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine_text))
 
 /datum/quirk/echolocation/remove()
-	QDEL_NULL(esp) // echolocation component removal handles graceful disposal of everything above except the ears
+	QDEL_NULL(esp) // echolocation component removal handles graceful disposal of everything above
 	QDEL_NULL(added_action) // remove the stall action, too
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/organ/internal/ears/echo_ears = human_holder.get_organ_slot(ORGAN_SLOT_EARS)
-	if (!istype(echo_ears))
-		return
-	echo_ears.damage_multiplier = initial(echo_ears.damage_multiplier)
 	human_holder.remove_client_colour(/datum/client_colour/echolocation_custom) // clean up the custom colour override we added
 	UnregisterSignal(human_holder, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine_text))
+
+/datum/quirk/echolocation/proc/on_examine_text(client/client_source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/datum/quirk/echolocation/echo = human_holder.get_quirk(/datum/quirk/echolocation)
+	var/datum/component/echolocation/quirk_esp = echo.esp
+
+	if(quirk_esp.stall == TRUE)
+		return
+	else
+		examine_list += span_cyan("[human_holder.p_They()] [human_holder.p_have()] [human_holder.p_their()] ears perked up, listening closely to even slightest noise.")
+		return
 
 /datum/client_colour/echolocation_custom
 	colour = COLOR_MATRIX_SEPIATONE
@@ -98,68 +106,3 @@
 		quirk_esp.stall = TRUE
 		cast_on.balloon_alert(cast_on, "stopped echolocating!")
 		cast_on.visible_message(span_notice("[cast_on] relaxes slightly, seeming less vigilant for the moment."))
-
-/datum/quirk_constant_data/echolocation
-	associated_typepath = /datum/quirk/echolocation
-	customization_options = list(/datum/preference/color/echolocation_outline, /datum/preference/choiced/echolocation_key, /datum/preference/toggle/echolocation_overlay)
-
-// Client preference for echolocation outline colour
-/datum/preference/color/echolocation_outline
-	savefile_key = "echolocation_outline"
-	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
-
-/datum/preference/color/echolocation_outline/is_accessible(datum/preferences/preferences)
-	if (!..(preferences))
-		return FALSE
-
-	return "Echolocation" in preferences.all_quirks
-
-/datum/preference/color/echolocation_outline/apply_to_human(mob/living/carbon/human/target, value)
-	return
-
-// Client preference for echolocation key type
-/datum/preference/choiced/echolocation_key
-	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
-	savefile_key = "echolocation_key"
-	savefile_identifier = PREFERENCE_CHARACTER
-
-/datum/preference/choiced/echolocation_key/is_accessible(datum/preferences/preferences)
-	if (!..(preferences))
-		return FALSE
-
-	return "Echolocation" in preferences.all_quirks
-
-/datum/preference/choiced/echolocation_key/init_possible_values()
-	var/list/values = list("Extrasensory", "Psychic", "Auditory/Vibrational")
-	return values
-
-/datum/preference/choiced/echolocation_key/apply_to_human(mob/living/carbon/human/target, value)
-	return
-
-// Client preference for whether we display the echolocation overlay or not
-/datum/preference/toggle/echolocation_overlay
-	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
-	savefile_key = "echolocation_use_echo"
-	savefile_identifier = PREFERENCE_CHARACTER
-
-/datum/preference/toggle/echolocation_overlay/is_accessible(datum/preferences/preferences)
-	if (!..(preferences))
-		return FALSE
-
-	return "Echolocation" in preferences.all_quirks
-
-/datum/preference/toggle/echolocation_overlay/apply_to_human(mob/living/carbon/human/target, value)
-	return
-
-/datum/quirk/echolocation/proc/on_examine_text(client/client_source, mob/user, list/examine_list)
-	SIGNAL_HANDLER
-	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/datum/quirk/echolocation/echo = human_holder.get_quirk(/datum/quirk/echolocation)
-	var/datum/component/echolocation/quirk_esp = echo.esp
-
-	if(quirk_esp.stall == TRUE)
-		return
-	else
-		examine_list += span_cyan("[human_holder.p_They()] [human_holder.p_have()] [human_holder.p_their()] ears perked up, listening closely to even slightest noise.")
-		return
