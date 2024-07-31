@@ -617,6 +617,11 @@
 /obj/item/grown/get_plant_seed()
 	return seed
 
+
+
+
+
+
 /obj/item/seeds/proc/perform_reagent_pollination(obj/item/seeds/donor)
 	var/list/datum/plant_gene/reagent/valid_reagents = list()
 	for(var/datum/plant_gene/reagent/donor_reagent in donor.genes)
@@ -638,5 +643,11 @@
 	if(length(valid_reagents))
 		// pick a valid reagent that our receptor seed don't have and add the gene to it
 		var/datum/plant_gene/reagent/selected_reagent = pick(valid_reagents)
-		genes += selected_reagent
+
+		genes += selected_reagent.Copy()
 		reagents_from_genes()
+
+
+	
+
+
