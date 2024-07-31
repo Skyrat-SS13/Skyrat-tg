@@ -10,7 +10,11 @@
 /datum/ai_planning_subtree/flee_target/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 	var/atom/flee_from = controller.blackboard[target_key]
+<<<<<<< HEAD
 	if (controller.blackboard[BB_BASIC_MOB_STOP_FLEEING] || QDELETED(flee_from))
+=======
+	if(!should_flee(controller, flee_from))
+>>>>>>> d4bd72800d0e ([NO GBP] Lil' fix to fishing hat PR. (#85459))
 		return
 	var/flee_distance = controller.blackboard[BB_BASIC_MOB_FLEE_DISTANCE] || DEFAULT_BASIC_FLEE_DISTANCE
 	if (get_dist(controller.pawn, flee_from) >= flee_distance)

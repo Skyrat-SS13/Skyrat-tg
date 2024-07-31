@@ -42,6 +42,15 @@
 /datum/ai_planning_subtree/make_carp_rift/aggressive_teleport
 	rift_behaviour = /datum/ai_behavior/make_carp_rift/towards/aggressive
 
+<<<<<<< HEAD
+=======
+/datum/ai_planning_subtree/make_carp_rift/aggressive_teleport/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+	var/atom/movable/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!QDELETED(target) && controller.blackboard[BB_CARPS_FEAR_FISHERMAN] && HAS_TRAIT(target, TRAIT_SCARY_FISHERMAN))
+		return
+	return ..()
+
+>>>>>>> d4bd72800d0e ([NO GBP] Lil' fix to fishing hat PR. (#85459))
 /**
  * # Make carp rift
  * Make a carp rift somewhere
