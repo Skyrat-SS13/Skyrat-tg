@@ -1,6 +1,5 @@
 /datum/surgery/amputation
 	name = "Amputation"
-	requires_bodypart_type = NONE
 	surgery_flags = SURGERY_REQUIRE_RESTING | SURGERY_REQUIRE_LIMB | SURGERY_MORBID_CURIOSITY
 	possible_locs = list(
 		BODY_ZONE_R_ARM,
@@ -26,6 +25,15 @@
 		/datum/surgery_step/sever_limb/peg,	//Easy come, easy go
 	)
 
+/datum/surgery/amputation/mechanic
+	name = "Disassemble"
+	requires_bodypart_type = BODYTYPE_ROBOTIC
+	steps = list(
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/open_hatch,
+		/datum/surgery_step/sever_limb/mechanic, //The benefit of being robotic; people can pull you apart in an instant! Wait, that's not a benefit...
+	)
+
 /datum/surgery/amputation/can_start(mob/user, mob/living/patient)
 	if(HAS_TRAIT(patient, TRAIT_NODISMEMBER))
 		return FALSE
@@ -41,7 +49,8 @@
 		/obj/item/melee/arm_blade = 80,
 		/obj/item/fireaxe = 50,
 		/obj/item/hatchet = 40,
-		/obj/item/knife/butcher = 25)
+		/obj/item/knife/butcher = 25,
+	)
 	time = 64
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/organ2.ogg'
