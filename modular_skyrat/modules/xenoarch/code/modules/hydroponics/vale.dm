@@ -1,5 +1,5 @@
 /obj/item/seeds/vale
-	name = "pack of vale seeds"
+	name = "vale seed pack"
 	desc = "These seeds grow into vale plants. Once sold as a luxury for their unique aesthetics, after the trees suddenly combusted they were taken off of the market."
 	icon = 'modular_skyrat/modules/xenoarch/icons/seeds.dmi'
 	icon_state = "vale"
