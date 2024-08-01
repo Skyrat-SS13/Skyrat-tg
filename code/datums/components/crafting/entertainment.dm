@@ -250,15 +250,6 @@
 	)
 	category = CAT_EQUIPMENT
 
-/datum/crafting_recipe/bonedice
-	name = "Bone Die"
-	result = /obj/item/dice/d6/bone
-	time = 5 SECONDS
-	reqs = list(
-		/obj/item/stack/sheet/bone = 1,
-	)
-	category = CAT_EQUIPMENT
-
 /datum/crafting_recipe/violin
 	name = "Violin"
 	result = /obj/item/instrument/violin

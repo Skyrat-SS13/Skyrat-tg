@@ -21,31 +21,33 @@
 	result = /obj/item/ammo_casing/arrow/bone
 	reqs = list(
 		/obj/item/stack/sheet/bone = 1,
-		/obj/item/ammo_casing/arrow/ash = 1,
+		/obj/item/ammo_casing/arrow = 1,
 	)
-	time = 1.5 SECONDS
 	category = CAT_WEAPON_AMMO
+	non_craftable = TRUE
+	steps = list("Reinforce the arrow with sinew.")
 
 /datum/crafting_recipe/ashen_arrow
 	name = "Ashen Arrow"
 	result = /obj/item/ammo_casing/arrow/ash
 	reqs = list(
-		/obj/item/stack/rods = 2,
+		/obj/item/ammo_casing/arrow = 1,
 		/obj/item/stack/sheet/sinew = 1,
-		/obj/item/stack/ore/glass/basalt = 10,
 	)
-	time = 1.5 SECONDS
 	category = CAT_WEAPON_AMMO
+	non_craftable = TRUE
+	steps = list("Reinforce the arrow with sinew.")
 
 /datum/crafting_recipe/bronze_arrow
 	name = "Bronze arrow"
 	result = /obj/item/ammo_casing/arrow/bronze
 	reqs = list(
-		/obj/item/ammo_casing/arrow/ash = 1,
+		/obj/item/ammo_casing/arrow = 1,
 		/obj/item/stack/tile/bronze = 1,
 	)
-	time = 1.5 SECONDS
 	category = CAT_WEAPON_AMMO
+	non_craftable = TRUE
+	steps = list("Reinforce the arrowhead with bronze.")
 
 /datum/crafting_recipe/goliathshield
 	name = "Goliath shield"
@@ -87,3 +89,12 @@
 	)
 	time = 20 SECONDS
 	category = CAT_WEAPON_RANGED
+
+/datum/crafting_recipe/bonedice
+	name = "Bone Die"
+	result = /obj/item/dice/d6/bone
+	time = 5 SECONDS
+	reqs = list(
+		/obj/item/stack/sheet/bone = 1,
+	)
+	category = CAT_EQUIPMENT

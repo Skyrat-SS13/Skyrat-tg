@@ -4,7 +4,7 @@
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_righthand.dmi'
 	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/back.dmi'
 	inhand_icon_state = "bow"
-	icon_state = "bow_unloaded"
+	icon_state = null
 	base_icon_state = "bow"
 	worn_icon_state = "bow"
 	slot_flags = ITEM_SLOT_BACK
@@ -36,6 +36,5 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "pipebow_unloaded"
 	base_icon_state = "pipebow"
-	inhand_icon_state = "pipebow"
 	worn_icon_state = "pipebow"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE

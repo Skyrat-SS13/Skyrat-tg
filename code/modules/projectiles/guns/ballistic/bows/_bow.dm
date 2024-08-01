@@ -32,7 +32,13 @@
 /obj/item/gun/ballistic/bow/update_overlays()
 	. = ..()
 	if(chambered)
-		. += "[chambered.base_icon_state][drawn ? "_drawn" : ""]"
+		// . += "[chambered.base_icon_state][drawn ? "_drawn" : ""]" SKYRAT EDIT REMOVAL
+		// SKYRAT EDIT START
+		var/icon_state = icon_exists(/obj/item/gun/ballistic/bow::icon, chambered.base_icon_state) ? chambered.base_icon_state : "arrow"
+		if(drawn)
+			icon_state += "_drawn"
+		. += icon(/obj/item/gun/ballistic/bow::icon, icon_state)
+		// SKYRAT EDIT END
 
 /obj/item/gun/ballistic/bow/click_alt(mob/user)
 	if(isnull(chambered))

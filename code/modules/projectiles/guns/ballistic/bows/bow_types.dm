@@ -21,7 +21,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	obj_flags = UNIQUE_RENAME
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/bow/holy
-	projectile_damage_multiplier = 0.4
+	//projectile_damage_multiplier = 0.4 // SKYRAT EDIT REMOVAL
 
 /obj/item/ammo_box/magazine/internal/bow/holy
 	name = "divine bowstring"
