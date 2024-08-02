@@ -273,8 +273,12 @@
 					trauma_desc += "severe "
 				if(TRAUMA_RESILIENCE_LOBOTOMY)
 					trauma_desc += "deep-rooted "
-				if(TRAUMA_RESILIENCE_MAGIC, TRAUMA_RESILIENCE_ABSOLUTE)
+				// SKYRAT EDIT CHANGE BEGIN - Curable permanent traumas
+				if(TRAUMA_RESILIENCE_MAGIC)
+					trauma_desc += "soul-bound "
+				if(TRAUMA_RESILIENCE_ABSOLUTE)
 					trauma_desc += "permanent "
+				// SKYRAT EDIT CHANGE END
 			trauma_desc += trauma.scan_desc
 			trauma_text += trauma_desc
 		trauma_status = "Cerebral traumas detected: patient appears to be suffering from [english_list(trauma_text)]."
