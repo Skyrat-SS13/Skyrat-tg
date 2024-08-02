@@ -403,7 +403,11 @@
 	desc = "A set of surgical tools hidden behind a concealed panel on the user's arm."
 	id = "ci-surgery"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT*1.25, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT * 1.5)
+	materials = list (
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+	)
 	construction_time = 2 SECONDS
 	build_path = /obj/item/organ/internal/cyberimp/arm/surgery
 	category = list(
@@ -416,7 +420,11 @@
 	desc = "A stripped-down version of engineering cyborg toolset, designed to be installed on subject's arm."
 	id = "ci-toolset"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT*1.25, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT * 1.5)
+	materials = list (
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+	)
 	construction_time = 2 SECONDS
 	build_path = /obj/item/organ/internal/cyberimp/arm/toolset
 	category = list(
@@ -563,6 +571,24 @@
 	build_path = /obj/item/organ/internal/cyberimp/brain/anti_stun
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cyberimp_herculean
+	name = "Herculean Gravitronic Spinal Implant"
+	desc = "This gravitronic spinal interface allows the user to reduce the impact of gravity on their body, effectively improving athletic performance."
+	id = "ci-herculean"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 4 SECONDS
+	materials = list(
+		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/titanium=SMALL_MATERIAL_AMOUNT*3,
+		/datum/material/gold=SMALL_MATERIAL_AMOUNT*3,
+		/datum/material/diamond =SMALL_MATERIAL_AMOUNT*5,
+	)
+	build_path = /obj/item/organ/internal/cyberimp/chest/spine
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_HEALTH
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 

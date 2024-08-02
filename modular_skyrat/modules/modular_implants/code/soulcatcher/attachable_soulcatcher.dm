@@ -80,21 +80,17 @@
 /obj/item/attachable_soulcatcher/attack_self(mob/user, modifiers)
 	linked_soulcatcher.ui_interact(user)
 
-/obj/item/attachable_soulcatcher/afterattack(obj/item/target_item, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(!proximity_flag || !istype(target_item))
-		return FALSE
-
-	if(target_item.GetComponent(/datum/component/carrier))
-		balloon_alert(user, "already attached!")
-		return FALSE
-
-	if(is_type_in_list(target_item, blacklisted_items))
+/obj/item/attachable_soulcatcher/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!isitem(interacting_with) || is_type_in_list(interacting_with, blacklisted_items))
 		balloon_alert(user, "incompatible!")
-		return FALSE
+		return NONE
 
-	var/datum/component/carrier/soulcatcher/attachable/new_soulcatcher = target_item.AddComponent(/datum/component/carrier/soulcatcher/attachable)
-	playsound(target_item.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
+	if(interacting_with.GetComponent(/datum/component/carrier/soulcatcher))
+		balloon_alert(user, "already attached!")
+		return ITEM_INTERACT_BLOCKING
+
+	var/datum/component/carrier/soulcatcher/new_soulcatcher = interacting_with.AddComponent(/datum/component/carrier/soulcatcher/attachable)
+	playsound(interacting_with.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
 	var/datum/carrier_room/target_room = new_soulcatcher.carrier_rooms[1]
 	var/list/current_mobs = linked_soulcatcher.get_current_mobs()

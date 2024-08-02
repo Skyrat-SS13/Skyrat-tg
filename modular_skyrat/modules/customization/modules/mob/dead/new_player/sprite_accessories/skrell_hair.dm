@@ -14,7 +14,7 @@
 	return FALSE
 
 /datum/sprite_accessory/skrell_hair/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 
 /datum/sprite_accessory/skrell_hair/long

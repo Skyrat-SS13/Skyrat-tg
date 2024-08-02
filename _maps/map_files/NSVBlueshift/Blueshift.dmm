@@ -4821,7 +4821,7 @@
 /area/station/command/heads_quarters/captain)
 "aXW" = (
 /obj/machinery/photocopier,
-/obj/machinery/keycard_auth/directional/south,
+/obj/machinery/keycard_auth/wall_mounted/directional/south,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/cmo)
 "aXX" = (
@@ -11933,7 +11933,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/bot,
-/obj/machinery/keycard_auth/directional/south{
+/obj/machinery/keycard_auth/wall_mounted/directional/south{
 	pixel_x = 6
 	},
 /obj/machinery/light_switch/directional/south{
@@ -15725,7 +15725,7 @@
 /obj/effect/mapping_helpers/requests_console/announcement,
 /obj/effect/mapping_helpers/requests_console/information,
 /obj/effect/mapping_helpers/requests_console/assistance,
-/obj/machinery/keycard_auth/directional/north,
+/obj/machinery/keycard_auth/wall_mounted/directional/north,
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
@@ -19718,10 +19718,6 @@
 /turf/open/floor/wood,
 /area/station/security/courtroom)
 "dJR" = (
-/obj/machinery/camera/directional/south{
-	c_tag = " Prison - Locker Room";
-	network = list("ss13","prison")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/security/prison/shower)
@@ -30935,6 +30931,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Medbay - Psych Ward Airlock";
+	network = list("ss13","medbay")
+	},
 /turf/open/floor/iron,
 /area/station/medical/aslyum)
 "fRu" = (
@@ -31651,7 +31651,7 @@
 /obj/item/toy/figure/qm{
 	pixel_y = 18
 	},
-/obj/machinery/keycard_auth/directional/west,
+/obj/machinery/keycard_auth/wall_mounted/directional/west,
 /obj/machinery/light/directional/west,
 /obj/machinery/fax{
 	fax_name = "Quartermaster's Office";
@@ -33090,6 +33090,10 @@
 "gmN" = (
 /obj/structure/chair/sofa/bench/left,
 /obj/machinery/light/small/directional/north,
+/obj/machinery/camera/directional/north{
+	network = list("ss13","prison");
+	c_tag = "Prison - Locker Room"
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -37647,6 +37651,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/security/entrance,
+/obj/machinery/scanner_gate/preset_guns,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "hhy" = (
@@ -55052,7 +55057,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "kwr" = (
-/obj/machinery/keycard_auth/directional/east{
+/obj/machinery/keycard_auth/wall_mounted/directional/east{
 	pixel_y = -8
 	},
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -59651,9 +59656,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	piping_layer = 4
-	},
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer4,
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
 "lsb" = (
@@ -76394,10 +76397,6 @@
 "oCn" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
-/obj/machinery/camera/directional/west{
-	c_tag = "Primary Restroom";
-	name = "restroom camera"
-	},
 /turf/open/floor/iron/white,
 /area/station/commons/toilet/restrooms)
 "oCp" = (
@@ -78236,6 +78235,9 @@
 "oUO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Prison - Locker Room"
+	},
 /turf/open/floor/iron,
 /area/station/common/locker_room_shower)
 "oUS" = (
@@ -82840,10 +82842,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/night_club)
 "pQQ" = (
-/obj/machinery/camera/directional/south{
-	c_tag = " Prison - Showers";
-	network = list("ss13","prison")
-	},
 /obj/item/bikehorn/rubberducky,
 /turf/open/floor/iron/freezer,
 /area/station/security/prison/shower)
@@ -84985,6 +84983,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
+"qlB" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/incident_display/bridge/directional/south,
+/turf/open/floor/iron/dark/side,
+/area/station/hallway/secondary/command)
 "qlC" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -87073,7 +87076,7 @@
 	dir = 1;
 	pixel_y = 3
 	},
-/obj/machinery/keycard_auth/directional/south{
+/obj/machinery/keycard_auth/wall_mounted/directional/south{
 	pixel_y = -23
 	},
 /obj/machinery/requests_console/directional/south{
@@ -92215,6 +92218,7 @@
 /obj/effect/landmark/navigate_destination,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/security/entrance,
+/obj/machinery/scanner_gate/preset_guns,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "rCH" = (
@@ -96583,11 +96587,6 @@
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/ears/earmuffs,
-/obj/machinery/camera/directional/east{
-	c_tag = "Medbay - Psych Ward Airlock";
-	name = "medbay camera";
-	network = list("ss13","medbay")
-	},
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
@@ -97897,7 +97896,7 @@
 /obj/machinery/computer/atmos_alert{
 	dir = 4
 	},
-/obj/machinery/keycard_auth/directional/west,
+/obj/machinery/keycard_auth/wall_mounted/directional/west,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/command/heads_quarters/ce)
 "sHU" = (
@@ -110157,17 +110156,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
-"uYQ" = (
-/obj/structure/closet/athletic_mixed,
-/obj/effect/turf_decal/bot,
-/obj/machinery/camera{
-	c_tag = "Recreation - Gym Lockers";
-	dir = 5;
-	name = "hallway camera"
-	},
-/obj/item/clothing/shoes/sports,
-/turf/open/floor/iron/dark,
-/area/station/common/locker_room_shower)
 "uYS" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -110747,10 +110735,10 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/machinery/smartfridge/drying_rack,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/machinery/smartfridge/drying/rack,
 /turf/open/floor/wood,
 /area/station/service/chapel)
 "vfY" = (
@@ -112829,7 +112817,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "vyB" = (
-/obj/machinery/deepfryer,
+/obj/machinery/smartfridge/drying,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "vyF" = (
@@ -114797,11 +114785,6 @@
 /area/station/command/heads_quarters/captain/private)
 "vRe" = (
 /obj/item/kirbyplants/random,
-/obj/machinery/camera/directional/east{
-	c_tag = "Medbay - Starboard Psych Ward";
-	name = "medbay camera";
-	network = list("ss13","medbay")
-	},
 /turf/open/floor/iron/white/textured,
 /area/station/medical/aslyum)
 "vRh" = (
@@ -145889,7 +145872,7 @@ eqf
 bRp
 dcJ
 qxs
-uYQ
+qxs
 eqf
 vzT
 iGE
@@ -223212,7 +223195,7 @@ duP
 gRC
 wZW
 gwW
-xUY
+qlB
 xai
 wEl
 vre

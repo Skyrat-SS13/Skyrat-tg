@@ -21,14 +21,14 @@
 	desc = "A pair of highly robust combat gripper gloves that excels at performing takedowns at close range, with an added lining of insulation. Careful not to hit a wall!"
 	item = /obj/item/clothing/gloves/tackler/combat/insulated
 	cost = 2
-	illegal_tech = FALSE
+	uplink_item_flags = NONE
 
 /datum/uplink_item/device_tools/ammo_pouch
 	name = "Ammo Pouch"
 	desc = "A small yet large enough pouch that can fit in your pocket, and has room for three magazines."
 	item = /obj/item/storage/pouch/ammo
 	cost = 1
-	illegal_tech = FALSE
+	uplink_item_flags = NONE
 
 /datum/uplink_item/device_tools/syndie_glue
 	name = "Glue"

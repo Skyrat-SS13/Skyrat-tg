@@ -18,15 +18,16 @@
 	icon_state = "data_1"
 	var/list/extra_access
 
-/obj/item/card/faction_access/afterattack(atom/movable/AM, mob/user, proximity)
-	. = ..()
-	if(istype(AM, /obj/item/card/id) && proximity)
-		var/obj/item/card/id/I = AM
-		if(extra_access)
-			for(var/acs in extra_access)
-				I.access |= acs
-		to_chat(user, span_notice("You upgrade [I] with extra access."))
-		qdel(src)
+/obj/item/card/faction_access/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/obj/item/card/id/id = interacting_with
+	if(!istype(id))
+		return NONE
+	if(extra_access)
+		for(var/acs in extra_access)
+			id.access |= acs
+	to_chat(user, span_notice("You upgrade [id] with extra access."))
+	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/card/faction_access/guest
 	name = "faction guest access card"

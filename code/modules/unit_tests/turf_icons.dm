@@ -30,7 +30,7 @@
 	//ignored_types += typesof(YOUR_DOWNSTREAM_TYPEPATH(s)_HERE) //MODULARITY SUPPORT. If you have snowflake typepaths that are blacklisted in, for example, create & destroy unit test because they require certain SS's being init, use this to blacklist them.
 	//SKYRAT EDIT START
 	ignored_types += typesof(/turf/open/openspace/ocean)
-	ignored_types += typesof(/turf/open/floor/plating/ocean)
+	ignored_types += typesof(/turf/open/misc/ocean)
 	// SKYRAT EDIT END
 
 

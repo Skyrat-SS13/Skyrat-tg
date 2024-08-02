@@ -22,6 +22,10 @@
 		lgroup.remove_from_group(src)
 	SSliquids.add_active_turf(src)
 
+/// Called when liquids flow or otherwise update - intercept COMSIG_TURF_LIQUIDS_CHANGE to react.
+/turf/proc/liquids_change(new_state)
+	SEND_SIGNAL(src, COMSIG_TURF_LIQUIDS_CHANGE, new_state)
+
 /obj/effect/abstract/liquid_turf/proc/liquid_simple_delete_flat(flat_amount)
 	if(flat_amount >= total_reagents)
 		qdel(src, TRUE)

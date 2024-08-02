@@ -39,14 +39,17 @@
 	material_drop_amount = 4
 	cutting_tool = /obj/item/crowbar
 
+//Wooden-storage "fridges"
+
 /obj/machinery/smartfridge/wooden
 	name = "Debug Wooden Smartfridge"
 	desc = "You shouldn't be seeing this!"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	icon_state = "producebin"
+	base_icon_state = "producebin"
+	contents_overlay_icon = "produce"
 	resistance_flags = FLAMMABLE
 	base_build_path = /obj/machinery/smartfridge/wooden
-	base_icon_state = "produce"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
@@ -77,44 +80,63 @@
 
 /obj/machinery/smartfridge/wooden/produce_bin
 	name = "produce bin"
+	icon_state = "producebin"
+	base_icon_state = "producebin"
+	contents_overlay_icon = "produce"
 	desc = "A wooden hamper, used to hold plant products and try to keep them safe from pests."
 	base_build_path = /obj/machinery/smartfridge/wooden/produce_bin
 
-/obj/machinery/smartfridge/wooden/produce_bin/accept_check(obj/item/item_to_check)
-	var/static/list/accepted_items = list(
-		/obj/item/food/grown,
-		/obj/item/grown,
-		/obj/item/graft,
-	)
-
-	return is_type_in_list(item_to_check, accepted_items)
+/obj/machinery/smartfridge/wooden/produce_bin/accept_check(obj/item/weapon)
+	if(weapon.w_class >= WEIGHT_CLASS_BULKY)
+		return FALSE
+	if(IS_EDIBLE(weapon))
+		return TRUE
+	if(istype(weapon, /obj/item/food/grown) || istype(weapon, /obj/item/grown) || istype(weapon, /obj/item/graft))
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/wooden/seed_shelf
-	name = "Seedshelf"
+	name = "seedshelf"
 	desc = "A wooden shelf, used to hold seeds preventing them from germinating early."
 	icon_state = "seedshelf"
+	base_icon_state = "seedshelf"
+	contents_overlay_icon = "seed"
 	base_build_path = /obj/machinery/smartfridge/wooden/seed_shelf
-	base_icon_state = "seed"
 
-/obj/machinery/smartfridge/wooden/seedshelf/wooden/accept_check(obj/item/weapon)
-	return istype(weapon, /obj/item/seeds)
+/obj/machinery/smartfridge/wooden/seed_shelf/accept_check(obj/item/weapon)
+	if(istype(weapon, /obj/item/seeds))
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/wooden/ration_shelf
-	name = "Ration shelf"
+	name = "ration shelf"
 	desc = "A wooden shelf, used to store food... preferably preserved."
 	icon_state = "seedshelf"
+	base_icon_state = "seedshelf"
+	contents_overlay_icon = "ration"
 	base_build_path = /obj/machinery/smartfridge/wooden/ration_shelf
-	base_icon_state = "ration"
 
-/obj/machinery/smartfridge/wooden/rationshelf/wooden/accept_check(obj/item/weapon)
-	return (IS_EDIBLE(weapon) || (istype(weapon,/obj/item/reagent_containers/cup/bowl) && length(weapon.reagents?.reagent_list)))
+/obj/machinery/smartfridge/wooden/ration_shelf/accept_check(obj/item/weapon)
+	if(weapon.w_class >= WEIGHT_CLASS_BULKY)
+		return FALSE
+	if(IS_EDIBLE(weapon))
+		return TRUE
+	if(istype(weapon, /obj/item/reagent_containers/cup/bowl) && weapon.reagents?.total_volume > 0)
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/wooden/produce_display
-	name = "Produce display"
+	name = "produce display"
 	desc = "A wooden table with awning, used to display produce items."
 	icon_state = "producedisplay"
+	base_icon_state = "producedisplay"
+	contents_overlay_icon = "nonfood"
 	base_build_path = /obj/machinery/smartfridge/wooden/produce_display
-	base_icon_state = "nonfood"
 
-/obj/machinery/smartfridge/wooden/producedisplay/accept_check(obj/item/weapon)
-	return (istype(weapon, /obj/item/grown) || istype(weapon, /obj/item/bouquet) || istype(weapon, /obj/item/clothing/head/costume/garland))
+/obj/machinery/smartfridge/wooden/produce_display/accept_check(obj/item/weapon)
+	if(istype(weapon, /obj/item/grown) || istype(weapon, /obj/item/bouquet) || istype(weapon, /obj/item/clothing/head/costume/garland))
+		return TRUE
+	if(istype(weapon, /obj/item/stack/sheet/cloth)  || istype(weapon, /obj/item/stack/sheet/durathread)  || istype(weapon, /obj/item/stack/sheet/leather))
+		return TRUE
+	if(istype(weapon, /obj/item/stack/sheet/mineral/wood) || istype(weapon, /obj/item/stack/sheet/mineral/bamboo) || istype(weapon, /obj/item/stack/rods))
+		return TRUE

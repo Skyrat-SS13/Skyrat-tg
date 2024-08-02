@@ -53,7 +53,7 @@
 
 
 /datum/sprite_accessory/snouts/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 	flags_for_organ = NONE
 	factual = FALSE

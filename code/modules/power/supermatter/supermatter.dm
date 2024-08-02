@@ -105,7 +105,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/external_power_immediate = 0
 
 	/// External damage that are added to the sm on next [/obj/machinery/power/supermatter_crystal/process_atmos] call.
-	/// SM will not take damage if it's health is lower than emergency point.
+	/// SM will not take damage if its health is lower than emergency point.
 	var/external_damage_immediate = 0
 
 	///The cutoff for a bolt jumping, grows with heat, lowers with higher mol count,
@@ -239,6 +239,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	QDEL_NULL(radio)
 	QDEL_NULL(countdown)
 	if(is_main_engine && GLOB.main_supermatter_engine == src)
+		SSpersistence.reset_delam_counter() // NOVA EDIT ADDITION BEGIN - DELAM SCRAM
 		GLOB.main_supermatter_engine = null
 	QDEL_NULL(soundloop)
 	return ..()

@@ -87,12 +87,12 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/auto_doc,
 		/obj/item/mod/module/visor/thermal,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/magboot/advanced,
 	)
 	default_pins = list(
 		/obj/item/mod/module/visor/thermal,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/magboot/advanced,
 	)
 
@@ -317,7 +317,7 @@
 	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
-	RegisterSignal(mod, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(mod, COMSIG_ATOM_ITEM_INTERACTION, PROC_REF(on_item_interact))
 
 /obj/item/mod/module/auto_doc/on_uninstall(deleting)
 	UnregisterSignal(mod, COMSIG_ATOM_ATTACKBY)
@@ -327,10 +327,10 @@
 		return TRUE
 	return ..()
 
-/obj/item/mod/module/auto_doc/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user)
+/obj/item/mod/module/auto_doc/proc/on_item_interact(datum/source, mob/user, obj/item/thing, params)
 	SIGNAL_HANDLER
 
-	if(charge_boost(attacking_item, user))
+	if(charge_boost(thing, user))
 		return COMPONENT_NO_AFTERATTACK
 
 	return NONE

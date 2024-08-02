@@ -8,7 +8,7 @@
 	organ_type = /obj/item/organ/external/xenodorsal
 
 /datum/sprite_accessory/xenodorsal/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 
 /datum/sprite_accessory/xenodorsal/standard
@@ -51,7 +51,7 @@
 	organ_type = /obj/item/organ/external/xenohead
 
 /datum/sprite_accessory/xenohead/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 
 /datum/sprite_accessory/xenohead/standard

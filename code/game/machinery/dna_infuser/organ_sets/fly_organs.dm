@@ -42,26 +42,28 @@
 	toxic_foodtypes = NONE // these fucks eat vomit, i am sure they can handle drinking bleach or whatever too
 	modifies_speech = TRUE
 	languages_native = list(/datum/language/buzzwords)
+	var/static/list/speech_replacements = list(
+		new /regex("z+", "g") = "zzz",
+		new /regex("Z+", "g") = "ZZZ",
+		"s" = "z",
+		"S" = "Z",
+	)
+	// SKYRAT EDIT ADDITION START - Russian version
+	var/static/list/russian_speech_replacements = list(
+		new /regex("z+", "g") = "zzz",
+		new /regex("Z+", "g") = "ZZZ",
+		new /regex("з+", "g") = "ззз",
+		new /regex("З+", "g") = "ЗЗЗ",
+		"s" = "z",
+		"S" = "Z",
+		"с" = "з",
+		"С" = "З",
+	)
+	// SKYRAT EDIT ADDITION END
 
-/obj/item/organ/internal/tongue/fly/modify_speech(datum/source, list/speech_args)
-	var/static/regex/fly_buzz = new("z+", "g")
-	var/static/regex/fly_buZZ = new("Z+", "g")
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message[1] != "*")
-		message = fly_buzz.Replace(message, "zzz")
-		message = fly_buZZ.Replace(message, "ZZZ")
-		message = replacetext(message, "s", "z")
-		message = replacetext(message, "S", "Z")
-//SKYRAT EDIT START: Adding russian version to autohiss
-		if(CONFIG_GET(flag/russian_text_formation))
-			var/static/regex/fly_buzz_ru = new("з+", "g")
-			var/static/regex/fly_buZZ_ru = new("З+", "g")
-			message = fly_buzz_ru.Replace(message, "ззз")
-			message = fly_buZZ_ru.Replace(message, "ЗЗЗ")
-			message = replacetext(message, "с", "з")
-			message = replacetext(message, "С", "З")
-//SKYRAT EDIT END: Adding russian version to autohiss
-	speech_args[SPEECH_MESSAGE] = message
+/obj/item/organ/internal/tongue/fly/New(class, timer, datum/mutation/human/copymut)
+	. = ..()
+	AddComponent(/datum/component/speechmod, replacements = CONFIG_GET(flag/russian_text_formation) ? russian_speech_replacements : speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech))) // SKYRAT EDIT CHANGE - ORIGINAL:AddComponent(/datum/component/speechmod, replacements = speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech)))
 
 /obj/item/organ/internal/tongue/fly/Initialize(mapload)
 	. = ..()
