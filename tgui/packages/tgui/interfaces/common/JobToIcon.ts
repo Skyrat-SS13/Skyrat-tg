@@ -112,7 +112,7 @@ const ALTTITLES = {
   Herbalist: BASEICONS['Botanist'],
   Florist: BASEICONS['Botanist'],
   // Bouncer - shield-heart
-  'Service Guard': BASEICONS['Bouncer'],
+  Bouncer: BASEICONS['Bouncer'],
   // Captain - crown
   'Station Commander': BASEICONS['Captain'],
   'Commanding Officer': BASEICONS['Captain'],
