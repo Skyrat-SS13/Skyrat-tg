@@ -52,6 +52,8 @@ GLOBAL_PROTECT(lua_usr)
 	if(!verbose && result["status"] != "errored" && result["status"] != "bad return" \
 		&& !(result["name"] == "input" && (result["status"] == "finished" || length(result["param"]))))
 		return
+	if(status == "runtime" && supress_runtimes)
+		return
 	var/append_to_log = TRUE
 	var/index_of_log
 	if(log.len)
