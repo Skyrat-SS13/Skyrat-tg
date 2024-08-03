@@ -6,3 +6,12 @@
 	. = ..()
 	if(chambered)
 		playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0)
+
+/obj/item/gun/ballistic/bow/click_alt(mob/user)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
+/obj/item/gun/ballistic/bow/drop_arrow()
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+

@@ -28,7 +28,7 @@
 /datum/surgery_step/fix_robot_brain
 	name = "fix posibrain"
 	implements = list(
-		TOOL_MULTITOOL = 100,
+		TOOL_MULTITOOL = 95,
 		TOOL_HEMOSTAT = 35,
 		/obj/item/pen = 15
 	)
