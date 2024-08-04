@@ -31,6 +31,9 @@
 	finish_planning = TRUE
 
 /datum/ai_planning_subtree/make_carp_rift/panic_teleport/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+	var/atom/movable/fleeing_from = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!QDELETED(fleeing_from) && controller.blackboard[BB_CARPS_FEAR_FISHERMAN] && HAS_TRAIT(fleeing_from, TRAIT_SCARY_FISHERMAN))
+		return ..()
 	if (controller.blackboard[BB_BASIC_MOB_STOP_FLEEING])
 		return
 	return ..()
@@ -42,15 +45,12 @@
 /datum/ai_planning_subtree/make_carp_rift/aggressive_teleport
 	rift_behaviour = /datum/ai_behavior/make_carp_rift/towards/aggressive
 
-<<<<<<< HEAD
-=======
 /datum/ai_planning_subtree/make_carp_rift/aggressive_teleport/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/atom/movable/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	if(!QDELETED(target) && controller.blackboard[BB_CARPS_FEAR_FISHERMAN] && HAS_TRAIT(target, TRAIT_SCARY_FISHERMAN))
 		return
 	return ..()
 
->>>>>>> d4bd72800d0e ([NO GBP] Lil' fix to fishing hat PR. (#85459))
 /**
  * # Make carp rift
  * Make a carp rift somewhere
@@ -183,7 +183,7 @@
 
 /datum/ai_planning_subtree/shortcut_to_target_through_carp_rift/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/mob/living/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
-	if (QDELETED(target))
+	if (QDELETED(target) || (controller.blackboard[BB_CARPS_FEAR_FISHERMAN] && HAS_TRAIT(target, TRAIT_SCARY_FISHERMAN)))
 		return
 
 	var/distance_to_target = get_dist(controller.pawn, target)

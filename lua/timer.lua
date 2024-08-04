@@ -61,9 +61,15 @@ __Timer_timer_process = function(seconds_per_tick)
 end
 
 function Timer.wait(time)
+<<<<<<< HEAD
 	local next_yield_index = __next_yield_index
 	__add_internal_timer(function()
 		SSlua:call_proc("queue_resume", state.state, next_yield_index)
+=======
+	local yieldIndex = _exec.next_yield_index
+	__add_internal_timer(function()
+		SSlua:queue_resume(state.state, yieldIndex)
+>>>>>>> 6577c58b948b (Fixes lua function SS13.wait. (#85427))
 	end, time * 10, false)
 	coroutine.yield()
 end
