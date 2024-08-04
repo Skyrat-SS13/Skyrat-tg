@@ -27,7 +27,18 @@
 
 /obj/item/gun/ballistic/bow/update_icon_state()
 	. = ..()
-	icon_state = chambered ? "[base_icon_state]_[drawn ? "drawn" : "nocked"]" : "[base_icon_state]"
+	icon_state = "[base_icon_state][drawn ? "_drawn" : ""]"
+
+/obj/item/gun/ballistic/bow/update_overlays()
+	. = ..()
+	if(chambered)
+		// . += "[chambered.base_icon_state][drawn ? "_drawn" : ""]" SKYRAT EDIT REMOVAL
+		// SKYRAT EDIT START
+		var/icon_state = icon_exists(/obj/item/gun/ballistic/bow::icon, chambered.base_icon_state) ? chambered.base_icon_state : "arrow"
+		if(drawn)
+			icon_state += "_drawn"
+		. += icon(/obj/item/gun/ballistic/bow::icon, icon_state)
+		// SKYRAT EDIT END
 
 /obj/item/gun/ballistic/bow/click_alt(mob/user)
 	if(isnull(chambered))
@@ -71,6 +82,11 @@
 		drop_arrow()
 		return FALSE
 	return ..() //fires, removing the arrow
+
+/obj/item/gun/ballistic/bow/postfire_empty_checks(last_shot_succeeded)
+	if(!chambered && !get_ammo())
+		drawn = FALSE
+		update_appearance()
 
 /obj/item/gun/ballistic/bow/equipped(mob/user, slot, initial)
 	. = ..()
