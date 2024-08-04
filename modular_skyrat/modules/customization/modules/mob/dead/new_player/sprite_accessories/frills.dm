@@ -12,6 +12,10 @@
 
 	return FALSE
 
+/datum/sprite_accessory/frills/none
+	name = SPRITE_ACCESSORY_NONE
+	icon_state = "none"
+
 /datum/sprite_accessory/frills/divinity
 	name = "Divinity"
 	icon_state = "divinity"

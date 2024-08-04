@@ -112,7 +112,10 @@
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 24d6dfe036880da538badb7d076b72aa9b55cc80
 
 /datum/crafting_recipe/arrow
 	name = "Arrow"
@@ -129,6 +132,7 @@
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
+<<<<<<< HEAD
 /datum/crafting_recipe/sticky_arrow
 	name = "Sticky arrow"
 	result = /obj/item/ammo_casing/arrow/sticky
@@ -151,6 +155,8 @@
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY
 
+=======
+>>>>>>> 24d6dfe036880da538badb7d076b72aa9b55cc80
 /datum/crafting_recipe/plastic_arrow
 	name = "Plastic Arrow"
 	result = /obj/item/ammo_casing/arrow/plastic
@@ -178,4 +184,7 @@
 	time = 5 SECONDS
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
+<<<<<<< HEAD
 >>>>>>> 6323ee68d9c8 (Melon Armours, Mock up wizardry, and other cool botany stuff, Gnomes and Gardens style. (#85128))
+=======
+>>>>>>> 24d6dfe036880da538badb7d076b72aa9b55cc80

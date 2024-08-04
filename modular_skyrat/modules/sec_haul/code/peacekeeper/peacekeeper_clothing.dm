@@ -50,12 +50,32 @@
 	icon_state = "policeofficerpatrolcap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	armor_type = /datum/armor/head_helmet
+	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Blue" = "policeofficercap",
-		"Sillitoe" = "policetrafficcap",
-		"Black and Blue" = "policeofficerpatrolcap",
-		"Long Kesh" = "corrections_officer",
-		"Cadet" = "policecadetcap",
+		"Blue Variant" = list(
+			RESKIN_ICON_STATE = "policeofficercap",
+			RESKIN_WORN_ICON_STATE = "policeofficercap"
+		),
+		"Black and Blue Variant" = list(
+			RESKIN_ICON_STATE = "policeofficerpatrolcap",
+			RESKIN_WORN_ICON_STATE = "policeofficerpatrolcap"
+		),
+		"Sillitoe Variant" = list(
+			RESKIN_ICON_STATE = "policetrafficcap",
+			RESKIN_WORN_ICON_STATE = "policetrafficcap"
+		),
+		"Long Kesh Variant" = list(
+			RESKIN_ICON_STATE = "corrections_officer",
+			RESKIN_WORN_ICON_STATE = "corrections_officer"
+		),
+		"Sillitoe Variant" = list(
+			RESKIN_ICON_STATE = "policetrafficcap",
+			RESKIN_WORN_ICON_STATE = "policetrafficcap"
+		),
+		"Cadet Variant" = list(
+			RESKIN_ICON_STATE = "policecadetcap",
+			RESKIN_WORN_ICON_STATE = "policecadetcap"
+		),
 	)
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper

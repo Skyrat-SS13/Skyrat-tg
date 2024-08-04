@@ -10,7 +10,7 @@
 
 	var/list/possible_choices = list()
 
-	var/pod_style = STYLE_CENTCOM
+	var/pod_style = /datum/pod_style/centcom
 
 /obj/item/advanced_choice_beacon/attack_self(mob/user, modifiers)
 	if(can_use_beacon(user))
