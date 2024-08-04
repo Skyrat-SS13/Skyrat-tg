@@ -17,7 +17,7 @@
 #define SCANGATE_POD "pod"
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
-//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
+//SKYRAT EDIT ADDITION BEGIN - MORE SCANNER GATE OPTIONS
 #define SCANGATE_MAMMAL "mammal"
 #define SCANGATE_VOX "vox"
 #define SCANGATE_AQUATIC "aquatic"
@@ -30,9 +30,8 @@
 #define SCANGATE_TESHARI "teshari"
 #define SCANGATE_HEMOPHAGE "hemophage"
 #define SCANGATE_SNAIL "snail"
-
 #define SCANGATE_GENDER "Gender"
-//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+//SKYRAT EDIT ADDITION END - MORE SCANNER GATE OPTIONS
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
@@ -62,7 +61,7 @@
 	var/light_fail = FALSE
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
-	var/detect_gender = "male" //SKYRAT EDIT - MORE SCANNER GATE OPTIONS
+	var/detect_gender = "male" //SKYRAT EDIT ADDITION - MORE SCANNER GATE OPTIONS
 	///Modifier to the chance of scanner being false positive/negative
 	var/minus_false_beep = 0
 	///Base false positive/negative chance
@@ -249,7 +248,6 @@
 					if(SCANGATE_ZOMBIE)
 						detected_thing = "Zombie"
 						scan_species = /datum/species/zombie
-<<<<<<< HEAD
 					//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 					if(SCANGATE_MAMMAL)
 						scan_species = /datum/species/mammal
@@ -276,10 +274,7 @@
 					if(SCANGATE_SNAIL)
 						scan_species = /datum/species/snail
 					//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-				if(is_species(H, scan_species))
-=======
 				if(is_species(scanned_human, scan_species))
->>>>>>> eb77b29352d6 (Scanner gate fixes (#85436))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
 					detected_thing = "Romerol infection"
