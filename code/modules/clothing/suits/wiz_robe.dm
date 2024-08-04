@@ -204,9 +204,6 @@
 	var/robe_charge = TRUE
 	actions_types = list(/datum/action/item_action/stickmen)
 
-
-<<<<<<< HEAD
-=======
 /obj/item/clothing/suit/wizrobe/durathread
 	name = "durathread robe"
 	desc = "A rather dull durathread robe; not quite as protective as a proper piece of armour, but much stylish."
@@ -263,8 +260,6 @@
 	desc = "A rather dull durathread robe; not quite as protective as an woven armour, but much stylish."
 	icon_state = "durathread-necro"
 
-
->>>>>>> 43046f0e3f05 (Durathread robes can now hold botany gear (#85359))
 /obj/item/clothing/suit/wizrobe/paper/ui_action_click(mob/user, action)
 	stickmen()
 
