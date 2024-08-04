@@ -54,7 +54,7 @@
 
 /obj/item/melee/sabre
 	name = "officer's sabre" //SKYRAT EDIT - Buffed in modular_skyrat/modules/modular_weapons/code/melee.dm
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease." 
+	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sabre"
 	inhand_icon_state = "sabre"
@@ -164,9 +164,6 @@
 		user.death(FALSE)
 	REMOVE_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
 
-<<<<<<< HEAD
-=======
-
 /obj/item/melee/parsnip_sabre
 	name = "parsnip sabre"
 	desc = "A weird, yet elegant weapon. Suprisingly sharp for something made from a parsnip."
@@ -207,7 +204,6 @@
 	. = ..()
 	playsound(container.parent, 'sound/items/sheath.ogg', 25, TRUE)
 
->>>>>>> 7eb3e5bf0e75 (Grass sheath now holds parsnip sabres, fixed grammar for the latter (#85311))
 /obj/item/melee/beesword
 	name = "The Stinger"
 	desc = "Taken from a giant bee and folded over one thousand times in pure honey. Can sting through anything."
