@@ -61,7 +61,7 @@
 				default_color = DEFAULT_MATRIXED
 			else
 				default_color = "#FFFFFF"
-	if(name == "None")
+	if(name == SPRITE_ACCESSORY_NONE)
 		factual = FALSE
 	if(color_src == USE_MATRIXED_COLORS && default_color != DEFAULT_MATRIXED)
 		default_color = DEFAULT_MATRIXED
@@ -120,6 +120,10 @@
 /datum/sprite_accessory/moth_markings/is_hidden(mob/living/carbon/human/owner)
 	return FALSE
 
+/datum/sprite_accessory/moth_markings/none
+	name = SPRITE_ACCESSORY_NONE
+	icon_state = "none"
+
 /datum/sprite_accessory/pod_hair
 	icon = 'modular_skyrat/master_files/icons/mob/species/podperson_hair.dmi'
 	key = "pod_hair"
@@ -127,7 +131,7 @@
 	organ_type = /obj/item/organ/external/pod_hair
 
 /datum/sprite_accessory/pod_hair/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 	factual = FALSE
 
@@ -147,7 +151,7 @@
 	return FALSE
 
 /datum/sprite_accessory/caps/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 	color_src = null
 	factual = FALSE
@@ -160,6 +164,11 @@
 	key = "body_markings"
 	generic = "Body Markings"
 	default_color = DEFAULT_TERTIARY
+
+/datum/sprite_accessory/lizard_markings/none
+	name = SPRITE_ACCESSORY_NONE
+	icon_state = "none"
+
 
 /datum/sprite_accessory/legs
 	key = "legs"

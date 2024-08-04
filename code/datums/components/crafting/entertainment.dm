@@ -250,11 +250,17 @@
 	)
 	category = CAT_EQUIPMENT
 
-/datum/crafting_recipe/bonedice
-	name = "Bone Die"
-	result = /obj/item/dice/d6/bone
-	time = 5 SECONDS
+/datum/crafting_recipe/violin
+	name = "Violin"
+	result = /obj/item/instrument/violin
 	reqs = list(
-		/obj/item/stack/sheet/bone = 1,
+		/obj/item/stack/sheet/mineral/wood = 4,
+		/obj/item/stack/sheet/cloth = 2,
+		/obj/item/stack/sheet/iron = 1,
 	)
-	category = CAT_EQUIPMENT
+	tool_paths = list(
+		/obj/item/hatchet,
+	)
+	time = 30 SECONDS
+	category = CAT_ENTERTAINMENT
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
