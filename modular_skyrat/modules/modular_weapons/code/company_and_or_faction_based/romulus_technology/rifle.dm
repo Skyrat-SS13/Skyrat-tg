@@ -123,7 +123,7 @@
 
 /obj/item/gun/ballistic/automatic/rom_flech
 	name = "\improper RomTech CMG-1 Rifle"
-	desc = "The Compact Machinegun-1 is a bullpup rifle fielded by the Romulus Expeditionary Force, chambered in an experimental flechette cartridge capable of defeating all type of conventional body armour. Has a folding stock"
+	desc = "The Compact Machinegun-1 is an automatic rifle fielded by the Romulus Expeditionary Force, chambered in an experimental flechette cartridge capable of defeating all type of conventional body armour. Has a folding stock"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun40x32.dmi'
 	icon_state = "cmg1"
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_worn.dmi'
