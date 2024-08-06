@@ -9,10 +9,11 @@
 	design_ids = list(
 		"sol40_riflstandardemag",
 		"solgrenade_extmag",
-		"m9mm_mag",
-		"s12g_buckshot",
 		"sol35_shortextmag",
-		"ca_flechmagnesium"
+		"ca_flech",
+		"ca_flechmagnesium",
+		"s12g_slug",
+		"s12g_buckshot"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
@@ -24,9 +25,7 @@
 	design_ids = list(
 		"sol_rifle_carbine_gun",
 		"s12g_flechette",
-		"s12g_db",
-		"ca_flechripper",
-		"ca_flech"
+		"s12g_db"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
@@ -52,20 +51,28 @@
 	design_ids += "m9mm_mag_rubber"
 	design_ids += "c10mm_rl"
 	design_ids += "c10mm_r"
-	design_ids += "sol_bolt_to_rifle"
 	. = ..()
 
 /datum/techweb_node/riot_supression/New()
-	design_ids += "s12g_slug"
 	design_ids += "s12g_hornet"
 	design_ids += "s12g_br"
 	design_ids += "m9mm_mag_ihdf"
-	design_ids += "s12g_incinslug"
 	design_ids += "ca_flechballpoint"
+	design_ids += "m9mm_mag"
+	. = ..()
+
+/datum/techweb_node/exotic_ammo/New()
+	design_ids += "s12g_incinslug"
+	design_ids += "ca_flechripper"
+	design_ids += "sol_bolt_to_rifle"
 	. = ..()
 
 /datum/techweb_node/syndicate_basic/New()
 	design_ids += "s12g_magnum"
 	design_ids += "s12g_express"
 	design_ids += "s12g_antitide"
+	. = ..()
+
+/datum/techweb_node/electric_weapons/New()
+	design_ids += "s12g_laser"
 	. = ..()

@@ -9,6 +9,13 @@
 
 	custom_premium_price = 500
 
+/obj/item/ammo_box/advanced/s12gauge/laser
+	name = "Scatterlaser ammo box"
+	desc = "A box of 15 laser shells. Fires highly lethal laser shell."
+	icon_state = "laser"
+	ammo_type = /obj/item/ammo_casing/shotgun/scatterlaser
+	max_ammo = 15
+
 /obj/item/ammo_box/advanced/s12gauge/buckshot
 	name = "Buckshot ammo box"
 	desc = "A box of 15 buckshot shells. These have a modest spread of weaker projectiles."

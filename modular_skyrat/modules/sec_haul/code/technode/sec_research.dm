@@ -238,6 +238,18 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/advancedgaugeboxes_laser
+	name = "12 Gauge Advanced Scatter Laser Ammunition Box(Lethal)"
+	desc = "A 12 gauge ammunition box for shotgun shells."
+	id = "s12g_laser"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 15, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 10)
+	build_path = /obj/item/ammo_box/advanced/s12gauge/laser
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 // Misc Gun Stuff
 
 /datum/design/m9mm_mag
@@ -305,7 +317,7 @@
 	desc = "A speedloader in 10mm Auto."
 	id = "c10mm_r"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 10, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
 	build_path = /obj/item/ammo_box/c10mm/speedloader/rubber
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -318,6 +330,18 @@
 	id = "c10mm_rl"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/c10mm/speedloader
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/c10mm_rihdf
+	name = "10mm Auto Speedloader IHDF (non-lethal)"
+	desc = "A speedloader in 10mm Auto."
+	id = "c10mm_rl"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
 	build_path = /obj/item/ammo_box/c10mm/speedloader
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
