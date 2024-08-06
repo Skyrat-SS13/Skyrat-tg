@@ -167,6 +167,7 @@
 /obj/item/melee/parsnip_sabre
 	name = "parsnip sabre"
 	desc = "A weird, yet elegant weapon. Suprisingly sharp for something made from a parsnip."
+
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "parsnip_sabre"
 	inhand_icon_state = "parsnip_sabre"
