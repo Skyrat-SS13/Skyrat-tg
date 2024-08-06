@@ -80,4 +80,4 @@
 	name = "speed loader (10mm Auto Fire)"
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
-	ammo_band_color = "#792a59"
+	ammo_band_color = "#712a29"
