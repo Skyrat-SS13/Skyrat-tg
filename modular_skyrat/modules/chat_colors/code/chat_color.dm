@@ -78,7 +78,7 @@
 	var/luminance = hsl_color[NCM_COLOR_LUMINANCE]
 
 	// Cap the saturation at 90%
-	saturation = min(saturation, CM_COLOR_SAT_MAX)
+	saturation = min(saturation, NCM_COLOR_SAT_MAX)
 
 	// Now clamp the luminance according to the hue
 	var/processed_luminance

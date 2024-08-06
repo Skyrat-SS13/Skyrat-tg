@@ -12,7 +12,7 @@
 	instability = 15
 	growthstages = 3
 	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
-	mutatelist = list(/obj/item/seeds/carrot/parsnip)
+	mutatelist = list(/obj/item/seeds/carrot/parsnip, /obj/item/seeds/carrot/cahnroot)
 	reagents_add = list(/datum/reagent/medicine/oculine = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.05)
 
 /obj/item/food/grown/carrot
@@ -26,20 +26,22 @@
 	wine_power = 30
 
 /obj/item/food/grown/carrot/attackby(obj/item/I, mob/user, params)
-	if(I.get_sharpness())
-		var/carrot_blade
-		var/carrot_sword_chance = (max(0, seed.potency - 50) / 50)
-		if (prob(carrot_sword_chance))
-			carrot_blade = new /obj/item/claymore/carrot
-			to_chat(user, span_notice("You sharpen the carrot into a sword with [I]."))
-		else
-			carrot_blade = new /obj/item/knife/shiv/carrot
-			to_chat(user, span_notice("You sharpen the carrot into a shiv with [I]."))
-		remove_item_from_storage(user)
-		qdel(src)
-		user.put_in_hands(carrot_blade)
-	else
+	if(!I.get_sharpness())
 		return ..()
+
+	/// The blade carrot will turn into once sharpened
+	var/obj/item/carrot_blade
+	/// Chance for it to become a sword rather than a shiv
+	var/carrot_sword_chance = (max(0, seed.potency - 50) / 50)
+	if (prob(carrot_sword_chance))
+		carrot_blade = new /obj/item/claymore/carrot
+		to_chat(user, span_notice("You sharpen the carrot into a sword with [I]."))
+	else
+		carrot_blade = new /obj/item/knife/shiv/carrot
+		to_chat(user, span_notice("You sharpen the carrot into a shiv with [I]."))
+	remove_item_from_storage(user)
+	qdel(src)
+	user.put_in_hands(carrot_blade)
 
 // Parsnip
 /obj/item/seeds/carrot/parsnip
@@ -62,8 +64,6 @@
 	juice_typepath = /datum/reagent/consumable/parsnipjuice
 	wine_power = 35
 
-<<<<<<< HEAD
-=======
 /obj/item/food/grown/parsnip/attackby(obj/item/I, mob/user, params)
 	if(!I.get_sharpness())
 		return ..()
@@ -127,7 +127,6 @@
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(root_blade)
->>>>>>> f5c010368599 (Renamed "Pack of *** seeds" to "*** seed pack" (#85370))
 
 // White-Beet
 /obj/item/seeds/whitebeet
