@@ -227,9 +227,12 @@
 	for(var/datum/uplink_item/item as anything in uplink_handler.extra_purchasable)
 		if(item.stock_key in stock_list)
 			extra_purchasable_stock[REF(item)] = stock_list[item.stock_key]
+		var/atom/actual_item = item.item
 		extra_purchasable += list(list(
 			"id" = item.type,
 			"name" = item.name,
+			"icon" = actual_item.icon,
+			"icon_state" = actual_item.icon_state,
 			"cost" = item.cost,
 			"desc" = item.desc,
 			"category" = item.category ? initial(item.category.name) : null,
@@ -288,8 +291,6 @@
 					return
 				item = SStraitor.uplink_items_by_type[item_path]
 			uplink_handler.purchase_item(ui.user, item, parent)
-<<<<<<< HEAD
-=======
 		if("buy_raw_tc")
 			if (uplink_handler.telecrystals <= 0)
 				return
@@ -297,7 +298,6 @@
 			if(!desired_amount || desired_amount < 1)
 				return
 			uplink_handler.purchase_raw_tc(ui.user, desired_amount, parent)
->>>>>>> 63e3e2b25636 (Fixes an infinite tc glitch (#85543))
 		if("lock")
 			if(!lockable)
 				return TRUE
