@@ -1,5 +1,5 @@
 /obj/item/seeds/jurlmah
-	name = "pack of jurlmah seeds"
+	name = "jurlmah seed pack"
 	desc = "These seeds grow into jurlmah plants. Often used as makeshift cryo-treatment in areas where a dedicated cryotube setup is impossible."
 	icon = 'modular_skyrat/modules/xenoarch/icons/seeds.dmi'
 	icon_state = "jurlmah"
