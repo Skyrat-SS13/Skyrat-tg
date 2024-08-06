@@ -67,7 +67,7 @@
 	name = "\improper R10"
 	desc = "The Revolver Number 10. A rugged and reliable pistol chambered in 10mm Auto, holds 6 shot. Remember our promise"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
-	icon_state = "rhino"
+	icon_state = "zeta"
 	spawn_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/nt_sec
 
