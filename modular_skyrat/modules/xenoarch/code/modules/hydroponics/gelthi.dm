@@ -1,5 +1,5 @@
 /obj/item/seeds/gelthi
-	name = "pack of gelthi seeds"
+	name = "gelthi seed pack"
 	desc = "These seeds grow into gelthi plants. Lauded by chefs for its unique ability to produce honey, and often hoarded for this very reason."
 	icon = 'modular_skyrat/modules/xenoarch/icons/seeds.dmi'
 	icon_state = "gelthi"
