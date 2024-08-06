@@ -72,12 +72,6 @@
 /obj/item/ammo_casing/shotgun/pulseslug
 	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
 
-/obj/item/ammo_casing/shotgun/laserslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/ion
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
 /obj/item/ammo_casing/shotgun/incapacitate
 	name = "hornet's nest shell"
 	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets, \
@@ -195,7 +189,7 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "hornet"
 	damage = 4
-	stamina = 25
+	stamina = 15
 	damage_falloff_tile = 1
 	stamina_falloff_tile = 1
 	wound_bonus = 5
@@ -209,10 +203,14 @@
 	ricochet_decay_damage = 1
 	ricochet_decay_chance = 1
 	ricochet_incidence_leeway = 0 //nanomachines son
+	homing = TRUE
+	homing_turn_speed = 25
+	homing_inaccuracy_min = 10
+	homing_inaccuracy_max = 80
 
 /obj/item/ammo_casing/shotgun/antitide
 	name = "stardust shell"
-	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
+	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more. it also cannot be reflected by martial art"
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
 	pellets = 1
@@ -226,21 +224,22 @@
 	name = "electrode"
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
-	damage = 20
+	damage = 15
 	stamina = 10
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = 10
-	bare_wound_bonus = 10
+	wound_bonus = 15
+	bare_wound_bonus = 15
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
 	sharpness = NONE
 	range = 12
 	embed_type = /datum/embed_data/shotgun_buckshot/antitide
+	reflectable = FALSE
 
 /datum/embed_data/shotgun_buckshot/antitide
-	embed_chance = 80
+	embed_chance = 200
 	pain_chance = 90
 	fall_chance = 10
 	jostle_chance = 10
@@ -260,7 +259,7 @@
 	projectile_type = /obj/projectile/bullet/frangible_slug
 
 /obj/projectile/bullet/frangible_slug
-	name = "Frangible Slug"
+	name = "frangible slug"
 	damage = 10 //I'd kill you if you manage to kill someone with this shit
 	wound_bonus = 30
 	bare_wound_bonus = 30
