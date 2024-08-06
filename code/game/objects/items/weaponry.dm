@@ -505,8 +505,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]'s cord! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return OXYLOSS
 
-<<<<<<< HEAD
-=======
 /obj/item/bambostaff
 	name = "Bamboo Staff"
 	desc = "A long bamboo-made staff with steel-capped ends. It is rumoured that initiates of Spider Clan train with such before getting to learn how to use a katana."
@@ -538,7 +536,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	icon_state = "[base_icon_state]0"
 	return ..()
 
->>>>>>> 28855c4a70e0 (Bamboo staffs can now be wielded, bostaff no longer disappears forever when wielded (#85443))
 /obj/item/cane
 	name = "cane"
 	desc = "A cane used by a true gentleman. Or a clown."
