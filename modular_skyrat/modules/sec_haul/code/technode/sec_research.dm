@@ -89,6 +89,9 @@
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+// 12 Gauge Shell.. Individually.
+// Because People will kill me if they realised the scale of economic
+
 
 //12 Gauge Ammunition Boxes
 //This shit is a mistake but we embraced it instead of removing it, They all will require plastic to make alongside the iron cost
