@@ -31,6 +31,8 @@
 
 /datum/techweb_node/basic_arms/New()
 	design_ids += "sol35_shortmag"
+	design_ids += "c10mm_r"
+	design_ids += "c10mm_rihdf"
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
@@ -50,7 +52,6 @@
 	design_ids += "sol40_riflemag"
 	design_ids += "m9mm_mag_rubber"
 	design_ids += "c10mm_rl"
-	design_ids += "c10mm_r"
 	. = ..()
 
 /datum/techweb_node/riot_supression/New()
