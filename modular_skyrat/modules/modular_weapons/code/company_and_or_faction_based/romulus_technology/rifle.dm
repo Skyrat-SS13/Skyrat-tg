@@ -65,9 +65,9 @@
 
 //Bolt Action Rifle
 /obj/item/gun/ballistic/rifle/carwil
-	name = "\improper RomTech Sporting Rifle"
-	desc = "A boltaction sporting rifle, chambered in Sol .40 Rifle While technically outdated in modern arms markets, it still used by recreational hunter \
-		as rifle of this kind are much more controllable."
+	name = "\improper RomTech Ceremonial Rifle"
+	desc = "A boltaction ceremonial rifle, chambered in Sol .40 Rifle While technically outdated in modern arms markets, it still used by recreational hunter \
+		as rifle of this kind are much more controllable. Famously used by the royal guard of Romulus Federation."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/gun48x32.dmi'
 	icon_state = "elite"
 
@@ -93,7 +93,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	mag_display = TRUE
 	tac_reloads = TRUE
-	rack_delay = 1 SECONDS
+	rack_delay = 2 SECONDS
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	special_mags = TRUE

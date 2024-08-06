@@ -439,7 +439,7 @@
 
 /datum/design/sol_bolt_to_rifle
 	name = "Sol Battle rifle Conversion Part Kit(Very Lethal)"
-	desc = "The kit to brutalise your functional battle rifle into a short carbine, ideal for close quarter."
+	desc = "The kit to brutalise your functional bolt action rifle into one suitable for sustained fire."
 	id = "sol_bolt_to_rifle"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
