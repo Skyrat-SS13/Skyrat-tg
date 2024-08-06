@@ -71,6 +71,7 @@
 	design_ids += "s12g_magnum"
 	design_ids += "s12g_express"
 	design_ids += "s12g_antitide"
+	design_ids += "s12g_ion"
 	. = ..()
 
 /datum/techweb_node/electric_weapons/New()

@@ -121,3 +121,9 @@
 	desc = "A box of 15 Pulse slug. It's able to punches through structures and anything behind it."
 	icon_state = "pulse"
 	ammo_type = /obj/item/ammo_casing/shotgun/pulseslug
+
+/obj/item/ammo_box/advanced/s12gauge/scatterion
+	name = "Scatter Ion ammo box"
+	desc = "A box of 15 Scatter ion. I hope you have no cybernetic organs."
+	icon_state = "pulse"
+	ammo_type = /obj/item/ammo_casing/shotgun/ion
