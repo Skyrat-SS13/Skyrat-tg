@@ -250,13 +250,13 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
-/datum/design/advancedgaugeboxes_laser
+/datum/design/advancedgaugeboxes_ion
 	name = "12 Gauge Advanced Scatter Laser Ammunition Box(Very Lethal - Silicon)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_ion"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 15, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 10)
-	build_path = /obj/item/ammo_box/advanced/s12gauge/laser
+	build_path = /obj/item/ammo_box/advanced/s12gauge/scatterion
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
