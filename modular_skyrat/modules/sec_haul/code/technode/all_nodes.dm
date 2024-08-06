@@ -45,7 +45,7 @@
 		"sol40_rifldrummag",
 		"m9mm_mag_ext_hp",
 		"m9mm_mag_ext",
-		"m9mm_mag_ext_rubber",
+		"m9mm_mag_ext_b",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 
