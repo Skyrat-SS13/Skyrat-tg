@@ -210,8 +210,6 @@
 	name = "rice hat"
 	desc = "Welcome to the rice fields, motherfucker."
 	icon_state = "rice_hat"
-<<<<<<< HEAD
-=======
 	base_icon_state = "rice_hat"
 	var/reversed = FALSE
 
@@ -220,7 +218,6 @@
 	worn_icon_state = "[base_icon_state][reversed ? "_kim" : ""]"
 	to_chat(user, span_notice("You [reversed ? "lower" : "raise"] the hat."))
 	update_appearance()
->>>>>>> c4e82124e45a (Fixed rice hat toggling, now toggle uses alt click (#85457))
 
 /obj/item/clothing/head/costume/lizard
 	name = "lizardskin cloche hat"
