@@ -1,11 +1,11 @@
+#define SHIFTING_ITEMS 1
+#define SHIFTING_PARENT 2
+#define TILTING_PARENT 3
+
 /datum/component/pixel_shift
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	//whether or not parent is shifting
-	var/shifting
-	//whether or not parent is shifting items
-	var/shifting_items
-	//whether or not parent is tilting
-	var/tilting
+	var/shifting = FALSE
 	//how tilted the parent is
 	var/how_tilted
 	//the maximum amount of tilt parent can achieve
@@ -35,22 +35,24 @@
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(pre_move_check))
 	RegisterSignal(parent, COMSIG_LIVING_CAN_ALLOW_THROUGH, PROC_REF(check_passable))
 /datum/component/pixel_shift/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_KB_MOB_ITEM_PIXEL_SHIFT_DOWN)
-	UnregisterSignal(parent, COMSIG_KB_MOB_ITEM_PIXEL_SHIFT_UP)
-	UnregisterSignal(parent, COMSIG_KB_MOB_PIXEL_TILT_DOWN)
-	UnregisterSignal(parent, COMSIG_KB_MOB_PIXEL_TILT_UP)
-	UnregisterSignal(parent, COMSIG_KB_MOB_PIXEL_SHIFT_DOWN)
-	UnregisterSignal(parent, COMSIG_KB_MOB_PIXEL_SHIFT_UP)
-	UnregisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE)
-	UnregisterSignal(parent, COMSIG_LIVING_RESET_PULL_OFFSETS)
-	UnregisterSignal(parent, COMSIG_LIVING_SET_PULL_OFFSET)
-	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
-	UnregisterSignal(parent, COMSIG_LIVING_CAN_ALLOW_THROUGH)
+	UnregisterSignal(parent, list(
+		COMSIG_KB_MOB_ITEM_PIXEL_SHIFT_DOWN,
+		COMSIG_KB_MOB_ITEM_PIXEL_SHIFT_UP,
+		COMSIG_KB_MOB_PIXEL_TILT_DOWN,
+		COMSIG_KB_MOB_PIXEL_TILT_UP,
+		COMSIG_KB_MOB_PIXEL_SHIFT_DOWN,
+		COMSIG_KB_MOB_PIXEL_SHIFT_UP,
+		COMSIG_MOB_CLIENT_PRE_LIVING_MOVE,
+		COMSIG_LIVING_RESET_PULL_OFFSETS,
+		COMSIG_LIVING_SET_PULL_OFFSET,
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_LIVING_CAN_ALLOW_THROUGH,
+	))
 
 //locks our movement when holding our keybinds
 /datum/component/pixel_shift/proc/pre_move_check(mob/source, new_loc, direct)
 	SIGNAL_HANDLER
-	if(shifting_items || shifting || tilting)
+	if(shifting)
 		pixel_shift(source, direct)
 		return COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE
 
@@ -58,23 +60,23 @@
 
 /datum/component/pixel_shift/proc/pixel_tilt_down()
 	SIGNAL_HANDLER
-	tilting = TRUE
+	shifting = TILTING_PARENT
 	return COMSIG_KB_ACTIVATED
 
 /datum/component/pixel_shift/proc/pixel_tilt_up()
 	SIGNAL_HANDLER
-	tilting = FALSE
+	shifting = FALSE
 
 //Procs for shifting items
 
 /datum/component/pixel_shift/proc/item_pixel_shift_down()
 	SIGNAL_HANDLER
-	shifting_items = TRUE
+	shifting = SHIFTING_ITEMS
 	return COMSIG_KB_ACTIVATED
 
 /datum/component/pixel_shift/proc/item_pixel_shift_up()
 	SIGNAL_HANDLER
-	shifting_items = FALSE
+	shifting = FALSE
 
 //Procs for shifting mobs
 
@@ -87,7 +89,7 @@
 /// Activates Pixel Shift on Keybind down. Only Pixel Shift movement will be allowed.
 /datum/component/pixel_shift/proc/pixel_shift_down()
 	SIGNAL_HANDLER
-	shifting = TRUE
+	shifting = SHIFTING_PARENT
 	return COMSIG_KB_ACTIVATED
 
 /// Disables Pixel Shift on Keybind up. Allows to Move.
@@ -110,54 +112,55 @@
 /datum/component/pixel_shift/proc/pixel_shift(mob/source, direct)
 	passthroughable = NONE
 	var/mob/living/owner = parent
-	if(shifting_items)
-		var/atom/pulled_atom = source.pulling
-		if(!isitem(pulled_atom))
-			return
-		var/obj/item/pulled_item = pulled_atom
-		switch(direct)
-			if(NORTH)
-				if(pulled_item.pixel_y <= maximum_pixel_shift + pulled_item.base_pixel_y)
-					pulled_item.pixel_y++
-			if(EAST)
-				if(pulled_item.pixel_x <= maximum_pixel_shift + pulled_item.base_pixel_x)
-					pulled_item.pixel_x++
-			if(SOUTH)
-				if(pulled_item.pixel_y >= -maximum_pixel_shift + pulled_item.base_pixel_y)
-					pulled_item.pixel_y--
-			if(WEST)
-				if(pulled_item.pixel_x >= -maximum_pixel_shift + pulled_item.base_pixel_x)
-					pulled_item.pixel_x--
-	else if(shifting)
-		switch(direct)
-			if(NORTH)
-				if(owner.pixel_y <= maximum_pixel_shift + owner.base_pixel_y)
-					owner.pixel_y++
-					is_shifted = TRUE
-			if(EAST)
-				if(owner.pixel_x <= maximum_pixel_shift + owner.base_pixel_x)
-					owner.pixel_x++
-					is_shifted = TRUE
-			if(SOUTH)
-				if(owner.pixel_y >= -maximum_pixel_shift + owner.base_pixel_y)
-					owner.pixel_y--
-					is_shifted = TRUE
-			if(WEST)
-				if(owner.pixel_x >= -maximum_pixel_shift + owner.base_pixel_x)
-					owner.pixel_x--
-					is_shifted = TRUE
-	else if(tilting)
-		switch(direct)
-			if(EAST)
-				if(how_tilted <= maximum_tilt)
-					owner.transform = turn(owner.transform, 1)
-					how_tilted++
-					is_shifted = TRUE
-			if(WEST)
-				if(how_tilted >= -maximum_tilt)
-					owner.transform = turn(owner.transform, -1)
-					how_tilted--
-					is_shifted = TRUE
+	switch(shifting)
+		if(SHIFTING_ITEMS)
+			var/atom/pulled_atom = source.pulling
+			if(!isitem(pulled_atom))
+				return
+			var/obj/item/pulled_item = pulled_atom
+			switch(direct)
+				if(NORTH)
+					if(pulled_item.pixel_y <= maximum_pixel_shift + pulled_item.base_pixel_y)
+						pulled_item.pixel_y++
+				if(EAST)
+					if(pulled_item.pixel_x <= maximum_pixel_shift + pulled_item.base_pixel_x)
+						pulled_item.pixel_x++
+				if(SOUTH)
+					if(pulled_item.pixel_y >= -maximum_pixel_shift + pulled_item.base_pixel_y)
+						pulled_item.pixel_y--
+				if(WEST)
+					if(pulled_item.pixel_x >= -maximum_pixel_shift + pulled_item.base_pixel_x)
+						pulled_item.pixel_x--
+		if(SHIFTING_PARENT)
+			switch(direct)
+				if(NORTH)
+					if(owner.pixel_y <= maximum_pixel_shift + owner.base_pixel_y)
+						owner.pixel_y++
+						is_shifted = TRUE
+				if(EAST)
+					if(owner.pixel_x <= maximum_pixel_shift + owner.base_pixel_x)
+						owner.pixel_x++
+						is_shifted = TRUE
+				if(SOUTH)
+					if(owner.pixel_y >= -maximum_pixel_shift + owner.base_pixel_y)
+						owner.pixel_y--
+						is_shifted = TRUE
+				if(WEST)
+					if(owner.pixel_x >= -maximum_pixel_shift + owner.base_pixel_x)
+						owner.pixel_x--
+						is_shifted = TRUE
+		if(TILTING_PARENT)
+			switch(direct)
+				if(EAST)
+					if(how_tilted <= maximum_tilt)
+						owner.transform = turn(owner.transform, 1)
+						how_tilted++
+						is_shifted = TRUE
+				if(WEST)
+					if(how_tilted >= -maximum_tilt)
+						owner.transform = turn(owner.transform, -1)
+						how_tilted--
+						is_shifted = TRUE
 
 	// Yes, I know this sets it to true for everything if more than one is matched.
 	// Movement doesn't check diagonals, and instead just checks EAST or WEST, depending on where you are for those.
@@ -169,3 +172,7 @@
 		passthroughable |= NORTH | SOUTH | WEST
 	else if(owner.pixel_x < -passthrough_threshold)
 		passthroughable |= NORTH | EAST | SOUTH
+
+#undef SHIFTING_ITEMS
+#undef SHIFTING_PARENT
+#undef TILTING_PARENT
