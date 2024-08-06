@@ -40,6 +40,11 @@
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	icon_state = "g18_hp"
 
+/obj/item/ammo_box/magazine/m9mm/stendo/ap
+	name = "pistol magazine (9x25mm Armour Piercing)"
+	ammo_type = /obj/item/ammo_casing/c9mm/ap
+	icon_state = "g18_ihdf"
+
 /obj/item/ammo_box/magazine/m9mm/stendo/ihdf
 	name = "pistol magazine (9x25mm Intelligent Dispersal Foam)"
 	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
@@ -59,7 +64,7 @@
 	name = "speed loader (10mm Auto)"
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/c10mm
-	ammo_band_color = "#795a58"
+	ammo_band_color = "#dd6057"
 	max_ammo = 6
 	item_flags = NO_MAT_REDEMPTION
 	icon_state = "38"
@@ -73,11 +78,11 @@
 	name = "speed loader (10mm Auto Rubber)"
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/c10mm/rubber
-	ammo_band_color = "#792a59"
+	ammo_band_color = "#1824c5"
 
 /obj/item/ammo_box/c10mm/speedloader/fire
 
 	name = "speed loader (10mm Auto Fire)"
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
-	ammo_band_color = "#712a29"
+	ammo_band_color = "#c41d1a"

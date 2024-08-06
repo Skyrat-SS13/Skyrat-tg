@@ -13,6 +13,7 @@
 		"ca_flech",
 		"ca_flechmagnesium",
 		"s12g_slug",
+		"s12c_antitide",
 		"s12g_buckshot"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
@@ -33,6 +34,7 @@
 	design_ids += "sol35_shortmag"
 	design_ids += "c10mm_r"
 	design_ids += "c10mm_rihdf"
+	design_ids += "s12c_fslug"
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
@@ -41,6 +43,9 @@
 	prereq_ids = list("syndicate_basic","storedmunition_tech_two")
 	design_ids = list(
 		"sol40_rifldrummag",
+		"m9mm_mag_ext_hp",
+		"m9mm_mag_ext",
+		"m9mm_mag_ext_rubber",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 

@@ -36,7 +36,7 @@
 
 
 /obj/item/storage/toolbox/guncase/skyrat/nt_glock_spec
-	name = "9x25mm Mk2 Standard Pistol"
+	name = "9x25mm Mk2 Special Operation Pistol"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 
@@ -44,8 +44,8 @@
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/m9mm/hp = 2,
-		/obj/item/ammo_box/magazine/m9mm/ap = 3,
+		/obj/item/ammo_box/magazine/m9mm/stendo/hp = 2,
+		/obj/item/ammo_box/magazine/m9mm/stendo/ap = 3,
 	), src)
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/spec
@@ -57,6 +57,7 @@
 	pin = /obj/item/firing_pin
 	fire_delay = 2
 	burst_size = 3
+	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/stendo
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
 	spawnwithmagazine = FALSE

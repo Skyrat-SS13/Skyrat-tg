@@ -91,7 +91,29 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 // 12 Gauge Shell.. Individually.
 // Because People will kill me if they realised the scale of economic
+/datum/design/s12c_fslug
+	name = "Frangible slug(Destructive)"
+	desc = "A 12 gauge slug intended for destroying airlocks"
+	id = "s12c_fslug"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1, /datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/ammo_casing/shotgun/frangible
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/s12c_antitide
+	name = "12 Gauge Advanced Anti Riot Ammunition Box(Non-Lethal)"
+	desc = "A 12 gauge ammunition box for shotgun shells. These are less lethal and will embed into target"
+	id = "s12c_antitide"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 1)
+	build_path = /obj/item/ammo_casing/shotgun/antitide
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 //12 Gauge Ammunition Boxes
 //This shit is a mistake but we embraced it instead of removing it, They all will require plastic to make alongside the iron cost
@@ -298,6 +320,42 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/ammo_box/magazine/m9mm/ihdf
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/m9mm_mag_ext
+	name = "9x25mm Mk2 Extended Pistol Magazine(Lethal)"
+	desc = "A standard magazine for pistol using 9x25mm Mk2."
+	id = "m9mm_mag_ext"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 38)
+	build_path = /obj/item/ammo_box/magazine/m9mm/stendo
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/m9mm_mag_ext_rubber
+	name = "9x25mm Mk2 Extended Rubber Pistol Magazine(Less-Lethal)"
+	desc = "A standard magazine for pistol using 9x25mm Mk2."
+	id = "m9mm_mag_ext_b"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 38)
+	build_path = /obj/item/ammo_box/magazine/m9mm/stendo/rubber
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/m9mm_mag_ext_hp
+	name = "9x25mm Mk2 Extended Hollow Point Pistol Magazine(Very Lethal)"
+	desc = "A standard magazine for pistol using 9x25mm Mk2."
+	id = "m9mm_mag_ext_hp"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 38)
+	build_path = /obj/item/ammo_box/magazine/m9mm/stendo/hp
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
