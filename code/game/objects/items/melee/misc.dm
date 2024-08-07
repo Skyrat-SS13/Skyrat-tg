@@ -54,7 +54,7 @@
 
 /obj/item/melee/sabre
 	name = "officer's sabre" //SKYRAT EDIT - Buffed in modular_skyrat/modules/modular_weapons/code/melee.dm
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease." 
+	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sabre"
 	inhand_icon_state = "sabre"
@@ -164,10 +164,10 @@
 		user.death(FALSE)
 	REMOVE_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
 
-
 /obj/item/melee/parsnip_sabre
 	name = "parsnip sabre"
-	desc = "An elegant weapon, if weird weapon. Suprisingly sharp for being made from a parsnip."
+	desc = "A weird, yet elegant weapon. Suprisingly sharp for something made from a parsnip."
+
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "parsnip_sabre"
 	inhand_icon_state = "parsnip_sabre"

@@ -1,5 +1,5 @@
 /obj/item/seeds/cocaleaf
-	name = "pack of coca leaf seeds"
+	name = "coca leaf seed pack"
 	desc = "These seeds grow into coca shrubs. They make you feel energized just looking at them..."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/seeds.dmi'
 	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'
