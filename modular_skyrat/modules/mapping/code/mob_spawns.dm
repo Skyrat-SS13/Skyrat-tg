@@ -171,7 +171,7 @@
 		id_card.registered_name = syndicate.real_name
 		id_card.update_label()
 		id_card.update_icon()
-
+	syndicate.apply_pref_name(/datum/preference/name/syndicate, syndicate.client)
 	handlebank(syndicate)
 	return ..()
 
