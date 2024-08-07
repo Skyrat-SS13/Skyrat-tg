@@ -1,5 +1,5 @@
 /datum/design/organic_parsnip_seed
-	name = "Pack of Parsnip Seeds"
+	name = "Parsnip Seed Pack"
 	id = "oganic_parsnip_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -10,7 +10,7 @@
 	)
 
 /datum/design/organic_beet_seed
-	name = "Pack of White-Beet Seeds"
+	name = "White-Beet Seed Pack"
 	id = "oganic_beet_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -21,7 +21,7 @@
 	)
 
 /datum/design/organic_potato_seed
-	name = "Pack of Potato Seeds"
+	name = "Potato Seed Pack"
 	id = "oganic_potato_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -32,7 +32,7 @@
 	)
 
 /datum/design/organic_soy_seed
-	name = "Pack of Soybean Seeds"
+	name = "Soybean Seed Pack"
 	id = "oganic_soy_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -43,7 +43,7 @@
 	)
 
 /datum/design/organic_rice_seed
-	name = "Pack of Rice Seeds"
+	name = "Rice Seed Pack"
 	id = "oganic_rice_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -54,7 +54,7 @@
 	)
 
 /datum/design/organic_oat_seed
-	name = "Pack of Oat Seeds"
+	name = "Oat Seed Pack"
 	id = "oganic_oat_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -65,7 +65,7 @@
 	)
 
 /datum/design/organic_korta_seed
-	name = "Pack of Korta Seeds"
+	name = "Korta Seed Pack"
 	id = "oganic_korta_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
@@ -76,7 +76,7 @@
 	)
 
 /datum/design/organic_plump_helmet
-	name = "Pack of Plump-Helmet Seeds"
+	name = "Plump-Helmet Seed Pack"
 	id = "oganic_plump_helmet"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)

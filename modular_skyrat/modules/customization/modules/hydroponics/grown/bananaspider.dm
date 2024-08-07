@@ -1,5 +1,5 @@
 /obj/item/seeds/banana/spider_banana
-	name = "pack of leggy banana seeds"
+	name = "leggy banana seed pack"
 	desc = "They're seeds that grow into banana trees. However, those bananas might be alive."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/seeds.dmi'
 	icon_state = "seed-spibanana"
