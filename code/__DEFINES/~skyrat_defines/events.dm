@@ -5,11 +5,11 @@
  * The random define is for events such as anomalies so they are still run during higher level events.
  */
 
-#define EVENT_LOWPOP_THRESHOLD 45
-#define EVENT_MIDPOP_THRESHOLD 75
+#define EVENT_LOWPOP_THRESHOLD 20
+#define EVENT_MIDPOP_THRESHOLD 60
 #define EVENT_HIGHPOP_THRESHOLD 100
-#define EVENT_LOWPOP_TIMER_MULTIPLIER 2
-#define EVENT_MIDPOP_TIMER_MULTIPLIER 1.5
+#define EVENT_LOWPOP_TIMER_MULTIPLIER 1.5
+#define EVENT_MIDPOP_TIMER_MULTIPLIER 1.25
 #define EVENT_HIGHPOP_TIMER_MULTIPLIER 1
 
 /// Reason for delam suppression: admin command
