@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/huds/icons/huds.dmi'
 	icon_state = "glasses_healthhud"
 	worn_icon = 'modular_skyrat/modules/huds/icons/hudeyes.dmi'
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_MEDICAL_HUD)
 
 /obj/item/clothing/glasses/hud/diagnostic/prescription
 	name = "prescription diagnostic HUD"
@@ -12,7 +12,7 @@
 	icon = 'modular_skyrat/modules/huds/icons/huds.dmi'
 	icon_state = "glasses_diagnostichud"
 	worn_icon = 'modular_skyrat/modules/huds/icons/hudeyes.dmi'
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_DIAGNOSTIC_HUD)
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "prescription security HUD"
@@ -20,7 +20,7 @@
 	icon = 'modular_skyrat/modules/huds/icons/huds.dmi'
 	icon_state = "glasses_securityhud"
 	worn_icon = 'modular_skyrat/modules/huds/icons/hudeyes.dmi'
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_SECURITY_HUD)
 
 /obj/item/clothing/glasses/hud/science/prescription
 	name = "prescription science glasses"
