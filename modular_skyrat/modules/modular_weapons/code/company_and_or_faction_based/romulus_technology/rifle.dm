@@ -210,3 +210,21 @@
 		/obj/item/ammo_box/magazine/caflechette = 2,
 		/obj/item/ammo_box/magazine/caflechette/ballpoint = 3,
 	), src)
+
+/obj/item/gun/ballistic/automatic/rom_flech/blueshield
+	name = "\improper RomTech CMG-2C Rifle"
+	desc = "The Compact Machinegun-2 Commandois an automatic rifle, modified to be one handed for usage with shield."
+	icon_state = "cmg2"
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_worn.dmi'
+	worn_icon_state = "infanterie_evil"
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
+	inhand_icon_state = "infanterie_evil"
+	bolt_type = BOLT_TYPE_LOCKING
+	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_LIGHT
+	burst_size = 3
+	spread = 0
+	pin = /obj/item/firing_pin
+	unfolded_spread = 0
+	folded_spread = 7
