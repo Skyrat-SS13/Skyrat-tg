@@ -104,12 +104,12 @@
 /obj/item/gun/ballistic/rifle/carwil/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/toolbox/guncase/skyrat/sporting_rifle
+/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle
 	name = "Sporting Rifle Case"
 	weapon_to_spawn = /obj/item/gun/ballistic/rifle/carwil/empty
 	extra_to_spawn = /obj/item/ammo_box/magazine/c40sol_rifle/starts_empty
 
-/obj/item/storage/toolbox/guncase/skyrat/sporting_rifle/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(

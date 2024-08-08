@@ -107,9 +107,7 @@
 	desc = "Three entirely proprietary Sindano kits, chambered in .35 Sol Short. Each kit contains three empty magazines and a box each of incapacitator and lethal rounds."
 	cost = CARGO_CRATE_VALUE * 20
 	contains = list(
-		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
-		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
-		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano = 3,
 	)
 	crate_name = "Carwo 'Sindano' Submachinegun Crate"
 
@@ -121,6 +119,14 @@
 	/obj/item/ammo_box/magazine/c40sol_rifle = 3,
 	)
 	crate_name = "Carwil Marksman Rifle Crate"
+
+/datum/supply_pack/security/armory/rom_ceremonial_rifle
+	name = "Romulus Ceremonial Bolt Action Rifle Crate"
+	desc = "Contains Three Ceremonial Bolt Action Rifle in .40 , as well as ammo for it."
+	cost = CARGO_CRATE_VALUE * 12
+	contains = list(/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle = 1,
+	)
+	crate_name = "Romulus Ceremonial Rifle Crate"
 
 /datum/supply_pack/security/ammo
 	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 3,
