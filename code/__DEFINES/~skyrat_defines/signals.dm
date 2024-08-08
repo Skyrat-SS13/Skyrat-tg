@@ -110,3 +110,11 @@
 
 /// Whenever we need the soulcatcher soul to communicate something.
 #define COMSIG_CARRIER_MOB_SAY "carrier_mob_communicate"
+
+// GPT related signals
+
+/// Sent when a GPT message is processed (processed_responses)
+#define COMSIG_GPT_MESSAGE_REQUEST_PROCESSED "gpt_message_request_completed"
+
+/// Sent when a GPT message is received (processed_responses)
+#define COMSIG_GPT_CONVERSATION_RESPONSE_RECEIVED "gpt_conversation_response_received"
