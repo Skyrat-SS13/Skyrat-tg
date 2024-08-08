@@ -228,3 +228,18 @@
 	pin = /obj/item/firing_pin
 	unfolded_spread = 0
 	folded_spread = 7
+
+/obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg
+	name = "CMG-2C Rifle Case"
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
+
+/obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg/PopulateContents()
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/caflechette = 2,
+		/obj/item/ammo_box/magazine/caflechette/ripper = 2,
+	), src)
