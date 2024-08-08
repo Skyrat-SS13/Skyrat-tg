@@ -93,7 +93,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	mag_display = TRUE
 	tac_reloads = TRUE
-	rack_delay = 2 SECONDS
+	rack_delay = 1.5 SECONDS
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	special_mags = TRUE
