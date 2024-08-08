@@ -133,7 +133,6 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
 	inhand_icon_state = "infanterie_evil"
 	bolt_type = BOLT_TYPE_LOCKING
-	special_mags = TRUE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
