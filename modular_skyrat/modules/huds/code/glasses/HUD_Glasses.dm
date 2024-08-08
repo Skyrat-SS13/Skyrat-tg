@@ -41,10 +41,7 @@
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	resistance_flags = ACID_PROOF
 	armor_type = /datum/armor/prescription_science
-
-/obj/item/clothing/glasses/hud/science/prescription/Initialize(mapload)
-	. = ..()
-	clothing_traits += list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_MEDICAL_HUD, TRAIT_NEARSIGHTED_CORRECTED)
 
 /datum/armor/prescription_science
 	fire = 80
