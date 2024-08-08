@@ -37,6 +37,12 @@
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 
+/obj/item/ammo_casing/shotgun/ion
+	custom_materials = AMMO_MATS_SHOTGUN_TIDE
+
+/obj/item/ammo_casing/shotgun/scatterlaser
+	custom_materials = AMMO_MATS_SHOTGUN_TIDE
+
 /obj/item/ammo_casing/shotgun/techshell
 	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
 
