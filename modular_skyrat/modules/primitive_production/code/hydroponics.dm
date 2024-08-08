@@ -45,6 +45,12 @@
 	maxnutri = 50
 	maxwater = 500
 
+/obj/machinery/hydroponics/soil/soilbin/gaia/click_ctrl(mob/user)
+	if(!anchored)
+		return NONE
+	set_self_sustaining(!self_sustaining)
+	return CLICK_ACTION_SUCCESS
+
 /datum/crafting_recipe/soilbin/gaia
 	name = "Primitive gaian soilbin"
 	result = /obj/machinery/hydroponics/soil/soilbin/gaia
