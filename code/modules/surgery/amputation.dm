@@ -1,6 +1,5 @@
 /datum/surgery/amputation
 	name = "Amputation"
-	requires_bodypart_type = NONE
 	surgery_flags = SURGERY_REQUIRE_RESTING | SURGERY_REQUIRE_LIMB | SURGERY_MORBID_CURIOSITY
 	possible_locs = list(
 		BODY_ZONE_R_ARM,
@@ -19,11 +18,13 @@
 	)
 	removes_target_bodypart = TRUE // SKYRAT EDIT ADDITION - Surgically unremovable limbs
 
-/datum/surgery/amputation/peg
-	name = "Detach"
-	requires_bodypart_type = BODYTYPE_PEG
+/datum/surgery/amputation/mechanic
+	name = "Disassemble"
+	requires_bodypart_type = BODYTYPE_ROBOTIC
 	steps = list(
-		/datum/surgery_step/sever_limb/peg,	//Easy come, easy go
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/open_hatch,
+		/datum/surgery_step/sever_limb/mechanic, //The benefit of being robotic; people can pull you apart in an instant! Wait, that's not a benefit...
 	)
 
 /datum/surgery/amputation/can_start(mob/user, mob/living/patient)
@@ -41,7 +42,8 @@
 		/obj/item/melee/arm_blade = 80,
 		/obj/item/fireaxe = 50,
 		/obj/item/hatchet = 40,
-		/obj/item/knife/butcher = 25)
+		/obj/item/knife/butcher = 25,
+	)
 	time = 64
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/organ2.ogg'
@@ -59,19 +61,6 @@
 	time = 20 //WAIT I NEED THAT!!
 	preop_sound = 'sound/items/ratchet.ogg'
 	preop_sound = 'sound/machines/doorclick.ogg'
-
-/datum/surgery_step/sever_limb/peg
-	name = "detach limb (circular saw)"
-	implements = list(
-		TOOL_SAW = 100,
-		/obj/item/shovel/serrated = 100,
-		/obj/item/fireaxe = 90,
-		/obj/item/hatchet = 75,
-		TOOL_SCALPEL = 25,
-	)
-	time = 30
-	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/items/wood_drop.ogg'
 
 /datum/surgery_step/sever_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
