@@ -110,3 +110,5 @@
 
 /// Whenever we need the soulcatcher soul to communicate something.
 #define COMSIG_CARRIER_MOB_SAY "carrier_mob_communicate"
+//signal sent when a mob tries to de-prone
+#define COMSIG_MOVABLE_REMOVE_PRONE_STATE "living_remove_prone_state"
