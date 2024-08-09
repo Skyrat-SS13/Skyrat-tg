@@ -210,53 +210,40 @@
 * HEAD
 */
 
-//Overrides the bulletproof helm with the older non red visor version.
+//Overrides the bulletproof helm with a fucking altyn helmet because yes
 /obj/item/clothing/head/helmet/alt
+	desc = "An armored helmet based on the NRI Altyn Helmet Design. These helmet provide excellent facial protection, if not, the best against ballistic."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmetalt_blue"
 	base_icon_state = "helmetalt_blue"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	actions_types = list(/datum/action/item_action/toggle)
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 
-//Standard helmet (w/ visor)
+//Standard helmet
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
-	actions_types = list(/datum/action/item_action/toggle)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
-	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
+	flags_cover = HEADCOVERSEYES|EARS_COVERED
 	dog_fashion = null
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-	///chat message when the visor is toggled down.
-	var/toggle_message = "You pull the visor down on"
-	///chat message when the visor is toggled up.
-	var/alt_toggle_message = "You push the visor up on"
-	///Can toggle?
-	var/can_toggle = TRUE
 
-/// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
-/obj/item/clothing/head/helmet/sec/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(user.incapacitated() || !can_toggle)
-		return
-	up = !up
-	flags_1 ^= visor_flags
-	flags_inv ^= visor_flags_inv
-	flags_cover ^= visor_flags_cover
-	// This part is changed to work with the seclight.
-	base_icon_state = "[initial(icon_state)][up ? "up" : ""]"
-	update_icon_state()
-	to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
+/obj/item/clothing/head/helmet/sec/futuristic
+	icon_state = "security_helmet_future"
+	base_icon_state = "security_helmet_future"
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-	user.update_worn_head()
-	if(iscarbon(user))
-		var/mob/living/carbon/carbon_user = user
-		carbon_user.update_worn_head()
-
+/obj/item/clothing/head/helmet/sec/futuristic/blue
+	icon_state = "security_helmet_future_blue"
+	base_icon_state = "security_helmet_future_blue"
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison
@@ -907,7 +894,6 @@
 	icon_state = "helmet"
 	base_icon_state = "helmet"
 	actions_types = null
-	can_toggle = FALSE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR

@@ -7,6 +7,15 @@
 	max_ammo = 15
 	multitype = FALSE // if you enable this and set the box's caliber var to CALIBER_SHOTGUN (at time of writing, "shotgun"), then you can have the fabled any-ammo shellbox
 
+	custom_premium_price = 500
+
+/obj/item/ammo_box/advanced/s12gauge/laser
+	name = "Scatterlaser ammo box"
+	desc = "A box of 15 laser shells. Fires highly lethal laser shell."
+	icon_state = "laser"
+	ammo_type = /obj/item/ammo_casing/shotgun/scatterlaser
+	max_ammo = 15
+
 /obj/item/ammo_box/advanced/s12gauge/buckshot
 	name = "Buckshot ammo box"
 	desc = "A box of 15 buckshot shells. These have a modest spread of weaker projectiles."
@@ -56,6 +65,13 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/flechette
 	max_ammo = 15
 
+/obj/item/ammo_box/advanced/s12gauge/dragonsbreath
+	name = "Dragons Breathe ammo box"
+	desc = "A box of 15 Dragons Breathe shells. Each shell contains plasma inside to create a massive trailing flame, excel at collateral damage."
+	icon_state = "dragonsbreath"
+	ammo_type = /obj/item/ammo_casing/shotgun/dragonsbreath
+	max_ammo = 15
+
 /obj/item/ammo_box/advanced/s12gauge/beehive
 	name = "Hornet's nest ammo box"
 	desc = "A box of 15 hornet's nest shells. These are less-lethal shells that will bounce off walls and direct themselves toward nearby targets."
@@ -83,3 +99,31 @@
 	icon_state = "honk"
 	ammo_type = /obj/item/ammo_casing/shotgun/honkshot
 	max_ammo = 35
+
+/obj/item/ammo_box/advanced/s12gauge/frangible
+	name = "Frangible Slug ammo box"
+	desc = "A box of 7 Frangible slug. It's able to punches through windows, airlocks whatever with ease. Less-than-effective against people"
+	icon_state = "fslug"
+	ammo_type = /obj/item/ammo_casing/shotgun/frangible
+	max_ammo = 7
+
+//The one below here has a destruction damage of 200, it two shot most mech, use the one above
+/obj/item/ammo_box/advanced/s12gauge/breaching
+	name = "Breaching Slug ammo box"
+	desc = "A box of 7 Breaching slug. It's able to punches through- quite literally anything with ease."
+	icon_state = "fslug"
+	ammo_type = /obj/item/ammo_casing/shotgun/breacher
+	max_ammo = 7
+
+//This is intended for ERT! Have fun with it
+/obj/item/ammo_box/advanced/s12gauge/pulse
+	name = "Pulse Slug ammo box"
+	desc = "A box of 15 Pulse slug. It's able to punches through structures and anything behind it."
+	icon_state = "pulse"
+	ammo_type = /obj/item/ammo_casing/shotgun/pulseslug
+
+/obj/item/ammo_box/advanced/s12gauge/scatterion
+	name = "Scatter Ion ammo box"
+	desc = "A box of 15 Scatter ion. I hope you have no cybernetic organs."
+	icon_state = "pulse"
+	ammo_type = /obj/item/ammo_casing/shotgun/ion
