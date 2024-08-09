@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>modular_skyrat&#x2F;modules&#x2F;xenos_skyrat_redo&#x2F;readme.md - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>modular_skyrat/modules/xenos_skyrat_redo/readme.md 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b23bee0d9e234e8d1662b3bbee8e204a9e194f37/modular_skyrat/modules/xenos_skyrat_redo/readme.md">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;xenos_skyrat_redo&#x2F;readme.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><hh2 id="title-skyrat-xeno-rework">Title: Skyrat Xeno Rework</hh2>
+<p>MODULE ID: SKYRAT_XENO_REDO</p>
+<hh3 id="description">Description:</hh3>
+<p>Reworks and rebalances xenomorphs to be more in line a tgmc style of alien, especially focusing on unique abilites and lack of rclick and ranged instant hardstuns</p>
+<hh3 id="tg-proc-file-changes">TG Proc/File Changes:</hh3>
+<ul>
+<li>
+<p>MOVED:
+code\modules\mob\living\carbon\alien\larva\powers.dm &gt; /datum/action/cooldown/alien/larva_evolve/Activate
+TO:
+modular_skyrat\modules\xenos_skyrat_redo\code\larva.dm</p>
+</li>
+<li>
+<p>MOVED:
+code\modules\mob\living\carbon\human\human_defense.dm &gt; /mob/living/carbon/human/attack_alien
+TO:
+modular_skyrat\modules\xenos_skyrat_redo\code\human_defense.dm</p>
+</li>
+</ul>
+<hh3 id="defines">Defines:</hh3>
+<p>IN: code/__DEFINES/~skyrat_defines/traits.dm</p>
+<ul>
+<li>TRAIT_XENO_INNATE</li>
+<li>TRAIT_XENO_ABILITY_GIVEN</li>
+<li>TRAIT_XENO_HEAL_AURA</li>
+</ul>
+<hh3 id="master-file-additions">Master file additions</hh3>
+<ul>
+<li>N/A</li>
+</ul>
+<hh3 id="included-files-that-are-not-contained-in-this-module">Included files that are not contained in this module:</hh3>
+<ul>
+<li>N/A</li>
+</ul>
+<hh3 id="credits">Credits:</hh3>
+<p>@Paxilmaniac - Porting the xenos from TGMC, adopting their stuff to work with our code
+TGMC - Where the sprites, sound, and ideas for caste abilities came from
+Those two rounds where xenos curbstomped the whole station - Inspiration for doing this in the first place</p></td></tr></table></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b23bee0d9e234e8d1662b3bbee8e204a9e194f37">b23bee0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

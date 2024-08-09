@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>modular_skyrat&#x2F;modules&#x2F;alternative_job_titles&#x2F;readme.md - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>modular_skyrat/modules/alternative_job_titles/readme.md 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b23bee0d9e234e8d1662b3bbee8e204a9e194f37/modular_skyrat/modules/alternative_job_titles/readme.md">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;alternative_job_titles&#x2F;readme.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><hh2 id="title-alternative-job-titles">Title: Alternative Job Titles</hh2>
+<p>MODULE ID: ALTERNATIVE_JOB_TITLES</p>
+<hh3 id="description">Description:</hh3>
+<p>Adds functionality to custom job titles, making them show up in manifests, ID's and announcements.
+Unfortunately, all 3 of the categories are not set up to be very modular, so this almost entirely consists of TG proc changes.</p>
+<hh3 id="tg-proc-changes">TG Proc Changes:</hh3>
+<ul>
+<li>./code/controllers/subsystem/job.dm &gt; /datum/controller/subsystem/job/proc/EquipRank()</li>
+<li>./code/datums/datacore.dm &gt; /datum/datacore/proc/get_manifest(), /datum/datacore/proc/get_manifest_html(), /datum/datacore/proc/manifest_inject()</li>
+<li>./code/modules/admin/verbs/admingame.dm &gt; /client/proc/respawn_character()</li>
+<li>./code/modules/jobs/job_types/_job.dm &gt; /datum/job/proc/announce_job(), /datum/job/proc/announce_head()</li>
+<li>./code/modules/mob/dead/new_player/new_player.dm &gt; /mob/dead/new_player/proc/AttemptLateSpawn()</li>
+</ul>
+<hh3 id="defines">Defines:</hh3>
+<ul>
+<li>N/A</li>
+</ul>
+<hh3 id="included-files-that-are-not-contained-in-this-module">Included files that are not contained in this module:</hh3>
+<ul>
+<li>./tgui/packages/tgui/interfaces/CrewManifest.js</li>
+<li>./tgui/packages/tgui/interfaces/NtosCrewManifest.js</li>
+</ul>
+<hh3 id="credits">Credits:</hh3>
+<p>Tastyfish</p></td></tr></table></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b23bee0d9e234e8d1662b3bbee8e204a9e194f37">b23bee0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>modular_skyrat&#x2F;modules&#x2F;modular_persistence&#x2F;README.md - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>modular_skyrat/modules/modular_persistence/README.md 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/b23bee0d9e234e8d1662b3bbee8e204a9e194f37/modular_skyrat/modules/modular_persistence/README.md">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;modular_persistence&#x2F;README.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><hh2 id="modular-persistence">Modular Persistence</hh2>
+<p>Module ID: MODULAR_PERSISTENCE</p>
+<hh3 id="description">Description:</hh3>
+<p>An extremely easy to extend per-character persistence file. Supports all the basic types, plus lists.</p>
+<p>Simply add the vars you want to have saved to <code>/datum/modular_persistence</code>, and make sure those var values are updated before round end so that they're saved.</p>
+<p>Loaded and saved on only station-side players for now. Will be expanded to support more in the future.</p>
+<hh3 id="tg-proc-file-changes">TG Proc/File Changes:</hh3>
+<ul>
+<li><code>code\modules\mob\dead\new_player\new_player.dm</code>: <code>/mob/dead/new_player/proc/AttemptLateSpawn</code></li>
+<li><code>code\controllers\subsystem\persistence.dm</code>: <code>/datum/controller/subsystem/persistence/proc/collect_data</code></li>
+</ul>
+<hh3 id="defines">Defines:</hh3>
+<ul>
+<li><code>modular_skyrat\modules\modular_persistence\code\modular_persistence.dm</code>: <code>GLOB.modular_persistence_ignored_vars</code></li>
+</ul>
+<hh3 id="credits">Credits:</hh3>
+<ul>
+<li>RimiNosha - Code</li>
+</ul></td></tr></table></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/b23bee0d9e234e8d1662b3bbee8e204a9e194f37">b23bee0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>
