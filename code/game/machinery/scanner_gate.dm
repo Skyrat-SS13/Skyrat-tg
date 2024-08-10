@@ -310,8 +310,9 @@
 					detected_thing = "Obesity"
 		//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 		if(SCANGATE_GENDER)
-			if(ishuman(M))
-				var/mob/living/carbon/human/scanned_human = M
+			detected_thing = detect_gender
+			if(ishuman(thing))
+				var/mob/living/carbon/human/scanned_human = thing
 				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
 					if(scanned_human.gender == detect_gender)
 						beep = TRUE
