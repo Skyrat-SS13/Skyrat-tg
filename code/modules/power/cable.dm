@@ -566,23 +566,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 ///////////////////////////////////
 //you can use wires to heal robotics
 
-<<<<<<< HEAD
-	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
-	if(affecting && IS_ROBOTIC_LIMB(affecting))
-		if(user == H)
-			user.visible_message(span_notice("[user] starts to fix some of the wires in [H]'s [affecting.name]."), span_notice("You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name]."))
-			/* SKYRAT EDIT START - ORIGINAL:
-			if(!do_after(user, 5 SECONDS, H))
-				return
-			*/
-		// SKYRAT EDIT CHANGE START
-		if(!do_after(user, (user == H ? self_delay : other_delay)))
-			return
-		// SKYRAT EDIT CHANGE END
-		if(H.item_heal(user, 0, 15, "dents", "burnt wires", BODYTYPE_ROBOTIC))
-			user.visible_message(span_green("[user] fixes some of the wires in to [H]'s [affecting.name]."), span_green("You fix some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name].")) // SKYRAT EDIT ADD
-			use(1)
-=======
 /obj/item/stack/cable_coil/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!ishuman(interacting_with))
 		return NONE
@@ -599,17 +582,18 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 		return NONE
 
 	if (!affecting.get_damage())
->>>>>>> 5639f9b6d3ef (Cable coil and welding tool healing now loops. Fixed heal message not displaying when healing someone else (#85377))
 		return
 
-<<<<<<< HEAD
-=======
 	user.visible_message(span_notice("[user] starts to fix some of the wires in [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
 		span_notice("You start fixing some of the wires in [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
 
 	var/use_delay = repeating ? 1 SECONDS : 0
 	if(user == attacked_humanoid)
-		use_delay = 5 SECONDS
+		use_delay = self_delay // SKYRAT EDIT CHANGE - ORIGINAL: use_delay = 5 SECONDS
+	// SKYRAT EDIT ADDITION START
+	else
+		use_delay = other_delay
+	// SKYRAT EDIT ADDITION END
 
 	if(!do_after(user, use_delay, attacked_humanoid))
 		return ITEM_INTERACT_BLOCKING
@@ -620,9 +604,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	if (use(1) && amount > 0)
 		INVOKE_ASYNC(src, PROC_REF(try_heal_loop), interacting_with, user, TRUE)
 
-	return ITEM_INTERACT_SUCCESS
-
->>>>>>> 5639f9b6d3ef (Cable coil and welding tool healing now loops. Fixed heal message not displaying when healing someone else (#85377))
 ///////////////////////////////////////////////
 // Cable laying procedures
 //////////////////////////////////////////////
@@ -640,7 +621,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 		to_chat(user, span_warning("There is no cable left!"))
 		return
 
-	if(get_dist(T,user) > 1) // Too far
 		to_chat(user, span_warning("You can't lay cable at a place that far away!"))
 		return
 

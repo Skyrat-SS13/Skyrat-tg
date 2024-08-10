@@ -153,18 +153,18 @@
 	if(isnull(affecting) || !IS_ROBOTIC_LIMB(affecting))
 		return NONE
 
-<<<<<<< HEAD
-	var/use_delay = 1 SECONDS // SKYRAT EDIT: ORIGINAL 0
-=======
 	if (!affecting.get_damage())
 		return
->>>>>>> 5639f9b6d3ef (Cable coil and welding tool healing now loops. Fixed heal message not displaying when healing someone else (#85377))
 
 	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
 		span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
 	var/use_delay = repeating ? 1 SECONDS : 0
 	if(user == attacked_humanoid)
-		use_delay = 5 SECONDS
+		use_delay = self_delay // SKYRAT EDIT CHANGE - ORIGINAL: use_delay = 5 SECONDS
+	// SKYRAT EDIT ADDITION START
+	else
+		use_delay = other_delay
+	// SKYRAT EDIT ADDITION END
 
 	if(!use_tool(attacked_humanoid, user, use_delay, volume=50, amount=1))
 		return ITEM_INTERACT_BLOCKING
