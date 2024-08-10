@@ -120,7 +120,7 @@
 		self_message += " as best as you can while they have clothing on"
 		other_message += " as best as they can while [target] has clothing on"
 
-	target.heal_bodypart_damage(healed_brute, healed_burn, 0, BODYTYPE_ROBOTIC)
+	target.heal_bodypart_damage(healed_brute, healed_burn, 0)
 
 	self_message += get_progress(user, target, healed_brute, healed_burn)
 
