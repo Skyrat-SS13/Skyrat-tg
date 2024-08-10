@@ -309,7 +309,7 @@
 	desc = "A fairly outdated copy of 'Whittle Me This: Fletching for the Modern Spacer', along with some useful materials. \
 		For those looking to get into bow-making, or give their LARPing a little more edge, you can't go wrong. Also has \
 		instructions for making violins."
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/book/granter/crafting_recipe/fletching = 1,
 		/obj/item/stack/sheet/mineral/wood = 10,
