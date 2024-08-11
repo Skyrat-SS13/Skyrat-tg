@@ -259,7 +259,7 @@
 	layers = EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/testicles/update_genital_icon_state()
-	var/measured_size = clamp(genital_size, 1, 3)
+	var/measured_size = clamp(genital_size, 1, 6)
 	var/passed_string = "testicles_[genital_type]_[measured_size]"
 	if(uses_skintones)
 		passed_string += "_s"
@@ -283,7 +283,7 @@
 
 /obj/item/organ/external/genital/testicles/get_sprite_size_string()
 	var/measured_size = FLOOR(genital_size,1)
-	measured_size = clamp(measured_size, 0, 3)
+	measured_size = clamp(measured_size, 0, 6)
 	var/passed_string = "[genital_type]_[measured_size]"
 	if(uses_skintones)
 		passed_string += "_s"

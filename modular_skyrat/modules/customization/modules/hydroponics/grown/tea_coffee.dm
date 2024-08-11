@@ -2,7 +2,7 @@
 
 // Catnip
 /obj/item/seeds/tea/catnip
-	name = "pack of catnip seeds"
+	name = "catnip seed pack"
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/seeds.dmi'
 	icon_state = "seed-catnip"
 	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'

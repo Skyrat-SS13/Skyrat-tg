@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/company_imports/icons/hud_goggles.dmi'
 	worn_icon = 'modular_skyrat/modules/company_imports/icons/hud_goggles_worn.dmi'
 	icon_state = "permithud"
-	hud_types = list(DATA_HUD_PERMIT)
+	clothing_traits = list(TRAIT_PERMIT_HUD)
 
 /obj/item/clothing/glasses/hud/gun_permit/sunglasses
 	name = "permit HUD sunglasses"

@@ -20,15 +20,23 @@
 
 	COOLDOWN_START(src, party_cooldown, rand(PARTY_COOLDOWN_LENGTH_MIN, PARTY_COOLDOWN_LENGTH_MAX))
 
-	var/area/area_to_spawn_in = pick(GLOB.bar_areas)
-	var/turf/T = pick(area_to_spawn_in.contents)
+	var/pizza_type_to_spawn = pick(list(
+		/obj/item/pizzabox/margherita,
+		/obj/item/pizzabox/mushroom,
+		/obj/item/pizzabox/meat,
+		/obj/item/pizzabox/vegetable,
+		/obj/item/pizzabox/pineapple
+	))
 
-	var/obj/structure/closet/supplypod/centcompod/toLaunch = new()
-	var/obj/item/pizzabox/pizza_to_spawn = pick(list(/obj/item/pizzabox/margherita, /obj/item/pizzabox/mushroom, /obj/item/pizzabox/meat, /obj/item/pizzabox/vegetable, /obj/item/pizzabox/pineapple))
-	new pizza_to_spawn(toLaunch)
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/cup/glass/bottle/beer(toLaunch)
-	new /obj/effect/pod_landingzone(T, toLaunch)
+	var/area/bar_area = pick(GLOB.bar_areas)
+	podspawn(list(
+		"target" = pick(bar_area.contents),
+		"path" = /obj/structure/closet/supplypod/centcompod,
+		"spawn" = list(
+			pizza_type_to_spawn,
+			/obj/item/reagent_containers/cup/glass/bottle/beer = 6
+		)
+	))
 
 #undef PARTY_COOLDOWN_LENGTH_MIN
 #undef PARTY_COOLDOWN_LENGTH_MAX
@@ -293,7 +301,7 @@
 		/datum/job/orderly = /obj/item/organ/internal/cyberimp/brain/anti_drop,
 		/datum/job/science_guard = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/customs_agent = /obj/item/organ/internal/cyberimp/eyes/hud/security,
-		/datum/job/bouncer = /obj/item/organ/internal/cyberimp/arm/muscle,
+		/datum/job/bouncer = /obj/item/organ/internal/cyberimp/arm/strongarm,
 		/datum/job/engineering_guard = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/telecomms_specialist = /obj/item/organ/internal/ears/cybernetic/xray,
 		// SKYRAT EDIT END

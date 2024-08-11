@@ -9,7 +9,7 @@
 	organ_type = /obj/item/organ/external/fluff
 
 /datum/sprite_accessory/fluff/moth/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 
 /datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/human)
