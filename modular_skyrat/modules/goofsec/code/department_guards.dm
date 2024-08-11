@@ -145,7 +145,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/effect/landmark/start/bouncer
-	name = "Service Guard"
+	name = "Bouncer"
 	icon_state = "Bouncer"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
