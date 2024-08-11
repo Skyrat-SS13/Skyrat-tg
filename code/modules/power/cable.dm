@@ -621,6 +621,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 		to_chat(user, span_warning("There is no cable left!"))
 		return
 
+	if(get_dist(T,user) > 1)
 		to_chat(user, span_warning("You can't lay cable at a place that far away!"))
 		return
 
