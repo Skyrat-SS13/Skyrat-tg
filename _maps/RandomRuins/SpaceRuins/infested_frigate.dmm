@@ -557,15 +557,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/mineral/titanium/tiled/white,
 /area/ruin/space/has_grav/infested_frigate)
-"hX" = (
-/obj/structure/cable,
-/obj/machinery/airalarm/directional/north,
-/obj/effect/mapping_helpers/airalarm/all_access,
-/obj/machinery/icecream_vat{
-	desc = "Waffle co. actually ordered these guys to steal one of these just to be sure."
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/infested_frigate)
 "ie" = (
 /obj/structure/showcase/machinery{
 	icon_state = "autolathe";
@@ -848,6 +839,17 @@
 	desc = "The resin is thick and it keeps collapsing on itself."
 	},
 /turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/infested_frigate)
+"nU" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5-old"
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/gun/ballistic/automatic/smartgun,
+/obj/effect/mob_spawn/corpse/human/syndicatepilot,
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/infested_frigate)
 "oj" = (
 /obj/structure/fans/tiny,
@@ -2121,23 +2123,6 @@
 /obj/machinery/power/smes,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/infested_frigate)
-"IO" = (
-/obj/structure/cable,
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/gibs{
-	icon_state = "floor6-old"
-	},
-/obj/item/shard{
-	icon_state = "plastitaniumtiny"
-	},
-/mob/living/basic/alien/queen/large{
-	loot = list(/obj/effect/gibspawner/xeno,/obj/item/ammo_box/magazine/smartgun,/obj/effect/mob_spawn/corpse/human/syndicatecommando/soft_suit);
-	desc = "What you saw in your dreams last night.";
-	faction = list("syndicate","xenomorph")
-	},
-/obj/structure/alien/egg/burst,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/infested_frigate)
 "IS" = (
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -2172,17 +2157,6 @@
 	},
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/pod/dark,
-/area/ruin/space/has_grav/infested_frigate)
-"Jq" = (
-/obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "floor5-old"
-	},
-/obj/item/ammo_casing/spent,
-/obj/item/gun/ballistic/automatic/smartgun,
-/obj/effect/mob_spawn/corpse/human/syndicatepilot,
-/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/infested_frigate)
 "Jw" = (
 /obj/effect/spawner/random/exotic/antag_gear_weak{
@@ -2501,6 +2475,15 @@
 /obj/machinery/computer/operating,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/infested_frigate)
+"NW" = (
+/obj/structure/cable,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/machinery/icecream_vat{
+	desc = "Waffle Corp. actually ordered these guys to steal one of these just to be sure."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/infested_frigate)
 "NX" = (
 /obj/structure/table/glass,
 /obj/effect/decal/cleanable/glass,
@@ -2796,6 +2779,23 @@
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /turf/open/floor/pod/dark,
+/area/ruin/space/has_grav/infested_frigate)
+"SM" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/gibs{
+	icon_state = "floor6-old"
+	},
+/obj/item/shard{
+	icon_state = "plastitaniumtiny"
+	},
+/mob/living/basic/alien/queen/large{
+	loot = list(/obj/effect/gibspawner/xeno,/obj/item/ammo_box/magazine/smartgun,/obj/effect/mob_spawn/corpse/human/syndicatecommando/soft_suit);
+	desc = "What you saw in your dreams last night.";
+	faction = list("syndicate","xenomorph")
+	},
+/obj/structure/alien/egg/burst,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/infested_frigate)
 "SS" = (
 /obj/structure/table_frame,
@@ -3373,8 +3373,8 @@ fl
 wP
 EQ
 wP
-hX
-IO
+NW
+SM
 ME
 KT
 LF
@@ -3861,7 +3861,7 @@ bM
 Ne
 wP
 bE
-Jq
+nU
 ML
 wP
 UX
