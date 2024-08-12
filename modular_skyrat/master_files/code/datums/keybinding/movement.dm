@@ -1,7 +1,7 @@
 /datum/keybinding/movement/army_crawl
 	hotkey_keys = list("K")
-	name = "Prone"
-	full_name = "Army Crawl"
+	name = "prone"
+	full_name = "army Crawl"
 	description = "lay yourself as close to the ground as possible after a short delay"
 	keybind_signal = COMSIG_KB_MOVEMENT_ARMY_CRAWL_DOWN
 
@@ -10,4 +10,5 @@
 	if(.)
 		return
 	var/mob/living/carbon/crawler = user.mob
-	crawler.army_crawl()
+	if(istype(crawler, /mob/living/carbon))
+		crawler.army_crawl()

@@ -400,7 +400,7 @@
 		return
 	cortical_owner.upgrade_flags |= BORER_HIDING
 	owner.balloon_alert(owner, "started hiding")
-	cortical_owner.AddElement(/datum/element/prone_mob)
+	cortical_owner.AddComponent(/datum/component/prone_mob)
 	StartCooldown()
 
 //to paralyze people
