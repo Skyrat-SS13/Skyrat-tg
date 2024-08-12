@@ -12,7 +12,7 @@
 	pronemob.layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 
 /datum/component/prone_mob/RegisterWithParent()
-	RegisterSignals(target, list(COMSIG_MOVABLE_REMOVE_PRONE_STATE, COMSIG_LIVING_GET_PULLED), PROC_REF(stop_army_crawl))
+	RegisterSignals(parent, list(COMSIG_MOVABLE_REMOVE_PRONE_STATE, COMSIG_LIVING_GET_PULLED), PROC_REF(stop_army_crawl))
 	RegisterSignals(parent, list(COMSIG_MOB_ATTACK_HAND, COMSIG_MOB_ITEM_ATTACK), PROC_REF(check_attack))
 	RegisterSignal(parent, COMSIG_LIVING_TRY_PULL, PROC_REF(check_pull))
 
