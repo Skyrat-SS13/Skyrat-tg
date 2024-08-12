@@ -1,6 +1,7 @@
 /datum/outfit/akula
 	name = "Akula"
 	head = /obj/item/clothing/head/helmet/space/akula_wetsuit
+	uniform = /obj/item/clothing/under/akula_wetsuit
 
 /datum/outfit/akula/assistant
 	name = "Akula Assistant"
