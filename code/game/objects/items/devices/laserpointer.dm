@@ -277,7 +277,11 @@
 			target_felinid.setDir(get_dir(target_felinid, targloc)) // kitty always looks at the light
 			if(prob(effectchance * diode.rating))
 				target_felinid.visible_message(span_warning("[target_felinid] makes a grab for the light!"), span_userdanger("LIGHT!"))
+<<<<<<< HEAD
 				target_felinid.Move(targloc, get_dir(target_felinid, targloc)) // SKYRAT EDIT: Fixes the felinid phazing bug. Remove this comment once fixed upstream
+=======
+				target_felinid.Move(targloc, get_dir(target_felinid, targloc))
+>>>>>>> e7bfcac8bbc4 (Laser pointers no longer make felinids phase through diagonal gaps (#85755))
 				log_combat(user, target_felinid, "moved with a laser pointer", src)
 			else
 				target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("You're briefly tempted by the shiny light..."))
