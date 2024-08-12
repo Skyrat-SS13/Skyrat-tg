@@ -10,10 +10,12 @@
 			return
 		SEND_SIGNAL(crawler, COMSIG_MOVABLE_REMOVE_PRONE_STATE)
 	else
-		if(!crawler.resting)
-			balloon_alert(crawler, "you must be laying down to army crawl.")
-			return
 		visible_message("[crawler] begins to lower themself further")
-		if(!do_after(crawler, 3 SECONDS))
+		if(!do_after(crawler, 3 SECONDS, extra_checks = CALLBACK(crawler, PROC_REF(can_army_crawl))))
+			if(!crawler.resting)
+				balloon_alert(crawler, "must be laying down")
 			return
 		crawler.AddComponent(/datum/component/prone_mob)
+
+/mob/living/carbon/proc/can_army_crawl()
+  return resting
