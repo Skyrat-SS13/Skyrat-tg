@@ -10,7 +10,7 @@
 /datum/ai_planning_subtree/flee_target/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 	var/atom/flee_from = controller.blackboard[target_key]
-	if (controller.blackboard[BB_BASIC_MOB_STOP_FLEEING] || QDELETED(flee_from))
+	if(!should_flee(controller, flee_from))
 		return
 	if(!should_flee(controller, flee_from))
 		return

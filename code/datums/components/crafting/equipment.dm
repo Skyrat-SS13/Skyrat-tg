@@ -284,5 +284,4 @@
 	)
 	category = CAT_EQUIPMENT
 	tool_behaviors = list(TOOL_WELDER, TOOL_WIRECUTTER)
-
 */ // SKYRAT EDIT REMOVAL END

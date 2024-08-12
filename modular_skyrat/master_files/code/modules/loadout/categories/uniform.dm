@@ -15,6 +15,8 @@
 	else
 		if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.uniform)
 			LAZYADD(outfit.backpack_contents, outfit.uniform)
+		else
+			outfit.modified_outfit_slots |= ITEM_SLOT_ICLOTHING
 		outfit.uniform = item_path
 
 

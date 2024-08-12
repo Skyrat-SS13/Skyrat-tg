@@ -573,6 +573,8 @@
 	new_profile.emissive_eyes = target.emissive_eyes
 	new_profile.scream_type = target.selected_scream?.type || /datum/scream_type/none
 	new_profile.laugh_type = target.selected_laugh?.type || /datum/laugh_type/none
+	new_profile.target_body_scaling = target.get_mob_height()
+	new_profile.target_size = target.mob_size
 	//SKYRAT EDIT ADDITION END
 
 	// Grab skillchips they have
@@ -949,6 +951,9 @@
 	user.regenerate_icons()
 	user.name = user.get_visible_name()
 	current_profile = chosen_profile
+	user.mob_size = chosen_profile.target_size
+	//this has to be at the end of the proc or it breaks everything below it, womp womp
+	user.set_mob_height(chosen_profile.target_body_scaling)
 	// SKYRAT EDIT END
 
 // Changeling profile themselves. Store a data to store what every DNA instance looked like.

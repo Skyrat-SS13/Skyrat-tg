@@ -82,8 +82,8 @@
 		new_right_leg = new /obj/item/bodypart/leg/right/taur()
 
 	if(organ_flags & ORGAN_ROBOTIC)
-		new_left_leg = new /obj/item/bodypart/leg/left/robot/synth/taur()
-		new_right_leg = new /obj/item/bodypart/leg/right/robot/synth/taur()
+		new_left_leg = new /obj/item/bodypart/leg/left/synth/taur()
+		new_right_leg = new /obj/item/bodypart/leg/right/synth/taur()
 
 	if (left_leg_name)
 		new_left_leg.name = left_leg_name + " (Left leg)"
