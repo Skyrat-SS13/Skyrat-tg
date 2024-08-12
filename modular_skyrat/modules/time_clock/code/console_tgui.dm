@@ -111,14 +111,15 @@
 				log_admin("[key_name(usr)] clocked out as \an [inserted_id.assignment].")
 				clock_out()
 				var/mob/living/carbon/human/human_user = usr
-				if(inserted_id.registered_account.account_holder == human_user.real_name) //skyrat edit - clocking out another person's ID no longer steals your items
+				//skyrat edit begin - clocking out another person's ID no longer steals your items
+				if(inserted_id.registered_account.account_holder == human_user.real_name)
 					if(human_user)
 						human_user.return_items_to_console(TIME_CLOCK_RETURN_ITEMS)
 
 					var/datum/mind/user_mind = usr.mind
 					if(user_mind)
 						user_mind.clocked_out_of_job = TRUE
-
+				//skyrat edit end
 				if(important_job_check())
 					message_admins("[key_name(usr)] has clocked out as a head of staff. [ADMIN_JMP(src)]")
 
