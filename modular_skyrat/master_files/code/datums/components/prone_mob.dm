@@ -3,12 +3,12 @@
 
 /datum/component/prone_mob/Initialize(...)
 	. = ..()
-	if(!iscarbon(parent))
+	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	pronemob = parent
 	pronemob.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
 	pronemob.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
-	passtable_on(pronemob)
+	passtable_on(pronemob, type)
 	pronemob.layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 
 /datum/component/prone_mob/RegisterWithParent()
@@ -37,8 +37,7 @@
 /datum/component/prone_mob/proc/stop_army_crawl(mob/living/source)
 	SIGNAL_HANDLER
 	pronemob.remove_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
-	if(!istype(pronemob, /mob/living/basic/cortical_borer))
-		passtable_off(pronemob)
+	passtable_off(pronemob, type)
 	pronemob.layer = MOB_LAYER
 	pronemob = null
 	qdel(src)
