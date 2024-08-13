@@ -39,6 +39,12 @@
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	list_reagents = list(/datum/reagent/consumable/milk = 15)
 
+/obj/item/reagent_containers/condiment/dashi_concentrate/small_ration
+	name = "small dashi"
+	desc = "It's concentrated dashi in a small container, containing just enough to be able to make some dashi for cooking!"
+	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
+	list_reagents = list(/datum/reagent/consumable/dashi_concentrate = 5)
+
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny
 	name = "tiny glass bottle"
 	volume = 10
