@@ -26,7 +26,6 @@
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_icon_state = "clowncat"
-	has_collar_resting_icon_state = FALSE
 	can_be_held = TRUE
 	ai_controller = /datum/ai_controller/basic_controller/cat/clown
 	held_state = "cat2"
