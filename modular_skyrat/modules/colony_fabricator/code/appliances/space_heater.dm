@@ -6,8 +6,8 @@
 	anchored = TRUE
 	density = FALSE
 	circuit = null
-	heating_energy = STANDARD_CELL_RATE * 0.2
-	efficiency = 30
+	heating_energy = parent_type::heating_energy * 2
+	efficiency = parent_type::efficiency * 2
 	display_panel = TRUE
 	cell = null
 	/// What this repacks into when its wrenched off a wall
@@ -24,8 +24,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/space_heater/wall_mounted, 29)
 
 /obj/machinery/space_heater/wall_mounted/RefreshParts()
 	. = ..()
-	heating_energy = STANDARD_CELL_RATE * 0.2
-	efficiency = 30
+	heating_energy = src::heating_energy
+	efficiency = src::efficiency
 
 /obj/machinery/space_heater/wall_mounted/default_deconstruction_crowbar()
 	return
