@@ -1,6 +1,6 @@
 //open shell
 /datum/surgery_step/mechanic_open
-	name = "unscrew shell (screwdriver or scalpel)"
+	name = "unscrew shell (screwdriver)"
 	implements = list(
 		TOOL_SCREWDRIVER = 100,
 		TOOL_SCALPEL = 75, // med borgs could try to unscrew shell with scalpel
@@ -30,7 +30,7 @@
 
 //close shell
 /datum/surgery_step/mechanic_close
-	name = "screw shell (screwdriver or scalpel)"
+	name = "screw shell (screwdriver)"
 	implements = list(
 		TOOL_SCREWDRIVER = 100,
 		TOOL_SCALPEL = 75,
@@ -60,10 +60,10 @@
 
 //prepare electronics
 /datum/surgery_step/prepare_electronics
-	name = "prepare electronics (multitool or hemostat)"
+	name = "prepare electronics (multitool)"
 	implements = list(
 		TOOL_MULTITOOL = 100,
-		TOOL_HEMOSTAT = 75)
+		TOOL_HEMOSTAT = 10) // try to reboot internal controllers via short circuit with some conductor
 	time = 24
 	preop_sound = 'sound/items/taperecorder/tape_flip.ogg'
 	success_sound = 'sound/items/taperecorder/taperecorder_close.ogg'
@@ -80,10 +80,10 @@
 
 //unwrench
 /datum/surgery_step/mechanic_unwrench
-	name = "unwrench bolts (wrench or retractor)"
+	name = "unwrench bolts (wrench)"
 	implements = list(
 		TOOL_WRENCH = 100,
-		TOOL_RETRACTOR = 75)
+		TOOL_RETRACTOR = 10)
 	time = 24
 	preop_sound = 'sound/items/ratchet.ogg'
 
@@ -105,10 +105,10 @@
 
 //wrench
 /datum/surgery_step/mechanic_wrench
-	name = "wrench bolts (wrench or retractor)"
+	name = "wrench bolts (wrench)"
 	implements = list(
 		TOOL_WRENCH = 100,
-		TOOL_RETRACTOR = 75)
+		TOOL_RETRACTOR = 10)
 	time = 24
 	preop_sound = 'sound/items/ratchet.ogg'
 
