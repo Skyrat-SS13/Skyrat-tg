@@ -43,7 +43,7 @@
 	)
 	build_path = /obj/item/organ/internal/stomach/synth
 	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+		RND_SUBCATEGORY_MECHFAB_ANDROID + RND_SUBCATEGORY_MECHFAB_ANDROID_ORGANS,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
@@ -59,10 +59,12 @@
 /obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, datum/callback/charge_cell, seconds_per_tick)
 	SIGNAL_HANDLER
 
-	if(owner.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
+	if(owner.nutrition >= NUTRITION_LEVEL_FULL)
 		return
+	var/static/obj/item/stock_parts/power_store/dummy_cell //this interface requires a cell so uh, here you go
+	if(isnull(dummy_cell))
+		dummy_cell = new(null, SYNTH_CHARGE_MAX)
 
-	// I am NOT rewriting this to fit with TG's standard. I have like 70 bugfixes waiting. Feel free to give synths actual cells if I don't i the future
-	// ~Waterpig
-
-	owner.nutrition = min(owner.nutrition + (40 / seconds_per_tick), NUTRITION_LEVEL_ALMOST_FULL) // Makes sure we don't make the synth too full, which would apply the overweight slowdown
+	dummy_cell.charge = owner.nutrition * SYNTH_JOULES_PER_NUTRITION
+	charge_cell.Invoke(dummy_cell, seconds_per_tick)
+	owner.nutrition = min(dummy_cell.charge() / SYNTH_JOULES_PER_NUTRITION, NUTRITION_LEVEL_FULL)
