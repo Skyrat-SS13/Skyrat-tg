@@ -5,13 +5,14 @@
 "e" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/maint,
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/cobweb/cobweb2{
+	pixel_y = 24
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
 "k" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash/cigbutt,
-/obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
 "n" = (
@@ -24,7 +25,9 @@
 "r" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/effect/spawner/random/contraband/cannabis,
+/obj/effect/spawner/random/contraband/cannabis{
+	pixel_y = 9
+	},
 /obj/effect/spawner/random/contraband/narcotics,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
@@ -43,7 +46,9 @@
 "v" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/effect/spawner/random/medical/minor_healing,
+/obj/effect/spawner/random/medical/minor_healing{
+	pixel_y = 13
+	},
 /obj/effect/spawner/random/medical/injector,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
@@ -90,6 +95,11 @@
 /obj/effect/spawner/random/engineering/material_cheap,
 /obj/effect/spawner/random/maintenance/two,
 /turf/open/floor/iron/smooth,
+/area/station/maintenance/department/security)
+"M" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/random,
+/turf/open/floor/plating,
 /area/station/maintenance/department/security)
 "Q" = (
 /obj/effect/decal/cleanable/dirt,
@@ -180,7 +190,7 @@ a
 "}
 (9,1,1) = {"
 p
-n
+M
 E
 r
 a

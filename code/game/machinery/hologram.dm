@@ -39,7 +39,6 @@ Possible to do for anyone motivated enough:
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "holopad0"
 	base_icon_state = "holopad"
-	/// The plane is set such that it shows up without being covered by pipes/wires in a map editor, we change this on initialize.
 	layer = MAP_SWITCH(ABOVE_OPEN_TURF_LAYER, LOW_OBJ_LAYER)
 	plane = MAP_SWITCH(FLOOR_PLANE, GAME_PLANE)
 	req_access = list(ACCESS_KEYCARD_AUTH) //Used to allow for forced connecting to other (not secure) holopads. Anyone can make a call, though.
@@ -555,7 +554,6 @@ Possible to do for anyone motivated enough:
 			hologram.Impersonation = user
 		//Hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it. //SKYRAT EDIT -- Customization; Making holograms clickable/examinable
 		hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
-		SET_PLANE_EXPLICIT(hologram, ABOVE_GAME_PLANE, src)
 		hologram.set_anchored(TRUE)//So space wind cannot drag it.
 		//hologram.name = "[user.name] (Hologram)"//If someone decides to right click. // ORIGINAL
 		hologram.name = user.name //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
@@ -744,7 +742,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	holder.selected_language = record.language
 	hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
-	SET_PLANE_EXPLICIT(hologram, ABOVE_GAME_PLANE, src)
 	hologram.set_anchored(TRUE)//So space wind cannot drag it.
 	hologram.name = "[record.caller_name] (Hologram)"//If someone decides to right click.
 	set_holo(record, hologram)
@@ -877,7 +874,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "holoray"
 	layer = FLY_LAYER
-	plane = ABOVE_GAME_PLANE
 	density = FALSE
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

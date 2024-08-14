@@ -39,7 +39,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
 "fy" = (
-/obj/structure/door_assembly/door_assembly_shuttle,
+/obj/structure/door_assembly/door_assembly_shuttle{
+	dir = 4
+	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
 "fz" = (
@@ -48,6 +50,13 @@
 /turf/open/floor/mineral/titanium/blue{
 	initial_gas_mix = "LAVALAND_ATMOS"
 	},
+/area/ruin/unpowered)
+"fH" = (
+/obj/item/stack/sheet/mineral/titanium{
+	pixel_y = 9;
+	pixel_x = -3
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
 "gP" = (
 /turf/closed/mineral/titanium/volcanic,
@@ -96,6 +105,18 @@
 /turf/open/floor/mineral/plastitanium/red{
 	initial_gas_mix = "LAVALAND_ATMOS"
 	},
+/area/ruin/unpowered)
+"nf" = (
+/obj/item/shard/titanium,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/light/small/directional/west,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered)
+"nB" = (
+/obj/item/stack/sheet/iron{
+	pixel_y = 5
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
 "oE" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -169,6 +190,16 @@
 /obj/machinery/computer,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
+"xC" = (
+/obj/item/stack/sheet/mineral/titanium{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/mineral/titanium/yellow{
+	initial_gas_mix = "LAVALAND_ATMOS"
+	},
+/area/ruin/unpowered)
 "yZ" = (
 /turf/closed/mineral/volcanic/lava_land_surface,
 /area/ruin/unpowered)
@@ -177,6 +208,13 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
+"zp" = (
+/obj/item/food/meat/slab/human{
+	pixel_y = 13;
+	pixel_x = -4
+	},
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface)
 "Bb" = (
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
@@ -200,12 +238,6 @@
 /area/ruin/unpowered)
 "Dq" = (
 /obj/effect/mapping_helpers/burnt_floor,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered)
-"Dy" = (
-/obj/item/shard/titanium,
-/obj/machinery/light/small/directional/east,
-/obj/effect/mapping_helpers/broken_floor,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
 "DL" = (
@@ -299,6 +331,12 @@
 /obj/structure/spawner/lavaland/legion,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
+"KS" = (
+/obj/item/stack/sheet/mineral/titanium{
+	pixel_x = -6
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered)
 "Lz" = (
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
@@ -348,7 +386,7 @@
 /obj/structure/table,
 /obj/item/storage/medkit/regular{
 	pixel_x = 2;
-	pixel_y = 3
+	pixel_y = 11
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
@@ -362,6 +400,13 @@
 "Rm" = (
 /obj/item/shard/titanium,
 /obj/effect/mapping_helpers/broken_floor,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered)
+"Rr" = (
+/obj/item/stack/sheet/iron{
+	pixel_x = 5;
+	pixel_y = -4
+	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered)
 "St" = (
@@ -549,7 +594,7 @@ FL
 FL
 "}
 (6,1,1) = {"
-FL
+zp
 FL
 hT
 yZ
@@ -583,7 +628,7 @@ lu
 Vs
 dK
 Bb
-tp
+Rr
 sE
 Lz
 eQ
@@ -627,10 +672,10 @@ lu
 lu
 lu
 sE
-tp
+nB
 se
 FR
-HM
+KS
 yZ
 yZ
 FL
@@ -649,10 +694,10 @@ lu
 lu
 lu
 Ma
-HM
+fH
 Pa
 yZ
-CX
+xC
 yZ
 yZ
 uh
@@ -688,7 +733,7 @@ gP
 VN
 Ee
 Hy
-eQ
+nf
 rE
 rr
 Lz
@@ -734,7 +779,7 @@ lu
 lu
 Rm
 JN
-Dy
+Rm
 On
 Om
 GZ

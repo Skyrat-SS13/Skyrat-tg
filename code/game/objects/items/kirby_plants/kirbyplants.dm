@@ -1,5 +1,6 @@
 
 /obj/item/kirbyplants
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "potted plant"
 	//icon = 'icons/obj/fluff/flora/plants.dmi' // ORIGINAL
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' // SKYRAT EDIT CHANGE
