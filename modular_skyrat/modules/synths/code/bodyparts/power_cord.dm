@@ -1,7 +1,7 @@
-#define SYNTH_CHARGE_MAX 1.1 MEGA JOULES
-#define SYNTH_CHARGE_ALMOST_FULL 900 KILO JOULES
-#define SYNTH_JOULES_PER_NUTRITION 2000
-#define SYNTH_CHARGE_RATE 250 KILO WATTS
+#define SYNTH_CHARGE_MAX 550 KILO JOULES
+#define SYNTH_CHARGE_ALMOST_FULL 450 KILO JOULES
+#define SYNTH_JOULES_PER_NUTRITION 1 KILO JOULES
+#define SYNTH_CHARGE_RATE 100 KILO WATTS
 #define SYNTH_APC_MINIMUM_PERCENT 20
 #define SSMACHINES_SECONDS_PER_TICK 2
 
@@ -98,7 +98,7 @@
 		// Ensures minimum draw is always lower than this margin.
 		nutrition_level_joules = user.nutrition * SYNTH_JOULES_PER_NUTRITION
 		energy_needed = SYNTH_CHARGE_MAX - nutrition_level_joules
-		if(energy_needed < SYNTH_CHARGE_MAX - SYNTH_CHARGE_ALMOST_FULL - 125 KILO JOULES)
+		if(energy_needed < (SYNTH_CHARGE_MAX - SYNTH_CHARGE_ALMOST_FULL))
 			user.balloon_alert(user, "cell fully charged!")
 			break
 
