@@ -299,6 +299,7 @@
 		hitx = target.pixel_x + rand(-8, 8)
 		hity = target.pixel_y + rand(-8, 8)
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - IMPACT SOUNDS
 	var/impact_sound
 	if(hitsound)
@@ -308,6 +309,13 @@
 		get_sfx()
 	playsound(src, get_sfx_skyrat(impact_sound), vol_by_damage(), TRUE, -1)
 	// SKYRAT EDIT ADDITION END
+=======
+	if(isturf(target_turf) && hitsound_wall)
+		var/volume = clamp(vol_by_damage() + 20, 0, 100)
+		if(suppressed)
+			volume = 5
+		playsound(loc, hitsound_wall, volume, TRUE, -1)
+>>>>>>> c5e2321313f (add syndie lipstick (#85249))
 
 	if(damage > 0 && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_turf) && prob(75))
 		var/turf/closed/wall/target_wall = target_turf
@@ -321,6 +329,7 @@
 	if(!isliving(target))
 		if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_turf, hitx, hity)
+<<<<<<< HEAD
 		/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		if(isturf(target) && hitsound_wall)
 			var/volume = clamp(vol_by_damage() + 20, 0, 100)
@@ -328,6 +337,9 @@
 				volume = 5
 			playsound(loc, hitsound_wall, volume, TRUE, -1)
 		SKYRAT EDIT REMOVAL END */
+=======
+
+>>>>>>> c5e2321313f (add syndie lipstick (#85249))
 		return BULLET_ACT_HIT
 
 	var/mob/living/living_target = target
