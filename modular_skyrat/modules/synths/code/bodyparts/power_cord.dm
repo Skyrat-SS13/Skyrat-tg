@@ -1,10 +1,3 @@
-#define SYNTH_CHARGE_MAX 550 KILO JOULES
-#define SYNTH_CHARGE_ALMOST_FULL 450 KILO JOULES
-#define SYNTH_JOULES_PER_NUTRITION 1 KILO JOULES
-#define SYNTH_CHARGE_RATE 100 KILO WATTS
-#define SYNTH_APC_MINIMUM_PERCENT 20
-#define SSMACHINES_SECONDS_PER_TICK 2
-
 /obj/item/organ/internal/cyberimp/arm/power_cord
 	name = "charging implant"
 	desc = "An internal power cord. Useful if you run on elecricity. Not so much otherwise."
@@ -132,9 +125,3 @@
 	if(target_apc && !QDELETED(target_apc) && !QDELETED(target_apc.cell) && target_apc.main_status > APC_NO_POWER)
 		target_apc.charging = APC_CHARGING
 		target_apc.update_appearance()
-
-#undef SYNTH_CHARGE_MAX
-#undef SYNTH_JOULES_PER_NUTRITION
-#undef SYNTH_CHARGE_RATE
-#undef SYNTH_APC_MINIMUM_PERCENT
-#undef SSMACHINES_SECONDS_PER_TICK
