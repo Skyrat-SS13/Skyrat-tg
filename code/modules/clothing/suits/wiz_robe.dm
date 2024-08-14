@@ -271,47 +271,6 @@
 	desc = "A rather dull durathread robe; not quite as protective as an woven armour, but much stylish."
 	icon_state = "durathread-necro"
 
-/obj/item/clothing/suit/wizrobe/durathread
-	name = "durathread robe"
-	desc = "A rather dull durathread robe; not quite as protective as a proper piece of armour, but much stylish."
-	icon_state = "durathread-fake"
-	inhand_icon_state = null
-	armor_type = /datum/armor/robe_durathread
-
-/datum/armor/robe_durathread
-	melee = 15
-	bullet = 5
-	laser = 25
-	energy = 30
-	bomb = 10
-	fire = 30
-	acid = 40
-
-/obj/item/clothing/suit/wizrobe/durathread/fire
-	name = "pyromancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as an woven armour, but much stylish."
-	icon_state = "durathread-fire"
-
-/obj/item/clothing/suit/wizrobe/durathread/ice
-	name = "pyromancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as an woven armour, but much stylish."
-	icon_state = "durathread-ice"
-
-/obj/item/clothing/suit/wizrobe/durathread/electric
-	name = "electromancer robe"
-	desc = "Doesn't actually conduit or isolate from electricity. Though it does have some durability on account of being made from durathread."
-	icon_state = "durathread-electric"
-
-/obj/item/clothing/suit/wizrobe/durathread/earth
-	name = "geomancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as an woven armour, but much stylish."
-	icon_state = "durathread-earth"
-
-/obj/item/clothing/suit/wizrobe/durathread/necro
-	name = "necromancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as an woven armour, but much stylish."
-	icon_state = "durathread-necro"
-
 
 /obj/item/clothing/suit/wizrobe/paper/ui_action_click(mob/user, action)
 	stickmen()
