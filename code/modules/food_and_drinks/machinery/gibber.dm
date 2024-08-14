@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 /obj/machinery/gibber//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
+=======
+/obj/machinery/gibber
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
+>>>>>>> 4b4e9dff1d7d (Wallening [IDB IGNORE] [MDB IGNORE] (#85491))
 	name = "gibber"
 	desc = "The name isn't descriptive enough?"
 	icon = 'icons/obj/machines/kitchen.dmi'

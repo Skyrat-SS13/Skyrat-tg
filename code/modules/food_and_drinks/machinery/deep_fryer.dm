@@ -15,7 +15,12 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 	/obj/item/reagent_containers/hypospray/medipen, //letting medipens become edible opens them to being injected/drained with IV drip & saltshakers
 )))
 
+<<<<<<< HEAD
 /obj/machinery/deepfryer//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
+=======
+/obj/machinery/deepfryer
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
+>>>>>>> 4b4e9dff1d7d (Wallening [IDB IGNORE] [MDB IGNORE] (#85491))
 	name = "deep fryer"
 	desc = "Deep fried <i>everything</i>."
 	icon = 'icons/obj/machines/kitchen.dmi'

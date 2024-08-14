@@ -69,10 +69,12 @@
 /area/station/maintenance/department/crew_quarters/dorms)
 "jc" = (
 /turf/closed/wall,
-/area/station/asteroid)
+/area/station/commons/fitness/recreation)
 "ku" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/cobweb{
+	pixel_y = 24
+	},
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/crew_quarters/dorms)
 "kx" = (
@@ -109,13 +111,10 @@
 "pi" = (
 /obj/effect/turf_decal/stripes/end,
 /obj/structure/cable/multilayer/multiz,
-/obj/structure/sign/warning/electric_shock/directional/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/warning/electric_shock,
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/dorms)
-"pB" = (
-/turf/closed/wall,
-/area/station/hallway/primary/tram/center)
 "qf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/engineering/tank,
@@ -141,6 +140,11 @@
 /obj/structure/cable,
 /turf/open/openspace,
 /area/station/maintenance/department/crew_quarters/dorms)
+"tB" = (
+/obj/structure/flora/bush/flowers_pp/style_random,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/grass,
+/area/station/asteroid)
 "uz" = (
 /obj/machinery/door/airlock/external{
 	name = "External Access"
@@ -286,7 +290,9 @@
 /area/station/commons/fitness/recreation)
 "Kx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/cobweb/cobweb2{
+	pixel_y = 24
+	},
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/crew_quarters/dorms)
 "KO" = (
@@ -384,7 +390,9 @@
 /area/station/maintenance/department/crew_quarters/dorms)
 "VM" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/cobweb/cobweb2{
+	pixel_y = 24
+	},
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/dorms)
@@ -438,6 +446,13 @@
 /obj/item/relic,
 /turf/open/misc/asteroid/dug,
 /area/station/maintenance/department/crew_quarters/dorms)
+"Yl" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/grass,
+/area/station/asteroid)
 "ZJ" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 8
@@ -1114,7 +1129,7 @@ ym
 ci
 Ms
 Cz
-pB
+jc
 zk
 AG
 AG
@@ -1300,7 +1315,7 @@ oy
 AG
 AG
 rO
-ca
+tB
 GW
 GW
 GW
@@ -1357,7 +1372,7 @@ ym
 "}
 (27,1,1) = {"
 Cp
-Ms
+Yl
 cs
 rO
 cs

@@ -1,8 +1,13 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "extinguisher_closed"
+=======
+	icon = 'icons/obj/extinguisher.dmi'
+	icon_state = "cabinet"
+>>>>>>> 4b4e9dff1d7d (Wallening [IDB IGNORE] [MDB IGNORE] (#85491))
 	anchored = TRUE
 	density = FALSE
 	max_integrity = 200
@@ -10,7 +15,7 @@
 	var/obj/item/extinguisher/stored_extinguisher
 	var/opened = FALSE
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
+WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet)
 
 /obj/structure/extinguisher_cabinet/Initialize(mapload, ndir, building)
 	. = ..()
@@ -23,6 +28,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 	update_appearance(UPDATE_ICON)
 	register_context()
 	find_and_hang_on_wall()
+	AddComponent(/datum/component/examine_balloon, pixel_y_offset = 36)
 
 /obj/structure/extinguisher_cabinet/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -141,6 +147,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 		opened = !opened
 		update_appearance(UPDATE_ICON)
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL BEGIN - AESTHETICS - MOVED TO MODULAR.
 /obj/structure/extinguisher_cabinet/update_icon_state()
 	icon_state = "extinguisher"
@@ -162,6 +169,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 	return ..()
 */
 
+=======
+>>>>>>> 4b4e9dff1d7d (Wallening [IDB IGNORE] [MDB IGNORE] (#85491))
 /obj/structure/extinguisher_cabinet/atom_break(damage_flag)
 	. = ..()
 	if(!broken)
@@ -172,7 +181,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 			stored_extinguisher = null
 		update_appearance(UPDATE_ICON)
 
-
 /obj/structure/extinguisher_cabinet/atom_deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/wallframe/extinguisher_cabinet(loc)
@@ -182,10 +190,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 		stored_extinguisher.forceMove(loc)
 		stored_extinguisher = null
 
+/obj/structure/extinguisher_cabinet/update_overlays()
+	. = ..()
+	if(stored_extinguisher)
+		. += stored_extinguisher.cabinet_icon_state
+	if(opened)
+		. += "cabinet_door_open"
+	else
+		. += "cabinet_door_closed"
+
 /obj/item/wallframe/extinguisher_cabinet
 	name = "extinguisher cabinet frame"
 	desc = "Used for building wall-mounted extinguisher cabinets."
-	icon = 'icons/obj/wallmounts.dmi'
-	icon_state = "extinguisher_assembly"
+	icon = 'icons/obj/extinguisher.dmi'
+	icon_state = "cabinet"
 	result_path = /obj/structure/extinguisher_cabinet
-	pixel_shift = 29
