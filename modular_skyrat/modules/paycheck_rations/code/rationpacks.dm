@@ -110,7 +110,7 @@
 	desc = "Contains your allotted ration of meat, which in this case should be two fish fillets."
 	icon_state = "meats_ethereal"
 
-/obj/item/storage/box/spaceman_ration/meats/lizard/PopulateContents()
+/obj/item/storage/box/spaceman_ration/meats/ethereal/PopulateContents()
 	new /obj/item/food/fishmeat(src)
 	new /obj/item/food/fishmeat(src)
 
