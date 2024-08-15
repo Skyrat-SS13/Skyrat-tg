@@ -1,15 +1,14 @@
 /datum/component/prone_mob
-	var/mob/living/pronemob
 
-/datum/component/prone_mob/Initialize(...)
+/datum/component/prone_mob/Initialize(mob/living/source)
 	. = ..()
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
-	pronemob = parent
-	pronemob.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
-	pronemob.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
-	passtable_on(pronemob, type)
-	pronemob.layer = PROJECTILE_HIT_THRESHHOLD_LAYER
+	source = parent
+	parent.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
+	parent.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
+	passtable_on(parent, type)
+	source.layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 
 /datum/component/prone_mob/RegisterWithParent()
 	RegisterSignals(parent, list(COMSIG_MOVABLE_REMOVE_PRONE_STATE, COMSIG_LIVING_GET_PULLED), PROC_REF(stop_army_crawl))
@@ -36,8 +35,8 @@
 
 /datum/component/prone_mob/proc/stop_army_crawl(mob/living/source)
 	SIGNAL_HANDLER
-	pronemob.remove_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
-	passtable_off(pronemob, type)
-	pronemob.layer = MOB_LAYER
-	pronemob = null
+	source = parent
+	parent.remove_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
+	passtable_off(parent, type)
+	source.layer = MOB_LAYER
 	qdel(src)
