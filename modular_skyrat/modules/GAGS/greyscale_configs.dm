@@ -548,6 +548,12 @@
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
+// Labcoat
+
+/datum/greyscale_config/labcoat/worn/teshari
+	name = "Labcoat (Worn, Teshari)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/labcoat_teshari.dmi'
+
 //Flannel Shirt
 
 /datum/greyscale_config/flannelgags
