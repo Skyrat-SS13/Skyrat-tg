@@ -93,6 +93,20 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
 
 
+/obj/item/clothing/suit/toggle/labcoat/research_director
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"White" = list(
+			RESKIN_ICON_STATE = "labcoat_rd",
+			RESKIN_WORN_ICON_STATE = "labcoat_rd"
+		),
+		"Purple (Tesh Only)" = list(
+			RESKIN_ICON_STATE = "labcoat_rd",
+			RESKIN_WORN_ICON_STATE = "labcoat_rd_p"
+		)
+	)
+
+
 /obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
 	. = ..()
 	allowed += list(
