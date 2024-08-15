@@ -83,3 +83,10 @@
 	desc = "A maritime ration-sized bottle of caramel, in the past these used to be something called 'treacle', which was \
 		the tar left over from refining sugar. Nowadays, governments are rich enough to just send caramel instead."
 	list_reagents = list(/datum/reagent/consumable/caramel = 10)
+
+/obj/item/reagent_containers/cup/soda_cans/skyrat/wine_voltaic
+	name = "canned voltaic wine"
+	desc = "A can of voltaic wine"
+	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
+	icon_state = "wine_voltaic_canned"
+	list_reagents = list(/datum/reagent/consumable/ethanol/wine_voltaic = 30)
