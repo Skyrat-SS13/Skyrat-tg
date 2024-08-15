@@ -62,7 +62,7 @@
 
 /obj/item/storage/box/spaceman_ration/plants/ethereal
 	desc = "Contains your allotted ration of produce, which in this case should be a lantern fruit, a jupiter cup, and a pickled voltvine."
-	icon_state = "plants_ethereal
+	icon_state = "plants_ethereal"
 	box_storage_slots = 3
 
 /obj/item/storage/box/spaceman_ration/plants/ethereal/PopulateContents()

@@ -86,7 +86,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/wine_voltaic
 	name = "canned voltaic wine"
-	desc = "A can of voltaic wine"
+	desc = "A can of electrically infused wine, recharges ethereals and is safe for consumption."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	icon_state = "wine_voltaic_canned"
 	list_reagents = list(/datum/reagent/consumable/ethanol/wine_voltaic = 30)
