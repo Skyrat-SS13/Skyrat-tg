@@ -264,7 +264,12 @@
 
 /// if you are updating this make to to update /turf/open/misc/rcd_act() too
 /turf/open/floor/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+<<<<<<< HEAD
 	switch(rcd_data["[RCD_DESIGN_MODE]"])
+=======
+	var/selected_direction = rcd_data[RCD_BUILD_DIRECTION] || user.dir
+	switch(rcd_data[RCD_DESIGN_MODE])
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 		if(RCD_TURF)
 			if(rcd_data["[RCD_DESIGN_PATH]"] != /turf/open/floor/plating/rcd)
 				return FALSE
@@ -283,10 +288,17 @@
 
 			//allow directional windows to be built without grills
 			if(!initial(window_path.fulltile))
+<<<<<<< HEAD
 				if(!valid_build_direction(src, user.dir, is_fulltile = FALSE))
 					balloon_alert(user, "window already here!")
 					return FALSE
 				var/obj/structure/window/WD = new window_path(src, user.dir)
+=======
+				if(!valid_build_direction(src, selected_direction, is_fulltile = FALSE))
+					balloon_alert(user, "window already here!")
+					return FALSE
+				var/obj/structure/window/WD = new window_path(src, selected_direction)
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 				WD.set_anchored(TRUE)
 				return TRUE
 
@@ -300,7 +312,11 @@
 			var/obj/machinery/door/airlock_type = rcd_data["[RCD_DESIGN_PATH]"]
 
 			if(ispath(airlock_type, /obj/machinery/door/window))
+<<<<<<< HEAD
 				if(!valid_build_direction(src, user.dir, is_fulltile = FALSE))
+=======
+				if(!valid_build_direction(src, selected_direction, is_fulltile = FALSE))
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 					balloon_alert(user, "there's already a windoor!")
 					return FALSE
 				for(var/obj/machinery/door/door in src)
@@ -309,7 +325,11 @@
 					balloon_alert(user, "there's already a door!")
 					return FALSE
 				//create the assembly and let it finish itself
+<<<<<<< HEAD
 				var/obj/structure/windoor_assembly/assembly = new (src, user.dir)
+=======
+				var/obj/structure/windoor_assembly/assembly = new (src, selected_direction)
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 				assembly.secure = ispath(airlock_type, /obj/machinery/door/window/brigdoor)
 				assembly.electronics = the_rcd.airlock_electronics.create_copy(assembly)
 				assembly.finish_door()
@@ -328,7 +348,12 @@
 			else
 				assembly.airlock_type = airlock_type
 			assembly.electronics = the_rcd.airlock_electronics.create_copy(assembly)
+<<<<<<< HEAD
 			assembly.finish_door()
+=======
+			var/atom/new_door = assembly.finish_door()
+			new_door?.setDir(selected_direction)
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 			return TRUE
 		if(RCD_STRUCTURE)
 			var/atom/movable/design_type = rcd_data["[RCD_DESIGN_PATH]"]
@@ -352,7 +377,11 @@
 				/obj/structure/bed,
 			)
 			if(is_path_in_list(locate_type, dir_types))
+<<<<<<< HEAD
 				design.setDir(user.dir)
+=======
+				design.setDir(selected_direction)
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			if(rcd_proof)

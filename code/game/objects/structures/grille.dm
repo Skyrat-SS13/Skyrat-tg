@@ -107,14 +107,24 @@
 			if(!ispath(window_path))
 				CRASH("Invalid window path type in RCD: [window_path]")
 
+			var/window_direction = rcd_data[RCD_BUILD_DIRECTION] || user.dir
 			//checks if its a valid build direction
 			if(!initial(window_path.fulltile))
+<<<<<<< HEAD
 				if(!valid_build_direction(loc, user.dir, is_fulltile = FALSE))
 					balloon_alert(user, "window already here!")
 					return FALSE
 
 			var/obj/structure/window/WD = new window_path(T, user.dir)
 			WD.set_anchored(TRUE)
+=======
+				if(!valid_build_direction(loc, window_direction , is_fulltile = FALSE))
+					balloon_alert(user, "window already here!")
+					return FALSE
+
+			var/obj/structure/window/window = new window_path(T, window_direction )
+			window.set_anchored(TRUE)
+>>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 			return TRUE
 	return FALSE
 
