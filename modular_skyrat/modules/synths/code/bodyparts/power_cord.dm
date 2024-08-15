@@ -106,7 +106,7 @@
 			break
 
 		// Calculate how much to draw from the cell this cycle.
-		var/current_draw = min(energy_needed, SYNTH_CHARGE_RATE * SSMACHINES_SECONDS_PER_TICK)
+		var/current_draw = min(energy_needed, SYNTH_CHARGE_RATE * SSmachines.wait)
 
 		var/energy_delivered = target_cell.use(current_draw)
 		if(!energy_delivered)
@@ -117,7 +117,7 @@
 			break
 
 		// If charging was successful, then increase user nutrition and emit sparks.
-		var/nutrition_gained = (energy_delivered / SYNTH_JOULES_PER_NUTRITION) / SSMACHINES_SECONDS_PER_TICK
+		var/nutrition_gained = (energy_delivered / SYNTH_JOULES_PER_NUTRITION) / SSmachines.wait
 		user.nutrition += nutrition_gained
 		do_sparks(1, FALSE, target_cell.loc)
 
