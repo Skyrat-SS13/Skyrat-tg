@@ -97,12 +97,16 @@
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"White" = list(
-			RESKIN_ICON_STATE = "labcoat_rd",
-			RESKIN_WORN_ICON_STATE = "labcoat_rd"
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/labcoat.dmi',
+			RESKIN_ICON_STATE = "labcoat_rd_w",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/labcoat.dmi',
+			RESKIN_WORN_ICON_STATE = "labcoat_rd_w",
 		),
-		"Purple (Tesh Only)" = list(
+		"Purple" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/labcoat.dmi',
 			RESKIN_ICON_STATE = "labcoat_rd",
-			RESKIN_WORN_ICON_STATE = "labcoat_rd_p"
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/labcoat.dmi',
+			RESKIN_WORN_ICON_STATE = "labcoat_rd",
 		)
 	)
 
