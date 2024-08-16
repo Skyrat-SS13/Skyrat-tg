@@ -1,6 +1,8 @@
 /obj/item/clothing/gloves/plate/larp
 	desc = "They're like gloves, but made of metal. Better not touch any live wires!"
 	siemens_coefficient = 1
+
+	body_parts_covered = parent_type::body_parts_covered | ARMS
 	armor_type = /datum/armor/plate_larp
 
 /datum/armor/plate_larp
