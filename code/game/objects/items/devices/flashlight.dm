@@ -7,7 +7,7 @@
 	name = "flashlight"
 	desc = "A hand-held emergency light."
 	custom_price = PAYCHECK_CREW
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/devices/lighting.dmi'
 	dir = WEST
 	icon_state = "flashlight"
 	inhand_icon_state = "flashlight"
@@ -298,6 +298,7 @@
 	name = "penlight"
 	desc = "A pen-sized light, used by medical staff. It can also be used to create a hologram to alert people of incoming medical assistance."
 	dir = EAST
+	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "penlight"
 	inhand_icon_state = ""
 	worn_icon_state = "pen"
@@ -700,7 +701,7 @@
 	gender = PLURAL
 	name = "glowing slime extract"
 	desc = "Extract from a yellow slime. It emits a strong light when squeezed."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "slime"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL
@@ -777,6 +778,7 @@
 	light_power = 2
 	light_system = OVERLAY_LIGHT
 	color = LIGHT_COLOR_GREEN
+	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "glowstick"
 	base_icon_state = "glowstick"
 	inhand_icon_state = null

@@ -2,7 +2,11 @@
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Definitely can't get past those. No way."
 	gender = PLURAL
+<<<<<<< HEAD
 	icon = 'icons/obj/structures.dmi'//ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/structures/tall.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "plasticflaps"
 	armor_type = /datum/armor/structure_plasticflaps
 	density = FALSE

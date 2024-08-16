@@ -291,7 +291,11 @@
 
 /// FOAM STRUCTURE. Formed by metal foams. Dense and opaque, but easy to break
 /obj/structure/foamedmetal
+<<<<<<< HEAD
 	icon = 'icons/effects/effects.dmi'
+=======
+	icon = 'icons/obj/structures/tall.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "metalfoam"
 	density = TRUE
 	opacity = TRUE // changed in New()

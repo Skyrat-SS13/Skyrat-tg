@@ -134,7 +134,11 @@
 /obj/item/wallframe/sparker
 	name = "Sparker WallFrame"
 	desc = "An unmounted sparker. Attach it to a wall to use."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi'
+=======
+	icon = 'icons/obj/machines/igniter.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "migniter"
 	result_path = /obj/machinery/sparker
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
@@ -143,7 +147,11 @@
 /obj/machinery/sparker
 	name = "mounted igniter"
 	desc = "A wall-mounted ignition device."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi'
+=======
+	icon = 'icons/obj/machines/igniter.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "migniter"
 	base_icon_state = "migniter"
 	resistance_flags = FIRE_PROOF

@@ -3,7 +3,11 @@
 /obj/machinery/flasher
 	name = "mounted flash"
 	desc = "A wall-mounted flashbulb device."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi'
+=======
+	icon = 'icons/obj/machines/flash.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "mflash1"
 	base_icon_state = "mflash"
 	max_integrity = 250
@@ -208,7 +212,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 /obj/item/wallframe/flasher
 	name = "mounted flash frame"
 	desc = "Used for building wall-mounted flashers."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi'
+=======
+	icon = 'icons/obj/machines/flash.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "mflash_frame"
 	result_path = /obj/machinery/flasher
 	var/id = null

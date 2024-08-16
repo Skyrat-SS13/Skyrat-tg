@@ -1,8 +1,13 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "extinguisher_closed"
+=======
+	icon = 'icons/obj/structures/cabinet.dmi'
+	icon_state = "cabinet"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	anchored = TRUE
 	density = FALSE
 	max_integrity = 200
@@ -185,7 +190,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 /obj/item/wallframe/extinguisher_cabinet
 	name = "extinguisher cabinet frame"
 	desc = "Used for building wall-mounted extinguisher cabinets."
+<<<<<<< HEAD
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "extinguisher_assembly"
+=======
+	icon = 'icons/obj/structures/cabinet.dmi'
+	icon_state = "cabinet"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	result_path = /obj/structure/extinguisher_cabinet
 	pixel_shift = 29

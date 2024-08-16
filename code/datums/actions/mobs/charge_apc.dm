@@ -3,8 +3,13 @@
 
 /datum/action/cooldown/mob_cooldown/charge_apc
 	name = "Charge APCs"
+<<<<<<< HEAD
 	button_icon = 'icons/obj/machines/wallmounts.dmi'
 	button_icon_state = "apc0"
+=======
+	button_icon = 'icons/obj/machines/APC.dmi'
+	button_icon_state = "frame"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	desc = "Give off charge to an APC."
 	cooldown_time = 5 SECONDS
 

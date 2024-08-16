@@ -252,7 +252,7 @@
 
 /datum/dimension_theme/radioactive
 	name = "Radioactive"
-	icon = 'icons/obj/ore.dmi'
+	icon = 'icons/obj/mining_zones/ore.dmi'
 	icon_state = "uranium"
 	material = /datum/material/uranium
 	sound = 'sound/items/welder.ogg'
@@ -400,8 +400,14 @@
 
 /datum/dimension_theme/disco
 	name = "Disco"
+<<<<<<< HEAD
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lbulb"
+=======
+	icon = 'icons/obj/service/janitor.dmi'
+	icon_state = "bulb"
+	replace_walls = /turf/closed/wall/fake_hierophant
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	material = /datum/material/glass
 	replace_floors = list(/turf/open/floor/light = 1)
 

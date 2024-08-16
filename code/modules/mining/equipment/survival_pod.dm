@@ -13,7 +13,7 @@
 	name = "bluespace shelter capsule"
 	desc = "An emergency shelter stored within a pocket of bluespace."
 	icon_state = "capsule"
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons/obj/mining_zones/equipment.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
@@ -137,17 +137,25 @@
 //Window
 /obj/structure/window/reinforced/shuttle/survival_pod
 	name = "pod window"
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/pod_window.dmi'
 	icon_state = "pod_window-0"
 	base_icon_state = "pod_window"
+=======
+	icon = 'icons/obj/structures/smooth/windows/pod_window.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS + SMOOTH_GROUP_SURVIVAL_TITANIUM_POD
 	canSmoothWith = SMOOTH_GROUP_SURVIVAL_TITANIUM_POD
 
 /obj/structure/window/reinforced/survival_pod
 	name = "pod window"
+<<<<<<< HEAD
 	icon = 'icons/obj/mining_zones/survival_pod.dmi'
 	icon_state = "pwindow"
+=======
+	icon = 'icons/obj/structures/smooth/windows/pod_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/survival_pod/spawner, 0)
 

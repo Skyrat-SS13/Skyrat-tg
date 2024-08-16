@@ -2,7 +2,12 @@
 /obj/item/wallframe/apc
 	name = "\improper APC frame"
 	desc = "Used for repairing or building APCs."
+<<<<<<< HEAD
 	icon_state = "apc"
+=======
+	icon = 'icons/obj/machines/APC.dmi'
+	icon_state = "frame"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	result_path = /obj/machinery/power/apc/auto_name
 
 /obj/item/wallframe/apc/try_build(turf/on_wall, user)
