@@ -1,6 +1,10 @@
 /obj/structure/window
 	name = "window"
 	desc = "A directional window."
+<<<<<<< HEAD:code/game/objects/structures/window.dm
+=======
+	icon = 'icons/obj/structures/smooth/windows/normal_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 	icon_state = "window"
 	density = TRUE
 	layer = ABOVE_OBJ_LAYER //Just above doors
@@ -407,11 +411,204 @@
 	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & USES_SMOOTHING))
 		QUEUE_SMOOTH(src)
 
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 	var/ratio = atom_integrity / max_integrity
 	ratio = CEILING(ratio*4, 1) * 25
 	if(ratio > 75)
 		return
 	. += mutable_appearance('icons/obj/structures.dmi', "damage[ratio]", -(layer+0.1))
+=======
+	if(fulltile)
+		var/ratio = atom_integrity / max_integrity
+		ratio = CEILING(ratio*4, 1)
+		var/broken_icon = null
+		switch(ratio)
+			if(3)
+				broken_icon = 'icons/obj/structures/smooth/windows/window_broken_light.dmi'
+			if(2)
+				broken_icon = 'icons/obj/structures/smooth/windows/window_broken_medium.dmi'
+			if(1)
+				broken_icon = 'icons/obj/structures/smooth/windows/window_broken_heavy.dmi'
+
+		if(broken_icon)
+			. += mutable_appearance(broken_icon, "[smoothing_junction]", -(layer+0.1))
+		return .
+
+	var/list/states_to_apply = list()
+	var/handled_junctions = NONE
+	if(smoothing_junction & NORTHEAST_JUNCTION && smoothing_junction & SOUTHEAST_JUNCTION && smoothing_junction & EAST_JUNCTION)
+		handled_junctions |= NORTHEAST_JUNCTION | SOUTHEAST_JUNCTION | EAST_JUNCTION
+		switch(dir)
+			if(NORTH)
+				states_to_apply += "quad-tr"
+			if(SOUTH)
+				states_to_apply += "quad-br"
+	if(smoothing_junction & NORTHWEST_JUNCTION && smoothing_junction & SOUTHWEST_JUNCTION && smoothing_junction & WEST_JUNCTION)
+		handled_junctions |= NORTHWEST_JUNCTION | SOUTHWEST_JUNCTION | WEST_JUNCTION
+		switch(dir)
+			if(NORTH)
+				states_to_apply += "quad-tl"
+			if(SOUTH)
+				states_to_apply += "quad-bl"
+	if(smoothing_junction & SOUTHWEST_JUNCTION && smoothing_junction & SOUTHEAST_JUNCTION && smoothing_junction & SOUTH_JUNCTION)
+		handled_junctions |= SOUTHWEST_JUNCTION | SOUTHEAST_JUNCTION | SOUTH_JUNCTION
+	if(smoothing_junction & NORTHWEST_JUNCTION && smoothing_junction & NORTHEAST_JUNCTION && smoothing_junction & NORTH_JUNCTION)
+		handled_junctions |= NORTHWEST_JUNCTION | NORTHEAST_JUNCTION | NORTH_JUNCTION
+
+	if(smoothing_junction & NORTHWEST_JUNCTION && smoothing_junction & WEST_JUNCTION && !(handled_junctions & (NORTHWEST_JUNCTION|WEST_JUNCTION)))
+		switch(dir)
+			if(SOUTH)
+				handled_junctions |= NORTHWEST_JUNCTION | WEST_JUNCTION
+				states_to_apply += "up-triple-bl"
+	if(smoothing_junction & NORTHEAST_JUNCTION && smoothing_junction & EAST_JUNCTION && !(handled_junctions & (NORTHEAST_JUNCTION|EAST_JUNCTION)))
+		switch(dir)
+			if(SOUTH)
+				handled_junctions |= NORTHEAST_JUNCTION | EAST_JUNCTION
+				states_to_apply += "up-triple-br"
+	if(smoothing_junction & SOUTHWEST_JUNCTION && smoothing_junction & WEST_JUNCTION && !(handled_junctions & (SOUTHWEST_JUNCTION|WEST_JUNCTION)))
+		switch(dir)
+			if(NORTH)
+				handled_junctions |= SOUTHWEST_JUNCTION | WEST_JUNCTION
+				states_to_apply += "down-triple-tl"
+	if(smoothing_junction & SOUTHEAST_JUNCTION && smoothing_junction & EAST_JUNCTION && !(handled_junctions & (SOUTHEAST_JUNCTION|EAST_JUNCTION)))
+		switch(dir)
+			if(NORTH)
+				handled_junctions |= SOUTHEAST_JUNCTION | EAST_JUNCTION
+				states_to_apply += "down-triple-tr"
+
+	if(smoothing_junction & SOUTHEAST_JUNCTION && smoothing_junction & SOUTH_JUNCTION && !(handled_junctions & (SOUTHEAST_JUNCTION|SOUTH_JUNCTION)))
+		switch(dir)
+			if(WEST)
+				handled_junctions |= SOUTHEAST_JUNCTION | SOUTH_JUNCTION | EAST_JUNCTION
+				states_to_apply += "right-triple-bl"
+	if(smoothing_junction & SOUTHWEST_JUNCTION && smoothing_junction & SOUTH_JUNCTION && !(handled_junctions & (SOUTHWEST_JUNCTION|SOUTH_JUNCTION)))
+		switch(dir)
+			if(EAST)
+				handled_junctions |= SOUTHWEST_JUNCTION | SOUTH_JUNCTION | WEST_JUNCTION
+				states_to_apply += "left-triple-br"
+
+	if(smoothing_junction & NORTHEAST_JUNCTION && smoothing_junction & NORTH_JUNCTION && !(handled_junctions & (NORTHEAST_JUNCTION|NORTH_JUNCTION)))
+		switch(dir)
+			if(WEST)
+				handled_junctions |= NORTHEAST_JUNCTION | NORTH_JUNCTION | EAST_JUNCTION
+				states_to_apply += "right-triple-tl"
+	if(smoothing_junction & NORTHWEST_JUNCTION && smoothing_junction & NORTH_JUNCTION && !(handled_junctions & (NORTHWEST_JUNCTION|NORTH_JUNCTION)))
+		switch(dir)
+			if(EAST)
+				handled_junctions |= NORTHWEST_JUNCTION | NORTH_JUNCTION | WEST_JUNCTION
+				states_to_apply += "left-triple-tr"
+
+	// These cases exist JUST to eat diagonal smooths for NORTH/SOUTH windows
+	if(smoothing_junction & SOUTHWEST_JUNCTION && smoothing_junction & NORTHWEST_JUNCTION)
+		switch(dir)
+			if(NORTH, SOUTH)
+				handled_junctions |= SOUTHWEST_JUNCTION | NORTHWEST_JUNCTION | WEST_JUNCTION | NORTH_JUNCTION | SOUTH_JUNCTION
+	if(smoothing_junction & SOUTHEAST_JUNCTION && smoothing_junction & NORTHEAST_JUNCTION)
+		switch(dir)
+			if(NORTH, SOUTH)
+				handled_junctions |= SOUTHEAST_JUNCTION | NORTHEAST_JUNCTION | EAST_JUNCTION | NORTH_JUNCTION | SOUTH_JUNCTION
+
+	// filter out everything on the tile opposing us
+	handled_junctions |= dir_to_all_junctions(dir)
+
+	if(smoothing_junction & NORTHWEST_JUNCTION && !(handled_junctions & NORTHWEST_JUNCTION))
+		handled_junctions |= NORTH_JUNCTION | WEST_JUNCTION
+		// Only gonna define dirs that allow a body to exist sanely
+		// So South is acceptable
+		// Also want to avoid double application
+		// hhhh
+		switch(dir)
+			if(SOUTH)
+				states_to_apply += "up-right-corner-bl"
+	if(smoothing_junction & NORTHEAST_JUNCTION && !(handled_junctions & NORTHEAST_JUNCTION))
+		handled_junctions |= NORTH_JUNCTION | EAST_JUNCTION
+		switch(dir)
+			if(SOUTH)
+				states_to_apply += "up-left-corner-br"
+	if(smoothing_junction & SOUTHWEST_JUNCTION && !(handled_junctions & SOUTHWEST_JUNCTION))
+		handled_junctions |= SOUTH_JUNCTION | WEST_JUNCTION
+		switch(dir)
+			if(NORTH)
+				states_to_apply += "down-right-corner-tl"
+	if(smoothing_junction & SOUTHEAST_JUNCTION && !(handled_junctions & SOUTHEAST_JUNCTION))
+		handled_junctions |= SOUTH_JUNCTION | EAST_JUNCTION
+		switch(dir)
+			if(NORTH)
+				states_to_apply += "down-left-corner-tr"
+
+	if(!(handled_junctions & WEST_JUNCTION))
+		if(smoothing_junction & WEST_JUNCTION)
+			switch(dir)
+				if(NORTH)
+					states_to_apply += "horizontal-cont-tl"
+				if(SOUTH)
+					states_to_apply += "horizontal-cont-bl"
+		else
+			switch(dir)
+				if(NORTH)
+					states_to_apply += "horizontal-edge-tl"
+				if(SOUTH)
+					states_to_apply += "horizontal-edge-bl"
+
+	if(!(handled_junctions & EAST_JUNCTION))
+		if(smoothing_junction & EAST_JUNCTION)
+			switch(dir)
+				if(NORTH)
+					states_to_apply += "horizontal-cont-tr"
+				if(SOUTH)
+					states_to_apply += "horizontal-cont-br"
+		else
+			switch(dir)
+				if(NORTH)
+					states_to_apply += "horizontal-edge-tr"
+				if(SOUTH)
+					states_to_apply += "horizontal-edge-br"
+
+	if(!(handled_junctions & SOUTH_JUNCTION))
+		if(smoothing_junction & SOUTH_JUNCTION)
+			switch(dir)
+				if(EAST)
+					states_to_apply += "vertical-cont-br"
+				if(WEST)
+					states_to_apply += "vertical-cont-bl"
+		else
+			switch(dir)
+				if(EAST)
+					states_to_apply += "vertical-edge-br"
+				if(WEST)
+					states_to_apply += "vertical-edge-bl"
+
+	if(!(handled_junctions & NORTH_JUNCTION))
+		if(smoothing_junction & NORTH_JUNCTION)
+			switch(dir)
+				if(EAST)
+					states_to_apply += "vertical-cont-tr"
+				if(WEST)
+					states_to_apply += "vertical-cont-tl"
+		else
+			switch(dir)
+				if(EAST)
+					states_to_apply += "vertical-edge-tr"
+				if(WEST)
+					states_to_apply += "vertical-edge-tl"
+
+	for(var/window_state in states_to_apply)
+		. += mutable_appearance(icon, window_state)
+
+	// We can't use typical emissive blocking because of the pixel offset, remove when that's fixed please
+	var/list/states_to_block = states_to_apply + icon_state
+	for(var/blocked_state in states_to_block)
+		// Cancels out the pixel offset we apply to the parent
+		// (Which is needed because render_target is bugged)
+		var/mutable_appearance/blocker = emissive_blocker(icon, blocked_state, offset_spokesman = src)
+		blocker.pixel_z = -pixel_z
+		. += blocker
+
+/obj/structure/window/set_smoothed_icon_state(new_junction)
+	if(fulltile)
+		return ..()
+	smoothing_junction = new_junction
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 
 /obj/structure/window/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return exposed_temperature > T0C + heat_resistance
@@ -465,12 +662,31 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/spawner, 0)
 /obj/structure/window/unanchored
 	anchored = FALSE
 
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
+=======
+MAPPING_DIRECTIONAL_HELPERS_EMPTY(/obj/structure/window/unanchored/spawner)
+
+/obj/structure/window/half
+	can_atmos_pass = ATMOS_PASS_YES
+	icon = 'icons/obj/structures/smooth/windows/half_thindow.dmi'
+
+MAPPING_DIRECTIONAL_HELPERS_EMPTY(/obj/structure/window/half)
+
+/obj/structure/window/half/unanchored
+	anchored = FALSE
+
+MAPPING_DIRECTIONAL_HELPERS_EMPTY(/obj/structure/window/half/unanchored)
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
 	desc = "A window that is reinforced with metal rods."
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 	icon_state = "rwindow"
+=======
+	icon = 'icons/obj/structures/smooth/windows/reinforced_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 	reinf = TRUE
 	heat_resistance = 1600
 	armor_type = /datum/armor/window_reinforced
@@ -598,7 +814,23 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/spawner, 0)
 	anchored = FALSE
 	state = WINDOW_OUT_OF_FRAME
 
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/unanchored/spawner, 0)
+=======
+MAPPING_DIRECTIONAL_HELPERS_EMPTY(/obj/structure/window/reinforced/unanchored/spawner)
+
+/obj/structure/window/reinforced/half
+	can_atmos_pass = ATMOS_PASS_YES
+	icon = 'icons/obj/structures/smooth/windows/reinforced_half_thindow.dmi'
+
+MAPPING_DIRECTIONAL_HELPERS_EMPTY(/obj/structure/window/reinforced/half)
+
+/obj/structure/window/reinforced/half/unanchored
+	anchored = FALSE
+	state = WINDOW_OUT_OF_FRAME
+
+MAPPING_DIRECTIONAL_HELPERS_EMPTY(/obj/structure/window/reinforced/half/unanchored)
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 
 // You can't rust glass! So only reinforced glass can be impacted.
 /obj/structure/window/reinforced/rust_heretic_act()
@@ -611,7 +843,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/unanchored/spawner,
 /obj/structure/window/plasma
 	name = "plasma window"
 	desc = "A window made out of a plasma-silicate alloy. It looks insanely tough to break and burn through."
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 	icon_state = "plasmawindow"
+=======
+	icon = 'icons/obj/structures/smooth/windows/plasma_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 	reinf = FALSE
 	heat_resistance = 25000
 	armor_type = /datum/armor/window_plasma
@@ -640,7 +876,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/plasma/spawner, 0)
 /obj/structure/window/reinforced/plasma
 	name = "reinforced plasma window"
 	desc = "A window made out of a plasma-silicate alloy and a rod matrix. It looks hopelessly tough to break and is most likely nigh fireproof."
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 	icon_state = "plasmarwindow"
+=======
+	icon = 'icons/obj/structures/smooth/windows/plasma_reinforced_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 	reinf = TRUE
 	heat_resistance = 50000
 	armor_type = /datum/armor/reinforced_plasma
@@ -669,13 +909,21 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/plasma/spawner, 0)
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 	icon_state = "twindow"
+=======
+	icon = 'icons/obj/structures/smooth/windows/tinted_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/spawner, 0)
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
+<<<<<<< HEAD:code/game/objects/structures/window.dm
 	icon_state = "fwindow"
+=======
+	icon = 'icons/obj/structures/smooth/windows/frosted_thindow.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823)):code/game/objects/structures/windows/window.dm
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spawner, 0)
 

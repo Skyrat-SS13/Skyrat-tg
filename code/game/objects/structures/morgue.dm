@@ -31,7 +31,11 @@
 GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants and other ghosties.
 
 /obj/structure/bodycontainer
+<<<<<<< HEAD
 	icon = 'icons/obj/structures.dmi'//ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/storage/storage.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "morgue1"
 	density = TRUE
 	anchored = TRUE
@@ -598,7 +602,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/tray/m_tray
 	name = "morgue tray"
 	desc = "Apply corpse before closing."
-	icon = 'icons/obj/structures.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "morguet"
 	pass_flags_self = PASSTABLE | LETPASSTHROW
 	layer = /obj/structure/bodycontainer/morgue::layer - 0.03

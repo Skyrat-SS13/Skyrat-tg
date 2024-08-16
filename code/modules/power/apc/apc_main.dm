@@ -17,8 +17,14 @@
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area's electrical systems."
+<<<<<<< HEAD
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "apc0"
+=======
+
+	icon = 'icons/obj/machines/APC.dmi'
+	icon_state = "frame"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	use_power = NO_POWER_USE
 	req_access = null
 	max_integrity = 200

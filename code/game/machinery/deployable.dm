@@ -56,7 +56,11 @@
 /obj/structure/barricade/wooden
 	name = "wooden barricade"
 	desc = "This space is blocked off by a wooden barricade."
+<<<<<<< HEAD
 	icon = 'icons/obj/structures.dmi'
+=======
+	icon = 'icons/obj/structures/tall.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	icon_state = "woodenbarricade"
 	resistance_flags = FLAMMABLE
 	bar_material = WOOD
@@ -99,7 +103,12 @@
 /obj/structure/barricade/wooden/crude
 	name = "crude plank barricade"
 	desc = "This space is blocked off by a crude assortment of planks."
+<<<<<<< HEAD
 	icon_state = "plankbarricade"
+=======
+	icon = 'icons/obj/structures/tall.dmi'
+	icon_state = "woodenbarricade"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	drop_amount = 1
 	max_integrity = 50
 	proj_pass_rate = 65
@@ -107,7 +116,12 @@
 
 /obj/structure/barricade/wooden/crude/snow
 	desc = "This space is blocked off by a crude assortment of planks. It seems to be covered in a layer of snow."
+<<<<<<< HEAD
 	icon_state = "plankbarricade_snow"
+=======
+	icon = 'icons/obj/structures/tall.dmi'
+	icon_state = "woodenbarricade_snow"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	max_integrity = 75
 
 /obj/structure/barricade/wooden/make_debris()
@@ -116,7 +130,7 @@
 /obj/structure/barricade/sandbags
 	name = "sandbags"
 	desc = "Bags of sand. Self explanatory."
-	icon = 'icons/obj/smooth_structures/sandbags.dmi'
+	icon = 'icons/obj/structures/smooth/sandbags.dmi'
 	icon_state = "sandbags-0"
 	base_icon_state = "sandbags"
 	max_integrity = 280
@@ -135,7 +149,7 @@
 /obj/structure/barricade/security
 	name = "security barrier"
 	desc = "A deployable barrier. Provides good cover in fire fights."
-	icon = 'icons/obj/structures.dmi'
+	icon = 'icons/obj/structures/tall.dmi'
 	icon_state = "barrier0"
 	density = FALSE
 	anchored = FALSE

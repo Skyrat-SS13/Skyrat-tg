@@ -21,11 +21,24 @@
 
 				//icon for windows are blended with grills if required and loaded from radial menu
 				if(ispath(path, /obj/structure/window))
+<<<<<<< HEAD
 					if(path == /obj/structure/window)
 						sprite_icon = icon(icon = 'icons/hud/radial.dmi', icon_state = "windowsize")
 					else if(path == /obj/structure/window/reinforced)
 						sprite_icon = icon(icon = 'icons/hud/radial.dmi', icon_state = "windowtype")
 					else if(path == /obj/structure/window/fulltile || path == /obj/structure/window/reinforced/fulltile)
+=======
+					var/obj/structure/window/window_path = path
+					if(initial(window_path.fulltile))
+						sprite_icon = icon(icon = 'icons/obj/structures/smooth/window_frames/window_frame_normal.dmi', icon_state = "window_frame_normal-0", dir = SOUTH)
+
+						var/obj/structure/window_frame/frame_path = /obj/structure/window_frame
+
+						sprite_icon.Blend(icon(icon = initial(frame_path.grille_black_icon), icon_state = "[initial(frame_path.grille_icon_state)]_black-[0]"), ICON_OVERLAY)
+						sprite_icon.Blend(icon(icon = initial(frame_path.grille_icon), icon_state = "[initial(frame_path.grille_icon_state)]-[0]"), ICON_OVERLAY)
+						sprite_icon.Blend(icon(icon = initial(path.icon), icon_state = initial(path.icon_state)), ICON_OVERLAY)
+					else
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 						sprite_icon = icon(icon = initial(path.icon), icon_state = initial(path.icon_state))
 						sprite_icon.Blend(icon(icon = 'icons/obj/structures.dmi', icon_state = "grille"), ICON_UNDERLAY)
 

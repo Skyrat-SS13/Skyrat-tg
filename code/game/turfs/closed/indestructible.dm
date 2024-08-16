@@ -209,9 +209,15 @@ SKYRAT EDIT REMOVAL END */
 
 /turf/closed/indestructible/fakeglass
 	name = "window"
+<<<<<<< HEAD
 	icon = MAP_SWITCH('icons/obj/smooth_structures/reinforced_window.dmi', 'icons/obj/smooth_structures/structure_variations.dmi')
 	icon_state = MAP_SWITCH("reinforced_window-0", "fake_window")
 	base_icon_state = "reinforced_window"
+=======
+	icon = MAP_SWITCH('icons/obj/structures/smooth/windows/reinforced_window.dmi', 'icons/obj/structures/smooth/structure_variations.dmi')
+	icon_state = MAP_SWITCH("0-lower", "plastitanium_window-0")
+	layer = ABOVE_OBJ_LAYER
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	opacity = FALSE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_WINDOW_FULLTILE
@@ -219,6 +225,7 @@ SKYRAT EDIT REMOVAL END */
 
 /turf/closed/indestructible/fakeglass/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01) //add a grille underlay
 	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02) //add the plating underlay, below the grille
 
@@ -227,6 +234,26 @@ SKYRAT EDIT REMOVAL END */
 	icon = 'icons/obj/smooth_structures/plastitanium_window.dmi'
 	icon_state = "plastitanium_window-0"
 	base_icon_state = "plastitanium_window"
+=======
+	AddComponent(/datum/component/window_smoothing, /turf/closed/indestructible/fakeglass)
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", LOW_FLOOR_LAYER, offset_spokesman = src, plane = FLOOR_PLANE)
+
+/turf/closed/indestructible/fakeglass/smooth_icon()
+	. = ..()
+	update_appearance(~UPDATE_SMOOTHING)
+
+/turf/closed/indestructible/fakeglass/update_overlays()
+	. = ..()
+	. += mutable_appearance('icons/obj/structures/smooth/window_grille_black.dmi', "window_grille_black-[smoothing_junction]", BELOW_OBJ_LAYER)
+	. += mutable_appearance('icons/obj/structures/smooth/window_grille.dmi', "window_grille-[smoothing_junction]", BELOW_OBJ_LAYER)
+	. += mutable_appearance('icons/obj/structures/smooth/window_frames/frame_faces/window_frame_normal.dmi', "window_frame_normal-[smoothing_junction]", BELOW_OBJ_LAYER, appearance_flags = KEEP_APART)
+
+/turf/closed/indestructible/opsglass
+	name = "window"
+	icon = MAP_SWITCH('icons/obj/structures/smooth/windows/plastitanium_window.dmi', 'icons/obj/structures/smooth/plastitanium_window.dmi')
+	icon_state = MAP_SWITCH("0-lower", "plastitanium_window-0")
+	layer = ABOVE_OBJ_LAYER
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	opacity = FALSE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS + SMOOTH_GROUP_WINDOW_FULLTILE_PLASTITANIUM
@@ -234,9 +261,24 @@ SKYRAT EDIT REMOVAL END */
 
 /turf/closed/indestructible/opsglass/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	icon_state = null
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01)
 	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02)
+=======
+	AddComponent(/datum/component/window_smoothing, /turf/closed/indestructible/opsglass)
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", LOW_FLOOR_LAYER, offset_spokesman = src, plane = FLOOR_PLANE)
+
+/turf/closed/indestructible/opsglass/smooth_icon()
+	. = ..()
+	update_appearance(~UPDATE_SMOOTHING)
+
+/turf/closed/indestructible/opsglass/update_overlays()
+	. = ..()
+	. += mutable_appearance('icons/obj/structures/smooth/window_grille_black.dmi', "window_grille_black-[smoothing_junction]", BELOW_OBJ_LAYER)
+	. += mutable_appearance('icons/obj/structures/smooth/window_grille.dmi', "window_grille-[smoothing_junction]", BELOW_OBJ_LAYER)
+	. += mutable_appearance('icons/obj/structures/smooth/window_frames/frame_faces/window_frame_plastitanium.dmi', "window_frame_plastitanium-[smoothing_junction]", BELOW_OBJ_LAYER, appearance_flags = KEEP_APART)
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 
 /turf/closed/indestructible/fakedoor
 	name = "airlock"
@@ -346,16 +388,21 @@ SKYRAT EDIT REMOVAL END */
 
 /turf/closed/indestructible/resin
 	name = "resin wall"
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/alien/resin_wall.dmi'
 	icon_state = "resin_wall-0"
 	base_icon_state = "resin_wall"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_ALIEN_WALLS + SMOOTH_GROUP_ALIEN_RESIN
+=======
+	icon = 'icons/obj/structures/smooth/alien/resin_wall_1.dmi'
+	smoothing_groups = SMOOTH_GROUP_ALIEN_WALLS + SMOOTH_GROUP_TALL_WALLS
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	canSmoothWith = SMOOTH_GROUP_ALIEN_WALLS
 
 /turf/closed/indestructible/resin/membrane
 	name = "resin membrane"
-	icon = 'icons/obj/smooth_structures/alien/resin_membrane.dmi'
+	icon = 'icons/obj/structures/smooth/alien/resin_membrane.dmi'
 	icon_state = "resin_membrane-0"
 	base_icon_state = "resin_membrane"
 	opacity = FALSE
@@ -368,8 +415,14 @@ SKYRAT EDIT REMOVAL END */
 
 /turf/closed/indestructible/grille
 	name = "grille"
+<<<<<<< HEAD
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
+=======
+	desc = "A flimsy framework of iron rods."
+	icon = 'icons/obj/structures/smooth/grille.dmi'
+	icon_state = "grille-0"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	base_icon_state = "grille"
 
 /turf/closed/indestructible/grille/Initialize(mapload)

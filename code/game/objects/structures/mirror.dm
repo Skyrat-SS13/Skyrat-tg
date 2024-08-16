@@ -18,7 +18,7 @@
 /obj/structure/mirror
 	name = "mirror"
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
-	icon = 'icons/obj/watercloset.dmi'
+	icon = 'icons/obj/structures/watercloset.dmi'
 	icon_state = "mirror"
 	movement_type = FLOATING
 	density = FALSE
@@ -34,7 +34,19 @@
 
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	update_choices()
+=======
+	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
+	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
+	var/list/update_signals = list(COMSIG_ATOM_BREAK)
+	if (isnull(reflection_filters))
+		reflection_filters = list()
+		for (var/car_dir in GLOB.cardinals)
+			reflection_filters["[car_dir]"] = alpha_mask_filter(icon = icon('icons/obj/structures/watercloset.dmi', "mirror_mask", dir = car_dir))
+	AddComponent(/datum/component/reflection, reflection_filter = reflection_filters["[dir]"], reflection_matrix = reflection_matrix, can_reflect = can_reflect, update_signals = update_signals)
+	AddComponent(/datum/component/examine_balloon)
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 
 /obj/structure/mirror/Destroy()
 	mirror_options = null
@@ -48,6 +60,14 @@
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
 	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/watercloset.dmi', "mirror_mask"))
+	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
+	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
+	var/list/update_signals = list(COMSIG_ATOM_BREAK)
+	AddComponent(/datum/component/reflection, reflection_filter = reflection_filter, reflection_matrix = reflection_matrix, can_reflect = can_reflect, update_signals = update_signals)
+
+/obj/structure/mirror/Initialize(mapload)
+	. = ..()
+	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/structures/watercloset.dmi', "mirror_mask"))
 	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
 	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
 	var/list/update_signals = list(COMSIG_ATOM_BREAK)
@@ -305,7 +325,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/item/wallframe/mirror
 	name = "mirror"
 	desc = "An unmounted mirror. Attach it to a wall to use."
-	icon = 'icons/obj/watercloset.dmi'
+	icon = 'icons/obj/structures/watercloset.dmi'
 	icon_state = "mirror"
 	custom_materials = list(
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,

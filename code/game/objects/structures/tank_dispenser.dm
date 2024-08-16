@@ -3,7 +3,7 @@
 /obj/structure/tank_dispenser
 	name = "tank dispenser"
 	desc = "A simple yet bulky storage device for gas tanks."
-	icon = 'icons/obj/structures.dmi'
+	icon = 'icons/obj/canisters.dmi'
 	icon_state = "dispenser"
 	density = TRUE
 	anchored = TRUE

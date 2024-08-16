@@ -4,8 +4,13 @@
 /obj/structure/grille
 	desc = "A flimsy framework of iron rods."
 	name = "grille"
+<<<<<<< HEAD
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
+=======
+	icon = 'icons/obj/structures/smooth/grille.dmi'
+	icon_state = "grille-0"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	base_icon_state = "grille"
 	density = TRUE
 	anchored = TRUE
@@ -43,6 +48,34 @@
 	if(QDELETED(src) || broken)
 		return
 
+<<<<<<< HEAD
+=======
+	var/old_base_state = base_icon_state
+	var/ratio = atom_integrity / max_integrity
+	if(ratio <= 0.7)
+		icon = 'icons/obj/structures/smooth/grille_damaged.dmi'
+		base_icon_state = "grille_damaged"
+	else
+		icon = 'icons/obj/structures/smooth/grille.dmi'
+		base_icon_state = "grille"
+
+	if(old_base_state != base_icon_state)
+		icon_state = "[base_icon_state]-[smoothing_junction]"
+
+	var/old_smoothing_flags = smoothing_flags
+	if(broken)
+		icon = 'icons/obj/structures/smooth/tall_structure_variations.dmi'
+		icon_state = "grille-broken"
+		base_icon_state = "grille-broken"
+		smoothing_flags = NONE
+		smoothing_groups = null
+		canSmoothWith = null
+	else
+		smoothing_flags = initial(smoothing_flags)
+		smoothing_groups = initial(smoothing_groups)
+		canSmoothWith = initial(canSmoothWith)
+		SETUP_SMOOTHING()
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	. = ..()
 	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & USES_SMOOTHING))
 		QUEUE_SMOOTH(src)
@@ -393,7 +426,12 @@
 	return !!powernet.get_electrocute_damage()
 
 /obj/structure/grille/broken // Pre-broken grilles for map placement
+<<<<<<< HEAD
 	icon_state = "brokengrille"
+=======
+	icon = 'icons/obj/structures/smooth/tall_structure_variations.dmi'
+	icon_state = "grille-broken"
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	density = FALSE
 	broken = TRUE
 	rods_amount = 1

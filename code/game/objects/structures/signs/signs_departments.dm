@@ -1,6 +1,10 @@
 //departmental signs
 
 /obj/structure/sign/departments
+<<<<<<< HEAD
+=======
+	icon = 'icons/obj/structures/departmental_signs.dmi'
+>>>>>>> fec946e9c007 (/Icon/ Folder cleansing crusade part, I think 4; post-wallening clean-up. (#85823))
 	is_editable = TRUE
 
 ///////MEDBAY
