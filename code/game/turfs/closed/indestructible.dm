@@ -113,11 +113,14 @@ SKYRAT EDIT REMOVAL END */
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms. Effectively impervious to conventional methods of destruction."
 	icon = 'icons/turf/walls/reinforced_wall.dmi'
+<<<<<<< HEAD
 	icon_state = "reinforced_wall-0"
 	base_icon_state = "reinforced_wall"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_WALLS
+=======
+>>>>>>> 60d2fcdbd893 (Fixes indestructible reinforced walls being the wrong icon state (#85871))
 
 /turf/closed/indestructible/reinforced/titanium
 	name = "reinforced titanium imitation wall"
