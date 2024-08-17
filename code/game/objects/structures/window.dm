@@ -80,8 +80,6 @@
 	if (flags_1 & ON_BORDER_1)
 		AddElement(/datum/element/connect_loc, loc_connections)
 
-<<<<<<< HEAD:code/game/objects/structures/window.dm
-=======
 /obj/structure/window/mouse_drop_receive(atom/dropping, mob/user, params)
 	. = ..()
 	if (added_leaning)
@@ -111,7 +109,6 @@
 		QUEUE_SMOOTH_NEIGHBORS(src)
 		QUEUE_SMOOTH(src)
 
->>>>>>> d6bcdcf833c9 (Changes wall leaning into a component, makes windows leanable (#85771)):code/game/objects/structures/windows/window.dm
 /obj/structure/window/examine(mob/user)
 	. = ..()
 
