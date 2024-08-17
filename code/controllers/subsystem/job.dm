@@ -294,12 +294,15 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ skipping command role, Player: [player], Job: [job]")
 			continue
 
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND) //If you want a CC position, select it!
 			JobDebug("GRJ skipping Central Command role, Player: [player], Job: [job]")
 			continue
 		//SKYRAT EDIT END
 
+=======
+>>>>>>> 4d1639b04c90 (Revert "Assorted changes to job assignment code and logging." (#85929))
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
 			continue
@@ -559,11 +562,14 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/alt_title = player_client?.prefs.alt_job_titles[job.title]
 	// SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4d1639b04c90 (Revert "Assorted changes to job assignment code and logging." (#85929))
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
@@ -609,8 +615,12 @@ SUBSYSTEM_DEF(job)
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)
 		if(J.spawn_positions > 0)
+<<<<<<< HEAD
 			// SKYRAT EDIT - Reduced from 12 max sec to 7 max sec due to departmental security being deactivated and replaced.
 			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 12 officers
+=======
+			var/officer_positions = min(12, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 12 officers
+>>>>>>> 4d1639b04c90 (Revert "Assorted changes to job assignment code and logging." (#85929))
 			JobDebug("Setting open security officer positions to [officer_positions]")
 			J.total_positions = officer_positions
 			J.spawn_positions = officer_positions
