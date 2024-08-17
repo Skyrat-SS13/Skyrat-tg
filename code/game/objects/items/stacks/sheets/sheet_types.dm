@@ -938,12 +938,9 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	merge_type = /obj/item/stack/sheet/pizza
 	material_type = /datum/material/pizza
 	material_modifier = 1
-<<<<<<< HEAD
-=======
 	drop_sound = null
 	pickup_sound = null
 	walltype = /turf/closed/wall/mineral/pizza
->>>>>>> ac2b4ef8261 ([no gbp] Consistency of sheet sounds (#85739))
 
 /obj/item/stack/sheet/pizza/fifty
 	amount = 50
