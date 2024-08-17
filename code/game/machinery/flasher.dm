@@ -25,7 +25,7 @@
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/machinery/flasher/Initialize(mapload, ndir = 0, built = 0)
-	. = ..() // ..() is EXTREMELY IMPORTANT, never forget to add it
+	. = ..()
 	if(!built)
 		bulb = new(src)
 	find_and_hang_on_wall()

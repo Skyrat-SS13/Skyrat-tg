@@ -20,6 +20,10 @@
 
 /obj/structure/plaque/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
+=======
+	find_and_hang_on_wall(wall_layer = FLAT_ON_WALL_LAYER)
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 	register_context()
 
 /obj/structure/plaque/add_context(atom/source, list/context, obj/item/held_item, mob/user)

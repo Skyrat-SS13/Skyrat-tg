@@ -94,6 +94,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 	setDir(calc_dir())
 	base_icon_state = initial(icon_state)
 	if(!floor)
+<<<<<<< HEAD
 		switch(dir) //offset to make it be on the wall rather than on the floor
 			if(NORTH)
 				pixel_y = 32
@@ -103,6 +104,9 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 				pixel_x = 32
 			if(WEST)
 				pixel_x = -32
+=======
+		find_and_hang_on_wall(wall_layer = FLAT_ON_WALL_LAYER)
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 		icon_state = "[base_icon_state][rand(1,3)]"
 	else //if on the floor, glowshroom on-floor sprite
 		icon_state = base_icon_state
