@@ -89,14 +89,21 @@
 
 	for(var/job in job_preferences)
 		if(job_preferences[job] > highest_pref)
-			preview_job = SSjob.GetJob(job)
+			preview_job = SSjob.get_job(job)
 			highest_pref = job_preferences[job]
 
 	return preview_job
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVE - MOVED TO MASTER FILES
 /datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin)
 	var/datum/job/preview_job = get_highest_priority_job()
 	mannequin.dna.mutant_bodyparts = list()
+=======
+
+/datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin, show_job_clothes = TRUE)
+	var/datum/job/no_job = SSjob.get_job_type(/datum/job/unassigned)
+	var/datum/job/preview_job = get_highest_priority_job() || no_job
+>>>>>>> 1eef540054e3 (Assorted changes to job assignment code and logging. (#85308))
 
 	if(preview_job)
 		// Silicons only need a very basic preview since there is no customization for them.
