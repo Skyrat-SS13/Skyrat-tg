@@ -375,3 +375,91 @@
   - balance: flora now has an X4 modifier to damage from burn sources
   - balance: MODsuits now deploy 2 times faster
   - balance: The infiltrator MODsuit now deploys 4 times faster
+2024-08-16:
+  Bisar:
+  - qol: The preserved terrarium vault now has tier 4 hydroponics trays, making volume
+      based tray chemistry take less time.
+  Melbert:
+  - rscadd: 'Adds a copy of the famous 1995 musical "Space Station 13: The Musical"
+      to contraband of the autodrobe'
+  SkyratBot:
+  - bugfix: Hydraulic clamps (the mech tool) can force powered doors open again.
+  - bugfix: The first tab is now selected with ore redemption machines when opened
+      for the first time
+  - qol: Dishes with a special food effect are marked in the Cooking UI
+  - rscadd: New Spaghetti Carbonara dish that makes people Italian temporarily
+  - rscadd: Omelette Du Fromage makes people French temporarily
+  - rscadd: Shock Immunity is no longer a random level 4-5 food buff, but a buff given
+      by a new Jupiter-Cup-Cake
+  - rscadd: Mime Tart gives Mute trait
+  - rscadd: Clown Cake gives Waddle Walk trait
+  - rscadd: Stuffed Legion gives Ashstorm Immune trait
+  - bugfix: Soulscythe now deletes the soul mob when destroyed
+  - rscadd: Crabs and lobstrosities (as well as the lobster foam helmet and the fishing
+      hat) now pack a boatload of fish puns.
+  - qol: Integrated circuit modules now can be linked to component printers
+  - code_imp: made it look a little cleaner for head PDAs
+  - bugfix: Fixes getting a "You are too far away!" interaction block on inventory
+      items when inside of another object. This includes accessing storage or using
+      your PDA from a closet, or as pAI using your digital messenger while inside
+      of your card.
+  - bugfix: Fixed portable chem mixer spamming you if not held while its UI is open
+  - bugfix: Fixed Creatures not being able to use non-jaunt actions when seen
+  - balance: Space suits no longer provide all of the slowdown when wearing space
+      gear. Helmets now share the burden and you can now move faster when wearing
+      only a space suit. Helmets now provide a bit of slowdown when worn alone as
+      a result.
+  - bugfix: Fixed activating specific BCI actions whilst unconsious
+  - rscadd: 'durathread robes can now store botany gear
+
+      :cl:'
+  - qol: Nanotrasen has fitted the Janitorial Emergency Response Team with equipment
+      better suited for the job.
+  - balance: Reduced pathfinding circuit component cooldown from 30 seconds to 5 seconds
+  - bugfix: fixes monkey ai hitting u from a distance with unloaded guns
+  - bugfix: pre-upgraded soda dispensers are actually pre-upgraded again
+  - bugfix: Raw durathread bundles and sinew strands no longer make metal clang sounds.
+  - bugfix: Fixed pipes/cables/disposals rendering above closed catwalks.
+  - bugfix: Fixed catwalks covering pipes generating illogical pipe caps when screwed.
+  - bugfix: Opened catwalks are no longer assumed to be above-floor for the sake of
+      generating pipe caps.
+  - bugfix: Blade heretic ascension now gives you floating blades once again
+  - bugfix: Heretic sacrifice area no longer modifies global ambience lists
+  - bugfix: Fixed action buttons relative to EAST,SOUTH, or CENTER being improperly
+      moved during view_audit_buttons()
+  - rscadd: The new smartgun has replaced the unusable energy cannon in mystery boxes
+  - bugfix: Firelocks can be opened with crowbar rigth-click  in combat mode.
+  - balance: Reduced caltrop default paralyze timer from 6 to 2
+  - qol: Cargo Gorka suit slot now allows emergency/plasmaman internals.
+  - qol: Magicarps no longer fire their projectiles while out of combat mode
+  - bugfix: breaking certain terrain in deathmatch doesnt instantly breach to space
+  - qol: Paraplegics can now opt into appearing on the shift without their legs.
+  - balance: Supermatter bioscrambler anomalies are now docile.
+  - balance: Deja Vu perk now teleports you to where you were before the last teleport,
+      instead of where you arrived on the station
+  - bugfix: Deja Vu can no longer be used to return to the wizard ship
+  - bugfix: borgs no longer drop MMIs when chasmed
+  - bugfix: In light of recent allegations of wizardry among the kitchen staff, our
+      cooks will now need bowls when crafting food that comes in bowls. This should
+      also stop said bowls from vanishing once the food is gone.
+  - code_imp: Cult magic item paths are no longer strings
+  - bugfix: Void storm now updates mob health
+  - balance: Abductors (the antag, not the species) can no longer be converted by
+      any antagonist.
+  - qol: Circuit components can now be recycles in circuit printers, and automatically
+      do so upon being removed if a circuit has a linked printer
+  - spellcheck: Recycling a single item no longer outputs a line with a rogue space
+      infront of it
+  - bugfix: Chameleon gun counts as harmless and can be fired by pacifists
+  - qol: atmos meters can now be attached to layer 1 and 5
+  - bugfix: AI Players can now operate the BRM (Boulder Retrival Matrix)
+  grungussuss:
+  - sound: 'added rustle sounds for: toolbox, medkit, box'
+  - sound: 'added open sounds for: toolbox, box'
+  - code_imp: added support for giving container items rustle sounds
+  grungussuss and Beeblie:
+  - sound: internals breathing sound has received more variance and had its volume
+      reduced
+  tmyqlfpir:
+  - rscdel: Remove skyrat cooldown for pathfinding circuit component as it is now
+      upstream'd
