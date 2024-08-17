@@ -98,7 +98,7 @@ Various overrides necessary to get the persocom working, namely ui status, power
 	var/obj/item/organ/internal/brain/synth/brain_loc = loc
 	// Battery level is now according to the synth charge
 	if(istype(brain_loc))
-		var/charge_level = (brain_loc.owner.nutrition / NUTRITION_LEVEL_FULL) * 100
+		var/charge_level = (brain_loc.owner.nutrition / NUTRITION_LEVEL_ALMOST_FULL) * 100
 		switch(charge_level)
 			if(80 to 110)
 				data["PC_batteryicon"] = "batt_100.gif"
