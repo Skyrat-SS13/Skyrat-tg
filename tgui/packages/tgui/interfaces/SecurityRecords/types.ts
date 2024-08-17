@@ -42,6 +42,7 @@ export type Crime = {
   paid: number;
   time: number;
   valid: BooleanLike;
+  voider: string;
 };
 
 export enum SECURETAB {
