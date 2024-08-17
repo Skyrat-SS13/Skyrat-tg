@@ -547,16 +547,11 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 	else
 		state = "alarm0"
 
-<<<<<<< HEAD
-	. += mutable_appearance(icon, state)
-	. += emissive_appearance(icon, state, src, alpha = src.alpha)
-=======
 	var/alert_level = danger_level
 	if(area_danger)
 		alert_level = 2
 	. += mutable_appearance(icon, "light-[alert_level]")
 	. += emissive_appearance(icon, "light-[alert_level]", src, alpha)
->>>>>>> 0d3b211c3742 (Fix air alarm stuck in warning icon when area's alarms are cleared (#85746))
 
 /// Check the current air and update our danger level.
 /// [/obj/machinery/airalarm/var/danger_level]
