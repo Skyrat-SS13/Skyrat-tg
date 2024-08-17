@@ -915,12 +915,9 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	merge_type = /obj/item/stack/sheet/meat
 	material_type = /datum/material/meat
 	material_modifier = 1 //None of that wussy stuff
-<<<<<<< HEAD
-=======
 	drop_sound = null
 	pickup_sound = null
 	walltype = /turf/closed/wall/mineral/meat
->>>>>>> ac2b4ef8261 ([no gbp] Consistency of sheet sounds (#85739))
 
 /obj/item/stack/sheet/meat/fifty
 	amount = 50
