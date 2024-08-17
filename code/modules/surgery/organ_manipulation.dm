@@ -57,7 +57,7 @@
 /datum/surgery/organ_manipulation/mechanic
 	name = "Hardware Manipulation"
 	requires_bodypart_type = BODYTYPE_ROBOTIC
-	surgery_flags = SURGERY_REQUIRE_LIMB // SKYRAT EDIT - Original SURGERY_SELF_OPERABLE | SURGERY_REQUIRE_LIMB
+	surgery_flags = SURGERY_SELF_OPERABLE | SURGERY_REQUIRE_LIMB
 	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
 	steps = list(
 		/datum/surgery_step/mechanic_open,
