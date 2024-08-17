@@ -171,7 +171,7 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
 /// The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
-<<<<<<< HEAD
+
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
 // SKYRAT EDIT ADDITION START
@@ -188,14 +188,14 @@ DEFINE_BITFIELD(no_equip_flags, list(
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
 // SKYRAT EDIT ADDITION END
-=======
+
 /// Auto-generates the leg portion of the sprite with GAGS
 /// Suggested that you set [/obj/item/var/digitigrade_greyscale_config_worn] when using this flag
 #define CLOTHING_DIGITIGRADE_MASK (1<<3)
 
 /// All variation flags which render "correctly" on a digitigrade leg setup
 #define DIGITIGRADE_VARIATIONS (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON|CLOTHING_DIGITIGRADE_MASK)
->>>>>>> ed2f017923ee (Digitigrade clothing sprites (feat. GAGS and 0 sprite bloat)  (#85406))
+
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
