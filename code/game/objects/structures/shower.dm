@@ -206,23 +206,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	var/mutable_appearance/water_falling = mutable_appearance('icons/obj/watercloset.dmi', "water", ABOVE_MOB_LAYER)
 	water_falling.color = mix_color_from_reagents(reagents.reagent_list)
 	switch(dir)
-<<<<<<< HEAD
-		if(NORTH)
-			water_falling.pixel_y += pixel_shift
-		if(SOUTH)
-			water_falling.pixel_y -= pixel_shift
-		if(EAST)
-			water_falling.pixel_x += pixel_shift
-		if(WEST)
-			water_falling.pixel_x -= pixel_shift
-=======
+
 		if(SOUTH)
 			water_falling.pixel_z -= 24
 		if(EAST)
 			water_falling.pixel_w += 16
 		if(WEST)
 			water_falling.pixel_w -= 16
->>>>>>> c0a2fc7976e1 (Fixing the shower water overlay (#85861))
+
 	. += water_falling
 
 /obj/machinery/shower/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
