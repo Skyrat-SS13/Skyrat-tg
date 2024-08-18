@@ -575,7 +575,7 @@
 //SUSPENDERS
 
 /datum/greyscale_config/suspenders/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/suit_teshari.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
 
 // ARMOR
 
