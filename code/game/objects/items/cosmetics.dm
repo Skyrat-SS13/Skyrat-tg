@@ -37,13 +37,10 @@
 	. += "Alt-click to change the style."
 
 /obj/item/lipstick/update_icon_state()
-<<<<<<< HEAD
 	icon_state = "lipstick[open ? "_uncap" : null]"
 	inhand_icon_state = "lipstick[open ? "open" : null]"
-=======
 	icon_state = "[base_icon_state][open ? "_uncap" : null]"
 	inhand_icon_state = "[base_icon_state][open ? "open" : null]"
->>>>>>> 2bb73bd33e1b (Fixed random lipstick texture, fake syndie lipstick no longer can randomly spawn (#85880))
 	return ..()
 
 /obj/item/lipstick/update_overlays()
@@ -114,18 +111,18 @@
 	lipstick_trait = TRAIT_KISS_OF_DEATH
 	random_spawn = FALSE
 
-<<<<<<< HEAD
-=======
 /obj/item/lipstick/syndie
 	name = "syndie lipstick"
 	desc = "Syndicate branded lipstick with a killer dose of kisses. Observe safety regulations!"
 	icon_state = "slipstick"
+
 	base_icon_state = "slipstick"
 	lipstick_color = COLOR_SYNDIE_RED
 	lipstick_trait = TRAIT_SYNDIE_KISS
 	random_spawn = FALSE
+	lipstick_color = COLOR_SYNDIE_RED
+	lipstick_trait = TRAIT_SYNDIE_KISS
 
->>>>>>> 2bb73bd33e1b (Fixed random lipstick texture, fake syndie lipstick no longer can randomly spawn (#85880))
 /obj/item/lipstick/random
 	name = "lipstick"
 	icon_state = "random_lipstick"
