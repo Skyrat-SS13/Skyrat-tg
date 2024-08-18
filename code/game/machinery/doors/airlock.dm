@@ -86,7 +86,7 @@
 
 /obj/machinery/door/airlock
 	name = "Airlock"
-	icon = 'icons/obj/doors/airlocks/station/public.dmi'
+	icon = 'icons/obj/doors/airlocks/tall/maintenance.dmi'
 	icon_state = "closed"
 	max_integrity = 300
 	var/normal_integrity = AIRLOCK_INTEGRITY_N
@@ -559,9 +559,6 @@
 	else
 		. += get_airlock_overlay("fill_[frame_state]", icon, src, em_block = TRUE)
 
-	if(lights && hasPower())
-		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
-
 	if(panel_open)
 		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
 	if(frame_state == AIRLOCK_FRAME_CLOSED && welded)
@@ -570,7 +567,18 @@
 	if(airlock_state == AIRLOCK_EMAG)
 		. += get_airlock_overlay("sparks", overlays_file, src, em_block = FALSE)
 
-	if(hasPower())
+	if(hasPower()) //Indicator Lights section
+
+		if(unres_sides && airlock_state == AIRLOCK_CLOSED) //Unrestricted access side. This is the lowest priority light, so we do it first
+			for(var/heading in list(dir,turn(dir, 180))) //Only check the door's dir and the flip
+				if(!(unres_sides & heading))
+					continue
+				for(var/mutable_appearance/bluelight in get_airlock_overlay("lights_unres", overlays_file, src, em_block = FALSE))
+					. += make_mutable_appearance_directional(bluelight, heading)
+
+		if(lights) //bolt lights
+			. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
+
 		if(frame_state == AIRLOCK_FRAME_CLOSED)
 			if(atom_integrity < integrity_failure * max_integrity)
 				. += get_airlock_overlay("sparks_broken", overlays_file, src, em_block = FALSE)
@@ -586,6 +594,7 @@
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
 		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
+<<<<<<< HEAD
 	if(hasPower() && unres_sides)
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
@@ -606,6 +615,9 @@
 					floorlight.pixel_y = 0
 			. += floorlight
 */
+=======
+	update_greyscale()
+>>>>>>> 443c49bf3dd6 (Replaces overlay sprite for airlocks that indicates unrestricted access from a specific direction (#85825))
 
 /obj/machinery/door/airlock/run_animation(animation)
 	switch(animation)
