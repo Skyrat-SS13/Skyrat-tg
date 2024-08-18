@@ -1398,7 +1398,7 @@ digi
 	name = "Teshari Thick Robe"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/thickrobe.json'
 	
-/datum/greyscale_config/teshari/wizrobe
+/datum/greyscale_config/teshari/thickrobe/wiz
 	name = "Teshari Wizard Robe"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/wizrobe.json'
 
