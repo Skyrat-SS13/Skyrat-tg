@@ -161,3 +161,6 @@
 	
 /obj/item/clothing/neck/scarf
 	greyscale_config_worn_teshari = /datum/greyscale_config/scarf/worn/teshari
+
+/obj/item/clothing/suit/toggle/suspenders
+	greyscale_config_worn_teshari = /datum/greyscale_config/suspenders/worn/teshari
