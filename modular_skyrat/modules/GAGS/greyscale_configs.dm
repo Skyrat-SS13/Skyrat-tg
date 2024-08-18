@@ -524,6 +524,11 @@
 	name = "Face Scarf (Worn, Muzzled)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/face_scarf/face_scarf_worn_muzzled.dmi'
 
+//REGULAR SCARF
+/datum/greyscale_config/scarf/worn/teshari
+	name = "Scarf (Worn, Teshari)"
+	icon_file = icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
+
 /*
 *	SUITS
 */
