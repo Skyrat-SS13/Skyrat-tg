@@ -219,7 +219,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom, 27)
 	command = TRUE
 	icon_off = "intercom_command-p"
 
-<<<<<<< HEAD
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/prison, 27)
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/chapel, 27)
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command, 27)
@@ -240,4 +239,4 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/chapel)
 WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command)
 WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/syndicate)
 WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/syndicate/freerange)
->>>>>>> 00a0d0b8903b (Special radio channels now use bitflags instead of individual vars (#85150))
+
