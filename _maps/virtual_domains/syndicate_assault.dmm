@@ -47,13 +47,19 @@
 /area/virtual_domain)
 "cA" = (
 /obj/structure/table/reinforced,
-/obj/item/paper/fluff/ruins/forgottenship/missionobj,
+/obj/item/paper/fluff/ruins/forgottenship/missionobj{
+	pixel_y = 8
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
 "cZ" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
-/obj/item/ammo_box/magazine/m7mm,
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted{
+	pixel_y = 8
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_y = 8
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
 "dp" = (
@@ -77,12 +83,6 @@
 /turf/open/space/basic,
 /area/virtual_domain)
 "eB" = (
-/obj/machinery/camera/xray{
-	c_tag = "Cargo pod";
-	dir = 9;
-	network = list("fsci");
-	screen_loc = ""
-	},
 /obj/structure/closet,
 /obj/item/clothing/under/syndicate/tacticool,
 /obj/item/clothing/under/syndicate/tacticool,
@@ -90,6 +90,10 @@
 /obj/item/card/id/advanced/black/syndicate_command/crew_id,
 /obj/item/card/id/advanced/black/syndicate_command/crew_id,
 /obj/item/card/id/advanced/black/syndicate_command/crew_id,
+/obj/machinery/camera/xray/directional/north{
+	c_tag = "Cargo pod";
+	network = list("fsci")
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
 "eH" = (
@@ -118,9 +122,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
-"gW" = (
-/obj/structure/sign/poster/contraband/syndicate_recruitment,
-/turf/closed/wall/r_wall/syndicate,
+"gg" = (
+/obj/item/ai_module/core/full/cybersun{
+	pixel_y = 8
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
 "hb" = (
 /obj/structure/table/reinforced,
@@ -151,14 +158,16 @@
 /turf/open/floor/plastic,
 /area/virtual_domain)
 "hw" = (
-/obj/machinery/stasis,
+/obj/machinery/stasis{
+	dir = 4
+	},
 /turf/open/floor/plastic,
 /area/virtual_domain)
 "hM" = (
 /obj/structure/toilet{
 	dir = 1
 	},
-/obj/machinery/light/directional/south,
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/virtual_domain)
 "hY" = (
@@ -168,10 +177,10 @@
 /obj/item/wrench,
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
-"iL" = (
-/obj/structure/sign/departments/cargo,
-/turf/closed/wall/r_wall/syndicate,
-/area/virtual_domain/protected_space)
+"iv" = (
+/obj/structure/sign/warning/vacuum/external/directional/north,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
 "iT" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/syndicate_access,
@@ -193,11 +202,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/virtual_domain)
-"jw" = (
-/obj/item/ai_module/core/full/cybersun,
-/obj/structure/table/reinforced,
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
 "jW" = (
@@ -242,6 +246,18 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
+"kS" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 4;
+	name = "Syndicate Ship Turret";
+	on = 0;
+	shot_delay = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plating/airless,
+/area/virtual_domain)
 "lh" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/mineral/plastitanium,
@@ -252,6 +268,11 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
+"lr" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
 "lB" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -272,15 +293,17 @@
 /area/virtual_domain/protected_space)
 "mG" = (
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/door/table{
 	id = "fslockdown";
 	name = "Window shutters";
-	req_access = list("syndicate")
+	req_access = list("syndicate");
+	pixel_y = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
 "mL" = (
 /obj/structure/tank_dispenser/oxygen,
+/obj/structure/sign/poster/contraband/c20r/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
 "mR" = (
@@ -317,8 +340,12 @@
 /area/virtual_domain)
 "od" = (
 /obj/structure/table/reinforced,
-/obj/item/paper,
-/obj/item/pen,
+/obj/item/paper{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/machinery/computer/security/telescreen/forgotten_ship/sci/directional/south,
 /turf/open/floor/carpet/royalblack,
 /area/virtual_domain)
@@ -371,15 +398,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
-"qR" = (
-/obj/machinery/light/small/directional/south,
-/obj/effect/mob_spawn/ghost_role/human/virtual_domain/syndie,
-/turf/open/floor/mineral/plastitanium,
-/area/virtual_domain)
-"qU" = (
-/obj/structure/sign/poster/contraband/c20r,
-/turf/closed/wall/r_wall/syndicate,
-/area/virtual_domain/protected_space)
 "rh" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -394,7 +412,7 @@
 /area/virtual_domain)
 "rq" = (
 /obj/structure/sink/directional/south,
-/obj/structure/mirror/directional/west,
+/obj/structure/mirror/directional/north,
 /turf/open/floor/iron/dark,
 /area/virtual_domain)
 "rG" = (
@@ -404,7 +422,10 @@
 	on = 0;
 	shot_delay = 10
 	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/plating/airless,
 /area/virtual_domain)
 "rI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -469,20 +490,23 @@
 /turf/closed/mineral/random/high_chance,
 /area/ruin/space/virtual_domain)
 "wl" = (
-/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/obj/item/storage/backpack/duffelbag/syndie/surgery{
+	pixel_y = 8
+	},
 /obj/structure/table/reinforced,
 /turf/open/floor/plastic,
 /area/virtual_domain)
 "wn" = (
-/obj/machinery/button/crematorium{
-	id = "fscremate";
-	pixel_x = -32
+/obj/machinery/button/crematorium/directional/west{
+	id = "fscremate"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
 "wL" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/regular{
+	pixel_y = 8
+	},
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
@@ -495,6 +519,16 @@
 	name = "Ship turret control panel";
 	pixel_y = 32;
 	req_access = list("syndicate")
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/turretid/directional/north{
+	enabled = 0;
+	lethal = 1;
+	req_access = list("syndicate");
+	name = "Ship turret control panel"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
@@ -522,7 +556,9 @@
 /area/virtual_domain)
 "xd" = (
 /obj/structure/table/reinforced,
-/obj/item/ammo_box/c9mm,
+/obj/item/ammo_box/c9mm{
+	pixel_y = 8
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
 "xg" = (
@@ -547,6 +583,10 @@
 	},
 /obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"za" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
 "zN" = (
 /turf/closed/wall/r_wall/syndicate,
@@ -582,7 +622,9 @@
 /area/virtual_domain)
 "AD" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/cup/glass/trophy/silver_cup,
+/obj/item/reagent_containers/cup/glass/trophy/silver_cup{
+	pixel_y = 12
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
 "AM" = (
@@ -595,11 +637,9 @@
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
 "AU" = (
-/obj/machinery/camera/xray{
+/obj/machinery/camera/xray/directional/east{
 	c_tag = "Medbay";
-	dir = 6;
-	network = list("fsci");
-	screen_loc = ""
+	network = list("fsc")
 	},
 /turf/open/floor/plastic,
 /area/virtual_domain)
@@ -620,8 +660,8 @@
 /turf/template_noop,
 /area/virtual_domain/safehouse)
 "BQ" = (
-/obj/machinery/shower/directional/north,
-/obj/machinery/light/directional/south,
+/obj/machinery/light/small/directional/south,
+/obj/machinery/shower/directional/east,
 /turf/open/floor/iron,
 /area/virtual_domain)
 "CS" = (
@@ -729,10 +769,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/virtual_domain)
-"FE" = (
-/obj/structure/sign/warning/vacuum/external,
-/turf/closed/wall/r_wall/syndicate,
-/area/virtual_domain)
 "Gh" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -758,7 +794,10 @@
 	on = 0;
 	shot_delay = 10
 	},
-/turf/closed/wall/r_wall/syndicate,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plating/airless,
 /area/virtual_domain)
 "IA" = (
 /obj/machinery/light/small/directional/south,
@@ -828,8 +867,12 @@
 /area/virtual_domain/protected_space)
 "Mf" = (
 /obj/structure/table/reinforced,
-/obj/item/assembly/prox_sensor,
-/obj/item/assembly/prox_sensor,
+/obj/item/assembly/prox_sensor{
+	pixel_y = 8
+	},
+/obj/item/assembly/prox_sensor{
+	pixel_y = 8
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
 "Mp" = (
@@ -945,8 +988,13 @@
 "OH" = (
 /obj/structure/cable,
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/syndicate,
-/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate{
+	pixel_y = 8
+	},
+/obj/item/storage/toolbox/syndicate{
+	pixel_y = 8
+	},
+/obj/structure/sign/poster/contraband/tools/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
 "Pe" = (
@@ -997,13 +1045,27 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
+"Qp" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 4;
+	name = "Syndicate Ship Turret";
+	on = 0;
+	shot_delay = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/plating/airless,
+/area/virtual_domain)
 "QA" = (
 /obj/machinery/vending/medical/syndicate_access/cybersun,
 /turf/open/floor/plastic,
 /area/virtual_domain)
 "QF" = (
 /obj/structure/table/reinforced,
-/obj/item/dualsaber/green,
+/obj/item/dualsaber/green{
+	pixel_y = 8
+	},
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain/protected_space)
@@ -1026,14 +1088,9 @@
 "Ru" = (
 /obj/machinery/camera/xray/directional/east{
 	c_tag = "Conference room";
-	network = list("fsc");
-	screen_loc = ""
+	network = list("fsc")
 	},
 /turf/open/floor/mineral/plastitanium,
-/area/virtual_domain)
-"RG" = (
-/obj/structure/sink/directional/south,
-/turf/open/floor/iron/dark,
 /area/virtual_domain)
 "RI" = (
 /obj/structure/cable,
@@ -1060,10 +1117,11 @@
 /area/virtual_domain)
 "Sh" = (
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/door/table{
 	id = "fscaproom";
 	name = "Room shutters control";
-	req_access = list("syndicate")
+	req_access = list("syndicate");
+	pixel_y = 8
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
@@ -1161,10 +1219,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/virtual_domain)
-"Wd" = (
-/obj/structure/sign/poster/contraband/tools,
-/turf/closed/wall/r_wall/syndicate,
-/area/virtual_domain/protected_space)
 "We" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Syndicate Ship Airlock"
@@ -1982,7 +2036,7 @@ tE
 tE
 tE
 tE
-Is
+kS
 Vz
 yG
 eQ
@@ -2041,8 +2095,8 @@ tE
 tE
 tE
 Vz
+Vz
 NT
-bN
 bN
 oo
 xg
@@ -2054,8 +2108,8 @@ bN
 xg
 bN
 oo
-bN
 NT
+Vz
 bc
 tE
 tE
@@ -2171,7 +2225,7 @@ Mf
 DQ
 bN
 kx
-bN
+dq
 Vz
 tE
 tE
@@ -2229,7 +2283,7 @@ kx
 bN
 bN
 bN
-qR
+Ns
 Vz
 tE
 tE
@@ -2273,7 +2327,7 @@ tE
 tE
 tE
 Vz
-jt
+RY
 jt
 Kb
 dD
@@ -2331,7 +2385,7 @@ tE
 tE
 tE
 Vz
-RY
+gg
 jt
 Vz
 dD
@@ -2388,8 +2442,8 @@ tE
 tE
 tE
 tE
+nz
 Vz
-jw
 jt
 Vz
 xm
@@ -2402,8 +2456,8 @@ Vz
 MV
 bN
 bN
-bN
 dq
+Vz
 Vz
 tE
 tE
@@ -2446,7 +2500,7 @@ tE
 tE
 tE
 tE
-rG
+Qp
 Vz
 CS
 Vz
@@ -2631,7 +2685,7 @@ wX
 lI
 bN
 Vz
-RG
+rq
 Mr
 Vz
 Vz
@@ -2702,7 +2756,7 @@ tE
 tE
 Lv
 Lv
-qU
+zN
 mL
 dp
 dp
@@ -2736,7 +2790,7 @@ tE
 tE
 tE
 tE
-Is
+kS
 Vz
 Vz
 Vz
@@ -2795,7 +2849,7 @@ tE
 tE
 tE
 Vz
-Vd
+Vz
 wn
 Vz
 qd
@@ -2853,7 +2907,7 @@ tE
 tE
 tE
 Vz
-bN
+Vd
 Ns
 Vz
 iT
@@ -2876,7 +2930,7 @@ tE
 tE
 tE
 tE
-Wd
+zN
 OH
 LB
 dp
@@ -2969,9 +3023,9 @@ tE
 tE
 tE
 Vz
+YY
 bN
-bN
-FE
+Vz
 bN
 bN
 bN
@@ -2981,8 +3035,8 @@ bN
 bN
 bN
 bN
-FE
-bN
+Vz
+iv
 MB
 Vz
 tE
@@ -2992,7 +3046,7 @@ tE
 tE
 tE
 tE
-iL
+zN
 cZ
 dp
 dp
@@ -3027,7 +3081,7 @@ tE
 tE
 tE
 Vz
-YY
+Vz
 bN
 Vz
 hm
@@ -3084,7 +3138,7 @@ tE
 tE
 tE
 tE
-rG
+Qp
 Vz
 hb
 Vz
@@ -3203,7 +3257,7 @@ tE
 tE
 tE
 tE
-gW
+Vz
 JJ
 SW
 jt
@@ -3262,7 +3316,7 @@ Vz
 Vz
 Vz
 Vz
-jt
+za
 jt
 jt
 jt
@@ -3330,7 +3384,7 @@ jt
 jt
 Mv
 Vz
-An
+jt
 An
 Vz
 tE
@@ -3375,8 +3429,8 @@ tE
 tE
 tE
 Vz
-jt
-Ts
+Vz
+lr
 MK
 jt
 Tr
@@ -3388,8 +3442,8 @@ jt
 Tr
 jt
 QY
-jt
 IA
+Vz
 Vz
 tE
 tE
@@ -3432,7 +3486,7 @@ tE
 tE
 tE
 tE
-rG
+Qp
 Vz
 jt
 Vz
@@ -3552,7 +3606,7 @@ tE
 tE
 Vz
 Vz
-hi
+Vz
 hi
 nd
 hi
@@ -3609,7 +3663,8 @@ tE
 tE
 tE
 tE
-rG
+Qp
+Vz
 kK
 kK
 kK
@@ -3617,8 +3672,7 @@ kK
 kK
 kK
 kK
-kK
-kK
+Vz
 rG
 tE
 tE
