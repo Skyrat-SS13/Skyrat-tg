@@ -92,6 +92,8 @@
 /obj/item/clothing/suit/toggle/labcoat/interdyne
 	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
 
+/obj/item/clothing/suit/toggle/labcoat/skyrat/pharmacist
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
 
 /obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
 	. = ..()
