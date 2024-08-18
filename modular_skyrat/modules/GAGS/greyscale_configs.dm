@@ -527,7 +527,8 @@
 //REGULAR SCARF
 /datum/greyscale_config/scarf/worn/teshari
 	name = "Scarf (Worn, Teshari)"
-	icon_file = icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
+	
 
 /*
 *	SUITS
