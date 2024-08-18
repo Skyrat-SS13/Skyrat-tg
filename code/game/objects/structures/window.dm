@@ -37,6 +37,8 @@
 	var/datum/material/glass_material_datum = /datum/material/glass
 	/// Whether or not we're disappearing but dramatically
 	var/dramatically_disappearing = FALSE
+	/// If we added a leaning component to ourselves
+	var/added_leaning = FALSE
 
 /datum/armor/structure_window
 	melee = 50
@@ -77,6 +79,35 @@
 
 	if (flags_1 & ON_BORDER_1)
 		AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/structure/window/mouse_drop_receive(atom/dropping, mob/user, params)
+	. = ..()
+	if (added_leaning)
+		return
+	/// For performance reasons and to cut down on init times we are "lazy-loading" the leaning component when someone drags their sprite onto us, and then calling dragging code again to trigger the component
+	AddComponent(/datum/component/leanable, 11, same_turf = (flags_1 & ON_BORDER_1), lean_check = CALLBACK(src, PROC_REF(lean_check)))
+	added_leaning = TRUE
+	dropping.base_mouse_drop_handler(src, null, null, params)
+
+/obj/structure/window/proc/lean_check(mob/living/leaner, list/modifiers)
+	if (!(flags_1 & ON_BORDER_1))
+		return TRUE
+
+	if (leaner.loc == loc)
+		return dir == REVERSE_DIR(leaner.dir)
+
+	return get_dir(src, leaner) == dir && leaner.dir == dir
+
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	if(fulltile)
+		return
+	// Needed because render targets seem to shift larger then 32x32 icons down constantly. No idea why
+	pixel_y = 0
+	pixel_z = 16
+	if(smoothing_flags & SMOOTH_BORDER_OBJECT)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		QUEUE_SMOOTH(src)
 
 /obj/structure/window/examine(mob/user)
 	. = ..()

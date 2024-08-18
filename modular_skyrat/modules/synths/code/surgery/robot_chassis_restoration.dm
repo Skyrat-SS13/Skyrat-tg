@@ -4,11 +4,11 @@
 /datum/surgery/positronic_restoration
 	name = "Posibrain Reboot (Revival)"
 	steps = list(
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/open_hatch,
 		/datum/surgery_step/mechanic_unwrench,
-		/datum/surgery_step/pry_off_plating/fullbody,
-		/datum/surgery_step/weld_plating/fullbody,
 		/datum/surgery_step/prepare_electronics,
-		/datum/surgery_step/add_plating/fullbody,
+		/datum/surgery_step/weld_plating/fullbody,
 		/datum/surgery_step/finalize_positronic_restoration,
 		/datum/surgery_step/mechanic_close,
 	)
