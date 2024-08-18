@@ -120,7 +120,7 @@
 	AddElement(/datum/element/atmos_sensitive, mapload)
 	AddElement(/datum/element/contextual_screentip_bare_hands, rmb_text = "Remove bulb")
 	if(break_if_moved)
-		find_and_hang_on_wall(custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)))
+		find_and_hang_on_wall(custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)), wall_layer = HIGH_ON_WALL_LAYER)
 
 /obj/machinery/light/post_machine_initialize()
 	. = ..()
@@ -781,6 +781,13 @@
 	nightshift_brightness = 3
 	fire_brightness = 4.5
 
+<<<<<<< HEAD
+=======
+// No hanging for us brother
+/obj/machinery/light/floor/find_and_hang_on_wall(directional, custom_drop_callback, wall_layer)
+	return
+
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 /obj/machinery/light/floor/get_light_offset()
 	return list(0, 0)
 

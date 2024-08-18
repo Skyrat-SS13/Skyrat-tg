@@ -90,10 +90,17 @@
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "puddle-oil"
 	dispensedreagent = /datum/reagent/fuel/oil
+<<<<<<< HEAD
 	pixel_shift = 0
+=======
+
+// This is a hole
+/obj/structure/sink/oil_well/find_and_hang_on_wall(directional, custom_drop_callback, wall_layer)
+	return
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 
 /obj/structure/sink/oil_well/Initialize(mapload)
-	.=..()
+	. = ..()
 	create_reagents(20)
 	reagents.add_reagent(dispensedreagent, 20)
 	//I'm pretty much aware that, because how oil wells and sinks work, attackby() won't work unless in combat mode.

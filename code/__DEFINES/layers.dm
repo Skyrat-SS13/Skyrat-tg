@@ -177,7 +177,22 @@
 #define TRAM_FLOOR_LAYER 2.58
 #define TRAM_WALL_LAYER 2.59
 
+<<<<<<< HEAD
 #define BELOW_OPEN_DOOR_LAYER 2.6
+=======
+//Walls draw below
+//We draw them to the game plane so we can take advantage of SIDE_MAP for em
+//Need to cover for the whole "things below us" with position offsetting with pixel_y/z rather just one or the other
+#define UNDER_WALL_LAYER 2.66
+#define WALL_LAYER 2.67
+#define ABOVE_WALL_LAYER 2.68
+#define WALL_CLICKCATCH_LAYER 2.69
+#define FLAT_ON_WALL_LAYER 2.70 // wall mounts that lie flat against the wall or are generally less important gameplay-wise (such as signs)
+#define ON_WALL_LAYER 2.71 // normal wall mounts
+#define HIGH_ON_WALL_LAYER 2.72 // wall mounts that hang high on the wall (light fixtures)
+
+#define BELOW_OPEN_DOOR_LAYER 2.74
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 ///Anything below this layer is to be considered completely (visually) under water by the immerse layer.
 #define WATER_LEVEL_LAYER 2.61
 #define BLASTDOOR_LAYER 2.65

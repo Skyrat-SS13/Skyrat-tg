@@ -130,8 +130,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 #endif
 
 	alarm_manager = new(src)
+<<<<<<< HEAD
 	find_and_hang_on_wall(directional = TRUE, \
 		custom_drop_callback = CALLBACK(src, PROC_REF(deconstruct), FALSE))
+=======
+	if(should_wallmount)
+		find_and_hang_on_wall(directional = TRUE, custom_drop_callback = CALLBACK(src, PROC_REF(deconstruct), FALSE), wall_layer = HIGH_ON_WALL_LAYER)
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 
 	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 

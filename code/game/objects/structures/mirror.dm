@@ -61,11 +61,14 @@
 		return FALSE
 	return TRUE
 
+<<<<<<< HEAD
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
+=======
+>>>>>>> 6f0dd84a3df6 (Splits wall layer into three (#85901))
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	find_and_hang_on_wall()
+	find_and_hang_on_wall(wall_layer = FLAT_ON_WALL_LAYER)
 
 /obj/structure/mirror/broken
 	icon_state = "mirror_broke"
