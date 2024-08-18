@@ -31,10 +31,20 @@
 	var/race_flags = MIRROR_MAGIC
 	///List of all Races that can be chosen, decided by its Initialize.
 	var/list/selectable_races = list()
+	///Per-dir reflection filters
+	var/static/list/list/reflection_filters
 
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	update_choices()
+	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
+	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
+	var/list/update_signals = list(COMSIG_ATOM_BREAK)
+	if (isnull(reflection_filters))
+		reflection_filters = list()
+		for (var/car_dir in GLOB.cardinals)
+			reflection_filters["[car_dir]"] = alpha_mask_filter(icon = icon('icons/obj/watercloset.dmi', "mirror_mask", dir = car_dir))
+	AddComponent(/datum/component/reflection, reflection_filter = reflection_filters["[dir]"], reflection_matrix = reflection_matrix, can_reflect = can_reflect, update_signals = update_signals)
+	AddComponent(/datum/component/examine_balloon)
 
 /obj/structure/mirror/Destroy()
 	mirror_options = null
@@ -45,6 +55,7 @@
 	for(var/i in mirror_options)
 		mirror_options[i] = icon('icons/hud/radial.dmi', i)
 
+<<<<<<< HEAD
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
 	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/watercloset.dmi', "mirror_mask"))
@@ -52,6 +63,9 @@
 	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
 	var/list/update_signals = list(COMSIG_ATOM_BREAK)
 	AddComponent(/datum/component/reflection, reflection_filter = reflection_filter, reflection_matrix = reflection_matrix, can_reflect = can_reflect, update_signals = update_signals)
+=======
+WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror)
+>>>>>>> acad706c1f2b (Wallening-style directional mirrors (#85818))
 
 /obj/structure/mirror/proc/can_reflect(atom/movable/target)
 	///I'm doing it this way too, because the signal is sent before the broken variable is set to TRUE.
