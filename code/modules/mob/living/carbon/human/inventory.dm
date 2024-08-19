@@ -51,6 +51,9 @@
 	if(looking_for == belt)
 		return ITEM_SLOT_BELT
 
+	if(belt && (looking_for in belt))
+		return ITEM_SLOT_BELTPACK
+
 	if(looking_for == wear_id)
 		return ITEM_SLOT_ID
 
@@ -203,7 +206,13 @@
 				return
 			s_store = equipping
 			update_suit_storage()
+<<<<<<< HEAD
 
+=======
+		if(ITEM_SLOT_BELTPACK)
+			if(!belt || !belt.atom_storage?.attempt_insert(equipping, src, override = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED))
+				not_handled = TRUE
+>>>>>>> 2f69fe61902f (Adds three new deathmatch maps - Ragnarok, Lattice Battles, Species Showdown (#85319))
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
