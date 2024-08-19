@@ -418,7 +418,7 @@
 				msg += "[span_boldnicegreen("I love life!")]\n"
 	else
 		msg += "[span_notice("No clue.")]\n"
-	
+
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
 	msg += get_alcohol_processing(user)
 	msg += get_drunk_mood(user)
