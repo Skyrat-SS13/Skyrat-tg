@@ -15,7 +15,7 @@
 /obj/item/clothing/suit/toggle/labcoat/skyrat/rd
 	name = "research directors labcoat"
 	desc = "A Nanotrasen standard labcoat for certified Research Directors. It has an extra plastic-latex lining on the outside for more protection from chemical and viral hazards."
-	icon_state = "labcoat_rd"
+	icon_state = "labcoat_rd_w"
 	gets_cropped_on_taurs = FALSE
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor_type = /datum/armor/skyrat_rd
