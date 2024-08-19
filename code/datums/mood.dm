@@ -369,7 +369,7 @@
 			if(SANITY_INSANE to SANITY_CRAZY)
 				msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
 	else
-		msg += span_notice("I don't really know.")
+		msg += "[span_notice("I don't really know.")]\n"
 	//SKYRAT EDIT CHANGE END
 
 	msg += span_notice("My current mood: ") //Short term
