@@ -258,6 +258,11 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
+/obj/machinery/button/door/directional/east{
+	req_access = list("robotics");
+	name = "Mech Bay Shutters Control";
+	id = "mechbay"
+	},
 /turf/open/floor/iron/white/side{
 	dir = 8
 	},
@@ -1492,6 +1497,14 @@
 /obj/structure/sign/directions/vault/directional/west{
 	dir = 2
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
 "aEa" = (
@@ -2073,6 +2086,15 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/camera/autoname/directional/south,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light/warm/dim/directional/south,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "aOz" = (
@@ -2622,7 +2644,6 @@
 /obj/structure/table,
 /obj/item/aicard,
 /obj/machinery/light/cold/directional/east,
-/obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron,
 /area/station/engineering/storage/tech)
 "aZS" = (
@@ -3341,7 +3362,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/camera/directional/west,
-/obj/structure/sign/warning/pods/directional/west,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -4133,20 +4153,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
-"bEw" = (
-/obj/structure/sign/directions/supply{
-	dir = 1;
-	pixel_y = -8
-	},
-/obj/structure/sign/directions/command{
-	dir = 1
-	},
-/obj/structure/sign/directions/engineering{
-	dir = 1;
-	pixel_y = 8
-	},
-/turf/closed/wall,
-/area/station/hallway/secondary/entry)
 "bEB" = (
 /obj/machinery/vending/cigarette,
 /obj/structure/extinguisher_cabinet/directional/north,
@@ -8285,7 +8291,6 @@
 /obj/machinery/camera/directional/west{
 	c_tag = "Engineering - SECURE STORAGE"
 	},
-/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron/dark/small,
 /area/station/engineering/storage_shared)
 "dhh" = (
@@ -11017,7 +11022,7 @@
 	},
 /obj/structure/table,
 /obj/effect/landmark/start/hangover,
-/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/small,
 /area/station/engineering/lobby)
 "ejN" = (
@@ -11193,7 +11198,6 @@
 /area/station/medical/medbay/lobby)
 "elN" = (
 /obj/effect/landmark/start/hangover,
-/obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -11236,7 +11240,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)
 "emF" = (
-/obj/machinery/light/warm/dim,
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
@@ -12263,12 +12266,6 @@
 /obj/machinery/camera/directional/west{
 	c_tag = "Engineering - Public Desk"
 	},
-/obj/machinery/requests_console/directional/west{
-	department = "Engineering";
-	name = "Engineering Requests Console";
-	pixel_x = 0;
-	pixel_y = -30
-	},
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/supplies,
 /obj/machinery/modular_computer/preset/cargochat/engineering{
@@ -12276,6 +12273,7 @@
 	},
 /obj/machinery/light/small/directional/west,
 /obj/effect/turf_decal/bot,
+/obj/machinery/requests_console/directional/south,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/break_room)
 "eGL" = (
@@ -13010,6 +13008,12 @@
 	},
 /turf/open/floor/wood,
 /area/station/service/chapel)
+"eWm" = (
+/obj/structure/cable,
+/obj/structure/hedge,
+/obj/item/radio/intercom/directional/south,
+/turf/open/floor/plating,
+/area/station/engineering/storage/tech)
 "eWr" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 4
@@ -13889,6 +13893,24 @@
 	},
 /obj/structure/sign/directions/vault/directional/east{
 	pixel_y = -8
+	},
+/obj/item/storage/fancy/donut_box,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "hop";
+	name = "Privacy Shutters"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/brigdoor/right/directional/south{
+	name = "Security Desk";
+	req_access = list("security")
+	},
+/obj/machinery/door/window/right/directional/north{
+	name = "Security Desk"
 	},
 /obj/item/storage/fancy/donut_box,
 /turf/open/floor/iron/textured_large,
@@ -18388,6 +18410,13 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/security/execution/transfer)
+"gMw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/warning/radiation/rad_area/directional/east,
+/turf/open/floor/iron,
+/area/station/maintenance/hallway/abandoned_command)
 "gMy" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/turf_decal/stripes/corner{
@@ -19928,7 +19957,6 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/disposal/bin,
-/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/commons/storage/tools)
 "hmf" = (
@@ -20403,7 +20431,6 @@
 /obj/item/pickaxe,
 /obj/item/wrench,
 /obj/item/radio/off,
-/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/commons/storage/tools)
 "huj" = (
@@ -20608,7 +20635,6 @@
 	dir = 9
 	},
 /obj/effect/turf_decal/tile/yellow/diagonal_centre,
-/obj/machinery/light/small/directional/west,
 /obj/structure/cable,
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron/diagonal,
@@ -21066,6 +21092,7 @@
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/landmark/start/hangover,
+/obj/structure/sign/directions/medical/southeast_arrow/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "hFx" = (
@@ -23314,20 +23341,6 @@
 	dir = 1
 	},
 /area/station/command/gateway)
-"isK" = (
-/obj/structure/sign/directions/evac{
-	dir = 8
-	},
-/obj/structure/sign/directions/engineering{
-	dir = 1;
-	pixel_y = 8
-	},
-/obj/structure/sign/directions/science{
-	dir = 4;
-	pixel_y = -8
-	},
-/turf/closed/wall,
-/area/station/hallway/primary/port)
 "isQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -23785,11 +23798,6 @@
 	dir = 8;
 	id = "mechbay";
 	name = "Mech Bay Shutters"
-	},
-/obj/machinery/button/door/directional/north{
-	id = "mechbay";
-	name = "Mech Bay Shutters Control";
-	req_access = list("robotics")
 	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/science/robotics/mechbay)
@@ -24473,6 +24481,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/small,
 /area/station/engineering/lobby)
 "iKe" = (
@@ -24554,7 +24563,13 @@
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
 	},
+/obj/structure/sign/directions/vault/southwest_arrow/directional/north{
+	pixel_y = 24
+	},
 /obj/machinery/light/small/directional/north,
+/obj/structure/sign/directions/security/south_arrow/directional/north{
+	pixel_y = 33
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
@@ -30047,6 +30062,12 @@
 /area/station/cargo/office)
 "kuq" = (
 /obj/machinery/computer/cargo/request,
+/obj/structure/sign/directions/science/right/east_arrow/directional/north{
+	pixel_y = 33
+	},
+/obj/structure/sign/directions/evac/southwest_arrow/directional/north{
+	pixel_y = 24
+	},
 /turf/open/floor/plating,
 /area/station/hallway/primary/central/fore)
 "kut" = (
@@ -30995,6 +31016,15 @@
 /obj/machinery/camera/autoname/directional/south,
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/effect/turf_decal/tile/neutral,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light/warm/dim/directional/south,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "kMW" = (
@@ -31364,6 +31394,15 @@
 	},
 /obj/item/radio/intercom/directional/south,
 /obj/effect/turf_decal/tile/neutral,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "kTG" = (
@@ -31574,6 +31613,7 @@
 /obj/effect/turf_decal/stripes/asteroid/end{
 	dir = 1
 	},
+/obj/structure/sign/poster/contraband/thunderdrome/directional/north,
 /turf/open/floor/circuit/green,
 /area/station/science/robotics/mechbay)
 "kYA" = (
@@ -37898,6 +37938,11 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/button/door/directional/west{
+	req_access = list("robotics");
+	name = "Mech Bay Shutters Control";
+	id = "mechbay"
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/science/robotics/mechbay)
 "mYq" = (
@@ -42824,6 +42869,7 @@
 	dir = 4
 	},
 /obj/structure/sign/poster/official/random/directional/north,
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "oNX" = (
@@ -46766,6 +46812,20 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/maintenance/department/electrical)
+"qcL" = (
+/obj/structure/sign/directions/supply{
+	dir = 1;
+	pixel_y = -8
+	},
+/obj/structure/sign/directions/command{
+	dir = 1
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 1;
+	pixel_y = 8
+	},
+/turf/closed/wall/r_wall,
+/area/station/hallway/primary/aft)
 "qcQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -48482,6 +48542,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/science/xenobiology)
+"qIo" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/warm/dim/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "qIp" = (
 /obj/effect/turf_decal/tile/dark_red/opposingcorners,
 /obj/structure/cable,
@@ -51945,7 +52015,6 @@
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "rPW" = (
@@ -56383,7 +56452,6 @@
 /area/station/maintenance/department/engine/atmos)
 "tnZ" = (
 /obj/structure/bookcase/random,
-/obj/structure/sign/poster/official/random/directional/west,
 /obj/structure/sign/painting/library{
 	pixel_y = 32
 	},
@@ -56731,11 +56799,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/assistant,
-/obj/machinery/barsign{
-	chosen_sign = "thecavern";
-	icon_state = "thecavern";
-	pixel_y = 32
-	},
+/obj/machinery/barsign/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "ttX" = (
@@ -59512,7 +59576,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sign/warning/radiation/rad_area/directional/east,
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron,
 /area/station/maintenance/hallway/abandoned_command)
@@ -60573,7 +60636,6 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Engineering - Supplies"
 	},
-/obj/structure/sign/poster/official/random/directional/east,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "uGK" = (
@@ -60802,6 +60864,7 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/landmark/start/hangover,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/sign/directions/upload/southeast_arrow/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "uKl" = (
@@ -65208,7 +65271,6 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/structure/cable,
-/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
 "waI" = (
@@ -72295,14 +72357,6 @@
 	},
 /turf/open/floor/wood/tile,
 /area/station/service/bar)
-"ycX" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/random/directional/west,
-/turf/open/floor/iron,
-/area/station/hallway/primary/central/fore)
 "ydf" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -92812,7 +92866,7 @@ cUf
 rEW
 nsD
 iUH
-isK
+wAW
 uBc
 uBc
 win
@@ -93066,7 +93120,7 @@ wMz
 ntP
 rNL
 xeO
-rEW
+qIo
 qSk
 hWm
 fvh
@@ -101793,7 +101847,7 @@ tEL
 rQN
 vpI
 rZq
-ycX
+vpI
 pBu
 khY
 lvr
@@ -104853,7 +104907,7 @@ kSA
 oWg
 nVA
 uoJ
-oWg
+gMw
 lSh
 bgy
 bgy
@@ -106210,7 +106264,7 @@ vSg
 vSg
 chp
 vSg
-vSg
+qcL
 wSg
 wSg
 wSg
@@ -106470,7 +106524,7 @@ cLY
 xaP
 tuT
 vMs
-bEw
+tuT
 jEG
 ybD
 tuT
@@ -107734,7 +107788,7 @@ xaW
 wuq
 aZL
 ciR
-mwu
+eWm
 yeP
 enq
 ivY
