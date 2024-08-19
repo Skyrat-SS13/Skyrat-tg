@@ -61,7 +61,7 @@
 
 /obj/item/organ/external/genital/build_from_dna(datum/dna/DNA, associated_key)
 	. = ..()
-	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/genital/accessory = SSaccessories.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
 	genital_name = accessory.name
 	genital_type = accessory.icon_state
 	build_from_accessory(accessory, DNA)
@@ -114,10 +114,10 @@
 		return sprite_datum.color_layer_names
 
 	sprite_datum.color_layer_names = list()
-	if (!GLOB.cached_mutant_icon_files[sprite_datum.icon])
-		GLOB.cached_mutant_icon_files[sprite_datum.icon] = icon_states(new /icon(sprite_datum.icon))
+	if (!SSaccessories.cached_mutant_icon_files[sprite_datum.icon])
+		SSaccessories.cached_mutant_icon_files[sprite_datum.icon] = icon_states(new /icon(sprite_datum.icon))
 
-	var/list/cached_mutant_icon_states = GLOB.cached_mutant_icon_files[sprite_datum.icon]
+	var/list/cached_mutant_icon_states = SSaccessories.cached_mutant_icon_files[sprite_datum.icon]
 
 	for (var/layer in all_layers)
 		if(!(layer & layers))
@@ -237,7 +237,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /datum/bodypart_overlay/mutant/genital/penis/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_PENIS]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_PENIS]
 
 
 /obj/item/organ/external/genital/testicles
@@ -259,7 +259,7 @@
 	layers = EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/testicles/update_genital_icon_state()
-	var/measured_size = clamp(genital_size, 1, 3)
+	var/measured_size = clamp(genital_size, 1, 6)
 	var/passed_string = "testicles_[genital_type]_[measured_size]"
 	if(uses_skintones)
 		passed_string += "_s"
@@ -283,14 +283,14 @@
 
 /obj/item/organ/external/genital/testicles/get_sprite_size_string()
 	var/measured_size = FLOOR(genital_size,1)
-	measured_size = clamp(measured_size, 0, 3)
+	measured_size = clamp(measured_size, 0, 6)
 	var/passed_string = "[genital_type]_[measured_size]"
 	if(uses_skintones)
 		passed_string += "_s"
 	return passed_string
 
 /datum/bodypart_overlay/mutant/genital/testicles/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_TESTICLES]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_TESTICLES]
 
 
 /obj/item/organ/external/genital/testicles/proc/balls_size_to_description(number)
@@ -353,7 +353,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /datum/bodypart_overlay/mutant/genital/vagina/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_VAGINA]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_VAGINA]
 
 
 /obj/item/organ/external/genital/womb
@@ -376,7 +376,7 @@
 	layers = NONE
 
 /datum/bodypart_overlay/mutant/genital/womb/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_WOMB]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_WOMB]
 
 
 /obj/item/organ/external/genital/anus
@@ -405,7 +405,7 @@
 	return returned_string
 
 /datum/bodypart_overlay/mutant/genital/anus/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_ANUS]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_ANUS]
 
 
 /obj/item/organ/external/genital/breasts
@@ -484,7 +484,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /datum/bodypart_overlay/mutant/genital/breasts/get_global_feature_list()
-	return GLOB.sprite_accessories[ORGAN_SLOT_BREASTS]
+	return SSaccessories.sprite_accessories[ORGAN_SLOT_BREASTS]
 
 /obj/item/organ/external/genital/breasts/proc/breasts_size_to_cup(number)
 	if(number < 0)

@@ -213,11 +213,8 @@
 	else
 		icon_state = icon_right
 
-/obj/item/hnz_mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
-	. = ..()
-	if(!proximity_flag)
-		return
-	else if(isliving(target))
+/obj/item/hnz_mutant_hand/afterattack(atom/target, mob/user, click_parameters)
+	if(isliving(target))
 		if(ishuman(target))
 			try_to_mutant_infect(target, user = user)
 		else

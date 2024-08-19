@@ -144,8 +144,7 @@
 	add_fingerprint(usr)
 	return ..()
 
-/obj/item/clothing/neck/kink_collar/locked/MouseDrop(atom/over_object)
-	var/mob/user = usr
+/obj/item/clothing/neck/kink_collar/locked/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked && istype(over_object, /atom/movable/screen/inventory/hand))
 		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
 		return

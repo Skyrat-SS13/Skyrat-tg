@@ -8,4 +8,4 @@ Adds a veteran-crew locked perk that makes your sprite much larger with some ass
 
 ### Code Embargo:
 
-Anything that could be percieved as a balance or feature change directly to the oversized quirk, be it code in this module or elsewhere in the code, must be passed by the maintainers prior to PRing, or else your PR risks being closed.
+Anything that could be perceived as a balance or feature change directly to the oversized quirk, be it code in this module or elsewhere in the code, must be passed by the maintainers prior to PRing, or else your PR risks being closed.

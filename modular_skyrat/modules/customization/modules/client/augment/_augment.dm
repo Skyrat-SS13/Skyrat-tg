@@ -10,7 +10,7 @@
 	var/path
 	///How much quirky points does it cost?
 	var/cost = 0
-	///Which biotypes are allowed to recieve the augment
+	///Which biotypes are allowed to receive the augment
 	var/allowed_biotypes = MOB_ORGANIC
 
 /datum/augment_item/New()

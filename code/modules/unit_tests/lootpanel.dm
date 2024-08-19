@@ -2,8 +2,8 @@
 	abstract_type = /datum/unit_test/lootpanel
 
 /datum/unit_test/lootpanel/contents/Run()
-	var/datum/client_interface/mock_client = new()
-	var/datum/lootpanel/panel = new(mock_client)
+	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	var/datum/lootpanel/panel = allocate(/datum/lootpanel, mock_client)
 	var/mob/living/carbon/human/labrat = allocate(/mob/living/carbon/human/consistent)
 	mock_client.mob = labrat
 	var/turf/one_over = locate(run_loc_floor_bottom_left.x + 1, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z)
@@ -21,7 +21,7 @@
 	TEST_ASSERT_EQUAL(length(panel.contents), 1, "Contents should update on searchobj deleted")
 	TEST_ASSERT_EQUAL(length(panel.to_image), 1, "to_image should update on searchobj deleted")
 
-	var/obj/item/storage/toolbox/new_box = allocate(/obj/item/storage/toolbox, one_over)
+	allocate(/obj/item/storage/toolbox, one_over)
 	TEST_ASSERT_EQUAL(length(panel.contents), 1, "Contents shouldn't update, we're dumb")
 	TEST_ASSERT_EQUAL(length(panel.to_image), 1, "to_image shouldn't update, we're dumb")
 

@@ -1,5 +1,5 @@
 /datum/armament_entry/company_import/akh_frontier
-	category = FRONTIER_EQUIPMENT_NAME
+	category = COMPANY_NAME_FRONTIER_EQUIPMENT
 	company_bitflag = CARGO_COMPANY_FRONTIER_EQUIPMENT
 
 // Tools that you could use the rapid fabricator for, but you're too lazy to actually do that
@@ -13,7 +13,6 @@
 
 /datum/armament_entry/company_import/akh_frontier/basic/prybar
 	item_type = /obj/item/crowbar/large/doorforcer
-	restricted = TRUE
 
 /datum/armament_entry/company_import/akh_frontier/basic/arc_welder
 	item_type = /obj/item/weldingtool/electric/arc_welder
@@ -29,7 +28,6 @@
 /datum/armament_entry/company_import/akh_frontier/deployables_fab/rapid_construction_fabricator
 	item_type = /obj/item/flatpacked_machine
 	cost = CARGO_CRATE_VALUE * 6
-	restricted = TRUE
 
 /datum/armament_entry/company_import/akh_frontier/deployables_fab/foodricator
 	item_type = /obj/item/flatpacked_machine/organics_ration_printer

@@ -207,6 +207,7 @@
 	if(leaking && reagents && reagents.total_volume >= amount_to_leak)
 		reagents.expose(get_turf(src), TOUCH, amount_to_leak / max(amount_to_leak, reagents.total_volume))
 		reagents.remove_reagent(reagent_id, amount_to_leak)
+		playsound(src, 'sound/effects/glug.ogg', 33, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return TRUE
 	return FALSE
 
@@ -224,7 +225,7 @@
 	if(!openable)
 		return FALSE
 	leaking = !leaking
-	balloon_alert(user, "[leaking ? "opened" : "closed"] [src]'s tap")
+	balloon_alert(user, "[leaking ? "opened" : "closed"] tap")
 	user.log_message("[leaking ? "opened" : "closed"] [src].", LOG_GAME)
 	tank_leak()
 	return ITEM_INTERACT_SUCCESS
@@ -246,7 +247,7 @@
 	icon_state = "water_high" //I was gonna clean my room...
 	tank_volume = 3000
 
-/obj/structure/reagent_dispensers/foamtank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/reagent_dispensers/foamtank//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "firefighting foam tank"
 	desc = "A tank full of firefighting foam."
 	icon_state = "foam"
@@ -255,7 +256,7 @@
 	openable = TRUE
 	climbable = TRUE
 
-/obj/structure/reagent_dispensers/fueltank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/reagent_dispensers/fueltank//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "fuel tank"
 	desc = "A tank full of industrial welding fuel. Do not consume."
 	icon_state = "fuel"
@@ -359,7 +360,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 		desc = "IT'S PEPPER TIME, BITCH!"
 	find_and_hang_on_wall()
 
-/obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "liquid cooler"
 	desc = "A machine that dispenses liquid to drink."
 	icon = 'icons/obj/machines/vending.dmi'
@@ -429,7 +430,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/nutraslop
 
-/obj/structure/reagent_dispensers/plumbed//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/reagent_dispensers/plumbed//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "stationary water tank"
 	anchored = TRUE
 	icon_state = "water_stationary"

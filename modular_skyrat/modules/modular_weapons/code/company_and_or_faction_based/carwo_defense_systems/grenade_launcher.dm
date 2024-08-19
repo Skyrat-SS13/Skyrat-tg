@@ -29,7 +29,6 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/grenade_launcher.ogg'
 
 	can_suppress = FALSE
-	can_bayonet = FALSE
 
 	burst_size = 1
 	fire_delay = 5
@@ -69,17 +68,18 @@
 	. += span_notice("With <b>Right Click</b> you can set the range that shells will detonate at.")
 	. += span_notice("A small indicator in the sight notes the current detonation range is: <b>[target_range]</b>.")
 
-/obj/item/gun/ballistic/automatic/sol_grenade_launcher/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
-	if(!target || !user)
-		return
+/obj/item/gun/ballistic/automatic/sol_grenade_launcher/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!interacting_with || !user)
+		return ITEM_INTERACT_BLOCKING
 
-	var/distance_ranged = get_dist(user, target)
+	var/distance_ranged = get_dist(user, interacting_with)
 	if(distance_ranged > maximum_target_range)
 		user.balloon_alert(user, "out of range")
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	target_range = distance_ranged
 	user.balloon_alert(user, "range set: [target_range]")
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/no_mag
 	spawnwithmagazine = FALSE

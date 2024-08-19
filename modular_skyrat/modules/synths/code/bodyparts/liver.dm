@@ -7,7 +7,7 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_LIVER
 	maxHealth = 1 * STANDARD_ORGAN_THRESHOLD
-	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/liver/synth/emp_act(severity)
 	. = ..()
@@ -39,6 +39,6 @@
 	)
 	build_path = /obj/item/organ/internal/liver/synth
 	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+		RND_SUBCATEGORY_MECHFAB_ANDROID + RND_SUBCATEGORY_MECHFAB_ANDROID_ORGANS,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE

@@ -1,7 +1,7 @@
 /**
  * Item used to store implants. Can be renamed with a pen. Implants are moved between those and implanters when a mob uses an implanter on a case.
  */
-/obj/item/implantcase//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/implantcase//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "implant case"
 	desc = "A glass case containing an implant."
 	icon = 'icons/obj/medical/syringe.dmi'
@@ -36,7 +36,7 @@
 	return ..()
 
 /obj/item/implantcase/attackby(obj/item/used_item, mob/living/user, params)
-	if(istype(used_item, /obj/item/pen))
+	if(IS_WRITING_UTENSIL(used_item))
 		if(!user.can_write(used_item))
 			return
 		var/new_name = tgui_input_text(user, "What would you like the label to be?", name, max_length = MAX_NAME_LEN)

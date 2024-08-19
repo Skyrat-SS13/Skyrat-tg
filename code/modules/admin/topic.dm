@@ -1455,7 +1455,7 @@
 			if(response.body == "[]")
 				dat += "<center><b>0 bans detected for [ckey]</b></center>"
 			else
-				bans = json_decode(response["body"])
+				bans = json_decode(response.body)
 
 				//Ignore bans from non-whitelisted sources, if a whitelist exists
 				var/list/valid_sources
@@ -1764,7 +1764,16 @@
 		if(!paper_to_show)
 			return
 		paper_to_show.ui_interact(usr)
-	// SKYRAT ADDITION START
+	else if (href_list["print_fax"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		for(var/obj/machinery/fax/FAX as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/fax))
+			if(!is_centcom_level(FAX.z))
+				continue
+
+			FAX.receive(locate(href_list["print_fax"]), href_list["fax_name"])
+	// SKYRAT EDIT ADDITION START
 	else if(href_list["pass_opfor_candidate"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -1772,7 +1781,7 @@
 		if(!SSdynamic.picking_specific_rule(/datum/dynamic_ruleset/midround/from_living/opfor_candidate, forced = TRUE, ignore_cost = TRUE))
 			message_admins("An OPFOR candidate could not be selected.")
 
-	// SKYRAT ADDITION END
+	// SKYRAT EDIT ADDITION END
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))
 			return

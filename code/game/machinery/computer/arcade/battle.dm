@@ -505,7 +505,7 @@
 					return TRUE
 				if(BATTLE_ARCADE_PLAYER_HEAVY_ATTACK)
 					if(player_current_mp < SPELL_MP_COST)
-						say("You don't have enough MP to counterattack!")
+						say("You don't have enough MP to heavy attack!")
 						player_turn = TRUE
 						return TRUE
 					player_current_mp -= SPELL_MP_COST
@@ -531,7 +531,8 @@
 						return
 					player_turn = TRUE
 					ui_panel = UI_PANEL_WORLD_MAP
-					player_gold /= 2
+					if(player_gold)
+						player_gold = max(round(player_gold /= 2, 1), 0)
 					return TRUE
 			//they pressed something but it wasn't in the menu, we'll be nice and give them back their turn anyway.
 			player_turn = TRUE

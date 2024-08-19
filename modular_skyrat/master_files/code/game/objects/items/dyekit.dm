@@ -43,7 +43,7 @@
 		if(!beard_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
-		var/list/choices = beard_or_hair == "Hair" ? GLOB.hair_gradients_list : GLOB.facial_hair_gradients_list
+		var/list/choices = beard_or_hair == "Hair" ? SSaccessories.hair_gradients_list : SSaccessories.facial_hair_gradients_list
 		var/new_grad_style = tgui_input_list(usr, "Choose a color pattern:", "Dye Spray", choices)
 		if(!new_grad_style || !user.can_perform_action(src, NEED_DEXTERITY))
 			return

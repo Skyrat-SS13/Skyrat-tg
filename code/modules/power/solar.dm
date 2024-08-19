@@ -1,4 +1,4 @@
-#define SOLAR_GEN_RATE 1500
+#define SOLAR_GEN_RATE 3500 //SKYRAT EDIT: Power buffs Original: SOLAR_GEN_RATE 1500
 #define OCCLUSION_DISTANCE 20
 #define PANEL_Z_OFFSET 13
 #define PANEL_EDGE_Z_OFFSET (PANEL_Z_OFFSET - 2)
@@ -42,6 +42,8 @@
 
 /obj/machinery/power/solar/Destroy()
 	unset_control() //remove from control computer
+	QDEL_NULL(panel)
+	QDEL_NULL(panel_edge)
 	return ..()
 
 /obj/machinery/power/solar/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)

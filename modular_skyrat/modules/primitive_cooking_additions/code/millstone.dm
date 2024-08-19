@@ -60,7 +60,7 @@
 	balloon_alert(user, "removed all items")
 	return CLICK_ACTION_SUCCESS
 
-/obj/structure/millstone/CtrlShiftClick(mob/user)
+/obj/structure/millstone/click_ctrl_shift(mob/user)
 	set_anchored(!anchored)
 	balloon_alert(user, "[anchored ? "secured" : "unsecured"]")
 
@@ -142,11 +142,18 @@
 	flick("millstone_spin", src)
 	playsound(src, 'sound/effects/stonedoor_openclose.ogg', 50, TRUE)
 
-	user.adjustStaminaLoss(MILLSTONE_STAMINA_USE) // Prevents spamming it
+	var/stamina_use = MILLSTONE_STAMINA_USE
+	if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+		stamina_use *= 0.5 //so it uses half the amount of stamina (50 instead of 100)
 
-	if(!do_after(user, 5 SECONDS, target = src))
+	user.adjustStaminaLoss(stamina_use) // Prevents spamming it
+
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+	if(!do_after(user, 5 SECONDS * skill_modifier, target = src))
 		balloon_alert_to_viewers("stopped grinding")
 		return
+
+	user.mind.adjust_experience(/datum/skill/primitive, 5)
 
 	for(var/target_item as anything in contents)
 		seedify(target_item, t_max = 1)

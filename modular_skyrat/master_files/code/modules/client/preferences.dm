@@ -1,9 +1,7 @@
 #define MAX_MUTANT_ROWS 4
 
 /datum/preferences
-	/// Loadout prefs. Assoc list of [typepaths] to [associated list of item info].
-	var/list/loadout_list
-	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
+	/// Associative list, keyed by language typepath, pointing to UNDERSTOOD_LANGUAGE, or UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE, for whether we understand or speak the language
 	var/list/languages = list()
 	/// List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
 	var/augments = list()
@@ -60,13 +58,13 @@
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff
-	languages[try_get_common_language()] = LANGUAGE_SPOKEN
+	languages[try_get_common_language()] = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
 	save_character()
 
 /datum/preferences/proc/print_bodypart_change_line(key)
 	var/acc_name = mutant_bodyparts[key][MUTANT_INDEX_NAME]
 	var/shown_colors = 0
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][acc_name]
+	var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][acc_name]
 	var/dat = ""
 	if(SA.color_src == USE_MATRIXED_COLORS)
 		shown_colors = 3
@@ -85,7 +83,7 @@
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
-		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.always_color_customizable)
 			continue
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -120,13 +118,13 @@
 
 	// Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
-		if(!GLOB.sprite_accessories[key]) // That accessory no longer exists, remove it
+		if(!SSaccessories.sprite_accessories[key]) // That accessory no longer exists, remove it
 			mutant_bodyparts -= key
 			continue
 		if(!GLOB.default_mutant_bodyparts[pref_species.name][key])
 			mutant_bodyparts -= key
 			continue
-		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
+		if(!SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
 			mutant_bodyparts[key][MUTANT_INDEX_NAME] = GLOB.default_mutant_bodyparts[pref_species.name[key][MUTANTPART_NAME]]
 		validate_color_keys_for_part(key) // Validate the color count of each accessory that wasnt removed
 
@@ -137,7 +135,7 @@
 			if(target_bodyparts[key][MUTANTPART_CAN_RANDOMIZE])
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][target_bodyparts[key][MUTANTPART_NAME]]
+				SA = SSaccessories.sprite_accessories[key][target_bodyparts[key][MUTANTPART_NAME]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -147,7 +145,7 @@
 		reset_colors()
 
 /datum/preferences/proc/validate_color_keys_for_part(key)
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/SA = SSaccessories.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 	var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
@@ -179,3 +177,7 @@
 	safe_transfer_prefs_to(character, icon_updates, is_antag)
 	qdel(added_tracker)
 
+// Updates the mob's chat color in the global cache
+/datum/preferences/safe_transfer_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)
+	. = ..()
+	GLOB.chat_colors_by_mob_name[character.name] = list(character.chat_color, character.chat_color_darkened) // by now the mob has had its prefs applied to it

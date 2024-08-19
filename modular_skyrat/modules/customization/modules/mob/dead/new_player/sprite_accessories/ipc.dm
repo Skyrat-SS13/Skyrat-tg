@@ -11,7 +11,7 @@
 	organ_type = /obj/item/organ/external/synth_screen
 
 /datum/sprite_accessory/screen/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = null
 
 /datum/sprite_accessory/screen/blank
@@ -168,7 +168,7 @@
 		return TRUE
 
 /datum/sprite_accessory/antenna/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "None"
 	recommended_species = null
 

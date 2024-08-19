@@ -35,26 +35,18 @@
 	desc = "Generates cannon pulse. Needs to be linked with a fusor."
 	icon_state = "power_box"
 
-/obj/machinery/bsa/back/multitool_act(mob/living/user, obj/item/tool)
-	if(!multitool_check_buffer(user, tool)) //make sure it has a data buffer
-		return
-	var/obj/item/multitool/multitool = tool
-	multitool.buffer = src
-	to_chat(user, span_notice("You store linkage information in [multitool]'s buffer."))
-	return TRUE
+/obj/machinery/bsa/back/multitool_act(mob/living/user, obj/item/multitool/tool)
+	tool.buffer = src
+	to_chat(user, span_notice("You store linkage information in [tool]'s buffer."))
 
 /obj/machinery/bsa/front
 	name = "Bluespace Artillery Bore"
 	desc = "Do not stand in front of cannon during operation. Needs to be linked with a fusor."
 	icon_state = "emitter_center"
 
-/obj/machinery/bsa/front/multitool_act(mob/living/user, obj/item/tool)
-	if(!multitool_check_buffer(user, tool)) //make sure it has a data buffer
-		return
-	var/obj/item/multitool/multitool = tool
-	multitool.buffer = src
-	to_chat(user, span_notice("You store linkage information in [multitool]'s buffer."))
-	return TRUE
+/obj/machinery/bsa/front/multitool_act(mob/living/user, obj/item/multitool/tool)
+	tool.buffer = src
+	to_chat(user, span_notice("You store linkage information in [tool]'s buffer."))
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
@@ -65,21 +57,18 @@
 	/// Our linked front piece
 	var/datum/weakref/front_piece
 
-/obj/machinery/bsa/middle/multitool_act(mob/living/user, obj/item/tool)
-	if(!multitool_check_buffer(user, tool))
-		return
-	var/obj/item/multitool/multitool = tool
-	if(multitool.buffer)
-		if(istype(multitool.buffer, /obj/machinery/bsa/back))
-			back_piece = WEAKREF(multitool.buffer)
-			to_chat(user, span_notice("You link [src] with [multitool.buffer]."))
-			multitool.buffer = null
-		else if(istype(multitool.buffer, /obj/machinery/bsa/front))
-			front_piece = WEAKREF(multitool.buffer)
-			to_chat(user, span_notice("You link [src] with [multitool.buffer]."))
-			multitool.buffer = null
+/obj/machinery/bsa/middle/multitool_act(mob/living/user, obj/item/multitool/tool)
+	if(tool.buffer)
+		if(istype(tool.buffer, /obj/machinery/bsa/back))
+			back_piece = WEAKREF(tool.buffer)
+			to_chat(user, span_notice("You link [src] with [tool.buffer]."))
+			tool.buffer = null
+		else if(istype(tool.buffer, /obj/machinery/bsa/front))
+			front_piece = WEAKREF(tool.buffer)
+			to_chat(user, span_notice("You link [src] with [tool.buffer]."))
+			tool.buffer = null
 	else
-		to_chat(user, span_warning("[multitool]'s data buffer is empty!"))
+		to_chat(user, span_warning("[tool]'s data buffer is empty!"))
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/check_completion()

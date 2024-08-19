@@ -1,6 +1,6 @@
 #define MEATSPIKE_IRONROD_REQUIREMENT 4
 
-/obj/structure/kitchenspike_frame//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/kitchenspike_frame//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "meatspike frame"
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "spikeframe"
@@ -64,7 +64,7 @@
 		return
 	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT] rods needed!")
 
-/obj/structure/kitchenspike//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/kitchenspike//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "meat spike"
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "spike"

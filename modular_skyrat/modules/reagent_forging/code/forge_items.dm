@@ -38,7 +38,7 @@
 		/obj/structure/reagent_crafting_bench
 	)
 
-/obj/item/forging/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/forging/hammer/afterattack(atom/target, mob/user, click_parameters)
 	. = ..()
 	if(!is_type_in_list(target, fast_attacks))
 		return
@@ -71,6 +71,8 @@
 	var/times_hit = 0
 	///the required time before each strike to prevent spamming
 	var/average_wait = 1 SECONDS
+	///the number of current perfect hits (really only impacts weapons atm)
+	var/current_perfects = 0
 	///the path of the item that will be spawned upon completion
 	var/spawn_item
 	//because who doesn't want to have a plasma sword?
@@ -168,6 +170,8 @@
 /obj/item/forging/complete
 	///the path of the item that will be created
 	var/spawning_item
+	///the amount of perfect hits on the item, if it was allowed
+	var/current_perfects = 0
 	//because who doesn't want to have a plasma sword?
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
@@ -259,7 +263,7 @@
 	icon_state = "coil"
 
 /obj/item/forging/incomplete_bow
-	name = "incomplete bow"
+	name = "incomplete longbow"
 	desc = "A wooden bow that has yet to be strung."
 	icon_state = "nostring_bow"
 
@@ -284,9 +288,9 @@
 		new /obj/item/ammo_casing/arrow/(src_turf)
 	qdel(src)
 
-/obj/item/stock_parts/cell/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/stock_parts/power_store/cell/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/forging/coil))
-		var/obj/item/stock_parts/cell/crank/new_crank = new(get_turf(src))
+		var/obj/item/stock_parts/power_store/cell/crank/new_crank = new(get_turf(src))
 		new_crank.maxcharge = maxcharge
 		new_crank.charge = charge
 		qdel(attacking_item)
@@ -328,6 +332,11 @@
 /obj/item/empty_circuit/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stack/sheet/mineral/gold))
 		var/obj/item/stack/attacking_stack = attacking_item
+
+		if(user.mind.get_skill_level(/datum/skill/research) < SKILL_LEVEL_JOURNEYMAN)
+			to_chat(user, span_warning("You are not skilled enough in research to create a circuit!"))
+			return
+
 		var/choice = tgui_input_list(user, "Which circuit are you thinking about?", "Circuit Creation", recycleable_circuits)
 		if(!choice)
 			to_chat(user, span_notice("You decide against creating the circuit..."))

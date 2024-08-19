@@ -266,9 +266,8 @@
 
 /obj/effect/temp_visual/telekinesis
 	name = "telekinetic force"
-	//icon_state = "empdisable" //Non-Skyrat version
-	icon_state = "telekinesis_throw" //Skyrat edit, was "empdisable"
-	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' //Skyrat Addition
+	icon_state = "telekinesis_throw" // SKYRAT EDIT CHANGE - ORIGINAL: icon_state = "empdisable"
+	icon = 'modular_skyrat/master_files/icons/effects/tele_effects.dmi' // SKYRAT EDIT ADDITION
 	duration = 5
 
 /obj/effect/temp_visual/emp
@@ -494,7 +493,7 @@
 	duration = 2 SECONDS
 
 /obj/effect/constructing_effect
-	icon = 'icons/effects/effects_rcd.dmi'
+	icon = 'icons/effects/rcd.dmi'
 	icon_state = ""
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = ABOVE_GAME_PLANE
@@ -711,3 +710,29 @@
 		flags = ANIMATION_RELATIVE,
 	)
 	return ..()
+
+/obj/effect/temp_visual/mech_sparks
+	name = "mech sparks"
+	icon_state = "mech_sparks"
+	duration = 0.4 SECONDS
+
+/obj/effect/temp_visual/mech_sparks/Initialize(mapload, set_color)
+	. = ..()
+	pixel_x = rand(-16, 16)
+	pixel_y = rand(-8, 8)
+
+/obj/effect/temp_visual/mech_attack_aoe_charge
+	name = "mech attack aoe charge"
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "mech_attack_aoe_charge"
+	duration = 1 SECONDS
+	pixel_x = -32
+	pixel_y = -32
+
+/obj/effect/temp_visual/mech_attack_aoe_attack
+	name = "mech attack aoe attack"
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "mech_attack_aoe_attack"
+	duration = 0.5 SECONDS
+	pixel_x = -32
+	pixel_y = -32

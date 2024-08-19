@@ -1,7 +1,7 @@
 /// Anything above a lattice should go here.
 /turf/open/floor
 	name = "floor"
-	icon = 'icons/turf/floors.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/turf/floors.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	base_icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
 
@@ -142,7 +142,7 @@
 /turf/open/floor/proc/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
 	if(T.turf_type == type && T.turf_dir == dir)
 		return
-	var/obj/item/crowbar/CB = user.is_holding_item_of_type(/obj/item/crowbar)
+	var/obj/item/crowbar/CB = user.is_holding_tool_quality(TOOL_CROWBAR)
 	if(!CB)
 		return
 	var/turf/open/floor/plating/P = pry_tile(CB, user, TRUE)
@@ -362,6 +362,12 @@
 				return FALSE
 			return TRUE
 	return FALSE
+
+/turf/open/floor/rust_turf()
+	if(HAS_TRAIT(src, TRAIT_RUSTY))
+		return
+	ChangeTurf(/turf/open/floor/plating)
+	return ..()
 
 /turf/open/floor/material
 	name = "floor"

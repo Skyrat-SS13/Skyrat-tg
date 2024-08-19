@@ -123,6 +123,10 @@
 #define CIRCUIT_FLAG_REFUSE_MODULE (1<<5)
 /// This circuit component cannot be inserted into the same circuit multiple times. Only use this for major headaches.
 #define CIRCUIT_NO_DUPLICATES (1<<6)
+// SKYRAT EDIT ADDITION BEGIN - This is required since we have two reagent components, and the BCI only allows one active
+/// This circuit component is a reagent container type. Check for existing reagent containers before adding.
+#define CIRCUIT_REAGENT_CONTAINER_TYPE (1<<7) // This value should not conflict with any of the previous flags
+// SKYRAT EDIT ADDITION END
 
 // Datatype flags
 /// The datatype supports manual inputs

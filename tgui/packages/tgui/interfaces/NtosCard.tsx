@@ -69,6 +69,7 @@ export const NtosCardContent = (props) => {
     trimAccess,
     wildcardFlags,
     wildcardSlots,
+    hasTrim,
   } = data;
 
   return (
@@ -93,7 +94,11 @@ export const NtosCardContent = (props) => {
             />
           }
         >
-          <TemplateDropdown templates={templates} />
+          {hasTrim ? (
+            <TemplateDropdown templates={templates} />
+          ) : (
+            'Templates require a trim already applied to the card. Please use an ID Painter to apply a trim.'
+          )}
         </Section>
       )}
       <Stack mt={1}>
@@ -240,7 +245,7 @@ const TemplateDropdown = (props) => {
       <Stack.Item grow>
         <Dropdown
           width="100%"
-          displayText={'Select a template...'}
+          placeholder="Select a template..."
           options={templateKeys.map((path) => {
             return templates[path];
           })}
@@ -249,6 +254,7 @@ const TemplateDropdown = (props) => {
               name: sel,
             })
           }
+          selected="None"
         />
       </Stack.Item>
     </Stack>

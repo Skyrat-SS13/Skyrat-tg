@@ -148,7 +148,7 @@
 	name = "hacking arm implant"
 	desc = "An small arm implant containing an advanced screwdriver, wirecutters, and multitool designed for engineers and on-the-field machine modification. Actually legal, despite what the name may make you think."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "multitool_cyborg"
+	icon_state = "toolkit_engiborg_multitool"
 	items_to_create = list(/obj/item/screwdriver/cyborg, /obj/item/wirecutters/cyborg, /obj/item/multitool/abductor/implant)
 
 /obj/item/organ/internal/cyberimp/arm/botany
@@ -188,7 +188,7 @@
 	name = "multitool"
 	desc = "An optimized, highly advanced stripped-down multitool able to interface with electronics far better than its standard counterpart."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "multitool_cyborg"
+	icon_state = "toolkit_engiborg_multitool"
 
 /obj/item/organ/internal/cyberimp/arm/janitor
 	name = "janitorial tools implant"

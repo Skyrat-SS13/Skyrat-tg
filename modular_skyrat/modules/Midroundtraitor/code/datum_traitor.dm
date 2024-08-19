@@ -6,9 +6,10 @@
 
 /datum/antagonist/traitor/lone_infiltrator/on_gain()
 	var/mob/living/carbon/human/current = owner.current
+	if(iscarbon(current))
+		current.apply_pref_name(/datum/preference/name/syndicate, current.client)
+		current.dna.update_dna_identity()
 	current.equipOutfit(infil_outfit)
-	var/chosen_name = current.dna.species.random_name(current.gender,1,1)
-	current.fully_replace_character_name(current.real_name,chosen_name)
 	return ..()
 
 /datum/outfit/lone_infiltrator_preview

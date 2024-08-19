@@ -14,21 +14,28 @@
 			user.balloon_alert(user, "[ore_item] is worthless!")
 			return
 
-		while(ore_item.amount >= 5)
-			if(!do_after(user, 5 SECONDS, src))
+		var/ore_usage = 5
+		while(ore_item.amount >= ore_usage)
+			var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
+			if(!do_after(user, 5 SECONDS * skill_modifier, src))
 				user.balloon_alert(user, "have to stand still!")
 				return
 
-			if(!ore_item.use(5))
+			if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
+				ore_usage = 3
+
+			if(!ore_item.use(ore_usage))
 				user.balloon_alert(user, "unable to use five of [ore_item]!")
 				return
 
+			user.mind.adjust_experience(/datum/skill/primitive, 5)
 			if(prob(70))
 				user.balloon_alert(user, "[ore_item] reveals nothing!")
 				continue
 
 			var/spawn_seed = pick(subtypesof(/obj/item/seeds) - seeds_blacklist)
 			new spawn_seed(get_turf(src))
+			user.mind.adjust_experience(/datum/skill/primitive, 10)
 			user.balloon_alert(user, "[ore_item] revealed something!")
 
 	return ..()

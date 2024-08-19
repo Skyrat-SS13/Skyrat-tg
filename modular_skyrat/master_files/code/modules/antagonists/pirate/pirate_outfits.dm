@@ -7,3 +7,6 @@
 
 /datum/outfit/pirate/irs
 	back = /obj/item/storage/backpack/satchel/leather
+
+/datum/outfit/pirate/medieval/warlord
+	backpack_contents = null

@@ -5,6 +5,7 @@
 	limb_id = SPECIES_MOTH
 	is_dimorphic = TRUE
 	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN //what the fuck, moths have lips?
+	teeth_count = 0
 
 /obj/item/bodypart/chest/moth
 	icon = BODYPART_ICON_MOTH
@@ -15,7 +16,7 @@
 	wing_types = list(/obj/item/organ/external/wings/functional/moth/megamoth, /obj/item/organ/external/wings/functional/moth/mothra)
 
 /obj/item/bodypart/chest/moth/get_butt_sprite()
-	return BUTT_SPRITE_FUZZY
+	return icon('icons/mob/butts.dmi', BUTT_SPRITE_FUZZY)
 
 /obj/item/bodypart/arm/left/moth
 	icon = BODYPART_ICON_MOTH

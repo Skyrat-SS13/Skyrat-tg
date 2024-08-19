@@ -11,15 +11,15 @@
 	build_path = /obj/item/circuit_component/item_interact
 
 /datum/techweb_node/comp_advanced_interacts
-	id = "comp_advanced_interacts"
+	id = TECHWEB_NODE_COMP_INTERACTION_COMPONENT
 	display_name = "Advanced Action Components"
 	description = "Grants access to more advanced action components for the drone shell."
-	prereq_ids = list("movable_shells")
+	prereq_ids = list(TECHWEB_NODE_PROGRAMMED_ROBOT)
 	design_ids = list(
 		"comp_mine",
 		"comp_iinteract",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 
 //Target Scanner Component
 /datum/design/component/radar_scanner
@@ -33,13 +33,17 @@
 	id = "comp_ccharge"
 	build_path = /obj/item/circuit_component/cell_charge
 
-/datum/techweb_node/comp_advanced_sensors
-	id = "comp_advanced_sensors"
-	display_name = "Advanced Sensor Components"
-	description = "Grants access to advanced sensor components component for shells."
-	prereq_ids = list("adv_shells")
-	design_ids = list(
-		"comp_tscanner",
-		"comp_ccharge",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)
+//Reagent Injector Component (Bluespace)
+/datum/design/component/bci/reagent_injector_bluespace
+	name = "Reagent Injector Component (Bluespace)"
+	id = "comp_reagent_injector_bluespace"
+	build_path = /obj/item/circuit_component/reagent_injector_bluespace
+
+/datum/techweb_node/riot_supression/New()
+	. = ..()
+	design_ids += "comp_tscanner"
+	design_ids += "comp_ccharge"
+
+/datum/techweb_node/syndicate_basic/New()
+	. = ..()
+	design_ids += "comp_reagent_injector_bluespace"

@@ -7,34 +7,26 @@
 		CHOICE_TRANSFER,
 		CHOICE_CONTINUE,
 	)
+	default_message = "Vote to initiate a crew transfer."
 
-/datum/vote/transfer_vote/toggle_votable(mob/toggler)
-	if(!toggler)
-		CRASH("[type] wasn't passed a \"toggler\" mob to toggle_votable.")
-	if(!check_rights_for(toggler.client, R_ADMIN))
-		return FALSE
-
-
+/datum/vote/transfer_vote/toggle_votable()
 	CONFIG_SET(flag/allow_vote_transfer, !CONFIG_GET(flag/allow_vote_transfer))
-	return TRUE
 
 /datum/vote/transfer_vote/is_config_enabled()
 	return CONFIG_GET(flag/autotransfer) && CONFIG_GET(flag/allow_vote_transfer)
 
-/datum/vote/transfer_vote/can_be_initiated(mob/by_who, forced)
+/datum/vote/transfer_vote/can_be_initiated(forced)
 	. = ..()
-	if(!.)
-		return FALSE
+	if(. != VOTE_AVAILABLE)
+		return .
 
 	if(forced)
-		return TRUE
+		return VOTE_AVAILABLE
 
 	if(!CONFIG_GET(flag/autotransfer) || !CONFIG_GET(flag/allow_vote_transfer))
-		if(by_who)
-			to_chat(by_who, span_warning("Transfer voting is disabled."))
-		return FALSE
+		return "Transfer voting is disabled."
 
-	return TRUE
+	return VOTE_AVAILABLE
 
 /datum/vote/transfer_vote/finalize_vote(winning_option)
 	if(winning_option == CHOICE_CONTINUE)

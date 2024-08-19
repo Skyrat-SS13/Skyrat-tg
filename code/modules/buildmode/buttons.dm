@@ -1,5 +1,5 @@
 /atom/movable/screen/buildmode
-	icon = 'icons/misc/buildmode.dmi'
+	icon = 'icons/hud/buildmode.dmi'
 	var/datum/buildmode/bd
 	// If we don't do this, we get occluded by item action buttons
 	plane = ABOVE_HUD_PLANE
@@ -28,7 +28,7 @@
 	return 1
 
 /atom/movable/screen/buildmode/mode/update_icon_state()
-	icon = bd.mode.button_icon // SKYRAT ADDITION - remove buildmode duplicate icons, divine tg and skyrat
+	icon = bd.mode.button_icon // SKYRAT EDIT ADDITION - remove buildmode duplicate icons, divine tg and skyrat
 	icon_state = bd.mode.get_button_iconstate()
 	return ..()
 
@@ -61,7 +61,7 @@
 
 /atom/movable/screen/buildmode/modeswitch/New(bld, mt)
 	modetype = mt
-	icon = initial(modetype.button_icon)// SKYRAT ADDITION - remove buildmode duplicate icons, divine tg and skyrat
+	icon = initial(modetype.button_icon)// SKYRAT EDIT ADDITION - remove buildmode duplicate icons, divine tg and skyrat
 	icon_state = "buildmode_[initial(modetype.key)]"
 	name = initial(modetype.key)
 	return ..(bld)

@@ -112,6 +112,7 @@
 		/obj/item/spear/explosive,
 		/obj/item/spear/bonespear,
 		/obj/item/spear/bamboospear,
+		/obj/item/spear/military,
 	)
 	result = /obj/structure/headpike
 	category = CAT_ENTERTAINMENT
@@ -142,6 +143,20 @@
 		/obj/item/spear/bamboospear = 1,
 	)
 	result = /obj/structure/headpike/bamboo
+	category = CAT_ENTERTAINMENT
+
+/datum/crafting_recipe/headpikemilitary
+	name = "Spike Head (Military)"
+	time = 6.5 SECONDS
+	reqs = list(
+		/obj/item/spear/military = 1,
+		/obj/item/bodypart/head = 1,
+	)
+	parts = list(
+		/obj/item/bodypart/head = 1,
+		/obj/item/spear/military = 1,
+	)
+	result = /obj/structure/headpike/military
 	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/guillotine
@@ -235,11 +250,17 @@
 	)
 	category = CAT_EQUIPMENT
 
-/datum/crafting_recipe/bonedice
-	name = "Bone Die"
-	result = /obj/item/dice/d6/bone
-	time = 5 SECONDS
+/datum/crafting_recipe/violin
+	name = "Violin"
+	result = /obj/item/instrument/violin
 	reqs = list(
-		/obj/item/stack/sheet/bone = 1,
+		/obj/item/stack/sheet/mineral/wood = 4,
+		/obj/item/stack/sheet/cloth = 2,
+		/obj/item/stack/sheet/iron = 1,
 	)
-	category = CAT_EQUIPMENT
+	tool_paths = list(
+		/obj/item/hatchet,
+	)
+	time = 30 SECONDS
+	category = CAT_ENTERTAINMENT
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED

@@ -9,7 +9,10 @@
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
 		/obj/item/clothing/suit/toggle/labcoat/medical = 4,
+		/obj/item/clothing/under/rank/medical/virologist = 4,
+		/obj/item/clothing/suit/toggle/labcoat/virologist = 4,
 		/obj/item/storage/backpack/messenger/med = 4,
+		/obj/item/storage/backpack/messenger/vir = 4
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
@@ -18,13 +21,16 @@
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem = 3,
+		/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm = 3,
+		/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm/skirt = 3,
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
-		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/red = 2,
+		/obj/item/clothing/suit/toggle/jacket/tcomm = 3,
+		/obj/item/clothing/head/utility/hardhat/orange = 3,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 3,
+		/obj/item/clothing/head/utility/hardhat/dblue = 3,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 3,
+		/obj/item/clothing/head/utility/hardhat/red = 3,
 		/obj/item/storage/backpack/messenger/eng = 3,
 	)
 
@@ -126,6 +132,9 @@
 	skyrat_products = list(
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/pharmacist = 2,
 		/obj/item/clothing/head/beret/medical/chemist = 2,
 		/obj/item/storage/backpack/messenger/chem = 2,
 	)

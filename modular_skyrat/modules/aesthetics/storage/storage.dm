@@ -3,6 +3,7 @@
 
 /obj/item/borg/upgrade/rped
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
+	icon_state = "borgrped"
 
 /obj/item/storage/part_replacer
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
@@ -119,6 +120,10 @@
 /obj/item/storage/box/slugs
 	icon_state = "secbox_xl"
 	illustration = "breacherslug"
+
+/obj/item/storage/box/large_dart
+	icon_state = "secbox_xl"
+	illustration = "shotdart"
 
 /obj/item/storage/box/evidence
 	icon_state = "secbox"

@@ -407,7 +407,7 @@
 	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * seconds_per_tick)
 	current_mob.adjust_pain(pain_amounts[current_mode] * seconds_per_tick)
 
-/obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
+/obj/structure/chair/milking_machine/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -586,7 +586,6 @@
 		data["current_vagina"] = current_vagina = null
 
 	data["machine_color"] = machine_color
-	SStgui.update_uis(src)
 	return data
 
 // User action handler in the interface

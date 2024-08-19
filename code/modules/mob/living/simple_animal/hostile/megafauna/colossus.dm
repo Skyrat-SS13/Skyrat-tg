@@ -188,6 +188,10 @@
 	plane = GAME_PLANE
 	var/explode_hit_objects = TRUE
 
+/obj/projectile/colossus/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/parriable_projectile)
+
 /obj/projectile/colossus/can_hit_target(atom/target, direct_target = FALSE, ignore_loc = FALSE, cross_failed = FALSE)
 	if(isliving(target))
 		direct_target = TRUE
@@ -330,7 +334,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	
+
 	for(var/atom/thing as anything in range(1, src))
 		if(isturf(thing))
 			new /obj/effect/decal/cleanable/confetti(thing)
@@ -340,7 +344,7 @@
 			continue
 
 		var/mob/living/carbon/human/new_clown = thing
-			
+
 		if(new_clown.stat != DEAD)
 			continue
 
@@ -349,12 +353,12 @@
 		var/clown_ref = REF(new_clown)
 		if(clown_ref in clowned_mob_refs) //one clowning per person
 			continue
-			
+
 		for(var/obj/item/to_strip in new_clown.get_equipped_items())
 			new_clown.dropItemToGround(to_strip)
 		new_clown.dress_up_as_job(SSjob.GetJobType(/datum/job/clown))
 		clowned_mob_refs += clown_ref
-	
+
 	return TRUE
 
 /// Transforms the area to look like a new one
@@ -423,18 +427,18 @@
 
 		if(!ishuman(thing))
 			continue
-		
+
 		var/mob/living/carbon/human/to_revive = thing
-		
+
 		if(to_revive.stat != DEAD)
 			continue
-		
+
 		to_revive.set_species(/datum/species/shadow, TRUE)
 		to_revive.revive(ADMIN_HEAL_ALL, force_grab_ghost = TRUE)
 		//Free revives, but significantly limits your options for reviving except via the crystal
 		//except JK who cares about BADDNA anymore. this even heals suicides.
 		ADD_TRAIT(to_revive, TRAIT_BADDNA, MAGIC_TRAIT)
-	
+
 	return TRUE
 
 /obj/machinery/anomalous_crystal/helpers //Lets ghost spawn as helpful creatures that can only heal people slightly. Incredibly fragile and they can't converse with humans
@@ -538,9 +542,9 @@
 			possessor.investigate_log("has died from [src].", INVESTIGATE_DEATHS)
 			possessor.death(FALSE)
 		if(holder_animal)
-			possessor.forceMove(get_turf(holder_animal))
 			holder_animal.mind.transfer_to(possessor)
 			possessor.mind.grab_ghost(force = TRUE)
+			possessor.forceMove(get_turf(holder_animal))
 			holder_animal.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
 			holder_animal.gib(DROP_ALL_REMAINS)
 			return ..()

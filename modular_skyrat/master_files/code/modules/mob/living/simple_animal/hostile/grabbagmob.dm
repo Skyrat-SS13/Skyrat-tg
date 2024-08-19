@@ -941,3 +941,12 @@
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser3.ogg'
 
+
+/mob/living/basic/gorilla/pitbull
+	name = "\improper pitbull"
+	desc = "Lover of Blood. Hater of Toddlers. Doesn't look too happy to see you."
+	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
+	icon_state = "pitbull"
+	icon_dead = "pitbull_dead"
+	icon_living = "pitbull"
+

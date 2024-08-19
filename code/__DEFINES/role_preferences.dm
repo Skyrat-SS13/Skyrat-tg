@@ -37,7 +37,6 @@
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
 #define ROLE_PARADOX_CLONE "Paradox Clone"
 #define ROLE_REV_HEAD "Head Revolutionary"
-#define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
@@ -48,6 +47,7 @@
 #define ROLE_MUTANT "Mutated Abomination"
 #define ROLE_CLOCK_CULTIST "Clock Cultist"
 // SKYRAT EDIT END
+#define ROLE_VOIDWALKER "Voidwalker"
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
@@ -170,7 +170,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_OPERATIVE_MIDROUND = 14,
 	ROLE_PARADOX_CLONE = 0,
 	ROLE_REVENANT = 0,
-	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,
 	ROLE_SPACE_DRAGON = 0,
 	ROLE_SPIDER = 0,
@@ -180,6 +179,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_BORER = 0,
 	ROLE_MUTANT = 0,
 	//SKYRAT EDIT END
+	ROLE_VOIDWALKER = 0,
 
 	// Latejoin
 	ROLE_HERETIC_SMUGGLER = 0,

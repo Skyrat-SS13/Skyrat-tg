@@ -20,7 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_MINOR_VERSION 26
+#define DB_MINOR_VERSION 30
 
 
 //! ## Timing subsystem
@@ -158,6 +158,7 @@
 #define INIT_ORDER_TCG 55
 #define INIT_ORDER_AUTOMAPPER 51 // SKYRAT EDIT ADDITION - We need to load just before mapping.
 #define INIT_ORDER_MAPPING 50
+#define INIT_ORDER_AI_IDLE_CONTROLLERS 50
 #define INIT_ORDER_EARLY_ASSETS 48
 #define INIT_ORDER_RESEARCH 47
 #define INIT_ORDER_TIMETRACK 46
@@ -190,8 +191,8 @@
 #define INIT_ORDER_PATH -50
 #define INIT_ORDER_MATURITY_GUARD -60 //SKYRAT EDIT ADDITION
 #define INIT_ORDER_DECAY -61 //SKYRAT EDIT ADDITION
+#define INIT_ORDER_POWERATOR_PENALITY -62 // SKYRAT EDIT ADDITION
 #define INIT_ORDER_EXPLOSIONS -69
-#define INIT_ORDER_LOOT -70
 #define INIT_ORDER_STATPANELS -97
 #define INIT_ORDER_BAN_CACHE -98
 #define INIT_ORDER_INIT_PROFILER -99 //Near the end, logs the costs of initialize
@@ -199,7 +200,7 @@
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
-
+#define FIRE_PRIORITY_IDLE_NPC 5
 #define FIRE_PRIORITY_PING 10
 #define FIRE_PRIORITY_SERVER_MAINT 10
 #define FIRE_PRIORITY_RESEARCH 10
@@ -305,9 +306,14 @@
 #define SSEXPLOSIONS_THROWS 3
 
 // Machines subsystem subtasks.
-#define SSMACHINES_APCS_EARLY 1
-#define SSMACHINES_MACHINES 2
-#define SSMACHINES_APCS_LATE 3
+#define SSMACHINES_MACHINES_EARLY 1
+#define SSMACHINES_APCS_EARLY 2
+#define SSMACHINES_APCS_ENVIRONMENT 3
+#define SSMACHINES_APCS_LIGHTS 4
+#define SSMACHINES_APCS_EQUIPMENT 5
+#define SSMACHINES_APCS_LATE 6
+#define SSMACHINES_MACHINES 7
+#define SSMACHINES_MACHINES_LATE 8
 
 // Wardrobe subsystem tasks
 #define SSWARDROBE_STOCK 1
@@ -353,3 +359,6 @@
 #define VOTE_WINNER_METHOD_WEIGHTED_RANDOM "Weighted Random"
 /// There is no winner for this vote.
 #define VOTE_WINNER_METHOD_NONE "None"
+
+/// Returned by [/datum/vote/proc/can_be_initiated] to denote the vote is valid and can be initiated.
+#define VOTE_AVAILABLE "Vote Available"

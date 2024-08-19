@@ -47,12 +47,12 @@
 	var/datum/species/species = new species_type()
 	var/datum/language_holder/lang_holder = new species.species_language_holder()
 	for(var/language in preferences.get_adjusted_language_holder())
-		preferences.languages[language] = LANGUAGE_SPOKEN
+		preferences.languages[language] = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
 	qdel(lang_holder)
 	qdel(species)
 
 	for(var/language in lang_holder.spoken_languages)
-		preferences.languages[language] = LANGUAGE_SPOKEN
+		preferences.languages[language] = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
 
 	qdel(lang_holder)
 	qdel(species)
@@ -72,7 +72,7 @@
 	if(!preferences.languages || !preferences.languages.len || (preferences.languages && preferences.languages.len > max_languages)) // Too many languages, or no languages.
 		preferences.languages = list()
 		for(var/language in lang_holder.spoken_languages)
-			preferences.languages[language] = LANGUAGE_SPOKEN
+			preferences.languages[language] = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
 
 	var/list/selected_languages = list()
 	var/list/unselected_languages = list()
@@ -89,13 +89,17 @@
 			selected_languages += list(list(
 				"description" = language.desc,
 				"name" = language.name,
-				"icon" = sanitize_css_class_name(language.name)
+				"icon" = sanitize_css_class_name(language.name),
+				"can_understand" = preferences.languages[language.type] & UNDERSTOOD_LANGUAGE,
+				"can_speak" = preferences.languages[language.type] & SPOKEN_LANGUAGE,
 			))
 		else
 			unselected_languages += list(list(
 				"description" = language.desc,
 				"name" = language.name,
-				"icon" = sanitize_css_class_name(language.name)
+				"icon" = sanitize_css_class_name(language.name),
+				"can_understand" = 0,
+				"can_speak" = 0,
 			))
 
 	qdel(lang_holder)
@@ -123,14 +127,26 @@
  *
  * Returns TRUE all the time, to ensure that the UI is updated.
  */
-/datum/preference_middleware/languages/proc/give_language(list/params)
+/datum/preference_middleware/languages/proc/give_language(list/params, mob/user)
 	var/language_name = params["language_name"]
 	var/max_languages = preferences.all_quirks.Find(TRAIT_LINGUIST) ? MAX_LANGUAGES_LINGUIST : MAX_LANGUAGES_NORMAL
 
 	if(preferences.languages && preferences.languages.len == max_languages) // too many languages
 		return TRUE
-
-	preferences.languages[name_to_language[language_name]] = LANGUAGE_SPOKEN
+	var/choice = tgui_input_list(user, \
+								"Choose understanding level", \
+								title = "Language level", \
+								items = list("Understood", "Understood and Spoken"), \
+								default = "Cancel")
+	var/flags = UNDERSTOOD_LANGUAGE
+	switch(choice)
+		if("Understood")
+			flags = UNDERSTOOD_LANGUAGE
+		if("Understood and Spoken")
+			flags = UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE
+		if("Cancel")
+			return TRUE
+	preferences.languages[name_to_language[language_name]] = flags
 	return TRUE
 
 /**

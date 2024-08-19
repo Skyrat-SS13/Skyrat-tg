@@ -20,11 +20,12 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
+		/obj/item/soap/drone,
 	)
 	atom_storage.max_total_storage = 40
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-	atom_storage.max_slots = 9
-	atom_storage.rustle_sound = FALSE
+	atom_storage.max_slots = 10
+	atom_storage.do_rustle = FALSE
 	atom_storage.set_holdable(drone_builtins)
 
 
@@ -39,7 +40,7 @@
 	builtintools += new /obj/item/pipe_dispenser(src)
 	builtintools += new /obj/item/t_scanner(src)
 	builtintools += new /obj/item/analyzer(src)
-
+	builtintools += new /obj/item/soap/drone(src)
 	for(var/obj/item/tool as anything in builtintools)
 		tool.AddComponent(/datum/component/holderloving, src, TRUE)
 
@@ -48,7 +49,7 @@
 	name = "built-in crowbar"
 	desc = "A crowbar built into your chassis."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "crowbar_cyborg"
+	icon_state = "toolkit_engiborg_crowbar"
 	inhand_icon_state = "crowbar"
 	item_flags = NO_MAT_REDEMPTION
 
@@ -56,7 +57,7 @@
 	name = "built-in screwdriver"
 	desc = "A screwdriver built into your chassis."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "screwdriver_cyborg"
+	icon_state = "toolkit_engiborg_screwdriver"
 	inhand_icon_state = "screwdriver"
 	item_flags = NO_MAT_REDEMPTION
 	random_color = FALSE
@@ -75,7 +76,7 @@
 	name = "built-in wrench"
 	desc = "A wrench built into your chassis."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "wrench_cyborg"
+	icon_state = "toolkit_engiborg_wrench"
 	inhand_icon_state = "wrench"
 	item_flags = NO_MAT_REDEMPTION
 
@@ -90,7 +91,7 @@
 	name = "built-in wirecutters"
 	desc = "Wirecutters built into your chassis."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "wirecutters_cyborg"
+	icon_state = "toolkit_engiborg_cutters"
 	inhand_icon_state = "cutters"
 	item_flags = NO_MAT_REDEMPTION
 	random_color = FALSE
@@ -99,6 +100,6 @@
 	name = "built-in multitool"
 	desc = "A multitool built into your chassis."
 	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "multitool_cyborg"
+	icon_state = "toolkit_engiborg_multitool"
 	item_flags = NO_MAT_REDEMPTION
 	toolspeed = 0.5

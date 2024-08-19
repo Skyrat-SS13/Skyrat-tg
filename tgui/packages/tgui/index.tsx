@@ -25,16 +25,15 @@ import './styles/themes/retro.scss';
 import './styles/themes/syndicate.scss';
 import './styles/themes/wizard.scss';
 import './styles/themes/admin.scss';
-// SKYRAT ADDITION START
-import './styles/themes/clockwork.scss';
+import './styles/themes/clockwork.scss'; // SKYRAT EDIT ADDITION
 
-// SKYRAT ADDITION END
 import { perf } from 'common/perf';
 import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 
 import { setGlobalStore } from './backend';
 import { setupGlobalEvents } from './events';
 import { setupHotKeys } from './hotkeys';
+import { loadIconRefMap } from './icons';
 import { captureExternalLinks } from './links';
 import { createRenderer } from './renderer';
 import { configureStore } from './store';
@@ -46,13 +45,14 @@ const store = configureStore();
 
 const renderApp = createRenderer(() => {
   setGlobalStore(store);
+  loadIconRefMap();
 
   const { getRoutedComponent } = require('./routes');
   const Component = getRoutedComponent(store);
   return <Component />;
 });
 
-const setupApp = () => {
+function setupApp() {
   // Delay setup
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupApp);
@@ -82,6 +82,6 @@ const setupApp = () => {
       renderApp();
     });
   }
-};
+}
 
 setupApp();

@@ -13,7 +13,7 @@
 	var/finished_recharging = FALSE
 
 	var/static/list/allowed_devices = typecacheof(list(
-		/obj/item/stock_parts/cell/microfusion, //SKYRAT EDIT ADDITION
+		/obj/item/stock_parts/power_store/cell/microfusion, //SKYRAT EDIT ADDITION
 		/obj/item/gun/microfusion, // SKYRAT EDIT ADDITION
 		/obj/item/gun/energy,
 		/obj/item/melee/baton/security,
@@ -49,7 +49,7 @@
 	if(!status_display_message_shown)
 		. += span_notice("The status display reads:")
 
-	var/obj/item/stock_parts/cell/charging_cell = charging.get_cell()
+	var/obj/item/stock_parts/power_store/charging_cell = charging.get_cell()
 	if(charging_cell)
 		. += span_notice("- \The [charging]'s cell is at <b>[charging_cell.percent()]%</b>.")
 		return
@@ -107,8 +107,8 @@
 			to_chat(user, span_notice("[microfusion_gun] cannot be recharged!"))
 			return TRUE
 
-	if (istype(attacking_item, /obj/item/stock_parts/cell/microfusion))
-		var/obj/item/stock_parts/cell/microfusion/inserting_cell = attacking_item
+	if (istype(attacking_item, /obj/item/stock_parts/power_store/cell/microfusion))
+		var/obj/item/stock_parts/power_store/cell/microfusion/inserting_cell = attacking_item
 		if(inserting_cell.chargerate <= 0)
 			to_chat(user, span_notice("[inserting_cell] cannot be recharged!"))
 			return TRUE
@@ -160,7 +160,7 @@
 	using_power = FALSE
 	if(isnull(charging))
 		return PROCESS_KILL
-	var/obj/item/stock_parts/cell/charging_cell = charging.get_cell()
+	var/obj/item/stock_parts/power_store/charging_cell = charging.get_cell()
 	if(charging_cell)
 		if(charging_cell.charge < charging_cell.maxcharge)
 			charge_cell(charging_cell.chargerate * recharge_coeff * seconds_per_tick, charging_cell)

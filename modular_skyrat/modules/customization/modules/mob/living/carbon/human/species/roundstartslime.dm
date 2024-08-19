@@ -1,6 +1,5 @@
 /datum/species/jelly
 	mutant_bodyparts = list()
-	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
 	facial_hair_alpha = 160
 
@@ -55,6 +54,10 @@
 
 	return perk_descriptions
 
+/datum/species/jelly/roundstartslime/apply_supplementary_body_changes(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
+	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_hair_color))
+		target.dna.species.hair_color_mode = null
+
 /**
  * Alter Form is the ability of slimes to edit many of their character attributes at will
  * This covers most thing about their character, from body size or colour, to adding new wings, tails, ears, etc, to changing the presence of their genitalia
@@ -80,7 +83,7 @@
 	if(length(available_choices))
 		return
 
-	available_choices = deep_copy_list(GLOB.sprite_accessories)
+	available_choices = deep_copy_list(SSaccessories.sprite_accessories)
 	for(var/parts_list in available_choices)
 		for(var/parts in available_choices[parts_list])
 			var/datum/sprite_accessory/part = available_choices[parts_list][parts]
@@ -213,7 +216,7 @@
 		alterer.mutant_renderkey = "" //Just in case
 		for(var/mutant_key in alterer.dna.species.mutant_bodyparts)
 			var/mutant_list = alterer.dna.species.mutant_bodyparts[mutant_key]
-			var/datum/sprite_accessory/changed_accessory = GLOB.sprite_accessories[mutant_key][mutant_list[MUTANT_INDEX_NAME]]
+			var/datum/sprite_accessory/changed_accessory = SSaccessories.sprite_accessories[mutant_key][mutant_list[MUTANT_INDEX_NAME]]
 			mutant_list[MUTANT_INDEX_COLOR_LIST] = changed_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 
 	if(hair_reset)
@@ -250,11 +253,11 @@
 		return
 	switch(target_hair)
 		if("Hair")
-			var/new_style = tgui_input_list(owner, "Select a hair style", "Hair Alterations", GLOB.hairstyles_list)
+			var/new_style = tgui_input_list(owner, "Select a hair style", "Hair Alterations", SSaccessories.hairstyles_list)
 			if(new_style)
 				alterer.set_hairstyle(new_style, update = TRUE)
 		if("Facial Hair")
-			var/new_style = tgui_input_list(alterer, "Select a facial hair style", "Hair Alterations", GLOB.facial_hairstyles_list)
+			var/new_style = tgui_input_list(alterer, "Select a facial hair style", "Hair Alterations", SSaccessories.facial_hairstyles_list)
 			if(new_style)
 				alterer.set_facial_hairstyle(new_style, update = TRUE)
 		if("Hair Color")
@@ -354,7 +357,7 @@
 	if(!chosen_name_key)
 		return
 
-	var/datum/sprite_accessory/selected_sprite_accessory = GLOB.sprite_accessories[chosen_key][chosen_name_key]
+	var/datum/sprite_accessory/selected_sprite_accessory = SSaccessories.sprite_accessories[chosen_key][chosen_name_key]
 	alterer.mutant_renderkey = "" //Just in case
 	if(!selected_sprite_accessory.factual)
 		if(selected_sprite_accessory.organ_type)
@@ -396,7 +399,7 @@
 			new_acc_list[MUTANT_INDEX_COLOR_LIST] = selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 			alterer.dna.species.mutant_bodyparts[chosen_key] = new_acc_list
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
-		alterer.dna.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
+		alterer.dna.update_uf_block(SSaccessories.dna_mutant_bodypart_blocks[chosen_key])
 	alterer.update_mutant_bodyparts()
 	alterer.update_clothing(ALL) // for any clothing that has alternate versions (e.g. muzzled masks)
 

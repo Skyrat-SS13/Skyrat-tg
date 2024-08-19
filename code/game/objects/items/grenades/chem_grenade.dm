@@ -35,7 +35,6 @@
 	set_wires(new /datum/wires/explosive/chem_grenade(src))
 
 /obj/item/grenade/chem_grenade/Destroy(force)
-	QDEL_NULL(wires)
 	QDEL_NULL(landminemode)
 	QDEL_LIST(beakers)
 	return ..()
@@ -494,7 +493,8 @@
 
 	beaker_one.reagents.add_reagent(/datum/reagent/fluorosurfactant, 40)
 	beaker_two.reagents.add_reagent(/datum/reagent/water, 40)
-	beaker_two.reagents.add_reagent(/datum/reagent/space_cleaner, 10)
+	beaker_one.reagents.add_reagent(/datum/reagent/space_cleaner, 20) // SKYRAT EDIT - Bump to 20 to make it work with cellulose
+	beaker_two.reagents.add_reagent(/datum/reagent/cellulose, 20) // SKYRAT EDIT - Cellulose for liquid puddle cleaning
 
 	beakers += beaker_one
 	beakers += beaker_two
@@ -502,7 +502,7 @@
 
 /obj/item/grenade/chem_grenade/ez_clean
 	name = "cleaner grenade"
-	desc = "Waffle Co.-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+	desc = "Waffle Corp. brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
 	stage = GRENADE_READY
 
 /obj/item/grenade/chem_grenade/ez_clean/Initialize(mapload)

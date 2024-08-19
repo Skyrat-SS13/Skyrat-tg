@@ -19,12 +19,9 @@
 #define MBOX_DURATION_STANDBY (2.7 SECONDS)
 
 GLOBAL_LIST_INIT(mystery_box_guns, list(
-	/obj/item/gun/energy/lasercannon,
 	/obj/item/gun/energy/recharge/ebow/large,
 	/obj/item/gun/energy/e_gun,
-	/obj/item/gun/energy/e_gun/advtaser,
 	/obj/item/gun/energy/e_gun/nuclear,
-	/obj/item/gun/energy/e_gun/turret,
 	/obj/item/gun/energy/laser,
 	/obj/item/gun/energy/laser/hellgun,
 	/obj/item/gun/energy/laser/captain,
@@ -34,19 +31,20 @@ GLOBAL_LIST_INIT(mystery_box_guns, list(
 	/obj/item/gun/ballistic/revolver/mateba,
 	/obj/item/gun/ballistic/automatic/pistol/deagle/camo,
 	/obj/item/gun/ballistic/automatic/pistol/suppressed,
-	/obj/item/gun/energy/pulse/carbine,
-	/obj/item/gun/energy/pulse/pistol,
+	/obj/item/gun/energy/pulse/carbine/taserless,
+	/obj/item/gun/energy/pulse/pistol/taserless,
 	/obj/item/gun/ballistic/shotgun/lethal,
 	/obj/item/gun/ballistic/shotgun/automatic/combat,
-	/obj/item/gun/ballistic/shotgun/bulldog,
+	/obj/item/gun/ballistic/shotgun/bulldog/unrestricted,
 	/obj/item/gun/ballistic/rifle/boltaction,
 	/obj/item/gun/ballistic/automatic/ar,
-	/obj/item/gun/ballistic/automatic/proto,
-	/obj/item/gun/ballistic/automatic/c20r,
-	/obj/item/gun/ballistic/automatic/l6_saw,
-	/obj/item/gun/ballistic/automatic/m90,
+	/obj/item/gun/ballistic/automatic/proto/unrestricted,
+	/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+	/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
+	/obj/item/gun/ballistic/automatic/m90/unrestricted,
 	/obj/item/gun/ballistic/automatic/tommygun,
 	/obj/item/gun/ballistic/automatic/wt550,
+	/obj/item/gun/ballistic/automatic/smartgun,
 	/obj/item/gun/ballistic/rifle/sniper_rifle,
 	/obj/item/gun/ballistic/rifle/boltaction,
 ))
@@ -65,6 +63,26 @@ GLOBAL_LIST_INIT(mystery_box_extended, list(
 	/obj/item/melee/energy/sword/saber,
 	/obj/item/spear,
 	/obj/item/circular_saw,
+))
+
+GLOBAL_LIST_INIT(mystery_magic, list(
+	/obj/item/gun/magic/wand/arcane_barrage,
+	/obj/item/gun/magic/wand/arcane_barrage/blood,
+	/obj/item/gun/magic/wand/fireball,
+	/obj/item/gun/magic/wand/resurrection,
+	/obj/item/gun/magic/wand/teleport,
+	/obj/item/gun/magic/wand/door,
+	/obj/item/gun/magic/wand/nothing,
+	/obj/item/storage/belt/wands/full,
+	/obj/item/gun/magic/staff/healing,
+	/obj/item/gun/magic/staff/chaos,
+	/obj/item/gun/magic/staff/door,
+	/obj/item/gun/magic/staff/honk,
+	/obj/item/gun/magic/staff/spellblade,
+	/obj/item/gun/magic/staff/flying,
+	/obj/item/gun/magic/staff/babel,
+	/obj/item/singularityhammer,
+	/obj/item/runic_vendor_scepter,
 ))
 
 
@@ -206,6 +224,12 @@ GLOBAL_LIST_INIT(mystery_box_extended, list(
 
 /obj/structure/mystery_box/tdome/generate_valid_types()
 	valid_types = GLOB.mystery_box_guns + GLOB.mystery_box_extended
+
+/obj/structure/mystery_box/wands
+	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different magical items."
+
+/obj/structure/mystery_box/wands/generate_valid_types()
+	valid_types = GLOB.mystery_magic
 
 
 /// This represents the item that comes out of the box and is constantly changing before the box finishes deciding. Can probably be just an /atom or /movable.

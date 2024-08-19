@@ -1,4 +1,4 @@
-/obj/item/implantpad//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/implantpad//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "implant pad"
 	desc = "Used to modify implants."
 	icon = 'icons/obj/devices/tool.dmi'
@@ -10,7 +10,7 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	interaction_flags_click = FORBID_TELEKINESIS_REACH
+	interaction_flags_click = FORBID_TELEKINESIS_REACH|ALLOW_RESTING
 
 	///The implant case currently inserted into the pad.
 	var/obj/item/implantcase/inserted_case

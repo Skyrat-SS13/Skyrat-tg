@@ -12,7 +12,6 @@
 	spread = 6
 	pin = /obj/item/firing_pin/implant/mindshield
 	can_suppress = FALSE
-	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m44a
@@ -51,7 +50,7 @@
 	name = ".300 caseless bullet"
 	damage = 13
 	armour_penetration = 30 //gonna actually kill the brit that made this var require a U in armor
-	embedding = null
+	embed_data = null
 	shrapnel_type = null
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped
@@ -94,16 +93,18 @@
 	QDEL_NULL(underbarrel)
 	return ..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/afterattack_secondary(atom/target, mob/living/user, flag, params)
-	underbarrel.afterattack(target, user, flag, params)
-	return SECONDARY_ATTACK_CONTINUE_CHAIN
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/try_fire_gun(atom/target, mob/living/user, params)
+	if(LAZYACCESS(params2list(params), RIGHT_CLICK))
+		return underbarrel.try_fire_gun(target, user, params)
+	return ..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/attackby(obj/item/attacking_item, mob/user, params)
-	if(!istype(attacking_item, /obj/item/ammo_casing))
-		..()
-	if(istype(attacking_item, underbarrel.magazine.ammo_type))
-		underbarrel.attack_self(user)
-		underbarrel.attackby(attacking_item, user, params)
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(isammocasing(tool))
+		if(istype(tool, underbarrel.magazine.ammo_type))
+			underbarrel.attackby(tool, user, list2params(modifiers))
+			underbarrel.attack_self(user)
+		return ITEM_INTERACT_BLOCKING
+	return ..()
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher
 	name = "\improper NT M44AGL Pulse Rifle"
@@ -122,13 +123,15 @@
 	QDEL_NULL(underbarrel)
 	return ..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/afterattack_secondary(atom/target, mob/living/user, flag, params)
-	underbarrel.afterattack(target, user, flag, params)
-	return SECONDARY_ATTACK_CONTINUE_CHAIN
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/try_fire_gun(atom/target, mob/living/user, params)
+	if(LAZYACCESS(params2list(params), RIGHT_CLICK))
+		return underbarrel.try_fire_gun(target, user, params)
+	return ..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/attackby(obj/item/attacking_item, mob/user, params)
-	if(!istype(attacking_item, /obj/item/ammo_casing))
-		..()
-	if(istype(attacking_item, underbarrel.magazine.ammo_type))
-		underbarrel.attack_self(user)
-		underbarrel.attackby(attacking_item, user, params)
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(isammocasing(tool))
+		if(istype(tool, underbarrel.magazine.ammo_type))
+			underbarrel.attackby(tool, user, list2params(modifiers))
+			underbarrel.attack_self(user)
+		return ITEM_INTERACT_BLOCKING
+	return ..()

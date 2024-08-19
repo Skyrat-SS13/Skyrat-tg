@@ -15,7 +15,7 @@
 	/// We don't use area power, we always use the cell
 	use_power = NO_POWER_USE
 	///used to check if there is a cell in the machine
-	var/obj/item/stock_parts/cell/cell
+	var/obj/item/stock_parts/power_store/cell
 	///check if the machine is on or off
 	var/on = FALSE
 	///check what mode the machine should be (WORKING, STANDBY)
@@ -127,7 +127,7 @@
 	if(anchored)
 		use_energy(power_to_use)
 	else
-		cell.use(power_to_use KILO JOULES)
+		cell.use(power_to_use)
 
 /obj/machinery/electrolyzer/proc/call_reactions(datum/gas_mixture/env)
 	for(var/reaction in GLOB.electrolyzer_reactions)
@@ -170,7 +170,7 @@
 
 /obj/machinery/electrolyzer/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)
-	if(istype(I, /obj/item/stock_parts/cell))
+	if(istype(I, /obj/item/stock_parts/power_store/cell))
 		if(!panel_open)
 			balloon_alert(user, "open panel!")
 			return

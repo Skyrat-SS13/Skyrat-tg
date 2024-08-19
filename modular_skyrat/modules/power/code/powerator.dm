@@ -32,13 +32,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/techweb_node/powerator
-	id = "powerator"
+	id = TECHWEB_NODE_POWERATOR
 	display_name = "Powerator"
 	description = "We've been saved by it in the past, we should send some power ourselves!"
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	hidden = TRUE
 	experimental = TRUE
-	prereq_ids = list("base")
+	prereq_ids = list(TECHWEB_NODE_PARTS_ADV)
 	design_ids = list(
 		"powerator",
 	)
@@ -66,10 +66,14 @@
 
 /obj/machinery/powerator/Initialize(mapload)
 	. = ..()
+	SSpowerator_penality.sum_powerators()
+	SSpowerator_penality.calculate_penality()
 	START_PROCESSING(SSobj, src)
 
 /obj/machinery/powerator/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	SSpowerator_penality.remove_deled_powerators(src)
+	SSpowerator_penality.calculate_penality()
 	attached_cable = null
 	return ..()
 
@@ -98,6 +102,8 @@
 
 	. += span_notice("Current Power: [display_power(current_power)]/[display_power(max_power)]")
 	. += span_notice("This machine has made [credits_made] credits from selling power so far.")
+	if(length(SSpowerator_penality.powerator_list) > 1)
+		. += span_notice("Multiple powerators detected, total efficiency reduced by [(SSpowerator_penality.diminishing_gains_multiplier)*100]%")
 
 /obj/machinery/powerator/RefreshParts()
 	. = ..()
@@ -157,7 +163,7 @@
 		current_power = attached_cable.newavail()
 	attached_cable.add_delayedload(current_power)
 
-	var/money_ratio = round(current_power * divide_ratio)
+	var/money_ratio = round(current_power * divide_ratio) * SSpowerator_penality.diminishing_gains_multiplier
 	var/datum/bank_account/synced_bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	synced_bank_account.adjust_money(money_ratio)
 	credits_made += money_ratio

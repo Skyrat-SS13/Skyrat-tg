@@ -23,4 +23,4 @@
 	return draw_color
 
 /datum/bodypart_overlay/mutant/head_accessory/get_global_feature_list()
-	return GLOB.sprite_accessories["head_accessory"]
+	return SSaccessories.sprite_accessories["head_accessory"]

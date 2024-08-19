@@ -177,7 +177,7 @@
 	icon_state = "detective"
 	inhand_icon_state = "det_hat"
 
-/obj/item/clothing/head/standalone_hood
+/obj/item/clothing/head/hooded/standalone_hood
 	name = "hood"
 	desc = "A hood with a bit of support around the neck so it actually stays in place, for all those times you want a hood without the coat."
 	icon = 'modular_skyrat/modules/GAGS/icons/head/head.dmi'
@@ -255,3 +255,19 @@
 	greyscale_config_worn = /datum/greyscale_config/sweet_bow/worn
 	greyscale_colors = "#7b9ab5"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/head/hats/caphat/bicorne
+	name = "captain's biscorne"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	desc = "It's good overthrowing the king."
+	icon_state = "solgov_bicorne"
+	worn_y_offset = 2
+
+/obj/item/clothing/head/hats/caphat/sonnensoldner
+	name = "captain's feathered hat"
+	desc = "Cannons ready!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "sonnensoldner_hat"
+	worn_y_offset = 4

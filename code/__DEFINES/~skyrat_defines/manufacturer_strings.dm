@@ -8,6 +8,7 @@
 #define COMPANY_CARWO "It has a small <b>[span_cyan("four pointed star")]</b> alongside <b>[span_cyan("Carwo Defense Systems")]</b> etched into it."
 #define COMPANY_TRAPPISTE "It has a small <b>[span_red("pattern of five squares")]</b> alongside <b>[span_red("Trappiste Fabriek")]</b> etched into it."
 
+#define COMPANY_CYBERSUN "It has a <b>[span_red("red circle")]</b> broken by a <b>hexagonal flower</b> alongside <b>[span_red("Cybersun Industries")]</b> in Konjin etched into it." // Bubberstation edit modular weapons saisaban
 #define COMPANY_SCARBOROUGH "It has <b>[span_orange("Scarborough Arms")]</b> stamped onto it."
 #define COMPANY_INTERDYNE "It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto it."
 

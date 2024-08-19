@@ -20,6 +20,10 @@
 	maxbodytemp = INFINITY
 	vision_range = 5
 	aggro_vision_range = 18
+	// Pale purple, should be red enough to see stuff on lavaland
+	lighting_cutoff_red = 25
+	lighting_cutoff_green = 15
+	lighting_cutoff_blue = 35
 	move_force = MOVE_FORCE_OVERPOWERING
 	move_resist = MOVE_FORCE_OVERPOWERING
 	pull_force = MOVE_FORCE_OVERPOWERING
@@ -82,11 +86,11 @@
 		crusher_kill = TRUE
 		if(crusher_loot) // spawn crusher loot, if any
 			spawn_crusher_loot()
-	//SKYRAT ADDITION START - ASHWALKER TROPHIES
+	// SKYRAT EDIT ADDITION START - ASHWALKER TROPHIES
 	var/datum/status_effect/ashwalker_damage/ashie_damage = has_status_effect(/datum/status_effect/ashwalker_damage)
 	if(!crusher_kill && ashie_damage && crusher_loot && ashie_damage.total_damage >= maxHealth * 0.6)
 		spawn_crusher_loot()
-	//SKYRAT ADDITION END
+	// SKYRAT EDIT ADDITION END
 	if(true_spawn && !(flags_1 & ADMIN_SPAWNED_1))
 		var/tab = "megafauna_kills"
 		if(crusher_kill)
@@ -211,7 +215,13 @@
 		L.add_mob_memory(/datum/memory/megafauna_slayer, antagonist = src)
 		L.client.give_award(/datum/award/achievement/boss/boss_killer, L)
 		L.client.give_award(achievement_type, L)
+		//SKYRAT EDIT START
+		/*
 		if(crusher_kill && istype(L.get_active_held_item(), /obj/item/kinetic_crusher))
+		*/
+		var/obj/item/held_item = L.get_active_held_item()
+		if(crusher_kill && (istype(held_item, /obj/item/kinetic_gauntlet) || held_item.GetComponent(/datum/component/kinetic_crusher))) //trust me, i hate this just as much as you
+		//SKYRAT EDIT END
 			L.client.give_award(crusher_achievement_type, L)
 		L.client.give_award(/datum/award/score/boss_score, L) //Score progression for bosses killed in general
 		L.client.give_award(score_achievement_type, L) //Score progression for specific boss killed

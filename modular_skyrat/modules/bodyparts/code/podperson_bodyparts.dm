@@ -5,6 +5,9 @@
 /obj/item/bodypart/chest/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
+/obj/item/bodypart/chest/pod/get_butt_sprite()
+	return icon('modular_skyrat/master_files/icons/mob/butts.dmi', BUTT_SPRITE_PODPERSON)
+
 /obj/item/bodypart/arm/left/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 

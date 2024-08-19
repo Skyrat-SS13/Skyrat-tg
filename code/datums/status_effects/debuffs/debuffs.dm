@@ -18,10 +18,12 @@
 /datum/status_effect/incapacitating/on_creation(mob/living/new_owner, set_duration)
 	if(isnum(set_duration))
 		duration = set_duration
-	. = ..()
-	if(. && (needs_update_stat || issilicon(owner)))
-		owner.update_stat()
+	return ..()
 
+/datum/status_effect/incapacitating/on_apply()
+	if(needs_update_stat || issilicon(owner))
+		owner.update_stat()
+	return TRUE
 
 /datum/status_effect/incapacitating/on_remove()
 	if(needs_update_stat || issilicon(owner)) //silicons need stat updates in addition to normal canmove updates
@@ -224,7 +226,7 @@
 				var/datum/status_effect/exercised/exercised = carbon_owner.has_status_effect(/datum/status_effect/exercised)
 				if(exercised && carbon_owner.mind)
 					// the better you sleep, the more xp you gain
-					carbon_owner.mind.adjust_experience(/datum/skill/fitness, seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER)
+					carbon_owner.mind.adjust_experience(/datum/skill/athletics, seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER)
 					carbon_owner.adjust_timed_status_effect(-1 * seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER, /datum/status_effect/exercised)
 					if(prob(2))
 						to_chat(carbon_owner, span_notice("You feel your fitness improving!"))
@@ -343,23 +345,23 @@
 	if(owner.reagents)
 		owner.reagents.del_reagent(/datum/reagent/water/holywater) //can't be deconverted
 
+//SKYRAT EDIT START - OVERRIDEN IN MODULAR
+/*
 /datum/status_effect/crusher_mark
 	id = "crusher_mark"
 	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
-	status_type = STATUS_EFFECT_MULTIPLE
+	status_type = STATUS_EFFECT_REFRESH
 	alert_type = null
 	var/mutable_appearance/marked_underlay
-	var/obj/item/kinetic_crusher/hammer_synced
+	var/boosted = FALSE
 
-
-/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/kinetic_crusher/new_hammer_synced)
+/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, was_boosted)
 	. = ..()
-	if(.)
-		hammer_synced = new_hammer_synced
+	boosted = was_boosted
 
 /datum/status_effect/crusher_mark/on_apply()
-	if(owner.mob_size >= MOB_SIZE_LARGE)
-		marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield2")
+	if(owner.mob_size >= MOB_SIZE_LARGE  && !HAS_TRAIT(owner, TRAIT_OVERSIZED)) // SKYRAT EDIT CHANGE - Original: if(owner.mob_size >= MOB_SIZE_LARGE)
+		marked_underlay = mutable_appearance('icons/effects/effects.dmi', boosted ? "shield" : "shield2")
 		marked_underlay.pixel_x = -owner.pixel_x
 		marked_underlay.pixel_y = -owner.pixel_y
 		owner.underlays += marked_underlay
@@ -367,15 +369,13 @@
 	return FALSE
 
 /datum/status_effect/crusher_mark/Destroy()
-	hammer_synced = null
 	if(owner)
 		owner.underlays -= marked_underlay
 	QDEL_NULL(marked_underlay)
 	return ..()
 
-//we will only clear ourselves if the crusher is the one that owns us.
-/datum/status_effect/crusher_mark/before_remove(obj/item/kinetic_crusher/attacking_hammer)
-	return (attacking_hammer == hammer_synced)
+*/
+//SKYRAT EDIT END
 
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"
@@ -666,6 +666,7 @@
 	duration = 150
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/convulsing
+	show_duration = TRUE
 
 /datum/status_effect/convulsing/on_creation(mob/living/zappy_boy)
 	. = ..()
@@ -777,7 +778,10 @@
 					span_userdanger(pick("Your lungs hurt!", "It hurts to breathe!")),
 					span_warning(pick("You feel nauseated.", "You feel like you're going to throw up!")))
 				else
-					fake_emote = pick("cough", "sniff", "sneeze")
+					if(prob(40))
+						fake_emote = "cough"
+					else
+						owner.sneeze()
 
 	if(fake_emote)
 		owner.emote(fake_emote)

@@ -83,14 +83,17 @@
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/welder
 	materials = list(
-		/datum/material/iron=SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/plasma=SHEET_MATERIAL_AMOUNT * 1,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 1,
 	)
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MINING,
 	)
 
-//Cyborg Skyrat overrides
+/*
+* Cyborg parts Skyrat overrides
+*/
+
 /datum/design/borg_suit
 	name = "Cyborg Endoskeleton"
 	id = "borg_suit"

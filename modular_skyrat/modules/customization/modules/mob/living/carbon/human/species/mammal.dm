@@ -82,7 +82,7 @@
 	return features
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
-	var/name = "None"
+	var/name = SPRITE_ACCESSORY_NONE
 	var/list/candidates = GLOB.body_marking_sets.Copy()
 	for(var/candi in candidates)
 		var/datum/body_marking_set/setter = GLOB.body_marking_sets[candi]

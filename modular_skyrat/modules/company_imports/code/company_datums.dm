@@ -24,7 +24,7 @@
 
 // Nakamura engineering's MOD division, sells modsuits and modsuit accessories
 /datum/cargo_company/nakamura_modsuits
-	name = NAKAMURA_ENGINEERING_MODSUITS_NAME
+	name = COMPANY_NAME_NAKAMURA_ENGINEERING_MODSUITS
 	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
 	cost_change_lower = -1000
@@ -32,7 +32,7 @@
 
 // Jarnsmiour sells some melee weapons and some forging related items
 /datum/cargo_company/jarnsmiour
-	name = BLACKSTEEL_FOUNDATION_NAME
+	name = COMPANY_NAME_BLACKSTEEL_FOUNDATION
 	company_flag = CARGO_COMPANY_BLACKSTEEL
 	cost = 3000
 	cost_change_lower = 0
@@ -40,7 +40,7 @@
 
 // Sells NRI military surplus clothing, gear, and a few firearms
 /datum/cargo_company/nri_surplus
-	name = NRI_SURPLUS_COMPANY_NAME
+	name = COMPANY_NAME_NRI_SURPLUS
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
 	cost = 3000
 	cost_change_lower = -1000
@@ -49,7 +49,7 @@
 
 // DeForest sells medical supplies of most types
 /datum/cargo_company/deforest_medical
-	name = DEFOREST_MEDICAL_NAME
+	name = COMPANY_NAME_DEFOREST_MEDICAL
 	company_flag = CARGO_COMPANY_DEFOREST
 	cost = 9000
 	cost_change_lower = -1000
@@ -57,7 +57,7 @@
 
 // Donk sells donk co branded stuff, microwave foods, donk co merch, and donksoft guns
 /datum/cargo_company/donk
-	name = DONK_CO_NAME
+	name = COMPANY_NAME_DONK_CO
 	company_flag = CARGO_COMPANY_DONK
 	cost = 3000
 	cost_change_lower = -1000
@@ -66,7 +66,7 @@
 // Kahraman sells industrial grade mining equipment
 
 /datum/cargo_company/kahraman
-	name = KAHRAMAN_INDUSTRIES_NAME
+	name = COMPANY_NAME_KAHRAMAN_INDUSTRIES
 	company_flag = CARGO_COMPANY_KAHRAMAN
 	cost = 6000
 	cost_change_lower = -1000
@@ -74,30 +74,31 @@
 
 // Sells unique construction supplies that the station can't normally obtain
 /datum/cargo_company/akh_frontier
-	name = FRONTIER_EQUIPMENT_NAME
+	name = COMPANY_NAME_FRONTIER_EQUIPMENT
 	company_flag = CARGO_COMPANY_FRONTIER_EQUIPMENT
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
 /datum/cargo_company/nanotrasen_bolt_weapons
-	name = SOL_DEFENSE_DEFENSE_NAME
+	name = COMPANY_NAME_SOL_DEFENSE_DEFENSE
 	company_flag = CARGO_COMPANY_SOL_DEFENSE
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 4000
 	can_roundstart_pick = FALSE
 
-// Micron control systems and allstar's weapons together, all your energy guns in one place!
+// Micron control systems energy lineup.
 /datum/cargo_company/microstar_energy_weapons
-	name = MICROSTAR_ENERGY_NAME
-	company_flag = CARGO_COMPANY_MICROSTAR
+	name = COMPANY_NAME_MICRON_CONTROL_SYSTEMS
+	company_flag = CARGO_COMPANY_MICRON
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 4000
 	can_roundstart_pick = FALSE
 
+
 // Vitzstvi sells ammo boxes and speedloaders for most of the weapons sold by other companies
 /datum/cargo_company/vitezstvi_ammo
-	name = VITEZSTVI_AMMO_NAME
+	name = COMPANY_NAME_VITEZSTVI_AMMO
 	company_flag = CARGO_COMPANY_VITEZSTVI_AMMO
 	cost = 3000
 	cost_change_lower = -1000

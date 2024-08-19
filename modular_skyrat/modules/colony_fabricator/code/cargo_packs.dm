@@ -44,6 +44,6 @@
 		/obj/item/flatpacked_machine/airlock_kit_manual,
 		/obj/item/wallframe/apc,
 		/obj/item/electronics/apc,
-		/obj/item/stock_parts/cell/high,
+		/obj/item/stock_parts/power_store/battery/high,
 	)
 	crate_name = "colonization kit crate"

@@ -1,5 +1,5 @@
 /datum/armament_entry/company_import/sol_defense
-	category = SOL_DEFENSE_DEFENSE_NAME
+	category = COMPANY_NAME_SOL_DEFENSE_DEFENSE
 	company_bitflag = CARGO_COMPANY_SOL_DEFENSE
 
 // Beautiful SolFed clothing

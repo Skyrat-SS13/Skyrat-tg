@@ -314,14 +314,6 @@
 	attack_verb_simple = list("peck", "teleport behind", "caw at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1)
 
-/obj/item/toy/plush/skyrat/tree_ferret
-	name = "tree ferret plushy"
-	desc = "This plush will always put on a smile to make your day as bright as the sun. Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
-	icon_state = "plushie_sels"
-	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
-	attack_verb_simple = list("hug", "cackle at", "health analyze")
-	squeak_override = list('sound/effects/crunchybushwhack1.ogg' = 1)
-
 /obj/item/toy/plush/skyrat/fox/mia
 	name = "Mia’s fox plushie"
 	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."
@@ -495,6 +487,16 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg' = 1)
 	responses = list("The human body can survive three weeks without skiiiiiiiiiiin.", "The thigh bone is connected to the hip boooooooooone.", "Yeeeessss?", "Helloooooo.", "Don't be such a baby, ribs grow baaaaaaaaaack.",)
 
+// Donation reward for shyshadow
+/obj/item/toy/plush/skyrat/chunko/plushie_winrow
+	name = "dark and brooding lizard plush"
+	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	icon_state = "plushie_shyshadow"
+	gender = MALE
+	attack_verb_continuous = list("slashes", "bites", "rizzes")
+	attack_verb_simple = list("slash", "bite", "rizz")
+	responses = list("Am I looking in a mirror? Because what I see is beautiful.", "I'm not just a toy. I'm a romantic.", "I'm the diamond, and you're the rough because sooner or later...", "Is that mouth just for talking?", "Come on, don't be so hard on me. I'm so soft!", "Is that a glass of scotch? Because I've been thinking about buttering you up.", "Don't look stare for too long. You might get lost in my eyes.", "Oh wow! Looks like I'm not the only handsome thing around these parts.", "Do NOT the plushie. I am not a voodoo doll.",)
+
 // Donation reward for tobjv
 /obj/item/toy/plush/skyrat/tesh
 	name = "Squish-Me-Tesh"
@@ -518,12 +520,6 @@
 	name = "voodoo doll"
 	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
 	icon_state = "plushie_gamerguy"
-
-// Donation reward for shyshadow
-/obj/item/toy/plush/skyrat/plushie_winrow
-	name = "dark and brooding lizard plush"
-	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
-	icon_state = "plushie_shyshadow"
 
 // Donation reward for Dudewithatude
 /obj/item/toy/plush/skyrat/plushie_star

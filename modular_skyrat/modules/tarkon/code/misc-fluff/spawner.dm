@@ -64,7 +64,7 @@
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/advanced/tarkon/sci
 	id_trim = /datum/id_trim/away/tarkon/sci
-	r_pocket = /obj/item/stock_parts/cell/high
+	r_pocket = /obj/item/stock_parts/power_store/cell/high
 	l_pocket = /obj/item/card/id/away/tarkonrobo
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
