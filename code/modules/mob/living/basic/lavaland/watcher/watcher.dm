@@ -22,6 +22,11 @@
 		/obj/item/stack/ore/diamond = 2,
 		/obj/item/stack/sheet/sinew = 2,
 	)
+<<<<<<< HEAD
+=======
+	shadow_type = SHADOW_LARGE
+
+>>>>>>> 2016156d6f9e (Shift certain flying mob positions upon death (#85942))
 	/// How often can we shoot?
 	var/ranged_cooldown = 3 SECONDS
 	/// What kind of beams we got?
