@@ -1411,6 +1411,14 @@ digi
 /datum/greyscale_config/teshari/thickrobe/wiz
 	name = "Teshari Wizard Robe"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/wizrobe.json'
+	
+/datum/greyscale_config/teshari/thickrobe/jacket
+	name = "Teshari Jacket"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/jacket.json'
+	
+/datum/greyscale_config/teshari/thickrobe/longcoat
+	name = "Teshari Longcoat"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/longcoat.json'
 
 /datum/greyscale_config/teshari/armor
 	name = "Teshari Armor"
