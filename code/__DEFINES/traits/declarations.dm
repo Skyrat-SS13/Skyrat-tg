@@ -358,8 +358,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GUNFLIP "gunflip"
 /// Increases chance of getting special traumas, makes them harder to cure
 #define TRAIT_SPECIAL_TRAUMA_BOOST "special_trauma_boost"
-/// Doubles the duration and cooldown of a flip
-#define TRAIT_SLOW_FLIP "slow_flip"
 #define TRAIT_SPACEWALK "spacewalk"
 /// Sanity trait to keep track of when we're in hyperspace and add the appropriate element if we werent
 #define TRAIT_HYPERSPACED "hyperspaced"
@@ -673,6 +671,14 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This movable atom has the explosive block element
 #define TRAIT_BLOCKING_EXPLOSIVES "blocking_explosives"
 
+<<<<<<< HEAD
+=======
+///This mob is currently blocking a projectile.
+#define TRAIT_BLOCKING_PROJECTILES "blocking_projectiles"
+/// This turf contains something using split visiblity
+#define TRAIT_CONTAINS_SPLITVIS "contains_splitvis"
+
+>>>>>>> b6d3e114da87 (Adds taunting as a replacement for spin/flip in style meter and parrying (#85605))
 ///Lava will be safe to cross while it has this trait.
 #define TRAIT_LAVA_STOPPED "lava_stopped"
 ///Chasms will be safe to cross while they've this trait.
