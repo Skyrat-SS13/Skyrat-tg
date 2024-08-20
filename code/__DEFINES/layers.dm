@@ -84,6 +84,12 @@
 #define RUNECHAT_PLANE 30
 /// Plane for balloon text (text that fades up)
 #define BALLOON_CHAT_PLANE 31
+<<<<<<< HEAD
+=======
+/// Plane for the wallmount balloons
+#define EXAMINE_BALLOONS_PLANE 32
+#define EXAMINE_BALLOONS_RENDER_TARGET "*EXAMINE_BALLOONS_RENDER_TARGET"
+>>>>>>> e47ba6480ff ([NO GBP] Fixes examine balloons not being click transparent even while inactive (#85969))
 
 //-------------------- HUD ---------------------
 //HUD layer defines
