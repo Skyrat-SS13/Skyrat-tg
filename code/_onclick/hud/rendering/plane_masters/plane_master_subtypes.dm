@@ -422,3 +422,14 @@
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 	render_relay_planes = list(RENDER_PLANE_MASTER)
 	offsetting_flags = BLOCKS_PLANE_OFFSETTING|OFFSET_RELAYS_MATCH_HIGHEST
+<<<<<<< HEAD
+=======
+
+/atom/movable/screen/plane_master/examine_balloons
+	name = "Examine Balloons"
+	documentation = "The balloons that appear above objects (often wallmounts) when holding shift."
+	plane = EXAMINE_BALLOONS_PLANE
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+	render_relay_planes = list(RENDER_PLANE_GAME_WORLD)
+	alpha = 0
+>>>>>>> 69e3c0eaf111 (Wallmount balloons are now clickable (#85887))
