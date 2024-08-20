@@ -375,10 +375,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (state == STATE_BUYING_SHUTTLE && can_buy_shuttles(usr) != TRUE)
 				return
 			set_state(usr, params["state"])
-<<<<<<< HEAD
-			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
-=======
->>>>>>> 891394181f6 (Computer console sounds (#85358))
 		if ("setStatusMessage")
 			if (!authenticated(usr))
 				return
