@@ -4,7 +4,6 @@
 	desc = "There are three parts to the ear. Inner, middle and outer. Only one of these parts should be normally visible."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EARS
-	visual = FALSE
 	gender = PLURAL
 
 	healing_factor = STANDARD_ORGAN_HEALING
@@ -136,14 +135,10 @@
 	icon_state = "kitty"
 	visual = TRUE
 	damage_multiplier = 2
-	// Keeps track of which cat ears sprite is associated with this.
-	var/variant = "Cat"
 
-/obj/item/organ/internal/ears/cat/Initialize(mapload, variant_pref)
-	. = ..()
-	if(variant_pref)
-		variant = variant_pref
+	preference = "feature_human_ears"
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
 /obj/item/organ/internal/ears/cat/on_mob_insert(mob/living/carbon/human/ear_owner)
@@ -162,6 +157,33 @@
 		ear_owner.update_body()
 */
 //SKYRAT EDIT REMOVAL END
+=======
+	dna_block = DNA_EARS_BLOCK
+
+	bodypart_overlay = /datum/bodypart_overlay/mutant/cat_ears
+
+/// Bodypart overlay for the horrible cat ears
+/datum/bodypart_overlay/mutant/cat_ears
+	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
+	color_source = ORGAN_COLOR_HAIR
+	feature_key = "ears"
+
+	/// We dont color the inner part, which is the front layer
+	var/colorless_layer = EXTERNAL_FRONT
+
+/datum/bodypart_overlay/mutant/cat_ears/get_global_feature_list()
+	return SSaccessories.ears_list
+
+/datum/bodypart_overlay/mutant/cat_ears/can_draw_on_bodypart(mob/living/carbon/human/human)
+	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
+		return FALSE
+	return TRUE
+
+/datum/bodypart_overlay/mutant/cat_ears/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
+	if(draw_layer != bitflag_to_layer(colorless_layer))
+		return ..()
+	return overlay
+>>>>>>> 095f7e3b705 (Death of mutant bodyparts AND external organs (#85137))
 
 /obj/item/organ/internal/ears/penguin
 	name = "penguin ears"

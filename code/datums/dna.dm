@@ -769,9 +769,14 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = SSaccessories.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), length(SSaccessories.pod_hair_list))]
 
+<<<<<<< HEAD
 
 	for(var/obj/item/organ/external/external_organ in organs)
 		external_organ.mutate_feature(features, src)
+=======
+	for(var/obj/item/organ/organ in organs)
+		organ.mutate_feature(features, src)
+>>>>>>> 095f7e3b705 (Death of mutant bodyparts AND external organs (#85137))
 
 	if(icon_update)
 		update_body(is_creating = mutcolor_update)
