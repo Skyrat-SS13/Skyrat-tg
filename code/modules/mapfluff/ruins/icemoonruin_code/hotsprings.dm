@@ -14,7 +14,12 @@
 	baseturfs = /turf/open/water/cursed_spring
 	planetary_atmos = TRUE
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
+=======
+	fishing_datum = /datum/fish_source/cursed_spring
+
+>>>>>>> 659e6f0ca24 (Fishing expansion 2: one-year later boogaloo (#85252))
 /turf/open/water/cursed_spring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(!isliving(arrived))
