@@ -68,3 +68,9 @@
 	dummy_cell.charge = owner.nutrition * SYNTH_JOULES_PER_NUTRITION
 	charge_cell.Invoke(dummy_cell, seconds_per_tick)
 	owner.nutrition = min(dummy_cell.charge() / SYNTH_JOULES_PER_NUTRITION, NUTRITION_LEVEL_FULL)
+	QDEL_NULL(dummy_cell)
+
+#undef SYNTH_CHARGE_MAX
+#undef SYNTH_JOULES_PER_NUTRITION
+#undef SYNTH_CHARGE_RATE
+#undef SYNTH_APC_MINIMUM_PERCENT

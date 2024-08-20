@@ -72,7 +72,7 @@
 	var/obj/item/organ/internal/liver/target_liver = target.get_organ_slot(ORGAN_SLOT_LIVER)
 	human_target.setOrganLoss(ORGAN_SLOT_LIVER, 10) //not bad, not great
 	if(target_liver)
-		target_liver.operated = TRUE // SKYRAT EDIT CHANGE - Not for slimepeople - Indents for else block
+		target_liver.operated = TRUE
 		if(target_liver.organ_flags & ORGAN_EMP) //If our organ is failing due to an EMP, fix that
 			target_liver.organ_flags &= ~ORGAN_EMP
 	display_results(

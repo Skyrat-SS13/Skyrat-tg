@@ -149,8 +149,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MUTANT_COLORS "mutcolors"
 /// Species with this trait have mutant colors that cannot be chosen by the player, nor altered ingame by external means
 #define TRAIT_FIXED_MUTANT_COLORS "fixed_mutcolors"
-/// Species with this trait have a haircolor that cannot be chosen by the player, nor altered ingame by external means
-#define TRAIT_FIXED_HAIRCOLOR "fixed_haircolor"
 /// Humans with this trait won't get bloody hands, nor bloody feet
 #define TRAIT_NO_BLOOD_OVERLAY "no_blood_overlay"
 /// Humans with this trait cannot have underwear
@@ -422,6 +420,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ANTENNAE "antennae"
 /// Blowing kisses actually does damage to the victim
 #define TRAIT_KISS_OF_DEATH "kiss_of_death"
+/// Syndie kisses can apply burn damage
+#define TRAIT_SYNDIE_KISS "syndie_kiss"
 /// Used to activate french kissing
 #define TRAIT_GARLIC_BREATH "kiss_of_garlic_death"
 /// Addictions don't tick down, basically they're permanently addicted
@@ -576,6 +576,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait that determines vulnerability to being stunned from a shove
 #define TRAIT_STUN_ON_NEXT_SHOVE "stun on next shove"
+
+/// Trait that determines whether our mob gains more strength from drinking during a fist fight
+#define TRAIT_DRUNKEN_BRAWLER "drunken brawler"
 
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
@@ -1088,13 +1091,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Currently fishing
 #define TRAIT_GONE_FISHING "fishing"
 
-/// Makes a species be better/worse at tackling depending on their wing's status
+/// Makes a character be better/worse at tackling depending on their wing's status
 #define TRAIT_TACKLING_WINGED_ATTACKER "tacking_winged_attacker"
 
-/// Makes a species be frail and more likely to roll bad results if they hit a wall
+/// Makes a character be frail and more likely to roll bad results if they hit a wall
 #define TRAIT_TACKLING_FRAIL_ATTACKER "tackling_frail_attacker"
 
-/// Makes a species be better/worse at defending against tackling depending on their tail's status
+/// Makes a character be better/worse at defending against tackling depending on their tail's status
 #define TRAIT_TACKLING_TAILED_DEFENDER "tackling_tailed_defender"
 
 /// Is runechat for this atom/movable currently disabled, regardless of prefs or anything?

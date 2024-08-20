@@ -8,6 +8,7 @@
 	desc = "A generic brand of lipstick."
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "lipstick"
+	base_icon_state = "lipstick"
 	inhand_icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
 	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
@@ -18,6 +19,8 @@
 	var/style = "lipstick"
 	/// A trait that's applied while someone has this lipstick applied, and is removed when the lipstick is removed
 	var/lipstick_trait
+	/// Can this lipstick spawn randomly
+	var/random_spawn = TRUE
 
 /obj/item/lipstick/Initialize(mapload)
 	. = ..()
@@ -36,6 +39,8 @@
 /obj/item/lipstick/update_icon_state()
 	icon_state = "lipstick[open ? "_uncap" : null]"
 	inhand_icon_state = "lipstick[open ? "open" : null]"
+	icon_state = "[base_icon_state][open ? "_uncap" : null]"
+	inhand_icon_state = "[base_icon_state][open ? "open" : null]"
 	return ..()
 
 /obj/item/lipstick/update_overlays()
@@ -104,6 +109,19 @@
 	name = "\improper Kiss of Death"
 	desc = "An incredibly potent tube of lipstick made from the venom of the dreaded Yellow Spotted Space Lizard, as deadly as it is chic. Try not to smear it!"
 	lipstick_trait = TRAIT_KISS_OF_DEATH
+	random_spawn = FALSE
+
+/obj/item/lipstick/syndie
+	name = "syndie lipstick"
+	desc = "Syndicate branded lipstick with a killer dose of kisses. Observe safety regulations!"
+	icon_state = "slipstick"
+
+	base_icon_state = "slipstick"
+	lipstick_color = COLOR_SYNDIE_RED
+	lipstick_trait = TRAIT_SYNDIE_KISS
+	random_spawn = FALSE
+	lipstick_color = COLOR_SYNDIE_RED
+	lipstick_trait = TRAIT_SYNDIE_KISS
 
 /obj/item/lipstick/random
 	name = "lipstick"
@@ -116,7 +134,7 @@
 	if(!possible_colors)
 		possible_colors = list()
 		for(var/obj/item/lipstick/lipstick_path as anything in (typesof(/obj/item/lipstick) - src.type))
-			if(!initial(lipstick_path.lipstick_color))
+			if(!initial(lipstick_path.lipstick_color) || !initial(lipstick_path.random_spawn))
 				continue
 			possible_colors[initial(lipstick_path.lipstick_color)] = initial(lipstick_path.name)
 	lipstick_color = pick(possible_colors)
