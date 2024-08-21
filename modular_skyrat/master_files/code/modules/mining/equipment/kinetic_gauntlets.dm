@@ -69,7 +69,7 @@
 /obj/item/clothing/gloves/kinetic_gauntlets/proc/detonate_check(mob/living/user)
 	var/both_gauntlets_deployed = left_gauntlet?.loc == user && right_gauntlet?.loc == user
 	if(both_gauntlets_deployed)
-		return left_gauntlet.next_attack >= world.time && right_gauntlet.next_attack >= world.time
+		return left_gauntlet.next_attack >= world.time || right_gauntlet.next_attack >= world.time
 
 	return FALSE //you WILL glass cannon and you WILL like it.
 

@@ -1,12 +1,12 @@
-/obj/item/clothing/mask/holocigarette
+/obj/item/holocigarette
 	name = "Holocigarette"
 	desc = "A cigarette created using holodeck technology. Want to smoke without all the downsides? Try Holocigarettes!"
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigoff"
 	throw_speed = 0.5
 	inhand_icon_state = "cigoff"
 	w_class = WEIGHT_CLASS_TINY
-	body_parts_covered = null
+	slot_flags= ITEM_SLOT_MASK
 	// Note - these are in masks.dmi not in cigarette.dmi
 	/// The icon state used when this is lit.
 	var/icon_on = "cigon"
@@ -15,7 +15,7 @@
 	var/lit = FALSE
 	actions_types = list(/datum/action/item_action/toggle_lit)
 
-/obj/item/clothing/mask/holocigarette/cigar
+/obj/item/holocigarette/cigar
 	name = "Bright Cosmos cigar"
 	desc = "A fancy cigar created using holodeck technology. They look like they have a \"Bright Cosmos\" branding on their wrap."
 	icon_state = "cigar2off"
@@ -27,7 +27,7 @@
 	desc = "Light or extinguish the holocigarette"
 
 /datum/action/item_action/toggle_lit/Trigger(trigger_flags)
-	var/obj/item/clothing/mask/holocigarette/smoked = target
+	var/obj/item/holocigarette/smoked = target
 	var/mob/living/carbon/smoker = owner
 	if(smoked.lit == FALSE)
 		smoked.icon_state = smoked.icon_on

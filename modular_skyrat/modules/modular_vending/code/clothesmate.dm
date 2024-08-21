@@ -5,6 +5,7 @@
 			"icon" = "hat-cowboy",
 			"products" = list(
 				/obj/item/clothing/head/beret/badge = 5,
+				/obj/item/clothing/head/beret/clown/rainbow = 5,
 				/obj/item/clothing/head/colourable_flatcap= 5,
 				/obj/item/clothing/head/cowboy/skyrat/cattleman = 5,
 				/obj/item/clothing/head/cowboy/skyrat/cattleman/wide = 5,
@@ -60,6 +61,8 @@
 				/obj/item/clothing/under/suit/skyrat/recolorable = 5,
 				/obj/item/clothing/under/suit/skyrat/recolorable/skirt = 5,
 				/obj/item/clothing/under/pants/skyrat/kilt = 5,
+				/obj/item/clothing/under/costume/skyrat/kilt/royal = 5,
+				/obj/item/clothing/under/costume/skyrat/tac/irish = 5,
 				/obj/item/clothing/under/suit/fancy = 5,
 				/obj/item/clothing/under/texas = 5,
 				/obj/item/clothing/under/sweater = 5,

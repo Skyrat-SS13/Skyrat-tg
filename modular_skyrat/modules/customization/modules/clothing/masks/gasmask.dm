@@ -98,7 +98,7 @@
 	. = ..()
 	. += span_notice("You can toggle its ability to muffle your TTS voice with <b>control click</b>.")
 
-/obj/item/clothing/mask/gas/respirator/CtrlClick(mob/living/user)
+/obj/item/clothing/mask/gas/respirator/item_ctrl_click(mob/living/user)
 	if(!isliving(user))
 		return
 	if(user.get_active_held_item() != src)

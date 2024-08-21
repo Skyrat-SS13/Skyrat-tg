@@ -20,11 +20,7 @@
 	. = ..()
 	. += span_purple("[src] can be assembled by using <b>Ctrl+Shift+Click</b> while [src] is on the floor.")
 
-/obj/item/construction_kit/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/item/construction_kit/click_ctrl_shift(mob/user)
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return FALSE
 
@@ -104,7 +100,7 @@
 	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
 
 //to change model
-/obj/item/construction_kit/bdsm/shibari/CtrlClick(mob/user)
+/obj/item/construction_kit/bdsm/shibari/item_ctrl_click(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE

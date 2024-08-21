@@ -26,5 +26,8 @@
 		randomize_cap_color()
 	return draw_color
 
+/datum/bodypart_overlay/mutant/mushroom_cap/get_global_feature_list()
+	return SSaccessories.sprite_accessories["caps"]
+
 /datum/bodypart_overlay/mutant/mushroom_cap/can_draw_on_bodypart(mob/living/carbon/human/human)
 	return !sprite_datum.is_hidden(human)

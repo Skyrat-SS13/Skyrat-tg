@@ -11,7 +11,7 @@
 				for(var/genital in GLOB.possible_genitals)
 					if(!dna.species.mutant_bodyparts[genital])
 						continue
-					var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+					var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
 					if(!G)
 						continue
 					if(G.is_hidden(src))
@@ -55,6 +55,9 @@
 
 /mob/living/carbon/human/species/dwarf
 	race = /datum/species/dwarf
+
+/mob/living/carbon/human/species/ghoul
+	race = /datum/species/ghoul
 
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime

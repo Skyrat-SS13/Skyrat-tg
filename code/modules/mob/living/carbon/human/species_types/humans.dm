@@ -35,7 +35,7 @@
 	)
 
 /datum/species/human/get_cough_sound(mob/living/carbon/human/human)
-	if(human.physique == FEMALE)
+	if(human.gender == FEMALE) // SKYRAT EDIT CHANGE
 		return pick(
 			'sound/voice/human/female_cough1.ogg',
 			'sound/voice/human/female_cough2.ogg',
@@ -54,7 +54,7 @@
 	)
 
 /datum/species/human/get_cry_sound(mob/living/carbon/human/human)
-	if(human.physique == FEMALE)
+	if(human.gender == FEMALE) // SKYRAT EDIT CHANGE
 		return pick(
 			'sound/voice/human/female_cry1.ogg',
 			'sound/voice/human/female_cry2.ogg',
@@ -72,14 +72,22 @@
 	return 'sound/voice/human/male_sneeze1.ogg'
 
 /datum/species/human/get_laugh_sound(mob/living/carbon/human/human)
-	if(!ishuman(human))
-		return
 	if(human.physique == FEMALE)
 		return 'sound/voice/human/womanlaugh.ogg'
 	return pick(
 		'sound/voice/human/manlaugh1.ogg',
 		'sound/voice/human/manlaugh2.ogg',
 	)
+
+/datum/species/human/get_sigh_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return 'sound/voice/human/female_sigh.ogg'
+	return 'sound/voice/human/male_sigh.ogg'
+
+/datum/species/human/get_sniff_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return 'sound/voice/human/female_sniff.ogg'
+	return 'sound/voice/human/male_sniff.ogg'
 
 /datum/species/human/get_species_description()
 	return "Humans are the dominant species in the known galaxy. \

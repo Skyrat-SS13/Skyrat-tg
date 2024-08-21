@@ -13,7 +13,7 @@
 	maxHealth = 100 //RoboTongue!
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_TONGUE
-	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/tongue/synth/can_speak_language(language)
 	return TRUE
@@ -33,6 +33,6 @@
 	)
 	build_path = /obj/item/organ/internal/tongue/synth
 	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+		RND_SUBCATEGORY_MECHFAB_ANDROID + RND_SUBCATEGORY_MECHFAB_ANDROID_ORGANS,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE

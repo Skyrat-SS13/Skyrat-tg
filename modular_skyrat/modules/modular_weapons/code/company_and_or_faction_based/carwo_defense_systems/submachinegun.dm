@@ -15,7 +15,7 @@
 
 	bolt_type = BOLT_TYPE_OPEN
 
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_MEDIUM
 	slot_flags = ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 
@@ -24,8 +24,6 @@
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/smg_light.ogg'
 	can_suppress = TRUE
-
-	can_bayonet = FALSE
 
 	suppressor_x_offset = 11
 

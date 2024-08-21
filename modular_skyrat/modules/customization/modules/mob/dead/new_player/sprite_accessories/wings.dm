@@ -57,7 +57,7 @@
 	return TRUE
 
 /datum/sprite_accessory/wings/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 	factual = FALSE
 
@@ -200,6 +200,7 @@
 /datum/sprite_accessory/wings/mammal/harpy/bat
 	name = "Harpy (Bat)"
 	icon_state = "harpybat"
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/wings/mammal/top/harpy/alt
 	name = "Harpy (Top - Alt)"
@@ -212,6 +213,7 @@
 /datum/sprite_accessory/wings/mammal/top/harpy/bat
 	name = "Harpy (Top - Bat)"
 	icon_state = "harpybat_top"
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/wings/mammal/pterodactyl
 	name = "Pterodactyl"
@@ -301,7 +303,7 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/moth/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 
 /datum/sprite_accessory/wings/moth/atlas

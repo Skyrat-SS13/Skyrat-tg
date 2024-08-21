@@ -1,6 +1,6 @@
 /obj/machinery/power/apc
 	/// Has the APC been protected against arcing?
-	var/arc_shielded = TRUE
+	var/arc_shielded = FALSE
 	/// Should we be forcing arcing, assuming there isn't arc shielding?
 	var/force_arcing = FALSE
 
@@ -15,9 +15,9 @@
 
 /obj/machinery/power/apc/process()
 	. = ..()
-	var/excess = surplus()
 	if(!cell || shorted)
 		return
+	var/excess = energy_to_power(surplus())
 	if(((excess < APC_ARC_LOWERLIMIT) && !force_arcing) || arc_shielded)
 		return
 	var/shock_chance = 5

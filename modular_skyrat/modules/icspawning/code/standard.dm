@@ -214,7 +214,7 @@
 			to_chat(user, span_notice("Something went wrong manufacturing [req_component]. Alert the devs, and let them know what machine it was!"))
 
 /// BSTs' special Bluespace RPED can manufacture parts on Alt-RMB, either cables, glass, machine boards, or stock parts.
-/obj/item/storage/part_replacer/bluespace/tier4/bst/alt_click_secondary(mob/user)
+/obj/item/storage/part_replacer/bluespace/tier4/bst/click_alt_secondary(mob/user)
 	// Ask the user what they want to make, or if they want to clear the storage.
 	var/spawn_selection = tgui_input_list(user, "Pick a part, or clear storage", "RPED Manufacture", list("Clear All Items", "Toggle Auto-Clear", "Cables", "Glass", "Spare T4s", "Machine Board", "Stock Part", "Beaker"))
 	// If they didn't cancel out of the list selection, we do things.  Clear-all removes all items, auto-clear destroys left-overs after upgrades, and everything else is pretty self-explanatory.
@@ -239,7 +239,7 @@
 			atom_storage.attempt_insert(new /obj/item/stock_parts/servo/femto(src), user, TRUE)
 			atom_storage.attempt_insert(new /obj/item/stock_parts/micro_laser/quadultra(src), user, TRUE)
 			atom_storage.attempt_insert(new /obj/item/stock_parts/matter_bin/bluespace(src), user, TRUE)
-			atom_storage.attempt_insert(new /obj/item/stock_parts/cell/bluespace(src), user, TRUE)
+			atom_storage.attempt_insert(new /obj/item/stock_parts/power_store/cell/bluespace(src), user, TRUE)
 	else
 		var/subtype
 		if(spawn_selection == "Machine Board")

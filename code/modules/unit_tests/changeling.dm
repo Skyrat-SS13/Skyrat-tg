@@ -80,7 +80,7 @@
 	ling.dna.mutant_bodyparts["horns"] = list(MUTANT_INDEX_NAME = "Curled", MUTANT_INDEX_COLOR_LIST = list("#292826", "#292826", "#8292826")) // SKYRAT EDIT CHANGE - ORIGINAL: ling.dna.features["horns"] = "Curved"
 	ling.dna.mutant_bodyparts["frills"] = list(MUTANT_INDEX_NAME = "Short", MUTANT_INDEX_COLOR_LIST = list("#886600", "#886600", "#886600")) // SKYRAT EDIT CHANGE - ORIGINAL: ling.dna.features["frills"] = "Sort"
 	ling.dna.mutant_bodyparts["spines"] = list(MUTANT_INDEX_NAME = "Long + Membrane", MUTANT_INDEX_COLOR_LIST = list("#886600", "#886600", "#886600")) // SKYRAT EDIT CHANGE - ORIGINAL: ling.dna.features["spines"] = "Long + Membrane"
-	ling.dna.body_markings["chest"] = list("Light Belly" = list("#886600", 0)) // SKYRAT EDIT CHANGE - ORIGINAL : ling.dna.features[body_markings] = list("Light Belly")
+	ling.dna.body_markings["chest"] = list("Light Belly" = list("#886600", 0)) // SKYRAT EDIT CHANGE - ORIGINAL : ling.dna.features[lizard_markings] = list("Light Belly")
 	ling.dna.features["legs"] = DIGITIGRADE_LEGS
 	ling.eye_color_left = COLOR_WHITE
 	ling.eye_color_right = COLOR_WHITE

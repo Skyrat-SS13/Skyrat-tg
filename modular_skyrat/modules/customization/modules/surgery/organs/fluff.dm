@@ -23,4 +23,4 @@
 	return draw_color
 
 /datum/bodypart_overlay/mutant/fluff/get_global_feature_list()
-	return GLOB.sprite_accessories["fluff"]
+	return SSaccessories.sprite_accessories["fluff"]

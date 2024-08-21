@@ -5,7 +5,7 @@
 
 /datum/species/mush/randomize_features()
 	var/list/features = ..()
-	features["caps"] = pick(GLOB.caps_list - list("None")) // No tail-less monkeys. // No cap-less mushpeople.
+	features["caps"] = pick(SSaccessories.caps_list - list("None")) // No tail-less monkeys. // No cap-less mushpeople.
 	return features
 
 /datum/species/mush/prepare_human_for_preview(mob/living/carbon/human/shrooman)

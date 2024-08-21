@@ -14,7 +14,6 @@
 		// TRAIT_NO_UNDERWEAR, // SKYRAT EDIT - LET THEM WEAR PANTIES
 		TRAIT_MUTANT_COLORS,
 		TRAIT_FIXED_MUTANT_COLORS,
-		TRAIT_FIXED_HAIRCOLOR,
 		TRAIT_AGENDER,
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
@@ -80,14 +79,6 @@
 	))
 	QDEL_NULL(ethereal_light)
 	return ..()
-
-/datum/species/ethereal/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_ethereal_name()
-
-	var/randname = ethereal_name()
-
-	return randname
 
 /datum/species/ethereal/randomize_features()
 	var/list/features = ..()
@@ -256,12 +247,9 @@
 	mutantbrain = /obj/item/organ/internal/brain/lustrous
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	inherent_traits = list(
-		TRAIT_NO_UNDERWEAR,
 		TRAIT_MUTANT_COLORS,
 		TRAIT_FIXED_MUTANT_COLORS,
-		TRAIT_FIXED_HAIRCOLOR,
 		TRAIT_AGENDER,
-		TRAIT_TENACIOUS, // this doesn't work. tenacity is an element
 		TRAIT_NOBREATH,
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_RESISTLOWPRESSURE,

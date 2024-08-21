@@ -20,10 +20,10 @@
 
 /obj/projectile/bullet/c35sol
 	name = ".35 Sol Short bullet"
-	damage = 25
+	damage = 20
 
-	wound_bonus = 10 // Normal bullets are 20
-	bare_wound_bonus = 20
+	wound_bonus = 5 // Normal bullets are 20
+	bare_wound_bonus = 25
 
 
 /obj/item/ammo_box/c35sol
@@ -56,7 +56,7 @@
 
 /obj/projectile/bullet/c35sol/incapacitator
 	name = ".35 Sol Short incapacitator bullet"
-	damage = 5
+	damage = 8
 	stamina = 30
 
 	wound_bonus = -40
@@ -75,7 +75,7 @@
 
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 
 
 /obj/item/ammo_box/c35sol/incapacitator
@@ -108,22 +108,22 @@
 
 	sharpness = SHARP_EDGED
 
-	wound_bonus = 20
-	bare_wound_bonus = 20
+	wound_bonus = 25
+	bare_wound_bonus = 25
 
-	embedding = list(
-		embed_chance = 75,
-		fall_chance = 3,
-		jostle_chance = 4,
-		ignore_throwspeed_threshold = TRUE,
-		pain_stam_pct = 0.4,
-		pain_mult = 5,
-		jostle_pain_mult = 6,
-		rip_time = 1 SECONDS,
-	)
+	embed_type = /datum/embed_data/c35sol_ripper
 
 	embed_falloff_tile = -15
 
+/datum/embed_data/c35sol_ripper
+	embed_chance = 75
+	fall_chance = 3
+	jostle_chance = 4
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.4
+	pain_mult = 5
+	jostle_pain_mult = 6
+	rip_time = 1 SECONDS
 
 /obj/item/ammo_box/c35sol/ripper
 	name = "ammo box (.35 Sol Short ripper)"

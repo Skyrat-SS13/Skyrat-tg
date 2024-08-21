@@ -28,7 +28,7 @@
 	heatmod = 1.5
 	payday_modifier = 1.0
 	breathid = GAS_PLASMA
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
 	species_cookie = /obj/item/reagent_containers/condiment/milk
 	outfit_important_for_life = /datum/outfit/plasmaman
 	species_language_holder = /datum/language_holder/skeleton
@@ -63,6 +63,7 @@
 		/datum/outfit/syndicate/reinforcement/mi13 = /datum/outfit/syndicate/reinforcement/plasmaman,
 		/datum/outfit/syndicate/reinforcement/waffle = /datum/outfit/syndicate/reinforcement/plasmaman,
 		/datum/outfit/syndicate/support = /datum/outfit/syndicate/support/plasmaman,
+		/datum/outfit/syndicate/full/loneop = /datum/outfit/syndicate/full/plasmaman/loneop,
 	)
 
 	/// If the bones themselves are burning clothes won't help you much
@@ -129,17 +130,6 @@
 		equipping.equipOutfit(job.plasmaman_outfit, visuals_only)
 	else
 		give_important_for_life(equipping)
-
-/datum/species/plasmaman/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_plasmaman_name()
-
-	var/randname = plasmaman_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
 
 /datum/species/plasmaman/get_scream_sound(mob/living/carbon/human)
 	return pick(

@@ -36,16 +36,16 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/vox_primalis,
 	)
 	custom_worn_icons = list(
-		LOADOUT_ITEM_HEAD = VOX_PRIMALIS_HEAD_ICON,
-		LOADOUT_ITEM_MASK = VOX_PRIMALIS_MASK_ICON,
-		LOADOUT_ITEM_SUIT = VOX_PRIMALIS_SUIT_ICON,
-		LOADOUT_ITEM_UNIFORM = VOX_PRIMALIS_UNIFORM_ICON,
-		LOADOUT_ITEM_GLOVES =  VOX_PRIMALIS_GLOVES_ICON,
-		LOADOUT_ITEM_SHOES = VOX_PRIMALIS_FEET_ICON,
-		LOADOUT_ITEM_GLASSES = VOX_PRIMALIS_EYES_ICON,
-		LOADOUT_ITEM_BELT = VOX_PRIMALIS_BELT_ICON,
-		LOADOUT_ITEM_MISC = VOX_PRIMALIS_BACK_ICON,
-		LOADOUT_ITEM_EARS = VOX_PRIMALIS_EARS_ICON,
+		OFFSET_HEAD = VOX_PRIMALIS_HEAD_ICON,
+		OFFSET_FACEMASK = VOX_PRIMALIS_MASK_ICON,
+		OFFSET_SUIT = VOX_PRIMALIS_SUIT_ICON,
+		OFFSET_UNIFORM = VOX_PRIMALIS_UNIFORM_ICON,
+		OFFSET_GLOVES =  VOX_PRIMALIS_GLOVES_ICON,
+		OFFSET_SHOES = VOX_PRIMALIS_FEET_ICON,
+		OFFSET_GLASSES = VOX_PRIMALIS_EYES_ICON,
+		OFFSET_BELT = VOX_PRIMALIS_BELT_ICON,
+		OFFSET_BACK = VOX_PRIMALIS_BACK_ICON,
+		OFFSET_EARS = VOX_PRIMALIS_EARS_ICON,
 	)
 
 /datum/species/vox_primalis/get_default_mutant_bodyparts()
@@ -59,17 +59,6 @@
 		equipping.equipOutfit(job.vox_outfit, visuals_only)
 	else
 		give_important_for_life(equipping)
-
-/datum/species/vox_primalis/random_name(gender, unique, lastname)
-	if(unique)
-		return random_unique_vox_name()
-
-	var/randname = vox_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
 
 /datum/species/vox_primalis/get_custom_worn_icon(item_slot, obj/item/item)
 	return item.worn_icon_better_vox

@@ -52,7 +52,7 @@
 
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 
 /obj/item/ammo_box/c585trappiste/incapacitator
 	name = "ammo box (.585 Trappiste flathead)"

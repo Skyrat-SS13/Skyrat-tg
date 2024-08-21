@@ -3,6 +3,7 @@
 
 	name = "air scrubber"
 	desc = "Has a valve and pump attached to it."
+	construction_type = /obj/item/pipe/directional/scrubber
 	use_power = IDLE_POWER_USE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.1
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.15
@@ -84,21 +85,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on_exit_area(datum/source, area/area_to_unregister)
 	. = ..()
 	disconnect_from_area(area_to_unregister)
-
-///adds a gas or list of gases to our filter_types. used so that the scrubber can check if its supposed to be processing after each change
-/obj/machinery/atmospherics/components/unary/vent_scrubber/proc/add_filters(filter_or_filters)
-	if(!islist(filter_or_filters))
-		filter_or_filters = list(filter_or_filters)
-
-	for(var/gas_to_filter in filter_or_filters)
-		var/translated_gas = istext(gas_to_filter) ? gas_id2path(gas_to_filter) : gas_to_filter
-
-		if(ispath(translated_gas, /datum/gas))
-			filter_types |= translated_gas
-			continue
-
-	atmos_conditions_changed()
-	return TRUE
 
 ///remove a gas or list of gases from our filter_types.used so that the scrubber can check if its supposed to be processing after each change
 /obj/machinery/atmospherics/components/unary/vent_scrubber/proc/remove_filters(filter_or_filters)

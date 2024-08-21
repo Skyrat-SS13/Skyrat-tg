@@ -25,8 +25,6 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/smg_heavy.ogg'
 	can_suppress = TRUE
 
-	can_bayonet = FALSE
-
 	suppressor_x_offset = 9
 
 	burst_size = 1

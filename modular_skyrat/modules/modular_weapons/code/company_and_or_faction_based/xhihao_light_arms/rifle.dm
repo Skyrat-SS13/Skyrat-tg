@@ -12,12 +12,14 @@
 	inhand_icon_state = "enchanted_rifle"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
-	knife_x_offset = 35
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/Initialize(mapload)
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/gun/energy/recharge/ebow/add_bayonet_point()
+	AddComponent(/datum/component/bayonet_attachable, offset_x = 35)
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_XHIHAO)

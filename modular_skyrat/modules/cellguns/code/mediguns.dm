@@ -7,7 +7,7 @@
 	inhand_icon_state = "chronogun" // Fits best with how the medigun looks, might be changed in the future
 	ammo_type = list(/obj/item/ammo_casing/energy/medical) // The default option that heals oxygen
 	w_class = WEIGHT_CLASS_NORMAL
-	cell_type = /obj/item/stock_parts/cell/medigun
+	cell_type = /obj/item/stock_parts/power_store/cell/medigun
 	modifystate = 1
 	ammo_x_offset = 3
 	charge_sections = 3
@@ -25,7 +25,7 @@
 /obj/item/gun/energy/cell_loaded/medigun/upgraded
 	name = "VeyMedical CWM-479-FC cell-powered medigun"
 	desc = "This is an upgraded variant of the standard CWM-479 medigun. While it still only fits three cells, its cell has been upgraded for higher capacity and faster charging."
-	cell_type = /obj/item/stock_parts/cell/medigun/upgraded
+	cell_type = /obj/item/stock_parts/power_store/cell/medigun/upgraded
 
 /obj/item/gun/energy/cell_loaded/medigun/upgraded/Initialize(mapload)
 	. = ..()
@@ -36,7 +36,7 @@
 /obj/item/gun/energy/cell_loaded/medigun/cmo
 	name = "VeyMedical CWM-479-CC cell-powered medigun"
 	desc = "The most advanced version of the CWM-479 line of mediguns, it features slots for six cells and a auto recharging battery"
-	cell_type = /obj/item/stock_parts/cell/medigun/experimental
+	cell_type = /obj/item/stock_parts/power_store/cell/medigun/experimental
 	maxcells = 6
 	selfcharge = 1
 	can_charge = FALSE
@@ -47,20 +47,20 @@
 	add_overlay(cmo_medigun)
 
 // Medigun power cells
-/obj/item/stock_parts/cell/medigun // This is the cell that mediguns from cargo will come with
+/obj/item/stock_parts/power_store/cell/medigun // This is the cell that mediguns from cargo will come with
 	name = "basic medigun cell"
 	maxcharge = STANDARD_CELL_CHARGE
 	chargerate = STANDARD_CELL_CHARGE * 0.03
 
-/obj/item/stock_parts/cell/medigun/upgraded
+/obj/item/stock_parts/power_store/cell/medigun/upgraded
 	name = "upgraded medigun cell"
 	maxcharge = STANDARD_CELL_CHARGE * 1.4
 	chargerate = STANDARD_CELL_CHARGE * 0.06
 
-/obj/item/stock_parts/cell/medigun/experimental // This cell type is meant to be used in self charging mediguns like CMO and ERT one.
-	name = "experiemental medigun cell"
-	maxcharge = STANDARD_CELL_CHARGE * 2
-	chargerate = STANDARD_CELL_CHARGE * 0.1
+/obj/item/stock_parts/power_store/cell/medigun/experimental // This cell type is meant to be used in self charging mediguns like CMO and ERT one.
+	name = "experimental medigun cell"
+	maxcharge = 1.8 * STANDARD_CELL_CHARGE
+	chargerate = 0.1 * STANDARD_CELL_CHARGE
 // End of power cells
 
 // Upgrade Kit

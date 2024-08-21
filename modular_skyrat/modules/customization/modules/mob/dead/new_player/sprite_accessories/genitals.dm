@@ -25,7 +25,7 @@
 
 			//Are they wearing an Undershirt?
 			if(target_mob.undershirt != "Nude" && !(target_mob.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
-				var/datum/sprite_accessory/undershirt/worn_undershirt = GLOB.undershirt_list[target_mob.undershirt]
+				var/datum/sprite_accessory/undershirt/worn_undershirt = SSaccessories.undershirt_list[target_mob.undershirt]
 				//Does this Undershirt cover a relevant slot?
 				if(genital_location == CHEST) //(Undershirt always covers chest)
 					return TRUE
@@ -35,7 +35,7 @@
 
 			//Undershirt didn't cover them, are they wearing Underwear?
 			if(target_mob.underwear != "Nude" && !(target_mob.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-				var/datum/sprite_accessory/underwear/worn_underwear = GLOB.underwear_list[target_mob.underwear]
+				var/datum/sprite_accessory/underwear/worn_underwear = SSaccessories.underwear_list[target_mob.underwear]
 				//Does this Underwear cover a relevant slot?
 				if(genital_location == GROIN) //(Underwear always covers groin)
 					return TRUE
@@ -87,7 +87,7 @@
 
 /datum/sprite_accessory/genital/penis/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -161,7 +161,7 @@
 
 /datum/sprite_accessory/genital/testicles/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -188,8 +188,8 @@
 	var/alt_aroused = TRUE
 
 /datum/sprite_accessory/genital/vagina/none
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
-	name = "None"
 	factual = FALSE
 	color_src = null
 
@@ -236,7 +236,7 @@
 
 /datum/sprite_accessory/genital/womb/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -253,7 +253,7 @@
 
 /datum/sprite_accessory/genital/anus/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 
@@ -276,7 +276,7 @@
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	factual = FALSE
 	color_src = null
 

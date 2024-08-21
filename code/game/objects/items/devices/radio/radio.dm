@@ -91,6 +91,11 @@
 	/// If TRUE, will set the icon in initializations.
 	VAR_PRIVATE/should_update_icon = FALSE
 
+	/// A very brief cooldown to prevent regular radio sounds from overlapping.
+	COOLDOWN_DECLARE(audio_cooldown)
+	/// A very brief cooldown to prevent "important" radio sounds from overlapping.
+	COOLDOWN_DECLARE(important_audio_cooldown)
+
 /obj/item/radio/Initialize(mapload)
 	set_wires(new /datum/wires/radio(src))
 	secure_radio_connections = list()
@@ -116,15 +121,12 @@
 	// No subtypes
 	if(type != /obj/item/radio)
 		return
-	AddComponent(/datum/component/slapcrafting,\
-		slapcraft_recipes = list(/datum/crafting_recipe/improv_explosive)\
-	)
+	AddElement(/datum/element/slapcrafting, string_list(list(/datum/crafting_recipe/improv_explosive)))
 
 	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 
 /obj/item/radio/Destroy()
 	remove_radio_all(src) //Just to be sure
-	QDEL_NULL(wires)
 	if(istype(keyslot))
 		QDEL_NULL(keyslot)
 	return ..()
@@ -161,6 +163,9 @@
 
 	for(var/channel_name in channels)
 		secure_radio_connections[channel_name] = add_radio(src, GLOB.radiochannels[channel_name])
+
+	if(!listening)
+		remove_radio_all(src)
 
 // Used for cyborg override
 /obj/item/radio/proc/resetChannels()
@@ -354,6 +359,12 @@
 		signal.broadcast()
 		return
 
+
+	if(isliving(talking_movable))
+		var/mob/living/talking_living = talking_movable
+		if(talking_living.client?.prefs.read_preference(/datum/preference/toggle/radio_noise) && !HAS_TRAIT(talking_living, TRAIT_DEAF))
+			SEND_SOUND(talking_living, 'sound/misc/radio_talk.ogg')
+
 	// All radios make an attempt to use the subspace system first
 	signal.send_to_receivers()
 
@@ -399,7 +410,6 @@
 			// left hands are odd slots
 			if (idx && (idx % 2) == (message_mods[RADIO_EXTENSION] == MODE_L_HAND))
 				return
-
 	talk_into(speaker, raw_message, , spans, language=message_language, message_mods=filtered_mods)
 
 /// Checks if this radio can receive on the given frequency.
@@ -425,6 +435,21 @@
 /obj/item/radio/proc/on_receive_message(list/data)
 	SEND_SIGNAL(src, COMSIG_RADIO_RECEIVE_MESSAGE, data)
 	flick_overlay_view(overlay_speaker_active, 5 SECONDS)
+
+	if(!isliving(loc))
+		return
+
+	var/mob/living/holder = loc
+	if(!holder.client?.prefs.read_preference(/datum/preference/toggle/radio_noise) && !HAS_TRAIT(holder, TRAIT_DEAF))
+		return
+
+	var/list/spans = data["spans"]
+	if(COOLDOWN_FINISHED(src, audio_cooldown))
+		COOLDOWN_START(src, audio_cooldown, 0.5 SECONDS)
+		SEND_SOUND(holder, 'sound/misc/radio_receive.ogg')
+	if((SPAN_COMMAND in spans) && COOLDOWN_FINISHED(src, important_audio_cooldown))
+		COOLDOWN_START(src, important_audio_cooldown, 0.5 SECONDS)
+		SEND_SOUND(holder, 'sound/misc/radio_important.ogg')
 
 /obj/item/radio/ui_state(mob/user)
 	return GLOB.inventory_state
@@ -501,10 +526,6 @@
 				else
 					recalculateChannels()
 				. = TRUE
-
-/obj/item/radio/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] starts bouncing [src] off [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
-	return BRUTELOSS
 
 /obj/item/radio/examine(mob/user)
 	. = ..()

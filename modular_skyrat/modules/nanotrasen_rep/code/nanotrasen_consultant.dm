@@ -32,7 +32,7 @@
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
 
 	mail_goodies = list(
-		/obj/item/clothing/mask/cigarette/cigar/havana = 20,
+		/obj/item/cigarette/cigar/havana = 20,
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
@@ -55,6 +55,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/choice_beacon/ntc = 1,
+		/obj/item/gun/energy/e_gun/mini = 1,
 		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -151,20 +152,4 @@
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/storage/bag/garment/nanotrasen_consultant(src)
-
-//Choice Beacon, I hope in the future they're going to be given proper unique gun but this will do.
-
-
-/obj/item/choice_beacon/ntc
-	name = "gunset beacon"
-	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
-	company_source = "Trappiste Fabriek Company"
-	company_message = span_bold("Supply Pod incoming please stand by")
-
-/obj/item/choice_beacon/ntc/generate_display_names()
-	var/static/list/selectable_gun_types = list(
-		"Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok,
-		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
-	)
-
-	return selectable_gun_types
+	new /obj/item/choice_beacon/station_magistrate(src)

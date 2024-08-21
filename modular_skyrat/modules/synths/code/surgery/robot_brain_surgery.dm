@@ -26,9 +26,9 @@
 		return TRUE
 
 /datum/surgery_step/fix_robot_brain
-	name = "fix posibrain"
+	name = "fix posibrain (multitool)"
 	implements = list(
-		TOOL_MULTITOOL = 100,
+		TOOL_MULTITOOL = 95,
 		TOOL_HEMOSTAT = 35,
 		/obj/item/pen = 15
 	)
@@ -79,3 +79,42 @@
 		user.visible_message(span_warning("[user] suddenly notices that the posibrain [user.p_they()] [user.p_were()] working on is not there anymore."), span_warning("You suddenly notice that the posibrain you were working on is not there anymore."))
 
 	return FALSE
+
+/datum/surgery/robot_trauma_surgery
+	name = "Reticulate Posibrain Splines (Blessed Lobotomy)"
+	desc = "A surgical procedure that refurbishes low level components in the posibrain, to fix the strongest trauma errors."
+	possible_locs = list(BODY_ZONE_CHEST) // The brains are in the chest
+	requires_bodypart_type = BODYTYPE_ROBOTIC
+	target_mobtypes = list(/mob/living/carbon/human)
+	steps = list(
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/mechanic_unwrench,
+		/datum/surgery_step/pry_off_plating,
+		/datum/surgery_step/prepare_electronics,
+		/datum/surgery_step/fix_robot_brain/advanced,
+		/datum/surgery_step/mechanic_close,
+	)
+
+/datum/surgery_step/fix_robot_brain/advanced
+	name = "reticulate splines (multitool)"
+	repeatable = FALSE
+	chems_needed = list(
+		/datum/reagent/catalyst_agent/speed/medicine,
+	)
+
+/datum/surgery_step/fix_robot_brain/advanced/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	display_results(user,
+		target,
+		span_notice("You succeed in reticulating [target]'s splines."),
+		"[user] successfully fixes [target]'s posibrain!",
+		"[user] completes the surgery on [target]'s posibrain.",
+	)
+
+	target.setOrganLoss(ORGAN_SLOT_BRAIN, target.get_organ_loss(ORGAN_SLOT_BRAIN) - 60)	//we set damage in this case in order to clear the "failing" flag
+	target.cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
+	playsound(source = get_turf(target), soundin = 'sound/magic/repulse.ogg', vol = 75, vary = TRUE, falloff_distance = 2)
+	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/brainwashed))
+		target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
+	if(prob(75))
+		target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_MAGIC)
+	return ..()

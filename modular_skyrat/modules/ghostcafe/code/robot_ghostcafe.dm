@@ -6,7 +6,7 @@
 
 /mob/living/silicon/robot/model/roleplay/Initialize(mapload)
 	. = ..()
-	cell = new /obj/item/stock_parts/cell/infinite(src, 30000)
+	cell = new /obj/item/stock_parts/power_store/cell/infinite(src, 30000)
 	laws = new /datum/ai_laws/roleplay()
 	//This part is because the camera stays in the list, so we'll just do a check
 	if(!QDELETED(builtInCamera))
@@ -64,7 +64,7 @@
 		/obj/item/quadborg_tongue,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/borg_shapeshifter/stable)
-	hat_offset = -3
+	hat_offset = list("north" = list(0, -3), "south" = list(0, -3), "east" = list(0, -3), "west" = list(0, -3))
 
 /obj/item/borg_shapeshifter/stable
 	signalCache = list()
@@ -75,5 +75,4 @@
 	..()
 	var/obj/item/lightreplacer/light_replacer = locate(/obj/item/lightreplacer) in basic_modules
 	if(light_replacer)
-		for(var/charge in 1 to coeff)
-			light_replacer.Charge(cyborg) // Make Roleplay Borg Light Replacer recharge, isntead of requiring Glass
+		light_replacer.Charge(cyborg, coeff) // Make Roleplay Borg Light Replacer recharge, isntead of requiring Glass

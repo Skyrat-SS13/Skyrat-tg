@@ -12,7 +12,7 @@
 
 /datum/borer_evolution/symbiote/willing_host/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
-	var/datum/action/cooldown/borer/willing_host/attack_action = new(cortical_owner)
+	var/datum/action/cooldown/mob_cooldown/borer/willing_host/attack_action = new(cortical_owner)
 	attack_action.Grant(cortical_owner)
 
 // T2
@@ -107,6 +107,6 @@
 
 /datum/borer_evolution/symbiote/revive_host/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
-	var/datum/action/cooldown/borer/revive_host/attack_action = new(cortical_owner)
+	var/datum/action/cooldown/mob_cooldown/borer/revive_host/attack_action = new(cortical_owner)
 	attack_action.Grant(cortical_owner)
 

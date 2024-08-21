@@ -54,7 +54,7 @@
 
 /obj/item/clothing/suit/hifl_suit/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/armor_plate, _maxamount = 1, _upgrade_item = /obj/item/stack/sheet/animalhide/ashdrake) //how dare i assume we have sane argument names
+	AddComponent(/datum/component/armor_plate, maxamount = 1, upgrade_item = /obj/item/stack/sheet/animalhide/ashdrake) //how dare i assume we have sane argument names
 	AddComponent(/datum/component/toggle_attached_clothing, \
 		deployable_type = /obj/item/clothing/mask/hifl, \
 		equipped_slot = ITEM_SLOT_MASK, \
@@ -104,4 +104,4 @@
 /obj/item/clothing/mask/hifl/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, type) //closest thing to "facehugger protection" you can have on masks, but jank as FUCK
-	AddComponent(/datum/component/armor_plate, _maxamount = 1, _upgrade_item = /obj/item/stack/sheet/animalhide/ashdrake)
+	AddComponent(/datum/component/armor_plate, maxamount = 1, upgrade_item = /obj/item/stack/sheet/animalhide/ashdrake)

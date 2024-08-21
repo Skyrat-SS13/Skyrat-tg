@@ -28,14 +28,12 @@
 #define ORGAN_VIRGIN (1<<10)
 /// ALWAYS show this when scanned by advanced scanners, even if it is totally healthy
 #define ORGAN_PROMINENT (1<<11)
-// SKYRAT EDIT START - Customization
-/// Synthetic organ granted by a species (for use for organ replacements between species)
-#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<11)
-// SKYRAT EDIT END
 /// Helper to figure out if a limb is organic
 #define IS_ORGANIC_LIMB(limb) (limb.bodytype & BODYTYPE_ORGANIC)
 /// Helper to figure out if a limb is robotic
 #define IS_ROBOTIC_LIMB(limb) (limb.bodytype & BODYTYPE_ROBOTIC)
+/// Helper to figure out if a limb is a peg limb
+#define IS_PEG_LIMB(limb) (limb.bodytype & BODYTYPE_PEG)
 
 // Flags for the bodypart_flags var on /obj/item/bodypart
 /// Bodypart cannot be dismembered or amputated

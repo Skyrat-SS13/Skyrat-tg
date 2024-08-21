@@ -13,3 +13,18 @@
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	icon_state = "schechi"
 	default_priority = 90
+
+/datum/language/schechi/get_random_name(
+	gender = NEUTER,
+	name_count = default_name_count,
+	syllable_min = default_name_syllable_min,
+	syllable_max = default_name_syllable_max,
+	force_use_syllables = FALSE,
+)
+	if(force_use_syllables)
+		return ..()
+
+	var/newname = ""
+	for(var/i in 1 to rand(2, 3))
+		newname += pick(list("chi", "chu", "ka", "ki", "kyo", "ko", "la", "li", "mi", "ni", "nu", "nyu", "se", "ri", "ro", "ru", "ryu", "sa", "si", "syo"))
+	return capitalize(newname)

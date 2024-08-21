@@ -24,7 +24,7 @@
 	ricochet_decay_damage = 0.7
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null
+	embed_data = null
 
 /obj/item/ammo_casing/strilka310/ap
 	name = ".310 Strilka armor-piercing bullet casing"

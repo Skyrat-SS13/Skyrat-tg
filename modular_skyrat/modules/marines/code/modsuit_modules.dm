@@ -16,6 +16,7 @@
 	cooldown_time = 0.5 SECONDS
 	overlay_state_inactive = "module_smartgun_off" //appears on back when it's off
 	overlay_state_active = "module_smartgun_on"
+	required_slots = list(ITEM_SLOT_GLOVES)
 	/// Power consumed per bullet fired
 	var/power_per_bullet = 25
 

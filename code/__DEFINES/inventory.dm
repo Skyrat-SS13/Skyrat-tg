@@ -67,6 +67,20 @@
 /// Total amount of slots
 #define SLOTS_AMT 20 // Keep this up to date!
 
+///Inventory slots that can be blacklisted by a species from being equipped into
+DEFINE_BITFIELD(no_equip_flags, list(
+	"EXOSUIT" = ITEM_SLOT_OCLOTHING,
+	"JUMPSUIT" = ITEM_SLOT_ICLOTHING,
+	"GLOVES" = ITEM_SLOT_GLOVES,
+	"GLASSES" = ITEM_SLOT_EYES,
+	"EARPIECES" = ITEM_SLOT_EARS,
+	"MASKS" = ITEM_SLOT_MASK,
+	"HATS" = ITEM_SLOT_HEAD,
+	"SHOES" = ITEM_SLOT_FEET,
+	"BACKPACKS" = ITEM_SLOT_BACK,
+	"TIES" = ITEM_SLOT_NECK,
+))
+
 //SLOT GROUP HELPERS
 #define ITEM_SLOT_POCKETS (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)
 /// Slots that are physically on you
@@ -92,6 +106,8 @@
 #define HIDESNOUT (1<<12)
 ///hides mutant/moth wings, does not apply to functional wings
 #define HIDEMUTWINGS (1<<13)
+///hides belts and riggings
+#define HIDEBELT (1<<14)
 
 //SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
 /// Manually set this on items you want anthro ears to show on!
@@ -102,6 +118,8 @@
 #define HIDESPINE (1<<16)
 /// Does this sprite hide devious devices?
 #define HIDESEXTOY (1<<17)
+/// If this has our taur variant, do we hide our taur part?
+#define HIDETAUR (1<<18)
 //SKYRAT EDIT ADDITION END
 
 //bitflags for clothing coverage - also used for limbs
@@ -259,6 +277,26 @@ GLOBAL_LIST_INIT(chaplain_suit_allowed, list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/gun/ballistic/bow/divine,
 	/obj/item/gun/ballistic/revolver/chaplain,
+))
+
+//Allowed list for all mining suits
+
+GLOBAL_LIST_INIT(mining_suit_allowed, list(
+	/obj/item/t_scanner/adv_mining_scanner,
+	/obj/item/melee/cleaving_saw,
+	/obj/item/climbing_hook,
+	/obj/item/flashlight,
+	/obj/item/grapple_gun,
+	/obj/item/tank/internals,
+	/obj/item/gun/energy/recharge/kinetic_accelerator,
+	/obj/item/kinetic_crusher,
+	/obj/item/knife,
+	/obj/item/mining_scanner,
+	/obj/item/organ/internal/monster_core,
+	/obj/item/storage/bag/ore,
+	/obj/item/pickaxe,
+	/obj/item/resonator,
+	/obj/item/spear,
 ))
 
 /// String for items placed into the left pocket.

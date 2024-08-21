@@ -2,8 +2,8 @@
 /obj/item/modular_computer/pda/synth
 	name = "virtual persocom"
 
-	base_active_power_usage = 0
-	base_idle_power_usage = 0
+	base_active_power_usage = 0 WATTS
+	base_idle_power_usage = 0 WATTS
 
 	long_ranged = TRUE //Synths have good antennae
 

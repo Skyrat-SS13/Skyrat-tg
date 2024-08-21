@@ -81,3 +81,20 @@
 	armor_type = /datum/armor/clothing_under/atmos_adv
 	icon_state = "util_eng"
 	can_adjust = FALSE
+
+/*
+*	TELECOMMS SPECIALIST
+*/
+
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm
+	desc = "It's a jumpsuit worn by telecomms specialists. Made from fire resistant materials."
+	name = "telecomm jumpsuit"
+	icon_state = "telecomm"
+	can_adjust = TRUE
+
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/telecomm/skirt
+	desc = "It's a jumpskirt worn by telecomms specialists. Made from fire resistant materials."
+	name = "telecomm jumpskirt"
+	icon_state = "telecomm_skirt"
+	can_adjust = TRUE
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY

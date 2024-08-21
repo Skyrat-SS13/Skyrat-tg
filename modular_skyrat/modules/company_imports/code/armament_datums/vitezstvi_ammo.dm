@@ -1,5 +1,5 @@
 /datum/armament_entry/company_import/vitezstvi
-	category = VITEZSTVI_AMMO_NAME
+	category = COMPANY_NAME_VITEZSTVI_AMMO
 	company_bitflag = CARGO_COMPANY_VITEZSTVI_AMMO
 
 // Ammo bench and the lethals disk
@@ -10,10 +10,11 @@
 /datum/armament_entry/company_import/vitezstvi/ammo_bench/bench_itself
 	item_type = /obj/item/circuitboard/machine/ammo_workbench
 	cost = PAYCHECK_COMMAND * 5
-
+/*
 /datum/armament_entry/company_import/vitezstvi/ammo_bench/ammo_disk
 	item_type = /obj/item/disk/ammo_workbench/advanced
 	cost = PAYCHECK_COMMAND * 5
+*/
 
 /datum/armament_entry/company_import/vitezstvi/ammo_bench/bullet_drive
 	item_type = /obj/item/circuitboard/machine/dish_drive/bullet
@@ -80,16 +81,16 @@
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol35_disabler
 	item_type = /obj/item/ammo_box/c35sol/incapacitator
-
+/*
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol35_ripper
 	item_type = /obj/item/ammo_box/c35sol/ripper
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol40
 	item_type = /obj/item/ammo_box/c40sol
-
+*/
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol40_disabler
 	item_type = /obj/item/ammo_box/c40sol/fragmentation
-
+/*
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol40_flame
 	item_type = /obj/item/ammo_box/c40sol/incendiary
 
@@ -104,7 +105,7 @@
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/trappiste585_hollowpoint
 	item_type = /obj/item/ammo_box/c585trappiste/hollowpoint
-
+*/
 // Revolver speedloaders
 
 /datum/armament_entry/company_import/vitezstvi/speedloader
@@ -125,37 +126,37 @@
 /datum/armament_entry/company_import/vitezstvi/shot_shells
 	subcategory = "Shotgun Shells"
 	cost = PAYCHECK_COMMAND
-
+/*
 /datum/armament_entry/company_import/vitezstvi/shot_shells/slugs
 	item_type = /obj/item/ammo_box/advanced/s12gauge
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/buckshot
-
+*/
 /datum/armament_entry/company_import/vitezstvi/shot_shells/beanbag_slugs
 	item_type = /obj/item/ammo_box/advanced/s12gauge/bean
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/rubbershot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/rubber
-
+/*
 /datum/armament_entry/company_import/vitezstvi/shot_shells/magnum_buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/express_buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/express
-
+*/
 /datum/armament_entry/company_import/vitezstvi/shot_shells/hunter_slug
 	item_type = /obj/item/ammo_box/advanced/s12gauge/hunter
-
+/*
 /datum/armament_entry/company_import/vitezstvi/shot_shells/flechettes
 	item_type = /obj/item/ammo_box/advanced/s12gauge/flechette
-
+*/
 /datum/armament_entry/company_import/vitezstvi/shot_shells/hornet_nest
 	item_type = /obj/item/ammo_box/advanced/s12gauge/beehive
-
+/*
 /datum/armament_entry/company_import/vitezstvi/shot_shells/stardust
 	item_type = /obj/item/ammo_box/advanced/s12gauge/antitide
-
+*/
 /datum/armament_entry/company_import/vitezstvi/shot_shells/confetti
 	item_type = /obj/item/ammo_box/advanced/s12gauge/honkshot
 

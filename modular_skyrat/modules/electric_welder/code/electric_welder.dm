@@ -10,7 +10,7 @@
 	power_use_amount = POWER_CELL_USE_LOW
 	// We don't use fuel
 	change_icons = FALSE
-	var/cell_override = /obj/item/stock_parts/cell/high
+	var/cell_override = /obj/item/stock_parts/power_store/cell/high
 	var/powered = FALSE
 	max_fuel = 20
 

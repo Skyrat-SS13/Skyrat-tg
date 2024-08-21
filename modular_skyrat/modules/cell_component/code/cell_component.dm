@@ -20,7 +20,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 /datum/component/cell
 	/// Our reference to the inserted cell, which will be stored in the parent.
-	var/obj/item/stock_parts/cell/inserted_cell
+	var/obj/item/stock_parts/power_store/cell/inserted_cell
 	/// The item reference to parent.
 	var/obj/item/equipment
 	/// How much power do we use each process?
@@ -63,9 +63,9 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	if(istype(equipment.loc, /obj/item/robot_model)) //Really, I absolutely hate borg code.
 		inside_robot = TRUE
 	else if(start_with_cell)
-		var/obj/item/stock_parts/cell/new_cell
+		var/obj/item/stock_parts/power_store/cell/new_cell
 		if(!cell_override)
-			new_cell = new /obj/item/stock_parts/cell/upgraded()
+			new_cell = new /obj/item/stock_parts/power_store/cell/upgraded()
 		else
 			new_cell = new cell_override()
 		inserted_cell = new_cell
@@ -180,7 +180,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	if(inside_robot) //More robot shitcode, if we allowed them to remove the cell, it would cause the universe to implode.
 		return
 
-	if(!istype(inserting_item, /obj/item/stock_parts/cell))
+	if(!istype(inserting_item, /obj/item/stock_parts/power_store/cell))
 		return
 
 	if(inserted_cell) //No quickswap compatibility
