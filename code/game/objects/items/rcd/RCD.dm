@@ -213,14 +213,9 @@
 	var/list/rcd_results = target.rcd_vals(user, src)
 	if(!rcd_results)
 		return FALSE
-<<<<<<< HEAD
-	rcd_results["[RCD_DESIGN_MODE]"] = mode
-	rcd_results["[RCD_DESIGN_PATH]"] = rcd_design_path
-=======
 	rcd_results[RCD_DESIGN_MODE] = mode
 	rcd_results[RCD_DESIGN_PATH] = rcd_design_path
 	rcd_results[RCD_BUILD_DIRECTION] = selected_direction
->>>>>>> 4d43710d4434 (fixes rcds accounting for player dir only before construction (#85824))
 
 	var/delay = rcd_results["delay"] * delay_mod
 	if (
