@@ -288,7 +288,6 @@
 		if (SANITY_LEVEL_INSANE)
 			mood_screen_object.color = "#f15d36"
 
-<<<<<<< HEAD
 	if (!conflicting_moodies.len) // theres no special icons, use the normal icon states
 		//SKYRAT EDIT ADDITION BEGIN - ALEXITHYMIA
 		if(HAS_TRAIT(mob_parent, TRAIT_MOOD_NOEXAMINE))
@@ -296,9 +295,6 @@
 			mood_screen_object.color = "#4b96c4"
 			return
 		//SKYRAT EDIT ADDITION END
-=======
-	if (!conflicting_moodies.len) // there's no special icons, use the normal icon states
->>>>>>> d2c78060474 (Spelling and Grammar Fixes (#85992))
 		mood_screen_object.icon_state = "mood[mood_level]"
 		return
 
