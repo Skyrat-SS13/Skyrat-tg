@@ -56,8 +56,6 @@
 /// NOTE: this does not function with the SIDE_MAP map format. So we can't. :(
 //#define SEE_BLACKNESS (1<<10)
 
-<<<<<<< HEAD
-=======
 /// Bitfield of sight flags that show things "inside" the blackness plane
 /// We've gotta alpha it down if we get this, cause otherwise the sight flag won't work
 #define BLACKNESS_CUTTING (SEE_MOBS|SEE_OBJS|SEE_TURFS|SEE_TURFS|SEE_TURFS)
@@ -68,7 +66,6 @@
 /// Range in tiles that a mob can see in the dark (used to determine if a mob has night_vision)
 #define NIGHTVISION_RANGE 8
 
->>>>>>> d2c78060474 (Spelling and Grammar Fixes (#85992))
 /// Bitfield of sight flags that show THINGS but no lighting
 /// Since lighting is an underlay on turfs, this is everything but that
 #define SEE_AVOID_TURF_BLACKNESS (SEE_MOBS|SEE_OBJS)
