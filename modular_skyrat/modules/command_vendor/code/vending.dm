@@ -123,6 +123,7 @@
 		/obj/item/clothing/neck/mantle/rdmantle = 1,
 		/obj/item/clothing/suit/toggle/labcoat = 1,
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/rd = 1,
+		/obj/item/clothing/suit/toggle/labcoat/research_director = 1,
 		/obj/item/clothing/suit/hooded/wintercoat/science/rd = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1,
 	)

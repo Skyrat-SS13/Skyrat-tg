@@ -15,7 +15,7 @@
 /obj/item/clothing/suit/toggle/labcoat/skyrat/rd
 	name = "research directors labcoat"
 	desc = "A Nanotrasen standard labcoat for certified Research Directors. It has an extra plastic-latex lining on the outside for more protection from chemical and viral hazards."
-	icon_state = "labcoat_rd"
+	icon_state = "labcoat_rd_w"
 	gets_cropped_on_taurs = FALSE
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor_type = /datum/armor/skyrat_rd
@@ -61,8 +61,9 @@
 	armor_type = /datum/armor/none
 	equip_delay_other = 8
 
-/obj/item/clothing/suit/toggle/labcoat/roboticist //Overwrite the TG Roboticist labcoat to Black and Red (not the Interdyne labcoat though)
-	greyscale_colors = "#2D2D33#88242D#88242D#88242D"
+/obj/item/clothing/suit/toggle/labcoat/roboticist
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
+	greyscale_colors = "#2D2D33#88242D#88242D#88242D" //Overwrite the TG Roboticist labcoat to Black and Red (not the Interdyne labcoat though)
 
 /obj/item/clothing/suit/toggle/labcoat/medical //Renamed version of the Genetics labcoat for more generic medical purposes; just a subtype of /labcoat/ for the TG files
 	name = "medical labcoat"
@@ -70,7 +71,26 @@
 	icon_state = "labcoat_job"
 	greyscale_config = /datum/greyscale_config/labcoat
 	greyscale_config_worn = /datum/greyscale_config/labcoat/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
 	greyscale_colors = "#EEEEEE#4A77A1#4A77A1#7095C2"
+
+/obj/item/clothing/suit/toggle/labcoat/science
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
+
+/obj/item/clothing/suit/toggle/labcoat/coroner
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
+
+/obj/item/clothing/suit/toggle/labcoat/virologist
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
+
+/obj/item/clothing/suit/toggle/labcoat/genetics
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
+
+/obj/item/clothing/suit/toggle/labcoat/chemist
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
+
+/obj/item/clothing/suit/toggle/labcoat/interdyne
+	greyscale_config_worn_teshari = /datum/greyscale_config/labcoat/worn/teshari //tacks teshari override onto labcoats
 
 /obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
 	. = ..()

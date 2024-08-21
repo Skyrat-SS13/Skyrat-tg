@@ -19,6 +19,7 @@
 #define COMPANY_TKACH "It has <b>[span_robot("Tkach Design Bureau")]</b> stamped onto it."
 #define COMPANY_SAKHNO "It has <b>[span_green("Sakhno Concern")]</b> stamped onto it."
 #define COMPANY_XHIHAO "It has <b>[span_purple("Xhihao Light Arms")]</b> etched into it."
+#define COMPANY_ROMTECH "It has <b>[span_red("Romulus Technology")]</b> stamped onto it."
 
 #define COMPANY_ABDUCTOR "It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into it."
 
