@@ -105,14 +105,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	return ..()
 SKYRAT EDIT REMOVAL END */
 
-<<<<<<< HEAD
-/turf/closed/indestructible/start_area
-	name = null
-	desc = null
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-=======
->>>>>>> f47b175fad3b (Makes the Start Screen Look Better (#85928))
 /turf/closed/indestructible/reinforced
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms. Effectively impervious to conventional methods of destruction."
