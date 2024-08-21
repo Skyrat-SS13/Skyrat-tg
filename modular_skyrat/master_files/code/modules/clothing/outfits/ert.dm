@@ -7,7 +7,7 @@
 	name = "Asset Protection"
 
 	uniform = /obj/item/clothing/under/rank/centcom/commander
-	back = /obj/item/mod/control/pre_equipped/apocryphal
+	back = /obj/item/mod/control/pre_equipped/asset_protection
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
