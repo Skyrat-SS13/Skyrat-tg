@@ -243,11 +243,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			make_announcement(user)
 		if ("messageAssociates")
-<<<<<<< HEAD
 			if (!authenticated_as_ai_or_captain(usr)) //Skyrat edit | Allows AI and Captain to send messages
-=======
-			if (!authenticated_as_non_silicon_captain(user))
->>>>>>> 1880003270d1 (Reworks silicon/ai access checking & fixes some ui_act's (#84964))
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -388,7 +384,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			var/line_two = reject_bad_text(params["lowerText"] || "", MAX_STATUS_LINE_LENGTH)
 			post_status("message", line_one, line_two)
 			last_status_display = list(line_one, line_two)
-			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("setStatusPicture")
 			if (!authenticated(user))
 				return
@@ -403,7 +398,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				else
 					post_status("alert", picture)
 
-			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("toggleAuthentication")
 			// Log out if we're logged in
 			if (authorize_name)
