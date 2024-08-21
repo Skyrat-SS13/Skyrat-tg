@@ -6,7 +6,7 @@ has_git="$(command -v git)"
 has_curl="$(command -v curl)"
 has_cargo="$(command -v ~/.cargo/bin/cargo)"
 has_sudo="$(command -v sudo)"
-has_youtubedl="$(command -v youtube-dl)"
+has_ytdlp="$(command -v yt-dlp)"
 has_pip3="$(command -v pip3)"
 set -e
 set -x
@@ -25,19 +25,16 @@ if ! ( [ -x "$has_git" ] && [ -x "$has_curl" ] && [ -x "$has_pip3" ] && [ -f "/u
 	if ! [ -x "$has_sudo" ]; then
 		dpkg --add-architecture i386
 		apt-get update
-<<<<<<< HEAD
 		apt-get install -y lib32z1 git pkg-config libssl-dev:i386 libssl-dev zlib1g-dev:i386 curl
 	else
 		sudo dpkg --add-architecture i386
 		sudo apt-get update
 		sudo apt-get install -y lib32z1 git pkg-config libssl-dev:i386 libssl-dev zlib1g-dev:i386 curl
-=======
 		apt-get install -y lib32z1 git pkg-config libssl-dev:i386 libssl-dev zlib1g-dev:i386 curl libclang-dev g++-multilib python3 python3-pip
 	else
 		sudo dpkg --add-architecture i386
 		sudo apt-get update
 		sudo apt-get install -y lib32z1 git pkg-config libssl-dev:i386 libssl-dev zlib1g-dev:i386 curl libclang-dev g++-multilib python3 python3-pip
->>>>>>> 8dff5c57fed6 (Add a helpful messages to users when InstallDeps.sh inevitably fails due to lack of perms (#85908))
 	fi
 fi
 
@@ -48,12 +45,12 @@ if ! [ -x "$has_cargo" ]; then
 	. ~/.profile
 fi
 
-# install or update youtube-dl when not present, or if it is present with pip3,
+# install or update yt-dlp when not present, or if it is present with pip3,
 # which we assume was used to install it
-if ! [ -x "$has_youtubedl" ]; then
-	echo "Installing youtube-dl with pip3..."
-	pip3 install youtube-dl --break-system-packages
+if ! [ -x "$has_ytdlp" ]; then
+	echo "Installing yt-dlp with pip3..."
+	pip3 install yt-dlp --break-system-packages
 else
-	echo "Ensuring youtube-dl is up-to-date with pip3..."
-	pip3 install youtube-dl -U --break-system-packages
+	echo "Ensuring yt-dlp is up-to-date with pip3..."
+	pip3 install yt-dlp -U --break-system-packages
 fi
