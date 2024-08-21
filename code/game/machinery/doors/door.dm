@@ -615,8 +615,6 @@
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
-<<<<<<< HEAD
-=======
 	icon_state = "closed"
 
 /obj/machinery/door/morgue/Initialize(mapload)
@@ -636,7 +634,6 @@
 		// If we're open we layer the bit below us "above" any mobs so they can walk through
 		. += mutable_appearance(icon, "open_bottom", ABOVE_MOB_LAYER, appearance_flags = KEEP_APART)
 		. += emissive_blocker(icon, "open_bottom", src, ABOVE_MOB_LAYER)
->>>>>>> 8f126665044e (Clicking floor tiles now also closes curator/morgue doors (#85994))
 
 /obj/machinery/door/get_dumping_location()
 	return null
