@@ -20,10 +20,10 @@
 
 /obj/projectile/bullet/c35sol
 	name = ".35 Sol Short bullet"
-	damage = 25
+	damage = 20
 
-	wound_bonus = 10 // Normal bullets are 20
-	bare_wound_bonus = 20
+	wound_bonus = 5 // Normal bullets are 20
+	bare_wound_bonus = 25
 
 
 /obj/item/ammo_box/c35sol
@@ -56,7 +56,7 @@
 
 /obj/projectile/bullet/c35sol/incapacitator
 	name = ".35 Sol Short incapacitator bullet"
-	damage = 5
+	damage = 8
 	stamina = 30
 
 	wound_bonus = -40
@@ -108,8 +108,8 @@
 
 	sharpness = SHARP_EDGED
 
-	wound_bonus = 20
-	bare_wound_bonus = 20
+	wound_bonus = 25
+	bare_wound_bonus = 25
 
 	embed_type = /datum/embed_data/c35sol_ripper
 

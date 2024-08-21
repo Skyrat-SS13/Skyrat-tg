@@ -12,6 +12,7 @@
 /obj/item/clothing/suit/wizrobe
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/wizard_digi.dmi'
 	gets_cropped_on_taurs = FALSE
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/labcoat_digi.dmi'
