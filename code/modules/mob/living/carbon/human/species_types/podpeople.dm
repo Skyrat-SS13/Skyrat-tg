@@ -7,8 +7,13 @@
 		TRAIT_MUTANT_COLORS,
 		TRAIT_PLANT_SAFE,
 	)
+<<<<<<< HEAD
 	external_organs = list(
 		// /obj/item/organ/external/pod_hair = "None", // SKYRAT EDIT REMOVAL - Customization (it messes up unit tests.)
+=======
+	mutant_organs = list(
+		/obj/item/organ/external/pod_hair = "None",
+>>>>>>> 095f7e3b705 (Death of mutant bodyparts AND external organs (#85137))
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)

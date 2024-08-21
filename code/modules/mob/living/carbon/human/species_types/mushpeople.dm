@@ -6,6 +6,11 @@
 
 	fixed_mut_color = "#DBBF92"
 
+<<<<<<< HEAD
+=======
+	mutant_organs = list(/obj/item/organ/external/mushroom_cap = "Round")
+
+>>>>>>> 095f7e3b705 (Death of mutant bodyparts AND external organs (#85137))
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
 		TRAIT_NOBREATH,
