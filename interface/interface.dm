@@ -62,16 +62,11 @@
 		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
 		return
 
-<<<<<<< HEAD
-	var/message = "This will open the Github issue reporter in your browser. Are you sure?"
-	if(GLOB.revdata.testmerge.len)
-=======
 	var/testmerge_data = GLOB.revdata.testmerge
 	var/has_testmerge_data = (length(testmerge_data) != 0)
 
 	var/message = "This will open the Github issue reporter in your browser. Are you sure?"
 	if(has_testmerge_data)
->>>>>>> c5de743214c2 (Migrates Issue Reporting to the New GitHub Template Format (#85909))
 		message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
 		message += GLOB.revdata.GetTestMergeInfo(FALSE)
 
@@ -91,21 +86,12 @@
 		concatable += ("&round-id=" + GLOB.round_id)
 
 	// Insert testmerges
-<<<<<<< HEAD
-	if(GLOB.revdata.testmerge.len)
-		var/list/all_tms = list()
-		for(var/entry in GLOB.revdata.testmerge)
-			var/datum/tgs_revision_information/test_merge/tm = entry
-			all_tms += "- \[[tm.title]\]([githuburl]/pull/[tm.number])"
-		var/all_tms_joined = jointext(all_tms, "\n") // for some reason this can't go in the []
-=======
 	if(has_testmerge_data)
 		var/list/all_tms = list()
 		for(var/entry in testmerge_data)
 			var/datum/tgs_revision_information/test_merge/tm = entry
 			all_tms += "- \[[tm.title]\]([githuburl]/pull/[tm.number])"
 		var/all_tms_joined = jointext(all_tms, "%0A") // %0A is a newline for URL encoding because i don't trust \n to not break
->>>>>>> c5de743214c2 (Migrates Issue Reporting to the New GitHub Template Format (#85909))
 
 		concatable += ("&test-merges=" + all_tms_joined)
 
