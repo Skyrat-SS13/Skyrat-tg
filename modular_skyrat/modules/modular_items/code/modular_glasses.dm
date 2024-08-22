@@ -22,6 +22,8 @@
 	var/list/modes_msg = list(MODE_ON = "optical matrix enabled", MODE_OFF = "optical matrix disabled")
 	/// Because initial() will not work on subtypes from within the parent we need to store a reference to the type of the glasses calling the procs
 	var/obj/item/clothing/glasses/hud/ar/glasses_type
+	/// Lazylist of traits that will not be removed if we switch modes.
+	var/list/permanent_clothing_traits
 
 /// Reuse logic from engine_goggles.dm
 /obj/item/clothing/glasses/hud/ar/Initialize(mapload)
@@ -104,7 +106,7 @@
 	var/mob/living/carbon/human/human = user
 	if(!ishuman(user) || human.glasses != src) // Make sure they're a human wearing the glasses first
 		return
-	for(var/trait in clothing_traits)
+	for(var/trait in (clothing_traits - permanent_clothing_traits)) // yes, you can do /list - null, it has no side effects i can see
 		REMOVE_CLOTHING_TRAIT(human, trait)
 
 /obj/item/clothing/glasses/hud/ar/proc/reset_vars()
@@ -214,27 +216,32 @@
 /obj/item/clothing/glasses/hud/ar/aviator/security/prescription
 	name = "prescription security HUD aviators"
 	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. This HUD has been fitted inside of a pair of sunglasses with toggleable electrochromatic tinting which. Has lenses that help correct eye sight."
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_SECURITY_HUD)
+	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/health/prescription
 	name = "prescription medical HUD aviators"
 	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_MEDICAL_HUD)
+	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/meson/prescription
 	name = "prescription meson HUD aviators"
 	desc = "A heads-up display used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
 	clothing_traits = list(TRAIT_MADNESS_IMMUNE, TRAIT_NEARSIGHTED_CORRECTED)
+	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/diagnostic/prescription
 	name = "prescription diagnostic HUD aviators"
 	desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_DIAGNOSTIC_HUD)
+	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/science/prescription
 	name = "prescription science aviators"
 	desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance, which has lenses that help correct eye sight."
 	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER, TRAIT_NEARSIGHTED_CORRECTED)
+	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 // Retinal projector
 
