@@ -2,6 +2,27 @@
 
 /obj/structure/sign/departments
 	is_editable = TRUE
+	var/emissive_type
+
+/obj/structure/sign/departments/Initialize(mapload)
+	. = ..()
+	if (!emissive_type)
+		return
+	var/area/cur_area = get_area(src)
+	if (!isnull(cur_area))
+		RegisterSignal(cur_area, COMSIG_AREA_POWER_CHANGE, PROC_REF(power_check))
+
+/obj/structure/sign/departments/proc/power_check()
+	SIGNAL_HANDLER
+	update_appearance()
+
+/obj/structure/sign/departments/update_overlays()
+	. = ..()
+	if (!emissive_type)
+		return
+	var/area/cur_area = get_area(src)
+	if (!isnull(cur_area) && cur_area.power_light)
+		. += emissive_appearance(icon, emissive_type, src)
 
 ///////MEDBAY
 
@@ -31,7 +52,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/medbay, 32)
 /obj/structure/sign/departments/medbay/alt
 	name = "\improper Medbay sign"
 	sign_change_name = "Generic Medical Alt"
+<<<<<<< HEAD
 	icon_state = "bluecross2"
+=======
+	icon_state = "department_med"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/medbay/alt, 32)
 
@@ -47,7 +73,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exam_room, 32)
 	name = "\improper Chemistry sign"
 	sign_change_name = "Department - Medbay: Chemistry"
 	desc = "A sign labelling an area containing chemical equipment."
+<<<<<<< HEAD
 	icon_state = "chemistry1"
+=======
+	icon_state = "department_chem"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry, 32)
 
@@ -61,7 +92,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/alt, 32)
 	name = "\improper Pharmacy sign"
 	sign_change_name = "Department - Medbay: Pharmacy"
 	desc = "A sign labelling an area containing pharmacy equipment."
+<<<<<<< HEAD
 	icon_state = "pharmacy"
+=======
+	icon_state = "department_chem"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/pharmacy, 32)
 
@@ -69,7 +105,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/pharmacy, 
 	name = "\improper Psychology sign"
 	sign_change_name = "Department - Medbay: Psychology"
 	desc = "A sign labelling an area where the Psychologist works, they can probably help you get your head straight."
+<<<<<<< HEAD
 	icon_state = "psychology"
+=======
+	icon_state = "department_psych"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/psychology, 32)
 
@@ -95,7 +136,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/morgue, 32)
 	name = "\improper Engineering sign"
 	sign_change_name = "Department - Engineering"
 	desc = "A sign labelling an area where engineers work."
+<<<<<<< HEAD
 	icon_state = "engine"
+=======
+	icon_state = "department_engi"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/engineering, 32)
 
@@ -105,7 +151,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/engineering, 32)
 	name = "\improper Science sign"
 	sign_change_name = "Department - Science"
 	desc = "A sign labelling an area where research and science is performed."
+<<<<<<< HEAD
 	icon_state = "science1"
+=======
+	icon_state = "department_sci"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/science, 32)
 
@@ -119,7 +170,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/science/alt, 32)
 	name = "\improper Xenobiology sign"
 	sign_change_name = "Department - Science: Xenobiology"
 	desc = "A sign labelling an area where xenobiological entities are researched."
+<<<<<<< HEAD
 	icon_state = "xenobio1"
+=======
+	icon_state = "department_xeno"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/xenobio, 32)
 
@@ -151,7 +207,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/rndserver, 32)
 	name = "\improper Botany sign"
 	sign_change_name = "Department - Botany (Flower)"
 	desc = "A sign labelling an area as a place where plants are grown."
+<<<<<<< HEAD
 	icon_state = "hydro1"
+=======
+	icon_state = "department_hydro"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/botany, 32)
 
@@ -185,7 +246,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/custodian, 32)
 	name = "\improper Chapel sign"
 	sign_change_name = "Department - Chapel"
 	desc = "A sign labelling a religious area."
+<<<<<<< HEAD
 	icon_state = "holy"
+=======
+	icon_state = "department_chapel"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
 
@@ -201,7 +267,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
 	name = "\improper Legal Department sign"
 	sign_change_name = "Department - Legal"
 	desc = "A sign labelling an area where the Lawyers work, apply here for arrivals shuttle whiplash settlement."
+<<<<<<< HEAD
 	icon_state = "lawyer"
+=======
+	icon_state = "department_lawyer"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/lawyer, 32)
 
@@ -211,7 +282,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/lawyer, 32)
 	name = "\improper Cargo sign"
 	sign_change_name = "Department - Cargo"
 	desc = "A sign labelling an area where cargo ships dock."
+<<<<<<< HEAD
 	icon_state = "cargo"
+=======
+	icon_state = "department_cargo"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/cargo, 32)
 
@@ -229,7 +305,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exodrone, 32)
 	name = "\improper Security sign"
 	sign_change_name = "Department - Security"
 	desc = "A sign labelling an area where the law is law."
+<<<<<<< HEAD
 	icon_state = "security"
+=======
+	icon_state = "department_sec"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/security, 32)
 
@@ -239,7 +320,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/security, 32)
 	name = "\improper Restroom sign"
 	sign_change_name = "Location - Restroom"
 	desc = "A sign labelling a restroom."
+<<<<<<< HEAD
 	icon_state = "restroom"
+=======
+	icon_state = "department_wc"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/restroom, 32)
 
@@ -263,7 +349,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/maint/alt, 32)
 	name = "\improper Evacuation sign"
 	sign_change_name = "Location - Evacuation"
 	desc = "A sign labelling an area where evacuation procedures take place."
+<<<<<<< HEAD
 	icon_state = "evac"
+=======
+	icon_state = "department_evac"
+	emissive_type = "department_evac_e"
+	is_editable = TRUE
+	///This var detemines which arrow overlay to use.
+	var/arrow_direction_state = "evac_overlay_f"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/evac, 32)
 
@@ -279,7 +373,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/drop, 32)
 	name = "\improper Courtroom sign"
 	sign_change_name = "Location - Courtroom"
 	desc = "A sign labelling the courtroom, where the ever sacred Space Law is upheld."
+<<<<<<< HEAD
 	icon_state = "court"
+=======
+	icon_state = "department_law"
+	emissive_type = "department_e"
+>>>>>>> a57e6d02ccbd (Adds emissives to departamental signs (#85915))
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/court, 32)
 
