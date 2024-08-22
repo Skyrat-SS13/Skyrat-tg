@@ -36,6 +36,8 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
 	icon_state = "cmg_penetrator"
 	max_ammo = 25
+	multitype = TRUE
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/caflechette/ripper
 	name = "flechette ripper box"
