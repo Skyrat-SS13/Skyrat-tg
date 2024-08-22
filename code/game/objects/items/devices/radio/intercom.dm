@@ -233,10 +233,3 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command, 27)
 	name = "syndicate wide-band intercom"
 	desc = "A custom-made Syndicate-issue intercom used to transmit on all Nanotrasen frequencies. Particularly expensive."
 	freerange = TRUE
-
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/prison)
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/chapel)
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command)
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/syndicate)
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/syndicate/freerange)
-
