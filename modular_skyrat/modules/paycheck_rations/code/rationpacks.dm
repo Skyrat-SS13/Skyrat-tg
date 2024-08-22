@@ -58,6 +58,18 @@
 	new /obj/item/food/grown/potato(src)
 	new /obj/item/food/grown/potato(src)
 
+// For ethereals
+
+/obj/item/storage/box/spaceman_ration/plants/ethereal
+	desc = "Contains your allotted ration of produce, which in this case should be a lantern fruit, a jupiter cup, and a pickled voltvine."
+	icon_state = "plants_ethereal"
+	box_storage_slots = 3
+
+/obj/item/storage/box/spaceman_ration/plants/ethereal/PopulateContents()
+	new /obj/item/food/grown/lanternfruit(src)
+	new /obj/item/food/grown/mushroom/jupitercup(src)
+	new /obj/item/food/pickled_voltvine(src)
+
 // Contains your allotted meats, tasty!
 
 /obj/item/storage/box/spaceman_ration/meats
@@ -91,6 +103,16 @@
 	new /obj/item/food/fishmeat/moonfish(src)
 	var/secondary_meat = pick(/obj/item/food/raw_tiziran_sausage, /obj/item/food/liver_pate)
 	new secondary_meat(src)
+
+// For ethereals!
+
+/obj/item/storage/box/spaceman_ration/meats/ethereal
+	desc = "Contains your allotted ration of meat, which in this case should be two fish fillets."
+	icon_state = "meats_ethereal"
+
+/obj/item/storage/box/spaceman_ration/meats/ethereal/PopulateContents()
+	new /obj/item/food/fishmeat(src)
+	new /obj/item/food/fishmeat(src)
 
 // Paper sack that spawns a random two slices of bread
 
