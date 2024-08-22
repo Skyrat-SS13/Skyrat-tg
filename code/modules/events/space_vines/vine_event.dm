@@ -39,7 +39,7 @@
 
 		for(var/area/station/hallway/area in GLOB.areas)
 			for(var/turf/open/floor in area.get_turfs_from_all_zlevels())
-				if(floor.Enter(vine))
+				if(!isopenspaceturf(floor) && floor.Enter(vine))
 					turfs += floor
 
 		qdel(vine)

@@ -24620,10 +24620,6 @@
 /area/station/ai_monitored/security/armory)
 "ibL" = (
 /obj/structure/table,
-/obj/item/circular_saw,
-/obj/item/surgicaldrill{
-	pixel_y = 5
-	},
 /obj/item/healthanalyzer,
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
@@ -29941,10 +29937,14 @@
 /area/station/maintenance/port/greater)
 "jKQ" = (
 /obj/effect/turf_decal/bot_white,
-/obj/structure/table/optable,
 /obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
 	dir = 8
 	},
+/obj/machinery/computer/records/medical/laptop{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "jKZ" = (
@@ -30493,11 +30493,11 @@
 	pixel_x = -32
 	},
 /obj/machinery/light/directional/north,
-/obj/item/surgery_tray,
 /obj/machinery/status_display/evac/directional/north,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 4
 	},
+/obj/item/surgery_tray/full,
 /turf/open/floor/iron/dark,
 /area/station/medical/virology)
 "jUz" = (
@@ -41519,9 +41519,9 @@
 "nBZ" = (
 /obj/machinery/newscaster/directional/west,
 /obj/structure/table,
-/obj/item/surgery_tray,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/item/surgery_tray/full,
 /turf/open/floor/iron/dark,
 /area/station/medical/surgery/fore)
 "nCc" = (
@@ -45999,10 +45999,6 @@
 "phH" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/item/clothing/gloves/latex,
-/obj/item/paper/guides/jobs/medical/morgue,
-/obj/item/pen,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 4
 	},
@@ -46012,6 +46008,7 @@
 	},
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/information,
+/obj/structure/table/optable,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "phK" = (
@@ -50791,14 +50788,12 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "qLB" = (
-/obj/structure/table,
-/obj/machinery/computer/records/medical/laptop{
-	dir = 4;
-	pixel_y = 3
-	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/computer/operating{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "qLO" = (
@@ -51267,13 +51262,9 @@
 /area/station/cargo/miningoffice)
 "qTY" = (
 /obj/structure/table,
-/obj/item/surgical_drapes,
-/obj/item/scalpel{
-	pixel_y = 5
-	},
-/obj/item/cautery,
 /obj/machinery/light_switch/directional/north,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/item/folder/white,
 /turf/open/floor/iron/dark,
 /area/station/medical/surgery/aft)
 "qUb" = (
@@ -53323,7 +53314,6 @@
 	pixel_y = 4
 	},
 /obj/item/clothing/gloves/latex,
-/obj/item/clothing/mask/surgical,
 /obj/item/clothing/suit/apron/surgical,
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
@@ -63860,7 +63850,10 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/machinery/computer/operating,
+/obj/structure/table,
+/obj/item/clothing/gloves/latex,
+/obj/item/paper/guides/jobs/medical/morgue,
+/obj/item/pen,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "uRg" = (
@@ -67562,10 +67555,6 @@
 /turf/open/floor/iron/dark,
 /area/station/command/gateway)
 "vXf" = (
-/obj/structure/table,
-/obj/item/folder/white,
-/obj/item/retractor,
-/obj/item/hemostat,
 /obj/machinery/vending/wallmed/directional/north,
 /obj/machinery/camera/directional/north{
 	c_tag = "Medical Operating Theater B";
@@ -67573,6 +67562,7 @@
 	network = list("ss13","medical")
 	},
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/iron/dark,
 /area/station/medical/surgery/aft)
 "vXn" = (
@@ -70994,7 +70984,9 @@
 /area/station/science/xenobiology)
 "xcj" = (
 /obj/effect/turf_decal/siding/green,
-/obj/machinery/door/firedoor/border_only/closed,
+/obj/machinery/door/window/left{
+	name = "Animal Pen"
+	},
 /turf/open/misc/sandy_dirt,
 /area/station/service/hydroponics/garden)
 "xck" = (
@@ -73038,11 +73030,12 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/starboard/fore)
 "xLd" = (
-/obj/structure/closet/crate/freezer/blood,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
+/obj/structure/table,
+/obj/item/surgery_tray/full,
 /turf/open/floor/iron/dark,
 /area/station/medical/surgery/aft)
 "xLk" = (
