@@ -156,7 +156,10 @@
 	var/unfolded_spread = 5
 	/// what's our spread with a folded stock (see above comment)?
 	var/folded_spread = 20
-
+	/// Do we have any recoil if it's folded?
+	var/folded_recoil = 5
+	///Do we lose any recoil when it's not?
+	var/unfolded_recoil = 0
 /obj/item/gun/ballistic/automatic/rom_flech/examine(mob/user)
 	. = ..()
 	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock.")
@@ -185,8 +188,12 @@
 /obj/item/gun/ballistic/automatic/rom_flech/proc/update_fold_stats()
 	if(folded)
 		spread = folded_spread
+		w_class = WEIGHT_CLASS_NORMAL
+		recoil = folded_recoil
 	else
 		spread = unfolded_spread
+		w_class = WEIGHT_CLASS_BULKY
+		recoil = unfolded_recoil
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/rom_flech/update_overlays()
@@ -228,6 +235,8 @@
 	pin = /obj/item/firing_pin
 	unfolded_spread = 0
 	folded_spread = 7
+	folded_recoil = 2
+	unfolded_recoil = 0
 
 /obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
 	spawnwithmagazine = FALSE

@@ -26,6 +26,7 @@
 
 /datum/armament_entry/company_import/allstar/basic_energy_long_weapons
 	subcategory = "Basic Energy Longarms"
+	restricted = TRUE
 
 /datum/armament_entry/company_import/allstar/basic_energy_long_weapons/laser
 	item_type = /obj/item/gun/energy/laser
