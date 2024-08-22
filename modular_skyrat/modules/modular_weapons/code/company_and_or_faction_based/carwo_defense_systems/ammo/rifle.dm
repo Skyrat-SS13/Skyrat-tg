@@ -22,8 +22,8 @@
 	name = ".40 Sol Long bullet"
 	damage = 35
 
-	wound_bonus = 10
-	bare_wound_bonus = 20
+	wound_bonus = -30
+	bare_wound_bonus = -35
 
 
 /obj/item/ammo_box/c40sol
@@ -66,7 +66,7 @@
 
 	sharpness = SHARP_EDGED
 	wound_bonus = 0
-	bare_wound_bonus = 10
+	bare_wound_bonus = 20
 
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embed_type = /datum/embed_data/c40sol_fragmentation
