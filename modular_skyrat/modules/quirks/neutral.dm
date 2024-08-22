@@ -227,16 +227,16 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	balloon_alert(user, "card flipped")
 	return CLICK_ACTION_SUCCESS
 
-/datum/quirk/feline_aspect
-	name = "Feline Traits"
-	desc = "You happen to act like a feline, for whatever reason. This will replace most other tongue-based speech quirks."
+/datum/quirk/felinid_aspect
+	name = "Felinid Traits"
+	desc = "You happen to act like a felinid, for whatever reason. This will replace other tongue-based quirks."
 	gain_text = span_notice("Nya could go for some catnip right about now...")
 	lose_text = span_notice("You feel less attracted to lasers.")
-	medical_record_text = "Patient seems to possess behavior much like a feline."
-	mob_trait = TRAIT_FELINE
+	medical_record_text = "Patient seems to possess behavior much like a felinid."
+	mob_trait = TRAIT_FELINID
 	icon = FA_ICON_CAT
 
-/datum/quirk/feline_aspect/add_unique(client/client_source)
+/datum/quirk/felinid_aspect/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/organ/internal/tongue/cat/new_tongue = new(get_turf(human_holder))
 
