@@ -16,11 +16,13 @@
 	items_to_add = list(/obj/item/scalpel/advanced,
 						/obj/item/retractor/advanced,
 						/obj/item/cautery/advanced,
+						/obj/item/blood_filter/advanced,
 						/obj/item/healthanalyzer/advanced,
 						)
 	items_to_remove = list(
 						/obj/item/borg/cyborg_omnitool/medical,
 						/obj/item/borg/cyborg_omnitool/medical, // Twice because you get two
+						/obj/item/blood_filter,
 						/obj/item/healthanalyzer,
 						)
 
