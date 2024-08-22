@@ -197,10 +197,6 @@
 	item_type = /obj/item/defibrillator/compact/loaded
 	cost = PAYCHECK_COMMAND*2
 
-/datum/armament_entry/company_import/deforest/equipment/loaded_belt_defib2
-	item_type = /obj/item/defibrillator/compact/combat/loaded/nanotrasen
-	cost = PAYCHECK_COMMAND*8
-
 /datum/armament_entry/company_import/deforest/equipment/surgical_tools
 	item_type = /obj/item/surgery_tray/full
 	cost = PAYCHECK_COMMAND

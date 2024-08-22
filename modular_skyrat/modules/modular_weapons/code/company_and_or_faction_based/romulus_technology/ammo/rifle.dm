@@ -26,6 +26,7 @@
 	projectile_type = /obj/projectile/bullet/caflechette
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
+	can_be_printed = TRUE
 
 /obj/item/ammo_casing/caflechette/Initialize(mapload)
 	. = ..()
