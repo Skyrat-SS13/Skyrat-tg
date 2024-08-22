@@ -9,7 +9,6 @@
 	)
 
 /obj/item/mod/control/pre_equipped/asset_protection
-	icon_state = "asset_protection-control"
 	theme = /datum/mod_theme/asset_protection
 	applied_cell = /obj/item/stock_parts/power_store/cell/bluespace
 	applied_modules = list(
