@@ -18,7 +18,7 @@
 	/// The tail we use to constrict mobs with. Nullable, if inactive.
 	var/obj/structure/serpentine_tail/tail
 	/// The base time it takes for us to constrict a mob.
-	var/base_coil_delay = 3.25 SECONDS
+	var/base_coil_delay = 2.2 SECONDS
 
 /datum/action/innate/constrict/Destroy()
 	qdel(tail) // we already listen for COMSIG_QDELETING on our tail, so it already sets it to null via the signal

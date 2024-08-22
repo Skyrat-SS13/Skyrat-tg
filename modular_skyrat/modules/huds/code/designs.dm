@@ -56,7 +56,7 @@
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/gold = SMALL_MATERIAL_AMOUNT * 4,
 	)
-	build_path = /obj/item/clothing/glasses/hud/science/prescription
+	build_path = /obj/item/clothing/glasses/science/prescription
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE,
 	)
