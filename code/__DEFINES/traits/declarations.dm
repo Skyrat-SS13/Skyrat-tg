@@ -675,14 +675,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This movable atom has the explosive block element
 #define TRAIT_BLOCKING_EXPLOSIVES "blocking_explosives"
 
-<<<<<<< HEAD
-=======
 ///This mob is currently blocking a projectile.
 #define TRAIT_BLOCKING_PROJECTILES "blocking_projectiles"
 /// This turf contains something using split visiblity
 #define TRAIT_CONTAINS_SPLITVIS "contains_splitvis"
 
->>>>>>> b6d3e114da87 (Adds taunting as a replacement for spin/flip in style meter and parrying (#85605))
 ///Lava will be safe to cross while it has this trait.
 #define TRAIT_LAVA_STOPPED "lava_stopped"
 ///Chasms will be safe to cross while they've this trait.
