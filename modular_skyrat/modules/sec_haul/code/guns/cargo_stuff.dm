@@ -52,6 +52,7 @@
 				)
 	crate_name = "anti riot shotgun ammo crate"
 
+
 //SOL GUNS
 
 /datum/supply_pack/security/wespe
@@ -92,16 +93,6 @@
 	contraband = TRUE
 */
 
-/datum/supply_pack/security/armory/cmg
-	name = "Romulus Technology CMG Assault Rifle Crate"
-	desc = "Two CMG-1, chambered in experimental steel flechette."
-	cost = CARGO_CRATE_VALUE * 20
-	contains = list(
-		/obj/item/storage/toolbox/guncase/skyrat/rom_flech,
-		/obj/item/storage/toolbox/guncase/skyrat/rom_flech,
-	)
-	crate_name = "RomTech CMG-1 Crate"
-
 /datum/supply_pack/security/armory/sindano
 	name = "Carwo 'Sindano' Submachinegun Crate"
 	desc = "Three entirely proprietary Sindano kits, chambered in .35 Sol Short. Each kit contains three empty magazines and a box each of incapacitator and lethal rounds."
@@ -120,6 +111,28 @@
 	)
 	crate_name = "Carwil Marksman Rifle Crate"
 
+//NT Guns and Ammo
+
+/datum/supply_pack/security/sidearmcrate
+	name = "Sidearm Crate"
+	desc = "Contains Two Sidearm Beacon, rated for NanoTrasen usage."
+	cost = CARGO_CRATE_VALUE * 12
+	contains = list(/obj/item/choice_beacon/security_pistol = 2,
+	)
+	crate_name = "NanoTrasen Sidearm Crate"
+
+// RomFed Gun
+
+/datum/supply_pack/security/armory/cmg
+	name = "Romulus Technology CMG Assault Rifle Crate"
+	desc = "Two CMG-1, chambered in experimental steel flechette."
+	cost = CARGO_CRATE_VALUE * 20
+	contains = list(
+		/obj/item/storage/toolbox/guncase/skyrat/rom_flech,
+		/obj/item/storage/toolbox/guncase/skyrat/rom_flech,
+	)
+	crate_name = "RomTech CMG-1 Crate"
+
 /datum/supply_pack/security/armory/rom_ceremonial_rifle
 	name = "Romulus Ceremonial Bolt Action Rifle Crate"
 	desc = "Contains Three Ceremonial Bolt Action Rifle in .40 , as well as ammo for it."
@@ -128,15 +141,9 @@
 	)
 	crate_name = "Romulus Ceremonial Rifle Crate"
 
-/datum/supply_pack/security/ammo
-	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 3,
-					/obj/item/ammo_box/advanced/s12gauge/rubber = 3,
-					/obj/item/ammo_box/c38/trac,
-					/obj/item/ammo_box/c38/hotshot,
-					/obj/item/ammo_box/c38/iceblox,
-				)
-	special = FALSE
-//This makes the Security ammo crate use the cool advanced ammo boxes instead of the old ones
+
+
+//Misc
 
 /datum/supply_pack/security/armory/kiboko
 	name = "Kiboko Grenade Launcher Crate"
@@ -170,4 +177,16 @@
 	)
 
 //Goodies
+
+//Override
+/datum/supply_pack/security/ammo
+	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 3,
+					/obj/item/ammo_box/advanced/s12gauge/rubber = 3,
+					/obj/item/ammo_box/c38/trac,
+					/obj/item/ammo_box/c38/hotshot,
+					/obj/item/ammo_box/c38/iceblox,
+				)
+	special = FALSE
+//This makes the Security ammo crate use the cool advanced ammo boxes instead of the old ones
+
 

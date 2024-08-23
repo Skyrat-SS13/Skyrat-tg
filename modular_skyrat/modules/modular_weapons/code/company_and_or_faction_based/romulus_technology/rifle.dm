@@ -144,6 +144,7 @@
 	fire_delay = 2
 	spread = 5
 	pin = /obj/item/firing_pin/alert_level
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/smg_light.ogg'
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/caflechette
 	spawn_magazine_type = /obj/item/ammo_box/magazine/caflechette
