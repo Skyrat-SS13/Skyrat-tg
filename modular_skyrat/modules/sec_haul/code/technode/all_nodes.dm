@@ -37,6 +37,7 @@
 	design_ids += "s12c_fslug"
 	design_ids += "ammoworkbench_disk_lethal"
 	design_ids += "ammo_workbench"
+	design_ids += "s12g_huntingslug"
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
