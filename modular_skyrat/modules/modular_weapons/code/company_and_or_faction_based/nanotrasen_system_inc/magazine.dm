@@ -73,6 +73,8 @@
 
 	custom_premium_price = 50
 
+	w_class = WEIGHT_CLASS_SMALL
+
 /obj/item/ammo_box/c10mm/speedloader/rubber
 
 	name = "speed loader (10mm Auto Rubber)"
