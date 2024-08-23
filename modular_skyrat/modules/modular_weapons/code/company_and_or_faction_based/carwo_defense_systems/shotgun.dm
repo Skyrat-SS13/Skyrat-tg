@@ -31,6 +31,8 @@
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/somewhatextended
 
+	fire_delay = 8
+
 /obj/item/gun/ballistic/shotgun/riot/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
 
