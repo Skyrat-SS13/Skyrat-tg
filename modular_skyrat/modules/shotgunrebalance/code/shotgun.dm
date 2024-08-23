@@ -269,7 +269,7 @@
 	damage = 15 //I'd kill you if you manage to kill someone with this shit
 	wound_bonus = 30
 	bare_wound_bonus = 30
-	demolition_mod = 50
+	demolition_mod = 5
 
 /obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
