@@ -84,7 +84,7 @@
 			"spanks [target] with [src], making a loud slapping noise",
 			"slaps [target]'s thighs with [src]")
 	user.visible_message(span_purple("[user] [message]!"))
-	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
+	conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
 	if(prob(40))
 		target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
 	if(prob(10))
