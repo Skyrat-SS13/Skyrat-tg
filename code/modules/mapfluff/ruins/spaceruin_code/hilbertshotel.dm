@@ -9,7 +9,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE + EXTRA STUFF
-	var/list/static/hotel_maps = list("Generic", "Apartment", "Beach Condo", "Station Side")
+	var/list/static/hotel_maps = list("Generic", "Apartment", "Beach Condo", "Station Side", "Library")
 	//standart - hilber's hotel room
 	//apartment - see /datum/map_template/ghost_cafe_rooms
 	//beach condo - Beach themed apartment
@@ -17,6 +17,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	var/datum/map_template/ghost_cafe_rooms/apartment/ghost_cafe_rooms_apartment
 	var/datum/map_template/ghost_cafe_rooms/beach_condo/ghost_cafe_rooms_beach_condo
 	var/datum/map_template/ghost_cafe_rooms/stationside/ghost_cafe_rooms_stationside
+	var/datum/map_template/ghost_cafe_rooms/library/ghost_cafe_rooms_library
 	//Skyrat EDIT END
 
 	var/datum/map_template/hilbertshotel/hotelRoomTemp
@@ -41,6 +42,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	ghost_cafe_rooms_apartment = new()
 	ghost_cafe_rooms_beach_condo = new()
 	ghost_cafe_rooms_stationside = new()
+	ghost_cafe_rooms_library = new()
 	//SKYRAT EDIT END
 
 	var/area/currentArea = get_area(src)
@@ -197,6 +199,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 	else if(chosen_room == "Station Side")
 		load_from = ghost_cafe_rooms_stationside
+	else if(chosen_room == "Library")
+		load_from = ghost_cafe_rooms_library
 	//BUBBER EDIT ADDITION END
 
 	load_from.load(bottom_left)
