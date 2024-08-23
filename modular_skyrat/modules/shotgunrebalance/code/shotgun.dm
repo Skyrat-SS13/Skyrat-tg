@@ -266,10 +266,10 @@
 
 /obj/projectile/bullet/frangible_slug
 	name = "frangible slug"
-	damage = 10 //I'd kill you if you manage to kill someone with this shit
+	damage = 15 //I'd kill you if you manage to kill someone with this shit
 	wound_bonus = 30
 	bare_wound_bonus = 30
-	demolition_mod = 40
+	demolition_mod = 50
 
 /obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -278,8 +278,8 @@
 			demolition_mod = 200
 			damage = 30
 		else
-			demolition_mod = 40
-			damage = 10
+			demolition_mod = 50
+			damage = 15
 	if(isobj(target))
 		var/obj/hit_object = target
 		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
