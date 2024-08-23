@@ -269,26 +269,17 @@
 	damage = 15 //I'd kill you if you manage to kill someone with this shit
 	wound_bonus = 30
 	bare_wound_bonus = 30
-	demolition_mod = 50
+	demolition_mod = 5
 
 /obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if (!QDELETED(target) && (isturf(target) || isstructure(target)))
+	if(istype(target, /obj/structure/window) || istype(target, /obj/machinery/door/airlock))
 		if(isobj(target))
-			demolition_mod = 200
+			demolition_mod = 50
 			damage = 30
 		else
-			demolition_mod = 50
+			demolition_mod = 5
 			damage = 15
-	if(isobj(target))
-		var/obj/hit_object = target
-		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
-	else if(isclosedturf(target))
-		damage = 0
-		demolition_mod = 0
-		if(!isindestructiblewall(target))
-			var/turf/closed/hit_turf = target
-			hit_turf.ScrapeAway()
 	return ..()
 
 /obj/item/ammo_casing/shotgun/hunter
