@@ -46,7 +46,7 @@
 		atom_storage.can_hold = typecacheof(list(/obj/item/ammo_casing))
 		atom_storage.max_specific_storage = WEIGHT_CLASS_TINY
 		atom_storage.numerical_stacking = TRUE
-		atom_storage.max_slots = 10
+		atom_storage.max_slots = 14
 		atom_storage.max_total_storage = WEIGHT_CLASS_TINY * 10
 
 /obj/item/storage/pouch/material
