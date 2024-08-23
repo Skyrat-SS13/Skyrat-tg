@@ -37,5 +37,3 @@
 	name = "NanoTrasen Woodstock Shotgun"
 	desc = "A classic Shotgun used by hunters, police and frontiersmen alike, now at an affordable price."
 	contains = list(/obj/item/gun/ballistic/shotgun/riot, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/hunter)
-	cost = PAYCHECK_COMMAND * 20 //This can be kept cheap as it's outclassed by peacekeeper combat shotgun anyway
-	access_view = ACCESS_WEAPONS
