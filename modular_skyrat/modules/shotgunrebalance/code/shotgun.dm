@@ -280,9 +280,6 @@
 		else
 			demolition_mod = 5
 			damage = 15
-	if(isobj(target))
-		var/obj/hit_object = target
-		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
 	return ..()
 
 /obj/item/ammo_casing/shotgun/hunter
