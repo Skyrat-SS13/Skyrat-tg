@@ -276,7 +276,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_ion
-	name = "12 Gauge Advanced Scatter Laser Ammunition Box(Very Lethal - Silicon)"
+	name = "12 Gauge Advanced Scatter Ion Ammunition Box(Very Lethal - Silicon)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_ion"
 	build_type = PROTOLATHE | AWAY_LATHE

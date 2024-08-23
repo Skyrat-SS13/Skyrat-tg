@@ -21,8 +21,8 @@
 		/obj/item/ammo_box/magazine/m9mm = 4,
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing = 10,
-		/obj/item/storage/belt/security/webbing/peacekeeper = 10,
+		/obj/item/storage/belt/security/webbing = 5,
+		/obj/item/storage/belt/security/webbing/peacekeeper = 5,
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 3,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 3,

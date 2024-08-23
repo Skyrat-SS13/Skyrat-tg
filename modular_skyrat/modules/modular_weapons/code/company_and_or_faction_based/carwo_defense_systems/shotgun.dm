@@ -29,6 +29,10 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/somewhatextended
+
+	fire_delay = 8
+
 /obj/item/gun/ballistic/shotgun/riot/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
 

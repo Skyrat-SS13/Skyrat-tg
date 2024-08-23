@@ -75,6 +75,12 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
+/obj/item/gun/ballistic/shotgun/riot
+	name = "classic woodstock shotgun"
+	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
+	fire_delay = 6 //We slighly bump this up because thats a good idea
+	sawn_desc = "Come with me if you want to live."
+
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
 	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
@@ -85,7 +91,7 @@
 	inhand_icon_state = "shotgun_combat"
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
-	fire_delay =  6
+	fire_delay =  5
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 2
 
