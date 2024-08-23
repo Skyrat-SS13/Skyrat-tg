@@ -35,6 +35,8 @@
 	design_ids += "c10mm_r"
 	design_ids += "c10mm_rihdf"
 	design_ids += "s12c_fslug"
+	design_ids += "ammoworkbench_disk_lethal"
+	design_ids += "ammo_workbench"
 
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
