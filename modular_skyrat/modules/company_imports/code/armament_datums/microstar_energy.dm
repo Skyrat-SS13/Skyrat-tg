@@ -35,7 +35,7 @@
 	item_type = /obj/item/gun/energy/tesla_cannon
 */
 // Preset 'loadout' kits built around a barrel attachment
-
+*/
 /datum/armament_entry/company_import/microstar/mcr_attachments
 	subcategory = "Microfusion Attachment Kits"
 	cost = PAYCHECK_COMMAND * 4
