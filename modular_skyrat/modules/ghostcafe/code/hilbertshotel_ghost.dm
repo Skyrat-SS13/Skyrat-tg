@@ -16,3 +16,11 @@
 /datum/map_template/ghost_cafe_rooms
 	name = "Apartment"
 	mappath = "modular_skyrat/modules/hotel_rooms/apartment.dmm"
+
+/datum/map_template/ghost_cafe_rooms/beach_condo
+	name = "Beach Condo"
+	mappath = "modular_skyrat/modules/hotel_rooms/beach_condo.dmm"
+
+/datum/map_template/ghost_cafe_rooms/stationside
+	name = "Station Side"
+	mappath = "modular_skyrat/modules/hotel_rooms/stationside.dmm"
