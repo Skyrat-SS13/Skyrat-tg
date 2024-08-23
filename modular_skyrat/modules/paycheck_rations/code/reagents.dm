@@ -39,6 +39,12 @@
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	list_reagents = list(/datum/reagent/consumable/milk = 15)
 
+/obj/item/reagent_containers/condiment/dashi_concentrate/small_ration
+	name = "small dashi"
+	desc = "It's concentrated dashi in a small container, containing just enough to be able to make some dashi for cooking!"
+	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
+	list_reagents = list(/datum/reagent/consumable/dashi_concentrate = 5)
+
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny
 	name = "tiny glass bottle"
 	volume = 10
@@ -77,3 +83,10 @@
 	desc = "A maritime ration-sized bottle of caramel, in the past these used to be something called 'treacle', which was \
 		the tar left over from refining sugar. Nowadays, governments are rich enough to just send caramel instead."
 	list_reagents = list(/datum/reagent/consumable/caramel = 10)
+
+/obj/item/reagent_containers/cup/soda_cans/skyrat/wine_voltaic
+	name = "canned voltaic wine"
+	desc = "A can of electrically infused wine, recharges ethereals and is safe for consumption."
+	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
+	icon_state = "wine_voltaic_canned"
+	list_reagents = list(/datum/reagent/consumable/ethanol/wine_voltaic = 30)

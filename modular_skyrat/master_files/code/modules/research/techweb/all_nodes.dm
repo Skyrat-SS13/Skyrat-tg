@@ -218,17 +218,6 @@
 
 /////////////////////////weaponry tech/////////////////////////
 
-/datum/techweb_node/basic_arms/New()
-	design_ids += list(
-		"ammoworkbench_disk_lethal",
-	)
-	return ..()
-
-/datum/techweb_node/riot_supression/New()
-	design_ids += list(
-		"ammo_workbench",
-	)
-	return ..()
 
 /datum/techweb_node/electric_weapons/New()
 	design_ids += list(

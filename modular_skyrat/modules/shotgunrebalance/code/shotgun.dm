@@ -35,8 +35,13 @@
 	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	advanced_print_req = TRUE
 	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
+
+/obj/item/ammo_casing/shotgun/ion
+	custom_materials = AMMO_MATS_SHOTGUN_TIDE
+
+/obj/item/ammo_casing/shotgun/scatterlaser
+	custom_materials = AMMO_MATS_SHOTGUN_TIDE
 
 /obj/item/ammo_casing/shotgun/techshell
 	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
@@ -48,7 +53,8 @@
 	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
 
 /obj/item/ammo_casing/shotgun/dragonsbreath
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 
 /obj/item/ammo_casing/shotgun/stunslug
 	name = "taser slug"
@@ -70,12 +76,6 @@
 	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
 
 /obj/item/ammo_casing/shotgun/pulseslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/laserslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/ion
 	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
 
 /obj/item/ammo_casing/shotgun/incapacitate
@@ -124,8 +124,9 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	name = "magnum blockshot pellet"
-	damage = 12
+	damage = 15
 	wound_bonus = 10
+	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum/Initialize(mapload)
 	. = ..()
@@ -142,8 +143,9 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	name = "express buckshot pellet"
-	damage = 4
-	wound_bonus = 0
+	damage = 5.5
+	wound_bonus = 10
+	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express/Initialize(mapload)
 	. = ..()
@@ -151,11 +153,11 @@
 
 /obj/item/ammo_casing/shotgun/flechette
 	name = "flechette shell"
-	desc = "A 12 gauge flechette shell that specializes in ripping unarmored targets apart."
+	desc = "A 12 gauge flechette shell that specializes in ripping armoured targets apart."
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
-	pellets = 8 //8 x 6 = 48 Damage Potential
-	variance = 25
+	pellets = 5
+	variance = 8
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
 
@@ -163,10 +165,13 @@
 	name = "flechette"
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "flechette"
-	damage = 6
-	wound_bonus = 10
-	bare_wound_bonus = 20
+	damage = 10
+	wound_bonus = 5
+	bare_wound_bonus = 10
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
+	weak_against_armour = FALSE
+	damage_falloff_tile = 0
+	armour_penetration = 50
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette/Initialize(mapload)
 	. = ..()
@@ -191,9 +196,9 @@
 	icon_state = "hornet"
 	damage = 4
 	stamina = 15
-	damage_falloff_tile = 0.1
-	stamina_falloff_tile = 0.1
-	wound_bonus = -5
+	damage_falloff_tile = 1
+	stamina_falloff_tile = 1
+	wound_bonus = 5
 	bare_wound_bonus = 5
 	wound_falloff_tile = 0
 	sharpness = NONE
@@ -204,14 +209,18 @@
 	ricochet_decay_damage = 1
 	ricochet_decay_chance = 1
 	ricochet_incidence_leeway = 0 //nanomachines son
+	homing = TRUE
+	homing_turn_speed = 25
+	homing_inaccuracy_min = 10
+	homing_inaccuracy_max = 80
 
 /obj/item/ammo_casing/shotgun/antitide
 	name = "stardust shell"
-	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
+	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more. it also cannot be reflected by martial art"
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
-	pellets = 8 // 8 * 7 for 56 stamina damage, plus whatever the embedded shells do
-	variance = 30
+	pellets = 1
+	variance = 1
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
 	custom_materials = AMMO_MATS_SHOTGUN_TIDE
@@ -221,32 +230,66 @@
 	name = "electrode"
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
-	damage = 2
-	stamina = 8
+	damage = 15
+	stamina = 10
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = 0
-	bare_wound_bonus = 0
+	wound_bonus = 15
+	bare_wound_bonus = 15
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
 	sharpness = NONE
-	range = 8
+	range = 12
 	embed_type = /datum/embed_data/shotgun_buckshot/antitide
+	reflectable = FALSE
 
 /datum/embed_data/shotgun_buckshot/antitide
-	embed_chance = 70
-	pain_chance = 25
-	fall_chance = 15
-	jostle_chance = 80
+	embed_chance = 200
+	pain_chance = 90
+	fall_chance = 10
+	jostle_chance = 10
 	ignore_throwspeed_threshold = TRUE
-	pain_stam_pct = 0.9
-	pain_mult = 2
+	pain_stam_pct = 1
+	pain_mult = 3
 	rip_time = 1 SECONDS
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/on_range()
 	do_sparks(1, TRUE, src)
 	..()
+
+/obj/item/ammo_casing/shotgun/frangible
+	name = "frangible slug"
+	desc = "A weak anti materiel shell intended for dislodging airlock, breaking down barricades and structures. Not effective against people."
+	icon_state = "breacher"
+	projectile_type = /obj/projectile/bullet/frangible_slug
+
+/obj/projectile/bullet/frangible_slug
+	name = "frangible slug"
+	damage = 15 //I'd kill you if you manage to kill someone with this shit
+	wound_bonus = 30
+	bare_wound_bonus = 30
+	demolition_mod = 50
+
+/obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if (!QDELETED(target) && (isturf(target) || isstructure(target)))
+		if(isobj(target))
+			demolition_mod = 200
+			damage = 30
+		else
+			demolition_mod = 50
+			damage = 15
+	if(isobj(target))
+		var/obj/hit_object = target
+		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
+	else if(isclosedturf(target))
+		damage = 0
+		demolition_mod = 0
+		if(!isindestructiblewall(target))
+			var/turf/closed/hit_turf = target
+			hit_turf.ScrapeAway()
+	return ..()
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter slug shell"
@@ -260,10 +303,7 @@
 
 /obj/projectile/bullet/shotgun_slug/hunter/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 5)
-
-/obj/projectile/bullet/pellet/shotgun_improvised
-	weak_against_armour = TRUE // We will not have Improvised are Better 2.0
+	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 6)
 
 /obj/item/ammo_casing/shotgun/honkshot
 	name = "confetti shell"
@@ -317,3 +357,6 @@
 /obj/projectile/bullet/honkshot/on_range()
 	do_sparks(1, TRUE, src)
 	return ..()
+
+/obj/item/ammo_casing/shotgun/beanbag
+	harmful = FALSE

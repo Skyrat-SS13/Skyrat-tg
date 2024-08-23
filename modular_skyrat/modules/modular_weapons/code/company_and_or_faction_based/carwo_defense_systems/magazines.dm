@@ -58,7 +58,7 @@
 
 	icon_state = "rifle_standard"
 
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	max_ammo = 30
 
