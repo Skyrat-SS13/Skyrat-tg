@@ -179,7 +179,6 @@
 	)
 	crate_name = "Carwil Battle Rifle Crate"
 	hidden = TRUE
-*/
 
 //Goodies
 
