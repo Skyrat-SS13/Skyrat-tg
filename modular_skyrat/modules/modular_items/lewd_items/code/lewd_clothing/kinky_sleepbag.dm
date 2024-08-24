@@ -132,7 +132,7 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
-	play_lewd_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
+	conditional_pref_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	if(bag_fold == TRUE)
 		w_class = WEIGHT_CLASS_SMALL
 		slot_flags = NONE
@@ -182,7 +182,7 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(seconds_per_tick)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
-			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
+			conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
 			tt = rand(15, 35) //to do random funny sounds when character inside that thing.
 		else
 			tt -= seconds_per_tick

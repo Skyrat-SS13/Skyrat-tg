@@ -45,7 +45,7 @@
 		//we're below minimum, turn off
 		shocker_on = FALSE
 		update_appearance()
-		play_lewd_sound(src, activate_sound, 75, TRUE, -1)
+		conditional_pref_sound(src, activate_sound, 75, TRUE, -1)
 
 /obj/item/kinky_shocker/examine(mob/user)
 	. = ..()
@@ -91,7 +91,7 @@
 	if(cell && cell.charge >= cell_hit_cost)
 		shocker_on = !shocker_on
 		to_chat(user, span_notice("You turn the shocker [shocker_on? "on. Buzz!" : "off."]"))
-		play_lewd_sound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+		conditional_pref_sound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	else
 		shocker_on = FALSE
 		if(!cell)
@@ -221,7 +221,7 @@
 			return
 
 	user.visible_message(span_purple("[user] [message]!"))
-	play_lewd_sound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
+	conditional_pref_sound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
 	deductcharge(cell_hit_cost)
 	if(prob(80))
 		target.try_lewd_autoemote(pick("twitch", "twitch_s", "shiver", "scream"))

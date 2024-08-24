@@ -75,7 +75,7 @@
 		return
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
 	if(moan_sounds)
-		play_lewd_sound(loc, pick(moan_sounds), chokes_wearer ? moan_volume_choking : moan_volume, 1, -1)
+		conditional_pref_sound(loc, pick(moan_sounds), chokes_wearer ? moan_volume_choking : moan_volume, 1, -1)
 
 // Change the size of the gag
 /obj/item/clothing/mask/ballgag/attack_self(mob/user)
