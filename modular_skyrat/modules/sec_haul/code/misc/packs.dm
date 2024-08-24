@@ -36,4 +36,5 @@
 /datum/supply_pack/goody/nt_shotgun
 	name = "NanoTrasen Woodstock Shotgun"
 	desc = "A classic Shotgun used by hunters, police and frontiersmen alike, now at an affordable price."
+	cost = PAYCHECK_COMMAND * 20
 	contains = list(/obj/item/gun/ballistic/shotgun/riot, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/hunter)
