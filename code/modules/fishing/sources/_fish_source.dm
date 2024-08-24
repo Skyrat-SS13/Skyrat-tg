@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(preset_fish_sources, init_subtypes_w_path_keys(/datum/fish_sour
  * A lot of the icons here may be a tad inaccurate, but since we're limited to the free font awesome icons we
  * have access to, we got to make do.
  */
+<<<<<<< HEAD
 GLOBAL_LIST_INIT(specific_fish_icons, zebra_typecacheof(list(
 	/mob/living/basic/carp = FISH_ICON_DEF,
 	/mob/living/basic/mining = FISH_ICON_HOSTILE,
@@ -32,6 +33,52 @@ GLOBAL_LIST_INIT(specific_fish_icons, zebra_typecacheof(list(
 	/obj/item/stack/ore = FISH_ICON_GEM,
 	/obj/structure/closet/crate = FISH_ICON_COIN,
 )))
+=======
+GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
+
+/proc/generate_specific_fish_icons()
+	var/list/return_list = zebra_typecacheof(list(
+		/mob/living/basic/axolotl = FISH_ICON_CRITTER,
+		/mob/living/basic/frog = FISH_ICON_CRITTER,
+		/mob/living/basic/carp = FISH_ICON_DEF,
+		/mob/living/basic/mining = FISH_ICON_HOSTILE,
+		/obj/effect/decal/remains = FISH_ICON_BONE,
+		/obj/effect/mob_spawn/corpse = FISH_ICON_BONE,
+		/obj/effect/spawner/message_in_a_bottle = FISH_ICON_BOTTLE,
+		/obj/item/coin = FISH_ICON_COIN,
+		/obj/item/fish = FISH_ICON_DEF,
+		/obj/item/fish/armorfish = FISH_ICON_CRAB,
+		/obj/item/fish/boned = FISH_ICON_BONE,
+		/obj/item/fish/chainsawfish = FISH_ICON_WEAPON,
+		/obj/item/fish/chasm_crab = FISH_ICON_CRAB,
+		/obj/item/fish/gunner_jellyfish = FISH_ICON_JELLYFISH,
+		/obj/item/fish/holo/crab = FISH_ICON_CRAB,
+		/obj/item/fish/holo/puffer = FISH_ICON_CHUNKY,
+		/obj/item/fish/jumpercable = FISH_ICON_ELECTRIC,
+		/obj/item/fish/lavaloop = FISH_ICON_WEAPON,
+		/obj/item/fish/mastodon = FISH_ICON_BONE,
+		/obj/item/fish/pufferfish = FISH_ICON_CHUNKY,
+		/obj/item/fish/sand_crab = FISH_ICON_CRAB,
+		/obj/item/fish/skin_crab = FISH_ICON_CRAB,
+		/obj/item/fish/slimefish = FISH_ICON_SLIME,
+		/obj/item/fish/sludgefish = FISH_ICON_SLIME,
+		/obj/item/fish/starfish = FISH_ICON_STAR,
+		/obj/item/fish/stingray = FISH_ICON_WEAPON,
+		/obj/item/fish/swordfish = FISH_ICON_WEAPON,
+		/obj/item/fish/zipzap = FISH_ICON_ELECTRIC,
+		/obj/item/seeds/grass = FISH_ICON_SEED,
+		/obj/item/seeds/random = FISH_ICON_SEED,
+		/obj/item/storage/wallet = FISH_ICON_COIN,
+		/obj/item/stack/sheet/bone = FISH_ICON_BONE,
+		/obj/item/stack/sheet/mineral = FISH_ICON_GEM,
+		/obj/item/stack/ore = FISH_ICON_GEM,
+		/obj/structure/closet/crate = FISH_ICON_COIN,
+		/obj/structure/mystery_box = FISH_ICON_COIN,
+	))
+
+	return_list[FISHING_RANDOM_SEED] = FISH_ICON_SEED
+	return return_list
+>>>>>>> 73081bcff0e3 (Add messages (paper, photos, cash) in bottles. (#85703))
 
 /**
  * Where the fish actually come from - every fishing spot has one assigned but multiple fishing holes
@@ -75,8 +122,11 @@ GLOBAL_LIST_INIT(specific_fish_icons, zebra_typecacheof(list(
 	return ..()
 
 ///Called when src is set as the fish source of a fishing spot component
-/datum/fish_source/proc/on_fishing_spot_init(/datum/component/fishing_spot/spot)
+/datum/fish_source/proc/on_fishing_spot_init(datum/component/fishing_spot/spot)
 	return
+
+///Called whenever a fishing spot with this fish source attached is deleted
+/datum/fish_source/proc/on_fishing_spot_del(datum/component/fishing_spot/spot)
 
 /// Can we fish in this spot at all. Returns DENIAL_REASON or null if we're good to go
 /datum/fish_source/proc/reason_we_cant_fish(obj/item/fishing_rod/rod, mob/fisherman, atom/parent)
