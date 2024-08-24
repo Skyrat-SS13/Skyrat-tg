@@ -198,9 +198,10 @@
 		spread = unfolded_spread
 		w_class = WEIGHT_CLASS_BULKY
 		recoil = unfolded_recoil
-		weapon_weight = WEAPON_HEAVY
 		if(one_handed_always)
 			weapon_weight = WEAPON_LIGHT
+		else
+			weapon_weight = WEAPON_HEAVY
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/rom_flech/update_overlays()
