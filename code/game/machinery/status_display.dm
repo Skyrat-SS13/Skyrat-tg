@@ -145,6 +145,15 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
  * Returns new /obj/effect/overlay/status_display_text or null if unchanged.
  */
 /obj/machinery/status_display/proc/update_message(current_key, line_y, message, x_offset, line_pair)
+<<<<<<< HEAD
+=======
+	var/matrix/working_transform = matrix()
+	var/working_alpha = alpha
+	if(dir != SOUTH)
+		// Translate the text separately, since they are vis_contents.
+		working_transform = floor_projections["[dir]"]
+		working_alpha = PROJECTION_TEXT_ALPHA
+>>>>>>> e1bf793264a0 (Spelling and Grammar Fixes (#86022))
 	var/obj/effect/overlay/status_display_text/current_overlay = get_status_text(current_key)
 	var/obj/effect/overlay/status_display_text/new_overlay = generate_status_text(line_y, message, x_offset, text_color, header_text_color, line_pair)
 
