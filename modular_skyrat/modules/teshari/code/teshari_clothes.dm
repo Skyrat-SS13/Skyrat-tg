@@ -176,3 +176,13 @@
 
 /obj/item/clothing/suit/toggle/suspenders
 	greyscale_config_worn_teshari = /datum/greyscale_config/suspenders/worn/teshari
+
+// Unique clothing here
+
+/obj/item/clothing/suit/kimjacket
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
+	
+/obj/item/clothing/suit/discoblazer
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
