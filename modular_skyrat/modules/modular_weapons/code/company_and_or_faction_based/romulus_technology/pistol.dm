@@ -106,6 +106,7 @@
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/storage/pouch/ammo(src)
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "M4A5"

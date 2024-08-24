@@ -43,7 +43,7 @@
 	name = "Renoster Single Pack Shotgun"
 	desc = "When you really need to send the message across. A shotgun favoured by modern Sol Police, now at an affordable price."
 	cost = PAYCHECK_COMMAND * 20
-	contains = list(/obj/item/gun/ballistic/shotgun/riot/sol, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/hunter)
+	contains = list(/obj/item/gun/ballistic/shotgun/riot/sol, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/rubber)
 
 //OVerride the price
 /datum/supply_pack/goody/double_barrel

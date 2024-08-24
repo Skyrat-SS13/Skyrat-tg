@@ -1,7 +1,7 @@
 #define AMMO_MATS_SHOTGUN list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4) // not quite as thick as a half-sheet
 
 #define AMMO_MATS_SHOTGUN_FLECH list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2)
+									/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
 
 #define AMMO_MATS_SHOTGUN_HIVE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
 									/datum/material/silver = SMALL_MATERIAL_AMOUNT * 1)
