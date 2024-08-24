@@ -242,7 +242,7 @@
 	sharpness = NONE
 	range = 12
 	embed_type = /datum/embed_data/shotgun_buckshot/antitide
-	reflectable = FALSE
+	reflectable = NONE
 
 /datum/embed_data/shotgun_buckshot/antitide
 	embed_chance = 200
