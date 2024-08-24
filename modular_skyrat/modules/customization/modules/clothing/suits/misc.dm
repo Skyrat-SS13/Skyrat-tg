@@ -86,6 +86,8 @@
 	desc = "Looks like someone skinned this blazer off some long extinct disco-animal. It has an enigmatic white rectangle on the back and the right sleeve."
 	icon_state = "jamrock_blazer"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
 
 /obj/item/clothing/suit/kimjacket
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -94,6 +96,8 @@
 	desc = "A jacket once worn by the Air Force during the Antecentennial Revolution, there are quite a few pockets on the inside, mostly for storing notebooks and compasses."
 	icon_state = "aerostatic_bomber_jacket"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
 
 /obj/item/clothing/suit/blackfurrich
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
