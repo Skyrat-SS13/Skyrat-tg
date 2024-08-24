@@ -162,12 +162,12 @@
 	///Do we lose any recoil when it's not?
 	var/unfolded_recoil = 0
 	///Shuld this gun be one handed anyway?
-	var/one_handed_always = 0
+	var/one_handed_always = TRUE
 /obj/item/gun/ballistic/automatic/rom_flech/examine(mob/user)
 	. = ..()
 	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock.")
 
-/obj/item/gun/ballistic/automatic/rom_flech/click_alt(mob/user, ignore_user_loc_change)
+/obj/item/gun/ballistic/automatic/rom_flech/click_alt(mob/user)
 	if(!user.is_holding(src))
 		return
 	if(item_flags & IN_STORAGE)
@@ -193,10 +193,14 @@
 		spread = folded_spread
 		w_class = WEIGHT_CLASS_NORMAL
 		recoil = folded_recoil
+		weapon_weight = WEAPON_LIGHT
 	else
 		spread = unfolded_spread
 		w_class = WEIGHT_CLASS_BULKY
 		recoil = unfolded_recoil
+		weapon_weight = WEAPON_HEAVY
+		if(one_handed_always)
+			weapon_weight = WEAPON_LIGHT
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/rom_flech/update_overlays()
@@ -230,7 +234,6 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
 	inhand_icon_state = "infanterie_evil"
-	bolt_type = BOLT_TYPE_LOCKING
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_LIGHT
 	burst_size = 3
