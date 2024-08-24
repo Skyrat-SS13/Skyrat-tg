@@ -154,18 +154,20 @@
 	/// how long does it take to extend/collapse the stock
 	var/toggle_time = 1 SECONDS
 	/// what's our spread with our extended stock (mild varedit compatibility I Guess)?
-	var/unfolded_spread = 5
+	var/unfolded_spread = 2
 	/// what's our spread with a folded stock (see above comment)?
-	var/folded_spread = 20
+	var/folded_spread = 15
 	/// Do we have any recoil if it's folded?
-	var/folded_recoil = 5
+	var/folded_recoil = 3
 	///Do we lose any recoil when it's not?
 	var/unfolded_recoil = 0
+	///Shuld this gun be one handed anyway?
+	var/one_handed_always = 0
 /obj/item/gun/ballistic/automatic/rom_flech/examine(mob/user)
 	. = ..()
 	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock.")
 
-/obj/item/gun/ballistic/automatic/rom_flech/click_alt(mob/user)
+/obj/item/gun/ballistic/automatic/rom_flech/click_alt(mob/user, ignore_user_loc_change)
 	if(!user.is_holding(src))
 		return
 	if(item_flags & IN_STORAGE)
@@ -238,15 +240,16 @@
 	folded_spread = 7
 	folded_recoil = 2
 	unfolded_recoil = 0
+	one_handed_always = 1
 
 /obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg
+/obj/item/storage/toolbox/guncase/skyrat/pistol/blueshield_cmg
 	name = "CMG-2C Rifle Case"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
 
-/obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/blueshield_cmg/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
