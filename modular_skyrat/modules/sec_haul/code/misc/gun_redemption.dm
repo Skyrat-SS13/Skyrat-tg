@@ -45,7 +45,7 @@
 	var/static/list/selectable_gun_types = list(
 		"Energy Revolver" = /obj/item/gun/energy/e_gun/blueshield,
 		".457 Romulus Revolver" = /obj/item/storage/toolbox/guncase/skyrat/hos_revolver,
-		".460 Rowland Magnum Pistol" = /obj/item/storage/toolbox/guncase/skyrat/m45a5
+		".460 Rowland Magnum Pistol" = /obj/item/storage/toolbox/guncase/skyrat/pistol/m45a5
 	)
 
 	return selectable_gun_types

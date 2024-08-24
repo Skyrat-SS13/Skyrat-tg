@@ -21,7 +21,7 @@
 /datum/supply_pack/goody/m1911
 	name = "Authentic SR Sector M1911"
 	desc = "Old but gold, the classic pistol from the golden age of SR, whatever that place is. The M1911 chambered in .460 Ceres. It is sure to give anyone daring to fight you, a second thought. Note that this is a reproduction model by Romulus Federation and may be commonly found in the hand of a Kayit"
-	contains = list(/obj/item/storage/toolbox/guncase/skyrat/m1911_gold = 1,
+	contains = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/m1911_gold = 1,
 	)
 	cost = PAYCHECK_COMMAND * 25 //The pistol is more expensive than rifle because of portability. Not Lethality
 	access_view = ACCESS_WEAPONS
@@ -36,4 +36,17 @@
 /datum/supply_pack/goody/nt_shotgun
 	name = "NanoTrasen Woodstock Shotgun"
 	desc = "A classic Shotgun used by hunters, police and frontiersmen alike, now at an affordable price."
+	cost = PAYCHECK_COMMAND * 20
 	contains = list(/obj/item/gun/ballistic/shotgun/riot, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/hunter)
+
+/datum/supply_pack/goody/renoster_shotgun
+	name = "Renoster Single Pack Shotgun"
+	desc = "When you really need to send the message across. A shotgun favoured by modern Sol Police, now at an affordable price."
+	cost = PAYCHECK_COMMAND * 20
+	contains = list(/obj/item/gun/ballistic/shotgun/riot/sol, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/rubber)
+
+//OVerride the price
+/datum/supply_pack/goody/double_barrel
+	name = "Double-barreled Shotgun Single-Pack"
+	desc = "Lost your beloved bunny to a demonic invasion? Clown broke in and stole your beloved gun? No worries! Get a new gun as long as you can pay the absurd fees."
+	cost = PAYCHECK_COMMAND * 12
