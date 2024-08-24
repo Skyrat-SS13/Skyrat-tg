@@ -44,4 +44,4 @@
 	new /obj/item/mod/control/pre_equipped/blueshield(src)
 	new /obj/item/storage/box/glasseskit(src)
 	new /obj/item/storage/medkit/brute(src)
-	new /obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/pistol/blueshield_cmg(src)
