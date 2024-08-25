@@ -105,7 +105,7 @@
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(source = user,soundin = tmp_sound,vol = 50, vary = vary, ignore_walls = sound_wall_ignore) - SKYRAT EDIT - ORIGINAL
 		if(istype(src, /datum/emote/living/lewd))
-			play_lewd_sound(user, tmp_sound, sound_volume, vary, pref_to_check = /datum/preference/toggle/erp/sounds)
+			conditional_pref_sound(user, tmp_sound, sound_volume, vary, pref_to_check = /datum/preference/toggle/erp/sounds)
 		else
 			playsound(source = user, soundin = tmp_sound, vol = sound_volume, vary = vary, ignore_walls = sound_wall_ignore)
 		//SKYRAT EDIT CHANGE END

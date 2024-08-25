@@ -231,22 +231,22 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
 	damage = 15
-	stamina = 10
+	stamina = 33
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = 15
-	bare_wound_bonus = 15
+	wound_bonus = 40
+	bare_wound_bonus = 40
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
 	sharpness = NONE
 	range = 12
 	embed_type = /datum/embed_data/shotgun_buckshot/antitide
-	reflectable = FALSE
+	reflectable = NONE
 
 /datum/embed_data/shotgun_buckshot/antitide
 	embed_chance = 200
-	pain_chance = 90
+	pain_chance = 95
 	fall_chance = 10
 	jostle_chance = 10
 	ignore_throwspeed_threshold = TRUE
@@ -280,7 +280,6 @@
 		else
 			demolition_mod = 2
 			damage = 15
-	return ..()
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter slug shell"

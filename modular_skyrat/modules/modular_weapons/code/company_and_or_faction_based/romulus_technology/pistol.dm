@@ -86,7 +86,7 @@
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
 
-/obj/item/storage/toolbox/guncase/skyrat/m1911_gold
+/obj/item/storage/toolbox/guncase/skyrat/pistol/m1911_gold
 	name = "golden m1911 .460 ceres"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/m1911/gold
 	extra_to_spawn = /obj/item/ammo_box/magazine/m45

@@ -203,7 +203,7 @@
 	if(prob(50))
 		attacked.try_lewd_autoemote(pick("twitch_s" , "gasp", "shiver"))
 	user.visible_message(span_purple("[user] [message]!"))
-	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
+	conditional_pref_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 
 #undef CANDLE_LUMINOSITY

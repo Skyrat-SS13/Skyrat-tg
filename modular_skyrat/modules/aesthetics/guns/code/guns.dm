@@ -77,7 +77,7 @@
 
 /obj/item/gun/ballistic/shotgun/riot
 	name = "woodstock shotgun"
-	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control. Often found in the hand of a lavaland hunter"
+	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control. Often found in the hand of a lavaland hunter. Vaguely reminds you of hunting back in Sol does it not?"
 	fire_delay = 6 //We slighly bump this up because thats a good idea
 	sawn_desc = "Come with me if you want to live."
 
