@@ -98,3 +98,17 @@
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
 	ammo_band_color = "#c41d1a"
+
+/obj/item/ammo_box/c10mm/speedloader/ap
+
+	name = "speed loader (10mm Auto Armor Penetrating)"
+	desc = "Designed to quickly reload revolvers."
+	ammo_type = /obj/item/ammo_casing/c10mm/ap
+	ammo_band_color = "#1ac43f"
+
+/obj/item/ammo_box/c10mm/speedloader/hp
+
+	name = "speed loader (10mm Auto Hollow Point)"
+	desc = "Designed to quickly reload revolvers."
+	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	ammo_band_color = "#df00ae"
