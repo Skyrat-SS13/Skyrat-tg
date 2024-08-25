@@ -61,24 +61,23 @@
 
 //Magistrate Pistol
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_dignitary
-	name = "9x25mm Mk12 SOCOM Pistol"
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/firefly
+	name = "MX-7C Stun Pistol"
 
-	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/nt_dignitary/empty
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/firefly/empty
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/nt_dignitary/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/firefly/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/m9mm/ihdf = 2,
-		/obj/item/ammo_box/magazine/m9mm/rubber = 3,
+		/obj/item/ammo_box/magazine/firefly = 3,
 	), src)
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock
-	name = "\improper GP-9"
-	desc = "General Purpose Pistol Number 9. A classic 9x25mm handgun with a small magazine capacity."
+/obj/item/gun/ballistic/automatic/pistol/firefly
+	name = "\improper MX-7C 'Firefly'"
+	desc = "NanoTrasen Experimental Model 7 Compact, A rare pistol chambered in a .117 electrode cartridge. It has has a small magazine capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
-	icon_state = "black"
+	icon_state = "firefly"
 	w_class = WEIGHT_CLASS_NORMAL
 	spread = 10
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
@@ -86,16 +85,15 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin
-	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/rubber
+	spawn_magazine_type = /obj/item/ammo_box/magazine/firefly
+	accepted_magazine_type = /obj/item/ammo_box/magazine/firefly
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
+/obj/item/gun/ballistic/automatic/pistol/firefly/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
+/obj/item/gun/ballistic/automatic/pistol/firefly/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
-	spawnwithmagazine = FALSE
 
 // Revolver
 
