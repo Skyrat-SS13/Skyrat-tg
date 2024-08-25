@@ -37,3 +37,15 @@
 	name = "NanoTrasen Woodstock Shotgun"
 	desc = "A classic Shotgun used by hunters, police and frontiersmen alike, now at an affordable price."
 	contains = list(/obj/item/gun/ballistic/shotgun/riot, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/hunter)
+	cost = PAYCHECK_COMMAND * 20
+
+/datum/supply_pack/goody/rensoter_shotgun
+	name = "Renoster Shotgun Single-Pack"
+	desc = "A common modern shotgun used by Solarian State Police."
+	contains = list(/obj/item/gun/ballistic/shotgun/riot/sol, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge)
+	cost = PAYCHECK_COMMAND * 22
+
+/datum/supply_pack/goody/double_barrel
+	name = "Double-barreled Shotgun Single-Pack"
+	desc = "Lost your beloved bunny to a demonic invasion? Clown broke in and stole your beloved gun? No worries! Get a new gun as long as you can pay the absurd fees."
+	cost = PAYCHECK_COMMAND * 15 //This is outclassed by peacekeeper combat shotgun
