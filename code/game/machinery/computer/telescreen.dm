@@ -40,15 +40,12 @@
 	circuit = null
 	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND | INTERACT_MACHINE_REQUIRES_SIGHT
 	frame_type = /obj/item/wallframe/telescreen/entertainment
-<<<<<<< HEAD
 	var/icon_state_off = "entertainment_blank"
 	var/icon_state_on = "entertainment"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertainment, 32)
-=======
 	/// Virtual radio inside of the entertainment monitor to broadcast audio
 	var/obj/item/radio/entertainment/speakers/speakers
->>>>>>> 531486b99595 (Curator LIVE Journalism (#86046))
 
 /obj/item/wallframe/telescreen/entertainment
 	name = "entertainment telescreen frame"
@@ -59,9 +56,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 /obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CLICK, PROC_REF(BigClick))
-<<<<<<< HEAD
 	find_and_hang_on_wall()
-=======
 	update_appearance()
 	speakers = new(src)
 
@@ -72,7 +67,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 /obj/machinery/computer/security/telescreen/on_set_machine_stat(old_value)
 	. = ..()
 	update_appearance()
->>>>>>> 531486b99595 (Curator LIVE Journalism (#86046))
 
 /// Bypass clickchain to allow humans to use the telescreen from a distance
 /obj/machinery/computer/security/telescreen/entertainment/proc/BigClick()
