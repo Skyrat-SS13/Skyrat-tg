@@ -400,8 +400,6 @@
 			num_to_load = 1
 		for(var/i in 1 to num_to_load)
 			preload += type_to_load
-<<<<<<< HEAD
-=======
 	//Load in belt gear and shit
 	for(var/type_to_load in belt_contents)
 		var/num_to_load = belt_contents[type_to_load]
@@ -409,7 +407,6 @@
 			num_to_load = 1
 		for(var/i in 1 to num_to_load)
 			preload += type_to_load
->>>>>>> 33aed2aa5087 (Belt contents copypasta fix (#85989))
 	preload += belt
 	preload += ears
 	preload += glasses
