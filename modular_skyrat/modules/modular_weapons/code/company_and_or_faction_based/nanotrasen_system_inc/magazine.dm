@@ -80,7 +80,7 @@
 	icon_state = "38"
 	multiple_sprites = AMMO_BOX_PER_BULLET
 	ammo_band_icon = "+38_ammo_band"
-
+	multitype = FALSE
 	custom_premium_price = 50
 
 	w_class = WEIGHT_CLASS_SMALL
@@ -98,3 +98,27 @@
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
 	ammo_band_color = "#c41d1a"
+
+/obj/item/ammo_box/c10mm/speedloader/ap
+
+	name = "speed loader (10mm Auto Armor Penetrating)"
+	desc = "Designed to quickly reload revolvers."
+	ammo_type = /obj/item/ammo_casing/c10mm/ap
+	ammo_band_color = "#1ac43f"
+
+/obj/item/ammo_box/c10mm/speedloader/hp
+
+	name = "speed loader (10mm Auto Hollow Point)"
+	desc = "Designed to quickly reload revolvers."
+	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	ammo_band_color = "#df00ae"
+
+/obj/item/ammo_box/magazine/firefly
+	name = "pistol magazine (.117 Incapacitator)"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/ammo.dmi'
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	icon_state = "firefly"
+	multitype = FALSE
+	ammo_type = /obj/item/ammo_casing/shotgun/antitide
+	max_ammo = 10
+	caliber = CALIBER_SHOTGUN

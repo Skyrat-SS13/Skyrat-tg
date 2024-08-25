@@ -39,14 +39,13 @@
 	cost = PAYCHECK_COMMAND * 20
 	contains = list(/obj/item/gun/ballistic/shotgun/riot, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/hunter)
 
-/datum/supply_pack/goody/renoster_shotgun
-	name = "Renoster Single Pack Shotgun"
-	desc = "When you really need to send the message across. A shotgun favoured by modern Sol Police, now at an affordable price."
-	cost = PAYCHECK_COMMAND * 20
+/datum/supply_pack/goody/rensoter_shotgun
+	name = "Renoster Shotgun Single-Pack"
+	desc = "A common modern shotgun used by Solarian State Police."
 	contains = list(/obj/item/gun/ballistic/shotgun/riot/sol, /obj/item/storage/pouch/ammo, /obj/item/storage/belt/bandolier, /obj/item/ammo_box/advanced/s12gauge/rubber)
+	cost = PAYCHECK_COMMAND * 22
 
-//OVerride the price
 /datum/supply_pack/goody/double_barrel
 	name = "Double-barreled Shotgun Single-Pack"
 	desc = "Lost your beloved bunny to a demonic invasion? Clown broke in and stole your beloved gun? No worries! Get a new gun as long as you can pay the absurd fees."
-	cost = PAYCHECK_COMMAND * 12
+	cost = PAYCHECK_COMMAND * 14 //This is outclassed by peacekeeper combat shotgun
