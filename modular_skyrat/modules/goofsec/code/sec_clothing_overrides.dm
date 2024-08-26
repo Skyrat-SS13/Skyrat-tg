@@ -218,6 +218,7 @@
 	icon_state = "helmetalt_blue"
 	base_icon_state = "helmetalt_blue"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	var/flipped_visor = FALSE
 
 /obj/item/clothing/head/helmet/alt/click_alt(mob/user)
 	flipped_visor = !flipped_visor
