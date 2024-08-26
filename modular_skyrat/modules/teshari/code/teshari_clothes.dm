@@ -17,6 +17,10 @@
 /obj/item/clothing/neck/cloak
 	species_clothing_color_coords = list(list(CLOAK_COLORPIXEL_X_1, CLOAK_COLORPIXEL_Y_1), list(CLOAK_COLORPIXEL_X_2, CLOAK_COLORPIXEL_Y_2))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/cloak
+	
+/obj/item/clothing/neck/mantle
+	species_clothing_color_coords = list(list(MANTLE_COLORPIXEL_X_1, MANTLE_COLORPIXEL_Y_1), list(MANTLE_COLORPIXEL_X_2, MANTLE_COLORPIXEL_Y_2))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/mantle
 
 /obj/item/clothing/neck/tie
 	species_clothing_color_coords = list(list(TIE_COLORPIXEL_X_1, TIE_COLORPIXEL_Y_1))
@@ -38,8 +42,8 @@
 	species_clothing_color_coords = list(list(LONGCOAT_COLORPIXEL_X_1, LONGCOAT_COLORPIXEL_Y_1), list(THICKROBE_COLORPIXEL_X_2, THICKROBE_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(LONGCOAT_COLORPIXEL_X_4, LONGCOAT_COLORPIXEL_Y_4))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/longcoat
 
-/obj/item/clothing/suit/jacket/leather
-	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(THICKROBE_COLORPIXEL_X_2, THICKROBE_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+/obj/item/clothing/suit/jacket
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
 
 /obj/item/clothing/suit/armor
@@ -173,3 +177,12 @@
 /obj/item/clothing/suit/toggle/suspenders
 	greyscale_config_worn_teshari = /datum/greyscale_config/suspenders/worn/teshari
 
+// Unique clothing here
+
+/obj/item/clothing/suit/kimjacket
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
+	
+/obj/item/clothing/suit/discoblazer
+	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket

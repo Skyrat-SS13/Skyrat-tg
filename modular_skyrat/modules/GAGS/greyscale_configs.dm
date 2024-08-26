@@ -528,7 +528,7 @@
 /datum/greyscale_config/scarf/worn/teshari
 	name = "Scarf (Worn, Teshari)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
-	
+
 
 /*
 *	SUITS
@@ -1407,15 +1407,15 @@ digi
 /datum/greyscale_config/teshari/thickrobe
 	name = "Teshari Thick Robe"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/thickrobe.json'
-	
+
 /datum/greyscale_config/teshari/thickrobe/wiz
 	name = "Teshari Wizard Robe"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/wizrobe.json'
-	
+
 /datum/greyscale_config/teshari/thickrobe/jacket
 	name = "Teshari Jacket"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/jacket.json'
-	
+
 /datum/greyscale_config/teshari/thickrobe/longcoat
 	name = "Teshari Longcoat"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/longcoat.json'
@@ -1435,6 +1435,10 @@ digi
 /datum/greyscale_config/teshari/cloak
 	name = "Teshari Cloak"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/cloak.json'
+
+/datum/greyscale_config/teshari/mantle
+	name = "Teshari Mantle"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/mantle.json'
 
 /datum/greyscale_config/teshari/tie
 	name = "Teshari Tie"
