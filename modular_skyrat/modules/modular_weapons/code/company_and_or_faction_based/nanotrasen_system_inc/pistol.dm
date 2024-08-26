@@ -27,6 +27,8 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin
 	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/rubber
+	suppressor_x_offset = -2
+	suppressor_y_offset = -1
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
@@ -87,6 +89,7 @@
 	pin = /obj/item/firing_pin
 	spawn_magazine_type = /obj/item/ammo_box/magazine/firefly
 	accepted_magazine_type = /obj/item/ammo_box/magazine/firefly
+	can_suppress = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
