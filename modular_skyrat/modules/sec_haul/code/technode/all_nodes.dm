@@ -68,18 +68,21 @@
 	design_ids += "m9mm_mag_ihdf"
 	design_ids += "ca_flechballpoint"
 	design_ids += "m9mm_mag"
+	design_ids += "c10mm_rincin"
+	design_ids += "s12g_antitide"
 	. = ..()
 
 /datum/techweb_node/exotic_ammo/New()
 	design_ids += "s12g_incinslug"
 	design_ids += "ca_flechripper"
 	design_ids += "sol_bolt_to_rifle"
+	design_ids += "c10mm_rhp"
+	design_ids += "c10mm_rap"
 	. = ..()
 
 /datum/techweb_node/syndicate_basic/New()
 	design_ids += "s12g_magnum"
 	design_ids += "s12g_express"
-	design_ids += "s12g_antitide"
 	design_ids += "s12g_ion"
 	. = ..()
 

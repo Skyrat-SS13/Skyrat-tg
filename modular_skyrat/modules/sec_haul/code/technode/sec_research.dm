@@ -433,6 +433,42 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/c10mm_rincin
+	name = "10mm Auto Speedloader Fireshot (Lethal)"
+	desc = "A speedloader in 10mm Auto."
+	id = "c10mm_rincin"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/c10mm/speedloader/fire
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/c10mm_rhp
+	name = "10mm Auto Speedloader Hollow Point (Very Lethal)"
+	desc = "A speedloader in 10mm Auto."
+	id = "c10mm_rhp"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/c10mm/speedloader/hp
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/c10mm_rap
+	name = "10mm Auto Speedloader Armor Piercing (Very Lethal)"
+	desc = "A speedloader in 10mm Auto."
+	id = "c10mm_rap"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 15)
+	build_path = /obj/item/ammo_box/c10mm/speedloader/ap
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 //IDMA Gun Stuff
 /datum/design/caflechette
 	name = "Flechette Rifle Magazine (lethal)"

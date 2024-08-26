@@ -143,7 +143,8 @@
 	burst_size = 2
 	fire_delay = 2
 	spread = 5
-	pin = /obj/item/firing_pin/alert_level
+//	pin = /obj/item/firing_pin/alert_level this does work but it's a conceptual failure
+	pin = /obj/item/firing_pin
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/smg_light.ogg'
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/caflechette
@@ -239,7 +240,7 @@
 	weapon_weight = WEAPON_LIGHT
 	burst_size = 3
 	spread = 0
-	pin = /obj/item/firing_pin
+
 	unfolded_spread = 0
 	folded_spread = 7
 	folded_recoil = 2
