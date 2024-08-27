@@ -11,8 +11,7 @@
 	pass_flags = PASSTABLE
 	interaction_flags_click = ALLOW_SILICON_REACH
 	/// List of dishes the drive can hold
-	var/list/collectable_items = list(/obj/item/trash/waffles, // SKYRAT EDIT CHANGE - non-static list
-		/obj/item/trash/waffles,
+	var/static/list/collectable_items = list(
 		/obj/item/broken_bottle,
 		/obj/item/kitchen/fork,
 		/obj/item/plate,
@@ -23,8 +22,7 @@
 		/obj/item/trash/tray,
 	)
 	/// List of items the drive detects as trash
-	var/static/list/disposable_items = list(/obj/item/trash/waffles,
-		/obj/item/trash/waffles,
+	var/static/list/disposable_items = list(
 		/obj/item/broken_bottle,
 		/obj/item/plate_shard,
 		/obj/item/shard,
