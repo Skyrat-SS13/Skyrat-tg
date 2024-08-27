@@ -5,7 +5,7 @@
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	source = parent
-	parent.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
+	parent.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING, TRAIT_HANDS_BLOCKED), type)
 	parent.add_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
 	passtable_on(parent, type)
 	source.layer = PROJECTILE_HIT_THRESHHOLD_LAYER
@@ -36,7 +36,7 @@
 /datum/component/prone_mob/proc/stop_army_crawl(mob/living/source)
 	SIGNAL_HANDLER
 	source = parent
-	parent.remove_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING), type)
+	parent.remove_traits(list(TRAIT_PRONE, TRAIT_FLOORED, TRAIT_NO_THROWING, TRAIT_HANDS_BLOCKED), type)
 	passtable_off(parent, type)
 	source.layer = MOB_LAYER
 	qdel(src)
