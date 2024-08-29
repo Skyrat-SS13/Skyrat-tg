@@ -220,9 +220,15 @@ SKYRAT EDIT REMOVAL END */
 
 /turf/closed/indestructible/opsglass
 	name = "window"
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/plastitanium_window.dmi'
 	icon_state = "plastitanium_window-0"
 	base_icon_state = "plastitanium_window"
+=======
+	icon = MAP_SWITCH('icons/obj/structures/smooth/windows/plastitanium_window.dmi', 'icons/obj/structures_spawners.dmi')
+	icon_state = MAP_SWITCH("0-lower", "plastitaniumwindow_spawner")
+	layer = ABOVE_OBJ_LAYER
+>>>>>>> 486fd701b3e (Indestructible windows now use proper sprites in mapping editors (#85983))
 	opacity = FALSE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS + SMOOTH_GROUP_WINDOW_FULLTILE_PLASTITANIUM
