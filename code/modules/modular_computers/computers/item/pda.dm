@@ -38,10 +38,14 @@
 		/datum/computer_file/program/messenger,
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START
 		/datum/computer_file/program/crew_manifest, // Adds crew manifest to all base tablets
 		/datum/computer_file/program/maintenance/camera // Adds camera to all base tablets
 		// SKRAT EDIT ADDITION END
+=======
+		/datum/computer_file/program/crew_manifest,
+>>>>>>> 73f304ae21b0 (Plexagon Crew Manifest is accessible and free to everyone. (#86070))
 	)
 	///List of items that can be stored in a PDA
 	var/static/list/contained_item = list(
