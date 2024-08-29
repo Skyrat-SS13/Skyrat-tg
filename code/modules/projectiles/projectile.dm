@@ -308,7 +308,7 @@
 	playsound(src, get_sfx_skyrat(impact_sound), vol_by_damage(), TRUE, -1)
 	// SKYRAT EDIT ADDITION END
 
-	if(isturf(target_turf) && hitsound_wall)
+	if(isturf(target) && hitsound_wall)
 		var/volume = clamp(vol_by_damage() + 20, 0, 100)
 		if(suppressed)
 			volume = 5
@@ -1064,7 +1064,13 @@
 	var/list/screen_loc_Y = splittext(screen_loc_params[2],":")
 
 	var/tx = (text2num(screen_loc_X[1]) - 1) * world.icon_size + text2num(screen_loc_X[2])
+<<<<<<< HEAD
 	var/ty = (text2num(screen_loc_Y[1]) - 1) * world.icon_size + text2num(screen_loc_Y[2])
+=======
+	// We are here trying to lower our target location by the firing source's visual offset
+	// So visually things make a nice straight line while properly accounting for actual physical position
+	var/ty = (text2num(screen_loc_Y[1]) - 1) * world.icon_size + text2num(screen_loc_Y[2]) - source.pixel_z
+>>>>>>> 88bc037b7b3f (Projectiles no longer always play turf hit sound (#86095))
 
 	//Calculate the "resolution" of screen based on client's view and world's icon size. This will work if the user can view more tiles than average.
 	var/list/screenview = view_to_pixels(user.client.view)
