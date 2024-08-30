@@ -154,10 +154,6 @@
 		dancer = null
 
 /obj/structure/stripper_pole/click_ctrl_shift(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
 	add_fingerprint(user)
 	balloon_alert(user, "disassembling...")
 	if(!do_after(user, 8 SECONDS, src))
@@ -167,7 +163,6 @@
 	balloon_alert(user, "disassembled")
 	new /obj/item/construction_kit/pole(get_turf(user))
 	qdel(src)
-	return TRUE
 
 /obj/structure/stripper_pole/examine(mob/user)
 	. = ..()
