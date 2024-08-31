@@ -2271,7 +2271,6 @@
 	c_tag = "Cargo Bay - Starboard";
 	name = "cargo camera"
 	},
-/obj/machinery/light/directional/east,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "axk" = (
@@ -4830,11 +4829,11 @@
 /turf/open/floor/wood,
 /area/station/security/courtroom)
 "aYi" = (
-/obj/machinery/door/airlock/external{
+/obj/machinery/door/airlock/external/glass{
 	name = "Supply Dock Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
-/turf/open/floor/iron,
+/turf/open/floor/iron/smooth,
 /area/station/cargo/storage)
 "aYj" = (
 /obj/structure/cable,
@@ -23568,11 +23567,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "cargoload"
-	},
-/turf/open/floor/plating,
+/turf/open/floor/iron/smooth,
 /area/station/cargo/storage)
 "eyt" = (
 /obj/machinery/light/small/directional/south,
@@ -38938,7 +38933,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/smooth_large,
 /area/station/cargo/storage)
 "hvV" = (
 /obj/structure/table/reinforced,
@@ -59140,7 +59135,8 @@
 /turf/open/floor/carpet/royalblack,
 /area/station/command/heads_quarters/qm)
 "lov" = (
-/obj/machinery/conveyor{
+/obj/machinery/conveyor/inverted{
+	dir = 5;
 	id = "cargoload"
 	},
 /obj/machinery/airalarm/directional/north,
@@ -86065,8 +86061,8 @@
 /turf/open/floor/glass/reinforced,
 /area/station/security/prison/safe)
 "qvW" = (
-/obj/machinery/conveyor/inverted{
-	dir = 6;
+/obj/machinery/conveyor{
+	dir = 8;
 	id = "cargoload"
 	},
 /turf/open/floor/plating,
@@ -101984,6 +101980,7 @@
 	id = "cargounload"
 	},
 /obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/light/directional/east,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "txP" = (
@@ -168523,11 +168520,11 @@ eym
 kGC
 gaG
 aYi
-kGC
+ilS
 aYi
 bka
 kGC
-kGC
+pWU
 sej
 kGC
 ilS
@@ -168780,7 +168777,7 @@ kGC
 kGC
 mAN
 hvU
-pWU
+kGC
 hvU
 sEm
 kGC
@@ -169037,7 +169034,7 @@ eeU
 kGC
 gaG
 aYi
-kGC
+pWU
 aYi
 bka
 kGC
