@@ -99,14 +99,28 @@
 	else
 		return root
 
+<<<<<<< HEAD
 /datum/lua_editor/ui_act(action, list/params)
+=======
+/datum/lua_editor/proc/run_code(code)
+	var/ckey = usr.ckey
+	current_state.ckey_last_runner = ckey
+	var/result = current_state.load_script(code)
+	var/index_with_result = current_state.log_result(result)
+	if(result["status"] == "error")
+		last_error = result["message"]
+	message_admins("[key_name(usr)] executed [length(code)] bytes of lua code. [ADMIN_LUAVIEW_CHUNK(current_state, index_with_result)]")
+
+/datum/lua_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 1880003270d1 (Reworks silicon/ai access checking & fixes some ui_act's (#84964))
 	. = ..()
 	if(.)
 		return
-	if(!check_rights_for(usr.client, R_DEBUG))
+	var/mob/user = ui.user
+	if(!check_rights_for(user.client, R_DEBUG))
 		return
 	if(action == "runCodeFile")
-		params["code"] = file2text(input(usr, "Input File") as null|file)
+		params["code"] = file2text(input(user, "Input File") as null|file)
 		if(isnull(params["code"]))
 			return
 		action = "runCode"
@@ -130,11 +144,22 @@
 			page = 0
 			return TRUE
 		if("runCode")
+<<<<<<< HEAD
 			var/code = params["code"]
 			current_state.ckey_last_runner = usr.ckey
 			var/result = current_state.load_script(code)
 			var/index_with_result = current_state.log_result(result)
 			message_admins("[key_name(usr)] executed [length(code)] bytes of lua code. [ADMIN_LUAVIEW_CHUNK(current_state, index_with_result)]")
+=======
+			run_code(params["code"])
+			return TRUE
+		if("runFile")
+			var/code_file = input(user, "Select a script to run.", "Lua") as file|null
+			if(!code_file)
+				return TRUE
+			var/code = file2text(code_file)
+			run_code(code)
+>>>>>>> 1880003270d1 (Reworks silicon/ai access checking & fixes some ui_act's (#84964))
 			return TRUE
 		if("moveArgUp")
 			var/list/path = params["path"]
@@ -158,9 +183,9 @@
 			var/list/path = params["path"]
 			var/list/target_list = traverse_list(path, arguments)
 			if(target_list != arguments)
-				usr?.client?.mod_list_add(target_list, null, "a lua editor", "arguments")
+				user?.client?.mod_list_add(target_list, null, "a lua editor", "arguments")
 			else
-				var/list/vv_val = usr?.client?.vv_get_value(restricted_classes = list(VV_RESTORE_DEFAULT))
+				var/list/vv_val = user?.client?.vv_get_value(restricted_classes = list(VV_RESTORE_DEFAULT))
 				var/class = vv_val["class"]
 				if(!class)
 					return
@@ -175,18 +200,31 @@
 				var/list/element = current_list[index]
 				var/key = element["key"]
 				var/value = element["value"]
+<<<<<<< HEAD
 				if(!(istext(key) || isnum(key)))
 					to_chat(usr, span_warning("invalid key \[[key]] for function call (expected text or num)"))
+=======
+				var/list/variant_pair = current_variants[index]
+				var/key_variant = variant_pair["key"]
+				if(key_variant == "function" || key_variant == "thread" || key_variant == "userdata" || key_variant == "error_as_value")
+					to_chat(user, span_warning("invalid table key \[[key]] for function call (expected text, num, path, list, or ref, got [key_variant])"))
+>>>>>>> 1880003270d1 (Reworks silicon/ai access checking & fixes some ui_act's (#84964))
 					return
 				function += key
 				if(islist(value))
 					current_list = value
 				else
+<<<<<<< HEAD
 					var/regex/function_regex = regex("^function: 0x\[0-9a-fA-F]+$")
 					if(function_regex.Find(value))
 						break
 					to_chat(usr, span_warning("invalid path element \[[value]] for function call (expected list or text matching [function_regex])"))
 					return
+=======
+					if(variant_pair["value"] != "function")
+						to_chat(user, span_warning("invalid value \[[value]] for function call (expected list or function)"))
+						return
+>>>>>>> 1880003270d1 (Reworks silicon/ai access checking & fixes some ui_act's (#84964))
 			var/result = current_state.call_function(arglist(list(function) + arguments))
 			current_state.log_result(result)
 			arguments.Cut()
@@ -207,14 +245,14 @@
 			if(isweakref(thing_to_debug))
 				var/datum/weakref/ref = thing_to_debug
 				thing_to_debug = ref.resolve()
-			INVOKE_ASYNC(usr.client, TYPE_PROC_REF(/client, debug_variables), thing_to_debug)
+			INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, debug_variables), thing_to_debug)
 			return FALSE
 		if("vvGlobal")
 			var/thing_to_debug = traverse_list(params["indices"], current_state.globals)
 			if(isweakref(thing_to_debug))
 				var/datum/weakref/ref = thing_to_debug
 				thing_to_debug = ref.resolve()
-			INVOKE_ASYNC(usr.client, TYPE_PROC_REF(/client, debug_variables), thing_to_debug)
+			INVOKE_ASYNC(user.client, TYPE_PROC_REF(/client, debug_variables), thing_to_debug)
 			return FALSE
 		if("clearArgs")
 			arguments.Cut()

@@ -219,7 +219,7 @@
 		data["answers"] += list(answer_data)
 	return data
 
-/obj/item/toy/eightball/haunted/ui_act(action, params)
+/obj/item/toy/eightball/haunted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
