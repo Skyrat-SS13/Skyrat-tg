@@ -11,9 +11,12 @@
 /obj/effect/landmark/deathmatch_player_spawn
 	name = "Deathmatch Player Spawner"
 
+<<<<<<< HEAD
 /area/deathmatch/teleport //Prevent access to cross-z teleportation in the map itself (no wands of safety/teleportation scrolls). Cordons should prevent same-z teleportations outside of the arena.
 	area_flags = /area/deathmatch::area_flags & ~NOTELEPORT
 
+=======
+>>>>>>> e9ec03c72f89 (Deletes teleport subtype of deathmatch area, removes consoles and gascanisters from species deathmatch. Changes some loadouts. (#86008))
 // for the illusion of a moving train
 /turf/open/chasm/true/no_smooth/fake_motion_sand
 	name = "air"
