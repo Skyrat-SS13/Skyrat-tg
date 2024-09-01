@@ -17,7 +17,7 @@
 /obj/item/clothing/neck/cloak
 	species_clothing_color_coords = list(list(CLOAK_COLORPIXEL_X_1, CLOAK_COLORPIXEL_Y_1), list(CLOAK_COLORPIXEL_X_2, CLOAK_COLORPIXEL_Y_2))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/cloak
-	
+
 /obj/item/clothing/neck/mantle
 	species_clothing_color_coords = list(list(MANTLE_COLORPIXEL_X_1, MANTLE_COLORPIXEL_Y_1), list(MANTLE_COLORPIXEL_X_2, MANTLE_COLORPIXEL_Y_2))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/mantle
@@ -33,11 +33,11 @@
 /obj/item/clothing/suit
 	species_clothing_color_coords = list(list(COAT_COLORPIXEL_X_1, COAT_COLORPIXEL_Y_1))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/coat
-	
+
 /obj/item/clothing/suit/wizrobe
 	species_clothing_color_coords = list(list(THICKROBE_COLORPIXEL_X_1, THICKROBE_COLORPIXEL_Y_1), list(THICKROBE_COLORPIXEL_X_2, THICKROBE_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(THICKROBE_COLORPIXEL_X_4, THICKROBE_COLORPIXEL_Y_4), list(THICKROBE_COLORPIXEL_X_5, THICKROBE_COLORPIXEL_Y_5), list(THICKROBE_COLORPIXEL_X_6, THICKROBE_COLORPIXEL_Y_6))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/wiz
-	
+
 /obj/item/clothing/suit/jacket/trenchcoat
 	species_clothing_color_coords = list(list(LONGCOAT_COLORPIXEL_X_1, LONGCOAT_COLORPIXEL_Y_1), list(THICKROBE_COLORPIXEL_X_2, THICKROBE_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(LONGCOAT_COLORPIXEL_X_4, LONGCOAT_COLORPIXEL_Y_4))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/longcoat
@@ -170,7 +170,7 @@
 
 /obj/item/clothing/under/dress/sundress
 	greyscale_config_worn_teshari = /datum/greyscale_config/sundress/worn/teshari
-	
+
 /obj/item/clothing/neck/scarf
 	greyscale_config_worn_teshari = /datum/greyscale_config/scarf/worn/teshari
 
@@ -182,7 +182,23 @@
 /obj/item/clothing/suit/kimjacket
 	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
-	
+
 /obj/item/clothing/suit/discoblazer
 	species_clothing_color_coords = list(list(JACKET_COLORPIXEL_X_1, JACKET_COLORPIXEL_Y_1), list(JACKET_COLORPIXEL_X_2, JACKET_COLORPIXEL_Y_2), list(THICKROBE_COLORPIXEL_X_3, THICKROBE_COLORPIXEL_Y_3), list(JACKET_COLORPIXEL_X_4, JACKET_COLORPIXEL_Y_4))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/thickrobe/jacket
+
+// Wintercoats and Satchels
+
+/obj/item/storage/backpack/satchel
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi'
+
+/obj/item/storage/backpack/duffelbag
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi'
+
+/obj/item/clothing/suit/hooded/wintercoat/equipped(mob/living/user, slot)
+	var/mob/living/carbon/human/teshari = user
+	if(teshari.dna.species.name == "Teshari")
+		var/datum/component/toggle_attached_clothing/component = GetComponent(/datum/component/toggle_attached_clothing)
+		component.undeployed_overlay = null
+	. = ..()
+
