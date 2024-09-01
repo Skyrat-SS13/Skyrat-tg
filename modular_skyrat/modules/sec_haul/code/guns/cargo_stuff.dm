@@ -128,7 +128,7 @@
 	name = "Romulus Ceremonial Bolt Action Rifle Crate"
 	desc = "Contains Three Ceremonial Bolt Action Rifle in .40 , as well as ammo for it."
 	cost = CARGO_CRATE_VALUE * 12
-	contains = list(/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle = 1,
+	contains = list(/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle = 3,
 	)
 	crate_name = "Romulus Ceremonial Rifle Crate"
 
