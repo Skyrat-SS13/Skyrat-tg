@@ -1,15 +1,30 @@
 /datum/fish_source/ocean
 	fish_table = list(
+<<<<<<< HEAD
 		FISHING_DUD = 15,
 		/obj/item/coin/gold = 5,
+=======
+		FISHING_DUD = 11,
+		/obj/effect/spawner/message_in_a_bottle = 4,
+		/obj/item/coin/gold = 7,
+>>>>>>> 73081bcff0e3 (Add messages (paper, photos, cash) in bottles. (#85703))
 		/obj/item/fish/clownfish = 15,
 		/obj/item/fish/pufferfish = 15,
 		/obj/item/fish/cardinal = 15,
 		/obj/item/fish/greenchromis = 15,
+<<<<<<< HEAD
 		/obj/item/fish/lanternfish = 5,
 		/obj/item/fish/zipzap = 5,
 		/obj/item/fish/clownfish/lube = 3,
 		/obj/structure/mystery_box/fishing = 1,
+=======
+		/obj/item/fish/stingray = 10,
+		/obj/item/fish/lanternfish = 7,
+		/obj/item/fish/zipzap = 7,
+		/obj/item/fish/clownfish/lube = 5,
+		/obj/item/fish/swordfish = 5,
+		/obj/structure/mystery_box/fishing = 2,
+>>>>>>> 73081bcff0e3 (Add messages (paper, photos, cash) in bottles. (#85703))
 	)
 	fish_counts = list(
 		/obj/item/fish/clownfish/lube = 2,
@@ -38,7 +53,8 @@
 
 /datum/fish_source/portal/beach
 	fish_table = list(
-		FISHING_DUD = 10,
+		FISHING_DUD = 7,
+		/obj/effect/spawner/message_in_a_bottle = 3,
 		/obj/item/fish/clownfish = 10,
 		/obj/item/fish/pufferfish = 10,
 		/obj/item/fish/cardinal = 10,
@@ -48,6 +64,12 @@
 	radial_name = "Beach"
 	radial_state = "palm_beach"
 	overlay_state = "portal_beach"
+
+/datum/fish_source/portal/beach/on_fishing_spot_init(datum/component/fishing_spot/spot)
+	ADD_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
+
+/datum/fish_source/portal/beach/on_fishing_spot_del(datum/component/fishing_spot/spot)
+	REMOVE_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
 
 /datum/fish_source/portal/chasm
 	background = "background_lavaland"
@@ -65,7 +87,8 @@
 
 /datum/fish_source/portal/ocean
 	fish_table = list(
-		FISHING_DUD = 5,
+		FISHING_DUD = 3,
+		/obj/effect/spawner/message_in_a_bottle = 2,
 		/obj/item/fish/lanternfish = 5,
 		/obj/item/fish/firefish = 5,
 		/obj/item/fish/dwarf_moonfish = 5,
@@ -79,6 +102,12 @@
 	radial_name = "Ocean"
 	overlay_state = "portal_ocean"
 	radial_state = "seaboat"
+
+/datum/fish_source/portal/ocean/on_fishing_spot_init(datum/component/fishing_spot/spot)
+	ADD_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
+
+/datum/fish_source/portal/ocean/on_fishing_spot_del(datum/component/fishing_spot/spot)
+	REMOVE_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
 
 /datum/fish_source/portal/hyperspace
 	fish_table = list(
