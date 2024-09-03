@@ -91,8 +91,8 @@
 	desc = "A 12 gauge buckshot shell."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot
-	pellets = 8 // 8 * 6 for 48 damage if every pellet hits, we want to keep lethal shells ~50 damage
-	variance = 25
+	pellets = 10 // 10 * 6 for 60 damage if every pellet hits, we want to keep lethal shells 60 damage
+	variance = 12
 
 /obj/projectile/bullet/pellet/shotgun_buckshot
 	name = "buckshot pellet"
@@ -104,13 +104,13 @@
 	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
 	icon_state = "rshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
-	pellets = 6 // 6 * 10 for 60 stamina damage, + some small amount of brute, we want to keep less lethal shells ~60
-	variance = 20
+	pellets = 6 // 6 * 12 for 70 stamina damage, + some small amount of brute, we want to keep less lethal shells ~60
+	variance = 14
 	harmful = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_rubbershot
 	weak_against_armour = TRUE
-	stamina = 10
+	stamina = 12
 
 /obj/item/ammo_casing/shotgun/magnum
 	name = "magnum blockshot shell"
@@ -139,7 +139,7 @@
 	icon_state = "expshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	pellets = 12 // 1.3x The pellets for 0.6x the damage, same overall damage as buckshot
-	variance = 30 // Slightly wider spread than buckshot
+	variance = 25 // Slightly wider spread than buckshot
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	name = "express buckshot pellet"
@@ -210,9 +210,9 @@
 	ricochet_decay_chance = 1
 	ricochet_incidence_leeway = 0 //nanomachines son
 	homing = TRUE
-	homing_turn_speed = 25
-	homing_inaccuracy_min = 10
-	homing_inaccuracy_max = 80
+	homing_turn_speed = 50
+	homing_inaccuracy_min = 5
+	homing_inaccuracy_max = 50
 
 /obj/item/ammo_casing/shotgun/antitide
 	name = "stardust shell"
@@ -231,11 +231,11 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
 	damage = 15
-	stamina = 33
+	stamina = 35
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = 40
-	bare_wound_bonus = 40
+	wound_bonus = 10
+	bare_wound_bonus = 10
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
@@ -243,6 +243,8 @@
 	range = 12
 	embed_type = /datum/embed_data/shotgun_buckshot/antitide
 	reflectable = NONE
+	weak_against_armour = FALSE
+	armour_penetration = 20
 
 /datum/embed_data/shotgun_buckshot/antitide
 	embed_chance = 200

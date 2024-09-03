@@ -124,7 +124,7 @@
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_buckshot"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 20, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 25)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 26)
 	build_path = /obj/item/ammo_box/advanced/s12gauge/buckshot
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -220,7 +220,7 @@
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_bslug"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 25)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 18)
 	build_path = /obj/item/ammo_box/advanced/s12gauge/bean
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -232,7 +232,7 @@
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_rubber"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 25)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 18)
 	build_path = /obj/item/ammo_box/advanced/s12gauge/rubber
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
