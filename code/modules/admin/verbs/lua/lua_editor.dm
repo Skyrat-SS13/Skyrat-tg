@@ -59,9 +59,26 @@
 		data["tasks"] = current_state.get_tasks()
 		if(show_global_table)
 			current_state.get_globals()
+<<<<<<< HEAD
 			data["globals"] = kvpify_list(refify_list(current_state.globals))
 	data["states"] = SSlua.states
 	data["callArguments"] = kvpify_list(refify_list(arguments))
+=======
+			var/list/values = current_state.globals["values"]
+			values = deep_copy_without_cycles(values)
+			values = prepare_lua_editor_list(values)
+			values = kvpify_list(values)
+			var/list/variants = current_state.globals["variants"]
+			data["globals"] = list("values" = values, "variants" = variants)
+		if(last_error)
+			data["lastError"] = last_error
+			last_error = null
+		data["supressRuntimes"] = current_state.supress_runtimes
+	data["states"] = list()
+	for(var/datum/lua_state/state as anything in SSlua.states)
+		data["states"] += state.display_name
+	data["callArguments"] = kvpify_list(prepare_lua_editor_list(deep_copy_without_cycles(arguments)))
+>>>>>>> 20361ace1338 (Fixes/improves the Lua UI Slightly (#85447))
 	if(force_modal)
 		data["forceModal"] = force_modal
 		force_modal = null
@@ -190,7 +207,7 @@
 			var/result = current_state.call_function(arglist(list(function) + arguments))
 			current_state.log_result(result)
 			arguments.Cut()
-			return TRUE
+			return
 		if("resumeTask")
 			var/task_index = params["index"]
 			SSlua.queue_resume(current_state, task_index, arguments)
@@ -221,6 +238,9 @@
 			return TRUE
 		if("toggleShowGlobalTable")
 			show_global_table = !show_global_table
+			return TRUE
+		if("toggleSupressRuntimes")
+			current_state.supress_runtimes = !current_state.supress_runtimes
 			return TRUE
 		if("nextPage")
 			page = min(page+1, CEILING(current_state.log.len/50, 1)-1)
