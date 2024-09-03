@@ -12,6 +12,9 @@
 #define AMMO_MATS_SHOTGUN_PLASMA list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
 									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2)
 
+#define AMMO_MATS_SHOTGUN_DU list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 2)
+
 
 /obj/item/ammo_casing/caflechette
 	name = "flechette steel penetrator"
@@ -87,12 +90,10 @@
 	wound_bonus = 20
 	bare_wound_bonus = 10
 	sharpness = SHARP_EDGED
-	wound_bonus = 0
-	bare_wound_bonus = 20
-	armour_penetration = 10
+	armour_penetration = 25
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embed_type = /datum/embed_data/ballpoint
-	stamina = 20
+	stamina = 25
 	ricochet_chance = 50
 	ricochets_max = 3
 	ricochet_auto_aim_angle = 90
@@ -122,7 +123,7 @@
 	armour_penetration = 100 //does really low damage
 
 /datum/embed_data/magnesium
-	embed_chance = 80
+	embed_chance = 95
 	pain_chance = 10
 	fall_chance = 10
 	jostle_chance = 80
@@ -138,6 +139,22 @@
 		M.adjust_fire_stacks(12)
 		M.ignite_mob()
 
+/obj/item/ammo_casing/caflechette/du
+	name = "flechette silicon ripper dart"
+	projectile_type = /obj/projectile/bullet/caflechette/du
+	custom_materials = AMMO_MATS_SHOTGUN_DU
+
+/obj/projectile/bullet/caflechette/du
+	name = "flechette depleted uranium"
+	damage = 15
+	wound_bonus = 25
+	bare_wound_bonus = 35
+	embed_type = /datum/embed_data/du
+	armour_penetration = 100 //Defeat ALL armour
+
+/datum/embed_data/du
+	embed_chance = 10
+
 #undef AMMO_MATS_SHOTGUN
 
 #undef AMMO_MATS_SHOTGUN_FLECH
@@ -147,3 +164,5 @@
 #undef AMMO_MATS_SHOTGUN_TIDE
 
 #undef AMMO_MATS_SHOTGUN_PLASMA
+
+#undef AMMO_MATS_SHOTGUN_DU
