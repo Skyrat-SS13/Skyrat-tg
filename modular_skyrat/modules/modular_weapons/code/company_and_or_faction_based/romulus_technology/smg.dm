@@ -39,7 +39,6 @@
 
 	give_autofire()
 
-/// Separate proc for handling auto fire just because one of these subtypes isn't otomatica
 /obj/item/gun/ballistic/automatic/rom_smg/proc/give_autofire()
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
