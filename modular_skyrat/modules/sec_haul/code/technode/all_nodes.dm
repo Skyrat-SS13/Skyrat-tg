@@ -11,10 +11,7 @@
 		"solgrenade_extmag",
 		"sol35_shortextmag",
 		"ca_flech",
-		"ca_flechmagnesium",
-		"s12g_slug",
-		"s12c_antitide",
-		"s12g_buckshot"
+		"ca_flechmagnesium"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 

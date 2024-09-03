@@ -121,4 +121,3 @@
 	multitype = FALSE
 	ammo_type = /obj/item/ammo_casing/shotgun/antitide
 	max_ammo = 10
-	caliber = CALIBER_SHOTGUN

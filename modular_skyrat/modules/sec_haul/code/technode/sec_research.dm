@@ -427,7 +427,7 @@
 	id = "c10mm_rihdf"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
-	build_path = /obj/item/ammo_box/c10mm/speedloader
+	build_path = /obj/item/ammo_box/c10mm/speedloader/ihdf
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
@@ -475,7 +475,7 @@
 	desc = "A magazine for the CMG-1."
 	id = "ca_flech"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
 	build_path = /obj/item/ammo_box/magazine/caflechette
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -487,7 +487,7 @@
 	desc = "A magazine for the CMG-1. Very likely to embed and cause further damage"
 	id = "ca_flechripper"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 15, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
 	build_path = /obj/item/ammo_box/magazine/caflechette/ripper
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -511,7 +511,7 @@
 	desc = "A magazine for the CMG-1. Great at dispersing kinetic energy on impact with target"
 	id = "ca_flechballpoint"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
 	build_path = /obj/item/ammo_box/magazine/caflechette/ballpoint
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO

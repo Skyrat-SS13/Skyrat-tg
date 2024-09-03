@@ -72,7 +72,7 @@
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/firefly = 3,
+		/obj/item/ammo_box/magazine/firefly = 4,
 	), src)
 
 /obj/item/gun/ballistic/automatic/pistol/firefly

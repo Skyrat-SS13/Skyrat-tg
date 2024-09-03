@@ -37,8 +37,8 @@
 
 /obj/projectile/bullet/caflechette
 	name = "flechette penetrator"
-	damage = 15
-	armour_penetration = 60
+	damage = 20
+	armour_penetration = 65
 	wound_bonus = 10
 	bare_wound_bonus = 10
 	embed_type = /datum/embed_data/caflechette
@@ -63,7 +63,7 @@
 /obj/projectile/bullet/caflechette/ripper
 	name = "flechette dart"
 	damage = 10
-	wound_bonus = 25
+	wound_bonus = 30
 	bare_wound_bonus = 35
 	embed_type = /datum/embed_data/ripper
 	armour_penetration = 40 //defeat basic armour
@@ -76,7 +76,7 @@
 	ignore_throwspeed_threshold = TRUE
 	pain_stam_pct = 0.9
 	pain_mult = 2
-	rip_time = 5 SECONDS
+	rip_time = 10 SECONDS
 
 /obj/item/ammo_casing/caflechette/ballpoint
 	name = "steel ball"
@@ -98,6 +98,7 @@
 	ricochets_max = 3
 	ricochet_auto_aim_angle = 90
 	ricochet_auto_aim_range = 5
+	eyeblur = 0.4 SECONDS
 
 /datum/embed_data/ballpoint
 	embed_chance = 50
