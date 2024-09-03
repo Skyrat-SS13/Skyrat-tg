@@ -17,7 +17,10 @@
 	/// whether we are currently being loaded by a lobby
 	var/template_in_use = FALSE
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14da2849f728 (Re-adds erroneously removed deathmatch maps (for real this time) (#86030))
 /datum/lazy_template/deathmatch/ragecage
 	name = "Ragecage"
 	desc = "Fun for the whole family, the classic ragecage."
