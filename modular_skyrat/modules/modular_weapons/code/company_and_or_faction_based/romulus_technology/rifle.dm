@@ -115,6 +115,7 @@
 	generate_items_inside(list(
 		/obj/item/ammo_box/c40sol/fragmentation = 1,
 		/obj/item/ammo_box/c40sol = 1,
+		/obj/item/ammo_box/magazine/c40sol_rifle = 4,
 	), src)
 
 //Flechette Rifle
