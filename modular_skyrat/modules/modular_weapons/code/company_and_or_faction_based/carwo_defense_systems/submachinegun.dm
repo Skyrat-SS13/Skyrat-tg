@@ -30,7 +30,7 @@
 	burst_size = 3
 	fire_delay = 0.2 SECONDS
 
-	spread = 7.5
+	spread = 5
 
 /obj/item/gun/ballistic/automatic/sol_smg/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)

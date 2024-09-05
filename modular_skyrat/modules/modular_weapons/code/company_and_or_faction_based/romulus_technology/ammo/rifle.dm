@@ -93,7 +93,7 @@
 	armour_penetration = 25
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embed_type = /datum/embed_data/ballpoint
-	stamina = 25
+	stamina = 28
 	ricochet_chance = 50
 	ricochets_max = 3
 	ricochet_auto_aim_angle = 90
@@ -137,7 +137,7 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
-		M.adjust_fire_stacks(12)
+		M.adjust_fire_stacks(25)
 		M.ignite_mob()
 
 /obj/item/ammo_casing/caflechette/du
