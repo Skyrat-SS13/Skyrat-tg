@@ -27,15 +27,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 
-/datum/techweb_node/basic_arms/New()
-	design_ids += "sol35_shortmag"
-	design_ids += "c10mm_r"
-	design_ids += "c10mm_rihdf"
-	design_ids += "s12c_fslug"
-	design_ids += "ammoworkbench_disk_lethal"
-	design_ids += "ammo_workbench"
-	design_ids += "s12g_huntingslug"
-
 /datum/techweb_node/magazineresearch_heavy
 	id = "storedmunition_tech_three"
 	display_name = "Romulus Technology"
@@ -48,6 +39,16 @@
 		"m9mm_mag_ext_b",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+
+/datum/techweb_node/basic_arms/New()
+	design_ids += "sol35_shortmag"
+	design_ids += "c10mm_r"
+	design_ids += "c10mm_rihdf"
+	design_ids += "s12c_fslug"
+	design_ids += "ammoworkbench_disk_lethal"
+	design_ids += "ammo_workbench"
+	design_ids += "s12g_huntingslug"
+	design_ids += "s12c_antitide"
 
 /datum/techweb_node/sec_equip/New()
 	design_ids += "m45_mag"

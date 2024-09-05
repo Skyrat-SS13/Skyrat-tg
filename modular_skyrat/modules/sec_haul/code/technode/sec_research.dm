@@ -104,7 +104,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/s12c_antitide
-	name = "12 Gauge Advanced Anti Riot Ammunition Box(Non-Lethal)"
+	name = "12 Gauge Advanced Anti Riot Ammunition Box(Less-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells. These are less lethal and will embed into target"
 	id = "s12c_antitide"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -144,7 +144,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_flech
-	name = "12 Gauge Advanced Flechette Ammunition Box(Lethal)"
+	name = "12 Gauge Advanced Flechette Ammunition Box(Very Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_flechette"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -156,7 +156,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/advancedgaugeboxes_antitide
-	name = "12 Gauge Advanced Anti Riot Ammunition Box(Non-Lethal)"
+	name = "12 Gauge Advanced Anti Riot Ammunition Box(Less-Lethal)"
 	desc = "A 12 gauge ammunition box for shotgun shells."
 	id = "s12g_antitide"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -306,7 +306,7 @@
 	desc = "A standard magazine for pistol using 9x25mm Mk2."
 	id = "m9mm_mag"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 12)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 8)
 	build_path = /obj/item/ammo_box/magazine/m9mm
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -378,12 +378,12 @@
 	desc = "A standard magazine for pistol using .460 Ceres."
 	id = "m45_mag"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10)
 	build_path = /obj/item/ammo_box/magazine/m45
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
-	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/casingfor457
 	name = ".457 Government Casing (Very lethal)"
@@ -402,7 +402,7 @@
 	desc = "A speedloader in 10mm Auto."
 	id = "c10mm_r"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 10, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 7)
 	build_path = /obj/item/ammo_box/c10mm/speedloader/rubber
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -414,7 +414,7 @@
 	desc = "A speedloader in 10mm Auto."
 	id = "c10mm_rl"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7)
 	build_path = /obj/item/ammo_box/c10mm/speedloader
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -426,7 +426,7 @@
 	desc = "A speedloader in 10mm Auto."
 	id = "c10mm_rihdf"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 10)
 	build_path = /obj/item/ammo_box/c10mm/speedloader/ihdf
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -438,7 +438,7 @@
 	desc = "A speedloader in 10mm Auto."
 	id = "c10mm_rincin"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 10)
 	build_path = /obj/item/ammo_box/c10mm/speedloader/fire
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -462,7 +462,7 @@
 	desc = "A speedloader in 10mm Auto."
 	id = "c10mm_rap"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 10)
 	build_path = /obj/item/ammo_box/c10mm/speedloader/ap
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -475,7 +475,7 @@
 	desc = "A magazine for the CMG-1."
 	id = "ca_flech"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 15)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 10)
 	build_path = /obj/item/ammo_box/magazine/caflechette
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
