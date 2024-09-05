@@ -3,6 +3,7 @@
 	name = "vox breath mask"
 	actions_types = list()
 	flags_cover = NONE
+	visor_flags_cover = NONE
 
 /obj/item/clothing/mask/balaclavaadjust
 	name = "adjustable balaclava"
