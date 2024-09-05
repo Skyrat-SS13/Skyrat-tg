@@ -25,7 +25,7 @@
 #define COMPANY_NAME_ALLSTAR_ENERGY "Allstar Energy Incorporated"
 #define COMPANY_NAME_VITEZSTVI_AMMO "Vitezstvi Ammo & Weapon Accessories"
 #define COMPANY_NAME_NANOTRASEN "NanoTrasen System Inc"
-#define COMPANY_NAME_IDMA "Ironmoon Foundry"
+#define COMPANY_NAME_IDMA "Ironmoon Military Special Operation Resources"
 
 #define COMPANY_INTEREST_GAIN_BIG 10
 #define COMPANY_INTEREST_GAIN_AVERAGE 5
