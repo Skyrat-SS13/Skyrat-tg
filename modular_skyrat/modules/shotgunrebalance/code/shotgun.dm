@@ -231,22 +231,22 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/projectiles.dmi'
 	icon_state = "stardust"
 	damage = 15
-	stamina = 10
+	stamina = 33
 	damage_falloff_tile = 0.2
 	stamina_falloff_tile = 0.3
-	wound_bonus = 15
-	bare_wound_bonus = 15
+	wound_bonus = 40
+	bare_wound_bonus = 40
 	stutter = 3 SECONDS
 	jitter = 5 SECONDS
 	eyeblur = 1 SECONDS
 	sharpness = NONE
 	range = 12
 	embed_type = /datum/embed_data/shotgun_buckshot/antitide
-	reflectable = FALSE
+	reflectable = NONE
 
 /datum/embed_data/shotgun_buckshot/antitide
 	embed_chance = 200
-	pain_chance = 90
+	pain_chance = 95
 	fall_chance = 10
 	jostle_chance = 10
 	ignore_throwspeed_threshold = TRUE
@@ -266,30 +266,20 @@
 
 /obj/projectile/bullet/frangible_slug
 	name = "frangible slug"
-	damage = 10 //I'd kill you if you manage to kill someone with this shit
+	damage = 15 //I'd kill you if you manage to kill someone with this shit
 	wound_bonus = 30
 	bare_wound_bonus = 30
-	demolition_mod = 40
+	demolition_mod = 2
 
 /obj/projectile/bullet/frangible_slug/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	if (!QDELETED(target) && (isturf(target) || isstructure(target)))
+	if(istype(target, /obj/structure/window) || istype(target, /obj/machinery/door/airlock) || istype(target, /obj/structure/grille) || istype(target,/obj/structure/door_assembly))
 		if(isobj(target))
-			demolition_mod = 200
+			demolition_mod = 50
 			damage = 30
 		else
-			demolition_mod = 40
-			damage = 10
-	if(isobj(target))
-		var/obj/hit_object = target
-		hit_object.take_damage(demolition_mod, BRUTE, BULLET, FALSE)
-	else if(isclosedturf(target))
-		damage = 0
-		demolition_mod = 0
-		if(!isindestructiblewall(target))
-			var/turf/closed/hit_turf = target
-			hit_turf.ScrapeAway()
-	return ..()
+			demolition_mod = 2
+			damage = 15
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter slug shell"

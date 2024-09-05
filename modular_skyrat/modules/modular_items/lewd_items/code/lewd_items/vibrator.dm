@@ -187,7 +187,7 @@
 		else
 			return
 	user.visible_message(span_purple("[user] [message]!"))
-	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+	conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 /obj/item/clothing/sextoy/vibrator/attack_self(mob/user, obj/item/attack_item)
 	toggle_mode()
@@ -208,22 +208,22 @@
 		if(VIB_OFF)
 			vibration_mode = VIB_LOW
 			toy_on = TRUE
-			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			conditional_pref_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop1.start()
 		if(VIB_LOW)
 			vibration_mode = VIB_MEDIUM
-			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			conditional_pref_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop1.stop()
 			soundloop2.start()
 		if(VIB_MEDIUM)
 			vibration_mode = VIB_HIGH
-			play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			conditional_pref_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop2.stop()
 			soundloop3.start()
 		if(VIB_HIGH)
 			vibration_mode = VIB_OFF
 			toy_on = FALSE
-			play_lewd_sound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			conditional_pref_sound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
 
 #undef DEFAULT_AROUSAL_INCREASE

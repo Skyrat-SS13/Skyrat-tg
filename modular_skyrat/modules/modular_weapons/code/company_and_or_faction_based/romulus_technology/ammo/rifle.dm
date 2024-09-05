@@ -1,14 +1,12 @@
 #define AMMO_MATS_SHOTGUN list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4) // not quite as thick as a half-sheet
 
 #define AMMO_MATS_SHOTGUN_FLECH list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2)
+									/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
 
 #define AMMO_MATS_SHOTGUN_HIVE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
 									/datum/material/silver = SMALL_MATERIAL_AMOUNT * 1)
 
-#define AMMO_MATS_SHOTGUN_TIDE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
+#define AMMO_MATS_SHOTGUN_TIDE list(/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
 									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 1)
 
 #define AMMO_MATS_SHOTGUN_PLASMA list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
@@ -26,6 +24,7 @@
 	projectile_type = /obj/projectile/bullet/caflechette
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
+	can_be_printed = TRUE
 
 /obj/item/ammo_casing/caflechette/Initialize(mapload)
 	. = ..()
@@ -53,10 +52,10 @@
 	rip_time = 2 SECONDS
 
 /obj/item/ammo_casing/caflechette/ripper
-	name = "flechette dart"
+	name = "flechette silicon dart"
 	desc = "A Romfed standard rifle flechette."
 	projectile_type = /obj/projectile/bullet/caflechette/ripper
-	custom_materials = AMMO_MATS_SHOTGUN_TIDE
+	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 
 /obj/projectile/bullet/caflechette/ripper
 	name = "flechette dart"
@@ -80,7 +79,7 @@
 	name = "steel ball"
 	desc = "A bullet casing with a large metallic ball as a projectile."
 	projectile_type = /obj/projectile/bullet/caflechette/ballpoint
-	custom_materials = AMMO_MATS_SHOTGUN_TIDE
+	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 
 /obj/projectile/bullet/caflechette/ballpoint
 	name = "high velocity steel ball"
@@ -110,7 +109,7 @@
 	rip_time = 1 SECONDS
 
 /obj/item/ammo_casing/caflechette/magnesium
-	name = "magnesium dart"
+	name = "magnesium rod"
 	projectile_type = /obj/projectile/bullet/caflechette/magnesium
 	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 

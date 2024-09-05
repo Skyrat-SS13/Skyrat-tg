@@ -62,7 +62,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ELECTRICAL_DAMAGE_REPAIRING "electrical_damage_repairing"
 
 // felinid traits
-#define TRAIT_FELINE "feline_aspect"
+#define TRAIT_FELINID "felinid_aspect"
 
 // canine traits
 #define TRAIT_CANINE "canine_aspect"

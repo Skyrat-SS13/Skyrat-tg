@@ -155,7 +155,7 @@
 
 /datum/loadout_item/glasses/science_glasses
 	name = "Prescription Science glasses"
-	item_path = /obj/item/clothing/glasses/hud/science/prescription
+	item_path = /obj/item/clothing/glasses/science/prescription
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/glasses/aviator_security

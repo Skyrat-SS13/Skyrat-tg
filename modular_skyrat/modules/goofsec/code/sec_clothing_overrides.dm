@@ -218,10 +218,20 @@
 	icon_state = "helmetalt_blue"
 	base_icon_state = "helmetalt_blue"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	actions_types = list(/datum/action/item_action/toggle)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	var/flipped_visor = FALSE
+
+/obj/item/clothing/head/helmet/alt/click_alt(mob/user)
+	flipped_visor = !flipped_visor
+	balloon_alert(user, "visor flipped")
+	// base_icon_state is modified for seclight attachment component
+	base_icon_state = "[initial(base_icon_state)][flipped_visor ? "-novisor" : ""]"
+	icon_state = base_icon_state
+	if (flipped_visor)
+		flags_cover &= ~HEADCOVERSEYES | PEPPERPROOF
+	else
+		flags_cover |= HEADCOVERSEYES | PEPPERPROOF
+	update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 //Standard helmet
 /obj/item/clothing/head/helmet/sec
@@ -230,7 +240,6 @@
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
 	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
-	flags_cover = HEADCOVERSEYES|EARS_COVERED
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -238,7 +247,6 @@
 /obj/item/clothing/head/helmet/sec/futuristic
 	icon_state = "security_helmet_future"
 	base_icon_state = "security_helmet_future"
-	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/sec/futuristic/blue

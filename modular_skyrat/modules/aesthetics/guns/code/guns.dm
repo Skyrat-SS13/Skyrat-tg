@@ -75,6 +75,12 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
+/obj/item/gun/ballistic/shotgun/riot
+	name = "woodstock shotgun"
+	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control. Often found in the hand of a lavaland hunter. Vaguely reminds you of hunting back in Sol does it not?"
+	fire_delay = 6 //We slighly bump this up because thats a good idea
+	sawn_desc = "Come with me if you want to live."
+
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
 	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
@@ -85,16 +91,14 @@
 	inhand_icon_state = "shotgun_combat"
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
-	fire_delay =  6
+	fire_delay = 7
 	w_class = WEIGHT_CLASS_BULKY
-	recoil = 2
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact
 	name = "\improper Peacekeeper compact combat shotgun"
 	desc = "A tactical variant of the peacekeeper combat shotgun used by NT Raiding Parties and Space Marines. It has a gyroscopic stabilizer on it, letting you fire one handed."
 	fire_delay = 5
 	weapon_weight = WEAPON_LIGHT
-	recoil = 1 //so that its not spammed a lot
 
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'

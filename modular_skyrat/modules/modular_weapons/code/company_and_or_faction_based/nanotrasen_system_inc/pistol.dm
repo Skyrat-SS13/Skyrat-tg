@@ -27,6 +27,8 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	pin = /obj/item/firing_pin
 	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/rubber
+	suppressor_x_offset = -2
+	suppressor_y_offset = -1
 
 /obj/item/gun/ballistic/automatic/pistol/nt_glock/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
@@ -59,8 +61,42 @@
 	burst_size = 3
 	spawn_magazine_type = /obj/item/ammo_box/magazine/m9mm/stendo
 
-/obj/item/gun/ballistic/automatic/pistol/nt_glock/empty
+//Magistrate Pistol
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/firefly
+	name = "MX-7C Stun Pistol"
+
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/firefly/empty
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/firefly/PopulateContents()
+	new weapon_to_spawn (src)
+
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/firefly = 3,
+	), src)
+
+/obj/item/gun/ballistic/automatic/pistol/firefly
+	name = "\improper MX-7C 'Firefly'"
+	desc = "NanoTrasen Experimental Model 7 Compact, A rare pistol chambered in a .117 electrode cartridge. It has has a small magazine capacity."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/pistol.dmi'
+	icon_state = "firefly"
+	w_class = WEIGHT_CLASS_NORMAL
+	spread = 10
+	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
+	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
+	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
+	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
+	pin = /obj/item/firing_pin
+	spawn_magazine_type = /obj/item/ammo_box/magazine/firefly
+	accepted_magazine_type = /obj/item/ammo_box/magazine/firefly
+	can_suppress = FALSE
+
+/obj/item/gun/ballistic/automatic/pistol/firefly/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
+
+/obj/item/gun/ballistic/automatic/pistol/firefly/empty
 	spawnwithmagazine = FALSE
+
 
 // Revolver
 

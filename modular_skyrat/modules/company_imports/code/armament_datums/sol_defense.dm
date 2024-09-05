@@ -86,6 +86,7 @@
 /datum/armament_entry/company_import/sol_defense/sidearm/eland
 	item_type = /obj/item/gun/ballistic/revolver/sol
 	cost = PAYCHECK_COMMAND * 4
+	restricted = TRUE
 
 //You can still buy it from cargo side
 //If cargo decides to agree with sec on a compromise then good job
@@ -131,14 +132,14 @@
 	cost = PAYCHECK_COMMAND * 10
 	contraband = TRUE
 //Begone
-*/
+
 
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
 	cost = PAYCHECK_COMMAND * 14
 	contraband = TRUE
 
-/* These one are simply rediculous, but we'll keep it there incase someone has idea
+These one are simply rediculous, but we'll keep it there incase someone has idea
 /datum/armament_entry/company_import/sol_defense/longarm/outomaties
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
 	cost = PAYCHECK_COMMAND * 23

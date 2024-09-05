@@ -408,18 +408,13 @@
 	current_mob.adjust_pain(pain_amounts[current_mode] * seconds_per_tick)
 
 /obj/structure/chair/milking_machine/click_ctrl_shift(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
 	to_chat(user, span_notice("You begin to disassemble [src]..."))
 	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to disassemble [src]!"))
-		return FALSE
+		return
 
 	deconstruct(TRUE)
 	to_chat(user, span_notice("You disassemble [src]."))
-	return TRUE
 
 // Machine deconstruction process handler
 /obj/structure/chair/milking_machine/atom_deconstruct(disassembled)

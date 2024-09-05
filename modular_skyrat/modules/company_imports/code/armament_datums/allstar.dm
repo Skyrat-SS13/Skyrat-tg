@@ -7,7 +7,7 @@
 /datum/armament_entry/company_import/allstar/basic_energy_weapons
 	subcategory = "Basic Energy Smallarms"
 	restricted = TRUE
-
+/*
 /datum/armament_entry/company_import/allstar/basic_energy_weapons/disabler
 	item_type = /obj/item/gun/energy/disabler
 	cost = PAYCHECK_CREW * 5
@@ -26,6 +26,7 @@
 
 /datum/armament_entry/company_import/allstar/basic_energy_long_weapons
 	subcategory = "Basic Energy Longarms"
+	restricted = TRUE
 
 /datum/armament_entry/company_import/allstar/basic_energy_long_weapons/laser
 	item_type = /obj/item/gun/energy/laser
@@ -38,21 +39,22 @@
 /datum/armament_entry/company_import/allstar/basic_energy_long_weapons/egun
 	item_type = /obj/item/gun/energy/e_gun
 	cost = PAYCHECK_COMMAND * 4
-/*
+*/
 /datum/armament_entry/company_import/allstar/experimental_energy
 	subcategory = "Experimental Energy Weapons"
 	cost = PAYCHECK_COMMAND * 6
 	restricted = TRUE
-
+/*
 /datum/armament_entry/company_import/allstar/experimental_energy/hellfire
 	item_type = /obj/item/gun/energy/laser/hellgun
+*/
 
-/datum/armament_entry/company_import/allstar/experimental_energy/ion_carbine
-	item_type = /obj/item/gun/energy/ionrifle/carbine
-
+/*
 /datum/armament_entry/company_import/allstar/experimental_energy/xray_gun
 	item_type = /obj/item/gun/energy/xray
 
 /datum/armament_entry/company_import/allstar/experimental_energy/tesla_cannon
 	item_type = /obj/item/gun/energy/tesla_cannon
 */
+/datum/armament_entry/company_import/allstar/experimental_energy/ion_carbine
+	item_type = /obj/item/gun/energy/ionrifle/carbine

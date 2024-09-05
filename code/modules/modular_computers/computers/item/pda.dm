@@ -39,9 +39,9 @@
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
 		// SKYRAT EDIT ADDITION START
-		/datum/computer_file/program/crew_manifest, // Adds crew manifest to all base tablets
-		/datum/computer_file/program/maintenance/camera // Adds camera to all base tablets
+		/datum/computer_file/program/maintenance/camera, // Adds camera to all base tablets
 		// SKRAT EDIT ADDITION END
+		/datum/computer_file/program/crew_manifest
 	)
 	///List of items that can be stored in a PDA
 	var/static/list/contained_item = list(

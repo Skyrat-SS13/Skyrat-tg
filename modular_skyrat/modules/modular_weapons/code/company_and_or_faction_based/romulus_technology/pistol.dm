@@ -86,26 +86,27 @@
 	AddElement(/datum/element/manufacturer_examine, COMPANY_ROMTECH)
 
 
-/obj/item/storage/toolbox/guncase/skyrat/m1911_gold
+/obj/item/storage/toolbox/guncase/skyrat/pistol/m1911_gold
 	name = "golden m1911 .460 ceres"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/m1911/gold
 	extra_to_spawn = /obj/item/ammo_box/magazine/m45
 
-/obj/item/storage/toolbox/guncase/skyrat/m1911/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/m1911/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
 		/obj/item/ammo_box/c45 = 2,
 	), src)
 
-/obj/item/storage/toolbox/guncase/skyrat/m45a5
+/obj/item/storage/toolbox/guncase/skyrat/pistol/m45a5
 	name = "heavy pistol .460 magnum"
 
-/obj/item/storage/toolbox/guncase/skyrat/m45a5/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/m45a5/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/storage/pouch/ammo(src)
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "M4A5"
@@ -114,7 +115,7 @@
 	icon_state = "m45a5"
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
 	force = 15
-	fire_delay = 1.8 SECONDS
+	fire_delay = 1 SECONDS
 	special_mags = TRUE
 	recoil = 3
 

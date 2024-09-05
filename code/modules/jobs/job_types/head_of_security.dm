@@ -55,6 +55,7 @@
 	suit_store = /obj/item/gun/energy/e_gun
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
+		/obj/item/choice_beacon/security_pistol = 1, //Skyrat Addition
 		)
 	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt

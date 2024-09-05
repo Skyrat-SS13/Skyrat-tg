@@ -293,7 +293,7 @@
 	},
 /area/station/medical/medbay/central)
 "aei" = (
-/turf/closed/wall,
+/turf/closed/wall/r_wall,
 /area/station/maintenance/eva_shed/starboard)
 "aez" = (
 /obj/structure/chair/stool/directional/west,
@@ -46222,13 +46222,11 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Port EVA Shed"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/eva_shed/port)
 "mXO" = (
@@ -74511,13 +74509,11 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Starboard EVA Shed"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/eva_shed/starboard)
 "uHB" = (
@@ -83060,6 +83056,9 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/storage)
+"xbS" = (
+/turf/closed/wall/r_wall,
+/area/station/maintenance/port/upper)
 "xcf" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/bush/grassy,
@@ -84528,8 +84527,8 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
 "xxv" = (
-/turf/closed/wall,
-/area/station/maintenance/eva_shed/port)
+/turf/closed/wall/r_wall,
+/area/station/maintenance/starboard/upper)
 "xxJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -86413,6 +86412,7 @@
 	pixel_x = 6;
 	pixel_y = -6
 	},
+/obj/item/storage/box/firingpins,
 /turf/open/floor/engine,
 /area/station/ai_monitored/security/armory)
 "ybE" = (
@@ -118528,10 +118528,10 @@ iLQ
 iLQ
 odJ
 odJ
-jqn
-jqn
+xbS
+xbS
 mXy
-jqn
+xbS
 iqF
 iqF
 iqF
@@ -119042,7 +119042,7 @@ ttw
 ttw
 ttw
 ttw
-xxv
+aoM
 pcM
 cIK
 ska
@@ -119299,10 +119299,10 @@ ttw
 ttw
 ttw
 ttw
-xxv
+aoM
 wcM
-xxv
-xxv
+aoM
+aoM
 qVs
 qVs
 qVs
@@ -119556,7 +119556,7 @@ ttw
 ttw
 ttw
 ttw
-xxv
+aoM
 ska
 aoM
 lwq
@@ -122639,11 +122639,11 @@ ttw
 ttw
 ttw
 ttw
-usB
-usB
-usB
+xxv
+xxv
+xxv
 uHz
-usB
+xxv
 iqF
 iqF
 iqF

@@ -52,6 +52,7 @@
 				)
 	crate_name = "anti riot shotgun ammo crate"
 
+
 //SOL GUNS
 
 /datum/supply_pack/security/wespe
@@ -80,27 +81,7 @@
 	/obj/item/ammo_box/advanced/s12gauge/buckshot = 2,
 	)
 	crate_name = "Carwo 'Renoster' Shotgun Crate"
-/* commented out until i figure what to do with it
-/datum/supply_pack/security/armory/infanterie
-	name = "Carwil Battle Rifle Crate"
-	desc = "Contains two Carwil Battle Rifles, and two spare each magazines for them."
-	cost = CARGO_CRATE_VALUE * 20
-	contains = list(/obj/item/gun/ballistic/automatic/sol_rifle = 2,
-	/obj/item/ammo_box/magazine/c40sol_rifle = 4,
-	)
-	crate_name = "Carwil Battle Rifle Crate"
-	contraband = TRUE
-*/
 
-/datum/supply_pack/security/armory/cmg
-	name = "Romulus Technology CMG Assault Rifle Crate"
-	desc = "Two CMG-1, chambered in experimental steel flechette."
-	cost = CARGO_CRATE_VALUE * 20
-	contains = list(
-		/obj/item/storage/toolbox/guncase/skyrat/rom_flech,
-		/obj/item/storage/toolbox/guncase/skyrat/rom_flech,
-	)
-	crate_name = "RomTech CMG-1 Crate"
 
 /datum/supply_pack/security/armory/sindano
 	name = "Carwo 'Sindano' Submachinegun Crate"
@@ -120,23 +101,40 @@
 	)
 	crate_name = "Carwil Marksman Rifle Crate"
 
+//NT Guns and Ammo
+
+/datum/supply_pack/security/sidearmcrate
+	name = "Sidearm Crate"
+	desc = "Contains Two Sidearm Beacon, rated for NanoTrasen usage."
+	access_view = ACCESS_ARMORY
+	cost = CARGO_CRATE_VALUE * 12
+	contains = list(/obj/item/choice_beacon/security_pistol = 2,
+	)
+	crate_name = "NanoTrasen Sidearm Crate"
+
+// RomFed Gun
+
+/datum/supply_pack/security/armory/cmg
+	name = "Romulus Technology CMG Assault Rifle Crate"
+	desc = "Two CMG-1, chambered in experimental steel flechette."
+	cost = CARGO_CRATE_VALUE * 20
+	contains = list(
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/rom_flech,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/rom_flech,
+	)
+	crate_name = "RomTech CMG-1 Crate"
+
 /datum/supply_pack/security/armory/rom_ceremonial_rifle
 	name = "Romulus Ceremonial Bolt Action Rifle Crate"
 	desc = "Contains Three Ceremonial Bolt Action Rifle in .40 , as well as ammo for it."
 	cost = CARGO_CRATE_VALUE * 12
-	contains = list(/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle = 1,
+	contains = list(/obj/item/storage/toolbox/guncase/skyrat/ceremonial_rifle = 3,
 	)
 	crate_name = "Romulus Ceremonial Rifle Crate"
 
-/datum/supply_pack/security/ammo
-	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 3,
-					/obj/item/ammo_box/advanced/s12gauge/rubber = 3,
-					/obj/item/ammo_box/c38/trac,
-					/obj/item/ammo_box/c38/hotshot,
-					/obj/item/ammo_box/c38/iceblox,
-				)
-	special = FALSE
-//This makes the Security ammo crate use the cool advanced ammo boxes instead of the old ones
+
+
+//Misc
 
 /datum/supply_pack/security/armory/kiboko
 	name = "Kiboko Grenade Launcher Crate"
@@ -160,7 +158,7 @@
 	name = "Smuggled Sol Light Machinegun Crate"
 	desc = "(*!&@#GOOD NEWS, OPERATIVE! WE GOT YOU THE BIG LEAGUE AUTOMATIC WEAPONS. BY \
 		SMUGGLING THIS CRATE THROUGH A FEW OUTDATED CUSTOMS CHECKPOINTS, WE'VE THE NEXT BEST THING! \
-		SERVICE AUTORIFLES. DON'T WORRY, THE RUMORS ABOUT THE GUN MELTING YOU ARE JUST THAT! RUMORS! \
+		A FUCKING LIGHT MACHINE GUN. DON'T WORRY, THE RUMORS ABOUT THE GUN MELTING YOU ARE JUST THAT! RUMORS! \
 		THESE THINGS WORK FINE! MIGHT BE SLIGHTLY DIRTY.!#@*$"
 	hidden = TRUE
 	cost = CARGO_CRATE_VALUE * 52
@@ -169,5 +167,30 @@
 		/obj/item/ammo_box/magazine/c40sol_rifle/drum = 2,
 	)
 
+/datum/supply_pack/imports/infanterie
+	name = "Carwil Battle Rifle Crate"
+	desc = "(*!&@#GOOD NEWS, OPERATIVE! WE GOT YOU THE BIG LEAGUE AUTOMATIC WEAPONS. BY \
+		SMUGGLING THIS CRATE THROUGH A FEW OUTDATED CUSTOMS CHECKPOINTS, WE'VE THE NEXT BEST THING! \
+		SERVICE BATTLE RIFLE. DON'T WORRY, THE RUMORS ABOUT THE GUN MELTING YOU ARE JUST THAT! RUMORS! \
+		THESE THINGS WORK FINE! MIGHT BE SLIGHTLY DIRTY.!#@*$"
+	cost = CARGO_CRATE_VALUE * 20
+	contains = list(/obj/item/gun/ballistic/automatic/sol_rifle = 2,
+	/obj/item/ammo_box/magazine/c40sol_rifle = 4,
+	)
+	crate_name = "Carwil Battle Rifle Crate"
+	hidden = TRUE
+
 //Goodies
+
+//Override
+/datum/supply_pack/security/ammo
+	contains = list(/obj/item/ammo_box/advanced/s12gauge/bean = 3,
+					/obj/item/ammo_box/advanced/s12gauge/rubber = 3,
+					/obj/item/ammo_box/c38/trac,
+					/obj/item/ammo_box/c38/hotshot,
+					/obj/item/ammo_box/c38/iceblox,
+				)
+	special = FALSE
+//This makes the Security ammo crate use the cool advanced ammo boxes instead of the old ones
+
 

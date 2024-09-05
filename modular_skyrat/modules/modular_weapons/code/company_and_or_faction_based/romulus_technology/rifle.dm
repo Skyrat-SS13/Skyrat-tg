@@ -143,7 +143,9 @@
 	burst_size = 2
 	fire_delay = 2
 	spread = 5
-	pin = /obj/item/firing_pin/alert_level
+//	pin = /obj/item/firing_pin/alert_level this does work but it's a conceptual failure
+	pin = /obj/item/firing_pin
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/smg_light.ogg'
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/caflechette
 	spawn_magazine_type = /obj/item/ammo_box/magazine/caflechette
@@ -153,10 +155,15 @@
 	/// how long does it take to extend/collapse the stock
 	var/toggle_time = 1 SECONDS
 	/// what's our spread with our extended stock (mild varedit compatibility I Guess)?
-	var/unfolded_spread = 5
+	var/unfolded_spread = 2
 	/// what's our spread with a folded stock (see above comment)?
-	var/folded_spread = 20
-
+	var/folded_spread = 15
+	/// Do we have any recoil if it's folded?
+	var/folded_recoil = 3
+	///Do we lose any recoil when it's not?
+	var/unfolded_recoil = 0
+	///Shuld this gun be one handed anyway?
+	var/one_handed_always = TRUE
 /obj/item/gun/ballistic/automatic/rom_flech/examine(mob/user)
 	. = ..()
 	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock.")
@@ -185,8 +192,17 @@
 /obj/item/gun/ballistic/automatic/rom_flech/proc/update_fold_stats()
 	if(folded)
 		spread = folded_spread
+		w_class = WEIGHT_CLASS_NORMAL
+		recoil = folded_recoil
+		weapon_weight = WEAPON_LIGHT
 	else
 		spread = unfolded_spread
+		w_class = WEIGHT_CLASS_BULKY
+		recoil = unfolded_recoil
+		if(one_handed_always)
+			weapon_weight = WEAPON_LIGHT
+		else
+			weapon_weight = WEAPON_HEAVY
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/rom_flech/update_overlays()
@@ -199,11 +215,11 @@
 /obj/item/gun/ballistic/automatic/rom_flech/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/toolbox/guncase/skyrat/rom_flech
+/obj/item/storage/toolbox/guncase/skyrat/pistol/rom_flech
 	name = "CMG-1 Rifle Case"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/rom_flech/empty
 
-/obj/item/storage/toolbox/guncase/skyrat/rom_flech/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/rom_flech/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
@@ -220,23 +236,25 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
 	inhand_icon_state = "infanterie_evil"
-	bolt_type = BOLT_TYPE_LOCKING
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_LIGHT
 	burst_size = 3
 	spread = 0
-	pin = /obj/item/firing_pin
+
 	unfolded_spread = 0
 	folded_spread = 7
+	folded_recoil = 2
+	unfolded_recoil = 0
+	one_handed_always = 1
 
 /obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg
+/obj/item/storage/toolbox/guncase/skyrat/pistol/blueshield_cmg
 	name = "CMG-2C Rifle Case"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/rom_flech/blueshield/empty
 
-/obj/item/storage/toolbox/guncase/skyrat/blueshield_cmg/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/blueshield_cmg/PopulateContents()
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
