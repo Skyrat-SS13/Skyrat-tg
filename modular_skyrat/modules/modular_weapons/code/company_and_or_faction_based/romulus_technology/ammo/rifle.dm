@@ -43,6 +43,23 @@
 	bare_wound_bonus = 10
 	embed_type = /datum/embed_data/caflechette
 	dismemberment = 0
+	var/faction_bonus_force = 15 //Bonus force dealt against certain factions
+	var/list/nemesis_paths = list(
+		/mob/living/simple_animal/hostile/asteroid,
+		/mob/living/basic,
+	) //Any mob with a faction that exists in this list will take bonus damage/effects
+
+/obj/projectile/bullet/caflechette/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
+	if(isnull(target))
+		return ..()
+
+	// check if target is a matching type and apply damage bonus if applicable
+	for(var/nemesis_path in nemesis_paths)
+		if(istype(target, nemesis_path))
+			damage += faction_bonus_force
+			break
+
+	return ..()
 
 /datum/embed_data/caflechette
 	embed_chance = 55
@@ -67,6 +84,7 @@
 	bare_wound_bonus = 35
 	embed_type = /datum/embed_data/ripper
 	armour_penetration = 40 //defeat basic armour
+	faction_bonus_force = 30
 
 /datum/embed_data/ripper
 	embed_chance = 200
@@ -152,6 +170,7 @@
 	bare_wound_bonus = 35
 	embed_type = /datum/embed_data/du
 	armour_penetration = 100 //Defeat ALL armour
+	demolition_mod = 2 //30 damage to basically everything else it can hit
 
 /datum/embed_data/du
 	embed_chance = 10

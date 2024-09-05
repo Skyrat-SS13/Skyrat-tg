@@ -9,7 +9,8 @@
 #define CARGO_COMPANY_SOL_DEFENSE (1<<7)
 #define CARGO_COMPANY_MICRON (1<<8)
 #define CARGO_COMPANY_VITEZSTVI_AMMO (1<<9)
-#define CARGO_COMPANY_ALLSTAR_ENERGY (1<<10)
+#define CARGO_COMPANY_NANOTRASEN (1<<10)
+#define CARGO_COMPANY_IDMA (1<<11)
 
 // Company names, because the armament category and company name need to be the exact same, so use defines like this
 #define COMPANY_NAME_NAKAMURA_ENGINEERING_MODSUITS "Nakamura Engineering MOD Divison"
@@ -23,6 +24,8 @@
 #define COMPANY_NAME_MICRON_CONTROL_SYSTEMS "Micron Control Systems"
 #define COMPANY_NAME_ALLSTAR_ENERGY "Allstar Energy Incorporated"
 #define COMPANY_NAME_VITEZSTVI_AMMO "Vitezstvi Ammo & Weapon Accessories"
+#define COMPANY_NAME_NANOTRASEN "NanoTrasen System Inc"
+#define COMPANY_NAME_IDMA "Ironmoon Foundry"
 
 #define COMPANY_INTEREST_GAIN_BIG 10
 #define COMPANY_INTEREST_GAIN_AVERAGE 5

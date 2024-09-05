@@ -295,7 +295,7 @@
 
 /obj/projectile/bullet/shotgun_slug/hunter/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 6)
+	AddElement(/datum/element/bane, mob_biotypes = MOB_BEAST, damage_multiplier = 7)
 
 /obj/item/ammo_casing/shotgun/honkshot
 	name = "confetti shell"
