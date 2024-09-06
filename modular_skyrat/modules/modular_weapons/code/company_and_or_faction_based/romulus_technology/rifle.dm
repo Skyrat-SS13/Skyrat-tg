@@ -85,7 +85,6 @@
 	fire_sound_volume = 90
 	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
 	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
-	recoil = 2
 	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 	internal_magazine = FALSE
@@ -224,8 +223,8 @@
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/caflechette = 2,
-		/obj/item/ammo_box/magazine/caflechette/ballpoint = 3,
+		/obj/item/ammo_box/magazine/caflechette = 4,
+		/obj/item/ammo_box/magazine/caflechette/ballpoint = 2,
 	), src)
 
 /obj/item/gun/ballistic/automatic/rom_flech/blueshield
@@ -259,6 +258,6 @@
 	new weapon_to_spawn (src)
 
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/caflechette = 2,
+		/obj/item/ammo_box/magazine/caflechette = 3,
 		/obj/item/ammo_box/magazine/caflechette/ripper = 2,
 	), src)
