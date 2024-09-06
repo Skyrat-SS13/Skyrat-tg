@@ -30,7 +30,7 @@
 
 //Rifle Magazine
 /obj/item/ammo_box/magazine/caflechette
-	name = "flechette penetrator box"
+	name = "cmg penetrator box (.117 flech)"
 	ammo_type = /obj/item/ammo_casing/caflechette
 	caliber = CALIBER_FLECHETTE
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/romulus_technology/ammo.dmi'
@@ -40,16 +40,20 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/caflechette/ripper
-	name = "flechette ripper box"
+	name = "cmg ripper box (.117 flech)"
 	ammo_type = /obj/item/ammo_casing/caflechette/ripper
 	icon_state = "cmg_ripper"
 
 /obj/item/ammo_box/magazine/caflechette/ballpoint
-	name = "ballpoint box"
+	name = "cmg ballistic steel ball box (.117 flech)"
 	ammo_type = /obj/item/ammo_casing/caflechette/ballpoint
 	icon_state = "cmg_ballpoint"
 
 /obj/item/ammo_box/magazine/caflechette/magnesium
-	name = "magnesium rod box"
+	name = "cmg magnesium rod box (.117 flech)"
 	ammo_type = /obj/item/ammo_casing/caflechette/magnesium
 	icon_state = "cmg_incend"
+
+/obj/item/ammo_box/magazine/caflechette/depleted_uranium
+	name = "cmg depleted uranium rod box (.117 flech)"
+	ammo_type = /obj/item/ammo_casing/caflechette/du

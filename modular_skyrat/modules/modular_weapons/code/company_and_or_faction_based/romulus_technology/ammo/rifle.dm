@@ -45,9 +45,9 @@
 	dismemberment = 0
 	var/faction_bonus_force = 15 //Bonus force dealt against certain factions
 	var/list/nemesis_paths = list(
-		/mob/living/simple_animal/hostile/asteroid,
+		/mob/living/simple_animal/hostile,
 		/mob/living/basic,
-	) //Any mob with a faction that exists in this list will take bonus damage/effects
+	)
 
 /obj/projectile/bullet/caflechette/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(isnull(target))
@@ -62,8 +62,8 @@
 	return ..()
 
 /datum/embed_data/caflechette
-	embed_chance = 55
-	pain_chance = 70
+	embed_chance = 60
+	pain_chance = 90
 	fall_chance = 30
 	jostle_chance = 80
 	ignore_throwspeed_threshold = TRUE
@@ -72,7 +72,7 @@
 	rip_time = 2 SECONDS
 
 /obj/item/ammo_casing/caflechette/ripper
-	name = "flechette silicon dart"
+	name = "flechette silicon ripper dart"
 	desc = "A Romfed standard rifle flechette."
 	projectile_type = /obj/projectile/bullet/caflechette/ripper
 	custom_materials = AMMO_MATS_SHOTGUN_FLECH
@@ -80,7 +80,7 @@
 /obj/projectile/bullet/caflechette/ripper
 	name = "flechette dart"
 	damage = 10
-	wound_bonus = 30
+	wound_bonus = 40
 	bare_wound_bonus = 35
 	embed_type = /datum/embed_data/ripper
 	armour_penetration = 40 //defeat basic armour
@@ -117,6 +117,7 @@
 	ricochet_auto_aim_angle = 90
 	ricochet_auto_aim_range = 5
 	eyeblur = 0.4 SECONDS
+	stutter = 1 SECONDS
 
 /datum/embed_data/ballpoint
 	embed_chance = 50
@@ -159,7 +160,7 @@
 		M.ignite_mob()
 
 /obj/item/ammo_casing/caflechette/du
-	name = "flechette silicon ripper dart"
+	name = "flechette depleted uranium dart"
 	projectile_type = /obj/projectile/bullet/caflechette/du
 	custom_materials = AMMO_MATS_SHOTGUN_DU
 
