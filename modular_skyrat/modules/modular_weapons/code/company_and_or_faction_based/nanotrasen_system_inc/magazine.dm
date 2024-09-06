@@ -114,7 +114,7 @@
 	ammo_band_color = "#df00ae"
 
 /obj/item/ammo_box/magazine/firefly
-	name = "pistol magazine (.117 Incapacitator)"
+	name = "pistol magazine (.117 Lethal)"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/ammo.dmi'
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	icon_state = "firefly"
