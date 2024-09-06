@@ -9,7 +9,7 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 
 	ammo_type = /obj/item/ammo_casing/c460rowland
 	caliber = CALIBER_460ROWLAND

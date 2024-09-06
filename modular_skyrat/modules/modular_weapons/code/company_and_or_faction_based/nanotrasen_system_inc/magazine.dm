@@ -118,9 +118,8 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/nanotrasen_system_inc/ammo.dmi'
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	icon_state = "firefly"
-	multitype = FALSE
-	ammo_type = /obj/item/ammo_casing/shotgun/antitide
 	max_ammo = 10
+	caliber = CALIBER_38
 
 /obj/item/ammo_box/magazine/firefly/stun
 	name = "pistol magazine (.117 Incapacitator)"

@@ -472,6 +472,8 @@
 	custom_materials = AMMO_MATS_TEMP // plasma's wack.
 	advanced_print_req = TRUE
 
+/obj/item/ammo_casing/c38/match/bouncy
+	harmful = FALSE
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
 /obj/projectile/bullet/a223
@@ -550,13 +552,6 @@
 /obj/item/ammo_box/magazine/tommygunm45
 	name = "\improper Tommy Gun .460 Ceres drum"
 	desc = "A disc magazine chambered for .460 Ceres."
-
-/obj/item/ammo_box/magazine/m556
-	name = ".277 Aestus toploading magazine"
-	desc = "A toploading magazine chambered for .277 Aestus."
-
-/obj/item/ammo_box/magazine/m556/phasic
-	name = ".277 PHASE toploading magazine"
 
 /obj/item/ammo_box/magazine/sniper_rounds
 	name = "anti-materiel rifle magazine"
