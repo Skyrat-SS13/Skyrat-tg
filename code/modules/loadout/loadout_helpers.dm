@@ -15,8 +15,12 @@
 	datum/outfit/outfit = /datum/outfit,
 	datum/preferences/preference_source,
 	visuals_only = FALSE,
+<<<<<<< HEAD
 	datum/job/equipping,
 ) // SKYRAT EDIT CHANGE - Added equipping param
+=======
+)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(isnull(preference_source))
 		return equipOutfit(outfit, visuals_only)
 
@@ -30,6 +34,7 @@
 
 	var/list/preference_list = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_datums = loadout_list_to_datums(preference_list)
+<<<<<<< HEAD
 	var/obj/item/storage/briefcase/empty/travel_suitcase // SKYRAT EDIT ADDITIONi
 	var/loadout_placement_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 	// Slap our things into the outfit given
@@ -71,6 +76,15 @@
 	// SKYRAT EDIT END
 
 	// Handle any snowflake on_equips.
+=======
+	// Slap our things into the outfit given
+	for(var/datum/loadout_item/item as anything in loadout_datums)
+		item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
+	// Equip the outfit loadout items included
+	if(!equipped_outfit.equip(src, visuals_only))
+		return FALSE
+	// Handle any snowflake on_equips
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/new_contents = get_all_gear()
 	var/update = NONE
 	for(var/datum/loadout_item/item as anything in loadout_datums)
@@ -113,6 +127,7 @@
 		datums += actual_datum
 
 	return datums
+<<<<<<< HEAD
 
 // SKYRAT EDIT ADDITION
 /*
@@ -140,3 +155,5 @@
 /obj/item/storage/briefcase/empty/PopulateContents()
 	return
 // SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

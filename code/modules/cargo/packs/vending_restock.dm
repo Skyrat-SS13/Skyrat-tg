@@ -17,7 +17,18 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/vending_refill/cigarette)
 	crate_name = "cigarette supply crate"
+<<<<<<< HEAD
 	crate_type = /obj/structure/closet/crate
+=======
+	crate_type = /obj/structure/closet/crate/robust
+
+/datum/supply_pack/vending/science/cytopro
+	name = "Cytology Vendor Supply Crate"
+	desc = "For all your vat-growing needs! Contains a CytoPro machine refill."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/vending_refill/cytopro)
+	crate_name = "cytopro supply crate"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/vending/dinnerware
 	name = "Dinnerware Supply Crate"
@@ -106,6 +117,10 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/vending_refill/snack)
 	crate_name = "snacks supply crate"
+<<<<<<< HEAD
+=======
+	crate_type = /obj/structure/closet/crate/robust
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/vending/cola
 	name = "Softdrinks Supply Crate"

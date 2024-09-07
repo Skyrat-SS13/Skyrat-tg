@@ -42,6 +42,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 #endif
 
+#ifndef TESTING
+	if (LOWER_TEXT(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
+		return
+#endif
+
 	// asset_cache
 	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
@@ -352,11 +357,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION //We will check the population here, because we need to know if the client is an admin or not.
 	if(!check_population(connecting_admin))
 		qdel(src)
 		return
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
 			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))
@@ -655,7 +663,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!query_client_in_db.Execute())
 		qdel(query_client_in_db)
 		return
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/client_is_in_db = query_client_in_db.NextRow()
 	// If we aren't an admin, and the flag is set (the panic bunker is enabled).
 	if(CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
@@ -687,6 +699,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				qdel(query_client_in_db)
 				qdel(src)
 				return
+<<<<<<< HEAD
 */
 	var/client_is_in_db = query_client_in_db.NextRow()
 
@@ -707,6 +720,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(src)
 			return
 		//SKYRAT EDIT END
+=======
+
+	if(!client_is_in_db)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		new_player = 1
 		account_join_date = findJoinDate()
 		var/datum/db_query/query_add_player = SSdbcore.NewQuery({"

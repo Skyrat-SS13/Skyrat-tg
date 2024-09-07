@@ -52,7 +52,10 @@
 /obj/structure/showcase/machinery/oldpod/used/psyker
 	name = "opened mental energizer"
 	desc = "A mental energizer that has recently discharged its occupant. The pod appears non-functional."
+<<<<<<< HEAD
 	icon = 'icons/obj/machines/sleeper.dmi'
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "psykerpod-open"
 
 /obj/structure/showcase/cyborg/old

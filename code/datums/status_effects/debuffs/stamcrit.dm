@@ -15,7 +15,11 @@
 
 	// This should be in on apply but we need it to happen AFTER being added to the mob
 	// (Because we need to wait until the status effect is in their status effect list, or we'll add two)
+<<<<<<< HEAD
 	if(owner.getStaminaLoss() < 162) // SKYRAT EDIT CHANGE
+=======
+	if(owner.getStaminaLoss() < 120)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// Puts you a little further into the initial stamcrit, makes stamcrit harder to outright counter with chems.
 		owner.adjustStaminaLoss(30, FALSE)
 

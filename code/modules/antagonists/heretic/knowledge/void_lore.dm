@@ -30,7 +30,11 @@
 	name = "Glimmer of Winter"
 	desc = "Opens up the Path of Void to you. \
 		Allows you to transmute a knife in sub-zero temperatures into a Void Blade. \
+<<<<<<< HEAD
 		You can only create five at a time." //SKYRAT EDIT two to five
+=======
+		You can only create two at a time."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	gain_text = "I feel a shimmer in the air, the air around me gets colder. \
 		I start to realize the emptiness of existence. Something's watching me."
 	next_knowledge = list(/datum/heretic_knowledge/void_grasp)

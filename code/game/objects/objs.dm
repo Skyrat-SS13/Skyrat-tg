@@ -190,7 +190,10 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 	if(obj_flags & UNIQUE_RENAME)
 		. += span_notice("Use a pen on it to rename it or change its description.")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/analyzer_act(mob/living/user, obj/item/analyzer/tool)
 	if(atmos_scan(user=user, target=src, silent=FALSE))
 		return TRUE

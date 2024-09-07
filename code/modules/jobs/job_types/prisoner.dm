@@ -3,7 +3,11 @@
 	description = "Keep yourself occupied in permabrig."
 	department_head = list("The Security Team")
 	faction = FACTION_STATION
+<<<<<<< HEAD
 	total_positions = 12		// SKYRAT EDIT: Original value (0)
+=======
+	total_positions = 0
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	spawn_positions = 2
 	supervisors = "the security team"
 	exp_granted_type = EXP_TYPE_CREW
@@ -14,7 +18,11 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/prisoner
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
+<<<<<<< HEAD
 	department_for_prefs = /datum/job_department/assistant // SKYRAT EDIT - ORIGINAL: /datum/job_department/security
+=======
+	department_for_prefs = /datum/job_department/security
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	exclusive_mail_goodies = TRUE
 	mail_goodies = list (

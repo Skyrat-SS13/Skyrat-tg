@@ -4,7 +4,10 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import {
   Objective,
   ObjectivePrintout,
@@ -61,7 +64,10 @@ const IntroductionSection = (props) => {
               />
             }
           />
+<<<<<<< HEAD
           <Rules /* SKYRAT EDIT ADDITION */ />
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         </Stack.Item>
       </Stack>
     </Section>
@@ -80,17 +86,27 @@ const FlavorSection = (props) => {
           mr={-0.8}
           mt={-0.5}
           icon="hammer"
+<<<<<<< HEAD
           /* SKYRAT EDIT: ORIGINAL TOOLTIP
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           tooltip={`
             This is a gameplay suggestion for bored ais.
             You don't have to follow it, unless you want some
             ideas for how to spend the round.`}
+<<<<<<< HEAD
           */
           tooltip={`
             Please refer to the 'Antagonist Policy' section of the wiki
             if you have any questions.`}
           tooltipPosition="bottom-start"
         />
+=======
+          tooltipPosition="bottom-start"
+        >
+          Policy
+        </Button>
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       }
     >
       <Stack vertical fill>

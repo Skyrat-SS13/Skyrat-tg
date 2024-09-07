@@ -41,7 +41,10 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 	icon_state = "secdrobe"
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
+<<<<<<< HEAD
 	/* SKYRAT EDIT - LISTS OVERRIDDEN IN 'modular_skyrat\modules\sec_haul\code\misc\vending.dm'
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	products = list(
 		/obj/item/clothing/head/beret/sec = 3,
 		/obj/item/clothing/head/soft/sec = 3,
@@ -66,8 +69,12 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/clothing/under/rank/security/officer/formal = 3,
 		/obj/item/clothing/suit/jacket/officer/blue = 3,
 		/obj/item/clothing/head/beret/sec/navyofficer = 3,
+<<<<<<< HEAD
 		)
 	*/
+=======
+	)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MOSTLY_PURE_RED
@@ -333,7 +340,11 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/storage/backpack/satchel/explorer = 1,
 		/obj/item/storage/backpack/messenger/explorer = 1,
 		/obj/item/storage/bag/books = 1,
+<<<<<<< HEAD
 		/obj/item/radio/headset/headset_srv = 2,
+=======
+		/obj/item/radio/headset/headset_srvent = 2,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/curator_wardrobe
 	payment_department = ACCOUNT_SRV

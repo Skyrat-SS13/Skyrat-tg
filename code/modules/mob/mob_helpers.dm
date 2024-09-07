@@ -345,12 +345,18 @@
 		return
 	return TRUE
 
+<<<<<<< HEAD
 ///Is the passed in mob an admin ghost WITH AI INTERACT enabled
+=======
+///Returns TRUE/FALSE on whether the mob is an Admin Ghost AI.
+///This requires this snowflake check because AI interact gives the access to the mob's client, rather
+///than the mob like everyone else, and we keep it that way so they can't accidentally give someone Admin AI access.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /proc/isAdminGhostAI(mob/user)
 	if(!isAdminObserver(user))
-		return
-	if(!user.client.AI_Interact) // Do they have it enabled?
-		return
+		return FALSE
+	if(!HAS_TRAIT_FROM(user.client, TRAIT_AI_ACCESS, ADMIN_TRAIT)) // Do they have it enabled?
+		return FALSE
 	return TRUE
 
 /**
@@ -428,7 +434,11 @@
 
 ///Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()
+<<<<<<< HEAD
 	return stat == DEAD || has_unlimited_silicon_privilege || HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and silicons can always see reagents
+=======
+	return stat == DEAD || HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and silicons can always see reagents
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Can this mob hold items
 /mob/proc/can_hold_items(obj/item/I)

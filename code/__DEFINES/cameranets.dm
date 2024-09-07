@@ -30,6 +30,10 @@
 #define CAMERA_NETWORK_CARGO "cargo"
 #define CAMERANET_NETWORK_ABDUCTOR "abductor"
 #define OPERATIVE_CAMERA_NET "operative"
+<<<<<<< HEAD
+=======
+#define CAMERANET_NETWORK_CURATOR "curator"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Ruins/Away missiosn/Misc camera nets
 #define CAMERANET_NETWORK_MOON19_XENO "mo19x"

@@ -20,11 +20,18 @@ import { FONTS } from './constants';
 import { selectSettings } from './selectors';
 
 export function SettingsGeneral(props) {
+<<<<<<< HEAD
   const { theme, fontFamily, fontSize, lineHeight, statLinked, statFontSize } =
     useSelector(selectSettings);
   const dispatch = useDispatch();
   const [freeFont, setFreeFont] = useState(false);
   const [statFont, setStatFont] = useState(false);
+=======
+  const { theme, fontFamily, fontSize, lineHeight } =
+    useSelector(selectSettings);
+  const dispatch = useDispatch();
+  const [freeFont, setFreeFont] = useState(false);
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
   return (
     <Section>
@@ -119,6 +126,7 @@ export function SettingsGeneral(props) {
                 stepPixelSize={20}
                 minValue={8}
                 maxValue={32}
+<<<<<<< HEAD
                 value={statFont ? statFontSize : fontSize}
                 unit="px"
                 format={(value) => toFixed(value)}
@@ -159,6 +167,16 @@ export function SettingsGeneral(props) {
                 />
               </Stack.Item>
             )}
+=======
+                value={fontSize}
+                unit="px"
+                format={(value) => toFixed(value)}
+                onChange={(e, value) =>
+                  dispatch(updateSettings({ fontSize: value }))
+                }
+              />
+            </Stack.Item>
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           </Stack>
         </LabeledList.Item>
         <LabeledList.Item label="Line height">

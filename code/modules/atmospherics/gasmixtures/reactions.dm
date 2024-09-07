@@ -793,7 +793,10 @@
 	cached_gases[/datum/gas/tritium][MOLES] -= 5 * nob_formed * reduction_factor
 	cached_gases[/datum/gas/nitrogen][MOLES] -= 10 * nob_formed
 	cached_gases[/datum/gas/hypernoblium][MOLES] += nob_formed // I'm not going to nitpick, but N20H10 feels like it should be an explosive more than anything.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SET_REACTION_RESULTS(nob_formed)
 	var/energy_released = nob_formed * (NOBLIUM_FORMATION_ENERGY / (max(cached_gases[/datum/gas/bz][MOLES], 1)))
 	var/new_heat_capacity = air.heat_capacity()

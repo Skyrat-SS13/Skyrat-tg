@@ -45,7 +45,11 @@
 	var/weapon_weight = WEAPON_LIGHT
 	var/dual_wield_spread = 24 //additional spread when dual wielding
 	///Can we hold up our target with this? Default to yes
+<<<<<<< HEAD
 	var/can_hold_up = FALSE // SKYRAT EDIT - DISABLED ORIGINAL: TRUE
+=======
+	var/can_hold_up = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// Just 'slightly' snowflakey way to modify projectile damage for projectiles fired from this gun.
 	var/projectile_damage_multiplier = 1
@@ -77,8 +81,11 @@
 		pin = new pin(src)
 
 	add_seclight_point()
+<<<<<<< HEAD
 	give_gun_safeties() // SKYRAT EDIT ADDITION - GUN SAFETIES
 	give_manufacturer_examine() // SKYRAT EDIT ADDITON - MANUFACTURER EXAMINE
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	add_bayonet_point()
 
 /obj/item/gun/Destroy()

@@ -173,11 +173,14 @@
 			if(!gun.chambered)
 				. = TRUE
 				gun.recharge_newshot() //try to reload a new shot.
+<<<<<<< HEAD
 		/// SKYRAT EDIT START - Cargo borgs
 		else if(istype(module, /obj/item/hand_labeler/cyborg))
 			var/obj/item/hand_labeler/cyborg/labeler = module
 			labeler.labels_left = 30
 		/// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(cyborg.toner < cyborg.tonermax)
 		. = TRUE
@@ -250,11 +253,14 @@
 	cyborg.diag_hud_set_aishell()
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
 	new_model.update_dogborg()
 	new_model.update_tallborg()
 	//SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
 	qdel(src)
 	return new_model
@@ -269,26 +275,35 @@
 		for(var/skin in borg_skins)
 			var/list/details = borg_skins[skin]
 			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
 			if (!isnull(details[SKIN_FEATURES]))
 				if (TRAIT_R_WIDE in details[SKIN_FEATURES])
 					var/image/reskin = reskin_icons[skin]
 					reskin.pixel_x -= 16
 			//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), cyborg, old_model), radius = 38, require_near = TRUE)
 		if(!borg_skin)
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
+<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if(cyborg.hasExpanded && (((TRAIT_R_WIDE in details[SKIN_FEATURES]) && (TRAIT_R_WIDE in model_features)) || ((TRAIT_R_TALL in details[SKIN_FEATURES]) && (TRAIT_R_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
 		//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
+<<<<<<< HEAD
 			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
@@ -299,12 +314,15 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(!isnull(details[SKIN_FEATURES]))
 			model_features += details[SKIN_FEATURES]
 		if (!isnull(details[SKIN_HAT_REST_OFFSET]))
 			rest_hat_offset = details[SKIN_HAT_REST_OFFSET]
 		//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
@@ -355,7 +373,11 @@
 /obj/item/robot_model/proc/check_menu(mob/living/silicon/robot/user, obj/item/robot_model/old_model)
 	if(!istype(user))
 		return FALSE
+<<<<<<< HEAD
 	if(user.incapacitated())
+=======
+	if(user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(user.model != old_model)
 		return FALSE
@@ -408,6 +430,7 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
+<<<<<<< HEAD
 		/obj/item/screwdriver/cyborg/power, // Skyrat ADDITION - Combines Screwdriver and Wrench into one
 		/obj/item/crowbar/cyborg/power, // Skyrat ADDITION - Combines Crowbar and Wirecutters into one
 		/obj/item/multitool/cyborg, //Skyrat ADDITION - Adds multitool for easier access
@@ -416,6 +439,12 @@
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
+=======
+		/obj/item/borg/cyborg_omnitool/engineering,
+		/obj/item/borg/cyborg_omnitool/engineering,
+		/obj/item/t_scanner,
+		/obj/item/analyzer,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -423,7 +452,10 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/stack/rods/cyborg,
+<<<<<<< HEAD
 		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil,
 	)
@@ -744,7 +776,10 @@
 		/obj/item/storage/bag/ore/cyborg,
 		/obj/item/pickaxe/drill/cyborg,
 		/obj/item/shovel,
+<<<<<<< HEAD
 		/obj/item/kinetic_crusher, //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/crowbar/cyborg,
 		/obj/item/weldingtool/mini,
 		/obj/item/extinguisher/mini,
@@ -789,8 +824,13 @@
 
 /obj/item/robot_model/peacekeeper/do_transform_animation()
 	..()
+<<<<<<< HEAD
 	to_chat(loc, "<span class='userdanger'>Under Safeguard, you are an enforcer of the PEACE and preventer of HARM. \
 	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>") // SKYRAT EDIT Changes verbiage off ASIMOV/HUMAN Focus
+=======
+	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
+	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/robot_model/security
 	name = "Security"
@@ -832,6 +872,7 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+<<<<<<< HEAD
 		// SKYRAT EDIT START
 		// /obj/item/reagent_containers/borghypo/borgshaker,
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol,
@@ -871,6 +912,28 @@
 		/obj/item/reagent_containers/cup/rag,
 		//obj/item/storage/bag/money, //This is never used and there's already too much bloat
 		// SKYRAT EDIT END
+=======
+		/obj/item/reagent_containers/borghypo/borgshaker,
+		/obj/item/borg/apparatus/beaker/service,
+		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
+		/obj/item/reagent_containers/condiment/enzyme,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/rsf,
+		/obj/item/storage/bag/tray,
+		/obj/item/pen,
+		/obj/item/toy/crayon/spraycan/borg,
+		/obj/item/extinguisher/mini,
+		/obj/item/hand_labeler/borg,
+		/obj/item/razor,
+		/obj/item/instrument/guitar,
+		/obj/item/instrument/piano_synth,
+		/obj/item/lighter,
+		/obj/item/borg/lollipop,
+		/obj/item/stack/pipe_cleaner_coil/cyborg,
+		/obj/item/chisel,
+		/obj/item/reagent_containers/cup/rag,
+		/obj/item/storage/bag/money,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(

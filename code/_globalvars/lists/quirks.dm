@@ -8,8 +8,11 @@ GLOBAL_LIST_INIT(nearsighted_glasses, list(
 	"Thin" = /obj/item/clothing/glasses/regular/thin,
 	"Jamjar" = /obj/item/clothing/glasses/regular/jamjar,
 	"Binoclard" = /obj/item/clothing/glasses/regular/kim,
+<<<<<<< HEAD
 	"Modern" = /obj/item/clothing/glasses/regular/betterunshit, // SKYRAT EDIT ADDITION
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 ///Options for the prosthetic limb quirk to choose from

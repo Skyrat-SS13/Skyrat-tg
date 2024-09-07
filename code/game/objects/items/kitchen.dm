@@ -163,7 +163,10 @@
 	custom_price = PAYCHECK_CREW * 1.5
 	tool_behaviour = TOOL_ROLLINGPIN
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/kitchen/rollingpin/illegal
 	name = "metal rolling pin"
 	desc = "A heavy metallic rolling pin used to bash in those annoying ingredients."

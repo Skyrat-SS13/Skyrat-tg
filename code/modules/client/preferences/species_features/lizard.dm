@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /proc/generate_lizard_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
 	var/static/icon/lizard
 	var/static/icon/lizard_with_snout
@@ -94,6 +97,7 @@
 	savefile_key = "feature_lizard_legs"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+<<<<<<< HEAD
 	relevant_mutant_bodypart = "legs"
 
 /datum/preference/choiced/lizard_legs/init_possible_values()
@@ -101,6 +105,53 @@
 
 /datum/preference/choiced/lizard_legs/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["legs"] = value
+=======
+
+/datum/preference/choiced/lizard_legs/init_possible_values()
+	return list(NORMAL_LEGS, DIGITIGRADE_LEGS)
+
+/datum/preference/choiced/lizard_legs/apply_to_human(mob/living/carbon/human/target, value)
+	target.dna.features["legs"] = value
+	// Hack to update the dummy in the preference menu
+	// (Because digi legs are ONLY handled on species change)
+	if(!isdummy(target) || target.dna.species.digitigrade_customization == DIGITIGRADE_NEVER)
+		return
+
+	var/list/correct_legs = target.dna.species.bodypart_overrides.Copy() & list(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+
+	if(value == DIGITIGRADE_LEGS)
+		correct_legs[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade
+		correct_legs[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade
+
+	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
+		if(old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES)
+			continue
+
+		var/path = correct_legs[old_part.body_zone]
+		if(!path)
+			continue
+		var/obj/item/bodypart/new_part = new path()
+		new_part.replace_limb(target, TRUE)
+		new_part.update_limb(is_creating = TRUE)
+		qdel(old_part)
+
+/datum/preference/choiced/lizard_legs/is_accessible(datum/preferences/preferences)
+	if(!..())
+		return FALSE
+	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	return initial(species_type.digitigrade_customization) == DIGITIGRADE_OPTIONAL
+
+
+/datum/preference/choiced/lizard_legs/is_accessible(datum/preferences/preferences)
+	. = ..()
+
+	if(!.)
+		return
+
+	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+
+	return initial(species_type.digitigrade_customization) & DIGITIGRADE_OPTIONAL
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/preference/choiced/lizard_snout
 	savefile_key = "feature_lizard_snout"
@@ -122,7 +173,11 @@
 	savefile_key = "feature_lizard_spines"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+<<<<<<< HEAD
 	relevant_mutant_bodypart = "spines"
+=======
+	relevant_external_organ = /obj/item/organ/external/spines
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/preference/choiced/lizard_spines/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.spines_list)
@@ -143,7 +198,11 @@
 	target.dna.features["tail_lizard"] = value
 
 /datum/preference/choiced/lizard_tail/create_default_value()
+<<<<<<< HEAD
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
 	return /datum/sprite_accessory/tails/lizard/smooth::name
 */
+=======
+	return /datum/sprite_accessory/tails/lizard/smooth::name
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

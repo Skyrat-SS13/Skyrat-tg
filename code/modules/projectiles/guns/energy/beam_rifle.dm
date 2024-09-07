@@ -52,7 +52,10 @@
 	hitscan = TRUE
 	tracer_type = /obj/effect/projectile/tracer/tracer/beam_rifle
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVE - God
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/projectile/beam/event_horizon/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 
@@ -63,4 +66,7 @@
 	var/obj/reality_tear/temporary/tear = new(rift_loc)
 	tear.start_disaster()
 	message_admins("[ADMIN_LOOKUPFLW(target)] has been hit by an anti-existential beam at [ADMIN_VERBOSEJMP(rift_loc)], creating a singularity.")
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

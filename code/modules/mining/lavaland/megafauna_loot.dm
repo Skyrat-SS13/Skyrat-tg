@@ -274,7 +274,10 @@
 	greyscale_colors = "#4d4d4d#808080"
 	greyscale_config = /datum/greyscale_config/heck_suit
 	greyscale_config_worn = /datum/greyscale_config/heck_suit/worn
+<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /datum/armor/hooded_hostile_environment
@@ -323,7 +326,10 @@
 	greyscale_colors = "#4d4d4d#808080#ff3300"
 	greyscale_config = /datum/greyscale_config/heck_helmet
 	greyscale_config_worn = /datum/greyscale_config/heck_helmet/worn
+<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/heck_helmet/worn/snouted //SKYRAT EDIT ADDITION - MuzzledGreyscale (Why does this use worn_digi)
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/hooded/hostile_environment/Initialize(mapload)
@@ -746,7 +752,11 @@
 		return
 
 	var/mob/living/carbon/human/consumer = user
+<<<<<<< HEAD
 	var/random = rand(2,4) //SKYRAT EDIT - Commenting out #1 because it makes people invisible.
+=======
+	var/random = rand(1,4)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	switch(random)
 		if(1)

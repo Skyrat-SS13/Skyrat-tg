@@ -86,7 +86,11 @@ const InputDisplay = (props) => {
           </Box>
           <Input
             fluid
+<<<<<<< HEAD
             maxLength={500} /* SKYRAT EDIT: ORIGINAL 100 */
+=======
+            maxLength={100}
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             value={description}
             onChange={(e, value) => setInput({ ...input, description: value })}
           />
@@ -97,7 +101,11 @@ const InputDisplay = (props) => {
           </Box>
           <Input
             fluid
+<<<<<<< HEAD
             maxLength={500} /* SKYRAT EDIT: ORIGINAL 100 */
+=======
+            maxLength={100}
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             value={comments}
             onChange={(e, value) => setInput({ ...input, comments: value })}
           />

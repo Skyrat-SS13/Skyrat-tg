@@ -68,7 +68,11 @@
 /datum/action/innate/dash/ninja
 	current_charges = 3
 	max_charges = 3
+<<<<<<< HEAD
 	charge_rate = 350 //SKYRAT EDIT CHANGE - ORIGINAL: 200
+=======
+	charge_rate = 200
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	beam_length = 1 SECONDS
 	recharge_sound = null
 

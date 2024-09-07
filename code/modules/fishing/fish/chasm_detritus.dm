@@ -96,7 +96,11 @@ GLOBAL_LIST_INIT_TYPED(chasm_detritus_types, /datum/chasm_detritus, init_chasm_d
 /// This also includes all mobs fallen into chasms, regardless of distance
 /datum/chasm_detritus/restricted/bodies/get_chasm_contents(turf/fishing_spot)
 	. = ..()
+<<<<<<< HEAD
 	. |= GLOB.chasm_fallen_mobs
+=======
+	. |= GLOB.chasm_fallen_mobs[get_chasm_category(fishing_spot)]
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Body detritus is selected in favor of bodies belonging to sentient mobs
 /// The first sentient body found in the list of contents is returned, otherwise

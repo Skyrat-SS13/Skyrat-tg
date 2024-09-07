@@ -1,7 +1,11 @@
 /obj/item/bear_armor
 	name = "pile of bear armor"
 	desc = "A scattered pile of various shaped armor pieces fitted for a bear, some duct tape, and a nail filer. Crude instructions \
+<<<<<<< HEAD
 		are written on the back of one of the plates in russian. This seems like an awful idea."
+=======
+		are written on the back of one of the plates in Russian. This seems like an awful idea."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "bear_armor_upgrade"
 

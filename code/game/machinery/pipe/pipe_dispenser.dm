@@ -62,7 +62,11 @@
 	data["init_directions"] = init_directions
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/pipedispenser/ui_act(action, params)
+=======
+/obj/machinery/pipedispenser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(..())
 		return
 	switch(action)
@@ -187,6 +191,12 @@
 
 //Allow you to drag-drop disposal pipes and transit tubes into it
 /obj/machinery/pipedispenser/disposal/mouse_drop_receive(obj/structure/pipe, mob/user, params)
+<<<<<<< HEAD
+=======
+	if(user.incapacitated)
+		return
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if (!istype(pipe, /obj/structure/disposalconstruct) && !istype(pipe, /obj/structure/c_transit_tube) && !istype(pipe, /obj/structure/c_transit_tube_pod))
 		return
 

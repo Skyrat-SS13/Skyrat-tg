@@ -12,6 +12,60 @@
 /obj/structure/kitchenspike_frame/Initialize(mapload)
 	. = ..()
 	register_context()
+<<<<<<< HEAD
+=======
+
+/obj/structure/kitchenspike_frame/examine(mob/user)
+	. = ..()
+	. += "It can be <b>welded</b> apart."
+	. += "You could attach <b>[MEATSPIKE_IRONROD_REQUIREMENT]</b> iron rods to it to create a <b>Meat Spike</b>."
+
+/obj/structure/kitchenspike_frame/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	if(isnull(held_item))
+		return NONE
+
+	var/message = ""
+	if(held_item.tool_behaviour == TOOL_WELDER)
+		message = "Deconstruct"
+	else if(held_item.tool_behaviour == TOOL_WRENCH)
+		message = "Bolt Down Frame"
+
+	if(!message)
+		return NONE
+	context[SCREENTIP_CONTEXT_LMB] = message
+	return CONTEXTUAL_SCREENTIP_SET
+
+/obj/structure/kitchenspike_frame/welder_act(mob/living/user, obj/item/tool)
+	if(!tool.tool_start_check(user, amount = 0))
+		return FALSE
+	to_chat(user, span_notice("You begin cutting \the [src] apart..."))
+	if(!tool.use_tool(src, user, 5 SECONDS, volume = 50))
+		return TRUE
+	visible_message(span_notice("[user] slices apart \the [src]."),
+		span_notice("You cut \the [src] apart with \the [tool]."),
+		span_hear("You hear welding."))
+	new /obj/item/stack/sheet/iron(loc, MEATSPIKE_IRONROD_REQUIREMENT)
+	qdel(src)
+	return TRUE
+
+/obj/structure/kitchenspike_frame/wrench_act(mob/living/user, obj/item/tool)
+	default_unfasten_wrench(user, tool)
+	return TRUE
+
+/obj/structure/kitchenspike_frame/attackby(obj/item/attacking_item, mob/user, params)
+	add_fingerprint(user)
+	if(!istype(attacking_item, /obj/item/stack/rods))
+		return ..()
+	var/obj/item/stack/rods/used_rods = attacking_item
+	if(used_rods.get_amount() >= MEATSPIKE_IRONROD_REQUIREMENT)
+		used_rods.use(MEATSPIKE_IRONROD_REQUIREMENT)
+		balloon_alert(user, "meatspike built")
+		var/obj/structure/new_meatspike = new /obj/structure/kitchenspike(loc)
+		transfer_fingerprints_to(new_meatspike)
+		qdel(src)
+		return
+	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT] rods needed!")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/kitchenspike_frame/examine(mob/user)
 	. = ..()

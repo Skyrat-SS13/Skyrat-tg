@@ -146,7 +146,11 @@
 		part_datum.sealed_layer = category[SEALED_LAYER]
 		part_datum.unsealed_message = category[UNSEALED_MESSAGE] || "No unseal message set! Tell a coder!"
 		part_datum.sealed_message = category[SEALED_MESSAGE] || "No seal message set! Tell a coder!"
+<<<<<<< HEAD
 		part_datum.can_overslot = TRUE //SKYRAT EDIT CHANGE, overslottable everything - Original: part_datum.can_overslot = category[CAN_OVERSLOT] || FALSE
+=======
+		part_datum.can_overslot = category[CAN_OVERSLOT] || FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		part.clothing_flags = category[UNSEALED_CLOTHING] || NONE
 		part.visor_flags = category[SEALED_CLOTHING] || NONE
 		part.flags_inv = category[UNSEALED_INVISIBILITY] || NONE

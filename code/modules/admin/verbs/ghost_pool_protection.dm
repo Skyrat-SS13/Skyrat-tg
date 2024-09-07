@@ -50,7 +50,11 @@ ADMIN_VERB(ghost_pool_protection, R_ADMIN, "Ghost Pool Protection", "Choose whic
 	data["minigames"] = (new_role_flags & GHOSTROLE_MINIGAME)
 	return data
 
+<<<<<<< HEAD
 /datum/ghost_pool_menu/ui_act(action, params)
+=======
+/datum/ghost_pool_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

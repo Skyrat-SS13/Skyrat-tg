@@ -30,6 +30,7 @@
 		addtimer(CALLBACK(src, PROC_REF(show_laws)), 0)
 		addtimer(CALLBACK(src, PROC_REF(deadchat_lawchange)), 0)
 		last_lawchange_announce = world.time
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START: AI LAWSYNC
 	if(isAI(src))
 		var/mob/living/silicon/ai/ai = src
@@ -37,6 +38,8 @@
 			if(cyborg.connected_ai && cyborg.lawupdate)
 				cyborg.lawsync()
 	// SKYRAT EDIT ADDITON END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /mob/living/silicon/proc/set_zeroth_law(law, law_borg, announce = TRUE)
 	laws_sanity_check()

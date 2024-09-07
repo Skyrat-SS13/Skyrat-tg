@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+//////////////////////////
+/////Initial Building/////
+//////////////////////////
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Inits GLOB.surgeries
 /proc/init_surgeries()
 	var/surgeries = list()
@@ -10,9 +17,13 @@
 /proc/make_datum_reference_lists()
 	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
 	init_keybindings()
+<<<<<<< HEAD
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
 	init_skyrat_stack_recipes() //SKYRAT EDIT ADDITION - More sheet recipes
+=======
+	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	init_crafting_recipes()
 	init_crafting_recipes_atoms()
 
@@ -22,7 +33,11 @@
 		if(ispath(path, /datum/crafting_recipe/stack))
 			continue
 		var/datum/crafting_recipe/recipe = new path()
+<<<<<<< HEAD
 		var/is_cooking = ((recipe.category in GLOB.crafting_category_food) || (recipe.category in GLOB.crafting_category_food_skyrat)) // SKYRAT EDIT CHANGE - ORIGINAL: var/is_cooking = (recipe.category in GLOB.crafting_category_food)
+=======
+		var/is_cooking = (recipe.category in GLOB.crafting_category_food)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		recipe.reqs = sort_list(recipe.reqs, GLOBAL_PROC_REF(cmp_crafting_req_priority))
 		if(recipe.name != "" && recipe.result)
 			if(is_cooking)
@@ -184,7 +199,10 @@ GLOBAL_LIST_INIT(WALLITEMS_INTERIOR, typecacheof(list(
 	/obj/machinery/status_display,
 	/obj/machinery/ticket_machine,
 	/obj/machinery/turretid,
+<<<<<<< HEAD
 	/obj/machinery/time_clock, //SKYRAT EDIT TIME CLOCK
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/obj/machinery/barsign,
 	/obj/structure/extinguisher_cabinet,
 	/obj/structure/fireaxecabinet,

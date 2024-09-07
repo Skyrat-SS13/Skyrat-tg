@@ -1,6 +1,10 @@
 /datum/quirk/claustrophobia
 	name = "Claustrophobia"
+<<<<<<< HEAD
 	desc = "You are terrified of small spaces. If you are placed inside any container, locker, or machinery, a panic attack sets in and you struggle to breathe." // SKYRAT EDIT CHANGE - ORIGINAL: desc = "You are terrified of small spaces and certain jolly figures. If you are placed inside any container, locker, or machinery, a panic attack sets in and you struggle to breathe."
+=======
+	desc = "You are terrified of small spaces and certain jolly figures. If you are placed inside any container, locker, or machinery, a panic attack sets in and you struggle to breathe."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon = FA_ICON_BOX_OPEN
 	value = -4
 	medical_record_text = "Patient demonstrates a fear of tight spaces."
@@ -20,12 +24,18 @@
 
 	var/nick_spotted = FALSE
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL START
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/mob/living/carbon/human/possible_claus in view(5, quirk_holder))
 		if(evaluate_jolly_levels(possible_claus))
 			nick_spotted = TRUE
 			break
+<<<<<<< HEAD
 SKYRAT EDIT REMOVAL END */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(!nick_spotted && isturf(quirk_holder.loc))
 		quirk_holder.clear_mood_event("claustrophobia")

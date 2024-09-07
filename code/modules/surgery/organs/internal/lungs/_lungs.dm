@@ -1,7 +1,11 @@
 /obj/item/organ/internal/lungs
 	name = "lungs"
 	icon_state = "lungs"
+<<<<<<< HEAD
 	visual = FALSE
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_LUNGS
 	gender = PLURAL
@@ -154,17 +158,27 @@
 	add_gas_reaction(/datum/gas/zauker, while_present = PROC_REF(too_much_zauker))
 
 ///Simply exists so that you don't keep any alerts from your previous lack of lungs.
+<<<<<<< HEAD
 /obj/item/organ/internal/lungs/Insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
 	if(!.)
 		return .
+=======
+/obj/item/organ/internal/lungs/mob_insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
+	. = ..()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	receiver.clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_CO2)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_NITRO)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_PLASMA)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_N2O)
 
+<<<<<<< HEAD
 /obj/item/organ/internal/lungs/Remove(mob/living/carbon/organ_owner, special, movement_flags)
+=======
+/obj/item/organ/internal/lungs/mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	// This is very "manual" I realize, but it's useful to ensure cleanup for gases we're removing happens
 	// Avoids stuck alerts and such

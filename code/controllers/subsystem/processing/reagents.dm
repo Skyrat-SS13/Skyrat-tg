@@ -17,6 +17,7 @@ PROCESSING_SUBSYSTEM_DEF(reagents)
 	GLOB.fake_reagent_blacklist = list(/datum/reagent/medicine/c2, /datum/reagent/medicine, /datum/reagent/reaction_agent)
 	//Build GLOB lists - see holder.dm
 	build_chemical_reactions_lists()
+<<<<<<< HEAD
 
 	// SKYRAT EDIT ADDITION START
 	if(CONFIG_GET(flag/disable_erp_preferences))
@@ -30,6 +31,8 @@ PROCESSING_SUBSYSTEM_DEF(reagents)
 				if(reaction_list)
 					reaction_list -= reaction_datum
 	// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/processing/reagents/fire(resumed = FALSE)

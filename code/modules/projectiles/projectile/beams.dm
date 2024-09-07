@@ -2,7 +2,11 @@
 	name = "laser"
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+<<<<<<< HEAD
 	damage = 25
+=======
+	damage = 20
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	damage_type = BURN
 	hitsound = 'sound/weapons/sear.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'

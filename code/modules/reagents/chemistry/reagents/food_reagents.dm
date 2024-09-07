@@ -53,10 +53,13 @@
 			var/obj/item/the_real_food = holder.my_atom
 			if(isitem(the_real_food) && !is_reagent_container(the_real_food))
 				exposed_mob.add_mob_memory(/datum/memory/good_food, food = the_real_food)
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION BEGIN - Racial Drinks
 		if (RACE_DRINK)
 			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/race_drink)
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Gets just how much nutrition this reagent is worth for the passed mob
 /datum/reagent/consumable/proc/get_nutriment_factor(mob/living/carbon/eater)
@@ -953,7 +956,11 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
+<<<<<<< HEAD
 		stomach.adjust_charge(reac_volume * 0.03 * STANDARD_CELL_CHARGE)
+=======
+		stomach.adjust_charge(reac_volume * 0.03 * ETHEREAL_CHARGE_NORMAL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/reagent/consumable/liquidelectricity/enriched/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()

@@ -35,23 +35,40 @@
 	name = "Held Sombrero Style (Held, Right)"
 	json_config = 'code/datums/greyscale/json_configs/sombrero_base_righthand.json'
 
+<<<<<<< HEAD
 /* SKYRAT EDIT START - Beret-lliant (moved to modular_skyrat/modules/berets/code/datums/config_types)
 /datum/greyscale_config/beret/worn
 	name = "Beret Worn"
+=======
+/datum/greyscale_config/beret
+	name = "Beret"
+	icon_file = 'icons/obj/clothing/head/beret.dmi'
+	json_config = 'code/datums/greyscale/json_configs/beret.json'
+
+/datum/greyscale_config/beret/worn
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	name = "Beret (Worn)"
 	json_config = 'code/datums/greyscale/json_configs/beret_worn.json'
 
 /datum/greyscale_config/beret_badge
+<<<<<<< HEAD
 	name = "Beret With Badge"
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	name = "Badged Beret"
 	icon_file = 'icons/obj/clothing/head/beret.dmi'
 	json_config = 'code/datums/greyscale/json_configs/beret_badge.json'
 
 /datum/greyscale_config/beret_badge/worn
+<<<<<<< HEAD
 	name = "Beret With Badge Worn"
 	name = "Badged Beret (Worn)"
 	json_config = 'code/datums/greyscale/json_configs/beret_badge_worn.json'
 SKYRAT EDIT END */
+=======
+	name = "Badged Beret (Worn)"
+	json_config = 'code/datums/greyscale/json_configs/beret_badge_worn.json'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/greyscale_config/beanie
 	name = "Beanie"
@@ -276,6 +293,14 @@ SKYRAT EDIT END */
 	icon_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_inhand.json'
 
+<<<<<<< HEAD
+=======
+/datum/greyscale_config/jumpsuit/worn_digi
+	name = "Jumpsuit Worn (Digitigrate)"
+	icon_file = 'icons/mob/clothing/under/digi_template.dmi'
+	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn_digilegs.json'
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/greyscale_config/eth_tunic
 	name = "Ethereal Tunic"
 	icon_file = 'icons/obj/clothing/under/ethereal.dmi'

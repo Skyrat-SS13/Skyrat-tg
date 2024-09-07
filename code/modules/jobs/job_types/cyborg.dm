@@ -3,7 +3,11 @@
 	description = "Assist the crew, follow your laws, obey your AI."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
+<<<<<<< HEAD
 	total_positions = 3	// SKYRAT EDIT: Original value (0)
+=======
+	total_positions = 0
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	spawn_positions = 3
 	supervisors = "your laws and the AI" //Nodrak
 	spawn_type = /mob/living/silicon/robot
@@ -29,6 +33,7 @@
 	spawned.gender = NEUTER
 	var/mob/living/silicon/robot/robot_spawn = spawned
 	robot_spawn.notify_ai(AI_NOTIFICATION_NEW_BORG)
+<<<<<<< HEAD
 	//SKYRAT EDIT START
 	var/list/malf_ais = list()
 	var/list/regular_ais = list()
@@ -55,6 +60,8 @@
 		robot_spawn.lawupdate = TRUE
 		robot_spawn.show_laws()
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!robot_spawn.connected_ai) // Only log if there's no Master AI
 		robot_spawn.log_current_laws()
 

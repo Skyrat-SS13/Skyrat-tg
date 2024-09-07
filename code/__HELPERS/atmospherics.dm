@@ -105,13 +105,21 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 				factor_info["factor_name"] = factor
 				factor_info["factor_type"] = "misc"
 				if(factor == "Temperature" || factor == "Pressure")
+<<<<<<< HEAD
 					factor_info["tooltip"] = "Reaction is influenced by the [LOWER_TEXT(factor)] of the place where the reaction is occuring."
+=======
+					factor_info["tooltip"] = "Reaction is influenced by the [LOWER_TEXT(factor)] of the place where the reaction is occurring."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				else if(factor == "Energy")
 					factor_info["tooltip"] = "Energy released by the reaction, may or may not result in linear temperature change depending on a slew of other factors."
 				else if(factor == "Radiation")
 					factor_info["tooltip"] = "This reaction emits dangerous radiation! Take precautions."
 				else if (factor == "Location")
+<<<<<<< HEAD
 					factor_info["tooltip"] = "This reaction has special behaviour when occuring in specific locations."
+=======
+					factor_info["tooltip"] = "This reaction has special behaviour when occurring in specific locations."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				else if(factor == "Hot Ice")
 					factor_info["tooltip"] = "Hot ice are solidified stacks of plasma. Ignition of one will result in a raging fire."
 			reaction_info["factors"] += list(factor_info)
@@ -138,13 +146,21 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 				factor_info["factor_name"] = factor
 				factor_info["factor_type"] = "misc"
 				if(factor == "Temperature" || factor == "Pressure")
+<<<<<<< HEAD
 					factor_info["tooltip"] = "Reaction is influenced by the [LOWER_TEXT(factor)] of the place where the reaction is occuring."
+=======
+					factor_info["tooltip"] = "Reaction is influenced by the [LOWER_TEXT(factor)] of the place where the reaction is occurring."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				else if(factor == "Energy")
 					factor_info["tooltip"] = "Energy released by the reaction, may or may not result in linear temperature change depending on a slew of other factors."
 				else if(factor == "Radiation")
 					factor_info["tooltip"] = "This reaction emits dangerous radiation! Take precautions."
 				else if (factor == "Location")
+<<<<<<< HEAD
 					factor_info["tooltip"] = "This reaction has special behaviour when occuring in specific locations."
+=======
+					factor_info["tooltip"] = "This reaction has special behaviour when occurring in specific locations."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			reaction_info["factors"] += list(factor_info)
 		GLOB.reaction_handbook += list(reaction_info)
 		qdel(reaction)

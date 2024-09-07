@@ -237,8 +237,13 @@
 	if(linked_venue && linked_venue.restaurant_portal) //We're already linked, unlink us.
 		if(linked_venue.open)
 			linked_venue.close()
+<<<<<<< HEAD
 		linked_venue.restaurant_portal.linked_venue = null
 		linked_venue.restaurant_portal = null
+=======
+		linked_venue.restaurant_portal = null
+		linked_venue = null
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	linked_venue = chosen_venue
 	linked_venue.restaurant_portal = src

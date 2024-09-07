@@ -9,7 +9,10 @@ import {
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import { Objective } from './common/Objectives';
 
 type Data = {
@@ -33,7 +36,10 @@ export const AntagInfoBlob = (props) => {
           <Structures />
           <Minions />
           <ObjectiveDisplay />
+<<<<<<< HEAD
           <Rules /* SKYRAT EDIT ADDITION */ />
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         </Section>
       </Window.Content>
     </Window>

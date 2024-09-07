@@ -197,9 +197,12 @@
 	pixel_y = base_pixel_y + rand(-4, 4)
 
 /obj/item/food/grown/ash_flora/shavings //So we can't craft bowls from everything.
+<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "You feel this flora would be unwise to consume while already full." //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	grind_results = list(/datum/reagent/toxin/mushroom_powder = 5)
 
 /obj/item/food/grown/ash_flora/mushroom_leaf
@@ -241,6 +244,21 @@
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "This flora is very nutritious and medicinal." //SKYRAT EDIT
+
+/obj/item/food/grown/ash_flora/seraka
+	name = "seraka cap"
+	desc = "Small, deeply flavourful mushrooms originally native to Tizira."
+	icon_state = "seraka_cap"
+	seed = /obj/item/seeds/lavaland/seraka
+	wine_power = 40
+
+/obj/item/food/grown/ash_flora/fireblossom
+	name = "fire blossom"
+	desc = "A flower from a fire blossom."
+	icon_state = "fireblossom"
+	slot_flags = ITEM_SLOT_HEAD
+	seed = /obj/item/seeds/lavaland/fireblossom
+	wine_power = 40
 
 /obj/item/food/grown/ash_flora/seraka
 	name = "seraka cap"
@@ -405,6 +423,7 @@
 	if(!reagents.total_volume)
 		icon_state = "mushroom_bowl"
 	return ..()
+<<<<<<< HEAD
 
 /obj/item/reagent_containers/cup/bowl/wood_bowl
 	name = "wooden bowl"
@@ -418,3 +437,5 @@
 	if(!reagents.total_volume)
 		icon_state = "wood_bowl"
 	return ..()
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

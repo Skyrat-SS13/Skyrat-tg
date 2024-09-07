@@ -3,7 +3,10 @@
 	desc = "An implant that can be placed in a user's head to control circuits using their brain."
 	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "bci"
+<<<<<<< HEAD
 	visual = FALSE
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	zone = BODY_ZONE_HEAD
 	w_class = WEIGHT_CLASS_TINY
 

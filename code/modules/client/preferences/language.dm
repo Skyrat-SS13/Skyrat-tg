@@ -23,7 +23,10 @@
 	//we add uncommon as it's foreigner-only.
 	var/datum/language/uncommon/uncommon_language = /datum/language/uncommon
 	values += initial(uncommon_language.name)
+<<<<<<< HEAD
 	values += /datum/language/common::name // SKYRAT EDIT ADDITION START - Let's you select common
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/datum/language/language_type as anything in GLOB.uncommon_roundstart_languages)
 		if(initial(language_type.name) in values)

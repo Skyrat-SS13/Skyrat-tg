@@ -1,13 +1,21 @@
 #define LIVER_DEFAULT_TOX_TOLERANCE 3 //amount of toxins the liver can filter out
 #define LIVER_DEFAULT_TOX_RESISTANCE 1 //lower values lower how harmful toxins are to the liver
+<<<<<<< HEAD
 #define LIVER_FAILURE_STAGE_SECONDS 180 //amount of seconds before liver failure reaches a new stage // SKYRAT EDIT CHANGE - Original: 60
+=======
+#define LIVER_FAILURE_STAGE_SECONDS 60 //amount of seconds before liver failure reaches a new stage
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define MAX_TOXIN_LIVER_DAMAGE 2 //the max damage the liver can receive per second (~1 min at max damage will destroy liver)
 
 /obj/item/organ/internal/liver
 	name = "liver"
 	desc = "Pairing suggestion: chianti and fava beans."
 	icon_state = "liver"
+<<<<<<< HEAD
 	visual = FALSE
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	w_class = WEIGHT_CLASS_SMALL
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_LIVER
@@ -307,6 +315,10 @@
 #undef HAS_NO_TOXIN
 #undef HAS_PAINFUL_TOXIN
 #undef LIVER_DEFAULT_TOX_TOLERANCE
+<<<<<<< HEAD
 //#undef LIVER_DEFAULT_TOX_RESISTANCE // SKYRAT EDIT REMOVAL - Needed in modular
+=======
+#undef LIVER_DEFAULT_TOX_RESISTANCE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #undef LIVER_FAILURE_STAGE_SECONDS
 #undef MAX_TOXIN_LIVER_DAMAGE

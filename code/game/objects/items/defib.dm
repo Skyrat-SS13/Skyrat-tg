@@ -137,11 +137,20 @@
 	return ..()
 
 /obj/item/defibrillator/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
+<<<<<<< HEAD
 	if(ismob(loc))
 		var/mob/M = loc
 		if(istype(over_object, /atom/movable/screen/inventory/hand))
 			var/atom/movable/screen/inventory/hand/H = over_object
 			M.putItemFromInventoryInHandIfPossible(src, H.held_index)
+=======
+	if(!ismob(loc))
+		return
+	var/mob/living_mob = loc
+	if(!living_mob.incapacitated && istype(over_object, /atom/movable/screen/inventory/hand))
+		var/atom/movable/screen/inventory/hand/hand = over_object
+		living_mob.putItemFromInventoryInHandIfPossible(src, hand.held_index)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/defibrillator/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!cell || !cell_removable)
@@ -576,12 +585,15 @@
 	do_cancel()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
+<<<<<<< HEAD
 	var/target_synthetic = (H.mob_biotypes & MOB_ROBOTIC) // SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
 	if (target_synthetic)
 		to_chat(user, span_boldwarning("[H] is a synthetic lifeform! This defibrillator probably isn't calibrated to revive [H.p_them()] properly and could have some serious consequences! \
 		[span_warning("You might want to [span_blue("surgically revive [H.p_them()]")]...")]"))
 		balloon_alert(user, "target is synthetic!") // immediately grabs their attention even if they dont see chat
 	// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	user.visible_message(span_warning("[user] begins to place [src] on [H]'s chest."), span_warning("You begin to place [src] on [H]'s chest..."))
 	busy = TRUE
 	update_appearance()
@@ -628,10 +640,13 @@
 						fail_reason = "Patient's brain is missing. Further attempts futile."
 					if (DEFIB_FAIL_BLACKLISTED)
 						fail_reason = "Patient has been blacklisted from revival. Further attempts futile."
+<<<<<<< HEAD
 					//SKYRAT EDIT ADDITION - DNR TRAIT
 					if (DEFIB_FAIL_DNR)
 						fail_reason = "Patient has been flagged as Do Not Resuscitate. Further attempts futile."
 					//SKYRAT EDIT ADDITION END - DNR TRAIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 				if(fail_reason)
 					user.visible_message(span_warning("[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - [fail_reason]"))
@@ -661,13 +676,17 @@
 					H.revive()
 					H.emote("gasp")
 					H.set_jitter_if_lower(200 SECONDS)
+<<<<<<< HEAD
 					to_chat(H, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					SEND_SIGNAL(H, COMSIG_LIVING_MINOR_SHOCK)
 					if(HAS_MIND_TRAIT(user, TRAIT_MORBID))
 						user.add_mood_event("morbid_saved_life", /datum/mood_event/morbid_saved_life)
 					else
 						user.add_mood_event("saved_life", /datum/mood_event/saved_life)
 					log_combat(user, H, "revived", defib)
+<<<<<<< HEAD
 					// SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
 					if (target_synthetic)
 						user.visible_message(span_boldwarning("[src] fire a powerful jolt of electricity into [H]'s vulnerable circuitry!"))
@@ -685,6 +704,8 @@
 								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_synth_defib_trauma), brain_organ, trauma), SYNTH_DEFIBBED_TRAUMA_DURATION)
 					// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				do_success()
 				return
 			else if (!H.get_organ_by_type(/obj/item/organ/internal/heart))

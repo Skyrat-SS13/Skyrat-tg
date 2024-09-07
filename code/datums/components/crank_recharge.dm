@@ -61,7 +61,10 @@
 		is_charging = FALSE
 		return
 	charging_cell.give(charge_amount)
+<<<<<<< HEAD
 	SEND_SIGNAL(parent, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - AMMO COUNT HUD
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	source.update_appearance()
 	is_charging = FALSE
 	if(spin_to_win)

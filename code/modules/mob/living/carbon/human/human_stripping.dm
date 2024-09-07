@@ -178,7 +178,10 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 /datum/strippable_item/mob_item_slot/id
 	key = STRIPPABLE_ITEM_ID
 	item_slot = ITEM_SLOT_ID
+<<<<<<< HEAD
 	can_be_silent = TRUE //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/strippable_item/mob_item_slot/belt
 	key = STRIPPABLE_ITEM_BELT
@@ -196,7 +199,10 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 /datum/strippable_item/mob_item_slot/pocket
 	/// Which pocket we're referencing. Used for visible text.
 	var/pocket_side
+<<<<<<< HEAD
 	can_be_silent = TRUE //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/strippable_item/mob_item_slot/pocket/get_obscuring(atom/source)
 	return isnull(get_item(source)) \
@@ -224,7 +230,11 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 	var/result = start_unequip_mob(item, source, user, strip_delay = POCKET_STRIP_DELAY, hidden = TRUE)
 
+<<<<<<< HEAD
 	if (!(result || HAS_TRAIT(user, TRAIT_STICKY_FINGERS))) //SKYRAT EDIT ADDITION original if (!result)
+=======
+	if (!result)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		warn_owner(source)
 
 	return result

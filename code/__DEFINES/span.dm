@@ -48,6 +48,10 @@
 #define span_drone(str) ("<span class='drone'>" + str + "</span>")
 #define span_engradio(str) ("<span class='engradio'>" + str + "</span>")
 #define span_extremelybig(str) ("<span class='extremelybig'>" + str + "</span>")
+<<<<<<< HEAD
+=======
+#define span_enteradio(str) ("<span class='enteradio'>" + str + "</span>")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define span_game_say(str) ("<span class='game say'>" + str + "</span>")
 #define span_ghostalert(str) ("<span class='ghostalert'>" + str + "</span>")
 #define span_green(str) ("<span class='green'>" + str + "</span>")

@@ -225,7 +225,11 @@
 
 /obj/item/banner/command/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	job_loyalties = DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_CENTRAL_COMMAND //SKYRAT EDIT ADDITION
+=======
+	job_loyalties = DEPARTMENT_BITFLAG_COMMAND
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/banner/command/mundane
 	inspiration_available = FALSE

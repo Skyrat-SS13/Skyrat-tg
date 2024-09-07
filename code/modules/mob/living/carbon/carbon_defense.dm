@@ -93,6 +93,7 @@
 
 	var/message_verb_continuous = length(I.attack_verb_continuous) ? "[pick(I.attack_verb_continuous)]" : "attacks"
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	if(I.force && !user.combat_mode && !length(I.attack_verb_simple) && !length(I.attack_verb_continuous))
 		var/random = rand(1,2)
@@ -104,6 +105,8 @@
 				message_verb_continuous = "<font color='#ee00ff'>maims</font>"
 				message_verb_simple = "<font color='#ee00ff'>maim</font>"
 	//SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/extra_wound_details = ""
 
@@ -276,7 +279,11 @@
 	var/immediately_stun = should_stun && !(flags & SHOCK_DELAY_STUN)
 	if (immediately_stun)
 		if (paralyze)
+<<<<<<< HEAD
 			StaminaKnockdown(stun_duration / 4) // SKYRAT EDIT CHANGE - ORIGINAL: Paralyze(40)
+=======
+			Paralyze(stun_duration)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else
 			Knockdown(stun_duration)
 	//Jitter and other fluff.
@@ -290,12 +297,19 @@
 ///Called slightly after electrocute act to apply a secondary stun.
 /mob/living/carbon/proc/secondary_shock(paralyze, stun_duration)
 	if (paralyze)
+<<<<<<< HEAD
 		StaminaKnockdown(stun_duration / 6) // SKYRAT EDIT CHANGE - ORIGINAL: Paralyze(60)
+=======
+		Paralyze(stun_duration)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		Knockdown(stun_duration)
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper, force_friendly)
+<<<<<<< HEAD
 	var/nosound = FALSE //SKYRATEDIT ADDITION - EMOTES
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(on_fire)
 		to_chat(helper, span_warning("You can't put [p_them()] out with just your bare hands!"))
 		return
@@ -315,6 +329,7 @@
 						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 		to_chat(helper, span_notice("You shake [src] trying to pick [p_them()] up!"))
 		to_chat(src, span_notice("[helper] shakes you to get you up!"))
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
@@ -338,6 +353,9 @@
 			visible_message(span_warning("[helper] tries to pat [src] on the head, but [p_they()] move[p_s()] out of the way."))
 			return
 		//SKYRAT EDIT ADDITION END
+=======
+	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
 					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 		to_chat(helper, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
@@ -345,12 +363,15 @@
 
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
 			to_chat(helper, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			var/obj/item/organ/external/tail/src_tail = get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 			if(src_tail && !(src_tail.wag_flags & WAG_WAGGING))
 				emote("wag")
 		//SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.get_organ_by_type(/obj/item/organ/external/tail)))
 		helper.visible_message(span_notice("[helper] pulls on [src]'s tail!"), \
@@ -380,11 +401,14 @@
 			to_chat(helper, span_notice("You wrap [src] into a tight bear hug!"))
 			to_chat(src, span_notice("[helper] squeezes you super tightly in a firm bear hug!"))
 		else
+<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION START
 			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 				visible_message(span_warning("[helper] tries to hug [src], but [p_they()] move[p_s()] out of the way."))
 				return
 			// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			helper.visible_message(span_notice("[helper] hugs [src] to make [p_them()] feel better!"), \
 						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 			to_chat(helper, span_notice("You hug [src] to make [p_them()] feel better!"))
@@ -442,6 +466,16 @@
 
 	// Shake animation
 	if (incapacitated())
+		shake_up_animation()
+
+/mob/proc/shake_up_animation()
+		var/direction = prob(50) ? -1 : 1
+		animate(src, pixel_x = pixel_x + SHAKE_ANIMATION_OFFSET * direction, time = 1, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_PARALLEL)
+		animate(pixel_x = pixel_x - (SHAKE_ANIMATION_OFFSET * 2 * direction), time = 1)
+		animate(pixel_x = pixel_x + SHAKE_ANIMATION_OFFSET * direction, time = 1, easing = QUAD_EASING | EASE_IN)
+
+	// Shake animation
+	if (incapacitated)
 		shake_up_animation()
 
 /mob/proc/shake_up_animation()
@@ -607,11 +641,19 @@
 		if (!IS_ORGANIC_LIMB(limb))
 			. += (limb.brute_dam * limb.body_damage_coeff) + (limb.burn_dam * limb.body_damage_coeff)
 
+<<<<<<< HEAD
 /mob/living/carbon/grabbedby(mob/living/user, supress_message = FALSE, grabbed_part) // SKYRAT EDIT CHANGE - ORIGINAL: /mob/living/carbon/grabbedby(mob/living/user, supress_message = FALSE)
 	if(user != src)
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = grabbed_part ? grabbed_part : get_bodypart(zone_selected) // SKYRAT EDIT CHANGE - ORIGINAL: var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
+=======
+/mob/living/carbon/grabbedby(mob/living/user, supress_message = FALSE)
+	if(user != src)
+		return ..()
+
+	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!grasped_part?.can_be_grasped())
 		return
 	var/starting_hand_index = active_hand_index

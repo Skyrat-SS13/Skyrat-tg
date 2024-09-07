@@ -99,7 +99,11 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 	if(req_stat < user.stat)
 		user.balloon_alert(user, "incapacitated!")
 		return FALSE
+<<<<<<< HEAD
 	if((HAS_TRAIT(user, TRAIT_DEATHCOMA)) && (!ignores_fakedeath))
+=======
+	if(HAS_TRAIT(user, TRAIT_DEATHCOMA) && !ignores_fakedeath)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		user.balloon_alert(user, "playing dead!")
 		return FALSE
 	return TRUE

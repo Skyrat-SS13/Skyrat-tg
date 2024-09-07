@@ -17,10 +17,17 @@
 	if(!pick)
 		return
 	var/part_reference = display_names[pick]
+<<<<<<< HEAD
 	var/obj/item/part = locate(part_reference) in parts
 	if(!istype(part) || user.incapacitated())
 		return
 	if(activating) // SKYRAT EDIT - RETRACTABLE EVERYTHING
+=======
+	var/obj/item/part = locate(part_reference) in mod_parts
+	if(!istype(part) || user.incapacitated)
+		return
+	if(active || activating)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		balloon_alert(user, "deactivate the suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -44,7 +51,11 @@
 
 /// Quickly deploys all parts (or retracts if all are on the wearer)
 /obj/item/mod/control/proc/quick_deploy(mob/user)
+<<<<<<< HEAD
 	if(activating) // SKYRAT EDIT - RETRACTABLE EVERYTHING
+=======
+	if(active || activating)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		balloon_alert(user, "deactivate the suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
@@ -119,11 +130,14 @@
 		if(!QDELING(wearer) && !wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 			wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
 		part_datum.overslotting = null
+<<<<<<< HEAD
 	// SKYRAT EDIT START - Avoiding exploits with the modules staying active when any of the parts are retracted.
 	for(var/obj/item/mod/module/module as anything in modules)
 		if(module.active)
 			module.deactivate(display_message = !!user)
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SEND_SIGNAL(src, COMSIG_MOD_PART_RETRACTED, user, part)
 	if(!user)
 		return

@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 
 	///Current active connections
 	var/connections = NONE
+<<<<<<< HEAD
 	///Was this pipe created during map load
 	var/map_loaded_pipe = FALSE
 
@@ -30,6 +31,8 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 			continue
 		bit_flag |= spanning_direction
 	return bit_flag
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'

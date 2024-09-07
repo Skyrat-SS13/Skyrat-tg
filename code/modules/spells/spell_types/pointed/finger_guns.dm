@@ -33,7 +33,11 @@
 			return FALSE
 
 		var/mob/living/carbon/human/human_invoker = invoker
+<<<<<<< HEAD
 		if(human_invoker.incapacitated())
+=======
+		if(human_invoker.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(feedback)
 				to_chat(human_invoker, span_warning("You can't properly point your fingers while incapacitated."))
 			return FALSE

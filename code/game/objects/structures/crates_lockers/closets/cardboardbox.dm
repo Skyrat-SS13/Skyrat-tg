@@ -32,7 +32,11 @@
 	var/move_delay = FALSE
 
 /obj/structure/closet/cardboard/relaymove(mob/living/user, direction)
+<<<<<<< HEAD
 	if(opened || move_delay || user.incapacitated() || !isturf(loc) || !has_gravity(loc))
+=======
+	if(opened || move_delay || user.incapacitated || !isturf(loc) || !has_gravity(loc))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	move_delay = TRUE
 	var/oldloc = loc
@@ -72,7 +76,11 @@
 	for(var/mob/living/alerted_mob as anything in alerted)
 		if(alerted_mob.stat != CONSCIOUS || alerted_mob.is_blind())
 			continue
+<<<<<<< HEAD
 		if(!alerted_mob.incapacitated(IGNORE_RESTRAINTS))
+=======
+		if(!INCAPACITATED_IGNORING(alerted_mob, INCAPABLE_RESTRAINTS))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			alerted_mob.face_atom(src)
 		alerted_mob.do_alert_animation()
 

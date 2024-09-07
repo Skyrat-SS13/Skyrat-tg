@@ -164,11 +164,14 @@ export const ChemDispenser = (props) => {
             {recipes.length === 0 && <Box color="light-gray">No recipes.</Box>}
           </Box>
         </Section>
+<<<<<<< HEAD
         <Button // SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
           icon="pen"
           content="Custom Amount"
           onClick={() => act('custom_amount')}
         />
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         <Section
           title="Dispense"
           buttons={beakerTransferAmounts.map((amount) => (

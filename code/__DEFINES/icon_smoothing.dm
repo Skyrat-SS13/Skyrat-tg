@@ -139,6 +139,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS S_TURF(59) ///turf/closed/wall/mineral/titanium/survival
 #define SMOOTH_GROUP_TURF_OPEN_CLIFF S_TURF(60) ///turf/open/cliff
 
+<<<<<<< HEAD
 // SKYRAT EDIT ADDITION
 #define SMOOTH_GROUP_ELEVATED_PLASTEEL S_TURF(61)
 #define SMOOTH_GROUP_LOWERED_PLASTEEL S_TURF(62)
@@ -148,6 +149,9 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define MAX_S_TURF 63 //Always match this value with the one above it.
 //SKYRAT EDIT END
 
+=======
+#define MAX_S_TURF 60 //Always match this value with the one above it.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #define S_OBJ(num) ("-" + #num + ",")
 /* /obj included */
@@ -170,11 +174,14 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_BAMBOO_WALLS S_TURF(17) //![/turf/closed/wall/mineral/bamboo, /obj/structure/falsewall/bamboo]
 #define SMOOTH_GROUP_PLASTINUM_WALLS S_TURF(18) //![turf/closed/indestructible/riveted/plastinum]
 
+<<<<<<< HEAD
 //SKYRAT EDIT ADDITION
 #define SMOOTH_GROUP_SHIPWALLS S_OBJ(19)	///turf/closed/wall/mineral/titanium/spaceship
 #define SMOOTH_GROUP_STONE_WALLS S_OBJ(20) ///turf/closed/wall/mineral/stone, /obj/structure/falsewall/stone
 //SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define SMOOTH_GROUP_PAPERFRAME S_OBJ(21) ///obj/structure/window/paperframe, /obj/structure/mineral_door/paperframe
 
 #define SMOOTH_GROUP_WINDOW_FULLTILE S_OBJ(22) ///turf/closed/indestructible/fakeglass, /obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/reinforced/plasma/fulltile
@@ -219,12 +226,15 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_SPIDER_WEB_WALL_TOUGH S_OBJ(73) // /obj/structure/spider/stickyweb/sealed/thick
 #define SMOOTH_GROUP_SPIDER_WEB_WALL_MIRROR S_OBJ(74) // /obj/structure/spider/stickyweb/sealed/reflector
 
+<<<<<<< HEAD
 //SKYRAT EDIT ADDITION
 #define SMOOTH_GROUP_SHUTTERS S_OBJ(75)
 
 #define SMOOTH_GROUP_WATER S_OBJ(76) ///obj/effect/abstract/liquid_turf
 //SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define SMOOTH_GROUP_GRAV_FIELD S_OBJ(69)
 
 /// Performs the work to set smoothing_groups and canSmoothWith.

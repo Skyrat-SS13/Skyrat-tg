@@ -347,10 +347,13 @@
 				charge_per_item += design.materials[material]
 			charge_per_item = ROUND_UP((charge_per_item / (MAX_STACK_SIZE * SHEET_MATERIAL_AMOUNT)) * coefficient * active_power_usage)
 			var/build_time_per_item = (design.construction_time * design.lathe_time_factor * efficiency_coeff) ** 0.8
+<<<<<<< HEAD
 			// SKYRAT EDIT - Faster lathes
 			if(!speedup_disabled)
 				build_time_per_item *= 0.1
 			// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			//start production
 			busy = TRUE

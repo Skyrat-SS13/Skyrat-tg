@@ -110,7 +110,7 @@
 	if(world.time <= usr.next_move)
 		return 1
 
-	if(usr.incapacitated())
+	if(usr.incapacitated)
 		return 1
 
 	if(ismob(usr))
@@ -143,7 +143,11 @@
 	screen_loc = ui_building
 
 /atom/movable/screen/area_creator/Click()
+<<<<<<< HEAD
 	if(usr.incapacitated() || (isobserver(usr) && !isAdminGhostAI(usr)))
+=======
+	if(usr.incapacitated || (isobserver(usr) && !isAdminGhostAI(usr)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
@@ -204,7 +208,11 @@
 	if(world.time <= usr.next_move)
 		return TRUE
 
+<<<<<<< HEAD
 	if(usr.incapacitated(IGNORE_STASIS))
+=======
+	if(INCAPACITATED_IGNORING(usr, INCAPABLE_STASIS))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 	if(ismecha(usr.loc)) // stops inventory actions in a mech
 		return TRUE
@@ -294,7 +302,7 @@
 		return TRUE
 	if(world.time <= user.next_move)
 		return TRUE
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return TRUE
 	if (ismecha(user.loc)) // stops inventory actions in a mech
 		return TRUE
@@ -471,7 +479,7 @@
 
 	if(world.time <= usr.next_move)
 		return TRUE
-	if(usr.incapacitated())
+	if(usr.incapacitated)
 		return TRUE
 	if(ismecha(usr.loc)) // stops inventory actions in a mech
 		return TRUE
@@ -736,7 +744,11 @@
 	var/client/holder
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /atom/movable/screen/splash/Initialize(mapload, datum/hud/hud_owner, client/C, visible, use_previous_title)
 	. = ..()
 	if(!istype(C))
@@ -756,7 +768,11 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 		icon = SStitle.previous_icon
 
 	holder.screen += src
+<<<<<<< HEAD
 */ // SKYRAT EDIT END
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /atom/movable/screen/splash/proc/Fade(out, qdel_after = TRUE)
 	if(QDELETED(src))
 		return

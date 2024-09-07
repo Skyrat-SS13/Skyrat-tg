@@ -141,7 +141,11 @@
 	if(QDELETED(caster))
 		return FALSE
 
+<<<<<<< HEAD
 	return !caster.incapacitated()
+=======
+	return !caster.incapacitated
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Actually does the shapeshift, for the caster.
 /datum/action/cooldown/spell/shapeshift/proc/do_shapeshift(mob/living/caster)

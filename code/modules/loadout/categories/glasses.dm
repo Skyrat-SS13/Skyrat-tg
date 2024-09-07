@@ -8,11 +8,17 @@
 /datum/loadout_item/glasses
 	abstract_type = /datum/loadout_item/glasses
 
+<<<<<<< HEAD
 /datum/loadout_item/glasses/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, loadout_placement_preference) // SKYRAT EDIT CHANGE - Added loadout_placement
 	// SKYRAT EDIT CHANGE
 	if(loadout_placement_preference != LOADOUT_OVERRIDE_JOB && outfit.glasses)
 		LAZYADD(outfit.backpack_contents, outfit.glasses)
 	// SKYRAT EDIT END
+=======
+/datum/loadout_item/glasses/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+	if(outfit.glasses)
+		LAZYADD(outfit.backpack_contents, outfit.glasses)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	outfit.glasses = item_path
 
 /datum/loadout_item/glasses/prescription_glasses

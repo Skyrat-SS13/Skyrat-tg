@@ -6,7 +6,11 @@ import { useBackend } from '../backend';
 import { Box, Button, Icon, Image, Stack } from '../components';
 import { Window } from '../layouts';
 
+<<<<<<< HEAD
 const ROWS = 6; // SKYRAT EDIT CHANGE
+=======
+const ROWS = 5;
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = '50px';
@@ -59,12 +63,20 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
+<<<<<<< HEAD
     icon: 'lungs', // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
+=======
+    icon: 'tg-air-tank',
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     text: 'Enable internals',
   },
 
   disable_internals: {
+<<<<<<< HEAD
     icon: 'lungs-virus', // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
+=======
+    icon: 'tg-air-tank-slash',
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     text: 'Disable internals',
   },
 
@@ -213,6 +225,7 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: 'inventory-pocket.png',
   },
+<<<<<<< HEAD
   // SKYRAT EDIT ADDITION
   vagina: {
     displayName: 'vagina',
@@ -239,6 +252,10 @@ const SLOTS: Record<
   },
 };
 // SKYRAT EDIT END
+=======
+};
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 enum ObscuringLevel {
   Completely = 1,
   Hidden = 2,

@@ -38,6 +38,15 @@
 	if(faction)
 		faction = string_list(faction)
 
+<<<<<<< HEAD
+=======
+/obj/effect/mob_spawn/Destroy()
+	spawned_mob_ref = null
+	if(istype(outfit))
+		QDEL_NULL(outfit)
+	return ..()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Creates whatever mob the spawner makes. Return FALSE if we want to exit from here without doing that, returning NULL will be logged to admins.
 /obj/effect/mob_spawn/proc/create(mob/mob_possessor, newname)
 	var/mob/living/spawned_mob = new mob_type(get_turf(src)) //living mobs only
@@ -59,7 +68,10 @@
 		spawned_human.underwear = "Nude"
 		spawned_human.undershirt = "Nude"
 		spawned_human.socks = "Nude"
+<<<<<<< HEAD
 		spawned_human.bra = "Nude" //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		randomize_human_normie(spawned_human)
 		if(hairstyle)
 			spawned_human.set_hairstyle(hairstyle, update = FALSE)
@@ -132,12 +144,20 @@
 	/// Whether this offers a temporary body or not. Essentially, you'll be able to reenter your body after using this spawner.
 	var/temp_body = FALSE
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
 	LAZYADD(GLOB.mob_spawners[name], src)
 
+<<<<<<< HEAD
 /obj/effect/mob_spawn/Destroy()
+=======
+/obj/effect/mob_spawn/ghost_role/Destroy()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/spawners = GLOB.mob_spawners[name]
 	LAZYREMOVE(spawners, src)
 	if(!LAZYLEN(spawners))
@@ -156,6 +176,7 @@
 	var/user_ckey = user.ckey // Just in case shenanigans happen, we always want to remove it from the list.
 	LAZYADD(ckeys_trying_to_spawn, user_ckey)
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
 		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
@@ -164,6 +185,8 @@
 			return
 	// SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(prompt_ghost)
 		var/prompt = "Become [prompt_name]?"
 		if(!temp_body && user.can_reenter_corpse && user.mind)
@@ -186,12 +209,15 @@
 		to_chat(user, span_warning("You are banned from this role!"))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
 		to_chat(user, span_warning("Error, you are banned from playing ghost roles!"))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
 	// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!allow_spawn(user, silent = FALSE))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
@@ -275,6 +301,10 @@
 
 ///these mob spawn subtypes trigger immediately (New or Initialize) and are not player controlled... since they're dead, you know?
 /obj/effect/mob_spawn/corpse
+<<<<<<< HEAD
+=======
+	density = FALSE //these are pretty much abstract objects that leave a corpse in their place.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///when this mob spawn should auto trigger.
 	var/spawn_when = CORPSE_INSTANT
 

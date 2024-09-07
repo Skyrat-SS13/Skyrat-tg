@@ -398,7 +398,11 @@
 
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/computer/scan_consolenew/ui_act(action, list/params)
+=======
+/obj/machinery/computer/scan_consolenew/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/static/list/gene_letters = list("A", "T", "C", "G");
 	var/static/gene_letter_count = length(gene_letters)
 
@@ -720,11 +724,14 @@
 				var/datum/mutation/human/matched_mutation = null
 				//Go through all sequences for matching gene, and set the mutation
 				for (var/M in subtypesof(/datum/mutation/human))
+<<<<<<< HEAD
 					// SKYRAT EDIT ADDITION
 					var/datum/mutation/human/iterating_mutation = M
 					if(initial(iterating_mutation.disabled))
 						continue
 					// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					var/true_sequence = GET_SEQUENCE(M)
 					if (new_sequence == true_sequence)
 						matched_mutation = M

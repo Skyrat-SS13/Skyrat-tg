@@ -48,6 +48,7 @@
 		"s" = "z",
 		"S" = "Z",
 	)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Russian version
 	var/static/list/russian_speech_replacements = list(
 		new /regex("z+", "g") = "zzz",
@@ -64,6 +65,12 @@
 /obj/item/organ/internal/tongue/fly/New(class, timer, datum/mutation/human/copymut)
 	. = ..()
 	AddComponent(/datum/component/speechmod, replacements = CONFIG_GET(flag/russian_text_formation) ? russian_speech_replacements : speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech))) // SKYRAT EDIT CHANGE - ORIGINAL:AddComponent(/datum/component/speechmod, replacements = speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech)))
+=======
+
+/obj/item/organ/internal/tongue/fly/New(class, timer, datum/mutation/human/copymut)
+	. = ..()
+	AddComponent(/datum/component/speechmod, replacements = speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/tongue/fly/Initialize(mapload)
 	. = ..()
@@ -137,7 +144,10 @@
 //useless organs we throw in just to fuck with surgeons a bit more. they aren't part of a bonus, just the (absolute) state of flies
 /obj/item/organ/internal/fly
 	desc = FLY_INFUSED_ORGAN_DESC
+<<<<<<< HEAD
 	visual = FALSE
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/fly/Initialize(mapload)
 	. = ..()

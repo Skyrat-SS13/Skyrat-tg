@@ -9,11 +9,14 @@ SUBSYSTEM_DEF(ai_controllers)
 	///type of status we are interested in running
 	var/planning_status = AI_STATUS_ON
 	/// The tick cost of all active AI, calculated on fire.
+<<<<<<< HEAD
 
 	var/cost_on
 	/// The tick cost of all idle AI, calculated on fire.
 	var/cost_idle
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/our_cost
 
 /datum/controller/subsystem/ai_controllers/Initialize()

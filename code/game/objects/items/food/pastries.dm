@@ -67,7 +67,10 @@
 	name = "waffles"
 	desc = "Mmm, waffles."
 	icon_state = "waffles"
+<<<<<<< HEAD
 	trash_type = /obj/item/trash/waffles
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
@@ -85,7 +88,10 @@
 	name = "\improper Soylent Green"
 	desc = "Not made of people. Honest." //Totally people.
 	icon_state = "soylent_green"
+<<<<<<< HEAD
 	trash_type = /obj/item/trash/waffles
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
@@ -100,7 +106,10 @@
 	name = "\improper Soylent Virdians"
 	desc = "Not made of people. Honest." //Actually honest for once.
 	icon_state = "soylent_yellow"
+<<<<<<< HEAD
 	trash_type = /obj/item/trash/waffles
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
@@ -115,7 +124,10 @@
 	name = "roffle waffles"
 	desc = "Waffles from Roffle. Co."
 	icon_state = "rofflewaffles"
+<<<<<<< HEAD
 	trash_type = /obj/item/trash/waffles
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	bite_consumption = 4
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,

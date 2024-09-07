@@ -20,7 +20,11 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 30
+=======
+#define DB_MINOR_VERSION 27
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 //! ## Timing subsystem
@@ -39,7 +43,11 @@
  * Timing should be based on how timing progresses on clients, not the server.
  *
  * Tracking this is more expensive,
+<<<<<<< HEAD
  * should only be used in conjuction with things that have to progress client side, such as
+=======
+ * should only be used in conjunction with things that have to progress client side, such as
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * animate() or sound()
  */
 #define TIMER_CLIENT_TIME (1<<2)
@@ -81,15 +89,22 @@
 ///Nothing happens
 #define INITIALIZE_HINT_NORMAL 0
 /**
+<<<<<<< HEAD
  * call LateInitialize at the end of all atom Initalization
  *
  * The item will be added to the late_loaders list, this is iterated over after
  * initalization of subsystems is complete and calls LateInitalize on the atom
+=======
+ * call LateInitialize at the end of all atom Initialization
+ *
+ * The item will be added to the late_loaders list, this is iterated over after
+ * initialization of subsystems is complete and calls LateInitalize on the atom
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * see [this file for the LateIntialize proc](atom.html#proc/LateInitialize)
  */
 #define INITIALIZE_HINT_LATELOAD 1
 
-///Call qdel on the atom after intialization
+///Call qdel on the atom after initialization
 #define INITIALIZE_HINT_QDEL 2
 
 ///type and all subtypes should always immediately call Initialize in New()
@@ -106,23 +121,39 @@
 
 //! ### SS initialization hints
 /**
+<<<<<<< HEAD
  * Negative values incidate a failure or warning of some kind, positive are good.
  * 0 and 1 are unused so that TRUE and FALSE are guarenteed to be invalid values.
+=======
+ * Negative values indicate a failure or warning of some kind, positive are good.
+ * 0 and 1 are unused so that TRUE and FALSE are guaranteed to be invalid values.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  */
 
 /// Subsystem failed to initialize entirely. Print a warning, log, and disable firing.
 #define SS_INIT_FAILURE -2
 
+<<<<<<< HEAD
 /// The default return value which must be overriden. Will succeed with a warning.
 #define SS_INIT_NONE -1
 
 /// Subsystem initialized sucessfully.
+=======
+/// The default return value which must be overridden. Will succeed with a warning.
+#define SS_INIT_NONE -1
+
+/// Subsystem initialized successfully.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define SS_INIT_SUCCESS 2
 
 /// If your system doesn't need to be initialized (by being disabled or something)
 #define SS_INIT_NO_NEED 3
 
+<<<<<<< HEAD
 /// Succesfully initialized, BUT do not announce it to players (generally to hide game mechanics it would otherwise spoil)
+=======
+/// Successfully initialized, BUT do not announce it to players (generally to hide game mechanics it would otherwise spoil)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define SS_INIT_NO_MESSAGE 4
 
 //! ### SS initialization load orders
@@ -136,9 +167,14 @@
 #define INIT_ORDER_DBCORE 95
 #define INIT_ORDER_BLACKBOX 94
 #define INIT_ORDER_SERVER_MAINT 93
+<<<<<<< HEAD
 #define INIT_ORDER_PLAYER_RANKS 86 // SKYRAT EDIT - Player Ranks Subsystem
 #define INIT_ORDER_INPUT 85
 #define INIT_ORDER_ADMIN_VERBS 84 // needs to be pretty high, admins cant do much without it
+=======
+#define INIT_ORDER_INPUT 85
+#define INIT_ORDER_ADMIN_VERBS 84 // needs to be pretty high, admins can't do much without it
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define INIT_ORDER_SOUNDS 83
 #define INIT_ORDER_INSTRUMENTS 82
 #define INIT_ORDER_GREYSCALE 81
@@ -156,7 +192,10 @@
 #define INIT_ORDER_AI_CONTROLLERS 55 //So the controller can get the ref
 #define INIT_ORDER_TICKER 55
 #define INIT_ORDER_TCG 55
+<<<<<<< HEAD
 #define INIT_ORDER_AUTOMAPPER 51 // SKYRAT EDIT ADDITION - We need to load just before mapping.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define INIT_ORDER_MAPPING 50
 #define INIT_ORDER_AI_IDLE_CONTROLLERS 50
 #define INIT_ORDER_EARLY_ASSETS 48
@@ -167,9 +206,13 @@
 #define INIT_ORDER_OUTPUTS 35
 #define INIT_ORDER_RESTAURANT 34
 #define INIT_ORDER_TTS 33
+<<<<<<< HEAD
 #define INIT_ORDER_POLLUTION 32 //SKYRAT EDIT ADDITION - //Needs to be above atoms
 #define INIT_ORDER_ATOMS 30
 #define INIT_ORDER_ARMAMENTS 27 // SKYRAT EDIT ADDITION - Needs to be between atoms and default so it runs before gun companies
+=======
+#define INIT_ORDER_ATOMS 30
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define INIT_ORDER_LANGUAGE 25
 #define INIT_ORDER_MACHINES 20
 #define INIT_ORDER_SKILLS 15
@@ -189,9 +232,12 @@
 #define INIT_ORDER_SHUTTLE -21
 #define INIT_ORDER_MINOR_MAPPING -40
 #define INIT_ORDER_PATH -50
+<<<<<<< HEAD
 #define INIT_ORDER_MATURITY_GUARD -60 //SKYRAT EDIT ADDITION
 #define INIT_ORDER_DECAY -61 //SKYRAT EDIT ADDITION
 #define INIT_ORDER_POWERATOR_PENALITY -62 // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define INIT_ORDER_EXPLOSIONS -69
 #define INIT_ORDER_STATPANELS -97
 #define INIT_ORDER_BAN_CACHE -98

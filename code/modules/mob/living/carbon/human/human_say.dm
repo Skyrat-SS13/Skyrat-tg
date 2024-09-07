@@ -43,6 +43,10 @@
 				return real_name
 		else
 			return real_name
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(mind)
 		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling?.mimicing)
@@ -72,7 +76,11 @@
 	var/area/our_area = get_area(src)
 	if(our_area.area_flags & BINARY_JAMMING)
 		return FALSE
+<<<<<<< HEAD
 	return dongle.translate_binary
+=======
+	return (dongle.special_channels & RADIO_SPECIAL_BINARY)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /mob/living/carbon/human/radio(message, list/message_mods = list(), list/spans, language) //Poly has a copy of this, lazy bastard
 	. = ..()

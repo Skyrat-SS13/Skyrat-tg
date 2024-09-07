@@ -151,7 +151,11 @@
 		return
 
 	if(!up)
+<<<<<<< HEAD
 		. += mutable_appearance(visor_sprite_path, visor_state) //SKYRAT EDIT CHANGE - WELDING MUZZLES - ORIGINAL: . += mutable_appearance('icons/mob/clothing/head/utility.dmi', visor_state)
+=======
+		. += mutable_appearance('icons/mob/clothing/head/utility.dmi', visor_state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/head/utility/hardhat/welding/update_overlays()
 	. = ..()
@@ -191,6 +195,10 @@
 	up = FALSE
 	visor_toggling()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/clothing/head/utility/hardhat/welding/dblue
 	icon_state = "hardhat0_dblue"
 	inhand_icon_state = null

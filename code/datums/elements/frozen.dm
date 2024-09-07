@@ -28,7 +28,11 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 			organ.organ_flags |= ORGAN_FROZEN
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+<<<<<<< HEAD
 	RegisterSignal(target, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(shatter_on_throw))
+=======
+	RegisterSignal(target, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(shatter_on_landed))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	RegisterSignal(target, COMSIG_MOVABLE_IMPACT, PROC_REF(shatter_on_throw))
 	RegisterSignal(target, COMSIG_OBJ_UNFREEZE, PROC_REF(on_unfreeze))
 
@@ -54,8 +58,18 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	SIGNAL_HANDLER
 	Detach(source)
 
+<<<<<<< HEAD
 ///signal handler for COMSIG_MOVABLE_POST_THROW that shatters our target after impacting after a throw
 /datum/element/frozen/proc/shatter_on_throw(datum/target, datum/thrownthing/throwingdatum)
+=======
+/datum/element/frozen/proc/shatter_on_throw(datum/source, atom/hit_atom, datum/thrownthing/throwing_datum, caught)
+	SIGNAL_HANDLER
+	if(!caught)
+		shatter_on_landed(source, throwing_datum)
+
+///signal handler that shatters our target after impacting after a throw.
+/datum/element/frozen/proc/shatter_on_landed(datum/target, datum/thrownthing/throwingdatum)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SIGNAL_HANDLER
 	var/obj/obj_target = target
 	if(ismob(throwingdatum.thrower))

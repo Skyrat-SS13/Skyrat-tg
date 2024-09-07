@@ -293,6 +293,7 @@
 		/datum/job/shaft_miner = /obj/item/organ/internal/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START - MODULAR JOBS
 		/datum/job/blueshield = /obj/item/organ/internal/cyberimp/brain/anti_stun,
 		/datum/job/nanotrasen_consultant = /obj/item/organ/internal/heart/cybernetic/tier3,
@@ -305,6 +306,8 @@
 		/datum/job/engineering_guard = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/telecomms_specialist = /obj/item/organ/internal/ears/cybernetic/xray,
 		// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /datum/station_trait/cybernetic_revolution/New()

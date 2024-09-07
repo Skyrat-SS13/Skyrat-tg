@@ -12,7 +12,11 @@
 	var/group
 
 	/// Whether or not to allow numbers in the person's name
+<<<<<<< HEAD
 	var/allow_numbers = TRUE //SKYRAT EDIT CHANGE
+=======
+	var/allow_numbers = FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// If the highest priority job matches this, will prioritize this name in the UI
 	var/relevant_job

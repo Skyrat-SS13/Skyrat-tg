@@ -12,7 +12,10 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import {
   Objective,
   ObjectivePrintout,
@@ -91,25 +94,36 @@ const IntroductionSection = (props) => {
           <Stack vertical>
             <FlavorSection />
             <Stack.Divider />
+<<<<<<< HEAD
             {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
               <Rules />
             </Stack.Item>
             {/* SKYRAT EDIT ADDITION END */}
             <Stack.Divider />
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             <GuideSection />
             <Stack.Divider />
             <InformationSection />
             <Stack.Divider />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             {!ascended && (
               <Stack.Item>
                 <ObjectivePrintout
                   fill
                   titleMessage={
                     can_change_objective
+<<<<<<< HEAD
                       ? 'Your OPFOR objectives are your primary ones, but in order to ascend, you have these tasks to fulfill' /* SKYRAT EDIT CHANGE - opfor objectives */
                       : 'Your OPFOR objectives are your primary ones. Use your dark knowledge to fulfill your personal goal' /* SKYRAT EDIT CHANGE - opfor objectives  */
+=======
+                      ? 'In order to ascend, you have these tasks to fulfill'
+                      : 'Use your dark knowledge to fulfil your personal goal'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                   }
                   objectives={objectives}
                   objectiveFollowup={

@@ -99,8 +99,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		migrate_character_to_tgui_prefs_menu()
 
 	if (current_version < 42)
+<<<<<<< HEAD
 		// migrate_body_types(save_data) // SKYRAT EDIT - This'll fuck up savefiles
 		migrate_mentor() // SKYRAT EDIT - Make mentors alive again
+=======
+		migrate_body_types(save_data)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if (current_version < 43)
 		migrate_legacy_sound_toggles(savefile)
@@ -308,7 +312,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
+<<<<<<< HEAD
 	load_character_skyrat(save_data) // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
@@ -325,12 +332,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j
 
+<<<<<<< HEAD
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks), augments)// SKYRAT EDIT - AUGMENTS+
+=======
+	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	validate_quirks()
 
 	return TRUE
 
+<<<<<<< HEAD
 /datum/preferences/proc/save_character(update) // Skyrat edit - Choose when to update (This is stupid)
+=======
+/datum/preferences/proc/save_character()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!path)
 		return FALSE
@@ -367,7 +382,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
+<<<<<<< HEAD
 	save_character_skyrat(save_data, update) // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return TRUE
 

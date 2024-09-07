@@ -14,7 +14,10 @@
 
 /datum/round_event/bureaucratic_error/start()
 	var/list/jobs = SSjob.get_valid_overflow_jobs()
+<<<<<<< HEAD
 	/* SKYRAT EDIT REMOVAL START
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(prob(33)) // Only allows latejoining as a single role.
 		var/datum/job/overflow = pick_n_take(jobs)
 		overflow.spawn_positions = -1
@@ -23,7 +26,13 @@
 			var/datum/job/current = job
 			current.total_positions = 0
 		return
+<<<<<<< HEAD
 	*/ // SKYRAT EDIT REMOVAL - no more locking off jobs
 	// Adds/removes a random amount of job slots from all jobs.
 	for(var/datum/job/current as anything in jobs)
 		current.total_positions = max(current.total_positions + rand(-2,4), 1) // SKYRAT EDIT CHANGE - No more locking off jobs - ORIGINAL: current.total_positions = max(current.total_positions + rand(-2,4), 0)
+=======
+	// Adds/removes a random amount of job slots from all jobs.
+	for(var/datum/job/current as anything in jobs)
+		current.total_positions = max(current.total_positions + rand(-2,4), 0)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

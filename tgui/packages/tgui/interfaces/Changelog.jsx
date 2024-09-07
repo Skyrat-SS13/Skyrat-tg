@@ -185,6 +185,7 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
+<<<<<<< HEAD
         <h1>Skyrat Space Station 13</h1>
         <p>
           <b>Thanks to: </b>
@@ -198,13 +199,33 @@ export class Changelog extends Component {
           <a href="https://github.com/skyrat-ss13?tab=members">here</a>
           {', recent GitHub contributors can be found '}
           <a href="https://github.com/Skyrat-SS13/Skyrat-tg/pulse/monthly">
+=======
+        <h1>Traditional Games Space Station 13</h1>
+        <p>
+          <b>Thanks to: </b>
+          Baystation 12, /vg/station, NTstation, CDK Station devs,
+          FacepunchStation, GoonStation devs, the original Space Station 13
+          developers, Invisty for the title image and the countless others who
+          have contributed to the game, issue tracker or wiki over the years.
+        </p>
+        <p>
+          {'Current organization members can be found '}
+          <a href="https://github.com/orgs/tgstation/people">here</a>
+          {', recent GitHub contributors can be found '}
+          <a href="https://github.com/tgstation/tgstation/pulse/monthly">
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             here
           </a>
           .
         </p>
         <p>
+<<<<<<< HEAD
           {'You can also join our forums '}
           <a href="https://forum.skyrat13.tk/">here</a>.
+=======
+          {'You can also join our discord '}
+          <a href="https://tgstation13.org/phpBB/viewforum.php?f=60">here</a>.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         </p>
         {dateDropdown}
       </Section>

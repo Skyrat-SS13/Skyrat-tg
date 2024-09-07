@@ -310,7 +310,11 @@
 /datum/customer_data/moth/proc/get_wings(mob/living/basic/robot_customer/customer)
 	var/customer_ref = WEAKREF(customer)
 	if (!LAZYACCESS(wings_chosen, customer_ref))
+<<<<<<< HEAD
 		LAZYSET(wings_chosen, customer_ref, pick(SSaccessories.sprite_accessories["wings"])) // SKYRAT EDIT CHANGE - ORIGINAL: LAZYSET(wings_chosen, customer_ref, SSaccessories.moth_wings_list[pick(SSaccessories.moth_wings_list)])
+=======
+		LAZYSET(wings_chosen, customer_ref, SSaccessories.moth_wings_list[pick(SSaccessories.moth_wings_list)])
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return wings_chosen[customer_ref]
 
 /datum/customer_data/moth/get_underlays(mob/living/basic/robot_customer/customer)

@@ -10,10 +10,17 @@
 #define MANIFEST_ERROR_ITEM (1 << 2)
 
 /obj/item/paper/fluff/jobs/cargo/manifest
+	can_become_message_in_bottle = FALSE //A lot of these are spawned each round, they'd only dilute the pool and make it boring.
 	var/order_cost = 0
 	var/order_id = 0
 	var/errors = 0
 
+<<<<<<< HEAD
+=======
+/obj/item/paper/requisition
+	can_become_message_in_bottle = FALSE //A lot of these are spawned each round, they'd only dilute the pool and make it boring.
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/paper/fluff/jobs/cargo/manifest/Initialize(mapload, id, cost, manifest_can_fail = TRUE)
 	. = ..()
 	order_id = id
@@ -99,7 +106,11 @@
 	return round(cost)
 
 /datum/supply_order/proc/generateRequisition(turf/T)
+<<<<<<< HEAD
 	var/obj/item/paper/requisition_paper = new(T)
+=======
+	var/obj/item/paper/requisition/requisition_paper = new(T)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	requisition_paper.name = "requisition form - #[id] ([pack.name])"
 	var/requisition_text = "<h2>[station_name()] Supply Requisition</h2>"

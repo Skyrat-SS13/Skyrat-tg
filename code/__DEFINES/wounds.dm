@@ -46,6 +46,10 @@ GLOBAL_LIST_INIT(wound_severities_chronological, list(
 /// Mainly a define used for wound_pregen_data, if a pregen data instance expects this, it will accept any and all wound types, even none at all
 #define WOUND_ALL "wound_all"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // ~determination second wind defines
 // How much determination reagent to add each time someone gains a new wound in [/datum/wound/proc/second_wind]
 #define WOUND_DETERMINATION_MODERATE 1
@@ -113,6 +117,10 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 // Wound series
 // A "wound series" is just a family of wounds that logically follow eachother
 // Multiple wounds in a single series cannot be on a limb - the highest severity will always be prioritized, and lower ones will be skipped
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// T1-T3 Bleeding slash wounds. Requires flesh. Can cause bleeding, but doesn't require it. From: slash.dm
 #define WOUND_SERIES_FLESH_SLASH_BLEED "wound_series_flesh_slash_bled"
 /// T1-T3 Basic blunt wounds. T1 requires jointed, but 2-3 require bone. From: bone.dm
@@ -126,6 +134,7 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 /// Cranial fissure wound.
 #define WOUND_SERIES_CRANIAL_FISSURE "wound_series_cranial_fissure"
 
+<<<<<<< HEAD
 // SKYRAT EDIT ADDITION BEGIN - MUSCLE AND SYNTH WOUNDS
 // Have to put it here so I can use it in the global list of wound series
 /// See muscle.dm and robotic_blunt.dm
@@ -137,6 +146,8 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 #define WOUND_SERIES_WIRE_PIERCE_ELECTRICAL_DAMAGE "wound_series_metal_pierce_electrical_damage_basic"
 // SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// A assoc list of (wound typepath -> wound_pregen_data instance). Every wound should have a pregen data.
 GLOBAL_LIST_INIT_TYPED(all_wound_pregen_data, /datum/wound_pregen_data, generate_wound_static_data())
 
@@ -208,6 +219,7 @@ GLOBAL_LIST_INIT(wound_series_collections, generate_wound_series_collection())
 /// Allows for determining of which wound series are caused by what.
 GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_BLUNT = list(
+<<<<<<< HEAD
 		WOUND_SERIES_BONE_BLUNT_BASIC,
 		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT -- MUSCLE WOUNDS
 		WOUND_SERIES_METAL_BLUNT_BASIC, // SKYRAT EDIT ADDITION - SYNTH WOUNDS
@@ -227,6 +239,18 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED,
 		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT ADDITION - MUSCLE WOUNDS
 		WOUND_SERIES_WIRE_PIERCE_ELECTRICAL_DAMAGE, // SKYRAT EDIT ADDITION - SYNTH WOUNDS
+=======
+		WOUND_SERIES_BONE_BLUNT_BASIC
+	),
+	WOUND_SLASH = list(
+		WOUND_SERIES_FLESH_SLASH_BLEED,
+	),
+	WOUND_BURN = list(
+		WOUND_SERIES_FLESH_BURN_BASIC,
+	),
+	WOUND_PIERCE = list(
+		WOUND_SERIES_FLESH_PUNCTURE_BLEED
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	),
 ))
 
@@ -297,8 +321,12 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 /// Assoc list of biotype -> ideal scar file to be used and grab stuff from.
 GLOBAL_LIST_INIT(biotypes_to_scar_file, list(
 	"[BIO_FLESH]" = FLESH_SCAR_FILE,
+<<<<<<< HEAD
 	"[BIO_BONE]" = BONE_SCAR_FILE,
 	"[BIO_METAL]" = METAL_SCAR_FILE // SKYRAT EDIT ADDITION - METAL SCARS (see robotic_blunt.dm)
+=======
+	"[BIO_BONE]" = BONE_SCAR_FILE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 // ~burn wound infection defines

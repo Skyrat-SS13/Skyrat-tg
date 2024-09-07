@@ -109,6 +109,7 @@
 			act_result = is_left_clicking ? welder_act(user, tool) : welder_act_secondary(user, tool)
 		if(TOOL_ANALYZER)
 			act_result = is_left_clicking ? analyzer_act(user, tool) : analyzer_act_secondary(user, tool)
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START - SKYRAT TOOLS
 		if(TOOL_BILLOW)
 			act_result = is_left_clicking ? billow_act(user, tool) : billow_act_secondary(user, tool)
@@ -119,6 +120,8 @@
 		if(TOOL_BLOWROD)
 			act_result = is_left_clicking ? blowrod_act(user, tool) : blowrod_act_secondary(user, tool)
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(!act_result)
 		return NONE

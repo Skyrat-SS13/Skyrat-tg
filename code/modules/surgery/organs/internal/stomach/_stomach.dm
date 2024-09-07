@@ -5,7 +5,11 @@
 	name = "stomach"
 	desc = "Onaka ga suite imasu."
 	icon_state = "stomach"
+<<<<<<< HEAD
 	visual = FALSE
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	w_class = WEIGHT_CLASS_SMALL
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_STOMACH
@@ -197,7 +201,10 @@
 
 ///This gets called after the owner takes a bite of food
 /obj/item/organ/internal/stomach/proc/after_eat(atom/edible)
+<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_STOMACH_AFTER_EAT, edible) // SKYRAT EDIT ADDITION - Hemophage Organs
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return
 
 /obj/item/organ/internal/stomach/proc/handle_disgust(mob/living/carbon/human/disgusted, seconds_per_tick, times_fired)
@@ -247,11 +254,19 @@
 			disgusted.throw_alert(ALERT_DISGUST, /atom/movable/screen/alert/disgusted)
 			disgusted.add_mood_event("disgust", /datum/mood_event/disgusted)
 
+<<<<<<< HEAD
 /obj/item/organ/internal/stomach/Insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
 	receiver.hud_used?.hunger?.update_appearance()
 
 /obj/item/organ/internal/stomach/Remove(mob/living/carbon/stomach_owner, special, movement_flags)
+=======
+/obj/item/organ/internal/stomach/mob_insert(mob/living/carbon/receiver, special, movement_flags)
+	. = ..()
+	receiver.hud_used?.hunger?.update_appearance()
+
+/obj/item/organ/internal/stomach/mob_remove(mob/living/carbon/stomach_owner, special, movement_flags)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(ishuman(stomach_owner))
 		var/mob/living/carbon/human/human_owner = owner
 		human_owner.clear_alert(ALERT_DISGUST)

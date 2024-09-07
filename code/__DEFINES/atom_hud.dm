@@ -47,6 +47,7 @@
 #define DIAG_CAMERA_HUD "22"
 /// Steady Hacked APC effect, visible only to Malf AIs
 #define MALF_APC_HUD "23"
+<<<<<<< HEAD
 
 // SKYRAT EDIT ADDITION BEGIN - gun permits and DNR
 /// ammo of guns
@@ -57,6 +58,8 @@
 /// If they have the DNR trait
 #define DNR_HUD "27"
 // SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -75,7 +78,10 @@
 #define DATA_HUD_AI_DETECT 9
 #define DATA_HUD_FAN 10
 #define DATA_HUD_MALF_APC 11
+<<<<<<< HEAD
 #define DATA_HUD_PERMIT 12 //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20

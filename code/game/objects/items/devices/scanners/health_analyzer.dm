@@ -45,7 +45,11 @@
 	return BRUTELOSS
 
 /obj/item/healthanalyzer/attack_self(mob/user)
+<<<<<<< HEAD
 	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
+=======
+	if(!user.can_read(src) || user.is_blind())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	scanmode = (scanmode + 1) % SCANMODE_COUNT
@@ -58,7 +62,11 @@
 /obj/item/healthanalyzer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
+<<<<<<< HEAD
 	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again- ORIGINAL: if(!user.can_read(src) || user.is_blind())
+=======
+	if(!user.can_read(src) || user.is_blind())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return ITEM_INTERACT_BLOCKING
 
 	var/mob/living/M = interacting_with
@@ -96,7 +104,11 @@
 /obj/item/healthanalyzer/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
+<<<<<<< HEAD
 	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyze again - ORIGINAL: if(!user.can_read(src) || user.is_blind())
+=======
+	if(!user.can_read(src) || user.is_blind())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return ITEM_INTERACT_BLOCKING
 
 	chemscan(user, interacting_with)
@@ -132,7 +144,11 @@
  * tochat - Whether to immediately post the result into the chat of the user, otherwise it will return the results.
  */
 /proc/healthscan(mob/user, mob/living/target, mode = SCANNER_VERBOSE, advanced = FALSE, tochat = TRUE)
+<<<<<<< HEAD
 	if(user.incapacitated())
+=======
+	if(user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	// the final list of strings to render
@@ -164,6 +180,7 @@
 	if(HAS_TRAIT(target, TRAIT_HUSK))
 		if(advanced)
 			if(HAS_TRAIT_FROM(target, TRAIT_HUSK, BURN))
+<<<<<<< HEAD
 				/* SKYRAT EDIT START: More unhusking information */
 				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns. Proceed by repairing burn damage and following up with \
 								application of [SYNTHFLESH_UNHUSK_AMOUNT]u synthflesh or injection of rezadone as treatment.</span>\n"
@@ -171,6 +188,11 @@
 				render_list += "<span class='alert ml-1'>Subject has been husked by dessication. Use application of [SYNTHFLESH_LING_UNHUSK_AMOUNT]u \
 								of synthflesh or injection of rezadone as treatment.</span>\n"
 				/* SKYRAT EDIT END */
+=======
+				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns.</span>\n"
+			else if (HAS_TRAIT_FROM(target, TRAIT_HUSK, CHANGELING_DRAIN))
+				render_list += "<span class='alert ml-1'>Subject has been husked by dessication.</span>\n"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else
 				render_list += "<span class='alert ml-1'>Subject has been husked by mysterious causes.</span>\n"
 
@@ -185,16 +207,22 @@
 	if (!target.get_organ_slot(ORGAN_SLOT_BRAIN)) // kept exclusively for soul purposes
 		render_list += "<span class='alert ml-1'>Subject lacks a brain.</span>\n"
 
+<<<<<<< HEAD
 	var/death_consequences_status_text // SKYRAT EDIT ADDITION: Death consequences quirk
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
 		if(LAZYLEN(carbontarget.get_traumas()))
 			var/list/trauma_text = list()
 			for(var/datum/brain_trauma/trauma in carbontarget.get_traumas())
+<<<<<<< HEAD
 				//SKYRAT EDIT: Scary Traits (Bimbo)
 				if(!trauma.display_scanner)
 					continue
 				//SKYRAT EDIT: Scary Traits (Bimbo)
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				var/trauma_desc = ""
 				switch(trauma.resilience)
 					if(TRAUMA_RESILIENCE_SURGERY)
@@ -203,6 +231,7 @@
 						trauma_desc += "deep-rooted "
 					if(TRAUMA_RESILIENCE_WOUND)
 						trauma_desc += "fracture-derived "
+<<<<<<< HEAD
 					// SKYRAT EDIT CHANGE BEGIN - Curable permanent traumas
 					if(TRAUMA_RESILIENCE_MAGIC)
 						trauma_desc += "soul-bound "
@@ -216,12 +245,19 @@
 					var/datum/brain_trauma/severe/death_consequences/consequences_trauma = trauma
 					death_consequences_status_text = consequences_trauma.get_health_analyzer_link_text(user)
 				// SKYRAT EDIT ADDITION END: Death Consequences Quirk
+=======
+					if(TRAUMA_RESILIENCE_MAGIC, TRAUMA_RESILIENCE_ABSOLUTE)
+						trauma_desc += "permanent "
+				trauma_desc += trauma.scan_desc
+				trauma_text += trauma_desc
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			render_list += "<span class='alert ml-1'>Cerebral traumas detected: subject appears to be suffering from [english_list(trauma_text)].</span>\n"
 		if(carbontarget.quirks.len)
 			render_list += "<span class='info ml-1'>Subject Major Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span>\n"
 			if(advanced)
 				render_list += "<span class='info ml-1'>Subject Minor Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, TRUE)].</span>\n"
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START -- Show increased/decreased brute/burn mods, to "leave a paper trail" for the fragility quirk
 	if(ishuman(target))
 		var/mob/living/carbon/human/humantarget = target
@@ -233,6 +269,8 @@
 			render_list += "<span class='danger ml-1'>Subject takes [(physiology.burn_mod) * 100]% burn damage.</span>\n"
 	// SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if (HAS_TRAIT(target, TRAIT_IRRADIATED))
 		render_list += "<span class='alert ml-1'>Subject is irradiated. Supply toxin healing.</span>\n"
 
@@ -432,6 +470,7 @@
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
 	// we handled the last <br> so we don't need handholding
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION - Mutant stuff
 	if(target.GetComponent(/datum/component/mutant_infection))
 		render_list += span_userdanger("UNKNOWN PROTO-VIRAL INFECTION DETECTED. ISOLATE IMMEDIATELY.")
@@ -442,13 +481,19 @@
 		render_list += death_consequences_status_text
 	// SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(tochat)
 		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 	else
 		return(jointext(render_list, ""))
 
 /proc/chemscan(mob/living/user, mob/living/target)
+<<<<<<< HEAD
 	if(user.incapacitated())
+=======
+	if(user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	if(istype(target) && target.reagents)
@@ -534,7 +579,11 @@
 
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/scanner, simple_scan = FALSE)
+<<<<<<< HEAD
 	if(!istype(patient) || user.incapacitated())
+=======
+	if(!istype(patient) || user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	var/render_list = ""
@@ -618,7 +667,11 @@
 /obj/item/healthanalyzer/simple/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
+<<<<<<< HEAD
 	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL: if(!user.can_read(src) || user.is_blind())
+=======
+	if(!user.can_read(src) || user.is_blind())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)
@@ -703,7 +756,11 @@
 
 /// Checks the individual for any diseases that are visible to the scanner, and displays the diseases in the attacked to the attacker.
 /proc/diseasescan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/simple/scanner)
+<<<<<<< HEAD
 	if(!istype(patient) || user.incapacitated())
+=======
+	if(!istype(patient) || user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	var/list/render = list()

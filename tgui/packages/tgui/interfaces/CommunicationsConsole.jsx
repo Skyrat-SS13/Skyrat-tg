@@ -256,11 +256,17 @@ const PageMain = (props) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
+<<<<<<< HEAD
     canToggleEngineeringOverride, // SKYRAT EDIT - Engineering Override
     emagged,
     syndicate,
     emergencyAccess,
     engineeringOverride, // SKYRAT EDIT - Engineering Override
+=======
+    emagged,
+    syndicate,
+    emergencyAccess,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -346,6 +352,7 @@ const PageMain = (props) => {
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
+<<<<<<< HEAD
 
               <AlertButton
                 // SKYRAT EDIT ADDTION BEGIN - ALERTS
@@ -366,6 +373,8 @@ const PageMain = (props) => {
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
                 // SKYRAT EDIT END
               />
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             </Flex.Item>
           </Flex>
         </Section>
@@ -380,6 +389,10 @@ const PageMain = (props) => {
               onClick={() => act('makePriorityAnnouncement')}
             />
           )}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
               icon="id-card-o"
@@ -391,6 +404,7 @@ const PageMain = (props) => {
             />
           )}
 
+<<<<<<< HEAD
           {/* SKYRAT EDIT ADDITION START - Engineering Override */}
           {!!canToggleEngineeringOverride && (
             <Button.Confirm
@@ -404,6 +418,8 @@ const PageMain = (props) => {
           )}
           {/* SKYRAT EDIT ADDITION END */}
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           {!syndicate && (
             <Button
               icon="desktop"
@@ -456,6 +472,7 @@ const PageMain = (props) => {
               onClick={() => act('restoreBackupRoutingData')}
             />
           )}
+<<<<<<< HEAD
           {
             // SKYRAT EDIT BEGIN
           }
@@ -490,6 +507,8 @@ const PageMain = (props) => {
           {
             // SKYRAT EDIT END
           }
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         </Flex>
       </Section>
 

@@ -16,7 +16,11 @@
 	resistance_flags = FLAMMABLE
 	var/mopcount = 0
 	///Maximum volume of reagents it can hold.
+<<<<<<< HEAD
 	var/max_reagent_volume = 50 // SKYRAT EDIT - ORIGINAL: 15
+=======
+	var/max_reagent_volume = 15
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mopspeed = 1.5 SECONDS
 	force_string = "robust... against germs"
 	var/insertable = TRUE
@@ -78,7 +82,11 @@
 /obj/item/mop/advanced
 	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this! Due to the self-wetting technology, it proves very inefficient for cleaning up spills." //SKYRAT EDIT
 	name = "advanced mop"
+<<<<<<< HEAD
 	max_reagent_volume = 100 // SKYRAT EDIT - ORIGINAL: 10
+=======
+	max_reagent_volume = 10
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "advmop"
 	inhand_icon_state = "advmop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'

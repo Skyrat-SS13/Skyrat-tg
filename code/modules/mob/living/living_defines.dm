@@ -1,6 +1,10 @@
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
+<<<<<<< HEAD
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD, DNR_HUD) // SKYRAT EDIT ADDITION - DNR_HUD
+=======
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	pressure_resistance = 10
 	hud_type = /datum/hud/living
 	interaction_flags_click = ALLOW_RESTING

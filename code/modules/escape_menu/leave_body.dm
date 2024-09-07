@@ -13,7 +13,11 @@
 		"Suicide",
 		"Perform a dramatic suicide in game",
 		/* pixel_offset = */ -105,
+<<<<<<< HEAD
 		// CALLBACK(src, PROC_REF(leave_suicide)), // SKYRAT EDIT REMOVAL
+=======
+		CALLBACK(src, PROC_REF(leave_suicide)),
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/* button_overlay = */ dead_clown,
 	))
 
@@ -64,16 +68,22 @@
 	var/mob/living/living_user = client?.mob
 	living_user?.ghost()
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/escape_menu/proc/leave_suicide()
 	PRIVATE_PROC(TRUE)
 
 	// Not guaranteed to be human. Everything defines verb/suicide separately. Fuck you, still.
 	var/mob/living/carbon/human/human_user = client?.mob
 	human_user?.suicide()
+<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /atom/movable/screen/escape_menu/leave_body_button
 	icon = 'icons/hud/escape_menu_leave_body.dmi'

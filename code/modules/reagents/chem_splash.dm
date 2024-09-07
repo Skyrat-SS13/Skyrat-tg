@@ -112,8 +112,11 @@
 		var/distance = max(1, get_dist(thing, epicenter))
 		var/fraction = 0.5 / (2 ** distance) //50/25/12/6... for a 200u splash, 25/12/6/3... for a 100u, 12/6/3/1 for a 50u
 		source.expose(thing, TOUCH, fraction)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Liquids
 	if(isturf(epicenter))
 		var/turf/center_of_mess = epicenter
 		center_of_mess.add_liquid_from_reagents(source)
 	// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

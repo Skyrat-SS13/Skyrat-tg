@@ -9,6 +9,10 @@ import { isEscape, KEY } from 'common/keys';
 import { classes } from 'common/react';
 import {
   forwardRef,
+<<<<<<< HEAD
+=======
+  ReactElement,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   RefObject,
   useEffect,
   useImperativeHandle,
@@ -23,7 +27,11 @@ import { toInputValue } from './Input';
 type Props = Partial<{
   autoFocus: boolean;
   autoSelect: boolean;
+<<<<<<< HEAD
   displayedValue: string;
+=======
+  displayedValue: ReactElement;
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   dontUseTabForIndent: boolean;
   fluid: boolean;
   maxLength: number;

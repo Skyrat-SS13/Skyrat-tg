@@ -109,11 +109,19 @@
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED))
 		var/ignore_flags = NONE
 		if(interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED)
+<<<<<<< HEAD
 			ignore_flags |= IGNORE_RESTRAINTS
 		if(!(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB))
 			ignore_flags |= IGNORE_GRAB
 
 		if(user.incapacitated(ignore_flags))
+=======
+			ignore_flags |= INCAPABLE_RESTRAINTS
+		if(!(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB))
+			ignore_flags |= INCAPABLE_GRAB
+
+		if(INCAPACITATED_IGNORING(user, ignore_flags))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return FALSE
 	return TRUE
 

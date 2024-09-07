@@ -4,7 +4,10 @@
 	inherent_traits = list(
 		TRAIT_USES_SKINTONES,
 	)
+<<<<<<< HEAD
 	mutant_bodyparts = list("wings" = "None")
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 1.1
@@ -35,7 +38,11 @@
 	)
 
 /datum/species/human/get_cough_sound(mob/living/carbon/human/human)
+<<<<<<< HEAD
 	if(human.gender == FEMALE) // SKYRAT EDIT CHANGE
+=======
+	if(human.physique == FEMALE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return pick(
 			'sound/voice/human/female_cough1.ogg',
 			'sound/voice/human/female_cough2.ogg',
@@ -54,7 +61,11 @@
 	)
 
 /datum/species/human/get_cry_sound(mob/living/carbon/human/human)
+<<<<<<< HEAD
 	if(human.gender == FEMALE) // SKYRAT EDIT CHANGE
+=======
+	if(human.physique == FEMALE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return pick(
 			'sound/voice/human/female_cry1.ogg',
 			'sound/voice/human/female_cry2.ogg',

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - Custom HTML Lobby Screen
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define SHUTTER_MOVEMENT_DURATION 0.4 SECONDS
 #define SHUTTER_WAIT_DURATION 0.2 SECONDS
 /// Maximum number of station trait buttons we will display, please think hard before creating scenarios where there are more than this
@@ -111,7 +114,10 @@
 		return
 	flick("[base_icon_state]_pressed", src)
 	update_appearance(UPDATE_ICON)
+<<<<<<< HEAD
 	SEND_SOUND(hud.mymob, sound('modular_skyrat/master_files/sound/effects/save.ogg')) //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 /atom/movable/screen/lobby/button/MouseEntered(location,control,params)
@@ -210,6 +216,7 @@
 	if(!.)
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
+<<<<<<< HEAD
 
 	// SKYRAT EDIT BEGIN
 	if(!is_admin(new_player.client) && length_char(new_player.client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
@@ -217,6 +224,8 @@
 		return
 	// SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	ready = !ready
 	if(ready)
 		new_player.ready = PLAYER_READY_TO_PLAY
@@ -280,18 +289,25 @@
 			to_chat(new_player, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 		return
 
+<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN
 	if(length_char(new_player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
 		to_chat(new_player, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(new_player.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 		return
 	// SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!LAZYACCESS(params2list(params), CTRL_CLICK))
 		GLOB.latejoin_menu.ui_interact(new_player)
 	else
 		to_chat(new_player, span_warning("Opening emergency fallback late join menu! If THIS doesn't show, ahelp immediately!"))
 		GLOB.latejoin_menu.fallback_ui(new_player)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /atom/movable/screen/lobby/button/join/proc/show_join_button()
 	SIGNAL_HANDLER
 	set_button_status(TRUE)
@@ -585,4 +601,7 @@
 #undef SHUTTER_MOVEMENT_DURATION
 #undef SHUTTER_WAIT_DURATION
 #undef MAX_STATION_TRAIT_BUTTONS_VERTICAL
+<<<<<<< HEAD
 */ // SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -30,8 +30,13 @@
 	heat = 3800
 	tool_behaviour = TOOL_WELDER
 	toolspeed = 1
+<<<<<<< HEAD
 	//wound_bonus = 10 //SKYRAT EDIT REMOVAL
 	//bare_wound_bonus = 15 //SKYRAT EDIT REMOVAL
+=======
+	wound_bonus = 10
+	bare_wound_bonus = 15
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.7, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.3)
 	/// Whether the welding tool is on or off.
 	var/welding = FALSE
@@ -159,7 +164,11 @@
 
 	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
 		span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
+<<<<<<< HEAD
 	var/use_delay = 1 SECONDS // SKYRAT EDIT - original repeating ? 1 SECONDS : 0
+=======
+	var/use_delay = repeating ? 1 SECONDS : 0
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(user == attacked_humanoid)
 		use_delay = 5 SECONDS
 

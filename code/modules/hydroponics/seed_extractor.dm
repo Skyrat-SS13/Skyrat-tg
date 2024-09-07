@@ -260,6 +260,7 @@
 		seeds += list(seed_data)
 	. = list()
 	.["seeds"] = seeds
+<<<<<<< HEAD
 
 /obj/machinery/seed_extractor/ui_static_data(mob/user)
 	var/list/data = list()
@@ -277,6 +278,25 @@
 	return data
 
 /obj/machinery/seed_extractor/ui_act(action, params)
+=======
+
+/obj/machinery/seed_extractor/ui_static_data(mob/user)
+	var/list/data = list()
+	data["cycle_seconds"] = HYDROTRAY_CYCLE_DELAY / 10
+	data["trait_db"] = list()
+	for(var/trait_path in subtypesof(/datum/plant_gene/trait))
+		var/datum/plant_gene/trait/trait = new trait_path
+		var/trait_data = list(list(
+			"path" = trait.type,
+			"name" = trait.name,
+			"icon" = trait.icon,
+			"description" = trait.description
+		))
+		data["trait_db"] += trait_data
+	return data
+
+/obj/machinery/seed_extractor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

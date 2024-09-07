@@ -179,7 +179,11 @@
 	if(QDELETED(src))
 		return FALSE
 
+<<<<<<< HEAD
 	. = !QDELETED(user) && !user.incapacitated() && !QDELETED(calling_holopad) && calling_holopad.is_operational && user.loc == calling_holopad.loc
+=======
+	. = !QDELETED(user) && !user.incapacitated && !QDELETED(calling_holopad) && calling_holopad.is_operational && user.loc == calling_holopad.loc
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(.)
 		if(!connected_holopad)

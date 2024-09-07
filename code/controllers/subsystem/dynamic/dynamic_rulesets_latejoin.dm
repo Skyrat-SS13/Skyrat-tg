@@ -16,6 +16,7 @@
 			candidates.Remove(P)
 		else if (!((antag_preference || antag_flag) in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			candidates.Remove(P)
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION - PROTECTED JOBS
 		else if(P.client?.prefs && !P.client.prefs.read_preference(/datum/preference/toggle/be_antag))
 			candidates.Remove(P)
@@ -24,6 +25,8 @@
 			candidates.Remove(P)
 			continue
 		// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/dynamic_ruleset/latejoin/ready(forced = 0)
 	if (forced)

@@ -8,6 +8,8 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
 #define ACCESS_GRANTING_COOLDOWN (30 SECONDS)
 
+#define ACCESS_GRANTING_COOLDOWN (30 SECONDS)
+
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
 	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate, or to give the Janitor access to a department."
@@ -64,7 +66,11 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 		return UI_CLOSE
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/keycard_auth/ui_act(action, params)
+=======
+/obj/machinery/keycard_auth/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(. || waiting || !allowed(usr))
 		return
@@ -88,6 +94,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 			if(!event_source)
 				sendEvent(KEYCARD_BSA_UNLOCK)
 				. = TRUE
+<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if("pin_unrestrict")
 			if(!event_source)
@@ -98,6 +105,8 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 				sendEvent(KEYCARD_ENG_OVERRIDE)
 				. = TRUE
 		//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if("give_janitor_access")
 			var/mob/living/living_user = usr
 			if(!living_user || !istype(living_user))
@@ -175,6 +184,16 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 		if(KEYCARD_ENG_OVERRIDE)
 			toggle_eng_override()
 		//SKYRAT EDIT END
+
+/// Subtype which is stuck to a wall
+/obj/machinery/keycard_auth/wall_mounted
+	icon = 'icons/obj/machines/wallmounts.dmi'
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth/wall_mounted, 26)
+
+/obj/machinery/keycard_auth/wall_mounted/Initialize(mapload)
+	. = ..()
+	find_and_hang_on_wall()
 
 /// Subtype which is stuck to a wall
 /obj/machinery/keycard_auth/wall_mounted

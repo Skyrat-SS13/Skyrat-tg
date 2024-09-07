@@ -34,7 +34,11 @@
 	/// The path our heretic has chosen. Mostly used for flavor.
 	var/heretic_path = PATH_START
 	/// A sum of how many knowledge points this heretic CURRENTLY has. Used to research.
+<<<<<<< HEAD
 	var/knowledge_points = 2 //SKYRAT EDIT - ORIGINAL 1
+=======
+	var/knowledge_points = 1
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// The time between gaining influence passively. The heretic gain +1 knowledge points every this duration of time.
 	var/passive_gain_timer = 20 MINUTES
 	/// Assoc list of [typepath] = [knowledge instance]. A list of all knowledge this heretic's reserached.
@@ -218,7 +222,11 @@
 
 	return data
 
+<<<<<<< HEAD
 /datum/antagonist/heretic/ui_act(action, params)
+=======
+/datum/antagonist/heretic/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -648,7 +656,11 @@
 /datum/antagonist/heretic/roundend_report()
 	var/list/parts = list()
 
+<<<<<<< HEAD
 	//var/succeeded = TRUE // SKYRAT EDIT REMOVAL
+=======
+	var/succeeded = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	parts += printplayer(owner)
 	parts += "<b>Sacrifices Made:</b> [total_sacrifices]"
@@ -656,6 +668,7 @@
 	if(length(objectives))
 		var/count = 1
 		for(var/datum/objective/objective as anything in objectives)
+<<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
 			if(!objective.check_completion())
@@ -668,6 +681,12 @@
 
 	// SKYRAT EDIT START - No greentext
 	/*
+=======
+			if(!objective.check_completion())
+				succeeded = FALSE
+			parts += "<b>Objective #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
+			count++
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(feast_of_owls)
 		parts += span_greentext("Ascension Forsaken")
 	if(ascended)
@@ -678,8 +697,11 @@
 			parts += span_greentext("The heretic was successful, but did not ascend!")
 		else
 			parts += span_redtext("The heretic has failed.")
+<<<<<<< HEAD
 	*/
 	// SKYRAT EDIT END - No greentext
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	parts += "<b>Knowledge Researched:</b> "
 

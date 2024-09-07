@@ -8,6 +8,11 @@
 	slot_flags = ITEM_SLOT_ICLOTHING
 	interaction_flags_click = NEED_DEXTERITY
 	armor_type = /datum/armor/clothing_under
+<<<<<<< HEAD
+=======
+	supports_variations_flags = CLOTHING_DIGITIGRADE_MASK
+	digitigrade_greyscale_config_worn = /datum/greyscale_config/jumpsuit/worn_digi
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
@@ -92,7 +97,11 @@
 	return changed ? CONTEXTUAL_SCREENTIP_SET : .
 
 
+<<<<<<< HEAD
 /obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
+=======
+/obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(isinhands)
 		return
@@ -102,7 +111,11 @@
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
 	if(accessory_overlay)
+<<<<<<< HEAD
 		. += modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += accessory_overlay
+=======
+		. += accessory_overlay
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/under/attackby(obj/item/attacking_item, mob/user, params)
 	if(has_sensor == BROKEN_SENSORS && istype(attacking_item, /obj/item/stack/cable_coil))
@@ -162,13 +175,19 @@
 	if(adjusted == ALT_STYLE)
 		adjust_to_normal()
 
+<<<<<<< HEAD
 	/* SKYRAT EDIT REMOVAL - This breaks jumpsuit adjustment. Plus, we don't support it.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if((supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && ishuman(user))
 		var/mob/living/carbon/human/wearer = user
 		if(wearer.bodyshape & BODYSHAPE_DIGITIGRADE)
 			adjusted = DIGITIGRADE_STYLE
 			update_appearance()
+<<<<<<< HEAD
 		*/ // SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/under/equipped(mob/living/user, slot)
 	..()

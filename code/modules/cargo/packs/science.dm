@@ -189,4 +189,8 @@
 	access_view = ACCESS_ROBOTICS
 	contains = list(/obj/item/mod/core/standard = 3)
 	crate_name = "\improper MOD core crate"
+<<<<<<< HEAD
 	crate_type = /obj/structure/closet/crate/secure/science/robo
+=======
+	crate_type = /obj/structure/closet/crate/nakamura
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

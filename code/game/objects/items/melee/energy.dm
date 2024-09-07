@@ -30,6 +30,7 @@
 	/// The heat given off when active.
 	var/active_heat = 3500
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADD START
 
 	/// The sound played when the item is turned on
@@ -40,6 +41,8 @@
 
 	// SKYRAT EDIT ADD END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/armor/melee_energy
 	fire = 100
 	acid = 30

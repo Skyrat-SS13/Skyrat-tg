@@ -2,20 +2,35 @@ Any time you make a change to the schema files, remember to increment the databa
 
 Make sure to also update `DB_MAJOR_VERSION` and `DB_MINOR_VERSION`, which can be found in `code/__DEFINES/subsystem.dm`.
 
+<<<<<<< HEAD
 The latest database version is 5.30 (5.27 for /tg/); The query to update the schema revision table is:
 
 ```sql
 INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 30);
+=======
+The latest database version is 5.27; The query to update the schema revision table is:
+
+```sql
+INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 27);
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ```
 or
 
 ```sql
+<<<<<<< HEAD
 INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 30);
+=======
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 27);
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ```
 
 In any query remember to add a prefix to the table names if you use one.
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.30, 26 April 2024, by zephyrtfa
+=======
+Version 5.27, 26 April 2024, by zephyrtfa
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Add the ip intel whitelist table
 ```sql
 DROP TABLE IF EXISTS `ipintel_whitelist`;
@@ -29,6 +44,7 @@ CREATE TABLE `ipintel_whitelist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 ```
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.29, 08 January 2024, by Useroth
 Add a new table for age-checking purposes. Optional if you don't ever intend to use the age prompt.
 
@@ -43,20 +59,31 @@ CREATE TABLE `player_dob` (
 
 -----------------------------------------------------
 Version 5.28, 03 December 2023, by distributivgesetz
+=======
+Version 5.26, 03 December 2023, by distributivgesetz
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Set the default value of cloneloss to 0, as it's obsolete and it won't be set by blackbox anymore.
 ```sql
 ALTER TABLE `death` MODIFY COLUMN `cloneloss` SMALLINT(5) UNSIGNED DEFAULT '0';
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.27, 27 September 2023, by Jimmyl
+=======
+Version 5.25, 27 September 2023, by Jimmyl
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Removes the text_adventures table because it is no longer used
 ```sql
  DROP TABLE IF EXISTS `text_adventures`;
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.26, 17 May 2023, by LemonInTheDark
+=======
+Version 5.24, 17 May 2023, by LemonInTheDark
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Modified the library action table to fit ckeys properly, and to properly store ips.
 ```sql
  ALTER TABLE `library_action` MODIFY COLUMN `ckey` varchar(32) NOT NULL;
@@ -64,7 +91,11 @@ Modified the library action table to fit ckeys properly, and to properly store i
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.25, 28 December 2022, by Mothblocks
+=======
+Version 5.23, 28 December 2022, by Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Added `tutorial_completions` to mark what ckeys have completed contextual tutorials.
 
 ```sql
@@ -77,7 +108,11 @@ CREATE TABLE `tutorial_completions` (
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.24, 22 December 2021, by Mothblocks
+=======
+Version 5.22, 22 December 2021, by Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Fixes a bug in `telemetry_connections` that limited the range of IPs.
 
 ```sql
@@ -85,7 +120,11 @@ ALTER TABLE `telemetry_connections` MODIFY COLUMN `address` INT(10) UNSIGNED NOT
 ```
 -----------------------------------------------------
 
+<<<<<<< HEAD
 Version 5.23, 15 December 2021, by Mothblocks
+=======
+Version 5.21, 15 December 2021, by Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Adds `telemetry_connections` table for tracking tgui telemetry.
 
 ```sql
@@ -103,7 +142,11 @@ CREATE TABLE `telemetry_connections` (
 ```
 -----------------------------------------------------
 
+<<<<<<< HEAD
 Version 5.22, 11 November 2021, by Mothblocks
+=======
+Version 5.20, 11 November 2021, by Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Adds `admin_ckey` field to the `known_alts` table to track who added what.
 
 ```sql
@@ -112,7 +155,11 @@ ADD COLUMN `admin_ckey` VARCHAR(32) NOT NULL DEFAULT '*no key*' AFTER `ckey2`;
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.21, 10 November 2021, by WalterMeldron
+=======
+Version 5.19, 10 November 2021, by WalterMeldron
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Adds an urgent column to tickets for ahelps marked as urgent.
 
 ```sql
@@ -120,7 +167,11 @@ ALTER TABLE `ticket` ADD COLUMN `urgent` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.20, 1 November 2021, by Mothblocks
+=======
+Version 5.18, 1 November 2021, by Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Added `known_alts` table for tracking who not to create suspicious logins for.
 
 ```sql
@@ -134,7 +185,11 @@ CREATE TABLE `known_alts` (
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.19, 8 October 2021, by MrStonedOne + Mothblocks
+=======
+Version 5.17, 8 October 2021, by MrStonedOne + Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Changes any table that requrired a NOT NULL round ID to now accept NULL. In the BSQL past, these were handled as 0, but in the move to rust-g this behavior was lost.
 
 ```sql
@@ -153,6 +208,7 @@ ALTER TABLE `ticket` CHANGE `round_id` `round_id` INT(11) UNSIGNED NULL;
 ```
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.18, 23 August 2021, by GoldenAlpharex
 Added `discord_report` column to the `ban table`
 
@@ -162,6 +218,9 @@ Added `discord_report` column to the `ban table`
 
 -----------------------------------------------------
 Version 5.17, 31 July 2021, by Atlanta-Ned
+=======
+Version 5.16, 31 July 2021, by Atlanta-Ned
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Added `library_action` table for tracking reported library books and actions taken on them.
 
 ```sql
@@ -180,7 +239,11 @@ CREATE TABLE `library_action` (
 
 
 -----------------------------------------------------
+<<<<<<< HEAD
 Version 5.16, 2 June 2021, by Mothblocks
+=======
+Version 5.15, 2 June 2021, by Mothblocks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Added verified admin connection log used for 2FA
 
 ```sql
@@ -197,7 +260,11 @@ CREATE TABLE `admin_connections` (
 
 -----------------------------------------------------
 
+<<<<<<< HEAD
 Version 5.15, xx May 2021, by Anturke
+=======
+Version 5.14, xx May 2021, by Anturke
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Added exploration drone adventure table
 
 ```sql
@@ -214,7 +281,11 @@ CREATE TABLE `text_adventures` (
 
 -----------------------------------------------------
 
+<<<<<<< HEAD
 Version 5.14, 30 April 2021, by Atlanta Ned
+=======
+Version 5.13, 30 April 2021, by Atlanta Ned
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 Added the `citation` table for tracking security citations in the database.
 
 ```sql
@@ -243,6 +314,7 @@ AUTO_INCREMENT=1
 
 -----------------------------------------------------
 
+<<<<<<< HEAD
 Version 5.13, 9 March, 2021, by Useroth
 
 Implemented some features to help with running multiple servers on the same database and easily differentiate
@@ -283,6 +355,12 @@ Modified table `messages`, adding column `playtime` to show the user's playtime 
 ```sql
 ALTER TABLE `messages` ADD `playtime` INT(11) NULL DEFAULT(NULL) AFTER `severity`
 ```
+=======
+Version 5.12, 29 December 2020, by Missfox
+Modified table `messages`, adding column `playtime` to show the user's playtime when the note was created.
+
+ALTER TABLE `messages` ADD `playtime` INT(11) NULL DEFAULT(NULL) AFTER `severity`
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 -----------------------------------------------------
 

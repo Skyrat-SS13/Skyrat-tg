@@ -36,6 +36,39 @@
 	w_class = WEIGHT_CLASS_SMALL
 	starting_reagent_purity = 1.0
 
+<<<<<<< HEAD
+=======
+/obj/item/food/fishmeat/quality
+	name = "quality fish fillet"
+	desc = "A fillet of some precious fish meat."
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
+	)
+	bite_consumption = 7
+	crafting_complexity = FOOD_COMPLEXITY_1
+
+/obj/item/food/fishmeat/quality/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/quality_food_ingredient, FOOD_COMPLEXITY_1)
+
+/obj/item/food/fishmeat/salmon
+	name = "salmon fillet"
+	desc = "a chunky, fatty fillet of salmon meat."
+	icon_state = "salmon"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
+		/datum/reagent/consumable/nutriment/fat/oil = 2,
+	)
+	bite_consumption = 4.5
+	crafting_complexity = FOOD_COMPLEXITY_1
+
+/obj/item/food/fishmeat/salmon/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/quality_food_ingredient, FOOD_COMPLEXITY_1)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/food/fishmeat/carp
 	name = "carp fillet"
 	desc = "A fillet of spess carp meat."
@@ -491,7 +524,11 @@
 
 /obj/item/food/patty
 	name = "patty"
+<<<<<<< HEAD
 	desc = "The nanotrasen patty is the patty for you and me!"
+=======
+	desc = "The Nanotrasen patty is the patty for you and me!"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "patty"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)

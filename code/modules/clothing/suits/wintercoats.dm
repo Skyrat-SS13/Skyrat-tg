@@ -349,7 +349,10 @@
 	. = ..()
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
+<<<<<<< HEAD
 		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT MEDIGUNS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /obj/item/clothing/head/hooded/winterhood/medical/cmo
@@ -688,4 +691,7 @@
 	desc = "A heavy jacket hood made from 'synthetic' animal furs, with custom colors."
 	greyscale_config = /datum/greyscale_config/winter_hoods
 	greyscale_config_worn = /datum/greyscale_config/winter_hoods/worn
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -11,7 +11,10 @@ import { BodyZone, BodyZoneSelector } from './common/BodyZoneSelector';
 type Surgery = {
   name: string;
   blocked?: BooleanLike;
+<<<<<<< HEAD
   blocked_reason?: string; // SKYRAT EDIT ADDITION - Surgically unremovable limb
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 };
 
 type SurgeryInitiatorData = {
@@ -97,11 +100,16 @@ class SurgeryInitiatorInner extends Component<
                     disabled={surgery.blocked}
                     selected={index === this.state.selectedSurgeryIndex}
                     tooltip={
+<<<<<<< HEAD
                       surgery.blocked
                         ? surgery.blocked_reason ??
                           'That surgery is unavailable!'
                         : undefined
                     } // SKYRAT EDIT - ORIGINAL: tooltip={surgery.blocked ? "Their body is covered!" : undefined}
+=======
+                      surgery.blocked ? 'Their body is covered!' : undefined
+                    }
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     key={surgery.name}
                     fluid
                   >

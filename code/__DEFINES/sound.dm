@@ -16,11 +16,14 @@
 
 #define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
+<<<<<<< HEAD
 // SKYRAT EDIT START - JUKEBOX
 #define CHANNEL_JUKEBOX_START 1006
 #define CHANNEL_HEV 1005
 //SKYRAT EDIT CHANGE END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Default range of a sound.
 #define SOUND_RANGE 17
 #define MEDIUM_RANGE_SOUND_EXTRARANGE -5
@@ -122,6 +125,7 @@
 #define ANNOUNCER_SHUTTLERECALLED "announcer_shuttlerecalled"
 #define ANNOUNCER_SPANOMALIES "announcer_spanomalies"
 
+<<<<<<< HEAD
 //SKYRAT EDIT ADDITION BEGIN
 #define ANNOUNCER_SHUTTLELEFT "announcer_shuttleleft"
 #define ANNOUNCER_CARP "announcer_carp"
@@ -153,6 +157,8 @@
 //SKYRAT EDIT END
 
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Global list of all of our announcer keys.
 GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_AIMALF,
@@ -171,6 +177,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_SHUTTLEDOCK,
 	ANNOUNCER_SHUTTLERECALLED,
 	ANNOUNCER_SPANOMALIES,
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	ANNOUNCER_SHUTTLELEFT,
 	ANNOUNCER_CARP,
@@ -197,6 +204,8 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_NRI_RAIDERS,
 	ANNOUNCER_OUTBREAK6,
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 /// List of all of our sound keys.
@@ -242,3 +251,10 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_KEYBOARD_CLICKS "keyboard_clicks"
 #define SFX_STONE_DROP "stone_drop"
 #define SFX_STONE_PICKUP "stone_pickup"
+<<<<<<< HEAD
+=======
+#define SFX_MUFFLED_SPEECH "muffspeech"
+#define SFX_DEFAULT_FISH_SLAP "default_fish_slap"
+#define SFX_ALT_FISH_SLAP "alt_fish_slap"
+#define SFX_FISH_PICKUP "fish_pickup"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

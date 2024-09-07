@@ -53,3 +53,9 @@
 
 /// from /obj/effect/mob_spawn/ghost_role/human/virtual_domain/proc/artificial_spawn() : (mob/living/runner)
 #define COMSIG_BITRUNNER_SPAWNED "bitrunner_spawned"
+<<<<<<< HEAD
+=======
+
+/// from /obj/effect/landmark/bitrunning/mob_segment/proc/spawn_mobs() : (list/mob/living)
+#define COMSIG_BITRUNNING_MOB_SEGMENT_SPAWNED "bitrunner_mob_segment_spawned"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

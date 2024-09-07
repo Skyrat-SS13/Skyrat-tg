@@ -12,7 +12,23 @@ And the only victory you achieved was a lie. Now you understand Gotham is beyond
 		return AI_CONTROLLER_INCOMPATIBLE
 	return ..() //Run parent at end
 
+<<<<<<< HEAD
 /datum/ai_controller/bane/able_to_run()
+=======
+/datum/ai_controller/bane/on_stat_changed(mob/living/source, new_stat)
+	. = ..()
+	update_able_to_run()
+
+/datum/ai_controller/bane/setup_able_to_run()
+	. = ..()
+	RegisterSignal(pawn, COMSIG_MOB_INCAPACITATE_CHANGED, PROC_REF(update_able_to_run))
+
+/datum/ai_controller/bane/clear_able_to_run()
+	UnregisterSignal(pawn, list(COMSIG_MOB_INCAPACITATE_CHANGED, COMSIG_MOB_STATCHANGE))
+	return ..()
+
+/datum/ai_controller/bane/get_able_to_run()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mob/living/living_pawn = pawn
 	if(IS_DEAD_OR_INCAP(living_pawn))
 		return FALSE

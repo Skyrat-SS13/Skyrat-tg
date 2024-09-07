@@ -49,6 +49,7 @@
 		"player_ckey" = player_ckey,
 		"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
 	)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
 	var/ssqlname = CONFIG_GET(string/serversqlname)
 	var/server_check
@@ -69,6 +70,21 @@
 		sql_roles = ":role"
 
 	var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
+=======
+
+	var/sql_roles
+	if(islist(roles))
+		var/list/sql_roles_list = list()
+		for (var/i in 1 to roles.len)
+			values["role[i]"] = roles[i]
+			sql_roles_list += ":role[i]"
+		sql_roles = sql_roles_list.Join(", ")
+	else
+		values["role"] = roles
+		sql_roles = ":role"
+
+	var/datum/db_query/query_check_ban = SSdbcore.NewQuery({"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		SELECT 1
 		FROM [format_table_name("ban")]
 		WHERE
@@ -76,7 +92,10 @@
 			role IN ([sql_roles]) AND
 			unbanned_datetime IS NULL AND
 			(expiration_time IS NULL OR expiration_time > NOW())
+<<<<<<< HEAD
 			AND [server_check]
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			AND (NOT :must_apply_to_admins OR applies_to_admins = 1)
 	"}, values)
 
@@ -176,6 +195,7 @@
 	var/is_admin = FALSE
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		is_admin = TRUE
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
 	var/ssqlname = CONFIG_GET(string/serversqlname)
 	var/server_check
@@ -186,6 +206,10 @@
 	// SKYRAT EDIT ADDITION END - MULTISERVER
 	var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
 		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW()) AND [server_check]", //skyrat edit
+=======
+	var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
+		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())",
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		list("ckey" = ckey)
 	)
 	var/query_successful = query_build_ban_cache.warn_execute()
@@ -206,11 +230,19 @@
 	player_client.ban_cache = ban_cache
 	return ban_cache
 
+<<<<<<< HEAD
 
 /datum/admins/proc/ban_panel(player_key, player_ip, player_cid, role, duration = 1440, applies_to_admins, reason, edit_id, page, admin_key, global_ban = TRUE) // SKYRAT EDIT CHANGE - MULTISERVER
 	if (duration == BAN_PANEL_PERMANENT)
 		duration = null
 
+=======
+
+/datum/admins/proc/ban_panel(player_key, player_ip, player_cid, role, duration = 1440, applies_to_admins, reason, edit_id, page, admin_key)
+	if (duration == BAN_PANEL_PERMANENT)
+		duration = null
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/panel_height = 620
 	if(edit_id)
 		panel_height = 240
@@ -431,6 +463,7 @@
 				ROLE_SYNDICATE,
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
+<<<<<<< HEAD
 				ROLE_BORER, // SKYRAT EDIT ADDITION
 				ROLE_ASSAULT_OPERATIVE, // SKYRAT EDIT ADDITION
 				ROLE_VOIDWALKER,
@@ -447,6 +480,10 @@
 				BAN_OPFOR,
 				BAN_LOOC, // SKYRAT EDIT ADDITION - LOOC muting again
 			), // SKYRAT EDIT ADDITION - EXTRA_BANS
+=======
+				ROLE_VOIDWALKER,
+			),
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'>[tgui_fancy ? "<input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>" : ""][department]</label><div class='content'>"
@@ -594,7 +631,11 @@
 		to_chat(usr, span_danger("Ban not [edit_id ? "edited" : "created"] because the following errors were present:\n[error_state.Join("\n")]"), confidential = TRUE)
 		return
 	if(edit_id)
+<<<<<<< HEAD
 		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes, roles_to_ban[1] == "Server") // SKYRAT EDIT CHANGE - MULTISERVER
+=======
+		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes, roles_to_ban[1] == "Server")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 
@@ -683,7 +724,11 @@
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		return
 	var/target = ban_target_string(player_key, player_ip, player_cid)
+<<<<<<< HEAD
 	var/msg = "has created a [global_ban ? "global" : "local"] [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]." // SKYRAT EDIT CHANGE - MULTISERVER
+=======
+	var/msg = "has created a [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	log_admin_private("[kn] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
 	message_admins("[kna] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
 	if(applies_to_admins)
@@ -696,6 +741,7 @@
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
 	if(BAN_PACIFICATION in roles_to_ban)
 		var/client/C = GLOB.directory[player_ckey]
@@ -705,6 +751,9 @@
 
 	//var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]") // SKYRAT EDIT ORIGINAL
 	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]", FALSE) // SKYRAT EDIT --  Player ticket viewing
+=======
+	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(is_server_ban && linked_ahelp_ticket)
 		linked_ahelp_ticket.Resolve()
@@ -939,7 +988,11 @@
 	notify_all_banned_players(ckey(player_key), player_ip, player_cid, banned_player_message, banned_other_message, kick_banned_players, applies_to_admins)
 	unban_panel(player_key, admin_key, player_ip, player_cid, page)
 
+<<<<<<< HEAD
 /datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes, is_server_ban) // SKYRAT EDIT CHANGE - MULTISERVER
+=======
+/datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes, is_server_ban)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())

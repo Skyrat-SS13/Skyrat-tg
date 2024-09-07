@@ -72,11 +72,19 @@
 		return
 	if(prob(TOXICITY_MUTATION_PROB) && istype(crosser) && !isvineimmune(crosser))
 		to_chat(crosser, span_alert("You accidentally touch the vine and feel a strange sensation."))
+<<<<<<< HEAD
 		crosser.adjustToxLoss(5) // SKYRAT EDIT CHANGE - Original: 20
 
 /datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
 	if(!isvineimmune(eater))
 		eater.adjustToxLoss(5) // SKYRAT EDIT CHANGE - Original: 20
+=======
+		crosser.adjustToxLoss(20)
+
+/datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
+	if(!isvineimmune(eater))
+		eater.adjustToxLoss(20)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/spacevine_mutation/explosive  // JC IT'S A BOMB
 	name = "Explosive"
@@ -290,7 +298,11 @@
 
 	if(prob(THORN_MUTATION_CUT_PROB) && istype(crosser) && !isvineimmune(crosser))
 		var/mob/living/victim = crosser
+<<<<<<< HEAD
 		victim.adjustBruteLoss(5) // SKYRAT EDIT CHANGE - Original: 15
+=======
+		victim.adjustBruteLoss(15)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(victim, span_danger("You cut yourself on the thorny vines."))
 
 /datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/item, expected_damage)
@@ -305,7 +317,11 @@
 
 	if(prob(THORN_MUTATION_CUT_PROB) && istype(hitter) && !isvineimmune(hitter))
 		var/mob/living/victim = hitter
+<<<<<<< HEAD
 		victim.adjustBruteLoss(5) // SKYRAT EDIT CHANGE - Original: 15
+=======
+		victim.adjustBruteLoss(15)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(victim, span_danger("You cut yourself on the thorny vines."))
 
 	return expected_damage

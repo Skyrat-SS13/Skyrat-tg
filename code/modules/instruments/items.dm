@@ -27,7 +27,11 @@
 	if(!ismob(music_player))
 		return STOP_PLAYING
 	var/mob/user = music_player
+<<<<<<< HEAD
 	if(user.incapacitated() || !((loc == user) || (isturf(loc) && Adjacent(user)))) // sorry, no more TK playing.
+=======
+	if(user.incapacitated || !((loc == user) || (isturf(loc) && Adjacent(user)))) // sorry, no more TK playing.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return STOP_PLAYING
 
 /obj/item/instrument/suicide_act(mob/living/user)

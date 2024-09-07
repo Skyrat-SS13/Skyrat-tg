@@ -27,7 +27,11 @@
 
 	var/successfully_loaded_engravings = 0
 
+<<<<<<< HEAD
 	for(var/iteration in 1 to rand(MIN_PERSISTENT_ENGRAVINGS, MAX_PERSISTENT_ENGRAVINGS))
+=======
+	for(var/iteration in 1 to min(rand(MIN_PERSISTENT_ENGRAVINGS, MAX_PERSISTENT_ENGRAVINGS), saved_engravings.len))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/engraving = pick_n_take(saved_engravings)
 		if(!islist(engraving))
 			stack_trace("something's wrong with the engraving data! one of the saved engravings wasn't a list!")

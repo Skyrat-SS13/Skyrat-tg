@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //Defines for amount of material retrived from sheets & other items
+=======
+//Defines for amount of material retrieved from sheets & other items
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// The amount of materials you get from a sheet of mineral like iron/diamond/glass etc. 100 Units.
 #define SHEET_MATERIAL_AMOUNT 100
 /// The amount of materials you get from half a sheet. Used in standard object quantities. 50 units.

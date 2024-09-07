@@ -396,6 +396,10 @@
 			targets += pick_n_take(roundstart_closets)
 		GLOB.eigenstate_manager.create_new_link(targets)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define PRO_SKUB "pro-skub"
 #define ANTI_SKUB "anti-skub"
 #define SKUB_IDFC "i don't frikkin' care"
@@ -415,7 +419,10 @@
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_after_spawn))
 
+<<<<<<< HEAD
 /* SKYRAT EDIT -- REMOVAL -- I swear, we need to update our UI in near future to account for the new buttons and shit
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/station_trait/skub/setup_lobby_button(atom/movable/screen/lobby/button/sign_up/lobby_button)
 	RegisterSignal(lobby_button, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_lobby_button_update_overlays))
 	lobby_button.desc = "Are you pro-skub or anti-skub? Click to cycle through pro-skub, anti-skub, random and neutral."
@@ -470,7 +477,11 @@
 			overlays += "neutral_skub"
 		if(RANDOM_SKUB)
 			overlays += "random_skub"
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/station_trait/skub/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/spawned, client/player_client)
 	SIGNAL_HANDLER
 
@@ -479,7 +490,11 @@
 		return
 
 	if((skub_stance == RANDOM_SKUB && prob(50)) || skub_stance == PRO_SKUB)
+<<<<<<< HEAD
 		var/obj/item/storage/box/skub/boxie = new(spawned.loc)
+=======
+		var/obj/item/storage/box/stickers/skub/boxie = new(spawned.loc)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		spawned.equip_to_slot_if_possible(boxie, ITEM_SLOT_BACKPACK, indirect_action = TRUE)
 		if(ishuman(spawned))
 			var/obj/item/clothing/suit/costume/wellworn_shirt/skub/shirt = new(spawned.loc)
@@ -496,6 +511,7 @@
 		shirt.forceMove(boxie)
 
 /// A box containing a skub, for easier carry because skub is a bulky item.
+<<<<<<< HEAD
 /obj/item/storage/box/skub
 	name = "skub box"
 	desc = "A box to store your skub and pro-skub shirt in. A label on the back reads: \"Skubtide, Stationwide\"."
@@ -507,13 +523,35 @@
 	atom_storage.exception_hold = typecacheof(list(/obj/item/skub, /obj/item/clothing/suit/costume/wellworn_shirt/skub))
 
 /obj/item/storage/box/skub/PopulateContents()
+=======
+/obj/item/storage/box/stickers/skub
+	name = "skub fan pack"
+	desc = "A vinyl pouch to store your skub and pro-skub shirt in. A label on the back reads: \"Skubtide, Stationwide\"."
+	icon_state = "skubpack"
+	illustration = "label_skub"
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/storage/box/stickers/skub/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 3
+	atom_storage.exception_hold = typecacheof(list(/obj/item/skub, /obj/item/clothing/suit/costume/wellworn_shirt/skub))
+
+/obj/item/storage/box/stickers/skub/PopulateContents()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/skub(src)
 	new /obj/item/sticker/skub(src)
 	new /obj/item/sticker/skub(src)
 
 /obj/item/storage/box/stickers/anti_skub
+<<<<<<< HEAD
 	name = "anti-skub stickers box"
 	desc = "The enemy may have been given a skub and a shirt, but I've more stickers! Plus the box can hold my anti-skub shirt."
+=======
+	name = "anti-skub stickers pack"
+	desc = "The enemy may have been given a skub and a shirt, but I've got more stickers! Plus the pack can hold my anti-skub shirt."
+	icon_state = "skubpack"
+	illustration = "label_anti_skub"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/storage/box/stickers/anti_skub/Initialize(mapload)
 	. = ..()

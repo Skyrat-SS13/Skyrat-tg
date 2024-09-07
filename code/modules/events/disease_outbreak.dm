@@ -63,10 +63,13 @@
 			continue
 		if(!is_station_level(candidate.z) && !is_mining_level(candidate.z)) //Diseases can't really spread if the vector is in deep space.
 			continue
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START - Station/area event candidate filtering.
 		if(engaged_role_play_check(candidate, station = TRUE, dorms = TRUE))
 			continue
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		disease_candidates += candidate
 
 ///Handles checking and alerting admins about the number of valid candidates

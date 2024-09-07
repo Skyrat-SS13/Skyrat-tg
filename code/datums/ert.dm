@@ -1,13 +1,26 @@
 /datum/ert
+<<<<<<< HEAD
+=======
+	///Antag datum team for this type of ERT.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/team = /datum/team/ert
+	///Do we open the doors to the "high-impact" weapon/explosive cabinets? Used for combat-focused ERTs.
 	var/opendoors = TRUE
+	///Alternate antag datum given to the leader of the squad.
 	var/leader_role = /datum/antagonist/ert/commander
+	///Do we humanize all spawned players or keep them the species in their current character prefs?
 	var/enforce_human = TRUE
-	var/roles = list(/datum/antagonist/ert/security, /datum/antagonist/ert/medic, /datum/antagonist/ert/engineer) //List of possible roles to be assigned to ERT members.
+	///A list of roles distributed to the selected candidates that are not the leader.
+	var/roles = list(/datum/antagonist/ert/security, /datum/antagonist/ert/medic, /datum/antagonist/ert/engineer)
+	///The custom name assigned to this team, for their antag datum/roundend reporting.
 	var/rename_team
+	///Defines the color/alert code of the response team. Unused if a polldesc is defined.
 	var/code
+	///The mission given to this ERT type in their flavor text.
 	var/mission = "Assist the station."
+	///The number of players for consideration.
 	var/teamsize = 5
+	///The "would you like to play as XXX" message used when polling for players.
 	var/polldesc
 	/// If TRUE, gives the team members "[role] [random last name]" style names
 	var/random_names = TRUE
@@ -15,8 +28,11 @@
 	var/spawn_admin = FALSE
 	/// If TRUE, we try and pick one of the most experienced players who volunteered to fill the leader slot
 	var/leader_experience = TRUE
+<<<<<<< HEAD
 	///SKYRAT EDIT: Do we want to notify the players of this ERT?
 	var/notify_players = TRUE
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// A custom map template to spawn the ERT at. If this is null or use_custom_shuttle is FALSE, the ERT will spawn at Centcom.
 	var/datum/map_template/ert_template
 	/// If we should actually _use_ the ert_template custom shuttle
@@ -129,3 +145,17 @@
 	mission = "Having heard the station's request for aid, assist the crew in defending themselves."
 	polldesc = "an independent station defense militia"
 	random_names = TRUE
+<<<<<<< HEAD
+=======
+
+/datum/ert/medical
+	opendoors = FALSE
+	teamsize = 4
+	leader_role = /datum/antagonist/ert/medical_commander
+	enforce_human = FALSE //All the best doctors I know are moths and cats
+	roles = list(/datum/antagonist/ert/medical_technician)
+	rename_team = "EMT Squad"
+	code = "Violet"
+	mission = "Provide emergency medical services to the crew."
+	polldesc = "an emergency medical response team"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

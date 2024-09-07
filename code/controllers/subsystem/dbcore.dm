@@ -189,12 +189,17 @@ SUBSYSTEM_DEF(dbcore)
 		//Take over control of all active queries
 		var/queries_to_check = queries_active.Copy()
 		queries_active.Cut()
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		//Start all waiting queries
 		for(var/datum/db_query/query in queries_standby)
 			run_query(query)
 			queries_to_check += query
 			queries_standby -= query
+<<<<<<< HEAD
 
 		//wait for them all to finish
 		for(var/datum/db_query/query in queries_to_check)
@@ -205,6 +210,13 @@ SUBSYSTEM_DEF(dbcore)
 			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 		// SKYRAT EDIT END
 
+=======
+		
+		//wait for them all to finish
+		for(var/datum/db_query/query in queries_to_check)
+			UNTIL(query.process() || REALTIMEOFDAY > endtime)
+		
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		//log shutdown to the db
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
@@ -252,7 +264,12 @@ SUBSYSTEM_DEF(dbcore)
 /datum/controller/subsystem/dbcore/proc/Connect()
 	if(IsConnected())
 		return TRUE
+	
+	if(connection)
+		Disconnect() //clear the current connection handle so isconnected() calls stop invoking rustg
+		connection = null //make sure its cleared even if runtimes happened
 
+<<<<<<< HEAD
 	if(connection)
 		Disconnect() //clear the current connection handle so isconnected() calls stop invoking rustg
 		connection = null //make sure its cleared even if runtimes happened
@@ -261,6 +278,12 @@ SUBSYSTEM_DEF(dbcore)
 		failed_connections = 0
 		failed_connection_timeout = 0
 
+=======
+	if(failed_connection_timeout <= world.time) //it's been long enough since we failed to connect, reset the counter
+		failed_connections = 0
+		failed_connection_timeout = 0
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(failed_connection_timeout > 0)
 		return FALSE
 
@@ -298,7 +321,11 @@ SUBSYSTEM_DEF(dbcore)
 		log_sql("Connect() failed | [last_error]")
 		++failed_connections
 		//If it failed to establish a connection more than 5 times in a row, don't bother attempting to connect for a time.
+<<<<<<< HEAD
 		if(failed_connections > max_connection_failures)
+=======
+		if(failed_connections > max_connection_failures) 
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			failed_connection_timeout_count++
 			//basic exponential backoff algorithm
 			failed_connection_timeout = world.time + ((2 ** failed_connection_timeout_count) SECONDS)

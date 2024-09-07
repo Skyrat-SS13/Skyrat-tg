@@ -111,7 +111,11 @@
 		else
 			calling_arguments = args
 	if(datum_flags & DF_VAR_EDITED)
+<<<<<<< HEAD
 		if(usr != GLOB.AdminProcCallHandler && !usr?.client?.ckey) //This happens when a timer or the MC invokes a callback
+=======
+		if(usr != GLOB.AdminProcCallHandler && !(usr && usr?.client?.ckey)) //This happens when a timer or the MC invokes a callback
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return HandleUserlessProcCall(usr, object, delegate, calling_arguments)
 		return WrapAdminProcCall(object, delegate, calling_arguments)
 	if (object == GLOBAL_PROC)
@@ -148,7 +152,11 @@
 		else
 			calling_arguments = args
 	if(datum_flags & DF_VAR_EDITED)
+<<<<<<< HEAD
 		if(usr != GLOB.AdminProcCallHandler && !usr?.client?.ckey) //This happens when a timer or the MC invokes a callback
+=======
+		if(usr != GLOB.AdminProcCallHandler && !(usr && usr?.client?.ckey)) //This happens when a timer or the MC invokes a callback
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return HandleUserlessProcCall(usr, object, delegate, calling_arguments)
 		return WrapAdminProcCall(object, delegate, calling_arguments)
 	if (object == GLOBAL_PROC)

@@ -41,8 +41,12 @@
 			/* offset = */ 4,
 		)
 	)
+<<<<<<< HEAD
 	//SKYRAT EDIT REMOVAL BEGIN
 	/*
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/home_button/leave_body(
 			null,
@@ -53,8 +57,11 @@
 			CALLBACK(src, PROC_REF(open_leave_body)),
 		)
 	)
+<<<<<<< HEAD
 	*/
 	// SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/escape_menu/proc/home_resume()
 	qdel(src)

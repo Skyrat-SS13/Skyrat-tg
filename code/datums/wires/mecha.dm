@@ -95,12 +95,22 @@
 	if(mecha.Adjacent(target) && !TIMER_COOLDOWN_RUNNING(mecha, COOLDOWN_MECHA_MELEE_ATTACK) && target.mech_melee_attack(mecha))
 		TIMER_COOLDOWN_START(mecha, COOLDOWN_MECHA_MELEE_ATTACK, mecha.melee_cooldown)
 
+<<<<<<< HEAD
 /datum/wires/mecha/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/mecha = holder
 	if(!HAS_SILICON_ACCESS(usr) && mecha.internal_damage & MECHA_INT_SHORT_CIRCUIT && mecha.shock(usr))
+=======
+/datum/wires/mecha/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/user = ui.user
+	var/obj/vehicle/sealed/mecha/mecha = holder
+	if(!HAS_SILICON_ACCESS(user) && mecha.internal_damage & MECHA_INT_SHORT_CIRCUIT && mecha.shock(usr))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 
 /datum/wires/mecha/can_reveal_wires(mob/user)

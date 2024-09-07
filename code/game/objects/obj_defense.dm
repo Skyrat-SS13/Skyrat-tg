@@ -117,6 +117,9 @@
 	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)
 	return TRUE
 
+	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)
+	return TRUE
+
 ///called when the obj is destroyed by acid.
 /obj/proc/acid_melt()
 	deconstruct(FALSE)

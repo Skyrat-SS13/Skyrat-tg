@@ -196,10 +196,15 @@
 	podman.faction |= factions
 	if(!features["mcolor"])
 		features["mcolor"] = "#59CE00"
+<<<<<<< HEAD
 	/* SKYRAT EDIT REMOVAL START
 	if(!features["pod_hair"])
 		features["pod_hair"] = pick(SSaccessories.pod_hair_list)
 	*/ //SKYRAT EDIT REMOVAL END - Tricolor Pod Hair
+=======
+	if(!features["pod_hair"])
+		features["pod_hair"] = pick(SSaccessories.pod_hair_list)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/V in quirks)
 		new V(podman)

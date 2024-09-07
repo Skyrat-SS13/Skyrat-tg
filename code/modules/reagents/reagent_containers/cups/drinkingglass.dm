@@ -14,6 +14,10 @@
 	obj_flags = UNIQUE_RENAME
 	drop_sound = 'sound/items/handling/drinkglass_drop.ogg'
 	pickup_sound = 'sound/items/handling/drinkglass_pickup.ogg'
+<<<<<<< HEAD
+=======
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	custom_price = PAYCHECK_LOWER
 	//the screwdriver cocktail can make a drinking glass into the world's worst screwdriver. beautiful.
 	toolspeed = 25

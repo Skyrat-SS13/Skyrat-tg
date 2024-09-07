@@ -75,7 +75,11 @@ Finally, the `ui_act` proc is called by the interface whenever the user used an
 input. The input's `action` and `params` are passed to the proc.
 
 ```dm
+<<<<<<< HEAD
 /obj/machinery/my_machine/ui_act(action, params)
+=======
+/obj/machinery/my_machine/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   . = ..()
   if(.)
     return
@@ -311,7 +315,7 @@ upon code review):
   data["var"] = var
   return data
 
-/obj/copypasta/ui_act(action, params)
+/obj/copypasta/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
   if(..())
     return
   switch(action)

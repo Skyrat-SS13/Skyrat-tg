@@ -44,7 +44,10 @@
 	. += create_table_notices(list(
 		"name",
 		"job",
+<<<<<<< HEAD
 		"is_robot", //SKYRAT EDIT ADDITION - Displaying robotic species Icon
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"life_status",
 		"suffocation",
 		"toxin",
@@ -65,7 +68,10 @@
 		var/list/entry = list()
 		entry["name"] = player_record["name"]
 		entry["job"] = player_record["assignment"]
+<<<<<<< HEAD
 		entry["is_robot"] = player_record["is_robot"] //SKYRAT EDIT ADDITION - Displaying robotic species Icon
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		entry["life_status"] = player_record["life_status"]
 		entry["suffocation"] = player_record["oxydam"]
 		entry["toxin"] = player_record["toxdam"]
@@ -103,40 +109,59 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_HEAD_OF_SECURITY = 10,
 		JOB_WARDEN = 11,
 		JOB_SECURITY_OFFICER = 12,
+<<<<<<< HEAD
 		/* SKYRAT EDIT REMOVAL - We need those slots for our own jobs, these jobs aren't on Skyrat anymore anyway.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		JOB_SECURITY_OFFICER_MEDICAL = 13,
 		JOB_SECURITY_OFFICER_ENGINEERING = 14,
 		JOB_SECURITY_OFFICER_SCIENCE = 15,
 		JOB_SECURITY_OFFICER_SUPPLY = 16,
+<<<<<<< HEAD
 		*/
 		JOB_CORRECTIONS_OFFICER = 13, // SKYRAT EDIT ADDITION
 		JOB_DETECTIVE = 14,
+=======
+		JOB_DETECTIVE = 17,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// 20-29: Medbay
 		JOB_CHIEF_MEDICAL_OFFICER = 20,
 		JOB_CHEMIST = 21,
 		JOB_MEDICAL_DOCTOR = 22,
 		JOB_PARAMEDIC = 23,
 		JOB_CORONER = 24,
+<<<<<<< HEAD
 		JOB_ORDERLY = 25, // SKYRAT EDIT ADDITION
 		JOB_PSYCHOLOGIST = 26, // SKYRAT EDIT - ORIGINAL: JOB_PSYCHOLOGIST = 71,
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// 30-39: Science
 		JOB_RESEARCH_DIRECTOR = 30,
 		JOB_SCIENTIST = 31,
 		JOB_ROBOTICIST = 32,
 		JOB_GENETICIST = 33,
+<<<<<<< HEAD
 		JOB_SCIENCE_GUARD = 34, // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// 40-49: Engineering
 		JOB_CHIEF_ENGINEER = 40,
 		JOB_STATION_ENGINEER = 41,
 		JOB_ATMOSPHERIC_TECHNICIAN = 42,
+<<<<<<< HEAD
 		JOB_ENGINEERING_GUARD = 43, // SKYRAT EDIT ADDITION
 		JOB_TELECOMMS_SPECIALIST = 44, // SKYRAT EDIT ADDITION	
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// 50-59: Cargo
 		JOB_QUARTERMASTER = 50,
 		JOB_SHAFT_MINER = 51,
 		JOB_CARGO_TECHNICIAN = 52,
 		JOB_BITRUNNER = 53,
+<<<<<<< HEAD
 		JOB_CUSTOMS_AGENT = 54, // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// 60+: Service
 		JOB_HEAD_OF_PERSONNEL = 60,
 		JOB_BARTENDER = 61,
@@ -149,8 +174,12 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_MIME = 68,
 		JOB_JANITOR = 69,
 		JOB_LAWYER = 71,
+<<<<<<< HEAD
 		JOB_BARBER = 72, // SKYRAT EDIT ADDITION
 		JOB_BOUNCER = 73, // SKYRAT EDIT ADDITION
+=======
+		JOB_PSYCHOLOGIST = 72,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// 200-229: Centcom
 		JOB_CENTCOM_ADMIRAL = 200,
 		JOB_CENTCOM = 201,
@@ -168,8 +197,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_ERT_CHAPLAIN = 225,
 		JOB_ERT_JANITOR = 226,
 		JOB_ERT_DEATHSQUAD = 227,
+<<<<<<< HEAD
 		JOB_NT_REP = 230, // SKYRAT EDIT ADDITION
 		JOB_BLUESHIELD = 231, // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before assistants
 		JOB_ASSISTANT = 999,
@@ -196,7 +228,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		z = T.z
 	. = list(
 		"sensors" = update_data(z),
+<<<<<<< HEAD
 		"link_allowed" = HAS_AI_ACCESS(user)
+=======
+		"link_allowed" = HAS_AI_ACCESS(user),
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /datum/crewmonitor/proc/update_data(z)
@@ -259,6 +295,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
 
+<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN: Checking for robotic race
 		if (issynthetic(tracked_human))
 			entry["is_robot"] = TRUE
@@ -288,13 +325,42 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 		results[++results.len] = entry
 
+=======
+		// Current status
+		if (sensor_mode >= SENSOR_LIVING)
+			entry["life_status"] = tracked_living_mob.stat
+
+		// Damage
+		if (sensor_mode >= SENSOR_VITALS)
+			entry += list(
+				"oxydam" = round(tracked_living_mob.getOxyLoss(), 1),
+				"toxdam" = round(tracked_living_mob.getToxLoss(), 1),
+				"burndam" = round(tracked_living_mob.getFireLoss(), 1),
+				"brutedam" = round(tracked_living_mob.getBruteLoss(), 1),
+				"health" = round(tracked_living_mob.health, 1),
+			)
+
+		// Location
+		if (sensor_mode >= SENSOR_COORDS)
+			entry["area"] = get_area_name(tracked_living_mob, format_text = TRUE)
+
+		// Trackability
+		entry["can_track"] = tracked_living_mob.can_track()
+
+		results[++results.len] = entry
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Cache result
 	data_by_z["[z]"] = results
 	last_update["[z]"] = world.time
 
 	return results
 
+<<<<<<< HEAD
 /datum/crewmonitor/ui_act(action, params)
+=======
+/datum/crewmonitor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

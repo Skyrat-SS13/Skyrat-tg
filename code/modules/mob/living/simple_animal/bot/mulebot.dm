@@ -286,20 +286,32 @@
 	data["paiInserted"] = !!paicard
 	return data
 
+<<<<<<< HEAD
 /mob/living/simple_animal/bot/mulebot/ui_act(action, params)
 	. = ..()
 	if(. || (bot_cover_flags & BOT_COVER_LOCKED && !HAS_SILICON_ACCESS(usr)))
+=======
+/mob/living/simple_animal/bot/mulebot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	var/mob/user = ui.user
+	if(. || (bot_cover_flags & BOT_COVER_LOCKED && !HAS_SILICON_ACCESS(user)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	switch(action)
 		if("lock")
+<<<<<<< HEAD
 			if(HAS_SILICON_ACCESS(usr))
+=======
+			if(HAS_SILICON_ACCESS(user))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				bot_cover_flags ^= BOT_COVER_LOCKED
 				return TRUE
 		if("on")
 			if(bot_mode_flags & BOT_MODE_ON)
 				turn_off()
 			else if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
+<<<<<<< HEAD
 				to_chat(usr, span_warning("[name]'s maintenance panel is open!"))
 				return
 			else if(cell)
@@ -309,6 +321,17 @@
 			return TRUE
 		else
 			bot_control(action, usr, params) // Kill this later. // Kill PDAs in general please
+=======
+				to_chat(user, span_warning("[name]'s maintenance panel is open!"))
+				return
+			else if(cell)
+				if(!turn_on())
+					to_chat(user, span_warning("You can't switch on [src]!"))
+					return
+			return TRUE
+		else
+			bot_control(action, user, params) // Kill this later. // Kill PDAs in general please
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return TRUE
 
 /mob/living/simple_animal/bot/mulebot/bot_control(command, mob/user, list/params = list(), pda = FALSE)
@@ -711,7 +734,11 @@
 
 // player on mulebot attempted to move
 /mob/living/simple_animal/bot/mulebot/relaymove(mob/living/user, direction)
+<<<<<<< HEAD
 	if(user.incapacitated())
+=======
+	if(user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(load == user)
 		unload(0)
@@ -805,7 +832,11 @@
 /mob/living/simple_animal/bot/mulebot/paranormal/mouse_drop_receive(atom/movable/AM, mob/user, params)
 	var/mob/living/L = user
 
+<<<<<<< HEAD
 	if(user.incapacitated() || (istype(L) && L.body_position == LYING_DOWN))
+=======
+	if(user.incapacitated || (istype(L) && L.body_position == LYING_DOWN))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	if(!istype(AM) || iscameramob(AM) || istype(AM, /obj/effect/dummy/phased_mob)) //allows ghosts!

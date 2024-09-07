@@ -26,7 +26,11 @@
 	/// The length of the knockdown applied to the user on clumsy_check()
 	var/clumsy_knockdown_time = 18 SECONDS
 	/// How much stamina damage we deal on a successful hit against a living, non-cyborg mob.
+<<<<<<< HEAD
 	var/stamina_damage = 35 // SKYRAT EDIT - Less Stamina Damage (Original: 55)
+=======
+	var/stamina_damage = 55
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// Chance of causing force_say() when stunning a human mob
 	var/force_say_chance = 33
 	/// Can we stun cyborgs?
@@ -320,6 +324,10 @@
 	active = FALSE
 	pickup_sound = 'sound/items/stun_baton_pick_up.ogg'
 	drop_sound = 'sound/items/stun_baton_drop.ogg'
+<<<<<<< HEAD
+=======
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// The sound effecte played when our baton is extended.
 	var/on_sound = 'sound/weapons/batonextend.ogg'
@@ -393,7 +401,11 @@
 	force = 5
 	cooldown = 2.5 SECONDS
 	force_say_chance = 80 //very high force say chance because it's funny
+<<<<<<< HEAD
 	stamina_damage = 115 // SKYRAT EDIT: Original 85
+=======
+	stamina_damage = 85
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	clumsy_knockdown_time = 24 SECONDS
 	affect_cyborg = TRUE
 	on_stun_sound = 'sound/effects/contractorbatonhit.ogg'
@@ -425,7 +437,11 @@
 	armor_type = /datum/armor/baton_security
 	throwforce = 7
 	force_say_chance = 50
+<<<<<<< HEAD
 	stamina_damage = 35 // SKYRAT EDIT - 4 baton crit now (Original: 60)
+=======
+	stamina_damage = 60
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	knockdown_time = 5 SECONDS
 	clumsy_knockdown_time = 15 SECONDS
 	cooldown = 2.5 SECONDS
@@ -440,6 +456,10 @@
 	light_power = 0.5
 	pickup_sound = 'sound/items/stun_baton_pick_up.ogg'
 	drop_sound = 'sound/items/stun_baton_drop.ogg'
+<<<<<<< HEAD
+=======
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 	var/throw_stun_chance = 35
@@ -627,7 +647,11 @@
  */
 /obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user)
 	target.set_jitter_if_lower(40 SECONDS)
+<<<<<<< HEAD
 	// target.set_confusion_if_lower(10 SECONDS) // SKYRAT EDIT REMOVAL
+=======
+	target.set_confusion_if_lower(10 SECONDS)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	target.set_stutter_if_lower(16 SECONDS)
 
 	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK)

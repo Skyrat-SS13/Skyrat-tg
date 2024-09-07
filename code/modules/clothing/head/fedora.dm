@@ -35,3 +35,12 @@
 	name = "carpskin fedora"
 	icon_state = "fedora_carpskin"
 	inhand_icon_state = null
+<<<<<<< HEAD
+=======
+
+/obj/item/clothing/head/fedora/beige/press
+	name = "press fedora"
+	desc = "An beige fedora with a piece of paper saying \"PRESS\" stuck in its rim."
+	icon_state = "fedora_press"
+	inhand_icon_state = null
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

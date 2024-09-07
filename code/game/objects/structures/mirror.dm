@@ -79,7 +79,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
 	. = ..()
 
+<<<<<<< HEAD
 	if(. || !ishuman(user) || broken || !istype(src, /obj/structure/mirror/magic)) // SKYRAT EDIT CHANGE - MUNDANE MIRRORS DON'T LET YOU CHANGE - ORIGINAL: if(. || !ishuman(user) || broken)
+=======
+	if(. || !ishuman(user) || broken)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 
 	if(!istype(src, /obj/structure/mirror/magic) && !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
@@ -354,7 +358,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 			user.set_facial_haircolor(sanitize_hexcolor(new_face_color), update = FALSE)
 			user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 	user.update_body_parts()
+<<<<<<< HEAD
 	user.update_mutant_bodyparts() /// SKYRAT EDIT ADDITION - Mirrors are no longer scared of colored ears
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/mirror/magic/attack_hand(mob/living/carbon/human/user)
 	. = ..()

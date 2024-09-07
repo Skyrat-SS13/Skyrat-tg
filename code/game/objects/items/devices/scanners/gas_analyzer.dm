@@ -134,13 +134,21 @@
 	return list("gasmixes" = last_gasmix_data)
 
 /obj/item/analyzer/attack_self(mob/user, modifiers)
+<<<<<<< HEAD
 	if(user.stat != CONSCIOUS || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
+=======
+	if(user.stat != CONSCIOUS || !user.can_read(src) || user.is_blind())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	atmos_scan(user=user, target=get_turf(src), silent=FALSE)
 	on_analyze(source=src, target=get_turf(src))
 
 /obj/item/analyzer/attack_self_secondary(mob/user, modifiers)
+<<<<<<< HEAD
 	if(user.stat != CONSCIOUS || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
+=======
+	if(user.stat != CONSCIOUS || !user.can_read(src) || user.is_blind())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	ui_interact(user)

@@ -314,7 +314,10 @@
 	icon_state = "buttondown_slacks"
 	greyscale_config = /datum/greyscale_config/buttondown_slacks
 	greyscale_config_worn = /datum/greyscale_config/buttondown_slacks/worn
+<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_slacks/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	greyscale_colors = "#EEEEEE#EE8E2E#222227#D8D39C"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -327,7 +330,10 @@
 	icon_state = "buttondown_shorts"
 	greyscale_config = /datum/greyscale_config/buttondown_shorts
 	greyscale_config_worn = /datum/greyscale_config/buttondown_shorts/worn
+<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_shorts/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	greyscale_colors = "#EEEEEE#EE8E2E#222227#D8D39C"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -365,7 +371,10 @@
 	can_adjust = FALSE
 	greyscale_config = /datum/greyscale_config/football_suit
 	greyscale_config_worn = /datum/greyscale_config/football_suit/worn
+<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/football_suit/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	greyscale_colors = "#D74722"
 	flags_1 = IS_PLAYER_COLORABLE_1
 

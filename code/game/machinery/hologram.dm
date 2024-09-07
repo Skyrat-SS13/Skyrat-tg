@@ -168,7 +168,11 @@ Possible to do for anyone motivated enough:
 /obj/machinery/holopad/tutorial/attack_hand(mob/user, list/modifiers)
 	if(!istype(user))
 		return
+<<<<<<< HEAD
 	if(user.incapacitated() || !is_operational)
+=======
+	if(user.incapacitated || !is_operational)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(replay_mode)
 		replay_stop()
@@ -308,7 +312,7 @@ Possible to do for anyone motivated enough:
 		data["holo_calls"] += list(call_data)
 	return data
 
-/obj/machinery/holopad/ui_act(action, list/params)
+/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -550,6 +554,7 @@ Possible to do for anyone motivated enough:
 
 		if(AI)
 			AI.eyeobj.setLoc(get_turf(src)) //ensure the AI camera moves to the holopad
+<<<<<<< HEAD
 			hologram.Impersonation = AI //SKYRAT EDIT -- ADDITION -- Customization; puts the AI core as the impersonated mob so that the examine proc can be redirected
 		else //make it like real life
 			hologram.Impersonation = user
@@ -559,6 +564,15 @@ Possible to do for anyone motivated enough:
 		hologram.set_anchored(TRUE)//So space wind cannot drag it.
 		//hologram.name = "[user.name] (Hologram)"//If someone decides to right click. // ORIGINAL
 		hologram.name = user.name //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
+=======
+		else //make it like real life
+			hologram.Impersonation = user
+		hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
+		hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
+		SET_PLANE_EXPLICIT(hologram, ABOVE_GAME_PLANE, src)
+		hologram.set_anchored(TRUE)//So space wind cannot drag it.
+		hologram.name = "[user.name] (Hologram)"//If someone decides to right click.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		set_holo(user, hologram)
 
 		set_holo(user, hologram)
@@ -677,7 +691,11 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(!isliving(owner))
 		return TRUE
 	var/mob/living/user = owner
+<<<<<<< HEAD
 	if(user.incapacitated() || !user.client)
+=======
+	if(user.incapacitated || !user.client)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 

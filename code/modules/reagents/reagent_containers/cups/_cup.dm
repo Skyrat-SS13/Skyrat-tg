@@ -84,7 +84,10 @@
 		to_chat(user, span_notice("You swallow a gulp of [src]."))
 
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, target_mob, user)
+<<<<<<< HEAD
 	SEND_SIGNAL(target_mob, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/fraction = min(gulp_size/reagents.total_volume, 1)
 	reagents.trans_to(target_mob, gulp_size, transferred_by = user, methods = INGEST)
 	checkLiked(fraction, target_mob)
@@ -162,7 +165,11 @@
 		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
 
 	target.update_appearance()
+<<<<<<< HEAD
 	return ITEM_INTERACT_SUCCESS
+=======
+	return NONE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/reagent_containers/cup/attackby(obj/item/attacking_item, mob/user, params)
 	var/hotness = attacking_item.get_temperature()
@@ -220,7 +227,11 @@
 
 /obj/item/reagent_containers/cup/beaker
 	name = "beaker"
+<<<<<<< HEAD
 	desc = "A beaker. It can hold up to 60 units." //SKYRAT EDIT: Used to say can hold up to 50 units.
+=======
+	desc = "A beaker. It can hold up to 50 units."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
@@ -231,8 +242,12 @@
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 	pickup_sound = 'sound/items/handling/beaker_pickup.ogg'
 	drop_sound = 'sound/items/handling/beaker_place.ogg'
+<<<<<<< HEAD
 	volume = 60 //SKYRAT EDIT: Addition
 	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
+=======
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/reagent_containers/cup/beaker/Initialize(mapload)
 	. = ..()
@@ -249,6 +264,7 @@
 
 /obj/item/reagent_containers/cup/beaker/large
 	name = "large beaker"
+<<<<<<< HEAD
 	desc = "A large beaker. Can hold up to 120 units." //SKYRAT EDIT: Used to say Can hold up to 100 units.
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
@@ -256,10 +272,19 @@
 	amount_per_transfer_from_this = 10
 	//possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT: Original Values
 	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) //SKYRAT EDIT: New Values
+=======
+	desc = "A large beaker. Can hold up to 100 units."
+	icon_state = "beakerlarge"
+	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
+	volume = 100
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/plastic
 	name = "x-large beaker"
+<<<<<<< HEAD
 	desc = "An extra-large beaker. Can hold up to 150 units." //SKYRAT EDIT: Used to say Can hold up to 120 units
 	icon_state = "beakerwhite"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
@@ -267,6 +292,14 @@
 	amount_per_transfer_from_this = 10
 	//possible_transfer_amounts = list(5,10,15,20,25,30,60,120) //SKYRAT EDIT: Original values
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,150) //SKYRAT EDIT: New Values
+=======
+	desc = "An extra-large beaker. Can hold up to 120 units."
+	icon_state = "beakerwhite"
+	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
+	volume = 120
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,25,30,60,120)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	fill_icon_thresholds = list(0, 1, 10, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/meta
@@ -351,7 +384,11 @@
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
+<<<<<<< HEAD
 	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE - ORIGINAL: desc = "It's a bucket."
+=======
+	desc = "It's a bucket."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon = 'icons/obj/service/janitor.dmi'
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
@@ -363,8 +400,13 @@
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
+<<<<<<< HEAD
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT CHANGE
 	volume = 100 //SKYRAT EDIT CHANGE
+=======
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,70)
+	volume = 70
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
@@ -397,8 +439,11 @@
 	melee = 10
 	acid = 50
 
+<<<<<<< HEAD
 // SKYRAT EDIT CHANGE START - LIQUIDS
 /* Original
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/mop))
 		if(reagents.total_volume < 1)
@@ -408,6 +453,7 @@
 			user.balloon_alert(user, "doused [O]")
 			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 		return
+<<<<<<< HEAD
 */
 /obj/item/reagent_containers/cup/bucket/attackby(obj/mop, mob/living/user, params)
 	if(istype(mop, /obj/item/mop))
@@ -437,6 +483,16 @@
 		user.put_in_hands(new_cleanbot_ass)
 		return
 // SKYRAT EDIT CHANGE END - LIQUIDS
+=======
+	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
+		to_chat(user, span_notice("You add [O] to [src]."))
+		qdel(O)
+		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
+		user.put_in_hands(new_cleanbot_ass)
+		return
+
+	return ..()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()

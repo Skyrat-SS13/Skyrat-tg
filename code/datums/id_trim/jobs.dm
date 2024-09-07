@@ -238,6 +238,11 @@
 		ACCESS_CHANGE_IDS,
 		)
 	job = /datum/job/captain
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_COMMAND_BLUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Captain gets all station accesses hardcoded in because it's the Captain.
 /datum/id_trim/job/captain/New()
@@ -360,6 +365,11 @@
 		ACCESS_CHANGE_IDS,
 		)
 	job = /datum/job/chief_engineer
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_ENGINEERING_ORANGE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/chief_medical_officer
 	assignment = JOB_CHIEF_MEDICAL_OFFICER
@@ -399,6 +409,11 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/chief_medical_officer
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_MEDICAL_BLUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/clown
 	assignment = JOB_CLOWN
@@ -612,6 +627,11 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/head_of_personnel
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_SERVICE_LIME
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/head_of_security
 	assignment = JOB_HEAD_OF_SECURITY
@@ -661,6 +681,11 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/head_of_security
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_SECURITY_RED
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/head_of_security/refresh_trim_access()
 	. = ..()
@@ -893,6 +918,11 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/quartermaster
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_CARGO_BROWN
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/research_director
 	assignment = JOB_RESEARCH_DIRECTOR
@@ -941,6 +971,11 @@
 		ACCESS_CHANGE_IDS,
 		)
 	job = /datum/job/research_director
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_SCIENCE_PINK
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/roboticist
 	assignment = JOB_ROBOTICIST
@@ -1206,6 +1241,10 @@
 	extra_access = list()
 	template_access = list()
 	job = /datum/job/veteran_advisor
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/job/veteran_advisor/refresh_trim_access()
 	. = ..()
@@ -1275,3 +1314,8 @@
 	extra_access = list()
 	template_access = list()
 	job = /datum/job/human_ai
+<<<<<<< HEAD
+=======
+	big_pointer = TRUE
+	pointer_color = COLOR_MODERATE_BLUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

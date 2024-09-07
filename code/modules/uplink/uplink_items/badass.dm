@@ -91,7 +91,11 @@
 /datum/uplink_item/badass/stickers
 	name = "Syndicate Sticker Pack"
 	desc = "Contains 8 random stickers precisely engineered to resemble suspicious objects, which may or may not be useful for fooling crew."
+<<<<<<< HEAD
 	item = /obj/item/storage/box/syndie_kit/stickers
+=======
+	item = /obj/item/storage/box/stickers/syndie_kit
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	cost = 1
 
 /datum/uplink_item/badass/demotivational_posters

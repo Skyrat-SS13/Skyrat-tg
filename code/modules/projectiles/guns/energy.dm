@@ -5,6 +5,10 @@
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	pickup_sound = 'sound/items/gun_pick_up.ogg'
 	drop_sound = 'sound/items/gun_drop.ogg'
+<<<<<<< HEAD
+=======
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// What type of power cell this uses
 	var/obj/item/stock_parts/power_store/cell
@@ -246,13 +250,20 @@
 	if(!skip_worn_icon)
 		worn_icon_state = temp_icon_to_use
 	return ..()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/gun/energy/update_overlays()
 	. = ..()
 	// SKYRAT EDIT START
 	if(!automatic_charge_overlays || !cell)
 		return
+<<<<<<< HEAD
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/overlay_icon_state = "[icon_state]_charge"
 	if(modifystate)

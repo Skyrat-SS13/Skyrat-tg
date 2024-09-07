@@ -18,7 +18,11 @@
 	var/phylactery_color = COLOR_VERY_DARK_LIME_GREEN
 
 	// Internal vars.
+<<<<<<< HEAD
 	/// The number of ressurections that have occured from this phylactery.
+=======
+	/// The number of resurrections that have occurred from this phylactery.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/num_resurrections = 0
 	/// A timerid to the current revival timer.
 	var/revive_timer
@@ -150,7 +154,11 @@
 	UnregisterSignal(source, COMSIG_LIVING_REVIVE)
 
 /**
+<<<<<<< HEAD
  * Actually undergo the process of reviving the lich at the site of the phylacery.
+=======
+ * Actually undergo the process of reviving the lich at the site of the phylactery.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  *
  * Arguments
  * * corpse - optional, the old body of the lich. Can be QDELETED or null.

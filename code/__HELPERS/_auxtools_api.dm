@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #define AUXTOOLS_FULL_INIT 2
 #define AUXTOOLS_PARTIAL_INIT 1
 
@@ -33,6 +34,8 @@ GLOBAL_PROTECT(auxtools_initialized)
 		GLOB.auxtools_initialized[LIB] = FALSE;\
 	}
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /proc/auxtools_stack_trace(msg)
 	CRASH(msg)
 

@@ -78,6 +78,10 @@ GLOBAL_LIST_INIT(fish_evolutions, init_subtypes_w_path_keys(/datum/fish_evolutio
 /datum/fish_evolution/purple_sludgefish
 	probability = 5
 	new_fish_type = /obj/item/fish/sludgefish/purple
+<<<<<<< HEAD
+=======
+	new_traits = list(/datum/fish_trait/recessive)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	removed_traits = list(/datum/fish_trait/no_mating)
 
 /datum/fish_evolution/mastodon
@@ -85,7 +89,11 @@ GLOBAL_LIST_INIT(fish_evolutions, init_subtypes_w_path_keys(/datum/fish_evolutio
 	probability = 40
 	new_fish_type = /obj/item/fish/mastodon
 	new_traits = list(/datum/fish_trait/heavy, /datum/fish_trait/amphibious, /datum/fish_trait/predator, /datum/fish_trait/aggressive)
+<<<<<<< HEAD
 	conditions_note = "The fish (and its mate) need to be unusually big both in size and weight."
+=======
+	conditions_note = "The fish (and its mate) needs to be unusually big both in size and weight."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/fish_evolution/mastodon/check_conditions(obj/item/fish/source, obj/item/fish/mate, obj/structure/aquarium/aquarium)
 	if((source.size < 120 || source.weight < 3000) || (mate && (mate.size < 120 || mate.weight < 3000)))
@@ -103,3 +111,26 @@ GLOBAL_LIST_INIT(fish_evolutions, init_subtypes_w_path_keys(/datum/fish_evolutio
 	new_fish_type = /obj/item/fish/chasm_crab/ice
 	required_temperature_min = MIN_AQUARIUM_TEMP+9
 	required_temperature_max = MIN_AQUARIUM_TEMP+10
+<<<<<<< HEAD
+=======
+
+/datum/fish_evolution/three_eyes
+	name = "Three-eyed Goldfish"
+	probability = 3
+	new_fish_type = /obj/item/fish/goldfish/three_eyes
+	new_traits = list(/datum/fish_trait/recessive)
+
+/datum/fish_evolution/chainsawfish
+	name = "Chainsawfish"
+	probability = 30
+	new_fish_type = /obj/item/fish/chainsawfish
+	new_traits = list(/datum/fish_trait/predator, /datum/fish_trait/aggressive)
+	conditions_note = "The fish needs to be unusually big and aggressive"
+
+/datum/fish_evolution/chainsawfish/check_conditions(obj/item/fish/source, obj/item/fish/mate, obj/structure/aquarium/aquarium)
+	var/double_avg_size = /obj/item/fish/goldfish::average_size * 2
+	var/double_avg_weight = /obj/item/fish/goldfish::average_weight * 2
+	if(source.size >= double_avg_size && source.weight >= double_avg_weight && (/datum/fish_trait/aggressive in source.fish_traits))
+		return ..()
+	return FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

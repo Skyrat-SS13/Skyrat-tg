@@ -49,6 +49,16 @@
 	/// Type path of item to go in belt slot
 	var/belt = null
 
+<<<<<<< HEAD
+=======
+	/**
+	  * list of items that should go in the belt of the user
+	  *
+	  * Format of this list should be: list(path=count,otherpath=count)
+	  */
+	var/list/belt_contents = null
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// Type path of item to go in ears slot
 	var/ears = null
 
@@ -219,12 +229,15 @@
 
 	if(socks)
 		user.socks = initial(socks.name)
+<<<<<<< HEAD
 
 
 	// SKYRAT EDIT ADDITION START - Underwear and bra split
 	if(bra)
 		user.bra = initial(bra.name)
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(accessory)
 		var/obj/item/clothing/under/U = user.w_uniform
@@ -258,6 +271,17 @@
 				for(var/i in 1 to number)
 					EQUIP_OUTFIT_ITEM(path, ITEM_SLOT_BACKPACK)
 
+<<<<<<< HEAD
+=======
+		if(belt_contents)
+			for(var/path in belt_contents)
+				var/number = belt_contents[path]
+				if(!isnum(number))//Default to 1
+					number = 1
+				for(var/i in 1 to number)
+					EQUIP_OUTFIT_ITEM(path, ITEM_SLOT_BELTPACK)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	post_equip(user, visualsOnly)
 
 	if(!visualsOnly)
@@ -303,6 +327,7 @@
  */
 /datum/outfit/proc/apply_fingerprints(mob/living/carbon/human/user)
 	if(!istype(user))
+<<<<<<< HEAD
 		return
 	if(user.back)
 		user.back.add_fingerprint(user, ignoregloves = TRUE)
@@ -375,6 +400,46 @@
 		belt = H.belt.type
 	return TRUE
 // SKYRAT EDIT END
+=======
+		return
+	if(user.back)
+		user.back.add_fingerprint(user, ignoregloves = TRUE)
+		for(var/obj/item/item in user.back.contents)
+			item.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_id)
+		user.wear_id.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.w_uniform)
+		user.w_uniform.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_suit)
+		user.wear_suit.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_mask)
+		user.wear_mask.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_neck)
+		user.wear_neck.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.head)
+		user.head.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.shoes)
+		user.shoes.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.gloves)
+		user.gloves.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.ears)
+		user.ears.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.glasses)
+		user.glasses.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.belt)
+		user.belt.add_fingerprint(user, ignoregloves = TRUE)
+		for(var/obj/item/item in user.belt.contents)
+			item.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.s_store)
+		user.s_store.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.l_store)
+		user.l_store.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.r_store)
+		user.r_store.add_fingerprint(user, ignoregloves = TRUE)
+	for(var/obj/item/item in user.held_items)
+		item.add_fingerprint(user, ignoregloves = TRUE)
+	return TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()
@@ -400,6 +465,16 @@
 			num_to_load = 1
 		for(var/i in 1 to num_to_load)
 			preload += type_to_load
+<<<<<<< HEAD
+=======
+	//Load in belt gear and shit
+	for(var/type_to_load in belt_contents)
+		var/num_to_load = belt_contents[type_to_load]
+		if(!isnum(num_to_load))
+			num_to_load = 1
+		for(var/i in 1 to num_to_load)
+			preload += type_to_load
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	preload += belt
 	preload += ears
 	preload += glasses
@@ -419,8 +494,11 @@
 	for(var/skillpath in skillchips)
 		preload += skillpath
 
+<<<<<<< HEAD
 	preload -= typesof(/obj/item/clothing/under/color/random) // SKYRAT EDIT - Don't preload random jumpsuit spawners that delete themselves
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return preload
 
 /// Return a json list of this outfit
@@ -448,6 +526,7 @@
 	.["l_hand"] = l_hand
 	.["internals_slot"] = internals_slot
 	.["backpack_contents"] = backpack_contents
+	.["belt_contents"] = belt_contents
 	.["box"] = box
 	.["implants"] = implants
 	.["accessory"] = accessory
@@ -475,6 +554,10 @@
 	l_hand = target.l_hand
 	internals_slot = target.internals_slot
 	backpack_contents = target.backpack_contents
+<<<<<<< HEAD
+=======
+	belt_contents = target.belt_contents
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	box = target.box
 	implants = target.implants
 	accessory = target.accessory
@@ -518,6 +601,12 @@
 		var/itype = text2path(item)
 		if(itype)
 			backpack_contents[itype] = backpack[item]
+	var/list/beltpack = outfit_data["belt_contents"]
+	belt_contents = list()
+	for(var/item in beltpack)
+		var/itype = text2path(item)
+		if(itype)
+			belt_contents[itype] = belt[item]
 	box = text2path(outfit_data["box"])
 	var/list/impl = outfit_data["implants"]
 	implants = list()

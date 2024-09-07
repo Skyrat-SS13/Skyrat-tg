@@ -37,8 +37,11 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 	if(sm.damage <= sm.warning_point) // Damage is too low, lets not
 		return FALSE
 
+<<<<<<< HEAD
 	notify_delam_suppression(sm) // SKYRAT EDIT ADDITION - DELAM_SCRAM
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if (sm.damage >= sm.emergency_point && sm.damage_archived < sm.emergency_point)
 		sm.investigate_log("has entered the emergency point.", INVESTIGATE_ENGINE)
 		message_admins("[sm] has entered the emergency point [ADMIN_VERBOSEJMP(sm)].")
@@ -57,6 +60,7 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 
 	switch(sm.get_status())
 		if(SUPERMATTER_DELAMINATING)
+<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION
 			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/meltdown.ogg', override_volume = TRUE)
 			alert_sound_to_playing('sound/effects/alert.ogg', override_volume = TRUE)
@@ -67,6 +71,10 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/core_overheating.ogg', override_volume = TRUE)
 			alert_sound_to_playing('sound/misc/notice1.ogg', override_volume = TRUE)
 			// SKYRAT EDIT END
+=======
+			playsound(sm, 'sound/misc/bloblarm.ogg', 100, FALSE, 40, 30, falloff_distance = 10)
+		if(SUPERMATTER_EMERGENCY)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			playsound(sm, 'sound/machines/engine_alert1.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
 		if(SUPERMATTER_DANGER)
 			playsound(sm, 'sound/machines/engine_alert2.ogg', 100, FALSE, 30, 30, falloff_distance = 10)

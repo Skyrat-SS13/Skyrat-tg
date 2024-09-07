@@ -1,11 +1,14 @@
 // For any mob that can be ridden
 
+<<<<<<< HEAD
 //SKYRAT EDIT START: Human Riding Defines
 #define OVERSIZED_OFFSET 18
 #define OVERSIZED_SIDE_OFFSET 11
 #define REGULAR_OFFSET 6
 #define REGULAR_SIDE_OFFSET 4
 //SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/component/riding/creature
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
@@ -64,10 +67,17 @@
 	if(living_parent.body_position != STANDING_UP) // if we move while on the ground, the rider falls off
 		. = FALSE
 	// for piggybacks and (redundant?) borg riding, check if the rider is stunned/restrained
+<<<<<<< HEAD
 	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (HAS_TRAIT(rider, TRAIT_RESTRAINED) || rider.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)))
 		. = FALSE
 	// for fireman carries, check if the ridden is stunned/restrained
 	else if((ride_check_flags & CARRIER_NEEDS_ARM) && (HAS_TRAIT(living_parent, TRAIT_RESTRAINED) || living_parent.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)))
+=======
+	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (HAS_TRAIT(rider, TRAIT_RESTRAINED) || INCAPACITATED_IGNORING(rider, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)))
+		. = FALSE
+	// for fireman carries, check if the ridden is stunned/restrained
+	else if((ride_check_flags & CARRIER_NEEDS_ARM) && (HAS_TRAIT(living_parent, TRAIT_RESTRAINED) || INCAPACITATED_IGNORING(living_parent, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		. = FALSE
 	else if((ride_check_flags & JUST_FRIEND_RIDERS) && !(living_parent.faction.Find(REF(rider))))
 		. = FALSE
@@ -295,6 +305,7 @@
 
 /datum/component/riding/creature/human/get_offsets(pass_index)
 	var/mob/living/carbon/human/H = parent
+<<<<<<< HEAD
 	//SKYRAT EDIT BEGIN - Oversized Overhaul
 	if(H.buckle_lying)
 		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
@@ -321,6 +332,13 @@
 				TEXT_WEST = list(REGULAR_OFFSET, REGULAR_SIDE_OFFSET)
 			)
 	//SKYRAT EDIT END
+=======
+	if(H.buckle_lying)
+		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
+	else
+		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/component/riding/creature/human/force_dismount(mob/living/dismounted_rider)
 	var/atom/movable/AM = parent
 	AM.unbuckle_mob(dismounted_rider)
@@ -540,9 +558,15 @@
 
 /datum/component/riding/creature/leaper/Initialize(mob/living/riding_mob, force = FALSE, ride_check_flags = NONE, potion_boost = FALSE)
 	. = ..()
+<<<<<<< HEAD
 	RegisterSignal(riding_mob, COMSIG_MOB_POINTED, PROC_REF(attack_pointed))
 
 /datum/component/riding/creature/leaper/proc/attack_pointed(mob/living/rider, atom/pointed)
+=======
+	RegisterSignal(riding_mob, COMSIG_MOVABLE_POINTED, PROC_REF(attack_pointed))
+
+/datum/component/riding/creature/leaper/proc/attack_pointed(mob/living/rider, atom/pointed, obj/effect/temp_visual/point/point)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SIGNAL_HANDLER
 	if(!isclosedturf(pointed))
 		return
@@ -554,7 +578,11 @@
 
 /datum/component/riding/leaper/handle_unbuckle(mob/living/rider)
 	. = ..()
+<<<<<<< HEAD
 	UnregisterSignal(rider,  COMSIG_MOB_POINTED)
+=======
+	UnregisterSignal(rider,  COMSIG_MOVABLE_POINTED)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/component/riding/creature/raptor
 	require_minigame = TRUE
@@ -705,6 +733,7 @@
 	mounter = null
 	host = null
 	return ..()
+<<<<<<< HEAD
 
 //SKYRAT EDIT START: Human Riding Defines
 #undef OVERSIZED_OFFSET
@@ -712,3 +741,5 @@
 #undef REGULAR_OFFSET
 #undef REGULAR_SIDE_OFFSET
 //SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

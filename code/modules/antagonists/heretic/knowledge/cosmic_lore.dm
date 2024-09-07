@@ -70,7 +70,11 @@
 
 /datum/heretic_knowledge/spell/cosmic_runes
 	name = "Cosmic Runes"
+<<<<<<< HEAD
 	desc = "Grants you Cosmic Runes, a spell that creates two runes linked with eachother for easy teleportation. \
+=======
+	desc = "Grants you Cosmic Runes, a spell that creates two runes linked with each other for easy teleportation. \
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		Only the entity activating the rune will get transported, and it can be used by anyone without a star mark. \
 		However, people with a star mark will get transported along with another person using the rune."
 	gain_text = "The distant stars crept into my dreams, roaring and screaming without reason. \

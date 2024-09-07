@@ -109,7 +109,11 @@
 			else
 				if(!user.temporarilyRemoveItemFromInventory(inserted_coin))
 					return ITEM_INTERACT_BLOCKING
+<<<<<<< HEAD
 				balloon_alert(user, "coin insterted")
+=======
+				balloon_alert(user, "coin inserted")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				balance += inserted_coin.value
 				qdel(inserted_coin)
 				return ITEM_INTERACT_SUCCESS

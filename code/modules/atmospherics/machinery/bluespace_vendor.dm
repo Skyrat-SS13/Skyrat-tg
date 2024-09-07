@@ -244,7 +244,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/bluespace_vendor, 30)
 	data["tank_full"] = total_tank_pressure
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/bluespace_vendor/ui_act(action, params)
+=======
+/obj/machinery/bluespace_vendor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

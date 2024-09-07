@@ -32,7 +32,11 @@
 			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 				return TRUE
 			if (SECONDARY_ATTACK_CONTINUE_CHAIN)
+<<<<<<< HEAD
 				// Normal behavior
+=======
+				EMPTY_BLOCK_GUARD // Normal behavior
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else
 				CRASH("pre_attack_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
 	else
@@ -51,7 +55,11 @@
 			if (SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 				return TRUE
 			if (SECONDARY_ATTACK_CONTINUE_CHAIN)
+<<<<<<< HEAD
 				// Normal behavior
+=======
+				EMPTY_BLOCK_GUARD // Normal behavior
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else
 				CRASH("attackby_secondary must return an SECONDARY_ATTACK_* define, please consult code/__DEFINES/combat.dm")
 	else
@@ -409,7 +417,11 @@
 
 				// rev deconversion through blunt trauma.
 				// this can be signalized to the rev datum
+<<<<<<< HEAD
 				if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((maxHealth - health) * 0.5))) // SKYRAT EDIT CHANGE - ORIGINAL : if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((100 - health) * 0.5)))
+=======
+				if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((100 - health) * 0.5)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					var/datum/antagonist/rev/rev = mind.has_antag_datum(/datum/antagonist/rev)
 					rev?.remove_revolutionary(attacker)
 

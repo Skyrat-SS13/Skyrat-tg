@@ -50,6 +50,10 @@
 	custom_price = PAYCHECK_COMMAND * 0.35
 	pickup_sound = 'sound/items/handcuffs_pick_up.ogg'
 	drop_sound = 'sound/items/handcuffs_drop.ogg'
+<<<<<<< HEAD
+=======
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	///How long it takes to handcuff someone
 	var/handcuff_time = 4 SECONDS

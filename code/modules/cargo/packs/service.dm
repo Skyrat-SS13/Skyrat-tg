@@ -245,7 +245,11 @@
 					/obj/item/food/ready_donk/donkhiladas,
 				)
 	crate_name = "\improper Ready-Donk crate"
+<<<<<<< HEAD
 	crate_type = /obj/structure/closet/crate/freezer/food
+=======
+	crate_type = /obj/structure/closet/crate/freezer/donk
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/service/randomized/ready_donk/fill(obj/structure/closet/crate/C)
@@ -269,6 +273,10 @@
 		/obj/item/reagent_containers/cup/bottle/syrup_bottle/caramel, //one extra syrup as a treat
 	)
 	crate_name = "coffee equipment crate"
+<<<<<<< HEAD
+=======
+	crate_type = /obj/structure/closet/crate/robust
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/service/coffeemaker
@@ -309,7 +317,11 @@
 	desc = "A fairly outdated copy of 'Whittle Me This: Fletching for the Modern Spacer', along with some useful materials. \
 		For those looking to get into bow-making, or give their LARPing a little more edge, you can't go wrong. Also has \
 		instructions for making violins."
+<<<<<<< HEAD
 	cost = CARGO_CRATE_VALUE * 1.5
+=======
+	cost = CARGO_CRATE_VALUE * 5
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	contains = list(
 		/obj/item/book/granter/crafting_recipe/fletching = 1,
 		/obj/item/stack/sheet/mineral/wood = 10,

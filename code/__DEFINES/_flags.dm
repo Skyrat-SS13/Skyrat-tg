@@ -11,6 +11,11 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define DF_USE_TAG (1<<0)
 #define DF_VAR_EDITED (1<<1)
 #define DF_ISPROCESSING (1<<2)
+<<<<<<< HEAD
+=======
+/// Placed on datums that have a static, constant reference. Primarily only used for turfs.
+#define DF_STATIC_OBJECT (1<<3)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //FLAGS BITMASK
 // scroll down before changing the numbers on these
@@ -23,7 +28,11 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define NO_SCREENTIPS_1 (1<<2)
 /// Prevent clicking things below it on the same turf eg. doors/ fulltile windows
 #define PREVENT_CLICK_UNDER_1 (1<<3)
+<<<<<<< HEAD
 ///specifies that this atom is a hologram that isnt real
+=======
+///specifies that this atom is a hologram that isn't real
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define HOLOGRAM_1 (1<<4)
 ///Whether /atom/Initialize() has already run for the object
 #define INITIALIZED_1 (1<<5)
@@ -50,7 +59,11 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 /// Whether or not this atom is storing contents for a disassociated storage object
 #define HAS_DISASSOCIATED_STORAGE_1 (1<<16)
 /// If this atom has experienced a decal element "init finished" sourced appearance update
+<<<<<<< HEAD
 /// We use this to ensure stacked decals don't double up appearance updates for no rasin
+=======
+/// We use this to ensure stacked decals don't double up appearance updates for no reason
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Flag as an optimization, don't make this a trait without profiling
 /// Yes I know this is a stupid flag, no you can't take him from me
 #define DECAL_INIT_UPDATE_EXPERIENCED_1 (1<<17)
@@ -79,9 +92,15 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define RICOCHET_HARD (1<<1)
 
 //TURF FLAGS
+<<<<<<< HEAD
 /// If a turf cant be jaunted through.
 #define NOJAUNT (1<<0)
 /// If a turf is an usused reservation turf awaiting assignment
+=======
+/// If a turf can't be jaunted through.
+#define NOJAUNT (1<<0)
+/// If a turf is an unused reservation turf awaiting assignment
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define UNUSED_RESERVATION_TURF (1<<1)
 /// If a turf is a reserved turf
 #define RESERVATION_TURF (1<<2)
@@ -279,8 +298,13 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define RELIGION_TOOL_SACRIFICE (1<<1)
 #define RELIGION_TOOL_SECTSELECT (1<<2)
 
+<<<<<<< HEAD
 // ---- Skillchip incompatability flags ---- //
 // These flags control which skill chips are compatible with eachother.
+=======
+// ---- Skillchip incompatibility flags ---- //
+// These flags control which skill chips are compatible with each other.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // By default, skillchips are incompatible with themselves and multiple of the same istype() cannot be implanted together. Set this flag to disable that check.
 #define SKILLCHIP_ALLOWS_MULTIPLE (1<<0)
 // This skillchip is incompatible with other skillchips from the incompatible_category list.

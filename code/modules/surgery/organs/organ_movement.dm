@@ -18,7 +18,12 @@
 	mob_insert(receiver, special, movement_flags)
 	bodypart_insert(limb_owner = receiver, movement_flags = movement_flags)
 
+<<<<<<< HEAD
 	return TRUE
+=======
+	if(!special)
+		receiver.update_body_parts()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /*
  * Remove the organ from the select mob.
@@ -32,6 +37,12 @@
 	mob_remove(organ_owner, special, movement_flags)
 	bodypart_remove(limb_owner = organ_owner, movement_flags = movement_flags)
 
+<<<<<<< HEAD
+=======
+	if(!special)
+		organ_owner.update_body_parts()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /*
  * Insert the organ into the select mob.
  *
@@ -65,6 +76,14 @@
 		wash(CLEAN_TYPE_BLOOD)
 		organ_flags &= ~ORGAN_VIRGIN
 
+<<<<<<< HEAD
+=======
+	if(external_bodytypes)
+		receiver.synchronize_bodytypes()
+	if(external_bodyshapes)
+		receiver.synchronize_bodyshapes()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	receiver.organs |= src
 	receiver.organs_slot[slot] = src
 	owner = receiver
@@ -120,6 +139,12 @@
 	ADD_TRAIT(src, TRAIT_NODROP, ORGAN_INSIDE_BODY_TRAIT)
 	interaction_flags_item &= ~INTERACT_ITEM_ATTACK_HAND_PICKUP
 
+<<<<<<< HEAD
+=======
+	if(bodypart_overlay)
+		limb.add_bodypart_overlay(bodypart_overlay)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /*
  * Remove the organ from the select mob.
  *
@@ -163,6 +188,12 @@
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_LOSE_ORGAN, src, special)
 	ADD_TRAIT(src, TRAIT_USED_ORGAN, ORGAN_TRAIT)
 
+<<<<<<< HEAD
+=======
+	organ_owner.synchronize_bodytypes()
+	organ_owner.synchronize_bodyshapes()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/diseases = organ_owner.get_static_viruses()
 	if(!LAZYLEN(diseases))
 		return
@@ -211,6 +242,19 @@
 	REMOVE_TRAIT(src, TRAIT_NODROP, ORGAN_INSIDE_BODY_TRAIT)
 	interaction_flags_item |= INTERACT_ITEM_ATTACK_HAND_PICKUP
 
+<<<<<<< HEAD
+=======
+	if(!bodypart_overlay)
+		return
+
+	limb.remove_bodypart_overlay(bodypart_overlay)
+
+	if(use_mob_sprite_as_obj_sprite)
+		update_appearance(UPDATE_OVERLAYS)
+
+	color = bodypart_overlay.draw_color // so a pink felinid doesn't drop a gray tail
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// In space station videogame, nothing is sacred. If somehow an organ is removed unexpectedly, handle it properly
 /obj/item/organ/proc/forced_removal()
 	SIGNAL_HANDLER

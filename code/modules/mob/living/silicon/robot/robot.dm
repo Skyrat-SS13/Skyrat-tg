@@ -11,7 +11,11 @@
 		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
 		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), \
 		roleplay_friendly = TRUE, \
+<<<<<<< HEAD
 		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep, /datum/emote/silicon/beep2), /* SKYRAT EDIT CHANGE - ORIGINAL: roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep)*/ \
+=======
+		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep), \
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
 
 	set_wires(new /datum/wires/robot(src))
@@ -158,6 +162,7 @@
 
 	if(lockcharge == TRUE)
 		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
+<<<<<<< HEAD
 		return
 
 	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
@@ -193,6 +198,35 @@
 
 	model.transform_to(GLOB.cyborg_model_list[input_model])
 
+=======
+		return
+
+	var/list/model_list = list(
+		"Engineering" = /obj/item/robot_model/engineering,
+		"Medical" = /obj/item/robot_model/medical,
+		"Miner" = /obj/item/robot_model/miner,
+		"Janitor" = /obj/item/robot_model/janitor,
+		"Service" = /obj/item/robot_model/service,
+	)
+	if(!CONFIG_GET(flag/disable_peaceborg))
+		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+	if(!CONFIG_GET(flag/disable_secborg))
+		model_list["Security"] = /obj/item/robot_model/security
+
+	// Create radial menu for choosing borg model
+	var/list/model_icons = list()
+	for(var/option in model_list)
+		var/obj/item/robot_model/model = model_list[option]
+		var/model_icon = initial(model.cyborg_base_icon)
+		model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
+
+	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
+	if(!input_model || model.type != /obj/item/robot_model)
+		return
+
+	model.transform_to(model_list[input_model])
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Used to setup the a basic and (somewhat) unique name for the robot.
 /mob/living/silicon/robot/proc/setup_default_name()
@@ -397,7 +431,11 @@
 	return ..()
 
 /mob/living/silicon/robot/execute_mode()
+<<<<<<< HEAD
 	if(incapacitated())
+=======
+	if(incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	var/obj/item/W = get_active_held_item()
 	if(W)
@@ -505,8 +543,13 @@
 		lampButton?.update_appearance()
 		update_icons()
 		return
+<<<<<<< HEAD
 	set_light_range(lamp_intensity)
 	set_light_color(lamp_doom? COLOR_RED : lamp_color) //Red for doomsday killborgs, borg's choice otherwise
+=======
+	set_light_range(max(MINIMUM_USEFUL_LIGHT_RANGE, lamp_intensity))
+	set_light_color(lamp_doom ? COLOR_RED : lamp_color) //Red for doomsday killborgs, borg's choice otherwise
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	set_light_on(TRUE)
 	lamp_enabled = TRUE
 	lampButton?.update_appearance()
@@ -723,6 +766,7 @@
 
 	if (hasExpanded)
 		hasExpanded = FALSE
+<<<<<<< HEAD
 		//update_transform(0.5) // Original
 		update_transform(0.8) // SKYRAT EDIT CHANGE
 
@@ -732,6 +776,9 @@
 		update_transform(4/3)
 	//SKYRAT EDIT ADDITION END
 
+=======
+		update_transform(0.5)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	logevent("Chassis model has been reset.")
 	log_silicon("CYBORG: [key_name(src)] has reset their cyborg model.")
 	model.transform_to(/obj/item/robot_model)
@@ -890,7 +937,7 @@
 	lawupdate = TRUE
 	lawsync()
 	if(radio && AI.radio) //AI keeps all channels, including Syndie if it is a Traitor
-		if(AI.radio.syndie)
+		if((AI.radio.special_channels & RADIO_SPECIAL_SYNDIE))
 			radio.make_syndie()
 		radio.subspace_transmission = TRUE
 		radio.channels = AI.radio.channels
@@ -952,7 +999,11 @@
 		M.visible_message(span_warning("[M] really can't seem to mount [src]..."))
 		return
 
+<<<<<<< HEAD
 	if(stat || incapacitated())
+=======
+	if(stat || incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(model && !model.allow_riding)
 		M.visible_message(span_boldwarning("Unfortunately, [M] just can't seem to hold onto [src]!"))

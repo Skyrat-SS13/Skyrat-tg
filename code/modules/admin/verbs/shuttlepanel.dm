@@ -3,13 +3,18 @@ ADMIN_VERB(shuttle_panel, R_ADMIN, "Shuttle Manipulator", "Opens the shuttle man
 
 /obj/docking_port/mobile/proc/admin_fly_shuttle(mob/user)
 	var/list/options = list()
+<<<<<<< HEAD
 	options += "-----COMPATABLE DOCKS:" //SKYRAT EDIT ADDITION
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/port in SSshuttle.stationary_docking_ports)
 		if (istype(port, /obj/docking_port/stationary/transit))
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
 			options[S.name || S.shuttle_id] = S
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START
 	options += "-----INCOMPATABLE DOCKS:" //I WILL CRASH THIS SHIP WITH NO SURVIVORS!
 	for(var/port in SSshuttle.stationary_docking_ports)
@@ -19,6 +24,8 @@ ADMIN_VERB(shuttle_panel, R_ADMIN, "Shuttle Manipulator", "Opens the shuttle man
 		if(!(canDock(S) == SHUTTLE_CAN_DOCK))
 			options[S.name || S.shuttle_id] = S
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	options += "--------"
 	options += "Infinite Transit"

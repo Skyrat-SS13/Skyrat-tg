@@ -389,7 +389,11 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 			user.balloon_alert(user, "no room!")
 		return FALSE
 
+<<<<<<< HEAD
 	var/can_hold_it = isnull(can_hold) || is_type_in_typecache(to_insert, can_hold)
+=======
+	var/can_hold_it = isnull(can_hold) || is_type_in_typecache(to_insert, can_hold) || is_type_in_typecache(to_insert, exception_hold)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/cant_hold_it = is_type_in_typecache(to_insert, cant_hold)
 	var/trait_says_no = HAS_TRAIT(to_insert, TRAIT_NO_STORAGE_INSERT)
 	if(!can_hold_it || cant_hold_it || trait_says_no)
@@ -738,7 +742,11 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 /datum/storage/proc/on_mousedrop_onto(datum/source, atom/over_object, mob/user)
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	if(ismecha(user.loc) || !user.canUseStorage())
+=======
+	if(ismecha(user.loc) || user.incapacitated || !user.canUseStorage())
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	if(istype(over_object, /atom/movable/screen/inventory/hand))
@@ -827,6 +835,12 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 	if(!iscarbon(user) && !isdrone(user))
 		return
+<<<<<<< HEAD
+=======
+	var/mob/living/user_living = user
+	if(user_living.incapacitated)
+		return
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	attempt_insert(dropping, user)
 	return COMPONENT_CANCEL_MOUSEDROPPED_ONTO

@@ -716,6 +716,22 @@ function set_font_size(size) {
 	document.body.style.setProperty('font-size', size);
 }
 
+<<<<<<< HEAD
+=======
+function set_tabs_style(style) {
+	if (style == "default") {
+		menu.classList.add('menu-wrap');
+		menu.classList.remove('tabs-classic');
+	} else if (style == "classic") {
+		menu.classList.add('menu-wrap');
+		menu.classList.add('tabs-classic');
+	} else if (style == "scrollable") {
+		menu.classList.remove('menu-wrap');
+		menu.classList.remove('tabs-classic');
+	}
+}
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 function set_style_sheet(sheet) {
 	if (document.getElementById("goonStyle")) {
 		var currentSheet = document.getElementById("goonStyle");

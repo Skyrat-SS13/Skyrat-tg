@@ -1349,6 +1349,12 @@
 	if (affected_mob.get_timed_status_effect_duration(/datum/status_effect/hallucination) >= 10 SECONDS)
 		affected_mob.adjust_hallucinations(-10 SECONDS * REM * seconds_per_tick)
 
+<<<<<<< HEAD
+=======
+	if(affected_mob.getStaminaLoss() >= 100)
+		affected_mob.reagents.remove_reagent(type, 2 * REM * seconds_per_tick)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/need_mob_update = FALSE
 	if(SPT_PROB(10, seconds_per_tick))
 		need_mob_update += affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1, 50, affected_organ_flags)
@@ -1694,6 +1700,7 @@
 	if(!affected_mob.blood_volume)
 		return
 
+<<<<<<< HEAD
 	// SKYRAT EDIT CHANGE BEGIN -- Adds check for owner_flags
 	var/owner_flags
 	if (iscarbon(affected_mob))
@@ -1702,6 +1709,8 @@
 	if (!isnull(owner_flags) && !(owner_flags & PROCESS_ORGANIC))
 		return
 	// SKYRAT EDIT CHANGE END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(SPT_PROB(7.5, seconds_per_tick))
 		affected_mob.losebreath += rand(2, 4)
 		affected_mob.adjustOxyLoss(rand(1, 3), updating_health = FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)

@@ -13,14 +13,22 @@
 #define OXY "oxygen"
 /// Exhaustion and nonlethal damage.
 #define STAMINA "stamina"
+<<<<<<< HEAD
 /// Brain damage. Should probably be decomissioned and replaced with proper organ damage.
+=======
+/// Brain damage. Should probably be decommissioned and replaced with proper organ damage.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define BRAIN "brain"
 
 //Damage flag defines //
 
 /// Involves corrosive substances.
 #define ACID "acid"
+<<<<<<< HEAD
 /// Involved in checking wheter a disease can infect or spread. Also involved in xeno neurotoxin.
+=======
+/// Involved in checking whether a disease can infect or spread. Also involved in xeno neurotoxin.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define BIO "bio"
 /// Involves a shockwave, usually from an explosion.
 #define BOMB "bomb"
@@ -36,7 +44,11 @@
 #define LASER "laser"
 /// Involves a melee attack or a thrown object.
 #define MELEE "melee"
+<<<<<<< HEAD
 /// Involved in checking the likelyhood of applying a wound to a mob.
+=======
+/// Involved in checking the likelihood of applying a wound to a mob.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define WOUND "wound"
 
 #define ARMOR_ALL "all_damage_types"

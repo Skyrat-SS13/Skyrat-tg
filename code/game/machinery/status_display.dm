@@ -14,7 +14,11 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 /obj/machinery/status_display
 	name = "status display"
 	desc = null
+<<<<<<< HEAD
 	icon = 'icons/obj/machines/status_display.dmi' //// SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/machines/status_display.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "frame"
 	verb_say = "beeps"
 	verb_ask = "beeps"
@@ -198,7 +202,11 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 			if(message1 == "" && message2 == "")
 				return
 
+<<<<<<< HEAD
 	. += emissive_appearance('modular_skyrat/modules/aesthetics/status_display/icons/status_display.dmi', "outline", src, alpha = src.alpha) // SKYRAT EDIT CHANGE - AESTHETICS
+=======
+	. += emissive_appearance(icon, "outline", src, alpha = src.alpha)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Timed process - performs nothing in the base class
 /obj/machinery/status_display/process()
@@ -534,10 +542,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 		"Red Alert" = "redalert",
 		"Blue Alert" = "bluealert",
 		"Green Alert" = "greenalert",
+<<<<<<< HEAD
 		"Violet Alert" = "violetalert", // SKYRAT EDIT ADD - Alert Levels
 		"Orange Alert" = "orangealert", // SKYRAT EDIT ADD - Alert Levels
 		"Amber Alert" = "amberalert", // SKYRAT EDIT ADD - Alert Levels
 		"Gamma Alert" = "gammaalert", // SKYRAT EDIT ADD - Alert Levels
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"Biohazard" = "biohazard",
 		"Lockdown" = "lockdown",
 		"Radiation" = "radiation",

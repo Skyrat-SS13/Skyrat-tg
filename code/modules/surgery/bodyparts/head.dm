@@ -194,6 +194,7 @@
 			if(worn_face_offset)
 				worn_face_offset.apply_offset(eye_left)
 				worn_face_offset.apply_offset(eye_right)
+<<<<<<< HEAD
 
 			// SKYRAT EDIT ADDITION START - Customization (Emissives and synths)
 			if(eyes.eye_icon_state == "None")
@@ -229,6 +230,21 @@
 	. = ..()
 	AddElement(/datum/element/toy_talk)
 
+=======
+			. += eye_left
+			. += eye_right
+		else if(!eyes && (head_flags & HEAD_EYEHOLES))
+			var/image/no_eyes = image('icons/mob/human/human_face.dmi', "eyes_missing", -BODY_LAYER, SOUTH)
+			worn_face_offset?.apply_offset(no_eyes)
+			. += no_eyes
+
+	return
+
+/obj/item/bodypart/head/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/toy_talk)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/bodypart/head/GetVoice()
 	return "The head of [real_name]"
 

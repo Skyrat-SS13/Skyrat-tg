@@ -46,7 +46,11 @@
 /datum/martial_art/cqc/proc/check_block(mob/living/cqc_user, atom/movable/hitby, damage, attack_text, attack_type, ...)
 	SIGNAL_HANDLER
 
+<<<<<<< HEAD
 	if(!can_use(cqc_user) || !cqc_user.throw_mode || cqc_user.incapacitated(IGNORE_GRAB))
+=======
+	if(!can_use(cqc_user) || !cqc_user.throw_mode || INCAPACITATED_IGNORING(cqc_user, INCAPABLE_GRAB))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return NONE
 	if(attack_type == PROJECTILE_ATTACK)
 		return NONE

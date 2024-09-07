@@ -194,6 +194,10 @@
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] [casing_phrasing]\s left!"
 
 /obj/item/ammo_box/update_icon_state()
+<<<<<<< HEAD
+=======
+	. = ..()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/shells_left = LAZYLEN(stored_ammo)
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)
@@ -201,6 +205,7 @@
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
 
+<<<<<<< HEAD
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()
 
@@ -208,13 +213,25 @@
 
 /obj/item/ammo_box/proc/update_ammo_band()
 	overlays.Cut()
+=======
+/obj/item/ammo_box/update_overlays()
+	. = ..()
+	if(ammo_band_color && ammo_band_icon)
+		. += update_ammo_band()
+
+/obj/item/ammo_box/proc/update_ammo_band()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/band_icon = ammo_band_icon
 	if(!(length(stored_ammo)) && ammo_band_icon_empty)
 		band_icon = ammo_band_icon_empty
 	var/image/ammo_band_image = image(icon, src, band_icon)
 	ammo_band_image.color = ammo_band_color
 	ammo_band_image.appearance_flags = RESET_COLOR|KEEP_APART
+<<<<<<< HEAD
 	overlays += ammo_band_image
+=======
+	return ammo_band_image
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Count of number of bullets in the magazine
 /obj/item/ammo_box/magazine/proc/ammo_count(countempties = TRUE)

@@ -77,7 +77,11 @@
 	///Controls if the limb is disabled. TRUE means it is disabled (similar to being removed, but still present for the sake of targeted interactions).
 	var/bodypart_disabled = FALSE
 	///Handles limb disabling by damage. If 0 (0%), a limb can't be disabled via damage. If 1 (100%), it is disabled at max limb damage. Anything between is the percentage of damage against maximum limb damage needed to disable the limb.
+<<<<<<< HEAD
 	var/disabling_threshold_percentage = 1 //SKYRAT EDIT CHANGE - COMBAT - ORIGINAL : var/disabling_threshold_percentage = 0
+=======
+	var/disabling_threshold_percentage = 0
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Damage variables
 	///A mutiplication of the burn and brute damage that the limb's stored damage contributes to its attached mob's overall wellbeing.
@@ -203,10 +207,13 @@
 	var/robotic_emp_paralyze_damage_percent_threshold = 0.3
 	/// A potential texturing overlay to put on the limb
 	var/datum/bodypart_overlay/texture/texture_bodypart_overlay
+<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN
 	/// If we even wanna try and handle icons/overlays of the limb (Taurs don't, f.e.). See update_body_parts
 	var/show_icon = TRUE
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/bodypart/apply_fantasy_bonuses(bonus)
 	. = ..()
@@ -354,6 +361,7 @@
 	for(var/datum/wound/wound as anything in wounds)
 		switch(wound.severity)
 			if(WOUND_SEVERITY_TRIVIAL)
+<<<<<<< HEAD
 				// check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)].")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
 				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)].")]" // SKYRAT EDIT - Medical overhaul-ish
 			if(WOUND_SEVERITY_MODERATE)
@@ -365,6 +373,15 @@
 			if(WOUND_SEVERITY_CRITICAL)
 				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)]!!")]" // SKYRAT EDIT - Medical overhaul-ish - ORIGINAL
 				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!!")]" // SKYRAT EDIT - Medical overhaul-ish
+=======
+				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)].")]"
+			if(WOUND_SEVERITY_MODERATE)
+				check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)]!")]"
+			if(WOUND_SEVERITY_SEVERE)
+				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)]!!")]"
+			if(WOUND_SEVERITY_CRITICAL)
+				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [LOWER_TEXT(wound.name)]!!!")]"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/obj/item/embedded_thing in embedded_objects)
 		var/stuck_word = embedded_thing.is_embed_harmless() ? "stuck" : "embedded"
@@ -543,6 +560,7 @@
 			return
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 		if(wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION - MEDICAL
 			//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
 			//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
@@ -556,6 +574,8 @@
 				var/obj/item/stack/medical/gauze/our_gauze = current_gauze
 				our_gauze.get_hit()
 			//SKYRAT EDIT ADDITION END - MEDICAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction, damage_source = damage_source)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -682,12 +702,15 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		//Consider moving this to a new species proc "spec_heal" maybe?
 		if(owner.stat == DEAD && HAS_TRAIT(owner, TRAIT_REVIVES_BY_HEALING))
 			if(owner.health > 50)
 				owner.revive(FALSE)
 		//SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -980,6 +1003,7 @@
 	if(should_draw_greyscale) //Should the limb be colored?
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	var/datum/species/owner_species = human_owner.dna.species
 
@@ -993,6 +1017,9 @@
 	// SKYRAT EDIT END
 
 	recolor_external_organs()
+=======
+	recolor_bodypart_overlays()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 //to update the bodypart's icon when not attached to a mob
@@ -1065,10 +1092,16 @@
 			huskify_image(thing_to_husk = aux)
 		draw_color = husk_color
 	if(draw_color)
+<<<<<<< HEAD
 		var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]" // SKYRAT EDIT ADDITION - Alpha values on limbs. We check if the limb is attached and if the owner has an alpha value to append
 		limb.color = limb_color // SKYRAT EDIT CHANGE - ORIGINAL: limb.color = "[draw_color]"
 		if(aux_zone)
 			aux.color = limb_color // SKYRAT EDIT CHANGE - ORIGINAL: aux.color = "[draw_color]"
+=======
+		limb.color = "[draw_color]"
+		if(aux_zone)
+			aux.color = "[draw_color]"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.
@@ -1109,6 +1142,7 @@
 					. += overlay.get_overlay(external_layer, src)
 			for(var/datum/layer in .)
 				overlay.modify_bodypart_appearance(layer)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
 	var/atom/offset_spokesman = owner || src
@@ -1165,6 +1199,8 @@
 				if (emissive)
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return .
 
 /obj/item/bodypart/proc/huskify_image(image/thing_to_husk, draw_blood = TRUE)
@@ -1370,7 +1406,11 @@
 		QDEL_NULL(current_gauze)
 
 ///Loops through all of the bodypart's external organs and update's their color.
+<<<<<<< HEAD
 /obj/item/bodypart/proc/recolor_external_organs()
+=======
+/obj/item/bodypart/proc/recolor_bodypart_overlays()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/datum/bodypart_overlay/mutant/overlay in bodypart_overlays)
 		overlay.inherit_color(src, force = TRUE)
 
@@ -1443,8 +1483,13 @@
 	var/burn_damage = AUGGED_LIMB_EMP_BURN_DAMAGE
 	if(severity == EMP_HEAVY)
 		time_needed *= 2
+<<<<<<< HEAD
 		brute_damage *= 1.3 // SKYRAT EDIT : Balance - Lowers total damage from ~125 Brute to ~30
 		burn_damage *= 1.3 // SKYRAT EDIT : Balance - Lowers total damage from ~104 Burn to ~24
+=======
+		brute_damage *= 2
+		burn_damage *= 2
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	receive_damage(brute_damage, burn_damage)
 	do_sparks(number = 1, cardinal_only = FALSE, source = owner || src)

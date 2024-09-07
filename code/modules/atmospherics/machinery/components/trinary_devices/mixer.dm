@@ -150,7 +150,11 @@
 	data["node2_concentration"] = round(node2_concentration*100, 1)
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/components/trinary/mixer/ui_act(action, params)
+=======
+/obj/machinery/atmospherics/components/trinary/mixer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

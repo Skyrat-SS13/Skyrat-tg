@@ -168,7 +168,11 @@ ADMIN_VERB(disable_shuttle, R_ADMIN, "Disable Shuttle", "Those fuckers aren't ge
 	priority_announce(
 		text = "Emergency Shuttle uplink failure, shuttle disabled until further notice.",
 		title = "Uplink Failure",
+<<<<<<< HEAD
 		sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
+=======
+		sound = 'sound/misc/announce_dig.ogg',
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "grey",
 	)
@@ -194,7 +198,11 @@ ADMIN_VERB(enable_shuttle, R_ADMIN, "Enable Shuttle", "Those fuckers ARE getting
 	priority_announce(
 		text = "Emergency Shuttle uplink reestablished, shuttle enabled.",
 		title = "Uplink Restored",
+<<<<<<< HEAD
 		sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
+=======
+		sound = 'sound/misc/announce_dig.ogg',
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "green",
 	)
@@ -218,9 +226,21 @@ ADMIN_VERB(hostile_environment, R_ADMIN, "Hostile Environment", "Disable the shu
 			SSshuttle.hostile_environments.Cut()
 			SSshuttle.checkHostileEnvironment()
 
+<<<<<<< HEAD
 ADMIN_VERB(toggle_nuke, R_DEBUG|R_ADMIN, "Toggle Nuke", "Arm or disarm a nuke.", ADMIN_CATEGORY_EVENTS, obj/machinery/nuclearbomb/nuke in world)
 	if(!nuke.timing)
 		var/newtime = input(user, "Set activation timer.", "Activate Nuke", "[nuke.timer_set]") as num|null
+=======
+ADMIN_VERB(toggle_nuke, R_DEBUG|R_ADMIN, "Toggle Nuke", "Arm or disarm a nuke.", ADMIN_CATEGORY_EVENTS)
+	var/list/nukes = list()
+	for (var/obj/machinery/nuclearbomb/bomb in world)
+		nukes += bomb
+	var/obj/machinery/nuclearbomb/nuke = tgui_input_list(user, "", "Toggle Nuke", nukes)
+	if (isnull(nuke))
+		return
+	if(!nuke.timing)
+		var/newtime = tgui_input_number(user, "Set activation timer.", "Activate Nuke", nuke.timer_set)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!newtime)
 			return
 		nuke.timer_set = newtime

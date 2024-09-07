@@ -343,7 +343,11 @@
 	if(ismob(weapon.loc))
 		var/mob/owner = weapon.loc
 		if(!owner.transferItemToLoc(weapon, src))
+<<<<<<< HEAD
 			to_chat(usr, span_warning("\the [weapon] is stuck to your hand, you cannot put it in \the [src]!"))
+=======
+			to_chat(owner, span_warning("\the [weapon] is stuck to your hand, you cannot put it in \the [src]!"))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return FALSE
 		return TRUE
 	else
@@ -476,15 +480,26 @@
 	.["isdryer"] = TRUE
 	.["drying"] = drying
 
+<<<<<<< HEAD
 /obj/machinery/smartfridge/drying/ui_act(action, params)
+=======
+/obj/machinery/smartfridge/drying/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		update_appearance() // This is to handle a case where the last item is taken out manually instead of through drying pop-out
 		return
 
+<<<<<<< HEAD
 	switch(action)
 		if("Dry")
 			toggle_drying(FALSE, usr)
+=======
+	var/mob/user = ui.user
+	switch(action)
+		if("Dry")
+			toggle_drying(FALSE, user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return TRUE
 
 /obj/machinery/smartfridge/drying/powered()
@@ -760,7 +775,10 @@
 					/obj/item/reagent_containers/cup/beaker,
 					/obj/item/reagent_containers/spray,
 					/obj/item/reagent_containers/medigel,
+<<<<<<< HEAD
 					/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT ADDITION - HYPOSPRAYS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					/obj/item/reagent_containers/chem_pack
 	))
 	return is_type_in_typecache(weapon, chemfridge_typecache)

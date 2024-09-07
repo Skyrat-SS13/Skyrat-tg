@@ -353,7 +353,11 @@
 /obj/item/food/meat/rawbacon
 	name = "raw piece of bacon"
 	desc = "A raw piece of bacon."
+<<<<<<< HEAD
 	icon_state = "baconb"
+=======
+	icon_state = "bacon"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	bite_consumption = 2
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 2,
@@ -369,7 +373,11 @@
 /obj/item/food/meat/bacon
 	name = "piece of bacon"
 	desc = "A delicious piece of bacon."
+<<<<<<< HEAD
 	icon_state = "baconcookedb"
+=======
+	icon_state = "baconcooked"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,

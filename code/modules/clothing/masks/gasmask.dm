@@ -298,17 +298,25 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		"The Madman" = image(icon = src.icon, icon_state = "joker"),
 		"The Rainbow Color" = image(icon = src.icon, icon_state = "rainbow")
 		)
+<<<<<<< HEAD
 	//AddElement(/datum/element/swabable, CELL_LINE_TABLE_CLOWN, CELL_VIRUS_TABLE_GENERIC, rand(2,3), 0) //SKYRAT EDIT REMOVAL
+=======
+	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CLOWN, CELL_VIRUS_TABLE_GENERIC, rand(2,3), 0)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/mask/gas/clown_hat/ui_action_click(mob/user)
-	if(!istype(user) || user.incapacitated())
+	if(!istype(user) || user.incapacitated)
 		return
 
 	var/choice = show_radial_menu(user,src, clownmask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 
+<<<<<<< HEAD
 	if(src && choice && !user.incapacitated() && in_range(user,src))
+=======
+	if(src && choice && !user.incapacitated && in_range(user,src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/list/options = GLOB.clown_mask_options
 		icon_state = options[choice]
 		user.update_worn_mask()
@@ -355,7 +363,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		)
 
 /obj/item/clothing/mask/gas/mime/ui_action_click(mob/user)
-	if(!istype(user) || user.incapacitated())
+	if(!istype(user) || user.incapacitated)
 		return
 
 	var/list/options = list()
@@ -368,6 +376,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	if(!choice)
 		return FALSE
 
+<<<<<<< HEAD
 	if(src && choice && !user.incapacitated() && in_range(user,src))
 		// SKYRAT EDIT ADDITION START - More mask variations
 		var/mob/living/carbon/human/human_user = user
@@ -384,6 +393,10 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		/* SKYRAT EDIT ADDITION END
 		icon_state = options[choice]
 		*/
+=======
+	if(src && choice && !user.incapacitated && in_range(user,src))
+		icon_state = options[choice]
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		user.update_worn_mask()
 		update_item_action_buttons()
 		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))

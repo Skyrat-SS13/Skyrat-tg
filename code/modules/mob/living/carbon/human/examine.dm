@@ -8,11 +8,14 @@
 	var/t_is = p_are()
 	var/obscure_name
 	var/obscure_examine
+<<<<<<< HEAD
 
 	// SKYRAT EDIT START
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -21,6 +24,7 @@
 		if(HAS_TRAIT(src, TRAIT_UNKNOWN))
 			obscure_name = TRUE
 			obscure_examine = TRUE
+<<<<<<< HEAD
 
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 	var/species_visible
@@ -53,15 +57,20 @@
 	if(dna?.species && !skipface)
 		apparent_species = ", \an [dna.species.name]"
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
 	if(obscure_examine)
 		return list("<span class='warning'>You're struggling to make out any details...")
 
 	var/obscured = check_obscured_slots()
+<<<<<<< HEAD
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/ //SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
@@ -141,8 +150,11 @@
 
 		. += wear_id.get_id_examine_strings(user)
 
+<<<<<<< HEAD
 	. += EXAMINE_SECTION_BREAK // SKYRAT EDIT ADDITION - hr sections
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//Status effects
 	var/list/status_examines = get_status_effect_examinations()
 	if (length(status_examines))
@@ -366,7 +378,11 @@
 			if(!key)
 				msg += "[span_deadsay("[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.")]\n"
 			else if(!client)
+<<<<<<< HEAD
 				msg += "[span_deadsay("[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.")]\n" // SKYRAT EDIT CHANGE - SSD_INDICATOR - ORIGINAL: msg += "[span_deadsay("[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.")]\n"
+=======
+				msg += "[span_deadsay("[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.")]\n"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/scar_severity = 0
 	for(var/i in all_scars)
@@ -424,10 +440,13 @@
 			if(target_record)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1;examine_time=[world.time]'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1;examine_time=[world.time]'>\[See quirks\]</a>"
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 			if(target_record && length(target_record.past_medical_records) > RECORDS_INVISIBLE_THRESHOLD)
 				. += "<a href='?src=[REF(src)];hud=m;medrecords=1;examine_time=[world.time]'>\[View medical records\]</a>"
 			//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if((user.stat == CONSCIOUS || isobserver(user)) && user != src)
@@ -450,6 +469,7 @@
 					. += jointext(list("<a href='?src=[REF(src)];hud=s;add_citation=1;examine_time=[world.time]'>\[Add citation\]</a>",
 						"<a href='?src=[REF(src)];hud=s;add_crime=1;examine_time=[world.time]'>\[Add crime\]</a>",
 						"<a href='?src=[REF(src)];hud=s;add_note=1;examine_time=[world.time]'>\[Add note\]</a>"), "")
+<<<<<<< HEAD
 				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				if(target_record && length(target_record.past_security_records) > RECORDS_INVISIBLE_THRESHOLD)
 					. += "<a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View past security records\]</a>"
@@ -522,6 +542,20 @@
 /mob/living/proc/get_status_effect_examinations()
 	var/list/examine_list = list()
 
+=======
+	if(isobserver(user))
+		. += span_info("\n<b>Quirks:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
+	. += "</span>"
+
+	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
+
+/**
+ * Shows any and all examine text related to any status effects the user has.
+ */
+/mob/living/proc/get_status_effect_examinations()
+	var/list/examine_list = list()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/datum/status_effect/effect as anything in status_effects)
 		var/effect_text = effect.get_examine_text()
 		if(!effect_text)
@@ -540,10 +574,15 @@
 		return
 	var/age_text
 	switch(age)
+<<<<<<< HEAD
 		if(-INFINITY to 17) // SKYRAT EDIT ADD START -- AGE EXAMINE
 			age_text = "too young to be here"
 		if(18 to 25)
 			age_text = "a young adult" // SKYRAT EDIT END
+=======
+		if(-INFINITY to 25)
+			age_text = "very young"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(26 to 35)
 			age_text = "of adult age"
 		if(36 to 55)

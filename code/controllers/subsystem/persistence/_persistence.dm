@@ -48,6 +48,20 @@ SUBSYSTEM_DEF(persistence)
 	var/tram_hits_this_round = 0
 	var/tram_hits_last_round = 0
 
+<<<<<<< HEAD
+=======
+	/// A json database to data/message_bottles.json
+	var/datum/json_database/message_bottles_database
+	/// An index used to create unique ids for the message bottles database
+	var/message_bottles_index = 0
+	/**
+	 * A list of non-maploaded photos or papers that met the 0.2% chance to be saved in the message bottles database
+	 * because I don't want the database to feel empty unless there's someone constantly throwing bottles in the
+	 * sea or beach/ocean fishing portals.
+	 */
+	var/list/queued_message_bottles
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/controller/subsystem/persistence/Initialize()
 	load_poly()
 	load_wall_engravings()
@@ -58,7 +72,10 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
+<<<<<<< HEAD
 	load_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -72,13 +89,22 @@ SUBSYSTEM_DEF(persistence)
 	save_randomized_recipes()
 	save_scars()
 	save_custom_outfits()
+<<<<<<< HEAD
 	save_modular_persistence() // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 	save_delamination_counter()
+=======
+	save_delamination_counter()
+	save_queued_message_bottles()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(SStransport.can_fire)
 		for(var/datum/transport_controller/linear/tram/transport as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
 			save_tram_history(transport.specific_transport_id)
 		save_tram_counter()
+<<<<<<< HEAD
 	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()

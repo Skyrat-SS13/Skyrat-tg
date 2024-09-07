@@ -39,6 +39,10 @@
 	illustration = null
 	/// Which type of cube are we spawning in this box?
 	var/cube_type = /obj/item/food/monkeycube
+<<<<<<< HEAD
+=======
+	custom_price = PAYCHECK_CREW * 2
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/storage/box/monkeycubes/Initialize(mapload)
 	. = ..()

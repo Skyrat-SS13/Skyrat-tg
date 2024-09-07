@@ -113,7 +113,11 @@
 		return
 	if(!user.throw_mode || user.get_active_held_item() || user.zone_selected != BODY_ZONE_PRECISE_GROIN)
 		return
+<<<<<<< HEAD
 	if(user.grab_state < GRAB_NECK || !iscarbon(user.pulling) || user.buckled || user.incapacitated())
+=======
+	if(user.grab_state < GRAB_NECK || !iscarbon(user.pulling) || user.buckled || user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	var/mob/living/carbon/possible_throwable = user.pulling
@@ -122,8 +126,12 @@
 
 	if(ishuman(possible_throwable))
 		var/mob/living/carbon/human/human_throwable = possible_throwable
+<<<<<<< HEAD
 		//if(human_throwable.wear_suit && (human_throwable.wear_suit.flags_inv & HIDEJUMPSUIT)) // ORIGINAL
 		if(human_throwable.wear_suit && (human_throwable.wear_suit.flags_inv & HIDETAIL)) // SKYRAT EDIT CHANGE
+=======
+		if(human_throwable.wear_suit && (human_throwable.wear_suit.flags_inv & HIDEJUMPSUIT))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			to_chat(user, span_warning("You can't reach [human_throwable]'s tail through [human_throwable.p_their()] [human_throwable.wear_suit.name]!"))
 			return
 
@@ -167,7 +175,11 @@
  * For each step of the swinging, with the delay getting shorter along the way. Checks to see we still have them in our grasp at each step.
  */
 /datum/mutation/human/hulk/proc/swing_loop(mob/living/carbon/human/the_hulk, mob/living/carbon/yeeted_person, step, original_dir)
+<<<<<<< HEAD
 	if(!yeeted_person || !the_hulk || the_hulk.incapacitated())
+=======
+	if(!yeeted_person || !the_hulk || the_hulk.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(get_dist(the_hulk, yeeted_person) > 1 || !isturf(the_hulk.loc) || !isturf(yeeted_person.loc))
 		to_chat(the_hulk, span_warning("You lose your grasp on [yeeted_person]!"))
@@ -238,7 +250,11 @@
 
 /// Time to toss the victim at high speed
 /datum/mutation/human/hulk/proc/finish_swing(mob/living/carbon/human/the_hulk, mob/living/carbon/yeeted_person, original_dir)
+<<<<<<< HEAD
 	if(!yeeted_person || !the_hulk || the_hulk.incapacitated())
+=======
+	if(!yeeted_person || !the_hulk || the_hulk.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(get_dist(the_hulk, yeeted_person) > 1 || !isturf(the_hulk.loc) || !isturf(yeeted_person.loc))
 		to_chat(the_hulk, span_warning("You lose your grasp on [yeeted_person]!"))

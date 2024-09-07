@@ -56,14 +56,18 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/skinned_type
 	///flags for inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
 	var/no_equip_flags
+<<<<<<< HEAD
 	/// Allows the species to equip items that normally require a jumpsuit without having one equipped. Used by golems.
 	var/nojumpsuit = FALSE
 	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
 	var/say_mod = "says"
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// What languages this species can understand and say.
 	/// Use a [language holder datum][/datum/language_holder] typepath in this var.
 	/// Should never be null.
 	var/datum/language_holder/species_language_holder = /datum/language_holder/human_basic
+<<<<<<< HEAD
 	/**
 	  * Visible CURRENT bodyparts that are unique to a species.
 	  * DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK
@@ -75,6 +79,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	  */
 	//var/list/mutant_bodyparts = list() //ORIGINAL
 	var/list/list/mutant_bodyparts = list() //SKYRAT EDIT CHANGE - CUSTOMIZATION (typed list)
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///The bodyparts this species uses. assoc of bodypart string - bodypart type. Make sure all the fucking entries are in or I'll skin you alive.
 	var/list/bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left,
@@ -84,10 +90,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest,
 	)
+<<<<<<< HEAD
 	///Internal organs that are unique to this race, like a tail. list(typepath of organ 1, typepath of organ 2)
 	var/list/mutant_organs = list()
 	///List of external organs to generate like horns, frills, wings, etc. list(typepath of organ = "Round Beautiful BDSM Snout"). Still WIP
 	var/list/external_organs = list()
+=======
+	///Internal organs that are unique to this race, like a tail or other cosmetic organs. list(typepath of organ 1, typepath of organ 2 = "Round").
+	var/list/mutant_organs = list()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///Replaces default brain with a different organ
 	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
 	///Replaces default heart with a different organ
@@ -108,7 +119,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/obj/item/organ/internal/appendix/mutantappendix = /obj/item/organ/internal/appendix
 
 	/// Store body marking defines. See mobs.dm for bitflags
+<<<<<<< HEAD
 	//var/list/body_markings = list() // SKYRAT EDIT REMOVAL - We already have this defined as an assoc list
+=======
+	var/list/body_markings = list()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// Flat modifier on all damage taken via [apply_damage][/mob/living/proc/apply_damage] (so being punched, shot, etc.)
 	/// IE: 10 = 10% less damage taken.
@@ -288,7 +303,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(ORGAN_SLOT_STOMACH)
 			return mutantstomach
 		else
+<<<<<<< HEAD
 			CRASH("Invalid organ slot [slot]")
+=======
+			// Non-standard organs we might have
+			for(var/obj/item/organ/extra_organ as anything in mutant_organs)
+				if(initial(extra_organ.slot) == slot)
+					return extra_organ
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * Corrects organs in a carbon, removing ones it doesn't need and adding ones it does.
@@ -304,6 +326,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * * visual_only - boolean, only load organs that change how the species looks. Do not use for normal gameplay stuff
  */
 /datum/species/proc/regenerate_organs(mob/living/carbon/organ_holder, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
+<<<<<<< HEAD
 	//what should be put in if there is no mutantorgan (brains handled separately)
 	var/list/organ_slots = list(
 		ORGAN_SLOT_BRAIN,
@@ -339,11 +362,39 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			continue // we don't want to remove organs that are the same as the new one
 
 		if(visual_only && !initial(new_organ.visual))
+=======
+	for(var/slot in get_all_slots())
+		var/obj/item/organ/existing_organ = organ_holder.get_organ_slot(slot)
+		var/obj/item/organ/new_organ = get_mutant_organ_type_for_slot(slot)
+		var/old_organ_type = old_species?.get_mutant_organ_type_for_slot(slot)
+
+		// if we have an extra organ that before changing that the species didnt have, remove it
+		if(!new_organ)
+			if(existing_organ && (old_organ_type == existing_organ.type || replace_current))
+				existing_organ.Remove(organ_holder)
+				qdel(existing_organ)
+			continue
+
+		if(existing_organ)
+			// we dont want to remove organs that were not from the old species (such as from freak surgery or prosthetics)
+			if(existing_organ.type != old_organ_type && !replace_current)
+				continue
+
+			// we don't want to remove organs that are the same as the new one
+			if(existing_organ.type == new_organ)
+				continue
+
+		if(visual_only && (!initial(new_organ.bodypart_overlay) && !initial(new_organ.visual)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			continue
 
 		var/used_neworgan = FALSE
 		new_organ = SSwardrobe.provide_type(new_organ)
+<<<<<<< HEAD
 		var/should_have = new_organ.get_availability(src, organ_holder)
+=======
+		var/should_have = new_organ.get_availability(src, organ_holder) && should_visual_organ_apply_to(new_organ, organ_holder)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		// Check for an existing organ, and if there is one check to see if we should remove it
 		var/health_pct = 1
@@ -367,6 +418,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(!used_neworgan)
 			QDEL_NULL(new_organ)
 
+<<<<<<< HEAD
 	if(!isnull(old_species))
 		for(var/mutant_organ in old_species.mutant_organs)
 			if(mutant_organ in mutant_organs)
@@ -407,6 +459,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			// organ.Insert will qdel any current organs in that slot, so we don't need to.
 			replacement.Insert(organ_holder, special=TRUE, movement_flags = DELETE_IF_REPLACED)
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/species/proc/worn_items_fit_body_check(mob/living/carbon/wearer)
 	for(var/obj/item/equipped_item in wearer.get_equipped_items(INCLUDE_POCKETS))
 		var/equipped_item_slot = wearer.get_slot_by_item(equipped_item)
@@ -448,7 +502,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(old_species.type != type)
 		replace_body(human_who_gained_species, src)
 
+<<<<<<< HEAD
 	regenerate_organs(human_who_gained_species, old_species, visual_only = human_who_gained_species.visual_only_organs)
+=======
+	regenerate_organs(human_who_gained_species, old_species, replace_current = FALSE, visual_only = human_who_gained_species.visual_only_organs)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Drop the items the new species can't wear
 	INVOKE_ASYNC(src, PROC_REF(worn_items_fit_body_check), human_who_gained_species, TRUE)
@@ -464,6 +522,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Resets blood if it is excessively high so they don't gib
 	normalize_blood(human_who_gained_species)
 
+<<<<<<< HEAD
 	if(ishuman(human_who_gained_species))
 		var/mob/living/carbon/human/human = human_who_gained_species
 		for(var/obj/item/organ/external/organ_path as anything in external_organs)
@@ -475,6 +534,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			new_organ.Insert(human, special=TRUE, movement_flags = DELETE_IF_REPLACED)
 
 	//add_body_markings(human_who_gained_species) // SKYRAT EDIT REMOVAL - We do this differently
+=======
+	add_body_markings(human_who_gained_species)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(length(inherent_traits))
 		human_who_gained_species.add_traits(inherent_traits, SPECIES_TRAIT)
@@ -514,10 +576,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
 
+<<<<<<< HEAD
 	for(var/obj/item/organ/external/organ in C.organs)
 		organ.Remove(C)
 		qdel(organ)
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//If their inert mutation is not the same, swap it out
 	if((inert_mutation != new_species.inert_mutation) && LAZYLEN(C.dna.mutation_index) && (inert_mutation in C.dna.mutation_index))
 		C.dna.remove_mutation(inert_mutation)
@@ -548,6 +613,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
 /**
+<<<<<<< HEAD
  * Proc called when mail goodies need to be updated for this species.
  *
  * Updates the mail goodies if that is required. e.g. for the blood deficiency quirk, which sends bloodbags to quirk holders, update the sent bloodpack to match the species' exotic blood.
@@ -593,6 +659,18 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	species_human.remove_overlay(BODY_LAYER)
 	if(HAS_TRAIT(species_human, TRAIT_INVISIBLE_MAN))
 		return handle_mutant_bodyparts(species_human)
+=======
+ * Handles the body of a human
+ *
+ * Handles lipstick, having no eyes, eye color, undergarnments like underwear, undershirts, and socks, and body layers.
+ * Arguments:
+ * * species_human - Human, whoever we're handling the body for
+ */
+/datum/species/proc/handle_body(mob/living/carbon/human/species_human)
+	species_human.remove_overlay(BODY_LAYER)
+	if(HAS_TRAIT(species_human, TRAIT_INVISIBLE_MAN))
+		return
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/standing = list()
 
 	if(!HAS_TRAIT(species_human, TRAIT_HUSK))
@@ -611,7 +689,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/mutable_appearance/underwear_overlay
 			if(underwear)
 				if(species_human.dna.species.sexes && species_human.physique == FEMALE && (underwear.gender == MALE))
+<<<<<<< HEAD
 					underwear_overlay = wear_female_version(underwear.icon_state, underwear.icon, BODY_LAYER, FEMALE_UNIFORM_FULL)
+=======
+					underwear_overlay = mutable_appearance(wear_female_version(underwear.icon_state, underwear.icon, FEMALE_UNIFORM_FULL), layer = -BODY_LAYER)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				else
 					underwear_overlay = mutable_appearance(underwear.icon, underwear.icon_state, -BODY_LAYER)
 				if(!underwear.use_static)
@@ -623,9 +705,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(undershirt)
 				var/mutable_appearance/working_shirt
 				if(species_human.dna.species.sexes && species_human.physique == FEMALE)
+<<<<<<< HEAD
 					working_shirt = wear_female_version(undershirt.icon_state, undershirt.icon, BODY_LAYER)
 				else
 					working_shirt = mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
+=======
+					working_shirt = mutable_appearance(wear_female_version(undershirt.icon_state, undershirt.icon), layer = -BODY_LAYER)
+				else
+					working_shirt = mutable_appearance(undershirt.icon, undershirt.icon_state, layer = -BODY_LAYER)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				standing += working_shirt
 
 		if(species_human.socks && species_human.num_legs >= 2 && !(species_human.bodyshape & BODYSHAPE_DIGITIGRADE))
@@ -637,6 +725,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		species_human.overlays_standing[BODY_LAYER] = standing
 
 	species_human.apply_overlay(BODY_LAYER)
+<<<<<<< HEAD
 	handle_mutant_bodyparts(species_human)
 
 */
@@ -741,6 +830,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	update_body_markings(source)
 */
 //SKYRAT EDIT REMOVAL END
+=======
+	update_body_markings(species_human)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //This exists so sprite accessories can still be per-layer without having to include that layer's
 //number in their sprite name, which causes issues when those numbers change.
@@ -752,12 +844,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		if(BODY_FRONT_UNDER_CLOTHES)
 			return "FRONT_UNDER"
 		if(ABOVE_BODY_FRONT_HEAD_LAYER)
 			return "FRONT_OVER"
 		//SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Proc that will randomise the hair, or primary appearance element (i.e. for moths wings) of a species' associated mob
 /datum/species/proc/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
@@ -769,7 +864,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	human_mob.undershirt = random_undershirt(human_mob.gender)
 	human_mob.underwear = random_underwear(human_mob.gender)
 	human_mob.socks = random_socks(human_mob.gender)
+<<<<<<< HEAD
 	human_mob.bra = random_bra(human_mob.gender) //SKYRAT EDIT ADDITION - Underwear and Bra split
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
 /datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
@@ -790,7 +888,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/list/new_features = list()
 	var/static/list/organs_to_randomize = list()
+<<<<<<< HEAD
 	for(var/obj/item/organ/external/organ_path as anything in external_organs)
+=======
+	for(var/obj/item/organ/organ_path as anything in mutant_organs)
+		if(!organ_path.bodypart_overlay)
+			continue
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/overlay_path = initial(organ_path.bodypart_overlay)
 		var/datum/bodypart_overlay/mutant/sample_overlay = organs_to_randomize[overlay_path]
 		if(isnull(sample_overlay))
@@ -809,7 +913,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		H.adjustBruteLoss(0.5 * seconds_per_tick)
 
 /datum/species/proc/can_equip(obj/item/I, slot, disable_warning, mob/living/carbon/human/H, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
+<<<<<<< HEAD
 	if(no_equip_flags & slot && !(I.is_mod_shell_component() && (modsuit_slot_exceptions & slot))) // SKYRAT EDIT ADDITION - ORIGINAL: if(no_equip_flags & slot)
+=======
+	if(no_equip_flags & slot)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
 			return FALSE
 
@@ -825,7 +933,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		// Anything that's small or smaller can fit into a pocket by default
 		if((slot & (ITEM_SLOT_RPOCKET|ITEM_SLOT_LPOCKET)) && I.w_class <= POCKET_WEIGHT_CLASS)
 			excused = TRUE
+<<<<<<< HEAD
 		else if(slot & (ITEM_SLOT_SUITSTORE|ITEM_SLOT_BACKPACK|ITEM_SLOT_HANDS))
+=======
+		else if(slot & (ITEM_SLOT_SUITSTORE|ITEM_SLOT_BACKPACK|ITEM_SLOT_BELTPACK|ITEM_SLOT_HANDS))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			excused = TRUE
 		if(!excused)
 			return FALSE
@@ -852,6 +964,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(ITEM_SLOT_FEET)
 			if(H.num_legs < 2)
 				return FALSE
+<<<<<<< HEAD
 			/* SKYRAT EDIT REMOVAL
 			if((H.bodyshape & BODYSHAPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!(I.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
@@ -859,6 +972,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
 					return FALSE
 			*/
+=======
+			if((H.bodyshape & BODYSHAPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
+				if(!(I.supports_variations_flags & DIGITIGRADE_VARIATIONS))
+					if(!disable_warning)
+						to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
+					return FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_BELT)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)
@@ -868,6 +988,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					to_chat(H, span_warning("You need a jumpsuit before you can attach this [I.name]!"))
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
+<<<<<<< HEAD
+=======
+		if(ITEM_SLOT_BELTPACK)
+			if(H.belt && H.belt.atom_storage?.can_insert(I, H, messages = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED))
+				return TRUE
+			return FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(ITEM_SLOT_EYES)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
 				return FALSE
@@ -952,7 +1079,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(H.back && H.back.atom_storage?.can_insert(I, H, messages = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED))
 				return TRUE
 			return FALSE
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)
@@ -1157,14 +1287,21 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/attack_direction = get_dir(user, target)
 	var/attack_type = attacking_bodypart.attack_type
+<<<<<<< HEAD
 	var/unarmed_sharpness = attacking_bodypart.unarmed_sharpness //SKYRAT EDIT ADDITION - If unarmed damage sharpness needs to be taken into account.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(atk_effect == ATTACK_EFFECT_KICK || grappled) //kicks and punches when grappling bypass armor slightly.
 		if(damage >= 9)
 			target.force_say()
 		log_combat(user, target, grappled ? "grapple punched" : "kicked")
 		target.apply_damage(damage, attack_type, affecting, armor_block - limb_accuracy, attack_direction = attack_direction)
 	else // Normal attacks do not gain the benefit of armor penetration.
+<<<<<<< HEAD
 		target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = unarmed_sharpness) //SKYRAT EDIT - Applies sharpness if it does - ORIGINAL: target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
+=======
+		target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(damage >= 9)
 			target.force_say()
 		log_combat(user, target, "punched")
@@ -1341,6 +1478,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	// Get the temperature of the environment for area
 	var/area_temp = humi.get_temperature(environment)
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	//Special handling for getting liquids temperature
 	if(isturf(humi.loc))
@@ -1349,6 +1487,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/submergment_percent = SUBMERGEMENT_PERCENT(humi, T.liquids)
 			area_temp = (area_temp*(1-submergment_percent)) + (T.liquids.temp * submergment_percent)
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Get the insulation value based on the area's temp
 	var/thermal_protection = humi.get_insulation_protection(area_temp)
 
@@ -1627,8 +1767,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	former_tail_owner.clear_mood_event("tail_balance_lost")
 	former_tail_owner.clear_mood_event("tail_regained")
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Returns a list of strings representing features this species has.
 /// Used by the preferences UI to know what buttons to show.
 /datum/species/proc/get_features()
@@ -1642,15 +1785,24 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/datum/preference/preference = GLOB.preference_entries[preference_type]
 
 		if ( \
+<<<<<<< HEAD
 			(preference.relevant_mutant_bodypart in mutant_bodyparts) \
 			|| (preference.relevant_inherent_trait in inherent_traits) \
 			|| (preference.relevant_external_organ in external_organs) \
+=======
+			(preference.relevant_inherent_trait in inherent_traits) \
+			|| (preference.relevant_external_organ in mutant_organs) \
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			|| (preference.relevant_head_flag && check_head_flags(preference.relevant_head_flag)) \
 			|| (preference.relevant_body_markings in body_markings) \
 		)
 			features += preference.savefile_key
 
+<<<<<<< HEAD
 	for (var/obj/item/organ/external/organ_type as anything in external_organs)
+=======
+	for (var/obj/item/organ/organ_type as anything in mutant_organs)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/preference = initial(organ_type.preference)
 		if (!isnull(preference))
 			features += preference
@@ -1658,7 +1810,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	GLOB.features_by_species[type] = features
 
 	return features
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Given a human, will adjust it before taking a picture for the preferences UI.
 /// This should create a CONSISTENT result, so the icons don't randomly change.
@@ -1696,7 +1851,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/get_types_to_preload()
 	var/list/to_store = list()
 	to_store += mutant_organs
+<<<<<<< HEAD
 	for(var/obj/item/organ/external/horny as anything in external_organs)
+=======
+	for(var/obj/item/organ/horny as anything in mutant_organs)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_store += horny //Haha get it?
 
 	//Don't preload brains, cause reuse becomes a horrible headache
@@ -1743,7 +1902,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/get_species_description()
 	SHOULD_CALL_PARENT(FALSE)
 
+<<<<<<< HEAD
 	//stack_trace("Species [name] ([type]) did not have a description set, and is a selectable roundstart race! Override get_species_description.")
+=======
+	stack_trace("Species [name] ([type]) did not have a description set, and is a selectable roundstart race! Override get_species_description.")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return "No species description set, file a bug report!"
 
 /**
@@ -1757,7 +1920,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SHOULD_CALL_PARENT(FALSE)
 	RETURN_TYPE(/list)
 
+<<<<<<< HEAD
 	//stack_trace("Species [name] ([type]) did not have lore set, and is a selectable roundstart race! Override get_species_lore.")
+=======
+	stack_trace("Species [name] ([type]) did not have lore set, and is a selectable roundstart race! Override get_species_lore.")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return list("No species lore set, file a bug report!")
 
 /**
@@ -2174,11 +2341,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "comment",
 			SPECIES_PERK_NAME = "Native Speaker",
+<<<<<<< HEAD
 			/* SKYRAT EDIT - Digitigrade customization - ORIGINAL:
 			SPECIES_PERK_DESC = "Alongside [initial(common_language.name)], [plural_form] gain the ability to speak [english_list(bonus_languages)].",
 			*/ // ORIGINAL END - SKYRAT EDIT START:
 			SPECIES_PERK_DESC = "Alongside [initial(common_language.name)], [plural_form] commonly speak [english_list(bonus_languages)].",
 			// SKYRAT EDIT END
+=======
+			SPECIES_PERK_DESC = "Alongside [initial(common_language.name)], [plural_form] gain the ability to speak [english_list(bonus_languages)].",
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		))
 
 	else
@@ -2196,6 +2367,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	new_species ||= target.dna.species //If no new species is provided, assume its src.
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Synth digitigrade sanitization
 	var/ignore_digi = FALSE // You can jack into this var with other checks, if you want.
 	if(issynthetic(target))
@@ -2222,6 +2394,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(l_leg)
 			final_bodypart_overrides[BODY_ZONE_L_LEG] = initial(l_leg.digitigrade_type)
 		// SKYRAT EDIT END
+=======
+	var/list/final_bodypart_overrides = new_species.bodypart_overrides.Copy()
+	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == DIGITIGRADE_LEGS) || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
+		final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade
+		final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
 		if((old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES) || (old_part.bodypart_flags & BODYPART_IMPLANTED))
@@ -2308,6 +2486,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 /// Update the overlays if necessary
 /datum/species/proc/update_body_markings(mob/living/carbon/human/hooman)
+<<<<<<< HEAD
+=======
+	if(HAS_TRAIT(hooman, TRAIT_INVISIBLE_MAN))
+		remove_body_markings(hooman)
+		return
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/needs_update = FALSE
 	for(var/datum/bodypart_overlay/simple/body_marking/marking as anything in body_markings)
 		if(initial(marking.dna_feature_key) == body_markings[marking]) // dna is same as our species (sort of mini-cache), so no update needed

@@ -17,6 +17,7 @@
 				context[SCREENTIP_CONTEXT_CTRL_LMB] = "Strangle"
 			else
 				return .
+<<<<<<< HEAD
 		// SKYRAT EDIT START - screentips for grab interactions (slams/suplexes/dislocations)
 		if(user.combat_mode && user.grab_state > GRAB_PASSIVE)
 			switch(deprecise_zone(user.zone_selected))
@@ -28,6 +29,8 @@
 				else
 					context[SCREENTIP_CONTEXT_ALT_LMB] = "Dislocate"
 		// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		context[SCREENTIP_CONTEXT_CTRL_LMB] = "Pull"
 

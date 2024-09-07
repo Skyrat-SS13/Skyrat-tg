@@ -914,6 +914,11 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 
 /obj/structure/closet/mouse_drop_receive(atom/movable/O, mob/living/user, params)
 	if(!istype(O) || O.anchored || istype(O, /atom/movable/screen))
+<<<<<<< HEAD
+=======
+		return
+	if(!istype(user) || user.incapacitated || user.body_position == LYING_DOWN)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(user == O) //try to climb onto it
 		return ..()

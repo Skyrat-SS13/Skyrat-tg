@@ -164,10 +164,17 @@
 		user.death(FALSE)
 	REMOVE_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
 
+<<<<<<< HEAD
 /obj/item/melee/parsnip_sabre
 	name = "parsnip sabre"
 	desc = "A weird, yet elegant weapon. Suprisingly sharp for something made from a parsnip."
 
+=======
+
+/obj/item/melee/parsnip_sabre
+	name = "parsnip sabre"
+	desc = "A weird, yet elegant weapon. Suprisingly sharp for something made from a parsnip."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "parsnip_sabre"
 	inhand_icon_state = "parsnip_sabre"

@@ -99,6 +99,7 @@
 		if(!energy_gun.can_charge)
 			to_chat(user, span_notice("Your gun has no external power connector."))
 			return TRUE
+<<<<<<< HEAD
 
 	//SKYRAT EDIT ADDITION
 	if (istype(attacking_item, /obj/item/gun/microfusion))
@@ -114,6 +115,8 @@
 			return TRUE
 	//SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	user.transferItemToLoc(attacking_item, src)
 	return TRUE
 

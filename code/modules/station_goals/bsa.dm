@@ -1,9 +1,15 @@
 
+<<<<<<< HEAD
 
 ///BSA unlocked by head ID swipes
 GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR BSA_OVERHAUL
+=======
+///BSA unlocked by head ID swipes
+GLOBAL_VAR_INIT(bsa_unlock, FALSE)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Crew has to build a bluespace cannon
 // Cargo orders part for high price
 // Requires high amount of power
@@ -301,7 +307,11 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 		data["target"] = get_target_name()
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/computer/bsa_control/ui_act(action, params)
+=======
+/obj/machinery/computer/bsa_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -387,7 +397,10 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	QDEL_NULL(centerpiece.back_ref)
 	qdel(centerpiece)
 	return cannon
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
@@ -395,4 +408,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	balloon_alert(user, "rigged to explode")
 	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
 	return TRUE
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

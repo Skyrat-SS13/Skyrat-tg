@@ -72,7 +72,11 @@
 /datum/map_generator/cave_generator/icemoon/surface/noruins //use this for when you don't want ruins to spawn in a certain area
 
 /datum/map_generator/cave_generator/icemoon/deep
+<<<<<<< HEAD
 	weighted_closed_turf_types = list(/turf/closed/mineral/random/snow/underground = 1) // SKYRAT EDIT: Original: list(/turf/closed/mineral/random/snow = 1)
+=======
+	weighted_closed_turf_types = list(/turf/closed/mineral/random/snow = 1)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	weighted_mob_spawn_list = list(
 		SPAWN_MEGAFAUNA = 1,
 		/mob/living/basic/mining/ice_demon = 100,

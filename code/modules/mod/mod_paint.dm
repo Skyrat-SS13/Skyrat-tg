@@ -55,7 +55,11 @@
 	data["currentColor"] = current_color
 	return data
 
+<<<<<<< HEAD
 /obj/item/mod/paint/ui_act(action, list/params)
+=======
+/obj/item/mod/paint/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -124,9 +128,15 @@
 		balloon_alert(user, "no skin picked!")
 		return
 	mod.theme.set_skin(mod, pick)
+<<<<<<< HEAD
  
 /obj/item/mod/paint/proc/check_menu(obj/item/mod/control/mod, mob/user)
 	if(user.incapacitated() || !user.is_holding(src) || !mod || mod.active || mod.activating)
+=======
+
+/obj/item/mod/paint/proc/check_menu(obj/item/mod/control/mod, mob/user)
+	if(user.incapacitated || !user.is_holding(src) || !mod || mod.active || mod.activating)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 

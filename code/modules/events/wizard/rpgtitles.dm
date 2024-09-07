@@ -4,7 +4,11 @@
 	typepath = /datum/round_event/wizard/rpgtitles
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
+<<<<<<< HEAD
 	description = "Everyone gains an RPG title hovering above them."
+=======
+	description = "Everyone gains an RPG title hovering below them."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 

@@ -83,6 +83,7 @@
 		add_to_dead_mob_list()
 	else
 		add_to_alive_mob_list()
+	update_incapacitated()
 	set_focus(src)
 	prepare_huds()
 	for(var/datum/atom_hud/alternate_appearance/alt_hud as anything in GLOB.active_alternate_appearances)
@@ -177,7 +178,11 @@
 			hud_list[hud] = list()
 
 		else
+<<<<<<< HEAD
 			var/image/I = image('modular_skyrat/master_files/icons/mob/huds/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/huds/hud.dmi'
+=======
+			var/image/I = image('icons/mob/huds/hud.dmi', src, "")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 			hud_list[hud] = I
 		set_hud_image_active(hud, update_huds = FALSE) //by default everything is active. but dont add it to huds to keep control.
@@ -265,7 +270,11 @@
  * * ignored_mobs (optional) doesn't show any message to any mob in this list.
  * * visible_message_flags (optional) is the type of message being sent.
  */
+<<<<<<< HEAD
 /atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - separation, pref checks
+=======
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -291,7 +300,11 @@
 
 	var/raw_msg = message
 	if(visible_message_flags & EMOTE_MESSAGE)
+<<<<<<< HEAD
 		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" // SKYRAT EDIT - Better emotes
+=======
+		message = "<span class='emote'><b>[src]</b> [message]</span>"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/mob/M in hearers)
 		if(!M.client)
@@ -356,7 +369,11 @@
  * * self_message (optional) is what the src mob hears.
  * * audible_message_flags (optional) is the type of message being sent.
  */
+<<<<<<< HEAD
 /atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - Better emotes, pref checks
+=======
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
@@ -374,12 +391,17 @@
 		hearers -= src
 	var/raw_msg = message
 	if(audible_message_flags & EMOTE_MESSAGE)
+<<<<<<< HEAD
 		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" //SKYRAT EDIT CHANGE
 	for(var/mob/M in hearers)
 	// SKYRAT EDIT ADDITION - Emote pref checks
 		if(pref_to_check && !M.client?.prefs.read_preference(pref_to_check))
 			continue
 	// SKYRAT EDIT END
+=======
+		message = "<span class='emote'><b>[src]</b> [message]</span>"
+	for(var/mob/M in hearers)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
 			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
 		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
@@ -395,7 +417,11 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
+<<<<<<< HEAD
 /mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ", pref_to_check) // SKYRAT EDIT ADDITION - Better emotes, pref checks
+=======
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(!self_message)
 		return
@@ -440,12 +466,33 @@
 /mob/proc/get_slot_by_item(obj/item/looking_for)
 	if(looking_for in held_items)
 		return ITEM_SLOT_HANDS
+<<<<<<< HEAD
 
 	return null
 
 ///Is the mob incapacitated
 /mob/proc/incapacitated(flags)
 	return
+=======
+
+	return null
+
+/// Called whenever anything that modifes incapacitated is ran, updates it and sends a signal if it changes
+/// Returns TRUE if anything changed, FALSE otherwise
+/mob/proc/update_incapacitated()
+	SIGNAL_HANDLER
+	var/old_incap = incapacitated
+	incapacitated = build_incapacitated()
+	if(old_incap == incapacitated)
+		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_MOB_INCAPACITATE_CHANGED, old_incap, incapacitated)
+	return TRUE
+
+/// Returns an updated incapacitated bitflag. If a flag is set it means we're incapacitated in that case
+/mob/proc/build_incapacitated()
+	return NONE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * This proc is called whenever someone clicks an inventory ui slot.
@@ -559,6 +606,7 @@
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
+<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE
 	if(result.len)
 		for(var/i = 1; i <= length(result); i++)
@@ -570,6 +618,11 @@
 					result.Cut(i, i + 1)
 					i--
 	//SKYRAT EDIT END
+=======
+	if(result.len)
+		for(var/i in 1 to (length(result) - 1))
+			result[i] += "\n"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	to_chat(src, examine_block("<span class='infoplain'>[result.Join()]</span>"))
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
@@ -580,7 +633,11 @@
 
 /mob/living/blind_examine_check(atom/examined_thing)
 	//need to be next to something and awake
+<<<<<<< HEAD
 	if(!Adjacent(examined_thing) || incapacitated())
+=======
+	if(!Adjacent(examined_thing) || incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(src, span_warning("Something is there, but you can't see it!"))
 		return FALSE
 
@@ -739,7 +796,7 @@
 	if(ismecha(loc))
 		return
 
-	if(incapacitated())
+	if(incapacitated)
 		return
 
 	var/obj/item/I = get_active_held_item()
@@ -783,6 +840,7 @@
 	if(!check_respawn_delay())
 		return
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))
@@ -790,6 +848,8 @@
 			return
 	//SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	usr.log_message("used the respawn button.", LOG_GAME)
 
 	to_chat(usr, span_boldnotice("Please roleplay correctly!"))
@@ -1199,11 +1259,15 @@
 				// Only update if this player is a target
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
+<<<<<<< HEAD
 		if(client) // NOVA EDIT ADDITION - Update the mob chat color list, removing the old name
 			GLOB.chat_colors_by_mob_name -= oldname // NOVA EDIT ADDITION
 
 	if(client) // NOVA EDIT ADDITION - Update the mob chat color list, adding the new name
 		GLOB.chat_colors_by_mob_name[name] = list(chat_color, chat_color_darkened) // NOVA EDIT ADDITION
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 
 	return TRUE
@@ -1385,7 +1449,10 @@
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DIRECT_CONTROL, "Give Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
 	VV_DROPDOWN_OPTION(VV_HK_VIEW_PLANES, "View/Edit Planes")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -1447,7 +1514,10 @@
 		if(!check_rights(R_DEBUG))
 			return
 		usr.client.edit_plane_masters(src)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /**
  * extra var handling for the logging var
  */

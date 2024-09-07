@@ -156,7 +156,11 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 		var/amt = M.multiplicative_slowdown
 		if(conflict)
 			// Conflicting modifiers prioritize the larger slowdown or the larger speedup
+<<<<<<< HEAD
 			// We purposefuly don't handle mixing speedups and slowdowns on the same id
+=======
+			// We purposefully don't handle mixing speedups and slowdowns on the same id
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(abs(conflict_tracker[conflict]) < abs(amt))
 				conflict_tracker[conflict] = amt
 			else

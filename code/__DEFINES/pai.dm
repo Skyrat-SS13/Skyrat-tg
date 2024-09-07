@@ -12,7 +12,11 @@
 #define PAI_SPAM_TIME (40 SECONDS)
 
 /// Maximum distance you can set the holoform leash
+<<<<<<< HEAD
 #define HOLOFORM_MAX_RANGE 25 // SKYRAT EDIT CHANGE - ORIGINAL: #define HOLOFORM_MAX_RANGE 9
+=======
+#define HOLOFORM_MAX_RANGE 9
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Minimum distance you can set the holoform leash
 #define HOLOFORM_MIN_RANGE 3
 /// Default holoform leash distance

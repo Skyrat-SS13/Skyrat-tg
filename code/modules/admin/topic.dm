@@ -48,6 +48,7 @@
 			return
 		cmd_show_exp_panel(M.client)
 
+<<<<<<< HEAD
 // SKYRAT EDIT BEGIN -- ONE CLICK ANTAG
 	else if(href_list["makeAntag"])
 
@@ -83,6 +84,8 @@
 		else message_admins("[key_name_admin(usr)] FAILED to create '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
 // SKYRAT EDIT END -- ONE CLICK ANTAG
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else if(href_list["editrightsbrowser"])
 		edit_admin_permissions(0)
 
@@ -591,8 +594,11 @@
 		sparks.attach(M.loc)
 		sparks.start()
 		M.forceMove(pick(GLOB.prisonwarp))
+<<<<<<< HEAD
 		/// SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(M, span_adminnotice("You have been sent to Prison!"), confidential = TRUE)
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
@@ -1764,10 +1770,15 @@
 		if(!paper_to_show)
 			return
 		paper_to_show.ui_interact(usr)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else if (href_list["print_fax"])
 		if(!check_rights(R_ADMIN))
 			return
 
+<<<<<<< HEAD
 		for(var/obj/machinery/fax/FAX as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/fax))
 			if(!is_centcom_level(FAX.z))
 				continue
@@ -1782,6 +1793,14 @@
 			message_admins("An OPFOR candidate could not be selected.")
 
 	// SKYRAT EDIT ADDITION END
+=======
+		for(var/obj/machinery/fax/admin/FAX as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/fax/admin))
+			if(FAX.fax_id != href_list["destination"])
+				continue
+			FAX.receive(locate(href_list["print_fax"]), href_list["sender_name"])
+
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))
 			return

@@ -110,7 +110,11 @@
 		if(isnull(choice) \
 			|| !user.is_holding(installing_cable) \
 			|| !user.Adjacent(src) \
+<<<<<<< HEAD
 			|| user.incapacitated() \
+=======
+			|| user.incapacitated \
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			|| !can_place_terminal(user, installing_cable, silent = TRUE) \
 		)
 			return ITEM_INTERACT_BLOCKING

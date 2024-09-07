@@ -10,6 +10,13 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	rust_resistance = RUST_RESISTANCE_ORGANIC
 
+<<<<<<< HEAD
+=======
+/turf/open/misc/beach/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/lazy_fishing_spot, /datum/fish_source/sand)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/misc/beach/ex_act(severity, target)
 	return FALSE
 
@@ -37,6 +44,13 @@
 	clawfootstep = FOOTSTEP_WATER
 	heavyfootstep = FOOTSTEP_WATER
 
+<<<<<<< HEAD
+=======
+/turf/open/misc/beach/coast/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/misc/beach/coast/break_tile()
 	. = ..()
 	icon_state = "beach"

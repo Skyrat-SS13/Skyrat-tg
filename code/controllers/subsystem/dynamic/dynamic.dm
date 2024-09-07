@@ -140,10 +140,17 @@ SUBSYSTEM_DEF(dynamic)
 	/// The maximum amount of time for antag random events to be hijacked.
 	var/random_event_hijack_maximum = 18 MINUTES
 
+<<<<<<< HEAD
 	/// What is the lower bound of when the roundstart annoucement is sent out?
 	var/waittime_l = 600
 
 	/// What is the higher bound of when the roundstart annoucement is sent out?
+=======
+	/// What is the lower bound of when the roundstart announcement is sent out?
+	var/waittime_l = 600
+
+	/// What is the higher bound of when the roundstart announcement is sent out?
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/waittime_h = 1800
 
 	/// A number between 0 and 100. The maximum amount of threat allowed to generate.
@@ -571,10 +578,14 @@ SUBSYSTEM_DEF(dynamic)
 
 	if (!CONFIG_GET(flag/no_intercept_report))
 		addtimer(CALLBACK(src, PROC_REF(send_intercept)), rand(waittime_l, waittime_h))
+<<<<<<< HEAD
 	//SKYRAT EDIT START - DIVERGENCY/GOALS REPORT
 	else
 		addtimer(CALLBACK(src, PROC_REF(send_trait_report)), rand(waittime_l, waittime_h))
 	//SKYRAT EDIT END
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		addtimer(CALLBACK(src, PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
 
 	if(CONFIG_GET(flag/reopen_roundstart_suicide_roles))
@@ -946,6 +957,7 @@ SUBSYSTEM_DEF(dynamic)
 		ruleset.restricted_roles |= ruleset.protected_roles
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		ruleset.restricted_roles |= JOB_ASSISTANT
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	for(var/datum/job/iterating_job as anything in subtypesof(/datum/job))
 		if(!initial(iterating_job.antagonist_restricted))
@@ -958,6 +970,8 @@ SUBSYSTEM_DEF(dynamic)
 		else
 			ruleset.restricted_roles |= initial(iterating_job.title)
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!(ruleset.ruleset_category & GLOB.dynamic_ruleset_categories))
 		ruleset.requirements = list(101,101,101,101,101,101,101,101,101,101)
 

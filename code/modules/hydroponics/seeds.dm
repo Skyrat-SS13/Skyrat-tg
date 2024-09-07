@@ -585,6 +585,7 @@
 		genes += new_trait.Copy()
 	else
 		. = FALSE
+<<<<<<< HEAD
 
 	// Adjust stats based on graft stats
 	set_lifespan(round(max(lifespan, (lifespan + (2/3)*(snip.lifespan - lifespan)))))
@@ -651,3 +652,60 @@
 	
 
 
+=======
+
+	// Adjust stats based on graft stats
+	set_lifespan(round(max(lifespan, (lifespan + (2/3)*(snip.lifespan - lifespan)))))
+	set_endurance(round(max(endurance, (endurance + (2/3)*(snip.endurance - endurance)))))
+	set_production(round(max(production, (production + (2/3)*(snip.production - production)))))
+	set_weed_rate(round(max(weed_rate, (weed_rate + (2/3)*(snip.weed_rate - weed_rate)))))
+	set_weed_chance(round(max(weed_chance, (weed_chance+ (2/3)*(snip.weed_chance - weed_chance)))))
+	set_yield(round(max(yield, (yield + (2/3)*(snip.yield - yield)))))
+
+	// Add in any reagents, too.
+	reagents_from_genes()
+
+	return
+
+/*
+ * Both `/item/food/grown` and `/item/grown` implement a seed variable which tracks
+ * plant statistics, genes, traits, etc. This proc gets the seed for either grown food or
+ * grown inedibles and returns it, or returns null if it's not a plant.
+ *
+ * Returns an `/obj/item/seeds` ref for grown foods or grown inedibles.
+ *  - returned seed CAN be null in weird cases but in all applications it SHOULD NOT be.
+ * Returns null if it is not a plant.
+ */
+/obj/item/proc/get_plant_seed()
+	return null
+
+/obj/item/food/grown/get_plant_seed()
+	return seed
+
+/obj/item/grown/get_plant_seed()
+	return seed
+
+/obj/item/seeds/proc/perform_reagent_pollination(obj/item/seeds/donor)
+	var/list/datum/plant_gene/reagent/valid_reagents = list()
+	for(var/datum/plant_gene/reagent/donor_reagent in donor.genes)
+		var/repeated = FALSE
+		for(var/datum/plant_gene/reagent/receptor_reagent in genes)
+			if(donor_reagent.reagent_id == receptor_reagent.reagent_id)
+				if(receptor_reagent.rate < donor_reagent.rate)
+					receptor_reagent.rate = donor_reagent.rate
+					// sucessful pollination/upgrade, we stop here.
+					reagents_from_genes()
+					return
+				else
+					repeated = TRUE
+					break
+
+		if(!repeated)
+			valid_reagents += donor_reagent
+
+	if(length(valid_reagents))
+		// pick a valid reagent that our receptor seed don't have and add the gene to it
+		var/datum/plant_gene/reagent/selected_reagent = pick(valid_reagents)
+		genes += selected_reagent.Copy()
+		reagents_from_genes()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

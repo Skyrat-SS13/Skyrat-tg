@@ -104,7 +104,11 @@
 	return ..()
 
 /datum/action/cooldown/track_target/Activate(atom/target)
+<<<<<<< HEAD
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(owner)
+=======
+	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(owner)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/datum/heretic_knowledge/sac_knowledge = heretic_datum.get_knowledge(/datum/heretic_knowledge/hunt_and_sacrifice)
 	if(!LAZYLEN(heretic_datum.sac_targets))
 		owner.balloon_alert(owner, "no targets, visit a rune!")

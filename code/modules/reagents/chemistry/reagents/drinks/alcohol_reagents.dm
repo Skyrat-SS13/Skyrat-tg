@@ -57,7 +57,11 @@
 		if(HAS_TRAIT(drinker, TRAIT_ALCOHOL_TOLERANCE)) // we're an accomplished drinker
 			booze_power *= 0.7
 		if(HAS_TRAIT(drinker, TRAIT_LIGHT_DRINKER))
+<<<<<<< HEAD
 			booze_power *= 1.33 // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: booze_power *= 2
+=======
+			booze_power *= 2
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		// water will dilute alcohol effects
 		var/total_water_volume = 0
@@ -73,12 +77,20 @@
 			booze_power *= (total_alcohol_volume / combined_dilute_volume)
 
 		// Volume, power, and server alcohol rate effect how quickly one gets drunk
+<<<<<<< HEAD
 		drinker.adjust_drunk_effect(booze_power * ALCOHOL_RATE * REM * seconds_per_tick) // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: (sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick)
+=======
+		drinker.adjust_drunk_effect(sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(boozepwr > 0)
 			var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
 			var/heavy_drinker_multiplier = (HAS_TRAIT(drinker, TRAIT_HEAVY_DRINKER) ? 0.5 : 1)
 			if (istype(liver))
+<<<<<<< HEAD
 				if(liver.apply_organ_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/300))) // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: if((((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/150)))
+=======
+				if(liver.apply_organ_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * heavy_drinker_multiplier * seconds_per_tick, 0))/150)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/ethanol/expose_obj(obj/exposed_obj, reac_volume)
@@ -490,6 +502,10 @@
 	quality = DRINK_NICE
 	taste_description = "burning cinnamon"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// This drink is really popular with a certain demographic.
 	var/teenage_girl_quality = DRINK_VERYGOOD
 
@@ -514,7 +530,10 @@
 	atom.reagents.add_reagent(/datum/reagent/gold, convert_amount)
 	return ..()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/reagent/consumable/ethanol/patron
 	name = "Patron"
 	description = "Tequila with silver in it, a favorite of alcoholic women in the club scene."
@@ -698,7 +717,11 @@
 /datum/reagent/consumable/ethanol/bloody_mary/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	. = ..()
 	if(drinker.blood_volume < BLOOD_VOLUME_NORMAL)
+<<<<<<< HEAD
 		drinker.blood_volume = min(drinker.blood_volume + (1 * REM * seconds_per_tick), BLOOD_VOLUME_NORMAL) //Bloody Mary quickly restores blood loss. // SKYRAT EDIT - Bloodshot is now the go-to drink for bloodloss, not Bloody Mary - ORIGINAL: drinker.blood_volume = min(drinker.blood_volume + (3 * REM * delta_time), BLOOD_VOLUME_NORMAL)
+=======
+		drinker.blood_volume = min(drinker.blood_volume + (3 * REM * seconds_per_tick), BLOOD_VOLUME_NORMAL) //Bloody Mary quickly restores blood loss.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/reagent/consumable/ethanol/brave_bull
 	name = "Brave Bull"
@@ -2659,7 +2682,11 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
+<<<<<<< HEAD
 		stomach.adjust_charge(reac_volume * 0.003 * STANDARD_CELL_CHARGE)
+=======
+		stomach.adjust_charge(reac_volume * 0.003 * ETHEREAL_CHARGE_NORMAL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/reagent/consumable/ethanol/telepole
 	name = "Telepole"
@@ -2679,7 +2706,11 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
+<<<<<<< HEAD
 		stomach.adjust_charge(reac_volume * 0.002 * STANDARD_CELL_CHARGE)
+=======
+		stomach.adjust_charge(reac_volume * 0.002 * ETHEREAL_CHARGE_NORMAL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/reagent/consumable/ethanol/pod_tesla
 	name = "Pod Tesla"
@@ -2706,7 +2737,11 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
+<<<<<<< HEAD
 		stomach.adjust_charge(reac_volume * 0.005 * STANDARD_CELL_CHARGE)
+=======
+		stomach.adjust_charge(reac_volume * 0.005 * ETHEREAL_CHARGE_NORMAL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Welcome to the Blue Room Bar and Grill, home to Mars' finest cocktails
 /datum/reagent/consumable/ethanol/rice_beer

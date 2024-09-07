@@ -27,6 +27,10 @@
 	preferences.key_bindings = deep_copy_list(GLOB.default_hotkeys)
 	preferences.key_bindings_by_key = preferences.get_key_bindings_by_key(preferences.key_bindings)
 	preferences.update_static_data(user)
+<<<<<<< HEAD
+=======
+	user.client.update_special_keybinds()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return TRUE
 
@@ -41,10 +45,18 @@
 	preferences.key_bindings_by_key = preferences.get_key_bindings_by_key(preferences.key_bindings)
 
 	preferences.update_static_data(user)
+<<<<<<< HEAD
 
 	return TRUE
 
 /datum/preference_middleware/keybindings/proc/set_keybindings(list/params)
+=======
+	user.client.update_special_keybinds()
+
+	return TRUE
+
+/datum/preference_middleware/keybindings/proc/set_keybindings(list/params, mob/user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/keybind_name = params["keybind_name"]
 
 	if (isnull(GLOB.keybindings_by_name[keybind_name]))
@@ -73,6 +85,11 @@
 	preferences.key_bindings[keybind_name] = hotkeys
 	preferences.key_bindings_by_key = preferences.get_key_bindings_by_key(preferences.key_bindings)
 
+<<<<<<< HEAD
+=======
+	user.client.update_special_keybinds()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 /datum/asset/json/keybindings

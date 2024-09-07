@@ -53,6 +53,7 @@
 		overlays_standing[cache_index] = null
 	SEND_SIGNAL(src, COMSIG_CARBON_REMOVE_OVERLAY, cache_index, I)
 
+<<<<<<< HEAD
 //used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
 /mob/living/carbon/human/proc/update_mutant_bodyparts()
 	dna?.species.handle_mutant_bodyparts(src)
@@ -60,6 +61,10 @@
 
 /mob/living/carbon/update_body(is_creating = FALSE)
 	dna?.species.handle_body(src) //This calls `handle_mutant_bodyparts` which calls `update_mutant_bodyparts()`. Don't double call!
+=======
+/mob/living/carbon/update_body(is_creating = FALSE)
+	dna?.species.handle_body(src)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	update_body_parts(is_creating)
 
 /mob/living/carbon/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
@@ -333,8 +338,11 @@
 	overlays_standing[WOUND_LAYER] = wound_overlay
 	apply_overlay(WOUND_LAYER)
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /mob/living/carbon/update_worn_mask(update_obscured = TRUE)
 	remove_overlay(FACEMASK_LAYER)
 
@@ -372,8 +380,11 @@
 */
 //SKYRAT EDIT REMOVAL END
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - TESHARI CLOTHES (moved to modular)
 /*
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /mob/living/carbon/update_worn_back(update_obscured = TRUE)
 	remove_overlay(BACK_LAYER)
 
@@ -401,9 +412,12 @@
 		apply_overlay(LEGCUFF_LAYER)
 		throw_alert("legcuffed", /atom/movable/screen/alert/restrained/legcuffed, new_master = src.legcuffed)
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /mob/living/carbon/update_worn_head(update_obscured = TRUE)
 	remove_overlay(HEAD_LAYER)
 
@@ -428,7 +442,11 @@
 
 /mob/living/carbon/update_worn_handcuffs(update_obscured = TRUE)
 	remove_overlay(HANDCUFF_LAYER)
+<<<<<<< HEAD
 	if(handcuffed && !(handcuffed.item_flags & ABSTRACT)) //SKYRAT EDIT ADDED !(handcuffed.item_flags & ABSTRACT)
+=======
+	if(handcuffed)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(update_obscured)
 			update_obscured_slots(handcuffed.flags_inv)
 		var/mutable_appearance/handcuff_overlay = mutable_appearance('icons/mob/simple/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
@@ -468,10 +486,14 @@
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
+<<<<<<< HEAD
 // SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 // obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file) - original
 /obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, mutant_styles = NONE)
 // SKYRAT EDIT CHANGE END
+=======
+/obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
 
@@ -487,10 +509,13 @@
 	var/list/needs_update = list()
 	var/limb_count_update = FALSE
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
+<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN - Don't handle abstract limbs (Taurs, etc.)
 		if(!limb.show_icon)
 			continue
 		// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		limb.update_limb(is_creating = update_limb_data) //Update limb actually doesn't do much, get_limb_icon is the cpu eater.
 
 		var/old_key = icon_render_keys?[limb.body_zone] //Checks the mob's icon render key list for the bodypart

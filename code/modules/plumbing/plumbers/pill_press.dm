@@ -36,8 +36,11 @@
 			CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
 			CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
 			"Bottles" = list(/obj/item/reagent_containers/cup/bottle),
+<<<<<<< HEAD
 			CAT_HYPOS = GLOB.reagent_containers[CAT_HYPOS], // SKYRAT EDIT ADDITION - Hypovials
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 
 		packaging_types = list()
@@ -70,10 +73,13 @@
 		packaging_category = CAT_PATCHES
 	else if(ispath(container, /obj/item/reagent_containers/pill))
 		packaging_category = CAT_PILLS
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - HYPOVIALS
 	else if(ispath(container, /obj/item/reagent_containers/cup/vial))
 		packaging_category = CAT_HYPOS
 	// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		packaging_category = "Bottles"
 	return container
@@ -92,10 +98,13 @@
 				suffix = "Pill"
 			if(CAT_PATCHES)
 				suffix = "Patch"
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
 			if (CAT_HYPOS)
 				suffix = "Vial"
 			//SKYRAT EDIT ADDITION END - HYPOVIALS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else
 				suffix = "Bottle"
 		container.name = "[product_name] [suffix]"
@@ -128,6 +137,7 @@
 		ui.open()
 
 /obj/machinery/plumbing/pill_press/ui_static_data(mob/user)
+<<<<<<< HEAD
 	var/list/data = list()
 
 	data["min_volume"] = MIN_VOLUME
@@ -147,6 +157,27 @@
 	return data
 
 /obj/machinery/plumbing/pill_press/ui_act(action, params)
+=======
+	var/list/data = list()
+
+	data["min_volume"] = MIN_VOLUME
+	data["max_volume"] = MAX_VOLUME
+	data["packaging_types"] = packaging_types
+
+	return data
+
+/obj/machinery/plumbing/pill_press/ui_data(mob/user)
+	var/list/data = list()
+
+	data["current_volume"] = current_volume
+	data["product_name"] = product_name
+	data["packaging_type"] = packaging_type
+	data["packaging_category"] = packaging_category
+
+	return data
+
+/obj/machinery/plumbing/pill_press/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

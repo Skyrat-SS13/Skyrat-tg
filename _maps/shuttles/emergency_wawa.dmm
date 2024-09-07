@@ -107,6 +107,11 @@
 /obj/machinery/light/small/dim/directional/north,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"at" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon/burgundy,
+/turf/template_noop,
+/area/shuttle/escape)
 "au" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -193,6 +198,19 @@
 "aR" = (
 /obj/machinery/conveyor/auto/inverted{
 	dir = 5
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"aV" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "dont close or i will kill you"
+	},
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/obj/structure/fans/tiny/shield{
+	max_integrity = 400;
+	name = "recycling shield"
 	},
 /turf/open/floor/plating,
 /area/shuttle/escape)
@@ -334,19 +352,6 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/engine,
 /area/shuttle/escape)
-"ee" = (
-/obj/machinery/conveyor/auto{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "dont close or i will kill you"
-	},
-/obj/structure/fans/tiny/shield{
-	max_integrity = 400;
-	name = "recycling shield"
-	},
-/turf/open/floor/plating,
-/area/shuttle/escape)
 "ga" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
 	dir = 8
@@ -420,19 +425,6 @@
 "ld" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"lE" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "dont close or i will kill you"
-	},
-/obj/machinery/conveyor/auto{
-	dir = 4
-	},
-/obj/structure/fans/tiny/shield{
-	max_integrity = 400;
-	name = "recycling shield"
-	},
-/turf/open/floor/plating,
 /area/shuttle/escape)
 "lI" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
@@ -569,6 +561,19 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"za" = (
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "dont close or i will kill you"
+	},
+/obj/structure/fans/tiny/shield{
+	max_integrity = 400;
+	name = "recycling shield"
+	},
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "zT" = (
@@ -718,6 +723,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"Pw" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/shuttle/escape)
 "QP" = (
 /obj/machinery/conveyor/auto/inverted{
 	dir = 1
@@ -758,18 +767,9 @@
 "XE" = (
 /turf/open/floor/iron/grimy,
 /area/shuttle/escape)
-"XI" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/shuttle/escape)
 "Yk" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
-/area/shuttle/escape)
-"Zg" = (
-/obj/structure/lattice,
-/obj/structure/marker_beacon/burgundy,
-/turf/template_noop,
 /area/shuttle/escape)
 
 (1,1,1) = {"
@@ -789,9 +789,9 @@ aa
 aa
 aa
 bq
-lE
+aV
 bq
-lE
+aV
 bq
 aa
 aa
@@ -799,8 +799,8 @@ aa
 "}
 (2,1,1) = {"
 aa
-Zg
-XI
+at
+Pw
 al
 al
 al
@@ -924,7 +924,7 @@ bk
 "}
 (7,1,1) = {"
 aa
-Zg
+at
 al
 al
 ay
@@ -1048,9 +1048,9 @@ bq
 bq
 "}
 (12,1,1) = {"
-Zg
-XI
-XI
+at
+Pw
+Pw
 bq
 bq
 bq
@@ -1089,9 +1089,9 @@ aa
 aa
 aa
 bq
-ee
+za
 bq
-ee
+za
 bq
 aa
 aa

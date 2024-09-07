@@ -304,10 +304,13 @@
 	new_machine.balloon_alert(user, "monitor connected")
 	new_machine.setDir(dir)
 	transfer_fingerprints_to(new_machine)
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - Connecting Computers
 	for(var/obj/machinery/computer/selected in range(1,src))
 		selected.update_overlays()
 	// SKYRAT EDIT ADDITION END - Connecting Computers
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(istype(new_machine, /obj/machinery/computer))
 		var/obj/machinery/computer/new_computer = new_machine

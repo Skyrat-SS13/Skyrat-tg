@@ -90,11 +90,14 @@
 	if(pulling)
 		if(isliving(pulling))
 			var/mob/living/L = pulling
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION
 			if(HAS_TRAIT(L, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED) && !iscyborg(src))
 				add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_OVERSIZED_SLOWDOWN)
 				return
 			//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE)
 				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
 				return
@@ -129,7 +132,11 @@
 	return ..()
 
 /mob/living/can_z_move(direction, turf/start, turf/destination, z_move_flags = ZMOVE_FLIGHT_FLAGS, mob/living/rider)
+<<<<<<< HEAD
 	if(z_move_flags & ZMOVE_INCAPACITATED_CHECKS && incapacitated())
+=======
+	if(z_move_flags & ZMOVE_INCAPACITATED_CHECKS && incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(z_move_flags & ZMOVE_FEEDBACK)
 			to_chat(rider || src, span_warning("[rider ? src : "You"] can't do that right now!"))
 		return FALSE

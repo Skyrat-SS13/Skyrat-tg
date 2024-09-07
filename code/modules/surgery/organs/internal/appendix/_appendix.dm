@@ -6,7 +6,11 @@
 	name = "appendix"
 	icon_state = "appendix"
 	base_icon_state = "appendix"
+<<<<<<< HEAD
 	visual = FALSE
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_APPENDIX
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/bad_food = 5)

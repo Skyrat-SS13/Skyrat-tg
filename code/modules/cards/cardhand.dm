@@ -67,7 +67,11 @@
 		qdel(src) // cardhand is empty now so delete it
 
 /obj/item/toy/cards/cardhand/proc/check_menu(mob/living/user)
+<<<<<<< HEAD
 	return isliving(user) && !user.incapacitated()
+=======
+	return isliving(user) && !user.incapacitated
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/toy/cards/cardhand/attackby(obj/item/weapon, mob/living/user, params, flip_card = FALSE)
 	var/obj/item/toy/singlecard/card

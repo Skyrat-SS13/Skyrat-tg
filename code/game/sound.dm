@@ -170,8 +170,13 @@
 			sound_to_use.environment = A.sound_environment
 
 		if(use_reverb && sound_to_use.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
+<<<<<<< HEAD
 			sound_to_use.echo[3] = -1300 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
 			sound_to_use.echo[4] = -1300 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
+=======
+			sound_to_use.echo[3] = 0 //Room setting, 0 means normal reverb
+			sound_to_use.echo[4] = 0 //RoomHF setting, 0 means normal reverb.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	SEND_SOUND(src, sound_to_use)
 
@@ -203,7 +208,10 @@
 
 ///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it
 /proc/get_sfx(soundin)
+<<<<<<< HEAD
 	soundin = get_sfx_skyrat(soundin) // SKYRAT EDIT ADDITION - This overrides the default sound effects too, so use it to modularly change a sound effect output.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!istext(soundin))
 		return soundin
 	switch(soundin)
@@ -496,4 +504,28 @@
 				'sound/items/stones/stone_pick_up1.ogg',
 				'sound/items/stones/stone_pick_up2.ogg',
 			)
+<<<<<<< HEAD
+=======
+		if(SFX_MUFFLED_SPEECH)
+			soundin = pick(
+				'sound/effects/muffspeech/muffspeech1.ogg',
+				'sound/effects/muffspeech/muffspeech2.ogg',
+				'sound/effects/muffspeech/muffspeech3.ogg',
+				'sound/effects/muffspeech/muffspeech4.ogg',
+				'sound/effects/muffspeech/muffspeech5.ogg',
+				'sound/effects/muffspeech/muffspeech6.ogg',
+				'sound/effects/muffspeech/muffspeech7.ogg',
+				'sound/effects/muffspeech/muffspeech8.ogg',
+				'sound/effects/muffspeech/muffspeech9.ogg',
+			)
+		if(SFX_DEFAULT_FISH_SLAP)
+			soundin = 'sound/creatures/fish/fish_slap1.ogg'
+		if(SFX_ALT_FISH_SLAP)
+			soundin = 'sound/creatures/fish/fish_slap2.ogg'
+		if(SFX_FISH_PICKUP)
+			soundin = pick(
+				'sound/creatures/fish/fish_pickup1.ogg',
+				'sound/creatures/fish/fish_pickup2.ogg',
+			)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return soundin

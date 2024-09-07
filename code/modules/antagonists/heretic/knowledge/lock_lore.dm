@@ -248,7 +248,11 @@
 	var/datum/action/cooldown/spell/shapeshift/eldritch/ascension/transform_spell = new(user.mind)
 	transform_spell.Grant(user)
 
+<<<<<<< HEAD
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
+=======
+	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/datum/heretic_knowledge/blade_upgrade/flesh/lock/blade_upgrade = heretic_datum.get_knowledge(/datum/heretic_knowledge/blade_upgrade/flesh/lock)
 	blade_upgrade.chance += 30
 	new /obj/structure/lock_tear(loc, user.mind)

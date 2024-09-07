@@ -5,7 +5,11 @@
 	icon = 'icons/mob/human/human.dmi'
 	icon_state = "human_basic"
 	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
+<<<<<<< HEAD
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD,PERMIT_HUD, DNR_HUD) //SKYRAT EDIT ADDITION - PERMIT_HUD, DNR_HUD
+=======
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	hud_type = /datum/hud/human
 	pressure_resistance = 25
 	can_buckle = TRUE
@@ -16,9 +20,12 @@
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	max_grab = GRAB_KILL
 
+<<<<<<< HEAD
 	maxHealth = HUMAN_MAXHEALTH //SKYRAT EDIT ADDITION
 	health = HUMAN_MAXHEALTH //SKYRAT EDIT ADDITION
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//Hair colour and style
 	var/hair_color = COLOR_BLACK
 	var/hairstyle = "Bald"
@@ -50,7 +57,10 @@
 	var/lip_color = COLOR_WHITE
 
 	var/age = 30 //Player's age
+<<<<<<< HEAD
 	var/chrono_age = 30 // SKYRAT EDIT ADDITION - Chronological age
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// Which body type to use
 	var/physique = MALE
@@ -62,9 +72,12 @@
 	var/socks = "Nude" //Which socks the player wants
 	var/backpack = DBACKPACK //Which backpack type the player has chosen.
 	var/jumpsuit_style = PREF_SUIT //suit/skirt
+<<<<<<< HEAD
 
 	var/datum/scream_type/selected_scream //SKRYAT EDIT ADDITION
 	var/datum/laugh_type/selected_laugh //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//Equipment slots
 	var/obj/item/clothing/wear_suit = null

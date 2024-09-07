@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/preference/choiced/moth_antennae
 	savefile_key = "feature_moth_antennae"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -99,5 +102,8 @@
 
 /datum/preference/choiced/moth_wings/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["moth_wings"] = value
+<<<<<<< HEAD
 
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -87,11 +87,14 @@
 	name = "Supplypod Loading Facility"
 	icon_state = "supplypod_loading"
 	var/loading_id = ""
+<<<<<<< HEAD
 	// SKYRAT EDIT START - Dynamic lights on CentCom
 	static_lighting = FALSE
 	base_lighting_color = COLOR_WHITE
 	base_lighting_alpha = 255
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /area/centcom/central_command_areas/supplypod/loading/Initialize(mapload)
 	. = ..()

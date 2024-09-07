@@ -28,6 +28,10 @@
 #define ORGAN_VIRGIN (1<<10)
 /// ALWAYS show this when scanned by advanced scanners, even if it is totally healthy
 #define ORGAN_PROMINENT (1<<11)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Helper to figure out if a limb is organic
 #define IS_ORGANIC_LIMB(limb) (limb.bodytype & BODYTYPE_ORGANIC)
 /// Helper to figure out if a limb is robotic
@@ -67,7 +71,11 @@
 /// All head flags, default for most heads
 #define HEAD_ALL_FEATURES (HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN)
 
+<<<<<<< HEAD
 /// When the surgery step fails :(
+=======
+/// Return value when the surgery step fails :(
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define SURGERY_STEP_FAIL -1
 
 // Flags for surgery_flags on surgery datums

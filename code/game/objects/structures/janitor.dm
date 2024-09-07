@@ -337,7 +337,11 @@
  * * user The mob interacting with a menu
  */
 /obj/structure/mop_bucket/janitorialcart/proc/check_menu(mob/living/user)
+<<<<<<< HEAD
 	return istype(user) && !user.incapacitated()
+=======
+	return istype(user) && !user.incapacitated
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/mop_bucket/janitorialcart/update_overlays()
 	. = ..()

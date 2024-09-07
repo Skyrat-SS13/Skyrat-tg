@@ -201,7 +201,11 @@
  * Returns TRUE if the user is a living mob that is a cultist and is not incapacitated.
  */
 /obj/structure/destructible/cult/item_dispenser/proc/check_menu(mob/user)
+<<<<<<< HEAD
 	return isliving(user) && is_cultist_check(user) && !user.incapacitated()
+=======
+	return isliving(user) && is_cultist_check(user) && !user.incapacitated
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Spooky looking door used in gateways. Or something.
 /obj/effect/gateway

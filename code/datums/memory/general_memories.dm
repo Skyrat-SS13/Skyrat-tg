@@ -162,6 +162,31 @@
 		"[protagonist_name] [mood_verb] as they lick off some of the pie",
 	)
 
+<<<<<<< HEAD
+=======
+/// Witnessed someone get splashed with squid ink.
+/datum/memory/witnessed_inking
+	story_value = STORY_VALUE_OKAY
+	memory_flags = MEMORY_CHECK_BLINDNESS
+	// Protagonist - The mob that got pied
+
+/datum/memory/witnessed_inking/get_names()
+	return list("The inking of [protagonist_name].")
+
+/datum/memory/witnessed_inking/get_starts()
+	return list(
+		"[protagonist_name]'s face being covered in squid ink",
+		"[protagonist_name] getting squid-inked",
+	)
+
+/datum/memory/witnessed_inking/get_moods()
+	return list(
+		"[protagonist_name] [mood_verb] as ink drips off their face",
+		"[protagonist_name] [mood_verb] because of their now expanded laundry task.",
+		"[protagonist_name] [mood_verb] as they wipe the ink off their face.",
+	)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Got slipped by something.
 /datum/memory/was_slipped
 	story_value = STORY_VALUE_MEH

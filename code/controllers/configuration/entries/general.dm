@@ -115,10 +115,13 @@
 /// log attack messages
 /datum/config_entry/flag/log_attack
 
+<<<<<<< HEAD
 /datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
 
 /datum/config_entry/flag/log_econ // log economy actions
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// log emotes
 /datum/config_entry/flag/log_emote
 
@@ -317,7 +320,11 @@
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/wikiurl
+<<<<<<< HEAD
 	default = "https://wiki.skyrat13.space/index.php" //SKYRAT EDIT - Original: "http://www.tgstation13.org/wiki"
+=======
+	default = "http://www.tgstation13.org/wiki"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/config_entry/string/forumurl
 	default = "http://tgstation13.org/phpBB/index.php"

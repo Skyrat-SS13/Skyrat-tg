@@ -86,7 +86,11 @@
 	if(!payload?["channel"])
 		CRASH("No channel provided to an open TGUI-Say")
 	window_open = TRUE
+<<<<<<< HEAD
 	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != ADMIN_CHANNEL && payload["channel"] != LOOC_CHANNEL) // SKYRAT EDIT CHANGE (Add LOOC_CHANNEL)
+=======
+	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != ADMIN_CHANNEL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		start_thinking()
 	if(!client.typing_indicators)
 		log_speech_indicators("[key_name(client)] started typing at [loc_name(client.mob)], indicators DISABLED.")

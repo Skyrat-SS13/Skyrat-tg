@@ -1,6 +1,10 @@
 ///all the employers that are syndicate
 #define FLAVOR_FACTION_SYNDICATE "syndicate"
+<<<<<<< HEAD
 ///all the employers that are nanotrasen
+=======
+///all the employers that are Nanotrasen
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define FLAVOR_FACTION_NANOTRASEN "nanotrasen"
 
 /datum/antagonist/traitor

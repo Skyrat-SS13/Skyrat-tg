@@ -40,7 +40,10 @@
 				var/list/current_record = list()
 
 				current_record["age"] = person.age
+<<<<<<< HEAD
 				current_record["chrono_age"] = person.chrono_age // SKYRAT EDIT ADDITION - Chronological age
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				current_record["fingerprint"] = person.fingerprint
 				current_record["gender"] = person.gender
 				current_record["name"] = person.name
@@ -54,8 +57,11 @@
 			for(var/datum/record/crew/person in GLOB.manifest.general)
 				var/list/current_record = list()
 
+<<<<<<< HEAD
 				current_record["age"] = person.age // SKYRAT EDIT ADDITION - Chronological age
 				current_record["chrono_age"] = person.chrono_age // SKYRAT EDIT ADDITION - Chronological age
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				current_record["bloodtype"] = person.blood_type
 				current_record["ma_dis"] = person.major_disabilities_desc
 				current_record["mi_dis"] = person.minor_disabilities_desc

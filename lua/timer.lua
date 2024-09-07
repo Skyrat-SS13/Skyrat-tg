@@ -2,19 +2,31 @@ local state = require("state")
 
 local Timer = {}
 
+<<<<<<< HEAD
 local SSlua = dm.global_vars:get_var("SSlua")
+=======
+local SSlua = dm.global_vars.SSlua
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 __Timer_timers = __Timer_timers or {}
 __Timer_callbacks = __Timer_callbacks or {}
 
 function __add_internal_timer(func, time, loop)
 	local timer = {
 		loop = loop,
+<<<<<<< HEAD
 		executeTime = time + dm.world:get_var("time")
+=======
+		executeTime = time + dm.world.time,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	}
 	__Timer_callbacks[tostring(func)] = function()
 		timer.executing = false
 		if loop and timer.terminate ~= true then
+<<<<<<< HEAD
 			timer.executeTime = dm.world:get_var("time") + time
+=======
+			timer.executeTime = dm.world.time + time
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else
 			__stop_internal_timer(tostring(func))
 		end
@@ -37,22 +49,37 @@ function __stop_internal_timer(func)
 end
 
 __Timer_timer_processing = __Timer_timer_processing or false
+<<<<<<< HEAD
 state.state:set_var("timer_enabled", 1)
+=======
+state.state.timer_enabled = 1
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 __Timer_timer_process = function(seconds_per_tick)
 	if __Timer_timer_processing then
 		return 0
 	end
 	__Timer_timer_processing = true
+<<<<<<< HEAD
 	local time = dm.world:get_var("time")
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for func, timeData in __Timer_timers do
 		if timeData.executing == true then
 			continue
 		end
+<<<<<<< HEAD
 		if over_exec_usage(0.85) then
 			sleep()
 		end
 		if time >= timeData.executeTime then
 			state.state:get_var("functions_to_execute"):add(func)
+=======
+		if _exec.time / (dm.world.tick_lag * 100) > 0.85 then
+			sleep()
+		end
+		if dm.world.time >= timeData.executeTime then
+			list.add(state.state.functions_to_execute, func)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			timeData.executing = true
 		end
 	end
@@ -62,6 +89,7 @@ end
 
 function Timer.wait(time)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	local next_yield_index = __next_yield_index
 	__add_internal_timer(function()
 		SSlua:call_proc("queue_resume", state.state, next_yield_index)
@@ -70,6 +98,11 @@ function Timer.wait(time)
 	__add_internal_timer(function()
 		SSlua:queue_resume(state.state, yieldIndex)
 >>>>>>> 6577c58b948b (Fixes lua function SS13.wait. (#85427))
+=======
+	local yieldIndex = _exec.next_yield_index
+	__add_internal_timer(function()
+		SSlua:queue_resume(state.state, yieldIndex)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	end, time * 10, false)
 	coroutine.yield()
 end

@@ -47,6 +47,7 @@
 	if(new_resting && lubricate(snail))
 		snail.add_movespeed_modifier(/datum/movespeed_modifier/snail_crawl)
 		RegisterSignal(snail, COMSIG_MOVABLE_MOVED, PROC_REF(lubricate))
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - This is to prevent snails from achieving FTL speeds without gravity, think of it like snails affixing to walls irl.
 		ADD_TRAIT(snail, TRAIT_NEGATES_GRAVITY, TRAIT_GENERIC)
 		snail.AddElement(/datum/element/forced_gravity, 0)
@@ -60,6 +61,11 @@
 		REMOVE_TRAIT(snail, TRAIT_NEGATES_GRAVITY, TRAIT_GENERIC)
 		snail.RemoveElement(/datum/element/forced_gravity, 0)
 		//SKYRAT EDIT ADDITION END
+=======
+	else
+		snail.remove_movespeed_modifier(/datum/movespeed_modifier/snail_crawl)
+		UnregisterSignal(snail, COMSIG_MOVABLE_MOVED)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/element/lube_walking/proc/lubricate(atom/movable/snail)
 	SIGNAL_HANDLER
@@ -67,7 +73,11 @@
 	var/turf/open/turf_standing_on = get_turf(snail)
 	if(!istype(turf_standing_on))
 		return FALSE
+<<<<<<< HEAD
 	turf_standing_on.MakeSlippery(TURF_WET_WATER, 1 SECONDS) //SKYRAT EDIT CHANGE: Roundstart Snails - No more lube - ORIGINAL: turf_standing_on.MakeSlippery(wet_flags, min_wet_time = min_time_wet_for)
 	turf_standing_on.wash(CLEAN_WASH) //SKYRAT EDIT ADDITION: Roundstart Snails - Snails Keep Clean
 
+=======
+	turf_standing_on.MakeSlippery(wet_flags, min_wet_time = min_time_wet_for)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE

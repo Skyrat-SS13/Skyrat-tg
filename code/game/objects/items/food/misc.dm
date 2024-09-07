@@ -292,6 +292,17 @@
 	foodtypes = FRUIT | ALCOHOL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
+<<<<<<< HEAD
+=======
+/obj/item/food/melonkeg/CheckParts(list/parts_list)
+	. = ..()
+	var/obj/item/reagent_containers/cup/glass/bottle/bottle = locate() in contents
+	if(!bottle)
+		return
+	if(bottle.message_in_a_bottle)
+		bottle.message_in_a_bottle.forceMove(drop_location())
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/food/honeybar
 	name = "honey nut bar"
 	desc = "Oats and nuts compressed together into a bar, held together with a honey glaze."
@@ -568,7 +579,11 @@
 	tastes = list()
 
 /obj/item/food/pacoca
+<<<<<<< HEAD
 	name = "pacoca"
+=======
+	name = "paçoca"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	desc = "A traditional Brazilian treat made of ground peanuts, sugar, and salt compressed into a cylinder."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "pacoca"
@@ -797,3 +812,33 @@
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_4
+<<<<<<< HEAD
+=======
+
+///Extracted from squids, or any fish with the ink fish trait.
+/obj/item/food/ink_sac
+	name = "ink sac"
+	desc = "the ink sac from some sort of fish or mollusk. It could be canned with a processor."
+	icon_state = "ink_sac"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/salt = 5)
+	tastes = list("seafood" = 3)
+	foodtypes = SEAFOOD|RAW
+
+/obj/item/food/ink_sac/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/splat, \
+		memory_type = /datum/memory/witnessed_inking, \
+		smudge_type = /obj/effect/decal/cleanable/food/squid_ink, \
+		moodlet_type = /datum/mood_event/inked, \
+		splat_color = COLOR_NEARLY_ALL_BLACK, \
+		hit_callback = CALLBACK(src, PROC_REF(blind_em)), \
+	)
+
+/obj/item/food/ink_sac/proc/blind_em(mob/living/victim, can_splat_on)
+	if(can_splat_on)
+		victim.adjust_temp_blindness_up_to(7 SECONDS, 10 SECONDS)
+		victim.adjust_confusion_up_to(3.5 SECONDS, 6 SECONDS)
+		victim.Paralyze(2 SECONDS) //splat!
+	victim.visible_message(span_warning("[victim] is inked by [src]!"), span_userdanger("You've been inked by [src]!"))
+	playsound(victim, SFX_DESECRATION, 50, TRUE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

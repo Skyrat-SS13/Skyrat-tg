@@ -94,10 +94,13 @@
 #define FLESH_SCAR_FILE "wounds/flesh_scar_desc.json"
 /// File location for bone wound descriptions
 #define BONE_SCAR_FILE "wounds/bone_scar_desc.json"
+<<<<<<< HEAD
 // SKYRAT EDIT ADDITION BEGIN - SYNTH WOUNDS
 /// File location for metalic wound descriptions
 #define METAL_SCAR_FILE "wounds/metal_scar_desc.json" 
 // SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// File location for scar wound descriptions
 #define SCAR_LOC_FILE "wounds/scar_loc.json"
 /// File location for exodrone descriptions

@@ -367,7 +367,11 @@ Button.Input = ButtonInput;
 type FileProps = {
   accept: string;
   multiple?: boolean;
+<<<<<<< HEAD
   onSelectFiles: (files: string | string[]) => void;
+=======
+  onSelectFiles: (files: FileList) => void;
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 } & Props;
 
 /**  Accepts file input */
@@ -376,6 +380,7 @@ function ButtonFile(props: FileProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+<<<<<<< HEAD
   async function read(files: FileList) {
     const promises = Array.from(files).map((file) => {
       const reader = new FileReader();
@@ -394,6 +399,13 @@ function ButtonFile(props: FileProps) {
     if (files?.length) {
       const readFiles = await read(files);
       onSelectFiles(multiple ? readFiles : readFiles[0]);
+=======
+  async function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const files = event.target.files;
+    if (files?.length) {
+      onSelectFiles(files);
+      event.target.value = '';
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     }
   }
 

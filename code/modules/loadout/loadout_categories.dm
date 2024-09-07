@@ -40,9 +40,12 @@
 		if(found_type == initial(found_type.abstract_type))
 			continue
 
+<<<<<<< HEAD
 		if(!initial(found_type.item_path)) // SKYRAT EDIT ADDITION
 			continue
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!ispath(initial(found_type.item_path), /obj/item))
 			stack_trace("Loadout get_items(): Attempted to instantiate a loadout item ([found_type]) with an invalid or null typepath! (got path: [initial(found_type.item_path)])")
 			continue

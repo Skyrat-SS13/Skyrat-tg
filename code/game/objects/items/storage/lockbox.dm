@@ -232,7 +232,10 @@
 /obj/item/storage/lockbox/order
 	name = "order lockbox"
 	desc = "A box used to secure small cargo orders from being looted by those who didn't order it. Yeah, cargo tech, that means you."
+<<<<<<< HEAD
 	icon = 'icons/obj/storage/case.dmi'
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "secure"
 	icon_closed = "secure"
 	icon_locked = "secure_locked"
@@ -249,21 +252,27 @@
 	buyer_account = _buyer_account
 	ADD_TRAIT(src, TRAIT_NO_MISSING_ITEM_ERROR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NO_MANIFEST_CONTENTS_ERROR, TRAIT_GENERIC)
+<<<<<<< HEAD
 	//SKYRAT EDIT START
 	if(istype(buyer_account, /datum/bank_account/department))
 		department_purchase = TRUE
 		department_account = buyer_account
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/storage/lockbox/order/can_unlock(mob/living/user, obj/item/card/id/id_card)
 	if(id_card.registered_account == buyer_account)
 		return TRUE
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START - private department orders
 	if(department_purchase && id_card.registered_account?.account_job?.paycheck_department == department_account.department_id)
 		return TRUE
 	//SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	balloon_alert(user, "incorrect bank account!")
 	return FALSE
 

@@ -359,6 +359,7 @@
 		// Stops sliding
 		slide_distance = 0
 
+<<<<<<< HEAD
 	// SKYRAT EDIT START - Akula species
 	if(HAS_TRAIT(slipper, TRAIT_SLIPPERY))
 		if(!(lube & SLIDE_ICE))
@@ -389,6 +390,30 @@
 		for(var/obj/item/item in slipper.held_items)
 			slipper.accident(item)
 
+=======
+	var/obj/buckled_obj
+	if(slipper.buckled)
+		if(!(lube & GALOSHES_DONT_HELP)) //can't slip while buckled unless it's lube.
+			return FALSE
+		buckled_obj = slipper.buckled
+	else
+		if(!(lube & SLIP_WHEN_CRAWLING) && (slipper.body_position == LYING_DOWN || !(slipper.status_flags & CANKNOCKDOWN))) // can't slip unbuckled mob if they're lying or can't fall.
+			return FALSE
+		if(slipper.move_intent == MOVE_INTENT_WALK && (lube & NO_SLIP_WHEN_WALKING))
+			return FALSE
+
+	if(!(lube & SLIDE_ICE))
+		// Ice slides are intended to be combo'd so don't give the feedback
+		to_chat(slipper, span_notice("You slipped[ slippable ? " on the [slippable.name]" : ""]!"))
+		playsound(slipper.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
+
+	SEND_SIGNAL(slipper, COMSIG_ON_CARBON_SLIP)
+	slipper.add_mood_event("slipped", /datum/mood_event/slipped)
+	if(force_drop)
+		for(var/obj/item/item in slipper.held_items)
+			slipper.accident(item)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/olddir = slipper.dir
 	slipper.moving_diagonally = 0 //If this was part of diagonal move slipping will stop it.
 	if(lube & SLIDE_ICE)
@@ -423,10 +448,14 @@
 /turf/open/get_dumping_location()
 	return src
 
-/turf/open/proc/ClearWet()//Nuclear option of immediately removing slipperyness from the tile instead of the natural drying over time
+/turf/open/proc/ClearWet()//Nuclear option of immediately removing slipperiness from the tile instead of the natural drying over time
 	qdel(GetComponent(/datum/component/wet_floor))
 
+<<<<<<< HEAD
 /// Builds with rods. This doesn't exist to be overriden, just to remove duplicate logic for turfs that want
+=======
+/// Builds with rods. This doesn't exist to be overridden, just to remove duplicate logic for turfs that want
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// To support floor tile creation
 /// I'd make it a component, but one of these things is space. So no.
 /turf/open/proc/build_with_rods(obj/item/stack/rods/used_rods, mob/user)

@@ -50,7 +50,11 @@
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_BLUESPACE
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_CARGO
+<<<<<<< HEAD
 	//autolathe_exportable = FALSE //SKYRAT EDIT REMOVAL
+=======
+	autolathe_exportable = FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/design/desynchronizer
 	name = "Desynchronizer"

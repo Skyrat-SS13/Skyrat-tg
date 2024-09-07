@@ -12,5 +12,9 @@
 	"Abductor Ships" = LAZY_TEMPLATE_KEY_ABDUCTOR_SHIPS, \
 	"Heretic Sacrifice Level" = LAZY_TEMPLATE_KEY_HERETIC_SACRIFICE, \
 	"Voidwalker Void" = LAZY_TEMPLATE_KEY_VOIDWALKER_VOID, \
+<<<<<<< HEAD
 	"Outpost of Cogs" = LAZY_TEMPLATE_KEY_OUTPOST_OF_COGS,  \
 )	// SKYRAT EDIT ABOVE - OUTPOST OF COGS
+=======
+)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

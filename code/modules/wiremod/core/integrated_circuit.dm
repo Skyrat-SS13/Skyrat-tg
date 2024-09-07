@@ -264,6 +264,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			to_chat(user, span_danger("You can't insert multiple instances of this component into the same circuit!"))
 			return FALSE
 
+<<<<<<< HEAD
 	// SKYRAT ADDITION BEGIN - This is required since we have two reagent components, and the BCI only allows one active
 	if(to_add.circuit_flags & CIRCUIT_REAGENT_CONTAINER_TYPE)
 		if(shell && shell.reagents)
@@ -271,6 +272,8 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			return FALSE
 	// SKYRAT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/success = FALSE
 	if(user)
 		success = user.transferItemToLoc(to_add, src)

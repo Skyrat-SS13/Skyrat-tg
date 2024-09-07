@@ -7,9 +7,14 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
+<<<<<<< HEAD
 	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs") // SKYRAT EDIT CHANGE - ORIGINAL: mutant_bodyparts = list("legs" = "Normal Legs")
 	//body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None") // SKYRAT EDIT REMOVAL - We do this our own way
 	external_organs = list(
+=======
+	body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None")
+	mutant_organs = list(
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/organ/external/horns = "None",
 		/obj/item/organ/external/frills = "None",
 		/obj/item/organ/external/snout = "Round",
@@ -47,14 +52,20 @@
 /datum/species/lizard/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	return
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/species/lizard/randomize_features()
 	var/list/features = ..()
 	features["lizard_markings"] = pick(SSaccessories.lizard_markings_list)
 	return features
+<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/species/lizard/get_scream_sound(mob/living/carbon/human/lizard)
 	return pick(

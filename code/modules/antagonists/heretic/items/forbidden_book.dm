@@ -47,7 +47,11 @@
 		update_weight_class(WEIGHT_CLASS_NORMAL)
 
 /obj/item/codex_cicatrix/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+<<<<<<< HEAD
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
+=======
+	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!heretic_datum)
 		return NONE
 	if(isopenturf(interacting_with))

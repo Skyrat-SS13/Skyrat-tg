@@ -2,7 +2,11 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 	gender = MALE
 	pressure_resistance = 15
+<<<<<<< HEAD
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,GLAND_HUD, DNR_HUD) // SKYRAT EDIT ADDITION - DNR ICON
+=======
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,GLAND_HUD)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	has_limbs = TRUE
 	held_items = list(null, null)
 	num_legs = 0 //Populated on init through list/bodyparts
@@ -125,6 +129,9 @@
 	var/bodyshape = BODYSHAPE_HUMANOID
 
 	COOLDOWN_DECLARE(bleeding_message_cd)
+<<<<<<< HEAD
 
 
 	var/next_smell = 0 //SKYRAT EDIT ADDITION /// Cooldown for the next smell
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

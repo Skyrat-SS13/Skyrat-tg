@@ -3,8 +3,13 @@
 	plural_form = "Mothmen"
 	id = SPECIES_MOTH
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
+<<<<<<< HEAD
 	mutant_bodyparts = list("moth_markings" = "None") // SKYRAT EDIT CHANGE - ORIGINAL: body_markings = list(/datum/bodypart_overlay/simple/body_marking/moth = "None")
 	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // SKYRAT EDIT REMOVAL - Fixing moths
+=======
+	body_markings = list(/datum/bodypart_overlay/simple/body_marking/moth = "None")
+	mutant_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain")
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	meat = /obj/item/food/meat/slab/human/mutant/moth
 	mutanttongue = /obj/item/organ/internal/tongue/moth
 	mutanteyes = /obj/item/organ/internal/eyes/moth
@@ -24,12 +29,15 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/moth,
 	)
 
+<<<<<<< HEAD
 /datum/species/moth/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current= TRUE, list/excluded_zones, visual_only)
+=======
+/datum/species/moth/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		handle_mutant_bodyparts(H)
+	RegisterSignal(human_who_gained_species, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_weakness))
 
+<<<<<<< HEAD
 /datum/species/moth/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
 	. = ..()
 	RegisterSignal(human_who_gained_species, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_weakness))
@@ -47,6 +55,21 @@
 /datum/species/moth/randomize_features()
 	var/list/features = ..()
 	features["moth_markings"] = pick(SSaccessories.moth_wings_list) // SKYRAT EDIT CHANGE - ORIGINAL: features["moth_markings"] = pick(SSaccessories.moth_markings_list)
+=======
+/datum/species/moth/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
+
+/datum/species/moth/proc/damage_weakness(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+
+	if(istype(attacking_item, /obj/item/melee/flyswatter))
+		damage_mods += 10 // Yes, a 10x damage modifier
+
+/datum/species/moth/randomize_features()
+	var/list/features = ..()
+	features["moth_markings"] = pick(SSaccessories.moth_markings_list)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return features
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human/moth)
@@ -142,7 +165,11 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "tshirt",
 			SPECIES_PERK_NAME = "Meal Plan",
+<<<<<<< HEAD
 			SPECIES_PERK_DESC = "Moths can eat clothes for nourishment.",
+=======
+			SPECIES_PERK_DESC = "Moths can eat clothes for temporary nourishment.",
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,

@@ -278,8 +278,12 @@ const ChoicesPanel = (props) => {
                         name="vote-yea"
                       />
                     )}
+<<<<<<< HEAD
                   {currentVote.displayStatistics ||
                   user.isLowerAdmin /* SKYRAT EDIT*/
+=======
+                  {currentVote.displayStatistics
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     ? choice.votes + ' Votes'
                     : null}
                 </LabeledList.Item>
@@ -318,11 +322,15 @@ const ChoicesPanel = (props) => {
                   user.multiSelection[user.ckey.concat(choice.name)] === 1 ? (
                     <Icon align="right" mr={2} color="blue" name="vote-yea" />
                   ) : null}
+<<<<<<< HEAD
                   {
                     user.isLowerAdmin
                       ? `${choice.votes} Votes`
                       : '' /* SKYRAT EDIT*/
                   }
+=======
+                  {choice.votes} Votes
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>

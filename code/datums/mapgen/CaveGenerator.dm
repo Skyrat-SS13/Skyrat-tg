@@ -114,10 +114,13 @@
 	string_gen = rustg_cnoise_generate("[initial_closed_chance]", "[smoothing_iterations]", "[birth_limit]", "[death_limit]", "[world.maxx]", "[world.maxy]") //Generate the raw CA data
 
 	for(var/turf/gen_turf as anything in turfs) //Go through all the turfs and generate them
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(istype(gen_turf, /turf/open/space/mirage))
 			continue
 		//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		var/closed = string_gen[world.maxx * (gen_turf.y - 1) + gen_turf.x] != "0"
 		var/turf/new_turf = pick(closed ? closed_turf_types : open_turf_types)
@@ -300,7 +303,11 @@
 		CHECK_TICK
 
 	var/message = "[name] terrain population finished in [(REALTIMEOFDAY - start_time)/10]s!"
+<<<<<<< HEAD
 	add_startup_message(message) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, span_boldannounce("[message]"))
+=======
+	to_chat(world, span_boldannounce("[message]"))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	log_world(message)
 
 

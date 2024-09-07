@@ -82,7 +82,11 @@
 					balloon_alert(user, "need [amount] rods!")
 					return
 				balloon_alert(user, "concealing entrance...")
+<<<<<<< HEAD
 				if(do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 2 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(rod.get_amount() < amount)
 						return
 					rod.use(amount)
@@ -96,13 +100,20 @@
 					balloon_alert(user, "need [amount] rods!")
 					return
 				balloon_alert(user, "adding plating...")
+<<<<<<< HEAD
 				if(do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 4 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(rod.get_amount() < amount)
 						return
 					rod.use(amount)
 					var/turf/T = get_turf(src)
 					T.place_on_top(/turf/closed/wall/mineral/iron)
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return
@@ -118,7 +129,11 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "concealing entrance...")
+<<<<<<< HEAD
 				if(do_after(user, 20 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 20*platingmodifier, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
@@ -135,12 +150,19 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "adding plating...")
+<<<<<<< HEAD
 				if (do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if (do_after(user, 4 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/tram/alt/iron/tram_wall = new(loc)
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					transfer_fingerprints_to(tram_wall)
 					qdel(src)
 				return
@@ -149,13 +171,20 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "adding plating...")
+<<<<<<< HEAD
 				if (do_after(user, 40 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if (do_after(user, 40*platingmodifier, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/turf/T = get_turf(src)
 					T.place_on_top(/turf/closed/wall)
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return
@@ -166,12 +195,19 @@
 				balloon_alert(user, "need [amount] sheets!")
 				return
 			balloon_alert(user, "adding panel...")
+<<<<<<< HEAD
 			if (do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+			if (do_after(user, 2 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				if(sheets.get_amount() < amount)
 					return
 				sheets.use(amount)
 				var/obj/structure/tram/tram_wall = new(loc)
+<<<<<<< HEAD
 				user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				transfer_fingerprints_to(tram_wall)
 				qdel(src)
 			return
@@ -183,7 +219,11 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "concealing entrance...")
+<<<<<<< HEAD
 				if(do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 2 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
@@ -197,13 +237,20 @@
 				if(sheets.get_amount() < amount)
 					return
 				balloon_alert(user, "adding plating...")
+<<<<<<< HEAD
 				if(do_after(user, 50 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 50*platingmodifier, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/turf/T = get_turf(src)
 					T.place_on_top(/turf/closed/wall/r_wall)
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					transfer_fingerprints_to(T)
 					qdel(src)
 				return
@@ -212,7 +259,11 @@
 				if(sheets.get_amount() < amount)
 					return
 				balloon_alert(user, "reinforcing frame...")
+<<<<<<< HEAD
 				if(do_after(user, 60 * platingmodifier * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 60*platingmodifier, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
@@ -226,6 +277,10 @@
 			if(istype(src, /obj/structure/girder/reinforced))
 				balloon_alert(user, "need plasteel!")
 				return
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			var/M = sheets.sheettype
 			var/amount = construction_cost["exotic_material"]
 			if(state == GIRDER_TRAM)
@@ -237,12 +292,19 @@
 					balloon_alert(user, "need titanium glass or mineral!")
 					return
 				balloon_alert(user, "adding plating...")
+<<<<<<< HEAD
 				if (do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if (do_after(user, 4 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					var/obj/structure/tram/tram_wall
 					tram_wall = new tram_wall_type(loc)
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					sheets.use(amount)
 					transfer_fingerprints_to(tram_wall)
 					qdel(src)
@@ -253,12 +315,19 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "concealing entrance...")
+<<<<<<< HEAD
 				if(do_after(user, 2 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if(do_after(user, 2 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/obj/structure/falsewall/falsewall
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(falsewall_type)
 						falsewall = new falsewall_type (loc)
 					else
@@ -276,12 +345,19 @@
 					balloon_alert(user, "need [amount] sheets!")
 					return
 				balloon_alert(user, "adding plating...")
+<<<<<<< HEAD
 				if (do_after(user, 4 SECONDS * skill_modifier, target = src)) //SKYRAT EDIT
+=======
+				if (do_after(user, 4 SECONDS, target = src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.get_amount() < amount)
 						return
 					sheets.use(amount)
 					var/turf/T = get_turf(src)
+<<<<<<< HEAD
 					user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					if(sheets.walltype)
 						T.place_on_top(sheets.walltype)
 					else

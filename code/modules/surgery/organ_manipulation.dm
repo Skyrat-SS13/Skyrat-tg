@@ -239,6 +239,7 @@
 			tool = tool.contents[1]
 		target_organ = tool
 		user.temporarilyRemoveItemFromInventory(target_organ, TRUE)
+<<<<<<< HEAD
 		if(target_organ.Insert(target))
 			if(apparatus)
 				apparatus.icon_state = initial(apparatus.icon_state)
@@ -255,6 +256,22 @@
 			target_organ.on_surgical_insertion(user, target, target_zone, tool)
 		else
 			target_organ.forceMove(target.loc)
+=======
+		target_organ.Insert(target)
+		if(apparatus)
+			apparatus.icon_state = initial(apparatus.icon_state)
+			apparatus.desc = initial(apparatus.desc)
+			apparatus.cut_overlays()
+		display_results(
+			user,
+			target,
+			span_notice("You insert [tool] into [target]'s [target.parse_zone_with_bodypart(target_zone)]."),
+			span_notice("[user] inserts [tool] into [target]'s [target.parse_zone_with_bodypart(target_zone)]!"),
+			span_notice("[user] inserts something into [target]'s [target.parse_zone_with_bodypart(target_zone)]!"),
+		)
+		display_pain(target, "Your [target.parse_zone_with_bodypart(target_zone)] throbs with pain as your new [tool.name] comes to life!")
+		target_organ.on_surgical_insertion(user, target, target_zone, tool)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	else if(current_type == "extract")
 		if(target_organ && target_organ.owner == target)
@@ -294,7 +311,11 @@
 
 ///only operate on internal organs
 /datum/surgery_step/manipulate_organs/internal/can_use_organ(mob/user, obj/item/organ/organ)
+<<<<<<< HEAD
 	return isinternalorgan(organ) && !(organ.organ_flags & ORGAN_UNREMOVABLE) // SKYRAT EDIT - Don't show unremovable organs - ORIGINAL: return isinternalorgan(organ)
+=======
+	return isinternalorgan(organ)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///prosthetic surgery gives full effectiveness to crowbars (and hemostats)
 /datum/surgery_step/manipulate_organs/internal/mechanic
@@ -308,7 +329,11 @@
 
 ///Only operate on external organs
 /datum/surgery_step/manipulate_organs/external/can_use_organ(mob/user, obj/item/organ/organ)
+<<<<<<< HEAD
 	return isexternalorgan(organ) && !(organ.organ_flags & ORGAN_UNREMOVABLE) // SKYRAT EDIT - Don't show unremovable organs - ORIGINAL: return isexternalorgan(organ)
+=======
+	return isexternalorgan(organ)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///prosthetic surgery gives full effectiveness to crowbars (and hemostats)
 /datum/surgery_step/manipulate_organs/external/mechanic

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* SKYRAT EDIT START - OVERRIDEN IN modular_skyrat/master_files/code/modules/mining/equipment/kinetic_crusher.dm
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /**
  * Kinetic Crusher
  *
@@ -229,8 +232,11 @@
 		new /obj/effect/temp_visual/kinetic_blast(hit_mineral)
 		hit_mineral.gets_drilled(firer)
 	return ..()
+<<<<<<< HEAD
 */
 //SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //trophies
 /obj/item/crusher_trophy

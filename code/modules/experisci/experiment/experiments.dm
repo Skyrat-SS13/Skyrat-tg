@@ -142,6 +142,7 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/hypernoblium
 
+<<<<<<< HEAD
 /datum/experiment/ordnance/gaseous/halon
 	name = "Halon Gas Shells"
 	description = "The delivery of Halon gas into an area of operation might prove useful. Perform research and publish papers on this field."
@@ -150,6 +151,8 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/halon
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/experiment/scanning/random/material/meat
 	name = "Biological Material Scanning Experiment"
 	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
@@ -395,7 +398,11 @@
 			if (organ.type == target_species.get_mutant_organ_type_for_slot(organ.slot))
 				continue
 		else
+<<<<<<< HEAD
 			if ((organ.type in target_species.mutant_organs) || (organ.type in target_species.external_organs))
+=======
+			if ((organ.type in target_species.mutant_organs))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				continue
 		return TRUE
 	return FALSE

@@ -55,6 +55,11 @@
 
 	head = /obj/item/clothing/head/helmet/space/pirate
 
+<<<<<<< HEAD
+=======
+	id_trim = /datum/id_trim/pirate/captain
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/outfit/pirate/silverscale
 	name = "Silver Scale Member"
 
@@ -151,6 +156,11 @@
 	suit = /obj/item/clothing/suit/jacket/oversized
 	head = /obj/item/clothing/head/costume/crown
 
+<<<<<<< HEAD
+=======
+	id_trim = /datum/id_trim/pirate/captain
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/outfit/pirate/medieval
 	name = "Medieval Warmonger"
 
@@ -181,3 +191,9 @@
 	belt = /obj/item/gun/magic/hook
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
 	r_pocket = /obj/item/flashlight/lantern
+<<<<<<< HEAD
+=======
+
+
+	skillchips = list(/obj/item/skillchip/big_pointer) //they don't have an id, so this is needed
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

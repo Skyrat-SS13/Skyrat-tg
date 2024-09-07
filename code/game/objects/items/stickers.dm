@@ -30,8 +30,15 @@
 
 	/// `list` or `null`, contains possible alternate `icon_states`.
 	var/list/icon_states
+<<<<<<< HEAD
 	/// Whether sticker is legal and allowed to generate inside non-syndicate boxes.
 	var/contraband = FALSE
+=======
+	/// This sticker won't be generated inside random sticker packs.
+	var/exclude_from_random = FALSE
+	/// Text added to the atom's examine when stickered.
+	var/examine_text
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/sticker/Initialize(mapload)
 	. = ..()
@@ -85,7 +92,11 @@
 			user.log_message("stuck [src] to [key_name(victim)]", LOG_ATTACK)
 			victim.log_message("had [src] stuck to them by [key_name(user)]", LOG_ATTACK)
 
+<<<<<<< HEAD
 	target.AddComponent(/datum/component/sticker, src, get_dir(target, src), px, py)
+=======
+	target.AddComponent(/datum/component/sticker, src, get_dir(target, src), px, py, null, null, examine_text)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 #undef MAX_STICKER_COUNT
@@ -123,6 +134,10 @@
 	name = "blue R sticker"
 	desc = "A sticker of FUCK THE SYSTEM, the galaxy's premiere hardcore punk band."
 	icon_state = "revhead"
+<<<<<<< HEAD
+=======
+	examine_text = "There is a sticker displaying <b>FUCK THE SYSTEM</b>, the galaxy's premiere hardcore punk band."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/sticker/pslime
 	name = "slime plushie sticker"
@@ -149,6 +164,15 @@
 	name = "toolbox sticker"
 	icon_state = "soul"
 
+<<<<<<< HEAD
+=======
+/obj/item/sticker/chief_engineer
+	name = "CE approved sticker"
+	icon_state = "ce_approved"
+	exclude_from_random = TRUE
+	examine_text = "There is a sticker displaying the <b>Chief Engineer's SEAL OF APPROVAL.</b>"
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/sticker/clown
 	name = "clown sticker"
 	icon_state = "honkman"
@@ -164,15 +188,27 @@
 /obj/item/sticker/skub
 	name = "skub sticker"
 	icon_state = "skub"
+<<<<<<< HEAD
+=======
+	examine_text = "There is a sticker displaying <b>Skubtide, Stationwide!</b>"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/sticker/anti_skub
 	name = "anti-skub sticker"
 	icon_state = "anti_skub"
+<<<<<<< HEAD
+=======
+	examine_text = "There is an <b>anti-skub</b> sticker."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/sticker/syndicate
 	name = "syndicate sticker"
 	icon_state = "synd"
+<<<<<<< HEAD
 	contraband = TRUE
+=======
+	exclude_from_random = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/sticker/syndicate/Initialize(mapload)
 	. = ..()

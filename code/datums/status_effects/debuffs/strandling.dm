@@ -57,7 +57,11 @@
  * tool - the tool the user's using to remove the strange. Can be null.
  */
 /datum/status_effect/strandling/proc/try_remove_effect(mob/user, obj/item/tool)
+<<<<<<< HEAD
 	if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+=======
+	if(user.incapacitated || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	user.visible_message(

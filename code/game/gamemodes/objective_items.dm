@@ -388,10 +388,15 @@
 	return add_item_to_steal(src, /obj/item/clothing/accessory/medal/gold/captain)
 
 /datum/objective_item/steal/hypo
+<<<<<<< HEAD
 	//name = "the hypospray" // ORIGINAL
 	name = "the Chief Medical Officer's hypospray" // SKYRAT EDIT CHANGE
 	//targetitem = /obj/item/reagent_containers/hypospray/cmo // ORIGINAL
 	targetitem = /obj/item/hypospray/mkii/deluxe/cmo // SKYRAT EDIT CHANGE
+=======
+	name = "the hypospray"
+	targetitem = /obj/item/reagent_containers/hypospray/cmo
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	excludefromjob = list(JOB_CHIEF_MEDICAL_OFFICER)
 	item_owner = list(JOB_CHIEF_MEDICAL_OFFICER)
 	exists_on_map = TRUE
@@ -399,8 +404,13 @@
 	steal_hint = "The Chief Medical Officer's personal medical injector. \
 		Usually found amongst their medical supplies on their person, in their belt, or otherwise in their locker."
 
+<<<<<<< HEAD
 /obj/item/hypospray/mkii/deluxe/cmo/add_stealing_item_objective() // SKYRAT EDIT CHANGE
 	return add_item_to_steal(src, /obj/item/hypospray/mkii/deluxe/cmo) // SKYRAT EDIT CHANGE
+=======
+/obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective()
+	return add_item_to_steal(src, /obj/item/reagent_containers/hypospray/cmo)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/objective_item/steal/nukedisc
 	name = "the nuclear authentication disk"
@@ -518,12 +528,19 @@
 	if(istype(potential_storage, /obj/item/aicard))
 		var/obj/item/aicard/card = potential_storage
 		being = card.AI // why is this one capitalized and the other one not? i wish i knew.
+<<<<<<< HEAD
 	// SKYRAT EDIT REMOVAL START - MOD PAI
 	/*else if(istype(potential_storage, /obj/item/mod/control))
 		var/obj/item/mod/control/suit = potential_storage
 		if(isAI(suit.ai_assistant))
 			being = suit.ai_assistant
 	*/ // SKYRAT EDIT REMOVAL END
+=======
+	else if(istype(potential_storage, /obj/item/mod/control))
+		var/obj/item/mod/control/suit = potential_storage
+		if(isAI(suit.ai_assistant))
+			being = suit.ai_assistant
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		stack_trace("check_special_completion() called on [src] with [potential_storage] ([potential_storage.type])! That's not supposed to happen!")
 		return FALSE

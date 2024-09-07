@@ -280,7 +280,11 @@
 	. = ..()
 	if(!.)
 		return
+<<<<<<< HEAD
 	if(A.totalStageSpeed() >= 7)//SKYRAT EDIT: Brings Noc regen into line with the rest of the healing symptoms.
+=======
+	if(A.totalStageSpeed() >= 8)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		power = 2
 
 /datum/symptom/heal/darkness/CanHeal(datum/disease/advance/A)
@@ -378,7 +382,11 @@
 			return power * 0.9
 		if(SOFT_CRIT)
 			return power * 0.5
+<<<<<<< HEAD
 	if(M.getBruteLoss() + M.getFireLoss() >= 103 && !active_coma) //SKYRAT EDIT: ORIGINAL: 70 - Adjusts this to remain 37.5% of total health(plus crit health). Because 70 is alot less health here then it is on tg.
+=======
+	if(M.getBruteLoss() + M.getFireLoss() >= 70 && !active_coma)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(M, span_warning("You feel yourself slip into a regenerative coma..."))
 		active_coma = TRUE
 		addtimer(CALLBACK(src, PROC_REF(coma), M), 6 SECONDS)

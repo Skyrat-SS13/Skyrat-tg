@@ -120,7 +120,11 @@
 	data["sprites"] = sprite_data
 	return data
 
+<<<<<<< HEAD
 /datum/greyscale_modify_menu/ui_act(action, params)
+=======
+/datum/greyscale_modify_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -305,7 +309,10 @@ This is highly likely to cause massive amounts of lag as every object in the gam
 			CHECK_TICK
 			var/image/layer = image(step["step"])
 			var/image/result = image(step["result"])
+<<<<<<< HEAD
 			// SKYRAT EDIT BEGIN - Bringing back the GAGS coloring menu
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			steps += list(
 				list(
 					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE),
@@ -313,7 +320,10 @@ This is highly likely to cause massive amounts of lag as every object in the gam
 					"config_name"=step["config_name"]
 				)
 			)
+<<<<<<< HEAD
 			// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	sprite_data["time_spent"] = TICK_DELTA_TO_MS(time_spent)
 	sprite_data["finished"] = icon2html(finished, user, dir=sprite_dir, sourceonly=TRUE)

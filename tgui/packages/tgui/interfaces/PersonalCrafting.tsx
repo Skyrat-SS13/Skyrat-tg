@@ -23,7 +23,10 @@ import { Food } from './PreferencesMenu/data';
 const TYPE_ICONS = {
   'Can Make': 'utensils',
   [Food.Alcohol]: 'wine-glass',
+<<<<<<< HEAD
   [Food.Bloody]: 'tint', // SKYRAT EDIT ADDITION - Hemophage Food
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   [Food.Breakfast]: 'sun',
   [Food.Bugs]: 'bug',
   [Food.Cloth]: 'tshirt',
@@ -77,7 +80,10 @@ const CATEGORY_ICONS_COOKING = {
   Cakes: 'cake-candles',
   'Egg-Based Food': 'egg',
   Frozen: 'ice-cream',
+<<<<<<< HEAD
   'Hemophage Food': 'tint', // SKYRAT EDIT ADDITION - Hemophage Food
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   'Lizard Food': 'dragon',
   Meats: 'bacon',
   'Mexican Food': 'pepper-hot',
@@ -91,7 +97,10 @@ const CATEGORY_ICONS_COOKING = {
   Seafood: 'fish',
   Soups: 'mug-hot',
   Spaghettis: 'wheat-awn',
+<<<<<<< HEAD
   'Teshari Food': 'feather-pointed', // SKYRAT EDIT ADDITION - Teshari Food
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 } as const;
 
 enum MODE {
@@ -609,6 +618,26 @@ const MaterialContent = (props) => {
 
 const FoodtypeContent = (props) => {
   const { type, diet, craftableCount } = props;
+<<<<<<< HEAD
+=======
+  let iconName = '',
+    iconColor = '';
+
+  // We use iconName in the return to see if this went through.
+  if (type !== 'Can Make' && diet) {
+    if (diet.liked_food.includes(type)) {
+      iconName = 'face-laugh-beam';
+      iconColor = 'good';
+    } else if (diet.disliked_food.includes(type)) {
+      iconName = 'face-tired';
+      iconColor = 'average';
+    } else if (diet.toxic_food.includes(type)) {
+      iconName = 'skull-crossbones';
+      iconColor = 'bad';
+    }
+  }
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   return (
     <Stack>
       <Stack.Item width="14px" textAlign="center">
@@ -620,6 +649,7 @@ const FoodtypeContent = (props) => {
       <Stack.Item>
         {type === 'Can Make'
           ? craftableCount
+<<<<<<< HEAD
           : diet &&
             (diet.liked_food.includes(type) ? (
               <Icon name="face-laugh-beam" color={'good'} />
@@ -630,6 +660,9 @@ const FoodtypeContent = (props) => {
                 <Icon name="skull-crossbones" color={'bad'} />
               )
             ))}
+=======
+          : iconName && <Icon name={iconName} color={iconColor} />}
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       </Stack.Item>
     </Stack>
   );

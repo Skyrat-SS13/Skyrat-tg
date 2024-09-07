@@ -97,10 +97,13 @@
 		return
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION BEGIN - Hardened Soles Quirk
 		if(HAS_TRAIT(digitigrade_fan, TRAIT_HARD_SOLES))
 			return
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if ((digitigrade_fan.wear_suit?.body_parts_covered | digitigrade_fan.w_uniform?.body_parts_covered | digitigrade_fan.shoes?.body_parts_covered) & FEET)
 			return
 

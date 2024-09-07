@@ -53,6 +53,10 @@
 	imp = new imp_type(src, uplink_handler)
 	return ..()
 
+/obj/item/implanter/uplink/Initialize(mapload, uplink_handler)
+	imp = new imp_type(src, uplink_handler)
+	return ..()
+
 /obj/item/implanter/uplink/precharged
 	name = "implanter" // Skyrat edit , original was implanter (precharged uplink)
 	imp_type = /obj/item/implant/uplink/precharged

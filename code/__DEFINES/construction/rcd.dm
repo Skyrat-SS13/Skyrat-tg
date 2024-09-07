@@ -7,7 +7,11 @@
 	#define RCD_WINDOWGRILLE (1 << 1)
 	/// Windoors & Airlocks
 	#define RCD_AIRLOCK (1 << 2)
+<<<<<<< HEAD
 	/// Literarly anything that is spawned on top of a turf such as tables, machines etc
+=======
+	/// Literally anything that is spawned on top of a turf such as tables, machines etc
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	#define RCD_STRUCTURE (1 << 3)
 	/// For wallmounts like air alarms, fire alarms & apc
 	#define RCD_WALLFRAME (1 << 4)

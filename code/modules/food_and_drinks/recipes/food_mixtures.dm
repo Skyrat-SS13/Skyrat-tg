@@ -132,12 +132,16 @@
 	results = list(/datum/reagent/consumable/hot_ramen = 3)
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/dry_ramen = 3)
 
+<<<<<<< HEAD
 	pollutant_type = /datum/pollutant/food/spicy_noodles //SKYRAT EDIT ADDITION
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/chemical_reaction/food/hell_ramen
 	results = list(/datum/reagent/consumable/hell_ramen = 6)
 	required_reagents = list(/datum/reagent/consumable/capsaicin = 1, /datum/reagent/consumable/hot_ramen = 6)
 
+<<<<<<< HEAD
 	pollutant_type = /datum/pollutant/food/spicy_noodles //SKYRAT EDIT ADDITION
 
 /datum/chemical_reaction/food/imitationcarpmeat
@@ -146,6 +150,14 @@
 	mix_message = "The mixture becomes similar to carp meat."
 	reaction_flags = REACTION_INSTANT
 
+=======
+/datum/chemical_reaction/food/imitationcarpmeat
+	required_reagents = list(/datum/reagent/toxin/carpotoxin = 5)
+	required_container = /obj/item/food/tofu
+	mix_message = "The mixture becomes similar to carp meat."
+	reaction_flags = REACTION_INSTANT
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/chemical_reaction/food/imitationcarpmeat/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/food/fishmeat/carp/imitation(location)

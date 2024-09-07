@@ -32,6 +32,7 @@
 /// Cleans decals such as cobwebs off the floor
 #define CLEAN_TYPE_HARD_DECAL (1 << 7)
 
+<<<<<<< HEAD
 // SKYRAT EDIT BEGIN ADD: Turf liquid cleaning type!
 
 /// Cleans all the liquids from a turf, or "evaporates" them
@@ -43,6 +44,12 @@
 // Use these when calling the wash proc for your cleaning apparatus
 #define CLEAN_WASH (CLEAN_TYPE_BLOOD | CLEAN_TYPE_DISEASE | CLEAN_TYPE_ACID | CLEAN_TYPE_LIGHT_DECAL)
 #define CLEAN_SCRUB (CLEAN_WASH | CLEAN_TYPE_FINGERPRINTS | CLEAN_TYPE_FIBERS | CLEAN_TYPE_HARD_DECAL | CLEAN_TYPE_LIQUIDS) // Skyrat edit - adds CLEAN_TYPE_LIQUIDS
+=======
+// Different cleaning methods.
+// Use these when calling the wash proc for your cleaning apparatus
+#define CLEAN_WASH (CLEAN_TYPE_BLOOD | CLEAN_TYPE_DISEASE | CLEAN_TYPE_ACID | CLEAN_TYPE_LIGHT_DECAL)
+#define CLEAN_SCRUB (CLEAN_WASH | CLEAN_TYPE_FINGERPRINTS | CLEAN_TYPE_FIBERS | CLEAN_TYPE_HARD_DECAL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define CLEAN_RAD CLEAN_TYPE_RADIATION
 #define CLEAN_ALL ALL
 

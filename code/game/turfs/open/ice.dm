@@ -15,10 +15,27 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	rust_resistance = RUST_RESISTANCE_ORGANIC
+<<<<<<< HEAD
+=======
+	var/can_make_hole = TRUE
+	var/static/list/tool_screentips = list(
+		TOOL_SHOVEL = list(
+			SCREENTIP_CONTEXT_LMB = "Dig fishing hole",
+		),
+		TOOL_MINING = list(
+			SCREENTIP_CONTEXT_LMB = "Dig fishing hole",
+		),
+	)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/misc/ice/Initialize(mapload)
 	. = ..()
 	MakeSlippery(TURF_WET_PERMAFROST, INFINITY, 0, INFINITY, TRUE, FALSE)
+<<<<<<< HEAD
+=======
+	if(can_make_hole)
+		AddElement(/datum/element/contextual_screentip_tools, tool_screentips)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/misc/ice/break_tile()
 	return
@@ -26,6 +43,31 @@
 /turf/open/misc/ice/burn_tile()
 	return
 
+<<<<<<< HEAD
+=======
+/turf/open/misc/ice/examine(mob/user)
+	. = ..()
+	if(can_make_hole)
+		. += span_info("You could use a [EXAMINE_HINT("shovel")] or a [EXAMINE_HINT("pick")] to dig a fishing hole here.")
+
+/turf/open/misc/ice/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!can_make_hole)
+		return NONE
+	if(tool.tool_behaviour != TOOL_SHOVEL && tool.tool_behaviour != TOOL_MINING)
+		return NONE
+	balloon_alert(user, "digging...")
+	playsound(src, 'sound/effects/shovel_dig.ogg', 50, TRUE)
+	if(!do_after(user, 5 SECONDS, src))
+		return NONE
+	balloon_alert(user, "dug hole")
+	AddComponent(/datum/component/fishing_spot, GLOB.preset_fish_sources[/datum/fish_source/ice_fishing])
+	add_overlay(mutable_appearance('icons/turf/overlays.dmi', "ice_hole"))
+	can_make_hole = FALSE
+	RemoveElement(/datum/element/contextual_screentip_tools, tool_screentips)
+	flags_1 &= ~HAS_CONTEXTUAL_SCREENTIPS_1
+	return ITEM_INTERACT_SUCCESS
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/misc/ice/smooth
 	icon_state = "ice_turf-255"
 	base_icon_state = "ice_turf"
@@ -40,11 +82,19 @@
 
 /turf/open/misc/ice/icemoon/no_planet_atmos
 	planetary_atmos = FALSE
+<<<<<<< HEAD
+=======
+	can_make_hole = FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/misc/ice/temperate
 	baseturfs = /turf/open/misc/ice/temperate
 	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
 	initial_gas_mix = COLD_ATMOS //it works with /turf/open/misc/asteroid/snow/temperatre
+<<<<<<< HEAD
+=======
+	can_make_hole = FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //For when you want real, genuine ice in your kitchen's cold room.
 /turf/open/misc/ice/coldroom

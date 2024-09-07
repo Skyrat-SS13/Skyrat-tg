@@ -25,8 +25,11 @@
 	description = "Station 12 has had their fire axes stolen by marauding clowns. Ship them a bone axe as a replacement."
 	reward = CARGO_CRATE_VALUE * 15
 	wanted_types = list(/obj/item/fireaxe/boneaxe = TRUE)
+<<<<<<< HEAD
 */
 //END SKYRAT EDIT REMOVAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/bounty/item/mining/bone_armor
 	name = "Bone Armor"
@@ -46,7 +49,11 @@
 	reward = CARGO_CRATE_VALUE * 15
 	required_count = 3
 	wanted_types = list(/obj/item/clothing/accessory/talisman = TRUE)
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/bounty/item/mining/watcher_wreath
 	name = "Watcher Wreaths"
 	description = "Station 14's Research Director thinks they're onto a break-through on the cultural icons of some pagan beliefs. Ship them a few watcher wreaths for analysis."
@@ -54,6 +61,16 @@
 	reward = CARGO_CRATE_VALUE * 15
 	required_count = 3
 	wanted_types = list(/obj/item/clothing/neck/wreath = TRUE)
+<<<<<<< HEAD
+=======
+
+/datum/bounty/item/mining/icewing_wreath
+	name = "Icewing Wreath"
+	description = "We're getting some....weird messages from Station 14's Research Director. And most of what they said was incoherent. But they apparently want an icewing wreath. Could you send them one?"
+	reward = CARGO_CRATE_VALUE * 30
+	required_count = 1
+	wanted_types = list(/obj/item/clothing/neck/wreath/icewing = TRUE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/bounty/item/mining/icewing_wreath
 	name = "Icewing Wreath"
@@ -70,8 +87,11 @@
 	reward = CARGO_CRATE_VALUE * 10
 	required_count = 3
 	wanted_types = list(/obj/item/knife/combat/bone = TRUE)
+<<<<<<< HEAD
 */
 //END SKYRAT EDIT REMOVAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/bounty/item/mining/polypore_mushroom
 	name = "Mushroom Bowl"

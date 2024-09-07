@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //#define MAX_TIMER (15 MINUTES) //ORIGINAL
 #define MAX_TIMER (60 MINUTES) //SKYRAT EDIT CHANGE
 //#define PRESET_SHORT (2 MINUTES) //ORIGINAL
@@ -6,6 +7,12 @@
 #define PRESET_MEDIUM (10 MINUTES) //SKYRAT EDIT CHANGE
 //#define PRESET_LONG (5 MINUTES) //ORIGINAL
 #define PRESET_LONG (15 MINUTES) //SKYRAT EDIT CHANGE
+=======
+#define MAX_TIMER (15 MINUTES)
+#define PRESET_SHORT (2 MINUTES)
+#define PRESET_MEDIUM (3 MINUTES)
+#define PRESET_LONG (5 MINUTES)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * Brig Door control displays.
@@ -78,7 +85,11 @@
 	if(!timing)
 		return PROCESS_KILL
 
+<<<<<<< HEAD
 	if(REALTIMEOFDAY - activation_time >= timer_duration) // SKYRAT EDIT CHANGE: original was world.time
+=======
+	if(world.time - activation_time >= timer_duration)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		timer_end() // open doors, reset timer, clear status screen
 	update_content()
 
@@ -177,7 +188,11 @@
  * * seconds - Return the time in seconds if TRUE, else deciseconds.
  */
 /obj/machinery/status_display/door_timer/proc/time_left(seconds = FALSE)
+<<<<<<< HEAD
 	. = max(0, timer_duration + (activation_time ? activation_time - REALTIMEOFDAY : 0)) // SKYRAT EDIT CHANGE, Original: . = max(0, timer_duration + (activation_time ? activation_time - world.time : 0))
+=======
+	. = max(0, timer_duration + (activation_time ? activation_time - world.time : 0))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(seconds)
 		. /= (1 SECONDS)
 
@@ -218,7 +233,11 @@
 			break
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/status_display/door_timer/ui_act(action, params)
+=======
+/obj/machinery/status_display/door_timer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

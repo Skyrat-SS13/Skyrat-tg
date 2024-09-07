@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL BEGIN
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 GLOBAL_LIST_INIT(generic_ambience,list(
 	'sound/ambience/ambigen1.ogg',
 	'sound/ambience/ambigen2.ogg',
@@ -14,7 +17,10 @@ GLOBAL_LIST_INIT(generic_ambience,list(
 	'sound/ambience/ambigen13.ogg',
 	'sound/ambience/ambigen14.ogg',
 ))
+<<<<<<< HEAD
 */ //SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 GLOBAL_LIST_INIT(holy_ambience,list(
 	'sound/ambience/ambicha1.ogg',
@@ -111,7 +117,10 @@ GLOBAL_LIST_INIT(spooky_ambience,list(
 ))
 
 GLOBAL_LIST_INIT(space_ambience,list(
+<<<<<<< HEAD
 	'modular_skyrat/master_files/sound/ambience/starlight.ogg', //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	'sound/ambience/ambiatmos.ogg',
 	'sound/ambience/ambispace.ogg',
 	'sound/ambience/ambispace2.ogg',

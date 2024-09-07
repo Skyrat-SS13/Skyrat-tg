@@ -48,6 +48,7 @@
 
 /// Checks if we are in a valid state to suicide (not already suiciding, capable of actually killing ourselves, area checks, etc.) Returns TRUE if we can suicide, FALSE if we can not.
 /mob/living/proc/can_suicide()
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	if(CONFIG_GET(flag/disable_suicide))
 		to_chat(src, span_warning("Suicide is disabled on this server."))
@@ -63,6 +64,17 @@
 		to_chat(src, span_warning("You can't commit suicide here! You can ghost if you'd like."))
 		return FALSE
 
+=======
+	if(HAS_TRAIT_FROM_ONLY(src, TRAIT_SUICIDED, REF(src)))
+		to_chat(src, span_warning("You are already commiting suicide!"))
+		return FALSE
+
+	var/area/checkable = get_area(src)
+	if(checkable.area_flags & BLOCK_SUICIDE)
+		to_chat(src, span_warning("You can't commit suicide here! You can ghost if you'd like."))
+		return FALSE
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(stat)
 		if(CONSCIOUS)
 			return TRUE

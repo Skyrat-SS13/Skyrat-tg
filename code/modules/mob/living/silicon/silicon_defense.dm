@@ -75,11 +75,14 @@
 		to_chat(user, span_danger("You punch [src], but don't leave a dent!"))
 		return TRUE
 	else
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START
 		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !src.incapacitated(IGNORE_RESTRAINTS))
 			visible_message(span_warning("[user] tries to pet [src], but it moves out of the way."))
 			return TRUE
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		visible_message(span_notice("[user] pets [src]."), span_notice("[user] pets you."), null, null, user)
 		to_chat(user, span_notice("You pet [src]."))
 		SEND_SIGNAL(user, COMSIG_MOB_PAT_BORG)

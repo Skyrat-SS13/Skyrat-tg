@@ -147,6 +147,7 @@ SUBSYSTEM_DEF(shuttle)
 	while(length(pack_processing))
 		var/datum/supply_pack/pack = pack_processing[length(pack_processing)]
 		pack_processing.len--
+<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if(pack == /datum/supply_pack/armament)
 			continue
@@ -159,6 +160,16 @@ SUBSYSTEM_DEF(shuttle)
 			pack_processing += generated_packs
 			continue
 
+=======
+		if(ispath(pack, /datum/supply_pack))
+			pack = new pack
+
+		var/list/generated_packs = pack.generate_supply_packs()
+		if(generated_packs)
+			pack_processing += generated_packs
+			continue
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		//we have to create the pack before checking if it has 'contains' because generate_supply_packs manually sets it, therefore we cant check initial.
 		if(!pack.contains)
 			continue
@@ -279,7 +290,11 @@ SUBSYSTEM_DEF(shuttle)
 		priority_announce(
 			text = "Emergency shuttle uplink interference detected, shuttle call disabled while the system reinitializes. Estimated restore in [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
 			title = "Uplink Interference",
+<<<<<<< HEAD
 			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
+=======
+			sound = 'sound/misc/announce_dig.ogg',
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
 		)
@@ -293,7 +308,11 @@ SUBSYSTEM_DEF(shuttle)
 		priority_announce(
 			text= "Emergency shuttle uplink services are now back online.",
 			title = "Uplink Restored",
+<<<<<<< HEAD
 			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
+=======
+			sound = 'sound/misc/announce_dig.ogg',
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "green",
 		)
@@ -446,8 +465,12 @@ SUBSYSTEM_DEF(shuttle)
 			if(emergency.timeLeft(1) < emergency_call_time)
 				return
 		if(SEC_LEVEL_BLUE)
+<<<<<<< HEAD
 			//if(emergency.timeLeft(1) < emergency_call_time * 0.5) ORIGINAL
 			if(emergency.timeLeft(1) < emergency_call_time * 0.6) //SKYRAT EDIT CHANGE - ALERTS
+=======
+			if(emergency.timeLeft(1) < emergency_call_time * 0.5)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 		//SKYRAT EDIT ADDITION BEGIN - ALERTS
 		if(SEC_LEVEL_ORANGE)
@@ -1052,7 +1075,11 @@ SUBSYSTEM_DEF(shuttle)
 
 	return data
 
+<<<<<<< HEAD
 /datum/controller/subsystem/shuttle/ui_act(action, params)
+=======
+/datum/controller/subsystem/shuttle/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

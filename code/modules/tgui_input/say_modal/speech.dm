@@ -10,7 +10,11 @@
 /datum/tgui_say/proc/alter_entry(payload)
 	var/entry = payload["entry"]
 	/// No OOC leaks
+<<<<<<< HEAD
 	if(!entry || payload["channel"] == OOC_CHANNEL || payload["channel"] == ME_CHANNEL || payload["channel"] == LOOC_CHANNEL) // SKYRAT EDIT CHANGE - CUSTOMIZATION
+=======
+	if(!entry || payload["channel"] == OOC_CHANNEL || payload["channel"] == ME_CHANNEL)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return pick(hurt_phrases)
 	/// Random trimming for larger sentences
 	if(length(entry) > 50)
@@ -47,6 +51,7 @@
 		if(ADMIN_CHANNEL)
 			SSadmin_verbs.dynamic_invoke_verb(client, /datum/admin_verb/cmd_admin_say, entry)
 			return TRUE
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START - CUSTOMIZATION
 		if(LOOC_CHANNEL)
 			client.looc(entry)
@@ -55,6 +60,8 @@
 			client.mob.whisper_verb(entry)
 			return TRUE
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return FALSE
 
 /**

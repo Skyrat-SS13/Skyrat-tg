@@ -11,7 +11,10 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import {
   Objective,
   ObjectivePrintout,
@@ -67,10 +70,16 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
+<<<<<<< HEAD
 // SKYRAT EDIT change height from 750 to 900
 export const AntagInfoChangeling = (props) => {
   return (
     <Window width={720} height={900}>
+=======
+export const AntagInfoChangeling = (props) => {
+  return (
+    <Window width={720} height={750}>
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       <Window.Content
         style={{
           backgroundImage: 'none',
@@ -80,11 +89,14 @@ export const AntagInfoChangeling = (props) => {
           <Stack.Item maxHeight={16}>
             <IntroductionSection />
           </Stack.Item>
+<<<<<<< HEAD
           {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
           {/* SKYRAT EDIT ADDITION END */}
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           <Stack.Item grow={4}>
             <AbilitiesSection />
           </Stack.Item>

@@ -1,6 +1,10 @@
 /*
  * Tier one entries are unlocked at the start, and are for dna mutants that are:
+<<<<<<< HEAD
  * - easy to aquire (rats)
+=======
+ * - easy to acquire (rats)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * - have a bonus for getting past a threshold
  * - might serve a job purpose for others (goliath) and thus should be gainable early enough
 */

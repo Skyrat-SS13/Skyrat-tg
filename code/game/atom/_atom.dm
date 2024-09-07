@@ -186,6 +186,16 @@
 	if(smoothing_flags & SMOOTH_QUEUED)
 		SSicon_smooth.remove_from_queues(src)
 
+<<<<<<< HEAD
+=======
+	// These lists cease existing when src does, so we need to clear any lua refs to them that exist.
+	if(!(datum_flags & DF_STATIC_OBJECT))
+		DREAMLUAU_CLEAR_REF_USERDATA(contents)
+		DREAMLUAU_CLEAR_REF_USERDATA(filters)
+		DREAMLUAU_CLEAR_REF_USERDATA(overlays)
+		DREAMLUAU_CLEAR_REF_USERDATA(underlays)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /atom/proc/handle_ricochet(obj/projectile/ricocheting_projectile)
@@ -852,11 +862,14 @@
 	var/mob/user = client?.mob
 	if (isnull(user))
 		return
+<<<<<<< HEAD
 	///SKYRAT EDIT ADDITION BEGIN
 	// Face directions on combat mode. No procs, no typechecks, just a var for speed
 	if(user.face_mouse)
 		user.face_atom(src)
 	///SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Screentips
 	var/datum/hud/active_hud = user.hud_used

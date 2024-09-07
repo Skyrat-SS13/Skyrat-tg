@@ -58,7 +58,11 @@
 		return
 
 	if(W)
+<<<<<<< HEAD
 		if(incapacitated())
+=======
+		if(incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return
 
 		//while buckled, you can still connect to and control things like doors, but you can't use your modules
@@ -91,7 +95,11 @@
 
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
+<<<<<<< HEAD
 /mob/living/silicon/robot/CtrlShiftClickOn(atom/target) // Procs overriden in modular_skyrat/modules/Silicon_QoL
+=======
+/mob/living/silicon/robot/CtrlShiftClickOn(atom/target)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	target.BorgCtrlShiftClick(src)
 
 /mob/living/silicon/robot/ShiftClickOn(atom/target)
@@ -203,7 +211,10 @@
 
 	attack_ai(user)
 	return
+<<<<<<< HEAD
 */	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * What happens when the cyborg without active module holds right-click on an item. Returns a SECONDARY_ATTACK_* value.

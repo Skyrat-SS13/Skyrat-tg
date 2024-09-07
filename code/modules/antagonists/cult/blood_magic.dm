@@ -79,7 +79,11 @@
 			return
 		qdel(nullify_spell)
 	BS = possible_spells[entered_spell_name]
+<<<<<<< HEAD
 	if(QDELETED(src) || owner.incapacitated() || !BS || (rune && !(locate(/obj/effect/rune/empower) in range(1, owner))) || (length(spells) >= limit))
+=======
+	if(QDELETED(src) || owner.incapacitated || !BS || (rune && !(locate(/obj/effect/rune/empower) in range(1, owner))) || (length(spells) >= limit))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	to_chat(owner,span_warning("You begin to carve unnatural symbols into your flesh!"))
 	SEND_SOUND(owner, sound('sound/weapons/slice.ogg',0,1,10))
@@ -137,7 +141,11 @@
 	..()
 
 /datum/action/innate/cult/blood_spell/IsAvailable(feedback = FALSE)
+<<<<<<< HEAD
 	if(!IS_CULTIST(owner) || owner.incapacitated() || (!charges && deletes_on_empty))
+=======
+	if(!IS_CULTIST(owner) || owner.incapacitated || (!charges && deletes_on_empty))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return ..()
 
@@ -433,6 +441,7 @@
 /obj/item/melee/blood_magic/stun/cast_spell(mob/living/target, mob/living/carbon/user)
 	if(!istype(target) || IS_CULTIST(target))
 		return
+<<<<<<< HEAD
 	var/datum/antagonist/cult/cultist = IS_CULTIST(user)
 	var/datum/team/cult/cult_team = cultist.get_team()
 	var/effect_coef = 1
@@ -440,6 +449,17 @@
 		effect_coef = 0.1
 	else if(cult_team.cult_risen)
 		effect_coef = 0.4
+=======
+	var/datum/antagonist/cult/cultist = GET_CULTIST(user)
+	var/datum/team/cult/cult_team = cultist?.get_team()
+	var/effect_coef = 1
+	if(cult_team?.cult_ascendent)
+		effect_coef = 0.1
+	else if(cult_team?.cult_risen)
+		effect_coef = 0.4
+	if(IS_CULTIST(user) && isnull(GET_CULTIST(user)))
+		effect_coef = 0.2
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	user.visible_message(
 		span_warning("[user] holds up [user.p_their()] hand, which explodes in a flash of red light!"),
 		span_cult_italic("You attempt to stun [target] with the spell!"),
@@ -464,6 +484,7 @@
 		to_chat(user, span_warning("An eldritch force intervenes as you touch [target], absorbing most of the effects!"))
 		to_chat(target, span_warning("As [user] touches you with vile magicks, the Mansus absorbs most of the effects!"))
 		target.balloon_alert_to_viewers("absorbed!")
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START
 	else if(IS_CLOCK(target))
 		to_chat(user, span_warning("Some force greater than you intervenes! [target] is protected by the heretic Ratvar!"))
@@ -472,6 +493,8 @@
 		target.color = rgb(190, 135, 0)
 		animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
 		// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else if(target.can_block_magic())
 		to_chat(user, span_warning("The spell had no effect!"))
 	else
@@ -521,7 +544,11 @@
 		to_chat(user, span_warning("You must pick a valid rune!"))
 		return
 	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
+<<<<<<< HEAD
 	if(QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated() || !actual_selected_rune)
+=======
+	if(QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated || !actual_selected_rune)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	var/turf/dest = get_turf(actual_selected_rune)
 	if(dest.is_blocked_turf(TRUE))
@@ -707,7 +734,11 @@
 /obj/item/melee/blood_magic/construction/proc/check_menu(mob/user)
 	if(!istype(user))
 		CRASH("The cult construct selection radial menu was accessed by something other than a valid user.")
+<<<<<<< HEAD
 	if(user.incapacitated() || !user.Adjacent(src))
+=======
+	if(user.incapacitated || !user.Adjacent(src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 
@@ -973,7 +1004,11 @@
 /obj/item/melee/blood_magic/manipulator/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		CRASH("The Blood Rites manipulator radial menu was accessed by something other than a valid user.")
+<<<<<<< HEAD
 	if(user.incapacitated() || !user.Adjacent(src))
+=======
+	if(user.incapacitated || !user.Adjacent(src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 

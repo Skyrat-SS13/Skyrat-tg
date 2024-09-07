@@ -17,7 +17,10 @@
 	/// whether we are currently being loaded by a lobby
 	var/template_in_use = FALSE
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/lazy_template/deathmatch/ragecage
 	name = "Ragecage"
 	desc = "Fun for the whole family, the classic ragecage."
@@ -205,5 +208,48 @@
 	map_name = "finaldestination"
 	key = "finaldestination"
 
+<<<<<<< HEAD
+=======
+/datum/lazy_template/deathmatch/species_warfare
+	name = "Species Warfare"
+	desc = "Choose your favorite species and prove its superiority against all the other, lamer species. And also anyone else of your own."
+	max_players = 8
+	allowed_loadouts = list(
+		/datum/outfit/deathmatch_loadout/humanity,
+		/datum/outfit/deathmatch_loadout/lizardkind,
+		/datum/outfit/deathmatch_loadout/mothman,
+		/datum/outfit/deathmatch_loadout/ethereal,
+		/datum/outfit/deathmatch_loadout/plasmamen,
+		/datum/outfit/deathmatch_loadout/felinid,
+	)
+	map_name = "species_warfare"
+	key = "species_warfare"
+
+/datum/lazy_template/deathmatch/lattice_battles
+	name = "Lattice Battles"
+	desc = "Tired of fisticuffs all the time? Just snip the catwalk underneath instead!"
+	max_players = 8
+	allowed_loadouts = list(
+		/datum/outfit/deathmatch_loadout/lattice_battles,
+	)
+	map_name = "lattice_battles"
+	key = "lattice_battles"
+
+/datum/lazy_template/deathmatch/ragnarok
+	name = "Ragnarok"
+	desc = "Cultists, heretics, and chaplains all duking it out in the jungle to retrieve the McGuffin."
+	max_players = 8
+	allowed_loadouts = list(
+		/datum/outfit/deathmatch_loadout/cultish/invoker,
+		/datum/outfit/deathmatch_loadout/cultish/artificer,
+		/datum/outfit/deathmatch_loadout/heresy/warrior,
+		/datum/outfit/deathmatch_loadout/heresy/scribe,
+		/datum/outfit/deathmatch_loadout/holy_crusader,
+		/datum/outfit/deathmatch_loadout/clock_cult,
+	)
+	map_name = "ragnarok"
+	key = "ragnarok"
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/turf_reservation/indestructible_plating
 	turf_type = /turf/open/indestructible/plating //a little hacky but i guess it has to be done

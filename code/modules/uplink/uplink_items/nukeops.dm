@@ -253,8 +253,13 @@
 
 /datum/uplink_item/weapon_kits/high_cost/machinegun
 	name = "L6 Squad Automatic Weapon (Moderate)"
+<<<<<<< HEAD
 	desc = "A fully-loaded Scarborough Arms belt-fed machine gun. \
 			This deadly weapon has a 50-round box chambered for 7.12x82mm ammunition." //SKYRAT EDIT - AUSSEC TO SCARBOROUGH
+=======
+	desc = "A fully-loaded Aussec Armoury belt-fed machine gun. \
+		This deadly weapon has a massive 50-round magazine of devastating 7mm ammunition."
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	item = /obj/item/gun/ballistic/automatic/l6_saw
 
 /datum/uplink_item/ammo_nuclear/basic/machinegun

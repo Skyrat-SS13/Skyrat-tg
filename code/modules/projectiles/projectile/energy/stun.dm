@@ -2,7 +2,10 @@
 	name = "electrode"
 	icon_state = "spark"
 	color = COLOR_YELLOW
+<<<<<<< HEAD
 	stamina = 70 // SKYRAT EDIT CHANGE
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	paralyze = 10 SECONDS
 	stutter = 10 SECONDS
 	jitter = 40 SECONDS
@@ -19,7 +22,10 @@
 		do_sparks(1, TRUE, src)
 	else if(iscarbon(target))
 		var/mob/living/carbon/C = target
+<<<<<<< HEAD
 		C.adjust_confusion_up_to(15 SECONDS, 30 SECONDS) // SKYRAT EDIT ADDITION - Electrode jitteriness
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		C.add_mood_event("tased", /datum/mood_event/tased)
 		SEND_SIGNAL(C, COMSIG_LIVING_MINOR_SHOCK)
 		if(HAS_TRAIT(C, TRAIT_HULK))

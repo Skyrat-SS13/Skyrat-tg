@@ -1,6 +1,10 @@
 /**
  * This component behaves similar to connect_loc_behalf but for all turfs in range, hooking into a signal on each of them.
+<<<<<<< HEAD
  * Just like connect_loc_behalf, It can react to that signal on behalf of a seperate listener.
+=======
+ * Just like connect_loc_behalf, It can react to that signal on behalf of a separate listener.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * Good for components, though it carries some overhead. Can't be an element as that may lead to bugs.
  */
 /datum/component/connect_range

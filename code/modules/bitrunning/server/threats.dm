@@ -176,7 +176,11 @@
 /// Removes any invalid candidates from the list
 /obj/machinery/quantum_server/proc/validate_mutation_candidates()
 	for(var/datum/weakref/creature_ref as anything in mutation_candidate_refs)
+<<<<<<< HEAD
 		var/mob/living/creature = creature_ref.resolve()
+=======
+		var/mob/living/creature = creature_ref?.resolve()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(isnull(creature) || creature.mind)
 			mutation_candidate_refs.Remove(creature_ref)
 

@@ -80,7 +80,10 @@
 	return FALSE
 
 #define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2.5 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
+<<<<<<< HEAD
 #define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Modifier given to surgery speed for dissected bodies.
 #define SURGERY_SPEED_DISSECTION_MODIFIER 0.8
 ///Modifier given to users with TRAIT_MORBID on certain surgeries
@@ -120,10 +123,15 @@
 	if(check_morbid_curiosity(user, tool, surgery))
 		speed_mod *= SURGERY_SPEED_MORBID_CURIOSITY
 
+<<<<<<< HEAD
 	/* SKYRAT EDIT START - Worked in with reward buffs below
 	if(HAS_TRAIT(target, TRAIT_ANALGESIA))
 		speed_mod *= SURGERY_SPEED_TRAIT_ANALGESIA
 	*/ // SKYRAT EDIT END
+=======
+	if(HAS_TRAIT(target, TRAIT_ANALGESIA))
+		speed_mod *= SURGERY_SPEED_TRAIT_ANALGESIA
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/implement_speed_mod = 1
 	if(implement_type) //this means it isn't a require hand or any item step.
@@ -141,6 +149,7 @@
 
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
+<<<<<<< HEAD
 	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
 	if(was_sleeping || HAS_TRAIT(target, TRAIT_ANALGESIA) || target.stat == DEAD)
 		modded_time *= SURGERY_SPEEDUP_AREA
@@ -155,6 +164,8 @@
 		to_chat(user, span_notice("You are able to work faster due to the quiet environment!"))
 	// Skyrat Edit End
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(do_after(user, modded_time, target = target, interaction_key = user.has_status_effect(/datum/status_effect/hippocratic_oath) ? target : DOAFTER_SOURCE_SURGERY)) //If we have the hippocratic oath, we can perform one surgery on each target, otherwise we can only do one surgery in total.
 
 		if((prob(100-fail_prob) || (iscyborg(user) && !silicons_obey_prob)) && !try_to_fail)
@@ -181,6 +192,34 @@
 	surgery.step_in_progress = FALSE
 	return advance
 #undef SURGERY_SPEEDUP_AREA // SKYRAT EDIT ADDITION
+/**
+ * Handles updating the mob's mood depending on the surgery states.
+ * * surgery_state = SURGERY_STATE_STARTED, SURGERY_STATE_FAILURE, SURGERY_STATE_SUCCESS
+ * * To prevent typos, the event category is defined as SURGERY_MOOD_CATEGORY ("surgery")
+*/
+/datum/surgery_step/proc/update_surgery_mood(mob/living/target, surgery_state)
+	if(!target)
+		CRASH("Not passed a target, how did we get here?")
+	if(!surgery_effects_mood)
+		return
+	if(HAS_TRAIT(target, TRAIT_ANALGESIA))
+		target.clear_mood_event(SURGERY_MOOD_CATEGORY) //incase they gained the trait mid-surgery. has the added side effect that if someone has a bad surgical memory/mood and gets drunk & goes back to surgery, they'll forget they hated it, which is kinda funny imo.
+		return
+	if(target.stat >= UNCONSCIOUS)
+		var/datum/mood_event/surgery/target_mood_event = target.mob_mood.mood_events[SURGERY_MOOD_CATEGORY]
+		if(!target_mood_event || target_mood_event.surgery_completed) //don't give sleeping mobs trauma. that said, if they fell asleep mid-surgery after already getting the bad mood, lets make sure they wake up to a (hopefully) happy memory.
+			return
+	switch(surgery_state)
+		if(SURGERY_STATE_STARTED)
+			target.add_mood_event(SURGERY_MOOD_CATEGORY, surgery_started_mood_event)
+		if(SURGERY_STATE_SUCCESS)
+			target.add_mood_event(SURGERY_MOOD_CATEGORY, surgery_success_mood_event)
+		if(SURGERY_STATE_FAILURE)
+			target.add_mood_event(SURGERY_MOOD_CATEGORY, surgery_failure_mood_event)
+		else
+			CRASH("passed invalid surgery_state, \"[surgery_state]\".")
+
+
 /**
  * Handles updating the mob's mood depending on the surgery states.
  * * surgery_state = SURGERY_STATE_STARTED, SURGERY_STATE_FAILURE, SURGERY_STATE_SUCCESS
@@ -334,6 +373,7 @@
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(target.stat < UNCONSCIOUS)
 		if(HAS_TRAIT(target, TRAIT_ANALGESIA))
+<<<<<<< HEAD
 			target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery) // SKYRAT EDIT ADDITION - Adds mood effects to surgeries
 			if(!pain_message)
 				return
@@ -344,6 +384,12 @@
 		// SKYRAT EDIT ADDITION END
 		else
 			target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery) // SKYRAT EDIT ADDITION - Adds mood effects to surgeries
+=======
+			if(!pain_message)
+				return
+			to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
+		else
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(!pain_message)
 				return
 			to_chat(target, span_userdanger(pain_message))

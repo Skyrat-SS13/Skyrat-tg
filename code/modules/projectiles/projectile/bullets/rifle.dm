@@ -140,6 +140,7 @@
 /obj/projectile/bullet/rebar/hydrogen
 	name = "metallic hydrogen bolt"
 	icon_state = "rebar_hydrogen"
+<<<<<<< HEAD
 	damage = 40
 	speed = 0.6
 	dismemberment = 0 //goes through clean.
@@ -161,6 +162,40 @@
 	pain_mult = 4
 	jostle_pain_mult = 2
 	rip_time =18
+=======
+	damage = 55
+	speed = 0.6
+	projectile_piercing = PASSMOB|PASSVEHICLE
+	projectile_phasing = ~(PASSMOB|PASSVEHICLE)
+	phasing_ignore_direct_target = TRUE
+	dismemberment = 0 //goes through clean.
+	damage_type = BRUTE
+	armour_penetration = 30 //very pointy.
+	wound_bonus = -15
+	bare_wound_bonus = 10
+	shrapnel_type = /obj/item/ammo_casing/rebar/hydrogen
+	embed_type = /datum/embed_data/rebar_hydrogen
+	embed_falloff_tile = -3
+	shrapnel_type = /obj/item/ammo_casing/rebar/hydrogen
+	accurate_range = 205 //15 tiles before falloff starts to kick in
+
+/obj/projectile/bullet/rebar/hydrogen/Impact(atom/A)
+	. = ..()
+	def_zone = ran_zone(def_zone, clamp(205-(7*get_dist(get_turf(A), starting)), 5, 100))
+
+/datum/embed_data/rebar_hydrogen
+	embed_chance = 0
+
+/obj/projectile/bullet/rebar/hydrogen/on_hit(atom/target, blocked, pierce_hit)
+	if(isAI(target))
+		return BULLET_ACT_FORCE_PIERCE
+	return ..()
+
+/obj/projectile/bullet/rebar/hydrogen/process_hit(turf/T, atom/target, atom/bumped, hit_something)
+	. = ..()
+	if(pierces >= 3)
+		qdel(src)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/projectile/bullet/rebar/healium
 	name = "healium bolt"

@@ -1,6 +1,10 @@
 /// Makes sure turf icons actually exist. :)
 /datum/unit_test/turf_icons
+<<<<<<< HEAD
 	var/modular_mineral_turf_file = 'modular_skyrat/modules/xenoarch/icons/mining.dmi' //= 'icons/turf/mining.dmi' //MODULARITY SUPPORT - insert your snowflake MAP_SWITCH icon file here if you use that define. // SKYRAT EDIT - Added our modular file here (thanks)
+=======
+	var/modular_mineral_turf_file //= 'icons/turf/mining.dmi' //MODULARITY SUPPORT - insert your snowflake MAP_SWITCH icon file here if you use that define.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/unit_test/turf_icons/Run()
 	for(var/turf/turf_path as anything in (subtypesof(/turf) - typesof(/turf/closed/mineral)))
@@ -28,10 +32,13 @@
 
 	var/list/ignored_types = list()
 	//ignored_types += typesof(YOUR_DOWNSTREAM_TYPEPATH(s)_HERE) //MODULARITY SUPPORT. If you have snowflake typepaths that are blacklisted in, for example, create & destroy unit test because they require certain SS's being init, use this to blacklist them.
+<<<<<<< HEAD
 	//SKYRAT EDIT START
 	ignored_types += typesof(/turf/open/openspace/ocean)
 	ignored_types += typesof(/turf/open/misc/ocean)
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 	for(var/turf/open/open_turf_path as anything in (subtypesof(/turf/open) - ignored_types))

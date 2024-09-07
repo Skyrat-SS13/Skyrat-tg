@@ -213,6 +213,7 @@
 	var/reaction_message = equilibrium.reaction.mix_message
 	if(equilibrium.reaction.mix_sound)
 		playsound(get_turf(my_atom), equilibrium.reaction.mix_sound, 80, TRUE)
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	//If the reaction pollutes, pollute it here if we have an atom
 	if(equilibrium.reaction.pollutant_type && my_atom)
@@ -220,6 +221,8 @@
 		if(my_turf) // reactions can happen in nullspace (like inside of a mob's stomach for instance).
 			my_turf.pollute_turf(equilibrium.reaction.pollutant_type, equilibrium.reaction.pollutant_amount * equilibrium.reacted_vol)
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	qdel(equilibrium)
 	update_total()
 	SEND_SIGNAL(src, COMSIG_REAGENTS_REACTED, .)
@@ -348,6 +351,7 @@
 				extract.desc = "This extract has been used up."
 				extract.grind_results.Cut()
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	//If the reaction pollutes, pollute it here if we have an atom
 	if(selected_reaction.pollutant_type && my_atom)
@@ -356,5 +360,7 @@
 			my_turf.pollute_turf(selected_reaction.pollutant_type, selected_reaction.pollutant_amount * multiplier)
 	//SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//finish the reaction
 	selected_reaction.on_reaction(src, null, multiplier)

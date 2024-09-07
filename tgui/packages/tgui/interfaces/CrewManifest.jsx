@@ -10,12 +10,18 @@ const commandJobs = [
   'Chief Engineer',
   'Research Director',
   'Chief Medical Officer',
+<<<<<<< HEAD
   'Quartermaster', // SKYRAT EDIT
   'Nanotrasen Consultant', // SKYRAT EDIT
 ];
 
 // SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
 // Any instance of crewMember.trim was originally crewMember.rank
+=======
+  'Quartermaster',
+];
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 export const CrewManifest = (props) => {
   const {
     data: { manifest, positions },
@@ -105,4 +111,7 @@ export const CrewManifest = (props) => {
     </Window>
   );
 };
+<<<<<<< HEAD
 // SKYRAT EDIT CHANGE END - ALTERNATIVE_JOB_TITLES
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

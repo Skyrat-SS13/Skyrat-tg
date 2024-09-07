@@ -141,7 +141,10 @@
 	cost = 80
 	purchasable_from = UPLINK_CLOWN_OPS
 
+<<<<<<< HEAD
 /* // SKYRAT EDIT REMOVAL START
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/uplink_item/stealthy_tools/combatbananashoes
 	name = "Combat Banana Shoes"
 	desc = "While making the wearer immune to most slipping attacks like regular combat clown shoes, these shoes \
@@ -151,7 +154,10 @@
 	cost = 6
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
+<<<<<<< HEAD
 */ // SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/uplink_item/badass/clownopclumsinessinjector //clowns can buy this too, but it's in the role-restricted items section for them
 	name = "Clumsiness Injector"

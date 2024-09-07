@@ -623,7 +623,11 @@ Then we space some of our heat, and think about if we should stop conducting.
 				continue
 			var/turf/neighbor = get_step(src, direction)
 
+<<<<<<< HEAD
 			if(!neighbor?.thermal_conductivity)
+=======
+			if(!neighbor.thermal_conductivity)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				continue
 
 			if(neighbor.archived_cycle < SSair.times_fired)

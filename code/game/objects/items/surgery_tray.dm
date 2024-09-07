@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /datum/storage/surgery_tray
 	max_total_storage = 30
 	max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -24,6 +25,8 @@
 		/obj/item/surgicaldrill,
 	))
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /**
  * Surgery Trays
  * A storage object that displays tools in its contents based on tier, better tools are more visible.
@@ -195,7 +198,10 @@
 	new /obj/item/cautery(src)
 	new /obj/item/circular_saw(src)
 	new /obj/item/clothing/mask/surgical(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src) // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/hemostat(src)
 	new /obj/item/razor/surgery(src)
 	new /obj/item/retractor(src)
@@ -217,7 +223,10 @@
 	new /obj/item/cautery/cruel(src)
 	new /obj/item/circular_saw(src)
 	new /obj/item/clothing/mask/surgical(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src) // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/hemostat/cruel(src)
 	new /obj/item/razor/surgery(src)
 	new /obj/item/retractor/cruel(src)

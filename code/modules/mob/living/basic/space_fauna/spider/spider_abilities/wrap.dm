@@ -26,7 +26,11 @@
 
 /datum/action/cooldown/mob_cooldown/wrap/IsAvailable(feedback = FALSE)
 	. = ..()
+<<<<<<< HEAD
 	if(!. || owner.incapacitated())
+=======
+	if(!. || owner.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)

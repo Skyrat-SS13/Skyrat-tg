@@ -19,7 +19,10 @@
 #define BUGS (1<<18)
 #define GORE (1<<19)
 #define STONE (1<<20)
+<<<<<<< HEAD
 #define BLOODY (1<<21) // SKYRAT EDIT - Hemophage Food
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 DEFINE_BITFIELD(foodtypes, list(
 	"MEAT" = MEAT,
@@ -43,7 +46,10 @@ DEFINE_BITFIELD(foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+<<<<<<< HEAD
 	"BLOODY" = BLOODY, // SKYRAT EDIT - Hemophage Food
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 /// A list of food type names, in order of their flags
@@ -69,7 +75,10 @@ DEFINE_BITFIELD(foodtypes, list(
 	"BUGS", \
 	"GORE", \
 	"STONE", \
+<<<<<<< HEAD
 	"BLOODY", /* SKYRAT EDIT - Hemophage Food */ \
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 )
 
 /// IC meaning (more or less) for food flags
@@ -95,7 +104,10 @@ DEFINE_BITFIELD(foodtypes, list(
 	"Bugs", \
 	"Gore", \
 	"Rocks", \
+<<<<<<< HEAD
 	"Bloody", /* SKYRAT EDIT - Hemophage Food */ \
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 )
 
 #define DRINK_REVOLTING 1
@@ -105,7 +117,10 @@ DEFINE_BITFIELD(foodtypes, list(
 #define DRINK_FANTASTIC 5
 
 #define FOOD_AMAZING 6
+<<<<<<< HEAD
 #define RACE_DRINK 7 // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #define FOOD_QUALITY_NORMAL 1
 #define FOOD_QUALITY_NICE 2
@@ -175,14 +190,25 @@ GLOBAL_LIST_INIT(food_buffs, list(
 #define FOOD_IN_CONTAINER (1<<0)
 /// Finger food can be eaten while walking / running around
 #define FOOD_FINGER_FOOD (1<<1)
+<<<<<<< HEAD
+=======
+
+DEFINE_BITFIELD(food_flags, list(
+	"FOOD_FINGER_FOOD" = FOOD_FINGER_FOOD,
+	"FOOD_IN_CONTAINER" = FOOD_IN_CONTAINER,
+))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 DEFINE_BITFIELD(food_flags, list(
 	"FOOD_FINGER_FOOD" = FOOD_FINGER_FOOD,
 	"FOOD_IN_CONTAINER" = FOOD_IN_CONTAINER,
 ))
 
+<<<<<<< HEAD
 #define STOP_SERVING_BREAKFAST (35 MINUTES) // SKYRAT EDIT - ORIGINAL: 15 MINUTES
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define FOOD_MEAT_HUMAN 50
 #define FOOD_MEAT_MUTANT 100
 #define FOOD_MEAT_MUTANT_RARE 200

@@ -19,7 +19,11 @@
 /// We'll use another define to convert uses of the proc over. That'll be all
 // #define APPEARANCE_SUCCESS_TRACKING
 
+<<<<<<< HEAD
 ///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
+=======
+///Used to find the sources of harddels, quite laggy, don't be surprised if it freezes your client for a good while
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //#define REFERENCE_TRACKING
 #ifdef REFERENCE_TRACKING
 
@@ -131,7 +135,11 @@
 #warn compiling in TESTING mode. testing() debug messages will be visible.
 #endif
 
+<<<<<<< HEAD
 #ifdef CIBUILDING
+=======
+#if defined(CIBUILDING) && !defined(OPENDREAM)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define UNIT_TESTS
 #endif
 
@@ -156,10 +164,24 @@
 #define CBT
 #endif
 
+<<<<<<< HEAD
 #if !defined(CBT) && !defined(SPACEMAN_DMM)
 #warn Building with Dream Maker is no longer supported and will result in errors.
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+=======
+#if defined(OPENDREAM)
+	#if !defined(CIBUILDING)
+		#warn You are building with OpenDream. Remember to build TGUI manually.
+		#warn You can do this by running tgui-build.cmd from the bin directory.
+	#endif
+#else
+	#if !defined(CBT) && !defined(SPACEMAN_DMM)
+		#warn Building with Dream Maker is no longer supported and will result in errors.
+		#warn In order to build, run BUILD.cmd in the root directory.
+		#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+	#endif
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #endif
 
 /// Runs the game in "map test mode"

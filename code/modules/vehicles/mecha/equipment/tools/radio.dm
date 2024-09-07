@@ -36,7 +36,11 @@
 			return TRUE
 		if("set_frequency")
 			var/new_frequency = text2num(params["new_frequency"])
+<<<<<<< HEAD
 			radio.set_frequency(sanitize_frequency(new_frequency, radio.freerange, radio.syndie))
+=======
+			radio.set_frequency(sanitize_frequency(new_frequency, radio.freerange, (radio.special_channels & RADIO_SPECIAL_SYNDIE)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return TRUE
 	return FALSE
 

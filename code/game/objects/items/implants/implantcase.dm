@@ -1,7 +1,11 @@
 /**
  * Item used to store implants. Can be renamed with a pen. Implants are moved between those and implanters when a mob uses an implanter on a case.
  */
+<<<<<<< HEAD
 /obj/item/implantcase//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
+=======
+/obj/item/implantcase
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	name = "implant case"
 	desc = "A glass case containing an implant."
 	icon = 'icons/obj/medical/syringe.dmi'

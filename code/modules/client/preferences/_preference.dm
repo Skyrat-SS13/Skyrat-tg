@@ -111,10 +111,13 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	/// DOES have random body on, will this already be randomized?
 	var/randomize_by_default = TRUE
 
+<<<<<<< HEAD
 	/// If the selected species has this in its /datum/species/mutant_bodyparts,
 	/// will show the feature as selectable.
 	var/relevant_mutant_bodypart = null
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// If the selected species has this in its /datum/species/body_markings,
 	/// will show the feature as selectable.
 	var/relevant_body_markings = null
@@ -221,7 +224,11 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Apply this preference onto the given human.
 /// Must be overriden by subtypes.
 /// Called when the savefile_identifier == PREFERENCE_CHARACTER.
+<<<<<<< HEAD
 /datum/preference/proc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences) //SKYRAT EDIT CHANGE
+=======
+/datum/preference/proc/apply_to_human(mob/living/carbon/human/target, value)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("`apply_to_human()` was not implemented for [type]!")
@@ -290,6 +297,12 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// This will, for instance, update the character preference view.
 /// Performs sanity checks.
 /datum/preferences/proc/update_preference(datum/preference/preference, preference_value)
+<<<<<<< HEAD
+=======
+	if (!preference.is_accessible(src))
+		return FALSE
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/new_value = preference.deserialize(preference_value, src)
 	var/success = preference.write(null, new_value)
 
@@ -333,8 +346,12 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if ( \
+<<<<<<< HEAD
 		!isnull(relevant_mutant_bodypart) \
 		|| !isnull(relevant_inherent_trait) \
+=======
+		!isnull(relevant_inherent_trait) \
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		|| !isnull(relevant_external_organ) \
 		|| !isnull(relevant_head_flag) \
 		|| !isnull(relevant_body_markings) \

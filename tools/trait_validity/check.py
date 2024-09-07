@@ -14,7 +14,10 @@ def red(text):
 on_github = os.getenv("GITHUB_ACTIONS") == "true"
 
 defines_file = "code/__DEFINES/traits/declarations.dm"
+<<<<<<< HEAD
 skyrat_defines_file = "code/__DEFINES/~skyrat_defines/traits/declarations.dm" # SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 globalvars_file = "code/_globalvars/traits/_traits.dm"
 
 how_to_fix_message = f"Please ensure that all traits in the {defines_file} file are added in the {globalvars_file} file."
@@ -31,12 +34,15 @@ if not os.path.isfile(defines_file):
 	print(red(f"Could not find the defines file '{defines_file}'!"))
 	sys.exit(1)
 
+<<<<<<< HEAD
 # SKYRAT EDIT ADDITION START
 if not os.path.isfile(skyrat_defines_file):
 	print(red(f"Could not find the skyrat defines file '{skyrat_defines_file}'!"))
 	sys.exit(1)
 # SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 if not os.path.isfile(globalvars_file):
 	print(red(f"Could not find the globalvars file '{globalvars_file}'!"))
 	sys.exit(1)
@@ -69,6 +75,7 @@ for potential_define in scannable_lines:
 	number_of_defines += 1
 	defines_to_search_for.append(match.group(2))
 
+<<<<<<< HEAD
 # SKYRAT EDIT ADDITION START
 scannable_lines = []
 with open(skyrat_defines_file, 'r') as file:
@@ -96,6 +103,8 @@ for potential_define in scannable_lines:
 	defines_to_search_for.append(match.group(2))
 # SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 if number_of_defines == 0:
 	print(red("No defines found! This is likely an error."))
 	sys.exit(1)

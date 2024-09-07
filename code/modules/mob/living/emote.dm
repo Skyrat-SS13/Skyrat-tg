@@ -3,6 +3,19 @@
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
 	mob_type_blacklist_typecache = list(/mob/living/brain)
+<<<<<<< HEAD
+=======
+
+/datum/emote/living/taunt
+	key = "taunt"
+	key_third_person = "taunts"
+	message = "taunts!"
+	cooldown = 1.6 SECONDS //note when changing this- this is used by the matrix taunt to block projectiles.
+
+/datum/emote/living/taunt/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	user.spin(TAUNT_EMOTE_DURATION, 0.1 SECONDS)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/emote/living/blush
 	key = "blush"
@@ -182,7 +195,11 @@
 		return
 
 	var/mob/living/carbon/human/human_user = user
+<<<<<<< HEAD
 	if(human_user.gender == FEMALE) // SKYRAT EDIT CHANGE
+=======
+	if(human_user.physique == FEMALE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
 	return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
 
@@ -426,7 +443,10 @@
 		return
 	return user.dna.species.get_sniff_sound(user)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/emote/living/snore
 	key = "snore"
@@ -678,7 +698,11 @@
 	return TRUE
 
 /datum/emote/living/custom/proc/get_custom_emote_from_user()
+<<<<<<< HEAD
 	return stripped_multiline_input(usr, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN) // SKYRAT EDIT CHANGE - ORIGINAL : return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+=======
+	return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/emote/living/custom/proc/get_custom_emote_type_from_user()
 	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable", "Both")
@@ -697,7 +721,10 @@
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)
 	if(params && type_override)
 		emote_type = type_override
+<<<<<<< HEAD
 	message = user.say_emphasis(message) //SKYRAT EDIT ADDITION - EMOTES
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	///Reset the message and emote type after it's run.
 	message = null

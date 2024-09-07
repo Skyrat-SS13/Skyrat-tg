@@ -48,8 +48,11 @@
 
 	return TRUE
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - SKYRAT_XENO_REDO - Moved to: modular_skyrat\modules\xenos_skyrat_redo\code\xeno_types\larva.dm
 /*
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/action/cooldown/alien/larva_evolve/Activate(atom/target)
 	var/mob/living/carbon/alien/larva/larva = owner
 	var/static/list/caste_options
@@ -103,5 +106,8 @@
 
 	larva.alien_evolve(new_xeno)
 	return TRUE
+<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

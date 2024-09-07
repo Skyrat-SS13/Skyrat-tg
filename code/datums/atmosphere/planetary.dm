@@ -17,7 +17,11 @@
 		/datum/gas/miasma=1.2,
 		/datum/gas/water_vapor=0.1,
 	)
+<<<<<<< HEAD
 	restricted_chance = 0	// SKYRAT EDIT: Disables restricted gases from rolling - Original value (30)
+=======
+	restricted_chance = 30
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	minimum_pressure = HAZARD_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
@@ -42,7 +46,11 @@
 		/datum/gas/water_vapor=0.1,
 		/datum/gas/miasma=1.2,
 	)
+<<<<<<< HEAD
 	restricted_chance = 0	// SKYRAT EDIT: Disables restricted gases from rolling - Original value (20)
+=======
+	restricted_chance = 20
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	minimum_pressure = HAZARD_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1

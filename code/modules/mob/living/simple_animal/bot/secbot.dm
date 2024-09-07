@@ -202,9 +202,16 @@
 	return data
 
 // Actions received from TGUI
+<<<<<<< HEAD
 /mob/living/simple_animal/bot/secbot/ui_act(action, params)
 	. = ..()
 	if(. || (bot_cover_flags & BOT_COVER_LOCKED && !HAS_SILICON_ACCESS(usr)))
+=======
+/mob/living/simple_animal/bot/secbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	var/mob/user = ui.user
+	if(. || (bot_cover_flags & BOT_COVER_LOCKED && !HAS_SILICON_ACCESS(user)))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	switch(action)
@@ -363,11 +370,19 @@
 		weapon.attack(current_target, src)
 	if(ishuman(current_target))
 		current_target.set_stutter(10 SECONDS)
+<<<<<<< HEAD
 		current_target.Paralyze(60) // SKYRAT EDIT CHANGE - original was current_target.Paralyze(100)
 		var/mob/living/carbon/human/human_target = current_target
 		threat = human_target.assess_threat(judgement_criteria)
 	else
 		current_target.Paralyze(60) // SKYRAT EDIT CHANGE - original was current_target.Paralyze(100)
+=======
+		current_target.Paralyze(100)
+		var/mob/living/carbon/human/human_target = current_target
+		threat = human_target.assess_threat(judgement_criteria)
+	else
+		current_target.Paralyze(100)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		current_target.set_stutter(10 SECONDS)
 		threat = current_target.assess_threat(judgement_criteria)
 

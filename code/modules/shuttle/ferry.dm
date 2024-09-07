@@ -23,6 +23,10 @@
 /obj/machinery/computer/shuttle/ferry/request
 	name = "ferry console"
 	circuit = /obj/item/circuitboard/computer/ferry/request
+<<<<<<< HEAD
 	possible_destinations = "ferry_home;ferry_away;ferry_ntf" //SKYRAT EDIT CHANGE
+=======
+	possible_destinations = "ferry_home;ferry_away"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	req_access = list(ACCESS_CENT_GENERAL)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF

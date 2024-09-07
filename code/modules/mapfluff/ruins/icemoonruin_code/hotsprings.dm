@@ -14,7 +14,12 @@
 	baseturfs = /turf/open/water/cursed_spring
 	planetary_atmos = TRUE
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
+=======
+	fishing_datum = /datum/fish_source/cursed_spring
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/water/cursed_spring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(!isliving(arrived))
@@ -39,4 +44,7 @@
 	var/turf/return_turf = find_safe_turf(extended_safety_checks = TRUE, dense_atoms = FALSE)
 	transformed_mob.forceMove(return_turf)
 	to_chat(transformed_mob, span_notice("You blink and find yourself in [get_area_name(return_turf)]."))
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

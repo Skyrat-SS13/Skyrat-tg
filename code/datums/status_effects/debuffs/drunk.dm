@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // SKYRAT EDIT CHANGE BEGIN - ALCOHOL_PROCESSING
 // Defines for the ballmer peak.
 #define BALLMER_PEAK_LOW_END 25.8 // Original 12.9
@@ -7,6 +8,15 @@
 /// The threshld which determine if someone is tipsy vs drunk
 #define TIPSY_THRESHOLD 23.4 // Original 6
 // SKYRAT EDIT CHANGE END - ALCOHOL_PROCESSING
+=======
+// Defines for the ballmer peak.
+#define BALLMER_PEAK_LOW_END 12.9
+#define BALLMER_PEAK_HIGH_END 13.8
+#define BALLMER_PEAK_WINDOWS_ME 26
+
+/// The threshld which determine if someone is tipsy vs drunk
+#define TIPSY_THRESHOLD 6
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * The drunk status effect.
@@ -71,7 +81,11 @@
 	// Every tick, the drunk value decrases by
 	// 4% the current drunk_value + 0.01
 	// (until it reaches 0 and terminates)
+<<<<<<< HEAD
 	set_drunk_value(drunk_value - (drunk_value * 0.0015)) // SKYRAT EDIT CHANGE - ALCOHOL_PROCESSING - ORIGINAL: set_drunk_value(drunk_value - (0.01 + drunk_value * 0.04)
+=======
+	set_drunk_value(drunk_value - (0.01 + drunk_value * 0.04))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(QDELETED(src))
 		return
 
@@ -146,8 +160,11 @@
 		if(drunk_value > BALLMER_PEAK_WINDOWS_ME) // by this point you're into windows ME territory
 			owner.say(pick_list_replacements(VISTA_FILE, "ballmer_windows_me_msg"), forced = "ballmer")
 
+<<<<<<< HEAD
 	// SKYRAT EDIT CHANGE BEGIN - ALCOHOL_PROCESSING
 	/* ORIGINAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Drunk slurring scales in intensity based on how drunk we are -at 16 you will likely not even notice it,
 	// but when we start to scale up you definitely will
 	if(drunk_value >= 16)
@@ -175,6 +192,7 @@
 	// Over 71, we will constantly have blurry eyes
 	if(drunk_value >= 71)
 		owner.set_eye_blur_if_lower((drunk_value * 2 SECONDS) - 140 SECONDS)
+<<<<<<< HEAD
 	*/
 
 	// And drunk people will always lose jitteriness
@@ -205,23 +223,39 @@
 
 	// Over 81, we will gain constant toxloss
 	if(drunk_value >= 83.4)
+=======
+
+	// Over 81, we will gain constant toxloss
+	if(drunk_value >= 81)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		owner.adjustToxLoss(1)
 		if(owner.stat == CONSCIOUS && prob(5))
 			to_chat(owner, span_warning("Maybe you should lie down for a bit..."))
 
 	// Over 91, we gain even more toxloss, brain damage, and have a chance of dropping into a long sleep
+<<<<<<< HEAD
 	if(drunk_value >= 93.4)
+=======
+	if(drunk_value >= 91)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		owner.adjustToxLoss(1)
 		owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 		if(owner.stat == CONSCIOUS)
 			attempt_to_blackout()
 
 	// And finally, over 100 - let's be honest, you shouldn't be alive by now.
+<<<<<<< HEAD
 	if(drunk_value >= 103.4)
 		owner.adjustToxLoss(2)
 
 /datum/status_effect/inebriated/drunk/proc/attempt_to_blackout()
 	/* SKYRAT EDIT REMOVAL - Blackout drunk begone
+=======
+	if(drunk_value >= 101)
+		owner.adjustToxLoss(2)
+
+/datum/status_effect/inebriated/drunk/proc/attempt_to_blackout()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mob/living/carbon/drunkard = owner
 	if(drunkard.has_trauma_type(/datum/brain_trauma/severe/split_personality/blackout))// prevent ping spamming
 		if(prob(10))
@@ -231,7 +265,10 @@
 	if(drunkard.gain_trauma(/datum/brain_trauma/severe/split_personality/blackout, TRAUMA_LIMIT_ABSOLUTE))
 		drunk_value -= 70 //So that the drunk personality can spice things up without being killed by liver failure
 		return
+<<<<<<< HEAD
 	*/ // SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
 		to_chat(owner, span_warning("You're so tired... but you can't miss that shuttle..."))
 	else

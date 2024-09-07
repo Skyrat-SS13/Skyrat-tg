@@ -60,12 +60,20 @@
  * * hit_atom: The atom that has been hit by the boomerang component.
  * * init_throwing_datum: The thrownthing datum that originally impacted the object, that we use to build the new throwing datum for the rebound.
  */
+<<<<<<< HEAD
 /datum/component/boomerang/proc/return_hit_throw(datum/source, atom/hit_atom, datum/thrownthing/init_throwing_datum)
 	SIGNAL_HANDLER
 	if (!COOLDOWN_FINISHED(src, last_boomerang_throw))
 		return
 	var/obj/item/true_parent = parent
 	aerodynamic_swing(init_throwing_datum, true_parent)
+=======
+/datum/component/boomerang/proc/return_hit_throw(datum/source, atom/hit_atom, datum/thrownthing/init_throwing_datum, caught)
+	SIGNAL_HANDLER
+	if (!COOLDOWN_FINISHED(src, last_boomerang_throw) || caught)
+		return
+	aerodynamic_swing(init_throwing_datum, parent)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * Proc that triggers when the thrown boomerang does not hit a target.

@@ -2,15 +2,22 @@ import { exhaustiveCheck } from 'common/exhaustive';
 import { useState } from 'react';
 
 import { useBackend } from '../../backend';
+<<<<<<< HEAD
 import { Dropdown, Flex, Stack } from '../../components'; // SKYRAT EDIT CHANGE - ORIGINAL: import { Button, Stack } from '../../components';
+=======
+import { Button, Stack } from '../../components';
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
+<<<<<<< HEAD
 // SKYRAT EDIT
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import { LoadoutPage } from './loadout/index';
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
@@ -21,10 +28,13 @@ enum Page {
   Antags,
   Main,
   Jobs,
+<<<<<<< HEAD
   // SKYRAT EDIT
   Limbs,
   Languages,
   // SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   Species,
   Quirks,
   Loadout,
@@ -35,6 +45,7 @@ const CharacterProfiles = (props: {
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
+<<<<<<< HEAD
   const { profiles, activeSlot, onClick } = props; // SKYRAT EDIT CHANGE
 
   return (
@@ -57,6 +68,26 @@ const CharacterProfiles = (props: {
         />
       </Flex.Item>
     </Flex> /* SKYRAT EDIT CHANGE END */
+=======
+  const { profiles } = props;
+
+  return (
+    <Stack justify="center" wrap>
+      {profiles.map((profile, slot) => (
+        <Stack.Item key={slot}>
+          <Button
+            selected={slot === props.activeSlot}
+            onClick={() => {
+              props.onClick(slot);
+            }}
+            fluid
+          >
+            {profile ?? 'New Character'}
+          </Button>
+        </Stack.Item>
+      ))}
+    </Stack>
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   );
 };
 
@@ -74,6 +105,7 @@ export const CharacterPreferenceWindow = (props) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
+<<<<<<< HEAD
     // SKYRAT EDIT
     case Page.Limbs:
       pageContents = <LimbsPage />;
@@ -82,6 +114,8 @@ export const CharacterPreferenceWindow = (props) => {
       pageContents = <LanguagesPage />;
       break;
     // SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -126,9 +160,13 @@ export const CharacterPreferenceWindow = (props) => {
               Buy BYOND premium for more slots!
             </Stack.Item>
           )}
+<<<<<<< HEAD
 
           <Stack.Divider />
 
+=======
+          <Stack.Divider />
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           <Stack.Item>
             <Stack fill>
               <Stack.Item grow>
@@ -165,6 +203,7 @@ export const CharacterPreferenceWindow = (props) => {
                   Occupations
                 </PageButton>
               </Stack.Item>
+<<<<<<< HEAD
               {
                 // SKYRAT EDIT
               }
@@ -177,10 +216,13 @@ export const CharacterPreferenceWindow = (props) => {
                   Augments+
                 </PageButton>
               </Stack.Item>
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}
+<<<<<<< HEAD
                   page={Page.Languages}
                   setPage={setCurrentPage}
                 >
@@ -193,6 +235,8 @@ export const CharacterPreferenceWindow = (props) => {
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                   page={Page.Antags}
                   setPage={setCurrentPage}
                 >
@@ -211,9 +255,13 @@ export const CharacterPreferenceWindow = (props) => {
               </Stack.Item>
             </Stack>
           </Stack.Item>
+<<<<<<< HEAD
 
           <Stack.Divider />
 
+=======
+          <Stack.Divider />
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           <Stack.Item>{pageContents}</Stack.Item>
         </Stack>
       </Window.Content>

@@ -24,6 +24,12 @@
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	has_ammobar = TRUE
 	banned_upgrades = RCD_ALL_UPGRADES & ~RCD_UPGRADE_SILO_LINK
+<<<<<<< HEAD
+=======
+	drop_sound = 'sound/items/handling/rcd_drop.ogg'
+	pickup_sound = 'sound/items/handling/rcd_pickup.ogg'
+	sound_vary = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// main category for tile design
 	var/root_category = "Conventional"
@@ -195,6 +201,10 @@
 	return data
 
 /obj/item/construction/rtd/handle_ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+<<<<<<< HEAD
+=======
+	playsound(src, SFX_TOOL_SWITCH, 20, TRUE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/floor_designs = GLOB.floor_designs
 	switch(action)

@@ -16,11 +16,14 @@
 	/// Type path for the associated job datum.
 	var/role_job = /datum/job/abductor_agent
 
+<<<<<<< HEAD
 /datum/antagonist/abductor/New()
 	// lets get the loading started now, but don't block waiting for it
 	INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, lazy_load_template), LAZY_TEMPLATE_KEY_ABDUCTOR_SHIPS)
 	return ..()
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/antagonist/abductor/get_preview_icon()
 	var/mob/living/carbon/human/dummy/consistent/scientist = new
 	var/mob/living/carbon/human/dummy/consistent/agent = new
@@ -162,7 +165,11 @@
 	..()
 	team_number = team_count++
 	name = "Mothership [pick(GLOB.greek_letters)]" //TODO Ensure unique and actual alieny names
+<<<<<<< HEAD
 	//add_objective(new /datum/objective/experiment) //SKYRAT EDIT REMOVAL
+=======
+	add_objective(new /datum/objective/experiment)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/team/abductor_team/roundend_report()
 	var/list/result = list()

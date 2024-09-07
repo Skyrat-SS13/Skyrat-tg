@@ -6,6 +6,7 @@
 	visual = TRUE
 	damage_multiplier = 2
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
 /obj/item/organ/internal/ears/fox/on_mob_insert(mob/living/carbon/human/ear_owner)
@@ -24,3 +25,6 @@
 		ear_owner.update_body()
 */
 //SKYRAT EDIT REMOVAL END
+=======
+	sprite_accessory_override = /datum/sprite_accessory/ears/fox
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

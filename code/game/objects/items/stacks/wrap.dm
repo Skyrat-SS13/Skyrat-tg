@@ -84,7 +84,10 @@
 		parcel.base_icon_state = "deliverypackage5"
 		parcel.update_icon()
 		user.forceMove(parcel)
+<<<<<<< HEAD
 		parcel.contains_mobs = TRUE // SKYRAT EDIT - CARGO BORGS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		parcel.add_fingerprint(user)
 		return OXYLOSS
 	else
@@ -115,10 +118,13 @@
 		return NONE
 	if(interacting_with.anchored)
 		return NONE
+<<<<<<< HEAD
 	// SKYRAT EDIT START - Cargo borgs
 	if(!amount)
 		return
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(isitem(interacting_with))
 		var/obj/item/item = interacting_with
@@ -162,12 +168,15 @@
 			closet.forceMove(parcel)
 			parcel.add_fingerprint(user)
 			closet.add_fingerprint(user)
+<<<<<<< HEAD
 			// SKYRAT EDIT START - CARGO BORGS
 			for(var/item in closet.get_all_contents())
 				if(istype(item, /mob))
 					parcel.contains_mobs = TRUE
 					break
 			// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else
 			balloon_alert(user, "not enough paper!")
 			return ITEM_INTERACT_BLOCKING

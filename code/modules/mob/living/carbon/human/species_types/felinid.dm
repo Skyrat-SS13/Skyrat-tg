@@ -3,6 +3,7 @@
 	name = "Felinid"
 	id = SPECIES_FELINE
 	examine_limb_id = SPECIES_HUMAN
+<<<<<<< HEAD
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
 	mutantbrain = /obj/item/organ/internal/brain/felinid
 	mutanttongue = /obj/item/organ/internal/tongue/cat
@@ -12,6 +13,14 @@
 		/obj/item/organ/external/tail/cat = "Cat",
 	)
 	*/ // SKYRAT EDIT REMOVAL END
+=======
+	mutantbrain = /obj/item/organ/internal/brain/felinid
+	mutanttongue = /obj/item/organ/internal/tongue/cat
+	mutantears = /obj/item/organ/internal/ears/cat
+	mutant_organs = list(
+		/obj/item/organ/external/tail/cat = "Cat",
+	)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	inherent_traits = list(
 		TRAIT_CATLIKE_GRACE,
 		TRAIT_HATED_BY_DOGS,
@@ -42,12 +51,16 @@
 			target_human.dna.features["tail_cat"] = "Cat"
 			if(target_human.dna.features["ears"] == "None")
 				target_human.dna.features["ears"] = "Cat"
+<<<<<<< HEAD
 		/* SKYRAT EDIT -- START -- ORIGINAL
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(target_human.dna.features["ears"] == "None")
 			mutantears = /obj/item/organ/internal/ears
 		else
 			var/obj/item/organ/internal/ears/cat/ears = new(FALSE, target_human.dna.features["ears"])
 			ears.Insert(target_human, movement_flags = DELETE_IF_REPLACED)
+<<<<<<< HEAD
 		*/
 		if(target_human.dna.features["ears"] == "Cat")
 			var/obj/item/organ/internal/ears/cat/ears = new
@@ -55,6 +68,8 @@
 		else
 			mutantears = /obj/item/organ/internal/ears
 		// SKYRAT EDIT -- END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /datum/species/human/felinid/randomize_features(mob/living/carbon/human/human_mob)
@@ -161,7 +176,11 @@
 		// stored_feature_id is only set once (the first time an organ is inserted), so this should be safe.
 		var/obj/item/organ/internal/ears/cat/kitty_ears = new
 		kitty_ears.Insert(soon_to_be_felinid, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+<<<<<<< HEAD
 		if(should_external_organ_apply_to(/obj/item/organ/external/tail/cat, soon_to_be_felinid)) //only give them a tail if they actually have sprites for it / are a compatible subspecies.
+=======
+		if(should_visual_organ_apply_to(/obj/item/organ/external/tail/cat, soon_to_be_felinid)) //only give them a tail if they actually have sprites for it / are a compatible subspecies.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			var/obj/item/organ/external/tail/cat/kitty_tail = new
 			kitty_tail.Insert(soon_to_be_felinid, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
@@ -184,8 +203,13 @@
 			old_tail.Remove(purrbated_human, special = TRUE)
 			qdel(old_tail)
 			// Locate does not work on assoc lists, so we do it by hand
+<<<<<<< HEAD
 			for(var/external_organ in target_species.external_organs)
 				if(!should_external_organ_apply_to(external_organ, purrbated_human))
+=======
+			for(var/external_organ in target_species.mutant_organs)
+				if(!should_visual_organ_apply_to(external_organ, purrbated_human))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					continue
 				if(ispath(external_organ, /obj/item/organ/external/tail))
 					var/obj/item/organ/external/tail/new_tail = new external_organ()
@@ -206,17 +230,23 @@
 	human_for_preview.set_haircolor("#ffcccc", update = FALSE) // pink
 	human_for_preview.set_hairstyle("Hime Cut", update = TRUE)
 
+<<<<<<< HEAD
 	/* SKYRAT EDIT - Making the species menu icons work better - ORIGINAL:
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/obj/item/organ/internal/ears/cat/cat_ears = human_for_preview.get_organ_by_type(/obj/item/organ/internal/ears/cat)
 	if (cat_ears)
 		cat_ears.color = human_for_preview.hair_color
 		human_for_preview.update_body()
+<<<<<<< HEAD
 	*/ // START
 	human_for_preview.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
 	human_for_preview.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
 	regenerate_organs(human_for_preview, src, visual_only = TRUE)
 	human_for_preview.update_body(TRUE)
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/species/human/felinid/get_physical_attributes()
 	return "Felinids are very similar to humans in almost all respects, with their biggest differences being the ability to lick their wounds, \
@@ -273,6 +303,7 @@
 			SPECIES_PERK_NAME = "Hydrophobia",
 			SPECIES_PERK_DESC = "Felinids don't like getting soaked with water.",
 		),
+<<<<<<< HEAD
 // SKYRAT EDIT ADDITION START
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
@@ -281,6 +312,8 @@
 			SPECIES_PERK_DESC = "Felinids are unhurt by high falls, and land on their feet.",
 		),
 // SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 	return to_add

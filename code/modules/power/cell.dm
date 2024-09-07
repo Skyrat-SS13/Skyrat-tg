@@ -19,6 +19,14 @@
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*7, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	grind_results = list(/datum/reagent/lithium = 15, /datum/reagent/iron = 5, /datum/reagent/silicon = 5)
+<<<<<<< HEAD
+=======
+
+/obj/item/stock_parts/power_store/cell/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_FISHING_BAIT, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_POISONOUS_BAIT, INNATE_TRAIT) //bro is fishing using lithium...
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /* Cell variants*/
 /obj/item/stock_parts/power_store/cell/empty

@@ -505,6 +505,7 @@
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION BEGIN -- EXPLOITABLES
 			if("toggle_exploitables")
 				has_exploitables_override = !has_exploitables_override //First we set the override to be the opposite of whatever it was apon execution, then we
@@ -512,6 +513,8 @@
 				log_admin("[key_name(usr)] toggled [current]'s exploitables override to [(has_exploitables_override) ? "true" : "false"].")
 				message_admins("[key_name(usr)] toggled [current]'s exploitables override to [(has_exploitables_override) ? "true" : "false"].")
 			//SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	else if (href_list["obj_announce"])
 		announce_objectives()
@@ -560,12 +563,20 @@
 /// Sets us to the passed job datum, then greets them to their new job.
 /// Use this one for when you're assigning this mind to a new job for the first time,
 /// or for when someone's receiving a job they'd really want to be greeted to.
+<<<<<<< HEAD
 /datum/mind/proc/set_assigned_role_with_greeting(datum/job/new_role, client/incoming_client, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: /datum/mind/proc/set_assigned_role_with_greeting(datum/job/new_role, client/incoming_client)
+=======
+/datum/mind/proc/set_assigned_role_with_greeting(datum/job/new_role, client/incoming_client)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = set_assigned_role(new_role)
 	if(assigned_role != new_role)
 		return
 
+<<<<<<< HEAD
 	var/intro_message = new_role.get_spawn_message(alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: var/intro_message = new_role.get_spawn_message()
+=======
+	var/intro_message = new_role.get_spawn_message()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(incoming_client && intro_message)
 		to_chat(incoming_client, intro_message)
 

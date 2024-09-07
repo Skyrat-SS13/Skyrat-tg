@@ -34,7 +34,11 @@
 		to_chat(dressing_human, span_warning("You are not capable of wearing underwear."))
 		return
 
+<<<<<<< HEAD
 	var/choice = tgui_input_list(user, "Underwear, Bra, Undershirt, or Socks?", "Changing", list("Underwear", "Underwear Color", "Bra", "Bra Color", "Undershirt", "Undershirt Color", "Socks", "Socks Color")) //SKYRAT EDIT ADDITION - Colorable Undershirt/Socks/Bra
+=======
+	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Underwear Color","Undershirt","Socks"))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(isnull(choice))
 		return
 
@@ -57,6 +61,7 @@
 			var/new_socks = tgui_input_list(user, "Select your socks", "Changing", SSaccessories.socks_list)
 			if(new_socks)
 				dressing_human.socks = new_socks
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks/Bras
 		if("Undershirt Color")
 			var/new_undershirt_color = input(dressing_human, "Choose your undershirt color", "Undershirt Color", dressing_human.undershirt_color) as color|null
@@ -79,5 +84,8 @@
 
 		//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks/Bras
 
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	add_fingerprint(dressing_human)
 	dressing_human.update_body()

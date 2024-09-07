@@ -255,12 +255,15 @@
 				env_gases[gas][MOLES] -= transferred_moles
 
 			environment.garbage_collect()
+<<<<<<< HEAD
 
 			// SKYRAT EDIT ADDITION
 			if(isopenturf(tile))
 				var/turf/open/floor_turf = tile
 				floor_turf.pollution?.scrub_amount(1)
 			// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			//Remix the resulting gases
 			air_contents.merge(filtered_out)

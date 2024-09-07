@@ -50,9 +50,16 @@
 		if(WIRE_INTERFACE)
 			mod.interface_break = !mend
 
+<<<<<<< HEAD
 /datum/wires/mod/ui_act(action, params)
 	var/obj/item/mod/control/mod = holder
 	if(!HAS_SILICON_ACCESS(usr) && mod.seconds_electrified && mod.shock(usr))
+=======
+/datum/wires/mod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	var/obj/item/mod/control/mod = holder
+	var/mob/user = ui.user
+	if(!HAS_SILICON_ACCESS(user) && mod.seconds_electrified && mod.shock(user))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return ..()
 

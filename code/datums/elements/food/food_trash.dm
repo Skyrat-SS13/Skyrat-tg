@@ -22,11 +22,22 @@
 		RegisterSignal(target, COMSIG_ITEM_ATTACK_SELF, PROC_REF(open_trash))
 	if(flags & FOOD_TRASH_POPABLE)
 		RegisterSignal(target, COMSIG_FOOD_CROSSED, PROC_REF(food_crossed))
+<<<<<<< HEAD
 	RegisterSignal(target, COMSIG_ITEM_ON_GRIND, PROC_REF(generate_trash))
 	RegisterSignal(target, COMSIG_ITEM_ON_JUICE, PROC_REF(generate_trash))
 	RegisterSignal(target, COMSIG_ITEM_USED_AS_INGREDIENT, PROC_REF(generate_trash))
 	RegisterSignal(target, COMSIG_ITEM_ON_COMPOSTED, PROC_REF(generate_trash))
 	RegisterSignal(target, COMSIG_ITEM_SOLD_TO_CUSTOMER, PROC_REF(generate_trash))
+=======
+	RegisterSignals(target, list(
+		COMSIG_ITEM_ON_GRIND,
+		COMSIG_ITEM_ON_JUICE,
+		COMSIG_ITEM_USED_AS_INGREDIENT,
+		COMSIG_ITEM_ON_COMPOSTED,
+		COMSIG_ITEM_SOLD_TO_CUSTOMER,
+		COMSIG_MOVABLE_SPLAT,
+	), PROC_REF(generate_trash))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/element/food_trash/Detach(datum/target)
 	. = ..()
@@ -38,7 +49,13 @@
 		COMSIG_ITEM_ON_JUICE,
 		COMSIG_ITEM_USED_AS_INGREDIENT,
 		COMSIG_ITEM_ON_COMPOSTED,
+<<<<<<< HEAD
 		COMSIG_ITEM_SOLD_TO_CUSTOMER,))
+=======
+		COMSIG_ITEM_SOLD_TO_CUSTOMER,
+		COMSIG_MOVABLE_SPLAT,
+	))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/element/food_trash/proc/generate_trash(datum/source, mob/living/eater, mob/living/feeder)
 	SIGNAL_HANDLER

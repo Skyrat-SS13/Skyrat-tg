@@ -16,7 +16,7 @@
 
 <details>
 <summary>Screenshots/Videos</summary>
-  
+
 </details>
 
 ## Changelog

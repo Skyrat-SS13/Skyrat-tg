@@ -119,7 +119,10 @@
 
 		records += list(list(
 			age = target.age,
+<<<<<<< HEAD
 			chrono_age = target.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			citations = citations,
 			crew_ref = REF(target),
 			crimes = crimes,
@@ -131,10 +134,13 @@
 			species = target.species,
 			trim = target.trim,
 			wanted_status = target.wanted_status,
+<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION - RP Records
 			past_general_records = target.past_general_records,
 			past_security_records = target.past_security_records,
 			// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		))
 
 	data["records"] = records
@@ -145,7 +151,10 @@
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
+<<<<<<< HEAD
 	data["max_chrono_age"] = AGE_CHRONO_MAX // SKYRAT EDIT ADDITION - Chronological age
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return data
 
 /obj/machinery/computer/records/security/ui_act(action, list/params, datum/tgui/ui)
@@ -375,12 +384,19 @@
 			printable = wanted_poster
 
 		if("rapsheet")
+<<<<<<< HEAD
 		/// SKYRAT EDIT REMOVE - REMOVE CRIMES REQUIREMENT FOR PRINTING RECORDS
 			//var/list/crimes = target.crimes
 			//if(!length(crimes))
 				//balloon_alert(user, "no crimes")
 				//return FALSE
 		/// SKYRAT EDIT REMOVE END
+=======
+			var/list/crimes = target.crimes
+			if(!length(crimes))
+				balloon_alert(user, "no crimes")
+				return FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			var/obj/item/paper/rapsheet = target.get_rapsheet(input_alias, input_header, input_description)
 			printable = rapsheet

@@ -7,7 +7,11 @@
 
 /// Checks if we can take a picture at this moment. Returns TRUE if we can, FALSE if we can't.
 /obj/item/camera/siliconcam/proc/can_take_picture(mob/living/silicon/clicker)
+<<<<<<< HEAD
 	if(clicker.stat != CONSCIOUS || clicker.incapacitated())
+=======
+	if(clicker.stat != CONSCIOUS || clicker.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 

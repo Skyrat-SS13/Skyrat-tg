@@ -779,7 +779,11 @@
 
 /datum/chemical_reaction/pentaerythritol
 	results = list(/datum/reagent/pentaerythritol = 2)
+<<<<<<< HEAD
 	required_reagents = list(/datum/reagent/acetaldehyde = 1, /datum/reagent/toxin/formaldehyde = 3, /datum/reagent/water = 1 )
+=======
+	required_reagents = list(/datum/reagent/acetaldehyde = 1, /datum/reagent/toxin/formaldehyde = 3, /datum/reagent/lye = 1)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
 
 /datum/chemical_reaction/acetaldehyde
@@ -965,7 +969,11 @@
 	optimal_ph_min = 3
 	optimal_ph_max = 12
 	required_temp = 50
+<<<<<<< HEAD
 	reaction_flags = REAGENT_SPLITRETAINVOL //SKYRAT EDIT CHANGE - ORIGINAL: reaction_flags = REACTION_INSTANT | REAGENT_SPLITRETAINVOL
+=======
+	reaction_flags = REACTION_INSTANT | REAGENT_SPLITRETAINVOL
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/ant_slurry // We're basically gluing ants together with synthflesh & maint sludge to make a bigger ant.

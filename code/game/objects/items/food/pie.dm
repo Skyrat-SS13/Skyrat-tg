@@ -74,6 +74,7 @@
 	var/stunning = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_3
 
+<<<<<<< HEAD
 /obj/item/food/pie/cream/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	if(!.) //if we're not being caught
@@ -100,6 +101,19 @@
 	if(is_creamable && is_type_in_typecache(hit_atom, GLOB.creamable))
 		hit_atom.AddComponent(/datum/component/face_decal/creampie, "creampie", EXTERNAL_FRONT)
 	qdel(src)
+=======
+/obj/item/food/pie/cream/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/splat, hit_callback = CALLBACK(src, PROC_REF(stun_and_blur)))
+
+/obj/item/food/pie/cream/proc/stun_and_blur(mob/living/victim, can_splat_on)
+	if(stunning)
+		victim.Paralyze(2 SECONDS) //splat!
+	if(can_splat_on)
+		victim.adjust_eye_blur(2 SECONDS)
+	victim.visible_message(span_warning("[victim] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
+	playsound(victim, SFX_DESECRATION, 50, TRUE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/food/pie/cream/nostun
 	stunning = FALSE

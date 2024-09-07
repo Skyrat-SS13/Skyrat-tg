@@ -7,7 +7,7 @@
 	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
 */
 /mob/living/silicon/ai/DblClickOn(atom/A, params)
-	if(control_disabled || incapacitated())
+	if(control_disabled || incapacitated)
 		return
 
 	if(ismob(A))
@@ -39,7 +39,7 @@
 	if(check_click_intercept(params,A))
 		return
 
-	if(control_disabled || incapacitated())
+	if(control_disabled || incapacitated)
 		return
 
 	var/turf/pixel_turf = get_turf_pixel(A)
@@ -111,7 +111,11 @@
 	for AI shift, ctrl, and alt clicking.
 */
 
+<<<<<<< HEAD
 /mob/living/silicon/ai/CtrlShiftClickOn(atom/target) // Procs overriden in modular_skyrat/modules/Silicon_QoL
+=======
+/mob/living/silicon/ai/CtrlShiftClickOn(atom/target)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	target.AICtrlShiftClick(src)
 
 /mob/living/silicon/ai/ShiftClickOn(atom/target)
@@ -147,6 +151,19 @@
 
 /* Atom Procs */
 /atom/proc/AICtrlClick(mob/living/silicon/ai/user)
+<<<<<<< HEAD
+=======
+	return
+
+/atom/proc/ai_click_alt(mob/living/silicon/ai/user)
+	SHOULD_CALL_PARENT(FALSE)
+	return
+
+/atom/proc/AIShiftClick(mob/living/silicon/ai/user)
+	return
+
+/atom/proc/AICtrlShiftClick(mob/living/silicon/ai/user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return
 
 /atom/proc/ai_click_alt(mob/living/silicon/ai/user)

@@ -79,7 +79,11 @@
 	name = "Lipstick (White)"
 	item_path = /obj/item/lipstick/white
 	additional_displayed_text = list("White")
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/loadout_item/pocket_items/plush
 	abstract_type = /datum/loadout_item/pocket_items/plush
 	can_be_named = TRUE
@@ -193,4 +197,7 @@
 /datum/loadout_item/pocket_items/d00
 	name = "D00"
 	item_path = /obj/item/dice/d00
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -10,7 +10,11 @@
 	internals_slot = ITEM_SLOT_RPOCKET
 	belt = /obj/item/energy_katana
 	back = /obj/item/mod/control/pre_equipped/ninja
+<<<<<<< HEAD
 	//implants = list(/obj/item/implant/explosive) SKYRAT EDIT REMOVAL
+=======
+	implants = list(/obj/item/implant/explosive)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/outfit/ninja/post_equip(mob/living/carbon/human/ninja)
 	var/obj/item/grenade/c4/ninja/charge = ninja.l_store

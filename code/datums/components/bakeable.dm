@@ -93,11 +93,19 @@
 	var/list/asomnia_hadders = list()
 	for(var/mob/smeller in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, used_oven))
 		if(HAS_TRAIT(smeller, TRAIT_ANOSMIA))
+<<<<<<< HEAD
 			asomnia_hadders += smeller 
 
 	if(positive_result)
 		used_oven.visible_message(
 			span_notice("You smell something great coming from [used_oven]."), 
+=======
+			asomnia_hadders += smeller
+
+	if(positive_result)
+		used_oven.visible_message(
+			span_notice("You smell something great coming from [used_oven]."),
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			blind_message = span_notice("You smell something great..."),
 			ignored_mobs = asomnia_hadders,
 		)

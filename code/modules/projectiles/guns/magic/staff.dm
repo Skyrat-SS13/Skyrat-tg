@@ -136,7 +136,11 @@
 		/obj/projectile/magic/antimagic,
 		/obj/projectile/magic/arcane_barrage,
 		/obj/projectile/magic/bounty,
+<<<<<<< HEAD
 		///obj/projectile/magic/change, //SKYRAT EDIT REMOVAL
+=======
+		/obj/projectile/magic/change,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/projectile/magic/death,
 		/obj/projectile/magic/door,
 		/obj/projectile/magic/fetch,

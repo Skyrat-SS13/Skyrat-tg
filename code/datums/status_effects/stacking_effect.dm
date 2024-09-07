@@ -8,7 +8,11 @@
 	/// How many stacks are currently accumulated.
 	/// Also, the default stacks number given on application.
 	var/stacks = 0
+<<<<<<< HEAD
 	// Deciseconds until ticks start occuring, which removes stacks
+=======
+	// Deciseconds until ticks start occurring, which removes stacks
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// (first stack will be removed at this time plus tick_interval)
 	var/delay_before_decay
 	/// How many stacks are lost per tick (decay trigger)
@@ -31,11 +35,19 @@
 	/// Put the state name without the number in these state vars
 	var/overlay_state
 	/// Icon state for underlays applied when the status effect is applied
+<<<<<<< HEAD
 	/// The number is concatonated onto the string based on the number of stacks to get the correct state name.
 	var/underlay_state
 	/// A reference to our overlay appearance
 	var/mutable_appearance/status_overlay
 	/// A referenceto our underlay appearance
+=======
+	/// The number is concatenated onto the string based on the number of stacks to get the correct state name.
+	var/underlay_state
+	/// A reference to our overlay appearance
+	var/mutable_appearance/status_overlay
+	/// A reference to our underlay appearance
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mutable_appearance/status_underlay
 
 /// Effects that occur when the stack count crosses stack_threshold
@@ -90,7 +102,11 @@
 	owner.underlays -= status_underlay
 	stacks += stacks_added
 	if(stacks > 0)
+<<<<<<< HEAD
 		if(stacks >= stack_threshold && !threshold_crossed) //threshold_crossed check prevents threshold effect from occuring if changing from above threshold to still above threshold
+=======
+		if(stacks >= stack_threshold && !threshold_crossed) //threshold_crossed check prevents threshold effect from occurring if changing from above threshold to still above threshold
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			threshold_crossed = TRUE
 			on_threshold_cross()
 			if(consumed_on_threshold)

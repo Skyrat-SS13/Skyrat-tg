@@ -48,6 +48,35 @@
 	id = "abandoned_homestead"
 	description = "This homestead was once host to a happy homesteading family. It's now host to hungry bears."
 	suffix = "icemoon_underground_abandoned_homestead.dmm"
+<<<<<<< HEAD
+=======
+
+/datum/map_template/ruin/icemoon/entemology
+	name = "Ice-Ruin Insect Research Station"
+	id = "bug_habitat"
+	description = "An independently funded research outpost, long abandoned. Their mission, to boldly go where no insect life would ever live, ever, and look for bugs."
+	suffix = "icemoon_surface_bughabitat.dmm"
+
+/datum/map_template/ruin/icemoon/pizza
+	name = "Ice-Ruin Moffuchi's Pizzeria"
+	id = "pizzeria"
+	description = "Moffuchi's Family Pizzeria chain has a reputation for providing affordable artisanal meals of questionable edibility. This particular pizzeria seems to have been abandoned for some time."
+	suffix = "icemoon_surface_pizza.dmm"
+
+/datum/map_template/ruin/icemoon/frozen_phonebooth
+	name = "Ice-Ruin Frozen Phonebooth"
+	id = "frozen_phonebooth"
+	description = "A venture by nanotrasen to help popularize the use of holopads. This one was sent to a icemoon."
+	suffix = "icemoon_surface_phonebooth.dmm"
+
+/datum/map_template/ruin/icemoon/smoking_room
+	name = "Ice-Ruin Smoking Room"
+	id = "smoking_room"
+	description = "Here lies Charles Morlbaro. He died the way he lived."
+	suffix = "icemoon_surface_smoking_room.dmm"
+
+// above and below ground together
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/map_template/ruin/icemoon/entemology
 	name = "Ice-Ruin Insect Research Station"

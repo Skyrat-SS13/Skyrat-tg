@@ -24,6 +24,7 @@
 	//Current layer for the visual object
 	var/base_layer
 
+<<<<<<< HEAD
 
 	/**
 	 *  Fish sprite how to:
@@ -33,6 +34,17 @@
 	 */
 
 
+=======
+	/**
+	 * Fish sprite how to:
+	 * The aquarium icon state needs to be centered on 16,16 in the dmi and facing left by default.
+	 * sprite_width/sprite_height are the sizes it will have in aquarium and used to control animation boundaries.
+	 * Ideally these two vars represent the size of the aquarium icon state, but they can be one or two units shorter
+	 * to give more room for the visual to float around inside the aquarium, since the aquarium tank frame overlay will likely
+	 * cover the extra pixels anyway.
+	 */
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// Icon used for in aquarium sprite
 	var/icon = 'icons/obj/aquarium/fish.dmi'
 	/// If this is set this icon state will be used for the holder while icon_state will only be used for item/catalog. Transformation from source_width/height WON'T be applied.
@@ -52,10 +64,13 @@
 	var/sprite_height = 3
 	var/sprite_width = 3
 
+<<<<<<< HEAD
 	//This is the size of the source sprite. This will be used to calculate scale down factor.
 	var/source_width = 32
 	var/source_height = 32
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// Currently playing animation
 	var/current_animation
 
@@ -97,6 +112,10 @@
 	ADD_TRAIT(parent, TRAIT_FISH_CASE_COMPATIBILE, REF(src))
 	RegisterSignal(parent, COMSIG_TRY_INSERTING_IN_AQUARIUM, PROC_REF(is_ready_to_insert))
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(enter_aquarium))
+<<<<<<< HEAD
+=======
+	RegisterSignal(parent, COMSIG_FISH_PETTED, PROC_REF(on_fish_petted))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//If component is added to something already in aquarium at the time initialize it properly.
 	var/atom/movable/movable_parent = parent
@@ -112,6 +131,7 @@
 	sprite_width = fish.sprite_width
 	aquarium_vc_color = fish.aquarium_vc_color
 
+<<<<<<< HEAD
 	if(fish.dedicated_in_aquarium_icon_state)
 		if(fish.dedicated_in_aquarium_icon)
 			icon = fish.dedicated_in_aquarium_icon
@@ -124,6 +144,11 @@
 		var/y_scale = fish.sprite_height / fish.source_height
 		matrix.Scale(x_scale, y_scale)
 		base_transform = matrix
+=======
+	icon = fish.dedicated_in_aquarium_icon
+	icon_state = fish.dedicated_in_aquarium_icon_state
+	base_transform = matrix()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	randomize_position = TRUE
 
@@ -274,7 +299,10 @@
 			dead_animation()
 			return
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Create looping random path animation, pixel offsets parameters include offsets already
 /datum/component/aquarium_content/proc/swim_animation()
 	var/avg_width = round(sprite_width / 2)
@@ -325,6 +353,14 @@
 	base_layer = current_aquarium.request_layer(layer_mode)
 	vc_obj.layer = base_layer
 
+<<<<<<< HEAD
+=======
+/datum/component/aquarium_content/proc/on_fish_petted()
+	SIGNAL_HANDLER
+
+	new /obj/effect/temp_visual/heart(get_turf(parent))
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/component/aquarium_content/proc/randomize_base_position()
 	var/list/aq_properties = current_aquarium.get_surface_properties()
 	var/avg_width = round(sprite_width / 2)

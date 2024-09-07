@@ -293,6 +293,7 @@ def main_cycle():
     Activate the script
     """
 <<<<<<< HEAD
+<<<<<<< HEAD
     while True:
         midi_file = obtain_midi_file()
         if not midi_file:
@@ -311,6 +312,8 @@ def main_cycle():
         split_music = explode_sheet_music(sheet_music)
         sheet_music = finalize_sheet_music(split_music, most_frequent_dur)
 =======
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     midi_file = obtain_midi_file()
     if not midi_file:
         return # Cancel
@@ -327,7 +330,10 @@ def main_cycle():
     sheet_music = obtain_sheet_music(score, most_frequent_dur)
     split_music = explode_sheet_music(sheet_music)
     sheet_music = finalize_sheet_music(split_music, most_frequent_dur)
+<<<<<<< HEAD
 >>>>>>> 5146c7fc83d (Fixes Midi2Piano Tool (#85967))
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
     pclip.copy(sheet_music)
     messagebox.showinfo("Midi2Piano Information", "Your sheet music has been copied to your clipboard.")

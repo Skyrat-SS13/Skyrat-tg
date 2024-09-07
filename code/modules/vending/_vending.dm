@@ -988,9 +988,15 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	var/list/weighted_crits = list()
 
 	weighted_crits[CRUSH_CRIT_SHATTER_LEGS] = 100
+<<<<<<< HEAD
 	weighted_crits[CRUSH_CRIT_PARAPALEGIC] = 80
 	//weighted_crits[CRUSH_CRIT_HEADGIB] = 20 // SKYRAT EDIT REMOVAL
 	weighted_crits[CRUSH_CRIT_SQUISH_LIMB] = 80 // SKYRAT EDIT CHANGE - ORIGINAL: weighted_crits[CRUSH_CRIT_SQUISH_LIMB] = 100
+=======
+	weighted_crits[CRUSH_CRIT_PARAPLEGIC] = 80
+	weighted_crits[CRUSH_CRIT_HEADGIB] = 20
+	weighted_crits[CRUSH_CRIT_SQUISH_LIMB] = 100
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return weighted_crits
 
@@ -1027,7 +1033,11 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 			if(left_leg || right_leg)
 				carbon_target.visible_message(span_danger("[carbon_target]'s legs shatter with a sickening crunch!"), span_userdanger("Your legs shatter with a sickening crunch!"))
 			return TRUE
+<<<<<<< HEAD
 		if(CRUSH_CRIT_PARAPALEGIC) // paralyze this binch
+=======
+		if(CRUSH_CRIT_PARAPLEGIC) // paralyze this binch
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			// the new paraplegic gets like 4 lines of losing their legs so skip them
 			if (!iscarbon(atom_target))
 				return FALSE
@@ -1182,6 +1192,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	obj_flags |= EMAGGED
 	balloon_alert(user, "product lock disabled")
 	return TRUE
+<<<<<<< HEAD
 
 /obj/machinery/vending/interact(mob/user)
 	if (!HAS_AI_ACCESS(user))
@@ -1195,6 +1206,23 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 				untilt(user)
 			return
 
+=======
+
+/obj/machinery/vending/interact(mob/user)
+	if (HAS_AI_ACCESS(user))
+		return ..()
+
+	if(seconds_electrified && !(machine_stat & NOPOWER))
+		if(shock(user, 100))
+			return
+
+	if(tilted && !user.buckled)
+		to_chat(user, span_notice("You begin righting [src]."))
+		if(do_after(user, 5 SECONDS, target=src))
+			untilt(user)
+		return
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /obj/machinery/vending/attack_robot_secondary(mob/user, list/modifiers)
@@ -1317,7 +1345,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 
 	.["extended_inventory"] = extended_inventory
 
-/obj/machinery/vending/ui_act(action, params)
+/obj/machinery/vending/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -1430,7 +1458,11 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 					sec_radio = new (src)
 					sec_radio.set_listening(FALSE)
 				sec_radio.set_frequency(FREQ_SECURITY)
+<<<<<<< HEAD
 				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase [item_record.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY) // SKYRAT EDIT CHANGE
+=======
+				sec_radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [item_record.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				GLOB.narcd_underages += usr
 			flick(icon_deny,src)
 			vend_ready = TRUE
@@ -1766,7 +1798,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 			)
 			.["vending_machine_input"] += list(data)
 
-/obj/machinery/vending/custom/ui_act(action, params)
+/obj/machinery/vending/custom/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

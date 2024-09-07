@@ -495,7 +495,11 @@
 //ANIMAL RIDING
 
 /mob/living/simple_animal/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
+<<<<<<< HEAD
 	if(user.incapacitated())
+=======
+	if(user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	for(var/atom/movable/A in get_turf(src))
 		if(A != src && A != M && A.density)
@@ -521,7 +525,11 @@
 	return
 
 /mob/living/simple_animal/relaymove(mob/living/user, direction)
+<<<<<<< HEAD
 	if(user.incapacitated())
+=======
+	if(user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	return relaydrive(user, direction)
 

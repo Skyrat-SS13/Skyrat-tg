@@ -72,6 +72,7 @@
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
 
+<<<<<<< HEAD
 // SKYRAT EDIT REMOVAL - CUSTOMIZATION (moved to modular)
 /*
 /proc/random_features()
@@ -130,6 +131,8 @@
 */
 //SKYRAT EDIT REMOVAL END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /proc/random_hairstyle(gender)
 	switch(gender)
 		if(MALE)
@@ -592,8 +595,13 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
  * When passed the difference between two temperatures returns the amount of change to temperature to apply.
  * The change rate should be kept at a low value tween 0.16 and 0.02 for optimal results.
  * vars:
+<<<<<<< HEAD
  * * temp_diff (required) The differance between two temperatures
  * * change_rate (optional)(Default: 0.06) The rate of range multiplyer
+=======
+ * * temp_diff (required) The difference between two temperatures
+ * * change_rate (optional)(Default: 0.06) The rate of range multiplier
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  */
 /proc/get_temp_change_amount(temp_diff, change_rate = 0.06)
 	if(temp_diff < 0)
@@ -637,11 +645,16 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 		// We've already added slimes.
 		if(isslime(mob_to_sort))
 			continue
+<<<<<<< HEAD
 	// SKYRAT EDIT START - SOULCATCHERS
 	for(var/mob/living/soulcatcher_soul/mob_to_sort in sortmob)
 		moblist += mob_to_sort
 	// SKYRAT EDIT END - SOULCATCHERS
 	return moblist
+=======
+	return moblist
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///returns a mob type controlled by a specified ckey
 /proc/get_mob_by_ckey(key)
 	if(!key)
@@ -746,6 +759,11 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 		slot_strings += "dextrous storage"
 	if(slot_flags & ITEM_SLOT_BACKPACK)
 		slot_strings += "backpack"
+<<<<<<< HEAD
+=======
+	if(slot_flags & ITEM_SLOT_BELTPACK)
+		slot_strings += "belt" // ?
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return slot_strings
 
 ///Returns the direction that the initiator and the target are facing

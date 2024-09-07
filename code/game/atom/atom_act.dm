@@ -67,8 +67,12 @@
  * We then return the protection value
  */
 /atom/proc/emp_act(severity)
+<<<<<<< HEAD
 	// SKYRAT EDIT - REMOVAL
 	//SHOULD_CALL_PARENT(TRUE)
+=======
+	SHOULD_CALL_PARENT(TRUE)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/protection = SEND_SIGNAL(src, COMSIG_ATOM_PRE_EMP_ACT, severity)
 	if(!(protection & EMP_PROTECT_WIRES) && istype(wires))
 		wires.emp_pulse()
@@ -116,11 +120,21 @@
  * Im not sure why this the case, maybe to prevent lots of hitby's if the thrown object is
  * deleted shortly after hitting something (during explosions or other massive events that
  * throw lots of items around - singularity being a notable example)
+<<<<<<< HEAD
+=======
+ *
+ * Worth of note: If hitby returns TRUE, it means the object has been blocked or catched by src.
+ * So far, this is only possible for living mobs and carbons, who can hold shields and catch thrown items.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  */
 /atom/proc/hitby(atom/movable/hitting_atom, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, hitting_atom, skipcatch, hitpush, blocked, throwingdatum)
 	if(density && !has_gravity(hitting_atom)) //thrown stuff bounces off dense stuff in no grav, unless the thrown stuff ends up inside what it hit(embedding, bola, etc...).
 		addtimer(CALLBACK(src, PROC_REF(hitby_react), hitting_atom), 0.2 SECONDS)
+<<<<<<< HEAD
+=======
+	return FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * We have have actually hit the passed in atom
@@ -209,7 +223,11 @@
 
 ///wrapper proc that passes our mob's rust_strength to the target we are rusting
 /mob/living/proc/do_rust_heretic_act(atom/target)
+<<<<<<< HEAD
 	var/datum/antagonist/heretic/heretic_data = IS_HERETIC(src)
+=======
+	var/datum/antagonist/heretic/heretic_data = GET_HERETIC(src)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	target.rust_heretic_act(heretic_data?.rust_strength)
 
 /mob/living/basic/heretic_summon/rust_walker/do_rust_heretic_act(atom/target)

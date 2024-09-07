@@ -68,7 +68,7 @@
 /obj/machinery/jukebox/ui_data(mob/user)
 	return music_player.get_ui_data()
 
-/obj/machinery/jukebox/ui_act(action, list/params)
+/obj/machinery/jukebox/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -384,4 +384,7 @@
 /obj/machinery/jukebox/disco/proc/dance4_revert(mob/living/dancer, matrix/starting_matrix)
 	animate(dancer, transform = starting_matrix, time = 5, loop = 0)
 	REMOVE_TRAIT(dancer, TRAIT_DISCO_DANCER, REF(src))
+<<<<<<< HEAD
 SKYRAT EDIT END*/
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

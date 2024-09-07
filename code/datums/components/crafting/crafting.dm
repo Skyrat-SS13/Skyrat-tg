@@ -248,6 +248,7 @@
 			return ", must be made on a tram!"
 
 	//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
+<<<<<<< HEAD
 	//SKYRAT EDIT START: Two Skills (Construction)
 	var/mob/crafter_mob
 	var/skill_modifier = 1
@@ -255,6 +256,9 @@
 		crafter_mob = crafter
 		skill_modifier = crafter_mob.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER)
 	if(!do_after(crafter, recipe.time * skill_modifier, target = crafter))
+=======
+	if(ismob(crafter) && !do_after(crafter, recipe.time, target = crafter))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return "."
 	contents = get_surroundings(crafter, recipe.blacklist)
 	if(!check_contents(crafter, recipe, contents))
@@ -272,9 +276,12 @@
 		if(result.atom_storage && recipe.delete_contents)
 			for(var/obj/item/thing in result)
 				qdel(thing)
+<<<<<<< HEAD
 	if(crafter_mob)
 		crafter_mob.mind.adjust_experience(/datum/skill/construction, 5)
 	//SKYRAT EDIT STOP: Construction Skill
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/datum/reagents/holder = locate() in parts
 	if(holder) //transfer reagents from ingredients to result
 		if(!ispath(recipe.result,  /obj/item/reagent_containers) && result.reagents)
@@ -317,7 +324,10 @@
 	var/datum/reagents/holder
 	var/list/surroundings
 	var/list/Deletion = list()
+<<<<<<< HEAD
 	var/data
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/amt
 	var/list/requirements = list()
 	if(R.reqs)
@@ -354,7 +364,10 @@
 							RC.reagents.trans_to(holder, reagent_volume, target_id = path_key, no_react = TRUE)
 							surroundings -= RC
 							amt -= reagent_volume
+<<<<<<< HEAD
 						SEND_SIGNAL(RC.reagents, COMSIG_REAGENTS_CRAFTING_PING) // - [] TODO: Make this entire thing less spaghetti
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					else
 						surroundings -= RC
 					RC.update_appearance(UPDATE_ICON)
@@ -368,7 +381,7 @@
 							SD = new S.type()
 							Deletion += SD
 						S.use(amt)
-						SD = locate(S.type) in Deletion
+						SD = SD || locate(S.type) in Deletion // SD might be already set here, no sense in searching for it again
 						SD.amount += amt
 						continue main_loop
 					else
@@ -376,9 +389,9 @@
 						if(!locate(S.type) in Deletion)
 							Deletion += S
 						else
-							data = S.amount
-							S = locate(S.type) in Deletion
-							S.add(data)
+							SD = SD || locate(S.type) in Deletion
+							SD.add(S.amount) // add the amount to our tally stack, SD
+							qdel(S) // We can just delete it straight away as it's going to be fully consumed anyway, saving some overhead from calling use()
 						surroundings -= S
 			else
 				var/atom/movable/I
@@ -546,7 +559,11 @@
 	return TRUE
 
 
+<<<<<<< HEAD
 /datum/component/personal_crafting/ui_act(action, params)
+=======
+/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

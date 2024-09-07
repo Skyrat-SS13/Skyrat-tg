@@ -127,10 +127,17 @@
 	else if(isorgan(new_part))
 		var/obj/item/organ/new_organ = new_part
 		old_part = human_holder.get_organ_slot(new_organ.slot)
+<<<<<<< HEAD
 		if(new_organ.Insert(human_holder, special = TRUE))
 			old_part.moveToNullspace()
 			STOP_PROCESSING(SSobj, old_part)
 			slot_string = new_organ.name
+=======
+		new_organ.Insert(human_holder, special = TRUE)
+		old_part.moveToNullspace()
+		STOP_PROCESSING(SSobj, old_part)
+		slot_string = new_organ.name
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/quirk/transhumanist/post_add()
 	if(!slot_string)

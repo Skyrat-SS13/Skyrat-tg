@@ -94,14 +94,21 @@
 	if(multitooled)
 		src.multitooled = multitooled
 
+<<<<<<< HEAD
 	ADD_TRAIT(mob_parent, TRAIT_STYLISH, REF(src)) // SKYRAT EDIT ADD - allows style meter chads to do flips
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/component/style/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_USER_ITEM_INTERACTION, PROC_REF(hotswap))
 	RegisterSignal(parent, COMSIG_MOB_MINED, PROC_REF(on_mine))
 	RegisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_take_damage))
+<<<<<<< HEAD
 	RegisterSignal(parent, COMSIG_MOB_EMOTED("flip"), PROC_REF(on_flip))
 	RegisterSignal(parent, COMSIG_MOB_EMOTED("spin"), PROC_REF(on_spin))
+=======
+	RegisterSignal(parent, COMSIG_MOB_EMOTED("taunt"), PROC_REF(on_taunt))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	RegisterSignal(parent, COMSIG_MOB_ITEM_ATTACK, PROC_REF(on_attack))
 	RegisterSignal(parent, COMSIG_LIVING_UNARMED_ATTACK, PROC_REF(on_punch))
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_DEATH, PROC_REF(on_death))
@@ -116,7 +123,11 @@
 	UnregisterSignal(parent, COMSIG_USER_ITEM_INTERACTION)
 	UnregisterSignal(parent, COMSIG_MOB_MINED)
 	UnregisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE)
+<<<<<<< HEAD
 	UnregisterSignal(parent, list(COMSIG_MOB_EMOTED("flip"), COMSIG_MOB_EMOTED("spin")))
+=======
+	UnregisterSignal(parent, COMSIG_MOB_EMOTED("taunt"))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	UnregisterSignal(parent, list(COMSIG_MOB_ITEM_ATTACK, COMSIG_LIVING_UNARMED_ATTACK))
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MOB_DEATH)
 	UnregisterSignal(parent, COMSIG_LIVING_RESONATOR_BURST)
@@ -132,7 +143,10 @@
 	if(mob_parent.hud_used)
 		mob_parent.hud_used.static_inventory -= meter
 		mob_parent.hud_used.show_hud(mob_parent.hud_used.hud_version)
+<<<<<<< HEAD
 	REMOVE_TRAIT(mob_parent, TRAIT_STYLISH, REF(src)) // SKYRAT EDIT ADD - allows style meter chads to do flips
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /datum/component/style/process(seconds_per_tick)
@@ -392,23 +406,31 @@
 
 	add_action(ACTION_GIBTONITE_DEFUSED, min(40, 20 * (10 - det_time))) // 40 to 180 points depending on speed
 
+<<<<<<< HEAD
 //SKYRAT EDIT START
 /*
 /datum/component/style/proc/on_crusher_detonate(datum/source, mob/living/target, obj/item/kinetic_crusher/crusher, backstabbed)
 */
 /datum/component/style/proc/on_crusher_detonate(datum/component/kinetic_crusher/source, mob/living/target, obj/item/kinetic_crusher/crusher, backstabbed)
 //SKYRAT EDIT END
+=======
+/datum/component/style/proc/on_crusher_detonate(datum/source, mob/living/target, obj/item/kinetic_crusher/crusher, backstabbed)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SIGNAL_HANDLER
 
 	if(target.stat == DEAD)
 		return
 
+<<<<<<< HEAD
 	//SKYRAT EDIT START
 	/*
 	var/has_brimdemon_trophy = locate(/obj/item/crusher_trophy/brimdemon_fang) in crusher.trophies
 	*/
 	var/has_brimdemon_trophy = locate(/obj/item/crusher_trophy/brimdemon_fang) in source.stored_trophies
 	//SKYRAT EDIT END
+=======
+	var/has_brimdemon_trophy = locate(/obj/item/crusher_trophy/brimdemon_fang) in crusher.trophies
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	add_action(ACTION_MARK_DETONATED, round((backstabbed ? 60 : 30) * (ismegafauna(target) ? 1.5 : 1) * (has_brimdemon_trophy ? 1.25 : 1)))
 
@@ -420,12 +442,17 @@
 
 
 // Emote-based multipliers
+<<<<<<< HEAD
 /datum/component/style/proc/on_flip()
+=======
+/datum/component/style/proc/on_taunt()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SIGNAL_HANDLER
 
 	point_multiplier = round(min(point_multiplier + 0.5, 3), 0.1)
 	update_screen()
 
+<<<<<<< HEAD
 /datum/component/style/proc/on_spin()
 	SIGNAL_HANDLER
 
@@ -433,6 +460,8 @@
 	update_screen()
 
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Negative effects
 /datum/component/style/proc/on_take_damage(...)
 	SIGNAL_HANDLER

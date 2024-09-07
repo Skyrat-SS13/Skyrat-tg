@@ -142,6 +142,13 @@
 	_clear_signal_refs()
 	//END: ECS SHIT
 
+<<<<<<< HEAD
+=======
+	if(!(datum_flags & DF_STATIC_OBJECT))
+		DREAMLUAU_CLEAR_REF_USERDATA(vars) // vars ceases existing when src does, so we need to clear any lua refs to it that exist.
+		DREAMLUAU_CLEAR_REF_USERDATA(src)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return QDEL_HINT_QUEUE
 
 ///Only override this if you know what you're doing. You do not know what you're doing

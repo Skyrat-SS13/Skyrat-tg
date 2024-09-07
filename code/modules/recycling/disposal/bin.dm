@@ -3,7 +3,11 @@
 #define SEND_PRESSURE (0.05*ONE_ATMOSPHERE)
 
 /obj/machinery/disposal
+<<<<<<< HEAD
 	icon = 'icons/obj/pipes_n_cables/disposal.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	density = TRUE
 	armor_type = /datum/armor/machinery_disposal
 	max_integrity = 200
@@ -416,7 +420,11 @@
 	data["isai"] = HAS_AI_ACCESS(user)
 	return data
 
+<<<<<<< HEAD
 /obj/machinery/disposal/bin/ui_act(action, params)
+=======
+/obj/machinery/disposal/bin/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

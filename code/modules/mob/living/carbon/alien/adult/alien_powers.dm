@@ -15,6 +15,10 @@ Doesn't work on other aliens/AI.*/
 	button_icon_state = "spell_default"
 	check_flags = AB_CHECK_IMMOBILE | AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
 	melee_cooldown_time = 0 SECONDS
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// How much plasma this action uses.
 	var/plasma_cost = 0
 
@@ -340,11 +344,15 @@ Doesn't work on other aliens/AI.*/
 		span_notice("[owner] vomits up a thick purple substance and begins to shape it."),
 		span_notice("You shape a [choice] out of resin."),
 	)
+<<<<<<< HEAD
 	//SKYRAT EDIT START - Roundstart xenohybrid organs
 	if(build_duration && !do_after(owner, build_duration))
 		owner.balloon_alert(owner, "interrupted!")
 		return
 	//SKYRAT EDIT END
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new choice_path(owner.loc)
 	return TRUE
 
@@ -406,4 +414,7 @@ Doesn't work on other aliens/AI.*/
 /mob/living/carbon/alien/adjustPlasma(amount)
 	. = ..()
 	updatePlasmaDisplay()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

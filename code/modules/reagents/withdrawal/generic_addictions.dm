@@ -269,7 +269,10 @@
 	QDEL_NULL(fake_alert_ref)
 	QDEL_NULL(health_doll_ref)
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL START - MOVED TO MODULAR.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Nicotine
 /datum/addiction/nicotine
 	name = "nicotine"
@@ -294,4 +297,7 @@
 	affected_carbon.set_jitter_if_lower(30 SECONDS * seconds_per_tick)
 	if(SPT_PROB(5, seconds_per_tick))
 		affected_carbon.emote("cough")
+<<<<<<< HEAD
 */ // SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

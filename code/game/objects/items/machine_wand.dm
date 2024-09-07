@@ -24,6 +24,21 @@
 	bug_appearance = mutable_appearance('icons/effects/effects.dmi', "fly-surrounding", ABOVE_WINDOW_LAYER)
 	register_context()
 
+<<<<<<< HEAD
+=======
+/obj/item/machine_remote/equipped(mob/user, slot, initial)
+	. = ..()
+	if(user.get_active_held_item() == src)
+		ADD_TRAIT(user, TRAIT_AI_ACCESS, HELD_ITEM_TRAIT)
+		ADD_TRAIT(user, TRAIT_SILICON_ACCESS, HELD_ITEM_TRAIT)
+
+/obj/item/machine_remote/dropped(mob/user, silent)
+	. = ..()
+	if(user.get_active_held_item() != src)
+		REMOVE_TRAIT(user, TRAIT_AI_ACCESS, HELD_ITEM_TRAIT)
+		REMOVE_TRAIT(user, TRAIT_SILICON_ACCESS, HELD_ITEM_TRAIT)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/machine_remote/Destroy(force)
 	. = ..()
 	if(controlling_machine_or_bot)

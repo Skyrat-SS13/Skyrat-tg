@@ -1,5 +1,9 @@
 /datum/reagent/blood
+<<<<<<< HEAD
 	data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null, "monkey_origins" = FALSE) // SKYRAT EDIT - Rebalancing blood for Hemophages - ORIGINAL: data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
+=======
+	data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	name = "Blood"
 	color = "#C80000" // rgb: 200, 0, 0
 	metabolization_rate = 12.5 * REAGENTS_METABOLISM //fast rate so it disappears fast.
@@ -64,6 +68,7 @@
 			if(!data || !(data["blood_type"] in get_safe_blood(exposed_carbon.dna.blood_type)))
 				exposed_carbon.reagents.add_reagent(/datum/reagent/toxin, reac_volume * 0.5)
 			else
+<<<<<<< HEAD
 				/* SKYRAT EDIT - Rebalancing blood for Hemophages - ORIGINAL:
 				exposed_carbon.blood_volume = min(exposed_carbon.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 				*/ // ORIGINAL END - SKYRAT EDIT:
@@ -72,6 +77,9 @@
 
 				exposed_carbon.blood_volume = min(exposed_carbon.blood_volume + round(reac_volume, 0.1), max_blood_volume)
 				// SKYRAT EDIT END
+=======
+				exposed_carbon.blood_volume = min(exposed_carbon.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			exposed_carbon.reagents.remove_reagent(type, reac_volume) // Because we don't want blood to just lie around in the patient's blood, makes no sense.
 
@@ -207,6 +215,7 @@
 	var/cooling_temperature = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
+<<<<<<< HEAD
 	evaporates = TRUE //SKYRAT EDIT ADDITION
 
 /datum/glass_style/shot_glass/water
@@ -218,6 +227,8 @@
 	name = "glass of water"
 	desc = "The father of all refreshments."
 	icon_state = "glass_clear"
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water
@@ -295,7 +306,11 @@
 	if(methods & VAPOR)
 		exposed_mob.adjust_wet_stacks(reac_volume * WATER_TO_WET_STACKS_FACTOR_VAPOR) // Spraying someone with water with the hope to put them out is just simply too funny to me not to add it.
 
+<<<<<<< HEAD
 		if(!isfeline(exposed_mob)) // SKYRAT EDIT - Feline trait :) - ORIGINAL: if(!isfelinid(exposed_mob))
+=======
+		if(!isfelinid(exposed_mob))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return
 
 		exposed_mob.incapacitate(1) // startles the felinid, canceling any do_after
@@ -737,8 +752,12 @@
 
 	if(current_cycle >= CYCLES_TO_TURN)
 		var/datum/species/species_type = race
+<<<<<<< HEAD
 		//affected_mob.set_species(species_type) //ORIGINAL
 		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+=======
+		affected_mob.set_species(species_type)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		holder.del_reagent(type)
 		to_chat(affected_mob, span_warning("You've become \a [LOWER_TEXT(initial(species_type.name))]!"))
 		return
@@ -801,14 +820,22 @@
 	if(isjellyperson(affected_mob))
 		to_chat(affected_mob, span_warning("Your jelly shifts and morphs, turning you into another subspecies!"))
 		var/species_type = pick(subtypesof(/datum/species/jelly))
+<<<<<<< HEAD
 		//affected_mob.set_species(species_type) //ORIGINAL
 		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+=======
+		affected_mob.set_species(species_type)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		holder.del_reagent(type)
 		return UPDATE_MOB_HEALTH
 	if(current_cycle >= CYCLES_TO_TURN) //overwrite since we want subtypes of jelly
 		var/datum/species/species_type = pick(subtypesof(race))
+<<<<<<< HEAD
 		//affected_mob.set_species(species_type) //ORIGINAL
 		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+=======
+		affected_mob.set_species(species_type)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		holder.del_reagent(type)
 		to_chat(affected_mob, span_warning("You've become \a [initial(species_type.name)]!"))
 		return UPDATE_MOB_HEALTH
@@ -2554,7 +2581,11 @@
 	if(target.mind)
 		var/datum/antagonist/changeling/changeling = IS_CHANGELING(target)
 		if(changeling)
+<<<<<<< HEAD
 			changeling.adjust_chemicals(-4 * REM * seconds_per_tick) //SKYRAT EDIT - BZ-BUFF-VS-LING - ORIGINAL: changeling.adjust_chemicals(-2 * REM * seconds_per_tick)
+=======
+			changeling.adjust_chemicals(-2 * REM * seconds_per_tick)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/reagent/pax/peaceborg
 	name = "Synthpax"

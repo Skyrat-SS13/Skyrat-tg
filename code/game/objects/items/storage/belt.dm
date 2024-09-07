@@ -96,18 +96,30 @@
 	SSwardrobe.provide_type(/obj/item/multitool, src)
 	SSwardrobe.provide_type(/obj/item/stack/cable_coil, src)
 	SSwardrobe.provide_type(/obj/item/extinguisher/mini, src)
+<<<<<<< HEAD
 	SSwardrobe.provide_type(/obj/item/analyzer/ranged, src) //SKYRAT EDIT - Ranged Analyzer for CE - ORIGINAL: SSwardrobe.provide_type(/obj/item/analyzer, src)
+=======
+	SSwardrobe.provide_type(/obj/item/analyzer, src)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//much roomier now that we've managed to remove two tools
 
 /obj/item/storage/belt/utility/chief/full/get_types_to_preload()
 	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
 	to_preload += /obj/item/screwdriver/power
 	to_preload += /obj/item/crowbar/power
+<<<<<<< HEAD
 	to_preload += /obj/item/weldingtool/electric // SKYRAT EDIT - Electric welder
 	to_preload += /obj/item/multitool
 	to_preload += /obj/item/stack/cable_coil
 	to_preload += /obj/item/extinguisher/mini
 	to_preload += /obj/item/analyzer/ranged // SKYRAT EDIT - Ranged Analyzer for CE
+=======
+	to_preload += /obj/item/weldingtool/experimental
+	to_preload += /obj/item/multitool
+	to_preload += /obj/item/stack/cable_coil
+	to_preload += /obj/item/extinguisher/mini
+	to_preload += /obj/item/analyzer
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return to_preload
 
 /obj/item/storage/belt/utility/full/PopulateContents()
@@ -136,7 +148,11 @@
 /obj/item/storage/belt/utility/full/powertools/PopulateContents()
 	new /obj/item/screwdriver/power(src)
 	new /obj/item/crowbar/power(src)
+<<<<<<< HEAD
 	new /obj/item/weldingtool/electric(src) // SKYRAT EDIT - original: new /obj/item/weldingtool/experimental(src)
+=======
+	new /obj/item/weldingtool/experimental(src)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/multitool(src)
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/extinguisher/mini(src)
@@ -246,7 +262,10 @@
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/muzzle,
 		/obj/item/clothing/mask/surgical,
+<<<<<<< HEAD
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/clothing/head/utility/surgerycap,
 		/obj/item/construction/plumbing,
 		/obj/item/dnainjector,
@@ -257,8 +276,11 @@
 		/obj/item/healthanalyzer,
 		/obj/item/hemostat,
 		/obj/item/holosign_creator/medical,
+<<<<<<< HEAD
 		/obj/item/hypospray/mkii, //SKYRAT EDIT ADDITION - HYPOSPRAYS
 		/obj/item/storage/hypospraykit/, //SKYRAT EDIT ADDITION - HYPOSPRAYS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/implant,
 		/obj/item/implantcase,
 		/obj/item/implanter,
@@ -271,7 +293,10 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
+<<<<<<< HEAD
 		/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT ADDITION - HYPOSPRAYS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/medigel,
@@ -290,8 +315,11 @@
 		/obj/item/surgical_drapes, //for true paramedics
 		/obj/item/surgicaldrill,
 		/obj/item/tank/internals/emergency_oxygen,
+<<<<<<< HEAD
 		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
 		/obj/item/handheld_soulcatcher, // SKYRAT EDIT SOULCATCHERS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/wrench/medical,
 		/obj/item/knife/ritual,
 	))
@@ -389,7 +417,10 @@
 		/obj/item/flashlight/seclite,
 		/obj/item/food/donut,
 		/obj/item/grenade,
+<<<<<<< HEAD
 		/obj/item/gun, //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/holosign_creator/security,
 		/obj/item/knife/combat,
 		/obj/item/melee/baton,
@@ -397,8 +428,12 @@
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
 		/obj/item/restraints/legcuffs/bola,
+<<<<<<< HEAD
 		/obj/item/stock_parts/power_store/cell/microfusion, //SKYRAT EDIT ADDITION
 		))
+=======
+	))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	atom_storage.open_sound = 'sound/items/holster.ogg'
 	atom_storage.open_sound_vary = TRUE
 	atom_storage.rustle_sound = FALSE
@@ -727,12 +762,18 @@
 		/obj/item/key/janitor,
 		/obj/item/lightreplacer,
 		/obj/item/melee/flyswatter,
+<<<<<<< HEAD
 		/obj/item/mop, //SKYRAT EDIT - For when you're lazy to use soap
 		/obj/item/mop/advanced, //SKYRAT EDIT For when you're lazy to use a bucket
 		/obj/item/paint/paint_remover,
 		/obj/item/plunger,
 		/obj/item/pushbroom,
 		/obj/item/reagent_containers/cup/bucket, //SKYRAT EDIT - Bucket
+=======
+		/obj/item/paint/paint_remover,
+		/obj/item/plunger,
+		/obj/item/pushbroom,
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/reagent_containers/spray,
 		/obj/item/soap,
 		/obj/item/wirebrush,

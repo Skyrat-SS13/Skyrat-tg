@@ -2,7 +2,10 @@ SUBSYSTEM_DEF(lua)
 	name = "Lua Scripting"
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	wait = 0.1 SECONDS
+<<<<<<< HEAD
 	flags = SS_OK_TO_FAIL_INIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// A list of all lua states
 	var/list/datum/lua_state/states = list()
@@ -18,6 +21,7 @@ SUBSYSTEM_DEF(lua)
 	var/list/current_run = list()
 	var/list/current_states_run = list()
 
+<<<<<<< HEAD
 	/// Protects return values from getting GCed before getting converted to lua values
 	/// Gets cleared every tick.
 	var/list/gc_guard = list()
@@ -43,6 +47,21 @@ SUBSYSTEM_DEF(lua)
 		initialization_failure_message = crash_message
 		warning(crash_message)
 		return SS_INIT_FAILURE
+=======
+	var/list/needs_gc_cycle = list()
+
+/datum/controller/subsystem/lua/Initialize()
+	DREAMLUAU_SET_EXECUTION_LIMIT_SECS(5)
+	// Set wrappers to ensure that lua scripts are subject to the same safety restrictions as other admin tooling
+	DREAMLUAU_SET_NEW_WRAPPER("/proc/_new")
+	DREAMLUAU_SET_VAR_GET_WRAPPER("/proc/wrap_lua_get_var")
+	DREAMLUAU_SET_VAR_SET_WRAPPER("/proc/wrap_lua_set_var")
+	DREAMLUAU_SET_OBJECT_CALL_WRAPPER("/proc/wrap_lua_datum_proc_call")
+	DREAMLUAU_SET_GLOBAL_CALL_WRAPPER("/proc/wrap_lua_global_proc_call")
+	// Set the print wrapper, as otherwise, the print function is meaningless
+	DREAMLUAU_SET_PRINT_WRAPPER("/proc/wrap_lua_print")
+	return SS_INIT_SUCCESS
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/controller/subsystem/lua/OnConfigLoad()
 	// Read the paths from the config file
@@ -52,9 +71,12 @@ SUBSYSTEM_DEF(lua)
 		lua_path += path
 	world.SetConfig("env", "LUAU_PATH", jointext(lua_path, ";"))
 
+<<<<<<< HEAD
 /datum/controller/subsystem/lua/Shutdown()
 	AUXTOOLS_FULL_SHUTDOWN(AUXLUA)
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/controller/subsystem/lua/proc/queue_resume(datum/lua_state/state, index, arguments)
 	if(!initialized)
 		return
@@ -64,6 +86,7 @@ SUBSYSTEM_DEF(lua)
 		arguments = list()
 	else if(!islist(arguments))
 		arguments = list(arguments)
+<<<<<<< HEAD
 	resumes += list(list("state" = state, "index" = index, "arguments" = arguments))
 
 /datum/controller/subsystem/lua/proc/kill_task(datum/lua_state/state, list/task_info)
@@ -94,6 +117,35 @@ SUBSYSTEM_DEF(lua)
 					resumes.Cut(i, i+1)
 					break
 	state.kill_task(task_info)
+=======
+	else
+		var/list/args_list = arguments
+		arguments = args_list.Copy()
+	resumes += list(list("state" = state, "index" = index, "arguments" = arguments))
+
+/datum/controller/subsystem/lua/proc/kill_task(datum/lua_state/state, is_sleep, index)
+	if(!istype(state))
+		return
+	if(is_sleep)
+		var/state_index = 1
+
+		// Get the nth sleep in the sleep list corresponding to the target state
+		for(var/i in 1 to length(sleeps))
+			var/datum/lua_state/sleeping_state = sleeps[i]
+			if(sleeping_state == state)
+				if(state_index == index)
+					sleeps.Cut(i, i+1)
+					break
+				state_index++
+	else
+		// Remove the resumt from the resumt list
+		for(var/i in 1 to length(resumes))
+			var/resume = resumes[i]
+			if(resume["state"] == state && resume["index"] == index)
+				resumes.Cut(i, i+1)
+				break
+	state.kill_task(is_sleep, index)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/controller/subsystem/lua/fire(resumed)
 	// Each fire of SSlua awakens every sleeping task in the order they slept,
@@ -104,7 +156,10 @@ SUBSYSTEM_DEF(lua)
 		sleeps.Cut()
 		resumes.Cut()
 
+<<<<<<< HEAD
 	gc_guard.Cut()
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/current_sleeps = current_run["sleeps"]
 	var/list/affected_states = list()
 	while(length(current_sleeps))
@@ -147,6 +202,38 @@ SUBSYSTEM_DEF(lua)
 		if(MC_TICK_CHECK)
 			break
 
+<<<<<<< HEAD
 	// Update every lua editor TGUI open for each state that had a task awakened or resumed
 	for(var/datum/lua_state/state in affected_states)
 		INVOKE_ASYNC(state, TYPE_PROC_REF(/datum/lua_state, update_editors))
+=======
+	while(length(needs_gc_cycle))
+		var/datum/lua_state/state = needs_gc_cycle[needs_gc_cycle.len]
+		needs_gc_cycle.len--
+		state.collect_garbage()
+
+	// Update every lua editor TGUI open for each state that had a task awakened or resumed
+	for(var/datum/lua_state/state in affected_states)
+		INVOKE_ASYNC(state, TYPE_PROC_REF(/datum/lua_state, update_editors))
+
+/datum/controller/subsystem/lua/proc/log_involved_runtime(exception/runtime, list/desclines, list/lua_stacks)
+	var/list/json_data = list("status" = "runtime", "file" = runtime.file, "line" = runtime.line, "message" = runtime.name, "stack" = list())
+	var/level = 1
+	for(var/line in desclines)
+		line = copytext(line, 3)
+		if(starts_with_any(line, list(
+				"/datum/lua_state (/datum/lua_state): load script",
+				"/datum/lua_state (/datum/lua_state): call function",
+				"/datum/lua_state (/datum/lua_state): awaken",
+				"/datum/lua_state (/datum/lua_state): resume"
+			)))
+			json_data["stack"] += lua_stacks[level]
+			level++
+		json_data["stack"] += line
+	for(var/datum/weakref/state_ref as anything in GLOB.lua_state_stack)
+		var/datum/lua_state/state = state_ref.resolve()
+		if(!state)
+			continue
+		state.log_result(json_data)
+	return
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

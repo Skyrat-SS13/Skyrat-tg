@@ -45,10 +45,13 @@ export const NtosRecords = (props) => {
                       ' ' +
                       record.age +
                       ' ' +
+<<<<<<< HEAD
                       /* SKYRAT EDIT ADDITION BEGIN - Chronological age */
                       record.chrono_age +
                       ' ' +
                       /* SKYRAT EDIT ADDITION END */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                       record.fingerprint,
                   )
                 )
@@ -65,6 +68,7 @@ export const NtosRecords = (props) => {
               <br />
               Gender: {record.gender}
               <br />
+<<<<<<< HEAD
               {/* SKYRAT EDIT CHANGE - Chronological age, ORIGINAL: Age: {record.age} */}
               Physical Age: {record.age}
               {/* SKYRAT EDIT CHANGE END */}
@@ -73,6 +77,10 @@ export const NtosRecords = (props) => {
               Chronological Age: {record.chrono_age}
               <br />
               {/* SKYRAT EDIT ADDITION END */}
+=======
+              Age: {record.age}
+              <br />
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               Fingerprint Hash: {record.fingerprint}
               <br />
               <br />
@@ -103,12 +111,15 @@ export const NtosRecords = (props) => {
                 {record.name}
               </Box>
               <br />
+<<<<<<< HEAD
               {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
               Physical Age: {record.age}
               <br />
               Chronological Age: {record.chrono_age}
               <br />
               {/* SKYRAT EDIT ADDITION END */}
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               Bloodtype: {record.bloodtype}
               <br />
               Minor Disabilities: {record.mi_dis}

@@ -41,10 +41,16 @@
 		set_light_on(TRUE)
 	update_brightness()
 	register_context()
+<<<<<<< HEAD
 
 	if(toggle_context)
 		RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 
+=======
+	if(toggle_context)
+		RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/flashlight_eyes)
 
 	AddElement(
@@ -541,7 +547,10 @@
 	randomize_fuel = FALSE
 	trash_type = /obj/item/trash/candle
 	can_be_extinguished = TRUE
+<<<<<<< HEAD
 	var/scented_type //SKYRAT EDIT ADDITION /// Pollutant type for scented candles
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// The current wax level, used for drawing the correct icon
 	var/current_wax_level = 1
 	/// The previous wax level, remembered so we only have to make 3 update_appearance calls total as opposed to every tick
@@ -695,6 +704,9 @@
 	desc = "An ornate, green lantern."
 	color = LIGHT_COLOR_GREEN
 	light_color = LIGHT_COLOR_GREEN
+
+/obj/item/flashlight/lantern/jade/on
+	start_on = TRUE
 
 /obj/item/flashlight/slime
 	gender = PLURAL

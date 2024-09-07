@@ -279,11 +279,21 @@
 
 /obj/machinery/door/firedoor/proc/check_atmos(turf/checked_turf)
 	var/datum/gas_mixture/environment = checked_turf.return_air()
+<<<<<<< HEAD
 
 	var/pressure = environment?.return_pressure() //SKYRAT EDIT ADDITION - Micro optimisation
 	if(environment?.temperature >= BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		return FIRELOCK_ALARM_TYPE_HOT
 	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure < WARNING_LOW_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
+=======
+	if(!environment)
+		stack_trace("We tried to check a gas_mixture that doesn't exist for its firetype, what are you DOING")
+		return
+
+	if(environment.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
+		return FIRELOCK_ALARM_TYPE_HOT
+	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FIRELOCK_ALARM_TYPE_COLD
 	return
 

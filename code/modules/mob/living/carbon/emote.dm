@@ -28,8 +28,11 @@
 	vary = TRUE
 
 /datum/emote/living/carbon/clap/get_sound(mob/living/user)
+<<<<<<< HEAD
 	if(!ishuman(user))
 		return
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
 		return
 	return pick(
@@ -38,8 +41,11 @@
 		'sound/misc/clap3.ogg',
 		'sound/misc/clap4.ogg',
 	)
+<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/emote/living/carbon/crack
 	key = "crack"

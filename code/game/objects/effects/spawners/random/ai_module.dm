@@ -39,9 +39,12 @@
 		/obj/item/ai_module/supplied/quarantine,
 		/obj/item/ai_module/core/full/yesman,
 		/obj/item/ai_module/remove,
+<<<<<<< HEAD
 		/obj/item/ai_module/core/full/dagothbot, // SKYRAT EDIT - EDITION
 		/obj/item/ai_module/core/full/texas, // SKYRAT EDIT - EDITION
 		/obj/item/ai_module/core/full/emperor, // SKYRAT EDIT - EDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /obj/effect/spawner/random/aimodule/harmful

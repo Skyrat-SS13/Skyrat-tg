@@ -61,7 +61,11 @@
 	var/total = 0
 	for(var/datum/weakref/server_ref in cyber_control.active_servers)
 		var/obj/machinery/quantum_server/server = server_ref?.resolve()
+<<<<<<< HEAD
 		if(isnull(server))
+=======
+		if(isnull(server) || QDELETED(server))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			continue
 
 		total += length(server.mutation_candidate_refs)

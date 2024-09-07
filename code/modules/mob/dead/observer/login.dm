@@ -7,9 +7,12 @@
 	ghost_others = client.prefs.read_preference(/datum/preference/choiced/ghost_others)
 	var/preferred_form = null
 
+<<<<<<< HEAD
 	if(isAdminGhostAI(src))
 		has_unlimited_silicon_privilege = TRUE
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(client.prefs.unlock_content)
 		preferred_form = client.prefs.read_preference(/datum/preference/choiced/ghost_form)
 		ghost_orbit = client.prefs.read_preference(/datum/preference/choiced/ghost_orbit)

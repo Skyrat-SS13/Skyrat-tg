@@ -13,7 +13,11 @@
 	)
 
 /datum/surgery/gastrectomy/mechanic
+<<<<<<< HEAD
 	name = "Engine Diagnostic (Heart)" // Nova Edit: Original name = "Engine Diagnostic"
+=======
+	name = "Engine Diagnostic"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	requires_bodypart_type = BODYTYPE_ROBOTIC
 	steps = list(
 		/datum/surgery_step/mechanic_open,

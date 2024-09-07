@@ -108,7 +108,11 @@
 
 /obj/structure/window/singularity_pull(S, current_size)
 	..()
+<<<<<<< HEAD
 	if(anchored && current_size >= STAGE_FIVE) //SKYRAT EDIT CHANGE
+=======
+	if(anchored && current_size >= STAGE_TWO)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		set_anchored(FALSE)
 	if(current_size >= STAGE_FIVE)
 		deconstruct(FALSE)
@@ -450,6 +454,10 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, forceMove), loc), time_to_go + time_to_return) //we back boys
 	addtimer(VARSET_CALLBACK(src, dramatically_disappearing, FALSE), time_to_go + time_to_return) //also set the var back
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_appearance)), time_to_go + time_to_return)
+<<<<<<< HEAD
+=======
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), get_turf(src), 'sound/effects/glass_reverse.ogg', 70, TRUE), time_to_go + time_to_return)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/obj/structure/grille/grill = take_grill ? (locate(/obj/structure/grille) in loc) : null
 	if(grill)
@@ -490,7 +498,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 //2022 BABYYYYY ~lewc
 //2023 ONE YEAR TO GO! -LT3
 /datum/armor/window_reinforced
+<<<<<<< HEAD
 	melee = 50
+=======
+	melee = 80
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	bomb = 25
 	fire = 80
 	acid = 100
@@ -684,7 +696,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 /obj/structure/window/fulltile
 	name = "full tile window"
 	desc = "A full tile window."
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/window.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/smooth_structures/window.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "window-0"
 	base_icon_state = "window"
 	max_integrity = 100
@@ -705,7 +721,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	anchored = FALSE
 
 /obj/structure/window/plasma/fulltile
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/plasma_window.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/smooth_structures/plasma_window.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "plasma_window-0"
 	base_icon_state = "plasma_window"
 	max_integrity = 400
@@ -721,7 +741,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	anchored = FALSE
 
 /obj/structure/window/reinforced/plasma/fulltile
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/rplasma_window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/smooth_structures/rplasma_window.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "rplasma_window-0"
 	base_icon_state = "rplasma_window"
 	state = RWINDOW_SECURE
@@ -741,7 +765,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 /obj/structure/window/reinforced/fulltile
 	name = "full tile reinforced window"
 	desc = "A full tile window that is reinforced with metal rods."
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "reinforced_window-0"
 	base_icon_state = "reinforced_window"
 	max_integrity = 150
@@ -764,7 +792,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	state = WINDOW_OUT_OF_FRAME
 
 /obj/structure/window/reinforced/tinted/fulltile
+<<<<<<< HEAD
 	icon = 'icons/obj/smooth_structures/tinted_window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/smooth_structures/tinted_window.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "tinted_window-0"
 	base_icon_state = "tinted_window"
 	fulltile = TRUE

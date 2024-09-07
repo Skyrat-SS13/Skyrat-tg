@@ -5,7 +5,11 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	stat = DEAD
+<<<<<<< HEAD
 	//hud_type = /datum/hud/new_player SKYRAT EDIT REMOVAL
+=======
+	hud_type = /datum/hud/new_player
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	hud_possible = list()
 
 	var/ready = FALSE
@@ -74,10 +78,16 @@
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
 		less_input_message = " - Notice: Observer freelook is currently disabled."
 	// Don't convert this to tgui please, it's way too important
+<<<<<<< HEAD
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") //SKYRAT EDIT CHANGE
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		show_title_screen() // SKYRAT EDIT ADDITION
+=======
+	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
+	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+		ready = PLAYER_NOT_READY
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 
 	hide_title_screen() // SKYRAT EDIT ADDITION - Skyrat Titlescreen
@@ -121,6 +131,7 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(JOB_NOT_VETERAN)
 			return "You need to be veteran to join as [jobtitle]."
@@ -135,6 +146,8 @@
 		if(JOB_UNAVAILABLE_AUGMENT)
 			return "[jobtitle] is restricted due to your selected body augments."
 		//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
 		if(JOB_UNAVAILABLE_AGE)
@@ -205,7 +218,10 @@
 		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
 		return FALSE
 
+<<<<<<< HEAD
 	hide_title_screen()// SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	mind.late_joiner = TRUE
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
@@ -226,7 +242,11 @@
 	// If we already have a captain, are they a "Captain" rank and are we allowing multiple of them to be assigned?
 	if(is_captain_job(job))
 		is_captain = IS_FULL_CAPTAIN
+<<<<<<< HEAD
 		captain_sound = ANNOUNCER_DEPARTMENTAL // SKYRAT EDIT CHANGE - Announcer Sounds
+=======
+		captain_sound = 'sound/misc/announce.ogg'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// If we don't have an assigned cap yet, check if this person qualifies for some from of captaincy.
 	else if(!SSjob.assigned_captain && ishuman(character) && SSjob.chain_of_command[rank] && !is_banned_from(character.ckey, list(JOB_CAPTAIN)))
 		is_captain = IS_ACTING_CAPTAIN
@@ -244,18 +264,28 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
+<<<<<<< HEAD
 		// BEGIN SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
 		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
+<<<<<<< HEAD
 			announce_arrival(humanc, chosen_rank)
 		// END SKYRAT EDIT CHANGE - customization
+=======
+			announce_arrival(humanc, rank)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
+<<<<<<< HEAD
 		SSpersistence.load_modular_persistence(humanc.get_organ_slot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)
@@ -275,7 +305,11 @@
 		SSquirks.AssignQuirks(humanc, humanc.client)
 
 	if(humanc) // Quirks may change manifest datapoints, so inject only after assigning quirks
+<<<<<<< HEAD
 		GLOB.manifest.inject(humanc, humanc.client) // SKYRAT EDIT - Added humanc.client - ALTERNATIVE_JOB_TITLES
+=======
+		GLOB.manifest.inject(humanc)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/area/station/arrivals = GLOB.areas_by_type[/area/station/hallway/secondary/entry]
 	if(humanc && arrivals && !arrivals.power_environ) //arrivals depowered
@@ -293,6 +327,7 @@
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
 
+<<<<<<< HEAD
 	hide_title_screen() // SKYRAT EDIT ADDITION - titlescreen
 
 	mind.active = FALSE //we wish to transfer the key manually
@@ -309,6 +344,19 @@
 		preserved_mind.transfer_to(spawning_mob) //won't transfer key since the mind is not active
 		preserved_mind.set_original_character(spawning_mob)
 
+=======
+	mind.active = FALSE //we wish to transfer the key manually
+	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
+	if(QDELETED(src) || !client)
+		return // Disconnected while checking for the appearance ban.
+	if(!isAI(spawning_mob)) // Unfortunately there's still snowflake AI code out there.
+		// transfer_to sets mind to null
+		var/datum/mind/preserved_mind = mind
+		preserved_mind.original_character_slot_index = client.prefs.default_slot
+		preserved_mind.transfer_to(spawning_mob) //won't transfer key since the mind is not active
+		preserved_mind.set_original_character(spawning_mob)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	LAZYADD(client.player_details.joined_as_slots, "[client.prefs.default_slot]")
 	client.init_verbs()
 	. = spawning_mob

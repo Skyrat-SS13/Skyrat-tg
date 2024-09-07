@@ -978,17 +978,32 @@
 	else
 		return element
 
+<<<<<<< HEAD
 /// Returns a copy of the list where any element that is a datum or the world is converted into a ref
 /proc/refify_list(list/target_list, list/visited, path_accumulator = "list")
 	if(!visited)
 		visited = list()
 	var/list/ret = list()
 	visited[target_list] = path_accumulator
+=======
+/**
+ * Intermediate step for preparing lists to be passed into the lua editor tgui.
+ * Resolves weakrefs, converts some values without a standard textual representation to text,
+ * and can handle self-referential lists and potential duplicate output keys.
+ */
+/proc/prepare_lua_editor_list(list/target_list, list/visited)
+	if(!visited)
+		visited = list()
+	var/list/ret = list()
+	visited[target_list] = ret
+	var/list/duplicate_keys = list()
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/i in 1 to target_list.len)
 		var/key = target_list[i]
 		var/new_key = key
 		if(isweakref(key))
 			var/datum/weakref/ref = key
+<<<<<<< HEAD
 			var/resolved = ref.resolve()
 			if(resolved)
 				new_key = "[resolved] [REF(resolved)]"
@@ -1025,6 +1040,43 @@
 		var/list/to_add = list(new_key)
 		if(value)
 			to_add[new_key] = value
+=======
+			new_key = ref.resolve() || "null weakref"
+		else if(key == world)
+			new_key = world.name
+		else if(ref(key) == "\[0xe000001\]")
+			new_key = "global"
+		else if(islist(key))
+			if(visited[key])
+				new_key = visited[key]
+			else
+				new_key = prepare_lua_editor_list(key, visited)
+		var/value
+		if(!isnull(key) && !isnum(key))
+			value = target_list[key]
+		if(isweakref(value))
+			var/datum/weakref/ref = value
+			value = ref.resolve() || "null weakref"
+		if(value == world)
+			value = "world"
+		else if(ref(value) == "\[0xe000001\]")
+			value = "global"
+		else if(islist(value))
+			if(visited[value])
+				value = visited[value]
+			else
+				value = prepare_lua_editor_list(value, visited)
+		var/list/to_add = list()
+		if(!isnull(value))
+			var/final_key = new_key
+			while(duplicate_keys[final_key])
+				duplicate_keys[new_key]++
+				final_key = "[new_key] ([duplicate_keys[new_key]])"
+			duplicate_keys[final_key] = 1
+			to_add[final_key] = value
+		else
+			to_add += list(new_key)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		ret += to_add
 		if(i < target_list.len)
 			CHECK_TICK
@@ -1033,16 +1085,28 @@
 /**
  * Converts a list into a list of assoc lists of the form ("key" = key, "value" = value)
  * so that list keys that are themselves lists can be fully json-encoded
+<<<<<<< HEAD
  */
 /proc/kvpify_list(list/target_list, depth = INFINITY, list/visited, path_accumulator = "list")
 	if(!visited)
 		visited = list()
 	var/list/ret = list()
 	visited[target_list] = path_accumulator
+=======
+ * and that unique objects with the same string representation do not
+ * produce duplicate keys that are clobbered by the standard JavaScript JSON.parse function
+ */
+/proc/kvpify_list(list/target_list, depth = INFINITY, list/visited)
+	if(!visited)
+		visited = list()
+	var/list/ret = list()
+	visited[target_list] = ret
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/i in 1 to target_list.len)
 		var/key = target_list[i]
 		var/new_key = key
 		if(islist(key) && depth)
+<<<<<<< HEAD
 			if(visited.Find(key))
 				new_key = visited[key]
 			else
@@ -1056,6 +1120,21 @@
 			else
 				value = kvpify_list(value, depth-1, visited, path_accumulator + "\[[key]\]")
 		if(value)
+=======
+			if(visited[key])
+				new_key = visited[key]
+			else
+				new_key = kvpify_list(key, depth-1, visited)
+		var/value
+		if(!isnull(key) && !isnum(key))
+			value = target_list[key]
+		if(islist(value) && depth)
+			if(visited[value])
+				value = visited[value]
+			else
+				value = kvpify_list(value, depth-1, visited)
+		if(!isnull(value))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			ret += list(list("key" = new_key, "value" = value))
 		else
 			ret += list(list("key" = i, "value" = new_key))
@@ -1065,12 +1144,21 @@
 
 /// Compares 2 lists, returns TRUE if they are the same
 /proc/deep_compare_list(list/list_1, list/list_2)
+<<<<<<< HEAD
 	if(!islist(list_1) || !islist(list_2))
 		return FALSE
 
 	if(list_1 == list_2)
 		return TRUE
 
+=======
+	if(list_1 == list_2)
+		return TRUE
+
+	if(!islist(list_1) || !islist(list_2))
+		return FALSE
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(list_1.len != list_2.len)
 		return FALSE
 
@@ -1093,11 +1181,19 @@
 	return TRUE
 
 /// Returns a copy of the list where any element that is a datum is converted into a weakref
+<<<<<<< HEAD
 /proc/weakrefify_list(list/target_list, list/visited, path_accumulator = "list")
 	if(!visited)
 		visited = list()
 	var/list/ret = list()
 	visited[target_list] = path_accumulator
+=======
+/proc/weakrefify_list(list/target_list, list/visited)
+	if(!visited)
+		visited = list()
+	var/list/ret = list()
+	visited[target_list] = ret
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/i in 1 to target_list.len)
 		var/key = target_list[i]
 		var/new_key = key
@@ -1107,13 +1203,20 @@
 			if(visited.Find(key))
 				new_key = visited[key]
 			else
+<<<<<<< HEAD
 				new_key = weakrefify_list(key, visited, path_accumulator + "\[[i]\]")
 		var/value
 		if(istext(key) || islist(key) || ispath(key) || isdatum(key) || key == world)
+=======
+				new_key = weakrefify_list(key, visited)
+		var/value
+		if(!isnull(key) && !isnum(key))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			value = target_list[key]
 		if(isdatum(value))
 			value = WEAKREF(value)
 		else if(islist(value))
+<<<<<<< HEAD
 			if(visited.Find(value))
 				value = visited[value]
 			else
@@ -1163,6 +1266,14 @@
 				value = encode_text_and_nulls(value, visited)
 		var/list/to_add = list(new_key)
 		if(value)
+=======
+			if(visited[value])
+				value = visited[value]
+			else
+				value = weakrefify_list(value, visited)
+		var/list/to_add = list(new_key)
+		if(!isnull(value))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			to_add[new_key] = value
 		ret += to_add
 		if(i < target_list.len)
@@ -1188,3 +1299,158 @@
 	if("x" in coords)
 		return locate(coords["x"], coords["y"], coords["z"])
 	return locate(coords[1], coords[2], coords[3])
+<<<<<<< HEAD
+=======
+
+/**
+ * Given a list and a list of its variant hints, appends variants that aren't explicitly required by dreamluau,
+ * but are required by the lua editor tgui.
+ */
+/proc/add_lua_editor_variants(list/values, list/variants, list/visited, path = "")
+	if(!islist(visited))
+		visited = list()
+		visited[values] = "\[\]"
+	if(!islist(values) || !islist(variants))
+		return
+	if(values.len != variants.len)
+		CRASH("values and variants must be the same length")
+	for(var/i in 1 to variants.len)
+		var/pair = variants[i]
+		var/pair_modified = FALSE
+		if(isnull(pair))
+			pair = list("key", "value")
+		var/key = values[i]
+		if(islist(key))
+			if(visited[key])
+				pair["key"] = list("cycle", visited[key])
+			else
+				var/list/key_variants = pair["key"]
+				var/new_path = path + "\[[i], \"key\"\],"
+				visited[key] = new_path
+				add_lua_editor_variants(key, key_variants, visited, new_path)
+				visited -= key
+				pair["key"] = list("list", key_variants)
+			pair_modified = TRUE
+		else if(isdatum(key) || key == world || ref(key) == "\[0xe000001\]")
+			pair["key"] = list("ref", ref(key))
+			pair_modified = TRUE
+		var/value
+		if(!isnull(key) && !isnum(key))
+			value = values[key]
+		if(islist(value))
+			if(visited[value])
+				pair["value"] = list("cycle", visited[value])
+			else
+				var/list/value_variants = pair["value"]
+				var/new_path = path + "\[[i], \"value\"\],"
+				visited[value] = new_path
+				add_lua_editor_variants(value, value_variants, visited, new_path)
+				visited -= value
+				pair["value"] = list("list", value_variants)
+			pair_modified = TRUE
+		else if(isdatum(value) || value == world || ref(value) == "\[0xe000001\]")
+			pair["value"] = list("ref", ref(value))
+			pair_modified = TRUE
+		if(pair_modified && pair != variants[i])
+			variants[i] = pair
+		if(i < variants.len)
+			CHECK_TICK
+
+/proc/add_lua_return_value_variants(list/values, list/variants)
+	if(!islist(values) || !islist(variants))
+		return
+	if(values.len != variants.len)
+		CRASH("values and variants must be the same length")
+	for(var/i in 1 to values.len)
+		var/value = values[i]
+		if(islist(value))
+			add_lua_editor_variants(value, variants[i])
+		else if(isdatum(value) || value == world || ref(value) == "\[0xe000001\]")
+			variants[i] = list("ref", ref(value))
+
+/proc/deep_copy_without_cycles(list/values, list/visited)
+	if(!islist(visited))
+		visited = list()
+	if(!islist(values))
+		return values
+	var/list/ret = list()
+	var/cycle_count = 0
+	visited[values] = TRUE
+	for(var/i in 1 to values.len)
+		var/key = values[i]
+		var/out_key = key
+		if(islist(key))
+			if(visited[key])
+				do
+					out_key = "\[cyclical reference[cycle_count ? " (i)" : ""]\]"
+					cycle_count++
+				while(values.Find(out_key))
+			else
+				visited[key] = TRUE
+				out_key = deep_copy_without_cycles(key, visited)
+				visited -= key
+		var/value
+		if(!isnull(key) && !isnum(key))
+			value = values[key]
+		var/out_value = value
+		if(islist(value))
+			if(visited[value])
+				out_value = "\[cyclical reference\]"
+			else
+				visited[value] = TRUE
+				out_value = deep_copy_without_cycles(value, visited)
+				visited -= value
+		var/list/to_add = list(out_key)
+		if(!isnull(out_value))
+			to_add[out_key] = out_value
+		ret += to_add
+		if(i < values.len)
+			CHECK_TICK
+	return ret
+
+/**
+ * Given a list and a list of its variant hints, removes any list key/values that are represent lua values that could not be directly converted to DM.
+ */
+/proc/remove_non_dm_variants(list/return_values, list/variants, list/visited)
+	if(!islist(visited))
+		visited = list()
+	if(!islist(return_values) || !islist(variants) || visited[return_values])
+		return
+	visited[return_values] = TRUE
+	if(return_values.len != variants.len)
+		CRASH("return_values and variants must be the same length")
+	for(var/i in 1 to variants.len)
+		var/pair = variants[i]
+		if(!islist(variants))
+			continue
+		var/key = return_values[i]
+		if(pair["key"])
+			if(!islist(pair["key"]))
+				return_values[i] = null
+				continue
+			remove_non_dm_variants(key, pair["key"], visited)
+		if(pair["value"])
+			if(!islist(pair["value"]))
+				return_values[key] = null
+				continue
+			remove_non_dm_variants(return_values[key], pair["value"], visited)
+
+/proc/compare_lua_logs(list/log_1, list/log_2)
+	if(log_1 == log_2)
+		return TRUE
+	for(var/field in list("status", "name", "message", "chunk"))
+		if(log_1[field] != log_2[field])
+			return FALSE
+	switch(log_1["status"])
+		if("finished", "yield")
+			return deep_compare_list(
+					recursive_list_resolve(log_1["return_values"]),
+					recursive_list_resolve(log_2["return_values"])
+					) && deep_compare_list(log_1["variants"], log_2["variants"])
+		if("runtime")
+			return log_1["file"] == log_2["file"]\
+				&& log_1["line"] == log_2["line"]\
+				&& deep_compare_list(log_1["stack"], log_2["stack"])
+		else
+			return TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

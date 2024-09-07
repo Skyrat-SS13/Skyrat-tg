@@ -4,13 +4,21 @@
 /datum/quirk/spacer_born
 	name = "Spacer"
 	desc = "You were born in space, and have never known the comfort of a planet's gravity. Your body has adapted to this. \
+<<<<<<< HEAD
 		You are more comfortable in zero and artifical gravity and are more resistant to the effects of space, \
+=======
+		You are more comfortable in zero and artificial gravity and are more resistant to the effects of space, \
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		but travelling to a planet's surface for an extended period of time will make you feel sick."
 	gain_text = span_notice("You feel at home in space.")
 	lose_text = span_danger("You feel homesick.")
 	icon = FA_ICON_USER_ASTRONAUT
 	value = 7
+<<<<<<< HEAD
 	quirk_flags = QUIRK_CHANGES_APPEARANCE //SKYRAT EDIT CHANGE - ORIGINAL: quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+=======
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	medical_record_text = "Patient is well-adapted to non-terrestrial environments."
 	mail_goodies = list(
 		/obj/item/storage/pill_bottle/ondansetron,

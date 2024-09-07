@@ -173,7 +173,11 @@
  * Triggers when Space Dragon completes his objective.
  * Calls the shuttle with a coefficient of 3, making it impossible to recall.
  * Sets all of his rifts to allow for infinite sentient carp spawns
+<<<<<<< HEAD
  * Also plays appropiate sounds and CENTCOM messages.
+=======
+ * Also plays appropriate sounds and CENTCOM messages.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  */
 /datum/antagonist/space_dragon/proc/victory()
 	objective_complete = TRUE
@@ -188,9 +192,15 @@
 		rift.time_charged = rift.max_charge
 
 /**
+<<<<<<< HEAD
  * Gives Space Dragon their the rift speed buff permanantly and fully heals the user.
  *
  * Gives Space Dragon the enraged speed buff from charging rifts permanantly.
+=======
+ * Gives Space Dragon their the rift speed buff permanently and fully heals the user.
+ *
+ * Gives Space Dragon the enraged speed buff from charging rifts permanently.
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * Only happens in circumstances where Space Dragon completes their objective.
  * Also gives them a full heal.
  */

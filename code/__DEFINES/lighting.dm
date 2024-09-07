@@ -10,6 +10,16 @@
 #define OVERLAY_LIGHT_BEAM 4
 /// Nonesensical value for light color, used for null checks.
 #define NONSENSICAL_VALUE -99999
+<<<<<<< HEAD
+=======
+
+/// Is our overlay light source attached to another movable (its loc), meaning that the lighting component should go one level deeper.
+#define LIGHT_ATTACHED (1<<0)
+/// Freezes a light in its current state, blocking any attempts at modification
+#define LIGHT_FROZEN (1<<1)
+/// Does this light ignore inherent offsets? (Pixels, transforms, etc)
+#define LIGHT_IGNORE_OFFSET (1<<2)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Is our overlay light source attached to another movable (its loc), meaning that the lighting component should go one level deeper.
 #define LIGHT_ATTACHED (1<<0)
@@ -18,8 +28,11 @@
 /// Does this light ignore inherent offsets? (Pixels, transforms, etc)
 #define LIGHT_IGNORE_OFFSET (1<<2)
 
+<<<<<<< HEAD
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.5 // SKYRAT EDIT CHANGE - Original value 1.4
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// light UNDER the floor. primarily used for starlight, shouldn't fuck with this
 #define LIGHTING_HEIGHT_SPACE -0.5
 /// light ON the floor

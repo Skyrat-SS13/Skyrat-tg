@@ -8,6 +8,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	icon_state = "hilbertshotel"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE + EXTRA STUFF
 	var/list/static/hotel_maps = list("Generic", "Apartment", "Beach Condo", "Station Side", "Library")
 	//standart - hilber's hotel room
@@ -20,6 +21,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	var/datum/map_template/ghost_cafe_rooms/library/ghost_cafe_rooms_library
 	//Skyrat EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/datum/map_template/hilbertshotel/hotelRoomTemp
 	var/datum/map_template/hilbertshotel/empty/hotelRoomTempEmpty
 	var/datum/map_template/hilbertshotel/lore/hotelRoomTempLore
@@ -38,6 +41,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	hotelRoomTemp = new()
 	hotelRoomTempEmpty = new()
 	hotelRoomTempLore = new()
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE
 	ghost_cafe_rooms_apartment = new()
 	ghost_cafe_rooms_beach_condo = new()
@@ -45,6 +49,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	ghost_cafe_rooms_library = new()
 	//SKYRAT EDIT END
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/area/currentArea = get_area(src)
 	if(currentArea.type == /area/ruin/space/has_grav/powered/hilbertresearchfacility/secretroom)
 		ruinSpawned = TRUE
@@ -91,12 +97,20 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
 
 	// If the target is incapacitated after selecting a room, they're not allowed to teleport.
+<<<<<<< HEAD
 	if(target.incapacitated())
 		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
 
 	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
 	// if(!(get_atom_on_turf(src, /mob) == user)) SKYRAT EDIT ORIGINAL
 	if(!Adjacent(user)) // SKYRAT EDIT -- Ghost Cafe Static Hilbertspawner
+=======
+	if(target.incapacitated)
+		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
+
+	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
+	if(!(get_atom_on_turf(src, /mob) == user))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(user == target)
 			to_chat(user, span_warning("\The [src] is no longer in your possession!"))
 		else
@@ -114,11 +128,14 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		else if(!user.dropItemToGround(src))
 			to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE
 	var/chosen_room = "Nothing"
 	if(istype(src, /obj/item/hilbertshotel/ghostdojo)) //to don't add another one var
 		chosen_room = tgui_input_list(user, "Choose desired room:", "Time to choose", hotel_maps)
 	//SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!storageTurf) //Blame subsystems for not allowing this to be in Initialize
 		if(!GLOB.hhStorageTurf)
 			var/datum/map_template/hilbertshotelstorage/storageTemp = new()
@@ -132,7 +149,11 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		return
 	if(tryStoredRoom(chosenRoomNumber, target))
 		return
+<<<<<<< HEAD
 	sendToNewRoom(chosenRoomNumber, target, chosen_room) //SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE. Was sendToNewRoom(chosenRoomNumber, target)
+=======
+	sendToNewRoom(chosenRoomNumber, target)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/hilbertshotel/proc/tryActiveRoom(roomNumber, mob/user)
 	if(activeRooms["[roomNumber]"])
@@ -178,13 +199,18 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		return TRUE
 	return FALSE
 
+<<<<<<< HEAD
 /obj/item/hilbertshotel/proc/sendToNewRoom(roomNumber, mob/user, chosen_room) //SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE. Was sendToNewRoom(roomNumber, mob/user)
+=======
+/obj/item/hilbertshotel/proc/sendToNewRoom(roomNumber, mob/user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotelRoomTemp.width, hotelRoomTemp.height, 1)
 	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
 	var/datum/map_template/load_from = hotelRoomTemp
 
 	if(ruinSpawned && roomNumber == GLOB.hhMysteryRoomNumber)
 		load_from = hotelRoomTempLore
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START - GHOST HOTEL UPDATE
 	//else if(chosen_room == "Apartment")
 	//	load_from = ghost_cafe_rooms_apartment
@@ -202,6 +228,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	else if(chosen_room == "Library")
 		load_from = ghost_cafe_rooms_library
 	//BUBBER EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	load_from.load(bottom_left)
 	activeRooms["[roomNumber]"] = roomReservation
@@ -437,9 +465,13 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	has_gravity = TRUE
 	area_flags = NOTELEPORT | HIDDEN_AREA
 	static_lighting = TRUE
+<<<<<<< HEAD
 	/* 	SKYRAT EDIT REMOVAL - GHOST HOTEL UPDATE
 	ambientsounds = list('sound/ambience/servicebell.ogg')
 	SKYRAT EDIT END */
+=======
+	ambientsounds = list('sound/ambience/servicebell.ogg')
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/roomnumber = 0
 	var/obj/item/hilbertshotel/parentSphere
 	var/datum/turf_reservation/reservation

@@ -24,10 +24,13 @@
 
 /datum/element/muffles_speech/proc/emote_override(mob/living/source, key, params, type_override, intentional, datum/emote/emote)
 	SIGNAL_HANDLER
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION: muzzle_ignore flag
 	if(emote.muzzle_ignore)
 		return NONE
 	// SKYRAT EDIT ADDITION END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!emote.hands_use_check && (emote.emote_type & EMOTE_AUDIBLE))
 		source.audible_message("makes a [pick("strong ", "weak ", "")]noise.", audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE)
 		return COMPONENT_CANT_EMOTE

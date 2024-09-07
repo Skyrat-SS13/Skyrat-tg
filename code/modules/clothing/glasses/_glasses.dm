@@ -38,7 +38,11 @@
 
 /obj/item/clothing/glasses/visor_toggling()
 	. = ..()
+<<<<<<< HEAD
 	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // SKYRAT EDIT CHANGE - ORIGINAL : alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : null
+=======
+	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : null
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(visor_vars_to_toggle & VISOR_VISIONFLAGS)
 		vision_flags ^= initial(vision_flags)
 	if(visor_vars_to_toggle & VISOR_INVISVIEW)
@@ -528,8 +532,11 @@
 	name = "chameleon thermals"
 	desc = "A pair of thermal optic goggles with an onboard chameleon generator."
 	actions_types = list(/datum/action/item_action/chameleon/change/glasses/no_preset)
+<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
 	special_desc = "Chameleon thermal goggles employed by the Syndicate in infiltration operations." //SKYRAT EDIT ADDITION, I don't think the regular description persists through chameleon changes.
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/glasses/thermal/monocle
 	name = "thermoncle"
@@ -557,10 +564,13 @@
 	. = ..()
 	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
 	user.update_worn_glasses()
+<<<<<<< HEAD
 
 /datum/armor/glasses_science
 	fire = 80
 	acid = 100
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/glasses/cold
 	name = "cold goggles"

@@ -45,12 +45,24 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
+<<<<<<< HEAD
 	return ..()
 
+=======
+
+	return ..()
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /mob/living/carbon/human/get_slot_by_item(obj/item/looking_for)
 	if(looking_for == belt)
 		return ITEM_SLOT_BELT
 
+<<<<<<< HEAD
+=======
+	if(belt && (looking_for in belt))
+		return ITEM_SLOT_BELTPACK
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(looking_for == wear_id)
 		return ITEM_SLOT_ID
 
@@ -161,6 +173,7 @@
 		if(ITEM_SLOT_GLOVES)
 			if(gloves)
 				return
+<<<<<<< HEAD
 
 			gloves = equipping
 			//SKYRAT EDIT ADDITION - ERP UPDATE
@@ -179,6 +192,19 @@
 			if(wear_suit)
 				return
 
+=======
+			gloves = equipping
+			update_worn_gloves()
+		if(ITEM_SLOT_FEET)
+			if(shoes)
+				return
+			shoes = equipping
+			update_worn_shoes()
+		if(ITEM_SLOT_OCLOTHING)
+			if(wear_suit)
+				return
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			wear_suit = equipping
 
 			if(wear_suit.breakouttime) //when equipping a straightjacket
@@ -203,7 +229,13 @@
 				return
 			s_store = equipping
 			update_suit_storage()
+<<<<<<< HEAD
 
+=======
+		if(ITEM_SLOT_BELTPACK)
+			if(!belt || !belt.atom_storage?.attempt_insert(equipping, src, override = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED))
+				not_handled = TRUE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
@@ -381,7 +413,7 @@
 /// take the most recent item out of a slot or place held item in a slot
 
 /mob/living/carbon/human/proc/smart_equip_targeted(slot_type = ITEM_SLOT_BELT, slot_item_name = "belt")
-	if(incapacitated())
+	if(incapacitated)
 		return
 	var/obj/item/thing = get_active_held_item()
 	var/obj/item/equipped_item = get_item_by_slot(slot_type)

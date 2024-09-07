@@ -47,8 +47,11 @@
 	. = ..()
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
+<<<<<<< HEAD
 		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT ADDITION - MEDIGUNS
 		/obj/item/storage/medkit, //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
@@ -56,6 +59,7 @@
 	desc = "A dark blue jacket for paramedics with reflective stripes."
 	icon_state = "labcoat_paramedic"
 	inhand_icon_state = null
+<<<<<<< HEAD
 
 //START SKYRAT EDIT ADDITION
 /obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
@@ -64,6 +68,8 @@
 		/obj/item/storage/medkit,
 	)
 //END SKYRAT EDIT
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"

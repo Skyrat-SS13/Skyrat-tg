@@ -21,7 +21,11 @@
 	var/immerse_overlay_color = "#5AAA88"
 
 	/// Fishing element for this specific water tile
+<<<<<<< HEAD
 	var/datum/fish_source/fishing_datum = /datum/fish_source/portal
+=======
+	var/datum/fish_source/fishing_datum = /datum/fish_source/river
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/water/Initialize(mapload)
 	. = ..()
@@ -33,6 +37,10 @@
 /turf/open/water/jungle
 
 /turf/open/water/beach
+<<<<<<< HEAD
+=======
+	planetary_atmos = FALSE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	gender = PLURAL
 	desc = "Come on in, it's great!"
 	icon = 'icons/turf/beach.dmi'
@@ -42,6 +50,13 @@
 	immerse_overlay_color = "#7799AA"
 	fishing_datum = /datum/fish_source/ocean/beach
 
+<<<<<<< HEAD
+=======
+/turf/open/water/beach/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/water/lavaland_atmos
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	planetary_atmos = TRUE

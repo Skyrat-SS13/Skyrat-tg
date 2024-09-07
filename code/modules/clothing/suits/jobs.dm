@@ -190,6 +190,14 @@
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
+<<<<<<< HEAD
+=======
+
+/obj/item/clothing/suit/hazardvest/press // Variant used by the Curator
+	name = "press hazard vest"
+	desc = "A blue high-visibility vest used to distinguish <i>non-combatant</i> \"PRESS\" members, like if anyone cares."
+	icon_state = "hazard_press"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //Lawyer
 /obj/item/clothing/suit/toggle/lawyer

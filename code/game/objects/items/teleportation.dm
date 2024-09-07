@@ -170,12 +170,16 @@
 /obj/item/hand_tele/attack_self(mob/user)
 	if (!can_teleport_notifies(user))
 		return
+<<<<<<< HEAD
 	//SKYRAT EDIT BEGIN
 	var/turf/my_turf = get_turf(src)
 	if(is_away_level(my_turf.z))
 		to_chat(user, "<span class='warning'>[src] cannot be used here!</span>")
 		return
 	//SKYRAT EDIT END
+=======
+
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/locations = list()
 	for(var/obj/machinery/computer/teleporter/computer as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/teleporter))
 		var/atom/target = computer.target_ref?.resolve()
@@ -195,7 +199,11 @@
 	var/teleport_location_key = tgui_input_list(user, "Teleporter to lock on", "Hand Teleporter", sort_list(locations))
 	if (isnull(teleport_location_key))
 		return
+<<<<<<< HEAD
 	if(user.get_active_held_item() != src || user.incapacitated())
+=======
+	if(user.get_active_held_item() != src || user.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	// Not always a datum, but needed for IS_WEAKREF_OF to cast properly.

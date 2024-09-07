@@ -86,6 +86,7 @@ export const RecordPrint = (props) => {
             Missing
           </Button>
           <Button
+<<<<<<< HEAD
             // SKYRAT EDIT REMOVE START - REMOVE INNOCENT CHECK, ALLOWS RAPSHEETS TO BE PRINTED WITHOUT ANY CRIMES HAVING BEEN LOGGED
             // disabled={innocent}
             // SKYRA EDIT REMOVE END
@@ -97,6 +98,15 @@ export const RecordPrint = (props) => {
             //  innocent ? ' (Requires crimes)' : ''
             // }`}
             // SKYRAT EDIT CHANGE END
+=======
+            disabled={innocent}
+            icon="file-alt"
+            onClick={() => swapTabs(PRINTOUT.Rapsheet)}
+            selected={printType === PRINTOUT.Rapsheet}
+            tooltip={`Prints a standard paper with the record on it.${
+              innocent ? ' (Requires crimes)' : ''
+            }`}
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             tooltipPosition="bottom"
           >
             Rapsheet

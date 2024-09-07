@@ -34,7 +34,11 @@
 	//AI laws
 	for(var/mob/living/silicon/ai/M in GLOB.alive_mob_list)
 		M.laws_sanity_check()
+<<<<<<< HEAD
 		if(M.stat != DEAD && !M.incapacitated())
+=======
+		if(M.stat != DEAD && !M.incapacitated)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(prob(replaceLawsetChance))
 				var/datum/ai_laws/ion_lawset = pick_weighted_lawset()
 				// pick_weighted_lawset gives us a typepath,

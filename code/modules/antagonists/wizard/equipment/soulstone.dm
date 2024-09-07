@@ -188,11 +188,14 @@
 	if(HAS_TRAIT(M, TRAIT_NO_SOUL))
 		to_chat(user, span_warning("This body does not possess a soul to capture."))
 		return
+<<<<<<< HEAD
 	// SKYRAT EDIT START
 	if(!do_after(user, 5 SECONDS, M))
 		to_chat(user, span_warning("You must stand still to capture their soul!"))
 		return
 	// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	log_combat(user, M, "captured [M.name]'s soul", src)
 	capture_soul(M, user)
 
@@ -295,15 +298,25 @@
 /// Procs for moving soul in and out off stone
 
 /// Transfer the mind of a carbon mob (which is then dusted) into a shade mob inside src.
+<<<<<<< HEAD
 /// If forced, sacrifical and stat checks are skipped.
 /obj/item/soulstone/proc/capture_soul(mob/living/carbon/victim, mob/user, forced = FALSE)
 	if(!iscarbon(victim)) //TODO: Add sacrifice stoning for non-organics, just because you have no body doesnt mean you dont have a soul
+=======
+/// If forced, sacrificial and stat checks are skipped.
+/obj/item/soulstone/proc/capture_soul(mob/living/carbon/victim, mob/user, forced = FALSE)
+	if(!iscarbon(victim)) //TODO: Add sacrifice stoning for non-organics, just because you have no body doesn't mean you don't have a soul
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(contents.len)
 		return FALSE
 
 	if(!forced)
+<<<<<<< HEAD
 		var/datum/antagonist/cult/cultist = IS_CULTIST(user)
+=======
+		var/datum/antagonist/cult/cultist = GET_CULTIST(user)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(cultist)
 			var/datum/team/cult/cult_team = cultist.get_team()
 			if(victim.mind && cult_team.is_sacrifice_target(victim.mind))
@@ -377,7 +390,11 @@
 /obj/item/soulstone/proc/check_menu(mob/user, obj/structure/constructshell/shell)
 	if(!istype(user))
 		return FALSE
+<<<<<<< HEAD
 	if(user.incapacitated() || !user.is_holding(src) || !user.CanReach(shell, src))
+=======
+	if(user.incapacitated || !user.is_holding(src) || !user.CanReach(shell, src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 
@@ -449,7 +466,11 @@
 
 /// Called when a ghost is chosen to become a shade.
 /obj/item/soulstone/proc/on_poll_concluded(mob/living/master, mob/living/victim, mob/dead/observer/ghost)
+<<<<<<< HEAD
 	if(isnull(victim) || master.incapacitated() || !master.is_holding(src) || !master.CanReach(victim, src))
+=======
+	if(isnull(victim) || master.incapacitated || !master.is_holding(src) || !master.CanReach(victim, src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(isnull(ghost?.client))
 		to_chat(master, span_danger("There were no spirits willing to become a shade."))

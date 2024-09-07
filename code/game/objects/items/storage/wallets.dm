@@ -20,10 +20,13 @@
 		/obj/item/holochip,
 		/obj/item/card,
 		/obj/item/cigarette,
+<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN
 		/obj/item/condom_pack,
 		/obj/item/gbp_punchcard,
 		// SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/clothing/accessory/dogtag,
 		/obj/item/coin,
 		/obj/item/coupon,

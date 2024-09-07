@@ -31,9 +31,15 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	. = ..()
 	cube_production = 0
 	for(var/datum/stock_part/servo/servo in component_parts)
+<<<<<<< HEAD
 		cube_production += servo.tier * 0.2 // SKYRAT EDIT CHANGE - buffs to allow 1.2 cubes per monkey at T4 - ORIGINAL: cube_production += manipulator.tier * 0.1
 	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
 		cube_production += matter_bin.tier * 0.2 // SKYRAT EDIT CHANGE - buffs to allow 1.2 cubes per monkey at T4 - ORIGINAL: cube_production += matter_bin.tier * 0.1
+=======
+		cube_production += servo.tier * 0.1
+	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
+		cube_production += matter_bin.tier * 0.1
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/monkey_recycler/examine(mob/user)
 	. = ..()

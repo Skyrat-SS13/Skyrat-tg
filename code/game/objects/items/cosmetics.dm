@@ -6,7 +6,11 @@
 	gender = PLURAL
 	name = "red lipstick"
 	desc = "A generic brand of lipstick."
+<<<<<<< HEAD
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/cosmetic.dmi'
+=======
+	icon = 'icons/obj/cosmetic.dmi'
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "lipstick"
 	base_icon_state = "lipstick"
 	inhand_icon_state = "lipstick"
@@ -37,8 +41,11 @@
 	. += "Alt-click to change the style."
 
 /obj/item/lipstick/update_icon_state()
+<<<<<<< HEAD
 	icon_state = "lipstick[open ? "_uncap" : null]"
 	inhand_icon_state = "lipstick[open ? "open" : null]"
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "[base_icon_state][open ? "_uncap" : null]"
 	inhand_icon_state = "[base_icon_state][open ? "open" : null]"
 	return ..()
@@ -77,7 +84,11 @@
 /obj/item/lipstick/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
+<<<<<<< HEAD
 	if(user.incapacitated() || !user.is_holding(src))
+=======
+	if(user.incapacitated || !user.is_holding(src))
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 
@@ -115,13 +126,19 @@
 	name = "syndie lipstick"
 	desc = "Syndicate branded lipstick with a killer dose of kisses. Observe safety regulations!"
 	icon_state = "slipstick"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	base_icon_state = "slipstick"
 	lipstick_color = COLOR_SYNDIE_RED
 	lipstick_trait = TRAIT_SYNDIE_KISS
 	random_spawn = FALSE
+<<<<<<< HEAD
 	lipstick_color = COLOR_SYNDIE_RED
 	lipstick_trait = TRAIT_SYNDIE_KISS
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/lipstick/random
 	name = "lipstick"
@@ -186,6 +203,17 @@
 		to_chat(user, span_notice("You wipe off the lipstick with [src]."))
 		target.update_lips(null)
 		return
+<<<<<<< HEAD
+=======
+
+	user.visible_message(span_warning("[user] begins to wipe [target]'s lipstick off with \the [src]."), \
+		span_notice("You begin to wipe off [target]'s lipstick..."))
+	if(!do_after(user, 1 SECONDS, target = target))
+		return
+	user.visible_message(span_notice("[user] wipes [target]'s lipstick off with \the [src]."), \
+		span_notice("You wipe off [target]'s lipstick."))
+	target.update_lips(null)
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	user.visible_message(span_warning("[user] begins to wipe [target]'s lipstick off with \the [src]."), \
 		span_notice("You begin to wipe off [target]'s lipstick..."))
@@ -208,7 +236,7 @@
 /obj/item/razor/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins shaving [user.p_them()]self without the razor guard! It looks like [user.p_theyre()] trying to commit suicide!"))
 	shave(user, BODY_ZONE_PRECISE_MOUTH)
-	shave(user, BODY_ZONE_HEAD)//doesnt need to be BODY_ZONE_HEAD specifically, but whatever
+	shave(user, BODY_ZONE_HEAD)//doesn't need to be BODY_ZONE_HEAD specifically, but whatever
 	return BRUTELOSS
 
 /obj/item/razor/proc/shave(mob/living/carbon/human/skinhead, location = BODY_ZONE_PRECISE_MOUTH)
@@ -334,7 +362,10 @@
 					shave(human_target, location)
 				return
 	return ..()
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/razor/surgery
 	name = "surgical razor"

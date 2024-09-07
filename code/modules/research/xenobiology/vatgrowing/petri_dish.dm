@@ -59,6 +59,10 @@
 		list(CELL_LINE_TABLE_COCKROACH, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 7),
 		list(CELL_LINE_TABLE_BLOBBERNAUT, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 	)
+<<<<<<< HEAD
+=======
+	name = "basic sample petri dish"
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/petri_dish/random/Initialize(mapload)
 	. = ..()

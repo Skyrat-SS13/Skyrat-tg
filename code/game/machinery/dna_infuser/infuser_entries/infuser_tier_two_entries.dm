@@ -1,6 +1,10 @@
 /*
  * Tier two entries are unlocked after infusing someone/being infused and achieving a bonus, and are for dna mutants that are:
+<<<<<<< HEAD
  * - harder to aquire (gondolas) but not *necessarily* requiring job help
+=======
+ * - harder to acquire (gondolas) but not *necessarily* requiring job help
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * - have a bonus for getting past a threshold
  *
  * todos for the future:

@@ -17,8 +17,12 @@
 			return FALSE
 		AddComponent(/datum/component/pellet_cloud, projectile_type, pellets)
 
+<<<<<<< HEAD
 	//var/next_delay = click_cooldown_override || CLICK_CD_RANGE // ORIGINAL
 	var/next_delay = click_cooldown_override || ((user.staminaloss <= STAMINA_THRESHOLD_TIRED_CLICK_CD) ? CLICK_CD_RANGE : CLICK_CD_RANGE_TIRED) // SKYRAT EDIT CHANGE
+=======
+	var/next_delay = click_cooldown_override || CLICK_CD_RANGE
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(HAS_TRAIT(user, TRAIT_DOUBLE_TAP))
 		next_delay = round(next_delay * 0.5)
 	user.changeNext_move(next_delay)

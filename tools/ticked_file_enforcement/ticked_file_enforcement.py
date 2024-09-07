@@ -55,12 +55,15 @@ with open(file_reference, 'r') as file:
             break
         elif not reading:
             continue
+<<<<<<< HEAD
         # SKYRAT EDIT START - Modular unit tests
         elif line == "// SKYRAT EDIT START":
             continue
         elif line == "// SKYRAT EDIT END":
             continue
         # SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
         lines.append(line)
 
@@ -84,10 +87,13 @@ for code_file in scannable_files:
         dm_path = code_file.replace('/', '\\')
     else:
         dm_path = os.path.basename(code_file)
+<<<<<<< HEAD
         # SKYRAT EDIT START - Modular unit tests - have to append this again after it gets removed; this was not designed upstream with subfolders for unit tests in mind so we must cope.
         if("~skyrat/" in code_file):
             dm_path = "~skyrat\\" + dm_path
         # SKYRAT EDIT END
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
     included = f"#include \"{dm_path}\"" in lines
 

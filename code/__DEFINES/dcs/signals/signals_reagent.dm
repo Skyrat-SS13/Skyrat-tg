@@ -53,8 +53,11 @@
 #define COMSIG_REAGENTS_EXPOSE_MOB "reagents_expose_mob"
 ///from base of [/turf/proc/expose_reagents]: (/turf, /list, methods, volume_modifier, show_message)
 #define COMSIG_REAGENTS_EXPOSE_TURF "reagents_expose_turf"
+<<<<<<< HEAD
 ///from base of [/datum/component/personal_crafting/proc/del_reqs]: ()
 #define COMSIG_REAGENTS_CRAFTING_PING "reagents_crafting_ping"
+=======
+>>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// sent when reagents are transfered from a cup, to something refillable (atom/transfer_to)
 #define COMSIG_REAGENTS_CUP_TRANSFER_TO "reagents_cup_transfer_to"
 /// sent when reagents are transfered from some reagent container, to a cup (atom/transfer_from)
