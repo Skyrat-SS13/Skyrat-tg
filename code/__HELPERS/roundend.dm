@@ -192,11 +192,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	if(human_mob.mind && (length(human_mob.mind.antag_datums) > 0))
 		for(var/datum/antagonist/antag_datums as anything in human_mob.mind.antag_datums)
-<<<<<<< HEAD
-			if(!antag_datums.hardcore_random_bonus) //dont give bonusses to dumb stuff like revs or hypnos
-=======
 			if(!antag_datums.hardcore_random_bonus) //don't give bonuses to dumb stuff like revs or hypnos
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				continue
 			if(initial(antag_datums.can_assign_self_objectives) && !antag_datums.can_assign_self_objectives)
 				continue // You don't get a prize if you picked your own objective, you can't fail those
@@ -475,11 +471,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		var/mob/living/silicon/ai/aiPlayer = i
 		var/datum/mind/aiMind = aiPlayer.deployed_shell?.mind || aiPlayer.mind
 		if(aiMind)
-<<<<<<< HEAD
 			parts += "<b>[aiPlayer.name]</b>'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was [span_redtext("deactivated")]"] were:" //SKYRAT EDIT CHANGE
-=======
-			parts += "<b>[aiPlayer.name]</b> (Played by: <b>[aiMind.key]</b>)'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was [span_redtext("deactivated")]"] were:"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			parts += aiPlayer.laws.get_law_list(include_zeroth=TRUE)
 
 		parts += "<b>Total law changes: [aiPlayer.law_change_counter]</b>"
@@ -490,27 +482,19 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				borg_num--
 				if(robo.mind)
-<<<<<<< HEAD
 					//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
 					//parts += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]" - SKYRAT EDIT - ORIGINAL
 					parts += "<b>[robo.name]</b> [robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]"
 					//SKYRAT EDIT CHANGE END
-=======
-					parts += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!borg_spacer)
 			borg_spacer = TRUE
 
 	for (var/mob/living/silicon/robot/robo in GLOB.silicon_mobs)
 		if (!robo.connected_ai && robo.mind)
-<<<<<<< HEAD
 			//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
 			//parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
 			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
 			//SKYRAT EDIT CHANGE END
-=======
-			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				parts += robo.laws.get_law_list(include_zeroth=TRUE)
@@ -719,14 +703,10 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/jobtext = ""
 	if(!is_unassigned_job(ply.assigned_role))
 		jobtext = " the <b>[ply.assigned_role.title]</b>"
-<<<<<<< HEAD
-		//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
+	//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
 	//var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and" - SKYRAT EDIT - ORIGINAL
 	var/text = "<b>[ply.name]</b>[jobtext]"
 	//SKYRAT EDIT CHANGE END
-=======
-	var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(ply.current)
 		if(ply.current.stat == DEAD)
 			text += " [span_redtext("died")]"
@@ -770,11 +750,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		parts += "<span class='infoplain'>Total Achievements Earned: <B>[length(GLOB.achievements_unlocked)]!</B></span><BR>"
 		parts += "<ul class='playerlist'>"
 		for(var/datum/achievement_report/cheevo_report in GLOB.achievements_unlocked)
-<<<<<<< HEAD
 			parts += "<b>[cheevo_report.winner]</b> earned the [span_greentext("'[cheevo_report.cheevo]'")] achievement at [cheevo_report.award_location]!<BR>" // SKYRAT EDIT - No ckeys in the round end report - ORIGINAL: parts += "<BR>[cheevo_report.winner_key] was <b>[cheevo_report.winner]</b>, who earned the [span_greentext("'[cheevo_report.cheevo]'")] achievement at [cheevo_report.award_location]!<BR>"
-=======
-			parts += "<BR>[cheevo_report.winner_key] was <b>[cheevo_report.winner]</b>, who earned the [span_greentext("'[cheevo_report.cheevo]'")] achievement at [cheevo_report.award_location]!<BR>"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		parts += "</ul>"
 		return "<div class='panel greenborder'><ul>[parts.Join()]</ul></div>"
 

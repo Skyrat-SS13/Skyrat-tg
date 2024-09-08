@@ -31,11 +31,7 @@
 	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
-<<<<<<< HEAD
-	if(length(alert_control?.listener.alarms)) /// SKYRAT EDIT - Fixing master - Original: if(length(alert_control.listener.alarms))
-=======
-	if(length(alert_control.listener.alarms))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	if(length(alert_control?.listener.alarms)) /// SKYRAT TODO - look into what broke this - Original: if(length(alert_control.listener.alarms))
 		. += "alert:2"
 
 /**

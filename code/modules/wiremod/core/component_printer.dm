@@ -117,11 +117,7 @@
 	materials.use_materials(design.materials, efficiency_coeff, 1, "printed", "[design.name]")
 	return new design.build_path(drop_location())
 
-<<<<<<< HEAD
-/obj/machinery/component_printer/ui_act(action, list/params)
-=======
 /obj/machinery/component_printer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if (.)
 		return
@@ -280,11 +276,7 @@
 		get_asset_datum(/datum/asset/spritesheet/research_designs)
 	)
 
-<<<<<<< HEAD
-/obj/machinery/debug_component_printer/ui_act(action, list/params)
-=======
 /obj/machinery/debug_component_printer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if (.)
 		return
@@ -372,11 +364,7 @@
 
 	update_static_data_for_all_viewers()
 
-<<<<<<< HEAD
-/obj/machinery/module_duplicator/ui_act(action, list/params)
-=======
 /obj/machinery/module_duplicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if (.)
 		return

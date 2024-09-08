@@ -65,11 +65,7 @@
 		for(var/datum/mind/mind as anything in members)
 			if(mind.current)
 				SEND_SOUND(mind.current, 'sound/ambience/antag/bloodcult/bloodcult_halos.ogg')
-<<<<<<< HEAD
-				to_chat(mind.current, span_cult_large(span_warning("Your cult is ascendent and the red harvest approaches - you cannot hide your true nature for much longer!!")))
-=======
 				to_chat(mind.current, span_cult_large(span_warning("Your cult is ascendant and the red harvest approaches - you cannot hide your true nature for much longer!!")))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				mind.current.AddElement(/datum/element/cult_halo)
 		cult_ascendent = TRUE
 		log_game("The blood cult has ascended with [cultplayers] players.")
@@ -138,10 +134,6 @@
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/team/cult/proc/is_sacrifice_target(datum/mind/mind)
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/datum/objective/sacrifice/sac_objective in objectives)
 		if(mind == sac_objective.target)
 			return TRUE

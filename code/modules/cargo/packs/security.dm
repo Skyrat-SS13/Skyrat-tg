@@ -36,11 +36,7 @@
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
 	desc = "Stay hot on the criminal's heels with Nanotrasen's Detective Essentials™. \
-<<<<<<< HEAD
-		Contains a forensics scanner, six evidence bags, camera, tape recorder, stick of chalk, \
-=======
 		Contains a forensics scanner, six evidence bags, camera, special board for evidences, tape recorder, stick of chalk, \
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		and of course, a fedora."
 	cost = CARGO_CRATE_VALUE * 2.5
 	access_view = ACCESS_MORGUE
@@ -50,10 +46,7 @@
 					/obj/item/taperecorder,
 					/obj/item/toy/crayon/white,
 					/obj/item/clothing/head/fedora/det_hat,
-<<<<<<< HEAD
-=======
 					/obj/item/wallframe/detectiveboard
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				)
 	crate_name = "forensics crate"
 

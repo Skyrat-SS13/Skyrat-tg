@@ -324,11 +324,7 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-<<<<<<< HEAD
 	add_startup_message("Initializing subsystems...") //SKYRAT EDIT CHANGE - Custom HTML Lobby Screen
-=======
-	to_chat(world, span_boldannounce("Initializing subsystems..."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)
@@ -362,11 +358,8 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 				SetRunLevel(1) // Intentionally not using the defines here because the MC doesn't care about them
 			// Loop.
 			Master.StartProcessing(0)
-<<<<<<< HEAD
 			add_startup_message("Clearing clutter...") //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
@@ -464,19 +457,12 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
-<<<<<<< HEAD
 	// SKYRAT EDIT REMOVAL BEGIN -- chat_message not used anymore due to change below
 	// var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
 	// SKYRAT EDIT REMOVAL END
 
 	if(result != SS_INIT_NO_MESSAGE)
 		add_startup_message(message, chat_warning) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, chat_message)
-=======
-	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
-
-	if(result != SS_INIT_NO_MESSAGE)
-		to_chat(world, chat_message)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
@@ -593,11 +579,7 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 
 		//Anti-tick-contention heuristics:
 		if (init_stage == INITSTAGE_MAX)
-<<<<<<< HEAD
-			//if there are mutiple sleeping procs running before us hogging the cpu, we have to run later.
-=======
 			//if there are multiple sleeping procs running before us hogging the cpu, we have to run later.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			// (because sleeps are processed in the order received, longer sleeps are more likely to run first)
 			if (starting_tick_usage > TICK_LIMIT_MC) //if there isn't enough time to bother doing anything this tick, sleep a bit.
 				sleep_delta *= 2

@@ -202,11 +202,7 @@
 		return
 
 	RegisterSignal(our_plant, COMSIG_PLANT_ON_SLIP, PROC_REF(squash_plant))
-<<<<<<< HEAD
-	RegisterSignal(our_plant, COMSIG_MOVABLE_IMPACT, PROC_REF(squash_plant))
-=======
 	RegisterSignal(our_plant, COMSIG_MOVABLE_IMPACT, PROC_REF(squash_plant_if_not_caught))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	RegisterSignal(our_plant, COMSIG_ITEM_ATTACK_SELF, PROC_REF(squash_plant))
 
 /*
@@ -243,13 +239,10 @@
 
 	qdel(our_plant)
 
-<<<<<<< HEAD
-=======
 /datum/plant_gene/trait/squash/proc/squash_plant_if_not_caught(datum/source, atom/hit_atom, datum/thrownthing/throwing_datum, caught)
 	if(!caught)
 		squash_plant(source, hit_atom)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /*
  * Makes plant slippery, unless it has a grown-type trash. Then the trash gets slippery.
  * Applies other trait effects (teleporting, etc) to the target by signal.
@@ -652,11 +645,7 @@
 	if(living_target.reagents && living_target.can_inject())
 		var/injecting_amount = max(1, our_seed.potency * 0.2) // Minimum of 1, max of 20
 		our_plant.reagents.trans_to(living_target, injecting_amount, methods = INJECT)
-<<<<<<< HEAD
-		to_chat(target, "<span class='danger'>You are pricked by [our_plant]!</span>")
-=======
 		to_chat(target, span_danger("You are pricked by [our_plant]!"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		log_combat(our_plant, living_target, "pricked and attempted to inject reagents from [our_plant] to [living_target]. Last touched by: [our_plant.fingerprintslast].")
 		our_plant.investigate_log("pricked and injected [key_name(living_target)] and injected [injecting_amount] reagents at [AREACOORD(living_target)]. Last touched by: [our_plant.fingerprintslast].", INVESTIGATE_BOTANY)
 

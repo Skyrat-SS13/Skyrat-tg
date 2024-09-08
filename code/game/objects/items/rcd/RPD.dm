@@ -59,11 +59,8 @@ GLOBAL_LIST_INIT(disposal_pipe_recipes, list(
 		new /datum/pipe_info/disposal("Sort Junction", /obj/structure/disposalpipe/sorting/mail, PIPE_TRIN_M),
 		new /datum/pipe_info/disposal("Rotator", /obj/structure/disposalpipe/rotator, PIPE_ONEDIR_FLIPPABLE),
 		new /datum/pipe_info/disposal("Trunk", /obj/structure/disposalpipe/trunk),
-<<<<<<< HEAD
-=======
 		new /datum/pipe_info/disposal("Down Turn", /obj/structure/disposalpipe/trunk/multiz/down),
 		new /datum/pipe_info/disposal("Up Turn", /obj/structure/disposalpipe/trunk/multiz),
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		new /datum/pipe_info/disposal("Bin", /obj/machinery/disposal/bin, PIPE_ONEDIR),
 		new /datum/pipe_info/disposal("Outlet", /obj/structure/disposaloutlet),
 		new /datum/pipe_info/disposal("Chute", /obj/machinery/disposal/delivery_chute),
@@ -366,14 +363,6 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	data["init_directions"] = init_directions
 	return data
 
-<<<<<<< HEAD
-/obj/item/pipe_dispenser/ui_act(action, params)
-	. = ..()
-	playsound(src, SFX_TOOL_SWITCH, 20, TRUE)
-	if(.)
-		return
-
-=======
 /obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -381,7 +370,6 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 
 	playsound(src, SFX_TOOL_SWITCH, 20, TRUE)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/playeffect = TRUE
 	switch(action)
 		if("color")
@@ -701,11 +689,7 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	if(multi_layer)
 		balloon_alert(source_mob, "turn off multi layer!")
 		return
-<<<<<<< HEAD
-	if(source_mob.incapacitated(IGNORE_RESTRAINTS|IGNORE_STASIS))
-=======
 	if(INCAPACITATED_IGNORING(source_mob, INCAPABLE_RESTRAINTS|INCAPABLE_STASIS))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(source_mob.get_active_held_item() != src)
 		return

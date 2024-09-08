@@ -151,12 +151,9 @@
 	/// bitflags defining which status effects can be inflicted (replaces canknockdown, canstun, etc)
 	var/status_flags = CANSTUN|CANKNOCKDOWN|CANUNCONSCIOUS|CANPUSH
 
-<<<<<<< HEAD
 	/// Can they interact with station electronics
 	var/has_unlimited_silicon_privilege = FALSE
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///Calls relay_move() to whatever this is set to when the mob tries to move
 	var/atom/movable/remote_control
 

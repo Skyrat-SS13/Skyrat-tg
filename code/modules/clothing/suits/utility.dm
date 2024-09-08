@@ -29,11 +29,7 @@
 	)
 	slowdown = 1
 	armor_type = /datum/armor/utility_fire
-<<<<<<< HEAD
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETAUR // SKYRAT EDIT ADDITION - HIDETAIL, HIDETAUR
-=======
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
@@ -82,11 +78,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
-<<<<<<< HEAD
-	flags_inv = HIDESHOES|HIDEJUMPSUIT|HIDETAUR|HIDETAIL // NOVA EDIT ADDITION - HIDETAUR, HIDETAIL
-=======
-	flags_inv = HIDESHOES|HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	flags_inv = HIDESHOES|HIDEJUMPSUIT|HIDETAUR|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAUR, HIDETAIL
 
 /*
  * Bomb protection
@@ -132,11 +124,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	slowdown = 2
 	armor_type = /datum/armor/utility_bomb_suit
-<<<<<<< HEAD
 	flags_inv = HIDEJUMPSUIT|HIDETAIL|HIDETAUR // SKYRAT EDIT ADDITION - HIDETAIL, HIDETAUR
-=======
-	flags_inv = HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

@@ -21,7 +21,7 @@
 /obj/item/clothing/mask/balaclavaadjust/proc/adjust_mask(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	if(!user.incapacitated())
+	if(!user.incapacitated)
 		switch(open)
 			if (0)
 				flags_inv = HIDEHAIR

@@ -41,19 +41,7 @@
 
 	var/datum/fish_source/fish_source = GLOB.preset_fish_sources[configuration]
 
-<<<<<<< HEAD
-	var/has_known_fishes = FALSE
-	for(var/reward in fish_source.fish_table)
-		if(!ispath(reward, /obj/item/fish))
-			continue
-		var/obj/item/fish/prototype = reward
-		if(initial(prototype.show_in_catalog))
-			has_known_fishes = TRUE
-			break
-	if(!has_known_fishes)
-=======
 	if(!fish_source.has_known_fishes())
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	examine_text += span_tinynoticeital("This is a fishing spot. You can look again to list its fishes...")
@@ -64,23 +52,7 @@
 		return
 
 	var/datum/fish_source/fish_source = GLOB.preset_fish_sources[configuration]
-<<<<<<< HEAD
-
-	var/list/known_fishes = list()
-	for(var/reward in fish_source.fish_table)
-		if(!ispath(reward, /obj/item/fish))
-			continue
-		var/obj/item/fish/prototype = reward
-		if(initial(prototype.show_in_catalog))
-			known_fishes += initial(prototype.name)
-
-	if(!length(known_fishes))
-		return
-
-	examine_text += span_info("You can catch the following fish here: [english_list(known_fishes)].")
-=======
 	fish_source.get_catchable_fish_names(user, source, examine_text)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/element/lazy_fishing_spot/proc/explosive_fishing(atom/location, severity)
 	SIGNAL_HANDLER

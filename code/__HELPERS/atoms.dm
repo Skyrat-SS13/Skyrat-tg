@@ -63,19 +63,6 @@
 	var/turf/target_turf = get_turf(target)
 	if(get_dist(source, target) > length)
 		return FALSE
-<<<<<<< HEAD
-	var/steps = 1
-	if(current == target_turf)//they are on the same turf, source can see the target
-		return TRUE
-	current = get_step_towards(current, target_turf)
-	while(current != target_turf)
-		if(steps > length)
-			return FALSE
-		if(IS_OPAQUE_TURF(current))
-			return FALSE
-		current = get_step_towards(current, target_turf)
-		steps++
-=======
 	if(current == target_turf)//they are on the same turf, source can see the target
 		return TRUE
 	var/list/steps = get_steps_to(current, target_turf)
@@ -87,7 +74,6 @@
 			break
 		if(IS_OPAQUE_TURF(current))
 			return FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 ///Get the cardinal direction between two atoms

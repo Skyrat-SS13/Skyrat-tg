@@ -45,11 +45,6 @@
 	var/datum/click_intercept = null
 	///Time when the click was intercepted
 	var/click_intercept_time = 0
-<<<<<<< HEAD
-	///Used for admin AI interaction
-	var/AI_Interact = FALSE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	///Used to cache this client's bans to save on DB queries
 	var/ban_cache = null

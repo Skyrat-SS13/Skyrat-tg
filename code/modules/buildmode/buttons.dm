@@ -28,10 +28,7 @@
 	return 1
 
 /atom/movable/screen/buildmode/mode/update_icon_state()
-<<<<<<< HEAD
 	icon = bd.mode.button_icon // SKYRAT EDIT ADDITION - remove buildmode duplicate icons, divine tg and skyrat
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = bd.mode.get_button_iconstate()
 	return ..()
 

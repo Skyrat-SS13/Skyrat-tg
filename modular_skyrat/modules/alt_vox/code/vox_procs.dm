@@ -16,7 +16,7 @@
 	set desc = "Display a list of vocal words to announce to the crew."
 	set category = "AI Commands"
 
-	if(incapacitated())
+	if(incapacitated)
 		return
 
 	var/dat = {"
@@ -77,7 +77,7 @@
 
 	last_announcement = message
 
-	if(incapacitated())
+	if(incapacitated)
 		return
 
 	if(control_disabled)
@@ -188,7 +188,7 @@
 	set desc = "Switch your VOX announcement voice!"
 	set category = "AI Commands"
 
-	if(incapacitated())
+	if(incapacitated)
 		return
 	var/selection = tgui_input_list(src, "Please select a new VOX voice:", "VOX VOICE", vox_voices)
 	if(selection == null)
@@ -203,7 +203,7 @@
 	set desc = "Display the list of recently pressed vox lines."
 	set category = "AI Commands"
 
-	if(incapacitated())
+	if(incapacitated)
 		return
 
 	to_chat(src, vox_word_string)

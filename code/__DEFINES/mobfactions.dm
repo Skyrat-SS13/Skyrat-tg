@@ -33,21 +33,13 @@
 #define FACTION_HELL "hell"
 /// Hivebots
 #define FACTION_HIVEBOT "hivebot"
-<<<<<<< HEAD
-/// Illusionary creaturs
-=======
 /// Illusionary creatures
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define FACTION_ILLUSION "illusion"
 /// Creatures of the never finished jungle planet, and gorillas
 #define FACTION_JUNGLE "jungle"
 /// Small lizards
 #define FACTION_LIZARD "lizard"
-<<<<<<< HEAD
-/// Maint creatures have mutual respect for eachother.
-=======
 /// Maint creatures have mutual respect for each other.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define FACTION_MAINT_CREATURES "maint_creatures"
 /// Animated objects and statues
 #define FACTION_MIMIC "mimic"

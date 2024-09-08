@@ -17,7 +17,6 @@
 #define SCANGATE_POD "pod"
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION BEGIN - MORE SCANNER GATE OPTIONS
 #define SCANGATE_MAMMAL "mammal"
 #define SCANGATE_VOX "vox"
@@ -33,8 +32,6 @@
 #define SCANGATE_SNAIL "snail"
 #define SCANGATE_GENDER "Gender"
 //SKYRAT EDIT ADDITION END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
@@ -64,10 +61,7 @@
 	var/light_fail = FALSE
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
-<<<<<<< HEAD
 	var/detect_gender = "male" //SKYRAT EDIT ADDITION - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///Modifier to the chance of scanner being false positive/negative
 	var/minus_false_beep = 0
 	///Base false positive/negative chance
@@ -254,7 +248,6 @@
 					if(SCANGATE_ZOMBIE)
 						detected_thing = "Zombie"
 						scan_species = /datum/species/zombie
-<<<<<<< HEAD
 					//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 					if(SCANGATE_MAMMAL)
 						scan_species = /datum/species/mammal
@@ -281,8 +274,6 @@
 					if(SCANGATE_SNAIL)
 						scan_species = /datum/species/snail
 					//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				if(is_species(scanned_human, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
@@ -317,7 +308,6 @@
 				if(scanned_human.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
 					detected_thing = "Obesity"
-<<<<<<< HEAD
 		//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 		if(SCANGATE_GENDER)
 			detected_thing = detect_gender
@@ -327,8 +317,6 @@
 					if(scanned_human.gender == detect_gender)
 						beep = TRUE
 		//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(SCANGATE_CONTRABAND)
 			for(var/obj/item/content in thing.get_all_contents_skipping_traits(TRAIT_CONTRABAND_BLOCKER))
 				detected_thing = "Contraband"
@@ -391,18 +379,11 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
-<<<<<<< HEAD
 	data["target_gender"] = detect_gender //SKYRAT EDIT - MORE SCANNER GATE OPTIONS
 	data["contraband_enabled"] = !!n_spect
 	return data
 
-/obj/machinery/scanner_gate/ui_act(action, params)
-=======
-	data["contraband_enabled"] = !!n_spect
-	return data
-
 /obj/machinery/scanner_gate/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -441,7 +422,6 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
-<<<<<<< HEAD
 		//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 		if("set_target_gender")
 			var/new_gender = params["new_gender"]
@@ -457,8 +437,6 @@
 						detect_gender = "female"
 			. = TRUE
 		//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/scanner_gate/preset_guns
 	locked = TRUE
@@ -484,7 +462,6 @@
 #undef SCANGATE_POD
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
-<<<<<<< HEAD
 //SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 #undef SCANGATE_MAMMAL
 #undef SCANGATE_VOX
@@ -501,5 +478,3 @@
 
 #undef SCANGATE_GENDER
 //SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

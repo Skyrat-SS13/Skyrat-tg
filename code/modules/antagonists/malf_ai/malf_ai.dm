@@ -35,17 +35,12 @@
 	owner.special_role = job_rank
 	if(give_objectives)
 		forge_ai_objectives()
-<<<<<<< HEAD
 	// SKYRAT EDIT START - Moving voice changing to Malf only
 #ifdef AI_VOX
 	var/mob/living/silicon/ai/malf_ai = owner.current
 	malf_ai.vox_voices += VOX_MIL
 #endif
 	// SKYRAT EDIT END
-
-	employer = pick(GLOB.ai_employers)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!employer)
 		employer = pick(GLOB.ai_employers)
 
@@ -66,15 +61,12 @@
 		var/mob/living/silicon/ai/malf_ai = owner.current
 		malf_ai.set_zeroth_law("")
 		malf_ai.remove_malf_abilities()
-<<<<<<< HEAD
 		// SKYRAT EDIT START - Moving voice changing to Malf only
 #ifdef AI_VOX
 		malf_ai.vox_voices -= VOX_MIL
 		malf_ai.vox_type = VOX_NORMAL
 #endif
 		// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		QDEL_NULL(malf_ai.malf_picker)
 
 	owner.special_role = null
@@ -103,11 +95,7 @@
 
 /// Generates a special objective and adds it to the objective list.
 /datum/antagonist/malf_ai/proc/forge_special_objective()
-<<<<<<< HEAD
 	var/special_pick = rand(3,4) // SKYRAT EDIT - REMOVING PURGE/BLOCK
-=======
-	var/special_pick = rand(1,4)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(special_pick)
 		if(1)
 			var/datum/objective/block/block_objective = new
@@ -231,11 +219,7 @@
 
 	return data
 
-<<<<<<< HEAD
-/datum/antagonist/malf_ai/ui_act(action, list/params)
-=======
 /datum/antagonist/malf_ai/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -264,11 +248,7 @@
 /datum/antagonist/malf_ai/roundend_report()
 	var/list/result = list()
 
-<<<<<<< HEAD
-	//var/malf_ai_won = TRUE // SKYRAT EDIT REMOVAL
-=======
 	var/malf_ai_won = TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	result += printplayer(owner)
 
@@ -276,29 +256,13 @@
 	if(objectives.len) //If the traitor had no objectives, don't need to process this.
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-<<<<<<< HEAD
-			// SKYRAT EDIT START - No greentext
-			/*
 			if(!objective.check_completion())
 				malf_ai_won = FALSE
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
-			*/
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
-			// SKYRAT EDIT END - No greentext
-=======
-			if(!objective.check_completion())
-				malf_ai_won = FALSE
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			count++
 
 	result += objectives_text
 
-<<<<<<< HEAD
-	// SKYRAT EDIT REMOVAL START
-	/*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/special_role_text = LOWER_TEXT(name)
 
 	if(malf_ai_won)
@@ -306,10 +270,6 @@
 	else
 		result += span_redtext("The [special_role_text] has failed!")
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
-<<<<<<< HEAD
-	*/
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return result.Join("<br>")
 

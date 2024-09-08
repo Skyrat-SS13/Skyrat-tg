@@ -42,11 +42,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	var/can_be_greyscale = FALSE
 	/// Whether this item can be renamed.
 	/// I recommend you apply this sparingly becuase it certainly can go wrong (or get reset / overridden easily)
-<<<<<<< HEAD
 	var/can_be_named = TRUE // SKYRAT EDIT
-=======
-	var/can_be_named = FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// Whether this item can be reskinned.
 	/// Only works if the item has a "unique reskin" list set.
 	var/can_be_reskinned = FALSE
@@ -65,7 +61,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	/// Reskin options of this item if it can be reskinned.
 	VAR_FINAL/list/cached_reskin_options
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	/// If set, it's a list containing ckeys which only can get the item
 	var/list/ckeywhitelist
@@ -83,8 +78,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	var/erp_item = FALSE
 
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/loadout_item/New(category)
 	src.category = category
 
@@ -109,7 +102,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			cached_reskin_options = dummy_item.unique_reskin.Copy()
 		qdel(dummy_item)
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	// Let's sanitize in case somebody inserted the player's byond name instead of ckey in canonical form
 	if(ckeywhitelist)
@@ -117,8 +109,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			ckeywhitelist[i] = ckey(ckeywhitelist[i])
 	// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/loadout_item/Destroy(force, ...)
 	if(force)
 		stack_trace("QDEL called on loadout item [type]. This shouldn't ever happen. (Use FORCE if necessary.)")
@@ -144,7 +134,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 		if("set_name")
 			if(can_be_named)
-<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN - Description
 				return set_name(manager, user, INFO_NAMED)
 
@@ -152,9 +141,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			if(can_be_named)
 				return set_name(manager, user, INFO_DESCRIBED)
 		// SKYRAT EDIT END
-=======
-				return set_name(manager, user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		if("set_skin")
 			return set_skin(manager, user, params)
@@ -209,7 +195,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return TRUE // update UI
 
 /// Sets the name of the item.
-<<<<<<< HEAD
 // SKYRAT EDIT BEGIN - Adds descriptions with minimal copypaste
 // Generally, if this conflicts, name_slot is to be put anywhere where INFO_NAMED appears in tgcode
 /datum/loadout_item/proc/set_name(datum/preference_middleware/loadout/manager, mob/user, name_slot = INFO_NAMED)
@@ -221,16 +206,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		title = "[name] [isname ? "name" : "description"]",
 		default = loadout?[item_path]?[name_slot], // plop in existing name (if any)
 		max_length = isname ? MAX_NAME_LEN : MAX_DESC_LEN,
-=======
-/datum/loadout_item/proc/set_name(datum/preference_middleware/loadout/manager, mob/user)
-	var/list/loadout = manager.preferences.read_preference(/datum/preference/loadout)
-	var/input_name = tgui_input_text(
-		user = user,
-		message = "What name do you want to give the [name]? Leave blank to clear.",
-		title = "[name] name",
-		default = loadout?[item_path]?[INFO_NAMED], // plop in existing name (if any)
-		max_length = MAX_NAME_LEN,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	if(QDELETED(src) || QDELETED(user) || QDELETED(manager) || QDELETED(manager.preferences))
 		return FALSE
@@ -240,7 +215,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		return FALSE
 
 	if(input_name)
-<<<<<<< HEAD
 		loadout[item_path][name_slot] = input_name
 	else if(input_name == "")
 		loadout[item_path] -= name_slot
@@ -248,14 +222,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
 	return FALSE // no update needed
 // SKYRAT EDIT END
-=======
-		loadout[item_path][INFO_NAMED] = input_name
-	else if(input_name == "")
-		loadout[item_path] -= INFO_NAMED
-
-	manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
-	return FALSE // no update needed
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Used for reskinning an item to an alt skin.
 /datum/loadout_item/proc/set_skin(datum/preference_middleware/loadout/manager, mob/user, params)
@@ -284,11 +250,7 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
  * * equipper - If we're equipping out outfit onto a mob at the time, this is the mob it is equipped on. Can be null.
  * * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
  */
-<<<<<<< HEAD
 /datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, loadout_placement_preference) // SKYRAT EDIT CHANGE - Added loadout_placement_preference
-=======
-/datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!visuals_only)
 		LAZYADD(outfit.backpack_contents, item_path)
 
@@ -324,7 +286,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		equipped_item.set_greyscale(item_details[INFO_GREYSCALE])
 		update_flag |= equipped_item.slot_flags
 
-<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN - DESCRIPTIONS~
 	if(can_be_named && !visuals_only)
 		var/renamed = 0
@@ -337,11 +298,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		if(renamed)
 			ADD_TRAIT(equipped_item, TRAIT_WAS_RENAMED, "Loadout")
 	// SKYRAT EDIT END
-=======
-	if(can_be_named && item_details?[INFO_NAMED] && !visuals_only)
-		equipped_item.name = trim(item_details[INFO_NAMED], PREVENT_CHARACTER_TRIM_LOSS(MAX_NAME_LEN))
-		ADD_TRAIT(equipped_item, TRAIT_WAS_RENAMED, "Loadout")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(can_be_reskinned && item_details?[INFO_RESKIN])
 		var/skin_chosen = item_details[INFO_RESKIN]
@@ -378,7 +334,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	formatted_item["reskins"] = get_reskin_options()
 	formatted_item["icon"] = ui_icon
 	formatted_item["icon_state"] = ui_icon_state
-<<<<<<< HEAD
 
 	// SKYRAT EDIT BEGIN - Extra loadout stuff
 	formatted_item["ckey_whitelist"] = ckeywhitelist
@@ -387,8 +342,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	formatted_item["blacklisted_roles"] = restricted_roles
 	// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return formatted_item
 
 /**
@@ -412,7 +365,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	if(can_be_reskinned)
 		displayed_text += "Reskinnable"
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	if(donator_only)
 		displayed_text += "Donator only"
@@ -426,8 +378,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	if(restricted_species)
 		displayed_text += "Species restricted"
 	// SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return displayed_text
 
 /**
@@ -463,7 +413,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			"button_icon" = FA_ICON_PEN,
 			"active_key" = INFO_NAMED,
 		))
-<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN - Descriptions
 		UNTYPED_LIST_ADD(button_list, list(
 			"label" = "Change description",
@@ -472,9 +421,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			"active_key" = INFO_NAMED,
 		))
 		// SKYRAT EDIT END
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return button_list
 
 /**
@@ -494,7 +440,3 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		))
 
 	return reskins
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

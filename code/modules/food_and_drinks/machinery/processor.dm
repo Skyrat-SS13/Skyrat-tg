@@ -1,10 +1,6 @@
 #define PROCESSOR_SELECT_RECIPE(movable_input) LAZYACCESS(processor_inputs[type], movable_input.type)
 
-<<<<<<< HEAD
 /obj/machinery/processor //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
-=======
-/obj/machinery/processor
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	name = "food processor"
 	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
 	icon = 'icons/obj/machines/kitchen.dmi'

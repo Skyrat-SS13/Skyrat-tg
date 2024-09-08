@@ -44,11 +44,7 @@
 		)))
 		if(KIT_RECON)
 			new /obj/item/clothing/glasses/thermal/xray(src) // ~8 tc?
-<<<<<<< HEAD
 //			new /obj/item/storage/briefcase/launchpad(src) //6 tc // SKYRAT EDIT REMOVAL
-=======
-			new /obj/item/storage/briefcase/launchpad(src) //6 tc
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			new /obj/item/binoculars(src) // 2 tc?
 			new /obj/item/encryptionkey/syndicate(src) // 2 tc
 			new /obj/item/storage/box/syndie_kit/space(src) //4 tc
@@ -350,10 +346,7 @@
 /obj/item/storage/box/syndie_kit/rebarxbowsyndie/PopulateContents()
 	new /obj/item/book/granter/crafting_recipe/dusting/rebarxbowsyndie_ammo(src)
 	new /obj/item/gun/ballistic/rifle/rebarxbow/syndie(src)
-<<<<<<< HEAD
-=======
 	new /obj/item/storage/bag/rebar_quiver/syndicate(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/storage/box/syndie_kit/origami_bundle
 	name = "origami kit"
@@ -691,18 +684,7 @@
 		group.register(i)
 	desc += " The implants are registered to the \"[group.name]\" group."
 
-<<<<<<< HEAD
-/obj/item/storage/box/syndie_kit/stickers
-	name = "sticker kit"
-
-/obj/item/storage/box/syndie_kit/stickers/Initialize(mapload)
-	. = ..()
-	atom_storage.max_slots = 8
-
-/obj/item/storage/box/syndie_kit/stickers/PopulateContents()
-=======
 /obj/item/storage/box/stickers/syndie_kit/PopulateContents()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/types = subtypesof(/obj/item/sticker/syndicate)
 
 	for(var/i in 1 to atom_storage.max_slots)
@@ -860,11 +842,7 @@
 	illustration = "writing_syndie"
 
 /obj/item/storage/box/syndicate/contractor_loadout/PopulateContents()
-<<<<<<< HEAD
 	new /obj/item/mod/control/pre_equipped/contractor(src) //SKYRAT EDIT: Was infiltrator variant
-=======
-	new /obj/item/mod/control/pre_equipped/infiltrator(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/clothing/head/helmet/space/syndicate/contract(src)
 	new /obj/item/clothing/suit/space/syndicate/contract(src)
 	new /obj/item/clothing/under/chameleon(src)

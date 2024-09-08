@@ -150,11 +150,7 @@
 	if(isnull(old_body) || damage_type == STAMINA || damage_type == OXYLOSS)
 		return
 
-<<<<<<< HEAD
 	if(damage >= (old_body.health + (ishuman(old_body) ? HUMAN_MAXHEALTH : MAX_LIVING_HEALTH))) // SKYRAT EDIT CHANGE - ORIGINAL: if(damage >= (old_body.health + MAX_LIVING_HEALTH))
-=======
-	if(damage >= (old_body.health + MAX_LIVING_HEALTH))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		full_avatar_disconnect(cause_damage = TRUE)
 		return
 

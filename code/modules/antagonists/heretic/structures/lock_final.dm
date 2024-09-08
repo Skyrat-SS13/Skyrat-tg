@@ -1,10 +1,6 @@
 /obj/structure/lock_tear
 	name = "???"
-<<<<<<< HEAD
-	desc = "It stares back. Theres no reason to remain. Run."
-=======
 	desc = "It stares back. There's no reason to remain. Run."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	max_integrity = INFINITE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	icon = 'icons/obj/anomaly.dmi'

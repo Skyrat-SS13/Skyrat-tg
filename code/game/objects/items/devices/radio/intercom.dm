@@ -219,11 +219,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom, 27)
 	command = TRUE
 	icon_off = "intercom_command-p"
 
-<<<<<<< HEAD
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/prison, 27)
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/chapel, 27)
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command, 27)
-=======
 /obj/item/radio/intercom/syndicate
 	name = "syndicate intercom"
 	desc = "Talk smack through this."
@@ -240,4 +235,3 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/chapel, 27)
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command, 27)
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/syndicate, 27)
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/syndicate/freerange, 27)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

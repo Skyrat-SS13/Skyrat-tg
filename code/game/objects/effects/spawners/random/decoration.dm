@@ -114,8 +114,7 @@
 		/obj/item/flashlight/glowstick/pink,
 	)
 
-<<<<<<< HEAD
-=======
+
 /obj/effect/spawner/random/decoration/glowstick/on
 	name = "random colored glowstick (on)"
 	icon_state = "glowstick"
@@ -136,7 +135,6 @@
 
 	glowstick.set_light_on(TRUE)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/effect/spawner/random/decoration/paint
 	name = "paint spawner"
 	icon_state = "paint"

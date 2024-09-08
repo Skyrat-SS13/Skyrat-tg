@@ -288,8 +288,6 @@
 //netguardians
 /// rocket launcher
 #define BB_NETGUARDIAN_ROCKET_ABILITY "netguardian_rocket"
-<<<<<<< HEAD
-=======
 
 //deer
 ///our water target
@@ -306,4 +304,3 @@
 #define BB_DEER_RESTING "deer_resting"
 ///time till our next rest duration
 #define BB_DEER_NEXT_REST_TIMER "deer_next_rest_timer"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

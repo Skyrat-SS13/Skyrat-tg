@@ -57,11 +57,7 @@
 #define COMSIG_GLOB_NEW_MACHINE "!new_machine"
 /// a client (re)connected, after all /client/New() checks have passed : (client/connected_client)
 #define COMSIG_GLOB_CLIENT_CONNECT "!client_connect"
-<<<<<<< HEAD
-/// a weather event of some kind occured
-=======
 /// a weather event of some kind occurred
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define COMSIG_WEATHER_TELEGRAPH(event_type) "!weather_telegraph [event_type]"
 #define COMSIG_WEATHER_START(event_type) "!weather_start [event_type]"
 #define COMSIG_WEATHER_WINDDOWN(event_type) "!weather_winddown [event_type]"

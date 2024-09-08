@@ -8,11 +8,7 @@
 	anchored = FALSE
 	density = TRUE
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN
-<<<<<<< HEAD
 	icon = 'icons/obj/pipes_n_cables/atmos.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/pipes_n_cables/atmos.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "sheater-off"
 	base_icon_state = "sheater"
 	name = "space heater"
@@ -266,11 +262,7 @@
 		data["currentTemp"] = round(current_temperature - T0C, 1)
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/space_heater/ui_act(action, params)
-=======
 /obj/machinery/space_heater/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -395,11 +387,7 @@
 	.["beaker"] = beaker
 	.["currentTemp"] = beaker ? (round(beaker.reagents.chem_temp - T0C)) : "N/A"
 
-<<<<<<< HEAD
-/obj/machinery/space_heater/improvised_chem_heater/ui_act(action, params)
-=======
 /obj/machinery/space_heater/improvised_chem_heater/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

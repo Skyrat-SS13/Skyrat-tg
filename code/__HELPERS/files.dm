@@ -33,11 +33,8 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 				var/confirmation = input(src, "Are you SURE you want to download all the files in this folder? (This will open [length(comp_flist)] prompt[length(comp_flist) == 1 ? "" : "s"])", "Confirmation") in list("Yes", "No")
 				if(confirmation != "Yes")
 					continue
-<<<<<<< HEAD
 				log_admin("[key_name(src)] is downloading [length(comp_flist)] files from [path]") // SKYRAT EDIT -- ADDITION
 				message_admins("Admin [key_name_admin(src)] is downloading [length(comp_flist)] files from [path]") // SKYRAT EDIT -- ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				for(var/file in comp_flist)
 					src << ftp(path + file)
 				return

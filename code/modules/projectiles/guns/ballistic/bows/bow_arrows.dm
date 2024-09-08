@@ -21,11 +21,7 @@
 
 /obj/item/ammo_casing/arrow/update_icon_state()
 	. = ..()
-<<<<<<< HEAD
 	icon_state = "[initial(icon_state)]" //SKYRAT EDIT: Original: icon_state = "[base_icon_state]"
-=======
-	icon_state = "[base_icon_state]"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///base arrow projectile
 /obj/projectile/bullet/arrow

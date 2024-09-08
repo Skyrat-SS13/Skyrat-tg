@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /proc/wrap_lua_get_var(datum/thing, var_name)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(thing == world)
@@ -9,7 +7,6 @@
 	if(thing.can_vv_get(var_name))
 		return thing.vars[var_name]
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /proc/wrap_lua_set_var(datum/thing_to_set, var_name, value)
 	SHOULD_NOT_SLEEP(TRUE)
 	thing_to_set.vv_edit_var(var_name, value)
@@ -23,11 +20,6 @@
 		ret = WrapAdminProcCall(thing_to_call, proc_name, arguments)
 	else
 		ret = HandleUserlessProcCall("lua", thing_to_call, proc_name, arguments)
-<<<<<<< HEAD
-	if(isdatum(ret))
-		SSlua.gc_guard += ret
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ret
 
 /proc/wrap_lua_global_proc_call(proc_name, list/arguments)
@@ -39,11 +31,6 @@
 		ret = WrapAdminProcCall(GLOBAL_PROC, proc_name, arguments)
 	else
 		ret = HandleUserlessProcCall("lua", GLOBAL_PROC, proc_name, arguments)
-<<<<<<< HEAD
-	if(isdatum(ret))
-		SSlua.gc_guard += ret
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ret
 
 /proc/wrap_lua_print(state_id, list/arguments)
@@ -56,10 +43,6 @@
 	if(!target_state)
 		return
 	var/print_message = jointext(arguments, "\t")
-<<<<<<< HEAD
-	var/result = list("status" = "print", "param" = print_message)
-=======
 	var/result = list("status" = "print", "message" = print_message)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	INVOKE_ASYNC(target_state, TYPE_PROC_REF(/datum/lua_state, log_result), result, TRUE)
 	log_lua("[target_state]: [print_message]")

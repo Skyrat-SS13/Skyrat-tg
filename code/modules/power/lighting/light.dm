@@ -189,7 +189,6 @@
 		return
 	. += mutable_appearance(overlay_icon, base_state)
 
-<<<<<<< HEAD
 
 // SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #define LIGHT_ON_DELAY_UPPER (2 SECONDS)
@@ -199,8 +198,6 @@
 #define NIGHTSHIFT_COLOR_MODIFIER 0.15
 //SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Area sensitivity is traditionally tied directly to power use, as an optimization
 // But since we want it for fire reacting, we disregard that
 /obj/machinery/light/setup_area_power_relationship()
@@ -221,17 +218,10 @@
 
 /obj/machinery/light/proc/handle_fire(area/source, new_fire)
 	SIGNAL_HANDLER
-<<<<<<< HEAD
 	update(instant = TRUE, play_sound = FALSE) //SKYRAT EDIT CHANGE - ORIGINAL: update()
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) // SKYRAT EDIT CHANGE
-=======
-	update()
-
-// update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
@@ -250,7 +240,6 @@
 			power_set = fire_power
 			brightness_set = fire_brightness
 		else if (nightshift_enabled)
-<<<<<<< HEAD
 			brightness_set -= brightness_set * NIGHTSHIFT_LIGHT_MODIFIER // SKYRAT EDIT CHANGE - ORIGINAL: brightness_set = nightshift_brightness
 			power_set -= power_set * NIGHTSHIFT_LIGHT_MODIFIER // SKYRAT EDIT CHANGE - ORIGINAL: power_set = nightshift_light_power
 			if(!color)
@@ -271,21 +260,11 @@
 					blue = clamp(blue, 0, 255)
 					color_set = rgb(red, green, blue) // Splice the numbers together and turn them back to hex.
 				// SKYRAT EDIT ADDITION END
-=======
-			brightness_set = nightshift_brightness
-			power_set = nightshift_light_power
-			if(!color)
-				color_set = nightshift_light_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else if (major_emergency)
 			color_set = bulb_low_power_colour
 			brightness_set = brightness * bulb_major_emergency_brightness_mul
 		var/matching = light && brightness_set == light.light_range && power_set == light.light_power && color_set == light.light_color
-<<<<<<< HEAD
 		if(!matching && (maploaded || instant)) // SKYRAT EDIT CHANGE - ORIGINAL: if(!matching)
-=======
-		if(!matching)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			switchcount++
 			if( prob( min(60, (switchcount**2)*0.01) ) )
 				if(trigger)
@@ -297,7 +276,6 @@
 					l_power = power_set,
 					l_color = color_set
 					)
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START
 				maploaded = FALSE
 				if(play_sound)
@@ -307,8 +285,6 @@
 			turning_on = TRUE
 			addtimer(CALLBACK(src, PROC_REF(delayed_turn_on), trigger, play_sound, color_set, power_set, brightness_set), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
 		// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		low_power_mode = TRUE
@@ -320,7 +296,6 @@
 	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
 
-<<<<<<< HEAD
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef LIGHT_ON_DELAY_UPPER
@@ -329,8 +304,6 @@
 #undef NIGHTSHIFT_COLOR_MODIFIER
 // SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/machinery/light/update_current_power_usage()
 	if(!on && static_power_used > 0) //Light is off but still powered
 		removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
@@ -410,15 +383,10 @@
 			. += span_danger("The [fitting] has been smashed.")
 	if(cell || has_mock_cell)
 		. +=  span_notice("Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%.")
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(constant_flickering)
 		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
 	//SKYRAT EDIT END
-=======
-
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
@@ -536,23 +504,16 @@
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
 	var/area/local_area = get_room_area()
-<<<<<<< HEAD
-	return !local_area.lightswitch && local_area.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE - ORIGINAL : return !local_area.lightswitch && local_area.power_light || flickering
-=======
 	return !local_area.lightswitch && local_area.power_light || flickering
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/local_area = get_room_area()
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	if(isnull(local_area))
 		return FALSE
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
@@ -594,21 +555,13 @@
 			if(status != LIGHT_OK || !has_power())
 				break
 			on = !on
-<<<<<<< HEAD
 			update(FALSE, TRUE) //SKYRAT EDIT CHANGE
-=======
-			update(FALSE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			sleep(rand(5, 15))
 		if(has_power())
 			on = (status == LIGHT_OK)
 		else
 			on = FALSE
-<<<<<<< HEAD
-		update(FALSE, TRUE) // SKYRAT EDIT CHANGE
-=======
-		update(FALSE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 		. = TRUE //did we actually flicker?
 	flickering = FALSE
 

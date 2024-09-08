@@ -59,11 +59,7 @@
 	var/datum/ai_controller/controller = source.extra_info
 
 	// Check if this controller can actually run, so we don't chase people with corpses
-<<<<<<< HEAD
-	if(!controller.able_to_run())
-=======
 	if(!controller.able_to_run)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		controller.CancelActions()
 		qdel(source) //stop moving
 		return MOVELOOP_SKIP_STEP

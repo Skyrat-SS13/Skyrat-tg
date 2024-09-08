@@ -200,10 +200,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	invocation = "Ra'sha yoka!"
 	invoke_damage = 30
 	can_be_scribed = FALSE
-<<<<<<< HEAD
-=======
 	var/randomized = TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/effect/rune/malformed/Initialize(mapload, set_keyword)
 	. = ..()
@@ -212,10 +209,6 @@ structure_check() searches for nearby cultist structures required for the invoca
 	icon_state = "[rand(1,7)]"
 	color = rgb(rand(0,255), rand(0,255), rand(0,255))
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/effect/rune/malformed/invoke(list/invokers)
 	..()
 	qdel(src)
@@ -518,11 +511,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		fail_invoke()
 		return
 	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
-<<<<<<< HEAD
-	if(!Adjacent(user) || QDELETED(src) || user.incapacitated() || !actual_selected_rune)
-=======
 	if(!Adjacent(user) || QDELETED(src) || user.incapacitated || !actual_selected_rune)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		fail_invoke()
 		return
 
@@ -856,11 +845,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		return
 	var/mob/living/cultist_to_summon = tgui_input_list(user, "Who do you wish to call to [src]?", "Followers of the Geometer", cultists)
 	var/fail_logmsg = "Summon Cultist rune activated by [user] at [COORD(src)] failed - "
-<<<<<<< HEAD
-	if(!Adjacent(user) || !src || QDELETED(src) || user.incapacitated())
-=======
 	if(!Adjacent(user) || !src || QDELETED(src) || user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(isnull(cultist_to_summon))
 		to_chat(user, "<span class='cult italic'>You require a summoning target!</span>")

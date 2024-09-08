@@ -660,7 +660,6 @@ CREATE TABLE `discord_links` (
 ) ENGINE=InnoDB;
 
 --
-<<<<<<< HEAD
 -- Table structure for table `game_log`
 --
 DROP TABLE IF EXISTS `game_log`;
@@ -676,8 +675,6 @@ CREATE TABLE `game_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 -- Table structure for table `admin_connections`
 --
 DROP TABLE IF EXISTS `admin_connections`;

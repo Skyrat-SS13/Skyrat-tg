@@ -20,11 +20,7 @@
 	protected_areas = list(/area/station/maintenance, /area/station/ai_monitored/turret_protected/ai_upload, /area/station/ai_monitored/turret_protected/ai_upload_foyer,
 							/area/station/ai_monitored/turret_protected/aisat/maint, /area/station/ai_monitored/command/storage/satellite,
 							/area/station/ai_monitored/turret_protected/ai, /area/station/commons/storage/emergency/starboard, /area/station/commons/storage/emergency/port,
-<<<<<<< HEAD
-							/area/shuttle, /area/station/security/prison/safe, /area/station/security/prison/toilet, /area/icemoon/underground, /area/ruin/comms_agent/maint)
-=======
 							/area/shuttle, /area/station/security/prison/safe, /area/station/security/prison/toilet, /area/mine/maintenance, /area/icemoon/underground, /area/ruin/comms_agent/maint)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	target_trait = ZTRAIT_STATION
 
 	immunity_type = TRAIT_RADSTORM_IMMUNE

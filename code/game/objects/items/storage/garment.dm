@@ -74,11 +74,7 @@
 	new /obj/item/clothing/shoes/laceup(src)
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
-<<<<<<< HEAD
 	//new /obj/item/clothing/under/rank/security/head_of_security/skirt(src) SKYRAT EDIT REMOVAL - Blue Sec
-=======
-	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/grey(src)
@@ -98,7 +94,6 @@
 
 /obj/item/storage/bag/garment/warden/PopulateContents()
 	new /obj/item/clothing/suit/armor/vest/warden(src)
-<<<<<<< HEAD
 	//new /obj/item/clothing/head/hats/warden(src) SKYRAT EDIT REMOVAL
 	//new /obj/item/clothing/head/hats/warden/drill(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
@@ -106,14 +101,6 @@
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
 	new /obj/item/clothing/suit/jacket/warden/blue(src) //SKYRAT ADDITION - FORMAL COAT
 	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
-=======
-	new /obj/item/clothing/head/hats/warden(src)
-	new /obj/item/clothing/head/hats/warden/drill(src)
-	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
-	new /obj/item/clothing/under/rank/security/warden/formal(src)
-	new /obj/item/clothing/under/rank/security/warden/skirt(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/clothing/gloves/krav_maga/sec(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
@@ -125,10 +112,7 @@
 	new /obj/item/clothing/under/rank/rnd/research_director/alt/skirt(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt(src)
-<<<<<<< HEAD
 	new /obj/item/clothing/suit/toggle/labcoat/skyrat/rd(src) //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/clothing/suit/hooded/wintercoat/science/rd(src)
 	new /obj/item/clothing/head/beret/science/rd(src)
 	new /obj/item/clothing/gloves/color/black(src)

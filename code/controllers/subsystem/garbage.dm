@@ -346,10 +346,7 @@ SUBSYSTEM_DEF(garbage)
 /// Datums passed to this will be given a chance to clean up references to allow the GC to collect them.
 /proc/qdel(datum/to_delete, force = FALSE)
 	if(!istype(to_delete))
-<<<<<<< HEAD
-=======
 		DREAMLUAU_CLEAR_REF_USERDATA(to_delete)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		del(to_delete)
 		return
 

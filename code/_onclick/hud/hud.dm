@@ -49,7 +49,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/inventory_shown = FALSE //Equipped item inventory
 	var/hotkey_ui_hidden = FALSE //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-<<<<<<< HEAD
 	var/atom/movable/screen/ammo_counter //SKYRAT EDIT ADDITION
 
 	var/atom/movable/screen/blobpwrdisplay
@@ -59,15 +58,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	var/atom/movable/screen/combo/combo_display
 
-=======
-	var/atom/movable/screen/blobpwrdisplay
-
-	var/atom/movable/screen/alien_plasma_display
-	var/atom/movable/screen/alien_queen_finder
-
-	var/atom/movable/screen/combo/combo_display
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/atom/movable/screen/action_intent
 	var/atom/movable/screen/zone_select
 	var/atom/movable/screen/pull_icon
@@ -138,21 +128,13 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	// and avoid needing to make changes to all idk 300 consumers if we want to change the appearance
 	var/list/asset_refs_for_reuse = list()
 
-	// List of weakrefs to objects that we add to our screen that we don't expect to DO anything
-	// They typically use * in their render target. They exist solely so we can reuse them,
-	// and avoid needing to make changes to all idk 300 consumers if we want to change the appearance
-	var/list/asset_refs_for_reuse = list()
-
 /datum/hud/New(mob/owner)
 	mymob = owner
 
 	if (!ui_style)
 		// will fall back to the default if any of these are null
 		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
-<<<<<<< HEAD
 		erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	toggle_palette = new()
 	toggle_palette.set_hud(src)
@@ -288,13 +270,10 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	alien_queen_finder = null
 	combo_display = null
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START - SKYRAT HUD
 	wanted_lvl = null
 	// SKYRAT EDIT ADDITION END - SKYRAT HUD
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	QDEL_LIST_ASSOC_VAL(master_groups)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 	QDEL_LIST(always_visible_inventory)

@@ -7,11 +7,7 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_EXTERNAL_TAIL
 
-<<<<<<< HEAD
 	//dna_block = DNA_TAIL_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
-=======
-	dna_block = DNA_TAIL_BLOCK
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	// defaults to cat, but the parent type shouldn't be created regardless
@@ -24,11 +20,7 @@
 	///The overlay for tail spines, if any
 	var/datum/bodypart_overlay/mutant/tail_spines/tail_spines_overlay
 
-<<<<<<< HEAD
-/obj/item/organ/external/tail/Insert(mob/living/carbon/receiver, special, movement_flags)
-=======
 /obj/item/organ/external/tail/mob_insert(mob/living/carbon/receiver, special, movement_flags)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		receiver.clear_mood_event("tail_lost")
@@ -42,11 +34,7 @@
 		// If it's not your tail AND of different species, we are horrified
 		if(IS_WEAKREF_OF(receiver, original_owner))
 			receiver.add_mood_event("tail_regained", /datum/mood_event/tail_regained_right)
-<<<<<<< HEAD
-		else if(type in receiver.dna.species.external_organs)
-=======
 		else if(type in receiver.dna.species.mutant_organs)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			receiver.add_mood_event("tail_regained", /datum/mood_event/tail_regained_species)
 		else
 			receiver.add_mood_event("tail_regained", /datum/mood_event/tail_regained_wrong)
@@ -76,17 +64,12 @@
 
 	tail_spines_overlay = new
 	tail_spines_overlay.tail_spine_key = tail_spine_key
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	if(!bodypart.owner.dna.mutant_bodyparts["spines"])
 		bodypart.owner.dna.mutant_bodyparts["spines"][MUTANT_INDEX_NAME] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#886600", "#886600", "#886600"))
 	// SKYRAT EDIT ADDITION END
 	var/feature_name = bodypart.owner.dna.mutant_bodyparts["spines"][MUTANT_INDEX_NAME] // SKYRAT EDIT CHANGE - ORIGINAL: var/feature_name = bodypart.owner.dna.features["spines"] //tail spines don't live in DNA, but share feature names with regular spines
 	tail_spines_overlay.set_appearance_from_dna(bodypart.owner.dna, feature_name, feature_key = "spines") // SKYRAT EDIT CHANGE - ORIGINAL: tail_spines_overlay.set_appearance_from_name(feature_name)
-=======
-	var/feature_name = bodypart.owner.dna.features["spines"] //tail spines don't live in DNA, but share feature names with regular spines
-	tail_spines_overlay.set_appearance_from_name(feature_name)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	bodypart.add_bodypart_overlay(tail_spines_overlay)
 
 /// If we have a tail spines overlay, delete it
@@ -104,11 +87,7 @@
 
 	organ_owner.clear_mood_event("tail_regained")
 
-<<<<<<< HEAD
-	if(type in organ_owner.dna.species.external_organs)
-=======
 	if(type in organ_owner.dna.species.mutant_organs)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		organ_owner.add_mood_event("tail_lost", /datum/mood_event/tail_lost)
 		organ_owner.add_mood_event("tail_balance_lost", /datum/mood_event/tail_balance_lost)
 
@@ -165,23 +144,17 @@
 ///Tail parent type, with wagging functionality
 /datum/bodypart_overlay/mutant/tail
 	layers = EXTERNAL_FRONT|EXTERNAL_BEHIND
-<<<<<<< HEAD
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
 	return "[wagging ? "wagging_" : ""][sprite_datum.icon_state]" //add the wagging tag if we be wagging
 
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION - CUSTOMIZATION
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
 	return SSaccessories.sprite_accessories["tail"]
 // SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/bodypart_overlay/mutant/tail/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(human.wear_suit && (human.wear_suit.flags_inv & HIDEJUMPSUIT))
 		return FALSE
@@ -196,24 +169,15 @@
 	wag_flags = WAG_ABLE
 
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
-<<<<<<< HEAD
 	return SSaccessories.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.tails_list_human
-=======
-	return SSaccessories.tails_list_human
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_CAT)
 
 ///Cat tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/cat
-<<<<<<< HEAD
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
 	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
-=======
-	feature_key = "tail_cat"
-	color_source = ORGAN_COLOR_HAIR
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/external/tail/monkey
 	name = "monkey tail"
@@ -226,11 +190,7 @@
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
 	color_source = NONE
-<<<<<<< HEAD
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
-=======
-	feature_key = "tail_monkey"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
 	return SSaccessories.tails_list_monkey
@@ -243,7 +203,6 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/lizard
 
 	wag_flags = WAG_ABLE
-<<<<<<< HEAD
 	//dna_block = DNA_LIZARD_TAIL_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 
 ///Lizard tail bodypart overlay datum
@@ -252,16 +211,6 @@
 
 /datum/bodypart_overlay/mutant/tail/lizard/get_global_feature_list()
 	return SSaccessories.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.tails_list_lizard
-=======
-	dna_block = DNA_LIZARD_TAIL_BLOCK
-
-///Lizard tail bodypart overlay datum
-/datum/bodypart_overlay/mutant/tail/lizard
-	feature_key = "tail_lizard"
-
-/datum/bodypart_overlay/mutant/tail/lizard/get_global_feature_list()
-	return SSaccessories.tails_list_lizard
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/external/tail/lizard/fake
 	name = "fabricated lizard tail"
@@ -277,11 +226,7 @@
 	var/tail_spine_key = NONE
 
 /datum/bodypart_overlay/mutant/tail_spines/get_global_feature_list()
-<<<<<<< HEAD
 	return SSaccessories.sprite_accessories["tailspines"] // SKYRAT EDIT CHANGE - ORIGINAL: return SSaccessories.tail_spines_list
-=======
-	return SSaccessories.tail_spines_list
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/bodypart_overlay/mutant/tail_spines/get_base_icon_state()
 	return (!isnull(tail_spine_key) ? "[tail_spine_key]_" : "") + (wagging ? "wagging_" : "") + sprite_datum.icon_state // Select the wagging state if appropriate

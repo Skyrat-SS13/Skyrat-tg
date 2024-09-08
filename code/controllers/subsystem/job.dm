@@ -294,15 +294,12 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ skipping command role, Player: [player], Job: [job]")
 			continue
 
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND) //If you want a CC position, select it!
 			JobDebug("GRJ skipping Central Command role, Player: [player], Job: [job]")
 			continue
 		//SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
 			continue
@@ -562,7 +559,6 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/alt_title = player_client?.prefs.alt_job_titles[job.title]
@@ -573,29 +569,16 @@ SUBSYSTEM_DEF(job)
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.mind?.set_assigned_role_with_greeting(job, player_client)
-	equipping.on_job_equipping(job, player_client) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.on_job_equipping(job)
+	equipping.on_job_equipping(job, player_client)
 	job.announce_job(equipping, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: job.announce_job(equipping)
 
-=======
-	equipping.job = job.title
-
-	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
-
-	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
-	equipping.on_job_equipping(job, player_client)
-	job.announce_job(equipping)
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
 			player_client.holder.auto_deadmin()
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
 
-<<<<<<< HEAD
 	setup_alt_job_items(equipping, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	job.after_spawn(equipping, player_client)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
@@ -702,10 +685,7 @@ SUBSYSTEM_DEF(job)
 	if(!run_divide_occupation_pure)
 		to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 		player.ready = PLAYER_NOT_READY
-<<<<<<< HEAD
 		player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 /datum/controller/subsystem/job/Recover()
@@ -934,7 +914,6 @@ SUBSYSTEM_DEF(job)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_AGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_AGE
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(!CONFIG_GET(flag/bypass_veteran_system) && possible_job.veteran_only && !SSplayer_ranks.is_veteran(player.client))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_VETERAN)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
@@ -966,8 +945,6 @@ SUBSYSTEM_DEF(job)
 
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
 	if(QDELETED(player))
 		JobDebug("[debug_prefix] player is qdeleted, Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")

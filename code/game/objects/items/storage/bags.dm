@@ -274,11 +274,8 @@
 	. += span_notice("Ctrl-click to activate seed extraction.")
 
 /obj/item/storage/bag/plants/portaseeder/item_ctrl_click(mob/user)
-<<<<<<< HEAD
-=======
 	if(user.incapacitated)
 		return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/obj/item/plant in contents)
 		seedify(plant, 1)
 	return CLICK_ACTION_SUCCESS
@@ -586,11 +583,7 @@
 	worn_icon_state = "rebar_quiver"
 	inhand_icon_state = "rebar_quiver"
 	desc = "A oxygen tank cut in half, used for holding sharpened rods for the rebar crossbow."
-<<<<<<< HEAD
-	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_SUITSTORE
-=======
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_SUITSTORE|ITEM_SLOT_NECK
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	resistance_flags = FLAMMABLE
 
 /obj/item/storage/bag/rebar_quiver/Initialize(mapload)
@@ -607,8 +600,6 @@
 		/obj/item/ammo_casing/rebar/paperball,
 		))
 
-<<<<<<< HEAD
-=======
 /obj/item/storage/bag/rebar_quiver/syndicate
 	icon_state = "syndie_quiver_0"
 	worn_icon_state = "syndie_quiver_0"
@@ -664,5 +655,4 @@
 	var/obj/item/ammo_casing/rebar/ammo_to_load = contents[1]
 	held_crossbow.attackby(ammo_to_load, user)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #undef ORE_BAG_BALOON_COOLDOWN

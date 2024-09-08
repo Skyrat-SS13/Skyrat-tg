@@ -397,10 +397,7 @@
 	current_range = 2
 	spray_range = 2
 	spray_sound = 'sound/effects/snap.ogg'
-<<<<<<< HEAD
-=======
 	possible_transfer_amounts = list(5)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/reagent_containers/spray/chemsprayer/party/spray(atom/A, mob/user)
 	. = ..()

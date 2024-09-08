@@ -132,14 +132,11 @@
 
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
 	if(clicksound && world.time > next_clicksound && isliving(user))
 		next_clicksound = world.time + rand(50, 150)
 		playsound(src, get_sfx_skyrat(clicksound), clickvol)
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	update_use_power(ACTIVE_POWER_USE)
 

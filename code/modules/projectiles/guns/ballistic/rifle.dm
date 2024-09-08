@@ -201,16 +201,9 @@
 	inhand_icon_state = "rebarxbow"
 	worn_icon_state = "rebarxbow"
 	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
-<<<<<<< HEAD
-	must_hold_to_load = TRUE
-	mag_display = FALSE
-	empty_indicator = TRUE
-	bolt_type = BOLT_TYPE_LOCKING
-=======
 	mag_display = FALSE
 	empty_indicator = TRUE
 	bolt_type = BOLT_TYPE_OPEN
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	semi_auto = FALSE
 	internal_magazine = TRUE
 	can_modify_ammo = FALSE
@@ -255,20 +248,15 @@
 		return FALSE
 	return ..()
 
-<<<<<<< HEAD
-=======
 /obj/item/gun/ballistic/rifle/rebarxbow/shoot_with_empty_chamber(mob/living/user)
 	if(chambered || !magazine || !length(magazine.contents))
 		return ..()
 	drop_bolt(user)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/gun/ballistic/rifle/rebarxbow/examine(mob/user)
 	. = ..()
 	. += "The crossbow is [bolt_locked ? "not ready" : "ready"] to fire."
 
-<<<<<<< HEAD
-=======
 /obj/item/gun/ballistic/rifle/rebarxbow/update_overlays()
 	. = ..()
 	if(!magazine)
@@ -276,7 +264,6 @@
 	if(!bolt_locked)
 		. += "[initial(icon_state)]" + "_bolt_locked"
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/gun/ballistic/rifle/rebarxbow/forced
 	name = "Stressed Rebar Crossbow"
 	desc = "Some idiot decided that they would risk shooting themselves in the face if it meant they could have a draw this crossbow a bit faster. Hopefully, it was worth it."

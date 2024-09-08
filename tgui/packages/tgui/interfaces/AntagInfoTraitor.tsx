@@ -9,10 +9,7 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import { Objective, ObjectivePrintout } from './common/Objectives';
 
 const allystyle = {
@@ -59,7 +56,6 @@ const IntroductionSection = (props) => {
         <Stack.Item grow>
           <ObjectivePrintout objectives={objectives} />
         </Stack.Item>
-<<<<<<< HEAD
         {/* SKYRAT EDIT ADDITION START */}
         <Stack.Item grow>
           {/* SKYRAT EDIT ADDITION START */}
@@ -68,8 +64,6 @@ const IntroductionSection = (props) => {
           </Stack.Item>
         </Stack.Item>
         {/* SKYRAT EDIT ADDITION END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       </Stack>
     </Section>
   );
@@ -242,19 +236,11 @@ const CodewordsSection = (props) => {
   );
 };
 
-<<<<<<< HEAD
-// SKYRAT EDIT: change height from 580 to 650
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 export const AntagInfoTraitor = (props) => {
   const { data } = useBackend<Info>();
   const { theme, given_uplink } = data;
   return (
-<<<<<<< HEAD
-    <Window width={620} height={650} theme={theme}>
-=======
     <Window width={620} height={580} theme={theme}>
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>

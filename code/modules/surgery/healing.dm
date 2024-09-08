@@ -1,10 +1,6 @@
 /datum/surgery/healing
 	target_mobtypes = list(/mob/living)
-<<<<<<< HEAD
 	requires_bodypart_type = BODYTYPE_ORGANIC //SKYRAT EDIT CHANGE - ORIGINAL VALUE: requires_bodypart_type = FALSE
-=======
-	requires_bodypart_type = NONE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	replaced_by = /datum/surgery
 	surgery_flags = SURGERY_IGNORE_CLOTHES | SURGERY_REQUIRE_RESTING
 	possible_locs = list(BODY_ZONE_CHEST)

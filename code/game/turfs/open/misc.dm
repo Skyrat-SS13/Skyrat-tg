@@ -3,11 +3,7 @@
 /// Please do not bloat this. Love you <3
 /turf/open/misc
 	name = "coder/mapper fucked up"
-<<<<<<< HEAD
-	desc = "report on github please"
-=======
 	desc = "report on GitHub please"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	flags_1 = NO_SCREENTIPS_1 | CAN_BE_DIRTY_1
 	turf_flags = IS_SOLID | NO_RUST

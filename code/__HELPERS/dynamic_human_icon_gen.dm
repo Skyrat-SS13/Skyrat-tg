@@ -17,10 +17,7 @@ GLOBAL_LIST_EMPTY(dynamic_human_appearances)
 	dummy.underwear = "Nude"
 	dummy.undershirt = "Nude"
 	dummy.socks = "Nude"
-<<<<<<< HEAD
 	dummy.bra = "Nude" // SKYRAT EDIT ADDITION - Underwear and bra split
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(outfit_path)
 		var/datum/outfit/outfit = new outfit_path()
 		if(r_hand != NO_REPLACE) //we can still override to be null, no replace means just use outfit's

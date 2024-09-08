@@ -50,38 +50,21 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 	/// Native FOV that will be applied if a config is enabled
-<<<<<<< HEAD
-	var/native_fov = FOV_180_DEGREES //SKYRAT EDIT CHANGE
+	var/native_fov = FOV_180_DEGREES //SKYRAT EDIT CHANGE - Original FOV_90_DEGREES
 
-/obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_recipient, special = FALSE, movement_flags = DELETE_IF_REPLACED)
-	// If we don't do this before everything else, heterochromia will be reset leading to eye_color_right no longer being accurate
-	if(ishuman(eye_recipient))
-		var/mob/living/carbon/human/human_recipient = eye_recipient
-=======
-	var/native_fov = FOV_90_DEGREES
 
 /obj/item/organ/internal/eyes/mob_insert(mob/living/carbon/receiver, special, movement_flags)
 	// If we don't do this before everything else, heterochromia will be reset leading to eye_color_right no longer being accurate
 	if(ishuman(receiver))
 		var/mob/living/carbon/human/human_recipient = receiver
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		old_eye_color_left = human_recipient.eye_color_left
 		old_eye_color_right = human_recipient.eye_color_right
 
 	. = ..()
 
-<<<<<<< HEAD
-	if(!.)
-		return
-
-	eye_recipient.cure_blind(NO_EYES)
-	apply_damaged_eye_effects()
-	refresh(eye_recipient, call_update = TRUE)
-=======
 	receiver.cure_blind(NO_EYES)
 	apply_damaged_eye_effects()
 	refresh(receiver, call_update = TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Refreshes the visuals of the eyes
 /// If call_update is TRUE, we also will call update_body
@@ -106,7 +89,6 @@
 	if(CONFIG_GET(flag/native_fov) && native_fov)
 		affected_human.add_fov_trait(type, native_fov)
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION - EMISSIVES
 	if (affected_human.emissive_eyes)
 		is_emissive = TRUE
@@ -115,48 +97,21 @@
 	if(call_update)
 		affected_human.update_body()
 
-/obj/item/organ/internal/eyes/Remove(mob/living/carbon/eye_owner, special, movement_flags)
-	. = ..()
-	if(ishuman(eye_owner))
-		var/mob/living/carbon/human/human_owner = eye_owner
-=======
-	if(call_update)
-		affected_human.update_body()
-
 /obj/item/organ/internal/eyes/mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
 
 	if(ishuman(organ_owner))
 		var/mob/living/carbon/human/human_owner = organ_owner
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(initial(eye_color_left))
 			human_owner.eye_color_left = old_eye_color_left
 		if(initial(eye_color_right))
 			human_owner.eye_color_right = old_eye_color_right
 		if(native_fov)
-<<<<<<< HEAD
-			eye_owner.remove_fov_trait(type)
-=======
 			organ_owner.remove_fov_trait(type)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(!special)
 			human_owner.update_body()
 
 	// Cure blindness from eye damage
-<<<<<<< HEAD
-	eye_owner.cure_blind(EYE_DAMAGE)
-	eye_owner.cure_nearsighted(EYE_DAMAGE)
-	// Eye blind and temp blind go to, even if this is a bit of cheesy way to clear blindness
-	eye_owner.remove_status_effect(/datum/status_effect/eye_blur)
-	eye_owner.remove_status_effect(/datum/status_effect/temporary_blindness)
-	// Then become blind anyways (if not special)
-	if(!special)
-		eye_owner.become_blind(NO_EYES)
-
-	eye_owner.update_tint()
-	eye_owner.update_sight()
-	is_emissive = FALSE // SKYRAT EDIT ADDITION
-=======
 	organ_owner.cure_blind(EYE_DAMAGE)
 	organ_owner.cure_nearsighted(EYE_DAMAGE)
 	// Eye blind and temp blind go to, even if this is a bit of cheesy way to clear blindness
@@ -168,7 +123,7 @@
 
 	organ_owner.update_tint()
 	organ_owner.update_sight()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	is_emissive = FALSE // SKYRAT EDIT ADDITION
 
 #define OFFSET_X 1
 #define OFFSET_Y 2
@@ -178,29 +133,19 @@
 	if(!istype(parent) || parent.get_organ_by_type(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	if(isnull(eye_icon_state))
+	if(isnull(eye_icon_state) || eye_icon_state == "None") // SKYRAT EDIT - Synths, adds eye_icon_state == "None"
 		return list()
 
-<<<<<<< HEAD
 	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/human/human_face.dmi' // SKYRAT EDIT ADDITION
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
-=======
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/overlays = list(eye_left, eye_right)
 
 	var/obscured = parent.check_obscured_slots(TRUE)
 	if(overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-<<<<<<< HEAD
 		overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -eyes_layer, alpha = eye_left.alpha) // SKYRAT EDIT CHANGE - ORIGINAL: overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
 		overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -eyes_layer, alpha = eye_right.alpha) // SKYRAT EDIT CHANGE - ORIGINAL: overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
-=======
-		overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
-		overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -BODY_LAYER, alpha = eye_right.alpha)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/obj/item/bodypart/head/my_head = parent.get_bodypart(BODY_ZONE_HEAD)
 	if(my_head)
 		if(my_head.head_flags & HEAD_EYECOLOR)
@@ -210,12 +155,7 @@
 			my_head.worn_face_offset.apply_offset(eye_left)
 			my_head.worn_face_offset.apply_offset(eye_right)
 
-<<<<<<< HEAD
-	// SKYRAT EDIT START - Customization (Synths + Emissives)
-	if(eye_icon_state == "None")
-		eye_left.alpha = 0
-		eye_right.alpha = 0
-
+	// SKYRAT EDIT START - Customization Emissives)
 	if (is_emissive) // Because it was done all weird up there.
 		var/mutable_appearance/emissive_left = emissive_appearance_copy(eye_left, owner)
 		var/mutable_appearance/emissive_right = emissive_appearance_copy(eye_right, owner)
@@ -229,8 +169,6 @@
 
 	// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return overlays
 
 #undef OFFSET_X
@@ -511,11 +449,7 @@
 	deactivate(close_ui = TRUE)
 
 /// Set the initial color of the eyes on insert to be the mob's previous eye color.
-<<<<<<< HEAD
-/obj/item/organ/internal/eyes/robotic/glow/Insert(mob/living/carbon/eye_recipient, special = FALSE, movement_flags = DELETE_IF_REPLACED)
-=======
 /obj/item/organ/internal/eyes/robotic/glow/mob_insert(mob/living/carbon/eye_recipient, special = FALSE, movement_flags = DELETE_IF_REPLACED)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	left_eye_color_string = old_eye_color_left
 	right_eye_color_string = old_eye_color_right
@@ -792,10 +726,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
-<<<<<<< HEAD
 	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/eyes/jelly
 	name = "jelly eyes"

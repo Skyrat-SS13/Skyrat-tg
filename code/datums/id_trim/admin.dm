@@ -5,11 +5,8 @@
 	department_color = COLOR_CENTCOM_BLUE
 	subdepartment_color = COLOR_SERVICE_LIME
 	threat_modifier = -INFINITY
-<<<<<<< HEAD
-=======
 	big_pointer = TRUE
 	pointer_color = COLOR_GREEN
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/id_trim/admin/New()
 	. = ..()

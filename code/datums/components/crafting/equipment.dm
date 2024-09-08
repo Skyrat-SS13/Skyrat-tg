@@ -272,11 +272,8 @@
 	category = CAT_EQUIPMENT
 	tool_behaviors = list(TOOL_WELDER, TOOL_WIRECUTTER)
 
-<<<<<<< HEAD
 // SKYRAT EDIT REMOVAL START
 /*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/crafting_recipe/arrow_quiver
 	name = "Archery Quiver"
 	result = /obj/item/storage/bag/quiver/lesser
@@ -287,7 +284,4 @@
 	)
 	category = CAT_EQUIPMENT
 	tool_behaviors = list(TOOL_WELDER, TOOL_WIRECUTTER)
-<<<<<<< HEAD
 */ // SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

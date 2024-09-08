@@ -89,10 +89,6 @@
 		/obj/item/trash/cnds = 1,
 		/obj/item/trash/syndi_cakes = 1,
 		/obj/item/trash/shrimp_chips = 1,
-<<<<<<< HEAD
-		/obj/item/trash/waffles = 1,
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/trash/tray = 1,
 	)
 

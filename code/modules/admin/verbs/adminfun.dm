@@ -154,11 +154,7 @@ ADMIN_VERB(polymorph_all, R_ADMIN, "Polymorph All", "Applies the effects of the 
 	message_admins("Mass polymorph started by [who_did_it] is complete.")
 
 ADMIN_VERB_AND_CONTEXT_MENU(admin_smite, R_ADMIN|R_FUN, "Smite", "Smite a player with divine power.", ADMIN_CATEGORY_FUN, mob/living/target in world)
-<<<<<<< HEAD
-	var/punishment = input(user, "Choose a punishment", "DIVINE SMITING") as null|anything in GLOB.smites
-=======
 	var/punishment = tgui_input_list(user, "Choose a punishment", "DIVINE SMITING", GLOB.smites)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(QDELETED(target) || !punishment)
 		return

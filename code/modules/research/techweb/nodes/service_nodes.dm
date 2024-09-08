@@ -165,11 +165,8 @@
 	prereq_ids = list(TECHWEB_NODE_FISHING_EQUIP)
 	design_ids = list(
 		"fishing_rod_tech",
-<<<<<<< HEAD
-=======
 		"fishing_gloves",
 		"mod_fishing",
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"stabilized_hook",
 		"auto_reel",
 		"fish_analyzer",

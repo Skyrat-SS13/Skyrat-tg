@@ -68,13 +68,10 @@
 		chest_owner.add_splatter_floor(chest_owner.loc)
 	playsound(get_turf(chest_owner), 'sound/misc/splort.ogg', 80, TRUE)
 	for(var/obj/item/organ/organ in contents)
-<<<<<<< HEAD
 		// SKYRAT EDIT START - Non-spillable organs
 		if(!organ.drop_when_organ_spilling)
 			continue
 		// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/org_zone = check_zone(organ.zone)
 		if(org_zone != BODY_ZONE_CHEST)
 			continue
@@ -275,11 +272,7 @@
 		return FALSE
 
 	var/obj/item/bodypart/chest/mob_chest = new_limb_owner.get_bodypart(BODY_ZONE_CHEST)
-<<<<<<< HEAD
-	if(mob_chest && !(mob_chest.acceptable_bodytype & bodytype) && !(mob_chest.acceptable_bodyshape & bodyshape) && !(mob_chest.acceptable_bodyshape & bodyshape) && !special)
-=======
 	if(mob_chest && !(mob_chest.acceptable_bodytype & bodytype) && !(mob_chest.acceptable_bodyshape & bodyshape) && !special)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 
@@ -413,20 +406,12 @@
 				qdel(phantom_loss)
 
 		//Copied from /datum/species/proc/on_species_gain()
-<<<<<<< HEAD
-		for(var/obj/item/organ/external/organ_path as anything in dna.species.external_organs)
-=======
 		for(var/obj/item/organ/organ_path as anything in dna.species.mutant_organs)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			//Load a persons preferences from DNA
 			var/zone = initial(organ_path.zone)
 			if(zone != limb_zone)
 				continue
-<<<<<<< HEAD
-			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
-=======
 			var/obj/item/organ/new_organ = SSwardrobe.provide_type(organ_path)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			new_organ.Insert(src)
 
 		update_body_parts()

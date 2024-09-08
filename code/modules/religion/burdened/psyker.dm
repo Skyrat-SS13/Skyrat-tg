@@ -254,11 +254,7 @@
 	wound_bonus = -10
 	embed_type = null
 
-<<<<<<< HEAD
-/obj/projectile/bullet/c38/holy/on_hit(atom/target, blocked = 0, pierce_hit)
-=======
 /obj/projectile/bullet/c38/holy/on_hit(atom/target, blocked, pierce_hit)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	var/roll_them_bones = rand(1,38)
 	if(roll_them_bones == 1 && isliving(target))

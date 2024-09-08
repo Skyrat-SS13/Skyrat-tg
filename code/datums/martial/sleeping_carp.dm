@@ -184,11 +184,7 @@
 /datum/martial_art/the_sleeping_carp/proc/can_deflect(mob/living/carp_user)
 	if(!can_use(carp_user) || !carp_user.combat_mode)
 		return FALSE
-<<<<<<< HEAD
-	if(carp_user.incapacitated(IGNORE_GRAB)) //NO STUN
-=======
 	if(INCAPACITATED_IGNORING(carp_user, INCAPABLE_GRAB)) //NO STUN
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(!(carp_user.mobility_flags & MOBILITY_USE)) //NO UNABLE TO USE
 		return FALSE

@@ -1,14 +1,8 @@
 //"Don't leave food on the floor, that's how we get ants"
 
-<<<<<<< HEAD
 #define DECOMPOSITION_TIME (20 MINUTES) // SKYRAT EDIT CHANGE - ORIGINAL: #define DECOMPOSITION_TIME (10 MINUTES)
 #define DECOMPOSITION_TIME_RAW (15 MINUTES) // SKYRAT EDIT CHANGE - ORIGINAL: #define DECOMPOSITION_TIME_RAW (5 MINUTES)
 #define DECOMPOSITION_TIME_GROSS (10 MINUTES) // SKYRAT EDIT CHANGE, - ORIGINAL: #define DECOMPOSITION_TIME_GROSS (7 MINUTES)
-=======
-#define DECOMPOSITION_TIME (10 MINUTES)
-#define DECOMPOSITION_TIME_RAW (5 MINUTES)
-#define DECOMPOSITION_TIME_GROSS (7 MINUTES)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Makes things decompose when exposed to germs. Requires /datum/component/germ_sensitive to detect exposure.
 /datum/component/decomposition

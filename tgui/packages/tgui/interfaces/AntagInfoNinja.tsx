@@ -3,10 +3,7 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import {
   Objective,
   ObjectivePrintout,
@@ -57,14 +54,11 @@ export const AntagInfoNinja = (props) => {
                 what you can do!
               </Section>
             </Stack.Item>
-<<<<<<< HEAD
             {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
               <Rules />
             </Stack.Item>
             {/* SKYRAT EDIT ADDITION END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             <Stack.Item>
               <ObjectivePrintout
                 objectives={objectives}

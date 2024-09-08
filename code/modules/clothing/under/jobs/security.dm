@@ -239,10 +239,7 @@
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
-<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/prison/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -263,10 +260,7 @@
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
-<<<<<<< HEAD
 	greyscale_config_worn_digi = null //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY

@@ -125,8 +125,5 @@
 /datum/component/fov_handler/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, list(COMSIG_MOB_RESET_PERSPECTIVE, COMSIG_ATOM_DIR_CHANGE, COMSIG_LIVING_DEATH, COMSIG_LIVING_REVIVE, COMSIG_MOB_LOGOUT))
-<<<<<<< HEAD
 	UnregisterSignal(parent, COMSIG_LIVING_COMBAT_MODE_TOGGLE) //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

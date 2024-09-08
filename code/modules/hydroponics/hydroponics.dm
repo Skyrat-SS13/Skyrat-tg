@@ -987,15 +987,9 @@
 			to_chat(user, span_notice("The tray is empty."))
 			return
 		if(myseed.apply_graft(snip))
-<<<<<<< HEAD
-			to_chat(user, "<span class='notice'>You carefully integrate the grafted plant limb onto [myseed.plantname], granting it [snip.stored_trait.get_name()].</span>")
-		else
-			to_chat(user, "<span class='warning'>You integrate the grafted plant limb onto [myseed.plantname], but it does not accept the [snip.stored_trait.get_name()] trait from the [snip].</span>")
-=======
 			to_chat(user, span_notice("You carefully integrate the grafted plant limb onto [myseed.plantname], granting it [snip.stored_trait.get_name()]."))
 		else
 			to_chat(user, span_notice("You integrate the grafted plant limb onto [myseed.plantname], but it does not accept the [snip.stored_trait.get_name()] trait from the [snip]."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		qdel(snip)
 		return
 

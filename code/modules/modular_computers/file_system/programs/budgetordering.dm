@@ -305,7 +305,6 @@
 		if("toggleprivate")
 			self_paid = !self_paid
 			. = TRUE
-<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if("company_import_window")
 			var/datum/component/armament/company_imports/gun_comp = computer.GetComponent(/datum/component/armament/company_imports)
@@ -316,8 +315,6 @@
 			gun_comp.ui_interact(usr)
 			. = TRUE
 		//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(.)
 		post_signal(cargo_shuttle)
 

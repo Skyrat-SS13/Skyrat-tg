@@ -4,11 +4,7 @@
 
 /turf/closed/mineral //wall piece
 	name = "rock"
-<<<<<<< HEAD
 	icon = MAP_SWITCH('modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi', 'icons/turf/mining.dmi') // SKYRAT EDIT CHANGE
-=======
-	icon = MAP_SWITCH('icons/turf/smoothrocks.dmi', 'icons/turf/mining.dmi')
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "rock"
 	smoothing_groups = SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS
 	canSmoothWith = SMOOTH_GROUP_MINERAL_WALLS
@@ -29,11 +25,8 @@
 	transform = MAP_SWITCH(TRANSLATE_MATRIX(-4, -4), matrix())
 
 	temperature = TCMB
-<<<<<<< HEAD
 	color = "#677" //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/turf/open/floor/plating/turf_type = /turf/open/misc/asteroid/airless
 	/// The path of the ore stack we spawn when we're mined.
 	var/obj/item/stack/ore/mineralType = null
@@ -319,19 +312,13 @@
 		var/path = pick(spawn_chance_list)
 		if(ispath(path, /turf))
 			var/stored_flags = 0
-<<<<<<< HEAD
 			var/stored_color = color //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(turf_flags & NO_RUINS)
 				stored_flags |= NO_RUINS
 			var/turf/T = ChangeTurf(path,null,CHANGETURF_IGNORE_AIR)
 			T.flags_1 |= stored_flags
 
-<<<<<<< HEAD
 			T.color = stored_color //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(ismineralturf(T))
 				var/turf/closed/mineral/M = T
 				M.turf_type = src.turf_type
@@ -421,11 +408,7 @@
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
-<<<<<<< HEAD
 	proximity_based = FALSE //SKYRAT EDIT: Original TRUE
-=======
-	proximity_based = TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	mineralChance = 5
 
 /turf/closed/mineral/random/volcanic/mineral_chances()
@@ -453,11 +436,7 @@
 	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	weak_turf = TRUE
-<<<<<<< HEAD
 	proximity_based = FALSE //SKYRAT EDIT: Original TRUE
-=======
-	proximity_based = TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/closed/mineral/random/snow/Change_Ore(ore_type, random = 0)
 	. = ..()

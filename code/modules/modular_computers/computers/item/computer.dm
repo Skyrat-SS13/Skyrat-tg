@@ -75,15 +75,9 @@
 	var/comp_light_color = COLOR_WHITE
 
 	///Power usage when the computer is open (screen is active) and can be interacted with.
-<<<<<<< HEAD
 	var/base_active_power_usage = 0.4 WATTS // SKYRAT EDIT CHANGE - ORIGINAL: 2 WATTS
 	///Power usage when the computer is idle and screen is off.
 	var/base_idle_power_usage = 0.2 WATTS //SKYRAT EDIT CHANGE - ORIGINAL: 1 WATTS
-=======
-	var/base_active_power_usage = 2 WATTS
-	///Power usage when the computer is idle and screen is off.
-	var/base_idle_power_usage = 1 WATTS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Modular computers can run on various devices. Each DEVICE (Laptop, Console & Tablet)
 	// must have its own DMI file. Icon states must be called exactly the same in all files, but may look differently

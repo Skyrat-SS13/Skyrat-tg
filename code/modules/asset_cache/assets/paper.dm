@@ -1,7 +1,6 @@
 /datum/asset/spritesheet/simple/paper
 	name = "paper"
 	assets = list(
-<<<<<<< HEAD
 
 		// SKYRAT EDIT ADDITION: START - Donator stamp icons
 		"stamp-cat_blue" = 'modular_skyrat/master_files/icons/stamp_icons/cat_blue.png',
@@ -16,8 +15,6 @@
 		"stamp-nri" = 'modular_skyrat/master_files/icons/stamp_icons/large_stamp-nri.png',
 		"stamp-solfed" = 'modular_skyrat/master_files/icons/stamp_icons/large_stamp-solfed.png',
 		// SKYRAT EDIT ADDITION: END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"stamp-clown" = 'icons/stamp_icons/large_stamp-clown.png',
 		"stamp-deny" = 'icons/stamp_icons/large_stamp-deny.png',
 		"stamp-ok" = 'icons/stamp_icons/large_stamp-ok.png',

@@ -11,10 +11,7 @@
 	siemens_coeff = 0.5 //They thrive on energy
 	payday_modifier = 1.0
 	inherent_traits = list(
-<<<<<<< HEAD
 		// TRAIT_NO_UNDERWEAR, // SKYRAT EDIT - LET THEM WEAR PANTIES
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		TRAIT_MUTANT_COLORS,
 		TRAIT_FIXED_MUTANT_COLORS,
 		TRAIT_AGENDER,
@@ -63,10 +60,6 @@
 	RegisterSignal(new_ethereal, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(refresh_light_color))
 	ethereal_light = new_ethereal.mob_light(light_type = /obj/effect/dummy/lighting_obj/moblight/species)
 	refresh_light_color(new_ethereal)
-<<<<<<< HEAD
-	update_mail_goodies(new_ethereal)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/obj/item/organ/internal/heart/ethereal/ethereal_heart = new_ethereal.get_organ_slot(ORGAN_SLOT_HEART)
 	ethereal_heart.ethereal_color = default_color

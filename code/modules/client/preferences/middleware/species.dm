@@ -13,11 +13,7 @@
 /datum/asset/spritesheet/species/create_spritesheets()
 	var/list/to_insert = list()
 
-<<<<<<< HEAD
 	for (var/species_id in get_selectable_species() | get_customizable_races()) // SKYRAT EDIT CHANGE - ORIGINAL: for (var/species_id in get_selectable_species())
-=======
-	for (var/species_id in get_selectable_species())
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/datum/species/species_type = GLOB.species_list[species_id]
 
 		var/mob/living/carbon/human/dummy/consistent/dummy = new

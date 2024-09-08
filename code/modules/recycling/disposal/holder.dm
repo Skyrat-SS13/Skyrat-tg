@@ -195,11 +195,7 @@
 
 // called when player tries to move while in a pipe
 /obj/structure/disposalholder/relaymove(mob/living/user, direction)
-<<<<<<< HEAD
-	if(user.incapacitated())
-=======
 	if(user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	for(var/mob/M in range(5, get_turf(src)))
 		M.show_message("<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>", MSG_AUDIBLE)

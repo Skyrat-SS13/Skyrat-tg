@@ -529,11 +529,7 @@
 		return TRUE
 	if(IS_WEAKREF_OF(stealing, target_ref))
 		var/mob/living/carbon/human/target = stealing
-<<<<<<< HEAD
-		if(!target.incapacitated(IGNORE_RESTRAINTS|IGNORE_STASIS))
-=======
 		if(!INCAPACITATED_IGNORING(target, INCAPABLE_RESTRAINTS|INCAPABLE_STASIS))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return FALSE
 		if(find_desired_thing(target))
 			return TRUE

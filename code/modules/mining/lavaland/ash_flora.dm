@@ -197,12 +197,9 @@
 	pixel_y = base_pixel_y + rand(-4, 4)
 
 /obj/item/food/grown/ash_flora/shavings //So we can't craft bowls from everything.
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "You feel this flora would be unwise to consume while already full." //SKYRAT EDIT
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	grind_results = list(/datum/reagent/toxin/mushroom_powder = 5)
 
 /obj/item/food/grown/ash_flora/mushroom_leaf
@@ -423,19 +420,3 @@
 	if(!reagents.total_volume)
 		icon_state = "mushroom_bowl"
 	return ..()
-<<<<<<< HEAD
-
-/obj/item/reagent_containers/cup/bowl/wood_bowl
-	name = "wooden bowl"
-	desc = "A bowl made out of wood. Primitive, but effective."
-	icon = 'icons/obj/mining_zones/ash_flora.dmi'
-	icon_state = "wood_bowl"
-	fill_icon_state = "fullbowl"
-	fill_icon = 'icons/obj/mining_zones/ash_flora.dmi'
-
-/obj/item/reagent_containers/cup/bowl/mushroom_bowl/update_icon_state()
-	if(!reagents.total_volume)
-		icon_state = "wood_bowl"
-	return ..()
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

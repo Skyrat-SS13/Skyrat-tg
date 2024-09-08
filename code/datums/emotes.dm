@@ -102,7 +102,6 @@
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
-<<<<<<< HEAD
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(source = user,soundin = tmp_sound,vol = 50, vary = vary, ignore_walls = sound_wall_ignore) - SKYRAT EDIT - ORIGINAL
 		if(istype(src, /datum/emote/living/lewd))
@@ -110,17 +109,11 @@
 		else
 			playsound(source = user, soundin = tmp_sound, vol = sound_volume, vary = vary, ignore_walls = sound_wall_ignore)
 		//SKYRAT EDIT CHANGE END
-=======
-		playsound(source = user,soundin = tmp_sound,vol = 50, vary = vary, ignore_walls = sound_wall_ignore)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/is_important = emote_type & EMOTE_IMPORTANT
 	var/is_visual = emote_type & EMOTE_VISIBLE
 	var/is_audible = emote_type & EMOTE_AUDIBLE
-<<<<<<< HEAD
 	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : "" // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Emote doesn't get printed to chat, runechat only
 	if(emote_type & EMOTE_RUNECHAT)
@@ -132,13 +125,10 @@
 					continue
 				if(is_visual && viewer.is_blind())
 					continue
-<<<<<<< HEAD
 			// SKYRAT EDIT BEGIN - Pref checked emotes
 			if(!pref_check_emote(viewer))
 				continue
 			// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(user.runechat_prefs_check(viewer, EMOTE_MESSAGE))
 				viewer.create_chat_message(
 					speaker = user,
@@ -161,13 +151,10 @@
 	// The emote has some important information, and should always be shown to the user
 	else if(is_important)
 		for(var/mob/viewer as anything in viewers(user))
-<<<<<<< HEAD
 			// SKYRAT EDIT BEGIN - Pref checked emotes
 			if(!pref_check_emote(viewer))
 				continue
 			// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			to_chat(viewer, "<span class='emote'><b>[user]</b> [msg]</span>")
 			if(user.runechat_prefs_check(viewer, EMOTE_MESSAGE))
 				viewer.create_chat_message(
@@ -183,11 +170,8 @@
 			deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>",
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
-<<<<<<< HEAD
 			separation = space, // SKYRAT EDIT ADDITION
 			pref_to_check = pref_to_check // SKYRAT EDIT ADDITION - Pref checked emotes
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 	// Emote is entirely audible, no visible component
 	else if(is_audible)
@@ -195,11 +179,8 @@
 			message = msg,
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE,
-<<<<<<< HEAD
 			separation = space, // SKYRAT EDIT ADDITION
 			pref_to_check = pref_to_check // SKYRAT EDIT ADDITION - Pref checked emotes
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 	// Emote is entirely visible, no audible component
 	else if(is_visual)
@@ -207,16 +188,12 @@
 			message = msg,
 			self_message = msg,
 			visible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
-<<<<<<< HEAD
 			separation = space, // SKYRAT EDIT ADDITION
 			pref_to_check = pref_to_check // SKYRAT EDIT ADDITION - Pref checked emotes
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 	else
 		CRASH("Emote [type] has no valid emote type set!")
 
-<<<<<<< HEAD
 	// SKYRAT EDIT -- BEGIN -- ADDITION -- AI QOL - RELAY EMOTES OVER HOLOPADS
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
@@ -254,25 +231,17 @@
 
 	if(!isnull(user.client))
 		var/dchatmsg = "<b>[user]</b>[space][msg]" // SKYRAT EDIT - Better emotes - Original: var/dchatmsg = "<b>[user]</b> [msg]"
-=======
-	if(!isnull(user.client))
-		var/dchatmsg = "<b>[user]</b> [msg]"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		for(var/mob/ghost as anything in GLOB.dead_mob_list - viewers(get_turf(user)))
 			if(isnull(ghost.client) || isnewplayer(ghost))
 				continue
 			if(!(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT))
 				continue
-<<<<<<< HEAD
 			// SKYRAT EDIT BEGIN - Pref checked emotes
 			if(!pref_check_emote(ghost))
 				continue
 			// SKYRAT EDIT END
 			ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>") // SKYRAT EDIT CHANGE - Indented
 
-=======
-			to_chat(ghost, "<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return
 
@@ -290,19 +259,12 @@
 /datum/emote/proc/check_cooldown(mob/user, intentional)
 	if(!intentional)
 		return TRUE
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - EMOTES - GLOBAL COOLDOWN
 	//if(user.emotes_used && user.emotes_used[src] + cooldown > world.time) - SKYRAT EDIT - ORIGINAL
 	if(user.nextsoundemote > world.time)
 		var/datum/emote/default_emote = new /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
 			to_chat(user, span_danger("You must wait another [DisplayTimeText(user.nextsoundemote - world.time)] before using that emote."))
-=======
-	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
-		var/datum/emote/default_emote = /datum/emote
-		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
-			to_chat(user, span_danger("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	//if(!user.emotes_used)
 	//	user.emotes_used = list()
@@ -426,7 +388,6 @@
 	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))
 		return FALSE
 
-<<<<<<< HEAD
 	//SKYRAT EDIT BEGIN
 	if(allowed_species && ishuman(user))
 		var/mob/living/carbon/human/sender = user
@@ -435,7 +396,6 @@
 		else
 			return FALSE
 	//SKYRAT EDIT END
-
 	return TRUE
 
 /**
@@ -451,23 +411,6 @@
 	if(emote_type & EMOTE_AUDIBLE && !hands_use_check)
 		if(HAS_TRAIT(user, TRAIT_MUTE))
 			return FALSE
-=======
-	return TRUE
-
-/**
- * Check to see if the user should play a sound when performing the emote.
- *
- * Arguments:
- * * user - Person that is doing the emote.
- * * intentional - Bool that says whether the emote was forced (FALSE) or not (TRUE).
- *
- * Returns a bool about whether or not the user should play a sound when performing the emote.
- */
-/datum/emote/proc/should_play_sound(mob/user, intentional = FALSE)
-	if(emote_type & EMOTE_AUDIBLE && !hands_use_check)
-		if(HAS_TRAIT(user, TRAIT_MUTE))
-			return FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(ishuman(user))
 			var/mob/living/carbon/human/loud_mouth = user
 			if(HAS_MIND_TRAIT(loud_mouth, TRAIT_MIMING)) // vow of silence prevents outloud noises

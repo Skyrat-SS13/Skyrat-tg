@@ -200,11 +200,7 @@
 	speaker.forceMove(run_loc_floor_bottom_left)
 	listener.forceMove(locate((run_loc_floor_bottom_left.x + distance), run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
 
-<<<<<<< HEAD
 	var/pangram_quote = "The quick brown fox jumps over the lazy dog." // SKYRAT EDIT CHANGE - account for autopunct in living_say.dm - ORIGINAL: var/pangram_quote = "The quick brown fox jumps over the lazy dog"
-=======
-	var/pangram_quote = "The quick brown fox jumps over the lazy dog"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// speaking
 	speaker.say(pangram_quote)
@@ -241,19 +237,11 @@
 	// Normally speaking, if there isn't a functional telecomms array on the same z-level, then handheld radios
 	// have a short delay before sending the message. We use the centcom frequency to get around this.
 	speaker_radio.set_frequency(FREQ_CENTCOM)
-<<<<<<< HEAD
-	speaker_radio.independent = TRUE
-	listener_radio.set_frequency(FREQ_CENTCOM)
-	listener_radio.independent = TRUE
-
-	var/pangram_quote = "The quick brown fox jumps over the lazy dog." // SKYRAT EDIT CHANGE - account for autopunct in living_say.dm - ORIGINAL: var/pangram_quote = "The quick brown fox jumps over the lazy dog"
-=======
 	speaker_radio.special_channels = RADIO_SPECIAL_CENTCOM
 	listener_radio.set_frequency(FREQ_CENTCOM)
 	listener_radio.special_channels = RADIO_SPECIAL_CENTCOM
 
-	var/pangram_quote = "The quick brown fox jumps over the lazy dog"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	var/pangram_quote = "The quick brown fox jumps over the lazy dog." // SKYRAT EDIT CHANGE - account for autopunct in living_say.dm - ORIGINAL: var/pangram_quote = "The quick brown fox jumps over the lazy dog"
 
 	speaker.say(pangram_quote)
 	TEST_ASSERT(handle_speech_result, "Handle speech signal was not fired (radio test)")

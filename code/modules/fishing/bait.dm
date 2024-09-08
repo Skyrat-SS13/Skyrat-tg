@@ -61,8 +61,6 @@
 	bait_type = /obj/item/food/bait/doughball/synthetic/super
 	uses_left = 12
 
-<<<<<<< HEAD
-=======
 /obj/item/fishing_lure
 	name = "artificial minnow"
 	desc = "A fishing lure meant to attract smaller omnivore fish."
@@ -299,4 +297,3 @@
 	if(init_fluid_type == AQUARIUM_FLUID_SALTWATER || init_fluid_type == AQUARIUM_FLUID_ANADROMOUS || init_fluid_type == AQUARIUM_FLUID_ANY_WATER)
 		return TRUE
 	return FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -1043,11 +1043,7 @@ DEFINE_BITFIELD(turret_flags, list(
 			if(!HAS_SILICON_ACCESS(user))
 				return
 			if((obj_flags & EMAGGED) || (machine_stat & BROKEN))
-<<<<<<< HEAD
-				to_chat(usr, span_warning("The turret control is unresponsive!"))
-=======
 				to_chat(user, span_warning("The turret control is unresponsive!"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			locked = !locked
 			return TRUE

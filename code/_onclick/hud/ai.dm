@@ -2,11 +2,7 @@
 	icon = 'icons/hud/screen_ai.dmi'
 
 /atom/movable/screen/ai/Click()
-<<<<<<< HEAD
-	if(isobserver(usr) || usr.incapacitated())
-=======
 	if(isobserver(usr) || usr.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 
 /atom/movable/screen/ai/aicore

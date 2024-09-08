@@ -61,8 +61,6 @@
 /datum/json_database/proc/get_key(key)
 	return cached_data[key]
 
-<<<<<<< HEAD
-=======
 /// Picks the data of a random key and then removes that key from the database.
 /// Since the list is no longer inside the database, you can mutate and use it as you like.
 /datum/json_database/proc/pick_and_take_key()
@@ -73,7 +71,6 @@
 	cached_data -= key
 	queue_save()
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Sets the data at the key to the value, and queues a save.
 /datum/json_database/proc/set_key(key, value)
 	cached_data[key] = value

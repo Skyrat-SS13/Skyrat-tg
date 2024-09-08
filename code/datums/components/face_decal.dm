@@ -53,11 +53,8 @@
 		carbon_parent.update_body_parts()
 	else
 		normal_overlay = get_normal_overlay()
-<<<<<<< HEAD
-=======
 		normal_overlay.color = color
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	RegisterSignals(parent, list(
 		COMSIG_COMPONENT_CLEAN_ACT,
@@ -118,42 +115,6 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
-<<<<<<< HEAD
-/// Creampie subtype, handling signals and mood logic
-
-GLOBAL_LIST_INIT(creamable, typecacheof(list(
-	/mob/living/carbon/human,
-	/mob/living/basic/pet/dog/corgi,
-	/mob/living/silicon/ai,
-)))
-
-/datum/component/face_decal/creampie/Initialize()
-	. = ..()
-	if(!is_type_in_typecache(parent, GLOB.creamable))
-		return COMPONENT_INCOMPATIBLE
-
-	SEND_SIGNAL(parent, COMSIG_MOB_CREAMED, src)
-	add_memory_in_range(parent, 7, /datum/memory/witnessed_creampie, protagonist = parent)
-
-/datum/component/face_decal/creampie/get_normal_overlay()
-	if(iscorgi(parent))
-		return mutable_appearance('icons/mob/effects/creampie.dmi', "[icon_state]_corgi")
-
-	if(isAI(parent))
-		return mutable_appearance('icons/mob/effects/creampie.dmi', "[icon_state]_ai")
-
-/datum/component/face_decal/creampie/RegisterWithParent()
-	. = ..()
-	if(iscarbon(parent))
-		var/mob/living/carbon/human/carbon_parent = parent
-		carbon_parent.add_mood_event("creampie", /datum/mood_event/creampie)
-
-/datum/component/face_decal/creampie/UnregisterFromParent()
-	. = ..()
-	if(iscarbon(parent))
-		var/mob/living/carbon/carbon_parent = parent
-		carbon_parent.clear_mood_event("creampie")
-=======
 /// splat subtype, handling signals and mood logic
 
 GLOBAL_LIST_INIT(splattable, zebra_typecacheof(list(
@@ -190,4 +151,3 @@ GLOBAL_LIST_INIT(splattable, zebra_typecacheof(list(
 	if(iscarbon(parent))
 		var/mob/living/carbon/carbon_parent = parent
 		carbon_parent.clear_mood_event("splat")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

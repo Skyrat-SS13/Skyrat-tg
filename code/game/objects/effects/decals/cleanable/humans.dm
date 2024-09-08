@@ -136,11 +136,7 @@
 	. = ..()
 	if(!.)
 		return
-<<<<<<< HEAD
 	//AddComponent(/datum/component/rot, 0, 5 MINUTES, 0.7) skyrat edit
-=======
-	AddComponent(/datum/component/rot, 0, 5 MINUTES, 0.7)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/effect/decal/cleanable/blood/gibs/ex_act(severity, target)
 	return FALSE

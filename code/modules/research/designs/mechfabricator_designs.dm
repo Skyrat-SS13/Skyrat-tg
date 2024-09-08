@@ -77,10 +77,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
-<<<<<<< HEAD
 *///SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //Advanced Robotic Limbs
 
@@ -2747,8 +2744,6 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
 
-<<<<<<< HEAD
-=======
 /datum/design/module/fishing_glove
 	name = "MOD Fishing Glove Module"
 	id = "mod_fishing"
@@ -2760,7 +2755,6 @@
 	)
 	build_path = /obj/item/mod/module/fishing_glove
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/design/posisphere
 	name = "Positronic Sphere"
 	desc = "The latest in Artificial Pesterance."

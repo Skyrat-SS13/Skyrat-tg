@@ -36,10 +36,7 @@
 	cost = 4
 	cant_discount = TRUE
 
-<<<<<<< HEAD
 /* // SKYRAT EDIT REMOVAL START
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix disk"
 	desc = "When inserted into a tablet, this cartridge gives you four opportunities to \
@@ -48,11 +45,7 @@
 	item = /obj/item/computer_disk/virus/detomatix
 	cost = 6
 	restricted = TRUE
-<<<<<<< HEAD
 */ // SKYRAT EDIT REMOVAL END
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
 	desc = "A box that contains five EMP grenades and an EMP implant with three uses. Useful to disrupt communications, \

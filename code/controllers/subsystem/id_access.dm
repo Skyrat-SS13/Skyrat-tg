@@ -330,10 +330,7 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access["[ACCESS_CENT_CAPTAIN]"] = "Code Gold"
 	desc_by_access["[ACCESS_CENT_BAR]"] = "Code Scotch"
 	desc_by_access["[ACCESS_BIT_DEN]"] = "Bitrunner Den"
-<<<<<<< HEAD
 	desc_by_access["[ACCESS_BARBER]"] = "Barber" // SKYRAT EDIT ADD - BARBER UPDATE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * Returns the access bitflags associated with any given access level.
@@ -402,11 +399,8 @@ SUBSYSTEM_DEF(id_access)
 
 	id_card.clear_access()
 	id_card.trim = trim
-<<<<<<< HEAD
-=======
 	id_card.big_pointer = trim.big_pointer
 	id_card.pointer_color = trim.pointer_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(copy_access)
 		id_card.access = trim.access.Copy()
@@ -450,11 +444,8 @@ SUBSYSTEM_DEF(id_access)
 	id_card.department_color_override = trim.department_color
 	id_card.department_state_override = trim.department_state
 	id_card.subdepartment_color_override = trim.subdepartment_color
-<<<<<<< HEAD
-=======
 	id_card.big_pointer = trim.big_pointer
 	id_card.pointer_color = trim.pointer_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(!check_forged || !id_card.forged)
 		id_card.assignment = trim.assignment
@@ -475,11 +466,8 @@ SUBSYSTEM_DEF(id_access)
 	id_card.department_color_override = null
 	id_card.department_state_override = null
 	id_card.subdepartment_color_override = null
-<<<<<<< HEAD
-=======
 	id_card.big_pointer = id_card.trim.big_pointer
 	id_card.pointer_color = id_card.trim.pointer_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * Adds the accesses associated with a trim to an ID card.

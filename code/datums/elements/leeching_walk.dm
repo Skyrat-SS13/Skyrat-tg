@@ -55,8 +55,5 @@
 	// Heals blood loss
 	if(source.blood_volume < BLOOD_VOLUME_NORMAL)
 		source.blood_volume += 2.5 * seconds_per_tick
-<<<<<<< HEAD
-=======
 	// Slowly regulates your body temp
 	source.adjust_bodytemperature((source.get_body_temp_normal() - source.bodytemperature)/5)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

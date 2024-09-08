@@ -17,10 +17,7 @@ import {
   NumberInput,
   Slider,
   Stack,
-<<<<<<< HEAD
   TextArea, // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 } from '../../../../components';
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
@@ -269,7 +266,6 @@ export const FeatureShortTextInput = (
     />
   );
 };
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION START - SKYRAT FEATURES DOWN HERE
 
 export const FeatureTextInput = (
@@ -359,5 +355,3 @@ export const FeatureTriBoolInput = (props: FeatureValueProps<boolean[]>) => {
   );
 };
 // SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -493,11 +493,8 @@
 	///List of shuttle events that can run or are running
 	var/list/datum/shuttle_event/event_list = list()
 
-<<<<<<< HEAD
 	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define WORLDMAXX_CUTOFF (world.maxx + 1)
 #define WORLDMAXY_CUTOFF (world.maxx + 1)
 /**
@@ -704,7 +701,6 @@
  * Arguments:
  * * destination_port - Stationary docking port to move the shuttle to
  */
-<<<<<<< HEAD
 /obj/docking_port/mobile/proc/request(obj/docking_port/stationary/destination_port, forced = FALSE) // SKYRAT EDIT ADDITION - Forced check
 	if(!check_dock(destination_port) && !forced) // SKYRAT EDIT ADDITION - Forced check
 		testing("check_dock failed on request for [src]")
@@ -715,13 +711,6 @@
 		admin_forced = TRUE
 	// SKYRAT EDIT END
 
-=======
-/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/destination_port)
-	if(!check_dock(destination_port))
-		testing("check_dock failed on request for [src]")
-		return
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(mode == SHUTTLE_IGNITING && destination == destination_port)
 		return
 

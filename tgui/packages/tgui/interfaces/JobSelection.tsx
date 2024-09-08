@@ -37,10 +37,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
-<<<<<<< HEAD
   alert_level: { name: string; color: string }; // SKYRAT EDIT ADDITION - Alert level on jobs menu
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 };
 
 export const JobEntry = (data: {
@@ -116,13 +113,9 @@ export const JobSelection = (props) => {
   return (
     <Window
       width={1012}
-<<<<<<< HEAD
       /* SKYRAT EDIT CHANGE START - Expand UI for available jobs */
       height={data.shuttle_status ? 916 : 900 /* Hahahahahaha */}
       /* SKYRAT EDIT CHANGE END */
-=======
-      height={data.shuttle_status ? 690 : 666 /* Hahahahahaha */}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     >
       <Window.Content scrollable>
         <StyleableSection
@@ -131,15 +124,12 @@ export const JobSelection = (props) => {
               {data.shuttle_status && (
                 <NoticeBox info>{data.shuttle_status}</NoticeBox>
               )}
-<<<<<<< HEAD
               {
                 // SKYRAT EDIT ADDITION - Alert level on jobs menu
                 <NoticeBox color={data.alert_level.color}>
                   The current alert level is: {data.alert_level.name}
                 </NoticeBox>
               }
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               <span style={{ color: 'grey' }}>
                 It is currently {data.round_duration} into the shift.
               </span>

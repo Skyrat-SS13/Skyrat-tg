@@ -172,9 +172,9 @@ def sort_score_by_event_times(score):
             key=lambda indx: score[indx][0])
         ))
 
-def convert_into_seconds_per_ticks(score):
+def convert_into_delta_times(score):
     """
-    Transform start_time into seconds_per_tick and returns new score
+    Transform start_time into delta_time and returns new score
     """
     return list(map(
         lambda super_event: (
@@ -292,28 +292,6 @@ def main_cycle():
     """
     Activate the script
     """
-<<<<<<< HEAD
-<<<<<<< HEAD
-    while True:
-        midi_file = obtain_midi_file()
-        if not midi_file:
-            return # Cancel
-        score = midi2score_without_ticks(midi_file)
-        score = filter_events_from_score(score)
-        score = filter_start_time_and_note_num(score)
-        score = filter_empty_tracks(score)
-        score = merge_events(score)
-        score = sort_score_by_event_times(score)
-        score = convert_into_seconds_per_ticks(score)
-        score = perform_roundation(score)
-        most_frequent_dur = obtain_common_duration(score)
-        score = reduce_score_to_chords(score)
-        sheet_music = obtain_sheet_music(score, most_frequent_dur)
-        split_music = explode_sheet_music(sheet_music)
-        sheet_music = finalize_sheet_music(split_music, most_frequent_dur)
-=======
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     midi_file = obtain_midi_file()
     if not midi_file:
         return # Cancel
@@ -330,10 +308,6 @@ def main_cycle():
     sheet_music = obtain_sheet_music(score, most_frequent_dur)
     split_music = explode_sheet_music(sheet_music)
     sheet_music = finalize_sheet_music(split_music, most_frequent_dur)
-<<<<<<< HEAD
->>>>>>> 5146c7fc83d (Fixes Midi2Piano Tool (#85967))
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
     pclip.copy(sheet_music)
     messagebox.showinfo("Midi2Piano Information", "Your sheet music has been copied to your clipboard.")

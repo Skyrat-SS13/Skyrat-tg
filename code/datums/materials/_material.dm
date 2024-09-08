@@ -70,11 +70,7 @@ Simple datum which is instanced once per type and is used for every object of sa
 
 /** Handles initializing the material.
  *
-<<<<<<< HEAD
- * Arugments:
-=======
  * Arguments:
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * - _id: The ID the material should use. Overrides the existing ID.
  */
 /datum/material/proc/Initialize(_id, ...)

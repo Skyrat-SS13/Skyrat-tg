@@ -1,19 +1,12 @@
 /obj/item/dyespray
 	name = "hair dye spray"
-<<<<<<< HEAD
-	desc = "A spray to dye hair as well as giving it any gradient you'd like." // SKYRAT EDIT - Making the dyespray change hair color
-=======
-	desc = "A spray to dye your hair any gradients you'd like."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	desc = "A spray to dye your hair any colors and gradients you'd like." // SKYRAT EDIT - Making the dyespray change hair color
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "dyespray"
 
-<<<<<<< HEAD
 	var/uses = 40 //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/dyespray/attack_self(mob/user)
 	dye(user, user)
 
@@ -27,7 +20,6 @@
  * Arguments:
  * * target - The mob who we will apply the gradient and gradient color to.
  */
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR (modular_skyrat\master_files\code\game\objects\items\dyekit.dm)
 /obj/item/dyespray/proc/dye(mob/target, mob/user)
 	if(!ishuman(target))
@@ -36,12 +28,6 @@
 	if(!uses) //SKYRAT EDIT ADDITION
 		return //SKYRAT EDIT ADDITION
 
-=======
-
-/obj/item/dyespray/proc/dye(mob/target, mob/user)
-	if(!ishuman(target))
-		return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mob/living/carbon/human/human_target = target
 	var/beard_or_hair = tgui_alert(user, "What do you want to dye?", "Character Preference", list("Hair", "Facial Hair"))
 	if(!beard_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
@@ -68,7 +54,4 @@
 		human_target.set_facial_hair_gradient_style(new_grad_style, update = FALSE)
 		human_target.set_facial_hair_gradient_color(new_grad_color, update = TRUE)
 	playsound(src, 'sound/effects/spray.ogg', 10, vary = TRUE)
-<<<<<<< HEAD
 */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

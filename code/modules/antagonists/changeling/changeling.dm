@@ -30,11 +30,7 @@
 	/// The original profile of this changeling.
 	var/datum/changeling_profile/first_profile = null
 	/// How many DNA strands the changeling can store for transformation.
-<<<<<<< HEAD
 	var/dna_max = 8 // SKYRAT EDIT - ORIGINAL: 6
-=======
-	var/dna_max = 6
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// The amount of DNA gained. Includes DNA sting.
 	var/absorbed_count = 0
 	/// The amount of DMA gained using absorb, not DNA sting. Start with one (your original DNA)
@@ -52,15 +48,9 @@
 	/// Changeling name, what other lings see over the hivemind when talking.
 	var/changelingID = "Changeling"
 	/// The number of genetics points (to buy powers) this ling currently has.
-<<<<<<< HEAD
 	var/genetic_points = 15 // SKYRAT EDIT - ORIGINAL: 10
 	/// The max number of genetics points (to buy powers) this ling can have..
 	var/total_genetic_points = 15 // SKYRAT EDIT - ORIGINAL: 10
-=======
-	var/genetic_points = 10
-	/// The max number of genetics points (to buy powers) this ling can have..
-	var/total_genetic_points = 10
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// List of all powers we start with.
 	var/list/innate_powers = list()
 	/// Associated list of all powers we have evolved / bought from the emporium. [path] = [instance of path]
@@ -96,11 +86,7 @@
 	var/static/list/slot2type = list(
 		"head" = /obj/item/clothing/head/changeling,
 		"wear_mask" = /obj/item/clothing/mask/changeling,
-<<<<<<< HEAD
 		"wear_neck" = /obj/item/changeling, // SKYRAT EDIT
-=======
-		"wear_neck" = /obj/item/changeling,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"back" = /obj/item/changeling,
 		"wear_suit" = /obj/item/clothing/suit/changeling,
 		"w_uniform" = /obj/item/clothing/under/changeling,
@@ -116,7 +102,6 @@
 	/// A list of all memories we've stolen through absorbs.
 	var/list/stolen_memories = list()
 
-<<<<<<< HEAD
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 
 	// SKYRAT EDIT START
@@ -142,10 +127,6 @@
 		"Friendly",
 	)
 	// SKYRAT EDIT END
-=======
-	///	Keeps track of the currently selected profile.
-	var/datum/changeling_profile/current_profile
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/antagonist/changeling/New()
 	. = ..()
@@ -159,10 +140,7 @@
 /datum/antagonist/changeling/Destroy()
 	QDEL_NULL(emporium_action)
 	QDEL_NULL(cellular_emporium)
-<<<<<<< HEAD
-=======
 	current_profile = null
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /datum/antagonist/changeling/on_gain()
@@ -583,12 +561,11 @@
 
 	// Clothes, of course
 	new_profile.underwear = target.underwear
-<<<<<<< HEAD
+	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
 	// SKYRAT EDIT ADDITION START
 	new_profile.bra = target.bra
-	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt_color = target.undershirt_color
 	new_profile.socks_color = target.socks_color
 	new_profile.bra_color = target.bra_color
@@ -600,11 +577,6 @@
 	new_profile.target_body_scaling = target.get_mob_height()
 	new_profile.target_size = target.mob_size
 	//SKYRAT EDIT ADDITION END
-=======
-	new_profile.underwear_color = target.underwear_color
-	new_profile.undershirt = target.undershirt
-	new_profile.socks = target.socks
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Grab skillchips they have
 	new_profile.skillchips = target.clone_skillchip_list(TRUE)
@@ -624,11 +596,7 @@
 	// Grab the target's sechut icon.
 	new_profile.id_icon = target.wear_id?.get_sechud_job_icon_state()
 
-<<<<<<< HEAD
-	var/list/slots = list("head", "wear_mask", "wear_neck", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store") // SKYRAT EDIT
-=======
 	var/list/slots = list("head", "wear_mask", "wear_neck", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/slot in slots)
 		if(!(slot in target.vars))
 			continue
@@ -644,7 +612,6 @@
 		new_profile.worn_icon_list[slot] = clothing_item.worn_icon
 		new_profile.worn_icon_state_list[slot] = clothing_item.worn_icon_state
 		new_profile.exists_list[slot] = 1
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START
 		new_profile.worn_icon_digi_list[slot] = clothing_item.worn_icon_digi
 		new_profile.worn_icon_monkey_list[slot] = clothing_item.worn_icon_monkey
@@ -652,8 +619,6 @@
 		new_profile.worn_icon_vox_list[slot] = clothing_item.worn_icon_vox
 		new_profile.supports_variations_flags_list[slot] = clothing_item.supports_variations_flags
 		// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	new_profile.voice = target.voice
 	new_profile.voice_filter = target.voice_filter
@@ -673,11 +638,7 @@
 
 	if(!first_profile)
 		first_profile = new_profile
-<<<<<<< HEAD
-		current_profile = first_profile  // SKYRAT EDIT
-=======
 		current_profile = first_profile
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	stored_profiles += new_profile
 	absorbed_count++
@@ -828,11 +789,7 @@
 	var/static/list/slot2slot = list(
 		"head" = ITEM_SLOT_HEAD,
 		"wear_mask" = ITEM_SLOT_MASK,
-<<<<<<< HEAD
-		"wear_neck" = ITEM_SLOT_NECK, // SKYRAT EDIT
-=======
 		"wear_neck" = ITEM_SLOT_NECK,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"back" = ITEM_SLOT_BACK,
 		"wear_suit" = ITEM_SLOT_OCLOTHING,
 		"w_uniform" = ITEM_SLOT_ICLOTHING,
@@ -848,20 +805,15 @@
 	var/datum/dna/chosen_dna = chosen_profile.dna
 	user.real_name = chosen_profile.name
 	user.underwear = chosen_profile.underwear
-<<<<<<< HEAD
-=======
 	user.underwear_color = chosen_profile.underwear_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	user.undershirt = chosen_profile.undershirt
 	user.socks = chosen_profile.socks
 	user.age = chosen_profile.age
 	user.physique = chosen_profile.physique
 	user.mind?.set_level(/datum/skill/athletics, chosen_profile.athletics_level, silent = TRUE)
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	user.bra = chosen_profile.bra
 
-	user.underwear_color = chosen_profile.underwear_color
 	user.undershirt_color = chosen_profile.undershirt_color
 	user.socks_color = chosen_profile.socks_color
 	user.bra_color = chosen_profile.bra_color
@@ -888,8 +840,6 @@
 				user.add_quirk(target_quirk.type)
 				break
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
 
@@ -898,11 +848,7 @@
 	for(var/obj/item/bodypart/limb as anything in user.bodyparts)
 		limb.update_limb(is_creating = TRUE)
 
-<<<<<<< HEAD
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE) // SKYRAT EDIT
-=======
-	user.updateappearance(mutcolor_update = TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	user.domutcheck()
 
 	// Get rid of any scars from previous Changeling-ing
@@ -975,7 +921,6 @@
 		new_flesh_item.worn_icon = chosen_profile.worn_icon_list[slot]
 		new_flesh_item.worn_icon_state = chosen_profile.worn_icon_state_list[slot]
 
-<<<<<<< HEAD
 		// SKYRAT EDIT START
 		new_flesh_item.worn_icon_digi = chosen_profile.worn_icon_digi_list[slot]
 		new_flesh_item.worn_icon_monkey = chosen_profile.worn_icon_monkey_list[slot]
@@ -984,8 +929,6 @@
 		new_flesh_item.supports_variations_flags = chosen_profile.supports_variations_flags_list[slot]
 		// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(istype(new_flesh_item, /obj/item/changeling/id) && chosen_profile.id_icon)
 			var/obj/item/changeling/id/flesh_id = new_flesh_item
 			flesh_id.hud_icon = chosen_profile.id_icon
@@ -1003,7 +946,6 @@
 	user.regenerate_icons()
 	user.name = user.get_visible_name()
 	current_profile = chosen_profile
-<<<<<<< HEAD
 	// SKYRAT EDIT START
 	chosen_dna.transfer_identity(user, TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
@@ -1014,8 +956,6 @@
 	//this has to be at the end of the proc or it breaks everything below it, womp womp
 	user.set_mob_height(chosen_profile.target_body_scaling)
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Changeling profile themselves. Store a data to store what every DNA instance looked like.
 /datum/changeling_profile
@@ -1045,11 +985,8 @@
 	var/list/worn_icon_state_list = list()
 	/// The underwear worn by the profile source
 	var/underwear
-<<<<<<< HEAD
-=======
 	/// The colour of the underwear worn by the profile source
 	var/underwear_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// The undershirt worn by the profile source
 	var/undershirt
 	/// The socks worn by the profile source
@@ -1075,17 +1012,10 @@
 	/// The TTS filter of the profile filter
 	var/voice_filter = ""
 
-<<<<<<< HEAD
-
-/datum/changeling_profile/Destroy()
-	qdel(dna)
-	LAZYCLEARLIST(stored_scars)
-=======
 /datum/changeling_profile/Destroy()
 	qdel(dna)
 	LAZYCLEARLIST(stored_scars)
 	QDEL_LAZYLIST(quirks)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /*
@@ -1105,10 +1035,7 @@
 	new_profile.righthand_file_list = righthand_file_list.Copy()
 	new_profile.inhand_icon_state_list = inhand_icon_state_list.Copy()
 	new_profile.underwear = underwear
-<<<<<<< HEAD
-=======
 	new_profile.underwear_color = underwear_color
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new_profile.undershirt = undershirt
 	new_profile.socks = socks
 	new_profile.worn_icon_list = worn_icon_list.Copy()
@@ -1123,9 +1050,7 @@
 	new_profile.quirks = quirks.Copy()
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
-	new_profile.underwear_color = underwear_color
 	new_profile.undershirt_color = undershirt_color
 	new_profile.socks_color = socks_color
 	new_profile.bra = bra
@@ -1142,13 +1067,10 @@
 	new_profile.scream_type = scream_type
 	new_profile.laugh_type = laugh_type
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()
 
-<<<<<<< HEAD
 	// SKYRAT EDIT REMOVAL START
 	/*
 	var/changeling_win = TRUE
@@ -1156,11 +1078,6 @@
 		changeling_win = FALSE
 	*/
 	// SKYRAT EDIT REMOVAL END
-=======
-	var/changeling_win = TRUE
-	if(!owner.current)
-		changeling_win = FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	parts += printplayer(owner)
 	parts += "<b>Genomes Extracted:</b> [absorbed_count]<br>"
@@ -1168,7 +1085,6 @@
 	if(objectives.len)
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-<<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
 			if(!objective.check_completion())
@@ -1181,22 +1097,12 @@
 
 	// SKYRAT EDIT REMOVAL START - No greentext
 	/*
-=======
-			if(!objective.check_completion())
-				changeling_win = FALSE
-			parts += "<b>Objective #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
-			count++
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(changeling_win)
 		parts += span_greentext("The changeling was successful!")
 	else
 		parts += span_redtext("The changeling has failed.")
-<<<<<<< HEAD
 	*/
 	// SKYRAT EDIT REMOVAL END - No greentext
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return parts.Join("<br>")
 

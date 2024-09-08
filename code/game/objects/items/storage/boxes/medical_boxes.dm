@@ -133,10 +133,7 @@
 /obj/item/storage/box/bandages
 	name = "box of bandages"
 	desc = "A box of DeForest brand gel bandages designed to treat blunt-force trauma."
-<<<<<<< HEAD
 	icon = 'icons/obj/storage/box.dmi' // SKYRAT EDIT CHANGE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "brutebox"
 	base_icon_state = "brutebox"
 	inhand_icon_state = "brutebox"

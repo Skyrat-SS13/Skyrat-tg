@@ -2,16 +2,12 @@
  * Test if icon states for each datum actually exist in the DMI.
  */
 /datum/unit_test/barsigns_icon
-<<<<<<< HEAD
 	var/list/blacklisted_sign_types = list(/datum/barsign/skyrat, /datum/barsign/skyrat/large) // SKYRAT EDIT ADDITION - Modular barsigns
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/unit_test/barsigns_icon/Run()
 	var/obj/machinery/barsign_type = /obj/machinery/barsign
 	var/icon/barsign_icon = initial(barsign_type.icon)
 	var/list/barsign_icon_states = icon_states(barsign_icon)
-<<<<<<< HEAD
 	barsign_icon_states += icon_states(SKYRAT_BARSIGN_FILE) // SKYRAT EDIT ADDITION - Need to check modular barsigns
 	barsign_icon_states += icon_states(SKYRAT_LARGE_BARSIGN_FILE) // SKYRAT EDIT ADDITION - Need to check modular  barsigns
 
@@ -21,11 +17,6 @@
 		if(sign_type in blacklisted_sign_types)
 			continue
 		// SKYRAT EDIT ADDITION END
-=======
-
-	// Check every datum real bar sign
-	for(var/sign_type in (subtypesof(/datum/barsign) - /datum/barsign/hiddensigns))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/datum/barsign/sign = new sign_type()
 
 		if(!(sign.icon_state in barsign_icon_states))
@@ -35,23 +26,16 @@
  * Check that bar signs have a name and desc, and that the name is unique.
  */
 /datum/unit_test/barsigns_name
-<<<<<<< HEAD
 	var/list/blacklisted_sign_types = list(/datum/barsign/skyrat, /datum/barsign/skyrat/large) // SKYRAT EDIT ADDITION - Modular barsigns
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/unit_test/barsigns_name/Run()
 	var/list/existing_names = list()
 
-<<<<<<< HEAD
 	for(var/sign_type in (subtypesof(/datum/barsign) - /datum/barsign/hiddensigns))
 		// SKYRAT EDIT ADDITION BEGIN - MODULAR BARSIGNS
 		if(sign_type in blacklisted_sign_types)
 			continue
 		// SKYRAT EDIT ADDITION END
-=======
-	for(var/sign_type in subtypesof(/datum/barsign) - /datum/barsign/hiddensigns)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/datum/barsign/sign = new sign_type()
 
 		if(!sign.name)

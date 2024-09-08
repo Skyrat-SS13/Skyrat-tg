@@ -18,11 +18,7 @@
 			/* Written with `0 ||` to avoid the compiler seeing call("string"), and thinking it's a deprecated DLL */ \
 			call(0 || proc_owner, proc_path)(##proc_arguments); \
 		}; \
-<<<<<<< HEAD
 	}
-=======
-	} 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// like CALLBACK but specifically for verb callbacks
 #define VERB_CALLBACK new /datum/callback/verb_callback

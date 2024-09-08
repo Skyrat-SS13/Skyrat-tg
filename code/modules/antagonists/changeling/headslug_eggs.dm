@@ -11,19 +11,11 @@
 	/// When this egg last got removed from a body. If -1, the egg hasn't been removed from a body.
 	var/removal_time = -1
 
-<<<<<<< HEAD
-/obj/item/organ/internal/body_egg/changeling_egg/Insert(mob/living/carbon/egg_owner, special = FALSE, movement_flags = DELETE_IF_REPLACED)
-	. = ..()
-	hatch_time = world.time + (removal_time == -1 ? EGG_INCUBATION_TIME : (hatch_time - removal_time))
-
-/obj/item/organ/internal/body_egg/changeling_egg/Remove(mob/living/carbon/egg_owner, special, movement_flags)
-=======
 /obj/item/organ/internal/body_egg/changeling_egg/mob_insert(mob/living/carbon/egg_owner, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 	hatch_time = world.time + (removal_time == -1 ? EGG_INCUBATION_TIME : (hatch_time - removal_time))
 
 /obj/item/organ/internal/body_egg/changeling_egg/mob_remove(mob/living/carbon/egg_owner, special, movement_flags)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	removal_time = world.time
 

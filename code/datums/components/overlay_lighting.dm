@@ -62,15 +62,6 @@
 	var/directional = FALSE
 	///Whether we're a beam light
 	var/beam = FALSE
-<<<<<<< HEAD
-	///A cone overlay for directional light, its alpha and color are dependant on the light
-	var/image/cone
-	///Current tracked direction for the directional cast behaviour
-	var/current_direction
-	///Tracks current directional x offset so we dont update unecessarily
-	var/directional_offset_x
-	///Tracks current directional y offset so we dont update unecessarily
-=======
 	///A cone overlay for directional light, its alpha and color are dependent on the light
 	var/image/cone
 	///Current tracked direction for the directional cast behaviour
@@ -78,7 +69,6 @@
 	///Tracks current directional x offset so we don't update unnecessarily
 	var/directional_offset_x
 	///Tracks current directional y offset so we don't update unnecessarily
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/directional_offset_y
 	///Cast range for the directional cast (how far away the atom is moved)
 	var/cast_range = 2

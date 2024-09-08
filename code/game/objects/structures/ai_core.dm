@@ -61,10 +61,6 @@
 
 /obj/structure/ai_core/Destroy()
 	if(istype(remote_ai))
-<<<<<<< HEAD
-		remote_ai.break_core_link()
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		remote_ai = null
 	QDEL_NULL(circuit)
 	QDEL_NULL(core_mmi)
@@ -75,11 +71,7 @@
 	. = ..()
 	if(. > 0 && istype(remote_ai))
 		to_chat(remote_ai, span_danger("Your core is under attack!"))
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/ai_core/deactivated
 	icon_state = "ai-empty"

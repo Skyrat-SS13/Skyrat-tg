@@ -23,22 +23,15 @@
 	light_on = FALSE
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
-<<<<<<< HEAD
-	block_chance = 45 //SKYRAT EDIT - Lowered ORIGINAL:75
-=======
 	block_chance = 75
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	block_sound = 'sound/weapons/block_blade.ogg'
 	max_integrity = 200
 	armor_type = /datum/armor/item_dualsaber
 	resistance_flags = FIRE_PROOF
 	wound_bonus = -10
 	bare_wound_bonus = 20
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit
 	special_desc = "A double bladed energy sword employed by the Syndicate in raids" // Skyrat edit
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	demolition_mod = 1.5 //1.5x damage to objects, robots, etc.
 	item_flags = NO_BLOOD_ON_ITEM
 	var/w_class_on = WEIGHT_CLASS_BULKY

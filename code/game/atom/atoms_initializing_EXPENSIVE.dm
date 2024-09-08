@@ -1,9 +1,5 @@
 /// Init this specific atom
 /datum/controller/subsystem/atoms/proc/InitAtom(atom/A, from_template = FALSE, list/arguments)
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/the_type = A.type
 
 	if(QDELING(A))
@@ -28,11 +24,7 @@
 
 	switch(result)
 		if (INITIALIZE_HINT_NORMAL)
-<<<<<<< HEAD
-			// pass
-=======
 			EMPTY_BLOCK_GUARD // Pass
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(INITIALIZE_HINT_LATELOAD)
 			if(arguments[1]) //mapload
 				late_loaders += A

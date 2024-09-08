@@ -127,10 +127,6 @@
 	unit_name = "of meat"
 	export_types = list(/obj/item/stack/sheet/meat)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Weird Stuff
 
 /datum/export/stack/abductor

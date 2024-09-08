@@ -62,14 +62,10 @@
 	tracked_heretics |= heretic
 
 	// If our heretic's on station, generate some new influences
-<<<<<<< HEAD
 	//SKYRAT EDIT START
 	var/area/heretic_area = get_area(heretic.current)
 	if(ishuman(heretic.current) && (!(is_centcom_level(heretic.current.z)) || istype(heretic_area, /area/centcom/interlink)) || istype(heretic_area, /area/shuttle/arrival))
 	//SKYRAT EDIT END
-=======
-	if(ishuman(heretic.current) && !is_centcom_level(heretic.current.z))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		generate_new_influences()
 
 /**
@@ -237,11 +233,7 @@
 	// We don't need to set being_drained back since we delete after anyways
 	loc.balloon_alert(user, "influence drained")
 
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	heretic_datum.knowledge_points += knowledge_to_gain
 
 	// Aaand now we delete it

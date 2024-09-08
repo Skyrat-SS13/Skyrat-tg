@@ -7,11 +7,7 @@
 		/datum/crafting_recipe/plastic_arrow,
 		/datum/crafting_recipe/shortbow,
 		/datum/crafting_recipe/holy_arrow,
-<<<<<<< HEAD
-		///datum/crafting_recipe/arrow_quiver, // SKYRAT EDIT REMOVAL: public-knowledge quiver
-=======
-		/datum/crafting_recipe/arrow_quiver,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		// /datum/crafting_recipe/arrow_quiver, // SKYRAT EDIT REMOVAL: public-knowledge quiver
 		/datum/crafting_recipe/violin,
 	)
 	icon_state = "book4"

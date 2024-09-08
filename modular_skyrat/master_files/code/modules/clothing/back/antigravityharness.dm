@@ -61,7 +61,7 @@
 /// This cycles the harness's current mode to the next one, likely using the action button. Goes from Off to Anti to Extra, always.
 /obj/item/gravity_harness/proc/toggle_mode(mob/user, voluntary)
 
-	if(!istype(user) || user.incapacitated())
+	if(!istype(user) || user.incapacitated)
 		return FALSE
 
 	if(!gravity_on && (!current_cell || current_cell.charge < GRAVITY_FIELD_COST))

@@ -55,9 +55,6 @@
 	var/mob/living/basic/bot/bot_pawn = pawn
 	bot_pawn.bot_reset()
 
-<<<<<<< HEAD
-/datum/ai_controller/basic_controller/bot/able_to_run()
-=======
 /datum/ai_controller/basic_controller/bot/setup_able_to_run()
 	. = ..()
 	RegisterSignal(pawn, COMSIG_BOT_MODE_FLAGS_SET, PROC_REF(update_able_to_run))
@@ -67,7 +64,6 @@
 	return ..()
 
 /datum/ai_controller/basic_controller/bot/get_able_to_run()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mob/living/basic/bot/bot_pawn = pawn
 	if(!(bot_pawn.bot_mode_flags & BOT_MODE_ON))
 		return FALSE

@@ -26,10 +26,6 @@ GLOBAL_LIST_INIT(command_strings, list(
 
 	maximum_survivable_temperature = INFINITY
 	minimum_survivable_temperature = 0
-<<<<<<< HEAD
-	has_unlimited_silicon_privilege = TRUE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	sentience_type = SENTIENCE_ARTIFICIAL
 	status_flags = NONE //no default canpush
@@ -62,10 +58,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	///All initial access this bot started with.
 	var/list/initial_access = list()
 	///Bot-related mode flags on the Bot indicating how they will act. BOT_MODE_ON | BOT_MODE_AUTOPATROL | BOT_MODE_REMOTE_ENABLED | BOT_MODE_CAN_BE_SAPIENT | BOT_MODE_ROUNDSTART_POSSESSION
-<<<<<<< HEAD
-=======
 	/// DO NOT MODIFY MANUALLY, USE set_bot_mode_flags. If you don't shit breaks BAD
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/bot_mode_flags = BOT_MODE_ON | BOT_MODE_REMOTE_ENABLED | BOT_MODE_CAN_BE_SAPIENT | BOT_MODE_ROUNDSTART_POSSESSION
 	///Bot-related cover flags on the Bot to deal with what has been done to their cover, including emagging. BOT_COVER_MAINTS_OPEN | BOT_COVER_LOCKED | BOT_COVER_EMAGGED | BOT_COVER_HACKED
 	var/bot_access_flags = BOT_COVER_LOCKED
@@ -116,10 +109,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 /mob/living/basic/bot/Initialize(mapload)
 	. = ..()
 
-<<<<<<< HEAD
-=======
 	add_traits(list(TRAIT_SILICON_ACCESS, TRAIT_REAGENT_SCANNER, TRAIT_UNOBSERVANT), INNATE_TRAIT)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	AddElement(/datum/element/ai_retaliate)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_loop_movement))
 	RegisterSignal(src, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(after_attacked))
@@ -162,14 +152,11 @@ GLOBAL_LIST_INIT(command_strings, list(
 	ai_controller.set_blackboard_key(BB_RADIO_CHANNEL, radio_channel)
 	update_appearance()
 
-<<<<<<< HEAD
-=======
 /mob/living/basic/bot/proc/set_mode_flags(mode_flags)
 	SHOULD_CALL_PARENT(TRUE)
 	bot_mode_flags = mode_flags
 	SEND_SIGNAL(src, COMSIG_BOT_MODE_FLAGS_SET, mode_flags)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /mob/living/basic/bot/proc/get_mode()
 	if(client) //Player bots do not have modes, thus the override. Also an easy way for PDA users/AI to know when a bot is a player.
 		return span_bold("[paicard ? "pAI Controlled" : "Autonomous"]")
@@ -200,11 +187,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 /mob/living/basic/bot/proc/turn_on()
 	if(stat == DEAD)
 		return FALSE
-<<<<<<< HEAD
-	bot_mode_flags |= BOT_MODE_ON
-=======
 	set_mode_flags(bot_mode_flags | BOT_MODE_ON)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), POWER_LACK_TRAIT)
 	set_light_on(bot_mode_flags & BOT_MODE_ON ? TRUE : FALSE)
 	update_appearance()
@@ -213,11 +196,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	return TRUE
 
 /mob/living/basic/bot/proc/turn_off()
-<<<<<<< HEAD
-	bot_mode_flags &= ~BOT_MODE_ON
-=======
 	set_mode_flags(bot_mode_flags & ~BOT_MODE_ON)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	add_traits(on_toggle_traits, POWER_LACK_TRAIT)
 	set_light_on(bot_mode_flags & BOT_MODE_ON ? TRUE : FALSE)
 	bot_reset() //Resets an AI's call, should it exist.
@@ -335,11 +314,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		return FALSE
 	bot_access_flags |= BOT_COVER_EMAGGED
 	bot_access_flags |= BOT_COVER_LOCKED
-<<<<<<< HEAD
-	bot_mode_flags &= ~BOT_MODE_REMOTE_ENABLED //Manually emagging the bot also locks the AI from controlling it.
-=======
 	set_mode_flags(bot_mode_flags & ~BOT_MODE_REMOTE_ENABLED) //Manually emagging the bot also locks the AI from controlling it.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	bot_reset()
 	turn_on() //The bot automatically turns on when emagged, unless recently hit with EMP.
 	to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
@@ -584,15 +559,9 @@ GLOBAL_LIST_INIT(command_strings, list(
 	switch(command)
 		if("patroloff")
 			bot_reset() //HOLD IT!! //OBJECTION!!
-<<<<<<< HEAD
-			bot_mode_flags &= ~BOT_MODE_AUTOPATROL
-		if("patrolon")
-			bot_mode_flags |= BOT_MODE_AUTOPATROL
-=======
 			set_mode_flags(bot_mode_flags & ~BOT_MODE_AUTOPATROL)
 		if("patrolon")
 			set_mode_flags(bot_mode_flags | BOT_MODE_AUTOPATROL)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if("summon")
 			summon_bot(user, user_access = user_access)
 		if("ejectpai")
@@ -644,17 +613,10 @@ GLOBAL_LIST_INIT(command_strings, list(
 		if("maintenance")
 			bot_access_flags ^= BOT_COVER_MAINTS_OPEN
 		if("patrol")
-<<<<<<< HEAD
-			bot_mode_flags ^= BOT_MODE_AUTOPATROL
-			bot_reset()
-		if("airplane")
-			bot_mode_flags ^= BOT_MODE_REMOTE_ENABLED
-=======
 			set_mode_flags(bot_mode_flags ^ BOT_MODE_AUTOPATROL)
 			bot_reset()
 		if("airplane")
 			set_mode_flags(bot_mode_flags ^ BOT_MODE_REMOTE_ENABLED)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if("hack")
 			if(!HAS_SILICON_ACCESS(the_user))
 				return

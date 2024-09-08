@@ -72,19 +72,11 @@
 	encrypted_crate.abstract_move(selected_crate.loc)
 	selected_crate.abstract_move(original_location)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// A location for mobs to spawn.
 /obj/effect/landmark/bitrunning/mob_segment
 	name = "Bitrunning modular mob segment"
 	icon_state = "mob_segment"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Bitrunning safehouses. Typically 7x6 rooms with a single entrance.
 /obj/modular_map_root/safehouse
 	config_file = "strings/modular_maps/safehouse.toml"

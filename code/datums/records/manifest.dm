@@ -15,11 +15,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		if(readied_player.new_character)
 			log_manifest(readied_player.ckey, readied_player.new_character.mind, readied_player.new_character)
 		if(ishuman(readied_player.new_character))
-<<<<<<< HEAD
 			inject(readied_player.new_character, readied_player.client) // SKYRAT EDIT - RP Records - ORIGINAL: inject(readied_player.new_character)
-=======
-			inject(readied_player.new_character)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		CHECK_TICK
 
 /// Gets the current manifest.
@@ -102,11 +98,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-<<<<<<< HEAD
 /datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client) // SKYRAT EDIT - RP Records - ORIGINAL: /datum/manifest/proc/inject(mob/living/carbon/human/person)
-=======
-/datum/manifest/proc/inject(mob/living/carbon/human/person)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -124,7 +116,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/datum/dna/stored/record_dna = new()
 	person.dna.copy_dna(record_dna)
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
@@ -133,10 +124,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
 		chrono_age = person.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
-=======
-	var/datum/record/locked/lockfile = new(
-		age = person.age,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		blood_type = record_dna.blood_type,
 		character_appearance = character_appearance,
 		dna_string = record_dna.unique_enzymes,
@@ -144,11 +131,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-<<<<<<< HEAD
 		rank = chosen_assignment, // SKYRAT EDIT - Alt job titles - ORIGINAL: rank = assignment,
-=======
-		rank = assignment,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		species = record_dna.species.name,
 		trim = assignment,
 		// Locked specifics
@@ -158,10 +141,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 	new /datum/record/crew(
 		age = person.age,
-<<<<<<< HEAD
 		chrono_age = person.chrono_age, // SKYRAT EDIT ADDITION - Chronological age
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		blood_type = record_dna.blood_type,
 		character_appearance = character_appearance,
 		dna_string = record_dna.unique_enzymes,
@@ -169,11 +149,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-<<<<<<< HEAD
 		rank = chosen_assignment, // SKYRAT EDIT - Alt job titles - ORIGINAL: rank = assignment,
-=======
-		rank = assignment,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		species = record_dna.species.name,
 		trim = assignment,
 		// Crew specific
@@ -183,7 +159,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, from_scan = TRUE),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
-<<<<<<< HEAD
 		// SKYRAT EDIT START - RP Records
 		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
 		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
@@ -191,8 +166,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
 		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",
 		// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /// Edits the rank and trim of the found record.

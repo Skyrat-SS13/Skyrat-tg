@@ -66,11 +66,7 @@
 		CRASH("Failed to lazy load heretic sacrifice template!")
 
 /datum/heretic_knowledge/hunt_and_sacrifice/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// First we have to check if the heretic has a Living Heart.
 	// You may wonder why we don't straight up prevent them from invoking the ritual if they don't have one -
 	// Hunt and sacrifice should always be invokable for clarity's sake, even if it'll fail immediately.
@@ -79,11 +75,7 @@
 		return FALSE
 
 	// We've got no targets set, let's try to set some.
-<<<<<<< HEAD
-	// If we recently failed to aquire targets, we will be unable to aquire any.
-=======
 	// If we recently failed to acquire targets, we will be unable to acquire any.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!LAZYLEN(heretic_datum.sac_targets))
 		atoms += user
 		return TRUE
@@ -107,11 +99,7 @@
 	return FALSE
 
 /datum/heretic_knowledge/hunt_and_sacrifice/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Force it to work if the sacrifice is a cultist, even if there's no targets.
 	var/mob/living/carbon/human/sac = selected_atoms[1]
 	if(!LAZYLEN(heretic_datum.sac_targets) && !IS_CULTIST(sac))
@@ -201,19 +189,11 @@
  * Arguments
  * * user - the mob doing the sacrifice (a heretic)
  * * selected_atoms - a list of all atoms chosen. Should be (at least) one human.
-<<<<<<< HEAD
- * * loc - the turf the sacrifice is occuring on
- */
-/datum/heretic_knowledge/hunt_and_sacrifice/proc/sacrifice_process(mob/living/user, list/selected_atoms, turf/loc)
-
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
  * * loc - the turf the sacrifice is occurring on
  */
 /datum/heretic_knowledge/hunt_and_sacrifice/proc/sacrifice_process(mob/living/user, list/selected_atoms, turf/loc)
 
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mob/living/carbon/human/sacrifice = locate() in selected_atoms
 	if(!sacrifice)
 		CRASH("[type] sacrifice_process didn't have a human in the atoms list. How'd it make it so far?")
@@ -227,11 +207,7 @@
 
 	var/feedback = "Your patrons accept your offer"
 	var/sac_job_flag = sacrifice.mind?.assigned_role?.job_flags | sacrifice.last_mind?.assigned_role?.job_flags
-<<<<<<< HEAD
-	var/datum/antagonist/cult/cultist_datum = IS_CULTIST(sacrifice)
-=======
 	var/datum/antagonist/cult/cultist_datum = GET_CULTIST(sacrifice)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Heads give 3 points, cultists give 1 point (and a special reward), normal sacrifices give 2 points.
 	heretic_datum.total_sacrifices++
 	if((sac_job_flag & JOB_HEAD_OF_STAFF))
@@ -284,11 +260,7 @@
 	sacrifice.dust(TRUE, TRUE)
 
 	// Increase reward counter
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/antag = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/antag = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	antag.rewards_given++
 
 	// Cool effect for the rune as well as the item
@@ -310,11 +282,7 @@
 	// Remove the outline, we don't need it anymore.
 	rune?.remove_filter("reward_outline")
 	playsound(loc, 'sound/magic/repulse.ogg', 75, TRUE)
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	ASSERT(heretic_datum)
 	// This list will be almost identical to unlocked_heretic_items, with the same keys, the difference being the values will be 1 to 5.
 	var/list/rewards = heretic_datum.unlocked_heretic_items.Copy()
@@ -450,22 +418,6 @@
 		usable_organs -= /obj/item/organ/internal/lungs/corrupt // Their lungs are already more cursed than anything I could give them
 
 	var/total_implant = rand(2, 4)
-<<<<<<< HEAD
-	var/gave_any = FALSE
-
-	for (var/i in 1 to total_implant)
-		if (!length(usable_organs))
-			break
-		var/organ_path = pick_n_take(usable_organs)
-		var/obj/item/organ/internal/to_give = new organ_path
-		if (!to_give.Insert(sac_target))
-			qdel(to_give)
-		else
-			gave_any = TRUE
-
-	if (!gave_any)
-		return
-=======
 
 	for (var/i in 1 to total_implant)
 		if (!length(usable_organs))
@@ -473,7 +425,6 @@
 		var/organ_path = pick_n_take(usable_organs)
 		var/obj/item/organ/internal/to_give = new organ_path
 		to_give.Insert(sac_target)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	new /obj/effect/gibspawner/human/bodypartless(get_turf(sac_target))
 	sac_target.visible_message(span_boldwarning("Several organs force themselves out of [sac_target]!"))

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /obj/machinery/gibber//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
-=======
-/obj/machinery/gibber
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	name = "gibber"
 	desc = "The name isn't descriptive enough?"
 	icon = 'icons/obj/machines/kitchen.dmi'

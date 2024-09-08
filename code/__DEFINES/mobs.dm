@@ -15,11 +15,7 @@
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
 #define BLOOD_VOLUME_EXCESS 2100
-<<<<<<< HEAD
-#define BLOOD_VOLUME_MAXIMUM 1000 // SKYRAT EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
-=======
 #define BLOOD_VOLUME_MAXIMUM 2000
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define BLOOD_VOLUME_SLIME_SPLIT 1120
 #define BLOOD_VOLUME_NORMAL 560
 #define BLOOD_VOLUME_SAFE (BLOOD_VOLUME_NORMAL * (1 - 0.15)) // Latter number is percentage of blood lost, for readability!
@@ -93,7 +89,6 @@
 #define BODYTYPE_GOLEM (1<<4)
 //The limb is a peg limb
 #define BODYTYPE_PEG (1<<5)
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION
 ///The limb fits a modular custom shape
 #define BODYSHAPE_CUSTOM (1<<9)
@@ -119,22 +114,6 @@
 #define BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE (BODYTYPE_ROBOTIC | BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_GOLEM | BODYTYPE_PEG)
 #define BODYTYPE_CAN_BE_BIOSCRAMBLED(bodytype) (!(bodytype & BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE))
 
-=======
-
-// Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
-///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.
-#define BODYSHAPE_HUMANOID (1<<0)
-///The limb fits the monkey mold.
-#define BODYSHAPE_MONKEY (1<<1)
-///The limb is digitigrade.
-#define BODYSHAPE_DIGITIGRADE (1<<2)
-///The limb is snouted.
-#define BODYSHAPE_SNOUTED (1<<3)
-
-#define BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE (BODYTYPE_ROBOTIC | BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_GOLEM | BODYTYPE_PEG)
-#define BODYTYPE_CAN_BE_BIOSCRAMBLED(bodytype) (!(bodytype & BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE))
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
 #define SPECIES_ABDUCTOR "abductor"
 #define SPECIES_ANDROID "android"
@@ -184,14 +163,10 @@
 ///The species is forced to have digitigrade legs in generation.
 #define DIGITIGRADE_FORCED 2
 
-<<<<<<< HEAD
-///Digitigrade's prefs, used in features for legs if you're meant to be a Digitigrade.
-=======
 // Preferences for leg types
 /// Legs that are normal
 #define NORMAL_LEGS "Normal Legs"
 /// Digitgrade legs that are like bended and uhhh no shoes
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define DIGITIGRADE_LEGS "Digitigrade Legs"
 
 // Health/damage defines
@@ -344,11 +319,7 @@
 
 #define BRUTE_DAMAGE_REQUIRED_TO_STOP_CRYSTALIZATION 30
 
-<<<<<<< HEAD
-#define CRYSTALIZE_STAGE_ENGULFING 100 //Cant use second defines
-=======
 #define CRYSTALIZE_STAGE_ENGULFING 100 //Can't use second defines
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define CRYSTALIZE_STAGE_ENCROACHING 300 //In switches
 #define CRYSTALIZE_STAGE_SMALL 600 //Because they're not static
 
@@ -470,7 +441,6 @@
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
 #define OFFSET_HELD "held"
-<<<<<<< HEAD
 #define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
 #define OFFSET_HAIR "hair" // Skyrat edit - addition - Akulas
 
@@ -487,19 +457,6 @@
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
-=======
-
-//MINOR TWEAKS/MISC
-#define AGE_MIN 17 //youngest a character can be
-#define AGE_MAX 85 //oldest a character can be
-#define AGE_MINOR 20 //legal age of space drinking and smoking
-#define WIZARD_AGE_MIN 30 //youngest a wizard can be
-#define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
-#define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
-#define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
-#define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
 #define ETHEREAL_DISCHARGE_RATE (8e-4 * STANDARD_CELL_CHARGE) // Rate at which ethereal stomach charge decreases
 /// How much nutrition eating clothes as moth gives and drains
@@ -551,27 +508,6 @@
 #define RACE_SWAP (1<<3)
 //Wabbacjack staff projectiles
 #define WABBAJACK (1<<4)
-<<<<<<< HEAD
-
-// These flags do NOT unlock the Lepton Violet shuttle, hardcoded in wabbajack() - use for things like xenobio, admins, etc.
-//Badmin magic mirror
-#define MIRROR_BADMIN (1<<5)
-//ERT spawn template (avoid races that don't function without correct gear)
-#define ERT_SPAWN (1<<6)
-//xenobio black crossbreed
-#define SLIME_EXTRACT (1<<7)
-
-// Randomization keys for calling wabbajack with.
-// Note the contents of these keys are important, as they're displayed to the player
-// Ex: (You turn into a "monkey", You turn into a "xenomorph")
-#define WABBAJACK_MONKEY "monkey"
-#define WABBAJACK_ROBOT "robot"
-#define WABBAJACK_SLIME "slime"
-#define WABBAJACK_XENO "xenomorph"
-#define WABBAJACK_HUMAN "humanoid"
-#define WABBAJACK_ANIMAL "animal"
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // These flags do NOT unlock the Lepton Violet shuttle, hardcoded in wabbajack() - use for things like xenobio, admins, etc.
 //Badmin magic mirror
@@ -756,7 +692,6 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-<<<<<<< HEAD
 #define TOTAL_LAYERS 41 // SKYRAT EDIT CHANGE - ORIGINAL: 35
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 41 // SKYRAT EDIT CHANGE - ORIGINAL: 35
@@ -787,27 +722,6 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define NIPPLES_LAYER 28
 #define BANDAGE_LAYER 27
 //SKYRAT EDIT ADDITION END
-=======
-#define TOTAL_LAYERS 35
-/// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 35
-/// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 34
-/// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 33
-/// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 32
-/// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 31
-/// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 30
-/// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 29
-/// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 28
-/// Jumpsuit clothing layer
-#define UNIFORM_LAYER 27
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// ID card layer
 #define ID_LAYER 26
 /// ID card layer (might be deprecated)
@@ -829,11 +743,7 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Glasses layer
 #define GLASSES_LAYER 17
 /// Belt layer
-<<<<<<< HEAD
-#define BELT_LAYER 16 //Possible make this an overlay of somethign required to wear a belt?
-=======
 #define BELT_LAYER 16 //Possible make this an overlay of something required to wear a belt?
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Suit storage layer (tucking a gun or baton underneath your armor)
 #define SUIT_STORE_LAYER 15
 /// Neck layer (for wearing capes and bedsheets)
@@ -912,7 +822,6 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 	// WOUND_LAYER (full body)
 ))
 
-<<<<<<< HEAD
 //Bitflags for the layers an external organ can draw on (organs can be drawn on multiple layers)
 /// Draws organ on the BODY_FRONT_LAYER
 #define EXTERNAL_FRONT (1 << 1)
@@ -928,15 +837,6 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 /// Draws organ on the HEAD_LAYER, for things that need to be above hair but below hats.
 #define EXTERNAL_FRONT_ABOVE_HAIR (1 << 6)
 // SKYRAT EDIT END (not touching what comes next because we don't actually have to (nor want to))
-=======
-//Bitflags for the layers a bodypart overlay can draw on (can be drawn on multiple layers)
-/// Draws overlay on the BODY_FRONT_LAYER
-#define EXTERNAL_FRONT (1 << 0)
-/// Draws overlay on the BODY_ADJ_LAYER
-#define EXTERNAL_ADJACENT (1 << 1)
-/// Draws overlay on the BODY_BEHIND_LAYER
-#define EXTERNAL_BEHIND (1 << 2)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
@@ -982,11 +882,7 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define NEED_VENTCRAWL (1<<8)
 /// Skips adjacency checks
 #define BYPASS_ADJACENCY (1<<9)
-<<<<<<< HEAD
-/// Skips reccursive loc checks
-=======
 /// Skips recursive loc checks
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define NOT_INSIDE_TARGET (1<<10)
 /// Checks for base adjacency, but silences the error
 #define SILENT_ADJACENCY (1<<11)
@@ -1118,11 +1014,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 
 /// The duration of the flip emote animation
 #define FLIP_EMOTE_DURATION 0.7 SECONDS
-<<<<<<< HEAD
-=======
 ///The duration of a taunt emote, so how long they can deflect projectiles
 #define TAUNT_EMOTE_DURATION 0.9 SECONDS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Sprites for photocopying butts
 #define BUTT_SPRITE_HUMAN_MALE "human_male"

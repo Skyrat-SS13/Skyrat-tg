@@ -218,8 +218,6 @@
 	result = /obj/effect/spawner/random/clothing/lizardboots
 	reqs = list(/obj/item/stack/sheet/animalhide/lizard = 1, /obj/item/stack/sheet/leather = 1)
 	time = 6 SECONDS
-<<<<<<< HEAD
-=======
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/prisonsuit
@@ -644,7 +642,6 @@
 	reqs = list(
 		/obj/item/clothing/head/fedora/beige = 1,
 	)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/prisonsuit

@@ -73,11 +73,7 @@
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	ph = 8
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-<<<<<<< HEAD
-	addiction_types = list(/datum/addiction/nicotine = 18) // 7.2 per 2 seconds
-=======
 	addiction_types = list(/datum/addiction/nicotine = 15) // 6 per 2 seconds
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//Nicotine is used as a pesticide IRL.
 /datum/reagent/drug/nicotine/on_hydroponics_apply(obj/machinery/hydroponics/mytray, mob/user)

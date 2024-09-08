@@ -104,7 +104,6 @@
 		if(mod.wearer)
 			balloon_alert(mod.wearer, "not active!")
 		return
-<<<<<<< HEAD
 	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
 	var/can_activate = TRUE
 	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
@@ -116,8 +115,6 @@
 		balloon_alert(mod.wearer, "not fully deployed!")
 		return
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(module_type != MODULE_USABLE)
 		if(active)
 			deactivate()
@@ -139,7 +136,6 @@
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
 		balloon_alert(mod.wearer, "on cooldown!")
 		return FALSE
-<<<<<<< HEAD
 	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) // SKYRAT EDIT ADDITION: INACTIVE USE
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
@@ -151,11 +147,6 @@
 				balloon_alert(mod.wearer, "deploy all parts first!")
 				return FALSE
 	// SKYRAT EDIT END
-=======
-	if(!mod.active || mod.activating || !mod.get_charge())
-		balloon_alert(mod.wearer, "unpowered!")
-		return FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
@@ -228,11 +219,7 @@
 
 /// Called when an activated module without a device is used
 /obj/item/mod/module/proc/on_select_use(atom/target)
-<<<<<<< HEAD
-	if(!(allow_flags & MODULE_ALLOW_INCAPACITATED) && mod.wearer.incapacitated(IGNORE_GRAB))
-=======
 	if(!(allow_flags & MODULE_ALLOW_INCAPACITATED) && INCAPACITATED_IGNORING(mod.wearer, INCAPABLE_GRAB))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	mod.wearer.face_atom(target)
 	if(!used())
@@ -364,20 +351,14 @@
 		used_overlay = overlay_state_inactive
 	else
 		return
-<<<<<<< HEAD
 	/* SKYRAT EDIT START - Making MODsuits mutant-compatible - ORIGINAL:
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/mutable_appearance/module_icon = mutable_appearance(overlay_icon_file, used_overlay, layer = standing.layer + 0.1)
 	if(!use_mod_colors)
 		module_icon.appearance_flags |= RESET_COLOR
 	. += module_icon
-<<<<<<< HEAD
 	*/
 	return handle_module_icon(standing, used_overlay)
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Updates the signal used by active modules to be activated
 /obj/item/mod/module/proc/update_signal(value)

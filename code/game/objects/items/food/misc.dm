@@ -292,8 +292,6 @@
 	foodtypes = FRUIT | ALCOHOL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-<<<<<<< HEAD
-=======
 /obj/item/food/melonkeg/CheckParts(list/parts_list)
 	. = ..()
 	var/obj/item/reagent_containers/cup/glass/bottle/bottle = locate() in contents
@@ -302,7 +300,6 @@
 	if(bottle.message_in_a_bottle)
 		bottle.message_in_a_bottle.forceMove(drop_location())
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/food/honeybar
 	name = "honey nut bar"
 	desc = "Oats and nuts compressed together into a bar, held together with a honey glaze."
@@ -579,11 +576,7 @@
 	tastes = list()
 
 /obj/item/food/pacoca
-<<<<<<< HEAD
-	name = "pacoca"
-=======
 	name = "paçoca"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	desc = "A traditional Brazilian treat made of ground peanuts, sugar, and salt compressed into a cylinder."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "pacoca"
@@ -812,8 +805,6 @@
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_4
-<<<<<<< HEAD
-=======
 
 ///Extracted from squids, or any fish with the ink fish trait.
 /obj/item/food/ink_sac
@@ -841,4 +832,3 @@
 		victim.Paralyze(2 SECONDS) //splat!
 	victim.visible_message(span_warning("[victim] is inked by [src]!"), span_userdanger("You've been inked by [src]!"))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -262,7 +262,6 @@
 			candidates.Remove(candidate_player)
 			continue
 
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(!candidate_client.prefs?.read_preference(/datum/preference/toggle/be_antag))
 			candidates.Remove(candidate_player)
@@ -273,8 +272,6 @@
 			continue
 		//SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(candidate_client.get_remaining_days(minimum_required_age) > 0)
 			candidates.Remove(candidate_player)
 			continue

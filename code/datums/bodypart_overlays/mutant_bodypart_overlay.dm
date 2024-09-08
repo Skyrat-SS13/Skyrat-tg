@@ -13,8 +13,6 @@
 	///Take on the dna/preference from whoever we're gonna be inserted in
 	var/imprint_on_next_insertion = TRUE
 
-<<<<<<< HEAD
-=======
 /datum/bodypart_overlay/mutant/New(obj/item/organ/attached_organ)
 	. = ..()
 
@@ -33,7 +31,6 @@
 		set_appearance_from_name(feature_name)
 		imprint_on_next_insertion = FALSE
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/bodypart_overlay/mutant/get_overlay(layer, obj/item/bodypart/limb)
 	inherit_color(limb) // If draw_color is not set yet, go ahead and do that
 	return ..()
@@ -88,10 +85,6 @@
 	return appearance
 
 /datum/bodypart_overlay/mutant/color_image(image/overlay, layer, obj/item/bodypart/limb)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	overlay.color = sprite_datum.color_src ? draw_color : null
 
 /datum/bodypart_overlay/mutant/added_to_limb(obj/item/bodypart/limb)
@@ -123,19 +116,13 @@
 /datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/bodypart_owner, force)
 	if(isnull(bodypart_owner))
 		draw_color = null
-<<<<<<< HEAD
 		alpha = 255 // SKYRAT ADDITION - Mutant bodyparts transparency are based on limb transparency
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 
 	if(draw_color && !force)
 		return FALSE
 
-<<<<<<< HEAD
 	alpha = bodypart_owner.alpha // SKYRAT ADDITION - Mutant bodyparts transparency are based on limb transparency
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)
 			draw_color = override_color(bodypart_owner.draw_color)
@@ -171,7 +158,3 @@
 		CRASH("External organ [type] couldn't find sprite accessory [accessory_name]!")
 	else
 		CRASH("External organ [type] had fetch_sprite_datum called with a null accessory name!")
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

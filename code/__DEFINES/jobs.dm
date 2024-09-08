@@ -63,45 +63,30 @@
 #define JOB_SECURITY_OFFICER_ENGINEERING "Security Officer (Engineering)"
 #define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"
 #define JOB_SECURITY_OFFICER_SUPPLY "Security Officer (Cargo)"
-<<<<<<< HEAD
 #define JOB_CORRECTIONS_OFFICER "Corrections Officer" // SKYRAT EDIT ADDITION
 //Engineering
 #define JOB_STATION_ENGINEER "Station Engineer"
 #define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
 #define JOB_ENGINEERING_GUARD "Engineering Guard" // SKYRAT EDIT ADDITION
 #define JOB_TELECOMMS_SPECIALIST "Telecomms Specialist" // SKYRAT EDIT ADDITION
-=======
-//Engineering
-#define JOB_STATION_ENGINEER "Station Engineer"
-#define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //Medical
 #define JOB_CORONER "Coroner"
 #define JOB_MEDICAL_DOCTOR "Medical Doctor"
 #define JOB_PARAMEDIC "Paramedic"
 #define JOB_CHEMIST "Chemist"
-<<<<<<< HEAD
 #define JOB_ORDERLY "Orderly" // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //Science
 #define JOB_SCIENTIST "Scientist"
 #define JOB_ROBOTICIST "Roboticist"
 #define JOB_GENETICIST "Geneticist"
-<<<<<<< HEAD
 #define JOB_SCIENCE_GUARD "Science Guard"
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
 #define JOB_CARGO_TECHNICIAN "Cargo Technician"
 #define JOB_CARGO_GORILLA "Cargo Gorilla"
 #define JOB_SHAFT_MINER "Shaft Miner"
 #define JOB_BITRUNNER "Bitrunner"
-<<<<<<< HEAD
 #define JOB_CUSTOMS_AGENT "Customs Agent" // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //Service
 #define JOB_BARTENDER "Bartender"
 #define JOB_BOTANIST "Botanist"
@@ -114,11 +99,8 @@
 #define JOB_LAWYER "Lawyer"
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
-<<<<<<< HEAD
 #define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
 #define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //ERTs
 #define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
@@ -141,7 +123,6 @@
 #define JOB_CENTCOM_RESEARCH_OFFICER "Research Officer"
 #define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION START
 #define JOB_BLUESHIELD "Blueshield"
 #define JOB_NT_REP "Nanotrasen Consultant"
@@ -159,8 +140,6 @@
 #define JOB_SOLFED "SolFed"
 #define JOB_SOLFED_LIASON "SolFed Liason"
 // SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #define JOB_GROUP_ENGINEERS list( \
 	JOB_STATION_ENGINEER, \
@@ -207,7 +186,6 @@
 #define JOB_DISPLAY_ORDER_DETECTIVE 37
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 38
 #define JOB_DISPLAY_ORDER_PRISONER 39
-<<<<<<< HEAD
 #define JOB_DISPLAY_ORDER_SECURITY_MEDIC 100 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER 101 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT 102 //SKYRAT EDIT ADDITON
@@ -219,8 +197,6 @@
 #define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 108 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_EXP_CORPS 109 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_TELECOMMS_SPECIALIST 51 //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #define DEPARTMENT_UNASSIGNED "No Department"
 
@@ -244,11 +220,8 @@
 #define DEPARTMENT_ASSISTANT "Assistant"
 #define DEPARTMENT_BITFLAG_CAPTAIN (1<<9)
 #define DEPARTMENT_CAPTAIN "Captain"
-<<<<<<< HEAD
 #define DEPARTMENT_BITFLAG_CENTRAL_COMMAND (1<<10) //SKYRAT EDIT CHANGE
 #define DEPARTMENT_CENTRAL_COMMAND "Central Command" //SKYRAT EDIT CHANGE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"SECURITY" = DEPARTMENT_BITFLAG_SECURITY,

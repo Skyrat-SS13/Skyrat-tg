@@ -18,8 +18,6 @@
 #define BARCODE_SCANNER_INVENTORY "inventory"
 
 #define IS_WRITING_UTENSIL(thing) (thing?.get_writing_implement_details()?["interaction_mode"] == MODE_WRITING)
-<<<<<<< HEAD
-=======
 
 /**
  * key defines used when converting a paper to and fro' a data/json list. It's really important that they stay the same
@@ -46,4 +44,3 @@
 #define LIST_PAPER_STAMP_X "x"
 #define LIST_PAPER_STAMP_Y "y"
 #define LIST_PAPER_ROTATION "rotation"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

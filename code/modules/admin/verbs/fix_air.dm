@@ -7,13 +7,10 @@ ADMIN_VERB_AND_CONTEXT_MENU(fix_air, R_ADMIN, "Fix Air", "Fixes air in a specifi
 		if(valid_range_turf.blocks_air)
 		//skip walls
 			continue
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION START
 		if(valid_range_turf.pollution)
 			qdel(valid_range_turf.pollution)
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/datum/gas_mixture/GM = SSair.parse_gas_string(valid_range_turf.initial_gas_mix, /datum/gas_mixture/turf)
 		valid_range_turf.copy_air(GM)
 		valid_range_turf.temperature = initial(valid_range_turf.temperature)

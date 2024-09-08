@@ -53,11 +53,7 @@
 	var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
 
 	playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-<<<<<<< HEAD
-	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_TRANSLOCATION) //SKYRAT EDIT CHANGE - ANNOUNCER
-=======
 	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	var/list/flashers = list()
 	for(var/mob/living/carbon/C in viewers(TO, null))

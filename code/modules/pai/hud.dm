@@ -5,11 +5,7 @@
 	var/required_software
 
 /atom/movable/screen/pai/Click()
-<<<<<<< HEAD
-	if(isobserver(usr) || usr.incapacitated())
-=======
 	if(isobserver(usr) || usr.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	var/mob/living/silicon/pai/user = usr
 	if(required_software && !user.installed_software.Find(required_software))

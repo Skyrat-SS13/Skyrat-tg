@@ -320,11 +320,7 @@
 
 /mob/living/simple_animal/hostile/proc/CheckAndAttack()
 	var/atom/target_from = GET_TARGETS_FROM(src)
-<<<<<<< HEAD
-	if(target && isturf(target_from.loc) && target.Adjacent(target_from) && !incapacitated())
-=======
 	if(target && isturf(target_from.loc) && target.Adjacent(target_from) && !incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		AttackingTarget(target)
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget(list/possible_targets)//Step 5, handle movement between us and our target

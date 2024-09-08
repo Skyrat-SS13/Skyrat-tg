@@ -18,49 +18,9 @@
 	set_species(dna.species.type)
 
 	prepare_huds() //Prevents a nasty runtime on human init
-<<<<<<< HEAD
 
 	. = ..()
 
-	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, PROC_REF(clean_face))
-	AddComponent(/datum/component/personal_crafting)
-	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS
-	AddComponent(/datum/component/bloodysoles/feet, FOOTPRINT_SPRITE_SHOES)
-	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
-	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human/, should_strip))
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-		COMSIG_LIVING_DISARM_PRESHOVE = PROC_REF(disarm_precollide),
-		COMSIG_LIVING_DISARM_COLLIDE = PROC_REF(disarm_collision),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-	GLOB.human_list += src
-	SSopposing_force.give_opfor_button(src) //SKYRAT EDIT - OPFOR SYSTEM
-
-/mob/living/carbon/human/proc/setup_physiology()
-	physiology = new()
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
-
-/mob/living/carbon/human/proc/setup_mood()
-	if (CONFIG_GET(flag/disable_human_mood))
-		return
-	mob_mood = new /datum/mood(src)
-
-<<<<<<< HEAD
-/mob/living/carbon/human/dummy/setup_mood()
-	return
-
-/// This proc is for holding effects applied when a mob is missing certain organs
-/// It is called very, very early in human init because all humans innately spawn with no organs and gain them during init
-/// Gaining said organs removes these effects
-/mob/living/carbon/human/proc/setup_organless_effects()
-	// All start without eyes, and get them via set species
-	become_blind(NO_EYES)
-	// Mobs cannot taste anything without a tongue; the tongue organ removes this on Insert
-	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
-
-=======
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, PROC_REF(clean_face))
 	AddComponent(/datum/component/personal_crafting)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)
@@ -95,7 +55,6 @@
 	// Mobs cannot taste anything without a tongue; the tongue organ removes this on Insert
 	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /mob/living/carbon/human/proc/setup_human_dna()
 	randomize_human_normie(src, randomize_mutations = TRUE)
 
@@ -234,7 +193,6 @@
 				if(quirkstring)
 					to_chat(human_user,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
-<<<<<<< HEAD
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 			if(href_list["medrecords"])
@@ -242,9 +200,6 @@
 			if(href_list["genrecords"])
 				to_chat(usr, "<b>General Record:</b> [target_record.past_general_records]")
 			//SKYRAT EDIT END
-=======
-					to_chat(human_user,  "<span class='notice ml-1'>No physiological traits found.</span>")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return //Medical HUD ends here.
 
 		if(href_list["hud"] == "s")
@@ -310,7 +265,6 @@
 						if(!crime.valid)
 							sec_record_message += span_notice("\n-- REDACTED --")
 							continue
-<<<<<<< HEAD
 
 						sec_record_message += "\n<b>Crime:</b> [crime.name]"
 						sec_record_message += "\n<b>Details:</b> [crime.details]"
@@ -356,53 +310,6 @@
 						return
 
 					var/datum/crime/new_crime = new(name = crime_name, author = allowed_access)
-=======
-
-						sec_record_message += "\n<b>Crime:</b> [crime.name]"
-						sec_record_message += "\n<b>Details:</b> [crime.details]"
-						sec_record_message += "\nAdded by [crime.author] at [crime.time]"
-				to_chat(human_or_ghost_user, examine_block(sec_record_message))
-				return
-			if(ishuman(human_or_ghost_user))
-				var/mob/living/carbon/human/human_user = human_or_ghost_user
-				if(href_list["add_citation"])
-					var/max_fine = CONFIG_GET(number/maxfine)
-					var/citation_name = tgui_input_text(human_user, "Citation crime", "Security HUD")
-					var/fine = tgui_input_number(human_user, "Citation fine", "Security HUD", 50, max_fine, 5)
-					if(!fine || !target_record || !citation_name || !allowed_access || !isnum(fine) || fine > max_fine || fine <= 0 || !human_user.canUseHUD() || !HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
-						return
-
-					var/datum/crime/citation/new_citation = new(name = citation_name, author = allowed_access, fine = fine)
-
-					target_record.citations += new_citation
-					new_citation.alert_owner(usr, src, target_record.name, "You have been fined [fine] credits for '[citation_name]'. Fines may be paid at security.")
-					investigate_log("New Citation: <strong>[citation_name]</strong> Fine: [fine] | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
-					SSblackbox.ReportCitation(REF(new_citation), human_user.ckey, human_user.real_name, target_record.name, citation_name, fine)
-
-					return
-
-				if(href_list["add_crime"])
-					var/crime_name = tgui_input_text(human_user, "Crime name", "Security HUD")
-					if(!target_record || !crime_name || !allowed_access || !human_user.canUseHUD() || !HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
-						return
-
-					var/datum/crime/new_crime = new(name = crime_name, author = allowed_access)
-
-					target_record.crimes += new_crime
-					investigate_log("New Crime: <strong>[crime_name]</strong> | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
-					to_chat(human_user, span_notice("Successfully added a crime."))
-
-					return
-
-				if(href_list["add_note"])
-					var/new_note = tgui_input_text(human_user, "Security note", "Security Records", multiline = TRUE)
-					if(!target_record || !new_note || !allowed_access || !human_user.canUseHUD() || !HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
-						return
-
-					target_record.security_note = new_note
-
-					return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 					target_record.crimes += new_crime
 					investigate_log("New Crime: <strong>[crime_name]</strong> | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
@@ -932,13 +839,10 @@
 			var/datum/quirk/quirk_type = type
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
-<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION START
 			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
 				continue
 			// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
 		var/result = input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in sort_list(options)
@@ -1050,11 +954,7 @@
 	return ishuman(target) && target.body_position == LYING_DOWN
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
-<<<<<<< HEAD
-	if(!can_be_firemanned(target) || incapacitated(IGNORE_GRAB))
-=======
 	if(!can_be_firemanned(target) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(src, span_warning("You can't fireman carry [target] while [target.p_they()] [target.p_are()] standing!"))
 		return
 
@@ -1077,15 +977,11 @@
 		skills_space = " very quickly"
 	else if(carrydelay <= 4 SECONDS)
 		skills_space = " quickly"
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	else if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
 		visible_message(span_warning("[src] tries to carry [target], but they are too heavy!"))
 		return
 	//SKYRAT EDIT END
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	visible_message(span_notice("[src] starts[skills_space] lifting [target] onto [p_their()] back..."),
 		span_notice("You[skills_space] start to lift [target] onto your back..."))
 	if(!do_after(src, carrydelay, target))
@@ -1093,11 +989,7 @@
 		return
 
 	//Second check to make sure they're still valid to be carried
-<<<<<<< HEAD
-	if(!can_be_firemanned(target) || incapacitated(IGNORE_GRAB) || target.buckled)
-=======
 	if(!can_be_firemanned(target) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB) || target.buckled)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		visible_message(span_warning("[src] fails to fireman carry [target]!"))
 		return
 
@@ -1113,8 +1005,8 @@
 		visible_message(span_warning("[target] fails to climb onto [src]!"))
 		return
 
-<<<<<<< HEAD
-	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
+
+	if(INCAPACITATED_IGNORING(target, INCAPABLE_GRAB) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
 		return
 	//SKYRAT EDIT START
@@ -1140,11 +1032,6 @@
 			target.throw_at(get_turf(src), 1, 1, spin=FALSE, quickstart=FALSE)
 		return
 		//SKYRAT EDIT END
-=======
-	if(INCAPACITATED_IGNORING(target, INCAPABLE_GRAB) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
-		target.visible_message(span_warning("[target] can't hang onto [src]!"))
-		return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
 
@@ -1202,11 +1089,8 @@
 	if (!isnull(race))
 		dna.species = new race
 
-<<<<<<< HEAD
 /mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // SKYRAT EDIT - Customization
-=======
-/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update, pref_load)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+
 	. = ..()
 	if(use_random_name)
 		fully_replace_character_name(real_name, generate_random_mob_name())

@@ -292,11 +292,7 @@
 /obj/item/construction/proc/check_menu(mob/living/user, remote_anchor)
 	if(!istype(user))
 		return FALSE
-<<<<<<< HEAD
-	if(user.incapacitated())
-=======
 	if(user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(remote_anchor && user.remote_control != remote_anchor)
 		return FALSE

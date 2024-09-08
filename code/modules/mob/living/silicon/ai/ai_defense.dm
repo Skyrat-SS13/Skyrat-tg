@@ -63,11 +63,7 @@
 	. = ..()
 	if(user.combat_mode)
 		return
-<<<<<<< HEAD
-	if(stat != DEAD && !incapacitated() && (client || deployed_shell?.client))
-=======
 	if(stat != DEAD && !incapacitated && (client || deployed_shell?.client))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// alive and well AIs control their floor bolts
 		balloon_alert(user, "the AI's bolt motors resist.")
 		return ITEM_INTERACT_SUCCESS

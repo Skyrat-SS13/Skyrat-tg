@@ -953,8 +953,6 @@
 	balloon_alert(mod.wearer, "ammo box dispensed.")
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 50, TRUE)
 
-<<<<<<< HEAD
-=======
 /obj/item/mod/module/fishing_glove
 	name = "MOD fishing glove module"
 	desc = "A MOD module that takes in an external fishing rod to enable the user to fish without having to hold one."
@@ -1025,7 +1023,6 @@
 	if(gloves && !deleting)
 		qdel(gloves.GetComponent(/datum/component/profound_fisher))
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/mod/module/shock_absorber
 	name = "MOD shock absorption module"
 	desc = "A module that makes the user resistant to the knockdown inflicted by Stun Batons."

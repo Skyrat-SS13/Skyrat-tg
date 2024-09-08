@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #define ADMIN_CANCEL_MIDROUND_TIME (180 SECONDS) //SKYRAT EDIT - ORIGINAL 10 SECONDS
-=======
-#define ADMIN_CANCEL_MIDROUND_TIME (10 SECONDS)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///
 ///
@@ -70,19 +66,14 @@
 		ADMIN_CANCEL_MIDROUND_TIME, \
 		TIMER_STOPPABLE, \
 	)
-<<<<<<< HEAD
 	// SKYRAT EDIT REMOVAL BEGIN - Event notification
 	/**
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	log_dynamic("[rule] ruleset executing...")
 	message_admins("DYNAMIC: Executing midround ruleset [rule] in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]. \
 		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>")
 
 	return rule
-<<<<<<< HEAD
 	*/
 	// SKYRAT EDIT REMOVAL END - Event notification
 
@@ -102,8 +93,6 @@
 
 	return rule
 	// SKYRAT EDIT ADDITION END - Event notification
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Fired after admins do not cancel a midround injection.
 /datum/controller/subsystem/dynamic/proc/execute_midround_rule(datum/dynamic_ruleset/rule)

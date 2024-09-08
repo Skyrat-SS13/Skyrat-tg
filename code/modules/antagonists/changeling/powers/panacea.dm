@@ -12,20 +12,14 @@
 	to_chat(user, span_notice("We cleanse impurities from our form."))
 	..()
 	var/list/bad_organs = list(
-<<<<<<< HEAD
 		user.get_organ_by_type(/obj/item/organ/internal/empowered_borer_egg), // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		user.get_organ_by_type(/obj/item/organ/internal/body_egg),
 		user.get_organ_by_type(/obj/item/organ/internal/legion_tumour),
 		user.get_organ_by_type(/obj/item/organ/internal/zombie_infection),
 	)
-<<<<<<< HEAD
 
 
 	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/o in bad_organs)
 		var/obj/item/organ/O = o

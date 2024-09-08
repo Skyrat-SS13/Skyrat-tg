@@ -29,10 +29,7 @@
 /obj/effect/bump_teleporter/singularity_pull()
 	return
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL  - MOVED TO BLACK_MESA
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/effect/bump_teleporter/Bumped(atom/movable/bumper)
 	if(!validate_setup(bumper))
 		return
@@ -43,10 +40,7 @@
 			return
 
 	stack_trace("Bump_teleporter [src] could not find a teleporter with id [id_target]!")
-<<<<<<< HEAD
 */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Check to see if our teleporter was set up correctly mapside. Return TRUE if everything is fine, FALSE if not.
 /obj/effect/bump_teleporter/proc/validate_setup(atom/movable/checkable)

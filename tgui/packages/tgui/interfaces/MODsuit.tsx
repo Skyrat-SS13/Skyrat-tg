@@ -462,10 +462,6 @@ const SuitStatusSection = (props) => {
           </LabeledList.Item>
         )}
       </LabeledList>
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       {!!display_time && (
         <Section title="Operation" mt={2}>
           <LabeledList.Item label="Time">

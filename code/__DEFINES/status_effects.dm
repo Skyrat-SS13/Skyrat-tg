@@ -24,15 +24,6 @@
 #define CURSE_GRASPING (1<<3)
 
 //Incapacitated status effect flags
-<<<<<<< HEAD
-/// If the incapacitated status effect will ignore a mob in restraints (handcuffs)
-#define IGNORE_RESTRAINTS (1<<0)
-/// If the incapacitated status effect will ignore a mob in stasis (stasis beds)
-#define IGNORE_STASIS (1<<1)
-/// If the incapacitated status effect will ignore a mob being agressively grabbed
-#define IGNORE_GRAB (1<<2)
-
-=======
 /// If the mob is normal incapacitated. Should never need this, just avoids issues if we ever overexpand this
 #define TRADITIONAL_INCAPACITATED (1<<0)
 /// If the incapacitated status effect is being caused by restraints (handcuffs)
@@ -46,7 +37,6 @@
 /// Does this by inverting the passed in flags and seeing if we're still incapacitated
 #define INCAPACITATED_IGNORING(mob, flags) (mob.incapacitated & ~(flags))
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Maxamounts of fire stacks a mob can get
 #define MAX_FIRE_STACKS 20
 /// If a mob has a higher threshold than this, the icon shown will be increased to the big fire icon.

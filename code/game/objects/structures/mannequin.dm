@@ -98,26 +98,6 @@
 	var/datum/sprite_accessory/underwear/underwear = SSaccessories.underwear_list[underwear_name]
 	if(underwear)
 		if(body_type == FEMALE && underwear.gender == MALE)
-<<<<<<< HEAD
-			. += wear_female_version(underwear.icon_state, underwear.icon, BODY_LAYER, FEMALE_UNIFORM_FULL)
-		else
-			. += mutable_appearance(underwear.icon, underwear.icon_state, -BODY_LAYER)
-	var/datum/sprite_accessory/undershirt/undershirt = SSaccessories.undershirt_list[undershirt_name]
-	if(undershirt)
-		if(body_type == FEMALE)
-			. += wear_female_version(undershirt.icon_state, undershirt.icon, BODY_LAYER)
-		else
-			. += mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
-	var/datum/sprite_accessory/socks/socks = SSaccessories.socks_list[socks_name]
-	if(socks)
-		. += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
-	//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
-	var/datum/sprite_accessory/bra/bra = SSaccessories.bra_list[bra_name]
-	if(bra)
-		. += mutable_appearance(bra.icon, bra.icon_state, -BODY_LAYER)
-	//SKYRAT EDIT END
-
-=======
 			. += mutable_appearance(wear_female_version(underwear.icon_state, underwear.icon, FEMALE_UNIFORM_FULL), layer = -BODY_LAYER)
 		else
 			. += mutable_appearance(underwear.icon, underwear.icon_state, layer = -BODY_LAYER)
@@ -130,7 +110,11 @@
 	var/datum/sprite_accessory/socks/socks = SSaccessories.socks_list[socks_name]
 	if(socks)
 		. += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
+	var/datum/sprite_accessory/bra/bra = SSaccessories.bra_list[bra_name]
+	if(bra)
+		. += mutable_appearance(bra.icon, bra.icon_state, -BODY_LAYER)
+	//SKYRAT EDIT END
 	for(var/slot_flag in worn_items)
 		var/obj/item/worn_item = worn_items[slot_flag]
 		if(!worn_item)
@@ -184,11 +168,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-<<<<<<< HEAD
 	var/choice = tgui_input_list(user, "Underwear, Bra, Undershirt, or Socks?", "Changing", list("Underwear", "Bra", "Undershirt","Socks")) //SKYRAT EDIT ADDITION - Underwear and Bra split
-=======
-	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Undershirt","Socks"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!Adjacent(user))
 		return
 	switch(choice)
@@ -204,15 +184,12 @@
 			var/new_socks = tgui_input_list(user, "Select the mannequin's socks", "Changing", SSaccessories.socks_list)
 			if(new_socks)
 				socks_name = new_socks
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
 		if("Bra")
 			var/new_bra = tgui_input_list(user, "Select the mannequin's bra", "Changing", SSaccessories.bra_list)
 			if(new_bra)
 				bra_name = new_bra
 		//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	update_appearance()
 
 /obj/structure/mannequin/wood

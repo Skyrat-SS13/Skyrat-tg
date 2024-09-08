@@ -56,21 +56,13 @@
 
 
 /datum/lootpanel/ui_status(mob/user, datum/ui_state/state)
-<<<<<<< HEAD
-	if(user.incapacitated())
-=======
 	if(user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return UI_DISABLED
 
 	return UI_INTERACTIVE
 
 
-<<<<<<< HEAD
-/datum/lootpanel/ui_act(action, list/params)
-=======
 /datum/lootpanel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

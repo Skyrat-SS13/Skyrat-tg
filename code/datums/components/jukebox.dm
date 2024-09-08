@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT: See modular_skyrat/modules/jukebox /// Checks if the mob has jukebox muted in their preferences
-=======
-/// Checks if the mob has jukebox muted in their preferences
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define IS_PREF_MUTED(mob) (!isnull(mob.client) && !mob.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
 
 // Reasons for appling STATUS_MUTE to a mob's sound status
@@ -407,8 +403,5 @@
 	song_path = 'sound/ambience/title3.ogg'
 	song_name = "Tintin on the Moon"
 	song_length = 3 MINUTES + 52 SECONDS
-<<<<<<< HEAD
-	song_beat = 1 SECONDS SKYRAT EDIT END*/
-=======
 	song_beat = 1 SECONDS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+SKYRAT EDIT END*/

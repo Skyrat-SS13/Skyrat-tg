@@ -174,13 +174,10 @@
 
 /obj/item/clothing/neck/link_scryer/examine(mob/user)
 	. = ..()
-<<<<<<< HEAD
 	// SKYRAT EDIT NIFSOFT SCRYERS - START
 	if(custom_examine_controls)
 		return
 	// SKYRAT EDIT NIFSOFT SCRYERS - END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(cell)
 		. += span_notice("The battery charge reads [cell.percent()]%. <b>Right-click</b> with an empty hand to remove it.")
 	else

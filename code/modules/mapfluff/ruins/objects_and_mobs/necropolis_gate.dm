@@ -161,11 +161,7 @@ GLOBAL_DATUM(necropolis_gate, /obj/structure/necropolis_gate/legion_gate)
 /obj/structure/necropolis_gate/legion_gate/attack_hand(mob/user, list/modifiers)
 	if(!open && !changing_openness)
 		var/safety = tgui_alert(user, "You think this might be a bad idea...", "Knock on the door?", list("Proceed", "Abort"))
-<<<<<<< HEAD
-		if(safety == "Abort" || !in_range(src, user) || !src || open || changing_openness || user.incapacitated())
-=======
 		if(safety == "Abort" || !in_range(src, user) || !src || open || changing_openness || user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return
 		user.visible_message(span_warning("[user] knocks on [src]..."), span_boldannounce("You tentatively knock on [src]..."))
 		playsound(user.loc, 'sound/effects/shieldbash.ogg', 100, TRUE)

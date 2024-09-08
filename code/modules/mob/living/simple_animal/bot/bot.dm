@@ -12,10 +12,6 @@
 	hud_possible = list(DIAG_STAT_HUD, DIAG_BOT_HUD, DIAG_HUD, DIAG_BATT_HUD, DIAG_PATH_HUD = HUD_LIST_LIST)
 	maxbodytemp = INFINITY
 	minbodytemp = 0
-<<<<<<< HEAD
-	has_unlimited_silicon_privilege = TRUE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	sentience_type = SENTIENCE_ARTIFICIAL
 	status_flags = NONE //no default canpush
 	pass_flags = PASSFLAPS
@@ -980,15 +976,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 	return data
 
 // Actions received from TGUI
-<<<<<<< HEAD
-/mob/living/simple_animal/bot/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
-	var/mob/user = usr
-	if(!allowed(user))
-		to_chat(usr, span_warning("Access denied."))
-=======
 /mob/living/simple_animal/bot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -996,7 +983,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 	var/mob/user = ui.user
 	if(!allowed(user))
 		to_chat(user, span_warning("Access denied."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	if(action == "lock")
@@ -1016,15 +1002,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 		if("airplane")
 			bot_mode_flags ^= BOT_MODE_REMOTE_ENABLED
 		if("hack")
-<<<<<<< HEAD
-			if(!HAS_SILICON_ACCESS(usr))
-				return
-			if(!(bot_cover_flags & BOT_COVER_EMAGGED))
-				bot_cover_flags |= (BOT_COVER_EMAGGED|BOT_COVER_HACKED|BOT_COVER_LOCKED)
-				to_chat(usr, span_warning("You overload [src]'s [hackables]."))
-				message_admins("Safety lock of [ADMIN_LOOKUPFLW(src)] was disabled by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
-				usr.log_message("disabled safety lock of [src]", LOG_GAME)
-=======
 			if(!HAS_SILICON_ACCESS(user))
 				return
 			if(!(bot_cover_flags & BOT_COVER_EMAGGED))
@@ -1032,42 +1009,22 @@ Pass a positive integer as an argument to override a bot's default speed.
 				to_chat(user, span_warning("You overload [src]'s [hackables]."))
 				message_admins("Safety lock of [ADMIN_LOOKUPFLW(src)] was disabled by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
 				user.log_message("disabled safety lock of [src]", LOG_GAME)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				bot_reset()
 				to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
 				to_chat(src, span_boldnotice(get_emagged_message()))
 				return
 			if(!(bot_cover_flags & BOT_COVER_HACKED))
-<<<<<<< HEAD
-				to_chat(usr, span_boldannounce("You fail to repair [src]'s [hackables]."))
-				return
-			bot_cover_flags &= ~(BOT_COVER_EMAGGED|BOT_COVER_HACKED)
-			to_chat(usr, span_notice("You reset the [src]'s [hackables]."))
-			usr.log_message("re-enabled safety lock of [src]", LOG_GAME)
-=======
 				to_chat(user, span_boldannounce("You fail to repair [src]'s [hackables]."))
 				return
 			bot_cover_flags &= ~(BOT_COVER_EMAGGED|BOT_COVER_HACKED)
 			to_chat(user, span_notice("You reset the [src]'s [hackables]."))
 			user.log_message("re-enabled safety lock of [src]", LOG_GAME)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			bot_reset()
 			to_chat(src, span_userdanger("Software restored to standard."))
 			to_chat(src, span_boldnotice(possessed_message))
 		if("eject_pai")
 			if(!paicard)
 				return
-<<<<<<< HEAD
-			to_chat(usr, span_notice("You eject [paicard] from [initial(src.name)]."))
-			ejectpai(usr)
-		if("toggle_personality")
-			if (can_be_possessed)
-				disable_possession(usr)
-			else
-				enable_possession(usr)
-		if("rename")
-			rename(usr)
-=======
 			to_chat(user, span_notice("You eject [paicard] from [initial(src.name)]."))
 			ejectpai(user)
 		if("toggle_personality")
@@ -1077,7 +1034,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 				enable_possession(user)
 		if("rename")
 			rename(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /mob/living/simple_animal/bot/update_icon_state()
 	icon_state = "[isnull(base_icon_state) ? initial(icon_state) : base_icon_state][get_bot_flag(bot_mode_flags, BOT_MODE_ON)]"

@@ -237,11 +237,7 @@
 
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/sleeper/ui_act(action, params)
-=======
 /obj/machinery/sleeper/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -304,33 +300,21 @@
  * Can be controlled from the inside and can be deconstructed.
  */
 /obj/machinery/sleeper/syndie
-<<<<<<< HEAD
-=======
 	name = "syndicate sleeper"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "sleeper_s"
 	base_icon_state = "sleeper_s"
 	controls_inside = TRUE
 	deconstructable = TRUE
-<<<<<<< HEAD
-
-///Fully upgraded variant, the circuit using tier 4 parts.
-/obj/machinery/sleeper/syndie/fullupgrade
-=======
 	circuit = /obj/item/circuitboard/machine/sleeper/syndie
 
 ///Fully upgraded variant, the circuit using tier 4 parts.
 /obj/machinery/sleeper/syndie/fullupgrade
 	name = "upgraded syndicate sleeper"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	circuit = /obj/item/circuitboard/machine/sleeper/fullupgrade
 
 ///Fully upgraded, not deconstructable, while using the normal sprite.
 /obj/machinery/sleeper/syndie/fullupgrade/nt
-<<<<<<< HEAD
-=======
 	name = "\improper Nanotrasen sleeper"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"
 	deconstructable = FALSE

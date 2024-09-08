@@ -15,22 +15,6 @@
 	if(iscarbon(loc))
 		Insert(loc)
 
-<<<<<<< HEAD
-/obj/item/organ/internal/body_egg/Insert(mob/living/carbon/egg_owner, special = FALSE, movement_flags = DELETE_IF_REPLACED)
-	. = ..()
-	if(!.)
-		return
-	egg_owner.add_traits(list(TRAIT_XENO_HOST, TRAIT_XENO_IMMUNE), ORGAN_TRAIT)
-	egg_owner.med_hud_set_status()
-	INVOKE_ASYNC(src, PROC_REF(AddInfectionImages), egg_owner)
-
-/obj/item/organ/internal/body_egg/Remove(mob/living/carbon/egg_owner, special, movement_flags)
-	. = ..()
-	egg_owner.remove_traits(list(TRAIT_XENO_HOST, TRAIT_XENO_IMMUNE), ORGAN_TRAIT)
-	egg_owner.med_hud_set_status()
-	INVOKE_ASYNC(src, PROC_REF(RemoveInfectionImages), egg_owner)
-
-=======
 /obj/item/organ/internal/body_egg/mob_insert(mob/living/carbon/egg_owner, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
 
@@ -44,7 +28,6 @@
 	egg_owner.med_hud_set_status()
 	INVOKE_ASYNC(src, PROC_REF(RemoveInfectionImages), egg_owner)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/organ/internal/body_egg/on_death(seconds_per_tick, times_fired)
 	. = ..()
 	if(!owner)

@@ -16,7 +16,6 @@
 	var/hit_probability = 2
 	///Reference to the paper that's folded up in this paperplane, which we return when unfolded.
 	var/obj/item/paper/internal_paper
-<<<<<<< HEAD
 
 	// SKYRAT EDIT START - Better paper planes
 	/// How long does getting shot in the eyes knock you down for?
@@ -28,8 +27,6 @@
 	/// Does it get deleted when hitting anything or landing?
 	var/delete_on_impact = FALSE
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/paperplane/syndicate
 	desc = "Paper, masterfully folded in the shape of a plane."
@@ -68,11 +65,7 @@
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
-<<<<<<< HEAD
 		eyes.apply_organ_damage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
-=======
-		eyes.apply_organ_damage(rand(6,8))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	sleep(1 SECONDS)
 	return BRUTELOSS
 
@@ -109,11 +102,7 @@
 /obj/item/paperplane/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(iscarbon(hit_atom) && HAS_TRAIT(hit_atom, TRAIT_PAPER_MASTER))
 		var/mob/living/carbon/hit_carbon = hit_atom
-<<<<<<< HEAD
-		if(hit_carbon.can_catch_item(TRUE))
-=======
 		if(hit_carbon.can_catch_item(src, skip_throw_mode_check = TRUE))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			hit_carbon.throw_mode_on(THROW_MODE_TOGGLE)
 
 	. = ..()

@@ -251,12 +251,8 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	if(get_amount() < 2)
 		user.balloon_alert(user, "not enough material!")
 		return ITEM_INTERACT_BLOCKING
-<<<<<<< HEAD
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
 	if(!do_after(user, 4 SECONDS * skill_modifier, build_on))
-=======
-	if(!do_after(user, 4 SECONDS, build_on))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
 		user.balloon_alert(user, "something is blocking the tile!")
@@ -265,10 +261,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		user.balloon_alert(user, "not enough material!")
 		return ITEM_INTERACT_BLOCKING
 	new/obj/structure/girder/displaced(build_on)
-<<<<<<< HEAD
 	user.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT: Construction Skill
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ITEM_INTERACT_SUCCESS
 
 /*
@@ -359,11 +352,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("loom", /obj/structure/loom, 10, time = 1.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_TOOLS), \
 	new/datum/stack_recipe("mortar", /obj/item/reagent_containers/cup/mortar, 3, crafting_flags = NONE, category = CAT_CHEMISTRY), \
 	new/datum/stack_recipe("firebrand", /obj/item/match/firebrand, 2, time = 10 SECONDS, crafting_flags = NONE, category = CAT_TOOLS), \
-<<<<<<< HEAD
 	new/datum/stack_recipe("bonfire", /obj/structure/bonfire/player_made, 10, time = 6 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_TOOLS), /* SKYRAT EDIT - Pollution - ORIGINAL: /obj/structure/bonfire */ \
-=======
-	new/datum/stack_recipe("bonfire", /obj/structure/bonfire, 10, time = 6 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_TOOLS), \
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new/datum/stack_recipe("easel", /obj/structure/easel, 5, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_ENTERTAINMENT), \
 	new/datum/stack_recipe("noticeboard", /obj/item/wallframe/noticeboard, 1, time = 1 SECONDS, crafting_flags = NONE, category = CAT_FURNITURE), \
 	new/datum/stack_recipe("test tube rack", /obj/item/storage/test_tube_rack, 1, time = 1 SECONDS, crafting_flags = NONE, category = CAT_CHEMISTRY), \
@@ -463,11 +452,8 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 	grind_results = list(/datum/reagent/cellulose = 10)
 	material_type = /datum/material/bamboo
 	walltype = /turf/closed/wall/mineral/bamboo
-<<<<<<< HEAD
-=======
 	drop_sound = null
 	pickup_sound = null
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/armor/mineral_bamboo
 	fire = 50
@@ -848,10 +834,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 		/datum/crafting_recipe/bonespear,
 		/datum/crafting_recipe/bracers,
 		/datum/crafting_recipe/skullhelm,
-<<<<<<< HEAD
 		/datum/crafting_recipe/ash_recipe/bone_greaves, /* SKYRAT EDIT ADDITION */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 	AddElement(

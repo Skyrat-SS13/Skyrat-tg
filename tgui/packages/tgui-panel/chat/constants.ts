@@ -37,10 +37,7 @@ export const MESSAGE_TYPE_EVENTCHAT = 'eventchat';
 export const MESSAGE_TYPE_ADMINLOG = 'adminlog';
 export const MESSAGE_TYPE_ATTACKLOG = 'attacklog';
 export const MESSAGE_TYPE_DEBUG = 'debug';
-<<<<<<< HEAD
 export const MESSAGE_TYPE_MENTOR = 'mentor'; // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Metadata for each message type
 export const MESSAGE_TYPES = [
@@ -57,22 +54,14 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_LOCALCHAT,
     name: 'Local',
     description: 'In-character local messages (say, emote, etc)',
-<<<<<<< HEAD
     selector: '.say, .emote, .looc',
-=======
-    selector: '.say, .emote',
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   },
   {
     type: MESSAGE_TYPE_RADIO,
     name: 'Radio',
     description: 'All departments of radio messages',
     selector:
-<<<<<<< HEAD
-      '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .newscaster, .resonate, .abductor, .alien, .changeling',
-=======
       '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .enteradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .newscaster, .resonate, .abductor, .alien, .changeling',
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   },
   {
     type: MESSAGE_TYPE_INFO,
@@ -98,11 +87,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_OOC,
     name: 'OOC',
     description: 'The bluewall of global OOC messages',
-<<<<<<< HEAD
     selector: '.ooc, .adminooc, .adminobserverooc, .oocplain, .looc, .rlooc',
-=======
-    selector: '.ooc, .adminooc, .adminobserverooc, .oocplain',
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   },
   {
     type: MESSAGE_TYPE_ADMINPM,
@@ -161,13 +146,10 @@ export const MESSAGE_TYPES = [
     description: 'DEBUG: SSPlanets subsystem Recover().',
     admin: true,
   },
-<<<<<<< HEAD
   {
     type: MESSAGE_TYPE_MENTOR, // SKYRAT EDIT
     name: 'Mentor Log',
     description: 'Mentor PMs and other mentor things.',
     selector: '.mentor, .mentornotice',
   },
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ];

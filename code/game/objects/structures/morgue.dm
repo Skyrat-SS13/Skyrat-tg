@@ -31,11 +31,7 @@
 GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants and other ghosties.
 
 /obj/structure/bodycontainer
-<<<<<<< HEAD
-	icon = 'icons/obj/structures.dmi'//ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	icon = 'icons/obj/structures.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "morgue1"
 	density = TRUE
 	anchored = TRUE
@@ -490,13 +486,10 @@ GLOBAL_LIST_EMPTY(crematoriums)
 				qdel(M)
 
 		for(var/obj/O in conts) //conts defined above, ignores crematorium and tray
-<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION
 			if(istype(O, /obj/item/goldeneye_key))
 				continue
 			// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(istype(O, /obj/effect/dummy/phased_mob)) //they're not physical, don't burn em.
 				continue
 			qdel(O)

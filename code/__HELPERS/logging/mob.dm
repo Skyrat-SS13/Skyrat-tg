@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
- * Logs a mesage to the mob_tags log, including the mobs tag
-=======
  * Logs a message to the mob_tags log, including the mobs tag
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * Arguments:
  * * text - text to log.
  */
@@ -48,15 +44,12 @@
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLE)
 			colored_message = "(EMOTE) (SUBTLE) [colored_message]"
 		if(LOG_SUBTLER)
 			colored_message = "(EMOTE) (SUBTLER) [colored_message]"
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(LOG_RADIO_EMOTE)
 			colored_message = "(RADIOEMOTE) [colored_message]"
 

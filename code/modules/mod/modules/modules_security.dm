@@ -19,11 +19,7 @@
 /obj/item/mod/module/magnetic_harness/Initialize(mapload)
 	. = ..()
 	if(!guns_typecache)
-<<<<<<< HEAD
 		guns_typecache = typecacheof(list(/obj/item/gun/ballistic, /obj/item/gun/energy, /obj/item/gun/grenadelauncher, /obj/item/gun/chem, /obj/item/gun/syringe, /obj/item/gun/microfusion)) //SKYRAT EDIT - MICROFUSION
-=======
-		guns_typecache = typecacheof(list(/obj/item/gun/ballistic, /obj/item/gun/energy, /obj/item/gun/grenadelauncher, /obj/item/gun/chem, /obj/item/gun/syringe))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/mod/module/magnetic_harness/on_install()
 	var/obj/item/clothing/suit = mod.get_part_from_slot(ITEM_SLOT_OCLOTHING)
@@ -572,11 +568,7 @@
 	projectile.ricochets_max += 1
 	projectile.min_ricochets += 1
 	projectile.ricochet_incidence_leeway = 0 //allows the projectile to bounce at any angle.
-<<<<<<< HEAD
-	ADD_TRAIT(projectile, TRAIT_ALWAYS_HIT_ZONE, MOD_TRAIT)
-=======
 	projectile.accuracy_falloff = 0
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #undef SHOOTING_ASSISTANT_OFF
 #undef STORMTROOPER_MODE

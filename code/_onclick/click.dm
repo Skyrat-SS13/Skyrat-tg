@@ -101,11 +101,7 @@
 		CtrlClickOn(A)
 		return
 
-<<<<<<< HEAD
-	if(incapacitated(IGNORE_RESTRAINTS|IGNORE_STASIS))
-=======
 	if(INCAPACITATED_IGNORING(src, INCAPABLE_RESTRAINTS|INCAPABLE_STASIS))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	face_atom(A)
@@ -263,17 +259,12 @@
 			var/obj/dummy = new(get_turf(here))
 			dummy.pass_flags |= PASSTABLE
 			dummy.SetInvisibility(INVISIBILITY_ABSTRACT)
-<<<<<<< HEAD
-			for(var/i in 1 to reach) //Limit it to that many tries
-				var/turf/T = get_step(dummy, get_dir(dummy, there))
-=======
 			var/list/steps = get_steps_to(dummy, there)
 			if(isnull(steps) || length(steps) > reach) // If the path is further than the reach, no way we can reach it anyways.
 				qdel(dummy)
 				return FALSE
 			for(var/direction in steps)
 				var/turf/next_step = get_step(dummy, direction)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				if(dummy.CanReach(there))
 					qdel(dummy)
 					return TRUE

@@ -8,11 +8,8 @@
 
 	var/datum/strip_menu/strip_menu = allocate(/datum/strip_menu, target, strippable)
 
-<<<<<<< HEAD
-	run_loc_floor_bottom_left.luminosity = 6 // SKYRAT EDIT - Making this unit test pass by lighting a turf up.
+	//run_loc_floor_bottom_left.luminosity = 6 // SKYRAT EDIT - Uncomment if this fails.
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/ui_state = strip_menu.ui_state(user)
 
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(user, ui_state), UI_INTERACTIVE, "Perfect conditions were not interactive.")

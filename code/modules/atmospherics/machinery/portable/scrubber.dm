@@ -69,14 +69,11 @@
 		scrub(epicentre.return_air())
 	for(var/turf/open/openturf as anything in epicentre.get_atmos_adjacent_turfs(alldir = TRUE))
 		scrub(openturf.return_air())
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	for(var/turf/open/open_turf in view(3, src))
 		if(open_turf.pollution)
 			open_turf.pollution.scrub_amount(POLLUTION_HEIGHT_DIVISOR)
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /**
@@ -169,11 +166,7 @@
 	else if(on && holding)
 		user.investigate_log("started a transfer into [holding].", INVESTIGATE_ATMOS)
 
-<<<<<<< HEAD
-/obj/machinery/portable_atmospherics/scrubber/ui_act(action, params)
-=======
 /obj/machinery/portable_atmospherics/scrubber/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

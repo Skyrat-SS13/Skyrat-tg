@@ -354,11 +354,7 @@
 		. += how_cool_are_your_threads.Join()
 
 	if(get_armor().has_any_armor() || (flags_cover & (HEADCOVERSMOUTH|PEPPERPROOF)) || (clothing_flags & STOPSPRESSUREDAMAGE) || (visor_flags & STOPSPRESSUREDAMAGE))
-<<<<<<< HEAD
 		. += span_notice("OOC: Click <a href='?src=[REF(src)];list_armor=1'>here</a> to see its protection classes.") // SKYRAT EDIT ORIGINAL: ("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
-=======
-		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
@@ -532,11 +528,7 @@ BLIND     // can't see anything
 	update_appearance() //most of the time the sprite changes
 
 /obj/item/clothing/proc/can_use(mob/user)
-<<<<<<< HEAD
-	return istype(user) && !user.incapacitated()
-=======
 	return istype(user) && !user.incapacitated
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/proc/spawn_shreds()
 	new /obj/effect/decal/cleanable/shreds(get_turf(src), name)

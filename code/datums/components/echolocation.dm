@@ -32,11 +32,7 @@
 	/// Cooldown for the echolocation.
 	COOLDOWN_DECLARE(cooldown_last)
 
-<<<<<<< HEAD
 /datum/component/echolocation/Initialize(echo_range, cooldown_time, image_expiry_time, fade_in_time, fade_out_time, images_are_static, blocking_trait, echo_group, echo_icon, color_path, use_echo = TRUE, show_own_outline = FALSE, personal_color = "#ffffff") // SKYRAT EDIT CHANGE - ORIGINAL: /datum/component/echolocation/Initialize(echo_range, cooldown_time, image_expiry_time, fade_in_time, fade_out_time, images_are_static, blocking_trait, echo_group, echo_icon = "echo", color_path)
-=======
-/datum/component/echolocation/Initialize(echo_range, cooldown_time, image_expiry_time, fade_in_time, fade_out_time, images_are_static, blocking_trait, echo_group, echo_icon, color_path)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	var/mob/living/echolocator = parent
 	if(!istype(echolocator))
@@ -59,26 +55,19 @@
 		src.images_are_static = images_are_static
 	if(!isnull(blocking_trait))
 		src.blocking_trait = blocking_trait
-<<<<<<< HEAD
 	// SKYRAT ADDITION START: echolocation
 	src.show_own_outline = show_own_outline
 	src.echo_color = personal_color
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(ispath(color_path))
 		client_color = echolocator.add_client_colour(color_path)
 	src.echo_group = echo_group || REF(src)
 	echolocator.add_traits(list(TRAIT_ECHOLOCATION_RECEIVER, TRAIT_TRUE_NIGHT_VISION), echo_group) //so they see all the tiles they echolocated, even if they are in the dark
 	echolocator.become_blind(ECHOLOCATION_TRAIT)
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	if (use_echo) // add constructor toggle to not use the eye overlay
 		echolocator.overlay_fullscreen("echo", /atom/movable/screen/fullscreen/echo, echo_icon)
 	// SKYRAT EDIT ADDITION END
-=======
-	echolocator.overlay_fullscreen("echo", /atom/movable/screen/fullscreen/echo, echo_icon)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	START_PROCESSING(SSfastprocess, src)
 
 /datum/component/echolocation/Destroy(force)
@@ -103,11 +92,7 @@
 	echolocate()
 
 /datum/component/echolocation/proc/echolocate()
-<<<<<<< HEAD
 	if(stall || !COOLDOWN_FINISHED(src, cooldown_last)) // SKYRAT EDIT CHANGE - ORIGINAL: if(!COOLDOWN_FINISHED(src, cooldown_last))
-=======
-	if(!COOLDOWN_FINISHED(src, cooldown_last))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	COOLDOWN_START(src, cooldown_last, cooldown_time)
 	var/mob/living/echolocator = parent
@@ -143,7 +128,6 @@
 	if(images_are_static)
 		final_image.pixel_x = input.pixel_x
 		final_image.pixel_y = input.pixel_y
-<<<<<<< HEAD
 	// SKYRAT ADDITION START: echolocation (show outlines on self)
 	if(HAS_TRAIT_FROM(input, TRAIT_ECHOLOCATION_RECEIVER, echo_group)) //mark other echolocation with full white, except ourselves
 		var/datum/component/echolocation/located_component = input.GetComponent(/datum/component/echolocation)
@@ -156,13 +140,6 @@
 	var/list/fade_ins = list(final_image)
 	for(var/mob/living/echolocate_receiver as anything in receivers)
 		if(echolocate_receiver == input && !show_own_outline) // SKYRAT EDIT CHANGE - ORIGINAL: if(echolocate_receiver == input)
-=======
-	if(HAS_TRAIT_FROM(input, TRAIT_ECHOLOCATION_RECEIVER, echo_group)) //mark other echolocation with full white
-		final_image.color = white_matrix
-	var/list/fade_ins = list(final_image)
-	for(var/mob/living/echolocate_receiver as anything in receivers)
-		if(echolocate_receiver == input)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			continue
 		if(receivers[echolocate_receiver][input])
 			var/previous_image = receivers[echolocate_receiver][input]["image"]

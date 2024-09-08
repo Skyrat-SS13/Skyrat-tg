@@ -271,11 +271,7 @@
 
 	//catpeople: make any felinid near the target to face the target, chance for felinids to pounce at the light, stepping to the target
 	for(var/mob/living/carbon/human/target_felinid in view(1, targloc))
-<<<<<<< HEAD
-		if(!isfeline(target_felinid) || target_felinid.stat == DEAD || target_felinid.is_blind() || target_felinid.incapacitated()) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
-=======
-		if(!isfelinid(target_felinid) || target_felinid.stat == DEAD || target_felinid.is_blind() || target_felinid.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		if(!isfeline(target_felinid) || target_felinid.stat == DEAD || target_felinid.is_blind() || target_felinid.incapacitated) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
 			continue
 		if(target_felinid.body_position == STANDING_UP)
 			target_felinid.setDir(get_dir(target_felinid, targloc)) // kitty always looks at the light
@@ -304,11 +300,7 @@
 	if(outmsg)
 		user.visible_message(span_danger("[user] points [src] at [target]!"), outmsg) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(user, outmsg)
 	else
-<<<<<<< HEAD
-		user.visible_message(span_notice("[user] points [src] at [target]."), span_notice("You point [src] at [target].")) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(user, span_info("You point [src] at [target]."))
-=======
 		to_chat(user, span_info("You point [src] at [target]."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//we have successfully shone our pointer, reduce our battery depending on whether we have an extra lens or not
 	energy -= crystal_lens ? 2 : 1

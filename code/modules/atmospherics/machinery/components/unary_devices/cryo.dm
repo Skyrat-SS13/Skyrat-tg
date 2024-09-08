@@ -71,10 +71,7 @@
 	density = TRUE
 	max_integrity = 350
 	armor_type = /datum/armor/unary_cryo_cell
-<<<<<<< HEAD
 	layer = MOB_LAYER - 0.2 //SKYRAT EDIT - Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	circuit = /obj/item/circuitboard/machine/cryo_tube
 	occupant_typecache = list(/mob/living/carbon, /mob/living/simple_animal)
 	processing_flags = NONE
@@ -664,11 +661,7 @@
 
 	if(isliving(target))
 		var/mob/living/living_mob = target
-<<<<<<< HEAD
-		if(living_mob.incapacitated())
-=======
 		if(living_mob.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			close_machine(target)
 		return
 

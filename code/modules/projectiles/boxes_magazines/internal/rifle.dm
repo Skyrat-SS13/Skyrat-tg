@@ -60,9 +60,5 @@
 /obj/item/ammo_box/magazine/internal/boltaction/rebarxbow/syndie
 	max_ammo = 3
 	caliber = CALIBER_REBAR_SYNDIE
-<<<<<<< HEAD
-	ammo_type = /obj/item/ammo_casing/rebar
-=======
 	ammo_type = /obj/item/ammo_casing/rebar/syndie
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 

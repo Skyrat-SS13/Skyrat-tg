@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export type Channel =
   | 'Say'
   | 'Radio'
@@ -9,9 +8,6 @@ export type Channel =
   // SKYRAT EDIT ADDITION END
   | 'OOC'
   | 'Admin';
-=======
-export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'Admin';
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * ### ChannelIterator
@@ -21,7 +17,6 @@ export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'Admin';
  */
 export class ChannelIterator {
   private index: number = 0;
-<<<<<<< HEAD
   private readonly channels: Channel[] = [
     'Say',
     'Radio',
@@ -35,11 +30,6 @@ export class ChannelIterator {
   ];
   private readonly blacklist: Channel[] = ['Admin'];
   private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Admin']; // SKYRAT EDIT CHANGE (Add LOOC)
-=======
-  private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'OOC', 'Admin'];
-  private readonly blacklist: Channel[] = ['Admin'];
-  private readonly quiet: Channel[] = ['OOC', 'Admin'];
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
   public next(): Channel {
     if (this.blacklist.includes(this.channels[this.index])) {

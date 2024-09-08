@@ -29,11 +29,7 @@
 					/obj/item/reagent_containers/hypospray/medipen/ekit = 3,
 					/obj/item/reagent_containers/hypospray/medipen/blood_loss = 3)
 	crate_name = "medipen crate"
-<<<<<<< HEAD
-	crate_type = /obj/structure/closet/crate/medical
-=======
 	crate_type = /obj/structure/closet/crate/deforest
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/medical/coroner_crate
 	name = "Autopsy Kit"
@@ -142,10 +138,7 @@
 		/obj/item/emergency_bed,
 	)
 	crate_name = "surgical supplies crate"
-<<<<<<< HEAD
-=======
 	crate_type = /obj/structure/closet/crate/deforest
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/medical/salglucanister
 	name = "Heavy-Duty Saline Canister"

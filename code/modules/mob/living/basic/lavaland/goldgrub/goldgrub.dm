@@ -52,10 +52,6 @@
 		/datum/action/cooldown/mob_cooldown/burrow = BB_BURROW_ABILITY,
 	)
 	grant_actions_by_list(innate_actions)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	AddElement(/datum/element/ore_collecting)
 	AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE)
 	AddComponent(/datum/component/ai_listen_to_weather)

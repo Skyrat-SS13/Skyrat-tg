@@ -19,19 +19,13 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	var/admin_grantable = FALSE
 
 /datum/objective/New(text)
-<<<<<<< HEAD
 	GLOB.objectives += src //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(text)
 		explanation_text = text
 
 //Apparently objectives can be qdel'd. Learn a new thing every day
 /datum/objective/Destroy()
-<<<<<<< HEAD
 	GLOB.objectives -= src //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /datum/objective/proc/get_owners() // Combine owner and team into a single list.
@@ -146,7 +140,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
 		return FALSE
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
 		return FALSE
@@ -155,8 +148,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			return FALSE
 	// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 //dupe_search_range is a list of antag datums / minds / teams
@@ -250,11 +241,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 /datum/objective/assassinate/update_explanation_text()
 	..()
 	if(target?.current)
-<<<<<<< HEAD
 		explanation_text = "Assassinate [target.name], the [!target_role_type ? target.assigned_role.title : target.special_role] ONCE." //SKYRAT EDIT CHANGE
-=======
-		explanation_text = "Assassinate [target.name], the [!target_role_type ? target.assigned_role.title : target.special_role]."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		explanation_text = "Free objective."
 

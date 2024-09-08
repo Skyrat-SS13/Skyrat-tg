@@ -295,12 +295,9 @@
 	combo_display = new /atom/movable/screen/combo(null, src)
 	infodisplay += combo_display
 
-<<<<<<< HEAD
 	ammo_counter = new /atom/movable/screen/ammo_counter(null, src) //SKYRAT EDIT ADDITION
 	infodisplay += ammo_counter //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)
 			inv_slots[TOBITSHIFT(inv.slot_id) + 1] = inv
@@ -376,11 +373,8 @@
 			screenmob.client.screen -= H.wear_neck
 		if(H.head)
 			screenmob.client.screen -= H.head
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)

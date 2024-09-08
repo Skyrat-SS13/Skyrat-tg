@@ -24,14 +24,11 @@
 	layer = MOB_LAYER
 	max_integrity = 100
 	item_flags = XENOMORPH_HOLDABLE
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Scientist, Research Director")
 	special_desc = "This alien is an extremely dangerous life form capable of creating a xenomorph. You would know well not to approach without full body biological protection."
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	slowdown = 2
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 
@@ -303,16 +300,13 @@
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
 	desc = "The Research Director's pet, a domesticated and debeaked xenomorph facehugger. Friendly, but may still try to couple with your head."
-<<<<<<< HEAD
+	sterile = TRUE
+	slowdown = 1.5 //lamarr is too fat after being fed in captivity to effectively slow people down or something
 	// SKYRAT EDIT ADDITION START: job-restricted examine text
 	special_desc_requirement = EXAMINE_CHECK_ROLE
 	special_desc_roles = list("ROLE_ALIEN")
 	special_desc = "This young one has been cruelly mutilated. It lacks the capability to fill a host with our sisters."
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
-	sterile = TRUE
-	slowdown = 1.5 //lamarr is too fat after being fed in captivity to effectively slow people down or something
 
 /obj/item/clothing/mask/facehugger/dead
 	icon_state = "facehugger_dead"

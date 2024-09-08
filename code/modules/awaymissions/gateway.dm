@@ -139,7 +139,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	invisibility = INVISIBILITY_ABSTRACT
 
 /obj/effect/gateway_portal_bumper/Bumped(atom/movable/AM)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	var/list/type_blacklist = list(
 		/obj/item/mmi,
@@ -153,8 +152,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		to_chat(AM, span_warning("[content_item] seems to be blocking you from entering the gateway!"))
 		return
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(get_dir(src,AM) == gateway?.dir)
 		playsound(src, 'sound/effects/gateway_travel.ogg', 70, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		gateway.Transfer(AM)
@@ -197,7 +194,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	var/teleportion_possible = FALSE
 	var/transport_active = FALSE
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	var/requires_key = FALSE
 	var/key_used = FALSE
@@ -211,8 +207,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		return
 	//SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/machinery/gateway/Initialize(mapload)
 	generate_destination()
 	update_appearance()

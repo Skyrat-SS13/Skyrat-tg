@@ -365,18 +365,12 @@
 		/datum/computer_file/program/newscaster,
 	)
 
-<<<<<<< HEAD
 /* // SKYRAT EDIT REMOVAL BEGIN - Mutes the Curator's ringer on spawn
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/modular_computer/pda/curator/Initialize(mapload)
 	. = ..()
 	for(var/datum/computer_file/program/messenger/msg in stored_files)
 		msg.alert_silenced = TRUE
-<<<<<<< HEAD
 */ // SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/modular_computer/pda/psychologist
 	name = "psychologist PDA"

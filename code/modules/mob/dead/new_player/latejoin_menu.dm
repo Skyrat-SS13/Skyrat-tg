@@ -35,11 +35,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		ui.open()
 
 /datum/latejoin_menu/proc/scream_at_player(mob/dead/new_player/player)
-<<<<<<< HEAD
-	if(istype(player) && !player.jobs_menu_mounted)
-=======
 	if(!player.jobs_menu_mounted)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(player, span_notice("If the late join menu isn't showing, hold CTRL while clicking the join button!"))
 
 /datum/latejoin_menu/ui_data(mob/user)
@@ -157,7 +153,6 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				tgui_alert(owner, "There is an administrative lock on entering the game for non-observers!", "Oh No!")
 				return TRUE
 
-<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION START - Flavourtext requirement
 			if(CONFIG_GET(flag/min_flavor_text))
 				if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
@@ -165,8 +160,6 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 					return
 			// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			//Determines Relevent Population Cap
 			var/relevant_cap
 			var/hard_popcap = CONFIG_GET(number/hard_popcap)
@@ -197,10 +190,6 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				return TRUE
 
 			owner.vote_on_poll_handler(poll, params)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return TRUE
 
 /// Gives the user a random job that they can join as, and prompts them if they'd actually like to keep it, rerolling if not. Cancellable by the user.

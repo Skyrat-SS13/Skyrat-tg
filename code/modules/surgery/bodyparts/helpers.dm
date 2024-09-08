@@ -182,13 +182,8 @@
 /mob/living/carbon/proc/synchronize_bodytypes()
 	var/all_limb_flags = NONE
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
-<<<<<<< HEAD
-		for(var/obj/item/organ/external/ext_organ in limb)
-			all_limb_flags |= ext_organ.external_bodytypes
-=======
 		for(var/obj/item/organ/organ in limb)
 			all_limb_flags |= organ.external_bodytypes
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		all_limb_flags |= limb.bodytype
 
 	bodytype = all_limb_flags
@@ -197,13 +192,8 @@
 /mob/living/carbon/proc/synchronize_bodyshapes()
 	var/all_limb_flags = NONE
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
-<<<<<<< HEAD
-		for(var/obj/item/organ/external/ext_organ in limb)
-			all_limb_flags |= ext_organ.external_bodyshapes
-=======
 		for(var/obj/item/organ/organ in limb)
 			all_limb_flags |= organ.external_bodyshapes
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		all_limb_flags |= limb.bodyshape
 
 	bodyshape = all_limb_flags

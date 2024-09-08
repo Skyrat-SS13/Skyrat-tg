@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/centcom_announcer/default
 	welcome_sounds = list('sound/ai/default/welcome.ogg')
 	alert_sounds = list('sound/ai/default/attention.ogg')
@@ -22,7 +19,4 @@
 		ANNOUNCER_SHUTTLEDOCK = 'sound/ai/default/shuttledock.ogg',
 		ANNOUNCER_SHUTTLERECALLED = 'sound/ai/default/shuttlerecalled.ogg',
 		ANNOUNCER_SPANOMALIES = 'sound/ai/default/spanomalies.ogg')
-<<<<<<< HEAD
 	*/
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

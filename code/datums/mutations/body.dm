@@ -172,12 +172,7 @@
 // This is specifically happening because they're not used to their new height and are stumbling around into machinery made for normal humans
 /datum/mutation/human/acromegaly/proc/head_bonk(mob/living/parent)
 	SIGNAL_HANDLER
-<<<<<<< HEAD
-	var/turf/airlock_turf = get_turf(parent)
-	var/atom/movable/whacked_by = locate(/obj/machinery/door/airlock) in airlock_turf || locate(/obj/machinery/door/firedoor) in airlock_turf || locate(/obj/structure/mineral_door) in airlock_turf
-=======
 	var/atom/movable/whacked_by = (locate(/obj/machinery/door/airlock) in parent.loc) || (locate(/obj/machinery/door/firedoor) in parent.loc) || (locate(/obj/structure/mineral_door) in parent.loc)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!whacked_by || prob(100 - (8 *  GET_MUTATION_SYNCHRONIZER(src))))
 		return
 	to_chat(parent, span_danger("You hit your head on \the [whacked_by]'s header!"))
@@ -197,15 +192,12 @@
 /datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
 		owner.adjustBruteLoss(25) // take some DAMAGE
 		return
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(1.25)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
@@ -213,18 +205,14 @@
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
-		REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
-=======
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/human/clumsy

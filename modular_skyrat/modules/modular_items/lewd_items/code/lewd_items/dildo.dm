@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /// Choose a color and transparency level for the toy
 /obj/item/clothing/sextoy/dildo/custom_dildo/proc/customize(mob/living/user)
-	if(!src || !user || user.incapacitated() || !in_range(user, src))
+	if(!src || !user || user.incapacitated || !in_range(user, src))
 		return FALSE
 
 	var/color_choice = tgui_input_list(user, "Choose a color for your dildo.", "Dildo Color", GLOB.dildo_colors)

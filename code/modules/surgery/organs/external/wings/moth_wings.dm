@@ -5,11 +5,7 @@
 
 	preference = "feature_moth_wings"
 
-<<<<<<< HEAD
 	//dna_block = DNA_MOTH_WINGS_BLOCK // SKYRAT EDIT REMOVAL
-=======
-	dna_block = DNA_MOTH_WINGS_BLOCK
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/moth
 
@@ -78,11 +74,7 @@
 
 ///Moth wing bodypart overlay, including burn functionality!
 /datum/bodypart_overlay/mutant/wings/moth
-<<<<<<< HEAD
 	feature_key = "wings" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "moth_wings"
-=======
-	feature_key = "moth_wings"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
 	///Accessory datum of the burn sprite
 	var/datum/sprite_accessory/burn_datum = /datum/sprite_accessory/moth_wings/burnt_off
@@ -95,19 +87,11 @@
 	burn_datum = fetch_sprite_datum(burn_datum)
 
 /datum/bodypart_overlay/mutant/wings/moth/get_global_feature_list()
-<<<<<<< HEAD
 	return SSaccessories.sprite_accessories["wings"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.moth_wings_list
 
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
 		return ..(human, ignore_suit = TRUE) // SKYRAT EDIT - Customization - ORIGINAL: return TRUE
-=======
-	return SSaccessories.moth_wings_list
-
-/datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
-		return TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return FALSE
 
 /datum/bodypart_overlay/mutant/wings/moth/get_base_icon_state()

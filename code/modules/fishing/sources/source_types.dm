@@ -1,22 +1,5 @@
 /datum/fish_source/ocean
 	fish_table = list(
-<<<<<<< HEAD
-		FISHING_DUD = 15,
-		/obj/item/coin/gold = 5,
-		/obj/item/fish/clownfish = 15,
-		/obj/item/fish/pufferfish = 15,
-		/obj/item/fish/cardinal = 15,
-		/obj/item/fish/greenchromis = 15,
-		/obj/item/fish/lanternfish = 5,
-		/obj/item/fish/zipzap = 5,
-		/obj/item/fish/clownfish/lube = 3,
-		/obj/structure/mystery_box/fishing = 1,
-	)
-	fish_counts = list(
-		/obj/item/fish/clownfish/lube = 2,
-		/obj/structure/mystery_box/fishing = 1,
-	)
-=======
 		FISHING_DUD = 10,
 		/obj/effect/spawner/message_in_a_bottle = 4,
 		/obj/item/coin/gold = 6,
@@ -45,15 +28,12 @@
 		/obj/item/fish/clownfish/lube = 3 MINUTES,
 		/obj/item/fish/swordfish = 5 MINUTES,
 	)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 5
 	explosive_malus = TRUE
 
 /datum/fish_source/ocean/beach
 	catalog_description = "Beach shore water"
 
-<<<<<<< HEAD
-=======
 /datum/fish_source/ice_fishing
 	catalog_description = "Ice-covered water"
 	fish_table = list(
@@ -113,18 +93,14 @@
 	)
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 25
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/fish_source/portal
 	fish_table = list(
 		FISHING_DUD = 7,
 		/obj/item/fish/goldfish = 10,
 		/obj/item/fish/guppy = 10,
 		/obj/item/fish/angelfish = 10,
-<<<<<<< HEAD
-=======
 		/obj/item/fish/perch = 5,
 		/obj/item/fish/goldfish/three_eyes = 3,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	catalog_description = "Aquarium dimension (Fishing portal generator)"
 	///The name of this option shown in the radial menu on the fishing portal generator
@@ -136,36 +112,26 @@
 
 /datum/fish_source/portal/beach
 	fish_table = list(
-<<<<<<< HEAD
-		FISHING_DUD = 10,
-=======
 		FISHING_DUD = 7,
 		/obj/effect/spawner/message_in_a_bottle = 3,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/fish/clownfish = 10,
 		/obj/item/fish/pufferfish = 10,
 		/obj/item/fish/cardinal = 10,
 		/obj/item/fish/greenchromis = 10,
-<<<<<<< HEAD
-=======
 		/obj/item/fish/squid = 8,
 		/obj/item/fish/plaice = 8,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	catalog_description = "Beach dimension (Fishing portal generator)"
 	radial_name = "Beach"
 	radial_state = "palm_beach"
 	overlay_state = "portal_beach"
 
-<<<<<<< HEAD
-=======
 /datum/fish_source/portal/beach/on_fishing_spot_init(datum/component/fishing_spot/spot)
 	ADD_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
 
 /datum/fish_source/portal/beach/on_fishing_spot_del(datum/component/fishing_spot/spot)
 	REMOVE_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/fish_source/portal/chasm
 	background = "background_lavaland"
 	fish_table = list(
@@ -182,12 +148,8 @@
 
 /datum/fish_source/portal/ocean
 	fish_table = list(
-<<<<<<< HEAD
-		FISHING_DUD = 5,
-=======
 		FISHING_DUD = 3,
 		/obj/effect/spawner/message_in_a_bottle = 2,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/fish/lanternfish = 5,
 		/obj/item/fish/firefish = 5,
 		/obj/item/fish/dwarf_moonfish = 5,
@@ -195,8 +157,6 @@
 		/obj/item/fish/needlefish = 5,
 		/obj/item/fish/armorfish = 5,
 		/obj/item/fish/zipzap = 5,
-<<<<<<< HEAD
-=======
 		/obj/item/fish/stingray = 4,
 		/obj/item/fish/monkfish = 4,
 		/obj/item/fish/swordfish = 3,
@@ -206,7 +166,6 @@
 	)
 	fish_count_regen = list(
 		/obj/item/fish/swordfish = 5 MINUTES,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	catalog_description = "Ocean dimension (Fishing portal generator)"
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 10
@@ -214,15 +173,12 @@
 	overlay_state = "portal_ocean"
 	radial_state = "seaboat"
 
-<<<<<<< HEAD
-=======
 /datum/fish_source/portal/ocean/on_fishing_spot_init(datum/component/fishing_spot/spot)
 	ADD_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
 
 /datum/fish_source/portal/ocean/on_fishing_spot_del(datum/component/fishing_spot/spot)
 	REMOVE_TRAIT(spot.parent, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION, INNATE_TRAIT)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/fish_source/portal/hyperspace
 	fish_table = list(
 		FISHING_DUD = 5,
@@ -247,8 +203,6 @@
 		/obj/item/fish/donkfish = 5,
 		/obj/item/fish/emulsijack = 5,
 		/obj/item/fish/jumpercable = 5,
-<<<<<<< HEAD
-=======
 		/obj/item/fish/chainsawfish = 2,
 		/obj/item/fish/pike/armored = 2,
 	)
@@ -259,7 +213,6 @@
 	fish_count_regen = list(
 		/obj/item/fish/chainsawfish = 7 MINUTES,
 		/obj/item/fish/pike/armored = 7 MINUTES,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	catalog_description = "Syndicate dimension (Fishing portal generator)"
 	radial_name = "Syndicate"
@@ -311,13 +264,8 @@
 	challenge.bait_bounce_mult = clamp(challenge.bait_bounce_mult + (rand(-3, 3) * 0.1), 0.1, 1)
 	challenge.completion_loss = max(challenge.completion_loss + rand(-2, 2), 0)
 	challenge.completion_gain = max(challenge.completion_gain + rand(-1, 1), 2)
-<<<<<<< HEAD
-	challenge.short_jump_velocity_limit += rand(-100, 100)
-	challenge.long_jump_velocity_limit += rand(-100, 100)
-=======
 	challenge.mover.short_jump_velocity_limit += rand(-100, 100)
 	challenge.mover.long_jump_velocity_limit += rand(-100, 100)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/static/list/active_effects = bitfield_to_list(FISHING_MINIGAME_ACTIVE_EFFECTS)
 	for(var/effect in active_effects)
 		if(prob(30))
@@ -479,22 +427,12 @@
 		/obj/item/clothing/gloves/bracer = 2,
 		/obj/effect/decal/remains/human = 2,
 		/obj/item/fish/mastodon = 1,
-<<<<<<< HEAD
-=======
 		/obj/item/fishing_rod/telescopic/master = 1,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	fish_counts = list(
 		/obj/item/clothing/gloves/bracer = 1,
 		/obj/effect/decal/remains/human = 1,
 		/obj/item/fish/mastodon = 1,
-<<<<<<< HEAD
-	)
-	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 15
-
-#define RANDOM_SEED "Random seed"
-
-=======
 		/obj/item/fishing_rod/telescopic/master = 1,
 	)
 	fish_count_regen = list(
@@ -502,7 +440,6 @@
 	)
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 15
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/fish_source/hydro_tray
 	catalog_description = "Hydroponics trays"
 	fish_table = list(
@@ -546,11 +483,7 @@
 	return ..()
 
 /datum/fish_source/hydro_tray/spawn_reward(reward_path, mob/fisherman, turf/fishing_spot)
-<<<<<<< HEAD
-	if(reward_path != RANDOM_SEED)
-=======
 	if(reward_path != FISHING_RANDOM_SEED)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/mob/living/created_reward = ..()
 		if(istype(created_reward))
 			created_reward.name = "small [created_reward.name]"
@@ -571,8 +504,3 @@
 
 	var/picked_path = pick(seeds_to_draw_from)
 	return new picked_path(get_turf(fishing_spot))
-<<<<<<< HEAD
-
-#undef RANDOM_SEED
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

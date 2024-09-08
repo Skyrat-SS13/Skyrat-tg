@@ -63,11 +63,8 @@
 #define ITEM_SLOT_HANDCUFFED (1<<18)
 /// Legcuff slot (bolas, beartraps)
 #define ITEM_SLOT_LEGCUFFED (1<<19)
-<<<<<<< HEAD
-=======
 /// Inside of a character's BELT.........
 #define ITEM_SLOT_BELTPACK (1<<20)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Total amount of slots
 #define SLOTS_AMT 20 // Keep this up to date!
@@ -113,7 +110,6 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define HIDEMUTWINGS (1<<13)
 ///hides belts and riggings
 #define HIDEBELT (1<<14)
-<<<<<<< HEAD
 
 //SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
 /// Manually set this on items you want anthro ears to show on!
@@ -127,8 +123,6 @@ DEFINE_BITFIELD(no_equip_flags, list(
 /// If this has our taur variant, do we hide our taur part?
 #define HIDETAUR (1<<18)
 //SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
@@ -162,13 +156,10 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define FEMALE_UNIFORM_TOP_ONLY (1<<1)
 /// For when you don't want the "breast" effect to be applied (the one that cuts two pixels in the middle of the front of the uniform when facing east or west).
 #define FEMALE_UNIFORM_NO_BREASTS (1<<2)
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION START
 /// For when you -don't- want to apply FEMALE_UNIFORM_TOP_ONLY to the digi version (which happens by default).
 #define FEMALE_UNIFORM_DIGI_FULL (1<<3)
 // SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //flags for alternate styles: These are hard sprited so don't set this if you didn't put the effort in
 #define NORMAL_STYLE 0
@@ -176,15 +167,15 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define DIGITIGRADE_STYLE 2
 
 //Flags (actual flags, fucker ^) for /obj/item/var/supports_variations_flags
-<<<<<<< HEAD
-///No alternative sprites based on bodytype
+/// No alternative sprites or handling based on bodytype
 #define CLOTHING_NO_VARIATION (1<<0)
-///Has a sprite for digitigrade legs specifically.
+/// Has a sprite for digitigrade legs specifically.
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
-///The sprite works fine for digitigrade legs as-is.
+/// The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
-///has a sprite for monkeys
-#define CLOTHING_MONKEY_VARIATION (1<<3)
+/// Auto-generates the leg portion of the sprite with GAGS
+/// Suggested that you set [/obj/item/var/digitigrade_greyscale_config_worn] when using this flag
+#define CLOTHING_DIGITIGRADE_MASK (1<<3)
 // SKYRAT EDIT ADDITION START
 /// The sprite works fine for snouts.
 #define CLOTHING_SNOUTED_VARIATION (1<<4)
@@ -199,20 +190,8 @@ DEFINE_BITFIELD(no_equip_flags, list(
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
 // SKYRAT EDIT ADDITION END
-=======
-/// No alternative sprites or handling based on bodytype
-#define CLOTHING_NO_VARIATION (1<<0)
-/// Has a sprite for digitigrade legs specifically.
-#define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
-/// The sprite works fine for digitigrade legs as-is.
-#define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
-/// Auto-generates the leg portion of the sprite with GAGS
-/// Suggested that you set [/obj/item/var/digitigrade_greyscale_config_worn] when using this flag
-#define CLOTHING_DIGITIGRADE_MASK (1<<3)
-
 /// All variation flags which render "correctly" on a digitigrade leg setup
 #define DIGITIGRADE_VARIATIONS (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON|CLOTHING_DIGITIGRADE_MASK)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
@@ -257,10 +236,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/energy,
 	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
-<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 GLOBAL_LIST_INIT(security_vest_allowed, list(
@@ -278,10 +254,7 @@ GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/storage/belt/holster/energy,
 	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 	/obj/item/pen/red/security,
-<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
@@ -294,10 +267,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/energy,
 	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
-<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 //Allowed list for all chaplain suits (except the honkmother robe)

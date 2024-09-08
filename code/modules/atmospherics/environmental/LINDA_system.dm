@@ -134,11 +134,8 @@
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
 	SEND_SIGNAL(src, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS)
 
-<<<<<<< HEAD
 	update_adjacent_pollutants() //SKYRAT EDIT ADDITION //Atmos adjacency could unlock/block adjacent pollutants, this is dirty flags anyway so its fine having it here
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /**
  * returns a list of adjacent turfs that can share air with this one.
  * alldir includes adjacent diagonal tiles that can share
@@ -202,10 +199,7 @@
 		SSair.remove_from_active(src)
 	else
 		SSair.add_to_active(src)
-<<<<<<< HEAD
 	liquid_update_turf() //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /atom/movable/proc/move_update_air(turf/target_turf)
 	if(isturf(target_turf))

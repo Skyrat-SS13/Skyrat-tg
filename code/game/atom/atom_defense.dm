@@ -94,42 +94,26 @@
 		CRASH("/atom/proc/run_atom_armor was called on [src] without being implemented as a type that uses integrity!")
 	if(damage_flag == MELEE && damage_amount < damage_deflection)
 		return 0
-<<<<<<< HEAD
-	switch(damage_type)
-		if(BRUTE)
-		if(BURN)
-		else
-			return 0
-=======
 	if(damage_type != BRUTE && damage_type != BURN)
 		return 0
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/armor_protection = 0
 	if(damage_flag)
 		armor_protection = get_armor_rating(damage_flag)
 	if(armor_protection) //Only apply weak-against-armor/hollowpoint effects if there actually IS armor.
 		armor_protection = clamp(PENETRATE_ARMOUR(armor_protection, armour_penetration), min(armor_protection, 0), 100)
-<<<<<<< HEAD
-	return round(damage_amount * (100 - armor_protection)*0.01, DAMAGE_PRECISION)
-=======
 	return round(damage_amount * (100 - armor_protection) * 0.01, DAMAGE_PRECISION)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///the sound played when the atom is damaged.
 /atom/proc/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	switch(damage_type)
 		if(BRUTE)
 			if(damage_amount)
-<<<<<<< HEAD
 				//SKYRAT EDIT ADDITION - CREDITS TO WHITEDREAM(valtos)
 				playsound(src, pick('modular_skyrat/master_files/sound/effects/metalblock1.wav', 'modular_skyrat/master_files/sound/effects/metalblock2.wav', \
 									'modular_skyrat/master_files/sound/effects/metalblock3.wav', 'modular_skyrat/master_files/sound/effects/metalblock4.wav', \
 									'modular_skyrat/master_files/sound/effects/metalblock5.wav', 'modular_skyrat/master_files/sound/effects/metalblock6.wav', \
 									'modular_skyrat/master_files/sound/effects/metalblock7.wav', 'modular_skyrat/master_files/sound/effects/metalblock8.wav'), 50, TRUE)
 				//SKYRAT EDIT END
-=======
-				playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)

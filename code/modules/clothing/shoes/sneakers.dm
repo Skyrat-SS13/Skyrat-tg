@@ -10,10 +10,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/sneakers/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/sneakers/inhand_right
 	flags_1 = IS_PLAYER_COLORABLE_1
-<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/sneakers/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	interaction_flags_mouse_drop = NEED_HANDS
 
 /obj/item/clothing/shoes/sneakers/random/Initialize(mapload)
@@ -95,10 +92,7 @@
 	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_orange/inhand_right
 	flags_1 = NONE
 	var/obj/item/restraints/handcuffs/attached_cuffs
-<<<<<<< HEAD
 	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/shoes/sneakers/orange/Initialize(mapload)
 	. = ..()

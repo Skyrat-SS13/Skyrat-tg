@@ -157,11 +157,7 @@
  * * allow_numbers - allows numbers and common special characters - used for silicon/other weird things names
  * * cap_after_symbols - words like Bob's will be capitalized to Bob'S by default. False is good for titles.
  */
-<<<<<<< HEAD
 /proc/reject_bad_name(t_in, allow_numbers = TRUE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE, cap_after_symbols = TRUE) // SKYRAT EDIT CHANGE - allow_numbers to TRUE
-=======
-/proc/reject_bad_name(t_in, allow_numbers = FALSE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE, cap_after_symbols = TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!t_in)
 		return //Rejects the input if it is null
 
@@ -1232,8 +1228,6 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	var/input_length = LAZYLEN(ending)
 	return !!findtext(input_text, ending, -input_length)
 
-<<<<<<< HEAD
-=======
 /// Returns TRUE if the input_text starts with any of the beginnings
 /proc/starts_with_any(input_text, list/beginnings)
 	for(var/beginning in beginnings)
@@ -1241,7 +1235,6 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 			return TRUE
 	return FALSE
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Generate a grawlix string of length of the text argument.
 /proc/grawlix(text)
 	var/grawlix = ""

@@ -210,15 +210,9 @@
 // Actions received from TGUI
 /mob/living/basic/bot/medbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-<<<<<<< HEAD
-	if(. || !isliving(ui.user) || (bot_access_flags & BOT_COVER_LOCKED) && !HAS_SILICON_ACCESS(ui.user))
-		return
-	var/mob/living/our_user = ui.user
-=======
 	var/mob/user = ui.user
 	if(. || !isliving(ui.user) || (bot_access_flags & BOT_COVER_LOCKED) && !HAS_SILICON_ACCESS(user))
 		return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(action)
 		if("heal_threshold")
 			var/adjust_num = round(text2num(params["threshold"]))
@@ -235,11 +229,7 @@
 			medical_mode_flags ^= MEDBOT_STATIONARY_MODE
 		if("sync_tech")
 			if(!linked_techweb)
-<<<<<<< HEAD
-				to_chat(our_user, span_notice("No research techweb connected."))
-=======
 				to_chat(user, span_notice("No research techweb connected."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/oldheal_amount = heal_amount
 			var/tech_boosters
@@ -327,15 +317,12 @@
 		return
 	if(!iscarbon(target))
 		return
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Skip trying to heal synths
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		if(human_target.mob_biotypes & MOB_ROBOTIC)
 			return
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	INVOKE_ASYNC(src, PROC_REF(medicate_patient), target)
 	return COMPONENT_HOSTILE_NO_ATTACK
 
@@ -349,11 +336,7 @@
 
 	update_bot_mode(new_mode = BOT_HEALING, update_hud = FALSE)
 	patient.visible_message("[src] is trying to tend the wounds of [patient]", span_userdanger("[src] is trying to tend your wounds!"))
-<<<<<<< HEAD
-	if(!do_after(src, delay = 10 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION)) //SKYRAT EDIT CHANGE : Increased time as tradeoff for automated healing. ORIGINAL: if(!do_after(src, delay = 0.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
-=======
 	if(!do_after(src, delay = 2 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
 	var/modified_heal_amount = heal_amount

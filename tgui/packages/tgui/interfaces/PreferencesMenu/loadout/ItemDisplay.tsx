@@ -84,7 +84,6 @@ export const ItemDisplay = (props: {
                 {info}
               </Box>
             ))}
-<<<<<<< HEAD
             {
               // SKYRAT EDIT START - EXPANDED LOADOUT
               <Flex.Item
@@ -99,8 +98,6 @@ export const ItemDisplay = (props: {
 
               /* SKYRAT EDIT END */
             }
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           </Flex.Item>
         )}
       </Flex>
@@ -111,16 +108,10 @@ export const ItemDisplay = (props: {
 const ItemListDisplay = (props: { items: LoadoutItem[] }) => {
   const { data } = useBackend<LoadoutManagerData>();
   const { loadout_list } = data.character_preferences.misc;
-<<<<<<< HEAD
   const itemList = FilterItemList(props.items); // SKYRAT EDIT - EXPANDED LOADOUT
   return (
     <Flex wrap>
       {itemList.map((item /* SKYRAT EDIT : {props.items.map((item) => (*/) => (
-=======
-  return (
-    <Flex wrap>
-      {props.items.map((item) => (
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         <Flex.Item key={item.name} mr={2} mb={2}>
           <ItemDisplay
             item={item}
@@ -131,7 +122,6 @@ const ItemListDisplay = (props: { items: LoadoutItem[] }) => {
     </Flex>
   );
 };
-<<<<<<< HEAD
 // SKYRAT EDIT START - EXPANDED LOADOUT
 const FilterItemList = (items: LoadoutItem[]) => {
   const { data } = useBackend<LoadoutManagerData>();
@@ -216,9 +206,6 @@ const ItemJobRestriction = (item: LoadoutItem) => {
 };
 
 // SKYRAT EDIT END - EXPANDED LOADOUT
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 export const LoadoutTabDisplay = (props: {
   category: LoadoutCategory | undefined;
 }) => {

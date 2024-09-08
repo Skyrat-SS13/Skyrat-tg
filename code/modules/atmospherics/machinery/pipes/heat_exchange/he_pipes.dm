@@ -28,13 +28,10 @@
 	if(istype(local_turf))
 		if(islava(local_turf))
 			environment_temperature = 5000 //Yuck
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		else if (local_turf.liquids && local_turf.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
 			environment_temperature = local_turf.liquids.temp
 		//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else if(local_turf.blocks_air)
 			environment_temperature = local_turf.temperature
 		else

@@ -27,7 +27,6 @@
 	ninja.key = chosen_one.key
 	ninja.mind.add_antag_datum(/datum/antagonist/ninja)
 	spawned_mobs += ninja
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION BEGIN: Preference Ninjas
 	var/loadme = tgui_input_list(ninja, "Do you wish to load your character slot?", "Load Character?", list("Yes!", "No, I want to be random!"), default = "No, I want to be random!", timeout = 60 SECONDS)
 	var/codename
@@ -43,8 +42,6 @@
 		ninja.dna.update_dna_identity()
 
 // SKYRAT EDIT ADDITION END: Preference Ninjas
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	message_admins("[ADMIN_LOOKUPFLW(ninja)] has been made into a space ninja by an event.")
 	ninja.log_message("was spawned as a ninja by an event.", LOG_GAME)
 
@@ -55,17 +52,9 @@
 
 /proc/create_space_ninja(spawn_loc)
 	var/mob/living/carbon/human/new_ninja = new(spawn_loc)
-<<<<<<< HEAD
 //	new_ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES)) //SKYRAT EDIT: Player Prefs Ninjas
 	var/new_name = "[pick(GLOB.ninja_titles)] [pick(GLOB.ninja_names)]"
 	new_ninja.name = new_name
 	new_ninja.real_name = new_name
 //	new_ninja.dna.update_dna_identity()  //SKYRAT EDIT: Player Prefs Ninjas
-=======
-	new_ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES))
-	var/new_name = "[pick(GLOB.ninja_titles)] [pick(GLOB.ninja_names)]"
-	new_ninja.name = new_name
-	new_ninja.real_name = new_name
-	new_ninja.dna.update_dna_identity()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return new_ninja

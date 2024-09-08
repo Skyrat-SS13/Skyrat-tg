@@ -45,16 +45,10 @@
 	backpack_contents = list(
 		/obj/item/barcodescanner = 1,
 		/obj/item/choice_beacon/hero = 1,
-<<<<<<< HEAD
 		/obj/item/glassblowing/magnifying_glass, //SKYRAT EDIT: Magnifying Glass
 	)
 	belt = /obj/item/modular_computer/pda/curator
-	ears = /obj/item/radio/headset/headset_srv
-=======
-	)
-	belt = /obj/item/modular_computer/pda/curator
 	ears = /obj/item/radio/headset/headset_srvent
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	shoes = /obj/item/clothing/shoes/laceup
 	l_pocket = /obj/item/laser_pointer/green
 	r_pocket = /obj/item/key/displaycase
@@ -62,8 +56,6 @@
 
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
-<<<<<<< HEAD
-=======
 /datum/outfit/job/curator/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return ..()
@@ -76,7 +68,6 @@
 	return ..()
 
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/outfit/job/curator/post_equip(mob/living/carbon/human/translator, visualsOnly = FALSE)
 	..()
 

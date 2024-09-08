@@ -114,14 +114,11 @@
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
 
-<<<<<<< HEAD
 	//SKYRAT ADDITION START
 	/// Job title to use for spawning. Allows a job to spawn without needing map edits.
 	var/job_spawn_title
 	//SKYRAT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// RPG job names, for the memes
 	var/rpg_title
 
@@ -144,13 +141,10 @@
 
 /datum/job/New()
 	. = ..()
-<<<<<<< HEAD
 	// SKYRAT EDIT START
 	if(!job_spawn_title)
 		job_spawn_title = title
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/new_spawn_positions = CHECK_MAP_JOB_CHANGE(title, "spawn_positions")
 	if(isnum(new_spawn_positions))
 		spawn_positions = new_spawn_positions
@@ -193,15 +187,9 @@
 
 /// Announce that this job as joined the round to all crew members.
 /// Note the joining mob has no client at this point.
-<<<<<<< HEAD
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
 		announce_head(joining_mob, head_announce, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: announce_head(joining_mob, head_announce)
-=======
-/datum/job/proc/announce_job(mob/living/joining_mob)
-	if(head_announce)
-		announce_head(joining_mob, head_announce)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -230,7 +218,6 @@
 	)
 
 	if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
-<<<<<<< HEAD
 		//equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK) // SKYRAT EDIT REMOVAL - See below
 		// SKYRAT EDIT ADDITION - Lizards
 		if(islizard(equipping))
@@ -238,9 +225,6 @@
 		else
 			equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
 		// SKYRAT EDIT ADDITION END - Lizards
-=======
-		equip_to_slot_or_del(new /obj/item/food/griddle_toast(src), ITEM_SLOT_MASK)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #undef VERY_LATE_ARRIVAL_TOAST_PROB
 
@@ -249,7 +233,6 @@
 
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, client/player_client, consistent = FALSE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
-<<<<<<< HEAD
 	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only, equipping) // SKYRAT EDIT CHANGE - Add equipping param
 
 // Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
@@ -257,14 +240,6 @@
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, H.job, channels), 1))
-=======
-	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only)
-
-/datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
-	if(H && GLOB.announcement_systems.len)
-		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, H.job, channels), 1))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)
@@ -327,7 +302,6 @@
 	return TRUE
 
 /// Gets the message that shows up when spawning as this job
-<<<<<<< HEAD
 /datum/job/proc/get_spawn_message(alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: /datum/job/proc/get_spawn_message()
 	SHOULD_NOT_OVERRIDE(TRUE)
 	return examine_block(span_infoplain(jointext(get_spawn_message_information(alt_title), "\n&bull; "))) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLED - ORIGINAL: return examine_block(span_infoplain(jointext(get_spawn_message_information(), "\n&bull; ")))
@@ -337,27 +311,12 @@
 	SHOULD_CALL_PARENT(TRUE)
 	var/list/info = list()
 	info += "<b>You are the [alt_title].</b>\n" // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: info += "<b>You are the [title].</b>\n"
-=======
-/datum/job/proc/get_spawn_message()
-	SHOULD_NOT_OVERRIDE(TRUE)
-	return examine_block(span_infoplain(jointext(get_spawn_message_information(), "\n&bull; ")))
-
-/// Returns a list of strings that correspond to chat messages sent to this mob when they join the round.
-/datum/job/proc/get_spawn_message_information()
-	SHOULD_CALL_PARENT(TRUE)
-	var/list/info = list()
-	info += "<b>You are the [title].</b>\n"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/related_policy = get_policy(title)
 	var/radio_info = get_radio_information()
 	if(related_policy)
 		info += related_policy
 	if(supervisors)
-<<<<<<< HEAD
 		info += "As the [alt_title == title ? alt_title : "[alt_title] ([title])"] you answer directly to [supervisors]. Special circumstances may change this." // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: info += "As the [title] you answer directly to [supervisors]. Special circumstances may change this."
-=======
-		info += "As the [title] you answer directly to [supervisors]. Special circumstances may change this."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(radio_info)
 		info += radio_info
 	if(req_admin_notify)
@@ -367,14 +326,11 @@
 		info += span_boldnotice("As this station was initially staffed with a \
 			[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 			have been added to your ID card.")
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START - ALTERNATIVE_JOB_TITLES
 	if(alt_title != title)
 		info += span_warning("Remember that alternate titles are purely for flavor and roleplay.")
 		info += span_doyourjobidiot("Do not use your \"[alt_title]\" alt title as an excuse to forego your duties as a [title].")
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return info
 
@@ -420,11 +376,8 @@
 				back = /obj/item/storage/backpack/messenger //Grey messenger bag
 			if(DSATCHEL)
 				back = satchel //Department satchel
-<<<<<<< HEAD
 			if(DMESSENGER)
 				back = messenger //SKYRAT EDIT - Messenger Bags
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(DDUFFELBAG)
 				back = duffelbag //Department duffel bag
 			if(DMESSENGER)
@@ -536,17 +489,10 @@
 				hangover_landmark.used = TRUE
 				break
 			return hangover_spawn_point || get_latejoin_spawn_point()
-<<<<<<< HEAD
-	/* if(length(GLOB.jobspawn_overrides[title]))
-		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
 	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title]))
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
 	// SKYRAT EDIT END
-=======
-	if(length(GLOB.jobspawn_overrides[title]))
-		return pick(GLOB.jobspawn_overrides[title])
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
 	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 		return get_latejoin_spawn_point()
@@ -556,11 +502,7 @@
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-<<<<<<< HEAD
 		if(spawn_point.name != job_spawn_title) // SKYRAT EDIT - Alt job titles - ORIGINAL: if(spawn_point.name != title)
-=======
-		if(spawn_point.name != title)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			continue
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
@@ -572,25 +514,14 @@
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
-<<<<<<< HEAD
-	/* if(length(GLOB.jobspawn_overrides[title]))
-		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
 	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title])) //We're doing something special today.
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
 	// SKYRAT EDIT END
-=======
-	if(length(GLOB.jobspawn_overrides[title])) //We're doing something special today.
-		return pick(GLOB.jobspawn_overrides[title])
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)
 	var/mob/living/spawn_instance

@@ -18,14 +18,12 @@
 	new /obj/item/etherealballdeployer(src)
 	new /obj/item/roulette_wheel_beacon(src)
 
-<<<<<<< HEAD
+
 	//SKYRAT EDIT ADDITION
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	//SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/structure/closet/secure_closet/bar/all_access
 	req_access = null
 

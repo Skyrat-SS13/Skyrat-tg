@@ -1,12 +1,9 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
 		"set_job_preference" = PROC_REF(set_job_preference),
-<<<<<<< HEAD
 		// SKYRAT EDIT
 		"set_job_title" = PROC_REF(set_job_title),
 		// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -31,7 +28,6 @@
 
 	return TRUE
 
-<<<<<<< HEAD
 // SKYRAT EDIT
 /datum/preference_middleware/jobs/proc/set_job_title(list/params, mob/user)
 	var/job_title = params["job"]
@@ -50,8 +46,6 @@
 	return TRUE
 // SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/preference_middleware/jobs/get_constant_data()
 	var/list/data = list()
 
@@ -81,11 +75,8 @@
 		jobs[job.title] = list(
 			"description" = job.description,
 			"department" = department_name,
-<<<<<<< HEAD
 			"veteran" = job.veteran_only, // SKYRAT EDIT
 			"alt_titles" = job.alt_titles, // SKYRAT EDIT
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 
 	data["departments"] = departments
@@ -95,7 +86,6 @@
 
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
-<<<<<<< HEAD
 	// SKYRAT EDIT
 	if(isnull(preferences.alt_job_titles))
 		preferences.alt_job_titles = list()
@@ -105,23 +95,17 @@
 	data["job_alt_titles"] = preferences.alt_job_titles
 	data["species_restricted_jobs"] = get_unavailable_jobs_for_species()
 	// SKYRAT EDIT END
-=======
-
-	data["job_preferences"] = preferences.job_preferences
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return data
 
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
 	var/list/data = list()
-<<<<<<< HEAD
+
 	// SKYRAT EDIT
 	if(CONFIG_GET(flag/bypass_veteran_system) || SSplayer_ranks.is_veteran(user.client))
 		data["is_veteran"] = TRUE
 	// SKYRAT EDIT END
-=======
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/required_job_playtime = get_required_job_playtime(user)
 	if (!isnull(required_job_playtime))
 		data += required_job_playtime
@@ -129,10 +113,7 @@
 	var/list/job_bans = get_job_bans(user)
 	if (job_bans.len)
 		data["job_bans"] = job_bans
-<<<<<<< HEAD
-=======
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return data.len > 0 ? data : null
 
 /datum/preference_middleware/jobs/proc/get_required_job_playtime(mob/user)
@@ -172,8 +153,6 @@
 			data += job.title
 
 	return data
-<<<<<<< HEAD
-
 //SKYRAT EDIT ADDITION BEGIN - CHECKING FOR INCOMPATIBLE SPECIES
 //This returns a list of jobs that are unavailable for the player's current species
 /datum/preference_middleware/jobs/proc/get_unavailable_jobs_for_species()
@@ -186,5 +165,4 @@
 	return data
 
 //SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+

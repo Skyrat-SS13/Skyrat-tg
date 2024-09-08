@@ -52,11 +52,7 @@
 	owner.set_jitter_if_lower(100 SECONDS)
 	owner.Paralyze(duration)
 	owner.visible_message(span_warning("[owner] drops to the ground as [owner.p_they()] start seizing up."), \
-<<<<<<< HEAD
-	span_warning("[pick("You can't collect your thoughts...", "You suddenly feel extremely dizzy...", "You cant think straight...","You can't move your face properly anymore...")]"))
-=======
 	span_warning("[pick("You can't collect your thoughts...", "You suddenly feel extremely dizzy...", "You can't think straight...","You can't move your face properly anymore...")]"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/seizure

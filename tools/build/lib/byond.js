@@ -166,15 +166,6 @@ export const DreamMaker = async (dmeFile, options = {}) => {
   await testDmVersion(dmPath);
   testOutputFile(`${dmeBaseName}.dmb`);
   testOutputFile(`${dmeBaseName}.rsc`);
-<<<<<<< HEAD
-  const runWithWarningChecks = async (dmPath, args) => {
-    const execReturn = await Juke.exec(dmPath, args);
-    const ignoredWarningCodes = options.ignoreWarningCodes ?? [];
-    const reg = ignoredWarningCodes.length > 0 ? new RegExp(`\d+:warning: (?!(${ignoredWarningCodes.join('|')}))`) : /\d+:warning: /;
-    if (options.warningsAsErrors && execReturn.combined.match(reg)) {
-      Juke.logger.error(`Compile warnings treated as errors`);
-      throw new Juke.ExitCode(2);
-=======
 
   const runWithWarningChecks = async (dmPath, args) => {
     const execReturn = await Juke.exec(dmPath, args);
@@ -190,7 +181,6 @@ export const DreamMaker = async (dmeFile, options = {}) => {
         Juke.logger.error(`Compile warnings treated as errors`);
         throw new Juke.ExitCode(2);
       }
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     }
     return execReturn;
   }
@@ -198,13 +188,7 @@ export const DreamMaker = async (dmeFile, options = {}) => {
   const { defines } = options;
   if (defines && defines.length > 0) {
     Juke.logger.info('Using defines:', defines.join(', '));
-<<<<<<< HEAD
-
   }
-=======
-  }
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   await runWithWarningChecks(dmPath, [...defines.map(def => `-D${def}`), dmeFile]);
 };
 

@@ -290,8 +290,6 @@
 	name = "Frontier Militia General"
 	outfit = /datum/outfit/centcom/militia/general
 	role = "General"
-<<<<<<< HEAD
-=======
 
 /datum/antagonist/ert/medical_commander
 	role = "Chief EMT"
@@ -302,4 +300,3 @@
 	role = "Emergency Medical Technician"
 	outfit = /datum/outfit/centcom/ert/medical_technician
 	plasmaman_outfit = /datum/outfit/plasmaman/medical_technician
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

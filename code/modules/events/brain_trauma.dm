@@ -18,7 +18,6 @@
 		if(H.stat == DEAD) // What are you doing in this list
 			continue
 		if(!H.get_organ_by_type(/obj/item/organ/internal/brain)) // If only I had a brain
-<<<<<<< HEAD
 			continue
 		if(!(H.mind.assigned_role.job_flags & JOB_CREW_MEMBER)) //please stop giving my centcom admin gimmicks full body paralysis
 			continue
@@ -26,11 +25,6 @@
 		if(engaged_role_play_check(H, station = TRUE, dorms = TRUE))
 			continue
 		// SKYRAT EDIT ADD END
-=======
-			continue
-		if(!(H.mind.assigned_role.job_flags & JOB_CREW_MEMBER)) //please stop giving my centcom admin gimmicks full body paralysis
-			continue
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		traumatize(H)
 		announce_to_ghosts(H)
 		break

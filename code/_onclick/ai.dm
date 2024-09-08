@@ -111,11 +111,7 @@
 	for AI shift, ctrl, and alt clicking.
 */
 
-<<<<<<< HEAD
 /mob/living/silicon/ai/CtrlShiftClickOn(atom/target) // Procs overriden in modular_skyrat/modules/Silicon_QoL
-=======
-/mob/living/silicon/ai/CtrlShiftClickOn(atom/target)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	target.AICtrlShiftClick(src)
 
 /mob/living/silicon/ai/ShiftClickOn(atom/target)
@@ -151,19 +147,6 @@
 
 /* Atom Procs */
 /atom/proc/AICtrlClick(mob/living/silicon/ai/user)
-<<<<<<< HEAD
-=======
-	return
-
-/atom/proc/ai_click_alt(mob/living/silicon/ai/user)
-	SHOULD_CALL_PARENT(FALSE)
-	return
-
-/atom/proc/AIShiftClick(mob/living/silicon/ai/user)
-	return
-
-/atom/proc/AICtrlShiftClick(mob/living/silicon/ai/user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return
 
 /atom/proc/ai_click_alt(mob/living/silicon/ai/user)
@@ -175,6 +158,7 @@
 
 /atom/proc/AICtrlShiftClick(mob/living/silicon/ai/user)
 	return
+
 /* Airlocks */
 /obj/machinery/door/airlock/AICtrlClick(mob/living/silicon/ai/user) // Bolts doors
 	if(obj_flags & EMAGGED)

@@ -31,19 +31,12 @@ export const MedicalRecordView = (props) => {
   const { act, data } = useBackend<MedicalRecordData>();
   const { assigned_view, physical_statuses, mental_statuses, station_z } = data;
 
-<<<<<<< HEAD
   // const { min_age, max_age } = data; // ORIGINAL
   const { min_age, max_age, max_chrono_age } = data; // SKYRAT EDIT CHANGE - Chronological age
 
   const {
     age,
     chrono_age, // SKYRAT EDIT ADDITION - Chronological age
-=======
-  const { min_age, max_age } = data;
-
-  const {
-    age,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     blood_type,
     crew_ref,
     dna,
@@ -55,13 +48,10 @@ export const MedicalRecordView = (props) => {
     name,
     quirk_notes,
     rank,
-<<<<<<< HEAD
     // SKYRAT EDIT START - RP Records
     past_general_records,
     past_medical_records,
     // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     species,
   } = foundRecord;
 
@@ -103,14 +93,10 @@ export const MedicalRecordView = (props) => {
             <LabeledList.Item label="Job">
               <EditableText field="job" target_ref={crew_ref} text={rank} />
             </LabeledList.Item>
-<<<<<<< HEAD
             {/* <LabeledList.Item label="Age"> // ORIGINAL */}
             {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
             <LabeledList.Item label="Physical Age">
               {/* SKYRAT EDIT CHANGE END */}
-=======
-            <LabeledList.Item label="Age">
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
@@ -124,7 +110,6 @@ export const MedicalRecordView = (props) => {
                 value={age}
               />
             </LabeledList.Item>
-<<<<<<< HEAD
             {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
             <LabeledList.Item label="Chronological Age">
               <RestrictedInput
@@ -141,8 +126,6 @@ export const MedicalRecordView = (props) => {
               />
             </LabeledList.Item>
             {/* SKYRAT EDIT ADDITION END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             <LabeledList.Item label="Species">
               <EditableText
                 field="species"
@@ -247,7 +230,6 @@ export const MedicalRecordView = (props) => {
                 <Box key={index}>&#8226; {quirk}</Box>
               ))}
             </LabeledList.Item>
-<<<<<<< HEAD
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
             <LabeledList.Item label="General Records">
               <Box maxWidth="100%" preserveWhitespace>
@@ -260,8 +242,6 @@ export const MedicalRecordView = (props) => {
               </Box>
             </LabeledList.Item>
             {/* SKYRAT EDIT END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           </LabeledList>
         </Section>
       </Stack.Item>

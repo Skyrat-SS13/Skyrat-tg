@@ -36,26 +36,18 @@
 	/// The default color for the reel overlay if no line is equipped.
 	var/default_line_color = "gray"
 
-<<<<<<< HEAD
-	///should there be a fishing line?
-	var/display_fishing_line = TRUE
-=======
 	///Is this currently being used by the profound fisher component?
 	var/internal = FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	///The name of the icon state of the reel overlay
 	var/reel_overlay = "reel_overlay"
 
-<<<<<<< HEAD
-=======
 	/**
 	 * A list with two keys delimiting the spinning interval in which a mouse click has to be pressed while fishing.
 	 * Inherited from baits, passed down to the minigame lure.
 	 */
 	var/list/spin_frequency
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///Prevents spamming the line casting, without affecting the player's click cooldown.
 	COOLDOWN_DECLARE(casting_cd)
 
@@ -83,17 +75,11 @@
 
 /obj/item/fishing_rod/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	. = ..()
-<<<<<<< HEAD
-	if(currently_hooked)
-		context[SCREENTIP_CONTEXT_LMB] = "Reel in"
-		context[SCREENTIP_CONTEXT_RMB] = "Unhook"
-=======
 	var/gone_fishing = HAS_TRAIT(user, TRAIT_GONE_FISHING)
 	if(currently_hooked || gone_fishing)
 		context[SCREENTIP_CONTEXT_LMB] = (gone_fishing && spin_frequency) ? "Spin" : "Reel in"
 		if(!gone_fishing)
 			context[SCREENTIP_CONTEXT_RMB] = "Unhook"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return CONTEXTUAL_SCREENTIP_SET
 	return NONE
 
@@ -129,10 +115,6 @@
 		var/mob/living/caught_mob = reward
 		if(caught_mob.stat == DEAD)
 			return
-<<<<<<< HEAD
-	else if(!isfish(reward))
-		return
-=======
 	else
 		if(!isfish(reward))
 			return
@@ -146,7 +128,6 @@
 			if(kill_fish)
 				fish.set_status(FISH_DEAD, silent = TRUE)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	QDEL_NULL(bait)
 	update_icon()
 
@@ -165,16 +146,10 @@
 		return
 	//Try to move it 'till it's under the user's feet, then try to pick it up
 	if(isitem(currently_hooked))
-<<<<<<< HEAD
-		step_towards(currently_hooked, get_turf(src))
-		if(currently_hooked.loc == user.loc)
-			user.put_in_inactive_hand(currently_hooked)
-=======
 		var/obj/item/item = currently_hooked
 		step_towards(item, get_turf(src))
 		if(item.loc == user.loc && (item.interaction_flags_item & INTERACT_ITEM_ATTACK_HAND_PICKUP))
 			user.put_in_inactive_hand(item)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			QDEL_NULL(fishing_line)
 	//Not an item, so just delete the line if it's adjacent to the user.
 	else if(get_dist(currently_hooked,get_turf(src)) > 1)
@@ -192,28 +167,12 @@
 	ui_interact(user)
 
 /// Generates the fishing line visual from the current user to the target and updates inhands
-<<<<<<< HEAD
-/obj/item/fishing_rod/proc/create_fishing_line(atom/movable/target, target_py = null)
-	if(!display_fishing_line)
-		return null
-	var/mob/user = loc
-	if(!istype(user))
-=======
 /obj/item/fishing_rod/proc/create_fishing_line(atom/movable/target, mob/living/firer, target_py = null)
 	if(internal)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return null
 	if(fishing_line)
 		QDEL_NULL(fishing_line)
 	var/beam_color = line?.line_color || default_line_color
-<<<<<<< HEAD
-	fishing_line = new(user, target, icon_state = "fishing_line", beam_color = beam_color,  emissive = FALSE, override_target_pixel_y = target_py)
-	fishing_line.lefthand = user.get_held_index_of_item(src) % 2 == 1
-	RegisterSignal(fishing_line, COMSIG_BEAM_BEFORE_DRAW, PROC_REF(check_los))
-	RegisterSignal(fishing_line, COMSIG_QDELETING, PROC_REF(clear_line))
-	INVOKE_ASYNC(fishing_line, TYPE_PROC_REF(/datum/beam/, Start))
-	user.update_held_items()
-=======
 	fishing_line = new(firer, target, icon_state = "fishing_line", beam_color = beam_color, emissive = FALSE, override_target_pixel_y = target_py)
 	fishing_line.lefthand = firer.get_held_index_of_item(src) % 2 == 1
 	RegisterSignal(fishing_line, COMSIG_BEAM_BEFORE_DRAW, PROC_REF(check_los))
@@ -222,7 +181,6 @@
 	if(QDELETED(fishing_line))
 		return null
 	firer.update_held_items()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return fishing_line
 
 /obj/item/fishing_rod/proc/clear_line(datum/source)
@@ -244,11 +202,7 @@
 	if(!hook.can_be_hooked(target_atom))
 		return
 	currently_hooked = target_atom
-<<<<<<< HEAD
-	create_fishing_line(target_atom)
-=======
 	create_fishing_line(target_atom, user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	hook.hook_attached(target_atom, src)
 	SEND_SIGNAL(src, COMSIG_FISHING_ROD_HOOKED_ITEM, target_atom, user)
 
@@ -262,12 +216,9 @@
 		return BEAM_CANCEL_DRAW
 
 /obj/item/fishing_rod/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-<<<<<<< HEAD
-=======
 	//this prevent trying to use telekinesis to fish (which would be broken anyway)
 	if(!user.contains(src))
 		return ..()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ranged_interact_with_atom(interacting_with, user, modifiers)
 
 /obj/item/fishing_rod/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -316,14 +267,8 @@
 	COOLDOWN_START(src, casting_cd, 1 SECONDS)
 
 /// Called by hook projectile when hitting things
-<<<<<<< HEAD
-/obj/item/fishing_rod/proc/hook_hit(atom/atom_hit_by_hook_projectile)
-	var/mob/user = loc
-	if(!hook || !istype(user))
-=======
 /obj/item/fishing_rod/proc/hook_hit(atom/atom_hit_by_hook_projectile, mob/user)
 	if(!hook)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(SEND_SIGNAL(atom_hit_by_hook_projectile, COMSIG_FISHING_ROD_CAST, src, user) & FISHING_ROD_CAST_HANDLED)
 		return
@@ -337,15 +282,12 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-<<<<<<< HEAD
-=======
 /obj/item/fishing_rod/ui_state()
 	if(internal)
 		return GLOB.deep_inventory_state
 	else
 		return GLOB.default_state
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/fishing_rod/update_overlays()
 	. = ..()
 	. += get_fishing_overlays()
@@ -450,11 +392,7 @@
 				return FALSE
 	return TRUE
 
-<<<<<<< HEAD
-/obj/item/fishing_rod/ui_act(action, list/params)
-=======
 /obj/item/fishing_rod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return .
@@ -468,11 +406,8 @@
 
 /// Ideally this will be replaced with generic slotted storage datum + display
 /obj/item/fishing_rod/proc/use_slot(slot, mob/user, obj/item/new_item)
-<<<<<<< HEAD
-=======
 	if(fishing_line || HAS_TRAIT(user, TRAIT_GONE_FISHING))
 		return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/obj/item/current_item
 	switch(slot)
 		if(ROD_SLOT_BAIT)
@@ -494,31 +429,13 @@
 		if(user.transferItemToLoc(new_item,src))
 			set_slot(new_item, slot)
 			balloon_alert(user, "[slot] installed")
-<<<<<<< HEAD
-=======
 		else
 			balloon_alert(user, "stuck to your hands!")
 			return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// Trying to swap item
 	else if(new_item && current_item)
 		if(!slot_check(new_item,slot))
 			return
-<<<<<<< HEAD
-		if(user.transferItemToLoc(new_item,src))
-			switch(slot)
-				if(ROD_SLOT_BAIT)
-					bait = new_item
-				if(ROD_SLOT_HOOK)
-					hook = new_item
-				if(ROD_SLOT_LINE)
-					line = new_item
-		user.put_in_hands(current_item)
-		balloon_alert(user, "[slot] swapped")
-
-	if(new_item)
-		SEND_SIGNAL(new_item, COMSIG_FISHING_EQUIPMENT_SLOTTED, src)
-=======
 		if(user.transferItemToLoc(new_item, src))
 			user.put_in_hands(current_item)
 			set_slot(new_item, slot)
@@ -526,7 +443,6 @@
 		else
 			balloon_alert(user, "stuck to your hands!")
 			return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	update_icon()
 	playsound(src, 'sound/items/click.ogg', 50, TRUE)
@@ -536,32 +452,23 @@
 	switch(slot)
 		if(ROD_SLOT_BAIT)
 			bait = equipment
-<<<<<<< HEAD
-=======
 			if(!HAS_TRAIT(bait, TRAIT_BAIT_ALLOW_FISHING_DUD))
 				ADD_TRAIT(src, TRAIT_ROD_REMOVE_FISHING_DUD, INNATE_TRAIT)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(ROD_SLOT_HOOK)
 			hook = equipment
 		if(ROD_SLOT_LINE)
 			line = equipment
 			cast_range += FISHING_ROD_REEL_CAST_RANGE
-<<<<<<< HEAD
-=======
 		else
 			CRASH("set_slot called with an undefined slot: [slot]")
 
 	SEND_SIGNAL(equipment, COMSIG_FISHING_EQUIPMENT_SLOTTED, src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/fishing_rod/Exited(atom/movable/gone, direction)
 	. = ..()
 	if(gone == bait)
 		bait = null
-<<<<<<< HEAD
-=======
 		REMOVE_TRAIT(src, TRAIT_ROD_REMOVE_FISHING_DUD, INNATE_TRAIT)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(gone == line)
 		cast_range -= FISHING_ROD_REEL_CAST_RANGE
 		line = null
@@ -711,21 +618,13 @@
 		transform = transform.Scale(1, -1)
 	. = ..()
 	if(!QDELETED(src))
-<<<<<<< HEAD
-		our_line = owner.create_fishing_line(src)
-=======
 		our_line = owner.create_fishing_line(src, firer)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/projectile/fishing_cast/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(blocked < 100)
 		QDEL_NULL(our_line) //we need to delete the old beam datum, otherwise it won't let you fish.
-<<<<<<< HEAD
-		owner.hook_hit(target)
-=======
 		owner.hook_hit(target, firer)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/projectile/fishing_cast/Destroy()
 	QDEL_NULL(our_line)

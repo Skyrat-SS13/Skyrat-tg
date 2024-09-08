@@ -110,13 +110,6 @@
 	. = ..()
 	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/fast_web)
 
-<<<<<<< HEAD
-/mob/living/basic/spider/giant/hunter/mold //skyrat edit: exists to make molds not spam the world with simple mobs
-	basic_mob_flags = DEL_ON_DEATH
-	habitable_atmos = null
-	
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Used in the caves away mission.
 /mob/living/basic/spider/giant/hunter/away_caves
 	minimum_survivable_temperature = 0

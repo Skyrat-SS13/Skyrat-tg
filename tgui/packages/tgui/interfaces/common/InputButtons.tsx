@@ -7,11 +7,7 @@ type InputButtonsData = {
 };
 
 type InputButtonsProps = {
-<<<<<<< HEAD
-  input: string | number | string[];
-=======
   input: string | number | string[] | [string[], number[]];
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   on_submit?: () => void;
   on_cancel?: () => void;
   message?: string;

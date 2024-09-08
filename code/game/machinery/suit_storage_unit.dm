@@ -230,11 +230,7 @@
 
 /obj/machinery/suit_storage_unit/update_overlays()
 	. = ..()
-<<<<<<< HEAD
-	//if things arent powered, these show anyways
-=======
 	//if things aren't powered, these show anyways
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(panel_open)
 		. += "[base_icon_state]_panel"
 	if(state_open)
@@ -797,11 +793,7 @@
 */
 /obj/machinery/suit_storage_unit/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
 	if(screwdriver.tool_behaviour == TOOL_SCREWDRIVER && (uv || locked))
-<<<<<<< HEAD
-		to_chat(user, span_warning("You cant open the panel while its [locked ? "locked" : "decontaminating"]"))
-=======
 		to_chat(user, span_warning("You can't open the panel while its [locked ? "locked" : "decontaminating"]"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 	return ..()
 

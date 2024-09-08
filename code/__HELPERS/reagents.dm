@@ -180,16 +180,6 @@
 	else
 		return null
 
-<<<<<<< HEAD
-///Returns a random reagent object minus blacklisted reagents
-/proc/get_random_reagent_id()
-	var/static/list/random_reagents = list()
-	if(!random_reagents.len)
-		for(var/datum/reagent/reagent_path as anything in subtypesof(/datum/reagent))
-			if(initial(reagent_path.chemical_flags) & REAGENT_CAN_BE_SYNTHESIZED)
-				random_reagents += reagent_path
-	var/picked_reagent = pick(random_reagents)
-=======
 ///Returns a random reagent object, with the option to blacklist reagents.
 /proc/get_random_reagent_id(list/blacklist)
 	var/static/list/reagent_static_list = list() //This is static, and will be used by default if a blacklist is not passed.
@@ -207,7 +197,6 @@
 				reagent_list_to_process += reagent_path
 
 	var/picked_reagent = pick(reagent_list_to_process)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return picked_reagent
 
 ///Returns a random reagent consumable ethanol object minus blacklisted reagents

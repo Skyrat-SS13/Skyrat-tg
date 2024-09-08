@@ -57,7 +57,6 @@
 	if(!owner)
 		owner = reagent.holder.my_atom
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	var/can_process = reagent_process_flags_valid(owner, reagent)
 	//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
@@ -66,8 +65,6 @@
 		return
 	//SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(owner && reagent && (!dead || (reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
 		if(owner.reagent_check(reagent, seconds_per_tick, times_fired))
 			return

@@ -203,15 +203,9 @@ ADMIN_VERB(create_mapping_job_icons, R_DEBUG, "Generate job landmarks icons", "G
 		var/datum/job/JB = new job
 		switch(JB.title)
 			if(JOB_AI)
-<<<<<<< HEAD
 				job_key_to_icon["AI"] = icon('icons/mob/silicon/ai.dmi', "ai", SOUTH, 1) // SKYRAT EDIT CHANGE - ORIGINAL: final.Insert(icon('icons/mob/silicon/ai.dmi', "ai", SOUTH, 1), "AI")
 			if(JOB_CYBORG)
 				job_key_to_icon["Cyborg"] = icon('icons/mob/silicon/robots.dmi', "robot", SOUTH, 1) // SKYRAT EDIT CHANGE - ORIGINAL: final.Insert(icon('icons/mob/silicon/robots.dmi', "robot", SOUTH, 1), "Cyborg")
-=======
-				final.Insert(icon('icons/mob/silicon/ai.dmi', "ai", SOUTH, 1), "AI")
-			if(JOB_CYBORG)
-				final.Insert(icon('icons/mob/silicon/robots.dmi', "robot", SOUTH, 1), "Cyborg")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else
 				for(var/obj/item/I in D)
 					qdel(I)
@@ -348,11 +342,7 @@ ADMIN_VERB(check_for_obstructed_atmospherics, R_DEBUG, "Check For Obstructed Atm
 
 	var/list/results = list()
 
-<<<<<<< HEAD
-	results += "<h2><b>Anything that is considered to aesthetically obstruct an atmospherics machine (vent, scrubber, port) is listed below.</b> Please re-arrange to accomodate for this.</h2><br>"
-=======
 	results += "<h2><b>Anything that is considered to aesthetically obstruct an atmospherics machine (vent, scrubber, port) is listed below.</b> Please re-arrange to accommodate for this.</h2><br>"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Ignore out stuff we see in normal and standard mapping that we don't care about (false alarms). Typically stuff that goes directionally off turfs or other undertile objects that we don't want to care about.
 	var/list/ignore_list = list(

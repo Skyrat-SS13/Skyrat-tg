@@ -2,13 +2,10 @@
 	. = ..()
 	if(!.)
 		return
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - No AIs in MODsuits
 	if(!allow_ai)
 		return
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!open) //mod must be open
 		balloon_alert(user, "suit must be open to transfer!")
 		return
@@ -95,13 +92,10 @@
 	pai_assistant.can_holo = FALSE
 	if (pai_assistant.holoform)
 		pai_assistant.fold_in()
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - pAIs in MODsuits
 	if(can_pai_move_suit)
 		pai_assistant.remote_control = src
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SStgui.close_uis(card)
 	on_gained_assistant(card.pai)
 	return TRUE
@@ -150,13 +144,10 @@
 /obj/item/mod/control/relaymove(mob/user, direction)
 	if((!active && wearer) || get_charge() < CHARGE_PER_STEP  || user != ai_assistant || !COOLDOWN_FINISHED(src, cooldown_mod_move) || (wearer?.pulledby?.grab_state > GRAB_PASSIVE))
 		return FALSE
-<<<<<<< HEAD
 	// SKYRAT EDIT START - pAIs in MODsuits with a bit more functionalities
 	if(active && !can_pai_move_suit && ispAI(ai_assistant))
 		return FALSE
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/timemodifier = MOVE_DELAY * (ISDIAGONALDIR(direction) ? sqrt(2) : 1) * (wearer ? WEARER_DELAY : LONE_DELAY)
 	if(wearer && !wearer.Process_Spacemove(direction))
 		return FALSE
@@ -230,9 +221,5 @@
 	ai.notify_revival("You have been recovered from the wreckage!", source = card)
 	balloon_alert(user, "ai transferred to card")
 	stored_ai = null
-<<<<<<< HEAD
-	#undef AI_FALL_TIME
-=======
 
 #undef AI_FALL_TIME
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

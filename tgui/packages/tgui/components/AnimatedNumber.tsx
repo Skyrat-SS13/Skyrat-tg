@@ -145,13 +145,9 @@ export class AnimatedNumber extends Component<AnimatedNumberProps> {
       this.stopTicking();
     }
 
-<<<<<<< HEAD
-    if (Math.abs(value - this.currentValue) < EPSILON) {
-=======
     if (
       Math.abs(value - this.currentValue) < Math.max(EPSILON, EPSILON * value)
     ) {
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       // We're about as close as we're going to get--snap to the value and
       // stop ticking.
       this.currentValue = value;

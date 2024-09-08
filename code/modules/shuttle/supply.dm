@@ -162,10 +162,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/pack_cost
 	var/list/goodies_by_buyer = list() // if someone orders more than GOODY_FREE_SHIPPING_MAX goodies, we upcharge to a normal crate so they can't carry around 20 combat shotties
 	var/list/clean_up_orders = list() // orders to remove since we are done with them
-<<<<<<< HEAD
 	var/list/forced_briefcases = list() // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	for(var/datum/supply_order/spawning_order in SSshuttle.shopping_list)
 		if(!empty_turfs.len)
@@ -196,11 +193,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					continue
 
 		pack_cost = spawning_order.pack.get_cost()
-<<<<<<< HEAD
 		if(spawning_order.paying_account && spawning_order.charge_on_purchase) // SKYRAT EDIT CHANGE - ORIGINAL: if(spawning_order.paying_account)
-=======
-		if(spawning_order.paying_account)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
@@ -213,11 +206,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			cargo.adjust_money(price - pack_cost) //Cargo gets the handling fee
 		value += pack_cost
 
-<<<<<<< HEAD
 		if(!spawning_order.pack.goody && !(spawning_order?.paying_account in forced_briefcases)) // SKYRAT EDIT CHANGE - ORIGINAL : if(!spawning_order.pack.goody)
-=======
-		if(!spawning_order.pack.goody) //we handle goody crates below
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			var/obj/structure/closet/crate = spawning_order.generate(pick_n_take(empty_turfs))
 			crate.name += " - #[spawning_order.id]"
 

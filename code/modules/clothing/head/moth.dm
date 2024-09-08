@@ -7,11 +7,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	flags_cover = HEADCOVERSEYES
-<<<<<<< HEAD
 	flags_inv = HIDEHAIR|SHOWSPRITEEARS // SKYRAT EDIT CHANGE
-=======
-	flags_inv = HIDEHAIR
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/head/mothcap/original
 	desc = "An authentic, padded leather cap with magnifying goggles, standard issue aboard the moth fleet. Keeps your head warm and debris away from those big eyes."

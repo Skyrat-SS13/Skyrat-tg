@@ -83,14 +83,11 @@
 	SIGNAL_HANDLER
 
 	. = COMPONENT_HANDLED_GRILLING
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(pollutant_type)
 		var/turf/parent_turf = get_turf(parent)
 		parent_turf.pollute_turf(pollutant_type, 10)
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	current_cook_time += seconds_per_tick * 10 //turn it into ds
 	if(current_cook_time >= required_cook_time)

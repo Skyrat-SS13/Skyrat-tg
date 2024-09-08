@@ -128,10 +128,7 @@
 	if(.)
 		return
 
-<<<<<<< HEAD
-=======
 	var/mob/user = ui.user
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(action)
 		if("LZCargo")
 			usingBeacon = FALSE
@@ -168,13 +165,8 @@
 				var/mob/living/carbon/human/H = user
 				name = H.get_authentification_name()
 				rank = H.get_assignment(hand_first = TRUE)
-<<<<<<< HEAD
-			else if(HAS_SILICON_ACCESS(usr))
-				name = usr.real_name
-=======
 			else if(HAS_SILICON_ACCESS(user))
 				name = user.real_name
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				rank = "Silicon"
 			var/reason = ""
 			var/list/empty_turfs

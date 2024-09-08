@@ -33,10 +33,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	// Misc
 	RADIO_KEY_AI_PRIVATE = RADIO_CHANNEL_AI_PRIVATE, // AI Upload channel
-<<<<<<< HEAD
-=======
 	RADIO_KEY_ENTERTAINMENT = RADIO_CHANNEL_ENTERTAINMENT, // Entertainment monitors
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 	//kinda localization -- rastaf0
@@ -65,12 +62,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	"в" = MODE_KEY_DEADMIN,
 
 	// Misc
-<<<<<<< HEAD
-	"щ" = RADIO_CHANNEL_AI_PRIVATE
-=======
 	"щ" = RADIO_CHANNEL_AI_PRIVATE,
 	"з" = RADIO_CHANNEL_ENTERTAINMENT,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ))
 
 /**
@@ -242,13 +235,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	//Get which verb is prefixed to the message before radio but after most modifications
 	message_mods[SAY_MOD_VERB] = say_mod(message, message_mods)
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START: autopunctuation
 	//ensure EOL punctuation exists and that word-bounded 'i' are capitalized before we do anything else
 	message = autopunct_bare(message)
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//This is before anything that sends say a radio message, and after all important message type modifications, so you can scumb in alien chat or something
 	if(saymode && !saymode.handle_message(src, message, language))
 		return

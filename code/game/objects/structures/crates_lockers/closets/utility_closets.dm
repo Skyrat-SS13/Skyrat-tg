@@ -38,12 +38,8 @@
 	if (prob(40))
 		new /obj/item/storage/toolbox/emergency(src)
 
-<<<<<<< HEAD
 	//switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10, "nothing" = 4))) // ORIGINAL
 	switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10))) // SKYRAT EDIT CHANGE
-=======
-	switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10, "nothing" = 4)))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if ("small")
 			new /obj/item/tank/internals/emergency_oxygen(src)
 			new /obj/item/tank/internals/emergency_oxygen(src)
@@ -68,11 +64,8 @@
 		if ("nothing")
 			// doot
 			pass()
-<<<<<<< HEAD
 		*/
 		// SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /*
  * Fire Closet
@@ -84,39 +77,22 @@
 
 /obj/structure/closet/firecloset/PopulateContents()
 	..()
-<<<<<<< HEAD
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas/alt(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas(src)
-=======
-
-	new /obj/item/clothing/suit/utility/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/utility/hardhat/red(src)
 	new /obj/item/crowbar/large/emergency(src)
-<<<<<<< HEAD
 	new /obj/item/storage/inflatable(src) //SKYRAT EDIT ADDITION - INFLATABLES
 
 /obj/structure/closet/firecloset/full/PopulateContents()
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas/alt(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas(src)
-=======
-
-/obj/structure/closet/firecloset/full/PopulateContents()
-	new /obj/item/clothing/suit/utility/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/flashlight(src)
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/utility/hardhat/red(src)
 	new /obj/item/crowbar/large/emergency(src)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /*
  * Tool Closet

@@ -9,30 +9,18 @@
 
 	preference = "feature_lizard_spines"
 
-<<<<<<< HEAD
 	//dna_block = DNA_SPINES_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
-=======
-	dna_block = DNA_SPINES_BLOCK
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/spines
 
-<<<<<<< HEAD
-/obj/item/organ/external/spines/Insert(mob/living/carbon/receiver, special, movement_flags)
-=======
 /obj/item/organ/external/spines/mob_insert(mob/living/carbon/receiver, special, movement_flags)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// If we have a tail, attempt to add a tail spines overlay
 	var/obj/item/organ/external/tail/our_tail = receiver.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	our_tail?.try_insert_tail_spines(our_tail.bodypart_owner)
 	return ..()
 
-<<<<<<< HEAD
-/obj/item/organ/external/spines/Remove(mob/living/carbon/organ_owner, special, movement_flags)
-=======
 /obj/item/organ/external/spines/mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// If we have a tail, remove any tail spines overlay
 	var/obj/item/organ/external/tail/our_tail = organ_owner.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	our_tail?.remove_tail_spines(our_tail.bodypart_owner)
@@ -44,11 +32,7 @@
 	feature_key = "spines"
 
 /datum/bodypart_overlay/mutant/spines/get_global_feature_list()
-<<<<<<< HEAD
 	return SSaccessories.sprite_accessories["spines"] // SKYRAT EDIT - Customization - ORIGINAL: return SSaccessories.spines_list
-=======
-	return SSaccessories.spines_list
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/bodypart_overlay/mutant/spines/can_draw_on_bodypart(mob/living/carbon/human/human)
 	. = ..()

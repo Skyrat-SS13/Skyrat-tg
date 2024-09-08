@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (3 MINUTES) // SKYRAT EDIT CHANGE - ORIGINAL: #define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
-=======
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //this singleton datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
@@ -102,20 +98,6 @@
 
 	if (SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PRE_RANDOM_EVENT, src) & CANCEL_PRE_RANDOM_EVENT)
 		return EVENT_INTERRUPTED
-<<<<<<< HEAD
-=======
-
-	triggering = TRUE
-
-	// We sleep HERE, in pre-event setup (because there's no sense doing it in run_event() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round or at least reroll it.
-	message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>) (<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a>)")
-	sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
-	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
-	if(!can_spawn_event(players_amt))
-		message_admins("Second pre-condition check for [name] failed, rerolling...")
-		SSevents.spawnEvent(excluded_event = src)
-		return EVENT_INTERRUPTED
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	triggering = TRUE
 
@@ -192,7 +174,6 @@ Runs the event
 	round_event.current_players = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	occurrences++
 
-<<<<<<< HEAD
 	SSevents.previously_run += src //SKYRAT EDIT ADDITION
 
 	if(announce_chance_override != null)
@@ -201,14 +182,6 @@ Runs the event
 	testing("[time2text(world.time, "hh:mm:ss")] [round_event.type]")
 	triggering = TRUE
 
-=======
-	if(announce_chance_override != null)
-		round_event.announce_chance = announce_chance_override
-
-	testing("[time2text(world.time, "hh:mm:ss")] [round_event.type]")
-	triggering = TRUE
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!triggering)
 		RegisterSignal(SSdcs, COMSIG_GLOB_RANDOM_EVENT, PROC_REF(stop_random_event))
 		round_event.cancel_event = TRUE

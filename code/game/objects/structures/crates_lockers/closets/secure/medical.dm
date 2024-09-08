@@ -86,10 +86,7 @@
 	new /obj/item/defibrillator/compact/loaded(src)
 	new /obj/item/healthanalyzer/advanced(src)
 	new /obj/item/assembly/flash/handheld(src)
-<<<<<<< HEAD
 	new /obj/item/storage/briefcase/medicalgunset/cmo(src) //SKYRAT EDIT ADDITION MEDIGUNS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/autosurgeon/medical_hud(src)
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/clothing/neck/petcollar(src)
@@ -98,21 +95,14 @@
 	new /obj/item/circuitboard/machine/techfab/department/medical(src)
 	new /obj/item/storage/photo_album/cmo(src)
 	new /obj/item/storage/lockbox/medal/med(src)
-<<<<<<< HEAD
 	new /obj/item/card/id/departmental_budget/med(src) //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/closet/secure_closet/chief_medical/populate_contents_immediate()
 	. = ..()
 
 	// Traitor steal objective
-<<<<<<< HEAD
 	//new /obj/item/reagent_containers/hypospray/cmo(src) - ORIGINAL
 	new /obj/item/storage/hypospraykit/cmo/preloaded(src) //SKYRAT EDIT ADDITION - New Hyposprays
-=======
-	new /obj/item/reagent_containers/hypospray/cmo(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control locker"
@@ -137,11 +127,8 @@
 	new /obj/item/storage/box/pillbottles(src)
 	new /obj/item/storage/box/medigels(src)
 	new /obj/item/storage/box/medigels(src)
-<<<<<<< HEAD
 	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
 	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	new /obj/item/ph_booklet(src)
 	new /obj/item/reagent_containers/dropper(src)
 	new /obj/item/reagent_containers/cup/bottle/acidic_buffer(src) //hopefully they get the hint

@@ -118,18 +118,9 @@
 	balloon_alert(user, "transferring [amount_per_transfer_from_this]u")
 	mode_change_message(user)
 
-<<<<<<< HEAD
-/obj/item/reagent_containers/attack(mob/M, mob/living/user, def_zone)
-	if(user.combat_mode)
-		return ..()
 /obj/item/reagent_containers/pre_attack_secondary(atom/target, mob/living/user, params)
 	if(HAS_TRAIT(target, TRAIT_DO_NOT_SPLASH))
 		return ..()
-=======
-/obj/item/reagent_containers/pre_attack_secondary(atom/target, mob/living/user, params)
-	if(HAS_TRAIT(target, TRAIT_DO_NOT_SPLASH))
-		return ..()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!user.combat_mode)
 		return ..()
 	if (try_splash(user, target))
@@ -246,17 +237,13 @@
 			log_combat(thrown_by, M, "splashed", R)
 		reagents.expose(target, TOUCH, splash_multiplier)
 		reagents.expose(target_turf, TOUCH, (1 - splash_multiplier)) // 1 - splash_multiplier because it's what didn't hit the target
-<<<<<<< HEAD
 		target_turf.add_liquid_from_reagents(reagents, reagent_multiplier = (1 - splash_multiplier)) // SKYRAT EDIT ADDITION - liquid spills (molotov buff) (huge)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	else if(bartender_check(target) && thrown)
 		visible_message(span_notice("[src] lands onto the [target.name] without spilling a single drop."))
 		return
 
 	else
-<<<<<<< HEAD
 		//SKYRAT EDIT CHANGE START - liquid spills on non-mobs
 		if(target.can_liquid_spill_on_hit())
 			target.add_liquid_from_reagents(reagents, thrown_from = src, thrown_to = target)
@@ -268,15 +255,6 @@
 			reagents.expose(target, TOUCH)
 		//SKYRAT EDIT END
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
-		//reagents.expose(target, TOUCH) //SKYRAT EDIT REMOVAL
-=======
-		if(isturf(target) && reagents.reagent_list.len && thrown_by)
-			log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
-			thrown_by.log_message("splashed (thrown) [english_list(reagents.reagent_list)] on [target].", LOG_ATTACK)
-			message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
-		visible_message(span_notice("[src] spills its contents all over [target]."))
-		reagents.expose(target, TOUCH)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(QDELETED(src))
 			return
 

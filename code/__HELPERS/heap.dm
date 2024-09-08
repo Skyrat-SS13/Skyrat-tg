@@ -26,11 +26,7 @@
 	swim(length(L))
 
 //removes and returns the first element of the heap
-<<<<<<< HEAD
-//(i.e the max or the min dependant on the comparison function)
-=======
 //(i.e the max or the min dependent on the comparison function)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/heap/proc/pop()
 	if(!length(L))
 		return 0

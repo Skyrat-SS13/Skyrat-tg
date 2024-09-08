@@ -34,11 +34,7 @@
 		"cargo" = "cargo_skyrat",
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_meta",
-<<<<<<< HEAD
 		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
-=======
-		"emergency" = "emergency_meta")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()

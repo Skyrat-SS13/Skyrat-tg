@@ -328,11 +328,7 @@ GLOBAL_VAR(station_nuke_source)
 
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/nuclearbomb/ui_act(action, params)
-=======
 /obj/machinery/nuclearbomb/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -524,10 +520,7 @@ GLOBAL_VAR(station_nuke_source)
 	safety = TRUE
 	update_appearance()
 	sound_to_playing_players('sound/machines/alarm.ogg')
-<<<<<<< HEAD
 	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg') // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NUKE_DEVICE_DETONATING, src)
 

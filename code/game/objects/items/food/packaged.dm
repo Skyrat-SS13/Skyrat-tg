@@ -156,8 +156,6 @@
 	tastes = list("seafood" = 7, "tin" = 1)
 	foodtypes = SEAFOOD
 
-<<<<<<< HEAD
-=======
 /obj/item/food/canned/squid_ink/open_can(mob/user)
 	. = ..()
 	AddComponent(/datum/component/splat, \
@@ -177,7 +175,6 @@
 	victim.visible_message(span_warning("[victim] is inked by [src]!"), span_userdanger("You've been inked by [src]!"))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/food/canned/chap
 	name = "can of CHAP"
 	desc = "CHAP: Chopped Ham And Pork. The classic American canned meat product that won a world war, then sent millions of servicemen home with heart congestion."

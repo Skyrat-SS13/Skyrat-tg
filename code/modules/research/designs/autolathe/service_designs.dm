@@ -581,11 +581,7 @@
 /datum/design/telescreen_entertainment
 	name = "Entertainment Telescreen"
 	id = "telescreen_entertainment"
-<<<<<<< HEAD
-	build_type = PROTOLATHE
-=======
 	build_type =  AUTOLATHE | PROTOLATHE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT*5,
 		/datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5,
@@ -597,8 +593,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-<<<<<<< HEAD
-=======
 /datum/design/entertainment_radio
 	name = "Entertainment Radio"
 	id = "radio_entertainment"
@@ -614,7 +608,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/design/barcode_scanner
 	name = "Barcode Scanner"
 	id = "barcode_scanner"

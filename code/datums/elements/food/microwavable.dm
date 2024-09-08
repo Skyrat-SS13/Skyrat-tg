@@ -44,10 +44,7 @@
 
 	var/efficiency = istype(used_microwave) ? used_microwave.efficiency : 1
 	SEND_SIGNAL(result, COMSIG_ITEM_MICROWAVE_COOKED, source, efficiency)
-<<<<<<< HEAD
-=======
 	SEND_SIGNAL(source, COMSIG_ITEM_MICROWAVE_COOKED_FROM, result, efficiency)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(IS_EDIBLE(result) && (result_typepath != default_typepath))
 		BLACKBOX_LOG_FOOD_MADE(result.type)

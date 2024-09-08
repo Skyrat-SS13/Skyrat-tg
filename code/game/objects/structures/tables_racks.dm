@@ -480,11 +480,7 @@
 		check_break(M)
 
 /obj/structure/table/glass/proc/check_break(mob/living/M)
-<<<<<<< HEAD
-	if(M.has_gravity() && M.mob_size > MOB_SIZE_SMALL && !(M.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) && (!isteshari(M))) //SKYRAT EDIT ADDITION - Allows Teshari to climb on glassies safely.
-=======
-	if(M.has_gravity() && M.mob_size > MOB_SIZE_SMALL && !(M.movement_type & MOVETYPES_NOT_TOUCHING_GROUND))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	if(M.has_gravity() && M.mob_size > MOB_SIZE_SMALL && !(M.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) && (!isteshari(M))) //SKYRAT EDIT ADDITION - Allows Teshari to climb on glassies safely. - This should be a component
 		table_shatter(M)
 
 /obj/structure/table/glass/proc/table_shatter(mob/living/victim)
@@ -798,16 +794,6 @@
 	pushed_mob.set_resting(TRUE, TRUE)
 	visible_message(span_notice("[user] lays [pushed_mob] on [src]."))
 
-<<<<<<< HEAD
-/// Any mob that enters our tile will be marked as a potential patient. They will be turned into a patient if they lie down.
-/obj/structure/table/optable/proc/mark_patient(datum/source, mob/living/carbon/potential_patient)
-	SIGNAL_HANDLER
-	if(!istype(potential_patient))
-		return
-	RegisterSignal(potential_patient, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(recheck_patient))
-	recheck_patient(potential_patient) // In case the mob is already lying down before they entered.
-
-=======
 ///Align the mob with the table when buckled.
 /obj/structure/table/optable/post_buckle_mob(mob/living/buckled)
 	. = ..()
@@ -826,7 +812,6 @@
 	RegisterSignal(potential_patient, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(recheck_patient))
 	recheck_patient(potential_patient) // In case the mob is already lying down before they entered.
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Unmark the potential patient.
 /obj/structure/table/optable/proc/unmark_patient(datum/source, mob/living/carbon/potential_patient)
 	SIGNAL_HANDLER
@@ -846,17 +831,12 @@
 
 	if(potential_patient.body_position == LYING_DOWN && potential_patient.loc == loc)
 		patient = potential_patient
-<<<<<<< HEAD
 		chill_out(patient) // SKYRAT EDIT - Operation Table Numbing
 		return
 
 	if(!isnull(patient)) // SKYRAT EDIT - Operation Table Numbing
 		thaw_them(patient) // SKYRAT EDIT - Operation Table Numbing
 
-=======
-		return
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Find another lying mob as a replacement.
 	for (var/mob/living/carbon/replacement_patient in loc.contents)
 		if(replacement_patient.body_position == LYING_DOWN)

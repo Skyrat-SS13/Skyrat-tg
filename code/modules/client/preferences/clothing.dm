@@ -1,25 +1,13 @@
-<<<<<<< HEAD
 /proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color, icon_offset = 0) //SKYRAT EDIT CHANGE : adds icon_offset - Colorable Undershirt/Socks
 	var/icon/final_icon = new(base_icon)
 
 	if (!isnull(accessory))
 		var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state) // SKYRAT EDIT CHANGE: ORIGINAL - var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
-=======
-/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color)
-	var/icon/final_icon = new(base_icon)
-
-	if (!isnull(accessory))
-		var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if (color && !accessory.use_static)
 			accessory_icon.Blend(color, ICON_MULTIPLY)
 		final_icon.Blend(accessory_icon, ICON_OVERLAY)
 
-<<<<<<< HEAD
 	final_icon.Crop(10, 1+icon_offset, 22, 13+icon_offset)	//SKYRAT EDIT CHANGE : adds icon_offset - Colorable Undershirt/Socks
-=======
-	final_icon.Crop(10, 1, 22, 13)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	final_icon.Scale(32, 32)
 
 	return final_icon
@@ -105,18 +93,6 @@
 /datum/preference/choiced/jumpsuit/apply_to_human(mob/living/carbon/human/target, value)
 	target.jumpsuit_style = value
 
-<<<<<<< HEAD
-/datum/preference/choiced/jumpsuit/create_informed_default_value(datum/preferences/preferences)
-	switch(preferences.read_preference(/datum/preference/choiced/gender))
-		if(MALE)
-			return PREF_SUIT
-		if(FEMALE)
-			return PREF_SKIRT
-
-	return ..()
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Socks preference
 /datum/preference/choiced/socks
 	savefile_key = "socks"
@@ -161,10 +137,7 @@
 /datum/preference/choiced/undershirt/create_default_value()
 	return /datum/sprite_accessory/undershirt/nude::name
 
-<<<<<<< HEAD
 /* // SKYRAT EDIT REMOVAL - sports bra doesn't exist as an undershirt. so just let this default to naked and we'll add underwear elsewhere
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/preference/choiced/undershirt/create_informed_default_value(datum/preferences/preferences)
 	switch(preferences.read_preference(/datum/preference/choiced/gender))
 		if(MALE)
@@ -173,10 +146,7 @@
 			return /datum/sprite_accessory/undershirt/sports_bra::name
 
 	return ..()
-<<<<<<< HEAD
 */ // SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/preference/choiced/undershirt/icon_for(value)
 	var/static/icon/body
@@ -193,15 +163,9 @@
 
 	if (value != "Nude")
 		var/datum/sprite_accessory/accessory = SSaccessories.undershirt_list[value]
-<<<<<<< HEAD
 		icon_with_undershirt.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY)// SKYRAT EDIT CHANGE: ORIGINAL - icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
 
 	icon_with_undershirt.Crop(10, 11, 22, 23) // SKYRAT EDIT CHANGE : ORIGINAL - icon_with_undershirt.Crop(9, 9, 23, 23)
-=======
-		icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
-
-	icon_with_undershirt.Crop(9, 9, 23, 23)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_with_undershirt.Scale(32, 32)
 	return icon_with_undershirt
 
@@ -232,11 +196,7 @@
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_r_leg"), ICON_OVERLAY)
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_l_leg"), ICON_OVERLAY)
 
-<<<<<<< HEAD
 	return generate_underwear_icon(SSaccessories.underwear_list[value], lower_half, COLOR_ALMOST_BLACK, icon_offset = 5) // SKYRAT EDIT CHANGE : ICON_OFFSET // SKYRAT EDIT CHANGE - ORIGINAL: return generate_underwear_icon(SSaccessories.underwear_list[value], lower_half, COLOR_ALMOST_BLACK)
-=======
-	return generate_underwear_icon(SSaccessories.underwear_list[value], lower_half, COLOR_ALMOST_BLACK)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/preference/choiced/underwear/apply_to_human(mob/living/carbon/human/target, value)
 	target.underwear = value

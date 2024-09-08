@@ -2,11 +2,6 @@
 /obj/item/organ/internal/cyberimp
 	name = "cybernetic implant"
 	desc = "A state-of-the-art implant that improves a baseline's functionality."
-<<<<<<< HEAD
-	visual = FALSE
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	organ_flags = ORGAN_ROBOTIC
 	failing_desc = "seems to be broken."
 	var/implant_color = COLOR_WHITE

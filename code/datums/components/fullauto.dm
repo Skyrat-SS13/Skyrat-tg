@@ -275,11 +275,7 @@
 // Gun procs.
 
 /obj/item/gun/proc/on_autofire_start(mob/living/shooter)
-<<<<<<< HEAD
-	if(semicd || shooter.incapacitated() || !can_trigger_gun(shooter))
-=======
 	if(semicd || shooter.incapacitated || !can_trigger_gun(shooter))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(!can_shoot())
 		shoot_with_empty_chamber(shooter)
@@ -299,11 +295,7 @@
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, allow_akimbo, params)
 	SIGNAL_HANDLER
-<<<<<<< HEAD
-	if(semicd || shooter.incapacitated())
-=======
 	if(semicd || shooter.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return NONE
 	if(!can_shoot())
 		shoot_with_empty_chamber(shooter)

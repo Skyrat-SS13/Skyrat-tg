@@ -66,20 +66,12 @@
 	baseturfs = /turf/cordon
 	icon = 'icons/blanks/blank_title.png'
 	icon_state = ""
-<<<<<<< HEAD
 	pixel_x = 0 // SKYRAT EDIT - Re-centering the title screen - ORIGINAL: pixel_x = -64
-=======
-	pixel_x = -64
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	plane = SPLASHSCREEN_PLANE
 	bullet_bounce_sound = null
 
 INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/closed/indestructible/splashscreen/Initialize(mapload)
 	. = ..()
 	SStitle.splash_turf = src
@@ -95,13 +87,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 		pixel_x = 0
 	else if(width == 608) // 608x480 is widescreen
 		pixel_x = -64
-<<<<<<< HEAD
-	// SKYRAT EDIT START - Wider widescreen
-	else if(width == 672) // Skyrat's widescreen is slightly wider than /tg/'s, so we need to accomodate that too.
-		pixel_x = -96
-	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/closed/indestructible/splashscreen/vv_edit_var(var_name, var_value)
 	. = ..()
@@ -114,10 +99,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/splashscreen/examine()
 	desc = pick(strings(SPLASH_FILE, "splashes"))
 	return ..()
-<<<<<<< HEAD
 SKYRAT EDIT REMOVAL END */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/closed/indestructible/reinforced
 	name = "reinforced wall"

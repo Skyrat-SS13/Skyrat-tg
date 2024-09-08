@@ -272,11 +272,7 @@
 /datum/controller/subsystem/proc/OnConfigLoad()
 
 /**
-<<<<<<< HEAD
- * Used to initialize the subsystem. This is expected to be overriden by subtypes.
-=======
  * Used to initialize the subsystem. This is expected to be overridden by subtypes.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  */
 /datum/controller/subsystem/Initialize()
 	return SS_INIT_NONE

@@ -1,8 +1,5 @@
 /datum/ert
-<<<<<<< HEAD
-=======
 	///Antag datum team for this type of ERT.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/team = /datum/team/ert
 	///Do we open the doors to the "high-impact" weapon/explosive cabinets? Used for combat-focused ERTs.
 	var/opendoors = TRUE
@@ -28,11 +25,8 @@
 	var/spawn_admin = FALSE
 	/// If TRUE, we try and pick one of the most experienced players who volunteered to fill the leader slot
 	var/leader_experience = TRUE
-<<<<<<< HEAD
 	///SKYRAT EDIT: Do we want to notify the players of this ERT?
 	var/notify_players = TRUE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// A custom map template to spawn the ERT at. If this is null or use_custom_shuttle is FALSE, the ERT will spawn at Centcom.
 	var/datum/map_template/ert_template
 	/// If we should actually _use_ the ert_template custom shuttle
@@ -145,8 +139,6 @@
 	mission = "Having heard the station's request for aid, assist the crew in defending themselves."
 	polldesc = "an independent station defense militia"
 	random_names = TRUE
-<<<<<<< HEAD
-=======
 
 /datum/ert/medical
 	opendoors = FALSE
@@ -158,4 +150,3 @@
 	code = "Violet"
 	mission = "Provide emergency medical services to the crew."
 	polldesc = "an emergency medical response team"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

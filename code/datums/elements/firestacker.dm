@@ -27,17 +27,10 @@
 /datum/element/firestacker/proc/stack_on(datum/owner, mob/living/target)
 	target.adjust_fire_stacks(amount)
 
-<<<<<<< HEAD
-/datum/element/firestacker/proc/impact(datum/source, atom/hit_atom, datum/thrownthing/throwingdatum)
-	SIGNAL_HANDLER
-
-	if(isliving(hit_atom))
-=======
 /datum/element/firestacker/proc/impact(datum/source, atom/hit_atom, datum/thrownthing/throwing_datum, caught)
 	SIGNAL_HANDLER
 
 	if(!caught && isliving(hit_atom))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		stack_on(source, hit_atom)
 
 /datum/element/firestacker/proc/item_attack(datum/source, atom/movable/target, mob/living/user)

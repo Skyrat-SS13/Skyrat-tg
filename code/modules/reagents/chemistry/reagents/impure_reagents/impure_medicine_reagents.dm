@@ -230,11 +230,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //Just the removed itching mechanism - omage to its origins.
 /datum/reagent/inverse/ichiyuri/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-<<<<<<< HEAD
-	if(prob(resetting_probability) && !(HAS_TRAIT(affected_mob, TRAIT_RESTRAINED) || affected_mob.incapacitated()))
-=======
 	if(prob(resetting_probability) && !(HAS_TRAIT(affected_mob, TRAIT_RESTRAINED) || affected_mob.incapacitated))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		. = TRUE
 		if(spammer < world.time)
 			to_chat(affected_mob,span_warning("You can't help but itch yourself."))
@@ -664,10 +660,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		/datum/brain_trauma/hypnosis, // Hypnosis, same reason as obsessed, plus a bug makes it remain even after the neurowhine purges and then turn into "nothing" on the med reading upon a second application
 		/datum/brain_trauma/special/honorbound, // Designed to be chaplain exclusive
 	)
-<<<<<<< HEAD
 	forbiddentraumas += typesof(/datum/brain_trauma/very_special) // SKYRAT EDIT ADDITION - No very special (lewd) quirks gained by inverse neurine
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	traumalist -= forbiddentraumas
 	var/obj/item/organ/internal/brain/brain = affected_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
 	traumalist = shuffle(traumalist)

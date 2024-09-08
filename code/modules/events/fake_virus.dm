@@ -12,13 +12,10 @@
 			continue
 		if(!(victim.mind?.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
-<<<<<<< HEAD
 		// SKYRAT EDIT ADD START - Station/area event candidate filtering
 		if(engaged_role_play_check(fake_virus_victims, station = TRUE, dorms = TRUE))
 			continue
 		// SKYRAT EDIT ADD END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		fake_virus_victims += victim
 
 	//first we do hard status effect victims

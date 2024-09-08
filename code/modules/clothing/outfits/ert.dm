@@ -103,11 +103,8 @@
 	r_hand = /obj/item/gun/energy/e_gun
 	l_pocket = /obj/item/healthanalyzer/advanced
 	additional_radio = /obj/item/encryptionkey/heads/cmo
-<<<<<<< HEAD
-=======
 
 	skillchips = list(/obj/item/skillchip/entrails_reader)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/outfit/centcom/ert/medic/alert
 	name = "ERT Medic - High Alert"
@@ -137,12 +134,9 @@
 	glasses = /obj/item/clothing/glasses/meson/engine
 	l_pocket = /obj/item/rcd_ammo/large
 	additional_radio = /obj/item/encryptionkey/heads/ce
-<<<<<<< HEAD
-=======
 
 
 	skillchips = list(/obj/item/skillchip/job/engineer)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/outfit/centcom/ert/engineer/alert
 	name = "ERT Engineer - High Alert"
@@ -531,12 +525,9 @@
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	additional_radio = /obj/item/encryptionkey/heads/cmo
 
-<<<<<<< HEAD
-=======
 
 	skillchips = list(/obj/item/skillchip/entrails_reader)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/outfit/centcom/ert/marine/engineer
 	name = "Marine Engineer"
 
@@ -550,11 +541,8 @@
 	glasses = /obj/item/clothing/glasses/hud/diagnostic/sunglasses
 	additional_radio = /obj/item/encryptionkey/heads/ce
 
-<<<<<<< HEAD
-=======
 	skillchips = list(/obj/item/skillchip/job/engineer)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/outfit/centcom/militia
 	name = "Militia Man"
 
@@ -585,8 +573,6 @@
 	head = /obj/item/clothing/head/beret/militia
 	l_hand = /obj/item/megaphone
 	suit_store = /obj/item/gun/energy/laser/musket/prime
-<<<<<<< HEAD
-=======
 
 /datum/outfit/centcom/ert/medical_commander
 	name = "Chief EMT"
@@ -656,4 +642,3 @@
 ///Identical to medical MODsuit, but uses the alternate skin by default.
 /datum/mod_theme/medical/corpsman
 	default_skin = "corpsman"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

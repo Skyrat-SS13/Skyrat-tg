@@ -24,26 +24,16 @@
 	laser = 50
 	energy = 100
 	bomb = 10
-<<<<<<< HEAD
-=======
 
 /obj/structure/railing/unbreakable
 	resistance_flags = INDESTRUCTIBLE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/railing/corner //aesthetic corner sharp edges hurt oof ouch
 	icon_state = "railing_corner"
 	density = FALSE
 	climbable = FALSE
 
-<<<<<<< HEAD
-/obj/structure/railing/corner/end //end of a segment of railing without making a loop
-	icon_state = "railing_end"
 
-/obj/structure/railing/corner/end/flip //same as above but flipped around
-	icon_state = "railing_end_flip"
-
-=======
 /obj/structure/railing/corner/unbreakable
 	resistance_flags = INDESTRUCTIBLE
 
@@ -59,7 +49,6 @@
 /obj/structure/railing/corner/end/flip/unbreakable
 	resistance_flags = INDESTRUCTIBLE
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/structure/railing/Initialize(mapload)
 	. = ..()
 	if(climbable)

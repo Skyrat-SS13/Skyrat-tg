@@ -27,17 +27,10 @@
 #define SEVERITY_MAJOR 10
 
 /// Kudzu mutativeness is based on a scale factor * potency
-<<<<<<< HEAD
-#define MUTATIVENESS_SCALE_FACTOR 0.1 // SKYRAT EDIT CHANGE - Original: 0.2
-
-/// Kudzu maximum mutation severity is a linear function of potency
-#define MAX_SEVERITY_LINEAR_COEFF 0.1 // SKYRAT EDIT CHANGE - Original: 0.15
-=======
 #define MUTATIVENESS_SCALE_FACTOR 0.2
 
 /// Kudzu maximum mutation severity is a linear function of potency
 #define MAX_SEVERITY_LINEAR_COEFF 0.15
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define MAX_SEVERITY_CONSTANT_TERM 10
 
 /// Additional maximum mutation severity given to kudzu spawned by a random event

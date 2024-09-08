@@ -37,10 +37,6 @@
 	bubble_icon = "machine"
 	initial_language_holder = /datum/language_holder/drone
 	mob_size = MOB_SIZE_SMALL
-<<<<<<< HEAD
-	has_unlimited_silicon_privilege = TRUE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, STAMINA = 0, OXY = 0)
 	hud_possible = list(DIAG_STAT_HUD, DIAG_HUD, ANTAG_HUD)
 	unique_name = TRUE
@@ -205,9 +201,6 @@
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_atom_to_hud(src)
 
-<<<<<<< HEAD
-	add_traits(list(TRAIT_VENTCRAWLER_ALWAYS, TRAIT_NEGATES_GRAVITY, TRAIT_LITERATE, TRAIT_KNOW_ENGI_WIRES, TRAIT_ADVANCEDTOOLUSER), INNATE_TRAIT)
-=======
 	add_traits(list(
 		TRAIT_VENTCRAWLER_ALWAYS,
 		TRAIT_NEGATES_GRAVITY,
@@ -218,7 +211,6 @@
 		TRAIT_REAGENT_SCANNER,
 		TRAIT_UNOBSERVANT,
 	), INNATE_TRAIT)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	listener = new(list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER), list(z))
 	RegisterSignal(listener, COMSIG_ALARM_LISTENER_TRIGGERED, PROC_REF(alarm_triggered))
@@ -238,11 +230,7 @@
 	holder.pixel_y = hud_icon.Height() - world.icon_size
 	if(stat == DEAD)
 		holder.icon_state = "huddead2"
-<<<<<<< HEAD
-	else if(incapacitated())
-=======
 	else if(incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		holder.icon_state = "hudoffline"
 	else
 		holder.icon_state = "hudstat"
@@ -288,11 +276,7 @@
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_DRONE)
 
 /mob/living/basic/drone/examine(mob/user)
-<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
-=======
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	//Hands
 	for(var/obj/item/held_thing in held_items)

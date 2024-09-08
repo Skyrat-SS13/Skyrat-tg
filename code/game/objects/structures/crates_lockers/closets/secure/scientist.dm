@@ -18,10 +18,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/science(src)
 	new /obj/item/storage/photo_album/rd(src)
 	new /obj/item/storage/box/skillchips/science(src)
-<<<<<<< HEAD
 	new /obj/item/card/id/departmental_budget/sci(src) //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/closet/secure_closet/research_director/populate_contents_immediate()
 	. = ..()

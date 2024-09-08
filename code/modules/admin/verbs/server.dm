@@ -96,13 +96,8 @@ ADMIN_VERB(start_now, R_SERVER, "Start Now", "Start the round RIGHT NOW.", ADMIN
 
 	if(SSticker.start_immediately)
 		SSticker.start_immediately = FALSE
-<<<<<<< HEAD
-		SSticker.SetTimeLeft(1800)
-		to_chat(world, span_infoplain(span_bold("The game will start in 180 seconds.")))
-=======
 		SSticker.SetTimeLeft(3 MINUTES)
 		to_chat(world, span_big(span_notice("The game will start in 3 minutes.")))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
 		message_admins(span_adminnotice("[key_name_admin(user)] has cancelled immediate game start. Game will start in 3 minutes."))
 		log_admin("[key_name(user)] has cancelled immediate game start.")
@@ -120,12 +115,8 @@ ADMIN_VERB(start_now, R_SERVER, "Start Now", "Start the round RIGHT NOW.", ADMIN
 		message_admins("The server is still setting up, but the round will be started as soon as possible.")
 	BLACKBOX_LOG_ADMIN_VERB("Start Now")
 
-<<<<<<< HEAD
 // ADMIN_VERB(delay_round_end, R_SERVER, "Delay Round End", "Prevent the server from restarting.", ADMIN_CATEGORY_SERVER)
 ADMIN_VERB(delay_round_end, R_ADMIN, "Delay Round End", "Prevent the server from restarting.", ADMIN_CATEGORY_SERVER) // SKYRAT EDIT -- ORIGINAL ABOVE
-=======
-ADMIN_VERB(delay_round_end, R_SERVER, "Delay Round End", "Prevent the server from restarting.", ADMIN_CATEGORY_SERVER)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(SSticker.delay_end)
 		tgui_alert(user, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
 		return
@@ -160,13 +151,8 @@ ADMIN_VERB(toggle_ai, R_SERVER, "Toggle AI", "Toggle the ability to choose AI jo
 	if (alai)
 		to_chat(world, span_bold("The AI job is no longer chooseable."), confidential = TRUE)
 	else
-<<<<<<< HEAD
-		to_chat(world, span_bold("The AI job is chooseable now."), confidential = TRUE)
-	log_admin("[key_name(usr)] toggled AI allowed.")
-=======
 		to_chat(world, "<B>The AI job is chooseable now.</B>", confidential = TRUE)
 	log_admin("[key_name(user)] toggled AI allowed.")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	world.update_status()
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle AI", "[!alai ? "Disabled" : "Enabled"]")) // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
@@ -217,13 +203,8 @@ ADMIN_VERB(delay, R_SERVER, "Delay Pre-Game", "Delay the game start.", ADMIN_CAT
 	SSticker.SetTimeLeft(newtime)
 	SSticker.start_immediately = FALSE
 	if(newtime < 0)
-<<<<<<< HEAD
-		to_chat(world, span_infoplain(span_bold("The game start has been delayed.")), confidential = TRUE)
-		log_admin("[key_name(usr)] delayed the round start.")
-=======
 		to_chat(world, "<span class='infoplain'><b>The game start has been delayed.</b></span>", confidential = TRUE)
 		log_admin("[key_name(user)] delayed the round start.")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		to_chat(world, span_infoplain(span_bold("The game will start in [DisplayTimeText(newtime)].")), confidential = TRUE)
 		SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
@@ -257,13 +238,7 @@ ADMIN_VERB(toggle_guests, R_SERVER, "Toggle Guests", "Toggle the ability for gue
 	if (new_guest_ban)
 		to_chat(world, span_bold("Guests may no longer enter the game."), confidential = TRUE)
 	else
-<<<<<<< HEAD
-		to_chat(world, span_bold("Guests may now enter the game."), confidential = TRUE)
-	log_admin("[key_name(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed."))
-=======
 		to_chat(world, "<B>Guests may now enter the game.</B>", confidential = TRUE)
 	log_admin("[key_name(user)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
 	message_admins(span_adminnotice("[key_name_admin(user)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!

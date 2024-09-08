@@ -41,10 +41,6 @@ DECLARE_LOG_NAMED(harddel_log, "harddels", START_LOG)
 DECLARE_LOG_NAMED(test_log, "tests", START_LOG)
 #endif
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Picture logging
 GLOBAL_VAR(picture_log_directory)
 GLOBAL_PROTECT(picture_log_directory)

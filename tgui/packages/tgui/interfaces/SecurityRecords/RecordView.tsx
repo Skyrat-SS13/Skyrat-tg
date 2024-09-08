@@ -53,19 +53,12 @@ const RecordInfo = (props) => {
   const { available_statuses } = data;
   const [open, setOpen] = useLocalState<boolean>('printOpen', false);
 
-<<<<<<< HEAD
   // const { min_age, max_age } = data; // ORIGINAL
   const { min_age, max_age, max_chrono_age } = data; // SKYRAT EDIT CHANGE - Chronological age
 
   const {
     age,
     chrono_age, // SKYRAT EDIT ADDITION - Chronological age
-=======
-  const { min_age, max_age } = data;
-
-  const {
-    age,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     crew_ref,
     crimes,
     fingerprint,
@@ -76,13 +69,10 @@ const RecordInfo = (props) => {
     species,
     wanted_status,
     voice,
-<<<<<<< HEAD
     // SKYRAT EDIT START - RP Records
     past_general_records,
     past_security_records,
     // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   } = foundRecord;
 
   const hasValidCrimes = !!crimes.find((crime) => !!crime.valid);
@@ -162,14 +152,10 @@ const RecordInfo = (props) => {
             <LabeledList.Item label="Job">
               <EditableText field="rank" target_ref={crew_ref} text={rank} />
             </LabeledList.Item>
-<<<<<<< HEAD
             {/* <LabeledList.Item label="Age"> // ORIGINAL */}
             {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
             <LabeledList.Item label="Physical Age">
               {/* SKYRAT EDIT CHANGE END */}
-=======
-            <LabeledList.Item label="Age">
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
@@ -183,7 +169,6 @@ const RecordInfo = (props) => {
                 value={age}
               />
             </LabeledList.Item>
-<<<<<<< HEAD
             {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
             <LabeledList.Item label="Chronological Age">
               <RestrictedInput
@@ -200,8 +185,6 @@ const RecordInfo = (props) => {
               />
             </LabeledList.Item>
             {/* SKYRAT EDIT ADDITION END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             <LabeledList.Item label="Species">
               <EditableText
                 field="species"
@@ -234,7 +217,6 @@ const RecordInfo = (props) => {
                 text={note}
               />
             </LabeledList.Item>
-<<<<<<< HEAD
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
             <LabeledList.Item label="General Records">
               <Box maxWidth="100%" preserveWhitespace>
@@ -247,8 +229,6 @@ const RecordInfo = (props) => {
               </Box>
             </LabeledList.Item>
             {/* SKYRAT EDIT END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           </LabeledList>
         </Section>
       </Stack.Item>

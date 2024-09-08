@@ -1,9 +1,5 @@
 /obj/item/delivery
-<<<<<<< HEAD
 	icon = 'icons/obj/storage/wrapping.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/storage/wrapping.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	inhand_icon_state = "deliverypackage"
 	var/giftwrapped = 0
 	var/sort_tag = 0
@@ -313,11 +309,7 @@
 	return data
 
 /** User clicks a button on the tagger */
-<<<<<<< HEAD
-/obj/item/dest_tagger/ui_act(action, params)
-=======
 /obj/item/dest_tagger/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

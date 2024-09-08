@@ -268,10 +268,7 @@
 			reason = reason,
 			paying_account = account,
 			coupon = applied_coupon,
-<<<<<<< HEAD
 			charge_on_purchase = TRUE, // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 		working_list += order
 
@@ -333,11 +330,7 @@
 			else
 				//create the paper from the SSshuttle.shopping_list
 				if(length(SSshuttle.shopping_list))
-<<<<<<< HEAD
-					var/obj/item/paper/requisition_paper = new(get_turf(src))
-=======
 					var/obj/item/paper/requisition/requisition_paper = new(get_turf(src))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					requisition_paper.name = "requisition form - [station_time_timestamp()]"
 					var/requisition_text = "<h2>[station_name()] Supply Requisition</h2>"
 					requisition_text += "<hr/>"

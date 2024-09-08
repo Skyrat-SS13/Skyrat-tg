@@ -120,7 +120,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 
 	return TRUE
 
-<<<<<<< HEAD
+
 //SKYRAT EDIT ADDITION
 /obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	if(do_after(user, 3 SECONDS, src))
@@ -128,8 +128,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 		balloon_alert(user, "reservoir emptied")
 //SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/machinery/shower/analyzer_act(mob/living/user, obj/item/tool)
 	. = ..()
 
@@ -197,13 +195,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	I.play_tool_sound(src)
 	deconstruct()
 	return TRUE
-<<<<<<< HEAD
-
-/obj/machinery/shower/setDir(newdir)
-	. = ..()
-	update_appearance(UPDATE_OVERLAYS)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/shower/update_overlays()
 	. = ..()
@@ -212,16 +203,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	var/mutable_appearance/water_falling = mutable_appearance('icons/obj/watercloset.dmi', "water", ABOVE_MOB_LAYER)
 	water_falling.color = mix_color_from_reagents(reagents.reagent_list)
 	switch(dir)
-<<<<<<< HEAD
-
-		if(SOUTH)
-			water_falling.pixel_z -= 24
-		if(EAST)
-			water_falling.pixel_w += 16
-		if(WEST)
-			water_falling.pixel_w -= 16
-
-=======
 		if(NORTH)
 			water_falling.pixel_y += pixel_shift
 		if(SOUTH)
@@ -230,7 +211,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 			water_falling.pixel_x += pixel_shift
 		if(WEST)
 			water_falling.pixel_x -= pixel_shift
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. += water_falling
 
 /obj/machinery/shower/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)

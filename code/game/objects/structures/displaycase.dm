@@ -101,13 +101,8 @@
 /obj/structure/displaycase/proc/trigger_alarm()
 	if(!alert)
 		return
-<<<<<<< HEAD
 	//var/area/alarmed = get_area(src) SKYRAT EDIT REMOVAL
 	//alarmed.burglaralert(src) SKYRAT EDIT REMOVAL
-=======
-	var/area/alarmed = get_area(src)
-	alarmed.burglaralert(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	alarm_manager.send_alarm(ALARM_BURGLAR)
 	addtimer(CALLBACK(alarm_manager, TYPE_PROC_REF(/datum/alarm_handler, clear_alarm), ALARM_BURGLAR), 1 MINUTES)
@@ -416,11 +411,7 @@
 		data["showpiece_icon"] = icon2base64(getFlatIcon(showpiece, no_anim=TRUE))
 	return data
 
-<<<<<<< HEAD
-/obj/structure/displaycase/trophy/ui_act(action, params)
-=======
 /obj/structure/displaycase/trophy/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -535,11 +526,7 @@
 	data["product_icon"] = showpiece ? icon2base64(getFlatIcon(showpiece, no_anim=TRUE)) : null
 	return data
 
-<<<<<<< HEAD
-/obj/structure/displaycase/forsale/ui_act(action, params)
-=======
 /obj/structure/displaycase/forsale/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

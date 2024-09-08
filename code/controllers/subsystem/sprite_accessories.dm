@@ -31,7 +31,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/undershirt_m //! stores only undershirt name
 	var/list/undershirt_f //! stores only undershirt name
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Underwear/bra split
 	var/list/bra_list
 	var/list/bra_m
@@ -42,21 +41,12 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/socks_list //! stores /datum/sprite_accessory/socks indexed by name
 
 	/* SKYRAT EDIT REMOVAL START - Customization - Moved to sprite_accessories var
-=======
-	//Socks
-	var/list/socks_list //! stores /datum/sprite_accessory/socks indexed by name
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//Lizard Bits (all datum lists indexed by name)
 	var/list/lizard_markings_list
 	var/list/snouts_list
 	var/list/horns_list
 	var/list/frills_list
 	var/list/spines_list
-<<<<<<< HEAD
-	var/list/legs_list
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/tail_spines_list
 
 	//Mutant Human bits
@@ -68,7 +58,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/wings_open_list
 	var/list/moth_wings_list
 	var/list/moth_antennae_list
-<<<<<<< HEAD
 	*/ //SKYRAT EDIT REMOVAL END
 	var/list/moth_markings_list
 	var/list/pod_hair_list
@@ -90,19 +79,11 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/dna_mutant_bodypart_blocks = list()
 	var/list/features_block_lengths = list()
 	// SKYRAT EDIT ADDITION END
-=======
-	var/list/moth_markings_list
-	var/list/caps_list
-	var/list/pod_hair_list
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/controller/subsystem/accessories/PreInit() // this stuff NEEDS to be set up before GLOB for preferences and stuff to work so this must go here. sorry
 	setup_lists()
 	init_hair_gradients()
-<<<<<<< HEAD
 	make_sprite_accessory_references() // SKYRAT EDIT ADDITION - Customization
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Sets up all of the lists for later utilization in the round and building sprites.
 /// In an ideal world we could tack everything that just needed `DEFAULT_SPRITE_LIST` into static variables on the top, but due to the initialization order
@@ -129,7 +110,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	undershirt_m = undershirt_lists[MALE_SPRITE_LIST]
 	undershirt_f = undershirt_lists[FEMALE_SPRITE_LIST]
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Underwear/bra split
 	var/bra_lists = init_sprite_accessory_subtypes(/datum/sprite_accessory/bra)
 	bra_list = bra_lists[DEFAULT_SPRITE_LIST]
@@ -140,10 +120,8 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
 	/* // SKYRAT EDIT REMOVAL START - Customization
-=======
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_human = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard)[DEFAULT_SPRITE_LIST]
@@ -156,7 +134,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	frills_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/frills, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	spines_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/spines, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tail_spines_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/tail_spines, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
-<<<<<<< HEAD
 	legs_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/legs)[DEFAULT_SPRITE_LIST]
 	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps)[DEFAULT_SPRITE_LIST]
 	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
@@ -179,15 +156,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	// SKYRAT EDIT ADDITION END
 
 /// This proc just intializes all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
-=======
-	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps)[DEFAULT_SPRITE_LIST]
-	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
-	moth_antennae_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae)[DEFAULT_SPRITE_LIST]
-	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
-	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair)[DEFAULT_SPRITE_LIST]
-
-/// This proc just initializes all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/controller/subsystem/accessories/proc/init_hair_gradients()
 	hair_gradients_list = list()
 	facial_hair_gradients_list = list()

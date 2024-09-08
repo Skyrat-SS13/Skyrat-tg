@@ -16,11 +16,7 @@
 
 	// These slots are human only, + they have to have a uniform
 	var/mob/living/carbon/human/human_hallucinator = hallucinator
-<<<<<<< HEAD
-	if(istype(hallucinator) && human_hallucinator.w_uniform)
-=======
 	if(istype(human_hallucinator) && human_hallucinator.w_uniform)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if((valid_slots & ITEM_SLOT_BELT) && !human_hallucinator.belt)
 			slots_free[ui_belt] = ITEM_SLOT_BELT
 		if((valid_slots & ITEM_SLOT_LPOCKET) && !human_hallucinator.l_store)

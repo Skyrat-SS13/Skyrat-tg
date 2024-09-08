@@ -87,11 +87,7 @@
 	var/holopay_name = "holographic pay stand"
 
 	/// Registered owner's age.
-<<<<<<< HEAD
-	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (13)
-=======
-	var/registered_age = 30
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (30)
 
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
@@ -108,14 +104,11 @@
 	/// Boolean value. If TRUE, the [Intern] tag gets prepended to this ID card when the label is updated.
 	var/is_intern = FALSE
 
-<<<<<<< HEAD
-=======
 	///If true, the wearer will have bigger arrow when pointing at things. Passed down by trims.
 	var/big_pointer = FALSE
 	///If set, the arrow will have a different color.
 	var/pointer_color
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/armor/card_id
 	fire = 100
 	acid = 100
@@ -156,8 +149,6 @@
 		QDEL_NULL(my_store)
 	return ..()
 
-<<<<<<< HEAD
-=======
 /obj/item/card/id/equipped(mob/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_ID)
@@ -181,7 +172,6 @@
 	UnregisterSignal(user, COMSIG_MOVABLE_POINTED)
 	return ..()
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/card/id/get_id_examine_strings(mob/user)
 	. = ..()
 	. += list("[icon2html(get_cached_flat_icon(), user, extra_classes = "bigicon")]")
@@ -459,11 +449,7 @@
 	if(Adjacent(user))
 		var/minor
 		if(registered_name && registered_age && registered_age < AGE_MINOR)
-<<<<<<< HEAD
 			minor = " <b>[registered_age]</b>" //SKYRAT EDIT CHANGE
-=======
-			minor = " <b>(MINOR)</b>"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name][minor]."), span_notice("You show \the [src.name][minor]."))
 	add_fingerprint(user)
 
@@ -608,14 +594,11 @@
 			return ITEM_INTERACT_BLOCKING
 		to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of credits to the linked account."))
 		return ITEM_INTERACT_SUCCESS
-<<<<<<< HEAD
 	/// SKYRAT EDIT BEGINS - Trim Tokens - Proc defined in modular_skyrat/modules/trim_tokens/code/cards_id.dm
 	else if(istype(tool, /obj/item/trim_token))
 		apply_token(tool, user)
 		return
 	/// SKYRAT EDIT ENDS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return NONE
 
 /**
@@ -1469,11 +1452,7 @@
 	desc = "A highly advanced chameleon ID card. Touch this card on another ID card or player to choose which accesses to copy. \
 		Has special magnetic properties which force it to the front of wallets."
 	trim = /datum/id_trim/chameleon
-<<<<<<< HEAD
 	wildcard_slots = WILDCARD_LIMIT_CHAMELEON_PLUS // SKYRAT EDIT - Original WILDCARD_LIMIT_CHAMELEON
-=======
-	wildcard_slots = WILDCARD_LIMIT_CHAMELEON
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	actions_types = list(/datum/action/item_action/chameleon/change/id, /datum/action/item_action/chameleon/change/id_trim)
 
 	/// Have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
@@ -1608,11 +1587,7 @@
 
 	return data
 
-<<<<<<< HEAD
-/obj/item/card/id/advanced/chameleon/ui_act(action, list/params)
-=======
 /obj/item/card/id/advanced/chameleon/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -1917,11 +1892,7 @@
 /obj/item/card/cardboard/proc/after_input_check(mob/living/user, obj/item/item, input, value)
 	if(!input || (value && input == value))
 		return FALSE
-<<<<<<< HEAD
-	if(QDELETED(user) || QDELETED(item) || QDELETED(src) || user.incapacitated() || !user.is_holding(item) || !user.CanReach(src) || !user.can_write(item))
-=======
 	if(QDELETED(user) || QDELETED(item) || QDELETED(src) || user.incapacitated || !user.is_holding(item) || !user.CanReach(src) || !user.can_write(item))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 

@@ -1,10 +1,5 @@
 /* This comment bypasses grep checks */ /var/__dreamluau
 
-<<<<<<< HEAD
-#define DREAMLUAU (world.system_type == MS_WINDOWS ? "dreamluau.dll" : (__dreamluau || (__dreamluau = __detect_auxtools("dreamluau"))))
-
-#define DREAMLUAU_CALL(func) call_ext(DREAMLUAU, "byond:[#func]")
-=======
 /* This comment also bypasses grep checks */ /var/__dreamluau_exists
 
 #define DREAMLUAU_EXISTS (__dreamluau_exists ||= fexists(DREAMLUAU))
@@ -12,7 +7,6 @@
 #define DREAMLUAU (world.system_type == MS_WINDOWS ? "dreamluau.dll" : (__dreamluau ||= __detect_auxtools("dreamluau")))
 
 #define DREAMLUAU_CALL(func) (!DREAMLUAU_EXISTS) ? null : call_ext(DREAMLUAU, "byond:[#func]")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /**
  * All of the following functions will return a string if the underlying rust code returns an error or a wrapped panic.

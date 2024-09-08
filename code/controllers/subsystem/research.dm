@@ -78,11 +78,8 @@ SUBSYSTEM_DEF(research)
 	new /datum/techweb/science
 	new /datum/techweb/admin
 	new /datum/techweb/oldstation
-<<<<<<< HEAD
 	new /datum/techweb/tarkon //Skyrat Edit
 	new /datum/techweb/interdyne //Skyrat Edit
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	autosort_categories()
 	error_design = new
 	error_node = new

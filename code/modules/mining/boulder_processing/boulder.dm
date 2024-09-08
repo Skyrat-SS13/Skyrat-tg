@@ -107,10 +107,7 @@
  * @param override_speed_multiplier The speed multiplier to use if weapon is null. The do_after will take 2 * this value seconds to complete.
  * @param continued Whether or not this is a continued process, or the first one. If true, we don't play the "You swing at the boulder" message.
  */
-<<<<<<< HEAD
 /* SKYRAT EDIT OVERRIDE! Check the module:mining boulder.dm!
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/boulder/proc/manual_process(obj/item/weapon, mob/living/user, override_speed_multiplier, continued = FALSE)
 	var/process_speed = 0
 	//Handle weapon conditions.
@@ -153,11 +150,7 @@
 	var/msg = (durability == 1 ? "is crumbling!" : "looks weaker!")
 	to_chat(user, span_notice("\The [src] [msg]"))
 	manual_process(weapon, user, override_speed_multiplier, continued = TRUE)
-<<<<<<< HEAD
 */
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /**
  * This function is called while breaking boulders manually, and drops ore based on the boulder's mineral content.
  * Quantity of ore spawned here is 1 less than if the boulder was processed by a machine, but clamped at 10 maximum, 1 minimum.

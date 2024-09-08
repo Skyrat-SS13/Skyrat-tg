@@ -8,15 +8,9 @@
 ///Cap for how fast cells charge, as a percentage per second (.01 means cellcharge is capped to 1% per second)
 #define CHARGELEVEL 0.01
 ///Charge percentage at which the lights channel stops working
-<<<<<<< HEAD
 #define APC_CHANNEL_LIGHT_TRESHOLD 10 //SKYRAT EDIT CHANGE - Original: 15
 ///Charge percentage at which the equipment channel stops working
 #define APC_CHANNEL_EQUIP_TRESHOLD 20 //SKYRAT EDIT CHANGE - Original: 30
-=======
-#define APC_CHANNEL_LIGHT_TRESHOLD 15
-///Charge percentage at which the equipment channel stops working
-#define APC_CHANNEL_EQUIP_TRESHOLD 30
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Charge percentage at which the APC icon indicates discharging
 #define APC_CHANNEL_ALARM_TRESHOLD 75
 
@@ -450,18 +444,6 @@
 	if(!QDELETED(remote_control_user) && user == remote_control_user)
 		. = UI_INTERACTIVE
 
-<<<<<<< HEAD
-/obj/machinery/power/apc/ui_act(action, params)
-	. = ..()
-
-	if(. || !can_use(usr, 1) || (locked && !HAS_SILICON_ACCESS(usr) && !failure_timer && action != "toggle_nightshift"))
-		return
-	switch(action)
-		if("lock")
-			if(HAS_SILICON_ACCESS(usr))
-				if((obj_flags & EMAGGED) || (machine_stat & (BROKEN|MAINT)) || remote_control_user)
-					to_chat(usr, span_warning("The APC does not respond to the command!"))
-=======
 /obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	var/mob/user = ui.user
@@ -473,7 +455,6 @@
 			if(HAS_SILICON_ACCESS(user))
 				if((obj_flags & EMAGGED) || (machine_stat & (BROKEN|MAINT)) || remote_control_user)
 					to_chat(user, span_warning("The APC does not respond to the command!"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				else
 					locked = !locked
 					update_appearance()
@@ -482,17 +463,10 @@
 			coverlocked = !coverlocked
 			. = TRUE
 		if("breaker")
-<<<<<<< HEAD
-			toggle_breaker(usr)
-			. = TRUE
-		if("toggle_nightshift")
-			toggle_nightshift_lights(usr)
-=======
 			toggle_breaker(user)
 			. = TRUE
 		if("toggle_nightshift")
 			toggle_nightshift_lights(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			. = TRUE
 		if("charge")
 			chargemode = !chargemode
@@ -515,19 +489,6 @@
 				update()
 			. = TRUE
 		if("overload")
-<<<<<<< HEAD
-			if(HAS_SILICON_ACCESS(usr))
-				overload_lighting()
-				. = TRUE
-		if("hack")
-			if(get_malf_status(usr))
-				malfhack(usr)
-		if("occupy")
-			if(get_malf_status(usr))
-				malfoccupy(usr)
-		if("deoccupy")
-			if(get_malf_status(usr))
-=======
 			if(HAS_SILICON_ACCESS(user))
 				overload_lighting()
 				. = TRUE
@@ -539,7 +500,6 @@
 				malfoccupy(user)
 		if("deoccupy")
 			if(get_malf_status(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				malfvacate()
 		if("reboot")
 			failure_timer = 0
@@ -638,15 +598,9 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-<<<<<<< HEAD
-		else if(cell.percent() < APC_CHANNEL_EQUIP_TRESHOLD)
-			equipment = autoset(equipment, AUTOSET_ON) // SKYRAT EDIT CHANGE - ORIGINAL: AUTOSET_OFF
-			lighting = autoset(lighting, AUTOSET_OFF) // SKYRAT EDIT CHANGE - ORIGINAL: AUTOSET_ON
-=======
 		else if(cell.percent() < APC_CHANNEL_EQUIP_TRESHOLD) // turn off equipment
 			equipment = autoset(equipment, AUTOSET_OFF)
 			lighting = autoset(lighting, AUTOSET_ON)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
@@ -662,7 +616,6 @@
 					INVOKE_ASYNC(src, PROC_REF(set_nightshift), FALSE)
 			if(cell.percent() > APC_CHANNEL_ALARM_TRESHOLD)
 				alarm_manager.clear_alarm(ALARM_POWER)
-<<<<<<< HEAD
 		// SKYRAT ADDITION START - CLOCK CULT
 		if(integration_cog)
 			var/power_delta = clamp(cell.charge - 50, 0, 50)
@@ -673,19 +626,12 @@
 			if(cell.charge <= 50)
 				cell.charge = 0
 		// SKYRAT ADDITION END
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else // no cell, switch everything off
 		charging = APC_NOT_CHARGING
 		equipment = autoset(equipment, AUTOSET_FORCE_OFF)
 		lighting = autoset(lighting, AUTOSET_FORCE_OFF)
 		environ = autoset(environ, AUTOSET_FORCE_OFF)
 		alarm_manager.send_alarm(ALARM_POWER)
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// update icon & area power if anything changed
 	if(last_lt != lighting || last_eq != equipment || last_en != environ || force_update)
 		force_update = FALSE
@@ -747,11 +693,7 @@
 /obj/machinery/power/apc/proc/overload_lighting()
 	if(!operating || shorted)
 		return
-<<<<<<< HEAD
-	if(cell && cell.use(0.02 * STANDARD_CELL_CHARGE))
-=======
 	if(cell && cell.use(0.02 * STANDARD_BATTERY_CHARGE))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		INVOKE_ASYNC(src, PROC_REF(break_lights))
 
 /obj/machinery/power/apc/proc/break_lights()

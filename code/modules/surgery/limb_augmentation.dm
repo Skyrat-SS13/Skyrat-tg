@@ -59,10 +59,7 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/replace_limb,
 	)
-<<<<<<< HEAD
 	removes_target_bodypart = TRUE // SKYRAT EDIT ADDITION - Surgically unremovable limbs
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //SURGERY STEP SUCCESSES
 

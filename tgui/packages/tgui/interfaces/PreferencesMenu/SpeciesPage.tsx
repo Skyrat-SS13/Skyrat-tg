@@ -271,7 +271,6 @@ const SpeciesPageInner = (props: {
           <Stack.Item>
             <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {species.map(([speciesKey, species]) => {
-<<<<<<< HEAD
                 // SKYRAT EDIT START - Veteran-only species
                 let speciesPage = (
                   <Button
@@ -282,12 +281,6 @@ const SpeciesPageInner = (props: {
                       }
                       setSpecies(speciesKey);
                     }}
-=======
-                return (
-                  <Button
-                    key={speciesKey}
-                    onClick={() => setSpecies(speciesKey)}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     selected={
                       data.character_preferences.misc.species === speciesKey
                     }
@@ -304,7 +297,6 @@ const SpeciesPageInner = (props: {
                     />
                   </Button>
                 );
-<<<<<<< HEAD
                 if (species.veteran_only && !data.is_veteran) {
                   let tooltipContent =
                     species.name +
@@ -315,8 +307,6 @@ const SpeciesPageInner = (props: {
                 }
                 return speciesPage;
                 // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               })}
             </Box>
           </Stack.Item>
@@ -336,13 +326,9 @@ const SpeciesPageInner = (props: {
                         )
                       }
                     >
-<<<<<<< HEAD
                       {/* SKYRAT EDIT CHANGE START - Adds maxHeight, scrollable*/}
                       <Section title="Description" maxHeight="14vh" scrollable>
                         {/* SKYRAT EDIT CHANGE END */}
-=======
-                      <Section title="Description">
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                         {currentSpecies.desc}
                       </Section>
 
@@ -363,15 +349,11 @@ const SpeciesPageInner = (props: {
 
               <Box mt={1}>
                 <Section title="Lore">
-<<<<<<< HEAD
                   <BlockQuote /* SKYRAT EDIT START - scrollable lore */
                     overflowY="auto"
                     maxHeight="45vh"
                     mr={-1} /* SKYRAT EDIT END */
                   >
-=======
-                  <BlockQuote>
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     {currentSpecies.lore.map((text, index) => (
                       <Box key={index} maxWidth="100%">
                         {text}

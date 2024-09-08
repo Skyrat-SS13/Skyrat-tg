@@ -1,11 +1,7 @@
 /obj/machinery/power/emitter
 	name = "emitter"
 	desc = "A heavy-duty industrial laser, often used in containment fields and power generation."
-<<<<<<< HEAD
 	icon = 'icons/obj/machines/engine/singularity.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/machines/engine/singularity.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "emitter"
 	base_icon_state = "emitter"
 
@@ -356,11 +352,8 @@
 /obj/machinery/power/emitter/proc/integrate(obj/item/gun/energy/energy_gun, mob/user)
 	if(!istype(energy_gun, /obj/item/gun/energy))
 		return
-<<<<<<< HEAD
 	if(istype(energy_gun, /obj/item/gun/energy/cell_loaded))//SKYRAT EDIT MEDIGUNS
-		return //SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		return
 	if(!user.transferItemToLoc(energy_gun, src))
 		return
 	gun = energy_gun
@@ -430,11 +423,7 @@
 	. = ..()
 
 /obj/machinery/power/emitter/prototype/user_buckle_mob(mob/living/buckled_mob, mob/user, check_loc = TRUE)
-<<<<<<< HEAD
-	if(user.incapacitated() || !istype(user))
-=======
 	if(user.incapacitated || !istype(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	for(var/atom/movable/atom in get_turf(src))
 		if(atom.density && (atom != src && atom != buckled_mob))

@@ -64,11 +64,7 @@
 		return UI_INTERACTIVE
 	return ..()
 
-<<<<<<< HEAD
-/obj/effect/fun_balloon/sentience/ui_act(action, list/params)
-=======
 /obj/effect/fun_balloon/sentience/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -98,19 +94,6 @@
 	for(var/mob/living/possessable in range(effect_range, get_turf(src)))
 		if (!possessable.ckey && possessable.stat == CONSCIOUS) // Only assign ghosts to living, non-occupied mobs!
 			bodies += possessable
-<<<<<<< HEAD
-
-	var/list/candidates = SSpolling.poll_ghosts_for_targets(
-		question = "Would you like to be [span_notice(group_name)]?",
-		role = ROLE_SENTIENCE,
-		check_jobban = ROLE_SENTIENCE,
-		poll_time = 10 SECONDS,
-		checked_targets = bodies,
-		ignore_category = POLL_IGNORE_SHUTTLE_DENIZENS,
-		alert_pic = src,
-		role_name_text = "sentience fun balloon",
-	)
-=======
 
 	var/list/candidates = SSpolling.poll_ghosts_for_targets(
 		question = "Would you like to be [span_notice(group_name)]?",
@@ -123,7 +106,6 @@
 		role_name_text = "sentience fun balloon",
 	)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	while(LAZYLEN(candidates) && LAZYLEN(bodies))
 		var/mob/dead/observer/C = pick_n_take(candidates)
 		var/mob/living/body = pick_n_take(bodies)

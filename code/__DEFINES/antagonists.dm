@@ -76,177 +76,6 @@
 #define CONTRACT_UPLINK_PAGE_CONTRACTS "CONTRACTS"
 #define CONTRACT_UPLINK_PAGE_HUB "HUB"
 
-<<<<<<< HEAD
-
-// Heretic path defines.
-#define PATH_START "Start Path"
-#define PATH_SIDE "Side Path"
-#define PATH_ASH "Ash Path"
-#define PATH_RUST "Rust Path"
-#define PATH_FLESH "Flesh Path"
-#define PATH_VOID "Void Path"
-#define PATH_BLADE "Blade Path"
-#define PATH_COSMIC "Cosmic Path"
-#define PATH_LOCK "Lock Path"
-#define PATH_MOON "Moon Path"
-
-/// Defines are used in /proc/has_living_heart() to report if the heretic has no heart period, no living heart, or has a living heart.
-#define HERETIC_NO_HEART_ORGAN -1
-#define HERETIC_NO_LIVING_HEART 0
-#define HERETIC_HAS_LIVING_HEART 1
-
-/// A define used in ritual priority for heretics.
-#define MAX_KNOWLEDGE_PRIORITY 100
-
-/// Checks if the passed mob can become a heretic ghoul.
-/// - Must be a human (type, not species)
-/// - Skeletons cannot be husked (they are snowflaked instead of having a trait)
-/// - Monkeys are monkeys, not quite human (balance reasons)
-#define IS_VALID_GHOUL_MOB(mob) (ishuman(mob) && !isskeleton(mob) && !ismonkey(mob))
-
-/// Forces the blob to place the core where they currently are, ignoring any checks.
-#define BLOB_FORCE_PLACEMENT -1
-/// Normal blob placement, does the regular checks to make sure the blob isn't placing itself in an invalid location
-#define BLOB_NORMAL_PLACEMENT 0
-/// Selects a random location for the blob to be placed.
-#define BLOB_RANDOM_PLACEMENT 1
-
-#define CONSTRUCT_JUGGERNAUT "Juggernaut"
-#define CONSTRUCT_WRAITH "Wraith"
-#define CONSTRUCT_ARTIFICER "Artificer"
-#define CONSTRUCT_HARVESTER "Harvester"
-
-/// The Classic Wizard wizard loadout.
-#define WIZARD_LOADOUT_CLASSIC "loadout_classic"
-/// Mjolnir's Power wizard loadout.
-#define WIZARD_LOADOUT_MJOLNIR "loadout_hammer"
-/// Fantastical Army wizard loadout.
-#define WIZARD_LOADOUT_WIZARMY "loadout_army"
-/// Soul Tapper wizard loadout.
-#define WIZARD_LOADOUT_SOULTAP "loadout_tap"
-/// Convenient list of all wizard loadouts for unit testing.
-#define ALL_WIZARD_LOADOUTS list( \
-	WIZARD_LOADOUT_CLASSIC, \
-	WIZARD_LOADOUT_MJOLNIR, \
-	WIZARD_LOADOUT_WIZARMY, \
-	WIZARD_LOADOUT_SOULTAP, \
-)
-/// Number of times you need to perform the grand ritual to complete it
-#define GRAND_RITUAL_FINALE_COUNT 7
-/// The crew will start being warned every time a rune is created after this many invocations.
-#define GRAND_RITUAL_RUNES_WARNING_POTENCY 3
-/// The crew will get a louder warning when this level of rune is created, and the next one will be special
-#define GRAND_RITUAL_IMMINENT_FINALE_POTENCY 6
-
-/// Used in logging spells for roundend results
-#define LOG_SPELL_TYPE "type"
-#define LOG_SPELL_AMOUNT "amount"
-
-///File to the traitor flavor
-#define TRAITOR_FLAVOR_FILE "antagonist_flavor/traitor_flavor.json"
-
-///File to the malf flavor
-#define MALFUNCTION_FLAVOR_FILE "antagonist_flavor/malfunction_flavor.json"
-
-/// JSON string file for all of our heretic influence flavors
-#define HERETIC_INFLUENCE_FILE "antagonist_flavor/heretic_influences.json"
-
-/// JSON file containing spy objectives
-#define SPY_OBJECTIVE_FILE "antagonist_flavor/spy_objective.json"
-
-///employers that are from the syndicate
-GLOBAL_LIST_INIT(syndicate_employers, list(
-	"Animal Rights Consortium",
-	"Bee Liberation Front",
-	"Cybersun Industries",
-	"Donk Corporation",
-	"Gorlex Marauders",
-	"MI13",
-	"Tiger Cooperative Fanatic",
-	"Waffle Corporation Terrorist",
-	"Waffle Corporation",
-))
-///employers that are from nanotrasen
-GLOBAL_LIST_INIT(nanotrasen_employers, list(
-	"Champions of Evil",
-	"Corporate Climber",
-	"Gone Postal",
-	"Internal Affairs Agent",
-	"Legal Trouble",
-))
-
-///employers who hire agents to do the hijack
-GLOBAL_LIST_INIT(hijack_employers, list(
-	"Animal Rights Consortium",
-	"Bee Liberation Front",
-	"Gone Postal",
-	"Tiger Cooperative Fanatic",
-	"Waffle Corporation Terrorist",
-))
-
-///employers who hire agents to do a task and escape... or martyrdom. whatever
-GLOBAL_LIST_INIT(normal_employers, list(
-	"Champions of Evil",
-	"Corporate Climber",
-	"Cybersun Industries",
-	"Donk Corporation",
-	"Gorlex Marauders",
-	"Internal Affairs Agent",
-	"Legal Trouble",
-	"MI13",
-	"Waffle Corporation",
-))
-
-///employers for malfunctioning ais. they do not have sides, unlike traitors.
-GLOBAL_LIST_INIT(ai_employers, list(
-	"Biohazard",
-	"Despotic Ruler",
-	"Fanatical Revelation",
-	"Logic Core Error",
-	"Problem Solver",
-	"S.E.L.F.",
-	"Something's Wrong",
-	"Spam Virus",
-	"SyndOS",
-	"Unshackled",
-))
-
-#define UPLINK_THEME_SYNDICATE "syndicate"
-
-#define UPLINK_THEME_UNDERWORLD_MARKET "neutral"
-
-/// Checks if the given mob is a traitor
-#define IS_TRAITOR(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/traitor))
-
-/// Checks if the given mob is a blood cultist
-#define IS_CULTIST(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/cult))
-
-/// Checks if the mob is a sentient or non-sentient cultist
-#define IS_CULTIST_OR_CULTIST_MOB(mob) ((IS_CULTIST(mob)) || (mob.faction.Find(FACTION_CULT)))
-/// Checks if the given mob is a changeling
-#define IS_CHANGELING(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/changeling))
-
-/// Checks if the given mob is a nuclear operative
-#define IS_NUKE_OP(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/nukeop))
-
-//Tells whether or not someone is a space ninja
-#define IS_SPACE_NINJA(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/ninja))
-
-/// Checks if the given mob is a heretic.
-#define IS_HERETIC(mob) (mob.mind?.has_antag_datum(/datum/antagonist/heretic))
-/// Check if the given mob is a heretic monster.
-#define IS_HERETIC_MONSTER(mob) (mob.mind?.has_antag_datum(/datum/antagonist/heretic_monster))
-/// Check if the given mob is a  lunatic
-#define IS_LUNATIC(mob) (mob.mind?.has_antag_datum(/datum/antagonist/lunatic))
-/// Checks if the given mob is either a heretic, heretic monster or a lunatic.
-#define IS_HERETIC_OR_MONSTER(mob) (IS_HERETIC(mob) || IS_HERETIC_MONSTER(mob) || IS_LUNATIC(mob))
-/// CHecks if the given mob is in the mansus realm
-#define IS_IN_MANSUS(mob) (istype(get_area(mob), /area/centcom/heretic_sacrifice))
-
-/// Checks if the given mob is a wizard
-#define IS_WIZARD(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/wizard))
-
-=======
 
 // Heretic path defines.
 #define PATH_START "Start Path"
@@ -435,7 +264,6 @@ GLOBAL_LIST_INIT(ai_employers, list(
 /// Checks if the given mob is a wizard
 #define IS_WIZARD(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/wizard))
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Checks if the given mob is a revolutionary. Will return TRUE for rev heads as well.
 #define IS_REVOLUTIONARY(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/rev))
 
@@ -570,10 +398,6 @@ GLOBAL_LIST_INIT(human_invader_antagonists, list(
 
 /// For changelings, this is how many recent say lines are retained when absorbing a mob
 #define LING_ABSORB_RECENT_SPEECH 8
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Various abductor equipment modes.
 
 #define VEST_STEALTH 1

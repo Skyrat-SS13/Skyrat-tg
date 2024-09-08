@@ -117,10 +117,7 @@
 
 	return TRUE
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/machinery/dna_scannernew/relaymove(mob/living/user, direction)
 	if(user.stat || locked)
 		if(message_cooldown <= world.time)

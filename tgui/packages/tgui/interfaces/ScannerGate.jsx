@@ -54,7 +54,6 @@ const TARGET_SPECIES_LIST = [
     name: 'Zombie',
     value: 'zombie',
   },
-<<<<<<< HEAD
   //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   {
     name: 'Anthromorph',
@@ -116,8 +115,6 @@ const TARGET_GENDER_LIST = [
     value: 'female',
   },
   //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ];
 
 const TARGET_NUTRITION_LIST = [
@@ -174,15 +171,12 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
   },
-<<<<<<< HEAD
   //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   Gender: {
     title: 'Scanner Mode: Gender',
     component: () => ScannerGateGender,
   },
   //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   Contraband: {
     title: 'Scanner Mode: Contraband',
     component: () => ScannerGateContraband,
@@ -239,13 +233,10 @@ const ScannerGateOff = (props) => {
           content="Species"
           onClick={() => act('set_mode', { new_mode: 'Species' })}
         />
-<<<<<<< HEAD
         <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
           content="Gender"
           onClick={() => act('set_mode', { new_mode: 'Gender' })} //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
         />
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         <Button
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })}
@@ -394,7 +385,6 @@ const ScannerGateNutrition = (props) => {
   );
 };
 
-<<<<<<< HEAD
 //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
 const ScannerGateGender = (props) => {
   const { act, data } = useBackend();
@@ -426,8 +416,6 @@ const ScannerGateGender = (props) => {
   );
 };
 //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 const ScannerGateContraband = (props) => {
   const { data } = useBackend();
   const { reverse } = data;

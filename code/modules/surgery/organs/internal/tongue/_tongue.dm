@@ -2,11 +2,6 @@
 	name = "tongue"
 	desc = "A fleshy muscle mostly used for lying."
 	icon_state = "tongue"
-<<<<<<< HEAD
-	visual = FALSE
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_TONGUE
 	attack_verb_continuous = list("licks", "slobbers", "slaps", "frenches", "tongues")
@@ -128,43 +123,17 @@
 		food_taste_reaction = FOOD_LIKED
 	return food_taste_reaction
 
-<<<<<<< HEAD
-/obj/item/organ/internal/tongue/Insert(mob/living/carbon/tongue_owner, special = FALSE, movement_flags)
-	. = ..()
-	if(!.)
-		return
-	if(modifies_speech)
-		RegisterSignal(tongue_owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	tongue_owner.voice_filter = voice_filter
-=======
 /obj/item/organ/internal/tongue/mob_insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
 
 	if(modifies_speech)
 		RegisterSignal(receiver, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	receiver.voice_filter = voice_filter
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/* This could be slightly simpler, by making the removal of the
 	* NO_TONGUE_TRAIT conditional on the tongue's `sense_of_taste`, but
 	* then you can distinguish between ageusia from no tongue, and
 	* ageusia from having a non-tasting tongue.
 	*/
-<<<<<<< HEAD
-	REMOVE_TRAIT(tongue_owner, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
-	if(!sense_of_taste || (organ_flags & ORGAN_FAILING))
-		ADD_TRAIT(tongue_owner, TRAIT_AGEUSIA, ORGAN_TRAIT)
-	apply_tongue_effects()
-
-/obj/item/organ/internal/tongue/Remove(mob/living/carbon/tongue_owner, special, movement_flags)
-	. = ..()
-	temp_say_mod = ""
-	UnregisterSignal(tongue_owner, COMSIG_MOB_SAY)
-	REMOVE_TRAIT(tongue_owner, TRAIT_SPEAKS_CLEARLY, SPEAKING_FROM_TONGUE)
-	REMOVE_TRAIT(tongue_owner, TRAIT_AGEUSIA, ORGAN_TRAIT)
-	// Carbons by default start with NO_TONGUE_TRAIT caused TRAIT_AGEUSIA
-	ADD_TRAIT(tongue_owner, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
-	tongue_owner.voice_filter = initial(tongue_owner.voice_filter)
-=======
 	REMOVE_TRAIT(receiver, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 	apply_tongue_effects()
 
@@ -178,7 +147,6 @@
 	// Carbons by default start with NO_TONGUE_TRAIT caused TRAIT_AGEUSIA
 	ADD_TRAIT(organ_owner, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 	organ_owner.voice_filter = initial(organ_owner.voice_filter)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/tongue/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag)
 	. = ..()
@@ -188,10 +156,6 @@
 
 /// Applies effects to our owner based on how damaged our tongue is
 /obj/item/organ/internal/tongue/proc/apply_tongue_effects()
-<<<<<<< HEAD
-	//tongues can't taste food when they are failing
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(sense_of_taste)
 		//tongues can't taste food when they are failing
 		if(organ_flags & ORGAN_FAILING)
@@ -219,11 +183,7 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
-<<<<<<< HEAD
 	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) //SKYRAT EDIT: Ashtongue for Ashwalkers
-=======
-	languages_native = list(/datum/language/draconic)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	liked_foodtypes = GORE | MEAT | SEAFOOD | NUTS | BUGS
 	disliked_foodtypes = GRAIN | DAIRY | CLOTH | GROSS
 	voice_filter = @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.9,aresample=%SAMPLE_RATE%,atempo=1/0.9,aformat=channel_layouts=mono,volume=0.2 [p0]; [out2] asetrate=%SAMPLE_RATE%*1.1,aresample=%SAMPLE_RATE%,atempo=1/1.1,aformat=channel_layouts=mono,volume=0.2[p2]; [p0][0][p2] amix=inputs=3"}
@@ -231,7 +191,6 @@
 		new /regex("s+", "g") = "sss",
 		new /regex("S+", "g") = "SSS",
 		new /regex(@"(\w)x", "g") = "$1kss",
-<<<<<<< HEAD
 		//new /regex(@"(\w)X", "g") = "$1KSSS", // SKYRAT EDIT REMOVAL
 		new /regex(@"\bx([\-|r|R]|\b)", "g") = "ecks$1",
 		new /regex(@"\bX([\-|r|R]|\b)", "g") = "ECKS$1",
@@ -258,16 +217,6 @@
 /obj/item/organ/internal/tongue/lizard/New(class, timer, datum/mutation/human/copymut)
 	. = ..()
 	AddComponent(/datum/component/speechmod, replacements = CONFIG_GET(flag/russian_text_formation) ? russian_speech_replacements : speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech))) // SKYRAT EDIT CHANGE - ORIGINAL: AddComponent(/datum/component/speechmod, replacements = speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech)))
-=======
-		new /regex(@"(\w)X", "g") = "$1KSSS",
-		new /regex(@"\bx([\-|r|R]|\b)", "g") = "ecks$1",
-		new /regex(@"\bX([\-|r|R]|\b)", "g") = "ECKS$1",
-	)
-
-/obj/item/organ/internal/tongue/lizard/New(class, timer, datum/mutation/human/copymut)
-	. = ..()
-	AddComponent(/datum/component/speechmod, replacements = speech_replacements, should_modify_speech = CALLBACK(src, PROC_REF(should_modify_speech)))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/tongue/lizard/silver
 	name = "silver tongue"
@@ -457,11 +406,7 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	var/mob/living/carbon/human/user = source
 	var/rendered = span_abductor("<b>[user.real_name]:</b> [message]")
-<<<<<<< HEAD
-	user.log_talk(message, LOG_SAY, tag="abductor")
-=======
 	user.log_talk(message, LOG_SAY, tag=SPECIES_ABDUCTOR)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	for(var/mob/living/carbon/human/living_mob in GLOB.alive_mob_list)
 		var/obj/item/organ/internal/tongue/abductor/tongue = living_mob.get_organ_slot(ORGAN_SLOT_TONGUE)
 		if(!istype(tongue))
@@ -633,14 +578,10 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	color = "#96DB00" // TODO proper sprite, rather than recoloured pink tongue
 	modifies_speech = TRUE
 	voice_filter = "atempo=0.5" // makes them talk really slow
-<<<<<<< HEAD
 	liked_foodtypes = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
 	disliked_foodtypes = DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
 
 /* SKYRAT EDIT START - Roundstart Snails: Less annoying speech.
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/organ/internal/tongue/snail/modify_speech(datum/source, list/speech_args)
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -650,10 +591,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 		else
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
-<<<<<<< HEAD
 */ // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/tongue/ethereal
 	name = "electric discharger"

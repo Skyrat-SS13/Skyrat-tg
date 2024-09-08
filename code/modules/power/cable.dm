@@ -569,7 +569,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 /obj/item/stack/cable_coil/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!ishuman(interacting_with))
 		return NONE
-<<<<<<< HEAD
 
 	if(user.combat_mode)
 		return NONE
@@ -600,44 +599,13 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	if(!do_after(user, use_delay, attacked_humanoid))
 		return ITEM_INTERACT_BLOCKING
 
-=======
-
-	if(user.combat_mode)
-		return NONE
-
-	return try_heal_loop(interacting_with, user)
-
-/obj/item/stack/cable_coil/proc/try_heal_loop(atom/interacting_with, mob/living/user, repeating = FALSE)
-	var/mob/living/carbon/human/attacked_humanoid = interacting_with
-	var/obj/item/bodypart/affecting = attacked_humanoid.get_bodypart(check_zone(user.zone_selected))
-	if(isnull(affecting) || !IS_ROBOTIC_LIMB(affecting))
-		return NONE
-
-	if (!affecting.burn_dam)
-		balloon_alert(user, "limb not damaged")
-		return ITEM_INTERACT_BLOCKING
-
-	user.visible_message(span_notice("[user] starts to fix some of the wires in [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
-		span_notice("You start fixing some of the wires in [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-
-	var/use_delay = repeating ? 1 SECONDS : 0
-	if(user == attacked_humanoid)
-		use_delay = 5 SECONDS
-
-	if(!do_after(user, use_delay, attacked_humanoid))
-		return ITEM_INTERACT_BLOCKING
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if (!attacked_humanoid.item_heal(user, brute_heal = 0, burn_heal = 15, heal_message_brute = "dents", heal_message_burn = "burnt wires", required_bodytype = BODYTYPE_ROBOTIC))
 		return ITEM_INTERACT_BLOCKING
 
 	if (use(1) && amount > 0)
 		INVOKE_ASYNC(src, PROC_REF(try_heal_loop), interacting_with, user, TRUE)
-<<<<<<< HEAD
-=======
 
 	return ITEM_INTERACT_SUCCESS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///////////////////////////////////////////////
 // Cable laying procedures
@@ -656,11 +624,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 		to_chat(user, span_warning("There is no cable left!"))
 		return
 
-<<<<<<< HEAD
-	if(get_dist(T,user) > 1)
-=======
 	if(get_dist(T,user) > 1) // Too far
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		to_chat(user, span_warning("You can't lay cable at a place that far away!"))
 		return
 

@@ -9,8 +9,6 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	cut_type = /obj/item/clothing/gloves/fingerless
-<<<<<<< HEAD
-	clothing_traits = list(TRAIT_FAST_CUFFING)
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -28,8 +26,6 @@
 		)
 	)
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/gloves/color/black/Initialize(mapload)
 	. = ..()

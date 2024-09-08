@@ -103,25 +103,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			var/obj/effect/statclick/updated = AH.statclick.update()
-<<<<<<< HEAD
 			L[++L.len] = list("[AH.handler ? "H-[AH.handler]" : ""]#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH)) //SKYRAT EDIT CHANGE - ADMIN
-=======
-			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else
 			++num_disconnected
 	if(num_disconnected)
 		L[++L.len] = list("Disconnected:", "[astatclick.update("[num_disconnected]")]", null, REF(astatclick))
 	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
 	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(LAZYLEN(SSopposing_force.submitted_applications))
 		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
 			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR:", "[opposing_force.stat_button.update(" [opposing_force.ckey] ")]", null, REF(opposing_force.stat_button))
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return L
 
 //Reassociate still open ticket if one exists
@@ -221,11 +214,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
  * * msg_raw - The first message of this admin_help: used for the initial title of the ticket
  * * is_bwoink - Boolean operator, TRUE if this ticket was started by an admin PM
  */
-<<<<<<< HEAD
 /datum/admin_help/New(msg_raw, client/C, is_bwoink, client/admin_C, urgent = FALSE) //SKYRAT EDIT CHANGE
-=======
-/datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//clean the input msg
 	var/msg = sanitize(copytext_char(msg_raw, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
@@ -734,32 +723,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	player_panel.open()
 
 
-/datum/admin_help/proc/player_ticket_panel()
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")
-	dat += "<b>State: "
-	switch(state)
-		if(AHELP_ACTIVE)
-			dat += "<font color='red'>OPEN</font></b>"
-		if(AHELP_RESOLVED)
-			dat += "<font color='green'>RESOLVED</font></b>"
-		if(AHELP_CLOSED)
-			dat += "CLOSED</b>"
-		else
-			dat += "UNKNOWN</b>"
-	dat += "\n[FOURSPACES]<A href='?_src_=holder;[HrefToken(forceGlobal = TRUE)];player_ticket_panel=1'>Refresh</A>"
-	dat += "<br><br>Opened at: [gameTimestamp("hh:mm:ss", opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
-	if(closed_at)
-		dat += "<br>Closed at: [gameTimestamp("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
-	dat += "<br><br>"
-	dat += "<br><b>Log:</b><br><br>"
-	for (var/interaction in player_interactions)
-		dat += "[interaction]<br>"
-
-	var/datum/browser/player_panel = new(usr, "ahelp[id]", 0, 620, 480)
-	player_panel.set_content(dat.Join())
-	player_panel.open()
-
-
 //
 // TICKET STATCLICK
 //
@@ -871,11 +834,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 		user_client.current_ticket.MessageNoRecipient(message, urgent)
 		return
 
-<<<<<<< HEAD
 	new /datum/admin_help(message, user_client, FALSE, null, urgent) // SKYRAT EDIT - Handling tickets - ORIGINAL: new /datum/admin_help(message, user_client, FALSE, urgent)
-=======
-	new /datum/admin_help(message, user_client, FALSE, urgent)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /client/verb/no_tgui_adminhelp(message as message)
 	set name = "NoTguiAdminhelp"

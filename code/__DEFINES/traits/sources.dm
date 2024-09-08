@@ -36,11 +36,8 @@
 
 #define VENDING_MACHINE_TRAIT "vending_machine"
 
-<<<<<<< HEAD
-=======
 ///A trait given by a held item
 #define HELD_ITEM_TRAIT "held-item-trait"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define ABSTRACT_ITEM_TRAIT "abstract-item"
 /// A trait given by any status effect
 #define STATUS_EFFECT_TRAIT "status-effect"
@@ -50,12 +47,8 @@
 
 /// Trait given by an Action datum
 #define ACTION_TRAIT "action"
-<<<<<<< HEAD
-
-=======
 ///A trait given by someone blocking.
 #define BLOCKING_TRAIT "blocking"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define CLOTHING_TRAIT "clothing"
 #define HELMET_TRAIT "helmet"
 /// inherited from the mask

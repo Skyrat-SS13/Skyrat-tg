@@ -225,11 +225,7 @@ function QuirkPopper(props: QuirkPopperProps) {
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-<<<<<<< HEAD
                 maxWidth="400px" // SKYRAT EDIT - maxWidth to 400px from 300px
-=======
-                maxWidth="300px"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                 backgroundColor="black"
                 px="5px"
                 py="3px"
@@ -308,15 +304,8 @@ export function QuirksPage(props) {
 
   return (
     <ServerPreferencesFetcher
-<<<<<<< HEAD
-      // SKYRAT EDIT START - Quirks balance refactor
       render={(server_data) => {
         if (!server_data) {
-          // SKYRAT EDIT END
-=======
-      render={(server_data) => {
-        if (!server_data) {
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           return <Box>Loading quirks...</Box>;
         }
 
@@ -325,11 +314,7 @@ export function QuirksPage(props) {
           quirk_blacklist: quirkBlacklist,
           quirk_info: quirkInfo,
           points_enabled: pointsEnabled,
-<<<<<<< HEAD
-        } = server_data.quirks; // SKYRAT EDIT - Quirks balance refactor
-=======
         } = server_data.quirks;
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
         const quirks = Object.entries(quirkInfo);
         quirks.sort(([_, quirkA], [__, quirkB]) => {
@@ -340,28 +325,10 @@ export function QuirksPage(props) {
           }
         });
 
-<<<<<<< HEAD
         // SKYRAT EDIT START - Better Quirk Count Code
         let balance = -data.quirks_balance;
         let positiveQuirks = data.positive_quirk_count;
         // SKYRAT EDIT END
-=======
-        let balance = 0;
-        let positiveQuirks = 0;
-
-        for (const selectedQuirkName of selectedQuirks) {
-          const selectedQuirk = quirkInfo[selectedQuirkName];
-          if (!selectedQuirk) {
-            continue;
-          }
-
-          if (selectedQuirk.value > 0) {
-            positiveQuirks += 1;
-          }
-
-          balance += selectedQuirk.value;
-        }
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
         const getReasonToNotAdd = (quirkName: string) => {
           const quirk = quirkInfo[quirkName];
@@ -377,15 +344,12 @@ export function QuirksPage(props) {
             }
           }
 
-<<<<<<< HEAD
-          // SKYRAT EDIT START - Veteran quirks
+          // SKYRAT EDIT START - Veteran quirks. Please phase these out! - Kali
           if (quirk.veteran_only && !data.is_veteran) {
             return 'You need to be a veteran to select this quirk, apply today!';
           }
           // SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
           const selectedQuirkNames = selectedQuirks.map((quirkKey) => {
             return quirkInfo[quirkKey].name;
           });
@@ -471,11 +435,7 @@ export function QuirksPage(props) {
                           },
                         ];
                       })}
-<<<<<<< HEAD
-                    serverData={server_data} // SKYRAT EDIT CHANGE
-=======
                     serverData={server_data}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     randomBodyEnabled={randomBodyEnabled}
                   />
                 </Stack.Item>
@@ -539,11 +499,7 @@ export function QuirksPage(props) {
                           },
                         ];
                       })}
-<<<<<<< HEAD
-                    serverData={server_data} // sKYRAT EDIT CHANGE
-=======
                     serverData={server_data}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     randomBodyEnabled={randomBodyEnabled}
                   />
                 </Stack.Item>

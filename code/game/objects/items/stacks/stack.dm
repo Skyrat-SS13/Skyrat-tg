@@ -302,11 +302,7 @@
 	data["recipes"] = recursively_build_recipes(recipes)
 	return data
 
-<<<<<<< HEAD
-/obj/item/stack/ui_act(action, params)
-=======
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -373,11 +369,7 @@
 /obj/item/stack/proc/radial_check(mob/builder)
 	if(QDELETED(builder) || QDELETED(src))
 		return FALSE
-<<<<<<< HEAD
-	if(builder.incapacitated())
-=======
 	if(builder.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(!builder.is_holding(src))
 		return FALSE
@@ -408,12 +400,8 @@
 			adjusted_time = (recipe.time * recipe.trait_modifier)
 		else
 			adjusted_time = recipe.time
-<<<<<<< HEAD
 		var/skill_modifier = builder.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
 		if(!do_after(builder, adjusted_time * skill_modifier, target = builder))
-=======
-		if(!do_after(builder, adjusted_time, target = builder))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			builder.balloon_alert(builder, "interrupted!")
 			return
 		if(!building_checks(builder, recipe, multiplier))
@@ -442,19 +430,12 @@
 		SEND_SIGNAL(created, COMSIG_ATOM_CONSTRUCTED, builder)
 		on_item_crafted(builder, created)
 
-<<<<<<< HEAD
 	builder.mind.adjust_experience(/datum/skill/construction, 5) //SKYRAT EDIT: Construction Skill
 
 	// Use up the material
 	use(recipe.req_amount * multiplier)
 	builder.investigate_log("crafted [recipe.title]", INVESTIGATE_CRAFTING)
 
-=======
-	// Use up the material
-	use(recipe.req_amount * multiplier)
-	builder.investigate_log("crafted [recipe.title]", INVESTIGATE_CRAFTING)
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// Apply mat datums
 	if((recipe.crafting_flags & CRAFT_APPLIES_MATS) && LAZYLEN(mats_per_unit))
 		if(isstack(created))

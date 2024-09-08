@@ -26,11 +26,7 @@
 
 /obj/item/disk/nuclear/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	AddElement(/datum/element/bed_tuckable, mapload, 6, 6, 0)
-=======
 	AddElement(/datum/element/bed_tuckable, mapload, 6, -6, 0)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	AddComponent(/datum/component/stationloving, !fake)
 
 	if(!fake)

@@ -39,15 +39,12 @@
 	///The config type to use for greyscaled belt overlays. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_belt
 
-<<<<<<< HEAD
-=======
 	/// Greyscale config used when generating digitigrade versions of the sprite.
 	var/digitigrade_greyscale_config_worn
 	/// Greyscale colors used when generating digitigrade versions of the sprite.
 	/// Optional - If not set it will default to normal greyscale colors, or approximate them if those are unset as well
 	var/digitigrade_greyscale_colors
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/* !!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!
 
 		IF YOU ADD MORE ICON CRAP TO THIS
@@ -232,13 +229,10 @@
 	var/override_notes = FALSE
 	/// Used if we want to have a custom verb text for throwing. "John Spaceman flicks the ciggerate" for example.
 	var/throw_verb
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	/// Does this use the advanced reskinning setup?
 	var/uses_advanced_reskins = FALSE
 	// SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	/// A lazylist used for applying fantasy values, contains the actual modification applied to a variable.
 	var/list/fantasy_modifications = null
@@ -425,7 +419,6 @@
 		return
 	if(greyscale_config_worn)
 		worn_icon = SSgreyscale.GetColoredIconByType(greyscale_config_worn, greyscale_colors)
-<<<<<<< HEAD
 	// SKYRAT EDIT ADD START
 	if(greyscale_config_worn_digi)
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
@@ -446,8 +439,6 @@
 	if(greyscale_config_worn_taur_hoof)
 		worn_icon_taur_hoof = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_hoof, greyscale_colors)
 	// SKYRAT EDIT ADD END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(greyscale_config_inhand_left)
 		lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
 	if(greyscale_config_inhand_right)
@@ -864,38 +855,6 @@
 	. = ..()
 	do_drop_animation(master_storage.parent)
 
-<<<<<<< HEAD
-/obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	if(QDELETED(hit_atom))
-		return
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_IMPACT, hit_atom, throwingdatum) & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
-		return
-	if(SEND_SIGNAL(hit_atom, COMSIG_ATOM_PREHITBY, src, throwingdatum) & COMSIG_HIT_PREVENTED)
-		return
-
-	SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
-	if(get_temperature() && isliving(hit_atom))
-		var/mob/living/L = hit_atom
-		L.ignite_mob()
-	var/itempush = 1
-	if(w_class < WEIGHT_CLASS_BULKY)
-		itempush = 0 //too light to push anything
-	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
-		var/volume = get_volume_by_throwforce_and_or_w_class()
-		if (throwforce > 0 || HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
-			if (mob_throw_hit_sound)
-				playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
-			else if(hitsound)
-				playsound(hit_atom, hitsound, volume, TRUE, -1)
-			else
-				playsound(hit_atom, 'sound/weapons/genhit.ogg',volume, TRUE, -1)
-		else
-			playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
-
-	else
-		playsound(src, drop_sound, YEET_SOUND_VOLUME, ignore_walls = FALSE)
-	return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
-=======
 /obj/item/pre_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	var/impact_flags = ..()
 	if(w_class < WEIGHT_CLASS_BULKY)
@@ -920,7 +879,6 @@
 			playsound(hit_atom, 'sound/weapons/genhit.ogg',volume, TRUE, -1)
 	else
 		playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
@@ -1141,11 +1099,7 @@
 			var/timedelay = usr.client.prefs.read_preference(/datum/preference/numeric/tooltip_delay) / 100
 			tip_timer = addtimer(CALLBACK(src, PROC_REF(openTip), location, control, params, usr), timedelay, TIMER_STOPPABLE)//timer takes delay in deciseconds, but the pref is in milliseconds. dividing by 100 converts it.
 		if(usr.client.prefs.read_preference(/datum/preference/toggle/item_outlines))
-<<<<<<< HEAD
-			if(istype(L) && L.incapacitated())
-=======
 			if(istype(L) && L.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				apply_outline(COLOR_RED_GRAY) //if they're dead or handcuffed, let's show the outline as red to indicate that they can't interact with that right now
 			else
 				apply_outline() //if the player's alive and well we send the command with no color set, so it uses the theme's color
@@ -1425,11 +1379,7 @@
 			return
 		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
 
-<<<<<<< HEAD
-	else if(custom_materials?.len) //if we've got materials, lets see whats in it
-=======
 	else if(custom_materials?.len) //if we've got materials, let's see what's in it
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// How many mats have we found? You can only be affected by two material datums by default
 		var/found_mats = 0
 		// How much of each material is in it? Used to determine if the glass should break
@@ -1532,7 +1482,6 @@
 	if(SEND_SIGNAL(src, COMSIG_ITEM_OFFER_TAKEN, offerer, taker) & COMPONENT_OFFER_INTERRUPT)
 		return TRUE
 
-<<<<<<< HEAD
 /// SKYRAT EDIT ADDITION START
 /obj/item/reskin_obj(mob/M)
 	if(!uses_advanced_reskins)
@@ -1602,8 +1551,6 @@
 
 /// SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Special stuff you want to do when an outfit equips this item.
 /obj/item/proc/on_outfit_equip(mob/living/carbon/human/outfit_wearer, visuals_only, item_slot)
 	SHOULD_CALL_PARENT(TRUE)
@@ -1923,8 +1870,6 @@
 	RETURN_TYPE(/obj/item)
 
 	return src
-<<<<<<< HEAD
-=======
 
 /// Checks if the bait is liked by the fish type or not. Returns a multiplier that affects the chance of catching it.
 /obj/item/proc/check_bait(obj/item/fish/fish_type)
@@ -1959,4 +1904,3 @@
 			return bait.reagents?.has_reagent(special_identifier[FISH_BAIT_VALUE], special_identifier[FISH_BAIT_AMOUNT], check_subtypes = TRUE)
 		else
 			CRASH("Unknown bait identifier in fish favourite/disliked list")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

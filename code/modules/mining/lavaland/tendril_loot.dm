@@ -557,10 +557,6 @@
 	var/obj/item/organ/external/wings/functional/wings = get_wing_choice(exposed_human, chest)
 	wings = new wings()
 	wings.Insert(exposed_human)
-<<<<<<< HEAD
-	exposed_human.dna.species.handle_mutant_bodyparts(exposed_human)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	playsound(exposed_human.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
 	exposed_human.apply_damage(20, def_zone = BODY_ZONE_CHEST, forced = TRUE, wound_bonus = CANT_WOUND)
 	exposed_human.emote("scream")
@@ -573,11 +569,7 @@
 	var/list/name2type = list()
 	for(var/obj/item/organ/external/wings/functional/possible_type as anything in wing_types)
 		var/datum/sprite_accessory/accessory = initial(possible_type.sprite_accessory_override) //get the type
-<<<<<<< HEAD
 		accessory = SSaccessories.sprite_accessories[initial(accessory.key)][initial(accessory.name)] //SKYRAT EDIT CHANGE - ORIGINAL: accessory = SSaccessories.wings_list[initial(accessory.name)] //get the singleton instance
-=======
-		accessory = SSaccessories.wings_list[initial(accessory.name)] //get the singleton instance
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
 		img.transform *= 0.5
 		img.pixel_x = -32
@@ -602,17 +594,10 @@
 	var/turf/T = get_turf(src)
 	var/ladder_x = T.x
 	var/ladder_y = T.y
-<<<<<<< HEAD
-	to_chat(user, span_notice("You unfold the ladder. It does some unknowable, eldritch twisting and turning in a dance of form, seeming to invert and fold into itself - before a satisfying click rings out.")) //Skyrat Edit - Attempts to explain why it sometimes just 'dissapears' on some z-levels.
-	var/last_ladder = null
-	for(var/i in 1 to world.maxz)
-		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i) || is_spaceruins_level(i)) //Skyrat Edit: Stops Jacob's ladder from piercing problematic space ruins.
-=======
 	to_chat(user, span_notice("You unfold the ladder. It extends much farther than you were expecting."))
 	var/last_ladder = null
 	for(var/i in 1 to world.maxz)
 		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			continue
 		var/turf/T2 = locate(ladder_x, ladder_y, i)
 		last_ladder = new /obj/structure/ladder/unbreakable/jacob(T2, null, last_ladder)
@@ -685,10 +670,7 @@
 	icon_state = "berserker"
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
-<<<<<<< HEAD
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	hoodtype = /obj/item/clothing/head/hooded/berserker
 	armor_type = /datum/armor/hooded_berserker
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

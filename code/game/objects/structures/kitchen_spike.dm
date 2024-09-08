@@ -12,8 +12,6 @@
 /obj/structure/kitchenspike_frame/Initialize(mapload)
 	. = ..()
 	register_context()
-<<<<<<< HEAD
-=======
 
 /obj/structure/kitchenspike_frame/examine(mob/user)
 	. = ..()
@@ -65,7 +63,6 @@
 		qdel(src)
 		return
 	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT] rods needed!")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/kitchenspike_frame/examine(mob/user)
 	. = ..()

@@ -1,8 +1,5 @@
 import { filter, map, sortBy } from 'common/collections';
-<<<<<<< HEAD
 import { exhaustiveCheck } from 'common/exhaustive';
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { ReactNode, useState } from 'react';
@@ -12,10 +9,7 @@ import {
   Autofocus,
   Box,
   Button,
-<<<<<<< HEAD
   Dropdown, // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   Flex,
   Input,
   LabeledList,
@@ -31,10 +25,7 @@ import {
 } from './data';
 import { DeleteCharacterPopup } from './DeleteCharacterPopup';
 import { MultiNameInput, NameInput } from './names';
-<<<<<<< HEAD
 import { PageButton } from './PageButton';
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import features from './preferences/features';
 import {
   FeatureChoicedServerData,
@@ -46,11 +37,7 @@ import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { useRandomToggleState } from './useRandomToggleState';
 
 const CLOTHING_CELL_SIZE = 48;
-<<<<<<< HEAD
 const CLOTHING_SIDEBAR_ROWS = 13.4; // SKYRAT EDIT CHANGE - ORIGINAL:  9
-=======
-const CLOTHING_SIDEBAR_ROWS = 9;
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 const CLOTHING_SELECTION_CELL_SIZE = 48;
 const CLOTHING_SELECTION_WIDTH = 5.4;
@@ -59,10 +46,7 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
-<<<<<<< HEAD
   handleFood: () => void; // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -97,7 +81,6 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
-<<<<<<< HEAD
       {/* SKYRAT EDIT ADDITION START */}
       <Stack.Item>
         <Button
@@ -109,8 +92,6 @@ const CharacterControls = (props: {
         />
         {/* SKYRAT EDIT ADDITION END */}
       </Stack.Item>
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     </Stack>
   );
 };
@@ -521,7 +502,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
   const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
 
-<<<<<<< HEAD
   // SKYRAT EDIT BEGIN: SWAPPABLE PREF MENUS
   enum PrefPage {
     Visual, // The visual parts
@@ -531,8 +511,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
   const [currentPrefPage, setCurrentPrefPage] = useState(PrefPage.Visual);
   // SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   return (
     <ServerPreferencesFetcher
       render={(serverData) => {
@@ -581,7 +559,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
           delete nonContextualPreferences['random_name'];
         }
 
-<<<<<<< HEAD
         // SKYRAT EDIT BEGIN: SWAPPABLE PREF MENUS
         let prefPageContents;
         switch (currentPrefPage) {
@@ -617,8 +594,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
             exhaustiveCheck(currentPrefPage);
         }
         // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         return (
           <>
             {multiNameInputOpen && (
@@ -655,14 +630,11 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       handleRotate={() => {
                         act('rotate');
                       }}
-<<<<<<< HEAD
                       // SKYRAT EDIT ADDITION - BEGIN
                       handleFood={() => {
                         act('open_food');
                       }}
                       // SKYRAT EDIT ADDITION - END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
@@ -672,16 +644,11 @@ export const MainPage = (props: { openSpecies: () => void }) => {
 
                   <Stack.Item grow>
                     <CharacterPreview
-<<<<<<< HEAD
                       height="80%" // SKYRAT EDIT - ORIGINAL: height="100%"
-=======
-                      height="100%"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                       id={data.character_preview_view}
                     />
                   </Stack.Item>
 
-<<<<<<< HEAD
                   <Stack.Item
                     // SKYRAT EDIT ADDITION
                     position="relative"
@@ -698,8 +665,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                     />
                   </Stack.Item>
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                   <Stack.Item position="relative">
                     <NameInput
                       name={data.character_preferences.names[data.name_to_use]}
@@ -754,7 +719,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
               </Stack.Item>
 
               <Stack.Item grow basis={0}>
-<<<<<<< HEAD
                 {/* SKYRAT EDIT BEGIN: Swappable pref menus */}
                 <Stack>
                   <Stack.Item grow>
@@ -765,30 +729,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                     >
                       Character Visuals
                     </PageButton>
-=======
-                <Stack vertical fill>
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(
-                      contextualPreferences,
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    preferences={contextualPreferences}
-                    maxHeight="auto"
-                  />
-
-                  <PreferenceList
-                    act={act}
-                    randomizations={getRandomization(
-                      nonContextualPreferences,
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    preferences={nonContextualPreferences}
-                    maxHeight="auto"
-                  >
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                     <Box my={0.5}>
                       <Button
                         color="red"
@@ -802,7 +742,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                         Delete Character
                       </Button>
                     </Box>
-<<<<<<< HEAD
                   </Stack.Item>
                   <Stack.Item grow>
                     <PageButton
@@ -819,10 +758,6 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                   {prefPageContents}
                 </Stack>
                 {/* SKYRAT EDIT END: Swappable pref menus */}
-=======
-                  </PreferenceList>
-                </Stack>
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               </Stack.Item>
             </Stack>
           </>

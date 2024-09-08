@@ -1,10 +1,8 @@
-<<<<<<< HEAD
+
 /*
 
 Skyrat removal START, moved to modular file
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define TEG_EFFICIENCY 0.65
 
 /obj/machinery/power/thermoelectric_generator
@@ -227,9 +225,7 @@ Skyrat removal START, moved to modular file
 		cold_circ = null
 
 #undef TEG_EFFICIENCY
-<<<<<<< HEAD
+
 
 Skyrat removal END
 */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

@@ -8,7 +8,4 @@
 	var/select_name = CALIBER_ENERGY
 	fire_sound = 'sound/weapons/laser.ogg'
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/red
-<<<<<<< HEAD
 	var/select_color = FALSE //SKYRAT EDIT ADDITION - This is the color that shows up when selecting an ammo type. Disabled by default
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

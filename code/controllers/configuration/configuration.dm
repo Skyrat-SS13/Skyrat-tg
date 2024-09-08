@@ -104,14 +104,11 @@
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	populate_interaction_instances()
 	remove_erp_things()
 	// SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	loaded = TRUE
 
 	if (Master)

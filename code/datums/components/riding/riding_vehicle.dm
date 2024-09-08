@@ -291,11 +291,7 @@
 	vehicle_move_delay += 1
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys
-<<<<<<< HEAD
 	vehicle_move_delay = 1.75 // SKYRAT EDIT - ORIGINAL: 0
-=======
-	vehicle_move_delay = 0
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	can_slow_down = FALSE
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys/handle_specials()

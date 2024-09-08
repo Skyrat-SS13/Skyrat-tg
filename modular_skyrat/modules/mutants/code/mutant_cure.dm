@@ -25,7 +25,7 @@
 		update_appearance()
 
 /obj/item/rna_extractor/attack_self(mob/living/user)
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return
 	unload_vial(user)
 

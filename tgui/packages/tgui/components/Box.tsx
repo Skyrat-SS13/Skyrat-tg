@@ -7,10 +7,7 @@
 import { BooleanLike, classes } from 'common/react';
 import {
   createElement,
-<<<<<<< HEAD
-=======
   DragEventHandler,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
@@ -36,10 +33,7 @@ export type EventHandlers = Partial<{
   onMouseOver: MouseEventHandler<HTMLDivElement>;
   onMouseUp: MouseEventHandler<HTMLDivElement>;
   onScroll: UIEventHandler<HTMLDivElement>;
-<<<<<<< HEAD
-=======
   onDrop: DragEventHandler<HTMLDivElement>;
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 }>;
 
 export type BoxProps = Partial<{

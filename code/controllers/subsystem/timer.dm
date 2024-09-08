@@ -524,11 +524,7 @@ SUBSYSTEM_DEF(timer)
 		2 = timeToRun,
 		3 = wait,
 		4 = flags,
-<<<<<<< HEAD
-		5 = callBack, /* Safe to hold this directly becasue it's never del'd */
-=======
 		5 = callBack, /* Safe to hold this directly because it's never del'd */
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		6 = "[callBack.object]",
 		7 = text_ref(callBack.object),
 		8 = getcallingtype(),
@@ -543,11 +539,7 @@ SUBSYSTEM_DEF(timer)
 		2 = timeToRun,
 		3 = wait,
 		4 = flags,
-<<<<<<< HEAD
-		5 = callBack, /* Safe to hold this directly becasue it's never del'd */
-=======
 		5 = callBack, /* Safe to hold this directly because it's never del'd */
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		6 = "[callBack.object]",
 		7 = getcallingtype(),
 		8 = callBack.delegate,

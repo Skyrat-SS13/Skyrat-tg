@@ -307,16 +307,6 @@
 
 /obj/structure/aquarium/ui_data(mob/user)
 	. = ..()
-<<<<<<< HEAD
-	.["fluid_type"] = fluid_type
-	.["temperature"] = fluid_temp
-	.["allow_breeding"] = allow_breeding
-	.["feeding_interval"] = feeding_interval / (1 MINUTES)
-	var/list/content_data = list()
-	for(var/atom/movable/fish in contents)
-		content_data += list(list("name"=fish.name,"ref"=ref(fish)))
-	.["contents"] = content_data
-=======
 	.["fluidType"] = fluid_type
 	.["temperature"] = fluid_temp
 	.["allowBreeding"] = allow_breeding
@@ -341,7 +331,6 @@
 			"prop_icon" = item::icon,
 			"prop_icon_state" = item::icon_state,
 		))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/aquarium/ui_static_data(mob/user)
 	. = ..()
@@ -349,14 +338,9 @@
 	.["minTemperature"] = min_fluid_temp
 	.["maxTemperature"] = max_fluid_temp
 	.["fluidTypes"] = fluid_types
-<<<<<<< HEAD
-
-/obj/structure/aquarium/ui_act(action, params)
-=======
 	.["heartIcon"] = 'icons/effects/effects.dmi'
 
 /obj/structure/aquarium/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -378,16 +362,6 @@
 		if("feeding_interval")
 			feeding_interval = params["feeding_interval"] MINUTES
 			. = TRUE
-<<<<<<< HEAD
-		if("remove")
-			var/atom/movable/inside = locate(params["ref"]) in contents
-			if(inside)
-				if(isitem(inside))
-					user.put_in_hands(inside)
-				else
-					inside.forceMove(get_turf(src))
-				to_chat(user,span_notice("You take out [inside] from [src]."))
-=======
 		if("pet_fish")
 			var/obj/item/fish/fish = locate(params["fish_reference"]) in contents
 			fish?.pet_fish(user)
@@ -401,7 +375,6 @@
 				return
 			var/atom/movable/fish = locate(params["fish_reference"]) in contents
 			fish.name = new_name
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/aquarium/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -448,11 +421,6 @@
 	new /obj/item/aquarium_prop/sand(src)
 	new /obj/item/aquarium_prop/seaweed(src)
 
-<<<<<<< HEAD
-	new /obj/item/fish/goldfish/gill(src)
-
-	reagents.add_reagent(/datum/reagent/consumable/nutriment, 2)
-=======
 	if(prob(85))
 		new /obj/item/fish/goldfish/gill(src)
 		reagents.add_reagent(/datum/reagent/consumable/nutriment, 2)
@@ -460,7 +428,6 @@
 		new /obj/item/fish/goldfish/three_eyes/gill(src)
 		reagents.add_reagent(/datum/reagent/toxin/mutagen, 2) //three eyes goldfish feed on mutagen.
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/structure/aquarium/prefilled
 	anchored = TRUE

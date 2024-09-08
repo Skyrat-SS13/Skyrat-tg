@@ -42,11 +42,7 @@
 	data["pixelated"] = target.appearance_flags & PIXEL_SCALE
 	return data
 
-<<<<<<< HEAD
-/datum/nobody_wants_to_learn_matrix_math/ui_act(action, list/params)
-=======
 /datum/nobody_wants_to_learn_matrix_math/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -56,11 +52,7 @@
 			var/matrix_var_name = params["var_name"]
 			var/matrix_var_value = params["var_value"]
 			if(testing_matrix.vv_edit_var(matrix_var_name, matrix_var_value) == FALSE)
-<<<<<<< HEAD
-				to_chat(src, "Your edit was rejected by the object. This is a bug with the matrix tester, not your fault, so report it on github.", confidential = TRUE)
-=======
 				to_chat(src, "Your edit was rejected by the object. This is a bug with the matrix tester, not your fault, so report it on GitHub.", confidential = TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			set_transform()
 		if("scale")

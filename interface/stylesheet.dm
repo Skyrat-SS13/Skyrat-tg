@@ -65,10 +65,7 @@ h1.alert, h2.alert		{color: #000000;}
 
 .emote					{}
 .infoplain				{}
-<<<<<<< HEAD
 .mentor					{}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 .userdanger				{color: #ff0000;	font-weight: bold;	font-size: 3;}
 .danger					{color: #ff0000;	font-weight: bold;}

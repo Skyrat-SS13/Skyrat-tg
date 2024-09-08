@@ -25,16 +25,12 @@
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
-<<<<<<< HEAD
 	/* SKYRAT EDIT REMOVAL START
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	//we may have been created after our borg
 	if(SSticker.current_state == GAME_STATE_SETTING_UP)
 		for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
 			if(!R.connected_ai)
 				R.TryConnectToAI()
-<<<<<<< HEAD
 	*/ // SKYRAT EDIT REMOVAL END
 	var/mob/living/silicon/ai/ai_spawn = spawned
 	ai_spawn.log_current_laws()
@@ -60,10 +56,6 @@
 		sync_target.lawupdate = TRUE
 		sync_target.show_laws()
 	// SKYRAT EDIT ADDITION END
-=======
-	var/mob/living/silicon/ai/ai_spawn = spawned
-	ai_spawn.log_current_laws()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 /datum/job/ai/get_roundstart_spawn_point()

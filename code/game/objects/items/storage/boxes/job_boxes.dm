@@ -46,17 +46,13 @@
 	if(length(SSmapping.levels_by_trait(ZTRAIT_STATION)) > 1)
 		new /obj/item/climbing_hook/emergency(src)
 
-<<<<<<< HEAD
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-<<<<<<< HEAD
 	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one	//SKYRAT EDIT: && !isvox(loc)
 		return
 	var/obj/item/mask = locate(mask_type) in src
@@ -67,13 +63,6 @@
 	else
 		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
 	//SKYRAT EDIT ADDITION END - VOX INTERNALS
-=======
-	if(!isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
-		return
-	var/obj/item/mask = locate(mask_type) in src
-	var/obj/item/internals = locate(internal_type) in src
-	new /obj/item/tank/internals/plasmaman/belt(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	qdel(mask) // Get rid of the items that shouldn't be
 	qdel(internals)
 

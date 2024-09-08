@@ -257,8 +257,6 @@
 	AddElement(/datum/element/rust)
 	color = null
 
-<<<<<<< HEAD
-=======
 /turf/open/floor/plating/heretic_rust
 	color = COLOR_GREEN_GRAY
 
@@ -267,7 +265,6 @@
 	AddElement(/datum/element/rust/heretic)
 	color = null
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/floor/plating/plasma
 	initial_gas_mix = ATMOS_TANK_PLASMA
 

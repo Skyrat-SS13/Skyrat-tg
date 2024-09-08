@@ -18,11 +18,7 @@
 
 /datum/idle_behavior/idle_random_walk/parrot
 	///chance of us moving while perched
-<<<<<<< HEAD
 	var/walk_chance_when_perched = 1 // SKYRAT EDIT CHANGE - More obedient poly ORIGINAL : var/walk_chance_when_perched = 5
-=======
-	var/walk_chance_when_perched = 5
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/idle_behavior/idle_random_walk/parrot/perform_idle_behavior(seconds_per_tick, datum/ai_controller/controller)
 	var/mob/living/living_pawn = controller.pawn

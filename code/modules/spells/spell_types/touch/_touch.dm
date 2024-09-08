@@ -19,11 +19,7 @@
  * (generally) inadvisable unless you know what you're doing
  */
 /datum/action/cooldown/spell/touch
-<<<<<<< HEAD
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED|AB_CHECK_INCAPACITATED
-=======
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	sound = 'sound/items/welder.ogg'
 	invocation = "High Five!"
 	invocation_type = INVOCATION_SHOUT

@@ -60,11 +60,7 @@
 	return ..()
 
 /obj/machinery/computer/camera_advanced/process()
-<<<<<<< HEAD
-	if(!can_use(current_user) || (issilicon(current_user) && !current_user.has_unlimited_silicon_privilege))
-=======
 	if(!can_use(current_user) || (issilicon(current_user) && !HAS_SILICON_ACCESS(current_user)))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		unset_machine()
 		return PROCESS_KILL
 

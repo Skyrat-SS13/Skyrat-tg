@@ -76,14 +76,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_corner_NW = lighting_corner_NW
 	var/old_directional_opacity = directional_opacity
 	var/old_dynamic_lumcount = dynamic_lumcount
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE
 	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
 	if(lgroup)
 		lgroup.remove_from_group(src)
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/old_rcd_memory = rcd_memory
 	var/old_explosion_throw_details = explosion_throw_details
 	var/old_opacity = opacity
@@ -159,7 +156,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 		directional_opacity = old_directional_opacity
 		recalculate_directional_opacity()
-<<<<<<< HEAD
 
 		if(lighting_object && !lighting_object.needs_update)
 			lighting_object.update()
@@ -186,6 +182,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	else if(ispath(old_type, /turf/open/space))
 		for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
 			space_tile.enable_starlight()
+
 	//SKYRAT EDIT ADDITION
 	if(old_liquids)
 		if(!isnull(new_turf.liquids)) //isnull is faster
@@ -214,38 +211,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(old_opacity != opacity && SSticker)
 		GLOB.cameranet.bareMajorChunkChange(src)
 
-=======
-
-		if(lighting_object && !lighting_object.needs_update)
-			lighting_object.update()
-
-	// If we're space, then we're either lit, or not, and impacting our neighbors, or not
-	if(isspaceturf(src))
-		var/turf/open/space/lit_turf = src
-		// This also counts as a removal, so we need to do a full rebuild
-		if(!ispath(old_type, /turf/open/space))
-			lit_turf.update_starlight()
-			for(var/turf/open/space/space_tile in RANGE_TURFS(1, src) - src)
-				space_tile.update_starlight()
-		else if(old_light_range)
-			lit_turf.enable_starlight()
-
-	// If we're a cordon we count against a light, but also don't produce any ourselves
-	else if (istype(src, /turf/cordon))
-		// This counts as removing a source of starlight, so we need to update the space tile to inform it
-		if(!ispath(old_type, /turf/open/space))
-			for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
-				space_tile.update_starlight()
-
-	// If we're not either, but were formerly a space turf, then we want light
-	else if(ispath(old_type, /turf/open/space))
-		for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
-			space_tile.enable_starlight()
-
-	if(old_opacity != opacity && SSticker)
-		GLOB.cameranet.bareMajorChunkChange(src)
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// We will only run this logic if the tile is not on the prime z layer, since we use area overlays to cover that
 	if(SSmapping.z_level_to_plane_offset[z])
 		var/area/our_area = new_turf.loc
@@ -264,23 +229,17 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/datum/gas_mixture/stashed_air = new()
 		stashed_air.copy_from(air)
 		var/stashed_state = excited
-<<<<<<< HEAD
 		var/datum/pollution/stashed_pollution = pollution //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/datum/excited_group/stashed_group = excited_group
 		. = ..() //If path == type this will return us, don't bank on making a new type
 		if (!.) // changeturf failed or didn't do anything
 			return
 		var/turf/open/new_turf = .
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(stashed_pollution)
 			new_turf.pollution = stashed_pollution
 			stashed_pollution.handle_overlay()
 		//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		new_turf.air.copy_from(stashed_air)
 		new_turf.excited = stashed_state
 		new_turf.excited_group = stashed_group
@@ -292,13 +251,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			if(stashed_group.should_display || SSair.display_all_groups)
 				stashed_group.display_turf(new_turf)
 	else
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(pollution)
 			qdel(pollution)
 		//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(excited || excited_group)
 			SSair.remove_from_active(src) //Clean up wall excitement, and refresh excited groups
 		if(ispath(path, /turf/closed) || ispath(path, /turf/cordon))

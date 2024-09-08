@@ -1,11 +1,8 @@
 //Biosuit complete with shoes (in the item sprite)
 /obj/item/clothing/head/bio_hood
 	name = "bio hood"
-<<<<<<< HEAD
 	icon_state = "bio"
 	inhand_icon_state = "bio_hood"
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	desc = "A hood that protects the head and face from biological contaminants."
 	icon = 'icons/obj/clothing/head/bio.dmi'
 	worn_icon = 'icons/mob/clothing/head/bio.dmi'
@@ -40,11 +37,7 @@
 	slowdown = 0.5
 	allowed = list(/obj/item/tank/internals, /obj/item/reagent_containers/dropper, /obj/item/flashlight/pen, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/cup/beaker, /obj/item/gun/syringe)
 	armor_type = /datum/armor/suit_bio_suit
-<<<<<<< HEAD
-	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
-=======
 	flags_inv = HIDEGLOVES|HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	strip_delay = 70
 	equip_delay_other = 70
 	resistance_flags = ACID_PROOF

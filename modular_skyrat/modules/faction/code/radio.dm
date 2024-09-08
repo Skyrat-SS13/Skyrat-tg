@@ -4,7 +4,7 @@
 	channels = list(RADIO_CHANNEL_FACTION = 1)
 	greyscale_config = /datum/greyscale_config/encryptionkey_cargo
 	greyscale_colors = "#49241a#dca01b"
-	independent = TRUE
+	special_channels = RADIO_SPECIAL_CENTCOM
 
 /obj/item/radio/headset/headset_faction
 	name = "faction radio headset"

@@ -337,12 +337,8 @@
 	ACCESS_VIROLOGY, \
 	ACCESS_WEAPONS, \
 	ACCESS_XENOBIOLOGY, \
-<<<<<<< HEAD
 	ACCESS_BARBER, \
 ) // SKYRAT EDIT ADDITION
-=======
-)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Command staff/secure accesses, think bridge/armoury, ai_upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
@@ -369,11 +365,7 @@
 	ACCESS_HOP, \
 	ACCESS_QM, \
 	ACCESS_RD, \
-<<<<<<< HEAD
 ) // SKYRAT EDIT - Added ACCESS_CE and ACCESS_CMO to PRIVATE_COMMAND_ACCESS
-=======
-)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Captains private rooms. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_CAPTAIN)
 #define CAPTAIN_ACCESS list( \

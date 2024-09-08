@@ -676,11 +676,7 @@
 	return !was_completed
 
 /datum/heretic_knowledge/knowledge_ritual/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/our_heretic = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/our_heretic = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	our_heretic.knowledge_points += KNOWLEDGE_RITUAL_POINTS
 	was_completed = TRUE
 
@@ -726,11 +722,7 @@
 	return TRUE
 
 /datum/heretic_knowledge/ultimate/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!can_be_invoked(heretic_datum))
 		return FALSE
 
@@ -751,11 +743,7 @@
 	return (sacrifice.stat == DEAD) && !ismonkey(sacrifice)
 
 /datum/heretic_knowledge/ultimate/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	heretic_datum.ascended = TRUE
 
 	// Show the cool red gradiant in our UI

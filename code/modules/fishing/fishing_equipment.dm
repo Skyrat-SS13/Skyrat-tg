@@ -52,11 +52,7 @@
  */
 /obj/item/fishing_line/auto_reel
 	name = "fishing line auto-reel"
-<<<<<<< HEAD
-	desc = "A fishing line that automatically starts reeling in fish the moment they bite. Also good for hurling things at yourself."
-=======
 	desc = "A fishing line that automatically spins lures and begins reeling in fish the moment it bites. Also good for hurling things towards you."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "reel_auto"
 	fishing_line_traits = FISHING_LINE_AUTOREEL
 	line_color = "#F88414"
@@ -167,8 +163,6 @@
 	rod_overlay_icon_state = "hook_treasure_overlay"
 	chasm_detritus_type = /datum/chasm_detritus/restricted/objects
 
-<<<<<<< HEAD
-=======
 /obj/item/fishing_hook/magnet/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_FISHING_EQUIPMENT_SLOTTED, PROC_REF(hook_equipped))
@@ -183,7 +177,6 @@
 	SIGNAL_HANDLER
 	REMOVE_TRAIT(old_loc, TRAIT_ROD_REMOVE_FISHING_DUD, type)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/fishing_hook/magnet/get_hook_bonus_multiplicative(fish_type, datum/fish_source/source)
 	if(fish_type == FISHING_DUD || ispath(fish_type, /obj/item/fish))
@@ -192,10 +185,6 @@
 	// We multiply the odds by five for everything that's not a fish nor a dud
 	return MAGNET_HOOK_BONUS_MULTIPLIER
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/fishing_hook/shiny
 	name = "shiny lure hook"
 	icon_state = "gold_shiny"
@@ -388,8 +377,6 @@
 	new /obj/item/storage/fish_case(src)
 	new /obj/item/storage/fish_case(src)
 
-<<<<<<< HEAD
-=======
 /obj/item/storage/box/fishing_lures
 	name = "fishing lures set"
 	desc = "A small tackle box containing all the fishing lures you will ever need to curb randomness."
@@ -427,6 +414,5 @@
 		Do <b>not</b> spin while the light is still <b>red</b>.<br><br>\
 		That's all, best of luck to your angling journey.<br><br>"
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #undef MAGNET_HOOK_BONUS_MULTIPLIER
 #undef RESCUE_HOOK_FISH_MULTIPLIER

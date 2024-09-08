@@ -50,11 +50,7 @@
 
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-<<<<<<< HEAD
-	if(!user.can_perform_action(src, NEED_DEXTERITY|ALLOW_SILICON_REACH)) //prevents monkeys from using camera consoles
-=======
 	if(!user.client) //prevents errors by trying to pass clients that don't exist.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)

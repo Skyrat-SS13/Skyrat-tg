@@ -1,7 +1,5 @@
 #define TRAIT_FISH_TESTING "made_you_read_this"
 
-<<<<<<< HEAD
-=======
 ///Ensures that all fish have an aquarium icon state and that sprite_width and sprite_height have been set.
 /datum/unit_test/fish_aquarium_icons
 
@@ -18,7 +16,6 @@
 		if(!fish::sprite_height)
 			TEST_FAIL("[fish] doesn't have a set sprite_height.")
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Checks that things associated with fish size and weight work correctly.
 /datum/unit_test/fish_size_weight
 
@@ -95,18 +92,11 @@
 	incompatible_traits = list(/datum/fish_trait/dummy/two)
 	inheritability = 100
 	diff_traits_inheritability = 100
-<<<<<<< HEAD
-
-/datum/fish_trait/dummy/apply_to_fish(obj/item/fish/fish)
-	ADD_TRAIT(fish, TRAIT_FISH_TESTING, FISH_TRAIT_DATUM)
-	fish.grind_results[/datum/reagent] = 10
-=======
 	reagents_to_add = list(/datum/reagent = 10)
 
 /datum/fish_trait/dummy/apply_to_fish(obj/item/fish/fish)
 	. = ..()
 	ADD_TRAIT(fish, TRAIT_FISH_TESTING, FISH_TRAIT_DATUM)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/fish_trait/dummy/two
 	incompatible_traits = list(/datum/fish_trait/dummy)
@@ -286,27 +276,17 @@
 /datum/unit_test/explosive_fishing/Run()
 	var/datum/fish_source/source = GLOB.preset_fish_sources[/datum/fish_source/unit_test]
 	source.spawn_reward_from_explosion(run_loc_floor_bottom_left, 1)
-<<<<<<< HEAD
-	if(length(source.fish_table))
-=======
 	if(source.fish_counts[/obj/item/wrench])
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		TEST_FAIL("The unit test item wasn't removed/spawned from fish_table during 'spawn_reward_from_explosion'.")
 
 /datum/fish_source/unit_test
 	fish_table = list(
 		/obj/item/wrench = 1,
-<<<<<<< HEAD
-	)
-	fish_counts = list(
-		/obj/item/wrench = 1,
-=======
 		/obj/item/screwdriver = INFINITY,
 	)
 	fish_counts = list(
 		/obj/item/wrench = 1,
 		/obj/item/screwdriver = 0,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 #undef TRAIT_FISH_TESTING

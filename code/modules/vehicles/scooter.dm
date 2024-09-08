@@ -169,11 +169,7 @@
 		pick_up_board(skater)
 
 /obj/vehicle/ridden/scooter/skateboard/proc/pick_up_board(mob/living/carbon/skater)
-<<<<<<< HEAD
-	if (skater.incapacitated() || !Adjacent(skater))
-=======
 	if (skater.incapacitated || !Adjacent(skater))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(has_buckled_mobs())
 		to_chat(skater, span_warning("You can't lift this up when somebody's on it."))

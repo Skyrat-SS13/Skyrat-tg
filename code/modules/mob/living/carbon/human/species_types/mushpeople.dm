@@ -6,18 +6,6 @@
 
 	fixed_mut_color = "#DBBF92"
 
-<<<<<<< HEAD
-	inherent_traits = list(
-		TRAIT_MUTANT_COLORS,
-		TRAIT_NOBREATH,
-		TRAIT_NOFLASH,
-		TRAIT_NO_UNDERWEAR,
-	)
-	inherent_factions = list(FACTION_MUSHROOM)
-
-	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING
-
-=======
 	mutant_organs = list(/obj/item/organ/external/mushroom_cap = "Round")
 
 	inherent_traits = list(
@@ -30,7 +18,6 @@
 
 	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	heatmod = 1.5
 
 	mutanttongue = /obj/item/organ/internal/tongue/mush
@@ -85,11 +72,7 @@
 
 	preference = "feature_mushperson_cap"
 
-<<<<<<< HEAD
 	//dna_block = DNA_MUSHROOM_CAPS_BLOCK // SKYRAT EDIT REMOVAL - Customization  - We have our own system to handle DNA.
-=======
-	dna_block = DNA_MUSHROOM_CAPS_BLOCK
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	restyle_flags = EXTERNAL_RESTYLE_PLANT
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/mushroom_cap

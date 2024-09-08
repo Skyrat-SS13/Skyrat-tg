@@ -252,11 +252,7 @@
 	limb_id = SPECIES_FLYPERSON
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-<<<<<<< HEAD
 	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN // SKYRAT EDIT - Flies deserve hair - ORIGINAL: head_flags = HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
-=======
-	head_flags = HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	teeth_count = 0
 	bodypart_traits = list(TRAIT_ANTENNAE)
 

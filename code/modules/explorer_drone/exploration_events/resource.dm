@@ -282,11 +282,7 @@
 	has_tool_description = "Your drill will allow you to extract the deposit!"
 	action_text = "Mine"
 	delay_message = "Mining..."
-<<<<<<< HEAD
 	var/static/list/possible_materials = list(/datum/material/silver,/datum/material/bananium) //only add materials with sheet type here //SKYRAT EDIT - REMOVED /datum/material/pizza
-=======
-	var/static/list/possible_materials = list(/datum/material/silver,/datum/material/bananium,/datum/material/pizza) //only add materials with sheet type here
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/loot_amount = 30
 	var/chosen_material_type
 

@@ -48,10 +48,7 @@
 			"value" = initial(quirk.value),
 			"customizable" = constant_data?.is_customizable(),
 			"customization_options" = customization_options,
-<<<<<<< HEAD
 			"veteran_only" = initial(quirk.veteran_only), // SKYRAT EDIT - Veteran quirks
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 
 	return list(
@@ -67,7 +64,6 @@
 /datum/preference_middleware/quirks/proc/give_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	var/list/quirks = SSquirks.get_quirks()
 	var/datum/quirk/quirk = quirks[quirk_name]
@@ -77,10 +73,6 @@
 
 	var/list/new_quirks = preferences.all_quirks | quirk_name
 	if (SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks)// SKYRAT EDIT - AUGMENTS+
-=======
-	var/list/new_quirks = preferences.all_quirks | quirk_name
-	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// If the client is sending an invalid give_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.
@@ -96,14 +88,10 @@
 	var/quirk_name = params["quirk"]
 
 	var/list/new_quirks = preferences.all_quirks - quirk_name
-<<<<<<< HEAD
-	if (!(quirk_name in preferences.all_quirks) || SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks)// SKYRAT EDIT - AUGMENTS+
-=======
 	if ( \
 		!(quirk_name in preferences.all_quirks) \
-		|| SSquirks.filter_invalid_quirks(new_quirks) != new_quirks \
-	)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		|| SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks \
+	)// SKYRAT EDIT - AUGMENTS+
 		// If the client is sending an invalid remove_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.
@@ -119,7 +107,6 @@
 	var/list/selected_quirks = list()
 
 	for (var/quirk in preferences.all_quirks)
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		var/list/quirks = SSquirks.get_quirks()
 		var/datum/quirk/quirk_datum = quirks[quirk]
@@ -127,8 +114,6 @@
 			preferences.all_quirks -= quirk
 			continue
 		//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		selected_quirks += sanitize_css_class_name(quirk)
 
 	return selected_quirks

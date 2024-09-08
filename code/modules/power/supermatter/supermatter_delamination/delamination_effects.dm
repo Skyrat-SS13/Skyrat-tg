@@ -34,9 +34,6 @@
 			continue
 		victim.playsound_local(victim_turf, 'sound/magic/charge.ogg')
 		if(victim.z == 0) //victim is inside an object, this is to maintain an old bug turned feature with lockers n shit i guess. tg issue #69687
-<<<<<<< HEAD
-			to_chat(victim, span_boldannounce("You hold onto \the [victim.loc] as hard as you can, as reality distorts around you. You feel safe."))
-=======
 			var/message = ""
 			var/location = victim.loc
 			if(istype(location, /obj/structure/disposalholder)) // sometimes your loc can be a disposalsholder when you're inside a disposals type, so let's just pass a message that makes sense.
@@ -44,7 +41,6 @@
 			else
 				message = "You hold onto \the [victim.loc] as hard as you can, as reality distorts around you. You feel safe."
 			to_chat(victim, span_boldannounce(message))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			continue
 		to_chat(victim, span_boldannounce("You feel reality distort for a moment..."))
 		if (isliving(victim))
@@ -144,11 +140,7 @@
 		priority_announce(
 			text = "Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
 			title = "Shuttle Failure",
-<<<<<<< HEAD
 			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
-=======
-			sound =  'sound/misc/announce_dig.ogg',
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
 		)

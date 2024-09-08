@@ -47,8 +47,7 @@ SUBSYSTEM_DEF(blackbox)
 	/* // SKYRAT EDIT CHANGE - MULTISERVER - ORIGINAL:
 	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_ip, server_port, round_id)
-<<<<<<< HEAD
-		VALUES (:playercount, :admincount, NOW(), INET_ATON(:server_ip), :server_port, :round_id) 
+		VALUES (:playercount, :admincount, NOW(), INET_ATON(:server_ip), :server_port, :round_id)
 	*/
 	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_name, server_ip, server_port, round_id)
@@ -57,12 +56,6 @@ SUBSYSTEM_DEF(blackbox)
 		"playercount" = playercount,
 		"admincount" = admincount,
 		"server_name" = CONFIG_GET(string/serversqlname), // SKYRAT EDIT ADDITION - MULTISERVER
-=======
-		VALUES (:playercount, :admincount, NOW(), INET_ATON(:server_ip), :server_port, :round_id)
-	"}, list(
-		"playercount" = playercount,
-		"admincount" = admincount,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		"server_ip" = world.internet_address || "0",
 		"server_port" = "[world.port]",
 		"round_id" = GLOB.round_id,
@@ -352,13 +345,10 @@ Versioning
 	var/datum/db_query/query_report_death = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, staminaloss, last_words, suicide)
 		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, INET_ATON(:internet_address), :port, :round_id, NOW(), :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :stamina, :last_words, :suicide)
-<<<<<<< HEAD
 */
 	var/datum/db_query/query_report_death = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_name, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, staminaloss, last_words, suicide)
 		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, :server_name, INET_ATON(:internet_address), :port, :round_id, NOW(), :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :clone, :stamina, :last_words, :suicide)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	"}, list(
 		"name" = L.real_name,
 		"key" = L.ckey,

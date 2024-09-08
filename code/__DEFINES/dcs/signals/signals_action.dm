@@ -2,11 +2,7 @@
 
 ///from base of datum/action/proc/Trigger(): (datum/action)
 #define COMSIG_ACTION_TRIGGER "action_trigger"
-<<<<<<< HEAD
-	// Return to block the trigger from occuring
-=======
 	// Return to block the trigger from occurring
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	#define COMPONENT_ACTION_BLOCK_TRIGGER (1<<0)
 /// From /datum/action/Grant(): (mob/grant_to)
 #define COMSIG_ACTION_GRANTED "action_grant"

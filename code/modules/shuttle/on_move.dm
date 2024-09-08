@@ -52,7 +52,6 @@ All ShuttleMove procs go here
 
 	if(!shuttle_depth)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
-<<<<<<< HEAD
 
 	//SKYRAT EDIT ADDITION
 	if(newT.lgroup)
@@ -70,8 +69,7 @@ All ShuttleMove procs go here
 		newT.reasses_liquids()
 	//SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+
 	newT.CopyOnTop(src, 1, shuttle_depth, TRUE)
 	newT.blocks_air = TRUE
 	newT.air_update_turf(TRUE, FALSE)

@@ -112,16 +112,10 @@
 	return data
 
 // Actions received from TGUI
-<<<<<<< HEAD
-/mob/living/basic/bot/firebot/ui_act(action, params)
-	. = ..()
-	if(. || (bot_access_flags & BOT_COVER_LOCKED && !HAS_SILICON_ACCESS(usr)))
-=======
 /mob/living/basic/bot/firebot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	var/mob/user = ui.user
 	if(. || (bot_access_flags & BOT_COVER_LOCKED && !HAS_SILICON_ACCESS(user)))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	switch(action)

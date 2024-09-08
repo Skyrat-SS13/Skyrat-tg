@@ -2,11 +2,7 @@
 /datum/unit_test/organ_bodypart_shuffle
 
 /datum/unit_test/organ_bodypart_shuffle/Run()
-<<<<<<< HEAD
-	var/mob/living/carbon/human/hollow_boy = allocate(/mob/living/carbon/human/consistent)
-=======
 	var/mob/living/carbon/human/hollow_boy = allocate(/mob/living/carbon/human/consistent) //freshly filled with wet insides
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	// Test if organs are all properly updating when forcefully removed
 	var/list/removed_organs = list()
@@ -34,8 +30,3 @@
 				continue
 			TEST_ASSERT(organ in hollow_boy.organs, "Organ '[organ.name] was put in an empty bodypart that replaced a humans, but the organ did not come with.")
 
-<<<<<<< HEAD
-	// Test if bodyparts are all properly updating when forcefully removed
-	hollow_boy = allocate(/mob/living/carbon/human/consistent) //freshly filled with wet insides
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

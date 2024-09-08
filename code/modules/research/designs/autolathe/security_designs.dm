@@ -223,12 +223,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c9mm
-<<<<<<< HEAD
-//	name = "Ammo Box (9mm)" //SKYRAT EDIT: Original
-	name = "Ammo Box (9x25mm Mk.12) (Lethal)" //SKYRAT EDIT: Calibre rename
-=======
-	name = "Ammo Box (9mm) (Lethal)"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	name = "Ammo Box (9x25mm Mk.12) (Lethal)" //SKYRAT EDIT: Calibre rename - Original: name = "Ammo Box (9mm)"
 	id = "c9mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT * 300)

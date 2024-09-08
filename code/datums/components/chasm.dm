@@ -14,11 +14,7 @@
 		/obj/effect/constructing_effect,
 		/obj/effect/dummy/phased_mob,
 		/obj/effect/ebeam,
-<<<<<<< HEAD
-		/obj/effect/fishing_lure,
-=======
 		/obj/effect/fishing_float,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/effect/hotspot,
 		/obj/effect/landmark,
 		/obj/effect/light_emitter/tendril,
@@ -255,25 +251,13 @@ GLOBAL_LIST_EMPTY(chasm_fallen_mobs)
 /obj/effect/abstract/chasm_storage/Entered(atom/movable/arrived)
 	. = ..()
 	if(isliving(arrived))
-<<<<<<< HEAD
-		RegisterSignal(arrived, COMSIG_LIVING_REVIVE, PROC_REF(on_revive))
-		GLOB.chasm_fallen_mobs += arrived
-=======
-		//Mobs that have fallen in reserved area should be deleted to avoid fishing stuff from the deathmatch or VR.
-		if(is_reserved_level(loc.z) && !istype(get_area(loc), /area/shuttle))
-			qdel(arrived)
-			return
 		RegisterSignal(arrived, COMSIG_LIVING_REVIVE, PROC_REF(on_revive))
 		LAZYADD(GLOB.chasm_fallen_mobs[get_chasm_category(loc)], arrived)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/effect/abstract/chasm_storage/Exited(atom/movable/gone)
 	. = ..()
 	if(isliving(gone))
 		UnregisterSignal(gone, COMSIG_LIVING_REVIVE)
-<<<<<<< HEAD
-		GLOB.chasm_fallen_mobs -= gone
-=======
 		LAZYREMOVE(GLOB.chasm_fallen_mobs[get_chasm_category(loc)], gone)
 
 /obj/effect/abstract/chasm_storage/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
@@ -308,7 +292,6 @@ GLOBAL_LIST_EMPTY(chasm_fallen_mobs)
 		return ZTRAIT_RESERVED
 
 	return ZTRAIT_SPACE_RUINS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #define CHASM_TRAIT "chasm trait"
 /**

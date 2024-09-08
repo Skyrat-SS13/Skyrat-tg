@@ -35,13 +35,8 @@ if ($Env:TG_BOOTSTRAP_CACHE) {
 [int]$OSMajor = (Get-WmiObject -Class Win32_OperatingSystem).Version.Split(".")[0]
 
 # Set Node version based on OS version
-<<<<<<< HEAD
-if ($OSVersion -gt 6.1) {
- # Windows 7 is version 6.1
-=======
 if ($OSMajor -lt 10) {
 	# Anything under Windows 10
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_COMPAT"
 }
 else {

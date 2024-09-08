@@ -49,13 +49,10 @@
 	belt = /obj/item/storage/belt/utility/full
 	ears = /obj/item/radio/headset/headset_sci
 	l_pocket = /obj/item/modular_computer/pda/roboticist
-<<<<<<< HEAD
-=======
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
 	duffelbag = /obj/item/storage/backpack/duffelbag/science
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	pda_slot = ITEM_SLOT_LPOCKET
 	skillchips = list(/obj/item/skillchip/job/roboticist)

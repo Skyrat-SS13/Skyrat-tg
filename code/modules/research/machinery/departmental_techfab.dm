@@ -43,9 +43,5 @@
 	name = "department techfab (Security)"
 	allowed_department_flags = DEPARTMENT_BITFLAG_SECURITY
 	circuit = /obj/item/circuitboard/machine/techfab/department/security
-<<<<<<< HEAD
 	stripe_color = "#486091" //SKYRAT EDIT - ORIGINAL "#DE3A3A"
-=======
-	stripe_color = "#DE3A3A"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	payment_department = ACCOUNT_SEC

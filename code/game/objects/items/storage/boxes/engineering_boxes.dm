@@ -112,8 +112,6 @@
 	..()
 	for(var/i in 1 to 7)
 		new /obj/item/tank/internals/emergency_oxygen/engi(src) //in case anyone ever wants to do anything with spawning them, apart from crafting the box
-<<<<<<< HEAD
-=======
 
 /obj/item/storage/box/stickers/chief_engineer
 	name = "CE approved sticker pack"
@@ -123,4 +121,3 @@
 /obj/item/storage/box/stickers/chief_engineer/PopulateContents()
 	for(var/i in 1 to 3)
 		new /obj/item/sticker/chief_engineer(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

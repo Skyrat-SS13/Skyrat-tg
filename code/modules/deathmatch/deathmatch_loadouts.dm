@@ -8,13 +8,9 @@
 	/// If defined, using this outfit sets the targets species to it
 	var/datum/species/species_override
 	/// This outfit will grant these spells if applied
-<<<<<<< HEAD
-	var/list/granted_spells = list()
-=======
 	var/list/spells_to_add = list()
 	/// This outfit will grant these mutations if applied
 	var/list/mutations_to_add = list()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/outfit/deathmatch_loadout/pre_equip(mob/living/carbon/human/user, visualsOnly = FALSE)
 	. = ..()
@@ -23,17 +19,6 @@
 
 	if(!isnull(species_override))
 		user.set_species(species_override)
-<<<<<<< HEAD
-	else if (!isnull(user.dna.species.outfit_important_for_life)) //plasmamen get lit on fire and die
-		user.set_species(/datum/species/human)
-	for(var/datum/action/act as anything in granted_spells)
-		var/datum/action/new_ability = new act(user)
-		if(istype(new_ability, /datum/action/cooldown/spell))
-			var/datum/action/cooldown/spell/new_spell = new_ability
-			new_spell.spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
-		new_ability.Grant(user)
-
-=======
 
 	else if (!isnull(user.dna.species.outfit_important_for_life)) //plasmamen get lit on fire and die
 		user.set_species(/datum/species/human)
@@ -48,7 +33,6 @@
 	for(var/mutation in mutations_to_add)
 		user.dna.add_mutation(mutation)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/outfit/deathmatch_loadout/naked
 	name = "Deathmatch: Naked"
 	display_name = "Unarmed, Butt-naked"
@@ -372,11 +356,7 @@
 	suit = /obj/item/clothing/suit/hooded/explorer
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	mask = /obj/item/clothing/mask/gas/explorer
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/mob_cooldown/dash,
 	)
 
@@ -419,17 +399,10 @@
 	suit = /datum/outfit/wizard::suit
 	head = /datum/outfit/wizard::head
 	shoes = /datum/outfit/wizard::shoes
-<<<<<<< HEAD
-	granted_spells = list(
-		/datum/action/cooldown/spell/aoe/magic_missile,
-		/datum/action/cooldown/spell/forcewall,
-		/datum/action/cooldown/spell/jaunt/ethereal_jaunt,
-=======
 	spells_to_add = list(
 		/datum/action/cooldown/spell/aoe/magic_missile,
 		/datum/action/cooldown/spell/forcewall,
 		/datum/action/cooldown/spell/pointed/projectile/fireball,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /datum/outfit/deathmatch_loadout/wizard/pyro
@@ -440,11 +413,7 @@
 	suit = /obj/item/clothing/suit/wizrobe/red
 	head = /obj/item/clothing/head/wizard/red
 	mask = /obj/item/cigarette
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/pointed/projectile/fireball,
 		/datum/action/cooldown/spell/smoke,
 	)
@@ -456,11 +425,7 @@
 
 	suit = /obj/item/clothing/suit/wizrobe/magusred
 	head = /obj/item/clothing/head/wizard/magus
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/pointed/projectile/lightningbolt,
 		/datum/action/cooldown/spell/charged/beam/tesla,
 	)
@@ -473,11 +438,7 @@
 	species_override = /datum/species/skeleton
 	suit = /obj/item/clothing/suit/wizrobe/black
 	head = /obj/item/clothing/head/wizard/black
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/touch/scream_for_me,
 		/datum/action/cooldown/spell/teleport/radius_turf/blink,
 	)
@@ -491,11 +452,7 @@
 	suit = /obj/item/clothing/suit/wizrobe/fake
 	head = /obj/item/clothing/head/wizard/fake
 	shoes = /obj/item/clothing/shoes/sandal
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/conjure_item/spellpacket,
 		/datum/action/cooldown/spell/aoe/repulse/wizard,
 	)
@@ -509,11 +466,7 @@
 	suit = /obj/item/clothing/suit/wizrobe/marisa
 	head = /obj/item/clothing/head/wizard/marisa
 	shoes = /obj/item/clothing/shoes/sneakers/marisa
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/chuuni_invocations,
 		/datum/action/cooldown/spell/pointed/projectile/spell_cards,
 	)
@@ -526,11 +479,7 @@
 	l_hand = /obj/item/mjollnir
 	suit = /obj/item/clothing/suit/wizrobe/magusblue
 	head = /obj/item/clothing/head/wizard/magus
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/summonitem,
 	)
 
@@ -540,11 +489,7 @@
 	desc = "You feel severely under-leveled for this encounter..."
 
 	l_hand = null
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/charge,
 	)
 
@@ -557,11 +502,7 @@
 	suit = /obj/item/clothing/suit/wizrobe/tape
 	head = /obj/item/clothing/head/wizard/tape
 	shoes = /obj/item/clothing/shoes/jackboots
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/conjure_item/infinite_guns/gun,
 		/datum/action/cooldown/spell/aoe/knock,
 	)
@@ -576,11 +517,7 @@
 	suit = /obj/item/clothing/suit/costume/hawaiian
 	head = /obj/item/clothing/head/wizard/red
 	shoes = /obj/item/clothing/shoes/sneakers/marisa
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/rod_form,
 		/datum/action/cooldown/spell/conjure/the_traps,
 	)
@@ -597,11 +534,7 @@
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	back = /obj/item/storage/backpack/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
-<<<<<<< HEAD
-	granted_spells = null
-=======
 	spells_to_add = null
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/outfit/deathmatch_loadout/wizard/monkey
 	name = "Deathmatch: Monkey"
@@ -614,11 +547,7 @@
 	suit = null
 	head = /obj/item/clothing/head/wizard
 	shoes = null
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/conjure/simian,
 	)
 
@@ -794,11 +723,7 @@
 		/obj/item/food/croissant/throwing = 2,
 		)
 
-<<<<<<< HEAD
-	granted_spells = list(
-=======
 	spells_to_add = list(
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/cooldown/spell/vow_of_silence,
 		/datum/action/cooldown/spell/conjure_item/invisible_box,
 		/datum/action/cooldown/spell/conjure/invisible_chair,
@@ -826,8 +751,6 @@
 		/obj/item/knife/butcher,
 		/obj/item/sharpener,
 	)
-<<<<<<< HEAD
-=======
 
 //species
 
@@ -1239,4 +1162,3 @@
 	shoes = /obj/item/clothing/shoes/bronze
 	l_pocket = /obj/item/reagent_containers/cup/beaker/synthflesh // they used to turn their dmg into tox with a spell. close enough
 	r_pocket = /obj/item/reagent_containers/cup/beaker/synthflesh
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

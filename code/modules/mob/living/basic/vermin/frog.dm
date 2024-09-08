@@ -26,11 +26,7 @@
 	response_harm_simple = "splat"
 	density = FALSE
 	faction = list(FACTION_HOSTILE, FACTION_MAINT_CREATURES)
-<<<<<<< HEAD
 	attack_sound = null // SKYRAT EDIT - No more frog ear-rape - ORIGINAL: attack_sound = 'sound/effects/reee.ogg'
-=======
-	attack_sound = 'sound/effects/reee.ogg'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	butcher_results = list(/obj/item/food/nugget = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
@@ -44,11 +40,7 @@
 
 	ai_controller = /datum/ai_controller/basic_controller/frog
 
-<<<<<<< HEAD
 	var/stepped_sound = null // SKYRAT EDIT - No more frog ear-rape - ORIGINA: var/stepped_sound = 'sound/effects/huuu.ogg'
-=======
-	var/stepped_sound = 'sound/effects/huuu.ogg'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	///How much of a reagent the mob injects on attack
 	var/poison_per_bite = 3
 	///What reagent the mob injects targets with

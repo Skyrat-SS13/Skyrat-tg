@@ -38,7 +38,7 @@
 	return ..(losing_mob)
 
 /datum/action/innate/clockcult/quick_bind/IsAvailable(feedback)
-	if(!IS_CLOCK(owner) || owner.incapacitated())
+	if(!IS_CLOCK(owner) || owner.incapacitated)
 		return FALSE
 
 	return ..()

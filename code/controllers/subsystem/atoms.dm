@@ -75,11 +75,7 @@ SUBSYSTEM_DEF(atoms)
 	rustg_file_write(json_encode(mapload_init_times), "[GLOB.log_directory]/init_times.json")
 	#endif
 
-<<<<<<< HEAD
-/// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initalized to totally break
-=======
 /// Actually creates the list of atoms. Exists solely so a runtime in the creation logic doesn't cause initialized to totally break
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null, mapload_source = null)
 	if (atoms_to_return)
 		LAZYINITLIST(created_atoms)
@@ -141,13 +137,8 @@ SUBSYSTEM_DEF(atoms)
 		return null
 	return initialized_state[state_length][1]
 
-<<<<<<< HEAD
-/// Use this to set initialized to prevent error states where the old initialized is overriden, and we end up losing all context
-/// Accepts a state and a source, the most recent state is used, sources exist to prevent overriding old values accidentially
-=======
 /// Use this to set initialized to prevent error states where the old initialized is overridden, and we end up losing all context
 /// Accepts a state and a source, the most recent state is used, sources exist to prevent overriding old values accidentally
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/controller/subsystem/atoms/proc/set_tracked_initalized(state, source)
 	if(!length(initialized_state))
 		base_initialized = initialized

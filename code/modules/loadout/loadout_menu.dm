@@ -73,7 +73,6 @@
 			continue
 		if(!item.category.handle_duplicate_entires(src, item, selected_item, loadout_datums))
 			return
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	if(!isnull(selected_item.ckeywhitelist) && !(preferences?.parent?.ckey in selected_item.ckeywhitelist))
 		to_chat(preferences.parent, span_warning("You cannot select this item!"))
@@ -83,8 +82,6 @@
 		to_chat(preferences.parent, span_warning("This item is for donators only."))
 		return
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	LAZYSET(loadout, selected_item.item_path, list())
 	preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
@@ -114,14 +111,11 @@
 /datum/preference_middleware/loadout/get_ui_static_data(mob/user)
 	var/list/data = list()
 	data["loadout_preview_view"] = preferences.character_preview_view.assigned_map
-<<<<<<< HEAD
 	// SKYRAT EDIT START - EXPANDED LOADOUT
 	data["ckey"] = user.ckey
 	if(SSplayer_ranks.is_donator(user.client))
 		data["is_donator"] = TRUE
 	// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return data
 
 /datum/preference_middleware/loadout/get_constant_data()

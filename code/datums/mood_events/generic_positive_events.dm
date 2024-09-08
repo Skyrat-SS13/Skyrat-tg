@@ -351,14 +351,6 @@
 	mood_change = 1
 	timeout = 2 MINUTES
 
-<<<<<<< HEAD
-/datum/mood_event/it_was_on_the_mouse
-	description = "Heh heh. \"It's on the mouse\". What a play on words."
-	mood_change = 1
-	timeout = 2 MINUTES
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/mood_event/birthday
 	description = "It's my birthday!"
 	mood_change = 2

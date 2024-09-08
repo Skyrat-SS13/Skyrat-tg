@@ -5,7 +5,6 @@
 #define STATE_CHANGING_STATUS "changing_status"
 #define STATE_MAIN "main"
 #define STATE_MESSAGES "messages"
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION
 GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
@@ -13,8 +12,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
 #define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
 //SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -119,15 +116,14 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	if (HAS_SILICON_ACCESS(user))
 		return TRUE
 	return authenticated
-<<<<<<< HEAD
 
-/// Skyrat Edit Start - Are we the AI?
+// SKYRAT EDIT START - Are we the AI?
+/// Are we the ai, or captain?
 /obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
 	if (isAI(user))
 		return TRUE
-	return ACCESS_CAPTAIN in authorize_access //Skyrat Edit End
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	return ACCESS_CAPTAIN in authorize_access
+// SKYRAT EDIT END
 
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(isidcard(I))
@@ -150,10 +146,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		caller_card.use_charge(user)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(summon_battlecruiser), caller_card.team), rand(20 SECONDS, 1 MINUTES))
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
-<<<<<<< HEAD
 		priority_announce("Attention crew: deep-space sensors detect a Syndicate battlecruiser-class signature subspace rift forming near your station. Estimated time until arrival: three to five minutes.", "[command_name()] High-Priority Update") //SKYRAT EDIT ADDITION: announcement on battlecruiser call
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return TRUE
 
 	if(obj_flags & EMAGGED)
@@ -165,11 +158,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 	return TRUE
 
-<<<<<<< HEAD
-/obj/machinery/computer/communications/ui_act(action, list/params)
-=======
 /obj/machinery/computer/communications/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/static/list/approved_states = list(STATE_BUYING_SHUTTLE, STATE_CHANGING_STATUS, STATE_MAIN, STATE_MESSAGES)
 
 	. = ..()
@@ -179,19 +168,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	if (!has_communication())
 		return
 
-<<<<<<< HEAD
-=======
 	var/mob/user = ui.user
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = TRUE
 
 	switch (action)
 		if ("answerMessage")
-<<<<<<< HEAD
-			if (!authenticated(usr))
-=======
 			if (!authenticated(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 
 			var/answer_index = params["answer"]
@@ -199,11 +181,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			// If either of these aren't numbers, then bad voodoo.
 			if(!isnum(answer_index) || !isnum(message_index))
-<<<<<<< HEAD
-				message_admins("[ADMIN_LOOKUPFLW(usr)] provided an invalid index type when replying to a message on [src] [ADMIN_JMP(src)]. This should not happen. Please check with a maintainer and/or consult tgui logs.")
-=======
 				message_admins("[ADMIN_LOOKUPFLW(user)] provided an invalid index type when replying to a message on [src] [ADMIN_JMP(src)]. This should not happen. Please check with a maintainer and/or consult tgui logs.")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				CRASH("Non-numeric index provided when answering comms console message.")
 
 			if (!answer_index || !message_index || answer_index < 1 || message_index < 1)
@@ -214,33 +192,11 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			message.answered = answer_index
 			message.answer_callback.InvokeAsync()
 		if ("callShuttle")
-<<<<<<< HEAD
-			if (!authenticated(usr) || syndicate)
-=======
 			if (!authenticated(user) || syndicate)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
 				return
-<<<<<<< HEAD
-			SSshuttle.requestEvac(usr, reason)
-			post_status("shuttle")
-		if ("changeSecurityLevel")
-			if (!authenticated_as_silicon_or_captain(usr))
-				return
-
-			// Check if they have
-			if (!HAS_SILICON_ACCESS(usr))
-				var/obj/item/held_item = usr.get_active_held_item()
-				var/obj/item/card/id/id_card = held_item?.GetID()
-				if (!istype(id_card))
-					to_chat(usr, span_warning("You need to swipe your ID!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-				if (!(ACCESS_CAPTAIN in id_card.access))
-					to_chat(usr, span_warning("You are not authorized to do this!"))
-=======
 			SSshuttle.requestEvac(user, reason)
 			post_status("shuttle")
 		if ("changeSecurityLevel")
@@ -257,35 +213,17 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					return
 				if (!(ACCESS_CAPTAIN in id_card.access))
 					to_chat(user, span_warning("You are not authorized to do this!"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 
 			var/new_sec_level = SSsecurity_level.text_level_to_number(params["newSecurityLevel"])
-<<<<<<< HEAD
 			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
-=======
-			if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			if (SSsecurity_level.get_current_level_as_number() == new_sec_level)
 				return
 
 			SSsecurity_level.set_level(new_sec_level)
 
-<<<<<<< HEAD
-			to_chat(usr, span_notice("Authorization confirmed. Modifying security level."))
-			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
-
-			// Only notify people if an actual change happened
-			usr.log_message("changed the security level to [params["newSecurityLevel"]] with [src].", LOG_GAME)
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
-			deadchat_broadcast(" has changed the security level to [params["newSecurityLevel"]] with [src] at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
-
-			alert_level_tick += 1
-		if ("deleteMessage")
-			if (!authenticated(usr))
-=======
 			to_chat(user, span_notice("Authorization confirmed. Modifying security level."))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
@@ -297,26 +235,17 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			alert_level_tick += 1
 		if ("deleteMessage")
 			if (!authenticated(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/message_index = text2num(params["message"])
 			if (!message_index)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
 		if ("makePriorityAnnouncement")
-<<<<<<< HEAD
 			if (!authenticated_as_silicon_or_captain(usr) && !syndicate)
 				return
 			make_announcement(usr)
 		if ("messageAssociates")
 			if (!authenticated_as_ai_or_captain(usr)) //Skyrat edit | Allows AI and Captain to send messages
-=======
-			if (!authenticated_as_silicon_or_captain(user) && !syndicate)
-				return
-			make_announcement(user)
-		if ("messageAssociates")
-			if (!authenticated_as_non_silicon_captain(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -326,26 +255,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			var/emagged = obj_flags & EMAGGED
 			if (emagged)
-<<<<<<< HEAD
-				message_syndicate(message, usr)
-				to_chat(usr, span_danger("SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND."))
-			else if(syndicate)
-				message_syndicate(message, usr)
-				to_chat(usr, span_danger("Message transmitted to Syndicate Command."))
-			else
-				message_centcom(message, usr)
-				to_chat(usr, span_notice("Message transmitted to Central Command."))
-
-			var/associates = (emagged || syndicate) ? "the Syndicate": "CentCom"
-			usr.log_talk(message, LOG_SAY, tag = "message to [associates]")
-			deadchat_broadcast(" has messaged [associates], \"[message]\" at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
-			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
-		if ("purchaseShuttle")
-			var/can_buy_shuttles_or_fail_reason = can_buy_shuttles(usr)
-			if (can_buy_shuttles_or_fail_reason != TRUE)
-				if (can_buy_shuttles_or_fail_reason != FALSE)
-					to_chat(usr, span_alert("[can_buy_shuttles_or_fail_reason]"))
-=======
 				message_syndicate(message, user)
 				to_chat(user, span_danger("SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND."))
 			else if(syndicate)
@@ -364,7 +273,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (can_buy_shuttles_or_fail_reason != TRUE)
 				if (can_buy_shuttles_or_fail_reason != FALSE)
 					to_chat(user, span_alert("[can_buy_shuttles_or_fail_reason]"))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/list/shuttles = flatten_list(SSmapping.shuttle_templates)
 			var/datum/map_template/shuttle/shuttle = locate(params["shuttle"]) in shuttles
@@ -373,11 +281,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!can_purchase_this_shuttle(shuttle))
 				return
 			if (!shuttle.prerequisites_met())
-<<<<<<< HEAD
-				to_chat(usr, span_alert("You have not met the requirements for purchasing this shuttle."))
-=======
 				to_chat(user, span_alert("You have not met the requirements for purchasing this shuttle."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if (bank_account.account_balance < shuttle.credit_cost)
@@ -390,60 +294,24 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			SSshuttle.action_load(shuttle, replace = TRUE)
 			bank_account.adjust_money(-shuttle.credit_cost)
 
-<<<<<<< HEAD
-			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : usr.real_name
-			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
-
-			message_admins("[ADMIN_LOOKUPFLW(usr)] purchased [shuttle.name].")
-			log_shuttle("[key_name(usr)] has purchased [shuttle.name].")
-=======
 			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : user.real_name
 			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
 
 			message_admins("[ADMIN_LOOKUPFLW(user)] purchased [shuttle.name].")
 			log_shuttle("[key_name(user)] has purchased [shuttle.name].")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			SSblackbox.record_feedback("text", "shuttle_purchase", 1, shuttle.name)
 			state = STATE_MAIN
 		if ("recallShuttle")
 			// AIs cannot recall the shuttle
-<<<<<<< HEAD
-			if (!authenticated(usr) || HAS_SILICON_ACCESS(usr) || syndicate)
-				return
-			SSshuttle.cancelEvac(usr)
-		if ("requestNukeCodes")
-			if (!authenticated_as_non_silicon_captain(usr))
-=======
 			if (!authenticated(user) || HAS_SILICON_ACCESS(user) || syndicate)
 				return
 			SSshuttle.cancelEvac(user)
 		if ("requestNukeCodes")
 			if (!authenticated_as_non_silicon_captain(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
 			var/reason = trim(html_encode(params["reason"]), MAX_MESSAGE_LEN)
-<<<<<<< HEAD
-			nuke_request(reason, usr)
-			to_chat(usr, span_notice("Request sent."))
-			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
-			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
-			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
-		if ("restoreBackupRoutingData")
-			if (!authenticated_as_non_silicon_captain(usr))
-				return
-			if (!(obj_flags & EMAGGED))
-				return
-			to_chat(usr, span_notice("Backup routing data restored."))
-			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
-			obj_flags &= ~EMAGGED
-		if ("sendToOtherSector")
-			if (!authenticated_as_non_silicon_captain(usr))
-				return
-			if (!can_send_messages_to_other_sectors(usr))
-=======
 			nuke_request(reason, user)
 			to_chat(user, span_notice("Request sent."))
 			user.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
@@ -462,7 +330,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!authenticated_as_non_silicon_captain(user))
 				return
 			if (!can_send_messages_to_other_sectors(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -474,66 +341,32 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			GLOB.communications_controller.soft_filtering = FALSE
 			var/list/hard_filter_result = is_ic_filtered(message)
 			if(hard_filter_result)
-<<<<<<< HEAD
-				tgui_alert(usr, "Your message contains: (\"[hard_filter_result[CHAT_FILTER_INDEX_WORD]]\"), which is not allowed on this server.")
-=======
 				tgui_alert(user, "Your message contains: (\"[hard_filter_result[CHAT_FILTER_INDEX_WORD]]\"), which is not allowed on this server.")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 
 			var/list/soft_filter_result = is_soft_ooc_filtered(message)
 			if(soft_filter_result)
-<<<<<<< HEAD
-				if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
-					return
-				message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[html_encode(message)]\"")
-				log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[message]\"")
-=======
 				if(tgui_alert(user,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 					return
 				message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[html_encode(message)]\"")
 				log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". They may be using a disallowed term for a cross-station message. Increasing delay time to reject.\n\n Message: \"[message]\"")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				GLOB.communications_controller.soft_filtering = TRUE
 
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			var/destination = params["destination"]
 
-<<<<<<< HEAD
-			usr.log_message("is about to send the following message to [destination]: [message]", LOG_GAME)
-			to_chat(
-				GLOB.admins,
-				span_adminnotice( \
-					"<b color='orange'>CROSS-SECTOR MESSAGE (OUTGOING):</b> [ADMIN_LOOKUPFLW(usr)] is about to send \
-=======
 			user.log_message("is about to send the following message to [destination]: [message]", LOG_GAME)
 			to_chat(
 				GLOB.admins,
 				span_adminnotice( \
 					"<b color='orange'>CROSS-SECTOR MESSAGE (OUTGOING):</b> [ADMIN_LOOKUPFLW(user)] is about to send \
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					the following message to <b>[destination]</b> (will autoapprove in [GLOB.communications_controller.soft_filtering ? DisplayTimeText(EXTENDED_CROSS_SECTOR_CANCEL_TIME) : DisplayTimeText(CROSS_SECTOR_CANCEL_TIME)]): \
 					<b><a href='?src=[REF(src)];reject_cross_comms_message=1'>REJECT</a></b><br> \
 					[html_encode(message)]" \
 				)
 			)
 
-<<<<<<< HEAD
-			send_cross_comms_message_timer = addtimer(CALLBACK(src, PROC_REF(send_cross_comms_message), usr, destination, message), GLOB.communications_controller.soft_filtering ? EXTENDED_CROSS_SECTOR_CANCEL_TIME : CROSS_SECTOR_CANCEL_TIME, TIMER_STOPPABLE)
-
-			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
-		if ("setState")
-			if (!authenticated(usr))
-				return
-			if (!(params["state"] in approved_states))
-				return
-			if (state == STATE_BUYING_SHUTTLE && can_buy_shuttles(usr) != TRUE)
-				return
-			set_state(usr, params["state"])
-		if ("setStatusMessage")
-			if (!authenticated(usr))
-=======
 			send_cross_comms_message_timer = addtimer(CALLBACK(src, PROC_REF(send_cross_comms_message), user, destination, message), GLOB.communications_controller.soft_filtering ? EXTENDED_CROSS_SECTOR_CANCEL_TIME : CROSS_SECTOR_CANCEL_TIME, TIMER_STOPPABLE)
 
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
@@ -547,18 +380,13 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			set_state(usr, params["state"])
 		if ("setStatusMessage")
 			if (!authenticated(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/line_one = reject_bad_text(params["upperText"] || "", MAX_STATUS_LINE_LENGTH)
 			var/line_two = reject_bad_text(params["lowerText"] || "", MAX_STATUS_LINE_LENGTH)
 			post_status("message", line_one, line_two)
 			last_status_display = list(line_one, line_two)
 		if ("setStatusPicture")
-<<<<<<< HEAD
-			if (!authenticated(usr))
-=======
 			if (!authenticated(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				return
 			var/picture = params["picture"]
 			if (!(picture in GLOB.status_display_approved_pictures))
@@ -584,17 +412,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				authenticated = TRUE
 				authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 				authorize_name = "Unknown"
-<<<<<<< HEAD
-				to_chat(usr, span_warning("[src] lets out a quiet alarm as its login is overridden."))
-				playsound(src, 'sound/machines/terminal_alert.ogg', 25, FALSE)
-			else if(isliving(usr))
-				var/mob/living/L = usr
-=======
 				to_chat(user, span_warning("[src] lets out a quiet alarm as its login is overridden."))
 				playsound(src, 'sound/machines/terminal_alert.ogg', 25, FALSE)
 			else if(isliving(user))
 				var/mob/living/L = user
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				var/obj/item/card/id/id_card = L.get_idcard(hand_first = TRUE)
 				if (check_access(id_card))
 					authenticated = TRUE
@@ -606,37 +427,36 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			imprint_gps(gps_tag = "Encrypted Communications Channel")
 
 		if ("toggleEmergencyAccess")
-<<<<<<< HEAD
-			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
+			if(emergency_access_cooldown(user)) //if were in cooldown, dont allow the following code
 				return
-			if (!authenticated_as_silicon_or_captain(usr))
+			if (!authenticated_as_silicon_or_captain(user))
 				return
 			if (GLOB.emergency_access)
 				revoke_maint_all_access()
-				usr.log_message("disabled emergency maintenance access.", LOG_GAME)
-				message_admins("[ADMIN_LOOKUPFLW(usr)] disabled emergency maintenance access.")
-				deadchat_broadcast(" disabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+				user.log_message("disabled emergency maintenance access.", LOG_GAME)
+				message_admins("[ADMIN_LOOKUPFLW(user)] disabled emergency maintenance access.")
+				deadchat_broadcast(" disabled emergency maintenance access at [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
 			else
 				make_maint_all_access()
-				usr.log_message("enabled emergency maintenance access.", LOG_GAME)
-				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
-				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+				user.log_message("enabled emergency maintenance access.", LOG_GAME)
+				message_admins("[ADMIN_LOOKUPFLW(user)] enabled emergency maintenance access.")
+				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
 		if("requestSafeCodes")
 			if(SSjob.assigned_captain)
-				to_chat(usr, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
+				to_chat(user, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
 				return
 
 			if(SSjob.safe_code_timer_id)
-				to_chat(usr, span_warning("The safe code has already been requested and is being delivered to your station!"))
+				to_chat(user, span_warning("The safe code has already been requested and is being delivered to your station!"))
 				return
 
 			if(SSjob.safe_code_requested)
-				to_chat(usr, span_warning("The safe code has already been requested and delivered to your station!"))
+				to_chat(user, span_warning("The safe code has already been requested and delivered to your station!"))
 				return
 
 			if(!SSid_access.spare_id_safe_code)
-				to_chat(usr, span_warning("There is no safe code to deliver to your station!"))
+				to_chat(user, span_warning("There is no safe code to deliver to your station!"))
 				return
 
 			var/turf/pod_location = get_turf(src)
@@ -645,6 +465,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, TYPE_PROC_REF(/datum/controller/subsystem/job, send_spare_id_safe_code), pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
+
 		// SKYRAT EDIT ADDITION START
 		if ("callThePolice")
 			if(!pre_911_check(usr))
@@ -685,59 +506,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				usr.log_message("enabled airlock engineering override.", LOG_GAME)
 				deadchat_broadcast(" enabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// SKYRAT EDIT ADDITION END
-/obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
-	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
-		to_chat(user, span_warning("This was your last free use without cooldown, you will not be able to use this again for [DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
-		COOLDOWN_START(src, emergency_access_cooldown, EMERGENCY_ACCESS_COOLDOWN)
-		++toggle_uses //add a use so that this if() is false the next time you try this button
-		return FALSE
-
-	if(!COOLDOWN_FINISHED(src, emergency_access_cooldown))
-		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(src, emergency_access_cooldown), 1)
-		to_chat(user, span_warning("Emergency Access is still in cooldown for [time_left]!"))
-		return TRUE //dont use the button, we are in cooldown
-	else if((last_toggled + EMERGENCY_ACCESS_COOLDOWN) < world.time)
-		toggle_uses = 0 //either cooldown is done, or we just havent touched it in 30 seconds, either way reset uses
-
-=======
-			if(emergency_access_cooldown(user)) //if were in cooldown, dont allow the following code
-				return
-			if (!authenticated_as_silicon_or_captain(user))
-				return
-			if (GLOB.emergency_access)
-				revoke_maint_all_access()
-				user.log_message("disabled emergency maintenance access.", LOG_GAME)
-				message_admins("[ADMIN_LOOKUPFLW(user)] disabled emergency maintenance access.")
-				deadchat_broadcast(" disabled emergency maintenance access at [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
-			else
-				make_maint_all_access()
-				user.log_message("enabled emergency maintenance access.", LOG_GAME)
-				message_admins("[ADMIN_LOOKUPFLW(user)] enabled emergency maintenance access.")
-				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
-		// Request codes for the Captain's Spare ID safe.
-		if("requestSafeCodes")
-			if(SSjob.assigned_captain)
-				to_chat(user, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
-				return
-
-			if(SSjob.safe_code_timer_id)
-				to_chat(user, span_warning("The safe code has already been requested and is being delivered to your station!"))
-				return
-
-			if(SSjob.safe_code_requested)
-				to_chat(user, span_warning("The safe code has already been requested and delivered to your station!"))
-				return
-
-			if(!SSid_access.spare_id_safe_code)
-				to_chat(user, span_warning("There is no safe code to deliver to your station!"))
-				return
-
-			var/turf/pod_location = get_turf(src)
-
-			SSjob.safe_code_request_loc = pod_location
-			SSjob.safe_code_requested = TRUE
-			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, TYPE_PROC_REF(/datum/controller/subsystem/job, send_spare_id_safe_code), pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
 
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
@@ -753,7 +521,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	else if((last_toggled + EMERGENCY_ACCESS_COOLDOWN) < world.time)
 		toggle_uses = 0 //either cooldown is done, or we just havent touched it in 30 seconds, either way reset uses
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	++toggle_uses //add a use
 	last_toggled = world.time
 	return FALSE //if we are not in cooldown, allow using the button
@@ -763,32 +530,20 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	var/list/payload = list()
 
-<<<<<<< HEAD
-	payload["sender_ckey"] = usr.ckey
-=======
 	payload["sender_ckey"] = user.ckey
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/network_name = CONFIG_GET(string/cross_comms_network)
 	if(network_name)
 		payload["network"] = network_name
 	if(GLOB.communications_controller.soft_filtering)
 		payload["is_filtered"] = TRUE
 
-<<<<<<< HEAD
 	var/name_to_send = "[CONFIG_GET(string/cross_comms_name)]([station_name()])" //SKYRAT EDIT ADDITION
 
 	send2otherserver(html_decode(name_to_send), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload) //SKYRAT EDIT END
 	minor_announce(message, title = "Outgoing message to allied station")
-	usr.log_talk(message, LOG_SAY, tag = "message to the other server")
-	message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server\[s].")
-	deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[usr.real_name]", usr, message_type = DEADCHAT_ANNOUNCEMENT)
-=======
-	send2otherserver(html_decode(station_name()), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
-	minor_announce(message, title = "Outgoing message to allied station")
 	user.log_talk(message, LOG_SAY, tag = "message to the other server")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has sent a message to the other server\[s].")
 	deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[user.real_name]", user, message_type = DEADCHAT_ANNOUNCEMENT)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	GLOB.communications_controller.soft_filtering = FALSE // set it to false at the end of the proc to ensure that everything prior reads as intended
 
 /obj/machinery/computer/communications/ui_data(mob/user)
@@ -833,10 +588,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
 				data["canToggleEmergencyAccess"] = FALSE
-<<<<<<< HEAD
 				data["canToggleEngineeringOverride"] = FALSE //SKYRAT EDIT - Engineering Override
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
@@ -868,24 +620,17 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				if (authenticated_as_silicon_or_captain(user))
 					data["canToggleEmergencyAccess"] = TRUE
 					data["emergencyAccess"] = GLOB.emergency_access
-<<<<<<< HEAD
 					data["canToggleEngineeringOverride"] = TRUE //SKYRAT EDIT - Engineering Override Toggle
 					data["engineeringOverride"] = GLOB.force_eng_override //SKYRAT EDIT - Engineering Override Toggle
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = HAS_SILICON_ACCESS(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
 				else if(syndicate)
 					data["canMakeAnnouncement"] = TRUE
 
-<<<<<<< HEAD
 				if (authenticated_as_ai_or_captain(user))
 					data["canMessageAssociates"] = TRUE //Skyrat Edit | Allows AI to report to CC in the event of there being no command alive/to begin with
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				if (SSshuttle.emergency.mode != SHUTTLE_IDLE && SSshuttle.emergency.mode != SHUTTLE_RECALL)
 					data["shuttleCalled"] = TRUE
 					data["shuttleRecallable"] = SSshuttle.canRecall() || syndicate
@@ -1059,11 +804,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	var/list/players = get_communication_players()
 	GLOB.communications_controller.make_announcement(user, is_ai, input, syndicate || (obj_flags & EMAGGED), players)
-<<<<<<< HEAD
-	deadchat_broadcast(" made a priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-=======
 	deadchat_broadcast(" made a priority announcement from [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/computer/communications/proc/get_communication_players()
 	return GLOB.player_list
@@ -1261,7 +1002,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #undef STATE_CHANGING_STATUS
 #undef STATE_MAIN
 #undef STATE_MESSAGES
-<<<<<<< HEAD
 
 //SKYRAT EDIT ADDITION
 #undef EMERGENCY_RESPONSE_POLICE
@@ -1269,5 +1009,3 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #undef EMERGENCY_RESPONSE_EMT
 #undef EMERGENCY_RESPONSE_EMAG
 //SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

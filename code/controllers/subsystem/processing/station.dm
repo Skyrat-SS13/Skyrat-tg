@@ -24,11 +24,7 @@ PROCESSING_SUBSYSTEM_DEF(station)
 	// Autowiki also wants consistent outputs, for example making sure the vending machine page always reports the normal products
 	#if !defined(UNIT_TESTS) && !defined(AUTOWIKI)
 	SetupTraits()
-<<<<<<< HEAD
 	//display_lobby_traits() SKYRAT EDIT REMOVAL
-=======
-	display_lobby_traits()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	#endif
 
 	announcer = new announcer() //Initialize the station's announcer datum
@@ -177,10 +173,7 @@ PROCESSING_SUBSYSTEM_DEF(station)
 		var/datum/station_trait/trait_to_remove = i
 		selectable_traits_by_types[initial(trait_to_remove.trait_type)] -= trait_to_remove
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Update station trait lobby buttons for clients who joined before we initialised this subsystem
 /datum/controller/subsystem/processing/station/proc/display_lobby_traits()
 	for (var/mob/dead/new_player/player as anything in GLOB.new_player_list)
@@ -189,7 +182,4 @@ PROCESSING_SUBSYSTEM_DEF(station)
 			continue
 		observer_hud.add_station_trait_buttons()
 		observer_hud.show_hud(observer_hud.hud_version)
-<<<<<<< HEAD
 */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

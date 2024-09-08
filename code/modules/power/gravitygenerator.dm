@@ -289,11 +289,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/gravity_generator/main/ui_act(action, params)
-=======
 /obj/machinery/gravity_generator/main/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -424,7 +420,6 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(mobs.client)
 			shake_camera(mobs, 15, 1)
 			mobs.playsound_local(T, null, 100, 1, 0.5, sound_to_use = alert_sound)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITON BEGIN
 	if(!SSmapping.level_has_any_trait(z, ZTRAIT_STATION)) // SHUT THE FUCK UP ABANDONED STATIONS, I DON'T CARE
 		return
@@ -433,8 +428,6 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	else
 		priority_announce("A gravity generator has lost its graviton field integrity ballast, artificial gravity is offline.", "Gravity Generator", ANNOUNCER_GRAVGENOFF)
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/gravity_generator/main/proc/gravity_in_level()
 	var/turf/T = get_turf(src)

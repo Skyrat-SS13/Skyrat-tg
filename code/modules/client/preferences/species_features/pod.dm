@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 // SKYRAT EDIT: REPLACED BY /datum/preference/choiced/mutant_choice/pod_hair IN mutant_parts.dm
 /*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/preference/choiced/pod_hair
 	savefile_key = "feature_pod_hair"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -33,7 +30,4 @@
 
 /datum/preference/choiced/pod_hair/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["pod_hair"] = value
-<<<<<<< HEAD
 */ // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

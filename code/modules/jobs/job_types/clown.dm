@@ -22,8 +22,6 @@
 	departments_list = list(
 		/datum/job_department/service,
 		)
-<<<<<<< HEAD
-=======
 
 	mail_goodies = list(
 		/obj/item/food/grown/banana = 100,
@@ -39,26 +37,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "honk"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
-	mail_goodies = list(
-		/obj/item/food/grown/banana = 100,
-		/obj/item/food/pie/cream = 50,
-		/obj/item/spess_knife = 20, // As a joke for clumsy clown from engineering department
-		/obj/item/clothing/shoes/clown_shoes/combat = 10,
-		/obj/item/reagent_containers/spray/waterflower/lube = 20, // lube
-		/obj/item/reagent_containers/spray/waterflower/superlube = 1 // Superlube, good lord.
-	)
-
-<<<<<<< HEAD
-	family_heirlooms = list(/obj/item/bikehorn/golden)
-	rpg_title = "Jester"
-	job_flags = STATION_JOB_FLAGS
-
-	job_tone = "honk"
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/job/clown/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	if(!ishuman(spawned))

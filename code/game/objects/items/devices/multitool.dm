@@ -87,11 +87,8 @@
 // Syndicate device disguised as a multitool; it will turn red when an AI camera is nearby.
 
 /obj/item/multitool/ai_detect
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A special sensor embedded stealthily into this device can detect and warn of nearby silicon activity and camera vision range." // Skyrat edit
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	actions_types = list(/datum/action/item_action/toggle_multitool)
 	var/detect_state = PROXIMITY_NONE
 	var/rangealert = 8 //Glows red when inside

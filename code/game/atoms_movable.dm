@@ -101,12 +101,9 @@
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
 
-<<<<<<< HEAD
 	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances //SKYRAT EDIT ADDITION
 	var/face_mouse = FALSE //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// The voice that this movable makes when speaking
 	var/voice
 
@@ -237,13 +234,10 @@
 
 	LAZYNULL(client_mobs_in_contents)
 
-<<<<<<< HEAD
-=======
 	// These lists cease existing when src does, so we need to clear any lua refs to them that exist.
 	DREAMLUAU_CLEAR_REF_USERDATA(vis_contents)
 	DREAMLUAU_CLEAR_REF_USERDATA(vis_locs)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 
 	for(var/movable_content in contents)
@@ -647,11 +641,7 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-<<<<<<< HEAD
 	if(set_dir_on_move && dir != direction && update_dir && !face_mouse) // SKYRAT EDIT - && !face_mouse
-=======
-	if(set_dir_on_move && dir != direction && update_dir)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		setDir(direction)
 
 	var/is_multi_tile_object = is_multi_tile_object(src)
@@ -778,11 +768,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-<<<<<<< HEAD
 				if(!. && set_dir_on_move && update_dir && !face_mouse) // SKYRAT EDIT CHANGE - && !face_mouse
-=======
-				if(!. && set_dir_on_move && update_dir)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					setDir(first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(direct)
@@ -829,11 +815,7 @@
 
 	last_move = direct
 
-<<<<<<< HEAD
 	if(set_dir_on_move && dir != direct && update_dir && !face_mouse) // SKYRAT EDIT CHANGE - && !face_mouse)
-=======
-	if(set_dir_on_move && dir != direct && update_dir)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
@@ -1278,12 +1260,9 @@
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return TRUE
 
-<<<<<<< HEAD
 	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //SKYRAT EDIT: allow walking when vines are around
 		return TRUE
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return FALSE
 
 
@@ -1310,18 +1289,6 @@
 /atom/movable/proc/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	set waitfor = FALSE
 	var/hitpush = TRUE
-<<<<<<< HEAD
-	var/impact_signal = SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_IMPACT, hit_atom, throwingdatum)
-	if(impact_signal & COMPONENT_MOVABLE_IMPACT_FLIP_HITPUSH)
-		hitpush = FALSE // hacky, tie this to something else or a proper workaround later
-
-	if(impact_signal && (impact_signal & COMPONENT_MOVABLE_IMPACT_NEVERMIND))
-		return // in case a signal interceptor broke or deleted the thing before we could process our hit
-	if(SEND_SIGNAL(hit_atom, COMSIG_ATOM_PREHITBY, src, throwingdatum) & COMSIG_HIT_PREVENTED)
-		return
-	SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
-	return hit_atom.hitby(src, throwingdatum=throwingdatum, hitpush=hitpush)
-=======
 	var/impact_flags = pre_impact(hit_atom, throwingdatum)
 	if(impact_flags & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
 		return // in case a signal interceptor broke or deleted the thing before we could process our hit
@@ -1338,7 +1305,6 @@
 	if(target_flags & COMSIG_HIT_PREVENTED)
 		impact_flags |= COMPONENT_MOVABLE_IMPACT_NEVERMIND
 	return impact_flags
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /atom/movable/hitby(atom/movable/hitting_atom, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
 	if(HAS_TRAIT(src, TRAIT_NO_THROW_HITPUSH))

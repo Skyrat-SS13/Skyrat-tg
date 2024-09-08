@@ -85,11 +85,7 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 /obj/machinery/deployable_turret/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-<<<<<<< HEAD
-	if(user.incapacitated() || !istype(user))
-=======
 	if(user.incapacitated || !istype(user))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	M.forceMove(get_turf(src))
 	. = ..()
@@ -133,11 +129,7 @@
 			calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(controller, target_turf, modifiers)
 
 /obj/machinery/deployable_turret/proc/direction_track(mob/user, atom/targeted)
-<<<<<<< HEAD
-	if(user.incapacitated())
-=======
 	if(user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	setDir(get_dir(src,targeted))
 	user.setDir(dir)
@@ -177,11 +169,7 @@
 
 /obj/machinery/deployable_turret/proc/checkfire(atom/targeted_atom, mob/user)
 	target = targeted_atom
-<<<<<<< HEAD
-	if(target == user || user.incapacitated() || target == get_turf(src))
-=======
 	if(target == user || user.incapacitated || target == get_turf(src))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(world.time < cooldown)
 		if(!warned && world.time > (cooldown - cooldown_duration + rate_of_fire*number_of_shots)) // To capture the window where one is done firing
@@ -199,11 +187,7 @@
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/deployable_turret/, fire_helper), user), i*rate_of_fire)
 
 /obj/machinery/deployable_turret/proc/fire_helper(mob/user)
-<<<<<<< HEAD
-	if(user.incapacitated() || !(user in buckled_mobs))
-=======
 	if(user.incapacitated || !(user in buckled_mobs))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	update_positioning() //REFRESH MOUSE TRACKING!!
 	var/turf/targets_from = get_turf(src)

@@ -16,13 +16,8 @@
 #define MINOR_NEGATIVE 4
 
 
-<<<<<<< HEAD
-//Mutation classes. Normal being on them, extra being additional mutations with instability and other being stuff you dont want people to fuck with like wizard mutate
-/// A mutation that can be activated and deactived by completing a sequence
-=======
 //Mutation classes. Normal being on them, extra being additional mutations with instability and other being stuff you don't want people to fuck with like wizard mutate
 /// A mutation that can be activated and deactivated by completing a sequence
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define MUT_NORMAL 1
 /// A mutation that is in the mutations tab, and can be given and taken away through though the DNA console. Has a 0 before its name in the mutation section of the dna console
 #define MUT_EXTRA 2
@@ -49,11 +44,8 @@
 
 #define DNA_UNI_IDENTITY_BLOCKS 12
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/_DEFINES/DNA.dm)
 /*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// This number needs to equal the total number of DNA blocks
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_ETHEREAL_COLOR_BLOCK 2
@@ -70,10 +62,7 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 #define DNA_POD_HAIR_BLOCK 15
-<<<<<<< HEAD
 */ //SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Hey! Listen up if you're here because you're adding a species feature!
 //
@@ -82,7 +71,6 @@
 // (Which means having a DNA block for a feature tied to a mob without DNA is entirely pointless.)
 
 /// Total amount of DNA blocks, must be equal to the highest DNA block number
-<<<<<<< HEAD
 #define DNA_FEATURE_BLOCKS SSaccessories.dna_total_feature_blocks // SKYRAT EDIT CHANGE - ORIGINAL: #define DNA_FEATURE_BLOCKS 15
 // SKYRAT EDIT ADDITION START
 #define DNA_MANDATORY_COLOR_BLOCKS 5
@@ -93,9 +81,6 @@
 #define DNA_SKIN_COLOR_BLOCK 5
 #define DNA_POD_HAIR_BLOCK 15
 // SKYRAT EDIT ADDITION END
-=======
-#define DNA_FEATURE_BLOCKS 15
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8

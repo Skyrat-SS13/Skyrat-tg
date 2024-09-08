@@ -73,7 +73,6 @@
 		/mob/living/simple_animal/hostile/vatbeast,
 		/mob/living/simple_animal/hostile/zombie,
 		/mob/living/simple_animal/soulscythe,
-<<<<<<< HEAD
 
 		// MODULAR SKYRAT ENTRIES
 		// PLEASE REFACTOR THESE AS YOU CAN
@@ -147,8 +146,6 @@
 		/mob/living/simple_animal/hostile/zombie/cheesezombie,
 		/mob/living/simple_animal/hostile/zombie/nocorpse,
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		// DO NOT ADD NEW ENTRIES TO THIS LIST
 		// READ THE COMMENT ABOVE
 	)

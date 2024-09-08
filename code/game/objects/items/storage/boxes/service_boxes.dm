@@ -224,10 +224,6 @@
 		new /obj/item/toy/balloon/long(src)
 
 /obj/item/storage/box/stickers
-<<<<<<< HEAD
-	name = "box of stickers"
-	desc = "A box full of random stickers. Do give to the clown."
-=======
 	name = "sticker pack"
 	desc = "A pack of removable stickers. Removable? What a rip off!<br>On the back, <b>DO NOT GIVE TO THE CLOWN!</b> is printed in large lettering."
 	icon = 'icons/obj/toys/stickers.dmi'
@@ -251,17 +247,12 @@
 	if(isnull(illustration))
 		illustration = pick(pack_labels)
 		update_appearance()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/storage/box/stickers/proc/generate_non_contraband_stickers_list()
 	var/list/allowed_stickers = list()
 
 	for(var/obj/item/sticker/sticker_type as anything in subtypesof(/obj/item/sticker))
-<<<<<<< HEAD
-		if(!sticker_type::contraband)
-=======
 		if(!sticker_type::exclude_from_random)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			allowed_stickers += sticker_type
 
 	return allowed_stickers
@@ -277,14 +268,9 @@
 		new type(src)
 
 /obj/item/storage/box/stickers/googly
-<<<<<<< HEAD
-	name = "box of googly eye stickers"
-	desc = "Turn anything and everything into something vaguely alive!"
-=======
 	name = "googly eye sticker pack"
 	desc = "Turn anything and everything into something vaguely alive!"
 	illustration = "googly-alt"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/storage/box/stickers/googly/PopulateContents()
 	for(var/i in 1 to 6)

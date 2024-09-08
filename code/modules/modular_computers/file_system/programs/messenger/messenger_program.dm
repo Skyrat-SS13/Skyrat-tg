@@ -157,11 +157,7 @@
 
 /datum/computer_file/program/messenger/ui_state(mob/user)
 	if(issilicon(user))
-<<<<<<< HEAD
-		return GLOB.reverse_contained_state
-=======
 		return GLOB.deep_inventory_state
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return GLOB.default_state
 
 /datum/computer_file/program/messenger/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -627,13 +623,10 @@
 			playsound(computer, 'sound/machines/terminal_error.ogg', 15, TRUE)
 		return FALSE
 
-<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
 	sender.visible_message(span_notice("[sender]'s PDA rings out with the soft sound of keypresses"), vision_distance = COMBAT_MESSAGE_RANGE)
 	// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/shell_addendum = ""
 	if(istype(source, /obj/item/circuit_component))
 		var/obj/item/circuit_component/circuit = source

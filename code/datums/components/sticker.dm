@@ -13,14 +13,6 @@
 	var/atom/movable/our_sticker
 	/// Reference to the created overlay, used during component deletion.
 	var/mutable_appearance/sticker_overlay
-<<<<<<< HEAD
-	// Callback invoked when sticker is applied to the parent.
-	var/datum/callback/stick_callback
-	// Callback invoked when sticker is peeled (not removed) from the parent.
-	var/datum/callback/peel_callback
-
-/datum/component/sticker/Initialize(atom/stickering_atom, dir = NORTH, px = 0, py = 0, datum/callback/stick_callback, datum/callback/peel_callback)
-=======
 	/// Callback invoked when sticker is applied to the parent.
 	var/datum/callback/stick_callback
 	/// Callback invoked when sticker is peeled (not removed) from the parent.
@@ -29,17 +21,13 @@
 	var/examine_text
 
 /datum/component/sticker/Initialize(atom/stickering_atom, dir = NORTH, px = 0, py = 0, datum/callback/stick_callback, datum/callback/peel_callback, examine_text)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	src.our_sticker = our_sticker
 	src.stick_callback = stick_callback
 	src.peel_callback = peel_callback
-<<<<<<< HEAD
-=======
 	src.examine_text = examine_text
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	stick(stickering_atom, px, py)
 	register_turf_signals(dir)
 
@@ -60,16 +48,10 @@
 /datum/component/sticker/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_LIVING_IGNITED, PROC_REF(on_ignite))
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
-<<<<<<< HEAD
-
-/datum/component/sticker/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_LIVING_IGNITED, COMSIG_COMPONENT_CLEAN_ACT))
-=======
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/sticker/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_LIVING_IGNITED, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_ATOM_EXAMINE))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Subscribes to `COMSIG_TURF_EXPOSE` if parent atom is a turf. If turf is closed - subscribes to signal
 /datum/component/sticker/proc/register_turf_signals(dir)
@@ -138,12 +120,9 @@
 
 	if(exposed_temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		qdel(our_sticker) // which qdels us
-<<<<<<< HEAD
-=======
 
 /datum/component/sticker/proc/on_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
 	if(!isnull(examine_text))
 		examine_list += span_warning(examine_text)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

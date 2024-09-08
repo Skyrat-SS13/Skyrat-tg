@@ -481,11 +481,7 @@
  *
  * returns 0 if it cannot, 1 if successful
  */
-<<<<<<< HEAD
 /mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, indirect_action = FALSE, blacklist, initial) // SKYRAT EDIT CHANGE - ORIGINAL: /mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, indirect_action = FALSE)
-=======
-/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, indirect_action = FALSE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -502,18 +498,13 @@
 			ITEM_SLOT_DEX_STORAGE\
 		)
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - CUSTOMIZATION
 	if (blacklist)
 		slot_priority -= blacklist
 	// SKYRAT EDIT ADDITION END
 
 	for(var/slot in slot_priority)
-		if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, initial = initial, indirect_action = indirect_action)) // SKYRAT EDIT CHANGE - ORIGINAL: if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action))
-=======
-	for(var/slot in slot_priority)
-		if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action, initial = initial)) // SKYRAT EDIT CHANGE - ORIGINAL: if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action))
 			return TRUE
 
 	if(qdel_on_fail)

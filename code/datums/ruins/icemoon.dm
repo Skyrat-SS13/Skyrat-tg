@@ -48,8 +48,6 @@
 	id = "abandoned_homestead"
 	description = "This homestead was once host to a happy homesteading family. It's now host to hungry bears."
 	suffix = "icemoon_underground_abandoned_homestead.dmm"
-<<<<<<< HEAD
-=======
 
 /datum/map_template/ruin/icemoon/entemology
 	name = "Ice-Ruin Insect Research Station"
@@ -76,7 +74,6 @@
 	suffix = "icemoon_surface_smoking_room.dmm"
 
 // above and below ground together
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/map_template/ruin/icemoon/entemology
 	name = "Ice-Ruin Insect Research Station"

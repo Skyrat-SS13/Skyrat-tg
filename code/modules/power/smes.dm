@@ -69,21 +69,9 @@
 	var/max_charge = 0
 	var/new_charge = 0
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
-<<<<<<< HEAD
 		// SKYRAT EDIT CHANGE START - Original: power_coefficient += capacitor.tier
-		switch(capacitor.tier)
-			if(1)
-				power_coefficient = 1
-			if(2)
-				power_coefficient = 2
-			if(3)
-				power_coefficient = 4
-			else
-				power_coefficient = 8
+		power_coefficient = 2 ** (capacitor.tier - 1)
 		// SKYRAT EDIT CHANGE END
-=======
-		power_coefficient += capacitor.tier
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	input_level_max = initial(input_level_max) * power_coefficient
 	output_level_max = initial(output_level_max) * power_coefficient
 	for(var/obj/item/stock_parts/power_store/power_cell in component_parts)
@@ -136,11 +124,7 @@
 			if(isnull(choice) \
 				|| !user.is_holding(item) \
 				|| !user.Adjacent(src) \
-<<<<<<< HEAD
-				|| user.incapacitated() \
-=======
 				|| user.incapacitated \
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				|| !can_place_terminal(user, item, silent = TRUE) \
 			)
 				return
@@ -385,11 +369,7 @@
 	)
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/power/smes/ui_act(action, params)
-=======
 /obj/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -443,10 +423,6 @@
 
 /obj/machinery/power/smes/proc/log_smes(mob/user)
 	investigate_log("Input/Output: [input_level]/[output_level] | Charge: [charge] | Output-mode: [output_attempt?"ON":"OFF"] | Input-mode: [input_attempt?"AUTO":"OFF"] by [user ? key_name(user) : "outside forces"]", INVESTIGATE_ENGINE)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/power/smes/emp_act(severity)
 	. = ..()

@@ -50,11 +50,7 @@
 /obj/effect/heretic_rune/proc/try_rituals(mob/living/user)
 	is_in_use = TRUE
 
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/rituals = heretic_datum.get_rituals()
 	if(!length(rituals))
 		loc.balloon_alert(user, "no rituals available!")
@@ -236,12 +232,11 @@
 	. = ..()
 	set_greyscale(colors = list(path_colour))
 	icon_state = animation_state
-<<<<<<< HEAD
-=======
+
 	var/image/silicon_image = image(icon = 'icons/effects/eldritch.dmi', icon_state = null, loc = src)
 	silicon_image.override = TRUE
 	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/silicons, "heretic_rune", silicon_image)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+
 
 /obj/effect/temp_visual/drawing_heretic_rune/fast
 	duration = 12 SECONDS

@@ -302,8 +302,6 @@
 	uniform = /obj/item/clothing/under/plasmaman //same
 	gloves = /obj/item/clothing/gloves/color/plasmaman/black
 	head = /obj/item/clothing/head/helmet/space/plasmaman
-<<<<<<< HEAD
-=======
 
 /datum/outfit/plasmaman/medical_commander
 	name = "Chief EMT Plasmaman"
@@ -316,4 +314,3 @@
 	uniform = /obj/item/clothing/under/plasmaman/medical
 	gloves = /obj/item/clothing/gloves/color/plasmaman/white
 	head = /obj/item/clothing/head/helmet/space/plasmaman/medical
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

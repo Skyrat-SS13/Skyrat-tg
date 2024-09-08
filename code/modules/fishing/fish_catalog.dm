@@ -90,11 +90,7 @@
 		if(source.catalog_description && (fish_type in source.fish_table))
 			spot_descriptions += source.catalog_description
 	.["spots"] = english_list(spot_descriptions, nothing_text = "Unknown")
-<<<<<<< HEAD
-	var/list/fish_list_properties = collect_fish_properties()
-=======
 	var/list/fish_list_properties = SSfishing.fish_properties
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/list/fav_bait = fish_list_properties[fishy][NAMEOF(fishy, favorite_bait)]
 	var/list/disliked_bait = fish_list_properties[fishy][NAMEOF(fishy, disliked_bait)]
 	var/list/bait_list = list()

@@ -67,10 +67,6 @@
 		/obj/item/food/grown/apple = 2,
 		/obj/item/food/grown/grapes = 2,
 		/obj/item/food/grown/banana = 2,
-<<<<<<< HEAD
-		/obj/item/food/watermelonslice = 2
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	)
 	result = /obj/item/food/salad/jungle

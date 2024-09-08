@@ -99,7 +99,6 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if(!log_globally)
 		return
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	#ifndef SPACEMAN_DMM
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
@@ -118,8 +117,6 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			return
 	#endif
 	//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/log_text = "[key_name_and_tag(src)] [message] [loc_name(src)]"
 	switch(message_type)
 		/// ship both attack logs and victim logs to the end of round attack.log just to ensure we don't lose information
@@ -131,15 +128,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_whisper(log_text, data)
 		if(LOG_EMOTE)
 			log_emote(log_text, data)
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLE)
 			log_subtle(log_text, data)
 		if(LOG_SUBTLER)
 			log_subtler(log_text, data)
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(LOG_RADIO_EMOTE)
 			log_radio_emote(log_text, data)
 		if(LOG_DSAY)

@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-/**
- * So far, only used by the fishing minigame. Feel free to rename it to something like veryfastprocess
- * if you need one that fires 10 times a second
- */
-PROCESSING_SUBSYSTEM_DEF(fishing)
-	name = "Fishing"
-	wait = 0.1 SECONDS
-=======
 /// subsystem for the fishing minigame processing.
 PROCESSING_SUBSYSTEM_DEF(fishing)
 	name = "Fishing"
@@ -40,4 +31,3 @@ PROCESSING_SUBSYSTEM_DEF(fishing)
 		qdel(lure)
 
 	return SS_INIT_SUCCESS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

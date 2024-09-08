@@ -30,11 +30,7 @@
 	name = "Nightwatcher's Secret"
 	desc = "Opens up the Path of Ash to you. \
 		Allows you to transmute a match and a knife into an Ashen Blade. \
-<<<<<<< HEAD
 		You can only create five at a time." //SKYRAT EDIT two to five
-=======
-		You can only create two at a time."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	gain_text = "The City Guard know their watch. If you ask them at night, they may tell you about the ashy lantern."
 	next_knowledge = list(/datum/heretic_knowledge/ashen_grasp)
 	required_atoms = list(

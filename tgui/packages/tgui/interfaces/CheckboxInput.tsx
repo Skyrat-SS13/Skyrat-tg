@@ -51,12 +51,9 @@ export const CheckboxInput = (props) => {
 
     setSelections(newSelections);
   };
-<<<<<<< HEAD
-=======
   const selectionIndexes = selections.map(
     (selected: string) => items.indexOf(selected) + 1,
   );
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
   return (
     <Window title={title} width={425} height={300}>
@@ -109,11 +106,7 @@ export const CheckboxInput = (props) => {
           </Stack>
           <Stack.Item mt={0.7}>
             <Section>
-<<<<<<< HEAD
-              <InputButtons input={selections} />
-=======
               <InputButtons input={[selections, selectionIndexes]} />
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
             </Section>
           </Stack.Item>
         </Stack>

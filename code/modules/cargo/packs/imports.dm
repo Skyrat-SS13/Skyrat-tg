@@ -17,10 +17,7 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/gun/ballistic/shotgun/toy = 8)
 	crate_name = "foam force crate"
-<<<<<<< HEAD
-=======
 	crate_type = /obj/structure/closet/crate/freezer/donk
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	discountable = SUPPLY_PACK_STD_DISCOUNTABLE
 
 /datum/supply_pack/imports/foamforce/bonus
@@ -34,10 +31,7 @@
 		/obj/item/ammo_box/magazine/toy/pistol = 2,
 	)
 	crate_name = "foam force crate"
-<<<<<<< HEAD
-=======
 	crate_type = /obj/structure/closet/crate/freezer/donk
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/imports/meatmeatmeatmeat // MEAT MEAT MEAT MEAT
 	name = "MEAT MEAT MEAT MEAT MEAT"
@@ -149,10 +143,7 @@
 		/obj/item/gun/ballistic/automatic/wt550 = 2,
 		/obj/item/ammo_box/magazine/wt550m9 = 2,
 	)
-<<<<<<< HEAD
-=======
 	crate_type = /obj/structure/closet/crate/secure/gorlex_weapons/jammed
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/imports/wt550ammo
 	name = "Smuggled WT-550 Ammo Crate"
@@ -165,11 +156,7 @@
 		/obj/item/ammo_box/magazine/wt550m9/wtic = 2,
 	)
 	crate_name = "emergency crate"
-<<<<<<< HEAD
-	crate_type = /obj/structure/closet/crate/internals
-=======
 	crate_type = /obj/structure/closet/crate/secure/gorlex_weapons/jammed
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/imports/shocktrooper
 	name = "Shocktrooper Crate"
@@ -185,10 +172,7 @@
 		/obj/item/clothing/suit/armor/vest,
 		/obj/item/clothing/head/helmet,
 	)
-<<<<<<< HEAD
-=======
 	crate_type = /obj/structure/closet/crate/secure/gorlex_weapons/jammed
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/imports/specialops
 	name = "Special Ops Crate"
@@ -204,14 +188,9 @@
 		/obj/item/switchblade,
 		/obj/item/grenade/mirage = 5,
 	)
-<<<<<<< HEAD
 
 // SKYRAT EDIT REMOVAL BEGIN - REPLACED BY LORE BEFITTING CRATE AT: modular_skyrat/modules/cargo/code/packs.dm
 /*
-=======
-	crate_type = /obj/structure/closet/crate/secure/gorlex_weapons/jammed
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/supply_pack/imports/russian
 	name = "Russian Surplus Military Gear Crate"
 	desc = "Hello <;~insert appropriate greeting here: 'Comrade'|'Imperalist Scum'|'Quartermaster of Reputable Station'~;>, \
@@ -243,11 +222,8 @@
 	for(var/items in 1 to 10)
 		var/item = pick(contains)
 		new item(our_crate)
-<<<<<<< HEAD
 */
 // SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/supply_pack/imports/moistnuggets
 	name = "Refurbished Sakhno Precision Rifle Crate"

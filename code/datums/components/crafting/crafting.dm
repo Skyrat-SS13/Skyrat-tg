@@ -248,7 +248,6 @@
 			return ", must be made on a tram!"
 
 	//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
-<<<<<<< HEAD
 	//SKYRAT EDIT START: Two Skills (Construction)
 	var/mob/crafter_mob
 	var/skill_modifier = 1
@@ -256,9 +255,6 @@
 		crafter_mob = crafter
 		skill_modifier = crafter_mob.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER)
 	if(!do_after(crafter, recipe.time * skill_modifier, target = crafter))
-=======
-	if(ismob(crafter) && !do_after(crafter, recipe.time, target = crafter))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return "."
 	contents = get_surroundings(crafter, recipe.blacklist)
 	if(!check_contents(crafter, recipe, contents))
@@ -276,12 +272,9 @@
 		if(result.atom_storage && recipe.delete_contents)
 			for(var/obj/item/thing in result)
 				qdel(thing)
-<<<<<<< HEAD
 	if(crafter_mob)
 		crafter_mob.mind.adjust_experience(/datum/skill/construction, 5)
-	//SKYRAT EDIT STOP: Construction Skill
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	//SKYRAT EDIT END
 	var/datum/reagents/holder = locate() in parts
 	if(holder) //transfer reagents from ingredients to result
 		if(!ispath(recipe.result,  /obj/item/reagent_containers) && result.reagents)
@@ -324,10 +317,6 @@
 	var/datum/reagents/holder
 	var/list/surroundings
 	var/list/Deletion = list()
-<<<<<<< HEAD
-	var/data
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/amt
 	var/list/requirements = list()
 	if(R.reqs)
@@ -364,10 +353,6 @@
 							RC.reagents.trans_to(holder, reagent_volume, target_id = path_key, no_react = TRUE)
 							surroundings -= RC
 							amt -= reagent_volume
-<<<<<<< HEAD
-						SEND_SIGNAL(RC.reagents, COMSIG_REAGENTS_CRAFTING_PING) // - [] TODO: Make this entire thing less spaghetti
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 					else
 						surroundings -= RC
 					RC.update_appearance(UPDATE_ICON)
@@ -559,11 +544,7 @@
 	return TRUE
 
 
-<<<<<<< HEAD
-/datum/component/personal_crafting/ui_act(action, params)
-=======
 /datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

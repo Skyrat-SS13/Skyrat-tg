@@ -705,8 +705,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	menu_description = "A pointy spear which penetrates armor a little. Can be worn only on the belt."
 
-<<<<<<< HEAD
-=======
 // Unholy version of above, since the gamemode is dead in the water
 
 /obj/item/brass_spear
@@ -729,7 +727,6 @@
 	attack_verb_simple = list("stab", "poke", "slash", "clock")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // Nullblade - For when you really want to feel like rolling dice during combat
 
 /obj/item/nullrod/nullblade

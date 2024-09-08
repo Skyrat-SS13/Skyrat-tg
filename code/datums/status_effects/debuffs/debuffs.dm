@@ -1,20 +1,11 @@
 /// The damage healed per tick while sleeping without any modifiers
 #define HEALING_SLEEP_DEFAULT 0.2
-<<<<<<< HEAD
-/// The sleep healing multipler for organ passive healing (since organs heal slowly)
-#define HEALING_SLEEP_ORGAN_MULTIPLIER 5
-/// The sleep multipler for fitness xp conversion
-#define SLEEP_QUALITY_WORKOUT_MULTIPLER 10
-
-//Largely negative status effects go here, even if they have small benificial effects
-=======
 /// The sleep healing multiplier for organ passive healing (since organs heal slowly)
 #define HEALING_SLEEP_ORGAN_MULTIPLIER 5
 /// The sleep multiplier for fitness xp conversion
 #define SLEEP_QUALITY_WORKOUT_MULTIPLER 10
 
 //Largely negative status effects go here, even if they have small beneficial effects
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 //STUN EFFECTS
 /datum/status_effect/incapacitating
 	tick_interval = -1
@@ -289,12 +280,8 @@
 	. = ..()
 	if(!.)
 		return
-<<<<<<< HEAD
 	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_ANALGESIA), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
 	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT ADDITION - STASIS APPLIES NUMBED
-=======
-	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
 	animate(filter, radius = 0, time = 0.2 SECONDS, size = 2, easing = JUMP_EASING, loop = -1, flags = ANIMATION_PARALLEL)
@@ -305,18 +292,12 @@
 
 /datum/status_effect/grouped/stasis/tick(seconds_between_ticks)
 	update_time_of_death()
-<<<<<<< HEAD
 	if(owner.stat >= UNCONSCIOUS) //SKYRAT EDIT START - STASIS KEEPS SLEEP GOING
 		owner.Sleeping(15 SECONDS) //SKYRAT EDIT END
 
 /datum/status_effect/grouped/stasis/on_remove()
 	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_ANALGESIA), TRAIT_STATUS_EFFECT(id)) // SKYRAT EDIT CHANGE - ORIGINAL: owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
 	owner.clear_alert("stasis numbed") //SKYRAT EDIT ADDITION - STASIS APPLIED NUMBED
-=======
-
-/datum/status_effect/grouped/stasis/on_remove()
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS), TRAIT_STATUS_EFFECT(id))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
 	if(iscarbon(owner))
@@ -359,20 +340,14 @@
 
 /datum/status_effect/cultghost/on_apply()
 	owner.set_invis_see(SEE_INVISIBLE_OBSERVER)
-<<<<<<< HEAD
-=======
 	return TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/status_effect/cultghost/tick(seconds_between_ticks)
 	if(owner.reagents)
 		owner.reagents.del_reagent(/datum/reagent/water/holywater) //can't be deconverted
 
-<<<<<<< HEAD
 //SKYRAT EDIT START - OVERRIDEN IN MODULAR
 /*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/status_effect/crusher_mark
 	id = "crusher_mark"
 	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
@@ -386,11 +361,7 @@
 	boosted = was_boosted
 
 /datum/status_effect/crusher_mark/on_apply()
-<<<<<<< HEAD
-	if(owner.mob_size >= MOB_SIZE_LARGE  && !HAS_TRAIT(owner, TRAIT_OVERSIZED)) // SKYRAT EDIT CHANGE - Original: if(owner.mob_size >= MOB_SIZE_LARGE)
-=======
 	if(owner.mob_size >= MOB_SIZE_LARGE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		marked_underlay = mutable_appearance('icons/effects/effects.dmi', boosted ? "shield" : "shield2")
 		marked_underlay.pixel_x = -owner.pixel_x
 		marked_underlay.pixel_y = -owner.pixel_y
@@ -404,12 +375,9 @@
 	QDEL_NULL(marked_underlay)
 	return ..()
 
-<<<<<<< HEAD
 */
 //SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"
 	tick_interval = 0.6 SECONDS
@@ -647,11 +615,7 @@
 	alert_type = null
 
 /datum/status_effect/spasms/tick(seconds_between_ticks)
-<<<<<<< HEAD
-	if(owner.stat >= UNCONSCIOUS || owner.incapacitated() || HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
-=======
 	if(owner.stat >= UNCONSCIOUS || owner.incapacitated || HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(!prob(15))
 		return
@@ -777,11 +741,7 @@
 	status_type = STATUS_EFFECT_REPLACE
 	tick_interval = 0.2 SECONDS
 	alert_type = null
-<<<<<<< HEAD
-	var/msg_stage = 0//so you dont get the most intense messages immediately
-=======
 	var/msg_stage = 0//so you don't get the most intense messages immediately
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/status_effect/fake_virus/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_VIRUSIMMUNE))

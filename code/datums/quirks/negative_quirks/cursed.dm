@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 /*
 // SKYRAT EDIT REMOVAL
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/quirk/cursed
 	name = "Cursed"
 	desc = "You are cursed with bad luck. You are much more likely to suffer from accidents and mishaps. When it rains, it pours."
@@ -16,8 +13,5 @@
 
 /datum/quirk/cursed/add(client/client_source)
 	quirk_holder.AddComponent(/datum/component/omen/quirk)
-<<<<<<< HEAD
 */
 // SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

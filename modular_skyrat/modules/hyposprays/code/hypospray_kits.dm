@@ -163,7 +163,7 @@
 /obj/item/storage/hypospraykit/proc/check_menu(mob/user)
 	if(!istype(user))
 		return FALSE
-	if(user.incapacitated() || !user.is_holding(src))
+	if(user.incapacitated || !user.is_holding(src))
 		return FALSE
 	return TRUE
 

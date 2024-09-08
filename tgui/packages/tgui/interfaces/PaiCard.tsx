@@ -37,10 +37,7 @@ type Pai = {
   transmit: BooleanLike;
   receive: BooleanLike;
   range: number;
-<<<<<<< HEAD
   leash_enabled: BooleanLike; // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 };
 
 export const PaiCard = (props) => {
@@ -167,10 +164,7 @@ const PaiOptions = (props) => {
       transmit,
       receive,
       range,
-<<<<<<< HEAD
       leash_enabled /* SKYRAT EDIT ADDITION */,
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
     },
   } = data;
   const suppliedLaws = laws[0] ? decodeHtmlEntities(laws[0]) : 'None';
@@ -202,7 +196,6 @@ const PaiOptions = (props) => {
             Toggle
           </Button>
         </LabeledList.Item>
-<<<<<<< HEAD
         {/* SKYRAT EDIT ADDITION START */}
         {!emagged && (
           <LabeledList.Item label="Holoform Leashed">
@@ -217,8 +210,6 @@ const PaiOptions = (props) => {
           </LabeledList.Item>
         )}
         {/* SKYRAT EDIT ADDITION END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
         <LabeledList.Item label="Holoform Range">
           {emagged ? (
             '∞'
@@ -228,12 +219,8 @@ const PaiOptions = (props) => {
                 <Button
                   icon="fa-circle-minus"
                   onClick={() => act('decrease_range')}
-<<<<<<< HEAD
                   /* SKYRAT EDIT CHANGE ORIGINAL: disabled={range === range_max} */
                   disabled={!leash_enabled || range === range_min}
-=======
-                  disabled={range === range_min}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                 />
               </Stack.Item>
               <Stack.Item mt={0.5}>{range}</Stack.Item>
@@ -241,12 +228,8 @@ const PaiOptions = (props) => {
                 <Button
                   icon="fa-circle-plus"
                   onClick={() => act('increase_range')}
-<<<<<<< HEAD
                   /* SKYRAT EDIT CHANGE ORIGINAL: disabled={range === range_max} */
                   disabled={!leash_enabled || range === range_max}
-=======
-                  disabled={range === range_max}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                 />
               </Stack.Item>
             </Stack>

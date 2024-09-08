@@ -4,10 +4,6 @@
 	desc = "There are three parts to the ear. Inner, middle and outer. Only one of these parts should be normally visible."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EARS
-<<<<<<< HEAD
-	visual = FALSE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	gender = PLURAL
 
 	healing_factor = STANDARD_ORGAN_HEALING
@@ -139,34 +135,6 @@
 	icon_state = "kitty"
 	visual = TRUE
 	damage_multiplier = 2
-<<<<<<< HEAD
-	// Keeps track of which cat ears sprite is associated with this.
-	var/variant = "Cat"
-
-/obj/item/organ/internal/ears/cat/Initialize(mapload, variant_pref)
-	. = ..()
-	if(variant_pref)
-		variant = variant_pref
-
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
-/*
-/obj/item/organ/internal/ears/cat/on_mob_insert(mob/living/carbon/human/ear_owner)
-	. = ..()
-	if(istype(ear_owner) && ear_owner.dna)
-		color = ear_owner.hair_color
-		ear_owner.dna.features["ears"] = ear_owner.dna.species.mutant_bodyparts["ears"] = variant
-		ear_owner.dna.update_uf_block(DNA_EARS_BLOCK)
-		ear_owner.update_body()
-
-/obj/item/organ/internal/ears/cat/on_mob_remove(mob/living/carbon/human/ear_owner)
-	. = ..()
-	if(istype(ear_owner) && ear_owner.dna)
-		color = ear_owner.hair_color
-		ear_owner.dna.species.mutant_bodyparts -= "ears"
-		ear_owner.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 
 	preference = "feature_human_ears"
 
@@ -195,7 +163,6 @@
 	if(draw_layer != bitflag_to_layer(colorless_layer))
 		return ..()
 	return overlay
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/organ/internal/ears/penguin
 	name = "penguin ears"

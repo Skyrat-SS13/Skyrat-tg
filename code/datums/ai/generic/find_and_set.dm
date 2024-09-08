@@ -177,8 +177,6 @@
 	var/mob/living/living_pawn = controller.pawn
 	var/potential_friend = living_pawn.faction.Find(REF(friend)) ? friend : null
 	return potential_friend
-<<<<<<< HEAD
-=======
 
 
 /datum/ai_behavior/find_and_set/in_list/turf_types
@@ -193,4 +191,3 @@
 		if(can_see(controller.pawn, possible_turf, search_range))
 			return possible_turf
 	return null
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

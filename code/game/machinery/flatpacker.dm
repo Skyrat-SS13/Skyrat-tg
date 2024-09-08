@@ -112,11 +112,7 @@
 /obj/machinery/flatpacker/proc/AfterMaterialInsert(container, obj/item/item_inserted, last_inserted_id, mats_consumed, amount_inserted, atom/context)
 	SIGNAL_HANDLER
 
-<<<<<<< HEAD
-	//we use initial(active_power_usage) because higher tier parts will have higher active usage but we have no benifit from it
-=======
 	//we use initial(active_power_usage) because higher tier parts will have higher active usage but we have no benefit from it
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(directly_use_energy(ROUND_UP((amount_inserted / (MAX_STACK_SIZE * SHEET_MATERIAL_AMOUNT)) * 0.4 * initial(active_power_usage))))
 		flick_overlay_view(mutable_appearance('icons/obj/machines/lathes.dmi', "flatpacker_bar"), 1 SECONDS)
 
@@ -296,11 +292,7 @@
 			if(isnull(amount))
 				return
 
-<<<<<<< HEAD
-			//we use initial(active_power_usage) because higher tier parts will have higher active usage but we have no benifit from it
-=======
 			//we use initial(active_power_usage) because higher tier parts will have higher active usage but we have no benefit from it
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(!directly_use_energy(ROUND_UP((amount / MAX_STACK_SIZE) * 0.4 * initial(active_power_usage))))
 				say("No power to dispense sheets")
 				return

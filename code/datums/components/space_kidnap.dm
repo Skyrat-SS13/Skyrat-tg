@@ -23,11 +23,7 @@
 		target.balloon_alert(parent, "is dead!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
-<<<<<<< HEAD
-	if(!victim.incapacitated())
-=======
 	if(!victim.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 
 	if(!isspaceturf(get_turf(target)))
@@ -43,11 +39,7 @@
 	var/obj/particles = new /obj/effect/abstract/particle_holder (victim, /particles/void_kidnap)
 	kidnapping = TRUE
 
-<<<<<<< HEAD
-	if(do_after(parent, kidnap_time, victim, extra_checks = CALLBACK(victim, TYPE_PROC_REF(/mob, incapacitated))))
-=======
 	if(do_after(parent, kidnap_time, victim, extra_checks = victim.incapacitated))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		take_them(victim)
 
 	qdel(particles)

@@ -43,14 +43,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/match/proc/matchignite()
 	if(lit || burnt)
 		return
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	var/turf/my_turf = get_turf(src)
 	my_turf.pollute_turf(/datum/pollutant/sulphur, 5)
 	//SKYRAT EDIT END
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	playsound(src, 'sound/items/match_strike.ogg', 15, TRUE)
 	lit = TRUE
 	icon_state = "match_lit"
@@ -191,11 +187,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	/// Which people ate cigarettes and how many
 	var/static/list/cigarette_eaters = list()
 
-<<<<<<< HEAD
 	var/pollution_type = /datum/pollutant/smoke //SKYRAT EDIT ADDITION /// What type of pollution does this produce on smoking, changed to weed pollution sometimes
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/cigarette/Initialize(mapload)
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
@@ -256,11 +249,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!QDELETED(src) && !QDELETED(dropee) && how_long_have_we_been_smokin >= 4 SECONDS && iscarbon(dropee) && iscarbon(loc))
 		var/mob/living/carbon/smoker = dropee
 		// This relies on the fact that dropped is called before slot is nulled
-<<<<<<< HEAD
-		if(src == smoker.wear_mask && !smoker.incapacitated())
-=======
 		if(src == smoker.wear_mask && !smoker.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			long_exhale(smoker)
 
 	UnregisterSignal(dropee, list(COMSIG_HUMAN_FORCESAY, COMSIG_ATOM_DIR_CHANGE))
@@ -484,14 +473,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		extinguish()
 		return
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Pollution
 	var/turf/location = get_turf(src)
 	location.pollute_turf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	// SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	smoketime -= seconds_per_tick * (1 SECONDS)
 	if(smoketime <= 0)
 		put_out(user)
@@ -1184,19 +1170,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/vape
 	name = "\improper E-Cigarette"
 	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
-<<<<<<< HEAD
 	icon = 'icons/obj/clothing/masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi' //SKYRAT EDIT: ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "vape"
 	worn_icon_state = "vape_worn"
 	greyscale_config = /datum/greyscale_config/vape
 	greyscale_config_worn = /datum/greyscale_config/vape/worn
-<<<<<<< HEAD
 	greyscale_config_worn_muzzled = /datum/greyscale_config/vape/worn/muzzled //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	greyscale_colors = "#2e2e2e"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -1340,7 +1320,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			STOP_PROCESSING(SSobj, src)
 			//it's reusable so it won't unequip when empty
 		return
-<<<<<<< HEAD
 
 	if(!COOLDOWN_FINISHED(src, drag_cooldown))
 		return
@@ -1354,14 +1333,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	my_turf.pollute_turf(/datum/pollutant/smoke/vape, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	//SKYRAT EDIT END
 
-=======
-
-	if(!COOLDOWN_FINISHED(src, drag_cooldown))
-		return
-
-	//Time to start puffing those fat vapes, yo.
-	COOLDOWN_START(src, drag_cooldown, dragtime)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(obj_flags & EMAGGED)
 		var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 		puff.set_up(4, holder = src, location = loc, carry = reagents, efficiency = 24)

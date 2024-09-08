@@ -19,10 +19,7 @@
 	actions_types = list(
 		/datum/action/item_action/mod/deploy,
 		/datum/action/item_action/mod/activate,
-<<<<<<< HEAD
 		/datum/action/item_action/mod/sprite_accessories, // SKYRAT EDIT - Hide mutant parts action
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
 		/datum/action/item_action/mod/deploy/ai,
@@ -162,11 +159,7 @@
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
 		if(isnull(ai_assistant))
-<<<<<<< HEAD
-			. += span_notice("You could install a pAI with a <b>pAI card</b>.") // SKYRAT EDIT CHANGE - ORIGINAL: . += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
-=======
 			. += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		else if(isAI(ai_assistant))
 			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
 	. += span_notice("You could copy/set link frequency with a <b>multitool</b>.")
@@ -241,21 +234,17 @@
 			balloon_alert(wearer, "retract parts first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return
-<<<<<<< HEAD
 
 	// SKYRAT EDIT ADDITION START - Can't remove your MODsuit from your back when it's still active (as it can cause runtimes and even the MODsuit control unit to delete itself)
 	if(active)
-		if(!wearer.incapacitated())
+		if(!wearer.incapacitated)
 			balloon_alert(wearer, "deactivate first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 
 		return
 	// SKYRAT EDIT ADDITION END
 
-	if(!wearer.incapacitated())
-=======
 	if(!wearer.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/atom/movable/screen/inventory/hand/ui_hand = over_object
 		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
 			add_fingerprint(user)
@@ -685,10 +674,6 @@
 		part.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		part.add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
 	wearer?.regenerate_icons()
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/mod/control/proc/on_exit(datum/source, atom/movable/part, direction)
 	SIGNAL_HANDLER
 

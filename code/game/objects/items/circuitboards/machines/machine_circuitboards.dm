@@ -631,10 +631,7 @@
 		/obj/machinery/vending/coffee = "Solar's Best Hot Drinks",
 		/obj/machinery/vending/cola = "Robust Softdrinks",
 		/obj/machinery/vending/custom = "Custom Vendor",
-<<<<<<< HEAD
-=======
 		/obj/machinery/vending/cytopro = "CytoPro",
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/machinery/vending/dinnerware = "Plasteel Chef's Dinnerware Vendor",
 		/obj/machinery/vending/drugs = "NanoDrug Plus",
 		/obj/machinery/vending/engineering = "Robco Tool Maker",
@@ -670,7 +667,6 @@
 		/obj/machinery/vending/wardrobe/science_wardrobe = "SciDrobe",
 		/obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
 		/obj/machinery/vending/wardrobe/viro_wardrobe = "ViroDrobe",
-<<<<<<< HEAD
 		// SKYRAT STUFF AT THE BOTTOM I SUPPOSE FOR SIMPLICITY'S SAKE
 		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/barbervend = "Fab-O-Vend", //SKYRAT EDIT ADDITION
@@ -681,8 +677,6 @@
 		/obj/machinery/vending/imported/yangyu = "Fudobenda", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/security = "Armadyne Peacekeeper Equipment Vendor", //SKYRAT EDIT CHANGE - SEC_HUAL - ORIGINAL: /obj/machinery/vending/security = "SecTech",
 		/obj/machinery/vending/deforest_medvend = "DeForest Med-Vend", //SKYRAT PORT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /obj/item/circuitboard/machine/vendor/screwdriver_act(mob/living/user, obj/item/tool)
@@ -939,12 +933,9 @@
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 2)
 
-<<<<<<< HEAD
-=======
 /obj/item/circuitboard/machine/sleeper/syndie
 	build_path = /obj/machinery/sleeper/syndie
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/circuitboard/machine/sleeper/fullupgrade
 	build_path = /obj/machinery/sleeper/syndie/fullupgrade
 	req_components = list(
@@ -1126,10 +1117,6 @@
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/circuitboard/machine/dna_infuser
 	name = "DNA Infuser"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE

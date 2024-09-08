@@ -225,12 +225,7 @@
 		organ_evacced.Remove(target, special = TRUE)
 		organ_evacced.forceMove(get_turf(target))
 
-<<<<<<< HEAD
-	if (!organ.Insert(target))
-		organ.forceMove(drop_location())
-=======
 	organ.Insert(target)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	organ = null
 
 ///Patrient Transport - Generates hardlight bags you can put people in.
@@ -433,8 +428,6 @@
 		/datum/surgery/advanced/bioware/cortex_folding,
 		/datum/surgery/advanced/bioware/cortex_folding/mechanic,
 	)
-<<<<<<< HEAD
-=======
 
 /obj/item/mod/module/surgical_processor/emergency
 	desc = "A module using an onboard surgical computer which can be connected to other computers to download and \
@@ -454,4 +447,3 @@
 		/datum/surgery/stomach_pump,
 		/datum/surgery/advanced/wing_reconstruction,
 	)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

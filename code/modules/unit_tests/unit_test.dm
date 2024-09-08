@@ -339,7 +339,6 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	returnable_list += typesof(/turf/open/space/openspace)
 	returnable_list += typesof(/turf/open/openspace)
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION START - OUR UNCREATABLES DOWN HERE
 	//Not designed to be spawned without a turf.
 	returnable_list += typesof(/obj/effect/abstract/liquid_turf)
@@ -355,9 +354,6 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	// Can't be bothered adding more to them.
 	returnable_list += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
 	//SKYRAT EDIT ADDITION END
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return returnable_list
 
 /proc/RunUnitTests()

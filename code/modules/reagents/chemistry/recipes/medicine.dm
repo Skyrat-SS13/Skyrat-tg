@@ -9,14 +9,11 @@
 	rate_up_lim = 35
 	reaction_tags = REACTION_TAG_HEALING | REACTION_TAG_EASY
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	pollutant_type = /datum/pollutant/chemical_vapors
 	pollutant_amount = 0.2
 	//SKYRAT EDIT END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/chemical_reaction/medicine/leporazine
 	results = list(/datum/reagent/medicine/leporazine = 2)
 	required_reagents = list(/datum/reagent/silicon = 1, /datum/reagent/copper = 1)

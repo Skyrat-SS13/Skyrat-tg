@@ -237,15 +237,12 @@
 	cost = PAYCHECK_CREW
 	contains = list(/obj/item/storage/box/fishing_lines)
 
-<<<<<<< HEAD
-=======
 /datum/supply_pack/goody/fishing_lure_set
 	name = "Fishing Lures Set"
 	desc = "A set of bite-resistant fishing lures to fish all (most) sort of fish. Beat randomness to a curb today!"
 	cost = PAYCHECK_CREW * 8
 	contains = list(/obj/item/storage/box/fishing_lures)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/supply_pack/goody/fishing_hook_rescue
 	name = "Rescue Fishing Hook Single-Pack"
 	desc = "For when your fellow miner has inevitably fallen into a chasm, and it's up to you to save them."
@@ -261,11 +258,7 @@
 /datum/supply_pack/goody/fish_feed
 	name = "Can of Fish Food Single-Pack"
 	desc = "For keeping your little friends fed and alive."
-<<<<<<< HEAD
-	cost = PAYCHECK_CREW * 1
-=======
 	cost = PAYCHECK_CREW
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	contains = list(/obj/item/fish_feed)
 
 /datum/supply_pack/goody/naturalbait

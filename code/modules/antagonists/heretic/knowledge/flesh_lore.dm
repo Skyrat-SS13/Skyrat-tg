@@ -34,11 +34,7 @@
 	name = "Principle of Hunger"
 	desc = "Opens up the Path of Flesh to you. \
 		Allows you to transmute a knife and a pool of blood into a Bloody Blade. \
-<<<<<<< HEAD
-		You can only create twenty at a time." //SKYRAT EDIT three to twenty
-=======
-		You can only create three at a time."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		You can create upto twenty at a time." //SKYRAT EDIT three to twenty
 	gain_text = "Hundreds of us starved, but not me... I found strength in my greed."
 	next_knowledge = list(/datum/heretic_knowledge/limited_amount/flesh_grasp)
 	required_atoms = list(
@@ -46,7 +42,7 @@
 		/obj/effect/decal/cleanable/blood = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/flesh)
-	limit = 3 // Bumped up so they can arm up their ghouls too.
+	limit = 20 // Bumped up so they can arm up their ghouls too.
 	route = PATH_FLESH
 	research_tree_icon_path = 'icons/obj/weapons/khopesh.dmi'
 	research_tree_icon_state = "flesh_blade"
@@ -341,11 +337,7 @@
 	worm_spell.Grant(user)
 
 
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-=======
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/datum/heretic_knowledge/limited_amount/flesh_grasp/grasp_ghoul = heretic_datum.get_knowledge(/datum/heretic_knowledge/limited_amount/flesh_grasp)
 	grasp_ghoul.limit *= 3
 	var/datum/heretic_knowledge/limited_amount/flesh_ghoul/ritual_ghoul = heretic_datum.get_knowledge(/datum/heretic_knowledge/limited_amount/flesh_ghoul)

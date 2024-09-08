@@ -83,7 +83,6 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/yellow)
 
 /obj/effect/turf_decal/tile/red
 	name = "red tile decal"
-<<<<<<< HEAD
 	color = "#486091" // SKYRAT EDIT CHANGE
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/red)
@@ -97,9 +96,6 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/red)
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/dark_red)
 
 /// Bar tiles
-=======
-	color = "#DE3A3A"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/red)
 

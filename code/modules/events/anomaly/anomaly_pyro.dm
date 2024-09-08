@@ -16,8 +16,4 @@
 /datum/round_event/anomaly/anomaly_pyro/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-<<<<<<< HEAD
 	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_PYROANOMALIES) //SKYRAT EDIT CHANGE - ORIGINAL: priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
-=======
-	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

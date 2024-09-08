@@ -2,11 +2,7 @@ from contextlib import closing
 from ..ezdb.changes import get_current_version
 from ..ezdb.config import read_config
 from ..ezdb.mysql import execute_sql, insert_new_schema_query, open_connection, start_daemon
-<<<<<<< HEAD
 from ..ezdb.paths import get_initial_schema_path, get_modular_schema_path
-=======
-from ..ezdb.paths import get_initial_schema_path
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 from .step import Step
 
 class InstallInitialSchema(Step):
@@ -55,10 +51,7 @@ class InstallInitialSchema(Step):
         with open(get_initial_schema_path(), 'r') as file:
             schema = file.read()
             execute_sql(schema + ";" + insert_new_schema_query(major_version, minor_version))
-<<<<<<< HEAD
 
         with open(get_modular_schema_path(), 'r') as file:
             schema = file.read()
             execute_sql(schema)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

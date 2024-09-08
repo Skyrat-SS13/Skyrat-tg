@@ -123,11 +123,7 @@
 /obj/item/gun/energy/recharge/kinetic_accelerator/proc/check_menu(mob/living/carbon/human/user)
 	if(!istype(user))
 		return FALSE
-<<<<<<< HEAD
-	if(user.incapacitated())
-=======
 	if(user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	return TRUE
 
@@ -161,17 +157,10 @@
 		modkit_upgrade.modify_projectile(kinetic_projectile)
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/cyborg
-<<<<<<< HEAD
 	icon_state = "kineticgun" // SKYRAT EDIT CHANGE
 	holds_charge = TRUE
 	unique_frequency = TRUE
 	max_mod_capacity = 100 // SKYRAT EDIT CHANGE FROM 90 - Balance due to fauna changes and no level perks applying
-=======
-	icon_state = "kineticgun_b"
-	holds_charge = TRUE
-	unique_frequency = TRUE
-	max_mod_capacity = 90
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/minebot
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL

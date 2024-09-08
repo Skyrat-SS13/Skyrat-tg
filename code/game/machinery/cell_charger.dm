@@ -7,11 +7,7 @@
 	circuit = /obj/item/circuitboard/machine/cell_charger
 	pass_flags = PASSTABLE
 	var/obj/item/stock_parts/power_store/cell/charging = null
-<<<<<<< HEAD
-	var/charge_rate = STANDARD_CELL_RATE //SKYRAT EDIT CHANGE - ORIGINAL: 0.25 * STANDARD_CELL_RATE
-=======
-	var/charge_rate = 0.25 * STANDARD_CELL_RATE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	var/charge_rate = 0.5 * STANDARD_CELL_RATE //SKYRAT EDIT CHANGE - ORIGINAL: 0.25 * STANDARD_CELL_RATE
 
 /* OVERWRITTEN IN modular_skyrat\modules\aesthetics\cells\cell.dm
 /obj/machinery/cell_charger/update_overlays()
@@ -29,10 +25,7 @@
 	. += "ccharger-[charging.connector_type]-on"
 	if((charging.charge > 0.01) && charging.charge_light_type)
 		. += mutable_appearance('icons/obj/machines/cell_charger.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
-<<<<<<< HEAD
 */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
@@ -140,11 +133,7 @@
 
 /obj/machinery/cell_charger/RefreshParts()
 	. = ..()
-<<<<<<< HEAD
-	charge_rate = STANDARD_CELL_RATE //SKYRAT EDIT CHANGE - ORIGINAL: 0.25 * STANDARD_CELL_RATE
-=======
-	charge_rate = 0.25 * STANDARD_CELL_RATE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	charge_rate = 0.5 * STANDARD_CELL_RATE //SKYRAT EDIT CHANGE - ORIGINAL: 0.25 * STANDARD_CELL_RATE
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		charge_rate *= capacitor.tier
 

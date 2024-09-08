@@ -576,19 +576,11 @@
 			else if(ismonkey(future_pancake)) //For monkeys
 				future_pancake.emote("screech")
 				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-<<<<<<< HEAD
 				future_pancake.StaminaKnockdown(20, TRUE, TRUE) // SKYRAT EDIT CHANGE - AIRLOCKS - ORIGINAL: future_pancake.Paralyze(100)
 			else if(ishuman(future_pancake)) //For humans
 				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 				future_pancake.emote("scream")
 				future_pancake.StaminaKnockdown(20, TRUE, TRUE) // SKYRAT EDIT CHANGE - AIRLOCKS - ORIGINAL: future_pancake.Paralyze(100)
-=======
-				future_pancake.Paralyze(100)
-			else if(ishuman(future_pancake)) //For humans
-				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-				future_pancake.emote("scream")
-				future_pancake.Paralyze(100)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			else //for simple_animals & borgs
 				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 				var/turf/location = get_turf(src)
@@ -699,8 +691,4 @@
 		return ..()
 	return ..(0)
 
-<<<<<<< HEAD
 // #undef DOOR_CLOSE_WAIT // SKYRAT EDIT REMOVAL - moved to code/__DEFINES/~skyrat_defines/airlock.dm
-=======
-#undef DOOR_CLOSE_WAIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

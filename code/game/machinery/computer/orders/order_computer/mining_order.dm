@@ -62,11 +62,7 @@
 /obj/machinery/computer/order_console/mining/retrieve_points(obj/item/card/id/id_card)
 	return round(id_card.registered_account.mining_points)
 
-<<<<<<< HEAD
-/obj/machinery/computer/order_console/mining/ui_act(action, params)
-=======
 /obj/machinery/computer/order_console/mining/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(!.)
 		flick("mining-deny", src)
@@ -75,14 +71,11 @@
 	if(istype(weapon, /obj/item/mining_voucher))
 		redeem_voucher(weapon, user)
 		return
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITON BEGIN - SEVA
 	if(istype(weapon, /obj/item/suit_voucher))
 		redeem_suit_voucher(weapon, user)
 		return
 	//SKYRAT EDIT ADDITON END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return ..()
 
 /obj/machinery/computer/order_console/mining/update_icon_state()
@@ -133,11 +126,7 @@
 /obj/machinery/computer/order_console/mining/proc/check_menu(obj/item/mining_voucher/voucher, mob/living/redeemer)
 	if(!istype(redeemer))
 		return FALSE
-<<<<<<< HEAD
-	if(redeemer.incapacitated())
-=======
 	if(redeemer.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(QDELETED(voucher))
 		return FALSE

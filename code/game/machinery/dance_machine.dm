@@ -384,7 +384,4 @@
 /obj/machinery/jukebox/disco/proc/dance4_revert(mob/living/dancer, matrix/starting_matrix)
 	animate(dancer, transform = starting_matrix, time = 5, loop = 0)
 	REMOVE_TRAIT(dancer, TRAIT_DISCO_DANCER, REF(src))
-<<<<<<< HEAD
 SKYRAT EDIT END*/
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

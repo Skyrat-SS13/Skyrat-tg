@@ -241,8 +241,6 @@
 	if (ishuman(user))
 		var/mob/living/carbon/human/human_wearer = user
 		human_wearer.sec_hud_set_security_status()
-<<<<<<< HEAD
-=======
 
 /obj/item/clothing/accessory/press_badge
 	name = "press badge"
@@ -286,4 +284,3 @@
 		examine(interacting_living)
 		to_chat(interacting_living, span_boldwarning("[user] shows the [src] to you."))
 		user.visible_message(span_notice("[user] shows a [src] to [interacting_living]."))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

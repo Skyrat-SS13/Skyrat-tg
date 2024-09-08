@@ -154,11 +154,7 @@
 	name = "Labor Camp Shuttle"
 
 /area/shuttle/supply
-<<<<<<< HEAD
 	name = "NLV Consign" //SKYRAT EDIT CHANGE
-=======
-	name = "Supply Shuttle"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	area_flags = NOTELEPORT
 
 /area/shuttle/escape

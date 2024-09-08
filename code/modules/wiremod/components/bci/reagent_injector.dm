@@ -9,13 +9,10 @@
 	display_name = "Reagent Injector"
 	desc = "A component that can inject reagents from a BCI's reagent storage."
 	category = "BCI"
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - Add container type flag - This is required since we have two reagent components, and the BCI only allows one active
 	//circuit_flags = CIRCUIT_NO_DUPLICATES - SKYRAT EDIT - ORIGINAL
 	circuit_flags = CIRCUIT_NO_DUPLICATES|CIRCUIT_REAGENT_CONTAINER_TYPE
 	//SKYRAT EDIT CHANGE END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	circuit_flags = CIRCUIT_NO_DUPLICATES
 
 	required_shells = list(/obj/item/organ/internal/cyberimp/bci)

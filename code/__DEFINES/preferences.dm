@@ -60,10 +60,7 @@
 // Playtime tracking system, see jobs_exp.dm
 #define EXP_TYPE_LIVING "Living"
 #define EXP_TYPE_CREW "Crew"
-<<<<<<< HEAD
 #define EXP_TYPE_CENTRAL_COMMAND "Central Command" // SKYRAT EDIT ADD
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define EXP_TYPE_COMMAND "Command"
 #define EXP_TYPE_ENGINEERING "Engineering"
 #define EXP_TYPE_MEDICAL "Medical"

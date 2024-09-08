@@ -257,20 +257,12 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 
 	list(//computer disks
 		/obj/item/computer_disk/maintenance/scanner = 1,
-<<<<<<< HEAD
 		///obj/item/computer_disk/maintenance/camera = 1, //SKYRAT EDIT REMOVAL - Available To Crew Now
-=======
-		/obj/item/computer_disk/maintenance/camera = 1,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		/obj/item/computer_disk/maintenance/modsuit_control = 1,
 		/obj/item/computer_disk/maintenance/spectre_meter = 1,
 		/obj/item/computer_disk/maintenance/arcade = 1,
 		/obj/item/computer_disk/maintenance/theme = 3,
-<<<<<<< HEAD
 	) = 3, //SKYRAT EDIT CHANGE - Original : 4
-=======
-	) = 4,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	list(//modsuits
 		/obj/effect/spawner/random/mod/maint = 3,

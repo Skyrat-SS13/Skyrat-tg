@@ -7,10 +7,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	pickup_sound = 'sound/items/gun_pick_up.ogg'
 	drop_sound = 'sound/items/gun_drop.ogg'
-<<<<<<< HEAD
-=======
 	sound_vary = TRUE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	///sound when inserting magazine
 	var/load_sound = 'sound/weapons/gun/general/magazine_insert_full.ogg'
@@ -400,10 +397,6 @@
 	if (display_message)
 		balloon_alert(user, "[magazine_wording] unloaded")
 	update_appearance()
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/gun/ballistic/can_shoot()
 	return chambered?.loaded_projectile
@@ -437,18 +430,11 @@
 				chambered = null
 			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
 			if (num_loaded)
-<<<<<<< HEAD
 				handle_box_reload(user, A, num_loaded) // SKYRAT EDIT CHANGE - ORIGINAL: balloon_alert(user, "[num_loaded] [cartridge_wording]\s loaded")
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
 					chamber_round()
 				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - this is normally done by handle_magazine which does not get called so we have to do it manually here
-=======
-				balloon_alert(user, "[num_loaded] [cartridge_wording]\s loaded")
-				playsound(src, load_sound, load_sound_volume, load_sound_vary)
-				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
-					chamber_round()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				A.update_appearance()
 				update_appearance()
 			return
@@ -575,10 +561,7 @@
 				SSblackbox.record_feedback("tally", "station_mess_created", 1, CB.name)
 		if (num_unloaded)
 			balloon_alert(user, "[num_unloaded] [cartridge_wording]\s unloaded")
-<<<<<<< HEAD
 			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - this is normally handled by eject_magazine() but internal magazines are a special case
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			playsound(user, eject_sound, eject_sound_volume, eject_sound_vary)
 			update_appearance()
 		else

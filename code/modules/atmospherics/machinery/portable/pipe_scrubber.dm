@@ -129,11 +129,7 @@
 	data["pressureLimitTank"] = internal_tank.pressure_limit
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/portable_atmospherics/pipe_scrubber/ui_act(action, params)
-=======
 /obj/machinery/portable_atmospherics/pipe_scrubber/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

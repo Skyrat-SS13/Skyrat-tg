@@ -64,11 +64,7 @@
 	acid = 30
 
 /obj/machinery/newscaster/pai/ui_state(mob/user)
-<<<<<<< HEAD
-	return GLOB.reverse_contained_state
-=======
 	return GLOB.deep_inventory_state
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
@@ -268,11 +264,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	return data
 
 
-<<<<<<< HEAD
-/obj/machinery/newscaster/ui_act(action, params)
-=======
 /obj/machinery/newscaster/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

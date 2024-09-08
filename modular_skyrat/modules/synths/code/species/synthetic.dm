@@ -1,7 +1,6 @@
 /datum/species/synthetic
 	name = "Synthetic Humanoid"
 	id = SPECIES_SYNTH
-	say_mod = "beeps"
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,

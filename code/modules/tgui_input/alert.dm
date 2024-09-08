@@ -120,11 +120,7 @@
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 	return data
 
-<<<<<<< HEAD
-/datum/tgui_alert/ui_act(action, list/params)
-=======
 /datum/tgui_alert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if (.)
 		return

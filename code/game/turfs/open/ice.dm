@@ -15,8 +15,6 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	rust_resistance = RUST_RESISTANCE_ORGANIC
-<<<<<<< HEAD
-=======
 	var/can_make_hole = TRUE
 	var/static/list/tool_screentips = list(
 		TOOL_SHOVEL = list(
@@ -26,16 +24,12 @@
 			SCREENTIP_CONTEXT_LMB = "Dig fishing hole",
 		),
 	)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/misc/ice/Initialize(mapload)
 	. = ..()
 	MakeSlippery(TURF_WET_PERMAFROST, INFINITY, 0, INFINITY, TRUE, FALSE)
-<<<<<<< HEAD
-=======
 	if(can_make_hole)
 		AddElement(/datum/element/contextual_screentip_tools, tool_screentips)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/misc/ice/break_tile()
 	return
@@ -43,8 +37,6 @@
 /turf/open/misc/ice/burn_tile()
 	return
 
-<<<<<<< HEAD
-=======
 /turf/open/misc/ice/examine(mob/user)
 	. = ..()
 	if(can_make_hole)
@@ -67,7 +59,6 @@
 	flags_1 &= ~HAS_CONTEXTUAL_SCREENTIPS_1
 	return ITEM_INTERACT_SUCCESS
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /turf/open/misc/ice/smooth
 	icon_state = "ice_turf-255"
 	base_icon_state = "ice_turf"
@@ -82,19 +73,13 @@
 
 /turf/open/misc/ice/icemoon/no_planet_atmos
 	planetary_atmos = FALSE
-<<<<<<< HEAD
-=======
 	can_make_hole = FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /turf/open/misc/ice/temperate
 	baseturfs = /turf/open/misc/ice/temperate
 	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
 	initial_gas_mix = COLD_ATMOS //it works with /turf/open/misc/asteroid/snow/temperatre
-<<<<<<< HEAD
-=======
 	can_make_hole = FALSE
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 //For when you want real, genuine ice in your kitchen's cold room.
 /turf/open/misc/ice/coldroom

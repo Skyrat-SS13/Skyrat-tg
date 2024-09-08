@@ -181,55 +181,6 @@
 	data["static_controls"] = static_controls
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/navbeacon/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
-
-	if(action == "lock" && allowed(usr))
-		controls_locked = !controls_locked
-		return TRUE
-
-	if(controls_locked && !HAS_SILICON_ACCESS(usr))
-		return
-
-	switch(action)
-		if("reset_codes")
-			glob_lists_deregister()
-			location = original_location
-			set_codes()
-			glob_lists_register()
-			return TRUE
-		if("toggle_cover")
-			cover_locked = !cover_locked
-			return TRUE
-		if("toggle_patrol")
-			toggle_code(NAVBEACON_PATROL_MODE)
-			return TRUE
-		if("toggle_delivery")
-			toggle_code(NAVBEACON_DELIVERY_MODE)
-			return TRUE
-		if("set_location")
-			var/input_text = tgui_input_text(usr, "Enter the beacon's location tag", "Beacon Location", location, 20)
-			if (!input_text || location == input_text)
-				return
-			glob_lists_deregister()
-			location = input_text
-			glob_lists_register()
-			return TRUE
-		if("set_patrol_next")
-			var/next_patrol = codes[NAVBEACON_PATROL_NEXT]
-			var/input_text = tgui_input_text(usr, "Enter the tag of the next patrol location", "Beacon Location", next_patrol, 20)
-			if (!input_text || location == input_text)
-				return
-			codes[NAVBEACON_PATROL_NEXT] = input_text
-			return TRUE
-		if("set_delivery_direction")
-			codes[NAVBEACON_DELIVERY_DIRECTION] = "[text2dir(params["direction"])]"
-			return TRUE
-
-=======
 /obj/machinery/navbeacon/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -278,7 +229,6 @@
 			codes[NAVBEACON_DELIVERY_DIRECTION] = "[text2dir(params["direction"])]"
 			return TRUE
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 ///Adds or removes a specific code
 /obj/machinery/navbeacon/proc/toggle_code(code)
 	if(codes[code])

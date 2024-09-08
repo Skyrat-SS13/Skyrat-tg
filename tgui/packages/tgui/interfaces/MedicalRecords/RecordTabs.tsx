@@ -19,12 +19,7 @@ import { MedicalRecord, MedicalRecordData } from './types';
 /** Displays all found records. */
 export const MedicalRecordTabs = (props) => {
   const { act, data } = useBackend<MedicalRecordData>();
-<<<<<<< HEAD
-  const { records = [] } = data;
-=======
   const { records = [], station_z } = data;
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
-
   const errorMessage = !records.length
     ? 'No records found.'
     : 'No match. Refine your search.';
@@ -73,10 +68,7 @@ export const MedicalRecordTabs = (props) => {
             <Button.Confirm
               content="Purge"
               icon="trash"
-<<<<<<< HEAD
-=======
               disabled={!station_z}
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               onClick={() => act('purge_records')}
               tooltip="Wipe all record data."
             />

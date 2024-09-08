@@ -1,11 +1,7 @@
 /turf/closed/wall/r_wall
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
-<<<<<<< HEAD
-	icon = 'icons/turf/walls/reinforced_wall.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	icon = 'icons/turf/walls/reinforced_wall.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "reinforced_wall-0"
 	base_icon_state = "reinforced_wall"
 	opacity = TRUE
@@ -206,17 +202,10 @@
 // We don't react to smoothing changing here because this else exists only to "revert" intact changes
 /turf/closed/wall/r_wall/update_icon_state()
 	if(d_state != INTACT)
-<<<<<<< HEAD
 		icon = 'modular_skyrat/modules/aesthetics/walls/icons/reinforced_wall.dmi' // SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/turf/walls/reinforced_states.dmi'
 		icon_state = "[base_decon_state]-[d_state]"
 	else
 		icon = 'modular_skyrat/modules/aesthetics/walls/icons/reinforced_wall.dmi' // SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/turf/walls/reinforced_wall.dmi'
-=======
-		icon = 'icons/turf/walls/reinforced_states.dmi'
-		icon_state = "[base_decon_state]-[d_state]"
-	else
-		icon = 'icons/turf/walls/reinforced_wall.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		icon_state = "[base_icon_state]-[smoothing_junction]"
 	return ..()
 

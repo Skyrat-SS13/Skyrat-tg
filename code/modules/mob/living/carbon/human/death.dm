@@ -66,10 +66,7 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	//SKYRAT EDIT REMOVAL START
 	/*
 	ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN)
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	blood_volume = 0
 	return TRUE

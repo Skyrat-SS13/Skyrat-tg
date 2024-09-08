@@ -106,11 +106,7 @@
 		.["containerMaxVolume"] = drip_reagents.maximum_volume
 		.["containerReagentColor"] = mix_color_from_reagents(drip_reagents.reagent_list)
 
-<<<<<<< HEAD
-/obj/machinery/iv_drip/ui_act(action, params)
-=======
 /obj/machinery/iv_drip/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -323,19 +319,11 @@
 
 	if(!isliving(usr))
 		to_chat(usr, span_warning("You can't do that!"))
-<<<<<<< HEAD
-		return
-	if(!usr.can_perform_action(src))
-		return
-	if(usr.incapacitated())
-		return
-=======
 		return
 	if(!usr.can_perform_action(src))
 		return
 	if(usr.incapacitated)
 		return
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(reagent_container)
 		if(attached)
 			visible_message(span_warning("[attached] is detached from [src]."))
@@ -352,11 +340,7 @@
 	if(!isliving(usr))
 		to_chat(usr, span_warning("You can't do that!"))
 		return
-<<<<<<< HEAD
-	if(!usr.can_perform_action(src) || usr.incapacitated())
-=======
 	if(!usr.can_perform_action(src) || usr.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	if(inject_only)
 		mode = IV_INJECTING

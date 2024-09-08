@@ -5,13 +5,8 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
-<<<<<<< HEAD
 	total_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() //SKYRAT EDIT: SET TO 8, WAS 5
 	spawn_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() //SKYRAT EDIT: SEE ABOVE
-=======
-	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	supervisors = "the Head of Security, and the head of your assigned department (if applicable)"
 	minimal_player_age = 7
 	exp_requirements = 300
@@ -33,11 +28,7 @@
 		/datum/job_department/security,
 		)
 
-<<<<<<< HEAD
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/peacekeeper) //SKYRAT EDIT ADD - /peacekeeper
-=======
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
@@ -69,35 +60,24 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
 	. = ..()
-<<<<<<< HEAD
 	//SKYRAT EDIT REMOVAL
 	/*
 	if(ishuman(spawning))
 		setup_department(spawning, player_client)
 	*/
 	//SKYRAT EDIT END
-=======
-	if(ishuman(spawning))
-		setup_department(spawning, player_client)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
 	. = ..()
-<<<<<<< HEAD
 	//SKYRAT EDIT REMOVAL
 	/*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(ishuman(spawning))
 		var/department = setup_department(spawning, spawning.client)
 		if(department)
 			announce_latejoin(spawning, department, GLOB.security_officer_distribution)
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 
 /// Returns the department this mob was assigned to, if any.
@@ -243,22 +223,14 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
-<<<<<<< HEAD
 		/obj/item/choice_beacon/security_pistol = 1, //SKYRAT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		)
 	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	gloves = /obj/item/clothing/gloves/color/black/security
-<<<<<<< HEAD
 	head = /obj/item/clothing/head/security_garrison //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/head/helmet/sec
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	glasses = /obj/item/clothing/glasses/hud/security //SKYRAT EDIT - ADDITION
-=======
-	head = /obj/item/clothing/head/helmet/sec
-	shoes = /obj/item/clothing/shoes/jackboots/sec
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 

@@ -162,8 +162,6 @@
 		"[protagonist_name] [mood_verb] as they lick off some of the pie",
 	)
 
-<<<<<<< HEAD
-=======
 /// Witnessed someone get splashed with squid ink.
 /datum/memory/witnessed_inking
 	story_value = STORY_VALUE_OKAY
@@ -186,7 +184,6 @@
 		"[protagonist_name] [mood_verb] as they wipe the ink off their face.",
 	)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /// Got slipped by something.
 /datum/memory/was_slipped
 	story_value = STORY_VALUE_MEH

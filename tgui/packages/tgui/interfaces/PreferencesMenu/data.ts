@@ -26,10 +26,7 @@ export enum Food {
   Sugar = 'SUGAR',
   Toxic = 'TOXIC',
   Vegetables = 'VEGETABLES',
-<<<<<<< HEAD
   Bloody = 'BLOODY', // SKYRAT EDIT ADDITION - Hemophage Food
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 }
 
 export enum JobPriority {
@@ -55,11 +52,8 @@ export type Species = {
 
   enabled_features: string[];
 
-<<<<<<< HEAD
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
   perks: {
     positive: Perk[];
     negative: Perk[];
@@ -86,13 +80,10 @@ export type Department = {
 export type Job = {
   description: string;
   department: string;
-<<<<<<< HEAD
   // SKYRAT EDIT
   veteran?: boolean;
   alt_titles?: string[];
   // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 };
 
 export type Quirk = {
@@ -102,7 +93,6 @@ export type Quirk = {
   value: number;
   customizable: boolean;
   customization_options?: string[];
-<<<<<<< HEAD
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 };
 
@@ -146,10 +136,6 @@ export type Organ = {
 };
 
 // SKYRAT EDIT END
-=======
-};
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 export type QuirkInfo = {
   max_positive_quirks: number;
   quirk_info: Record<string, Quirk>;
@@ -192,14 +178,12 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
-<<<<<<< HEAD
   preview_options: string[]; // SKYRAT EDIT ADDITION
   preview_selection: string; // SKYRAT EDIT ADDITION
 
   is_veteran: BooleanLike; // SKYRAT EDIT - Veteran status
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;
@@ -238,7 +222,6 @@ export type PreferencesMenuData = {
   >;
   job_preferences: Record<string, JobPriority>;
 
-<<<<<<< HEAD
   // SKYRAT EDIT
   job_alt_titles: Record<string, string>;
 
@@ -256,8 +239,7 @@ export type PreferencesMenuData = {
   ckey: string;
   is_donator: BooleanLike;
   // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];

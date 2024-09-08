@@ -1,11 +1,7 @@
 /obj/item/kirbyplants
 	name = "potted plant"
-<<<<<<< HEAD
-	//icon = 'icons/obj/fluff/flora/plants.dmi' // ORIGINAL
+	//icon = 'icons/obj/fluff/flora/plants.dmi' // SKYRAT EDIT - ORIGINAL
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' // SKYRAT EDIT CHANGE
-=======
-	icon = 'icons/obj/fluff/flora/plants.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "plant-01"
 	base_icon_state = "plant-01"
 	desc = "A little bit of nature contained in a pot."
@@ -24,11 +20,8 @@
 	///If it's a special named plant, set this to true to prevent dead-name overriding.
 	var/custom_plant_name = FALSE
 	var/list/static/random_plant_states
-<<<<<<< HEAD
 	/// Maximum icon state number - KEEP THIS UP TO DATE
 	var/random_state_cap = 43 // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/kirbyplants/Initialize(mapload)
 	. = ..()
@@ -78,31 +71,19 @@
 		generate_states()
 	var/current = random_plant_states.Find(icon_state)
 	var/next = WRAP(current+1,1,length(random_plant_states))
-<<<<<<< HEAD
-	icon_state = random_plant_states[next]
-
-/obj/item/kirbyplants/proc/generate_states()
-	random_plant_states = list()
-	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/i in 1 to 24)
-=======
 	base_icon_state = random_plant_states[next]
 	update_appearance(UPDATE_ICON)
 
 /obj/item/kirbyplants/proc/generate_states()
 	random_plant_states = list()
-	for(var/i in 1 to 24)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/i in 1 to 24)
 		var/number
 		if(i < 10)
 			number = "0[i]"
 		else
 			number = "[i]"
 		random_plant_states += "plant-[number]"
-<<<<<<< HEAD
 	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE - ORIGINAL:random_plant_states += "applebush"
-=======
-	random_plant_states += "applebush"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/kirbyplants/random
 	icon = 'icons/obj/fluff/flora/_flora.dmi'
@@ -110,12 +91,8 @@
 
 /obj/item/kirbyplants/random/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	//icon = 'icons/obj/flora/plants.dmi' // ORIGINAL
+	//icon = 'icons/obj/flora/plants.dmi' // SKYRAT EDIT - ORIGINAL
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
-=======
-	icon = 'icons/obj/fluff/flora/plants.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	randomize_base_icon_state()
 
 //Handles randomizing the icon during initialize()
@@ -150,7 +127,6 @@
 	base_icon_state = "plant-[rand(26, 29)]"
 	update_appearance(UPDATE_ICON)
 
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION START
 /obj/item/kirbyplants/monkey
 	name = "monkey plant"
@@ -159,8 +135,6 @@
 	trimmable = FALSE
 //SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/kirbyplants/photosynthetic
 	name = "photosynthetic potted plant"
 	desc = "A bioluminescent plant."

@@ -434,11 +434,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /// Updates the switch's `position` and `last_pos` variable. Useful so that the switch can properly cycle between the forwards, backwards and neutral positions.
 /obj/machinery/conveyor_switch/proc/update_position(direction)
 	if(position == CONVEYOR_OFF)
-<<<<<<< HEAD
-=======
 		playsound(src, 'sound/machines/lever_start.ogg', 40, TRUE)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		if(oneway)   //is it a oneway switch
 			position = oneway
 		else
@@ -447,10 +444,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			else
 				position = CONVEYOR_BACKWARDS
 	else
-<<<<<<< HEAD
-=======
 		playsound(src, 'sound/machines/lever_stop.ogg', 40, TRUE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		position = CONVEYOR_OFF
 
 /obj/machinery/conveyor_switch/proc/on_user_activation(mob/user, direction)

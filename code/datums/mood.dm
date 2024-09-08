@@ -288,7 +288,6 @@
 		if (SANITY_LEVEL_INSANE)
 			mood_screen_object.color = "#f15d36"
 
-<<<<<<< HEAD
 	if (!conflicting_moodies.len) // theres no special icons, use the normal icon states
 		//SKYRAT EDIT ADDITION BEGIN - ALEXITHYMIA
 		if(HAS_TRAIT(mob_parent, TRAIT_MOOD_NOEXAMINE))
@@ -296,9 +295,6 @@
 			mood_screen_object.color = "#4b96c4"
 			return
 		//SKYRAT EDIT ADDITION END
-=======
-	if (!conflicting_moodies.len) // there's no special icons, use the normal icon states
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		mood_screen_object.icon_state = "mood[mood_level]"
 		return
 
@@ -341,11 +337,8 @@
 /datum/mood/proc/print_mood(mob/user)
 	var/msg = "[span_info("<EM>My current mental status:</EM>")]\n"
 	msg += span_notice("My current sanity: ") //Long term
-<<<<<<< HEAD
 	//ORIGINAL
 	/*
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(sanity)
 		if(SANITY_GREAT to INFINITY)
 			msg += "[span_boldnicegreen("My mind feels like a temple!")]\n"
@@ -359,7 +352,6 @@
 			msg += "[span_warning("I'm freaking out!!")]\n"
 		if(SANITY_INSANE to SANITY_CRAZY)
 			msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
@@ -383,10 +375,6 @@
 	msg += span_notice("My current mood: ") //Short term
 	//ORIGINAL
 	/*
-=======
-
-	msg += span_notice("My current mood: ") //Short term
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	switch(mood_level)
 		if(MOOD_LEVEL_SAD4)
 			msg += "[span_boldwarning("I wish I was dead!")]\n"
@@ -406,7 +394,6 @@
 			msg += "[span_boldnicegreen("I feel amazing!")]\n"
 		if(MOOD_LEVEL_HAPPY4)
 			msg += "[span_boldnicegreen("I love life!")]\n"
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA / ALCOHOL_PROCESSING
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
@@ -437,11 +424,6 @@
 	msg += get_drunk_mood(user)
 	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) // ORIGINAL - //if(mood_events.len)
 	//SKYRAT EDIT CHANGE END
-=======
-
-	msg += "[span_notice("Moodlets:")]\n"//All moodlets
-	if(mood_events.len)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		for(var/category in mood_events)
 			var/datum/mood_event/event = mood_events[category]
 			switch(event.mood_change)

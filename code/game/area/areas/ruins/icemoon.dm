@@ -44,11 +44,7 @@
 	mood_message = "I feel like I am being watched..."
 
 /area/ruin/bughabitat
-<<<<<<< HEAD
-	name = "\improper Entemology Outreach Center"
-=======
 	name = "\improper Entomology Outreach Center"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	mood_bonus = 1
 	mood_message = "This place seems strangely serene."
 

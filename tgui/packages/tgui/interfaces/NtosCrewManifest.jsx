@@ -4,24 +4,17 @@ import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
-<<<<<<< HEAD
 // SKYRAT EDIT BEGIN - ALTERNATIVE_JOB_TITLES
 //
 // width={500} - Original: width={400}
 //
 // {entry.rank === entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>}
 //  - Original: entry.rank
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 export const NtosCrewManifest = (props) => {
   const { act, data } = useBackend();
   const { manifest = {} } = data;
   return (
-<<<<<<< HEAD
     <NtosWindow width={500} height={480}>
-=======
-    <NtosWindow width={400} height={480}>
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       <NtosWindow.Content scrollable>
         <Section
           title="Crew Manifest"
@@ -39,7 +32,6 @@ export const NtosCrewManifest = (props) => {
                 {entries.map((entry) => (
                   <Table.Row key={entry.name} className="candystripe">
                     <Table.Cell bold>{entry.name}</Table.Cell>
-<<<<<<< HEAD
                     <Table.Cell>
                       {entry.rank === entry.trim ? (
                         entry.rank
@@ -49,9 +41,6 @@ export const NtosCrewManifest = (props) => {
                         </>
                       )}
                     </Table.Cell>
-=======
-                    <Table.Cell>({entry.rank})</Table.Cell>
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
                   </Table.Row>
                 ))}
               </Table>
@@ -62,7 +51,4 @@ export const NtosCrewManifest = (props) => {
     </NtosWindow>
   );
 };
-<<<<<<< HEAD
 // SKYRAT EDIT END - ALTERNATIVE_JOB_TITLES
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

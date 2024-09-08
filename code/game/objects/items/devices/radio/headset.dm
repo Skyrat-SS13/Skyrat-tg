@@ -209,8 +209,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	icon_state = "srv_headset"
 	worn_icon_state = "srv_headset"
 	keyslot = /obj/item/encryptionkey/headset_srvmed
-<<<<<<< HEAD
-=======
 
 /obj/item/radio/headset/headset_srvent
 	name = "press headset"
@@ -218,7 +216,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	icon_state = "srvent_headset"
 	worn_icon_state = "srv_headset"
 	keyslot = /obj/item/encryptionkey/headset_srvent
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/radio/headset/headset_com
 	name = "command radio headset"
@@ -447,16 +444,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 			if(!(ch_name in src.channels))
 				LAZYSET(channels, ch_name, keyslot2.channels[ch_name])
 
-<<<<<<< HEAD
-		if(keyslot2.translate_binary)
-			translate_binary = TRUE
-		if(keyslot2.syndie)
-			syndie = TRUE
-		if(keyslot2.independent)
-			independent = TRUE
-=======
 		special_channels |= keyslot2.special_channels
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		for(var/ch_name in channels)
 			secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])
@@ -480,11 +468,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		grant_headset_languages(mob_loc)
 
 /obj/item/radio/headset/click_alt(mob/living/user)
-<<<<<<< HEAD
-=======
 	if(!istype(user) || !Adjacent(user) || user.incapacitated)
 		return CLICK_ACTION_BLOCKING
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if (!command)
 		return CLICK_ACTION_BLOCKING
 	use_command = !use_command

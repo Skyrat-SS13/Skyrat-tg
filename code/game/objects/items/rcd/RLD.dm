@@ -166,11 +166,7 @@
 					return ITEM_INTERACT_BLOCKING
 				activate()
 				var/obj/machinery/light/L = new /obj/machinery/light(get_turf(winner))
-<<<<<<< HEAD
-				L.setDir(get_dir(interacting_with, winner))
-=======
 				L.setDir(get_dir(winner, interacting_with))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 				L.color = color_choice
 				L.set_light_color(color_choice)
 				return ITEM_INTERACT_SUCCESS

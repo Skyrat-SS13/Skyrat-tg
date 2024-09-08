@@ -3,10 +3,7 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-<<<<<<< HEAD
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 import {
   Objective,
   ObjectivePrintout,
@@ -57,20 +54,13 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-<<<<<<< HEAD
 // SKYRAT EDIT CHANGE - height from 630 to 700
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 export const AntagInfoWizard = (props) => {
   const { data, act } = useBackend<Info>();
   const { ritual, objectives, can_change_objective } = data;
 
   return (
-<<<<<<< HEAD
     <Window width={620} height={700} theme="wizard">
-=======
-    <Window width={620} height={630} theme="wizard">
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -95,14 +85,11 @@ export const AntagInfoWizard = (props) => {
                 <Stack.Item>
                   <RitualPrintout ritual={ritual} />
                 </Stack.Item>
-<<<<<<< HEAD
                 {/* SKYRAT EDIT ADDITION START */}
                 <Stack.Item>
                   <Rules />
                 </Stack.Item>
                 {/* SKYRAT EDIT ADDITION END */}
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
               </Stack>
             </Section>
           </Stack.Item>

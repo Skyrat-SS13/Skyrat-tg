@@ -124,7 +124,6 @@ SUBSYSTEM_DEF(lag_switch)
 				to_chat(world, span_boldannounce("Footstep sounds have been disabled for performance concerns."))
 			else
 				to_chat(world, span_boldannounce("Footstep sounds have been re-enabled."))
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION
 		if (DISABLE_CREATOR)
 			if (state)
@@ -132,8 +131,6 @@ SUBSYSTEM_DEF(lag_switch)
 			else
 				to_chat(world, span_boldannounce("The character creator has been re-enabled."))
 		// SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return TRUE
 

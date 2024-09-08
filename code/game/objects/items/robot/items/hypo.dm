@@ -6,14 +6,9 @@
 		/datum/reagent/medicine/c2/libital,\
 		/datum/reagent/medicine/c2/multiver,\
 		/datum/reagent/medicine/salglu_solution,\
-<<<<<<< HEAD
 		/datum/reagent/medicine/spaceacillin,\
 		/datum/reagent/medicine/lidocaine\
 	) //SKYRAT EDIT line 10 added Lidocaine
-=======
-		/datum/reagent/medicine/spaceacillin\
-	)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define EXPANDED_MEDICAL_REAGENTS list(\
 		/datum/reagent/medicine/haloperidol,\
 		/datum/reagent/medicine/inacusiate,\
@@ -231,11 +226,7 @@
 /obj/item/reagent_containers/borghypo/attack_self(mob/user)
 	ui_interact(user)
 
-<<<<<<< HEAD
-/obj/item/reagent_containers/borghypo/ui_act(action, params)
-=======
 /obj/item/reagent_containers/borghypo/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -257,18 +248,12 @@
 	. += "Currently loaded: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nothing."]"
 	. += span_notice("<i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this]u.")
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL START - SEE master_files/code/modules/reagents/reagent_containers.dm
 /obj/item/reagent_containers/borghypo/click_alt(mob/living/user)
 
 	change_transfer_amount(user)
 	return CLICK_ACTION_SUCCESS
 SKYRAT EDIT REMOVAL END */
-=======
-/obj/item/reagent_containers/borghypo/click_alt(mob/living/user)
-	change_transfer_amount(user)
-	return CLICK_ACTION_SUCCESS
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Default Medborg Hypospray
 /obj/item/reagent_containers/borghypo/medical
@@ -501,13 +486,8 @@ SKYRAT EDIT REMOVAL END */
 /obj/item/reagent_containers/borghypo/borgshaker/hacked
 	name = "cyborg shaker"
 	desc = "Will mix drinks that knock them dead."
-<<<<<<< HEAD
-	icon = 'icons/obj/drinks/mixed_drinks.dmi'
-	icon_state = "threemileislandglass"
-=======
 	icon_state = "threemileislandglass"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	tgui_theme = "syndicate"
 	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP
 	default_reagent_types = HACKED_SERVICE_REAGENTS

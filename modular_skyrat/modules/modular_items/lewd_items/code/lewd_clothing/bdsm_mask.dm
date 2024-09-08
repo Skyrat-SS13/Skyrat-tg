@@ -117,7 +117,7 @@
 /obj/item/clothing/mask/gas/bdsm_mask/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return FALSE
 	return TRUE
 
@@ -148,12 +148,12 @@
 // To make in unremovable without helping when mask is on (for MouseDrop)
 /datum/storage/pockets/small/bdsm_mask/on_mousedrop_onto(datum/source, atom/over_object, mob/user)
 	var/obj/item/clothing/mask/gas/bdsm_mask/mask = source
-	if(!istype(mask) || ismecha(user.loc) || user.incapacitated() || !mask.is_locked(user))
+	if(!istype(mask) || ismecha(user.loc) || user.incapacitated || !mask.is_locked(user))
 		return ..()
 	return NONE //handled in mask mousedrop, don't allow content dumping
 
 /obj/item/clothing/mask/gas/bdsm_mask/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
-	if(ismecha(user.loc) || user.incapacitated() || !is_locked(user))
+	if(ismecha(user.loc) || user.incapacitated || !is_locked(user))
 		return
 	if(!istype(over_object, /atom/movable/screen/inventory/hand))
 		return

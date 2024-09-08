@@ -38,14 +38,10 @@
 		/datum/computer_file/program/messenger,
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START
 		/datum/computer_file/program/maintenance/camera, // Adds camera to all base tablets
 		// SKRAT EDIT ADDITION END
 		/datum/computer_file/program/crew_manifest
-=======
-		/datum/computer_file/program/crew_manifest,
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 	///List of items that can be stored in a PDA
 	var/static/list/contained_item = list(
@@ -333,11 +329,8 @@
 	starting_programs = list(
 		/datum/computer_file/program/filemanager,
 		/datum/computer_file/program/robotact,
-<<<<<<< HEAD
 		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for borgs
 		/datum/computer_file/program/messenger, // SKYRAT EDIT ADDITION - Messenger for borgs
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	)
 
 /obj/item/modular_computer/pda/silicon/Initialize(mapload)
@@ -432,11 +425,7 @@
 	return TRUE
 
 /obj/item/modular_computer/pda/silicon/ui_state(mob/user)
-<<<<<<< HEAD
-	return GLOB.reverse_contained_state
-=======
 	return GLOB.deep_inventory_state
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/modular_computer/pda/silicon/cyborg/syndicate
 	icon_state = "tablet-silicon-syndicate"

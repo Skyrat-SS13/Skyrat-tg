@@ -342,26 +342,15 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/airalarm/ui_act(action, params)
-=======
 /obj/machinery/airalarm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 
 	if(. || buildstage != AIR_ALARM_BUILD_COMPLETE)
 		return
-<<<<<<< HEAD
-	if((locked && !HAS_SILICON_ACCESS(usr)) || (HAS_SILICON_ACCESS(usr) && aidisabled))
-		return
-
-	var/mob/user = usr
-=======
 	var/mob/user = ui.user
 	if((locked && !HAS_SILICON_ACCESS(user)) || (HAS_SILICON_ACCESS(user) && aidisabled))
 		return
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/area/area = connected_sensor ? get_area(connected_sensor) : get_area(src)
 
 	ASSERT(!isnull(area))
@@ -476,11 +465,7 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 			var/threshold_type = params["threshold_type"]
 			var/value = params["value"]
 			tlv.set_value(threshold_type, value)
-<<<<<<< HEAD
-			investigate_log("threshold value for [threshold]:[threshold_type] was set to [value] by [key_name(usr)]", INVESTIGATE_ATMOS)
-=======
 			investigate_log("threshold value for [threshold]:[threshold_type] was set to [value] by [key_name(user)]", INVESTIGATE_ATMOS)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			check_enviroment()
 
@@ -491,11 +476,7 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 				return
 			var/threshold_type = params["threshold_type"]
 			tlv.reset_value(threshold_type)
-<<<<<<< HEAD
-			investigate_log("threshold value for [threshold]:[threshold_type] was reset by [key_name(usr)]", INVESTIGATE_ATMOS)
-=======
 			investigate_log("threshold value for [threshold]:[threshold_type] was reset by [key_name(user)]", INVESTIGATE_ATMOS)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 			check_enviroment()
 
@@ -512,11 +493,7 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 				disconnect_sensor()
 
 		if ("lock")
-<<<<<<< HEAD
-			togglelock(usr)
-=======
 			togglelock(user)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return TRUE
 
 	update_appearance()

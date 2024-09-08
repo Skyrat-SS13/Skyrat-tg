@@ -4,11 +4,7 @@
 	///Sometimes we need multiple layers, for like the back, middle and front of the person (EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
 	var/layers
 	///List of all possible layers. Used for looping through in drawing
-<<<<<<< HEAD
 	var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND, EXTERNAL_FRONT_UNDER_CLOTHES, EXTERNAL_FRONT_OVER, EXTERNAL_FRONT_ABOVE_HAIR) // SKYRAT EDIT - Customization - ORIGINAL: var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
-=======
-	var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	///Key of the icon states of all the sprite_datums for easy caching
 	var/cache_key = ""
@@ -61,7 +57,6 @@
 			return "ADJ"
 		if(-BODY_FRONT_LAYER)
 			return "FRONT"
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION - Customization
 		if(-BODY_FRONT_UNDER_CLOTHES)
 			return "FRONT_UNDER"
@@ -70,8 +65,6 @@
 		if(-HEAD_LAYER)
 			return "FRONT_OVER_HAIR"
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
 /datum/bodypart_overlay/proc/bitflag_to_layer(layer)
@@ -82,7 +75,6 @@
 			return -BODY_ADJ_LAYER
 		if(EXTERNAL_FRONT)
 			return -BODY_FRONT_LAYER
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION - Customization
 		if(EXTERNAL_FRONT_UNDER_CLOTHES)
 			return -BODY_FRONT_UNDER_CLOTHES
@@ -91,8 +83,6 @@
 		if(EXTERNAL_FRONT_ABOVE_HAIR)
 			return -HEAD_LAYER
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 ///Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit
 /datum/bodypart_overlay/proc/can_draw_on_bodypart(mob/living/carbon/human/human)

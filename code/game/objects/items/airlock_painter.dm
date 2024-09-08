@@ -229,11 +229,7 @@
  * Actually add current decal to the floor.
  *
  * Responsible for actually adding the element to the turf for maximum flexibility.area
-<<<<<<< HEAD
- * Can be overriden for different decal behaviors.
-=======
  * Can be overridden for different decal behaviors.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  * Arguments:
  * * target - The turf being painted to
 */
@@ -302,11 +298,7 @@
 	.["current_dir"] = stored_dir
 	.["current_custom_color"] = stored_custom_color
 
-<<<<<<< HEAD
-/obj/item/airlock_painter/decal/ui_act(action, list/params)
-=======
 /obj/item/airlock_painter/decal/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return
@@ -401,11 +393,8 @@
 		list("Neutral", "#D4D4D432"),
 		list("Dark", "#0e0f0f"),
 		list("Bar Burgundy", "#79150082"),
-<<<<<<< HEAD
 		list("Sec Blue", "#486091"), // SKYRAT EDIT CHANGE
-=======
 		list("Sec Red", "#DE3A3A"),
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		list("Cargo Brown", "#A46106"),
 		list("Engi Yellow", "#EFB341"),
 		list("Service Green", "#9FED58"),

@@ -44,10 +44,7 @@
 	armor_type = /datum/armor/pirate_armored
 	strip_delay = 40
 	equip_delay_other = 20
-<<<<<<< HEAD
-=======
 	species_exception = null
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/suit/costume/pirate/captain
 	name = "pirate captain coat"
@@ -59,10 +56,7 @@
 	armor_type = /datum/armor/pirate_armored
 	strip_delay = 40
 	equip_delay_other = 20
-<<<<<<< HEAD
-=======
 	species_exception = null
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/clothing/suit/costume/cyborg_suit
 	name = "cyborg suit"
@@ -110,11 +104,7 @@
 	desc = "A plastic replica of the Syndicate space suit. You'll look just like a real murderous Syndicate agent in this! This is a toy, it is not made for use in space!"
 	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy)
-<<<<<<< HEAD
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL // SYKRAT EDIT ADDITION - HIDETAIL
-=======
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	resistance_flags = NONE
 
 /obj/item/clothing/suit/costume/hastur
@@ -301,11 +291,7 @@
 	inhand_icon_state = "space_suit_syndicate"
 	armor_type = /datum/armor/carp_costume_spaceproof
 	allowed = list(/obj/item/tank/internals, /obj/item/gun/ballistic/rifle/boltaction/harpoon) //I'm giving you a hint here
-<<<<<<< HEAD
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
-=======
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -542,8 +528,6 @@
 	name = "bronze suit"
 	desc = "A big and clanky suit made of bronze that offers no protection and looks very unfashionable. Nice."
 	icon_state = "clockwork_cuirass_old"
-<<<<<<< HEAD
-=======
 	allowed = list(
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
@@ -552,7 +536,6 @@
 		//new
 		/obj/item/toy/clockwork_watch,
 		)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	armor_type = /datum/armor/costume_bronze
 
 /obj/item/clothing/suit/hooded/mysticrobe

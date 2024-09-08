@@ -12,9 +12,6 @@
 	. = ..()
 	new_snailperson.update_icons()
 
-/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
-	return //This is so that they don't get lube sent in the mail - they don't have exotic blood, so there's no need for it.
-
 /obj/item/storage/backpack/snail
 	/// Whether or not a bluespace anomaly core has been inserted
 	var/storage_core = FALSE

@@ -130,8 +130,6 @@
 	new /obj/item/clothing/under/ethereal_tunic/trailwarden(src)
 	new /obj/item/storage/backpack/saddlepack(src)
 
-<<<<<<< HEAD
-=======
 /obj/item/storage/box/hero/journalist
 	name = "Assassinated by CIA - 1984." // Literally
 	desc = "Many courageous individuals risked their lives to report on events the government sought to keep hidden from the public, ensuring that the truth remained buried and unheard. These garments are replicas of the clothing worn by one such 'journalist,' a silent sentinel in the fight for truth."
@@ -150,7 +148,6 @@
 	new /obj/item/camera(src)
 	new /obj/item/wallframe/telescreen/entertainment(src)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /obj/item/storage/box/holy
 	name = "Templar Kit"
 	/// This item is used to generate a preview image for this set.

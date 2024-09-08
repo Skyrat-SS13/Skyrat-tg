@@ -1,14 +1,9 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = MELEE, absorb_text = null, soften_text = null, armour_penetration, penetrated_text, silent=FALSE, weak_against_armour = FALSE)
-<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_MOB_RUN_ARMOR) //SKYRAT EDIT ADDITION
 
 	var/our_armor = getarmor(def_zone, attack_flag)
 
-=======
-	var/our_armor = getarmor(def_zone, attack_flag)
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(our_armor <= 0)
 		return our_armor
 	if(weak_against_armour && our_armor >= 0)
@@ -156,7 +151,6 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
-<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) //SKYRAT EDIT ADDITION
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
@@ -169,10 +163,6 @@
 	face_mouse = (client?.prefs?.read_preference(/datum/preference/toggle/face_cursor_combat_mode) && combat_mode) ? TRUE : FALSE
 	//SKYRAT EDIT ADDITION END
 
-=======
-	if(hud_used?.action_intent)
-		hud_used.action_intent.update_appearance()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))
 		return
 	if(combat_mode)
@@ -273,11 +263,7 @@
 /**
  * Called when this mob is grabbed by another mob.
  */
-<<<<<<< HEAD
 /mob/living/proc/grabbedby(mob/living/user, supress_message = FALSE, grabbed_part) // SKYRAT EDIT CHANGE - ORIGINAL: /mob/living/proc/grabbedby(mob/living/user, supress_message = FALSE)
-=======
-/mob/living/proc/grabbedby(mob/living/user, supress_message = FALSE)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(user == src || anchored || !isturf(user.loc))
 		return FALSE
 

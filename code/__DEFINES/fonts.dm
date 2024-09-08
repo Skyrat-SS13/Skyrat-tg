@@ -13,11 +13,7 @@
 #define SIGNATURE_FONT "Segoe Script"
 
 /// Emoji icon set
-<<<<<<< HEAD
 #define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT - ORIGINAL: 'icons/ui/chat/emoji.dmi'
-=======
-#define EMOJI_SET 'icons/ui/chat/emoji.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 // Font metrics bitfield
 /// Include leading A width and trailing C width in GetWidth() or in DrawText()

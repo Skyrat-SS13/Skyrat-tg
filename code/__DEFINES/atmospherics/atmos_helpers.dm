@@ -82,11 +82,7 @@ GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
 	turf.archived_cycle = SSair.times_fired;\
 	turf.temperature_archived = turf.temperature;
 
-<<<<<<< HEAD
-/* Fetch the energy transferred when two gas mixtures's temperature equalize.
-=======
 /* Fetch the energy transferred when two gas mixtures' temperature equalize.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  *
  * To equalize two gas mixtures, we simply pool the energy and divide it by the pooled heat capacity.
  * T' = (W1+W2) / (C1+C2)
@@ -111,11 +107,7 @@ GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
  * Not immediately obvious, but saves us operation time.
  *
  * We put a lot of parentheses here because the numbers get really really big.
-<<<<<<< HEAD
- * By prioritizing the division we try to tone the number down so we dont get overflows.
-=======
  * By prioritizing the division we try to tone the number down so we don't get overflows.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  *
  * Arguments:
  * * temperature_delta: T2 - T1. [/datum/gas_mixture/var/temperature]

@@ -256,11 +256,7 @@ Behavior that's still missing from this component that original food items had t
 	if(!(food_flags & FOOD_IN_CONTAINER))
 		switch(bitecount)
 			if(0)
-<<<<<<< HEAD
-				// pass
-=======
 				pass()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			if(1)
 				examine_list += span_notice("[owner] was bitten by someone!")
 			if(2, 3)
@@ -532,21 +528,13 @@ Behavior that's still missing from this component that original food items had t
 /datum/component/edible/proc/apply_buff(mob/eater)
 	var/buff
 	var/recipe_complexity = get_recipe_complexity()
-<<<<<<< HEAD
-	if(recipe_complexity == 0)
-=======
 	if(recipe_complexity <= 0)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return
 	var/obj/item/food/food = parent
 	if(!isnull(food.crafted_food_buff))
 		buff = food.crafted_food_buff
 	else
-<<<<<<< HEAD
-		buff = pick_weight(GLOB.food_buffs[recipe_complexity])
-=======
 		buff = pick_weight(GLOB.food_buffs[min(recipe_complexity, FOOD_COMPLEXITY_5)])
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!isnull(buff))
 		var/mob/living/living_eater = eater
 		var/atom/owner = parent
@@ -607,12 +595,6 @@ Behavior that's still missing from this component that original food items had t
 
 /// Get the complexity of the crafted food
 /datum/component/edible/proc/get_recipe_complexity()
-<<<<<<< HEAD
-	if(!HAS_TRAIT(parent, TRAIT_FOOD_CHEF_MADE) || !istype(parent, /obj/item/food))
-		return 0 // It is factory made. Soulless.
-	var/obj/item/food/food = parent
-	return food.crafting_complexity
-=======
 	var/list/extra_complexity = list(0)
 	SEND_SIGNAL(parent, COMSIG_FOOD_GET_EXTRA_COMPLEXITY, extra_complexity)
 	var/complexity_to_add = extra_complexity[1]
@@ -620,7 +602,6 @@ Behavior that's still missing from this component that original food items had t
 		return complexity_to_add // It is factory made. Soulless.
 	var/obj/item/food/food = parent
 	return food.crafting_complexity + complexity_to_add
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /// Get food quality adjusted according to eater's preferences
 /datum/component/edible/proc/get_perceived_food_quality(mob/living/carbon/human/eater)

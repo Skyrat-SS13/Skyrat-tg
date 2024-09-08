@@ -1,11 +1,7 @@
 /// The light switch. Can have multiple per area.
 /obj/machinery/light_switch
 	name = "light switch"
-<<<<<<< HEAD
-	icon = 'icons/obj/machines/wallmounts.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	icon = 'icons/obj/machines/wallmounts.dmi'
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "light-nopower"
 	base_icon_state = "light"
 	desc = "Make dark."

@@ -282,11 +282,7 @@
 	category = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/pacoca
-<<<<<<< HEAD
-	name = "Pacoca"
-=======
 	name = "Paçoca"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	reqs = list(
 		/obj/item/food/grown/peanut = 2,
 		/datum/reagent/consumable/sugar = 5,

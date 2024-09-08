@@ -291,13 +291,10 @@
 #include "weird_food.dm"
 #include "wizard_loadout.dm"
 #include "worn_icons.dm"
-<<<<<<< HEAD
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
 #include "~skyrat\opposing_force.dm"
 // SKYRAT EDIT END
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 // END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"

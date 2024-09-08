@@ -65,16 +65,10 @@
 /obj/item/organ/internal/heart/nightmare
 	name = "heart of darkness"
 	desc = "An alien organ that twists and writhes when exposed to light."
-<<<<<<< HEAD
-	icon_state = "demon_heart-on"
-	base_icon_state = "demon_heart"
-	visual = TRUE
-=======
 	visual = TRUE
 	icon_state = "demon_heart-on"
 	base_icon_state = "demon_heart"
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	color = COLOR_CRAYON_BLACK
 	decay_factor = 0
 	// No love is to be found in a heart so twisted.

@@ -67,13 +67,10 @@ SUBSYSTEM_DEF(ticker)
 	/// Why an emergency shuttle was called
 	var/emergency_reason
 
-<<<<<<< HEAD
 	var/real_round_start_time = 0 //SKYRAT EDIT ADDITION
 
 	var/discord_alerted = FALSE //SKYRAT EDIT - DISCORD PING SPAM PREVENTION
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /datum/controller/subsystem/ticker/Initialize()
 	var/list/byond_sound_formats = list(
 		"mid" = TRUE,
@@ -164,7 +161,6 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-<<<<<<< HEAD
 			/* ORIGINAL:
 			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/channel_announce_new_game))
 			*/ // SKYRAT EDIT START - DISCORD SPAM PREVENTION
@@ -177,12 +173,7 @@ SUBSYSTEM_DEF(ticker)
 			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) //SKYRAT EDIT ADDITION - Title screen
 			//Everyone who wants to be an observer is now spawned
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
-=======
-			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game))
-			current_state = GAME_STATE_PREGAME
-			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			fire()
 		if(GAME_STATE_PREGAME)
 				//lobby stats for statpanels
@@ -300,11 +291,8 @@ SUBSYSTEM_DEF(ticker)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
-<<<<<<< HEAD
 	real_round_start_time = REALTIMEOFDAY //SKYRAT EDIT ADDITION
 	SSautotransfer.new_shift(real_round_start_time) //SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore,SetRoundStart))
@@ -351,10 +339,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
-<<<<<<< HEAD
 		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		if(!iter_human.hardcore_survival_score)
 			continue
@@ -388,7 +373,6 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
-<<<<<<< HEAD
 				player.show_title_screen() //SKYRAT EDIT CHANGE
 				continue
 			player.create_character(destination)
@@ -396,10 +380,6 @@ SUBSYSTEM_DEF(ticker)
 			player.show_title_screen() //SKYRAT EDIT ADDITION
 
 
-=======
-				continue
-			player.create_character(destination)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -469,10 +449,6 @@ SUBSYSTEM_DEF(ticker)
 			if(new_player_mob.client?.prefs?.should_be_random_hardcore(player_assigned_role, new_player_living.mind))
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		CHECK_TICK
 
 	if(captainless)
@@ -612,7 +588,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
 	var/news_source = "Nanotrasen News Network"
-<<<<<<< HEAD
 	var/decoded_station_name = html_decode(CONFIG_GET(string/cross_comms_name)) //decode station_name to avoid minor_announce double encode // SKYRAT EDIT: CROSS COMMS CONFIG
 
 	switch(news_report)
@@ -722,101 +697,6 @@ SUBSYSTEM_DEF(ticker)
 	else
 		return "We regret to inform you that shit be whack, yo. None of our reporters have any idea of what may or may not have gone on."
 	//SKYRAT EDIT - END
-=======
-	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
-
-	switch(news_report)
-		// The nuke was detonated on the syndicate recon outpost
-		if(NUKE_SYNDICATE_BASE)
-			news_message = "In a daring raid, the heroic crew of [decoded_station_name] \
-				detonated a nuclear device in the heart of a terrorist base."
-		// The station was destroyed by nuke ops
-		if(STATION_DESTROYED_NUKE)
-			news_message = "We would like to reassure all employees that the reports of a Syndicate \
-				backed nuclear attack on [decoded_station_name] are, in fact, a hoax. Have a secure day!"
-		// The station was evacuated (normal result)
-		if(STATION_EVACUATED)
-			// Had an emergency reason supplied to pass along
-			if(emergency_reason)
-				news_message = "[decoded_station_name] has been evacuated after transmitting \
-					the following distress beacon:\n\n[html_decode(emergency_reason)]"
-			else
-				news_message = "The crew of [decoded_station_name] has been \
-					evacuated amid unconfirmed reports of enemy activity."
-		// A blob won
-		if(BLOB_WIN)
-			news_message = "[decoded_station_name] was overcome by an unknown biological outbreak, killing \
-				all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
-		// A blob was destroyed
-		if(BLOB_DESTROYED)
-			news_message = "[decoded_station_name] is currently undergoing decontamination procedures \
-				after the destruction of a biological hazard. As a reminder, any crew members experiencing \
-				cramps or bloating should report immediately to security for incineration."
-		// A certain percentage of all cultists managed to escape at the end of round
-		if(CULT_ESCAPE)
-			news_message = "Security Alert: A group of religious fanatics have escaped from [decoded_station_name]."
-		// Cult was completely or almost completely wiped out
-		if(CULT_FAILURE)
-			news_message = "Following the dismantling of a restricted cult aboard [decoded_station_name], \
-				we would like to remind all employees that worship outside of the Chapel is strictly prohibited, \
-				and cause for termination."
-		// Cult summoned Nar'sie
-		if(CULT_SUMMON)
-			news_message = "Company officials would like to clarify that [decoded_station_name] was scheduled \
-				to be decommissioned following meteor damage earlier this year. Earlier reports of an \
-				unknowable eldritch horror were made in error."
-		// Nuke detonated, but missed the station entirely
-		if(NUKE_MISS)
-			news_message = "The Syndicate have bungled a terrorist attack [decoded_station_name], \
-				detonating a nuclear weapon in empty space nearby."
-		// All nuke ops got killed
-		if(OPERATIVES_KILLED)
-			news_message = "Repairs to [decoded_station_name] are underway after an elite \
-				Syndicate death squad was wiped out by the crew."
-		// Nuke ops results inconclusive - Crew escaped without the disk, or nukies were left alive, or something
-		if(OPERATIVE_SKIRMISH)
-			news_message = "A skirmish between security forces and Syndicate agents aboard [decoded_station_name] \
-				ended with both sides bloodied but intact."
-		// Revolution victory
-		if(REVS_WIN)
-			news_message = "Company officials have reassured investors that despite a union led revolt \
-				aboard [decoded_station_name] there will be no wage increases for workers."
-		// Revolution defeat
-		if(REVS_LOSE)
-			news_message = "[decoded_station_name] quickly put down a misguided attempt at mutiny. \
-				Remember, unionizing is illegal!"
-		// All wizards (plus apprentices) have been killed
-		if(WIZARD_KILLED)
-			news_message = "Tensions have flared with the Space Wizard Federation following the death \
-				of one of their members aboard [decoded_station_name]."
-		// The station was nuked generically
-		if(STATION_NUKED)
-			// There was a blob on board, guess it was nuked to stop it
-			if(length(GLOB.overminds))
-				for(var/mob/camera/blob/overmind as anything in GLOB.overminds)
-					if(overmind.max_count < overmind.announcement_size)
-						continue
-
-					news_message = "[decoded_station_name] is currently undergoing decontanimation after a controlled \
-						burst of radiation was used to remove a biological ooze. All employees were safely evacuated prior, \
-						and are enjoying a relaxing vacation."
-					break
-			// A self destruct or something else
-			else
-				news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. \
-					Attempts to clone the Captain for arrest and execution are underway."
-		// The emergency escape shuttle was hijacked
-		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] \
-				had its navigation protocols corrupted and went off course, but was recovered shortly after."
-		// A supermatter cascade triggered
-		if(SUPERMATTER_CASCADE)
-			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in \
-				the sector surrounding [decoded_station_name]."
-
-	if(news_message)
-		send2otherserver(news_source, news_message, "News_Report")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))

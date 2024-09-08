@@ -49,10 +49,6 @@
 			living_mob.Paralyze(5)
 			living_mob.Knockdown(30)
 		living_mob.soundbang_act(1, max(200 / max(1, distance), 60), rand(0, 5))
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/grenade/stingbang
 	name = "stingbang"

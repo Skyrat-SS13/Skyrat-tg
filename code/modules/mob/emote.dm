@@ -40,10 +40,7 @@
 		SEND_SIGNAL(src, COMSIG_MOB_EMOTE, emote, act, m_type, message, intentional)
 		SEND_SIGNAL(src, COMSIG_MOB_EMOTED(emote.key))
 		return TRUE
-<<<<<<< HEAD
 		src.nextsoundemote = world.time // SKYRAT EDIT ADDITION
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(intentional && !silenced && !force_silence)
 		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
 	return FALSE
@@ -87,19 +84,10 @@
 
 /datum/emote/flip/run_emote(mob/user, params , type_override, intentional)
 	. = ..()
-<<<<<<< HEAD
-	user.SpinAnimation(HAS_TRAIT(user, TRAIT_SLOW_FLIP) ? FLIP_EMOTE_DURATION * 2 : FLIP_EMOTE_DURATION, 1)
-=======
 	user.SpinAnimation(FLIP_EMOTE_DURATION, 1)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/emote/flip/check_cooldown(mob/user, intentional)
-	var/slow_flipper = HAS_TRAIT(user, TRAIT_SLOW_FLIP)
-	if(slow_flipper)
-		cooldown *= 2
 	. = ..()
-	if(slow_flipper)
-		cooldown *= 0.5
 	if(.)
 		return
 	if(!can_run_emote(user, intentional=intentional))

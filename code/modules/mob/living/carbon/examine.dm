@@ -6,11 +6,7 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
-<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // SKYRAT EDIT CHANGE - HR padding
-=======
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/obscured = check_obscured_slots()
 
 	if (handcuffed)
@@ -29,12 +25,9 @@
 
 	if (back)
 		. += "[t_He] [t_has] [back.get_examine_string(user)] on [t_his] back."
-<<<<<<< HEAD
 
 	. += EXAMINE_SECTION_BREAK // SKYRAT EDIT ADDITION - hr sections
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	var/appears_dead = FALSE
 	if (stat == DEAD)
 		appears_dead = TRUE

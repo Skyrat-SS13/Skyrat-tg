@@ -153,20 +153,12 @@
 
 /// Sebt from obj/item/ui_action_click(): (mob/user, datum/action)
 #define COMSIG_ITEM_UI_ACTION_CLICK "item_action_click"
-<<<<<<< HEAD
-	/// Return to prevent the default behavior (attack_selfing) from ocurring.
-=======
 	/// Return to prevent the default behavior (attack_selfing) from occurring.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	#define COMPONENT_ACTION_HANDLED (1<<0)
 
 /// Sent from obj/item/item_action_slot_check(): (mob/user, datum/action, slot)
 #define COMSIG_ITEM_UI_ACTION_SLOT_CHECKED "item_action_slot_checked"
-<<<<<<< HEAD
-	/// Return to prevent the default behavior (attack_selfing) from ocurring.
-=======
 	/// Return to prevent the default behavior (attack_selfing) from occurring.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	#define COMPONENT_ITEM_ACTION_SLOT_INVALID (1<<0)
 
 ///from base of mob/living/carbon/attacked_by(): (mob/living/carbon/target, mob/living/user, hit_zone)

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 /proc/generate_lizard_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
 	var/static/icon/lizard
 	var/static/icon/lizard_with_snout
@@ -97,15 +94,6 @@
 	savefile_key = "feature_lizard_legs"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-<<<<<<< HEAD
-	relevant_mutant_bodypart = "legs"
-
-/datum/preference/choiced/lizard_legs/init_possible_values()
-	return assoc_to_keys_features(SSaccessories.legs_list)
-
-/datum/preference/choiced/lizard_legs/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["legs"] = value
-=======
 
 /datum/preference/choiced/lizard_legs/init_possible_values()
 	return list(NORMAL_LEGS, DIGITIGRADE_LEGS)
@@ -151,7 +139,6 @@
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
 
 	return initial(species_type.digitigrade_customization) & DIGITIGRADE_OPTIONAL
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/preference/choiced/lizard_snout
 	savefile_key = "feature_lizard_snout"
@@ -173,11 +160,7 @@
 	savefile_key = "feature_lizard_spines"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-<<<<<<< HEAD
-	relevant_mutant_bodypart = "spines"
-=======
 	relevant_external_organ = /obj/item/organ/external/spines
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/preference/choiced/lizard_spines/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.spines_list)
@@ -198,11 +181,6 @@
 	target.dna.features["tail_lizard"] = value
 
 /datum/preference/choiced/lizard_tail/create_default_value()
-<<<<<<< HEAD
-	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
-	return initial(tail.name)
 	return /datum/sprite_accessory/tails/lizard/smooth::name
+
 */
-=======
-	return /datum/sprite_accessory/tails/lizard/smooth::name
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

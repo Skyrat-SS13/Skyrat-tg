@@ -232,11 +232,7 @@
 	projectile.ricochets_max += 2
 	projectile.min_ricochets += 2
 	projectile.ricochet_incidence_leeway = 0
-<<<<<<< HEAD
-	ADD_TRAIT(projectile, TRAIT_ALWAYS_HIT_ZONE, DEATHMATCH_TRAIT)
-=======
 	projectile.accuracy_falloff = 0
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /datum/deathmatch_modifier/stormtrooper
 	name = "Stormtrooper Aim"

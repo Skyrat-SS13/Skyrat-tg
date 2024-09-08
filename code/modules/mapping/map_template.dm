@@ -167,10 +167,6 @@
 
 	// Cache for sonic speed
 	var/list/to_rebuild = SSair.adjacent_rebuild
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	// iterate over turfs in the border and clear them from active atmos processing
 	for(var/turf/border_turf as anything in CORNER_BLOCK_OFFSET(T, width + 2, height + 2, -1, -1))
 		SSair.remove_from_active(border_turf)

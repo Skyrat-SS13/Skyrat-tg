@@ -16,11 +16,7 @@
 /obj/item/slime_scanner/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
-<<<<<<< HEAD
 	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL : if(!user.can_read(src) || user.is_blind())
-=======
-	if(!user.can_read(src) || user.is_blind())
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return ITEM_INTERACT_BLOCKING
 	if (!isslime(interacting_with))
 		to_chat(user, span_warning("This device can only scan slimes!"))

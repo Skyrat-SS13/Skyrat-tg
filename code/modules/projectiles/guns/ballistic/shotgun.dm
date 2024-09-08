@@ -157,11 +157,7 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m12g
 	can_suppress = FALSE
 	burst_size = 2
-<<<<<<< HEAD
-	fire_delay = 10 //Skyrat edit - Original: 1
-=======
-	fire_delay = 1
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+	fire_delay = 5 //Skyrat edit - Original: 1
 	pin = /obj/item/firing_pin/implant/pindicate
 	fire_sound = 'sound/weapons/gun/shotgun/shot_alt.ogg'
 	actions_types = list(/datum/action/item_action/toggle_firemode)

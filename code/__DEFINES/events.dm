@@ -22,11 +22,7 @@
 #define EVENT_CATEGORY_FRIENDLY "Friendly"
 ///Events that affect the body and mind
 #define EVENT_CATEGORY_HEALTH "Health"
-<<<<<<< HEAD
-///Events reserved for special occassions
-=======
 ///Events reserved for special occasions
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define EVENT_CATEGORY_HOLIDAY "Holiday"
 ///Events with enemy groups with a more complex plan
 #define EVENT_CATEGORY_INVASION "Invasion"

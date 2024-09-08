@@ -46,16 +46,12 @@
 /obj/item/gun/syringe/recharge_newshot()
 	if(!syringes.len)
 		return
-<<<<<<< HEAD
 	//SKYRAT EDIT SMARTDARTS
 	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
 		chambered.newshot(/obj/projectile/bullet/dart/syringe/dart)
 	else
 		chambered.newshot()
 	//SKYRAT EDIT SMARTDARTS END
-=======
-	chambered.newshot()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/item/gun/syringe/can_shoot()
 	return syringes.len

@@ -56,9 +56,5 @@
 		// Syndicate recon outpost is on some moon or something
 		return TRUE
 
-<<<<<<< HEAD
-	// Finally, more specific checks are ran for edge cases, such as lazyily loaded map templates or away missions. Not perfect.
-=======
 	// Finally, more specific checks are ran for edge cases, such as lazily loaded map templates or away missions. Not perfect.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return istype(what_turf) && what_turf.planetary_atmos && what_turf.has_gravity()

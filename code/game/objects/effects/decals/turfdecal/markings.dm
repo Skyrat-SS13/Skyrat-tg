@@ -244,11 +244,7 @@
 	icon_state = "siding_plain_end"
 
 /obj/effect/turf_decal/siding/red
-<<<<<<< HEAD
 	color = "#486091" //SKYRAT EDIT CHANGE
-=======
-	color = "#DE3A3A"
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/effect/turf_decal/siding/red/corner
 	icon_state = "siding_plain_corner"

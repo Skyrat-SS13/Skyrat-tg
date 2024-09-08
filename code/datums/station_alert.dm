@@ -61,11 +61,7 @@
 			data["alarms"] += list(nominal_category)
 	return data
 
-<<<<<<< HEAD
-/datum/station_alert/ui_act(action, params)
-=======
 /datum/station_alert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

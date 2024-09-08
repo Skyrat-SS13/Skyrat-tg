@@ -8,11 +8,7 @@
  * * user - The user to show the number input to.
  * * message - The content of the number input, shown in the body of the TGUI window.
  * * title - The title of the number input modal, shown on the top of the TGUI window.
-<<<<<<< HEAD
- * * default - The default (or current) key, shown as a placeholder. 
-=======
  * * default - The default (or current) key, shown as a placeholder.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
  */
 /proc/tgui_input_keycombo(mob/user = usr, message, title = "Key Input", default = 0, timeout = 0, ui_state = GLOB.always_state)
 	if (!istype(user))
@@ -111,11 +107,7 @@
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 	return data
 
-<<<<<<< HEAD
-/datum/tgui_input_keycombo/ui_act(action, list/params)
-=======
 /datum/tgui_input_keycombo/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if (.)
 		return

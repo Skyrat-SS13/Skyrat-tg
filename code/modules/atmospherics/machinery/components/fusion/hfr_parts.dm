@@ -79,11 +79,7 @@
 
 /obj/machinery/atmospherics/components/unary/hypertorus/fuel_input
 	name = "HFR fuel input port"
-<<<<<<< HEAD
-	desc = "Input port for the Hypertorus Fusion Reactor, designed to take in only Hydrogen and Tritium in gas forms."
-=======
 	desc = "Input port for the Hypertorus Fusion Reactor, designed to take in fuels with the optimal fuel mix being a 50/50 split."
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	icon_state = "fuel_input_off"
 	icon_state_open = "fuel_input_open"
 	icon_state_off = "fuel_input_off"
@@ -317,11 +313,7 @@
 
 	return data
 
-<<<<<<< HEAD
-/obj/machinery/hypertorus/interface/ui_act(action, params)
-=======
 /obj/machinery/hypertorus/interface/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	if(.)
 		return

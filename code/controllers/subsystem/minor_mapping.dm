@@ -13,11 +13,7 @@ SUBSYSTEM_DEF(minor_mapping)
 	return SS_INIT_NO_NEED
 #else
 	trigger_migration(CONFIG_GET(number/mice_roundstart))
-<<<<<<< HEAD
 	place_satchels(satchel_amount = 10) //SKYRAT EDIT CHANGE - ORIGINAL : place_satchels(satchel_amount = 2)
-=======
-	place_satchels(satchel_amount = 2)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	return SS_INIT_SUCCESS
 #endif
 

@@ -99,11 +99,7 @@
 
 	// We aren't in darkness, loop for viewers.
 	for(var/mob/living/mob_target in oview(my_turf, 7)) // They probably cannot see us if we cannot see them... can they?
-<<<<<<< HEAD
-		if(mob_target.client && !mob_target.is_blind() && !mob_target.has_unlimited_silicon_privilege && !HAS_TRAIT(mob_target, TRAIT_UNOBSERVANT))
-=======
 		if(mob_target.client && !mob_target.is_blind() && !HAS_TRAIT(mob_target, TRAIT_UNOBSERVANT))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 			return TRUE
 	for(var/obj/vehicle/sealed/mecha/mecha_mob_target in oview(my_turf, 7))
 		for(var/mob/mechamob_target as anything in mecha_mob_target.occupants)

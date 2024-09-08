@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 #define MOVES_HITSCAN -1 //Not actually hitscan but close as we get without actual hitscan.
 #define MUZZLE_EFFECT_PIXEL_INCREMENT 17 //How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
 #define MAX_RANGE_HIT_PRONE_TARGETS 10 //How far do the projectile hits the prone mob
@@ -212,19 +208,15 @@
 	var/wound_falloff_tile
 	///How much we want to drop the embed_chance value, if we can embed, per tile, for falloff purposes
 	var/embed_falloff_tile
-<<<<<<< HEAD
-	var/static/list/projectile_connections = list(COMSIG_ATOM_ENTERED = PROC_REF(on_entered))
 	// SKYRAT EDIT ADDITION START
 	/// If this should be able to hit the target even on direct firing when `ignored_factions` applies
 	var/ignore_direct_target = FALSE
 	// SKYRAT EDIT ADDITION END
-=======
 	///How much accuracy is lost for each tile travelled
 	var/accuracy_falloff = 7
 	///How much accuracy before falloff starts to matter. Formula is range - falloff * tiles travelled
 	var/accurate_range = 100
 	var/static/list/projectile_connections = list(COMSIG_ATOM_ENTERED = PROC_REF(on_entered))
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
 
@@ -320,31 +312,17 @@
 	playsound(src, get_sfx_skyrat(impact_sound), vol_by_damage(), TRUE, -1)
 	// SKYRAT EDIT ADDITION END
 
-<<<<<<< HEAD
-	if(isturf(target_turf) && hitsound_wall)
-=======
 	if(isturf(target) && hitsound_wall)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/volume = clamp(vol_by_damage() + 20, 0, 100)
 		if(suppressed)
 			volume = 5
 		playsound(loc, hitsound_wall, volume, TRUE, -1)
-<<<<<<< HEAD
-
 
 	if(damage > 0 && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_turf) && prob(75))
 		var/turf/closed/wall/target_wall = target_turf
 		if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_wall, hitx, hity)
 
-=======
-
-	if(damage > 0 && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_turf) && prob(75))
-		var/turf/closed/wall/target_wall = target_turf
-		if(impact_effect_type && !hitscan)
-			new impact_effect_type(target_wall, hitx, hity)
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		target_wall.add_dent(WALL_DENT_SHOT, hitx, hity)
 
 		return BULLET_ACT_HIT
@@ -352,7 +330,6 @@
 	if(!isliving(target))
 		if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_turf, hitx, hity)
-<<<<<<< HEAD
 		/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		if(isturf(target) && hitsound_wall)
 			var/volume = clamp(vol_by_damage() + 20, 0, 100)
@@ -361,8 +338,6 @@
 			playsound(loc, hitsound_wall, volume, TRUE, -1)
 		SKYRAT EDIT REMOVAL END */
 
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 		return BULLET_ACT_HIT
 
@@ -396,25 +371,15 @@
 		if(hit_limb_zone)
 			organ_hit_text = " in \the [living_target.parse_zone_with_bodypart(hit_limb_zone)]"
 		if(suppressed == SUPPRESSED_VERY)
-<<<<<<< HEAD
-			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
-		else if(suppressed)
-			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
-=======
-			playsound(loc, hitsound, 5, TRUE, -1)
 		else if(suppressed)
 			playsound(loc, hitsound, 5, TRUE, -1)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+		else if(suppressed)
 			to_chat(living_target, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
 		else
-			/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 			if(hitsound)
 				var/volume = vol_by_damage()
 				playsound(src, hitsound, volume, TRUE, -1)
-<<<<<<< HEAD
-			SKYRAT EDIT REMOVAL END */
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
+
 			living_target.visible_message(span_danger("[living_target] is hit by \a [src][organ_hit_text]!"), \
 					span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
 			if(living_target.is_blind())
@@ -512,14 +477,8 @@
 				store_hitscan_collision(point_cache)
 			return TRUE
 
-<<<<<<< HEAD
-	if(!HAS_TRAIT(src, TRAIT_ALWAYS_HIT_ZONE))
-		var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
-		def_zone = ran_zone(def_zone, max(100-(7*distance), 5)) //Lower accurancy/longer range tradeoff. 7 is a balanced number to use.
-=======
 	var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
 	def_zone = ran_zone(def_zone, clamp(accurate_range - (accuracy_falloff * distance), 5, 100)) //Lower accurancy/longer range tradeoff. 7 is a balanced number to use.
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	return process_hit(T, select_target(T, A, A), A) // SELECT TARGET FIRST!
 
@@ -636,22 +595,15 @@
 	if((target.pass_flags_self & pass_flags) && !direct_target)
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_UNHITTABLE_BY_PROJECTILES))
-<<<<<<< HEAD
-=======
 		if(!HAS_TRAIT(target, TRAIT_BLOCKING_PROJECTILES) && isliving(target))
 			var/mob/living/living_target = target
 			living_target.block_projectile_effects()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return FALSE
 	if(!ignore_source_check && firer)
 		var/mob/M = firer
 		if((target == firer) || ((target == firer.loc) && ismecha(firer.loc)) || (target in firer.buckled_mobs) || (istype(M) && (M.buckled == target)))
 			return FALSE
-<<<<<<< HEAD
 	if(ignored_factions?.len && ismob(target) && (!direct_target || ignore_direct_target)) //SKYRAT EDIT: ignore_direct_target
-=======
-	if(ignored_factions?.len && ismob(target) && !direct_target)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		var/mob/target_mob = target
 		if(faction_check(target_mob.faction, ignored_factions))
 			return FALSE

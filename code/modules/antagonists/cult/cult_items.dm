@@ -218,11 +218,7 @@ Striking a noncultist, however, will tear their flesh."}
 	// Get the heretic's new body and antag datum.
 	trapped_entity = trapped_mind?.current
 	trapped_entity.key = trapped_mind?.key
-<<<<<<< HEAD
-	var/datum/antagonist/heretic/heretic_holder = IS_HERETIC(trapped_entity)
-=======
 	var/datum/antagonist/heretic/heretic_holder = GET_HERETIC(trapped_entity)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(!heretic_holder)
 		stack_trace("[soul_to_bind] in but not a heretic on the heretic soul blade.")
 
@@ -383,11 +379,7 @@ Striking a noncultist, however, will tear their flesh."}
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-<<<<<<< HEAD
-	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
-=======
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade, /obj/item/melee/sickly_blade/cursed)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	armor_type = /datum/armor/hooded_cultrobes
 	flags_inv = HIDEJUMPSUIT
 	cold_protection = CHEST|GROIN|LEGS|ARMS
@@ -487,11 +479,7 @@ Striking a noncultist, however, will tear their flesh."}
 	armor_type = /datum/armor/cultrobes_hardened
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/hardened
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
-<<<<<<< HEAD
 	flags_inv = HIDEGLOVES | HIDEJUMPSUIT | HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
-=======
-	flags_inv = HIDEGLOVES | HIDEJUMPSUIT
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = NONE
@@ -608,10 +596,6 @@ Striking a noncultist, however, will tear their flesh."}
 /obj/item/clothing/suit/hooded/cultrobes/berserker
 	name = "flagellant's robes"
 	desc = "Blood-soaked robes infused with dark magic; allows the user to move at inhuman speeds, but at the cost of increased damage. Provides an even greater speed boost if its hood is worn."
-<<<<<<< HEAD
-	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	armor_type = /datum/armor/cultrobes_berserker
 	slowdown = -0.3 //the hood gives an additional -0.3 if you have it flipped up, for a total of -0.6
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/berserkerhood
@@ -927,11 +911,7 @@ Striking a noncultist, however, will tear their flesh."}
 			cultists |= cult_mind.current
 
 	var/mob/living/cultist_to_receive = tgui_input_list(user, "Who do you wish to call to [src]?", "Followers of the Geometer", (cultists - user))
-<<<<<<< HEAD
-	if(QDELETED(src) || loc != user || user.incapacitated())
-=======
 	if(QDELETED(src) || loc != user || user.incapacitated)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		return ITEM_INTERACT_BLOCKING
 	if(isnull(cultist_to_receive))
 		to_chat(user, span_cult_italic("You require a destination!"))
@@ -1299,10 +1279,6 @@ Striking a noncultist, however, will tear their flesh."}
 	return FALSE
 
 /obj/item/shield/mirror/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-<<<<<<< HEAD
-	var/turf/impact_turf = get_turf(hit_atom)
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	if(isliving(hit_atom))
 		var/mob/living/target = hit_atom
 
@@ -1315,20 +1291,9 @@ Striking a noncultist, however, will tear their flesh."}
 			return
 		if(!..())
 			target.Paralyze(30)
-<<<<<<< HEAD
-			var/mob/thrower = throwingdatum?.get_thrower()
-			if(thrower)
-				for(var/mob/living/Next in orange(2, impact_turf))
-					if(!Next.density || IS_CULTIST(Next))
-						continue
-					throw_at(Next, 3, 1, thrower)
-					return
-				throw_at(thrower, 7, 1, null)
-=======
 			new /obj/effect/temp_visual/cult/sparks(target)
 			playsound(target, 'sound/effects/glassbr3.ogg', 100)
 			qdel(src)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	else
 		..()
 

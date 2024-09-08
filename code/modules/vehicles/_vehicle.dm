@@ -190,8 +190,5 @@
 	. = ..()
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, old_loc)
-<<<<<<< HEAD
 		trailer.glide_size = glide_size //SKYRAT EDIT: Carts
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 		step(trailer, dir_to_move)

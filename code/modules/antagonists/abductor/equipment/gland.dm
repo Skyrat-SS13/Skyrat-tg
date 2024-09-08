@@ -84,11 +84,7 @@
 	active_mind_control = FALSE
 	return TRUE
 
-<<<<<<< HEAD
-/obj/item/organ/internal/heart/gland/Remove(mob/living/carbon/gland_owner, special, movement_flags)
-=======
 /obj/item/organ/internal/heart/gland/mob_remove(mob/living/carbon/gland_owner, special, movement_flags)
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	. = ..()
 	active = FALSE
 	if(initial(uses) == 1)
@@ -97,15 +93,8 @@
 	hud.remove_atom_from_hud(gland_owner)
 	clear_mind_control()
 
-<<<<<<< HEAD
-/obj/item/organ/internal/heart/gland/Insert(mob/living/carbon/gland_owner, special = FALSE, movement_flags = DELETE_IF_REPLACED)
-	. = ..()
-	if(!.)
-		return
-=======
 /obj/item/organ/internal/heart/gland/mob_insert(mob/living/carbon/gland_owner, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	. = ..()
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 	if(special != 2 && uses) // Special 2 means abductor surgery
 		Start()

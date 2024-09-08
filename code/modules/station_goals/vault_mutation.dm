@@ -144,7 +144,3 @@
 /datum/mutation/human/plasmocile/proc/remove_buff(obj/item/organ/internal/lungs/our_lungs)
 	our_lungs.plas_breath_dam_min = initial(our_lungs.plas_breath_dam_min)
 	our_lungs.plas_breath_dam_max = initial(our_lungs.plas_breath_dam_max)
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3

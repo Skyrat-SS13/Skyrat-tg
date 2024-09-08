@@ -170,10 +170,6 @@
 		return
 	..()
 	changeling.transform(user, chosen_prof)
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 	SEND_SIGNAL(user, COMSIG_CHANGELING_TRANSFORM)
 	return TRUE
 

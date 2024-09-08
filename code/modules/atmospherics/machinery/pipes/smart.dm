@@ -14,25 +14,6 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 
 	///Current active connections
 	var/connections = NONE
-<<<<<<< HEAD
-	///Was this pipe created during map load
-	var/map_loaded_pipe = FALSE
-
-/obj/machinery/atmospherics/pipe/smart/Initialize(mapload)
-	map_loaded_pipe = mapload
-	return ..()
-
-///helper function to append all directions into an single bit flag
-/obj/machinery/atmospherics/pipe/smart/proc/append_directions(list/spanning_directions)
-	var/bit_flag = NONE
-	for(var/i in 1 to length(spanning_directions))
-		var/spanning_direction = spanning_directions[i]
-		if(!spanning_direction)
-			continue
-		bit_flag |= spanning_direction
-	return bit_flag
-=======
->>>>>>> 4b4ae0958fe6b5d511ee6e24a5087599f61d70a3
 
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'
