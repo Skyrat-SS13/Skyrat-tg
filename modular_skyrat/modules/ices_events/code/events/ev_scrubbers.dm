@@ -14,7 +14,7 @@
 	overflow_probability = 70
 
 	/// Whitelist of reagents we want scrubbers to dispense
-	var/static/list/reagent_whitelist = list(/datum/reagent/blood,
+	safer_chems = list(/datum/reagent/blood,
 		/datum/reagent/bluespace,
 		/datum/reagent/carbon,
 		/datum/reagent/carpet/neon/simple_cyan,
@@ -55,7 +55,7 @@
 		/datum/reagent/drug/space_drugs,
 	)
 
-/datum/round_event/scrubber_overflow/ices/setup()
+/datum/round_event/scrubber_overflow/setup()
 	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_scrubber))
 		var/turf/scrubber_turf = get_turf(temp_vent)
 		var/area/scrubber_area = get_area(temp_vent)
@@ -65,7 +65,7 @@
 			continue
 		if(temp_vent.welded)
 			continue
-		if(is_type_in_list(scrubber_area, list(/area/station/engineering/supermatter/room, /area/station/engineering/supermatter,)))
+		if(is_type_in_list(scrubber_area, list(/area/station/engineering/supermatter/room, /area/station/engineering/supermatter, /area/station/commons/dorms)))
 			continue
 		if(!prob(overflow_probability))
 			continue
@@ -73,17 +73,3 @@
 
 	if(!scrubbers.len)
 		return kill()
-
-/datum/round_event/scrubber_overflow/ices/start()
-	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/vent as anything in scrubbers)
-		if(!vent.loc)
-			CRASH("SCRUBBER SURGE: [vent] has no loc somehow?")
-
-		var/datum/reagents/dispensed_reagent = new /datum/reagents(reagents_amount)
-		dispensed_reagent.my_atom = vent
-		if (forced_reagent_type)
-			dispensed_reagent.add_reagent(forced_reagent_type, reagents_amount)
-		else
-			dispensed_reagent.add_reagent(pick(reagent_whitelist), reagents_amount)
-
-		dispensed_reagent.create_foam(/datum/effect_system/fluid_spread/foam/scrubber, reagents_amount)
