@@ -368,6 +368,9 @@
 /datum/job/orderly
 	alt_titles = list(
 		"Orderly",
+		"Porter",
+		"Medical Attendant",
+		"Medical Support Technician",
 		"Medical Guard",
 	) //other dept guards' alt-titles should be kept to [department] guard to avoid confusion, unless the department gets a re-do.
 
