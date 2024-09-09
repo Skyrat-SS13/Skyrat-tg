@@ -106,6 +106,7 @@
 		affectareas += V
 	for(var/V in protected_areas)
 		affectareas -= get_areas(V)
+	affectareas = enhanced_roleplay_filter(affectareas) // SKYRAT EDIT ADDITION - enhanced roleplay area check - modular_skyrat/modules/ices_events/code/events/ev_roleplay_check.dm
 	for(var/V in affectareas)
 		var/area/A = V
 		if(protect_indoors && !A.outdoors)
