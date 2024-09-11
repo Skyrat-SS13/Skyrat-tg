@@ -368,7 +368,6 @@
 /datum/job/orderly
 	alt_titles = list(
 		"Orderly",
-		"Porter",
 		"Medical Attendant",
 		"Medical Support Technician",
 		"Medical Guard",
