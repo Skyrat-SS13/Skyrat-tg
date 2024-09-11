@@ -162,11 +162,4 @@
 		if(scar_text)
 			. += "[scar_text]"
 
-	if(istype(w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/undershirt = w_uniform
-		if(undershirt.has_sensor == BROKEN_SENSORS)
-			. += list(span_notice("The [undershirt]'s medical sensors are sparking."))
-			
 	return .
-
-#undef ADD_NEWLINE_IF_NECESSARY
