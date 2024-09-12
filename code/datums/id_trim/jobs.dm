@@ -1036,7 +1036,8 @@
 
 	if(!.)
 		return
-
+//SKYRAT EDIT REMOVAL
+/*
 	access |= department_access
 
 	// Config check for if sec has maint access.
@@ -1120,6 +1121,9 @@
 		ACCESS_ROBOTICS,
 		ACCESS_XENOBIOLOGY,
 	)
+
+*/
+//SKYRAT EDIT END
 
 /datum/id_trim/job/shaft_miner
 	assignment = JOB_SHAFT_MINER
