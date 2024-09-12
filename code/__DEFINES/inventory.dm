@@ -108,6 +108,8 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define HIDEMUTWINGS (1<<13)
 ///hides belts and riggings
 #define HIDEBELT (1<<14)
+///hides antennae
+#define HIDEANTENNAE (1<<15)
 
 //SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
 /// Manually set this on items you want anthro ears to show on!
