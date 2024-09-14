@@ -298,3 +298,6 @@
 
 /// Trait added by style component
 #define STYLE_TRAIT "style"
+
+/// Trait from an engraving
+#define ENGRAVED_TRAIT "engraved"
