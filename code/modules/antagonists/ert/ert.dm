@@ -234,6 +234,7 @@
 	var/mob/living/carbon/human/H = owner.current
 	if(!istype(H))
 		return
+	H.dna.species.give_important_for_life(H)
 	if(isplasmaman(H))
 		H.equipOutfit(plasmaman_outfit)
 		H.open_internals(H.get_item_for_held_index(2))
