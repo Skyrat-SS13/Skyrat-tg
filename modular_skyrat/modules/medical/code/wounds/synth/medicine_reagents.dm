@@ -43,7 +43,6 @@
 	taste_description = "dull plasma"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
-	metabolization_rate = 0.5 // fast
 	overdose_threshold = 60 // it takes a lot, if youre really messed up you CAN hit this but its unlikely
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
