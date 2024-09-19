@@ -165,8 +165,11 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	var/mob/living/carbon/human/carbon_target = target
-	if(!carbon_target && !iscyborg(target))
+
+	var/mob/living/carbon/human/carbon_target
+	if(ishuman(target))
+		carbon_target = target
+	else if(!iscyborg(target))
 		return
 
 	var/message = ""
@@ -177,7 +180,7 @@
 
 	switch(user.zone_selected) //to let code know what part of body we gonna whip
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-			if(!carbon_target?.has_feet())
+			if(carbon_target && !carbon_target.has_feet())
 				to_chat(user, span_danger("Looks like [target] is missing their legs!"))
 				return
 
@@ -219,7 +222,7 @@
 			conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
 
 		if(BODY_ZONE_PRECISE_GROIN)
-			if(!carbon_target?.is_bottomless())
+			if(carbon_target && !carbon_target.is_bottomless())
 				to_chat(user, span_danger("Looks like [target]'s butt is covered!"))
 				return
 			if(current_whip_type == "weak")

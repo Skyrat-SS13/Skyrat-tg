@@ -98,9 +98,12 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	var/mob/living/carbon/human/carbon_target = target
-	if(!carbon_target && !iscyborg(target))
-		return FALSE
+
+	var/mob/living/carbon/human/carbon_target
+	if(ishuman(target))
+		carbon_target = target
+	else if(!iscyborg(target))
+		return
 
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [target] don't want you to do that."))
@@ -182,6 +185,9 @@
 					: pick("[second_adjective] teases [target]'s touch sensors with [src]",
 						"uses [src] to [vibration_mode == MAGIC_WAND_MODE_LOW ? "slowly" : ""] massage [target]'s touch sensors",
 						"uses [src] to tease [target]'s touch sensors")
+		else
+			to_chat(user, span_warning("Use the wand on their groin or chest!"))
+			return FALSE
 
 	if(prob(30))
 		target.try_lewd_autoemote(pick("twitch_s", "moan"))
