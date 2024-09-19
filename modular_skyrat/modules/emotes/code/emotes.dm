@@ -547,7 +547,7 @@
 	message = "moos!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
+	sound = 'sound/creatures/cow.ogg'
 
 /datum/emote/living/honk
 	key = "honk1"
