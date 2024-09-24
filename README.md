@@ -24,6 +24,7 @@ This is Skyrat's downstream fork of /tg/station created in byond.
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
+<<<<<<< HEAD
 ## Important note - TEST YOUR PULL REQUESTS
 
 You are responsible for the testing of your content and providing proof of such in your pull request. You should not mark a pull request ready for review until you have actually tested it. If you require a separate client for testing, you can use a guest account by logging out of BYOND and connecting to your test server. Test merges are not for bug finding, they are for stress tests where local testing simply doesn't allow for this.
@@ -33,6 +34,9 @@ You are responsible for the testing of your content and providing proof of such 
 ![image](https://i.imgur.com/aJnE4WT.png)
 
 [Modularisation Guide](./modular_skyrat/readme.md)
+=======
+*All github inquiries (such as moderation actions) may be handled via the /tg/station discord [#coding-general](https://discord.com/channels/326822144233439242/326831214667235328). Simply ping the `@Maintainer` role, following the guide on asking questions located in the channel description, with your issue!*
+>>>>>>> 43b48e715e70 (Update README.md to include how to actually get help (#86025))
 
 ## DOWNLOADING
 

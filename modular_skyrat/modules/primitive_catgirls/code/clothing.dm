@@ -129,7 +129,7 @@
 
 // Head
 
-/obj/item/clothing/head/standalone_hood/primitive_catgirl_colors
+/obj/item/clothing/head/hooded/standalone_hood/primitive_catgirl_colors
 	greyscale_colors = "#594032#364660"
 
 // Misc Items

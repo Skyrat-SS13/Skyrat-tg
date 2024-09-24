@@ -278,16 +278,6 @@
 /obj/structure/musician/piano,
 /turf/open/floor/wood,
 /area/awaymission/beach)
-"dx" = (
-/obj/structure/sign/directions/dorms/directional/north{
-	pixel_y = 35
-	},
-/obj/structure/sign/directions/medical/directional/north{
-	pixel_y = 29
-	},
-/obj/machinery/computer/slot_machine,
-/turf/open/floor/wood/large,
-/area/awaymission/beach)
 "dL" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Locker Room"
@@ -346,7 +336,7 @@
 /area/awaymission/beach)
 "eT" = (
 /obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/cigar{
+/obj/item/cigarette/cigar{
 	pixel_y = 16;
 	pixel_x = -2
 	},
@@ -364,6 +354,10 @@
 	pixel_x = 4
 	},
 /turf/open/floor/iron/white/textured_large,
+/area/awaymission/beach)
+"fc" = (
+/obj/item/broken_bottle,
+/turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "fd" = (
 /obj/structure/table/bronze,
@@ -1078,6 +1072,16 @@
 /obj/structure/table/glass,
 /turf/open/floor/wood/large,
 /area/awaymission/beach)
+"nu" = (
+/obj/structure/sign/directions/dorms/directional/north{
+	pixel_y = 35
+	},
+/obj/structure/sign/directions/medical/directional/north{
+	pixel_y = 29
+	},
+/obj/machinery/computer/slot_machine,
+/turf/open/floor/wood/large,
+/area/awaymission/beach)
 "nC" = (
 /obj/effect/turf_decal/tile/dark_red/full,
 /turf/open/floor/iron/smooth_large,
@@ -1626,6 +1630,10 @@
 	},
 /turf/open/floor/iron/dark/diagonal,
 /area/awaymission/beach)
+"uK" = (
+/obj/effect/spawner/random/trash/cigbutt,
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "uL" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -1688,7 +1696,7 @@
 "vq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/broken_floor,
-/obj/effect/landmark/awaystart,
+/obj/effect/landmark/awaystart/beach,
 /turf/open/floor/plating,
 /area/awaymission/beach)
 "vx" = (
@@ -1919,7 +1927,7 @@
 	pixel_y = 12;
 	pixel_x = 3
 	},
-/obj/item/stock_parts/cell/emproof{
+/obj/item/stock_parts/power_store/cell/emproof{
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -2023,7 +2031,6 @@
 "Aa" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/condiment/enzyme{
-	layer = 5;
 	pixel_x = 9;
 	pixel_y = 5
 	},
@@ -2338,6 +2345,11 @@
 	},
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
+"DS" = (
+/obj/effect/mob_spawn/corpse/human/old_pirate_captain,
+/obj/structure/bed/maint,
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "DU" = (
 /obj/structure/table/bronze,
 /turf/open/misc/beach/sand,
@@ -2510,9 +2522,7 @@
 /area/awaymission/beach)
 "Ft" = (
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/window/reinforced/spawner/directional/north{
-	layer = 2.9
-	},
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/chair/stool/directional/south,
 /obj/item/clothing/glasses/sunglasses{
 	pixel_y = -2;
@@ -3260,6 +3270,17 @@
 	},
 /turf/open/floor/iron/white/textured_large,
 /area/awaymission/beach)
+"Oa" = (
+/obj/item/paper/fluff/old_pirate_note{
+	pixel_x = -5;
+	pixel_y = -7
+	},
+/obj/item/pen/fountain{
+	pixel_y = -11;
+	pixel_x = -8
+	},
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "Og" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood/large,
@@ -3396,6 +3417,12 @@
 /area/awaymission/beach)
 "Qg" = (
 /turf/open/floor/wood/parquet,
+/area/awaymission/beach)
+"Qj" = (
+/obj/item/fishing_rod,
+/obj/structure/closet/crate/trashcart,
+/obj/item/reagent_containers/cup/glass/bottle/rum/aged,
+/turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "Qk" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -3589,7 +3616,7 @@
 /area/awaymission/beach)
 "SB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/awaystart,
+/obj/effect/landmark/awaystart/beach,
 /turf/open/floor/plating,
 /area/awaymission/beach)
 "SI" = (
@@ -7418,8 +7445,8 @@ XB
 XB
 Vf
 YV
-VY
-VY
+Qj
+fc
 hL
 ni
 XB
@@ -7675,8 +7702,8 @@ XB
 XB
 Vf
 VY
-VY
-VY
+uK
+DS
 Er
 BK
 XB
@@ -7932,7 +7959,7 @@ XB
 XB
 Vf
 VY
-VY
+Oa
 VY
 VY
 BK
@@ -8190,7 +8217,7 @@ XB
 Vf
 IZ
 VY
-VY
+uK
 VY
 BK
 XB
@@ -13213,7 +13240,7 @@ xv
 xv
 xv
 xv
-dx
+nu
 Zp
 Zp
 mb

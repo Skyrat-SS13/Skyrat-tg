@@ -5,7 +5,7 @@
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
 /datum/techweb_node/colony_fabricator_structures
-	id = "colony_fabricator_structures"
+	id = TECHWEB_NODE_COLONY_STRUCTURES
 	display_name = "Colony Fabricator Structure Designs"
 	description = "Contains all of the colony fabricator's structure designs."
 	design_ids = list(
@@ -16,7 +16,7 @@
 		"prefab_cat_floor_tile",
 		"colony_fab_plastic_wall_panel",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = INFINITE) // God save you
 	hidden = TRUE
 	show_on_wiki = FALSE
 	starting_node = TRUE

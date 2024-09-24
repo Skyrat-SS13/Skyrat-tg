@@ -91,7 +91,7 @@
 	id = "organic_repair_foam"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
-	build_path = /obj/item/stack/sticky_tape/surgical
+	build_path = /obj/item/stack/medical/wound_recovery/robofoam
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_DEFOREST_MEDICAL,

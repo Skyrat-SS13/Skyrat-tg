@@ -3,6 +3,8 @@
 	limb_id = SPECIES_LIZARD
 	is_dimorphic = FALSE
 	head_flags = HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
+	// lizardshave many teeth
+	teeth_count = 72
 
 /obj/item/bodypart/chest/lizard
 	icon_greyscale = 'icons/mob/human/species/lizard/bodyparts.dmi'
@@ -11,7 +13,7 @@
 	wing_types = list(/obj/item/organ/external/wings/functional/dragon)
 
 /obj/item/bodypart/chest/lizard/get_butt_sprite()
-	return BUTT_SPRITE_LIZARD
+	return icon('icons/mob/butts.dmi', BUTT_SPRITE_LIZARD)
 
 /obj/item/bodypart/arm/left/lizard
 	icon_greyscale = 'icons/mob/human/species/lizard/bodyparts.dmi'
@@ -50,6 +52,7 @@
 	icon_greyscale = 'icons/mob/human/species/lizard/bodyparts.dmi'
 	limb_id = BODYPART_ID_DIGITIGRADE
 	bodyshape = BODYSHAPE_HUMANOID | BODYSHAPE_DIGITIGRADE
+	footprint_sprite = FOOTPRINT_SPRITE_CLAWS
 
 /obj/item/bodypart/leg/left/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
@@ -76,6 +79,7 @@
 	icon_greyscale = 'icons/mob/human/species/lizard/bodyparts.dmi'
 	limb_id = BODYPART_ID_DIGITIGRADE
 	bodyshape = BODYSHAPE_HUMANOID | BODYSHAPE_DIGITIGRADE
+	footprint_sprite = FOOTPRINT_SPRITE_CLAWS
 
 /obj/item/bodypart/leg/right/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()

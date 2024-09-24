@@ -29,6 +29,7 @@
 
 /datum/record/New(
 	age = 18,
+	chrono_age = 18, // SKYRAT EDIT ADDITION - Chronological age
 	blood_type = "?",
 	character_appearance,
 	dna_string = "Unknown",
@@ -42,6 +43,7 @@
 	voice = "?????",
 )
 	src.age = age
+	src.chrono_age = chrono_age // SKYRAT EDIT ADDITION - Chronological age
 	src.blood_type = blood_type
 	src.character_appearance = character_appearance
 	src.dna_string = dna_string
@@ -89,6 +91,7 @@
 
 /datum/record/crew/New(
 	age = 18,
+	chrono_age = 18, // SKYRAT EDIT ADDITION - Chronological age
 	blood_type = "?",
 	character_appearance,
 	dna_string = "Unknown",
@@ -153,6 +156,7 @@
 
 /datum/record/locked/New(
 	age = 18,
+	chrono_age = 18, // SKYRAT EDIT ADDITION - Chronological age
 	blood_type = "?",
 	character_appearance,
 	dna_string = "Unknown",
@@ -264,6 +268,7 @@
 	var/final_paper_text = "<center><b>SR-[print_count]: [header]</b></center><br>"
 
 	final_paper_text += "Name: [name]<br>Gender: [gender]<br>Age: [age]<br>"
+	final_paper_text += "Chronological Age: [chrono_age]<br>" // SKYRAT EDIT ADDITION - Chronological age
 	if(alias != name)
 		final_paper_text += "Alias: [alias]<br>"
 

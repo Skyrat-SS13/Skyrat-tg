@@ -71,7 +71,7 @@
 	return initial(default_accessory_type.name)
 
 /datum/preference/choiced/genital/init_possible_values()
-	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	return assoc_to_keys_features(SSaccessories.sprite_accessories[relevant_mutant_bodypart])
 
 /datum/preference/toggle/genital_skin_tone
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -83,7 +83,7 @@
 /datum/preference/toggle/genital_skin_tone/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/part_name = preferences.read_preference(genital_pref_type)
-	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[relevant_mutant_bodypart]?[part_name]
+	var/datum/sprite_accessory/genital/accessory = SSaccessories.sprite_accessories[relevant_mutant_bodypart]?[part_name]
 	if(!accessory?.factual || !accessory.has_skintone_shading)
 		return FALSE
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
@@ -199,7 +199,7 @@
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))
 	return erp_allowed && part_enabled && (passed_initial_check || allowed)
 
-/datum/preference/numeric/penis_length/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/penis_length/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["penis_size"] = value
 
 /datum/preference/numeric/penis_length/create_default_value() // if you change from this to PENIS_MAX_LENGTH the game should laugh at you
@@ -220,7 +220,7 @@
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))
 	return erp_allowed && part_enabled && (passed_initial_check || allowed)
 
-/datum/preference/numeric/penis_girth/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/penis_girth/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["penis_girth"] = value
 
 /datum/preference/numeric/penis_girth/create_default_value()
@@ -322,8 +322,8 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "balls_size"
 	relevant_mutant_bodypart = ORGAN_SLOT_TESTICLES
-	minimum = 0
-	maximum = 3
+	minimum = TESTICLES_MIN_SIZE
+	maximum = TESTICLES_MAX_SIZE
 
 /datum/preference/numeric/balls_size/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)

@@ -1,5 +1,5 @@
 /datum/armament_entry/company_import/sol_defense
-	category = SOL_DEFENSE_DEFENSE_NAME
+	category = COMPANY_NAME_SOL_DEFENSE_DEFENSE
 	company_bitflag = CARGO_COMPANY_SOL_DEFENSE
 
 // Beautiful SolFed clothing
@@ -86,25 +86,34 @@
 /datum/armament_entry/company_import/sol_defense/sidearm/eland
 	item_type = /obj/item/gun/ballistic/revolver/sol
 	cost = PAYCHECK_COMMAND * 4
+	restricted = TRUE
+
+//You can still buy it from cargo side
+//If cargo decides to agree with sec on a compromise then good job
 
 /datum/armament_entry/company_import/sol_defense/sidearm/wespe
 	item_type = /obj/item/gun/ballistic/automatic/pistol/sol
 	cost = PAYCHECK_COMMAND * 4
-
+	restricted = TRUE
+/*
 /datum/armament_entry/company_import/sol_defense/sidearm/skild
 	item_type = /obj/item/gun/ballistic/automatic/pistol/trappiste
 	cost = PAYCHECK_COMMAND * 6
+	restricted = TRUE
+	contraband = TRUE
 
 /datum/armament_entry/company_import/sol_defense/sidearm/takbok
 	item_type = /obj/item/gun/ballistic/revolver/takbok
 	cost = PAYCHECK_COMMAND * 6
-
+	contraband = TRUE
+	restricted = TRUE
+*/
 // Lethal anything that's not a pistol, requires high company interest
 
 /datum/armament_entry/company_import/sol_defense/longarm
 	subcategory = "Longarms"
 	restricted = TRUE
-
+/*
 /datum/armament_entry/company_import/sol_defense/longarm/renoster
 	item_type = /obj/item/gun/ballistic/shotgun/riot/sol
 	cost = PAYCHECK_COMMAND * 6
@@ -112,21 +121,25 @@
 /datum/armament_entry/company_import/sol_defense/longarm/sindano
 	item_type = /obj/item/gun/ballistic/automatic/sol_smg
 	cost = PAYCHECK_COMMAND * 6
-
+*/
 /datum/armament_entry/company_import/sol_defense/longarm/elite
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
-	cost = PAYCHECK_COMMAND * 12
+	cost = PAYCHECK_COMMAND * 8
 
+/*
 /datum/armament_entry/company_import/sol_defense/longarm/bogseo
 	item_type = /obj/item/gun/ballistic/automatic/xhihao_smg
 	cost = PAYCHECK_COMMAND * 10
 	contraband = TRUE
+//Begone
+
 
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
 	cost = PAYCHECK_COMMAND * 14
 	contraband = TRUE
 
+These one are simply rediculous, but we'll keep it there incase someone has idea
 /datum/armament_entry/company_import/sol_defense/longarm/outomaties
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
 	cost = PAYCHECK_COMMAND * 23
@@ -136,6 +149,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/sol_grenade_launcher
 	cost = PAYCHECK_COMMAND * 46
 	contraband = TRUE
+*/
 
 /datum/armament_entry/company_import/sol_defense/magazines
 	subcategory = "Magazines"
@@ -146,10 +160,10 @@
 
 /datum/armament_entry/company_import/sol_defense/magazines/c35_extended
 	item_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo/starts_empty
-
+/*
 /datum/armament_entry/company_import/sol_defense/magazines/c585_mag
 	item_type = /obj/item/ammo_box/magazine/c585trappiste_pistol/spawns_empty
-
+*/
 /datum/armament_entry/company_import/sol_defense/magazines/sol_rifle_short
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/starts_empty
 
@@ -157,11 +171,13 @@
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard/starts_empty
 	cost = PAYCHECK_COMMAND
 
+/*
+
 /datum/armament_entry/company_import/sol_defense/magazines/sol_rifle_drum
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum/starts_empty
 	cost = PAYCHECK_COMMAND * 3
 	contraband = TRUE
-
+*/
 /datum/armament_entry/company_import/sol_defense/magazines/sol_grenade_standard
 	item_type = /obj/item/ammo_box/magazine/c980_grenade/starts_empty
 	cost = PAYCHECK_COMMAND * 2
@@ -170,3 +186,5 @@
 	item_type = /obj/item/ammo_box/magazine/c980_grenade/drum/starts_empty
 	cost = PAYCHECK_CREW * 3
 	contraband = TRUE
+
+//These two don't really bothers me

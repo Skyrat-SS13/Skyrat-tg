@@ -8,8 +8,13 @@
 	return list(MALE, FEMALE, PLURAL, NEUTER)
 
 /datum/preference/choiced/gender/apply_to_human(mob/living/carbon/human/target, value)
-	/* SKYRAT REMOVAL START - Did you just assume my gender???
+	/* SKYRAT EDIT REMOVAL START - Did you just assume my gender???
 	if(!target.dna.species.sexes)
 		value = PLURAL //disregard gender preferences on this species
-	*/ // SKYRAT REMOVAL END
+	*/ // SKYRAT EDIT REMOVAL END
 	target.gender = value
+
+/datum/preference/choiced/gender/create_informed_default_value(datum/preferences/preferences)
+	// The only reason I'm limiting this to male or female
+	// is that hairstyle randomization handles enbies poorly
+	return pick(MALE, FEMALE)

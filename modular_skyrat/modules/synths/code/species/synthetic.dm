@@ -17,6 +17,7 @@
 		TRAIT_LITERATE,
 		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
 		TRAIT_ROBOTIC_DNA_ORGANS,
+		TRAIT_SYNTHETIC,
 	)
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -35,12 +36,12 @@
 	mutantappendix = null
 	exotic_blood = /datum/reagent/fuel/oil
 	bodypart_overrides = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/synth,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot/synth,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot/synth,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot/synth,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot/synth,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/synth,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/synth,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/synth,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/synth,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/synth,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/synth,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	coldmod = 1.2
@@ -110,8 +111,8 @@
 	if(!chassis && !head)
 		return
 
-	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis[MUTANT_INDEX_NAME]]
-	var/datum/sprite_accessory/synth_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head[MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = SSaccessories.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis[MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/synth_head/head_of_choice = SSaccessories.sprite_accessories[MUTANT_SYNTH_HEAD][head[MUTANT_INDEX_NAME]]
 	if(!chassis_of_choice && !head_of_choice)
 		return
 
@@ -180,11 +181,6 @@
 	transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
 	screen_organ.bodypart_overlay.set_appearance_from_dna(transformer.dna)
 	transformer.update_body()
-
-/datum/species/synthetic/random_name(gender, unique, lastname)
-	var/randname = pick(GLOB.posibrain_names)
-	randname = "[randname]-[rand(100, 999)]"
-	return randname
 
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.

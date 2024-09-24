@@ -8,20 +8,20 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 
 /// Attempts to use the item on the target brain.
-/obj/item/rsd_interface/afterattack(obj/item/organ/internal/brain/target_brain, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(!proximity_flag || !istype(target_brain))
-		return FALSE
+/obj/item/rsd_interface/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!istype(interacting_with, /obj/item/organ/internal/brain))
+		return NONE
 
-	if(HAS_TRAIT(target_brain, TRAIT_NIFSOFT_HUD_GRANTER))
-		balloon_alert("already upgraded!")
-		return FALSE
+	if(HAS_TRAIT(interacting_with, TRAIT_RSD_COMPATIBLE))
+		user.balloon_alert(user, "already upgraded!")
+		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] upgrades [target_brain] with [src]."), span_notice("You upgrade [target_brain] to be RSD compatible."))
-	target_brain.AddElement(/datum/element/rsd_interface)
-	playsound(target_brain.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
+	user.visible_message(span_notice("[user] upgrades [interacting_with] with [src]."), span_notice("You upgrade [interacting_with] to be RSD compatible."))
+	interacting_with.AddElement(/datum/element/rsd_interface)
+	playsound(interacting_with.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
 	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /datum/element/rsd_interface/Attach(datum/target)
 	. = ..()

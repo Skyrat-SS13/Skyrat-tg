@@ -31,7 +31,7 @@
 	to_chat(user, span_notice("You start to open the condom pack..."))
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
-	play_lewd_sound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
+	conditional_pref_sound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
 	var/obj/item/clothing/sextoy/condom/removed_condom = new /obj/item/clothing/sextoy/condom
 
 	user.put_in_hands(removed_condom)

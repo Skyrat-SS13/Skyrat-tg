@@ -10,6 +10,7 @@
 	light_power = 1
 	light_on = FALSE
 	bare_wound_bonus = 20
+	demolition_mod = 1.5 //1.5x damage to objects, robots, etc.
 	stealthy_audio = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NO_BLOOD_ON_ITEM
@@ -122,13 +123,9 @@
 	SIGNAL_HANDLER
 
 	if(active)
-		if(embedding)
-			updateEmbedding()
 		heat = active_heat
 		START_PROCESSING(SSobj, src)
 	else
-		if(embedding)
-			disableEmbedding()
 		heat = initial(heat)
 		STOP_PROCESSING(SSobj, src)
 
@@ -182,6 +179,10 @@
 	return (BRUTELOSS|FIRELOSS)
 
 /// Energy swords.
+/datum/embed_data/esword
+	embed_chance = 75
+	impact_pain_mult = 10
+
 /obj/item/melee/energy/sword
 	name = "energy sword"
 	desc = "May the force be within you."
@@ -198,7 +199,7 @@
 	armour_penetration = 35
 	block_chance = 50
 	block_sound = 'sound/weapons/block_blade.ogg'
-	embedding = list("embed_chance" = 75, "impact_pain_mult" = 10)
+	embed_type = /datum/embed_data/esword
 
 /obj/item/melee/energy/sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
@@ -219,7 +220,7 @@
 	if(!user.cell)
 		return
 
-	var/obj/item/stock_parts/cell/our_cell = user.cell
+	var/obj/item/stock_parts/power_store/our_cell = user.cell
 	if(HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE) && !(our_cell.use(hitcost)))
 		attack_self(user)
 		to_chat(user, span_notice("It's out of charge!"))

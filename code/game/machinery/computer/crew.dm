@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_HEAD_OF_SECURITY = 10,
 		JOB_WARDEN = 11,
 		JOB_SECURITY_OFFICER = 12,
-		/* SKYRAT REMOVAL - We need those slots for our own jobs, these jobs aren't on Skyrat anymore anyway.
+		/* SKYRAT EDIT REMOVAL - We need those slots for our own jobs, these jobs aren't on Skyrat anymore anyway.
 		JOB_SECURITY_OFFICER_MEDICAL = 13,
 		JOB_SECURITY_OFFICER_ENGINEERING = 14,
 		JOB_SECURITY_OFFICER_SCIENCE = 15,
@@ -130,6 +130,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_STATION_ENGINEER = 41,
 		JOB_ATMOSPHERIC_TECHNICIAN = 42,
 		JOB_ENGINEERING_GUARD = 43, // SKYRAT EDIT ADDITION
+		JOB_TELECOMMS_SPECIALIST = 44, // SKYRAT EDIT ADDITION	
 		// 50-59: Cargo
 		JOB_QUARTERMASTER = 50,
 		JOB_SHAFT_MINER = 51,

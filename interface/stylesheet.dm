@@ -134,6 +134,7 @@ h1.alert, h2.alert		{color: #000000;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
 
 .command_headset		{font-weight: bold;	font-size: 3;}
+.soapbox 				{font-weight: bold; font-size: 3;}
 .small					{font-size: 1;}
 .big					{font-size: 3;}
 .reallybig				{font-size: 4;}
@@ -151,8 +152,8 @@ h1.alert, h2.alert		{color: #000000;}
 		75%		{color: #410194;}
 		100%	{color: #3bb5d3;}
 }
+// SKYRAT EDIT ADDITION BEGIN
 
-// SKYRAT ADDITION BEGIN
 .velvet					{color: #660015; 	font-weight: bold; animation: velvet 5000ms infinite;}
 	@keyframes velvet {
 		0% 		{color: #400020; }
@@ -250,9 +251,7 @@ h1.alert, h2.alert		{color: #000000;}
 .cyan {
 	color: #0ea1e6;
 }
-
-
-// SKYRAT ADDITION END
+// SKYRAT EDIT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
 	@keyframes phobia {

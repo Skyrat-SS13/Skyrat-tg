@@ -27,8 +27,8 @@ Slimecrossing Weapons
 	throwforce = 15
 	damtype = BRUTE
 
-/obj/item/knife/rainbowknife/afterattack(atom/O, mob/user, proximity)
-	if(proximity && isliving(O))
+/obj/item/knife/rainbowknife/afterattack(atom/target, mob/user, params)
+	if(isliving(target))
 		damtype = pick(BRUTE, BURN, TOX, OXY)
 	switch(damtype)
 		if(BRUTE)
@@ -47,7 +47,6 @@ Slimecrossing Weapons
 			hitsound = 'sound/effects/space_wind.ogg'
 			attack_verb_continuous = string_list(list("suffocates", "winds", "vacuums"))
 			attack_verb_simple = string_list(list("suffocate", "wind", "vacuum"))
-	return ..()
 
 //Adamantine shield - Chilling Adamantine
 /obj/item/shield/adamantineshield
@@ -67,6 +66,7 @@ Slimecrossing Weapons
 	attack_verb_simple = list("bash", "pound", "slam")
 	item_flags = SLOWS_WHILE_IN_HAND
 	breakable_by_damage = FALSE
+	shield_bash_sound = 'sound/effects/glassknock.ogg'
 
 /datum/armor/shield_adamantineshield
 	melee = 50

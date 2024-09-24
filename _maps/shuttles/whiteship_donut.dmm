@@ -34,13 +34,6 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned)
-"aX" = (
-/obj/machinery/power/shuttle_engine/heater,
-/obj/structure/window/reinforced/spawner/directional/north{
-	layer = 2.9
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned)
 "be" = (
 /obj/machinery/power/shuttle_engine/propulsion/left,
 /turf/open/floor/plating/airless,
@@ -55,7 +48,7 @@
 /area/shuttle/abandoned)
 "cm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned)
 "da" = (
@@ -207,6 +200,11 @@
 /area/shuttle/abandoned)
 "ui" = (
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned)
+"uj" = (
+/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned)
 "vu" = (
@@ -389,7 +387,7 @@
 /area/shuttle/abandoned)
 "NG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/high/empty,
+/obj/item/stock_parts/power_store/cell/high/empty,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned)
 "Ot" = (
@@ -468,7 +466,9 @@
 /area/shuttle/abandoned)
 "XY" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
-	dir = 1
+	dir = 1;
+	x_offset = 0;
+	y_offset = 9
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/disk/holodisk/donutstation/whiteship,
@@ -543,7 +543,7 @@ pM
 nu
 YO
 ab
-aX
+uj
 be
 aa
 aa
@@ -563,7 +563,7 @@ ac
 KL
 Te
 ab
-aX
+uj
 bf
 aa
 aa
@@ -763,7 +763,7 @@ MT
 hP
 eu
 ab
-aX
+uj
 be
 aa
 aa
@@ -783,7 +783,7 @@ qy
 BM
 kI
 ab
-aX
+uj
 bf
 aa
 aa

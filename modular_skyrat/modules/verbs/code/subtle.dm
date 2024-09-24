@@ -57,8 +57,8 @@
 		if((ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
 			ghost.show_message(subtle_message)
 
-	for(var/mob/reciever in viewers)
-		reciever.show_message(subtle_message, alt_msg = subtle_message)
+	for(var/mob/receiver in viewers)
+		receiver.show_message(subtle_message, alt_msg = subtle_message)
 
 	return TRUE
 
@@ -158,8 +158,8 @@
 			if(holo?.Impersonation?.client)
 				ghostless |= holo.Impersonation
 
-		for(var/mob/reciever in ghostless)
-			reciever.show_message(subtler_message, alt_msg = subtler_message)
+		for(var/mob/receiver in ghostless)
+			receiver.show_message(subtler_message, alt_msg = subtler_message)
 
 	return TRUE
 

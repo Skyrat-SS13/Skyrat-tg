@@ -15,6 +15,12 @@
 	desc = "A midnight blue kilt, padded with nano-kevlar and adorned with gold and a tartan sash."
 	icon_state = "capkilt"
 
+/obj/item/clothing/under/rank/captain/skyrat/shipdress
+	name = "captain's dress"
+	desc = "A blue dress adorned with a gold trim. Perfect for a formal dinner."
+	icon_state = "solgov_dress"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/rank/captain/skyrat/imperial
 	name = "captain's naval jumpsuit"
 	desc = "A white naval suit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."

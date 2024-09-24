@@ -4,12 +4,12 @@
 /datum/surgery/positronic_restoration
 	name = "Posibrain Reboot (Revival)"
 	steps = list(
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/open_hatch,
 		/datum/surgery_step/mechanic_unwrench,
-		/datum/surgery_step/pry_off_plating/fullbody,
-		/datum/surgery_step/weld_plating/fullbody,
 		/datum/surgery_step/prepare_electronics,
+		/datum/surgery_step/weld_plating/fullbody,
 		/datum/surgery_step/finalize_positronic_restoration,
-		/datum/surgery_step/add_plating/fullbody,
 		/datum/surgery_step/mechanic_close,
 	)
 
@@ -18,8 +18,8 @@
 	requires_bodypart_type = BODYTYPE_ROBOTIC
 	desc = "A surgical procedure that reboots a positronic brain."
 
-/datum/surgery/robot_chassis_restoration/can_start(mob/user, mob/living/carbon/target)
-	if(!..() || target.stat != DEAD ||  !target.get_organ_slot(ORGAN_SLOT_BRAIN))
+/datum/surgery/positronic_restoration/can_start(mob/user, mob/living/carbon/target)
+	if(!..() || target.stat != DEAD || !target.get_organ_slot(ORGAN_SLOT_BRAIN) || !issynthetic(target))
 		return FALSE
 
 	return TRUE
@@ -92,7 +92,7 @@
 /datum/surgery_step/finalize_positronic_restoration/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if (target.stat < DEAD)
 		target.visible_message(span_notice("...[target] is completely unaffected! Seems like they're already active!"))
-		return FALSE
+		return TRUE
 
 	target.cure_husk()
 	target.grab_ghost()
@@ -102,11 +102,11 @@
 		target.emote("chime")
 		target.visible_message(span_notice("...[target] reactivates, their chassis coming online!"))
 		to_chat(target, span_danger("[CONFIG_GET(string/blackoutpolicy)]"))
-		return FALSE //This is due to synths having some weirdness with their revive.
+		return TRUE //This is due to synths having some weirdness with their revive.
 	else
 		target.emote("buzz")
 		target.visible_message(span_warning("...[target.p_they()] convulses, then goes offline."))
-		return TRUE
+		return FALSE
 
 /datum/surgery_step/finalize_positronic_restoration/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, fail_prob)
 	. = ..()

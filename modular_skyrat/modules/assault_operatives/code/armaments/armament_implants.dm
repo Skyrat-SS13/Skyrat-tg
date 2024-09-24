@@ -5,7 +5,7 @@
 /datum/armament_entry/assault_operatives/implants/deathrattle
 	name = "Deathrattle Implant Kit"
 	description = "A collection of implants (and one reusable implanter) that should be injected into the team. When one of the team \
-	dies, all other implant holders recieve a mental message informing them of their teammates' name \
+	dies, all other implant holders receive a mental message informing them of their teammates' name \
 	and the location of their death. Unlike most implants, these are designed to be implanted \
 	in any creature, biological or mechanical."
 	item_type = /obj/item/storage/box/syndie_kit/imp_deathrattle

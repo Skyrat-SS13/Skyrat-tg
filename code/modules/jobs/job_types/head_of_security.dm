@@ -55,11 +55,12 @@
 	suit_store = /obj/item/gun/energy/e_gun
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
+		/obj/item/choice_beacon/security_pistol = 1, //Skyrat Addition
 		)
 	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
+	gloves = /obj/item/clothing/gloves/color/black/security
 	head = /obj/item/clothing/head/hats/hos/beret
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs

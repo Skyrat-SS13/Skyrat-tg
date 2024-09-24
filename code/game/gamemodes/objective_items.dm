@@ -5,7 +5,7 @@
 //Contains the target item datums for Steal objectives.
 /datum/objective_item
 	/// How the item is described in the objective
-	var/name = "A silly bike horn! Honk!"
+	var/name = "a silly bike horn! Honk!"
 	/// Typepath of item
 	var/targetitem = /obj/item/bikehorn
 	/// Valid containers that the target item can be in.
@@ -243,8 +243,12 @@
 	difficulty = 3
 	steal_hint = "A self-defense weapon standard-issue for all heads of staffs barring the Head of Security. Rarely found off of their person."
 
+/datum/objective_item/steal/traitor/telebaton/check_special_completion(obj/item/thing)
+	return thing.type == /obj/item/melee/baton/telescopic
+
 /obj/item/melee/baton/telescopic/add_stealing_item_objective()
-	return add_item_to_steal(src, /obj/item/melee/baton/telescopic)
+	if(type == /obj/item/melee/baton/telescopic)
+		return add_item_to_steal(src, /obj/item/melee/baton/telescopic)
 
 /datum/objective_item/steal/traitor/cargo_budget
 	name = "cargo's departmental budget"
@@ -412,8 +416,8 @@
 /datum/objective_item/steal/nukedisc/check_special_completion(obj/item/disk/nuclear/N)
 	return !N.fake
 
-/datum/objective_item/steal/reflector
-	name = "a reflector trenchcoat"
+/datum/objective_item/steal/ablative
+	name = "an ablative trenchcoat"
 	targetitem = /obj/item/clothing/suit/hooded/ablative
 	excludefromjob = list(JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 	item_owner = list(JOB_HEAD_OF_SECURITY)
@@ -514,12 +518,12 @@
 	if(istype(potential_storage, /obj/item/aicard))
 		var/obj/item/aicard/card = potential_storage
 		being = card.AI // why is this one capitalized and the other one not? i wish i knew.
-	// SKYRAT REMOVAL START - MOD PAI
+	// SKYRAT EDIT REMOVAL START - MOD PAI
 	/*else if(istype(potential_storage, /obj/item/mod/control))
 		var/obj/item/mod/control/suit = potential_storage
 		if(isAI(suit.ai_assistant))
 			being = suit.ai_assistant
-	*/ // SKYRAT REMOVAL END
+	*/ // SKYRAT EDIT REMOVAL END
 	else
 		stack_trace("check_special_completion() called on [src] with [potential_storage] ([potential_storage.type])! That's not supposed to happen!")
 		return FALSE
@@ -566,7 +570,7 @@
 // A number of special early-game steal objectives intended to be used with the steal-and-destroy objective.
 // They're basically items of utility or emotional value that may be found on many players or lying around the station.
 /datum/objective_item/steal/traitor/insuls
-	name = "insulated gloves"
+	name = "some insulated gloves"
 	targetitem = /obj/item/clothing/gloves/color/yellow
 	excludefromjob = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER)
 	item_owner = list(JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER)
@@ -578,7 +582,7 @@
 	return add_item_to_steal(src, /obj/item/clothing/gloves/color/yellow)
 
 /datum/objective_item/steal/traitor/moth_plush
-	name = "cute moth plush toy"
+	name = "a cute moth plush toy"
 	targetitem = /obj/item/toy/plush/moth
 	excludefromjob = list(JOB_PSYCHOLOGIST, JOB_PARAMEDIC, JOB_CHEMIST, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_CORONER)
 	exists_on_map = TRUE
@@ -589,7 +593,7 @@
 	return add_item_to_steal(src, /obj/item/toy/plush/moth)
 
 /datum/objective_item/steal/traitor/lizard_plush
-	name = "cute lizard plush toy"
+	name = "a cute lizard plush toy"
 	targetitem = /obj/item/toy/plush/lizard_plushie
 	exists_on_map = TRUE
 	difficulty = 1
@@ -633,7 +637,7 @@
 	return add_item_to_steal(src, /obj/item/book/manual/wiki/security_space_law)
 
 /datum/objective_item/steal/traitor/rpd
-	name = "rapid pipe dispenser"
+	name = "a rapid pipe dispenser"
 	targetitem = /obj/item/pipe_dispenser
 	excludefromjob = list(
 		JOB_ATMOSPHERIC_TECHNICIAN,
@@ -679,7 +683,7 @@
 	objective_type = OBJECTIVE_ITEM_TYPE_SPY
 
 /datum/objective_item/steal/spy/lamarr
-	name = "The Research Director's pet headcrab"
+	name = "the Research Director's pet headcrab"
 	targetitem = /obj/item/clothing/mask/facehugger/lamarr
 	excludefromjob = list(JOB_RESEARCH_DIRECTOR)
 	exists_on_map = TRUE
@@ -809,7 +813,7 @@
 	return add_item_to_steal(src, /obj/item/stamp/head)
 
 /datum/objective_item/steal/spy/sunglasses
-	name = "sunglasses"
+	name = "some sunglasses"
 	targetitem = /obj/item/clothing/glasses/sunglasses
 	excludefromjob = list(
 		JOB_CAPTAIN,
@@ -828,7 +832,7 @@
 		You can also obtain a pair from dissassembling hudglasses."
 
 /datum/objective_item/steal/spy/ce_modsuit
-	name = "the cheif engineer's advanced MOD control unit"
+	name = "the chief engineer's advanced MOD control unit"
 	targetitem = /obj/item/mod/control/pre_equipped/advanced
 	excludefromjob = list(JOB_CHIEF_ENGINEER)
 	exists_on_map = TRUE

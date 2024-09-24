@@ -29,32 +29,30 @@
 		return
 	unload_vial(user)
 
-/obj/item/rna_extractor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!proximity_flag)
+/obj/item/rna_extractor/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(!ishuman(interacting_with))
 		return
-	if(!ishuman(target))
-		return
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/human/target = interacting_with
 	if(!loaded_vial)
 		to_chat(user, span_danger("[src] is empty!"))
 		return
 	if(loaded_vial.contains_rna)
 		to_chat(user, span_danger("[src] already has RNA data in it, upload it to the combinator!"))
 		return
-	if(!ismutant(H))
-		to_chat(user, span_danger("[H] does not register as infected!"))
+	if(!ismutant(target))
+		to_chat(user, span_danger("[target] does not register as infected!"))
 		return
-	var/datum/component/mutant_infection/ZI = H.GetComponent(/datum/component/mutant_infection)
-	if(!ZI)
-		to_chat(user, span_danger("[H] does not register as infected!"))
+	var/datum/component/mutant_infection/target_infection = target.GetComponent(/datum/component/mutant_infection)
+	if(!target_infection)
+		to_chat(user, span_danger("[target] does not register as infected!"))
 		return
-	if(ZI.extract_rna())
-		loaded_vial.load_rna(H)
-		to_chat(user, span_notice("[src] successfully scanned [H], and now holds a sample virus RNA data."))
+	if(target_infection.extract_rna())
+		loaded_vial.load_rna(target)
+		to_chat(user, span_notice("[src] successfully scanned [target], and now holds a sample virus RNA data."))
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 		update_appearance()
 	else
-		to_chat(user, span_warning("[H] has no useable RNA!"))
+		to_chat(user, span_warning("[target] has no useable RNA!"))
 
 /obj/item/rna_extractor/proc/unload_vial(mob/living/user)
 	if(loaded_vial)

@@ -8,7 +8,7 @@
 /datum/action/innate/flight/Activate()
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/organ/external/wings/functional/wings = human.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
-	if(wings && wings.can_fly(human))
+	if(wings?.can_fly(human))
 		wings.toggle_flight(human)
 		if(!(human.movement_type & FLYING))
 			to_chat(human, span_notice("You settle gently back onto the ground..."))
@@ -25,27 +25,32 @@
 
 	///Are our wings open or closed?
 	var/wings_open = FALSE
+	///We cant hide this wings in suit
+	var/cant_hide = FALSE
 
 	// grind_results = list(/datum/reagent/flightpotion = 5)
 	food_reagents = list(/datum/reagent/flightpotion = 5)
 
+/obj/item/organ/external/wings/functional/Destroy()
+	QDEL_NULL(fly)
+	return ..()
+
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
-	if(. && isnull(fly))
+	if(!.)
+		return
+	if(QDELETED(fly))
 		fly = new
-		fly.Grant(receiver)
+	fly.Grant(receiver)
 
 /obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
-
-	fly.Remove(organ_owner)
-
+	fly?.Remove(organ_owner)
 	if(wings_open)
 		toggle_flight(organ_owner)
 
 /obj/item/organ/external/wings/functional/on_life(seconds_per_tick, times_fired)
 	. = ..()
-
 	handle_flight(owner)
 
 ///Called on_life(). Handle flight code and check if we're still flying
@@ -63,7 +68,7 @@
 	if(human.stat || human.body_position == LYING_DOWN)
 		return FALSE
 	//Jumpsuits have tail holes, so it makes sense they have wing holes too
-	if(human.wear_suit && ((human.wear_suit.flags_inv & HIDEJUMPSUIT) && (!human.wear_suit.species_exception || !is_type_in_list(src, human.wear_suit.species_exception))))
+	if(!cant_hide && human.wear_suit && ((human.wear_suit.flags_inv & HIDEJUMPSUIT) && (!human.wear_suit.species_exception || !is_type_in_list(src, human.wear_suit.species_exception))))
 		to_chat(human, span_warning("Your suit blocks your wings from extending!"))
 		return FALSE
 	var/turf/location = get_turf(human)
@@ -143,16 +148,16 @@
 /datum/bodypart_overlay/mutant/wings/functional/get_global_feature_list()
 	/* SKYRAT EDIT - CUSTOMIZATION - ORIGINAL:
 	if(wings_open)
-		return GLOB.wings_open_list
+		return SSaccessories.wings_open_list
 	else
-		return GLOB.wings_list
-	*/ // ORIGINAL END - SKYRAT EDIT START - CUSTOMIZATION - TODO: Add support for wings_open
+		return SSaccessories.wings_list
+	*/ // SKYRAT EDIT REMOVAL END
+	// SKYRAT EDIT ADDITION START
 	if(wings_open)
-		return GLOB.sprite_accessories["wings_open"]
+		return SSaccessories.sprite_accessories["wings_open"]
 
-	return GLOB.sprite_accessories["wings"]
-	// SKYRAT EDIT END
-
+	return SSaccessories.sprite_accessories["wings"]
+	// SKYRAT EDIT ADDITION END
 ///Update our wingsprite to the open wings variant
 /datum/bodypart_overlay/mutant/wings/functional/proc/open_wings()
 	wings_open = TRUE

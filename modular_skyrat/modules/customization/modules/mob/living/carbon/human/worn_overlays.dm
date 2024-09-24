@@ -7,9 +7,9 @@
 
 	var/mob/living/carbon/human/human_wearer = loc
 
-	// Handle custom_worn_icons[LOADOUT_ITEM_ACCESSORY]
-	if(LOADOUT_ITEM_ACCESSORY in human_wearer.dna.species.custom_worn_icons)
-		var/icon/custom_accessory_icon = human_wearer.dna.species.custom_worn_icons[LOADOUT_ITEM_ACCESSORY]
+	// Handle custom_worn_icons[OFFSET_ACCESSORY]
+	if(OFFSET_ACCESSORY in human_wearer.dna.species.custom_worn_icons)
+		var/icon/custom_accessory_icon = human_wearer.dna.species.custom_worn_icons[OFFSET_ACCESSORY]
 
 		var/list/custom_accessory_states = icon_states(custom_accessory_icon)
 		if(accessory_overlay.icon_state in custom_accessory_states)

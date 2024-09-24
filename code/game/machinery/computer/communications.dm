@@ -375,7 +375,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (state == STATE_BUYING_SHUTTLE && can_buy_shuttles(usr) != TRUE)
 				return
 			set_state(usr, params["state"])
-			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("setStatusMessage")
 			if (!authenticated(usr))
 				return
@@ -383,7 +382,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			var/line_two = reject_bad_text(params["lowerText"] || "", MAX_STATUS_LINE_LENGTH)
 			post_status("message", line_one, line_two)
 			last_status_display = list(line_one, line_two)
-			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("setStatusPicture")
 			if (!authenticated(usr))
 				return
@@ -394,31 +392,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				post_status(picture)
 			else
 				if(picture == "currentalert") // You cannot set Code Blue display during Code Red and similiar
-					switch(SSsecurity_level.get_current_level_as_number())
-						if(SEC_LEVEL_DELTA)
-							post_status("alert", "deltaalert")
-						if(SEC_LEVEL_RED)
-							post_status("alert", "redalert")
-						if(SEC_LEVEL_BLUE)
-							post_status("alert", "bluealert")
-						if(SEC_LEVEL_GREEN)
-							post_status("alert", "greenalert")
-						// SKYRAT EDIT ADD START - Alert Levels
-						if(SEC_LEVEL_VIOLET)
-							post_status("alert", "violetalert")
-						if(SEC_LEVEL_ORANGE)
-							post_status("alert", "orangealert")
-						if(SEC_LEVEL_AMBER)
-							post_status("alert", "amberalert")
-						if(SEC_LEVEL_EPSILON)
-							post_status("alert", "epsilonalert")
-						if(SEC_LEVEL_GAMMA)
-							post_status("alert", "gammaalert")
-						// SKYRAT EDIT ADD END - Alert Levels
+					post_status("alert", SSsecurity_level?.current_security_level?.status_display_icon_state || "greenalert")
 				else
 					post_status("alert", picture)
 
-			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("toggleAuthentication")
 			// Log out if we're logged in
 			if (authorize_name)

@@ -14,7 +14,7 @@
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/armblade
 
 /obj/item/autosurgeon/muscle
-	starting_organ = /obj/item/organ/internal/cyberimp/arm/muscle
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/strongarm
 
 //syndie
 /obj/item/autosurgeon/syndicate/hackerman

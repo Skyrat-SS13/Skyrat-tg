@@ -50,19 +50,15 @@
 	)
 
 
-/obj/structure/stripper_pole/CtrlClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/stripper_pole/click_ctrl(mob/user)
 	var/choice = show_radial_menu(user, src, pole_designs, radius = 50, require_near = TRUE)
 	if(!choice)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 	current_pole_color = choice
 	light_color = pole_lights[choice]
 	update_icon()
 	update_brightness()
-	return TRUE
+	return CLICK_ACTION_SUCCESS
 
 
 // Alt-click to turn the lights on or off.
@@ -157,11 +153,7 @@
 		dancer.forceMove(get_turf(src))
 		dancer = null
 
-/obj/structure/stripper_pole/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/stripper_pole/click_ctrl_shift(mob/user)
 	add_fingerprint(user)
 	balloon_alert(user, "disassembling...")
 	if(!do_after(user, 8 SECONDS, src))
@@ -171,7 +163,6 @@
 	balloon_alert(user, "disassembled")
 	new /obj/item/construction_kit/pole(get_turf(user))
 	qdel(src)
-	return TRUE
 
 /obj/structure/stripper_pole/examine(mob/user)
 	. = ..()

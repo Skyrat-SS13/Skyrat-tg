@@ -22,4 +22,10 @@
 	missing_health *= missing_health_ratio //bonus is active at all times, even if you're above 90 health
 	missing_health *= bonus_value //multiply the remaining amount by bonus_value
 	if(missing_health > 0)
+
+//SKYRAT EDIT START
+/*
 		target.adjustBruteLoss(missing_health) //and do that much damage
+*/
+		target.adjustBruteLoss(missing_health, FALSE) //and do that much damage
+//SKYRAT EDIT END

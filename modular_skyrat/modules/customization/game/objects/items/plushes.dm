@@ -314,14 +314,6 @@
 	attack_verb_simple = list("peck", "teleport behind", "caw at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1)
 
-/obj/item/toy/plush/skyrat/tree_ferret
-	name = "tree ferret plushy"
-	desc = "This plush will always put on a smile to make your day as bright as the sun. Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
-	icon_state = "plushie_sels"
-	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
-	attack_verb_simple = list("hug", "cackle at", "health analyze")
-	squeak_override = list('sound/effects/crunchybushwhack1.ogg' = 1)
-
 /obj/item/toy/plush/skyrat/fox/mia
 	name = "Mia’s fox plushie"
 	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."

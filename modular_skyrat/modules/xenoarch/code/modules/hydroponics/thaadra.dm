@@ -1,5 +1,5 @@
 /obj/item/seeds/thaadra
-	name = "pack of thaadra seeds"
+	name = "thaadra seed pack"
 	desc = "These seeds grow into thaadra plants. A strange flower full of unique medicines and silver."
 	icon = 'modular_skyrat/modules/xenoarch/icons/seeds.dmi'
 	icon_state = "thaadra"

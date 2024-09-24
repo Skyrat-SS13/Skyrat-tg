@@ -88,6 +88,7 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/jean_skirt/worn/digi
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	body_parts_covered = GROIN
 
 /obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
 	name = "skirt"

@@ -133,65 +133,48 @@
 	desc = "An item that has the capabilities to recover items lost due to time."
 	icon_state = "recoverer"
 
-/obj/item/xenoarch/handheld_recoverer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!proximity_flag)
-		return
-
-	var/turf/target_turf = get_turf(target)
-	if(istype(target, /obj/item/xenoarch/broken_item/tech))
+/obj/item/xenoarch/handheld_recoverer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/turf/target_turf = get_turf(interacting_with)
+	. = ITEM_INTERACT_SUCCESS
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/tech))
 		var/spawn_item = pick_weight(GLOB.tech_reward)
 		new spawn_item(target_turf)
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	if(istype(target, /obj/item/xenoarch/broken_item/weapon))
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/weapon))
 		var/spawn_item = pick_weight(GLOB.weapon_reward)
 		new spawn_item(target_turf)
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	if(istype(target, /obj/item/xenoarch/broken_item/illegal))
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/illegal))
 		var/spawn_item = pick_weight(GLOB.illegal_reward)
 		new spawn_item(target_turf)
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	if(istype(target, /obj/item/xenoarch/broken_item/alien))
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/alien))
 		var/spawn_item = pick_weight(GLOB.alien_reward)
 		new spawn_item(target_turf)
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	if(istype(target, /obj/item/xenoarch/broken_item/plant))
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/plant))
 		var/spawn_item = pick_weight(GLOB.plant_reward)
 		new spawn_item(target_turf)
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	if(istype(target, /obj/item/xenoarch/broken_item/clothing))
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/clothing))
 		var/spawn_item = pick_weight(GLOB.clothing_reward)
 		new spawn_item(target_turf)
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	if(istype(target, /obj/item/xenoarch/broken_item/animal))
+	if(istype(interacting_with, /obj/item/xenoarch/broken_item/animal))
 		var/spawn_item
 		var/turf/src_turf = get_turf(src)
 		for(var/looptime in 1 to rand(1,4))
 			spawn_item = pick_weight(GLOB.animal_reward)
 			new spawn_item(src_turf)
-
-		user.mind.adjust_experience(/datum/skill/research, 5)
-		qdel(target)
+		qdel(interacting_with)
 		return
-
-	return ..()
+	return NONE
 
 /obj/item/storage/belt/utility/xenoarch
 	name = "xenoarch toolbelt"

@@ -1,7 +1,7 @@
-import { BooleanLike } from 'common/react';
+import { Box, Section, Stack } from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Box, Section, Stack } from '../components';
 import { Window } from '../layouts';
 import { Rules } from './AntagInfoRules'; // SKYRAT EDIT ADDITION
 import {
@@ -54,7 +54,7 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT CHANGE height from 630 to 700
+// SKYRAT EDIT CHANGE - height from 630 to 700
 export const AntagInfoWizard = (props) => {
   const { data, act } = useBackend<Info>();
   const { ritual, objectives, can_change_objective } = data;

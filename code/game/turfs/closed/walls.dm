@@ -2,7 +2,7 @@
 
 /turf/closed/wall
 	name = "wall"
-	desc = "A huge chunk of iron used to separate rooms." //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	desc = "A huge chunk of iron used to separate rooms." //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -34,8 +34,7 @@
 
 	var/list/dent_decals
 
-/turf/closed/wall/MouseDrop_T(atom/dropping, mob/user, params)
-	..()
+/turf/closed/wall/mouse_drop_receive(atom/dropping, mob/user, params)
 	if(dropping != user)
 		return
 	if(!iscarbon(dropping) && !iscyborg(dropping))
@@ -100,7 +99,7 @@
 	if(is_station_level(z))
 		GLOB.station_turfs += src
 	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
-		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, offset_spokesman = src, plane = FLOOR_PLANE)
+		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = LOW_FLOOR_LAYER, offset_spokesman = src, plane = FLOOR_PLANE)
 		if(fixed_underlay["space"])
 			generate_space_underlay(underlay_appearance, src)
 		else

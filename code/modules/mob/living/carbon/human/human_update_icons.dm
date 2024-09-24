@@ -117,14 +117,12 @@ There are several things that need to be remembered:
 		var/female_sprite_flags = uniform.female_sprite_flags // SKYRAT EDIT ADDITION - Digi female gender shaping
 		var/mutant_styles = NONE // SKYRAT EDIT ADDITON - mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
-		if((bodyshape & BODYSHAPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // SKYRAT EDIT CHANGE - ORIGINAL: icon_file = MONKEY_UNIFORM_FILE
-		else if((bodyshape & BODYSHAPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE - ORIGINAL: icon_file = DIGITIGRADE_UNIFORM_FILE
 			digi = TRUE // SKYRAT EDIT ADDITION - Digi female gender shaping
 		// SKYRAT EDIT ADDITION - birbs
 		else if(bodyshape & BODYSHAPE_CUSTOM)
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
+			icon_file = dna.species.generate_custom_worn_icon(OFFSET_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
 		// SKYRAT EDIT END
 		//Female sprites have lower priority than digitigrade sprites
 		if(!dna.species.no_gender_shaping && dna.species.sexes && (bodyshape & BODYSHAPE_HUMANOID) && physique == FEMALE && !(female_sprite_flags & NO_FEMALE_UNIFORM)) // SKYRAT EDIT CHANGE - ORIGINAL: else if(dna.species.sexes && (bodyshape & BODYSHAPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
@@ -203,15 +201,17 @@ There are several things that need to be remembered:
 		inv.update_icon()
 
 	//Bloody hands begin
-	var/mutable_appearance/bloody_lefthand_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands_left", -GLOVES_LAYER)
-	var/mutable_appearance/bloody_righthand_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands_right", -GLOVES_LAYER)
-	cut_overlay(bloody_lefthand_overlay)
-	cut_overlay(bloody_righthand_overlay)
-	if(!gloves && blood_in_hands && (num_hands > 0))
-		if(has_left_hand(check_disabled = FALSE))
-			add_overlay(bloody_lefthand_overlay)
-		if(has_right_hand(check_disabled = FALSE))
-			add_overlay(bloody_righthand_overlay)
+	if(isnull(gloves))
+		if(blood_in_hands && num_hands > 0)
+			// When byond gives us filters that respect dirs we can just use an alpha mask for this but until then, two icons weeeee
+			var/mutable_appearance/hands_combined = mutable_appearance(layer = -GLOVES_LAYER, appearance_flags = KEEP_TOGETHER)
+			if(has_left_hand(check_disabled = FALSE))
+				hands_combined.overlays += mutable_appearance('icons/effects/blood.dmi', "bloodyhands_left")
+			if(has_right_hand(check_disabled = FALSE))
+				hands_combined.overlays += mutable_appearance('icons/effects/blood.dmi', "bloodyhands_right")
+			overlays_standing[GLOVES_LAYER] = hands_combined
+			apply_overlay(GLOVES_LAYER)
+		return
 	// Bloody hands end
 
 	if(gloves)
@@ -229,7 +229,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_GLOVES, gloves, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -275,7 +275,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_GLASSES, glasses, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -317,7 +317,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_EARS, ears, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -354,7 +354,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_NECK, wear_neck, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -408,7 +408,7 @@ There are several things that need to be remembered:
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE // SKYRAT EDIT ADDITION
 		if(!mutant_override && bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_SHOES, shoes, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -482,7 +482,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_HEAD, head, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -526,7 +526,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_BELT, belt, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -570,7 +570,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 
 		if(!mutant_override && bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_SUIT, wear_suit, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -642,7 +642,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_FACEMASK, wear_mask, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -684,7 +684,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MISC, back, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_BACK, back, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -865,25 +865,29 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	female_uniform = NO_FEMALE_UNIFORM,
 	override_state = null,
 	override_file = null,
-	use_height_offset = TRUE,
 	mutant_styles = NONE, // SKYRAT EDIT ADD - Further outfit modification for outfits (added `mutant_styles` argument)
 )
 
+	// SKYRAT EDIT ADDITION START - Taur-friendly uniforms and suits
+	var/using_taur_variant = FALSE
+	if (isnull(override_file))
+		if (mutant_styles & STYLE_TAUR_ALL)
+			if ((mutant_styles & STYLE_TAUR_SNAKE) && worn_icon_taur_snake)
+				override_file = worn_icon_taur_snake
+				using_taur_variant = TRUE
+			else if ((mutant_styles & STYLE_TAUR_PAW) && worn_icon_taur_paw)
+				override_file = worn_icon_taur_paw
+				using_taur_variant = TRUE
+			else if ((mutant_styles & STYLE_TAUR_HOOF) && worn_icon_taur_hoof)
+				override_file = worn_icon_taur_hoof
+				using_taur_variant = TRUE
+	// SKYRAT EDIT END
 	//Find a valid icon_state from variables+arguments
-	var/t_state
-	if(override_state)
-		t_state = override_state
-	else
-		t_state = !isinhands ? (worn_icon_state ? worn_icon_state : icon_state) : (inhand_icon_state ? inhand_icon_state : icon_state)
-
+	var/t_state = override_state || (isinhands ? inhand_icon_state : worn_icon_state) || icon_state
 	//Find a valid icon file from variables+arguments
-	var/file2use
-	if(override_file)
-		file2use = override_file
-	else
-		file2use = !isinhands ? (worn_icon ? worn_icon : default_icon_file) : default_icon_file
+	var/file2use = override_file || (isinhands ? null : worn_icon) || default_icon_file
 	//Find a valid layer from variables+arguments
-	var/layer2use = alternate_worn_layer ? alternate_worn_layer : default_layer
+	var/layer2use = alternate_worn_layer || default_layer
 
 	var/mutable_appearance/standing
 	if(female_uniform)
@@ -891,34 +895,18 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
 	// SKYRAT EDIT ADDITION START - Taur-friendly uniforms and suits
-	if(mutant_styles & STYLE_TAUR_ALL)
-		standing = wear_taur_version(standing.icon_state, standing.icon, layer2use, female_uniform, greyscale_colors)
-	// SKYRAT EDIT END
+	if (mutant_styles & STYLE_TAUR_ALL)
+		if (!using_taur_variant)
+			standing = wear_taur_version(standing.icon_state, standing.icon, layer2use, female_uniform, greyscale_colors)
+		else
+			standing.pixel_x -= 16 // it doesnt look right otherwise
+	// SKYRAT EDIT ADDITION END
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
-	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, mutant_styles) // SKYRAT EDIT CHANGE - ORIGINAL: var/list/worn_overlays = worn_overlays(standing, isinhands)
-	if(worn_overlays?.len)
-		if(!isinhands && default_layer && ishuman(loc) && use_height_offset)
-			var/mob/living/carbon/human/human_loc = loc
-			if(human_loc.get_mob_height() != HUMAN_HEIGHT_MEDIUM)
-				var/string_form_layer = num2text(default_layer)
-				var/offset_amount = GLOB.layers_to_offset[string_form_layer]
-				if(isnull(offset_amount))
-					// Worn overlays don't get batched in with standing overlays because they are overlay overlays
-					// ...So we need to apply human height here as well
-					for(var/mutable_appearance/applied_appearance as anything in worn_overlays)
-						if(isnull(applied_appearance))
-							continue
-						human_loc.apply_height_filters(applied_appearance)
-
-				else
-					for(var/mutable_appearance/applied_appearance in worn_overlays)
-						if(isnull(applied_appearance))
-							continue
-						human_loc.apply_height_offsets(applied_appearance, offset_amount)
-
-		standing.overlays.Add(worn_overlays)
+	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, mutant_styles) // SKYRAT EDIT CHANGE - ORIGINAL: var/list/worn_overlays = worn_overlays(standing, isinhands, file2use)
+	if(length(worn_overlays))
+		standing.overlays += worn_overlays
 
 	standing = center_image(standing, isinhands ? inhand_x_dimension : worn_x_dimension, isinhands ? inhand_y_dimension : worn_y_dimension)
 
@@ -945,9 +933,6 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 				.[2] = offsets["y"]
 	else
 		.[2] = worn_y_offset
-	if(ishuman(loc) && slot_flags != ITEM_SLOT_FEET) /// we adjust the human body for high given by body parts, execpt shoes, because they are always on the bottom
-		var/mob/living/carbon/human/human_holder = loc
-		.[2] += human_holder.get_top_offset()
 
 //Can't think of a better way to do this, sadly
 /mob/proc/get_item_offsets_for_index(i)
@@ -1000,23 +985,19 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 
 	var/raw_applied = overlays_standing[cache_index]
 	var/string_form_index = num2text(cache_index)
-	var/offset_amount = GLOB.layers_to_offset[string_form_index]
-	if(isnull(offset_amount))
+	var/offset_type = GLOB.layers_to_offset[string_form_index]
+	if(isnull(offset_type))
 		if(islist(raw_applied))
-			for(var/mutable_appearance/applied_appearance as anything in raw_applied)
-				if(isnull(applied_appearance))
-					continue
+			for(var/image/applied_appearance in raw_applied)
 				apply_height_filters(applied_appearance)
-		else if(!isnull(raw_applied))
+		else if(isimage(raw_applied))
 			apply_height_filters(raw_applied)
 	else
 		if(islist(raw_applied))
-			for(var/mutable_appearance/applied_appearance as anything in raw_applied)
-				if(isnull(applied_appearance))
-					continue
-				apply_height_offsets(applied_appearance, offset_amount)
-		else if(!isnull(raw_applied))
-			apply_height_offsets(raw_applied, offset_amount)
+			for(var/image/applied_appearance in raw_applied)
+				apply_height_offsets(applied_appearance, offset_type)
+		else if(isimage(raw_applied))
+			apply_height_offsets(raw_applied, offset_type)
 
 	return ..()
 
@@ -1026,7 +1007,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
  * upper_torso is to specify whether the appearance is locate in the upper half of the mob rather than the lower half,
  * higher up things (hats for example) need to be offset more due to the location of the filter displacement
  */
-/mob/living/carbon/human/proc/apply_height_offsets(mutable_appearance/appearance, upper_torso)
+/mob/living/carbon/human/proc/apply_height_offsets(image/appearance, upper_torso)
 	var/height_to_use = num2text(get_mob_height())
 	var/final_offset = 0
 	switch(upper_torso)
@@ -1043,12 +1024,11 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 /**
  * Applies a filter to an appearance according to mob height
  */
-/mob/living/carbon/human/proc/apply_height_filters(mutable_appearance/appearance)
+/mob/living/carbon/human/proc/apply_height_filters(image/appearance)
 	var/static/icon/cut_torso_mask = icon('icons/effects/cut.dmi', "Cut1")
 	var/static/icon/cut_legs_mask = icon('icons/effects/cut.dmi', "Cut2")
 	var/static/icon/lenghten_torso_mask = icon('icons/effects/cut.dmi', "Cut3")
 	var/static/icon/lenghten_legs_mask = icon('icons/effects/cut.dmi', "Cut4")
-
 	appearance.remove_filter(list(
 		"Cut_Torso",
 		"Cut_Legs",
@@ -1056,27 +1036,115 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 		"Lenghten_Torso",
 		"Gnome_Cut_Torso",
 		"Gnome_Cut_Legs",
+		"Monkey_Torso",
+		"Monkey_Legs",
+		"Monkey_Gnome_Cut_Torso",
+		"Monkey_Gnome_Cut_Legs",
 	))
-
 	switch(get_mob_height())
 		// Don't set this one directly, use TRAIT_DWARF
-		if(HUMAN_HEIGHT_DWARF)
-			appearance.add_filter("Gnome_Cut_Torso", 1, displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 2))
-			appearance.add_filter("Gnome_Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 3))
+		if(MONKEY_HEIGHT_DWARF)
+			appearance.add_filters(list(
+				list(
+					"name" = "Monkey_Gnome_Cut_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 3),
+				),
+				list(
+					"name" = "Monkey_Gnome_Cut_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 4),
+				),
+			))
+		if(MONKEY_HEIGHT_MEDIUM)
+			appearance.add_filters(list(
+				list(
+					"name" = "Monkey_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 2),
+				),
+				list(
+					"name" = "Monkey_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 4),
+				),
+			))
+		if(HUMAN_HEIGHT_DWARF) // tall monkeys and dwarves use the same value
+			if(ismonkey(src))
+				appearance.add_filters(list(
+					list(
+						"name" = "Monkey_Torso",
+						"priority" = 1,
+						"params" = displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 1),
+					),
+					list(
+						"name" = "Monkey_Legs",
+						"priority" = 1,
+						"params" = displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1),
+					),
+				))
+			else
+				appearance.add_filters(list(
+					list(
+						"name" = "Gnome_Cut_Torso",
+						"priority" = 1,
+						"params" = displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 2),
+					),
+					list(
+						"name" = "Gnome_Cut_Legs",
+						"priority" = 1,
+						"params" = displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 3),
+					),
+				))
+		// Don't set this one directly, use TRAIT_DWARF
 		if(HUMAN_HEIGHT_SHORTEST)
-			appearance.add_filter("Cut_Torso", 1, displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 1))
-			appearance.add_filter("Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1))
+			appearance.add_filters(list(
+				list(
+					"name" = "Cut_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_torso_mask, x = 0, y = 0, size = 1),
+				),
+				list(
+					"name" = "Cut_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1),
+				),
+			))
 		if(HUMAN_HEIGHT_SHORT)
 			appearance.add_filter("Cut_Legs", 1, displacement_map_filter(cut_legs_mask, x = 0, y = 0, size = 1))
 		if(HUMAN_HEIGHT_TALL)
 			appearance.add_filter("Lenghten_Legs", 1, displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 1))
 		if(HUMAN_HEIGHT_TALLER)
-			appearance.add_filter("Lenghten_Torso", 1, displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1))
-			appearance.add_filter("Lenghten_Legs", 1, displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 1))
+			appearance.add_filters(list(
+				list(
+					"name" = "Lenghten_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1),
+				),
+				list(
+					"name" = "Lenghten_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 1),
+				),
+			))
 		if(HUMAN_HEIGHT_TALLEST)
-			appearance.add_filter("Lenghten_Torso", 1, displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1))
-			appearance.add_filter("Lenghten_Legs", 1, displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 2))
-
+			appearance.add_filters(list(
+				list(
+					"name" = "Lenghten_Torso",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_torso_mask, x = 0, y = 0, size = 1),
+				),
+				list(
+					"name" = "Lenghten_Legs",
+					"priority" = 1,
+					"params" = displacement_map_filter(lenghten_legs_mask, x = 0, y = 0, size = 2),
+				),
+			))
+	// Kinda gross but because many humans overlays do not use KEEP_TOGETHER we need to manually propogate the filter
+	// Otherwise overlays, such as worn overlays on icons, won't have the filter "applied", and the effect kinda breaks
+	if(!(appearance.appearance_flags & KEEP_TOGETHER))
+		for(var/image/overlay in list() + appearance.underlays + appearance.overlays)
+			apply_height_filters(overlay)
 	return appearance
 
 #undef RESOLVE_ICON_STATE

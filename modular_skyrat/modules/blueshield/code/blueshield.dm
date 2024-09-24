@@ -34,9 +34,13 @@
 
 	mail_goodies = list(
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 10,
-		/obj/item/stack/spacecash/c500 = 3,
+		/obj/item/stack/spacecash/c500 = 30,
 		/obj/item/disk/nuclear/fake/obvious = 2,
 		/obj/item/clothing/head/collectable/captain = 4,
+		/obj/item/gun/energy/disabler/smoothbore = 5,
+		/obj/item/restraints/legcuffs/bola/energy = 10,
+		/obj/item/ammo_box/magazine/caflechette/ripper = 20,
+		/obj/item/ammo_box/magazine/caflechette = 10,
 	)
 
 	veteran_only = TRUE
@@ -60,6 +64,7 @@
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/pda/blueshield
+	suit_store = /obj/item/gun/energy/e_gun
 
 	id_trim = /datum/id_trim/job/blueshield
 

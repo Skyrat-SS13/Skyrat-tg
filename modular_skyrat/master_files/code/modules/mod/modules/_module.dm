@@ -29,8 +29,11 @@
 // Set the retracts_into WEAKREF to mod.helmet, mod.chestplate, mod.boots, or mod.gauntlets as desired in the on_install proc just like shown below
 /obj/item/mod/module/visor/on_install()
 	. = ..()
-	retracts_into = WEAKREF(mod.helmet) // hide visor module when the helmet is retracted
+	retracts_into = WEAKREF(mod.get_part_from_slot(ITEM_SLOT_HEAD) || mod.get_part_from_slot(ITEM_SLOT_MASK) || mod.get_part_from_slot(ITEM_SLOT_EYES)) // hide visor module when the helmet is retracted
 
+/obj/item/mod/module/flashlight/on_install()
+	. = ..()
+	retracts_into = WEAKREF(mod.get_part_from_slot(ITEM_SLOT_HEAD) || mod.get_part_from_slot(ITEM_SLOT_MASK)) // hide visor module when the helmet is retracted
 
 /**
  * Proc that handles the mutable_appearances of the module on the MODsuits
@@ -46,11 +49,12 @@
 	if(mod.wearer)
 		if(is_module_hidden()) // retracted modules can hide parts that aren't usable when inactive
 			return
-
-		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.bodyshape & BODYSHAPE_DIGITIGRADE))
+		var/obj/item/clothing/suit/mod/chestplate = mod.get_part_from_slot(ITEM_SLOT_OCLOTHING)
+		var/obj/item/clothing/head/mod/helmet = mod.get_part_from_slot(ITEM_SLOT_HEAD)
+		if(chestplate && (chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.bodyshape & BODYSHAPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
-		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.bodyshape & BODYSHAPE_SNOUTED)
+		if(helmet && (helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.bodyshape & BODYSHAPE_SNOUTED)
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
 		is_new_vox = isvoxprimalis(mod.wearer)
 		is_old_vox = isvox(mod.wearer)

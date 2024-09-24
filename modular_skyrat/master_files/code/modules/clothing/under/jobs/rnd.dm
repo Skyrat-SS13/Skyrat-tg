@@ -23,7 +23,7 @@
 	name = "science utility uniform"
 	desc = "A utility uniform worn by NT-certified Science staff."
 	icon_state = "util_sci"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate

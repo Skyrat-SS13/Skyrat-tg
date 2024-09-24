@@ -33,16 +33,15 @@
 /*
 * ACCESSORIES
 */
-/obj/item/clothing/accessory/armband/deputy
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
-	icon_state = "armband_lopland"
 
 /obj/item/clothing/accessory/armband/deputy/lopland/nonsec
 	name = "blue armband"
 	desc = "An armband, worn to signify proficiency in a skill or association with a department. This one is blue."
 
 /obj/item/clothing/accessory/armband/deputy/lopland
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+	icon_state = "armband_lopland"
 	desc = "A Peacekeeper-blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
 
 /*
@@ -211,53 +210,48 @@
 * HEAD
 */
 
-//Overrides the bulletproof helm with the older non red visor version.
+//Overrides the bulletproof helm with a fucking altyn helmet because yes
 /obj/item/clothing/head/helmet/alt
+	desc = "An armored helmet based on the NRI Altyn Helmet Design. These helmet provide excellent facial protection, if not, the best against ballistic."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmetalt_blue"
 	base_icon_state = "helmetalt_blue"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	var/flipped_visor = FALSE
 
-//Standard helmet (w/ visor)
+/obj/item/clothing/head/helmet/alt/click_alt(mob/user)
+	flipped_visor = !flipped_visor
+	balloon_alert(user, "visor flipped")
+	// base_icon_state is modified for seclight attachment component
+	base_icon_state = "[initial(base_icon_state)][flipped_visor ? "-novisor" : ""]"
+	icon_state = base_icon_state
+	if (flipped_visor)
+		flags_cover &= ~HEADCOVERSEYES | PEPPERPROOF
+	else
+		flags_cover |= HEADCOVERSEYES | PEPPERPROOF
+	update_appearance()
+	return CLICK_ACTION_SUCCESS
+
+//Standard helmet
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
-	actions_types = list(/datum/action/item_action/toggle)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
-	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
 	dog_fashion = null
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-	///chat message when the visor is toggled down.
-	var/toggle_message = "You pull the visor down on"
-	///chat message when the visor is toggled up.
-	var/alt_toggle_message = "You push the visor up on"
-	///Can toggle?
-	var/can_toggle = TRUE
 
-/// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
-/obj/item/clothing/head/helmet/sec/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(user.incapacitated() || !can_toggle)
-		return
-	up = !up
-	flags_1 ^= visor_flags
-	flags_inv ^= visor_flags_inv
-	flags_cover ^= visor_flags_cover
-	// This part is changed to work with the seclight.
-	base_icon_state = "[initial(icon_state)][up ? "up" : ""]"
-	update_icon_state()
-	to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
+/obj/item/clothing/head/helmet/sec/futuristic
+	icon_state = "security_helmet_future"
+	base_icon_state = "security_helmet_future"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-	user.update_worn_head()
-	if(iscarbon(user))
-		var/mob/living/carbon/carbon_user = user
-		carbon_user.update_worn_head()
-
+/obj/item/clothing/head/helmet/sec/futuristic/blue
+	icon_state = "security_helmet_future_blue"
+	base_icon_state = "security_helmet_future_blue"
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison
@@ -305,7 +299,42 @@
 			RESKIN_ICON_STATE = "security_cap_white",
 			RESKIN_WORN_ICON_STATE = "security_cap_white"
 		),
+		"Sol Variant" = list(
+			RESKIN_ICON_STATE = "policesoft",
+			RESKIN_WORN_ICON_STATE = "policesoft"
+		),
+		"Sillitoe Variant" = list(
+			RESKIN_ICON_STATE = "policetrafficsoft",
+			RESKIN_WORN_ICON_STATE = "policetrafficsoft"
+		),
+		"Cadet Variant" = list(
+			RESKIN_ICON_STATE = "policecadetsoft",
+			RESKIN_WORN_ICON_STATE = "policecadetsoft"
+		),
 	)
+
+/obj/item/clothing/head/hats/warden
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "policehelm"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Blue Cap" = list(
+			RESKIN_ICON_STATE = "policehelm",
+			RESKIN_WORN_ICON_STATE = "policehelm"
+		),
+		"Sol Cap" = list(
+			RESKIN_ICON_STATE = "policewardencap",
+			RESKIN_WORN_ICON_STATE = "policewardencap"
+		),
+	)
+
+/obj/item/clothing/head/hats/warden/red
+	unique_reskin = null
+
+/obj/item/clothing/head/hats/warden/drill
+	unique_reskin = null
+
 
 /obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -431,6 +460,10 @@
 			RESKIN_WORN_ICON_STATE = "gloves_white"
 		),
 	)
+
+/obj/item/clothing/gloves/color/black/security/blu // Wait why these a subtype of black?!? Who did this
+	icon = 'icons/obj/clothing/gloves.dmi'
+	worn_icon = 'icons/mob/clothing/hands.dmi'
 
 /obj/item/clothing/gloves/tackler/security	//Can't just overwrite tackler, as there's a ton of subtypes that we'd then need to account for. This is easier. MUCH easier.
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -565,6 +598,14 @@
 			RESKIN_ICON_STATE = "security_white",
 			RESKIN_WORN_ICON_STATE = "security_white"
 		),
+		"Sol Variant" = list(
+			RESKIN_ICON_STATE = "policealt",
+			RESKIN_WORN_ICON_STATE = "policealt"
+		),
+		"Cadet Variant" = list(
+			RESKIN_ICON_STATE = "policecadetalt",
+			RESKIN_WORN_ICON_STATE = "policecadetalt"
+		),
 	)
 
 /obj/item/clothing/under/rank/security/officer/formal
@@ -595,24 +636,60 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "warden_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "warden_black",
+			RESKIN_WORN_ICON_STATE = "warden_black"
+		),
+		"Blue Variant" = list(
+			RESKIN_ICON_STATE = "peacekeeper_warden",
+			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
+		),
+		"Sol Varient" = list(
+			RESKIN_ICON_STATE = "policewardenalt",
+			RESKIN_WORN_ICON_STATE = "policewardenalt"
+		),
+	)
 
 //HoS
 /obj/item/clothing/under/rank/security/head_of_security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "hos_black",
+			RESKIN_WORN_ICON_STATE = "hos_black"
+		),
+		"Blue Varient" = list(
+			RESKIN_ICON_STATE = "peacekeeper_hos",
+			RESKIN_WORN_ICON_STATE = "peacekeeper_hos"
+		),
+		"Sol Varient" = list(
+			RESKIN_ICON_STATE = "policechiefalt",
+			RESKIN_WORN_ICON_STATE = "policechiefalt"
+		),
+	)
 
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	icon_state = "hos_parade_male_blue"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female
 	icon_state = "hos_parade_fem_blue"
+	unique_reskin = null
+
 
 /obj/item/clothing/under/rank/security/head_of_security/alt
 	icon_state = "hosalt_blue"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	icon_state = "hosalt_skirt_blue"
+	unique_reskin = null
+
 
 /*
 * FEET
@@ -825,40 +902,60 @@
 	icon_state = "helmet"
 	base_icon_state = "helmet"
 	actions_types = null
-	can_toggle = FALSE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
+
+/obj/item/clothing/head/hats/hos/cap/red
+	icon = 'icons/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/hats.dmi'
+	icon_state = "hoscap"
+	base_icon_state = "hoscap"
+	unique_reskin = null
 
 /*
 *	UNIFORM
 */
 
 /obj/item/clothing/under/rank/security/officer/redsec
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
 	current_skin = "rsecurity" //prevents reskinning
 
+/obj/item/clothing/under/rank/security/officer/skirt/redsec
+	icon_state = "secskirt"
+	current_skin = "secskirt"
+
 /obj/item/clothing/under/rank/security/warden/redsec
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rwarden"
+	unique_reskin = null
+
+/obj/item/clothing/under/rank/security/warden/skirt/redsec
+	icon_state = "rwarden_skirt"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/redsec
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rhos"
+	unique_reskin = null
+
+/obj/item/clothing/under/rank/security/head_of_security/skirt/redsec
+	icon_state = "rhos_skirt"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/redsec
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_parade_male"
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female/redsec
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_parade_fem"
+	unique_reskin = null
+
+/obj/item/clothing/under/rank/security/head_of_security/alt/redsec
+	icon_state = "hosalt"
+	unique_reskin = null
+
+/obj/item/clothing/under/rank/security/head_of_security/alt/skirt/redsec
+	icon_state = "hosalt_skirt"
+	unique_reskin = null
 
 /*
 *	WINTER COAT
@@ -888,6 +985,13 @@
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sec"
 	current_skin = "armor_sec" //prevents reskinning
+
+/obj/item/clothing/suit/armor/hos/hos_formal/redsec
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+	icon_state = "hosformal"
+	current_skin = "hosformal"	//prevents reskinning (but not toggling!)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /*
 *	FEET

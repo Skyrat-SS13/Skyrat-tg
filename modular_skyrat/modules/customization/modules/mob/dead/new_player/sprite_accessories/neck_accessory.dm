@@ -7,7 +7,7 @@
 	organ_type = /obj/item/organ/external/neck_accessory
 
 /datum/sprite_accessory/neck_accessory/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 	color_src = null
 	factual = FALSE

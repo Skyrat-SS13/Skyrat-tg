@@ -8,12 +8,18 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	icon_state = "hilbertshotel"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE
-	var/list/static/hotel_maps = list("Generic", "Apartment")
+	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE + EXTRA STUFF
+	var/list/static/hotel_maps = list("Generic", "Apartment", "Beach Condo", "Station Side", "Library")
 	//standart - hilber's hotel room
 	//apartment - see /datum/map_template/ghost_cafe_rooms
-	var/datum/map_template/ghost_cafe_rooms/ghost_cafe_rooms_apartment
-	//SKYRAT EDIT END
+	//beach condo - Beach themed apartment
+	//stationside - a station-themed hotel room
+	var/datum/map_template/ghost_cafe_rooms/apartment/ghost_cafe_rooms_apartment
+	var/datum/map_template/ghost_cafe_rooms/beach_condo/ghost_cafe_rooms_beach_condo
+	var/datum/map_template/ghost_cafe_rooms/stationside/ghost_cafe_rooms_stationside
+	var/datum/map_template/ghost_cafe_rooms/library/ghost_cafe_rooms_library
+	//Skyrat EDIT END
+
 	var/datum/map_template/hilbertshotel/hotelRoomTemp
 	var/datum/map_template/hilbertshotel/empty/hotelRoomTempEmpty
 	var/datum/map_template/hilbertshotel/lore/hotelRoomTempLore
@@ -34,7 +40,11 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	hotelRoomTempLore = new()
 	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE
 	ghost_cafe_rooms_apartment = new()
+	ghost_cafe_rooms_beach_condo = new()
+	ghost_cafe_rooms_stationside = new()
+	ghost_cafe_rooms_library = new()
 	//SKYRAT EDIT END
+
 	var/area/currentArea = get_area(src)
 	if(currentArea.type == /area/ruin/space/has_grav/powered/hilbertresearchfacility/secretroom)
 		ruinSpawned = TRUE
@@ -176,9 +186,22 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	if(ruinSpawned && roomNumber == GLOB.hhMysteryRoomNumber)
 		load_from = hotelRoomTempLore
 	//SKYRAT EDIT ADDITION START - GHOST HOTEL UPDATE
+	//else if(chosen_room == "Apartment")
+	//	load_from = ghost_cafe_rooms_apartment
+	//SKYRAT EDIT ADDITION END
+
+	//BUBBER EDIT ADDITION START - GHOST HOTEL UPDATE
 	else if(chosen_room == "Apartment")
 		load_from = ghost_cafe_rooms_apartment
-	//SKYRAT EDIT ADDITION END
+
+	else if(chosen_room == "Beach Condo")
+		load_from = ghost_cafe_rooms_beach_condo
+
+	else if(chosen_room == "Station Side")
+		load_from = ghost_cafe_rooms_stationside
+	else if(chosen_room == "Library")
+		load_from = ghost_cafe_rooms_library
+	//BUBBER EDIT ADDITION END
 
 	load_from.load(bottom_left)
 	activeRooms["[roomNumber]"] = roomReservation
@@ -321,6 +344,15 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	explosive_resistance = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 
+/turf/closed/indestructible/hoteldoor/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/turf/closed/indestructible/hoteldoor/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Peek through"
+	return CONTEXTUAL_SCREENTIP_SET
+
 /turf/closed/indestructible/hoteldoor/proc/promptExit(mob/living/user)
 	if(!isliving(user))
 		return
@@ -364,7 +396,11 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		promptExit(user)
 
 /turf/closed/indestructible/hoteldoor/click_alt(mob/user)
-	to_chat(user, span_notice("You peak through the door's bluespace peephole..."))
+	if(user.is_blind())
+		to_chat(user, span_warning("Drats! Your vision is too poor to use this!"))
+		return CLICK_ACTION_BLOCKING
+
+	to_chat(user, span_notice("You peek through the door's bluespace peephole..."))
 	user.reset_perspective(parentSphere)
 	var/datum/action/peephole_cancel/PHC = new
 	user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
@@ -532,14 +568,12 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	icon_state = "hilbertsanalyzer"
 	worn_icon_state = "analyzer"
 
-/obj/item/analyzer/hilbertsanalyzer/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(istype(target, /obj/item/hilbertshotel))
-		. |= AFTERATTACK_PROCESSED_ITEM
-		if(!proximity)
+/obj/item/analyzer/hilbertsanalyzer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(istype(interacting_with, /obj/item/hilbertshotel))
+		if(!Adjacent(interacting_with))
 			to_chat(user, span_warning("It's to far away to scan!"))
-			return .
-		var/obj/item/hilbertshotel/sphere = target
+			return ITEM_INTERACT_BLOCKING
+		var/obj/item/hilbertshotel/sphere = interacting_with
 		if(sphere.activeRooms.len)
 			to_chat(user, "Currently Occupied Rooms:")
 			for(var/roomnumber in sphere.activeRooms)
@@ -552,7 +586,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 				to_chat(user, roomnumber)
 		else
 			to_chat(user, "No vacated rooms.")
-		return .
+		return ITEM_INTERACT_SUCCESS
+	return ..()
 
 /obj/effect/landmark/transport/transport_id/hilbert
 	specific_transport_id = HILBERT_LINE_1

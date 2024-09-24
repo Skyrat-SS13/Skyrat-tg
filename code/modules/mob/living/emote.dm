@@ -2,7 +2,7 @@
 /* EMOTE DATUMS */
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
-	mob_type_blacklist_typecache = list(/mob/living/brain) //SKYRAT EDIT - OVERWIRTTEN BY `modular_skyrat\modules\modular_implants\code\soulcatcher\soulcatcher_mob.dm`
+	mob_type_blacklist_typecache = list(/mob/living/brain)
 
 /datum/emote/living/blush
 	key = "blush"
@@ -63,9 +63,9 @@
 
 /datum/emote/living/collapse/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(. && isliving(user))
-		var/mob/living/L = user
-		L.Unconscious(40)
+	if(isliving(user))
+		var/mob/living/living = user
+		living.Unconscious(4 SECONDS)
 
 /datum/emote/living/dance
 	key = "dance"
@@ -95,7 +95,7 @@
 		message_animal_or_basic = custom_message
 	. = ..()
 	message_animal_or_basic = initial(message_animal_or_basic)
-	if(!. && !user.can_speak() || user.getOxyLoss() >= 50)
+	if(!user.can_speak() || user.getOxyLoss() >= 50)
 		return //stop the sound if oxyloss too high/cant speak
 	var/mob/living/carbon/carbon_user = user
 	// For masks that give unique death sounds
@@ -117,9 +117,9 @@
 
 /datum/emote/living/faint/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(. && isliving(user))
-		var/mob/living/L = user
-		L.SetSleeping(200)
+	if(isliving(user))
+		var/mob/living/living = user
+		living.SetSleeping(20 SECONDS)
 
 /datum/emote/living/flap
 	key = "flap"
@@ -130,7 +130,7 @@
 
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(. && ishuman(user))
+	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/open = FALSE
 		var/obj/item/organ/external/wings/functional/wings = human_user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
@@ -175,7 +175,18 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	stat_allowed = HARD_CRIT
 
-/datum/emote/living/gasp_shock
+/datum/emote/living/gasp/get_sound(mob/living/user)
+	if(HAS_MIND_TRAIT(user, TRAIT_MIMING))
+		return
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	if(human_user.gender == FEMALE) // SKYRAT EDIT CHANGE
+		return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
+	return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
+
+/datum/emote/living/gasp/shock
 	key = "gaspshock"
 	key_third_person = "gaspsshock"
 	name = "gasp (Shock)"
@@ -183,16 +194,6 @@
 	message_mime = "gasps in silent shock!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	stat_allowed = SOFT_CRIT
-
-/datum/emote/living/gasp_shock/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/human_user = user
-	if(!HAS_MIND_TRAIT(human_user, TRAIT_MIMING)) // SKYRAT EDIT CHANGE - Let other species gasp - ORIGINAL: if(ishumanbasic(human_user) || isfelinid(human_user) && !HAS_MIND_TRAIT(human_user, TRAIT_MIMING))
-		if(human_user.physique == FEMALE)
-			return pick('sound/voice/human/gasp_female1.ogg', 'sound/voice/human/gasp_female2.ogg', 'sound/voice/human/gasp_female3.ogg')
-		else
-			return pick('sound/voice/human/gasp_male1.ogg', 'sound/voice/human/gasp_male2.ogg')
 
 /datum/emote/living/giggle
 	key = "giggle"
@@ -224,22 +225,6 @@
 	key_third_person = "grimaces"
 	message = "grimaces."
 
-/datum/emote/living/jump
-	key = "jump"
-	key_third_person = "jumps"
-	message = "jumps!"
-	hands_use_check = TRUE
-
-/datum/emote/living/jump/run_emote(mob/living/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return FALSE
-	animate(user, pixel_y = user.pixel_y + 4, time = 0.1 SECONDS)
-	animate(pixel_y = user.pixel_y - 4, time = 0.1 SECONDS)
-
-/datum/emote/living/jump/get_sound(mob/living/user)
-	return 'sound/weapons/thudswoosh.ogg'
-
 /datum/emote/living/kiss
 	key = "kiss"
 	key_third_person = "kisses"
@@ -247,9 +232,10 @@
 
 /datum/emote/living/kiss/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return
 	var/kiss_type = /obj/item/hand_item/kisser
+
+	if(HAS_TRAIT(user, TRAIT_SYNDIE_KISS))
+		kiss_type = /obj/item/hand_item/kisser/syndie
 
 	if(HAS_TRAIT(user, TRAIT_KISS_OF_DEATH))
 		kiss_type = /obj/item/hand_item/kisser/death
@@ -261,7 +247,6 @@
 		qdel(kiss_blower)
 		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
 
-/* SKYRAT EDIT REMOVAL - EMOTES - MOVED TO EMOTES.DM MODULAR
 /datum/emote/living/laugh
 	key = "laugh"
 	key_third_person = "laughs"
@@ -271,15 +256,13 @@
 	audio_cooldown = 5 SECONDS
 	vary = TRUE
 
-/datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+/datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional, params)
 	return ..() && user.can_speak(allow_mimes = TRUE)
 
-/datum/emote/living/laugh/get_sound(mob/living/carbon/user)
-	if(!ishuman(user))
+/datum/emote/living/laugh/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
 		return
-	var/mob/living/carbon/human/human_user = user
-	return human_user.dna.species.get_laugh_sound(user)
-*/ //SKYRAT EDIT END
+	return user.dna.species.get_laugh_sound(user)
 
 /datum/emote/living/look
 	key = "look"
@@ -313,36 +296,36 @@
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	return ..()
 
-/datum/emote/living/carbon/cry
-	key = "cry"
-	key_third_person = "cries"
-	message = "cries."
-	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	stat_allowed = SOFT_CRIT
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized cry emote with sound and animation.
-
 /datum/emote/living/sneeze
 	key = "sneeze"
 	key_third_person = "sneezes"
 	message = "sneezes."
+	message_mime = "acts out an exaggerated silent sneeze."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized sneeze emote with sound.
+	audio_cooldown = 5 SECONDS
+	vary = TRUE
 
-/datum/emote/living/carbon/human/glasses/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	var/image/emote_animation = image('icons/mob/human/emote_visuals.dmi', user, "glasses")
-	flick_overlay_global(emote_animation, GLOB.clients, 1.6 SECONDS)
+/datum/emote/living/sneeze/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_sneeze_sound(user)
 
-/datum/emote/living/carbon/cough
+/datum/emote/living/cough
 	key = "cough"
 	key_third_person = "coughs"
 	message = "coughs!"
 	message_mime = "acts out an exaggerated cough!"
+	vary = TRUE
+	audio_cooldown = 5 SECONDS
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_RUNECHAT
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized cough emote with sound.
 
-/datum/emote/living/cough/can_run_emote(mob/user, status_check = TRUE , intentional)
+/datum/emote/living/cough/can_run_emote(mob/user, status_check = TRUE , intentional, params)
 	return !HAS_TRAIT(user, TRAIT_SOOTHED_THROAT) && ..()
+
+/datum/emote/living/cough/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_cough_sound(user)
 
 
 /datum/emote/living/pout
@@ -357,7 +340,8 @@
 	message = "screams!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized scream.
+	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/living/carbon/human)
+	sound_wall_ignore = TRUE
 
 /datum/emote/living/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
 	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
@@ -387,8 +371,6 @@
 #define SHIVER_LOOP_DURATION (1 SECONDS)
 /datum/emote/living/shiver/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return FALSE
 	animate(user, pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
 	for(var/i in 1 to SHIVER_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
 		animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
@@ -402,6 +384,7 @@
 	message = "sighs."
 	message_mime = "acts out an exaggerated silent sigh."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
 
 /datum/emote/living/sigh/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -409,6 +392,11 @@
 		return
 	var/image/emote_animation = image('icons/mob/human/emote_visuals.dmi', user, "sigh")
 	flick_overlay_global(emote_animation, GLOB.clients, 2.0 SECONDS)
+
+/datum/emote/living/sigh/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_sigh_sound(user)
 
 /datum/emote/living/sit
 	key = "sit"
@@ -431,20 +419,14 @@
 	message = "sniffs."
 	message_mime = "sniffs silently."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
 
-//SKYRAT EDIT ADDITION
-/datum/emote/living/sniff/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(.)
-		var/turf/open/current_turf = get_turf(user)
-		if(istype(current_turf) && current_turf.pollution)
-			if(iscarbon(user))
-				var/mob/living/carbon/carbon_user = user
-				if(carbon_user.internal) //Breathing from internals means we cant smell
-					return
-				carbon_user.next_smell = world.time + SMELL_COOLDOWN
-			current_turf.pollution.smell_act(user)
-//SKYRAT EDIT END
+/datum/emote/living/sniff/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_sniff_sound(user)
+
+
 
 /datum/emote/living/snore
 	key = "snore"
@@ -476,14 +458,12 @@
 	message = "puts their hands on their head and falls to the ground, they surrender%s!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
-/*	SKYRAT EDIT CHANGE - MOVED TO combat_indicator.dm IN INDICATORS MODULE
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(. && isliving(user))
-		var/mob/living/L = user
-		L.Paralyze(200)
-		L.remove_status_effect(/datum/status_effect/grouped/surrender)
-*/
+	if(isliving(user))
+		var/mob/living/living = user
+		living.Paralyze(20 SECONDS)
+		living.remove_status_effect(/datum/status_effect/grouped/surrender)
 
 /datum/emote/living/sway
 	key = "sway"
@@ -492,8 +472,6 @@
 
 /datum/emote/living/sway/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return FALSE
 	animate(user, pixel_x = user.pixel_x + 2, time = 0.5 SECONDS)
 	for(var/i in 1 to 2)
 		animate(pixel_x = user.pixel_x - 4, time = 1.0 SECONDS)
@@ -513,8 +491,6 @@
 #define TREMBLE_LOOP_DURATION (4.4 SECONDS)
 /datum/emote/living/tremble/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return FALSE
 	animate(user, pixel_x = user.pixel_x + 2, time = 0.2 SECONDS)
 	for(var/i in 1 to TREMBLE_LOOP_DURATION / (0.4 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
 		animate(pixel_x = user.pixel_x - 2, time = 0.2 SECONDS)
@@ -529,8 +505,6 @@
 
 /datum/emote/living/twitch/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return FALSE
 	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
 	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
 	animate(time = 0.1 SECONDS)
@@ -544,8 +518,6 @@
 
 /datum/emote/living/twitch_s/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return FALSE
 	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
 	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
 
@@ -635,8 +607,36 @@
 	key_third_person = "custom"
 	message = null
 
-/datum/emote/living/custom/can_run_emote(mob/user, status_check, intentional)
-	. = ..() && intentional
+/datum/emote/living/custom/can_run_emote(mob/user, status_check, intentional, params)
+	. = ..()
+	if(!. || !intentional)
+		return FALSE
+
+	if(!isnull(user.ckey) && is_banned_from(user.ckey, "Emote"))
+		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
+		return FALSE
+
+	if(QDELETED(user))
+		return FALSE
+
+	if(user.client && user.client.prefs.muted & MUTE_IC)
+		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
+		return FALSE
+
+	var/our_message = params ? params : get_custom_emote_from_user()
+
+	if(!emote_is_valid(user, our_message))
+		return FALSE
+
+	if(!params)
+		var/user_emote_type = get_custom_emote_type_from_user()
+
+		if(!user_emote_type)
+			return FALSE
+
+		emote_type = user_emote_type
+
+	message = our_message
 
 /datum/emote/living/custom/proc/emote_is_valid(mob/user, input)
 	// We're assuming clientless mobs custom emoting is something codebase-driven and not player-driven.
@@ -681,66 +681,30 @@
 	return stripped_multiline_input(usr, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN) // SKYRAT EDIT CHANGE - ORIGINAL : return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
 
 /datum/emote/living/custom/proc/get_custom_emote_type_from_user()
-	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
+	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable", "Both")
 
 	switch(type)
 		if("Visible")
 			return EMOTE_VISIBLE
 		if("Hearable")
 			return EMOTE_AUDIBLE
+		if("Both")
+			return EMOTE_VISIBLE | EMOTE_AUDIBLE
 		else
 			tgui_alert(usr,"Unable to use this emote, must be either hearable or visible.")
 			return FALSE
 
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)
-	if(!can_run_emote(user, TRUE, intentional))
-		return FALSE
-
-	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
-		return FALSE
-
-	if(QDELETED(user))
-		return FALSE
-
-	if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
-		return FALSE
-
-	message = params ? params : get_custom_emote_from_user()
-
-	if(!emote_is_valid(user, message))
-		message = null
-		return FALSE
-
-	if(!params)
-		var/user_emote_type = get_custom_emote_type_from_user()
-
-		if(!user_emote_type)
-			return FALSE
-
-		emote_type = user_emote_type
-	else if(type_override)
+	if(params && type_override)
 		emote_type = type_override
-
 	message = user.say_emphasis(message) //SKYRAT EDIT ADDITION - EMOTES
-
 	. = ..()
-
+	///Reset the message and emote type after it's run.
 	message = null
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/custom/replace_pronoun(mob/user, message)
 	return message
-
-/datum/emote/living/beep
-	key = "beep"
-	key_third_person = "beeps"
-	message = "beeps."
-	message_param = "beeps at %t."
-	sound = 'sound/machines/twobeep.ogg'
-	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon, /mob/living/basic/orbie)
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/inhale
 	key = "inhale"
@@ -771,6 +735,4 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/whistle/get_sound(mob/living/user)
-	if(!istype(user))
-		return
 	return 'sound/voice/human/whistle1.ogg'

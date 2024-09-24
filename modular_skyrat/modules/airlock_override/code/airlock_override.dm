@@ -132,7 +132,7 @@
 	switch(wire)
 		if(WIRE_IDSCAN)
 			if(airlock.hasPower() && airlock.density)
-				airlock.do_animate("deny")
+				airlock.run_animation(DOOR_DENY_ANIMATION)
 				if(airlock.emergency)
 					airlock.emergency = FALSE
 					airlock.update_appearance()

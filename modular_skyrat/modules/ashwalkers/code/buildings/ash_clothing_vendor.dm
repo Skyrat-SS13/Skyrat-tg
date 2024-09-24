@@ -24,7 +24,7 @@
 		/obj/item/clothing/shoes/wraps/ashwalker/tribalwraps = 2,
 		/obj/item/clothing/shoes/colorable_sandals = 10,
 		/obj/item/clothing/head/shamanash = 3,
-		/obj/item/clothing/head/standalone_hood = 10,
+		/obj/item/clothing/head/hooded/standalone_hood = 10,
 		/obj/item/clothing/neck/mantle = 15,
 		/obj/item/clothing/neck/cloak/tribalmantle = 2,
 		/obj/item/clothing/neck/mantle/recolorable = 10,

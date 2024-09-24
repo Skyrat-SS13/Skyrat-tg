@@ -203,7 +203,7 @@
 
 ///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it
 /proc/get_sfx(soundin)
-	soundin = get_sfx_skyrat(soundin) //SKYRAT EDIT ADDITION - This overrides the default sound effects too, so use it to modularly change a sound effect output.
+	soundin = get_sfx_skyrat(soundin) // SKYRAT EDIT ADDITION - This overrides the default sound effects too, so use it to modularly change a sound effect output.
 	if(!istext(soundin))
 		return soundin
 	switch(soundin)
@@ -452,5 +452,48 @@
 				'sound/items/rattle1.ogg',
 				'sound/items/rattle2.ogg',
 				'sound/items/rattle3.ogg',
+			)
+		if(SFX_PORTAL_CLOSE)
+			soundin = 'sound/effects/portal_close.ogg'
+		if(SFX_PORTAL_ENTER)
+			soundin = 'sound/effects/portal_travel.ogg'
+		if(SFX_PORTAL_CREATED)
+			soundin = pick(
+				'sound/effects/portal_open_1.ogg',
+				'sound/effects/portal_open_2.ogg',
+				'sound/effects/portal_open_3.ogg',
+			)
+		if(SFX_SCREECH)
+			soundin = pick(
+				'sound/creatures/monkey/monkey_screech_1.ogg',
+				'sound/creatures/monkey/monkey_screech_2.ogg',
+				'sound/creatures/monkey/monkey_screech_3.ogg',
+				'sound/creatures/monkey/monkey_screech_4.ogg',
+				'sound/creatures/monkey/monkey_screech_5.ogg',
+				'sound/creatures/monkey/monkey_screech_6.ogg',
+				'sound/creatures/monkey/monkey_screech_7.ogg',
+			)
+		if(SFX_TOOL_SWITCH)
+			soundin = 'sound/items/handling/tool_switch.ogg'
+		if(SFX_KEYBOARD_CLICKS)
+			soundin = pick(
+				'sound/machines/computer/keyboard_clicks_1.ogg',
+				'sound/machines/computer/keyboard_clicks_2.ogg',
+				'sound/machines/computer/keyboard_clicks_3.ogg',
+				'sound/machines/computer/keyboard_clicks_4.ogg',
+				'sound/machines/computer/keyboard_clicks_5.ogg',
+				'sound/machines/computer/keyboard_clicks_6.ogg',
+				'sound/machines/computer/keyboard_clicks_7.ogg',
+			)
+		if(SFX_STONE_DROP)
+			soundin = pick(
+				'sound/items/stones/stone_drop1.ogg',
+				'sound/items/stones/stone_drop2.ogg',
+				'sound/items/stones/stone_drop3.ogg',
+			)
+		if(SFX_STONE_PICKUP)
+			soundin = pick(
+				'sound/items/stones/stone_pick_up1.ogg',
+				'sound/items/stones/stone_pick_up2.ogg',
 			)
 	return soundin

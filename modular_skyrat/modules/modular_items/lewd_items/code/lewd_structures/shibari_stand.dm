@@ -187,29 +187,20 @@
 	breakouttime = 2 MINUTES
 
 //Disassembling shibari stand
-/obj/structure/chair/shibari_stand/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/chair/shibari_stand/click_ctrl_shift(mob/user)
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
 	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to disassemble \the [src]."))
-		return FALSE
+		return
 
 	to_chat(user, span_notice("You disassemble \the [src]."))
 	var/obj/item/construction_kit/bdsm/shibari/kit = new(get_turf(src))
 	kit.set_greyscale(greyscale_colors)
 	unbuckle_all_mobs()
 	qdel(src)
-	return TRUE
 
 //Changing color of shibari stand
-/obj/structure/chair/shibari_stand/CtrlClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/chair/shibari_stand/click_ctrl(mob/user)
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
 	var/datum/greyscale_modify_menu/menu = new(
@@ -220,7 +211,7 @@
 	)
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
-	return TRUE
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/chair/shibari_stand/examine(mob/user)
 	. = ..()

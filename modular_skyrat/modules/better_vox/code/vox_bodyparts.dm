@@ -8,6 +8,7 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_VOX_PRIMALIS
+	teeth_count = 0
 
 /obj/item/bodypart/chest/mutant/vox_primalis
 	icon_static = 'modular_skyrat/modules/better_vox/icons/bodyparts/vox_bodyparts.dmi'

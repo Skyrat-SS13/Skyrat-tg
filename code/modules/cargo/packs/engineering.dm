@@ -92,7 +92,7 @@
 	name = "Power Cell Crate"
 	desc = "Looking for power overwhelming? Look no further. Contains three high-voltage power cells."
 	cost = CARGO_CRATE_VALUE * 3
-	contains = list(/obj/item/stock_parts/cell/high = 3)
+	contains = list(/obj/item/stock_parts/power_store/cell/high = 3)
 	crate_name = "power cell crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
@@ -327,4 +327,13 @@
 		/obj/item/paper/fluff/radiation_nebula = 1,
 	)
 	crate_name = "radioactive nebula shielding (IMPORTANT)"
+	crate_type = /obj/structure/closet/crate/engineering
+
+/datum/supply_pack/engineering/portagrav
+	name = "Portable Gravity Unit Crate"
+	desc = "Contains a portable gravity unit, to make the clown float into the ceiling."
+	cost = CARGO_CRATE_VALUE * 4
+	access_view = ACCESS_ENGINEERING
+	contains = list(/obj/machinery/power/portagrav = 1)
+	crate_name = "portable gravity unit crate"
 	crate_type = /obj/structure/closet/crate/engineering

@@ -266,8 +266,7 @@ export const FeatureShortTextInput = (
     />
   );
 };
-
-// SKYRAT FEATURES DOWN HERE
+// SKYRAT EDIT ADDITION START - SKYRAT FEATURES DOWN HERE
 
 export const FeatureTextInput = (
   props: FeatureValueProps<string, string, FeatureShortTextData>,
@@ -355,3 +354,4 @@ export const FeatureTriBoolInput = (props: FeatureValueProps<boolean[]>) => {
     </Stack>
   );
 };
+// SKYRAT EDIT ADDITION END

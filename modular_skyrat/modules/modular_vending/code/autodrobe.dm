@@ -15,6 +15,7 @@
 			"name" = "Entertainers",
 			"icon" = "masks-theater",
 			"products" = list(
+				/obj/item/clothing/head/beret/clown = 3,
 				/obj/item/clothing/mask/gas/clownbald = 1,
 				/obj/item/clothing/mask/gas/clown_colourable = 1,
 				/obj/item/clothing/head/costume/jesteralt = 1,

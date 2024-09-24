@@ -112,7 +112,7 @@
 	armor_type = /datum/armor/space_ntrauma
 	resistance_flags = ACID_PROOF
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET
-	cell = /obj/item/stock_parts/cell/super
+	cell = /obj/item/stock_parts/power_store/cell/super
 
 /datum/armor/space_ntrauma
 	melee = 10

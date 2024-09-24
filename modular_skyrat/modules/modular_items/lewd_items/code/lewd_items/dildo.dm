@@ -41,6 +41,11 @@
 		"human" = image(icon = src.icon, icon_state = "[base_icon_state]_human"),
 		"tentacle" = image(icon = src.icon, icon_state = "[base_icon_state]_tentacle"))
 
+/obj/item/clothing/sextoy/dildo/examine(mob/user)
+	. = ..()
+	if(!color_changed && change_sprite)
+		. += span_notice("Alt-click to change it's designs.")
+
 /obj/item/clothing/sextoy/dildo/click_alt(mob/user)
 	if(color_changed)
 		return CLICK_ACTION_BLOCKING
@@ -91,14 +96,16 @@
 
 /obj/item/clothing/sextoy/dildo/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
-	if(!ishuman(target) || (target.stat == DEAD)) //Don't.
+	if(target.stat == DEAD)
+		return
+	if(!ishuman(target)) //Don't.
 		return
 
-	var/message = ""
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
 
+	var/message = ""
 	var/arousal_adjustment = 4
 	var/pleasure_adjustment = 5
 	var/emote_probability = 20
@@ -106,50 +113,63 @@
 	switch(user.zone_selected) //to let code know what part of body we gonna fuck
 		if(BODY_ZONE_PRECISE_GROIN)
 			var/obj/item/organ/external/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
-			if(!vagina)
-				to_chat(user, span_danger("[target] don't have suitable genitalia for that!"))
+			if(!vagina?.is_exposed())
+				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 				return FALSE
 
-			if(!(target.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW))
-				to_chat(user, span_danger("[target]'s groin is covered!"))
-				return FALSE
+			message = (user == target) ? pick("rubs [target.p_their()] vagina with [src]",
+					"gently jams [target.p_their()] pussy with [src]",
+					"fucks [target.p_their()] vagina with [src]") \
+				: pick("delicately rubs [target]'s vagina with [src]",
+					"shoves [src] deep into [target]'s vagina",
+					"jams [src] into [target]'s pussy",
+					"teases [target]'s pussy with [src]")
 
-			message = (user == target) ? pick("rubs [target.p_their()] vagina with [src]", "gently jams [target.p_their()] pussy with [src]", "fucks [target.p_their()] vagina with a [src]") : pick("delicately rubs [target]'s vagina with [src]", "uses [src] to fuck [target]'s vagina", "jams [target]'s pussy with [src]", "teasing [target]'s pussy with [src]")
-
-			if(poly_size == "medium")
-				arousal_adjustment = 6
-				pleasure_adjustment = 8
-				emote_probability = 40
-				possible_emotes = list("moan","twitch_s")
-
-			if(poly_size == "big")
-				arousal_adjustment = 8
-				pleasure_adjustment = 10
-				emote_probability = 60
-				possible_emotes = list("moan","twitch_s", "gasp")
-				target.adjust_pain(2)
+			switch(poly_size)
+				if("medium")
+					arousal_adjustment = 6
+					pleasure_adjustment = 8
+					emote_probability = 40
+					possible_emotes = list("moan","twitch_s")
+				if("big")
+					arousal_adjustment = 8
+					pleasure_adjustment = 10
+					emote_probability = 60
+					possible_emotes = list("moan","twitch_s", "gasp")
+					target.adjust_pain(2)
 
 			if(side_double)
-				user.adjust_arousal(6)
-				user.adjust_pleasure(8)
+				arousal_adjustment += 6
+				pleasure_adjustment += 8
 
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 			if(target.is_mouth_covered())
 				to_chat(user, span_danger("Looks like [target]'s mouth is covered!"))
 				return FALSE
 
-			message = (user == target) ? pick("licks [src] erotically", "sucks on [src], slowly inserting it into [target.p_their()] throat") : pick("fucks [target]'s mouth with [src]", "inserts [src] into [target]'s throat, choking [target.p_them()]", "forces [target] to suck [src]", "inserts [src] into [target]'s throat")
+			message = (user == target) ? pick("licks [src] seductively",
+					"sucks on [src], slowly inserting it into [target.p_their()] throat") \
+				: pick("fucks [target]'s mouth with [src]",
+					"shoves [src] into [target]'s throat, choking [target.p_them()]",
+					"forces [target] to suck [src]",
+					"inserts [src] into [target]'s throat")
 			arousal_adjustment = 4
 			pleasure_adjustment = 1
 			emote_probability = 70
 			possible_emotes = list("gasp", "moan")
 
 		else
-			if(!target.is_bottomless())
-				to_chat(user, span_danger("[target]'s anus is covered!"))
+			var/obj/item/organ/external/genital/anus = target.get_organ_slot(ORGAN_SLOT_ANUS)
+			if(!anus?.is_exposed())
+				to_chat(user, span_danger("Looks like [target]'s anus is covered!"))
 				return FALSE
 
-			message = (user == target) ? pick("puts [src] into [target.p_their()] anus", "slowly inserts [src] into [target.p_their()] ass") : pick("fucks [target]'s ass with [src]", "uses [src] to fuck [target]'s anus", "jams [target]'s ass with [src]", "roughly fucks [target]'s ass with [src], making [target.p_their()] eyes roll back")
+			message = (user == target) ? pick("puts [src] into [target.p_their()] anus",
+					"slowly inserts [src] into [target.p_their()] ass") \
+				: pick("fucks [target]'s ass with [src]",
+					"uses [src] to fuck [target]'s anus",
+					"jams [target]'s ass with [src]",
+					"fucks [target]'s ass with [src], making [target.p_their()] eyes roll back")
 			arousal_adjustment = 5
 			pleasure_adjustment = 5
 			emote_probability = 60
@@ -161,7 +181,7 @@
 		target.try_lewd_autoemote(pick(possible_emotes))
 
 	user.visible_message(span_purple("[user] [message]!"))
-	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
+	conditional_pref_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
@@ -207,21 +227,24 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		"medium" = image(icon = src.icon, icon_state = "[base_icon_state]_medium"),
 		"big" = image(icon = src.icon, icon_state = "[base_icon_state]_big"))
 
+/obj/item/clothing/sextoy/dildo/custom_dildo/examine(mob/user)
+	. = ..()
+	if(!size_changed && color_changed && change_sprite)
+		. += span_notice("Alt-click to change it's size.")
+
 /obj/item/clothing/sextoy/dildo/custom_dildo/click_alt(mob/living/user)
-	if(!size_changed)
+	if(!color_changed)
+		if(!istype(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+			return CLICK_ACTION_BLOCKING
+		customize(user)
+		color_changed = TRUE
+	else if (!size_changed)
 		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return CLICK_ACTION_BLOCKING
 		poly_size = choice
 		update_icon()
 		size_changed = TRUE
-	else
-		if(color_changed)
-			return CLICK_ACTION_BLOCKING
-		if(!istype(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-			return CLICK_ACTION_BLOCKING
-		customize(user)
-		color_changed = TRUE
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/Initialize(mapload)
@@ -247,10 +270,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	update_icon_state()
 	return TRUE
-
-/obj/item/clothing/sextoy/dildo/custom_dildo/examine(mob/user)
-	. = ..()
-	. += span_notice("<br>Alt-Click \the [src.name] to customize it.")
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/update_icon_state()
 	. = ..()
@@ -386,7 +405,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /// Code for taking out/putting away the other end of the toy when one end is in you
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
-	play_lewd_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
+	conditional_pref_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 
 	if(!end_in_hand)
 		take_in_hand(user)

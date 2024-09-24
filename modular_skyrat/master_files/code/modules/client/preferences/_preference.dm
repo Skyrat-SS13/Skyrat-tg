@@ -159,11 +159,11 @@
 
 /datum/preference/choiced/mutant_choice/init_possible_values()
 	if(!initial(generate_icons))
-		return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
+		return assoc_to_keys_features(SSaccessories.sprite_accessories[relevant_mutant_bodypart])
 
 	var/list/list_of_accessories = list()
-	for(var/sprite_accessory_name as anything in GLOB.sprite_accessories[relevant_mutant_bodypart])
-		var/datum/sprite_accessory/sprite_accessory = GLOB.sprite_accessories[relevant_mutant_bodypart][sprite_accessory_name]
+	for(var/sprite_accessory_name as anything in SSaccessories.sprite_accessories[relevant_mutant_bodypart])
+		var/datum/sprite_accessory/sprite_accessory = SSaccessories.sprite_accessories[relevant_mutant_bodypart][sprite_accessory_name]
 		list_of_accessories += list("[sprite_accessory.name]" = generate_icon(sprite_accessory))
 
 	return list_of_accessories

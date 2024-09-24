@@ -31,6 +31,9 @@
 	limb_id = SPECIES_MAMMAL
 	is_dimorphic = TRUE
 
+/obj/item/bodypart/chest/mutant/get_butt_sprite()
+	return icon('modular_skyrat/master_files/icons/mob/butts.dmi', BUTT_SPRITE_VULP)
+
 /obj/item/bodypart/arm/left/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL

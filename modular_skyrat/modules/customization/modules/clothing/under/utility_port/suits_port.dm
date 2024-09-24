@@ -20,6 +20,22 @@
 	armor_type = /datum/armor/jacket_engi
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/t_scanner, /obj/item/construction/rcd, /obj/item/pipe_dispenser, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
 
+/obj/item/clothing/suit/toggle/jacket/tcomm
+	name = "telecomms jacket"
+	desc = "A comfortable jacket in engineering yellow with blue telecomms trim."
+	icon_state = "tcomm_dep_jacket"
+	armor_type = /datum/armor/jacket_engi
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/tank/internals,
+		/obj/item/t_scanner,
+		/obj/item/construction/rcd,
+		/obj/item/pipe_dispenser,
+		/obj/item/toy,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/lighter,
+	)
+
 /datum/armor/jacket_engi
 	fire = 30
 	acid = 45

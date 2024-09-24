@@ -21,7 +21,7 @@
 /obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
 	toy_on = !toy_on
 	to_chat(user, span_notice("You turn the vibroring [toy_on ? "on. Brrrr..." : "off."]"))
-	play_lewd_sound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+	conditional_pref_sound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_icon()
 	switch(toy_on)
@@ -35,6 +35,11 @@
 	vibroring_designs = list(
 		"pink" = image(icon = src.icon, icon_state = "vibroring_pink_off"),
 		"teal" = image(icon = src.icon, icon_state = "vibroring_teal_off"))
+
+/obj/item/clothing/sextoy/vibroring/examine(mob/user)
+	. = ..()
+	if(!color_changed)
+		. += span_notice("Alt-click to change it's color.")
 
 /obj/item/clothing/sextoy/vibroring/click_alt(mob/user)
 	if(color_changed)

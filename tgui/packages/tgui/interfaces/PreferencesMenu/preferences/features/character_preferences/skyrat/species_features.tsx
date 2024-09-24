@@ -129,6 +129,13 @@ export const allow_mismatched_parts_toggle: FeatureToggle = {
   component: CheckboxInput,
 };
 
+export const allow_mismatched_hair_color_toggle: FeatureToggle = {
+  name: 'Allow Mismatched Hair Color',
+  description:
+    'Allows species who normally have a fixed hair color to have different hair colors. This includes in-round sources such as dyeing hair, alter form, etc. Currently only applicable to slimes.',
+  component: CheckboxInput,
+};
+
 export const allow_genitals_toggle: FeatureToggle = {
   name: 'Allow Genital Parts',
   description: 'Enables if you want to have genitals on your character.',
@@ -645,6 +652,13 @@ export const taur_emissive: Feature<boolean[]> = {
   name: 'Taur Emissives',
   description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
+};
+
+export const naga_sole: FeatureToggle = {
+  name: 'Taur (Naga) disable hardened soles',
+  description:
+    'If using a serpentine taur body, determines if you are immune to caltrops and a few other effects of being barefoot.',
+  component: CheckboxInput,
 };
 
 export const xenodorsal_toggle: FeatureToggle = {

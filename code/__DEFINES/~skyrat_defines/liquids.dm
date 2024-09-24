@@ -30,7 +30,7 @@
 
 #define LIQUID_ATTRITION_TO_STOP_ACTIVITY 2
 
-//Percieved heat capacity for calculations with atmos sharing
+//Perceived heat capacity for calculations with atmos sharing
 #define REAGENT_HEAT_CAPACITY		5
 
 #define LIQUID_STATE_PUDDLE			1
