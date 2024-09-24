@@ -43,6 +43,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/chat_icon = "nif-soulcatcher"
 	/// What is the type of room that we want to create?
 	var/type_of_room_to_create = /datum/carrier_room
+	/// What items if any are stored inside of this component?
+	var/list/linked_carrier_boxes = list()
 
 /datum/component/carrier/New()
 	. = ..()
@@ -177,8 +179,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return room_list
 
 /// Transfers a soul from a carrier room to another carrier room. Returns `FALSE` if the target room or target soul cannot be found.
-/datum/component/carrier/proc/transfer_mob(mob/living/target_soul, datum/carrier_room/target_room)
-	if(!(target_soul in get_current_mobs()) || !target_room)
+/datum/component/carrier/proc/transfer_mob(mob/living/target_mob, datum/carrier_room/target_room)
+	if(!(target_mob in get_current_mobs()) || !target_room)
 		return FALSE
 
 	var/datum/component/carrier/target_master_carrier = target_room.master_carrier.resolve()
@@ -187,22 +189,43 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	else if(target_master_carrier != src)
-		target_soul.forceMove(target_master_carrier.parent)
+		target_mob.forceMove(target_master_carrier.parent)
 
-	var/datum/component/carrier_user/carrier_component = target_soul.GetComponent(/datum/component/carrier_user)
+	var/datum/component/carrier_user/carrier_component = target_mob.GetComponent(/datum/component/carrier_user)
 	var/datum/carrier_room/original_room = carrier_component?.current_room?.resolve()
 	if(!istype(carrier_component) || !istype(original_room))
 		return FALSE // Don't transfer someone that isn't already inside of a carrier.
 
-	original_room.current_mobs -= target_soul
+	original_room.current_mobs -= target_mob
 	var/datum/weakref/room_ref = WEAKREF(target_room)
 	carrier_component.current_room = room_ref
-	target_room.current_mobs += target_soul
+	target_room.current_mobs += target_mob
 
-	target_soul.clear_fullscreen("carrier", FALSE)
-	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
-	to_chat(target_soul, span_notice(target_room.room_description))
 
+	if(original_room.room_exit_text)
+		to_chat(target_mob, span_notice(original_room.room_exit_text))
+
+	target_mob.clear_fullscreen("carrier", FALSE)
+	to_chat(target_mob, span_cyan("you've been transferred to [target_room]!"))
+
+	to_chat(target_mob, span_cyan("you've been transferred to [target_room]!"))
+	if(target_room.room_enter_text)
+		to_chat(target_mob, span_notice(target_room.room_enter_text))
+	to_chat(target_mob, span_notice(target_room.room_description))
+
+	return TRUE
+
+/// If we have any item box for the mob with the associated ckey, expel the item onto the floor.
+/datum/component/carrier/proc/remove_carrier_box(ckey_to_check)
+	if(!ckey_to_check || !linked_carrier_boxes[ckey_to_check])
+		return FALSE
+
+	var/obj/item/carrier_box/found_box = linked_carrier_boxes[ckey_to_check]
+	if(!istype(found_box))
+		return FALSE
+
+	linked_carrier_boxes[ckey_to_check] = null
+	found_box.forceMove(get_turf(parent))
 	return TRUE
 
 /// Adds `mob_to_add` into the parent carrier, giving them the carrier component and moving their mob into the room. Returns the component added, if successful
@@ -243,6 +266,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/name = "Carrier room"
 	/// What is the description of the room?
 	var/room_description = "it feels roomy in here."
+	/// What text is shown when exiting the room?
+	var/room_exit_text = ""
+	/// What text is shown when entering the room?
+	var/room_enter_text = ""
+
 	/// What souls are currently inside of the room?
 	var/list/current_mobs = list()
 	/// Weakref for the master carrier datum
@@ -253,6 +281,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/joinable = TRUE
 	/// What is the color of chat messages sent by the room?
 	var/room_color = SOULCATCHER_DEFAULT_COLOR
+	/// What effects are currently being applied by the room?
+	var/list/carrier_effects = list()
+	/// What carrier effects are we able to apply?
+	var/list/applyable_effects = list()
 
 /// Adds a mob into the carrier
 /datum/carrier_room/proc/add_mob(mob/living/mob_to_add)
@@ -271,7 +303,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	carrier_component.current_room = WEAKREF(src)
 	mob_to_add.forceMove(parent_carrier.parent)
 
-	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
+	if(room_enter_text)
+		to_chat(mob_to_add, span_notice(room_enter_text))
+	else
+		to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
+
 	to_chat(mob_to_add, span_notice(room_description))
 
 	var/atom/parent_atom = parent_object
@@ -281,6 +317,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		mob_to_add.log_message(message_to_log, LOG_GAME)
 
+	ADD_TRAIT(mob_to_add, TRAIT_FLOORED, TRAIT_CARRIER)
 	return TRUE
 
 /// Removes a mob from a carrier room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
@@ -310,8 +347,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/turf/current_tile = get_turf(parent_carrier.parent)
 	mob_to_remove.forceMove(current_tile)
+
+	parent_carrier.remove_carrier_box(mob_to_remove.ckey)
 	soul_to_remove.clear_fullscreen("carrier", FALSE)
 
+	REMOVE_TRAIT(mob_to_remove, TRAIT_FLOORED, TRAIT_CARRIER)
 	return TRUE
 
 /**
@@ -387,6 +427,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	relay_message_to_carrier(owner_message)
 	return TRUE
+
+/datum/carrier_room/process(seconds_per_tick)
+	for(var/datum/carrier_effect/active_effect as anything in carrier_effects)
+		for(var/mob/living/current_mob as anything in current_mobs)
+			active_effect.apply_to_carrier_mob(current_mob)
+
+		active_effect.apply_to_owner()
 
 /// Relays a message sent from the send_message proc to the parent carrier datum
 /datum/carrier_room/proc/relay_message_to_carrier(message)
