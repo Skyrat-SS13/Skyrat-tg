@@ -323,7 +323,7 @@
 	default = "http://tgstation13.org/phpBB/index.php"
 
 /datum/config_entry/string/rulesurl
-	default = "http://www.tgstation13.org/wiki/Rules"
+	default = "http://tgstation13.org/wiki/Rules"
 
 /datum/config_entry/string/githuburl
 	default = "https://www.github.com/tgstation/tgstation"
