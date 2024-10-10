@@ -22,7 +22,6 @@
 		color = ear_owner.hair_color
 		ear_owner.dna.species.mutant_bodyparts -= "ears"
 		ear_owner.update_body()
-
 	sprite_accessory_override = /datum/sprite_accessory/ears/fox
 */
 //SKYRAT EDIT REMOVAL END

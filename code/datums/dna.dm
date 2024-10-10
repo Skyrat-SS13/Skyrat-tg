@@ -755,8 +755,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		dna.features["caps"] = SSaccessories.caps_list[deconstruct_block(get_uni_feature_block(features, DNA_MUSHROOM_CAPS_BLOCK), length(SSaccessories.caps_list))]
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = SSaccessories.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), length(SSaccessories.pod_hair_list))]
-	for(var/obj/item/organ/organ in organs)
-		organ.mutate_feature(features, src)
+
+	for(var/obj/item/organ/external/external_organ in organs)
+		external_organ.mutate_feature(features, src)
 
 	if(icon_update)
 		update_body(is_creating = mutcolor_update)
