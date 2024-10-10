@@ -366,7 +366,6 @@ const PageMain = (props) => {
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
                 // SKYRAT EDIT END
               />
-
             </Flex.Item>
           </Flex>
         </Section>
@@ -492,7 +491,6 @@ const PageMain = (props) => {
           {
             // SKYRAT EDIT END
           }
-
         </Flex>
       </Section>
 

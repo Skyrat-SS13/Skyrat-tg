@@ -129,7 +129,7 @@
 	mask = /obj/item/clothing/mask/whistle
 	uniform = /obj/item/clothing/under/color/red
 
-	neck = /obj/item/camera
+	//neck = /obj/item/camera //SKYRAT TODO - Figure out why this adding to Wardrobe canon list makes holodisks with clowns harddel cameras
 
 	outfit_weight = 2
 

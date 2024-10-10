@@ -149,7 +149,7 @@
 	to_chat(target, span_brass("[src] glows, indicating the next attack will disrupt electronics of the target."))
 
 
-/obj/item/gun/ballistic/bow/clockwork
+/obj/item/gun/ballistic/bow/clockwork // SKYRAT TODO - Make Arrow icon independent from sprite
 	name = "brass bow"
 	desc = "A bow made from brass and other components that you can't quite understand. It glows with a deep energy and frabricates arrows by itself."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'

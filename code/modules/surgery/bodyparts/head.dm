@@ -176,7 +176,7 @@
 	if(dropped)
 		var/obj/item/organ/internal/eyes/eyes = locate(/obj/item/organ/internal/eyes) in src
 		// This is a bit of copy/paste code from eyes.dm:generate_body_overlay
-		if((eyes?.eye_icon_state || eyes.eye_icon_state == "None") && (head_flags & HEAD_EYESPRITES)) //SKYRAT EDIT - Ignores None iconstate for synths
+		if(eyes?.eye_icon_state && (head_flags & HEAD_EYESPRITES))
 			var/image/eye_left = image('icons/mob/human/human_face.dmi', "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
 			var/image/eye_right = image('icons/mob/human/human_face.dmi', "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
 			if(head_flags & HEAD_EYECOLOR)

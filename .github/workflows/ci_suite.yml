@@ -110,9 +110,9 @@ jobs:
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         shell: bash
         run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
-      - name: Run OpenDream
-        if: steps.linter-setup.conclusion == 'success' && !cancelled()
-        run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
+      #- name: Run OpenDream - SKYRAT REMOVAL - DreamChecker is fine for us so far - SKYRAT TODO
+      #  if: steps.linter-setup.conclusion == 'success' && !cancelled()
+      #  run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
       - name: Run Map Checks
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: |

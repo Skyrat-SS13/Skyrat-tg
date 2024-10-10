@@ -183,7 +183,6 @@ export type PreferencesMenuData = {
 
   is_veteran: BooleanLike; // SKYRAT EDIT - Veteran status
 
-
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;

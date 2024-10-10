@@ -148,6 +148,7 @@ $department_map: (
           // SKYRAT EDIT START
           > * {
             height: calc(100% + 0.2em);
+            padding-bottom: 0.2em;
           }
 
           .jobRow {
@@ -174,7 +175,6 @@ $department_map: (
           .options {
             background: rgba(0, 0, 0, 0.2);
             height: 100%;
-
             // SKYRAT EDIT START
             text-align: right;
             align-items: center;
@@ -186,22 +186,26 @@ $department_map: (
         &--Captain {
           border: 3px solid rgba(200, 200, 0, 1);
           border-bottom: 0; // SKYRAT EDIT
+
           &:first-child {
             border-top: 3px solid rgba(200, 200, 0, 1);
           }
+          // SKYRAT EDIT REMOVAL - No need for big names
+          //.job-name {
+          //  font-size: 17px;
+          //}
 
           // SKYRAT EDIT START -- Taking the second last because last is {children}
           &:nth-last-child(2) {
             border-bottom: 3px solid rgba(200, 200, 0, 1);
           }
           // SKYRAT EDIT END
-          .job-name {
-            font-size: 17px;
-          }
         }
       }
+
       &__priority {
         border: 1px solid rgba(0, 0, 0, 0.3);
+
         &--off::after {
           content: '';
 
