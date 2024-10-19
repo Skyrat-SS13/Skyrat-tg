@@ -26,3 +26,16 @@
 		/obj/item/bonesetter/alien,
 		/obj/item/blood_filter/alien,
 	)
+
+/obj/item/organ/internal/cyberimp/arm/surgery
+	items_to_create = list(
+		/obj/item/retractor/augment,
+		/obj/item/hemostat/augment,
+		/obj/item/cautery/augment,
+		/obj/item/surgicaldrill/augment,
+		/obj/item/scalpel/augment,
+		/obj/item/circular_saw/augment,
+		/obj/item/surgical_drapes,
+		/obj/item/bonesetter,
+		/obj/item/blood_filter,
+	)
