@@ -1896,6 +1896,10 @@
 	hasinner = TRUE
 	color_src = HAIR_COLOR
 
+/datum/sprite_accessory/ears/cat/big
+	name = "Big"
+	icon_state = "big"
+
 /datum/sprite_accessory/ears/cat/miqo
 	name = "Coeurl"
 	icon_state = "miqo"
