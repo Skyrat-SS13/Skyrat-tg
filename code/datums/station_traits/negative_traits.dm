@@ -26,7 +26,7 @@
 	report_message = "Due to an ongoing strike announced by the postal workers union, mail won't be delivered this shift."
 
 /datum/station_trait/mail_blocked/on_round_start()
-	//This is either a holiday or sunday... well then, let's flip the situation.
+	//This is either a holiday or Sunday... well then, let's flip the situation.
 	if(SSeconomy.mail_blocked)
 		name = "Postal system overtime"
 		report_message = "Despite being a day off, the postal system is working overtime today. Mail will be delivered this shift."
@@ -343,7 +343,7 @@
 
 /datum/station_trait/random_event_weight_modifier/dust_storms
 	name = "Dust Stormfront"
-	report_message = "The space around your station is clouded by heavy pockets of space dust. Expect an increased likelyhood of space dust storms damaging the station hull."
+	report_message = "The space around your station is clouded by heavy pockets of space dust. Expect an increased likelihood of space dust storms damaging the station hull."
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 2
 	cost = STATION_TRAIT_COST_LOW
@@ -507,11 +507,6 @@
 	var/list/shielding = list()
 
 /datum/station_trait/nebula/hostile/process(seconds_per_tick)
-	// SKYRAT EDIT ADDITION START
-	if(!storms_enabled)
-		get_shielding_level() // So shields still produce tritium
-		return
-	// SKYRAT EDIT ADDITION END
 	calculate_nebula_strength()
 
 	apply_nebula_effect(nebula_intensity - get_shielding_level())
@@ -577,7 +572,7 @@
 	threat_reduction = 30
 	dynamic_threat_id = "Radioactive Nebula"
 
-	intensity_increment_time = 10 MINUTES // SKYRAT EDIT longer shield duration - ORIGINAL: intensity_increment_time = 5 MINUTES /
+	intensity_increment_time = 10 MINUTES // SKYRAT EDIT - ORG: 5 MINUTES
 	maximum_nebula_intensity = 1 HOURS + 40 MINUTES
 
 	nebula_layer = /atom/movable/screen/parallax_layer/random/space_gas/radioactive
@@ -619,10 +614,10 @@
 	//Send a nebula shielding unit to engineering
 	var/datum/supply_pack/supply_pack_shielding = new /datum/supply_pack/engineering/rad_nebula_shielding_kit()
 	if(!send_supply_pod_to_area(supply_pack_shielding.generate(null), /area/station/engineering/main, /obj/structure/closet/supplypod/centcompod))
-		//if engineering isnt valid, just send it to the bridge
+		//if engineering isn't valid, just send it to the bridge
 		send_supply_pod_to_area(supply_pack_shielding.generate(null), /area/station/command/bridge, /obj/structure/closet/supplypod/centcompod)
 
-	// Let medical know resistence is futile
+	// Let medical know resistance is futile
 	if (/area/station/medical/virology in GLOB.areas_by_type)
 		send_fax_to_area(
 			new /obj/item/paper/fluff/radiation_nebula_virologist,
@@ -661,7 +656,7 @@
 	if(!istype(get_area(spawned_mob), radioactive_areas)) //only if you're spawned in the radioactive areas
 		return
 
-	if(!isliving(spawned_mob)) // Dynamic shouldnt spawn non-living but uhhhhhhh why not
+	if(!isliving(spawned_mob)) // Dynamic shouldn't spawn non-living but uhhhhhhh why not
 		return
 
 	var/mob/living/spawnee = spawned_mob
@@ -699,10 +694,9 @@
 	new /obj/effect/pod_landingzone (get_safe_random_station_turf(), new /obj/structure/closet/supplypod/centcompod (), new /obj/machinery/nebula_shielding/emergency/radiation ())
 
 /datum/station_trait/nebula/hostile/radiation/send_instructions()
-	/* SKYRAT EDIT REMOVAL START - No more radiation storms on station
 	var/obj/machinery/nebula_shielding/shielder = /obj/machinery/nebula_shielding/radiation
 	var/obj/machinery/gravity_generator/main/innate_shielding = /obj/machinery/gravity_generator/main
-	//How long do we have untill the first shielding unit needs to be up?
+	//How long do we have until the first shielding unit needs to be up?
 	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] minute\s"
 	//For how long each shielding unit will protect for
 	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] minute\s"
@@ -718,12 +712,6 @@
 		You have [deadline] before the nebula enters the station. \
 		Every shielding unit will provide an additional [shielder_time] of protection, fully protecting the station with [max_shielders] shielding units.
 	"}
-	SKYRAT EDIT REMOVAL END */
-	// SKYRAT EDIT CHANGE START - ORIGINAL: See above
-	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
-		Standard spacesuits will not protect against the nebula and using them is strongly discouraged.
-	"}
-	// SKYRAT EDIT CHANGE END
 
 	priority_announce(announcement, sound = 'sound/misc/notice1.ogg')
 
