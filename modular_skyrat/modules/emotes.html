@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_skyrat/modules/emotes/readme.md - /tg/ Station 13</title></head><body><header><a href="index.html">/tg/ Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>modular_skyrat/modules/emotes/readme.md <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/modules/emotes/readme.md0"><img src="git.png" width="16" height="16" title="modular_skyrat/modules/emotes/readme.md0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>https://github.com/Skyrat-SS13/Skyrat-tg/pull/892
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/1925
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/2320
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/6259</p>
+<h2 id="title-all-the-emotes">Title: All the emotes.</h2>
+<p>MODULE ID: EMOTES</p>
+<h3 id="description">Description:</h3>
+<p>Adds all the emotes we once had on the oldbase, and shoves them right into here.</p>
+<p>Adds some new emotes, and adjusted sound files.</p>
+<p>Pretty much anything that changes emotes is in here</p>
+<h3 id="tg-proc-changes">TG Proc Changes:</h3><table><thead><tr><th>File Location</th><th>Changed TG Proc</th></tr></thead><tbody>
+<tr><td>code/datums/emotes.dm</td><td><code>/datum/emote/proc/check_cooldown(mob/user, intentional)</code></td></tr>
+<tr><td>code/datums/emotes.dm</td><td><code>/datum/emote/proc/run_emote(mob/user, params, type_override, intentional = FALSE)</code></td></tr>
+<tr><td>code/modules/mob/living/carbon/carbon_defense.dm</td><td><code>/mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)</code></td></tr>
+</tbody></table>
+<h3 id="tg-file-changes">TG File Changes:</h3>
+<ul>
+<li>code/datums/emotes.dm</li>
+<li>code/modules/mob/living/emote.dm</li>
+<li>code/modules/mob/living/carbon/emote.dm</li>
+</ul>
+<h3 id="defines">Defines:</h3><table><thead><tr><th>File Location</th><th>Defines</th></tr></thead><tbody>
+<tr><td>code/__DEFINES/~skyrat_defines/traits.dm</td><td><code>#define TRAIT_EXCITABLE	&quot;wagwag&quot;</code></td></tr>
+<tr><td>modular_skyrat/modules/emotes/code/emotes.dm</td><td><code>#define EMOTE_DELAY</code></td></tr>
+</tbody></table>
+<h3 id="master-file-additions">Master file additions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="included-files-that-are-not-contained-in-this-module">Included files that are not contained in this module:</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="credits">Credits:</h3>
+<ul>
+<li>Gandalf2k15 - porting and refactoring</li>
+<li>Avunia Takiya
+<ul>
+<li>refactoring code</li>
+<li>adjusting existing sound files</li>
+<li>adding more emotes</li>
+</ul>
+</li>
+<li>TheOOZ Additional emotes
+<ul>
+<li>overlay emotes</li>
+<li>turf emotes</li>
+</ul>
+</li>
+<li>VOREstation - a couple of the soundfiles and emote texts</li>
+</ul></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/e507f9120bb0c3beecfe169d14193d90e7229a58">e507f91</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

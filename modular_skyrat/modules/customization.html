@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_skyrat/modules/customization/readme.md - /tg/ Station 13</title></head><body><header><a href="index.html">/tg/ Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>modular_skyrat/modules/customization/readme.md <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/modules/customization/readme.md0"><img src="git.png" width="16" height="16" title="modular_skyrat/modules/customization/readme.md0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><h2 id="title-customization">Title: Customization</h2>
+<p>MODULE ID: CUSTOMIZATION</p>
+<h3 id="description">Description:</h3>
+<p>IF YOU WANT TO ADD AN EXTRA FEATURE TO SOMEONES DNA LOOK AT &quot;code/__DEFINES/~skyrat_defines/DNA.dm&quot;</p>
+<p>Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb body marking system. Adds in loadout, with lots of clothing ported over. Adds in all the missing species. Adds in flavor text and OOC prefs. Adds in special rendering cases for digitigrades, taurs, snouts, voxes etc. Adds in changeable PDA ringtone message.</p>
+<h3 id="tg-proc-changes">TG Proc Changes:</h3>
+<p>./code/__HELPERS/global_lists.dm &gt; /proc/make_datum_references_lists()
+./code/__HELPERS/mobs.dm &gt; /proc/random_features()
+./code/controllers/subsystem/job.dm &gt; /datum/controller/subsystem/job/proc/EquipRank()
+./code/datums/dna.dm &gt; /datum/dna/proc/initialize_dna() , /mob/living/carbon/set_species()
+./code/modules/admin/create_mob.dm &gt; /proc/randomize_human()
+./code/modules/client/preferences.dm &gt; ALMOST THE ENTIRETY OF THE FILE
+./code/modules/client/preferences_savefile.dm &gt; ONCE AGAIN, THE ENTIRE FILE
+./code/modules/mob/dead/new_player/preferences_setup.dm &gt; /datum/preferences/proc/random_character(), /datum/preferences/proc/random_species(), /datum/preferences/proc/update_preview_icon()
+./code/modules/mob/living/carbon/carbon_update_icons.dm &gt; /mob/living/carbon/update_inv_wear_mask(), /mob/living/carbon/update_inv_head(), /mob/living/carbon/proc/update_body_parts(), /mob/living/carbon/proc/generate_icon_render_key()
+./code/modules/mob/living/carbon/human/emote.dm &gt; /datum/emote/living/carbon/human/wag/run_emote(), /datum/emote/living/carbon/human/wag/can_run_emote()
+./code/modules/mob/living/carbon/human/examine.dm &gt; /mob/living/carbon/human/examine()
+./code/modules/mob/living/carbon/human/human_update_icons.dm &gt; /mob/living/carbon/human/update_inv_w_uniform(), /mob/living/carbon/human/update_inv_glasses(), /mob/living/carbon/human/update_inv_shoes(), /mob/living/carbon/human/update_inv_wear_suit(), /obj/item/proc/build_worn_icon(), /mob/living/carbon/human/generate_icon_render_key()
+./code/modules/mob/living/carbon/human/species.dm &gt; /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/handle_hair()
+./code/modules/mob/living/carbon/human/species_types/felinid.dm &gt; the 5 procs related to wagging tail
+./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
+./code/modules/surgery/bodyparts/_bodyparts.dm &gt; /obj/item/bodypart/proc/get_limb_icon()
+./code/modules/surgery/organs/ears.dm &gt; /obj/item/organ/internal/ears/cat/Insert(), /obj/item/organ/internal/ears/cat/Remove()
+./code/modules/surgery/organs/tails.dm &gt; /obj/item/organ/external/tail/cat/Insert(), /obj/item/organ/external/tail/cat/Remove(), /obj/item/organ/external/tail/lizard/Initialize(mapload), /obj/item/organ/external/tail/lizard/Insert(), /obj/item/organ/external/tail/lizard/Remove()
+./code/modules/surgery/bodyparts/dismemberment.dm &gt; /mob/living/carbon/regenerate_limb()
+./code/modules/mob/living/carbon/human/status_procs.dm &gt; /mob/living/carbon/human/become_husk() &gt; APPENDED
+./code/modules/reagents/chemistry/holder.dm &gt; /datum/reagents/metabolize()
+./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm &gt; /obj/item/reagent_containers/cup/glass/drinkingglass/on_reagent_change()
+./code/modules/mob/living/carbon/human/human_defense.dm &gt; /mob/living/carbon/human/emp_act()
+./code/modules/mob/living/carbon/human.dm &gt; /mob/living/carbon/human/revive() &gt; APPENDED
+./code/modules/reagents/chemistry/reagents/food_reagents.dm &gt; datum/reagent/consumable/on_mob_life()
+./code/datums/traits/negative.dm &gt; /datum/quirk/prosthetic_limb
+.\code\modules\client.dm &gt; /client/proc/update_special_keybinds()
+./code/datums/traits/negative.dm &gt; /datum/quirk/prosthetic_limb</p>
+<p>./code/modules/mob/living/carbon/human/species.dm &gt; /datum/species/regenerate_organs() &gt; APPENDED</p>
+<p>./code/controllers/subsystem/job.dm &gt; /datum/controller/subsystem/job/proc/FindOccupationCandidates(), /datum/controller/subsystem/job/proc/GiveRandomJob(), /datum/controller/subsystem/job/proc/DivideOccupations(), /datum/controller/subsystem/job/proc/AssignRole()
+./code/modules/mob/dead/new_player/new_player.dm &gt; /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message()</p>
+<h3 id="defines">Defines:</h3>
+<p>./code/modules/surgery/organs/tongue.dm &gt; var/static/list/languages_possible_base - added 2 languages
+./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm &gt; commented out &quot;mutant_organs = list(/obj/item/organ/external/tail/lizard)&quot;
+./code/modules/mob/living/carbon/human/species_types/felinid.dm &gt; commented out &quot;mutantears = /obj/item/organ/internal/ears/cat&quot; and &quot;mutant_organs = list(/obj/item/organ/external/tail/cat)&quot;
+./code/modules/mob/living/carbon/human/species.dm &gt; var/list/list/mutant_bodyparts (added typed list type)
+./code/_globalvars/lists/flavor_misc.dm &gt; Removed accessory list defines
+.\code\datums\keybindings\living.dm &gt; /datum/keybinding/living/look_up &gt; from L to P</p>
+<p>./code/__DEFINES/~skyrat_defines/DNA.dm &gt; A TON of defines
+./code/__DEFINES/~skyrat_defines/obj_flags.dm  &gt; Organ flags
+./code/__DEFINES/~skyrat_defines/say.dm &gt; MAX_FLAVOR_LEN
+./code/__DEFINES/~skyrat_defines/traits.dm &gt; TRAIT_NO_HUSK</p>
+<p>.\modular_skyrat\modules\customization\modules\reagents\chemistry\reagents.dm &gt; var/process_flags</p>
+<h3 id="master-file-additions">Master file additions</h3>
+<p>.\modular_skyrat\master_files\icons\mob\clothing\eyes_vox.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\feet_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\head_muzzled.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\head_vox.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\mask_muzzled.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\mask_vox.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_taur_hoof.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_taur_paw.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_taur_snake.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\uniform_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_hoof.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_paw.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_snake.dmi</p>
+<p>./modular_skyrat/master_files/icons/obj/drinks.dmi</p>
+<h3 id="included-files-that-are-not-contained-in-this-module">Included files that are not contained in this module:</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="credits">Credits:</h3>
+<p>Azarak</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/e507f9120bb0c3beecfe169d14193d90e7229a58">e507f91</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

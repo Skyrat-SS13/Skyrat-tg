@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>/obj/item/towel - /tg/ Station 13</title></head><body><header><a href="index.html">/tg/ Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a> — <a href="obj/item/towel.html#var">Var Details</a> - <a href="obj/item/towel.html#proc">Proc Details</a></header><main><h1>towel <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/towel.html">towel</a></aside> <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L32"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 32"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr><tr><th><a href="obj/item/towel.html#var/max_reagent_volume">max_reagent_volume</a></th><td>How many units of liquid can this towel store?</td></tr><tr><th><a href="obj/item/towel.html#var/shape">shape</a></th><td>The shape we're currently in.</td></tr><tr><th><a href="obj/item/towel.html#var/wet">wet</a></th><td>Are we currently wet?</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr><tr><th><a href="obj/item/towel.html#proc/attack_on_liquids_turf">attack_on_liquids_turf</a></th><td>The procedure for remove liquids from turf</td></tr><tr><th><a href="obj/item/towel.html#proc/change_towel_shape">change_towel_shape</a></th><td>Helper to change the shape of the towel, so that it updates its look both
+in-hand and on the body of the wearer.</td></tr><tr><th><a href="obj/item/towel.html#proc/make_used">make_used</a></th><td>Simple helper to make the towel into a used towel shape.</td></tr><tr><th><a href="obj/item/towel.html#proc/set_wet">set_wet</a></th><td>Helper proc to handle setting the towel's <code>wet</code> variable, changing the icon_state
+accordingly and making the towel look a little damp if wet, and removing that
+color if not wet.</td></tr><tr><th><a href="obj/item/towel.html#proc/transfer_reagents_to_towel">transfer_reagents_to_towel</a></th><td>Helper to transfer reagents to the towel.</td></tr><tr><th><a href="obj/item/towel.html#proc/transfer_towel_reagents_to">transfer_towel_reagents_to</a></th><td>Helper to transfer reagents from the towel to something else, handling all
+the work related to ensuring that the towel gets updated visually if it now
+becomes dry, while also optionally applying a loss factor to the transfer.</td></tr><tr><th><a href="obj/item/towel.html#proc/update_slot_related_flags">update_slot_related_flags</a></th><td>Helper proc to change the slot flags of the towel based on its shape.</td></tr></table><h2 id="var">Var Details</h2><h3 id="var/max_reagent_volume"><aside class="declaration">var </aside>max_reagent_volume <aside>– </aside> <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L55"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 55"></a></h3><p>How many units of liquid can this towel store?</p><h3 id="var/shape"><aside class="declaration">var </aside>shape <aside>– </aside> <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L53"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 53"></a></h3><p>The shape we're currently in.</p><h3 id="var/wet"><aside class="declaration">var </aside>wet <aside>– </aside> <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L57"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 57"></a></h3><p>Are we currently wet?</p><h2 id="proc">Proc Details</h2><h3 id="proc/attack_on_liquids_turf"><aside class="declaration">proc </aside>attack_on_liquids_turf<aside>(/<a href="turf.html">turf</a>/tile, /<a href="mob.html">mob</a>/user, /<a href="obj.html">obj</a>/<a href="obj/effect/abstract/liquid_turf.html">effect/abstract/liquid_turf</a>/liquids)  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L505"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 505"></a></aside></h3><p>The procedure for remove liquids from turf</p>
+<p>The object is called from liquid_interaction element.
+The procedure check range of mop owner and tile, then check reagents in mop, if reagents volume &lt; mop capacity - liquids absorbs from tile
+In another way, input a chat about mop capacity
+Arguments:</p>
+<ul>
+<li>towel - Towel used to absorb liquids</li>
+<li>tile - On which tile the towel will try to absorb liquids</li>
+<li>user - Who tries to absorb liquids with the towel</li>
+<li>liquids - Liquids that user tries to absorb with the towel</li>
+</ul><h3 id="proc/change_towel_shape"><aside class="declaration">proc </aside>change_towel_shape<aside>(/<a href="mob.html">mob</a>/user, new_shape, silent)  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L367"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 367"></a></aside></h3><p>Helper to change the shape of the towel, so that it updates its look both
+in-hand and on the body of the wearer.</p>
+<p>Arguments:</p>
+<ul>
+<li>user - Mob that's trying to change the shape of the towel.</li>
+<li>new_shape - The new shape that the towel can be in.</li>
+<li>silent (optional) - Whether we produce a to_chat to the user to elaborate on
+the new shape it is now in. Requires <code>user</code> to be non-null if <code>TRUE</code> in order to
+do anything. Defaults to <code>FALSE</code>.</li>
+</ul><h3 id="proc/make_used"><aside class="declaration">proc </aside>make_used<aside>(/<a href="mob.html">mob</a>/user, silent)  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L420"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 420"></a></aside></h3><p>Simple helper to make the towel into a used towel shape.</p>
+<p>Arguments:</p>
+<ul>
+<li>user - Mob that's making the towel used. Can be null if <code>silent</code> is <code>FALSE</code>.</li>
+<li>silent (optional) - Whether we produce a to_chat to the user to elaborate on
+the new shape it is now in. Requires <code>user</code> to be non-null if <code>TRUE</code> in order to
+do anything. Defaults to <code>FALSE</code>.</li>
+</ul><h3 id="proc/set_wet"><aside class="declaration">proc </aside>set_wet<aside>(new_wetness, update_visuals)  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L338"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 338"></a></aside></h3><p>Helper proc to handle setting the towel's <code>wet</code> variable, changing the icon_state
+accordingly and making the towel look a little damp if wet, and removing that
+color if not wet.</p>
+<p>Arguments:</p>
+<ul>
+<li>new_wetness - Whether we're now wet or not.</li>
+<li>update_visuals (optional) - Whether we call <code>update_appearance()</code> and
+<code>update_slot_icon()</code>. Set to <code>FALSE</code> if you're already calling a proc that
+updates the towel's appearance, like <code>change_towel_shape()</code> (if you're sure
+that it WILL change the appearance). Defaults to <code>TRUE</code>.</li>
+</ul><h3 id="proc/transfer_reagents_to_towel"><aside class="declaration">proc </aside>transfer_reagents_to_towel<aside>(/<a href="datum.html">datum</a>/<a href="datum/reagents.html">reagents</a>/source, amount, /<a href="mob.html">mob</a>/user, make_used)  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L475"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 475"></a></aside></h3><p>Helper to transfer reagents to the towel.</p>
+<p>Arguments:</p>
+<ul>
+<li>source - Reagents source of the reagents transfer.</li>
+<li>amount - Amount of reagents that are going to be affected by the transfer.
+Won't go above the maximum amount of volume of the towel, and it will handle
+making sure that it uses the right amount of reagents if the source doesn't
+have enough reagents for it.</li>
+<li>user - Mob that does the transfer, if any.</li>
+<li>make_used (optional) - Whether or not we change the towel to the used sprite.
+Defaults to <code>TRUE</code>.</li>
+</ul><h3 id="proc/transfer_towel_reagents_to"><aside class="declaration">proc </aside>transfer_towel_reagents_to<aside>(/<a href="datum.html">datum</a>/<a href="datum/reagents.html">reagents</a>/target, amount, /<a href="mob.html">mob</a>/user, loss_factor, make_used)  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L441"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 441"></a></aside></h3><p>Helper to transfer reagents from the towel to something else, handling all
+the work related to ensuring that the towel gets updated visually if it now
+becomes dry, while also optionally applying a loss factor to the transfer.</p>
+<p>Arguments:</p>
+<ul>
+<li>target - Reagents target of the reagents transfer.</li>
+<li>amount - Amount of reagents that are going to be affected by the transfer.
+Won't go above the maximum amount of volume of the target, and it will handle
+making sure that it uses the right amount of reagents if the towel doesn't
+have enough reagents in it for it.</li>
+<li>user - Mob that does the transfer, if any.</li>
+<li>loss_factor (optional) - Factor of reagents that get lost during transfer.
+Defaults to 0.</li>
+<li>make_used (optional) - Whether or not we change the towel to the used sprite.
+Defaults to <code>FALSE</code>.</li>
+</ul><h3 id="proc/update_slot_related_flags"><aside class="declaration">proc </aside>update_slot_related_flags<aside>()  <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/master_files/code/modules/clothing/towels.dm#L390"><img src="git.png" width="16" height="16" title="modular_skyrat/master_files/code/modules/clothing/towels.dm 390"></a></aside></h3><p>Helper proc to change the slot flags of the towel based on its shape.</p></main><footer>tgstation.dme <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/e507f9120bb0c3beecfe169d14193d90e7229a58">e507f91</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

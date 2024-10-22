@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_skyrat/modules/multiserver/readme.md - /tg/ Station 13</title></head><body><header><a href="index.html">/tg/ Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>modular_skyrat/modules/multiserver/readme.md <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/e507f9120bb0c3beecfe169d14193d90e7229a58/modular_skyrat/modules/multiserver/readme.md0"><img src="git.png" width="16" height="16" title="modular_skyrat/modules/multiserver/readme.md0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p><a href="https://github.com/Skyrat-SS13/Skyrat-tg/pull/4032">https://github.com/Skyrat-SS13/Skyrat-tg/pull/4032</a></p>
+<h2 id="title-stuff-to-accomodate-multiple-servers-talking-to-the-same-database">Title: Stuff to accomodate multiple servers talking to the same database.</h2>
+<p>MODULE ID: MULTISERVER</p>
+<h3 id="description">Description:</h3>
+<p>So far includes:<br />
+Toggle between local and global bans.<br />
+Ability to more easily organize statistics from separate servers in the database.</p>
+<p>It isn't coded in an idiotproof way, so make sure your configs and db are up to date before merging this.</p>
+<h3 id="tg-proc-file-changes">TG Proc/File Changes:</h3>
+<ul>
+<li><code>**code/controllers/subsystem/blackbox.dm**</code> - added a column with server name in death logs and population statistics</li>
+<li><code>**code/controllers/subsystem/dbcore.dm**</code> - added a column with server name in round logs</li>
+<li><code>**code/modules/admin/IsBanned.dm**</code>, <code>**code/modules/admin/sql_ban_system.dm**</code> - a column with server name and tracking whether the bans are global, also altered the banning panel to allow global/local ban choices</li>
+<li><code>**code/modules/admin/sql_message_system.dm**</code> - notes are cross-server, but now they track which server they were applied on</li>
+<li><code>**code/modules/client/client_procs.dm**</code> - added a column with server name in server login logs</li>
+<li><code>**code/__DEFINES/subsystems.dm**</code> - Increment minor version of DB schema</li>
+</ul>
+<h3 id="defines">Defines:</h3>
+<ul>
+<li>#define DB_MINOR_VERSION 12 -&gt; 13</li>
+</ul>
+<h3 id="master-file-additions">Master file additions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="included-files-that-are-not-contained-in-this-module">Included files that are not contained in this module:</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="credits">Credits:</h3>
+<p>Implementing on Skyrat: Useroth</p>
+<p>Heavily inspired by the solutions presented in the <a href="https://github.com/BeeStation/BeeStation-Hornet">BeeStation-Hornet codebase</a></p>
+<p>Hard to really pinpoint all the original authors of the code due to the incredible web of ports involved in this, including some now removed code that was present in the tg codebase in the past, but I'll try the major ones who put the effort into porting or implementing it in the first place.<br />
+Feel free to poke me if I omitted anyone.</p>
+<p><a href="https://github.com/MarkSuckerberg">MarkSuckeberg</a><br />
+<a href="https://github.com/Crossedfall">Crossedfall</a><br />
+<a href="https://github.com/qwertyquerty">qwertyqwerty</a></p>
+<h3 id="patch-log">Patch Log</h3>
+<p>PR: https://github.com/Skyrat-SS13/Skyrat-tg/pull/4785</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/e507f9120bb0c3beecfe169d14193d90e7229a58">e507f91</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>
