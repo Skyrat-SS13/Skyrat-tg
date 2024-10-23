@@ -64,20 +64,22 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	var/mob/living/carbon/human/carbon_target = target
-	if(!carbon_target && !iscyborg(target))
+
+	var/mob/living/carbon/human/carbon_target
+	if(ishuman(target))
+		carbon_target = target
+	else if(!iscyborg(target))
 		return
 
-	var/message = ""
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
 
-	if(!carbon_target?.is_bottomless() && !iscyborg(target))
+	if(carbon_target && !carbon_target.is_bottomless())
 		to_chat(user, span_danger("[target]'s butt is covered!"))
 		return
 
-	message = (user == target) ? pick("spanks themselves with [src]",
+	var/message = (user == target) ? pick("spanks themselves with [src]",
 			"uses [src] to slap their hips") \
 		: pick("slaps [target]'s hips with [src]",
 			"uses [src] to slap [target]'s butt",
